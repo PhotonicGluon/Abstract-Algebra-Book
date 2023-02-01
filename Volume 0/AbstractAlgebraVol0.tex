@@ -1,0 +1,364 @@
+\input{../SharedCommands.tex}
+
+%============= Formatting ================
+\linespread{1.05}
+
+%============== Title Page ===============
+\begin{document}
+\begin{titlepage}
+    \centering{
+        {
+            \selectfont
+            \Huge
+            \textbf{Abstract Algebra}\\
+            \vspace{-2mm}
+            \Large
+            \textbf{A Gentle Introduction}\\
+            \vspace{5mm}
+            \LARGE
+            Volume 0: Prerequisites
+        }
+    }\\
+    \vspace{20mm}
+    \centering{\Large{Overwrite}}\\
+    \vspace{\fill}
+    \centering \large{\the\year}\\
+    \centering \small{\textit{Version 1}}
+\end{titlepage}
+
+%=========================================
+\newpage{}
+\thispagestyle{empty}
+
+\vspace*{2cm}
+
+\begin{center}
+    \Large{\parbox{10cm}{
+        \begin{raggedright}
+        {
+            \large
+            Aus dem Paradies, das Cantor uns geschaffen, soll uns niemand vertreiben können.\\
+            \textit{(No one shall expel us from the Paradise that Cantor has created.)}
+        }
+
+            \vspace{.5cm}
+            \hfill{--- David Hilbert, 1926}\\
+            \vspace{-.25cm}
+            \normalsize
+            \hfill{(\cite{hilbert_1926} p. 170)}
+        \end{raggedright}
+    }
+}
+\end{center}
+
+\newpage
+
+%=========================================
+\chapter*{Preface}
+Although algebra has a long history, it has undergone some quite striking changes in the past few decades. Abstract algebra is widely recognised as an essential element of higher mathematical education. The results and theorems that it showcases, however, are oft hard to grasp and understand without prerequisite knowledge or with a heavy background in mathematics. Most books on this subject are crafted for undergraduates at universities. They are not for a general mathematics enthusiast or one who seeks to understand more about the inner structure of algebra that many mathematicians encounter frequently.
+
+It is thus the goal of this series of books to provide a step-by-step explanation of core results from abstract algebra; to demystify the core steps that many textbooks skip over when writing proofs. I aim to ensure that the results from such an essential field of study are as accessible, as approachable, and as understandable for as many people as possible.
+
+This volume, in particular, serves to provide the necessary prerequisites needed to engage with the subject material. In particular, this volume covers basic set theory, functions/mappings, elementary number theory, simple modular arithmetic, mathematical logic and proof writing, and mathematical induction. This background should be sufficient to understand the subject material described in the other volumes.
+
+\hfill{\textit{27 January, 2023}}
+\newpage
+
+%=========================================
+\tableofcontents
+\setcounter{part}{0}
+
+%=========================================
+\chapter{Set Theory}
+\textit{This book assumes the following knowledge about sets:
+\begin{itemize}
+    \item The idea and notation of a set
+    \item Basic operations on sets
+    \item Set-builder notation
+    \item Cardinality of a set
+\end{itemize}
+}
+
+Set theory is the branch of mathematics that studies sets, which can be informally described as collections of objects.
+
+Set theory begins with a binary relation between an object $x$ and a set $S$. If $x$ is an element of $S$, the notation $x \in S$ is used. This is read as ``$x$ is an element of the set $S$''. Otherwise, we write $x \notin S$.
+
+A set is described by listing elements separated by commas, or by a characterizing property of its elements, within braces $\{ \ \}$. Since sets are objects, the membership relation can relate sets as well.
+
+We denote the \textbf{empty set} by $\emptyset$, which is given by $\{\}$. That is, $\emptyset = \{\}$.
+
+Now if we have two sets $A$ and $B$, and if all the members of set A are also members of set B, then we say that $A$ is a \textbf{subset} of $B$, and we write $A \subseteq B$. For example, $\{1, 2\} \subseteq \{1, 2, 3\}$ but $\{1, 4\} \not\subseteq \{1, 2, 3\}$. It should be noted that for any set $S$, $\emptyset \subseteq S$. It should also be noted that for any set $S$, $S \subseteq S$. Thus $A$ is called a \textbf{proper subset} of $B$ if $A \neq B$ and $A \subseteq B$ (in this case, we write $A \subset B$).
+
+Set theory also features operations on sets. We list some of them here.
+\begin{itemize}
+    \item The \textbf{union} of two sets is the set of all objects that are a member of $A$, or $B$, or both. It is denoted $A \cup B$. For example, $\{1, 2, 3\} \cup \{2, 3, 4\} = \{1, 2, 3, 4\}$.
+    \item The \textbf{intersection} of two sets is the set of all objects that are a member of \textit{both} the sets $A$ and $B$. It is denoted $A \cap B$. For example, $\{1, 2, 3\} \cap \{2, 3, 4\} = \{2, 3\}$.
+    \item The \textbf{set difference} of $S$ and $S$, denoted $S \setminus A$, is the set of all members of $S$ that are not members of $A$. For example, $\{1, 2, 3\} \setminus \{2, 3, 4\} = \{1\}$ and $\{2, 3, 4\} \setminus \{1, 2, 3\} = \{4\}$.
+    \item The \textbf{Cartesian Product} of $A$ and $B$, denoted $A \times B$, is the set whose members are all possible ordered pairs $(a, b)$, where $a$ is an element of $A$ and $b$ is an element of $B$. For example, $\{1, 2, 3\} \times \{4, 5\} = \{(1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5)\}$. In particular, the Cartesian product $A \times A = A^2$, $A\times A \times A = A^3$, and so on.
+\end{itemize}
+
+It is quite useful to have a notation that describes a set that is defined by a logical formula that evaluates to true for an element of the set, and false otherwise. In this form, set-builder notation has three parts: a variable, a vertical bar separator, and the logical formula. Thus there is a variable on the left of the separator, and a rule on the right of it. These three parts are contained in curly brackets:
+\[
+    \{x \ | \ \Phi(x)\}
+\]
+The vertical bar is a separator that can be read as ``such that'', ``for which'', or ``with the property that''. The formula $\Phi(x)$ is said to be the rule.
+
+A domain $X$ can appear on the left of the vertical bar:
+\[
+    \{x \in X \ | \ \Phi(x)\},
+\]
+or by adjoining it to the logical formula:
+\[
+    \{x \ | \ x \in X, \Phi(x)\}.
+\]
+\begin{example}
+    The set $S = \{x \in \mathbb{R} \ | \ x \geq 0 \}$ is the set of all non-negative real numbers.
+\end{example}
+
+The cardinality of a set $S$, denoted $|S|$, is the number of elements in $S$. The cardinality of the empty set is zero. The list of elements of some sets is endless, or infinite. In this book, we denote the cardinality of such infinite sets as $|S| = \infty$ (even though it is poorly defined in other contexts).
+
+Finally, some notation that will be used in this book:
+\begin{itemize}
+    \item $\mathbb{Z}$ denotes the set of integers;
+    \item $\mathbb{Q}$ denotes the set of rational numbers; and
+    \item $\mathbb{R}$ denotes the set of real numbers.
+\end{itemize}
+
+%=========================================
+\chapter{Functions}
+\textit{This book assumes the following knowledge of functions:
+\begin{itemize}
+    \item Domain and codomain of a function
+    \item Range/image of a function
+    \item Equality of functions
+    \item Arrow notation ($\mapsto$) of functions
+    \item Function composition
+    \item Injectivity, surjectivity, and bijectivity
+\end{itemize}
+}
+
+A function (or a map) from a set $X$ to a set $Y$ is an assignment of an element of $Y$ to each element of $X$. The set $X$ is called the \textbf{domain} of the function and the set $Y$ is called the \textbf{codomain} of the function.
+
+A function, its domain, and its codomain, are declared by the notation $f: X\to Y$, and the value of a function $f$ at an element $x$ of $X$, denoted by $f(x)$, is called the \textbf{image} of $x$ under $f$.
+
+The \textbf{image} or \textbf{range} of a function is the set of the images of all elements in the domain. The image and the codomain are not necessarily the same. The image of the function $f: X \to Y$ is denoted either as $\im f$ or $f(X)$.
+
+Two functions $f$ and $g$ are equal if
+\begin{itemize}
+    \item their domain and codomain sets are the same; and
+    \item their output values agree on the whole domain.
+\end{itemize}
+More formally, given $f: X \to Y$ and $g: X \to Y$, $f = g$ if $f(x) = g(x)$ for all $x$ in $X$.
+
+\textbf{Arrow notation} can also be used to define the rule of a function. For example, $f: \mathbb{R} \to \mathbb{R}, x \mapsto x+1$ is the function which takes a real number as input and outputs that number plus 1.
+
+Functions may also be \textbf{composed} with each other. This is done by using the function composition operator $\circ$. The composition of two functions, say $f: X \to Y$ and $g: Y \to Z$, produces a function $f \circ g: X \to Z$ such that $(f \circ g)(x) = f(g(x))$. It is important to note the following:
+\begin{itemize}
+    \item Function composition is associative. That is, if $f$, $g$, and $h$ are composable, then $f \circ (g \circ h) = (f \circ g) \circ h$. Since the parentheses do not change the result, they are generally omitted.
+    \item The composition $f \circ g$ is only meaningful if the codomain of $g$ is a subset of the domain of $f$. That is, if $f: A \to B$ and $g: C \to D$, then $f \circ g$ is only meaningful if $\im g \subseteq A$.
+\end{itemize}
+We may also alternatively write $fg$ in place of $f \circ g$.
+
+A function $f: X \to Y$ is said to be \textbf{injective} (or \textbf{one-to-one}) if $f(x_1) = f(x_2)$ implies $x_1 = x_2$. Equivalently, if $x_1 \neq x_2$ then $f(x_1) \neq f(x_2)$ for all $x_1$ and $x_2$ in $X$.
+
+A function $f: X \to Y$ is said to be \textbf{surjective} (or \textbf{onto}) is a function whose image is equal to its codomain. Equivalently, $f$ is surjective if and only if for all $y \in Y$, there exists $x \in X$ such that $f(x) = y$.
+
+A function is \textbf{bijective} if it is both injective and surjective. A bijective function is also called a \textbf{bijection} or a \textbf{one-to-one correspondence}. A function is bijective if and only if every possible image is mapped to by exactly one argument. It should be noted that bijectivity is implied if the function $f: X \to Y$ is injective and the sets $X$ and $Y$ `have the same number of elements' (or more formally, \textbf{equinumerous}).
+
+\chapter{Number Theory}
+\textit{This book assumes the following knowledge about number theory:
+\begin{itemize}
+    \item The idea of ``$a$ divides $b$''
+    \item The idea of ``$p$ is a multiple of $q$''
+    \item Simple facts about divisibility
+    \item Definition of a prime number
+    \item Euclid's Division Lemma
+    \item The greatest common divisor
+    \item The lowest common multiple
+\end{itemize}
+}
+
+We say that \textbf{$a$ divides $b$} if there is an integer $k$ such that $ak = b$. This is denoted $a\;|\;b$. For example, $7\;|\;63$ since $7 \times 9 = 63$. However, 8 does not divide 63, so we write $8 \nmid 63$. A consequence of this definition is that every number divides zero since $a \times 0 = 0$ for every integer $a$.
+
+If $a$ divides $b$, then $b$ is a \textbf{multiple of $a$}. For example, 63 is a multiple of 7, but 63 is not a multiple of 8.
+
+Here are some basic facts about divisibility that are not difficult to prove.
+\begin{itemize}
+    \item If $a\;|\;b$ then $a\;|\;bc$ for all integers $c$.
+    \item If $a\;|\;b$ and $b\;|\;c$ then $a\;|\;c$.
+    \item If $a\;|\;b$ and $a\;|\;c$ then $a\;|\;sb+tc$ for all integers $s$ and $t$.
+    \item If $c \neq 0$, then $a\;|\;b$ if and only if $ac\;|\;bc$.
+\end{itemize}
+
+A number $p > 1$ with no positive divisors other than 1 and itself is called a \textbf{prime}. Every other number greater than 1 is called \textbf{composite}. For example, 2, 3, 5, 7, 11, and 13 are all prime, but 4, 6, 8, and 9 are composite. The number 1 is considered neither prime nor composite.
+
+When talking about primes, one should not forget the \textbf{Fundamental Theorem of Arithmetic}.
+\begin{theorem}[Fundamental Theorem of Arithmetic]\label{thrm-fundamental-theorem-of-arithmetic}
+    For every integer $n > 1$, $n$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
+\end{theorem}
+
+When dividing an integer by another, we may sometimes have a \textbf{remainder} left over. For example, when 63 is divided by 8, a remainder of 7 is left over. More precisely, if you divide $n$ by $d$, then you get a quotient $q$ and a remainder $r$. This is given by Euclid's Division Lemma.
+\begin{lemma}[Euclid's Division Lemma]
+    Given two integers $n$ and $d$, with $n \neq 0$, there exist unique integers $q$ and $r$ such that
+    \[
+        n = qd + r
+    \]
+    and $0 \leq r < |d|$ where $|d|$ denotes the absolute value of $d$.
+\end{lemma}
+\begin{remark}
+    We will often call this lemma the \textbf{division algorithm}.
+\end{remark}
+
+\begin{example}
+    Using $n = 63$ and $d = 8$, we will have $63 = 7\times8 + 7$.
+\end{example}
+\begin{example}
+    Using $n = 14$ and $d = -3$, we will have $13 = -5\times3 + 1$.
+\end{example}
+
+%TODO ADD GCD AND LCM
+
+\begin{lemma}[Bézout]\label{lemma-bezout}
+    Let $a$ and $b$ be integers with greatest common divisor $d$. Then there exist integers $x$ and $y$ such that $ax + by = d$. Moreover, the integers of the form $az + bt$ are exactly the multiples of $d$.
+\end{lemma}
+
+%=========================================
+\chapter{Modular Arithmetic}
+\textit{This book assumes the following knowledge of modular arithmetic:
+\begin{itemize}
+    \item Congruence modulo $n$
+    \item Properties of congruence
+\end{itemize}
+}
+
+Given an integer $n>1$, called a \textbf{modulus}, two integers $a$ and $b$ are said to be \textbf{congruent modulo $n$} if $n$ is a divisor of their difference (that is, if there is an integer $k$ such that $a - b = kn$). It is denoted $a \equiv b \pmod{n}$. The parentheses mean that $\pmod{n}$ applies to the entire equation, not just to the right-hand side (here, $b$). This notation is not to be confused with the notation $b \mod n$ (without parentheses), which refers to the modulo operation. \begin{remark}
+    Equivalently, $a \equiv b \pmod n$ means that $a = kn + b$ for some integer $k$.
+\end{remark}
+
+\begin{example}
+    In modulus 12, one sees that $38 \equiv 14 \pmod{12}$ since $38 - 14 = 24 = 2 \times 12$. Another way to express this is to say that both 38 and 14 have the same remainder 2, when divided by 12.
+\end{example}
+
+The definition of congruence also applies to negative values. For example:
+\begin{itemize}
+    \item $-3 \equiv 2 \pmod5$
+    \item $-8 \equiv 7 \equiv 2 \pmod5$
+    \item $-1 \equiv n-1 \pmod{n}$
+\end{itemize}
+
+The operation of congruence modulo $n$ has a few properties which we will state without proof. Let $a_1 \equiv b_1 \pmod n$ and $a_2 \equiv b_2 \pmod n$, or if $a \equiv b \pmod n$, then
+\begin{itemize}
+    \item $a + k \equiv b + k \pmod n$ for any integer $k$;
+    \item $ka \equiv kb \pmod n$ for any integer $k$;
+    \item $ka \equiv kb \pmod {kn}$ for any integer $k$;
+    \item $a_1 + a_2 \equiv b_1 + b_2 \pmod n$;
+    \item $a_1 - a_2 \equiv b_1 - b_2 \pmod n$;
+    \item $a_1a_2 \equiv b_1b_2 \pmod n$;
+    \item $a^k \equiv b^k \pmod n$ for any non-negative integer $k$;
+    \item if $a+k \equiv b+k \pmod n$ then $a \equiv b \pmod n$ for any integer $k$;
+    \item if $ka \equiv kb \pmod n$ and $k$ is an integer such that $\gcd(k, n) = 1$, then $a \equiv b \pmod n$; and
+    \item if $ka \equiv kb \pmod{kn}$ where $k$ is a non-zero integer, then $a \equiv b \pmod n$.
+\end{itemize}
+
+We end this section with an important result.
+\begin{proposition}\label{prop-multiplicative-inverse-exists-iff-coprime}
+    The multiplicative inverse of $a$ modulo $m$ exists if and only if $\gcd(a,m) = 1$.
+\end{proposition}
+\begin{proof}
+    We first work forwards and suppose $k$ is the multiplicative inverse of $a$ modulo $m$. Then $ka \equiv 1 \pmod m$. Hence $ka - 1 \equiv 0 \pmod m$, so $m$ divides $ka - 1$. This means that $ka - 1$ is a multiple of $m$, so $ka - 1 = pm$ for some integer $p$. Therefore $ka + pm = 1$ By Bézout's Lemma (\textbf{Lemma \ref{lemma-bezout}}) this means that $\gcd(a, m) = 1$.
+    
+    Now, working in the reverse direction, suppose $\gcd(a, m) = 1$. By Bézout's Lemma this means there exist integers $k$ and $p$ such that $ka + pm = 1$. Then $ka - 1 = pm$ which means $m$ divides $ka - 1$, which hence means $ka - 1 \equiv 0 \pmod m$ which the result quickly yields.
+\end{proof}
+
+%=========================================
+\chapter{Mathematical Logic and Proof Writing}
+
+%=========================================
+\chapter{Mathematical Induction}
+\textit{This book assumes the knowledge of the principle of mathematical induction.}
+
+Mathematical induction is a method for proving that a proposition $P_n$ is true for every positive integer $n$, that is, that the infinitely many cases $P_1, P_2, P_3, \dots,$ all hold. Informal metaphors help to explain this technique, such as falling dominoes or climbing a ladder:
+\begin{quote}
+    Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the base case) and that from each rung we can climb up to the next one (the induction step).
+\end{quote}
+
+A proof by induction consists of two steps. The first, the \textbf{base case}, proves the statement for $n = 1$ without assuming any knowledge of other cases. The second, the \textbf{induction step}, proves that if the statement holds for any given case $n = k$, then it must also hold for the next case $n = k + 1$. These two steps establish that the statement holds for every natural number $n$. The base case does not necessarily begin with $n = 1$, but sometimes with $n = 0$, and possibly with any fixed natural number $n = N$, establishing the truth of the statement for all natural numbers $n \geq N$.
+
+In summary, mathematical induction involves two steps:
+\begin{itemize}
+    \item \textbf{Base Case(s)}: Prove the statement for initial values.
+    \item \textbf{Induction Step}: Prove that for every $n$, if the statement holds for $n$, then it holds for $n + 1$. In fact, one could prove that the statement holds for $n + k$, given that there are $k$ base case(s).
+\end{itemize}
+
+\begin{example}
+    We prove the famous identity
+    \[
+        1 + 2 + 3 + \cdots + n = \frac{n(n+1)}2.
+    \]
+
+    When $n = 1$, the left hand side is 1; the right hand side is $\frac{1(1+1)}{2} = 1$. Thus the initial case is true.
+
+    Now assume that the statement holds for some positive integer $k$, meaning
+    \[
+        1 + \cdots + k = \frac{k(k+1)}2.
+    \]
+    We are to prove the statement true for $k+1$, meaning
+    \[
+        1 + \cdots + k + (k+1) = \frac{(k+1)(k+2)}2.
+    \]
+    We work slowly:
+    \begin{align*}
+        1 + \cdots + k + (k+1) &= \frac{k(k+1)}{2} + (k+1) & \text{(by hypothesis)}\\
+        &= \frac{k(k+1)}2 + \frac{2(k+1)}{2}\\
+        &= \frac{k(k+1) + 2(k+1)}2\\
+        &= \frac{(k+1)(k+2)}2
+    \end{align*}
+    which proves the case for $k + 1$. Hence $1 + 2 + 3 + \cdots + n = \frac{n(n+1)}2$.
+\end{example}
+
+\begin{example}
+    We look at an example of 2-step induction. Consider the function $f: \left(\mathbb{Z}^+\right)^2\to\mathbb{Z}^+$ be defined by
+    \[
+        f(m, n) =
+        \begin{cases}
+            n & \text{if } m = 1, \\
+            m & \text{if } n = 1, \\
+            f\left(n-1,f(n-1,m-1)\right) & \text{otherwise.}
+        \end{cases}
+    \]
+    We will prove the non-obvious fact that $f(n+1, n) = 2$ for all positive integers $n$.
+
+    When $n = 1$, we have $f(2, 1)$ which obviously equals 2, so the first case is true.
+
+    When $n = 2$ we have $f(3, 2)$. Note that $f(3,2) = f(1, f(1, 2)) = f(1, 2) = 2$, so the second case is true.
+
+    Now suppose the statement is true for $k$, i.e. $f(k+1,k) = 2$. We want to show that the case for $k+2$ is true, that is, $f(k+3, k+2) = 2$.
+    \begin{align*}
+        f(k+3, k+2) &= f(k+1, f(k+1, k+2))\\
+        &= f(k+1, f(k+1, f(k+1, k)))\\
+        &= f(k+1, f(k+1, 2)) & \text{(by hypothesis)}\\
+        &= f(k+1, f(1, f(1, k)))\\
+        &= f(k+1, f(1, k))\\
+        &= f(k+1, k)\\
+        &= 2 & \text{(by hypothesis)}
+    \end{align*}
+    which proves that the statement for $k+2$ holds. Hence by mathematical induction, $f(n+1, n) = 2$.
+\end{example}
+
+%=========================================
+\addcontentsline{toc}{chapter}{Exercise Solutions}
+\chapter*{Exercise Solutions}
+
+%=========================================
+\addcontentsline{toc}{chapter}{Problem Solutions}
+\chapter*{Problem Solutions}
+
+%=========================================
+\addcontentsline{toc}{chapter}{Image Acknowledgements}
+\chapter*{Image Acknowledgements}
+Images are cited as they appear.
+
+%=========================================
+\printbibliography[heading=bibintoc, title={References and Bibliography}]
+
+\end{document}
