@@ -2848,7 +2848,7 @@ Thus, an alternate definition of $\mathrm{Q}$ is as follows:
 \]
 One sees clearly that in this definition, $\alpha = i$ and $\beta = j$.
 
-\begin{exercise}
+\begin{exercise}\label{exercise-normal-subgroups-of-quarternion-group}
     Find all the normal subgroups of the quaternion group $\mathrm{Q}$.\newline
     (\textit{Hint: consider \textbf{Problem \ref{problem-subgroup-of-index-2-is-normal}}}.)
 \end{exercise}
@@ -4774,23 +4774,21 @@ There is an important consequence that we examine here.
 \section{Composition Series}
 We can now look at a more interesting type of subnormal series: the titular \textbf{composition series} of a group.
 \begin{definition}
-    Let $G$ be a group. A \textbf{composition series} of $G$ is a subnormal series of finite length
+    Let $G$ be a group. A \textbf{composition series} of $G$ is a normal series of finite length
     \[
         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G  
     \]
     such that $H_i$ is a maximal normal subgroup of $H_{i+1}$ (for $0 \leq i < n$). The factor groups $H_{i+1}/H_i$ are called the \textbf{composition factors}, and the length $n$ above is called the \textbf{composition length}.
 \end{definition}
 \begin{remark}
-    Some authors (e.g. \cite{cohn_1982}, \cite{clark_1984}) require composition series to be a normal series. However we follow \cite{hungerford_1980}, \cite{humphreys_1996}, \cite{milne_2021} and others and only require it to be a subnormal series.
+    Some authors (e.g. \cite{hungerford_1980}, \cite{humphreys_1996}, \cite{milne_2021}) only require composition series to be a subnormal series. However we follow \cite{cohn_1982}, \cite{clark_1984}, \cite{proofwiki_compositionseriesdefinition} and others and require it to be a normal series.
 \end{remark}
 \begin{remark}
-    An equivalent definition of a composition series is a subnormal series where the factor groups $H_{i+1}/H_i$ are simple, as guaranteed by \textbf{Theorem \ref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}}.
+    An equivalent definition of a composition series is a normal series where the factor groups $H_{i+1}/H_i$ are simple, as guaranteed by \textbf{Theorem \ref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}}.
 \end{remark}
 \begin{remark}
     For composition series, we often write a group that is isomorphic to the subgroup rather than the actual subgroup. For example, instead of the subgroup $\{0, 3\}$ in $\mathbb{Z}_6$, we may write $\mathbb{Z}_2$ or $\Cn{2}$ instead.
 \end{remark}
-
-It should be noted that every finite group has a composition series, but not every infinite group has one. For example, the infinite cyclic group $\mathbb{Z}$ does not have a composition series.
 
 \begin{example}
     Consider the group $\mathbb{Z}_{12}$. Three composition series of it are
@@ -4799,8 +4797,6 @@ It should be noted that every finite group has a composition series, but not eve
         &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_4 \lhd \mathbb{Z}_{12},\\
         &1 \lhd \mathbb{Z}_3 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},
     \end{align*}
-        
-    \newpage
     
     and the factors in each of the cases (up to isomorphism) are as follows:
     \begin{itemize}
@@ -5022,7 +5018,7 @@ We can now introduce the \textbf{Schreier Refinement Theorem}.
 \end{proof}
 
 We can now introduce and prove the Jordan-H\"older Theorem.
-\begin{theorem}\label{thrm-jordan-holder}
+\begin{theorem}[Jordan-H\"older]\label{thrm-jordan-holder}
     Two composition series for a finite group have the same length and composition factors.
 \end{theorem}
 \begin{proof}
@@ -5054,6 +5050,7 @@ We can now introduce and prove the Jordan-H\"older Theorem.
     \[
         D_6 / \langle r \rangle \cong D_6 / \langle r^2, s\rangle.
     \]
+    We say that $D_6 / \Cn{6} \cong D_6 / D_3$ is the composition series \textbf{up to isomorphism}, while $D_6 / \langle r \rangle \cong D_6 / \langle r^2, s\rangle$ is the actual composition series.
 \end{example}
 
 \begin{exercise}
@@ -5063,18 +5060,17 @@ We can now introduce and prove the Jordan-H\"older Theorem.
 \newpage
 
 \section{Problems}
-%TODO Write solutions
 \begin{problem}
     Let the \textit{Klein four-group} with presentation
     \[
         \langle a, b \ | \ a^2 = b^2 = (ab)^2 = e \rangle
     \]
-    be denoted by $\mathrm{V}$.
+    be denoted by $\mathrm{V}$. Recall that $\mathrm{V} \cong (\mathbb{Z}_2)^2$.
     \begin{enumerate}[label=(\roman*)]
-        \item Find the unique composition series for $\mathrm{V}$ (up to isomorphism).
-        \item Let $\mathrm{Q}$ denote the quaternion group. Find the two unique composition series for $\mathrm{Q}$ (up to isomorphism).\newline
+        \item Find the unique composition series for $\mathrm{V}$ up to isomorphism.
+        \item Let $\mathrm{Q}$ denote the quaternion group. Find the two unique composition series for $\mathrm{Q}$ up to isomorphism.\newline
         (\textit{Hint: consider the alternate definition of the quaternion group.})
-        \item Let $H$ be the subgroup of $\mathrm{Q}$ that is isomorphic to $\mathbb{Z}_4$, and $K$ be a subgroup of $\mathrm{Q}$ that is isomorphic to $\mathrm{V}$. Prove that
+        \item Let $H$ be the subgroup of $\mathrm{Q}$ that is isomorphic to $\Cn{4}$, and $K$ be a subgroup of $\mathrm{Q}$ that is isomorphic to $\mathrm{V}$. Prove that
         \[
             \mathrm{Q}/H \cong \mathrm{Q}/K.
         \]
@@ -5083,10 +5079,8 @@ We can now introduce and prove the Jordan-H\"older Theorem.
 \end{problem}
 
 \begin{problem}
-    Prove that a group of prime power order has only one composition series.
-    %TODO See https://proofwiki.org/wiki/Composition_Series_of_Group_of_Prime_Power_Order
+    Find the unique composition series of $\Sn{4}$ (up to isomorphism).
 \end{problem}
-%TODO ADD
 
 %=========================================
 \chapter{Simple Groups}
@@ -6401,6 +6395,32 @@ We can now introduce and prove the Jordan-H\"older Theorem.
     which is a clear contradiction. Hence, at least one of $n_p$, $n_q$, or $n_r$ is 1, meaning that there exists a proper normal subgroup in $G$ by \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}. Therefore $G$ is non-simple.
 \end{enumerate}
 
+\addcontentsline{toc}{section}{Chapter 11}
+\section*{Chapter 11}
+\begin{enumerate}
+    \item \begin{enumerate}[label=(\roman*)]
+        \item We note $\mathrm{V}$ has order 4. By Cauchy's Theorem (\textbf{Theorem \ref{thrm-cauchy}}), and writing 4 as $2 \times 2$, we know that $\mathrm{V}$ has a subgroup of order 2 (which is cyclic). Now $\mathrm{V}$ is abelian (\textbf{Problem \ref{problem-group-of-order-prime-squared-is-abelian}}) which means that the subgroup of order 2 is a normal subgroup of $\mathrm{V}$ (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}). Finally, Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) tells us that the only possible order for a proper subgroup of $\mathrm{V}$ is 2. Hence, the only composition series for $\mathrm{V}$ is $1 \lhd \Cn{2} \lhd \mathrm{V}$ up to isomorphism.\newline
+        (Note that this analysis applies for any group of order 4.)
+        
+        \item Recall that $\mathrm{Q} = \langle \alpha, \beta \ | \ \alpha^4 = e, \alpha^2 = \beta^2, \text{ and } \beta\alpha = \alpha^3\beta \rangle$. From the solution of \textbf{Exercise \ref{exercise-normal-subgroups-of-quarternion-group}}, the maximal subgroups of $\mathrm{Q}$ are $G_1 = \langle \alpha \rangle$, $G_2 = \langle \beta \rangle$, and $G_3 = \langle \alpha\beta \rangle$ (by setting $\alpha = i$ and $\beta = j$).
+        \begin{itemize}
+            \item $G_1 = \{e, \alpha, \alpha^2, \alpha^3\} \cong \Cn{4}$.
+            \item $G_2 = \{e, \beta, \beta^2, \beta^3\} = \{e, \beta, \alpha^2, \alpha^2\beta\} \cong \mathrm{V}$ where $a = \alpha^2$ and $b = \beta$.
+            \item $G_3 = \{e, \alpha\beta, (\alpha\beta)^2, (\alpha\beta)^3\} = \{e, \alpha\beta, \alpha^2, \alpha^3\beta\} \cong \mathrm{V}$ where $a = \alpha\beta$ and $b = \alpha^2$.
+        \end{itemize}
+        Also, note that $\Cn{2} \cong \langle \alpha^2 \rangle \lhd G_1$, $\Cn{2} \cong \langle \beta^2 \rangle \lhd G_2$, $\Cn{2} \cong \langle (\alpha\beta)^2 \rangle \lhd G_3$. Hence, the three composition series are
+        \begin{align*}
+            &1 \lhd \Cn{2} \lhd G_1 \lhd \mathrm{Q}\\
+            &1 \lhd \Cn{2} \lhd G_2 \lhd \mathrm{Q}\\
+            &1 \lhd \Cn{2} \lhd G_3 \lhd \mathrm{Q}
+        \end{align*}
+        and the two series up to isomorphism are $1 \lhd \Cn{2} \lhd \Cn{4} \lhd \mathrm{Q}$ and $1 \lhd \Cn{2} \lhd \mathrm{V} \lhd \mathrm{Q}$.
+        
+        \item By Jordan-H\"older theorem (\textbf{Theorem \ref{thrm-jordan-holder}}), the composition factors are isomorphic to each other. We note $\Cn{2} / 1 \cong \Cn{2}$, $\Cn{4} / \Cn{2} \cong \Cn{2}$ (by \textbf{Exercise \ref{exercise-Zmn-mod-Zn-cong-Zn}}), and $\mathrm{V} / \Cn{2} \cong (\Cn{2})^2 / \Cn{2} \cong \Cn{2}$ (by \textbf{Problem \ref{problem-cartesian-product-of-group-by-group-isomorphic-to-group}}). The only unaccounted set of factors is $\mathrm{Q}/\mathrm{V}$ and $\mathrm{Q}/\Cn{4}$. So, either $\mathrm{Q}/\mathrm{V} \cong \Cn{2}$ and $\mathrm{Q}/\Cn{4} \cong \Cn{2}$, or $\mathrm{Q}/\mathrm{V} \cong \mathrm{Q}/\Cn{4}$. Hence $\mathrm{Q}/\mathrm{V} \cong \mathrm{Q}/\Cn{4}$ (or, more accurately, $\mathrm{Q}/H \cong \mathrm{Q}/K$).
+    \end{enumerate}
+    
+    \item %TODO ADD
+\end{enumerate}
 
 %=========================================
 \addcontentsline{toc}{chapter}{Image Acknowledgements}
