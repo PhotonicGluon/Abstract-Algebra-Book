@@ -75,33 +75,56 @@ This volume, in particular, serves to provide the necessary prerequisites needed
 
 %=========================================
 \chapter{Set Theory}
-\textit{This book assumes the following knowledge about sets:
-\begin{itemize}
-    \item The idea and notation of a set
-    \item Basic operations on sets
-    \item Set-builder notation
-    \item Cardinality of a set
-\end{itemize}
-}
-
 Set theory is the branch of mathematics that studies sets, which can be informally described as collections of objects.
 
-Set theory begins with a binary relation between an object $x$ and a set $S$. If $x$ is an element of $S$, the notation $x \in S$ is used. This is read as ``$x$ is an element of the set $S$''. Otherwise, we write $x \notin S$.
+Set theory begins with a binary relation between an object $x$ and a set $S$. If $x$ is an element of $S$, we write $x \in S$. This is read as ``$x$ is an element of the set $S$''. Otherwise, we write $x \notin S$. For convenience, if $x \in S$ and $y \in S$, we may write $x, y \in S$. If $z \in S$ also, we may write $x, y, z \in S$. The same applies for ``$\notin$''.
 
 A set is described by listing elements separated by commas, or by a characterizing property of its elements, within braces $\{ \ \}$. Since sets are objects, the membership relation can relate sets as well.
 
+\textit{A set is completely determined by its elements. Two sets are equal if and only if they have precisely the same elements}.
+
 We denote the \textbf{empty set} by $\emptyset$, which is given by $\{\}$. That is, $\emptyset = \{\}$.
 
-Now if we have two sets $A$ and $B$, and if all the members of set A are also members of set B, then we say that $A$ is a \textbf{subset} of $B$, and we write $A \subseteq B$. For example, $\{1, 2\} \subseteq \{1, 2, 3\}$ but $\{1, 4\} \not\subseteq \{1, 2, 3\}$. It should be noted that for any set $S$, $\emptyset \subseteq S$. It should also be noted that for any set $S$, $S \subseteq S$. Thus $A$ is called a \textbf{proper subset} of $B$ if $A \neq B$ and $A \subseteq B$ (in this case, we write $A \subset B$).
+Now if we have two sets $A$ and $B$, and if all the members of set A are also members of set B, then we say that $A$ is a \textbf{subset} of $B$, and we write $A \subseteq B$. For example, $\{1, 2\} \subseteq \{1, 2, 3\}$ but $\{1, 4\} \not\subseteq \{1, 2, 3\}$. It should be noted that for any set $S$, the empty $\emptyset \subseteq S$. It should also be noted that $S \subseteq S$ for any set $S$. Thus $A$ is called a \textbf{proper subset} of $B$ if $A \neq B$ and $A \subseteq B$ (in this case, we write $A \subset B$).
+
+\newpage
+
+\begin{exercise}
+    Let $S$ be a non-empty set. Determine whether the following statements are true or false.
+    \begin{enumerate}[label=(\alph*)]
+        \item $\{1, 2, 3\} \subseteq \{1, 2, 4\}$
+        \item $\emptyset \subseteq \emptyset$
+        \item $S \subset S$
+        \item $S \in \{S, \emptyset\}$
+        \item $\{S\} \notin \{S, \emptyset\}$
+        \item $S \subseteq \{S, \emptyset\}$
+        \item $\{S\} \subseteq \{S, \emptyset\}$
+    \end{enumerate}
+\end{exercise}
 
 Set theory also features operations on sets. We list some of them here.
 \begin{itemize}
     \item The \textbf{union} of two sets is the set of all objects that are a member of $A$, or $B$, or both. It is denoted $A \cup B$. For example, $\{1, 2, 3\} \cup \{2, 3, 4\} = \{1, 2, 3, 4\}$.
     \item The \textbf{intersection} of two sets is the set of all objects that are a member of \textit{both} the sets $A$ and $B$. It is denoted $A \cap B$. For example, $\{1, 2, 3\} \cap \{2, 3, 4\} = \{2, 3\}$.
-    \item The \textbf{set difference} of $S$ and $S$, denoted $S \setminus A$, is the set of all members of $S$ that are not members of $A$. For example, $\{1, 2, 3\} \setminus \{2, 3, 4\} = \{1\}$ and $\{2, 3, 4\} \setminus \{1, 2, 3\} = \{4\}$.
+    \item The \textbf{set difference} of $S$ and $A$, denoted $S \setminus A$, is the set of all members of $S$ that are not members of $A$. For example, $\{1, 2, 3\} \setminus \{2, 3, 4\} = \{1\}$ and $\{2, 3, 4\} \setminus \{1, 2, 3\} = \{4\}$.
     \item The \textbf{Cartesian Product} of $A$ and $B$, denoted $A \times B$, is the set whose members are all possible ordered pairs $(a, b)$, where $a$ is an element of $A$ and $b$ is an element of $B$. For example, $\{1, 2, 3\} \times \{4, 5\} = \{(1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5)\}$. In particular, the Cartesian product $A \times A = A^2$, $A\times A \times A = A^3$, and so on.
 \end{itemize}
 
+\newpage
+
+\begin{exercise}
+    Let $S = \{1, 2, 3, 4\}$, $T = \{2, 3, 5\}$, $U = \{(2, 2), (3, 3), (5, 5)\}$. Determine whether the following statements are true or false.
+    \begin{enumerate}[label=(\alph*)]
+        \item $S \cup T = \{1, 2, 3, 4, 5\}$
+        \item $S \cup U = \{1, 2, 3, 4, (5, 5)\}$
+        \item $S \cap T = \{2, 3\}$
+        \item $T \cap U = \emptyset$
+        \item $S \setminus T = \{1, 4\}$
+        \item $S \setminus \{1, 4\} = T$
+        \item $T^2 = U$
+        \item $U \subset (S \cup T)^2$
+    \end{enumerate}
+\end{exercise}
 It is quite useful to have a notation that describes a set that is defined by a logical formula that evaluates to true for an element of the set, and false otherwise. In this form, set-builder notation has three parts: a variable, a vertical bar separator, and the logical formula. Thus there is a variable on the left of the separator, and a rule on the right of it. These three parts are contained in curly brackets:
 \[
     \{x \ | \ \Phi(x)\}
@@ -122,40 +145,54 @@ or by adjoining it to the logical formula:
 
 The cardinality of a set $S$, denoted $|S|$, is the number of elements in $S$. The cardinality of the empty set is zero. The list of elements of some sets is endless, or infinite. In this book, we denote the cardinality of such infinite sets as $|S| = \infty$ (even though it is poorly defined in other contexts).
 
-Finally, some notation that will be used in this book:
+Finally, some notation that will be used:
 \begin{itemize}
-    \item $\mathbb{Z}$ denotes the set of integers;
+    \item $\mathbb{Z}$ denotes the set of integers (from the German ``z\"ahlen", which means ``numbers");
     \item $\mathbb{Q}$ denotes the set of rational numbers; and
     \item $\mathbb{R}$ denotes the set of real numbers.
 \end{itemize}
 
-%=========================================
-\chapter{Functions}
-\textit{This book assumes the following knowledge of functions:
-\begin{itemize}
-    \item Domain and codomain of a function
-    \item Range/image of a function
-    \item Equality of functions
-    \item Arrow notation ($\mapsto$) of functions
-    \item Function composition
-    \item Injectivity, surjectivity, and bijectivity
-\end{itemize}
-}
+\begin{exercise}
+    List the elements in the set
+    \[
+        \{x \in \mathbb{Q} \vert x \leq 0\} \cap \{y \in \mathbb{Z} \vert -2 \leq y \leq 10 \text{ and } y \text{ is an even number} \}.
+    \]
+\end{exercise}
 
+%=========================================
+\chapter{Functions / Mappings}
 A function (or a map) from a set $X$ to a set $Y$ is an assignment of an element of $Y$ to each element of $X$. The set $X$ is called the \textbf{domain} of the function and the set $Y$ is called the \textbf{codomain} of the function.
 
 A function, its domain, and its codomain, are declared by the notation $f: X\to Y$, and the value of a function $f$ at an element $x$ of $X$, denoted by $f(x)$, is called the \textbf{image} of $x$ under $f$.
 
 The \textbf{image} or \textbf{range} of a function is the set of the images of all elements in the domain. The image and the codomain are not necessarily the same. The image of the function $f: X \to Y$ is denoted either as $\im f$ or $f(X)$.
 
-Two functions $f$ and $g$ are equal if
-\begin{itemize}
-    \item their domain and codomain sets are the same; and
-    \item their output values agree on the whole domain.
-\end{itemize}
-More formally, given $f: X \to Y$ and $g: X \to Y$, $f = g$ if $f(x) = g(x)$ for all $x$ in $X$.
+Two functions $f$ and $g$ are equal if their domain and codomain sets are the same and their output values agree on the whole domain. More formally, given $f: X \to Y$ and $g: X \to Y$, $f = g$ if $f(x) = g(x)$ for all $x$ in $X$.
 
-\textbf{Arrow notation} can also be used to define the rule of a function. For example, $f: \mathbb{R} \to \mathbb{R}, x \mapsto x+1$ is the function which takes a real number as input and outputs that number plus 1.
+\textbf{Arrow notation} can also be used to define the rule of a function. For example, $f: \mathbb{R} \to \mathbb{R}, x \mapsto x+1$ is the function which takes a real number as input and outputs that number plus 1. In the above example, ``$x + 1$'' is the \textbf{rule} of the function.
+
+\begin{exercise}
+    Let a function $f: \{1, 2, 3\} \to \{1, 4, 9, 16, 25\}$ be given by the relation $f(x) = x^2$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Use arrow notation to write a definition for $f$.
+        \item State the domain, codomain, and range of $f$.
+        \item Is the function $g: \{1, 2, 3\} \to \{1, 8\}, x \mapsto x^3$ \textit{valid}?
+    \end{enumerate}
+\end{exercise}
+
+\newpage
+
+A function is said to be \textbf{well-defined} if \textit{similar inputs} produce \textit{identical outputs}. More formally, a function $f: A \to B$ is well defined if for each $a \in A$ there is a unique $b \in B$ such that $f(a) = b$. An example may help to illustrate this point.
+\begin{example}
+    Let $S_1$ and $S_2$ be sets, and let $S = S_1 \cup S_2$. Let $f: S \to \{1, 2\}$, such that $f(x) = 1$ if $x \in S_1$ and $f(x) = 2$ if $x \in S_2$. Then $f$ is well-defined if $S_1 \cap S_2 = \emptyset$. For example, if $S_1 = \{1, 2\}$ and $S_2 = \{3, 4\}$, then $f$ is well-defined. On the other hand, if $S_1 \cap S_2 \neq \emptyset$, then $f$ is not well-defined. For example, if $S_1 = \{1, 2\}$ and $S_2 = \{2, 3\}$, then $f(2) = 1$ and $f(2) = 2$ simultaneously.
+\end{example}
+\begin{exercise}
+    Is the function
+    \[
+        f: \mathbb{Q} \to \mathbb{Z}, \frac pq \mapsto p + q    
+    \]
+    well-defined?
+\end{exercise}
 
 Functions may also be \textbf{composed} with each other. This is done by using the function composition operator $\circ$. The composition of two functions, say $f: X \to Y$ and $g: Y \to Z$, produces a function $f \circ g: X \to Z$ such that $(f \circ g)(x) = f(g(x))$. It is important to note the following:
 \begin{itemize}
@@ -164,25 +201,19 @@ Functions may also be \textbf{composed} with each other. This is done by using t
 \end{itemize}
 We may also alternatively write $fg$ in place of $f \circ g$.
 
+\begin{exercise}
+    Let $f: \mathbb{R} \to \mathbb{R}$ and $g: \mathbb{R} \to \mathbb{R}$. Write down the rule of the function $fg$ if $f(x) = x^2 - x + 1$ and $g(y) = \frac1{y^2+1}$.
+\end{exercise}
+
 A function $f: X \to Y$ is said to be \textbf{injective} (or \textbf{one-to-one}) if $f(x_1) = f(x_2)$ implies $x_1 = x_2$. Equivalently, if $x_1 \neq x_2$ then $f(x_1) \neq f(x_2)$ for all $x_1$ and $x_2$ in $X$.
 
 A function $f: X \to Y$ is said to be \textbf{surjective} (or \textbf{onto}) is a function whose image is equal to its codomain. Equivalently, $f$ is surjective if and only if for all $y \in Y$, there exists $x \in X$ such that $f(x) = y$.
 
 A function is \textbf{bijective} if it is both injective and surjective. A bijective function is also called a \textbf{bijection} or a \textbf{one-to-one correspondence}. A function is bijective if and only if every possible image is mapped to by exactly one argument. It should be noted that bijectivity is implied if the function $f: X \to Y$ is injective and the sets $X$ and $Y$ `have the same number of elements' (or more formally, \textbf{equinumerous}).
 
+%=========================================
 \chapter{Number Theory}
-\textit{This book assumes the following knowledge about number theory:
-\begin{itemize}
-    \item The idea of ``$a$ divides $b$''
-    \item The idea of ``$p$ is a multiple of $q$''
-    \item Simple facts about divisibility
-    \item Definition of a prime number
-    \item Euclid's Division Lemma
-    \item The greatest common divisor
-    \item The lowest common multiple
-\end{itemize}
-}
-
+\section{Divisibility}
 We say that \textbf{$a$ divides $b$} if there is an integer $k$ such that $ak = b$. This is denoted $a\;|\;b$. For example, $7\;|\;63$ since $7 \times 9 = 63$. However, 8 does not divide 63, so we write $8 \nmid 63$. A consequence of this definition is that every number divides zero since $a \times 0 = 0$ for every integer $a$.
 
 If $a$ divides $b$, then $b$ is a \textbf{multiple of $a$}. For example, 63 is a multiple of 7, but 63 is not a multiple of 8.
@@ -202,6 +233,7 @@ When talking about primes, one should not forget the \textbf{Fundamental Theorem
     For every integer $n > 1$, $n$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
 \end{theorem}
 
+\section{Euclid's Division Lemma}
 When dividing an integer by another, we may sometimes have a \textbf{remainder} left over. For example, when 63 is divided by 8, a remainder of 7 is left over. More precisely, if you divide $n$ by $d$, then you get a quotient $q$ and a remainder $r$. This is given by Euclid's Division Lemma.
 \begin{lemma}[Euclid's Division Lemma]
     Given two integers $n$ and $d$, with $n \neq 0$, there exist unique integers $q$ and $r$ such that
@@ -221,6 +253,7 @@ When dividing an integer by another, we may sometimes have a \textbf{remainder} 
     Using $n = 14$ and $d = -3$, we will have $13 = -5\times3 + 1$.
 \end{example}
 
+\section{Greated Common Divisor (GCD) and Lowest Common Multiple (LCM)}
 %TODO ADD GCD AND LCM
 
 \begin{lemma}[Bézout]\label{lemma-bezout}
@@ -353,6 +386,44 @@ In summary, mathematical induction involves two steps:
 %=========================================
 \addcontentsline{toc}{chapter}{Exercise Solutions}
 \chapter*{Exercise Solutions}
+
+\addcontentsline{toc}{section}{Chapter 1}
+\section*{Chapter 1}
+\begin{enumerate}
+    \item \begin{enumerate}[label=(\alph*)]
+        \item False, 3 does not appear in $\{1, 2, 4\}$.
+        \item True. Any set is a subset of itself, including the empty set.
+        \item False, the set $S$ does not contain any element that is not in $S$. That is, $S \subseteq S$ but not $S \subset S$.
+        \item True. $S$ is indeed an element of $\{S, \emptyset\}$.
+        \item True. The set containing S is not an element of $\{S, \emptyset\}$.
+        \item False, the set $S$ is not a subset of the set $\{S, \emptyset\}$.
+        \item True. The set containing $S$ is a subset of the set containing $S$ and the empty set.
+    \end{enumerate}
+    
+    \item \begin{enumerate}[label=(\alph*)]
+        \item True.
+        \item False, $S \cup U = \{1, 2, 3, 4, (2, 2), (3, 3), (5, 5)\}$.
+        \item True.
+        \item True.
+        \item True.
+        \item False, $S \setminus \{1, 4\} = \{2, 3\}$, not $T = \{2, 3, 5\}$.
+        \item True.
+        \item True. $(S \cup T)^2 = \{(1,1), (2,2), (3,3), (4,4), (5,5)\}$, so $U = \{(2,2), (3,3), (5,5)\} \subset (S \cup T)^2$.
+    \end{enumerate}
+    \item We note $\{x \in \mathbb{Q} \vert x \leq 0\}$ are all the non-positive rational numbers, and the second set has elements $\{-2, 0, 2, \dots, 8, 10\}$. Hence their intersection has only two elements, namely $-2$ and $0$.
+\end{enumerate}
+
+\addcontentsline{toc}{section}{Chapter 2}
+\section*{Chapter 2}
+\begin{enumerate}
+    \item \begin{enumerate}[label=(\roman*)]
+        \item $f: \{1, 2, 3\} \to \{1, 4, 9, 16, 25\}, x \mapsto x^2$. (Or just $x \mapsto x^2$)
+        \item Domain is $\{1, 2, 3\}$, codomain is $\{1, 4, 9, 16, 25\}$, range is $\{1, 4, 9\}$.
+        \item No. The element 3 would map to 27, which is not in the codomain.
+    \end{enumerate}
+    \item It is not well-defined. Note $\frac 12 = \frac 24$, but $f(\frac12) = 1 + 2 = 3$ and $f(\frac24) = 2 + 4 = 6$.
+    \item $fg(x) = \left(\frac1{x^2+1}\right)^2 - \frac1{x^2+1} + 1$.
+\end{enumerate}
 
 %=========================================
 \addcontentsline{toc}{chapter}{Problem Solutions}
