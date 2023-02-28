@@ -239,10 +239,13 @@ Here are some basic facts about divisibility that are not difficult to prove.
 
 A number $p > 1$ with no positive divisors other than 1 and itself is called a \textbf{prime}. Every other number greater than 1 is called \textbf{composite}. For example, 2, 3, 5, 7, 11, and 13 are all prime, but 4, 6, 8, and 9 are composite. The number 1 is considered neither prime nor composite.
 
-When talking about primes, one should not forget the \textbf{Fundamental Theorem of Arithmetic}.
 \begin{theorem}[Fundamental Theorem of Arithmetic]\label{thrm-fundamental-theorem-of-arithmetic}
     For every integer $n > 1$, $n$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
 \end{theorem}
+
+\begin{exercise}
+    Express 44100 as a product of primes.
+\end{exercise}
 
 \section{Euclid's Division Lemma}
 When dividing an integer by another, we may sometimes have a \textbf{remainder} left over. For example, when 63 is divided by 8, a remainder of 7 is left over. More precisely, if you divide $n$ by $d$, then you get a quotient $q$ and a remainder $r$. This is given by Euclid's Division Lemma.
@@ -254,7 +257,7 @@ When dividing an integer by another, we may sometimes have a \textbf{remainder} 
     and $0 \leq r < |d|$ where $|d|$ denotes the absolute value of $d$.
 \end{lemma}
 \begin{remark}
-    We will often call this lemma the \textbf{division algorithm}.
+    We will often call this lemma \textbf{Euclid's division algorithm}, or \textbf{the division algorithm}.
 \end{remark}
 
 \begin{example}
@@ -264,12 +267,79 @@ When dividing an integer by another, we may sometimes have a \textbf{remainder} 
     Using $n = 14$ and $d = -3$, we will have $13 = -5\times3 + 1$.
 \end{example}
 
-\section{Greated Common Divisor (GCD) and Lowest Common Multiple (LCM)}
-%TODO ADD GCD AND LCM
+\begin{exercise}
+    Express $-210$ in the form $a-13b$, where $a$ and $b$ are positive integers with $0 \leq a \leq 12$.
+\end{exercise}
 
+\section{Greatest Common Divisor (GCD) and Lowest Common Multiple (LCM)}
+In number theory, the idea of a greatest common divisor and the least common multiple are omnipresent.
+
+\begin{definition}
+    Let $m$ and $n$ be two non-zero integers. Then an integer $d$ is said to be the \textbf{greatest common divisor} of $m$ and $n$ if $m = pd$ and $n = qd$ for some integers $p$ and $q$, and that $d$ is the largest possible integer that achieves this.
+\end{definition}
+The greatest common divisor (GCD) of $m$ and $n$ is denoted by $\gcd(m, n)$.
+
+\begin{example}
+    $\gcd(2, 8) = 2$ since $2 = 1 \times 2$ and $8 = 4 \times 2$.
+\end{example}
+\begin{example}
+    $\gcd(42, 231) = 21$ since $42 = 2 \times 21$ and $231 = 11 \times 21$.
+\end{example}
+\begin{example}
+    $\gcd(-10, 25) = 5$ since $-10 = -2 \times 5$ and $25 = 5 \times 5$.
+\end{example}
+\begin{exercise}
+    Find $\gcd(-112, -35)$.
+\end{exercise}
+
+\begin{remark}
+    If $\gcd(m, n) = 1$ for non-zero integers $m$ and $n$, then $m$ and $n$ are said to be \textbf{coprime} to each other.
+\end{remark}
+\begin{example}
+    17 and 18 are coprime to each other as $\gcd(17, 18) = 1$.
+\end{example}
+
+We now look at the lowest common multiple of two integers.
+\begin{definition}
+    Let $m$ and $n$ be two non-zero integers. Then an integer $l$ is said to be the \textbf{lowest common multiple} of $m$ and $n$ if $m = pl$ and $n = ql$ for some integers $p$ and $q$, and that $l$ is the smallest possible \textbf{positive} integer that achieves this.
+\end{definition}
+The lowest common multiple (LCM) of $m$ and $n$ is denoted by $\lcm(m,n)$.
+
+\begin{example}
+    $\lcm(2, 8) = 8$ since $8 = 4 \times 2$ and $8 = 1 \times 8$.
+\end{example}
+\begin{example}
+    $\gcd(42, 231) = 462$ since $462 = 11 \times 42$ and $462 = 2 \times 231$.
+\end{example}
+\begin{example}
+    $\lcm(-10, 25) = 50$ since $50 = 5 \times -10$ and $50 = 2 \times 25$.
+\end{example}
+\begin{exercise}
+    Find $\lcm(-112, -35)$.
+\end{exercise}
+
+\newpage
+
+We note several properties of the GCD and LCM.
 \begin{lemma}[Bézout]\label{lemma-bezout}
-    Let $a$ and $b$ be integers with greatest common divisor $d$. Then there exist integers $x$ and $y$ such that $ax + by = d$. Moreover, the integers of the form $az + bt$ are exactly the multiples of $d$.
+    Let $m$ and $n$ be non-zero integers such that $\gcd(m, n) = d$. Then there exist integers $x$ and $y$ such that $mx + ny = d$. Moreover, the integers of the form $am + bn$ (where $a$ and $b$ are integers) are multiples of $d$.
 \end{lemma}
+\begin{proposition}
+    Let $m$ and $n$ be non-zero integers. Then
+    \[
+        |mn| = \gcd(m,n) \times \lcm(m,n)    
+    \]
+    where $|mn|$ denotes the absolute value of $mn$.
+\end{proposition}
+
+\begin{exercise}
+    Suppose $m = 42$ and $n = 70$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Let $d = \gcd(m,n)$. Find $d$.
+        \item Hence find $\lcm(m,n)$.
+        \item Find a pair of integers $x$ and $y$ such that $mx + ny = d$.
+    \end{enumerate}
+\end{exercise}
 
 %=========================================
 \chapter{Modular Arithmetic}
@@ -452,6 +522,20 @@ In summary, mathematical induction involves two steps:
         Therefore for every $y \in \mathbb{Z}$, there exists a pre-image $x \in S$ such that $f(x) = y$. Hence $f$ is surjective.
     \end{itemize}
     Therefore, as $f$ is both injective and surjective, $f$ is bijective.
+\end{enumerate}
+
+\addcontentsline{toc}{section}{Chapter 3}
+\section*{Chapter 3}
+\begin{enumerate}
+    \item $44100 = 2^2 \times 3^2 \times 5^2 \times 7^2$.
+    \item $-210 = 11 - 13 \times 17$, so $a = 11$ and $b = 17$.
+    \item $\gcd(-112, -35) = 7$ since $-112 = -16 \times 7$ and $-35 = -5 \times 7$, with 7 being the largest integer that achieves this.
+    \item $\lcm(-112, -35) = 560$ since $560 = -5 \times -112$ and $-35 = -16 \times -35$, with 560 being the smallest \textit{positive} integer that achieves this.
+    \item \begin{enumerate}[label=(\roman*)]
+        \item $\gcd(42, 70) = 14$ since $42 = 3 \times 14$ and $70 = 5 \times 14$, and 14 is the largest integer achieving this.
+        \item $\lcm(42, 70) = \frac{42 \times 70}{\gcd(m, n)} = \frac{2940}{14} = 210$.
+        \item Note that $x = 2$ and $y = -1$ works as $42 \times 2 + 70 \times (-1) = 84 - 70 = 14$.
+    \end{enumerate}
 \end{enumerate}
 
 %=========================================
