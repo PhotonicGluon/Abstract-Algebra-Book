@@ -321,7 +321,7 @@ The lowest common multiple (LCM) of $m$ and $n$ is denoted by $\lcm(m,n)$.
 \newpage
 
 We note several properties of the GCD and LCM.
-\begin{lemma}[Bézout]\label{lemma-bezout}
+\begin{lemma}[B\'{e}zout]\label{lemma-bezout}
     Let $m$ and $n$ be non-zero integers such that $\gcd(m, n) = d$. Then there exist integers $x$ and $y$ such that $mx + ny = d$. Moreover, the integers of the form $am + bn$ (where $a$ and $b$ are integers) are multiples of $d$.
 \end{lemma}
 \begin{proposition}
@@ -343,6 +343,7 @@ We note several properties of the GCD and LCM.
 
 %=========================================
 \chapter{Modular Arithmetic}
+\section{Modulo and Modular Congruence}
 \textit{This book assumes the following knowledge of modular arithmetic:
 \begin{itemize}
     \item Congruence modulo $n$
@@ -353,10 +354,19 @@ We note several properties of the GCD and LCM.
 Given an integer $n>1$, called a \textbf{modulus}, two integers $a$ and $b$ are said to be \textbf{congruent modulo $n$} if $n$ is a divisor of their difference (that is, if there is an integer $k$ such that $a - b = kn$). It is denoted $a \equiv b \pmod{n}$. The parentheses mean that $\pmod{n}$ applies to the entire equation, not just to the right-hand side (here, $b$). This notation is not to be confused with the notation $b \mod n$ (without parentheses), which refers to the modulo operation. \begin{remark}
     Equivalently, $a \equiv b \pmod n$ means that $a = kn + b$ for some integer $k$.
 \end{remark}
-
 \begin{example}
     In modulus 12, one sees that $38 \equiv 14 \pmod{12}$ since $38 - 14 = 24 = 2 \times 12$. Another way to express this is to say that both 38 and 14 have the same remainder 2, when divided by 12.
 \end{example}
+\begin{exercise}
+    Let $m = 5$ and $n = 3$.
+    \begin{enumerate}[label=(\alph*)]
+        \item State the value of $17 \mod m$.
+        \item Find the value of $x$ such that $19 \equiv x \pmod m$ and $0 \leq x < m$.
+        \item If $A = 1234n + 5$, what is $A \mod n$?
+    \end{enumerate}
+\end{exercise}
+
+\newpage
 
 The definition of congruence also applies to negative values. For example:
 \begin{itemize}
@@ -364,6 +374,10 @@ The definition of congruence also applies to negative values. For example:
     \item $-8 \equiv 7 \equiv 2 \pmod5$
     \item $-1 \equiv n-1 \pmod{n}$
 \end{itemize}
+
+\begin{exercise}
+    Explain why $-n \equiv n \pmod{2n}$.
+\end{exercise}
 
 The operation of congruence modulo $n$ has a few properties which we will state without proof. Let $a_1 \equiv b_1 \pmod n$ and $a_2 \equiv b_2 \pmod n$, or if $a \equiv b \pmod n$, then
 \begin{itemize}
@@ -379,15 +393,37 @@ The operation of congruence modulo $n$ has a few properties which we will state 
     \item if $ka \equiv kb \pmod{kn}$ where $k$ is a non-zero integer, then $a \equiv b \pmod n$.
 \end{itemize}
 
-We end this section with an important result.
+\begin{exercise}
+    Find the last two digits of $778899^{112233}$.
+\end{exercise}
+
+\section{Modular Multiplicative Inverse}
+\begin{definition}
+    Let $m$ be a positive integer, and let $a$ be an integer. Then an integer $x$ that makes $ax \equiv 1 \pmod m$ is said to be the \textbf{modular multiplicative inverse of $a$}.
+\end{definition}
+\begin{remark}
+    In these books, however, we refer to the modular multiplicative inverse as just \textbf{multiplicative inverse}.
+\end{remark}
+\begin{example}
+    4 is the multiplicative inverse of 7 modulo 9 since $4 \times 7 = 28 = 3 \times 9 + 1 \equiv 1 \pmod 9$.
+\end{example}
+
 \begin{proposition}\label{prop-multiplicative-inverse-exists-iff-coprime}
-    The multiplicative inverse of $a$ modulo $m$ exists if and only if $\gcd(a,m) = 1$.
+    A multiplicative inverse of $a$ modulo $m$ exists if and only if $\gcd(a,m) = 1$.
 \end{proposition}
 \begin{proof}
-    We first work forwards and suppose $k$ is the multiplicative inverse of $a$ modulo $m$. Then $ka \equiv 1 \pmod m$. Hence $ka - 1 \equiv 0 \pmod m$, so $m$ divides $ka - 1$. This means that $ka - 1$ is a multiple of $m$, so $ka - 1 = pm$ for some integer $p$. Therefore $ka + pm = 1$ By Bézout's Lemma (\textbf{Lemma \ref{lemma-bezout}}) this means that $\gcd(a, m) = 1$.
+    We first work forwards and suppose $k$ is the multiplicative inverse of $a$ modulo $m$. Then $ka \equiv 1 \pmod m$. Hence $ka - 1 \equiv 0 \pmod m$, so $m$ divides $ka - 1$. This means that $ka - 1$ is a multiple of $m$, so $ka - 1 = pm$ for some integer $p$. Therefore $ka + pm = 1$ By B\'{e}zout's Lemma (\textbf{Lemma \ref{lemma-bezout}}) this means that $\gcd(a, m) = 1$.
     
-    Now, working in the reverse direction, suppose $\gcd(a, m) = 1$. By Bézout's Lemma this means there exist integers $k$ and $p$ such that $ka + pm = 1$. Then $ka - 1 = pm$ which means $m$ divides $ka - 1$, which hence means $ka - 1 \equiv 0 \pmod m$ which the result quickly yields.
+    Now, working in the reverse direction, suppose $\gcd(a, m) = 1$. By B\'{e}zout's Lemma this means there exist integers $k$ and $p$ such that $ka + pm = 1$. Then $ka - 1 = pm$ which means $m$ divides $ka - 1$, which hence means $ka - 1 \equiv 0 \pmod m$ which the result quickly yields.
 \end{proof}
+
+\begin{example}
+    The number 20 has a multiplicative inverse modulo 31 since $\gcd(20, 31) = 1$. One can verify that 14 is the multiplicative inverse of 20 modulo 31.
+\end{example}
+
+\begin{exercise}
+    Find the modular multiplicative inverse of 123 modulo 5.
+\end{exercise}
 
 %=========================================
 \chapter{Mathematical Logic and Proof Writing}
@@ -550,6 +586,19 @@ In summary, mathematical induction involves two steps:
     \end{enumerate}
 \end{enumerate}
 
+\addcontentsline{toc}{section}{Chapter 4}
+\section*{Chapter 4}
+\begin{enumerate}
+    \item \begin{enumerate}[label=(\alph*)]
+        \item $17 \mod 5 = 2$ since $17 = 3 \times 5 + 2$ by the division algorithm.
+        \item As $19 = 3 \times 5 + 4$, thus $19 \equiv 4 \pmod 5$. Hence $x = 4$.
+        \item $A \mod n = 5 \mod 3 = 2$.
+    \end{enumerate}
+    \item $-n = (-1) \times 2n + n$, which means that $-n \equiv n \pmod{2n}$.
+    \item Finding the last two digits of a number is the same as finding the remainder of that number when divided by 100. We note $778899 \equiv 99 \pmod{100}$, so $778899^{112233} \equiv 99^{112233} \pmod{100}$. Furthermore, $99 \equiv -1 \pmod{100}$, so $99^{112233}\equiv (-1)^{112233} \equiv -1 \equiv 99 \pmod{100}$. Hence the last two digits of $778899^{112233}$ is 9 and 9.
+    \item Note $123 \equiv 3 \pmod 5$. One can easily find by trial and error that 2 is the multiplicative inverse of 3, since $3 \times 2 = 6 \equiv 1 \pmod 5$. Hence the multiplicative inverse of 123 is 2 modulo 5.
+\end{enumerate}
+
 \addcontentsline{toc}{section}{Chapter 6}
 \section*{Chapter 6}
 \begin{enumerate}[label=(\roman*)]
@@ -568,10 +617,6 @@ In summary, mathematical induction involves two steps:
         Consider a set $S$ with $k + 1$ elements. Since all elements in $S$ are distinct (by definition of a set), pick any element in $S$ and call it the `first element', and call the remaining elements `the rest'. Now any subset of $S$ can either contain the `first element' or not. `The rest' has a power set of order $2^k$ by our inductive hypothesis. Hence, the power set of $S$ has order $2 \times 2^k = 2^{k+1}$, any subset of $S$ can either contain the `first element' or not. This proves the case for $k+1$, and therefore concludes the proof that $|\mathcal{S}(P)| = 2^{n}$ if $|S| = n$.
     \end{proof}
 \end{enumerate}
-
-%=========================================
-\addcontentsline{toc}{chapter}{Problem Solutions}
-\chapter*{Problem Solutions}
 
 %=========================================
 \addcontentsline{toc}{chapter}{Image Acknowledgements}
