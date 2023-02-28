@@ -160,6 +160,98 @@ Finally, some notation that will be used:
 \end{exercise}
 
 %=========================================
+\chapter{Mathematical Logic and Proof Writing}
+\section{Mathematical Statements}
+\section{Logical Equivalence}
+\section{Quantifiers}
+\section{Conditional Statements}
+\section{Proof by Contradiction}
+
+%=========================================
+\chapter{Mathematical Induction}
+\textit{This book assumes the knowledge of the principle of mathematical induction.}
+
+Mathematical induction is a method for proving that a proposition $P_n$ is true for every positive integer $n$, that is, that the infinitely many cases $P_1, P_2, P_3, \dots,$ all hold. Informal metaphors help to explain this technique, such as falling dominoes or climbing a ladder:
+\begin{quote}
+    Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the base case) and that from each rung we can climb up to the next one (the induction step).
+\end{quote}
+
+A proof by induction consists of two steps. The first, the \textbf{base case}, proves the statement for $n = 1$ without assuming any knowledge of other cases. The second, the \textbf{induction step}, proves that if the statement holds for any given case $n = k$, then it must also hold for the next case $n = k + 1$. These two steps establish that the statement holds for every natural number $n$. The base case does not necessarily begin with $n = 1$, but sometimes with $n = 0$, and possibly with any fixed natural number $n = N$, establishing the truth of the statement for all natural numbers $n \geq N$.
+
+In summary, mathematical induction involves two steps:
+\begin{itemize}
+    \item \textbf{Base Case(s)}: Prove the statement for initial values.
+    \item \textbf{Induction Step}: Prove that for every $n$, if the statement holds for $n$, then it holds for $n + 1$. In fact, one could prove that the statement holds for $n + k$, given that there are $k$ base case(s).
+\end{itemize}
+
+\begin{example}
+    We prove the famous identity
+    \[
+        1 + 2 + 3 + \cdots + n = \frac{n(n+1)}2.
+    \]
+
+    When $n = 1$, the left hand side is 1; the right hand side is $\frac{1(1+1)}{2} = 1$. Thus the initial case is true.
+
+    Now assume that the statement holds for some positive integer $k$, meaning
+    \[
+        1 + \cdots + k = \frac{k(k+1)}2.
+    \]
+    We are to prove the statement true for $k+1$, meaning
+    \[
+        1 + \cdots + k + (k+1) = \frac{(k+1)(k+2)}2.
+    \]
+    We work slowly:
+    \begin{align*}
+        1 + \cdots + k + (k+1) &= \frac{k(k+1)}{2} + (k+1) & \text{(by hypothesis)}\\
+        &= \frac{k(k+1)}2 + \frac{2(k+1)}{2}\\
+        &= \frac{k(k+1) + 2(k+1)}2\\
+        &= \frac{(k+1)(k+2)}2
+    \end{align*}
+    which proves the case for $k + 1$. Hence $1 + 2 + 3 + \cdots + n = \frac{n(n+1)}2$.
+\end{example}
+
+\begin{example}
+    We look at an example of 2-step induction. Let $\mathbb{Z}^+$ denote the set of positive integers, and consider the function $f: \left(\mathbb{Z}^+\right)^2\to\mathbb{Z}^+$ where
+    \[
+        f(m, n) =
+        \begin{cases}
+            n & \text{if } m = 1, \\
+            m & \text{if } n = 1, \\
+            f\left(n-1,f(n-1,m-1)\right) & \text{otherwise.}
+        \end{cases}
+    \]
+    We will prove the non-obvious fact that $f(n+1, n) = 2$ for all positive integers $n$.
+
+    When $n = 1$, we have $f(2, 1)$ which obviously equals 2, so the first case is true.
+
+    When $n = 2$ we have $f(3, 2)$. Note that $f(3,2) = f(1, f(1, 2)) = f(1, 2) = 2$, so the second case is true.
+
+    Now suppose the statement is true for $k$, i.e. $f(k+1,k) = 2$. We want to show that the case for $k+2$ is true, that is, $f(k+3, k+2) = 2$.
+    \begin{align*}
+        f(k+3, k+2) &= f(k+1, f(k+1, k+2))\\
+        &= f(k+1, f(k+1, f(k+1, k)))\\
+        &= f(k+1, f(k+1, 2)) & \text{(by hypothesis)}\\
+        &= f(k+1, f(1, f(1, k)))\\
+        &= f(k+1, f(1, k))\\
+        &= f(k+1, k)\\
+        &= 2 & \text{(by hypothesis)}
+    \end{align*}
+    which proves that the statement for $k+2$ holds. Hence by mathematical induction, $f(n+1, n) = 2$.
+\end{example}
+
+\begin{exercise}
+    Let $S$ be a set. The \textbf{power set} of $S$, denoted $\mathcal{P}(S)$, is the set that contains all subsets of $S$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Determine whether the following statements are true.
+        \begin{enumerate}[label=(\alph*)]
+            \item $S \in \mathcal{P}(S)$
+            \item $\emptyset \in \mathcal{P}(S)$
+        \end{enumerate}
+        \item Suppose $|S| = n$. Prove by induction that $|\mathcal{P}(S)| = 2^n$ for all sets $S$.
+    \end{enumerate}
+\end{exercise}
+
+%=========================================
 \chapter{Functions / Mappings}
 A function (or a map) from a set $X$ to a set $Y$ is an assignment of an element of $Y$ to each element of $X$. The set $X$ is called the \textbf{domain} of the function and the set $Y$ is called the \textbf{codomain} of the function.
 
@@ -426,93 +518,6 @@ The operation of congruence modulo $n$ has a few properties which we will state 
 \end{exercise}
 
 %=========================================
-\chapter{Mathematical Logic and Proof Writing}
-
-%=========================================
-\chapter{Mathematical Induction}
-\textit{This book assumes the knowledge of the principle of mathematical induction.}
-
-Mathematical induction is a method for proving that a proposition $P_n$ is true for every positive integer $n$, that is, that the infinitely many cases $P_1, P_2, P_3, \dots,$ all hold. Informal metaphors help to explain this technique, such as falling dominoes or climbing a ladder:
-\begin{quote}
-    Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the base case) and that from each rung we can climb up to the next one (the induction step).
-\end{quote}
-
-A proof by induction consists of two steps. The first, the \textbf{base case}, proves the statement for $n = 1$ without assuming any knowledge of other cases. The second, the \textbf{induction step}, proves that if the statement holds for any given case $n = k$, then it must also hold for the next case $n = k + 1$. These two steps establish that the statement holds for every natural number $n$. The base case does not necessarily begin with $n = 1$, but sometimes with $n = 0$, and possibly with any fixed natural number $n = N$, establishing the truth of the statement for all natural numbers $n \geq N$.
-
-In summary, mathematical induction involves two steps:
-\begin{itemize}
-    \item \textbf{Base Case(s)}: Prove the statement for initial values.
-    \item \textbf{Induction Step}: Prove that for every $n$, if the statement holds for $n$, then it holds for $n + 1$. In fact, one could prove that the statement holds for $n + k$, given that there are $k$ base case(s).
-\end{itemize}
-
-\begin{example}
-    We prove the famous identity
-    \[
-        1 + 2 + 3 + \cdots + n = \frac{n(n+1)}2.
-    \]
-
-    When $n = 1$, the left hand side is 1; the right hand side is $\frac{1(1+1)}{2} = 1$. Thus the initial case is true.
-
-    Now assume that the statement holds for some positive integer $k$, meaning
-    \[
-        1 + \cdots + k = \frac{k(k+1)}2.
-    \]
-    We are to prove the statement true for $k+1$, meaning
-    \[
-        1 + \cdots + k + (k+1) = \frac{(k+1)(k+2)}2.
-    \]
-    We work slowly:
-    \begin{align*}
-        1 + \cdots + k + (k+1) &= \frac{k(k+1)}{2} + (k+1) & \text{(by hypothesis)}\\
-        &= \frac{k(k+1)}2 + \frac{2(k+1)}{2}\\
-        &= \frac{k(k+1) + 2(k+1)}2\\
-        &= \frac{(k+1)(k+2)}2
-    \end{align*}
-    which proves the case for $k + 1$. Hence $1 + 2 + 3 + \cdots + n = \frac{n(n+1)}2$.
-\end{example}
-
-\begin{example}
-    We look at an example of 2-step induction. Let $\mathbb{Z}^+$ denote the set of positive integers, and consider the function $f: \left(\mathbb{Z}^+\right)^2\to\mathbb{Z}^+$ where
-    \[
-        f(m, n) =
-        \begin{cases}
-            n & \text{if } m = 1, \\
-            m & \text{if } n = 1, \\
-            f\left(n-1,f(n-1,m-1)\right) & \text{otherwise.}
-        \end{cases}
-    \]
-    We will prove the non-obvious fact that $f(n+1, n) = 2$ for all positive integers $n$.
-
-    When $n = 1$, we have $f(2, 1)$ which obviously equals 2, so the first case is true.
-
-    When $n = 2$ we have $f(3, 2)$. Note that $f(3,2) = f(1, f(1, 2)) = f(1, 2) = 2$, so the second case is true.
-
-    Now suppose the statement is true for $k$, i.e. $f(k+1,k) = 2$. We want to show that the case for $k+2$ is true, that is, $f(k+3, k+2) = 2$.
-    \begin{align*}
-        f(k+3, k+2) &= f(k+1, f(k+1, k+2))\\
-        &= f(k+1, f(k+1, f(k+1, k)))\\
-        &= f(k+1, f(k+1, 2)) & \text{(by hypothesis)}\\
-        &= f(k+1, f(1, f(1, k)))\\
-        &= f(k+1, f(1, k))\\
-        &= f(k+1, k)\\
-        &= 2 & \text{(by hypothesis)}
-    \end{align*}
-    which proves that the statement for $k+2$ holds. Hence by mathematical induction, $f(n+1, n) = 2$.
-\end{example}
-
-\begin{exercise}
-    Let $S$ be a set. The \textbf{power set} of $S$, denoted $\mathcal{P}(S)$, is the set that contains all subsets of $S$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Determine whether the following statements are true.
-        \begin{enumerate}[label=(\alph*)]
-            \item $S \in \mathcal{P}(S)$
-            \item $\emptyset \in \mathcal{P}(S)$
-        \end{enumerate}
-        \item Suppose $|S| = n$. Prove by induction that $|\mathcal{P}(S)| = 2^n$ for all sets $S$.
-    \end{enumerate}
-\end{exercise}
-
-%=========================================
 \addcontentsline{toc}{chapter}{Exercise Solutions}
 \chapter*{Exercise Solutions}
 
@@ -542,8 +547,27 @@ In summary, mathematical induction involves two steps:
     \item We note $\{x \in \mathbb{Q} \vert x \leq 0\}$ are all the non-positive rational numbers, and the second set has elements $\{-2, 0, 2, \dots, 8, 10\}$. Hence their intersection has only two elements, namely $-2$ and $0$.
 \end{enumerate}
 
-\addcontentsline{toc}{section}{Chapter 2}
-\section*{Chapter 2}
+\addcontentsline{toc}{section}{Chapter 3}
+\section*{Chapter 3}
+\begin{enumerate}[label=(\roman*)]
+    \item \begin{enumerate}[label=(\alph*)]
+        \item True. $S$ is a subset of $S$, so $S \in \mathcal{P}(S)$.
+        \item True. $\emptyset$ is a subset of any set, so $\emptyset \in \mathcal{P}(S)$.
+    \end{enumerate}
+    \item
+    \begin{proof}
+        We induct on the size of $S$.
+        
+        Note that the smallest size a set can be is 0, which means that $S$ is the empty set. When $n = 0$, then the only subset of $S$ is the empty set, so $\mathcal{P}(S) = \mathcal{P}(\emptyset) = \{\emptyset\}$, meaning that $\mathcal{P}(\emptyset)$ has 1 element. Hence $|\mathcal{P}(S)| = 1 = 2^0$ in the case where $n = 0$.
+        
+        Now assume that the statement holds for some non-negative integer $k$, meaning that if $|S| = k$ then $|\mathcal{P}(S)| = 2^k$. We want to prove that the statement holds if $|S| = k+1$.
+        
+        Consider a set $S$ with $k + 1$ elements. Since all elements in $S$ are distinct (by definition of a set), pick any element in $S$ and call it the `first element', and call the remaining elements `the rest'. Now any subset of $S$ can either contain the `first element' or not. `The rest' has a power set of order $2^k$ by our inductive hypothesis. Hence, the power set of $S$ has order $2 \times 2^k = 2^{k+1}$, any subset of $S$ can either contain the `first element' or not. This proves the case for $k+1$, and therefore concludes the proof that $|\mathcal{S}(P)| = 2^{n}$ if $|S| = n$.
+    \end{proof}
+\end{enumerate}
+
+\addcontentsline{toc}{section}{Chapter 4}
+\section*{Chapter 4}
 \begin{enumerate}
     \item \begin{enumerate}[label=(\roman*)]
         \item $f: \{1, 2, 3\} \to \{1, 4, 9, 16, 25\}, x \mapsto x^2$. (Or just $x \mapsto x^2$)
@@ -572,8 +596,8 @@ In summary, mathematical induction involves two steps:
     Therefore, as $f$ is both injective and surjective, $f$ is bijective.
 \end{enumerate}
 
-\addcontentsline{toc}{section}{Chapter 3}
-\section*{Chapter 3}
+\addcontentsline{toc}{section}{Chapter 5}
+\section*{Chapter 5}
 \begin{enumerate}
     \item $44100 = 2^2 \times 3^2 \times 5^2 \times 7^2$.
     \item $-210 = 11 - 13 \times 17$, so $a = 11$ and $b = 17$.
@@ -586,8 +610,8 @@ In summary, mathematical induction involves two steps:
     \end{enumerate}
 \end{enumerate}
 
-\addcontentsline{toc}{section}{Chapter 4}
-\section*{Chapter 4}
+\addcontentsline{toc}{section}{Chapter 6}
+\section*{Chapter 6}
 \begin{enumerate}
     \item \begin{enumerate}[label=(\alph*)]
         \item $17 \mod 5 = 2$ since $17 = 3 \times 5 + 2$ by the division algorithm.
@@ -597,25 +621,6 @@ In summary, mathematical induction involves two steps:
     \item $-n = (-1) \times 2n + n$, which means that $-n \equiv n \pmod{2n}$.
     \item Finding the last two digits of a number is the same as finding the remainder of that number when divided by 100. We note $778899 \equiv 99 \pmod{100}$, so $778899^{112233} \equiv 99^{112233} \pmod{100}$. Furthermore, $99 \equiv -1 \pmod{100}$, so $99^{112233}\equiv (-1)^{112233} \equiv -1 \equiv 99 \pmod{100}$. Hence the last two digits of $778899^{112233}$ is 9 and 9.
     \item Note $123 \equiv 3 \pmod 5$. One can easily find by trial and error that 2 is the multiplicative inverse of 3, since $3 \times 2 = 6 \equiv 1 \pmod 5$. Hence the multiplicative inverse of 123 is 2 modulo 5.
-\end{enumerate}
-
-\addcontentsline{toc}{section}{Chapter 6}
-\section*{Chapter 6}
-\begin{enumerate}[label=(\roman*)]
-    \item \begin{enumerate}[label=(\alph*)]
-        \item True. $S$ is a subset of $S$, so $S \in \mathcal{P}(S)$.
-        \item True. $\emptyset$ is a subset of any set, so $\emptyset \in \mathcal{P}(S)$.
-    \end{enumerate}
-    \item
-    \begin{proof}
-        We induct on the size of $S$.
-        
-        Note that the smallest size a set can be is 0, which means that $S$ is the empty set. When $n = 0$, then the only subset of $S$ is the empty set, so $\mathcal{P}(S) = \mathcal{P}(\emptyset) = \{\emptyset\}$, meaning that $\mathcal{P}(\emptyset)$ has 1 element. Hence $|\mathcal{P}(S)| = 1 = 2^0$ in the case where $n = 0$.
-        
-        Now assume that the statement holds for some non-negative integer $k$, meaning that if $|S| = k$ then $|\mathcal{P}(S)| = 2^k$. We want to prove that the statement holds if $|S| = k+1$.
-        
-        Consider a set $S$ with $k + 1$ elements. Since all elements in $S$ are distinct (by definition of a set), pick any element in $S$ and call it the `first element', and call the remaining elements `the rest'. Now any subset of $S$ can either contain the `first element' or not. `The rest' has a power set of order $2^k$ by our inductive hypothesis. Hence, the power set of $S$ has order $2 \times 2^k = 2^{k+1}$, any subset of $S$ can either contain the `first element' or not. This proves the case for $k+1$, and therefore concludes the proof that $|\mathcal{S}(P)| = 2^{n}$ if $|S| = n$.
-    \end{proof}
 \end{enumerate}
 
 %=========================================
