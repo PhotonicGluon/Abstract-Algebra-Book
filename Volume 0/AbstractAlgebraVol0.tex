@@ -162,6 +162,132 @@ Finally, some notation that will be used:
 %=========================================
 \chapter{Mathematical Logic and Proof Writing}
 \section{Mathematical Statements}
+\begin{definition}
+    A \textbf{(mathematical) statement} is a sentence that is definitely true or definitely false.
+\end{definition}
+\begin{remark}
+    A statement can be written in english, or using mathematical notation.
+\end{remark}
+\begin{example}
+    The sentence ``every square with length $x$ has area $x^2$'' is a true mathematical statement.
+\end{example}
+\begin{example}
+    The sentence ``every circle with length $x$ has area $x^2$'' is a false mathematical statement.
+\end{example}
+\begin{example}
+    The sentence ``$12 \in \mathbb{Z}$'' is a true mathematical statement.
+\end{example}
+\begin{example}
+    The sentence ``$\sqrt2 \in \mathbb{Z}$'' is a false mathematical statement.
+\end{example}
+
+We may name statements using variables like $P$, $Q$, $R$, etc.
+\begin{example}
+    If
+    \begin{align*}
+        P: &\ \text{Every odd number is one more than an even number}\\
+        Q: &\ \text{Every triangle has sides of equal length}\\
+        R: &\ \frac12 \in \mathbb{Q}
+    \end{align*}
+    then $P$ is true, $Q$ is false, and $R$ is true.
+\end{example}
+
+There are a few operations that may be carried out on mathematical statements. For the following, assume $P$ and $Q$ are mathematical statements.
+\begin{itemize}
+    \item \textbf{Logical AND}: Uses the symbol $\land$. The statement $P\land Q$ is read as ``$P$ and $Q$''.
+    \item \textbf{Logical OR}: Uses the symbol $\lor$. The statement $P\lor Q$ is read as ``$P$ or $Q$''.
+    \item \textbf{Logical NOT}: Uses the symbol $\lnot$. The statement $\lnot P$ is read as ``not $P$''.
+    \item \textbf{Implies}: Uses the symbol $\implies$. The statement $P \implies Q$ is read as ``$P$ implies $Q$''.  
+\end{itemize}
+\begin{example}
+    Consider the statements
+    \begin{align*}
+        P: &\ \text{3 is an odd number,}\\
+        Q: &\ \text{4 is an odd number,}\\
+        R: &\ \text{6 is an even number.}
+    \end{align*}
+    Then
+    \begin{itemize}
+        \item $P\land Q$ is ``3 is an odd number \textbf{and} 4 is an odd number'', which is false.
+        \item $P\lor Q$ is ``3 is an odd number \textbf{or} 4 is an odd number'', which is true.
+        \item $\lnot Q$ is ``4 is \textbf{not} an odd number'', which is true.
+    \end{itemize}
+\end{example}
+\begin{exercise}
+    Let $P$ be the statement that ``1 is a positive number'', $Q$ be the statement ``$-1 > 0$'', and $R$ be the statement ``1 is an odd number''. Is the statement ``$\lnot((P\lor Q)\land R)$ is false'' true?
+\end{exercise}
+
+To explore the relationship between statements and operators, we use \textbf{truth tables}. A truth table is like an operation table for statements. The idea is to list all possibilities of the truth or falsity of the statements $P$ and $Q$, and then write the truth for each of the combinations with operations.
+
+For example, here's the truth table for the logical and operator:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l||l|}
+        \hline
+        $P$ & $Q$ & $P\land Q$ \\ \hline
+        F   & F   & F          \\ \hline
+        F   & T   & F          \\ \hline
+        T   & F   & F          \\ \hline
+        T   & T   & T          \\ \hline
+    \end{tabular}
+\end{table}
+
+Note that we denote true statements by ``T'' and false statements by ``F''.
+
+Here's the truth table for the logical or operator:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l||l|}
+        \hline
+        $P$ & $Q$ & $P\lor Q$ \\ \hline
+        F   & F   & F         \\ \hline
+        F   & T   & T         \\ \hline
+        T   & F   & T         \\ \hline
+        T   & T   & T         \\ \hline
+    \end{tabular}
+\end{table}
+
+And the truth table for the logical not operator:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l||l|}
+        \hline
+        $P$ & $\lnot P$ \\ \hline
+        F   & F         \\ \hline
+        T   & F         \\ \hline
+    \end{tabular}
+\end{table}
+
+We motivate the truth table for the implication operator by considering these two statements:
+\begin{align*}
+    P: &\ \text{You have a red card}\\
+    Q: &\ \text{You have a green card}
+\end{align*}
+Then, $P \implies Q$ is the statement ``if you have a red card, then you have a green card''.
+\begin{itemize}
+    \item If $P$ and $Q$ are true, then that means that you have both a red and green card. Hence, ``if you have a red card, then you have a green card'' is \textbf{true}, meaning $P \implies Q$ is true.
+    \item If $P$ is true and $Q$ is false, then that means that you have a red card but not a green card. Hence, ``if you have a red card, then you have a green card'' is \textbf{false}, meaning $P \implies Q$ is false.
+    \item Now consider the case when $P$ is false. Then regardless of what $Q$ is, the initial premise of the statement ``if you have a red card'' is not satisfied. Hence the ``promise'' that ``if you have a red card, then you have a green card'' is \textbf{not untrue}, which means that it is \textbf{true}. Hence, if $P$ is false, then $P \implies Q$ is true.
+\end{itemize}
+In summary, the truth table for the implication operator is:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l||l|}
+        \hline
+        $P$ & $Q$ & $P\implies Q$ \\ \hline
+        F   & F   & T             \\ \hline
+        F   & T   & T             \\ \hline
+        T   & F   & F             \\ \hline
+        T   & T   & T             \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{exercise}
+    Let $P$ and $Q$ be statements. Write the truth table for $P \land (\lnot Q)$.
+\end{exercise}
+
+\newpage
+
 \section{Logical Equivalence}
 \section{Quantifiers}
 \section{Conditional Statements}
@@ -169,7 +295,6 @@ Finally, some notation that will be used:
 
 %=========================================
 \chapter{Mathematical Induction}
-\textit{This book assumes the knowledge of the principle of mathematical induction.}
 
 Mathematical induction is a method for proving that a proposition $P_n$ is true for every positive integer $n$, that is, that the infinitely many cases $P_1, P_2, P_3, \dots,$ all hold. Informal metaphors help to explain this technique, such as falling dominoes or climbing a ladder:
 \begin{quote}
@@ -436,12 +561,6 @@ We note several properties of the GCD and LCM.
 %=========================================
 \chapter{Modular Arithmetic}
 \section{Modulo and Modular Congruence}
-\textit{This book assumes the following knowledge of modular arithmetic:
-\begin{itemize}
-    \item Congruence modulo $n$
-    \item Properties of congruence
-\end{itemize}
-}
 
 Given an integer $n>1$, called a \textbf{modulus}, two integers $a$ and $b$ are said to be \textbf{congruent modulo $n$} if $n$ is a divisor of their difference (that is, if there is an integer $k$ such that $a - b = kn$). It is denoted $a \equiv b \pmod{n}$. The parentheses mean that $\pmod{n}$ applies to the entire equation, not just to the right-hand side (here, $b$). This notation is not to be confused with the notation $b \mod n$ (without parentheses), which refers to the modulo operation. \begin{remark}
     Equivalently, $a \equiv b \pmod n$ means that $a = kn + b$ for some integer $k$.
@@ -545,6 +664,31 @@ The operation of congruence modulo $n$ has a few properties which we will state 
         \item True. $(S \cup T)^2 = \{(1,1), (2,2), (3,3), (4,4), (5,5)\}$, so $U = \{(2,2), (3,3), (5,5)\} \subset (S \cup T)^2$.
     \end{enumerate}
     \item We note $\{x \in \mathbb{Q} \vert x \leq 0\}$ are all the non-positive rational numbers, and the second set has elements $\{-2, 0, 2, \dots, 8, 10\}$. Hence their intersection has only two elements, namely $-2$ and $0$.
+\end{enumerate}
+
+\addcontentsline{toc}{section}{Chapter 2}
+\section*{Chapter 2}
+\begin{enumerate}
+    \item We work from the inner-most bracket outwards. We note $P$ is true, $Q$ is false, and $R$ is true.
+    \begin{itemize}
+        \item $P \lor Q$ is ``1 is a positive number \textbf{or} $-1 > 0$'', which is true since $P$ is true.
+        \item $(P \lor Q) \land R$ is ``(1 is a positive number or $-1 > 0$) \textbf{and} 1 is an odd number'', which is true since $P \lor Q$ is true and 1 is, indeed, an odd number.
+        \item $\lnot((P \lor Q) \land R)$ is false, since $(P \lor Q) \land R$ is true.
+    \end{itemize}
+    Hence the statement ``$\lnot((P \lor Q) \land R)$ is false'' is a true statement.
+    
+    \item The truth table for $P \land (\lnot Q)$ is given below:
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l||l|}
+            \hline
+            $P$ & $Q$ & $P\land (\lnot Q)$ \\ \hline
+            F   & F   & F                  \\ \hline
+            F   & T   & F                  \\ \hline
+            T   & F   & T                  \\ \hline
+            T   & T   & F                  \\ \hline
+        \end{tabular}
+    \end{table}
 \end{enumerate}
 
 \addcontentsline{toc}{section}{Chapter 3}
