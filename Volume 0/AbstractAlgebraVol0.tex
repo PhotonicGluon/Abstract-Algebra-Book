@@ -197,7 +197,7 @@ There are a few operations that may be carried out on mathematical statements. F
     \item \textbf{Logical AND}: Uses the symbol $\land$. The statement $P\land Q$ is read as ``$P$ and $Q$''.
     \item \textbf{Logical OR}: Uses the symbol $\lor$. The statement $P\lor Q$ is read as ``$P$ or $Q$''.
     \item \textbf{Logical NOT}: Uses the symbol $\lnot$. The statement $\lnot P$ is read as ``not $P$''.
-    \item \textbf{Implies}: Uses the symbol $\implies$. The statement $P \implies Q$ is read as ``$P$ implies $Q$''.  
+    \item \textbf{Conditional}: Uses the symbol $\implies$. The statement $P \implies Q$ is read as ``$P$ implies $Q$''.  
 \end{itemize}
 \begin{example}
     Consider the statements
@@ -286,9 +286,112 @@ In summary, the truth table for the implication operator is:
     Let $P$ and $Q$ be statements. Write the truth table for $P \land (\lnot Q)$.
 \end{exercise}
 
-\newpage
+We end this section by introducing the idea of the \textbf{biconditional}.
+\begin{definition}
+    Let $P$ and $Q$ be mathematical statements. If both $(P \implies Q)$ and $(Q \implies P)$ are true, then we write $(P \iff Q)$. In other words, $(P \iff Q) = ((P \implies Q) \land (Q \implies P))$.
+\end{definition}
+\begin{remark}
+    The statement $(P \iff Q)$ can be written in several other ways:
+    \begin{itemize}
+        \item $P$ if and only if $Q$
+        \item $P$ is a necessary and sufficient condition for $Q$
+        \item $P$ is equivalent to $Q$
+    \end{itemize}
+\end{remark}
 
-\section{Logical Equivalence}
+The truth table for the biconditional operator is:
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l||l|}
+        \hline
+        $P$ & $Q$ & $P\iff Q$ \\ \hline
+        F   & F   & T         \\ \hline
+        F   & T   & F         \\ \hline
+        T   & F   & F         \\ \hline
+        T   & T   & T         \\ \hline
+    \end{tabular}
+\end{table}
+
+\begin{exercise}
+    Suppose $n$ is an integer. Let $P$ be the statement ``$n$ is a multiple of 5'' and $Q$ be the statement ``the last digit of $n$ is 0 or 5''. Let $R = (P \iff Q)$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Write $R$ in English.
+        \item Is $R$ true?
+    \end{enumerate}
+\end{exercise}
+
+\section{Properties of Logical Operators}
+A central idea of this section is that every mathematical statement can be built from just $\land$, $\lor$, and $\lnot$.
+
+\begin{example}
+    We show that $(P \implies Q) = (\lnot P) \lor Q$ by considering the truth table $(\lnot P) \lor Q$.
+    \begin{table}[h]
+\centering
+\begin{tabular}{|l|l||l||l|}
+\hline
+$P$ & $Q$ & $\lnot P$ & $(\lnot P) \lor Q$ \\ \hline
+F   & F   & T         & T                  \\ \hline
+F   & T   & T         & T                  \\ \hline
+T   & F   & F         & F                  \\ \hline
+T   & T   & F         & T                  \\ \hline
+\end{tabular}
+\end{table}
+    
+    By inspection, we see that $(\lnot P) \lor Q$ has the same truth table as $P \implies Q$. Thus $(P \implies Q) = (\lnot P) \lor Q$.
+\end{example}
+\begin{remark}
+    We separate the intermediate value(s) (e.g., $\lnot P$ in the above example) from the rest by writing a double line to the sides of the intermediate values.
+\end{remark}
+
+\begin{example}
+    We show that $(P \iff Q) = (P \land Q) \lor ((\lnot P) \land (\lnot Q))$.
+    \begin{table}[h]
+\centering
+\begin{tabular}{|l|l||l|l|l|l||l|}
+\hline
+$P$ & $Q$ & $\lnot P$ & $\lnot Q$ & $P \land Q$ & $(\lnot P) \land (\lnot Q)$ & $(P \land Q) \lor ((\lnot P) \land (\lnot Q))$ \\ \hline
+F   & F   & T         & T         & F           & T                           & T                                              \\ \hline
+F   & T   & T         & F         & F           & F                           & F                                              \\ \hline
+T   & F   & F         & T         & F           & F                           & F                                              \\ \hline
+T   & T   & F         & F         & T           & F                           & T                                              \\ \hline
+\end{tabular}
+\end{table}
+
+    By inspection of the truth table we establish the required result.
+\end{example}
+
+\begin{exercise}
+    Show that
+    \[
+        ((\lnot P) \iff Q) = (P \implies (\lnot Q)) \land ((\lnot Q) \implies P).
+    \]
+\end{exercise}
+
+We note some important properties of logical operators.
+\begin{itemize}
+    \item \textbf{Contrapositive}: $(P \implies Q) = ((\lnot Q) \implies (\lnot P))$
+    \item \textbf{De Morgan's Laws}: \begin{itemize}
+        \item $(\lnot (P \land Q)) = ((\lnot P) \lor (\lnot Q))$
+        \item $(\lnot (P \lor Q)) = ((\lnot P) \land (\lnot Q))$
+    \end{itemize}
+    \item \textbf{Commutativity of AND and OR}: $P \land Q = Q \land P$, as well as $P \lor Q = Q \lor P$
+    \item \textbf{Associativity of AND and OR}: $P \land (Q \land R) = (P \land Q) \land R$, as well as $P \lor (Q \lor R) = (P \lor Q) \lor R$
+    \item \textbf{Distributive Rules}: \begin{itemize}
+        \item $P \land (Q \lor R) = (P \land Q) \lor (P \land R)$
+        \item $P \lor (Q \land R) = (P \lor Q) \land (P \lor R)$
+    \end{itemize}
+\end{itemize}
+\begin{remark}
+    The most important one of these properties would arguably be the contrapositive. We will use this result several times in later volumes.
+\end{remark}
+\begin{exercise}
+    Simplify the statement
+    \[
+        ((P \lor \lnot Q) \land \lnot R) \lor ((P \lor \lnot Q) \land (P \lor R) \land (P \lor \lnot R))
+    \]
+    into a statement that uses only \textbf{three} operators.
+\end{exercise}
+
 \section{Quantifiers}
 \section{Conditional Statements}
 \section{Proof by Contradiction}
@@ -689,6 +792,28 @@ The operation of congruence modulo $n$ has a few properties which we will state 
             T   & T   & F                  \\ \hline
         \end{tabular}
     \end{table}
+    
+    \item \begin{enumerate}[label=(\roman*)]
+        \item $R$: $n$ is a multiple of 5 if and only if the last digit of $n$ is 0 or 5.
+        \item If $n$ is a multiple of 5, then its last digit necessarily has to be 5 or 0, hence $P \implies Q$. If the last digit is 5 or 0, then the number $n$ is a multiple of 5, hence $Q \implies P$. Therefore $P \iff Q$.
+    \end{enumerate}
+    
+    \item For brevity, let $R = (P \implies (\lnot Q))$ and $S = ((\lnot Q) \implies P)$. So we want to show that $((\lnot P) \iff Q) = R \land S$.
+    \begin{table}[h]
+\centering
+\begin{tabular}{|l|l||l|l|l|l||l|l|}
+\hline
+$P$ & $Q$ & $\lnot P$ & $\lnot Q$ & $R$ & $S$ & $R \land S$ & $(\lnot P) \iff Q$ \\ \hline
+F   & F   & T         & T         & T   & F   & F           & F                  \\ \hline
+F   & T   & T         & F         & T   & T   & T           & T                  \\ \hline
+T   & F   & F         & T         & T   & T   & T           & T                  \\ \hline
+T   & T   & F         & F         & F   & T   & F           & F                  \\ \hline
+\end{tabular}
+\end{table}
+
+    From inspection, the truth tables of $(\lnot P) \iff Q$ and $R \land S$ are the same, proving our required result.
+    
+    \item For brevity, denote $X = P \lor \lnot Q$, $Y = \lnot R$, and $Z = (P \lor R) \land (P \lor \lnot R)$. Thus the original statement is something like $(X \land Y) \lor (X \land Z)$, which by distributive rules is equal to $X \land (Y \lor Z)$. Note $Z = P \lor (R \land \lnot R)$ by distributive rules, which is equal to $P$ since $R \land \lnot R$ is always false. Hence $X \land (Y \lor Z) = (P \lor \lnot Q) \land (\lnot R \lor P)$. Commutativity of $\lor$ means that $\lnot R \lor P = P \lor \lnot R$, so $(P \lor \lnot Q) \land (\lnot R \lor P) = (P \lor \lnot Q) \land (P \lor \lnot R)$. Now by distributive rules $(P \lor \lnot Q) \land (P \lor \lnot R) = P \lor (\lnot Q \land \lnot R)$. Finally, by De Morgan's Law, $\lnot Q \land \lnot R = \lnot(Q \lor R)$, so the original statement is equal to $P \lor \lnot(Q \lor R)$.
 \end{enumerate}
 
 \addcontentsline{toc}{section}{Chapter 3}
