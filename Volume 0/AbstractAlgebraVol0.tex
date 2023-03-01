@@ -326,16 +326,16 @@ A central idea of this section is that every mathematical statement can be built
 \begin{example}
     We show that $(P \implies Q) = (\lnot P) \lor Q$ by considering the truth table $(\lnot P) \lor Q$.
     \begin{table}[h]
-\centering
-\begin{tabular}{|l|l||l||l|}
-\hline
-$P$ & $Q$ & $\lnot P$ & $(\lnot P) \lor Q$ \\ \hline
-F   & F   & T         & T                  \\ \hline
-F   & T   & T         & T                  \\ \hline
-T   & F   & F         & F                  \\ \hline
-T   & T   & F         & T                  \\ \hline
-\end{tabular}
-\end{table}
+        \centering
+        \begin{tabular}{|l|l||l||l|}
+            \hline
+            $P$ & $Q$ & $\lnot P$ & $(\lnot P) \lor Q$ \\ \hline
+            F   & F   & T         & T                  \\ \hline
+            F   & T   & T         & T                  \\ \hline
+            T   & F   & F         & F                  \\ \hline
+            T   & T   & F         & T                  \\ \hline
+        \end{tabular}
+    \end{table}
     
     By inspection, we see that $(\lnot P) \lor Q$ has the same truth table as $P \implies Q$. Thus $(P \implies Q) = (\lnot P) \lor Q$.
 \end{example}
@@ -346,16 +346,16 @@ T   & T   & F         & T                  \\ \hline
 \begin{example}
     We show that $(P \iff Q) = (P \land Q) \lor ((\lnot P) \land (\lnot Q))$.
     \begin{table}[h]
-\centering
-\begin{tabular}{|l|l||l|l|l|l||l|}
-\hline
-$P$ & $Q$ & $\lnot P$ & $\lnot Q$ & $P \land Q$ & $(\lnot P) \land (\lnot Q)$ & $(P \land Q) \lor ((\lnot P) \land (\lnot Q))$ \\ \hline
-F   & F   & T         & T         & F           & T                           & T                                              \\ \hline
-F   & T   & T         & F         & F           & F                           & F                                              \\ \hline
-T   & F   & F         & T         & F           & F                           & F                                              \\ \hline
-T   & T   & F         & F         & T           & F                           & T                                              \\ \hline
-\end{tabular}
-\end{table}
+        \centering
+        \begin{tabular}{|l|l||l|l|l|l||l|}
+            \hline
+            $P$ & $Q$ & $\lnot P$ & $\lnot Q$ & $P \land Q$ & $(\lnot P) \land (\lnot Q)$ & $(P \land Q) \lor ((\lnot P) \land (\lnot Q))$ \\ \hline
+            F   & F   & T         & T         & F           & T                           & T                                              \\ \hline
+            F   & T   & T         & F         & F           & F                           & F                                              \\ \hline
+            T   & F   & F         & T         & F           & F                           & F                                              \\ \hline
+            T   & T   & F         & F         & T           & F                           & T                                              \\ \hline
+        \end{tabular}
+    \end{table}
 
     By inspection of the truth table we establish the required result.
 \end{example}
@@ -393,6 +393,73 @@ We note some important properties of logical operators.
 \end{exercise}
 
 \section{Quantifiers}
+\begin{definition}
+    The \textbf{universal quantifier} is $\forall$ and is read as ``for all''.
+\end{definition}
+\begin{example}
+    The statement ``for every integer $n$, $2n$ is an even number'' can be written as ``$\forall n \in \mathbb{Z}, 2n$ is even''.
+\end{example}
+
+\begin{definition}
+    The \textbf{existential quantifier} is $\exists$ and is  read as ``there exists''.
+\end{definition}
+\begin{example}
+    The statement ``there exists a subset of $\mathbb{Z}$ which has 10 elements'' can be written as ``$\exists S \subseteq \mathbb{Z}, |S| = 10$''.
+\end{example}
+
+We can also combine the quantifiers together with logical operators.
+\begin{example}
+    The statement ``every odd integer is one less than an even integer'' can be written as ``$\forall n \in \mathbb{Z} \exists k \in \mathbb{Z}, n = 2k - 1$.
+\end{example}
+\begin{example}
+    Let $S$ denote the set of positive integers.
+    
+    Fermat's Last Theorem, which states that for all integers $n\geq 3$ the equation $x^n + y^n = z^n$ has no solution for $x, y, z \in S$, can be written as
+    \[
+        \left[(n \in \mathbb{Z}) \land (n \geq 3)\right] \implies \left[\forall x, y, z \in S, x^n + y^n \neq z^n\right].
+    \]
+    It should be noted that when translating from English to \textit{symbolic writing}, we may need to change some things around.
+\end{example}
+
+\begin{exercise}
+    Let $S$ denote the set of positive integers. Convert the statement
+    \begin{quote}
+        for all positive integers $n > 2$ there exists integers $a$ and $b$ such that $a^3 + b^4 = n^5$
+    \end{quote}
+    into symbolic notation using quantifiers and logical operators.
+\end{exercise}
+
+We now look at negating quantifiers.
+\begin{itemize}
+    \item $\lnot(\forall x, P) = \exists x, \lnot P$; and
+    \item $\lnot(\exists x, P) = \forall x, \lnot P$.
+\end{itemize}
+\begin{example}
+    Consider the statement ``every even integer is of the form $2n$ where $n$ is an integer''. One may write using quantifiers as
+    \[
+        \forall n \in\mathbb{Z}, 2n \text{ is even}.
+    \]
+    Negating this statement would make it
+    \[
+        \exists n \in \mathbb{Z}, 2n \text{ is not even},
+    \]
+    i.e., ``there exists an integer $n$ such that $2n$ is odd''.
+\end{example}
+
+We also note that $\lnot(P \implies Q) = P \land \lnot Q$. We leave verifying this identity as an exercise to the reader.
+
+\begin{example}
+    Consider the statement ``if $n$ is odd then $n^3$ is odd''. We may write this using logical operators as ``($n$ is odd) $\implies$ ($n^3$ is odd)''. The negation of such a statement would hence be ``$n$ is odd \textbf{and} $n^3$ is \textbf{not} odd'', i.e. ``$n$ is odd and $n^3$ is even''.
+\end{example}
+
+\begin{exercise}
+    Consider the statement ``if $x$ is a non-zero real number, then there exists a real number $y$ such that $xy = 1$''.
+    \begin{enumerate}[label=(\roman*)]
+        \item Write down the statements $P$ and $Q$ in symbols such that the above statement is $P \implies Q$.
+        \item Negate the above statement, writing your answer in symbolic notation.
+    \end{enumerate}
+\end{exercise}
+
 \section{Conditional Statements}
 \section{Proof by Contradiction}
 
@@ -800,20 +867,32 @@ The operation of congruence modulo $n$ has a few properties which we will state 
     
     \item For brevity, let $R = (P \implies (\lnot Q))$ and $S = ((\lnot Q) \implies P)$. So we want to show that $((\lnot P) \iff Q) = R \land S$.
     \begin{table}[h]
-\centering
-\begin{tabular}{|l|l||l|l|l|l||l|l|}
-\hline
-$P$ & $Q$ & $\lnot P$ & $\lnot Q$ & $R$ & $S$ & $R \land S$ & $(\lnot P) \iff Q$ \\ \hline
-F   & F   & T         & T         & T   & F   & F           & F                  \\ \hline
-F   & T   & T         & F         & T   & T   & T           & T                  \\ \hline
-T   & F   & F         & T         & T   & T   & T           & T                  \\ \hline
-T   & T   & F         & F         & F   & T   & F           & F                  \\ \hline
-\end{tabular}
-\end{table}
+        \centering
+        \begin{tabular}{|l|l||l|l|l|l||l|l|}
+            \hline
+            $P$ & $Q$ & $\lnot P$ & $\lnot Q$ & $R$ & $S$ & $R \land S$ & $(\lnot P) \iff Q$ \\ \hline
+            F   & F   & T         & T         & T   & F   & F           & F                  \\ \hline
+            F   & T   & T         & F         & T   & T   & T           & T                  \\ \hline
+            T   & F   & F         & T         & T   & T   & T           & T                  \\ \hline
+            T   & T   & F         & F         & F   & T   & F           & F                  \\ \hline
+        \end{tabular}
+    \end{table}
 
     From inspection, the truth tables of $(\lnot P) \iff Q$ and $R \land S$ are the same, proving our required result.
     
     \item For brevity, denote $X = P \lor \lnot Q$, $Y = \lnot R$, and $Z = (P \lor R) \land (P \lor \lnot R)$. Thus the original statement is something like $(X \land Y) \lor (X \land Z)$, which by distributive rules is equal to $X \land (Y \lor Z)$. Note $Z = P \lor (R \land \lnot R)$ by distributive rules, which is equal to $P$ since $R \land \lnot R$ is always false. Hence $X \land (Y \lor Z) = (P \lor \lnot Q) \land (\lnot R \lor P)$. Commutativity of $\lor$ means that $\lnot R \lor P = P \lor \lnot R$, so $(P \lor \lnot Q) \land (\lnot R \lor P) = (P \lor \lnot Q) \land (P \lor \lnot R)$. Now by distributive rules $(P \lor \lnot Q) \land (P \lor \lnot R) = P \lor (\lnot Q \land \lnot R)$. Finally, by De Morgan's Law, $\lnot Q \land \lnot R = \lnot(Q \lor R)$, so the original statement is equal to $P \lor \lnot(Q \lor R)$.
+    
+    \item $\left[(n \in \mathbb{Z}) \land (n > 2)\right] \implies \left[\exists a, b \in \mathbb{Z}, a^3 + b^4 = n^5\right]$
+    
+    \item \begin{enumerate}[label=(\roman*)]
+        \item Let
+        \begin{align*}
+            P:&\ (x \in \mathbb{R}) \land (x \neq 0)\\
+            Q:&\ \exists y \in \mathbb{R}, xy = 1
+        \end{align*}
+        then the given statement is $P \implies Q$ as required.
+        \item $(x \in \mathbb{R}) \land (x \neq 0) \land (\forall y \in \mathbb{R}, xy \neq 1)$
+    \end{enumerate}
 \end{enumerate}
 
 \addcontentsline{toc}{section}{Chapter 3}
