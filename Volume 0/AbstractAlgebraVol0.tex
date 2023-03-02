@@ -160,6 +160,69 @@ Finally, some notation that will be used:
 \end{exercise}
 
 %=========================================
+\chapter{Functions / Mappings}
+A function (or a map) from a set $X$ to a set $Y$ is an assignment of an element of $Y$ to each element of $X$. The set $X$ is called the \textbf{domain} of the function and the set $Y$ is called the \textbf{codomain} of the function.
+
+A function, its domain, and its codomain, are declared by the notation $f: X\to Y$, and the value of a function $f$ at an element $x$ of $X$, denoted by $f(x)$, is called the \textbf{image} of $x$ under $f$.
+
+The \textbf{image} or \textbf{range} of a function is the set of the images of all elements in the domain. The image and the codomain are not necessarily the same. The image of the function $f: X \to Y$ is denoted either as $\im f$ or $f(X)$.
+
+Two functions $f$ and $g$ are equal if their domain and codomain sets are the same and their output values agree on the whole domain. More formally, given $f: X \to Y$ and $g: X \to Y$, $f = g$ if $f(x) = g(x)$ for all $x$ in $X$.
+
+\textbf{Arrow notation} can also be used to define the rule of a function. For example, $f: \mathbb{R} \to \mathbb{R}, x \mapsto x+1$ is the function which takes a real number as input and outputs that number plus 1. In the above example, ``$x + 1$'' is the \textbf{rule} of the function.
+
+\begin{exercise}
+    Let a function $f: \{1, 2, 3\} \to \{1, 4, 9, 16, 25\}$ be given by the relation $f(x) = x^2$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Use arrow notation to write a definition for $f$.
+        \item State the domain, codomain, and range of $f$.
+        \item Is the function $g: \{1, 2, 3\} \to \{1, 8\}, x \mapsto x^3$ \textit{valid}?
+    \end{enumerate}
+\end{exercise}
+
+\newpage
+
+A function is said to be \textbf{well-defined} if \textit{similar inputs} produce \textit{identical outputs}. More formally, a function $f: A \to B$ is well defined if for each $a \in A$ there is a unique $b \in B$ such that $f(a) = b$. An example may help to illustrate this point.
+\begin{example}
+    Let $S_1$ and $S_2$ be sets, and let $S = S_1 \cup S_2$. Let $f: S \to \{1, 2\}$, such that $f(x) = 1$ if $x \in S_1$ and $f(x) = 2$ if $x \in S_2$. Then $f$ is well-defined if $S_1 \cap S_2 = \emptyset$. For example, if $S_1 = \{1, 2\}$ and $S_2 = \{3, 4\}$, then $f$ is well-defined. On the other hand, if $S_1 \cap S_2 \neq \emptyset$, then $f$ is not well-defined. For example, if $S_1 = \{1, 2\}$ and $S_2 = \{2, 3\}$, then $f(2) = 1$ and $f(2) = 2$ simultaneously.
+\end{example}
+\begin{exercise}
+    Is the function
+    \[
+        f: \mathbb{Q} \to \mathbb{Z}, \frac pq \mapsto p + q    
+    \]
+    well-defined?
+\end{exercise}
+
+Functions may also be \textbf{composed} with each other. This is done by using the function composition operator $\circ$. The composition of two functions, say $f: X \to Y$ and $g: Y \to Z$, produces a function $f \circ g: X \to Z$ such that $(f \circ g)(x) = f(g(x))$. It is important to note the following:
+\begin{itemize}
+    \item Function composition is associative. That is, if $f$, $g$, and $h$ are composable, then $f \circ (g \circ h) = (f \circ g) \circ h$. Since the parentheses do not change the result, they are generally omitted.
+    \item The composition $f \circ g$ is only meaningful if the codomain of $g$ is a subset of the domain of $f$. That is, if $f: A \to B$ and $g: C \to D$, then $f \circ g$ is only meaningful if $\im g \subseteq A$.
+\end{itemize}
+We may also alternatively write $fg$ in place of $f \circ g$.
+
+\begin{exercise}
+    Let $f: \mathbb{R} \to \mathbb{R}$ and $g: \mathbb{R} \to \mathbb{R}$. Write down the rule of the function $fg$ if $f(x) = x^2 - x + 1$ and $g(y) = \frac1{y^2+1}$.
+\end{exercise}
+
+A function $f: X \to Y$ is said to be \textbf{injective} (or \textbf{one-to-one}) if $f(x_1) = f(x_2)$ implies $x_1 = x_2$. Equivalently, if $x_1 \neq x_2$ then $f(x_1) \neq f(x_2)$ for all $x_1$ and $x_2$ in $X$.
+
+A function $f: X \to Y$ is said to be \textbf{surjective} (or \textbf{onto}) is a function whose image is equal to its codomain. Equivalently, $f$ is surjective if and only if for all $y \in Y$, there exists $x \in X$ such that $f(x) = y$. In this case, $x$ is said to be the \textbf{pre-image} of $y$.
+
+A function is \textbf{bijective} if it is both injective and surjective. A bijective function is also called a \textbf{bijection} or a \textbf{one-to-one correspondence}. A function is bijective if and only if every possible image is mapped to by exactly one argument. It should be noted that bijectivity is implied if the function $f: X \to Y$ is injective and the sets $X$ and $Y$ `have the same number of elements' (or more formally, \textbf{equinumerous}).
+
+\begin{exercise}
+    Let the set $S = \{x \in \mathbb{Z} \vert x > 0\}$. Define the function $f: S \to \mathbb{Z}$ such that
+    \[
+        f(x) = \begin{cases}
+            \frac{x}{2} & \text{ if } x \text{ is even}\\
+            \frac{1-x}{2} & \text{ if } x \text{ is odd} 
+        \end{cases}
+    \]
+    Prove that $f$ is a bijection.
+\end{exercise}
+
+%=========================================
 \chapter{Mathematical Logic and Proof Writing}
 \section{Mathematical Statements}
 \begin{definition}
@@ -460,12 +523,13 @@ We also note that $\lnot(P \implies Q) = P \land \lnot Q$. We leave verifying th
     \end{enumerate}
 \end{exercise}
 
-\section{Conditional Statements}
+\section{Proving Conditional Statements}
+%TODO ADD
+
 \section{Proof by Contradiction}
+%TODO ADD
 
-%=========================================
-\chapter{Mathematical Induction}
-
+\section{Mathematical Induction}
 Mathematical induction is a method for proving that a proposition $P_n$ is true for every positive integer $n$, that is, that the infinitely many cases $P_1, P_2, P_3, \dots,$ all hold. Informal metaphors help to explain this technique, such as falling dominoes or climbing a ladder:
 \begin{quote}
     Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the base case) and that from each rung we can climb up to the next one (the induction step).
@@ -544,69 +608,6 @@ In summary, mathematical induction involves two steps:
         \end{enumerate}
         \item Suppose $|S| = n$. Prove by induction that $|\mathcal{P}(S)| = 2^n$ for all sets $S$.
     \end{enumerate}
-\end{exercise}
-
-%=========================================
-\chapter{Functions / Mappings}
-A function (or a map) from a set $X$ to a set $Y$ is an assignment of an element of $Y$ to each element of $X$. The set $X$ is called the \textbf{domain} of the function and the set $Y$ is called the \textbf{codomain} of the function.
-
-A function, its domain, and its codomain, are declared by the notation $f: X\to Y$, and the value of a function $f$ at an element $x$ of $X$, denoted by $f(x)$, is called the \textbf{image} of $x$ under $f$.
-
-The \textbf{image} or \textbf{range} of a function is the set of the images of all elements in the domain. The image and the codomain are not necessarily the same. The image of the function $f: X \to Y$ is denoted either as $\im f$ or $f(X)$.
-
-Two functions $f$ and $g$ are equal if their domain and codomain sets are the same and their output values agree on the whole domain. More formally, given $f: X \to Y$ and $g: X \to Y$, $f = g$ if $f(x) = g(x)$ for all $x$ in $X$.
-
-\textbf{Arrow notation} can also be used to define the rule of a function. For example, $f: \mathbb{R} \to \mathbb{R}, x \mapsto x+1$ is the function which takes a real number as input and outputs that number plus 1. In the above example, ``$x + 1$'' is the \textbf{rule} of the function.
-
-\begin{exercise}
-    Let a function $f: \{1, 2, 3\} \to \{1, 4, 9, 16, 25\}$ be given by the relation $f(x) = x^2$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Use arrow notation to write a definition for $f$.
-        \item State the domain, codomain, and range of $f$.
-        \item Is the function $g: \{1, 2, 3\} \to \{1, 8\}, x \mapsto x^3$ \textit{valid}?
-    \end{enumerate}
-\end{exercise}
-
-\newpage
-
-A function is said to be \textbf{well-defined} if \textit{similar inputs} produce \textit{identical outputs}. More formally, a function $f: A \to B$ is well defined if for each $a \in A$ there is a unique $b \in B$ such that $f(a) = b$. An example may help to illustrate this point.
-\begin{example}
-    Let $S_1$ and $S_2$ be sets, and let $S = S_1 \cup S_2$. Let $f: S \to \{1, 2\}$, such that $f(x) = 1$ if $x \in S_1$ and $f(x) = 2$ if $x \in S_2$. Then $f$ is well-defined if $S_1 \cap S_2 = \emptyset$. For example, if $S_1 = \{1, 2\}$ and $S_2 = \{3, 4\}$, then $f$ is well-defined. On the other hand, if $S_1 \cap S_2 \neq \emptyset$, then $f$ is not well-defined. For example, if $S_1 = \{1, 2\}$ and $S_2 = \{2, 3\}$, then $f(2) = 1$ and $f(2) = 2$ simultaneously.
-\end{example}
-\begin{exercise}
-    Is the function
-    \[
-        f: \mathbb{Q} \to \mathbb{Z}, \frac pq \mapsto p + q    
-    \]
-    well-defined?
-\end{exercise}
-
-Functions may also be \textbf{composed} with each other. This is done by using the function composition operator $\circ$. The composition of two functions, say $f: X \to Y$ and $g: Y \to Z$, produces a function $f \circ g: X \to Z$ such that $(f \circ g)(x) = f(g(x))$. It is important to note the following:
-\begin{itemize}
-    \item Function composition is associative. That is, if $f$, $g$, and $h$ are composable, then $f \circ (g \circ h) = (f \circ g) \circ h$. Since the parentheses do not change the result, they are generally omitted.
-    \item The composition $f \circ g$ is only meaningful if the codomain of $g$ is a subset of the domain of $f$. That is, if $f: A \to B$ and $g: C \to D$, then $f \circ g$ is only meaningful if $\im g \subseteq A$.
-\end{itemize}
-We may also alternatively write $fg$ in place of $f \circ g$.
-
-\begin{exercise}
-    Let $f: \mathbb{R} \to \mathbb{R}$ and $g: \mathbb{R} \to \mathbb{R}$. Write down the rule of the function $fg$ if $f(x) = x^2 - x + 1$ and $g(y) = \frac1{y^2+1}$.
-\end{exercise}
-
-A function $f: X \to Y$ is said to be \textbf{injective} (or \textbf{one-to-one}) if $f(x_1) = f(x_2)$ implies $x_1 = x_2$. Equivalently, if $x_1 \neq x_2$ then $f(x_1) \neq f(x_2)$ for all $x_1$ and $x_2$ in $X$.
-
-A function $f: X \to Y$ is said to be \textbf{surjective} (or \textbf{onto}) is a function whose image is equal to its codomain. Equivalently, $f$ is surjective if and only if for all $y \in Y$, there exists $x \in X$ such that $f(x) = y$. In this case, $x$ is said to be the \textbf{pre-image} of $y$.
-
-A function is \textbf{bijective} if it is both injective and surjective. A bijective function is also called a \textbf{bijection} or a \textbf{one-to-one correspondence}. A function is bijective if and only if every possible image is mapped to by exactly one argument. It should be noted that bijectivity is implied if the function $f: X \to Y$ is injective and the sets $X$ and $Y$ `have the same number of elements' (or more formally, \textbf{equinumerous}).
-
-\begin{exercise}
-    Let the set $S = \{x \in \mathbb{Z} \vert x > 0\}$. Define the function $f: S \to \mathbb{Z}$ such that
-    \[
-        f(x) = \begin{cases}
-            \frac{x}{2} & \text{ if } x \text{ is even}\\
-            \frac{1-x}{2} & \text{ if } x \text{ is odd} 
-        \end{cases}
-    \]
-    Prove that $f$ is a bijection.
 \end{exercise}
 
 %=========================================
@@ -839,6 +840,36 @@ The operation of congruence modulo $n$ has a few properties which we will state 
 \addcontentsline{toc}{section}{Chapter 2}
 \section*{Chapter 2}
 \begin{enumerate}
+    \item \begin{enumerate}[label=(\roman*)]
+        \item $f: \{1, 2, 3\} \to \{1, 4, 9, 16, 25\}, x \mapsto x^2$. (Or just $x \mapsto x^2$)
+        \item Domain is $\{1, 2, 3\}$, codomain is $\{1, 4, 9, 16, 25\}$, range is $\{1, 4, 9\}$.
+        \item No. The element 3 would map to 27, which is not in the codomain.
+    \end{enumerate}
+    \item It is not well-defined. Note $\frac 12 = \frac 24$, but $f(\frac12) = 1 + 2 = 3$ and $f(\frac24) = 2 + 4 = 6$.
+    \item $fg(x) = \left(\frac1{x^2+1}\right)^2 - \frac1{x^2+1} + 1$.
+    \item We prove the requirements of a bijection one by one.
+    \begin{itemize}
+        \item \textbf{Injective}: Suppose $x_1, x_2 \in S$ such that $f(x_1) = f(x_2)$. We split into three cases.
+        \begin{itemize}
+            \item The first case is if $f(x_1) = f(x_2) = 0$. In this case, one sees clearly that $x_1 = x_2 = 1$.
+            \item The second case is if $f(x_1) = f(x_2) > 0$. Now since $x \neq 1$ (as this case leads to $f(x_1) = 0$), the `valid' odd numbers are at least 3. Therefore, $\frac{1-x}{2} \leq \frac{1-3}{2} = -1 < 0$, so $x_1$ and $x_2$ cannot be odd. Hence, $x_1$ and $x_2$ are even, meaning $\frac{x_1}{2} = \frac{x_2}{2}$ which quickly implies $x_1 = x_2$.
+            \item The third case is if $f(x_1) = f(x_2) < 0$. As argued above, this means that $x_1$ and $x_2$ must be odd numbers of at least 3. Hence, $\frac{1-x_1}{2} = \frac{1-x_2}{2}$ which quickly implies $x_1 = x_2$.
+        \end{itemize}
+        Thus, in all three cases, $f(x_1) = f(x_2)$ implies $x_1 = x_2$, meaning $f$ is injective.
+        \item \textbf{Surjective}: Suppose $y \in \mathbb{Z}$. We split into three cases again.
+        \begin{itemize}
+            \item If $y = 0$, then setting $x = 1$ satisfies $f(x) = y$.
+            \item Now suppose $y > 0$. We note $2y \in S$, and clearly $2y$ is an even integer. So setting $x = 2y$ satisfies $f(x) = \frac{2y}{y} = y$.
+            \item Suppose $y < 0$. Note $-2y > 0$, and $1 - 2y > 0 \in S$. Furthermore $1 - 2y$ is clearly an odd integer. Hence setting $x = 1 - 2y$ satisfies $f(x) = \frac{1-(1-2y)}{2} = y$.
+        \end{itemize}
+        Therefore for every $y \in \mathbb{Z}$, there exists a pre-image $x \in S$ such that $f(x) = y$. Hence $f$ is surjective.
+    \end{itemize}
+    Therefore, as $f$ is both injective and surjective, $f$ is bijective.
+\end{enumerate}
+
+\addcontentsline{toc}{section}{Chapter 3}
+\section*{Chapter 3}
+\begin{enumerate}
     \item We work from the inner-most bracket outwards. We note $P$ is true, $Q$ is false, and $R$ is true.
     \begin{itemize}
         \item $P \lor Q$ is ``1 is a positive number \textbf{or} $-1 > 0$'', which is true since $P$ is true.
@@ -893,59 +924,25 @@ The operation of congruence modulo $n$ has a few properties which we will state 
         then the given statement is $P \implies Q$ as required.
         \item $(x \in \mathbb{R}) \land (x \neq 0) \land (\forall y \in \mathbb{R}, xy \neq 1)$
     \end{enumerate}
-\end{enumerate}
+    
+    \item \begin{enumerate}[label=(\roman*)]
+        \item \begin{enumerate}[label=(\alph*)]
+            \item True. $S$ is a subset of $S$, so $S \in \mathcal{P}(S)$.
+            \item True. $\emptyset$ is a subset of any set, so $\emptyset \in \mathcal{P}(S)$.
+        \end{enumerate}
+        
+        \item We induct on the size of $S$.
 
-\addcontentsline{toc}{section}{Chapter 3}
-\section*{Chapter 3}
-\begin{enumerate}[label=(\roman*)]
-    \item \begin{enumerate}[label=(\alph*)]
-        \item True. $S$ is a subset of $S$, so $S \in \mathcal{P}(S)$.
-        \item True. $\emptyset$ is a subset of any set, so $\emptyset \in \mathcal{P}(S)$.
+            Note that the smallest size a set can be is 0, which means that $S$ is the empty set. When $n = 0$, then the only subset of $S$ is the empty set, so $\mathcal{P}(S) = \mathcal{P}(\emptyset) = \{\emptyset\}$, meaning that $\mathcal{P}(\emptyset)$ has 1 element. Hence $|\mathcal{P}(S)| = 1 = 2^0$ in the case where $n = 0$.
+            
+            Now assume that the statement holds for some non-negative integer $k$, meaning that if $|S| = k$ then $|\mathcal{P}(S)| = 2^k$. We want to prove that the statement holds if $|S| = k+1$.
+            
+            Consider a set $S$ with $k + 1$ elements. Since all elements in $S$ are distinct (by definition of a set), pick any element in $S$ and call it the `first element', and call the remaining elements `the rest'. Now any subset of $S$ can either contain the `first element' or not. `The rest' has a power set of order $2^k$ by our inductive hypothesis. Hence, the power set of $S$ has order $2 \times 2^k = 2^{k+1}$, any subset of $S$ can either contain the `first element' or not. This proves the case for $k+1$, and therefore concludes the proof that $|\mathcal{S}(P)| = 2^{n}$ if $|S| = n$.
     \end{enumerate}
-    \item
-    \begin{proof}
-        We induct on the size of $S$.
-        
-        Note that the smallest size a set can be is 0, which means that $S$ is the empty set. When $n = 0$, then the only subset of $S$ is the empty set, so $\mathcal{P}(S) = \mathcal{P}(\emptyset) = \{\emptyset\}$, meaning that $\mathcal{P}(\emptyset)$ has 1 element. Hence $|\mathcal{P}(S)| = 1 = 2^0$ in the case where $n = 0$.
-        
-        Now assume that the statement holds for some non-negative integer $k$, meaning that if $|S| = k$ then $|\mathcal{P}(S)| = 2^k$. We want to prove that the statement holds if $|S| = k+1$.
-        
-        Consider a set $S$ with $k + 1$ elements. Since all elements in $S$ are distinct (by definition of a set), pick any element in $S$ and call it the `first element', and call the remaining elements `the rest'. Now any subset of $S$ can either contain the `first element' or not. `The rest' has a power set of order $2^k$ by our inductive hypothesis. Hence, the power set of $S$ has order $2 \times 2^k = 2^{k+1}$, any subset of $S$ can either contain the `first element' or not. This proves the case for $k+1$, and therefore concludes the proof that $|\mathcal{S}(P)| = 2^{n}$ if $|S| = n$.
-    \end{proof}
 \end{enumerate}
 
 \addcontentsline{toc}{section}{Chapter 4}
 \section*{Chapter 4}
-\begin{enumerate}
-    \item \begin{enumerate}[label=(\roman*)]
-        \item $f: \{1, 2, 3\} \to \{1, 4, 9, 16, 25\}, x \mapsto x^2$. (Or just $x \mapsto x^2$)
-        \item Domain is $\{1, 2, 3\}$, codomain is $\{1, 4, 9, 16, 25\}$, range is $\{1, 4, 9\}$.
-        \item No. The element 3 would map to 27, which is not in the codomain.
-    \end{enumerate}
-    \item It is not well-defined. Note $\frac 12 = \frac 24$, but $f(\frac12) = 1 + 2 = 3$ and $f(\frac24) = 2 + 4 = 6$.
-    \item $fg(x) = \left(\frac1{x^2+1}\right)^2 - \frac1{x^2+1} + 1$.
-    \item We prove the requirements of a bijection one by one.
-    \begin{itemize}
-        \item \textbf{Injective}: Suppose $x_1, x_2 \in S$ such that $f(x_1) = f(x_2)$. We split into three cases.
-        \begin{itemize}
-            \item The first case is if $f(x_1) = f(x_2) = 0$. In this case, one sees clearly that $x_1 = x_2 = 1$.
-            \item The second case is if $f(x_1) = f(x_2) > 0$. Now since $x \neq 1$ (as this case leads to $f(x_1) = 0$), the `valid' odd numbers are at least 3. Therefore, $\frac{1-x}{2} \leq \frac{1-3}{2} = -1 < 0$, so $x_1$ and $x_2$ cannot be odd. Hence, $x_1$ and $x_2$ are even, meaning $\frac{x_1}{2} = \frac{x_2}{2}$ which quickly implies $x_1 = x_2$.
-            \item The third case is if $f(x_1) = f(x_2) < 0$. As argued above, this means that $x_1$ and $x_2$ must be odd numbers of at least 3. Hence, $\frac{1-x_1}{2} = \frac{1-x_2}{2}$ which quickly implies $x_1 = x_2$.
-        \end{itemize}
-        Thus, in all three cases, $f(x_1) = f(x_2)$ implies $x_1 = x_2$, meaning $f$ is injective.
-        \item \textbf{Surjective}: Suppose $y \in \mathbb{Z}$. We split into three cases again.
-        \begin{itemize}
-            \item If $y = 0$, then setting $x = 1$ satisfies $f(x) = y$.
-            \item Now suppose $y > 0$. We note $2y \in S$, and clearly $2y$ is an even integer. So setting $x = 2y$ satisfies $f(x) = \frac{2y}{y} = y$.
-            \item Suppose $y < 0$. Note $-2y > 0$, and $1 - 2y > 0 \in S$. Furthermore $1 - 2y$ is clearly an odd integer. Hence setting $x = 1 - 2y$ satisfies $f(x) = \frac{1-(1-2y)}{2} = y$.
-        \end{itemize}
-        Therefore for every $y \in \mathbb{Z}$, there exists a pre-image $x \in S$ such that $f(x) = y$. Hence $f$ is surjective.
-    \end{itemize}
-    Therefore, as $f$ is both injective and surjective, $f$ is bijective.
-\end{enumerate}
-
-\addcontentsline{toc}{section}{Chapter 5}
-\section*{Chapter 5}
 \begin{enumerate}
     \item $44100 = 2^2 \times 3^2 \times 5^2 \times 7^2$.
     \item $-210 = 11 - 13 \times 17$, so $a = 11$ and $b = 17$.
@@ -958,8 +955,8 @@ The operation of congruence modulo $n$ has a few properties which we will state 
     \end{enumerate}
 \end{enumerate}
 
-\addcontentsline{toc}{section}{Chapter 6}
-\section*{Chapter 6}
+\addcontentsline{toc}{section}{Chapter 5}
+\section*{Chapter 5}
 \begin{enumerate}
     \item \begin{enumerate}[label=(\alph*)]
         \item $17 \mod 5 = 2$ since $17 = 3 \times 5 + 2$ by the division algorithm.
