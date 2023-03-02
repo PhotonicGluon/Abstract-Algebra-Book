@@ -802,18 +802,11 @@ In summary, mathematical induction involves two steps:
 \end{example}
 
 \begin{exercise}
-    Let $S$ be a set. The \textbf{power set} of $S$, denoted $\mathcal{P}(S)$, is the set that contains all subsets of $S$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Determine whether the following statements are true.
-        \begin{enumerate}[label=(\alph*)]
-            \item $S \in \mathcal{P}(S)$
-            \item $\emptyset \in \mathcal{P}(S)$
-        \end{enumerate}
-        \item Suppose $|S| = n$. Prove by induction that $|\mathcal{P}(S)| = 2^n$ for all sets $S$.
-    \end{enumerate}
+    Prove by induction that $a^2 - 1$ is a multiple of 8 for all positive odd integers $a$.
 \end{exercise}
 
 \section{Proving Biconditionals}
+%TODO ADD
 
 %=========================================
 \chapter{Number Theory}
@@ -1165,20 +1158,21 @@ The operation of congruence modulo $n$ has a few properties which we will state 
     \]
     which implies $a^2 + b^2 < 2ab$, leading to $a^2 - 2ab + b^2 < 0$. However $a^2 - 2ab + b^2 = (a-b)^2 \geq 0$ for all positive real numbers $a$ and $b$. Hence we have $(a-b)^2 < 0$ and $(a-b)^2 \geq 0$, a contradiction.
     
-    \item \begin{enumerate}[label=(\roman*)]
-        \item \begin{enumerate}[label=(\alph*)]
-            \item True. $S$ is a subset of $S$, so $S \in \mathcal{P}(S)$.
-            \item True. $\emptyset$ is a subset of any set, so $\emptyset \in \mathcal{P}(S)$.
-        \end{enumerate}
-        
-        \item We induct on the size of $S$.
-
-            Note that the smallest size a set can be is 0, which means that $S$ is the empty set. When $n = 0$, then the only subset of $S$ is the empty set, so $\mathcal{P}(S) = \mathcal{P}(\emptyset) = \{\emptyset\}$, meaning that $\mathcal{P}(\emptyset)$ has 1 element. Hence $|\mathcal{P}(S)| = 1 = 2^0$ in the case where $n = 0$.
-            
-            Now assume that the statement holds for some non-negative integer $k$, meaning that if $|S| = k$ then $|\mathcal{P}(S)| = 2^k$. We want to prove that the statement holds if $|S| = k+1$.
-            
-            Consider a set $S$ with $k + 1$ elements. Since all elements in $S$ are distinct (by definition of a set), pick any element in $S$ and call it the `first element', and call the remaining elements `the rest'. Now any subset of $S$ can either contain the `first element' or not. `The rest' has a power set of order $2^k$ by our inductive hypothesis. Hence, the power set of $S$ has order $2 \times 2^k = 2^{k+1}$, any subset of $S$ can either contain the `first element' or not. This proves the case for $k+1$, and therefore concludes the proof that $|\mathcal{S}(P)| = 2^{n}$ if $|S| = n$.
-    \end{enumerate}
+    \item We note that a positive odd number is of the form $2n - 1$ where $n$ is a positive integer. Setting $a = 2n - 1$; we induct on $n$.
+    
+    When $n = 1$, we have $a^2 - 1 = (2(1) - 1)^2 - 1 = 1 - 1 = 0$ which is clearly a multiple of 8.
+    
+    Assume that the statement holds for some positive integer $k$, i.e. $(2k-1)^2 - 1 = 8m$ for some integer $m$. We show that the statement holds for $k + 1$.
+    
+    We note that $(2k-1)^2 - 1 = 4k^2 - 4k$. Observe
+    \begin{align*}
+        (2(k+1)-1)^2 - 1 &= (2k+1)^2 - 1\\
+        &= 4k^2 + 4k + 1 - 1\\
+        &= (4k^2 - 4k) + 8k\\
+        &= 8m + 8k & \text{(by hypothesis)}\\
+        &= 8(m+k)
+    \end{align*}
+    which means that $(2(k+1)-1)^2 - 1$ is a multiple of 8, proving that the statement holds for $k+1$. By mathematical induction, $a^2 - 1$ is a multiple of 8 for all positive odd integers $a$.
 \end{enumerate}
 
 \addcontentsline{toc}{section}{Chapter 4}
