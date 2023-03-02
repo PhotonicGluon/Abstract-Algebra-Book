@@ -64,7 +64,7 @@ Although algebra has a long history, it has undergone some quite striking change
 
 It is thus the goal of this series of books to provide a step-by-step explanation of core results from abstract algebra; to demystify the core steps that many textbooks skip over when writing proofs. I aim to ensure that the results from such an essential field of study are as accessible, as approachable, and as understandable for as many people as possible.
 
-This volume, in particular, serves to provide the necessary prerequisites needed to engage with the subject material. In particular, this volume covers basic set theory, functions/mappings, elementary number theory, simple modular arithmetic, mathematical logic and proof writing, and mathematical induction. This background should be sufficient to understand the subject material described in the other volumes.
+This volume, in particular, serves to provide the necessary prerequisites needed to engage with the subject material. In particular, this volume covers basic set theory, functions/mappings, mathematical logic and proof writing, elementary number theory, and simple modular arithmetic. This background should be sufficient to understand the subject material described in the other volumes.
 
 \hfill{\textit{27 January, 2023}}
 \newpage
@@ -639,7 +639,7 @@ Usually, when writing a proof by contradiction, we would like to inform the read
     Some authors would also signal the use of contradiction by using the initialism ``BWOC'' (by way of contradiction). 
 \end{remark}
 
-\begin{example}
+\begin{example}\label{example-sqrt2-is-irrational}
     We prove the classic result that ``$\sqrt 2$ is irrational'' via a proof by contradiction.
     \begin{proof}
         By way of contradiction, assume that $\sqrt2 = \frac ab$ for some integers $a$ and $b$. Furthermore let this fraction be fully reduced; in particular, this means that $a$ and $b$ are not both even. Squaring both sides yields $2 = \frac{a^2}{b^2}$, meaning  $a^2 = 2b^2$. Hence $a^2$ is even, so write $a = 2c$ where $c$ is an integer. This leads to $2b^2 = (2c)^2 = 4c^2$ which implies $b^2 = 2c^2$. Hence $b$ is even, which contradicts the fact that $a$ and $b$ are not both even.
@@ -805,8 +805,78 @@ In summary, mathematical induction involves two steps:
     Prove by induction that $a^2 - 1$ is a multiple of 8 for all positive odd integers $a$.
 \end{exercise}
 
-\section{Proving Biconditionals}
-%TODO ADD
+\section{Proving Non-Conditional Statements}
+\subsection{Biconditional Statements}
+Recall that a biconditional statement is a statement like ``$P \iff Q$'', i.e., ``$P$ if and only if $Q$''. We prove such a statement by proving two things:
+\begin{itemize}
+    \item $P \implies Q$; and
+    \item $Q \implies P$.
+\end{itemize}
+Each of these statements may be proved using any of the proof techniques that we covered.
+
+\begin{example}
+    We will prove the biconditional statement ``the integer $n$ is even if and only if $n^2$ is even''.
+    \begin{proof}
+        We prove the forward direction ($n$ is even implies $n^2$ is even) first by using direct proof. Assume that $n$ is even. Then we may write $n = 2k$ where $k$ is an integer. Hence $n^2 = (2k)^2 = 4k^2 = 2(2k^2)$ which is even.
+        We now prove the reverse direction ($n^2$ is even implies $n$ is even) via a proof by contrapositive. Suppose $n$ is \textbf{not} even, meaning $n$ is odd. Hence $n = 2k + 1$ where $k$ is an integer. Observe $n^2 = (2k+1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$ which is odd.
+    \end{proof}
+\end{example}
+\begin{example}
+    Suppose $n$ is an integer. We will prove that ``$n$ is a multiple of 6 if and only if $n$ is a multiple of 2 and $n$ is a multiple of 3''.
+    \begin{proof}
+        We prove the forward direction first (by using direct proof): assume $n$ is a multiple of 6, meaning $n = 6k$ for some integer $k$. Clearly $6k = 2(3k)$ and $6k = 3(2k)$, so $n$ is both a multiple of 2 and 3.
+        
+        We now prove the reverse direction (again using direct proof): assume $n$ is a multiple of 2 and 3, so we may write $n = 2a$ and $n = 3b$ for some integers $a$ and $b$. Then $2a = 3b$. Hence $a = \frac 32 b$ and $b = \frac 23 a$. Since $a$ and $b$ are integers, hence we conclude $b$ is a multiple of 2 and $a$ is a multiple of 3. Write $a = 3p$ and $b = 2q$ where $p$ and $q$ are integers. Hence $n = 2(3p) = 6p$ and $n = 3(2q) = 6q$. In both cases we clearly see $n$ is a multiple of 6.
+    \end{proof}
+\end{example}
+
+\begin{exercise}
+    Let $n$ be an integer. Prove that $n$ is one more than a multiple of 5 if and only if $n$ is of the form $5k - 4$ where $k$ is an integer.
+\end{exercise}
+
+\subsection{Existence Statements}
+Some statements only assert the existence of something. These statements are called \textbf{existence statements} and one only has to provide a particular example that shows it is true. 
+\begin{example}
+    The statement ``there exists an even prime number'' is readily proven by noticing that 2 is an even prime number.
+\end{example}
+\begin{example}
+    The statement ``an integer that can be expressed as the sum of two perfect cubes in two different ways exists'' is proven by giving the example 1729:
+    \begin{itemize}
+        \item $1729 = 1^3 + 12^3$; and
+        \item $1729 = 9^3 + 10^3$.
+    \end{itemize}
+\end{example}
+Note that while an example suffices to prove an existence statement, a single example does not prove a conditional statement.
+\begin{exercise}
+    Prove that a positive integer that is one less than a perfect cube and two less than a perfect square exists.
+\end{exercise}
+Existence proofs fall into two categories: \textbf{constructive} proofs and \textbf{non-constructive} proofs.
+\begin{itemize}
+    \item Constructive proofs display an explicit example that proves the statement. So far, we have only seen constructive proofs.
+    \item Non-constructive proofs prove that an example exists without providing it.
+\end{itemize}
+
+\begin{example}
+    We prove the classic statement that ``there exist irrational $x$ and $y$ such that $x^y$ is rational'' using a non-constructive proof.
+    \begin{proof}
+        Let $x = \sqrt2^{\sqrt2}$ and $y = \sqrt2$. We know that $\sqrt2$ is irrational from \textbf{Example \ref{example-sqrt2-is-irrational}}. Now consider two cases.
+        \begin{itemize}
+            \item If $x$ is rational, then we have found two irrational numbers (namely $\sqrt 2$ and $\sqrt 2$) such that their exponentiation (i.e.,  $\sqrt2^{\sqrt2}$) is rational, proving the claim.
+            \item If $x$ is irrational, then \[x^y = \left(\sqrt2^{\sqrt2}\right)^{\sqrt2} = (\sqrt2)^{\sqrt2 \times \sqrt2} = (\sqrt2)^2 = 2\]
+            is rational.
+        \end{itemize}
+        Hence, either way, we have an irrational number to an irrational power that is rational.
+    \end{proof}
+    Notice that we did not explicitly prove whether $\sqrt2^{\sqrt2}$ is rational or irrational; we just showed that either case leads to a case where two irrational numbers, when exponentiated, results in a rational number.
+\end{example}
+
+\begin{exercise}
+    Let $x = \sqrt2$ and $y = 2\log_2{3}$. It may be assumed that $\sqrt2$ is irrational.
+    \begin{enumerate}[label=(\roman*)]
+        \item Prove that $y$ is irrational.
+        \item Produce a constructive proof that there exist irrational $x$ and $y$ such that $x^y$ is rational.
+    \end{enumerate}
+\end{exercise}
 
 %=========================================
 \chapter{Number Theory}
@@ -1169,6 +1239,21 @@ The operation of congruence modulo $n$ has a few properties which we will state 
         &= 8(m+k)
     \end{align*}
     which means that $(2(k+1)-1)^2 - 1$ is a multiple of 8, proving that the statement holds for $k+1$. By mathematical induction, $a^2 - 1$ is a multiple of 8 for all positive odd integers $a$.
+    
+    \item We prove the forward direction using direct proof. Assume $n$ is one more than a multiple of 5. Then we may write $n = 5a + 1$ where $a$ is an integer. Note $5a + 1 = 5a + (5 - 4) = (5a + 5) - 4 = 5(a+1) - 4$. Setting $k = a+1$ yields required result.
+    
+    We now prove the reverse direction, again using direct proof. Assume $n = 5k - 4$. Observe $5k - 4 = 5k - 5 + 1 = 5(k-1) + 1$, meaning $n$ is one more than a multiple of 5.
+    
+    \item The number 7 satisfies this as $7 = 2^3 - 1$ and $7 = 3^2 - 2$.
+    
+    \item \begin{enumerate}[label=(\roman*)]
+        \item We use a proof by contradiction to prove this claim. Seeking a contradiction, assume $y$ is rational. Write $y = \frac pq$ where $p$ and $q$ are integers. Note $2^y = 2^{\frac pq}$ and $2^y = 2^{2\log_2{3}} = 9$. Hence $2^{\frac pq} = 9$ meaning $2^p = 9^q$. However $2^p$ is always even and $9^q$ is always odd, a contradiction.
+        \item Note
+        \[
+            x^y = (\sqrt2)^{2\log_2{3}} = \left(\sqrt{2}^2\right)^{\log_2{3}} = 2^{\log_2{3}} = 3        
+        \]
+        which is rational.
+    \end{enumerate}
 \end{enumerate}
 
 \unsection{Chapter 4}
