@@ -523,13 +523,216 @@ We also note that $\lnot(P \implies Q) = P \land \lnot Q$. We leave verifying th
     \end{enumerate}
 \end{exercise}
 
-\section{Proving Conditional Statements}
-%TODO ADD
+\section{Hierarchy of Mathematical Results}
+Mathematical statements often have a certain 'tier' attached to them. We look at the hierarchy of some of these 'tiers'.
+\begin{itemize}
+    \item \textbf{Proposition}: A proposition can be thought of as a general proven result. Equivalent names for a proposition can be ``\textbf{Claim}'' or ``\textbf{Observation}''.
+    \item \textbf{Lemma}: A lemma can be thought of as a 'small' proven result that can help build other mathematical results. For example, Euclid's lemma that ''if a prime $p$ divides the product $ab$ of two integers $a$ and $b$, then $p$ must divide at least one of those integers $a$ or $b$'' is used in the proof of the Fundamental Theorem of Arithmetic.
+    \item \textbf{Theorem}: A theorem can be thought of as a 'big' proven result. For example, the Fundamental Theorem of Arithmetic is core to arithmetic as it describes how integers can be uniquely decomposed into its prime factors.
+    \item \textbf{Corollary}: A corollary is said to be a 'follow-up result' from a theorem. These results usually follow 'very quickly' from a theorem or a proposition. For example, the AM-GM inequality is a corollary of the Pythagorean theorem.
+    \item \textbf{Conjecture}: A conjecture is a mathematical statement whose truth or falsity is not known.
+\end{itemize}
 
-\section{Proof by Contradiction}
-%TODO ADD
+\newpage
 
-\section{Mathematical Induction}
+\section{Mathematical Proof Techniques}
+\subsection{Direct Proof}
+In essence, a direct proof for the statement ``if $P$ then $Q$'' would involve
+\begin{enumerate}
+    \item supposing $P$ is true, (Usually written as ``suppose $P$'')
+    \item unpacking $P$ via definitions; make appropriate calculations and logical arguments; repack $Q$ via definition,
+    \item concluding that $Q$ is true. (Usually written as ``thus $Q$'')
+\end{enumerate}
+\begin{example}
+    We look at a proof of the statement ``if $n \in \mathbb{Z}$ is odd then $n^2$ is odd''.
+    \begin{proof}
+        Suppose $n\in\mathbb{Z}$ is an odd number.
+        
+        Then $n$ can be written in the form $n = 2k + 1$ where $k$ is an integer. Hence $n^2 = (2k+1)^2 = 4k^2 + 4k + 1$. Note $4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$, so $n^2$ is one more than a multiple of 2.
+        
+        Thus $n^2 = 2(2k^2 + 2k) + 1$ is odd.
+    \end{proof}
+\end{example}
+
+\begin{example}
+    We look at a proof of the statement ``if $n$ is an integer then $1 + (-1)^n(2n-1)$ is a multiple of 4''.
+    \begin{proof}
+        Suppose $n$ is an integer. Then, $n$ is either odd or even. We look at two cases.
+        \begin{itemize}
+            \item When $n$ is odd, $(-1)^n = -1$ and $n = 2k+1$ for some integer $k$. Thus
+            \[
+                1 + (-1)^n(2n-1) = 1 - (2(2k+1)-1) = -4k
+            \]
+            which is a multiple of 4.
+            \item When $n$ is even, $(-1)^n = 1$ and $n = 2k$ for some integer $k$. Thus
+            \[
+                1 + (-1)^n(2n-1) = 1 + (2(2k)-1) = 4k
+            \]
+            which is a multiple of 4.
+        \end{itemize}
+        Hence, in both cases, $1 + (-1)^n(2n-1)$ is a multiple of 4.
+    \end{proof}
+\end{example}
+
+\begin{exercise}
+    Prove that $m + n$ is even if the integers $m$ and $n$ have the same parity (i.e., both odd or both even). 
+\end{exercise}
+
+\subsection{Contrapositive Proof}
+We now look at a \textbf{contrapositive proof}. Recall that $(P \implies Q) = (\lnot Q \implies \lnot P)$. Hence, a contrapositive proof for the statement ``if $P$ then $Q$'' would involve
+\begin{enumerate}
+    \item supposing $\lnot Q$ is true,
+    \item working towards showing that $\lnot P$ is true,
+    \item concluding that $\lnot P$ is true.
+\end{enumerate}
+
+Generally, we would want to prove in the direction from simplicity to complexity. So if $P$ is more complex then $Q$, we may consider using a contrapositive proof.
+
+\begin{example}\label{example-if-(n-1)(n-5)-is-even-then-n-is-odd}
+    Suppose $n$ is an integer. We prove the statement ``if $n^2 - 6n + 5$ is even, then $n$ is odd''. We note that a direct proof would be tedious and problematic. Using a contrapositive proof would be easier.
+    
+    We first note that the contrapositive statement that we want to prove is ``if $n$ is \textbf{not} odd, then $n^2 - 6n + 5$ is \textbf{not} even'', that is, ``if $n$ is even, then $n^2 - 6n + 5$ is odd''.
+    \begin{proof}
+        We consider a proof by contrapositive.
+        
+        Suppose $n$ is even. Then $n = 2k$ where $k$ is an integer. Note
+        \begin{align*}
+            n^2 - 6n + 5 &= (2k)^2 - 6(2k) + 5\\
+            &= 4k^2 - 12k + 5\\
+            &= (4k^2 - 12k + 4) + 1\\
+            &= 2(2k^2 - 6k + 2) + 1
+        \end{align*}
+        which means that $n^2 - 6n + 5$ is one more than a multiple of 2, which hence means $n^2 - 6n + 5$ is odd.
+    \end{proof}    
+\end{example}
+
+\begin{example}
+    Suppose $x$ and $y$ are real numbers. We prove the statement ``$x \leq y$ if $x^3 + xy^2 \leq x^2t + y^3$'' using a contrapositive proof.
+    
+    We first note that the contrapositive statement that we want to prove is ``if $x > y$ then $x^3 + xy^2 > x^2y + y^3$''.
+    \begin{proof}
+        We consider a proof by contrapositive.
+        
+        Assume $x > y$. Then $x - y > 0$. Also, since $x > y$, thus $x$ and $y$ are not both zero. Hence $x^2 + y^2 > 0$.
+        Observe
+        \[
+            (x-y)(x^2+y^2) > 0 \times (x^2+y^2) = 0        
+        \]
+        so $(x-y)(x^2+y^2) = x^3 + xy^2 - x^2y - y^3 > 0$. Therefore $x^3 + xy^2 > x^2y + y^3$.
+    \end{proof}
+\end{example}
+
+\begin{exercise}
+    Suppose that $a$ and $b$ are integers. Prove that $a$ is even or $b$ is odd if $a(b^2 + 5)$ is even.
+\end{exercise}
+
+\subsection{Proof by Contradiction}
+The third proof technique is called a \textbf{proof by contradiction}. This method can be used to prove any kind of statement. The basic idea is to assume that the statement we want to prove is false, and then show that this assumption leads to a contradiction. A proof by contradiction for the statement ``$P$'' (yes, just $P$) would involve
+\begin{enumerate}
+    \item supposing $\lnot P$ is true,
+    \item working towards forming a statement $C$ such that another statement $C \land \lnot C$ is formed,
+    \item observing that $C \land \lnot C$ is impossible (since $C \land \lnot C$ is always false),
+    \item concluding that $P$ is true.
+\end{enumerate}
+Usually, when writing a proof by contradiction, we would like to inform the reader that a proof by contradiction is being employed. Language such as ``by way of contradiction'', ``towards a contradiction'', ``suppose for the sake of contradiction'' etc. may be used to signpost the use of a proof by contradiction.
+\begin{remark}
+    Some authors would also signal the use of contradiction by using the initialism ``BWOC'' (by way of contradiction). 
+\end{remark}
+
+\begin{example}
+    We prove the classic result that ``$\sqrt 2$ is irrational'' via a proof by contradiction.
+    \begin{proof}
+        By way of contradiction, assume that $\sqrt2 = \frac ab$ for some integers $a$ and $b$. Furthermore let this fraction be fully reduced; in particular, this means that $a$ and $b$ are not both even. Squaring both sides yields $2 = \frac{a^2}{b^2}$, meaning  $a^2 = 2b^2$. Hence $a^2$ is even, so write $a = 2c$ where $c$ is an integer. This leads to $2b^2 = (2c)^2 = 4c^2$ which implies $b^2 = 2c^2$. Hence $b$ is even, which contradicts the fact that $a$ and $b$ are not both even.
+        
+        Hence, $\sqrt 2$ is irrational.
+    \end{proof}
+\end{example}
+\begin{remark}
+    It is not necessary to have the final statement that ``$\sqrt 2$ is irrational'' (or, more generally, ``$P$ is true'') as it is implied from the proof by contradiction.
+\end{remark}
+
+\begin{example}
+    We prove the statement that ``for every positive rational number $x$, there exists a positive rational number $y$ such that $y < x$'' by way of contradiction.
+    
+    We note that the negation of the above statement is ``there exists a rational number $x$ such that for every positive rational number $y$ we have $y \geq x$''.
+    \begin{proof}
+        Suppose for the sake of contradiction that there exists a rational number $x$ such that for every positive rational number $y$ we have $y \geq x$. Write $x = \frac pq$ where $p$ and $q$ are positive integers.
+        
+        Now consider the rational number $\frac{p-1}{q}$. Clearly $\frac{p-1}{q} < \frac pq = x$. By assumption, every positive rational number $y$ satisfies $y \geq x$. Hence, $\frac{p-1}{q}$ is non-positive, meaning $\frac{p-1}{q} \leq 0$. Since $q$ is non-zero, hence $p - 1 \leq 0$ which means $p \leq 1$. But as $p$ is a positive integer, we conclude $p = 1$. Hence $x = \frac 1q$.
+        
+        We now consider the rational number $\frac{1}{q+1}$. Clearly $\frac{1}{q+1} < \frac{1}{q} = x$. By assumption we must conclude that $\frac{1}{q+1}$ is non-positive. However, $1 > 0$ and $q + 1 > 0$, so $\frac{1}{q+1}$ is positive. Hence we have the fact that $\frac{1}{q+1}$ is positive and non-positive simultaneously, leading to a contradiction.
+    \end{proof}
+\end{example}
+\begin{remark}
+    The statement is one statement where a direct proof would be easier.
+    \begin{proof}
+        Since $x$ is a positive rational number write $x = \frac pq$ where $p$ and $q$ are positive integers. Then set $y = \frac{p}{q+1}$. Clearly $\frac{p}{q+1} < \frac{p}{q} = x$ and $\frac{p}{q+1}$ is positive, hence we have found a $y$ such that $y < x$.
+    \end{proof}
+    However, we use this statement as an example for how a proof by contradiction can be constructed.
+\end{remark}
+
+\begin{exercise}
+    Prove that there exist no integers $a$ and $b$ such that $2a + 4b = 1$.
+\end{exercise}
+
+We now look at a proof by contradiction for conditional statements. Recall that $(\lnot(P \implies Q)) = (P \land \lnot Q)$. Hence, to prove the statement ``if $P$ then $Q$'', we would
+\begin{enumerate}
+    \item suppose that $P \land \lnot Q$ is true,
+    \item work towards a statement $c$ such that another statement $C \land \lnot C$ is formed,
+    \item observe that $C \land \lnot C$ is impossible,
+    \item conclude that $P \implies Q$.
+\end{enumerate}
+
+\begin{example}
+    Suppose $a$ and $b$ are real numbers. We prove the statement ``if $a$ is rational and $ab$ is irrational then $b$ is irrational'' using a proof by contradiction.
+    
+    We note that the statement we want to contradict is ``$a$ is rational and $ab$ is irrational \textbf{and} $b$ is \textbf{not} irrational'', i.e. ``$a$ is rational and $ab$ is irrational and $b$ is rational''.
+    \begin{proof}
+        By way of contradiction assume $a$ is rational and $ab$ is irrational and $b$ is rational. We may then write $a = \frac mn$ and $b = \frac pq$ where $m, n, p, q \in \mathbb{Z}$. Hence $ab = \left(\frac mn\right)\left(\frac pq\right) = \frac{mp}{nq}$ which is clearly rational. Therefore we have that $ab$ is irrational (by assumption) and $ab$ is rational, a contradiction.
+    \end{proof}
+\end{example}
+
+\begin{example}
+    Suppose $a$, $b$, and $c$ are integers. We prove the statement that ``if $a^2 + b^2 = c^2$ then at least one of $a$ or $b$ is even'' using a proof by contradiction.
+    
+    We note that the statement we want to contradict is ``$a^2 + b^2 = c^2$ \textbf{and not} (at least one of $a$ or $b$ is even)'', i.e. ``$a^2 + b^2 = c^2$ \textbf{and} both $a$ and $b$ are odd''.
+    \begin{proof}
+        Seeking a contradiction, assume that $a^2 + b^2 = c^2$ and both $a$ and $b$ are odd. Thus we may write $a = 2m + 1$ and $b = 2n + 1$ where $m$ and $n$ are integers. Hence
+        \begin{align*}
+            a^2 + b^2 &= (2m+1)^2 + (2n+1)^2\\
+            &= (4m^2+4m+1) + (4n^2+4n+1)\\
+            &= 4m^2 + 4n^2 + 4m + 4n + 2
+            &= 2(2m^2 + 2n^2 + 2m + 2n +1)
+        \end{align*}
+        which means that $c^2 = a^2 + b^2$ is even. Hence $c$ is even, which means we may write $c = 2k$ where $k$ is an integer. This leads to
+        \[
+            c^2 = 4k^2 = 2(2m^2 + 2n^2 + 2m + 2n + 1) = a^2 + b^2.
+        \]
+        Clearly $4k^2$ is a multiple of 4, while $2(2m^2 + 2n^2 + 2m + 2n + 1)$ is not. Yet, they are equal to each other, a contradiction.
+    \end{proof}
+\end{example}
+
+\begin{exercise}
+    By way of contradiction, prove that $\frac{a+b}{2} \geq \sqrt{ab}$ if $a$ and $b$ are positive real numbers.
+\end{exercise}
+
+Despite the power of proof by contradiction, it's best to use it only when the direct and contrapositive approaches do not seem to work.
+\begin{example}
+    Suppose $n$ is an integer. We prove the statement ''if $n^2 - 6n + 5$ is even then $n$ is odd`` using a proof by contradiction.
+    \begin{proof}
+        Working towards a contradiction, assume $n^2 - 6n + 5$ is even and $n$ is \textbf{not} odd, i.e. $n$ is even. Then $n = 2k$ for some integer $k$. Note that
+        \begin{align*}
+            n^2 - 6n + 5 &= (2k)^2 - 6(2k) + 5\\
+            &= 4k^2 - 12k + 5\\
+            &= (4k^2 - 12k + 4) + 1\\
+            &= 2(2k^2 - 5k + 2) + 1
+        \end{align*}
+        which means that $n^2 - 6n + 5$ is odd. Hence, $n^2 - 6n + 5$ is even (by assumption) and $n^2 - 6n + 5$ is odd (as above), a contradiction.
+    \end{proof}
+    While there is nothing wrong with this proof, notice that part of it assumes that $n$ is even and concludes that  $n^2 - 6n + 5$ is odd, which is the contrapositive approach done in \textbf{Example \ref{example-if-(n-1)(n-5)-is-even-then-n-is-odd}}.
+\end{example}
+
+\subsection{Proof by Mathematical Induction}
 Mathematical induction is a method for proving that a proposition $P_n$ is true for every positive integer $n$, that is, that the infinitely many cases $P_1, P_2, P_3, \dots,$ all hold. Informal metaphors help to explain this technique, such as falling dominoes or climbing a ladder:
 \begin{quote}
     Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the base case) and that from each rung we can climb up to the next one (the induction step).
@@ -609,6 +812,8 @@ In summary, mathematical induction involves two steps:
         \item Suppose $|S| = n$. Prove by induction that $|\mathcal{P}(S)| = 2^n$ for all sets $S$.
     \end{enumerate}
 \end{exercise}
+
+\section{Proving Biconditionals}
 
 %=========================================
 \chapter{Number Theory}
@@ -924,6 +1129,41 @@ The operation of congruence modulo $n$ has a few properties which we will state 
         then the given statement is $P \implies Q$ as required.
         \item $(x \in \mathbb{R}) \land (x \neq 0) \land (\forall y \in \mathbb{R}, xy \neq 1)$
     \end{enumerate}
+    
+    \item Suppose that $m$ and $n$ have the same parity. We split into two cases.
+    \begin{itemize}
+        \item If both $m$ and $n$ are even, then we may write $m = 2a$ and $n = 2b$ where $a$ and $b$ are integers. Hence
+        \[
+            m + n = 2a + 2b = 2(a+b)        
+        \]
+        which clearly means that $m + n$ is even.
+        \item If both $m$ and $n$ are odd, then we may write $m = 2a + 1$ and $n = 2b + 1$ where $a$ and $b$ are integers. Hence
+        \[
+            m + n = (2a + 1) + (2b + 1) = 2(a + b + 1)        
+        \]
+        which clearly means that $m+n$ is even.
+    \end{itemize}
+    Hence in both cases $m + n$ is even.
+    
+    \item We consider a proof by contrapositive; the statement that we want to prove is ''if \textbf{not} ($a$ is even or $b$ is odd) then $a(b^2+5)$ is \textbf{not} even''. That is, ''if $a$ is \textbf{not} even \textbf{and} $b$ is \textbf{not} odd then $a(b^2+5)$ is \textbf{not} even'', meaning ''if $a$ is odd and $b$ is even then $a(b^2+5)$ is odd''.
+    
+    Suppose that $a$ is odd and $b$ is even. Then we may write $a = 2m + 1$ and $b = 2n$ where $m$ and $n$ are integers. Hence
+    \begin{align*}
+        a(b^2+5) &= (2m+1)\left((2n)^2 + 5\right)\\
+        &= (2m+1)(4n^2 + 5)\\
+        &= 8mn^2 + 10m + 4n^2 + 5\\
+        &= 8mn^2 + 10m + 4n^2 + 4 + 1\\
+        &= 2(4mn^2 + 5m + 2n^2 + 2) + 1
+    \end{align*}
+    which clearly means that $a(b^2+5)$ is odd.
+    
+    \item By way of contradiction assume there exist integers $a$ and $b$ such that $2a + 4b = 1$. Then dividing both sides by 2 leads to $a + 2b = \frac12$. Note the left hand side is clearly and integer, while the right hand side is not an integer, a contradiction.
+    
+    \item By way of contradiction assume that $a$ and $b$ are positive real numbers, and $\frac{a+b}{2} < \sqrt{ab}$. This means $a+b<2\sqrt ab$. Squaring both sides yields $(a+b)^2 < 4ab$. Note
+    \[
+        (a+b)^2 = a^2 + 2ab + b^2 < 4ab    
+    \]
+    which implies $a^2 + b^2 < 2ab$, leading to $a^2 - 2ab + b^2 < 0$. However $a^2 - 2ab + b^2 = (a-b)^2 \geq 0$ for all positive real numbers $a$ and $b$. Hence we have $(a-b)^2 < 0$ and $(a-b)^2 \geq 0$, a contradiction.
     
     \item \begin{enumerate}[label=(\roman*)]
         \item \begin{enumerate}[label=(\alph*)]
