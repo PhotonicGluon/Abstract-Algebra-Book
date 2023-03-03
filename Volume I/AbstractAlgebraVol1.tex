@@ -1171,15 +1171,20 @@ Note that, as per usual, we suppress the operation $\star$ and just write $(xN)(
     Let $G$ be a finite group with even order. Show that there exists an element with order 2 in $G$.
 \end{problem}
 
-\begin{problem}\label{problem-subgroup-of-index-2-is-normal}
-    Let $G$ be a finite group and $H \leq G$. If the index of $H$ in $G$ is 2, prove that $H \lhd G$.
+\begin{problem}\label{problem-subgroup-of-index-2}
+    Let $G$ be a finite group. Suppose $H < G$ such that the index of $H$ in $G$ is 2. Prove that
+    \begin{enumerate}[label=(\roman*)]
+        \item $H \lhd G$;
+        \item $H$ contains the squares of all elements of $G$; and
+        \item an element $x \in G$ is in $H$ if $x$ has odd order.
+    \end{enumerate}
 \end{problem}
 
 \begin{problem}\label{problem-intersection-of-coprime-subgroups}
     Let $G$ be a finite group, $H \leq G$, and $K \leq G$. Suppose the greatest common divisor (GCD) of the order of $H$ and the order of $K$ is 1. Show that the intersection of the groups $H$ and $K$ contains only the identity.
 \end{problem}
 
-\begin{problem}
+\begin{problem}\label{problem-smallest-nonabelian-group}
     Let $G$ be a finite group, and let its order be $m$.
     \begin{enumerate}[label=(\alph*)]
         \item Find the smallest value of $m$ such that $G$ is non-abelian.
@@ -2832,7 +2837,7 @@ One sees clearly that in this definition, $\alpha = i$ and $\beta = j$.
 
 \begin{exercise}\label{exercise-normal-subgroups-of-quarternion-group}
     Find all the normal subgroups of the quaternion group $\mathrm{Q}$.\newline
-    (\textit{Hint: consider \textbf{Problem \ref{problem-subgroup-of-index-2-is-normal}}}.)
+    (\textit{Hint: consider \textbf{Problem \ref{problem-subgroup-of-index-2}}}.)
 \end{exercise}
 
 \section{Alternating Group}
@@ -2986,7 +2991,7 @@ We are now ready to look at the alternating group.
     \]
 \end{definition}
 
-\begin{proposition}
+\begin{proposition}\label{prop-An-normal-subgroup-of-Sn}
     $\An{n} \lhd \Sn{n}$ where $n > 1$.
 \end{proposition}
 \begin{proof}
@@ -5057,7 +5062,8 @@ We can now introduce and prove the Jordan-H\"older Theorem.
 \end{problem}
 
 \begin{problem}
-    Find the unique composition series of $\Sn{4}$ (up to isomorphism).
+    Find the unique composition series of $\Sn{4}$ (up to isomorphism).\newline
+    (\textit{Hint: consider the orders of elements in $\An{4}$ and \textbf{Problem \ref{problem-subgroup-of-index-2}} to prove why a particular subgroup with a particular order cannot exist.})
 \end{problem}
 
 %=========================================
@@ -5168,7 +5174,7 @@ We can now introduce and prove the Jordan-H\"older Theorem.
         \end{itemize}
     \end{enumerate}
 
-    \item Let $x$ be in $g_1H \cap g_2H$. Then $x \in g_1H$ and $x \in g_2H$ simultaneously. Hence, $x = g_1h = g_2\hat{h}$ for some $h$ and $\hat{h}$ in $H$. Thus by rearrangement, $g_2^{-1}g_1 = \hat{h}h^{-1} \in H$. By coset equality lemma (in particular, statement 5), $g_1H = g_2H$.
+    \item Let $x$ be in $g_1H \cap g_2H$. Then $x \in g_1H$ and $x \in g_2H$ simultaneously. Hence, $x = g_1h = g_2\hat{h}$ for some $h$ and $\hat{h}$ in $H$. Thus by rearrangement, $g_2^{-1}g_1 = \hat{h}h^{-1} \in H$. By Coset Equality lemma (\textbf{Lemma \ref{lemma-coset-equality}}), statements 1 and 5, $g_1H = g_2H$.
 
     \item Note that $|G| = 99$ and $|H| = 3$, so $[G:H] = 99 \div 3 = 33$ by Lagrange's theorem.
 
@@ -5338,7 +5344,7 @@ We can now introduce and prove the Jordan-H\"older Theorem.
     \item We show that all subgroups of $\mathrm{Q}$ are, in fact, normal. We consider the first definition of the quaternion group.
     \begin{itemize}
         \item Clearly $\{1\} \lhd \mathrm{Q}$ and $\mathrm{Q} \lhd \mathrm{Q}$.
-        \item The subgroups $\langle i\rangle$, $\langle j\rangle$, and $\langle k\rangle$ have order 4, so they have index 2 by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Hence by \textbf{Problem \ref{problem-subgroup-of-index-2-is-normal}} these subgroups are normal.
+        \item The subgroups $\langle i\rangle$, $\langle j\rangle$, and $\langle k\rangle$ have order 4, so they have index 2 by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Hence by \textbf{Problem \ref{problem-subgroup-of-index-2}} these subgroups are normal.
         \item Consider the subgroup $\langle -1 \rangle = \{1, -1\}$. \begin{itemize}
             \item $1\langle -1 \rangle = \langle -1 \rangle1$ since 1 is the identity;
             \item $-1\langle -1 \rangle = \{1, -1\} = \langle -1 \rangle(-1)$;
@@ -5708,12 +5714,23 @@ We can now introduce and prove the Jordan-H\"older Theorem.
 
     Therefore, we contradicted our original premise that a finite group with even order does not have an element with order 2. Hence, there must be an element in $G$ with order 2.
 
-    \item Let $xH$ be a coset in $G$. Since cosets partition $G$, either $xH = H$ or $xH = G \setminus H$ (since there are only two distinct cosets).
+    \item \begin{enumerate}[label=(\roman*)]
+        \item Let $xH$ be a coset in $G$. Since cosets partition $G$, either $xH = H$ or $xH = G \setminus H$ (since there are only two distinct cosets).
     \begin{itemize}
             \item If $xH = H$, then $x$ is in $H$, meaning $xH = H = Hx$.
             \item If $xH \neq H$, then $x \in G \setminus H$. Hence $xH = G \setminus H = Hx$.
     \end{itemize}
     Therefore $H$ is a normal subgroup of $G$, i.e. $H \lhd G$.
+        \item Note that $G/H$ is a group since $H \lhd G$. Also since $[G:H] = 2$ thus $|G/H| = 2$.
+        
+        If $x \in G$ then $x^2H = (xH)^2 = H$ since the order of $G/H$ is 2, meaning that any non-identity element inside it (like $xH$) has an order of at most 2. Therefore by Coset Equality lemma (\textbf{Lemma \ref{lemma-coset-equality}}) ,statements 1 and 4, since $x^2H = H$, thus $x^2 \in H$.
+        
+        \item Suppose $x$ has odd order. Write $|x| = 2k - 1$ where $k$ is a positive integer. Hence $x^{2k-1} = e \in H$ since $H < G$. Therefore
+        \[
+            x = x^{2k} = \left(x^k\right)^2 \in H        
+        \]
+        which means $x \in H$.
+    \end{enumerate}
 
     \item Suppose we have an element $x \in H \cap K$, meaning that $x \in H$ and $x \in K$. By a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}), the order of $x$ must divide the order of its group. Hence, $|x|$ divides $|H|$ and $|x|$ divides $|K|$ simultaneously, meaning that $|x| = \gcd(|H|, |K|)$. But the GCD of the orders of both subgroups is 1. Hence, $|x| = 1$, meaning the only element in the intersection $H \cap K$ is the identity $e$.
 
@@ -6376,7 +6393,43 @@ We can now introduce and prove the Jordan-H\"older Theorem.
         \item By Jordan-H\"older theorem (\textbf{Theorem \ref{thrm-jordan-holder}}), the composition factors are isomorphic to each other. We note $\Cn{2} / 1 \cong \Cn{2}$, $\Cn{4} / \Cn{2} \cong \Cn{2}$ (by \textbf{Exercise \ref{exercise-Zmn-mod-Zn-cong-Zn}}), and $\mathrm{V} / \Cn{2} \cong (\Cn{2})^2 / \Cn{2} \cong \Cn{2}$ (by \textbf{Problem \ref{problem-cartesian-product-of-group-by-group-isomorphic-to-group}}). The only unaccounted set of factors is $\mathrm{Q}/\mathrm{V}$ and $\mathrm{Q}/\Cn{4}$. So, either $\mathrm{Q}/\mathrm{V} \cong \Cn{2}$ and $\mathrm{Q}/\Cn{4} \cong \Cn{2}$, or $\mathrm{Q}/\mathrm{V} \cong \mathrm{Q}/\Cn{4}$. Hence $\mathrm{Q}/\mathrm{V} \cong \mathrm{Q}/\Cn{4}$ (or, more accurately, $\mathrm{Q}/H \cong \mathrm{Q}/K$).
     \end{enumerate}
     
-    \item %TODO ADD
+    \item We know that $\An{4} \lhd \Sn{4}$ by \textbf{Proposition \ref{prop-An-normal-subgroup-of-Sn}}. Note $\An{4}$ is a maximal normal subgroup since $|\An{4}| = \frac{4!}2 = 12$ by \textbf{Proposition \ref{prop-order-of-An}}, and Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) says that a subgroup's order must divide the order of the group. Now applying Lagrange on $\An{4}$, we see that the possible orders of a subgroup of $\An{4}$ are 6, 4, 3, 2, and 1.
+    
+    We claim that a subgroup of order 6 does not exist. Note that $\An{4}$ contains
+    \begin{itemize}
+        \item 1 element of order 1;
+        \item 3 elements of order 2; and
+        \item 8 elements of order 3.
+    \end{itemize}
+    If a subgroup of order 6 exists (say, $H$), then its index would be $\frac{12}{6} = 2$ (Lagrange), meaning $H$ contains all odd order elements (\textbf{Problem \ref{problem-subgroup-of-index-2}}). However, there are $1 + 8 = 9$ odd order elements, meaning that $H$ has an order of at least 9, a contradiction. Hence a subgroup of $\An{4}$ of order 6 is impossible.
+    
+    Now we note that a subgroup of order $4 = 2^2$ exists by the First Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-1}}) as it is a Sylow 2-subgroup. The Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}) tells us how many Sylow 2-subgroups there are:
+    \begin{itemize}
+        \item $n_2 \vert 3$, so $n_2$ is 1 or 3; and
+        \item $n_2 \equiv 1 \pmod2$, so $n_2 \in \{1, 3, 5, \dots\}$.
+    \end{itemize}
+    Hence $n_2$ is either 1 or 3. Now if $n_2 = 3$, then the number of elements of order of 1, 2, or 4 is
+    \[
+        3 \times (4 - 1) + 1 = 10
+    \]
+    (where the 3 is $n_2$, the $4-1$ is the number of non-identity elements in each Sylow 2-subgroup, and the $+1$ is to add the identity element). However, as noted above, there are only 4 elements of order 1, 2, or 4, a contradiction. Hence $n_2 = 1$, meaning the Sylow 2-subgroup (which is a subgroup of order 4) is normal (\textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}). Therefore the subgroup of order 4 is the maximal normal subgroup of $\An{4}$.
+    
+    We note that the subgroup of order 4 of $\An{4}$ is not $\Cn{4}$ (as this would imply that $\An{4}$ has an element of order 4, which it does not). Hence, from \textbf{Problem \ref{problem-smallest-nonabelian-group}}, the subgroup of order 4 must be isomorphic to the Klein-4 group, $\mathrm{V}$.
+    
+    Note that a group of order 4 has a subgroup of order 2 by Cauchy's Theorem (\textbf{Theorem \ref{thrm-cauchy}}). Clearly such a subgroup is cyclic (since 2 is prime), and has index $\frac42 = 2$, meaning that it is normal in the group of order 4. Furthermore the trivial group is always a subgroup of any group.
+    
+    Hence, the composition series for $\Sn{4}$, up to isomorphism, is
+    \[
+        1 \lhd \Cn{2} \lhd \mathrm{V} \lhd \An{4} \lhd \Sn{4}.   
+    \]
+    \begin{remark}
+        We list the actual subgroups that are isomorphic to the above terms in the composition series here.
+        \begin{itemize}
+            \item $\Cn{2}$: $\{e, \begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}3&4\end{pmatrix}\}$
+            \item V: $\{e, \begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}3&4\end{pmatrix}, \begin{pmatrix}1&3\end{pmatrix}\begin{pmatrix}2&4\end{pmatrix}, \begin{pmatrix}1&4\end{pmatrix}\begin{pmatrix}2&3\end{pmatrix}\}$
+            \item $\An{4}$ is an actual subgroup of $\Sn{4}$
+        \end{itemize}
+    \end{remark}
 \end{enumerate}
 
 %=========================================
