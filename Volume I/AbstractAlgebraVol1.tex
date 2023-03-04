@@ -5054,8 +5054,35 @@ We can now introduce and prove the Jordan-H\"older Theorem.
 
 %=========================================
 \chapter{Simple Groups}
+Simple groups can be thought of as the `building blocks' of all types of (finite) groups. We look at the classification of some of the families of these simple groups here.
+
 \section{Cyclic Groups of Prime Order}
 \subsection{Proving Simplicity}
+The first infinite family of simple groups we will look at is the family of \textbf{Cyclic Groups of Prime Order}.
+
+\begin{lemma}\label{lemma-cyclic-group-simple-iff-order-is-prime}
+    $\Cn{n}$ is simple if and only if $n$ is prime.
+\end{lemma}
+
+\begin{proof}
+    We prove the forward direction. Suppose $\Cn{n}$ is simple with generator $g$. Then the only normal subgroups of $\Cn{n}$ are the trivial group and the group itself. Seeking a contradiction, assume $n$ is not prime; write $n = ab$ where $a$ and $b$ are positive integers that are both smaller than $n$. Then clearly $\langle g^a\rangle$ is a subgroup of $\Cn{n}$. Now $\Cn{n}$ is abelian (\textbf{Proposition \ref{prop-cyclic-group-is-abelian}}) which means all subgroups are normal (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}). Hence we have found another normal subgroup of $\Cn{n}$, contradicting that $\Cn{n}$ only has two normal subgroups. Therefore $n$ is prime.
+    
+    We prove the reverse direction. Suppose $n$ is a prime. Then by a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-group-with-prime-order-subgroups}}), $\Cn{n}$ has no proper subgroups. So, the only subgroup with order smaller than $n$ is the trivial group, $\{e\}$. Clearly $\Cn{n}$ is normal in itself, and the trivial group is always a normal subgroup. Hence, as the only normal subgroups of $\Cn{n}$ is the trivial group and itself, $\Cn{n}$ is simple. Therefore, if $n$ is prime then $\Cn{n}$ is simple.
+\end{proof}
+
+In fact, we have a much stronger result which we prove here.
+\begin{theorem}\label{thrm-abelian-group-simple-iff-cylic-group-of-prime-order}
+    An abelian group is simple if and only if it has prime order.
+\end{theorem}
+Note that we do not assume that the abelian group is finite; we will show that the group is, in fact, finite in the proof.
+\begin{proof}
+    The reverse direction follows immediately from \textbf{Lemma \ref{lemma-cyclic-group-simple-iff-order-is-prime}}, so we only prove the forward direction.
+    
+    Suppose $G$ is a simple abelian group; we show that $G$ is finite. Suppose $g \in G$ such that $g \neq e$. Then the group $H = \langle g \rangle \leq G$. In fact, since $G$ is abelian, $H \unlhd G$ (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}), therefore $H = G$ as $G$ is simple. Now if $G$ is an infinite group, then $\langle g^2 \rangle < G$ which implies $\langle g^2 \rangle \lhd G$, contradicting the fact that $G$ is simple. Hence $G$ is a finite abelian group with generator $g$, meaning $G$ is cyclic. Result follows directly from \textbf{Lemma \ref{lemma-cyclic-group-simple-iff-order-is-prime}}.
+\end{proof}
+
+From this, we have found that the only family of simple abelian groups is the family of cyclic groups of prime order.
+
 \subsection{Structure of A Finite Abelian Group}
 
 \begin{example}
