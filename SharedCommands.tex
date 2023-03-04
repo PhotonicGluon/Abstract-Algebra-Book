@@ -193,3 +193,15 @@
   \vspace*{2\baselineskip}
   \cleardoublepage
 }
+
+%== Customise Table of Contents Heading ==
+\makeatletter
+\def\createtoc{
+  \renewcommand\tableofcontents{
+    \chapter*{\contentsname}
+    \@starttoc{toc}
+  }
+  
+  \tableofcontents
+}
+\makeatother
