@@ -5057,7 +5057,6 @@ We can now introduce and prove the Jordan-H\"older Theorem.
 Simple groups can be thought of as the `building blocks' of all types of (finite) groups. We look at the classification of some of the families of these simple groups here.
 
 \section{Cyclic Groups of Prime Order}
-\subsection{Proving Simplicity}
 The first infinite family of simple groups we will look at is the family of \textbf{Cyclic Groups of Prime Order}.
 
 \begin{lemma}\label{lemma-cyclic-group-simple-iff-order-is-prime}
@@ -5083,16 +5082,75 @@ Note that we do not assume that the abelian group is finite; we will show that t
 
 From this, we have found that the only family of simple abelian groups is the family of cyclic groups of prime order.
 
-\subsection{Structure of A Finite Abelian Group}
-
-\begin{example}
-    We use the Jordan-H\"older theorem to prove the Fundamental Theorem of Arithmetic (\textbf{Theorem \ref{thrm-fundamental-theorem-of-arithmetic}}), which states that
-    \begin{quote}
-        for every integer $n > 1$, $n$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
-    \end{quote}
-    
-    %TODO use Jordan-Holder to prove fundamental theorem of arithmetic
-\end{example}
+%\subsection{Structure of A Finite Abelian Group}
+%With \textbf{Theorem \ref{thrm-abelian-group-simple-iff-cylic-group-of-prime-order}}, we know that abelian groups are simple if and only if they have prime order. This result can be used to uniquely `factorize' finite abelian groups.
+%
+%However we need to build up some machinery in order to derive a factorisation. We start with the following theorem.
+%\begin{theorem}\label{thrm-abelian-group-factored-by-prime}
+%    Let $G$ be a finite abelian group. Write the order of $G$ as $mp^n$ such that $m$ is not a multiple of the prime $p$. Let the subgroups $H = \{x\in G \vert x^{p^n} = e\}$ and $K = \{x\in G \vert x^m = e\}$. Then $G \cong H \times K$. Furthermore $|H| = p^n$ and $|K| = m$.
+%\end{theorem}
+%\begin{proof}[Proof (see \cite{proofwiki_abeliangroupfactoredbyprime})]
+%    We note $H \lhd G$ and $K \lhd G$ by \textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}} since $G$ is abelian. To prove $G \cong H \times K$ we show that $G$ is the internal direct product of $H$ and $K$ (\textbf{Theorem \ref{thrm-direct-product-equivilance}}).
+%    
+%    By B\'{e}zout's Lemma (\textbf{Lemma \ref{lemma-bezout}}), as $\gcd(m, p^n) = 1$, thus there exist integers $s$ and $t$ such that $sm + tp^n = 1$. Hence,
+%    \[
+%        x = x^1 = x^{sm + tp^n} = x^{sm}x^{tp^n}.
+%    \]
+%    Note that
+%    \begin{itemize}
+%        \item $\left(x^{sm}\right)^{p^n} = \left(x^{mp^n}\right)^s = e^s = e$ which means $x^{sm} \in H$; and
+%        \item $\left(x^{tp^n}\right)^m = \left(x^{mp^n}\right)^t = e^t = e$ which means $x^{tp^n} \in K$.
+%    \end{itemize}
+%    Therefore $G = HK$.
+%    
+%    Now suppose $x \in H \cap K$, meaning $x^{p^n} = e = x^m$. Hence, by \textbf{Problem \ref{problem-element-to-power-of-multiple-of-order-is-identity}} the order of $p^n$ and $m$ must simultaneously be a multiple of $x$, i.e. the order of $x$ must divide both $p^n$ and $m$. As $\gcd(p^n, m) = 1$, thus $|x| = 1$, meaning $x = e$. Hence, $H \cap K = \{e\}$.
+%    
+%    Finally, as $G$ is abelian, thus elements in $H$ and $K$ clearly commute with each other.
+%    
+%    With these three properties, this means that $G$ is the internal direct product of $H$ and $K$, meaning $G \cong H \times K$ as needed.
+%    
+%    Now we show $|H| = p^k$. Seeking a contradiction, assume $|K|$ is a multiple of $p$. By Cauchy's Theorem (\textbf{Theorem \ref{thrm-cauchy}}), this means that there exists a $k \in K$ such that $|k| = p$. Note by definition of $K$ we have $k^m = e$. By \textbf{Problem \ref{problem-element-to-power-of-multiple-of-order-is-identity}} this means $m$ is a multiple of $p$. However $m$ is given to be not a multiple of $p$, a contradiction. Hence $p$ does not divide $|K|$. But as $|G| = |H||K|$ (since $G \cong H \times K$), if $p$ does not divide $|K|$ it has to divide $|H|$. Therefore $|H|$ is a multiple of $p^n$ (since $m$ contains no factors of $p$).
+%    
+%    Next, aiming for a contradiction, suppose $|H|$ is also a multiple of a prime $q \neq p$. Again by Cauchy's Theorem this means there exists a $h \in H$ such that $|h| = q$. But since $h^{p^n} = e$, \textbf{Problem \ref{problem-element-to-power-of-multiple-of-order-is-identity}} again leads to us concluding that $p^n$ is a multiple of $q$, a clear contradiction. Hence, $|H|$ is not a multiple of another prime, meaning $|H| = p^n$ as desired. This quickly implies $|K| = m$ since $|G| = |H||K|$.
+%\end{proof}
+%
+%\begin{corollary}\label{corollary-finite-abelian-group-factored-into-groups-with-prime-power-order}
+%    Let $G$ be a finite abelian group. Write the order of $G$ as $p_1^{n_1}p_2^{n_2}p_3^{n_3}\cdots p_k^{n_k}$, where $p_1, p_2, \dots, p_k$ are distinct primes and $n_1, n_2, \dots, n_k$ are positive integers. Then the factorisation
+%    \[
+%        G \cong H_1 \times H_2 \times H_3 \times\cdots \times H_k,   
+%    \]
+%    where $H_i = \{x \in G \vert x^{p_i^{n_i}} = e\}$, is unique up to ordering of the factors.
+%\end{corollary}
+%\begin{proof}
+%    We induct on $k$.
+%    
+%    When $k = 1$, we note $G$ is a $p$-group. Thus every element in $G$ has order of at most $p_1^{n_1}$, meaning $x^{p_1^{n_1}} = e$ for all $x \in G$. Hence $G \cong H_1$ (in fact, $G = H_1$), so this statement is true.
+%    
+%    Now assume that the statement is true for some positive integer $r$. We show the statement is true for $r + 1$.
+%    
+%    Apply \textbf{Theorem \ref{thrm-abelian-group-factored-by-prime}} to $G$, with $p = p_1$, $n = n_1$, and $m = p_2^{n_2}p_3^{n_3}\cdots p_r^{n_r}p_{r+1}^{n_{r+1}}$, resulting in $G \cong H \times K$. Set resulting $H$ to be $H_1$. The resulting $K$ has order $m$ which has only $r$ prime factors, satisfying the induction hypothesis. Applying induction hypothesis to $K$ (and re-indexing resulting subgroups) yields
+%    \[
+%        K \cong H_2 \times H_3 \times \cdots \times H_r \times H_{r+1}
+%    \]
+%    which means
+%    \[
+%        G \cong H_1 \times (H_2 \times H_3 \times \cdots \times H_r \times H_{r+1})
+%    \]
+%    which proves the statement for $r+1$.
+%    
+%    We now show uniqueness of the factorisation. We note that each of the $H_i$'s has order $p_i^{n_i}$ as given by \textbf{Theorem \ref{thrm-abelian-group-factored-by-prime}}. Therefore a $H_i$ is a Sylow $p_i$-subgroup, which is normal as $G$ is abelian (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}). By \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}, these Sylow subgroups are unique up to ordering of the factors.
+%\end{proof}
+%
+%%TODO ADD https://proofwiki.org/wiki/Fundamental_Theorem_of_Finite_Abelian_Groups
+%
+%\begin{example}
+%    We use the Jordan-H\"older theorem to prove the Fundamental Theorem of Arithmetic (\textbf{Theorem \ref{thrm-fundamental-theorem-of-arithmetic}}), which states that
+%    \begin{quote}
+%        for every integer $n > 1$, $n$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
+%    \end{quote}
+%    
+%    %TODO use Jordan-Holder to prove fundamental theorem of arithmetic
+%\end{example}
 
 \section{Alternating Group with Degree of More Than 4}
 
