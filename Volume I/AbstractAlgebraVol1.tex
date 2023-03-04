@@ -633,8 +633,14 @@ The \textit{cannonical form} of an element in a dihedral group is of the form $r
         \item simplify $r^3srsr^3sr^3sr^2$.
     \end{enumerate}
 \end{problem}
+
 \begin{problem}
     Let $G$ be a group. If every element in $G$ is its own inverse, show that $G$ is abelian.
+\end{problem}
+
+\begin{problem}\label{problem-element-to-power-of-multiple-of-order-is-identity}
+    Let $G$ be a group with identity $e$. Suppose an element $x$ in $G$ has finite order $k$. Prove that $n$ is a multiple of $k$ if and only if $a^n = e$.\newline
+    (\textit{Hint: consider Euclid's division lemma (\textbf{Lemma \ref{lemma-euclid-division}}) to prove one direction of the claim.})
 \end{problem}
 
 \begin{problem}
@@ -2692,33 +2698,16 @@ Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead
 
 We prove more facts about cyclic groups here.
 \begin{lemma}\label{lemma-order-of-an-element-that-is-equivalent-to-identity}
-    Let $\Cn{n}$ have generator $g$. Then $g^k = e$ if and only if $k = mn$ where $m$ is an integer.\newline
+    Let $\Cn{n}$ have generator $g$. Then $g^k = e$ if and only if $k$ is a multiple of $n$.\newline
     (Equivalently, this means that if $g^k = e$, then $n$ divides $k$, i.e. $n | k$.)
 \end{lemma}
 \begin{proof}
-    The reverse direction is trivial to prove: if $k = mn$ for some integer $m$, then
-    \[
-        g^k = g^{mn} = \left(g^n\right)^m = e^m = e.
-    \]
-
-    We now work on the forward direction. Suppose that $g^k = e$. Applying the division algorithm on $k$ yields $k = nq + r$ where $q$ and $r$ are integers such that $0 \leq r < n$. Thus, on one hand,
-    \begin{align*}
-        g^k &= g^{nq+r}\\
-        &= g^{nq}g^r\\
-        &= \left(g^n\right)^qg^r\\
-        &= e^qg^r\\
-        &= g^r.
-    \end{align*}
-    On the other hand, $g^k = e$. Therefore $g^r = e$ with $0 \leq r < n$. But $|g| = n$ since $g$ is a generator of $\Cn{n}$. Hence, $n$ is the smallest positive integer that allows $g^n = e$. If instead $g^r = e$ with $1 \leq r < n$ this contradicts the minimality of $n$, which implies $r = 0$. Therefore $k = nq$ (with $m = q$) completing the forward direction.
-
-    This completes the proof.
+    We note that the order of $g$ is $n$, since $g$ is a generator of $G$. Thus by \textbf{Problem \ref{problem-element-to-power-of-multiple-of-order-is-identity}} the lemma is proven.
 \end{proof}
 
 \begin{exercise}
     The number 12 is equivalent to 0 in the group $\mathbb{Z}_n$ (under addition modulo $n$). What are the possible value(s) of $n$?
 \end{exercise}
-
-\newpage
 
 We are now ready to prove an important theorem on cyclic groups.
 \begin{theorem}\label{thrm-order-of-element-in-cyclic-group}
@@ -2761,7 +2750,6 @@ We are now ready to prove an important theorem on cyclic groups.
     In the group $\mathbb{Z}_{210}$, find the order of 10, 42, 75, and 140.
 \end{exercise}
 
-We note one corollary of the theorem.
 \begin{corollary-thrm}
     Let $\Cn{n}$ have generator $g$. Then $g^m$ is also a generator if and only if $\gcd(m, n) = 1$.
 \end{corollary-thrm}
@@ -2780,8 +2768,6 @@ We note one corollary of the theorem.
         \item $\mathbb{Z}_{101}$
     \end{enumerate}
 \end{exercise}
-
-\newpage
 
 \section{Quaternion Group}
 We look at an interesting group that has use in computer graphics: the \textbf{Quaternion Group}. We present one definition here.
@@ -5069,8 +5055,8 @@ We can now introduce and prove the Jordan-H\"older Theorem.
 %=========================================
 \chapter{Simple Groups}
 \section{Cyclic Groups of Prime Order}
-\subsection{Cyclic Groups of Prime Order}
-\subsection{Links to Abelian Groups}
+\subsection{Proving Simplicity}
+\subsection{Structure of A Finite Abelian Group}
 
 \begin{example}
     We use the Jordan-H\"older theorem to prove the Fundamental Theorem of Arithmetic (\textbf{Theorem \ref{thrm-fundamental-theorem-of-arithmetic}}), which states that
@@ -5081,7 +5067,7 @@ We can now introduce and prove the Jordan-H\"older Theorem.
     %TODO use Jordan-Holder to prove fundamental theorem of arithmetic
 \end{example}
 
-\section{Alternating Group of Degree of More Than 4}
+\section{Alternating Group with Degree of More Than 4}
 
 %=========================================
 \appendix
@@ -5611,6 +5597,20 @@ We can now introduce and prove the Jordan-H\"older Theorem.
     \end{enumerate}
 
     \item If every element in $G$ is its own inverse, then for every element $g$ in $G$, $g^{-1} = g$. Consider $(gh)^{-1}$ where $g$ and $h$ are elements in $g$. On one hand, by Shoes and Socks, $(gh)^{-1} = h^{-1}g^{-1} = hg$ since each element is its own inverse. On the other hand, since $gh$ is an element in $G$, thus $(gh)^{-1} = gh$. Thus, $gh = hg$ which means $G$ is abelian.
+    
+    \item As $|a| = k$ we may take $k$ to be the smallest positive integer that satisfies $a^k = e$.
+    
+    We prove the forward direction first. Suppose $n$ is a multiple of $k$, say $n = qk$ for some integer $q$. Then
+    \[
+        a^n = a^{qk} = \left(a^k\right)^q = e^q = e    
+    \]
+    which means $a^n = e$.
+    
+    We now prove the reverse direction. Suppose $a^n = e$. Using Euclid's division lemma (\textbf{Lemma \ref{lemma-euclid-division}}) write $n = qk + r$ where $q$ and $r$ are integers with $0 \leq r < k$. Hence
+    \[
+        a^n = a^{qk + r} = a^{qk}a^r = \left(a^k\right)^qa^r = e^qa^r = a^r.
+    \]
+    Note that for all integers $i$ where $1 \leq i < k$, we have $a^i \neq e$ since $k$ is the smallest positive integer where $a^k = e$. Hence, if $a^r = e$, we conclude $r = 0$. Therefore $n = qk$, meaning $n$ is a multiple of $k$.
 
     \item \begin{enumerate}[label=(\alph*)]
         \item Note that $(gh)^2 = ghgh$. Given that $(gh)^2 = ghgh = g^2h^2 = gghh$. By cancellation law, $hg = gh$ which means $G$ is abelian.
