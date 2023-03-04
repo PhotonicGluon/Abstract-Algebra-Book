@@ -6,6 +6,7 @@
   normalheadings,
   twoside,
   openany,
+  chapterprefix,
   DIV=9
 ]{scrbook}
 
@@ -119,6 +120,25 @@
 
 \fancyhead[LE,RO]{\thepage}
 \fancyhead[LO,RE]{\textit{\nouppercase\leftmark}}
+
+%======== Custom Chapter Styling =========
+\makeatletter
+\renewcommand*{\chapterformat}{
+  \MakeUppercase{\chapapp\nobreakspace\thechapter}
+}
+\renewcommand*{\chapterlineswithprefixformat}[3]{
+  \ifstr{#1}{chapter}{
+    \vspace{-35px}
+    \raggedleft
+    \ifstr{#2}{\empty}{\vspace{42pt}}{#2}  % 42pt is the size of the "chapter" text
+    \vspace{-10px}
+    \rule{\linewidth}{1pt}\par\nobreak
+    \centering{#3}
+    \vspace{-10px}
+    \rule{\linewidth}{1pt}\par\nobreak
+  }{#2#3}
+}
+\makeatother
 
 %============= Cover Pages ===============
 \def\coverpages{
