@@ -5083,6 +5083,61 @@ Note that we do not assume that the abelian group is finite; we will show that t
 From this, we have found that the only family of simple abelian groups is the family of cyclic groups of prime order.
 
 \section{Alternating Group with Degree of More Than 4}
+The other family of simple groups that are relatively easy to find is the family of \textbf{alternating groups with degree of above 4}.
+
+However, to prove this claim, we need several preliminary lemmas. We will leave some of the details of the lemmas' proofs as exercises or as problems.
+
+\begin{lemma}\label{lemma-permutation-in-An-is-product-of-3-cycles-for-n>=3}
+    For $n \geq 3$, any permutation in $\An{n}$ can be expressed as a product of 3-cycles.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[pp.~1--2]{conrad_2022}})]
+    Suppose $n \geq 3$. One sees clearly that $\id = \begin{pmatrix}1&2&3\end{pmatrix} \begin{pmatrix}1&3&2\end{pmatrix}$ so $\id$ is a product of 3-cycles.
+    
+    Now suppose $\sigma$ is a non-identity element of $\An{n}$. By \textbf{Lemma \ref{lemma-permutations-as-product-of-transpositions}}, we may write $\sigma$ as a product of transpositions in $\Sn{n}$:
+    \[
+        \sigma = \tau_1\tau_2\tau_3\cdots\tau_r. 
+    \]
+    As $\sigma \in \An{n}$, we know $\sigma$ is an even permutation, meaning $\sgn(\sigma) = 1$. The right hand side has sign $(-1)^r$, so $r$ is even. Hence we may collect the products on the right as successive transpositions $\tau_i\tau_{i+1}$ where $i = 1, 3, 5,\cdots,r-1$ is odd.
+    
+    We now show that $\tau_i\tau_{i+1}$ is a product of two 3-cycles.
+    \begin{itemize}
+        \item The first case is when $\tau_i = \tau_{i+1}$. Then $\tau_i\tau_{i+1} = \id$, which can be expressed as a product of 3-cycles as above.
+        \item The second case is when $\tau_i$ and $\tau_{i+1}$ have exactly one element in common. Suppose the common element is $x$. Write $\tau_i = \begin{pmatrix}x&a\end{pmatrix}$ and $\tau_{i+1} = \begin{pmatrix}x&b\end{pmatrix}$ where $a\neq b$. Then
+        \[
+            \tau_i\tau_{i+1}
+            = \begin{pmatrix}x&a\end{pmatrix}\begin{pmatrix}x&b\end{pmatrix} 
+            = \begin{pmatrix}x&b&a\end{pmatrix}
+            = \begin{pmatrix}x&a&b\end{pmatrix}\begin{pmatrix}x&a&b\end{pmatrix}
+        \]
+        so we may replace $\tau_i\tau_{i+1}$ with a product of two 3-cycles.
+        \item The third and final case is when $\tau_i$ and $\tau_{i+1}$ have no elements in common. Write $\tau_i = \begin{pmatrix}a&b\end{pmatrix}$ and $\tau_{i+1} = \begin{pmatrix}c&d\end{pmatrix}$ where $a$, $b$, $c$, and $d$ are disjoint (and $n \geq 4$). Then
+        \begin{align*}
+            \tau_i\tau_{i+1} &= \begin{pmatrix}a&b\end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}\\
+            &= \begin{pmatrix}a&b\end{pmatrix} \underbrace{\begin{pmatrix}b&c\end{pmatrix}\begin{pmatrix}b&c\end{pmatrix}}_{\text{identity}} \begin{pmatrix}c&d\end{pmatrix}\\
+            &= \begin{pmatrix}b&c&a\end{pmatrix}\begin{pmatrix}c&d&b\end{pmatrix}\\
+            &= \begin{pmatrix}a&b&c\end{pmatrix}\begin{pmatrix}b&c&d\end{pmatrix} 
+        \end{align*}
+        so we may replace $\tau_i\tau_{i+1}$ with a product of two 3-cycles.
+    \end{itemize}
+    Therefore, in any case, $\tau_i\tau_{i+1}$ can be replaced with a product of two 3-cycles, meaning $\sigma$ can be expressed as a product of 3-cycles.
+\end{proof}
+
+\begin{lemma}\label{lemma-An-generated-by-(2,2)-for-n>=5}
+    For $n \geq 5$, any permutation in $\An{n}$ can be expressed as a product of permutations of the form $\begin{pmatrix}a&b\end{pmatrix} \begin{pmatrix}c&d\end{pmatrix}$, where $a$, $b$, $c$, and $d$ are all distinct.
+\end{lemma}
+\begin{proof}    
+    Exercise.
+\end{proof}
+\begin{exercise}
+    Prove \textbf{Lemma \ref{lemma-An-generated-by-(2,2)-for-n>=5}}.
+\end{exercise}
+
+\begin{lemma}
+    Let $n \geq 5$, and suppose $\sigma$ and $\sigma'$ are 3-cycles in $\An{n}$. Then there exists $\pi \in \An{n}$ such that $\sigma' = \pi\sigma\pi^{-1}$.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[p.~2]{conrad_2022}})]
+    %TODO ADD
+\end{proof}
 
 %=========================================
 \appendix
@@ -5562,6 +5617,15 @@ From this, we have found that the only family of simple abelian groups is the fa
     Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) tells us that the possible orders of the subgroups of $G$ are 1, $p$, and $p^2$. These subgroups are $\{e\}$, $H$, and $G$ respectively. Furthermore by \textbf{Problem \ref{problem-group-of-order-prime-squared-is-abelian}} $G$ must be abelian, thereby its subgroups are all normal (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}). Finally, a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-group-with-prime-order-subgroups}}) says that the only subgroups of $H$ are the trivial group and the group itself. Hence, $G$ has only one composition series, namely $1 \lhd H \lhd G$.
     
     (In fact, since $H$ has order $p$, it is cyclic (\textbf{Corollary \ref{corollary-group-with-prime-order-is-cyclic}}), so we may write $1 \lhd \mathbb{Z}_p \lhd G$.)
+\end{enumerate}
+
+\section{Simple Groups}
+\begin{enumerate}
+    \item To prove \textbf{Lemma \ref{lemma-An-generated-by-(2,2)-for-n>=5}} it suffices to show that each 3-cycle can be written in terms of such permutations (due to \textbf{Lemma \ref{lemma-permutation-in-An-is-product-of-3-cycles-for-n>=3}}). Pick elements $d, e \notin \{a, b, c\}$ (we can do this since $n\geq 5$) and $d \neq e$; note
+    \[
+        \begin{pmatrix}a&b&c\end{pmatrix} = \begin{pmatrix}a&b\end{pmatrix} \underbrace{\begin{pmatrix}d&e\end{pmatrix}\begin{pmatrix}d&e\end{pmatrix}}_{\text{Identity}} \begin{pmatrix}b&c\end{pmatrix}
+    \]
+    and the permutations $\begin{pmatrix}a&b\end{pmatrix}\begin{pmatrix}d&e\end{pmatrix}$ and $\begin{pmatrix}d&e\end{pmatrix}\begin{pmatrix}b&c\end{pmatrix}$ have the required form since $a$, $b$, $c$, $d$, and $e$ are distinct.
 \end{enumerate}
 
 %=========================================
