@@ -58,7 +58,7 @@ A group is a \textit{collection of symmetries of something}. A symmetry of somet
 
 \begin{wrapfigure}{r}{0.25\textwidth}
     \centering
-    \fbox{\includegraphics[width=0.25\textwidth]{images/chapter1/TriangleReflections.png}}
+    \fbox{\includegraphics[width=0.2\textwidth]{images/chapter1/TriangleReflections.png}}
 \end{wrapfigure}
 
 For example, one may consider the collection of symmetries of an equilateral triangle. What actions could one perform to make the triangle ``look the same'' as before applying the action? Well, we could do nothing. That action is called the \textit{identity action}. We could also reflect the triangle about the line $S_0$ and observe that the triangle ``looks the same as before''. We may also reflect the triangle about the lines $S_1$ and $S_2$, and the triangle will still look the same as before. One may also consider rotating the triangle $120^\circ$ or $240^\circ$ about the centre in a clockwise manner (note that rotating the triangle $360^\circ$ is the same as the identity action, so we do not count it here).
@@ -73,7 +73,7 @@ So we can say that the \textit{group of symmetries of the triangle} has 6 action
 
 \begin{wrapfigure}{r}{0.25\textwidth}
     \centering
-    \fbox{\includegraphics[width=0.25\textwidth]{images/chapter1/CircularCrossings.png}}
+    \fbox{\includegraphics[width=0.2\textwidth]{images/chapter1/CircularCrossings.png}}
 \end{wrapfigure}
 
 Another set of groups that we can consider is \textit{groups of rotation}. For example, consider the image on the right. There are 4 actions that we can do to this image that makes it ``look the same as before'':
@@ -87,7 +87,7 @@ This image has \textbf{no} lines of symmetry. Due to the unique braiding on the 
 
 \begin{wrapfigure}{r}{0.25\textwidth}
     \centering
-    \fbox{\includegraphics[width=0.25\textwidth]{images/chapter1/Permutations.jpg}}
+    \fbox{\includegraphics[width=0.2\textwidth]{images/chapter1/Permutations.jpg}}
 \end{wrapfigure}
 
 Let’s look at a more technical example: consider a set of points in a pane. We can consider the \textit{group of symmetries of a finite collection of points}. What are the symmetries of the points? Well, in this case, a \textit{symmetry} is a way to move one of these points to another point whilst making it ``look the same as before''.
@@ -110,7 +110,7 @@ These properties are known as the \textbf{axioms of groups}. We motivate the `di
 
 \begin{wrapfigure}{r}{0.25\textwidth}
     \centering
-    \fbox{\includegraphics[width=0.25\textwidth]{images/chapter1/TriangleReflections.png}}
+    \fbox{\includegraphics[width=0.2\textwidth]{images/chapter1/TriangleReflections.png}}
 \end{wrapfigure}
 
 Consider the group of symmetries of an equilateral triangle. One condition that the group of symmetries must satisfy is that performing group actions one after another should not make the underlying object ``non-symmetric''. We should not be able to apply group actions to other group actions until we obtain an action that results in the triangle being ``non-symmetric''. For example, we do not include rotating the triangle 90° clockwise about the line $S_0$ (into 3D space) as this immediately makes the triangle `different to how it began'.
@@ -146,7 +146,7 @@ We would also like, for every action, to have an action that \textit{undoes} the
 
 \begin{wrapfigure}{r}{0.25\textwidth}
     \centering
-    \fbox{\includegraphics[width=0.25\textwidth]{images/chapter1/CircularCrossings.png}}
+    \fbox{\includegraphics[width=0.2\textwidth]{images/chapter1/CircularCrossings.png}}
 \end{wrapfigure}
 
 The last axiom is hard to discover naturally and hard to motivate, but is absolutely necessary for the definition of a group. Consider again this braided circle, and let's say we want to perform 3 rotations (say, $r_1$, $r_2$ and $r_3$) in that sequence. We would not want to differentiate between performing ``$r_1$, then $r_2$ and $r_3$'' (i.e., $r_1 \ast (r_2 \ast r_3)$), and between performing ``$r_1$ then $r_2$, then $r_3$'' (i.e. $(r_1 \ast r_2) \ast r_3$). We are only concerned about the \textit{sequence} of the rotations. This is technically called the \textbf{axiom of associativity}:
@@ -181,6 +181,7 @@ Determine whether the following are groups. If they are, prove it. If not, expla
     \item $(\{1\}, \times)$ where $\times$ denotes regular multiplication.
 \end{enumerate}
 \end{problem}
+
 %=========================================
 \chapter{Basics of Groups}
 \section{Basic Examples of Groups}
@@ -1678,9 +1679,7 @@ Some important things to note about this process:
 
 We now look at composing permutations.
 \begin{example}
-    Let the permutation $f$ have cycle notation $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$ and the permutation $g$ have cycle notation $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$. Then $fg$ is a permutation.
-
-    Let $h = fg$. Then:
+    Let $f$ and $g$ be permutations. Let $f$ have cycle notation $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$ and $g$ have cycle notation $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$. Then $h = fg$ is a permutation with:
     \begin{itemize}
         \item $h(1) = f(g(1)) = f(1) = 3$
         \item $h(2) = f(g(2)) = f(4) = 4$
@@ -1688,8 +1687,6 @@ We now look at composing permutations.
         \item $h(4) = f(g(4)) = f(3) = 5$
         \item $h(5) = f(g(5)) = f(5) = 2$
     \end{itemize}
-
-    
 
     So $h$:
     \begin{itemize}
@@ -2536,7 +2533,7 @@ We look at the last important theorem regarding homomorphisms and isomorphisms. 
         \end{align*}
         Hence, by subgroup test, $H/N \leq G/N$.
 
-        Now let $gN \in G/N$ and $hN \in H/N$. We need to show that $(gN)(hN)(gN)^{-1} \in H/N$. Note that $(gN)(hN)(gN)^{-1} = (ghg^{-1})N$. Since $H \lhd G$, thus $ghg^{-1} \in H$ which means that $(ghg^{-1})N \in H/N$.
+        Now let $gN \in G/N$ and $hN \in H/N$. We need to show that $(gN)(hN)(gN)^{-1} \in H/N$. Note $(gN)(hN)(gN)^{-1} = (ghg^{-1})N$. Since $H \lhd G$, thus $ghg^{-1} \in H$ which means that $(ghg^{-1})N \in H/N$.
 
         Therefore $H/N \lhd G/N$.
 
@@ -2658,7 +2655,7 @@ From this example we can come up with a more general proposition.
     Let $G$ be an abelian group under the operation $\ast$. Let $I = \{(g, g^{-1}) \ | \ g \in G\}$ be a group under component-wise application of $\ast$.
     \begin{enumerate}[label=(\roman*)]
         \item Show that $I \cong G$.
-        \item Hence, by considering a suitable homomorphism, prove that $G^2/G \cong G$.
+        \item Hence prove $G^2/G \cong G$ by considering a suitable homomorphism.
     \end{enumerate}
 \end{problem}
 
@@ -2739,9 +2736,9 @@ We are now ready to prove an important theorem on cyclic groups.
         &= \left(g^n\right)^{\frac{k}{\gcd(k,n)}}\\
         &= \left(g^n\right)^\lambda\\
         &= e^\lambda & \text{(since } |g| = n)\\
-        &= e
+        &= e,
     \end{align*}
-    which implies $x^{\frac{n}{\gcd(k,n)}} = e$. By \textbf{Lemma \ref{lemma-order-of-an-element-that-is-equivalent-to-identity}} on group $\mathcal{X}$, $m \ \vline \ \frac{n}{\gcd(k,n)}$.
+    implying $x^{\frac{n}{\gcd(k,n)}} = e$. By \textbf{Lemma \ref{lemma-order-of-an-element-that-is-equivalent-to-identity}} on group $\mathcal{X}$, we have $m \ \vline \ \frac{n}{\gcd(k,n)}$.
 
     Since $\frac{n}{\gcd(k,n)} \ \vline \ m$ and $m \ \vline \ \frac{n}{\gcd(k,n)}$ simultaneously, thus $m = \frac{n}{\gcd(k,n)}$, i.e. $|x| = \frac{n}{\gcd(k,n)}$.
 \end{proof}
@@ -2757,8 +2754,6 @@ We are now ready to prove an important theorem on cyclic groups.
     We prove the forward direction first. Suppose that $\Cn{n}$ has a generator of $g^m$. On one hand, $|g^m| = n$ since a generator of a group necessarily has to have an order equal to that of the group. On another hand, by \textbf{Theorem \ref{thrm-order-of-element-in-cyclic-group}}, $|g^m| = \frac{n}{\gcd(m, n)}$. Hence, $n = \frac{n}{\gcd(m, n)}$ which quickly implies $\gcd(m, n) = 1$.
 
     Now we prove the reverse direction. Suppose $\gcd(m,n) = 1$. Then $|g^m| = \frac{n}{\gcd(m,n)} = \frac{n}{1} = n$ by \textbf{Theorem \ref{thrm-order-of-element-in-cyclic-group}}. Hence $g^m$ is a generator of the group $\Cn{n}$ by \textbf{Theorem \ref{thrm-cyclic-group-has-element-with-same-order}}.
-
-    This completes the proof.
 \end{proof}
 
 \begin{exercise}
@@ -2853,8 +2848,8 @@ We look at one lemma which can be said to help `decompose' transpositions. Note 
     \begin{align*}
         (i\quad i+(d+1)) &= (i\quad i+1)(i+1\quad i+d+1)(i\quad i+1)\\
         &= (i\quad i+1)\underbrace{((i+1)\quad (i+d)+1)}_{\text{apply induction hypothesis}}(i\quad i+1)\\
-        &= (i\quad i+1)((i+1)\quad(i+1)+1)\cdots((i+1)\quad(i+1)+1)\\
-        &\quad\quad(i\quad i+1)\\
+        &= (i\quad i+1)((i+1)\quad(i+1)+1)\cdots\\
+        &\quad\quad((i+1)\quad(i+1)+1)(i\quad i+1)\\
         &= (i\quad i+1)(i+1\quad i+2)\cdots(i+1\quad i+2)(i\quad i+1)
     \end{align*}
     which shows that $d+1$ works as well.
@@ -2993,8 +2988,14 @@ We are now ready to look at the alternating group.
     \]
     is an even permutation, meaning $\mu\sigma^{-1} \in \An{n}$. By subgroup test, $\An{n} \leq \Sn{n}$.
     
-    Now take $\sigma \in \Sn{n}$ and $\mu \in \An{n}$. Note that $\sgn(\sigma\mu\sigma^{-1}) = \sgn(\sigma)\sgn(\mu)\sgn(\sigma^{-1})$. As above, we note $\sgn(\sigma)\sgn(\sigma^{-1}) = 1$ and $\sgn(\mu) = 1$ since $\mu$ is even. Hence $\sgn(\sigma\mu\sigma^{-1}) = 1$ which means that $\sigma\mu\sigma^{-1}$ is an even permutation. Therefore $\sigma\mu\sigma^{-1} \in \An{n}$, meaning that $\An{n} \lhd \Sn{n}$.
+    Now take $\sigma \in \Sn{n}$ and $\mu \in \An{n}$. Note that
+    \[
+        \sgn(\sigma\mu\sigma^{-1}) = \sgn(\sigma)\sgn(\mu)\sgn(\sigma^{-1}).
+    \]
+    As above, we note $\sgn(\sigma)\sgn(\sigma^{-1}) = 1$ and $\sgn(\mu) = 1$ since $\mu$ is even. Hence $\sgn(\sigma\mu\sigma^{-1}) = 1$ which means that $\sigma\mu\sigma^{-1}$ is an even permutation. Therefore $\sigma\mu\sigma^{-1} \in \An{n}$, meaning that $\An{n} \lhd \Sn{n}$.
 \end{proof}
+
+\newpage
 
 \begin{proposition}\label{prop-order-of-An}
     The order of $\An{n}$ is $\frac{n!}{2}$ for $n > 1$.
@@ -3031,7 +3032,7 @@ We are now ready to look at the alternating group.
 
 \newpage
 
-\section{Group of Units Modulo $n$}
+\section{Group of Units Modulo \texorpdfstring{$n$}{n}}
 We look at a useful group in number theory: the \textbf{group of units modulo $n$}.
 
 \begin{definition}
@@ -3118,7 +3119,7 @@ We look at some results about the structure of the group of units.
                 &= \sigma((x_1,y_1))\sigma((x_2,y_2))
             \end{align*}
             which shows that $\sigma$ is a homomorphism.
-        \item \textbf{Injective}: Suppose $(x_1, y_1)$ and $(x_2, y_2)$ are pairs such that $\sigma((x_1, y_1)) = \sigma((x_2, y_2))$. Then
+        \item \textbf{Injective}: Suppose $(x_1, y_1)$ and $(x_2, y_2)$ are pairs in $\Un{m}\times\Un{n}$ such that $\sigma((x_1, y_1)) = \sigma((x_2, y_2))$. Then
         \[
             x_1mb + y_1na = x_2mb + y_2na
         \]
@@ -3236,7 +3237,7 @@ under the operation $\ast$ where $(a+n\mathbb{Z})\ast(b+n\mathbb{Z}) = (a\otimes
         \]
         Hence we conclude that $x \equiv y \pmod{n}$. But since $1 \leq x, y < n$, therefore we must have $x = y$. Hence, $\phi(x) = \phi(y)$ implies $x = y$, meaning $\phi$ is injective.
 
-        \item \textbf{Surjective}: Let $x + n\mathbb{Z} \in \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$. This means that $\gcd(x, n) = 1$. Performing division algorithm on $x$ yields
+        \item \textbf{Surjective}: Let $x + n\mathbb{Z} \in \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$; thus $\gcd(x, n) = 1$. Performing division algorithm on $x$ yields
         \[
             x = qn + r, \text{ where } 0 \leq r < n.
         \]
@@ -3480,7 +3481,7 @@ For brevity denote $\mathbb{R}^\times$ as the group of non-zero real numbers und
 \end{proof}
 
 \section{Automorphism Groups}
-\subsection{Group of Automorphisms of $G$}
+\subsection{Group of Automorphisms of \texorpdfstring{$G$}{G}}
 We look at automorphisms, an important type of map that we look in Group Theory.
 \begin{definition}
     An \textbf{automorphism} of a group $G$ is an isomorphism from a group $G$ to itself. That is, $\phi: G \to G$ is an automorphism if $\phi$ is an isomorphism.
@@ -3518,7 +3519,7 @@ We prove that $\Aut{G}$ is indeed a group.
     Since the four group axioms are satisfied, thus $\Aut{G}$ is a group under function composition.
 \end{proof}
 
-\subsection{Group of Inner Automorphisms of $G$}
+\subsection{Group of Inner Automorphisms of \texorpdfstring{$G$}{G}}
 We now look at inner automorphisms and its group.
 \begin{definition}
     An \textbf{inner automorphism} of a group $G$ is an automorphism $\iota: G \to G$ such that $\iota(x) = gxg^{-1}$ for some fixed $g \in G$.
@@ -3587,7 +3588,7 @@ Before we can state the consequence, we revisit the idea of the center of a grou
 
         \item \textbf{Kernel}: Note that $\ker\phi = \{g \in G \ | \ \phi(g) = \id\}$. So, if $g \in \ker\phi$ then $(\phi(g))(x) = \iota_g(x) = \id(x) = x$ for all $x \in G$. This means that $gxg^{-1} = x \implies gx = xg$ for all $x \in G$, so $g \in \Z{G}$. Hence $\ker\phi = \Z{G}$.
     \end{itemize}
-    Hence, by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}),
+    Therefore, ones sees that by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}),
     \[
         G/\ker\phi \cong \im\phi \implies G/\Z{G} \cong \Inn{G}
     \]
@@ -3867,13 +3868,13 @@ Formally, this is captured in the \textbf{Orbit-Stabilizer Theorem}.
 \end{theorem}
 
 \begin{proof}[Proof (see \cite{humphreys_1996})]
-    We consider the map $f_x: G/\Stab{G}{x} \to \Orb{G}{x}$ given by $g\Stab{G}{x} \mapsto g \cdot x$ (note that $f_x$ is \textit{not} a homomorphism as $\Orb{G}{x}$ is not a group). We prove that $f_x$ is a well-defined bijection.
+    We consider $f_x: G/\Stab{G}{x} \to \Orb{G}{x}$ given by $g\Stab{G}{x} \mapsto g \cdot x$ (note that $f_x$ is \textit{not} a homomorphism as $\Orb{G}{x}$ is not a group). We prove that $f_x$ is a well-defined bijection.
     \begin{itemize}
         \item \textbf{Well-defined}: Suppose we have $g, h \in G$ such that $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}), this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \textbf{Exercise \ref{exercise-group-action-equivalence}}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
-        \item \textbf{Injective}: Suppose we have $g, h \in G$ such that $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$. By \textbf{Exercise \ref{exercise-group-action-equivalence}}, this means that $g^{-1}h \in \Stab{G}{x}$. By Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}), this further means that $g\Stab{G}{x} = h\Stab{G}{x}$. Thus $f_x$ is injective.
+        \item \textbf{Injective}: Suppose we have $g, h \in G$ such that $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$. By \textbf{Exercise \ref{exercise-group-action-equivalence}}, this means that $g^{-1}h \in \Stab{G}{x}$. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality lemma (\textbf{Lemma \ref{lemma-coset-equality}}). Thus $f_x$ is injective.
         \item \textbf{Surjective}: Suppose $y \in \Orb{G}{x}$. This means that there exists $g \in G$ such that $g\cdot x = y$. Note $f_x(g\Stab{G}{x}) = g\cdot x = y$ by definition of $f_x$. Hence, the pre-image of $y$ is $g\Stab{G}{x}$, meaning that $f_x$ is surjective.
     \end{itemize}
-    Hence $f_x$ is a bijection from $G/\Stab{G}{x}$ to $\Orb{G}{x}$. Therefore, $|\Orb{G}{x}| = |G/\Stab{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). This quickly implies $|G| = |\Stab{G}{x}|\times|\Orb{G}{x}|$.
+    Hence $f_x$ is a bijection from $G/\Stab{G}{x}$ to $\Orb{G}{x}$. Therefore we must have $|\Orb{G}{x}| = |G/\Stab{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). This quickly implies $|G| = |\Stab{G}{x}|\times|\Orb{G}{x}|$.
 \end{proof}
 
 \begin{exercise}
@@ -3918,7 +3919,7 @@ In other words, the number of orbits equals the average number of fixed elements
         &= \sum_{x\in X} |\{g \in G \ | \ g\cdot x = x\}|\\
         &= \sum_{x\in X} |\Stab{G}{x}|.
     \end{align*}
-    By Orbit-Stabilizer theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}), $|\Stab{G}{x}| = \frac{|G|}{|\Orb{G}{x}|}$. Thus,
+    One sees that $|\Stab{G}{x}| = \frac{|G|}{|\Orb{G}{x}|}$ by the Orbit-Stabilizer theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}). Thus,
     \begin{align*}
         \sum_{x\in X} |\Stab{G}{x}| &= \sum_{x\in X} \frac{|G|}{|\Orb{G}{x}|}\\
         &= |G|\sum_{x\in X} \frac{1}{|\Orb{G}{x}|}.
@@ -3974,7 +3975,7 @@ Consider the function $\phi: G\times G\to G$ such that $\phi(g, x) = gxg^{-1}$. 
     \item For the stabilizer, we are to find elements $g \in G$ such that $gxg^{-1} = x$. Hence we find $gx = xg$. Therefore, $g \in \C{G}{x}$ where $\C{G}{x}$ is the centralizer of $x$ (recall how it is defined in \textbf{Example \ref{example-centralizer-of-a-subset}}).
 \end{itemize}
 
-Hence, under conjugation, $\Orb{G}{x} = \text{Conjugates of }x$, and $\Stab{G}{x} = \C{G}{x}$.
+Hence, under the action of conjugation, $\Orb{G}{x} = \text{Conjugates of }x$, and $\Stab{G}{x} = \C{G}{x}$.
 
 We can now look at conjugacy classes.
 \begin{definition}
@@ -4358,7 +4359,7 @@ We prove some properties of the normalizer here.
     Now we prove normality. Consider any $n \in \N{G}{H}$, which means that $nHn^{-1} = H$. This immediately implies that $H \lhd \N{G}{H}$.
 \end{proof}
 \begin{remark}
-    Combining \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}} and \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} means that $H \lhd \N{G}{H} \leq G$.
+    Combining the results from \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}} and \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} means that $H \lhd \N{G}{H} \leq G$.
 \end{remark}
 
 \begin{proposition}\label{prop-normalizer-of-subgroup-is-largest-subgroup-containing-that-subgroup-as-a-normal-subgroup}
@@ -4376,10 +4377,10 @@ We prove some properties of the normalizer here.
 \end{proof}
 
 \begin{proposition}\label{prop-normalizer-of-sylow-p-subgroup}
-    Let $G$ be a finite group, $P$ be a Sylow $p$-subgroup of $G$, and $Q$ be a $p$-subgroup of $\N{G}{P}$. Then $Q \subseteq P$. In particular, if $Q$ is a Sylow $p$-subgroup of $\N{G}{P}$ then $P = Q$.
+    Let $G$ be a finite group. Let $P$ be a Sylow $p$-subgroup of $G$, and $Q$ be a $p$-subgroup of $\N{G}{P}$. Then $Q \subseteq P$. In particular, if $Q$ is a Sylow $p$-subgroup of $\N{G}{P}$, then $P = Q$.
 \end{proposition}
 \begin{proof}[Proof (see {\cite[Proposition 11.9]{humphreys_1996}})]
-    For brevity let $|G| = xp^n$ where $p \nmid x$, $|P| = p^n$, and $|Q| = p^m$.
+    For brevity, write the order of $G$ as $xp^n$ where $p \nmid x$, $|P| = p^n$, and $|Q| = p^m$.
 
     Recall by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 3, we have $PQ \leq \N{G}{P}$ since $P \lhd \N{G}{P}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \textbf{Exercise \ref{exercise-order-of-subgroup-product}},
     \[
@@ -4402,7 +4403,7 @@ We can now look at the \textbf{Second Sylow Theorem}.
     Let $G$ be a finite group and $p$ be a prime number. Suppose $H$ and $K$ are both Sylow $p$-subgroups of $G$. Then there exists an element $g \in G$ such that $gHg^{-1} = K$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 11.10]{humphreys_1996}} and {\cite[pp.~3--5]{mann_2011}})]
-    Suppose $H$ be a Sylow $p$-subgroup of $G$. Let the set
+    Let $H$ be a Sylow $p$-subgroup of $G$. Define the set
     \[
         \mathcal{X} = \{gHg^{-1} \vert g \in G\}
     \]
@@ -4427,8 +4428,6 @@ We can now look at the \textbf{Second Sylow Theorem}.
             &= (h_1h_2) \cdot X.
         \end{align*}
     \end{itemize}
-
-    
 
     We consider the orbits of this group action. We note that $\Orb{H}{H} = \{X \in \mathcal{X} \vert h \cdot H = H \text{ for some } h \in H\}$ and $h\cdot H = hHh^{-1} = P$ since $h \in H$. Thus $\Orb{H}{H} = \{H\}$, meaning $|\Orb{H}{H}| = 1$. We now show that $X = H$ is the only element in $\mathcal{X}$ such that $|\Orb{H}{X}| = 1$. If $X$ has one element in its orbit, then for all $h \in H$, $h\cdot X = hXh^{-1} = X$. Since $X = gHg^{-1}$ for some $g$, thus
     \begin{align*}
@@ -4543,7 +4542,7 @@ We may use part of the Third Sylow Theorem to create a test for non-simplicity.
 \begin{proof}
     We first suppose $n = p^k$ where $k > 1$. Let $G$ be a group of order $n$. We consider two cases.
     \begin{itemize}
-        \item Suppose $G$ is abelian. By a corollary of Cauchy's Theorem (\textbf{Exercise \ref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}}) and writing $p^k$ as $p \times p^{k-1}$, we know there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\textbf{Propopsition \ref{prop-subgroup-of-abelian-group-is-normal}}), thus there exists a proper normal subgroup of $G$, meaning $G$ is non-simple.
+        \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\textbf{Exercise \ref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\textbf{Propopsition \ref{prop-subgroup-of-abelian-group-is-normal}}), thus there exists a proper normal subgroup of $G$, meaning $G$ is non-simple.
         \item Suppose now $G$ is non-abelian. By \textbf{Example \ref{example-group-with-prime-power-order-has-non-trivial-center}}, $G$ has a non-trivial center. Furthermore, $G \neq \Z{G}$ because $G$ is non-abelian (\textbf{Problem \ref{problem-center-of-G}}). Since the center is a normal subgroup of $G$, it is thus a proper normal subgroup of $G$, meaning $G$ is non-simple.
     \end{itemize}
     Hence any group of order $p^k$ where $k > 1$ is non-simple.
@@ -4875,7 +4874,7 @@ Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes ca
     
     A similar argument follows for a similar map $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, yielding $\im\psi = (H\cap K)/\mathcal{A}$ and $\ker\psi = K'(H\cap K)$ which proves statement 2.
     
-    Finally, applying the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}) to $\phi$ and $\psi$ yields
+    The final step is to apply the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}) to both $\phi$ and $\psi$. This yields
     \[
         \frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{H\cap K}{\mathcal{A}} \text{ and } \frac{K'(H\cap K)}{K'(H'\cap K)} \cong \frac{H\cap K}{\mathcal{A}}
     \]
@@ -4907,7 +4906,7 @@ Before we look at them, we introduce \textbf{refinements}.
 
 We can now introduce the \textbf{Schreier Refinement Theorem}.
 \begin{theorem}[Schreier's Refinement Theorem]\label{thrm-schreier}
-    Two (sub)normal series for a finite group $G$ have refinements of equal length whose factor groups are isomorphic.
+    Let $G$ be a finite group. Two (sub)normal series for $G$ have refinements of equal length whose factor groups are isomorphic.
 \end{theorem}
 \begin{remark}
     This theorem is also called the \textbf{Schreier-Zassenhaus Theorem} (e.g. in \cite{clark_1984}) due to the use of Zassenhaus' Lemma in the proof.
@@ -5075,7 +5074,7 @@ In fact, we have a much stronger result which we prove here.
 \end{theorem}
 Note that we do not assume that the abelian group is finite; we will show that the group is, in fact, finite in the proof.
 \begin{proof}
-    The reverse direction follows immediately from \textbf{Lemma \ref{lemma-cyclic-group-simple-iff-order-is-prime}}, so we only prove the forward direction.
+    The reverse direction of the claim follows immediately from \textbf{Lemma \ref{lemma-cyclic-group-simple-iff-order-is-prime}}, so we prove the forward direction only.
     
     Suppose $G$ is a simple abelian group; we show that $G$ is finite. Suppose $g \in G$ such that $g \neq e$. Then the group $H = \langle g \rangle \leq G$. In fact, since $G$ is abelian, $H \unlhd G$ (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}), therefore $H = G$ as $G$ is simple. Now if $G$ is an infinite group, then $\langle g^2 \rangle < G$ which implies $\langle g^2 \rangle \lhd G$, contradicting the fact that $G$ is simple. Hence $G$ is a finite abelian group with generator $g$, meaning $G$ is cyclic. Result follows directly from \textbf{Lemma \ref{lemma-cyclic-group-simple-iff-order-is-prime}}.
 \end{proof}
@@ -5138,7 +5137,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
     Let $n \geq 5$, and suppose $\sigma$ and $\sigma'$ are 3-cycles in $\An{n}$. Then there exists $\pi \in \An{n}$ such that $\sigma' = \pi\sigma\pi^{-1}$.
 \end{lemma}
 \begin{proof}[Proof (cf. {\cite[p.~2]{conrad_2022}})]
-    Recall that $\Sn{n}$ and $\An{n}$ acts on the set $\{1, 2, \dots, n\}$. For brevity denote that set by $\mathcal{N}_n$.
+    For brevity denote the set $\{1, 2, \dots, n\}$ by $\mathcal{N}_n$. Recall that $\Sn{n}$ and $\An{n}$ acts on $\mathcal{N}_n$ naturally.
     
     Suppose $\sigma = \begin{pmatrix}x_1&x_2&x_3\end{pmatrix}$ and $\sigma' = \begin{pmatrix}y_1&y_2&y_3\end{pmatrix}$, where $x_1$, $x_2$, and $x_3$ are distinct and $y_1$, $y_2$, and $y_3$ are distinct. Choose $x_4$ and $x_5$ such that they are distinct and are from one of the $n-3$ remaining elements of $\mathcal{N}_n$; do the same for $y_4$ and $y_5$. Note $x_i, y_i \in \mathcal{N}_n$ for all $i = 1, 2, \dots, n$, just `renamed' per se.
     
@@ -5321,9 +5320,10 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
         \]
         and so $\pi^{-1} = \begin{pmatrix}4 & 3 & 5 & 1\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5\end{pmatrix}$.
         \item Using Shoes and Socks,
-        \[
-            \pi^{-1} = \left(\begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}\right)^{-1} = \begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} \begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1}.
-        \]
+        \begin{align*}
+            \pi^{-1} &= \left(\begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}\right)^{-1}\\
+            &= \begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} \begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1}.
+        \end{align*}
         Now, $\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} = \begin{pmatrix}4 & 3 & 5 & 2\end{pmatrix} = \begin{pmatrix}2 & 4 & 3 & 5\end{pmatrix}$ and $\begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1} = \begin{pmatrix}2 & 5 & 1\end{pmatrix} = \begin{pmatrix}1 & 2 & 5\end{pmatrix}$. Therefore $\pi^{-1} = \begin{pmatrix}2 & 4 & 3 & 5\end{pmatrix}\begin{pmatrix}1 & 2 & 5\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5\end{pmatrix}$.
     \end{itemize}
 
@@ -5367,7 +5367,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
     \end{align*}
     The kernel is the set of values which map to the identity of $H$, i.e. $\{n \in \mathbb{Z} \vert \phi(n) = 1\}$. Now note $H$ is a cyclic group and $|i| = 4$. Thus $i^4 = 1$. Furthermore $i^8 = (i^4)^2 = 1, i^{12} = 1, \dots, i^{4k} = 1$. Thus $\ker\phi = \{4n \vert n \in \mathbb{Z}\} = 4\mathbb{Z}$ (by using coset notation).
 
-    \item We prove the forward direction first. Suppose $\phi$ is one-one. Clearly $\phi(e_G) = e_H$. Let $x$ be an element which is in the kernel of $\phi$, meaning $\phi(x) = e_H$. Then, $\phi(x) = \phi(e_G) = e_H$ which means $x = e_G$ by injectivity of $\phi$. Hence the kernel is trivial.
+    \item We prove the forward direction first. Suppose that $\phi$ is injective. Clearly $\phi(e_G) = e_H$. Let $x$ be an element which is in the kernel of $\phi$, meaning $\phi(x) = e_H$. Then, $\phi(x) = \phi(e_G) = e_H$ which means $x = e_G$ by injectivity of $\phi$. Hence the kernel is trivial.
 
     Now we prove the reverse direction. Suppose the kernel of $\phi$ is trivial, i.e. $\ker \phi = \{e_G\}$. Suppose now there exists elements $x$ and $y$ in $G$ such that $\phi(x) = \phi(y)$. This means that $(\phi(x))^{-1} = \phi(x^{-1}) = \phi(y^{-1}) = (\phi(y))^{-1}$. Hence,
     \[
@@ -5375,7 +5375,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
     \]
     Now since the kernel is trivial, this must mean that $xy^{-1} = e_G$ which immediately leads the $x=y$. Hence $\phi$ is injective.
 
-    \item The Fundamental Homomorphism Theorem states that $G / \ker \phi \cong \im \phi$. Lagrange's Theorem states that $|G / \ker \phi| = \frac{|G|}{|\ker\phi|}$. Hence, $\frac{|G|}{|\ker\phi|} = |\im\phi|$ which leads to the result quickly.
+    \item The Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}) states that $G / \ker \phi \cong \im \phi$. Lagrange's Theorem states that $|G / \ker \phi| = \frac{|G|}{|\ker\phi|}$. Hence, $\frac{|G|}{|\ker\phi|} = |\im\phi|$ which leads to the result quickly.
 
     \item The Diamond Isomorphism Theorem (statement 6) states that $H / (H\cap N) \cong HN / N$. Taking orders on both sides yields $\frac{|H|}{|H \cap N|} = \frac{|HN|}{|N|}$. Rearranging yields required result.
 
@@ -5386,7 +5386,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
         \[
             (G/N)/(H/N) \cong G/H.
         \]
-        Now by \textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}}, $|G/H| = |\mathbb{Z}/(x\mathbb{Z})| = x$ and $|G/N| = |\mathbb{Z}/(y\mathbb{Z})| = y$. Hence
+        Now by \textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}} we have $|G/H| = |\mathbb{Z}/(x\mathbb{Z})| = x$ and $|G/N| = |\mathbb{Z}/(y\mathbb{Z})| = y$. Hence
         \[
             \frac{x}{|H/N|} = y
         \]
@@ -5420,11 +5420,14 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
         \item Clearly $\{1\} \lhd \mathrm{Q}$ and $\mathrm{Q} \lhd \mathrm{Q}$.
         \item The subgroups $\langle i\rangle$, $\langle j\rangle$, and $\langle k\rangle$ have order 4, so they have index 2 by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Hence by \textbf{Problem \ref{problem-subgroup-of-index-2}} these subgroups are normal.
         \item Consider the subgroup $\langle -1 \rangle = \{1, -1\}$. \begin{itemize}
-            \item $1\langle -1 \rangle = \langle -1 \rangle1$ since 1 is the identity;
+            \item $1\langle -1 \rangle = \langle -1 \rangle1$, since 1 is the identity;
             \item $-1\langle -1 \rangle = \{1, -1\} = \langle -1 \rangle(-1)$;
-            \item $i\langle -1 \rangle = \{-i, i\} = \langle -1 \rangle i$ and $-i\langle -1 \rangle = \{i, -i\} = \langle -1 \rangle (-i)$;
-            \item $j\langle -1 \rangle = \{-j, j\} = \langle -1 \rangle j$ and $-j\langle -1 \rangle = \{j, -j\} = \langle -1 \rangle (-j)$; and
-            \item $k\langle -1 \rangle = \{-k, k\} = \langle -1 \rangle k$ and $-k\langle -1 \rangle = \{k, -k\} = \langle -1 \rangle (-k)$.
+            \item $i\langle -1 \rangle = \{-i, i\} = \langle -1 \rangle i$;
+            \item $-i\langle -1 \rangle = \{i, -i\} = \langle -1 \rangle (-i)$;
+            \item $j\langle -1 \rangle = \{-j, j\} = \langle -1 \rangle j$;
+            \item $-j\langle -1 \rangle = \{j, -j\} = \langle -1 \rangle (-j)$;
+            \item $k\langle -1 \rangle = \{-k, k\} = \langle -1 \rangle k$; and
+            \item $-k\langle -1 \rangle = \{k, -k\} = \langle -1 \rangle (-k)$.
         \end{itemize}
         Thus $\langle -1 \rangle$ is normal.
     \end{itemize}
@@ -5469,7 +5472,13 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
     \item We prove the two group action axioms.
     \begin{itemize}
         \item \textbf{Identity}: $\alpha(e, x) = exe^{-1} = x$.
-        \item \textbf{Compatibility}: $\alpha(g, \alpha(h, x)) = \alpha(g, hxh^{-1}) = ghxh^{-1}g^{-1}$. Note that $(gh)^{-1} = h^{-1}g^{-1}$ by Shoes and Socks. Thus, $\alpha(g, \alpha(h, x)) = (gh)x(gh)^{-1} = \alpha(gh, x)$.
+        \item \textbf{Compatibility}: Note
+        \begin{align*}
+            \alpha(g, \alpha(h, x)) &= \alpha(g, hxh^{-1})\\
+            &= ghxh^{-1}g^{-1}\\
+            &= (gh)x(gh)^{-1}\\
+            &= \alpha(gh, x).
+        \end{align*}
     \end{itemize}
     Therefore $\alpha$ is a group action of $G$ on $G$.
 
@@ -5516,7 +5525,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
 	        &= (\underbrace{gg_1^{-1}g_2}_{\text{In } G})\cdot x_2\\
 	        &\in \Orb{G}{x_2}
 	    \end{align*}
-	    which means that any element in $\Orb{G}{x_1}$ is also in $\Orb{G}{x_2}$. Hence, $\Orb{G}{x_1} \subseteq \Orb{G}{x_2}$. A similar argument can be used to show that $\Orb{G}{x_2} \subseteq \Orb{G}{x_1}$. Hence $\Orb{G}{x_1} = \Orb{G}{x_2}$.
+	    which means that any element in the orbit of $x_1$ is also in the orbit of $x_2$. Hence, $\Orb{G}{x_1} \subseteq \Orb{G}{x_2}$. A similar argument can be used to show that $\Orb{G}{x_2} \subseteq \Orb{G}{x_1}$. Hence $\Orb{G}{x_1} = \Orb{G}{x_2}$.
 	\end{enumerate}
 
 	\item \begin{enumerate}[label=(\alph*)]
@@ -5577,7 +5586,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
         &= xSx^{-1} & \text{(since } y^{-1} \in \N{G}{S})\\
         &= S & \text{(since } x \in \N{G}{S})
     \end{align*}
-    which means that $xy^{-1} \in \N{G}{S}$. Hence by subgroup test $\N{G}{S} \leq G$.
+    which means that $xy^{-1} \in \N{G}{S}$. Hence, by the subgroup test, we have $\N{G}{S} \leq G$.
 
     \item By the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}), we know that $gHg^{-1} = K$. Since $H \cong gHg^{-1}$ by \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} thus $H \cong gHg^{-1} = K$ as required.
 
@@ -5593,7 +5602,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
     \]
     which means that $|\N{G}{P}| = 98$.
 
-    \item Note $130 = 2 \times 5 \times 13$. Consider the number of Sylow 13-subgroups, $n_13$. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}),
+    \item Note $130 = 2 \times 5 \times 13$. Consider the number of Sylow 13-subgroups, $n_{13}$. The Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}) tells us that
     \begin{itemize}
         \item $n_13 \mid 2 \times 5 = 10$, so $n_13 \in \{1, 2, 5, 10\}$, and
         \item $n_13 \equiv 1 \pmod{13}$ so $n_13 \in \{1, 14, 27, \dots\}$.
@@ -5732,7 +5741,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
     \begin{itemize}
             \item \textbf{Closure}: Function composition is closed by definition.
             \item \textbf{Associativity}: Function composition is associative.
-            \item \textbf{Identity}: Notice by brute-force computation, that $T^6(x, y) = (x, y)$. Hence $T^6$ is the identity of $A$.
+            \item \textbf{Identity}: By performing brute-force computation, one finds that $T^6(x, y) = (x, y)$. Hence $T^6$ is the identity of $A$.
             \item \textbf{Inverse}: If $r$ is a multiple of 6 then $T^r$ is its own inverse. Otherwise, $T^{6-r}$ is the inverse of $T^r$.
     \end{itemize}
     Thus, $(A, \circ)$ is a group, with order 6.
@@ -5751,7 +5760,12 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
     \item \begin{enumerate}[label=(\alph*)]
         \item Clearly $e \in K$ since $e \in G$ and $ehe^{-1} = h \in H$ for all $h$ in $H$.
 
-        Suppose $x$ and $y$ are in $K$, meaning $xhx^{-1} \in H$ and $yhy^{-1} \in H$ for all $h$ in $H$. Supposing $yhy^{-1} = \hat{h}$, then $(xy^{-1})\hat{h}(xy^{-1})^{-1} = xy^{-1}\left(yhy^{-1}\right)yx^{-1} = xhx^{-1}$ which is clearly an element of $h$. Thus $xy^{-1}$ is in $K$. By subgroup test, $K \leq G$.
+        Suppose $x$ and $y$ are in $K$, meaning $xhx^{-1} \in H$ and $yhy^{-1} \in H$ for all $h$ in $H$. Let $yhy^{-1} = \hat{h}$. Then note that
+        \begin{align*}
+            (xy^{-1})\hat{h}(xy^{-1})^{-1} &= xy^{-1}\left(yhy^{-1}\right)yx^{-1}\\
+            &= xhx^{-1}
+        \end{align*}
+        which is clearly an element of $h$. Thus $xy^{-1}$ is in $K$. By subgroup test, $K \leq G$.
 
         \item Note that the identity of $K$, $e$, is also the identity of $G$. Since $H \leq G$, thus $e \in H$. Since $H$ is a subgroup of $G$, thus for any $x$ and $y$ in $H$ we have $xy^{-1} \in H$. Hence, by subgroup test, $H \leq K$.
     \end{enumerate}
@@ -5839,7 +5853,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
 
         We note that a group of order 1 is the trivial group which is abelian. The groups of order 2, 3, and 5 are groups of prime order, meaning that they are cyclic and hence abelian. We are left with a group of order 4.
 
-        By a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}), the order of an element of a group of order 4 must divide 4. Hence the possible orders of an element in such a group is 1, 2, or 4. An element of order 1 is the identity. If an element with order 4 exists, then the group is cyclic and hence abelian. So we assume that all elements are either order 1 or order 2 (in fact, the orders are 1, 2, 2, 2). This is precisely the group
+        We note that the order of an element of a group of order 4 must divide 4 (\textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}). Hence the possible orders of an element in such a group is 1, 2, or 4. An element of order 1 is the identity. If an element with order 4 exists, then the group is cyclic and hence abelian. So we assume that all elements are either order 1 or order 2 (in fact, the orders are 1, 2, 2, 2). This is precisely the group
         \[
             D_2 = \langle r, s \vert r^2 = s^2 = e, rs = sr\rangle
         \]
@@ -5995,7 +6009,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
 \begin{enumerate}
     \item We work from the right to the left.
     \begin{itemize}
-        \item $\gamma \delta$ has cycle notation $\begin{pmatrix}1 & 2 & 5\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix}\begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5 & 2\end{pmatrix}$;
+        \item $\gamma \delta$ has cycle notation $\begin{pmatrix}1 & 2 & 5\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix}\begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix}$ which, when simplified, equals $\begin{pmatrix}1 & 4 & 3 & 5 & 2\end{pmatrix}$;
         \item $\beta \gamma \delta$ has cycle notation $\begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix}\begin{pmatrix}1 & 4 & 3 & 5 & 2\end{pmatrix} = \begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix} = \delta$; and
         \item $\alpha \beta \gamma \delta$ has cycle notation $\begin{pmatrix}1 & 5 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix} = (1)$, the identity.
     \end{itemize}
@@ -6008,9 +6022,9 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
 
     Let the map $\phi: D_3 \to \Sn{3}$ be given such that $r \mapsto \begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $s \mapsto \begin{pmatrix}1 & 2\end{pmatrix}$. We show that $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\begin{pmatrix}1 & 2\end{pmatrix}$ obey the two rules above. For brevity let $\sigma = \begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\tau = \begin{pmatrix}1 & 2\end{pmatrix}$.
     \begin{itemize}
-        \item We check that $\phi(r^3) = \phi(s^2) = \phi(e)$:
+        \item We check that $\phi(r^3) = \phi(s^2) = \phi(e)$.
         \begin{itemize}
-            \item $\sigma^2 = \begin{pmatrix}1 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 2 & 3\end{pmatrix} = \begin{pmatrix}1 & 3 & 2\end{pmatrix}$ and $\sigma^3 = \begin{pmatrix}1 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 3 & 2\end{pmatrix} = \id$; and
+            \item $\sigma^2 = \begin{pmatrix}1 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 2 & 3\end{pmatrix} = \begin{pmatrix}1 & 3 & 2\end{pmatrix} \neq \id$; and $\sigma^3 = \begin{pmatrix}1 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 3 & 2\end{pmatrix} = \id$; and
             \item $\tau^2 = \begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 2\end{pmatrix} = \id$.
         \end{itemize}
         \item We check that $\phi(rs) = \phi(sr^2)$.
@@ -6023,7 +6037,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
 
     \item $|\Sn{4}| = 4! = 24$.
     \begin{enumerate}[label=(\alph*)]
-        \item Consider $H = \left\langle \begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix} \right\rangle$. For brevity let $\sigma = \begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix}$. Note that
+        \item Consider $H = \left\langle \begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix} \right\rangle$. For brevity let $\sigma$ denote the permutation $\begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix}$. Note that
         \begin{itemize}
             \item $\sigma^2 = \begin{pmatrix}1 & 3\end{pmatrix}\begin{pmatrix}2 & 4\end{pmatrix}$;
             \item $\sigma^3 = \begin{pmatrix}1 & 4 & 3 & 2\end{pmatrix}$; and
@@ -6151,10 +6165,12 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
         \item Let $(m_1, n_1), (m_2, n_2) \in G$. Then
         \begin{align*}
             \phi((m_1, n_1)(m_2, n_2)) &= \phi((m_1 + m_2, n_1 + n_2))\\
-            &= (m_1 + m_2 - n_1 - n_2, (n_1 + n_2) \mod 5)\\
+            &= (m_1 + m_2 - n_1 - n_2,\\
+            &\quad\quad\quad(n_1 + n_2) \mod 5)\\
             &= ((m_1 - n_1) + (m_2 - n_2),\\
             &\quad\quad\quad(n_1 \mod 5) + (n_2 \mod 5))\\
-            &= (m_1 - n_1, n_1 \mod 5)(m_2 - n_2, n_2 \mod5)\\
+            &= (m_1 - n_1, n_1 \mod 5) \times \\
+            &\quad\quad\quad(m_2 - n_2, n_2 \mod5)\\
             &= \phi((m_1, n_1))\phi((m_2, n_2))
         \end{align*}
         which means that $\phi$ is a homomorphism.
@@ -6170,7 +6186,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
             &= K
         \end{align*}
         
-        Hence by Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}} we have $G / K \cong H$.
+        Hence we have $G / K \cong H$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}).
     \end{enumerate}
     
     \item We are given that $K \subseteq H$. Hence
@@ -6193,7 +6209,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
                 &= gh\\
                 &= \phi((g, g^{-1}))\phi((h, h^{-1})).
             \end{align*}
-            \item \textbf{Injective}: Suppose $(g, g^{-1}), (h, h^{-1}) \in I$ such that $\phi((g, g^{-1})) = \phi((h, h^{-1}))$. Then $g = h$ by definition of $\phi$ which clearly means $(g, g^{-1}) = (h, h^{-1})$.
+            \item \textbf{Injective}: Suppose $(g, g^{-1}), (h, h^{-1}) \in I$ such that we have $\phi((g, g^{-1})) = \phi((h, h^{-1}))$. Then $g = h$ by definition of $\phi$ which clearly means $(g, g^{-1}) = (h, h^{-1})$.
             \item \textbf{Surjective}: Suppose $g \in G$. Then $(g, g^{-1}) \in I$ and $\phi((g, g^{-1})) = g$.
         \end{itemize}
         Hence $\phi$ is an isomorphism, meaning $I \cong G$.
@@ -6218,7 +6234,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
             &= I.
         \end{align*}
         
-        Thus, by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}, we have $G^2 / I \cong G$. But since $I \cong G$, we further have $G^2/G \cong G$ as needed.
+        Thus we have $G^2 / I \cong G$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}). But since $I \cong G$, we further have $G^2/G \cong G$ as needed.
     \end{enumerate}
 
     \item We will prove that $\phi$ is a homomorphism first:
@@ -6295,7 +6311,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
         \[
             g = f(a) = f(g^k) = (f(g))^k = g^{m_fk}        
         \]
-        which means $m_fk \equiv 1 \pmod n$. By \textbf{Proposition \ref{prop-multiplicative-inverse-exists-iff-coprime}}, this means that $\gcd(m_f, n) = 1$ and $\gcd(k, n) = 1$, so $m_f, k \in \Un{n}$. Hence $k$ is the multiplicative inverse of $m_f$.
+        which means $m_fk \equiv 1 \pmod n$. By \textbf{Proposition \ref{prop-multiplicative-inverse-exists-iff-coprime}}, this means that $\gcd(m_f, n) = 1$ and $\gcd(k, n) = 1$. Therefore, $m_f, k \in \Un{n}$. Hence $k$ is the multiplicative inverse of $m_f$.
         
         We now prove the reverse direction. Assume $m_f$ has a multiplicative inverse (say $k$), meaning $m_fk \equiv 1 \pmod n$. As above this means $m_f, k \in \Un{n}$. We show that $f$ is an isomorphism.
         \begin{itemize}
@@ -6383,7 +6399,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
         \item when $p = 3$ we have $m = 11$ and the factors of 11 are 1 and 11; and
         \item when $p = 11$ we have $m = 3$ and the factors of 3 are 1 and 3.
     \end{itemize}
-    Furthermore $n_p \equiv 1 \pmod p$ by the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}). Hence we must have $n_3 = n_{11} = 1$. By a corollary of the Second Sylow Theorem (\textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}) this means that the only Sylow 3-subgroup and Sylow 11-subgroup are normal.
+    Furthermore, the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}) tells us that $n_p \equiv 1 \pmod p$. Hence we must have $n_3 = n_{11} = 1$. By a corollary of the Second Sylow Theorem (\textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}) this means that the only Sylow 3-subgroup and Sylow 11-subgroup are normal.
 
     \item For simplicity let $q = 2^p - 1$, and we are given that $q$ is a prime. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), $n_q \mid 2^{p-1}$ and $n_q \equiv 1 \pmod p$. The factors of $2^{p-1}$ are $1, 2, 4, 8, \dots, 2^{p-1}$. We note $2^{p-1} < 2^p - 1 = q$ for any prime $p$ since
     \[
@@ -6395,7 +6411,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
         \item The divisors of $p$ are 1 and $p$ itself. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), $n_q$ divides $p$ and $n_q \equiv 1 \pmod q$. Since $p < q$ hence $p \not\equiv 1 \pmod q$ meaning that $n_q = 1$. By a corollary of the Second Sylow Theorem (\textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}) the only Sylow $q$-subgroup is normal.
         \item The divisors of $q$ are 1 and $q$ itself. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), $n_p$ divides $q$ and $n_p \equiv 1 \pmod p$. Since by assumption $q \not\equiv 1 \pmod p$ hence $n_p = 1$.
         
-        Now a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}) tells us that the order of an element in a group of order $pq$ must divide $pq$. Hence the possible orders of an element in such a group are 1, $p$, $q$, or $pq$.
+        A corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}) tells us that the order of an element in a group of order $pq$ must divide $pq$. Hence the possible orders of an element in such a group are 1, $p$, $q$, or $pq$.
         \begin{itemize}
             \item There is only one element of order 1, the identity.
             \item There are $p - 1$ elements of order $p$, all belonging in the single Sylow $p$-subgroup. Note that we subtract 1 because one element in the Sylow $p$-subgroup is the identity.
@@ -6479,7 +6495,7 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
         \begin{itemize}
             \item $G_1 = \{e, \alpha, \alpha^2, \alpha^3\} \cong \Cn{4}$.
             \item $G_2 = \{e, \beta, \beta^2, \beta^3\} = \{e, \beta, \alpha^2, \alpha^2\beta\} \cong \mathrm{V}$ where $a = \alpha^2$ and $b = \beta$.
-            \item $G_3 = \{e, \alpha\beta, (\alpha\beta)^2, (\alpha\beta)^3\} = \{e, \alpha\beta, \alpha^2, \alpha^3\beta\} \cong \mathrm{V}$ where $a = \alpha\beta$ and $b = \alpha^2$.
+            \item $G_3 = \{e, \alpha\beta, (\alpha\beta)^2, (\alpha\beta)^3\} = \{e, \alpha\beta, \alpha^2, \alpha^3\beta\} \cong \mathrm{V}$ with $a = \alpha\beta$ and $b = \alpha^2$.
         \end{itemize}
         Also, note that $\Cn{2} \cong \langle \alpha^2 \rangle \lhd G_1$, $\Cn{2} \cong \langle \beta^2 \rangle \lhd G_2$, $\Cn{2} \cong \langle (\alpha\beta)^2 \rangle \lhd G_3$. Hence, the three composition series are
         \begin{align*}
@@ -6489,7 +6505,13 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
         \end{align*}
         and the two series up to isomorphism are $1 \lhd \Cn{2} \lhd \Cn{4} \lhd \mathrm{Q}$ and $1 \lhd \Cn{2} \lhd \mathrm{V} \lhd \mathrm{Q}$.
         
-        \item By Jordan-H\"older theorem (\textbf{Theorem \ref{thrm-jordan-holder}}), the composition factors are isomorphic to each other. We note $\Cn{2} / 1 \cong \Cn{2}$, $\Cn{4} / \Cn{2} \cong \Cn{2}$ (by \textbf{Exercise \ref{exercise-Zmn-mod-Zn-cong-Zn}}), and $\mathrm{V} / \Cn{2} \cong (\Cn{2})^2 / \Cn{2} \cong \Cn{2}$ (by \textbf{Problem \ref{problem-cartesian-product-of-group-by-group-isomorphic-to-group}}). The only unaccounted set of factors is $\mathrm{Q}/\mathrm{V}$ and $\mathrm{Q}/\Cn{4}$. So, either $\mathrm{Q}/\mathrm{V} \cong \Cn{2}$ and $\mathrm{Q}/\Cn{4} \cong \Cn{2}$, or $\mathrm{Q}/\mathrm{V} \cong \mathrm{Q}/\Cn{4}$. Hence $\mathrm{Q}/\mathrm{V} \cong \mathrm{Q}/\Cn{4}$ (or, more accurately, $\mathrm{Q}/H \cong \mathrm{Q}/K$).
+        \item By Jordan-H\"older theorem (\textbf{Theorem \ref{thrm-jordan-holder}}), the composition factors are isomorphic to each other. We note
+        \begin{itemize}
+            \item $\Cn{2} / 1 \cong \Cn{2}$;
+            \item $\Cn{4} / \Cn{2} \cong \Cn{2}$ by \textbf{Exercise \ref{exercise-Zmn-mod-Zn-cong-Zn}}; and
+            \item $\mathrm{V} / \Cn{2} \cong (\Cn{2})^2 / \Cn{2} \cong \Cn{2}$ by \textbf{Problem \ref{problem-cartesian-product-of-group-by-group-isomorphic-to-group}}.
+        \end{itemize}
+        The only unaccounted set of factors is $\mathrm{Q}/\mathrm{V}$ and $\mathrm{Q}/\Cn{4}$. So, either $\mathrm{Q}/\mathrm{V} \cong \Cn{2}$ and $\mathrm{Q}/\Cn{4} \cong \Cn{2}$, or $\mathrm{Q}/\mathrm{V} \cong \mathrm{Q}/\Cn{4}$. Hence $\mathrm{Q}/\mathrm{V} \cong \mathrm{Q}/\Cn{4}$ (or, more accurately, $\mathrm{Q}/H \cong \mathrm{Q}/K$).
     \end{enumerate}
     
     \item We know that $\An{4} \lhd \Sn{4}$ by \textbf{Proposition \ref{prop-An-normal-subgroup-of-Sn}}. Note $\An{4}$ is a maximal normal subgroup since $|\An{4}| = \frac{4!}2 = 12$ by \textbf{Proposition \ref{prop-order-of-An}}, and Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) says that a subgroup's order must divide the order of the group. Now applying Lagrange on $\An{4}$, we see that the possible orders of a subgroup of $\An{4}$ are 6, 4, 3, 2, and 1.
@@ -6537,8 +6559,8 @@ Images are cited as they appear.
 
 \section{Introduction to Groups}
 \begin{itemize}
-    \item Image of the triangle is released under the public domain by user \code{Jim.belk} on Wikimedia at \url{https://commons.wikimedia.org/wiki/File:Labeled_Triangle_Reflections.svg}.
-    \item Image of the circular decorative knot with twelve crossings is released under the public domain by user \code{AnonMoos} on Wikimedia at \url{https://commons.wikimedia.org/wiki/File:Circular-cross-decorative-knot-12crossings.svg}.
+    \item Image of the triangle is released into the public domain by user \code{Jim.belk} on Wikimedia \href{https://commons.wikimedia.org/wiki/File:Labeled_Triangle_Reflections.svg}{here}.
+    \item Image of the circular decorative knot with twelve crossings is released into the public domain by user \code{AnonMoos} on Wikimedia. The original file can be found at \href{https://commons.wikimedia.org/wiki/File:Circular-cross-decorative-knot-12crossings.svg}{here}.
     \item Points in the pane is my own work.
 \end{itemize}
 
@@ -6559,8 +6581,8 @@ Images are cited as they appear.
 
 \section{Further Properties of Homomorphisms}
 \begin{itemize}
-    \item Commutativity diagram for the Fundamental Homomorphism Theorem is my own work.
-    \item Subgroup lattice for the Diamond Isomorphism Theorem was adapted from the image by user \code{Aleksandr Omelchenko} on Wikimedia at \url{https://commons.wikimedia.org/wiki/File:Diagram_for_the_First_Isomorphism_Theorem.png}.
+    \item The commutativity diagram for the Fundamental Homomorphism Theorem is my own work.
+    \item Subgroup lattice for the Diamond Isomorphism Theorem was adapted from the image by user \code{Aleksandr Omelchenko} on Wikimedia at \href{https://commons.wikimedia.org/wiki/File:Diagram_for_the_First_Isomorphism_Theorem.png}{here}.
 \end{itemize}
 
 \section{Group Actions}
