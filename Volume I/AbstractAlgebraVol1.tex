@@ -391,7 +391,6 @@ We now prove an important property of groups: the \textbf{cancellation law}.
     This completes the proof.
 \end{proof}
 
-
 \section{Order of a Group and Order of an Element}
 We look at the notion of \textit{order} with respect to groups and elements of a group.
 
@@ -1224,8 +1223,6 @@ Now that we have introduced the idea of a group, one wonders about how elements 
     It is important to note that $xy$ uses the group operation on $G$ (i.e., $\ast$) while $\phi(x)\phi(y)$ uses the group operation on $H$ (i.e., $\star$).
 \end{remark}
 
-
-
 Let's look at two examples of homomorphisms between groups.
 \begin{example}
     Let $G$ be any group. Take $g$ from $G$. Let $\phi: \mathbb{Z} \to G$ (where $\mathbb{Z}$ is the additive group of integers) be such that $\phi(n) = g^n$ for all integers $n$. Then $\phi$ is a homomorphism, since
@@ -1249,8 +1246,6 @@ Let's look at two examples of homomorphisms between groups.
         \item $\phi(n) = 2^n$
     \end{enumerate}
 \end{exercise}
-
-
 
 \section{Properties of Homomorphisms}
 With an understanding on what a homomorphism is, let's look at some properties that a homomorphism between two groups has.
@@ -1288,8 +1283,6 @@ For the next few properties, define
 \begin{exercise}
     Prove that $\phi(H_1) \leq G_2$.
 \end{exercise}
-
-
 
 \begin{proposition}\label{prop-homomorphism-inverse-is-subgroup}
     $\phi^{-1}(H_2) \leq G_1$.
@@ -2116,8 +2109,6 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
     Therefore $\phi$ is a well-defined isomorphism from $G$ to $H \times K$, meaning $G \cong H \times K$.
 \end{proof}
 
-
-
 \begin{example}
     Consider again $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. As we have found before, $G = HK$; but we now know that $G \cong H \times K$.
 
@@ -2130,8 +2121,6 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \begin{exercise}
     Let $\mathcal{S} = \{1, 5, 7, 11\}$, $G = \{1, 5\}$ and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the value of $n$ such that $\mathcal{S} \cong (\mathbb{Z}_n)^2$.
 \end{exercise}
-
-
 
 \section{Problems}
 \begin{problem}\label{problem-external-direct-product-of-abelian-groups-is-abelian}
@@ -3133,8 +3122,6 @@ We look at some results about the structure of the group of units.
     This proves that $\sigma$ is an isomorphism between $\Un{m} \times \Un{n}$ and $\Un{mn}$, i.e. $\Un{m} \times \Un{n} \cong \Un{mn}$.
 \end{proof}
 
-
-
 \begin{proposition}\label{prop-Un-2^m}
     For $m \geq 3$, $\Un{2^m} \cong \mathbb{Z}_{2^{m-2}} \times \mathbb{Z}_2$.
 \end{proposition}
@@ -3846,8 +3833,6 @@ We say that a group action is \textbf{transitive} if and only if it has one orbi
     \textit{(That is, prove that distinct orbits partition $X$.)}
 \end{exercise}
 
-
-
 \section{The Orbit-Stabilizer Theorem}
 There is a natural relationship between orbits and stabilizers of a group action. We give the intuition of the theorem before stating it formally.
 
@@ -4012,7 +3997,6 @@ We can now look at conjugacy classes.
         |\Cl{x}| = [G : \C{G}{x}].
     \]
 \end{exercise}
-
 
 \section{The Class Equation}
 The example of the previous section illustrates that the sum of the sizes of the conjugacy classes must be equal to the size of the group. This fact, along with the Orbit-Stabilizer theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}), can be used to derive an important equation known as \textbf{the class equation}.
@@ -4284,8 +4268,6 @@ We prove some results regarding the conjugate subgroup here.
     which completes the proof for all integers.
 \end{proof}
 
-
-
 \begin{proposition}\label{prop-order-of-conjugate-element equals-order-of-element}
     Let $G$ be a group. Then for all $g, x \in G$, we have $|gxg^{-1}| = |x|$.
 \end{proposition}
@@ -4394,8 +4376,6 @@ We prove some properties of the normalizer here.
 
     Now suppose $Q$ is, in particular, a Sylow $p$-subgroup of $\N{G}{P}$. Since $\N{G}{P} \leq G$ by \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}}, one concludes that $|G| = y|\N{G}{P}|$ by Lagrange's Theorem. Hence $xp^n = y|\N{G}{P}|$ which implies $|\N{G}{P}| = \frac{x}{y} p^n = zp^n$ where $z = \frac xy$ and one observes $p \nmid z$. Therefore, if $Q$ is a Sylow $p$-subgroup, then $|Q| = p^n = |P|$ which implies $P = Q$ as $Q \subseteq P$.
 \end{proof}
-
-
 
 \section{Second Sylow Theorem}
 We can now look at the \textbf{Second Sylow Theorem}.
@@ -5155,6 +5135,24 @@ However, to prove this claim, we need several preliminary lemmas. We will leave 
 \begin{exercise}
     Verify that $\begin{pmatrix}1&2&3\end{pmatrix}$ and $\begin{pmatrix}1&3&2\end{pmatrix}$ are conjugates in $\An{5}$ by finding the permutation $\pi$ that makes them conjugates.
 \end{exercise}
+
+We also state and prove a fairly obvious proposition.
+\begin{proposition}\label{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}
+    Let the integer $n \geq 3$. Let $\{1, 2, 3, \dots, n\}$ be denoted by $\mathcal{N}_n$. Suppose $\An{n}$ acts on $\mathcal{N}_n$ naturally. Then $\Stab{\An{n}}{r} \cong \An{n-1}$.
+\end{proposition}
+\begin{proof}
+    We note that elements of $\Stab{\An{n}}{r}$ are permutations that fix $r$, thereby permuting the $n - 1$ other elements. Therefore elements of $\Stab{\An{n}}{r}$ are even permutations on $n - 1$ elements, i.e. $\Stab{\An{n}}{r} \cong \An{n-1}$.
+\end{proof}
+
+With these results, we are ready to prove that an alternating group with degree more than 4 is simple.
+\begin{theorem}
+    The group $\An{n}$ is simple if $n \geq 5$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[p.~4]{conrad_2022}} and {\cite[pp.149-150]{dummit_foote_2004}})]
+    We proceed by induction on $n$.
+
+    We start with the base case of $n = 5$.
+\end{proof}
 
 %=========================================
 \appendix
