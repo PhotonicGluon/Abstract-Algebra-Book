@@ -2432,18 +2432,25 @@ In the diagram, we only show subgroups that we care about. $G$ has a (direct) su
     This completes the proof of the Diamond Isomorphism Theorem.
 \end{proof}
 
-\begin{corollary}\label{corollary-subgroup-product-is-normal-subgroup-if-subgroups-are-normal}
-    Let $G$ be a group. Let $H$ and $K$ be proper normal subgroups of $G$. Then $HK \lhd G$.
+\begin{corollary}\label{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}
+    Let $G$ be a group with proper subgroups $H$ and $K$. Then $H$ and $K$ are normal subgroups of $G$ if and only if $HK \unlhd G$.
 \end{corollary}
 \begin{proof}
-    By the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 3, we know that $HK \leq G$ since $H \lhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
+    We prove the forward direction first; assume that $H, K \lhd G$. By the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 3, we know that $HK \leq G$ since $H \lhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
     \begin{align*}
         g(hk)g^{-1} &= (gh)(kg^{-1})\\
         &= (hg)(g^{-1}k) & (\text{since } H, K \lhd G)\\
         &= h(gg^{-1})k\\
         &= hk \in HK
     \end{align*}
-    which means that $HK \lhd G$.
+    which means that $HK \unlhd G$.
+
+    We now prove the reverse direction; assume $HK \unlhd G$. This means $gHKg^{-1} = HK$ for all $g \in G$ by definition of normality. Note $gHKg^{-1} = (gHg^{-1})(gKg^{-1})$. We hence consider the following cases.
+    \begin{itemize}
+        \item Suppose $gH = H$ and $g^{-1}gKg^{-1} = Kg^{-1} = K$. Then Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}) tells us that $g \in H$ and $g \in K$, hence $g \in H \cap K$. But $g \in G$. Therefore $G \subseteq H \cap K$. However, $H \subset G$ and $K \subset G$, hence $H \cap K \subset G$, a contradiction.
+        \item Suppose $gHg^{-1}g = gH = H$ and $Kg^{-1} = K$. This is the same as above.
+    \end{itemize}
+    Therefore the only remaining case is $gHg^{-1} = H$ and $gKg^{-1} = K$, implying that both $H \lhd G$ and $K \lhd G$ as required.
 \end{proof}
 
 We look at a few examples for the use of the Diamond Isomorphism Theorem.
@@ -2472,15 +2479,9 @@ We look at another application of the Diamond Isomorphism Theorem, which has app
         m\mathbb{Z}/(l\mathbb{Z}) \cong (d\mathbb{Z})/(n\mathbb{Z}).
     \]
 
-    We claim that
+    We claim that $m\mathbb{Z} / (l\mathbb{Z}) \cong \mathbb{Z}_{\frac lm} \text{ and } d\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd}$. This is a specific case of \textbf{Problem \ref{problem-mZ/nZ-isomorphic-to-Zn/m}} which we have left as a problem for later. Hence, what we have shown is
     \[
-        m\mathbb{Z} / (l\mathbb{Z}) \cong \mathbb{Z}_{\frac lm} \text{ and } d\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd}.
-    \]
-    This is a specific case of \textbf{Problem \ref{problem-mZ/nZ-isomorphic-to-Zn/m}} which we have left as a problem for later.
-
-    Hence, what we have shown is
-    \[
-    \mathbb{Z}_{\frac lm} \cong m\mathbb{Z}/(l\mathbb{Z}) \cong d\mathbb{Z}/(n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd}
+    \mathbb{Z}_{\frac lm} \cong m\mathbb{Z}/(l\mathbb{Z}) \cong d\mathbb{Z}/(n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd},
     \]
     which means that $\mathbb{Z}_{\frac lm} \cong \mathbb{Z}_{\frac nd}$. We can now finally take orders on both sides:
     \[
@@ -4824,7 +4825,7 @@ Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes ca
     where an expression like $H'(H \cap K')$ denotes the subset product of $H'$ and $H \cap K'$.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[p.~110]{hungerford_1980}})]
-    We quickly note that $H' \lhd H \cap K$ as $H' \lhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \lhd H \cap K$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 4. Since $H'\lhd H$ we know $H' \subset H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \lhd H \cap K$. Similarly, $H \cap K' \lhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\textbf{Corollary \ref{corollary-subgroup-product-is-normal-subgroup-if-subgroups-are-normal}}), we know that $(H' \cap K)(H \cap K') \lhd H \cap K$. For brevity, denote $(H' \cap K)(H \cap K')$ by $\mathcal{A}$.
+    We quickly note that $H' \lhd H \cap K$ as $H' \lhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \lhd H \cap K$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 4. Since $H'\lhd H$ we know $H' \subset H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \lhd H \cap K$. Similarly, $H \cap K' \lhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\textbf{Corollary \ref{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, denote $(H' \cap K)(H \cap K')$ by $\mathcal{A}$.
     
     Denote the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$ as follows. If $h \in H'$ and $c \in H \cap K$ then $\phi(hc) = c\mathcal{A}$. We show that $\phi$ is a well-defined homomorphic surjection with a goal to use the Fundamental Homomorphism Theorem to finish the proof.
     
