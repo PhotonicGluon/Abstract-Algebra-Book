@@ -5241,9 +5241,9 @@ With these results, we are ready to prove that an alternating group with degree 
     Now suppose $x$ and $y$ are in $S$. Then there exist elements $h_x$ and $h_y$ in $H$ such that $x = gh_xg^{-1}$ and $y = gh_yg^{-1}$. Note that
     \begin{align*}
         xy^{-1} &= (gh_xg^{-1})(gh_yg^{-1})^{-1}\\
-        &= (gh_xg^{-1})(g{h_y}^{-1}g^{-1}) & \text{(Shoes and Shocks)}\\
-        &= gh_xg^{-1}g{h_y}^{-1}g^{-1} & \text{(associativity)}\\
-        &= gh_x{h_y}^{-1}g^{-1} & \text{(}g^{-1}g = e\text{)}.
+        &= (gh_xg^{-1})(g{h_y}^{-1}g^{-1}) & (\text{Shoes and Shocks})\\
+        &= gh_xg^{-1}g{h_y}^{-1}g^{-1} & (\text{associativity})\\
+        &= gh_x{h_y}^{-1}g^{-1} & (g^{-1}g = e).
     \end{align*}
     Note that since $H \leq G$ thus $h_x{h_y}^{-1}$ is an element of $H$ (by forward direction of subgroup test). Hence $xy^{-1} = g(h_x{h_y}^{-1})g^{-1}$ is in $S$. By subgroup test, $S \leq G$.
 
@@ -5324,10 +5324,10 @@ With these results, we are ready to prove that an alternating group with degree 
     \end{enumerate}
 
     \item This exercise can be solved in two ways.
-    \begin{itemize}
+    \begin{enumerate}
         \item Notice that
         \[
-            \pi = \begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix} =     \begin{pmatrix}1 & 5 & 3 & 4 \end{pmatrix}
+            \pi = \begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix} = \begin{pmatrix}1 & 5 & 3 & 4 \end{pmatrix}
         \]
         and so $\pi^{-1} = \begin{pmatrix}4 & 3 & 5 & 1\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5\end{pmatrix}$.
         \item Using Shoes and Socks,
@@ -5336,7 +5336,7 @@ With these results, we are ready to prove that an alternating group with degree 
             &= \begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} \begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1}.
         \end{align*}
         Now, $\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} = \begin{pmatrix}4 & 3 & 5 & 2\end{pmatrix} = \begin{pmatrix}2 & 4 & 3 & 5\end{pmatrix}$ and $\begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1} = \begin{pmatrix}2 & 5 & 1\end{pmatrix} = \begin{pmatrix}1 & 2 & 5\end{pmatrix}$. Therefore $\pi^{-1} = \begin{pmatrix}2 & 4 & 3 & 5\end{pmatrix}\begin{pmatrix}1 & 2 & 5\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5\end{pmatrix}$.
-    \end{itemize}
+    \end{enumerate}
 
     \item To see why, consider the fact that elements of $\Sn{n}$ are permutations. Each element is only able to permute the elements of the set $X = \{1, 2, 3, \dots, n\}$. For a set of $n$ elements, there are $n!$ permutations. Thus, $|\Sn{n}| = n!$ since $\Sn{n}$ is the set of all permutations of $n$ letters.
 \end{enumerate}
@@ -5382,7 +5382,10 @@ With these results, we are ready to prove that an alternating group with degree 
 
     Now we prove the reverse direction. Suppose the kernel of $\phi$ is trivial, i.e. $\ker \phi = \{e_G\}$. Suppose now there exists elements $x$ and $y$ in $G$ such that $\phi(x) = \phi(y)$. This means that $(\phi(x))^{-1} = \phi(x^{-1}) = \phi(y^{-1}) = (\phi(y))^{-1}$. Hence,
     \[
-        \phi(xy^{-1}) = \phi(x)\phi(y^{-1}) = \phi(x)\left(\phi(y)\right)^{-1} = e_H.
+        \phi(xy^{-1})
+        = \phi(x)\phi(y^{-1})
+        = \phi(x)\left(\phi(y)\right)^{-1}
+        = e_H.
     \]
     Now since the kernel is trivial, this must mean that $xy^{-1} = e_G$ which immediately leads the $x=y$. Hence $\phi$ is injective.
 
@@ -5428,7 +5431,7 @@ With these results, we are ready to prove that an alternating group with degree 
 
     \item We show that all subgroups of $\mathrm{Q}$ are, in fact, normal. We consider the first definition of the quaternion group.
     \begin{itemize}
-        \item Clearly $\{1\} \lhd \mathrm{Q}$ and $\mathrm{Q} \lhd \mathrm{Q}$.
+        \item Clearly $\{1\} \lhd \mathrm{Q}$ and $\mathrm{Q} \unlhd \mathrm{Q}$.
         \item The subgroups $\langle i\rangle$, $\langle j\rangle$, and $\langle k\rangle$ have order 4, so they have index 2 by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Hence by \textbf{Problem \ref{problem-subgroup-of-index-2}} these subgroups are normal.
         \item Consider the subgroup $\langle -1 \rangle = \{1, -1\}$. \begin{itemize}
             \item $1\langle -1 \rangle = \langle -1 \rangle1$, since 1 is the identity;
@@ -5586,7 +5589,7 @@ With these results, we are ready to prove that an alternating group with degree 
     \item Clearly $e \in \N{G}{S}$ since $eSe^{-1} = eSe = S$, meaning that $\N{G}{S}$ is non-empty. Consider $x, y \in \N{G}{S}$, meaning that $xSx^{-1} = S$ and $ySy^{-1} = S$. Note that $y^{-1} \in \N{G}{S}$ since
     \begin{align*}
         y^{-1}S\left(y^{-1}\right)^{-1} &= y^{-1}Sy\\
-        &= y^{-1}\left(ySy^{-1}\right)y & \text{(since } y \in \N{G}{S})\\
+        &= y^{-1}\left(ySy^{-1}\right)y & (\text{since } y \in \N{G}{S})\\
         &= (y^{-1}y)S(y^{-1}y)\\
         &= S.
     \end{align*}
@@ -5594,8 +5597,8 @@ With these results, we are ready to prove that an alternating group with degree 
     \begin{align*}
         \left(xy^{-1}\right)S\left(xy^{-1}\right)^{-1} &= \left(xy^{-1}\right)S\left(yx^{-1}\right)\\
         &= x\left(y^{-1}Sy\right)x^{-1}\\
-        &= xSx^{-1} & \text{(since } y^{-1} \in \N{G}{S})\\
-        &= S & \text{(since } x \in \N{G}{S})
+        &= xSx^{-1} & (\text{since } y^{-1} \in \N{G}{S})\\
+        &= S & (\text{since } x \in \N{G}{S})
     \end{align*}
     which means that $xy^{-1} \in \N{G}{S}$. Hence, by the subgroup test, we have $\N{G}{S} \leq G$.
 
@@ -5736,10 +5739,10 @@ With these results, we are ready to prove that an alternating group with degree 
         \item Suppose $G$ is abelian. Clearly $(gh)^1 = gh$. Suppose $(gh)^{k} = g^kh^k$ for some positive integer $k$. Then
         \begin{align*}
             (gh)^{k+1} &= (gh)(gh)^k\\
-            &= (gh)(g^kh^k) & \text{by assumption}\\
+            &= (gh)(g^kh^k) & (\text{by assumption})\\
             &= ghg^kh^k\\
             &= g(hg^k)h^k\\
-            &= g(g^kh)h^k & \text{since } G \text{ is abelian}\\
+            &= g(g^kh)h^k & (\text{since } G \text{ is abelian})\\
             &= gg^khh^k\\
             &= g^{k+1}h^{k+1}
         \end{align*}
@@ -5785,10 +5788,10 @@ With these results, we are ready to prove that an alternating group with degree 
         \item We have proved that $\Z{G} \leq G$ so we only prove normality. Let $g$ and $z$ be arbitrary elements from $G$ and $\mathrm{Z}(G)$ respectively. Then
         \begin{align*}
             gzg^{-1} &= g(zg^{-1})\\
-            &= g(g^{-1}z) \text{(since }z \in \mathrm{Z}(G))\\
+            &= g(g^{-1}z) & (\text{since }z \in \mathrm{Z}(G))\\
             &= (gg^{-1})z \\
             &= z\\
-            \in \mathrm{Z}(G)
+            &\in \mathrm{Z}(G)
         \end{align*}
         which proves that $\mathrm{Z}(G) \lhd G$.
 
@@ -5885,7 +5888,7 @@ With these results, we are ready to prove that an alternating group with degree 
     \begin{align*}
         xy &= (g^mz_1)(g^nz_2)\\
         &= g^m(z_1g^n)z_2\\
-        &= g^m(g^nz_1)z_2 & \text{(since }z_1 \in \Z{G})\\
+        &= g^m(g^nz_1)z_2 & (\text{since }z_1 \in \Z{G})\\
         &= (g^mg^n)(z_1z_2)\\
         &= g^{m+n}z_1z_2\\
         &= g^{n+m}z_2z_1\\
@@ -6127,10 +6130,10 @@ With these results, we are ready to prove that an alternating group with degree 
         \item $\boxed{hk = kh}$ Clearly if one of the elements is the identity then result follows. So assume that $h$ and $k$ are both non-identity elements, i.e. $h = a$, $k = b$. Note
         \begin{align*}
             kh &= ba\\
-            &= (ba)\left((ab)(ab)\right) & \text{(since }(ab)^2 = e)\\
+            &= (ba)\left((ab)(ab)\right) & (\text{since }(ab)^2 = e)\\
             &= (baab)(ab)\\
-            &= (bb)(ab) & \text{(since }a^2 = e)\\
-            &= ab & \text{(since }b^2 = e)\\
+            &= (bb)(ab) & (\text{since }a^2 = e)\\
+            &= ab & (\text{since }b^2 = e)\\
             &= hk
         \end{align*}
         so in fact $hk = kh$ for all $h \in H$, $k \in K$.
@@ -6170,7 +6173,7 @@ With these results, we are ready to prove that an alternating group with degree 
         &= \{(r\sqrt2, r\sqrt3) \vert r \in \mathbb{R}\}\\
         &= H.
     \end{align*}
-    Thus, by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}, we have $G / H \cong R$.
+    Thus, by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}), we have $G / H \cong R$.
 
     \item \begin{enumerate}[label=(\roman*)]
         \item Let $(m_1, n_1), (m_2, n_2) \in G$. Then
