@@ -4608,7 +4608,7 @@ For some groups of orders that do not satisfy the condition in Sylow's Test, we 
     A perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself. All even perfect numbers are of the form $2^{p-1}\left(2^p-1\right)$ where both $p$ and $2^p-1$ are primes. Prove that any group with an order that is an even perfect number is not simple.
 \end{problem}
 
-\begin{problem}
+\begin{problem}\label{problem-group-of-order-pq-has-normal-subgroup-of-order-q}
     Let $p$ and $q$ be primes such that $p < q$. Let $G$ be a group of order $pq$.
     \begin{enumerate}[label=(\roman*)]
         \item Prove that there is only one subgroup $H$ of $G$ of order $q$. Deduce that $H \lhd G$.
@@ -4620,7 +4620,7 @@ For some groups of orders that do not satisfy the condition in Sylow's Test, we 
     Show that any group of order 3325 is abelian.
 \end{problem}
 
-\begin{problem}
+\begin{problem}\label{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}
     Let $G$ be a finite group, and write the order of $G$ as $p^km$ where $k \geq 0$ and $p \nmid m$. Let $N \lhd G$ such that $p$ does not divide the index of $N$ in $G$.
     \begin{enumerate}[label=(\roman*)]
         \item Prove that any Sylow $p$-subgroup of $N$ is also in $G$.
@@ -4628,12 +4628,17 @@ For some groups of orders that do not satisfy the condition in Sylow's Test, we 
     \end{enumerate}
 \end{problem}
 
-\begin{problem}
-    Let $G$ be a finite group such that $|G| = p^km$ where $k \geq 1$,  $m > 1$, and $p \nmid m$. Prove that if $m! < |G|$ then $G$ is non-simple.
+\begin{problem}\label{problem-if-m!<|G|-then-G-is-simple}
+    Let $G$ be a finite group such that $|G| = p^km$ where $k \geq 1$, $m > 1$, and $p \nmid m$. Prove that if $m! < |G|$ then $G$ is non-simple.
 \end{problem}
 
-\begin{problem}
-    Let $p, q$, and $r$ be distinct primes such that $p < q < r$. Let $G$ be a group of order $pqr$. Prove that $G$ is non-simple.
+\begin{problem}\label{problem-group-of-order-30-has-normal-subgroup-of-order-5}
+    Prove that a group of order 30 has a normal subgroup of order 5.
+\end{problem}
+
+\begin{problem}\label{problem-group-of-order-pqr-is-non-simple}
+    Let $p, q$, and $r$ be distinct primes such that $p < q < r$. Let $G$ be a group of order $pqr$. Prove that $G$ is non-simple.\newline
+    (\textit{Hint: show that a normal subgroup of order $p$, $q$, or $r$ must exist.})
 \end{problem}
 
 %=========================================
@@ -6476,6 +6481,32 @@ With these results, we are ready to prove that an alternating group with degree 
         p^km = |G| = |\ker\phi| = \left|\bigcap_{x \in G} xPx^{-1}\right| \leq |xPx^{-1}| = |P| = p^k,
     \]
     which would mean $m = 1$, a contradiction. Thus $\ker\phi \neq G$. Hence $\ker\phi$ is a proper subgroup of $G$. We note that $\ker\phi \lhd G$, so we have found a proper normal subgroup of $G$, meaning that $G$ is non-simple.
+
+    \item Let $G$ be a group of order 30. Note $30 = 2 \times 3 \times 5$, and consider $n_5$. The Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}) tells us that
+    \begin{itemize}
+        \item $6 \vert n_5$, so $n_5 \in \{1, 2, 3, 6\}$; and
+        \item $n_5 \equiv 1 \pmod 5$, so $n_5 \in \{1, 6, 11, 16, \dots\}$.
+    \end{itemize}
+    Hence $n_5$ is 1 or 6. Seeking a contradiction, assume $n_5 = 6$, and let $P_5$ be a Sylow 5-subgroup.
+
+    Since $|P_5| = 5$, which is prime, each non-identity element of $P_5$ is a generator. Hence, no two Sylow 5-subgroups can share any non-identity elements (otherwise they will be the same group), thereby meaning any two Sylow 5-subgroups intersect in the identity only. Thus there exists $6(5-1) = 24$ elements of order 5, meaning there must be 6 elements of order not equal to 5.
+
+    Now consider $n_3$. Note by the Third Sylow Theorem again,
+    \begin{itemize}
+        \item $10 \vert n_3$, so $n_3 \in \{1, 2, 5, 10\}$; and
+        \item $n_3 \equiv 1 \pmod 3$, so $n_3 \in \{1, 4, 7, 10, 13, \dots\}$.
+    \end{itemize}
+    Thus $n_3$ is 1 or 10. Now if $n_3 = 10$ then there must be $10(3-1) = 20$ elements of order 3, a contradiction to the fact there exists only 6 elements with order not 5. Hence $n_3 = 1$, meaning the only Sylow 3-subgroup (call it $P_3$) is normal in $G$.
+
+    As $P_5 \leq G$ and $P_3 \lhd G$, by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 3, we have $P_5P_3 \leq G$. Note $P_5 \cap P_3 = \{e\}$ by \textbf{Problem \ref{problem-intersection-of-coprime-subgroups}}. So \textbf{Exercise \ref{exercise-order-of-subgroup-product}} tells us
+    \[
+        |P_5P_3| = \frac{|P_5||P_3|}{|P_5 \cap P_3|} = \frac{5\times3}{1} = 15.
+    \]
+    One sees that $[G:P_5P_3] = \frac{30}{15} = 2$, so $P_5P_3 \lhd G$ by \textbf{Problem \ref{problem-subgroup-of-index-2}}.
+
+    Now \textbf{Problem \ref{problem-group-of-order-pq-has-normal-subgroup-of-order-q}} tells us there exists a unique $H \lhd P_5P_3$ with $|H| = 5$. But since $P_5P_3 \lhd G$, \textbf{Problem \ref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}} tells us that $P_5P_3$ contains all Sylow 5-subgroups of $G$, meaning $G$ has only 1 Sylow 5-subgroup, i.e. $n_5 = 1$, a contradiction to our assumption that $n_5 = 6$.
+
+    Hence $n_5 = 1$, which means that $P_5 \lhd G$ (by \textbf{Theorem \ref{thrm-unique-subgroup-of-given-order-is-normal}}).
 
     \item We prove that $G$ has a normal subgroup of order $p$, $q$, or $r$. By \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}, subgroups of order $p$, $q$, or $r$ are normal if they are unique. By way of contradiction, assume that they are not unique, meaning $n_p, n_q, n_r > 1$.
     
