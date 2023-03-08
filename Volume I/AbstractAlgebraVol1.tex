@@ -5083,85 +5083,139 @@ From this, we have found that the only family of simple abelian groups is the fa
 \section{Alternating Group with Degree of More Than 4}
 The other family of simple groups that are relatively easy to find is the family of \textbf{alternating groups with degree of above 4}.
 
-However, to prove this claim, we need several preliminary lemmas. We will leave some of the details of the lemmas' proofs as exercises or as problems.
-
-\begin{lemma}\label{lemma-permutation-in-An-is-product-of-3-cycles-for-n>=3}
-    For $n \geq 3$, any permutation in $\An{n}$ can be expressed as a product of 3-cycles.
-\end{lemma}
-\begin{proof}[Proof (see {\cite[pp.~1--2]{conrad_2022}})]
-    Suppose $n \geq 3$. One sees clearly that $\id = \begin{pmatrix}1&2&3\end{pmatrix} \begin{pmatrix}1&3&2\end{pmatrix}$ so $\id$ is a product of 3-cycles.
-    
-    Now suppose $\sigma$ is a non-identity element of $\An{n}$. By \textbf{Lemma \ref{lemma-permutations-as-product-of-transpositions}}, we may write $\sigma$ as a product of transpositions in $\Sn{n}$:
-    \[
-        \sigma = \tau_1\tau_2\tau_3\cdots\tau_r. 
-    \]
-    As $\sigma \in \An{n}$, we know $\sigma$ is an even permutation, meaning $\sgn(\sigma) = 1$. The right hand side has sign $(-1)^r$, so $r$ is even. Hence we may collect the products on the right as successive transpositions $\tau_i\tau_{i+1}$ where $i = 1, 3, 5,\cdots,r-1$ is odd.
-    
-    We now show that $\tau_i\tau_{i+1}$ is a product of two 3-cycles.
-    \begin{itemize}
-        \item The first case is when $\tau_i = \tau_{i+1}$. Then $\tau_i\tau_{i+1} = \id$, which can be expressed as a product of 3-cycles as above.
-        \item The second case is when $\tau_i$ and $\tau_{i+1}$ have exactly one element in common. Suppose the common element is $x$. Write $\tau_i = \begin{pmatrix}x&a\end{pmatrix}$ and $\tau_{i+1} = \begin{pmatrix}x&b\end{pmatrix}$ where $a\neq b$. Then
-        \[
-            \tau_i\tau_{i+1}
-            = \begin{pmatrix}x&a\end{pmatrix}\begin{pmatrix}x&b\end{pmatrix} 
-            = \begin{pmatrix}x&b&a\end{pmatrix}
-            = \begin{pmatrix}x&a&b\end{pmatrix}\begin{pmatrix}x&a&b\end{pmatrix}
-        \]
-        so we may replace $\tau_i\tau_{i+1}$ with a product of two 3-cycles.
-        \item The third and final case is when $\tau_i$ and $\tau_{i+1}$ have no elements in common. Write $\tau_i = \begin{pmatrix}a&b\end{pmatrix}$ and $\tau_{i+1} = \begin{pmatrix}c&d\end{pmatrix}$ where $a$, $b$, $c$, and $d$ are disjoint (and $n \geq 4$). Then
-        \begin{align*}
-            \tau_i\tau_{i+1} &= \begin{pmatrix}a&b\end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}\\
-            &= \begin{pmatrix}a&b\end{pmatrix} \underbrace{\begin{pmatrix}b&c\end{pmatrix}\begin{pmatrix}b&c\end{pmatrix}}_{\text{identity}} \begin{pmatrix}c&d\end{pmatrix}\\
-            &= \begin{pmatrix}b&c&a\end{pmatrix}\begin{pmatrix}c&d&b\end{pmatrix}\\
-            &= \begin{pmatrix}a&b&c\end{pmatrix}\begin{pmatrix}b&c&d\end{pmatrix} 
-        \end{align*}
-        so we may replace $\tau_i\tau_{i+1}$ with a product of two 3-cycles.
-    \end{itemize}
-    Therefore, in any case, $\tau_i\tau_{i+1}$ can be replaced with a product of two 3-cycles, meaning $\sigma$ can be expressed as a product of 3-cycles.
-\end{proof}
-
-\newpage
-
-\begin{lemma}\label{lemma-An-generated-by-(2,2)-for-n>=5}
-    For $n \geq 5$, any permutation in $\An{n}$ can be expressed as a product of permutations of the form $\begin{pmatrix}a&b\end{pmatrix} \begin{pmatrix}c&d\end{pmatrix}$, where $a$, $b$, $c$, and $d$ are all distinct.
-\end{lemma}
-\begin{proof}    
-    Exercise.
-\end{proof}
-\begin{exercise}
-    Prove \textbf{Lemma \ref{lemma-An-generated-by-(2,2)-for-n>=5}}.
-\end{exercise}
+However, to prove this claim, we need several preliminary results.
 
 \begin{lemma}
-    Let $n \geq 5$, and suppose $\sigma$ and $\sigma'$ are 3-cycles in $\An{n}$. Then there exists $\pi \in \An{n}$ such that $\sigma' = \pi\sigma\pi^{-1}$.
+    Let $G$ be a group of order 60. If $G$ has more than one Sylow 5-subgroup then $G$ is simple.
 \end{lemma}
-\begin{proof}[Proof (cf. {\cite[p.~2]{conrad_2022}})]
-    For brevity denote the set $\{1, 2, \dots, n\}$ by $\mathcal{N}_n$. Recall that $\Sn{n}$ and $\An{n}$ acts on $\mathcal{N}_n$ naturally.
-    
-    Suppose $\sigma = \begin{pmatrix}x_1&x_2&x_3\end{pmatrix}$ and $\sigma' = \begin{pmatrix}y_1&y_2&y_3\end{pmatrix}$, where $x_1$, $x_2$, and $x_3$ are distinct and $y_1$, $y_2$, and $y_3$ are distinct. Choose $x_4$ and $x_5$ such that they are distinct and are from one of the $n-3$ remaining elements of $\mathcal{N}_n$; do the same for $y_4$ and $y_5$. Note $x_i, y_i \in \mathcal{N}_n$ for all $i = 1, 2, \dots, n$, just `renamed' per se.
-    
-    Observe that, since $\Sn{n}$ is the set of permutations from $\mathcal{N}_n$ to $\mathcal{N}_n$, there exists a permutation $\pi \in \Sn{n}$ such that $\pi(x_i) = y_i$ for all $i=1,2,\dots,n$. We note $\pi\sigma\pi^{-1} = \sigma'$ since
+\begin{proof}
+    We fill in most of the details of the proof here, although we leave some exercises for the reader.
+
+    By way of contradiction assume $G$ is a group of order 60 with more than one Sylow 5-subgroup, but there exists a non-trivial proper normal subgroup $H$ of $G$. Note $60 = 5 \times 12$, so by the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}):
     \begin{itemize}
-        \item $(\pi\sigma\pi^{-1})(y_1) = y_2$;
-        \item $(\pi\sigma\pi^{-1})(y_2) = y_3$;
-        \item $(\pi\sigma\pi^{-1})(y_3) = y_1$; and
-        \item $(\pi\sigma\pi^{-1})(y_i) = y_i$ if $i \notin \{1, 2, 3\}$.
+        \item $12 \vert n_5$, so $n_5 \in \{1, 2, 3, 4, 6, 12\}$; and
+        \item $n_5 \equiv 1 \pmod 5$, so $n_5 \in \{1, 6, 11, 16, \dots\}$.
     \end{itemize}
-    (Remember that $y_i \in \mathcal{N}_n$, just that it has a different name.)
-    
-    Now if $\pi \in \An{n}$ we are done. Otherwise, this means that $\pi$ is an odd permutation; the permutation $\pi' = \begin{pmatrix}x_4&x_5\end{pmatrix}\pi$ would then be even and hence be in $\An{n}$. One can then verify that the above relations hold for $\pi'$.
+    Therefore $n_5 = 6$ as $n_5 > 1$. Let $P \in \Syl{5}{G}$.
+
+    We note by Lagrange's theorem (\textbf{Theorem \ref{thrm-lagrange}}) that the order of $H$ belongs in the set $\{1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60\}$, since the order of $G$ must be a multiple of the order of $H$. As $H$ is a non-trivial proper subgroup of $G$, we note $|H| \neq 1$ and $|H| \neq 60$. That leaves 4 cases which we will deal with separately.
+    \begin{enumerate}
+        \item $|H| = 6$. Note $6 = 2 \times 3$, so \textbf{Problem \ref{problem-group-of-order-pq-has-normal-subgroup-of-order-q}} tells us that there exists a $N \lhd H$ with $|N| = 3$. Note also $[G:H] = 10$ which is not a multiple of 3, so \textbf{Problem \ref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}} tells us that all Sylow 3-subgroups of $G$ are in $H$. But $N \lhd H$ means that $N$ is the unique Sylow 3-subgroup of $H$ (\textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}) and hence $G$, so $N \lhd G$. Proceed to case 3, using $N$ in place of $H$.
+        
+        \item $|H| = 12$. Note $12 = 2^2 \times 3$. Now \textbf{Exercise \ref{exercise-group-of-order-12-has-normal-subgroup-of-3-or-4}} (below) tells us that there exists a normal subgroup of $H$ with order 3 or 4 (or both). Call that subgroup $N$. If $|N| = 3$ then it is a Sylow 3-subgroup; if $|N| = 4 = 2^2$ it is a Sylow 2-subgroup. Since $H \lhd G$, thus $H$ contains all Sylow 2- and 3-subgroups of $G$ (\textbf{Problem \ref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}}), meaning $G$ has only one Sylow 2-subgroup or one Sylow 3-subgroup (or both), $N$. Hence, $N \lhd G$ since a Sylow $p$-subgroup is unique if and only if it is normal (\textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}). Proceed with case 3, using $N$ instead of $H$.
+        
+        \item $|H| \in \{2, 3, 4\}$. Since $H \lhd G$, thus $G/H$ is a group. Note $|G/H| \in \{15, 20, 30\}$. We claim that each of these cases produces a new normal subgroup of $G/H$ (call it $\bar{P}$) with order 5. This is proven for the case where $|G/H = 30$ in \textbf{Problem \ref{problem-group-of-order-30-has-normal-subgroup-of-order-5}}; the other two cases are for \textbf{Exercise \ref{exercise-group-of-order-15-or-20-has-normal-subgroup-of-order-5}}.
+
+        Now \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} tells us that $\bar{P}$ has the form $K/H$ where $K \leq G$ and $H \subseteq K$. Since $\bar{P} = K/H \lhd G/H$, thus for any $g \in G$ and $kH \in \bar{P}$ we have
+        \[
+            (gH)(kH)(g^{-1}H) = (gkg^{-1})H \in K/H,
+        \]
+        which means $gkg^{-1} \in K$. Therefore $K \lhd G$ by definition of normality.
+
+        Observe that this means that
+        \[
+            |K| = |K/H||H| = |\bar{P}||H| = 5|H|,    
+        \]
+        meaning $K$ is a normal subgroup of $G$ with an order that is a multiple of 5. Proceed to case 4, using $K$ in place of $H$.
+
+        \item $|H|$ is a multiple of 5, meaning $|H|$ has a Sylow 5-subgroup. Note $5 \nmid [G:H]$, so \textbf{Problem \ref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}} implies all Sylow 5-subgroups of $G$ are in $H$ and vice versa. Note there are $5-1=4$ non-identity elements in each Sylow 5-subgroup; therefore
+        \[
+            |H| \geq n_5(5-1) = 24
+        \]
+        which means that $|H| = 30$. By \textbf{Problem \ref{problem-group-of-order-30-has-normal-subgroup-of-order-5}} again, such a group has only a unique Sylow 5-subgroup. However, right at the start, we concluded that $n_5 = 6$, a contradiction.
+    \end{enumerate}
+    Hence, $H$ does not exist; $G$ is simple.
 \end{proof}
-\begin{exercise}
-    Verify that $\begin{pmatrix}1&2&3\end{pmatrix}$ and $\begin{pmatrix}1&3&2\end{pmatrix}$ are conjugates in $\An{5}$ by finding the permutation $\pi$ that makes them conjugates.
+
+\begin{exercise}\label{exercise-group-of-order-12-has-normal-subgroup-of-3-or-4}
+    Prove that a group of order 12 either has a normal subgroup of order 3, or a normal subgroup of order 4, or both.
 \end{exercise}
 
-We also state and prove a fairly obvious proposition.
-\begin{proposition}\label{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}
-    Let the integer $n \geq 3$. Let $\{1, 2, 3, \dots, n\}$ be denoted by $\mathcal{N}_n$. Suppose $\An{n}$ acts on $\mathcal{N}_n$ naturally. Then $\Stab{\An{n}}{r} \cong \An{n-1}$.
-\end{proposition}
-\begin{proof}
-    We note that elements of $\Stab{\An{n}}{r}$ are permutations that fix $r$, thereby permuting the $n - 1$ other elements. Therefore elements of $\Stab{\An{n}}{r}$ are even permutations on $n - 1$ elements, i.e. $\Stab{\An{n}}{r} \cong \An{n-1}$.
-\end{proof}
+\begin{exercise}\label{exercise-group-of-order-15-or-20-has-normal-subgroup-of-order-5}
+    Prove that a group of each of the following orders has a normal subgroup of order 5.
+    \begin{enumerate}[label=(\alph*)]
+        \item 15
+        \item 20
+    \end{enumerate}
+\end{exercise}
+
+% \begin{lemma}\label{lemma-permutation-in-An-is-product-of-3-cycles-for-n>=3}
+%     For $n \geq 3$, any permutation in $\An{n}$ can be expressed as a product of 3-cycles.
+% \end{lemma}
+% \begin{proof}[Proof (see {\cite[pp.~1--2]{conrad_2022}})]
+%     Suppose $n \geq 3$. One sees clearly that $\id = \begin{pmatrix}1&2&3\end{pmatrix} \begin{pmatrix}1&3&2\end{pmatrix}$ so $\id$ is a product of 3-cycles.
+    
+%     Now suppose $\sigma$ is a non-identity element of $\An{n}$. By \textbf{Lemma \ref{lemma-permutations-as-product-of-transpositions}}, we may write $\sigma$ as a product of transpositions in $\Sn{n}$:
+%     \[
+%         \sigma = \tau_1\tau_2\tau_3\cdots\tau_r. 
+%     \]
+%     As $\sigma \in \An{n}$, we know $\sigma$ is an even permutation, meaning $\sgn(\sigma) = 1$. The right hand side has sign $(-1)^r$, so $r$ is even. Hence we may collect the products on the right as successive transpositions $\tau_i\tau_{i+1}$ where $i = 1, 3, 5,\cdots,r-1$ is odd.
+    
+%     We now show that $\tau_i\tau_{i+1}$ is a product of two 3-cycles.
+%     \begin{itemize}
+%         \item The first case is when $\tau_i = \tau_{i+1}$. Then $\tau_i\tau_{i+1} = \id$, which can be expressed as a product of 3-cycles as above.
+%         \item The second case is when $\tau_i$ and $\tau_{i+1}$ have exactly one element in common. Suppose the common element is $x$. Write $\tau_i = \begin{pmatrix}x&a\end{pmatrix}$ and $\tau_{i+1} = \begin{pmatrix}x&b\end{pmatrix}$ where $a\neq b$. Then
+%         \[
+%             \tau_i\tau_{i+1}
+%             = \begin{pmatrix}x&a\end{pmatrix}\begin{pmatrix}x&b\end{pmatrix} 
+%             = \begin{pmatrix}x&b&a\end{pmatrix}
+%             = \begin{pmatrix}x&a&b\end{pmatrix}\begin{pmatrix}x&a&b\end{pmatrix}
+%         \]
+%         so we may replace $\tau_i\tau_{i+1}$ with a product of two 3-cycles.
+%         \item The third and final case is when $\tau_i$ and $\tau_{i+1}$ have no elements in common. Write $\tau_i = \begin{pmatrix}a&b\end{pmatrix}$ and $\tau_{i+1} = \begin{pmatrix}c&d\end{pmatrix}$ where $a$, $b$, $c$, and $d$ are disjoint (and $n \geq 4$). Then
+%         \begin{align*}
+%             \tau_i\tau_{i+1} &= \begin{pmatrix}a&b\end{pmatrix}\begin{pmatrix}c&d\end{pmatrix}\\
+%             &= \begin{pmatrix}a&b\end{pmatrix} \underbrace{\begin{pmatrix}b&c\end{pmatrix}\begin{pmatrix}b&c\end{pmatrix}}_{\text{identity}} \begin{pmatrix}c&d\end{pmatrix}\\
+%             &= \begin{pmatrix}b&c&a\end{pmatrix}\begin{pmatrix}c&d&b\end{pmatrix}\\
+%             &= \begin{pmatrix}a&b&c\end{pmatrix}\begin{pmatrix}b&c&d\end{pmatrix} 
+%         \end{align*}
+%         so we may replace $\tau_i\tau_{i+1}$ with a product of two 3-cycles.
+%     \end{itemize}
+%     Therefore, in any case, $\tau_i\tau_{i+1}$ can be replaced with a product of two 3-cycles, meaning $\sigma$ can be expressed as a product of 3-cycles.
+% \end{proof}
+
+% \newpage
+
+% \begin{lemma}\label{lemma-An-generated-by-(2,2)-for-n>=5}
+%     For $n \geq 5$, any permutation in $\An{n}$ can be expressed as a product of permutations of the form $\begin{pmatrix}a&b\end{pmatrix} \begin{pmatrix}c&d\end{pmatrix}$, where $a$, $b$, $c$, and $d$ are all distinct.
+% \end{lemma}
+% \begin{proof}    
+%     Exercise.
+% \end{proof}
+% \begin{exercise}
+%     Prove \textbf{Lemma \ref{lemma-An-generated-by-(2,2)-for-n>=5}}.
+% \end{exercise}
+
+% \begin{lemma}
+%     Let $n \geq 5$, and suppose $\sigma$ and $\sigma'$ are 3-cycles in $\An{n}$. Then there exists $\pi \in \An{n}$ such that $\sigma' = \pi\sigma\pi^{-1}$.
+% \end{lemma}
+% \begin{proof}[Proof (cf. {\cite[p.~2]{conrad_2022}})]
+%     For brevity denote the set $\{1, 2, \dots, n\}$ by $\mathcal{N}_n$. Recall that $\Sn{n}$ and $\An{n}$ acts on $\mathcal{N}_n$ naturally.
+    
+%     Suppose $\sigma = \begin{pmatrix}x_1&x_2&x_3\end{pmatrix}$ and $\sigma' = \begin{pmatrix}y_1&y_2&y_3\end{pmatrix}$, where $x_1$, $x_2$, and $x_3$ are distinct and $y_1$, $y_2$, and $y_3$ are distinct. Choose $x_4$ and $x_5$ such that they are distinct and are from one of the $n-3$ remaining elements of $\mathcal{N}_n$; do the same for $y_4$ and $y_5$. Note $x_i, y_i \in \mathcal{N}_n$ for all $i = 1, 2, \dots, n$, just `renamed' per se.
+    
+%     Observe that, since $\Sn{n}$ is the set of permutations from $\mathcal{N}_n$ to $\mathcal{N}_n$, there exists a permutation $\pi \in \Sn{n}$ such that $\pi(x_i) = y_i$ for all $i=1,2,\dots,n$. We note $\pi\sigma\pi^{-1} = \sigma'$ since
+%     \begin{itemize}
+%         \item $(\pi\sigma\pi^{-1})(y_1) = y_2$;
+%         \item $(\pi\sigma\pi^{-1})(y_2) = y_3$;
+%         \item $(\pi\sigma\pi^{-1})(y_3) = y_1$; and
+%         \item $(\pi\sigma\pi^{-1})(y_i) = y_i$ if $i \notin \{1, 2, 3\}$.
+%     \end{itemize}
+%     (Remember that $y_i \in \mathcal{N}_n$, just that it has a different name.)
+    
+%     Now if $\pi \in \An{n}$ we are done. Otherwise, this means that $\pi$ is an odd permutation; the permutation $\pi' = \begin{pmatrix}x_4&x_5\end{pmatrix}\pi$ would then be even and hence be in $\An{n}$. One can then verify that the above relations hold for $\pi'$.
+% \end{proof}
+% \begin{exercise}
+%     Verify that $\begin{pmatrix}1&2&3\end{pmatrix}$ and $\begin{pmatrix}1&3&2\end{pmatrix}$ are conjugates in $\An{5}$ by finding the permutation $\pi$ that makes them conjugates.
+% \end{exercise}
+
+% We also state and prove a fairly obvious proposition.
+% \begin{proposition}\label{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}
+%     Let the integer $n \geq 3$. Let $\{1, 2, 3, \dots, n\}$ be denoted by $\mathcal{N}_n$. Suppose $\An{n}$ acts on $\mathcal{N}_n$ naturally. Then $\Stab{\An{n}}{r} \cong \An{n-1}$.
+% \end{proposition}
+% \begin{proof}
+%     We note that elements of $\Stab{\An{n}}{r}$ are permutations that fix $r$, thereby permuting the $n - 1$ other elements. Therefore elements of $\Stab{\An{n}}{r}$ are even permutations on $n - 1$ elements, i.e. $\Stab{\An{n}}{r} \cong \An{n-1}$.
+% \end{proof}
 
 With these results, we are ready to prove that an alternating group with degree more than 4 is simple.
 \begin{theorem}
@@ -5668,13 +5722,49 @@ With these results, we are ready to prove that an alternating group with degree 
 
 \section{Simple Groups}
 \begin{enumerate}
-    \item To prove \textbf{Lemma \ref{lemma-An-generated-by-(2,2)-for-n>=5}} it suffices to show that each 3-cycle can be written in terms of such permutations (due to \textbf{Lemma \ref{lemma-permutation-in-An-is-product-of-3-cycles-for-n>=3}}). Pick elements $d, e \notin \{a, b, c\}$ (we can do this since $n\geq 5$) and $d \neq e$; note
-    \[
-        \begin{pmatrix}a&b&c\end{pmatrix} = \begin{pmatrix}a&b\end{pmatrix} \underbrace{\begin{pmatrix}d&e\end{pmatrix}\begin{pmatrix}d&e\end{pmatrix}}_{\text{Identity}} \begin{pmatrix}b&c\end{pmatrix}
-    \]
-    and the permutations $\begin{pmatrix}a&b\end{pmatrix}\begin{pmatrix}d&e\end{pmatrix}$ and $\begin{pmatrix}d&e\end{pmatrix}\begin{pmatrix}b&c\end{pmatrix}$ have the required form since $a$, $b$, $c$, $d$, and $e$ are distinct.
+    % \item To prove \textbf{Lemma \ref{lemma-An-generated-by-(2,2)-for-n>=5}} it suffices to show that each 3-cycle can be written in terms of such permutations (due to \textbf{Lemma \ref{lemma-permutation-in-An-is-product-of-3-cycles-for-n>=3}}). Pick elements $d, e \notin \{a, b, c\}$ (we can do this since $n\geq 5$) and $d \neq e$; note
+    % \[
+    %     \begin{pmatrix}a&b&c\end{pmatrix} = \begin{pmatrix}a&b\end{pmatrix} \underbrace{\begin{pmatrix}d&e\end{pmatrix}\begin{pmatrix}d&e\end{pmatrix}}_{\text{Identity}} \begin{pmatrix}b&c\end{pmatrix}
+    % \]
+    % and the permutations $\begin{pmatrix}a&b\end{pmatrix}\begin{pmatrix}d&e\end{pmatrix}$ and $\begin{pmatrix}d&e\end{pmatrix}\begin{pmatrix}b&c\end{pmatrix}$ have the required form since $a$, $b$, $c$, $d$, and $e$ are distinct.
     
-    \item The permutation $\pi = \begin{pmatrix}4&5\end{pmatrix}\begin{pmatrix}1&2\end{pmatrix}$, so $\pi^{-1} = \begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}4&5\end{pmatrix}$.
+    % \item The permutation $\pi = \begin{pmatrix}4&5\end{pmatrix}\begin{pmatrix}1&2\end{pmatrix}$, so $\pi^{-1} = \begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}4&5\end{pmatrix}$.
+
+    \item We find the number of Sylow 2- and Sylow 3-subgroups (denoted $n_2$ and $n_3$ respectively) of the group of order 12 (call it $G$) using the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}):
+    \begin{itemize}
+        \item For $n_2$, note $12 = 2^2 \times 3$. So,
+        \begin{itemize}
+            \item $3 \vert n_2$ meaning $n_2 \in \{1, 3\}$; and
+            \item $n_2 \equiv 1 \pmod 2$ meaning $n_2 \in \{1, 3, 5, \dots\}$.
+        \end{itemize}
+        Hence $n_2 = 1$ or $n_2 = 3$.
+
+        \item For $n_3$, note $12 = 3 \times 2^2$. So,
+        \begin{itemize}
+            \item $4 \vert n_3$ meaning $n_3 \in \{1, 2, 4\}$; and
+            \item $n_3 \equiv 1 \pmod 3$ meaning $n_3 \in \{1, 4, 7, \dots\}$.
+        \end{itemize}
+        Hence $n_3 = 1$ or $n_3 = 4$.
+    \end{itemize}
+
+    Now by way of contradiction suppose both $n_2$ and $n_3$ are not 1. Thus $n_2 = 3$ and $n_3 = 4$. We consider the number of elements of a certain order.
+    \begin{itemize}
+        \item Number of elements with order 2 or 4 is $3(4-1) = 9$, since each of the 3 Sylow 2-subgroups has 4 elements, 1 of which is the identity.
+        \item Number of elements with order 3 is $4(3-1) = 8$, since each of the 4 Sylow 3-subgroups has 3 elements, 1 of which is the identity.
+    \end{itemize}
+    Therefore, the number of elements in $G$ must be at least $9 + 8 = 17 > 12$, a contradiction.
+
+    Thus, at least one of $n_2$ and $n_3$ must be 1, meaning that there must exist a normal subgroup of order 4 or 3 (or both) by \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}.
+
+    \item \begin{enumerate}[label=(\alph*)]
+        \item Note $15 = 3 \times 5$, so \textbf{Problem \ref{problem-group-of-order-pq-has-normal-subgroup-of-order-q}} means that there exists a unique (and hence normal) subgroup of order 5.
+        \item Note $20 = 2^2 \times 5$. The Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}) tells us
+        \begin{itemize}
+            \item $2^2 \vert n_5$, so $n_5 \in \{1, 2, 4\}$; and
+            \item $n_5 \equiv 1 \pmod 5$, so $n_5 \in \{1, 6, 11, 16, \dots\}$.
+        \end{itemize}
+        Hence $n_5 = 1$, so there exists a unique (and hence normal) subgroup of order 5.
+    \end{enumerate}
 \end{enumerate}
 
 %=========================================
