@@ -3814,7 +3814,7 @@ What you might notice from the above example and exercise is that the stabilizer
     Thus, by subgroup test, $\Stab{G}{x} \leq G$ for any $x \in X$.
 \end{proof}
 
-\begin{exercise}\label{exercise-group-action-equivalence}
+\begin{exercise}\label{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}
     Let $G$ be a group that acts on a set $X$. Prove that $g \cdot x = h \cdot x$ if and only if $g^{-1}h \in \Stab{G}{x}$.
 \end{exercise}
 
@@ -3867,8 +3867,8 @@ Formally, this is captured in the \textbf{Orbit-Stabilizer Theorem}.
 \begin{proof}[Proof (see \cite{humphreys_1996})]
     We consider $f_x: G/\Stab{G}{x} \to \Orb{G}{x}$ given by $g\Stab{G}{x} \mapsto g \cdot x$ (note that $f_x$ is \textit{not} a homomorphism as $\Orb{G}{x}$ is not a group). We prove that $f_x$ is a well-defined bijection.
     \begin{itemize}
-        \item \textbf{Well-defined}: Suppose we have $g, h \in G$ such that $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}), this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \textbf{Exercise \ref{exercise-group-action-equivalence}}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
-        \item \textbf{Injective}: Suppose we have $g, h \in G$ such that $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$. By \textbf{Exercise \ref{exercise-group-action-equivalence}}, this means that $g^{-1}h \in \Stab{G}{x}$. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality lemma (\textbf{Lemma \ref{lemma-coset-equality}}). Thus $f_x$ is injective.
+        \item \textbf{Well-defined}: Suppose we have $g, h \in G$ such that $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}), this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \textbf{Exercise \ref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
+        \item \textbf{Injective}: Suppose we have $g, h \in G$ such that $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$. By \textbf{Exercise \ref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}}, this means that $g^{-1}h \in \Stab{G}{x}$. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality lemma (\textbf{Lemma \ref{lemma-coset-equality}}). Thus $f_x$ is injective.
         \item \textbf{Surjective}: Suppose $y \in \Orb{G}{x}$. This means that there exists $g \in G$ such that $g\cdot x = y$. Note $f_x(g\Stab{G}{x}) = g\cdot x = y$ by definition of $f_x$. Hence, the pre-image of $y$ is $g\Stab{G}{x}$, meaning that $f_x$ is surjective.
     \end{itemize}
     Hence $f_x$ is a bijection from $G/\Stab{G}{x}$ to $\Orb{G}{x}$. Therefore we must have $|\Orb{G}{x}| = |G/\Stab{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). This quickly implies $|G| = |\Stab{G}{x}|\times|\Orb{G}{x}|$.
@@ -5141,7 +5141,7 @@ However, to prove this claim, we need several preliminary results.
 
 \newpage
 
-\begin{corollary}\label{corollary-An5-is-simple}
+\begin{corollary}\label{corollary-A5-is-simple}
     The group $\An5$ is simple.
 \end{corollary}
 \begin{proof}
