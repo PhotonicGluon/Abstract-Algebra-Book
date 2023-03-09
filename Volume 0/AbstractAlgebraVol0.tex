@@ -388,16 +388,16 @@ A central idea of this section is that every mathematical statement can be built
 \end{remark}
 
 \begin{example}
-    We show that $(P \iff Q) = (P \land Q) \lor ((\lnot P) \land (\lnot Q))$.
+    We show that $(P \iff Q) = (P \land Q) \lor ((\lnot P) \land (\lnot Q))$. For brevity, let $R = (\lnot P) \land (\lnot Q)$.
     \begin{table}[h]
         \centering
         \begin{tabular}{|l|l||l|l|l|l||l|}
             \hline
-            $P$ & $Q$ & $\lnot P$ & $\lnot Q$ & $P \land Q$ & $(\lnot P) \land (\lnot Q)$ & $(P \land Q) \lor ((\lnot P) \land (\lnot Q))$ \\ \hline
-            F   & F   & T         & T         & F           & T                           & T                                              \\ \hline
-            F   & T   & T         & F         & F           & F                           & F                                              \\ \hline
-            T   & F   & F         & T         & F           & F                           & F                                              \\ \hline
-            T   & T   & F         & F         & T           & F                           & T                                              \\ \hline
+            $P$ & $Q$ & $\lnot P$ & $\lnot Q$ & $P \land Q$ & $R$ & $(P \land Q) \lor R$ \\ \hline
+            F   & F   & T         & T         & F           & T   & T                    \\ \hline
+            F   & T   & T         & F         & F           & F   & F                    \\ \hline
+            T   & F   & F         & T         & F           & F   & F                    \\ \hline
+            T   & T   & F         & F         & T           & F   & T                    \\ \hline
         \end{tabular}
     \end{table}
 
@@ -507,7 +507,7 @@ We also note that $\lnot(P \implies Q) = P \land \lnot Q$. We leave verifying th
 \section{Hierarchy of Mathematical Results}
 Mathematical statements often have a certain `tier' attached to them. We look at the hierarchy of some of these `tiers'.
 \begin{itemize}
-    \item \textbf{Proposition}: A proposition can be thought of as a general proven result. Equivalent names for a proposition can be ``\textbf{Claim}'' or ``\textbf{Observation}''.
+    \item \textbf{Proposition}: A proposition can be thought of as a general proven result. Equivalent names for a proposition are ``\textbf{Claim}'' or ``\textbf{Observation}''.
     \item \textbf{Lemma}: A lemma can be thought of as a 'small' proven result that can help build other mathematical results. For example, Euclid's lemma that ``if a prime $p$ divides the product $ab$ of two integers $a$ and $b$, then $p$ must divide at least one of those integers $a$ or $b$'' is used in the proof of the Fundamental Theorem of Arithmetic.
     \item \textbf{Theorem}: A theorem can be thought of as a `big' proven result. For example, the Fundamental Theorem of Arithmetic is core to arithmetic as it describes how integers can be uniquely decomposed into its prime factors.
     \item \textbf{Corollary}: A corollary is said to be a `follow-up result' from a theorem. These results usually follow `very quickly' from a theorem or a proposition. For example, the AM-GM inequality is a corollary of the Pythagorean theorem.
@@ -903,7 +903,7 @@ Existence proofs fall into two categories: \textbf{constructive} proofs and \tex
     \begin{proof}
         Let $x = \sqrt2^{\sqrt2}$ and $y = \sqrt2$. We know that $\sqrt2$ is irrational from \textbf{Example \ref{example-sqrt2-is-irrational}}. Now consider two cases.
         \begin{itemize}
-            \item If $x$ is rational, then we have found two irrational numbers (namely $\sqrt 2$ and $\sqrt 2$) such that their exponentiation (i.e.,  $\sqrt2^{\sqrt2}$) is rational, proving the claim.
+            \item If $x$ is rational, then we have found two irrational numbers (in particular, $\sqrt 2$ and $\sqrt 2$) such that their exponentiation (i.e.,  $x = \sqrt2^{\sqrt2}$) is rational, proving the claim.
             \item If $x$ is irrational, then \[x^y = \left(\sqrt2^{\sqrt2}\right)^{\sqrt2} = (\sqrt2)^{\sqrt2 \times \sqrt2} = (\sqrt2)^2 = 2\]
             is rational.
         \end{itemize}
@@ -973,9 +973,9 @@ When dividing an integer by another, we may sometimes have a \textbf{remainder} 
 In number theory, the idea of a greatest common divisor and the least common multiple are omnipresent.
 
 \begin{definition}
-    Let $m$ and $n$ be two non-zero integers. Then an integer $d$ is said to be the \textbf{greatest common divisor} of $m$ and $n$ if $m = pd$ and $n = qd$ for some integers $p$ and $q$, and that $d$ is the largest possible integer that achieves this.
+    Let $m$ and $n$ be two non-zero integers. Then an integer $d$ is said to be the \textbf{greatest common divisor} (GCD) of $m$ and $n$ if $m = pd$ and $n = qd$ for some integers $p$ and $q$, and that $d$ is the largest possible integer that achieves this.
 \end{definition}
-The greatest common divisor (GCD) of $m$ and $n$ is denoted by $\gcd(m, n)$.
+The GCD of $m$ and $n$ is denoted by $\gcd(m, n)$.
 
 \begin{example}
     $\gcd(2, 8) = 2$ since $2 = 1 \times 2$ and $8 = 4 \times 2$.
@@ -994,20 +994,20 @@ The greatest common divisor (GCD) of $m$ and $n$ is denoted by $\gcd(m, n)$.
     If $\gcd(m, n) = 1$ for non-zero integers $m$ and $n$, then $m$ and $n$ are said to be \textbf{coprime} to each other.
 \end{remark}
 \begin{example}
-    17 and 18 are coprime to each other as $\gcd(17, 18) = 1$.
+    17 and 18 are coprime as $\gcd(17, 18) = 1$.
 \end{example}
 
 We now look at the lowest common multiple of two integers.
 \begin{definition}
-    Let $m$ and $n$ be two non-zero integers. Then an integer $l$ is said to be the \textbf{lowest common multiple} of $m$ and $n$ if $m = pl$ and $n = ql$ for some integers $p$ and $q$, and that $l$ is the smallest possible \textbf{positive} integer that achieves this.
+    Let $m$ and $n$ be two non-zero integers. Then an integer $l$ is said to be the \textbf{lowest common multiple} (LCM) of $m$ and $n$ if $m = pl$ and $n = ql$ for some integers $p$ and $q$, and that $l$ is the smallest possible \textbf{positive} integer that achieves this.
 \end{definition}
-The lowest common multiple (LCM) of $m$ and $n$ is denoted by $\lcm(m,n)$.
+The LCM of $m$ and $n$ is denoted by $\lcm(m,n)$.
 
 \begin{example}
     $\lcm(2, 8) = 8$ since $8 = 4 \times 2$ and $8 = 1 \times 8$.
 \end{example}
 \begin{example}
-    $\gcd(42, 231) = 462$ since $462 = 11 \times 42$ and $462 = 2 \times 231$.
+    $\lcm(42, 231) = 462$ since $462 = 11 \times 42$ and $462 = 2 \times 231$.
 \end{example}
 \begin{example}
     $\lcm(-10, 25) = 50$ since $50 = 5 \times -10$ and $50 = 2 \times 25$.
@@ -1294,7 +1294,8 @@ The operation of congruence modulo $n$ has a few properties which we will state 
     Assume that for some positive integer $k \geq 2$, for all positive integers $m \leq k$ we have $f(m) = 2^m - m - 1$. We want to show that $f(k+1) = 2^{k+1} - (k+1) - 1$.
     \begin{align*}
         f(k+1) &= 3f(k) - 2f(k-1) + 1\\
-        &= 3(2^k - k - 1) - 2(2^{k-1} - (k-1) - 1) + 1 & \text{(by hypothesis)}\\
+        &= 3(2^k - k - 1) - & (\text{by hypothesis})\\
+        &\quad\quad2(2^{k-1} - (k-1) - 1) + 1 & (\text{also by hypothesis}) \\
         &= 3\times 2^k - 3k - 3 -2^k + 2k + 1\\
         &= 2\times2^k - k - 2\\
         &= 2^{k+1} - (k+1) - 1
