@@ -5224,11 +5224,11 @@ With these results, we are ready to prove that an alternating group with degree 
 \end{proof}
 
 \begin{exercise}\label{exercise-conjugate-of-stabilizer}
-    Let $S$ be a set and $G \leq \Sym{S}$ act on $S$. Let $\sigma \in G$ and $x \in S$. Show that
+    Let $S$ be a set and let $G \leq \Sym{S}$ act on $S$. Let $\sigma \in G$ and $x \in S$. Show that
     \[
         \sigma\Stab{G}{x}\sigma^{-1} = \Stab{G}{\sigma(x)}.
     \]
-\end{exercise} %TODO: add solution
+\end{exercise}
 
 \begin{exercise}\label{exercise-conjugation-of-permutation-by-another}
     Let $\sigma, \pi \in \Sn{n}$. Suppose $\sigma$ has cycle decomposition
@@ -5240,7 +5240,7 @@ With these results, we are ready to prove that an alternating group with degree 
         \begin{pmatrix}\pi(a_1)&\pi(a_2)&\cdots&\pi(a_{k_1})\end{pmatrix} \begin{pmatrix}\pi(b_1)&\pi(b_2)&\cdots&\pi(b_{k_2})\end{pmatrix}\cdots,
     \]
     that is, $\pi\sigma\pi^{-1}$ is obtained from $\sigma$ by replacing each entry $i$ in the cycle decomposition by $\pi(i)$.
-\end{exercise} %TODO: add solution; Dummit & Foote p. 125, prop. 10
+\end{exercise}
 
 %=========================================
 \appendix
@@ -5737,14 +5737,6 @@ With these results, we are ready to prove that an alternating group with degree 
 
 \section{Simple Groups}
 \begin{enumerate}
-    % \item To prove \textbf{Lemma \ref{lemma-An-generated-by-(2,2)-for-n>=5}} it suffices to show that each 3-cycle can be written in terms of such permutations (due to \textbf{Lemma \ref{lemma-permutation-in-An-is-product-of-3-cycles-for-n>=3}}). Pick elements $d, e \notin \{a, b, c\}$ (we can do this since $n\geq 5$) and $d \neq e$; note
-    % \[
-    %     \begin{pmatrix}a&b&c\end{pmatrix} = \begin{pmatrix}a&b\end{pmatrix} \underbrace{\begin{pmatrix}d&e\end{pmatrix}\begin{pmatrix}d&e\end{pmatrix}}_{\text{Identity}} \begin{pmatrix}b&c\end{pmatrix}
-    % \]
-    % and the permutations $\begin{pmatrix}a&b\end{pmatrix}\begin{pmatrix}d&e\end{pmatrix}$ and $\begin{pmatrix}d&e\end{pmatrix}\begin{pmatrix}b&c\end{pmatrix}$ have the required form since $a$, $b$, $c$, $d$, and $e$ are distinct.
-    
-    % \item The permutation $\pi = \begin{pmatrix}4&5\end{pmatrix}\begin{pmatrix}1&2\end{pmatrix}$, so $\pi^{-1} = \begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}4&5\end{pmatrix}$.
-
     \item We find the number of Sylow 2- and Sylow 3-subgroups (denoted $n_2$ and $n_3$ respectively) of the group of order 12 (call it $G$) using the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}):
     \begin{itemize}
         \item For $n_2$, note $12 = 2^2 \times 3$. So,
@@ -5806,6 +5798,23 @@ With these results, we are ready to prove that an alternating group with degree 
         \end{itemize}
         meaning $|\langle \pi \rangle| = 5$ with $\langle \pi \rangle \neq \langle \sigma \rangle$, so we have found another subgroup of $\An5$.
     \end{enumerate}
+
+    \item Note that $\sigma \in G$, and
+    \begin{align*}
+        \sigma\Stab{G}{x}\sigma^{-1} &= \{\underbrace{\sigma\pi\sigma^{-1}}_{\text{Set as }\pi'} \vert \pi \in G,\; \pi(x) = x\}\\
+        &= \{\pi' \vert \underbrace{\sigma^{-1}\pi'\sigma \in G}_{\text{True if } \pi' \in G},\; \sigma^{-1}\pi'\sigma(x) = x\}\\
+        &= \{\pi' \vert \pi' \in G,\; \sigma^{-1}\pi'(\sigma(x)) = x\}\\
+        &= \{\pi' \vert \pi' \in G,\; \pi'(\sigma(x)) = \sigma(x)\}\\
+        &= \{\pi \vert \pi \in G,\; \pi(\sigma(x)) = \sigma(x)\}\\
+        &= \Stab{G}{\sigma(x)}
+    \end{align*}
+    which proves the claim.
+
+    \item Observe that if $\sigma(i) = j$, then we must have
+    \[
+        \pi\sigma\pi^{-1}(\pi(i)) = \pi\sigma(i) = \pi(j).  
+    \]
+    Thus if the ordered pair $(i, j)$ appears in the cycle decomposition of $\sigma$, then the ordered pair $(\pi(i), \pi(j))$ appears in the cycle decomposition of $\pi\sigma\pi^{-1}$, completing the proof of the claim.
 \end{enumerate}
 
 %=========================================
