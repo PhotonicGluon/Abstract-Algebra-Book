@@ -6053,11 +6053,13 @@ There is also the \textbf{Tits group}, $^2F_4(2)'$, which has order $17,971,200$
 
     \item By Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}), the order of a subgroup must divide the order of the group. Since $H \leq G$ is non-trivial, and since $1024 = 2^10$, the largest order that $H$ can be is $512$ with $[G:H] = 2$. An example is $G = \mathbb{Z}_{1024}$ and $H = \langle 2 \rangle$, since $|2| = 512$ as $2 \times 512 = 1024 \equiv 0 \pmod{1024}$.
 
-    \item Let $|G| = 2n$. Suppose on the contrary that there does not exist an element with order 2, so every element (except the identity) has order greater than 2.
+    \item Let $|G| = 2n$. The identity is its own inverse, leaving an odd number of non-identity elements.
+    
+    Suppose $x$ is an element of $G$ with $|x| > 2$; we cannot have $x^{-1} = x$ (otherwise $x^2 = e$). Thus $x^{-1}$ and $x$ are distinct. Pair every one of these $x$'s with its inverse $x^{-1}$.
 
-    Suppose we have an element in the group which has even order, say the element $x$ with order $2m$. This means that $x^{2m} = e$. But this means that $\left(x^m\right)^2 = e$, meaning that the element $x^m$ has order 2. This contradicts the assumption that every non-identity element has order greater than 2. Hence, we conclude that every element must have odd order. However, a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}) states that the order of the element must be a multiple of the order of the group. Hence, Thus means that all elements, which have odd order, divides the order of the group, which is an even number, which is a contradiction.
+    Remember that there is an odd number of non-identity elements. Hence, there must be at least one element which has not been paired off with any of the others, which is therefore its own self inverse.
 
-    Therefore, we contradicted our original premise that a finite group with even order does not have an element with order 2. Hence, there must be an element in $G$ with order 2.
+    Since this element is not the identity, thus it has to have order 2 (as $g^{-1} = g$ implies $g^2 = e$).
 
     \item \begin{enumerate}[label=(\roman*)]
         \item Let $xH$ be a coset in $G$. Since cosets partition $G$, either $xH = H$ or $xH = G \setminus H$ (since there are only two distinct cosets).
