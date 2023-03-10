@@ -1,5 +1,17 @@
 # Abstract Algebra Book Changelog
 
+## [Build 7](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-06...build-07)
+
+**Important Changes**:
+- The books' licence has changed from the reative Commons Attribution-NonCommercial 4.0 International Licence (CC BY-NC 4.0) to the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Licence** (CC BY-NC-SA 4.0). This new licence requires you to "distribute your contributions under the same license as the original" if you "remix, transform, or build upon the material" (source: [here](https://creativecommons.org/licenses/by-nc-sa/4.0/#:~:text=If%20you%20remix%2C%20transform%2C%20or%20build%20upon%20the%20material%2C%20you%20must%20distribute%20your%20contributions%20under%20the%20same%20license%20as%20the%20original.)). The previous builds remain under their original licence.
+- The title of the books have changed from "Abstract Algebra: A Gentle Introduction" to "Abstract Algebra: A *Simple* Introduction".
+
+Book Content Changes:
+- Fix overrun of text in one line of section I.12.4
+
+Other Changes:
+- Move all front matter content to `SharedCommands.tex`
+
 ## [Build 6](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-05...build-06)
 
 **Important change**: the books' licence has changed from the Creative Commons Attribution 4.0 International Licence (CC BY 4.0) to the **Creative Commons Attribution-NonCommercial 4.0 International Licence** (CC BY-NC 4.0). This new licence restricts the use of these books for commercial use, which are "primarily intended for or directed toward commercial advantage or monetary compensation" (source: [here](https://creativecommons.org/faq/#does-my-use-violate-the-noncommercial-clause-of-the-licenses)). The previous builds remain under the CC BY 4.0 licence; future builds and this one is under the CC BY-NC 4.0 licence.
