@@ -1,0 +1,132 @@
+\input{../SharedCommands.tex}
+\usepackage{xr}
+
+%=========== Global Variables ============
+\newcommand{\version}{0.1}
+\newcommand{\volumenumber}{2}
+\newcommand{\volumename}{Rings}
+
+% Quote page variables
+\newcommand{\quotepagetext}{
+    [Some] of the major discoveries in ring theory have helped shape the course of development of modern abstract algebra... A course in ring theory is an indispensable part of the education of any fledgling algebraist.
+}
+\newcommand{\quotepageattribution}{Tsit-Yuen Lam, 2001}
+\newcommand{\quotepagecitation}{\cite{lam_2001}}
+
+% Preface variables
+\newcommand{\prefacevolumetext}{
+    This volume covers the basics of ring theory. %TODO: Add
+}
+
+%============= Formatting ================
+\linespread{1.05}
+
+%============== Resources ================
+\externaldocument{../Volume 0/AbstractAlgebraVol0}
+
+%=========================================
+\begin{document}
+\frontmatterpages
+
+%=========================================
+\chapter{Introduction to Rings}
+\section{Basic Algebraic Structures}
+Before we introduce rings, we look at `simpler' algebraic structures and build our way up to rings.
+
+\begin{definition}
+    A \textbf{magma} is a set $M$ together with a binary operation $\ast$ which is closed. That is, if $a$ and $b$ are in $M$, then $a \ast b \in M$.
+\end{definition}
+
+\begin{example}
+    Let $S$ be a set. Let $f: S \times S \to S$. Define the operation $\ast$ by $a \ast b = f(a, b)$. Then $(S, \ast)$ forms a magma since $a\ast b = f(a,b) \in S$.
+\end{example}
+
+\begin{definition}
+    A \textbf{semigroup} $\mathcal{S}$ is a magma where the operation $\ast$ is associative. That is, $a\ast(b\ast c) = (a\ast b)\ast c$.
+\end{definition}
+
+\begin{example}
+    Consider the magma $(S, \ast)$ given above. If the function $f$ above satisfies $f(a, f(b, c)) = f(f(a, b), c)$ then $(S, \ast)$ is a semigroup since
+    \[
+          a\ast(b\ast c) = f(a, f(b, c)) = f(f(a, b), c) = (a\ast b)\ast c.
+    \]
+\end{example}
+
+\begin{definition}
+    A \textbf{monoid} $M$ is a semigroup with an element $e$, called the \textbf{identity}, such that
+    \[
+        e \ast m = m \ast e = m
+    \]
+    for all $m \in M$.
+\end{definition}
+
+\begin{example}
+    Let $X$ be a set. Let the set
+    \[
+        S = \{f \vert  f: X \to X\}.
+    \]
+    and let $\circ$ denote function composition. Then $(S, \circ)$ forms a monoid:
+    \begin{itemize}
+        \item \textbf{Closure}: If $f, g \in S$ then $f\circ g \in S$ since function composition is closed.
+        \item \textbf{Associative}: Function composition is associative.
+        \item \textbf{Identity}: The identity function $\id: X \to X, x\mapsto x$ is inside $S$ and
+        \[
+            \id \circ f = f \circ \id = f
+        \]
+        for all $f \in S$.
+    \end{itemize}
+    Thus $(S, \circ)$ forms a monoid.
+\end{example}
+
+\begin{definition}
+    A \textbf{group} $G$ is a monoid where every element has an inverse. That is to say, for every $g \in G$, there exists $g^{-1} \in G$ such that
+    \[
+        g \ast g^{-1} = g^{-1} \ast g = e
+    \]
+    where $e$ is the identity in $G$.
+\end{definition}
+We have previously looked at many examples of groups, and have dedicated the previous part of this book looking at groups. We are now ready to look at \textbf{rings}, which is a type of algebraic structure with more conditions attached to it.
+
+\newpage
+
+\begin{definition}
+    A \textbf{ring} is a set $R$ with two binary operations $\oplus$ and $\otimes$ satisfying the following axioms:
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: $(R, \oplus)$ forms an abelian group.
+        \item \textbf{Multiplication-Monoid}: $(R, \otimes)$ forms a monoid.
+        \item \textbf{Distributive}: $\otimes$ is distributive over $\oplus$. That is,
+        \begin{itemize}
+            \item $a \otimes (b \oplus c) = (a \otimes b) \oplus (b \otimes c)$; and
+            \item $(a \oplus b) \otimes c = (a \otimes c) \oplus (b \otimes c)$.
+        \end{itemize}
+    \end{itemize}
+    One may denote such a ring by $(R, \oplus, \otimes)$.
+\end{definition}
+\begin{remark}
+    We often write $\oplus$ using the standard addition symbol $+$. The multiplication symbol $\otimes$ is usually omitted. This means that $x \otimes y$ is usually written as $xy$.
+\end{remark}
+
+%TODO ADD
+
+\begin{exercise}
+    Prove using the ring axioms that $\mathbb{Z}$ is a ring under addition and multiplication.\newline
+    (\textit{You do \textbf{not} need to prove the \textbf{Distributive} axiom.})
+\end{exercise}
+
+For rings, we denote the additive identity using $0$ and the multiplicative identity using $1$.
+
+%=========================================
+\appendix
+\chapter{Exercise Solutions}
+
+%=========================================
+\chapter{Problem Solutions}
+
+%=========================================
+\chapter{Image Acknowledgements}
+Images are cited as they appear.
+
+%=========================================
+\printbibliography[heading=bibintoc, title={References and Bibliography}]
+
+\end{document}
