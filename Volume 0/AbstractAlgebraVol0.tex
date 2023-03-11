@@ -8,14 +8,14 @@
 % Quote page variables
 \newcommand{\quotepagetext}{
     Aus dem Paradies, das Cantor uns geschaffen, soll uns niemand vertreiben k\"{o}nnen.\\
-    \textit{(No one shall expel us from the Paradise that Cantor has created.)}
+    (\textit{No one shall expel us from the Paradise that Cantor has created.})
 }
 \newcommand{\quotepageattribution}{David Hilbert, 1926}
 \newcommand{\quotepagecitation}{\cite[p.~170]{hilbert_1926}}
 
 % Preface variables
 \newcommand{\prefacevolumetext}{
-    This volume, in particular, serves to provide the necessary prerequisites needed to engage with the subject material. In particular, this volume covers basic set theory, functions/mappings, mathematical logic and proof writing, elementary number theory, and simple modular arithmetic. This background should be sufficient to understand the subject material described in the other volumes.
+    This volume, in particular, provides the necessary prerequisites to engage with the subject material. We cover basic set theory, functions/mappings, mathematical logic and proof writing, elementary number theory, and simple modular arithmetic here, allowing one to have sufficient knowledge to understand the subject material in the other volumes.
 }
 
 %============= Formatting ================
@@ -46,15 +46,19 @@ Now if we have two sets $A$ and $B$, and if all the members of set A are also me
 
 \begin{exercise}
     Let $S$ be a non-empty set. Determine whether the following statements are true or false.
-    \begin{enumerate}[label=(\alph*)]
-        \item $\{1, 2, 3\} \subseteq \{1, 2, 4\}$
-        \item $\emptyset \subseteq \emptyset$
-        \item $S \subset S$
-        \item $S \in \{S, \emptyset\}$
-        \item $\{S\} \notin \{S, \emptyset\}$
-        \item $S \subseteq \{S, \emptyset\}$
-        \item $\{S\} \subseteq \{S, \emptyset\}$
-    \end{enumerate}
+
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\alph*)]
+            \item $\{1, 2\} \subset \{1, 2, 3, 4\}$
+            \item $\{1, 2, 3\} \subseteq \{1, 2, 4\}$
+            \item $\emptyset \subseteq \emptyset$
+            \item $S \subset S$
+            \item $S \in \{S, \emptyset\}$
+            \item $\{S\} \notin \{S, \emptyset\}$
+            \item $S \subseteq \{S, \emptyset\}$
+            \item $\{S\} \subseteq \{S, \emptyset\}$
+        \end{enumerate}
+    \end{multicols}
 \end{exercise}
 
 Set theory also features operations on sets. We list some of them here.
@@ -62,21 +66,27 @@ Set theory also features operations on sets. We list some of them here.
     \item The \textbf{union} of two sets is the set of all objects that are a member of $A$, or $B$, or both. It is denoted $A \cup B$. For example, $\{1, 2, 3\} \cup \{2, 3, 4\} = \{1, 2, 3, 4\}$.
     \item The \textbf{intersection} of two sets is the set of all objects that are a member of \textit{both} the sets $A$ and $B$. It is denoted $A \cap B$. For example, $\{1, 2, 3\} \cap \{2, 3, 4\} = \{2, 3\}$.
     \item The \textbf{set difference} of $S$ and $A$, denoted $S \setminus A$, is the set of all members of $S$ that are not members of $A$. For example, $\{1, 2, 3\} \setminus \{2, 3, 4\} = \{1\}$ and $\{2, 3, 4\} \setminus \{1, 2, 3\} = \{4\}$.
-    \item The \textbf{Cartesian Product} of $A$ and $B$, denoted $A \times B$, is the set whose members are all possible ordered pairs $(a, b)$, where $a$ is an element of $A$ and $b$ is an element of $B$. For example, $\{1, 2, 3\} \times \{4, 5\} = \{(1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5)\}$. In particular, the Cartesian product $A \times A = A^2$, $A\times A \times A = A^3$, and so on.
+    \item The \textbf{Cartesian Product} of $A$ and $B$, denoted $A \times B$, is the set whose members are all possible ordered pairs $(a, b)$, where $a$ is an element of $A$ and $b$ is an element of $B$. For example,
+    \[
+        \{1, 2, 3\} \times \{4, 5\} = \{(1, 4), (1, 5), (2, 4), (2, 5), (3, 4), (3, 5)\}.
+    \]
+    In particular, the Cartesian product $A \times A = A^2$, $A\times A \times A = A^3$, and so on.
 \end{itemize}
 
 \begin{exercise}
     Let $S = \{1, 2, 3, 4\}$, $T = \{2, 3, 5\}$, $U = \{(2, 2), (3, 3), (5, 5)\}$. Determine whether the following statements are true or false.
-    \begin{enumerate}[label=(\alph*)]
-        \item $S \cup T = \{1, 2, 3, 4, 5\}$
-        \item $S \cup U = \{1, 2, 3, 4, (5, 5)\}$
-        \item $S \cap T = \{2, 3\}$
-        \item $T \cap U = \emptyset$
-        \item $S \setminus T = \{1, 4\}$
-        \item $S \setminus \{1, 4\} = T$
-        \item $T^2 = U$
-        \item $U \subset (S \cup T)^2$
-    \end{enumerate}
+    \begin{multicols}{2}
+        \begin{enumerate}[label=(\alph*)]
+            \item $S \cup T = \{1, 2, 3, 4, 5\}$
+            \item $S \cup U = \{1, 2, 3, (5, 5)\}$
+            \item $S \cap T = \{2, 3\}$
+            \item $T \cap U = \emptyset$
+            \item $S \setminus T = \{1, 4\}$
+            \item $S \setminus \{1, 4\} = T$
+            \item $T^2 = U$
+            \item $U \subset (S \cup T)^2$
+        \end{enumerate}
+    \end{multicols}
 \end{exercise}
 It is quite useful to have a notation that describes a set that is defined by a logical formula that evaluates to true for an element of the set, and false otherwise. In this form, set-builder notation has three parts: a variable, a vertical bar separator, and the logical formula. Thus there is a variable on the left of the separator, and a rule on the right of it. These three parts are contained in curly brackets:
 \[
@@ -90,7 +100,7 @@ A domain $X$ can appear on the left of the vertical bar:
 \]
 or by adjoining it to the logical formula:
 \[
-    \{x \ | \ x \in X, \Phi(x)\}.
+    \{x \ | \ x \in X,\; \Phi(x)\}.
 \]
 \begin{example}
     The set $S = \{x \in \mathbb{R} \ | \ x \geq 0 \}$ is the set of all non-negative real numbers.
@@ -106,10 +116,12 @@ Finally, some notation that will be used:
 \end{itemize}
 
 \begin{exercise}
-    List the elements in the set
-    \[
-        \{x \in \mathbb{Q} \vert x \leq 0\} \cap \{y \in \mathbb{Z} \vert -2 \leq y \leq 10 \text{ and } y \text{ is an even number} \}.
-    \]
+    Let the sets
+    \begin{align*}
+        S &= \{x \in \mathbb{Q} \vert x \leq 0\}\\
+        T &= \{y \in \mathbb{Z} \vert -2 \leq y \leq 10 \text{ and } y \text{ is an even number} \}
+    \end{align*}
+    List the elements in the set $S \cap T$.
 \end{exercise}
 
 %=========================================
@@ -123,6 +135,8 @@ The \textbf{image} or \textbf{range} of a function is the set of the images of a
 Two functions $f$ and $g$ are equal if their domain and codomain sets are the same and their output values agree on the whole domain. More formally, given $f: X \to Y$ and $g: X \to Y$, $f = g$ if $f(x) = g(x)$ for all $x$ in $X$.
 
 \textbf{Arrow notation} can also be used to define the rule of a function. For example, $f: \mathbb{R} \to \mathbb{R}, x \mapsto x+1$ is the function which takes a real number as input and outputs that number plus 1. In the above example, ``$x + 1$'' is the \textbf{rule} of the function.
+
+\newpage
 
 \begin{exercise}
     Let a function $f: \{1, 2, 3\} \to \{1, 4, 9, 16, 25\}$ be given by the relation $f(x) = x^2$.
@@ -145,7 +159,9 @@ A function is said to be \textbf{well-defined} if \textit{similar inputs} produc
     well-defined?
 \end{exercise}
 
-Functions may also be \textbf{composed} with each other. This is done by using the function composition operator $\circ$. The composition of two functions, say $f: X \to Y$ and $g: Y \to Z$, produces a function $f \circ g: X \to Z$ such that $(f \circ g)(x) = f(g(x))$. It is important to note the following:
+Functions may also be \textbf{composed} with each other. This is done by using the function composition operator $\circ$. The composition of two functions, say $f: X \to Y$ and $g: Y \to Z$, produces a function $f \circ g: X \to Z$ such that $(f \circ g)(x) = f(g(x))$.
+
+It is important to note the following about function composition.
 \begin{itemize}
     \item Function composition is associative. That is, if $f$, $g$, and $h$ are composable, then $f \circ (g \circ h) = (f \circ g) \circ h$. Since the parentheses do not change the result, they are generally omitted.
     \item The composition $f \circ g$ is only meaningful if the codomain of $g$ is a subset of the domain of $f$. That is, if $f: A \to B$ and $g: C \to D$, then $f \circ g$ is only meaningful if $\im g \subseteq A$.
@@ -160,7 +176,9 @@ A function $f: X \to Y$ is said to be \textbf{injective} (or \textbf{one-to-one}
 
 A function $f: X \to Y$ is said to be \textbf{surjective} (or \textbf{onto}) is a function whose image is equal to its codomain. Equivalently, $f$ is surjective if and only if for all $y \in Y$, there exists $x \in X$ such that $f(x) = y$. In this case, $x$ is said to be the \textbf{pre-image} of $y$.
 
-A function is \textbf{bijective} if it is both injective and surjective. A bijective function is also called a \textbf{bijection} or a \textbf{one-to-one correspondence}. A function is bijective if and only if every possible image is mapped to by exactly one argument. It should be noted that bijectivity is implied if the function $f: X \to Y$ is injective and the sets $X$ and $Y$ `have the same number of elements' (or more formally, \textbf{equinumerous}).
+A function is \textbf{bijective} if it is both injective and surjective. A bijective function is also called a \textbf{bijection} or a \textbf{one-to-one correspondence}. A function is bijective if and only if every possible image is mapped to by exactly one argument.
+
+If a function $f: A \to B$ is bijective, then the sets $|A|$ and $|B|$ have the same cardinality, i.e., $|A| = |B|$. The sets $A$ and $B$ are said to be \textbf{equinumerous} (i.e., `have the same number of elements') in this case. It should be noted that bijectivity is also implied if the function $f: X \to Y$ is injective and the sets $X$ and $Y$ are equinumerous.
 
 \begin{exercise}
     Let the set $S = \{x \in \mathbb{Z} \vert x > 0\}$. Define the function $f: S \to \mathbb{Z}$ such that
@@ -170,7 +188,7 @@ A function is \textbf{bijective} if it is both injective and surjective. A bijec
             \frac{1-x}{2} & \text{ if } x \text{ is odd} 
         \end{cases}
     \]
-    Prove that $f$ is a bijection.
+    By considering $f$, prove that $|S| = |\mathbb{Z}|$.
 \end{exercise}
 
 %=========================================
@@ -216,8 +234,8 @@ There are a few operations that may be carried out on mathematical statements. F
 \begin{example}
     Consider the statements
     \begin{align*}
-        P: &\ \text{3 is an odd number,}\\
-        Q: &\ \text{4 is an odd number.}
+        P: &\ \text{3 is an odd number}\\
+        Q: &\ \text{4 is an odd number}
     \end{align*}
     Then
     \begin{itemize}
@@ -245,7 +263,7 @@ For example, here's the truth table for the logical AND operator:
     \end{tabular}
 \end{table}
 
-Note that we denote true statements by ``T'' and false statements by ``F''.
+(Note that we denote true statements by ``T'' and false statements by ``F'').
 
 Here's the truth table for the logical OR operator:
 \begin{table}[h]
@@ -271,7 +289,7 @@ And the truth table for the logical NOT operator:
     \end{tabular}
 \end{table}
 
-We motivate the truth table for the conditional operator by considering these two statements:
+We motivate the truth table for the conditional by considering these two statements:
 \begin{align*}
     P: &\ \text{You have a red card}\\
     Q: &\ \text{You have a green card}
@@ -282,7 +300,8 @@ Then, $P \implies Q$ is the statement ``if you have a red card, then you have a 
     \item If $P$ is true and $Q$ is false, then that means that you have a red card but not a green card. Hence, ``if you have a red card, then you have a green card'' is \textbf{false}, meaning $P \implies Q$ is false.
     \item Now consider the case when $P$ is false. Then regardless of what $Q$ is, the initial premise of the statement ``if you have a red card'' is not satisfied. Hence the ``promise'' that ``if you have a red card, then you have a green card'' is \textbf{not untrue}, which means that it is \textbf{vacuously true}. Hence, if $P$ is false, then $P \implies Q$ is true.
 \end{itemize}
-In summary, the truth table for the conditional operator is:
+
+In summary, the truth table for the conditional is:
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|l||l|}
@@ -296,7 +315,7 @@ In summary, the truth table for the conditional operator is:
 \end{table}
 
 \begin{exercise}
-    Let $P$ and $Q$ be statements. Write the truth table for $P \land (\lnot Q)$.
+    Let $P$ and $Q$ be statements. Draw the truth table for $P \land (\lnot Q)$.
 \end{exercise}
 
 We end this section by introducing the idea of the \textbf{biconditional}.
@@ -304,15 +323,15 @@ We end this section by introducing the idea of the \textbf{biconditional}.
     Let $P$ and $Q$ be mathematical statements. If both $(P \implies Q)$ and $(Q \implies P)$ are true, then we write $(P \iff Q)$. In other words, $(P \iff Q) = ((P \implies Q) \land (Q \implies P))$.
 \end{definition}
 \begin{remark}
-    The statement $(P \iff Q)$ can be written in several other ways:
+    The statement $(P \iff Q)$ can be written in several ways in English:
     \begin{itemize}
-        \item $P$ if and only if $Q$
-        \item $P$ is a necessary and sufficient condition for $Q$
-        \item $P$ is equivalent to $Q$
+        \item $P$ if and only if $Q$;
+        \item $P$ is a necessary and sufficient condition for $Q$; or
+        \item $P$ is equivalent to $Q$.
     \end{itemize}
 \end{remark}
 
-The truth table for the biconditional operator is:
+The truth table for the biconditional is:
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|l||l|}
@@ -328,8 +347,8 @@ The truth table for the biconditional operator is:
 \begin{exercise}
     Suppose $n$ is an integer. Let $P$ be the statement ``$n$ is a multiple of 5'' and $Q$ be the statement ``the last digit of $n$ is 0 or 5''. Let the statement $R = (P \iff Q)$.
     \begin{enumerate}[label=(\roman*)]
-        \item Write $R$ in English.
-        \item Is $R$ true? Justify your answer.
+        \item Write the statement $R$ in English.
+        \item Is the statement $R$ true? Justify your answer.
     \end{enumerate}
 \end{exercise}
 
@@ -353,7 +372,7 @@ A central idea of this section is that every mathematical statement can be built
     By inspection, we see that $(\lnot P) \lor Q$ has the same truth table as $P \implies Q$. Thus $(P \implies Q) = (\lnot P) \lor Q$.
 \end{example}
 \begin{remark}
-    We separate the intermediate value(s) (e.g., $\lnot P$ in the above example) from the rest by writing a double line to the sides of the intermediate values.
+    We separate the intermediate value(s) (e.g. $\lnot P$ in the above example) from the rest by drawing a double line to the sides of the intermediate values.
 \end{remark}
 
 \begin{example}
@@ -376,8 +395,9 @@ A central idea of this section is that every mathematical statement can be built
 \begin{exercise}
     Show that
     \[
-        ((\lnot P) \iff Q) = (P \implies (\lnot Q)) \land ((\lnot Q) \implies P).
+        ((\lnot P) \iff Q) = (P \implies (\lnot Q)) \land ((\lnot Q) \implies P)
     \]
+    by drawing a truth table.
 \end{exercise}
 
 We note some important properties of logical operators.
@@ -395,14 +415,14 @@ We note some important properties of logical operators.
     \end{itemize}
 \end{itemize}
 \begin{remark}
-    The most important one of these properties would arguably be the contrapositive. We will use this result several times in later volumes.
+    The most important one of these properties would arguably be the contrapositive. We will use this result several times later and in later volumes.
 \end{remark}
 \begin{exercise}
     Simplify the statement
     \[
         ((P \lor \lnot Q) \land \lnot R) \lor ((P \lor \lnot Q) \land (P \lor R) \land (P \lor \lnot R))
     \]
-    into a statement that uses only \textbf{three} operators.
+    into a statement that uses only \textbf{three} operators in total.
 \end{exercise}
 
 \section{Quantifiers}
@@ -422,7 +442,7 @@ We note some important properties of logical operators.
 
 We can also combine the quantifiers together with logical operators.
 \begin{example}
-    The statement ``every odd integer is one less than an even integer'' can be written as ``$\forall n \in \mathbb{Z}, \exists k \in \mathbb{Z}, n = 2k - 1$.
+    The statement ``every odd integer is one less than an even integer'' can be written as ``$\forall n \in \mathbb{Z}$, $\exists k \in \mathbb{Z}$, $n = 2k - 1$''.
 \end{example}
 \begin{example}
     Let $S$ denote the set of positive integers. Fermat's Last Theorem, which states that for all integers $n\geq 3$ the equation $x^n + y^n = z^n$ has no solution for $x, y, z \in S$, can be written as
@@ -432,6 +452,8 @@ We can also combine the quantifiers together with logical operators.
     It should be noted that when translating from English to \textit{symbolic writing}, we may need to change some things around.
 \end{example}
 
+\newpage
+
 \begin{exercise}
     Let $S$ denote the set of positive integers. Convert the statement
     \begin{quote}
@@ -440,17 +462,17 @@ We can also combine the quantifiers together with logical operators.
     into symbolic notation using quantifiers and logical operators.
 \end{exercise}
 
-We now look at negating quantifiers.
+We now look at negating quantifiers. Note that
 \begin{itemize}
     \item $\lnot(\forall x, P) = (\exists x, \lnot P)$; and
     \item $\lnot(\exists x, P) = (\forall x, \lnot P)$.
 \end{itemize}
 \begin{example}
-    Consider the statement ``for every integer $n$, the integer $2n$ is even''. One may write using quantifiers as
+    Consider the statement ``for every integer $n$, the integer $2n$ is even''. One may write that using quantifiers as
     \[
         \forall n \in\mathbb{Z}, 2n \text{ is even}.
     \]
-    Negating this statement would make it
+    Negating the above statement would make it
     \[
         \exists n \in \mathbb{Z}, 2n \text{ is not even},
     \]
@@ -462,6 +484,8 @@ We also note that $\lnot(P \implies Q) = P \land \lnot Q$. We leave verifying th
 \begin{example}
     Consider the statement ``if $n$ is odd then $n^3$ is odd''. We may write this using logical operators as ``($n$ is odd) $\implies$ ($n^3$ is odd)''. The negation of such a statement would hence be ``$n$ is odd \textbf{and} $n^3$ is \textbf{not} odd'', i.e. ``$n$ is odd and $n^3$ is even''.
 \end{example}
+
+\newpage
 
 \begin{exercise}
     Consider the statement ``if $x$ is a non-zero real number, then there exists a real number $y$ such that $xy = 1$''.
@@ -556,6 +580,9 @@ Generally, we would want to prove in the direction from simplicity to complexity
     Suppose $x$ and $y$ are real numbers. We prove the statement ``$x \leq y$ if $x^3 + xy^2 \leq x^2y + y^3$'' using a contrapositive proof.
     
     We first note that the contrapositive statement that we want to prove is ``if $x > y$ then $x^3 + xy^2 > x^2y + y^3$''.
+
+    \newpage
+
     \begin{proof}
         We consider a proof by contrapositive.
         
@@ -610,7 +637,7 @@ Usually, when writing a proof by contradiction, we would like to inform the read
     \end{proof}
 \end{example}
 \begin{remark}
-    The statement above is one statement where a direct proof would be easier:
+    The statement above is one where a direct proof would be easier. We provide a direct proof of it below.
     \begin{proof}
         Since $x$ is a positive rational number write $x = \frac pq$ where $p$ and $q$ are positive integers. Then set $y = \frac{p}{q+1}$. Clearly $\frac{p}{q+1} < \frac{p}{q} = x$ and $\frac{p}{q+1}$ is positive, hence we have found a $y$ such that $y < x$.
     \end{proof}
@@ -620,6 +647,8 @@ Usually, when writing a proof by contradiction, we would like to inform the read
 \begin{exercise}
     Prove that there exist no integers $a$ and $b$ such that $2a + 4b = 1$.
 \end{exercise}
+
+\newpage
 
 We now look at a proof by contradiction for conditional statements. Recall that $(\lnot(P \implies Q)) = (P \land \lnot Q)$. Hence, to prove the statement ``if $P$ then $Q$'', we would
 \begin{enumerate}
@@ -659,7 +688,7 @@ We now look at a proof by contradiction for conditional statements. Recall that 
 \end{example}
 
 \begin{exercise}
-    By way of contradiction, prove that $\frac{a+b}{2} \geq \sqrt{ab}$ if $a$ and $b$ are positive real numbers.
+    Prove that $\frac{a+b}{2} \geq \sqrt{ab}$ if $a$ and $b$ are positive real numbers by way of contradiction.
 \end{exercise}
 
 Despite the power of proof by contradiction, it's best to use it only when the direct and contrapositive approaches do not seem to work.
@@ -790,18 +819,22 @@ Strong mathematical induction involves two steps:
         We show the base cases of 1 and 2 hold:
         \begin{itemize}
             \item When $n = 1$, we have $f(2, 1) = 2$, so the first case is true.
-            \item When $n = 2$, we have $f(3, 2)$. Note that $f(3,2) = f(1, f(1, 2)) = f(1, 2) = 2$, so the second case is true.
+            \item When $n = 2$, we have $f(3, 2)$. Note that
+            \[
+                f(3,2) = f(1, f(1, 2)) = f(1, 2) = 2
+            \]
+            so the second case is true.
         \end{itemize}
         
         Now suppose for some positive integer $k$, for every integer $1 \leq m \leq k$ the statement holds true, i.e. $f(m+1,m) = 2$. We want to show that the case for $k+1$ is true, i.e. $f(k+2, k+1) = 2$.
         \begin{align*}
             f(k+2, k+1) &= f(k, f(k, k+1))\\
             &= f(k, f(k, f(k, k-1)))\\
-            &= f(k, f(k, 2)) & (\text{by hypothesis on } k-1)\\
+            &= f(k, f(k, 2)) & (\text{hypothesis on } k-1)\\
             &= f(k, f(1, f(1, k-1)))\\
             &= f(k, f(1, k-1))\\
             &= f(k, k-1) \\
-            &= 2 & (\text{by hypothesis on } k-1)
+            &= 2 & (\text{hypothesis on } k-1)
         \end{align*}
         which proves that the statement for $k+1$ holds. Hence by mathematical induction, $f(n+1, n) = 2$.
     \end{proof}
@@ -831,9 +864,9 @@ Each of these statements may be proved using any of the proof techniques that we
 \begin{example}
     Suppose $n$ is an integer. We will prove ``$n$ is a multiple of 6 if and only if $n$ is a multiple of 2 and 3''.
     \begin{proof}
-        We prove the forward direction first (by using direct proof): assume $n$ is a multiple of 6, meaning $n = 6k$ for some integer $k$. Clearly $6k = 2(3k)$ and $6k = 3(2k)$, so $n$ is both a multiple of 2 and 3.
+        We prove the forward direction first by using direct proof. Assume $n$ is a multiple of 6, meaning $n = 6k$ for some integer $k$. Clearly $6k = 2(3k)$ and $6k = 3(2k)$, so $n$ is both a multiple of 2 and 3.
         
-        We now prove the reverse direction (again using direct proof): assume $n$ is a multiple of 2 and 3, so we may write $n = 2a$ and $n = 3b$ for some integers $a$ and $b$. Then $2a = 3b$. Hence $a = \frac 32 b$ and $b = \frac 23 a$. Since $a$ and $b$ are integers, hence we conclude $b$ is a multiple of 2 and $a$ is a multiple of 3. Write $a = 3p$ and $b = 2q$ where $p$ and $q$ are integers. Hence $n = 2(3p) = 6p$ and $n = 3(2q) = 6q$. In both cases we clearly see $n$ is a multiple of 6.
+        We now prove the reverse direction, again using direct proof. Assume $n$ is a multiple of 2 and 3, so we may write $n = 2a$ and $n = 3b$ for some integers $a$ and $b$. Then $2a = 3b$. Hence $a = \frac 32 b$ and $b = \frac 23 a$. Since $a$ and $b$ are integers, hence we conclude $b$ is a multiple of 2 and $a$ is a multiple of 3. Write $a = 3p$ and $b = 2q$ where $p$ and $q$ are integers. Hence $n = 2(3p) = 6p$ and $n = 3(2q) = 6q$. In both cases we see $n$ is a multiple of 6.
     \end{proof}
 \end{example}
 
@@ -857,9 +890,12 @@ Note that while an example suffices to prove an existence statement, a single ex
 \begin{exercise}
     Prove that a positive integer that is one less than a perfect cube and two less than a perfect square exists.
 \end{exercise}
+
+\newpage
+
 Existence proofs fall into two categories: \textbf{constructive} proofs and \textbf{non-constructive} proofs.
 \begin{itemize}
-    \item Constructive proofs display an explicit example that proves the statement. So far, we have only seen constructive proofs.
+    \item Constructive proofs provide an explicit example that proves the statement. We have only seen constructive proofs so far.
     \item Non-constructive proofs prove that an example exists without providing it.
 \end{itemize}
 
@@ -1010,13 +1046,14 @@ Given an integer $n>1$, called a \textbf{modulus}, two integers $a$ and $b$ are 
     Equivalently, $a \equiv b \pmod n$ means that $a = kn + b$ for some integer $k$.
 \end{remark}
 \begin{example}
-    In modulus 12, one sees that $38 \equiv 14 \pmod{12}$ since $38 - 14 = 24 = 2 \times 12$. Another way to express this is to say that both 38 and 14 have the same remainder 2, when divided by 12.
+    In modulo 12, note that $38 \equiv 14 \pmod{12}$ since $38 - 14 = 24 = 2 \times 12$. Another way to express this is to say that both 38 and 14 have the same remainder 2, when divided by 12.
 \end{example}
+
 \begin{exercise}
     Let $m = 5$ and $n = 3$.
     \begin{enumerate}[label=(\alph*)]
         \item State the value of $17 \mod m$.
-        \item Find the value of $x$ such that $19 \equiv x \pmod m$ and $0 \leq x < m$.
+        \item Find an $x$ where $0 \leq x < m$ and $19 \equiv x \pmod m$.
         \item If $A = 1234n + 5$, what is $A \mod n$?
     \end{enumerate}
 \end{exercise}
@@ -1032,18 +1069,18 @@ The definition of congruence also applies to negative values. For example:
     Explain why $-n \equiv n \pmod{2n}$.
 \end{exercise}
 
-The operation of congruence modulo $n$ has a few properties which we will state without proof. Let $a_1 \equiv b_1 \pmod n$ and $a_2 \equiv b_2 \pmod n$, or if $a \equiv b \pmod n$, then
+The operation of congruence modulo $n$ has a few properties which we will state without proof. Let $k$ be an integer, $a_1 \equiv b_1 \pmod n$ and $a_2 \equiv b_2 \pmod n$, or if $a \equiv b \pmod n$. Then
 \begin{itemize}
-    \item $a + k \equiv b + k \pmod n$ for any integer $k$;
-    \item $ka \equiv kb \pmod n$ for any integer $k$;
-    \item $ka \equiv kb \pmod {kn}$ for any integer $k$;
+    \item $a + k \equiv b + k \pmod n$;
+    \item $ka \equiv kb \pmod n$;
+    \item $ka \equiv kb \pmod {kn}$;
     \item $a_1 + a_2 \equiv b_1 + b_2 \pmod n$;
     \item $a_1 - a_2 \equiv b_1 - b_2 \pmod n$;
     \item $a_1a_2 \equiv b_1b_2 \pmod n$;
-    \item $a^k \equiv b^k \pmod n$ for any non-negative integer $k$;
-    \item if $a+k \equiv b+k \pmod n$ then $a \equiv b \pmod n$ for any integer $k$;
-    \item if $ka \equiv kb \pmod n$ and $k$ is an integer such that $\gcd(k, n) = 1$, then $a \equiv b \pmod n$; and
-    \item if $ka \equiv kb \pmod{kn}$ where $k$ is a non-zero integer, then $a \equiv b \pmod n$.
+    \item $a^k \equiv b^k \pmod n$ if $k \geq 0$;
+    \item if $a+k \equiv b+k \pmod n$ then $a \equiv b \pmod n$;
+    \item if $ka \equiv kb \pmod n$ and $\gcd(k, n) = 1$, then $a \equiv b \pmod n$; and
+    \item if $ka \equiv kb \pmod{kn}$ where $k \neq 0$ then $a \equiv b \pmod n$.
 \end{itemize}
 
 \begin{exercise}
@@ -1085,6 +1122,7 @@ The operation of congruence modulo $n$ has a few properties which we will state 
 \section{Set Theory}
 \begin{enumerate}
     \item \begin{enumerate}[label=(\alph*)]
+        \item True, as both 1 and 2 appear in the set $\{1, 2, 3, 4\}$.
         \item False, 3 does not appear in $\{1, 2, 4\}$.
         \item True. Any set is a subset of itself, including the empty set.
         \item False, the set $S$ does not contain any element that is not in $S$. That is, $S \subseteq S$ but not $S \subset S$.
@@ -1104,7 +1142,8 @@ The operation of congruence modulo $n$ has a few properties which we will state 
         \item True.
         \item True. $(S \cup T)^2 = \{(1,1), (2,2), (3,3), (4,4), (5,5)\}$, so $U = \{(2,2), (3,3), (5,5)\} \subset (S \cup T)^2$.
     \end{enumerate}
-    \item We note $\{x \in \mathbb{Q} \vert x \leq 0\}$ are all the non-positive rational numbers, and the second set has elements $\{-2, 0, 2, \dots, 8, 10\}$. Hence their intersection has only two elements, namely $-2$ and $0$.
+
+    \item We note $S$ are all the non-positive rational numbers, and the $T$ has elements $\{-2, 0, 2, \dots, 8, 10\}$. Hence $S \cap T$ has only two elements, namely $-2$ and $0$.
 \end{enumerate}
 
 \section{Functions / Mappings}
@@ -1114,8 +1153,11 @@ The operation of congruence modulo $n$ has a few properties which we will state 
         \item Domain is $\{1, 2, 3\}$, codomain is $\{1, 4, 9, 16, 25\}$, range is $\{1, 4, 9\}$.
         \item No. The element 3 would map to 27, which is not in the codomain.
     \end{enumerate}
+    
     \item It is not well-defined. Note $\frac 12 = \frac 24$, but $f(\frac12) = 1 + 2 = 3$ and $f(\frac24) = 2 + 4 = 6$.
+    
     \item $fg(x) = \left(\frac1{x^2+1}\right)^2 - \frac1{x^2+1} + 1$.
+    
     \item We prove the requirements of a bijection one by one.
     \begin{itemize}
         \item \textbf{Injective}: Suppose $x_1, x_2 \in S$ such that $f(x_1) = f(x_2)$. We split into three cases.
@@ -1133,7 +1175,7 @@ The operation of congruence modulo $n$ has a few properties which we will state 
         \end{itemize}
         Therefore for every $y \in \mathbb{Z}$, there exists a pre-image $x \in S$ such that $f(x) = y$. Hence $f$ is surjective.
     \end{itemize}
-    Therefore, as $f$ is both injective and surjective, $f$ is bijective.
+    Therefore, as $f$ is both injective and surjective, $f$ is bijective. Hence, $|S| = |\mathbb{Z}|$.
 \end{enumerate}
 
 \section{Mathematical Logic and Proof Writing}
@@ -1255,8 +1297,8 @@ The operation of congruence modulo $n$ has a few properties which we will state 
     Assume that for some positive integer $k \geq 2$, for all positive integers $m \leq k$ we have $f(m) = 2^m - m - 1$. We want to show that $f(k+1) = 2^{k+1} - (k+1) - 1$.
     \begin{align*}
         f(k+1) &= 3f(k) - 2f(k-1) + 1\\
-        &= 3(2^k - k - 1) - & (\text{by hypothesis})\\
-        &\quad\quad2(2^{k-1} - (k-1) - 1) + 1 & (\text{also by hypothesis}) \\
+        &= 3(2^k - k - 1) - & (\text{hypothesis})\\
+        &\quad\quad2(2^{k-1} - (k-1) - 1) + 1 & (\text{hypothesis}) \\
         &= 3\times 2^k - 3k - 3 -2^k + 2k + 1\\
         &= 2\times2^k - k - 2\\
         &= 2^{k+1} - (k+1) - 1
@@ -1267,7 +1309,7 @@ The operation of congruence modulo $n$ has a few properties which we will state 
     
     \item We prove the forward direction using direct proof. Assume $n$ is one more than a multiple of 5. Then we may write $n = 5a + 1$ where $a$ is an integer. Note $5a + 1 = 5a + (5 - 4) = (5a + 5) - 4 = 5(a+1) - 4$. Setting $k = a+1$ yields required result.
     
-    We now prove the reverse direction, again using direct proof. Assume $n = 5k - 4$. Observe $5k - 4 = 5k - 5 + 1 = 5(k-1) + 1$, meaning $n$ is one more than a multiple of 5.
+    We now prove the reverse direction, using direct proof as well. Assume $n = 5k - 4$. Observe $5k - 4 = 5k - 5 + 1 = 5(k-1) + 1$, meaning $n$ is one more than a multiple of 5.
     
     \item The number 7 satisfies this as $7 = 2^3 - 1$ and $7 = 3^2 - 2$.
     
