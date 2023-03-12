@@ -170,1026 +170,1051 @@
 % \end{enumerate}
 % \end{problem}
 
-%=========================================
-\chapter{Basics of Groups}
-\section{Basic Examples of Groups}
-Recall that a group has 4 axioms:
-\begin{enumerate}
-    \item \textbf{Closure}: For all elements $a$ and $b$ in $G$, $a \ast b$ is also in $G$.
-    \item \textbf{Associativity}: For all elements $a, b$, and $c$ in $G$, we have $a \ast (b \ast c) = (a \ast b) \ast c$.
-    \item \textbf{Identity}: There exists an element $e$ in $G$, called the identity element\index{group!identity}, such that, for any element $x$ in $G$, we have $e \ast x = x \ast e = x$.
-    \item \textbf{Inverse}: For every element $x$ in $G$, there exists an element $x^{-1}$ in $G$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
-\end{enumerate}
+% %=========================================
+% \chapter{Basics of Groups}
+% \section{Basic Examples of Groups}
+% Recall that a group has 4 axioms:
+% \begin{enumerate}
+%     \item \textbf{Closure}: For all elements $a$ and $b$ in $G$, $a \ast b$ is also in $G$.
+%     \item \textbf{Associativity}: For all elements $a, b$, and $c$ in $G$, we have $a \ast (b \ast c) = (a \ast b) \ast c$.
+%     \item \textbf{Identity}: There exists an element $e$ in $G$, called the identity element\index{group!identity}, such that, for any element $x$ in $G$, we have $e \ast x = x \ast e = x$.
+%     \item \textbf{Inverse}: For every element $x$ in $G$, there exists an element $x^{-1}$ in $G$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
+% \end{enumerate}
 
-Recall also we write $a \ast b$ as $ab$, and denote the group $(G, \ast)$ by $G$ only.
+% Recall also we write $a \ast b$ as $ab$, and denote the group $(G, \ast)$ by $G$ only.
+
+% \begin{remark}
+%     If the group operation is additive\index{group!additive}, we may write $a + b$ instead of $ab$.
+% \end{remark}
+
+% Let's look at some examples of groups.
+
+% \newpage
+
+% \begin{example}
+%     Let $\mathbb{Z}$ be the set of integers and let $+$ denote regular addition. Then $(\mathbb{Z}, +)$ forms a group.
+%     \begin{enumerate}
+%         \item \textbf{Closure}: For all integers $a$ and $b$, we know $a + b$ is an integer.
+%         \item \textbf{Associativity}: We know $a + (b + c) = (a + b) + c$.
+%         \item \textbf{Identity}: The identity is 0, since $0 + x = x + 0 = x$.
+%         \item \textbf{Inverse}: The inverse of the integer $x$ is $-x$, since $x + (-x) = (-x) + x = 0$.
+%     \end{enumerate}
+% \end{example}
+
+% An important thing to note about $(\mathbb{Z}, +)$ is that $+$ is \textit{commutative}: $a + b = b + a$. A group with a commutative operation is called a \textbf{commutative group}\index{group!commutative}. However, it is more often called an \textbf{abelian group}\index{group!abelian}, named after Norwegian mathematician Niels Henrik Abel.
+
+% We now look at the notion of $\mathbb{Z}_n$.
+% \begin{definition}
+%     The set $\mathbb{Z}_n = \{0, 1, 2, \dots, n-1\}$ where $n$ is a non-negative integer.
+% \end{definition}
+% \begin{proposition}
+%     The set $\mathbb{Z}_n$ with the operation $\oplus_n$ forms a group (where $a \oplus_n b = (a + b) \pmod{n}$).
+% \end{proposition}
+% \begin{proof}
+%     We prove this by showing the group axioms hold.
+%     \begin{enumerate}
+%         \item \textbf{Closure}: For $a$ and $b$ in $\mathbb{Z}_n$, $a \oplus_n b = (a + b) \pmod{n}$ is a integer between 0 and $n - 1$. Thus $a \oplus b$ is inside $\mathbb{Z}_n$.
+%         \item \textbf{Associativity}: For $a$, $b$, and $c$ in $\mathbb{Z}_n$, since addition is associative, thus $a \oplus_n (b \oplus_n c) = (a + (b + c)) \pmod{n} = ((a + b) + c) \pmod{n} = (a \oplus_n b) \oplus_n c$.
+%         \item \textbf{Identity}: The identity is $0$ since for every $x$ in $\mathbb{Z}_n$, $0 \oplus_n x = (0 + x) \pmod{n} = (x + 0) \pmod{n} = x \oplus_n 0 = x$.
+%         \item \textbf{Inverse}: For inverses, \begin{itemize}
+%             \item $0$ is its own inverse since $0 \oplus_n 0 = 0$ which is the identity.
+%             \item For any other integer $x$ in $\mathbb{Z}_n$, the inverse is $n - x$. Since $1 \leq x \leq n - 1$, thus $1 \leq n - x \leq n - 1$ so $n - x$ is indeed in $\mathbb{Z}_n$. Also, $x \oplus_n (n - x) = (x + (n - x)) \pmod{n} = n \pmod{n} = 0$ and $(n - x) \oplus_n x = ((n-x) + x)\pmod{n} = n \pmod{n} = 0$.
+%         \end{itemize}
+%     \end{enumerate}
+%     Since the four group axioms are satisfied, this is a group.
+% \end{proof}
+% \begin{remark}
+%     Some sources (e.g. \cite{clark_1984, humphreys_1996}) define $\mathbb{Z}_n$ as a set of congruence classes modulo $n$, i.e. $\mathbb{Z}/n\mathbb{Z}$. We will show that these two definitions are equivalent in a future chapter.
+% \end{remark}
+
+% One could use a \textbf{Cayley table}\index{cayley table} (or \textbf{group table}\index{group table}) to show that a structure is a group.
+% \begin{example}
+%     We show that $(\mathbb{Z}_6, \oplus_6)$ is a group by drawing the Cayley table of that structure.
+%     \begin{table}[h]
+%         \centering
+%         \begin{tabular}{|l|l|l|l|l|l|l|}
+%         \hline
+%         \textbf{$\oplus_6$} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline
+%         \textbf{0}          & 0          & 1          & 2          & 3          & 4          & 5          \\ \hline
+%         \textbf{1}          & 1          & 2          & 3          & 4          & 5          & 0          \\ \hline
+%         \textbf{2}          & 2          & 3          & 4          & 5          & 0          & 1          \\ \hline
+%         \textbf{3}          & 3          & 4          & 5          & 0          & 1          & 2          \\ \hline
+%         \textbf{4}          & 4          & 5          & 0          & 1          & 2          & 3          \\ \hline
+%         \textbf{5}          & 5          & 0          & 1          & 2          & 3          & 4          \\ \hline
+%         \end{tabular}
+%     \end{table}
+
+%     \newpage
+
+%     Note that:
+%     \begin{enumerate}
+%         \item For all $x$ and $y$ in $\mathbb{Z}_6$, $x \oplus_6 y$ is in $\mathbb{Z}_6$ from the above table.
+%         \item For all $x, y$, and $z$ in $\mathbb{Z}_6$, $x \oplus_6 (y \oplus_6 z) = (x \oplus_6 y) \oplus_6 z$ from the above table.
+%         \item 0 is the identity since adding anything to it returns the original number.
+%         \item Every row has an integer that when added gives 0.
+%     \end{enumerate}
+%     Thus $(\mathbb{Z}_6, \oplus_6)$ is a group.
+% \end{example}
+
+% It should be noted that, in this book, we use the convention of reading the \textbf{row before the column} in a group table. However, since this is an abelian group, the order does not matter. We will look at Cayley tables of non-abelian groups later.
+
+% \begin{exercise}
+%     Let $a \otimes_n b = (a \times b) \pmod{n}$. By using a group table, show that $(\mathbb{Z}_6, \otimes_6)$ does \textbf{not} form a group.
+% \end{exercise}
+
+% \section{General Properties of Groups}
+% Before we get into the general properties of groups, we introduce a useful notation for repeated application of $\ast$ on a single element $x$ in the group $G$.
+% \begin{definition}
+%     Let $x$ be an element in $G$. Then
+%     \[
+%         x^n =
+%         \begin{cases}
+%             x\ast x\ast \cdots \ast x & \text{ if } n > 0 \ (n\text{ copies of }x)\\
+%             e & \text{ if } n=0 \\
+%             x^{-1}\ast x^{-1}\ast \cdots \ast x^{-1} & \text{ if } n<0 \ (|n|\text{ copies of }x^{-1})
+%         \end{cases}
+%     \]
+% \end{definition}
+% \begin{remark}
+%     In the case of an additive group operation, $x^n$ may be written as $nx$, where $n$ is an integer.
+% \end{remark}
+
+% Note that some laws of exponents apply to the above operation.
+% \begin{itemize}
+%     \item $\left(x^{-1}\right)^m = \left(x^m\right)^{-1}$
+%     \item $x^{m+n} = x^m \ast x^n$
+%     \item $\left(x^m\right)^n = x^{mn}$
+% \end{itemize}
+% Proof of these properties are left as an exercise for the reader.
+
+% We are now ready to prove some properties of groups.
+% \begin{proposition}
+%     The identity of a group $G$ is unique.
+% \end{proposition}
+% \begin{proof}
+%     Suppose $e_1$ and $e_2$ are identities of the group $G$. Then, for all $x$ in $G$, we have
+%     \[
+%         e_1x = xe_1 = x \text{ and } e_2x = xe_2 = x,
+%     \]
+%     since they are identities. Thus,
+%     \begin{align*}
+%         e_1 &= e_1e_2 & (\text{since } e_2 \text{ is an identity, so } xe_2 = x)\\
+%         &= e_2 & (\text{since } e_1 \text{ is an identity, so } xe_1 = x)
+%     \end{align*}
+%     Hence $e_1 = e_2$, meaning that the identity of a group is unique.
+% \end{proof}
+
+% \begin{proposition}
+%     $e^{-1} = e$
+% \end{proposition}
+% \begin{proof}
+%     Clearly $e = ee^{-1}$ since $xx^{-1} = e$ for all elements $x$ in $G$, including $x = e$. Thus, by left multiplying $e^{-1}$ on both sides, we see $e = e^{-1}$.
+% \end{proof}
+
+% \newpage
+
+% \begin{proposition}
+%     The inverse of an element $x$ of a group $G$ is unique.
+% \end{proposition}
+% \begin{proof}
+%     Suppose that $a$ and $b$ are inverses of $x$. Then by definition we have
+%     \[
+%         ax = xa = e \text{ and } bx = xb = e.
+%     \]
+%     Note that
+%     \begin{align*}
+%         a &= ae & (\text{since } e \text{ is the identity})\\
+%         &= a(xb) & (\text{since } b \text{ is an inverse, so } xb = e)\\
+%         &= (ax)b & (\text{by associativity})\\
+%         &= eb & (\text{since } a \text{ is an inverse, so } ax = e)\\
+%         &= b & (\text{since } e \text{ is the identity})
+%     \end{align*}
+%     Therefore $a = b$. Thus the inverse of $x$ is unique.
+% \end{proof}
+
+% \begin{proposition}[Shoes and Socks]\index{Shoes and Socks}
+%     For all elements $a$ and $b$ in $G$, $(ab)^{-1} = b^{-1}a^{-1}$.
+% \end{proposition}
+% \begin{proof}
+%     Recall that if $g^{-1}$ is the inverse of $g$ then $gg^{-1} = g^{-1}g = e$. We will show that $(ab)(b^{-1}a^{-1}) = e$ and $(b^{-1}a^{-1})(ab) = e$.
+%     \begin{align*}
+%         (ab)(b^{-1}a^{-1}) &= a(bb^{-1})a^{-1} & (\text{by associativity})\\
+%         &= a(e)a^{-1} & (\text{since } bb^{-1} = e)\\
+%         &= aa^{-1} & (\text{since } e \text{ is the identity})\\
+%         &= e & (\text{since } aa^{-1} = e),
+%     \end{align*}
+%     and,
+%     \begin{align*}
+%         (b^{-1}a^{-1})(ab) &= b^{-1}(a^{-1}a)b & (\text{by associativity})\\
+%         &= b^{-1}(e)b & (\text{since } a^{-1}a = e)\\
+%         &= b^{-1}b & (\text{since } e \text{ is the identity})\\
+%         &= e & (\text{since } b^{-1}b = e).
+%     \end{align*}
+%     Thus, $b^{-1}a^{-1}$ is the inverse of $ab$, so $(ab)^{-1} = b^{-1}a^{-1}$
+% \end{proof}
+
+% \begin{exercise}
+% Prove that for all $x$ in $G$, $\left(x^{-1}\right)^{-1} = x$.
+% \end{exercise}
+
+% We now prove an important property of groups: the \textbf{cancellation law}.
+% \begin{proposition}[Cancellation Law]\index{group!cancellation law}
+%     Let $g$, $x$, and $y$ be elements in the group $G$. Then
+%     \begin{enumerate}
+%         \item if $gx=gy$ then $x = y$; and
+%         \item if $xg=yg$ then $x = y$.
+%     \end{enumerate}
+% \end{proposition}
+% \begin{proof}
+%     We prove the two cases separately.
+%     \begin{enumerate}
+%         \item Suppose $gx = gy$. Then
+%         \begin{align*}
+%             &g^{-1}(gx) = g^{-1}(gy) & (\text{left multiply by } g^{-1})\\
+%             &(g^{-1}g)x = (g^{-1}g)y & (\text{by associativity})\\
+%             &ex = ey & (\text{since } g^{-1}g = e)\\
+%             &x = y & (\text{since } e \text{ is the identity})
+%         \end{align*}
+%         \item Suppose $xg = yg$. Then
+%         \begin{align*}
+%             &(xg)g^{-1} = (yg)g^{-1} & (\text{right multiply by } g^{-1})\\
+%             &x(gg^{-1}) = y(gg^{-1}) & (\text{by associativity})\\
+%             &xe = ye & (\text{since } gg^{-1} = e)\\
+%             &x = y & (\text{since } e \text{ is the identity})
+%         \end{align*}
+%     \end{enumerate}
+%     This completes the proof.
+% \end{proof}
+
+% \section{Order of a Group and Order of an Element}
+% We look at the notion of the \textit{order}\index{order} of a group and the order of an element of a group.
+
+% \begin{definition}
+%     Let $G$ be a group. The order of a group\index{order!group}, denoted by $|G|$, is the cardinality of the set $G$.
+% \end{definition}
+
+% If $|G| = n$ where $n$ is finite, we say that $G$ is a \textbf{finite group}. On the other hand, if $|G| = \infty$, then we say that $G$ is an \textbf{infinite group}.
+
+% \begin{example}
+%     The group $(\mathbb{Z}_4, \oplus_4)$ has order 4 since it has four elements: 0, 1, 2, and 3.
+% \end{example}
+
+% \begin{example}
+%     The group $(\mathbb{R}, +)$ is an infinite group since $\mathbb{R}$ has an uncountably infinite number of elements.
+% \end{example}
+
+% Let's now look at the order of an element.
+% \begin{definition}
+%     Let $g$ be an element of the group $G$. Then the order of $g$\index{order!element}, denoted by $|g|$, is the least positive integer $n$ such that $g^n = e$.
+% \end{definition}
+% Note that if $n$ is infinite, we say that the order of $g$ is infinite (or that $g$ has infinite order).
+
+% \begin{example}
+%     Consider the group $(\mathbb{Z}_4, \oplus_4)$ and its 4 elements 0, 1, 2, and 3.
+%     \begin{itemize}
+%         \item The element $0$ has order 1 since $0^1 = 0$, which is the identity. Thus $|0| = 1$ in $(\mathbb{Z}_4, \oplus_4)$.
+%         \item The element $1$ has order 4 since $1 \oplus_4 1 \oplus_4 1 \oplus_4 1 = 0$ and no smaller $n$ than 4 exists. Thus $|1| = 4$ in $(\mathbb{Z}_4, \oplus_4)$.
+%         \item The element $2$ has order 2 since $2 \oplus_4 2 = 0$ and no smaller $n$ than 2 exists. Thus $|2| = 2$ in $(\mathbb{Z}_4, \oplus_4)$.
+%         \item The element $3$ has order 4 since $3 \oplus_4 3 \oplus_4 3 \oplus_4 3 = 0$ and no smaller $n$ than 4 exists. Thus $|3| = 4$ in $(\mathbb{Z}_4, \oplus_4)$.
+%     \end{itemize}
+% \end{example}
+
+% We note a few things about the order of elements in a group.
+% \begin{itemize}
+%     \item The identity element always has order 1.
+%     \item A group in which every element has finite order is said to be \textbf{periodic}\index{group!periodic}.
+%     \item A finite group is always periodic because all elements in a finite group has finite order.
+%     \item The order of any element in a group divides the order of the group.
+% \end{itemize}
+% The last point is actually a corollary of Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). We will look into its proof in the next chapter.
+
+% \begin{exercise}
+%     Let $i$ be a number such that $i^2 = -1$. Let $\mathcal{S} = \{1, -1, i, -i\}$.
+%     \begin{enumerate}[label=(\roman*)]
+%         \item Find the identity of the group $(\mathcal{S}, \times)$ where $\times$ denotes regular multiplication.
+%         \item Find the orders of the elements of the above group.
+%     \end{enumerate}
+% \end{exercise}
+
+% \newpage
+
+% \section{Cyclic Groups}\index{cyclic group}
+% Now that we have gotten some basic terminology and properties of groups out of the way, let's introduce a very simple type of group: the cyclic groups.
+
+% Suppose we have an element $g$ in a group $G$. Suppose that the entire set $G$ is \textit{generated} by $g$, that is,
+% \[
+%     G = \{g, g^2, g^3, g^4, \dots, g^n\}
+% \]
+% for some positive integer $n$. Then we say that $G$ is a \textbf{cyclic group of order $n$}\index{cyclic group!of order $n$} and has a \textbf{generator}\index{cyclic group!generator} $g$. Notationally, we write $G = \langle g \rangle$.
+
+% \begin{example}
+%     Let $i$ be the imaginary unit, i.e. $i^2 = -1$. Let $\mathcal{S} = \{1, -1, i, -i\}$. Notice the group $(\mathcal{S}, \times)$ is completely generated by the element $i$ since
+%     \[
+%     i^1 = i,\; i^2 = -1,\; i^3 = -i, \text{ and } i^4 = 1.
+%     \]
+%     Thus, $\mathcal{S} = \{i, i^2, i^3, i^4\} = \langle i \rangle$.
+% \end{example}
+
+% \begin{exercise}
+%     Using the set $\mathcal{S}$ from the above example, find the other generator of the group $(\mathcal{S}, \times)$.
+% \end{exercise}
+
+% It should be noted that not every element in a cyclic group is a generator, and that a cyclic group may have more than 1 generator.
+
+% Cyclic groups may also be of \textbf{infinite order}. Such cyclic groups are called \textbf{cyclic groups of infinite order} or \textbf{infinite cyclic groups}\index{cyclic group!infinite}.
+% \begin{example}
+%     The group $(\mathbb{Z}, +)$ is an infinite cyclic group with generators 1 and -1.
+% \end{example}
+
+% We now look at two results involving cyclic groups.
+
+% \begin{proposition}\label{prop-cyclic-group-is-abelian}
+%     Every cyclic group is abelian.
+% \end{proposition}
+% \begin{proof}
+%     Let $G$ be the cyclic group with a generator $g$. Suppose $x$ and $y$ are elements in $g$. Then $x = g^m$ and $y = g^n$ for some positive integers $m$ and $n$.
+
+%     Thus,
+%     \begin{align*}
+%         xy &= (g^m)(g^n)\\
+%         &= g^mg^n\\
+%         &= g^{m+n}\\
+%         &= g^{n+m} & (\text{since + is commutative})\\
+%         &= g^ng^m\\
+%         &= (g^n)(g^m)\\
+%         &= yx
+%     \end{align*}
+%     so $xy = yx$. Therefore $G$ is abelian.
+% \end{proof}
+
+% \begin{theorem}\label{thrm-cyclic-group-has-element-with-same-order}
+%     A finite group $G$ is cyclic if and only if there exists an element $g$ in $G$ with the same order as the group.
+% \end{theorem}
+% \begin{proof}
+%     We first prove the forward direction: suppose $G$ is cyclic and $|G| = n$. Then, by definition, there exists an element $g$ in $G$ such that
+%     \[
+%         G = \langle g \rangle = \{g^k \ | \ 1 \leq k \leq n, k \in \mathbb{Z}\},
+%     \]
+%     i.e. $g$ is a generator of $G$. We just need to show $|g| = n$.
+
+%     Suppose on the contrary there exists an integer $1 \leq m < n$ where $g^m = e$. Then $\langle g \rangle = \{g, g^2, \dots, g^m\}$. Thus $|\langle g \rangle| = m < n = |G|$. But by the hypothesis of the forward direction, $G = \langle g \rangle$ so $n = |G| = |\langle g \rangle| = m$. This is a contradiction, i.e. there does \textbf{not} exist an integer $1 \leq m < n$ where $g^m = e$. Therefore $g^n = e$, i.e. $|g| = n$.
+
+%     We now prove the reverse direction: suppose there exists an element $g$ in $G$ with order $n$.
+    
+%     We claim that $g, g^2, \dots, g^n$ are all distinct. Suppose on the contrary that there exist integers $i$ and $j$ where $1 \leq i < j \leq n$ such that $g^i = g^j$. Then $g^i = g^ig^{j-1}$, which means $g^{j-i} = e$ by the cancellation law. Note that $1 \leq j - i < n$. Thus, since $g^{j-i} = e$, therefore $|g| = j - i < n$ which contradicts $|g| = n$. Hence, $g, g^2, \dots, g^n$ are all distinct. Therefore, $\langle g \rangle = \{g, g^2, \dots, g^n\}$ contain distinct elements of $G$. But there are only $n$ elements in $G$ and $\langle g \rangle$ contains $n$ distinct elements. Therefore, $G = \langle g \rangle$ which means that $G$ is cyclic with generator $g$.
+
+%     This completes the proof.
+% \end{proof}
+
+% There are more interesting properties of cyclic groups, but we will get to them when we develop more tools to explain and prove these properties.
+
+% \newpage
+
+% \section{Dihedral Groups}
+% We motivate the definition of the dihedral groups by discussing the symmetries of an equilateral triangle.
+
+% \begin{figure}[h]
+%     \centering
+%     \fbox{\includegraphics[width=5.5cm]{images/chapter2/GroupD3.jpg}}
+%     \caption{Symmetries of an Equilateral Triangle}
+% \end{figure}
+
+% What actions could we perform in order to maintain symmetry on an equilateral triangle? Well, we could rotate the triangle in $120^\circ$ anti-clockwise increments about the center of the triangle. We denote this action by the symbol $r$. Another thing we could do is reflect the triangle about the line going through one of the vertices and the center, like we discussed in an earlier chapter. This action is denoted by $s$.
+
+% Now, suppose we define $r$ to be the $120^\circ$ anti-clockwise rotation about the center and $s$ be the reflection of the triangle about the line going through vertex 1 and the center, like shown in the diagram. How do we obtain a $240^\circ$ anti-clockwise rotation? Well, we apply two $120^\circ$ anticlockwise rotations one after another. In other words, if $\ast$ means ``action composition'', then a $240^\circ$ rotation would be represented by $r^2$. Note that $r^3$, which represents a $360^\circ$ anti-clockwise rotation, is the same as doing nothing. So $r^3 = e$. Similarly, applying the reflection $s$ twice in a row (i.e., $s^2$) is the same as doing nothing, so $s^2 = e$. Thus, we have
+% \[
+%     r^3 = s^2 = e
+% \]
+% for the case of an equilateral triangle.
+
+% There's another relationship governing $r$ and $s$. Consider this: how do we obtain a reflection about the line through vertex 3 and the center? Well, we apply $r$ first, followed by $s$. This means that a reflection about the line through vertex 3 and the center is given by $rs$. Notice that this is the same thing as reflecting first and then applying $r$ twice, i.e. $sr^2$. Thus, we have the second relationship:
+% \[
+%     rs = sr^2
+% \]
+% for the case of an equilateral triangle.
+
+% The group of symmetries of an equilateral triangle is called the \textbf{dihedral group of order 6} (or the \textbf{dihedral group of degree 3}) and is denoted by $D_3$. In general, the \textbf{dihedral group of order $2n$}\index{dihedral group!of order $2n$} (or the \textbf{dihedral group of degree $n$}\index{dihedral group!of degree $n$}) is denoted by $D_n$ and can be thought of as the symmetries of a regular polygon of $n$ sides (a regular $n$-gon). For example, the symmetries of the square is given by the group $D_4$.
+
+% \begin{figure}[h]
+%     \centering
+%     \fbox{\includegraphics[width=5.5cm]{images/chapter2/GroupD4.jpg}}
+%     \caption{Symmetries of a Square}
+% \end{figure}
+
+% Thus, in general, the set $D_n$ consists of the following elements.
+% \[
+%     D_n = \{e, r, r^2, \dots, r^{n-1}, s, rs, r^2s, \dots, r^{n-1}s\}
+% \]
+% with the relationship between $r$ and $s$ given by $r^n = s^2 = e$ and $rs = sr^{n-1}$.
+
+% \begin{remark}
+%     Some authors (e.g. \cite{humphreys_1996}) will write the reflections of $D_n$ with $s$ leading $r$, i.e. $s, sr, sr^2, sr^3, \dots, sr^{n-1}$. The underlying definition, however, remains the same in either case.
+% \end{remark}
+
+% These relationships are succinctly given by the \textit{presentation}\index{presentation}
+% \[
+%     D_n = \langle r, s \ | \ r^n = s^2 = e, rs = sr^{n-1} \rangle
+% \]
+% where $r$ and $s$ can be thought of as `generators'\index{presentation!generators} and the conditions\index{presentation!conditions} are given on the right side of the pipe ($|$).
+
+% \begin{example}\label{example-presentation-of-D3}
+%     The group $D_3$ has presentation
+%     \[
+%         D_3 = \langle r, s \ | \ r^3 = s^2 = e, rs = sr^2 \rangle.
+%     \]
+%     The Cayley table of $D_3$ is given below.
+
+%     \begin{table}[h]
+%         \centering
+%         \begin{tabular}{|l|l|l|l|l|l|l|}
+%         \hline
+%         $\ast$ & $e$    & $r$    & $r^2$  & $s$    & $rs$   & $r^2s$ \\ \hline
+%         $e$    & $e$    & $r$    & $r^2$  & $s$    & $rs$   & $r^2s$ \\ \hline
+%         $r$    & $r$    & $r^2$  & $e$    & $rs$   & $r^2s$ & $s$    \\ \hline
+%         $r^2$  & $r^2$  & $e$    & $r$    & $r^2s$ & $s$    & $rs$   \\ \hline
+%         $s$    & $s$    & $r^2s$ & $rs$   & $e$    & $r^2$  & $r$    \\ \hline
+%         $rs$   & $rs$   & $s$    & $r^2s$ & $r$    & $e$    & $r^2$  \\ \hline
+%         $r^2s$ & $r^2s$ & $rs$   & $s$    & $r^2$  & $r$    & $e$    \\ \hline
+%         \end{tabular}
+%     \end{table}
+
+%     It should be noted that we use the convention of reading the \textbf{row before the column}. So the action $rs \ast r^2$ (which is usually written as $rsr^2$) is given by the row of $rs$ and the column of $r^2$, which is $r^2s$.
+% \end{example}
+
+% The \textit{cannonical form}\index{dihedral group!cannonical form} of an element in a dihedral group is $r^ms^n$, where $m$ and $n$ are non-negative integers. So how do we find the canonical form of elements like $sr$ or $srs$? We have this useful proposition to help.
+% \begin{proposition}
+%     For the group $D_n$, we have $r^ms = sr^{n-m}$ for all integers $1 \leq m < n$.
+% \end{proposition}
+% \begin{proof}
+%     We induct on $m$.
+    
+%     When $m = 1$, $rs = sr^{n-1}$ by the definition of $D_n$.
+    
+%     Assume now that for some integer $1 \leq k < n$, we have $r^ks = sr^{n-k}$. We consider two cases.
+%     \begin{itemize}
+%         \item If $k = n - 1$, then $k + 1 = n$. Thus, $r^{k+1}s = r^ns = s$ since $r^n = e$. Note that $sr^{(k+1)-n} = sr^{n-n} = sr^0 = s$. Therefore $r^{k+1}s = sr^{(k+1)-n}$ for the case when $k = n - 1$.
+%         \item The other case is if $1 \leq k \leq n - 2$. Then we have
+%         \begin{align*}
+%             r^{k+1}s &= r^k(rs)\\
+%             &= r^k(sr^{n-1}) & (\text{base case})\\
+%             &= (r^ks)r^{n-1} & (\text{associativity})\\
+%             &= (sr^{n-k})r^{n-1} & (\text{by Induction Hypothesis})\\
+%             &= sr^{2n - k - 1}\\
+%             &= sr^nr^{n-k-1}\\
+%             &= sr^{n-(k+1)} & (\text{since } r^n = e)
+%         \end{align*}
+%         which means $r^{k+1}s = sr^{n-(k+1)}$.
+%     \end{itemize}
+%     In either case, the statement is true for $k+1$.
+    
+%     Therefore $r^ms = sr^{n-m}$ for all integers $1 \leq m < n$.
+% \end{proof}
+
+% \begin{exercise}
+%     Simplify $rsr^4sr^3$ in the group $D_6$.
+% \end{exercise}
+
+% We note that the dihedral group acts on a regular $n$-gon. We explore more facts about the dihedral group acting on polygons in a later chapter.
+
+% \newpage
+
+% \section{Problems}
+% \begin{problem}
+%     Draw the Cayley table for $D_4$, the dihedral group of order 8, representing the symmetries of a square. By referring to the Cayley table,
+%     \begin{enumerate}[label=(\alph*)]
+%         \item explain why $D_4$ is \textbf{not} abelian;
+%         \item simplify $r^3srsr^3sr^3sr^2$.
+%     \end{enumerate}
+% \end{problem}
+
+% \begin{problem}
+%     Let $G$ be a group. If every element in $G$ is its own inverse, show that $G$ is abelian.
+% \end{problem}
+
+% \begin{problem}\label{problem-element-to-power-of-multiple-of-order-is-identity}
+%     Let $G$ be a group with identity $e$. Suppose an element $x$ in $G$ has finite order $k$. Prove that $n$ is a multiple of $k$ if and only if $a^n = e$.\newline
+%     (\textit{Hint: consider Euclid's division lemma (\textbf{Lemma \ref{lemma-euclid-division}}) to prove one direction of the claim.})
+% \end{problem}
+
+% \begin{problem}
+%     Let $G$ be a group.
+%     \begin{enumerate}[label=(\alph*)]
+%         \item Suppose $(gh)^2 = g^2h^2$ for all elements $g$ and $h$ in $G$. Prove that $G$ is abelian.
+%         \item Suppose $G$ is abelian. Prove that $(gh)^n = g^nh^n$ for all elements $g$ and $h$ in $G$ and for all positive integers $n$.
+%     \end{enumerate}
+% \end{problem}
+
+% \begin{problem}
+%     Let $G = (\mathbb{Z}_n, \oplus_n)$. It is given $G$ is a group. Prove that $G$ is a cyclic group of order $n$.
+% \end{problem}
+
+% \newpage
+
+% \begin{problem}
+%     Let the set $S = \mathbb{R}^2$, that is,
+%     \[
+%         S = \{(x, y) \ | \ x, y \in \mathbb{R}\}.
+%     \]
+%     Let the transformation $T: S \to S$ is defined by
+%     \[
+%         T(x, y) = (-y, x+y).
+%     \]
+%     Define the set $A = \{T^r \ | \ r \in \mathbb{Z} \text{ and } r \geq 1\}$. Show that $A$ is a group under function composition $\circ$, and give the order of this group.
+% \end{problem}
+
+%=========================================
+\chapter{Subgroups}
+\section{Definition and Examples}
+We look at the notion of a subgroup of a group.
+\begin{definition}
+    Let $G$ be a group with operation $\ast$. Let $H$ be a subset of $G$. Then $H$ is said to be a \textbf{subgroup}\index{subgroup} of $G$ if it satisfies the following conditions.
+    \begin{enumerate}
+        \item \textbf{Closure}: For all $x$ and $y$ in $H$, $x \ast y$ is also in $H$.
+        \item \textbf{Identity}: The identity of the group $G$ is in $H$.
+        \item \textbf{Inverse}: For all elements $x$ in $H$, there exists an element $x^{-1}$ in $H$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
+    \end{enumerate}
+\end{definition}
+\begin{remark}
+    Equivalently, $H$ is a subgroup of $G$ if $H \subseteq G$ and $H$ is a group under the group operation of $G$.
+\end{remark}
+We write $H \leq G$ if $H$ is a subgroup of $G$.
+
+\begin{example}
+    Let's look at all possible subgroups of the group $(\mathbb{Z}, +)$. Suppose $H \leq G = (\mathbb{Z}, +)$. Suppose also that $H$ is not the trivial subgroup containing only the identity in $(\mathbb{Z}, +)$, i.e. $H \neq \{0\}$.
+
+    Let $n$ be the smallest positive integer in $H$. Let $m$ be any other number in $H$. Then by the division algorithm, $m = nq + r$ where $q$ and $r$ are integers such that $0 \leq r < n$. Hence,
+    \[
+        r = m + \underbrace{(-n) +(-n) +(-n) + \cdots + (-n)}_{q\text{ times}}.
+    \]
+    Note that since both $m$ and $-n$ are in $H$, thus $r = m + (-n) + \cdots + (-n)$ is also in $H$, since $H$ is closed under addition. But, $0 \leq r < n$ and $n$ is the \textit{smallest} positive integer in $H$. Thus, $r \not> 0$ which means $r = 0$. Therefore $m = nq$, i.e. every element in $H$ is a multiple of the smallest positive integer in $H$.
+
+    Hence,
+    \[
+    H = \{nk \ | \ k \in \mathbb{Z}\},
+    \]
+    which is often written as the group $n\mathbb{Z}$.
+\end{example}
+
+\begin{exercise}
+    Let $G$ be a group with operation $\ast$ and identity $e$. Prove that $\{e\} \leq G$.
+\end{exercise}
+
+We note that the group containing only the identity (i.e., $\{e\} \leq G$) is always present in every group. This is known as the \textbf{trivial subgroup}\index{subgroup!trivial}. We also note that the group itself is a subgroup of itself (that is, $G \leq G$). Any subgroup that are \textbf{not} these two groups is known as a \textbf{proper subgroup}\index{subgroup!proper} of $G$, and we write $H < G$ if $H$ is a proper subgroup of $G$.
+
+\section{Subgroup Test}
+To prove that a subset of a group is a subgroup using the axioms is too tedious. Wouldn't it be nice if we have a simple test to determine if a subset is a subgroup? Well, there is; it is called the \textbf{subgroup test}\index{subgroup test}.
+\begin{theorem}[Subgroup Test]
+    Let $G$ be a group and $H \subseteq G$ such that $H \neq \emptyset$ (i.e., $H$ is not the empty set). Then $H \leq G$ if and only if for all $x$ and $y$ in $H$, then $xy^{-1}$ is in $H$.
+\end{theorem}
+\begin{proof}
+    We prove the forward direction first. Suppose $H \leq G$ and let $x$ and $y$ be elements in $H$. Since $H$ is a subgroup of $G$, inverses exist. Thus $y^{-1}$ is in $H$. Also, since $H$ is a subgroup of $G$, thus $H$ is closed under the group operation. Hence, $xy^{-1}$ is in $H$. Therefore, if $H \leq G$ then for all $x$ and $y$ in $H$, $xy^{-1}$ is in $H$.
+
+    We now prove the reverse direction. Suppose $xy^{-1}\in H$ for all $x$ and $y$ in $H$.
+    \begin{itemize}
+        \item Suppose $h$ is an arbitrary element in $H$. Set $x = h$ and $y = h$. Then $xy^{-1} = hh^{-1} = e$ is in $H$. Thus the identity of $G$ is present in $H$.
+        \item Set $x = e$ and let $y = h$. Then $xy^{-1} = eh^{-1} = h^{-1}$ is in $H$. Hence every element in $H$ has an inverse in $H$.
+        \item Let $a$ and $b$ be elements in $H$. Then by above point, $b^{-1}$ is in $H$. Set $x = a$ and $y = b^{-1}$. Then $xy^{-1} = a\left(b^{-1}\right)^{-1} = ab$ is in $H$. Hence $H$ is closed under the group operation.
+    \end{itemize}
+    Therefore if $xy^{-1}$ is in $H$ if for all $x$ and $y$ in $H$,then $H \leq G$.
+
+    This completes the proof of the subgroup test.
+\end{proof}
 
 \begin{remark}
-    If the group operation is additive\index{group!additive}, we may write $a + b$ instead of $ab$.
+We usually verify the `non-empty' and `subset' requirement by checking if the identity of $G$ is in $H$.
 \end{remark}
-
-Let's look at some examples of groups.
 
 \newpage
 
-\begin{example}
-    Let $\mathbb{Z}$ be the set of integers and let $+$ denote regular addition. Then $(\mathbb{Z}, +)$ forms a group.
-    \begin{enumerate}
-        \item \textbf{Closure}: For all integers $a$ and $b$, we know $a + b$ is an integer.
-        \item \textbf{Associativity}: We know $a + (b + c) = (a + b) + c$.
-        \item \textbf{Identity}: The identity is 0, since $0 + x = x + 0 = x$.
-        \item \textbf{Inverse}: The inverse of the integer $x$ is $-x$, since $x + (-x) = (-x) + x = 0$.
-    \end{enumerate}
+We look at some examples of the use of the subgroup test.
+\begin{example}\label{example-centralizer-of-a-subset}
+    Let $G$ be a group and $S \subseteq G$ where $S \neq \emptyset$. The \textbf{centralizer}\index{centralizer} of $S$ in $G$ is the set
+    \[
+        \C{G}{S} = \left\{g \in G \ | \ \text{for all } s \in S \text{ we have } gs = sg\right\}.
+    \]
+    We claim that $\C{G}{S}$ is a subgroup of $G$.
+    \begin{proof}
+        We show that for all elements $x$ and $y$ in $\C{G}{S}$, $xy^{-1}$ is also in the centralizer. Note that the condition $gs = sg$ is equivalent to the condition $sg^{-1} = g^{-1}s$.
+
+        Suppose $x$ and $y$ are in $\C{G}{S}$. Let $s$ be in $S$. Then
+        \begin{align*}
+            (xy^{-1})s &= x(y^{-1}s) & (\text{associativity})\\
+            &= x(sy^{-1}) & (\text{since } g^{-1}s = sg^{-1})\\
+            &= (xs)y^{-1} & (\text{associativity})\\
+            &= (sx)y^{-1} & (\text{since } gs = sg)\\
+            &= s(xy^{-1}) & (\text{associativity})
+        \end{align*}
+        so $(xy^{-1})s = s(xy^{-1})$ for all $s$ in $S$. Thus, $xy^{-1}$ is in $\C{G}{S}$ for all $x$ and $y$ in $\C{G}{S}$, so by subgroup test $\C{G}{S} \leq G$.
+    \end{proof}
 \end{example}
-
-An important thing to note about $(\mathbb{Z}, +)$ is that $+$ is \textit{commutative}: $a + b = b + a$. A group with a commutative operation is called a \textbf{commutative group}\index{group!commutative}. However, it is more often called an \textbf{abelian group}\index{group!abelian}, named after Norwegian mathematician Niels Henrik Abel.
-
-We now look at the notion of $\mathbb{Z}_n$.
-\begin{definition}
-    The set $\mathbb{Z}_n = \{0, 1, 2, \dots, n-1\}$ where $n$ is a non-negative integer.
-\end{definition}
-\begin{proposition}
-    The set $\mathbb{Z}_n$ with the operation $\oplus_n$ forms a group (where $a \oplus_n b = (a + b) \pmod{n}$).
-\end{proposition}
-\begin{proof}
-    We prove this by showing the group axioms hold.
-    \begin{enumerate}
-        \item \textbf{Closure}: For $a$ and $b$ in $\mathbb{Z}_n$, $a \oplus_n b = (a + b) \pmod{n}$ is a integer between 0 and $n - 1$. Thus $a \oplus b$ is inside $\mathbb{Z}_n$.
-        \item \textbf{Associativity}: For $a$, $b$, and $c$ in $\mathbb{Z}_n$, since addition is associative, thus $a \oplus_n (b \oplus_n c) = (a + (b + c)) \pmod{n} = ((a + b) + c) \pmod{n} = (a \oplus_n b) \oplus_n c$.
-        \item \textbf{Identity}: The identity is $0$ since for every $x$ in $\mathbb{Z}_n$, $0 \oplus_n x = (0 + x) \pmod{n} = (x + 0) \pmod{n} = x \oplus_n 0 = x$.
-        \item \textbf{Inverse}: For inverses, \begin{itemize}
-            \item $0$ is its own inverse since $0 \oplus_n 0 = 0$ which is the identity.
-            \item For any other integer $x$ in $\mathbb{Z}_n$, the inverse is $n - x$. Since $1 \leq x \leq n - 1$, thus $1 \leq n - x \leq n - 1$ so $n - x$ is indeed in $\mathbb{Z}_n$. Also, $x \oplus_n (n - x) = (x + (n - x)) \pmod{n} = n \pmod{n} = 0$ and $(n - x) \oplus_n x = ((n-x) + x)\pmod{n} = n \pmod{n} = 0$.
-        \end{itemize}
-    \end{enumerate}
-    Since the four group axioms are satisfied, this is a group.
-\end{proof}
 \begin{remark}
-    Some sources (e.g. \cite{clark_1984, humphreys_1996}) define $\mathbb{Z}_n$ as a set of congruence classes modulo $n$, i.e. $\mathbb{Z}/n\mathbb{Z}$. We will show that these two definitions are equivalent in a future chapter.
+    In the case where $S$ has a single element, say $S = \{x\}$, we write $\C{G}{x}$.
 \end{remark}
 
-One could use a \textbf{Cayley table}\index{cayley table} (or \textbf{group table}\index{group table}) to show that a structure is a group.
+\begin{example}\label{example-center-of-group}
+    Let $G$ be a group. The \textbf{center}\index{center} of a group $G$ is given by the set
+    \[
+        \Z{G} = \{z \in G \ | \ gz = zg \text{ for all } g \in G\}.
+    \]
+    We claim that $\Z{G}$ is a subgroup of $G$.
+
+    \begin{proof}
+	    Note that $e \in \Z{G}$ since $ge = eg$ for all $g \in G$.
+
+	    Let $x$ and $y$ be in $\Z{G}$, meaning that $gx = xg$ and $gy = yg$ for all $g \in G$. Note that $gy = yg$ implies $g = ygy^{-1}$ (by right multiplying by $y^{-1}$) which further means that $y^{-1}g = gy^{-1}$ (by left multiplying by $y^{-1}$). Therefore, $y^{-1} \in \Z{G}$. Now,
+	    \begin{align*}
+	        (xy^{-1})g &= x(y^{-1}g)\\
+	        &= x(gy^{-1}) & (\text{since } y^{-1} \in \Z{G})\\
+	        &= (xg)y^{-1} & (\text{associativity})\\
+	        &= (gx)y^{-1} & (\text{since } x \in \Z{G})\\
+	        &= g(xy^{-1}) & (\text{associativity})
+	    \end{align*}
+	    which means that $xy^{-1} \in \Z{G}$. Hence $\Z{G} \leq G$ by the subgroup test.
+    \end{proof}
+\end{example}
+
+\begin{exercise}\label{exercise-conjugate-subgroup}
+    Let $G$ be a group, $H \leq G$, and $g \in G$. Define the set
+    \[
+        S = \{ghg^{-1} \ | \ h \text{ is in } H\}.
+    \]
+    Prove that $S \leq G$ under the group operation of $G$.
+\end{exercise}
+
+\newpage
+
+\section{Cosets}
+We now introduce the idea of \textbf{cosets}\index{coset} of a group $G$.
+\begin{definition}
+    Let $G$ be a group, $H \leq G$, and $g$ be an element of $G$. Then define
+    \begin{itemize}
+        \item the \textbf{left coset}\index{coset!left} of $H$ in $G$ by $g$ as $gH = \{gh \ | \ h \in H\}$; and
+        \item the \textbf{right coset}\index{coset!right} of $H$ in $G$ by $g$ as $Hg = \{hg \ | \ h \in H\}$.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    The subgroup $H$ is both a left and right coset of $H$ in $G$. This is because the element $g$ in question is $g = e$, so $gH = eH = H$ and $Hg = He = H$.
+\end{remark}
+
 \begin{example}
-    We show that $(\mathbb{Z}_6, \oplus_6)$ is a group by drawing the Cayley table of that structure.
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{|l|l|l|l|l|l|l|}
-        \hline
-        \textbf{$\oplus_6$} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline
-        \textbf{0}          & 0          & 1          & 2          & 3          & 4          & 5          \\ \hline
-        \textbf{1}          & 1          & 2          & 3          & 4          & 5          & 0          \\ \hline
-        \textbf{2}          & 2          & 3          & 4          & 5          & 0          & 1          \\ \hline
-        \textbf{3}          & 3          & 4          & 5          & 0          & 1          & 2          \\ \hline
-        \textbf{4}          & 4          & 5          & 0          & 1          & 2          & 3          \\ \hline
-        \textbf{5}          & 5          & 0          & 1          & 2          & 3          & 4          \\ \hline
-        \end{tabular}
-    \end{table}
+    Let $G = D_3$, and $H = \{e, s\} \leq G$. The distinct left cosets of $H$ in $G$ are:
+    \begin{itemize}
+        \item $eH = \{e, s\} = H$;
+        \item $rH = \{r, rs\}$; and
+        \item $r^2H = \{r^2, r^2s\}$.
+    \end{itemize}
+    Since each element of $G$ appear in one of these cosets, generating more using any other element would not give new cosets. This is because a new coset would have to contain an element in common with one of the above cosets and therefore be identical to it. For example, $rsH = \{rs, rss\} = \{rs, r\} = rH$.
+
+    The distinct right cosets of $H$ in $G$ are:
+    \begin{itemize}
+        \item $He = \{e, s\} = H$;
+        \item $Hr = \{r, sr\} = \{r, r^2s\}$; and
+        \item $Hr^2 = \{r^2, sr^2\} = \{r^2, rs\}$.
+    \end{itemize}
+    Thus, for $D_3$, no left coset is a right coset, except for $H = eH = He$.
+\end{example}
+
+\begin{exercise}
+    Let $G$ be the group $(\mathbb{Z}_8, \oplus_8)$. Let $H \leq G$ such that $H
+ = \{0, 4\}$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Explain why any left coset of $H$ in $G$ by an element $g$ is the same as the right coset of $H$ in $G$ by $g$.
+        \item Find all distinct left cosets of $H$ in $G$.
+    \end{enumerate}
+\end{exercise}
+
+We now state and prove a result that relates the equality of cosets.
+\begin{lemma}\label{lemma-coset-equality}(Coset Equality)\index{Coset Equality}
+    Let $G$ be a group, $H \leq G$, and $g_1$ and $g_2$ be elements in $G$. Then the following statements are equivalent.
+    \begin{enumerate}[label=$(\arabic*)$]
+        \item $g_1H = g_2H$
+        \item $Hg_1^{-1} = Hg_2^{-1}$
+        \item $g_1H \subseteq g_2H$
+        \item $g_2 \in g_1H$
+        \item $g_1^{-1}g_2 \in H$
+    \end{enumerate}
+\end{lemma}
+\begin{proof}
+    We prove the statements in order.
+
+    \begin{itemize}
+        \item $\boxed{(1) \implies (2)}$ Suppose $g_1H = g_2H$. We will show $Hg_1^{-1} = Hg_2^{-1}$.
+
+        Let $x \in Hg_1^{-1}$. Then $x = hg_1^{-1}$ for some $h$ in $H$. Thus $x^{-1} = \left(hg_1^{-1}\right)^{-1} = g_1h^{-1}$ by Shoes and Socks. Since $h^{-1}$ is in $H$, thus $x^{-1} = g_1h^{-1}$ is in $g_1H$.
+
+        Since $g_1H = g_2H$, thus $x^{-1} \in g_2H$. Write $x^{-1} = g_2\hat{h}$ for some $\hat{h}$ in $H$. Thus $x = (g_2\hat{h})^{-1} = \hat{h}^{-1}g_2^{-1}$ by Shoes and Socks. Since $\hat{h}^{-1}$ is in $H$ thus $x = \hat{h}^{-1}g_2^{-1}$ is in $Hg_2^{-1}$.
+
+        Hence, any element $x \in Hg_1^{-1}$ is also in $Hg_2^{-1}$, i.e. $Hg_1^{-1} \subseteq Hg_2^{-1}$. A similar argument shows that $Hg_2^{-1} \subseteq Hg_1^{-1}$. Thus $Hg_1^{-1} = Hg_2^{-1}$ as required.
+
+        \item $\boxed{(2) \implies (3)}$ Suppose $Hg_1^{-1} = Hg_2^{-1}$ and take $x \in g_1H$. Thus $x = g_1h$ for some $h$ in $H$. Therefore $x^{-1} = (g_1h)^{-1} = h^{-1}g_1^{-1} \in Hg_1^{-1}$ since $h^{-1}$ is in $H$. By assumption $Hg_1^{-1} = Hg_2^{-1}$ so $x^{-1} \in Hg_2^{-1}$. Let $x^{-1} = \hat{h}g_2^{-1}$ for some $\hat{h}$ in $H$. Then $x = \left(\hat{h}g_2^{-1}\right)^{-1} = g_2\hat{h}^{-1} \in g_2H$ since $\hat{h}^{-1}$ is in $H$. Hence $x$ is in $g_2H$. Therefore, for any $x \in g_1H$, $x$ will also be in $g_2H$. Thus $g_1H \subseteq g_2H$.
+
+        \item $\boxed{(3) \implies (4)}$
+        Suppose $g_1H \subseteq g_2H$. Then for all $x$ in $g_1H$, $x$ is also in $g_2H$. Note that $g_1 = g_1e$. Since $e$ is in $H$ (as $H \leq G$) thus $g_1e \in g_1H \subseteq g_2H$ by assumption. Thus $g_1 \in g_2H$ as needed.
+
+        \item $\boxed{(4) \implies (5)}$
+        Suppose $g_1 \in g_2H$. Then $g_1 = g_2h$ for some $h$ in $H$. Thus,
+        \begin{align*}
+            &g_1^{-1}g_1 = g_1^{-1}g_2h & (\text{left multiply by } g_1^{-1})\\
+            &e = g_1^{-1}g_2h\\
+            &h^{-1} = g_1^{-1}g_2hh^{-1} & (\text{right multiply by } h^{-1})\\
+            &h^{-1} = g_1^{-1}g_2.
+        \end{align*}
+        Since $h^{-1}$ is an element in $H$ thus $g_1^{-1}g_2 = h^{-1}$ is also in $H$, meaning $g_1^{-1}g_2 \in H$.
+
+        \newpage
+
+        \item $\boxed{(5) \implies (1)}$
+        Suppose $g_1^{-1}g_2$ is an element of $H$. Thus, $g_1^{-1}g_2 = \hat{h}$ for some $\hat{h}$ in $H$. Let $x$ be an element from $g_1H$, so $x = g_1h$ for some $h$ in $H$. Then
+        \begin{align*}
+            x^{-1} &= (g_1h)^{-1}\\
+            &= h^{-1}g_1^{-1} & (\text{Shoes and Socks})\\
+            &= h_1^{-1}g_1^{-1}(g_2g_2^{-1}) & (\text{since }g_2g_2^{-1} = e)\\
+            &= h_1{-1}(g_1^{-1}g_2)g_2^{-1}\\
+            &= h^{-1}\hat{h}g_2^{-1}
+        \end{align*}
+        which means $x = \left(h^{-1}\hat{h}g_2^{-1}\right)^{-1} = g_2\hat{h}^{-1}h$, which is an element of $g_2H$ since $\hat{h}^{-1}h$ is in $H$.
+
+        Thus, for all $x$ in $g_1H$, $x$ is also in $g_2H$ which means $g_1H \subseteq g_2H$. A similar argument can be used to show that $g_2H \subseteq g_1H$. Hence $g_1H = g_2H$.
+    \end{itemize}
+
+    Thus, $(1) \implies (2) \implies (3) \implies (4) \implies (5) \implies (1)$, completing the proof of this lemma.
+\end{proof}
+
+\begin{exercise}\label{exercise-intersection-of-cosets}
+    Let $G$ be a group, $H \leq G$, and $g_1$ and $g_2$ be elements in $G$. Prove that if $g_1H \cap g_2H \neq \emptyset$ then $g_1H = g_2H$.
+\end{exercise}
+
+\newpage
+
+\section{Lagrange's Theorem}
+Lagrange's theorem is an important result relating the order of a subgroup and the order of the group itself. Before that, though, we introduce the idea of the \textbf{index} of a subgroup.
+\begin{definition}
+    Let $G$ be a group and $H \leq G$. The \textbf{index}\index{index} of $H$ in $G$, denoted by $[G : H]$, is the number of left cosets of $H$ in $G$.
+\end{definition}
+Note that since the number of left cosets is the number of right cosets, $[G : H]$ can be defined as the number of cosets of $H$ in $G$.
+
+\begin{example}
+    If $G = D_3$ and $H = \{e, s\}$, then there are 3 distinct left cosets, namely $H$, $rH$, and $r^2H$. Thus, $[G:H] = 3$ in this case.
+\end{example}
+
+We require two lemmas to properly prove Lagrange's theorem.
+\begin{lemma}\label{lemma-left-coset-partition}
+    Let $G$ be a group and $H \leq G$. Then distinct left cosets of $H$ in $G$ partition $G$.
+\end{lemma}
+\begin{proof}
+    To prove that the distinct left cosets of $H$ in $G$ partition $G$, we need to show two things.
+    \begin{itemize}
+        \item The intersection of any 2 left cosets is either the empty set or is one of the left cosets (i.e., distinct left cosets are disjoint).
+        \item The union of all left cosets is the group.
+    \end{itemize}
+    The first bullet point is proven by \textbf{Exercise \ref{exercise-intersection-of-cosets}}, so we work only on the second bullet point.
+
+    Suppose $g$ is in $G$. We will find a left coset that $g$ is in. Clearly $g = ge$, and since $e$ is an element of $H$, thus $g = ge$ is an element of the left coset $gH$. So any element in $G$ belongs to a left coset of $H$ in $G$. Thus the union of all left cosets is the group.
+
+    Hence, distinct left cosets of $H$ in $G$ partition $G$.
+\end{proof}
+
+\begin{lemma}\label{lemma-order-of-coset}
+    Let $G$ be a group and $H \leq G$. Then $|H| = |gH|$ for all $g$ in $G$.
+\end{lemma}
+\begin{proof}
+    Define the map $\phi: H \to gH$ such that $\phi(h) = gh$. To prove that $|H| = |gH|$, we need to show that $\phi$ is a bijection, i.e. $\phi$ is both injective (one-to-one) and surjective (onto).
+    \begin{itemize}
+        \item \textbf{Injective}: Let $h$ and $\hat{h}$ be elements in $H$ such that $\phi(h) = \phi(\hat{h})$. Then $gh = g\hat{h}$ by definition of $\phi$. By cancellation law, we have $h = \hat{h}$ which means $\phi$ is injective.
+        \item \textbf{Surjective}: Let $x$ be in $gH$. Thus $x = gh$ for some $h$ in $H$. Clearly $\phi(h) = gh = x$ so a pre-image of $x$ exists in $H$. Therefore $\phi$ is surjective.
+    \end{itemize}
+    Therefore $\phi$ is bijective, meaning $|H| = |gH|$.
+\end{proof}
+
+We are now ready to state and prove Lagrange's theorem.
+\begin{theorem}[Lagrange]\label{thrm-lagrange}\index{Lagrange's Theorem}
+    Let $G$ be a group and $H \leq G$. Then $|G| = [G:H]|H|$.
+\end{theorem}
+\begin{proof}
+    Suppose $|G| = n$. Let $\mathcal{S} = \{g_1H, g_2H, g_3H, \dots, g_kH\}$ be the set containing all distinct left cosets of $H$ in $G$. Thus $k = [G: H]$.
+
+    By \textbf{Lemma \ref{lemma-left-coset-partition}},
+    \[
+        G = \bigcup_{i=1}^k g_iH = g_1H \cup g_2H \cup \cdots \cup g_kH
+    \]
+    with $g_iH \cap g_jH = \emptyset$ if $i \neq j$. Thus,
+    \begin{align*}
+        |G| &= \sum_{i=1}^k|g_iH|\\
+        &=\sum_{i=1}^k|H| & (\text{by \textbf{Lemma \ref{lemma-order-of-coset}}})\\
+        &= k|H|
+    \end{align*}
+    and since $k = [G: H]$, therefore $|G| = [G:H]|H|$, proving Lagrange's theorem.
+\end{proof}
+
+\begin{exercise}
+    Let $G$ be the group $(\mathbb{Z}_{99}, \oplus_{99})$. It is given that $H = \{0, 33, 66\}$ is a subgroup of $G$. What is the index of $H$ in $G$?
+\end{exercise}
+
+Let's look at some corollaries of Lagrange's theorem.
+\begin{corollary}\label{corollary-order-of-group-multiple-of-order-of-element}
+    Let $G$ be a finite group and let $g$ be an element in $G$. Then $|G|$ is a multiple of $|g|$.
+\end{corollary}
+\begin{proof}
+    We want to show that $|G| = m|g|$ for some positive integer $m$.
+
+    Clearly $|e| = 1$ so $|G| = |G| \times 1 = |G||e|$. Thus for the identity, $m = |G|$.
+
+    Now suppose $g \neq e$ and $|g| = n$. Let $\mathcal{S} = \langle g \rangle = \{g, g^2, g^3, \dots, g^n\}$. Note that $\mathcal{S}$ is a (cyclic) subgroup of $G$ and $|\mathcal{S}| = n$. By Lagrange's theorem (\textbf{Theorem \ref{thrm-lagrange}}), $|G| = [G:\mathcal{S}]|\mathcal{S}| = [G:\mathcal{S}]|g|$. Hence, in this case, $m = [G:\mathcal{S}]$, proving the claim.
+\end{proof}
+
+\newpage
+
+\begin{corollary}\label{corollary-group-with-prime-order-subgroups}
+    A finite group $G$ with prime order $p$ has no proper subgroups.
+\end{corollary}
+\begin{proof}
+    By Lagrange's theorem, the order of a subgroup must be a factor of the order of the group. Since the order of the group is prime, it only has 2 factors, namely 1 and $p$. The subgroup of order 1 is $\{e\}$ and the subgroup of order $p = |G|$ is clearly $G$ itself. Hence $G$ has no proper subgroups.
+\end{proof}
+
+\begin{exercise}\label{exercise-prime-order-element}
+    Let $G$ be a finite group with prime order $p$. Let $x$ be a non-identity element in $G$. Prove that $|x| = p$.
+\end{exercise}
+
+\begin{corollary}\label{corollary-group-with-prime-order-is-cyclic}
+    A finite group $G$ with prime order $p$ is cyclic.
+\end{corollary}
+\begin{proof}
+    By \textbf{Exercise \ref{exercise-prime-order-element}}, any element $g$ in $G$ where $g \neq e$ has $|g| = p$. Thus $\langle g \rangle \neq \{e\}$.
+
+    Note that $\langle g \rangle = \{g, g^2, g^3, \dots, g^p\} \leq G$. However, by \textbf{Corollary \ref{corollary-group-with-prime-order-subgroups}}, the only subgroups of $G$ are $\{e\}$ and $G$. Since $\langle g \rangle \neq \{e\}$ thus $\langle g \rangle = G$, meaning $G$ is cyclic with generator $g$.
+\end{proof}
+
+\section{Normal Subgroups}
+We now look at a special type of subgroup, known as a \textbf{normal subgroup}.
+\begin{definition}
+    Let $G$ be a group and $N \leq G$. We say that $N$ is a \textbf{normal subgroup}\index{subgroup!normal} of $G$ if $gN = Ng$ for all $g$ in $G$.
+\end{definition}
+If $N$ is a normal subgroup of $G$, we write $N \unlhd G$. Furthermore if $N$ is a \textit{proper} normal subgroup of $G$, we write $N \lhd G$.
+
+\newpage
+
+Note that $gN = Ng$ is equivalent to the following two statements:
+\begin{itemize}
+    \item $gNg^{-1} = N$ for all $g$ in $G$. (One may interpret $gNg^{-1}$ as either the left coset $g(Ng^{-1})$ or the right coset $(gN)g^{-1}$.)
+    \item $gng^{-1}$ is in $N$ for all $g$ in $G$ and $n$ in $N$.
+\end{itemize}
+The validity of these two statements is leaft as an exercise for the reader.
+
+\begin{proposition}\label{prop-subgroup-of-abelian-group-is-normal}
+    Every subgroup of an abelian group is normal.
+\end{proposition}
+\begin{proof}
+    Let $G$ be an abelian group and $H \leq G$. Let $g$ be in $G$ and $h$ be in $H$. Then
+    \begin{align*}
+        ghg^{-1} &= gg^{-1}h & (\text{since }G \text{ is abelian})\\
+        &= eh\\
+        &= h
+    \end{align*}
+    which is an element of $H$. Thus $ghg^{-1}$ is an element of $H$ for all $g$ in $G$ and $h$ in $H$, meaning $H \unlhd G$.
+\end{proof}
+
+\begin{example}\label{example-normal-subgroups-of-d3}
+    Let's consider normal subgroups of the dihedral group of order 6, $D_3$.
+
+    Recall $D_3 = \{e, r, r^2, s, rs, r^2s\}$. Note that $|r| = 3$, $|s| = 2$, $\langle r \rangle = \{e, r, r^2\}$, and $\langle s \rangle = \{e, s\}$. We will show that $\langle r \rangle$ is a (proper) normal subgroup of $D_3$ but not $\langle s \rangle$. Note that since $r$ and $s$ are generators, we simply need to check $s\langle r\rangle$, $\langle r\rangle s$, $r\langle s\rangle$, and $\langle s\rangle r$ to verify normality.
 
     \newpage
 
-    Note that:
-    \begin{enumerate}
-        \item For all $x$ and $y$ in $\mathbb{Z}_6$, $x \oplus_6 y$ is in $\mathbb{Z}_6$ from the above table.
-        \item For all $x, y$, and $z$ in $\mathbb{Z}_6$, $x \oplus_6 (y \oplus_6 z) = (x \oplus_6 y) \oplus_6 z$ from the above table.
-        \item 0 is the identity since adding anything to it returns the original number.
-        \item Every row has an integer that when added gives 0.
-    \end{enumerate}
-    Thus $(\mathbb{Z}_6, \oplus_6)$ is a group.
+    For $\langle r \rangle$,
+    \begin{itemize}
+        \item $s\langle r\rangle = \{s, sr, sr^2\} = \{s, r^2s, rs\}$; and
+        \item $\langle r\rangle s = \{s, rs, r^2s\}$,
+    \end{itemize}
+    so $s\langle r\rangle = \langle r \rangle s$ which means $\langle r \rangle \lhd D_3$.
+
+    For $\langle s \rangle$,
+    \begin{itemize}
+        \item $r\langle s\rangle = \{r, rs\}$; and
+        \item $\langle s \rangle r = \{r, sr\} = \{r, r^2s\}$,
+    \end{itemize}
+    and since $rs \neq r^2s$ thus $r\langle s\rangle \neq \langle s \rangle r$. Hence, $\langle s \rangle$ is not a normal subgroup of $D_3$.
 \end{example}
 
-It should be noted that, in this book, we use the convention of reading the \textbf{row before the column} in a group table. However, since this is an abelian group, the order does not matter. We will look at Cayley tables of non-abelian groups later.
+\section{Quotient Groups}
+We end this chapter by looking at a special (and useful) group: the quotient group. But before we can do that, we look at the idea of the set of left cosets.
 
-\begin{exercise}
-    Let $a \otimes_n b = (a \times b) \pmod{n}$. By using a group table, show that $(\mathbb{Z}_6, \otimes_6)$ does \textbf{not} form a group.
-\end{exercise}
-
-\section{General Properties of Groups}
-Before we get into the general properties of groups, we introduce a useful notation for repeated application of $\ast$ on a single element $x$ in the group $G$.
 \begin{definition}
-    Let $x$ be an element in $G$. Then
+    Let $G$ be a group and $H \leq G$. The \textbf{set of left cosets}\index{set of left cosets} is denoted by
     \[
-        x^n =
-        \begin{cases}
-            x\ast x\ast \cdots \ast x & \text{ if } n > 0 \ (n\text{ copies of }x)\\
-            e & \text{ if } n=0 \\
-            x^{-1}\ast x^{-1}\ast \cdots \ast x^{-1} & \text{ if } n<0 \ (|n|\text{ copies of }x^{-1})
-        \end{cases}
+        G/H = \{gH \ | \ g \in G \}.
     \]
 \end{definition}
 \begin{remark}
-    In the case of an additive group operation, $x^n$ may be written as $nx$, where $n$ is an integer.
+    We may sometimes write $G/H$ using fractions, such as $\frac GH$, if it serves to improve readability.
 \end{remark}
 
-Note that some laws of exponents apply to the above operation.
-\begin{itemize}
-    \item $\left(x^{-1}\right)^m = \left(x^m\right)^{-1}$
-    \item $x^{m+n} = x^m \ast x^n$
-    \item $\left(x^m\right)^n = x^{mn}$
-\end{itemize}
-Proof of these properties are left as an exercise for the reader.
+Note that the number of left cosets is $[G:H] = \frac{|G|}{|H|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Also note that if $G/H$ is \textbf{not} a group, it is read ``$G$ by $H$''.
 
-We are now ready to prove some properties of groups.
-\begin{proposition}
-    The identity of a group $G$ is unique.
-\end{proposition}
-\begin{proof}
-    Suppose $e_1$ and $e_2$ are identities of the group $G$. Then, for all $x$ in $G$, we have
+\begin{theorem}\label{thrm-quotient-group-requirement}
+    Let $G$ be a group and $N \unlhd G$. Then $G / N$ forms a group called the \textbf{quotient group}\index{quotient group} with group operation $\star$ such that
     \[
-        e_1x = xe_1 = x \text{ and } e_2x = xe_2 = x,
+        (xN) \star (yN) = (xy)N.
     \]
-    since they are identities. Thus,
-    \begin{align*}
-        e_1 &= e_1e_2 & (\text{since } e_2 \text{ is an identity, so } xe_2 = x)\\
-        &= e_2 & (\text{since } e_1 \text{ is an identity, so } xe_1 = x)
-    \end{align*}
-    Hence $e_1 = e_2$, meaning that the identity of a group is unique.
-\end{proof}
-
-\begin{proposition}
-    $e^{-1} = e$
-\end{proposition}
-\begin{proof}
-    Clearly $e = ee^{-1}$ since $xx^{-1} = e$ for all elements $x$ in $G$, including $x = e$. Thus, by left multiplying $e^{-1}$ on both sides, we see $e = e^{-1}$.
-\end{proof}
-
-\newpage
-
-\begin{proposition}
-    The inverse of an element $x$ of a group $G$ is unique.
-\end{proposition}
-\begin{proof}
-    Suppose that $a$ and $b$ are inverses of $x$. Then by definition we have
-    \[
-        ax = xa = e \text{ and } bx = xb = e.
-    \]
-    Note that
-    \begin{align*}
-        a &= ae & (\text{since } e \text{ is the identity})\\
-        &= a(xb) & (\text{since } b \text{ is an inverse, so } xb = e)\\
-        &= (ax)b & (\text{by associativity})\\
-        &= eb & (\text{since } a \text{ is an inverse, so } ax = e)\\
-        &= b & (\text{since } e \text{ is the identity})
-    \end{align*}
-    Therefore $a = b$. Thus the inverse of $x$ is unique.
-\end{proof}
-
-\begin{proposition}[Shoes and Socks]\index{Shoes and Socks}
-    For all elements $a$ and $b$ in $G$, $(ab)^{-1} = b^{-1}a^{-1}$.
-\end{proposition}
-\begin{proof}
-    Recall that if $g^{-1}$ is the inverse of $g$ then $gg^{-1} = g^{-1}g = e$. We will show that $(ab)(b^{-1}a^{-1}) = e$ and $(b^{-1}a^{-1})(ab) = e$.
-    \begin{align*}
-        (ab)(b^{-1}a^{-1}) &= a(bb^{-1})a^{-1} & (\text{by associativity})\\
-        &= a(e)a^{-1} & (\text{since } bb^{-1} = e)\\
-        &= aa^{-1} & (\text{since } e \text{ is the identity})\\
-        &= e & (\text{since } aa^{-1} = e),
-    \end{align*}
-    and,
-    \begin{align*}
-        (b^{-1}a^{-1})(ab) &= b^{-1}(a^{-1}a)b & (\text{by associativity})\\
-        &= b^{-1}(e)b & (\text{since } a^{-1}a = e)\\
-        &= b^{-1}b & (\text{since } e \text{ is the identity})\\
-        &= e & (\text{since } b^{-1}b = e).
-    \end{align*}
-    Thus, $b^{-1}a^{-1}$ is the inverse of $ab$, so $(ab)^{-1} = b^{-1}a^{-1}$
-\end{proof}
-
-\begin{exercise}
-Prove that for all $x$ in $G$, $\left(x^{-1}\right)^{-1} = x$.
-\end{exercise}
-
-We now prove an important property of groups: the \textbf{cancellation law}.
-\begin{proposition}[Cancellation Law]\index{group!cancellation law}
-    Let $g$, $x$, and $y$ be elements in the group $G$. Then
-    \begin{enumerate}
-        \item if $gx=gy$ then $x = y$; and
-        \item if $xg=yg$ then $x = y$.
-    \end{enumerate}
-\end{proposition}
-\begin{proof}
-    We prove the two cases separately.
-    \begin{enumerate}
-        \item Suppose $gx = gy$. Then
-        \begin{align*}
-            &g^{-1}(gx) = g^{-1}(gy) & (\text{left multiply by } g^{-1})\\
-            &(g^{-1}g)x = (g^{-1}g)y & (\text{by associativity})\\
-            &ex = ey & (\text{since } g^{-1}g = e)\\
-            &x = y & (\text{since } e \text{ is the identity})
-        \end{align*}
-        \item Suppose $xg = yg$. Then
-        \begin{align*}
-            &(xg)g^{-1} = (yg)g^{-1} & (\text{right multiply by } g^{-1})\\
-            &x(gg^{-1}) = y(gg^{-1}) & (\text{by associativity})\\
-            &xe = ye & (\text{since } gg^{-1} = e)\\
-            &x = y & (\text{since } e \text{ is the identity})
-        \end{align*}
-    \end{enumerate}
-    This completes the proof.
-\end{proof}
-
-\section{Order of a Group and Order of an Element}
-We look at the notion of the \textit{order}\index{order} of a group and the order of an element of a group.
-
-\begin{definition}
-    Let $G$ be a group. The order of a group\index{order!group}, denoted by $|G|$, is the cardinality of the set $G$.
-\end{definition}
-
-If $|G| = n$ where $n$ is finite, we say that $G$ is a \textbf{finite group}. On the other hand, if $|G| = \infty$, then we say that $G$ is an \textbf{infinite group}.
-
-\begin{example}
-    The group $(\mathbb{Z}_4, \oplus_4)$ has order 4 since it has four elements: 0, 1, 2, and 3.
-\end{example}
-
-\begin{example}
-    The group $(\mathbb{R}, +)$ is an infinite group since $\mathbb{R}$ has an uncountably infinite number of elements.
-\end{example}
-
-Let's now look at the order of an element.
-\begin{definition}
-    Let $g$ be an element of the group $G$. Then the order of $g$\index{order!element}, denoted by $|g|$, is the least positive integer $n$ such that $g^n = e$.
-\end{definition}
-Note that if $n$ is infinite, we say that the order of $g$ is infinite (or that $g$ has infinite order).
-
-\begin{example}
-    Consider the group $(\mathbb{Z}_4, \oplus_4)$ and its 4 elements 0, 1, 2, and 3.
-    \begin{itemize}
-        \item The element $0$ has order 1 since $0^1 = 0$, which is the identity. Thus $|0| = 1$ in $(\mathbb{Z}_4, \oplus_4)$.
-        \item The element $1$ has order 4 since $1 \oplus_4 1 \oplus_4 1 \oplus_4 1 = 0$ and no smaller $n$ than 4 exists. Thus $|1| = 4$ in $(\mathbb{Z}_4, \oplus_4)$.
-        \item The element $2$ has order 2 since $2 \oplus_4 2 = 0$ and no smaller $n$ than 2 exists. Thus $|2| = 2$ in $(\mathbb{Z}_4, \oplus_4)$.
-        \item The element $3$ has order 4 since $3 \oplus_4 3 \oplus_4 3 \oplus_4 3 = 0$ and no smaller $n$ than 4 exists. Thus $|3| = 4$ in $(\mathbb{Z}_4, \oplus_4)$.
-    \end{itemize}
-\end{example}
-
-We note a few things about the order of elements in a group.
-\begin{itemize}
-    \item The identity element always has order 1.
-    \item A group in which every element has finite order is said to be \textbf{periodic}\index{group!periodic}.
-    \item A finite group is always periodic because all elements in a finite group has finite order.
-    \item The order of any element in a group divides the order of the group.
-\end{itemize}
-The last point is actually a corollary of Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). We will look into its proof in the next chapter.
-
-\begin{exercise}
-    Let $i$ be a number such that $i^2 = -1$. Let $\mathcal{S} = \{1, -1, i, -i\}$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Find the identity of the group $(\mathcal{S}, \times)$ where $\times$ denotes regular multiplication.
-        \item Find the orders of the elements of the above group.
-    \end{enumerate}
-\end{exercise}
-
-\newpage
-
-\section{Cyclic Groups}\index{cyclic group}
-Now that we have gotten some basic terminology and properties of groups out of the way, let's introduce a very simple type of group: the cyclic groups.
-
-Suppose we have an element $g$ in a group $G$. Suppose that the entire set $G$ is \textit{generated} by $g$, that is,
-\[
-    G = \{g, g^2, g^3, g^4, \dots, g^n\}
-\]
-for some positive integer $n$. Then we say that $G$ is a \textbf{cyclic group of order $n$}\index{cyclic group!of order $n$} and has a \textbf{generator}\index{cyclic group!generator} $g$. Notationally, we write $G = \langle g \rangle$.
-
-\begin{example}
-    Let $i$ be the imaginary unit, i.e. $i^2 = -1$. Let $\mathcal{S} = \{1, -1, i, -i\}$. Notice the group $(\mathcal{S}, \times)$ is completely generated by the element $i$ since
-    \[
-    i^1 = i,\; i^2 = -1,\; i^3 = -i, \text{ and } i^4 = 1.
-    \]
-    Thus, $\mathcal{S} = \{i, i^2, i^3, i^4\} = \langle i \rangle$.
-\end{example}
-
-\begin{exercise}
-    Using the set $\mathcal{S}$ from the above example, find the other generator of the group $(\mathcal{S}, \times)$.
-\end{exercise}
-
-It should be noted that not every element in a cyclic group is a generator, and that a cyclic group may have more than 1 generator.
-
-Cyclic groups may also be of \textbf{infinite order}. Such cyclic groups are called \textbf{cyclic groups of infinite order} or \textbf{infinite cyclic groups}\index{cyclic group!infinite}.
-\begin{example}
-    The group $(\mathbb{Z}, +)$ is an infinite cyclic group with generators 1 and -1.
-\end{example}
-
-We now look at two results involving cyclic groups.
-
-\begin{proposition}\label{prop-cyclic-group-is-abelian}
-    Every cyclic group is abelian.
-\end{proposition}
-\begin{proof}
-    Let $G$ be the cyclic group with a generator $g$. Suppose $x$ and $y$ are elements in $g$. Then $x = g^m$ and $y = g^n$ for some positive integers $m$ and $n$.
-
-    Thus,
-    \begin{align*}
-        xy &= (g^m)(g^n)\\
-        &= g^mg^n\\
-        &= g^{m+n}\\
-        &= g^{n+m} & (\text{since + is commutative})\\
-        &= g^ng^m\\
-        &= (g^n)(g^m)\\
-        &= yx
-    \end{align*}
-    so $xy = yx$. Therefore $G$ is abelian.
-\end{proof}
-
-\begin{theorem}\label{thrm-cyclic-group-has-element-with-same-order}
-    A finite group $G$ is cyclic if and only if there exists an element $g$ in $G$ with the same order as the group.
 \end{theorem}
+Note that, as per usual, we suppress the operation $\star$ and just write $(xN)(yN) = (xy)N$. Also note that for the quotient group, $G / N$ is read ``$G$ mod $N$''.
 \begin{proof}
-    We first prove the forward direction: suppose $G$ is cyclic and $|G| = n$. Then, by definition, there exists an element $g$ in $G$ such that
-    \[
-        G = \langle g \rangle = \{g^k \ | \ 1 \leq k \leq n, k \in \mathbb{Z}\},
-    \]
-    i.e. $g$ is a generator of $G$. We just need to show $|g| = n$.
+    Before we can prove that it forms a group, we need to show that $\star$ is well defined. This is because we worry that if $x_1N = x_2N$ and $y_1N = y_2N$ there may be a situation that $(x_1y_1)N \neq (x_2y_2)N$ under this operation. Thus we need to check if it is well defined before we can proceed.
 
-    Suppose on the contrary there exists an integer $1 \leq m < n$ where $g^m = e$. Then $\langle g \rangle = \{g, g^2, \dots, g^m\}$. Thus $|\langle g \rangle| = m < n = |G|$. But by the hypothesis of the forward direction, $G = \langle g \rangle$ so $n = |G| = |\langle g \rangle| = m$. This is a contradiction, i.e. there does \textbf{not} exist an integer $1 \leq m < n$ where $g^m = e$. Therefore $g^n = e$, i.e. $|g| = n$.
+    Suppose $x_1N = x_2N$ and $y_1N = y_2N$ where $x_1, x_2, y_1, y_2 \in G$. Then
+    \begin{align*}
+        (x_1N)(y_1N) &= (x_1y_1)N & (\text{by definition})\\
+        &= x_1(y_1N) & (\text{left coset of } y_1N \text{ in } G \text{ by } x_1)\\
+        &= x_1(y_2N) & (y_1N = y_2N)\\
+        &= x_1(Ny_2) & (N \text{ is normal, so } y_2N=Ny_2)\\
+        &= (x_1N)y_2 & (\text{right coset of } x_1N \text{ in } G \text{ by } y_2)\\
+        &= (x_2N)y_2 & (x_1N = x_2N)\\
+        &= x_2(Ny_2) & (\text{left coset of } Ny_2 \text{ in } G \text{ by } x_2)\\
+        &= x_2(y_2N) & (N \text{ is normal, so } y_2N=Ny_2)\\
+        &= (x_2y_2)N & (\text{left coset of } N \text{ in } G \text{ by } x_2y_2)\\
+        &= (x_2N)(y_2N) & \text{(by definition)}
+    \end{align*}
+    so if $x_1N = x_2N$ and $y_1N = y_2N$ then we see that $(x_1N)(y_1N) = (x_2N)(y_2N)$, meaning that $\star$ is well defined.
 
-    We now prove the reverse direction: suppose there exists an element $g$ in $G$ with order $n$.
-    
-    We claim that $g, g^2, \dots, g^n$ are all distinct. Suppose on the contrary that there exist integers $i$ and $j$ where $1 \leq i < j \leq n$ such that $g^i = g^j$. Then $g^i = g^ig^{j-1}$, which means $g^{j-i} = e$ by the cancellation law. Note that $1 \leq j - i < n$. Thus, since $g^{j-i} = e$, therefore $|g| = j - i < n$ which contradicts $|g| = n$. Hence, $g, g^2, \dots, g^n$ are all distinct. Therefore, $\langle g \rangle = \{g, g^2, \dots, g^n\}$ contain distinct elements of $G$. But there are only $n$ elements in $G$ and $\langle g \rangle$ contains $n$ distinct elements. Therefore, $G = \langle g \rangle$ which means that $G$ is cyclic with generator $g$.
-
-    This completes the proof.
+    We can now prove the four group axioms.
+    \begin{enumerate}
+        \item \textbf{Closure}: Assume $xN$ and $yN$ are in the set $G/N$. Then $(xN)(yN) = (xy)N$. Since $xy$ is in $G$ thus $(xy)N$ is in $G/N$, meaning that $G/N$ is closed under $\star$.
+        \item \textbf{Associativity}: Take $xN$, $yN$, and $zN$ from $G/N$. Then
+        \begin{align*}
+            (xN)\left((yN)(zN)\right) &= (xN)\left((yz)N\right)\\
+            &= (xyz)N\\
+            &= \left((xy)z\right)N\\
+            &= \left((xy)N\right)(zN)\\
+            &= \left((xN)(yN)\right)(zN)
+        \end{align*}
+        so $\star$ is associative.
+        \item \textbf{Identity}: Observe that $e$ is in $G$ so $eN = N$ is in $G / N$. Note that
+        \[
+        (eN)(xN) = (ex)N = xN \text{ and } (xN)(eN) = (xe)N = xN
+        \]
+        for $x$ in $G$, so $eN = N$ is the identity in $G/N$.
+        \item \textbf{Inverse}: Observe that for $x$ in $G$, $x^{-1}$ is also in $G$. Note that
+        \[
+        (xN)(x^{-1}N) = (xx^{-1})N = eN = N
+        \]
+        and
+        \[
+        (x^{-1}N)(xN) = (x^{-1}x)N = eN = N
+        \]
+        so $(xN)^{-1}$ is $x^{-1}N$.
+    \end{enumerate}
+    Since the four group axioms are satisfied, thus $G/N$ is a group under the operation $\star$.
 \end{proof}
 
-There are more interesting properties of cyclic groups, but we will get to them when we develop more tools to explain and prove these properties.
+\begin{example}
+    Let's look at possible quotients of the group $D_3$, which has the underlying set of $\{e, r, r^2, s, rs, r^2s\}$. Recall from a previous example that $\langle r \rangle \lhd D_3$. Thus $D_3 / \langle r \rangle$ is a quotient group, with $|D_3 / \langle r \rangle| = \frac{|D_3|}{|\langle r\rangle|} = \frac63 = 2$.
 
-\newpage
-
-\section{Dihedral Groups}
-We motivate the definition of the dihedral groups by discussing the symmetries of an equilateral triangle.
-
-\begin{figure}[h]
-    \centering
-    \fbox{\includegraphics[width=5.5cm]{images/chapter2/GroupD3.jpg}}
-    \caption{Symmetries of an Equilateral Triangle}
-\end{figure}
-
-What actions could we perform in order to maintain symmetry on an equilateral triangle? Well, we could rotate the triangle in $120^\circ$ anti-clockwise increments about the center of the triangle. We denote this action by the symbol $r$. Another thing we could do is reflect the triangle about the line going through one of the vertices and the center, like we discussed in an earlier chapter. This action is denoted by $s$.
-
-Now, suppose we define $r$ to be the $120^\circ$ anti-clockwise rotation about the center and $s$ be the reflection of the triangle about the line going through vertex 1 and the center, like shown in the diagram. How do we obtain a $240^\circ$ anti-clockwise rotation? Well, we apply two $120^\circ$ anticlockwise rotations one after another. In other words, if $\ast$ means ``action composition'', then a $240^\circ$ rotation would be represented by $r^2$. Note that $r^3$, which represents a $360^\circ$ anti-clockwise rotation, is the same as doing nothing. So $r^3 = e$. Similarly, applying the reflection $s$ twice in a row (i.e., $s^2$) is the same as doing nothing, so $s^2 = e$. Thus, we have
-\[
-    r^3 = s^2 = e
-\]
-for the case of an equilateral triangle.
-
-There's another relationship governing $r$ and $s$. Consider this: how do we obtain a reflection about the line through vertex 3 and the center? Well, we apply $r$ first, followed by $s$. This means that a reflection about the line through vertex 3 and the center is given by $rs$. Notice that this is the same thing as reflecting first and then applying $r$ twice, i.e. $sr^2$. Thus, we have the second relationship:
-\[
-    rs = sr^2
-\]
-for the case of an equilateral triangle.
-
-The group of symmetries of an equilateral triangle is called the \textbf{dihedral group of order 6} (or the \textbf{dihedral group of degree 3}) and is denoted by $D_3$. In general, the \textbf{dihedral group of order $2n$}\index{dihedral group!of order $2n$} (or the \textbf{dihedral group of degree $n$}\index{dihedral group!of degree $n$}) is denoted by $D_n$ and can be thought of as the symmetries of a regular polygon of $n$ sides (a regular $n$-gon). For example, the symmetries of the square is given by the group $D_4$.
-
-\begin{figure}[h]
-    \centering
-    \fbox{\includegraphics[width=5.5cm]{images/chapter2/GroupD4.jpg}}
-    \caption{Symmetries of a Square}
-\end{figure}
-
-Thus, in general, the set $D_n$ consists of the following elements.
-\[
-    D_n = \{e, r, r^2, \dots, r^{n-1}, s, rs, r^2s, \dots, r^{n-1}s\}
-\]
-with the relationship between $r$ and $s$ given by $r^n = s^2 = e$ and $rs = sr^{n-1}$.
-
-\begin{remark}
-    Some authors (e.g. \cite{humphreys_1996}) will write the reflections of $D_n$ with $s$ leading $r$, i.e. $s, sr, sr^2, sr^3, \dots, sr^{n-1}$. The underlying definition, however, remains the same in either case.
-\end{remark}
-
-These relationships are succinctly given by the \textit{presentation}\index{presentation}
-\[
-    D_n = \langle r, s \ | \ r^n = s^2 = e, rs = sr^{n-1} \rangle
-\]
-where $r$ and $s$ can be thought of as `generators'\index{presentation!generators} and the conditions\index{presentation!conditions} are given on the right side of the pipe ($|$).
-
-\begin{example}\label{example-presentation-of-D3}
-    The group $D_3$ has presentation
-    \[
-        D_3 = \langle r, s \ | \ r^3 = s^2 = e, rs = sr^2 \rangle.
-    \]
-    The Cayley table of $D_3$ is given below.
-
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{|l|l|l|l|l|l|l|}
-        \hline
-        $\ast$ & $e$    & $r$    & $r^2$  & $s$    & $rs$   & $r^2s$ \\ \hline
-        $e$    & $e$    & $r$    & $r^2$  & $s$    & $rs$   & $r^2s$ \\ \hline
-        $r$    & $r$    & $r^2$  & $e$    & $rs$   & $r^2s$ & $s$    \\ \hline
-        $r^2$  & $r^2$  & $e$    & $r$    & $r^2s$ & $s$    & $rs$   \\ \hline
-        $s$    & $s$    & $r^2s$ & $rs$   & $e$    & $r^2$  & $r$    \\ \hline
-        $rs$   & $rs$   & $s$    & $r^2s$ & $r$    & $e$    & $r^2$  \\ \hline
-        $r^2s$ & $r^2s$ & $rs$   & $s$    & $r^2$  & $r$    & $e$    \\ \hline
-        \end{tabular}
-    \end{table}
-
-    It should be noted that we use the convention of reading the \textbf{row before the column}. So the action $rs \ast r^2$ (which is usually written as $rsr^2$) is given by the row of $rs$ and the column of $r^2$, which is $r^2s$.
+    Let's now look at the elements of $D_3 / \langle r \rangle$.
+    \begin{align*}
+        D_3 / \langle r \rangle  &= \{x\langle r \rangle \ | \ x \in D_3\}\\
+        &= \left\{\{x, xr, xr^2\} \ | \ x \in D_3\right\}\\
+        &= \{\{e, r, r^2\}, \{r, r^2, r^3\}, \{r^2, r^3, r^4\}, \\ &\quad\quad \{s, sr, sr^2\}, \{rs, rsr, rsr^2\}, \{r^2s, r^2sr, r^2sr^2\}\}\\
+        &= \{\{e, r, r^2\}, \{r, r^2, e\}, \{r^2, e, r\}, \\ &\quad\quad \{s, sr, sr^2\}, \{sr^2, s, sr\}, \{sr, sr^2, s\}\}\\
+        &= \left\{\{e, r, r^2\}, \{s, sr, sr^2\}\right\}\\
+        &= \left\{\langle r\rangle, s\langle r \rangle\right\}
+    \end{align*}
+    Note also that $(s\langle r \rangle)^2 = s^2\langle r \rangle = \langle r\rangle$, so in fact $D_3 / \langle r \rangle$ has generator $\langle r \rangle$, i.e. $D_3 / \langle r \rangle = \left\langle \langle r \rangle \right\rangle$.
 \end{example}
 
-The \textit{cannonical form}\index{dihedral group!cannonical form} of an element in a dihedral group is $r^ms^n$, where $m$ and $n$ are non-negative integers. So how do we find the canonical form of elements like $sr$ or $srs$? We have this useful proposition to help.
-\begin{proposition}
-    For the group $D_n$, we have $r^ms = sr^{n-m}$ for all integers $1 \leq m < n$.
-\end{proposition}
-\begin{proof}
-    We induct on $m$.
-    
-    When $m = 1$, $rs = sr^{n-1}$ by the definition of $D_n$.
-    
-    Assume now that for some integer $1 \leq k < n$, we have $r^ks = sr^{n-k}$. We consider two cases.
-    \begin{itemize}
-        \item If $k = n - 1$, then $k + 1 = n$. Thus, $r^{k+1}s = r^ns = s$ since $r^n = e$. Note that $sr^{(k+1)-n} = sr^{n-n} = sr^0 = s$. Therefore $r^{k+1}s = sr^{(k+1)-n}$ for the case when $k = n - 1$.
-        \item The other case is if $1 \leq k \leq n - 2$. Then we have
-        \begin{align*}
-            r^{k+1}s &= r^k(rs)\\
-            &= r^k(sr^{n-1}) & (\text{base case})\\
-            &= (r^ks)r^{n-1} & (\text{associativity})\\
-            &= (sr^{n-k})r^{n-1} & (\text{by Induction Hypothesis})\\
-            &= sr^{2n - k - 1}\\
-            &= sr^nr^{n-k-1}\\
-            &= sr^{n-(k+1)} & (\text{since } r^n = e)
-        \end{align*}
-        which means $r^{k+1}s = sr^{n-(k+1)}$.
-    \end{itemize}
-    In either case, the statement is true for $k+1$.
-    
-    Therefore $r^ms = sr^{n-m}$ for all integers $1 \leq m < n$.
-\end{proof}
-
-\begin{exercise}
-    Simplify $rsr^4sr^3$ in the group $D_6$.
+\begin{exercise}\label{exercise-quotient-group-of-cyclic-group-is-cyclic}
+    Let $G$ be a finite cyclic group. Let $H$ be a subgroup of $G$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Explain why $G/H$ is a quotient group.
+        \item Show that $G/H$ is cyclic.
+    \end{enumerate}    
 \end{exercise}
-
-We note that the dihedral group acts on a regular $n$-gon. We explore more facts about the dihedral group acting on polygons in a later chapter.
 
 \newpage
 
 \section{Problems}
 \begin{problem}
-    Draw the Cayley table for $D_4$, the dihedral group of order 8, representing the symmetries of a square. By referring to the Cayley table,
+    Let $G = D_4$, the dihedral group of order 8. By considering the subgroup axioms, determine if the following form subgroups of $G$.
     \begin{enumerate}[label=(\alph*)]
-        \item explain why $D_4$ is \textbf{not} abelian;
-        \item simplify $r^3srsr^3sr^3sr^2$.
+        \item $\{e\}$
+        \item $\{e, r, s\}$
+        \item $\{r, r^2, r^3\}$
+        \item $\{r, r^3, r^4, r^6\}$
     \end{enumerate}
 \end{problem}
 
 \begin{problem}
-    Let $G$ be a group. If every element in $G$ is its own inverse, show that $G$ is abelian.
+    Let $G$ be a group and $H \leq G$. Let
+    \[
+        K = \{x \in G \ | \ xhx^{-1} \in H \text{ for all } h \in H \}.
+    \]
+    Prove the following statements.
+    \begin{enumerate}[label=(\alph*)]
+        \item $K \leq G$
+        \item $H \leq K$
+    \end{enumerate}
 \end{problem}
 
-\begin{problem}\label{problem-element-to-power-of-multiple-of-order-is-identity}
-    Let $G$ be a group with identity $e$. Suppose an element $x$ in $G$ has finite order $k$. Prove that $n$ is a multiple of $k$ if and only if $a^n = e$.\newline
-    (\textit{Hint: consider Euclid's division lemma (\textbf{Lemma \ref{lemma-euclid-division}}) to prove one direction of the claim.})
-\end{problem}
-
-\begin{problem}
+\begin{problem}\label{problem-center-of-G}
     Let $G$ be a group.
     \begin{enumerate}[label=(\alph*)]
-        \item Suppose $(gh)^2 = g^2h^2$ for all elements $g$ and $h$ in $G$. Prove that $G$ is abelian.
-        \item Suppose $G$ is abelian. Prove that $(gh)^n = g^nh^n$ for all elements $g$ and $h$ in $G$ and for all positive integers $n$.
+        \item Prove that $\Z{G}$ is a normal subgroup of $G$.
+        \item Prove that $\Z{G} = G$ if and only if $G$ is abelian.
+        \item Find the center of the group $D_4$.\newline
+        (You may assume $|\Z{G}| < \frac12 |G|$. The reason becomes apparent with \textbf{Problem \ref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}}'s solution.)
     \end{enumerate}
-\end{problem}
-
-\begin{problem}
-    Let $G = (\mathbb{Z}_n, \oplus_n)$. It is given $G$ is a group. Prove that $G$ is a cyclic group of order $n$.
 \end{problem}
 
 \newpage
 
-\begin{problem}
-    Let the set $S = \mathbb{R}^2$, that is,
-    \[
-        S = \{(x, y) \ | \ x, y \in \mathbb{R}\}.
-    \]
-    Let the transformation $T: S \to S$ is defined by
-    \[
-        T(x, y) = (-y, x+y).
-    \]
-    Define the set $A = \{T^r \ | \ r \in \mathbb{Z} \text{ and } r \geq 1\}$. Show that $A$ is a group under function composition $\circ$, and give the order of this group.
+\begin{problem}\label{problem-intersection-of-subgroups}
+    Let $G$ be a group, $H \leq G$ and $K \leq G$. Prove or disprove the following statements.
+    \begin{enumerate}[label=(\alph*)]
+        \item $H \cap K \leq G$
+        \item $H \cap K \leq H$
+        \item $H \cup K \leq G$
+        \item $H \cup K \leq H$
+    \end{enumerate}
 \end{problem}
 
-% %=========================================
-% \chapter{Subgroups}
-% \section{Definition and Examples}
-% We look at the notion of a subgroup of a group.
-% \begin{definition}
-%     Let $G$ be a group with operation $\ast$. Let $H \subseteq G$. Then $H$ is said to be a \textbf{subgroup} of $G$ if:
-%     \begin{enumerate}
-%         \item \textbf{Closure}: For all $x$ and $y$ in $H$, $x \ast y$ is also in $H$.
-%         \item \textbf{Identity}: The identity of the group $G$ is in $H$.
-%         \item \textbf{Inverse}: For all elements $x$ in $H$, there exists an element $x^{-1}$ in $H$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
-%     \end{enumerate}
-% \end{definition}
-% \begin{remark}
-%     Equivalently, $H$ is a subgroup of $G$ if $H \subseteq G$ and $H$ is a group under the group operation of $G$.
-% \end{remark}
-% We write $H \leq G$ if $H$ is a subgroup of $G$.
-
-% \begin{example}
-%     Let's look at all possible subgroups of the group $(\mathbb{Z}, +)$. Suppose $H \leq G = (\mathbb{Z}, +)$. Suppose also that $H$ is not the trivial subgroup containing only the identity in $(\mathbb{Z}, +)$, i.e. $H \neq \{0\}$.
-
-%     Let $n$ be the smallest \textit{positive} integer in $H$. Let $m$ be any \textit{other} number in $H$. Then by the division algorithm, $m = nq + r$ where $q$ and $r$ are integers such that $0 \leq r < n$. Hence,
-%     \[
-%         r = m + \underbrace{(-n) +(-n) +(-n) + \cdots + (-n)}_{q\text{ times}}
-%     \]
-%     Note that $m$ is in $H$, and $-n$ is also in $H$. Thus, $r = m + (-n) + \cdots + (-n)$ is also in $H$ since $H$ is closed under addition. But, $0 \leq r < n$ and $n$ is the \textit{smallest} positive integer in $H$. Thus, $r \not> 0$ which means $r = 0$. Hence, $m = nq$, i.e. every element in $H$ is a multiple of the smallest positive integer in $H$.
-
-%     Hence,
-%     \[
-%     H = \{nk \ | \ k \in \mathbb{Z}\},
-%     \]
-%     which is often written as the group $n\mathbb{Z}$.
-% \end{example}
-
-% \begin{exercise}
-%     Let $G$ be a group with operation $\ast$ and identity $e$. Prove that $\{e\} \leq G$.
-% \end{exercise}
-
-% We note that the group containing only the identity (i.e., $\{e\} \leq G$) is always present in every group. This is known as the \textbf{trivial subgroup}. We also note that the group itself is a subgroup of itself (that is, $G \leq G$). Any subgroup that are \textbf{not} these two groups is known as a \textbf{proper subgroup} of $G$, and we write $H < G$ if $H$ is a proper subgroup of $G$.
-
-% \section{Subgroup Test}
-% To prove that a subset of a group is a subgroup using the axioms is too tedious. Wouldn't it be nice if we have a simple test to determine if a subset is a subgroup? Well, there is; it is called the \textbf{subgroup test}.
-% \begin{proposition}[Subgroup Test]
-%     Let $G$ be a group and $H \subseteq G$ such that $H \neq \emptyset$ (i.e., $H$ is not the empty set). Then $H \leq G$ if and only if for all $x$ and $y$ in $H$, then $xy^{-1}$ is in $H$.
-% \end{proposition}
-% \begin{proof}
-%     We prove the forward direction first. Suppose $H \leq G$ and let $x$ and $y$ be elements in $H$. Since $H$ is a subgroup of $G$, inverses exist. Thus $y^{-1}$ is in $H$. Also, since $H$ is a subgroup of $G$, thus $H$ is closed under the group operation. Hence, $xy^{-1}$ is in $H$. Therefore, if $H \leq G$ then for all $x$ and $y$ in $H$, $xy^{-1}$ is in $H$.
-
-%     We now prove the reverse direction. Suppose for all $x$ and $y$ in $H$, $xy^{-1}$ is in $H$.
-%     \begin{itemize}
-%         \item Suppose $h$ is an arbitrary element in $H$. Set $x = h$ and $y = h$. Then $xy^{-1} = hh^{-1} = e$ is in $H$. Thus the identity of $G$ is present in $H$.
-%         \item Set $x = e$ and let $y = h$. Then $xy^{-1} = eh^{-1} = h^{-1}$ is in $H$. Hence every element in $H$ has an inverse in $H$.
-%         \item Let $a$ and $b$ be elements in $H$. Then by above point, $b^{-1}$ is in $H$. Set $x = a$ and $y = b^{-1}$. Then $xy^{-1} = a\left(b^{-1}\right)^{-1} = ab$ is in $H$. Hence $H$ is closed under the group operation.
-%     \end{itemize}
-%     Therefore, if for all $x$ and $y$ in $H$, $xy^{-1}$ is in $H$, then $H \leq G$.
-
-%     This completes the proof of the subgroup test.
-% \end{proof}
-
-% \begin{remark}
-% We usually show the `non-empty' and `subset' requirement by checking if the identity of $G$ is in $H$.
-% \end{remark}
-
-% We look at some examples of the use of the subgroup test.
-% \begin{example}\label{example-centralizer-of-a-subset}
-%     Let $G$ be a group and $S \subseteq G$ where $S \neq \emptyset$. The \textbf{centralizer} of $S$ in $G$ is the set
-%     \[
-%         \C{G}{S} = \left\{g \in G \ | \ \text{for all } s \in S \text{ we have } gs = sg\right\}.
-%     \]
-%     We claim that $\C{G}{S}$ is a subgroup of $G$.
-%     \begin{proof}
-%         We show that for all elements $x$ and $y$ in $\C{G}{S}$, $xy^{-1}$ is also in the centralizer. Note that the condition $gs = sg$ is equivalent to the condition $sg^{-1} = g^{-1}s$.
-
-%         Suppose $x$ and $y$ are in $\C{G}{S}$. Let $s$ be in $S$. Then
-%         \begin{align*}
-%             (xy^{-1})s &= x(y^{-1}s) & (\text{associativity})\\
-%             &= x(sy^{-1}) & (\text{since } sg^{-1} = g^{-1}s)\\
-%             &= (xs)y^{-1} & (\text{associativity})\\
-%             &= (sx)y^{-1} & (\text{since } gs = sg)\\
-%             &= s(xy^{-1}) & (\text{associativity})
-%         \end{align*}
-%         so $(xy^{-1})s = s(xy^{-1})$ for all $s$ in $S$. Thus, $xy^{-1}$ is in $\C{G}{S}$, so by subgroup test $\C{G}{S} \leq G$.
-%     \end{proof}
-% \end{example}
-% \begin{remark}
-%     In the case where $S$ has a single element, say $S = \{x\}$, we write $\C{G}{x}$.
-% \end{remark}
-
-% \begin{example}\label{example-center-of-group}
-%     Let $G$ be a group. The \textbf{center} of a group $G$ is given by the set
-%     \[
-%         \Z{G} = \{z \in G \ | \ gz = zg \text{ for all } g \in G\}.
-%     \]
-%     We claim that $\Z{G}$ is a subgroup of $G$ under the group operation of $G$.
-
-%     \begin{proof}
-% 	    Note that $e \in \Z{G}$ since $ge = eg$ for all $g \in G$.
-
-% 	    Let $x$ and $y$ be in $\Z{G}$, meaning that $gx = xg$ and $gy = yg$ for all $g \in G$. Note that $gy = yg$ implies $g = ygy^{-1}$ (by right multiplying by $y^{-1}$) which further means that $y^{-1}g = gy^{-1}$ (by left multiplying by $y^{-1}$). Therefore, $y^{-1} \in \Z{G}$. Now,
-% 	    \begin{align*}
-% 	        (xy^{-1})g &= x(y^{-1}g)\\
-% 	        &= x(gy^{-1}) & (\text{since } y^{-1} \in \Z{G})\\
-% 	        &= (xg)y^{-1} & (\text{associativity})\\
-% 	        &= (gx)y^{-1} & (\text{since } x \in \Z{G})\\
-% 	        &= g(xy^{-1}) & (\text{associativity})
-% 	    \end{align*}
-% 	    which means that $xy^{-1} \in \Z{G}$. Hence $\Z{G} \leq G$ by the subgroup test.
-%     \end{proof}
-% \end{example}
-
-% \begin{exercise}\label{exercise-conjugate-subgroup}
-%     Let $G$ be a group, $H \leq G$, and $g \in G$. Define the set
-%     \[
-%         S = \{ghg^{-1} \ | \ h \text{ is in } H\}.
-%     \]
-%     Prove that $S \leq G$ under the group operation of $G$.
-% \end{exercise}
-
-% \section{Cosets}
-% We now introduce the idea of \textbf{cosets} of a group $G$.
-% \begin{definition}
-%     Let $G$ be a group, $H \leq G$, and $g$ be an element of $G$. Then define
-%     \begin{itemize}
-%         \item the \textbf{left coset} of $H$ in $G$ by $g$, $gH = \{gh \ | \ h \in H\}$
-%         \item the \textbf{right coset} of $H$ in $G$ by $g$, $Hg = \{hg \ | \ h \in H\}$
-%     \end{itemize}
-% \end{definition}
-
-% \begin{remark}
-%     The subgroup $H$ is both a left and right coset of $H$ in $G$. This is because the element $g$ in question is $g = e$, so $gH = eH = H$ and $Hg = He = e$.
-% \end{remark}
-
-% \begin{example}
-%     Let $G = D_3$, and $H = \{e, s\} \leq G$. The distinct left cosets of $H$ in $G$ are:
-%     \begin{itemize}
-%         \item $eH = \{e, s\} = H$
-%         \item $rH = \{r, rs\}$
-%         \item $r^2H = \{r^2, r^2s\}$
-%     \end{itemize}
-%     Since all the elements of $G$ have now appeared in one of these cosets, generating any more can not give new cosets, since a new coset would have to have an element in common with one of these and therefore be identical to one of these cosets. For example, $rsH = \{rs, rss\} = \{rs, r\} = rH$.
-
-%     The distinct right cosets of $H$ in $G$ are:
-%     \begin{itemize}
-%         \item $He = \{e, s\} = H$
-%         \item $Hr = \{r, sr\} = \{r, r^2s\}$
-%         \item $Hr^2 = \{r^2, sr^2\} = \{r^2, rs\}$
-%     \end{itemize}
-%     Thus, for $D_3$, no left coset is a right coset, except for $H = eH = He$.
-% \end{example}
-
-% \begin{exercise}
-%     Let $G$ be the group $(\mathbb{Z}_8, \oplus_8)$. Let $H \leq G$ such that $H
-%  = \{0, 4\}$.
-%     \begin{enumerate}[label=(\alph*)]
-%         \item Explain why any left coset of $H$ in $G$ by an element $g$ is the same as the right coset of $H$ in $G$ by $g$.
-%         \item Find all \textit{distinct} left cosets of $H$ in $G$.
-%     \end{enumerate}
-% \end{exercise}
-
-% We now state and prove a result that relates the equality of cosets.
-% \begin{lemma}\label{lemma-coset-equality}(Coset Equality)
-%     Let $G$ be a group, $H \leq G$, and $g_1$ and $g_2$ be elements in $G$. Then the following statements are equivalent.
-%     \begin{enumerate}[label=$(\arabic*)$]
-%         \item $g_1H = g_2H$
-%         \item $Hg_1^{-1} = Hg_2^{-1}$
-%         \item $g_1H \subseteq g_2H$
-%         \item $g_2 \in g_1H$
-%         \item $g_1^{-1}g_2 \in H$
-%     \end{enumerate}
-% \end{lemma}
-% \begin{proof}
-%     We prove the statements in order.
-
-%     \begin{itemize}
-%         \item $\boxed{(1) \implies (2)}$ Suppose $g_1H = g_2H$. We will show $Hg_1^{-1} = Hg_2^{-1}$.
-
-%         Let $x \in Hg_1^{-1}$ Then $x = hg_1^{-1}$ for some $h$ in $H$. Thus $x^{-1} = \left(hg_1^{-1}\right)^{-1} = g_1h^{-1}$ by Shoes and Socks. Since $h^{-1}$ is in $H$ thus $x^{-1} = g_1h^{-1}$ is in $g_1H$.
-
-%         Since $g_1H = g_2H$ thus $x^{-1} \in g_2H$. Write $x^{-1} = g_2\hat{h}$ for some $\hat{h}$ in $H$. Thus $x = (g_2\hat{h})^{-1} = \hat{h}^{-1}g_2^{-1}$ by Shoes and Socks. Since $\hat{h}^{-1}$ is in $H$ thus $x = \hat{h}^{-1}g_2^{-1}$ is in $Hg_2^{-1}$.
-
-%         Hence, any element $x \in Hg_1^{-1}$ is also in $Hg_2^{-1}$, i.e. $Hg_1^{-1} \subseteq Hg_2^{-1}$. A similar argument shows that $Hg_2^{-1} \subseteq Hg_1^{-1}$. Thus $Hg_1^{-1} = Hg_2^{-1}$ as required.
-
-%         \item $\boxed{(2) \implies (3)}$ Suppose $Hg_1^{-1} = Hg_2^{-1}$ and take $x \in g_1H$. Thus $x = g_1h$ for some $h$ in $H$. Therefore $x^{-1} = (g_1h)^{-1} = h^{-1}g_1^{-1} \in Hg_1^{-1}$ since $h^{-1}$ is in $H$. By assumption $Hg_1^{-1} = Hg_2^{-1}$ so $x^{-1} \in Hg_2^{-1}$. Let $x^{-1} = \hat{h}g_2^{-1}$ for some $\hat{h}$ in $H$. Then $x = \left(\hat{h}g_2^{-1}\right)^{-1} = g_2\hat{h}^{-1} \in g_2H$ since $\hat{h}^{-1}$ is in $H$. Hence $x$ is in $g_2H$. Therefore, for any $x \in g_1H$, $x$ will also be in $g_2H$. Thus $g_1H \subseteq g_2H$.
-
-%         \item $\boxed{(3) \implies (4)}$
-%         Suppose $g_1H \subseteq g_2H$. Then for all $x$ in $g_1H$, $x$ is also in $g_2H$. Note that $g_1 = g_1e$. Since $e$ is in $H$ (as $H \leq G$) thus $g_1e \in g_1H \subseteq g_2H$ by assumption. Thus $g_1 \in g_2H$ as needed.
-
-%         \item $\boxed{(4) \implies (5)}$
-%         Suppose $g_1 \in g_2H$. Then $g_1 = g_2h$ for some $h$ in $H$. Then:
-%         \begin{align*}
-%             &g_1^{-1}g_1 = g_1^{-1}g_2h & (\text{left multiply by } g_1^{-1})\\
-%             &e = g_1^{-1}g_2h\\
-%             &h^{-1} = g_1^{-1}g_2hh^{-1} & (\text{right multiply by } h^{-1})\\
-%             &h^{-1} = g_1^{-1}g_2
-%         \end{align*}
-%         Since $h^{-1}$ is an element in $H$ thus $g_1^{-1}g_2 = h^{-1}$ is also in $H$, meaning $g_1^{-1}g_2 \in H$.
-
-%         \item $\boxed{(5) \implies (1)}$
-%         Suppose $g_1^{-1}g_2$ is an element of $H$. Thus, $g_1^{-1}g_2 = \hat{h}$ for some $\hat{h}$ in $H$. Let $x$ be an element from $g_1H$, so $x = g_1h$ for some $h$ in $H$. Then
-%         \begin{align*}
-%             x^{-1} &= (g_1h)^{-1}\\
-%             &= h^{-1}g_1^{-1} & (\text{Shoes and Socks})\\
-%             &= h_1^{-1}g_1^{-1}(g_2g_2^{-1}) & (\text{since }g_2g_2^{-1} = e)\\
-%             &= h_1{-1}(g_1^{-1}g_2)g_2^{-1}\\
-%             &= h^{-1}\hat{h}g_2^{-1}
-%         \end{align*}
-%         which means $x = \left(h^{-1}\hat{h}g_2^{-1}\right)^{-1} = g_2\hat{h}^{-1}h$ which is an element of $g_2H$ since $\hat{h}^{-1}h$ is in $H$.
-
-%         Thus, for all $x$ in $g_1H$, $x$ is also in $g_2H$ which means $g_1H \subseteq g_2H$. A similar argument can be used to show that $g_2H \subseteq g_1H$. Hence $g_1H = g_2H$.
-%     \end{itemize}
-
-%     Thus, $(1) \implies (2) \implies (3) \implies (4) \implies (5) \implies (1)$, completing the proof of this lemma.
-% \end{proof}
-
-% \begin{exercise}\label{exercise-intersection-of-cosets}
-%     Let $G$ be a group, $H \leq G$, and $g_1$ and $g_2$ be elements in $G$. Prove that if $g_1H \cap g_2H \neq \emptyset$ then $g_1H = g_2H$.
-% \end{exercise}
-
-% \section{Lagrange's Theorem}
-% Lagrange's theorem is an important result relating the order of a subgroup and the order of the group itself. Before that, though, we introduce the idea of the \textbf{index} of a subgroup.
-% \begin{definition}
-%     Let $G$ be a group and $H \leq G$. The \textbf{index} of $H$ in $G$, denoted by $[G : H]$, is the number of left cosets of $H$ in $G$.
-% \end{definition}
-% Note that since the number of left cosets is the number of right cosets, $[G : H]$ can be defined as the number of cosets of $H$ in $G$.
-
-% We also require two lemmas.
-% \begin{lemma}\label{lemma-left-coset-partition}
-%     Let $G$ be a group and $H \leq G$. Then distinct left cosets of $H$ in $G$ partition $G$.
-% \end{lemma}
-% \begin{proof}
-%     To prove that the distinct left cosets of $H$ in $G$ partition $G$, we need to show two things.
-%     \begin{itemize}
-%         \item The intersection of any 2 left cosets is either the empty set or is one of the left cosets (i.e., distinct left cosets are disjoint).
-%         \item The union of all left cosets is the group.
-%     \end{itemize}
-%     The first bullet point is proven by \textbf{Exercise \ref{exercise-intersection-of-cosets}}, so we omit its proof here. We work only on the second bullet point.
-
-%     Suppose $g$ is in $G$. We will find a left coset that $g$ is in. Clearly $g = ge$, and since $e$ is an element of $H$, thus $g = ge$ is an element of the left coset $gH$. So any element in $G$ belongs to a left coset of $H$ in $G$. Thus the union of all left cosets is the group.
-
-%     Hence, distinct left cosets of $H$ in $G$ partition $G$.
-% \end{proof}
-
-% \begin{lemma}\label{lemma-order-of-coset}
-%     Let $G$ be a group and $H \leq G$. Then $|H| = |gH|$ for all $g$ in $G$.
-% \end{lemma}
-% \begin{proof}
-%     Define the map $\phi: H \to gH$ such that $\phi(h) = gh$. To prove that $|H| = |gH|$ we need to show that $\phi$ is a bijection, i.e. $\phi$ is both injective (one-to-one) and surjective (onto).
-%     \begin{itemize}
-%         \item \textbf{Injective}: Let $h$ and $\hat{h}$ be elements in $H$ such that $\phi(h) = \phi(\hat{h})$. Then $gh = g\hat{h}$ by definition of $\phi$. By cancellation law, $h = \hat{h}$ which means $\phi$ is injective.
-%         \item \textbf{Surjective}: Let $x$ be in $gH$. Thus $x = gh$ for some $h$ in $H$. Clearly $\phi(h) = gh = x$ so a pre-image of $x$ exists in $H$. Thus $\phi$ is surjective.
-%     \end{itemize}
-%     Since $\phi$ is both injective and surjective, it is thus bijective. Hence $|H| = |gH|$.
-% \end{proof}
-
-% We are now ready to state and prove Lagrange's theorem.
-% \begin{theorem}[Lagrange]\label{thrm-lagrange}
-%     Let $G$ be a group and $H \leq G$. Then $|G| = [G:H]|H|$.
-% \end{theorem}
-% \begin{proof}
-%     Suppose $|G| = n$. Let the set $\mathcal{S} = \{g_1H, g_2H, g_3H, \dots, g_kH\}$ contain all distinct left cosets of $H$ in $G$. Thus $k = [G: H]$.
-
-%     By \textbf{Lemma \ref{lemma-left-coset-partition}},
-%     \[
-%         G = \bigcup_{i=1}^k g_iH = g_1H \cup g_2H \cup \cdots \cup g_kH
-%     \]
-%     with $g_iH \cap g_jH = \emptyset$ if $i \neq j$. Thus,
-%     \begin{align*}
-%         |G| &= \sum_{i=1}^k|g_iH|\\
-%         &=\sum_{i=1}^k|H| & (\text{by \textbf{Lemma \ref{lemma-order-of-coset}}})\\
-%         &= k|H|
-%     \end{align*}
-%     and since $k = [G: H]$, therefore $|G| = [G:H]|H|$, proving Lagrange's theorem.
-% \end{proof}
-
-% \begin{exercise}
-%     Let $G$ be the group $(\mathbb{Z}_{99}, \oplus_{99})$. It is given that $H = \{0, 33, 66\}$ is a subgroup of $G$. What is the index of $H$ in $G$?
-% \end{exercise}
-
-% Let's look at some corollaries of Lagrange's theorem.
-% \begin{corollary-thrm}\label{corollary-order-of-group-multiple-of-order-of-element}
-%     Let $G$ be a finite group and let $g$ be an element in $G$. Then $|G|$ is a multiple of $|g|$.
-% \end{corollary-thrm}
-% \begin{proof}
-%     We want to show that $|G| = m|g|$ for some positive integer $m$.
-
-%     Clearly $|e| = 1$ so $|G| = |G| \times 1 = |G||e|$. Thus for the identity, $m = |G|$.
-
-%     Now suppose $g \neq e$ and $|g| = n < \infty$. Let $\mathcal{S} = \langle g \rangle = \{g, g^2, g^3, \dots, g^n\}$. Note that $\mathcal{S}$ is a (cyclic) subgroup of $G$ and $|\mathcal{S}| = n$. By Lagrange's theorem (\textbf{Theorem \ref{thrm-lagrange}}), $|G| = [G:\mathcal{S}]|\mathcal{S}| = [G:\mathcal{S}]|g|$. Hence, in this case, $m = [G:\mathcal{S}]$, proving the claim.
-% \end{proof}
-
-% \begin{corollary-thrm}\label{corollary-group-with-prime-order-subgroups}
-%     A finite group $G$ with prime order $p$ has no proper subgroups.
-% \end{corollary-thrm}
-% \begin{proof}
-%     By Lagrange's theorem, the order of a subgroup must be a factor of the order of the group. Since the order of the group is prime, it only has 2 factors, namely 1 and $p$. The subgroup of order 1 is $\{e\}$ and the subgroup of order $p = |G|$ is clearly $G$ itself. Hence $G$ has no proper subgroups.
-% \end{proof}
-
-% \begin{exercise}\label{exercise-prime-order-element}
-%     Let $G$ be a finite group with prime order $p$. Let $x$ be a non-identity element in $G$. Prove that $|x| = p$.
-% \end{exercise}
-
-% \begin{corollary-thrm}\label{corollary-group-with-prime-order-is-cyclic}
-%     A finite group $G$ with prime order $p$ is cyclic.
-% \end{corollary-thrm}
-% \begin{proof}
-%     By \textbf{Exercise \ref{exercise-prime-order-element}}, any element $g$ in $G$ where $g \neq e$ has $|g| = p$. Thus $\langle g \rangle \neq \{e\}$.
-
-%     Note that $\langle g \rangle = \{g, g^2, g^3, \dots, g^p\} \leq G$. However, by \textbf{Corollary \ref{corollary-group-with-prime-order-subgroups}}, the only subgroups of $G$ are $\{e\}$ and $G$. Since $\langle g \rangle \neq \{e\}$ thus $\langle g \rangle = G$, meaning $G$ is cyclic with generator $g$.
-% \end{proof}
-
-% \section{Normal Subgroups}
-% We now look at a special type of subgroup, known as \textbf{normal subgroups}.
-% \begin{definition}
-%     Let $G$ be a group and $N \leq G$. We say that $N$ is a \textbf{normal subgroup} of $G$ if $gN = Ng$ for all $g$ in $G$.
-% \end{definition}
-% If $N$ is a normal subgroup of $G$, we write $N \unlhd G$. Furthermore if $N$ is a \textit{proper} normal subgroup of $G$, we write $N \lhd G$.
-
-% Note that $gN = Ng$ is equivalent to the following two statements:
-% \begin{itemize}
-%     \item $gNg^{-1} = N$ for all $g$ in $G$. (One may interpret $gNg^{-1}$ as either the left coset $g(Ng^{-1})$ or the right coset $(gN)g^{-1}$.)
-%     \item $gng^{-1}$ is in $N$ for all $g$ in $G$ and $n$ in $N$.
-% \end{itemize}
-
-% \begin{proposition}\label{prop-subgroup-of-abelian-group-is-normal}
-%     Every subgroup of an abelian group is normal.
-% \end{proposition}
-% \begin{proof}
-%     Let $G$ be an abelian group and $H \leq G$. Let $g$ be in $G$ and $h$ be in $H$. Then
-%     \begin{align*}
-%         ghg^{-1} &= gg^{-1}h & (\text{since }G \text{ is commutative})\\
-%         &= eh\\
-%         &= h
-%     \end{align*}
-%     which is an element of $H$. Thus $ghg^{-1}$ is an element of $H$ for all $g$ in $G$ and $h$ in $H$, meaning $H \lhd G$.
-% \end{proof}
-
-% \begin{example}\label{example-normal-subgroups-of-d3}
-%     Let's consider normal subgroups of the dihedral group of order 6, $D_3$.
-
-%     Recall $D_3 = \{e, r, r^2, s, rs, r^2s\}$. Note that $|r| = 3$, $|s| = 2$, $\langle r \rangle = \{e, r, r^2\}$, and $\langle s \rangle = \{e, s\}$. We will show that $\langle r \rangle$ is a normal subgroup of $D_3$ but not $\langle s \rangle$. Note that since $r$ and $s$ are generators, we simply need to check $s\langle r\rangle$, $\langle r\rangle s$, $r\langle s\rangle$, and $\langle s\rangle r$ to check for normality.
-
-%     For $\langle r \rangle$,
-%     \begin{itemize}
-%         \item $s\langle r\rangle = \{s, sr, sr^2\} = \{s, r^2s, rs\}$
-%         \item $\langle r\rangle s = \{s, rs, r^2s\}$
-%     \end{itemize}
-%     so $s\langle r\rangle = \langle r \rangle s$ which means $\langle r \rangle \lhd D_3$.
-
-%     For $\langle s \rangle$,
-%     \begin{itemize}
-%         \item $r\langle s\rangle = \{r, rs\}$
-%         \item $\langle s \rangle r = \{r, sr\} = \{r, r^2s\}$
-%     \end{itemize}
-%     and since $rs \neq r^2s$ thus $r\langle s\rangle \neq \langle s \rangle r$. Hence, $\langle s \rangle$ is not a normal subgroup of $D_3$.
-% \end{example}
-
-% \section{Quotient Groups}
-% We end this chapter by looking at a special (and useful) group: the quotient group. But before we can do that, we look at the idea of the set of left cosets.
-
-% \begin{definition}
-%     Let $G$ be a group and $H \leq G$. The \textbf{set of left cosets} is denoted by
-%     \[
-%         G/H = \{gH \ | \ g \in G \}.
-%     \]
-% \end{definition}
-% \begin{remark}
-%     We may sometimes write $G/H$ using fractions, such as $\frac GH$, if it serves to improve readability.
-% \end{remark}
-
-% Note that the number of left cosets is $[G:H] = \frac{|G|}{|H|}$ by \textbf{Theorem \ref{thrm-lagrange}}. Also note that if $G/H$ is \textbf{not} a group, it is read ``$G$ by $H$''.
-
-% \begin{theorem}\label{thrm-quotient-group-requirement}
-%     Let $G$ be a group and $N \lhd G$. Then $G / N$ forms a group called the \textbf{quotient group} with group operation $\star$ such that
-%     \[
-%         (xN) \star (yN) = (xy)N.
-%     \]
-% \end{theorem}
-% Note that, as per usual, we suppress the operation $\star$ and just write $(xN)(yN) = (xy)N$. Also note that for the quotient group, $G / N$ is read ``$G$ mod $N$''.
-% \begin{proof}
-%     Before we can prove that it forms a group, we need to show that $\star$ is well defined. This is because we worry that if $x_1N = x_2N$ and $y_1N = y_2N$ there may be a situation that $(x_1y_1)N \neq (x_2y_2)N$ under this operation. Thus we need to check if such an operation is well defined.
-
-%     Suppose $x_1N = x_2N$ and $y_1N = y_2N$ where $x_1, x_2, y_1, y_2 \in G$. Then
-%     \begin{align*}
-%         (x_1N)(y_1N) &= (x_1y_1)N & (\text{by definition})\\
-%         &= x_1(y_1N) & (\text{left coset of } y_1N \text{ in } G \text{ by } x_1)\\
-%         &= x_1(y_2N) & (\text{since } y_1N = y_2N)\\
-%         &= x_1(Ny_2) & (\text{since } N \text{ is normal, so } y_2N=Ny_2)\\
-%         &= (x_1N)y_2 & (\text{right coset of } x_1N \text{ in } G \text{ by } y_2)\\
-%         &= (x_2N)y_2 & (\text{since } x_1N = x_2N)\\
-%         &= x_2(Ny_2) & (\text{left coset of } Ny_2 \text{ in } G \text{ by } x_2)\\
-%         &= x_2(y_2N) & (\text{since } N \text{ is normal, so } y_2N=Ny_2)\\
-%         &= (x_2y_2)N & (\text{left coset of } N \text{ in } G \text{ by } x_2y_2)\\
-%         &= (x_2N)(y_2N) & \text{(by definition)}
-%     \end{align*}
-%     so if $x_1N = x_2N$ and $y_1N = y_2N$ then $(x_1N)(y_1N) = (x_2N)(y_2N)$, meaning that $\star$ is well defined.
-
-%     We can now prove the four group axioms.
-%     \begin{enumerate}
-%         \item \textbf{Closure}: Assume $xN$ and $yN$ are in $G/N$. Then $(xN)(yN) = (xy)N$. Since $xy$ is in $G$ thus $(xy)N$ is in $G/N$, meaning that $G/N$ is closed under $\star$.
-%         \item \textbf{Associativity}: Take $xN$, $yN$, and $zN$ from $G/N$. Then
-%         \begin{align*}
-%             (xN)\left((yN)(zN)\right) &= (xN)\left((yz)N\right)\\
-%             &= (xyz)N\\
-%             &= \left((xy)z\right)N\\
-%             &= \left((xy)N\right)(zN)\\
-%             &= \left((xN)(yN)\right)(zN)
-%         \end{align*}
-%         so $\star$ is associative.
-%         \item \textbf{Identity}: Observe that $e$ is in $G$ so $eN = N$ is in $G / N$. Note that
-%         \[
-%         (eN)(xN) = (ex)N = xN \text{ and } (xN)(eN) = (xe)N = xN
-%         \]
-%         for $x$ in $G$, so $eN = N$ is the identity in $G/N$.
-%         \item \textbf{Inverse}: Observe that for $x$ in $G$, $x^{-1}$ is also in $G$. Note that
-%         \[
-%         (xN)(x^{-1}N) = (xx^{-1})N = eN = N
-%         \]
-%         and
-%         \[
-%         (x^{-1}N)(xN) = (x^{-1}x)N = eN = N
-%         \]
-%         so $(xN)^{-1}$ is $x^{-1}N$.
-%     \end{enumerate}
-%     Since the four group axioms are satisfied, thus $G/N$ is a group under the operation $\star$.
-% \end{proof}
-
-% \begin{example}
-%     Let's look at possible quotients of the group $D_3$, which has the underlying set of $\{e, r, r^2, s, rs, r^2s\}$. Recall from a previous example that $\langle r \rangle \lhd D_3$. Thus $D_3 / \langle r \rangle$ is a quotient group, with $|D_3 / \langle r \rangle| = \frac{|D_3|}{|\langle r\rangle|} = \frac63 = 2$.
-
-%     Let's now look at the elements of $D_3 / \langle r \rangle$.
-%     \begin{align*}
-%         D_3 / \langle r \rangle  &= \{x\langle r \rangle \ | \ x \in D_3\}\\
-%         &= \left\{\{x, xr, xr^2\} \ | \ x \in D_3\right\}\\
-%         &= \{\{e, r, r^2\}, \{r, r^2, r^3\}, \{r^2, r^3, r^4\}, \\ &\quad\quad \{s, sr, sr^2\}, \{rs, rsr, rsr^2\}, \{r^2s, r^2sr, r^2sr^2\}\}\\
-%         &= \{\{e, r, r^2\}, \{r, r^2, e\}, \{r^2, e, r\}, \\ &\quad\quad \{s, sr, sr^2\}, \{sr^2, s, sr\}, \{sr, sr^2, s\}\}\\
-%         &= \left\{\{e, r, r^2\}, \{s, sr, sr^2\}\right\}\\
-%         &= \left\{\langle r\rangle, s\langle r \rangle\right\}
-%     \end{align*}
-%     Note also that $(s\langle r \rangle)^2 = s^2\langle r \rangle = \langle r\rangle$, so in fact $D_3 / \langle r \rangle$ has generator $\langle r \rangle$, i.e. $D_3 / \langle r \rangle = \left\langle \langle r \rangle \right\rangle$.
-% \end{example}
-
-% \begin{exercise}\label{exercise-quotient-group-of-cyclic-group-is-cyclic}
-%     Let $G$ be a finite cyclic group. Let $H$ be a subgroup of $G$.
-%     \begin{enumerate}[label=(\roman*)]
-%         \item Explain why $G/H$ is a quotient group.
-%         \item Show that $G/H$ is cyclic.
-%     \end{enumerate}    
-% \end{exercise}
-
-% \section{Problems}
-% \begin{problem}
-%     Let $G = D_4$, the dihedral group of order 8. By considering the subgroup axioms, determine if the following form subgroups of $G$.
-%     \begin{enumerate}[label=(\alph*)]
-%         \item $\{e\}$
-%         \item $\{e, r, s\}$
-%         \item $\{r, r^2, r^3\}$
-%         \item $\{r, r^3, r^4, r^6\}$
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}
-%     Let $G$ be a group and $H \leq G$. Let
-%     \[
-%         K = \{x \in G \ | \ xhx^{-1} \in H \text{ for all } h \in H \}.
-%     \]
-%     Prove the following statements.
-%     \begin{enumerate}[label=(\alph*)]
-%         \item $K \leq G$
-%         \item $H \leq K$
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}\label{problem-center-of-G}
-%     Let $G$ be a group.
-%     \begin{enumerate}[label=(\alph*)]
-%         \item Prove that $\Z{G}$ is a normal subgroup of $G$.
-%         \item Prove that $\Z{G} = G$ if and only if $G$ is abelian.
-%         \item Find the center of the group $D_4$.\newline
-%         (You may assume $|\Z{G}| < \frac12 |G|$. The reason becomes apparent with \textbf{Problem \ref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}}'s solution.)
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}\label{problem-intersection-of-subgroups}
-%     Let $G$ be a group, $H \leq G$ and $K \leq G$. Prove or disprove the following statements.
-%     \begin{enumerate}[label=(\alph*)]
-%         \item $H \cap K \leq G$
-%         \item $H \cap K \leq H$
-%         \item $H \cup K \leq G$
-%         \item $H \cup K \leq H$
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}\label{problem-subgroup-of-cyclic-group-is-cyclic}
-%     Let $G$ be a cyclic group with generator $g$. Prove that any subgroup of $G$ must also be cyclic.
-% \end{problem}
-
-% \begin{problem}
-%     Let $G$ be a group of order 1024 and let $H$ be a proper subgroup of $G$. Determine the maximum order of $H$. Give an example of the groups $G$ and $H$ such that $H$ has this maximum order.
-% \end{problem}
-
-% \begin{problem}
-%     Let $G$ be a finite group with even order. Show that there exists an element with order 2 in $G$.
-% \end{problem}
-
-% \begin{problem}\label{problem-subgroup-of-index-2}
-%     Let $G$ be a finite group. Suppose $H < G$ such that the index of $H$ in $G$ is 2. Prove that
-%     \begin{enumerate}[label=(\roman*)]
-%         \item $H \lhd G$;
-%         \item $H$ contains the squares of all elements of $G$; and
-%         \item an element $x \in G$ is in $H$ if $x$ has odd order.
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}\label{problem-intersection-of-coprime-subgroups}
-%     Let $G$ be a finite group, $H \leq G$, and $K \leq G$. Suppose the greatest common divisor (GCD) of the order of $H$ and the order of $K$ is 1. Show that the intersection of the groups $H$ and $K$ contains only the identity.
-% \end{problem}
-
-% \begin{problem}\label{problem-smallest-nonabelian-group}
-%     Let $G$ be a finite group, and let its order be $m$.
-%     \begin{enumerate}[label=(\alph*)]
-%         \item Find the smallest value of $m$ such that $G$ is non-abelian.
-%         \item Prove that the value of $m$ found in (a) is the smallest value that allows $G$ to be non-abelian.
-%         \item Hence prove that there exists a non-abelian group of order $n$, where $n$ is even and $n \geq m$.
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}\label{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}
-%     Let $G$ be a group, and suppose $G / \Z{G}$ is cyclic. Prove that $G$ is abelian.
-% \end{problem}
+\begin{problem}\label{problem-subgroup-of-cyclic-group-is-cyclic}
+    Let $G$ be a cyclic group with generator $g$. Prove that any subgroup of $G$ must also be cyclic.
+\end{problem}
+
+\begin{problem}
+    Let $G$ be a group of order 1024 and let $H$ be a proper subgroup of $G$. Determine the maximum order of $H$. Give an example of the groups $G$ and $H$ such that $H$ has this maximum order.
+\end{problem}
+
+\begin{problem}
+    Let $G$ be a finite group with even order. Show that there exists an element with order 2 in $G$.
+\end{problem}
+
+\begin{problem}\label{problem-subgroup-of-index-2}
+    Let $G$ be a finite group. Suppose $H < G$ such that the index of $H$ in $G$ is 2. Prove that
+    \begin{enumerate}[label=(\roman*)]
+        \item $H \lhd G$;
+        \item $H$ contains the squares of all elements of $G$; and
+        \item an element $x \in G$ is in $H$ if $x$ has odd order.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}\label{problem-intersection-of-coprime-subgroups}
+    Let $G$ be a finite group, $H \leq G$, and $K \leq G$. Suppose the greatest common divisor (GCD) of the order of $H$ and the order of $K$ is 1. Show that the intersection of the groups $H$ and $K$ contains only the identity.
+\end{problem}
+
+\newpage
+
+\begin{problem}\label{problem-smallest-nonabelian-group}
+    Let $G$ be a finite group, and let its order be $m$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Find the smallest value of $m$ such that $G$ is non-abelian.
+        \item Prove that the value of $m$ found in (a) is the smallest value that allows $G$ to be non-abelian.
+        \item Hence prove that there exists a non-abelian group of order $n$, where $n$ is even and $n \geq m$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}\label{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}
+    Let $G$ be a group, and suppose $G / \Z{G}$ is cyclic. Prove that $G$ is abelian.
+\end{problem}
 
 % %=========================================
 % \chapter{Homomorphisms and Isomorphisms}
