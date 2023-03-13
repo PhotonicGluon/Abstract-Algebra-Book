@@ -1964,736 +1964,739 @@
 %     \end{enumerate}
 % \end{problem}
 
-%=========================================
-\chapter{Direct Products of Groups}
-\section{External Direct Product}
-The external direct product is one method of `combining' groups together.
-\begin{definition}
-    Let $(G, \ast)$ and $(H, \star)$ be groups. The \textbf{external direct product}\index{direct product!external} of $G$ and $H$ is denoted by $G\times H$ and is the group $(G\times H, (\ast, \star))$, where $G\times H$ is the Cartesian product of $G$ and $H$, and $(\ast, \star)$ are the operators performed component-wise.
-\end{definition}
-Verifying that $(G\times H, (\ast, \star))$ is a group is left as an exercise for the reader.
+% %=========================================
+% \chapter{Direct Products of Groups}
+% \section{External Direct Product}
+% The external direct product is one method of `combining' groups together.
+% \begin{definition}
+%     Let $(G, \ast)$ and $(H, \star)$ be groups. The \textbf{external direct product}\index{direct product!external} of $G$ and $H$ is denoted by $G\times H$ and is the group $(G\times H, (\ast, \star))$, where $G\times H$ is the Cartesian product of $G$ and $H$, and $(\ast, \star)$ are the operators performed component-wise.
+% \end{definition}
+% Verifying that $(G\times H, (\ast, \star))$ is a group is left as an exercise for the reader.
 
-Note that $|G \times H| = |G||H|$ by definition of the Cartesian product.
+% Note that $|G \times H| = |G||H|$ by definition of the Cartesian product.
+
+% \begin{example}
+%     $\mathbb{Z}_5 \times \mathbb{Z} = \{(m,n) \vert m \in \mathbb{Z}_5 \text{ and } n \in \mathbb{Z}\}$.
+
+%     Thus, $(2, 5)(5, 9) = (2 \oplus_5 5, 5 + 9) = (2, 14)$.
+% \end{example}
+
+% \begin{example}
+%     Let $\mathcal{S} = \mathbb{R}\setminus\{0\}$ be a group under multiplication. Then $\mathcal{S} \times \mathbb{Z}_3 = \{ (x, n) \vert x \in \mathcal{S} \text{ and } n \in \mathbb{Z}_3\}$.
+
+%     So, $(3, 2)^{-1} = \left(\frac13, 1\right)$ since
+%     \begin{align*}
+%         (3, 2)\left(\frac13, 1\right) &= \left(3 \times \frac13, 2 \oplus_3 1\right)\\
+%         &= (1, 0)\\
+%         &= (\text{Identity in }\mathcal{S}, \text{Identity in }\mathbb{Z}_3)
+%     \end{align*}
+% \end{example}
+
+% \begin{exercise}
+%     Simplify $(s, rs)(r^2s, r^3)$ in $D_3 \times D_4$.
+% \end{exercise}
+
+% We prove some results relating the external direct product.
+% \begin{proposition}\label{prop-order-of-element-in-external-direct-product}
+%     Let $G_1$ and $G_2$ be groups with identities $e_1$ and $e_2$ respectively. Let $(x, y) \in G_1 \times G_2$, $|x| = r$, $|y| = s$, and $e_{1,2}$ be the identity of $G_1\times G_2$. Then $|(x, y)| = \lcm(r, s)$.
+% \end{proposition}
+% \begin{proof}[Proof (see \cite{proofwiki_orderofgroupelementinexternaldirectproduct})]
+%     For brevity let $l = \lcm(r, s)$, so $l = \alpha r = \beta s$ for some positive integers $\alpha$ and $\beta$. Let $m = |(x, y)|$.
+
+%     Note that
+%     \begin{align*}
+%         (x, y)^l &= (x^l, y^l)\\
+%         &= (x^{\alpha r}, y^{\beta s})\\
+%         &= \left((x^r)^\alpha, (y^s)^\beta\right)\\
+%         &= (e_1^\alpha, e_2^\beta)\\
+%         &= (e_1, e_2)\\
+%         &= e_{1,2}.
+%     \end{align*}
+%     Therefore $l = k|(x, y)| = km$ for some positive integer $k$, i.e. $m\vert l$.
+
+%     Note also that $(x, y)^m = (x^m, y^m)$ and $(x, y)^m = e_{1,2} = (e_1, e_2)$. Therefore $x^m = e_1$ and $y^m = e_2$. Hence,
+%     \[
+%         m = p|x| = pr \text{ and } m = q|y| = qs
+%     \]
+%     for some positive integers $p$ and $q$, meaning that $r$ and $s$ both divide $m$. Therefore $\lcm(r, s) = l\vert m$.
+
+%     Since $m\vert l$ and $l\vert m$, thus $m = l$. Therefore we see that $|(x, y)| = \lcm(|x|, |y|)$.
+% \end{proof}
+
+% \begin{theorem}\label{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition}
+%     $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ if and only if $\gcd(m,n) = 1$.
+% \end{theorem}
+% \begin{proof}[Proof (see {\cite[Proposition 13.1 (3)]{humphreys_1996}})]
+%     We first work on the forward direction. Suppose $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$. For brevity let $d = \gcd(m,n)$.
+    
+%     Suppose on the contrary that $d > 1$. Take $(a, b) \in \mathbb{Z}_m \times \mathbb{Z}_n$. Note that $\frac{mn}{d} = \lcm(m,n)$ which is a positive integer. Then
+%     \begin{align*}
+%         \underbrace{(a,b)(a,b)(a,b)\cdots(a,b)}_{\frac{mn}{d}\text{ times}} &= \left(\frac{mn}{d}a, \frac{mn}{d}b\right)\\
+%         &= \left(m\frac{na}{d}, n\frac{mb}{d}\right) & (\text{since } d | m \text{ and } d | n)\\
+%         &= (\underbrace{0}_{\text{In } \mathbb{Z}_m}, \underbrace{0}_{\text{In } \mathbb{Z}_n})
+%     \end{align*}
+%     which implies $|(a, b)| \leq \frac{mn}{d} < mn$ for all $(a, b) \in \mathbb{Z}_m \times \mathbb{Z}_n$. Hence, this means that $\mathbb{Z}_m \times \mathbb{Z}_n$ is \textit{not} cyclic, since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and no element in $\mathbb{Z}_m \times \mathbb{Z}_n$ has order $mn$. However, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ is cyclic, a clear contradiction. Hence, $d \not>1 \implies d = 1$, meaning $\gcd(m,n) = 1$.
+
+%     We now work on the reverse direction. Suppose $\gcd(m,n) = 1$. Note that $|1| = m$ in $\mathbb{Z}_m$ and $|1| = n$ in $\mathbb{Z}_n$. Thus
+%     \begin{align*}
+%         |(1, 1)| &= \lcm(m, n) & (\text{\textbf{Proposition \ref{prop-order-of-element-in-external-direct-product}}})\\
+%         &= \frac{mn}{\gcd(m,n)}\\
+%         &= mn & (\text{since }\gcd(m,n) = 1).
+%     \end{align*}
+%     Since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and $|(1,1)| = mn$, thus $\mathbb{Z}_m \times \mathbb{Z}_n$ is cyclic. By \textbf{Theorem \ref{thrm-finite-cyclic-group-isomorphic-to-Zn}}, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$.
+
+%     This proves the theorem.
+% \end{proof}
+
+% \begin{exercise}
+%     Find all pairs of integers $(m, n)$ with $1 < m < n$ such that $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{180}$.
+% \end{exercise}
+
+% \section{Internal Direct Product}
+% Before we look at the internal direct product, we look at the \textbf{subgroup product}\index{subgroup product}.
+% \begin{definition}
+%     Let $G$ be a group and $H, K \leq G$. Then
+%     \[
+%         HK = \{hk \vert h \in H, k \in K\}
+%     \]
+%     is called the \textbf{subgroup product of $H$ and $K$}.
+% \end{definition}
+
+% \begin{proposition}\label{prop-subgroup-product-is-subgroup}
+%     Let $G$ be a group and $H, K \leq G$. Then $HK \leq G$ if and only if $HK = KH$.
+% \end{proposition}
+
+% \newpage
+
+% \begin{proof}
+%     We first prove the forward direction; assume that $HK \leq G$. First take an arbitrary $kh \in KH$. Then we note
+%     \begin{align*}
+%         kh &= \left(\left(kh\right)^{-1}\right)^{-1}\\
+%         &= (\underbrace{h^{-1}}_{\text{In } H}\underbrace{k^{-1}}_{\text{In } K})^{-1}\\
+%         &\in HK
+%     \end{align*}
+%     since $HK \leq G$ so the inverse of any element is in $HK$. Therefore any element in $KH$ is also in $HK$, meaning that $KH \subseteq HK$. Now take an arbitrary $hk \in HK$. Note that $k^{-1}h^{-1} = (hk)^{-1} \in HK$, so set $k^{-1}h^{-1} = \hat{h}\hat{k}$ for some $\hat{h} \in H$ and $\hat{k} \in K$. Hence $hk = \left(k^{-1}h^{-1}\right)^{-1} = \hat{k}^{-1}\hat{h}^{-1} \in KH$, meaning $HK \subseteq KH$. Therefore $HK = KH$ as needed.
+
+%     We now prove the reverse direction; assume that $HK = KH$. Clearly $e \in HK$ since $e \in H$ and $e \in K$. Now suppose $h_1k_1, h_2k_2 \in HK$. We note
+%     \begin{align*}
+%         (h_1k_1)(h_2k_2)^{-1} &= h_1k_1k_2^{-1}h_2^{-1}\\
+%         &= h_1(\underbrace{k_1k_2^{-1}h_2^{-1}}_{\text{In } KH = HK})\\
+%         &= h_1(h'k') & (\text{set }(k_1k_2^{-1})h_2^{-1} = h'k')\\
+%         &= (\underbrace{h_1h'}_{\text{In } H})k'\\
+%         &\in HK
+%     \end{align*}
+%     so by subgroup test, $HK \leq G$.
+% \end{proof}
+% An important point to note is that $HK = KH$ does not imply that $hk = kh$ for all $h \in H$ and $k \in K$. Finding a counterexample to this claim is left as an exercise to the reader.
+
+% We now look at the \textbf{internal direct product}, another way of combining elements of two groups.
+
+% \begin{definition}
+%     Let $G$ be a group and $H$ and $K$ be subgroups of $G$ such that
+%     \begin{enumerate}
+%         \item $G = HK$,
+%         \item $H \cap K = \{e\}$, and
+%         \item for all $h \in H$ and $k \in K$, $hk = kh$.
+%     \end{enumerate}
+%     Then $G$ is said to be the \textbf{internal direct product}\index{direct product!internal} of $H$ and $K$.
+% \end{definition}
+
+% \begin{example}
+%     Consider $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. Note that
+%     \begin{align*}
+%         HK &= \{hk \vert h \in H, k \in K\}\\
+%         &= \{e, r^2, r^4, s, r^2s, r^4s, r^3, r^5, r^7, r^3s, r^5s, r^7s\}\\
+%         &= \{e, r^2, r^4, s, r^2s, r^4s, r^3, r^5, r, r^3s, r^5s, rs\}\\
+%         &= D_6\\
+%         &= G
+%     \end{align*}
+%     so $G = HK$. Note also that $hk = kh$ for all $h$ in $H$ and $k$ in $K$. Thus $G$ is indeed the internal direct product of $H$ and $K$.
+% \end{example}
+
+% \begin{exercise}
+%     Let $G = \{1, 5\}$ and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the internal direct product of $G$ and $H$.
+% \end{exercise}
+
+% \newpage
+
+% \section{The Isomorphism Between Them}
+% It is certainly tiring to remember that there is an \textit{external} direct product and an \textit{internal} direct product. One might rightly wonder whether we can simplify both into one unified ``direct product''. In fact, there exists and isomorphism between the external direct product and the internal direct product of two groups.
+
+% \begin{theorem}\label{thrm-direct-product-equivilance}
+%     If $G$ is the internal direct product of $H$ and $K$ then $G \cong H \times K$.
+% \end{theorem}
+% \begin{proof}
+%     Let $\phi: G \to H \times K$, $g \mapsto (h, k)$ where $g = hk$. We will show that $\phi$ is a well-defined isomorphism.
+%     \begin{itemize}
+%         \item \textbf{Well-defined}: Suppose $g = hk = h'k'$ where $h, h' \in H$ and $k, k' \in K$. Since $hk = h'k'$ thus $h^{-1}h' = k(k')^{-1}$.
+
+%         Note that $h^{-1}h' \in H$ and $k(k')^{-1} \in K$. So if $h^{-1}h' = k(k')^{-1}$ then $h^{-1}h' \in H \cap K$ and $k(k')^{-1} \in H \cap K$. But $H \cap K = \{e\}$. So $h^{-1}h' = e$ implies $h = h'$ and $k(k')^{-1} = e$ means that $k = k'$. Thus if $g = hk = h'k'$ then $h = h'$ and $k = k'$.
+        
+%         \item \textbf{Homomorphism}: Let $g, g' \in G$, $h, h' \in H$, and $k, k' \in K$ such that $g = hk$ and $g' = h'k'$. Then $gg' = hkh'k' = h(kh')k'$. We note that $kh' = h'k$ since $hk = kh$ for all $h \in H$ and $k \in K$. Hence $gg' = hh'kk'$.
+        
+%         We note that
+%         \[
+%             \phi(gg') = \phi(\underbrace{hh'}_{\text{In }H}\underbrace{kk'}_{\text{In }K}) = (hh', kk').
+%         \]
+%         Now we are in the group $H \times K$, so $(h, k)(h', k') = (hh', kk')$. Therefore,
+%         \begin{align*}
+%             \phi(gg') &= (h,k)(h',k')\\
+%             &= \phi(hk)\phi(h'k')\\
+%             &= \phi(g)\phi(g')
+%         \end{align*}
+%         which means that $\phi$ is a homomorphism.
+        
+%         \item \textbf{Injective}: Let $g, g' \in G$, $h, h' \in H$, and $k, k' \in K$ such that $g = hk$, $g' = h'k'$, and $\phi(g) = \phi(g')$. Then $\phi(hk) = \phi(h'k')$, meaning $(h,k) = (h',k')$. Thus $h = h'$ and $k = k'$ by equality of ordered pairs, meaning $g = hk = h'k' = g'$.
+        
+%         \item \textbf{Surjective}: Let $(h, k) \in H \times K$. Note that $hk \in G$ since $G$ is the internal direct product of $H$ and $K$, so $\phi(hk) = (h, k)$. Thus a pre-image of $(h, k)$ is $hk$.
+%     \end{itemize}
+%     Therefore $\phi$ is a well-defined isomorphism from $G$ to $H \times K$, meaning $G \cong H \times K$.
+% \end{proof}
+
+% \begin{example}
+%     Consider again $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. As we have found before, $G = HK$; but we now know that $G \cong H \times K$.
+
+%     Note that $|H| = 2$ so $H \cong \mathbb{Z}_2$ and $K \cong D_3$ (we leave the latter as an exercise for the reader to prove). Thus,
+%     \[
+%         D_6 = G = HK \cong H \times K = \mathbb{Z}_2 \times D_3.
+%     \]
+% \end{example}
+
+% \begin{exercise}
+%     Let $\mathcal{S} = \{1, 5, 7, 11\}$, $G = \{1, 5\}$ and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the value of $n$ such that $\mathcal{S} \cong (\mathbb{Z}_n)^2$.
+% \end{exercise}
+
+% \newpage
+
+% \section{Problems}
+% \begin{problem}\label{problem-external-direct-product-of-abelian-groups-is-abelian}
+%     Let $G$ and $H$ be abelian groups. Prove that $G \times H$ is also an abelian group.
+% \end{problem}
+
+% \begin{problem}
+%     Let $G$ and $H$ be groups. Prove that $G \times H \cong H \times G$.
+% \end{problem}
+
+% \begin{problem}
+%     Let $G = \mathbb{Z}_6$, $H = \{0, 2, 4\}$, and $K = \{0, 3\}$. Determine if $G$ is the internal direct product of $H$ and $K$.
+% \end{problem}
+
+% \begin{problem}
+%     Consider the \textit{Klein four-group} $\mathrm{V}$ with presentation
+%     \[
+%         \langle a, b \vert a^2 = b^2 = (ab)^2 = e \rangle.
+%     \]
+%     Show that $\mathrm{V} \cong (\mathbb{Z}_2)^2$.
+% \end{problem}
+
+%=========================================
+\chapter{Further Properties of Homomorphisms}
+\section{Image of a Homomorphism}
+As a homomorphism is a mapping between two groups, it is worthy to look at the \textbf{image} (or \textbf{range}) of the homomorphism.
+\begin{definition}
+    The \textbf{image}\index{homomorphism!image} (or \textbf{range}\index{homomorphism!range}) of a homomorphism $\phi: G \to H$ is the set
+    \[
+        \im\phi = \{\phi(g) \vert g \in G\} \subseteq H.
+    \]
+\end{definition}
+\begin{remark}
+    Some authors (e.g. \cite{libretexts_imandker}) will use the notation $\phi(G)$ for the image of $\phi: G \to H$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by \cite{clark_1984, hungerford_1980}).
+\end{remark}
 
 \begin{example}
-    $\mathbb{Z}_5 \times \mathbb{Z} = \{(m,n) \vert m \in \mathbb{Z}_5 \text{ and } n \in \mathbb{Z}\}$.
-
-    Thus, $(2, 5)(5, 9) = (2 \oplus_5 5, 5 + 9) = (2, 14)$.
+    Consider the homomorphism $f: \mathbb{Z} \to \mathbb{Z}, x \mapsto 0$. Clearly, all possible values of $x$ maps to 0, so $\im f = \{0\}$.
 \end{example}
 
-\begin{example}
-    Let $\mathcal{S} = \mathbb{R}\setminus\{0\}$ be a group under multiplication. Then $\mathcal{S} \times \mathbb{Z}_3 = \{ (x, n) \vert x \in \mathcal{S} \text{ and } n \in \mathbb{Z}_3\}$.
+We note that the image of a homomorphism is a subgroup of the codomain $H$.
+\begin{proposition}\label{prop-image-is-subgroup-of-codomain}
+    Let $\phi: G \to H$ be a homomorphism. Then $\im\phi \leq H$.
+\end{proposition}
+\begin{proof}
+    We consider the subgroup test. Let $e_G$ and $e_H$ be the identities of $G$ and $H$ respectively.
+    
+    Note that $\phi(e_G) = e_H \in \im\phi$. Thus $\im\phi$ is non-empty.
+    
+    Now suppose $h_1$ and $h_2$ are in the image of $\phi$, meaning that there exists $g_1$ and $g_2$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Note that $\phi(g_2^{-1}) = h_2^{-1}$ by homomorphism property. Hence $\phi(g_1g_2^{-1}) = h_1h_2^{-1} \in \im\phi$.
 
-    So, $(3, 2)^{-1} = \left(\frac13, 1\right)$ since
-    \begin{align*}
-        (3, 2)\left(\frac13, 1\right) &= \left(3 \times \frac13, 2 \oplus_3 1\right)\\
-        &= (1, 0)\\
-        &= (\text{Identity in }\mathcal{S}, \text{Identity in }\mathbb{Z}_3)
-    \end{align*}
+    Therefore, by subgroup test, $\im\phi \leq H$.
+\end{proof}
+
+\begin{exercise}
+    Consider the map $\phi: \mathbb{Z}_3 \to \mathbb{Z}_6, n \mapsto 2n$. Determine whether $\phi$ is a homomorphism and, if so, find its image.
+\end{exercise}
+
+\section{Kernel of a Homomorphism}
+We look at the \textbf{kernel} of a homomorphism as well.
+
+\begin{definition}
+    The \textbf{kernel}\index{homomorphism!kernel} of a homomorphism $\phi: G \to H$ is
+    \[
+        \ker\phi = \{x \in G \vert \phi(x) = e_H\}
+    \]
+    where $e_H$ is the identity in $H$.
+\end{definition}
+Basically, the kernel of $\phi$ is the set of elements in $G$ which map to the identity in $H$.
+
+\begin{remark}
+    Some authors (e.g. \cite{libretexts_imandker}) will use the notation $\phi^{-1}(e_H)$ for the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. \cite{clark_1984, hungerford_1980}).
+\end{remark}
+
+\newpage
+
+\begin{example}
+    Let the groups $G = (\mathbb{Z}^2, (+, +))$ and $H = (\mathbb{Z}, +)$. Let the map $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$. This means that $a+b = 0$, implying $ b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \mathbb{Z}\}$.
 \end{example}
 
 \begin{exercise}
-    Simplify $(s, rs)(r^2s, r^3)$ in $D_3 \times D_4$.
+    Let $i$ be the imaginary unit, that is $i^2 = -1$. Let the group $G$ be the integers under addition and $H = \langle i \rangle$ be under multiplication. Let the map $\phi: G \to H, n \mapsto i^n$.  Show that $\phi$ is a homomorphism and hence find $\ker\phi$.
 \end{exercise}
 
-We prove some results relating the external direct product.
-\begin{proposition}\label{prop-order-of-element-in-external-direct-product}
-    Let $G_1$ and $G_2$ be groups with identities $e_1$ and $e_2$ respectively. Let $(x, y) \in G_1 \times G_2$, $|x| = r$, $|y| = s$, and $e_{1,2}$ be the identity of $G_1\times G_2$. Then $|(x, y)| = \lcm(r, s)$.
+Like the image of $\phi$, the kernel of $\phi$ is a subgroup of $H$. It is, in fact, a \textit{normal} subgroup of $H$.
+\begin{proposition}\label{prop-kernel-is-normal-subgroup-of-domain}
+    Let $\phi: G \to H$ be a homomorphism. Then $\ker\phi \unlhd G$.
 \end{proposition}
-\begin{proof}[Proof (see \cite{proofwiki_orderofgroupelementinexternaldirectproduct})]
-    For brevity let $l = \lcm(r, s)$, so $l = \alpha r = \beta s$ for some positive integers $\alpha$ and $\beta$. Let $m = |(x, y)|$.
-
-    Note that
+\begin{proof}
+    We will first show $\ker\phi\leq G$. Clearly $e_G \in \ker\phi$ since $\phi(e_G) = e_H$, so $\ker\phi$ is non-empty. Now let $x, y \in \ker\phi$. This means that $\phi(x) = \phi(y) = e_H$. Note
     \begin{align*}
-        (x, y)^l &= (x^l, y^l)\\
-        &= (x^{\alpha r}, y^{\beta s})\\
-        &= \left((x^r)^\alpha, (y^s)^\beta\right)\\
-        &= (e_1^\alpha, e_2^\beta)\\
-        &= (e_1, e_2)\\
-        &= e_{1,2}.
+        \phi(xy^{-1}) &= \phi(x)\phi(y^{-1})\\
+        &= \phi(x)\left(\phi(y)\right)^{-1}\\
+        &= e_H(e_H)^{-1}\\
+        &= e_H
     \end{align*}
-    Therefore $l = k|(x, y)| = km$ for some positive integer $k$, i.e. $m\vert l$.
+    which means that $xy^{-1}\in\ker\phi$. By subgroup test, $\ker\phi\leq G$.
 
-    Note also that $(x, y)^m = (x^m, y^m)$ and $(x, y)^m = e_{1,2} = (e_1, e_2)$. Therefore $x^m = e_1$ and $y^m = e_2$. Hence,
-    \[
-        m = p|x| = pr \text{ and } m = q|y| = qs
-    \]
-    for some positive integers $p$ and $q$, meaning that $r$ and $s$ both divide $m$. Therefore $\lcm(r, s) = l\vert m$.
-
-    Since $m\vert l$ and $l\vert m$, thus $m = l$. Therefore we see that $|(x, y)| = \lcm(|x|, |y|)$.
+    Now we prove normality. Let $x \in G$ and $n \in \ker\phi$. We need to show that $xnx^{-1}\in\ker\phi$ to prove normality. Observe that
+    \begin{align*}
+        \phi(xnx^{-1}) &= \phi(x)\phi(n)\phi(x^{-1})\\
+        &= \phi(x)e_H\phi(x)^{-1} & (\text{since } n \in \ker\phi)\\
+        &= \phi(x)\phi(x)^{-1}\\
+        &= e_H,
+    \end{align*}
+    which means that $xnx^{-1} \in \ker\phi$. Hence, $\ker\phi \unlhd G$.
 \end{proof}
 
-\begin{theorem}\label{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition}
-    $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ if and only if $\gcd(m,n) = 1$.
+\begin{exercise}\label{exercise-trivial-kernel-means-injective}
+    Prove that a homomorphism $\phi:G\to H$ is injective if and only if $\ker \phi$ is trivial, i.e. $\ker \phi = \{e_G\}$.
+\end{exercise}
+
+\section{The Fundamental Homomorphism Theorem}
+We are now ready to tackle the three most important theorems regarding homomorphisms. We first state the \textbf{Fundamental Homomorphism Theorem}, which is also sometimes called the \textbf{First Isomorphism Theorem}.
+\begin{theorem}[Fundamental Homomorphism Theorem]\label{thrm-isomorphism-1}\index{Fundamental Homomorphism Theorem}\index{First Isomorphism Theorem}
+    Let $G$ and $H$ be groups. Let $\phi: G \to H$ be a homomorphism, and let $\pi: G \to G/\ker\phi$ where $g\mapsto g\ker\phi$ be the natural surjective homomorphism. Then there exists a unique isomorphism $\psi: G/\ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
 \end{theorem}
-\begin{proof}[Proof (see {\cite[Proposition 13.1 (3)]{humphreys_1996}})]
-    We first work on the forward direction. Suppose $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$. For brevity let $d = \gcd(m,n)$.
+Equivalently, the Fundamental Homomorphism Theorem states that
+\[
+    G/\ker\phi \cong \im\phi
+\]
+for any homomorphism $\phi$.
+
+We include the commutativity diagram of the homomorphisms stated above to aid clarity:
+
+\begin{figure}[h]
+    \centering
+    \fbox{\includegraphics[width=4.5cm]{images/chapter7/FirstIsomorphismTheoremCommutivityDiagram.png}}
+    \caption{Commutivity Diagram For \textbf{Theorem \ref{thrm-isomorphism-1}}}
+\end{figure}
+
+In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elements from $G$ to $G/\ker\phi$. Then the map $\psi$ is a unique map that sends elements from $G/\ker\phi$ to the image of $\phi$.
+
+\begin{proof}[Proof (cf. {\cite[p.~250, Theorem 2]{cohn_1982}})]
+    We know by \textbf{Proposition \ref{prop-image-is-subgroup-of-codomain}} that $\im\phi \leq H$. Let $\psi: G/\ker\phi \to \im\phi$ such that $\psi(x\ker\phi) = \phi(x)$. We need to check that $\psi$ is a well-defined isomorphism.
+    \begin{itemize}
+        \item \textbf{Well-defined}: Suppose $x\ker\phi = y\ker\phi$ where $x, y \in G$.
+        \begin{align*}
+            &\implies xy^{-1} \in \ker\phi & (\text{Coset Equality, \textbf{Lemma \ref{lemma-coset-equality}}})\\
+            &\implies\phi(xy^{-1}) = e_H & (\text{Definition of kernel})\\
+            &\implies\phi(x)\left(\phi(y)\right)^{-1} = e_H & (\text{Definition of homomorphism})\\
+            &\implies\phi(x) = \phi(y)
+        \end{align*}
+        Thus,
+        \[
+            \psi(x\ker\phi) = \phi(x) = \phi(y) = \psi(y\ker\phi)
+        \]
+        so $\psi$ is well-defined.
+
+        \item \textbf{Homomorphism}: Note that
+        \begin{align*}
+            \psi((x\ker\phi)(y\ker\phi)) &= \psi((xy)\ker\phi)\\
+            &= \phi(xy)\\
+            &= \phi(x)\phi(y)\\
+            &= \psi(x\ker\phi)\psi(y\ker\phi)
+        \end{align*}
+        so $\psi$ is a homomorphism.
+        \item \textbf{Injective}: By \textbf{Exercise \ref{exercise-trivial-kernel-means-injective}}, we check that $\psi$ is injective by showing that $\ker\psi$ is trivial, i.e. $\ker\psi = \{\ker\phi\}$.
+
+        Suppose $x\ker\phi\in\ker\psi$. Then $\psi(x\ker\phi) = e_H$ by definition of kernel. Hence $\phi(x) = e_H$ by definition of $\psi$. Hence, $x \in \ker\phi$ by definition of kernel. This means that $xe^{-1} \in \ker\phi$. So $x\ker\phi = e\ker\phi = \ker\phi$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}) meaning that $\ker\psi = \{\ker\phi\}$. Therefore $\psi$ is injective.
+
+        \item \textbf{Surjective}: Suppose $y$ is in the image of $\phi$, meaning there exists a $x$ in $G$ such that $\phi(x) = y$. Note that $\psi(x\ker\phi) = \phi(x) = y$. Thus $\psi$ is surjective.
+    \end{itemize}
+    Thus $\psi$ is a well-defined isomorphism.
+
+    We now check that $\psi$ satisfies the requirement that $\psi\pi = \phi$. Let $x \in G$. Note that $\pi(x) = x\ker\phi$, and
+    \[
+        \psi\pi(x) = \psi(x\ker\phi) = \phi(x)
+    \]
+    for all $x \in G$, so $\psi\pi = \phi$.
+
+    Finally we show that $\psi$ is unique. Suppose $f: G/\ker\phi \to \im\phi$ is an isomorphism satisfying $f\pi=\phi$. Take $x\ker\phi \in G/\ker\phi$. Note that
+    \begin{align*}
+        f(x\ker\phi) &= f(\pi(x))\\
+        &= (f\pi)(x)\\
+        &= \phi(x)\\
+        &= (\psi\pi)(x)\\
+        &= \psi(\pi(x))\\
+        &= \psi(x\ker\phi)
+    \end{align*}
+    for all $x \in G$, meaning that $f = \psi$. Therefore $\psi$ is unique.
+
+    Hence, $\psi$ is a unique isomorphism satisfying $\psi\pi = \phi$.
+\end{proof}
+
+\begin{example}
+    Let $R = \{x \vert x > 0\}$, $G = \{x \in \mathbb{R} \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under multiplication. We show $G / H \cong R$.
+
+    Consider the map $\phi: G \to R$ where $x \mapsto |x|$. We show that $\phi$ is a homomorphism, then find the image of $\phi$, and finally find its kernel.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: $\phi$ is a homomorphism since $\phi(xy) = |xy| = |x||y| = \phi(x)\phi(y)$.
+        \item \textbf{Image}: We find the image of $\phi$.
+        \begin{align*}
+            \im\phi &= \{\phi(x) \vert x \in G\}\\
+            &= \{|x| \vert x \neq 0\}\\
+            &= \{x \vert x > 0\} & (\text{by definition of } |x|)\\
+            &= R
+        \end{align*}
+        which actually means that $\phi$ is surjective.
+        \item \textbf{Kernel}: We find the kernel of $\phi$.
+        \begin{align*}
+            \ker\phi &= \{x \in G \vert \phi(x) = 1\} & (\text{since } 1 \text{ is identity in } R)\\
+            &= \{x \in G \vert |x| = 1\}\\
+            &= \{1, -1\}\\
+            &= H
+        \end{align*}
+    \end{itemize}
+    Thus $G/H \cong R$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}).
+\end{example}
+
+\begin{exercise}
+    Let $\phi: G \to H$ be a homomorphism between finite groups $G$ and $H$. Prove that
+    \[
+        |G| = |\im \phi|\times|\ker \phi|.
+    \]
+\end{exercise}
+
+\section{The Diamond Isomorphism Theorem}
+We now look at the next theorem, called the \textbf{Diamond Isomorphism Theorem} or the \textbf{Second Isomorphism Theorem}.
+\begin{theorem}[Diamond Isomorphism Theorem]\label{thrm-isomorphism-2}\index{Diamond Isomorphism Theorem}\index{Second Isomorphism Theorem}
+    Let $G$ be a group and let $H$ and $K$ be subgroups of $G$. Then
+    \begin{enumerate}
+        \item $H \cap K \leq H$; and
+        \item $H \leq HK$.
+    \end{enumerate}
+    Furthermore, if $N \unlhd G$, then
+    \begin{enumerate}[start=3]
+        \item $HN \leq G$;
+        \item $H \cap N \unlhd H$;
+        \item $N \unlhd HN$; and
+        \item $H / (H\cap N) \cong HN / N$.
+    \end{enumerate}
+\end{theorem}
+We can capture the overall relationships between the subgroups of $G$ using a \textbf{subgroup lattice}.
+\begin{figure}[h]
+    \centering
+    \fbox{\includegraphics[width=4.5cm]{images/chapter7/SecondIsomorphismTheoremSubgroupDiagram.png}}
+    \caption{Subgroup Diagram for \textbf{Theorem \ref{thrm-isomorphism-2}}}
+\end{figure}
+
+In the diagram, we only show subgroups that we care about. $G$ has a (direct) subgroup $HK$; $HK$ has subgroups $H$ and $K$; and $H$ and $K$ has a common subgroup $H\cap K$. In the case where $K \unlhd G$, the two dotted quotient groups are isomorphic to each other.
+
+\begin{proof}
+    We prove each statement in sequence.
+
+    \begin{enumerate}
+        \item Clearly $e_G \in H$ and $e_G \in K$ so $e_G \in H \cap K$.
+        
+        Now take $x, y \in H \cap K$, meaning $x, y \in H$ and $x, y \in K$. Now since $H, K \leq G$, thus $xy^{-1} \in H$ and $xy^{-1} \in K$ by applying the subgroup test on $H$ and $K$ respectively. This thus means that $xy^{-1} \in H \cap K$. By the subgroup test, this means that $H \cap K \leq H$.
+        
+        \item Note that $H = \{he_G \vert h \in H\} \subseteq \{hk \vert h \in H, k \in K\} = HK$, so we consider the subgroup test. Clearly $e_G \in H$ since $H \leq G$. Also since $H \leq G$, for all $x, y \in N$, $xy^{-1} \in G$. Thus, by the subgroup test, $H \leq HN$.
+        
+        \item We note that, because $N$ is normal, hence $hN = Nh$ for all $h \in H \subseteq G$, meaning that $HN = NH$. Therefore by \textbf{Proposition \ref{prop-subgroup-product-is-subgroup}}, $HN \leq G$.
+
+        \item We know $H \cap N \leq H$ by statement 1, so we only prove normality. Take $x \in H \cap N$, Since $H \leq G$, thus $x \in H \cap N \subseteq H$, meaning for all $g \in H$, $gxg^{-1} \in H$ (where we think of $g$ and $x$ as being in $H$). But since $x \in H \cap N \subseteq N$ and $N \unlhd G$, thus $gxg^{-1} \in N$ (where we think of $g \in H$ and $x \in N$). Therefore $H \cap N \unlhd H$.
+
+        \item We know $N \leq HN$ by statement 2, so we only prove normality. Take $n \in N$ and $x \in HN$ such that $x = h_xn_x$. Then
+        \begin{align*}
+            xnx^{-1} &= (h_xn_x)n(h_xn_x)^{-1}\\
+            &= (h_xn_x)n(n_x^{-1}h_x^{-1}) & (\text{Shoes and Socks})\\
+            &= \underbrace{h_x}_{\text{In }G}\underbrace{n_xnn_x^{-1}}_{\text{In }N}\underbrace{h_x^{-1}}_{\text{In G}}\\
+            &\in N
+        \end{align*}
+        since $N \lhd G$. This proves that $N \unlhd HN$.
+
+        \item This is the main result of this theorem. We define $\phi: H \to HN/N, h \mapsto hN$. We show that $\phi$ is a homomorphism and then find its image and kernel.
+        \begin{itemize}
+            \item \textbf{Homomorphism}:
+            \[
+                \phi(xy) = (xy)N = (xN)(yN) = \phi(x)\phi(y)    
+            \]
+
+            \item \textbf{Image}: We show that $\phi$ is surjective to show that $\im\phi = HN/N$. Suppose $x \in HN$, meaning $x = hn$ where $h \in H$ and $n \in N$. Thus $xN \in HN/N$, so
+            \[
+                xN = (hn)N = h(nN) = hN
+            \]
+            meaning $\phi(h) = hN = xN$. Hence we have found a pre-image of the coset $xN$, meaning $\phi$ is surjective. Hence $\im \phi = HN/N$.
+
+            \item \textbf{Kernel}: We claim that $\ker\phi = H \cap N$. Note that $\ker\phi = \{h \in H \vert \phi(h) = eN = N\}$ by definition of kernel. This means that if $h \in \ker\phi$ then $\phi(h) = N$. Hence $\phi(h) = hN = N$ which means $h \in N$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). Thus, $h \in H$ and $h \in n$, meaning $h \in H \cap N$. Therefore $\ker \phi \subseteq H \cap N$.
     
-    Suppose on the contrary that $d > 1$. Take $(a, b) \in \mathbb{Z}_m \times \mathbb{Z}_n$. Note that $\frac{mn}{d} = \lcm(m,n)$ which is a positive integer. Then
-    \begin{align*}
-        \underbrace{(a,b)(a,b)(a,b)\cdots(a,b)}_{\frac{mn}{d}\text{ times}} &= \left(\frac{mn}{d}a, \frac{mn}{d}b\right)\\
-        &= \left(m\frac{na}{d}, n\frac{mb}{d}\right) & (\text{since } d | m \text{ and } d | n)\\
-        &= (\underbrace{0}_{\text{In } \mathbb{Z}_m}, \underbrace{0}_{\text{In } \mathbb{Z}_n})
-    \end{align*}
-    which implies $|(a, b)| \leq \frac{mn}{d} < mn$ for all $(a, b) \in \mathbb{Z}_m \times \mathbb{Z}_n$. Hence, this means that $\mathbb{Z}_m \times \mathbb{Z}_n$ is \textit{not} cyclic, since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and no element in $\mathbb{Z}_m \times \mathbb{Z}_n$ has order $mn$. However, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ is cyclic, a clear contradiction. Hence, $d \not>1 \implies d = 1$, meaning $\gcd(m,n) = 1$.
+            Now suppose $x \in H \cap N$. This means that $x \in N$ necessarily, implying $xN = N$. Thus $\phi(x) = N$ which quickly implies $x \in \ker\phi$. Therefore $H \cap N \subseteq \ker\phi$.
+    
+            Since $\ker \phi \subseteq H \cap N$ and  $H \cap N \subseteq \ker\phi$ therefore $\ker\phi = H\cap N$.
+        \end{itemize}
 
-    We now work on the reverse direction. Suppose $\gcd(m,n) = 1$. Note that $|1| = m$ in $\mathbb{Z}_m$ and $|1| = n$ in $\mathbb{Z}_n$. Thus
-    \begin{align*}
-        |(1, 1)| &= \lcm(m, n) & (\text{\textbf{Proposition \ref{prop-order-of-element-in-external-direct-product}}})\\
-        &= \frac{mn}{\gcd(m,n)}\\
-        &= mn & (\text{since }\gcd(m,n) = 1).
-    \end{align*}
-    Since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and $|(1,1)| = mn$, thus $\mathbb{Z}_m \times \mathbb{Z}_n$ is cyclic. By \textbf{Theorem \ref{thrm-finite-cyclic-group-isomorphic-to-Zn}}, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$.
+        By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}),
+        \[
+            H / \ker\phi \cong \im \phi,
+        \]
+        which means
+        \[
+            H/(H\cap N) \cong HN/N.
+        \]
+    \end{enumerate}
+    This completes the proof of the theorem.
+\end{proof}
 
+\begin{corollary}\label{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}
+    Let $G$ be a group with proper subgroups $H$ and $K$. Then $H$ and $K$ are normal subgroups of $G$ if and only if $HK \unlhd G$.
+\end{corollary}
+\begin{proof}
+    We prove the forward direction first; assume that $H, K \unlhd G$. By the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we know that $HK \leq G$ since $H \unlhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
+    \begin{align*}
+        g(hk)g^{-1} &= (gh)(kg^{-1})\\
+        &= (hg)(g^{-1}k) & (\text{since } H, K \lhd G)\\
+        &= h(gg^{-1})k\\
+        &= hk \in HK
+    \end{align*}
+    which means that $HK \unlhd G$.
+
+    We now prove the reverse direction; assume $HK \unlhd G$. This means $gHKg^{-1} = HK$ for all $g \in G$ by definition of normality. Note that $gHKg^{-1} = (gHg^{-1})(gKg^{-1})$. We hence consider the following cases.
+    \begin{itemize}
+        \item Suppose $gH = H$ and $g^{-1}gKg^{-1} = Kg^{-1} = K$. Then Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}) tells us that $g \in H$ and $g \in K$, hence $g \in H \cap K$. But $g \in G$. Therefore $G \subseteq H \cap K$. However, $H \subset G$ and $K \subset G$, hence $H \cap K \subset G$, a contradiction.
+        \item Suppose $gHg^{-1}g = gH = H$ and $Kg^{-1} = K$. This is the same as above.
+    \end{itemize}
+    Therefore the only remaining case is $gHg^{-1} = H$ and $gKg^{-1} = K$, implying that both $H \unlhd G$ and $K \unlhd G$ as required.
+\end{proof}
+
+\newpage
+
+We look at a few examples for the use of the Diamond Isomorphism Theorem.
+\begin{example}
+    We say a group $G$ is \textbf{metabelian}\index{metabelian} if and only if there exists $A \unlhd G$ such that $A$ and $G/A$ are both abelian. We will prove the fact that any subgroup of a metabelian group is also metabelian.
+
+    Let $H \leq G$. Then, by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), $H \cap A \unlhd H$ (statement 4) and $H/(H \cap A) \cong HA / A$ (statement 6). We just need to prove that $H \cap A$ is abelian and prove that $H/(H \cap A)$ is abelian.
+    \begin{itemize}
+        \item Consider any two elements from $H \cap A$, say $x$ and $y$. Then $x \in A$ and $y \in A$, meaning $xy = yx$. Hence, elements from $H \cap A$ commute, meaning that $H \cap A$ is abelian.
+        \item Consider $HA / A$. Note that $HA \leq G$ since $H \leq G$ and $A \leq G$. Thus, $HA / A \leq G / A$. Note that $G/A$ is abelian by definition of metabelian group. Hence, $H/(H \cap A) \cong HA / A$ is also abelian.
+    \end{itemize}
+    Therefore, we have found a subgroup of $H$ (in particular $H \cap A$) such that both $H \cap A$ and $H/(H\cap A)$ are both abelian. Hence, $H$ is metabelian.
+\end{example}
+
+\newpage
+
+We look at another application of the Diamond Isomorphism Theorem, which has use in Number Theory.
+\begin{example}
+    We will prove that $\lcm(m,n)\times\gcd(m,n) = mn$ (\textbf{Proposition \ref{prop-product-of-gcd-and-lcm}}) by considering the Diamond Isomorphism Theorem. For brevity, let $d = \gcd(m,n)$ and $l = \lcm(m,n)$.
+
+    Consider the groups $G = \mathbb{Z}$, $H = m\mathbb{Z}$, and $N = n\mathbb{Z}$ under addition. By Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}),
+    \[
+        m\mathbb{Z}/(m\mathbb{Z} \cap n\mathbb{Z}) \cong (m\mathbb{Z} + n\mathbb{Z})/(n\mathbb{Z}).
+    \]
+
+    Now $m\mathbb{Z} \cap n\mathbb{Z}$ is the set of integers that are both a multiple of $m$ and $n$. Hence, $m\mathbb{Z} \cap n\mathbb{Z} = \lcm(m,n)\mathbb{Z} = l\mathbb{Z}$. On the other hand, $m\mathbb{Z} + n\mathbb{Z}$ is the set of all integers of the form $mx+ny$ where $x$ and $y$ are integers. B\'{e}zout's identity (\textbf{Lemma \ref{lemma-bezout}}) tells us that this set consists of the multiples of $\gcd(m,n)$, i.e. $m\mathbb{Z} + n\mathbb{Z} = \gcd(m,n)\mathbb{Z} = d\mathbb{Z}$. Hence,
+    \[
+        m\mathbb{Z}/(l\mathbb{Z}) \cong (d\mathbb{Z})/(n\mathbb{Z}).
+    \]
+
+    We claim that $m\mathbb{Z} / (l\mathbb{Z}) \cong \mathbb{Z}_{\frac lm} \text{ and } d\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd}$. This is a specific case of \textbf{Problem \ref{problem-mZ/nZ-isomorphic-to-Zn/m}} which we have left as a problem for later. Hence, what we have shown is
+    \[
+    \mathbb{Z}_{\frac lm} \cong m\mathbb{Z}/(l\mathbb{Z}) \cong d\mathbb{Z}/(n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd},
+    \]
+    which means that $\mathbb{Z}_{\frac lm} \cong \mathbb{Z}_{\frac nd}$. We can now finally take orders on both sides:
+    \[
+        \frac{l}{m} = \frac{n}{d},
+    \]
+    which means that $ld = mn$. Hence, $\lcm(m,n)\times\gcd(m,n) = mn$.
+\end{example}
+
+\begin{exercise}\label{exercise-order-of-subgroup-product}
+    Let $G$ be a finite group, $H \leq G$, and $N \lhd G$. Prove that
+    \[
+        |HN| = \frac{|H||N|}{|H \cap N|}.
+    \]
+\end{exercise}
+
+\section{The Third Isomorphism Theorem}
+We look at the last important theorem regarding homomorphisms and isomorphisms. This is often called the \textbf{Third Isomorphism Theorem} (e.g. in \cite{cohn_1982, hungerford_1980}).
+
+It should be noted that there is no consistency with the numbering of these theorems in books (cf. {\cite[\S 68]{clark_1984}} as ``First Isomorphism Theorem'', {\cite[Theorem 8.16]{humphreys_1996}} as ``Second Isomorphism Theorem''), but the name ``Third Isomorphism Theorem'' is the easiest to research. Hence, we use that name here.
+
+\begin{theorem}[Third Isomorphism Theorem]\label{thrm-isomorphism-3}\index{Third Isomorphism Theorem}
+    Let $G$ be a group. Let $H \unlhd G$ and $N \unlhd G$. Suppose $N \subseteq H$. Then
+    \begin{enumerate}
+        \item $N \unlhd H$;
+        \item $H/N \unlhd G/N$; and
+        \item $\frac{G/N}{H/N} \cong G/H$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    Like with the Diamond Isomorphism Theorem, we will prove the statements in sequence.
+
+    \newpage
+
+    \begin{enumerate}
+        \item We note that since $N \subseteq H$ and $N$ is a group (sincee $N$ is a normal subgroup of $G$) thus $N \leq H$. We now prove normality. Since $H$ and $N$ are normal subgroups of $G$, thus for all $g \in G$,
+        \[
+            gH = Hg \text{ and } gN = Ng.
+        \]
+        Now since $N \subseteq H \subseteq G$, thus for all $n$ in $N$, $nH = Hn$ (since $n \in G$). This means that $N \unlhd H$.
+
+        \item We first prove that it is a subgroup using the subgroup test, before proving normality.
+
+        Clearly $N = eN \in H/N$. Let $x$ and $y$ be in $H/N$. Then $x=h_xN$ and $y=h_yN$ for some $h_x, h_y \in H$. Note that $y^{-1} = (h_y)^{-1}N$ by group operator on cosets. Hence,
+        \begin{align*}
+            xy^{-1} &= (h_xN)(h_y^{-1}N)\\
+            &= (\underbrace{h_xh_y^{-1}}_{\text{In }H})N\\
+            &\in H/N
+        \end{align*}
+        Hence, by subgroup test, $H/N \leq G/N$.
+
+        Now let $gN \in G/N$ and $hN \in H/N$. We need to show that $(gN)(hN)(gN)^{-1} \in H/N$. Note $(gN)(hN)(gN)^{-1} = (ghg^{-1})N$. Since $H \lhd G$, thus $ghg^{-1} \in H$ which means that $(ghg^{-1})N \in H/N$.
+
+        Therefore $H/N \unlhd G/N$.
+
+        \item This is the main result of the theorem.
+
+        Define $\phi: G/N \to G/H, gN \mapsto gH$. We check that $\phi$ is a well-defined homomorphism and find its image and kernel.
+        \begin{itemize}
+            \item \textbf{Well-defined}: Suppose $gN = g'N$. Then $g(g')^{-1} \in N$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). Since $N \subseteq H$ (assumption), thus $g(g')^{-1} \in H$ which implies $gH = g'H$ by \textbf{Lemma \ref{lemma-coset-equality}}. Hence $\phi(gN) = gH = g'H = \phi(g'N)$, i.e. $\phi$ is well-defined.
+            \item \textbf{Homomorphism}: Take $gN, g'N \in G/N$. Then
+            \begin{align*}
+                \phi((gN)(g'N)) &= \phi((gg')N)\\
+                &= (gg')H\\
+                &= (gH)(g'H)\\
+                &= \phi(gN)\phi(g'N)
+            \end{align*}
+            which means that $\phi$ is a homomorphism.
+            
+            \item \textbf{Image}: We show $\phi$ is surjective to prove that $\im\phi = G/H$. Suppose $gH \in G/H$. Then $\phi(gN) = gH$. Thus $gN$ is a pre-image of $gH$, meaning that $\phi$ is surjective. Hence $\im\phi = G/H$.
+            
+            \item \textbf{Kernel}: Suppose $gN \in \ker\phi = \{gN \vert \phi(gN) = eH = H\}$. Thus $\phi(gN) = H \implies gH = H$. Therefore, $ge^{-1} = g \in H$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). This means that $gN \in H/N$, further meaning that $\ker\phi \subseteq H/N$.
+
+            Suppose now $hN \in H/N$. Since $H \lhd G \implies H\subseteq G$, thus $h \in G$. Therefore $hN \in G/N$ which means $\phi(hN) = hH = H$. Hence $hN \in \ker\phi$ which means $H/N \subseteq \ker\phi$.
+
+            Since $\ker\phi \subseteq H/N$ and $H/N \subseteq \ker\phi$, we must have $\ker\phi = H/N$.
+        \end{itemize}
+
+        \newpage
+
+        By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), we have $\frac{G/N}{\ker\phi} \cong \im\phi$, which means
+        \[
+            \frac{G/N}{H/N} \cong G/H,
+        \]
+        hence proving statement 3.
+    \end{enumerate}
     This proves the theorem.
 \end{proof}
 
-\begin{exercise}
-    Find all pairs of integers $(m, n)$ with $1 < m < n$ such that $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{180}$.
-\end{exercise}
-
-\section{Internal Direct Product}
-Before we look at the internal direct product, we look at the \textbf{subgroup product}\index{subgroup product}.
-\begin{definition}
-    Let $G$ be a group and $H, K \leq G$. Then
+\begin{example}
+    Take $G = \mathbb{Z}$, $H = m\mathbb{Z}$ and $N = mn\mathbb{Z}$. Note that clearly $H, N \leq G$, and since $G$ is abelian, we must also have $H \unlhd G$ and $N \unlhd G$. By the Third Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-3}}),
     \[
-        HK = \{hk \vert h \in H, k \in K\}
+        G/H \cong \frac{G/N}{H/N}.
     \]
-    is called the \textbf{subgroup product of $H$ and $K$}.
-\end{definition}
+    Note $G/H = \mathbb{Z}/(m\mathbb{Z}) \cong \mathbb{Z}_m$ by \textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}}. Note also
+    \[
+        \frac{G/N}{H/N} = \frac{\mathbb{Z}/(mn\mathbb{Z})}{m\mathbb{Z}/(mn\mathbb{Z})}
+    \]
+    and $\mathbb{Z}/(mn\mathbb{Z}) \cong \mathbb{Z}_{mn}$ by \textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}} again.
 
-\begin{proposition}\label{prop-subgroup-product-is-subgroup}
-    Let $G$ be a group and $H, K \leq G$. Then $HK \leq G$ if and only if $HK = KH$.
+    Consider now $\phi: m\mathbb{Z} \to \mathbb{Z}_{mn}, mx \mapsto mx \mod mn$. Clearly $\phi$ is a homomorphism. Note $\im \phi = \langle m \rangle$ and $\ker \phi = mn\mathbb{Z}$. We leave the verification of these claims as an exercise to the reader.
+
+    The Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) tells us that
+    \[
+        m\mathbb{Z} / (mn\mathbb{Z}) \cong \langle m \rangle.
+    \]
+    Thus,
+    \[
+        \mathbb{Z}_m \cong G/H \cong \frac{G/N}{H/N} \cong \mathbb{Z}_{mn}/\langle m \rangle
+    \]
+    which means $\mathbb{Z}_m \cong \mathbb{Z}_{mn} / \langle m \rangle$.
+
+    In other words, if $d$ divides $n$, then
+    \[
+        \mathbb{Z}_n / \langle d \rangle \cong \mathbb{Z}_d.
+    \]
+\end{example}
+
+From this example we can come up with a more general result.
+\begin{proposition}\label{prop-Zn-mod-cyclic-subgroup-of-m}
+    $\mathbb{Z}_n / \langle m \rangle \cong \mathbb{Z}_{\gcd(m,n)}$
 \end{proposition}
-
-\newpage
-
 \begin{proof}
-    We first prove the forward direction; assume that $HK \leq G$. First take an arbitrary $kh \in KH$. Then we note
-    \begin{align*}
-        kh &= \left(\left(kh\right)^{-1}\right)^{-1}\\
-        &= (\underbrace{h^{-1}}_{\text{In } H}\underbrace{k^{-1}}_{\text{In } K})^{-1}\\
-        &\in HK
-    \end{align*}
-    since $HK \leq G$ so the inverse of any element is in $HK$. Therefore any element in $KH$ is also in $HK$, meaning that $KH \subseteq HK$. Now take an arbitrary $hk \in HK$. Note that $k^{-1}h^{-1} = (hk)^{-1} \in HK$, so set $k^{-1}h^{-1} = \hat{h}\hat{k}$ for some $\hat{h} \in H$ and $\hat{k} \in K$. Hence $hk = \left(k^{-1}h^{-1}\right)^{-1} = \hat{k}^{-1}\hat{h}^{-1} \in KH$, meaning $HK \subseteq KH$. Therefore $HK = KH$ as needed.
+    We want to show that $\langle m \rangle = \langle \gcd(m,n) \rangle$. For brevity let $\gcd(m,n) = d$.
 
-    We now prove the reverse direction; assume that $HK = KH$. Clearly $e \in HK$ since $e \in H$ and $e \in K$. Now suppose $h_1k_1, h_2k_2 \in HK$. We note
-    \begin{align*}
-        (h_1k_1)(h_2k_2)^{-1} &= h_1k_1k_2^{-1}h_2^{-1}\\
-        &= h_1(\underbrace{k_1k_2^{-1}h_2^{-1}}_{\text{In } KH = HK})\\
-        &= h_1(h'k') & (\text{set }(k_1k_2^{-1})h_2^{-1} = h'k')\\
-        &= (\underbrace{h_1h'}_{\text{In } H})k'\\
-        &\in HK
-    \end{align*}
-    so by subgroup test, $HK \leq G$.
-\end{proof}
-An important point to note is that $HK = KH$ does not imply that $hk = kh$ for all $h \in H$ and $k \in K$. Finding a counterexample to this claim is left as an exercise to the reader.
-
-We now look at the \textbf{internal direct product}, another way of combining elements of two groups.
-
-\begin{definition}
-    Let $G$ be a group and $H$ and $K$ be subgroups of $G$ such that
-    \begin{enumerate}
-        \item $G = HK$,
-        \item $H \cap K = \{e\}$, and
-        \item for all $h \in H$ and $k \in K$, $hk = kh$.
-    \end{enumerate}
-    Then $G$ is said to be the \textbf{internal direct product}\index{direct product!internal} of $H$ and $K$.
-\end{definition}
-
-\begin{example}
-    Consider $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. Note that
-    \begin{align*}
-        HK &= \{hk \vert h \in H, k \in K\}\\
-        &= \{e, r^2, r^4, s, r^2s, r^4s, r^3, r^5, r^7, r^3s, r^5s, r^7s\}\\
-        &= \{e, r^2, r^4, s, r^2s, r^4s, r^3, r^5, r, r^3s, r^5s, rs\}\\
-        &= D_6\\
-        &= G
-    \end{align*}
-    so $G = HK$. Note also that $hk = kh$ for all $h$ in $H$ and $k$ in $K$. Thus $G$ is indeed the internal direct product of $H$ and $K$.
-\end{example}
-
-\begin{exercise}
-    Let $G = \{1, 5\}$ and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the internal direct product of $G$ and $H$.
-\end{exercise}
-
-\newpage
-
-\section{The Isomorphism Between Them}
-It is certainly tiring to remember that there is an \textit{external} direct product and an \textit{internal} direct product. One might rightly wonder whether we can simplify both into one unified ``direct product''. In fact, there exists and isomorphism between the external direct product and the internal direct product of two groups.
-
-\begin{theorem}\label{thrm-direct-product-equivilance}
-    If $G$ is the internal direct product of $H$ and $K$ then $G \cong H \times K$.
-\end{theorem}
-\begin{proof}
-    Let $\phi: G \to H \times K$, $g \mapsto (h, k)$ where $g = hk$. We will show that $\phi$ is a well-defined isomorphism.
     \begin{itemize}
-        \item \textbf{Well-defined}: Suppose $g = hk = h'k'$ where $h, h' \in H$ and $k, k' \in K$. Since $hk = h'k'$ thus $h^{-1}h' = k(k')^{-1}$.
-
-        Note that $h^{-1}h' \in H$ and $k(k')^{-1} \in K$. So if $h^{-1}h' = k(k')^{-1}$ then $h^{-1}h' \in H \cap K$ and $k(k')^{-1} \in H \cap K$. But $H \cap K = \{e\}$. So $h^{-1}h' = e$ implies $h = h'$ and $k(k')^{-1} = e$ means that $k = k'$. Thus if $g = hk = h'k'$ then $h = h'$ and $k = k'$.
-        
-        \item \textbf{Homomorphism}: Let $g, g' \in G$, $h, h' \in H$, and $k, k' \in K$ such that $g = hk$ and $g' = h'k'$. Then $gg' = hkh'k' = h(kh')k'$. We note that $kh' = h'k$ since $hk = kh$ for all $h \in H$ and $k \in K$. Hence $gg' = hh'kk'$.
-        
-        We note that
-        \[
-            \phi(gg') = \phi(\underbrace{hh'}_{\text{In }H}\underbrace{kk'}_{\text{In }K}) = (hh', kk').
-        \]
-        Now we are in the group $H \times K$, so $(h, k)(h', k') = (hh', kk')$. Therefore,
-        \begin{align*}
-            \phi(gg') &= (h,k)(h',k')\\
-            &= \phi(hk)\phi(h'k')\\
-            &= \phi(g)\phi(g')
-        \end{align*}
-        which means that $\phi$ is a homomorphism.
-        
-        \item \textbf{Injective}: Let $g, g' \in G$, $h, h' \in H$, and $k, k' \in K$ such that $g = hk$, $g' = h'k'$, and $\phi(g) = \phi(g')$. Then $\phi(hk) = \phi(h'k')$, meaning $(h,k) = (h',k')$. Thus $h = h'$ and $k = k'$ by equality of ordered pairs, meaning $g = hk = h'k' = g'$.
-        
-        \item \textbf{Surjective}: Let $(h, k) \in H \times K$. Note that $hk \in G$ since $G$ is the internal direct product of $H$ and $K$, so $\phi(hk) = (h, k)$. Thus a pre-image of $(h, k)$ is $hk$.
+        \item $\boxed{\langle m \rangle \leq \langle d \rangle}$ Since $d\;|\;m$, thus $m = dk$ for some integer $k$. Hence, $\langle m \rangle = \{mx \vert x \in \mathbb{Z}\} = \{dkx \vert x \in \mathbb{Z}\} \leq \langle d \rangle$. Hence, $\langle m \rangle \leq \langle d \rangle d$.
+        \item $\boxed{\langle m \rangle \geq \langle d \rangle}$ By the Extended Euclidean Algorithm we may write $d = \alpha m + \beta n$ for some integers $\alpha$ and $\beta$. In $\mathbb{Z}_n$, $d = \alpha m$ which quickly implies that $\langle d \rangle = \langle \alpha m \rangle \leq \langle m \rangle$.
     \end{itemize}
-    Therefore $\phi$ is a well-defined isomorphism from $G$ to $H \times K$, meaning $G \cong H \times K$.
+    Thus $\langle d \rangle = \langle m \rangle$, so the claim is proven by previous example.
 \end{proof}
 
-\begin{example}
-    Consider again $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. As we have found before, $G = HK$; but we now know that $G \cong H \times K$.
-
-    Note that $|H| = 2$ so $H \cong \mathbb{Z}_2$ and $K \cong D_3$ (we leave the latter as an exercise for the reader to prove). Thus,
-    \[
-        D_6 = G = HK \cong H \times K = \mathbb{Z}_2 \times D_3.
-    \]
-\end{example}
-
 \begin{exercise}
-    Let $\mathcal{S} = \{1, 5, 7, 11\}$, $G = \{1, 5\}$ and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the value of $n$ such that $\mathcal{S} \cong (\mathbb{Z}_n)^2$.
+    Suppose $x$ and $y$ are positive integers such that $y = mx$ for some integer $m$. Let $H = x\mathbb{Z}$ and $N = y\mathbb{Z}$ be groups under addition.
+    \begin{enumerate}[label=(\roman*)]
+        \item Explain why $N \subseteq H$.
+        \item Find a group $G$ such that $H \lhd G$ and $N \lhd G$.
+        \item Hence find the order of $H/N$.
+    \end{enumerate}
 \end{exercise}
 
 \newpage
 
 \section{Problems}
-\begin{problem}\label{problem-external-direct-product-of-abelian-groups-is-abelian}
-    Let $G$ and $H$ be abelian groups. Prove that $G \times H$ is also an abelian group.
+\begin{problem}
+    Let $G$ be a group. Prove that $G/G \cong \{e\}$.
 \end{problem}
 
 \begin{problem}
-    Let $G$ and $H$ be groups. Prove that $G \times H \cong H \times G$.
+    Let $R = \mathbb{R}$ be a group under addition. Let $G = R^2$ and $H = \left\{(r\sqrt2, r\sqrt3) \vert r\in R\right\}$ be a group under component-wise addition. Prove that $G/H \cong R$.
 \end{problem}
 
 \begin{problem}
-    Let $G = \mathbb{Z}_6$, $H = \{0, 2, 4\}$, and $K = \{0, 3\}$. Determine if $G$ is the internal direct product of $H$ and $K$.
+    Let $G = \mathbb{Z}^2$ under component-wise addition, $H = \mathbb{Z} \times \mathbb{Z}_5$ under $(+, \oplus_5)$, and $K = \langle(5, 5)\rangle \lhd G$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Prove that $\phi: G \to H, (m,n) \mapsto (m-n, n \mod 5)$ is a group homomorphism.
+        \item Prove that $\phi$ is surjective.
+        \item Hence prove $G/K \cong H$.
+    \end{enumerate}
 \end{problem}
 
-\begin{problem}
-    Consider the \textit{Klein four-group} $\mathrm{V}$ with presentation
+\begin{problem}\label{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}
+    Let $G$ be a group. Let $H$ and $K$ be subgroups of $G$ such that $K \subseteq H$. Prove that $HK = H$.
+\end{problem}
+
+\begin{problem}\label{problem-cartesian-product-of-group-by-group-isomorphic-to-group}
+    Let $G$ be an abelian group under the operation $\ast$. Let $I = \{(g, g^{-1}) \vert g \in G\}$ be a group under component-wise application of $\ast$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Show that $I \cong G$.
+        \item Hence prove $G^2/G \cong G$ by considering a suitable homomorphism.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}\label{problem-mZ/nZ-isomorphic-to-Zn/m}
+    Let $G = m\mathbb{Z}$ and $H = n\mathbb{Z}$ be groups under addition, where $m\vert n$ and $m \neq n$. Let the map $\phi: G \to \mathbb{Z}_{\frac nm}$ be defined such that
     \[
-        \langle a, b \vert a^2 = b^2 = (ab)^2 = e \rangle.
+        \phi(am) = a \mod \frac{n}{m}.
     \]
-    Show that $\mathrm{V} \cong (\mathbb{Z}_2)^2$.
+    Prove that $G/H \cong \mathbb{Z}_{\frac nm}$.
 \end{problem}
-
-% %=========================================
-% \chapter{Further Properties of Homomorphisms}
-% \section{Image of a Homomorphism}
-% As a homomorphism is a mapping between two groups, it is worthy to look at the image (or range) of the homomorphism.
-% \begin{definition}
-%     The \textbf{image} (or \textbf{range}) of a homomorphism $\phi: G \to H$ is the set
-%     \[
-%         \im\phi = \{\phi(g) \vert g \in G\} \subseteq H.
-%     \]
-% \end{definition}
-% \begin{remark}
-%     Some authors (e.g. \cite{libretexts_imandker}) will use the notation $\phi(G)$ for the image of $\phi: G \to H$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by \cite{clark_1984, hungerford_1980}).
-% \end{remark}
-
-% \begin{example}
-%     Consider the simple homomorphism $f: \mathbb{Z} \to \mathbb{Z}, x \mapsto 0$. Clearly, all possible values of $x$ maps to 0, so $\im f = \{0\}$ (or, alternatively, $f(\mathbb{Z}) = \{0\}$).
-% \end{example}
-
-% We note that the image of a homomorphism is a sub\textit{set} of the codomain $H$. In fact, it is a sub\textit{group}.
-% \begin{proposition}\label{prop-image-is-subgroup-of-codomain}
-%     Let $\phi: G \to H$ be a homomorphism. Then $\im\phi \leq H$.
-% \end{proposition}
-% \begin{proof}
-%     We consider the subgroup test. Let $e_G$ and $e_H$ be the identities of $G$ and $H$ respectively. Note that $\phi(e_G) = e_H \in \im\phi$. Thus $\im\phi$ is non-empty.
-
-%     Now suppose $h_1$ and $h_2$ are in the image of $\phi$, meaning that there exists $g_1$ and $g_2$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Note that $\phi(g_2^{-1}) = h_2^{-1}$ by homomorphism property. Hence $\phi(g_1g_2^{-1}) = h_1h_2^{-1} \in \im\phi$.
-
-%     Therefore, by subgroup test, $\im\phi \leq H$.
-% \end{proof}
-
-% \begin{exercise}
-%     Consider the map $\phi: \mathbb{Z}_3 \to \mathbb{Z}_6, n \mapsto 2n$. Determine whether $\phi$ is a homomorphism and, if so, find its image.
-% \end{exercise}
-
-% \section{Kernel of a Homomorphism}
-% \begin{definition}
-%     The \textbf{kernel} of a homomorphism $\phi: G \to H$ is
-%     \[
-%         \ker\phi = \{x \in G \vert \phi(x) = e_H\}
-%     \]
-%     where $e_H$ is the identity in $H$.
-% \end{definition}
-% Basically, the kernel of $\phi$ is the set of elements in $G$ which map to the identity in $H$.
-
-% \begin{remark}
-%     Some authors (e.g. \cite{libretexts_imandker}) will use the notation $\phi^{-1}(e_H)$ for the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. \cite{clark_1984, hungerford_1980}).
-% \end{remark}
-
-% \begin{example}
-%     Let the groups $G = (\mathbb{Z}^2, (+, +))$ and $H = (\mathbb{Z}, +)$. Let the map $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$. This means that $a+b = 0 \implies b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \mathbb{Z}\}$.
-% \end{example}
-
-% \begin{exercise}
-%     Let $i$ be the imaginary unit, that is $i^2 = -1$. Let the group $G$ be the integers under addition and $H = \langle i \rangle$ be under multiplication. Let the map $\phi: G \to H, n \mapsto i^n$.  Show that $\phi$ is a homomorphism and hence find $\ker\phi$.
-% \end{exercise}
-
-% Like the image of $\phi$, the kernel of $\phi$ is a subgroup of $H$. It is, in fact, a \textit{normal} subgroup of $H$.
-% \begin{proposition}\label{prop-kernel-is-normal-subgroup-of-domain}
-%     Let $\phi: G \to H$ be a homomorphism. Then $\ker\phi \lhd G$.
-% \end{proposition}
-% \begin{proof}
-%     We will first show $\ker\phi\leq G$. Clearly $e_G \in \ker\phi$ since $\phi(e_G) = e_H$, so $\ker\phi$ is non-empty. Now let $x, y \in \ker\phi$. This means that $\phi(x) = \phi(y) = e_H$. Note
-%     \begin{align*}
-%         \phi(xy^{-1}) &= \phi(x)\phi(y^{-1})\\
-%         &= \phi(x)\left(\phi(y)\right)^{-1}\\
-%         &= e_H(e_H)^{-1}\\
-%         &= e_H
-%     \end{align*}
-%     which means that $xy^{-1}\in\ker\phi$. By subgroup test $\ker\phi\leq G$.
-
-%     Now we prove normality. Let $x \in G$ and $n \in \ker\phi$. We need to show that $xnx^{-1}\in\ker\phi$ to prove normality. Observe that
-%     \begin{align*}
-%         \phi(xnx^{-1}) &= \phi(x)\phi(n)\phi(x^{-1})\\
-%         &= \phi(x)e_H\phi(x)^{-1} & \text{(since } n \in \ker\phi)\\
-%         &= \phi(x)\phi(x)^{-1}\\
-%         &= e_H,
-%     \end{align*}
-%     which means that $xnx^{-1} \in \ker\phi$. Hence, $\ker\phi \lhd G$.
-% \end{proof}
-
-% \begin{exercise}\label{exercise-trivial-kernel-means-injective}
-%     Prove that a homomorphism $\phi:G\to H$ is injective if and only if $\ker \phi$ is trivial, that is $\ker \phi = \{e_G\}$.
-% \end{exercise}
-
-% \section{The Fundamental Homomorphism Theorem}
-% We are now ready to tackle the three most important theorems regarding homomorphisms. We first state the \textbf{Fundamental Homomorphism Theorem}, which is also sometimes called the \textbf{First Isomorphism Theorem}.
-% \begin{theorem}[Fundamental Homomorphism Theorem]\label{thrm-first-isomorphism}
-%     Let $G$ and $H$ be groups. Let $\phi: G \to H$ be a homomorphism, and let $\pi: G \to G/\ker\phi$ be a surjective homomorphism. Then there exists a unique isomorphism $\psi: G/\ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
-% \end{theorem}
-% Equivalently, the Fundamental Homomorphism Theorem states that
-% \[
-%     G/\ker\phi \cong \im\phi
-% \]
-% for any homomorphism $\phi$.
-
-% We include the commutativity diagram of the homomorphisms stated above to aid clarity:
-
-% \begin{figure}[h]
-%     \centering
-%     \fbox{\includegraphics[width=4.5cm]{images/chapter7/FirstIsomorphismTheoremCommutivityDiagram.png}}
-%     \caption{Commutivity Diagram For \textbf{Theorem \ref{thrm-first-isomorphism}}}
-% \end{figure}
-
-% In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elements from $G$ to $G/\ker\phi$. Then the map $\psi$ is a unique map that sends elements from $G/\ker\phi$ to the image of $\phi$.
-
-% \begin{proof}
-%     We know by \textbf{Proposition \ref{prop-image-is-subgroup-of-codomain}} that $\im\phi \leq H$. Let $\psi: G/\ker\phi \to \im\phi$ such that $\psi(x\ker\phi) = \phi(x)$. We are to check that $\psi$ is a well-defined isomorphism.
-%     \begin{itemize}
-%         \item \textbf{Well-defined}: Suppose $x\ker\phi = y\ker\phi$.
-%         \begin{align*}
-%             &\implies xy^{-1} \in \ker\phi & (\text{Coset Equality, \textbf{Lemma \ref{lemma-coset-equality}}})\\
-%             &\implies\phi(xy^{-1}) = e_H & (\text{Definition of kernel})\\
-%             &\implies\phi(x)\left(\phi(y)\right)^{-1} = e_H & (\text{Definition of homomorphism})\\
-%             &\implies\phi(x) = \phi(y)
-%         \end{align*}
-%         Thus,
-%         \[
-%             \underbrace{\psi(x\ker\phi) = \phi(x)}_{\text{Definition of } \psi} = \underbrace{\phi(y) = \psi(y\ker\phi)}_{\text{Definition of } \psi}
-%         \]
-%         so $\psi$ is well-defined.
-
-%         \item \textbf{Homomorphism}: Note that
-%         \begin{align*}
-%             \psi((x\ker\phi)(y\ker\phi)) &= \psi((xy)\ker\phi)\\
-%             &= \phi(xy)\\
-%             &= \phi(x)\phi(y)\\
-%             &= \psi(x\ker\phi)\psi(y\ker\phi)
-%         \end{align*}
-%         so $\psi$ is a homomorphism.
-%         \item \textbf{Injective}: By \textbf{Exercise \ref{exercise-trivial-kernel-means-injective}}, we check that $\psi$ is injective by showing that $\ker\psi$ is trivial, i.e. $\ker\psi = \{\ker\phi\}$.
-
-%         Suppose $x\ker\phi\in\ker\psi$. Then $\psi(x\ker\phi) = e_H$ by definition of kernel. Hence $\phi(x) = e_H$ by definition of $\psi$. Hence, $x \in \ker\phi$ by definition of kernel. This means that $xe^{-1} \in \ker\phi$. So $x\ker\phi = e\ker\phi = \ker\phi$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}) meaning that $\ker\psi = \{\ker\phi\}$. Therefore $\psi$ is injective.
-
-%         \item \textbf{Surjective}: Suppose $y$ is in the image of $\phi$, meaning there exists a $x$ in $G$ such that $\phi(x) = y$. Note that $\psi(x\ker\phi) = \phi(x) = y$. Thus $\psi$ is surjective.
-%     \end{itemize}
-%     Thus $\psi$ is a well-defined isomorphism.
-
-%     We now check that $\psi$ satisfies the requirement that $\psi\pi = \phi$. Let $x \in G$. Note that $\pi(x) = x\ker\phi$, and
-%     \[
-%         \psi\pi(x) = \psi(x\ker\phi) = \phi(x)
-%     \]
-%     for all $x \in G$, so $\psi\pi = \phi$.
-
-%     Finally we show that $\psi$ is unique. Suppose $f: G/\ker\phi \to \im\phi$ is an isomorphism satisfying $f\pi=\phi$. Take $x\ker\phi \in G/\ker\phi$. Note that
-%     \begin{align*}
-%         f(x\ker\phi) &= f(\pi(x))\\
-%         &= (f\pi)(x)\\
-%         &= \phi(x)\\
-%         &= (\psi\pi)(x)\\
-%         &= \psi(\pi(x))\\
-%         &= \psi(x\ker\phi)
-%     \end{align*}
-%     for all $x \in G$, meaning that $f = \psi$. Therefore $\psi$ is unique.
-
-%     Hence, $\psi$ is a unique isomorphism satisfying $\psi\pi = \phi$.
-% \end{proof}
-
-% \begin{example}
-%     Let $R = \{x \vert x > 0\}$, $G = \{x \in \mathbb{R} \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under multiplication. We show $G / H \cong R$.
-
-%     Consider the map $\phi: G \to R$ where $x \mapsto |x|$. We show that $\phi$ is a homomorphism, then find the image of $\phi$, and finally find its kernel.
-%     \begin{itemize}
-%         \item \textbf{Homomorphism}: $\phi$ is a homomorphism since $\phi(xy) = |xy| = |x||y| = \phi(x)\phi(y)$.
-%         \item \textbf{Image}: We find the image of $\phi$.
-%         \begin{align*}
-%             \im\phi &= \{\phi(x) \vert x \in G\}\\
-%             &= \{|x| \vert x \neq 0\}\\
-%             &= \{x \vert x > 0\} & (\text{by definition of } |x|)\\
-%             &= R
-%         \end{align*}
-%         which actually means that $\phi$ is surjective.
-%         \item \textbf{Kernel}: We find the kernel of $\phi$.
-%         \begin{align*}
-%             \ker\phi &= \{x \in G \vert \phi(x) = 1\} & (\text{since } 1 \text{ is identity in } R)\\
-%             &= \{x \in G \vert |x| = 1\}\\
-%             &= \{1, -1\}\\
-%             &= H
-%         \end{align*}
-%     \end{itemize}
-%     Therefore, by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}), $G/H \cong R$.
-% \end{example}
-
-% \begin{exercise}
-%     Let $\phi: G \to H$ be a homomorphism between finite groups $G$ and $H$. Prove that
-%     \[
-%         |G| = |\im \phi|\times|\ker \phi|.
-%     \]
-% \end{exercise}
-
-% \section{The Diamond Isomorphism Theorem}
-% We now look at the next theorem, called the \textbf{Diamond Isomorphism Theorem} or the \textbf{Second Isomorphism Theorem}.
-% \begin{theorem}[Diamond Isomorphism Theorem]\label{thrm-second-isomorphism}
-%     Let $G$ be a group and let $H$ and $K$ be subgroups of $G$. Then
-%     \begin{enumerate}
-%         \item $H \cap K \leq H$ and $H \cap K \leq K$; and
-%         \item $H \leq HK$ and $K \leq HK$.
-%     \end{enumerate}
-%     Furthermore, if $N \lhd G$, then
-%     \begin{enumerate}[start=3]
-%         \item $HN \leq G$;
-%         \item $H \cap N \lhd H$;
-%         \item $N \lhd HN$; and
-%         \item $H / (H\cap N) \cong HN / N$.
-%     \end{enumerate}
-% \end{theorem}
-% We can capture the overall relationships between the subgroups of $G$ using a \textbf{subgroup lattice}.
-% \begin{figure}[h]
-%     \centering
-%     \fbox{\includegraphics[width=4.5cm]{images/chapter7/SecondIsomorphismTheoremSubgroupDiagram.png}}
-%     \caption{Subgroup Diagram for \textbf{Theorem \ref{thrm-second-isomorphism}}}
-% \end{figure}
-
-% In the diagram, we only show subgroups that we care about. $G$ has a (direct) subgroup $HK$; $HK$ has subgroups $H$ and $K$; and $H$ and $K$ has a common subgroup $H\cap K$. In the case where $K \lhd G$, the two dotted quotient groups are isomorphic to each other.
-
-% \begin{proof}
-%     We prove each statement in sequence.
-
-%     \begin{enumerate}
-%         \item We only prove the first case (i.e., $H \cap K \leq H$) as the second follows symmetrically.
-        
-%         Clearly $e_G \in H$ and $e_G \in K$ so $e_G \in H \cap K$.
-        
-%         Take $x, y \in H \cap K$. To show that $xy^{-1} \in H \cap K$. Since $x, y \in H \cap K$, thus $x, y \in H$ and $x, y \in K$. Now since $H, K \leq G$, thus $xy^{-1} \in H$ and $xy^{-1} \in K$ by applying the subgroup test on $H$ and $K$ respectively. This thus means that $xy^{-1} \in H \cap K$. By the subgroup test, this means that $H \cap K \leq H$.
-        
-%         \item We only prove the first case ($H \leq HK$) as the second follows symmetrically. Note that $H = \{he_G \vert h \in H\} \subseteq \{hk \vert h \in H, k \in K\} = HK$, so we consider the subgroup test. Clearly $e_G \in H$ since $H \leq G$. Also since $H \leq G$, for all $x, y \in N$, $xy^{-1} \in G$. Thus, by the subgroup test, $H \leq HN$.
-        
-%         \item We note that, because $N$ is normal, hence $hN = Nh$ for all $h \in H \subseteq G$, meaning that $HN = NH$. Therefore by \textbf{Proposition \ref{prop-subgroup-product-is-subgroup}}, $HN \leq G$.
-
-%         \item We know $H \cap N \leq H$ by statement 1, so we only prove normality. Take $x \in H \cap N$, Since $H \leq G$, thus $x \in H \cap N \subseteq H$, meaning for all $g \in H$, $gxg^{-1} \in H$ (where we think of $g$ and $x$ as being in $H$). But since $x \in H \cap N \subseteq N$ and $N \lhd G$, thus $gxg^{-1} \in N$ (where we think of $g \in H$ and $x \in N$). Therefore $H \cap N \lhd H$.
-
-%         \item We know $N \leq HN$ by statement 2, so we only prove normality. Take $n \in N$ and $x \in HN$ such that $x = h_xn_x$. Then
-%         \begin{align*}
-%             xnx^{-1} &= (h_xn_x)n(h_xn_x)^{-1}\\
-%             &= (h_xn_x)n(n_x^{-1}h_x^{-1}) & (\text{Shoes and Socks})\\
-%             &= \underbrace{h_x}_{\text{In }G}\underbrace{n_xnn_x^{-1}}_{\text{In }N}\underbrace{h_x^{-1}}_{\text{In G}}\\
-%             &\in N
-%         \end{align*}
-%         since $N \lhd G$. This proves that $N \lhd HN$.
-
-%         \item This is the main result of this theorem.
-
-%         We define $\phi: H \to HN/N, h \mapsto hN$. Clearly $\phi$ is a homomorphism as
-%         \[
-%             \phi(xy) = (xy)N = (xN)(yN) = \phi(x)\phi(y).
-%         \]
-
-%         We show that $\phi$ is surjective to show that $\im\phi = HN/N$. Suppose $x \in HN$, meaning $x = hn$ where $h \in H$ and $n \in N$. Thus, $xN \in HN/N$. This implies that
-%         \[
-%             xN = (hn)N = h(nN) = hN
-%         \]
-%         meaning $\phi(h) = hN = xN$. Hence we have found a pre-image of the coset $xN$, meaning $\phi$ is surjective. Hence $\im \phi = HN/N$.
-
-%         We now claim that $\ker\phi = H \cap N$. Note that $\ker\phi = \{h \in H \vert \phi(h) = eN = N\}$ by definition of kernel. This means that if $h \in \ker\phi$ then $\phi(h) = N$. Hence,
-%         \[
-%             \phi(h) = hN = N \implies h \in N
-%         \]
-%         by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). Thus, $h \in H$ and $h \in n$, meaning $h \in H \cap N$. Therefore $\ker \phi \subseteq H \cap N$.
-
-%         Now suppose $x \in H \cap N$. This means that $x \in N$ necessarily, implying $xN = N$. Thus $\phi(x) = N$ which quickly implies $x \in \ker\phi$. Therefore $H \cap N \subseteq \ker\phi$.
-
-%         Since $\ker \phi \subseteq H \cap N$ and  $H \cap N \subseteq \ker\phi$ therefore $\ker\phi = H\cap N$.
-
-%         By Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}),
-%         \[
-%             H / \ker\phi \cong \im \phi,
-%         \]
-%         which means
-%         \[
-%             H/(H\cap N) \cong HN/N.
-%         \]
-%     \end{enumerate}
-%     This completes the proof of the Diamond Isomorphism Theorem.
-% \end{proof}
-
-% \begin{corollary}\label{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}
-%     Let $G$ be a group with proper subgroups $H$ and $K$. Then $H$ and $K$ are normal subgroups of $G$ if and only if $HK \unlhd G$.
-% \end{corollary}
-% \begin{proof}
-%     We prove the forward direction first; assume that $H, K \lhd G$. By the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 3, we know that $HK \leq G$ since $H \lhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
-%     \begin{align*}
-%         g(hk)g^{-1} &= (gh)(kg^{-1})\\
-%         &= (hg)(g^{-1}k) & (\text{since } H, K \lhd G)\\
-%         &= h(gg^{-1})k\\
-%         &= hk \in HK
-%     \end{align*}
-%     which means that $HK \unlhd G$.
-
-%     We now prove the reverse direction; assume $HK \unlhd G$. This means $gHKg^{-1} = HK$ for all $g \in G$ by definition of normality. Note that $gHKg^{-1} = (gHg^{-1})(gKg^{-1})$. We hence consider the following cases.
-%     \begin{itemize}
-%         \item Suppose $gH = H$ and $g^{-1}gKg^{-1} = Kg^{-1} = K$. Then Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}) tells us that $g \in H$ and $g \in K$, hence $g \in H \cap K$. But $g \in G$. Therefore $G \subseteq H \cap K$. However, $H \subset G$ and $K \subset G$, hence $H \cap K \subset G$, a contradiction.
-%         \item Suppose $gHg^{-1}g = gH = H$ and $Kg^{-1} = K$. This is the same as above.
-%     \end{itemize}
-%     Therefore the only remaining case is $gHg^{-1} = H$ and $gKg^{-1} = K$, implying that both $H \lhd G$ and $K \lhd G$ as required.
-% \end{proof}
-
-% We look at a few examples for the use of the Diamond Isomorphism Theorem.
-% \begin{example}
-%     We say a group $G$ is \textbf{metabelian} if and only if there exists $A \lhd G$ such that $A$ and $G/A$ are both abelian. We will prove the fact that any subgroup of a metabelian group is also metabelian.
-
-%     Let $H \leq G$. Then by Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), $H \cap A \lhd H$ (statement 4) and $H/(H \cap A) \cong HA / A$ (statement 6). We just need to prove that $H \cap A$ is abelian and prove that $H/(H \cap A)$ is abelian.
-%     \begin{itemize}
-%         \item Consider any two elements from $H \cap A$, say $x$ and $y$. Then $x \in A$ and $y \in A$, meaning $xy = yx$. Hence, elements from $H \cap A$ commute, meaning that $H \cap A$ is abelian.
-%         \item Consider $HA / A$. Note that $HA \leq G$ since $H \leq G$ and $A \leq G$. Thus, $HA / A \leq G / A$. Note that $G/A$ is abelian by definition of metabelian group. Hence, $H/(H \cap A) \cong HA / A$ is also abelian.
-%     \end{itemize}
-%     Therefore, we have found a subgroup of $H$ (in particular $H \cap A$) such that both $H \cap A$ and $H/(H\cap A)$ are both abelian. Hence, $H$ is metabelian.
-% \end{example}
-
-% We look at another application of the Diamond Isomorphism Theorem, which has application in Number Theory.
-% \begin{example}
-%     We will prove that $\lcm(m,n)\times\gcd(m,n) = mn$ by considering the Diamond Isomorphism Theorem. For brevity, let $d = \gcd(m,n)$ and $l = \lcm(m,n)$.
-
-%     Consider the groups $G = \mathbb{Z}$, $H = m\mathbb{Z}$, and $N = n\mathbb{Z}$ under addition. By Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}),
-%     \[
-%         m\mathbb{Z}/(m\mathbb{Z} \cap n\mathbb{Z}) \cong (m\mathbb{Z} + n\mathbb{Z})/(n\mathbb{Z}).
-%     \]
-
-%     Now $m\mathbb{Z} \cap n\mathbb{Z}$ is the set of integers that are both a multiple of $m$ and $n$. Hence, $m\mathbb{Z} \cap n\mathbb{Z} = \lcm(m,n)\mathbb{Z} = l\mathbb{Z}$. On the other hand, $m\mathbb{Z} + n\mathbb{Z}$ is the set of all integers of the form $mx+ny$ where $x$ and $y$ are integers. Bezout's identity tells us that this set consists of the multiples of $\gcd(m,n)$, i.e. $m\mathbb{Z} + n\mathbb{Z} = \gcd(m,n)\mathbb{Z} = d\mathbb{Z}$. Hence,
-%     \[
-%         m\mathbb{Z}/(l\mathbb{Z}) \cong (d\mathbb{Z})/(n\mathbb{Z}).
-%     \]
-
-%     We claim that $m\mathbb{Z} / (l\mathbb{Z}) \cong \mathbb{Z}_{\frac lm} \text{ and } d\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd}$. This is a specific case of \textbf{Problem \ref{problem-mZ/nZ-isomorphic-to-Zn/m}} which we have left as a problem for later. Hence, what we have shown is
-%     \[
-%     \mathbb{Z}_{\frac lm} \cong m\mathbb{Z}/(l\mathbb{Z}) \cong d\mathbb{Z}/(n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd},
-%     \]
-%     which means that $\mathbb{Z}_{\frac lm} \cong \mathbb{Z}_{\frac nd}$. We can now finally take orders on both sides:
-%     \[
-%         \frac{l}{m} = \frac{n}{d},
-%     \]
-%     which means that $ld = mn$. Hence, $\lcm(m,n)\times\gcd(m,n) = mn$.
-% \end{example}
-
-% \begin{exercise}\label{exercise-order-of-subgroup-product}
-%     Let $G$ be a finite group, $H \leq G$, and $N \lhd G$. Prove that
-%     \[
-%         |HN| = \frac{|H||N|}{|H \cap N|}.
-%     \]
-% \end{exercise}
-
-% \section{The Third Isomorphism Theorem}
-% We look at the last important theorem regarding homomorphisms and isomorphisms. This is often called the \textbf{Third Isomorphism Theorem} (e.g. \cite{cohn_1982, hungerford_1980}). It should be noted that there is no consistency with the numbering of these theorems in books (cf. \cite{clark_1984} as ``First Isomorphism Theorem" in \S 68, \cite{humphreys_1996} as Theorem 8.16 ``Second Isomorphism Theorem"), but the name ``Third Isomorphism Theorem'' is the easiest to research. Hence, we use that name here.
-
-% \begin{theorem}[Third Isomorphism Theorem]\label{thrm-third-isomorphism}
-%     Let $G$ be a group. Let $H \lhd G$ and $N \lhd G$. Suppose $N \subseteq H$. Then
-%     \begin{enumerate}
-%         \item $N \lhd H$;
-%         \item $H/N \lhd G/N$; and
-%         \item $\frac{G/N}{H/N} \cong G/H$
-%     \end{enumerate}
-% \end{theorem}
-% \begin{proof}
-%     Like with the Diamond Isomorphism Theorem, we will prove the statements in sequence.
-
-%     \begin{enumerate}
-%         \item We first prove that it is a subgroup using the subgroup test before proving normality.
-
-%         Since $H, N \leq G$, thus $e_G \in H$ and $e_G \in N$, meaning that $N$ is non-empty. Furthermore, since $N \leq G$, therefore $xy^{-1} \in N$ for all $x, y \in N$. Hence $N \leq H$.
-
-%         We now prove normality. Since $H$ and $N$ are normal subgroups of $G$, thus for all $g \in G$,
-%         \[
-%             gH = Hg \text{ and } gN = Ng.
-%         \]
-%         Now since $N \subseteq H \subseteq G$, thus for all $n$ in $N$, $nH = Hn$ (since $n \in G$). This means that $N \lhd H$.
-
-%         \item We first prove that it is a subgroup using the subgroup test, before proving normality.
-
-%         Clearly $N = eN \in H/N$. Let $x$ and $y$ be in $H/N$. Then $x=h_xN$ and $y=h_yN$ for some $h_x, h_y \in H$. Note that $y^{-1} = (h_y)^{-1}N$ by group operator on cosets. Hence,
-%         \begin{align*}
-%             xy^{-1} &= (h_xN)(h_y^{-1}N)\\
-%             &= (\underbrace{h_xh_y^{-1}}_{\text{In }H})N\\
-%             &\in H/N
-%         \end{align*}
-%         Hence, by subgroup test, $H/N \leq G/N$.
-
-%         Now let $gN \in G/N$ and $hN \in H/N$. We need to show that $(gN)(hN)(gN)^{-1} \in H/N$. Note $(gN)(hN)(gN)^{-1} = (ghg^{-1})N$. Since $H \lhd G$, thus $ghg^{-1} \in H$ which means that $(ghg^{-1})N \in H/N$.
-
-%         Therefore $H/N \lhd G/N$.
-
-%         \item This is the main result of the theorem.
-
-%         Define $\phi: G/N \to G/H, gN \mapsto gH$. We will check that $\phi$ is a well-defined surjective homomorphism and then find its kernel.
-%         \begin{itemize}
-%             \item \textbf{Well-defined}: Suppose $gN = g'N$. Then $g(g')^{-1} \in N$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). Since $N \subseteq H$ (assumption), thus $g(g')^{-1} \in H$ which implies $gH = g'H$ by \textbf{Lemma \ref{lemma-coset-equality}}. Hence $\phi(gN) = gH = g'H = \phi(g'N)$, i.e. $\phi$ is well-defined.
-%             \item \textbf{Homomorphism}: Take $gN, g'N \in G/N$. Then
-%             \begin{align*}
-%                 \phi((gN)(g'N)) &= \phi((gg')N)\\
-%                 &= (gg')H\\
-%                 &= (gH)(g'H)\\
-%                 &= \phi(gN)\phi(g'N)
-%             \end{align*}
-%             which means that $\phi$ is a homomorphism.
-            
-%             \item \textbf{Surjective}: Suppose $gH \in G/H$. Then $\phi(gN) = gH$. Thus $gN$ is a pre-image of $gH$, meaning that $\phi$ is surjective.
-            
-%             \item \textbf{Kernel}: Suppose $gN \in \ker\phi = \{gN \vert \phi(gN) = eH = H\}$. Thus $\phi(gN) = H \implies gH = H$. Therefore, $ge^{-1} = g \in H$ by \textbf{Lemma \ref{lemma-coset-equality}}. This means that $gN \in H/N$, further meaning that $\ker\phi \subseteq H/N$.
-
-%             Suppose now $hN \in H/N$. Since $H \lhd G \implies H\subseteq G$, thus $h \in G$. Therefore $hN \in G/N$ which means $\phi(hN) = hH = H$. Hence $hN \in \ker\phi$ which means $H/N \subseteq \ker\phi$.
-
-%             Since $\ker\phi \subseteq H/N$ and $H/N \subseteq \ker\phi$, we must have $\ker\phi = H/N$.
-%         \end{itemize}
-
-%         By Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}), $\frac{G/N}{\ker\phi} \cong \im\phi$ which means
-%         \[
-%             \frac{G/N}{H/N} \cong G/H,
-%         \]
-%         hence proving statement 3.
-%     \end{enumerate}
-%     This proves the theorem.
-% \end{proof}
-
-% \begin{example}
-%     Take $G = \mathbb{Z}$, $H = m\mathbb{Z}$ and $N = mn\mathbb{Z}$. Note that clearly $H, N \leq G$, and since $G$ is abelian, we must also have $H \lhd G$ and $N \lhd G$. By the Third Isomorphism Theorem (\textbf{Theorem \ref{thrm-third-isomorphism}}),
-%     \[
-%         G/H \cong \frac{G/N}{H/N}.
-%     \]
-%     Note $G/H = \mathbb{Z}/(m\mathbb{Z}) \cong \mathbb{Z}_m$ by \textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}}. Note also
-%     \[
-%         \frac{G/N}{H/N} = \frac{\mathbb{Z}/(mn\mathbb{Z})}{m\mathbb{Z}/(mn\mathbb{Z})}
-%     \]
-%     and $\mathbb{Z}/(mn\mathbb{Z}) \cong \mathbb{Z}_{mn}$ by \textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}}.
-
-%     Consider now $\phi: m\mathbb{Z} \to \mathbb{Z}_{mn}, mx \mapsto mx \mod mn$. Clearly $\phi$ is a homomorphism. Note $\im \phi = \langle m \rangle$ and $\ker \phi = mn\mathbb{Z}$. We leave the proof of these claims as an exercise to the reader.
-
-%     By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}),
-%     \[
-%         m\mathbb{Z} / (mn\mathbb{Z}) \cong \langle m \rangle.
-%     \]
-%     Thus,
-%     \[
-%         \mathbb{Z}_m \cong G/H \cong \frac{G/N}{H/N} \cong \mathbb{Z}_{mn}/\langle m \rangle
-%     \]
-%     which means $\mathbb{Z}_m \cong \mathbb{Z}_{mn} / \langle m \rangle$.
-
-%     In other words, if $d$ divides $n$, then
-%     \[
-%         \mathbb{Z}_n / \langle d \rangle \cong \mathbb{Z}_d.
-%     \]
-% \end{example}
-
-% From this example we can come up with a more general proposition.
-% \begin{proposition}\label{prop-Zn-mod-cyclic-subgroup-of-m}
-%     $\mathbb{Z}_n / \langle m \rangle \cong \mathbb{Z}_{\gcd(m,n)}$
-% \end{proposition}
-% \begin{proof}
-%     We want to show that $\langle m \rangle = \langle \gcd(m,n) \rangle$. For brevity let $\gcd(m,n) = d$.
-
-%     \begin{itemize}
-%         \item $\boxed{\langle m \rangle \leq \langle d \rangle}$ Since $d\;|\;m$, thus $m = dk$ for some integer $k$. Hence, $\langle m \rangle = \{mx \vert x \in \mathbb{Z}\} = \{dkx \vert x \in \mathbb{Z}\} \leq \langle d \rangle$. Hence, $\langle m \rangle \leq \langle d \rangle d$.
-%         \item $\boxed{\langle m \rangle \geq \langle d \rangle}$ By the Extended Euclidean Algorithm we may write $d = \alpha m + \beta n$ for some integers $\alpha$ and $\beta$. In $\mathbb{Z}_n$, $d = \alpha m$ which quickly implies that $\langle d \rangle = \langle \alpha m \rangle \leq \langle m \rangle$.
-%     \end{itemize}
-%     Therefore $\langle d \rangle = \langle m \rangle$.
-
-%     By previous example, the claim is proven.
-% \end{proof}
-
-% \begin{exercise}
-%     Suppose $x$ and $y$ are positive integers such that $x\;|\;y$. Let $H = x\mathbb{Z}$ and $N = y\mathbb{Z}$ be groups under addition.
-%     \begin{enumerate}[label=(\roman*)]
-%         \item Explain why $N \subseteq H$.
-%         \item Find a group $G$ such that $H \lhd G$ and $N \lhd G$.
-%         \item Hence find the order of $H/N$.
-%     \end{enumerate}
-% \end{exercise}
-
-% \section{Problems}
-% \begin{problem}
-%     Let $G$ be a group. Prove that $G/G \cong \{e\}$.
-% \end{problem}
-
-% \begin{problem}
-%     Let $G = \mathbb{R}^2$ be a group under component-wise addition,
-%     \[
-%         H = \left\{(r\sqrt2, r\sqrt3)\; \vline\;r\in\mathbb{R}\right\}
-%     \]
-%     be a group under component-wise addition, and $R = \mathbb{R}$ be a group under addition. Prove that $G/H \cong R$.
-% \end{problem}
-
-% \begin{problem}
-%     Let $G = \mathbb{Z}^2$ under component-wise addition, $H = \mathbb{Z} \times \mathbb{Z}_5$ under $(+, \oplus_5)$, and $K = \langle(5, 5)\rangle \lhd G$.
-%     \begin{enumerate}[label=(\roman*)]
-%         \item Prove that $\phi: G \to H, (m,n) \mapsto (m-n, n \mod 5)$ is a group homomorphism.
-%         \item Prove that $\phi$ is surjective.
-%         \item Hence prove $G/K \cong H$.
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}\label{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}
-%     Let $G$ be a group. Let $H$ and $K$ be subgroups of $G$ such that $K \subseteq H$. Prove that $HK = H$.
-% \end{problem}
-
-% \begin{problem}\label{problem-cartesian-product-of-group-by-group-isomorphic-to-group}
-%     Let $G$ be an abelian group under the operation $\ast$. Let $I = \{(g, g^{-1}) \vert g \in G\}$ be a group under component-wise application of $\ast$.
-%     \begin{enumerate}[label=(\roman*)]
-%         \item Show that $I \cong G$.
-%         \item Hence prove $G^2/G \cong G$ by considering a suitable homomorphism.
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}\label{problem-mZ/nZ-isomorphic-to-Zn/m}
-%     Let $G = m\mathbb{Z}$ and $H = n\mathbb{Z}$ be groups under addition, where $m\;|\;n$ and $m \neq n$. Let the map $\phi: G \to \mathbb{Z}_{\frac nm}$ be defined such that
-%     \[
-%         \phi(am) = a \mod \frac{n}{m}.
-%     \]
-%     Prove that $G/H \cong \mathbb{Z}_{\frac nm}$.
-% \end{problem}
 
 % %=========================================
 % \chapter{More Types of Groups}
@@ -3488,7 +3491,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 % 	    \end{align*}
 % 	    by definition of the group $\SL{n}{\mathbb{R}}$.
 % 	\end{itemize}
-% 	By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}), we have
+% 	By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), we have
 % 	\[
 % 	    \GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times,
 % 	\]
@@ -3603,7 +3606,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 
 %         \item \textbf{Kernel}: Note that $\ker\phi = \{g \in G \vert \phi(g) = \id\}$. So, if $g \in \ker\phi$ then $(\phi(g))(x) = \iota_g(x) = \id(x) = x$ for all $x \in G$. This means that $gxg^{-1} = x \implies gx = xg$ for all $x \in G$, so $g \in \Z{G}$. Hence $\ker\phi = \Z{G}$.
 %     \end{itemize}
-%     Therefore, ones sees that by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}),
+%     Therefore, ones sees that by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}),
 %     \[
 %         G/\ker\phi \cong \im\phi \implies G/\Z{G} \cong \Inn{G}
 %     \]
@@ -4224,7 +4227,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 %         &= S \cap N\\
 %         &= N & (\text{since } N \leq S).
 %     \end{align*}
-%     By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}), $S/N \cong \bar{S}$, meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$ which quickly implies that $|S| = p^k$. Hence, there exists a $S \leq G$ such that $|S| = p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
+%     By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), $S/N \cong \bar{S}$, meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$ which quickly implies that $|S| = p^k$. Hence, there exists a $S \leq G$ such that $|S| = p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
 
 %     We can now start on the second case where $p$ does not divide the order of the center of $G$. We recall the class equation (\textbf{Theorem \ref{thrm-class-equation}})
 %     \[
@@ -4381,7 +4384,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 % \begin{proof}[Proof (see {\cite[Proposition 11.9]{humphreys_1996}})]
 %     For brevity, write the order of $G$ as $xp^n$ where $p \nmid x$, $|P| = p^n$, and $|Q| = p^m$.
 
-%     Recall by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 3, we have $PQ \leq \N{G}{P}$ since $P \lhd \N{G}{P}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \textbf{Exercise \ref{exercise-order-of-subgroup-product}},
+%     Recall by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we have $PQ \leq \N{G}{P}$ since $P \lhd \N{G}{P}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \textbf{Exercise \ref{exercise-order-of-subgroup-product}},
 %     \[
 %         |PQ| = \frac{|P||Q|}{|P \cap Q|} = p^{n+m-s}
 %     \]
@@ -4827,7 +4830,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 %     where an expression like $H'(H \cap K')$ denotes the subset product of $H'$ and $H \cap K'$.
 % \end{lemma}
 % \begin{proof}[Proof (see {\cite[p.~110]{hungerford_1980}})]
-%     We quickly note that $H' \lhd H \cap K$ as $H' \lhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \lhd H \cap K$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 4. Since $H'\lhd H$ we know $H' \subset H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \lhd H \cap K$. Similarly, $H \cap K' \lhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\textbf{Corollary \ref{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, denote $(H' \cap K)(H \cap K')$ by $\mathcal{A}$.
+%     We quickly note that $H' \lhd H \cap K$ as $H' \lhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \lhd H \cap K$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 4. Since $H'\lhd H$ we know $H' \subset H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \lhd H \cap K$. Similarly, $H \cap K' \lhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\textbf{Corollary \ref{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, denote $(H' \cap K)(H \cap K')$ by $\mathcal{A}$.
     
 %     Denote the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$ as follows. If $h \in H'$ and $c \in H \cap K$ then $\phi(hc) = c\mathcal{A}$. We show that $\phi$ is a well-defined homomorphic surjection with a goal to use the Fundamental Homomorphism Theorem to finish the proof.
     
@@ -4868,7 +4871,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
     
 %     A similar argument follows for a similar map $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, yielding $\im\psi = (H\cap K)/\mathcal{A}$ and $\ker\psi = K'(H\cap K)$ which proves statement 2.
     
-%     The final step is to apply the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}) to both $\phi$ and $\psi$. This yields
+%     The final step is to apply the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) to both $\phi$ and $\psi$. This yields
 %     \[
 %         \frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{H\cap K}{\mathcal{A}} 
 %         \text{ and }
@@ -5166,7 +5169,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 
 %     Let $G = \An{k}$, and, seeking a contradiction, assume that there exists a non-trivial $H \lhd G$. Let $G$ act on $\mathcal{N}_{k}$ natrually; thus $\Stab{G}{i} \leq G$ with $\Stab{G}{i} \cong \An{k-1}$ (\textbf{Proposition \ref{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}}). Note $\An{k-1}$ is simple by Induction Hypothesis, so $\Stab{G}{i}$ is simple for each $i \in \mathcal{N}_{k}$.
 
-%     Suppose first that there is some non-identity $\pi \in H$ such that $\pi(i) = i$ for some $i \in \mathcal{N}_{k}$. This means that $\pi$ fixes $i$; thus $\pi \in H \cap \Stab{G}{i}$. Note that since $H \lhd G$ and $\Stab{G}{i} \leq G$ thus $H \cap \Stab{G}{i} \lhd \Stab{G}{i}$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 4. But as $\Stab{G}{i}$ is simple we must have $H \cap \Stab{G}{i} = \Stab{G}{i}$. Therefore
+%     Suppose first that there is some non-identity $\pi \in H$ such that $\pi(i) = i$ for some $i \in \mathcal{N}_{k}$. This means that $\pi$ fixes $i$; thus $\pi \in H \cap \Stab{G}{i}$. Note that since $H \lhd G$ and $\Stab{G}{i} \leq G$ thus $H \cap \Stab{G}{i} \lhd \Stab{G}{i}$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 4. But as $\Stab{G}{i}$ is simple we must have $H \cap \Stab{G}{i} = \Stab{G}{i}$. Therefore
 %     \[
 %         \Stab{G}{i} \subseteq H \implies \Stab{G}{i} \leq H.
 %     \]
@@ -5588,14 +5591,14 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 %     \]
 %     Now since the kernel is trivial, this must mean that $xy^{-1} = e_G$ which immediately leads the $x=y$. Hence $\phi$ is injective.
 
-%     \item The Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}) states that $G / \ker \phi \cong \im \phi$. Lagrange's Theorem states that $|G / \ker \phi| = \frac{|G|}{|\ker\phi|}$. Hence, $\frac{|G|}{|\ker\phi|} = |\im\phi|$ which leads to the result quickly.
+%     \item The Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) states that $G / \ker \phi \cong \im \phi$. Lagrange's Theorem states that $|G / \ker \phi| = \frac{|G|}{|\ker\phi|}$. Hence, $\frac{|G|}{|\ker\phi|} = |\im\phi|$ which leads to the result quickly.
 
 %     \item The Diamond Isomorphism Theorem (statement 6) states that $H / (H\cap N) \cong HN / N$. Taking orders on both sides yields $\frac{|H|}{|H \cap N|} = \frac{|HN|}{|N|}$. Rearranging yields required result.
 
 %     \item \begin{enumerate}[label=(\roman*)]
 %         \item Since $x\;|\;y$, $y$ is a multiple of $x$, say $y = kx$. Thus $H = x\mathbb{Z} = \{ax \vert a \in \mathbb{Z}\}$ and $N = kx\mathbb{Z} = \{a(kx) \vert a \in \mathbb{Z}\}$, which necessarily means $N \subseteq H$.
 %         \item Let $G = \mathbb{Z}$. Then both $H$ and $N$ are clearly subgroups of $G$. Now since $G$ is abelian (since addition is commutative), therefore $H$ and $N$ are normal by \textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}.
-%         \item By Third Isomorphism Theorem (\textbf{Theorem \ref{thrm-third-isomorphism}}),
+%         \item By Third Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-3}}),
 %         \[
 %             (G/N)/(H/N) \cong G/H.
 %         \]
@@ -6419,7 +6422,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 %     \[
 %         \phi(gh) = e = ee = \phi(g)\phi(h).
 %     \]
-%     Also, one sees that $\im\phi = \{e\}$ and $\ker\phi = G$, so by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}) we have
+%     Also, one sees that $\im\phi = \{e\}$ and $\ker\phi = G$, so by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) we have
 %     \[
 %         G / \ker\phi \cong \im\phi
 %     \]
@@ -6445,7 +6448,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 %         &= \{(r\sqrt2, r\sqrt3) \vert r \in \mathbb{R}\}\\
 %         &= H.
 %     \end{align*}
-%     Thus, by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}), we have $G / H \cong R$.
+%     Thus, by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), we have $G / H \cong R$.
 
 %     \item \begin{enumerate}[label=(\roman*)]
 %         \item Let $(m_1, n_1), (m_2, n_2) \in G$. Then
@@ -6472,7 +6475,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 %             &= K
 %         \end{align*}
         
-%         Hence we have $G / K \cong H$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}).
+%         Hence we have $G / K \cong H$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}).
 %     \end{enumerate}
     
 %     \item We are given that $K \subseteq H$. Hence
@@ -6482,7 +6485,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 %         &= \{h_1h_2 \vert h_1, h_2 \in H\}\\
 %         &= H. & (H \text{ is closed since } H \leq G)
 %     \end{align*}
-%     Therefore $HK \subseteq H$. Also, we know that $H \leq HK$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 3. Hence we obtain the fact that $H \leq HK \subseteq H$ which means $HK = H$ as required.
+%     Therefore $HK \subseteq H$. Also, we know that $H \leq HK$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3. Hence we obtain the fact that $H \leq HK \subseteq H$ which means $HK = H$ as required.
     
 %     \item \begin{enumerate}[label=(\roman*)]
 %         \item Consider the map $\phi: I \to G, (g, g^{-1}) \mapsto g$. We show that $\phi$ is an isomorphism:
@@ -6520,7 +6523,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 %             &= I.
 %         \end{align*}
         
-%         Thus we have $G^2 / I \cong G$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-first-isomorphism}}). But since $I \cong G$, we further have $G^2/G \cong G$ as needed.
+%         Thus we have $G^2 / I \cong G$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}). But since $I \cong G$, we further have $G^2/G \cong G$ as needed.
 %     \end{enumerate}
 
 %     \item We will prove that $\phi$ is a homomorphism first:
@@ -6764,7 +6767,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 %     \end{itemize}
 %     Thus $n_3$ is 1 or 10. Now if $n_3 = 10$ then there must be $10(3-1) = 20$ elements of order 3, a contradiction to the fact there exists only 6 elements with order not 5. Hence $n_3 = 1$, meaning the only Sylow 3-subgroup (call it $P_3$) is normal in $G$.
 
-%     As $P_5 \leq G$ and $P_3 \lhd G$, by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-second-isomorphism}}), statement 3, we have $P_5P_3 \leq G$. Note $P_5 \cap P_3 = \{e\}$ by \textbf{Problem \ref{problem-intersection-of-coprime-subgroups}}. So \textbf{Exercise \ref{exercise-order-of-subgroup-product}} tells us
+%     As $P_5 \leq G$ and $P_3 \lhd G$, by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we have $P_5P_3 \leq G$. Note $P_5 \cap P_3 = \{e\}$ by \textbf{Problem \ref{problem-intersection-of-coprime-subgroups}}. So \textbf{Exercise \ref{exercise-order-of-subgroup-product}} tells us
 %     \[
 %         |P_5P_3| = \frac{|P_5||P_3|}{|P_5 \cap P_3|} = \frac{5\times3}{1} = 15.
 %     \]
