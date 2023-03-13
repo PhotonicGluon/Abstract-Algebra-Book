@@ -2189,938 +2189,961 @@
 %     Show that $\mathrm{V} \cong (\mathbb{Z}_2)^2$.
 % \end{problem}
 
-%=========================================
-\chapter{Further Properties of Homomorphisms}
-\section{Image of a Homomorphism}
-As a homomorphism is a mapping between two groups, it is worthy to look at the \textbf{image} (or \textbf{range}) of the homomorphism.
-\begin{definition}
-    The \textbf{image}\index{homomorphism!image} (or \textbf{range}\index{homomorphism!range}) of a homomorphism $\phi: G \to H$ is the set
-    \[
-        \im\phi = \{\phi(g) \vert g \in G\} \subseteq H.
-    \]
-\end{definition}
-\begin{remark}
-    Some authors (e.g. \cite{libretexts_imandker}) will use the notation $\phi(G)$ for the image of $\phi: G \to H$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by \cite{clark_1984, hungerford_1980}).
-\end{remark}
-
-\begin{example}
-    Consider the homomorphism $f: \mathbb{Z} \to \mathbb{Z}, x \mapsto 0$. Clearly, all possible values of $x$ maps to 0, so $\im f = \{0\}$.
-\end{example}
-
-We note that the image of a homomorphism is a subgroup of the codomain $H$.
-\begin{proposition}\label{prop-image-is-subgroup-of-codomain}
-    Let $\phi: G \to H$ be a homomorphism. Then $\im\phi \leq H$.
-\end{proposition}
-\begin{proof}
-    We consider the subgroup test. Let $e_G$ and $e_H$ be the identities of $G$ and $H$ respectively.
-    
-    Note that $\phi(e_G) = e_H \in \im\phi$. Thus $\im\phi$ is non-empty.
-    
-    Now suppose $h_1$ and $h_2$ are in the image of $\phi$, meaning that there exists $g_1$ and $g_2$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Note that $\phi(g_2^{-1}) = h_2^{-1}$ by homomorphism property. Hence $\phi(g_1g_2^{-1}) = h_1h_2^{-1} \in \im\phi$.
-
-    Therefore, by subgroup test, $\im\phi \leq H$.
-\end{proof}
-
-\begin{exercise}
-    Consider the map $\phi: \mathbb{Z}_3 \to \mathbb{Z}_6, n \mapsto 2n$. Determine whether $\phi$ is a homomorphism and, if so, find its image.
-\end{exercise}
-
-\section{Kernel of a Homomorphism}
-We look at the \textbf{kernel} of a homomorphism as well.
-
-\begin{definition}
-    The \textbf{kernel}\index{homomorphism!kernel} of a homomorphism $\phi: G \to H$ is
-    \[
-        \ker\phi = \{x \in G \vert \phi(x) = e_H\}
-    \]
-    where $e_H$ is the identity in $H$.
-\end{definition}
-Basically, the kernel of $\phi$ is the set of elements in $G$ which map to the identity in $H$.
-
-\begin{remark}
-    Some authors (e.g. \cite{libretexts_imandker}) will use the notation $\phi^{-1}(e_H)$ for the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. \cite{clark_1984, hungerford_1980}).
-\end{remark}
-
-\newpage
-
-\begin{example}
-    Let the groups $G = (\mathbb{Z}^2, (+, +))$ and $H = (\mathbb{Z}, +)$. Let the map $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$. This means that $a+b = 0$, implying $ b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \mathbb{Z}\}$.
-\end{example}
-
-\begin{exercise}
-    Let $i$ be the imaginary unit, that is $i^2 = -1$. Let the group $G$ be the integers under addition and $H = \langle i \rangle$ be under multiplication. Let the map $\phi: G \to H, n \mapsto i^n$.  Show that $\phi$ is a homomorphism and hence find $\ker\phi$.
-\end{exercise}
-
-Like the image of $\phi$, the kernel of $\phi$ is a subgroup of $H$. It is, in fact, a \textit{normal} subgroup of $H$.
-\begin{proposition}\label{prop-kernel-is-normal-subgroup-of-domain}
-    Let $\phi: G \to H$ be a homomorphism. Then $\ker\phi \unlhd G$.
-\end{proposition}
-\begin{proof}
-    We will first show $\ker\phi\leq G$. Clearly $e_G \in \ker\phi$ since $\phi(e_G) = e_H$, so $\ker\phi$ is non-empty. Now let $x, y \in \ker\phi$. This means that $\phi(x) = \phi(y) = e_H$. Note
-    \begin{align*}
-        \phi(xy^{-1}) &= \phi(x)\phi(y^{-1})\\
-        &= \phi(x)\left(\phi(y)\right)^{-1}\\
-        &= e_H(e_H)^{-1}\\
-        &= e_H
-    \end{align*}
-    which means that $xy^{-1}\in\ker\phi$. By subgroup test, $\ker\phi\leq G$.
-
-    Now we prove normality. Let $x \in G$ and $n \in \ker\phi$. We need to show that $xnx^{-1}\in\ker\phi$ to prove normality. Observe that
-    \begin{align*}
-        \phi(xnx^{-1}) &= \phi(x)\phi(n)\phi(x^{-1})\\
-        &= \phi(x)e_H\phi(x)^{-1} & (\text{since } n \in \ker\phi)\\
-        &= \phi(x)\phi(x)^{-1}\\
-        &= e_H,
-    \end{align*}
-    which means that $xnx^{-1} \in \ker\phi$. Hence, $\ker\phi \unlhd G$.
-\end{proof}
-
-\begin{exercise}\label{exercise-trivial-kernel-means-injective}
-    Prove that a homomorphism $\phi:G\to H$ is injective if and only if $\ker \phi$ is trivial, i.e. $\ker \phi = \{e_G\}$.
-\end{exercise}
-
-\section{The Fundamental Homomorphism Theorem}
-We are now ready to tackle the three most important theorems regarding homomorphisms. We first state the \textbf{Fundamental Homomorphism Theorem}, which is also sometimes called the \textbf{First Isomorphism Theorem}.
-\begin{theorem}[Fundamental Homomorphism Theorem]\label{thrm-isomorphism-1}\index{Fundamental Homomorphism Theorem}\index{First Isomorphism Theorem}
-    Let $G$ and $H$ be groups. Let $\phi: G \to H$ be a homomorphism, and let $\pi: G \to G/\ker\phi$ where $g\mapsto g\ker\phi$ be the natural surjective homomorphism. Then there exists a unique isomorphism $\psi: G/\ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
-\end{theorem}
-Equivalently, the Fundamental Homomorphism Theorem states that
-\[
-    G/\ker\phi \cong \im\phi
-\]
-for any homomorphism $\phi$.
-
-We include the commutativity diagram of the homomorphisms stated above to aid clarity:
-
-\begin{figure}[h]
-    \centering
-    \fbox{\includegraphics[width=4.5cm]{images/chapter7/FirstIsomorphismTheoremCommutivityDiagram.png}}
-    \caption{Commutivity Diagram For \textbf{Theorem \ref{thrm-isomorphism-1}}}
-\end{figure}
-
-In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elements from $G$ to $G/\ker\phi$. Then the map $\psi$ is a unique map that sends elements from $G/\ker\phi$ to the image of $\phi$.
-
-\begin{proof}[Proof (cf. {\cite[p.~250, Theorem 2]{cohn_1982}})]
-    We know by \textbf{Proposition \ref{prop-image-is-subgroup-of-codomain}} that $\im\phi \leq H$. Let $\psi: G/\ker\phi \to \im\phi$ such that $\psi(x\ker\phi) = \phi(x)$. We need to check that $\psi$ is a well-defined isomorphism.
-    \begin{itemize}
-        \item \textbf{Well-defined}: Suppose $x\ker\phi = y\ker\phi$ where $x, y \in G$.
-        \begin{align*}
-            &\implies xy^{-1} \in \ker\phi & (\text{Coset Equality, \textbf{Lemma \ref{lemma-coset-equality}}})\\
-            &\implies\phi(xy^{-1}) = e_H & (\text{Definition of kernel})\\
-            &\implies\phi(x)\left(\phi(y)\right)^{-1} = e_H & (\text{Definition of homomorphism})\\
-            &\implies\phi(x) = \phi(y)
-        \end{align*}
-        Thus,
-        \[
-            \psi(x\ker\phi) = \phi(x) = \phi(y) = \psi(y\ker\phi)
-        \]
-        so $\psi$ is well-defined.
-
-        \item \textbf{Homomorphism}: Note that
-        \begin{align*}
-            \psi((x\ker\phi)(y\ker\phi)) &= \psi((xy)\ker\phi)\\
-            &= \phi(xy)\\
-            &= \phi(x)\phi(y)\\
-            &= \psi(x\ker\phi)\psi(y\ker\phi)
-        \end{align*}
-        so $\psi$ is a homomorphism.
-        \item \textbf{Injective}: By \textbf{Exercise \ref{exercise-trivial-kernel-means-injective}}, we check that $\psi$ is injective by showing that $\ker\psi$ is trivial, i.e. $\ker\psi = \{\ker\phi\}$.
-
-        Suppose $x\ker\phi\in\ker\psi$. Then $\psi(x\ker\phi) = e_H$ by definition of kernel. Hence $\phi(x) = e_H$ by definition of $\psi$. Hence, $x \in \ker\phi$ by definition of kernel. This means that $xe^{-1} \in \ker\phi$. So $x\ker\phi = e\ker\phi = \ker\phi$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}) meaning that $\ker\psi = \{\ker\phi\}$. Therefore $\psi$ is injective.
-
-        \item \textbf{Surjective}: Suppose $y$ is in the image of $\phi$, meaning there exists a $x$ in $G$ such that $\phi(x) = y$. Note that $\psi(x\ker\phi) = \phi(x) = y$. Thus $\psi$ is surjective.
-    \end{itemize}
-    Thus $\psi$ is a well-defined isomorphism.
-
-    We now check that $\psi$ satisfies the requirement that $\psi\pi = \phi$. Let $x \in G$. Note that $\pi(x) = x\ker\phi$, and
-    \[
-        \psi\pi(x) = \psi(x\ker\phi) = \phi(x)
-    \]
-    for all $x \in G$, so $\psi\pi = \phi$.
-
-    Finally we show that $\psi$ is unique. Suppose $f: G/\ker\phi \to \im\phi$ is an isomorphism satisfying $f\pi=\phi$. Take $x\ker\phi \in G/\ker\phi$. Note that
-    \begin{align*}
-        f(x\ker\phi) &= f(\pi(x))\\
-        &= (f\pi)(x)\\
-        &= \phi(x)\\
-        &= (\psi\pi)(x)\\
-        &= \psi(\pi(x))\\
-        &= \psi(x\ker\phi)
-    \end{align*}
-    for all $x \in G$, meaning that $f = \psi$. Therefore $\psi$ is unique.
-
-    Hence, $\psi$ is a unique isomorphism satisfying $\psi\pi = \phi$.
-\end{proof}
-
-\begin{example}
-    Let $R = \{x \vert x > 0\}$, $G = \{x \in \mathbb{R} \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under multiplication. We show $G / H \cong R$.
-
-    Consider the map $\phi: G \to R$ where $x \mapsto |x|$. We show that $\phi$ is a homomorphism, then find the image of $\phi$, and finally find its kernel.
-    \begin{itemize}
-        \item \textbf{Homomorphism}: $\phi$ is a homomorphism since $\phi(xy) = |xy| = |x||y| = \phi(x)\phi(y)$.
-        \item \textbf{Image}: We find the image of $\phi$.
-        \begin{align*}
-            \im\phi &= \{\phi(x) \vert x \in G\}\\
-            &= \{|x| \vert x \neq 0\}\\
-            &= \{x \vert x > 0\} & (\text{by definition of } |x|)\\
-            &= R
-        \end{align*}
-        which actually means that $\phi$ is surjective.
-        \item \textbf{Kernel}: We find the kernel of $\phi$.
-        \begin{align*}
-            \ker\phi &= \{x \in G \vert \phi(x) = 1\} & (\text{since } 1 \text{ is identity in } R)\\
-            &= \{x \in G \vert |x| = 1\}\\
-            &= \{1, -1\}\\
-            &= H
-        \end{align*}
-    \end{itemize}
-    Thus $G/H \cong R$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}).
-\end{example}
-
-\begin{exercise}
-    Let $\phi: G \to H$ be a homomorphism between finite groups $G$ and $H$. Prove that
-    \[
-        |G| = |\im \phi|\times|\ker \phi|.
-    \]
-\end{exercise}
-
-\section{The Diamond Isomorphism Theorem}
-We now look at the next theorem, called the \textbf{Diamond Isomorphism Theorem} or the \textbf{Second Isomorphism Theorem}.
-\begin{theorem}[Diamond Isomorphism Theorem]\label{thrm-isomorphism-2}\index{Diamond Isomorphism Theorem}\index{Second Isomorphism Theorem}
-    Let $G$ be a group and let $H$ and $K$ be subgroups of $G$. Then
-    \begin{enumerate}
-        \item $H \cap K \leq H$; and
-        \item $H \leq HK$.
-    \end{enumerate}
-    Furthermore, if $N \unlhd G$, then
-    \begin{enumerate}[start=3]
-        \item $HN \leq G$;
-        \item $H \cap N \unlhd H$;
-        \item $N \unlhd HN$; and
-        \item $H / (H\cap N) \cong HN / N$.
-    \end{enumerate}
-\end{theorem}
-We can capture the overall relationships between the subgroups of $G$ using a \textbf{subgroup lattice}.
-\begin{figure}[h]
-    \centering
-    \fbox{\includegraphics[width=4.5cm]{images/chapter7/SecondIsomorphismTheoremSubgroupDiagram.png}}
-    \caption{Subgroup Diagram for \textbf{Theorem \ref{thrm-isomorphism-2}}}
-\end{figure}
-
-In the diagram, we only show subgroups that we care about. $G$ has a (direct) subgroup $HK$; $HK$ has subgroups $H$ and $K$; and $H$ and $K$ has a common subgroup $H\cap K$. In the case where $K \unlhd G$, the two dotted quotient groups are isomorphic to each other.
-
-\begin{proof}
-    We prove each statement in sequence.
-
-    \begin{enumerate}
-        \item Clearly $e_G \in H$ and $e_G \in K$ so $e_G \in H \cap K$.
-        
-        Now take $x, y \in H \cap K$, meaning $x, y \in H$ and $x, y \in K$. Now since $H, K \leq G$, thus $xy^{-1} \in H$ and $xy^{-1} \in K$ by applying the subgroup test on $H$ and $K$ respectively. This thus means that $xy^{-1} \in H \cap K$. By the subgroup test, this means that $H \cap K \leq H$.
-        
-        \item Note that $H = \{he_G \vert h \in H\} \subseteq \{hk \vert h \in H, k \in K\} = HK$, so we consider the subgroup test. Clearly $e_G \in H$ since $H \leq G$. Also since $H \leq G$, for all $x, y \in N$, $xy^{-1} \in G$. Thus, by the subgroup test, $H \leq HN$.
-        
-        \item We note that, because $N$ is normal, hence $hN = Nh$ for all $h \in H \subseteq G$, meaning that $HN = NH$. Therefore by \textbf{Proposition \ref{prop-subgroup-product-is-subgroup}}, $HN \leq G$.
-
-        \item We know $H \cap N \leq H$ by statement 1, so we only prove normality. Take $x \in H \cap N$, Since $H \leq G$, thus $x \in H \cap N \subseteq H$, meaning for all $g \in H$, $gxg^{-1} \in H$ (where we think of $g$ and $x$ as being in $H$). But since $x \in H \cap N \subseteq N$ and $N \unlhd G$, thus $gxg^{-1} \in N$ (where we think of $g \in H$ and $x \in N$). Therefore $H \cap N \unlhd H$.
-
-        \item We know $N \leq HN$ by statement 2, so we only prove normality. Take $n \in N$ and $x \in HN$ such that $x = h_xn_x$. Then
-        \begin{align*}
-            xnx^{-1} &= (h_xn_x)n(h_xn_x)^{-1}\\
-            &= (h_xn_x)n(n_x^{-1}h_x^{-1}) & (\text{Shoes and Socks})\\
-            &= \underbrace{h_x}_{\text{In }G}\underbrace{n_xnn_x^{-1}}_{\text{In }N}\underbrace{h_x^{-1}}_{\text{In G}}\\
-            &\in N
-        \end{align*}
-        since $N \lhd G$. This proves that $N \unlhd HN$.
-
-        \item This is the main result of this theorem. We define $\phi: H \to HN/N, h \mapsto hN$. We show that $\phi$ is a homomorphism and then find its image and kernel.
-        \begin{itemize}
-            \item \textbf{Homomorphism}:
-            \[
-                \phi(xy) = (xy)N = (xN)(yN) = \phi(x)\phi(y)    
-            \]
-
-            \item \textbf{Image}: We show that $\phi$ is surjective to show that $\im\phi = HN/N$. Suppose $x \in HN$, meaning $x = hn$ where $h \in H$ and $n \in N$. Thus $xN \in HN/N$, so
-            \[
-                xN = (hn)N = h(nN) = hN
-            \]
-            meaning $\phi(h) = hN = xN$. Hence we have found a pre-image of the coset $xN$, meaning $\phi$ is surjective. Hence $\im \phi = HN/N$.
-
-            \item \textbf{Kernel}: We claim that $\ker\phi = H \cap N$. Note that $\ker\phi = \{h \in H \vert \phi(h) = eN = N\}$ by definition of kernel. This means that if $h \in \ker\phi$ then $\phi(h) = N$. Hence $\phi(h) = hN = N$ which means $h \in N$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). Thus, $h \in H$ and $h \in n$, meaning $h \in H \cap N$. Therefore $\ker \phi \subseteq H \cap N$.
-    
-            Now suppose $x \in H \cap N$. This means that $x \in N$ necessarily, implying $xN = N$. Thus $\phi(x) = N$ which quickly implies $x \in \ker\phi$. Therefore $H \cap N \subseteq \ker\phi$.
-    
-            Since $\ker \phi \subseteq H \cap N$ and  $H \cap N \subseteq \ker\phi$ therefore $\ker\phi = H\cap N$.
-        \end{itemize}
-
-        By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}),
-        \[
-            H / \ker\phi \cong \im \phi,
-        \]
-        which means
-        \[
-            H/(H\cap N) \cong HN/N.
-        \]
-    \end{enumerate}
-    This completes the proof of the theorem.
-\end{proof}
-
-\begin{corollary}\label{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}
-    Let $G$ be a group with proper subgroups $H$ and $K$. Then $H$ and $K$ are normal subgroups of $G$ if and only if $HK \unlhd G$.
-\end{corollary}
-\begin{proof}
-    We prove the forward direction first; assume that $H, K \unlhd G$. By the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we know that $HK \leq G$ since $H \unlhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
-    \begin{align*}
-        g(hk)g^{-1} &= (gh)(kg^{-1})\\
-        &= (hg)(g^{-1}k) & (\text{since } H, K \lhd G)\\
-        &= h(gg^{-1})k\\
-        &= hk \in HK
-    \end{align*}
-    which means that $HK \unlhd G$.
-
-    We now prove the reverse direction; assume $HK \unlhd G$. This means $gHKg^{-1} = HK$ for all $g \in G$ by definition of normality. Note that $gHKg^{-1} = (gHg^{-1})(gKg^{-1})$. We hence consider the following cases.
-    \begin{itemize}
-        \item Suppose $gH = H$ and $g^{-1}gKg^{-1} = Kg^{-1} = K$. Then Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}) tells us that $g \in H$ and $g \in K$, hence $g \in H \cap K$. But $g \in G$. Therefore $G \subseteq H \cap K$. However, $H \subset G$ and $K \subset G$, hence $H \cap K \subset G$, a contradiction.
-        \item Suppose $gHg^{-1}g = gH = H$ and $Kg^{-1} = K$. This is the same as above.
-    \end{itemize}
-    Therefore the only remaining case is $gHg^{-1} = H$ and $gKg^{-1} = K$, implying that both $H \unlhd G$ and $K \unlhd G$ as required.
-\end{proof}
-
-\newpage
-
-We look at a few examples for the use of the Diamond Isomorphism Theorem.
-\begin{example}
-    We say a group $G$ is \textbf{metabelian}\index{metabelian} if and only if there exists $A \unlhd G$ such that $A$ and $G/A$ are both abelian. We will prove the fact that any subgroup of a metabelian group is also metabelian.
-
-    Let $H \leq G$. Then, by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), $H \cap A \unlhd H$ (statement 4) and $H/(H \cap A) \cong HA / A$ (statement 6). We just need to prove that $H \cap A$ is abelian and prove that $H/(H \cap A)$ is abelian.
-    \begin{itemize}
-        \item Consider any two elements from $H \cap A$, say $x$ and $y$. Then $x \in A$ and $y \in A$, meaning $xy = yx$. Hence, elements from $H \cap A$ commute, meaning that $H \cap A$ is abelian.
-        \item Consider $HA / A$. Note that $HA \leq G$ since $H \leq G$ and $A \leq G$. Thus, $HA / A \leq G / A$. Note that $G/A$ is abelian by definition of metabelian group. Hence, $H/(H \cap A) \cong HA / A$ is also abelian.
-    \end{itemize}
-    Therefore, we have found a subgroup of $H$ (in particular $H \cap A$) such that both $H \cap A$ and $H/(H\cap A)$ are both abelian. Hence, $H$ is metabelian.
-\end{example}
-
-\newpage
-
-We look at another application of the Diamond Isomorphism Theorem, which has use in Number Theory.
-\begin{example}
-    We will prove that $\lcm(m,n)\times\gcd(m,n) = mn$ (\textbf{Proposition \ref{prop-product-of-gcd-and-lcm}}) by considering the Diamond Isomorphism Theorem. For brevity, let $d = \gcd(m,n)$ and $l = \lcm(m,n)$.
-
-    Consider the groups $G = \mathbb{Z}$, $H = m\mathbb{Z}$, and $N = n\mathbb{Z}$ under addition. By Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}),
-    \[
-        m\mathbb{Z}/(m\mathbb{Z} \cap n\mathbb{Z}) \cong (m\mathbb{Z} + n\mathbb{Z})/(n\mathbb{Z}).
-    \]
-
-    Now $m\mathbb{Z} \cap n\mathbb{Z}$ is the set of integers that are both a multiple of $m$ and $n$. Hence, $m\mathbb{Z} \cap n\mathbb{Z} = \lcm(m,n)\mathbb{Z} = l\mathbb{Z}$. On the other hand, $m\mathbb{Z} + n\mathbb{Z}$ is the set of all integers of the form $mx+ny$ where $x$ and $y$ are integers. B\'{e}zout's identity (\textbf{Lemma \ref{lemma-bezout}}) tells us that this set consists of the multiples of $\gcd(m,n)$, i.e. $m\mathbb{Z} + n\mathbb{Z} = \gcd(m,n)\mathbb{Z} = d\mathbb{Z}$. Hence,
-    \[
-        m\mathbb{Z}/(l\mathbb{Z}) \cong (d\mathbb{Z})/(n\mathbb{Z}).
-    \]
-
-    We claim that $m\mathbb{Z} / (l\mathbb{Z}) \cong \mathbb{Z}_{\frac lm} \text{ and } d\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd}$. This is a specific case of \textbf{Problem \ref{problem-mZ/nZ-isomorphic-to-Zn/m}} which we have left as a problem for later. Hence, what we have shown is
-    \[
-    \mathbb{Z}_{\frac lm} \cong m\mathbb{Z}/(l\mathbb{Z}) \cong d\mathbb{Z}/(n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd},
-    \]
-    which means that $\mathbb{Z}_{\frac lm} \cong \mathbb{Z}_{\frac nd}$. We can now finally take orders on both sides:
-    \[
-        \frac{l}{m} = \frac{n}{d},
-    \]
-    which means that $ld = mn$. Hence, $\lcm(m,n)\times\gcd(m,n) = mn$.
-\end{example}
-
-\begin{exercise}\label{exercise-order-of-subgroup-product}
-    Let $G$ be a finite group, $H \leq G$, and $N \lhd G$. Prove that
-    \[
-        |HN| = \frac{|H||N|}{|H \cap N|}.
-    \]
-\end{exercise}
-
-\section{The Third Isomorphism Theorem}
-We look at the last important theorem regarding homomorphisms and isomorphisms. This is often called the \textbf{Third Isomorphism Theorem} (e.g. in \cite{cohn_1982, hungerford_1980}).
-
-It should be noted that there is no consistency with the numbering of these theorems in books (cf. {\cite[\S 68]{clark_1984}} as ``First Isomorphism Theorem'', {\cite[Theorem 8.16]{humphreys_1996}} as ``Second Isomorphism Theorem''), but the name ``Third Isomorphism Theorem'' is the easiest to research. Hence, we use that name here.
-
-\begin{theorem}[Third Isomorphism Theorem]\label{thrm-isomorphism-3}\index{Third Isomorphism Theorem}
-    Let $G$ be a group. Let $H \unlhd G$ and $N \unlhd G$. Suppose $N \subseteq H$. Then
-    \begin{enumerate}
-        \item $N \unlhd H$;
-        \item $H/N \unlhd G/N$; and
-        \item $\frac{G/N}{H/N} \cong G/H$
-    \end{enumerate}
-\end{theorem}
-\begin{proof}
-    Like with the Diamond Isomorphism Theorem, we will prove the statements in sequence.
-
-    \newpage
-
-    \begin{enumerate}
-        \item We note that since $N \subseteq H$ and $N$ is a group (sincee $N$ is a normal subgroup of $G$) thus $N \leq H$. We now prove normality. Since $H$ and $N$ are normal subgroups of $G$, thus for all $g \in G$,
-        \[
-            gH = Hg \text{ and } gN = Ng.
-        \]
-        Now since $N \subseteq H \subseteq G$, thus for all $n$ in $N$, $nH = Hn$ (since $n \in G$). This means that $N \unlhd H$.
-
-        \item We first prove that it is a subgroup using the subgroup test, before proving normality.
-
-        Clearly $N = eN \in H/N$. Let $x$ and $y$ be in $H/N$. Then $x=h_xN$ and $y=h_yN$ for some $h_x, h_y \in H$. Note that $y^{-1} = (h_y)^{-1}N$ by group operator on cosets. Hence,
-        \begin{align*}
-            xy^{-1} &= (h_xN)(h_y^{-1}N)\\
-            &= (\underbrace{h_xh_y^{-1}}_{\text{In }H})N\\
-            &\in H/N
-        \end{align*}
-        Hence, by subgroup test, $H/N \leq G/N$.
-
-        Now let $gN \in G/N$ and $hN \in H/N$. We need to show that $(gN)(hN)(gN)^{-1} \in H/N$. Note $(gN)(hN)(gN)^{-1} = (ghg^{-1})N$. Since $H \lhd G$, thus $ghg^{-1} \in H$ which means that $(ghg^{-1})N \in H/N$.
-
-        Therefore $H/N \unlhd G/N$.
-
-        \item This is the main result of the theorem.
-
-        Define $\phi: G/N \to G/H, gN \mapsto gH$. We check that $\phi$ is a well-defined homomorphism and find its image and kernel.
-        \begin{itemize}
-            \item \textbf{Well-defined}: Suppose $gN = g'N$. Then $g(g')^{-1} \in N$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). Since $N \subseteq H$ (assumption), thus $g(g')^{-1} \in H$ which implies $gH = g'H$ by \textbf{Lemma \ref{lemma-coset-equality}}. Hence $\phi(gN) = gH = g'H = \phi(g'N)$, i.e. $\phi$ is well-defined.
-            \item \textbf{Homomorphism}: Take $gN, g'N \in G/N$. Then
-            \begin{align*}
-                \phi((gN)(g'N)) &= \phi((gg')N)\\
-                &= (gg')H\\
-                &= (gH)(g'H)\\
-                &= \phi(gN)\phi(g'N)
-            \end{align*}
-            which means that $\phi$ is a homomorphism.
-            
-            \item \textbf{Image}: We show $\phi$ is surjective to prove that $\im\phi = G/H$. Suppose $gH \in G/H$. Then $\phi(gN) = gH$. Thus $gN$ is a pre-image of $gH$, meaning that $\phi$ is surjective. Hence $\im\phi = G/H$.
-            
-            \item \textbf{Kernel}: Suppose $gN \in \ker\phi = \{gN \vert \phi(gN) = eH = H\}$. Thus $\phi(gN) = H \implies gH = H$. Therefore, $ge^{-1} = g \in H$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). This means that $gN \in H/N$, further meaning that $\ker\phi \subseteq H/N$.
-
-            Suppose now $hN \in H/N$. Since $H \lhd G \implies H\subseteq G$, thus $h \in G$. Therefore $hN \in G/N$ which means $\phi(hN) = hH = H$. Hence $hN \in \ker\phi$ which means $H/N \subseteq \ker\phi$.
-
-            Since $\ker\phi \subseteq H/N$ and $H/N \subseteq \ker\phi$, we must have $\ker\phi = H/N$.
-        \end{itemize}
-
-        \newpage
-
-        By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), we have $\frac{G/N}{\ker\phi} \cong \im\phi$, which means
-        \[
-            \frac{G/N}{H/N} \cong G/H,
-        \]
-        hence proving statement 3.
-    \end{enumerate}
-    This proves the theorem.
-\end{proof}
-
-\begin{example}
-    Take $G = \mathbb{Z}$, $H = m\mathbb{Z}$ and $N = mn\mathbb{Z}$. Note that clearly $H, N \leq G$, and since $G$ is abelian, we must also have $H \unlhd G$ and $N \unlhd G$. By the Third Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-3}}),
-    \[
-        G/H \cong \frac{G/N}{H/N}.
-    \]
-    Note $G/H = \mathbb{Z}/(m\mathbb{Z}) \cong \mathbb{Z}_m$ by \textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}}. Note also
-    \[
-        \frac{G/N}{H/N} = \frac{\mathbb{Z}/(mn\mathbb{Z})}{m\mathbb{Z}/(mn\mathbb{Z})}
-    \]
-    and $\mathbb{Z}/(mn\mathbb{Z}) \cong \mathbb{Z}_{mn}$ by \textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}} again.
-
-    Consider now $\phi: m\mathbb{Z} \to \mathbb{Z}_{mn}, mx \mapsto mx \mod mn$. Clearly $\phi$ is a homomorphism. Note $\im \phi = \langle m \rangle$ and $\ker \phi = mn\mathbb{Z}$. We leave the verification of these claims as an exercise to the reader.
-
-    The Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) tells us that
-    \[
-        m\mathbb{Z} / (mn\mathbb{Z}) \cong \langle m \rangle.
-    \]
-    Thus,
-    \[
-        \mathbb{Z}_m \cong G/H \cong \frac{G/N}{H/N} \cong \mathbb{Z}_{mn}/\langle m \rangle
-    \]
-    which means $\mathbb{Z}_m \cong \mathbb{Z}_{mn} / \langle m \rangle$.
-
-    In other words, if $d$ divides $n$, then
-    \[
-        \mathbb{Z}_n / \langle d \rangle \cong \mathbb{Z}_d.
-    \]
-\end{example}
-
-From this example we can come up with a more general result.
-\begin{proposition}\label{prop-Zn-mod-cyclic-subgroup-of-m}
-    $\mathbb{Z}_n / \langle m \rangle \cong \mathbb{Z}_{\gcd(m,n)}$
-\end{proposition}
-\begin{proof}
-    We want to show that $\langle m \rangle = \langle \gcd(m,n) \rangle$. For brevity let $\gcd(m,n) = d$.
-
-    \begin{itemize}
-        \item $\boxed{\langle m \rangle \leq \langle d \rangle}$ Since $d\;|\;m$, thus $m = dk$ for some integer $k$. Hence, $\langle m \rangle = \{mx \vert x \in \mathbb{Z}\} = \{dkx \vert x \in \mathbb{Z}\} \leq \langle d \rangle$. Hence, $\langle m \rangle \leq \langle d \rangle d$.
-        \item $\boxed{\langle m \rangle \geq \langle d \rangle}$ By the Extended Euclidean Algorithm we may write $d = \alpha m + \beta n$ for some integers $\alpha$ and $\beta$. In $\mathbb{Z}_n$, $d = \alpha m$ which quickly implies that $\langle d \rangle = \langle \alpha m \rangle \leq \langle m \rangle$.
-    \end{itemize}
-    Thus $\langle d \rangle = \langle m \rangle$, so the claim is proven by previous example.
-\end{proof}
-
-\begin{exercise}
-    Suppose $x$ and $y$ are positive integers such that $y = mx$ for some integer $m$. Let $H = x\mathbb{Z}$ and $N = y\mathbb{Z}$ be groups under addition.
-    \begin{enumerate}[label=(\roman*)]
-        \item Explain why $N \subseteq H$.
-        \item Find a group $G$ such that $H \lhd G$ and $N \lhd G$.
-        \item Hence find the order of $H/N$.
-    \end{enumerate}
-\end{exercise}
-
-\newpage
-
-\section{Problems}
-\begin{problem}
-    Let $G$ be a group. Prove that $G/G \cong \{e\}$.
-\end{problem}
-
-\begin{problem}
-    Let $R = \mathbb{R}$ be a group under addition. Let $G = R^2$ and $H = \left\{(r\sqrt2, r\sqrt3) \vert r\in R\right\}$ be a group under component-wise addition. Prove that $G/H \cong R$.
-\end{problem}
-
-\begin{problem}
-    Let $G = \mathbb{Z}^2$ under component-wise addition, $H = \mathbb{Z} \times \mathbb{Z}_5$ under $(+, \oplus_5)$, and $K = \langle(5, 5)\rangle \lhd G$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Prove that $\phi: G \to H, (m,n) \mapsto (m-n, n \mod 5)$ is a group homomorphism.
-        \item Prove that $\phi$ is surjective.
-        \item Hence prove $G/K \cong H$.
-    \end{enumerate}
-\end{problem}
-
-\begin{problem}\label{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}
-    Let $G$ be a group. Let $H$ and $K$ be subgroups of $G$ such that $K \subseteq H$. Prove that $HK = H$.
-\end{problem}
-
-\begin{problem}\label{problem-cartesian-product-of-group-by-group-isomorphic-to-group}
-    Let $G$ be an abelian group under the operation $\ast$. Let $I = \{(g, g^{-1}) \vert g \in G\}$ be a group under component-wise application of $\ast$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Show that $I \cong G$.
-        \item Hence prove $G^2/G \cong G$ by considering a suitable homomorphism.
-    \end{enumerate}
-\end{problem}
-
-\begin{problem}\label{problem-mZ/nZ-isomorphic-to-Zn/m}
-    Let $G = m\mathbb{Z}$ and $H = n\mathbb{Z}$ be groups under addition, where $m\vert n$ and $m \neq n$. Let the map $\phi: G \to \mathbb{Z}_{\frac nm}$ be defined such that
-    \[
-        \phi(am) = a \mod \frac{n}{m}.
-    \]
-    Prove that $G/H \cong \mathbb{Z}_{\frac nm}$.
-\end{problem}
-
 % %=========================================
-% \chapter{More Types of Groups}
-% \section{More About Cyclic Groups}
-% We previously covered several properties of cyclic groups:
-% \begin{itemize}
-%     \item Every cyclic group is abelian. (\textbf{Proposition \ref{prop-cyclic-group-is-abelian}})
-%     \item A finite group $G$ is cyclic if and only if there exists an element $g$ in the group $G$ with the same order as the group. (\textbf{Theorem \ref{thrm-cyclic-group-has-element-with-same-order}})
-%     \item If $G$ is cyclic and $H \leq G$ then $G/H$ is cyclic. (\textbf{Exercise \ref{exercise-quotient-group-of-cyclic-group-is-cyclic}})
-%     \item Any subgroup of a cyclic group is also cyclic. (\textbf{Problem \ref{problem-subgroup-of-cyclic-group-is-cyclic}})
-%     \item $\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_n$. (\textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}})
-%     \item $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ if and only if $\gcd(m,n) = 1$. (\textbf{Theorem \ref{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition}})
-%     \item $\mathbb{Z}_n / \langle m \rangle \cong \mathbb{Z}_{\gcd(m,n)}$. (\textbf{Proposition \ref{prop-Zn-mod-cyclic-subgroup-of-m}})
-%     \item $m\mathbb{Z} / n\mathbb{Z} \cong \mathbb{Z}_{\frac nm}$. (\textbf{Problem \ref{problem-mZ/nZ-isomorphic-to-Zn/m}})
-% \end{itemize}
-
-% \begin{exercise}\label{exercise-Zmn-mod-Zn-cong-Zn}
-%     Prove that for any positive integers $m$ and $n$, we have
-%     \[
-%         \mathbb{Z}_{mn} / \mathbb{Z}_m \cong \mathbb{Z}_n.
-%     \]
-% \end{exercise}
-
-% Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead of $\mathbb{Z}_n$. This may be sometimes used to distinguish (finite) cyclic subgroups of a group from the integers modulo $n$.
-
-% We prove more facts about cyclic groups here.
-% \begin{lemma}\label{lemma-order-of-an-element-that-is-equivalent-to-identity}
-%     Let $\Cn{n}$ have generator $g$. Then $g^k = e$ if and only if $k$ is a multiple of $n$.\newline
-%     (Equivalently, this means that if $g^k = e$, then $n$ divides $k$, i.e. $n | k$.)
-% \end{lemma}
-% \begin{proof}
-%     We note that the order of $g$ is $n$, since $g$ is a generator of $G$. Thus by \textbf{Problem \ref{problem-element-to-power-of-multiple-of-order-is-identity}} the lemma is proven.
-% \end{proof}
-
-% \begin{exercise}
-%     The number 12 is equivalent to 0 in the group $\mathbb{Z}_n$ (under addition modulo $n$). What are the possible value(s) of $n$?
-% \end{exercise}
-
-% We are now ready to prove an important theorem on cyclic groups.
-% \begin{theorem}\label{thrm-order-of-element-in-cyclic-group}
-%     Let $\Cn{n}$ have generator $g$. Let $x = g^k$ for some integer $k$. Then the order of $x$ is $\frac{n}{\gcd(k,n)}$.
-% \end{theorem}
-% \begin{proof}
-%     For brevity let $m = |x|$ and suppose $k = \lambda \gcd(k, n)$ for some positive integer $\lambda$.
-
-%     Let $\mathcal{X} = \langle x \rangle = \{x, x^2, x^3, \dots, x^m\}$. Note that $\mathcal{X}$ is a cyclic group with order $m$ and generator $x$.
-
-%     Observe that
-%     \[
-%         x^m = \left(g^k\right)^m = g^{km}
-%     \]
-%     and since $|x| = m$, this means that $x^m = e$. Hence
-%     \[
-%         g^{km} = e.
-%     \]
-
-%     By \textbf{Lemma \ref{lemma-order-of-an-element-that-is-equivalent-to-identity}} on $\Cn{n}$, $n \vert km$. This implies that
-%     \[
-%         \frac{n}{\gcd(k,n)} \ \vline \ \frac{km}{\gcd(k,m)} = \lambda m.
-%     \]
-%     Note that $\gcd\left(\lambda, \frac{n}{\gcd(k,n)}\right) = \gcd\left(\frac{k}{\gcd(k,n)}, \frac{n}{\gcd(k,n)}\right) = 1$. This means that $\frac{n}{\gcd(k,n)}$ does not divide $\lambda$, meaning $\frac{n}{\gcd(k,n)} \ \vline \ m$.
-
-%     Also note that
-%     \begin{align*}
-%         x^{\frac{n}{\gcd(k,n)}} &= \left(g^k\right)^{\frac{n}{\gcd(k,n)}}\\
-%         &= \left(g^n\right)^{\frac{k}{\gcd(k,n)}}\\
-%         &= \left(g^n\right)^\lambda\\
-%         &= e^\lambda & (\text{since } |g| = n)\\
-%         &= e,
-%     \end{align*}
-%     implying $x^{\frac{n}{\gcd(k,n)}} = e$. By \textbf{Lemma \ref{lemma-order-of-an-element-that-is-equivalent-to-identity}} on group $\mathcal{X}$, we have $m \ \vline \ \frac{n}{\gcd(k,n)}$.
-
-%     Since $\frac{n}{\gcd(k,n)} \ \vline \ m$ and $m \ \vline \ \frac{n}{\gcd(k,n)}$ simultaneously, thus $m = \frac{n}{\gcd(k,n)}$, i.e. $|x| = \frac{n}{\gcd(k,n)}$.
-% \end{proof}
-
-% \begin{exercise}
-%     In the group $\mathbb{Z}_{210}$, find the order of 10, 42, 75, and 140.
-% \end{exercise}
-
-% \begin{corollary-thrm}
-%     Let $\Cn{n}$ have generator $g$. Then $g^m$ is also a generator if and only if $\gcd(m, n) = 1$.
-% \end{corollary-thrm}
-% \begin{proof}
-%     We prove the forward direction first. Suppose that $\Cn{n}$ has a generator of $g^m$. On one hand, $|g^m| = n$ since a generator of a group necessarily has to have an order equal to that of the group. On another hand, by \textbf{Theorem \ref{thrm-order-of-element-in-cyclic-group}}, $|g^m| = \frac{n}{\gcd(m, n)}$. Hence, $n = \frac{n}{\gcd(m, n)}$ which quickly implies $\gcd(m, n) = 1$.
-
-%     Now we prove the reverse direction. Suppose $\gcd(m,n) = 1$. Then $|g^m| = \frac{n}{\gcd(m,n)} = \frac{n}{1} = n$ by \textbf{Theorem \ref{thrm-order-of-element-in-cyclic-group}}. Hence $g^m$ is a generator of the group $\Cn{n}$ by \textbf{Theorem \ref{thrm-cyclic-group-has-element-with-same-order}}.
-% \end{proof}
-
-% \begin{exercise}
-%     Find all the generators of the following groups.
-%     \begin{enumerate}[label=(\alph*)]
-%         \item $\mathbb{Z}_{10}$
-%         \item $\mathbb{Z}_{101}$
-%     \end{enumerate}
-% \end{exercise}
-
-% \section{Quaternion Group}
-% We look at an interesting group that has use in computer graphics: the \textbf{Quaternion Group}. We present one definition here.
+% \chapter{Further Properties of Homomorphisms}
+% \section{Image of a Homomorphism}
+% As a homomorphism is a mapping between two groups, it is worthy to look at the \textbf{image} (or \textbf{range}) of the homomorphism.
 % \begin{definition}
-%     The quaternion group is denoted by $\mathrm{Q}$ where
+%     The \textbf{image}\index{homomorphism!image} (or \textbf{range}\index{homomorphism!range}) of a homomorphism $\phi: G \to H$ is the set
 %     \[
-%             \mathrm{Q} = \{1, -1, i, -i, j, -j, k, -k\}
+%         \im\phi = \{\phi(g) \vert g \in G\} \subseteq H.
 %     \]
-%     such that
-%     \begin{itemize}
-%         \item 1 is the identity;
-%         \item $(-1)^2 = 1$;
-%         \item $i^2 = j^2 = k^2 = -1$;
-%         \item $ij = k$ and $ji = -k$;
-%         \item $jk = i$ and $kj = -i$; and
-%         \item $ki = j$ and $ik = -j$.
-%     \end{itemize}
 % \end{definition}
-
-% Note that the proper subgroups of $\mathrm{Q}$ are
-% \begin{itemize}
-%     \item $\langle -1 \rangle = \{\pm1\}$;
-%     \item $\langle i \rangle = \{\pm1, \pm i\}$;
-%     \item $\langle j \rangle = \{\pm1, \pm j\}$; and
-%     \item $\langle k \rangle = \{\pm1, \pm k\}$.
-% \end{itemize}
-% The correctness of these proper subgroups are left as an exercise to the reader.
-
-% With these subgroups, we can write a presentation for $\mathrm{Q}$.
-
-% \begin{proposition}
-%     $\mathrm{Q} = \langle i, j \rangle$ (with relationships as given above).
-% \end{proposition}
-% \begin{proof}
-%     For brevity let $G = \langle i, j \rangle$. We are to prove $G = \mathrm{Q}$.
-
-%     We note that $i^0 = 1$, $i^4 = j^4 = 1$ and $ji = -k = -ij = i^3j$. Hence,
-%     \begin{align*}
-%         G &= \{1, i, i^2, i^3, j, ij, i^2j, i^3j\}\\
-%         &= \{1, i, -1, -i, j, ij, -j, -ij\}\\
-%         &= \{1, -1, i, -i, j, -j, ij, -ij\} & (\text{reordering})\\
-%         &= \{1, -1, i, -i, j, -j, k, -k\} & (\text{since } ij = k)\\
-%         &= \mathrm{Q}.
-%     \end{align*}
-%     Thus, $\mathrm{Q} = \langle i, j \rangle$.
-% \end{proof}
-
-% Thus, an alternate definition of $\mathrm{Q}$ is as follows:
-% \[
-%     \mathrm{Q} = \langle \alpha, \beta \vert \alpha^4 = e, \alpha^2 = \beta^2, \text{ and } \beta\alpha = \alpha^3\beta \rangle.
-% \]
-% One sees clearly that in this definition, $\alpha = i$ and $\beta = j$.
-
-% \begin{exercise}\label{exercise-normal-subgroups-of-quarternion-group}
-%     Find all the normal subgroups of the quaternion group $\mathrm{Q}$.\newline
-%     (\textit{Hint: consider \textbf{Problem \ref{problem-subgroup-of-index-2}}}.)
-% \end{exercise}
-
-% \section{Alternating Group}
-% The alternating group is a very important group in the field of group theory. However, before we can properly define it, we need to introduce the idea of \textbf{transpositions}.
-
-% \subsection{Transpositions}
-% \begin{definition}
-%     A \textbf{transposition} is a 2-cycle. That is, a transposition $\tau$ is represented as $(a\quad b)$ in cycle notation.
-% \end{definition}
-% For example, (1 5), (4 7), (3 6) etc. are transpositions, while (1 4 5), (3 4 6 5 9), (1 3 4 5) etc. are not. One clearly sees that every transposition is its own inverse.
-
-% We look at one lemma which can be said to help `decompose' transpositions. Note that line breaks are to be ignored in the following lemma.
-% \begin{lemma}\label{lemma-decompose-transposition}
-%     Let a transposition $\tau = (i\quad i+d)$ where $d$ is a positive integer. Then
-%     \begin{align*}
-%         & (i\quad i+1)(i+1\quad i+2)\cdots\\
-%         &\quad (i+d-2\quad i+d-1)(i+d-1\quad i+d)(i+d-2\quad i+d-1)\cdots\\
-%         &\quad (i+1\quad i+2)(i\quad i+1) = \tau.
-%     \end{align*}
-% \end{lemma}
-% \begin{proof}
-%     We induct on $d$.
-
-%     When $d = 1$, $\tau = (i\quad i+1)$ so it is true.
-
-%     Assume that the given representation of $\tau$ holds for some positive integer $d$. Note this means that it holds for all $i$, including $i+1$. We are to show that it works for $d + 1$.
-%     \begin{align*}
-%         (i\quad i+(d+1)) &= (i\quad i+1)(i+1\quad i+d+1)(i\quad i+1)\\
-%         &= (i\quad i+1)\underbrace{((i+1)\quad (i+d)+1)}_{\text{apply induction hypothesis}}(i\quad i+1)\\
-%         &= (i\quad i+1)((i+1)\quad(i+1)+1)\cdots\\
-%         &\quad\quad((i+1)\quad(i+1)+1)(i\quad i+1)\\
-%         &= (i\quad i+1)(i+1\quad i+2)\cdots(i+1\quad i+2)(i\quad i+1)
-%     \end{align*}
-%     which shows that $d+1$ works as well.
-% \end{proof}
 % \begin{remark}
-%     In the above `decomposition' of $\tau$, $2d-1$ compositions were used.
-% \end{remark}
-% \begin{example}
-%     As an example, let's look at the `decomposition' of the transposition (4 9):
-%     \[
-%         (4\quad 9) = (4\quad 5)(5\quad 6)(6\quad 7)(7\quad 8)(8\quad 9)(7\quad 8)(6\quad 7)(5\quad 6)(4\quad 5).
-%     \]
-%     We leave it as an exercise for the reader to verify this particular case.
-% \end{example}
-% \begin{exercise}
-%     `Decompose' the transposition (2 6).
-% \end{exercise}
-% \begin{remark}
-%     We call transpositions which take the form $\begin{pmatrix}i&i+1\end{pmatrix}$ \textbf{adjacent transpositions}, and we may denote them by $\alpha$.
+%     Some authors (e.g. \cite{libretexts_imandker}) will use the notation $\phi(G)$ for the image of $\phi: G \to H$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by \cite{clark_1984, hungerford_1980}).
 % \end{remark}
 
-% \subsection{Links with Permutations}
-% As mentioned before, transpositions are a 2-cycle permutation. However, transpositions are important as every permutation can be expressed as a product of transpositions.
-% \begin{lemma}\label{lemma-permutations-as-product-of-transpositions}
-%     Every permutation can be expressed as a product of transpositions.
-% \end{lemma}
-% \begin{proof}[Proof (see {\cite[\S 80 Corollary]{clark_1984}})]
-%     For the identity $\id$ it can be expressed as $(a\quad b)(a \quad b)$. For any permutation with length $k \geq 2$, say $\sigma = \begin{pmatrix}a_1 & a_2 & a_3 & \cdots & a_k\end{pmatrix}$, write
-%     \[
-%         \sigma = \begin{pmatrix}a_1 & a_k\end{pmatrix}\begin{pmatrix}a_1 & a_{k-1}\end{pmatrix}\begin{pmatrix}a_1 & a_{k-2}\end{pmatrix}\cdots\begin{pmatrix}a_1 & a_3\end{pmatrix}\begin{pmatrix}a_1 & a_2\end{pmatrix}
-%     \]
-%     and since every permutation is a product of cycles, thus every permutation is a product of transpositions.
-% \end{proof}
-
-% We now look at the idea of \textbf{inversions} inside permutations.
-% \begin{definition}
-%     Let $\sigma$ be a permutation. An \textbf{inversion} of $\sigma$ between $i$ and $j$ exists if $i > j$ and $\sigma(i) < \sigma(j)$.
-% \end{definition}
-% An inversion between $i$ and $j$ is denoted by either $(i, j)$ or $(\sigma(i), \sigma(j))$.
 % \begin{example}
-%     In the permutation $\sigma = \begin{pmatrix}1 & 3 & 2 & 4\end{pmatrix}$, we see that $3 \mapsto 2$ but $2 \mapsto 4$. Thus there is an inversion (3, 2) = (2, 4).
+%     Consider the homomorphism $f: \mathbb{Z} \to \mathbb{Z}, x \mapsto 0$. Clearly, all possible values of $x$ maps to 0, so $\im f = \{0\}$.
 % \end{example}
 
-% We now define the idea of \textbf{even} permutations and \textbf{odd} permutations.
-% \begin{definition}
-%     A permutation $\sigma$ is said to be \textbf{even} if there are an even number of inversions in $\sigma$. If $\sigma$ is not even then it is said to be \textbf{odd}.
-% \end{definition}
-
-% Counting the number of inversions in a permutation may be too hard to do, and so we have an alternative definition for the evenness or oddness of a permutation. This idea is recorded in the following theorem.
-
-% \begin{theorem}\label{thrm-parity-of-permutation}
-%     Let $\sigma$ be a permutation. Then $\sigma$ is even if and only if the number of transpositions that $\sigma$ is `decomposed' into is even.
-% \end{theorem}
-% \begin{proof}
-%     We only need to show that the \textit{parity} of the number of inversions and permutations are equal to prove this.
-
-%     By \textbf{Lemma \ref{lemma-permutations-as-product-of-transpositions}}, all permutations can be produced by a sequence of transpositions, say $\sigma = \tau_1\tau_2\tau_3\cdots\tau_k$.
-
-%     By \textbf{Lemma \ref{lemma-decompose-transposition}}, every transposition can be written as a product of $2d - 1$ adjacent transpositions. Decomposing each $\tau_1, \tau_2, \dots, \tau_k$ yields
-%     \[
-%         \sigma = \alpha_1\alpha_2\cdots\alpha_m
-%     \]
-%     where $\alpha_i$ is an adjacent transposition for $1 \leq i \leq m$. Note that the parity of $m$ is the same as that of $k$.
-
-%     It is clear that for any permutation $\pi$ and adjacent permutation $\alpha$, $\alpha\pi$ has either one more or one less inversion than $\pi$. Thus the parity of the number of inversions of a permutation is switched when composed with adjacent transpositions.
-
-%     One sees clearly that the identity permutation $\id$ is an even permutation. So $\alpha_1$ is odd, $\alpha_1\alpha_2$ is even, $\alpha_1\alpha_2\alpha_3$ is odd, etc., so $\alpha_1\alpha_2\cdots\alpha_m$ has parity of $m$. Therefore the parity of the number of inversions of $\sigma$ is the parity of $k$, proving the theorem.
-% \end{proof}
-
-% \begin{proposition}\label{prop-permutation-and-inverse-have-same-parity}
-%     Let $\sigma$ be a permutation. If $\sigma$ is even then $\sigma^{-1}$ is also even. Otherwise if $\sigma$ is odd then $\sigma^{-1}$ is also odd.
+% We note that the image of a homomorphism is a subgroup of the codomain $H$.
+% \begin{proposition}\label{prop-image-is-subgroup-of-codomain}
+%     Let $\phi: G \to H$ be a homomorphism. Then $\im\phi \leq H$.
 % \end{proposition}
 % \begin{proof}
-%     One observes clearly that $\sigma\sigma^{-1} = \id$. Since $\id$ is even, thus $\sigma\sigma^{-1}$ must be composed of an even number of transpositions (by \textbf{Theorem \ref{thrm-parity-of-permutation}}).
-%     \begin{itemize}
-%         \item If $\sigma$ is even, then $\sigma$ is `made up of' an even number of transpositions. Hence $\sigma^{-1}$ must also be `made up of' an even number of transpositions in order for $\sigma\sigma^{-1} = \id$ to be `made up of' an even number of transpositions.
-%         \item If $\sigma$ is odd, then $\sigma$ is `made up of' an odd number of transpositions. Hence $\sigma^{-1}$ must also be `made up of' an odd number of transpositions in order for $\sigma\sigma^{-1} = \id$ to be even.
-%     \end{itemize}
-%     Thus, the proposition is proven.
-% \end{proof}
-
-% We look at one final useful construct: the sign of a permutation.
-% \begin{definition}
-%     The \textbf{sign of a permutation} is $+1$ if the permutation is even and $-1$ if the permutation is odd.
-% \end{definition}
-% If $\sigma$ is the permutation, $N(\sigma)$ denotes the number of inversions in $\sigma$ and $m$ the number of transpositions in the decomposition of $\sigma$, then the sign of $\sigma$ is given by the signum function:
-% \[
-%     \sgn(\sigma) = (-1)^{N(\sigma)} = (-1)^m.
-% \]
-% \begin{exercise}
-%     Find the sign of the permutation (1 3 2 5 4).
-% \end{exercise}
-
-% As a final note, one observes that the number of inversions in $\sigma\tau$ is the same as the sum of inversions in $\sigma$ and $\tau$ separately, meaning
-% \[
-%     N(\sigma\tau) = N(\sigma) + N(\tau)
-% \]
-% which hence means that the sign of a permutation $\sigma\tau$ is
-% \begin{align*}
-%     \sgn(\sigma\tau) &= (-1)^{N(\sigma\tau)}\\
-%     &= (-1)^{N(\sigma) + N(\tau)}\\
-%     &= (-1)^{N(\sigma)}(-1)^{N(\tau)}\\
-%     &= \sgn(\sigma)\sgn(\tau),
-% \end{align*}
-% meaning that $\sgn$ is a \textit{multiplicative map}. One can then quickly verify \textbf{Proposition \ref{prop-permutation-and-inverse-have-same-parity}} by noting
-% \[
-%     1 = \sgn(\id) = \sgn(\sigma\sigma^{-1}) = \sgn(\sigma)\sgn(\sigma^{-1})
-% \]
-% which means $\sgn(\sigma)$ and $\sgn(\sigma^{-1})$ have the same parity.
-
-% \subsection{The Alternating Group}
-% We are now ready to look at the alternating group.
-% \begin{definition}
-%     The \textbf{alternating group of degree $n$} (where $n \geq 2$), denoted by $\An{n}$, is given by
-%     \[
-%         \An{n} = \left\{\sigma \in \Sn{n} \vert \sigma \text{ is even}\right\}
-%     \]
-% \end{definition}
-
-% \begin{proposition}\label{prop-An-normal-subgroup-of-Sn}
-%     $\An{n} \lhd \Sn{n}$ where $n > 1$.
-% \end{proposition}
-% \begin{proof}
-%     Clearly from definition $\An{n} \subseteq \Sn{n}$ so we consider the subgroup test. Note that the identity function $\id \in \An{n}$ since $\id \in \Sn{n}$ and the identity is even.
-
-%     Suppose now that $\mu$ and $\sigma$ are in $\An{n}$. We are to show that $\mu\sigma^{-1} \in \An{n}$. By \textbf{Lemma \ref{lemma-permutations-as-product-of-transpositions}}, we may write
-%     \[
-%         \mu = \tau_1\tau_2\cdots\tau_{2k} \text{ and } \sigma = \tau_1'\tau_2'\cdots\tau_{2m}'.
-%     \]
-%     We note that any transposition is its own inverse, i.e. $\tau = \tau^{-1}$. Hence by Shoes and Socks, $\sigma^{-1} = \tau_{2m}'\tau_{2m-1}'\cdots\tau_2'\tau_1'$. Therefore,
-%     \[
-%         \mu\sigma^{-1} = \underbrace{\tau_1\cdots\tau_{2k}\tau_{2m}'\cdots\tau_1'}_{2(k+m) \text{ transpositions}}
-%     \]
-%     is an even permutation, meaning $\mu\sigma^{-1} \in \An{n}$. By subgroup test, $\An{n} \leq \Sn{n}$.
+%     We consider the subgroup test. Let $e_G$ and $e_H$ be the identities of $G$ and $H$ respectively.
     
-%     Now take $\sigma \in \Sn{n}$ and $\mu \in \An{n}$. Note that
-%     \[
-%         \sgn(\sigma\mu\sigma^{-1}) = \sgn(\sigma)\sgn(\mu)\sgn(\sigma^{-1}).
-%     \]
-%     As above, we note $\sgn(\sigma)\sgn(\sigma^{-1}) = 1$ and $\sgn(\mu) = 1$ since $\mu$ is even. Hence $\sgn(\sigma\mu\sigma^{-1}) = 1$ which means that $\sigma\mu\sigma^{-1}$ is an even permutation. Therefore $\sigma\mu\sigma^{-1} \in \An{n}$, meaning that $\An{n} \lhd \Sn{n}$.
-% \end{proof}
+%     Note that $\phi(e_G) = e_H \in \im\phi$. Thus $\im\phi$ is non-empty.
+    
+%     Now suppose $h_1$ and $h_2$ are in the image of $\phi$, meaning that there exists $g_1$ and $g_2$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Note that $\phi(g_2^{-1}) = h_2^{-1}$ by homomorphism property. Hence $\phi(g_1g_2^{-1}) = h_1h_2^{-1} \in \im\phi$.
 
-% \begin{proposition}\label{prop-order-of-An}
-%     The order of $\An{n}$ is $\frac{n!}{2}$ for $n > 1$.
-% \end{proposition}
-% \begin{proof}
-%     For brevity, let
-%     \[
-%         \mathrm{O}_n = \left\{\sigma \in \Sn{n} \vert \sigma \text{ is odd}\right\} = \Sn{n} \setminus \An{n}.
-%     \]
-%     Clearly $A_n \cup \mathrm{O}_n = \Sn{n}$ and $A_n \cap \mathrm{O}_n = \emptyset$.
-
-%     Define a map $f: \An{n} \to \mathrm{O}_n$ such that $\sigma \mapsto \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. We will show that this is a bijective map.
-%     \begin{itemize}
-%         \item \textbf{Injective}: Let $\mu$ and $\sigma$ be in $\An{n}$ such that $f(\mu) = f(\sigma)$. This means that $\begin{pmatrix}1 & 2\end{pmatrix}\mu = \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. Now by left-applying $\begin{pmatrix}1 & 2\end{pmatrix}$ on both sides yields $\mu = \sigma$.
-%         \item \textbf{Surjective}: Take $\mu \in \mathrm{O}_n$, say $\mu = \tau_1\tau_2\cdots\tau_{2k-1}$. Clearly,
-%         \[
-%             \mu = \underbrace{\begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 2\end{pmatrix}}_{\id}\tau_1\tau_2\cdots\tau_{2k-1}.
-%         \]
-%         Consider $\sigma = \begin{pmatrix}1 & 2\end{pmatrix}\tau_1\tau_2\cdots\tau_{2k-1}$, which is an even bijective function and thus is in $\An{n}$. Observe that
-%         \begin{align*}
-%             f(\sigma) &= \begin{pmatrix}1 & 2\end{pmatrix}\sigma\\
-%             &= \begin{pmatrix}1 & 2\end{pmatrix}\left(\begin{pmatrix}1 & 2\end{pmatrix}\tau_1\tau_2\cdots\tau_{2k-1}\right)\\
-%             &= \tau_1\tau_2\cdots\tau_{2k-1}\\
-%             &= \mu
-%         \end{align*}
-%         which means that $\mu \in \mathrm{O}_n$ has a pre-image $\sigma$ in $\An{n}$.
-%     \end{itemize}
-%     This proves that $f$ is bijective. Therefore $|\An{n}| = |\mathrm{O}_n|$. Since $A_n \cup \mathrm{O}_n = \Sn{n}$ and $A_n \cap \mathrm{O}_n = \emptyset$, thus $|\Sn{n}| = |\An{n}| + |\mathrm{O}_n| = 2|\An{n}|$. Now because $|\Sn{n}| = n!$ by \textbf{Exercise \ref{exercise-order-of-Sn}}, therefore $|\An{n}| = \frac{n!}2$.
+%     Therefore, by subgroup test, $\im\phi \leq H$.
 % \end{proof}
 
 % \begin{exercise}
-%     List all elements of $\An{3}$.
+%     Consider the map $\phi: \mathbb{Z}_3 \to \mathbb{Z}_6, n \mapsto 2n$. Determine whether $\phi$ is a homomorphism and, if so, find its image.
 % \end{exercise}
 
-% \section{Group of Units Modulo \texorpdfstring{$n$}{n}}
-% We look at a useful group in number theory: the \textbf{group of units modulo $n$}.
+% \section{Kernel of a Homomorphism}
+% We look at the \textbf{kernel} of a homomorphism as well.
 
 % \begin{definition}
-%     For a positive integer $n \geq 2$, the \textbf{group of units modulo $n$}, denoted by $\Un{n}$, is the set
+%     The \textbf{kernel}\index{homomorphism!kernel} of a homomorphism $\phi: G \to H$ is
 %     \[
-%         \Un{n} = \{m \in \mathbb{Z} \vert 1 \leq m < n \text{ and } \gcd(m, n) = 1\}
+%         \ker\phi = \{x \in G \vert \phi(x) = e_H\}
 %     \]
-%     together with the operation $\otimes_n$ (multiplication modulo $n$).
+%     where $e_H$ is the identity in $H$.
 % \end{definition}
-% \begin{proposition}
-%     $\Un{n}$ is an abelian group.
-% \end{proposition}
-% \begin{proof}
-%     We note that multiplication modulo $n$ is commutative. So, we only need to prove that $\Un{n}$ satisfies the four group axioms to show that $\Un{n}$ is an abelian group.
-%     \begin{enumerate}
-%         \item \textbf{Closure}: Let $x, y \in \Un{n}$. Then $\gcd(x, n) = \gcd(y, n) = 1$. Hence $\gcd(xy, n) = 1$ which means that $\gcd(x\otimes_ny,n)=1$. Thus $x\otimes_ny \in \Un{n}$.
-%         \item \textbf{Associativity}: Since multiplication is associative, this is true.
-%         \item \textbf{Identity}: Note that 1 is the identity in $\Un{n}$ since $1 \otimes_n x = x$.
-%         \item \textbf{Inverse}: Let $x$ be in $\Un{n}$, meaning $\gcd(x, n) = 1$. Thus there exists integers $p$ and $q$ such that $px + qn = 1$. Note that $qn$ is a multiple of $n$, so $px \equiv 1 \pmod{n}$, which implies that $p \otimes_n x = 1$. Thus $p$ is the left-inverse of $x$. Since multiplication is commutative, $p$ is also the right-inverse of $x$. Hence $p$ is the inverse of $x$.
-%     \end{enumerate}
-%     This thus shows that $\Un{n}$ is an abelian group under $\otimes_n$.
-% \end{proof}
+% Basically, the kernel of $\phi$ is the set of elements in $G$ which map to the identity in $H$.
 
-% \begin{exercise}
-%     List the elements of $\Un{10}$.
-% \end{exercise}
-
-% There is, of course, another representation of $\Un{n}$, but we leave it to later in this section.
-
-% A useful number theory function that will occur frequently in this section is \textbf{Euler's totient function}.
-% \begin{definition}
-%     The \textbf{Euler totient function} $\totient$ gives the number of numbers which are smaller than and coprime to a number $x$. That is,
-%     \[
-%         \totient(x) = |\{n \in \mathbb{Z} \vert 1 \leq n < x \text{ and } \gcd(n, x) = 1\}|.
-%     \]
-% \end{definition}
-% In particular, if $x = p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$ where $p_1, p_2,\dots,p_k$ are distinct primes and $n_1,n_2,\dots,n_k$ are positive integers, then
-% \[
-%     \totient(x) = x \left(1 - \frac1{p_1}\right)\left(1 - \frac1{p_2}\right)\cdots\left(1 - \frac1{p_k}\right).
-% \]
-% Note by definition of $\Un{n}$, $|\Un{n}| = \phi(n)$.
-
-% \begin{exercise}\label{exercise-order-of-a-divides-phi-a}
-%     Let $a$ be in $\Un{n}$. Prove that $|a|$ divides $\totient(n)$.
-% \end{exercise}
-
-% We look at the specific case where $|a| = \totient(n)$.
-% \begin{definition}
-%     If $\gcd(a, n) = 1$ we say that $a$ is a \textbf{primitive root modulo $n$} if $|a| = \totient(n)$ in $\Un{n}$.
-% \end{definition}
-% We state the following fact without proof:
-% \begin{quote}
-%     There is a primitive root modulo $n$ if and only if $n$ is 1, 2, 4, $p^k$, or $2p^k$ where $p$ is an odd prime.
-% \end{quote}
-
-% \begin{proposition}\label{prop-Un-cyclic-only-if-exists-primitive-root}
-%     $\Un{n}$ is cyclic if and only if there is a primitive root modulo $n$.
-% \end{proposition}
-% \begin{proof}
-%     We first prove the forward direction. Let $\Un{n}$ be cyclic. Then there exists an element $r \in \Un{n}$ such that $|r| = |\Un{n}| = \totient(n)$. By definition of a primitive root, this means that $r$ is a primitive root modulo $n$.
-
-%     We prove the reverse direction. Let $r \in \Un{n}$ be a primitive root modulo $n$. Then $\langle r \rangle \cong \mathbb{Z}_{\totient(n)}$. Note that since $|\langle r \rangle| = \phi(n) = |\Un{n}|$, therefore $r$ is a generator of $\Un{n}$, proving that $\Un{n}$ is cyclic.
-% \end{proof}
 % \begin{remark}
-%     In fact, what \textbf{Proposition \ref{prop-Un-cyclic-only-if-exists-primitive-root}} shows is that $\Un{n} \cong \mathbb{Z}_{\totient(n)}$ if there exists a primitive root modulo $n$.
+%     Some authors (e.g. \cite{libretexts_imandker}) will use the notation $\phi^{-1}(e_H)$ for the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. \cite{clark_1984, hungerford_1980}).
 % \end{remark}
+
+% \newpage
+
+% \begin{example}
+%     Let the groups $G = (\mathbb{Z}^2, (+, +))$ and $H = (\mathbb{Z}, +)$. Let the map $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$. This means that $a+b = 0$, implying $ b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \mathbb{Z}\}$.
+% \end{example}
+
+% \begin{exercise}
+%     Let $i$ be the imaginary unit, that is $i^2 = -1$. Let the group $G$ be the integers under addition and $H = \langle i \rangle$ be under multiplication. Let the map $\phi: G \to H, n \mapsto i^n$.  Show that $\phi$ is a homomorphism and hence find $\ker\phi$.
+% \end{exercise}
+
+% Like the image of $\phi$, the kernel of $\phi$ is a subgroup of $H$. It is, in fact, a \textit{normal} subgroup of $H$.
+% \begin{proposition}\label{prop-kernel-is-normal-subgroup-of-domain}
+%     Let $\phi: G \to H$ be a homomorphism. Then $\ker\phi \unlhd G$.
+% \end{proposition}
+% \begin{proof}
+%     We will first show $\ker\phi\leq G$. Clearly $e_G \in \ker\phi$ since $\phi(e_G) = e_H$, so $\ker\phi$ is non-empty. Now let $x, y \in \ker\phi$. This means that $\phi(x) = \phi(y) = e_H$. Note
+%     \begin{align*}
+%         \phi(xy^{-1}) &= \phi(x)\phi(y^{-1})\\
+%         &= \phi(x)\left(\phi(y)\right)^{-1}\\
+%         &= e_H(e_H)^{-1}\\
+%         &= e_H
+%     \end{align*}
+%     which means that $xy^{-1}\in\ker\phi$. By subgroup test, $\ker\phi\leq G$.
+
+%     Now we prove normality. Let $x \in G$ and $n \in \ker\phi$. We need to show that $xnx^{-1}\in\ker\phi$ to prove normality. Observe that
+%     \begin{align*}
+%         \phi(xnx^{-1}) &= \phi(x)\phi(n)\phi(x^{-1})\\
+%         &= \phi(x)e_H\phi(x)^{-1} & (\text{since } n \in \ker\phi)\\
+%         &= \phi(x)\phi(x)^{-1}\\
+%         &= e_H,
+%     \end{align*}
+%     which means that $xnx^{-1} \in \ker\phi$. Hence, $\ker\phi \unlhd G$.
+% \end{proof}
+
+% \begin{exercise}\label{exercise-trivial-kernel-means-injective}
+%     Prove that a homomorphism $\phi:G\to H$ is injective if and only if $\ker \phi$ is trivial, i.e. $\ker \phi = \{e_G\}$.
+% \end{exercise}
+
+% \section{The Fundamental Homomorphism Theorem}
+% We are now ready to tackle the three most important theorems regarding homomorphisms. We first state the \textbf{Fundamental Homomorphism Theorem}, which is also sometimes called the \textbf{First Isomorphism Theorem}.
+% \begin{theorem}[Fundamental Homomorphism Theorem]\label{thrm-isomorphism-1}\index{Fundamental Homomorphism Theorem}\index{First Isomorphism Theorem}
+%     Let $G$ and $H$ be groups. Let $\phi: G \to H$ be a homomorphism, and let $\pi: G \to G/\ker\phi$ where $g\mapsto g\ker\phi$ be the natural surjective homomorphism. Then there exists a unique isomorphism $\psi: G/\ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
+% \end{theorem}
+% Equivalently, the Fundamental Homomorphism Theorem states that
+% \[
+%     G/\ker\phi \cong \im\phi
+% \]
+% for any homomorphism $\phi$.
+
+% We include the commutativity diagram of the homomorphisms stated above to aid clarity:
+
+% \begin{figure}[h]
+%     \centering
+%     \fbox{\includegraphics[width=4.5cm]{images/chapter7/FirstIsomorphismTheoremCommutivityDiagram.png}}
+%     \caption{Commutivity Diagram For \textbf{Theorem \ref{thrm-isomorphism-1}}}
+% \end{figure}
+
+% In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elements from $G$ to $G/\ker\phi$. Then the map $\psi$ is a unique map that sends elements from $G/\ker\phi$ to the image of $\phi$.
+
+% \begin{proof}[Proof (cf. {\cite[p.~250, Theorem 2]{cohn_1982}})]
+%     We know by \textbf{Proposition \ref{prop-image-is-subgroup-of-codomain}} that $\im\phi \leq H$. Let $\psi: G/\ker\phi \to \im\phi$ such that $\psi(x\ker\phi) = \phi(x)$. We need to check that $\psi$ is a well-defined isomorphism.
+%     \begin{itemize}
+%         \item \textbf{Well-defined}: Suppose $x\ker\phi = y\ker\phi$ where $x, y \in G$.
+%         \begin{align*}
+%             &\implies xy^{-1} \in \ker\phi & (\text{Coset Equality, \textbf{Lemma \ref{lemma-coset-equality}}})\\
+%             &\implies\phi(xy^{-1}) = e_H & (\text{Definition of kernel})\\
+%             &\implies\phi(x)\left(\phi(y)\right)^{-1} = e_H & (\text{Definition of homomorphism})\\
+%             &\implies\phi(x) = \phi(y)
+%         \end{align*}
+%         Thus,
+%         \[
+%             \psi(x\ker\phi) = \phi(x) = \phi(y) = \psi(y\ker\phi)
+%         \]
+%         so $\psi$ is well-defined.
+
+%         \item \textbf{Homomorphism}: Note that
+%         \begin{align*}
+%             \psi((x\ker\phi)(y\ker\phi)) &= \psi((xy)\ker\phi)\\
+%             &= \phi(xy)\\
+%             &= \phi(x)\phi(y)\\
+%             &= \psi(x\ker\phi)\psi(y\ker\phi)
+%         \end{align*}
+%         so $\psi$ is a homomorphism.
+%         \item \textbf{Injective}: By \textbf{Exercise \ref{exercise-trivial-kernel-means-injective}}, we check that $\psi$ is injective by showing that $\ker\psi$ is trivial, i.e. $\ker\psi = \{\ker\phi\}$.
+
+%         Suppose $x\ker\phi\in\ker\psi$. Then $\psi(x\ker\phi) = e_H$ by definition of kernel. Hence $\phi(x) = e_H$ by definition of $\psi$. Hence, $x \in \ker\phi$ by definition of kernel. This means that $xe^{-1} \in \ker\phi$. So $x\ker\phi = e\ker\phi = \ker\phi$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}) meaning that $\ker\psi = \{\ker\phi\}$. Therefore $\psi$ is injective.
+
+%         \item \textbf{Surjective}: Suppose $y$ is in the image of $\phi$, meaning there exists a $x$ in $G$ such that $\phi(x) = y$. Note that $\psi(x\ker\phi) = \phi(x) = y$. Thus $\psi$ is surjective.
+%     \end{itemize}
+%     Thus $\psi$ is a well-defined isomorphism.
+
+%     We now check that $\psi$ satisfies the requirement that $\psi\pi = \phi$. Let $x \in G$. Note that $\pi(x) = x\ker\phi$, and
+%     \[
+%         \psi\pi(x) = \psi(x\ker\phi) = \phi(x)
+%     \]
+%     for all $x \in G$, so $\psi\pi = \phi$.
+
+%     Finally we show that $\psi$ is unique. Suppose $f: G/\ker\phi \to \im\phi$ is an isomorphism satisfying $f\pi=\phi$. Take $x\ker\phi \in G/\ker\phi$. Note that
+%     \begin{align*}
+%         f(x\ker\phi) &= f(\pi(x))\\
+%         &= (f\pi)(x)\\
+%         &= \phi(x)\\
+%         &= (\psi\pi)(x)\\
+%         &= \psi(\pi(x))\\
+%         &= \psi(x\ker\phi)
+%     \end{align*}
+%     for all $x \in G$, meaning that $f = \psi$. Therefore $\psi$ is unique.
+
+%     Hence, $\psi$ is a unique isomorphism satisfying $\psi\pi = \phi$.
+% \end{proof}
+
+% \begin{example}
+%     Let $R = \{x \vert x > 0\}$, $G = \{x \in \mathbb{R} \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under multiplication. We show $G / H \cong R$.
+
+%     Consider the map $\phi: G \to R$ where $x \mapsto |x|$. We show that $\phi$ is a homomorphism, then find the image of $\phi$, and finally find its kernel.
+%     \begin{itemize}
+%         \item \textbf{Homomorphism}: $\phi$ is a homomorphism since $\phi(xy) = |xy| = |x||y| = \phi(x)\phi(y)$.
+%         \item \textbf{Image}: We find the image of $\phi$.
+%         \begin{align*}
+%             \im\phi &= \{\phi(x) \vert x \in G\}\\
+%             &= \{|x| \vert x \neq 0\}\\
+%             &= \{x \vert x > 0\} & (\text{by definition of } |x|)\\
+%             &= R
+%         \end{align*}
+%         which actually means that $\phi$ is surjective.
+%         \item \textbf{Kernel}: We find the kernel of $\phi$.
+%         \begin{align*}
+%             \ker\phi &= \{x \in G \vert \phi(x) = 1\} & (\text{since } 1 \text{ is identity in } R)\\
+%             &= \{x \in G \vert |x| = 1\}\\
+%             &= \{1, -1\}\\
+%             &= H
+%         \end{align*}
+%     \end{itemize}
+%     Thus $G/H \cong R$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}).
+% \end{example}
+
+% \begin{exercise}
+%     Let $\phi: G \to H$ be a homomorphism between finite groups $G$ and $H$. Prove that
+%     \[
+%         |G| = |\im \phi|\times|\ker \phi|.
+%     \]
+% \end{exercise}
+
+% \section{The Diamond Isomorphism Theorem}
+% We now look at the next theorem, called the \textbf{Diamond Isomorphism Theorem} or the \textbf{Second Isomorphism Theorem}.
+% \begin{theorem}[Diamond Isomorphism Theorem]\label{thrm-isomorphism-2}\index{Diamond Isomorphism Theorem}\index{Second Isomorphism Theorem}
+%     Let $G$ be a group and let $H$ and $K$ be subgroups of $G$. Then
+%     \begin{enumerate}
+%         \item $H \cap K \leq H$; and
+%         \item $H \leq HK$.
+%     \end{enumerate}
+%     Furthermore, if $N \unlhd G$, then
+%     \begin{enumerate}[start=3]
+%         \item $HN \leq G$;
+%         \item $H \cap N \unlhd H$;
+%         \item $N \unlhd HN$; and
+%         \item $H / (H\cap N) \cong HN / N$.
+%     \end{enumerate}
+% \end{theorem}
+% We can capture the overall relationships between the subgroups of $G$ using a \textbf{subgroup lattice}.
+% \begin{figure}[h]
+%     \centering
+%     \fbox{\includegraphics[width=4.5cm]{images/chapter7/SecondIsomorphismTheoremSubgroupDiagram.png}}
+%     \caption{Subgroup Diagram for \textbf{Theorem \ref{thrm-isomorphism-2}}}
+% \end{figure}
+
+% In the diagram, we only show subgroups that we care about. $G$ has a (direct) subgroup $HK$; $HK$ has subgroups $H$ and $K$; and $H$ and $K$ has a common subgroup $H\cap K$. In the case where $K \unlhd G$, the two dotted quotient groups are isomorphic to each other.
+
+% \begin{proof}
+%     We prove each statement in sequence.
+
+%     \begin{enumerate}
+%         \item Clearly $e_G \in H$ and $e_G \in K$ so $e_G \in H \cap K$.
+        
+%         Now take $x, y \in H \cap K$, meaning $x, y \in H$ and $x, y \in K$. Now since $H, K \leq G$, thus $xy^{-1} \in H$ and $xy^{-1} \in K$ by applying the subgroup test on $H$ and $K$ respectively. This thus means that $xy^{-1} \in H \cap K$. By the subgroup test, this means that $H \cap K \leq H$.
+        
+%         \item Note that $H = \{he_G \vert h \in H\} \subseteq \{hk \vert h \in H, k \in K\} = HK$, so we consider the subgroup test. Clearly $e_G \in H$ since $H \leq G$. Also since $H \leq G$, for all $x, y \in N$, $xy^{-1} \in G$. Thus, by the subgroup test, $H \leq HN$.
+        
+%         \item We note that, because $N$ is normal, hence $hN = Nh$ for all $h \in H \subseteq G$, meaning that $HN = NH$. Therefore by \textbf{Proposition \ref{prop-subgroup-product-is-subgroup}}, $HN \leq G$.
+
+%         \item We know $H \cap N \leq H$ by statement 1, so we only prove normality. Take $x \in H \cap N$, Since $H \leq G$, thus $x \in H \cap N \subseteq H$, meaning for all $g \in H$, $gxg^{-1} \in H$ (where we think of $g$ and $x$ as being in $H$). But since $x \in H \cap N \subseteq N$ and $N \unlhd G$, thus $gxg^{-1} \in N$ (where we think of $g \in H$ and $x \in N$). Therefore $H \cap N \unlhd H$.
+
+%         \item We know $N \leq HN$ by statement 2, so we only prove normality. Take $n \in N$ and $x \in HN$ such that $x = h_xn_x$. Then
+%         \begin{align*}
+%             xnx^{-1} &= (h_xn_x)n(h_xn_x)^{-1}\\
+%             &= (h_xn_x)n(n_x^{-1}h_x^{-1}) & (\text{Shoes and Socks})\\
+%             &= \underbrace{h_x}_{\text{In }G}\underbrace{n_xnn_x^{-1}}_{\text{In }N}\underbrace{h_x^{-1}}_{\text{In G}}\\
+%             &\in N
+%         \end{align*}
+%         since $N \lhd G$. This proves that $N \unlhd HN$.
+
+%         \item This is the main result of this theorem. We define $\phi: H \to HN/N, h \mapsto hN$. We show that $\phi$ is a homomorphism and then find its image and kernel.
+%         \begin{itemize}
+%             \item \textbf{Homomorphism}:
+%             \[
+%                 \phi(xy) = (xy)N = (xN)(yN) = \phi(x)\phi(y)    
+%             \]
+
+%             \item \textbf{Image}: We show that $\phi$ is surjective to show that $\im\phi = HN/N$. Suppose $x \in HN$, meaning $x = hn$ where $h \in H$ and $n \in N$. Thus $xN \in HN/N$, so
+%             \[
+%                 xN = (hn)N = h(nN) = hN
+%             \]
+%             meaning $\phi(h) = hN = xN$. Hence we have found a pre-image of the coset $xN$, meaning $\phi$ is surjective. Hence $\im \phi = HN/N$.
+
+%             \item \textbf{Kernel}: We claim that $\ker\phi = H \cap N$. Note that $\ker\phi = \{h \in H \vert \phi(h) = eN = N\}$ by definition of kernel. This means that if $h \in \ker\phi$ then $\phi(h) = N$. Hence $\phi(h) = hN = N$ which means $h \in N$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). Thus, $h \in H$ and $h \in n$, meaning $h \in H \cap N$. Therefore $\ker \phi \subseteq H \cap N$.
+    
+%             Now suppose $x \in H \cap N$. This means that $x \in N$ necessarily, implying $xN = N$. Thus $\phi(x) = N$ which quickly implies $x \in \ker\phi$. Therefore $H \cap N \subseteq \ker\phi$.
+    
+%             Since $\ker \phi \subseteq H \cap N$ and  $H \cap N \subseteq \ker\phi$ therefore $\ker\phi = H\cap N$.
+%         \end{itemize}
+
+%         By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}),
+%         \[
+%             H / \ker\phi \cong \im \phi,
+%         \]
+%         which means
+%         \[
+%             H/(H\cap N) \cong HN/N.
+%         \]
+%     \end{enumerate}
+%     This completes the proof of the theorem.
+% \end{proof}
+
+% \begin{corollary}\label{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}
+%     Let $G$ be a group with proper subgroups $H$ and $K$. Then $H$ and $K$ are normal subgroups of $G$ if and only if $HK \unlhd G$.
+% \end{corollary}
+% \begin{proof}
+%     We prove the forward direction first; assume that $H, K \unlhd G$. By the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we know that $HK \leq G$ since $H \unlhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
+%     \begin{align*}
+%         g(hk)g^{-1} &= (gh)(kg^{-1})\\
+%         &= (hg)(g^{-1}k) & (\text{since } H, K \lhd G)\\
+%         &= h(gg^{-1})k\\
+%         &= hk \in HK
+%     \end{align*}
+%     which means that $HK \unlhd G$.
+
+%     We now prove the reverse direction; assume $HK \unlhd G$. This means $gHKg^{-1} = HK$ for all $g \in G$ by definition of normality. Note that $gHKg^{-1} = (gHg^{-1})(gKg^{-1})$. We hence consider the following cases.
+%     \begin{itemize}
+%         \item Suppose $gH = H$ and $g^{-1}gKg^{-1} = Kg^{-1} = K$. Then Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}) tells us that $g \in H$ and $g \in K$, hence $g \in H \cap K$. But $g \in G$. Therefore $G \subseteq H \cap K$. However, $H \subset G$ and $K \subset G$, hence $H \cap K \subset G$, a contradiction.
+%         \item Suppose $gHg^{-1}g = gH = H$ and $Kg^{-1} = K$. This is the same as above.
+%     \end{itemize}
+%     Therefore the only remaining case is $gHg^{-1} = H$ and $gKg^{-1} = K$, implying that both $H \unlhd G$ and $K \unlhd G$ as required.
+% \end{proof}
+
+% \newpage
+
+% We look at a few examples for the use of the Diamond Isomorphism Theorem.
+% \begin{example}
+%     We say a group $G$ is \textbf{metabelian}\index{metabelian} if and only if there exists $A \unlhd G$ such that $A$ and $G/A$ are both abelian. We will prove the fact that any subgroup of a metabelian group is also metabelian.
+
+%     Let $H \leq G$. Then, by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), $H \cap A \unlhd H$ (statement 4) and $H/(H \cap A) \cong HA / A$ (statement 6). We just need to prove that $H \cap A$ is abelian and prove that $H/(H \cap A)$ is abelian.
+%     \begin{itemize}
+%         \item Consider any two elements from $H \cap A$, say $x$ and $y$. Then $x \in A$ and $y \in A$, meaning $xy = yx$. Hence, elements from $H \cap A$ commute, meaning that $H \cap A$ is abelian.
+%         \item Consider $HA / A$. Note that $HA \leq G$ since $H \leq G$ and $A \leq G$. Thus, $HA / A \leq G / A$. Note that $G/A$ is abelian by definition of metabelian group. Hence, $H/(H \cap A) \cong HA / A$ is also abelian.
+%     \end{itemize}
+%     Therefore, we have found a subgroup of $H$ (in particular $H \cap A$) such that both $H \cap A$ and $H/(H\cap A)$ are both abelian. Hence, $H$ is metabelian.
+% \end{example}
+
+% \newpage
+
+% We look at another application of the Diamond Isomorphism Theorem, which has use in Number Theory.
+% \begin{example}
+%     We will prove that $\lcm(m,n)\times\gcd(m,n) = mn$ (\textbf{Proposition \ref{prop-product-of-gcd-and-lcm}}) by considering the Diamond Isomorphism Theorem. For brevity, let $d = \gcd(m,n)$ and $l = \lcm(m,n)$.
+
+%     Consider the groups $G = \mathbb{Z}$, $H = m\mathbb{Z}$, and $N = n\mathbb{Z}$ under addition. By Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}),
+%     \[
+%         m\mathbb{Z}/(m\mathbb{Z} \cap n\mathbb{Z}) \cong (m\mathbb{Z} + n\mathbb{Z})/(n\mathbb{Z}).
+%     \]
+
+%     Now $m\mathbb{Z} \cap n\mathbb{Z}$ is the set of integers that are both a multiple of $m$ and $n$. Hence, $m\mathbb{Z} \cap n\mathbb{Z} = \lcm(m,n)\mathbb{Z} = l\mathbb{Z}$. On the other hand, $m\mathbb{Z} + n\mathbb{Z}$ is the set of all integers of the form $mx+ny$ where $x$ and $y$ are integers. B\'{e}zout's identity (\textbf{Lemma \ref{lemma-bezout}}) tells us that this set consists of the multiples of $\gcd(m,n)$, i.e. $m\mathbb{Z} + n\mathbb{Z} = \gcd(m,n)\mathbb{Z} = d\mathbb{Z}$. Hence,
+%     \[
+%         m\mathbb{Z}/(l\mathbb{Z}) \cong (d\mathbb{Z})/(n\mathbb{Z}).
+%     \]
+
+%     We claim that $m\mathbb{Z} / (l\mathbb{Z}) \cong \mathbb{Z}_{\frac lm} \text{ and } d\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd}$. This is a specific case of \textbf{Problem \ref{problem-mZ/nZ-isomorphic-to-Zn/m}} which we have left as a problem for later. Hence, what we have shown is
+%     \[
+%     \mathbb{Z}_{\frac lm} \cong m\mathbb{Z}/(l\mathbb{Z}) \cong d\mathbb{Z}/(n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd},
+%     \]
+%     which means that $\mathbb{Z}_{\frac lm} \cong \mathbb{Z}_{\frac nd}$. We can now finally take orders on both sides:
+%     \[
+%         \frac{l}{m} = \frac{n}{d},
+%     \]
+%     which means that $ld = mn$. Hence, $\lcm(m,n)\times\gcd(m,n) = mn$.
+% \end{example}
+
+% \begin{exercise}\label{exercise-order-of-subgroup-product}
+%     Let $G$ be a finite group, $H \leq G$, and $N \lhd G$. Prove that
+%     \[
+%         |HN| = \frac{|H||N|}{|H \cap N|}.
+%     \]
+% \end{exercise}
+
+% \section{The Third Isomorphism Theorem}
+% We look at the last important theorem regarding homomorphisms and isomorphisms. This is often called the \textbf{Third Isomorphism Theorem} (e.g. in \cite{cohn_1982, hungerford_1980}).
+
+% It should be noted that there is no consistency with the numbering of these theorems in books (cf. {\cite[\S 68]{clark_1984}} as ``First Isomorphism Theorem'', {\cite[Theorem 8.16]{humphreys_1996}} as ``Second Isomorphism Theorem''), but the name ``Third Isomorphism Theorem'' is the easiest to research. Hence, we use that name here.
+
+% \begin{theorem}[Third Isomorphism Theorem]\label{thrm-isomorphism-3}\index{Third Isomorphism Theorem}
+%     Let $G$ be a group. Let $H \unlhd G$ and $N \unlhd G$. Suppose $N \subseteq H$. Then
+%     \begin{enumerate}
+%         \item $N \unlhd H$;
+%         \item $H/N \unlhd G/N$; and
+%         \item $\frac{G/N}{H/N} \cong G/H$
+%     \end{enumerate}
+% \end{theorem}
+% \begin{proof}
+%     Like with the Diamond Isomorphism Theorem, we will prove the statements in sequence.
+
+%     \newpage
+
+%     \begin{enumerate}
+%         \item We note that since $N \subseteq H$ and $N$ is a group (sincee $N$ is a normal subgroup of $G$) thus $N \leq H$. We now prove normality. Since $H$ and $N$ are normal subgroups of $G$, thus for all $g \in G$,
+%         \[
+%             gH = Hg \text{ and } gN = Ng.
+%         \]
+%         Now since $N \subseteq H \subseteq G$, thus for all $n$ in $N$, $nH = Hn$ (since $n \in G$). This means that $N \unlhd H$.
+
+%         \item We first prove that it is a subgroup using the subgroup test, before proving normality.
+
+%         Clearly $N = eN \in H/N$. Let $x$ and $y$ be in $H/N$. Then $x=h_xN$ and $y=h_yN$ for some $h_x, h_y \in H$. Note that $y^{-1} = (h_y)^{-1}N$ by group operator on cosets. Hence,
+%         \begin{align*}
+%             xy^{-1} &= (h_xN)(h_y^{-1}N)\\
+%             &= (\underbrace{h_xh_y^{-1}}_{\text{In }H})N\\
+%             &\in H/N
+%         \end{align*}
+%         Hence, by subgroup test, $H/N \leq G/N$.
+
+%         Now let $gN \in G/N$ and $hN \in H/N$. We need to show that $(gN)(hN)(gN)^{-1} \in H/N$. Note $(gN)(hN)(gN)^{-1} = (ghg^{-1})N$. Since $H \lhd G$, thus $ghg^{-1} \in H$ which means that $(ghg^{-1})N \in H/N$.
+
+%         Therefore $H/N \unlhd G/N$.
+
+%         \item This is the main result of the theorem.
+
+%         Define $\phi: G/N \to G/H, gN \mapsto gH$. We check that $\phi$ is a well-defined homomorphism and find its image and kernel.
+%         \begin{itemize}
+%             \item \textbf{Well-defined}: Suppose $gN = g'N$. Then $g(g')^{-1} \in N$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). Since $N \subseteq H$ (assumption), thus $g(g')^{-1} \in H$ which implies $gH = g'H$ by \textbf{Lemma \ref{lemma-coset-equality}}. Hence $\phi(gN) = gH = g'H = \phi(g'N)$, i.e. $\phi$ is well-defined.
+%             \item \textbf{Homomorphism}: Take $gN, g'N \in G/N$. Then
+%             \begin{align*}
+%                 \phi((gN)(g'N)) &= \phi((gg')N)\\
+%                 &= (gg')H\\
+%                 &= (gH)(g'H)\\
+%                 &= \phi(gN)\phi(g'N)
+%             \end{align*}
+%             which means that $\phi$ is a homomorphism.
+            
+%             \item \textbf{Image}: We show $\phi$ is surjective to prove that $\im\phi = G/H$. Suppose $gH \in G/H$. Then $\phi(gN) = gH$. Thus $gN$ is a pre-image of $gH$, meaning that $\phi$ is surjective. Hence $\im\phi = G/H$.
+            
+%             \item \textbf{Kernel}: Suppose $gN \in \ker\phi = \{gN \vert \phi(gN) = eH = H\}$. Thus $\phi(gN) = H \implies gH = H$. Therefore, $ge^{-1} = g \in H$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). This means that $gN \in H/N$, further meaning that $\ker\phi \subseteq H/N$.
+
+%             Suppose now $hN \in H/N$. Since $H \lhd G \implies H\subseteq G$, thus $h \in G$. Therefore $hN \in G/N$ which means $\phi(hN) = hH = H$. Hence $hN \in \ker\phi$ which means $H/N \subseteq \ker\phi$.
+
+%             Since $\ker\phi \subseteq H/N$ and $H/N \subseteq \ker\phi$, we must have $\ker\phi = H/N$.
+%         \end{itemize}
+
+%         \newpage
+
+%         By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), we have $\frac{G/N}{\ker\phi} \cong \im\phi$, which means
+%         \[
+%             \frac{G/N}{H/N} \cong G/H,
+%         \]
+%         hence proving statement 3.
+%     \end{enumerate}
+%     This proves the theorem.
+% \end{proof}
+
+% \begin{example}
+%     Take $G = \mathbb{Z}$, $H = m\mathbb{Z}$ and $N = mn\mathbb{Z}$. Note that clearly $H, N \leq G$, and since $G$ is abelian, we must also have $H \unlhd G$ and $N \unlhd G$. By the Third Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-3}}),
+%     \[
+%         G/H \cong \frac{G/N}{H/N}.
+%     \]
+%     Note $G/H = \mathbb{Z}/(m\mathbb{Z}) \cong \mathbb{Z}_m$ by \textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}}. Note also
+%     \[
+%         \frac{G/N}{H/N} = \frac{\mathbb{Z}/(mn\mathbb{Z})}{m\mathbb{Z}/(mn\mathbb{Z})}
+%     \]
+%     and $\mathbb{Z}/(mn\mathbb{Z}) \cong \mathbb{Z}_{mn}$ by \textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}} again.
+
+%     Consider now $\phi: m\mathbb{Z} \to \mathbb{Z}_{mn}, mx \mapsto mx \mod mn$. Clearly $\phi$ is a homomorphism. Note $\im \phi = \langle m \rangle$ and $\ker \phi = mn\mathbb{Z}$. We leave the verification of these claims as an exercise to the reader.
+
+%     The Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) tells us that
+%     \[
+%         m\mathbb{Z} / (mn\mathbb{Z}) \cong \langle m \rangle.
+%     \]
+%     Thus,
+%     \[
+%         \mathbb{Z}_m \cong G/H \cong \frac{G/N}{H/N} \cong \mathbb{Z}_{mn}/\langle m \rangle
+%     \]
+%     which means $\mathbb{Z}_m \cong \mathbb{Z}_{mn} / \langle m \rangle$.
+
+%     In other words, if $d$ divides $n$, then
+%     \[
+%         \mathbb{Z}_n / \langle d \rangle \cong \mathbb{Z}_d.
+%     \]
+% \end{example}
+
+% From this example we can come up with a more general result.
+% \begin{proposition}\label{prop-Zn-mod-cyclic-subgroup-of-m}
+%     $\mathbb{Z}_n / \langle m \rangle \cong \mathbb{Z}_{\gcd(m,n)}$
+% \end{proposition}
+% \begin{proof}
+%     We want to show that $\langle m \rangle = \langle \gcd(m,n) \rangle$. For brevity let $\gcd(m,n) = d$.
+
+%     \begin{itemize}
+%         \item $\boxed{\langle m \rangle \leq \langle d \rangle}$ Since $d\;|\;m$, thus $m = dk$ for some integer $k$. Hence, $\langle m \rangle = \{mx \vert x \in \mathbb{Z}\} = \{dkx \vert x \in \mathbb{Z}\} \leq \langle d \rangle$. Hence, $\langle m \rangle \leq \langle d \rangle d$.
+%         \item $\boxed{\langle m \rangle \geq \langle d \rangle}$ By the Extended Euclidean Algorithm we may write $d = \alpha m + \beta n$ for some integers $\alpha$ and $\beta$. In $\mathbb{Z}_n$, $d = \alpha m$ which quickly implies that $\langle d \rangle = \langle \alpha m \rangle \leq \langle m \rangle$.
+%     \end{itemize}
+%     Thus $\langle d \rangle = \langle m \rangle$, so the claim is proven by previous example.
+% \end{proof}
+
+% \begin{exercise}
+%     Suppose $x$ and $y$ are positive integers such that $y = mx$ for some integer $m$. Let $H = x\mathbb{Z}$ and $N = y\mathbb{Z}$ be groups under addition.
+%     \begin{enumerate}[label=(\roman*)]
+%         \item Explain why $N \subseteq H$.
+%         \item Find a group $G$ such that $H \lhd G$ and $N \lhd G$.
+%         \item Hence find the order of $H/N$.
+%     \end{enumerate}
+% \end{exercise}
+
+% \newpage
+
+% \section{Problems}
+% \begin{problem}
+%     Let $G$ be a group. Prove that $G/G \cong \{e\}$.
+% \end{problem}
+
+% \begin{problem}
+%     Let $R = \mathbb{R}$ be a group under addition. Let $G = R^2$ and $H = \left\{(r\sqrt2, r\sqrt3) \vert r\in R\right\}$ be a group under component-wise addition. Prove that $G/H \cong R$.
+% \end{problem}
+
+% \begin{problem}
+%     Let $G = \mathbb{Z}^2$ under component-wise addition, $H = \mathbb{Z} \times \mathbb{Z}_5$ under $(+, \oplus_5)$, and $K = \langle(5, 5)\rangle \lhd G$.
+%     \begin{enumerate}[label=(\roman*)]
+%         \item Prove that $\phi: G \to H, (m,n) \mapsto (m-n, n \mod 5)$ is a group homomorphism.
+%         \item Prove that $\phi$ is surjective.
+%         \item Hence prove $G/K \cong H$.
+%     \end{enumerate}
+% \end{problem}
+
+% \begin{problem}\label{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}
+%     Let $G$ be a group. Let $H$ and $K$ be subgroups of $G$ such that $K \subseteq H$. Prove that $HK = H$.
+% \end{problem}
+
+% \begin{problem}\label{problem-cartesian-product-of-group-by-group-isomorphic-to-group}
+%     Let $G$ be an abelian group under the operation $\ast$. Let $I = \{(g, g^{-1}) \vert g \in G\}$ be a group under component-wise application of $\ast$.
+%     \begin{enumerate}[label=(\roman*)]
+%         \item Show that $I \cong G$.
+%         \item Hence prove $G^2/G \cong G$ by considering a suitable homomorphism.
+%     \end{enumerate}
+% \end{problem}
+
+% \begin{problem}\label{problem-mZ/nZ-isomorphic-to-Zn/m}
+%     Let $G = m\mathbb{Z}$ and $H = n\mathbb{Z}$ be groups under addition, where $m\vert n$ and $m \neq n$. Let the map $\phi: G \to \mathbb{Z}_{\frac nm}$ be defined such that
+%     \[
+%         \phi(am) = a \mod \frac{n}{m}.
+%     \]
+%     Prove that $G/H \cong \mathbb{Z}_{\frac nm}$.
+% \end{problem}
+
+%=========================================
+\chapter{More Types of Groups}
+\section{More About Cyclic Groups}
+We previously covered several properties of cyclic groups:
+\begin{itemize}
+    \item Every cyclic group is abelian. (\textbf{Proposition \ref{prop-cyclic-group-is-abelian}})
+    \item A finite group $G$ is cyclic if and only if there exists an element $g$ in the group $G$ with the same order as the group. (\textbf{Theorem \ref{thrm-cyclic-group-has-element-with-same-order}})
+    \item If $G$ is cyclic and $H \leq G$ then $G/H$ is cyclic. (\textbf{Exercise \ref{exercise-quotient-group-of-cyclic-group-is-cyclic}})
+    \item Any subgroup of a cyclic group is cyclic. (\textbf{Problem \ref{problem-subgroup-of-cyclic-group-is-cyclic}})
+    \item $\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_n$. (\textbf{Problem \ref{problem-Zn-isomorphic-to-Z-by-nZ}})
+    \item $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ if and only if $\gcd(m,n) = 1$. (\textbf{Theorem \ref{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition}})
+    \item $\mathbb{Z}_n / \langle m \rangle \cong \mathbb{Z}_{\gcd(m,n)}$. (\textbf{Proposition \ref{prop-Zn-mod-cyclic-subgroup-of-m}})
+    \item $m\mathbb{Z} / n\mathbb{Z} \cong \mathbb{Z}_{\frac nm}$. (\textbf{Problem \ref{problem-mZ/nZ-isomorphic-to-Zn/m}})
+\end{itemize}
+
+\begin{exercise}\label{exercise-Zmn-mod-Zn-cong-Zn}
+    Prove that for any positive integers $m$ and $n$, we have
+    \[
+        \mathbb{Z}_{mn} / \mathbb{Z}_m \cong \mathbb{Z}_n.
+    \]
+\end{exercise}
+
+Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead of $\mathbb{Z}_n$. This may be sometimes used to distinguish (finite) cyclic subgroups of a group from the integers modulo $n$.
+
+We prove more facts about cyclic groups here.
+\begin{lemma}\label{lemma-order-of-an-element-that-is-equivalent-to-identity}
+    Let $\Cn{n}$ have generator $g$. Then $g^k = e$ if and only if $k$ is a multiple of $n$.\newline
+    (Equivalently, this means that if $g^k = e$, then $n$ divides $k$, i.e. $n\vert k$.)
+\end{lemma}
+\begin{proof}
+    We note that the order of $g$ is $n$, since $g$ is a generator of $G$. Thus by \textbf{Problem \ref{problem-element-to-power-of-multiple-of-order-is-identity}} the lemma is proven.
+\end{proof}
+
+\begin{exercise}
+    The number 12 is equivalent to 0 in the group $\mathbb{Z}_n$ (under addition modulo $n$). What are the possible value(s) of $n$?
+\end{exercise}
+
+We are now ready to prove an essential theorem on cyclic groups.
+\begin{theorem}\label{thrm-order-of-element-in-cyclic-group}
+    Let $\Cn{n}$ have generator $g$. Let $x = g^k$ for some integer $k$. Then the order of $x$ is $\frac{n}{\gcd(k,n)}$.
+\end{theorem}
+\begin{proof}
+    For brevity let $m = |x|$ and suppose $k = \lambda \gcd(k, n)$ for some positive integer $\lambda$.
+
+    Let $\mathcal{X} = \langle x \rangle = \{x, x^2, x^3, \dots, x^m\}$. Note that $\mathcal{X}$ is a cyclic group with order $m$ and generator $x$.
+
+    Observe that
+    \[
+        x^m = \left(g^k\right)^m = g^{km}
+    \]
+    and since $|x| = m$, this means that $x^m = e$. Hence
+    \[
+        g^{km} = e.
+    \]
+
+    By \textbf{Lemma \ref{lemma-order-of-an-element-that-is-equivalent-to-identity}} on $\Cn{n}$, $n \vert km$. This implies that
+    \[
+        \frac{n}{\gcd(k,n)} \vert \frac{km}{\gcd(k,m)} = \lambda m.
+    \]
+    Note that $\gcd\left(\lambda, \frac{n}{\gcd(k,n)}\right) = \gcd\left(\frac{k}{\gcd(k,n)}, \frac{n}{\gcd(k,n)}\right) = 1$. This means that $\frac{n}{\gcd(k,n)}$ does not divide $\lambda$, meaning $\frac{n}{\gcd(k,n)} \vert m$.
+
+    Also note that
+    \begin{align*}
+        x^{\frac{n}{\gcd(k,n)}} &= \left(g^k\right)^{\frac{n}{\gcd(k,n)}}\\
+        &= \left(g^n\right)^{\frac{k}{\gcd(k,n)}}\\
+        &= \left(g^n\right)^\lambda\\
+        &= e^\lambda & (\text{since } |g| = n)\\
+        &= e,
+    \end{align*}
+    implying $x^{\frac{n}{\gcd(k,n)}} = e$. By \textbf{Lemma \ref{lemma-order-of-an-element-that-is-equivalent-to-identity}} on group $\mathcal{X}$, we have $m \vert \frac{n}{\gcd(k,n)}$.
+
+    Since $\frac{n}{\gcd(k,n)} \vert m$ and $m \vert \frac{n}{\gcd(k,n)}$ simultaneously, thus $m = \frac{n}{\gcd(k,n)}$, that is $|x| = \frac{n}{\gcd(k,n)}$.
+\end{proof}
+
+\begin{exercise}
+    In the group $\mathbb{Z}_{210}$, find the order of 10, 42, 75, and 140.
+\end{exercise}
+
+\begin{corollary-thrm}
+    Let $\Cn{n}$ have generator $g$. Then $g^m$ is also a generator if and only if $\gcd(m, n) = 1$.
+\end{corollary-thrm}
+\begin{proof}
+    We prove the forward direction first. Suppose that $\Cn{n}$ has a generator of $g^m$. On one hand, $|g^m| = n$ since a generator of a group necessarily has to have an order equal to that of the group. On another hand, by \textbf{Theorem \ref{thrm-order-of-element-in-cyclic-group}}, $|g^m| = \frac{n}{\gcd(m, n)}$. Hence, $n = \frac{n}{\gcd(m, n)}$ which quickly implies $\gcd(m, n) = 1$.
+
+    Now we prove the reverse direction. Suppose $\gcd(m,n) = 1$. Then $|g^m| = \frac{n}{\gcd(m,n)} = \frac{n}{1} = n$ by \textbf{Theorem \ref{thrm-order-of-element-in-cyclic-group}}. Hence $g^m$ is a generator of the group $\Cn{n}$ by \textbf{Theorem \ref{thrm-cyclic-group-has-element-with-same-order}}.
+\end{proof}
+
+\begin{exercise}
+    Find all the generators of the following groups.
+    \begin{enumerate}[label=(\alph*)]
+        \item $\mathbb{Z}_{10}$
+        \item $\mathbb{Z}_{101}$
+    \end{enumerate}
+\end{exercise}
+
+\section{Quaternion Group}
+We look at an interesting group that has use in computer graphics: the \textbf{Quaternion Group}. We present one definition here.
+\begin{definition}
+    The quaternion group\index{Quaternion Group} is denoted by $\mathrm{Q}$ where
+    \[
+            \mathrm{Q} = \{1, -1, i, -i, j, -j, k, -k\}
+    \]
+    such that
+    \begin{itemize}
+        \item 1 is the identity;
+        \item $(-1)^2 = 1$;
+        \item $i^2 = j^2 = k^2 = -1$;
+        \item $ij = k$ and $ji = -k$;
+        \item $jk = i$ and $kj = -i$; and
+        \item $ki = j$ and $ik = -j$.
+    \end{itemize}
+\end{definition}
+
+\newpage
+
+Note that the proper subgroups of $\mathrm{Q}$ are
+\begin{multicols}{2}
+    \begin{itemize}
+        \item $\langle -1 \rangle = \{\pm1\}$;
+        \item $\langle i \rangle = \{\pm1, \pm i\}$;
+        \item $\langle j \rangle = \{\pm1, \pm j\}$; and
+        \item $\langle k \rangle = \{\pm1, \pm k\}$.
+    \end{itemize}
+\end{multicols}
+The correctness of these proper subgroups are left as an exercise for the reader.
+
+With these subgroups, we can write a presentation for $\mathrm{Q}$.
+
+\begin{proposition}
+    $\mathrm{Q} = \langle i, j \rangle$ (with relationships as given above).
+\end{proposition}
+\begin{proof}
+    For brevity let $G = \langle i, j \rangle$. We note that $i^0 = 1$, $i^4 = j^4 = 1$ and $ji = -k = -ij = i^3j$. Hence,
+    \begin{align*}
+        G &= \{1, i, i^2, i^3, j, ij, i^2j, i^3j\}\\
+        &= \{1, i, -1, -i, j, ij, -j, -ij\}\\
+        &= \{1, -1, i, -i, j, -j, ij, -ij\} & (\text{reordering})\\
+        &= \{1, -1, i, -i, j, -j, k, -k\} & (\text{since } ij = k)\\
+        &= \mathrm{Q}.
+    \end{align*}
+    Thus, $\mathrm{Q} = \langle i, j \rangle$.
+\end{proof}
+
+Thus, an alternate definition of $\mathrm{Q}$ is as follows:
+\[
+    \mathrm{Q} = \langle \alpha, \beta \vert \alpha^4 = e,\; \alpha^2 = \beta^2, \text{ and } \beta\alpha = \alpha^3\beta \rangle.
+\]
+One sees clearly that in this definition, $\alpha = i$ and $\beta = j$.
+
+\begin{exercise}\label{exercise-normal-subgroups-of-quarternion-group}
+    Find all the normal subgroups of the quaternion group $\mathrm{Q}$.\newline
+    (\textit{Hint: consider \textbf{Problem \ref{problem-subgroup-of-index-2}}}.)
+\end{exercise}
+
+\section{Alternating Group}
+The alternating group is a very important group in the field of group theory. However, before we can properly define it, we need to introduce the idea of \textbf{transpositions}.
+
+\subsection{Transpositions}
+\begin{definition}
+    A \textbf{transposition}\index{transposition} is a 2-cycle. That is, a transposition $\tau$ is represented as $(a\quad b)$ in cycle notation.
+\end{definition}
+For example, (1 5), (4 7), (3 6) etc. are transpositions, while (1 4 5), (3 4 6 5 9), (1 3 4 5) etc. are not. One sees clearly that every transposition is its own inverse.
+
+We call transpositions which take the form $\begin{pmatrix}i&i+1\end{pmatrix}$ \textbf{adjacent transpositions}\index{transposition!adjacent}, and we may denote them by $\alpha$.
+
+We look at one lemma which can be said to help `break up' transpositions into a composition of adjacent transpositions. Note that line breaks are to be ignored in the following lemma.
+\begin{lemma}\label{lemma-decompose-transposition}
+    Let a transposition $\tau = (i\quad i+d)$ where $d$ is a positive integer. Then the permutation
+    \begin{align*}
+        & (i\quad i+1)(i+1\quad i+2)\cdots(i+d-2\quad i+d-1)\\
+        &\quad (i+d-1\quad i+d)(i+d-2\quad i+d-1)\cdots\\
+        &\quad (i+1\quad i+2)(i\quad i+1)
+    \end{align*}
+    is equal to $\tau$.
+\end{lemma}
+
+\newpage
+
+\begin{proof}
+    We induct on $d$.
+
+    When $d = 1$, $\tau = (i\quad i+1)$ so the statement is true for $d=1$.
+
+    Assume that the given representation of $\tau$ holds for some positive integer $d$. Note this means that it holds for all $i$, including $i+1$. We are to show that it works for $d + 1$.
+    \begin{align*}
+        (i\quad i+(d+1)) &= (i\quad i+1)(i+1\quad i+d+1)(i\quad i+1)\\
+        &= (i\quad i+1)\underbrace{((i+1)\quad (i+d)+1)}_{\text{apply induction hypothesis}}(i\quad i+1)\\
+        &= (i\quad i+1)((i+1)\quad(i+1)+1)\cdots\\
+        &\quad\quad((i+1)\quad(i+1)+1)(i\quad i+1)\\
+        &= (i\quad i+1)(i+1\quad i+2)\cdots\\
+        &\quad\quad(i+1\quad i+2)(i\quad i+1)
+    \end{align*}
+    which shows that $d+1$ works as well.
+\end{proof}
+\begin{remark}
+    In the above representation of $\tau$, $2d-1$ compositions were used.
+\end{remark}
+\begin{example}
+    An adjacent transposition decomposition of $(4\quad9)$ is
+    \[
+        (4\quad 5)(5\quad 6)(6\quad 7)(7\quad 8)(8\quad 9)(7\quad 8)(6\quad 7)(5\quad 6)(4\quad 5).
+    \]
+\end{example}
+\begin{exercise}
+    `Decompose' the transposition (2 6) into a composition of adjacent transpositions.
+\end{exercise}
+
+\newpage
+
+\subsection{Links with Permutations}
+As mentioned before, a transposition is a 2-cycle permutation. We note that transpositions are important as seen in the following lemma.
+\begin{lemma}\label{lemma-permutations-as-product-of-transpositions}
+    Every permutation can be expressed as a product of transpositions.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[\S 80 Corollary]{clark_1984}})]
+    For the identity $\id$ it can be expressed as $(a\quad b)(a \quad b)$. For any permutation with length $k \geq 2$, say $\sigma = \begin{pmatrix}a_1 & a_2 & a_3 & \cdots & a_k\end{pmatrix}$, write
+    \[
+        \sigma = \begin{pmatrix}a_1 & a_k\end{pmatrix}\begin{pmatrix}a_1 & a_{k-1}\end{pmatrix}\begin{pmatrix}a_1 & a_{k-2}\end{pmatrix}\cdots\begin{pmatrix}a_1 & a_3\end{pmatrix}\begin{pmatrix}a_1 & a_2\end{pmatrix}
+    \]
+    and since every permutation is a product of cycles, thus every permutation is a product of transpositions.
+\end{proof}
+
+We now look at the idea of \textbf{inversions} inside permutations.
+\begin{definition}
+    Let $\sigma$ be a permutation. An \textbf{inversion}\index{permutation!inversion} of $\sigma$ between $i$ and $j$ exists if $i > j$ and $\sigma(i) < \sigma(j)$.
+\end{definition}
+An inversion between the elements $i$ and $j$ is denoted by either $(i, j)$ or $(\sigma(i), \sigma(j))$.
+\begin{example}
+    In the permutation $\sigma = \begin{pmatrix}1 & 3 & 2 & 4\end{pmatrix}$, we see that $3 \mapsto 2$ but $2 \mapsto 4$. Thus there is an inversion (3, 2) = (2, 4).
+\end{example}
+
+We now define the idea of \textbf{even} permutations and \textbf{odd} permutations.
+\begin{definition}
+    A permutation $\sigma$ is said to be \textbf{even}\index{permutation!even} if there are an even number of inversions in $\sigma$. If $\sigma$ is not even then it is said to be \textbf{odd}\index{permutation!odd}.
+\end{definition}
+The evenness or oddness of a permutation $\sigma$ is called the \textbf{parity of $\sigma$}\index{permutation!parity}.
+
+Counting the number of inversions in a permutation may be hard to do, so we have an alternative definition for the parity of a permutation.
+
+\begin{theorem}\label{thrm-parity-of-permutation}
+    Let $\sigma$ be a permutation. Suppose $\sigma$ can be expressed as a product of $n$ transpositions. Then $\sigma$ is even if and only if $n$ is even.
+\end{theorem}
+\begin{proof}
+    We only need to show that the parity of $n$ and the parity of the permutation is equal to prove this.
+
+    By \textbf{Lemma \ref{lemma-permutations-as-product-of-transpositions}}, all permutations can be produced by a sequence of transpositions, say $\sigma = \tau_1\tau_2\tau_3\cdots\tau_k$.
+
+    By \textbf{Lemma \ref{lemma-decompose-transposition}}, every transposition can be written as a product of $2d - 1$ adjacent transpositions. Expressing each $\tau_i$ as a product of adjacent transpositions yields
+    \[
+        \sigma = \alpha_1\alpha_2\cdots\alpha_m
+    \]
+    where $\alpha_i$ is an adjacent transposition for $1 \leq i \leq m$. Note that the parity of $m$ is the same as that of $k$.
+
+    It is clear that for any permutation $\pi$ and adjacent permutation $\alpha$, the permutation $\alpha\pi$ has either one more or one less inversion than $\pi$. Thus the parity of the number of inversions of a permutation is switched when composed with adjacent transpositions.
+
+    One sees clearly that the identity permutation $\id$ is an even permutation. So $\alpha_1$ is odd, $\alpha_1\alpha_2$ is even, $\alpha_1\alpha_2\alpha_3$ is odd, etc., so $\alpha_1\alpha_2\cdots\alpha_m$ has the parity of $m$. Therefore the parity of the number of inversions of $\sigma$ is the parity of $k$ (since $m$ and $k$ have the same parity), proving the theorem.
+\end{proof}
+
+\newpage
+
+\begin{proposition}\label{prop-permutation-and-inverse-have-same-parity}
+    Let $\sigma$ be a permutation. Then $\sigma$ and $\sigma^{-1}$ have the same parity.
+\end{proposition}
+\begin{proof}
+    One observes clearly that $\sigma\sigma^{-1} = \id$. Since $\id$ is even, thus $\sigma\sigma^{-1}$ must be composed of an even number of transpositions (by \textbf{Theorem \ref{thrm-parity-of-permutation}}).
+    \begin{itemize}
+        \item If $\sigma$ is even, then $\sigma$ can be expressed as a product of an even number of transpositions. Hence $\sigma^{-1}$ must also be a product of an even number of transpositions in order for $\sigma\sigma^{-1} = \id$ to be even.
+        \item If $\sigma$ is odd, then $\sigma$ can be expressed as a product of an odd number of transpositions. Hence $\sigma^{-1}$ must also be a product of an odd number of transpositions in order for $\sigma\sigma^{-1} = \id$ to be even.
+    \end{itemize}
+    Thus, the proposition is proven.
+\end{proof}
+
+We look at one final useful construct: the sign of a permutation.
+\begin{definition}
+    The \textbf{sign of a permutation}\index{permutation!sign} is $+1$ if the permutation is even and $-1$ if the permutation is odd.
+\end{definition}
+If $\sigma$ is the permutation, $N(\sigma)$ denotes the number of inversions in $\sigma$, and $m$ the number of transpositions in the decomposition of $\sigma$, then the sign of $\sigma$ is given by the \textbf{signum} function:
+\[
+    \sgn(\sigma) = (-1)^{N(\sigma)} = (-1)^m.
+\]
+\begin{exercise}
+    Find $\sgn\left(\begin{pmatrix}1&3&2&5&4\end{pmatrix}\right)$.
+\end{exercise}
+
+As a final note, one observes that the number of inversions in $\sigma\tau$ is the same as the sum of inversions in $\sigma$ and $\tau$ separately, meaning
+\[
+    N(\sigma\tau) = N(\sigma) + N(\tau)
+\]
+which hence means that the sign of a permutation $\sigma\tau$ is
+\begin{align*}
+    \sgn(\sigma\tau) &= (-1)^{N(\sigma\tau)}\\
+    &= (-1)^{N(\sigma) + N(\tau)}\\
+    &= (-1)^{N(\sigma)}(-1)^{N(\tau)}\\
+    &= \sgn(\sigma)\sgn(\tau),
+\end{align*}
+meaning that $\sgn$ is a \textit{multiplicative map}. One can then quickly verify \textbf{Proposition \ref{prop-permutation-and-inverse-have-same-parity}} by noting
+\[
+    1 = \sgn(\id) = \sgn(\sigma\sigma^{-1}) = \sgn(\sigma)\sgn(\sigma^{-1})
+\]
+which means $\sgn(\sigma)$ and $\sgn(\sigma^{-1})$ have the same parity.
+
+\subsection{The Alternating Group}
+We are now ready to look at the alternating group.
+\begin{definition}
+    The \textbf{alternating group of degree $n$}\index{alternating group of degree $n$}, denoted by $\An{n}$, is given by
+    \[
+        \An{n} = \left\{\sigma \in \Sn{n} \vert \sigma \text{ is even}\right\}
+    \]
+    for $n \geq 2$.
+\end{definition}
+
+\begin{proposition}\label{prop-An-normal-subgroup-of-Sn}
+    $\An{n} \lhd \Sn{n}$ where $n \geq 2$.
+\end{proposition}
+\begin{proof}
+    Clearly from definition $\An{n} \subset \Sn{n}$ so we consider the subgroup test. Note that the identity function $\id \in \An{n}$ since $\id \in \Sn{n}$ and the identity is even.
+
+    Suppose now that $\mu$ and $\sigma$ are in $\An{n}$. We are to show that $\mu\sigma^{-1} \in \An{n}$. By \textbf{Lemma \ref{lemma-permutations-as-product-of-transpositions}}, we may write
+    \[
+        \mu = \tau_1\tau_2\cdots\tau_{2k} \text{ and } \sigma = \tau_1'\tau_2'\cdots\tau_{2m}'.
+    \]
+    We note that any transposition is its own inverse, i.e. $\tau = \tau^{-1}$. Hence by Shoes and Socks, $\sigma^{-1} = \tau_{2m}'\tau_{2m-1}'\cdots\tau_2'\tau_1'$. Therefore,
+    \[
+        \mu\sigma^{-1} = \underbrace{\tau_1\cdots\tau_{2k}\tau_{2m}'\cdots\tau_1'}_{2(k+m) \text{ transpositions}}
+    \]
+    is an even permutation, meaning $\mu\sigma^{-1} \in \An{n}$. By subgroup test, $\An{n} < \Sn{n}$.
+    
+    Now take $\sigma \in \Sn{n}$ and $\mu \in \An{n}$. Note that
+    \[
+        \sgn(\sigma\mu\sigma^{-1}) = \sgn(\sigma)\sgn(\mu)\sgn(\sigma^{-1}).
+    \]
+    As above, we note $\sgn(\sigma)\sgn(\sigma^{-1}) = 1$ and $\sgn(\mu) = 1$ since $\mu$ is even. Hence $\sgn(\sigma\mu\sigma^{-1}) = 1$ which means that $\sigma\mu\sigma^{-1}$ is an even permutation. Therefore $\sigma\mu\sigma^{-1} \in \An{n}$, meaning that $\An{n} \lhd \Sn{n}$.
+\end{proof}
+
+\begin{proposition}\label{prop-order-of-An}
+    The order of $\An{n}$ is $\frac{n!}{2}$ for $n \geq 2$.
+\end{proposition}
+\begin{proof}
+    For brevity, let
+    \[
+        \mathrm{O}_n = \left\{\sigma \in \Sn{n} \vert \sigma \text{ is odd}\right\} = \Sn{n} \setminus \An{n}.
+    \]
+    Clearly $A_n \cup \mathrm{O}_n = \Sn{n}$ and $A_n \cap \mathrm{O}_n = \emptyset$.
+
+    Define a map $f: \An{n} \to \mathrm{O}_n$ such that $\sigma \mapsto \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. We will show that this is a bijective map.
+    \begin{itemize}
+        \item \textbf{Injective}: Let $\mu$ and $\sigma$ be in $\An{n}$ such that $f(\mu) = f(\sigma)$. This means that $\begin{pmatrix}1 & 2\end{pmatrix}\mu = \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. Now by left-applying $\begin{pmatrix}1 & 2\end{pmatrix}$ on both sides yields $\mu = \sigma$ (since transpositions are their own self-inverse).
+        
+        \item \textbf{Surjective}: Take $\mu \in \mathrm{O}_n$, say $\mu = \tau_1\tau_2\cdots\tau_{2k-1}$ where $\tau_i$ is a transposition. Clearly,
+        \[
+            \mu = \underbrace{\begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 2\end{pmatrix}}_{\id}\tau_1\tau_2\cdots\tau_{2k-1}.
+        \]
+        Consider $\sigma = \begin{pmatrix}1 & 2\end{pmatrix}\tau_1\tau_2\cdots\tau_{2k-1}$, which is an even permutation and thus is in $\An{n}$. Observe that
+        \begin{align*}
+            f(\sigma) &= \begin{pmatrix}1 & 2\end{pmatrix}\sigma\\
+            &= \begin{pmatrix}1 & 2\end{pmatrix}\left(\begin{pmatrix}1 & 2\end{pmatrix}\tau_1\tau_2\cdots\tau_{2k-1}\right)\\
+            &= \tau_1\tau_2\cdots\tau_{2k-1}\\
+            &= \mu
+        \end{align*}
+        which means that $\mu \in \mathrm{O}_n$ has a pre-image $\sigma$ in $\An{n}$.
+    \end{itemize}
+    This proves that $f$ is bijective. Therefore $|\An{n}| = |\mathrm{O}_n|$.
+    
+    Since $A_n \cup \mathrm{O}_n = \Sn{n}$ and $A_n \cap \mathrm{O}_n = \emptyset$, thus $|\Sn{n}| = |\An{n}| + |\mathrm{O}_n| = 2|\An{n}|$. Now because $|\Sn{n}| = n!$ by \textbf{Exercise \ref{exercise-order-of-Sn}}, therefore $|\An{n}| = \frac{n!}2$.
+\end{proof}
+
+\begin{exercise}
+    List all elements of $\An{3}$.
+\end{exercise}
+
+\section{Group of Units Modulo \texorpdfstring{$n$}{n}}
+We look at a useful group in Number Theory: the \textbf{group of units modulo $n$}.
+
+\begin{definition}
+    For a positive integer $n \geq 2$, the \textbf{group of units modulo $n$}\index{group of units modulo $n$}, denoted by $\Un{n}$, is the set
+    \[
+        \Un{n} = \{m \in \mathbb{Z} \vert 1 \leq m < n \text{ and } \gcd(m, n) = 1\}
+    \]
+    together with the operation $\otimes_n$ (multiplication modulo $n$).
+\end{definition}
+
+\newpage
+
+\begin{proposition}
+    $\Un{n}$ is an abelian group.
+\end{proposition}
+\begin{proof}
+    We note that multiplication modulo $n$ is commutative. So, we only need to prove that $\Un{n}$ satisfies the four group axioms to show that $\Un{n}$ is an abelian group.
+    \begin{enumerate}
+        \item \textbf{Closure}: Let $x, y \in \Un{n}$. Then $\gcd(x, n) = \gcd(y, n) = 1$. Hence $\gcd(xy, n) = 1$ which means that $\gcd(x\otimes_ny,n)=1$. Thus $x\otimes_ny \in \Un{n}$.
+        
+        \item \textbf{Associativity}: This is true since multiplication is associative.
+        
+        \item \textbf{Identity}: Note that 1 is the identity in $\Un{n}$ since $1 \otimes_n x = x$.
+        
+        \item \textbf{Inverse}: Let $x$ be in $\Un{n}$, meaning $\gcd(x, n) = 1$. Then \textbf{Proposition \ref{prop-multiplicative-inverse-exists-iff-coprime}} tells us that theer exists an $m$ such that $mx \equiv 1 \pmod n$. Therefore $m \otimes_n x = 1$, which means $m$ is the left-inverse of $x$. Since multiplication is commutative, $m$ is also the right-inverse of $x$. Hence $m$ is the inverse of $x$.
+    \end{enumerate}
+    This thus shows that $\Un{n}$ is an abelian group under $\otimes_n$.
+\end{proof}
+
+\begin{exercise}
+    List the elements of $\Un{10}$.
+\end{exercise}
+
+There is another representation of $\Un{n}$, but we leave it to later in this section.
+
+A useful Number Theory function that will occur frequently in this section is \textbf{Euler's totient function}\index{Euler's totient function}.
+
+\newpage
+
+\begin{definition}
+    \textbf{Euler's totient function} $\totient$ gives the number of numbers which are smaller than and coprime to a number $x$. That is,
+    \[
+        \totient(x) = |\{n \in \mathbb{Z} \vert 1 \leq n < x \text{ and } \gcd(n, x) = 1\}|.
+    \]
+\end{definition}
+In particular, if $x = p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$ where $p_1, p_2,\dots,p_k$ are distinct primes and $n_1,n_2,\dots,n_k$ are positive integers, then
+\[
+    \totient(x) = x \left(1 - \frac1{p_1}\right)\left(1 - \frac1{p_2}\right)\cdots\left(1 - \frac1{p_k}\right).
+\]
+Note $|\Un{n}| = \totient(n)$ by definition of $\Un{n}$.
+
+\begin{exercise}\label{exercise-order-of-a-divides-phi-a}
+    Let $a \in \Un{n}$. Prove that $|a|$ divides $\totient(n)$.
+\end{exercise}
+
+We look at the specific case where $|a| = \totient(n)$.
+\begin{definition}
+    If $\gcd(a, n) = 1$ we say that $a$ is a \textbf{primitive root modulo $n$}\index{primitive root} if $|a| = \totient(n)$ in $\Un{n}$.
+\end{definition}
+We state the following fact without proof:
+\begin{quote}
+    There is a primitive root modulo $n$ if and only if $n$ is 1, 2, 4, $p^k$, or $2p^k$ where $p$ is an odd prime.
+\end{quote}
+
+\begin{proposition}\label{prop-Un-cyclic-only-if-exists-primitive-root}
+    $\Un{n}$ is cyclic if and only if there is a primitive root modulo $n$.
+\end{proposition}
+\begin{proof}
+    We first prove the forward direction. Let $\Un{n}$ be cyclic. Then there exists an element $r \in \Un{n}$ such that $|r| = |\Un{n}| = \totient(n)$. By definition of a primitive root, this means that $r$ is a primitive root modulo $n$.
+
+    We now prove the reverse direction. Let $r \in \Un{n}$ be a primitive root modulo $n$. Then $\langle r \rangle \cong \mathbb{Z}_{\totient(n)}$. Note that since $|\langle r \rangle| = \totient(n) = |\Un{n}|$, therefore $r$ is a generator of $\Un{n}$, proving that $\Un{n}$ is cyclic.
+\end{proof}
+\begin{remark}
+    In fact, what \textbf{Proposition \ref{prop-Un-cyclic-only-if-exists-primitive-root}} shows is that $\Un{n} \cong \mathbb{Z}_{\totient(n)}$ if there exists a primitive root modulo $n$.
+\end{remark}
 
 % We look at some results about the structure of the group of units.
 % \begin{proposition}\label{prop-group-of-units-multiplicative-isomorphism}
@@ -3128,25 +3151,28 @@ From this example we can come up with a more general result.
 % \end{proposition}
 
 % \begin{proof}
-%     Let $(x, y) \in \Un{m} \times \Un{n}$. Set $a = n^{-1}$ in $\Un{m}$ and $b = m^{-1}$ in $\Un{n}$.
+%     Set $a = n^{-1}$ in $\Un{m}$ and $b = m^{-1}$ in $\Un{n}$.
 
 %     Define $\sigma: \Un{m} \times \Un{n} \to \Un{mn}$, where $(x, y) \mapsto xmb + yna$. We show that $\sigma$ is an isomorphism:
 %     \begin{itemize}
+%         %TODO: Fix this
 %         \item \textbf{Homomorphism}: Consider two pairs $(x_1, y_1)$ and $(x_2, y_2)$.
-%             \begin{align*}
-%                 \sigma((x_1, y_1)(x_2, y_2)) &= \sigma((x_1x_2, y_1y_2))\\
-%                 &= \underbrace{x_1x_2mb + y_1y_2na}_{\text{In } \Un{mn}}\\
-%                 &= x_1x_2mb + y_1y_2na + \underbrace{x_1y_2mnab + x_2y_1mnab}_{\equiv 0 \pmod{mn}}\\
-%                 &= (x_1mb + y_1na) \otimes_{mn} (x_2mb + y_2na)\\
-%                 &= \sigma((x_1,y_1))\sigma((x_2,y_2))
-%             \end{align*}
-%             which shows that $\sigma$ is a homomorphism.
+%         \begin{align*}
+%             \sigma((x_1, y_1)(x_2, y_2)) &= \sigma((x_1x_2, y_1y_2))\\
+%             &= \underbrace{x_1x_2mb + y_1y_2na}_{\text{In } \Un{mn}}\\
+%             &= x_1x_2mb + y_1y_2na + \underbrace{x_1y_2mnab + x_2y_1mnab}_{\equiv 0 \pmod{mn}}\\
+%             &= (x_1mb + y_1na) \otimes_{mn} (x_2mb + y_2na)\\
+%             &= \sigma((x_1,y_1))\sigma((x_2,y_2))
+%         \end{align*}
+%         which shows that $\sigma$ is a homomorphism.
+        
 %         \item \textbf{Injective}: Suppose $(x_1, y_1)$ and $(x_2, y_2)$ are pairs in $\Un{m}\times\Un{n}$ such that $\sigma((x_1, y_1)) = \sigma((x_2, y_2))$. Then
 %         \[
 %             x_1mb + y_1na = x_2mb + y_2na
 %         \]
-%         Reducing both sides by modulo $m$ yields $0 + y_1na \equiv 0 + y_2na$. Note that $a = n^{-1}$ in $\Un{m}$, which quickly means $y_1 = y_2$ since $1 \leq y_1, y_2 < n$. Similar argument by reducing both sides by modulo $n$ yields $x_1 = x_2$. This means that $\phi$ is injective.
-%         \item \textbf{Surjective}: Note that a property of Euler's totient function is that $\totient(mn) = \totient(m)\totient(n)$. Thus
+%         Reducing both sides by modulo $m$ yields $0 + y_1na \equiv 0 + y_2na$. Note that $a = n^{-1}$ in $\Un{m}$, which quickly means $y_1 = y_2$ since $1 \leq y_1, y_2 < n$. A similar argument by reducing both sides by modulo $n$ yields $x_1 = x_2$. This means that $(x_1, y_1) = (x_2, y_2)$, so $\phi$ is injective.
+        
+%         \item \textbf{Surjective}: Note that a property of Euler's totient function is that $\totient(mn) = \totient(m)\totient(n)$ if $\gcd(m,n) = 1$. Thus
 %         \[
 %             |\Un{mn}| = \totient(mn) = \totient(m)\totient(n) = |\Un{m}||\Un{n}| = |\Un{m} \times \Un{n}|.
 %         \]
@@ -3159,13 +3185,15 @@ From this example we can come up with a more general result.
 %     For $m \geq 3$, $\Un{2^m} \cong \mathbb{Z}_{2^{m-2}} \times \mathbb{Z}_2$.
 % \end{proposition}
 % \begin{proof}
-%     We first claim that $|5| = 2^{m-2}$ in $\Un{2^m}$. We induct on $m$ using two-step induction.
+%     We first claim that $|5| = 2^{m-2}$ in $\Un{2^m}$. We induct on $m$ using strong induction.
 
-%     We first consider the case $m = 3$; we are to show that $|5| = 2$ in $\Un{2^3} = \Un{8}$. Since $5^2 = 25 = 24 + 1 \equiv 1 \pmod{8}$, thus $|5| = 2$ in $\Un{8}$, meaning the case where $m = 3$ is true.
+%     We first show the base cases of $m=3$ and $m=4$ work.
+%     \begin{itemize}
+%         \item $\boxed{m = 3}$ We are to show that $|5| = 2$ in $\Un{2^3} = \Un{8}$. Since $5^2 = 25 = 24 + 1 \equiv 1 \pmod{8}$, thus $|5| = 2$ in $\Un{8}$, meaning the case where $m = 3$ is true.
+%         \item $\boxed{m = 4}$ We are to show that $|5| = 4$ in $\Un{2^4} = \Un{16}$. Note that $5^2 = 25 \equiv 9 \pmod{16}$, $5^3 = 125 \equiv 13 \pmod{16}$, and $5^4 = 625 \equiv 1 \pmod{16}$, so $|5| = 4$ in $\Un{16}$, meaning the case where $m = 4$ is true.
+%     \end{itemize}
 
-%     We next consider the case where $m = 4$; we are to show that $|5| = 4$ in $\Un{2^4} = \Un{16}$. Note that $5^1 = 5$, $5^2 = 25 \equiv 9 \pmod{16}$, $5^3 = 125 \equiv 13 \pmod{16}$, and $5^4 = 625 \equiv 1 \pmod{16}$, so $|5| = 4$ in $\Un{16}$, meaning the case where $m = 4$ is true.
-
-%     Now assume that the cases where $m = k$ and $m = k+1$ are true for $k \geq 3$, meaning $|5| = 2^{k-2}$ for $\Un{2^k}$ and $|5| = 2^{k-1}$ for $\Un{2^{k+1}}$. To prove that the case where $m=k+2$ is true, that is $|5| = 2^k$ for $\Un{2^{k+2}}$.
+%     Now assume that the cases where $m = k$ and $m = k+1$ are true for $k \geq 3$, meaning $|5| = 2^{k-2}$ for $\Un{2^k}$ and $|5| = 2^{k-1}$ for $\Un{2^{k+1}}$. We show that the case where $m=k+2$ is true, i.e. $|5| = 2^k$ for $\Un{2^{k+2}}$.
 
 %     By induction hypothesis, since $|5| = 2^{k-1}$ for $\Un{2^{k+1}}$,
 %     \[
@@ -3182,9 +3210,9 @@ From this example we can come up with a more general result.
 %     where $b \in \{0, 1\}$. Squaring both sides,
 %     \begin{align*}
 %         5^{2^{k-1}} &\equiv \left(1+2^k+b2^{k+1}\right)^2\\
-%         &\equiv 1 + 2\left(2^k + b2^{k+1}\right) + \left(2^k + b2^{k+1}\right)^2\\
-%         &\equiv 1 + 2^{k+1} + 2b(2^{k+1}) + 2^{2k}(1+4b+4b^2)\\
-%         &\equiv 1 + 2^{k+1} + 2^{k+2}b + 2^{k+2}\left(2^{k-2}(1+4b+4b^2)\right) & (\text{since } k\leq 3)\\
+%         &= 1 + 2\left(2^k + b2^{k+1}\right) + \left(2^k + b2^{k+1}\right)^2\\
+%         &= 1 + 2^{k+1} + 2b(2^{k+1}) + 2^{2k}(1+4b+4b^2)\\
+%         &= 1 + 2^{k+1} + 2^{k+2}b + 2^{k+2}\left(2^{k-2}(1+4b+4b^2)\right) & (\text{since } k\leq 3)\\
 %         &\equiv 1+2^{k+1} \pmod{2^{k+2}}\\
 %         &\not\equiv 1 \pmod{2^{k+2}}
 %     \end{align*}
@@ -3200,10 +3228,16 @@ From this example we can come up with a more general result.
 
 %     We can finally prove the main result. Let $H = \langle 5 \rangle$ and let $K = \langle -5^{2^{m-3}} \rangle$. Note that:
 %     \begin{itemize}
-%         \item $|\mathbb{Z}_{2^{m-2}}| = 2^{m-2} = |\langle 5 \rangle|$ so $\mathbb{Z}_{2^{m-2}} \cong \langle 5 \rangle \leq \Un{2^m}.$
+%         \item $|\mathbb{Z}_{2^{m-2}}| = 2^{m-2} = |\langle 5 \rangle|$ so $\mathbb{Z}_{2^{m-2}} \cong \langle 5 \rangle \leq \Un{2^m}$; and
 %         \item $|-5^{2^{m-1}}| = 2$ since $\left(-5^{2^{m-3}}\right) \times \left(-5^{2^{m-3}}\right) = 5^{2^{m-2}}$ and $|5| = 2^{m-2}$ in $\Un{2^m}$. Thus $\mathbb{Z}_2 \cong \langle -5^{2^{m-3}} \rangle$.
 %     \end{itemize}
-%      We see that $\Un{2^m} = HK$ since $\Un{2^m} = HK$, $H \cap K = \{1\}$ (the identity), and $HK = KH$. By \textbf{Theorem \ref{thrm-direct-product-equivilance}}, $HK \equiv H \times K$ so $\Un{2^m} \equiv H \times K$. But $H \cong \mathbb{Z}_{2^{m-2}}$ and $K \cong \mathbb{Z}_2$. Thus, $\Un{2^m} \cong \mathbb{Z}_{2^{m-2}} \times \mathbb{Z}_2$ for $m \geq 3$.
+%     We see that
+%     \begin{itemize}
+%         \item $\Un{2^m} = HK$;
+%         \item $H \cap K = \{1\}$ (the identity); and
+%         \item $HK = KH$,
+%     \end{itemize}
+%     so $\Un{2^m}$ is the internal direct product of $H$ and $K$. Hence by \textbf{Theorem \ref{thrm-direct-product-equivilance}} we see $\Un{2^m} \cong H \times K$. But $H \cong \mathbb{Z}_{2^{m-2}}$ and $K \cong \mathbb{Z}_2$. Thus, $\Un{2^m} \cong \mathbb{Z}_{2^{m-2}} \times \mathbb{Z}_2$ for $m \geq 3$.
 % \end{proof}
 
 % \begin{corollary}
@@ -3235,412 +3269,436 @@ From this example we can come up with a more general result.
 %     Find an isomorphism for $\Un{1680}$ in terms of ``$\mathbb{Z}_n$''s.
 % \end{exercise}
 
-% We end this section by looking at an alternate representation of $\Un{n}$. Define the group
-% \[
-%     \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times} = \left\{m + n\mathbb{Z} \ \vert \ m \in \mathbb{Z}, 1 \leq m < n, \text{ and } \gcd(m, n)=1\right\}
-% \]
-% under the operation $\ast$ where $(a+n\mathbb{Z})\ast(b+n\mathbb{Z}) = (a\otimes_n b) + n\mathbb{Z}$ for $n \geq 2$. We will show that $\Un{n}$ is isomorphic to this group.
-% \begin{proof}
-%     Define the map $\phi: \Un{n} \to \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$ such that $m \mapsto m + n\mathbb{Z}$. We show that $\phi$ is an isomorphism.
+We end this section by looking at an alternate representation of $\Un{n}$. Define the group
+\[
+    \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times} = \left\{m + n\mathbb{Z} \ \vert \ m,n \in \mathbb{Z},\; 1 \leq m < n,\; \gcd(m, n)=1\right\}
+\]
+under the operation $\ast$ where $(a+n\mathbb{Z})\ast(b+n\mathbb{Z}) = (a\otimes_n b) + n\mathbb{Z}$ for $n \geq 2$.
+\begin{proposition}
+    $\Un{n} \cong \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$.
+\end{proposition}
+\begin{proof}
+    Define the map $\phi: \Un{n} \to \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$ such that $m \mapsto m + n\mathbb{Z}$. We show that $\phi$ is an isomorphism.
 
-%     \begin{itemize}
-%         \item \textbf{Homomorphism}: Let $x, y \in \Un{n}$. Then $\phi$ is a homomorphism since
-%         \begin{align*}
-%             \phi(x \otimes_n y) &= (x \otimes_n y) + n\mathbb{Z}\\
-%             &= (x + n\mathbb{Z}) \ast (y + n\mathbb{Z})\\
-%             &= \phi(x) \ast \phi(y).
-%         \end{align*}
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $x, y \in \Un{n}$. Then $\phi$ is a homomorphism since
+        \begin{align*}
+            \phi(x \otimes_n y) &= (x \otimes_n y) + n\mathbb{Z}\\
+            &= (x + n\mathbb{Z}) \ast (y + n\mathbb{Z})\\
+            &= \phi(x) \ast \phi(y).
+        \end{align*}
 
-%         \item \textbf{Injective}: Suppose we have $x, y \in \Un{n}$ such that $\phi(x) = \phi(y)$. Then this means that $x + n\mathbb{Z} = y + n\mathbb{Z}$. Thus
-%         \[
-%             \{x + pn \vert p \in \mathbb{Z} \} = \ \{y + qn \vert q \in \mathbb{Z} \}.
-%         \]
-%         Hence we conclude that $x \equiv y \pmod{n}$. But since $1 \leq x, y < n$, therefore we must have $x = y$. Hence, $\phi(x) = \phi(y)$ implies $x = y$, meaning $\phi$ is injective.
+        \item \textbf{Injective}: Suppose we have $x, y \in \Un{n}$ such that $\phi(x) = \phi(y)$. Then this means that $x + n\mathbb{Z} = y + n\mathbb{Z}$. Thus
+        \[
+            \{x + pn \vert p \in \mathbb{Z} \} = \ \{y + qn \vert q \in \mathbb{Z} \}.
+        \]
+        Hence we conclude that $x \equiv y \pmod{n}$. But since $1 \leq x, y < n$, therefore we must have $x = y$. Hence, $\phi(x) = \phi(y)$ implies $x = y$, meaning $\phi$ is injective.
 
-%         \item \textbf{Surjective}: Let $x + n\mathbb{Z} \in \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$; thus $\gcd(x, n) = 1$. Performing division algorithm on $x$ yields
-%         \[
-%             x = qn + r, \text{ where } 0 \leq r < n.
-%         \]
-%         Note that
-%         \begin{align*}
-%             x + n\mathbb{Z} &= \{x + kn \vert k \in \mathbb{Z}\}\\
-%             &= \{(qn + r) + kn \vert k \in \mathbb{Z}\}\\
-%             &= \{r + n(\underbrace{q+k}_{\text{In } \mathbb{Z}}) \vert k \in \mathbb{Z}\}\\
-%             &= r + n\mathbb{Z}
-%         \end{align*}
-%         with $0 \leq r < n$. Note that if $r = 0$, this means that $x = qn$, which means that $\gcd(x, n) = \gcd(qn, n) = n \neq 1$. Thus, $r \neq 0$, meaning $1 \leq r < n$ so $r \in \Un{n}$.
+        \item \textbf{Surjective}: Let $x + n\mathbb{Z} \in \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$; thus $\gcd(x, n) = 1$. Performing division algorithm on $x$ yields
+        \[
+            x = qn + r, \text{ where } 0 \leq r < n.
+        \]
+        Note that
+        \begin{align*}
+            x + n\mathbb{Z} &= \{x + kn \vert k \in \mathbb{Z}\}\\
+            &= \{(qn + r) + kn \vert k \in \mathbb{Z}\}\\
+            &= \{r + n(\underbrace{q+k}_{\text{In } \mathbb{Z}}) \vertalt k \in \mathbb{Z}\}\\
+            &= r + n\mathbb{Z}
+        \end{align*}
+        with $0 \leq r < n$. Note that if $r = 0$, this means that $x = qn$, which means that $\gcd(x, n) = \gcd(qn, n) = n \neq 1$. Thus, $r \neq 0$, meaning $1 \leq r < n$ so $r \in \Un{n}$.
 
-%         Observing that $\phi(r) = r + n\mathbb{Z} = x + n\mathbb{Z}$ shows that $x + n\mathbb{Z}$ has a pre-image $r$ in $\Un{n}$, which means that $\phi$ is surjective.
-%     \end{itemize}
+        Observing that $\phi(r) = r + n\mathbb{Z} = x + n\mathbb{Z}$ shows that $x + n\mathbb{Z}$ has a pre-image $r$ in $\Un{n}$, which means that $\phi$ is surjective.
+    \end{itemize}
 
-%     Thus $\phi$ is an isomorphism, meaning $\Un{n} \cong \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$.
-% \end{proof}
+    Thus $\phi$ is an isomorphism, meaning $\Un{n} \cong \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$.
+\end{proof}
 
-% \section{Groups of Matrices}
-% \subsection{Introduction to Matrices}
-% Before we can introduce the groups of matrices, we need to understand what they are, and to learn some operations that can be applied to matrices.
+\section{Groups of Matrices}
+\subsection{Introduction to Matrices}
+Before we can introduce the groups of matrices, we need to understand what they are, and to learn some operations that can be applied to matrices.
 
-% A matrix is a rectangular array numbers, symbols, or expressions, arranged in rows and columns. They are used to represent mathematical objects or properties of objects.
+A matrix\index{matrix} is a rectangular array of numbers, symbols, or expressions, arranged in rows and columns. They are used to represent mathematical objects or properties of objects.
 
-% For example,
-% \[
-%     \textbf{M} = \begin{pmatrix}
-%     1 & 2\\
-%     3 & 4\\
-%     5 & 6
-%     \end{pmatrix}
-% \]
-% is a matrix. We consider only square matrices, which have the same number of rows as columns. For example,
-% \[
-%     \textbf{A} = \begin{pmatrix}
-%     1 & 2 & 3\\
-%     4 & 5 & 6\\
-%     7 & 8 & 9
-%     \end{pmatrix}, \textbf{B} = \begin{pmatrix}
-%     -1 & 0 & 1 & 1\\
-%     1 & 0 & -1 & 1\\
-%     1 & 1 & 1 & 1\\
-%     2 & 3 & 3 & 3
-%     \end{pmatrix}, \textrm{ and } \textbf{C} = \begin{pmatrix}
-%     x & x^2\\
-%     x^3 & x^4\\
-%     \end{pmatrix}
-% \]
-% are square matrices. For brevity, for a matrix \textbf{M}, we denote the element in the $i$th row and the $j$th column as $m_{i,j}$ (where $1 \leq i, j \leq n$ with $n$ being the number of rows and columns in \textbf{M}). For example, using the above matrices, $a_{2,2} = 5$, $b_{2,4}=1$, and $c_{1,1} = x$.
+For example,
+\[
+    \textbf{M} = \begin{pmatrix}
+    1 & 2\\
+    3 & 4\\
+    5 & 6
+    \end{pmatrix}
+\]
+is a matrix. In this section, we consider only square matrices\index{matrix!square}, which have the same number of rows as columns. For example,
+\[
+    \textbf{A} = \begin{pmatrix}
+    1 & 2 & 3\\
+    4 & 5 & 6\\
+    7 & 8 & 9
+    \end{pmatrix}, \textbf{B} = \begin{pmatrix}
+    -1 & 0 & 1 & 1\\
+    1 & 0 & -1 & 1\\
+    1 & 1 & 1 & 1\\
+    2 & 3 & 3 & 3
+    \end{pmatrix}, \textrm{ and } \textbf{C} = \begin{pmatrix}
+    x & x^2\\
+    x^3 & x^4\\
+    \end{pmatrix}
+\]
+are square matrices. For brevity, for a matrix \textbf{M}, we denote the element in the $i$th row and the $j$th column as $m_{i,j}$ (where $1 \leq i, j \leq n$ with $n$ being the number of rows and columns in \textbf{M}). For example, using the above matrices, $a_{2,2} = 5$, $b_{2,4}=1$, and $c_{1,1} = x$.
 
-% We now need to introduce the idea of \textbf{matrix multiplication}. Consider two square matrices \textbf{A} and \textbf{B} with the same number of rows and columns (say, $n$ rows and columns). Let their product, \textbf{AB}, be the matrix \textbf{C}. Then
-% \[
-%     c_{i,j} = \sum_{k=1}^n a_{i,k}b_{k,j}
-% \]
-% for $1 \leq i, j \leq n$. For example,
-% \[
-%     \begin{pmatrix}1 & 2\\3 & 4\end{pmatrix}\begin{pmatrix}5 & 6\\7 & 8\end{pmatrix}
-% = \begin{pmatrix}1\times5+2\times7 & 1\times6+2\times8\\3\times5+4\times7 & 3\times6+4\times8\end{pmatrix}
-% = \begin{pmatrix}19 & 22\\43 & 50\end{pmatrix}.
-% \]
-% Note that matrix multiplication is \textbf{not} commutative. For example,
-% \[
-% \begin{pmatrix}1 & 2\\3 & 4\end{pmatrix}\begin{pmatrix}5 & 6\\7 & 8\end{pmatrix} = \begin{pmatrix}19 & 22\\43 & 50\end{pmatrix} \text{, but } \begin{pmatrix}5 & 6\\7 & 8\end{pmatrix}\begin{pmatrix}1 & 2\\3 & 4\end{pmatrix} = \begin{pmatrix}23 & 34\\31 & 46\end{pmatrix}
-% \]
+We now need to introduce the idea of \textbf{matrix multiplication}\index{matrix!multiplication}. Consider two square matrices \textbf{A} and \textbf{B} with the same number of rows and columns (say, $n$ rows and columns). Let their product, denoted \textbf{AB}, be the matrix \textbf{C}. Then
+\[
+    c_{i,j} = \sum_{k=1}^n a_{i,k}b_{k,j}
+\]
+for $1 \leq i, j \leq n$. For example, if $\textbf{A} = \begin{pmatrix}1 & 2\\3 & 4\end{pmatrix}$ and $\textbf{B} = \begin{pmatrix}5 & 6\\7 & 8\end{pmatrix}$ then
+\[
+    \textbf{AB} = \begin{pmatrix}1\times5+2\times7 & 1\times6+2\times8\\3\times5+4\times7 & 3\times6+4\times8\end{pmatrix}
+    = \begin{pmatrix}19 & 22\\43 & 50\end{pmatrix}.
+\]
+Note that matrix multiplication is \textbf{not} commutative, as
+\[
+    \textbf{AB} = \begin{pmatrix}19 & 22\\43 & 50\end{pmatrix} \text{ but } \textbf{BA} = \begin{pmatrix}23 & 34\\31 & 46\end{pmatrix}.
+\]
 
-% \begin{exercise}
-%     Find the matrix given by the product
-%     \[
-%         \begin{pmatrix}1&1&0\\0&1&0\\0&1&1\end{pmatrix}\begin{pmatrix}1&1&1\\1&0&1\\1&1&1\end{pmatrix}.
-%     \]
-% \end{exercise}
+\begin{exercise}
+    Find the matrix given by the product
+    \[
+        \begin{pmatrix}1&1&0\\0&1&0\\0&1&1\end{pmatrix}\begin{pmatrix}1&1&1\\1&0&1\\1&1&1\end{pmatrix}.
+    \]
+\end{exercise}
 
-% Matrices can also be `multiplied' by real numbers (known as scalar multiplication). For example,
-% \[
-%     1.23\begin{pmatrix}1 & 2\\3 & 4\end{pmatrix} = \begin{pmatrix}1.23 & 2.46\\3.69 & 4.92\end{pmatrix}.
-% \]
+Matrices can also be `multiplied' by real numbers (known as \textbf{scalar multiplication}\index{scalar multiplication}). For example,
+\[
+    1.23\begin{pmatrix}1 & 2\\3 & 4\end{pmatrix} = \begin{pmatrix}1.23 & 2.46\\3.69 & 4.92\end{pmatrix}.
+\]
 
-% We look at a special kind of square matrix: the \textbf{identity matrix of order $n$}. It is denoted by $\textbf{I}_n$ and it is a matrix with $n$ rows and columns with 1s on the main diagonal and 0s everywhere else. Thus,
-% \[
-%     \textbf{I}_2 = \begin{pmatrix}1 & 0\\0 & 1\end{pmatrix},
-% \textbf{I}_3 = \begin{pmatrix}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\end{pmatrix}, \text{ and }
-% \textbf{I}_4 = \begin{pmatrix}1 & 0 & 0 & 0\\0 & 1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{pmatrix}.
-% \]
-% We note that for any matrix \textbf{M} with $n$ rows and columns,
-% \[
-%     \textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}.
-% \]
+We now look at a special kind of square matrix: the \textbf{identity matrix of order $n$}\index{matrix!identity}. It is denoted $\textbf{I}_n$ and it is a matrix with $n$ rows and columns with 1s on the main diagonal and 0s everywhere else. For example,
+\[
+    \textbf{I}_2 = \begin{pmatrix}1 & 0\\0 & 1\end{pmatrix},
+\textbf{I}_3 = \begin{pmatrix}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\end{pmatrix}, \text{ and }
+\textbf{I}_4 = \begin{pmatrix}1 & 0 & 0 & 0\\0 & 1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{pmatrix}.
+\]
+We note that for any matrix \textbf{M} with $n$ rows and columns,
+\[
+    \textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}.
+\]
 
-% A square matrix may have an \textbf{inverse}. Consider a square matrix \textbf{A} with $n$ rows and columns. Then \textbf{B} is an inverse of \textbf{A} if
-% \[
-%     \textbf{AB} = \textbf{BA} = \textbf{I}_n.
-% \]
-% For example, consider the matrices
-% \[
-%     \textbf{A} = \begin{pmatrix}1&1&0\\ 0&1&0\\ 0&1&1\end{pmatrix} \text{ and } \textbf{B} = \begin{pmatrix}1&-1&0\\ 0&1&0\\ 0&-1&1\end{pmatrix}.
-% \]
-% Note that
-% \[
-%     \textbf{AB} = \textbf{BA} = \textbf{I}_3
-% \]
-% so \textbf{B} is the inverse of \textbf{A} (and \textbf{A} is the inverse of \textbf{B}). We leave the verification of this claim as an exercise. We denote the inverse of a square matrix \textbf{M} by $\textbf{M}^{-1}$. We note that $\textbf{I}_n^{-1} = \textbf{I}_n$ but not prove it here.
+A square matrix may have an \textbf{inverse}\index{matrix!inverse}. Consider a square matrix \textbf{A} with $n$ rows and columns. Then \textbf{B} is an inverse of \textbf{A} if
+\[
+    \textbf{AB} = \textbf{BA} = \textbf{I}_n.
+\]
+For example, consider the matrices
+\[
+    \textbf{A} = \begin{pmatrix}1&1&0\\ 0&1&0\\ 0&1&1\end{pmatrix} \text{ and } \textbf{B} = \begin{pmatrix}1&-1&0\\0&1&0\\0&-1&1\end{pmatrix}.
+\]
+Note that
+\[
+    \textbf{AB} = \textbf{BA} = \textbf{I}_3
+\]
+so \textbf{B} is the inverse of \textbf{A} (and \textbf{A} is the inverse of \textbf{B}). We leave the verification of this claim as an exercise. We denote the inverse of a square matrix \textbf{M} by $\textbf{M}^{-1}$. We note that $\textbf{I}_n^{-1} = \textbf{I}_n$ but not prove it here.
 
-% One last thing we introduce here is the idea of a \textbf{matrix determinant} (or simply the \textbf{determinant}). The determinant is only well defined for square matrices. The determinant of a square matrix \textbf{A} is denoted by $\det(\textbf{A})$ or just $\det \textbf{A}$. The rule for the determinant changes as we increase the number of rows and columns in the square matrix, so we only look at small cases.
-% \begin{itemize}
-%     \item If the square matrix only has one row, then its determinant is the only element in the matrix. Thus, if $\textbf{A} = (a_{1,1})$ then $\det \textbf{A} = a_{1,1}$.
-%     \item If the square matrix has two rows, such as the matrix $\begin{pmatrix}a & b\\c & d\end{pmatrix}$, then its determinant is $ad-bc$.
-%     \item If the square matrix has three rows, for example $\begin{pmatrix}a & b & c \\ d & e & f \\ g & h & i\end{pmatrix}$, then its determinant is $aei+bfg+cdh-ceg-bdi-afh$.
-% \end{itemize}
-% An important property of the determinant is that it is a \textit{multiplicative map}: for two square matrices \textbf{A} and \textbf{B},
-% \[
-%     \det (\textbf{AB}) = \det(\textbf{A}) \times \det(\textbf{B}).
-% \]
-% Finally, not all square matrices has an inverse. The necessary and sufficient condition that determines whether a square matrix \textbf{M} has an inverse is whether $\det \textbf{M} \neq 0$. That is,
-% \[
-%     \textbf{M}^{-1} \text{ exists if and only if } \det \textbf{M} \neq 0.
-% \]
+One last thing we introduce here is the idea of a \textbf{matrix determinant}\index{matrix!determinant} (or simply the \textbf{determinant}). The determinant is only well defined for square matrices. The determinant of a square matrix \textbf{A} is denoted by $\det(\textbf{A})$ or just $\det \textbf{A}$. The rule for the determinant changes as we increase the number of rows and columns in the square matrix, so we only look at small cases.
+\begin{itemize}
+    \item If the square matrix only has one row, then its determinant is the only element in the matrix. Thus, if $\textbf{A} = (a_{1,1})$ then $\det \textbf{A} = a_{1,1}$.
+    \item If the square matrix has two rows, such as the matrix $\begin{pmatrix}a & b\\c & d\end{pmatrix}$, then its determinant is $ad-bc$.
+    \item If the square matrix has three rows, like $\begin{pmatrix}a & b & c \\ d & e & f \\ g & h & i\end{pmatrix}$, then its determinant is $aei+bfg+cdh-ceg-bdi-afh$.
+\end{itemize}
+An important property of the determinant is that it is a \textit{multiplicative map}: for two square matrices \textbf{A} and \textbf{B},
+\[
+    \det (\textbf{AB}) = \det(\textbf{A}) \times \det(\textbf{B}).
+\]
+Finally, not all square matrices has an inverse. The necessary and sufficient condition that determines whether a square matrix \textbf{M} has an inverse is whether $\det \textbf{M} \neq 0$. That is,
+\[
+    \textbf{M}^{-1} \text{ exists if and only if } \det \textbf{M} \neq 0.
+\]
 
-% We leave this subsection with a few properties of the determinant that we state but not prove:
-% \begin{itemize}
-%     \item $\det(\textbf{I}_n) = 1$;
-%     \item $\det(\textbf{M}^{-1}) = \left(\det \textbf{M}\right)^{-1}$; and
-%     \item $\det(k\textbf{M}) = k^n \det\textbf{M}$ for a matrix \textbf{M} with $n$ rows and columns.
-% \end{itemize}
+We conclude this subsection with a few properties of the determinant that we state but not prove:
+\begin{itemize}
+    \item $\det(\textbf{I}_n) = 1$;
+    \item $\det(\textbf{M}^{-1}) = \left(\det \textbf{M}\right)^{-1}$; and
+    \item $\det(k\textbf{M}) = k^n \det\textbf{M}$ for a matrix \textbf{M} with $n$ rows and columns.
+\end{itemize}
 
-% \subsection{General Linear Group over the Real Numbers}
-% With an introduction of matrices out of the way, we can introduce the first of two important matrix groups: the \textbf{General Linear Group of degree $n$} over the real numbers.
-% \begin{definition}
-%     The \textbf{General Linear Group of degree $n$} over the real numbers is denoted by $\GL{n}{\mathbb{R}}$ and is the group with set
-%     \[
-%         \left\{\textbf{M} \vert \text{\textbf{M} is a matrix with } n \text{ rows and columns, and } \det \textbf{M} \neq 0\right\}
-%     \]
-%     under matrix multiplication.
-% \end{definition}
-% In other words, $\GL{n}{\mathbb{R}}$ is the group of real-valued matrices with $n$ rows and columns that has an inverse. We show that $\GL{n}{\mathbb{R}}$ is in fact a group under matrix multiplication.
-% \begin{proof}
-%     We need to prove the four group axioms.
-%     \begin{enumerate}
-%         \item \textbf{Closure}: Consider two matrices \textbf{A} and \textbf{B} that are in $\GL{n}{\mathbb{R}}$. Then that necessarily means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Therefore $\textbf{AB}$ is also in $\GL{n}{\mathbb{R}}$, meaning that it is closed under matrix multiplication.
-%         \item \textbf{Associativity}: Consider three matrices \textbf{A}, \textbf{B}, and \textbf{C} in $\GL{n}{\mathbb{R}}$.
-%         \begin{itemize}
-%             \item Consider $(\textbf{AB})\textbf{C}$. Let $\textbf{R} = \textbf{AB}$ and $\textbf{S} = (\textbf{AB})\textbf{C}$. Then
-%             \[
-%                 r_{i,k} = \sum_{l=1}^n a_{i,l}b_{l,k} \text{ and } s_{i,j} = \sum_{k=1}^n r_{i,k}c_{k,j}
-%             \]
-%             which means that
-%             \[
-%                 s_{i,j} = \sum_{k=1}^n \left(\sum_{l=1}^n a_{i,l}b_{l,k}\right)c_{k,j} = \sum_{k=1}^n \sum_{l=1}^n (a_{i,l}b_{l,k})c_{k,j}.
-%             \]
-%             \item Now consider $\textbf{A}(\textbf{BC})$. Let $\textbf{R} = \textbf{BC}$ and $\textbf{S} = \textbf{A}(\textbf{BC})$. Then
-%             \[
-%                 r_{l,j} = \sum_{k=1}^nb_{l,k}c_{k,j} \text{ and } s_{i,j} = \sum_{l=1}^n a_{i,l}r_{l,j}
-%             \]
-%             which means that
-%             \[
-%                 s_{i,j} = \sum_{l=1}^n a_{i,l}\left(\sum_{k=1}^nb_{l,k}c_{k,j}\right) = \sum_{l=1}^n\sum_{k=1}^n a_{i,l}(b_{l,k}c_{k,j}).
-%             \]
-%         \end{itemize}
-%         Now, multiplication is associative. Thus,
-%         \[
-%                 (a_{i,l}b_{l,k})c_{k,j} = a_{i,l}(b_{l,k}c_{k,j})
-%         \]
-%         which means
-%         \[
-%             \sum_{k=1}^n \sum_{l=1}^n (a_{i,l}b_{l,k})c_{k,j} = \sum_{l=1}^n\sum_{k=1}^n a_{i,l}(b_{l,k}c_{k,j}),
-%         \]
-%         thereby proving that matrix multiplication is associative.
-%         \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n$ is in $\GL{n}{\mathbb{R}}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M}$ in $\GL{n}{\mathbb{R}}$, thus $\textbf{I}_n$ is indeed the identity of $\GL{n}{\mathbb{R}}$.
-%         \item \textbf{Inverse}: Let \textbf{M} be a matrix in $\GL{n}{\mathbb{R}}$. Consider the matrix $\textbf{M}^{-1}$. By determinant property, we know that $\det \textbf{M}^{-1} = \left(\det \textbf{M}\right)^{-1}$ and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1}$ is in $\GL{n}{\mathbb{R}}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\mathbb{R}}$.
+\subsection{General Linear Group over the Real Numbers}
+With an introduction of matrices out of the way, we can introduce the first of two important matrix groups: the \textbf{General Linear Group of degree $n$} over the real numbers.
+\begin{definition}
+    The \textbf{General Linear Group of degree $n$}\index{General Linear Group} over the real numbers is denoted by $\GL{n}{\mathbb{R}}$ and is the group with set
+    \[
+        \left\{\textbf{M} \vert \text{\textbf{M} is a matrix with } n \text{ rows and columns, and } \det \textbf{M} \neq 0\right\}
+    \]
+    under the operation of matrix multiplication.
+\end{definition}
+In other words, $\GL{n}{\mathbb{R}}$ is the group of real-valued matrices with $n$ rows and columns that has an inverse. We show that $\GL{n}{\mathbb{R}}$ is in fact a group under matrix multiplication.
+\begin{proof}
+    We need to prove the four group axioms.
+    \begin{enumerate}
+        \item \textbf{Closure}: Consider two matrices \textbf{A} and \textbf{B} that are in $\GL{n}{\mathbb{R}}$. Then that necessarily means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Note also that $\mathbb{AB}$ has $n$ rows and columns. Therefore $\textbf{AB}$ is also in $\GL{n}{\mathbb{R}}$, meaning that it is closed under matrix multiplication.
+        
+        \item \textbf{Associativity}: Consider three matrices \textbf{A}, \textbf{B}, and \textbf{C} in $\GL{n}{\mathbb{R}}$.
+        \begin{itemize}
+            \item Consider $(\textbf{AB})\textbf{C}$. Let $\textbf{R} = \textbf{AB}$ and $\textbf{S} = (\textbf{AB})\textbf{C}$. Then
+            \[
+                r_{i,k} = \sum_{l=1}^n a_{i,l}b_{l,k} \text{ and } s_{i,j} = \sum_{k=1}^n r_{i,k}c_{k,j}
+            \]
+            which means that
+            \[
+                s_{i,j} = \sum_{k=1}^n \left(\sum_{l=1}^n a_{i,l}b_{l,k}\right)c_{k,j} = \sum_{k=1}^n \sum_{l=1}^n (a_{i,l}b_{l,k})c_{k,j}.
+            \]
+            \item Now consider $\textbf{A}(\textbf{BC})$. Let $\textbf{R} = \textbf{BC}$ and $\textbf{S} = \textbf{A}(\textbf{BC})$. Then
+            \[
+                r_{l,j} = \sum_{k=1}^nb_{l,k}c_{k,j} \text{ and } s_{i,j} = \sum_{l=1}^n a_{i,l}r_{l,j}
+            \]
+            which means that
+            \[
+                s_{i,j} = \sum_{l=1}^n a_{i,l}\left(\sum_{k=1}^nb_{l,k}c_{k,j}\right) = \sum_{l=1}^n\sum_{k=1}^n a_{i,l}(b_{l,k}c_{k,j}).
+            \]
+        \end{itemize}
+        Now, multiplication is associative. Thus,
+        \[
+                (a_{i,l}b_{l,k})c_{k,j} = a_{i,l}(b_{l,k}c_{k,j})
+        \]
+        so
+        \[
+            \sum_{k=1}^n \sum_{l=1}^n (a_{i,l}b_{l,k})c_{k,j} = \sum_{l=1}^n\sum_{k=1}^n a_{i,l}(b_{l,k}c_{k,j}),
+        \]
+        thereby proving that matrix multiplication is associative.
+        
+        \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n$ is in $\GL{n}{\mathbb{R}}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M}$ in $\GL{n}{\mathbb{R}}$, thus $\textbf{I}_n$ is the identity of $\GL{n}{\mathbb{R}}$.
+        
+        \item \textbf{Inverse}: Let \textbf{M} be a matrix in $\GL{n}{\mathbb{R}}$. Consider the matrix $\textbf{M}^{-1}$. By properties of the determinant, we know that $\det \left(\textbf{M}^{-1}\right) = \left(\det \textbf{M}\right)^{-1}$, and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1}$ is in $\GL{n}{\mathbb{R}}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\mathbb{R}}$.
+    \end{enumerate}
+    Thus $\GL{n}{\mathbb{R}}$ is a group since all four group axioms are satisfied.
+\end{proof}
 
-%     \end{enumerate}
-%     Thus $\GL{n}{\mathbb{R}}$ is a group since all four group axioms are satisfied.
-% \end{proof}
+\subsection{Special Linear Group over the Real Numbers}
+We look at another group of matrices: the \textbf{Special Linear Group of degree $n$} over the real numbers.
+\begin{definition}
+    The \textbf{Special Linear Group of degree $n$}\index{Special Linear Group} over the real numbers is denoted by $\SL{n}{\mathbb{R}}$ and is the group with set
+    \[
+        \left\{\textbf{M} \vert \text{\textbf{M} is a matrix with } n \text{ rows and columns, and } \det \textbf{M} = 1\right\}
+    \]
+    under matrix multiplication.
+\end{definition}
+One sees clearly that $\SL{n}{\mathbb{R}}$ is a sub\textit{set} of $\GL{n}{\mathbb{R}}$: the set of $\GL{n}{\mathbb{R}}$ requires non-zero determinant while the set of $\SL{n}{\mathbb{R}}$ requires the determinant to be 1, which satisfies the non-zero determinant requirement. What we want to prove here is that $\SL{n}{\mathbb{R}}$ is a sub\textit{group} of $\GL{n}{\mathbb{R}}$. In fact,
+\begin{proposition}
+    $\SL{n}{\mathbb{R}} \lhd \GL{n}{\mathbb{R}}$.
+\end{proposition}
+\begin{proof}
+    We consider the subgroup test. Clearly $\textbf{I}_n$ is in $\SL{n}{\mathbb{R}}$ since its determinant is 1. Hence all we have to check the second condition of the subgroup test.
 
-% \subsection{Special Linear Group over the Real Numbers}
-% We look at another group of matrices: the \textbf{Special Linear Group of degree $n$} over the real numbers.
-% \begin{definition}
-%     The \textbf{Special Linear Group of degree $n$} over the real numbers is denoted by $\SL{n}{\mathbb{R}}$ and is the group with set
-%     \[
-%         \left\{\textbf{M} \vert \text{\textbf{M} is a matrix with } n \text{ rows and columns, and } \det \textbf{M} = 1\right\}
-%     \]
-%     under matrix multiplication.
-% \end{definition}
-% One sees clearly that $\SL{n}{\mathbb{R}}$ is a sub\textit{set} of $\GL{n}{\mathbb{R}}$: the set of $\GL{n}{\mathbb{R}}$ requires non-zero determinant while the set of $\SL{n}{\mathbb{R}}$ requires the determinant to be 1, which obviously satisfies the non-zero determinant requirement. What we want to prove here is that $\SL{n}{\mathbb{R}}$ is a sub\textit{group} of $\GL{n}{\mathbb{R}}$. In fact, $\SL{n}{\mathbb{R}}$ is a \textit{normal} subgroup of $\GL{n}{\mathbb{R}}$.
-
-% \begin{proof}
-%     We consider the subgroup test. Clearly $\textbf{I}_n$ is in $\SL{n}{\mathbb{R}}$ since its determinant is 1. Hence all we have to check the second condition of the subgroup test.
-
-%     Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\mathbb{R}}$. This means that
-%     \[
-%         \det \textbf{A} = 1 \text{ and } \det \textbf{B} = 1.
-%     \]
-%     Note that $\det \textbf{B}^{-1} = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det \textbf{B}^{-1}) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\mathbb{R}}$. Hence by the subgroup test, $\SL{n}{\mathbb{R}} \leq \GL{n}{\mathbb{R}}$.
+    Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\mathbb{R}}$. This means that
+    \[
+        \det \textbf{A} = 1 \text{ and } \det \textbf{B} = 1.
+    \]
+    Note that $\det \textbf{B}^{-1} = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det \textbf{B}^{-1}) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\mathbb{R}}$. Hence by the subgroup test, $\SL{n}{\mathbb{R}} < \GL{n}{\mathbb{R}}$.
     
-%     Now let $\textbf{M}$ be a matrix in $\GL{n}{\mathbb{R}}$ and $\textbf{N}$ be a matrix in $\SL{n}{\mathbb{R}}$. We are to show that $\textbf{MNM}^{-1}$ is in $\SL{n}{\mathbb{R}}$. Since $\textbf{M} \in \GL{n}{\mathbb{R}}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\mathbb{R}}$ implies $\det \textbf{N} = 1$. Hence,
-%     \[
-%         \det \textbf{MNM}^{-1} = (\det \textbf{M})(\det \textbf{N})(\det \textbf{M})^{-1} = \det \textbf{N} = 1
-%     \]
-%     which means that $\textbf{MNM}^{-1}$ is in $\SL{n}{\mathbb{R}}$.
+    Now let $\textbf{M}$ be a matrix in $\GL{n}{\mathbb{R}}$ and $\textbf{N}$ be a matrix in $\SL{n}{\mathbb{R}}$. We are to show that $\textbf{MNM}^{-1}$ is in $\SL{n}{\mathbb{R}}$. Since $\textbf{M} \in \GL{n}{\mathbb{R}}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\mathbb{R}}$ implies $\det \textbf{N} = 1$. Hence,
+    \[
+        \det \textbf{MNM}^{-1} = (\det \textbf{M})(\det \textbf{N})(\det \textbf{M})^{-1} = \det \textbf{N} = 1
+    \]
+    which means that $\textbf{MNM}^{-1}$ is in $\SL{n}{\mathbb{R}}$.
 
-%     Therefore $\SL{n}{\mathbb{R}} \lhd \GL{n}{\mathbb{R}}$.
-% \end{proof}
+    Therefore $\SL{n}{\mathbb{R}} \lhd \GL{n}{\mathbb{R}}$.
+\end{proof}
 
-% \subsection{A Consequence of the Fundamental Homomorphism Theorem}
-% We end this section with a corollary of the Fundamental Homomorphism Theorem regarding these groups of matrices. 
+\newpage
 
-% For brevity denote $\mathbb{R}^\times$ as the group of non-zero real numbers under multiplication.
+\subsection{A Consequence of the Fundamental Homomorphism Theorem}
+We end this section with a consequence of the Fundamental Homomorphism Theorem on these groups of matrices. 
 
-% \begin{proposition}
-%     $\GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times$.
-% \end{proposition}
-% \begin{proof}
-%     Define the map $\phi: \GL{n}{\mathbb{R}} \to \mathbb{R}^\times$ where $\textbf{M} \mapsto \det\textbf{M}$.
-% 	\begin{itemize}
-% 	    \item \textbf{Homomorphism}: Take $\textbf{M}, \textbf{N} \in \GL{n}{\mathbb{R}}$. Then we have
-% 	    \[
-% 	        \phi(\textbf{MN}) = \det \textbf{MN} = \det(\textbf{M})\det(\textbf{N}) = \phi(\textbf{M})\phi(\textbf{N})
-% 	    \]
-% 	    which means that $\phi$ is a homomorphism.
+For brevity, let $\mathbb{R}^\times$ be the group of non-zero real numbers under multiplication.
 
-% 	    \item \textbf{Image}: We prove that $\phi$ is surjective to show that $\im \phi = \mathbb{R}^\times$.
+\begin{proposition}
+    $\GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times$.
+\end{proposition}
+\begin{proof}
+    Define the map $\phi: \GL{n}{\mathbb{R}} \to \mathbb{R}^\times$ where $\textbf{M} \mapsto \det\textbf{M}$.
+	\begin{itemize}
+	    \item \textbf{Homomorphism}: Take $\textbf{M}, \textbf{N} \in \GL{n}{\mathbb{R}}$. Then we have
+	    \[
+	        \phi(\textbf{MN}) = \det \textbf{MN} = \det(\textbf{M})\det(\textbf{N}) = \phi(\textbf{M})\phi(\textbf{N})
+	    \]
+	    which means that $\phi$ is a homomorphism.
 
-% 	    Suppose $r \in \mathbb{R}^\times$. Then $r^{\frac1n} \in \mathbb{R}^\times$, and a matrix with $r^{\frac1n}$ on its main diagonal (written as $r^{\frac1n}\textbf{I}_n$ where $\textbf{I}_n$ is the identity matrix with $n$ rows and columns) is in $\GL{n}{\mathbb{R}}$. Note that $\det(r^{\frac1n}\textbf{I}_n) = \left(r^{\frac1n}\right)^n\det(\textbf{I}_n) = r$. Thus there is a pre-image of $r$ inside the codomain $\mathbb{R}^\times$, meaning that $\phi$ is surjective.
+	    \item \textbf{Image}: We prove that $\phi$ is surjective to show that $\im \phi = \mathbb{R}^\times$.
 
-% 	    Hence, $\im \phi = \mathbb{R}^\times$.
+	    Suppose $r \in \mathbb{R}^\times$. Then $r^{\frac1n} \in \mathbb{R}^\times$, and a matrix with $r^{\frac1n}$ on its main diagonal (written as $r^{\frac1n}\textbf{I}_n$ where $\textbf{I}_n$ is the identity matrix with $n$ rows and columns) is in $\GL{n}{\mathbb{R}}$. Note that $\det(r^{\frac1n}\textbf{I}_n) = \left(r^{\frac1n}\right)^n\det(\textbf{I}_n) = r$. Thus there is a pre-image of $r$ inside the codomain $\mathbb{R}^\times$, meaning that $\phi$ is surjective.
 
-% 	    \item \textbf{Kernel}: Note that 1 is the identity in $\mathbb{R}^\times$. Thus
-% 	    \begin{align*}
-% 	        \ker\phi &= \{\textbf{M} \in \GL{n}{\mathbb{R}} \vert \phi(\textbf{M}) = 1\} \\
-% 	        &= \{\textbf{M} \in \GL{n}{\mathbb{R}} \vert \det(\textbf{M}) = 1\}\\
-% 	        &= \SL{n}{\mathbb{R}}
-% 	    \end{align*}
-% 	    by definition of the group $\SL{n}{\mathbb{R}}$.
-% 	\end{itemize}
-% 	By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), we have
-% 	\[
-% 	    \GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times,
-% 	\]
-% 	proving the claim.
-% \end{proof}
+	    Hence, $\im \phi = \mathbb{R}^\times$.
 
-% \section{Automorphism Groups}
-% \subsection{Group of Automorphisms of \texorpdfstring{$G$}{G}}
-% We look at automorphisms, an important type of map that we look in Group Theory.
-% \begin{definition}
-%     An \textbf{automorphism} of a group $G$ is an isomorphism from a group $G$ to itself. That is, $\phi: G \to G$ is an automorphism if $\phi$ is an isomorphism.
-% \end{definition}
-% Clearly, from this definition, the identity function $\id$ is an automorphism.
+	    \item \textbf{Kernel}: Note that 1 is the identity in $\mathbb{R}^\times$. Thus
+	    \begin{align*}
+	        \ker\phi &= \{\textbf{M} \in \GL{n}{\mathbb{R}} \vert \phi(\textbf{M}) = 1\} \\
+	        &= \{\textbf{M} \in \GL{n}{\mathbb{R}} \vert \det(\textbf{M}) = 1\}\\
+	        &= \SL{n}{\mathbb{R}}
+	    \end{align*}
+	    by definition of the group $\SL{n}{\mathbb{R}}$.
+	\end{itemize}
+	By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), we have
+	\[
+	    \GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times,
+	\]
+	proving the claim.
+\end{proof}
 
-% We now look at the group of automorphisms of a group $G$.
-% \begin{definition}
-%     Let $G$ be a group. The \textbf{group of automorphisms of $G$}, denoted $\Aut{G}$, is given by
-%     \[
-%         \Aut{G} = \{\phi: G \to G \vert \phi \text{ is an isomorphism}\}
-%     \]
-%     under function composition (denoted by $\circ$).
-% \end{definition}
-% We prove that $\Aut{G}$ is indeed a group.
-% \begin{proof}
-%     We look at the four group axioms.
-%     \begin{itemize}
-%         \item \textbf{Closure}: If $f, g \in \Aut{G}$, and $h = fg$, then $h: G \to G$ is a bijection. Furthermore $h$ is a homomorphism since
-%         \[
-%             h(xy) = f(g(xy)) = f(g(x)g(y)) = f(g(x))f(g(y)) = h(x)h(y)
-%         \]
-%         so $h$ is an isomorphism, meaning $h = fg \in \Aut{G}$.
+\section{Automorphism Groups}
+\subsection{Group of Automorphisms of \texorpdfstring{$G$}{G}}
+We look at automorphisms, an important type of map in abstract algebra.
+\begin{definition}
+    An \textbf{automorphism}\index{automorphism} of a group $G$ is an isomorphism from a group $G$ to itself. That is, $\phi: G \to G$ is an automorphism if $\phi$ is an isomorphism.
+\end{definition}
+Clearly, from this definition, the identity function $\id$ is an automorphism.
 
-%         \item \textbf{Associativity}: Function composition is associative.
+We now look at the group of automorphisms of a group $G$.
+\begin{definition}
+    Let $G$ be a group. The \textbf{group of automorphisms of $G$}\index{automorphism group}, denoted $\Aut{G}$, is given by
+    \[
+        \Aut{G} = \{\phi: G \to G \vert \phi \text{ is an isomorphism}\}
+    \]
+    under function composition (denoted by $\circ$).
+\end{definition}
+We prove that $\Aut{G}$ is indeed a group.
 
-%         \item \textbf{Identity}: As mentioned above, the identity isomorphism $\id: G \to G, g \mapsto g$ is in $\Aut{G}$. By definition of $\id$, $f \circ \id = f$ and $\id \circ f = f$, so $\id$ is indeed the identity in $\Aut{G}$.
+\newpage
 
-%         \item \textbf{Inverse}: Suppose $f \in \Aut{G}$. Then $f$ is an isomorphism. By \textbf{Theorem \ref{thrm-isomorphism-consequences}}, $f^{-1}: G \to G$ is also an isomorphism, so $f^{-1} \in \Aut{G}$. Recall also that
-%         \[
-%             f\circ f^{-1} = \id \text{ and } f^{-1}\circ f = \id
-%         \]
-%         so $f^{-1}$ is indeed the identity of $f$.
-%     \end{itemize}
-%     Since the four group axioms are satisfied, thus $\Aut{G}$ is a group under function composition.
-% \end{proof}
+\begin{proof}
+    We look at the four group axioms.
+    \begin{itemize}
+        \item \textbf{Closure}: If $f, g \in \Aut{G}$, and $h = fg$, then $h: G \to G$ is a bijection. Furthermore $h$ is a homomorphism since for any $x, y \in G$ we have
+        \begin{align*}
+            h(xy) &= f(g(xy))\\
+            &= f(g(x)g(y)) & (g \text{ is isomorphism})\\
+            &= f(g(x))f(g(y)) & (f \text{ is isomorphism})\\
+            &= h(x)h(y)
+        \end{align*}
+        so $h$ is an isomorphism, meaning $h = fg \in \Aut{G}$.
 
-% \subsection{Group of Inner Automorphisms of \texorpdfstring{$G$}{G}}
-% We now look at inner automorphisms and its group.
-% \begin{definition}
-%     An \textbf{inner automorphism} of a group $G$ is an automorphism $\iota: G \to G$ such that $\iota(x) = gxg^{-1}$ for some fixed $g \in G$.
-% \end{definition}
-% \begin{definition}
-%     Let $G$ be a group. The \textbf{group of inner automorphisms of $G$}, $\Inn{G}$, is given by
-%     \[
-%         \Inn{G} = \{\iota_g: G \to G \vert \iota_g(x) = gxg^{-1}, g \in G\}
-%     \]
-%     under function composition (denoted by $\circ$).
-% \end{definition}
-% We prove that $\Inn{G}$ is a subgroup of $\Aut{G}$.
-% \begin{proof}
-%     Clearly $\id \in \Inn{G}$ since $\id = \iota_e$ and $\id(x) = \iota_e(x) = exe^{-1} = x$. Hence $\Inn{G}$ is non-empty and, furthermore, $\Inn{G} \subseteq \Aut{G}$.
+        \item \textbf{Associativity}: Function composition is associative.
 
-%     Now take $\iota_x, \iota_y \in \Inn{G}$. Note that $\left(\iota_y\right)^{-1} = \iota_{y^{-1}}$ since
-%     \[
-%         \left(\iota_y\right)\left(\iota_{y^{-1}}\right)(g) = \left(\iota_y\right)\left(y^{-1}gy\right) = y\left(y^{-1}gy\right)y^{-1} = g
-%     \]
-%     which means $\left(\iota_y\right)\left(\iota_{y^{-1}}\right) = \id$. Therefore $\iota_x\left(\iota_y\right)^{-1} = \iota_{xy^{-1}}$ since
-%     \begin{align*}
-%         \iota_x\left(\iota_y\right)^{-1}(g) &= \iota_x\iota_{y^{-1}}(g)\\
-%         &= \iota_x\left(y^{-1}gy\right)\\
-%         &= xy^{-1}gyx^{-1}\\
-%         &= xy^{-1}g(xy^{-1})^{-1}\\
-%         &= \iota_{xy^{-1}}
-%     \end{align*}
-%     which means that $\iota_x\left(\iota_y\right)^{-1} = \iota_{xy^{-1}} \in \Inn{G}$.
+        \item \textbf{Identity}: As mentioned above, the identity isomorphism $\id: G \to G, g \mapsto g$ is in $\Aut{G}$. By definition of $\id$, $f \circ \id = f$ and $\id \circ f = f$, so $\id$ is indeed the identity in $\Aut{G}$.
 
-%     Hence, by subgroup test, $\Inn{G} \leq \Aut{G}$.
-% \end{proof}
+        \item \textbf{Inverse}: Suppose $f \in \Aut{G}$. Then $f$ is an isomorphism. By \textbf{Theorem \ref{thrm-isomorphism-consequences}}, $f^{-1}: G \to G$ is also an isomorphism, so $f^{-1} \in \Aut{G}$. Recall also that
+        \[
+            f\circ f^{-1} = \id \text{ and } f^{-1}\circ f = \id
+        \]
+        so $f^{-1}$ is indeed the identity of $f$.
+    \end{itemize}
+    Since the four group axioms are satisfied, thus $\Aut{G}$ is a group under function composition.
+\end{proof}
 
-% \begin{exercise}
-%     Let $G$ be a group. Prove that $\Inn{G} \lhd \Aut{G}$.
-% \end{exercise}
+\newpage
 
-% \subsection{A Consequence of the Fundamental Homomorphism Theorem}
-% Before we can state the consequence, we revisit the idea of the center of a group as introduced in \textbf{Example \ref{example-center-of-group}}.
-% \begin{quote}
-%     The center of a group $G$ is the normal subgroup
-%     \[
-%         \Z{G} = \{z \in G \vert gz = zg \text{ for all } g \in G\}.
-%     \]
-%     In other words, $\Z{G} = \{z \in G \vert z = gzg^{-1} \text{ for all } g \in G\}$.
-% \end{quote}
+\subsection{Group of Inner Automorphisms of \texorpdfstring{$G$}{G}}
+We now look at inner automorphisms and its group.
+\begin{definition}
+    An \textbf{inner automorphism}\index{automorphism!inner} of a group $G$ is an automorphism $\iota: G \to G$ such that $\iota(x) = gxg^{-1}$ for some fixed $g \in G$.
+\end{definition}
+\begin{definition}
+    Let $G$ be a group. The \textbf{group of inner automorphisms of $G$}\index{automorphism group!inner}, $\Inn{G}$, is given by
+    \[
+        \Inn{G} = \{\iota_g: G \to G \vert \iota_g(x) = gxg^{-1},\; g \in G\}
+    \]
+    under function composition (denoted by $\circ$).
+\end{definition}
 
-% \begin{proposition}
-%     $G/\Z{G} \cong \Inn{G}$.
-% \end{proposition}
-% \begin{proof}
-%     We define $\phi: G \to \Inn{G}, g \mapsto \iota_g$ where $\iota_g(x) = gxg^{-1}$.
-%     \begin{itemize}
-%         \item \textbf{Homomorphism}: Let $g, h \in G$. Then for any $x \in G$,
-%         \begin{align*}
-%             (\phi(gh))(x) = \iota_{gh}(x) &= (gh)x(gh)^{-1}\\
-%             &= ghxh^{-1}g^{-1}\\
-%             &= g(hxh^{-1})g^{-1}\\
-%             &= g(\iota_h(x))g^{-1}\\
-%             &=\iota_g(\iota_h(x))\\
-%             &=(\iota_g\circ\iota_h)(x)\\
-%             &=(\phi(g)\phi(h))(x)
-%         \end{align*}
-%         which means that $\phi$ is a homomorphism.
+\begin{proposition}
+    $\Inn{G} \leq \Aut{G}$.
+\end{proposition}
+\begin{proof}
+    Clearly $\id \in \Inn{G}$ since $\id = \iota_e$ and 
+    \[
+        \id(x) = \iota_e(x) = exe^{-1} = x.
+    \]
+    for any $x \in G$. Hence $\Inn{G}$ is non-empty and, furthermore, $\Inn{G} \subseteq \Aut{G}$.
 
-%         \item \textbf{Image}: We show that $\phi$ is surjective to prove that $\im \phi = \Z{G}$. Suppose $\iota_g \in \Inn{G}$. Clearly $\phi(g) = \iota_g$  which means that $\phi$ is surjective.
+    Now take $\iota_x, \iota_y \in \Inn{G}$. Note that $\left(\iota_y\right)^{-1} = \iota_{y^{-1}}$ since
+    \[
+        \left(\iota_y\right)\left(\iota_{y^{-1}}\right)(g) = \left(\iota_y\right)\left(y^{-1}gy\right) = y\left(y^{-1}gy\right)y^{-1} = g
+    \]
+    which means $\left(\iota_y\right)\left(\iota_{y^{-1}}\right) = \id$. Therefore $\iota_x\left(\iota_y\right)^{-1} = \iota_{xy^{-1}}$ since for any $g \in G$ we have
+    \begin{align*}
+        \iota_x\left(\iota_y\right)^{-1}(g) &= \iota_x\iota_{y^{-1}}(g)\\
+        &= \iota_x\left(y^{-1}gy\right)\\
+        &= xy^{-1}gyx^{-1}\\
+        &= \left(xy^{-1}\right) g \left(xy^{-1}\right)^{-1}\\
+        &= \iota_{xy^{-1}}(g),
+    \end{align*}
+    which means that $\iota_x\left(\iota_y\right)^{-1} = \iota_{xy^{-1}} \in \Inn{G}$.
 
-%         \item \textbf{Kernel}: Note that $\ker\phi = \{g \in G \vert \phi(g) = \id\}$. So, if $g \in \ker\phi$ then $(\phi(g))(x) = \iota_g(x) = \id(x) = x$ for all $x \in G$. This means that $gxg^{-1} = x \implies gx = xg$ for all $x \in G$, so $g \in \Z{G}$. Hence $\ker\phi = \Z{G}$.
-%     \end{itemize}
-%     Therefore, ones sees that by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}),
-%     \[
-%         G/\ker\phi \cong \im\phi \implies G/\Z{G} \cong \Inn{G}
-%     \]
-%     which proves the result.
-% \end{proof}
+    Hence, by subgroup test, $\Inn{G} \leq \Aut{G}$.
+\end{proof}
 
-% \section{Problems}
-% \begin{problem}
-%     By considering the group $\mathbb{Z}_{10101}$, find the smallest positive integers $a$ and $b$ such that
-%     \begin{enumerate}[label=(\alph*)]
-%         \item $1870a$ is a multiple of 10101.
-%         \item $3774b$ is a multiple of 10101.
-%     \end{enumerate}
-% \end{problem}
+\begin{exercise}
+    Let $G$ be a group. Prove that $\Inn{G} \unlhd \Aut{G}$.
+\end{exercise}
 
-% \begin{problem}
-%     Find the largest integer $n$ such that $\An{n}$ is abelian, proving your claim. Hence find all integers $k$ such that $\An{k}$ is cyclic.
-% \end{problem}
+\subsection{A Consequence of the Fundamental Homomorphism Theorem}
+Before we can state the consequence, we revisit the idea of the center of a group as introduced in \textbf{Example \ref{example-center-of-group}}.
+\begin{quote}
+    The center of a group $G$ is the normal subgroup
+    \[
+        \Z{G} = \{z \in G \vert z = gzg^{-1} \text{ for all } g \in G\}.
+    \]
+\end{quote}
 
-% \begin{problem}
-%     Suppose $r$ is an odd primitive root modulo $p^k$, where $p$ is an odd prime and $k \geq 1$. Prove that $r$ is also a primitive root modulo $2p^k$.
-% \end{problem}
+\begin{proposition}
+    $G/\Z{G} \cong \Inn{G}$.
+\end{proposition}
+\begin{proof}
+    We define $\phi: G \to \Inn{G}, g \mapsto \iota_g$ where $\iota_g(x) = gxg^{-1}$.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $g, h \in G$. Then for any $x \in G$,
+        \begin{align*}
+            (\phi(gh))(x) = \iota_{gh}(x) &= (gh)x(gh)^{-1}\\
+            &= ghxh^{-1}g^{-1}\\
+            &= g(hxh^{-1})g^{-1}\\
+            &= g(\iota_h(x))g^{-1}\\
+            &=\iota_g(\iota_h(x))\\
+            &=(\iota_g\circ\iota_h)(x)\\
+            &=(\phi(g)\phi(h))(x)
+        \end{align*}
+        which means that $\phi$ is a homomorphism.
 
-% \begin{problem}
-%     Let $G$ be a finite cyclic group of order $n$ and generator $g$.
-%     \begin{enumerate}[label=(\roman*)]
-%         \item Suppose $f: G \to G$ and $h: G \to G$ are homomorphisms. Prove that $f = h$ if and only if $f(g) = h(g)$.
-%         \item Let $f: G \to G$ be a homomorphism. Explain why $f(g) = g^{m_f}$ where $m_f$ is a integer unique to $f$.
-%         \item Suppose $f: G \to G$ and $h: G \to G$ are homomorphisms. Prove that $m_{f\circ h} = m_f \otimes_n m_h$, where $\circ$ denotes function composition and $\otimes_n$ denotes multiplication modulo $n$.
-%         \item Let $f: G \to G$ be a homomorphism. Prove that $f$ is an automorphism if and only if $m_f$ has a multiplicative inverse modulo $n$. That is, there exists $k \in \Un{n}$ such that $m_fk \equiv 1 \pmod n$ if and only if $f$ is an automorphism.\newline
-%         (\textit{Hint: consider \textbf{Proposition \ref{prop-multiplicative-inverse-exists-iff-coprime}}, where $ab \equiv 1 \pmod m$ if and only if $\gcd(a, m) = 1$.})
-%         \item Hence, by considering the map $\phi: \Aut{G} \to \Un{n}$ where $f \mapsto m_f$, prove $\Aut{G} \cong \Un{n}$. 
-%     \end{enumerate}
-% \end{problem}
+        \item \textbf{Image}: We show that $\phi$ is surjective to prove that $\im \phi = \Z{G}$. Suppose $\iota_g \in \Inn{G}$. Clearly $\phi(g) = \iota_g$  which means that $\phi$ is surjective, so $\im\phi = \Z{G}$.
+
+        \item \textbf{Kernel}: Note that $\ker\phi = \{g \in G \vert \phi(g) = \id\}$. So, if $g \in \ker\phi$ then $(\phi(g))(x) = \iota_g(x) = \id(x) = x$ for all $x \in G$. This means that $gxg^{-1} = x$, meaning $gx = xg$ for all $x \in G$, so $g \in \Z{G}$. Hence $\ker\phi = \Z{G}$.
+    \end{itemize}
+    Therefore, ones sees that by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}),
+    \[
+        G/\ker\phi \cong \im\phi \implies G/\Z{G} \cong \Inn{G}
+    \]
+    which proves the result.
+\end{proof}
+
+\newpage
+
+\section{Problems}
+\begin{problem}
+    By considering the group $\mathbb{Z}_{10101}$, find the smallest positive integers $a$ and $b$ such that
+    \begin{enumerate}[label=(\alph*)]
+        \item $1870a$ is a multiple of 10101.
+        \item $3774b$ is a multiple of 10101.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Find the largest integer $n$ such that $\An{n}$ is an abelian group, proving your claim. Hence find all integers $k$ such that $\An{k}$ is cyclic.
+\end{problem}
+
+\begin{problem}
+    Suppose $r$ is a primitive root modulo $p^k$, where $p$ is an odd prime and $k \geq 1$. Prove that $r$ is also a primitive root modulo $2p^k$.
+\end{problem}
+
+\begin{problem}
+    Let $G$ be a finite cyclic group of order $n$ with generator $g$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Suppose $f: G \to G$ and $h: G \to G$ are homomorphisms. Prove that $f = h$ if and only if $f(g) = h(g)$.
+        \item Let $f: G \to G$ be a homomorphism. Explain why $f(g) = g^{m_f}$ where $m_f$ is a integer unique to $f$.
+        \item Suppose $f: G \to G$ and $h: G \to G$ are homomorphisms. Prove that $m_{f\circ h} = m_f \otimes_n m_h$, where $\circ$ denotes function composition and $\otimes_n$ denotes multiplication modulo $n$.
+        \item Let $f: G \to G$ be a homomorphism. Prove that $f$ is an automorphism if and only if $m_f$ has a multiplicative inverse modulo $n$. That is, there exists $k \in \Un{n}$ such that $m_fk \equiv 1 \pmod n$ if and only if $f$ is an automorphism.\newline
+        (\textit{Hint: consider \textbf{Proposition \ref{prop-multiplicative-inverse-exists-iff-coprime}}, where we have $ab \equiv 1 \pmod m$ if and only if $\gcd(a, m) = 1$.})
+        \item Hence, by considering the map $\phi: \Aut{G} \to \Un{n}$ where $f \mapsto m_f$, prove $\Aut{G} \cong \Un{n}$. 
+    \end{enumerate}
+\end{problem}
 
 % %=========================================
 % \chapter{Group Actions}
