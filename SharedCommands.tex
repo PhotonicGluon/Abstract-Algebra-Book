@@ -27,7 +27,7 @@
 \usepackage{emptypage}
 \usepackage{multicol}
 \usepackage{imakeidx}
-\usepackage{hyperref}
+\usepackage[breaklinks]{hyperref}
 
 \usepackage[
     backend=bibtex,
@@ -259,12 +259,15 @@
 }
 
 %============= Index Pages ===============
-\makeindex[
-    columns=2,
-    columnsep=2em,
-    intoc,
-    options= -s ../index-style.ist
-]
+\usepackage[
+    totoc,
+    columnsep=20pt,
+    hangindent=8pt,
+    subindent=20pt,
+    subsubindent=30pt
+]{idxlayout}
+
+\makeindex[options= -s ../index-style.ist]
 
 %======== Figure Caption Format ==========
 \usepackage[labelfont=bf]{caption}
