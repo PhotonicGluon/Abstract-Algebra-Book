@@ -4622,742 +4622,781 @@
 %     (\textit{Hint: show that a normal subgroup of order $p$, $q$, or $r$ must exist.})
 % \end{problem}
 
-%=========================================
-\chapter{Composition Series}
-\section{Subgroup Series and Subnormal Series}
-We introduce the idea of a \textbf{subgroup series}\index{subgroup series} of a group.
-\begin{definition}
-    Let $G$ be a group. A \textbf{subgroup series without repetition}\index{subgroup series!without repetition} of $G$ is a chain of subgroups $H_0, \dots, H_n$ such that
-    \[
-        1 = H_0 < H_1 < H_2 < \cdots < H_n = G,
-    \]
-    where 1 is the trivial group $\{e\}$, and where $H_i \neq H_{i+1}$ (for $0 \leq i < n$). The \textbf{length} of such a series is $n$, or is infinite if there is no end.
-\end{definition}
-\begin{remark}
-    It is more often useful to consider subgroup series without repetition than it is to consider the weaker form of subgroup series\index{subgroup series!with repetition}, which requirement is only
-    \[
-        1 = H_0 \leq H_1 \leq H_2 \leq \cdots \leq H_n = G,
-    \]
-    meaning that $H_i$ can be equal to $H_{i+1}$.
-\end{remark}
-\begin{remark}
-    The above definition gives an \textbf{ascending}\index{subgroup series!ascending} subgroup series without repetition. A \textbf{descending}\index{subgroup series!descending} subgroup series without repetition is
-    \[
-        G = K_0 > K_1 > K_2 > \cdots > K_n = 1,
-    \]
-    where the indexing is reversed.
-\end{remark}
-
-Subgroup series can simplify the study of a group to the study of simpler subgroups and their relations.
-
-\begin{example}
-    Consider the dihedral group of order 8, $D_4$. One sees clearly that $H = \{e, r, r^2, r^3\}$ is a subgroup of $D_4$, and that $K = \{e, r^2\}$ is a subgroup of $H$. Thus a possible (ascending) subgroup series (without repetition) is
-    \[
-        1 < \{e, r^2\} < \{e, r, r^2, r^3\} < D_4.
-    \]
-\end{example}
-
-We now consider the definition of a \textbf{subnormal series} of a group $G$.
-\begin{definition}
-    Let $G$ be a group. A \textbf{subnormal series}\index{subnormal series} of $G$ is a sequence of subgroups $H_0, \dots, H_n$ such that
-    \[
-        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G.    
-    \]
-    The quotient groups $H_{i+1}/H_i$ are called the \textbf{factor groups}\index{factor group} of the subnormal series.
-\end{definition}
-\begin{remark}
-    Note that there is no requirement that $H_i \lhd G$, only that $H_i \lhd H_{i+1}$. If all subgroups in a subnormal series are such that $H_i \lhd G$, then such a series is called a \textbf{normal series}\index{normal series} of $G$.
-\end{remark}
-\begin{remark}
-    Similar to subgroup series, there are ascending subnormal series and descending subnormal series.
-\end{remark}
-
-\begin{example}
-    We consider the dihedral group of order 8 again. One may verify that $H = \{e, r, r^2, r^3\} \lhd D_4$ and $K = \{e, r^2\} \lhd H$. Hence a possible subnormal series of $D_4$ is
-    \[
-        1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.
-    \]
-
-    \newpage
-
-    In fact,
-    \begin{itemize}
-        \item $1 \lhd D_4$;
-        \item $1 \lhd \{e, r^2\} \lhd D_4$; and
-        \item $1 \lhd \{e, r, r^2, r^3\} \lhd D_4$
-    \end{itemize}
-    are all valid subnormal series of $D_4$.
-\end{example}
-
-\begin{exercise}
-    Let the group $G = \mathbb{Z}_4$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Find a subnormal series of length 2 for $G$.
-        \item Hence find the factors of that subnormal series.
-        \item Explain whether the subnormal series found in (i) is a normal series.
-    \end{enumerate}
-\end{exercise}
-
-\section{Maximal Normal Subgroup}
-Before looking at a more interesting category of subnormal series, we have to introduce the idea of a \textbf{maximal normal subgroup}.
-\begin{definition}
-    Let $G$ be a group and $N \lhd G$. Then $N$ is said to be a \textbf{maximal (proper) normal subgroup}\index{maximal normal subgroup} of $G$ if there does \textbf{not} exist a $H \lhd G$ such that $N < H < G$.
-\end{definition}
-\begin{remark}
-    This means that if $N$ is a maximal normal subgroup of $G$ and there exists a subgroup $H$ such that $N \leq H \leq G$, then either $H = N$ or $H = G$.
-\end{remark}
-
-There is an important consequence that we examine here.
-\begin{theorem}\label{thrm-maximal-normal-subgroup-iff-quotient-is-simple}
-    Let $G$ be a group and $N \lhd G$. Then $N$ is a maximal normal subgroup of $G$ if and only if $G/N$ is simple.
-\end{theorem}
-
-\begin{proof}
-    We prove the forward direction first; assume that $N$ is a maximal normal subgroup of $G$. Suppose there exists a normal subgroup of $G/N$. Then by \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} we know that subgroup takes the form of $H/N$, where $N \leq H \leq G$, such that $H/N \unlhd G/N$. Since $N$ is a maximal normal subgroup this means that $H = N$ or $H = G$. In the first case $H/N \cong 1$ and in the second $H / N = G/N$. Hence $G/N$ only has two normal subgroups, the trivial subgroup and itself, meaning that it has no proper normal subgroups and is hence simple.
-    
-    We now prove the reverse direction; assume that $G/N$ is simple. Suppose there exists a $H \leq G$ such that $N \leq H \leq G$. By \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} we know $H/N \leq G/N$. In fact, since $N \leq H \leq G$ we know $N \unlhd H \unlhd G$ which means $H/N \unlhd G/N$. As $G/N$ is simple, thus $H/N \cong 1$ or $H/N = G/N$. The case where $H/N \cong 1$ occurs if and only if $H = N$ and the case where $H/N = G/N$ occurs when $H = G$. Hence, this means that $N$ is a maximal normal subgroup of $G$.
-\end{proof}
-
-\begin{exercise}
-    Find the order of the maximal normal subgroup of $\mathbb{Z}_{120}$.
-\end{exercise}
-
-\newpage
-
-\section{Composition Series}
-We can now look at a more interesting type of subnormal series: the \textbf{composition series} of a group.
-\begin{definition}
-    Let $G$ be a group. A \textbf{composition series}\index{composition series} of $G$ is a subnormal series of finite length
-    \[
-        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G  
-    \]
-    such that $H_i$ is a maximal normal subgroup of $H_{i+1}$ (for $0 \leq i < n$). The factor groups $H_{i+1}/H_i$ are called the \textbf{composition factors}\index{composition factor}, and the length $n$ above is called the \textbf{composition length}\index{composition length}.
-\end{definition}
-\begin{remark}
-    Some authors (e.g. \cite{cohn_1982, clark_1984, proofwiki_compositionseriesdefinition}) require composition series to be a normal series. However we follow \cite{hungerford_1980, humphreys_1996, milne_2021} and others and only require it to be a subnormal series.
-\end{remark}
-\begin{remark}
-    An equivalent definition of a composition series is a normal series where the factor groups $H_{i+1}/H_i$ are simple, as guaranteed by \textbf{Theorem \ref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}}.
-\end{remark}
-
-For composition series, we often write a group that is isomorphic to the subgroup rather than the actual subgroup. For example, instead of the subgroup $\{0, 3\}$ in $\mathbb{Z}_6$, we may write $\mathbb{Z}_2$ or $\Cn{2}$ instead. Composition series written in this form instead are called composition series \textbf{up to isomorphism}\index{composition series!up to isomorphism}.
-
-\begin{example}
-    Consider the group $\mathbb{Z}_{12}$. Three composition series of it are
-    \begin{align*}
-        &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},\\
-        &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_4 \lhd \mathbb{Z}_{12},\\
-        &1 \lhd \mathbb{Z}_3 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},
-    \end{align*}
-    
-    and the factors in each of the cases (up to isomorphism) are as follows:
-    \begin{itemize}
-        \item $\mathbb{Z}_2$, $\mathbb{Z}_3$, $\mathbb{Z}_2$;
-        \item $\mathbb{Z}_2$, $\mathbb{Z}_2$, $\mathbb{Z}_3$; and
-        \item $\mathbb{Z}_3$, $\mathbb{Z}_2$, $\mathbb{Z}_2$.
-    \end{itemize}
-    Each of the composition series has composition length 3.
-\end{example}
-
-\begin{example}
-    Consider the symmetry group of the regular hexagon, the dihedral group of order 12, $D_6$. The three composition series of $D_6$, up to isomorphism, are
-    \begin{align*}
-        &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6,\\
-        &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6, \text{ and}\\
-        &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
-    \end{align*}
-    We note that the subgroup that is isomorphic to
-    \begin{itemize}
-        \item $\Cn{2}$ is $\{e, s\} = \langle s \rangle$;
-        \item $\Cn{3}$ is $\{e, r^2, r^4\} = \langle r^2\rangle$;
-        \item $\Cn{6}$ is $\{e, r, r^2, r^3, r^4, r^5\} = \langle r\rangle$; and
-        \item $D_3$ is $\{e, r^2, r^4, s, r^2s, r^4s\}$.
-    \end{itemize}
-    All composition series' lengths are all 3.
-\end{example}
-\textbf{Important note}: It is crucial to remember that all of the groups written in the composition series (except for the trivial group and the group itself) represent \textbf{subgroups} of the group itself (up to isomorphism), not the actual groups themselves.
-
-\begin{exercise}
-    Find the two composition series for $\Cn{6}$ (up to isomorphism), their composition lengths, and their factors (up to isomorphism).
-\end{exercise}
-
-One might wonder which groups have a composition series. As mentioned, not all groups have a composition series (e.g., $\mathbb{Z}$). However, finite groups will definitely have a composition series.
-\begin{theorem}\label{thrm-finite-group-has-composition-series}
-    Any finite group has a composition series.
-\end{theorem}
-\begin{proof}[Proof (see \cite{hungerford_1980, proofwiki_finitegrouphascompositionseries})]
-    Let $G$ be a finite group. If $G$ is simple then it does not have a proper normal subgroup, so it has a composition series $\{e\} \lhd G$.
-    
-    Otherwise, $G$ has a proper normal subgroup, at least one of which has maximal order. Let that subgroup be $G_1$. By \textbf{Theorem \ref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}} this means that $G/G_1$ is simple. If $G_1$ does not have a proper normal subgroup then $G$ has composition series $\{e\} \lhd G_1 \lhd G$. Otherwise let $G_2$ be the maximal normal subgroup of $G_1$, and so on. 
-    
-    Now Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) says that the order of the subgroup must divide the order of the group. Since $G_1$, $G_2$, etc. are proper subgroups of $G$, the orders of the found subgroups can be at most half the order of the preceding group. Hence the orders of the groups are strictly decreasing, meaning
-    \[
-        |G| > |G_1| > |G_2| > \cdots > |G_n| = 1,
-    \]
-    with the process terminating at some integer $n$ where $G_n = \{e\}$.
-    
-    \newpage
-
-    Now set $H_i = G_{n-i}$. Note $H_{i+1}/H_i = G_i/G_{i+1}$ is simple as discussed above. Hence
-    \[
-        \{e\} = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G    
-    \]
-    is a composition series of $G$.
-\end{proof}
-
-\section{Zassenhaus' Lemma}
-Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes called the Fourth Isomorphism Theorem.
-\begin{lemma}[Zassenhaus]\label{lemma-zassenhaus}\index{Zassenhaus' Lemma}
-    Let $G$ be a group. Let $H$, $H'$, $K$, and $K'$ be subgroups of $G$ such that $H' \unlhd H$ and $K' \unlhd K$. Then
-    \begin{enumerate}
-        \item $H'(H \cap K') \unlhd H' (H \cap K)$;
-        \item $K'(H' \cap K) \unlhd K' (H \cap K)$; and
-        \item $\frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{K'(H\cap K)}{K'(H'\cap K)}$,
-    \end{enumerate}
-    where an expression like $H'(H \cap K')$ denotes the subset product of $H'$ and $H \cap K'$.
-\end{lemma}
-\begin{proof}[Proof (see {\cite[p.~110]{hungerford_1980}})]
-    We quickly note that $H' \unlhd H \cap K$ as $H' \unlhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \unlhd H \cap K$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 4. Since $H'\unlhd H$ we know $H' \subset H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \unlhd H \cap K$. Similarly, $H \cap K' \unlhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\textbf{Corollary \ref{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, let $\mathcal{A} = (H' \cap K)(H \cap K')$.
-    
-    Define the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$, $hc \mapsto h\mathcal{A}$ where $h \in H'$ and $c \in H \cap K$. We show that $\phi$ is a well-defined homomorphic surjection with a goal to use the Fundamental Homomorphism Theorem to finish the proof.
-    
-    \begin{itemize}
-        \item \textbf{Well-defined}: Suppose $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ such that $h_1h_2 = c_1c_2$. Then $c_1c_2^{-1} = h_2^{-1}h_1$. We note that
-        \[
-            (H \cap K) \cap H' = H' \cap K \leq \mathcal{A}    
-        \]
-        by Diamond Isomorphism Theorem statement 2, and that $c_1c_2^{-1} \in (H \cap K) \cap H'$ since $c_1c_2^{-1} \in H \cap K$ and $c_1c_2^{-1} = h_2^{-1}h_1 \in H'$. Thus $c_1c_2^{-1} \in \mathcal{A}$, meaning $c_1\mathcal{A} = c_2\mathcal{A}$ by Coset Equality lemma (\textbf{Lemma \ref{lemma-coset-equality}}). Hence
-        \[
-            \phi(h_1c_1) = c_1\mathcal{A} = c_2\mathcal{A} = \phi(h_2c_2)        
-        \]
-        which means $\phi$ is well-defined.
-        
-        \item \textbf{Homomorphism}: We first note that $H \cap K \leq H$ by Diamond Isomorphism Theorem statement 1. Since $H' \unlhd H$ (given), thus $H'(H\cap K) = (H\cap K)H'$ and so $H'(H\cap K) \leq H$ by Diamond Isomorphism Theorem statement 3. By \textbf{Proposition \ref{prop-subgroup-product-is-subgroup}}, since $H'(H\cap K) \leq H$, thus $H'(H\cap K) = (H\cap K)H'$. So, for any $c_1h_2 \in (H\cap K)H' = H'(H\cap K)$ we have $c_1h_2 = h_3c_1$ for some $h_3 \in H'$. Therefore for $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ we have
-        \begin{align*}
-            \phi((h_1c_1)(h_2c_2)) &= \phi(h_1(c_1h_2)c_2)\\
-            &= \phi(h_1(h_3c_1)c_2)\\
-            &= \phi((h_1h_3)(c_1c_2))\\
-            &= (c_1c_2)\mathcal{A}\\
-            &= (c_1\mathcal{A})(c_2\mathcal{A})\\
-            &= \phi(h_1c_1)\phi(h_2c_2)
-        \end{align*}
-        which shows that $\phi$ is a homomorphism.
-        
-        \item \textbf{Image}: We prove that $\phi$ is surjective to show $\im \phi = (H\cap K)/\mathcal{A}$.
-        
-        Take any $c\mathcal{A} \in (H\cap K) / \mathcal{A}$. Clearly $e \in H$, so $\phi(c) = \phi(ec) = c\mathcal{A}$, meaning $\phi$ is surjective. Hence $\im \phi = (H\cap K)/\mathcal{A}$.
-        
-        \item \textbf{Kernel}: Let $hc \in \ker\phi$ where $h \in H'$ and $c \in H \cap K$. Then $\phi(hc) = \mathcal{A}$, meaning $c\mathcal{A} = \mathcal{A}$. Hence $c \in \mathcal{A}$. Let $c = xy$ where $x \in H'\cap K$ and $y \in H \cap K'$. So $hc \in \ker\phi$ if $hc = h(xy) = (hx)y$. Note that $h \in H'$, and $x \in H' \cap K \subseteq H'$ so $x \in H'$, thus $hx \in H'$. Also $y \in H \cap K'$, so $hc = (hx)y \in H'(H \cap K')$. Thus if $hc \in \ker\phi$ then $hc \in H'(H \cap K')$, meaning $\ker\phi \subseteq H'(H \cap K')$.
-        
-        Now take $hy \in H'(H \cap K')$ where $h \in H'$ and $y \in H \cap K'$. Recall that $H\cap K' \subseteq H\cap K$ as $K' \unlhd K$ means $K' \subset K$. Thus $\phi(hy) = y\mathcal{A}$. Since $y \in H \cap K' \leq (H' \cap K)(H \cap K') = \mathcal{A}$ by Diamond Isomorphism Theorem statement 2, so $y \in \mathcal{A}$, meaning $y\mathcal{A} = \mathcal{A}$. Hence $\phi(hy) = \mathcal{A}$, so $hy \in \ker\phi$. Therefore any $hy \in H'(H \cap K')$ also belongs in $\ker\phi$, meaning $H'(H \cap K') \subseteq \ker\phi$.
-        
-        As $\ker\phi \subseteq H'(H\cap K')$ and $H'(H\cap K') \subseteq \ker\phi$, therefore $\ker\phi = H'(H \cap K')$.
-    \end{itemize}
-    
-    Now finding that $\ker\phi = H'(H \cap K')$, and knowing that $\ker\phi \unlhd H'(H\cap K)$ (\textbf{Proposition \ref{prop-kernel-is-normal-subgroup-of-domain}}), means that $H'(H \cap K') \unlhd H'(H\cap K)$, proving statement 1 of this lemma.
-    
-    A similar argument follows for a similar map $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, yielding $\im\psi = (H\cap K)/\mathcal{A}$ and $\ker\psi = K'(H\cap K)$ which proves statement 2.
-    
-    The final step is to apply the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) to both $\phi$ and $\psi$. This yields
-    \[
-        \frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{H\cap K}{\mathcal{A}} 
-        \text{ and }
-        \frac{K'(H\cap K)}{K'(H'\cap K)} \cong \frac{H\cap K}{\mathcal{A}}
-    \]
-    whence statement 3 immediately follows.
-\end{proof}
-
-\section{Schreier Refinement Theorem and Jordan-H\"older Theorem}
-This next section proves fundamental theorems about composition series, but will be fairly technical.
-
-Before we look at them, we introduce \textbf{refinements}.
-\begin{definition}
-    Let $G$ be a group. Let $\mathcal{H} = \langle H_i \rangle_{i\in\{0,\dots,m\}}$ be a subnormal series for $G$, where
-    \[
-        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m = G,
-    \]
-    and let $\mathcal{K} = \langle K_j \rangle_{j\in\{0,\dots,n\}}$ be a subnormal series for $G$, where
-    \[
-        1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_n = G.
-    \]
-    If every $H_i$ appears in $\mathcal{K}$ (i.e., $\mathcal{H}$ is a subsequence of $\mathcal{K}$), then $\mathcal{K}$ is a \textbf{refinement}\index{refinement} of $\mathcal{H}$.
-\end{definition}
-\begin{example}
-    We previously found that
-    \[
-        1 \lhd \{e, r^2\} \lhd D_4 \text{ and } 1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.    
-    \]
-    Thus $1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4$ is a refinement of $1 \lhd \{e, r^2\} \lhd D_4$.
-\end{example}
-
-We can now introduce the \textbf{Schreier Refinement Theorem}.
-\begin{theorem}[Schreier Refinement Theorem]\label{thrm-schreier}\index{Schreier Refinement Theorem}
-    Let $G$ be a finite group. Two (sub)normal series for $G$ have refinements of equal length whose factor groups are isomorphic.
-\end{theorem}
-\begin{remark}
-    This theorem is also called the \textbf{Schreier-Zassenhaus Theorem} (e.g. in \cite{clark_1984,proofwiki_schreierzassenhaus}) due to the use of Zassenhaus' Lemma in the proof.
-\end{remark}
-
-\begin{proof}[Proof (see {\cite[\S 72]{clark_1984}} and \cite{proofwiki_schreierzassenhaus})]
-    Suppose that
-    \begin{equation}\label{eqn:thrm-schreier-eqn-a}
-        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m = G    
-        \tag{A}
-    \end{equation}
-    and
-    \begin{equation}\label{eqn:thrm-schreier-eqn-b}
-        1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_n = G    
-        \tag{B}
-    \end{equation}
-    are two subnormal series of $G$. We shall refine the subnormal series (\ref{eqn:thrm-schreier-eqn-a}) to a series (\ref{eqn:thrm-schreier-eqn-a-prime}) and show that it is isomorphic to a refinement (\ref{eqn:thrm-schreier-eqn-b-prime}) of (\ref{eqn:thrm-schreier-eqn-b}).
-    
-    Let a new series be formed
-    \begin{equation}\label{eqn:thrm-schreier-eqn-a-prime}
-        1 = \hat{H}_0 \subseteq \hat{H}_1 \subseteq \hat{H}_2 \subseteq \cdots \subseteq \hat{H}_{mn - 1} \subseteq \hat{H}_{mn} = G
-        \tag{A'}
-    \end{equation}
-    such that
-    \[
-        \hat{H}_k = H_q(H_{q+1}\cap K_r)
-    \]
-    for $k = qn + r$, where $0 \leq q < m$ and $0 \leq r \leq n$. It needs to be demonstrated that $\hat{H}_k$ is well-defined. Consider the ambiguity of the $k = qn + r$ in the case where $r = n$, so $k = qn + n = (q+1)n + 0$. For (\ref{eqn:thrm-schreier-eqn-a-prime}) to be well defined, we require
-    \[
-        H_q(H_{q+1} \cap K_n) = H_{q+1}(H_{q+2} \cap K_0).
-    \]
-    We note $H_q \subseteq H_{q+1}$. Thus the left-hand side is
-    \begin{align*}
-        H_q(H_{q+1} \cap K_n) &= H_q(H_{q+1} \cap G) & (\text{since } K_n = G)\\
-        &= H_qH_{q+1}\\
-        &= H_{q+1} & (\text{by \textbf{Problem \ref{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}}})
-    \end{align*}
-    while the right-hand side is
-    \begin{align*}
-        H_{q+1}(H_{q+2} \cap K_0) &= H_{q+1}(H_{q+2} \cap \{e\})\\
-        &= H_{q+1}(\{e\})\\
-        &= H_{q+1},
-    \end{align*}
-    so this is well-defined.
-    
-    We next need to demonstrate that $\hat{H}_k \lhd \hat{H}_{k+1}$. Write $k$ as $qn+r$ in which $0 \leq q < m$ and $0 \leq r < n$. Hence
-    \[
-        \hat{H}_{k+1} = \hat{H}_{qn+(r+1)} = H_q(H_{q+1}\cap K_{r+1}). 
-    \]
-    Since $K_r \lhd K_{r+1}$ we have
-    \[
-        \hat{H}_k = H_q(H_{q+1}\cap K_r) \lhd H_q(H_{q+1}\cap K_{r+1}) = \hat{H}_{k+1}
-    \]
-    by Zassenhaus' Lemma (\textbf{Lemma \ref{lemma-zassenhaus}}), statement 1. Thus $\hat{H}_k \lhd \hat{H}_{k+1}$, which is what we wanted to prove. However we note that (\ref{eqn:thrm-schreier-eqn-a-prime}) may not be a subnormal series, as it is possible for $\hat{H}_k = \hat{H}_{k+1}$ for some $k$. We will address this concern near the end.
-    
-    Having created series (\ref{eqn:thrm-schreier-eqn-a-prime}), use the same procedure to form
-    \begin{equation}\label{eqn:thrm-schreier-eqn-b-prime}
-        1 = \hat{K}_0 \subseteq \hat{K}_1 \subseteq \hat{K}_2 \subseteq \cdots \subseteq \hat{K}_{mn - 1} \subseteq \hat{K}_{mn} = G
-        \tag{B'}
-    \end{equation}
-    such that
-    \[
-        \hat{K}_l = H_q(H_{q+1}\cap K_r)
-    \]
-    for $l = qm + r$, where $0 \leq q < n$ and $0 \leq r \leq m$. The same statements made for (\ref{eqn:thrm-schreier-eqn-a-prime}) apply to (\ref{eqn:thrm-schreier-eqn-b-prime}).
-    
-    Now let $k = un + v$ and let $l = vm + u$. It follows that
-    \begin{align*}
-        \hat{H}_{k+1}/\hat{H}_k &= \frac{H_u(H_{u+1}\cap K_{v+1})}{H_u(H_{u+1}\cap K_v)}\\
-        &\cong \frac{K_v(K_{v+1}\cap H_{u+1})}{K_v(K_{v+1}\cap H_u)}\\
-        &= \hat{K}_{l+1}/\hat{K}_l
-    \end{align*}
-    with the isomorphism achieved by Zassenhaus' Lemma, statement 3. Thus (\ref{eqn:thrm-schreier-eqn-a-prime}) and (\ref{eqn:thrm-schreier-eqn-b-prime}) have isomorphic factors.
-    
-    We return to the concern about the possibility that $\hat{H}_k = \hat{H}_{k+1}$ (or $\hat{K}_l = \hat{K}_{l+1}$) for some $k$ (or $l$). Eliminating redundancies in both (\ref{eqn:thrm-schreier-eqn-a-prime}) and (\ref{eqn:thrm-schreier-eqn-b-prime}) would yield two refinements of equal length, whose factor groups are isomorphic.
-    
-    Finally, observe that if both original series (\ref{eqn:thrm-schreier-eqn-a}) and (\ref{eqn:thrm-schreier-eqn-b}) were normal series of $G$, then each $\hat{H}_k$ and $\hat{K}_l$ would be a normal subgroup of $G$, so their respective refined series would also be a normal series.
-\end{proof}
-
-We can now introduce and prove the \textbf{Jordan-H\"older Theorem}.
-\begin{theorem}[Jordan-H\"older]\label{thrm-jordan-holder}\index{Jordan-H\"older Theorem}
-    Two composition series for a finite group have the same length and composition factors.
-\end{theorem}
-\begin{proof}
-    The Schreier Refinement Theorem (\textbf{Theorem \ref{thrm-schreier}}) tells us that two subnormal series have refinements of equal length whose factors are isomorphic.
-    
-    Now a composition series has no proper refinements since all subgroups inside a composition series are maximal normal subgroups. Hence any refinements must be identical to the composition series themselves.
-    
-    Therefore, any two composition series (which are their own refinements) for a finite group have the same length and composition factors.
-\end{proof}
-
-\begin{example}
-    We found in an earlier example the 3 distinct composition series for $D_6$:
-    \begin{align*}
-        &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6,\\
-        &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6, \text{ and}\\
-        &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
-    \end{align*}
-    The factors in each case (in order) are:
-    \begin{itemize}
-        \item $\Cn{2}/1 \cong \Cn{2}$, $\Cn{6}/\Cn{2} \cong \Cn{3}$ (\textbf{Exercise \ref{exercise-Zmn-mod-Zn-cong-Zn}}), $D_6 / \Cn{6}$;
-        \item $\Cn{3}/1 \cong \Cn{3}$, $\Cn{6}/\Cn{3} \cong \Cn{2}$, $D_6 / \Cn{6}$; and
-        \item $\Cn{3}/1 \cong \Cn{3}$, $D_3 / \Cn{3} \cong \Cn{2}$, $D_6 / D_3$.
-    \end{itemize}
-    By the Jordan-H\"older theorem, the factors must be isomorphic to each other. Looking at the last 2 factor lists, only one factor from each is unaccounted for, namely the factors $D_6 / \Cn{6}$ and $D_6 / D_3$. Since Jordan-H\"older guarantees that they are isomorphic to each other, hence, technically, $D_6 / \Cn{6} \cong D_6 / D_3$.
-
-    \textbf{Important note}: The $\Cn{6}$ and $D_3$ above represent \textbf{subgroups} of $D_6$ (up to isomorphism), not the actual groups themselves. The subgroup of $D_6$ that is isomorphic to $\Cn{6}$ is $\langle r \rangle$, while the subgroup isomorphic to $D_3$ is $\langle r^2, s\rangle$. Therefore the correct statement is
-    \[
-        D_6 / \langle r \rangle \cong D_6 / \langle r^2, s\rangle.
-    \]
-\end{example}
-
-\begin{exercise}
-    Let $p$ be a prime. Show that any group with order $p^2$ has only one composition series.
-\end{exercise}
-
-\newpage
-
-\section{Problems}
-\begin{problem}
-    Let the \textit{Klein four-group}\index{Klein four-group} with presentation
-    \[
-        \langle a, b \vert a^2 = b^2 = (ab)^2 = e \rangle
-    \]
-    be denoted by $\mathrm{V}$. Recall that $\mathrm{V} \cong (\mathbb{Z}_2)^2$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Find the unique composition series for $\mathrm{V}$ up to isomorphism.
-        \item Let $\mathrm{Q}$ denote the quaternion group. Find the two unique composition series for $\mathrm{Q}$ up to isomorphism.\newline
-        (\textit{Hint: consider the alternate definition of the quaternion group.})
-        \item Let $H$ be the subgroup of $\mathrm{Q}$ that is isomorphic to $\Cn{4}$, and $K$ be a subgroup of $\mathrm{Q}$ that is isomorphic to $\mathrm{V}$. Prove that
-        \[
-            \mathrm{Q}/H \cong \mathrm{Q}/K.
-        \]
-        (\textit{Hint: consider \textbf{Problem \ref{problem-cartesian-product-of-group-by-group-isomorphic-to-group}}.})
-    \end{enumerate}
-\end{problem}
-
-\begin{problem}\label{problem-S4-composition-series}
-    Find the unique composition series of $\Sn{4}$ (up to isomorphism).\newline
-    (\textit{Hint: consider the orders of elements in $\An{4}$ and \textbf{Problem \ref{problem-subgroup-of-index-2}} to prove why a particular subgroup with a particular order cannot exist.})
-\end{problem}
-
 % %=========================================
-% \chapter{Simple Groups}
-% Simple groups can be thought of as the `building blocks' of all (finite) groups. The finite simple groups have been completely classified; each belongs to one of 18 infinite families, or is one of 26 sporadic groups that do not follow a specific pattern. We look at the classification of the families of these simple groups here.
+% \chapter{Composition Series}
+% \section{Subgroup Series and Subnormal Series}
+% We introduce the idea of a \textbf{subgroup series}\index{subgroup series} of a group.
+% \begin{definition}
+%     Let $G$ be a group. A \textbf{subgroup series without repetition}\index{subgroup series!without repetition} of $G$ is a chain of subgroups $H_0, \dots, H_n$ such that
+%     \[
+%         1 = H_0 < H_1 < H_2 < \cdots < H_n = G,
+%     \]
+%     where 1 is the trivial group $\{e\}$, and where $H_i \neq H_{i+1}$ (for $0 \leq i < n$). The \textbf{length} of such a series is $n$, or is infinite if there is no end.
+% \end{definition}
+% \begin{remark}
+%     It is more often useful to consider subgroup series without repetition than it is to consider the weaker form of subgroup series\index{subgroup series!with repetition}, which requirement is only
+%     \[
+%         1 = H_0 \leq H_1 \leq H_2 \leq \cdots \leq H_n = G,
+%     \]
+%     meaning that $H_i$ can be equal to $H_{i+1}$.
+% \end{remark}
+% \begin{remark}
+%     The above definition gives an \textbf{ascending}\index{subgroup series!ascending} subgroup series without repetition. A \textbf{descending}\index{subgroup series!descending} subgroup series without repetition is
+%     \[
+%         G = K_0 > K_1 > K_2 > \cdots > K_n = 1,
+%     \]
+%     where the indexing is reversed.
+% \end{remark}
 
-% \section{Cyclic Groups of Prime Order}
-% The first infinite family of simple groups we will look at is the family of \textbf{Cyclic Groups of Prime Order}.
+% Subgroup series can simplify the study of a group to the study of simpler subgroups and their relations.
 
-% \begin{lemma}\label{lemma-cyclic-group-simple-iff-order-is-prime}
-%     $\Cn{n}$ is simple if and only if $n$ is prime.
-% \end{lemma}
+% \begin{example}
+%     Consider the dihedral group of order 8, $D_4$. One sees clearly that $H = \{e, r, r^2, r^3\}$ is a subgroup of $D_4$, and that $K = \{e, r^2\}$ is a subgroup of $H$. Thus a possible (ascending) subgroup series (without repetition) is
+%     \[
+%         1 < \{e, r^2\} < \{e, r, r^2, r^3\} < D_4.
+%     \]
+% \end{example}
 
-% \begin{proof}
-%     We prove the forward direction. Suppose $\Cn{n}$ is simple with generator $g$. Then the only normal subgroups of $\Cn{n}$ are the trivial group and the group itself. Seeking a contradiction, assume $n$ is not prime; write $n = ab$ where $a$ and $b$ are positive integers that are both smaller than $n$. Then clearly $\langle g^a\rangle$ is a subgroup of $\Cn{n}$. Now $\Cn{n}$ is abelian (\textbf{Proposition \ref{prop-cyclic-group-is-abelian}}) which means all subgroups are normal (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}). Hence we have found another normal subgroup of $\Cn{n}$, contradicting that $\Cn{n}$ only has two normal subgroups. Therefore $n$ is prime.
-    
-%     We prove the reverse direction. Suppose $n$ is a prime. Then by a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-group-with-prime-order-subgroups}}), $\Cn{n}$ has no proper subgroups. So, the only subgroup with order smaller than $n$ is the trivial group, $\{e\}$. Clearly $\Cn{n}$ is normal in itself, and the trivial group is always a normal subgroup. Hence, as the only normal subgroups of $\Cn{n}$ is the trivial group and itself, $\Cn{n}$ is simple. Therefore, if $n$ is prime then $\Cn{n}$ is simple.
-% \end{proof}
+% We now consider the definition of a \textbf{subnormal series} of a group $G$.
+% \begin{definition}
+%     Let $G$ be a group. A \textbf{subnormal series}\index{subnormal series} of $G$ is a sequence of subgroups $H_0, \dots, H_n$ such that
+%     \[
+%         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G.    
+%     \]
+%     The quotient groups $H_{i+1}/H_i$ are called the \textbf{factor groups}\index{factor group} of the subnormal series.
+% \end{definition}
+% \begin{remark}
+%     Note that there is no requirement that $H_i \lhd G$, only that $H_i \lhd H_{i+1}$. If all subgroups in a subnormal series are such that $H_i \lhd G$, then such a series is called a \textbf{normal series}\index{normal series} of $G$.
+% \end{remark}
+% \begin{remark}
+%     Similar to subgroup series, there are ascending subnormal series and descending subnormal series.
+% \end{remark}
 
-% In fact, we have a much stronger result which we prove here.
-% \begin{theorem}\label{thrm-abelian-group-simple-iff-cylic-group-of-prime-order}
-%     An abelian group is simple if and only if it has prime order.
-% \end{theorem}
-% Note that we do not assume that the abelian group is finite; we will show that the group is finite in the proof below.
-% \begin{proof}
-%     The reverse direction of the claim follows immediately from \textbf{Lemma \ref{lemma-cyclic-group-simple-iff-order-is-prime}}, so we prove the forward direction only.
-    
-%     Suppose $G$ is a simple abelian group; we show that $G$ is finite. Suppose $g \in G$ such that $g \neq e$. Then the group $H = \langle g \rangle \leq G$. In fact, since $G$ is abelian, $H \unlhd G$ (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}), therefore $H = G$ as $G$ is simple. Now if $G$ is an infinite group, then $\langle g^2 \rangle < G$ which implies $\langle g^2 \rangle \lhd G$, contradicting the fact that $G$ is simple. Hence $G$ is a finite abelian group with generator $g$, meaning $G$ is cyclic. Result follows directly from \textbf{Lemma \ref{lemma-cyclic-group-simple-iff-order-is-prime}}.
-% \end{proof}
+% \begin{example}
+%     We consider the dihedral group of order 8 again. One may verify that $H = \{e, r, r^2, r^3\} \lhd D_4$ and $K = \{e, r^2\} \lhd H$. Hence a possible subnormal series of $D_4$ is
+%     \[
+%         1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.
+%     \]
 
-% From this, we have found that the only family of simple abelian groups is the family of cyclic groups of prime order.
+%     \newpage
 
-% \section{Alternating Group with Degree \texorpdfstring{$>4$}{More Than 4}}
-% The other family of simple groups that are relatively easy to find is the family of \textbf{alternating groups with degree of above 4}.
-
-% However, to prove this claim, we need several preliminary results.
-
-% \begin{lemma}\label{lemma-group-of-order-60-with->1-sylow-5-subgroup-is-simple}
-%     Let $G$ be a group of order 60. If $G$ has more than one Sylow 5-subgroup then $G$ is simple.
-% \end{lemma}
-% \begin{proof}[Proof (see {\cite[p.~145, Proposition 21]{dummit_foote_2004}})]
-%     We fill in most of the details of the proof here, although we leave some exercises for the reader.
-
-%     By way of contradiction assume $G$ is a group of order 60 with more than one Sylow 5-subgroup, but there exists a non-trivial proper normal subgroup $H$ of $G$. Note $60 = 5 \times 12$, so by the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}):
+%     In fact,
 %     \begin{itemize}
-%         \item $12 \vert n_5$, so $n_5 \in \{1, 2, 3, 4, 6, 12\}$; and
-%         \item $n_5 \equiv 1 \pmod 5$, so $n_5 \in \{1, 6, 11, 16, \dots\}$.
+%         \item $1 \lhd D_4$;
+%         \item $1 \lhd \{e, r^2\} \lhd D_4$; and
+%         \item $1 \lhd \{e, r, r^2, r^3\} \lhd D_4$
 %     \end{itemize}
-%     Therefore $n_5 = 6$ as $n_5 > 1$. Let $P \in \Syl{5}{G}$.
+%     are all valid subnormal series of $D_4$.
+% \end{example}
 
-%     We note by Lagrange's theorem (\textbf{Theorem \ref{thrm-lagrange}}) that the order of $H$ belongs in the set $\{1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60\}$, since the order of $G$ must be a multiple of the order of $H$. As $H$ is a non-trivial proper subgroup of $G$, we note $|H| \neq 1$ and $|H| \neq 60$. That leaves 4 cases which we will deal with separately.
-%     \begin{enumerate}
-%         \item $|H| = 6$. Note $6 = 2 \times 3$, so \textbf{Problem \ref{problem-group-of-order-pq-has-normal-subgroup-of-order-q}} tells us that there exists a $N \lhd H$ with $|N| = 3$. Note also $[G:H] = 10$ which is not a multiple of 3, so \textbf{Problem \ref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}} tells us that all Sylow 3-subgroups of $G$ are in $H$. But $N \lhd H$ means that $N$ is the unique Sylow 3-subgroup of $H$ (\textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}) and hence $G$, so $N \lhd G$. Proceed to case 3, using $N$ in place of $H$.
-        
-%         \item $|H| = 12$. Note $12 = 2^2 \times 3$. Now \textbf{Exercise \ref{exercise-group-of-order-12-has-normal-subgroup-of-3-or-4}} (below) tells us that there exists a normal subgroup of $H$ with order 3 or 4 (or both). Call that subgroup $N$. If $|N| = 3$ then it is a Sylow 3-subgroup; if $|N| = 4 = 2^2$ it is a Sylow 2-subgroup. Since $H \lhd G$, thus $H$ contains all Sylow 2- and 3-subgroups of $G$ (\textbf{Problem \ref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}}), meaning $G$ has only one Sylow 2-subgroup or one Sylow 3-subgroup (or both), $N$. Hence, $N \lhd G$ since a Sylow $p$-subgroup is unique if and only if it is normal (\textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}). Proceed with case 3, using $N$ instead of $H$.
-        
-%         \item $|H| \in \{2, 3, 4\}$. Since $H \lhd G$, thus $G/H$ is a group. Note $|G/H| \in \{15, 20, 30\}$. We claim that each of these cases produces a new normal subgroup of $G/H$ (call it $\bar{P}$) with order 5. This is proven for the case where $|G/H = 30$ in \textbf{Problem \ref{problem-group-of-order-30-has-normal-subgroup-of-order-5}}; the other two cases are for \textbf{Exercise \ref{exercise-group-of-order-15-or-20-has-normal-subgroup-of-order-5}}.
-
-%         Now \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} tells us that $\bar{P}$ has the form $K/H$ where $K \leq G$ and $H \subseteq K$. Since $\bar{P} = K/H \lhd G/H$, thus for any $g \in G$ and $kH \in \bar{P}$ we have
-%         \[
-%             (gH)(kH)(g^{-1}H) = (gkg^{-1})H \in K/H,
-%         \]
-%         which means $gkg^{-1} \in K$. Therefore $K \lhd G$ by definition of normality.
-
-%         Observe that this means that
-%         \[
-%             |K| = |K/H||H| = |\bar{P}||H| = 5|H|,    
-%         \]
-%         meaning $K$ is a normal subgroup of $G$ with an order that is a multiple of 5. Proceed to case 4, using $K$ in place of $H$.
-
-%         \item $|H|$ is a multiple of 5, meaning $|H|$ has a Sylow 5-subgroup. Note $5 \nmid [G:H]$, so \textbf{Problem \ref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}} implies all Sylow 5-subgroups of $G$ are in $H$ and vice versa. Note there are $5-1=4$ non-identity elements in each Sylow 5-subgroup; therefore
-%         \[
-%             |H| \geq n_5(5-1) = 24
-%         \]
-%         which means that $|H| = 30$. By \textbf{Problem \ref{problem-group-of-order-30-has-normal-subgroup-of-order-5}} again, such a group has only a unique Sylow 5-subgroup. However, right at the start, we concluded that $n_5 = 6$, a contradiction.
-%     \end{enumerate}
-%     Hence, $H$ does not exist; $G$ is simple.
-% \end{proof}
-
-% \begin{exercise}\label{exercise-group-of-order-12-has-normal-subgroup-of-3-or-4}
-%     Prove that a group of order 12 either has a normal subgroup of order 3, or a normal subgroup of order 4, or both.
-% \end{exercise}
-
-% \begin{exercise}\label{exercise-group-of-order-15-or-20-has-normal-subgroup-of-order-5}
-%     Prove that a group of each of the following orders has a normal subgroup of order 5.
-%     \begin{enumerate}[label=(\alph*)]
-%         \item 15
-%         \item 20
-%     \end{enumerate}
-% \end{exercise}
-
-% \begin{corollary}\label{corollary-A5-is-simple}
-%     The group $\An5$ is simple.
-% \end{corollary}
-% \begin{proof}
-%     \textbf{Exercise \ref{exercise-A5-has-two-distinct-subgroups-of-order-5}} results in two distinct subgroups of order 5. Since $|\An{5}| = 60 = 2^2 \times 3 \times 5$, thus subgroups of order 5 are Sylow 5-subgroups. Therefore $\An5$ is simple by \textbf{Lemma \ref{lemma-group-of-order-60-with->1-sylow-5-subgroup-is-simple}}. 
-% \end{proof}
-% \begin{exercise}\label{exercise-A5-has-two-distinct-subgroups-of-order-5}
-%     Consider the permutation $\sigma = \begin{pmatrix}1&3&2&4&5\end{pmatrix}$.
+% \begin{exercise}
+%     Let the group $G = \mathbb{Z}_4$.
 %     \begin{enumerate}[label=(\roman*)]
-%         \item Explain why $\sigma \in \An{5}$.
-%         \item Find the order of the subgroup $\langle \sigma \rangle$.
-%         \item Find another subgroup of $\An{5}$ with order 5.
+%         \item Find a subnormal series of length 2 for $G$.
+%         \item Hence find the factors of that subnormal series.
+%         \item Explain whether the subnormal series found in (i) is a normal series.
 %     \end{enumerate}
 % \end{exercise}
 
-% We also state and prove a fairly obvious proposition.
-% \begin{proposition}\label{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}
-%     Let the integer $n \geq 3$. Let $\{1, 2, 3, \dots, n\}$ be denoted by $\mathcal{N}_n$. Suppose $\An{n}$ acts on $\mathcal{N}_n$ naturally. Then $\Stab{\An{n}}{r} \cong \An{n-1}$.
-% \end{proposition}
-% \begin{proof}
-%     We note that elements of $\Stab{\An{n}}{r}$ are permutations that fix $r$, thereby permuting the $n - 1$ other elements. Therefore elements of $\Stab{\An{n}}{r}$ are even permutations on $n - 1$ elements, i.e. $\Stab{\An{n}}{r} \cong \An{n-1}$.
-% \end{proof}
+% \section{Maximal Normal Subgroup}
+% Before looking at a more interesting category of subnormal series, we have to introduce the idea of a \textbf{maximal normal subgroup}.
+% \begin{definition}
+%     Let $G$ be a group and $N \lhd G$. Then $N$ is said to be a \textbf{maximal (proper) normal subgroup}\index{maximal normal subgroup} of $G$ if there does \textbf{not} exist a $H \lhd G$ such that $N < H < G$.
+% \end{definition}
+% \begin{remark}
+%     This means that if $N$ is a maximal normal subgroup of $G$ and there exists a subgroup $H$ such that $N \leq H \leq G$, then either $H = N$ or $H = G$.
+% \end{remark}
 
-% With these results, we are ready to prove that an alternating group with a degree above 4 is simple.
-% \begin{theorem}\label{thrm-An-is-simple-for-n>=5}
-%     The group $\An{n}$ is simple if $n \geq 5$.
+% There is an important consequence that we examine here.
+% \begin{theorem}\label{thrm-maximal-normal-subgroup-iff-quotient-is-simple}
+%     Let $G$ be a group and $N \lhd G$. Then $N$ is a maximal normal subgroup of $G$ if and only if $G/N$ is simple.
 % \end{theorem}
-% \begin{proof}[Proof (see {\cite[pp.~149-150, Theorem 24]{dummit_foote_2004}})]
-%     For brevity, we denote the set $\mathcal{N}_n = \{1, 2, 3, \dots, n\}$. We proceed by induction on $n$.
-    
-%     The base case of $n = 5$ is covered by \textbf{Corollary \ref{corollary-A5-is-simple}}. Assume that $\An{k-1}$ is simple for some $k \geq 6$; we will prove that $\An{k}$ is also simple.
 
-%     Let $G = \An{k}$, and, seeking a contradiction, assume that there exists a non-trivial $H \lhd G$. Let $G$ act on $\mathcal{N}_{k}$ natrually; thus $\Stab{G}{i} \leq G$ with $\Stab{G}{i} \cong \An{k-1}$ (\textbf{Proposition \ref{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}}). Note $\An{k-1}$ is simple by Induction Hypothesis, so $\Stab{G}{i}$ is simple for each $i \in \mathcal{N}_{k}$.
-
-%     Suppose first that there is some non-identity $\pi \in H$ such that $\pi(i) = i$ for some $i \in \mathcal{N}_{k}$. This means that $\pi$ fixes $i$; thus $\pi \in H \cap \Stab{G}{i}$. Note that since $H \lhd G$ and $\Stab{G}{i} \leq G$ thus $H \cap \Stab{G}{i} \lhd \Stab{G}{i}$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 4. But as $\Stab{G}{i}$ is simple we must have $H \cap \Stab{G}{i} = \Stab{G}{i}$. Therefore
-%     \[
-%         \Stab{G}{i} \subseteq H \implies \Stab{G}{i} \leq H.
-%     \]
-%     Now by \textbf{Exercise \ref{exercise-conjugate-of-stabilizer}} below, for any $\sigma \in G$, we obtain the fact that $\sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{\sigma(i)}$. Therefore, by conjugating the above relation by $\sigma$, we see
-%     \[
-%         \sigma\Stab{G}{i}\sigma^{-1} \leq \sigma H\sigma^{-1} = H
-%     \]
-%     since $H \lhd G$. Thus, by choosing a $\sigma \in G$ such that $\sigma(i) = j$ for any $j \in \mathcal{N}_{k+1}$ required, we see
-%     \[
-%         \sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{j} \leq H \text{ for all } j \in \mathcal{N}_{k}.
-%     \]
-    
-%     Note that every element in $G$ (say $\lambda$) may be written as a product of an even number of transpositions (\textbf{Theorem \ref{thrm-parity-of-permutation}}), say $2t$, thus we may write
-%     \[
-%         \lambda = \lambda_1\lambda_2\cdots\lambda_t
-%     \]
-%     where each $\lambda_i$ is a product of two transpositions. Now as $k \geq 5$, each $\lambda_i$ (which could, at most, consist of two disjoint cycles of 4 elements) must fix at least one element in $\mathcal{N}_{k}$, say $j$. That is, $\lambda_i \in \Stab{G}{j}$ for some $j \in \mathcal{N}_{k}$.
-    
-%     As noted above, each element in $G$ is generated by these $\lambda_i$s, and since $\lambda_i \in \Stab{G}{j} \leq H$ for some $j \in \mathcal{N}_{k}$, thus $\lambda_i \in H$. Hence, as $H$ is a subgroup and hence closed, therefore $\lambda = \lambda_1\lambda_2\cdots\lambda_t \in H$. Therefore, any element in $G$ is also in $H$, meaning $G \subseteq H$, contradicting the fact that $H \lhd G$ which means $H \subset G$.
-    
-%     We conclude that if $\pi \in H$ and $\pi \neq \id$ then $\pi(i) \neq i$ for all $i \in \mathcal{N}$. Now suppose $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$. Then $\pi_2^{-1}\pi_1(i) = i$, which implies $\pi_2^{-1}\pi_1 = \id$. Hence $\pi_1 = \pi_2$. In summary, if $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$, then $\pi_1 = \pi_2$.
-
-%     Now suppose there exists a non-identity $\pi_1 \in H$ such that the cycle decomposition of $\pi_1$ contains a cycle of length of at least 3, say
-%     \[
-%         \pi_1 = \begin{pmatrix}a_1&a_2&a_3&\cdots\end{pmatrix} \begin{pmatrix}b_1&b_2&\cdots\end{pmatrix}\cdots
-%     \]
-%     where $a_1$, $a_2$, $a_3$, $b_1$, $b_2$, etc. are distinct (which is possible since $k \geq 5$). We note an element $\sigma \in G$ exists such that $\sigma(a_1) = a_1$, $\sigma(a_2) = a_2$, but $\sigma(a_3) \neq a_3$, because $k \leq 4$. The \textbf{Exercise \ref{exercise-conjugation-of-permutation-by-another}} (below) gives
-%     \[
-%         \sigma\pi_1\sigma^{-1} = \begin{pmatrix}a_1&a_2&\sigma(a_3)&\cdots\end{pmatrix} \begin{pmatrix}\sigma(b_1)&\sigma(b_2)&\cdots\end{pmatrix}\cdots.
-%     \]
-%     Set $\pi_2 = \sigma\pi_1\sigma^{-1}$, which is distinct from $\pi_1$. Then $\pi_1(a_1) = \pi_2(a_1) = a_2$, contrary to the above observation that $\pi_1(i) = \pi_2(i)$ implies $\pi_1 = \pi_2$. Therefore only 2-cycles can appear in the cycle decomposition of non-identity elements of $H$.
-
-%     Let $\pi_1 \in H$ be a non-identity element, so that
-%     \[
-%         \pi_1 = \begin{pmatrix}a_1&a_2\end{pmatrix} \begin{pmatrix}a_3&a_4\end{pmatrix} \begin{pmatrix}a_5&a_6\end{pmatrix}\cdots
-%     \]
-%     where each $a_i$ is distinct (note that $k \geq 6$ is used above). Consider $\sigma = \begin{pmatrix}a_1&a_2\end{pmatrix} \begin{pmatrix}a_3&a_5\end{pmatrix}$, which is in $G$ since it is made up of 2 transpositions. Then \textbf{Exercise \ref{exercise-conjugation-of-permutation-by-another}} again gives
-%     \[
-%         \sigma\pi_1\sigma^{-1} = \begin{pmatrix}a_1&a_2\end{pmatrix} \begin{pmatrix}a_5&a_4\end{pmatrix} \begin{pmatrix}a_3&a_6\end{pmatrix}\cdots.
-%     \]
-%     Setting $\pi_2 = \sigma\pi_1\sigma^{-1}$ again gives two distinct permutations $\pi_1$ and $\pi_2$ such that $\pi_1(a_1) = \pi_2(a_1) = a_2$, again contrary to the above observation.
-
-%     We conclude that such a $H$ cannot exist. Thus, $\An{k-1}$ being simple implies that $\An{k}$ is also simple.
-
-%     By mathematical induction, $\An{n}$ is simple for all $n \geq 5$.
-% \end{proof}
-
-% \begin{exercise}\label{exercise-conjugate-of-stabilizer}
-%     Let $S$ be a set and let $G \leq \Sym{S}$ act on $S$. Let $\sigma \in G$ and $x \in S$. Show that
-%     \[
-%         \sigma\Stab{G}{x}\sigma^{-1} = \Stab{G}{\sigma(x)}.
-%     \]
-% \end{exercise}
-
-% \begin{exercise}\label{exercise-conjugation-of-permutation-by-another}
-%     Let $\sigma, \pi \in \Sn{n}$. Suppose $\sigma$ has cycle decomposition
-%     \[
-%         \begin{pmatrix}a_1&a_2&\cdots&a_{k_1}\end{pmatrix} \begin{pmatrix}b_1&b_2&\cdots&b_{k_2}\end{pmatrix}\cdots,
-%     \]
-%     where $a_1, a_2, \dots, a_{k+1}$. Show that $\pi\sigma\pi^{-1}$ has cycle decomposition
-%     \[
-%         \begin{pmatrix}\pi(a_1)&\pi(a_2)&\cdots&\pi(a_{k_1})\end{pmatrix} \begin{pmatrix}\pi(b_1)&\pi(b_2)&\cdots&\pi(b_{k_2})\end{pmatrix}\cdots,
-%     \]
-%     that is, $\pi\sigma\pi^{-1}$ is obtained from $\sigma$ by replacing each entry $i$ in the cycle decomposition by $\pi(i)$.
-% \end{exercise}
-
-% \begin{corollary}
-%     The group $\An{n}$ is simple if $n \geq 3$ and $n \neq 4$.
-% \end{corollary}
 % \begin{proof}
-%     We note $\An3$ has order $\frac{3!}{2} = 3$ which is prime, so $\An3 \cong \Cn3$ which is simple. Also $\An{n}$ is simple for $n \geq 5$ by \textbf{Theorem \ref{thrm-An-is-simple-for-n>=5}}.
+%     We prove the forward direction first; assume that $N$ is a maximal normal subgroup of $G$. Suppose there exists a normal subgroup of $G/N$. Then by \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} we know that subgroup takes the form of $H/N$, where $N \leq H \leq G$, such that $H/N \unlhd G/N$. Since $N$ is a maximal normal subgroup this means that $H = N$ or $H = G$. In the first case $H/N \cong 1$ and in the second $H / N = G/N$. Hence $G/N$ only has two normal subgroups, the trivial subgroup and itself, meaning that it has no proper normal subgroups and is hence simple.
+    
+%     We now prove the reverse direction; assume that $G/N$ is simple. Suppose there exists a $H \leq G$ such that $N \leq H \leq G$. By \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} we know $H/N \leq G/N$. In fact, since $N \leq H \leq G$ we know $N \unlhd H \unlhd G$ which means $H/N \unlhd G/N$. As $G/N$ is simple, thus $H/N \cong 1$ or $H/N = G/N$. The case where $H/N \cong 1$ occurs if and only if $H = N$ and the case where $H/N = G/N$ occurs when $H = G$. Hence, this means that $N$ is a maximal normal subgroup of $G$.
 % \end{proof}
 
-% We note that $\An4$ is non-simple by \textbf{Problem \ref{problem-S4-composition-series}}'s solution that $\An4$ has a unique composition series of
-% \[
-%     1 \lhd \Cn2 \lhd \mathrm{V} \lhd \An4
-% \]
-% up to isomorphism.
+% \begin{exercise}
+%     Find the order of the maximal normal subgroup of $\mathbb{Z}_{120}$.
+% \end{exercise}
 
-% \section{Groups of Lie Type}
-% \textit{We briefly mention groups of Lie type here; we will not prove any significant results here.}
+% \newpage
 
-% Group of Lie (pronunced ``lee'') type usually refers to finite groups that are closely related to the group of rational points of a reductive linear algebraic group with values in a finite field. We will cover finite fields in Volume \rom{3}. We make brief mention of these groups here.
+% \section{Composition Series}
+% We can now look at a more interesting type of subnormal series: the \textbf{composition series} of a group.
+% \begin{definition}
+%     Let $G$ be a group. A \textbf{composition series}\index{composition series} of $G$ is a subnormal series of finite length
+%     \[
+%         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G  
+%     \]
+%     such that $H_i$ is a maximal normal subgroup of $H_{i+1}$ (for $0 \leq i < n$). The factor groups $H_{i+1}/H_i$ are called the \textbf{composition factors}\index{composition factor}, and the length $n$ above is called the \textbf{composition length}\index{composition length}.
+% \end{definition}
+% \begin{remark}
+%     Some authors (e.g. \cite{cohn_1982, clark_1984, proofwiki_compositionseriesdefinition}) require composition series to be a normal series. However we follow \cite{hungerford_1980, humphreys_1996, milne_2021} and others and only require it to be a subnormal series.
+% \end{remark}
+% \begin{remark}
+%     An equivalent definition of a composition series is a normal series where the factor groups $H_{i+1}/H_i$ are simple, as guaranteed by \textbf{Theorem \ref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}}.
+% \end{remark}
 
-% In what follows, taken from \cite{wikipedia_listofsimplegroups}, $n$ is a positive integer, and $q$ is a positive power of a prime number $p$.
-% \begin{itemize}
-%     \item \textbf{Classical Chevalley groups}: there are 4 families of simple groups in this category.
-%     \begin{itemize}
-%         \item $A_n(q)$, except for $A_1(2)$ and $A_1(3)$. There are several duplicates, which are
-%         \begin{itemize}
-%             \item $A_1(4) \cong A_1(5) \cong \An{5}$;
-%             \item $A_1(7) \cong A_2(2)$;
-%             \item $A_1(9) \cong \An{6}$; and
-%             \item $A_3(2) \cong \An{8}$.
-%         \end{itemize}
-%         We note that $\An{n}$ is not the same as $A_n(q)$. We distinguish between the alternating group of degree $n$ ($\An{n}$) and the groups of Lie type $A_n(q)$ by letting the latter be in italics and the former be in `normal' font.
+% For composition series, we often write a group that is isomorphic to the subgroup rather than the actual subgroup. For example, instead of the subgroup $\{0, 3\}$ in $\mathbb{Z}_6$, we may write $\mathbb{Z}_2$ or $\Cn{2}$ instead. Composition series written in this form instead are called composition series \textbf{up to isomorphism}\index{composition series!up to isomorphism}.
 
-%         \item $B_n(q)$ for $n > 1$, except for $B_2(2)$. There are several duplicates, which are
-%         \begin{itemize}
-%             \item $B_n(2^m) \cong C_n(2^m)$; and
-%             \item $B_2(3) \cong ^2A_3(2^2) = ^2A_3(4)$.
-%         \end{itemize}
-%         \item $C_n(q)$ for $n > 2$. The only duplicate is $C_n(2^m) \cong B_n(2^m)$.
-%         \item $D_n(q)$ for $n > 3$.
-%     \end{itemize}
-    
-%     \item \textbf{Exceptional Chevalley groups}: there are 5 families of simple groups in this category:
-%     \begin{itemize}
-%         \item $E_6(q)$;
-%         \item $E_7(q)$;
-%         \item $E_8(q)$;
-%         \item $F_4(q)$; and
-%         \item $G_2(q)$, except for $G_2(2)$.
-%     \end{itemize}
-    
-%     \item \textbf{Classical Steinberg groups}: there are 2 families of simple groups in this category.
-%     \begin{itemize}
-%         \item $^2A_n(q^2)$ for $n > 1$, except for $^2A_2(2^2) = ^2A_2(4)$. The only duplicate is $^2A_3(2^2) \cong B_2(3)$.
-%         \item $^2D_n(q^2)$ for $n > 3$.
-%     \end{itemize}
-    
-%     \item \textbf{Exceptional Steinberg groups}: there are 2 families of simple groups in this category:
-%     \begin{itemize}
-%         \item $^2E_6(q^2)$; and
-%         \item $^3D_4(q^3)$.
-%     \end{itemize}
-    
-%     \item \textbf{Suzuki groups}: there is 1 family of simple groups in this category, which is $^2B_2(q)$ where $q = 2^{2n+1}$ and $n \geq 1$. Such a group has order $q^2(q^2+1)(q-1)$.
-    
-%     \item \textbf{Ree groups}: there are 2 families of simple groups in this category.
-%     \begin{itemize}
-%         \item $^2F_4(q)$ where $q = 2^{2n+1}$ and $n \geq 1$. The order of such a group is $q^{12}(q^6+1)(q^4-1)(q^3+1)(q-1)$.
-%         \item $^2G_2(q)$ where $q = 3^{2n+1}$ and $n \geq 1$. The order of such a group is $q^3(q^3+1)(q-1)$.
-%     \end{itemize}
-% \end{itemize}
-
-% There is also the \textbf{Tits group}, $^2F_4(2)'$, which has order $17,971,200$.
-
-% \section{The Sporadic Groups}
-% Along with the 18 infinite families of simple groups, there are also 26 sporadic simple groups that do not fall within the families. We list them below.
-% \begin{itemize}
-%     \item \textbf{Mathieu groups}: There are 5 Mathieu sporadic groups.
-%     \begin{itemize}
-%         \item $\mathrm{M}_{11}$, which has order 7920.
-%         \item $\mathrm{M}_{12}$, which has order 95,040.
-%         \item $\mathrm{M}_{22}$, which has order 443,520.
-%         \item $\mathrm{M}_{23}$, which has order 10,200,960.
-%         \item $\mathrm{M}_{24}$, which has order 244,823,040.
-%     \end{itemize}
-
-%     \item \textbf{Janko groups}: There are 4 Janko sporadic groups.
-%     \begin{itemize}
-%         \item $\mathrm{J}_1$, which has order 175,560.
-%         \item $\mathrm{J}_2$, which has order 604,800.
-%         \item $\mathrm{J}_3$, which has order 50,232,960.
-%         \item $\mathrm{J}_4$, which has order 86,775,571,046,077,562,880.
-%     \end{itemize}
-
-%     \item \textbf{Conway groups}: There are 3 Conway sporadic groups.
-%     \begin{itemize}
-%         \item $\mathrm{Co}_3$, which has order 495,766,656,000.
-%         \item $\mathrm{Co}_2$, which has order 42,305,421,312,000.
-%         \item $\mathrm{Co}_1$, which has order 4,157,776,806,543,360,000.
-%     \end{itemize}
-
-%     \item \textbf{Fischer groups}: There are 3 Fischer sporadic groups.
-%     \begin{itemize}
-%         \item $\mathrm{Fi}_{22}$, which has order 64,561,751,654,400.
-%         \item $\mathrm{Fi}_{23}$, which has order 4,089,470,473,293,004,800.
-%         \item $\mathrm{Fi}_{24}'$, which has order 1,255,205,709,190,661,721,292,800.
-%     \end{itemize}
-
-%     \item The \textbf{Higman-Sims group}, $\mathrm{HS}$, has order 44,352,000.
-%     \item The \textbf{McLaughlin group}, $\mathrm{McL}$, has order 898,128,000.
-%     \item The \textbf{Held group}, $\mathrm{He}$, has order 4,030,387,200.
-%     \item The \textbf{Rudvalis group}, $\mathrm{Ru}$, has order 145,926,144,000.
-%     \item The \textbf{Suzuki sporadic group}, $\mathrm{Suz}$, has order 448,345,497,600.
-%     \item The \textbf{O'Nan group}, $\mathrm{O'N}$, has order 460,815,505,920.
-% \end{itemize}
-
-% The remainning 5 sporadic groups have an order of above 1 trillion ($10^{12}$).
-% \begin{itemize}
-%     \item The \textbf{Harada-Norton group}, $\mathrm{HN}$, contains 273,030,912,000,000 elements.
-%     \item The \textbf{Lyons group}, $\mathrm{Ly}$, contains 51,765,179,004,000,000 elements.
-%     \item The \textbf{Thompson group}, $\mathrm{Th}$, contains 90,745,943,887,872,000 elements.
-%     \item The \textbf{Baby Monster group}, usually denoted $\mathrm{B}$, contains
+% \begin{example}
+%     Consider the group $\mathbb{Z}_{12}$. Three composition series of it are
 %     \begin{align*}
-%         &2^{41} \times 3^{13} \times 5^6 \times 7^2 \times 11 \times 13 \times 17 \times 19 \times 23 \times 31 \times 47\\
-%         &= 4,154,781,481,226,426,191,177,580,544,000,000
+%         &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},\\
+%         &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_4 \lhd \mathbb{Z}_{12},\\
+%         &1 \lhd \mathbb{Z}_3 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},
 %     \end{align*}
-%     elements.
-%     \item The \textbf{Monster group}, usually denoted $\mathrm{M}$, contains
+    
+%     and the factors in each of the cases (up to isomorphism) are as follows:
+%     \begin{itemize}
+%         \item $\mathbb{Z}_2$, $\mathbb{Z}_3$, $\mathbb{Z}_2$;
+%         \item $\mathbb{Z}_2$, $\mathbb{Z}_2$, $\mathbb{Z}_3$; and
+%         \item $\mathbb{Z}_3$, $\mathbb{Z}_2$, $\mathbb{Z}_2$.
+%     \end{itemize}
+%     Each of the composition series has composition length 3.
+% \end{example}
+
+% \begin{example}
+%     Consider the symmetry group of the regular hexagon, the dihedral group of order 12, $D_6$. The three composition series of $D_6$, up to isomorphism, are
 %     \begin{align*}
-%         &2^{46} \times 3^{20} \times 5^9 \times 7^6 \times 11^{2} \times 13^3 \times 17 \times 19 \times 23 \times 29 \times 31 \times \\
-%         &\quad 41 \times 47 \times 59 \times 71\\
-%         &> 8 \times 10^{53}
+%         &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6,\\
+%         &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6, \text{ and}\\
+%         &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
 %     \end{align*}
-%     elements. It is the largest sporadic group.
-% \end{itemize}
+%     We note that the subgroup that is isomorphic to
+%     \begin{itemize}
+%         \item $\Cn{2}$ is $\{e, s\} = \langle s \rangle$;
+%         \item $\Cn{3}$ is $\{e, r^2, r^4\} = \langle r^2\rangle$;
+%         \item $\Cn{6}$ is $\{e, r, r^2, r^3, r^4, r^5\} = \langle r\rangle$; and
+%         \item $D_3$ is $\{e, r^2, r^4, s, r^2s, r^4s\}$.
+%     \end{itemize}
+%     All composition series' lengths are all 3.
+% \end{example}
+% \textbf{Important note}: It is crucial to remember that all of the groups written in the composition series (except for the trivial group and the group itself) represent \textbf{subgroups} of the group itself (up to isomorphism), not the actual groups themselves.
+
+% \begin{exercise}
+%     Find the two composition series for $\Cn{6}$ (up to isomorphism), their composition lengths, and their factors (up to isomorphism).
+% \end{exercise}
+
+% One might wonder which groups have a composition series. As mentioned, not all groups have a composition series (e.g., $\mathbb{Z}$). However, finite groups will definitely have a composition series.
+% \begin{theorem}\label{thrm-finite-group-has-composition-series}
+%     Any finite group has a composition series.
+% \end{theorem}
+% \begin{proof}[Proof (see \cite{hungerford_1980, proofwiki_finitegrouphascompositionseries})]
+%     Let $G$ be a finite group. If $G$ is simple then it does not have a proper normal subgroup, so it has a composition series $\{e\} \lhd G$.
+    
+%     Otherwise, $G$ has a proper normal subgroup, at least one of which has maximal order. Let that subgroup be $G_1$. By \textbf{Theorem \ref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}} this means that $G/G_1$ is simple. If $G_1$ does not have a proper normal subgroup then $G$ has composition series $\{e\} \lhd G_1 \lhd G$. Otherwise let $G_2$ be the maximal normal subgroup of $G_1$, and so on. 
+    
+%     Now Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) says that the order of the subgroup must divide the order of the group. Since $G_1$, $G_2$, etc. are proper subgroups of $G$, the orders of the found subgroups can be at most half the order of the preceding group. Hence the orders of the groups are strictly decreasing, meaning
+%     \[
+%         |G| > |G_1| > |G_2| > \cdots > |G_n| = 1,
+%     \]
+%     with the process terminating at some integer $n$ where $G_n = \{e\}$.
+    
+%     \newpage
+
+%     Now set $H_i = G_{n-i}$. Note $H_{i+1}/H_i = G_i/G_{i+1}$ is simple as discussed above. Hence
+%     \[
+%         \{e\} = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G    
+%     \]
+%     is a composition series of $G$.
+% \end{proof}
+
+% \section{Zassenhaus' Lemma}
+% Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes called the Fourth Isomorphism Theorem.
+% \begin{lemma}[Zassenhaus]\label{lemma-zassenhaus}\index{Zassenhaus' Lemma}
+%     Let $G$ be a group. Let $H$, $H'$, $K$, and $K'$ be subgroups of $G$ such that $H' \unlhd H$ and $K' \unlhd K$. Then
+%     \begin{enumerate}
+%         \item $H'(H \cap K') \unlhd H' (H \cap K)$;
+%         \item $K'(H' \cap K) \unlhd K' (H \cap K)$; and
+%         \item $\frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{K'(H\cap K)}{K'(H'\cap K)}$,
+%     \end{enumerate}
+%     where an expression like $H'(H \cap K')$ denotes the subset product of $H'$ and $H \cap K'$.
+% \end{lemma}
+% \begin{proof}[Proof (see {\cite[p.~110]{hungerford_1980}})]
+%     We quickly note that $H' \unlhd H \cap K$ as $H' \unlhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \unlhd H \cap K$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 4. Since $H'\unlhd H$ we know $H' \subset H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \unlhd H \cap K$. Similarly, $H \cap K' \unlhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\textbf{Corollary \ref{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, let $\mathcal{A} = (H' \cap K)(H \cap K')$.
+    
+%     Define the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$, $hc \mapsto h\mathcal{A}$ where $h \in H'$ and $c \in H \cap K$. We show that $\phi$ is a well-defined homomorphic surjection with a goal to use the Fundamental Homomorphism Theorem to finish the proof.
+    
+%     \begin{itemize}
+%         \item \textbf{Well-defined}: Suppose $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ such that $h_1h_2 = c_1c_2$. Then $c_1c_2^{-1} = h_2^{-1}h_1$. We note that
+%         \[
+%             (H \cap K) \cap H' = H' \cap K \leq \mathcal{A}    
+%         \]
+%         by Diamond Isomorphism Theorem statement 2, and that $c_1c_2^{-1} \in (H \cap K) \cap H'$ since $c_1c_2^{-1} \in H \cap K$ and $c_1c_2^{-1} = h_2^{-1}h_1 \in H'$. Thus $c_1c_2^{-1} \in \mathcal{A}$, meaning $c_1\mathcal{A} = c_2\mathcal{A}$ by Coset Equality lemma (\textbf{Lemma \ref{lemma-coset-equality}}). Hence
+%         \[
+%             \phi(h_1c_1) = c_1\mathcal{A} = c_2\mathcal{A} = \phi(h_2c_2)        
+%         \]
+%         which means $\phi$ is well-defined.
+        
+%         \item \textbf{Homomorphism}: We first note that $H \cap K \leq H$ by Diamond Isomorphism Theorem statement 1. Since $H' \unlhd H$ (given), thus $H'(H\cap K) = (H\cap K)H'$ and so $H'(H\cap K) \leq H$ by Diamond Isomorphism Theorem statement 3. By \textbf{Proposition \ref{prop-subgroup-product-is-subgroup}}, since $H'(H\cap K) \leq H$, thus $H'(H\cap K) = (H\cap K)H'$. So, for any $c_1h_2 \in (H\cap K)H' = H'(H\cap K)$ we have $c_1h_2 = h_3c_1$ for some $h_3 \in H'$. Therefore for $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ we have
+%         \begin{align*}
+%             \phi((h_1c_1)(h_2c_2)) &= \phi(h_1(c_1h_2)c_2)\\
+%             &= \phi(h_1(h_3c_1)c_2)\\
+%             &= \phi((h_1h_3)(c_1c_2))\\
+%             &= (c_1c_2)\mathcal{A}\\
+%             &= (c_1\mathcal{A})(c_2\mathcal{A})\\
+%             &= \phi(h_1c_1)\phi(h_2c_2)
+%         \end{align*}
+%         which shows that $\phi$ is a homomorphism.
+        
+%         \item \textbf{Image}: We prove that $\phi$ is surjective to show $\im \phi = (H\cap K)/\mathcal{A}$.
+        
+%         Take any $c\mathcal{A} \in (H\cap K) / \mathcal{A}$. Clearly $e \in H$, so $\phi(c) = \phi(ec) = c\mathcal{A}$, meaning $\phi$ is surjective. Hence $\im \phi = (H\cap K)/\mathcal{A}$.
+        
+%         \item \textbf{Kernel}: Let $hc \in \ker\phi$ where $h \in H'$ and $c \in H \cap K$. Then $\phi(hc) = \mathcal{A}$, meaning $c\mathcal{A} = \mathcal{A}$. Hence $c \in \mathcal{A}$. Let $c = xy$ where $x \in H'\cap K$ and $y \in H \cap K'$. So $hc \in \ker\phi$ if $hc = h(xy) = (hx)y$. Note that $h \in H'$, and $x \in H' \cap K \subseteq H'$ so $x \in H'$, thus $hx \in H'$. Also $y \in H \cap K'$, so $hc = (hx)y \in H'(H \cap K')$. Thus if $hc \in \ker\phi$ then $hc \in H'(H \cap K')$, meaning $\ker\phi \subseteq H'(H \cap K')$.
+        
+%         Now take $hy \in H'(H \cap K')$ where $h \in H'$ and $y \in H \cap K'$. Recall that $H\cap K' \subseteq H\cap K$ as $K' \unlhd K$ means $K' \subset K$. Thus $\phi(hy) = y\mathcal{A}$. Since $y \in H \cap K' \leq (H' \cap K)(H \cap K') = \mathcal{A}$ by Diamond Isomorphism Theorem statement 2, so $y \in \mathcal{A}$, meaning $y\mathcal{A} = \mathcal{A}$. Hence $\phi(hy) = \mathcal{A}$, so $hy \in \ker\phi$. Therefore any $hy \in H'(H \cap K')$ also belongs in $\ker\phi$, meaning $H'(H \cap K') \subseteq \ker\phi$.
+        
+%         As $\ker\phi \subseteq H'(H\cap K')$ and $H'(H\cap K') \subseteq \ker\phi$, therefore $\ker\phi = H'(H \cap K')$.
+%     \end{itemize}
+    
+%     Now finding that $\ker\phi = H'(H \cap K')$, and knowing that $\ker\phi \unlhd H'(H\cap K)$ (\textbf{Proposition \ref{prop-kernel-is-normal-subgroup-of-domain}}), means that $H'(H \cap K') \unlhd H'(H\cap K)$, proving statement 1 of this lemma.
+    
+%     A similar argument follows for a similar map $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, yielding $\im\psi = (H\cap K)/\mathcal{A}$ and $\ker\psi = K'(H\cap K)$ which proves statement 2.
+    
+%     The final step is to apply the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) to both $\phi$ and $\psi$. This yields
+%     \[
+%         \frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{H\cap K}{\mathcal{A}} 
+%         \text{ and }
+%         \frac{K'(H\cap K)}{K'(H'\cap K)} \cong \frac{H\cap K}{\mathcal{A}}
+%     \]
+%     whence statement 3 immediately follows.
+% \end{proof}
+
+% \section{Schreier Refinement Theorem and Jordan-H\"older Theorem}
+% This next section proves fundamental theorems about composition series, but will be fairly technical.
+
+% Before we look at them, we introduce \textbf{refinements}.
+% \begin{definition}
+%     Let $G$ be a group. Let $\mathcal{H} = \langle H_i \rangle_{i\in\{0,\dots,m\}}$ be a subnormal series for $G$, where
+%     \[
+%         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m = G,
+%     \]
+%     and let $\mathcal{K} = \langle K_j \rangle_{j\in\{0,\dots,n\}}$ be a subnormal series for $G$, where
+%     \[
+%         1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_n = G.
+%     \]
+%     If every $H_i$ appears in $\mathcal{K}$ (i.e., $\mathcal{H}$ is a subsequence of $\mathcal{K}$), then $\mathcal{K}$ is a \textbf{refinement}\index{refinement} of $\mathcal{H}$.
+% \end{definition}
+% \begin{example}
+%     We previously found that
+%     \[
+%         1 \lhd \{e, r^2\} \lhd D_4 \text{ and } 1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.    
+%     \]
+%     Thus $1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4$ is a refinement of $1 \lhd \{e, r^2\} \lhd D_4$.
+% \end{example}
+
+% We can now introduce the \textbf{Schreier Refinement Theorem}.
+% \begin{theorem}[Schreier Refinement Theorem]\label{thrm-schreier}\index{Schreier Refinement Theorem}
+%     Let $G$ be a finite group. Two (sub)normal series for $G$ have refinements of equal length whose factor groups are isomorphic.
+% \end{theorem}
+% \begin{remark}
+%     This theorem is also called the \textbf{Schreier-Zassenhaus Theorem} (e.g. in \cite{clark_1984,proofwiki_schreierzassenhaus}) due to the use of Zassenhaus' Lemma in the proof.
+% \end{remark}
+
+% \begin{proof}[Proof (see {\cite[\S 72]{clark_1984}} and \cite{proofwiki_schreierzassenhaus})]
+%     Suppose that
+%     \begin{equation}\label{eqn:thrm-schreier-eqn-a}
+%         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m = G    
+%         \tag{A}
+%     \end{equation}
+%     and
+%     \begin{equation}\label{eqn:thrm-schreier-eqn-b}
+%         1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_n = G    
+%         \tag{B}
+%     \end{equation}
+%     are two subnormal series of $G$. We shall refine the subnormal series (\ref{eqn:thrm-schreier-eqn-a}) to a series (\ref{eqn:thrm-schreier-eqn-a-prime}) and show that it is isomorphic to a refinement (\ref{eqn:thrm-schreier-eqn-b-prime}) of (\ref{eqn:thrm-schreier-eqn-b}).
+    
+%     Let a new series be formed
+%     \begin{equation}\label{eqn:thrm-schreier-eqn-a-prime}
+%         1 = \hat{H}_0 \subseteq \hat{H}_1 \subseteq \hat{H}_2 \subseteq \cdots \subseteq \hat{H}_{mn - 1} \subseteq \hat{H}_{mn} = G
+%         \tag{A'}
+%     \end{equation}
+%     such that
+%     \[
+%         \hat{H}_k = H_q(H_{q+1}\cap K_r)
+%     \]
+%     for $k = qn + r$, where $0 \leq q < m$ and $0 \leq r \leq n$. It needs to be demonstrated that $\hat{H}_k$ is well-defined. Consider the ambiguity of the $k = qn + r$ in the case where $r = n$, so $k = qn + n = (q+1)n + 0$. For (\ref{eqn:thrm-schreier-eqn-a-prime}) to be well defined, we require
+%     \[
+%         H_q(H_{q+1} \cap K_n) = H_{q+1}(H_{q+2} \cap K_0).
+%     \]
+%     We note $H_q \subseteq H_{q+1}$. Thus the left-hand side is
+%     \begin{align*}
+%         H_q(H_{q+1} \cap K_n) &= H_q(H_{q+1} \cap G) & (\text{since } K_n = G)\\
+%         &= H_qH_{q+1}\\
+%         &= H_{q+1} & (\text{by \textbf{Problem \ref{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}}})
+%     \end{align*}
+%     while the right-hand side is
+%     \begin{align*}
+%         H_{q+1}(H_{q+2} \cap K_0) &= H_{q+1}(H_{q+2} \cap \{e\})\\
+%         &= H_{q+1}(\{e\})\\
+%         &= H_{q+1},
+%     \end{align*}
+%     so this is well-defined.
+    
+%     We next need to demonstrate that $\hat{H}_k \lhd \hat{H}_{k+1}$. Write $k$ as $qn+r$ in which $0 \leq q < m$ and $0 \leq r < n$. Hence
+%     \[
+%         \hat{H}_{k+1} = \hat{H}_{qn+(r+1)} = H_q(H_{q+1}\cap K_{r+1}). 
+%     \]
+%     Since $K_r \lhd K_{r+1}$ we have
+%     \[
+%         \hat{H}_k = H_q(H_{q+1}\cap K_r) \lhd H_q(H_{q+1}\cap K_{r+1}) = \hat{H}_{k+1}
+%     \]
+%     by Zassenhaus' Lemma (\textbf{Lemma \ref{lemma-zassenhaus}}), statement 1. Thus $\hat{H}_k \lhd \hat{H}_{k+1}$, which is what we wanted to prove. However we note that (\ref{eqn:thrm-schreier-eqn-a-prime}) may not be a subnormal series, as it is possible for $\hat{H}_k = \hat{H}_{k+1}$ for some $k$. We will address this concern near the end.
+    
+%     Having created series (\ref{eqn:thrm-schreier-eqn-a-prime}), use the same procedure to form
+%     \begin{equation}\label{eqn:thrm-schreier-eqn-b-prime}
+%         1 = \hat{K}_0 \subseteq \hat{K}_1 \subseteq \hat{K}_2 \subseteq \cdots \subseteq \hat{K}_{mn - 1} \subseteq \hat{K}_{mn} = G
+%         \tag{B'}
+%     \end{equation}
+%     such that
+%     \[
+%         \hat{K}_l = H_q(H_{q+1}\cap K_r)
+%     \]
+%     for $l = qm + r$, where $0 \leq q < n$ and $0 \leq r \leq m$. The same statements made for (\ref{eqn:thrm-schreier-eqn-a-prime}) apply to (\ref{eqn:thrm-schreier-eqn-b-prime}).
+    
+%     Now let $k = un + v$ and let $l = vm + u$. It follows that
+%     \begin{align*}
+%         \hat{H}_{k+1}/\hat{H}_k &= \frac{H_u(H_{u+1}\cap K_{v+1})}{H_u(H_{u+1}\cap K_v)}\\
+%         &\cong \frac{K_v(K_{v+1}\cap H_{u+1})}{K_v(K_{v+1}\cap H_u)}\\
+%         &= \hat{K}_{l+1}/\hat{K}_l
+%     \end{align*}
+%     with the isomorphism achieved by Zassenhaus' Lemma, statement 3. Thus (\ref{eqn:thrm-schreier-eqn-a-prime}) and (\ref{eqn:thrm-schreier-eqn-b-prime}) have isomorphic factors.
+    
+%     We return to the concern about the possibility that $\hat{H}_k = \hat{H}_{k+1}$ (or $\hat{K}_l = \hat{K}_{l+1}$) for some $k$ (or $l$). Eliminating redundancies in both (\ref{eqn:thrm-schreier-eqn-a-prime}) and (\ref{eqn:thrm-schreier-eqn-b-prime}) would yield two refinements of equal length, whose factor groups are isomorphic.
+    
+%     Finally, observe that if both original series (\ref{eqn:thrm-schreier-eqn-a}) and (\ref{eqn:thrm-schreier-eqn-b}) were normal series of $G$, then each $\hat{H}_k$ and $\hat{K}_l$ would be a normal subgroup of $G$, so their respective refined series would also be a normal series.
+% \end{proof}
+
+% We can now introduce and prove the \textbf{Jordan-H\"older Theorem}.
+% \begin{theorem}[Jordan-H\"older]\label{thrm-jordan-holder}\index{Jordan-H\"older Theorem}
+%     Two composition series for a finite group have the same length and composition factors.
+% \end{theorem}
+% \begin{proof}
+%     The Schreier Refinement Theorem (\textbf{Theorem \ref{thrm-schreier}}) tells us that two subnormal series have refinements of equal length whose factors are isomorphic.
+    
+%     Now a composition series has no proper refinements since all subgroups inside a composition series are maximal normal subgroups. Hence any refinements must be identical to the composition series themselves.
+    
+%     Therefore, any two composition series (which are their own refinements) for a finite group have the same length and composition factors.
+% \end{proof}
+
+% \begin{example}
+%     We found in an earlier example the 3 distinct composition series for $D_6$:
+%     \begin{align*}
+%         &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6,\\
+%         &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6, \text{ and}\\
+%         &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
+%     \end{align*}
+%     The factors in each case (in order) are:
+%     \begin{itemize}
+%         \item $\Cn{2}/1 \cong \Cn{2}$, $\Cn{6}/\Cn{2} \cong \Cn{3}$ (\textbf{Exercise \ref{exercise-Zmn-mod-Zn-cong-Zn}}), $D_6 / \Cn{6}$;
+%         \item $\Cn{3}/1 \cong \Cn{3}$, $\Cn{6}/\Cn{3} \cong \Cn{2}$, $D_6 / \Cn{6}$; and
+%         \item $\Cn{3}/1 \cong \Cn{3}$, $D_3 / \Cn{3} \cong \Cn{2}$, $D_6 / D_3$.
+%     \end{itemize}
+%     By the Jordan-H\"older theorem, the factors must be isomorphic to each other. Looking at the last 2 factor lists, only one factor from each is unaccounted for, namely the factors $D_6 / \Cn{6}$ and $D_6 / D_3$. Since Jordan-H\"older guarantees that they are isomorphic to each other, hence, technically, $D_6 / \Cn{6} \cong D_6 / D_3$.
+
+%     \textbf{Important note}: The $\Cn{6}$ and $D_3$ above represent \textbf{subgroups} of $D_6$ (up to isomorphism), not the actual groups themselves. The subgroup of $D_6$ that is isomorphic to $\Cn{6}$ is $\langle r \rangle$, while the subgroup isomorphic to $D_3$ is $\langle r^2, s\rangle$. Therefore the correct statement is
+%     \[
+%         D_6 / \langle r \rangle \cong D_6 / \langle r^2, s\rangle.
+%     \]
+% \end{example}
+
+% \begin{exercise}
+%     Let $p$ be a prime. Show that any group with order $p^2$ has only one composition series.
+% \end{exercise}
+
+% \newpage
+
+% \section{Problems}
+% \begin{problem}
+%     Let the \textit{Klein four-group}\index{Klein four-group} with presentation
+%     \[
+%         \langle a, b \vert a^2 = b^2 = (ab)^2 = e \rangle
+%     \]
+%     be denoted by $\mathrm{V}$. Recall that $\mathrm{V} \cong (\mathbb{Z}_2)^2$.
+%     \begin{enumerate}[label=(\roman*)]
+%         \item Find the unique composition series for $\mathrm{V}$ up to isomorphism.
+%         \item Let $\mathrm{Q}$ denote the quaternion group. Find the two unique composition series for $\mathrm{Q}$ up to isomorphism.\newline
+%         (\textit{Hint: consider the alternate definition of the quaternion group.})
+%         \item Let $H$ be the subgroup of $\mathrm{Q}$ that is isomorphic to $\Cn{4}$, and $K$ be a subgroup of $\mathrm{Q}$ that is isomorphic to $\mathrm{V}$. Prove that
+%         \[
+%             \mathrm{Q}/H \cong \mathrm{Q}/K.
+%         \]
+%         (\textit{Hint: consider \textbf{Problem \ref{problem-cartesian-product-of-group-by-group-isomorphic-to-group}}.})
+%     \end{enumerate}
+% \end{problem}
+
+% \begin{problem}\label{problem-S4-composition-series}
+%     Find the unique composition series of $\Sn{4}$ (up to isomorphism).\newline
+%     (\textit{Hint: consider the orders of elements in $\An{4}$ and \textbf{Problem \ref{problem-subgroup-of-index-2}} to prove why a particular subgroup with a particular order cannot exist.})
+% \end{problem}
+
+%=========================================
+\chapter{Simple Groups}
+Simple groups can be thought of as the `building blocks' of all (finite) groups. The finite simple groups have been completely classified; each belongs to one of 18 infinite families, or is one of 26 sporadic groups that do not follow a specific pattern. We look at the classification of the families of these simple groups here.
+
+\section{Cyclic Groups of Prime Order}
+The first infinite family of simple groups we will look at is the family of \textbf{Cyclic Groups of Prime Order}\index{cyclic group!of prime order}.
+
+\begin{lemma}\label{lemma-cyclic-group-simple-iff-order-is-prime}
+    $\Cn{n}$ is simple if and only if $n$ is prime.
+\end{lemma}
+\begin{proof}
+    We prove the forward direction. Suppose $\Cn{n}$ is simple with generator $g$. Then the only normal subgroups of $\Cn{n}$ are the trivial group and the group itself. Seeking a contradiction, assume $n$ is not prime; write $n = ab$ where $a$ and $b$ are positive integers that are both smaller than $n$. Then clearly $\langle g^a\rangle$ is a subgroup of $\Cn{n}$. Now $\Cn{n}$ is abelian (\textbf{Proposition \ref{prop-cyclic-group-is-abelian}}) which means all subgroups are normal (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}). Hence we have found another normal subgroup of $\Cn{n}$, contradicting that $\Cn{n}$ has no proper normal subgroups. Therefore $n$ is prime.
+    
+    We prove the reverse direction. Suppose $n$ is a prime. Then by a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-group-with-prime-order-subgroups}}), $\Cn{n}$ has no proper subgroups. So, the only subgroup with order smaller than $n$ is the trivial group, $\{e\}$. Clearly $\Cn{n}$ is normal in itself, and the trivial group is always a normal subgroup. Hence, as the only normal subgroups of $\Cn{n}$ is the trivial group and itself, $\Cn{n}$ is simple. Therefore, if $n$ is prime then $\Cn{n}$ is simple.
+\end{proof}
+
+In fact, we have a much stronger result which we prove here.
+\begin{theorem}\label{thrm-abelian-group-simple-iff-cylic-group-of-prime-order}
+    An abelian group is simple if and only if it has prime order.
+\end{theorem}
+Note that we do not assume that the abelian group is finite; we will show that the group is finite in the proof below.
+\begin{proof}
+    The reverse direction of the claim follows immediately from \textbf{Lemma \ref{lemma-cyclic-group-simple-iff-order-is-prime}}, so we prove the forward direction only.
+    
+    Suppose $G$ is a simple abelian group; we show that $G$ is finite. Suppose $g \in G$ such that $g \neq e$. Then the group $H = \langle g \rangle \leq G$. In fact, since $G$ is abelian, $H \unlhd G$ (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}), therefore $H = G$ as $G$ is simple. Now if $G$ is an infinite group, then $\langle g^2 \rangle < G$ which implies $\langle g^2 \rangle \lhd G$, contradicting the fact that $G$ is simple. Hence $G$ is a finite abelian group with generator $g$, meaning $G$ is cyclic. Result follows directly from \textbf{Lemma \ref{lemma-cyclic-group-simple-iff-order-is-prime}}.
+\end{proof}
+
+From this, we have found that the only family of simple abelian groups is the family of cyclic groups of prime order.
+
+\newpage
+
+\section{Alternating Group with Degree \texorpdfstring{$>4$}{More Than 4}}
+The other family of simple groups that is relatively easy to find is the family of \textbf{alternating groups with degree of above 4}\index{alternating group!of degree $>4$}.
+
+However, to prove this claim, we need several preliminary results.
+
+\begin{lemma}\label{lemma-group-of-order-60-with->1-sylow-5-subgroup-is-simple}
+    Let $G$ be a group of order 60. If $G$ has more than one Sylow 5-subgroup then $G$ is simple.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[p.~145, Proposition 21]{dummit_foote_2004}})]
+    We fill in most details of the proof here, although we leave some exercises for the reader.
+
+    By way of contradiction assume $G$ is a group of order 60 with more than one Sylow 5-subgroup, but has a proper normal subgroup $H$. Note $60 = 5 \times 12$, so by the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}):
+    \begin{itemize}
+        \item $12 \vert n_5$, so $n_5 \in \{1, 2, 3, 4, 6, 12\}$; and
+        \item $n_5 \equiv 1 \pmod 5$, so $n_5 \in \{1, 6, 11, 16, \dots\}$.
+    \end{itemize}
+    Therefore $n_5 = 6$ as $n_5 > 1$. Let $P \in \Syl{5}{G}$.
+
+    We note by Lagrange's theorem (\textbf{Theorem \ref{thrm-lagrange}}) that the order of $H$ belongs in the set $\{1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60\}$, since the order of $G$ must be a multiple of the order of $H$. As $H$ is a proper subgroup of $G$, thus $|H| \neq 1$ and $|H| \neq 60$. That leaves 4 cases which we will deal with separately.
+    \begin{enumerate}
+        \item $|H| = 6$. Note $6 = 2 \times 3$, so \textbf{Problem \ref{problem-group-of-order-pq-has-normal-subgroup-of-order-q}} tells us that there exists a $N \lhd H$ with $|N| = 3$. Note also $[G:H] = 10$ which is not a multiple of 3, so \textbf{Problem \ref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}} tells us that all Sylow 3-subgroups of $G$ are in $H$. But $N \lhd H$ means that $N$ is the unique Sylow 3-subgroup of $H$ and $G$ (\textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}), so $N \lhd G$ (by the same corollary). Proceed to case 3, using $N$ in place of $H$.
+        
+        \item $|H| = 12$. Note $12 = 2^2 \times 3$. Now \textbf{Exercise \ref{exercise-group-of-order-12-has-normal-subgroup-of-3-or-4}} (later) tells us that there exists a normal subgroup of $H$ with order 3 or 4 (or both). Call that subgroup $N$. If $|N| = 3$ then it is a Sylow 3-subgroup; if $|N| = 4 = 2^2$ it is a Sylow 2-subgroup. Since $H \lhd G$, thus $H$ contains all Sylow 2- and 3-subgroups of $G$ (\textbf{Problem \ref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}}), meaning $G$ has only one Sylow 2-subgroup or one Sylow 3-subgroup (or both), in particular $N$. Hence, $N \lhd G$ since a Sylow $p$-subgroup is unique if and only if it is normal (\textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}). Proceed with case 3, using $N$ instead of $H$.
+        
+        \item $|H| \in \{2, 3, 4\}$. Since $H \lhd G$, thus $G/H$ is a group. Note $|G/H| \in \{15, 20, 30\}$. We claim that each of these cases produces a new normal subgroup of $G/H$ (call it $\bar{P}$) with order 5. This is proven for the case where $|G/H| = 30$ in \textbf{Problem \ref{problem-group-of-order-30-has-normal-subgroup-of-order-5}}; the other two cases are for \textbf{Exercise \ref{exercise-group-of-order-15-or-20-has-normal-subgroup-of-order-5}} (later).
+
+        Now \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} tells us that $\bar{P}$ has the form $K/H$ where $K < G$ and $H \subseteq K$. Since $\bar{P} = K/H \lhd G/H$, thus for any $g \in G$ and $kH \in \bar{P}$ we have
+        \[
+            (gH)(kH)(g^{-1}H) = (gkg^{-1})H \in K/H,
+        \]
+        which means $gkg^{-1} \in K$. Therefore $K \lhd G$ by definition of normality.
+
+        Observe that this means that
+        \[
+            |K| = |K/H||H| = |\bar{P}||H| = 5|H|,    
+        \]
+        meaning $K$ is a normal subgroup of $G$ with an order that is a multiple of 5. Proceed to case 4, using $K$ in place of $H$.
+
+        \item $|H|$ is a multiple of 5, meaning $H$ has a Sylow 5-subgroup. Note $5 \nmid [G:H]$, so \textbf{Problem \ref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}} implies all Sylow 5-subgroups of $G$ are in $H$ and vice versa. Note there are $5-1=4$ non-identity elements in each Sylow 5-subgroup; therefore
+        \[
+            |H| \geq n_5(5-1) = 24
+        \]
+        which means that $|H| = 30$. By \textbf{Problem \ref{problem-group-of-order-30-has-normal-subgroup-of-order-5}} again, such a group has only a unique Sylow 5-subgroup. However, right at the start, we concluded that $n_5 = 6$, a contradiction.
+    \end{enumerate}
+    Hence, $H$ does not exist; $G$ is simple.
+\end{proof}
+
+\begin{exercise}\label{exercise-group-of-order-12-has-normal-subgroup-of-3-or-4}
+    Prove that a group of order 12 either has a normal subgroup of order 3, or a normal subgroup of order 4, or both.
+\end{exercise}
+
+\begin{exercise}\label{exercise-group-of-order-15-or-20-has-normal-subgroup-of-order-5}
+    Prove that a group of each of the following orders has a normal subgroup of order 5.
+    \begin{enumerate}[label=(\alph*)]
+        \item 15
+        \item 20
+    \end{enumerate}
+\end{exercise}
+
+\begin{corollary}\label{corollary-A5-is-simple}
+    The group $\An5$ is simple.
+\end{corollary}
+\begin{proof}
+    \textbf{Exercise \ref{exercise-A5-has-two-distinct-subgroups-of-order-5}} (later) gives two distinct subgroups of order 5. Since $|\An{5}| = 60 = 2^2 \times 3 \times 5$, thus subgroups of order 5 are Sylow 5-subgroups. Therefore $\An5$ is simple by \textbf{Lemma \ref{lemma-group-of-order-60-with->1-sylow-5-subgroup-is-simple}}. 
+\end{proof}
+\begin{exercise}\label{exercise-A5-has-two-distinct-subgroups-of-order-5}
+    Consider the permutation
+    \[
+        \sigma = \begin{pmatrix}1&3&2&4&5\end{pmatrix}.
+    \]
+    \begin{enumerate}[label=(\roman*)]
+        \item Explain why $\sigma \in \An{5}$.
+        \item Find the order of the subgroup $\langle \sigma \rangle$.
+        \item Find another subgroup of $\An{5}$ with order 5.
+    \end{enumerate}
+\end{exercise}
+
+We also state and prove a fairly obvious proposition.
+\begin{proposition}\label{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}
+    Let the integer $n \geq 3$. Let $\{1, 2, 3, \dots, n\}$ be denoted by $\mathcal{N}_n$. Suppose $\An{n}$ acts on $\mathcal{N}_n$ naturally. Then $\Stab{\An{n}}{r} \cong \An{n-1}$.
+\end{proposition}
+\begin{proof}
+    We note that elements of $\Stab{\An{n}}{r}$ are permutations that fix $r$, thereby permuting the $n - 1$ other elements. Therefore elements of $\Stab{\An{n}}{r}$ are even permutations on $n - 1$ elements, i.e. $\Stab{\An{n}}{r} \cong \An{n-1}$.
+\end{proof}
+
+With these results, we are ready to prove that an alternating group with a degree above 4 is simple.
+\begin{theorem}\label{thrm-An-is-simple-for-n>=5}
+    The group $\An{n}$ is simple if $n \geq 5$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[pp.~149--150, Theorem 24]{dummit_foote_2004}})]
+    We induct on $n$. For brevity, we denote the set $\mathcal{N}_n = \{1, 2, 3, \dots, n\}$.
+    
+    The base case of $n = 5$ is covered by \textbf{Corollary \ref{corollary-A5-is-simple}}. Assume that $\An{k-1}$ is simple for some $k \geq 6$; we will prove that $\An{k}$ is also simple.
+
+    Let $G = \An{k}$, and, seeking a contradiction, assume that $G$ has a proper normal subgroup $H$. Let $G$ act on $\mathcal{N}_{k}$ natrually; thus $\Stab{G}{i} \leq G$ with $\Stab{G}{i} \cong \An{k-1}$ (\textbf{Proposition \ref{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}}). Note $\An{k-1}$ is simple by Induction Hypothesis, so $\Stab{G}{i}$ is simple for each $i \in \mathcal{N}_{k}$.
+
+    Suppose first that there is some non-identity $\pi \in H$ such that $\pi(i) = i$ for some $i \in \mathcal{N}_{k}$. This means that $\pi$ fixes $i$; thus $\pi \in H \cap \Stab{G}{i}$. Note that since $H \lhd G$ and $\Stab{G}{i} \leq G$ thus $H \cap \Stab{G}{i} \lhd \Stab{G}{i}$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 4. But as $\Stab{G}{i}$ is simple (and non-trivial) we must have $H \cap \Stab{G}{i} = \Stab{G}{i}$. Therefore
+    \[
+        \Stab{G}{i} \subseteq H \implies \Stab{G}{i} \leq H.
+    \]
+    Now by \textbf{Exercise \ref{exercise-conjugate-of-stabilizer}} (later), for any $\sigma \in G$, we obtain the fact that $\sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{\sigma(i)}$. Therefore, by conjugating the above relation by $\sigma$, we see
+    \[
+        \sigma\Stab{G}{i}\sigma^{-1} \leq \sigma H\sigma^{-1} = H
+    \]
+    since $H \lhd G$. Thus, by choosing $\sigma \in G$ such that $\sigma(i) = j$ for any $j \in \mathcal{N}_{k+1}$ required, we see
+    \[
+        \sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{j} \leq H \text{ for all } j \in \mathcal{N}_{k}.
+    \]
+    
+    Note that any element in $G$ (say $\lambda$) may be written as a product of an even number of transpositions (\textbf{Theorem \ref{thrm-parity-of-permutation}}), say $2t$ transpositions. Thus, we may write
+    \[
+        \lambda = \lambda_1\lambda_2\cdots\lambda_t
+    \]
+    where each $\lambda_i$ is a product of two transpositions. Now as $k \geq 5$, each $\lambda_i$ (which could, at most, consist of two disjoint cycles of 4 elements) must fix at least one element in $\mathcal{N}_{k}$, say $j$. That is, $\lambda_i \in \Stab{G}{j}$ for some $j \in \mathcal{N}_{k}$.
+    
+    As noted above, every $\lambda \in G$ is generated by these $\lambda_i$'s, and since $\lambda_i \in \Stab{G}{j} \leq H$ for some $j \in \mathcal{N}_{k}$, thus $\lambda_i \in H$. Hence, as $H$ is a subgroup and hence closed, therefore $\lambda = \lambda_1\lambda_2\cdots\lambda_t \in H$. Therefore, any element in $G$ is also in $H$, meaning $G \subseteq H$, contradicting the fact that $H \lhd G$ which means $H \subset G$.
+    
+    We conclude that if $\pi \in H$ and $\pi \neq \id$ then $\pi(i) \neq i$ for all $i \in \mathcal{N}_k$. Now suppose $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$. Then $\pi_2^{-1}\pi_1(i) = i$, which implies $\pi_2^{-1}\pi_1 = \id$. Hence $\pi_1 = \pi_2$. Therefore, if $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$, then $\pi_1 = \pi_2$.
+
+    Now suppose there exists a non-identity $\pi_1 \in H$ such that the cycle decomposition of $\pi_1$ contains a cycle of length of at least 3, say
+    \[
+        \pi_1 = \begin{pmatrix}a_1&a_2&a_3&\cdots\end{pmatrix} \begin{pmatrix}b_1&b_2&\cdots\end{pmatrix}\cdots
+    \]
+    where $a_1$, $a_2$, $a_3$, $b_1$, $b_2$, etc. are distinct (which is possible since $k \geq 5$). We note an element $\sigma \in G$ exists such that $\sigma(a_1) = a_1$, $\sigma(a_2) = a_2$, but $\sigma(a_3) \neq a_3$, because $k \geq 4$. Then \textbf{Exercise \ref{exercise-conjugation-of-permutation-by-another}} (below) gives
+    \[
+        \sigma\pi_1\sigma^{-1} = \begin{pmatrix}a_1&a_2&\sigma(a_3)&\cdots\end{pmatrix} \begin{pmatrix}\sigma(b_1)&\sigma(b_2)&\cdots\end{pmatrix}\cdots.
+    \]
+    Set $\pi_2 = \sigma\pi_1\sigma^{-1}$, which is clearly distinct from $\pi_1$. Then we see $\pi_1(a_1) = \pi_2(a_1) = a_2$, contrary to the above observation that $\pi_1(i) = \pi_2(i)$ implies $\pi_1 = \pi_2$. Therefore only 2-cycles can appear in the cycle decomposition of non-identity elements of $H$.
+
+    Let $\pi_1 \in H$ be a non-identity element, so that
+    \[
+        \pi_1 = \begin{pmatrix}a_1&a_2\end{pmatrix} \begin{pmatrix}a_3&a_4\end{pmatrix} \begin{pmatrix}a_5&a_6\end{pmatrix}\cdots
+    \]
+    where each $a_i$ is distinct (note that $k \geq 6$ is used above). Consider $\sigma = \begin{pmatrix}a_1&a_2\end{pmatrix} \begin{pmatrix}a_3&a_5\end{pmatrix}$, which is in $G$ since it is made up of 2 transpositions. Then \textbf{Exercise \ref{exercise-conjugation-of-permutation-by-another}} again gives
+    \[
+        \sigma\pi_1\sigma^{-1} = \begin{pmatrix}a_1&a_2\end{pmatrix} \begin{pmatrix}a_5&a_4\end{pmatrix} \begin{pmatrix}a_3&a_6\end{pmatrix}\cdots.
+    \]
+    Setting $\pi_2 = \sigma\pi_1\sigma^{-1}$ again gives two distinct permutations $\pi_1$ and $\pi_2$ such that $\pi_1(a_1) = \pi_2(a_1) = a_2$, again contrary to the above observation.
+
+    We conclude that such a proper normal subgroup $H$ cannot exist. Thus, $\An{k-1}$ being simple implies that $\An{k}$ is also simple.
+
+    By mathematical induction, $\An{n}$ is simple for all $n \geq 5$.
+\end{proof}
+
+\begin{exercise}\label{exercise-conjugate-of-stabilizer}
+    Let $S$ be a set and let $G \leq \Sym{S}$ act on $S$. Let $\sigma \in G$ and $x \in S$. Show that
+    \[
+        \sigma\Stab{G}{x}\sigma^{-1} = \Stab{G}{\sigma(x)}.
+    \]
+\end{exercise}
+
+\begin{exercise}\label{exercise-conjugation-of-permutation-by-another}
+    Let $\sigma, \pi \in \Sn{n}$. Suppose $\sigma$ has cycle decomposition
+    \[
+        \begin{pmatrix}a_1&a_2&\cdots&a_{k_1}\end{pmatrix} \begin{pmatrix}b_1&b_2&\cdots&b_{k_2}\end{pmatrix}\cdots,
+    \]
+    where $a_1, a_2, \dots, a_{k+1}$. Show that $\pi\sigma\pi^{-1}$ has cycle decomposition
+    \[
+        \begin{pmatrix}\pi(a_1)&\cdots&\pi(a_{k_1})\end{pmatrix} \begin{pmatrix}\pi(b_1)&\cdots&\pi(b_{k_2})\end{pmatrix}\cdots,
+    \]
+    that is, $\pi\sigma\pi^{-1}$ is obtained from $\sigma$ by replacing each entry $i$ in the cycle decomposition by $\pi(i)$.
+\end{exercise}
+
+\begin{corollary}
+    The group $\An{n}$ is simple if $n \geq 3$ and $n \neq 4$.
+\end{corollary}
+\begin{proof}
+    We note $\An3$ has order $\frac{3!}{2} = 3$ which is prime, so $\An3 \cong \Cn3$ which is simple. Also $\An{n}$ is simple for $n \geq 5$ by \textbf{Theorem \ref{thrm-An-is-simple-for-n>=5}}.
+\end{proof}
+
+We note that $\An4$ is non-simple by \textbf{Problem \ref{problem-S4-composition-series}}'s solution that $\An4$ has a unique composition series of
+\[
+    1 \lhd \Cn2 \lhd \mathrm{V} \lhd \An4
+\]
+up to isomorphism.
+
+\section{Groups of Lie Type}
+\textit{We briefly mention groups of Lie type here; we will not prove any significant results here.}
+
+Groups of Lie (pronunced ``lee'') type\index{groups of Lie type} usually refers to finite groups that are closely related to the group of rational points of a reductive linear algebraic group with values in a finite field. We will cover finite fields in Volume \rom{3}. We briefly mention these groups here.
+
+In what follows, taken from \cite{wikipedia_listofsimplegroups}, $n$ is a positive integer, and $q$ is a positive power of a prime number $p$.
+\begin{itemize}
+    \item \textbf{Classical Chevalley groups}\index{Chevalley groups!classical}: there are 4 families of simple groups in this category.
+    \begin{itemize}
+        \item $A_n(q)$, except for $A_1(2)$ and $A_1(3)$. There are several duplicates, which are
+        \begin{itemize}
+            \item $A_1(4) \cong A_1(5) \cong \An{5}$;
+            \item $A_1(7) \cong A_2(2)$;
+            \item $A_1(9) \cong \An{6}$; and
+            \item $A_3(2) \cong \An{8}$.
+        \end{itemize}
+        We note that $\An{n}$ is not the same as $A_n(q)$. We distinguish between the alternating group of degree $n$ ($\An{n}$) and the groups of Lie type $A_n(q)$ by letting the latter be in italics and the former be in `normal' font.
+
+        \item $B_n(q)$ for $n > 1$, except for $B_2(2)$. There are several duplicates, which are
+        \begin{itemize}
+            \item $B_n(2^m) \cong C_n(2^m)$; and
+            \item $B_2(3) \cong {^2A_3(2^2)} = {^2A_3(4)}$.
+        \end{itemize}
+        \item $C_n(q)$ for $n > 2$. The only duplicate is $C_n(2^m) \cong B_n(2^m)$.
+        \item $D_n(q)$ for $n > 3$.
+    \end{itemize}
+    
+    \item \textbf{Exceptional Chevalley groups}\index{Chevalley groups!exceptional}: there are 5 families of simple groups in this category:
+    \begin{itemize}
+        \item $E_6(q)$;
+        \item $E_7(q)$;
+        \item $E_8(q)$;
+        \item $F_4(q)$; and
+        \item $G_2(q)$, except for $G_2(2)$.
+    \end{itemize}
+    
+    \item \textbf{Classical Steinberg groups}\index{Steinberg groups!classical}: there are 2 families of simple groups in this category.
+    \begin{itemize}
+        \item ${^2A_n(q^2)}$ for $n > 1$, except for ${^2A_2(2^2)} = {^2A_2(4)}$. The only duplicate is ${^2A_3(2^2)} \cong B_2(3)$.
+        \item ${^2D_n(q^2)}$ for $n > 3$.
+    \end{itemize}
+    
+    \item \textbf{Exceptional Steinberg groups}\index{Steinberg groups!exceptional}: there are 2 families of simple groups in this category:
+    \begin{itemize}
+        \item ${^2E_6(q^2)}$; and
+        \item ${^3D_4(q^3)}$.
+    \end{itemize}
+    
+    \item \textbf{Suzuki groups}\index{Suzuki groups}: there is 1 family of simple groups in this category, which is ${^2B_2(q)}$ where $q = 2^{2n+1}$ and $n \geq 1$. Such a group has order $q^2(q^2+1)(q-1)$.
+    
+    \item \textbf{Ree groups}\index{Ree groups}: there are 2 families of simple groups in this category.
+    \begin{itemize}
+        \item $^2F_4(q)$ where $q = 2^{2n+1}$ and $n \geq 1$. The order of such a group is $q^{12}(q^6+1)(q^4-1)(q^3+1)(q-1)$.
+        \item $^2G_2(q)$ where $q = 3^{2n+1}$ and $n \geq 1$. The order of such a group is $q^3(q^3+1)(q-1)$.
+    \end{itemize}
+\end{itemize}
+
+There is also the \textbf{Tits group}\index{Tits group}, $^2F_4(2)'$. That group has an order of $17,971,200$.
+
+\newpage
+
+\section{The Sporadic Groups}
+Along with the 18 infinite families of simple groups, there are also 26 sporadic simple groups\index{sporadic group} that do not fall within the families.
+
+We first list four categories of sporadic groups.
+\begin{itemize}
+    \item \textbf{Mathieu groups}\index{Mathieu groups}: There are 5 Mathieu sporadic groups.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Group}    & \textbf{Order} \\ \hline
+            $\mathrm{M}_{11}$ & 7,290          \\ \hline
+            $\mathrm{M}_{12}$ & 95,040         \\ \hline
+            $\mathrm{M}_{22}$ & 443,520        \\ \hline
+            $\mathrm{M}_{23}$ & 10,200,960     \\ \hline
+            $\mathrm{M}_{24}$ & 244,823,040    \\ \hline
+        \end{tabular}
+    \end{table}
+
+    \item \textbf{Janko groups}\index{Janko groups}: There are 4 Janko sporadic groups.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Group} & \textbf{Order}             \\ \hline
+            $\mathrm{J}_1$ & 175,560                    \\ \hline
+            $\mathrm{J}_2$ & 604,800                    \\ \hline
+            $\mathrm{J}_3$ & 50,232,960                 \\ \hline
+            $\mathrm{J}_4$ & 86,775,571,046,077,562,880 \\ \hline
+        \end{tabular}
+    \end{table}
+
+    \item \textbf{Conway groups}\index{Conway groups}: There are 3 Conway sporadic groups.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Group}  & \textbf{Order}            \\ \hline
+            $\mathrm{Co}_3$ & 495,766,656,000           \\ \hline
+            $\mathrm{Co}_2$ & 42,305,421,312,000        \\ \hline
+            $\mathrm{Co}_1$ & 4,157,776,806,543,360,000 \\ \hline
+        \end{tabular}
+    \end{table}
+
+    \newpage
+
+    \item \textbf{Fischer groups}\index{Fischer groups}: There are 3 Fischer sporadic groups.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Group}     & \textbf{Order}                    \\ \hline
+            $\mathrm{Fi}_{22}$ & 64,561,751,654,400                \\ \hline
+            $\mathrm{Fi}_{23}$ & 4,089,470,473,293,004,800         \\ \hline
+            $\mathrm{Fi}_{24}$ & 1,255,205,709,190,661,721,292,800 \\ \hline
+        \end{tabular}
+    \end{table}
+\end{itemize}
+
+More sporadic groups are listed below.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Group}        & \textbf{Symbol} & \textbf{Order}  \\ \hline
+        Higman-Sims group\index{Higman-Sims group}     & HS              & 44,352,000      \\ \hline
+        McLaughlin group\index{McLaughlin group}      & McL             & 898,128,000     \\ \hline
+        Held group\index{Held group}            & He              & 4,030,387,200   \\ \hline
+        Rudvalis group\index{Rudvalis group}        & Ru              & 145,926,144,000 \\ \hline
+        Suzuki sporadic group\index{Suzuki sporadic group} & Suz             & 448,345,497,600 \\ \hline
+        O'Nan group\index{O'Nan group}           & $\mathrm{O'N}$  & 460,815,505,920 \\ \hline
+        Harada-Norton group\index{Harada-Norton group}   & HN              & 273,030,912,000,000    \\ \hline
+        Lyons group\index{Lyons group}           & Ly              & 51,765,179,004,000,000 \\ \hline
+        Thompson group\index{Thompson group}        & Th              & 90,745,943,887,872,000 \\ \hline
+    \end{tabular}
+\end{table}
+
+The remainning 2 sporadic groups are special in that they have extremely large order.
+\begin{itemize}
+    \item The \textbf{Baby Monster group}\index{Baby Monster group}, usually denoted $\mathrm{B}$, contains
+    \begin{align*}
+        &2^{41} \times 3^{13} \times 5^6 \times 7^2 \times 11 \times 13 \times 17 \times 19 \times 23 \times 31 \times 47\\
+        &= 4,154,781,481,226,426,191,177,580,544,000,000
+    \end{align*}
+    elements.
+    \item The \textbf{Monster group}\index{Monster group}, usually denoted $\mathrm{M}$, contains
+    \begin{align*}
+        &2^{46} \times 3^{20} \times 5^9 \times 7^6 \times 11^{2} \times 13^3 \times 17 \times 19 \times 23 \times 29 \times 31 \times \\
+        &\quad 41 \times 47 \times 59 \times 71\\
+        &> 8 \times 10^{53}
+    \end{align*}
+    elements. It is the largest sporadic group.
+\end{itemize}
+
 % %=========================================
 % \appendix
 % \chapter{Exercise Solutions}
