@@ -4139,889 +4139,901 @@
 %     (\textit{Hint: $\Omega = \{x \in X \vert g\cdot x = x \textrm{ for all } g \in G\}$})
 % \end{problem}
 
+% %=========================================
+% \chapter{Sylow Theorems}
+% The Sylow theorems are a collection of theorems named after the Norwegian mathematician Peter Ludwig Sylow that give detailed information about the number of subgroups of fixed order that a given finite group contains. The Sylow theorems form a fundamental part of finite group theory and have very important applications in the classification of finite simple groups.
+
+% \section{First Sylow Theorem}
+% Before we can state the First Sylow Theorem, we introduce some terminology.
+
+% Recall that a group with order $p^k$ for some $k \geq 0$ is called a $p$-group. If $G$ is a group with a subgroup of order $p^k$, then that subgroup is called a \textbf{$p$-subgroup}\index{$p$-subgroup}.
+% \begin{definition}\label{definition-sylow-p-subgroup}
+%     Let $G$ be a finite group. Write the order of the group $G$ as $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then a subgroup $H$ with order $p^k$ is called a \textbf{Sylow $p$-subgroup}\index{Sylow $p$-subgroup} of $G$.
+% \end{definition}
+% We denote the set of all Sylow $p$-subgroups of the group $G$ for a given prime $p$ by $\Syl{p}{G}$.
+
+% \begin{exercise}
+%     Find the Sylow 2-subgroup of $\mathbb{Z}_{12}$.
+% \end{exercise}
+
+% We are now ready to state and prove the \textbf{First Sylow Theorem}.
+% \begin{theorem}[Sylow I]\label{thrm-sylow-1}\index{Sylow Theorem!First}
+%     Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then $\Syl{p}{G} \neq \emptyset$.
+% \end{theorem}
+% \begin{remark}
+%     Equivalently, for a finite group $G$, for every prime factor $p$ of its order, there is a Sylow $p$-subgroup of $G$.
+% \end{remark}
+% \begin{proof}[Proof (see {\cite[pp.~1--3]{mann_2011}})]
+%     We use strong induction on the order of $G$.
+
+%     When the order of $G$ is 1, $|G| = p^0$ for any prime $p$, so $G$ is clearly a Sylow $p$-subgroup of itself.
+
+%     We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$. Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
+
+%     The first case is when $p$ divides the order of the center of $G$, $|\Z{G}|$. By Cauchy's Theorem (\textbf{Theorem \ref{thrm-cauchy}}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \lhd G$ since for all $x \in N$ and $g \in G$,
+%     \[
+%         gxg^{-1} = (gx)g^{-1} = x(gg^{-1}) = x \in N.
+%     \]
+%     Hence $G/N$ is a group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the Inductive Hypothesis, $G/N$ has a Sylow $p$-subgroup, say $\bar{S}$, meaning that $\bar{S}$ has order $p^{k-1}$.
+
+%     We now construct the group $S = \{g \in G \vert gN \in \bar{S}\}$ under the group operation of $G$. Clearly $S$ is non-empty since $e \in S$ (as $eN = N \in \bar{S}$). Suppose $g_1, g_2 \in S$, meaning that $g_1N, g_2N \in \bar{S}$. Therefore $(g_1g_2^{-1})N = (g_1N)(g_2N)^{-1} \in \bar{S}$ which implies that $g_1g_2^{-1} \in S$. By the subgroup test, $S \leq G$. Also, $N \leq S$ since for all $n \in N$, $nN = N \in \bar{S}$.
+
+%     We construct the homomorphism $\phi: S \to \bar{S}$ such that $g \mapsto gN$. By construction one sees clearly that $\phi$ is surjective, meaning that $\im \phi = \bar{S}$. Furthermore,
+%     \begin{align*}
+%         \ker\phi &= \{s \in S \vert \phi(s) = N\}\\
+%         &= \{s \in S \vert sN = N \}\\
+%         &= \{s \in S \vert s \in N \}\\
+%         &= S \cap N\\
+%         &= N & (\text{since } N \subseteq S).
+%     \end{align*}
+%     By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), $S/N \cong \bar{S}$, meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$, which quickly implies that $|S| = p^k$. Hence, there exists a subgroup $S$ such that $|S| = p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
+
+%     We can now start on the second case where $p$ does not divide the order of the center of $G$. Recall the class equation (\textbf{Theorem \ref{thrm-class-equation}})
+%     \[
+%         |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}]
+%     \]
+%     where $g_1, g_2, \dots, g_l$ are representatives of the $l$ distinct conjugacy classes with more than one element. We note that $p$ divides $|G|$. Since $p$ does not divide $|\Z{G}|$ in this case, thus $\sum_{i=1}^l [G:\C{G}{g_i}]$ must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then $|\C{G}{g_i}| = p^ka$ for some $a$.
+
+%     We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly $a \leq m$ since if $a > m$ then $\frac{p^k m}{|\C{G}{g_i}|}$ is not an integer. If instead $a = m$ then $|\C{G}{g_i}| = p^km = |G|$, and since $\C{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \C{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \Z{G}$. But an element is in $\Z{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
+
+%     In summary, $\C{G}{g_i} < G$ with $|\C{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the Induction Hypothesis on $\C{G}{g_i}$ to say that $\C{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\C{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
+
+%     Therefore, any finite group $G$ with order written as $p^k m$ has a Sylow $p$-subgroup, meaning that $\Syl{p}{G} \neq \emptyset$.
+% \end{proof}
+
+% \begin{exercise}
+%     Find all primes $p$ such that $\Syl{p}{\Sn{5}} \neq \emptyset$.
+% \end{exercise}
+
+% \section{Conjugate Subgroup}
+% Before we look at the next Sylow theorem, we need to introduce two more things. The first is the \textbf{conjugate subgroup}.
+% \begin{definition}
+%     Let $G$ be a group, $H \leq G$, and $g \in G$. Then the \textbf{conjugate subgroup of $H$ by $g$}\index{conjugate subgroup} is
+%     \[
+%         gHg^{-1} = \{ghg^{-1} \vert h \in H\}
+%     \]
+%     under the group operation of $G$.
+% \end{definition}
+% We proved that $gHg^{-1}$ is a subgroup of $G$ in \textbf{Exercise \ref{exercise-conjugate-subgroup}}.
+
+% \begin{exercise}\label{exercise-conjugate-subgroup-isomorphic-to-subgroup}
+%     Let $G$ be a group and $H \leq G$. Prove that $gHg^{-1} \cong H$ for any $g \in G$.
+% \end{exercise}
+
+% We prove some results regarding the conjugate subgroup here.
+% \begin{proposition}\label{prop-power-of-conjugate-equals-conjugate-of-power}
+%     Let $G$ be a group, and let $x$ and $y$ be elements in $G$ such that there exists an element $a \in G$ such that $y = axa^{-1}$. Then $y^n = ax^na^{-1}$ for all integers $n$.
+% \end{proposition}
+% \begin{proof}
+%     Trivially, when $n = 0$, $y^0 = e = y^0 = x^0 = ax^0a^{-1}$.
+
+%     We consider a proof by induction for positive integers $n$ and then prove ther case when $n$ is negative.
+
+%     When $n = 1$, $y = axa^{-1}$ is given. Now assume $n = k$ holds true for some positive integer $k$, meaning that $y^k = ax^ka^{-1}$. Then
+%     \begin{align*}
+%         y^{k+1} &= y(y^k)\\
+%         &= (axa^{-1})(ax^ka^{-1}) & (\text{Induction Hypothesis})\\
+%         &= axa^{-1}ax^ka^{-1}\\
+%         &= axx^ka^{-1}\\
+%         &= ax^{k+1}a^{-1}
+%     \end{align*}
+%     which completes this induction for positive integers $n$.
+
+%     Now suppose $n$ is a non-negative integer. Then
+%     \begin{align*}
+%         y^{-n} &= (y^n)^{-1}\\
+%         &= (ax^na^{-1})^{-1} & (\text{by above result})\\
+%         &= a(x^n)^{-1}a^{-1}\\
+%         &= ax^{-n}a^{-1}
+%     \end{align*}
+%     which completes the proof for all integers.
+% \end{proof}
+
+% \begin{proposition}\label{prop-order-of-conjugate-element-equals-order-of-element}
+%     Let $G$ be a group. Then for all $g, x \in G$, we have $|gxg^{-1}| = |x|$.
+% \end{proposition}
+% \begin{proof}
+%     The proposition trivially holds true for $g = e$ so we assume $g \neq e$.
+
+%     Suppose $|x| = n$, meaning $x^n = e$ and $x^k \neq e$ for all $1 \leq k < n$. Note we have
+%     \begin{align*}
+%         (gxg^{-1})^n  &= gx^ng^{-1} & (\textbf{Proposition \ref{prop-power-of-conjugate-equals-conjugate-of-power}})\\
+%         &= geg^{-1} & (\text{since } |x| = n)\\
+%         &= e
+%     \end{align*}
+%     which means that $|gxg^{-1}| \leq n = |x|$.
+
+%     Now consider $(gxg^{-1})^k = gx^kg^{-1}$. Suppose $k$ is a positive integer such that $x^k = h$ where $h \neq e$. Then $gx^kg^{-1} = ghg^{-1}$. We argue that $ghg^{-1} \neq e$.
+%     \begin{itemize}
+%         \item If $gh = e$ then $gx^kg^{-1} = g^{-1} \neq e$ since $g \neq e$.
+%         \item If instead $hg^{-1} = e$ then $gx^kg^{-1} = g \neq e$.
+%     \end{itemize}
+%     Hence, if $x^k \neq e$, then $(gxg^{-1})^k = gx^kg^{-1} \neq e$, meaning that $|x| \leq |gxg^{-1}|$.
+
+%     Because $|gxg^{-1}| \leq |x|$ and $|x| \leq |gxg^{-1}|$, therefore $|gxg^{-1}| = |x|$.
+% \end{proof}
+
+% \begin{exercise}
+%     Prove that for any group $G$, $|gh| = |hg|$ for all $g, h \in G$.
+% \end{exercise}
+
+% We note an important result with regards to the conjugate subgroup.
+% \begin{theorem}\label{thrm-unique-subgroup-of-given-order-is-normal}
+%     Let $G$ be a group. Suppose $H$ is the only subgroup of $G$ with a given order. Then $H \lhd G$.
+% \end{theorem}
+% \begin{proof}
+%     Suppose $g \in G$. By \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} we know $gHg^{-1} \cong H$ which means that $|gHg^{-1}| = |H|$. Furthermore, by \textbf{Exercise \ref{exercise-conjugate-subgroup}} we know that $gHg^{-1} \leq G$. Since $H$ is the only subgroup of that order (by assumption), we conclude that $gHg^{-1} = H$, which quickly means that $H \lhd G$ by definition of a normal subgroup.
+% \end{proof}
+
+% \section{The Normalizer}
+% We now look at the definition of the \textbf{normalizer}.
+% \begin{definition}
+%     Let $G$ be a group and $S$ be a subset of $G$. The \textbf{normalizer of $S$ in $G$}\index{normalizer} is given by
+%     \[
+%         \N{G}{S} = \{g \in G \vert gS = Sg \}.
+%     \]
+%     Equivalently, $\N{G}{S} = \{g \in G \vert gSg^{-1} = S \}$.
+% \end{definition}
+% \begin{exercise}\label{exercise-normalizer-is-subgroup-of-main-group}
+%     Let $G$ be a group and $S$ be a subset of $G$. Prove that $\N{G}{S} \leq G$.
+% \end{exercise}
+
+% \newpage
+
+% We prove some properties of the normalizer here.
+% \begin{proposition}\label{prop-subgroup-is-a-normal-subgroup-of-normalizer}
+%     Let $G$ be a group, and $H \leq G$. Then $H \unlhd \N{G}{H}$.
+% \end{proposition}
+% \begin{proof}
+%     We first prove $H \leq \N{G}{H}$ and then prove normality.
+
+%     We know that both $H$ and $\N{G}{H}$ are subgroups of $G$, so both are groups. We just need to check that $H \subseteq \N{G}{H}$ to prove that $H \leq \N{G}{H}$.
+
+%     Consider any $h \in H$. We note that $hH = H$ and $Hh^{-1} = H$. Thus, if $h \in H$, then
+%     \[
+%         hHh^{-1} = h(Hh^{-1}) = hH = H
+%     \]
+%     which means that $h \in \N{G}{H}$ by definition of the normalizer. Hence any element in $H$ is also an element of $\N{G}{H}$, meaning $H \subseteq \N{G}{H}$. It follows then that $H \leq \N{G}{H}$ since $H$ is a group.
+
+%     Now we prove normality. Consider any $n \in \N{G}{H}$, which means that $nHn^{-1} = H$. This implies that $H \unlhd \N{G}{H}$.
+% \end{proof}
+% \begin{remark}
+%     Combining the results from \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}} and \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} means that $H \unlhd \N{G}{H} \leq G$.
+% \end{remark}
+
+% \begin{proposition}\label{prop-normalizer-of-subgroup-is-largest-subgroup-containing-that-subgroup-as-a-normal-subgroup}
+%     Let $G$ be a group, and $H \leq G$. Then $\N{G}{H}$ is the largest subgroup of $G$ containing $H$ as a normal subgroup.
+% \end{proposition}
+% \begin{remark}
+%     What we mean by ``largest'' here is that if there was another subgroup of $G$, say $K$, that permits $H \unlhd K$, then it must be the case that $K \subseteq \N{G}{H}$.
+% \end{remark}
+% \begin{proof}
+%     By \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} we know that $H \unlhd \N{G}{H}$. We just need to prove that any subgroup in which $H$ is normal inside it must be a subset of $\N{G}{H}$.
+
+%     Consider any subgroup $N \leq G$ such that $H \unlhd N \leq G$. Then for any $n \in N$ we have $nHn^{-1} = H$ by definition of normality, which immediately means that $n \in \N{G}{H}$ by definition of the normalizer of $H$ in $G$. Hence any element in $N$ also belongs in $\N{G}{H}$, meaning $N \subseteq \N{G}{H}$.
+
+%     This completes the proof that $\N{G}{H}$ is the largest subgroup of $G$ that contains $H$ as a normal subgroup.
+% \end{proof}
+
+% \begin{proposition}\label{prop-normalizer-of-sylow-p-subgroup}
+%     Let $G$ be a finite group. Let $P$ be a Sylow $p$-subgroup of $G$, and $Q$ be a $p$-subgroup of $\N{G}{P}$. Then $Q \subseteq P$. In particular, if $Q$ is a Sylow $p$-subgroup of $\N{G}{P}$, then $P = Q$.
+% \end{proposition}
+% \begin{proof}[Proof (see {\cite[Proposition 11.9]{humphreys_1996}})]
+%     For brevity, write the order of $G$ as $xp^n$ where $p \nmid x$, $|P| = p^n$, and $|Q| = p^m$.
+
+%     Recall by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we have $PQ \leq \N{G}{P}$ since $P \unlhd \N{G}{P}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \textbf{Exercise \ref{exercise-order-of-subgroup-product}},
+%     \[
+%         |PQ| = \frac{|P||Q|}{|P \cap Q|} = p^{n+m-s}
+%     \]
+%     where we define $|P \cap Q| = p^s$. By Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) we know that $|G| = a|PQ|$ for some integer $a$ so $p^n = ap^{n+m-s}$ which implies $1 = ap^{m-s}$. Thus $p^{m-s} = \frac 1a$ which means $m \leq s$.
+
+%     We note by \textbf{Problem \ref{problem-intersection-of-subgroups}} $P \cap Q \leq Q$, meaning $|Q| = b|P\cap Q|$ for some positive integer $b$ by Lagrange's Theorem. Thus $p^m = bp^s$ which implies $p^{m-s} = b \geq 1$ so $m \geq s$.
+
+%     As $m \leq s$ and $m \geq s$, thus $m = s$ which means $|P \cap Q| = |Q|$, i.e. $P \cap Q = Q$. Therefore $Q \subseteq P$ which is the first part of the proposition proved.
+
+%     Now suppose $Q$ is, in particular, a Sylow $p$-subgroup of $\N{G}{P}$. Since $\N{G}{P} \leq G$ by \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}}, one concludes that $|G| = y|\N{G}{P}|$ for some positive integer $y$ by Lagrange's Theorem. Hence $xp^n = y|\N{G}{P}|$ which implies $|\N{G}{P}| = \frac{x}{y} p^n$. Set $z = \frac xy$ and note that $p \nmid z$. Therefore, if $Q$ is a Sylow $p$-subgroup, then $|Q| = p^n$. But since $|P| = p^n$ and $Q \subseteq P$, thus $P = Q$.
+% \end{proof}
+
+% \section{Second Sylow Theorem}
+% We can now look at the \textbf{Second Sylow Theorem}.
+% \begin{theorem}[Sylow II]\label{thrm-sylow-2}\index{Sylow Theorem!Second}
+%     Let $G$ be a finite group and $p$ be a prime number. Suppose $H$ and $K$ are both Sylow $p$-subgroups of $G$. Then there exists an element $g \in G$ such that $gHg^{-1} = K$.
+% \end{theorem}
+% \begin{proof}[Proof (see {\cite[Theorem 11.10]{humphreys_1996}} and {\cite[pp.~3--5]{mann_2011}})]
+%     Let $H$ be a Sylow $p$-subgroup of $G$. Define the set
+%     \[
+%         \mathcal{X} = \{gHg^{-1} \vert g \in G\}
+%     \]
+%     and denote an element from $\mathcal{X}$ by $X$.
+
+%     Let the Sylow $p$-subgroup $H$ act on $\mathcal{X}$ by conjugation, meaning $h \cdot X = hXh^{-1}$. We prove that this is, in fact, a group action.
+    
+%     \begin{itemize}
+%         \item \textbf{Closure}: We have to prove closure because it is not implicit in the definition of this action.
+
+%         Let $X = gHg^{-1}$ for some $g \in G$. Then
+%         \[
+%             h\cdot X = hXh^{-1} = h(gHg^{-1})h^{-1} = (hg)H(hg)^{-1}.
+%         \]
+%         Since $h \in H \leq G$, then $hg \in G$, which thus means that $h \cdot X = (hg)H(hg)^{-1} \in \mathcal{X}$.
+%         \item \textbf{Identity}: $e \cdot X = eXe^{-1} = X$.
+%         \item \textbf{Compatibility}: Let $h_1, h_2 \in H$. Then
+%         \begin{align*}
+%             h_1 \cdot (h_2 \cdot X) &= h_1 \cdot (h_2Xh_2^{-1})\\
+%             &= h_1h_2Xh_2^{-1}h_1^{-1}\\
+%             &= (h_1h_2)X(h_1h_2)^{-1}\\
+%             &= (h_1h_2) \cdot X.
+%         \end{align*}
+%     \end{itemize}
+
+%     We consider the orbits of this group action. In particular, we find element(s) with orbit(s) of only one element. Suppose $X \in \mathcal{X}$ has one element in its orbit, so for all $h \in H$ we have
+%     \[
+%         h\cdot X = hXh^{-1} = X.    
+%     \]
+%     Since $X = gHg^{-1}$ for some $g \in G$, thus
+%     \begin{align*}
+%         &h(gHg^{-1})h^{-1} = gHg^{-1}\\
+%         \iff&hgHg^{-1} = gHg^{-1}h\\
+%         \iff&hgH = gHg^{-1}hg\\
+%         \iff&(g^{-1}hg)H = H(g^{-1}hg)\\
+%         \iff&g^{-1}hg \in \N{G}{H}\\
+%         \iff&g^{-1}Hg \subseteq \N{G}{H}.
+%     \end{align*}
+%     Since $|g^{-1}hg| = |h|$ by \textbf{Proposition \ref{prop-order-of-conjugate-element-equals-order-of-element}} and because $H$ is a $p$-subgroup, hence $|g^{-1}hg| = p^r$ where $r$ is some positive integer. Note that $g^{-1}Hg$ is a (sub)group by \textbf{Exercise \ref{exercise-conjugate-subgroup}}. Therefore $g^{-1}Hg$ is a $p$-subgroup of $\N{G}{H}$.
+    
+%     Furthermore $g^{-1}Hg \cong H$ by \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} so $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, \textbf{Proposition \ref{prop-normalizer-of-sylow-p-subgroup}} tells us that $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But $X = gHg^{-1}$, so $X = H$.
+    
+%     Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, by Orbit-Stabilizer Theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}), one sees that
+%     \[
+%         |\Stab{H}{gHg^{-1}}| = \frac{|H|}{|\Orb{H}{gHg^{-1}}|}
+%     \]
+%     and since $|H|$ is a power of $p$ and $|\Stab{H}{gHg^{-1}}|$ is an integer, thus $|\Orb{H}{gHg^{-1}}|$ has to be a power of $p$, meaning $|\Orb{H}{gHg^{-1}}| \equiv 0 \pmod p$. Because distinct orbits partition $\mathcal{X}$ (\textbf{Exercise \ref{exercise-distinct-orbits-partition-set}}), thus $|\mathcal{X}| \equiv 1 \pmod p$.
+
+%     Now let the Sylow $p$-subgroup $K$ act on $\mathcal{X}$ by conjugation, meaning $k \star X = kXk^{-1}$. This is a group action as proven before, and the above conclusion means that there is at least one orbit of length 1. Hence there exists a $g \in G$ such that for all $k \in K$, we have $k(gHg^{-1})k^{-1} = gHg^{-1}$. Hence $g^{-1}kg \in \N{G}{H}$ which means $g^{-1}Kg \subset \N{G}{H}$. Therefore, since $|K| = |g^{-1}Kg|$ and by \textbf{Proposition \ref{prop-normalizer-of-sylow-p-subgroup}}, $g^{-1}Kg \subseteq H$, meaning $K \subseteq gHg^{-1}$. But because $|H| = |K|$ as they are both Sylow $p$-subgroups, therefore $K = gHg^{-1}$.
+% \end{proof}
+% \begin{remark}
+%     What part of this proof shows is that if $P$ is a Sylow $p$-subgroup but $Q$ is only a $p$-subgroup, then $Q \subseteq gPg^{-1}$ for some $g \in G$.
+% \end{remark}
+
+% \newpage
+
+% We note one important corollary of the Second Sylow Theorem.
+% \begin{corollary}\label{corollary-sylow-subgroup-is-normal-if-it-is-unique}
+%     Let $G$ be a finite group and $P$ be a Sylow $p$-subgroup for some prime $p$. Then $P$ is a normal subgroup of $G$ if and only if $P$ is the only Sylow $p$-subgroup of $G$.
+% \end{corollary}
+% \begin{proof}
+%     The reverse direction is easy to prove. Since $P$ is the only Sylow $p$-subgroup of $G$, this means that $P$ is the only subgroup of order $p^k$. By \textbf{Theorem \ref{thrm-unique-subgroup-of-given-order-is-normal}}, this means that $P \lhd G$.
+
+%     We work on the forward direction now and suppose $P$ is a normal subgroup of $G$. Let $\hat{P}$ be a normal Sylow $p$-subgroup. By the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}), there exists $g \in G$ such that $g\hat{P}g^{-1} = P$. But since $\hat{P}$ is normal, thus $g^{-1}\hat{P}g = \hat{P}$ by definition of normality. Hence, $P = \hat{P}$, meaning that there is only one Sylow $p$-subgroup.
+% \end{proof}
+
+% \begin{exercise}
+%     Let $G$ be a finite group, $p$ be a prime number, and $H$ and $K$ be distinct Sylow $p$-subgroups of $G$. Prove that $H \cong K$.
+% \end{exercise}
+
+% \newpage
+
+% \section{Third Sylow Theorem}
+% We now state and prove the \textbf{Third Sylow Theorem}.
+% \begin{theorem}[Sylow III]\label{thrm-sylow-3}\index{Sylow Theorem!Third}
+%     Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. Let $n_p$ denote the number of Sylow $p$-subgroups in $G$, i.e. $n_p = |\Syl{p}{G}|$. Then,
+%     \begin{enumerate}
+%         \item $n_p = [G:\N{G}{P}]$, where $P$ is a Sylow $p$-subgroup of $G$;
+%         \item $n_p$ divides $m$; and
+%         \item $n_p \equiv 1 \pmod p$.
+%     \end{enumerate}
+% \end{theorem}
+% \begin{proof}[Proof (see \cite{wielandt_1959})]
+%     We prove the three statements in order.
+%     \begin{enumerate}
+%         \item Let $G$ act on $\Syl{p}{G}$ by conjugation, meaning that for any $g \in G$ and $P \in \Syl{p}{G}$, $g\cdot P = gPg^{-1}$. By the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}), all Sylow $p$-subgroups are conjugates of each other, so the orbit of any $P \in \Syl{p}{G}$ is the set of all Sylow $p$-subgroups, meaning $|\Orb{G}{P}| = |\Syl{p}{G}| = n_p$. Now consider $\Stab{G}{P}$; note
+%         \[
+%             \Stab{G}{P} = \{g \in G \vert gPg^{-1} = P\} = \N{G}{P}
+%         \]
+%         by definition of the normalizer. Therefore, by the Orbit-Stabilizer Theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}),
+%         \[
+%             n_p = |\Orb{G}{P}| = \frac{|G|}{|\Stab{G}{P}|} = \frac{|G|}{|\N{G}{P}|} = [G : \N{G}{P}],
+%         \]
+%         proving the first statement.
+
+%         \item Let $P$ be a Sylow $p$-subgroup. We recall that $P \lhd \N{G}{P} \leq G$. Note that by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) we know $|\N{G}{P}| = [\N{G}{P} : P]|P| = ap^k$ where $a \leq m$ (since $\N{G}{P} \leq G$). Furthermore
+%         \[
+%             mp^k = |G| = [G: \N{G}{P}]|\N{G}{P}| = n_p \times ap^k
+%         \]
+%         which means $m = an_p$. In other words, $n_p$ divides $m$.
+
+%         \item Let $H$ be a Sylow $p$-subgroup and let it act on $\Syl{p}{G}$ by conjugation, meaning that for any $h \in H$ and $P \in \Syl{p}{G}$, $h \cdot P = hPh^{-1}$. Let $\Omega$ denote the set of fixed points of $\Syl{p}{G}$ under this action.
+
+%         Suppose $Q \in \Omega$, which means that $hQh^{-1} = Q$ for all $h \in H$. Thus $H \subseteq \N{G}{Q}$ as $\N{G}{Q} = \{g \in G \vert gQg^{-1} = Q\}$. In fact, since $H$ is a Sylow $p$-subgroup, $H \leq \N{G}{Q}$. We note $Q \unlhd \N{G}{Q}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. Hence $H$ and $Q$ are Sylow $p$-subgroups of $\N{G}{Q}$, which means there exists $n \in \N{G}{Q}$ such that $nQn^{-1} = H$ by the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}). Furthermore $nQn^{-1} = Q$ since $Q \unlhd \N{G}{Q}$. Hence $Q = H$, which means that the only element in $\Omega$ is $H$.
+
+%         By a similar argument posed in the proof of the Second Sylow Theorem, for any $Q \in \Syl{p}{G}$ where $Q \neq H$ we must have $|\Orb{H}{Q}| \equiv 0 \pmod p$. Note $|\Orb{H}{H}| = 1$. Now since distinct orbits partition $\Syl{p}{G}$, we must have $n_p = |\Syl{p}{G}| \equiv 1 \pmod p$.
+%     \end{enumerate}
+%     This completes the proof of the Third Sylow Theorem.
+% \end{proof}
+
+% \begin{example}
+%     We show that a group of order 4225 is abelian.
+
+%     Note that $4225 = 5^2 \times 13^2$. Let $G$ be a group of order 4225. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), we know that
+%     \begin{itemize}
+%         \item $n_5 \mid 13^2 = 169$ and $n_{13} \mid 5^2 = 25$, which means $n_5 \in \{1, 13, 169\}$ and $n_{13} \in \{1, 5, 25\}$; and
+%         \item $n_5 \equiv 1 \pmod 5$ and $n_{13} \equiv 1 \pmod{13}$, which means $n_5 \in \{1, 6, 11, \dots\}$ and $n_{13} \in \{1, 14, 27, \dots\}$.
+%     \end{itemize}
+%     Hence, $n_5 = 1$ and $n_{13} = 1$, meaning that there is only one Sylow 5-subgroup and one Sylow 13-subgroup.
+
+%     Let $P$ be the Sylow 5-subgroup and $Q$ be the Sylow 13-subgroup. By \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}, $P \lhd G$ and $Q \lhd G$, so $pq = qp$ for any $p \in P$ and $q \in Q$. Furthermore, by \textbf{Problem \ref{problem-intersection-of-coprime-subgroups}}, $P \cap Q = \{e\}$. Finally, notice that
+%     \[
+%         |PQ| = \frac{|P||Q|}{|P\cap Q|} = |P||Q| = 5^2\times13^2 = |G|
+%     \]
+%     which means that $PQ$ and $G$ have the same number of elements. Hence, $G$ is the internal direct product of $P$ and $Q$. We note that
+%     \[
+%         G = PQ \cong P\times Q
+%     \]
+%     by direct product equivalence (\textbf{Theorem \ref{thrm-direct-product-equivilance}}). In addition, since $P$ and $Q$ are groups of prime-squared order, they are abelian (\textbf{Problem \ref{problem-group-of-order-prime-squared-is-abelian}}), meaning that their external direct product $P\times Q$ is also abelian (\textbf{Problem \ref{problem-external-direct-product-of-abelian-groups-is-abelian}}). Hence $G$ is also abelian.
+% \end{example}
+
+% \begin{exercise}
+%     Let $G$ be a group of order 784, and let $P$ be a Sylow 7-subgroup that is \textbf{not} a normal subgroup of $G$. Find the order of $\N{G}{P}$.
+% \end{exercise}
+
+% \section{Testing Non-Simplicity Of Groups}
+% To end this chapter, we look at the idea of \textbf{simple groups} and describe ways to prove the non-simplicity of groups.
+% \begin{definition}
+%     Let $G$ be a group where $|G| > 2$. Then $G$ is \textbf{simple}\index{group!simple} if the only normal subgroups of $G$ are the trivial subgroup and $G$ itself.
+% \end{definition}
+% \begin{remark}
+%     Equivalently, $G$ is simple if $G$ has no proper normal subgroups.
+% \end{remark}
+
+% We may use part of the Third Sylow Theorem to create a test for non-simplicity.
+% \begin{theorem}[Sylow's Test]\index{Sylow's Test}
+%     Let $n$ be a non-prime integer and let $p$ be a prime divisor of $n$. If 1 is the only divisor of $n$ that is congruent 1 modulo $p$, then there does not exist a simple group of order $n$.
+% \end{theorem}
+% \begin{proof}
+%     We consider two cases, namely the case where $n=p^k$ where $k>1$ and the case where $n \neq p^k$.
+    
+%     We first suppose $n = p^k$. Let $G$ be a group of order $n$. We consider two subcases.
+%     \begin{itemize}
+%         \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\textbf{Exercise \ref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\textbf{Propopsition \ref{prop-subgroup-of-abelian-group-is-normal}}), thus there exists a proper normal subgroup of $G$, meaning $G$ is non-simple.
+%         \item Suppose now $G$ is non-abelian. By \textbf{Example \ref{example-group-with-prime-power-order-has-non-trivial-center}}, $G$ has a non-trivial center. Furthermore, $G \neq \Z{G}$ because $G$ is non-abelian (\textbf{Problem \ref{problem-center-of-G}}). Since the center is a normal subgroup of $G$, it is thus a proper normal subgroup of $G$, meaning $G$ is non-simple.
+%     \end{itemize}
+%     Hence any group of order $p^k$ where $k > 1$ is non-simple.
+
+%     Now suppose $n$ is not a prime power. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), the number of Sylow $p$-subgroups, $n_p$, is congruent to 1 modulo $p$ and divides $n$. Since 1 is the only such number by our assumption, thus $n_p = 1$, meaning that there is only one Sylow $p$-subgroup. By \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}} this means that that Sylow $p$-subgroup (which is non-trivial) is normal, which thus means that any group of order $n$ is non-simple.
+% \end{proof}
+% \begin{example}
+%     Consider a group with order 15. Note $15 = 3 \times 5$, and consider $p = 5$. The divisors of 15 are 1, 3, 5, and 15, and clearly only 1 is congruent to 1 modulo 5. Hence by Sylow's Test we know that a group of order 15 cannot be simple.
+% \end{example}
+
+% For some groups of orders that do not satisfy the condition in Sylow's Test, we can still can prove that they cannot be simple.
+
+% \newpage
+
+% \begin{example}
+%     We will show that a group of order 2552 is non-simple.
+
+%     We note first that $2552 = 2^3 \times 11 \times 29$. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), we know $n_p \mid m$ and $n_p \equiv 1 \pmod p$.
+
+%     The divisors of the $m$ given the following primes are listed below.
+%     \begin{itemize}
+%         \item $p = 2$: $m = 319$ and so divisors are $\{1. 11, 29, 319\}$.
+%         \item $p = 11$: $m = 232$; divisors are $\{1, 2, 4, 8, 29, 58, 116, 232\}$.
+%         \item $p = 29$: $m = 88$; divisors are $\{1, 2, 4, 8, 11, 22, 44, 88\}$.
+%     \end{itemize}
+%     Thus, since $n_p \equiv 1 \pmod p$, we must have $n_2 \in \{1, 11, 29, 319\}$, $n_{11} \in \{1, 232\}$, and $n_{29} \in \{1, 88\}$.
+
+%     Seeking a contradiction, suppose that $n_2$, $n_{11}$, and $n_{29}$ are all not 1. Then $n_{11} = 232$ and $n_{29} = 88$. Recall that one element in a Sylow $p$-subgroup has order 1 (i.e., the identity). Thus, the number of elements of order 11 is $232 \times (11 - 1) = 2320$ and the number of elements of order 29 is $88 \times (29 - 1) = 2464$. Hence, the total number of elements in the group of order 2552 must be at least $2320 + 2464 = 4764$, a contradiction.
+
+%     Hence, we conclude that at least one of $n_2, n_{11}, n_{29}$ must be 1, meaning that there is a proper normal subgroup, which therefore means that any group of order 2552 is non-simple.
+% \end{example}
+
+% \begin{example}\label{example-using-kernel-to-show-non-simple}
+%     We show that any group of order 36 is non-simple by considering the kernel of a homomorphism.
+
+%     We note $36 = 2^2 \times 3^2$. Let $G$ be a group of order 36 and let $P$ be a Sylow 3-subgroup of the group of order 36. Let $G$ act on the set of cosets $G/P$ by left multiplication, meaning $g \cdot xP = (gx)P$. Then by \textbf{Theorem \ref{thrm-group-action-definition-equivalence}} this induces a homomorphism $\phi: G \to \Sn{4}$ since there are 4 cosets in $G/P$. We note $\phi(g) = \sigma_g$ where $\sigma_g(xP) = g\cdot xP = (gx)P$.
+
+%     We consider the kernel of $\phi$.
+%     \begin{align*}
+%         \ker\phi &= \{g \in G \vert \phi(g) = \id\}\\
+%         &= \{g \in G \vert \sigma_g = \id\}\\
+%         &= \{g \in G \vert \sigma_g(xP) = xP \text{ for all } x \in G\}\\
+%         &= \{g \in G \vert (gx)P = xP \text{ for all } x \in G\}\\
+%         &= \{g \in G \vert x^{-1}gx \in P \text{ for all } x \in G\} & (\text{Coset Equality})\\
+%         &= \{g \in G \vert g \in xPx^{-1} \text{ for all } x \in G\}\\
+%         &= \bigcap_{x \in G} xPx^{-1}.
+%     \end{align*}
+%     We note that $\ker\phi \neq \{e\}$ since that would imply that $\phi$ is injective (\textbf{Exercise \ref{exercise-trivial-kernel-means-injective}}), which would then mean $36 = |G| \leq |\Sn{4}| = 4! = 24$, a contradiction. We also note $\ker\phi \neq G$, otherwise
+%     \[
+%         36 = |G| = |\ker\phi| = \left|\bigcap_{x \in G} xPx^{-1}\right| \leq |xPx^{-1}| = |P| = 9,
+%     \]
+%     a contradiction. Hence $\ker\phi$ is a proper subgroup of $G$. We note that $\ker\phi \lhd G$, so we have found a proper normal subgroup of $G$, meaning that $G$ is non-simple.
+% \end{example}
+
+% \begin{exercise}
+%     Show that any group of order $130$ is non-simple.
+% \end{exercise}
+
+% \newpage
+
+% \section{Problems}
+% \begin{problem}
+%     Show that a group of order 200 has a normal Sylow 5-subgroup.
+% \end{problem}
+
+% \begin{problem}
+%     Show that any Sylow $p$-subgroup of a group of order 33 must be normal.
+% \end{problem}
+
+% \begin{problem}
+%     A perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself. All even perfect numbers are of the form $2^{p-1}\left(2^p-1\right)$ where both $p$ and $2^p-1$ are primes. Prove that any group with an even perfect number order is not simple.
+% \end{problem}
+
+% \begin{problem}\label{problem-group-of-order-pq-has-normal-subgroup-of-order-q}
+%     Let $p$ and $q$ be primes such that $p < q$. Let $G$ be a group of order $pq$.
+%     \begin{enumerate}[label=(\roman*)]
+%         \item Prove that there is only one subgroup $H$ of $G$ of order $q$. Deduce that $H \lhd G$.
+%         \item Prove also that if $q \not\equiv 1 \pmod p$ then $G$ is cyclic.
+%     \end{enumerate}
+% \end{problem}
+
+% \begin{problem}
+%     Show that any group of order 3325 is abelian.
+% \end{problem}
+
+% \begin{problem}\label{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}
+%     Let $G$ be a finite group, and write the order of $G$ as $p^km$ where $k \geq 0$ and $p \nmid m$. Let $N \lhd G$ such that $p$ does not divide the index of $N$ in $G$.
+%     \begin{enumerate}[label=(\roman*)]
+%         \item Prove that any Sylow $p$-subgroup of $N$ is also in $G$.
+%         \item Prove that any Sylow $p$-subgroup of $G$ is also in $N$.
+%     \end{enumerate}
+%     (That is, prove that $N$ contains all Sylow $p$-subgroups of $G$ and vice versa.)
+% \end{problem}
+
+% \begin{problem}\label{problem-if-m!<|G|-then-G-is-simple}
+%     Let $G$ be a finite group such that $|G| = p^km$ where $k \geq 1$, $m > 1$, and $p \nmid m$. Prove that if $m! < |G|$ then $G$ is non-simple.
+% \end{problem}
+
+% \begin{problem}\label{problem-group-of-order-30-has-normal-subgroup-of-order-5}
+%     Prove that a group of order 30 has a normal subgroup of order 5.
+% \end{problem}
+
+% \begin{problem}\label{problem-group-of-order-pqr-is-non-simple}
+%     Let $p, q$, and $r$ be distinct primes such that $p < q < r$. Let $G$ be a group of order $pqr$. Prove that $G$ is non-simple.\newline
+%     (\textit{Hint: show that a normal subgroup of order $p$, $q$, or $r$ must exist.})
+% \end{problem}
+
 %=========================================
-\chapter{Sylow Theorems}
-The Sylow theorems are a collection of theorems named after the Norwegian mathematician Peter Ludwig Sylow that give detailed information about the number of subgroups of fixed order that a given finite group contains. The Sylow theorems form a fundamental part of finite group theory and have very important applications in the classification of finite simple groups.
-
-\section{First Sylow Theorem}
-Before we can state the First Sylow Theorem, we introduce some terminology.
-
-Recall that a group with order $p^k$ for some $k \geq 0$ is called a $p$-group. If $G$ is a group with a subgroup of order $p^k$, then that subgroup is called a \textbf{$p$-subgroup}\index{$p$-subgroup}.
-\begin{definition}\label{definition-sylow-p-subgroup}
-    Let $G$ be a finite group. Write the order of the group $G$ as $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then a subgroup $H$ with order $p^k$ is called a \textbf{Sylow $p$-subgroup}\index{Sylow $p$-subgroup} of $G$.
+\chapter{Composition Series}
+\section{Subgroup Series and Subnormal Series}
+We introduce the idea of a \textbf{subgroup series}\index{subgroup series} of a group.
+\begin{definition}
+    Let $G$ be a group. A \textbf{subgroup series without repetition}\index{subgroup series!without repetition} of $G$ is a chain of subgroups $H_0, \dots, H_n$ such that
+    \[
+        1 = H_0 < H_1 < H_2 < \cdots < H_n = G,
+    \]
+    where 1 is the trivial group $\{e\}$, and where $H_i \neq H_{i+1}$ (for $0 \leq i < n$). The \textbf{length} of such a series is $n$, or is infinite if there is no end.
 \end{definition}
-We denote the set of all Sylow $p$-subgroups of the group $G$ for a given prime $p$ by $\Syl{p}{G}$.
-
-\begin{exercise}
-    Find the Sylow 2-subgroup of $\mathbb{Z}_{12}$.
-\end{exercise}
-
-We are now ready to state and prove the \textbf{First Sylow Theorem}.
-\begin{theorem}[Sylow I]\label{thrm-sylow-1}\index{Sylow Theorem!First}
-    Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then $\Syl{p}{G} \neq \emptyset$.
-\end{theorem}
 \begin{remark}
-    Equivalently, for a finite group $G$, for every prime factor $p$ of its order, there is a Sylow $p$-subgroup of $G$.
+    It is more often useful to consider subgroup series without repetition than it is to consider the weaker form of subgroup series\index{subgroup series!with repetition}, which requirement is only
+    \[
+        1 = H_0 \leq H_1 \leq H_2 \leq \cdots \leq H_n = G,
+    \]
+    meaning that $H_i$ can be equal to $H_{i+1}$.
 \end{remark}
-\begin{proof}[Proof (see {\cite[pp.~1--3]{mann_2011}})]
-    We use strong induction on the order of $G$.
-
-    When the order of $G$ is 1, $|G| = p^0$ for any prime $p$, so $G$ is clearly a Sylow $p$-subgroup of itself.
-
-    We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$. Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
-
-    The first case is when $p$ divides the order of the center of $G$, $|\Z{G}|$. By Cauchy's Theorem (\textbf{Theorem \ref{thrm-cauchy}}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \lhd G$ since for all $x \in N$ and $g \in G$,
+\begin{remark}
+    The above definition gives an \textbf{ascending}\index{subgroup series!ascending} subgroup series without repetition. A \textbf{descending}\index{subgroup series!descending} subgroup series without repetition is
     \[
-        gxg^{-1} = (gx)g^{-1} = x(gg^{-1}) = x \in N.
+        G = K_0 > K_1 > K_2 > \cdots > K_n = 1,
     \]
-    Hence $G/N$ is a group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the Inductive Hypothesis, $G/N$ has a Sylow $p$-subgroup, say $\bar{S}$, meaning that $\bar{S}$ has order $p^{k-1}$.
+    where the indexing is reversed.
+\end{remark}
 
-    We now construct the group $S = \{g \in G \vert gN \in \bar{S}\}$ under the group operation of $G$. Clearly $S$ is non-empty since $e \in S$ (as $eN = N \in \bar{S}$). Suppose $g_1, g_2 \in S$, meaning that $g_1N, g_2N \in \bar{S}$. Therefore $(g_1g_2^{-1})N = (g_1N)(g_2N)^{-1} \in \bar{S}$ which implies that $g_1g_2^{-1} \in S$. By the subgroup test, $S \leq G$. Also, $N \leq S$ since for all $n \in N$, $nN = N \in \bar{S}$.
+Subgroup series can simplify the study of a group to the study of simpler subgroups and their relations.
 
-    We construct the homomorphism $\phi: S \to \bar{S}$ such that $g \mapsto gN$. By construction one sees clearly that $\phi$ is surjective, meaning that $\im \phi = \bar{S}$. Furthermore,
-    \begin{align*}
-        \ker\phi &= \{s \in S \vert \phi(s) = N\}\\
-        &= \{s \in S \vert sN = N \}\\
-        &= \{s \in S \vert s \in N \}\\
-        &= S \cap N\\
-        &= N & (\text{since } N \subseteq S).
-    \end{align*}
-    By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), $S/N \cong \bar{S}$, meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$, which quickly implies that $|S| = p^k$. Hence, there exists a subgroup $S$ such that $|S| = p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
-
-    We can now start on the second case where $p$ does not divide the order of the center of $G$. Recall the class equation (\textbf{Theorem \ref{thrm-class-equation}})
+\begin{example}
+    Consider the dihedral group of order 8, $D_4$. One sees clearly that $H = \{e, r, r^2, r^3\}$ is a subgroup of $D_4$, and that $K = \{e, r^2\}$ is a subgroup of $H$. Thus a possible (ascending) subgroup series (without repetition) is
     \[
-        |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}]
+        1 < \{e, r^2\} < \{e, r, r^2, r^3\} < D_4.
     \]
-    where $g_1, g_2, \dots, g_l$ are representatives of the $l$ distinct conjugacy classes with more than one element. We note that $p$ divides $|G|$. Since $p$ does not divide $|\Z{G}|$ in this case, thus $\sum_{i=1}^l [G:\C{G}{g_i}]$ must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then $|\C{G}{g_i}| = p^ka$ for some $a$.
+\end{example}
 
-    We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly $a \leq m$ since if $a > m$ then $\frac{p^k m}{|\C{G}{g_i}|}$ is not an integer. If instead $a = m$ then $|\C{G}{g_i}| = p^km = |G|$, and since $\C{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \C{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \Z{G}$. But an element is in $\Z{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
-
-    In summary, $\C{G}{g_i} < G$ with $|\C{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the Induction Hypothesis on $\C{G}{g_i}$ to say that $\C{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\C{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
-
-    Therefore, any finite group $G$ with order written as $p^k m$ has a Sylow $p$-subgroup, meaning that $\Syl{p}{G} \neq \emptyset$.
-\end{proof}
-
-\begin{exercise}
-    Find all primes $p$ such that $\Syl{p}{\Sn{5}} \neq \emptyset$.
-\end{exercise}
-
-\section{Conjugate Subgroup}
-Before we look at the next Sylow theorem, we need to introduce two more things. The first is the \textbf{conjugate subgroup}.
+We now consider the definition of a \textbf{subnormal series} of a group $G$.
 \begin{definition}
-    Let $G$ be a group, $H \leq G$, and $g \in G$. Then the \textbf{conjugate subgroup of $H$ by $g$}\index{conjugate subgroup} is
+    Let $G$ be a group. A \textbf{subnormal series}\index{subnormal series} of $G$ is a sequence of subgroups $H_0, \dots, H_n$ such that
     \[
-        gHg^{-1} = \{ghg^{-1} \vert h \in H\}
+        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G.    
     \]
-    under the group operation of $G$.
+    The quotient groups $H_{i+1}/H_i$ are called the \textbf{factor groups}\index{factor group} of the subnormal series.
 \end{definition}
-We proved that $gHg^{-1}$ is a subgroup of $G$ in \textbf{Exercise \ref{exercise-conjugate-subgroup}}.
+\begin{remark}
+    Note that there is no requirement that $H_i \lhd G$, only that $H_i \lhd H_{i+1}$. If all subgroups in a subnormal series are such that $H_i \lhd G$, then such a series is called a \textbf{normal series}\index{normal series} of $G$.
+\end{remark}
+\begin{remark}
+    Similar to subgroup series, there are ascending subnormal series and descending subnormal series.
+\end{remark}
 
-\begin{exercise}\label{exercise-conjugate-subgroup-isomorphic-to-subgroup}
-    Let $G$ be a group and $H \leq G$. Prove that $gHg^{-1} \cong H$ for any $g \in G$.
-\end{exercise}
+\begin{example}
+    We consider the dihedral group of order 8 again. One may verify that $H = \{e, r, r^2, r^3\} \lhd D_4$ and $K = \{e, r^2\} \lhd H$. Hence a possible subnormal series of $D_4$ is
+    \[
+        1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.
+    \]
 
-We prove some results regarding the conjugate subgroup here.
-\begin{proposition}\label{prop-power-of-conjugate-equals-conjugate-of-power}
-    Let $G$ be a group, and let $x$ and $y$ be elements in $G$ such that there exists an element $a \in G$ such that $y = axa^{-1}$. Then $y^n = ax^na^{-1}$ for all integers $n$.
-\end{proposition}
-\begin{proof}
-    Trivially, when $n = 0$, $y^0 = e = y^0 = x^0 = ax^0a^{-1}$.
+    \newpage
 
-    We consider a proof by induction for positive integers $n$ and then prove ther case when $n$ is negative.
-
-    When $n = 1$, $y = axa^{-1}$ is given. Now assume $n = k$ holds true for some positive integer $k$, meaning that $y^k = ax^ka^{-1}$. Then
-    \begin{align*}
-        y^{k+1} &= y(y^k)\\
-        &= (axa^{-1})(ax^ka^{-1}) & (\text{Induction Hypothesis})\\
-        &= axa^{-1}ax^ka^{-1}\\
-        &= axx^ka^{-1}\\
-        &= ax^{k+1}a^{-1}
-    \end{align*}
-    which completes this induction for positive integers $n$.
-
-    Now suppose $n$ is a non-negative integer. Then
-    \begin{align*}
-        y^{-n} &= (y^n)^{-1}\\
-        &= (ax^na^{-1})^{-1} & (\text{by above result})\\
-        &= a(x^n)^{-1}a^{-1}\\
-        &= ax^{-n}a^{-1}
-    \end{align*}
-    which completes the proof for all integers.
-\end{proof}
-
-\begin{proposition}\label{prop-order-of-conjugate-element-equals-order-of-element}
-    Let $G$ be a group. Then for all $g, x \in G$, we have $|gxg^{-1}| = |x|$.
-\end{proposition}
-\begin{proof}
-    The proposition trivially holds true for $g = e$ so we assume $g \neq e$.
-
-    Suppose $|x| = n$, meaning $x^n = e$ and $x^k \neq e$ for all $1 \leq k < n$. Note we have
-    \begin{align*}
-        (gxg^{-1})^n  &= gx^ng^{-1} & (\textbf{Proposition \ref{prop-power-of-conjugate-equals-conjugate-of-power}})\\
-        &= geg^{-1} & (\text{since } |x| = n)\\
-        &= e
-    \end{align*}
-    which means that $|gxg^{-1}| \leq n = |x|$.
-
-    Now consider $(gxg^{-1})^k = gx^kg^{-1}$. Suppose $k$ is a positive integer such that $x^k = h$ where $h \neq e$. Then $gx^kg^{-1} = ghg^{-1}$. We argue that $ghg^{-1} \neq e$.
+    In fact,
     \begin{itemize}
-        \item If $gh = e$ then $gx^kg^{-1} = g^{-1} \neq e$ since $g \neq e$.
-        \item If instead $hg^{-1} = e$ then $gx^kg^{-1} = g \neq e$.
+        \item $1 \lhd D_4$;
+        \item $1 \lhd \{e, r^2\} \lhd D_4$; and
+        \item $1 \lhd \{e, r, r^2, r^3\} \lhd D_4$
     \end{itemize}
-    Hence, if $x^k \neq e$, then $(gxg^{-1})^k = gx^kg^{-1} \neq e$, meaning that $|x| \leq |gxg^{-1}|$.
+    are all valid subnormal series of $D_4$.
+\end{example}
 
-    Because $|gxg^{-1}| \leq |x|$ and $|x| \leq |gxg^{-1}|$, therefore $|gxg^{-1}| = |x|$.
+\begin{exercise}
+    Let the group $G = \mathbb{Z}_4$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Find a subnormal series of length 2 for $G$.
+        \item Hence find the factors of that subnormal series.
+        \item Explain whether the subnormal series found in (i) is a normal series.
+    \end{enumerate}
+\end{exercise}
+
+\section{Maximal Normal Subgroup}
+Before looking at a more interesting category of subnormal series, we have to introduce the idea of a \textbf{maximal normal subgroup}.
+\begin{definition}
+    Let $G$ be a group and $N \lhd G$. Then $N$ is said to be a \textbf{maximal (proper) normal subgroup}\index{maximal normal subgroup} of $G$ if there does \textbf{not} exist a $H \lhd G$ such that $N < H < G$.
+\end{definition}
+\begin{remark}
+    This means that if $N$ is a maximal normal subgroup of $G$ and there exists a subgroup $H$ such that $N \leq H \leq G$, then either $H = N$ or $H = G$.
+\end{remark}
+
+There is an important consequence that we examine here.
+\begin{theorem}\label{thrm-maximal-normal-subgroup-iff-quotient-is-simple}
+    Let $G$ be a group and $N \lhd G$. Then $N$ is a maximal normal subgroup of $G$ if and only if $G/N$ is simple.
+\end{theorem}
+
+\begin{proof}
+    We prove the forward direction first; assume that $N$ is a maximal normal subgroup of $G$. Suppose there exists a normal subgroup of $G/N$. Then by \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} we know that subgroup takes the form of $H/N$, where $N \leq H \leq G$, such that $H/N \unlhd G/N$. Since $N$ is a maximal normal subgroup this means that $H = N$ or $H = G$. In the first case $H/N \cong 1$ and in the second $H / N = G/N$. Hence $G/N$ only has two normal subgroups, the trivial subgroup and itself, meaning that it has no proper normal subgroups and is hence simple.
+    
+    We now prove the reverse direction; assume that $G/N$ is simple. Suppose there exists a $H \leq G$ such that $N \leq H \leq G$. By \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} we know $H/N \leq G/N$. In fact, since $N \leq H \leq G$ we know $N \unlhd H \unlhd G$ which means $H/N \unlhd G/N$. As $G/N$ is simple, thus $H/N \cong 1$ or $H/N = G/N$. The case where $H/N \cong 1$ occurs if and only if $H = N$ and the case where $H/N = G/N$ occurs when $H = G$. Hence, this means that $N$ is a maximal normal subgroup of $G$.
 \end{proof}
 
 \begin{exercise}
-    Prove that for any group $G$, $|gh| = |hg|$ for all $g, h \in G$.
-\end{exercise}
-
-We note an important result with regards to the conjugate subgroup.
-\begin{theorem}\label{thrm-unique-subgroup-of-given-order-is-normal}
-    Let $G$ be a group. Suppose $H$ is the only subgroup of $G$ with a given order. Then $H \lhd G$.
-\end{theorem}
-\begin{proof}
-    Suppose $g \in G$. By \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} we know $gHg^{-1} \cong H$ which means that $|gHg^{-1}| = |H|$. Furthermore, by \textbf{Exercise \ref{exercise-conjugate-subgroup}} we know that $gHg^{-1} \leq G$. Since $H$ is the only subgroup of that order (by assumption), we conclude that $gHg^{-1} = H$, which quickly means that $H \lhd G$ by definition of a normal subgroup.
-\end{proof}
-
-\section{The Normalizer}
-We now look at the definition of the \textbf{normalizer}.
-\begin{definition}
-    Let $G$ be a group and $S$ be a subset of $G$. The \textbf{normalizer of $S$ in $G$}\index{normalizer} is given by
-    \[
-        \N{G}{S} = \{g \in G \vert gS = Sg \}.
-    \]
-    Equivalently, $\N{G}{S} = \{g \in G \vert gSg^{-1} = S \}$.
-\end{definition}
-\begin{exercise}\label{exercise-normalizer-is-subgroup-of-main-group}
-    Let $G$ be a group and $S$ be a subset of $G$. Prove that $\N{G}{S} \leq G$.
+    Find the order of the maximal normal subgroup of $\mathbb{Z}_{120}$.
 \end{exercise}
 
 \newpage
 
-We prove some properties of the normalizer here.
-\begin{proposition}\label{prop-subgroup-is-a-normal-subgroup-of-normalizer}
-    Let $G$ be a group, and $H \leq G$. Then $H \unlhd \N{G}{H}$.
-\end{proposition}
-\begin{proof}
-    We first prove $H \leq \N{G}{H}$ and then prove normality.
-
-    We know that both $H$ and $\N{G}{H}$ are subgroups of $G$, so both are groups. We just need to check that $H \subseteq \N{G}{H}$ to prove that $H \leq \N{G}{H}$.
-
-    Consider any $h \in H$. We note that $hH = H$ and $Hh^{-1} = H$. Thus, if $h \in H$, then
+\section{Composition Series}
+We can now look at a more interesting type of subnormal series: the \textbf{composition series} of a group.
+\begin{definition}
+    Let $G$ be a group. A \textbf{composition series}\index{composition series} of $G$ is a subnormal series of finite length
     \[
-        hHh^{-1} = h(Hh^{-1}) = hH = H
+        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G  
     \]
-    which means that $h \in \N{G}{H}$ by definition of the normalizer. Hence any element in $H$ is also an element of $\N{G}{H}$, meaning $H \subseteq \N{G}{H}$. It follows then that $H \leq \N{G}{H}$ since $H$ is a group.
-
-    Now we prove normality. Consider any $n \in \N{G}{H}$, which means that $nHn^{-1} = H$. This implies that $H \unlhd \N{G}{H}$.
-\end{proof}
+    such that $H_i$ is a maximal normal subgroup of $H_{i+1}$ (for $0 \leq i < n$). The factor groups $H_{i+1}/H_i$ are called the \textbf{composition factors}\index{composition factor}, and the length $n$ above is called the \textbf{composition length}\index{composition length}.
+\end{definition}
 \begin{remark}
-    Combining the results from \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}} and \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} means that $H \unlhd \N{G}{H} \leq G$.
+    Some authors (e.g. \cite{cohn_1982, clark_1984, proofwiki_compositionseriesdefinition}) require composition series to be a normal series. However we follow \cite{hungerford_1980, humphreys_1996, milne_2021} and others and only require it to be a subnormal series.
+\end{remark}
+\begin{remark}
+    An equivalent definition of a composition series is a normal series where the factor groups $H_{i+1}/H_i$ are simple, as guaranteed by \textbf{Theorem \ref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}}.
 \end{remark}
 
-\begin{proposition}\label{prop-normalizer-of-subgroup-is-largest-subgroup-containing-that-subgroup-as-a-normal-subgroup}
-    Let $G$ be a group, and $H \leq G$. Then $\N{G}{H}$ is the largest subgroup of $G$ containing $H$ as a normal subgroup.
-\end{proposition}
-\begin{remark}
-    What we mean by ``largest'' here is that if there was another subgroup of $G$, say $K$, that permits $H \unlhd K$, then it must be the case that $K \subseteq \N{G}{H}$.
-\end{remark}
-\begin{proof}
-    By \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} we know that $H \unlhd \N{G}{H}$. We just need to prove that any subgroup in which $H$ is normal inside it must be a subset of $\N{G}{H}$.
+For composition series, we often write a group that is isomorphic to the subgroup rather than the actual subgroup. For example, instead of the subgroup $\{0, 3\}$ in $\mathbb{Z}_6$, we may write $\mathbb{Z}_2$ or $\Cn{2}$ instead. Composition series written in this form instead are called composition series \textbf{up to isomorphism}\index{composition series!up to isomorphism}.
 
-    Consider any subgroup $N \leq G$ such that $H \unlhd N \leq G$. Then for any $n \in N$ we have $nHn^{-1} = H$ by definition of normality, which immediately means that $n \in \N{G}{H}$ by definition of the normalizer of $H$ in $G$. Hence any element in $N$ also belongs in $\N{G}{H}$, meaning $N \subseteq \N{G}{H}$.
+\begin{example}
+    Consider the group $\mathbb{Z}_{12}$. Three composition series of it are
+    \begin{align*}
+        &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},\\
+        &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_4 \lhd \mathbb{Z}_{12},\\
+        &1 \lhd \mathbb{Z}_3 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},
+    \end{align*}
+    
+    and the factors in each of the cases (up to isomorphism) are as follows:
+    \begin{itemize}
+        \item $\mathbb{Z}_2$, $\mathbb{Z}_3$, $\mathbb{Z}_2$;
+        \item $\mathbb{Z}_2$, $\mathbb{Z}_2$, $\mathbb{Z}_3$; and
+        \item $\mathbb{Z}_3$, $\mathbb{Z}_2$, $\mathbb{Z}_2$.
+    \end{itemize}
+    Each of the composition series has composition length 3.
+\end{example}
 
-    This completes the proof that $\N{G}{H}$ is the largest subgroup of $G$ that contains $H$ as a normal subgroup.
-\end{proof}
+\begin{example}
+    Consider the symmetry group of the regular hexagon, the dihedral group of order 12, $D_6$. The three composition series of $D_6$, up to isomorphism, are
+    \begin{align*}
+        &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6,\\
+        &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6, \text{ and}\\
+        &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
+    \end{align*}
+    We note that the subgroup that is isomorphic to
+    \begin{itemize}
+        \item $\Cn{2}$ is $\{e, s\} = \langle s \rangle$;
+        \item $\Cn{3}$ is $\{e, r^2, r^4\} = \langle r^2\rangle$;
+        \item $\Cn{6}$ is $\{e, r, r^2, r^3, r^4, r^5\} = \langle r\rangle$; and
+        \item $D_3$ is $\{e, r^2, r^4, s, r^2s, r^4s\}$.
+    \end{itemize}
+    All composition series' lengths are all 3.
+\end{example}
+\textbf{Important note}: It is crucial to remember that all of the groups written in the composition series (except for the trivial group and the group itself) represent \textbf{subgroups} of the group itself (up to isomorphism), not the actual groups themselves.
 
-\begin{proposition}\label{prop-normalizer-of-sylow-p-subgroup}
-    Let $G$ be a finite group. Let $P$ be a Sylow $p$-subgroup of $G$, and $Q$ be a $p$-subgroup of $\N{G}{P}$. Then $Q \subseteq P$. In particular, if $Q$ is a Sylow $p$-subgroup of $\N{G}{P}$, then $P = Q$.
-\end{proposition}
-\begin{proof}[Proof (see {\cite[Proposition 11.9]{humphreys_1996}})]
-    For brevity, write the order of $G$ as $xp^n$ where $p \nmid x$, $|P| = p^n$, and $|Q| = p^m$.
+\begin{exercise}
+    Find the two composition series for $\Cn{6}$ (up to isomorphism), their composition lengths, and their factors (up to isomorphism).
+\end{exercise}
 
-    Recall by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we have $PQ \leq \N{G}{P}$ since $P \unlhd \N{G}{P}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \textbf{Exercise \ref{exercise-order-of-subgroup-product}},
-    \[
-        |PQ| = \frac{|P||Q|}{|P \cap Q|} = p^{n+m-s}
-    \]
-    where we define $|P \cap Q| = p^s$. By Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) we know that $|G| = a|PQ|$ for some integer $a$ so $p^n = ap^{n+m-s}$ which implies $1 = ap^{m-s}$. Thus $p^{m-s} = \frac 1a$ which means $m \leq s$.
-
-    We note by \textbf{Problem \ref{problem-intersection-of-subgroups}} $P \cap Q \leq Q$, meaning $|Q| = b|P\cap Q|$ for some positive integer $b$ by Lagrange's Theorem. Thus $p^m = bp^s$ which implies $p^{m-s} = b \geq 1$ so $m \geq s$.
-
-    As $m \leq s$ and $m \geq s$, thus $m = s$ which means $|P \cap Q| = |Q|$, i.e. $P \cap Q = Q$. Therefore $Q \subseteq P$ which is the first part of the proposition proved.
-
-    Now suppose $Q$ is, in particular, a Sylow $p$-subgroup of $\N{G}{P}$. Since $\N{G}{P} \leq G$ by \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}}, one concludes that $|G| = y|\N{G}{P}|$ for some positive integer $y$ by Lagrange's Theorem. Hence $xp^n = y|\N{G}{P}|$ which implies $|\N{G}{P}| = \frac{x}{y} p^n$. Set $z = \frac xy$ and note that $p \nmid z$. Therefore, if $Q$ is a Sylow $p$-subgroup, then $|Q| = p^n$. But since $|P| = p^n$ and $Q \subseteq P$, thus $P = Q$.
-\end{proof}
-
-\section{Second Sylow Theorem}
-We can now look at the \textbf{Second Sylow Theorem}.
-\begin{theorem}[Sylow II]\label{thrm-sylow-2}\index{Sylow Theorem!Second}
-    Let $G$ be a finite group and $p$ be a prime number. Suppose $H$ and $K$ are both Sylow $p$-subgroups of $G$. Then there exists an element $g \in G$ such that $gHg^{-1} = K$.
+One might wonder which groups have a composition series. As mentioned, not all groups have a composition series (e.g., $\mathbb{Z}$). However, finite groups will definitely have a composition series.
+\begin{theorem}\label{thrm-finite-group-has-composition-series}
+    Any finite group has a composition series.
 \end{theorem}
-\begin{proof}[Proof (see {\cite[Theorem 11.10]{humphreys_1996}} and {\cite[pp.~3--5]{mann_2011}})]
-    Let $H$ be a Sylow $p$-subgroup of $G$. Define the set
+\begin{proof}[Proof (see \cite{hungerford_1980, proofwiki_finitegrouphascompositionseries})]
+    Let $G$ be a finite group. If $G$ is simple then it does not have a proper normal subgroup, so it has a composition series $\{e\} \lhd G$.
+    
+    Otherwise, $G$ has a proper normal subgroup, at least one of which has maximal order. Let that subgroup be $G_1$. By \textbf{Theorem \ref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}} this means that $G/G_1$ is simple. If $G_1$ does not have a proper normal subgroup then $G$ has composition series $\{e\} \lhd G_1 \lhd G$. Otherwise let $G_2$ be the maximal normal subgroup of $G_1$, and so on. 
+    
+    Now Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) says that the order of the subgroup must divide the order of the group. Since $G_1$, $G_2$, etc. are proper subgroups of $G$, the orders of the found subgroups can be at most half the order of the preceding group. Hence the orders of the groups are strictly decreasing, meaning
     \[
-        \mathcal{X} = \{gHg^{-1} \vert g \in G\}
+        |G| > |G_1| > |G_2| > \cdots > |G_n| = 1,
     \]
-    and denote an element from $\mathcal{X}$ by $X$.
+    with the process terminating at some integer $n$ where $G_n = \{e\}$.
+    
+    \newpage
 
-    Let the Sylow $p$-subgroup $H$ act on $\mathcal{X}$ by conjugation, meaning $h \cdot X = hXh^{-1}$. We prove that this is, in fact, a group action.
+    Now set $H_i = G_{n-i}$. Note $H_{i+1}/H_i = G_i/G_{i+1}$ is simple as discussed above. Hence
+    \[
+        \{e\} = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G    
+    \]
+    is a composition series of $G$.
+\end{proof}
+
+\section{Zassenhaus' Lemma}
+Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes called the Fourth Isomorphism Theorem.
+\begin{lemma}[Zassenhaus]\label{lemma-zassenhaus}\index{Zassenhaus' Lemma}
+    Let $G$ be a group. Let $H$, $H'$, $K$, and $K'$ be subgroups of $G$ such that $H' \unlhd H$ and $K' \unlhd K$. Then
+    \begin{enumerate}
+        \item $H'(H \cap K') \unlhd H' (H \cap K)$;
+        \item $K'(H' \cap K) \unlhd K' (H \cap K)$; and
+        \item $\frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{K'(H\cap K)}{K'(H'\cap K)}$,
+    \end{enumerate}
+    where an expression like $H'(H \cap K')$ denotes the subset product of $H'$ and $H \cap K'$.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[p.~110]{hungerford_1980}})]
+    We quickly note that $H' \unlhd H \cap K$ as $H' \unlhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \unlhd H \cap K$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 4. Since $H'\unlhd H$ we know $H' \subset H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \unlhd H \cap K$. Similarly, $H \cap K' \unlhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\textbf{Corollary \ref{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, let $\mathcal{A} = (H' \cap K)(H \cap K')$.
+    
+    Define the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$, $hc \mapsto h\mathcal{A}$ where $h \in H'$ and $c \in H \cap K$. We show that $\phi$ is a well-defined homomorphic surjection with a goal to use the Fundamental Homomorphism Theorem to finish the proof.
     
     \begin{itemize}
-        \item \textbf{Closure}: We have to prove closure because it is not implicit in the definition of this action.
-
-        Let $X = gHg^{-1}$ for some $g \in G$. Then
+        \item \textbf{Well-defined}: Suppose $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ such that $h_1h_2 = c_1c_2$. Then $c_1c_2^{-1} = h_2^{-1}h_1$. We note that
         \[
-            h\cdot X = hXh^{-1} = h(gHg^{-1})h^{-1} = (hg)H(hg)^{-1}.
+            (H \cap K) \cap H' = H' \cap K \leq \mathcal{A}    
         \]
-        Since $h \in H \leq G$, then $hg \in G$, which thus means that $h \cdot X = (hg)H(hg)^{-1} \in \mathcal{X}$.
-        \item \textbf{Identity}: $e \cdot X = eXe^{-1} = X$.
-        \item \textbf{Compatibility}: Let $h_1, h_2 \in H$. Then
+        by Diamond Isomorphism Theorem statement 2, and that $c_1c_2^{-1} \in (H \cap K) \cap H'$ since $c_1c_2^{-1} \in H \cap K$ and $c_1c_2^{-1} = h_2^{-1}h_1 \in H'$. Thus $c_1c_2^{-1} \in \mathcal{A}$, meaning $c_1\mathcal{A} = c_2\mathcal{A}$ by Coset Equality lemma (\textbf{Lemma \ref{lemma-coset-equality}}). Hence
+        \[
+            \phi(h_1c_1) = c_1\mathcal{A} = c_2\mathcal{A} = \phi(h_2c_2)        
+        \]
+        which means $\phi$ is well-defined.
+        
+        \item \textbf{Homomorphism}: We first note that $H \cap K \leq H$ by Diamond Isomorphism Theorem statement 1. Since $H' \unlhd H$ (given), thus $H'(H\cap K) = (H\cap K)H'$ and so $H'(H\cap K) \leq H$ by Diamond Isomorphism Theorem statement 3. By \textbf{Proposition \ref{prop-subgroup-product-is-subgroup}}, since $H'(H\cap K) \leq H$, thus $H'(H\cap K) = (H\cap K)H'$. So, for any $c_1h_2 \in (H\cap K)H' = H'(H\cap K)$ we have $c_1h_2 = h_3c_1$ for some $h_3 \in H'$. Therefore for $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ we have
         \begin{align*}
-            h_1 \cdot (h_2 \cdot X) &= h_1 \cdot (h_2Xh_2^{-1})\\
-            &= h_1h_2Xh_2^{-1}h_1^{-1}\\
-            &= (h_1h_2)X(h_1h_2)^{-1}\\
-            &= (h_1h_2) \cdot X.
+            \phi((h_1c_1)(h_2c_2)) &= \phi(h_1(c_1h_2)c_2)\\
+            &= \phi(h_1(h_3c_1)c_2)\\
+            &= \phi((h_1h_3)(c_1c_2))\\
+            &= (c_1c_2)\mathcal{A}\\
+            &= (c_1\mathcal{A})(c_2\mathcal{A})\\
+            &= \phi(h_1c_1)\phi(h_2c_2)
         \end{align*}
+        which shows that $\phi$ is a homomorphism.
+        
+        \item \textbf{Image}: We prove that $\phi$ is surjective to show $\im \phi = (H\cap K)/\mathcal{A}$.
+        
+        Take any $c\mathcal{A} \in (H\cap K) / \mathcal{A}$. Clearly $e \in H$, so $\phi(c) = \phi(ec) = c\mathcal{A}$, meaning $\phi$ is surjective. Hence $\im \phi = (H\cap K)/\mathcal{A}$.
+        
+        \item \textbf{Kernel}: Let $hc \in \ker\phi$ where $h \in H'$ and $c \in H \cap K$. Then $\phi(hc) = \mathcal{A}$, meaning $c\mathcal{A} = \mathcal{A}$. Hence $c \in \mathcal{A}$. Let $c = xy$ where $x \in H'\cap K$ and $y \in H \cap K'$. So $hc \in \ker\phi$ if $hc = h(xy) = (hx)y$. Note that $h \in H'$, and $x \in H' \cap K \subseteq H'$ so $x \in H'$, thus $hx \in H'$. Also $y \in H \cap K'$, so $hc = (hx)y \in H'(H \cap K')$. Thus if $hc \in \ker\phi$ then $hc \in H'(H \cap K')$, meaning $\ker\phi \subseteq H'(H \cap K')$.
+        
+        Now take $hy \in H'(H \cap K')$ where $h \in H'$ and $y \in H \cap K'$. Recall that $H\cap K' \subseteq H\cap K$ as $K' \unlhd K$ means $K' \subset K$. Thus $\phi(hy) = y\mathcal{A}$. Since $y \in H \cap K' \leq (H' \cap K)(H \cap K') = \mathcal{A}$ by Diamond Isomorphism Theorem statement 2, so $y \in \mathcal{A}$, meaning $y\mathcal{A} = \mathcal{A}$. Hence $\phi(hy) = \mathcal{A}$, so $hy \in \ker\phi$. Therefore any $hy \in H'(H \cap K')$ also belongs in $\ker\phi$, meaning $H'(H \cap K') \subseteq \ker\phi$.
+        
+        As $\ker\phi \subseteq H'(H\cap K')$ and $H'(H\cap K') \subseteq \ker\phi$, therefore $\ker\phi = H'(H \cap K')$.
     \end{itemize}
-
-    We consider the orbits of this group action. In particular, we find element(s) with orbit(s) of only one element. Suppose $X \in \mathcal{X}$ has one element in its orbit, so for all $h \in H$ we have
-    \[
-        h\cdot X = hXh^{-1} = X.    
-    \]
-    Since $X = gHg^{-1}$ for some $g \in G$, thus
-    \begin{align*}
-        &h(gHg^{-1})h^{-1} = gHg^{-1}\\
-        \iff&hgHg^{-1} = gHg^{-1}h\\
-        \iff&hgH = gHg^{-1}hg\\
-        \iff&(g^{-1}hg)H = H(g^{-1}hg)\\
-        \iff&g^{-1}hg \in \N{G}{H}\\
-        \iff&g^{-1}Hg \subseteq \N{G}{H}.
-    \end{align*}
-    Since $|g^{-1}hg| = |h|$ by \textbf{Proposition \ref{prop-order-of-conjugate-element-equals-order-of-element}} and because $H$ is a $p$-subgroup, hence $|g^{-1}hg| = p^r$ where $r$ is some positive integer. Note that $g^{-1}Hg$ is a (sub)group by \textbf{Exercise \ref{exercise-conjugate-subgroup}}. Therefore $g^{-1}Hg$ is a $p$-subgroup of $\N{G}{H}$.
     
-    Furthermore $g^{-1}Hg \cong H$ by \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} so $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, \textbf{Proposition \ref{prop-normalizer-of-sylow-p-subgroup}} tells us that $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But $X = gHg^{-1}$, so $X = H$.
+    Now finding that $\ker\phi = H'(H \cap K')$, and knowing that $\ker\phi \unlhd H'(H\cap K)$ (\textbf{Proposition \ref{prop-kernel-is-normal-subgroup-of-domain}}), means that $H'(H \cap K') \unlhd H'(H\cap K)$, proving statement 1 of this lemma.
     
-    Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, by Orbit-Stabilizer Theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}), one sees that
+    A similar argument follows for a similar map $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, yielding $\im\psi = (H\cap K)/\mathcal{A}$ and $\ker\psi = K'(H\cap K)$ which proves statement 2.
+    
+    The final step is to apply the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) to both $\phi$ and $\psi$. This yields
     \[
-        |\Stab{H}{gHg^{-1}}| = \frac{|H|}{|\Orb{H}{gHg^{-1}}|}
+        \frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{H\cap K}{\mathcal{A}} 
+        \text{ and }
+        \frac{K'(H\cap K)}{K'(H'\cap K)} \cong \frac{H\cap K}{\mathcal{A}}
     \]
-    and since $|H|$ is a power of $p$ and $|\Stab{H}{gHg^{-1}}|$ is an integer, thus $|\Orb{H}{gHg^{-1}}|$ has to be a power of $p$, meaning $|\Orb{H}{gHg^{-1}}| \equiv 0 \pmod p$. Because distinct orbits partition $\mathcal{X}$ (\textbf{Exercise \ref{exercise-distinct-orbits-partition-set}}), thus $|\mathcal{X}| \equiv 1 \pmod p$.
-
-    Now let the Sylow $p$-subgroup $K$ act on $\mathcal{X}$ by conjugation, meaning $k \star X = kXk^{-1}$. This is a group action as proven before, and the above conclusion means that there is at least one orbit of length 1. Hence there exists a $g \in G$ such that for all $k \in K$, we have $k(gHg^{-1})k^{-1} = gHg^{-1}$. Hence $g^{-1}kg \in \N{G}{H}$ which means $g^{-1}Kg \subset \N{G}{H}$. Therefore, since $|K| = |g^{-1}Kg|$ and by \textbf{Proposition \ref{prop-normalizer-of-sylow-p-subgroup}}, $g^{-1}Kg \subseteq H$, meaning $K \subseteq gHg^{-1}$. But because $|H| = |K|$ as they are both Sylow $p$-subgroups, therefore $K = gHg^{-1}$.
-\end{proof}
-\begin{remark}
-    What part of this proof shows is that if $P$ is a Sylow $p$-subgroup but $Q$ is only a $p$-subgroup, then $Q \subseteq gPg^{-1}$ for some $g \in G$.
-\end{remark}
-
-\newpage
-
-We note one important corollary of the Second Sylow Theorem.
-\begin{corollary}\label{corollary-sylow-subgroup-is-normal-if-it-is-unique}
-    Let $G$ be a finite group and $P$ be a Sylow $p$-subgroup for some prime $p$. Then $P$ is a normal subgroup of $G$ if and only if $P$ is the only Sylow $p$-subgroup of $G$.
-\end{corollary}
-\begin{proof}
-    The reverse direction is easy to prove. Since $P$ is the only Sylow $p$-subgroup of $G$, this means that $P$ is the only subgroup of order $p^k$. By \textbf{Theorem \ref{thrm-unique-subgroup-of-given-order-is-normal}}, this means that $P \lhd G$.
-
-    We work on the forward direction now and suppose $P$ is a normal subgroup of $G$. Let $\hat{P}$ be a normal Sylow $p$-subgroup. By the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}), there exists $g \in G$ such that $g\hat{P}g^{-1} = P$. But since $\hat{P}$ is normal, thus $g^{-1}\hat{P}g = \hat{P}$ by definition of normality. Hence, $P = \hat{P}$, meaning that there is only one Sylow $p$-subgroup.
+    whence statement 3 immediately follows.
 \end{proof}
 
-\begin{exercise}
-    Let $G$ be a finite group, $p$ be a prime number, and $H$ and $K$ be distinct Sylow $p$-subgroups of $G$. Prove that $H \cong K$.
-\end{exercise}
+\section{Schreier Refinement Theorem and Jordan-H\"older Theorem}
+This next section proves fundamental theorems about composition series, but will be fairly technical.
 
-\newpage
-
-\section{Third Sylow Theorem}
-We now state and prove the \textbf{Third Sylow Theorem}.
-\begin{theorem}[Sylow III]\label{thrm-sylow-3}\index{Sylow Theorem!Third}
-    Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. Let $n_p$ denote the number of Sylow $p$-subgroups in $G$, i.e. $n_p = |\Syl{p}{G}|$. Then,
-    \begin{enumerate}
-        \item $n_p = [G:\N{G}{P}]$, where $P$ is a Sylow $p$-subgroup of $G$;
-        \item $n_p$ divides $m$; and
-        \item $n_p \equiv 1 \pmod p$.
-    \end{enumerate}
-\end{theorem}
-\begin{proof}[Proof (see \cite{wielandt_1959})]
-    We prove the three statements in order.
-    \begin{enumerate}
-        \item Let $G$ act on $\Syl{p}{G}$ by conjugation, meaning that for any $g \in G$ and $P \in \Syl{p}{G}$, $g\cdot P = gPg^{-1}$. By the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}), all Sylow $p$-subgroups are conjugates of each other, so the orbit of any $P \in \Syl{p}{G}$ is the set of all Sylow $p$-subgroups, meaning $|\Orb{G}{P}| = |\Syl{p}{G}| = n_p$. Now consider $\Stab{G}{P}$; note
-        \[
-            \Stab{G}{P} = \{g \in G \vert gPg^{-1} = P\} = \N{G}{P}
-        \]
-        by definition of the normalizer. Therefore, by the Orbit-Stabilizer Theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}),
-        \[
-            n_p = |\Orb{G}{P}| = \frac{|G|}{|\Stab{G}{P}|} = \frac{|G|}{|\N{G}{P}|} = [G : \N{G}{P}],
-        \]
-        proving the first statement.
-
-        \item Let $P$ be a Sylow $p$-subgroup. We recall that $P \lhd \N{G}{P} \leq G$. Note that by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) we know $|\N{G}{P}| = [\N{G}{P} : P]|P| = ap^k$ where $a \leq m$ (since $\N{G}{P} \leq G$). Furthermore
-        \[
-            mp^k = |G| = [G: \N{G}{P}]|\N{G}{P}| = n_p \times ap^k
-        \]
-        which means $m = an_p$. In other words, $n_p$ divides $m$.
-
-        \item Let $H$ be a Sylow $p$-subgroup and let it act on $\Syl{p}{G}$ by conjugation, meaning that for any $h \in H$ and $P \in \Syl{p}{G}$, $h \cdot P = hPh^{-1}$. Let $\Omega$ denote the set of fixed points of $\Syl{p}{G}$ under this action.
-
-        Suppose $Q \in \Omega$, which means that $hQh^{-1} = Q$ for all $h \in H$. Thus $H \subseteq \N{G}{Q}$ as $\N{G}{Q} = \{g \in G \vert gQg^{-1} = Q\}$. In fact, since $H$ is a Sylow $p$-subgroup, $H \leq \N{G}{Q}$. We note $Q \unlhd \N{G}{Q}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. Hence $H$ and $Q$ are Sylow $p$-subgroups of $\N{G}{Q}$, which means there exists $n \in \N{G}{Q}$ such that $nQn^{-1} = H$ by the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}). Furthermore $nQn^{-1} = Q$ since $Q \unlhd \N{G}{Q}$. Hence $Q = H$, which means that the only element in $\Omega$ is $H$.
-
-        By a similar argument posed in the proof of the Second Sylow Theorem, for any $Q \in \Syl{p}{G}$ where $Q \neq H$ we must have $|\Orb{H}{Q}| \equiv 0 \pmod p$. Note $|\Orb{H}{H}| = 1$. Now since distinct orbits partition $\Syl{p}{G}$, we must have $n_p = |\Syl{p}{G}| \equiv 1 \pmod p$.
-    \end{enumerate}
-    This completes the proof of the Third Sylow Theorem.
-\end{proof}
-
-\begin{example}
-    We show that a group of order 4225 is abelian.
-
-    Note that $4225 = 5^2 \times 13^2$. Let $G$ be a group of order 4225. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), we know that
-    \begin{itemize}
-        \item $n_5 \mid 13^2 = 169$ and $n_{13} \mid 5^2 = 25$, which means $n_5 \in \{1, 13, 169\}$ and $n_{13} \in \{1, 5, 25\}$; and
-        \item $n_5 \equiv 1 \pmod 5$ and $n_{13} \equiv 1 \pmod{13}$, which means $n_5 \in \{1, 6, 11, \dots\}$ and $n_{13} \in \{1, 14, 27, \dots\}$.
-    \end{itemize}
-    Hence, $n_5 = 1$ and $n_{13} = 1$, meaning that there is only one Sylow 5-subgroup and one Sylow 13-subgroup.
-
-    Let $P$ be the Sylow 5-subgroup and $Q$ be the Sylow 13-subgroup. By \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}, $P \lhd G$ and $Q \lhd G$, so $pq = qp$ for any $p \in P$ and $q \in Q$. Furthermore, by \textbf{Problem \ref{problem-intersection-of-coprime-subgroups}}, $P \cap Q = \{e\}$. Finally, notice that
-    \[
-        |PQ| = \frac{|P||Q|}{|P\cap Q|} = |P||Q| = 5^2\times13^2 = |G|
-    \]
-    which means that $PQ$ and $G$ have the same number of elements. Hence, $G$ is the internal direct product of $P$ and $Q$. We note that
-    \[
-        G = PQ \cong P\times Q
-    \]
-    by direct product equivalence (\textbf{Theorem \ref{thrm-direct-product-equivilance}}). In addition, since $P$ and $Q$ are groups of prime-squared order, they are abelian (\textbf{Problem \ref{problem-group-of-order-prime-squared-is-abelian}}), meaning that their external direct product $P\times Q$ is also abelian (\textbf{Problem \ref{problem-external-direct-product-of-abelian-groups-is-abelian}}). Hence $G$ is also abelian.
-\end{example}
-
-\begin{exercise}
-    Let $G$ be a group of order 784, and let $P$ be a Sylow 7-subgroup that is \textbf{not} a normal subgroup of $G$. Find the order of $\N{G}{P}$.
-\end{exercise}
-
-\section{Testing Non-Simplicity Of Groups}
-To end this chapter, we look at the idea of \textbf{simple groups} and describe ways to prove the non-simplicity of groups.
+Before we look at them, we introduce \textbf{refinements}.
 \begin{definition}
-    Let $G$ be a group where $|G| > 2$. Then $G$ is \textbf{simple}\index{group!simple} if the only normal subgroups of $G$ are the trivial subgroup and $G$ itself.
+    Let $G$ be a group. Let $\mathcal{H} = \langle H_i \rangle_{i\in\{0,\dots,m\}}$ be a subnormal series for $G$, where
+    \[
+        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m = G,
+    \]
+    and let $\mathcal{K} = \langle K_j \rangle_{j\in\{0,\dots,n\}}$ be a subnormal series for $G$, where
+    \[
+        1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_n = G.
+    \]
+    If every $H_i$ appears in $\mathcal{K}$ (i.e., $\mathcal{H}$ is a subsequence of $\mathcal{K}$), then $\mathcal{K}$ is a \textbf{refinement}\index{refinement} of $\mathcal{H}$.
 \end{definition}
+\begin{example}
+    We previously found that
+    \[
+        1 \lhd \{e, r^2\} \lhd D_4 \text{ and } 1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.    
+    \]
+    Thus $1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4$ is a refinement of $1 \lhd \{e, r^2\} \lhd D_4$.
+\end{example}
+
+We can now introduce the \textbf{Schreier Refinement Theorem}.
+\begin{theorem}[Schreier Refinement Theorem]\label{thrm-schreier}\index{Schreier Refinement Theorem}
+    Let $G$ be a finite group. Two (sub)normal series for $G$ have refinements of equal length whose factor groups are isomorphic.
+\end{theorem}
 \begin{remark}
-    Equivalently, $G$ is simple if $G$ has no proper normal subgroups.
+    This theorem is also called the \textbf{Schreier-Zassenhaus Theorem} (e.g. in \cite{clark_1984,proofwiki_schreierzassenhaus}) due to the use of Zassenhaus' Lemma in the proof.
 \end{remark}
 
-We may use part of the Third Sylow Theorem to create a test for non-simplicity.
-\begin{theorem}[Sylow's Test]\index{Sylow's Test}
-    Let $n$ be a non-prime integer and let $p$ be a prime divisor of $n$. If 1 is the only divisor of $n$ that is congruent 1 modulo $p$, then there does not exist a simple group of order $n$.
+\begin{proof}[Proof (see {\cite[\S 72]{clark_1984}} and \cite{proofwiki_schreierzassenhaus})]
+    Suppose that
+    \begin{equation}\label{eqn:thrm-schreier-eqn-a}
+        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m = G    
+        \tag{A}
+    \end{equation}
+    and
+    \begin{equation}\label{eqn:thrm-schreier-eqn-b}
+        1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_n = G    
+        \tag{B}
+    \end{equation}
+    are two subnormal series of $G$. We shall refine the subnormal series (\ref{eqn:thrm-schreier-eqn-a}) to a series (\ref{eqn:thrm-schreier-eqn-a-prime}) and show that it is isomorphic to a refinement (\ref{eqn:thrm-schreier-eqn-b-prime}) of (\ref{eqn:thrm-schreier-eqn-b}).
+    
+    Let a new series be formed
+    \begin{equation}\label{eqn:thrm-schreier-eqn-a-prime}
+        1 = \hat{H}_0 \subseteq \hat{H}_1 \subseteq \hat{H}_2 \subseteq \cdots \subseteq \hat{H}_{mn - 1} \subseteq \hat{H}_{mn} = G
+        \tag{A'}
+    \end{equation}
+    such that
+    \[
+        \hat{H}_k = H_q(H_{q+1}\cap K_r)
+    \]
+    for $k = qn + r$, where $0 \leq q < m$ and $0 \leq r \leq n$. It needs to be demonstrated that $\hat{H}_k$ is well-defined. Consider the ambiguity of the $k = qn + r$ in the case where $r = n$, so $k = qn + n = (q+1)n + 0$. For (\ref{eqn:thrm-schreier-eqn-a-prime}) to be well defined, we require
+    \[
+        H_q(H_{q+1} \cap K_n) = H_{q+1}(H_{q+2} \cap K_0).
+    \]
+    We note $H_q \subseteq H_{q+1}$. Thus the left-hand side is
+    \begin{align*}
+        H_q(H_{q+1} \cap K_n) &= H_q(H_{q+1} \cap G) & (\text{since } K_n = G)\\
+        &= H_qH_{q+1}\\
+        &= H_{q+1} & (\text{by \textbf{Problem \ref{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}}})
+    \end{align*}
+    while the right-hand side is
+    \begin{align*}
+        H_{q+1}(H_{q+2} \cap K_0) &= H_{q+1}(H_{q+2} \cap \{e\})\\
+        &= H_{q+1}(\{e\})\\
+        &= H_{q+1},
+    \end{align*}
+    so this is well-defined.
+    
+    We next need to demonstrate that $\hat{H}_k \lhd \hat{H}_{k+1}$. Write $k$ as $qn+r$ in which $0 \leq q < m$ and $0 \leq r < n$. Hence
+    \[
+        \hat{H}_{k+1} = \hat{H}_{qn+(r+1)} = H_q(H_{q+1}\cap K_{r+1}). 
+    \]
+    Since $K_r \lhd K_{r+1}$ we have
+    \[
+        \hat{H}_k = H_q(H_{q+1}\cap K_r) \lhd H_q(H_{q+1}\cap K_{r+1}) = \hat{H}_{k+1}
+    \]
+    by Zassenhaus' Lemma (\textbf{Lemma \ref{lemma-zassenhaus}}), statement 1. Thus $\hat{H}_k \lhd \hat{H}_{k+1}$, which is what we wanted to prove. However we note that (\ref{eqn:thrm-schreier-eqn-a-prime}) may not be a subnormal series, as it is possible for $\hat{H}_k = \hat{H}_{k+1}$ for some $k$. We will address this concern near the end.
+    
+    Having created series (\ref{eqn:thrm-schreier-eqn-a-prime}), use the same procedure to form
+    \begin{equation}\label{eqn:thrm-schreier-eqn-b-prime}
+        1 = \hat{K}_0 \subseteq \hat{K}_1 \subseteq \hat{K}_2 \subseteq \cdots \subseteq \hat{K}_{mn - 1} \subseteq \hat{K}_{mn} = G
+        \tag{B'}
+    \end{equation}
+    such that
+    \[
+        \hat{K}_l = H_q(H_{q+1}\cap K_r)
+    \]
+    for $l = qm + r$, where $0 \leq q < n$ and $0 \leq r \leq m$. The same statements made for (\ref{eqn:thrm-schreier-eqn-a-prime}) apply to (\ref{eqn:thrm-schreier-eqn-b-prime}).
+    
+    Now let $k = un + v$ and let $l = vm + u$. It follows that
+    \begin{align*}
+        \hat{H}_{k+1}/\hat{H}_k &= \frac{H_u(H_{u+1}\cap K_{v+1})}{H_u(H_{u+1}\cap K_v)}\\
+        &\cong \frac{K_v(K_{v+1}\cap H_{u+1})}{K_v(K_{v+1}\cap H_u)}\\
+        &= \hat{K}_{l+1}/\hat{K}_l
+    \end{align*}
+    with the isomorphism achieved by Zassenhaus' Lemma, statement 3. Thus (\ref{eqn:thrm-schreier-eqn-a-prime}) and (\ref{eqn:thrm-schreier-eqn-b-prime}) have isomorphic factors.
+    
+    We return to the concern about the possibility that $\hat{H}_k = \hat{H}_{k+1}$ (or $\hat{K}_l = \hat{K}_{l+1}$) for some $k$ (or $l$). Eliminating redundancies in both (\ref{eqn:thrm-schreier-eqn-a-prime}) and (\ref{eqn:thrm-schreier-eqn-b-prime}) would yield two refinements of equal length, whose factor groups are isomorphic.
+    
+    Finally, observe that if both original series (\ref{eqn:thrm-schreier-eqn-a}) and (\ref{eqn:thrm-schreier-eqn-b}) were normal series of $G$, then each $\hat{H}_k$ and $\hat{K}_l$ would be a normal subgroup of $G$, so their respective refined series would also be a normal series.
+\end{proof}
+
+We can now introduce and prove the \textbf{Jordan-H\"older Theorem}.
+\begin{theorem}[Jordan-H\"older]\label{thrm-jordan-holder}\index{Jordan-H\"older Theorem}
+    Two composition series for a finite group have the same length and composition factors.
 \end{theorem}
 \begin{proof}
-    We consider two cases, namely the case where $n=p^k$ where $k>1$ and the case where $n \neq p^k$.
+    The Schreier Refinement Theorem (\textbf{Theorem \ref{thrm-schreier}}) tells us that two subnormal series have refinements of equal length whose factors are isomorphic.
     
-    We first suppose $n = p^k$. Let $G$ be a group of order $n$. We consider two subcases.
-    \begin{itemize}
-        \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\textbf{Exercise \ref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\textbf{Propopsition \ref{prop-subgroup-of-abelian-group-is-normal}}), thus there exists a proper normal subgroup of $G$, meaning $G$ is non-simple.
-        \item Suppose now $G$ is non-abelian. By \textbf{Example \ref{example-group-with-prime-power-order-has-non-trivial-center}}, $G$ has a non-trivial center. Furthermore, $G \neq \Z{G}$ because $G$ is non-abelian (\textbf{Problem \ref{problem-center-of-G}}). Since the center is a normal subgroup of $G$, it is thus a proper normal subgroup of $G$, meaning $G$ is non-simple.
-    \end{itemize}
-    Hence any group of order $p^k$ where $k > 1$ is non-simple.
-
-    Now suppose $n$ is not a prime power. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), the number of Sylow $p$-subgroups, $n_p$, is congruent to 1 modulo $p$ and divides $n$. Since 1 is the only such number by our assumption, thus $n_p = 1$, meaning that there is only one Sylow $p$-subgroup. By \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}} this means that that Sylow $p$-subgroup (which is non-trivial) is normal, which thus means that any group of order $n$ is non-simple.
+    Now a composition series has no proper refinements since all subgroups inside a composition series are maximal normal subgroups. Hence any refinements must be identical to the composition series themselves.
+    
+    Therefore, any two composition series (which are their own refinements) for a finite group have the same length and composition factors.
 \end{proof}
-\begin{example}
-    Consider a group with order 15. Note $15 = 3 \times 5$, and consider $p = 5$. The divisors of 15 are 1, 3, 5, and 15, and clearly only 1 is congruent to 1 modulo 5. Hence by Sylow's Test we know that a group of order 15 cannot be simple.
-\end{example}
-
-For some groups of orders that do not satisfy the condition in Sylow's Test, we can still can prove that they cannot be simple.
-
-\newpage
 
 \begin{example}
-    We will show that a group of order 2552 is non-simple.
-
-    We note first that $2552 = 2^3 \times 11 \times 29$. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), we know $n_p \mid m$ and $n_p \equiv 1 \pmod p$.
-
-    The divisors of the $m$ given the following primes are listed below.
-    \begin{itemize}
-        \item $p = 2$: $m = 319$ and so divisors are $\{1. 11, 29, 319\}$.
-        \item $p = 11$: $m = 232$; divisors are $\{1, 2, 4, 8, 29, 58, 116, 232\}$.
-        \item $p = 29$: $m = 88$; divisors are $\{1, 2, 4, 8, 11, 22, 44, 88\}$.
-    \end{itemize}
-    Thus, since $n_p \equiv 1 \pmod p$, we must have $n_2 \in \{1, 11, 29, 319\}$, $n_{11} \in \{1, 232\}$, and $n_{29} \in \{1, 88\}$.
-
-    Seeking a contradiction, suppose that $n_2$, $n_{11}$, and $n_{29}$ are all not 1. Then $n_{11} = 232$ and $n_{29} = 88$. Recall that one element in a Sylow $p$-subgroup has order 1 (i.e., the identity). Thus, the number of elements of order 11 is $232 \times (11 - 1) = 2320$ and the number of elements of order 29 is $88 \times (29 - 1) = 2464$. Hence, the total number of elements in the group of order 2552 must be at least $2320 + 2464 = 4764$, a contradiction.
-
-    Hence, we conclude that at least one of $n_2, n_{11}, n_{29}$ must be 1, meaning that there is a proper normal subgroup, which therefore means that any group of order 2552 is non-simple.
-\end{example}
-
-\begin{example}\label{example-using-kernel-to-show-non-simple}
-    We show that any group of order 36 is non-simple by considering the kernel of a homomorphism.
-
-    We note $36 = 2^2 \times 3^2$. Let $G$ be a group of order 36 and let $P$ be a Sylow 3-subgroup of the group of order 36. Let $G$ act on the set of cosets $G/P$ by left multiplication, meaning $g \cdot xP = (gx)P$. Then by \textbf{Theorem \ref{thrm-group-action-definition-equivalence}} this induces a homomorphism $\phi: G \to \Sn{4}$ since there are 4 cosets in $G/P$. We note $\phi(g) = \sigma_g$ where $\sigma_g(xP) = g\cdot xP = (gx)P$.
-
-    We consider the kernel of $\phi$.
+    We found in an earlier example the 3 distinct composition series for $D_6$:
     \begin{align*}
-        \ker\phi &= \{g \in G \vert \phi(g) = \id\}\\
-        &= \{g \in G \vert \sigma_g = \id\}\\
-        &= \{g \in G \vert \sigma_g(xP) = xP \text{ for all } x \in G\}\\
-        &= \{g \in G \vert (gx)P = xP \text{ for all } x \in G\}\\
-        &= \{g \in G \vert x^{-1}gx \in P \text{ for all } x \in G\} & (\text{Coset Equality})\\
-        &= \{g \in G \vert g \in xPx^{-1} \text{ for all } x \in G\}\\
-        &= \bigcap_{x \in G} xPx^{-1}.
+        &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6,\\
+        &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6, \text{ and}\\
+        &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
     \end{align*}
-    We note that $\ker\phi \neq \{e\}$ since that would imply that $\phi$ is injective (\textbf{Exercise \ref{exercise-trivial-kernel-means-injective}}), which would then mean $36 = |G| \leq |\Sn{4}| = 4! = 24$, a contradiction. We also note $\ker\phi \neq G$, otherwise
+    The factors in each case (in order) are:
+    \begin{itemize}
+        \item $\Cn{2}/1 \cong \Cn{2}$, $\Cn{6}/\Cn{2} \cong \Cn{3}$ (\textbf{Exercise \ref{exercise-Zmn-mod-Zn-cong-Zn}}), $D_6 / \Cn{6}$;
+        \item $\Cn{3}/1 \cong \Cn{3}$, $\Cn{6}/\Cn{3} \cong \Cn{2}$, $D_6 / \Cn{6}$; and
+        \item $\Cn{3}/1 \cong \Cn{3}$, $D_3 / \Cn{3} \cong \Cn{2}$, $D_6 / D_3$.
+    \end{itemize}
+    By the Jordan-H\"older theorem, the factors must be isomorphic to each other. Looking at the last 2 factor lists, only one factor from each is unaccounted for, namely the factors $D_6 / \Cn{6}$ and $D_6 / D_3$. Since Jordan-H\"older guarantees that they are isomorphic to each other, hence, technically, $D_6 / \Cn{6} \cong D_6 / D_3$.
+
+    \textbf{Important note}: The $\Cn{6}$ and $D_3$ above represent \textbf{subgroups} of $D_6$ (up to isomorphism), not the actual groups themselves. The subgroup of $D_6$ that is isomorphic to $\Cn{6}$ is $\langle r \rangle$, while the subgroup isomorphic to $D_3$ is $\langle r^2, s\rangle$. Therefore the correct statement is
     \[
-        36 = |G| = |\ker\phi| = \left|\bigcap_{x \in G} xPx^{-1}\right| \leq |xPx^{-1}| = |P| = 9,
+        D_6 / \langle r \rangle \cong D_6 / \langle r^2, s\rangle.
     \]
-    a contradiction. Hence $\ker\phi$ is a proper subgroup of $G$. We note that $\ker\phi \lhd G$, so we have found a proper normal subgroup of $G$, meaning that $G$ is non-simple.
 \end{example}
 
 \begin{exercise}
-    Show that any group of order $130$ is non-simple.
+    Let $p$ be a prime. Show that any group with order $p^2$ has only one composition series.
 \end{exercise}
 
 \newpage
 
 \section{Problems}
 \begin{problem}
-    Show that a group of order 200 has a normal Sylow 5-subgroup.
-\end{problem}
-
-\begin{problem}
-    Show that any Sylow $p$-subgroup of a group of order 33 must be normal.
-\end{problem}
-
-\begin{problem}
-    A perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself. All even perfect numbers are of the form $2^{p-1}\left(2^p-1\right)$ where both $p$ and $2^p-1$ are primes. Prove that any group with an even perfect number order is not simple.
-\end{problem}
-
-\begin{problem}\label{problem-group-of-order-pq-has-normal-subgroup-of-order-q}
-    Let $p$ and $q$ be primes such that $p < q$. Let $G$ be a group of order $pq$.
+    Let the \textit{Klein four-group}\index{Klein four-group} with presentation
+    \[
+        \langle a, b \vert a^2 = b^2 = (ab)^2 = e \rangle
+    \]
+    be denoted by $\mathrm{V}$. Recall that $\mathrm{V} \cong (\mathbb{Z}_2)^2$.
     \begin{enumerate}[label=(\roman*)]
-        \item Prove that there is only one subgroup $H$ of $G$ of order $q$. Deduce that $H \lhd G$.
-        \item Prove also that if $q \not\equiv 1 \pmod p$ then $G$ is cyclic.
+        \item Find the unique composition series for $\mathrm{V}$ up to isomorphism.
+        \item Let $\mathrm{Q}$ denote the quaternion group. Find the two unique composition series for $\mathrm{Q}$ up to isomorphism.\newline
+        (\textit{Hint: consider the alternate definition of the quaternion group.})
+        \item Let $H$ be the subgroup of $\mathrm{Q}$ that is isomorphic to $\Cn{4}$, and $K$ be a subgroup of $\mathrm{Q}$ that is isomorphic to $\mathrm{V}$. Prove that
+        \[
+            \mathrm{Q}/H \cong \mathrm{Q}/K.
+        \]
+        (\textit{Hint: consider \textbf{Problem \ref{problem-cartesian-product-of-group-by-group-isomorphic-to-group}}.})
     \end{enumerate}
 \end{problem}
 
-\begin{problem}
-    Show that any group of order 3325 is abelian.
+\begin{problem}\label{problem-S4-composition-series}
+    Find the unique composition series of $\Sn{4}$ (up to isomorphism).\newline
+    (\textit{Hint: consider the orders of elements in $\An{4}$ and \textbf{Problem \ref{problem-subgroup-of-index-2}} to prove why a particular subgroup with a particular order cannot exist.})
 \end{problem}
-
-\begin{problem}\label{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}
-    Let $G$ be a finite group, and write the order of $G$ as $p^km$ where $k \geq 0$ and $p \nmid m$. Let $N \lhd G$ such that $p$ does not divide the index of $N$ in $G$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Prove that any Sylow $p$-subgroup of $N$ is also in $G$.
-        \item Prove that any Sylow $p$-subgroup of $G$ is also in $N$.
-    \end{enumerate}
-    (That is, prove that $N$ contains all Sylow $p$-subgroups of $G$ and vice versa.)
-\end{problem}
-
-\begin{problem}\label{problem-if-m!<|G|-then-G-is-simple}
-    Let $G$ be a finite group such that $|G| = p^km$ where $k \geq 1$, $m > 1$, and $p \nmid m$. Prove that if $m! < |G|$ then $G$ is non-simple.
-\end{problem}
-
-\begin{problem}\label{problem-group-of-order-30-has-normal-subgroup-of-order-5}
-    Prove that a group of order 30 has a normal subgroup of order 5.
-\end{problem}
-
-\begin{problem}\label{problem-group-of-order-pqr-is-non-simple}
-    Let $p, q$, and $r$ be distinct primes such that $p < q < r$. Let $G$ be a group of order $pqr$. Prove that $G$ is non-simple.\newline
-    (\textit{Hint: show that a normal subgroup of order $p$, $q$, or $r$ must exist.})
-\end{problem}
-
-% %=========================================
-% \chapter{Composition Series}
-% \section{Subgroup Series and Subnormal Series}
-% We introduce the idea of a \textbf{subgroup series} of a group.
-% \begin{definition}
-%     Let $G$ be a group. A \textbf{subgroup series without repetition} of $G$ is a chain of subgroups $H_0, \dots, H_n$ such that
-%     \[
-%         1 = H_0 < H_1 < H_2 < \cdots < H_n = G,
-%     \]
-%     where 1 is the trivial group $\{e\}$, and where $H_i \neq H_{i+1}$ (for $0 \leq i < n$). The \textbf{length} of such a series is $n$, or is infinite if there is no end.
-% \end{definition}
-% \begin{remark}
-%     It is more often useful to consider subgroup series without repetition than it is to consider the weaker form of subgroup series, which requirement is only
-%     \[
-%         1 = H_0 \leq H_1 \leq H_2 \leq \cdots \leq H_n = G,
-%     \]
-%     meaning that $H_i$ can be equal to $H_{i+1}$.
-% \end{remark}
-% \begin{remark}
-%     The above definition gives an \textbf{ascending} subgroup series without repetition. A \textbf{descending} subgroup series without repetition is
-%     \[
-%         G = K_0 > K_1 > K_2 > \cdots > K_n = 1,
-%     \]
-%     where the indexing is reversed.
-% \end{remark}
-
-% Subgroup series can simplify the study of a group to the study of simpler subgroups and their relations.
-
-% \begin{example}
-%     Consider the dihedral group of order 8, $D_4$. One sees clearly that $H = \{e, r, r^2, r^3\}$ is a subgroup of $D_4$, and that $K = \{e, r^2\}$ is a subgroup of $H$. Thus a possible (ascending) subgroup series (without repetition) is
-%     \[
-%         1 < \{e, r^2\} < \{e, r, r^2, r^3\} < D_4.
-%     \]
-% \end{example}
-
-% We now consider the definition of a \textbf{subnormal series} of a group $G$.
-% \begin{definition}
-%     Let $G$ be a group. A \textbf{subnormal series} of $G$ is a sequence of subgroups $H_0, \dots, H_n$ such that
-%     \[
-%         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G.    
-%     \]
-%     The quotient groups $H_{i+1}/H_i$ are called the \textbf{factor groups} of the subnormal series.
-% \end{definition}
-% \begin{remark}
-%     Note that there is no requirement that $H_i \lhd G$, only that $H_i \lhd H_{i+1}$. If all subgroups are such that $H_i \lhd G$ (where $i \in \{0, 1, 2, \dots, n-1\}$) then such a series is called a \textbf{normal series} of $G$.
-% \end{remark}
-% \begin{remark}
-%     Similar to subgroup series, there are ascending subnormal series and descending subnormal series.
-% \end{remark}
-
-% \begin{example}
-%     We consider the dihedral group of order 8 again. One may verify that $H = \{e, r, r^2, r^3\} \lhd D_4$ and $K = \{e, r^2\} \lhd H$. Hence a possible subnormal series of $D_4$ is
-%     \[
-%         1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.
-%     \]
-%     In fact,
-%     \[
-%         1 \lhd D_4, \ 1 \lhd \{e, r^2\} \lhd D_4, \text{ and } 1 \lhd \{e, r, r^2, r^3\} \lhd D_4
-%     \]
-%     are valid subnormal series of $D_4$.
-% \end{example}
-
-% \begin{exercise}
-%     Let the group $G = \mathbb{Z}_4$.
-%     \begin{enumerate}[label=(\roman*)]
-%         \item Find a subnormal series of length 2 for $G$.
-%         \item Hence find the factors of that subnormal series.
-%         \item Explain whether the subnormal series found in (i) is a normal series.
-%     \end{enumerate}
-% \end{exercise}
-
-% \section{Maximal Normal Subgroup}
-% Before looking at a more interesting category of subnormal series, we have to introduce the idea of a \textbf{maximal normal subgroup}.
-% \begin{definition}
-%     Let $G$ be a group and $N \lhd G$. Then $N$ is said to be a \textbf{maximal (proper) normal subgroup} of $G$ if there does \textbf{not} exist a $H \lhd G$ such that $N < H < G$.
-% \end{definition}
-% \begin{remark}
-%     This means that if $N$ is a maximal normal subgroup of $G$ and there exists a subgroup $H$ such that $N \leq H \leq G$, then either $H = N$ or $H = G$.
-% \end{remark}
-
-% There is an important consequence that we examine here.
-% \begin{theorem}\label{thrm-maximal-normal-subgroup-iff-quotient-is-simple}
-%     Let $G$ be a group and $N \lhd G$. Then $N$ is a maximal normal subgroup of $G$ if and only if $G/N$ is simple.
-% \end{theorem}
-
-% \begin{proof}
-%     We prove the forward direction first; assume that $N$ is a maximal normal subgroup of $G$. Suppose there exists a normal subgroup of $G/N$. Then by \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} we know that subgroup takes the form of $H/N$, where $N \leq H \leq G$, such that $H/N \unlhd G/N$. Since $N$ is a maximal normal subgroup this means that $H = N$ or $H = G$. In the first case $H/N \cong 1$ and in the second $H / N = G/N$. Hence $G/N$ only has two normal subgroups, the identity and itself, meaning that it has no proper normal subgroups and is hence simple.
-    
-%     We now prove the reverse direction; assume that $N \unlhd G$ and $G/N$ is simple. Suppose there exists a $H \leq G$ such that $N \leq H \leq G$. By \textbf{Problem \ref{problem-subgroup-of-quotient-group-is-quotient-group}} we know $H/N \leq G/N$. In fact, since $N \leq H \leq G$ we know $N \unlhd H \unlhd G$ which means $H/N \unlhd G/N$. As $G/N$ is simple, thus $H/N \cong 1$ or $H/N = G/N$. The case where $H/N \cong 1$ occurs if and only if $H = N$ and the case where $H/N = G/N$ occurs when $H = G$. Hence, this means that $N$ is a maximal normal subgroup of $G$.
-% \end{proof}
-
-% \begin{exercise}
-%     Find the order of the maximal normal subgroup of $\mathbb{Z}_{120}$.
-% \end{exercise}
-
-% \section{Composition Series}
-% We can now look at a more interesting type of subnormal series: the titular \textbf{composition series} of a group.
-% \begin{definition}
-%     Let $G$ be a group. A \textbf{composition series} of $G$ is a subnormal series of finite length
-%     \[
-%         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G  
-%     \]
-%     such that $H_i$ is a maximal normal subgroup of $H_{i+1}$ (for $0 \leq i < n$). The factor groups $H_{i+1}/H_i$ are called the \textbf{composition factors}, and the length $n$ above is called the \textbf{composition length}.
-% \end{definition}
-% \begin{remark}
-%     Some authors (e.g. \cite{cohn_1982, clark_1984, proofwiki_compositionseriesdefinition}) require composition series to be a normal series. However we follow \cite{hungerford_1980, humphreys_1996, milne_2021} and others and only require it to be a subnormal series.
-% \end{remark}
-% \begin{remark}
-%     An equivalent definition of a composition series is a normal series where the factor groups $H_{i+1}/H_i$ are simple, as guaranteed by \textbf{Theorem \ref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}}.
-% \end{remark}
-% \begin{remark}
-%     For composition series, we often write a group that is isomorphic to the subgroup rather than the actual subgroup. For example, instead of the subgroup $\{0, 3\}$ in $\mathbb{Z}_6$, we may write $\mathbb{Z}_2$ or $\Cn{2}$ instead.
-% \end{remark}
-
-% \begin{example}
-%     Consider the group $\mathbb{Z}_{12}$. Three composition series of it are
-%     \begin{align*}
-%         &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},\\
-%         &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_4 \lhd \mathbb{Z}_{12},\\
-%         &1 \lhd \mathbb{Z}_3 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},
-%     \end{align*}
-    
-%     and the factors in each of the cases (up to isomorphism) are as follows:
-%     \begin{itemize}
-%         \item $\mathbb{Z}_2$, $\mathbb{Z}_3$, $\mathbb{Z}_2$;
-%         \item $\mathbb{Z}_2$, $\mathbb{Z}_2$, $\mathbb{Z}_3$;
-%         \item $\mathbb{Z}_3$, $\mathbb{Z}_2$, $\mathbb{Z}_2$.
-%     \end{itemize}
-%     Each of the composition series has composition length 3.
-% \end{example}
-
-% \begin{example}
-%     Consider the dihedral group of order 12, $D_6$, the symmetry group of the regular hexagon. The three composition series of $D_6$, up to isomorphism, are
-%     \begin{align*}
-%         &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6,\\
-%         &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6 \text{ and}\\
-%         &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
-%     \end{align*}
-%     We note that the subgroup that is isomorphic to
-%     \begin{itemize}
-%         \item $\Cn{2}$ is $\{e, s\} = \langle s \rangle$;
-%         \item $\Cn{3}$ is $\{e, r^2, r^4\} = \langle r^2\rangle$;
-%         \item $\Cn{6}$ is $\{e, r, r^2, r^3, r^4, r^5\} = \langle r\rangle$; and
-%         \item $D_3$ is $\{e, r^2, r^4, s, r^2s, r^4s\}$.
-%     \end{itemize}
-%     All composition series' lengths are all 3.
-% \end{example}
-% \textbf{Important note}: It is crucial to remember that all of the groups written in the composition series (except for the trivial group and the group itself) represent \textbf{subgroups} of the group itself (up to isomorphism), not the actual groups themselves. We say that the above composition series is \textbf{up to isomorphism}.
-
-% \begin{exercise}
-%     Find the two composition series for $\Cn{6}$ (up to isomorphism), their composition lengths, and their factors (up to isomorphism).
-% \end{exercise}
-
-% One might wonder which groups have a composition series. As mentioned, not all groups have a composition series (e.g., $\mathbb{Z}$). However, finite groups will definitely have a composition series, as noted by the following theorem.
-% \begin{theorem}\label{thrm-finite-group-has-composition-series}
-%     Any finite group has a composition series.
-% \end{theorem}
-% \begin{proof}[Proof (see \cite{hungerford_1980, proofwiki_finitegrouphascompositionseries})]
-%     Let $G$ be a finite group. If $G$ does not have a proper normal subgroup then it has composition series $\{e\} \lhd G$.
-    
-%     Otherwise, $G$ has a proper normal subgroup, at least one of which has maximal order. Let that subgroup be $G_1$. By \textbf{Theorem \ref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}} this means that $G/G_1$ is simple. If $G_1$ does not have a proper normal subgroup then $G$ has composition series $\{e\} \lhd G_1 \lhd G$. Otherwise let $G_2$ be the maximal normal subgroup of $G_1$, and so on. 
-    
-%     Now Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) says that the order of the subgroup must divide the order of the group. Since $G_1$, $G_2$, etc. are proper subgroups of $G$, the orders of the found subgroups can be at most half the order of the preceding group. Hence the orders of the groups are strictly decreasing, meaning
-%     \[
-%         |G| > |G_1| > |G_2| > \cdots > |G_n| = 1,
-%     \]
-%     with the process terminating at some integer $n$ where $G_n = \{e\}$. Now set $H_i = G_{n-i}$. Note $H_{i+1}/H_i = G_i/G_{i+1}$ is simple as discussed above. Hence
-%     \[
-%         \{e\} = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G    
-%     \]
-%     is a composition series of $G$.
-% \end{proof}
-
-% \section{Zassenhaus' Lemma}
-% Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes called the Fourth Isomorphism Theorem.
-% \begin{lemma}[Zassenhaus]\label{lemma-zassenhaus}
-%     Let $G$ be a group. Let $H, H', K, K'$ be subgroups of $G$ such that $H' \lhd H$ and $K' \lhd K$. Then
-%     \begin{enumerate}
-%         \item $H'(H \cap K') \lhd H' (H \cap K)$;
-%         \item $K'(H' \cap K) \lhd K' (H \cap K)$; and
-%         \item $\frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{H\cap K}{\mathcal{A}}$,
-%     \end{enumerate}
-%     where an expression like $H'(H \cap K')$ denotes the subset product of $H'$ and $H \cap K'$.
-% \end{lemma}
-% \begin{proof}[Proof (see {\cite[p.~110]{hungerford_1980}})]
-%     We quickly note that $H' \lhd H \cap K$ as $H' \lhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \lhd H \cap K$ by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 4. Since $H'\lhd H$ we know $H' \subset H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \lhd H \cap K$. Similarly, $H \cap K' \lhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\textbf{Corollary \ref{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, denote $(H' \cap K)(H \cap K')$ by $\mathcal{A}$.
-    
-%     Denote the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$ as follows. If $h \in H'$ and $c \in H \cap K$ then $\phi(hc) = c\mathcal{A}$. We show that $\phi$ is a well-defined homomorphic surjection with a goal to use the Fundamental Homomorphism Theorem to finish the proof.
-    
-%     \begin{itemize}
-%         \item \textbf{Well-defined}: Suppose $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ such that $h_1h_2 = c_1c_2$. Then $c_1c_2^{-1} = h_2^{-1}h_1$. We note that
-%         \[
-%             (H \cap K) \cap H' = H' \cap K \leq \mathcal{A}    
-%         \]
-%         by Diamond Isomorphism Theorem statement 2, and that $c_1c_2^{-1} \in (H \cap K) \cap H'$ since $c_1c_2^{-1} \in H \cap K$ and $c_1c_2^{-1} = h_2^{-1}h_1 \in H'$. Thus $c_1c_2^{-1} \in \mathcal{A}$, meaning $c_1\mathcal{A} = c_2\mathcal{A}$ by Coset Equality lemma (\textbf{Lemma \ref{lemma-coset-equality}}). Hence
-%         \[
-%             \phi(h_1c_1) = c_1\mathcal{A} = c_2\mathcal{A} = \phi(h_2c_2)        
-%         \]
-%         which means $\phi$ is well-defined.
-        
-%         \item \textbf{Homomorphism}: We first remark that $H \cap K \leq H$ by Diamond Isomorphism Theorem statement 1. Since $H' \lhd H$ (given), thus $H'(H\cap K) \leq H$. By \textbf{Proposition \ref{prop-subgroup-product-is-subgroup}}, since $H'(H\cap K) \leq H$, thus $H'(H\cap K) = (H\cap K)H'$. So, for any $c_1h_2 \in (H\cap K)H' = H'(H\cap K)$ we have $c_1h_2 = h_3c_1$ for some $h_3 \in H'$. Therefore for $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ we have
-%         \begin{align*}
-%             \phi((h_1c_1)(h_2c_2)) &= \phi(h1(c_1h_2)c_2)\\
-%             &= \phi(h_1(h_3c_1)c_2)\\
-%             &= \phi((h_1h_3)(c_1c_2))\\
-%             &= (c_1c_2)\mathcal{A}\\
-%             &= (c_1\mathcal{A})(c_2\mathcal{A})\\
-%             &= \phi(h_1c_1)\phi(h_2c_2)
-%         \end{align*}
-%         which shows that $\phi$ is a homomorphism.
-        
-%         \item \textbf{Image}: We prove that $\phi$ is surjective to show $\im \phi = (H\cap K)/\mathcal{A}$.
-        
-%         Take any $c\mathcal{A} \in (H\cap K) / \mathcal{A}$. Clearly $\phi(hc) = c\mathcal{A}$ where $h \in H'$, meaning $\phi$ is surjective. Hence $\im \phi = (H\cap K)/\mathcal{A}$.
-        
-%         \item \textbf{Kernel}: Let $hc \in \ker\phi$ where $h \in H'$ and $c \in H \cap K$. Then $\phi(hc) = \mathcal{A}$, meaning $c\mathcal{A} = \mathcal{A}$. Hence $c \in \mathcal{A}$. Let $c = xy$ where $x \in H'\cap K$ and $y \in H \cap K'$. So $hc \in \ker\phi$ if $hc = hxy = (hx)y$. Note $h \in H'$, $x \in H' \cap K \subseteq H'$ meaning $x \in H'$, and $y \in H \cap K'$, so $hc = (hx)y \in H'(H \cap K')$. Thus if $hc \in \ker\phi$ then $hc \in H'(H \cap K')$, meaning $\ker\phi \subseteq H'(H \cap K')$.
-        
-%         Now take $hy \in H'(H \cap K')$ where $h \in H'$ and $y \in H \cap K'$. Then $\phi(hy) = y\mathcal{A}$. Since $y \in H \cap K' \leq (H' \cap K)(H \cap K') = \mathcal{A}$ by Diamond Isomorphism Theorem statement 2, so $y \in \mathcal{A}$ meaning $y\mathcal{A} = \mathcal{A}$. Hence $\phi(hy) = \mathcal{A}$, so $hy \in \ker\phi$. Therefore any $hy \in H'(H \cap K')$ also belongs in $\ker\phi$, meaning $H'(H \cap K') \subseteq \ker\phi$.
-        
-%         Hence, $\ker\phi = H'(H \cap K')$.
-%     \end{itemize}
-    
-%     Now finding that $\ker\phi = H'(H \cap K')$, and knowing that $\ker\phi \lhd H'(H\cap K)$ (\textbf{Proposition \ref{prop-kernel-is-normal-subgroup-of-domain}}), means that $H'(H \cap K') \lhd H'(H\cap K)$, proving statement 1 of this lemma.
-    
-%     A similar argument follows for a similar map $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, yielding $\im\psi = (H\cap K)/\mathcal{A}$ and $\ker\psi = K'(H\cap K)$ which proves statement 2.
-    
-%     The final step is to apply the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) to both $\phi$ and $\psi$. This yields
-%     \[
-%         \frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{H\cap K}{\mathcal{A}} 
-%         \text{ and }
-%         \frac{K'(H\cap K)}{K'(H'\cap K)} \cong \frac{H\cap K}{\mathcal{A}}
-%     \]
-%     whence statement 3 immediately follows.
-% \end{proof}
-
-% \section{Schreier Refinement Theorem and Jordan-H\"older Theorem}
-% This next section proves fundamental theorems about composition series, but will be fairly technical.
-
-% Before we look at them, we introduce \textbf{refinements}.
-% \begin{definition}
-%     Let $G$ be a group. Let $\mathcal{H} = \langle H_i \rangle_{i\in\{0,\dots,m\}}$ be a subnormal series for $G$, where
-%     \[
-%         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m = G,
-%     \]
-%     and let $\mathcal{K} = \langle K_j \rangle_{j\in\{0,\dots,n\}}$ be a subnormal series for $G$, where
-%     \[
-%         1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_n = G.
-%     \]
-%     If $\mathcal{H}$ is a subsequence of $\mathcal{K}$, meaning that every $H_i$ appears in $\mathcal{K}$, then $\mathcal{K}$ is a \textbf{refinement} of $\mathcal{H}$.
-% \end{definition}
-% \begin{example}
-%     We previously found that
-%     \[
-%         1 \lhd \{e, r^2\} \lhd D_4 \text{ and } 1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.    
-%     \]
-%     Thus $1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4$ is a refinement of $1 \lhd \{e, r^2\} \lhd D_4$.
-% \end{example}
-
-% We can now introduce the \textbf{Schreier Refinement Theorem}.
-% \begin{theorem}[Schreier's Refinement Theorem]\label{thrm-schreier}
-%     Let $G$ be a finite group. Two (sub)normal series for $G$ have refinements of equal length whose factor groups are isomorphic.
-% \end{theorem}
-% \begin{remark}
-%     This theorem is also called the \textbf{Schreier-Zassenhaus Theorem} (e.g. in \cite{clark_1984}) due to the use of Zassenhaus' Lemma in the proof.
-% \end{remark}
-
-% \begin{proof}[Proof (see {\cite[\S 72]{clark_1984}})]
-%     Suppose that
-%     \begin{equation}\label{eqn:thrm-schreier-eqn-a}
-%         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m = G    
-%         \tag{A}
-%     \end{equation}
-%     and
-%     \begin{equation}\label{eqn:thrm-schreier-eqn-b}
-%         1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_n = G    
-%         \tag{B}
-%     \end{equation}
-%     are two subnormal series of $G$. We shall refine the subnormal series (\ref{eqn:thrm-schreier-eqn-a}) to a series (\ref{eqn:thrm-schreier-eqn-a-prime}) and show that it is isomorphic to a refinement (\ref{eqn:thrm-schreier-eqn-b-prime}) of (\ref{eqn:thrm-schreier-eqn-b}).
-    
-%     Let a new series be formed
-%     \begin{equation}\label{eqn:thrm-schreier-eqn-a-prime}
-%         1 = \hat{H}_0 \subseteq \hat{H}_1 \subseteq \hat{H}_2 \subseteq \cdots \subseteq \hat{H}_{mn - 1} \subseteq \hat{H}_{mn} = G
-%         \tag{A'}
-%     \end{equation}
-%     such that
-%     \[
-%         \hat{H}_k = H_q(H_{q+1}\cap K_r)
-%     \]
-%     for $k = qn + r$, where $0 \leq q < m$ and $0 \leq r \leq n$. It needs to be demonstrated that $\hat{H}_k$ is well-defined. Consider the ambiguity of the $k = qn + r$ in the case where $r = n$, so $k = qn + n = (q+1)n + 0$. For (\ref{eqn:thrm-schreier-eqn-a-prime}) to be well defined, we require
-%     \[
-%         H_q(H_{q+1} \cap K_n) = H_{q+1}(H_{q+2} \cap K_0).
-%     \]
-%     The left-hand side is
-%     \begin{align*}
-%         H_q(H_{q+1} \cap K_n) &= H_q(H_{q+1} \cap G) & (\text{since } K_n = G)\\
-%         &= H_qH_{q+1}\\
-%         &= H_{q+1} & (\text{by \textbf{Problem \ref{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}}})
-%     \end{align*}
-%     while the right-hand side is
-%     \begin{align*}
-%         H_{q+1}(H_{q+2} \cap K_0) &= H_{q+1}(H_{q+2} \cap \{e\})\\
-%         &= H_{q+1}\{e\}\\
-%         &= H_{q+1},
-%     \end{align*}
-%     so this is well-defined.
-    
-%     We next need to demonstrate that $\hat{H}_k \lhd \hat{H}_{k+1}$. Write $k$ as $qn+r$ in which $0 \leq q < m$ and $0 \leq r < n$. Hence
-%     \[
-%         \hat{H}_{k+1} = \hat{H}_{qn+(r+1)} = H_q(H_{q+1}\cap K_{r+1}). 
-%     \]
-%     Since $K_r \lhd K_{r+1}$ we have
-%     \[
-%         \hat{H}_k = H_q(H_{q+1}\cap K_r) \lhd H_q(H_{q+1}\cap K_{r+1}) = \hat{H}_{k+1}
-%     \]
-%     so $\hat{H}_k \lhd \hat{H}_{k+1}$, which is what we wanted to prove. However we note that (\ref{eqn:thrm-schreier-eqn-a-prime}) may not be a subnormal series, as it is possible for $\hat{H}_k = \hat{H}_{k+1}$ for some $k$. We will address this concern near the end.
-    
-%     Having created series (\ref{eqn:thrm-schreier-eqn-a-prime}), use the same procedure to form
-%     \begin{equation}\label{eqn:thrm-schreier-eqn-b-prime}
-%         1 = \hat{K}_0 \subseteq \hat{K}_1 \subseteq \hat{K}_2 \subseteq \cdots \subseteq \hat{K}_{mn - 1} \subseteq \hat{K}_{mn} = G
-%         \tag{B'}
-%     \end{equation}
-%     such that
-%     \[
-%         \hat{K}_l = H_q(H_{q+1}\cap K_r)
-%     \]
-%     for $l = qm + r$, where $0 \leq q < n$ and $0 \leq r \leq m$. The same statements made for (\ref{eqn:thrm-schreier-eqn-a-prime}) apply to (\ref{eqn:thrm-schreier-eqn-b-prime}).
-    
-%     Now let $k = un + v$ and let $l = vm + u$. It follows that
-%     \begin{align*}
-%         \hat{H}_{k+1}/\hat{H}_k &= \frac{H_u(H_{u+1}\cap K_{v+1})}{H_u(H_{u+1}\cap K_v)}\\
-%         &\cong \frac{K_v(K_{v+1}\cap H_{u+1})}{K_v(K_{v+1}\cap H_u)}\\
-%         &= \hat{K}_{l+1}/\hat{K}_l
-%     \end{align*}
-%     with the isomorphism achieved by the Zassenhaus Lemma (\textbf{Lemma \ref{lemma-zassenhaus}}). Thus (\ref{eqn:thrm-schreier-eqn-a-prime}) and (\ref{eqn:thrm-schreier-eqn-b-prime}) have isomorphic factors.
-    
-%     We return to the concern about the possibility that $\hat{H}_k = \hat{H}_{k+1}$ for some $k$. Eliminating redundancies in both (\ref{eqn:thrm-schreier-eqn-a-prime}) and (\ref{eqn:thrm-schreier-eqn-b-prime}) would yield two refinements of equal length, whose factor groups are isomorphic.
-    
-%     Finally, observe that if both original series (\ref{eqn:thrm-schreier-eqn-a}) were normal series of $G$, then each $\hat{H}_k$ and $\hat{K}_l$ would be a normal subgroup of $G$, so their respective refined series would also be a normal series.
-% \end{proof}
-
-% We can now introduce and prove the Jordan-H\"older Theorem.
-% \begin{theorem}[Jordan-H\"older]\label{thrm-jordan-holder}
-%     Two composition series for a finite group have the same length and composition factors.
-% \end{theorem}
-% \begin{proof}
-%     By the Schreier Refinement Theorem (\textbf{Theorem \ref{thrm-schreier}}), two subnormal series have refinements of equal length whose factors are isomorphic. Now a composition series has no proper refinements since all subgroups inside a composition series are maximal normal subgroups. Hence any refinements must be identical to the composition series themselves.
-    
-%     Therefore, any two composition series (which are their own refinements) for a finite group have the same length and composition factors.
-% \end{proof}
-
-% \begin{example}
-%     We found in an earlier example the 3 distinct composition series for $D_6$:
-%     \begin{align*}
-%         &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6,\\
-%         &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6 \text{ and}\\
-%         &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
-%     \end{align*}
-%     The factors in each case (in order) are:
-%     \begin{itemize}
-%         \item $\Cn{2}/1 \cong \Cn{2}$, $\Cn{6}/\Cn{2} \cong \Cn{3}$ (\textbf{Exercise \ref{exercise-Zmn-mod-Zn-cong-Zn}}), $D_6 / \Cn{6}$;
-%         \item $\Cn{3}/1 \cong \Cn{3}$, $\Cn{6}/\Cn{3} \cong \Cn{2}$, $D_6 / \Cn{6}$; and
-%         \item $\Cn{3}/1 \cong \Cn{3}$, $D_3 / \Cn{3} \cong \Cn{2}$ (since $|D_3 / \Cn{3}| = \frac{6}{3} = 2$ which is prime), $D_6 / D_3$.
-%     \end{itemize}
-%     By the Jordan-H\"older theorem, the factors must be isomorphic to each other. Looking at the last 2 factor lists, only one factor from each is unaccounted for, namely the factors $D_6 / \Cn{6}$ and $D_6 / D_3$. Since Jordan-H\"older guarantees that they are isomorphic to each other, hence, technically,
-%     \[
-%             D_6 / \Cn{6} \cong D_6 / D_3.
-%     \]
-%     \textbf{Important note}: The $\Cn{6}$ and $D_3$ written above represent \textbf{subgroups} of $D_6$ (up to isomorphism), not the actual groups themselves. The subgroup of $D_6$ that is isomorphic to $\Cn{6}$ is $\langle r \rangle = \{e, r, r^2, r^3, r^4, r^5\}$, while the subgroup isomorphic to $D_3$ is $\langle r^2, s\rangle = \{e, r^2, r^4, s, sr^2, sr^4\}$. Therefore the more \textit{correct} statement is that
-%     \[
-%         D_6 / \langle r \rangle \cong D_6 / \langle r^2, s\rangle.
-%     \]
-% \end{example}
-
-% \begin{exercise}
-%     Let $p$ be a prime. Show that any group with order $p^2$ has only one composition series.
-% \end{exercise}
-    
-% \section{Problems}
-% \begin{problem}
-%     Let the \textit{Klein four-group} with presentation
-%     \[
-%         \langle a, b \vert a^2 = b^2 = (ab)^2 = e \rangle
-%     \]
-%     be denoted by $\mathrm{V}$. Recall that $\mathrm{V} \cong (\mathbb{Z}_2)^2$.
-%     \begin{enumerate}[label=(\roman*)]
-%         \item Find the unique composition series for $\mathrm{V}$ up to isomorphism.
-%         \item Let $\mathrm{Q}$ denote the quaternion group. Find the two unique composition series for $\mathrm{Q}$ up to isomorphism.\newline
-%         (\textit{Hint: consider the alternate definition of the quaternion group.})
-%         \item Let $H$ be the subgroup of $\mathrm{Q}$ that is isomorphic to $\Cn{4}$, and $K$ be a subgroup of $\mathrm{Q}$ that is isomorphic to $\mathrm{V}$. Prove that
-%         \[
-%             \mathrm{Q}/H \cong \mathrm{Q}/K.
-%         \]
-%         (\textit{Hint: consider \textbf{Problem \ref{problem-cartesian-product-of-group-by-group-isomorphic-to-group}}.})
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}\label{problem-S4-composition-series}
-%     Find the unique composition series of $\Sn{4}$ (up to isomorphism).\newline
-%     (\textit{Hint: consider the orders of elements in $\An{4}$ and \textbf{Problem \ref{problem-subgroup-of-index-2}} to prove why a particular subgroup with a particular order cannot exist.})
-% \end{problem}
 
 % %=========================================
 % \chapter{Simple Groups}
