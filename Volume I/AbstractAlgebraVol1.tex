@@ -3576,1029 +3576,1051 @@
 %     \end{enumerate}
 % \end{problem}
 
+% %=========================================
+% \chapter{Group Actions}
+% \section{Definition and Examples}
+% A group action is a representation of the elements of a group as symmetries of a set. Many groups have a `natural' group action coming from their construction. For example, the dihedral group of order 6, $D_3$, acts on the vertices of an equilateral triangle naturally because the group is, by definition, given as a set of symmetries of the equilateral triangle. A group action of a group on a set is a generalization of this idea, which can be used to derive useful facts about the group and the set it acts on.
+
+% \begin{definition}\label{definition-group-action}
+%     Let $G$ be a group, $e$ be the identity in $G$, and $X$ be a set. A \textbf{group action of $G$ on $X$}\index{group action} is a function $\alpha: G \times X \to X$ satisfying the following axioms.
+%     \begin{itemize}
+%         \item \textbf{Identity}: $\alpha(e, x) = x$ for all $x \in X$.
+%         \item \textbf{Compatibility}: $\alpha(g, \alpha(h, x)) = \alpha(gh, x)$ for all $g, h \in G$ and $x \in X$.
+%     \end{itemize}
+% \end{definition}
+% \begin{remark}
+%     Some sources will use $f$ (e.g. \cite{brilliant_groupactions}) or $\phi$ (e.g. \cite{rowland_groupaction}) as the group action.
+% \end{remark}
+% In this case, the group $G$ is called a \textbf{transformation group}\index{transformation group} and $X$ is called a \textbf{$G$-set}\index{$G$-set}.
+
+% \newpage
+
+% Often the function $\alpha(g, x)$ is often written as $g \cdot x$ instead. Note that, when mentioning the group action, we \textbf{will} write the dot in this book. With this notation, the axioms above become:
+% \begin{itemize}
+%     \item $e \cdot x = x$ for all $x \in X$; and
+%     \item $g \cdot (h \cdot x) = (gh) \cdot x$ for all $g, h \in G$ and $x \in X$.
+% \end{itemize}
+
+% \begin{example}
+%     Consider the group $G = \Sn{n}$ and the set $X = \{1, 2, 3, \dots, n\}$. Then $G$ acts naturally on $X$ by the function $\alpha$, where $\alpha(g, x) = g(x)$. That is, $g \cdot x = g(x)$ in this case. We note that the axioms are satisfied.
+%     \begin{itemize}
+%         \item \textbf{Identity}: $\id \cdot x = \id(x) = x$.
+%         \item \textbf{Compatibility}: $g \cdot (h \cdot x) = g(h(x)) = (g \circ h)(x) = (gh) \cdot x$.
+%     \end{itemize}
+% \end{example}
+
+% \begin{example}
+%     Let $G$ be any group and the function $\alpha: G\times G \to G$ be defined such that $\alpha(g, x) = gx$. We show that $\alpha$ is a group action of $G$ on $G$.
+%     \begin{itemize}
+%         \item \textbf{Identity}: $e\cdot x = ex = x$.
+%         \item \textbf{Compatibility}: $g \cdot (h\cdot x) = g \cdot (hx) = ghx = (gh)x = (gh) \cdot x$.
+%     \end{itemize}
+% \end{example}
+
+% \begin{exercise}\label{exercise-conjugacy-is-group-action}
+%     Let $G$ be a group and the function $\alpha: G\times G \to G$ be defined such that $\alpha(g, x) = gxg^{-1}$. Show that $\alpha$ is a group action of $G$ on $G$.
+% \end{exercise}
+
+% We note that there is an equivalent definition of a group action of $G$ on $X$.
+% \begin{definition}\label{definition-group-action-alt}\index{group action}
+%     Let $G$ be a group and $X$ be a set. Then a group action of $G$ on $X$ is a homomorphism $\phi: G\to \Sym{X}$.
+% \end{definition}
+% \begin{theorem}\label{thrm-group-action-definition-equivalence}
+%     \textbf{Definition \ref{definition-group-action}} and \textbf{Definition \ref{definition-group-action-alt}} are equivalent.
+% \end{theorem}
+% \begin{proof}
+%     We first work forwards, assuming \textbf{Definition \ref{definition-group-action}} is true and proving \textbf{Definition \ref{definition-group-action-alt}} is true as well.
+    
+%     Assume $\alpha: G \times X \to X$ is a group action. Define $\psi: G \to \Sym{X}$ by $g \mapsto f_g$ where $f_g: X \to X, x \mapsto \alpha(g, x)$. We show that $f_g$ is a bijection.
+%     \begin{itemize}
+%         \item \textbf{Injective}: Suppose there exists $x, y \in X$ such that $f_g(x) = f_g(y)$. Then,
+%         \begin{align*}
+%             x &= \alpha(e, x)\\
+%             &= \alpha(g^{-1}g, x)\\
+%             &= \alpha(g^{-1}, \alpha(g, x))\\
+%             &= \alpha(g^{-1}, f_g(x))\\
+%             &= \alpha(g^{-1}, f_g(y))\\
+%             &= \alpha(g^{-1}, \alpha(g, y))\\
+%             &= \alpha(g^{-1}g, y)\\
+%             &= \alpha(e, y)\\
+%             &= y,
+%         \end{align*}
+%         which proves that $f_g$ is injective.
+%         \item \textbf{Surjective}: Suppose $y \in X$. We note that $\alpha(g^{-1}, y) \in X$ by definition of $\alpha$. Hence observe that $f_g(\alpha(g^{-1}, y)) = \alpha(g, \alpha(g^{-1}, y)) = y$, which means that any element $y \in X$ has a pre-image in $X$. This shows that $f_g$ is surjective.
+%     \end{itemize}
+%     Hence $f_g$ is a bijection from $X$ to $X$, which means $f_g \in \Sym{X}$. We just need to show that $\psi$ is a homomorphism. Take $x \in X$, and let $g, h \in G$. Then
+%     \begin{align*}
+%         (\psi(gh))(x) &= f_{gh}(x)\\
+%         &= \alpha(gh, x)\\
+%         &= \alpha(g, \alpha(h, x))\\
+%         &= \alpha(g, f_h(x))\\
+%         &= f_g(f_h(x))\\
+%         &= (f_g \circ f_h)(x)\\
+%         &= (\psi(g)\psi(h))(x)
+%     \end{align*}
+%     for any $x \in X$, which means $\psi(gh) = \psi(g)\psi(h)$. Hence $\phi$ is indeed a homomorphism, satisfying \textbf{Definition \ref{definition-group-action-alt}}.
+
+%     We now work in the reverse direction, assuming that \textbf{Definition \ref{definition-group-action-alt}} holds and proving \textbf{Definition \ref{definition-group-action}} holds as well.
+    
+%     Suppose $\phi: G \to \Sym{X}$ is a group homomorphism. We define $\beta: G \times X \to X$ where $\beta(g, x) = (\phi(g))(x)$. We verify \textbf{Definition \ref{definition-group-action}} holds for $\beta$.
+%     \begin{itemize}
+%         \item \textbf{Identity}: Since $\phi$ is a homomorphism, it must map the identity in $G$ to the identity in $\Sym{X}$, which is $\id$. Hence, $\beta(e, x) = (\phi(e))(x) = \id(x) = x$.
+%         \item \textbf{Compatibility}: Let $g, h \in G$ and $x \in X$. Then
+%         \begin{align*}
+%             \beta(g, \alpha(h, x)) &= \beta(g, (\phi(h))(x))\\
+%             &= (\phi(g))((\phi(h))(x))\\
+%             &= (\phi(g) \circ \phi(h))(x)\\
+%             &= (\phi(gh))(x)\\
+%             &= \beta(gh, x).
+%         \end{align*}
+%     \end{itemize}
+%     Therefore \textbf{Definition \ref{definition-group-action}} holds for $\beta$.
+
+%     The final thing to prove equivalence of the definitions is to show that the above processes are `inverses' of each other. That is, we want to show that
+%     \begin{itemize}
+%         \item if we start with $\alpha$, derive $\psi$ based on $\alpha$, and then derive $\beta$ based off $\psi$, then $\alpha = \beta$; and
+%         \item if we start with $\phi$, derive $\beta$, and then derive $\psi$ based off $\beta$, then $\phi = \psi$.
+%     \end{itemize}
+
+%     Suppose we have an $\alpha$ that is used to derive $\psi$ which is in turn used to derive $\beta$. Then the above processes yields
+%     \[
+%         \psi(g) = f_g \text{ and } \beta(g, x) = (\psi(g))(x)
+%     \]
+%     where $f_g(x) = \alpha(g, x)$. Hence $\alpha(g, x) = f_g(x) = (\psi(g))(x) = \beta(g, x)$ for any $g \in G$ and $x \in X$. Hence $\alpha = \beta$.
+
+%     Now suppose we have a $\phi$ that is used to derive $\beta$ which is in turn used to derive $\psi$. Then the above processes yields
+%     \[
+%         \beta(g, x) = (\phi(g))(x) \text{ and } \psi(g) = f_g
+%     \]
+%     where $f_g(x) = \beta(g, x)$ in this case. Hence $(\phi(g))(x) = \beta(g, x) = f_g(x) = (\psi(g))(x)$ for any $g \in G$ and $x \in X$. Hence $\phi = \psi$.
+
+%     Therefore, this shows that the maps $\alpha \mapsto \phi$ and $\phi \mapsto \alpha$ are inverses of each other, so we have a one-to-one correspondence between \textbf{Definition \ref{definition-group-action}} and \textbf{Definition \ref{definition-group-action-alt}}.
+% \end{proof}
+% \begin{remark}
+%     What this theorem also shows is that a group action $\alpha$ induces a group homomorphism $\phi: G \to \Sym{X}$. In addition, if $X$ is finite with $n$ elements, a homomorphism $\phi: G \to \Sn{n}$ exists (since $\Sym{X} \cong \Sn{n}$ by \textbf{Proposition \ref{corollary-symmetric-group-of-finite-order}}).
+% \end{remark}
+
+% \section{Fixed Points, Stabilizers, and Orbits}
+% We first look at the definition of a \textbf{fixed point} in relation to group actions.
+
+% \begin{definition}
+%     Let $G$ be a group acting on a set $X$. A \textbf{fixed point of $g \in G$}\index{group action!fixed point} is an element $x \in X$ such that $g\cdot x = x$.
+% \end{definition}
+
+% \begin{example}
+%     Consider the group $G = \{e, g\}$ (where $g^2 = e$) and the set $X = \mathbb{Z}$. Let $G$ act on $X$ by the formulae $e\cdot x = x$ and $g\cdot x = -x$. We find the fixed points of every element in $G$.
+%     \begin{itemize}
+%         \item For $e$, every element in $X$ is a fixed point of it.
+%         \item For $g$, there is only one fixed point 0 since $g\cdot 0 = -0 = 0$.
+%     \end{itemize}
+% \end{example}
+
+% \begin{exercise}
+%     Let $X = \{1, 2, 3\}$, and let $\Sn{3}$ act on $X$. What are the fixed points of each of the 6 actions in $\Sn{3}$?
+% \end{exercise}
+
+% With an understanding of fixed points, we can now look at the \textbf{stabilizer} of an element in $X$.
+
+% \begin{definition}
+%     Let $G$ be a group acting on a set $X$, and let $x \in X$. The \textbf{stabilizer of $x$ by $G$}\index{group action!stabilizer}, denoted $\Stab{G}{x}$, is the set of $g \in G$ such that $x$ is a fixed point of $g$.
+% \end{definition}
+% \begin{remark}
+%     Some authors will denote the stabilizer of $x$ by $G$ by $G_x$ (e.g. \cite{clark_1984, humphreys_1996, brilliant_groupactions}).
+% \end{remark}
+
+% \begin{example}
+%     Consider again the group $G = \{e, g\}$ and the set $X = \mathbb{Z}$ with relations defined in the previous example.
+%     \begin{itemize}
+%         \item Let's find the stabilizer of 0, $\Stab{G}{0}$. Thus we are finding the set of $f \in G$ such that 0 is a fixed point of $f$. Note that $e \cdot 0 = 0$ and $g \cdot 0 = -0 = 0$, so the entirety of $G$ forms the stabilizer of 0, i.e. $\Stab{G}{0} = G$.
+%         \item Now consider the stabilizer of any non-zero integer in $X$, say $x \in X$. We are finding the set of $f \in G$ such that $x$ is a fixed point of $f$. Note that $g \cdot x = -x \neq x$. Thus, the only element in $G$ such makes $x$ a fixed point is $e$, i.e. $\Stab{G}{x} = \{e\}$ if $x \neq 0$.
+%     \end{itemize}
+%     To summarise, $\Stab{G}{0} = G$ and $\Stab{G}{x} = \{e\}$ if $x \neq 0$.
+% \end{example}
+
+% \begin{exercise}
+%     Let $X = \{1, 2, 3\}$, and let $\Sn{3}$ act on $X$. What are the stabilizers of each of the 3 elements in $X$?
+% \end{exercise}
+
+% What you might notice from the above example and exercise is that the stabilizers are sub\textit{sets} of the original group $G$. In fact, we will prove that the stabilizer is a sub\textit{group} of $G$.
+
+% \begin{lemma}\label{lemma-stabilizer-is-subgroup}
+%     Let $G$ be a group that acts on a set $X$. Then for any $x \in X$, $\Stab{G}{x} \leq G$.
+% \end{lemma}
+% \begin{proof}
+%     We consider the subgroup test.
+
+%     We note $e \in G$. From the group action axiom of \textbf{Identity}, we know that $e \cdot x = x$. Thus, for any element $x$, we have $e \in \Stab{G}{x}$. Hence $\Stab{G}{x}$ is non-empty.
+
+%     Now consider $g, h \in \Stab{G}{x}$. This means that $g\cdot x = x$ and $h \cdot x = x$. We note that
+%     \begin{align*}
+%         h^{-1} \cdot x &= h^{-1} \cdot (h \cdot x) & (\text{since } h \in \Stab{G}{x}, \text{ thus } h\cdot x = x)\\
+%         &= (h^{-1}h) \cdot x & (\text{by \textbf{Compatibility} Axiom})\\
+%         &= e \cdot x\\
+%         &= x
+%     \end{align*}
+%     so $h^{-1} \in \Stab{G}{x}$. Now consider $gh^{-1}$.
+%     \begin{align*}
+%         (gh^{-1}) \cdot x &= g \cdot (h^{-1} \cdot x) & (\text{by \textbf{Compatibility} Axiom})\\
+%         &= g \cdot x & (\text{since } h^{-1} \in \Stab{G}{x})\\
+%         &= x & (\text{since } g \in \Stab{G}{x})
+%     \end{align*}
+%     which means that $gh^{-1} \in \Stab{G}{x}$.
+
+%     Thus, by subgroup test, $\Stab{G}{x} \leq G$ for any $x \in X$.
+% \end{proof}
+
+% \begin{exercise}\label{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}
+%     Let $G$ be a group that acts on a set $X$. Prove that $g \cdot x = h \cdot x$ if and only if $g^{-1}h \in \Stab{G}{x}$.
+% \end{exercise}
+
+% We now look at the definition of the \textbf{orbit} of an element.
+% \begin{definition}
+%     Let $G$ be a group acting on a set $X$, and suppose $x \in X$. The \textbf{orbit of $x$ in $G$}\index{group action!orbit}, denoted $\Orb{G}{x}$, is the set of elements $y \in X$ such that $g \cdot x = y$ for some $g \in G$.
+% \end{definition}
+% \begin{remark}
+%     Some authors will denote the orbit of $x$ in $G$ by $G \cdot x$ (e.g. \cite{clark_1984}) or simply by $Gx$ (e.g. \cite{milne_2021}).
+% \end{remark}
+
+% \begin{example}
+%     Consider again the group $G = \{e, g\}$ with $g^2 = e$ and let $G$ act on the set $X = \mathbb{Z}$ such that $e \cdot x = x$ and $g \cdot x = -x$. Note that the orbit for any non-zero element $x \in X$ is the set $\{x, -x\}$, while the orbit for 0 is $\{0\}$ itself.
+% \end{example}
+
+% We say that a group action is \textbf{transitive}\index{group action!transitive} if and only if it has one orbit. That is to say, the group action is transitive if there exists $x \in X$ such that $\Orb{G}{x} = X$.
+
+% \begin{exercise}
+%     Let $G$ be a group that acts on a non-empty set $X$. Show that if the group action is transitive if and only if $\Orb{G}{x} = X$ for \textbf{all} $x \in X$.
+% \end{exercise}
+
+% \begin{exercise}\label{exercise-distinct-orbits-partition-set}
+%     Let $G$ be a group that acts on a non-empty set $X$. Prove that
+%     \begin{enumerate}[label=(\alph*)]
+%         \item every element in $X$ is in some orbit; and
+%         \item if $\Orb{G}{x_1} \cap \Orb{G}{x_2} \neq \emptyset$ where $x_1, x_2 \in X$, then $\Orb{G}{x_1} = \Orb{G}{x_2}$.
+%     \end{enumerate}
+%     \textit{(That is, prove that distinct orbits partition $X$.)}
+% \end{exercise}
+
+% \section{The Orbit-Stabilizer Theorem}
+% There is a natural relationship between orbits and stabilizers of a group action. We give the intuition of the theorem before stating it formally.
+
+% Let's think about the symmetric group of a cube (call it $G$) and suppose $G$ acts on the set of faces of the cube, $F$. How many elements are there in $G$? We could do the following:
+% \begin{enumerate}
+%     \item Fix one face (say the top face). There are 4 ways to move the cube because you can only rotate the cube now. These are the stabilizers.
+%     \item Now there are 6 possible choices for which face to be fixed. This is the `orbit'.
+% \end{enumerate}
+% Thus, the total number of elements in the symmetric group of a cube, $|G| = 4 \times 6$. Generally, the number of elements of a transformation group $G$ is the product of the orders of the stabilizer and orbit of an element $x$ in the $G$-set.
+
+% Formally, this is captured in the \textbf{Orbit-Stabilizer Theorem}.
+% \begin{theorem}[Orbit-Stabilizer]\label{thrm-orbit-stabilizer}\index{Orbit-Stabilizer Theorem}
+%     Let $G$ be a group that acts on a finite set $X$. Let $x \in X$. Then
+%     \[
+%         |G| = |\Stab{G}{x}| \times |\Orb{G}{x}|.
+%     \]
+%     In other words, the order of the group $G$ is the product of the order of the stabilizer of $x$ and the number of elements in the orbit of $x$.
+% \end{theorem}
+
+% \begin{proof}[Proof (see \cite{humphreys_1996})]
+%     We consider the map $f_x: G/\Stab{G}{x} \to \Orb{G}{x}$ given by $g\Stab{G}{x} \mapsto g \cdot x$ (note that $f_x$ is \textit{not} a homomorphism as $\Orb{G}{x}$ is not a group). We prove that $f_x$ is a well-defined bijection.
+%     \begin{itemize}
+%         \item \textbf{Well-defined}: Suppose we have $g, h \in G$ such that we have $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}), this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \textbf{Exercise \ref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
+%         \item \textbf{Injective}: Suppose we have $g, h \in G$ such that we have $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$. By \textbf{Exercise \ref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}}, this means that $g^{-1}h \in \Stab{G}{x}$. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). Thus $f_x$ is injective.
+%         \item \textbf{Surjective}: Suppose $y \in \Orb{G}{x}$. This means that there exists $g \in G$ such that $g\cdot x = y$. Note $f_x(g\Stab{G}{x}) = g\cdot x = y$ by definition of $f_x$. Hence, the pre-image of $y$ is $g\Stab{G}{x}$, meaning that $f_x$ is surjective.
+%     \end{itemize}
+%     Hence $f_x$ is a bijection from $G/\Stab{G}{x}$ to $\Orb{G}{x}$. Therefore we must have $|\Orb{G}{x}| = |G/\Stab{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). This quickly implies $|G| = |\Stab{G}{x}|\times|\Orb{G}{x}|$.
+% \end{proof}
+
+% \begin{exercise}
+%     Let $G = \Sn{n}$ be a transformation group and $X = \{1, 2, 3, \dots, n\}$ be a $G$-set.
+%     \begin{enumerate}[label=(\roman*)]
+%         \item Show that the group action is transitive.
+%         \item Find the order of the stabilizer of $x \in X$ by $G$.
+%     \end{enumerate}
+% \end{exercise}
+
+% \section{Burnside's Lemma}
+% Burnside's lemma gives a way to count the number of orbits of a finite set acted on by a finite group. Before we get into it, we look at the \textbf{set of orbits of $X$}.
+
+% \begin{definition}
+%     The \textbf{set of orbits}\index{set of orbits} acted upon by the group $G$ on a set $X$ is the set
+%     \[
+%         X / G = \{\Orb{G}{x} \vert x \in X\}.
+%     \]
+%     That is, $X/G$ is the set of distinct orbits over all elements of $X$.
+% \end{definition}
+% \begin{remark}
+%     The number of distinct orbits is given by the number of elements of the set $X/G$, i.e. $|X/G|$.
+% \end{remark}
+
+% \newpage
+
+% We are now ready to introduce Burnside's lemma.
+% \begin{lemma}[Burnside]\label{lemma-burnside}\index{Burnside's Lemma}
+%     Let $G$ be a finite group acting on a set $X$. Let $\Fix{X}{g}$ denote the set of all elements in $X$ which is fixed by $g$, that is,
+%     \[
+%         \Fix{X}{g} = \{x \in X \vert g\cdot x = x\}.
+%     \]
+%     Then
+%     \[
+%         |X/G| = \frac{1}{|G|}\sum_{g\in G} |\Fix{X}{g}|.
+%     \]
+% \end{lemma}
+% What Burnside's lemma tells us is the number of orbits equals the average number of fixed elements for each $g \in G$.
+% \begin{proof}[Proof (see \cite{proofwiki_burnsideslemma})]
+%     We start by noting that
+%     \begin{align*}
+%         \sum_{g\in G} |\Fix{X}{g}| &= \sum_{g\in G} |\{x \in X \vert g\cdot x = x\}|\\
+%         &= |\{(g, x) \vert g \in G,\; x \in X \text{ such that } g\cdot x = x\}|\\
+%         &= \sum_{x\in X} |\{g \in G \vert g\cdot x = x\}|\\
+%         &= \sum_{x\in X} |\Stab{G}{x}|.
+%     \end{align*}
+%     One sees that $|\Stab{G}{x}| = \frac{|G|}{|\Orb{G}{x}|}$ by the Orbit-Stabilizer theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}). Thus,
+%     \begin{align*}
+%         \sum_{x\in X} |\Stab{G}{x}| &= \sum_{x\in X} \frac{|G|}{|\Orb{G}{x}|}\\
+%         &= |G|\sum_{x\in X} \frac{1}{|\Orb{G}{x}|}.
+%     \end{align*}
+%     Notice that $X$ is the disjoint union of all orbits in $X/G$ (\textbf{Exercise \ref{exercise-distinct-orbits-partition-set}}), which means the sum over $X$ may be broken up into separate sums over each individual orbit. Thus,
+%     \begin{align*}
+%         \sum_{x\in X} \frac{1}{|\Orb{G}{x}|} &= \sum_{\Orb{G}{x} \in X/G}\left(\sum_{x \in \Orb{G}{x}} \frac{1}{|\Orb{G}{x}|}\right)\\
+%         &= \sum_{\Orb{G}{x} \in X/G} 1\\
+%         &= |X/G|.
+%     \end{align*}
+%     Putting everything together,
+%     \[
+%         \sum_{g\in G} |\Fix{X}{g}| = |G||X/G|
+%     \]
+%     which the result follows immediately.
+% \end{proof}
+
+% \begin{example}
+%     We find the number of distinct colourings of the corners on a square with $n$ colours (up to rotation) using by Burnside's lemma.
+
+%     \begin{figure}[h]
+% 	    \centering
+% 	    \fbox{\includegraphics[width=3.5cm]{images/chapter9/LabelledSquare.png}}
+% 	    \caption{Square With Labelled Corners}
+% 	\end{figure}
+
+%     Let $X$ denote the set of colourings of the corners of the square, and let $G$ denote the rotation group acting on $X$. Then two elements of $X$ belong to the same orbit precisely when one is simply a rotation of the other. We note that $G$ consists of four $90^\circ$ rotations, so $G \cong \Cn{4}$.
+%     \begin{enumerate}
+%         \item Rotating the square $0^\circ$ does not change the colourings at all, which means that the number of fixed points is the total number of possible colourings, which is $n^4$.
+%         \item Rotating the square $90^\circ$ results in all points affecting one another, so the only fixed points would be colourings of all the same color. Since there are $n$ different colours, thus the number of fixed points is $n$.
+%         \item Rotating the square $180^\circ$ swaps two pairs of vertices that are across from each other. Thus, a fixed point will occur if the two pairs have the same colour. Hence, there are $n^2$ fixed points.
+%         \item Finally, rotating the square $270^\circ$ is similar to rotating $90^\circ$, so there are $n$ fixed points.
+%     \end{enumerate}
+%     Now there are 4 elements in $G$, so $|G| = 4$. By Burnside's Lemma,
+%     \[
+%         |X/G| = \frac{1}{|G|}\sum_{g\in G} |\Fix{X}{g}| = \frac14 (n^4 + n + n^2 + n),
+%     \]
+%     i.e., the number of distinct possible colourings of the corners on a square with $n$ colours (up to rotation) is $\frac n4 (n^3 + n + 2)$.
+% \end{example}
+
+% \newpage
+
+% \section{Conjugacy Classes}
+% Before we look at the most important part of this chapter, the Class Equation, we look at the idea of conjugacy as a group action.
+% \begin{definition}
+%     Let $G$ be a group, and suppose $a, b \in G$. Then we say that $b$ is a \textbf{conjugate}\index{conjugate} of $a$ if there is an element $g \in G$ such that $b = gag^{-1}$ (or, alternatively, $a=g^{-1}bg$).
+% \end{definition}
+% We can frame this idea in terms of group actions.
+
+% Consider the map $\phi: G\times G\to G$ such that $\phi(g, x) = gxg^{-1}$. We showed that $\phi$ is a group action in \textbf{Exercise \ref{exercise-conjugacy-is-group-action}}. Let's look at the orbit and stabilizer of an arbitrary element $x \in G$ under this group action.
+% \begin{itemize}
+%     \item For the orbits, we are to find a $y \in G$ such that there exists a $g \in G$ where $gxg^{-1} = y$. Hence, the orbit of $x$ under this group action are the conjugates of $x$.
+%     \item For the stabilizer, we are to find elements $g \in G$ such that $gxg^{-1} = x$. Hence any such element satisfies $gx = xg$. Therefore, $g \in \C{G}{x}$ where $\C{G}{x}$ is the centralizer of $x$ (recall how it is defined in \textbf{Example \ref{example-centralizer-of-a-subset}}).
+% \end{itemize}
+
+% Hence, under the action of conjugation,
+% \begin{itemize}
+%     \item $\Orb{G}{x} = $ Conjugates of $x$; and
+%     \item $\Stab{G}{x} = \C{G}{x}$.
+% \end{itemize}
+
+% \newpage
+
+% We can now look at conjugacy classes.
+% \begin{definition}
+%     Let $G$ be a group and take $x \in G$. The \textbf{conjugacy class of $x$}\index{conjugacy class} is the set
+%     \[
+%         \Cl{x} = \{gxg^{-1} \vert g \in G\}.
+%     \]
+%     In other words, the set $\Cl{x}$ is a subset of $G$ where all elements inside it are conjugates of each other.
+% \end{definition}
+% \begin{remark}
+%     We omit having the subscript of $G$ for the conjugacy class since $x \in G$. Also, under the group action of conjugation, $\Orb{G}{x} = \Cl{x}$.
+% \end{remark}
+
+% \begin{example}\label{example-conjugacy-classes-of-Sn3}
+%     We look at conjugacy classes of the group $\Sn{3}$.
+%     \begin{itemize}
+%         \item The first is the conjugacy class of the identity, $\id$.
+%         \[
+%             \Cl{\id} = \{g\circ\id\circ g^{-1} \vert g \in G \} = \{\id\}.
+%         \]
+%         Thus the conjugacy class of the identity consists of only the identity.
+%         \item The second is the conjugacy class of transpositions. Let $\tau = \begin{pmatrix}a & b\end{pmatrix}$ be a transposition in $\Sn{3}$. Then
+%         \[
+%             \Cl{\tau} = \{g\circ\tau\circ g^{-1} \vert g \in G\}.
+%         \]
+%         Running through all 6 elements of $\Sn{3}$ reveals that $\Cl{\tau}$ is the set of all transpositions, i.e. the conjugacy class of transpositions is the set of transpositions.
+%         \item The third is the conjugacy class of 3-cycles. Let $\sigma = \begin{pmatrix}a & b & c\end{pmatrix}$ be a 3-cycle in $\Sn{3}$. One can see that $\Cl{\sigma}$ is the set of all 3-cycles.
+%     \end{itemize}
+% \end{example}
+
+% \begin{exercise}\label{exercise-order-of-conjugacy-class}
+%     Let $G$ be a group and $x \in G$. Prove that
+%     \[
+%         |\Cl{x}| = [G : \C{G}{x}].
+%     \]
+% \end{exercise}
+
+% \section{The Class Equation}
+% The example of the previous section illustrates that the sum of the sizes of the conjugacy classes must be equal to the size of the group. This fact, along with the Orbit-Stabilizer theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}), can be used to derive an important equation known as \textbf{the class equation}.
+
+% Before we state and prove the class equation, we recall the idea of the center of a group as introduced in \textbf{Example \ref{example-center-of-group}}.
+% \begin{quote}
+%     The center of a group $G$ is the normal subgroup
+%     \[
+%         \Z{G} = \{z \in G \vert gz = zg \text{ for all } g \in G\}.
+%     \]
+%     In other words, $\Z{G} = \{z \in G \vert z = gzg^{-1} \text{ for all } g \in G\}$.
+% \end{quote}
+
+% We now state and prove the class equation.
+% \begin{theorem}[Class Equation]\label{thrm-class-equation}
+%     Let $G$ be a finite group. Suppose $G$ has $k$ conjugacy classes, with $l$ of them having more than 1 element. Suppose $g_1, g_2, \dots, g_l$ are representatives of the conjugacy classes with more than 1 element. Then
+%     \[
+%         |G| = |\Z{G}| + \sum_{i=1}^l [G : \C{G}{g_i}],
+%     \]
+%     which is known as \textbf{the class equation}\index{Class Equation}.
+% \end{theorem}
+
+% \begin{proof}
+%     We know by \textbf{Exercise \ref{exercise-distinct-orbits-partition-set}} that distinct orbits partitions the set that the group is acting on. Hence, using the group action of conjugation, orbits under conjugation partition $G$. Hence,
+%     \[
+%         G = \bigcup_{i=1}^k \Orb{G}{\hat{g_i}} = \bigcup_{i=1}^k \Cl{\hat{g_i}}
+%     \]
+%     where $\hat{g_i}$'s are representatives of the $k$ conjugacy classes (including those with only 1 element).
+
+%     Suppose now that an element $x$ is in a conjugacy class with one element. This means that $gxg^{-1} = x$ for all $g \in G$. Hence, this means that $x \in \Z{G}$.
+
+%     Therefore, one concludes that
+%     \[
+%         G = \left(\Z{G}\right) \cup \left(\bigcup_{i=1}^l \Cl{g_i}\right).
+%     \]
+%     Since this is a disjoint union, hence
+%     \[
+%         |G| = |\Z{G}| + \sum_{i=1}^l |\Cl{g_i}|.
+%     \]
+
+%     Finally, by \textbf{Exercise \ref{exercise-order-of-conjugacy-class}}, $|\Cl{g_i}| = [G : \C{G}{g_i}]$, which means that
+%     \[
+%         |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}],
+%     \]
+%     proving the theorem.
+% \end{proof}
+
+% We look at one application of the class equation. Before that, we introduce the idea of \textbf{$p$-groups}.
+% \begin{definition}
+%     A \textbf{$p$-group}\index{$p$-group} $G$ is a finite group with order $p^n$ where $p$ is prime and $n$ is a positive integer.
+% \end{definition}
+% An immediate consequence of this is that every element must have an order that is a power of $p$, i.e. for any element $x \in G$, $|x| = p^k$ where $1 \leq k \leq n$.
+
+% \begin{example}\label{example-group-with-prime-power-order-has-non-trivial-center}
+%     Let $G$ be a finite $p$-group, meaning $|G| = p^n$. We will show that $G$ has a non-trivial center using the class equation.
+
+%     Recall that $|\Cl{x}| = \frac{|G|}{|\C{G}{x}|}$ by \textbf{Exercise \ref{exercise-order-of-conjugacy-class}}. Hence, the order of the group must divide the order of any conjugacy class, i.e. $\frac{|G|}{|\C{G}{x}|} \vert |G|$. Since $|G| = p^n$, it follows that $|\Cl{x}| = p^k$ for some $1 \leq k \leq n$ (assuming $x \notin \Z{G}$).
+
+%     If $g_1, g_2, \dots, g_l$ are representatives from the conjugacy classes with more than 1 element, then this means that
+%     \[
+%         p^n = |G| = |\Z{G}| + \sum_{i=1}^l |\Cl{g_i}| = |\Z{G}| + \sum_{i=1}^l p^{k_i}
+%     \]
+%     where $1 \leq k_1, k_2, \dots, k_l < n$. From this, we conclude that $p$ must divide $|\Z{G}|$, meaning $|\Z{G}| > 1$.
+% \end{example}
+% \begin{example}
+%     We look at the class equation of the symmetric group of degree 3, $\Sn{3}$.
+
+%     We recall from \textbf{Example \ref{example-conjugacy-classes-of-Sn3}} that the conjugacy classes of $\Sn{3}$ are
+%     \begin{align*}
+%         &\Cl{\id} = \{\id\}\\
+%         &\Cl{\tau} = \{\begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}1 & 3\end{pmatrix}, \begin{pmatrix}2 & 3\end{pmatrix}\}\\
+%         &\Cl{\sigma} = \{\begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix}\}
+%     \end{align*}
+%     where $\tau$ is a 2-cycle (transposition) and $\sigma$ is a 3-cycle. Thus, the class equation of $\Sn{3}$ is
+%     \[
+%         6 = 1 + 2 + 3
+%     \]
+%     where $|\Z{\Sn{3}}| = |\{e\}| = 1$.
+% \end{example}
+
+% \begin{exercise}
+%     The Cayley table of $D_3$ is in \textbf{Example \ref{example-presentation-of-D3}}.
+%     \begin{enumerate}[label=(\alph*)]
+%         \item Find $\Z{D_3}$, the center of $D_3$.
+%         \item Find the conjugacy classes of $D_3$ with more than 1 element.
+%         \item Find the class equation of $D_3$.
+%     \end{enumerate}
+% \end{exercise}
+
+% \section{Cauchy's Theorem}
+% To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
+% \begin{theorem}[Cauchy]\label{thrm-cauchy}\index{Cauchy's Theorem}
+%     Let $G$ be a finite group such that $|G| = np$ where $p$ is a prime and $n$ is a positive integer. Then $G$ contains an element of order $p$.
+% \end{theorem}
+% \begin{proof}
+%     We proceed with strong induction on $n$.
+
+%     For the case where $n = 1$, $|G| = p$. Then by \textbf{Exercise \ref{exercise-prime-order-element}}, every element of the group has order $p$. Hence we proved the base case.
+
+%     We now assume that the statement holds for all $n \leq k$ for some positive integer $k$. We need to prove the case for $k+1$, that is, a group $G$ with order $(k+1)p$ has an element of order $p$. We split the proof into two cases.
+
+%     The first case is when $G$ is abelian. Take any non-identity element $x$, and define $H = \langle x \rangle \leq G$.
+%     \begin{itemize}
+%         \item If $p$ divides $|H|$, say $|H| = mp$ where $m$ is a positive integer, then $x^m$ is an element of order $p$ (since $\left(x^m\right)^p = x^{|H|} = e$). Hence we find an element with order $p$.
+%         \item If $p$ does not divide $|H|$, then $p$ must divide $[G:H] = |G/H| = \frac{|G|}{|H|}$ since $p$ divides $|G| = kp$. Note that $H \unlhd G$ since $G$ is abelian (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}). So $G/H$ is a group. Writing $|x| = m$ we see
+%         \[
+%             (xH)^m = (x^m)H = eH = H \in G/H.
+%         \]
+%         Thus, $m$ is a multiple of $|G/H|$ (\textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}) which is in turn a multiple of $p$. Hence $p$ divides $m$. As before, $x^{\frac mp}$ is an element with order $p$ (since $\left(x^{\frac mp}\right)^p = x^m = e$).
+%     \end{itemize}
+%     Therefore, for the abelian case, there exists an element with order equal to $p$.
+
+%     We now consider the case when $G$ is non-abelian. Seeking a contradiction, assume $G$ does not have an element of order $p$. Let $H < G$, so $H$ has no element with order $p$. Therefore the contrapositive of the induction hypothesis means that $|H|$ is not a multiple of $p$. Note that Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) further gives that $|G| = [G:H]|H|$. Since $|H|$ is not divisible by $p$ and $|G|$ is divisible by $p$, we conclude that $p$ divides $[G:H]$ for every proper subgroup $H$.
+
+%     Since $G$ is non-abelian, thus $G \neq \Z{G}$ meaning that there exists at least one conjugacy class with more than 1 element. Suppose there are $l$ such classes, and let them be represented by the elements $g_1, g_2, \dots, g_l$. By the class equation (\textbf{Theorem \ref{thrm-class-equation}}),
+%     \[
+%         |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}].
+%     \]
+%     Note that $|\Cl{g_i}| = [G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|} > 1$, which means that $|G| > |\C{G}{g_i}|$. Thus $\C{G}{g_i} \neq G$ for all $i$. Recall that $\C{G}{g_i}$ is a subgroup of $G$ (\textbf{Example \ref{example-centralizer-of-a-subset}}), so by the above observation, $p$ divides $[G:\C{G}{g_i}]$.
+
+%     In the class equation, $p$ divides $|G|$ and $p$ divides $[G:\C{G}{g_i}]$, which means that $p$ must divide $|\Z{G}|$. But $\Z{G} < G$ and by above observation, $p$ does not divide any proper subgroup of $G$. Hence, $\Z{G}$ must be trivial. However $\Z{G} \neq \{e\}$ because that would imply $p$ divides $1$ which is a contradiction. We thus conclude that there exists an element of order $p$.
+% \end{proof}
+
+% \begin{exercise}\label{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}
+%     Let $G$ be a finite group with $|G| = np$, $n$ is a positive integer, and $p$ prime. Prove that $G$ has a \textbf{subgroup} of order $p$.
+% \end{exercise}
+
+% \newpage
+
+% \section{Problems}
+% \begin{problem}
+%     Let $G = D_5$, the dihedral group of order 10.
+%     \begin{enumerate}[label=(\alph*)]
+%         \item Suppose $H$ is a proper subgroup of $G$. What are the possible order(s) of $H$?
+%         \item For each of the possible order(s) identified, find such a subgroup.
+%     \end{enumerate}
+% \end{problem}
+
+% \begin{problem}
+%     Let $G$ be a group of order 25 and $X$ be a $G$-set of 24 elements. Show that every $g \in G$ has a fixed point.
+% \end{problem}
+
+% \begin{problem}
+%     Suppose $G$ is a finite group with order $n > 1$ where $g^2 = e$ for all $g \in G$. Prove that $n = 2^k$ where $k$ is a positive integer.
+% \end{problem}
+
+% \begin{problem}
+%     A group action is said to be \textbf{free}\index{group action!free} if $g\cdot x = x$ means that $g$ is the identity (i.e., only the identity fixes any $x$).\newline
+%     Let $G$ be a group and $S$ be a non-empty $G$-set. Suppose $G$ acts on $S$ freely and transitively. Prove that $G$ and $S$ have the same number of elements.
+% \end{problem}
+
+% \begin{problem}
+%     A bracelet consists of 3 beads that each can be one of $n$ colours. Two bracelets are considered to be identical if the rotation of one yields the other, or if one can be obtained via reflecting about a line, or any combination of these two actions. How many distinct bracelets are there?
+% \end{problem}
+
+% \begin{problem}\label{problem-group-of-order-prime-squared-is-abelian}
+%     Let $p$ be a prime number. Prove that a group of order $p^2$ must be abelian.\newline
+%     (\textit{Hint: Consider \textbf{Problem \ref{problem-center-of-G}} and \textbf{Problem \ref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}}})
+% \end{problem}
+
+% \newpage
+
+% \begin{problem}
+%     Let $G$ be a finite $p$-group, and $X$ be a $G$-set. Denote the set of points of $X$ that are fixed under the action of $G$ by $\Omega$. Prove that $|X| \equiv |\Omega| \pmod p$.\newline
+%     (\textit{Hint: $\Omega = \{x \in X \vert g\cdot x = x \textrm{ for all } g \in G\}$})
+% \end{problem}
+
 %=========================================
-\chapter{Group Actions}
-\section{Definition and Examples}
-A group action is a representation of the elements of a group as symmetries of a set. Many groups have a `natural' group action coming from their construction. For example, the dihedral group of order 6, $D_3$, acts on the vertices of an equilateral triangle naturally because the group is, by definition, given as a set of symmetries of the equilateral triangle. A group action of a group on a set is a generalization of this idea, which can be used to derive useful facts about the group and the set it acts on.
+\chapter{Sylow Theorems}
+The Sylow theorems are a collection of theorems named after the Norwegian mathematician Peter Ludwig Sylow that give detailed information about the number of subgroups of fixed order that a given finite group contains. The Sylow theorems form a fundamental part of finite group theory and have very important applications in the classification of finite simple groups.
 
-\begin{definition}\label{definition-group-action}
-    Let $G$ be a group, $e$ be the identity in $G$, and $X$ be a set. A \textbf{group action of $G$ on $X$}\index{group action} is a function $\alpha: G \times X \to X$ satisfying the following axioms.
-    \begin{itemize}
-        \item \textbf{Identity}: $\alpha(e, x) = x$ for all $x \in X$.
-        \item \textbf{Compatibility}: $\alpha(g, \alpha(h, x)) = \alpha(gh, x)$ for all $g, h \in G$ and $x \in X$.
-    \end{itemize}
+\section{First Sylow Theorem}
+Before we can state the First Sylow Theorem, we introduce some terminology.
+
+Recall that a group with order $p^k$ for some $k \geq 0$ is called a $p$-group. If $G$ is a group with a subgroup of order $p^k$, then that subgroup is called a \textbf{$p$-subgroup}\index{$p$-subgroup}.
+\begin{definition}\label{definition-sylow-p-subgroup}
+    Let $G$ be a finite group. Write the order of the group $G$ as $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then a subgroup $H$ with order $p^k$ is called a \textbf{Sylow $p$-subgroup}\index{Sylow $p$-subgroup} of $G$.
 \end{definition}
+We denote the set of all Sylow $p$-subgroups of the group $G$ for a given prime $p$ by $\Syl{p}{G}$.
+
+\begin{exercise}
+    Find the Sylow 2-subgroup of $\mathbb{Z}_{12}$.
+\end{exercise}
+
+We are now ready to state and prove the \textbf{First Sylow Theorem}.
+\begin{theorem}[Sylow I]\label{thrm-sylow-1}\index{Sylow Theorem!First}
+    Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then $\Syl{p}{G} \neq \emptyset$.
+\end{theorem}
 \begin{remark}
-    Some sources will use $f$ (e.g. \cite{brilliant_groupactions}) or $\phi$ (e.g. \cite{rowland_groupaction}) as the group action.
+    Equivalently, for a finite group $G$, for every prime factor $p$ of its order, there is a Sylow $p$-subgroup of $G$.
 \end{remark}
-In this case, the group $G$ is called a \textbf{transformation group}\index{transformation group} and $X$ is called a \textbf{$G$-set}\index{$G$-set}.
+\begin{proof}[Proof (see {\cite[pp.~1--3]{mann_2011}})]
+    We use strong induction on the order of $G$.
+
+    When the order of $G$ is 1, $|G| = p^0$ for any prime $p$, so $G$ is clearly a Sylow $p$-subgroup of itself.
+
+    We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$. Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
+
+    The first case is when $p$ divides the order of the center of $G$, $|\Z{G}|$. By Cauchy's Theorem (\textbf{Theorem \ref{thrm-cauchy}}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \lhd G$ since for all $x \in N$ and $g \in G$,
+    \[
+        gxg^{-1} = (gx)g^{-1} = x(gg^{-1}) = x \in N.
+    \]
+    Hence $G/N$ is a group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the Inductive Hypothesis, $G/N$ has a Sylow $p$-subgroup, say $\bar{S}$, meaning that $\bar{S}$ has order $p^{k-1}$.
+
+    We now construct the group $S = \{g \in G \vert gN \in \bar{S}\}$ under the group operation of $G$. Clearly $S$ is non-empty since $e \in S$ (as $eN = N \in \bar{S}$). Suppose $g_1, g_2 \in S$, meaning that $g_1N, g_2N \in \bar{S}$. Therefore $(g_1g_2^{-1})N = (g_1N)(g_2N)^{-1} \in \bar{S}$ which implies that $g_1g_2^{-1} \in S$. By the subgroup test, $S \leq G$. Also, $N \leq S$ since for all $n \in N$, $nN = N \in \bar{S}$.
+
+    We construct the homomorphism $\phi: S \to \bar{S}$ such that $g \mapsto gN$. By construction one sees clearly that $\phi$ is surjective, meaning that $\im \phi = \bar{S}$. Furthermore,
+    \begin{align*}
+        \ker\phi &= \{s \in S \vert \phi(s) = N\}\\
+        &= \{s \in S \vert sN = N \}\\
+        &= \{s \in S \vert s \in N \}\\
+        &= S \cap N\\
+        &= N & (\text{since } N \subseteq S).
+    \end{align*}
+    By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), $S/N \cong \bar{S}$, meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$, which quickly implies that $|S| = p^k$. Hence, there exists a subgroup $S$ such that $|S| = p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
+
+    We can now start on the second case where $p$ does not divide the order of the center of $G$. Recall the class equation (\textbf{Theorem \ref{thrm-class-equation}})
+    \[
+        |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}]
+    \]
+    where $g_1, g_2, \dots, g_l$ are representatives of the $l$ distinct conjugacy classes with more than one element. We note that $p$ divides $|G|$. Since $p$ does not divide $|\Z{G}|$ in this case, thus $\sum_{i=1}^l [G:\C{G}{g_i}]$ must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then $|\C{G}{g_i}| = p^ka$ for some $a$.
+
+    We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly $a \leq m$ since if $a > m$ then $\frac{p^k m}{|\C{G}{g_i}|}$ is not an integer. If instead $a = m$ then $|\C{G}{g_i}| = p^km = |G|$, and since $\C{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \C{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \Z{G}$. But an element is in $\Z{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
+
+    In summary, $\C{G}{g_i} < G$ with $|\C{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the Induction Hypothesis on $\C{G}{g_i}$ to say that $\C{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\C{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
+
+    Therefore, any finite group $G$ with order written as $p^k m$ has a Sylow $p$-subgroup, meaning that $\Syl{p}{G} \neq \emptyset$.
+\end{proof}
+
+\begin{exercise}
+    Find all primes $p$ such that $\Syl{p}{\Sn{5}} \neq \emptyset$.
+\end{exercise}
+
+\section{Conjugate Subgroup}
+Before we look at the next Sylow theorem, we need to introduce two more things. The first is the \textbf{conjugate subgroup}.
+\begin{definition}
+    Let $G$ be a group, $H \leq G$, and $g \in G$. Then the \textbf{conjugate subgroup of $H$ by $g$}\index{conjugate subgroup} is
+    \[
+        gHg^{-1} = \{ghg^{-1} \vert h \in H\}
+    \]
+    under the group operation of $G$.
+\end{definition}
+We proved that $gHg^{-1}$ is a subgroup of $G$ in \textbf{Exercise \ref{exercise-conjugate-subgroup}}.
+
+\begin{exercise}\label{exercise-conjugate-subgroup-isomorphic-to-subgroup}
+    Let $G$ be a group and $H \leq G$. Prove that $gHg^{-1} \cong H$ for any $g \in G$.
+\end{exercise}
+
+We prove some results regarding the conjugate subgroup here.
+\begin{proposition}\label{prop-power-of-conjugate-equals-conjugate-of-power}
+    Let $G$ be a group, and let $x$ and $y$ be elements in $G$ such that there exists an element $a \in G$ such that $y = axa^{-1}$. Then $y^n = ax^na^{-1}$ for all integers $n$.
+\end{proposition}
+\begin{proof}
+    Trivially, when $n = 0$, $y^0 = e = y^0 = x^0 = ax^0a^{-1}$.
+
+    We consider a proof by induction for positive integers $n$ and then prove ther case when $n$ is negative.
+
+    When $n = 1$, $y = axa^{-1}$ is given. Now assume $n = k$ holds true for some positive integer $k$, meaning that $y^k = ax^ka^{-1}$. Then
+    \begin{align*}
+        y^{k+1} &= y(y^k)\\
+        &= (axa^{-1})(ax^ka^{-1}) & (\text{Induction Hypothesis})\\
+        &= axa^{-1}ax^ka^{-1}\\
+        &= axx^ka^{-1}\\
+        &= ax^{k+1}a^{-1}
+    \end{align*}
+    which completes this induction for positive integers $n$.
+
+    Now suppose $n$ is a non-negative integer. Then
+    \begin{align*}
+        y^{-n} &= (y^n)^{-1}\\
+        &= (ax^na^{-1})^{-1} & (\text{by above result})\\
+        &= a(x^n)^{-1}a^{-1}\\
+        &= ax^{-n}a^{-1}
+    \end{align*}
+    which completes the proof for all integers.
+\end{proof}
+
+\begin{proposition}\label{prop-order-of-conjugate-element-equals-order-of-element}
+    Let $G$ be a group. Then for all $g, x \in G$, we have $|gxg^{-1}| = |x|$.
+\end{proposition}
+\begin{proof}
+    The proposition trivially holds true for $g = e$ so we assume $g \neq e$.
+
+    Suppose $|x| = n$, meaning $x^n = e$ and $x^k \neq e$ for all $1 \leq k < n$. Note we have
+    \begin{align*}
+        (gxg^{-1})^n  &= gx^ng^{-1} & (\textbf{Proposition \ref{prop-power-of-conjugate-equals-conjugate-of-power}})\\
+        &= geg^{-1} & (\text{since } |x| = n)\\
+        &= e
+    \end{align*}
+    which means that $|gxg^{-1}| \leq n = |x|$.
+
+    Now consider $(gxg^{-1})^k = gx^kg^{-1}$. Suppose $k$ is a positive integer such that $x^k = h$ where $h \neq e$. Then $gx^kg^{-1} = ghg^{-1}$. We argue that $ghg^{-1} \neq e$.
+    \begin{itemize}
+        \item If $gh = e$ then $gx^kg^{-1} = g^{-1} \neq e$ since $g \neq e$.
+        \item If instead $hg^{-1} = e$ then $gx^kg^{-1} = g \neq e$.
+    \end{itemize}
+    Hence, if $x^k \neq e$, then $(gxg^{-1})^k = gx^kg^{-1} \neq e$, meaning that $|x| \leq |gxg^{-1}|$.
+
+    Because $|gxg^{-1}| \leq |x|$ and $|x| \leq |gxg^{-1}|$, therefore $|gxg^{-1}| = |x|$.
+\end{proof}
+
+\begin{exercise}
+    Prove that for any group $G$, $|gh| = |hg|$ for all $g, h \in G$.
+\end{exercise}
+
+We note an important result with regards to the conjugate subgroup.
+\begin{theorem}\label{thrm-unique-subgroup-of-given-order-is-normal}
+    Let $G$ be a group. Suppose $H$ is the only subgroup of $G$ with a given order. Then $H \lhd G$.
+\end{theorem}
+\begin{proof}
+    Suppose $g \in G$. By \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} we know $gHg^{-1} \cong H$ which means that $|gHg^{-1}| = |H|$. Furthermore, by \textbf{Exercise \ref{exercise-conjugate-subgroup}} we know that $gHg^{-1} \leq G$. Since $H$ is the only subgroup of that order (by assumption), we conclude that $gHg^{-1} = H$, which quickly means that $H \lhd G$ by definition of a normal subgroup.
+\end{proof}
+
+\section{The Normalizer}
+We now look at the definition of the \textbf{normalizer}.
+\begin{definition}
+    Let $G$ be a group and $S$ be a subset of $G$. The \textbf{normalizer of $S$ in $G$}\index{normalizer} is given by
+    \[
+        \N{G}{S} = \{g \in G \vert gS = Sg \}.
+    \]
+    Equivalently, $\N{G}{S} = \{g \in G \vert gSg^{-1} = S \}$.
+\end{definition}
+\begin{exercise}\label{exercise-normalizer-is-subgroup-of-main-group}
+    Let $G$ be a group and $S$ be a subset of $G$. Prove that $\N{G}{S} \leq G$.
+\end{exercise}
 
 \newpage
 
-Often the function $\alpha(g, x)$ is often written as $g \cdot x$ instead. Note that, when mentioning the group action, we \textbf{will} write the dot in this book. With this notation, the axioms above become:
-\begin{itemize}
-    \item $e \cdot x = x$ for all $x \in X$; and
-    \item $g \cdot (h \cdot x) = (gh) \cdot x$ for all $g, h \in G$ and $x \in X$.
-\end{itemize}
-
-\begin{example}
-    Consider the group $G = \Sn{n}$ and the set $X = \{1, 2, 3, \dots, n\}$. Then $G$ acts naturally on $X$ by the function $\alpha$, where $\alpha(g, x) = g(x)$. That is, $g \cdot x = g(x)$ in this case. We note that the axioms are satisfied.
-    \begin{itemize}
-        \item \textbf{Identity}: $\id \cdot x = \id(x) = x$.
-        \item \textbf{Compatibility}: $g \cdot (h \cdot x) = g(h(x)) = (g \circ h)(x) = (gh) \cdot x$.
-    \end{itemize}
-\end{example}
-
-\begin{example}
-    Let $G$ be any group and the function $\alpha: G\times G \to G$ be defined such that $\alpha(g, x) = gx$. We show that $\alpha$ is a group action of $G$ on $G$.
-    \begin{itemize}
-        \item \textbf{Identity}: $e\cdot x = ex = x$.
-        \item \textbf{Compatibility}: $g \cdot (h\cdot x) = g \cdot (hx) = ghx = (gh)x = (gh) \cdot x$.
-    \end{itemize}
-\end{example}
-
-\begin{exercise}\label{exercise-conjugacy-is-group-action}
-    Let $G$ be a group and the function $\alpha: G\times G \to G$ be defined such that $\alpha(g, x) = gxg^{-1}$. Show that $\alpha$ is a group action of $G$ on $G$.
-\end{exercise}
-
-We note that there is an equivalent definition of a group action of $G$ on $X$.
-\begin{definition}\label{definition-group-action-alt}\index{group action}
-    Let $G$ be a group and $X$ be a set. Then a group action of $G$ on $X$ is a homomorphism $\phi: G\to \Sym{X}$.
-\end{definition}
-\begin{theorem}\label{thrm-group-action-definition-equivalence}
-    \textbf{Definition \ref{definition-group-action}} and \textbf{Definition \ref{definition-group-action-alt}} are equivalent.
-\end{theorem}
+We prove some properties of the normalizer here.
+\begin{proposition}\label{prop-subgroup-is-a-normal-subgroup-of-normalizer}
+    Let $G$ be a group, and $H \leq G$. Then $H \unlhd \N{G}{H}$.
+\end{proposition}
 \begin{proof}
-    We first work forwards, assuming \textbf{Definition \ref{definition-group-action}} is true and proving \textbf{Definition \ref{definition-group-action-alt}} is true as well.
-    
-    Assume $\alpha: G \times X \to X$ is a group action. Define $\psi: G \to \Sym{X}$ by $g \mapsto f_g$ where $f_g: X \to X, x \mapsto \alpha(g, x)$. We show that $f_g$ is a bijection.
-    \begin{itemize}
-        \item \textbf{Injective}: Suppose there exists $x, y \in X$ such that $f_g(x) = f_g(y)$. Then,
-        \begin{align*}
-            x &= \alpha(e, x)\\
-            &= \alpha(g^{-1}g, x)\\
-            &= \alpha(g^{-1}, \alpha(g, x))\\
-            &= \alpha(g^{-1}, f_g(x))\\
-            &= \alpha(g^{-1}, f_g(y))\\
-            &= \alpha(g^{-1}, \alpha(g, y))\\
-            &= \alpha(g^{-1}g, y)\\
-            &= \alpha(e, y)\\
-            &= y,
-        \end{align*}
-        which proves that $f_g$ is injective.
-        \item \textbf{Surjective}: Suppose $y \in X$. We note that $\alpha(g^{-1}, y) \in X$ by definition of $\alpha$. Hence observe that $f_g(\alpha(g^{-1}, y)) = \alpha(g, \alpha(g^{-1}, y)) = y$, which means that any element $y \in X$ has a pre-image in $X$. This shows that $f_g$ is surjective.
-    \end{itemize}
-    Hence $f_g$ is a bijection from $X$ to $X$, which means $f_g \in \Sym{X}$. We just need to show that $\psi$ is a homomorphism. Take $x \in X$, and let $g, h \in G$. Then
-    \begin{align*}
-        (\psi(gh))(x) &= f_{gh}(x)\\
-        &= \alpha(gh, x)\\
-        &= \alpha(g, \alpha(h, x))\\
-        &= \alpha(g, f_h(x))\\
-        &= f_g(f_h(x))\\
-        &= (f_g \circ f_h)(x)\\
-        &= (\psi(g)\psi(h))(x)
-    \end{align*}
-    for any $x \in X$, which means $\psi(gh) = \psi(g)\psi(h)$. Hence $\phi$ is indeed a homomorphism, satisfying \textbf{Definition \ref{definition-group-action-alt}}.
+    We first prove $H \leq \N{G}{H}$ and then prove normality.
 
-    We now work in the reverse direction, assuming that \textbf{Definition \ref{definition-group-action-alt}} holds and proving \textbf{Definition \ref{definition-group-action}} holds as well.
-    
-    Suppose $\phi: G \to \Sym{X}$ is a group homomorphism. We define $\beta: G \times X \to X$ where $\beta(g, x) = (\phi(g))(x)$. We verify \textbf{Definition \ref{definition-group-action}} holds for $\beta$.
-    \begin{itemize}
-        \item \textbf{Identity}: Since $\phi$ is a homomorphism, it must map the identity in $G$ to the identity in $\Sym{X}$, which is $\id$. Hence, $\beta(e, x) = (\phi(e))(x) = \id(x) = x$.
-        \item \textbf{Compatibility}: Let $g, h \in G$ and $x \in X$. Then
-        \begin{align*}
-            \beta(g, \alpha(h, x)) &= \beta(g, (\phi(h))(x))\\
-            &= (\phi(g))((\phi(h))(x))\\
-            &= (\phi(g) \circ \phi(h))(x)\\
-            &= (\phi(gh))(x)\\
-            &= \beta(gh, x).
-        \end{align*}
-    \end{itemize}
-    Therefore \textbf{Definition \ref{definition-group-action}} holds for $\beta$.
+    We know that both $H$ and $\N{G}{H}$ are subgroups of $G$, so both are groups. We just need to check that $H \subseteq \N{G}{H}$ to prove that $H \leq \N{G}{H}$.
 
-    The final thing to prove equivalence of the definitions is to show that the above processes are `inverses' of each other. That is, we want to show that
-    \begin{itemize}
-        \item if we start with $\alpha$, derive $\psi$ based on $\alpha$, and then derive $\beta$ based off $\psi$, then $\alpha = \beta$; and
-        \item if we start with $\phi$, derive $\beta$, and then derive $\psi$ based off $\beta$, then $\phi = \psi$.
-    \end{itemize}
-
-    Suppose we have an $\alpha$ that is used to derive $\psi$ which is in turn used to derive $\beta$. Then the above processes yields
+    Consider any $h \in H$. We note that $hH = H$ and $Hh^{-1} = H$. Thus, if $h \in H$, then
     \[
-        \psi(g) = f_g \text{ and } \beta(g, x) = (\psi(g))(x)
+        hHh^{-1} = h(Hh^{-1}) = hH = H
     \]
-    where $f_g(x) = \alpha(g, x)$. Hence $\alpha(g, x) = f_g(x) = (\psi(g))(x) = \beta(g, x)$ for any $g \in G$ and $x \in X$. Hence $\alpha = \beta$.
+    which means that $h \in \N{G}{H}$ by definition of the normalizer. Hence any element in $H$ is also an element of $\N{G}{H}$, meaning $H \subseteq \N{G}{H}$. It follows then that $H \leq \N{G}{H}$ since $H$ is a group.
 
-    Now suppose we have a $\phi$ that is used to derive $\beta$ which is in turn used to derive $\psi$. Then the above processes yields
-    \[
-        \beta(g, x) = (\phi(g))(x) \text{ and } \psi(g) = f_g
-    \]
-    where $f_g(x) = \beta(g, x)$ in this case. Hence $(\phi(g))(x) = \beta(g, x) = f_g(x) = (\psi(g))(x)$ for any $g \in G$ and $x \in X$. Hence $\phi = \psi$.
-
-    Therefore, this shows that the maps $\alpha \mapsto \phi$ and $\phi \mapsto \alpha$ are inverses of each other, so we have a one-to-one correspondence between \textbf{Definition \ref{definition-group-action}} and \textbf{Definition \ref{definition-group-action-alt}}.
+    Now we prove normality. Consider any $n \in \N{G}{H}$, which means that $nHn^{-1} = H$. This implies that $H \unlhd \N{G}{H}$.
 \end{proof}
 \begin{remark}
-    What this theorem also shows is that a group action $\alpha$ induces a group homomorphism $\phi: G \to \Sym{X}$. In addition, if $X$ is finite with $n$ elements, a homomorphism $\phi: G \to \Sn{n}$ exists (since $\Sym{X} \cong \Sn{n}$ by \textbf{Proposition \ref{corollary-symmetric-group-of-finite-order}}).
+    Combining the results from \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}} and \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} means that $H \unlhd \N{G}{H} \leq G$.
 \end{remark}
 
-\section{Fixed Points, Stabilizers, and Orbits}
-We first look at the definition of a \textbf{fixed point} in relation to group actions.
-
-\begin{definition}
-    Let $G$ be a group acting on a set $X$. A \textbf{fixed point of $g \in G$}\index{group action!fixed point} is an element $x \in X$ such that $g\cdot x = x$.
-\end{definition}
-
-\begin{example}
-    Consider the group $G = \{e, g\}$ (where $g^2 = e$) and the set $X = \mathbb{Z}$. Let $G$ act on $X$ by the formulae $e\cdot x = x$ and $g\cdot x = -x$. We find the fixed points of every element in $G$.
-    \begin{itemize}
-        \item For $e$, every element in $X$ is a fixed point of it.
-        \item For $g$, there is only one fixed point 0 since $g\cdot 0 = -0 = 0$.
-    \end{itemize}
-\end{example}
-
-\begin{exercise}
-    Let $X = \{1, 2, 3\}$, and let $\Sn{3}$ act on $X$. What are the fixed points of each of the 6 actions in $\Sn{3}$?
-\end{exercise}
-
-With an understanding of fixed points, we can now look at the \textbf{stabilizer} of an element in $X$.
-
-\begin{definition}
-    Let $G$ be a group acting on a set $X$, and let $x \in X$. The \textbf{stabilizer of $x$ by $G$}\index{group action!stabilizer}, denoted $\Stab{G}{x}$, is the set of $g \in G$ such that $x$ is a fixed point of $g$.
-\end{definition}
+\begin{proposition}\label{prop-normalizer-of-subgroup-is-largest-subgroup-containing-that-subgroup-as-a-normal-subgroup}
+    Let $G$ be a group, and $H \leq G$. Then $\N{G}{H}$ is the largest subgroup of $G$ containing $H$ as a normal subgroup.
+\end{proposition}
 \begin{remark}
-    Some authors will denote the stabilizer of $x$ by $G$ by $G_x$ (e.g. \cite{clark_1984, humphreys_1996, brilliant_groupactions}).
+    What we mean by ``largest'' here is that if there was another subgroup of $G$, say $K$, that permits $H \unlhd K$, then it must be the case that $K \subseteq \N{G}{H}$.
 \end{remark}
-
-\begin{example}
-    Consider again the group $G = \{e, g\}$ and the set $X = \mathbb{Z}$ with relations defined in the previous example.
-    \begin{itemize}
-        \item Let's find the stabilizer of 0, $\Stab{G}{0}$. Thus we are finding the set of $f \in G$ such that 0 is a fixed point of $f$. Note that $e \cdot 0 = 0$ and $g \cdot 0 = -0 = 0$, so the entirety of $G$ forms the stabilizer of 0, i.e. $\Stab{G}{0} = G$.
-        \item Now consider the stabilizer of any non-zero integer in $X$, say $x \in X$. We are finding the set of $f \in G$ such that $x$ is a fixed point of $f$. Note that $g \cdot x = -x \neq x$. Thus, the only element in $G$ such makes $x$ a fixed point is $e$, i.e. $\Stab{G}{x} = \{e\}$ if $x \neq 0$.
-    \end{itemize}
-    To summarise, $\Stab{G}{0} = G$ and $\Stab{G}{x} = \{e\}$ if $x \neq 0$.
-\end{example}
-
-\begin{exercise}
-    Let $X = \{1, 2, 3\}$, and let $\Sn{3}$ act on $X$. What are the stabilizers of each of the 3 elements in $X$?
-\end{exercise}
-
-What you might notice from the above example and exercise is that the stabilizers are sub\textit{sets} of the original group $G$. In fact, we will prove that the stabilizer is a sub\textit{group} of $G$.
-
-\begin{lemma}\label{lemma-stabilizer-is-subgroup}
-    Let $G$ be a group that acts on a set $X$. Then for any $x \in X$, $\Stab{G}{x} \leq G$.
-\end{lemma}
 \begin{proof}
-    We consider the subgroup test.
+    By \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} we know that $H \unlhd \N{G}{H}$. We just need to prove that any subgroup in which $H$ is normal inside it must be a subset of $\N{G}{H}$.
 
-    We note $e \in G$. From the group action axiom of \textbf{Identity}, we know that $e \cdot x = x$. Thus, for any element $x$, we have $e \in \Stab{G}{x}$. Hence $\Stab{G}{x}$ is non-empty.
+    Consider any subgroup $N \leq G$ such that $H \unlhd N \leq G$. Then for any $n \in N$ we have $nHn^{-1} = H$ by definition of normality, which immediately means that $n \in \N{G}{H}$ by definition of the normalizer of $H$ in $G$. Hence any element in $N$ also belongs in $\N{G}{H}$, meaning $N \subseteq \N{G}{H}$.
 
-    Now consider $g, h \in \Stab{G}{x}$. This means that $g\cdot x = x$ and $h \cdot x = x$. We note that
-    \begin{align*}
-        h^{-1} \cdot x &= h^{-1} \cdot (h \cdot x) & (\text{since } h \in \Stab{G}{x}, \text{ thus } h\cdot x = x)\\
-        &= (h^{-1}h) \cdot x & (\text{by \textbf{Compatibility} Axiom})\\
-        &= e \cdot x\\
-        &= x
-    \end{align*}
-    so $h^{-1} \in \Stab{G}{x}$. Now consider $gh^{-1}$.
-    \begin{align*}
-        (gh^{-1}) \cdot x &= g \cdot (h^{-1} \cdot x) & (\text{by \textbf{Compatibility} Axiom})\\
-        &= g \cdot x & (\text{since } h^{-1} \in \Stab{G}{x})\\
-        &= x & (\text{since } g \in \Stab{G}{x})
-    \end{align*}
-    which means that $gh^{-1} \in \Stab{G}{x}$.
-
-    Thus, by subgroup test, $\Stab{G}{x} \leq G$ for any $x \in X$.
+    This completes the proof that $\N{G}{H}$ is the largest subgroup of $G$ that contains $H$ as a normal subgroup.
 \end{proof}
 
-\begin{exercise}\label{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}
-    Let $G$ be a group that acts on a set $X$. Prove that $g \cdot x = h \cdot x$ if and only if $g^{-1}h \in \Stab{G}{x}$.
-\end{exercise}
+\begin{proposition}\label{prop-normalizer-of-sylow-p-subgroup}
+    Let $G$ be a finite group. Let $P$ be a Sylow $p$-subgroup of $G$, and $Q$ be a $p$-subgroup of $\N{G}{P}$. Then $Q \subseteq P$. In particular, if $Q$ is a Sylow $p$-subgroup of $\N{G}{P}$, then $P = Q$.
+\end{proposition}
+\begin{proof}[Proof (see {\cite[Proposition 11.9]{humphreys_1996}})]
+    For brevity, write the order of $G$ as $xp^n$ where $p \nmid x$, $|P| = p^n$, and $|Q| = p^m$.
 
-We now look at the definition of the \textbf{orbit} of an element.
-\begin{definition}
-    Let $G$ be a group acting on a set $X$, and suppose $x \in X$. The \textbf{orbit of $x$ in $G$}\index{group action!orbit}, denoted $\Orb{G}{x}$, is the set of elements $y \in X$ such that $g \cdot x = y$ for some $g \in G$.
-\end{definition}
-\begin{remark}
-    Some authors will denote the orbit of $x$ in $G$ by $G \cdot x$ (e.g. \cite{clark_1984}) or simply by $Gx$ (e.g. \cite{milne_2021}).
-\end{remark}
-
-\begin{example}
-    Consider again the group $G = \{e, g\}$ with $g^2 = e$ and let $G$ act on the set $X = \mathbb{Z}$ such that $e \cdot x = x$ and $g \cdot x = -x$. Note that the orbit for any non-zero element $x \in X$ is the set $\{x, -x\}$, while the orbit for 0 is $\{0\}$ itself.
-\end{example}
-
-We say that a group action is \textbf{transitive}\index{group action!transitive} if and only if it has one orbit. That is to say, the group action is transitive if there exists $x \in X$ such that $\Orb{G}{x} = X$.
-
-\begin{exercise}
-    Let $G$ be a group that acts on a non-empty set $X$. Show that if the group action is transitive if and only if $\Orb{G}{x} = X$ for \textbf{all} $x \in X$.
-\end{exercise}
-
-\begin{exercise}\label{exercise-distinct-orbits-partition-set}
-    Let $G$ be a group that acts on a non-empty set $X$. Prove that
-    \begin{enumerate}[label=(\alph*)]
-        \item every element in $X$ is in some orbit; and
-        \item if $\Orb{G}{x_1} \cap \Orb{G}{x_2} \neq \emptyset$ where $x_1, x_2 \in X$, then $\Orb{G}{x_1} = \Orb{G}{x_2}$.
-    \end{enumerate}
-    \textit{(That is, prove that distinct orbits partition $X$.)}
-\end{exercise}
-
-\section{The Orbit-Stabilizer Theorem}
-There is a natural relationship between orbits and stabilizers of a group action. We give the intuition of the theorem before stating it formally.
-
-Let's think about the symmetric group of a cube (call it $G$) and suppose $G$ acts on the set of faces of the cube, $F$. How many elements are there in $G$? We could do the following:
-\begin{enumerate}
-    \item Fix one face (say the top face). There are 4 ways to move the cube because you can only rotate the cube now. These are the stabilizers.
-    \item Now there are 6 possible choices for which face to be fixed. This is the `orbit'.
-\end{enumerate}
-Thus, the total number of elements in the symmetric group of a cube, $|G| = 4 \times 6$. Generally, the number of elements of a transformation group $G$ is the product of the orders of the stabilizer and orbit of an element $x$ in the $G$-set.
-
-Formally, this is captured in the \textbf{Orbit-Stabilizer Theorem}.
-\begin{theorem}[Orbit-Stabilizer]\label{thrm-orbit-stabilizer}\index{Orbit-Stabilizer Theorem}
-    Let $G$ be a group that acts on a finite set $X$. Let $x \in X$. Then
+    Recall by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we have $PQ \leq \N{G}{P}$ since $P \unlhd \N{G}{P}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \textbf{Exercise \ref{exercise-order-of-subgroup-product}},
     \[
-        |G| = |\Stab{G}{x}| \times |\Orb{G}{x}|.
+        |PQ| = \frac{|P||Q|}{|P \cap Q|} = p^{n+m-s}
     \]
-    In other words, the order of the group $G$ is the product of the order of the stabilizer of $x$ and the number of elements in the orbit of $x$.
+    where we define $|P \cap Q| = p^s$. By Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) we know that $|G| = a|PQ|$ for some integer $a$ so $p^n = ap^{n+m-s}$ which implies $1 = ap^{m-s}$. Thus $p^{m-s} = \frac 1a$ which means $m \leq s$.
+
+    We note by \textbf{Problem \ref{problem-intersection-of-subgroups}} $P \cap Q \leq Q$, meaning $|Q| = b|P\cap Q|$ for some positive integer $b$ by Lagrange's Theorem. Thus $p^m = bp^s$ which implies $p^{m-s} = b \geq 1$ so $m \geq s$.
+
+    As $m \leq s$ and $m \geq s$, thus $m = s$ which means $|P \cap Q| = |Q|$, i.e. $P \cap Q = Q$. Therefore $Q \subseteq P$ which is the first part of the proposition proved.
+
+    Now suppose $Q$ is, in particular, a Sylow $p$-subgroup of $\N{G}{P}$. Since $\N{G}{P} \leq G$ by \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}}, one concludes that $|G| = y|\N{G}{P}|$ for some positive integer $y$ by Lagrange's Theorem. Hence $xp^n = y|\N{G}{P}|$ which implies $|\N{G}{P}| = \frac{x}{y} p^n$. Set $z = \frac xy$ and note that $p \nmid z$. Therefore, if $Q$ is a Sylow $p$-subgroup, then $|Q| = p^n$. But since $|P| = p^n$ and $Q \subseteq P$, thus $P = Q$.
+\end{proof}
+
+\section{Second Sylow Theorem}
+We can now look at the \textbf{Second Sylow Theorem}.
+\begin{theorem}[Sylow II]\label{thrm-sylow-2}\index{Sylow Theorem!Second}
+    Let $G$ be a finite group and $p$ be a prime number. Suppose $H$ and $K$ are both Sylow $p$-subgroups of $G$. Then there exists an element $g \in G$ such that $gHg^{-1} = K$.
 \end{theorem}
-
-\begin{proof}[Proof (see \cite{humphreys_1996})]
-    We consider the map $f_x: G/\Stab{G}{x} \to \Orb{G}{x}$ given by $g\Stab{G}{x} \mapsto g \cdot x$ (note that $f_x$ is \textit{not} a homomorphism as $\Orb{G}{x}$ is not a group). We prove that $f_x$ is a well-defined bijection.
-    \begin{itemize}
-        \item \textbf{Well-defined}: Suppose we have $g, h \in G$ such that we have $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}), this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \textbf{Exercise \ref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
-        \item \textbf{Injective}: Suppose we have $g, h \in G$ such that we have $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$. By \textbf{Exercise \ref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}}, this means that $g^{-1}h \in \Stab{G}{x}$. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). Thus $f_x$ is injective.
-        \item \textbf{Surjective}: Suppose $y \in \Orb{G}{x}$. This means that there exists $g \in G$ such that $g\cdot x = y$. Note $f_x(g\Stab{G}{x}) = g\cdot x = y$ by definition of $f_x$. Hence, the pre-image of $y$ is $g\Stab{G}{x}$, meaning that $f_x$ is surjective.
-    \end{itemize}
-    Hence $f_x$ is a bijection from $G/\Stab{G}{x}$ to $\Orb{G}{x}$. Therefore we must have $|\Orb{G}{x}| = |G/\Stab{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). This quickly implies $|G| = |\Stab{G}{x}|\times|\Orb{G}{x}|$.
-\end{proof}
-
-\begin{exercise}
-    Let $G = \Sn{n}$ be a transformation group and $X = \{1, 2, 3, \dots, n\}$ be a $G$-set.
-    \begin{enumerate}[label=(\roman*)]
-        \item Show that the group action is transitive.
-        \item Find the order of the stabilizer of $x \in X$ by $G$.
-    \end{enumerate}
-\end{exercise}
-
-\section{Burnside's Lemma}
-Burnside's lemma gives a way to count the number of orbits of a finite set acted on by a finite group. Before we get into it, we look at the \textbf{set of orbits of $X$}.
-
-\begin{definition}
-    The \textbf{set of orbits}\index{set of orbits} acted upon by the group $G$ on a set $X$ is the set
+\begin{proof}[Proof (see {\cite[Theorem 11.10]{humphreys_1996}} and {\cite[pp.~3--5]{mann_2011}})]
+    Let $H$ be a Sylow $p$-subgroup of $G$. Define the set
     \[
-        X / G = \{\Orb{G}{x} \vert x \in X\}.
+        \mathcal{X} = \{gHg^{-1} \vert g \in G\}
     \]
-    That is, $X/G$ is the set of distinct orbits over all elements of $X$.
-\end{definition}
+    and denote an element from $\mathcal{X}$ by $X$.
+
+    Let the Sylow $p$-subgroup $H$ act on $\mathcal{X}$ by conjugation, meaning $h \cdot X = hXh^{-1}$. We prove that this is, in fact, a group action.
+    
+    \begin{itemize}
+        \item \textbf{Closure}: We have to prove closure because it is not implicit in the definition of this action.
+
+        Let $X = gHg^{-1}$ for some $g \in G$. Then
+        \[
+            h\cdot X = hXh^{-1} = h(gHg^{-1})h^{-1} = (hg)H(hg)^{-1}.
+        \]
+        Since $h \in H \leq G$, then $hg \in G$, which thus means that $h \cdot X = (hg)H(hg)^{-1} \in \mathcal{X}$.
+        \item \textbf{Identity}: $e \cdot X = eXe^{-1} = X$.
+        \item \textbf{Compatibility}: Let $h_1, h_2 \in H$. Then
+        \begin{align*}
+            h_1 \cdot (h_2 \cdot X) &= h_1 \cdot (h_2Xh_2^{-1})\\
+            &= h_1h_2Xh_2^{-1}h_1^{-1}\\
+            &= (h_1h_2)X(h_1h_2)^{-1}\\
+            &= (h_1h_2) \cdot X.
+        \end{align*}
+    \end{itemize}
+
+    We consider the orbits of this group action. In particular, we find element(s) with orbit(s) of only one element. Suppose $X \in \mathcal{X}$ has one element in its orbit, so for all $h \in H$ we have
+    \[
+        h\cdot X = hXh^{-1} = X.    
+    \]
+    Since $X = gHg^{-1}$ for some $g \in G$, thus
+    \begin{align*}
+        &h(gHg^{-1})h^{-1} = gHg^{-1}\\
+        \iff&hgHg^{-1} = gHg^{-1}h\\
+        \iff&hgH = gHg^{-1}hg\\
+        \iff&(g^{-1}hg)H = H(g^{-1}hg)\\
+        \iff&g^{-1}hg \in \N{G}{H}\\
+        \iff&g^{-1}Hg \subseteq \N{G}{H}.
+    \end{align*}
+    Since $|g^{-1}hg| = |h|$ by \textbf{Proposition \ref{prop-order-of-conjugate-element-equals-order-of-element}} and because $H$ is a $p$-subgroup, hence $|g^{-1}hg| = p^r$ where $r$ is some positive integer. Note that $g^{-1}Hg$ is a (sub)group by \textbf{Exercise \ref{exercise-conjugate-subgroup}}. Therefore $g^{-1}Hg$ is a $p$-subgroup of $\N{G}{H}$.
+    
+    Furthermore $g^{-1}Hg \cong H$ by \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} so $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, \textbf{Proposition \ref{prop-normalizer-of-sylow-p-subgroup}} tells us that $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But $X = gHg^{-1}$, so $X = H$.
+    
+    Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, by Orbit-Stabilizer Theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}), one sees that
+    \[
+        |\Stab{H}{gHg^{-1}}| = \frac{|H|}{|\Orb{H}{gHg^{-1}}|}
+    \]
+    and since $|H|$ is a power of $p$ and $|\Stab{H}{gHg^{-1}}|$ is an integer, thus $|\Orb{H}{gHg^{-1}}|$ has to be a power of $p$, meaning $|\Orb{H}{gHg^{-1}}| \equiv 0 \pmod p$. Because distinct orbits partition $\mathcal{X}$ (\textbf{Exercise \ref{exercise-distinct-orbits-partition-set}}), thus $|\mathcal{X}| \equiv 1 \pmod p$.
+
+    Now let the Sylow $p$-subgroup $K$ act on $\mathcal{X}$ by conjugation, meaning $k \star X = kXk^{-1}$. This is a group action as proven before, and the above conclusion means that there is at least one orbit of length 1. Hence there exists a $g \in G$ such that for all $k \in K$, we have $k(gHg^{-1})k^{-1} = gHg^{-1}$. Hence $g^{-1}kg \in \N{G}{H}$ which means $g^{-1}Kg \subset \N{G}{H}$. Therefore, since $|K| = |g^{-1}Kg|$ and by \textbf{Proposition \ref{prop-normalizer-of-sylow-p-subgroup}}, $g^{-1}Kg \subseteq H$, meaning $K \subseteq gHg^{-1}$. But because $|H| = |K|$ as they are both Sylow $p$-subgroups, therefore $K = gHg^{-1}$.
+\end{proof}
 \begin{remark}
-    The number of distinct orbits is given by the number of elements of the set $X/G$, i.e. $|X/G|$.
+    What part of this proof shows is that if $P$ is a Sylow $p$-subgroup but $Q$ is only a $p$-subgroup, then $Q \subseteq gPg^{-1}$ for some $g \in G$.
 \end{remark}
 
 \newpage
 
-We are now ready to introduce Burnside's lemma.
-\begin{lemma}[Burnside]\label{lemma-burnside}\index{Burnside's Lemma}
-    Let $G$ be a finite group acting on a set $X$. Let $\Fix{X}{g}$ denote the set of all elements in $X$ which is fixed by $g$, that is,
-    \[
-        \Fix{X}{g} = \{x \in X \vert g\cdot x = x\}.
-    \]
-    Then
-    \[
-        |X/G| = \frac{1}{|G|}\sum_{g\in G} |\Fix{X}{g}|.
-    \]
-\end{lemma}
-What Burnside's lemma tells us is the number of orbits equals the average number of fixed elements for each $g \in G$.
-\begin{proof}[Proof (see \cite{proofwiki_burnsideslemma})]
-    We start by noting that
-    \begin{align*}
-        \sum_{g\in G} |\Fix{X}{g}| &= \sum_{g\in G} |\{x \in X \vert g\cdot x = x\}|\\
-        &= |\{(g, x) \vert g \in G,\; x \in X \text{ such that } g\cdot x = x\}|\\
-        &= \sum_{x\in X} |\{g \in G \vert g\cdot x = x\}|\\
-        &= \sum_{x\in X} |\Stab{G}{x}|.
-    \end{align*}
-    One sees that $|\Stab{G}{x}| = \frac{|G|}{|\Orb{G}{x}|}$ by the Orbit-Stabilizer theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}). Thus,
-    \begin{align*}
-        \sum_{x\in X} |\Stab{G}{x}| &= \sum_{x\in X} \frac{|G|}{|\Orb{G}{x}|}\\
-        &= |G|\sum_{x\in X} \frac{1}{|\Orb{G}{x}|}.
-    \end{align*}
-    Notice that $X$ is the disjoint union of all orbits in $X/G$ (\textbf{Exercise \ref{exercise-distinct-orbits-partition-set}}), which means the sum over $X$ may be broken up into separate sums over each individual orbit. Thus,
-    \begin{align*}
-        \sum_{x\in X} \frac{1}{|\Orb{G}{x}|} &= \sum_{\Orb{G}{x} \in X/G}\left(\sum_{x \in \Orb{G}{x}} \frac{1}{|\Orb{G}{x}|}\right)\\
-        &= \sum_{\Orb{G}{x} \in X/G} 1\\
-        &= |X/G|.
-    \end{align*}
-    Putting everything together,
-    \[
-        \sum_{g\in G} |\Fix{X}{g}| = |G||X/G|
-    \]
-    which the result follows immediately.
+We note one important corollary of the Second Sylow Theorem.
+\begin{corollary}\label{corollary-sylow-subgroup-is-normal-if-it-is-unique}
+    Let $G$ be a finite group and $P$ be a Sylow $p$-subgroup for some prime $p$. Then $P$ is a normal subgroup of $G$ if and only if $P$ is the only Sylow $p$-subgroup of $G$.
+\end{corollary}
+\begin{proof}
+    The reverse direction is easy to prove. Since $P$ is the only Sylow $p$-subgroup of $G$, this means that $P$ is the only subgroup of order $p^k$. By \textbf{Theorem \ref{thrm-unique-subgroup-of-given-order-is-normal}}, this means that $P \lhd G$.
+
+    We work on the forward direction now and suppose $P$ is a normal subgroup of $G$. Let $\hat{P}$ be a normal Sylow $p$-subgroup. By the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}), there exists $g \in G$ such that $g\hat{P}g^{-1} = P$. But since $\hat{P}$ is normal, thus $g^{-1}\hat{P}g = \hat{P}$ by definition of normality. Hence, $P = \hat{P}$, meaning that there is only one Sylow $p$-subgroup.
 \end{proof}
 
-\begin{example}
-    We find the number of distinct colourings of the corners on a square with $n$ colours (up to rotation) using by Burnside's lemma.
+\begin{exercise}
+    Let $G$ be a finite group, $p$ be a prime number, and $H$ and $K$ be distinct Sylow $p$-subgroups of $G$. Prove that $H \cong K$.
+\end{exercise}
 
-    \begin{figure}[h]
-	    \centering
-	    \fbox{\includegraphics[width=3.5cm]{images/chapter9/LabelledSquare.png}}
-	    \caption{Square With Labelled Corners}
-	\end{figure}
+\newpage
 
-    Let $X$ denote the set of colourings of the corners of the square, and let $G$ denote the rotation group acting on $X$. Then two elements of $X$ belong to the same orbit precisely when one is simply a rotation of the other. We note that $G$ consists of four $90^\circ$ rotations, so $G \cong \Cn{4}$.
+\section{Third Sylow Theorem}
+We now state and prove the \textbf{Third Sylow Theorem}.
+\begin{theorem}[Sylow III]\label{thrm-sylow-3}\index{Sylow Theorem!Third}
+    Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. Let $n_p$ denote the number of Sylow $p$-subgroups in $G$, i.e. $n_p = |\Syl{p}{G}|$. Then,
     \begin{enumerate}
-        \item Rotating the square $0^\circ$ does not change the colourings at all, which means that the number of fixed points is the total number of possible colourings, which is $n^4$.
-        \item Rotating the square $90^\circ$ results in all points affecting one another, so the only fixed points would be colourings of all the same color. Since there are $n$ different colours, thus the number of fixed points is $n$.
-        \item Rotating the square $180^\circ$ swaps two pairs of vertices that are across from each other. Thus, a fixed point will occur if the two pairs have the same colour. Hence, there are $n^2$ fixed points.
-        \item Finally, rotating the square $270^\circ$ is similar to rotating $90^\circ$, so there are $n$ fixed points.
+        \item $n_p = [G:\N{G}{P}]$, where $P$ is a Sylow $p$-subgroup of $G$;
+        \item $n_p$ divides $m$; and
+        \item $n_p \equiv 1 \pmod p$.
     \end{enumerate}
-    Now there are 4 elements in $G$, so $|G| = 4$. By Burnside's Lemma,
-    \[
-        |X/G| = \frac{1}{|G|}\sum_{g\in G} |\Fix{X}{g}| = \frac14 (n^4 + n + n^2 + n),
-    \]
-    i.e., the number of distinct possible colourings of the corners on a square with $n$ colours (up to rotation) is $\frac n4 (n^3 + n + 2)$.
-\end{example}
-
-\newpage
-
-\section{Conjugacy Classes}
-Before we look at the most important part of this chapter, the Class Equation, we look at the idea of conjugacy as a group action.
-\begin{definition}
-    Let $G$ be a group, and suppose $a, b \in G$. Then we say that $b$ is a \textbf{conjugate}\index{conjugate} of $a$ if there is an element $g \in G$ such that $b = gag^{-1}$ (or, alternatively, $a=g^{-1}bg$).
-\end{definition}
-We can frame this idea in terms of group actions.
-
-Consider the map $\phi: G\times G\to G$ such that $\phi(g, x) = gxg^{-1}$. We showed that $\phi$ is a group action in \textbf{Exercise \ref{exercise-conjugacy-is-group-action}}. Let's look at the orbit and stabilizer of an arbitrary element $x \in G$ under this group action.
-\begin{itemize}
-    \item For the orbits, we are to find a $y \in G$ such that there exists a $g \in G$ where $gxg^{-1} = y$. Hence, the orbit of $x$ under this group action are the conjugates of $x$.
-    \item For the stabilizer, we are to find elements $g \in G$ such that $gxg^{-1} = x$. Hence any such element satisfies $gx = xg$. Therefore, $g \in \C{G}{x}$ where $\C{G}{x}$ is the centralizer of $x$ (recall how it is defined in \textbf{Example \ref{example-centralizer-of-a-subset}}).
-\end{itemize}
-
-Hence, under the action of conjugation,
-\begin{itemize}
-    \item $\Orb{G}{x} = $ Conjugates of $x$; and
-    \item $\Stab{G}{x} = \C{G}{x}$.
-\end{itemize}
-
-\newpage
-
-We can now look at conjugacy classes.
-\begin{definition}
-    Let $G$ be a group and take $x \in G$. The \textbf{conjugacy class of $x$}\index{conjugacy class} is the set
-    \[
-        \Cl{x} = \{gxg^{-1} \vert g \in G\}.
-    \]
-    In other words, the set $\Cl{x}$ is a subset of $G$ where all elements inside it are conjugates of each other.
-\end{definition}
-\begin{remark}
-    We omit having the subscript of $G$ for the conjugacy class since $x \in G$. Also, under the group action of conjugation, $\Orb{G}{x} = \Cl{x}$.
-\end{remark}
-
-\begin{example}\label{example-conjugacy-classes-of-Sn3}
-    We look at conjugacy classes of the group $\Sn{3}$.
-    \begin{itemize}
-        \item The first is the conjugacy class of the identity, $\id$.
-        \[
-            \Cl{\id} = \{g\circ\id\circ g^{-1} \vert g \in G \} = \{\id\}.
-        \]
-        Thus the conjugacy class of the identity consists of only the identity.
-        \item The second is the conjugacy class of transpositions. Let $\tau = \begin{pmatrix}a & b\end{pmatrix}$ be a transposition in $\Sn{3}$. Then
-        \[
-            \Cl{\tau} = \{g\circ\tau\circ g^{-1} \vert g \in G\}.
-        \]
-        Running through all 6 elements of $\Sn{3}$ reveals that $\Cl{\tau}$ is the set of all transpositions, i.e. the conjugacy class of transpositions is the set of transpositions.
-        \item The third is the conjugacy class of 3-cycles. Let $\sigma = \begin{pmatrix}a & b & c\end{pmatrix}$ be a 3-cycle in $\Sn{3}$. One can see that $\Cl{\sigma}$ is the set of all 3-cycles.
-    \end{itemize}
-\end{example}
-
-\begin{exercise}\label{exercise-order-of-conjugacy-class}
-    Let $G$ be a group and $x \in G$. Prove that
-    \[
-        |\Cl{x}| = [G : \C{G}{x}].
-    \]
-\end{exercise}
-
-\section{The Class Equation}
-The example of the previous section illustrates that the sum of the sizes of the conjugacy classes must be equal to the size of the group. This fact, along with the Orbit-Stabilizer theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}), can be used to derive an important equation known as \textbf{the class equation}.
-
-Before we state and prove the class equation, we recall the idea of the center of a group as introduced in \textbf{Example \ref{example-center-of-group}}.
-\begin{quote}
-    The center of a group $G$ is the normal subgroup
-    \[
-        \Z{G} = \{z \in G \vert gz = zg \text{ for all } g \in G\}.
-    \]
-    In other words, $\Z{G} = \{z \in G \vert z = gzg^{-1} \text{ for all } g \in G\}$.
-\end{quote}
-
-We now state and prove the class equation.
-\begin{theorem}[Class Equation]\label{thrm-class-equation}
-    Let $G$ be a finite group. Suppose $G$ has $k$ conjugacy classes, with $l$ of them having more than 1 element. Suppose $g_1, g_2, \dots, g_l$ are representatives of the conjugacy classes with more than 1 element. Then
-    \[
-        |G| = |\Z{G}| + \sum_{i=1}^l [G : \C{G}{g_i}],
-    \]
-    which is known as \textbf{the class equation}\index{Class Equation}.
 \end{theorem}
+\begin{proof}[Proof (see \cite{wielandt_1959})]
+    We prove the three statements in order.
+    \begin{enumerate}
+        \item Let $G$ act on $\Syl{p}{G}$ by conjugation, meaning that for any $g \in G$ and $P \in \Syl{p}{G}$, $g\cdot P = gPg^{-1}$. By the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}), all Sylow $p$-subgroups are conjugates of each other, so the orbit of any $P \in \Syl{p}{G}$ is the set of all Sylow $p$-subgroups, meaning $|\Orb{G}{P}| = |\Syl{p}{G}| = n_p$. Now consider $\Stab{G}{P}$; note
+        \[
+            \Stab{G}{P} = \{g \in G \vert gPg^{-1} = P\} = \N{G}{P}
+        \]
+        by definition of the normalizer. Therefore, by the Orbit-Stabilizer Theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}),
+        \[
+            n_p = |\Orb{G}{P}| = \frac{|G|}{|\Stab{G}{P}|} = \frac{|G|}{|\N{G}{P}|} = [G : \N{G}{P}],
+        \]
+        proving the first statement.
 
-\begin{proof}
-    We know by \textbf{Exercise \ref{exercise-distinct-orbits-partition-set}} that distinct orbits partitions the set that the group is acting on. Hence, using the group action of conjugation, orbits under conjugation partition $G$. Hence,
-    \[
-        G = \bigcup_{i=1}^k \Orb{G}{\hat{g_i}} = \bigcup_{i=1}^k \Cl{\hat{g_i}}
-    \]
-    where $\hat{g_i}$'s are representatives of the $k$ conjugacy classes (including those with only 1 element).
+        \item Let $P$ be a Sylow $p$-subgroup. We recall that $P \lhd \N{G}{P} \leq G$. Note that by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) we know $|\N{G}{P}| = [\N{G}{P} : P]|P| = ap^k$ where $a \leq m$ (since $\N{G}{P} \leq G$). Furthermore
+        \[
+            mp^k = |G| = [G: \N{G}{P}]|\N{G}{P}| = n_p \times ap^k
+        \]
+        which means $m = an_p$. In other words, $n_p$ divides $m$.
 
-    Suppose now that an element $x$ is in a conjugacy class with one element. This means that $gxg^{-1} = x$ for all $g \in G$. Hence, this means that $x \in \Z{G}$.
+        \item Let $H$ be a Sylow $p$-subgroup and let it act on $\Syl{p}{G}$ by conjugation, meaning that for any $h \in H$ and $P \in \Syl{p}{G}$, $h \cdot P = hPh^{-1}$. Let $\Omega$ denote the set of fixed points of $\Syl{p}{G}$ under this action.
 
-    Therefore, one concludes that
-    \[
-        G = \left(\Z{G}\right) \cup \left(\bigcup_{i=1}^l \Cl{g_i}\right).
-    \]
-    Since this is a disjoint union, hence
-    \[
-        |G| = |\Z{G}| + \sum_{i=1}^l |\Cl{g_i}|.
-    \]
+        Suppose $Q \in \Omega$, which means that $hQh^{-1} = Q$ for all $h \in H$. Thus $H \subseteq \N{G}{Q}$ as $\N{G}{Q} = \{g \in G \vert gQg^{-1} = Q\}$. In fact, since $H$ is a Sylow $p$-subgroup, $H \leq \N{G}{Q}$. We note $Q \unlhd \N{G}{Q}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. Hence $H$ and $Q$ are Sylow $p$-subgroups of $\N{G}{Q}$, which means there exists $n \in \N{G}{Q}$ such that $nQn^{-1} = H$ by the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}). Furthermore $nQn^{-1} = Q$ since $Q \unlhd \N{G}{Q}$. Hence $Q = H$, which means that the only element in $\Omega$ is $H$.
 
-    Finally, by \textbf{Exercise \ref{exercise-order-of-conjugacy-class}}, $|\Cl{g_i}| = [G : \C{G}{g_i}]$, which means that
-    \[
-        |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}],
-    \]
-    proving the theorem.
+        By a similar argument posed in the proof of the Second Sylow Theorem, for any $Q \in \Syl{p}{G}$ where $Q \neq H$ we must have $|\Orb{H}{Q}| \equiv 0 \pmod p$. Note $|\Orb{H}{H}| = 1$. Now since distinct orbits partition $\Syl{p}{G}$, we must have $n_p = |\Syl{p}{G}| \equiv 1 \pmod p$.
+    \end{enumerate}
+    This completes the proof of the Third Sylow Theorem.
 \end{proof}
 
-We look at one application of the class equation. Before that, we introduce the idea of \textbf{$p$-groups}.
-\begin{definition}
-    A \textbf{$p$-group}\index{$p$-group} $G$ is a finite group with order $p^n$ where $p$ is prime and $n$ is a positive integer.
-\end{definition}
-An immediate consequence of this is that every element must have an order that is a power of $p$, i.e. for any element $x \in G$, $|x| = p^k$ where $1 \leq k \leq n$.
-
-\begin{example}\label{example-group-with-prime-power-order-has-non-trivial-center}
-    Let $G$ be a finite $p$-group, meaning $|G| = p^n$. We will show that $G$ has a non-trivial center using the class equation.
-
-    Recall that $|\Cl{x}| = \frac{|G|}{|\C{G}{x}|}$ by \textbf{Exercise \ref{exercise-order-of-conjugacy-class}}. Hence, the order of the group must divide the order of any conjugacy class, i.e. $\frac{|G|}{|\C{G}{x}|} \vert |G|$. Since $|G| = p^n$, it follows that $|\Cl{x}| = p^k$ for some $1 \leq k \leq n$ (assuming $x \notin \Z{G}$).
-
-    If $g_1, g_2, \dots, g_l$ are representatives from the conjugacy classes with more than 1 element, then this means that
-    \[
-        p^n = |G| = |\Z{G}| + \sum_{i=1}^l |\Cl{g_i}| = |\Z{G}| + \sum_{i=1}^l p^{k_i}
-    \]
-    where $1 \leq k_1, k_2, \dots, k_l < n$. From this, we conclude that $p$ must divide $|\Z{G}|$, meaning $|\Z{G}| > 1$.
-\end{example}
 \begin{example}
-    We look at the class equation of the symmetric group of degree 3, $\Sn{3}$.
+    We show that a group of order 4225 is abelian.
 
-    We recall from \textbf{Example \ref{example-conjugacy-classes-of-Sn3}} that the conjugacy classes of $\Sn{3}$ are
-    \begin{align*}
-        &\Cl{\id} = \{\id\}\\
-        &\Cl{\tau} = \{\begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}1 & 3\end{pmatrix}, \begin{pmatrix}2 & 3\end{pmatrix}\}\\
-        &\Cl{\sigma} = \{\begin{pmatrix}1 & 2 & 3\end{pmatrix}, \begin{pmatrix}1 & 3 & 2\end{pmatrix}\}
-    \end{align*}
-    where $\tau$ is a 2-cycle (transposition) and $\sigma$ is a 3-cycle. Thus, the class equation of $\Sn{3}$ is
+    Note that $4225 = 5^2 \times 13^2$. Let $G$ be a group of order 4225. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), we know that
+    \begin{itemize}
+        \item $n_5 \mid 13^2 = 169$ and $n_{13} \mid 5^2 = 25$, which means $n_5 \in \{1, 13, 169\}$ and $n_{13} \in \{1, 5, 25\}$; and
+        \item $n_5 \equiv 1 \pmod 5$ and $n_{13} \equiv 1 \pmod{13}$, which means $n_5 \in \{1, 6, 11, \dots\}$ and $n_{13} \in \{1, 14, 27, \dots\}$.
+    \end{itemize}
+    Hence, $n_5 = 1$ and $n_{13} = 1$, meaning that there is only one Sylow 5-subgroup and one Sylow 13-subgroup.
+
+    Let $P$ be the Sylow 5-subgroup and $Q$ be the Sylow 13-subgroup. By \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}, $P \lhd G$ and $Q \lhd G$, so $pq = qp$ for any $p \in P$ and $q \in Q$. Furthermore, by \textbf{Problem \ref{problem-intersection-of-coprime-subgroups}}, $P \cap Q = \{e\}$. Finally, notice that
     \[
-        6 = 1 + 2 + 3
+        |PQ| = \frac{|P||Q|}{|P\cap Q|} = |P||Q| = 5^2\times13^2 = |G|
     \]
-    where $|\Z{\Sn{3}}| = |\{e\}| = 1$.
+    which means that $PQ$ and $G$ have the same number of elements. Hence, $G$ is the internal direct product of $P$ and $Q$. We note that
+    \[
+        G = PQ \cong P\times Q
+    \]
+    by direct product equivalence (\textbf{Theorem \ref{thrm-direct-product-equivilance}}). In addition, since $P$ and $Q$ are groups of prime-squared order, they are abelian (\textbf{Problem \ref{problem-group-of-order-prime-squared-is-abelian}}), meaning that their external direct product $P\times Q$ is also abelian (\textbf{Problem \ref{problem-external-direct-product-of-abelian-groups-is-abelian}}). Hence $G$ is also abelian.
 \end{example}
 
 \begin{exercise}
-    The Cayley table of $D_3$ is in \textbf{Example \ref{example-presentation-of-D3}}.
-    \begin{enumerate}[label=(\alph*)]
-        \item Find $\Z{D_3}$, the center of $D_3$.
-        \item Find the conjugacy classes of $D_3$ with more than 1 element.
-        \item Find the class equation of $D_3$.
-    \end{enumerate}
+    Let $G$ be a group of order 784, and let $P$ be a Sylow 7-subgroup that is \textbf{not} a normal subgroup of $G$. Find the order of $\N{G}{P}$.
 \end{exercise}
 
-\section{Cauchy's Theorem}
-To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
-\begin{theorem}[Cauchy]\label{thrm-cauchy}\index{Cauchy's Theorem}
-    Let $G$ be a finite group such that $|G| = np$ where $p$ is a prime and $n$ is a positive integer. Then $G$ contains an element of order $p$.
+\section{Testing Non-Simplicity Of Groups}
+To end this chapter, we look at the idea of \textbf{simple groups} and describe ways to prove the non-simplicity of groups.
+\begin{definition}
+    Let $G$ be a group where $|G| > 2$. Then $G$ is \textbf{simple}\index{group!simple} if the only normal subgroups of $G$ are the trivial subgroup and $G$ itself.
+\end{definition}
+\begin{remark}
+    Equivalently, $G$ is simple if $G$ has no proper normal subgroups.
+\end{remark}
+
+We may use part of the Third Sylow Theorem to create a test for non-simplicity.
+\begin{theorem}[Sylow's Test]\index{Sylow's Test}
+    Let $n$ be a non-prime integer and let $p$ be a prime divisor of $n$. If 1 is the only divisor of $n$ that is congruent 1 modulo $p$, then there does not exist a simple group of order $n$.
 \end{theorem}
 \begin{proof}
-    We proceed with strong induction on $n$.
-
-    For the case where $n = 1$, $|G| = p$. Then by \textbf{Exercise \ref{exercise-prime-order-element}}, every element of the group has order $p$. Hence we proved the base case.
-
-    We now assume that the statement holds for all $n \leq k$ for some positive integer $k$. We need to prove the case for $k+1$, that is, a group $G$ with order $(k+1)p$ has an element of order $p$. We split the proof into two cases.
-
-    The first case is when $G$ is abelian. Take any non-identity element $x$, and define $H = \langle x \rangle \leq G$.
+    We consider two cases, namely the case where $n=p^k$ where $k>1$ and the case where $n \neq p^k$.
+    
+    We first suppose $n = p^k$. Let $G$ be a group of order $n$. We consider two subcases.
     \begin{itemize}
-        \item If $p$ divides $|H|$, say $|H| = mp$ where $m$ is a positive integer, then $x^m$ is an element of order $p$ (since $\left(x^m\right)^p = x^{|H|} = e$). Hence we find an element with order $p$.
-        \item If $p$ does not divide $|H|$, then $p$ must divide $[G:H] = |G/H| = \frac{|G|}{|H|}$ since $p$ divides $|G| = kp$. Note that $H \unlhd G$ since $G$ is abelian (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}). So $G/H$ is a group. Writing $|x| = m$ we see
-        \[
-            (xH)^m = (x^m)H = eH = H \in G/H.
-        \]
-        Thus, $m$ is a multiple of $|G/H|$ (\textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}) which is in turn a multiple of $p$. Hence $p$ divides $m$. As before, $x^{\frac mp}$ is an element with order $p$ (since $\left(x^{\frac mp}\right)^p = x^m = e$).
+        \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\textbf{Exercise \ref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\textbf{Propopsition \ref{prop-subgroup-of-abelian-group-is-normal}}), thus there exists a proper normal subgroup of $G$, meaning $G$ is non-simple.
+        \item Suppose now $G$ is non-abelian. By \textbf{Example \ref{example-group-with-prime-power-order-has-non-trivial-center}}, $G$ has a non-trivial center. Furthermore, $G \neq \Z{G}$ because $G$ is non-abelian (\textbf{Problem \ref{problem-center-of-G}}). Since the center is a normal subgroup of $G$, it is thus a proper normal subgroup of $G$, meaning $G$ is non-simple.
     \end{itemize}
-    Therefore, for the abelian case, there exists an element with order equal to $p$.
+    Hence any group of order $p^k$ where $k > 1$ is non-simple.
 
-    We now consider the case when $G$ is non-abelian. Seeking a contradiction, assume $G$ does not have an element of order $p$. Let $H < G$, so $H$ has no element with order $p$. Therefore the contrapositive of the induction hypothesis means that $|H|$ is not a multiple of $p$. Note that Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) further gives that $|G| = [G:H]|H|$. Since $|H|$ is not divisible by $p$ and $|G|$ is divisible by $p$, we conclude that $p$ divides $[G:H]$ for every proper subgroup $H$.
-
-    Since $G$ is non-abelian, thus $G \neq \Z{G}$ meaning that there exists at least one conjugacy class with more than 1 element. Suppose there are $l$ such classes, and let them be represented by the elements $g_1, g_2, \dots, g_l$. By the class equation (\textbf{Theorem \ref{thrm-class-equation}}),
-    \[
-        |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}].
-    \]
-    Note that $|\Cl{g_i}| = [G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|} > 1$, which means that $|G| > |\C{G}{g_i}|$. Thus $\C{G}{g_i} \neq G$ for all $i$. Recall that $\C{G}{g_i}$ is a subgroup of $G$ (\textbf{Example \ref{example-centralizer-of-a-subset}}), so by the above observation, $p$ divides $[G:\C{G}{g_i}]$.
-
-    In the class equation, $p$ divides $|G|$ and $p$ divides $[G:\C{G}{g_i}]$, which means that $p$ must divide $|\Z{G}|$. But $\Z{G} < G$ and by above observation, $p$ does not divide any proper subgroup of $G$. Hence, $\Z{G}$ must be trivial. However $\Z{G} \neq \{e\}$ because that would imply $p$ divides $1$ which is a contradiction. We thus conclude that there exists an element of order $p$.
+    Now suppose $n$ is not a prime power. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), the number of Sylow $p$-subgroups, $n_p$, is congruent to 1 modulo $p$ and divides $n$. Since 1 is the only such number by our assumption, thus $n_p = 1$, meaning that there is only one Sylow $p$-subgroup. By \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}} this means that that Sylow $p$-subgroup (which is non-trivial) is normal, which thus means that any group of order $n$ is non-simple.
 \end{proof}
+\begin{example}
+    Consider a group with order 15. Note $15 = 3 \times 5$, and consider $p = 5$. The divisors of 15 are 1, 3, 5, and 15, and clearly only 1 is congruent to 1 modulo 5. Hence by Sylow's Test we know that a group of order 15 cannot be simple.
+\end{example}
 
-\begin{exercise}\label{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}
-    Let $G$ be a finite group with $|G| = np$, $n$ is a positive integer, and $p$ prime. Prove that $G$ has a \textbf{subgroup} of order $p$.
+For some groups of orders that do not satisfy the condition in Sylow's Test, we can still can prove that they cannot be simple.
+
+\newpage
+
+\begin{example}
+    We will show that a group of order 2552 is non-simple.
+
+    We note first that $2552 = 2^3 \times 11 \times 29$. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), we know $n_p \mid m$ and $n_p \equiv 1 \pmod p$.
+
+    The divisors of the $m$ given the following primes are listed below.
+    \begin{itemize}
+        \item $p = 2$: $m = 319$ and so divisors are $\{1. 11, 29, 319\}$.
+        \item $p = 11$: $m = 232$; divisors are $\{1, 2, 4, 8, 29, 58, 116, 232\}$.
+        \item $p = 29$: $m = 88$; divisors are $\{1, 2, 4, 8, 11, 22, 44, 88\}$.
+    \end{itemize}
+    Thus, since $n_p \equiv 1 \pmod p$, we must have $n_2 \in \{1, 11, 29, 319\}$, $n_{11} \in \{1, 232\}$, and $n_{29} \in \{1, 88\}$.
+
+    Seeking a contradiction, suppose that $n_2$, $n_{11}$, and $n_{29}$ are all not 1. Then $n_{11} = 232$ and $n_{29} = 88$. Recall that one element in a Sylow $p$-subgroup has order 1 (i.e., the identity). Thus, the number of elements of order 11 is $232 \times (11 - 1) = 2320$ and the number of elements of order 29 is $88 \times (29 - 1) = 2464$. Hence, the total number of elements in the group of order 2552 must be at least $2320 + 2464 = 4764$, a contradiction.
+
+    Hence, we conclude that at least one of $n_2, n_{11}, n_{29}$ must be 1, meaning that there is a proper normal subgroup, which therefore means that any group of order 2552 is non-simple.
+\end{example}
+
+\begin{example}\label{example-using-kernel-to-show-non-simple}
+    We show that any group of order 36 is non-simple by considering the kernel of a homomorphism.
+
+    We note $36 = 2^2 \times 3^2$. Let $G$ be a group of order 36 and let $P$ be a Sylow 3-subgroup of the group of order 36. Let $G$ act on the set of cosets $G/P$ by left multiplication, meaning $g \cdot xP = (gx)P$. Then by \textbf{Theorem \ref{thrm-group-action-definition-equivalence}} this induces a homomorphism $\phi: G \to \Sn{4}$ since there are 4 cosets in $G/P$. We note $\phi(g) = \sigma_g$ where $\sigma_g(xP) = g\cdot xP = (gx)P$.
+
+    We consider the kernel of $\phi$.
+    \begin{align*}
+        \ker\phi &= \{g \in G \vert \phi(g) = \id\}\\
+        &= \{g \in G \vert \sigma_g = \id\}\\
+        &= \{g \in G \vert \sigma_g(xP) = xP \text{ for all } x \in G\}\\
+        &= \{g \in G \vert (gx)P = xP \text{ for all } x \in G\}\\
+        &= \{g \in G \vert x^{-1}gx \in P \text{ for all } x \in G\} & (\text{Coset Equality})\\
+        &= \{g \in G \vert g \in xPx^{-1} \text{ for all } x \in G\}\\
+        &= \bigcap_{x \in G} xPx^{-1}.
+    \end{align*}
+    We note that $\ker\phi \neq \{e\}$ since that would imply that $\phi$ is injective (\textbf{Exercise \ref{exercise-trivial-kernel-means-injective}}), which would then mean $36 = |G| \leq |\Sn{4}| = 4! = 24$, a contradiction. We also note $\ker\phi \neq G$, otherwise
+    \[
+        36 = |G| = |\ker\phi| = \left|\bigcap_{x \in G} xPx^{-1}\right| \leq |xPx^{-1}| = |P| = 9,
+    \]
+    a contradiction. Hence $\ker\phi$ is a proper subgroup of $G$. We note that $\ker\phi \lhd G$, so we have found a proper normal subgroup of $G$, meaning that $G$ is non-simple.
+\end{example}
+
+\begin{exercise}
+    Show that any group of order $130$ is non-simple.
 \end{exercise}
 
 \newpage
 
 \section{Problems}
 \begin{problem}
-    Let $G = D_5$, the dihedral group of order 10.
-    \begin{enumerate}[label=(\alph*)]
-        \item Suppose $H$ is a proper subgroup of $G$. What are the possible order(s) of $H$?
-        \item For each of the possible order(s) identified, find such a subgroup.
+    Show that a group of order 200 has a normal Sylow 5-subgroup.
+\end{problem}
+
+\begin{problem}
+    Show that any Sylow $p$-subgroup of a group of order 33 must be normal.
+\end{problem}
+
+\begin{problem}
+    A perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself. All even perfect numbers are of the form $2^{p-1}\left(2^p-1\right)$ where both $p$ and $2^p-1$ are primes. Prove that any group with an even perfect number order is not simple.
+\end{problem}
+
+\begin{problem}\label{problem-group-of-order-pq-has-normal-subgroup-of-order-q}
+    Let $p$ and $q$ be primes such that $p < q$. Let $G$ be a group of order $pq$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Prove that there is only one subgroup $H$ of $G$ of order $q$. Deduce that $H \lhd G$.
+        \item Prove also that if $q \not\equiv 1 \pmod p$ then $G$ is cyclic.
     \end{enumerate}
 \end{problem}
 
 \begin{problem}
-    Let $G$ be a group of order 25 and $X$ be a $G$-set of 24 elements. Show that every $g \in G$ has a fixed point.
+    Show that any group of order 3325 is abelian.
 \end{problem}
 
-\begin{problem}
-    Suppose $G$ is a finite group with order $n > 1$ where $g^2 = e$ for all $g \in G$. Prove that $n = 2^k$ where $k$ is a positive integer.
+\begin{problem}\label{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}
+    Let $G$ be a finite group, and write the order of $G$ as $p^km$ where $k \geq 0$ and $p \nmid m$. Let $N \lhd G$ such that $p$ does not divide the index of $N$ in $G$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Prove that any Sylow $p$-subgroup of $N$ is also in $G$.
+        \item Prove that any Sylow $p$-subgroup of $G$ is also in $N$.
+    \end{enumerate}
+    (That is, prove that $N$ contains all Sylow $p$-subgroups of $G$ and vice versa.)
 \end{problem}
 
-\begin{problem}
-    A group action is said to be \textbf{free}\index{group action!free} if $g\cdot x = x$ means that $g$ is the identity (i.e., only the identity fixes any $x$).\newline
-    Let $G$ be a group and $S$ be a non-empty $G$-set. Suppose $G$ acts on $S$ freely and transitively. Prove that $G$ and $S$ have the same number of elements.
+\begin{problem}\label{problem-if-m!<|G|-then-G-is-simple}
+    Let $G$ be a finite group such that $|G| = p^km$ where $k \geq 1$, $m > 1$, and $p \nmid m$. Prove that if $m! < |G|$ then $G$ is non-simple.
 \end{problem}
 
-\begin{problem}
-    A bracelet consists of 3 beads that each can be one of $n$ colours. Two bracelets are considered to be identical if the rotation of one yields the other, or if one can be obtained via reflecting about a line, or any combination of these two actions. How many distinct bracelets are there?
+\begin{problem}\label{problem-group-of-order-30-has-normal-subgroup-of-order-5}
+    Prove that a group of order 30 has a normal subgroup of order 5.
 \end{problem}
 
-\begin{problem}\label{problem-group-of-order-prime-squared-is-abelian}
-    Let $p$ be a prime number. Prove that a group of order $p^2$ must be abelian.\newline
-    (\textit{Hint: Consider \textbf{Problem \ref{problem-center-of-G}} and \textbf{Problem \ref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}}})
+\begin{problem}\label{problem-group-of-order-pqr-is-non-simple}
+    Let $p, q$, and $r$ be distinct primes such that $p < q < r$. Let $G$ be a group of order $pqr$. Prove that $G$ is non-simple.\newline
+    (\textit{Hint: show that a normal subgroup of order $p$, $q$, or $r$ must exist.})
 \end{problem}
-
-\newpage
-
-\begin{problem}
-    Let $G$ be a finite $p$-group, and $X$ be a $G$-set. Denote the set of points of $X$ that are fixed under the action of $G$ by $\Omega$. Prove that $|X| \equiv |\Omega| \pmod p$.\newline
-    (\textit{Hint: $\Omega = \{x \in X \vert g\cdot x = x \textrm{ for all } g \in G\}$})
-\end{problem}
-
-% %=========================================
-% \chapter{Sylow Theorems}
-% The Sylow theorems are a collection of theorems named after the Norwegian mathematician Peter Ludwig Sylow that give detailed information about the number of subgroups of fixed order that a given finite group contains. The Sylow theorems form a fundamental part of finite group theory and have very important applications in the classification of finite simple groups.
-
-% \section{First Sylow Theorem}
-% Before we can state the First Sylow Theorem, we introduce some terminology.
-
-% Recall that a group with order $p^k$ for some $k \geq 0$ is called a $p$-group. If $G$ is a group with a subgroup of order $p^k$, then that subgroup is called a \textbf{$p$-subgroup}.
-% \begin{definition}\label{definition-sylow-p-subgroup}
-%     Let $G$ be a finite group. Write the order of the group $G$ as $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then a subgroup $H$ with order $p^k$ is called a \textbf{Sylow $p$-subgroup} of $G$.
-% \end{definition}
-% We denote the set of all Sylow $p$-subgroups of the group $G$ for a given prime $p$ by $\Syl{p}{G}$.
-
-% \begin{exercise}
-%     Find the Sylow 2-subgroup of $\mathbb{Z}_{12}$.
-% \end{exercise}
-
-% We are now ready to state and prove the \textbf{First Sylow Theorem}.
-% \begin{theorem}[Sylow I]\label{thrm-sylow-1}
-%     Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then $\Syl{p}{G} \neq \emptyset$.
-% \end{theorem}
-% \begin{remark}
-%     Equivalently, for a finite group $G$, for every prime factor $p$ with multiplicity $k$ of its order, there is a Sylow $p$-subgroup of $G$.
-% \end{remark}
-% \begin{proof}[Proof (see {\cite[pp.~1--3]{mann_2011}})]
-%     We induct on the order of $G$.
-
-%     When the order of $G$ is 1, $|G| = p^0$ for any prime $p$, so $G$ is clearly a Sylow $p$-subgroup of itself.
-
-%     We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$. We write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
-
-%     The first case is when $p$ divides the order of the center of $G$, $|\Z{G}|$. By Cauchy's Theorem (\textbf{Theorem \ref{thrm-cauchy}}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \lhd G$ since for all $x \in N \subseteq \Z{G}$ and $g \in G$, $gxg^{-1} = (gx)g^{-1} = x(gg^{-1}) = x \in N$. Hence $G/N$ is a group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the Inductive Hypothesis $G/N$ has a Sylow $p$-subgroup, say $\bar{S}$, meaning that $\bar{S} \leq G/N$ has order $p^{k-1}$.
-
-%     We now construct the group $S = \{g \in G \vert gN \in \bar{S}\}$ under the group operation of $G$. Clearly $S$ is non-empty since $e \in S$ (as $eN = N \in \bar{S} \leq G/N$). Suppose $g_1, g_2 \in S$, meaning that $g_1N, g_2N \in \bar{S}$. Therefore $(g_1g_2^{-1})N = (g_1N)(g_2N)^{-1} \in \bar{S}$ which implies that $g_1g_2^{-1} \in S$. By the subgroup test, $S \leq G$. Also, $N \leq S$ since for all $n \in N$, $nN = N \in \bar{S}$.
-
-%     We construct the homomorphism $\phi: S \to \bar{S}$ such that $g \mapsto gN$. By construction one sees clearly that $\phi$ is surjective, meaning that $\im \phi = \bar{S}$. Furthermore,
-%     \begin{align*}
-%         \ker\phi &= \{s \in S \vert \phi(s) = N\}\\
-%         &= \{s \in S \vert sN = N \}\\
-%         &= \{s \in S \vert s \in N \}\\
-%         &= S \cap N\\
-%         &= N & (\text{since } N \leq S).
-%     \end{align*}
-%     By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), $S/N \cong \bar{S}$, meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$ which quickly implies that $|S| = p^k$. Hence, there exists a $S \leq G$ such that $|S| = p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
-
-%     We can now start on the second case where $p$ does not divide the order of the center of $G$. We recall the class equation (\textbf{Theorem \ref{thrm-class-equation}})
-%     \[
-%         |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}].
-%     \]
-%     where $g_1, g_2, \dots, g_l$ are representatives of the $l$ distinct conjugacy classes with more than one element. We note that $p$ divides $|G|$. Since $p$ does not divide $|\Z{G}|$ in this case, thus $\sum_{i=1}^l [G:\C{G}{g_i}]$ must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then we conclude that $|\C{G}{g_i}| = p^ka$ for some $a$.
-
-%     We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly $a \leq m$ since if $a > m$ then $\frac{p^k m}{|\C{G}{g_i}|}$ is not an integer. If instead $a = m$ then $|\C{G}{g_i}| = p^km = |G|$, and since $\C{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \C{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \Z{G}$. But an element is in $\Z{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
-
-%     In summary, $\C{G}{g_i} \leq G$ with $|\C{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the Induction Hypothesis on $\C{G}{g_i}$ to say that $\C{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\C{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
-
-%     Therefore, any finite group $G$ with order written as $p^k m$ has a Sylow $p$-subgroup, meaning that $\Syl{p}{G} \neq \emptyset$.
-% \end{proof}
-
-% \begin{exercise}
-%     Find the set of primes $p$ such that $\Syl{p}{\Sn{5}} \neq \emptyset$.
-% \end{exercise}
-
-% \section{Conjugate Subgroup}
-% Before we look at the next Sylow theorem, we need to introduce two more things. The first is the notion of the \textbf{conjugate subgroup}.
-% \begin{definition}
-%     Let $G$ be a group, $H \leq G$, and $g \in G$. Then the \textbf{conjugate subgroup of $H$ by $g$} is
-%     \[
-%         gHg^{-1} = \{ghg^{-1} \vert h \in H\}.
-%     \]
-%     under the group operation of $G$.
-% \end{definition}
-% We proved that $gHg^{-1}$ is a subgroup of $G$ in \textbf{Exercise \ref{exercise-conjugate-subgroup}}.
-
-% \begin{exercise}\label{exercise-conjugate-subgroup-isomorphic-to-subgroup}
-%     Let $G$ be a group and $H \leq G$. Prove that $gHg^{-1} \cong H$ for any $g \in G$.
-% \end{exercise}
-
-% We prove some results regarding the conjugate subgroup here.
-% \begin{proposition}\label{prop-power-of-conjugate-equals-conjugate-of-power}
-%     Let $G$ be a group, and let $x$ and $y$ be elements in $G$ such that there exists an element $a \in G$ such that $y = axa^{-1}$. Then $y^n = ax^na^{-1}$ for all integers $n$.
-% \end{proposition}
-% \begin{proof}
-%     Trivially, when $n = 0$, $y^0 = e = y^0 = x^0 = ax^0a^{-1}$.
-
-%     We consider a proof by induction for positive integers $n$ and then prove the negative case.
-
-%     When $n = 1$, $y = axa^{-1}$ is given. Now assume $n = k$ holds true for some positive integer $k$, meaning that $y^k = ax^ka^{-1}$. We will prove that $y^{k+1} = ax^{k+1}a^{-1}$.
-%     \begin{align*}
-%         y^{k+1} &= y(y^k)\\
-%         &= (axa^{-1})(ax^ka^{-1}) & (\text{Induction Hypothesis})\\
-%         &= axa^{-1}ax^ka^{-1}\\
-%         &= axx^ka^{-1}\\
-%         &= ax^{k+1}a^{-1}
-%     \end{align*}
-%     which completes this induction for positive integers $n$.
-
-%     Now suppose $n$ is a non-negative integer. Then
-%     \begin{align*}
-%         y^{-n} &= (y^n)^{-1}\\
-%         &= (ax^na^{-1})^{-1} & (\text{by above result})\\
-%         &= a(x^n)^{-1}a^{-1}\\
-%         &= ax^{-n}a^{-1}
-%     \end{align*}
-%     which completes the proof for all integers.
-% \end{proof}
-
-% \begin{proposition}\label{prop-order-of-conjugate-element equals-order-of-element}
-%     Let $G$ be a group. Then for all $g, x \in G$, we have $|gxg^{-1}| = |x|$.
-% \end{proposition}
-% \begin{proof}
-%     The proposition trivially holds true for $g = e$ so we assume $g \neq e$.
-
-%     Suppose $|x| = n$, meaning $x^n = e$ and $x^k \neq e$ for all $1 \leq k < n$. Note we have
-%     \begin{align*}
-%         (gxg^{-1})^n  &= gx^ng^{-1} & (\textbf{Proposition \ref{prop-power-of-conjugate-equals-conjugate-of-power}})\\
-%         &= geg^{-1} & (\text{since } |x| = n)\\
-%         &= e
-%     \end{align*}
-%     which means that $|gxg^{-1}| \leq n = |x|$.
-
-%     Now consider $(gxg^{-1})^k = gx^kg^{-1}$. Suppose $k$ is a positive integer such that $x^k = h$ where $h \neq e$. Then $gx^kg^{-1} = ghg^{-1}$. We argue that $ghg^{-1} \neq e$.
-%     \begin{itemize}
-%         \item If $gh = e$ then $gx^kg^{-1} = g^{-1} \neq e$ since $g \neq e$.
-%         \item If instead $hg^{-1} = e$ then $gx^kg^{-1} = g \neq e$.
-%     \end{itemize}
-%     Hence, if $x^k \neq e$, then $(gxg^{-1})^k = gx^kg^{-1} \neq e$, meaning that $|x| \leq |gxg^{-1}|$.
-
-%     Therefore $|gxg^{-1}| = |x|$.
-% \end{proof}
-
-% \begin{exercise}
-%     Prove that for any group $G$, $|gh| = |hg|$ for all $g, h \in G$.
-% \end{exercise}
-
-% We note an important result with regards to the conjugate subgroup.
-% \begin{theorem}\label{thrm-unique-subgroup-of-given-order-is-normal}
-%     Let $G$ be a group. Suppose $H$ is the only subgroup of $G$ with a given order. Then $H \lhd G$.
-% \end{theorem}
-% \begin{proof}
-%     Suppose $g \in G$. By \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} we know $gHg^{-1} \cong H$ which means that $|gHg^{-1}| = |H|$. Furthermore, by \textbf{Exercise \ref{exercise-conjugate-subgroup}} we know that $gHg^{-1} \leq G$. Since $H$ is the only subgroup of that order (by assumption), we conclude that $gHg^{-1} = H$, which quickly means that $H \lhd G$ by definition of a normal subgroup.
-% \end{proof}
-
-% \section{The Normalizer}
-% We now look at the definition of the \textbf{normalizer}.
-% \begin{definition}
-%     Let $G$ be a group and $S$ be a subset of $G$. The \textbf{normalizer of $S$ in $G$} is given by
-%     \[
-%         \N{G}{S} = \{g \in G \vert gS = Sg \}.
-%     \]
-% \end{definition}
-% \begin{remark}
-%     Equivalently, $\N{G}{S} = \{g \in G \vert gSg^{-1} = S \}$.
-% \end{remark}
-% \begin{exercise}\label{exercise-normalizer-is-subgroup-of-main-group}
-%     Let $G$ be a group and $S$ be a subset of $G$. Prove that $\N{G}{S} \leq G$.
-% \end{exercise}
-
-% We prove some properties of the normalizer here.
-% \begin{proposition}\label{prop-subgroup-is-a-normal-subgroup-of-normalizer}
-%     Let $G$ be a group, and $H \leq G$. Then $H \lhd \N{G}{H}$.
-% \end{proposition}
-% \begin{proof}
-%     We first prove $H \leq \N{G}{H}$ and then prove normality.
-
-%     We know that both $H$ and $\N{G}{H}$ are subgroups of $G$, so both are groups. We just need to check that $H \subseteq \N{G}{H}$ to prove that $H \leq \N{G}{H}$.
-
-%     Consider any $h \in H$. We note that $hH = H$ and $Hh^{-1} = H$ since $h^{-1} \in H$. Thus, if $h \in H$, then
-%     \[
-%         hHh^{-1} = h(Hh^{-1}) = hH = H
-%     \]
-%     which means that $h \in \N{G}{H}$ by definition of the normalizer. Hence any element in $H$ is also an element of $\N{G}{H}$, meaning $H \subseteq \N{G}{H}$.
-
-%     It follows then that $H \leq \N{G}{H}$ since $H \subseteq \N{G}{H}$ and $H$ is a group.
-
-%     Now we prove normality. Consider any $n \in \N{G}{H}$, which means that $nHn^{-1} = H$. This immediately implies that $H \lhd \N{G}{H}$.
-% \end{proof}
-% \begin{remark}
-%     Combining the results from \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}} and \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} means that $H \lhd \N{G}{H} \leq G$.
-% \end{remark}
-
-% \begin{proposition}\label{prop-normalizer-of-subgroup-is-largest-subgroup-containing-that-subgroup-as-a-normal-subgroup}
-%     Let $G$ be a group, and $H \leq G$. Then $\N{G}{H}$ is the largest subgroup of $G$ containing $H$ as a normal subgroup.
-% \end{proposition}
-% \begin{remark}
-%     What we mean by ``largest'' here is that if there was another subgroup of $G$, say $K$, that permits $H \lhd K$, then it must be the case that $K \subseteq \N{G}{H}$.
-% \end{remark}
-% \begin{proof}
-%     By \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} we know that $H \lhd \N{G}{H}$. We just need to prove that any subgroup in which $H$ is normal inside it must be a subset of $\N{G}{H}$.
-
-%     Consider any subgroup $N \leq G$ such that $H \lhd N \leq G$. Then for any $n \in N$ we have $nHn^{-1} = H$ by definition of normality, which immediately means that $n \in \N{G}{H}$ by definition of the normalizer of $H$ in $G$. Hence any element in $N$ also belongs in $\N{G}{H}$, meaning $N \subseteq \N{G}{H}$.
-
-%     This completes the proof that $\N{G}{H}$ is the largest subgroup of $G$ that contains $H$ as a normal subgroup.
-% \end{proof}
-
-% \begin{proposition}\label{prop-normalizer-of-sylow-p-subgroup}
-%     Let $G$ be a finite group. Let $P$ be a Sylow $p$-subgroup of $G$, and $Q$ be a $p$-subgroup of $\N{G}{P}$. Then $Q \subseteq P$. In particular, if $Q$ is a Sylow $p$-subgroup of $\N{G}{P}$, then $P = Q$.
-% \end{proposition}
-% \begin{proof}[Proof (see {\cite[Proposition 11.9]{humphreys_1996}})]
-%     For brevity, write the order of $G$ as $xp^n$ where $p \nmid x$, $|P| = p^n$, and $|Q| = p^m$.
-
-%     Recall by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we have $PQ \leq \N{G}{P}$ since $P \lhd \N{G}{P}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \textbf{Exercise \ref{exercise-order-of-subgroup-product}},
-%     \[
-%         |PQ| = \frac{|P||Q|}{|P \cap Q|} = p^{n+m-s}
-%     \]
-%     where we define $|P \cap Q| = p^s$. By Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) we know that $|G| = a|PQ|$ so $p^n = ap^{n+m-s}$ which implies $1 = ap^{m-s}$. Since $a$ is a positive integer, thus $p^{m-s} = \frac 1a$ which means $m \leq s$.
-
-%     We note by \textbf{Problem \ref{problem-intersection-of-subgroups}}, $P \cap Q \leq Q$, meaning $|Q| = b|P\cap Q|$ by Lagrange's Theorem. Thus $p^m = bp^s$ which implies $p^{m-s} = b \geq 1$ so $m \geq s$.
-
-%     Hence $m = s$ which means $|P \cap Q| = |Q|$, i.e. $P \cap Q = Q$. Therefore $Q \subseteq P$ which is the first part of the proposition proved.
-
-%     Now suppose $Q$ is, in particular, a Sylow $p$-subgroup of $\N{G}{P}$. Since $\N{G}{P} \leq G$ by \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}}, one concludes that $|G| = y|\N{G}{P}|$ by Lagrange's Theorem. Hence $xp^n = y|\N{G}{P}|$ which implies $|\N{G}{P}| = \frac{x}{y} p^n = zp^n$ where $z = \frac xy$ and one observes $p \nmid z$. Therefore, if $Q$ is a Sylow $p$-subgroup, then $|Q| = p^n = |P|$ which implies $P = Q$ as $Q \subseteq P$.
-% \end{proof}
-
-% \section{Second Sylow Theorem}
-% We can now look at the \textbf{Second Sylow Theorem}.
-% \begin{theorem}[Sylow II]\label{thrm-sylow-2}
-%     Let $G$ be a finite group and $p$ be a prime number. Suppose $H$ and $K$ are both Sylow $p$-subgroups of $G$. Then there exists an element $g \in G$ such that $gHg^{-1} = K$.
-% \end{theorem}
-% \begin{proof}[Proof (see {\cite[Theorem 11.10]{humphreys_1996}} and {\cite[pp.~3--5]{mann_2011}})]
-%     Let $H$ be a Sylow $p$-subgroup of $G$. Define the set
-%     \[
-%         \mathcal{X} = \{gHg^{-1} \vert g \in G\}
-%     \]
-%     and denote an element from $\mathcal{X}$ by $X$.
-
-%     Let the Sylow $p$-subgroup $H$ act on $\mathcal{X}$ by conjugation, meaning $h \cdot X = hXh^{-1}$. We prove that this is, in fact, a group action.
-    
-%     \begin{itemize}
-%         \item \textbf{Closure}: We have to prove closure because it is not implicit in the definition of this action.
-
-%         Let $X = gHg^{-1}$ for some $g \in G$. Then
-%         \[
-%             h\cdot X = hHh^{-1} = hgHg^{-1}h^{-1} = (hg)H(hg)^{-1}.
-%         \]
-%         Since $h \in H \leq G$, then $hg \in G$, which thus means that $h \cdot X = (hg)H(hg)^{-1} \in \mathcal{X}$.
-%         \item \textbf{Identity}: $e \cdot X = eXe^{-1} = X$.
-%         \item \textbf{Compatibility}: Let $h_1, h_2 \in H$. Then
-%         \begin{align*}
-%             h_1 \cdot (h_2 \cdot X) &= h_1 \cdot (h_2Xh_2^{-1})\\
-%             &= h_1h_2Xh_2^{-1}h_1^{-1}\\
-%             &= (h_1h_2)X(h_1h_2)^{-1}\\
-%             &= (h_1h_2) \cdot X.
-%         \end{align*}
-%     \end{itemize}
-
-%     We consider the orbits of this group action. We note that $\Orb{H}{H} = \{X \in \mathcal{X} \vert h \cdot H = H \text{ for some } h \in H\}$ and $h\cdot H = hHh^{-1} = P$ since $h \in H$. Thus $\Orb{H}{H} = \{H\}$, meaning $|\Orb{H}{H}| = 1$. We now show that $X = H$ is the only element in $\mathcal{X}$ such that $|\Orb{H}{X}| = 1$. If $X$ has one element in its orbit, then for all $h \in H$, $h\cdot X = hXh^{-1} = X$. Since $X = gHg^{-1}$ for some $g$, thus
-%     \begin{align*}
-%         &h(gHg^{-1})h^{-1} = gHg^{-1}\\
-%         \iff&hgHg^{-1} = gHg^{-1}h\\
-%         \iff&hgH = gHg^{-1}hg\\
-%         \iff&(g^{-1}hg)H = H(g^{-1}hg)\\
-%         \iff&g^{-1}hg \in \N{G}{H}.
-%     \end{align*}
-%     By \textbf{Proposition \ref{prop-order-of-conjugate-element equals-order-of-element}}, $|g^{-1}hg| = |h|$, and since the order of $H$ is $p^k$, thus for all elements $g^{-1}hg \in X$, they have order $p^k$. By definition of a $p$-group, one sees that $g^{-1}Hg$ is a $p$-subgroup of $\N{G}{H}$. Now clearly $g^{-1}Hg \cong H$ (by making the substitution $h = g^{-1}$ and then using \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} result) which means that $g^{-1}Hg$ has the same number of elements as $H$. Hence, $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Therefore by \textbf{Proposition \ref{prop-normalizer-of-sylow-p-subgroup}},  $H = g^{-1}Hg$, which means $X = gHg^{-1} = H$. Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, by Orbit-Stabilizer Theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}), one sees that
-%     \[
-%         |\Stab{H}{gHg^{-1}}| = \frac{|H|}{|\Orb{H}{gHg^{-1}}|}
-%     \]
-%     and since $|H|$ is a power of $p$ and $|\Stab{H}{gHg^{-1}}|$ is an integer, thus $|\Orb{H}{gHg^{-1}}|$ has to be a power of $p$, meaning $|\Orb{H}{gHg^{-1}}| \equiv 0 \pmod p$. Because distinct orbits partition $\mathcal{X}$ (\textbf{Exercise \ref{exercise-distinct-orbits-partition-set}}), thus $|\mathcal{X}| \equiv 1 \pmod p$.
-
-%     Now let the Sylow $p$-subgroup $K$ act on $\mathcal{X}$ by conjugation, meaning $k \star X = kXk^{-1}$. This is a group action as proven before, and the above conclusion means that there is at least one orbit of length 1. Hence there exists a $g \in G$ such that for all $k \in K$, we have $k(gHg^{-1})k^{-1} = gHg^{-1}$. Hence $g^{-1}kg \in \N{G}{H}$ which means $g^{-1}Kg \subset \N{G}{H}$. Therefore, since $|K| = |g^{-1}Kg|$ and by \textbf{Proposition \ref{prop-normalizer-of-sylow-p-subgroup}}, $g^{-1}Kg \subseteq H$, meaning $K \subseteq gHg^{-1}$. But because $|H| = |K|$ as they are both Sylow $p$-subgroups, therefore $K = gHg^{-1}$.
-% \end{proof}
-% \begin{remark}
-%     What part of this proof shows is that if $P$ is a Sylow $p$-subgroup but $Q$ is only a $p$-subgroup, then $Q \subseteq gPg^{-1}$ for some $g \in G$.
-% \end{remark}
-
-% We note one important corollary of the Second Sylow Theorem.
-% \begin{corollary-thrm}\label{corollary-sylow-subgroup-is-normal-if-it-is-unique}
-%     Let $G$ be a finite group and $P$ be a Sylow $p$-subgroup for some prime $p$. Then $P$ is a normal subgroup of $G$ if and only if $P$ is the only Sylow $p$-subgroup of $G$.
-% \end{corollary-thrm}
-% \begin{proof}
-%     The reverse direction is easy to prove. Since $P$ is the only Sylow $p$-subgroup of $G$, this means that $P$ is the only subgroup of order $p^k$. By \textbf{Theorem \ref{thrm-unique-subgroup-of-given-order-is-normal}}, this means that $P \lhd G$.
-
-%     We work on the forward direction now and suppose $P$ is a normal subgroup of $G$. Let $\hat{P}$ be a normal Sylow $p$-subgroup. By the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}), there exists $g \in G$ such that $g\hat{P}g^{-1} = P$. But since $\hat{P}$ is normal, thus $g^{-1}\hat{P}g = \hat{P}$ by definition of normality. Hence, $P = \hat{P}$, meaning that there is only one Sylow $p$-subgroup.
-% \end{proof}
-
-% \begin{exercise}
-%     Let $G$ be a finite group, $p$ be a prime number, and $H$ and $K$ be distinct Sylow $p$-subgroups of $G$. Prove that $H \cong K$.
-% \end{exercise}
-
-% \section{Third Sylow Theorem}
-% We now state and prove the \textbf{Third Sylow Theorem}.
-% \begin{theorem}[Sylow III]\label{thrm-sylow-3}
-%     Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. Let $n_p$ denote the number of Sylow $p$-subgroups in $G$, i.e. $n_p = |\Syl{p}{G}|$. Then,
-%     \begin{enumerate}
-%         \item $n_p = [G:\N{G}{P}]$, where $P$ is a Sylow $p$-subgroup of $G$;
-%         \item $n_p$ divides $m$; and
-%         \item $n_p \equiv 1 \pmod p$.
-%     \end{enumerate}
-% \end{theorem}
-% \begin{proof}[Proof (adapted from \cite{wielandt_1959})]
-%     We prove the three statements in order.
-%     \begin{enumerate}
-%         \item Let $G$ act on $\Syl{p}{G}$ by conjugation, meaning that for any $g \in G$ and $P \in \Syl{p}{G}$, $g\cdot P = gPg^{-1}$. By the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}), all Sylow $p$-subgroups are conjugates of each other, so the orbit of any $P \in \Syl{p}{G}$ is the set of all Sylow $p$-subgroups, meaning $|\Orb{G}{P}| = |\Syl{p}{G}| = n_p$. Now consider $\Stab{G}{P}$; note
-%         \[
-%             \Stab{G}{P} = \{g \in G \vert gPg^{-1} = P\} = \N{G}{P}
-%         \]
-%         by definition of the normalizer. By the Orbit-Stabilizer Theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}),
-%         \[
-%             n_p = |\Orb{G}{P}| = \frac{|G|}{|\Stab{G}{P}|} = \frac{|G|}{|\N{G}{P}|} = [G : \N{G}{P}]
-%         \]
-%         by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) and we are done.
-
-%         \item Let $P$ be a Sylow $p$-subgroup. We recall that $P \lhd \N{G}{P} \leq G$. Note that by Lagrange's Theorem we know $|\N{G}{P}| = [\N{G}{P} : P]|P| = ap^k$ where $a \leq m$ (since $\N{G}{P} \leq G$). Furthermore
-%         \[
-%             mp^k = |G| = [G: \N{G}{P}]|\N{G}{P}| = n_p(ap^k)
-%         \]
-%         which means $m = an_p$. In other words, $n_p$ divides $m$.
-
-%         \item Let $H$ be a Sylow $p$-subgroup and let it act on $\Syl{p}{G}$ by conjugation, meaning that for any $h \in H$ and $P \in \Syl{p}{G}$, $h \cdot P = hPh^{-1}$. Let $\Omega$ denote the set of fixed points of $\Syl{p}{G}$ under this action.
-
-%         Suppose $Q \in \Omega$, which means that $hQh^{-1} = Q$ for all $h \in H$. Thus $H \subseteq \N{G}{Q}$ as $\N{G}{Q} = \{g \in G \vert gQg^{-1} = Q\}$. In fact, since $H$ is a Sylow $p$-subgroup, $H \leq \N{G}{Q}$. We note $Q \lhd \N{G}{Q}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. Hence $H$ and $Q$ are Sylow $p$-subgroups of $\N{G}{Q}$, which means there exists $n \in \N{G}{Q}$ such that $nQn^{-1} = H$ by the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}). Furthermore $nQn^{-1} = Q$ since $Q \lhd \N{G}{Q}$. Hence $Q = H$ which means that the only element in $\Omega$ is $H$.
-
-%         By a similar argument posed in the proof of the Second Sylow Theorem, for any $Q \in \Syl{p}{G}$ where $Q \neq H$ we must have $|\Orb{H}{Q}| \equiv 0 \pmod p$. Note $|\Orb{H}{H}| = 1$. Now since distinct orbits partition $\Syl{p}{G}$, we must have $n_p = |\Syl{p}{G}| \equiv 1 \pmod p$.
-%     \end{enumerate}
-%     This completes the proof of the Third Sylow Theorem.
-% \end{proof}
-
-% \begin{example}
-%     We will show that a group of order 4225 is abelian by using the Third Sylow Theorem and other results.
-
-%     Note that $4225 = 5^2 \times 13^2$. Let $G$ be a group of order 4225. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), we know that
-%     \begin{itemize}
-%         \item $n_5 \mid 13^2 = 169$ and $n_{13} \mid 5^2 = 25$, which means $n_5 \in \{1, 13, 169\}$ and $n_{13} \in \{1, 5, 25\}$; and
-%         \item $n_5 \equiv 1 \pmod 5$ and $n_{13} \equiv 1 \pmod{13}$, which means $n_5 \in \{1, 6, 11, \dots\}$ and $n_{13} \in \{1, 14, 27, \dots\}$.
-%     \end{itemize}
-%     Hence, $n_5 = 1$ and $n_{13} = 1$, meaning that there is only one Sylow 5-subgroup and one Sylow 13-subgroup.
-
-%     Let $P$ be the Sylow 5-subgroup and $Q$ be the Sylow 13-subgroup. By \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}, $P \lhd G$ and $Q \lhd G$, so $pq = qp$ for any $p \in P$ and $q \in Q$. Furthermore, by \textbf{Problem \ref{problem-intersection-of-coprime-subgroups}}, $P \cap Q = \{e\}$. Finally, notice that
-%     \[
-%         |PQ| = \frac{|P||Q|}{|P\cap Q|} = |P||Q| = 5^2\times13^2 = |G|
-%     \]
-%     which means that $PQ$ and $G$ have the same number of elements. Hence, $G$ is the internal direct product of $P$ and $Q$. We note that
-%     \[
-%         G = PQ \cong P\times Q
-%     \]
-%     by direct product equivalence (\textbf{Theorem \ref{thrm-direct-product-equivilance}}). In addition, since $P$ and $Q$ are groups of prime-squared order, they are abelian (\textbf{Problem \ref{problem-group-of-order-prime-squared-is-abelian}}), meaning that their external direct product $P\times Q$ is also abelian (\textbf{Problem \ref{problem-external-direct-product-of-abelian-groups-is-abelian}}). Hence $G$ is also abelian since $G \cong P \times Q$.
-% \end{example}
-
-% \begin{exercise}
-%     Let $G$ be a group of order 784, and let $P$ be a Sylow 7-subgroup that is \textbf{not} a normal subgroup of $G$. Find the order of $\N{G}{P}$.
-% \end{exercise}
-
-% \section{Testing Non-Simplicity Of Groups}
-% To end this chapter, we look at the idea of \textbf{simple groups} and devise a test to prove the non-simplicity of groups.
-% \begin{definition}
-%     Let $G$ be a non-trivial group. Then $G$ is \textbf{simple} if the only normal subgroups of $G$ are the identity and $G$ itself.
-% \end{definition}
-% \begin{remark}
-%     Equivalently, $G$ is simple if $G$ has no proper normal subgroups.
-% \end{remark}
-
-% We may use part of the Third Sylow Theorem to create a test for non-simplicity.
-% \begin{theorem}[Sylow's Test]
-%     Let $n$ be a non-prime integer and let $p$ be a prime divisor of $n$. If 1 is the only divisor of $n$ that is congruent 1 modulo $p$, then there does not exist a simple group of order $n$.
-% \end{theorem}
-% \begin{proof}
-%     We first suppose $n = p^k$ where $k > 1$. Let $G$ be a group of order $n$. We consider two cases.
-%     \begin{itemize}
-%         \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\textbf{Exercise \ref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\textbf{Propopsition \ref{prop-subgroup-of-abelian-group-is-normal}}), thus there exists a proper normal subgroup of $G$, meaning $G$ is non-simple.
-%         \item Suppose now $G$ is non-abelian. By \textbf{Example \ref{example-group-with-prime-power-order-has-non-trivial-center}}, $G$ has a non-trivial center. Furthermore, $G \neq \Z{G}$ because $G$ is non-abelian (\textbf{Problem \ref{problem-center-of-G}}). Since the center is a normal subgroup of $G$, it is thus a proper normal subgroup of $G$, meaning $G$ is non-simple.
-%     \end{itemize}
-%     Hence any group of order $p^k$ where $k > 1$ is non-simple.
-
-%     Now suppose $n$ is not a prime power. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), the number of Sylow $p$-subgroups, $n_p$, is congruent to 1 modulo $p$ and divides $n$. Since 1 is the only such number by our assumption, thus $n_p = 1$, meaning that there is only one Sylow $p$-subgroup. By \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}} this means that that Sylow $p$-subgroup (which is non-trivial) is normal, which thus means that any group of order $n$ is non-simple.
-% \end{proof}
-% \begin{example}
-%     Consider a group with order 15. Note $15 = 3 \times 5$, and consider $p = 5$. The divisors of 15 are 1, 3, 5, and 15, and clearly only 1 is congruent to 1 modulo 5. Hence by Sylow's Test we know that a group of order 15 cannot be simple.
-% \end{example}
-
-% For some groups of orders that do not satisfy the condition in Sylow's Test, we can still can prove that they cannot be simple.
-
-% \begin{example}
-%     We will show that a group of order 2552 is non-simple.
-
-%     We note first that $2552 = 2^3 \times 11 \times 29$. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), we know $n_p \mid m$ and $n_p \equiv 1 \pmod p$.
-
-%     The divisors of the $m$ given the following primes are listed below.
-%     \begin{itemize}
-%         \item $p = 2$: $m = 319$ and so divisors are $\{1. 11, 29, 319\}$.
-%         \item $p = 11$: $m = 232$ and so divisors are $\{1, 2, 4, 8, 29, 58, 116, 232\}$.
-%         \item $p = 29$: $m = 88$ and so divisors are $\{1, 2, 4, 8, 11, 22, 44, 88\}$.
-%     \end{itemize}
-%     Thus, since $n_p \equiv 1 \pmod p$, we must have $n_2 \in \{1, 11, 29, 319\}$, $n_{11} \in \{1, 232\}$, and $n_{29} \in \{1, 88\}$.
-
-%     Suppose first that all $n_2, n_{11}, n_{29}$ are not equal to 1. Then $n_{11} = 232$ and $n_{29} = 88$. Recall that one element in a Sylow $p$-subgroup has order 1 (i.e., the identity). Thus, the number of elements of order 11 is $232 \times (11 - 1) = 2320$ and the number of elements of order 29 is $88 \times (29 - 1) = 2464$. Hence, the total number of elements in the group of order 2552 must be at least $2320 + 2464 = 4764$, a contradiction.
-
-%     Hence, we conclude that at least one of $n_2, n_{11}, n_{29}$ must be 1, meaning that there is a non-trivial normal subgroup, which therefore means that any group of order 2552 is non-simple.
-% \end{example}
-
-% \begin{example}\label{example-using-kernel-to-show-non-simple}
-%     We show that any group of order 36 is non-simple by considering the kernel of a homomorphism.
-
-%     We note $36 = 2^2 \times 3^2$. Let $G$ be a group of order 36 and let $P$ be a Sylow 3-subgroup of the group of order 36. Let $G$ act on the set of cosets $G/P$ by left multiplication, meaning $g \cdot xP = (gx)P$. Then by \textbf{Theorem \ref{thrm-group-action-definition-equivalence}} this induces a homomorphism $\phi: G \to \Sn{4}$ since there are 4 cosets in $G/P$. We note $\phi(g) = \sigma_g$ where $\sigma_g(xP) = g\cdot xP = (gx)P$.
-
-%     We consider the kernel of $\phi$.
-%     \begin{align*}
-%         \ker\phi &= \{g \in G \vert \phi(g) = \id\}\\
-%         &= \{g \in G \vert \sigma_g = \id\}\\
-%         &= \{g \in G \vert \sigma_g(xP) = xP \text{ for all } x \in G\}\\
-%         &= \{g \in G \vert (gx)P = xP \text{ for all } x \in G\}\\
-%         &= \{g \in G \vert x^{-1}gx \in P \text{ for all } x \in G\} & (\text{by Coset Equality})\\
-%         &= \{g \in G \vert g \in xPx^{-1} \text{ for all } x \in G\}\\
-%         &= \bigcap_{x \in G} xPx^{-1}.
-%     \end{align*}
-%     We note that $\ker\phi \neq \{e\}$ since that would imply that $\phi$ is injective (\textbf{Exercise \ref{exercise-trivial-kernel-means-injective}}), which would mean $36 = |G| \leq |\Sn{4}| = 4! = 24$. We also note $\ker\phi \neq G$ otherwise
-%     \[
-%         36 = |G| = |\ker\phi| = \left|\bigcap_{x \in G} xPx^{-1}\right| \leq |xPx^{-1}| = |P| = 9,
-%     \]
-%     a contradiction. Hence $\ker\phi$ is a proper subgroup of $G$. We note that $\ker\phi \lhd G$, so we have found a proper normal subgroup of $G$, meaning that $G$ is non-simple.
-% \end{example}
-
-% \begin{exercise}
-%     Show that any group of order $130$ is non-simple.
-% \end{exercise}
-
-% \section{Problems}
-% \begin{problem}
-%     Show that a group of order 200 has a normal Sylow 5-subgroup.
-% \end{problem}
-
-% \begin{problem}
-%     Show that any Sylow $p$-subgroup of a group of order 33 must be normal.
-% \end{problem}
-
-% \begin{problem}
-%     A perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself. All even perfect numbers are of the form $2^{p-1}\left(2^p-1\right)$ where both $p$ and $2^p-1$ are primes. Prove that any group with an order that is an even perfect number is not simple.
-% \end{problem}
-
-% \begin{problem}\label{problem-group-of-order-pq-has-normal-subgroup-of-order-q}
-%     Let $p$ and $q$ be primes such that $p < q$. Let $G$ be a group of order $pq$.
-%     \begin{enumerate}[label=(\roman*)]
-%         \item Prove that there is only one subgroup $H$ of $G$ of order $q$. Deduce that $H \lhd G$.
-%         \item Prove also that if $q \not\equiv 1 \pmod p$ then $G$ is cyclic.
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}
-%     Show that any group of order 3325 is abelian.
-% \end{problem}
-
-% \begin{problem}\label{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}
-%     Let $G$ be a finite group, and write the order of $G$ as $p^km$ where $k \geq 0$ and $p \nmid m$. Let $N \lhd G$ such that $p$ does not divide the index of $N$ in $G$.
-%     \begin{enumerate}[label=(\roman*)]
-%         \item Prove that any Sylow $p$-subgroup of $N$ is also in $G$.
-%         \item Prove that any Sylow $p$-subgroup of $G$ is also in $N$.
-%     \end{enumerate}
-% \end{problem}
-
-% \begin{problem}\label{problem-if-m!<|G|-then-G-is-simple}
-%     Let $G$ be a finite group such that $|G| = p^km$ where $k \geq 1$, $m > 1$, and $p \nmid m$. Prove that if $m! < |G|$ then $G$ is non-simple.
-% \end{problem}
-
-% \begin{problem}\label{problem-group-of-order-30-has-normal-subgroup-of-order-5}
-%     Prove that a group of order 30 has a normal subgroup of order 5.
-% \end{problem}
-
-% \begin{problem}\label{problem-group-of-order-pqr-is-non-simple}
-%     Let $p, q$, and $r$ be distinct primes such that $p < q < r$. Let $G$ be a group of order $pqr$. Prove that $G$ is non-simple.\newline
-%     (\textit{Hint: show that a normal subgroup of order $p$, $q$, or $r$ must exist.})
-% \end{problem}
 
 % %=========================================
 % \chapter{Composition Series}
@@ -5737,7 +5759,7 @@ To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
 %     \end{itemize}
 %     Hence $H \cong gHg^{-1}$.
 
-%     \item By \textbf{Proposition \ref{prop-order-of-conjugate-element equals-order-of-element}} we know that $|xyx^{-1}| = |y|$ for all $x, y \in G$. Substitute $x = g, y = hg$ yields
+%     \item By \textbf{Proposition \ref{prop-order-of-conjugate-element-equals-order-of-element}} we know that $|xyx^{-1}| = |y|$ for all $x, y \in G$. Substitute $x = g, y = hg$ yields
 %     \[
 %         |xyx^{-1}| = |ghgg^{-1}| = |gh|, |y| = |hg|
 %     \]
