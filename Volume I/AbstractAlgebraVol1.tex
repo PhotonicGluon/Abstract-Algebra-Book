@@ -1476,7 +1476,7 @@ For brevity, we also have notation regarding the integers under addition.
 \begin{theorem}
     If $G$ is an infinite cyclic group with generator $g$, then $G \cong \mathbb{Z}$.
 \end{theorem}
-\begin{proof}[Proof (see \cite{proofwiki_infinitecyclicgrp}, and {\cite[\S 3.4 Theorem 1]{cohn_1982}})]
+\begin{proof}[Proof (see \cite{proofwiki_infinitecyclicgrp})]
     Consider the map $\phi: \mathbb{Z} \to G$ such that $\phi(n) = g^n$. We need to prove that $\phi$ is an isomorphism.
     \begin{itemize}
         \item \textbf{Homomorphism}:
@@ -2077,7 +2077,7 @@ Before we look at the internal direct product, we look at the \textbf{subgroup p
     \end{align*}
     since $HK \leq G$ so the inverse of any element is in $HK$. Therefore any element in $KH$ is also in $HK$, meaning that $KH \subseteq HK$. Now take an arbitrary $hk \in HK$. Note that $k^{-1}h^{-1} = (hk)^{-1} \in HK$, so set $k^{-1}h^{-1} = \hat{h}\hat{k}$ for some $\hat{h} \in H$ and $\hat{k} \in K$. Hence $hk = \left(k^{-1}h^{-1}\right)^{-1} = \hat{k}^{-1}\hat{h}^{-1} \in KH$, meaning $HK \subseteq KH$. Therefore $HK = KH$ as needed.
 
-    We now prove the reverse direction; assume that $HK = KH$. Clearly $e \in HK$ since $e \in H$ and $e \in K$. Now suppose $h_1k_1, h_2k_2 \in HK$. We note
+    We now prove the reverse direction; assume that $HK = KH$. Clearly $e \in HK$ since $e \in H$ and $e \in K$. Now suppose $h_1k_1$ and $h_2k_2$ are in $HK$. We note
     \begin{align*}
         (h_1k_1)(h_2k_2)^{-1} &= h_1k_1k_2^{-1}h_2^{-1}\\
         &= h_1(\underbrace{k_1k_2^{-1}h_2^{-1}}_{\text{In } KH = HK})\\
@@ -2303,14 +2303,7 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
 \begin{proof}[Proof (cf. {\cite[p.~250, Theorem 2]{cohn_1982}})]
     We know by \textbf{Proposition \ref{prop-image-is-subgroup-of-codomain}} that $\im\phi \leq H$. Let $\psi: G/\ker\phi \to \im\phi$ such that $\psi(x\ker\phi) = \phi(x)$. We need to check that $\psi$ is a well-defined isomorphism.
     \begin{itemize}
-        \item \textbf{Well-defined}: Suppose $x\ker\phi = y\ker\phi$ where $x, y \in G$.
-        \begin{align*}
-            &\implies xy^{-1} \in \ker\phi & (\text{Coset Equality, \textbf{Lemma \ref{lemma-coset-equality}}})\\
-            &\implies\phi(xy^{-1}) = e_H & (\text{Definition of kernel})\\
-            &\implies\phi(x)\left(\phi(y)\right)^{-1} = e_H & (\text{Definition of homomorphism})\\
-            &\implies\phi(x) = \phi(y)
-        \end{align*}
-        Thus,
+        \item \textbf{Well-defined}: Suppose $x\ker\phi = y\ker\phi$ where $x, y \in G$. Then $xy^{-1} \in \ker\phi$ by Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}). This means that $\phi(xy^{-1}) = e_H$ by definition of the kernel. Note $\phi(xy^{-1}) = \phi(x)\left(\phi(y)\right)^{-1}$, so we have $\phi(x)\left(\phi(y)\right)^{-1} = e_H$. Hence $\phi(x) = \phi(y)$. Thus,
         \[
             \psi(x\ker\phi) = \phi(x) = \phi(y) = \psi(y\ker\phi)
         \]
@@ -3409,11 +3402,11 @@ For brevity, let $\mathbb{R}^\times$ be the group of non-zero real numbers under
 	    \end{align*}
 	    by definition of the group $\SL{n}{\mathbb{R}}$.
 	\end{itemize}
-	By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), we have
+	The Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) tells us that
 	\[
-	    \GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times,
+	    \GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times
 	\]
-	proving the claim.
+	which proves the claim.
 \end{proof}
 
 \section{Automorphism Groups}
@@ -4186,7 +4179,7 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
         &= S \cap N\\
         &= N & (\text{since } N \subseteq S).
     \end{align*}
-    By the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), $S/N \cong \bar{S}$, meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$, which quickly implies that $|S| = p^k$. Hence, there exists a subgroup $S$ such that $|S| = p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
+    Now we know that $S/N \cong \bar{S}$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}), meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$, which quickly implies that $|S| = p^k$. Hence, there exists a subgroup $S$ such that $|S| = p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
 
     We can now start on the second case where $p$ does not divide the order of the center of $G$. Recall the class equation (\textbf{Theorem \ref{thrm-class-equation}})
     \[
@@ -4318,7 +4311,7 @@ We prove some properties of the normalizer here.
     Now we prove normality. Consider any $n \in \N{G}{H}$, which means that $nHn^{-1} = H$. This implies that $H \unlhd \N{G}{H}$.
 \end{proof}
 \begin{remark}
-    Combining the results from \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}} and \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} means that $H \unlhd \N{G}{H} \leq G$.
+    Combining the results from both \textbf{Exercise \ref{exercise-normalizer-is-subgroup-of-main-group}} and \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}} yields $H \unlhd \N{G}{H} \leq G$.
 \end{remark}
 
 \begin{proposition}\label{prop-normalizer-of-subgroup-is-largest-subgroup-containing-that-subgroup-as-a-normal-subgroup}
@@ -4341,7 +4334,7 @@ We prove some properties of the normalizer here.
 \begin{proof}[Proof (see {\cite[Proposition 11.9]{humphreys_1996}})]
     For brevity, write the order of $G$ as $xp^n$ where $p \nmid x$, $|P| = p^n$, and $|Q| = p^m$.
 
-    Recall by the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we have $PQ \leq \N{G}{P}$ since $P \unlhd \N{G}{P}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \textbf{Exercise \ref{exercise-order-of-subgroup-product}},
+    By the Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 3, we have $PQ \leq \N{G}{P}$ since $P \unlhd \N{G}{P}$ by \textbf{Proposition \ref{prop-subgroup-is-a-normal-subgroup-of-normalizer}}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \textbf{Exercise \ref{exercise-order-of-subgroup-product}},
     \[
         |PQ| = \frac{|P||Q|}{|P \cap Q|} = p^{n+m-s}
     \]
@@ -4401,7 +4394,7 @@ We can now look at the \textbf{Second Sylow Theorem}.
     \end{align*}
     Since $|g^{-1}hg| = |h|$ by \textbf{Proposition \ref{prop-order-of-conjugate-element-equals-order-of-element}} and because $H$ is a $p$-subgroup, hence $|g^{-1}hg| = p^r$ where $r$ is some positive integer. Note that $g^{-1}Hg$ is a (sub)group by \textbf{Exercise \ref{exercise-conjugate-subgroup}}. Therefore $g^{-1}Hg$ is a $p$-subgroup of $\N{G}{H}$.
     
-    Furthermore $g^{-1}Hg \cong H$ by \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} so $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, \textbf{Proposition \ref{prop-normalizer-of-sylow-p-subgroup}} tells us that $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But $X = gHg^{-1}$, so $X = H$.
+    Furthermore $g^{-1}Hg \cong H$ by \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} so $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, by \textbf{Proposition \ref{prop-normalizer-of-sylow-p-subgroup}}, we see $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But $X = gHg^{-1}$, so $X = H$.
     
     Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, by Orbit-Stabilizer Theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}), one sees that
     \[
@@ -4472,7 +4465,7 @@ We now state and prove the \textbf{Third Sylow Theorem}.
 \end{proof}
 
 \begin{example}
-    We show that a group of order 4225 is abelian.
+    We show that any group with order 4225 is abelian.
 
     Note that $4225 = 5^2 \times 13^2$. Let $G$ be a group of order 4225. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), we know that
     \begin{itemize}
