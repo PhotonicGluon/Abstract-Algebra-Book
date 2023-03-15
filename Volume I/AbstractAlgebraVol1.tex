@@ -259,7 +259,7 @@ One could use a \textbf{Cayley table}\index{cayley table} (or \textbf{group tabl
 It should be noted that, in this book, we use the convention of reading the \textbf{row before the column} in a group table. However, since this is an abelian group, the order does not matter. We will look at Cayley tables of non-abelian groups later.
 
 \begin{exercise}
-    Let $a \otimes_n b = (a \times b) \pmod{n}$. By using a group table, show that $(\mathbb{Z}_6, \otimes_6)$ does \textbf{not} form a group.
+    Let $a \otimes_n b = (a \times b) \pmod{n}$. By using a Cayley table, show that $(\mathbb{Z}_6, \otimes_6)$ does \textbf{not} form a group.
 \end{exercise}
 
 \section{General Properties of Groups}
@@ -696,7 +696,7 @@ We write $H \leq G$ if $H$ is a subgroup of $G$.
 \end{example}
 
 \begin{exercise}
-    Let $G$ be a group with operation $\ast$ and identity $e$. Prove that $\{e\} \leq G$.
+    Let $G$ be a group with identity $e$. Prove that $\{e\} \leq G$.
 \end{exercise}
 
 We note that the group containing only the identity (i.e., $\{e\} \leq G$) is always present in every group. This is known as the \textbf{trivial subgroup}\index{subgroup!trivial}. We also note that the group itself is a subgroup of itself (that is, $G \leq G$). Any subgroup that are \textbf{not} these two groups is known as a \textbf{proper subgroup}\index{subgroup!proper} of $G$, and we write $H < G$ if $H$ is a proper subgroup of $G$.
@@ -2163,7 +2163,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \end{example}
 
 \begin{exercise}
-    Let $\mathcal{S} = \{1, 5, 7, 11\}$, $G = \{1, 5\}$ and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the value of $n$ such that $\mathcal{S} \cong (\mathbb{Z}_n)^2$.
+    Let $\mathcal{S} = \{1, 5, 7, 11\}$, $G = \{1, 5\}$, and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the value of $n$ such that $\mathcal{S} \cong (\mathbb{Z}_n)^2$.
 \end{exercise}
 
 \newpage
@@ -2258,8 +2258,7 @@ Like the image of $\phi$, the kernel of $\phi$ is a subgroup of $H$. It is, in f
 \begin{proof}
     We will first show $\ker\phi\leq G$. Clearly $e_G \in \ker\phi$ since $\phi(e_G) = e_H$, so $\ker\phi$ is non-empty. Now let $x, y \in \ker\phi$. This means that $\phi(x) = \phi(y) = e_H$. Note
     \begin{align*}
-        \phi(xy^{-1}) &= \phi(x)\phi(y^{-1})\\
-        &= \phi(x)\left(\phi(y)\right)^{-1}\\
+        \phi(xy^{-1}) &= \phi(x)\left(\phi(y)\right)^{-1}\\
         &= e_H(e_H)^{-1}\\
         &= e_H
     \end{align*}
@@ -2289,6 +2288,8 @@ Equivalently, the Fundamental Homomorphism Theorem states that
     G/\ker\phi \cong \im\phi
 \]
 for any homomorphism $\phi$.
+
+\newpage
 
 We include the commutativity diagram of the homomorphisms stated above to aid clarity:
 
@@ -2769,7 +2770,7 @@ We are now ready to prove an essential theorem on cyclic groups.
     In the group $\mathbb{Z}_{210}$, find the order of 10, 42, 75, and 140.
 \end{exercise}
 
-\begin{corollary}
+\begin{corollary}\label{corollary-element-in-cyclic-group-is-generator-iff-gcd-is-1}
     Let $\Cn{n}$ have generator $g$. Then $g^m$ is also a generator if and only if $\gcd(m, n) = 1$.
 \end{corollary}
 \begin{proof}
@@ -4047,7 +4048,7 @@ An immediate consequence of this is that every element must have an order that i
     The Cayley table of $D_3$ is in \textbf{Example \ref{example-presentation-of-D3}}.
     \begin{enumerate}[label=(\alph*)]
         \item Find $\Z{D_3}$, the center of $D_3$.
-        \item Find the conjugacy classes of $D_3$ with more than 1 element.
+        \item For each conjugacy class of $D_3$ with more than 1 element, find a representative.
         \item Find the class equation of $D_3$.
     \end{enumerate}
 \end{exercise}
@@ -5399,7 +5400,7 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 
 \section{Basics of Groups}
 \begin{enumerate}
-    \item The group table of $(\mathbb{Z}_6, \otimes_n)$ is as follows:
+    \item The Cayley table of $(\mathbb{Z}_6, \otimes_6)$ is as follows:
 
     \begin{table}[h]
         \centering
@@ -5415,21 +5416,22 @@ The remainning 2 sporadic groups are special in that they have extremely large o
         \end{tabular}
     \end{table}
 
-    Notice that $0$ does not have an inverse. Since the identity is $1$, and the row (and column) of 0 does not have a $1$, thus $0$ does not have an inverse.
-    \item Note that $(xx^{-1})^{-1} = (x^{-1})^{-1}x^{-1}$ by the Shoes and Socks and $(xx^{-1})^{-1} = e^{-1} = e$. Thus $(x^{-1})^{-1}x^{-1} = e$. Multiplying both sides on the right by $x$ yields $(x^{-1})^{-1} = ex = x$, i.e. $(x^{-1})^{-1} = x$.
+    Since the identity is $1$, and the row (and column) of 0 does not have a $1$, thus $0$ does not have an inverse. Therefore $(\mathbb{Z}_6, \oplus_6)$ is not a group.
+    
+    \item Note that $(xx^{-1})^{-1} = (x^{-1})^{-1}x^{-1}$ by Shoes and Socks and $(xx^{-1})^{-1} = e^{-1} = e$. Thus $(x^{-1})^{-1}x^{-1} = e$. Multiplying both sides on the right by $x$ yields $(x^{-1})^{-1} = ex = x$, i.e. $(x^{-1})^{-1} = x$.
     \item \begin{enumerate}[label=(\roman*)]
         \item The identity is $1$ since:
         \begin{itemize}
-            \item $1 \times 1 = 1$
-            \item $1 \times (-1) = (-1) \times 1 = -1$
-            \item $1 \times i = i \times 1 = i$
-            \item $1 \times (-i) = (-i) \times 1 = -i$
+            \item $1 \times 1 = 1$;
+            \item $1 \times (-1) = (-1) \times 1 = -1$;
+            \item $1 \times i = i \times 1 = i$; and
+            \item $1 \times (-i) = (-i) \times 1 = -i$.
         \end{itemize}
         \item The order of the identity $1$ is 1, so we look at the other elements:
         \begin{itemize}
-            \item $|-1| = 2$ since $-1 \neq 1$ and $(-1)^2 = -1 \times -1 = 1$
-            \item $|i| = 4$ since $i \neq 1$, $i^2 = -1 \neq 1$, $i^3 = -i \neq 1$, but $i^4 = 1$
-            \item $|-i| = 4$ since $-i \neq 1$, $(-i)^2 = -1 \neq 1$, $(-i)^3 = i \neq 1$, but $(-i)^4 = 1$
+            \item $|-1| = 2$ since $-1 \neq 1$ and $(-1)^2 = -1 \times -1 = 1$.
+            \item $|i| = 4$ since $i \neq 1$, $i^2 = -1 \neq 1$, $i^3 = -i \neq 1$, but $i^4 = 1$.
+            \item $|-i| = 4$ since $-i \neq 1$, $(-i)^2 = -1 \neq 1$, $(-i)^3 = i \neq 1$, but $(-i)^4 = 1$.
         \end{itemize}
     \end{enumerate}
 
@@ -5451,13 +5453,13 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 \begin{enumerate}
     \item We will prove this claim by using the 3 axioms. For brevity let $H = \{e\}$. Clearly $H \subseteq G$.
     \begin{itemize}
-        \item The only element in $H$ is $e$, and $e \ast e = e$ which is in $H$. Hence $H$ is closed.
-        \item The identity of the group $G$ is $e$ which is in $H$ by definition of $H$.
-        \item The only element in $H$ is $e$ and the inverse of $e$ is $e$.
+        \item The only element in $H$ is $e$, and $e \ast e = e \in H$. Hence $H$ is closed.
+        \item The identity of the group $G$ is $e$ which is in $H$.
+        \item The inverse of $e$ is $e$ which is in $H$.
     \end{itemize}
     Hence, $\{e\} \leq G$.
 
-    \item Clearly $e$ is in $S$ since $e$ is in $H$ and $geg^{-1} = gg^{-1} = e$, so $S$ is non-empty.
+    \item Clearly $e$ is in $S$ since $e \in H$ and $geg^{-1} = gg^{-1} = e$, so $S$ is non-empty and $S \subseteq G$.
 
     Now suppose $x$ and $y$ are in $S$. Then there exist elements $h_x$ and $h_y$ in $H$ such that $x = gh_xg^{-1}$ and $y = gh_yg^{-1}$. Note that
     \begin{align*}
@@ -5466,70 +5468,75 @@ The remainning 2 sporadic groups are special in that they have extremely large o
         &= gh_xg^{-1}g{h_y}^{-1}g^{-1} & (\text{associativity})\\
         &= gh_x{h_y}^{-1}g^{-1} & (g^{-1}g = e).
     \end{align*}
-    Note that since $H \leq G$ thus $h_x{h_y}^{-1}$ is an element of $H$ (by forward direction of subgroup test). Hence $xy^{-1} = g(h_x{h_y}^{-1})g^{-1}$ is in $S$. By subgroup test, $S \leq G$.
+    Note that since $H \leq G$, thus $h_x{h_y}^{-1} \in H$. Hence $xy^{-1} = g(h_x{h_y}^{-1})g^{-1} \in S$. By subgroup test, $S \leq G$.
 
     \item \begin{enumerate}[label=(\alph*)]
-        \item Since $\oplus_8$ is commutative, thus $gH = Hg$.\newline(Actually, since $G$ is an additive group, we really should be writing $g \oplus_4 H = H \oplus_4 g$.)
+        \item Since $\oplus_8$ is commutative, thus $gH = Hg$.\newline
+        (Actually, since $G$ is an additive group, the better thing to write is $g \oplus_8 H = H \oplus_8 g$.)
         \item There are 4 distinct left cosets of $H$ in $G$.
         \begin{itemize}
-            \item $0 \oplus_4 H = \{0, 4\} = H$
-            \item $1 \oplus_4 H = \{1, 5\}$
-            \item $2 \oplus_4 H = \{2, 6\}$
-            \item $3 \oplus_4 H = \{3, 7\}$
+            \item $0 \oplus_8 H = \{0, 4\} = H$
+            \item $1 \oplus_8 H = \{1, 5\}$
+            \item $2 \oplus_8 H = \{2, 6\}$
+            \item $3 \oplus_8 H = \{3, 7\}$
         \end{itemize}
     \end{enumerate}
 
-    \item Let $x$ be in $g_1H \cap g_2H$. Then $x \in g_1H$ and $x \in g_2H$ simultaneously. Hence, $x = g_1h = g_2\hat{h}$ for some $h$ and $\hat{h}$ in $H$. Thus by rearrangement, $g_2^{-1}g_1 = \hat{h}h^{-1} \in H$. By Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}), statements 1 and 5, $g_1H = g_2H$.
+    \item Let $x$ be in $g_1H \cap g_2H$. Then $x \in g_1H$ and $x \in g_2H$ simultaneously. Hence, $x = g_1h = g_2\hat{h}$ for some $h, \hat{h} \in H$. Thus, by rearrangement, $g_2^{-1}g_1 = \hat{h}h^{-1} \in H$. By Coset Equality (\textbf{Lemma \ref{lemma-coset-equality}}), statements 1 and 5, $g_1H = g_2H$.
 
-    \item Note that $|G| = 99$ and $|H| = 3$, so $[G:H] = 99 \div 3 = 33$ by Lagrange's theorem.
+    \item Note that $|G| = 99$ and $|H| = 3$, so $[G:H] = \frac{99}{3} = 33$ by Lagrange's theorem.
 
-    \item Let $x$ be an element of $G$ with $x \neq e$. Then $|x| > 1$. By \textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}, the order of $x$ is a factor of $|G| = p$. Since $p$ is prime $|x| = 1$ (which is not possible) or $|x| = p$. Hence $|x| = p$.
+    \item Let $x \in G$ with $x \neq e$. Then $|x| > 1$. By \textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}, the order of $x$ is a factor of $|G| = p$. Since $p$ is prime, $|x| = 1$ (which is not possible) or $|x| = p$. Hence $|x| = p$.
     
     \item \begin{enumerate}[label=(\roman*)]
         \item By \textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}} every subgroup of $G$ is normal. Hence $H$ is a normal subgroup of $G$, meaning $G/H$ is a quotient group by \textbf{Theorem \ref{thrm-quotient-group-requirement}}.
-        \item Let $g$ be the generator of $G$. Consider $xH \in G/H$. Since $x \in G$, thus there exists an integer $k$ such that $x = g^k$ since $G$ is cyclic. Hence, $xH = g^kH = (gH)^k$ which means that $gH$ generates any element in $G/H$. Therefore $gH$ is a generator of $G/H$, meaning $G/H$ is cyclic.
+        \item Let $g$ be the generator of $G$. Consider $xH \in G/H$. Since $x \in G$ and $G$ is cyclic, thus there exists an integer $k$ such that $x = g^k$. Hence, $xH = g^kH = (gH)^k$ which means that $gH$ generates any element in $G/H$. Therefore $gH$ is a generator of $G/H$, meaning $G/H$ is cyclic.
     \end{enumerate}
 \end{enumerate}
 
 \section{Homomorphisms and Isomorphisms}
 \begin{enumerate}
     \item \begin{enumerate}[label=(\alph*)]
-        \item Is \textbf{not} a homomorphism, since $\phi(m+n) = m + n$ while $\phi(m)\phi(n) = mn \neq m+n$.
-        \item Is a homomorphism, since $\phi(m+n) = 2^{m+n} = 2^m2^n = \phi(m)\phi(n)$.
+        \item No, since $\phi(m+n) = m + n$ while $\phi(m)\phi(n) = mn \neq m+n$.
+        \item Yes, since $\phi(m+n) = 2^{m+n} = 2^m2^n = \phi(m)\phi(n)$.
     \end{enumerate}
 
-    \item Clearly $e_2 \in \phi(H_1)$ since $e_2 = \phi(e_1)$ and $e_1 \in H_1$. Now suppose $x$ and $y$ are in $\phi(H_1)$, meaning that $\phi(h_x) = x$ and $\phi(h_y) = y$ for some $h_x$ and $h_y$ in $H$. So, $h_xh_y^{-1}$ is in $H$. Furthermore,
+    \item Clearly $e_2 \in \phi(H_1)$ since $e_2 = \phi(e_1)$ and $e_1 \in H_1$. Now suppose $x$ and $y$ are in $\phi(H_1)$, meaning that $\phi(h_x) = x$ and $\phi(h_y) = y$ for some $h_x$ and $h_y$ in $H$. So $h_xh_y^{-1}$ is in $H$. Furthermore,
     \begin{align*}
-    \phi(h_xh_y^{-1}) &= \phi(h_x)\phi(h_y^{-1}) & \text{(definition of homomorphism)}\\
-    &= \phi(h_x)\left(\phi(h_y)\right)^{-1} & \text{(property of homomorphism)}\\
-    &= xy^{-1}
+        \phi(h_xh_y^{-1}) &= \phi(h_x)\phi(h_y^{-1})\\
+        &= \phi(h_x)\left(\phi(h_y)\right)^{-1}\\
+        &= xy^{-1},
     \end{align*}
     meaning that $xy^{-1}$ is in $\phi(H_1)$. Therefore, by subgroup test, $\phi(H_1) \leq G_2$.
 
-    \item Disprove. Let $G_1 = H_1 = \mathbb{Z}$ be the additive group of integers and let $G_2 = H_2 = D_n$, the dihedral group of order $2n$. Consider the map $\phi: G_1 \to G_2$ where $\phi(m) = s^m$. Clearly, $H_1 \leq G_1$. Note that $\phi(H_1) = \{e, s\} = \langle s \rangle$. From \textbf{Example \ref{example-normal-subgroups-of-d3}}, we know that $\langle s \rangle$ is not a normal subgroup of $D_3 = G_2$, so $\phi(H_1)$ is not a normal subgroup of $G_2$.
+    \item Disprove. Let $G_1 = H_1 = \mathbb{Z}$ be the additive group of integers and let $G_2 = H_2 = D_n$, the dihedral group of order $2n$. Consider the map $\phi: G_1 \to G_2$ where $\phi(m) = s^m$. Clearly, $H_1 \unlhd G_1$. Note that $\phi(H_1) = \{e, s\} = \langle s \rangle$. From \textbf{Example \ref{example-normal-subgroups-of-d3}}, we know that $\langle s \rangle$ is not a normal subgroup of $D_3 = G_2$, so $\phi(H_1)$ is not a normal subgroup of $G_2$.
 
     \item \begin{enumerate}[label=(\roman*)]
         \item Since $3^0 = 1$, $3^1 = 3$, $3^2 = 9 \equiv 4 \pmod{5}$, and $3^3 = 27 \equiv 2 \pmod{5}$, thus $G = \langle 3 \rangle$. Since $7^0 = 1$, $7^1 = 7$, $7^2 = 49 \equiv 9 \pmod{10}$, and $7^3 = 343 \equiv 3 \pmod{10}$, thus $H = \langle 7 \rangle$.
-        \item We need to prove that it is a bijection and a homomorphism.
+        \item We need to prove that it is a homomorphic bijection.
         \begin{itemize}
             \item \textbf{Homomorphism}:
-            \[
-                \phi(3^m3^n) = \phi(3^{m+n}) = 7^{m+n} = 7^m7^n = \phi(3^m)\phi(3^n)
-            \]
+            \begin{align*}
+                \phi(3^m3^n) &= \phi(3^{m+n})\\
+                &= 7^{m+n}\\
+                &= 7^m7^n\\
+                &= \phi(3^m)\phi(3^n)
+            \end{align*}
+
             \item \textbf{Bijection}: Note that $1 \mapsto 1$, $3 \mapsto 7$, $4 \mapsto 9$, $2 \mapsto 3$ which clearly shows that $\phi$ is bijective.
         \end{itemize}
         Therefore $\phi$ is an isomorphism, meaning $G \cong H$.
     \end{enumerate}
 
-    \item Suppose $N \lhd G$ such that $|N| = k$. Then $\phi(N) \leq H$ with order $k$ by the theorem. All that remains to prove is that $\phi(N)$ is normal.
+    \item Suppose $N \unlhd G$ such that $|N| = k$. Then $\phi(N)$ is a subgroup of $H$ with order $k$ by the theorem. All that remains to prove is that $\phi(N)$ is normal.
 
-    Let $n$ be in $N$ and $\hat{n} \in \phi(N)$ such that $\hat{n} = \phi(n)$. Let $h \in H$ be an arbitrary element. To prove that $h\hat{n}h^{-1}$ is in $N$.
+    Let $n \in N$ and $\hat{n} \in \phi(N)$ such that $\hat{n} = \phi(n)$. Let $h \in H$ be an arbitrary element. To prove that $h\hat{n}h^{-1}$ is in $\phi(N)$.
 
     Let $g$ be in $G$ such that $\phi(g) = h$. Then
     \begin{align*}
         h\hat{n}h^{-1} &= \phi(g)\phi(n)\phi(g^{-1})\\
-        &= \phi(\underbrace{gng^{-1}}_{\text{In } N})
-        \in \phi(N)
+        &= \phi(\underbrace{gng^{-1}}_{\text{In } N})\\
+        &\in \phi(N)
     \end{align*}
     which proves that $\phi(N)$ is normal. Hence there exists a normal subgroup of order $k$, namely $\phi(N)$.
 
@@ -5584,9 +5591,8 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 \begin{enumerate}
     \item $\phi$ is a homomorphism since
     \begin{align*}
-        \phi(a \oplus_3 b) &= 2(a+b) \pmod{6}\\
-        &= 2a + 2b \pmod{6}\\
-        &= 2a \oplus_6 2b\\
+        \phi(a \oplus_3 b) &= 2(a\oplus_3 b)\\
+        &= (2a) \oplus_6 (2b)\\
         &= \phi(a) \oplus_6 \phi(b).
     \end{align*}
     The image is $\{0, 2, 4\}$.
@@ -5597,7 +5603,7 @@ The remainning 2 sporadic groups are special in that they have extremely large o
         &=i^ai^b\\
         &=\phi(a)\phi(b).
     \end{align*}
-    The kernel is the set of values which map to the identity of $H$, i.e. $\{n \in \mathbb{Z} \vert \phi(n) = 1\}$. Now note $H$ is a cyclic group and $|i| = 4$. Thus $i^4 = 1$. Furthermore $i^8 = (i^4)^2 = 1, i^{12} = 1, \dots, i^{4k} = 1$. Thus $\ker\phi = \{4n \vert n \in \mathbb{Z}\} = 4\mathbb{Z}$ (by using coset notation).
+    The kernel is the set of values which map to the identity of $H$, i.e. $\{n \in \mathbb{Z} \vert \phi(n) = 1\}$. Now note $H$ is a cyclic group and $|i| = 4$. Thus $i^4 = 1$. Furthermore $i^8 = (i^4)^2 = 1, i^{12} = 1, \dots, i^{4k} = 1$. Thus $\ker\phi = \{4n \vert n \in \mathbb{Z}\} = 4\mathbb{Z}$ (using coset notation).
 
     \item We prove the forward direction first. Suppose that $\phi$ is injective. Clearly $\phi(e_G) = e_H$. Let $x$ be an element which is in the kernel of $\phi$, meaning $\phi(x) = e_H$. Then, $\phi(x) = \phi(e_G) = e_H$ which means $x = e_G$ by injectivity of $\phi$. Hence the kernel is trivial.
 
@@ -5608,16 +5614,16 @@ The remainning 2 sporadic groups are special in that they have extremely large o
         = \phi(x)\left(\phi(y)\right)^{-1}
         = e_H.
     \]
-    Now since the kernel is trivial, this must mean that $xy^{-1} = e_G$ which immediately leads the $x=y$. Hence $\phi$ is injective.
+    Now since the kernel is trivial, this must mean that $xy^{-1} = e_G$ which immediately leads $x=y$. Hence $\phi$ is injective.
 
-    \item The Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}) states that $G / \ker \phi \cong \im \phi$. Lagrange's Theorem states that $|G / \ker \phi| = \frac{|G|}{|\ker\phi|}$. Hence, $\frac{|G|}{|\ker\phi|} = |\im\phi|$ which leads to the result quickly.
+    \item Recall that $G / \ker \phi \cong \im \phi$ by the Fundamental Homomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-1}}). Furthermore, we note that $|G / \ker \phi| = \frac{|G|}{|\ker\phi|}$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Hence, $\frac{|G|}{|\ker\phi|} = |\im\phi|$ which leads to the result quickly.
 
-    \item The Diamond Isomorphism Theorem (statement 6) states that $H / (H\cap N) \cong HN / N$. Taking orders on both sides yields $\frac{|H|}{|H \cap N|} = \frac{|HN|}{|N|}$. Rearranging yields required result.
+    \item The Diamond Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-2}}), statement 6, states that $H / (H\cap N) \cong HN / N$. Taking orders on both sides yields $\frac{|H|}{|H \cap N|} = \frac{|HN|}{|N|}$. Rearranging yields required result.
 
     \item \begin{enumerate}[label=(\roman*)]
-        \item Since $x\;|\;y$, $y$ is a multiple of $x$, say $y = kx$. Thus $H = x\mathbb{Z} = \{ax \vert a \in \mathbb{Z}\}$ and $N = kx\mathbb{Z} = \{a(kx) \vert a \in \mathbb{Z}\}$, which necessarily means $N \subseteq H$.
+        \item Note $H = x\mathbb{Z} = \{ax \vert a \in \mathbb{Z}\}$ and $N = mx\mathbb{Z} = \{a(mx) \vert a \in \mathbb{Z}\}$, which necessarily means $N \subseteq H$.
         \item Let $G = \mathbb{Z}$. Then both $H$ and $N$ are clearly subgroups of $G$. Now since $G$ is abelian (since addition is commutative), therefore $H$ and $N$ are normal by \textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}.
-        \item By Third Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-3}}),
+        \item The Third Isomorphism Theorem (\textbf{Theorem \ref{thrm-isomorphism-3}}) tells us that
         \[
             (G/N)/(H/N) \cong G/H.
         \]
@@ -5631,29 +5637,29 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 
 \section{More Types of Groups}
 \begin{enumerate}
-    \item Consider $G = \mathbb{Z}_{mn}$. Clearly $H = \{0, n, 2n, \dots, (m-1)n\}$ is a subgroup of $\mathbb{Z}_{mn}$ of order $m$. By \textbf{Problem \ref{problem-subgroup-of-cyclic-group-is-cyclic}} we know $H$ is normal and cyclic with order $m$ and by \textbf{Exercise \ref{exercise-quotient-group-of-cyclic-group-is-cyclic}} we know $G/H$ is cyclic. The order of $G/H$ is $\frac{|G|}{|H|} = \frac{mn}{m} = n$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}), meaning that $G/H \cong \mathbb{Z}_n$. Hence, $\mathbb{Z}_{mn}/\mathbb{Z}_m \cong G/H \cong \mathbb{Z}_n$.
+    \item Let $G = \mathbb{Z}_{mn}$ and $H = \{0, n, 2n, \dots, (m-1)n\}$. Clearly $H$ is a subgroup of $G$ of order $m$. By \textbf{Problem \ref{problem-subgroup-of-cyclic-group-is-cyclic}} we know $H$ is normal and cyclic with order $m$ and by \textbf{Exercise \ref{exercise-quotient-group-of-cyclic-group-is-cyclic}} we know $G/H$ is cyclic. The order of $G/H$ is $\frac{|G|}{|H|} = \frac{mn}{m} = n$ by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}), meaning that $G/H \cong \mathbb{Z}_n$. Hence, $\mathbb{Z}_{mn}/\mathbb{Z}_m \cong G/H \cong \mathbb{Z}_n$.
     
     \item Note 0 is the identity in $\mathbb{Z}_n$. By \textbf{Lemma \ref{lemma-order-of-an-element-that-is-equivalent-to-identity}}, we know that if $12$ is equivalent to the identity in $\mathbb{Z}_n$, then $12 = mn$ for some integer $m$. Since $n > 0$ we restrict $m$ to positive integers. Now $12 = 2^2 \times 3$. Thus the possible cases are:
     \begin{itemize}
-        \item $n = 1$ with $m = 12$
-        \item $n = 2$ with $m = 6$
-        \item $n = 3$ with $m = 4$
-        \item $n = 4$ with $m = 3$
-        \item $n = 6$ with $m = 2$
-        \item $n = 12$ with $m = 1$
+        \item $n = 1$ with $m = 12$;
+        \item $n = 2$ with $m = 6$;
+        \item $n = 3$ with $m = 4$;
+        \item $n = 4$ with $m = 3$;
+        \item $n = 6$ with $m = 2$; and
+        \item $n = 12$ with $m = 1$.
     \end{itemize}
 
-    \item $|10| = \frac{210}{\gcd(10, 210)} = \frac{210}{10} 21$, $|42| = \frac{210}{\gcd(42, 210)} = \frac{210}{42} = 5$, $|75| = \frac{210}{\gcd(75, 210)} = \frac{210}{15} = 14$, and $|140| = \frac{210}{\gcd(140, 210)} = \frac{210}{70} = 3$.
+    \item $|10| = \frac{210}{\gcd(10, 210)} = \frac{210}{10} = 21$, $|42| = \frac{210}{\gcd(42, 210)} = \frac{210}{42} = 5$, $|75| = \frac{210}{\gcd(75, 210)} = \frac{210}{15} = 14$, and $|140| = \frac{210}{\gcd(140, 210)} = \frac{210}{70} = 3$.
 
     \item \begin{enumerate}[label=(\alph*)]
-        \item Note that $10 = 2 \times 5$. Generators of the group $\mathbb{Z}_n$ (which has order 10) has to satisfy $\gcd(m,n) = 1$ by corollary. The positive integers that satisfy this requirement (and which are less than 10) are 1, 3, 7, 9. Thus they are the generators of $\mathbb{Z}_10$.
-        \item Note that 101 is prime. Hence all positive integers from 1 to 100 (inclusive) are generators.
+        \item Note that $10 = 2 \times 5$. Generators of the group $\mathbb{Z}_n$ (which has order 10) has to satisfy $\gcd(m,n) = 1$ by \textbf{Corollary \ref{corollary-element-in-cyclic-group-is-generator-iff-gcd-is-1}}. The positive integers that satisfy this requirement (and which are less than 10) are 1, 3, 7, 9. Thus they are the generators of $\mathbb{Z}_{10}$.
+        \item Note that 101 is prime. Hence all positive integers from 1 to 100 (inclusive) are generators. (Note that 0 is not as 0 is the identity.)
     \end{enumerate}
 
     \item We show that all subgroups of $\mathrm{Q}$ are, in fact, normal. We consider the first definition of the quaternion group.
     \begin{itemize}
         \item Clearly $\{1\} \lhd \mathrm{Q}$ and $\mathrm{Q} \unlhd \mathrm{Q}$.
-        \item The subgroups $\langle i\rangle$, $\langle j\rangle$, and $\langle k\rangle$ have order 4, so they have index 2 by Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}). Hence by \textbf{Problem \ref{problem-subgroup-of-index-2}} these subgroups are normal.
+        \item The subgroups $\langle i\rangle$, $\langle j\rangle$, and $\langle k\rangle$ have order 4. Therefore, Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) tells us that they have index 2. Hence these subgroups are normal by \textbf{Problem \ref{problem-subgroup-of-index-2}}.
         \item Consider the subgroup $\langle -1 \rangle = \{1, -1\}$. \begin{itemize}
             \item $1\langle -1 \rangle = \langle -1 \rangle1$, since 1 is the identity;
             \item $-1\langle -1 \rangle = \{1, -1\} = \langle -1 \rangle(-1)$;
@@ -5676,13 +5682,7 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 
     \item $\Un{10} = \{1, 3, 7, 9\}$.
 
-    \item By a corollary of Lagrange's Theorem (specifically, \textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}), the order of $a$ dives the order of the group $\Un{n}$. Now the order of $\Un{n} = \phi(n)$. Thus the order of $a$ divides $\phi(n)$.
-
-    \item Note $1680 = 2^4 \times 3 \times 5 \times 7$. By the corollary we thus know
-    \[
-        \Un{1680} \cong \mathbb{Z}_2 \times \mathbb{Z}_{2^{4-2}} \times \mathbb{Z}_{3^1 - 3^0} \times \mathbb{Z}_{5^1 - 5^0} \times \mathbb{Z}_{7^1 - 7^0},
-    \]
-    i.e. $\Un{1680} \cong (\mathbb{Z}_2)^2 \times (\mathbb{Z}_4)^2 \times \mathbb{Z}_6$.
+    \item By a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-order-of-group-multiple-of-order-of-element}}), the order of $a$ dives the order of the group $\Un{n}$. Now the order of $\Un{n} = \totient(n)$. Thus the order of $a$ divides $\totient(n)$.
 
     \item The matrix product should be $\begin{pmatrix}2&1&2\\1&0&1\\2&1&2\end{pmatrix}$.
 
@@ -5692,14 +5692,14 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 
     Suppose $x \in G$ such that $w = \phi^{-1}(x)$ (as $\phi$ is an isomorphism, there exists a $w \in G$). Then
     \begin{align*}
-        f(x) &= \phi\iota_g\phi^{-1}(x)\\
+        f(x) &= \left(\phi\iota_g\phi^{-1}\right)(x)\\
         &= \phi(\iota_g(\phi^{-1}(x)))\\
         &= \phi(\iota_g(w))\\
         &= \phi(gwg^{-1})\\
         &= \phi(g)\phi(w)\phi(g^{-1})\\
         &= \phi(g)x\left(\phi(g)\right)^{-1}
     \end{align*}
-    which shows that $f \in \Inn{G}$. Hence, $f \in \Inn{G}$.
+    which shows that $f \in \Inn{G}$. Hence, $\Inn{G} \unlhd \Aut{G}$.
 \end{enumerate}
 
 \section{Group Actions}
@@ -5741,7 +5741,7 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 	\]
 	Hence, for any element $y \in X$, $\Orb{G}{y} = \Orb{G}{g \cdot x} = X$.
 
-	The reverse direction is trivial: suppose $\Orb{G}{x} = X$ for all $x \in X$. Then certainly there exists an element $x \in X$ such that $\Orb{G}{x} = X$.
+	The reverse direction is trivial: suppose $\Orb{G}{x} = X$ for all $x \in X$. Then certainly there exists an element $x \in X$ such that $\Orb{G}{x} = X$, meaning that the group action is transitive.
 
 	\item \begin{enumerate}[label=(\alph*)]
 	    \item Clearly $e \cdot x = x$, so $x \in \Orb{G}{x}$.
@@ -5760,12 +5760,12 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 	        &= (\underbrace{gg_1^{-1}g_2}_{\text{In } G})\cdot x_2\\
 	        &\in \Orb{G}{x_2}
 	    \end{align*}
-	    which means that any element in the orbit of $x_1$ is also in the orbit of $x_2$. Hence, $\Orb{G}{x_1} \subseteq \Orb{G}{x_2}$. A similar argument can be used to show that $\Orb{G}{x_2} \subseteq \Orb{G}{x_1}$. Hence $\Orb{G}{x_1} = \Orb{G}{x_2}$.
+	    which means that any element in $\Orb{G}{x_1}$ is also in $\Orb{G}{x_2}$. Hence, $\Orb{G}{x_1} \subseteq \Orb{G}{x_2}$. A similar argument can be used to show that $\Orb{G}{x_2} \subseteq \Orb{G}{x_1}$. Hence $\Orb{G}{x_1} = \Orb{G}{x_2}$.
 	\end{enumerate}
 
 	\item \begin{enumerate}[label=(\alph*)]
-	    \item Consider $x = n$. The orbit of $n$ is all of $X$. Consider the permutation $\sigma = \begin{pmatrix}k & n\end{pmatrix}$ where $1 \leq k \leq n$. Clearly $\sigma \in \Sn{n}$. Note that $\sigma \cdot n = \sigma(n) = k$. Thus, $\Orb{G}{n} = X$, meaning that the group action $\cdot$ given by $g \cdot x \mapsto g(x)$ is transitive.
-	    \item Note that $|X| = n$ and $|\Sn{n}| = n!$. By Orbit-Stabilizer theorem, the stabilizer of $x$ by $G$ must have order $\frac{n!}{n} = (n-1)!$.
+	    \item Consider $x = n$. The orbit of $n$ is all of $X$. Consider the permutation $\sigma = \begin{pmatrix}k & n\end{pmatrix}$ where $1 \leq k \leq n$. Clearly $\sigma \in \Sn{n}$. Note that $\sigma \cdot n = \sigma(n) = k$. Thus, $\Orb{G}{n} = X$, meaning that the group action ``$\cdot$'' given by $g \cdot x \mapsto g(x)$ is transitive.
+	    \item Note that $|X| = n$ and $|\Sn{n}| = n!$. By Orbit-Stabilizer theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}), the stabilizer of $x$ by $G$ must have order $\frac{n!}{n} = (n-1)!$.
 	\end{enumerate}
 
 	\item By the Orbit-Stabilizer theorem (\textbf{Theorem \ref{thrm-orbit-stabilizer}}),
@@ -5797,20 +5797,20 @@ The remainning 2 sporadic groups are special in that they have extremely large o
         \]
         which clearly means that $\phi$ is an isomorphism.
         \item \textbf{Injective}: Suppose $x, y \in H$ such that $\phi(x) = \phi(y)$. Then $gxg^{-1} = gyg^{-1}$ which quickly implies $x = y$ by cancellation law.
-        \item \textbf{Surjective}: Suppose $ghg^{-1} \in gHg^{-1}$. Clearly $\phi(h) = ghg^{-1}$.
+        \item \textbf{Surjective}: Suppose $ghg^{-1} \in gHg^{-1}$. Clearly we have $\phi(h) = ghg^{-1}$, so any element in $gHg^{-1}$ has a pre-image inside $H$.
     \end{itemize}
     Hence $H \cong gHg^{-1}$.
 
-    \item By \textbf{Proposition \ref{prop-order-of-conjugate-element-equals-order-of-element}} we know that $|xyx^{-1}| = |y|$ for all $x, y \in G$. Substitute $x = g, y = hg$ yields
+    \item By \textbf{Proposition \ref{prop-order-of-conjugate-element-equals-order-of-element}} we know that $|xyx^{-1}| = |y|$ for all $x, y \in G$. Substituting $x = g$, and $y = hg$ yields
     \[
-        |xyx^{-1}| = |ghgg^{-1}| = |gh|, |y| = |hg|
+        |xyx^{-1}| = |ghgg^{-1}| = |gh| \text{ and } |y| = |hg|
     \]
-    and the result follows.
+    so the result follows.
 
-    \item Clearly $e \in \N{G}{S}$ since $eSe^{-1} = eSe = S$, meaning that $\N{G}{S}$ is non-empty. Consider $x, y \in \N{G}{S}$, meaning that $xSx^{-1} = S$ and $ySy^{-1} = S$. Note that $y^{-1} \in \N{G}{S}$ since
+    \item Clearly $e \in \N{G}{S}$ since $eSe^{-1} = S$. Consider $x, y \in \N{G}{S}$, meaning that $xSx^{-1} = S$ and $ySy^{-1} = S$. Note that $y^{-1} \in \N{G}{S}$ since
     \begin{align*}
         y^{-1}S\left(y^{-1}\right)^{-1} &= y^{-1}Sy\\
-        &= y^{-1}\left(ySy^{-1}\right)y & (\text{since } y \in \N{G}{S})\\
+        &= y^{-1}\left(ySy^{-1}\right)y & (y \in \N{G}{S})\\
         &= (y^{-1}y)S(y^{-1}y)\\
         &= S.
     \end{align*}
@@ -5818,19 +5818,19 @@ The remainning 2 sporadic groups are special in that they have extremely large o
     \begin{align*}
         \left(xy^{-1}\right)S\left(xy^{-1}\right)^{-1} &= \left(xy^{-1}\right)S\left(yx^{-1}\right)\\
         &= x\left(y^{-1}Sy\right)x^{-1}\\
-        &= xSx^{-1} & (\text{since } y^{-1} \in \N{G}{S})\\
-        &= S & (\text{since } x \in \N{G}{S})
+        &= xSx^{-1} & (y^{-1} \in \N{G}{S})\\
+        &= S & (x \in \N{G}{S})
     \end{align*}
     which means that $xy^{-1} \in \N{G}{S}$. Hence, by the subgroup test, we have $\N{G}{S} \leq G$.
 
     \item By the Second Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-2}}), we know that $gHg^{-1} = K$. Since $H \cong gHg^{-1}$ by \textbf{Exercise \ref{exercise-conjugate-subgroup-isomorphic-to-subgroup}} thus $H \cong gHg^{-1} = K$ as required.
 
     \item We note $784 = 2^4 \times 7^2$, so $m = 16$, $p = 7$, and $k = 2$. By the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}), we know that
-    \begin{enumerate}
+    \begin{itemize}
         \item $n_7 = [G : \N{G}{P}] = \frac{|G|}{|\N{G}{P}|}$;
         \item $n_7 \mid 16$, which implies $n_7 \in \{1, 2, 4, 8, 16\}$; and
         \item $n_7 \equiv 1 \pmod 7$, which implies $n_7 \in \{1, 8, 15, 22, \dots\}$.
-    \end{enumerate}
+    \end{itemize}
     Hence $n_7 = 1$ or $n_7 = 8$. But since $P$ is not a normal subgroup of $G$, by \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}}, $P$ cannot be the only Sylow 7-subgroup, meaning $n_7 \neq 1$. Hence $n_7 = 8$, so
     \[
         8 = n_7 = \frac{|G|}{|\N{G}{P}|} = \frac{784}{|\N{G}{P}|}
@@ -5839,10 +5839,10 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 
     \item Note $130 = 2 \times 5 \times 13$. Consider the number of Sylow 13-subgroups, $n_{13}$. The Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}) tells us that
     \begin{itemize}
-        \item $n_13 \mid 2 \times 5 = 10$, so $n_13 \in \{1, 2, 5, 10\}$, and
-        \item $n_13 \equiv 1 \pmod{13}$ so $n_13 \in \{1, 14, 27, \dots\}$.
+        \item $n_{13} \mid 2 \times 5 = 10$, so $n_{13} \in \{1, 2, 5, 10\}$, and
+        \item $n_{13} \equiv 1 \pmod{13}$ so $n_{13} \in \{1, 14, 27, \dots\}$.
     \end{itemize}
-    Hence $n_13 = 1$. But by \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}} this means that the only Sylow 13-subgroup is normal. Hence a group of order 130 is non-simple.
+    Hence $n_{13} = 1$. But by \textbf{Corollary \ref{corollary-sylow-subgroup-is-normal-if-it-is-unique}} this means that the only Sylow 13-subgroup is normal. Hence a group of order 130 is non-simple.
 \end{enumerate}
 
 \section{Composition Series}
@@ -5862,12 +5862,12 @@ The remainning 2 sporadic groups are special in that they have extremely large o
     
     \item By Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) the order of a subgroup must divide the order of the group. Furthermore $\mathbb{Z}_{120}$ is abelian, so any subgroup of it is normal. Now the subgroup $N = \{0, 2, 4, \dots, 118\}$ has 60 elements which is the maximum possible guaranteed by Lagrange. Hence $N$ is the maximal normal subgroup of $\mathbb{Z}_{120}$, which has order 60.
     
-    \item $\Cn{6}$ has these 2 composition series up to isomorphism:
+    \item $\Cn{6}$ has these two composition series up to isomorphism
     \begin{align*}
         &1 \lhd \Cn{2} \lhd \Cn{6} \text{ and }\\
-        &1 \lhd \Cn{3} \lhd \Cn{6},
+        &1 \lhd \Cn{3} \lhd \Cn{6}.
     \end{align*}
-    as guaranteed by the First Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-1}}). In both cases, their composition length is 2. Their respective composition factors are:
+    In both cases, their composition length is 2. Their respective composition factors are:
     \begin{itemize}
         \item $\Cn{2} / 1 \cong \Cn{2}$ and $\Cn{6} / \Cn{2} \cong \Cn{3}$ by \textbf{Exercise \ref{exercise-Zmn-mod-Zn-cong-Zn}}; and
         \item $\Cn{3} / 1 \cong \Cn{3}$ and $\Cn{6} / \Cn{3} \cong \Cn{2}$ by \textbf{Exercise \ref{exercise-Zmn-mod-Zn-cong-Zn}},
@@ -5876,9 +5876,7 @@ The remainning 2 sporadic groups are special in that they have extremely large o
     
     \item Let the group in question be $G$. We know by Cauchy's Theorem (\textbf{Theorem \ref{thrm-cauchy}}) and \textbf{Exercise \ref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}}, and by writing $p^2$ as $p \times p$, that $G$ has a subgroup of order $p$ (call this $H$).
     
-    Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) tells us that the possible orders of the subgroups of $G$ are 1, $p$, and $p^2$. These subgroups are $\{e\}$, $H$, and $G$ respectively. Furthermore by \textbf{Problem \ref{problem-group-of-order-prime-squared-is-abelian}} $G$ must be abelian, thereby its subgroups are all normal (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}). Finally, a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-group-with-prime-order-subgroups}}) says that the only subgroups of $H$ are the trivial group and the group itself. Hence, $G$ has only one composition series, namely $1 \lhd H \lhd G$.
-    
-    (In fact, since $H$ has order $p$, it is cyclic (\textbf{Corollary \ref{corollary-group-with-prime-order-is-cyclic}}), so we may write $1 \lhd \mathbb{Z}_p \lhd G$.)
+    Lagrange's Theorem (\textbf{Theorem \ref{thrm-lagrange}}) tells us that the possible orders of the subgroups of $G$ are 1, $p$, and $p^2$. These subgroups are $\{e\}$, $H$, and $G$ respectively. Furthermore, by \textbf{Problem \ref{problem-group-of-order-prime-squared-is-abelian}}, $G$ must be abelian, thereby its subgroups are all normal (\textbf{Proposition \ref{prop-subgroup-of-abelian-group-is-normal}}). Finally, a corollary of Lagrange's Theorem (\textbf{Corollary \ref{corollary-group-with-prime-order-subgroups}}) says that the only subgroups of $H$ are the trivial group and the group itself. Hence, $G$ has only one composition series, namely $1 \lhd H \lhd G$.
 \end{enumerate}
 
 \section{Simple Groups}
@@ -5911,7 +5909,7 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 
     \item \begin{enumerate}[label=(\alph*)]
         \item Note $15 = 3 \times 5$, so \textbf{Problem \ref{problem-group-of-order-pq-has-normal-subgroup-of-order-q}} means that there exists a unique (and hence normal) subgroup of order 5.
-        \item Note $20 = 2^2 \times 5$. The Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}) tells us
+        \item Note $20 = 2^2 \times 5$. Then the Third Sylow Theorem (\textbf{Theorem \ref{thrm-sylow-3}}) tells us that
         \begin{itemize}
             \item $2^2 \vert n_5$, so $n_5 \in \{1, 2, 4\}$; and
             \item $n_5 \equiv 1 \pmod 5$, so $n_5 \in \{1, 6, 11, 16, \dots\}$.
@@ -5925,7 +5923,7 @@ The remainning 2 sporadic groups are special in that they have extremely large o
         \item Observe that
         \begin{itemize}
             \item $\sigma^0 = \id$;
-            \item $\sigma^1 = \sigma$;
+            \item $\sigma^1 = \sigma \neq \id$;
             \item $\sigma^2 = \begin{pmatrix}1&2&5&3&4\end{pmatrix} \neq \id$;
             \item $\sigma^3 = \begin{pmatrix}1&4&3&5&2\end{pmatrix} \neq \id$;
             \item $\sigma^4 = \begin{pmatrix}1&5&4&2&3\end{pmatrix} \neq \id$; and
@@ -5936,7 +5934,7 @@ The remainning 2 sporadic groups are special in that they have extremely large o
         \item Consider the other permutation $\pi = \begin{pmatrix}1&2&3&4&5\end{pmatrix}$. We note $\pi = \begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}2&3\end{pmatrix}\begin{pmatrix}3&4\end{pmatrix}\begin{pmatrix}4&5\end{pmatrix} \in \An5$. Also,
         \begin{itemize}
             \item $\pi^0 = \id$;
-            \item $\pi^1 = \pi$;
+            \item $\pi^1 = \pi \neq \id$;
             \item $\pi^2 = \begin{pmatrix}1&3&5&2&4\end{pmatrix} \neq \id$;
             \item $\pi^3 = \begin{pmatrix}1&4&2&5&3\end{pmatrix} \neq \id$;
             \item $\pi^4 = \begin{pmatrix}1&5&4&3&2\end{pmatrix} \neq \id$; and
@@ -5947,8 +5945,8 @@ The remainning 2 sporadic groups are special in that they have extremely large o
 
     \item Note that $\sigma \in G$, and
     \begin{align*}
-        \sigma\Stab{G}{x}\sigma^{-1} &= \{\underbrace{\sigma\pi\sigma^{-1}}_{\text{Set as }\pi'} \vert \pi \in G,\; \pi(x) = x\}\\
-        &= \{\pi' \vert \underbrace{\sigma^{-1}\pi'\sigma \in G}_{\text{True if } \pi' \in G},\; \sigma^{-1}\pi'\sigma(x) = x\}\\
+        \sigma\Stab{G}{x}\sigma^{-1} &= \{\underbrace{\sigma\pi\sigma^{-1}}_{\text{Set as }\pi'} \vertalt \pi \in G,\; \pi(x) = x\}\\
+        &= \{\pi' \vertalt \underbrace{\sigma^{-1}\pi'\sigma \in G}_{\text{True if } \pi' \in G},\; \sigma^{-1}\pi'\sigma(x) = x\}\\
         &= \{\pi' \vert \pi' \in G,\; \sigma^{-1}\pi'(\sigma(x)) = x\}\\
         &= \{\pi' \vert \pi' \in G,\; \pi'(\sigma(x)) = \sigma(x)\}\\
         &= \{\pi \vert \pi \in G,\; \pi(\sigma(x)) = \sigma(x)\}\\
