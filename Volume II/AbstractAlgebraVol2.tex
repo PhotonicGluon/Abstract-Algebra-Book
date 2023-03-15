@@ -31,71 +31,21 @@
 
 %=========================================
 \chapter{Introduction to Rings}
-\section{Basic Algebraic Structures}
-Before we introduce rings, we look at `simpler' algebraic structures and build our way up to rings.
 
+%=========================================
+\chapter{Basics of Rings}
+We follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ringdefinition} for the definition of a ring.
 \begin{definition}
-    A \textbf{magma} is a set $M$ together with a binary operation $\ast$ which is closed. That is, if $a$ and $b$ are in $M$, then $a \ast b \in M$.
-\end{definition}
-
-\begin{example}
-    Let $S$ be a set. Let $f: S \times S \to S$. Define the operation $\ast$ by $a \ast b = f(a, b)$. Then $(S, \ast)$ forms a magma since $a\ast b = f(a,b) \in S$.
-\end{example}
-
-\begin{definition}
-    A \textbf{semigroup} $\mathcal{S}$ is a magma where the operation $\ast$ is associative. That is, $a\ast(b\ast c) = (a\ast b)\ast c$.
-\end{definition}
-
-\begin{example}
-    Consider the magma $(S, \ast)$ given above. If the function $f$ above satisfies $f(a, f(b, c)) = f(f(a, b), c)$ then $(S, \ast)$ is a semigroup since
-    \[
-          a\ast(b\ast c) = f(a, f(b, c)) = f(f(a, b), c) = (a\ast b)\ast c.
-    \]
-\end{example}
-
-\begin{definition}
-    A \textbf{monoid} $M$ is a semigroup with an element $e$, called the \textbf{identity}, such that
-    \[
-        e \ast m = m \ast e = m
-    \]
-    for all $m \in M$.
-\end{definition}
-
-\begin{example}
-    Let $X$ be a set. Let the set
-    \[
-        S = \{f \vert  f: X \to X\}.
-    \]
-    and let $\circ$ denote function composition. Then $(S, \circ)$ forms a monoid:
+    A \textbf{ring}\index{ring} is a set $R$ with two binary operations $\oplus$ and $\otimes$ satisfying the following axioms.
     \begin{itemize}
-        \item \textbf{Closure}: If $f, g \in S$ then $f\circ g \in S$ since function composition is closed.
-        \item \textbf{Associative}: Function composition is associative.
-        \item \textbf{Identity}: The identity function $\id: X \to X, x\mapsto x$ is inside $S$ and
-        \[
-            \id \circ f = f \circ \id = f
-        \]
-        for all $f \in S$.
-    \end{itemize}
-    Thus $(S, \circ)$ forms a monoid.
-\end{example}
-
-\begin{definition}
-    A \textbf{group} $G$ is a monoid where every element has an inverse. That is to say, for every $g \in G$, there exists $g^{-1} \in G$ such that
-    \[
-        g \ast g^{-1} = g^{-1} \ast g = e
-    \]
-    where $e$ is the identity in $G$.
-\end{definition}
-We have previously looked at many examples of groups, and have dedicated the previous part of this book looking at groups. We are now ready to look at \textbf{rings}, which is a type of algebraic structure with more conditions attached to it.
-
-\newpage
-
-\begin{definition}
-    A \textbf{ring} is a set $R$ with two binary operations $\oplus$ and $\otimes$ satisfying the following axioms:
-    \begin{itemize}
-        \item \textbf{Addition-Abelian}: $(R, \oplus)$ forms an abelian group.
-        \item \textbf{Multiplication-Monoid}: $(R, \otimes)$ forms a monoid.
-        \item \textbf{Distributive}: $\otimes$ is distributive over $\oplus$. That is,
+        \item \textbf{Addition-Closure}\index{axiom!addition!closure}: For all elements $a$ and $b$ in $R$, $a \oplus b$ is also in $R$.
+        \item \textbf{Addition-Associativity}\index{axiom!addition!associativity}: For all elements $a$, $b$, and $c$ in $R$, we have $a \oplus (b \oplus c) = (a \oplus b) \oplus c$.
+        \item \textbf{Addition-Identity}\index{axiom!addition!identity}: There exists an element 0 in $R$ such that, for any element $x \in R$, we have $x \oplus 0 = x$.
+        \item \textbf{Addition-Inverse}\index{axiom!addition!inverse}: For every element $x$ in $R$, there exists an element $-x$ in $R$ such that $x \oplus (-x) = 0$.
+        \item \textbf{Addition-Commutative}\index{axiom!addition!commutative}: For all elements $a$ and $b$ in $R$, we have $a \oplus b = b \oplus a$.
+        \item \textbf{Multiplication-Closure}\index{axiom!multiplication!closure}: For all elements $a$ and $b$ in $R$, $a \otimes b$ is also in $R$.
+        \item \textbf{Multiplication-Associativity}\index{axiom!multiplication!associativity}: For all elements $a$, $b$, and $c$ in $R$, we have $a \otimes (b \otimes c) = (a \otimes b) \otimes c$.
+        \item \textbf{Distributive}\index{axiom!distributive}: $\otimes$ is distributive over $\oplus$. That is,
         \begin{itemize}
             \item $a \otimes (b \oplus c) = (a \otimes b) \oplus (b \otimes c)$; and
             \item $(a \oplus b) \otimes c = (a \otimes c) \oplus (b \otimes c)$.
@@ -104,17 +54,33 @@ We have previously looked at many examples of groups, and have dedicated the pre
     One may denote such a ring by $(R, \oplus, \otimes)$.
 \end{definition}
 \begin{remark}
-    We often write $\oplus$ using the standard addition symbol $+$. The multiplication symbol $\otimes$ is usually omitted. This means that $x \otimes y$ is usually written as $xy$.
+    An equivalent condition for the five axioms involving the addition operation is that $(R, \oplus)$ forms an abelian group.
 \end{remark}
+\begin{remark}
+    Other authors (e.g. \cite[p.~136]{cohn_1982}, \cite[pp.~145--146]{clark_1984}) may include another axiom for a ring:
+    \begin{itemize}
+        \item \textbf{Multiplication-Identity}\index{axiom!multiplication!identity}: There exists an element 1 in $R$ such that, for any element $x \in R$, we have $x \otimes 1 = 1 \otimes x = x$.
+    \end{itemize}
+    In this book, any ring that satisfies the above condition is called a \textbf{ring with unity}\index{ring!with unity} (or a \textbf{ring with identity}\index{ring!with identity}).
+\end{remark}
+\begin{remark}
+    A ring that satisfies the condition that
+    \begin{itemize}
+        \item \textbf{Multiplication-Commutative}\index{axiom!multiplication!commutative}: For all $a$ and $b$ in $R$, we have $a \otimes b = b \otimes a$.
+    \end{itemize}
+    is called a \textbf{commutative ring}\index{ring!commutative}.
+\end{remark}
+
+We often write $\oplus$ using the standard addition symbol $+$. The multiplication symbol $\otimes$ is usually omitted. This means that $x \oplus y$ is written as $x + y$ and $x \otimes y$ is written as $xy$.
 
 %TODO ADD
 
-\begin{exercise}
+\begin{exercise} %TODO: Add solution
     Prove using the ring axioms that $\mathbb{Z}$ is a ring under addition and multiplication.\newline
     (\textit{You do \textbf{not} need to prove the \textbf{Distributive} axiom.})
 \end{exercise}
 
-For rings, we denote the additive identity using $0$ and the multiplicative identity using $1$.
+The additive identity of $R$ will always be denoted by 0 and the additive inverse of the element $x$ will be denoted by $-x$.
 
 %=========================================
 \appendix
@@ -132,5 +98,6 @@ Image of the set of integers is the \LaTeX\, symbol for the set of integers (``$
 
 %=========================================
 \printbibliography[heading=bibintoc, title={References and Bibliography}]
+\printindex
 
 \end{document}
