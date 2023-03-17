@@ -1197,18 +1197,22 @@ Note that, as per usual, we suppress the operation $\star$ and just write $(xN)(
     \end{enumerate}
 \end{problem}
 
-\begin{problem}\label{problem-intersection-of-coprime-subgroups}
-    Let $G$ be a finite group, $H \leq G$, and $K \leq G$. Suppose the greatest common divisor (GCD) of the order of $H$ and the order of $K$ is 1. Show that the intersection of the groups $H$ and $K$ contains only the identity.
-\end{problem}
-
 \newpage
+
+\begin{problem}\label{problem-intersection-of-coprime-subgroups}
+    Let $G$ be a finite group, $H \leq G$, and $K \leq G$. Suppose the greatest common divisor (GCD) of the order of $H$ and the order of $K$ is 1.
+    \begin{enumerate}[label=(\alph*)]
+        \item Show that the intersection of the groups $H$ and $K$ contains only the identity.
+        \item Show that, if $H$ and $K$ are normal subgroups of $G$, then for any $h \in H$ and $k \in K$ we have $hk = kh$.
+    \end{enumerate}
+\end{problem}
 
 \begin{problem}\label{problem-smallest-nonabelian-group}
     Let $G$ be a finite group, and let its order be $m$.
     \begin{enumerate}[label=(\alph*)]
-        \item Find the smallest value of $m$ such that $G$ is non-abelian.
+        \item State the smallest value of $m$ such that $G$ is non-abelian.
         \item Prove that the value of $m$ found in (a) is the smallest value that allows $G$ to be non-abelian.
-        \item Hence prove that there exists a non-abelian group of order $n$, where $n$ is even and $n \geq m$.
+        \item Hence prove that for all even integers $n \geq m$, there exists a non-abelian group of order $n$.
     \end{enumerate}
 \end{problem}
 
@@ -1558,11 +1562,14 @@ In summary:
     (That is, the image of $N$ under $\phi$ is a normal subgroup of $H$.)
 \end{problem}
 
+\newpage
+
 \begin{problem}\label{problem-Zn-isomorphic-to-Z-by-nZ}
     Let $G = (\mathbb{Z}_n, \oplus_n)$, and $H = \mathbb{Z}/(n\mathbb{Z})$ be under addition. Prove that $G \cong H$.
 \end{problem}
-
-\newpage
+\begin{remark}
+    Whenever we are dealing with homomorphisms involving $(\mathbb{Z}_n, \oplus_n)$, it is usually easier to replace it with $\mathbb{Z}/(n\mathbb{Z})$ and do the homomorphism that way.
+\end{remark}
 
 \begin{problem}\label{problem-subgroup-of-quotient-group-is-quotient-group}
     Let $G$ be a group and $N \unlhd G$. Let $B$ be a subgroup of the quotient group $G/N$. Prove that $B = A/N$, where $A$ is a subgroup of $G$ such that $N \subseteq A$.
@@ -2178,11 +2185,11 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \end{problem}
 
 \begin{problem}
-    Let $G = \mathbb{Z}_6$, $H = \{0, 2, 4\}$, and $K = \{0, 3\}$. Determine if $G$ is the internal direct product of $H$ and $K$.
+    Let $G = \mathbb{Z}_6$, and let the subgroups $H = \{0, 2, 4\}$ and $K = \{0, 3\}$. Determine whether $G$ is the internal direct product of $H$ and $K$.
 \end{problem}
 
 \begin{problem}
-    Consider the \textit{Klein four-group} $\mathrm{V}$ with presentation
+    Consider the \textit{Klein four-group}\index{Klein four-group} $\mathrm{V}$ with presentation
     \[
         \langle a, b \vert a^2 = b^2 = (ab)^2 = e \rangle.
     \]
@@ -2660,16 +2667,7 @@ From this example we can come up with a more general result.
 \end{problem}
 
 \begin{problem}
-    Let $R = \mathbb{R}$ be a group under addition. Let $G = R^2$ and $H = \left\{(r\sqrt2, r\sqrt3) \vert r\in R\right\}$ be a group under component-wise addition. Prove that $G/H \cong R$.
-\end{problem}
-
-\begin{problem}
-    Let $G = \mathbb{Z}^2$ under component-wise addition, $H = \mathbb{Z} \times \mathbb{Z}_5$ under $(+, \oplus_5)$, and $K = \langle(5, 5)\rangle \lhd G$.
-    \begin{enumerate}[label=(\roman*)]
-        \item Prove that $\phi: G \to H, (m,n) \mapsto (m-n, n \mod 5)$ is a group homomorphism.
-        \item Prove that $\phi$ is surjective.
-        \item Hence prove $G/K \cong H$.
-    \end{enumerate}
+    Let $R = \mathbb{R}$ be a group under addition. Let $G = R^2$ and $H = \left\{(r\sqrt2, r\sqrt3) \vert r\in R\right\}$ be groups under component-wise addition. Prove that $G/H \cong R$.
 \end{problem}
 
 \begin{problem}\label{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}
@@ -2685,9 +2683,9 @@ From this example we can come up with a more general result.
 \end{problem}
 
 \begin{problem}\label{problem-mZ/nZ-isomorphic-to-Zn/m}
-    Let $G = m\mathbb{Z}$ and $H = n\mathbb{Z}$ be groups under addition, where $m\vert n$ and $m \neq n$. Let the map $\phi: G \to \mathbb{Z}_{\frac nm}$ be defined such that
+    Let $G = m\mathbb{Z}$ and $H = n\mathbb{Z}$ be groups under addition, where $m\vert n$ and $m \neq n$. Let the map $\phi: G \to \mathbb{Z}/({\frac nm}\mathbb{Z})$ be defined such that
     \[
-        \phi(am) = a \mod \frac{n}{m}.
+        \phi(am) = a + \frac nm \mathbb{Z}
     \]
     Prove that $G/H \cong \mathbb{Z}_{\frac nm}$.
 \end{problem}
@@ -4103,16 +4101,16 @@ To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
 \end{problem}
 
 \begin{problem}
-    Let $G$ be a group of order 25 and $X$ be a $G$-set of 24 elements. Show that every $g \in G$ has a fixed point.
-\end{problem}
-
-\begin{problem}
     Suppose $G$ is a finite group with order $n > 1$ where $g^2 = e$ for all $g \in G$. Prove that $n = 2^k$ where $k$ is a positive integer.
 \end{problem}
 
 \begin{problem}
     A group action is said to be \textbf{free}\index{group action!free} if $g\cdot x = x$ means that $g$ is the identity (i.e., only the identity fixes any $x$).\newline
     Let $G$ be a group and $S$ be a non-empty $G$-set. Suppose $G$ acts on $S$ freely and transitively. Prove that $G$ and $S$ have the same number of elements.
+\end{problem}
+
+\begin{problem}
+    Let $G$ be a group of order 25 and $X$ be a $G$-set of 24 elements. Show that there exists a $g \in G$ with a fixed point.
 \end{problem}
 
 \begin{problem}
@@ -4588,10 +4586,6 @@ For some groups of orders that do not satisfy the condition in Sylow's Test, we 
     \end{enumerate}
 \end{problem}
 
-\begin{problem}
-    Show that any group of order 3325 is abelian.
-\end{problem}
-
 \begin{problem}\label{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}
     Let $G$ be a finite group, and write the order of $G$ as $p^km$ where $k \geq 0$ and $p \nmid m$. Let $N \lhd G$ such that $p$ does not divide the index of $N$ in $G$.
     \begin{enumerate}[label=(\roman*)]
@@ -4599,6 +4593,10 @@ For some groups of orders that do not satisfy the condition in Sylow's Test, we 
         \item Prove that any Sylow $p$-subgroup of $G$ is also in $N$.
     \end{enumerate}
     (That is, prove that $N$ contains all Sylow $p$-subgroups of $G$ and vice versa.)
+\end{problem}
+
+\begin{problem}
+    Show that any group of order 3325 is abelian.
 \end{problem}
 
 \begin{problem}\label{problem-if-m!<|G|-then-G-is-simple}
@@ -6151,8 +6149,17 @@ The remainning 2 sporadic groups are special in that they have extremely large o
         which means $x \in H$.
     \end{enumerate}
 
-    \item Suppose we have an element $x \in H \cap K$, meaning that $x \in H$ and $x \in K$. By a corollary of Lagrange's Theorem (\myref{corollary-order-of-group-multiple-of-order-of-element}), the order of $x$ must divide the order of its group. Hence, $|x|$ divides $|H|$ and $|x|$ divides $|K|$ simultaneously, meaning that $|x| = \gcd(|H|, |K|)$. But the GCD of the orders of both subgroups is 1. Hence, $|x| = 1$, meaning the only element in the intersection $H \cap K$ is the identity $e$.
-
+    \item \begin{enumerate}[label=(\alph*)]
+        \item Suppose we have an element $x \in H \cap K$, meaning that $x \in H$ and $x \in K$. By a corollary of Lagrange's Theorem (\myref{corollary-order-of-group-multiple-of-order-of-element}), the order of $x$ must divide the order of its group. Hence, $|x|$ divides $|H|$ and $|x|$ divides $|K|$ simultaneously, meaning that $|x| = \gcd(|H|, |K|)$. But the GCD of the orders of both subgroups is 1. Hence, $|x| = 1$, meaning the only element in the intersection $H \cap K$ is the identity $e$.
+        
+        \item Consider $hkh^{-1}k^{-1}$.
+        \begin{itemize}
+            \item On one hand, note that $hkh^{-1}k^{-1} = h(kh^{-1}k^{-1})$. Clearly $h \in H$ and $kh^{-1}k^{-1} \in H$ by normality of $H$. Therefore $hkh^{-1}k^{-1} \in H$.
+            \item On another hand, $hkh^{-1}k^{-1} = (hkh^{-1})k^{-1}$. Note $hkh^{-1} \in K$ by normality of $K$ and $k^{-1} \in K$, so $hkh^{-1}k^{-1} \in K$.
+        \end{itemize}
+        Therefore $hkh^{-1}k^{-1} \in H \cap K$. But by (a), the only element in $H \cap K$ is the identity. Thus, $hkh^{-1}k^{-1} = e$ which the result follows quickly.
+    \end{enumerate}
+    
     \item \begin{enumerate}[label=(\alph*)]
         \item $m = 6$.
         \item We first prove that all groups of order less than 6 are abelian, and then find a non-abelian group of order 6.
