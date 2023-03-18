@@ -41,6 +41,7 @@
 
 %=========================================
 \chapter{Basics of Rings}
+\section{Definition and Examples of Rings}
 We follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ringdefinition} for the definition of a ring.
 \begin{definition}
     A \textbf{ring}\index{ring} is a set $R$ with two binary operations $\oplus$ and $\otimes$ satisfying the following axioms.
@@ -68,7 +69,7 @@ We follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hunger
     \begin{itemize}
         \item \textbf{Multiplication-Identity}\index{axiom!multiplication!identity}: There exists an element 1 in $R$ such that, for any element $x \in R$, we have $x \otimes 1 = 1 \otimes x = x$.
     \end{itemize}
-    In this book, any ring that satisfies the above condition is called a \textbf{ring with unity}\index{ring!with unity} (or a \textbf{ring with identity}\index{ring!with identity}).
+    In this book, any ring that satisfies the above condition is called a \textbf{ring with identity}\index{ring!with identity}.
 \end{remark}
 \begin{remark}
     A ring that satisfies the condition that
@@ -80,21 +81,122 @@ We follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hunger
 
 We often write $\oplus$ using the standard addition symbol $+$. The multiplication symbol $\otimes$ is usually omitted. This means that $x \oplus y$ is written as $x + y$ and $x \otimes y$ is written as $xy$.
 
-%TODO ADD
+The additive identity of $R$ will always be denoted by 0 and the additive inverse of the element $x$ will be denoted by $-x$.
 
-\begin{exercise} %TODO: Add solution
-    Prove using the ring axioms that $\mathbb{Z}$ is a ring under addition and multiplication.\newline
+Let's look at some examples of rings.
+\begin{example}
+    We show that $(\Zn{n}, \oplus_n, \otimes_n)$, where $\oplus_n$ and $\otimes_n$ denote addition and multiplication modulo $n$ respectively, form a ring.
+    \begin{itemize}
+        \item From Volume I we know that $(\Zn, \oplus_n)$ is an abelian group.
+        \item Clearly $a \otimes_n b \in \{0, 1, 2, \dots, n-1\} = \Zn{n}$, so the $\Zn{n}$ is closed under $\otimes_n$.
+        \item Multiplication is associative, so multiplication modulo $n$ is associative.
+        \item It is clear that $\oplus_n$ and $\otimes_n$ distribute.
+    \end{itemize}
+    Hence $(\Zn{n}, \oplus_n, \otimes_n)$ is a ring. Furthermore, $\otimes_n$ has an identity of 1 and is commutative. Hence $(\Zn{n}, \oplus_n, \otimes_n)$ is a commutative ring with identity.
+
+    Note that, in this volume, $\Zn{n}$ refers to the ring $(\Zn{n}, \oplus_n, \otimes_n)$.
+\end{example}
+
+\begin{example}
+    We show that $(\Q, +, \times)$, where $+$ and $\times$ denote normal addition and multiplication, form a ring.
+    \begin{itemize}
+        \item From Volume I we know that $(\Q, +)$ is an abelian group.
+        \item Clearly multipliying two rational numbers together produce a rational number, so $\Q$ is closed under multiplication.
+        \item Multiplication is associative.
+        \item It is clear that $+$ and $\times$ distribute.
+    \end{itemize}
+    Hence $(\Q, +, \times)$ is a ring. Furthermore, $\times$ has an identity of 1 and is commutative. So, just like $\Zn{n}$, we see that $(\Q, +, \times)$ is a commutative ring with identity.
+
+    Note that, in this volume, $\Q$ refers to the ring $(\Q, +, \times)$.
+\end{example}
+
+\begin{exercise}
+    Prove that $\Z$ is a ring under regular addition and multiplication.\newline
     (\textit{You do \textbf{not} need to prove the \textbf{Distributive} axiom.})
 \end{exercise}
+Note that, in this volume, $\Z$ refers to the ring $(\Z, +, \times)$.
 
-The additive identity of $R$ will always be denoted by 0 and the additive inverse of the element $x$ will be denoted by $-x$.
+\section{Ring of $n \times n$ matrices}
+We now look at an interesting ring: the ring of $n \times n$ matrices.
+
+Let $\Mn{n}{R}$ denote the set of $n\times n$ matrices with entires in the ring $(R, \oplus, \otimes)$ (or simply just $R$).
+We need to define addition and multiplication within this set.
+\begin{itemize}
+    \item We define \textbf{matrix addition}\index{matrix addition} within this set. Suppose we have $\textbf{A}, \textbf{B} \in \Mn{n}{R}$, and let their sum be $\textbf{C} = \textbf{A} + \textbf{B}$. Then
+    \[
+        c_{i,j} = a_{i,j} \oplus b_{i,j}    
+    \]
+    where $\oplus$ is the addition operation in the ring $R$.
+    
+    \item We define \textbf{matrix multiplication}\index{matrix multiplication} within this set. Suppose $\textbf{A}, \textbf{B} \in \Mn{n}{R}$, and let their product be $\textbf{C} = \textbf{AB}$. Then
+    \begin{align*}
+        c_{i,j} &= (a_{i,1}\otimes b_{1,j}) \oplus (a_{i,2}\otimes b_{2,j}) \oplus \cdots \oplus (a_{i,n}\otimes b_{n,j})\\
+        &= \sum_{k=1}^n (a_{i,k}\otimes b_{i,k})
+    \end{align*}
+    where $\oplus$ and $\otimes$ are the addition and multiplication operations in the ring $R$ respectively.
+\end{itemize}
+With these operations defined, we claim that
+\begin{proposition}
+    $\Mn{n}{R}$ is a ring under matrix addition and matrix multiplication.
+\end{proposition}
+\begin{proof}
+    We need to prove that the ring axioms hold.
+    \begin{itemize}
+        \item \textbf{Addition-Closure}: Clearly the sum of any two matrices in $\Mn{n}{R}$ is also a square matrix with $n$ rows with elements inside $R$, meaning that $\Mn{n}{R}$ is closed under matrix addition.
+
+        \item \textbf{Addition-Associative}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. We show that $\textbf{A} + (\textbf{B} + \textbf{C}) = (\textbf{A} + \textbf{B}) + \textbf{C}$.
+        \begin{itemize}
+            \item %TODO: Finish associative proof
+        \end{itemize}
+        Hence matrix addition is associative.
+
+        \item \textbf{Addition-Identity}: Denote the $n \times n$ matrix with contains only the zero in $R$ by $\textbf{0}_n$. One sees clearly that this is the identity in $\Mn{n}{R}$ as $\textbf{M} + \textbf{0}_n = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
+        
+        \item \textbf{Addition-Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ where
+        \[
+            b_{i,j} = -a_{i,j},    
+        \]
+        that is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \textbf{0}_n$.\newline
+        (Note that we denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$.)
+
+        \item \textbf{Multiplication-Closure}: In Volume I we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entires of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
+        
+        \item \textbf{Multiplication-Associative}: We proved matrix multiplication is associative in Volume I.
+        
+        \item \textbf{Distributive}: % TODO: Add distributive proof
+    \end{itemize}
+    As all the ring axioms are satisfied, thus $\Mn{n}{R}$ is a ring.
+\end{proof}
+For brevity, let $\Mn{n}{R}$ denote the ring under matrix addition and multiplication.
+
+\section{Types of Rings}
+%TODO: Add
 
 %=========================================
 \appendix
 \chapter{Exercise Solutions}
+\section{Introduction to Rings}
+No exercises.
+
+\section{Basics of Rings}
+\begin{enumerate}
+    \item We note the following.
+    \begin{itemize}
+        \item $(\Z, +)$ is an abelian group by Volume I.
+        \item Multiplying two integers always results in an integer, so $\Z$ is closed under $\times$.
+        \item We know $\times$ is associative.
+        \item We know $+$ and $\times$ distribute.
+    \end{itemize}
+    Hence $(\Z, +, \times)$ is a ring.
+\end{enumerate}
 
 %=========================================
 \chapter{Problem Solutions}
+\section{Introduction to Rings}
+No problems.
+
+\section{Basics of Rings}
+%TODO: Add
 
 %=========================================
 \chapter{Image Acknowledgements}
