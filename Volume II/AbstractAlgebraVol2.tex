@@ -144,11 +144,13 @@ With these operations defined, we claim that
     \begin{itemize}
         \item \textbf{Addition-Closure}: Clearly the sum of any two matrices in $\Mn{n}{R}$ is also a square matrix with $n$ rows with elements inside $R$, meaning that $\Mn{n}{R}$ is closed under matrix addition.
 
-        \item \textbf{Addition-Associative}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. We show that $\textbf{A} + (\textbf{B} + \textbf{C}) = (\textbf{A} + \textbf{B}) + \textbf{C}$.
-        \begin{itemize}
-            \item %TODO: Finish associative proof
-        \end{itemize}
-        Hence matrix addition is associative.
+        \item \textbf{Addition-Associative}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. Let $\textbf{P} = \textbf{A} + (\textbf{B} + \textbf{C})$ and $\textbf{Q} = (\textbf{A} + \textbf{B}) + \textbf{C}$. We note that $\textbf{P} = \textbf{Q}$ as
+        \begin{align*}
+            p_{i,j} &= a_{i,j} \otimes (b_{i,j} \otimes c_{i,j})\\
+            &= (a_{i,j} \otimes b_{i,j}) \otimes c_{i,j} & (\otimes\text{ is associative})\\
+            &= q_{i,j}
+        \end{align*}
+        which proves that matrix addition is associative.
 
         \item \textbf{Addition-Identity}: Denote the $n \times n$ matrix with contains only the zero in $R$ by $\textbf{0}_n$. One sees clearly that this is the identity in $\Mn{n}{R}$ as $\textbf{M} + \textbf{0}_n = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
         
@@ -163,11 +165,20 @@ With these operations defined, we claim that
         
         \item \textbf{Multiplication-Associative}: We proved matrix multiplication is associative in Volume I.
         
-        \item \textbf{Distributive}: % TODO: Add distributive proof
+        \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly.
+        
+        Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
+        \begin{align*}
+            r_{i,j} &= \sum_{k=1}^n \left(a_{i,k} \otimes \left(b_{k,j} \oplus c_{k,j}\right)\right)\\
+            &= \sum_{k=1}^n \left((a_{i,k} \otimes b_{k,j}) \oplus (a_{i,k} \otimes c_{k,j})\right)\\
+            &= \left(\sum_{k=1}^n (a_{i,k} \otimes b_{k,j})\right) \oplus \left(\sum_{k=1}^n (a_{i,k} \otimes c_{k,j})\right)\\
+            &= g_{i,j}\otimes h_{i,j}
+        \end{align*}
+        which means $\textbf{R} = \textbf{G} + \textbf{H}$.
     \end{itemize}
     As all the ring axioms are satisfied, thus $\Mn{n}{R}$ is a ring.
 \end{proof}
-For brevity, let $\Mn{n}{R}$ denote the ring under matrix addition and multiplication.
+For brevity, we $\Mn{n}{R}$ denote the ring under matrix addition and multiplication.
 
 \section{Types of Rings}
 %TODO: Add
