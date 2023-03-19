@@ -37,20 +37,93 @@
 \frontmatterpages
 
 %=========================================
-\chapter{Basics of Rings}
-\section{Definition and Examples of Rings}
-We follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ringdefinition} for the definition of a ring.
+\chapter{Introduction to Rings}
+\section{Basic Algebraic Structures}
+In Volume I, we looked exclusively at groups and their operations. We discussed how groups are a generalisation of symmetry and looked at results related to groups. In this volume, we look at rings.
+
+Before we introduce rings, we look at `simpler' algebraic structures and build our way up to them.
+
+\begin{definition}
+    A \textbf{magma}\index{magma} is a set $M$ together with a binary operation $\ast$ which is closed. That is, if $a$ and $b$ are in $M$, then $a \ast b \in M$. Such a magma is denoted $(M, \ast)$.
+\end{definition}
+\begin{example}
+    Consider the set $M = \{1, 2, 3, 4\}$ with the operation $\ast$ such that $(M, \ast)$ has the Cayley table as shown below.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            $\ast$     & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} \\ \hline
+            \textbf{1} & 1          & 2          & 1          & 2          \\ \hline
+            \textbf{2} & 2          & 3          & 4          & 1          \\ \hline
+            \textbf{3} & 1          & 3          & 4          & 2          \\ \hline
+            \textbf{4} & 2          & 1          & 2          & 1          \\ \hline
+        \end{tabular}
+    \end{table}
+    
+    Clearly for any $a, b\in M$ we have $a \ast b \in M$, so $(M, \ast)$ is a magma.
+\end{example}
+
+\begin{definition}
+    A \textbf{semigroup}\index{semigroup} is a magma $(\mathcal{S}, \ast)$ where the operation $\ast$ is associative. That is, $a\ast(b\ast c) = (a\ast b)\ast c$.
+\end{definition}
+\begin{example}
+    Consider the set $S = \{1, 2, 3, 4\}$ with the operation $\ast$ such that $(S, \ast)$ has the Cayley table as shown below.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            $\ast$     & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} \\ \hline
+            \textbf{1} & 1          & 1          & 1          & 1          \\ \hline
+            \textbf{2} & 2          & 2          & 2          & 2          \\ \hline
+            \textbf{3} & 3          & 3          & 3          & 3          \\ \hline
+            \textbf{4} & 4          & 4          & 4          & 4          \\ \hline
+        \end{tabular}
+    \end{table}
+    
+    One sees that $(S, \ast)$ is closed under $\ast$. In addition, $\ast$ is associative. Hence $(S, \ast)$ is a semigroup.
+\end{example}
+
+\begin{definition}
+    A \textbf{monoid}\index{monoid} is a semigroup $(M, \ast)$ with an element $e$, called the \textbf{identity}, such that
+    \[
+        e \ast m = m \ast e = m
+    \]
+    for all $m \in M$.
+\end{definition}
+\begin{example}
+    Let $X$ be a set. Let the set
+    \[
+        S = \{f \vert  f: X \to X\}.
+    \]
+    and let $\circ$ denote function composition. Then $(S, \circ)$ forms a monoid:
+    \begin{itemize}
+        \item \textbf{Closure}: If $f, g \in S$ then $f\circ g \in S$ since function composition is closed.
+        \item \textbf{Associative}: Function composition is associative.
+        \item \textbf{Identity}: The identity function $\id: X \to X, x\mapsto x$ is inside $S$ and
+        \[
+            \id \circ f = f \circ \id = f
+        \]
+        for all $f \in S$.
+    \end{itemize}
+    Thus $(S, \circ)$ forms a monoid.
+\end{example}
+
+\begin{definition}
+    A \textbf{group}\index{group} is a monoid $(G, \ast)$ where every element has an inverse. That is to say, for every $g \in G$, there exists $g^{-1} \in G$ such that
+    \[
+        g \ast g^{-1} = g^{-1} \ast g = e
+    \]
+    where $e$ is the identity in $G$.
+\end{definition}
+
+\section{Definition of a Ring}
+With all that setup, we are ready to define what a ring is. Note that we follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ringdefinition} for the definition of a ring.
 \begin{definition}
     A \textbf{ring}\index{ring} is a set $R$ with two binary operations $\oplus$ and $\otimes$ satisfying the following axioms.
     \begin{itemize}
-        \item \textbf{Addition-Closure}\index{axiom!addition!closure}: For all elements $a$ and $b$ in $R$, $a \oplus b$ is also in $R$.
-        \item \textbf{Addition-Associativity}\index{axiom!addition!associativity}: For all elements $a$, $b$, and $c$ in $R$, we have $a \oplus (b \oplus c) = (a \oplus b) \oplus c$.
-        \item \textbf{Addition-Identity}\index{axiom!addition!identity}: There exists an element 0 in $R$ such that, for any element $x \in R$, we have $x \oplus 0 = x$.
-        \item \textbf{Addition-Inverse}\index{axiom!addition!inverse}: For every element $x$ in $R$, there exists an element $-x$ in $R$ such that $x \oplus (-x) = 0$.
-        \item \textbf{Addition-Commutative}\index{axiom!addition!commutative}: For all elements $a$ and $b$ in $R$, we have $a \oplus b = b \oplus a$.
-        \item \textbf{Multiplication-Closure}\index{axiom!multiplication!closure}: For all elements $a$ and $b$ in $R$, $a \otimes b$ is also in $R$.
-        \item \textbf{Multiplication-Associativity}\index{axiom!multiplication!associativity}: For all elements $a$, $b$, and $c$ in $R$, we have $a \otimes (b \otimes c) = (a \otimes b) \otimes c$.
-        \item \textbf{Distributive}\index{axiom!distributive}: $\otimes$ is distributive over $\oplus$. That is,
+        \item \textbf{Addition-Abelian}: $(R, \oplus)$ is an abelian group.
+        \item \textbf{Multiplication-Semigroup}: $(R, \otimes)$ is a semigroup.
+        \item \textbf{Distributive}: $\otimes$ is distributive over $\oplus$. That is,
         \begin{itemize}
             \item $a \otimes (b \oplus c) = (a \otimes b) \oplus (b \otimes c)$; and
             \item $(a \oplus b) \otimes c = (a \otimes c) \oplus (b \otimes c)$.
@@ -59,33 +132,39 @@ We follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hunger
     One may denote such a ring by $(R, \oplus, \otimes)$.
 \end{definition}
 \begin{remark}
-    An equivalent condition for the five axioms involving the addition operation is that $(R, \oplus)$ forms an abelian group.
+    Other authors (e.g. \cite[p.~136]{cohn_1982}, \cite[pp.~145--146]{clark_1984}) may require that $(R, \otimes)$ is a monoid. In this book, any ring that satisfies the above condition is called a \textbf{ring with identity}\index{ring!with identity}.
 \end{remark}
 \begin{remark}
-    Other authors (e.g. \cite[p.~136]{cohn_1982}, \cite[pp.~145--146]{clark_1984}) may include another axiom for a ring:
-    \begin{itemize}
-        \item \textbf{Multiplication-Identity}\index{axiom!multiplication!identity}: There exists an element 1 in $R$ such that, for any element $x \in R$, we have $x \otimes 1 = 1 \otimes x = x$.
-    \end{itemize}
-    In this book, any ring that satisfies the above condition is called a \textbf{ring with identity}\index{ring!with identity}.
-\end{remark}
-\begin{remark}
-    A ring that satisfies the condition that
-    \begin{itemize}
-        \item \textbf{Multiplication-Commutative}\index{axiom!multiplication!commutative}: For all $a$ and $b$ in $R$, we have $a \otimes b = b \otimes a$.
-    \end{itemize}
-    is called a \textbf{commutative ring}\index{ring!commutative}.
+    A ring where $a \otimes b = b \otimes a$ for all $a$ and $b$ in $R$ is called a \textbf{commutative ring}\index{ring!commutative}.
 \end{remark}
 
-We often write $\oplus$ using the standard addition symbol $+$. The multiplication symbol $\otimes$ is usually omitted. This means that $x \oplus y$ is written as $x + y$ and $x \otimes y$ is written as $xy$.
+We end this chapter by introducing the \textbf{trivial ring}.
+\begin{definition}
+    The \textbf{trivial ring}\index{trivial ring} (or \textbf{zero ring}\index{zero ring}), denoted $\textbf{0}$, is the ring $(\{0\}, +, \times)$ where
+    \[
+        0 + 0 = 0 \text{ and } 0 \times 0 = 0.    
+    \]
+\end{definition}
+\begin{exercise}
+    Prove that the trivial ring is a commutative ring with identity.
+\end{exercise}
 
-Note also that:
+%=========================================
+\chapter{Basics of Rings}
+\section{Basic Examples of Rings}
+Before we introduce some examples of rings, we make some remarks for the notation that is used in Ring Theory.
 \begin{itemize}
-    \item the additive identity of $R$ will always be denoted by 0; 
-    \item the additive inverse of the element $x$ will be denoted by $-x$;
-    \item $n$ applications of $\oplus$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$); and
+    \item We often write $\oplus$ using the standard addition symbol $+$, so $x \oplus y$ is written as $x + y$.
+    \item The multiplication symbol $\otimes$ is usually omitted, so $x \otimes y$ is written as $xy$.
+    \item The additive identity of $R$ will always be denoted by 0.
+    \item The additive inverse of the element $x$ will be denoted by $-x$.
+    \item $n$ applications of $\oplus$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$).
     \item $n$ applications of $\otimes$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if it exists).
 \end{itemize}
 
+\newpage
+
+%TODO: Rewrite below using new definition for rings
 Let's look at some examples of rings.
 \begin{example}
     We show that $(\Zn{n}, \oplus_n, \otimes_n)$, where $\oplus_n$ and $\otimes_n$ denote addition and multiplication modulo $n$ respectively, form a ring.
@@ -104,7 +183,7 @@ Let's look at some examples of rings.
     We show that $(\Q, +, \times)$, where $+$ and $\times$ denote normal addition and multiplication, form a ring.
     \begin{itemize}
         \item From Volume I we know that $(\Q, +)$ is an abelian group.
-        \item Clearly multipliying two rational numbers together produce a rational number, so $\Q$ is closed under multiplication.
+        \item Clearly multiplying two rational numbers together produce a rational number, so $\Q$ is closed under multiplication.
         \item Multiplication is associative.
         \item It is clear that $+$ and $\times$ distribute.
     \end{itemize}
@@ -121,7 +200,7 @@ Note that, in this volume, $\Z$ refers to the ring $(\Z, +, \times)$.
 
 We look at one more ring: the ring of $n \times n$ matrices.
 
-Let $\Mn{n}{R}$ denote the set of $n\times n$ matrices with entires in the ring $(R, \oplus, \otimes)$ (or simply just $R$).
+Let $\Mn{n}{R}$ denote the set of $n\times n$ matrices with entries in the ring $(R, \oplus, \otimes)$ (or simply just $R$).
 We need to define addition and multiplication within this set.
 \begin{itemize}
     \item We define \textbf{matrix addition}\index{matrix addition} within this set. Suppose we have $\textbf{A}, \textbf{B} \in \Mn{n}{R}$, and let their sum be $\textbf{C} = \textbf{A} + \textbf{B}$. Then
@@ -166,7 +245,7 @@ With these operations defined, we claim:
         that is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \textbf{0}_n$.\newline
         (Note that we denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$.)
 
-        \item \textbf{Multiplication-Closure}: In Volume I we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entires of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
+        \item \textbf{Multiplication-Closure}: In Volume I we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entries of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
         
         \item \textbf{Multiplication-Associative}: We proved matrix multiplication is associative in Volume I.
         
@@ -188,11 +267,42 @@ For brevity, we $\Mn{n}{R}$ denote the ring under matrix addition and multiplica
 \newpage
 
 \section{Types of Rings}
-%TODO: Add
+We now look at more specific types of rings.
+\begin{definition}
+    An \textbf{integral domain}\index{integral domain} $R$ is a commutative ring with identity such that for elements $a$ and $b$ in $R$,
+    \[
+        ab = 0 \text{ if and only if } a = 0 \text{ or } b = 0
+    \]
+\end{definition}
+
+\begin{definition}
+    A \textbf{division ring}\index{division ring} $R$ is a non-trivial ring such that every element $x$ in $R$ has a multiplicative inverse $x^{-1}$ where
+    \[
+        xx^{-1} = x^{-1}x = 1.    
+    \]
+\end{definition}
+
+\begin{definition}
+    A \textbf{field}\index{field} is a commutative division ring.
+\end{definition}
+We look at fields in more detail in Volume III.
+
+% TODO: Add
 
 %=========================================
 \appendix
 \chapter{Exercise Solutions}
+\section{Introduction to Rings}
+\begin{enumerate}
+    \item We note the following.
+    \begin{itemize}
+        \item $(\{0\}, +)$ is an abelian group by Volume I.
+        \item $(\{0\}, \times)$ is an abelian group by Volume I.
+        \item We know $+$ and $\times$ distribute.
+    \end{itemize}
+    Hence $(\{0\}, +, \times)$ is a commutative ring with identity.
+\end{enumerate}
+
 \section{Basics of Rings}
 \begin{enumerate}
     \item We note the following.
@@ -207,6 +317,9 @@ For brevity, we $\Mn{n}{R}$ denote the ring under matrix addition and multiplica
 
 %=========================================
 \chapter{Problem Solutions}
+\section{Introduction to Rings}
+No problems.
+
 \section{Basics of Rings}
 %TODO: Add
 
