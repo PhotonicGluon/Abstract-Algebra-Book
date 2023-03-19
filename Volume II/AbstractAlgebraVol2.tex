@@ -24,6 +24,7 @@
 
 %============== Resources ================
 \externaldocument{../Volume 0/AbstractAlgebraVol0}
+\externaldocument{../Volume I/AbstractAlgebraVol1}
 
 %=========== Custom Commands =============
 \newcommand{\Mn}[2]{\mathcal{M}_{#1}(#2)}  % The ring of n by n matrices with entries in the ring R
@@ -301,6 +302,77 @@ We look at fields in more detail in Volume III.
 
 % TODO: Add
 
+\section{General Properties of Rings}
+We list some properties of rings here.
+\begin{proposition}\label{prop-multiplying-by-zero-is-zero}
+    Let $R$ be a ring. Then $0x = x0 = 0$ for all $x \in R$.
+\end{proposition}
+\begin{proof}
+    We note that
+    \begin{align*}
+        0x &= (0 + 0)x & (0 \text{ is additive inverse})\\
+        &= 0x + 0x & (\text{by \textbf{Distributive} axiom})
+    \end{align*}
+    so by `adding' $-0x$ on both sides (i.e., subtracting $0x$ on both sides) we see $0 = 0x$. A similar argument shows that $x0 = 0$.
+\end{proof}
+
+\begin{proposition}
+    Let $R$ be a ring with identity. Then the multiplicative identity is unique.
+\end{proposition}
+\begin{proof}
+    Similar proof to \myref{prop-identity-is-unique}.
+\end{proof}
+
+\begin{proposition}
+    Let $R$ be a division ring and $x$ be a non-zero element in $R$. Then the multiplicative inverse of $x$ is unique.
+\end{proposition}
+\begin{proof}
+    Similar proof to \myref{prop-inverse-of-element-is-unique}.
+\end{proof}
+
+\begin{proposition}
+    Let $R$ be a ring. Then $(-1)x = -x$ for all $x \in R$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-negative-one-multiplied-by-element-is-inverse-of-element} (later).
+\end{proof}
+\begin{exercise}\label{exercise-negative-one-multiplied-by-element-is-inverse-of-element}
+    Prove that $(-1)x = -x$ for all $x \in R$ where $R$ is any ring.
+\end{exercise}
+\begin{proposition}
+    Let $R$ be a ring. Then
+    \[
+        (-a)b = a(-b) = -(ab)
+    \]
+    for any $a$ and $b$ in $R$.
+\end{proposition}
+\begin{proof}
+    We show that $(-a)b = -(ab)$ and $a(-b) = -(ab)$ to complete the proof.
+    \begin{itemize}
+        \item Note $(-a)b + ab = (-a + a)b = 0b = 0$ by \textbf{Distributive} axiom. Hence by subtracting $ab$ on both sides we see $(-a)b = -(ab)$.
+        \item Note also $a(-b) + ab = a(-b + b) = a0 = 0$ by \textbf{Distributive} axiom. Hence by subtracting $ab$ on both sides we see $a(-b) = -(ab)$.
+    \end{itemize}
+    Result follows.
+\end{proof}
+
+\begin{proposition}
+    Let $R$ be an integral domain, and let $a,b,c\in R$ such that $a \neq 0$. Then $ab = ac$ if and only if $b = c$.
+\end{proposition}
+\begin{proof}
+    The reverse direction is trivial: if $b = c$, then we may left-multiply both sides by $a$ to give $ab = ac$ as needed.
+
+    We prove the forward direction. Suppose $ab = ac$, meaning $ab - ac = 0$. By \textbf{Distributive} axiom we thus have $a(b - c) = 0$. Now by definition of an integral domain, $XY = 0$ if and only if $X = 0$ or $Y = 0$. Hence, $a = 0$ (which is impossible) or $b - c = 0$. Thus $b = c$.
+\end{proof}
+
+% TODO: Add more
+
+\newpage
+
+\section{Problems}
+\begin{problem}  % TODO: Add solution
+    Prove that the trivial ring is the unique ring in which $0 = 1$.
+\end{problem}
+
 %=========================================
 \appendix
 \chapter{Exercise Solutions}
@@ -328,6 +400,15 @@ We look at fields in more detail in Volume III.
         \item \textbf{Distributive}: We know $+$ and $\times$ distribute.
     \end{itemize}
     Hence $(\Z, +, \times)$ is a ring.
+
+    \item We note that $-1$ is the additive inverse of the multiplicative identity, 1. One observes that
+    \begin{align*}
+        (-1)x + x &= (-1)x + 1x\\
+        &= (-1 + 1)x & (\textbf{Distributive} \text{ axiom})\\
+        &= 0x\\
+        &= 0 & (\text{by \myref{prop-multiplying-by-zero-is-zero}})
+    \end{align*}
+    which means $(-1)x + x = 0$. Subtracting $x$ on both sides yields $(-1)x = -x$ as required.
 \end{enumerate}
 
 %=========================================
