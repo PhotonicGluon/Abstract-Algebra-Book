@@ -123,7 +123,7 @@ With all that setup, we are ready to define what a ring is. Note that we follow 
     \begin{itemize}
         \item \textbf{Addition-Abelian}: $(R, \oplus)$ is an abelian group.
         \item \textbf{Multiplication-Semigroup}: $(R, \otimes)$ is a semigroup.
-        \item \textbf{Distributive}: $\otimes$ is distributive over $\oplus$. That is,
+        \item \textbf{Distribution}: $\otimes$ is distributive over $\oplus$. That is,
         \begin{itemize}
             \item $a \otimes (b \oplus c) = (a \otimes b) \oplus (b \otimes c)$; and
             \item $(a \oplus b) \otimes c = (a \otimes c) \oplus (b \otimes c)$.
@@ -162,19 +162,19 @@ Before we introduce some examples of rings, we make some remarks for the notatio
     \item $n$ applications of $\otimes$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if it exists).
 \end{itemize}
 
-\newpage
-
-%TODO: Rewrite below using new definition for rings
 Let's look at some examples of rings.
 \begin{example}
     We show that $(\Zn{n}, \oplus_n, \otimes_n)$, where $\oplus_n$ and $\otimes_n$ denote addition and multiplication modulo $n$ respectively, form a ring.
     \begin{itemize}
-        \item From Volume I we know that $(\Zn, \oplus_n)$ is an abelian group.
-        \item Clearly $a \otimes_n b \in \{0, 1, 2, \dots, n-1\} = \Zn{n}$, so the $\Zn{n}$ is closed under $\otimes_n$.
-        \item Multiplication is associative, so multiplication modulo $n$ is associative.
-        \item It is clear that $\oplus_n$ and $\otimes_n$ distribute.
+        \item \textbf{Addition-Abelian}: From Volume I we know that $(\Zn, \oplus_n)$ is an abelian group.
+        \item \textbf{Multiplication-Semigroup}: We can see that $(\Zn, \otimes_n)$ is a semigroup as
+        \begin{itemize}
+            \item $\Zn{n}$ is closed under $\otimes_n$ because $a \otimes_n b \in \{0, 1, 2, \dots, n-1\} = \Zn{n}$; and
+            \item multiplication is associative, so multiplication modulo $n$ is associative.
+        \end{itemize}
+        \item \textbf{Distribution}: It is clear that $\oplus_n$ and $\otimes_n$ distribute.
     \end{itemize}
-    Hence $(\Zn{n}, \oplus_n, \otimes_n)$ is a ring. Furthermore, $\otimes_n$ has an identity of 1 and is commutative. Hence $(\Zn{n}, \oplus_n, \otimes_n)$ is a commutative ring with identity.
+    Hence $(\Zn{n}, \oplus_n, \otimes_n)$ is a ring. Furthermore, $\otimes_n$ has an identity of 1 and is commutative, so in fact $(\Zn, \otimes_n)$ is a commutative monoid. Therefore $(\Zn{n}, \oplus_n, \otimes_n)$ is a commutative ring with identity.
 
     Note that, in this volume, $\Zn{n}$ refers to the ring $(\Zn{n}, \oplus_n, \otimes_n)$.
 \end{example}
@@ -182,10 +182,13 @@ Let's look at some examples of rings.
 \begin{example}
     We show that $(\Q, +, \times)$, where $+$ and $\times$ denote normal addition and multiplication, form a ring.
     \begin{itemize}
-        \item From Volume I we know that $(\Q, +)$ is an abelian group.
-        \item Clearly multiplying two rational numbers together produce a rational number, so $\Q$ is closed under multiplication.
-        \item Multiplication is associative.
-        \item It is clear that $+$ and $\times$ distribute.
+        \item \textbf{Addition-Abelian}: From Volume I we know that $(\Q, +)$ is an abelian group.
+        \item \textbf{Multiplication-Semigroup}: We note that $(\Q, \times)$ is a semigroup as
+        \begin{itemize}
+            \item $Q$ is closed under $\times$ because multiplying two rational numbers together produce a rational number; and
+            \item multiplication is associative.
+        \end{itemize}
+        \item \textbf{Distribution}: It is clear that $+$ and $\times$ distribute.
     \end{itemize}
     Hence $(\Q, +, \times)$ is a ring. Furthermore, $\times$ has an identity of 1 and is commutative. So, just like $\Zn{n}$, we see that $(\Q, +, \times)$ is a commutative ring with identity.
 
@@ -217,39 +220,50 @@ We need to define addition and multiplication within this set.
     where $\oplus$ and $\otimes$ are the addition and multiplication operations in the ring $R$ respectively.
 \end{itemize}
 
-\newpage
-
-With these operations defined, we claim:
 \begin{proposition}
     $\Mn{n}{R}$ is a ring under matrix addition and matrix multiplication.
 \end{proposition}
 \begin{proof}
-    We need to prove that the ring axioms hold.
+    We need to prove that the ring axioms hold. For cl
     \begin{itemize}
-        \item \textbf{Addition-Closure}: Clearly the sum of any two matrices in $\Mn{n}{R}$ is also a square matrix with $n$ rows with elements inside $R$, meaning that $\Mn{n}{R}$ is closed under matrix addition.
+        \item \textbf{Addition-Abelian}: We first prove that $(\Mn{n}{R}, +)$ is indeed an abelian group.
+        \begin{itemize}
+            \item \textbf{Closure}: Clearly the sum of any two matrices in $\Mn{n}{R}$ is also a square matrix with $n$ rows with elements inside $R$, meaning that $\Mn{n}{R}$ is closed under matrix addition.
 
-        \item \textbf{Addition-Associative}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. Let $\textbf{P} = \textbf{A} + (\textbf{B} + \textbf{C})$ and $\textbf{Q} = (\textbf{A} + \textbf{B}) + \textbf{C}$. We note that $\textbf{P} = \textbf{Q}$ as
-        \begin{align*}
-            p_{i,j} &= a_{i,j} \otimes (b_{i,j} \otimes c_{i,j})\\
-            &= (a_{i,j} \otimes b_{i,j}) \otimes c_{i,j} & (\otimes\text{ is associative})\\
-            &= q_{i,j}
-        \end{align*}
-        which proves that matrix addition is associative.
+            \item \textbf{Associative}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. Let $\textbf{P} = \textbf{A} + (\textbf{B} + \textbf{C})$ and $\textbf{Q} = (\textbf{A} + \textbf{B}) + \textbf{C}$. We note that $\textbf{P} = \textbf{Q}$ as
+            \begin{align*}
+                p_{i,j} &= a_{i,j} \otimes (b_{i,j} \otimes c_{i,j})\\
+                &= (a_{i,j} \otimes b_{i,j}) \otimes c_{i,j} & (\otimes\text{ is associative})\\
+                &= q_{i,j}
+            \end{align*}
+            which proves that matrix addition is associative.
+    
+            \item \textbf{Identity}: Denote the $n \times n$ matrix with contains only the zero in $R$ by $\textbf{0}_n$. One sees clearly that this is the identity in $\Mn{n}{R}$ as $\textbf{M} + \textbf{0}_n = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
+            
+            \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ where
+            \[
+                b_{i,j} = -a_{i,j},    
+            \]
+            that is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \textbf{0}_n$.\newline
+            (Note that we denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$.)
 
-        \item \textbf{Addition-Identity}: Denote the $n \times n$ matrix with contains only the zero in $R$ by $\textbf{0}_n$. One sees clearly that this is the identity in $\Mn{n}{R}$ as $\textbf{M} + \textbf{0}_n = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
-        
-        \item \textbf{Addition-Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ where
-        \[
-            b_{i,j} = -a_{i,j},    
-        \]
-        that is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \textbf{0}_n$.\newline
-        (Note that we denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$.)
+            \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{C}$. Then
+            \begin{align*}
+                c_{i,j} &= a_{i,j} \oplus b_{i,j}\\
+                &= b_{i,j} \oplus a_{i,j} & (\oplus \text{ is commutative})\\
+                &= d_{i,j}
+            \end{align*}
+            which means $\textbf{C} = \textbf{D}$.
+        \end{itemize}
 
-        \item \textbf{Multiplication-Closure}: In Volume I we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entries of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
+        \item \textbf{Multiplication-Semigroup}: We now need to prove that $(\Mn{n}{R}, \cdot)$ is a semigroup.
+        \begin{itemize}
+            \item \textbf{Closure}: In Volume I we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entries of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
         
-        \item \textbf{Multiplication-Associative}: We proved matrix multiplication is associative in Volume I.
+            \item \textbf{Associative}: We proved matrix multiplication is associative in Volume I.
+        \end{itemize}
         
-        \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly.
+        \item \textbf{Distribution}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly.
         
         Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
         \begin{align*}
@@ -262,9 +276,7 @@ With these operations defined, we claim:
     \end{itemize}
     As all the ring axioms are satisfied, thus $\Mn{n}{R}$ is a ring.
 \end{proof}
-For brevity, we $\Mn{n}{R}$ denote the ring under matrix addition and multiplication.
-
-\newpage
+For brevity, we let $\Mn{n}{R}$ denote the ring under matrix addition and multiplication.
 
 \section{Types of Rings}
 We now look at more specific types of rings.
@@ -276,7 +288,7 @@ We now look at more specific types of rings.
 \end{definition}
 
 \begin{definition}
-    A \textbf{division ring}\index{division ring} $R$ is a non-trivial ring such that every element $x$ in $R$ has a multiplicative inverse $x^{-1}$ where
+    A \textbf{division ring}\index{division ring} $R$ is a non-trivial ring such that every non-zero element $x$ in $R$ has a multiplicative inverse $x^{-1}$ where
     \[
         xx^{-1} = x^{-1}x = 1.    
     \]
@@ -296,9 +308,9 @@ We look at fields in more detail in Volume III.
 \begin{enumerate}
     \item We note the following.
     \begin{itemize}
-        \item $(\{0\}, +)$ is an abelian group by Volume I.
-        \item $(\{0\}, \times)$ is an abelian group by Volume I.
-        \item We know $+$ and $\times$ distribute.
+        \item \textbf{Addition-Abelian}: $(\{0\}, +)$ is an abelian group by Volume I.
+        \item \textbf{Multiplication-Semigroup}: $(\{0\}, \times)$ is an abelian group by Volume I.
+        \item \textbf{Distribution}: We know $+$ and $\times$ distribute.
     \end{itemize}
     Hence $(\{0\}, +, \times)$ is a commutative ring with identity.
 \end{enumerate}
@@ -307,10 +319,13 @@ We look at fields in more detail in Volume III.
 \begin{enumerate}
     \item We note the following.
     \begin{itemize}
-        \item $(\Z, +)$ is an abelian group by Volume I.
-        \item Multiplying two integers always results in an integer, so $\Z$ is closed under $\times$.
-        \item We know $\times$ is associative.
-        \item We know $+$ and $\times$ distribute.
+        \item \textbf{Addition-Abelian}: $(\Z, +)$ is an abelian group by Volume I.
+        \item \textbf{Multiplication-Semigroup}: $(\Z, \times)$ is a semigroup since
+        \begin{itemize}
+            \item multiplying two integers always results in an integer, so $\Z$ is closed under $\times$; and
+            \item $\times$ is associative.
+        \end{itemize}
+        \item \textbf{Distribution}: We know $+$ and $\times$ distribute.
     \end{itemize}
     Hence $(\Z, +, \times)$ is a ring.
 \end{enumerate}
