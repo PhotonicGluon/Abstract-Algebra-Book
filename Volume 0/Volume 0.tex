@@ -30,7 +30,13 @@
 
 % Suggestions of use
 \newcommand{\interdependencenotes}{
-    % TODO: Update
+    \begin{itemize}
+        \item All chapters of this volume are essential to understand for future volumes. Readers who are familiar with the content may skip this volume.
+        \item Knowledge of chapter 1 is needed for both chapters 2 and 3.
+        \item The only thing that is needed from chapter 2 for chapter 3 is knowledge of function notation. In particular, \myref{example-strong-induction-on-function} is the only example that requires knowledge of functions.
+        \item Chapters 4 and 5 are independent from the other chapters of this book.
+        \item B\'{e}zout's Lemma (\myref{lemma-bezout}) is the sole result that is used from chapter 4 in chapter 5.
+    \end{itemize}
 }
 
 %=========================================
@@ -809,7 +815,7 @@ Strong mathematical induction involves two steps:
     \end{proof}
 \end{example}
 
-\begin{example}
+\begin{example}\label{example-strong-induction-on-function}
     Let $\mathbb{Z}^+$ denote the set of positive integers, and consider the function $f: \left(\mathbb{Z}^+\right)^2\to\mathbb{Z}^+$ where
     \[
         f(m, n) =
@@ -1108,7 +1114,7 @@ The operation of congruence modulo $n$ has a few properties\index{congruence!pro
     A multiplicative inverse of $a$ modulo $m$ exists if and only if $\gcd(a,m) = 1$.
 \end{proposition}
 \begin{proof}
-    We first work forwards and suppose $k$ is the multiplicative inverse of $a$ modulo $m$. Then $ka \equiv 1 \pmod m$. Hence $ka - 1 \equiv 0 \pmod m$, so $m$ divides $ka - 1$. This means that $ka - 1$ is a multiple of $m$, so $ka - 1 = pm$ for some integer $p$. Therefore $ka + pm = 1$ By B\'{e}zout's Lemma \myref{lemma-bezout} this means that $\gcd(a, m) = 1$.
+    We first work forwards and suppose $k$ is the multiplicative inverse of $a$ modulo $m$. Then $ka \equiv 1 \pmod m$. Hence $ka - 1 \equiv 0 \pmod m$, so $m$ divides $ka - 1$. This means that $ka - 1$ is a multiple of $m$, so $ka - 1 = pm$ for some integer $p$. Therefore $ka + pm = 1$ By B\'{e}zout's Lemma (\myref{lemma-bezout}) this means that $\gcd(a, m) = 1$.
     
     Now, working in the reverse direction, suppose $\gcd(a, m) = 1$. By B\'{e}zout's Lemma this means there exist integers $k$ and $p$ such that $ka + pm = 1$. Then $ka - 1 = pm$ which means $m$ divides $ka - 1$, which hence means $ka - 1 \equiv 0 \pmod m$ which the result quickly yields.
 \end{proof}
