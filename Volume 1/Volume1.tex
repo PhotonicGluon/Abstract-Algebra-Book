@@ -196,6 +196,8 @@ So what is a group?
 
 Usually, for the brevity of notation, we will write $a \ast b$ as $ab$. We will look at more properties of groups in later chapters. We would usually suppress the operation $\ast$ when defining a group, so instead of saying that the group is $(G, \ast)$, we just say that the group is $G$.
 
+We will look at examples of groups in the next chapter.
+
 \newpage
 
 \section{Problems}
@@ -467,7 +469,7 @@ We note a few things about the order of elements in a group.
     \item A finite group is always periodic because all elements in a finite group has finite order.
     \item The order of any element in a group divides the order of the group.
 \end{itemize}
-The last point is actually a corollary of Lagrange's Theorem \myref{thrm-lagrange}. We will look into its proof in the next chapter.
+The last point is actually a corollary of Lagrange's Theorem (\myref{thrm-lagrange}). We will look into its proof in the next chapter.
 
 \begin{exercise}
     Let $i$ be a number such that $i^2 = -1$. Let $\mathcal{S} = \{1, -1, i, -i\}$.
@@ -674,7 +676,7 @@ We note that the dihedral group acts on a regular $n$-gon. We explore more facts
 
 \begin{problem}\label{problem-element-to-power-of-multiple-of-order-is-identity}
     Let $G$ be a group with identity $e$. Suppose an element $x$ in $G$ has finite order $k$. Prove that $n$ is a multiple of $k$ if and only if $a^n = e$.\newline
-    (\textit{Hint: consider Euclid's division lemma \myref{lemma-euclid-division} to prove one direction of the claim.})
+    (\textit{Hint: consider Euclid's division lemma (\myref{lemma-euclid-division}) to prove one direction of the claim.})
 \end{problem}
 
 \begin{problem}
@@ -700,13 +702,13 @@ We note that the dihedral group acts on a regular $n$-gon. We explore more facts
     \[
         T(x, y) = (-y, x+y).
     \]
-    Define the set $A = \{T^r \vert r \in \mathbb{Z} \text{ and } r \geq 1\}$. Show that $A$ is a group under function composition $\circ$, and give the order of this group.
+    Define the set $A = \{T^r \vert r \in \mathbb{Z} \text{ and } r \geq 1\}$. Show that $A$ is a group under function composition ($\circ$), and state the order of this group.
 \end{problem}
 
 %=========================================
 \chapter{Subgroups}
 \section{Definition and Examples}
-We look at the notion of a subgroup of a group.
+We look at the definition of a subgroup of a group.
 \begin{definition}
     Let $G$ be a group with operation $\ast$. Let $H$ be a subset of $G$. Then $H$ is said to be a \textbf{subgroup}\index{subgroup} of $G$ if it satisfies the following conditions.
     \begin{enumerate}
@@ -982,7 +984,7 @@ We are now ready to state and prove Lagrange's theorem.
     with $g_iH \cap g_jH = \emptyset$ if $i \neq j$. Thus,
     \begin{align*}
         |G| &= \sum_{i=1}^k|g_iH|\\
-        &=\sum_{i=1}^k|H| & (\text{by \myref{lemma-order-of-coset}})\\
+        &=\sum_{i=1}^k|H| & (\myref{lemma-order-of-coset})\\
         &= k|H|
     \end{align*}
     and since $k = [G: H]$, therefore $|G| = [G:H]|H|$, proving Lagrange's theorem.
@@ -1383,7 +1385,7 @@ For the next few properties, define
 \end{proof}
 
 \begin{exercise}
-    Prove or disprove: if $H_1 \unlhd G_1$, then $\phi(H_1) \unlhd G_2$.
+    Prove or disprove the following statement: if $H_1 \unlhd G_1$, then $\phi(H_1) \unlhd G_2$.
 \end{exercise}
 
 \section{Isomorphisms}
@@ -1491,7 +1493,7 @@ Isomorphisms between groups means that the two groups \textit{share the same str
         \end{align*}
         Thus any element $u$ in $H$ is in $\left\langle \phi(g) \right\rangle$, meaning $H \subseteq \left\langle \phi(g) \right\rangle$.
 
-        However, $\left\langle \underbrace{\phi(g)}_{\text{In }H} \right\rangle \leq H$ which means that $\left\langle \phi(g) \right\rangle \subseteq H$. Therefore, we have $H \subseteq \left\langle \phi(g) \right\rangle$ and $\left\langle \phi(g) \right\rangle \subseteq H$ simultaneously, meaning $H = \left\langle \phi(g) \right\rangle$, i.e. $H$ is a cyclic group.
+        However, as $\phi(g) \in H$, thus $\left\langle \phi(g) \right\rangle \leq H$ which means that $\left\langle \phi(g) \right\rangle \subseteq H$. Therefore, we have $H \subseteq \left\langle \phi(g) \right\rangle$ and $\left\langle \phi(g) \right\rangle \subseteq H$ simultaneously, meaning $H = \left\langle \phi(g) \right\rangle$, i.e. $H$ is a cyclic group.
 
         \item Suppose $K \leq G$ with $|K| = n$. Consider the subgroup $\phi(K)$. By properties of homomorphism, $\phi(K) \leq H = \phi(G)$. Now by property (1), $|K| = |\phi(K)| = n$, meaning that there is a subgroup of $H$ with order $n$, namely the subgroup $\phi(K)$.
     \end{enumerate}
@@ -1502,6 +1504,8 @@ Isomorphisms between groups means that the two groups \textit{share the same str
 \begin{exercise}
     Let $\phi: G \to H$ be an isomorphism between the groups $G$ and $H$. Show that if $G$ has a normal subgroup with order $k$, then $H$ also has a normal subgroup of order $k$.
 \end{exercise}
+
+\newpage
 
 \section{Links to Cyclic Groups}
 With the tool of isomorphism under our belt, we can prove two important theorems regarding cyclic groups. Before that, however, we formally introduce the idea of infinite cyclic groups.
