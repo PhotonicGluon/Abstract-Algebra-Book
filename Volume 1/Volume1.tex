@@ -73,7 +73,7 @@
 %=========================================
 \chapter{Introduction To Groups}
 \section{The Study of Symmetry}
-A group is a \textit{collection of symmetries of something}. A symmetry of something is a \textit{mapping} from something to itself that \textit{preserves structure}. This is, of course, not the formal definition of a group, but it gives an intuition of \textit{why} mathematicians care about groups.
+A group is a \textit{collection of symmetries of something}. A symmetry is a \textit{mapping} from something to itself that \textit{preserves structure}. This is, of course, not the formal definition of a group, but it gives an intuition of \textit{why} mathematicians care about groups.
 
 \begin{wrapfigure}{r}{0.35\textwidth}
     \centering
@@ -183,7 +183,7 @@ The last axiom is hard to discover naturally and hard to motivate, but is absolu
 
 So what is a group?
 \begin{definition}
-    A group\index{group} is a set $G$ together with a operation on $G$, here denoted by $\ast$, satisfying the following conditions:
+    A group\index{group} is a set $G$ together with a operation on $G$, here denoted by $\ast$, satisfying the following axioms.
     \begin{enumerate}
         \item \textbf{Closure}\index{axiom!of closure}: For all elements $a$ and $b$ in $G$, $a \ast b$ is also in $G$.
         \item \textbf{Associativity}\index{axiom!of associativity}: For all elements $a, b$, and $c$ in $G$, we have $a \ast (b \ast c) = (a \ast b) \ast c$.
@@ -220,7 +220,7 @@ Determine whether the following are groups. If they are, prove it. If not, expla
 %=========================================
 \chapter{Basics of Groups}
 \section{Basic Examples of Groups}
-Recall that a group has 4 axioms:
+Recall that a group satisfies four axioms.
 \begin{enumerate}
     \item \textbf{Closure}: For all elements $a$ and $b$ in $G$, $a \ast b$ is also in $G$.
     \item \textbf{Associativity}: For all elements $a, b$, and $c$ in $G$, we have $a \ast (b \ast c) = (a \ast b) \ast c$.
@@ -255,7 +255,7 @@ We now look at the notion of $\mathbb{Z}_n$.
     The set $\mathbb{Z}_n = \{0, 1, 2, \dots, n-1\}$ where $n$ is a non-negative integer.
 \end{definition}
 \begin{proposition}
-    The set $\mathbb{Z}_n$ with the operation $\oplus_n$ forms a group (where $a \oplus_n b = (a + b) \pmod{n}$).
+    The set $\mathbb{Z}_n$ with the operation $\oplus_n$ forms a group, where $\oplus_n$ is addition modulo $n$. That is, $a \oplus_n b = (a + b) \pmod{n}$.
 \end{proposition}
 \begin{proof}
     We prove this by showing the group axioms hold.
@@ -263,7 +263,8 @@ We now look at the notion of $\mathbb{Z}_n$.
         \item \textbf{Closure}: For $a$ and $b$ in $\mathbb{Z}_n$, $a \oplus_n b = (a + b) \pmod{n}$ is a integer between 0 and $n - 1$. Thus $a \oplus b$ is inside $\mathbb{Z}_n$.
         \item \textbf{Associativity}: For $a$, $b$, and $c$ in $\mathbb{Z}_n$, since addition is associative, thus $a \oplus_n (b \oplus_n c) = (a + (b + c)) \pmod{n} = ((a + b) + c) \pmod{n} = (a \oplus_n b) \oplus_n c$.
         \item \textbf{Identity}: The identity is $0$ since for every $x$ in $\mathbb{Z}_n$, $0 \oplus_n x = (0 + x) \pmod{n} = (x + 0) \pmod{n} = x \oplus_n 0 = x$.
-        \item \textbf{Inverse}: For inverses, \begin{itemize}
+        \item \textbf{Inverse}:
+        \begin{itemize}
             \item $0$ is its own inverse since $0 \oplus_n 0 = 0$ which is the identity.
             \item For any other integer $x$ in $\mathbb{Z}_n$, the inverse is $n - x$. Since $1 \leq x \leq n - 1$, thus $1 \leq n - x \leq n - 1$ so $n - x$ is indeed in $\mathbb{Z}_n$. Also, $x \oplus_n (n - x) = (x + (n - x)) \pmod{n} = n \pmod{n} = 0$ and $(n - x) \oplus_n x = ((n-x) + x)\pmod{n} = n \pmod{n} = 0$.
         \end{itemize}
@@ -293,20 +294,20 @@ One could use a \textbf{Cayley table}\index{cayley table} (or \textbf{group tabl
 
     \newpage
 
-    Note that:
+    One observes from the above table that
     \begin{enumerate}
-        \item For all $x$ and $y$ in $\mathbb{Z}_6$, $x \oplus_6 y$ is in $\mathbb{Z}_6$ from the above table.
-        \item For all $x, y$, and $z$ in $\mathbb{Z}_6$, $x \oplus_6 (y \oplus_6 z) = (x \oplus_6 y) \oplus_6 z$ from the above table.
-        \item 0 is the identity since adding anything to it returns the original number.
-        \item Every row has an integer that when added gives 0.
+        \item for all $x$ and $y$ in $\mathbb{Z}_6$, $x \oplus_6 y$ is in $\mathbb{Z}_6$;
+        \item for all $x, y$, and $z$ in $\mathbb{Z}_6$, $x \oplus_6 (y \oplus_6 z) = (x \oplus_6 y) \oplus_6 z$;
+        \item 0 is the identity since adding anything to it returns the original number; and
+        \item every row has an integer that, when added, gives 0.
     \end{enumerate}
     Thus $(\mathbb{Z}_6, \oplus_6)$ is a group.
 \end{example}
 
-It should be noted that, in this book, we use the convention of reading the \textbf{row before the column} in a group table. However, since this is an abelian group, the order does not matter. We will look at Cayley tables of non-abelian groups later.
+It should be noted that, in this book, we use the convention of reading the \textbf{row before the column} in a group table. However, since $(\mathbb{Z}_6, \oplus_6)$ is an abelian group, the order does not matter. We will look at Cayley tables of non-abelian groups later.
 
 \begin{exercise}
-    Let $a \otimes_n b = (a \times b) \pmod{n}$. By using a Cayley table, show that $(\mathbb{Z}_6, \otimes_6)$ does \textbf{not} form a group.
+    Let $\otimes_n$ denote multiplication modulo $n$, i.e. $a \otimes_n b = (a \times b) \pmod{n}$. By using a Cayley table, show that $(\mathbb{Z}_6, \otimes_6)$ does \textbf{not} form a group.
 \end{exercise}
 
 \section{General Properties of Groups}
@@ -332,7 +333,7 @@ Note that some laws of exponents apply to the above operation.
     \item $x^{m+n} = x^m \ast x^n$
     \item $\left(x^m\right)^n = x^{mn}$
 \end{itemize}
-Proof of these properties are left as an exercise for the reader.
+Proof of these laws are left as an exercise for the reader.
 
 We are now ready to prove some properties of groups.
 \begin{proposition}\label{prop-identity-is-unique}
@@ -345,8 +346,8 @@ We are now ready to prove some properties of groups.
     \]
     since they are identities. Thus,
     \begin{align*}
-        e_1 &= e_1e_2 & (\text{since } e_2 \text{ is an identity, so } xe_2 = x)\\
-        &= e_2 & (\text{since } e_1 \text{ is an identity, so } xe_1 = x)
+        e_1 &= e_1e_2 & (e_2 \text{ is an identity, so } xe_2 = x)\\
+        &= e_2 & (e_1 \text{ is an identity, so } xe_1 = x)
     \end{align*}
     Hence $e_1 = e_2$, meaning that the identity of a group is unique.
 \end{proof}
@@ -370,11 +371,11 @@ We are now ready to prove some properties of groups.
     \]
     Note that
     \begin{align*}
-        a &= ae & (\text{since } e \text{ is the identity})\\
-        &= a(xb) & (\text{since } b \text{ is an inverse, so } xb = e)\\
-        &= (ax)b & (\text{by associativity})\\
-        &= eb & (\text{since } a \text{ is an inverse, so } ax = e)\\
-        &= b & (\text{since } e \text{ is the identity})
+        a &= ae & (e \text{ is the identity})\\
+        &= a(xb) & (b \text{ is an inverse, so } xb = e)\\
+        &= (ax)b & (\text{associativity})\\
+        &= eb & (a \text{ is an inverse, so } ax = e)\\
+        &= b & (e \text{ is the identity})
     \end{align*}
     Therefore $a = b$. Thus the inverse of $x$ is unique.
 \end{proof}
@@ -385,17 +386,17 @@ We are now ready to prove some properties of groups.
 \begin{proof}
     Recall that if $g^{-1}$ is the inverse of $g$ then $gg^{-1} = g^{-1}g = e$. We will show that $(ab)(b^{-1}a^{-1}) = e$ and $(b^{-1}a^{-1})(ab) = e$.
     \begin{align*}
-        (ab)(b^{-1}a^{-1}) &= a(bb^{-1})a^{-1} & (\text{by associativity})\\
-        &= a(e)a^{-1} & (\text{since } bb^{-1} = e)\\
-        &= aa^{-1} & (\text{since } e \text{ is the identity})\\
-        &= e & (\text{since } aa^{-1} = e),
+        (ab)(b^{-1}a^{-1}) &= a(bb^{-1})a^{-1} & (\text{associativity})\\
+        &= a(e)a^{-1} & (bb^{-1} = e)\\
+        &= aa^{-1} & (e \text{ is the identity})\\
+        &= e & (aa^{-1} = e),
     \end{align*}
     and,
     \begin{align*}
-        (b^{-1}a^{-1})(ab) &= b^{-1}(a^{-1}a)b & (\text{by associativity})\\
-        &= b^{-1}(e)b & (\text{since } a^{-1}a = e)\\
-        &= b^{-1}b & (\text{since } e \text{ is the identity})\\
-        &= e & (\text{since } b^{-1}b = e).
+        (b^{-1}a^{-1})(ab) &= b^{-1}(a^{-1}a)b & (\text{associativity})\\
+        &= b^{-1}(e)b & (a^{-1}a = e)\\
+        &= b^{-1}b & (e \text{ is the identity})\\
+        &= e & ( b^{-1}b = e).
     \end{align*}
     Thus, $b^{-1}a^{-1}$ is the inverse of $ab$, so $(ab)^{-1} = b^{-1}a^{-1}$
 \end{proof}
@@ -418,16 +419,16 @@ We now prove an important property of groups: the \textbf{cancellation law}.
         \item Suppose $gx = gy$. Then
         \begin{align*}
             &g^{-1}(gx) = g^{-1}(gy) & (\text{left multiply by } g^{-1})\\
-            &(g^{-1}g)x = (g^{-1}g)y & (\text{by associativity})\\
-            &ex = ey & (\text{since } g^{-1}g = e)\\
-            &x = y & (\text{since } e \text{ is the identity})
+            &(g^{-1}g)x = (g^{-1}g)y & (\text{associativity})\\
+            &ex = ey & (g^{-1}g = e)\\
+            &x = y & (e \text{ is the identity})
         \end{align*}
         \item Suppose $xg = yg$. Then
         \begin{align*}
             &(xg)g^{-1} = (yg)g^{-1} & (\text{right multiply by } g^{-1})\\
-            &x(gg^{-1}) = y(gg^{-1}) & (\text{by associativity})\\
-            &xe = ye & (\text{since } gg^{-1} = e)\\
-            &x = y & (\text{since } e \text{ is the identity})
+            &x(gg^{-1}) = y(gg^{-1}) & (\text{associativity})\\
+            &xe = ye & (gg^{-1} = e)\\
+            &x = y & (e \text{ is the identity})
         \end{align*}
     \end{enumerate}
     This completes the proof.
@@ -457,12 +458,12 @@ Let's now look at the order of an element.
 Note that if $n$ is infinite, we say that the order of $g$ is infinite (or that $g$ has infinite order).
 
 \begin{example}
-    Consider the group $(\mathbb{Z}_4, \oplus_4)$ and its 4 elements 0, 1, 2, and 3.
+    Consider the group $G = (\mathbb{Z}_4, \oplus_4)$ and its 4 elements 0, 1, 2, and 3.
     \begin{itemize}
-        \item The element $0$ has order 1 since $0^1 = 0$, which is the identity. Thus $|0| = 1$ in $(\mathbb{Z}_4, \oplus_4)$.
-        \item The element $1$ has order 4 since $1 \oplus_4 1 \oplus_4 1 \oplus_4 1 = 0$ and no smaller $n$ than 4 exists. Thus $|1| = 4$ in $(\mathbb{Z}_4, \oplus_4)$.
-        \item The element $2$ has order 2 since $2 \oplus_4 2 = 0$ and no smaller $n$ than 2 exists. Thus $|2| = 2$ in $(\mathbb{Z}_4, \oplus_4)$.
-        \item The element $3$ has order 4 since $3 \oplus_4 3 \oplus_4 3 \oplus_4 3 = 0$ and no smaller $n$ than 4 exists. Thus $|3| = 4$ in $(\mathbb{Z}_4, \oplus_4)$.
+        \item The element $0$ has order 1 since $0^1 = 0$, which is the identity. Thus $|0| = 1$ in $G$.
+        \item The element $1$ has order 4 since $1 \oplus_4 1 \oplus_4 1 \oplus_4 1 = 0$ and no smaller $n$ than 4 exists. Thus $|1| = 4$ in $G$.
+        \item The element $2$ has order 2 since $2 \oplus_4 2 = 0$ and no smaller $n$ than 2 exists. Thus $|2| = 2$ in $G$.
+        \item The element $3$ has order 4 since $3 \oplus_4 3 \oplus_4 3 \oplus_4 3 = 0$ and no smaller $n$ than 4 exists. Thus $|3| = 4$ in $G$.
     \end{itemize}
 \end{example}
 
@@ -473,7 +474,7 @@ We note a few things about the order of elements in a group.
     \item A finite group is always periodic because all elements in a finite group has finite order.
     \item The order of any element in a group divides the order of the group.
 \end{itemize}
-The last point is actually a corollary of Lagrange's Theorem (\myref{thrm-lagrange}). We will look into its proof in the next chapter.
+The last point is actually a consequence of Lagrange's Theorem (\myref{thrm-lagrange}). We will look into its proof in the next chapter.
 
 \begin{exercise}
     Let $i$ be a number such that $i^2 = -1$. Let $\mathcal{S} = \{1, -1, i, -i\}$.
@@ -488,11 +489,14 @@ The last point is actually a corollary of Lagrange's Theorem (\myref{thrm-lagran
 \section{Cyclic Groups}\index{cyclic group}
 Now that we have gotten some basic terminology and properties of groups out of the way, let's introduce a very simple type of group: the cyclic groups.
 
-Suppose we have an element $g$ in a group $G$. Suppose that the entire set $G$ is \textit{generated} by $g$, that is,
-\[
-    G = \{g, g^2, g^3, g^4, \dots, g^n\}
-\]
-for some positive integer $n$. Then we say that $G$ is a \textbf{cyclic group of order $n$}\index{cyclic group!of order $n$} and has a \textbf{generator}\index{cyclic group!generator} $g$. Notationally, we write $G = \langle g \rangle$.
+\begin{definition}
+    Let $G$ be a group and $g$ be in $G$. If
+    \[
+        G = \{g, g^2, g^3, \dots, g^n\}
+    \]
+    for some positive integer $n$, then $G$ is a \textbf{cyclic group of order $n$}\index{cyclic group!of order $n$} and has a \textbf{generator $g$}\index{cyclic group!generator}.
+\end{definition}
+Notationally, we write $G = \langle g \rangle$.
 
 \begin{example}
     Let $i$ be the imaginary unit, i.e. $i^2 = -1$. Let $\mathcal{S} = \{1, -1, i, -i\}$. Notice the group $(\mathcal{S}, \times)$ is completely generated by the element $i$ since
@@ -526,7 +530,7 @@ We now look at two results involving cyclic groups.
         xy &= (g^m)(g^n)\\
         &= g^mg^n\\
         &= g^{m+n}\\
-        &= g^{n+m} & (\text{since + is commutative})\\
+        &= g^{n+m} & (\text{+ is commutative})\\
         &= g^ng^m\\
         &= (g^n)(g^m)\\
         &= yx
@@ -580,8 +584,16 @@ There's another relationship governing $r$ and $s$. Consider this: how do we obt
 \]
 for the case of an equilateral triangle.
 
-The group of symmetries of an equilateral triangle is called the \textbf{dihedral group of order 6} (or the \textbf{dihedral group of degree 3}) and is denoted by $D_3$. In general, the \textbf{dihedral group of order $2n$}\index{dihedral group!of order $2n$} (or the \textbf{dihedral group of degree $n$}\index{dihedral group!of degree $n$}) is denoted by $D_n$ and can be thought of as the symmetries of a regular polygon of $n$ sides (a regular $n$-gon). For example, the symmetries of the square is given by the group $D_4$.
+The group of symmetries of an equilateral triangle is called the \textbf{dihedral group of order 6} (or the \textbf{dihedral group of degree 3}) and is denoted by $D_3$. In general,
+\begin{definition}
+    The \textbf{dihedral group of order $2n$}\index{dihedral group!of order $2n$} (or the \textbf{dihedral group of degree $n$}\index{dihedral group!of degree $n$}) is denoted by $D_n$ and can be thought of as the symmetries of a regular polygon of $n$ sides (a regular $n$-gon).
+\end{definition}
 
+\newpage
+
+\begin{example}
+    The symmetries of the square is given by the group $D_4$.
+\end{example} 
 \begin{figure}[h]
     \centering
     \fbox{\includegraphics[width=5.5cm]{images/chapter2/Group D4.jpg}}
@@ -603,6 +615,8 @@ These relationships are succinctly given by the \textit{presentation}\index{pres
     D_n = \langle r, s \vert r^n = s^2 = e, rs = sr^{n-1} \rangle
 \]
 where $r$ and $s$ can be thought of as `generators'\index{presentation!generators} and the conditions\index{presentation!conditions} are given on the right side of the pipe ($|$).
+
+\newpage
 
 \begin{example}\label{example-presentation-of-D3}
     The group $D_3$ has presentation
@@ -667,7 +681,8 @@ We note that the dihedral group acts on a regular $n$-gon. We explore more facts
 
 \section{Problems}
 \begin{problem}
-    Draw the Cayley table for $D_4$, the dihedral group of order 8, representing the symmetries of a square. By referring to the Cayley table,
+    Draw the Cayley table for $D_4$, the dihedral group of order 8, representing the symmetries of a square.\newline
+    By referring to the Cayley table,
     \begin{enumerate}[label=(\alph*)]
         \item explain why $D_4$ is \textbf{not} abelian;
         \item simplify $r^3srsr^3sr^3sr^2$.
@@ -692,7 +707,7 @@ We note that the dihedral group acts on a regular $n$-gon. We explore more facts
 \end{problem}
 
 \begin{problem}
-    Let $G = (\mathbb{Z}_n, \oplus_n)$. It is given $G$ is a group. Prove that $G$ is a cyclic group of order $n$.
+    Let $G = (\mathbb{Z}_n, \oplus_n)$. It is given $G$ is a group. Show that $G$ is a cyclic group of order $n$.
 \end{problem}
 
 \newpage
@@ -716,7 +731,7 @@ We look at the definition of a subgroup of a group.
 \begin{definition}
     Let $G$ be a group with operation $\ast$. Let $H$ be a subset of $G$. Then $H$ is said to be a \textbf{subgroup}\index{subgroup} of $G$ if it satisfies the following conditions.
     \begin{enumerate}
-        \item \textbf{Closure}: For all $x$ and $y$ in $H$, $x \ast y$ is also in $H$.
+        \item \textbf{Closure}: For all $x$ and $y$ in $H$, we have $x \ast y$ is also in $H$.
         \item \textbf{Identity}: The identity of the group $G$ is in $H$.
         \item \textbf{Inverse}: For all elements $x$ in $H$, there exists an element $x^{-1}$ in $H$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
     \end{enumerate}
@@ -727,9 +742,9 @@ We look at the definition of a subgroup of a group.
 We write $H \leq G$ if $H$ is a subgroup of $G$.
 
 \begin{example}
-    Let's look at all possible subgroups of the group $(\mathbb{Z}, +)$. Suppose $H \leq G = (\mathbb{Z}, +)$. Suppose also that $H$ is not the trivial subgroup containing only the identity in $(\mathbb{Z}, +)$, i.e. $H \neq \{0\}$.
+    Let's look at all possible subgroups of the group $(\mathbb{Z}, +)$. Suppose $H \leq G = (\mathbb{Z}, +)$. Suppose also that $H \neq \{0\}$.
 
-    Let $n$ be the smallest positive integer in $H$. Let $m$ be any other number in $H$. Then by the division algorithm, $m = nq + r$ where $q$ and $r$ are integers such that $0 \leq r < n$. Hence,
+    Let $n$ be the smallest positive integer in $H$. Let $m$ be any other number in $H$. Then by the division algorithm (\myref{lemma-euclid-division}), $m = nq + r$ where $q$ and $r$ are integers such that $0 \leq r < n$. Hence,
     \[
         r = m + \underbrace{(-n) +(-n) +(-n) + \cdots + (-n)}_{q\text{ times}}.
     \]
@@ -746,15 +761,15 @@ We write $H \leq G$ if $H$ is a subgroup of $G$.
     Let $G$ be a group with identity $e$. Prove that $\{e\} \leq G$.
 \end{exercise}
 
-We note that the group containing only the identity (i.e., $\{e\} \leq G$) is always present in every group. This is known as the \textbf{trivial subgroup}\index{subgroup!trivial}. We also note that the group itself is a subgroup of itself (that is, $G \leq G$). Any subgroup that are \textbf{not} these two groups is known as a \textbf{proper subgroup}\index{subgroup!proper} of $G$, and we write $H < G$ if $H$ is a proper subgroup of $G$.
+We note that the trivial group (i.e., $\{e\}$) is always a subgroup of any group. This is known as the \textbf{trivial subgroup}\index{subgroup!trivial}. We also note that the group itself is a subgroup of itself (that is, $G \leq G$). Any subgroup that are \textbf{not} these two groups is known as a \textbf{proper subgroup}\index{subgroup!proper} of $G$, and we write $H < G$ if $H$ is a proper subgroup of $G$.
 
 \section{Subgroup Test}
 To prove that a subset of a group is a subgroup using the axioms is too tedious. Wouldn't it be nice if we have a simple test to determine if a subset is a subgroup? Well, there is; it is called the \textbf{subgroup test}\index{subgroup test}.
 \begin{theorem}[Subgroup Test]
-    Let $G$ be a group and $H \subseteq G$ such that $H \neq \emptyset$ (i.e., $H$ is not the empty set). Then $H \leq G$ if and only if for all $x$ and $y$ in $H$, then $xy^{-1}$ is in $H$.
+    Let $G$ be a group and $H \subseteq G$ such that $H \neq \emptyset$ (i.e., $H$ is not the empty set). Then $H \leq G$ if and only if $xy^{-1} \in H$ for all $x, y \in H$.
 \end{theorem}
 \begin{proof}
-    We prove the forward direction first. Suppose $H \leq G$ and let $x$ and $y$ be elements in $H$. Since $H$ is a subgroup of $G$, inverses exist. Thus $y^{-1}$ is in $H$. Also, since $H$ is a subgroup of $G$, thus $H$ is closed under the group operation. Hence, $xy^{-1}$ is in $H$. Therefore, if $H \leq G$ then for all $x$ and $y$ in $H$, $xy^{-1}$ is in $H$.
+    We prove the forward direction first. Suppose $H \leq G$ and let $x$ and $y$ be elements in $H$. Since $H$ is a subgroup of $G$, inverses exist. Thus $y^{-1}$ is in $H$. Also, since $H$ is a subgroup of $G$, thus $H$ is closed under the group operation. Hence, $xy^{-1}$ is in $H$. Therefore, if $H \leq G$ then $xy^{-1} \in H$ for all $x, y \in H$.
 
     We now prove the reverse direction. Suppose $xy^{-1}\in H$ for all $x$ and $y$ in $H$.
     \begin{itemize}
@@ -762,7 +777,7 @@ To prove that a subset of a group is a subgroup using the axioms is too tedious.
         \item Set $x = e$ and let $y = h$. Then $xy^{-1} = eh^{-1} = h^{-1}$ is in $H$. Hence every element in $H$ has an inverse in $H$.
         \item Let $a$ and $b$ be elements in $H$. Then by above point, $b^{-1}$ is in $H$. Set $x = a$ and $y = b^{-1}$. Then $xy^{-1} = a\left(b^{-1}\right)^{-1} = ab$ is in $H$. Hence $H$ is closed under the group operation.
     \end{itemize}
-    Therefore if $xy^{-1}$ is in $H$ if for all $x$ and $y$ in $H$,then $H \leq G$.
+    Therefore if $xy^{-1}$ is in $H$ if for all $x$ and $y$ in $H$, then $H \leq G$.
 
     This completes the proof of the subgroup test.
 \end{proof}
@@ -783,7 +798,9 @@ We look at some examples of the use of the subgroup test.
     \begin{proof}
         We show that for all elements $x$ and $y$ in $\C{G}{S}$, $xy^{-1}$ is also in the centralizer. Note that the condition $gs = sg$ is equivalent to the condition $sg^{-1} = g^{-1}s$.
 
-        Suppose $x$ and $y$ are in $\C{G}{S}$. Let $s$ be in $S$. Then
+        Clearly for all $s \in S$ we have $es = se$, so $e \in \C{G}{S}$. This means that $\C{G}{S} \subseteq G$ and is non-empty.
+        
+        Now suppose $x$ and $y$ are in $\C{G}{S}$. Let $s$ be in $S$. Then
         \begin{align*}
             (xy^{-1})s &= x(y^{-1}s) & (\text{associativity})\\
             &= x(sy^{-1}) & (\text{since } g^{-1}s = sg^{-1})\\
@@ -795,7 +812,7 @@ We look at some examples of the use of the subgroup test.
     \end{proof}
 \end{example}
 \begin{remark}
-    In the case where $S$ has a single element, say $S = \{x\}$, we write $\C{G}{x}$.
+    In the case where the set $S$ contains a single element, say $S = \{x\}$, we write $\C{G}{x}$.
 \end{remark}
 
 \begin{example}\label{example-center-of-group}
@@ -833,10 +850,10 @@ We look at some examples of the use of the subgroup test.
 \section{Cosets}
 We now introduce the idea of \textbf{cosets}\index{coset} of a group $G$.
 \begin{definition}
-    Let $G$ be a group, $H \leq G$, and $g$ be an element of $G$. Then define
+    Let $G$ be a group, $H \leq G$, and $g$ be an element of $G$. Then
     \begin{itemize}
-        \item the \textbf{left coset}\index{coset!left} of $H$ in $G$ by $g$ as $gH = \{gh \vert h \in H\}$; and
-        \item the \textbf{right coset}\index{coset!right} of $H$ in $G$ by $g$ as $Hg = \{hg \vert h \in H\}$.
+        \item the \textbf{left coset}\index{coset!left} of $H$ in $G$ by $g$ is $gH = \{gh \vert h \in H\}$; and
+        \item the \textbf{right coset}\index{coset!right} of $H$ in $G$ by $g$ is $Hg = \{hg \vert h \in H\}$.
     \end{itemize}
 \end{definition}
 
@@ -851,7 +868,7 @@ We now introduce the idea of \textbf{cosets}\index{coset} of a group $G$.
         \item $rH = \{r, rs\}$; and
         \item $r^2H = \{r^2, r^2s\}$.
     \end{itemize}
-    Since each element of $G$ appear in one of these cosets, generating more using any other element would not give new cosets. This is because a new coset would have to contain an element in common with one of the above cosets and therefore be identical to it. For example, $rsH = \{rs, rss\} = \{rs, r\} = rH$.
+    Since each element of $G$ appears in one of these cosets, generating more using any other element would not give new cosets. This is because a new coset would have to contain an element in common with one of the above cosets and therefore be identical to it. For example, $rsH = \{rs, rss\} = \{rs, r\} = rH$.
 
     The distinct right cosets of $H$ in $G$ are:
     \begin{itemize}
@@ -863,8 +880,7 @@ We now introduce the idea of \textbf{cosets}\index{coset} of a group $G$.
 \end{example}
 
 \begin{exercise}
-    Let $G$ be the group $(\mathbb{Z}_8, \oplus_8)$. Let $H \leq G$ such that $H
- = \{0, 4\}$.
+    Let $G$ be the group $(\mathbb{Z}_8, \oplus_8)$. Let $H = \{0, 4\} \leq G$.
     \begin{enumerate}[label=(\alph*)]
         \item Explain why any left coset of $H$ in $G$ by an element $g$ is the same as the right coset of $H$ in $G$ by $g$.
         \item Find all distinct left cosets of $H$ in $G$.
@@ -872,7 +888,7 @@ We now introduce the idea of \textbf{cosets}\index{coset} of a group $G$.
 \end{exercise}
 
 We now state and prove a result that relates the equality of cosets.
-\begin{lemma}\label{lemma-coset-equality}(Coset Equality)\index{Coset Equality}
+\begin{lemma}[Coset Equality]\label{lemma-coset-equality}\index{Coset Equality}
     Let $G$ be a group, $H \leq G$, and $g_1$ and $g_2$ be elements in $G$. Then the following statements are equivalent.
     \begin{enumerate}[label=$(\arabic*)$]
         \item $g_1H = g_2H$
@@ -886,7 +902,7 @@ We now state and prove a result that relates the equality of cosets.
     We prove the statements in order.
 
     \begin{itemize}
-        \item $\boxed{(1) \implies (2)}$ Suppose $g_1H = g_2H$. We will show $Hg_1^{-1} = Hg_2^{-1}$.
+        \item $\boxed{(1) \implies (2)}$ Suppose $g_1H = g_2H$. We show $Hg_1^{-1} = Hg_2^{-1}$.
 
         Let $x \in Hg_1^{-1}$. Then $x = hg_1^{-1}$ for some $h$ in $H$. Thus $x^{-1} = \left(hg_1^{-1}\right)^{-1} = g_1h^{-1}$ by Shoes and Socks. Since $h^{-1}$ is in $H$, thus $x^{-1} = g_1h^{-1}$ is in $g_1H$.
 
@@ -925,7 +941,7 @@ We now state and prove a result that relates the equality of cosets.
         Thus, for all $x$ in $g_1H$, $x$ is also in $g_2H$ which means $g_1H \subseteq g_2H$. A similar argument can be used to show that $g_2H \subseteq g_1H$. Hence $g_1H = g_2H$.
     \end{itemize}
 
-    Thus, $(1) \implies (2) \implies (3) \implies (4) \implies (5) \implies (1)$, completing the proof of this lemma.
+    Thus, $(1) \implies (2) \implies (3) \implies (4) \implies (5) \implies (1)$, completing the proof.
 \end{proof}
 
 \begin{exercise}\label{exercise-intersection-of-cosets}
@@ -935,7 +951,7 @@ We now state and prove a result that relates the equality of cosets.
 \newpage
 
 \section{Lagrange's Theorem}
-Lagrange's theorem is an important result relating the order of a subgroup and the order of the group itself. Before that, though, we introduce the idea of the \textbf{index} of a subgroup.
+Lagrange's theorem is an important result relating the order of a subgroup and the order of the group itself. Before that, we introduce the idea of the \textbf{index} of a subgroup.
 \begin{definition}
     Let $G$ be a group and $H \leq G$. The \textbf{index}\index{index} of $H$ in $G$, denoted by $[G : H]$, is the number of left cosets of $H$ in $G$.
 \end{definition}
@@ -966,12 +982,12 @@ We require two lemmas to properly prove Lagrange's theorem.
     Let $G$ be a group and $H \leq G$. Then $|H| = |gH|$ for all $g$ in $G$.
 \end{lemma}
 \begin{proof}
-    Define the map $\phi: H \to gH$ such that $\phi(h) = gh$. To prove that $|H| = |gH|$, we need to show that $\phi$ is a bijection, i.e. $\phi$ is both injective (one-to-one) and surjective (onto).
+    Define the map $\phi: H \to gH$ such that $\phi(h) = gh$. To prove that $|H| = |gH|$, we need to show that $\phi$ is a bijection.
     \begin{itemize}
         \item \textbf{Injective}: Let $h$ and $\hat{h}$ be elements in $H$ such that $\phi(h) = \phi(\hat{h})$. Then $gh = g\hat{h}$ by definition of $\phi$. By cancellation law, we have $h = \hat{h}$ which means $\phi$ is injective.
         \item \textbf{Surjective}: Let $x$ be in $gH$. Thus $x = gh$ for some $h$ in $H$. Clearly $\phi(h) = gh = x$ so a pre-image of $x$ exists in $H$. Therefore $\phi$ is surjective.
     \end{itemize}
-    Therefore $\phi$ is bijective, meaning $|H| = |gH|$.
+    Therefore $\phi$ is a bijection, which means $|H| = |gH|$.
 \end{proof}
 
 We are now ready to state and prove Lagrange's theorem.
@@ -981,17 +997,17 @@ We are now ready to state and prove Lagrange's theorem.
 \begin{proof}
     Suppose $|G| = n$. Let $\mathcal{S} = \{g_1H, g_2H, g_3H, \dots, g_kH\}$ be the set containing all distinct left cosets of $H$ in $G$. Thus $k = [G: H]$.
 
-    By \myref{lemma-left-coset-partition},
+    Note that distinct left cosets partition $G$ (\myref{lemma-left-coset-partition}). Hence
     \[
         G = \bigcup_{i=1}^k g_iH = g_1H \cup g_2H \cup \cdots \cup g_kH
     \]
-    with $g_iH \cap g_jH = \emptyset$ if $i \neq j$. Thus,
+    with $g_iH \cap g_jH = \emptyset$ if $i \neq j$. This means
     \begin{align*}
         |G| &= \sum_{i=1}^k|g_iH|\\
         &=\sum_{i=1}^k|H| & (\myref{lemma-order-of-coset})\\
-        &= k|H|
+        &= k|H|.
     \end{align*}
-    and since $k = [G: H]$, therefore $|G| = [G:H]|H|$, proving Lagrange's theorem.
+    Recall that we set $k = [G: H]$, therefore $|G| = [G:H]|H|$, proving Lagrange's theorem.
 \end{proof}
 
 \begin{exercise}
@@ -1005,7 +1021,7 @@ Let's look at some corollaries of Lagrange's theorem.
 \begin{proof}
     We want to show that $|G| = m|g|$ for some positive integer $m$.
 
-    Clearly $|e| = 1$ so $|G| = |G| \times 1 = |G||e|$. Thus for the identity, $m = |G|$.
+    Clearly $|e| = 1$ so $|G| = |G| \times 1 = |G||e|$.
 
     Now suppose $g \neq e$ and $|g| = n$. Let $\mathcal{S} = \langle g \rangle = \{g, g^2, g^3, \dots, g^n\}$. Note that $\mathcal{S}$ is a (cyclic) subgroup of $G$ and $|\mathcal{S}| = n$. By Lagrange's theorem (\myref{thrm-lagrange}), $|G| = [G:\mathcal{S}]|\mathcal{S}| = [G:\mathcal{S}]|g|$. Hence, in this case, $m = [G:\mathcal{S}]$, proving the claim.
 \end{proof}
@@ -1016,7 +1032,7 @@ Let's look at some corollaries of Lagrange's theorem.
     A finite group $G$ with prime order $p$ has no proper subgroups.
 \end{corollary}
 \begin{proof}
-    By Lagrange's theorem, the order of a subgroup must be a factor of the order of the group. Since the order of the group is prime, it only has 2 factors, namely 1 and $p$. The subgroup of order 1 is $\{e\}$ and the subgroup of order $p = |G|$ is clearly $G$ itself. Hence $G$ has no proper subgroups.
+    By Lagrange's theorem (\myref{thrm-lagrange}), the order of a subgroup must be a factor of the order of the group. Since the order of the group is prime, it only has 2 factors, namely 1 and $p$. The subgroup of order 1 is $\{e\}$ and the subgroup of order $p$ is $G$ itself. Hence $G$ has no proper subgroups.
 \end{proof}
 
 \begin{exercise}\label{exercise-prime-order-element}
@@ -1027,7 +1043,7 @@ Let's look at some corollaries of Lagrange's theorem.
     A finite group $G$ with prime order $p$ is cyclic.
 \end{corollary}
 \begin{proof}
-    By \myref{exercise-prime-order-element}, any element $g$ in $G$ where $g \neq e$ has $|g| = p$. Thus $\langle g \rangle \neq \{e\}$.
+    By \myref{exercise-prime-order-element}, any non-identity element $g$ in $G$ has $|g| = p$. Thus $\langle g \rangle \neq \{e\}$.
 
     Note that $\langle g \rangle = \{g, g^2, g^3, \dots, g^p\} \leq G$. However, by \myref{corollary-group-with-prime-order-subgroups}, the only subgroups of $G$ are $\{e\}$ and $G$. Since $\langle g \rangle \neq \{e\}$ thus $\langle g \rangle = G$, meaning $G$ is cyclic with generator $g$.
 \end{proof}
@@ -1035,7 +1051,7 @@ Let's look at some corollaries of Lagrange's theorem.
 \section{Normal Subgroups}
 We now look at a special type of subgroup, known as a \textbf{normal subgroup}.
 \begin{definition}
-    Let $G$ be a group and $N \leq G$. We say that $N$ is a \textbf{normal subgroup}\index{subgroup!normal} of $G$ if $gN = Ng$ for all $g$ in $G$.
+    Let $G$ be a group and $N \leq G$. We say that $N$ is a \textbf{normal subgroup}\index{subgroup!normal} of $G$ if $gN = Ng$ for all $g \in G$.
 \end{definition}
 If $N$ is a normal subgroup of $G$, we write $N \unlhd G$. Furthermore if $N$ is a \textit{proper} normal subgroup of $G$, we write $N \lhd G$.
 
@@ -1043,18 +1059,18 @@ If $N$ is a normal subgroup of $G$, we write $N \unlhd G$. Furthermore if $N$ is
 
 Note that $gN = Ng$ is equivalent to the following two statements:
 \begin{itemize}
-    \item $gNg^{-1} = N$ for all $g$ in $G$. (One may interpret $gNg^{-1}$ as either the left coset $g(Ng^{-1})$ or the right coset $(gN)g^{-1}$.)
-    \item $gng^{-1}$ is in $N$ for all $g$ in $G$ and $n$ in $N$.
+    \item $gNg^{-1} = N$ for all $g \in G$. (One may interpret $gNg^{-1}$ as either the left coset $g(Ng^{-1})$ or the right coset $(gN)g^{-1}$.)
+    \item $gng^{-1} \in N$ for all $g \in G$ and $n \in N$.
 \end{itemize}
-The validity of these two statements is left as an exercise for the reader.
 
 \begin{proposition}\label{prop-subgroup-of-abelian-group-is-normal}
-    Every subgroup of an abelian group is normal.
+    Any subgroup of an abelian group is normal.
 \end{proposition}
 \begin{proof}
     Let $G$ be an abelian group and $H \leq G$. Let $g$ be in $G$ and $h$ be in $H$. Then
     \begin{align*}
-        ghg^{-1} &= gg^{-1}h & (\text{since }G \text{ is abelian})\\
+        ghg^{-1} &= g(hg^{-1})\\
+        &= g(g^{-1}h) & (G \text{ is abelian})\\
         &= eh\\
         &= h
     \end{align*}
@@ -1062,9 +1078,9 @@ The validity of these two statements is left as an exercise for the reader.
 \end{proof}
 
 \begin{example}\label{example-normal-subgroups-of-d3}
-    Let's consider normal subgroups of the dihedral group of order 6, $D_3$.
+    Let's find the normal subgroups of the dihedral group of order 6, $D_3$.
 
-    Recall $D_3 = \{e, r, r^2, s, rs, r^2s\}$. Note that $|r| = 3$, $|s| = 2$, $\langle r \rangle = \{e, r, r^2\}$, and $\langle s \rangle = \{e, s\}$. We will show that $\langle r \rangle$ is a (proper) normal subgroup of $D_3$ but not $\langle s \rangle$. Note that since $r$ and $s$ are generators, we simply need to check $s\langle r\rangle$, $\langle r\rangle s$, $r\langle s\rangle$, and $\langle s\rangle r$ to verify normality.
+    Recall $D_3 = \{e, r, r^2, s, rs, r^2s\}$. Note that $|r| = 3$, $|s| = 2$, $\langle r \rangle = \{e, r, r^2\}$, and $\langle s \rangle = \{e, s\}$. We will show that $\langle r \rangle$ is a (proper) normal subgroup of $D_3$ but not $\langle s \rangle$. Note that since $r$ and $s$ are generators, we just need to check $s\langle r\rangle$, $\langle r\rangle s$, $r\langle s\rangle$, and $\langle s\rangle r$ to verify normality.
 
     \newpage
 
@@ -1084,7 +1100,7 @@ The validity of these two statements is left as an exercise for the reader.
 \end{example}
 
 \section{Quotient Groups}
-We end this chapter by looking at a special (and useful) group: the quotient group. But before we can do that, we look at the idea of the set of left cosets.
+We end this chapter by looking at a special (and useful) type of group: the quotient group. But before we can do that, we look at the idea of the set of left cosets.
 
 \begin{definition}
     Let $G$ be a group and $H \leq G$. The \textbf{set of left cosets}\index{set of left cosets} is denoted by
@@ -1093,7 +1109,7 @@ We end this chapter by looking at a special (and useful) group: the quotient gro
     \]
 \end{definition}
 \begin{remark}
-    We may sometimes write $G/H$ using fractions, such as $\frac GH$, if it serves to improve readability.
+    We may sometimes write $G/H$ using fractions (i.e. $\frac GH$) if it serves to improve readability.
 \end{remark}
 
 Note that the number of left cosets is $[G:H] = \frac{|G|}{|H|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Also note that if $G/H$ is \textbf{not} a group, it is read ``$G$ by $H$''.
@@ -1123,7 +1139,7 @@ Note that, as per usual, we suppress the operation $\star$ and just write $(xN)(
     \end{align*}
     so if $x_1N = x_2N$ and $y_1N = y_2N$ then we see that $(x_1N)(y_1N) = (x_2N)(y_2N)$, meaning that $\star$ is well defined.
 
-    We can now prove the four group axioms.
+    We can now show that $G/N$ under $\star$ satisfies the group axioms.
     \begin{enumerate}
         \item \textbf{Closure}: Assume $xN$ and $yN$ are in the set $G/N$. Then $(xN)(yN) = (xy)N$. Since $xy$ is in $G$ thus $(xy)N$ is in $G/N$, meaning that $G/N$ is closed under $\star$.
         \item \textbf{Associativity}: Take $xN$, $yN$, and $zN$ from $G/N$. Then
@@ -1154,7 +1170,7 @@ Note that, as per usual, we suppress the operation $\star$ and just write $(xN)(
 \end{proof}
 
 \begin{example}
-    Let's look at possible quotients of the group $D_3$, which has the underlying set of $\{e, r, r^2, s, rs, r^2s\}$. Recall from a previous example that $\langle r \rangle \lhd D_3$. Thus $D_3 / \langle r \rangle$ is a quotient group, with $|D_3 / \langle r \rangle| = \frac{|D_3|}{|\langle r\rangle|} = \frac63 = 2$.
+    Let's look at possible quotients of the group $D_3$, which has the underlying set of $\{e, r, r^2, s, rs, r^2s\}$. Recall from a previous example (\myref{example-normal-subgroups-of-d3}) that $\langle r \rangle \lhd D_3$. Thus $D_3 / \langle r \rangle$ is a quotient group, with $|D_3 / \langle r \rangle| = \frac{|D_3|}{|\langle r\rangle|} = \frac63 = 2$.
 
     Let's now look at the elements of $D_3 / \langle r \rangle$.
     \begin{align*}
@@ -1180,7 +1196,7 @@ Note that, as per usual, we suppress the operation $\star$ and just write $(xN)(
 
 \section{Problems}
 \begin{problem}
-    Let $G = D_4$, the dihedral group of order 8. By considering the subgroup axioms, determine if the following form subgroups of $G$.
+    Let $G = D_4$, the dihedral group of order 8. By considering the subgroup axioms, determine if the following are subgroups of $G$.
     \begin{enumerate}[label=(\alph*)]
         \item $\{e\}$
         \item $\{e, r, s\}$
@@ -1214,7 +1230,7 @@ Note that, as per usual, we suppress the operation $\star$ and just write $(xN)(
 \newpage
 
 \begin{problem}\label{problem-intersection-of-subgroups}
-    Let $G$ be a group, $H \leq G$ and $K \leq G$. Prove or disprove the following statements.
+    Let $G$ be a group, an $H, K \leq G$. Prove or disprove the following statements.
     \begin{enumerate}[label=(\alph*)]
         \item $H \cap K \leq G$
         \item $H \cap K \leq H$
@@ -1255,7 +1271,7 @@ Note that, as per usual, we suppress the operation $\star$ and just write $(xN)(
 \end{problem}
 
 \begin{problem}\label{problem-smallest-nonabelian-group}
-    Let $G$ be a finite group, and let its order be $m$.
+    Let $G$ be a finite group with order $m$.
     \begin{enumerate}[label=(\alph*)]
         \item State the smallest value of $m$ such that $G$ is non-abelian.
         \item Prove that the value of $m$ found in (a) is the smallest value that allows $G$ to be non-abelian.
@@ -1346,7 +1362,7 @@ Before stating (and proving) some properties of homomorphisms, let
 
 For the next few properties, define
 \begin{gather*}
-    \phi(H_1) = \{\phi(h) \vert h \in H_1\},\\
+    \phi(H_1) = \{\phi(h) \vert h \in H_1\}, \text{ and}\\
     \phi^{-1}(H_2) = \{g \in G_1 \vert \phi(g) \in H_2\}
 \end{gather*}
 
@@ -1373,7 +1389,7 @@ For the next few properties, define
     Suppose $H_2 \unlhd G_2$. Then $\phi^{-1}(H_2) \unlhd G_1$.
 \end{proposition}
 \begin{proof}
-    By previous proposition, because $H_2 \leq G_2$, therefore $\phi^{-1}(H_2) \leq G_1$. All that needs to be done is to prove normality.
+    By previous proposition, because $H_2 \leq G_2$, therefore $\phi^{-1}(H_2) \leq G_1$. We just need to prove normality.
 
     Take $n \in \phi^{-1}(H_2)$ and $g \in G_1$. We will show that $gng^{-1} \in \phi^{-1}(H_2)$ which is sufficient to prove normality.
 
@@ -1393,7 +1409,7 @@ For the next few properties, define
 \end{exercise}
 
 \section{Isomorphisms}
-We now look a special (and important) category of homomorphisms: \textbf{isomorphisms}.
+We now look a special (and important) type of homomorphisms: \textbf{isomorphisms}.
 
 \begin{definition}
     Let $(G, \ast)$ and $(H, \star)$ be groups. An \textbf{isomorphism}\index{isomorphism} between $G$ and $H$ is a bijective homomorphism $\phi$.
@@ -1430,12 +1446,12 @@ If there exists an isomorphism from the group $G$ to the group $H$, then we say 
             \phi(x+y) = e^{x+y} = e^xe^y = \phi(x)\phi(y)
         \]
 
-        \item \textbf{Injective}: Suppose $x$ and $y$ are elements in $\mathbb{R}$ such that $\phi(x) = \phi(y)$. Therefore $e^x = e^y$ which quickly implies $x = y$ by applying natural logarithm ($\ln$) on both sides.
+        \item \textbf{Injective}: Suppose $x$ and $y$ are elements in $\mathbb{R}$ such that $\phi(x) = \phi(y)$. Therefore $e^x = e^y$ which quickly implies $x = y$ by applying the natural logarithm ($\ln$) on both sides.
 
         \item \textbf{Surjective}: Suppose $y \in S$. Then $\ln y$ is a real number. So $\phi(\ln y) = e^{\ln y} = y$, meaning every element in the codomain $S$ has a preimage.
     \end{itemize}
 
-    Thus, $\phi$ is an isomorphism, meaning that $(\mathbb{R}, +) \cong (S, \times)$.
+    Thus $\phi$ is an isomorphism, meaning that $(\mathbb{R}, +) \cong (S, \times)$.
 \end{example}
 
 \begin{exercise}
@@ -1471,7 +1487,7 @@ Isomorphisms between groups means that the two groups \textit{share the same str
         Let $u$ and $v$ be in $H$. Then, since $\phi$ is surjective, there exist elements $x$ and $y$ in $G$ such that $\phi(x) = u$ and $\phi(y) = v$. Hence,
         \begin{align*}
             \phi^{-1}(uv) &= \phi^{-1}\left(\phi(x)\phi(y)\right)\\
-            &= \phi^{-1}\left(\phi(xy)\right) & (\text{since } \phi \text{ is a homomorphism})\\
+            &= \phi^{-1}\left(\phi(xy)\right) & (\phi \text{ is a homomorphism})\\
             &= xy\\
             &= \phi^{-1}(u) \phi^{-1}(v).
         \end{align*}
@@ -1481,7 +1497,7 @@ Isomorphisms between groups means that the two groups \textit{share the same str
         \begin{align*}
             uv = &= \phi(x)\phi(y) \\
             &= \phi(\underbrace{xy}_{\text{In } G})\\
-            &= \phi(yx) & (\text{since } G \text{ is abelian})\\
+            &= \phi(yx) & (G \text{ is abelian})\\
             &= \phi(y)\phi(x)\\
             &= vu
         \end{align*}
@@ -1499,7 +1515,7 @@ Isomorphisms between groups means that the two groups \textit{share the same str
 
         However, as $\phi(g) \in H$, thus $\left\langle \phi(g) \right\rangle \leq H$ which means that $\left\langle \phi(g) \right\rangle \subseteq H$. Therefore, we have $H \subseteq \left\langle \phi(g) \right\rangle$ and $\left\langle \phi(g) \right\rangle \subseteq H$ simultaneously, meaning $H = \left\langle \phi(g) \right\rangle$, i.e. $H$ is a cyclic group.
 
-        \item Suppose $K \leq G$ with $|K| = n$. Consider the subgroup $\phi(K)$. By properties of homomorphism, $\phi(K) \leq H = \phi(G)$. Now by property (1), $|K| = |\phi(K)| = n$, meaning that there is a subgroup of $H$ with order $n$, namely the subgroup $\phi(K)$.
+        \item Suppose $K \leq G$ with $|K| = n$. Consider the subgroup $\phi(K)$. By properties of homomorphism, $\phi(K) \leq H = \phi(G)$. Now by the first property, $|K| = |\phi(K)| = n$, meaning that there is a subgroup of $H$ with order $n$, namely the subgroup $\phi(K)$.
     \end{enumerate}
 
     This proves the theorem.
@@ -1512,7 +1528,7 @@ Isomorphisms between groups means that the two groups \textit{share the same str
 \newpage
 
 \section{Links to Cyclic Groups}
-With the tool of isomorphism under our belt, we can prove two important theorems regarding cyclic groups. Before that, however, we formally introduce the idea of infinite cyclic groups.
+With the tool of isomorphisms under our belt, we can prove two important theorems regarding cyclic groups. Before that, however, we formally introduce the idea of infinite cyclic groups.
 \begin{definition}
     An infinite cyclic group\index{cyclic group!infinite} $G$ generated by $g$ is denoted by $\langle g \rangle$ and has order $|G| = \infty$. So,
     \[
@@ -1544,7 +1560,7 @@ For brevity, we also have notation regarding the integers under addition.
         \item \textbf{Surjective}: Suppose $x \in G = \langle g\rangle$, so $x = g^n$ for some integer $n$. Then $\phi(n) = g^n = x$ which means that $x$ has a preimage of $n$. Hence $\phi$ is surjective.
     \end{itemize}
 
-    Therefore, $\phi$ is a bijective homomorphism (i.e., isomorphism) which means that $G \cong \mathbb{Z}$.
+    Therefore, $\phi$ is an isomorphism which means $G \cong \mathbb{Z}$.
 \end{proof}
 
 \begin{theorem}\label{thrm-finite-cyclic-group-isomorphic-to-Zn}
@@ -1565,7 +1581,7 @@ For brevity, we also have notation regarding the integers under addition.
         \item \textbf{Surjective}: Suppose $x \in G = \langle g\rangle$, so $x = g^m$ for some integer $m$ in $\mathbb{Z}_n$. Then $\phi(m) = g^m = x$ which means that $x$ has a preimage of $m$. Hence $\phi$ is surjective.
     \end{itemize}
 
-    Therefore, $\phi$ is an isomorphism which means that $G \cong \mathbb{Z}_n$.
+    Therefore, $\phi$ is an isomorphism which means $G \cong \mathbb{Z}_n$.
 \end{proof}
 
 In summary:
@@ -1575,7 +1591,7 @@ In summary:
 \end{itemize}
 
 \begin{exercise}
-    Let $G = (\{1, 3, 7, 9\}, \otimes_{10})$ be a group. Show that $G$ is cyclic and hence find the integer $n$ such that $G \cong \mathbb{Z}_n$.
+    Let $G = (\{1, 3, 7, 9\}, \otimes_{10})$ be a group. Show that $G \cong \mathbb{Z}_n$ for some integer $n$.
 \end{exercise}
 
 \newpage
@@ -1625,8 +1641,8 @@ In summary:
 \end{problem}
 
 %=========================================
-\chapter{Cayley's Theorem}
-This chapter is central to the relevance and analysis of group theory. Cayley's theorem links our ideas of symmetry with the idea of groups, and how groups are a form of \textit{generalized symmetry}. It answers why group theory is oft called ``the study of symmetry'', and highlights the importance of bijections in the study of groups.
+\chapter{Symmetry Groups}
+This chapter is central to the relevance and analysis of group theory. The core result of this chapter, Cayley's theorem, links our ideas of symmetry with the idea of groups, and how groups are a form of \textit{generalized symmetry}. It answers why group theory is oft called ``the study of symmetry'', and highlights the importance of bijections in the study of groups.
 
 \section{Permutations}
 A bijective function is too abstract an object. Such functions can take many forms. Thus, it is worth asking: what properties must a bijective function satisfy?
@@ -1772,11 +1788,11 @@ We now look at composing permutations\index{permutation!composing}.
 \end{example}
 
 \begin{example}
-    Consider $\begin{pmatrix}2 & 9 & 7 & 4\end{pmatrix}\begin{pmatrix}1 & 6 & 4\end{pmatrix}$. Then:
+    We have
     \[\begin{pmatrix}2 & 9 & 7 & 4\end{pmatrix}\begin{pmatrix}1 & 6 & 4\end{pmatrix} = \begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}.\]
 \end{example}
 
-We now consider how to find the inverse of a permutation\index{permutation!inverse}. Given a cycle decomposition for the permutation $f$, simply read the cycle notation backwards, ensuring that the smallest element remains at the front.
+We now describe how to find the inverse of a permutation\index{permutation!inverse}. Given a cycle decomposition for the permutation $f$, simply read the cycle notation backwards, ensuring that the smallest element remains at the front.
 
 \begin{example}
     Consider the permutation $\begin{pmatrix}1 & 8 & 4 & 2\end{pmatrix}$. Its inverse is $\begin{pmatrix}2 & 4 & 8 & 1\end{pmatrix} = \begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}$.
@@ -1794,10 +1810,10 @@ We now consider how to find the inverse of a permutation\index{permutation!inver
 \end{exercise}
 
 \section{The Symmetric Group of a Set}
-With the definition of permutations out of the way, we can finally introduce a very important type of group: the \textbf{symmetric group} of a set $X$\index{symmetric group}.
+With the definition of permutations out of the way, we can finally introduce a very important type of group: the \textbf{symmetric group} of a set $X$.
 
 \begin{definition}
-    Let $X$ be a set. Define
+    Let $X$ be a set. Define the \textbf{symmetric group of $X$}\index{symmetric group} by
     \[
         \Sym{X} = \{f: X \to X \vert f \text{ is a bijection}\}.
     \]
@@ -1827,7 +1843,7 @@ With the definition of permutations out of the way, we can finally introduce a v
         
         \item \textbf{Associativity}: Function composition is associative.
         
-        \item \textbf{Identity}: Let $\id : X \to X$ be such that $\id(x) = x$. Clearly $\id$ is in $\Sym{X}$:
+        \item \textbf{Identity}: Clearly the identity map, $\id$, is in $\Sym{X}$:
         \begin{itemize}
             \item \textbf{Injective}: If $x$ and $y$ are in $X$ such that $\id(x) = \id(y)$ then clearly $x = y$.
             \item \textbf{Surjective}: Let $y$ be in $X$. Since $\id(y) = y$ thus $y$ is its own pre-image under $\id$.
@@ -1855,7 +1871,7 @@ The group $(\Sym{X}, \circ)$ is called the \textbf{symmetric group} of $X$\index
 
 The most relevant type of symmetric group we encounter when working with finite groups is the \textbf{symmetric group of degree $n$}\index{symmetric group!of degree $n$} (or \textbf{symmetric group of $n$ letters}\index{symmetric group!of $n$ letters}).
 \begin{definition}
-    The \textbf{symmetric group of degree $n$} is denoted by $\Sn{n}$ and is equal to $\Sym{\{1, 2, 3, \dots, n\}}$.
+    The \textbf{symmetric group of degree $n$} is denoted by $\Sn{n}$ and is $\Sym{\{1, 2, 3, \dots, n\}}$.
 \end{definition}
 \begin{remark}
     Elements of $\Sn{n}$ are called permutations.
@@ -1975,7 +1991,7 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
         
         \item \textbf{Injective}: Let $g_1, g_2 \in G$ such that $\phi(g_1) = \phi(g_2)$. Then $\lambda_{g_1} = \lambda_{g_2}$. Therefore, $\lambda_{g_1}(x) = \lambda_{g_2}(x)$ for all $x$ in $G$, which means that $\lambda_{g_1}(e) = \lambda_{g_2}(e)$ when $x = e$. By definition of $\lambda_g$, we have $eg_1 = eg_2$ which ultimately means that $g_1=g_2$. Thus if $\phi(g_1) = \phi(g_2)$ then $g_1=g_2$.
         
-        \item \textbf{Surjective}: The number of functions in $H$ equals the number of elements of $G$ by definition of $H$. Thus, since $\phi$ is surjective.
+        \item \textbf{Surjective}: Let $\lambda_g \in H$. Clearly $\phi(g) = \lambda_g$, which means $\lambda_g$ has a pre-image of $g$. Thus $\phi$ is surjective.
     \end{itemize}
     Therefore we have proven that $\phi$ is an isomorphism, which means that $G \cong H \leq \Sym{G}$, that is, any group $G$ is isomorphic to a subgroup of the symmetric group of $G$ (i.e., a permutation group).
 \end{proof}
@@ -2034,7 +2050,7 @@ Note that $|G \times H| = |G||H|$ by definition of the Cartesian product.
 \begin{example}
     $\mathbb{Z}_5 \times \mathbb{Z} = \{(m,n) \vert m \in \mathbb{Z}_5 \text{ and } n \in \mathbb{Z}\}$.
 
-    Thus, $(2, 5)(5, 9) = (2 \oplus_5 5, 5 + 9) = (2, 14)$.
+    Thus, $(2, 5)(5, 9) = (2 \oplus_5 5, 5 + 9) = (7 \mod 5, 14) = (2, 14)$.
 \end{example}
 
 \begin{example}
@@ -2070,11 +2086,11 @@ We prove some results relating the external direct product.
     \end{align*}
     Therefore $l = k|(x, y)| = km$ for some positive integer $k$, i.e. $m\vert l$.
 
-    Note also that $(x, y)^m = (x^m, y^m)$ and $(x, y)^m = e_{1,2} = (e_1, e_2)$. Therefore $x^m = e_1$ and $y^m = e_2$. Hence,
+    Note also that $(x, y)^m = (x^m, y^m)$ and $(x, y)^m = e_{1,2} = (e_1, e_2)$. Therefore $x^m = e_1$ and $y^m = e_2$, which means
     \[
         m = p|x| = pr \text{ and } m = q|y| = qs
     \]
-    for some positive integers $p$ and $q$, meaning that $r$ and $s$ both divide $m$. Therefore $\lcm(r, s) = l\vert m$.
+    for some positive integers $p$ and $q$, so $r$ and $s$ both divide $m$. Therefore $\lcm(r, s) = l\vert m$.
 
     Since $m\vert l$ and $l\vert m$, thus $m = l$. Therefore we see that $|(x, y)| = \lcm(|x|, |y|)$.
 \end{proof}
@@ -2083,7 +2099,7 @@ We prove some results relating the external direct product.
     $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ if and only if $\gcd(m,n) = 1$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Proposition 13.1 (3)]{humphreys_1996}})]
-    We first work on the forward direction. Suppose $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$. For brevity let $d = \gcd(m,n)$.
+    We first work on the forward direction. Suppose $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$, and for brevity let $d = \gcd(m,n)$.
     
     Suppose on the contrary that $d > 1$. Take $(a, b) \in \mathbb{Z}_m \times \mathbb{Z}_n$. Note that $\frac{mn}{d} = \lcm(m,n)$ which is a positive integer. Then
     \begin{align*}
@@ -2097,9 +2113,9 @@ We prove some results relating the external direct product.
     \begin{align*}
         |(1, 1)| &= \lcm(m, n) & (\myref{prop-order-of-element-in-external-direct-product})\\
         &= \frac{mn}{\gcd(m,n)}\\
-        &= mn & (\text{since }\gcd(m,n) = 1).
+        &= mn & (\gcd(m,n) = 1).
     \end{align*}
-    Since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and $|(1,1)| = mn$, thus $\mathbb{Z}_m \times \mathbb{Z}_n$ is cyclic. By \myref{thrm-finite-cyclic-group-isomorphic-to-Zn}, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$.
+    Since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and $|(1,1)| = mn$, thus $\mathbb{Z}_m \times \mathbb{Z}_n$ is cyclic with generator $(1,1)$. By \myref{thrm-finite-cyclic-group-isomorphic-to-Zn}, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$.
 
     This proves the theorem.
 \end{proof}
@@ -2166,7 +2182,7 @@ We now look at the \textbf{internal direct product}, another way of combining el
         &= D_6\\
         &= G
     \end{align*}
-    so $G = HK$. Note also that $hk = kh$ for all $h$ in $H$ and $k$ in $K$. Thus $G$ is indeed the internal direct product of $H$ and $K$.
+    so $G = HK$. Note also that $H \cap K = \{e\}$ and $hk = kh$ for all $h$ in $H$ and $k$ in $K$. Thus $G$ is the internal direct product of $H$ and $K$.
 \end{example}
 
 \begin{exercise}
@@ -2179,7 +2195,7 @@ We now look at the \textbf{internal direct product}, another way of combining el
 It is certainly tiring to remember that there is an \textit{external} direct product and an \textit{internal} direct product. One might rightly wonder whether we can simplify both into one unified ``direct product''. In fact, there exists and isomorphism between the external direct product and the internal direct product of two groups.
 
 \begin{theorem}\label{thrm-direct-product-equivilance}
-    If $G$ is the internal direct product of $H$ and $K$ then $G \cong H \times K$.
+    If $G$ is the internal direct product of $H$ and $K$, then $G \cong H \times K$.
 \end{theorem}
 \begin{proof}
     Let $\phi: G \to H \times K$, $g \mapsto (h, k)$ where $g = hk$. We will show that $\phi$ is a well-defined isomorphism.
@@ -2190,7 +2206,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
         
         \item \textbf{Homomorphism}: Let $g, g' \in G$, $h, h' \in H$, and $k, k' \in K$ such that $g = hk$ and $g' = h'k'$. Then $gg' = hkh'k' = h(kh')k'$. We note that $kh' = h'k$ since $hk = kh$ for all $h \in H$ and $k \in K$. Hence $gg' = hh'kk'$.
         
-        We note that
+        Thus
         \[
             \phi(gg') = \phi(\underbrace{hh'}_{\text{In }H}\underbrace{kk'}_{\text{In }K}) = (hh', kk').
         \]
@@ -2210,7 +2226,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \end{proof}
 
 \begin{example}
-    Consider again $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. As we have found before, $G = HK$; but we now know that $G \cong H \times K$.
+    Consider again $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. As we have found before, $G$ is the internal direct product of $H$ and $K$; but we now know that $G \cong H \times K$.
 
     Note that $|H| = 2$ so $H \cong \mathbb{Z}_2$ and $K \cong D_3$ (we leave the latter as an exercise for the reader to prove). Thus,
     \[
@@ -2262,6 +2278,11 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
 \begin{example}
     Consider the homomorphism $f: \mathbb{Z} \to \mathbb{Z}, x \mapsto 0$. Clearly, all possible values of $x$ maps to 0, so $\im f = \{0\}$.
 \end{example}
+\begin{example}
+    The homomorphism $f: \mathbb{R} \to \mathbb{R}$ where $f(x) = |x|$ has an image of $\{x \in \mathbb{R} \vert x \geq 0\}$.
+\end{example}
+
+\newpage
 
 We note that the image of a homomorphism is a subgroup of the codomain $H$.
 \begin{proposition}\label{prop-image-is-subgroup-of-codomain}
@@ -2285,7 +2306,7 @@ We note that the image of a homomorphism is a subgroup of the codomain $H$.
 We look at the \textbf{kernel} of a homomorphism as well.
 
 \begin{definition}
-    The \textbf{kernel}\index{homomorphism!kernel} of a homomorphism $\phi: G \to H$ is
+    The \textbf{kernel}\index{homomorphism!kernel} of a homomorphism $\phi: G \to H$ is the set
     \[
         \ker\phi = \{x \in G \vert \phi(x) = e_H\}
     \]
@@ -2296,8 +2317,6 @@ Basically, the kernel of $\phi$ is the set of elements in $G$ which map to the i
 \begin{remark}
     Some authors (e.g. \cite{libretexts_imandker}) will use the notation $\phi^{-1}(e_H)$ for the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. \cite{clark_1984, hungerford_1980}).
 \end{remark}
-
-\newpage
 
 \begin{example}
     Let the groups $G = (\mathbb{Z}^2, (+, +))$ and $H = (\mathbb{Z}, +)$. Let the map $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$. This means that $a+b = 0$, implying $ b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \mathbb{Z}\}$.
@@ -2323,7 +2342,7 @@ Like the image of $\phi$, the kernel of $\phi$ is a subgroup of $H$. It is, in f
     Now we prove normality. Let $x \in G$ and $n \in \ker\phi$. We need to show that $xnx^{-1}\in\ker\phi$ to prove normality. Observe that
     \begin{align*}
         \phi(xnx^{-1}) &= \phi(x)\phi(n)\phi(x^{-1})\\
-        &= \phi(x)e_H\phi(x)^{-1} & (\text{since } n \in \ker\phi)\\
+        &= \phi(x)e_H\phi(x)^{-1} & (n \in \ker\phi)\\
         &= \phi(x)\phi(x)^{-1}\\
         &= e_H,
     \end{align*}
@@ -2347,7 +2366,7 @@ for any homomorphism $\phi$.
 
 \newpage
 
-We include the commutativity diagram of the homomorphisms stated above to aid clarity:
+We include the commutativity diagram of the homomorphisms stated to aid clarity:
 
 \begin{figure}[h]
     \centering
@@ -2376,9 +2395,9 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
         so $\psi$ is a homomorphism.
         \item \textbf{Injective}: By \myref{exercise-trivial-kernel-means-injective}, we check that $\psi$ is injective by showing that $\ker\psi$ is trivial, i.e. $\ker\psi = \{\ker\phi\}$.
 
-        Suppose $x\ker\phi\in\ker\psi$. Then $\psi(x\ker\phi) = e_H$ by definition of kernel. Hence $\phi(x) = e_H$ by definition of $\psi$. Hence, $x \in \ker\phi$ by definition of kernel. This means that $xe^{-1} \in \ker\phi$. So $x\ker\phi = e\ker\phi = \ker\phi$ by Coset Equality (\myref{lemma-coset-equality}) meaning that $\ker\psi = \{\ker\phi\}$. Therefore $\psi$ is injective.
+        Suppose $x\ker\phi\in\ker\psi$. Then $\psi(x\ker\phi) = e_H$ by definition of kernel. Hence $\phi(x) = e_H$ by definition of $\psi$, which means $x \in \ker\phi$ by definition of kernel. This means that $xe^{-1} \in \ker\phi$. So $x\ker\phi = e\ker\phi = \ker\phi$ by Coset Equality (\myref{lemma-coset-equality}) meaning that $\ker\psi = \{\ker\phi\}$. Therefore $\psi$ is injective.
 
-        \item \textbf{Surjective}: Suppose $y$ is in the image of $\phi$, meaning there exists a $x$ in $G$ such that $\phi(x) = y$. Note that $\psi(x\ker\phi) = \phi(x) = y$. Thus $\psi$ is surjective.
+        \item \textbf{Surjective}: Suppose $y$ is in the image of $\phi$, meaning there exists a $x \in G$ such that $\phi(x) = y$. Note that $\psi(x\ker\phi) = \phi(x) = y$. Thus $\psi$ is surjective.
     \end{itemize}
     Thus $\psi$ is a well-defined isomorphism.
 
@@ -2465,13 +2484,13 @@ In the diagram, we only show subgroups that we care about. $G$ has a (direct) su
     \begin{enumerate}
         \item Clearly $e_G \in H$ and $e_G \in K$ so $e_G \in H \cap K$.
         
-        Now take $x, y \in H \cap K$, meaning $x, y \in H$ and $x, y \in K$. Now since $H, K \leq G$, thus $xy^{-1} \in H$ and $xy^{-1} \in K$ by applying the subgroup test on $H$ and $K$ respectively. This thus means that $xy^{-1} \in H \cap K$. By the subgroup test, this means that $H \cap K \leq H$.
+        Now take $x, y \in H \cap K$, meaning $x, y \in H$ and $x, y \in K$. Since $H, K \leq G$ so $xy^{-1} \in H$ and $xy^{-1} \in K$. Thus $xy^{-1} \in H \cap K$. By the subgroup test, this means that $H \cap K \leq H$.
         
-        \item Note that $H = \{he_G \vert h \in H\} \subseteq \{hk \vert h \in H, k \in K\} = HK$, so we consider the subgroup test. Clearly $e_G \in H$ since $H \leq G$. Also since $H \leq G$, for all $x, y \in N$, $xy^{-1} \in G$. Thus, by the subgroup test, $H \leq HN$.
+        \item Note that $H = \{he_G \vert h \in H\} \subseteq \{hk \vert h \in H, k \in K\} = HK$, and $H$ is a group (as $H$ is a subgroup). Therefore $H \leq HK$.
         
-        \item We note that, because $N$ is normal, hence $hN = Nh$ for all $h \in H \subseteq G$, meaning that $HN = NH$. Therefore by \myref{prop-subgroup-product-is-subgroup}, $HN \leq G$.
+        \item We note that, because $N$ is normal, hence $hN = Nh$ for all $h \in H \subseteq G$, meaning that $HN = NH$. Therefore by \myref{prop-subgroup-product-is-subgroup}, we have $HN \leq G$.
 
-        \item We know $H \cap N \leq H$ by statement 1, so we only prove normality. Take $x \in H \cap N$, Since $H \leq G$, thus $x \in H \cap N \subseteq H$, meaning for all $g \in H$, $gxg^{-1} \in H$ (where we think of $g$ and $x$ as being in $H$). But since $x \in H \cap N \subseteq N$ and $N \unlhd G$, thus $gxg^{-1} \in N$ (where we think of $g \in H$ and $x \in N$). Therefore $H \cap N \unlhd H$.
+        \item We know $H \cap N \leq H$ by statement 1, so we only prove normality. Take $x \in H \cap N$. Since $H \leq G$, thus $x \in H \cap N \subseteq H$, meaning for all $g \in H$, $gxg^{-1} \in H$ (where we think of $g$ and $x$ as being in $H$). But since $x \in H \cap N \subseteq N$ and $N \unlhd G$, thus $gxg^{-1} \in N$ (where we think of $g \in H$ and $x \in N$). Therefore $H \cap N \unlhd H$.
 
         \item We know $N \leq HN$ by statement 2, so we only prove normality. Take $n \in N$ and $x \in HN$ such that $x = h_xn_x$. Then
         \begin{align*}
@@ -2480,7 +2499,7 @@ In the diagram, we only show subgroups that we care about. $G$ has a (direct) su
             &= \underbrace{h_x}_{\text{In }G}\underbrace{n_xnn_x^{-1}}_{\text{In }N}\underbrace{h_x^{-1}}_{\text{In G}}\\
             &\in N
         \end{align*}
-        since $N \lhd G$. This proves that $N \unlhd HN$.
+        since $N \unlhd G$. This proves that $N \unlhd HN$.
 
         \item This is the main result of this theorem. We define $\phi: H \to HN/N, h \mapsto hN$. We show that $\phi$ is a homomorphism and then find its image and kernel.
         \begin{itemize}
@@ -2493,9 +2512,11 @@ In the diagram, we only show subgroups that we care about. $G$ has a (direct) su
             \[
                 xN = (hn)N = h(nN) = hN
             \]
-            meaning $\phi(h) = hN = xN$. Hence we have found a pre-image of the coset $xN$, meaning $\phi$ is surjective. Hence $\im \phi = HN/N$.
+            meaning $\phi(h) = hN = xN$. Hence we have found a pre-image of the coset $xN$, meaning $\phi$ is surjective. Thus $\im \phi = HN/N$.
 
-            \item \textbf{Kernel}: We claim that $\ker\phi = H \cap N$. Note that $\ker\phi = \{h \in H \vert \phi(h) = eN = N\}$ by definition of kernel. This means that if $h \in \ker\phi$ then $\phi(h) = N$. Hence $\phi(h) = hN = N$ which means $h \in N$ by Coset Equality (\myref{lemma-coset-equality}). Thus, $h \in H$ and $h \in n$, meaning $h \in H \cap N$. Therefore $\ker \phi \subseteq H \cap N$.
+            \item \textbf{Kernel}: We claim that $\ker\phi = H \cap N$.
+            
+            Note that $\ker\phi = \{h \in H \vert \phi(h) = eN = N\}$ by definition of kernel. This means that if $h \in \ker\phi$ then $\phi(h) = N$. Hence $\phi(h) = hN = N$ which means $h \in N$ by Coset Equality (\myref{lemma-coset-equality}). Thus, $h \in H$ and $h \in n$, meaning $h \in H \cap N$. Therefore $\ker \phi \subseteq H \cap N$.
     
             Now suppose $x \in H \cap N$. This means that $x \in N$ necessarily, implying $xN = N$. Thus $\phi(x) = N$ which quickly implies $x \in \ker\phi$. Therefore $H \cap N \subseteq \ker\phi$.
     
@@ -2521,30 +2542,30 @@ In the diagram, we only show subgroups that we care about. $G$ has a (direct) su
     We prove the forward direction first; assume that $H, K \unlhd G$. By the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3, we know that $HK \leq G$ since $H \unlhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
     \begin{align*}
         g(hk)g^{-1} &= (gh)(kg^{-1})\\
-        &= (hg)(g^{-1}k) & (\text{since } H, K \lhd G)\\
+        &= (hg)(g^{-1}k) & (\text{as } H, K \unlhd G)\\
         &= h(gg^{-1})k\\
         &= hk \in HK
     \end{align*}
     which means that $HK \unlhd G$.
 
-    We now prove the reverse direction; assume $HK \unlhd G$. This means $gHKg^{-1} = HK$ for all $g \in G$ by definition of normality. Note that $gHKg^{-1} = (gHg^{-1})(gKg^{-1})$. We hence consider the following cases.
+    We now prove the reverse direction; assume $HK \unlhd G$. If $H = K = G$ then clearly $H,K \unlhd G$. So consider the case when $H, K < G$. This means $gHKg^{-1} = HK$ for all $g \in G$ by definition of normality. Note that $gHKg^{-1} = (gHg^{-1})(gKg^{-1})$. We hence consider the following cases.
     \begin{itemize}
         \item Suppose $gH = H$ and $g^{-1}gKg^{-1} = Kg^{-1} = K$. Then Coset Equality (\myref{lemma-coset-equality}) tells us that $g \in H$ and $g \in K$, hence $g \in H \cap K$. But $g \in G$. Therefore $G \subseteq H \cap K$. However, $H \subset G$ and $K \subset G$, hence $H \cap K \subset G$, a contradiction.
         \item Suppose $gHg^{-1}g = gH = H$ and $Kg^{-1} = K$. This is the same as above.
     \end{itemize}
-    Therefore the only remaining case is $gHg^{-1} = H$ and $gKg^{-1} = K$, implying that both $H \unlhd G$ and $K \unlhd G$ as required.
+    Therefore the only remaining case is $gHg^{-1} = H$ and $gKg^{-1} = K$, implying that both $H \lhd G$ and $K \lhd G$ as required.
 \end{proof}
 
 \newpage
 
-We look at a few examples for the use of the Diamond Isomorphism Theorem.
+We look at two examples using the Diamond Isomorphism Theorem.
 \begin{example}
-    We say a group $G$ is \textbf{metabelian}\index{metabelian} if and only if there exists $A \unlhd G$ such that $A$ and $G/A$ are both abelian. We will prove the fact that any subgroup of a metabelian group is also metabelian.
+    We say a group $G$ is \textbf{metabelian}\index{metabelian} if and only if there exists $A \unlhd G$ such that $A$ and $G/A$ are both abelian. We will prove that any subgroup of a metabelian group is also metabelian.
 
-    Let $H \leq G$. Then, by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), $H \cap A \unlhd H$ (statement 4) and $H/(H \cap A) \cong HA / A$ (statement 6). We just need to prove that $H \cap A$ is abelian and prove that $H/(H \cap A)$ is abelian.
+    Let $H \leq G$. Then, by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), we know $H \cap A \unlhd H$ (statement 4) and $H/(H \cap A) \cong HA / A$ (statement 6). We just need to prove that both $H \cap A$ and $H/(H \cap A)$ are abelian.
     \begin{itemize}
-        \item Consider any two elements from $H \cap A$, say $x$ and $y$. Then $x \in A$ and $y \in A$, meaning $xy = yx$. Hence, elements from $H \cap A$ commute, meaning that $H \cap A$ is abelian.
-        \item Consider $HA / A$. Note that $HA \leq G$ since $H \leq G$ and $A \leq G$. Thus, $HA / A \leq G / A$. Note that $G/A$ is abelian by definition of metabelian group. Hence, $H/(H \cap A) \cong HA / A$ is also abelian.
+        \item Consider any two elements from $H \cap A$, say $x$ and $y$. Then $x \in A$ and $y \in A$, so $xy = yx$ as $A$ is abelian. Hence, elements from $H \cap A$ commute, meaning that $H \cap A$ is abelian.
+        \item Consider $H/(H\cap A) \cong HA / A$. Note that $HA \leq G$ since $H \leq G$ and $A \leq G$. Thus, $HA / A \leq G / A$. Note that $G/A$ is abelian by definition of metabelian group. Hence, $H/(H \cap A)$ is also abelian.
     \end{itemize}
     Therefore, we have found a subgroup of $H$ (in particular $H \cap A$) such that both $H \cap A$ and $H/(H\cap A)$ are both abelian. Hence, $H$ is metabelian.
 \end{example}
@@ -2560,12 +2581,12 @@ We look at another application of the Diamond Isomorphism Theorem, which has use
         m\mathbb{Z}/(m\mathbb{Z} \cap n\mathbb{Z}) \cong (m\mathbb{Z} + n\mathbb{Z})/(n\mathbb{Z}).
     \]
 
-    Now $m\mathbb{Z} \cap n\mathbb{Z}$ is the set of integers that are both a multiple of $m$ and $n$. Hence, $m\mathbb{Z} \cap n\mathbb{Z} = \lcm(m,n)\mathbb{Z} = l\mathbb{Z}$. On the other hand, $m\mathbb{Z} + n\mathbb{Z}$ is the set of all integers of the form $mx+ny$ where $x$ and $y$ are integers. B\'{e}zout's identity (\myref{lemma-bezout}) tells us that this set consists of the multiples of $\gcd(m,n)$, i.e. $m\mathbb{Z} + n\mathbb{Z} = \gcd(m,n)\mathbb{Z} = d\mathbb{Z}$. Hence,
+    Now $m\mathbb{Z} \cap n\mathbb{Z}$ is the set of integers that are both a multiple of $m$ and $n$. Hence, $m\mathbb{Z} \cap n\mathbb{Z} = \lcm(m,n)\mathbb{Z} = l\mathbb{Z}$. On the other hand, $m\mathbb{Z} + n\mathbb{Z}$ is the set of all integers of the form $mx+ny$ where $x$ and $y$ are integers. B\'{e}zout's lemma (\myref{lemma-bezout}) tells us that this set consists of the multiples of $\gcd(m,n)$, i.e. $m\mathbb{Z} + n\mathbb{Z} = \gcd(m,n)\mathbb{Z} = d\mathbb{Z}$. Hence,
     \[
         m\mathbb{Z}/(l\mathbb{Z}) \cong (d\mathbb{Z})/(n\mathbb{Z}).
     \]
 
-    We claim that $m\mathbb{Z} / (l\mathbb{Z}) \cong \mathbb{Z}_{\frac lm} \text{ and } d\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd}$. This is a specific case of \myref{problem-mZ/nZ-isomorphic-to-Zn/m} which we have left as a problem for later. Hence, what we have shown is
+    We claim that $m\mathbb{Z} / (l\mathbb{Z}) \cong \mathbb{Z}_{\frac lm} \text{ and } d\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd}$. This is a specific case of \myref{problem-mZ/nZ-isomorphic-to-Zn/m} which we have left as a problem for later. Hence,
     \[
     \mathbb{Z}_{\frac lm} \cong m\mathbb{Z}/(l\mathbb{Z}) \cong d\mathbb{Z}/(n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd},
     \]
@@ -2593,7 +2614,7 @@ It should be noted that there is no consistency with the numbering of these theo
     \begin{enumerate}
         \item $N \unlhd H$;
         \item $H/N \unlhd G/N$; and
-        \item $\frac{G/N}{H/N} \cong G/H$
+        \item $\frac{G/N}{H/N} \cong G/H$.
     \end{enumerate}
 \end{theorem}
 \begin{proof}
@@ -2602,7 +2623,7 @@ It should be noted that there is no consistency with the numbering of these theo
     \newpage
 
     \begin{enumerate}
-        \item We note that since $N \subseteq H$ and $N$ is a group (since $N$ is a normal subgroup of $G$) thus $N \leq H$. We now prove normality. Since $H$ and $N$ are normal subgroups of $G$, thus for all $g \in G$,
+        \item We note that since $N \subseteq H$ and $N$ is a group (since $N$ is a normal subgroup of $G$) thus $N \leq H$. We just need to prove normality. Since $H$ and $N$ are normal subgroups of $G$, thus for all $g \in G$,
         \[
             gH = Hg \text{ and } gN = Ng.
         \]
@@ -2610,7 +2631,7 @@ It should be noted that there is no consistency with the numbering of these theo
 
         \item We first prove that it is a subgroup using the subgroup test, before proving normality.
 
-        Clearly $N = eN \in H/N$. Let $x$ and $y$ be in $H/N$. Then $x=h_xN$ and $y=h_yN$ for some $h_x, h_y \in H$. Note that $y^{-1} = (h_y)^{-1}N$ by group operator on cosets. Hence,
+        Clearly $N = eN \in H/N$. Let $x$ and $y$ be in $H/N$. Then $x=h_xN$ and $y=h_yN$ for some $h_x, h_y \in H$. Note that $y^{-1} = (h_y^{-1})N$ by group operator on cosets. Hence,
         \begin{align*}
             xy^{-1} &= (h_xN)(h_y^{-1}N)\\
             &= (\underbrace{h_xh_y^{-1}}_{\text{In }H})N\\
@@ -2618,7 +2639,7 @@ It should be noted that there is no consistency with the numbering of these theo
         \end{align*}
         Hence, by subgroup test, $H/N \leq G/N$.
 
-        Now let $gN \in G/N$ and $hN \in H/N$. We need to show that $(gN)(hN)(gN)^{-1} \in H/N$. Note $(gN)(hN)(gN)^{-1} = (ghg^{-1})N$. Since $H \lhd G$, thus $ghg^{-1} \in H$ which means that $(ghg^{-1})N \in H/N$.
+        Now let $gN \in G/N$ and $hN \in H/N$. We need to show that $(gN)(hN)(gN)^{-1} \in H/N$. Note $(gN)(hN)(gN)^{-1} = (ghg^{-1})N$. Since $H \unlhd G$, thus $ghg^{-1} \in H$ which means that $(ghg^{-1})N \in H/N$.
 
         Therefore $H/N \unlhd G/N$.
 
@@ -2626,7 +2647,12 @@ It should be noted that there is no consistency with the numbering of these theo
 
         Define $\phi: G/N \to G/H, gN \mapsto gH$. We check that $\phi$ is a well-defined homomorphism and find its image and kernel.
         \begin{itemize}
-            \item \textbf{Well-defined}: Suppose $gN = g'N$. Then $g(g')^{-1} \in N$ by Coset Equality (\myref{lemma-coset-equality}). Since $N \subseteq H$ (assumption), thus $g(g')^{-1} \in H$ which implies $gH = g'H$ by \myref{lemma-coset-equality}. Hence $\phi(gN) = gH = g'H = \phi(g'N)$, i.e. $\phi$ is well-defined.
+            \item \textbf{Well-defined}: Suppose $gN = g'N$. Then $g(g')^{-1} \in N$ by Coset Equality (\myref{lemma-coset-equality}). Since $N \subseteq H$, thus $g(g')^{-1} \in H$ which implies $gH = g'H$ by \myref{lemma-coset-equality}. Hence
+            \[
+                \phi(gN) = gH = g'H = \phi(g'N)
+            \]
+            so $\phi$ is well-defined.
+
             \item \textbf{Homomorphism}: Take $gN, g'N \in G/N$. Then
             \begin{align*}
                 \phi((gN)(g'N)) &= \phi((gg')N)\\
@@ -2636,11 +2662,13 @@ It should be noted that there is no consistency with the numbering of these theo
             \end{align*}
             which means that $\phi$ is a homomorphism.
             
-            \item \textbf{Image}: We show $\phi$ is surjective to prove that $\im\phi = G/H$. Suppose $gH \in G/H$. Then $\phi(gN) = gH$. Thus $gN$ is a pre-image of $gH$, meaning that $\phi$ is surjective. Hence $\im\phi = G/H$.
+            \item \textbf{Image}: We show $\phi$ is surjective to prove that $\im\phi = G/H$. Suppose $gH \in G/H$. Clearly $\phi(gN) = gH$. Thus $gN$ is a pre-image of $gH$, meaning that $\phi$ is surjective. Hence $\im\phi = G/H$.
             
-            \item \textbf{Kernel}: Suppose $gN \in \ker\phi = \{gN \vert \phi(gN) = eH = H\}$. Thus $\phi(gN) = H \implies gH = H$. Therefore, $ge^{-1} = g \in H$ by Coset Equality (\myref{lemma-coset-equality}). This means that $gN \in H/N$, further meaning that $\ker\phi \subseteq H/N$.
+            \item \textbf{Kernel}: We show that $\ker\phi = H/N$.
+            
+            Suppose $gN \in \ker\phi = \{gN \vert \phi(gN) = eH = H\}$. Thus $\phi(gN) = gH = H$, which means $g \in H$. Hence $gN \in H/N$, so $\ker\phi \subseteq H/N$.
 
-            Suppose now $hN \in H/N$. Since $H \lhd G \implies H\subseteq G$, thus $h \in G$. Therefore $hN \in G/N$ which means $\phi(hN) = hH = H$. Hence $hN \in \ker\phi$ which means $H/N \subseteq \ker\phi$.
+            Now assume $hN \in H/N$. Since $H\subseteq G$ (as $H \unlhd G$), thus $h \in G$. Therefore $hN \in G/N$, so $\phi(hN) = hH = H$. Hence $hN \in \ker\phi$ which means $H/N \subseteq \ker\phi$.
 
             Since $\ker\phi \subseteq H/N$ and $H/N \subseteq \ker\phi$, we must have $\ker\phi = H/N$.
         \end{itemize}
@@ -2684,7 +2712,7 @@ It should be noted that there is no consistency with the numbering of these theo
 
 \section{Problems}
 \begin{problem}
-    Let $G$ be a group. Prove that $G/G \cong \{e\}$.
+    Let $G$ be a group. Prove that $G/G$ is isomorphic to the trivial group.
 \end{problem}
 
 \begin{problem}
@@ -2696,7 +2724,7 @@ It should be noted that there is no consistency with the numbering of these theo
 \end{problem}
 
 \begin{problem}\label{problem-cartesian-product-of-group-by-group-isomorphic-to-group}
-    Let $G$ be an abelian group under the operation $\ast$. Let $I = \{(g, g^{-1}) \vert g \in G\}$ be a group under component-wise application of $\ast$.
+    Let $G$ be an abelian group with operation $\ast$. Let $I = \{(g, g^{-1}) \vert g \in G\}$ be a group under component-wise application of $\ast$.
     \begin{enumerate}[label=(\roman*)]
         \item Show that $I \cong G$.
         \item Hence prove $G^2/G \cong G$ by considering a suitable homomorphism.
@@ -2706,7 +2734,7 @@ It should be noted that there is no consistency with the numbering of these theo
 \begin{problem}\label{problem-mZ/nZ-isomorphic-to-Zn/m}
     Let $G = m\mathbb{Z}$ and $H = n\mathbb{Z}$ be groups under addition, where $m\vert n$ and $m \neq n$. Let the map $\phi: G \to \mathbb{Z}/({\frac nm}\mathbb{Z})$ be defined such that
     \[
-        \phi(am) = a + \frac nm \mathbb{Z}
+        \phi(am) = a + \frac nm \mathbb{Z}.
     \]
     Prove that $G/H \cong \mathbb{Z}_{\frac nm}$.
 \end{problem}
@@ -2714,7 +2742,7 @@ It should be noted that there is no consistency with the numbering of these theo
 %=========================================
 \chapter{More Types of Groups}
 \section{More About Cyclic Groups}
-We previously covered several properties of cyclic groups:
+We previously covered several properties of cyclic groups.
 \begin{itemize}
     \item Every cyclic group is abelian. (\myref{prop-cyclic-group-is-abelian})
     \item A finite group $G$ is cyclic if and only if there exists an element $g$ in the group $G$ with the same order as the group. (\myref{thrm-cyclic-group-has-element-with-same-order})
@@ -2744,7 +2772,7 @@ We prove more facts about cyclic groups here.
 \end{proof}
 
 \begin{exercise}
-    The number 12 is equivalent to 0 in the group $\mathbb{Z}_n$ (under addition modulo $n$). What are the possible value(s) of $n$?
+    The number 12 is equivalent to 0 in the group $\mathbb{Z}_n$. What are the possible value(s) of $n$?
 \end{exercise}
 
 We are now ready to prove an essential theorem on cyclic groups.
@@ -2807,7 +2835,7 @@ We are now ready to prove an essential theorem on cyclic groups.
 
 \section{Quaternion Group}
 We look at an interesting group that has use in computer graphics: the \textbf{Quaternion Group}. We present one definition here.
-\begin{definition}
+\begin{definition}\label{definition-quaternion-group}
     The quaternion group\index{Quaternion Group} is denoted by $\mathrm{Q}$ where
     \[
             \mathrm{Q} = \{1, -1, i, -i, j, -j, k, -k\}
@@ -2825,13 +2853,13 @@ We look at an interesting group that has use in computer graphics: the \textbf{Q
 
 \newpage
 
-Note that the proper subgroups of $\mathrm{Q}$ are
+The proper subgroups of $\mathrm{Q}$ are as follows.
 \begin{multicols}{2}
     \begin{itemize}
-        \item $\langle -1 \rangle = \{\pm1\}$;
-        \item $\langle i \rangle = \{\pm1, \pm i\}$;
-        \item $\langle j \rangle = \{\pm1, \pm j\}$; and
-        \item $\langle k \rangle = \{\pm1, \pm k\}$.
+        \item $\langle -1 \rangle = \{\pm1\}$
+        \item $\langle i \rangle = \{\pm1, \pm i\}$
+        \item $\langle j \rangle = \{\pm1, \pm j\}$
+        \item $\langle k \rangle = \{\pm1, \pm k\}$
     \end{itemize}
 \end{multicols}
 The correctness of these proper subgroups are left as an exercise for the reader.
@@ -2839,7 +2867,7 @@ The correctness of these proper subgroups are left as an exercise for the reader
 With these subgroups, we can write a presentation for $\mathrm{Q}$.
 
 \begin{proposition}
-    $\mathrm{Q} = \langle i, j \rangle$ (with relationships as given above).
+    $\mathrm{Q} = \langle i, j \rangle$ (with relationships as given in \myref{definition-quaternion-group}).
 \end{proposition}
 \begin{proof}
     For brevity let $G = \langle i, j \rangle$. We note that $i^0 = 1$, $i^4 = j^4 = 1$ and $ji = -k = -ij = i^3j$. Hence,
@@ -2853,11 +2881,11 @@ With these subgroups, we can write a presentation for $\mathrm{Q}$.
     Thus, $\mathrm{Q} = \langle i, j \rangle$.
 \end{proof}
 
-Thus, an alternate definition of $\mathrm{Q}$ is as follows:
+Thus, an alternate definition of $\mathrm{Q}$ is
 \[
     \mathrm{Q} = \langle \alpha, \beta \vert \alpha^4 = e,\; \alpha^2 = \beta^2, \text{ and } \beta\alpha = \alpha^3\beta \rangle.
 \]
-One sees clearly that in this definition, $\alpha = i$ and $\beta = j$.
+One sees clearly that $\alpha = i$ and $\beta = j$ in this definition.
 
 \begin{exercise}\label{exercise-normal-subgroups-of-quarternion-group}
     Find all the normal subgroups of the quaternion group $\mathrm{Q}$.\newline
@@ -2871,9 +2899,9 @@ The alternating group is a very important group in the field of group theory. Ho
 \begin{definition}
     A \textbf{transposition}\index{transposition} is a 2-cycle. That is, a transposition $\tau$ is represented as $(a\quad b)$ in cycle notation.
 \end{definition}
-For example, (1 5), (4 7), (3 6) etc. are transpositions, while (1 4 5), (3 4 6 5 9), (1 3 4 5) etc. are not. One sees clearly that every transposition is its own inverse.
+For example, we see that (1 5), (4 7), (3 6) etc. are transpositions, while (1 4 5), (3 4 6 5 9), (1 3 4 5) etc. are not. One sees clearly that every transposition is its own inverse.
 
-We call transpositions which take the form $\begin{pmatrix}i&i+1\end{pmatrix}$ \textbf{adjacent transpositions}\index{transposition!adjacent}, and we may denote them by $\alpha$.
+We call transpositions which has cycle decomposition $\begin{pmatrix}i&i+1\end{pmatrix}$ \textbf{adjacent transpositions}\index{transposition!adjacent}, and we may denote them by $\alpha$.
 
 We look at one lemma which can be said to help `break up' transpositions into a composition of adjacent transpositions. Note that line breaks are to be ignored in the following lemma.
 \begin{lemma}\label{lemma-decompose-transposition}
@@ -2891,12 +2919,12 @@ We look at one lemma which can be said to help `break up' transpositions into a 
 \begin{proof}
     We induct on $d$.
 
-    When $d = 1$, $\tau = (i\quad i+1)$ so the statement is true for $d=1$.
+    When $d = 1$, we see $\tau = (i\quad i+1)$ so the statement is true for $d=1$.
 
     Assume that the given representation of $\tau$ holds for some positive integer $d$. Note this means that it holds for all $i$, including $i+1$. We are to show that it works for $d + 1$.
     \begin{align*}
         (i\quad i+(d+1)) &= (i\quad i+1)(i+1\quad i+d+1)(i\quad i+1)\\
-        &= (i\quad i+1)\underbrace{((i+1)\quad (i+d)+1)}_{\text{apply induction hypothesis}}(i\quad i+1)\\
+        &= (i\quad i+1)\underbrace{((i+1)\quad (i+d)+1)}_{\text{use induction hypothesis here}}(i\quad i+1)\\
         &= (i\quad i+1)((i+1)\quad(i+1)+1)\cdots\\
         &\quad\quad((i+1)\quad(i+1)+1)(i\quad i+1)\\
         &= (i\quad i+1)(i+1\quad i+2)\cdots\\
@@ -2905,7 +2933,7 @@ We look at one lemma which can be said to help `break up' transpositions into a 
     which shows that $d+1$ works as well.
 \end{proof}
 \begin{remark}
-    In the above representation of $\tau$, $2d-1$ compositions were used.
+    In the above representation of $\tau$, we use $2d-1$ compositions.
 \end{remark}
 \begin{example}
     An adjacent transposition decomposition of $(4\quad9)$ is
@@ -2953,7 +2981,7 @@ Counting the number of inversions in a permutation may be hard to do, so we have
     Let $\sigma$ be a permutation. Suppose $\sigma$ can be expressed as a product of $n$ transpositions. Then $\sigma$ is even if and only if $n$ is even.
 \end{theorem}
 \begin{proof}
-    We only need to show that the parity of $n$ and the parity of the permutation is equal to prove this.
+    We only need to show that the parity of $n$ and the parity of the permutation is the same to prove this.
 
     By \myref{lemma-permutations-as-product-of-transpositions}, all permutations can be produced by a sequence of transpositions, say $\sigma = \tau_1\tau_2\tau_3\cdots\tau_k$.
 
@@ -2965,7 +2993,7 @@ Counting the number of inversions in a permutation may be hard to do, so we have
 
     It is clear that for any permutation $\pi$ and adjacent permutation $\alpha$, the permutation $\alpha\pi$ has either one more or one less inversion than $\pi$. Thus the parity of the number of inversions of a permutation is switched when composed with adjacent transpositions.
 
-    One sees clearly that the identity permutation $\id$ is an even permutation. So $\alpha_1$ is odd, $\alpha_1\alpha_2$ is even, $\alpha_1\alpha_2\alpha_3$ is odd, etc., so $\alpha_1\alpha_2\cdots\alpha_m$ has the parity of $m$. Therefore the parity of the number of inversions of $\sigma$ is the parity of $k$ (since $m$ and $k$ have the same parity), proving the theorem.
+    We note that the identity permutation $\id$ is an even permutation. So $\alpha_1$ is odd, $\alpha_1\alpha_2$ is even, $\alpha_1\alpha_2\alpha_3$ is odd, etc., so $\alpha_1\alpha_2\cdots\alpha_m$ has the parity of $m$. Therefore the parity of the number of inversions of $\sigma$ is the parity of $k$ (since $m$ and $k$ have the same parity), proving the theorem.
 \end{proof}
 
 \newpage
@@ -2974,19 +3002,19 @@ Counting the number of inversions in a permutation may be hard to do, so we have
     Let $\sigma$ be a permutation. Then $\sigma$ and $\sigma^{-1}$ have the same parity.
 \end{proposition}
 \begin{proof}
-    One observes clearly that $\sigma\sigma^{-1} = \id$. Since $\id$ is even, thus $\sigma\sigma^{-1}$ must be composed of an even number of transpositions (by \myref{thrm-parity-of-permutation}).
+    One observes clearly that $\sigma\sigma^{-1} = \id$. Since $\id$ is even, thus $\sigma\sigma^{-1}$ must be composed of an even number of transpositions (\myref{thrm-parity-of-permutation}).
     \begin{itemize}
         \item If $\sigma$ is even, then $\sigma$ can be expressed as a product of an even number of transpositions. Hence $\sigma^{-1}$ must also be a product of an even number of transpositions in order for $\sigma\sigma^{-1} = \id$ to be even.
         \item If $\sigma$ is odd, then $\sigma$ can be expressed as a product of an odd number of transpositions. Hence $\sigma^{-1}$ must also be a product of an odd number of transpositions in order for $\sigma\sigma^{-1} = \id$ to be even.
     \end{itemize}
-    Thus, the proposition is proven.
+    This proves the claim.
 \end{proof}
 
 We look at one final useful construct: the sign of a permutation.
 \begin{definition}
     The \textbf{sign of a permutation}\index{permutation!sign} is $+1$ if the permutation is even and $-1$ if the permutation is odd.
 \end{definition}
-If $\sigma$ is the permutation, $N(\sigma)$ denotes the number of inversions in $\sigma$, and $m$ the number of transpositions in the decomposition of $\sigma$, then the sign of $\sigma$ is given by the \textbf{signum} function:
+If $\sigma$ is the permutation, $N(\sigma)$ is the number of inversions in $\sigma$, and $m$ is the number of transpositions in the decomposition of $\sigma$, then the sign of $\sigma$ is given by the \textbf{signum} function:
 \[
     \sgn(\sigma) = (-1)^{N(\sigma)} = (-1)^m.
 \]
@@ -2994,11 +3022,11 @@ If $\sigma$ is the permutation, $N(\sigma)$ denotes the number of inversions in 
     Find $\sgn\left(\begin{pmatrix}1&3&2&5&4\end{pmatrix}\right)$.
 \end{exercise}
 
-As a final note, one observes that the number of inversions in $\sigma\tau$ is the same as the sum of inversions in $\sigma$ and $\tau$ separately, meaning
+One observes that the number of inversions in $\sigma\tau$ is the same as the sum of inversions in $\sigma$ and $\tau$ separately, which means
 \[
     N(\sigma\tau) = N(\sigma) + N(\tau)
 \]
-which hence means that the sign of a permutation $\sigma\tau$ is
+so
 \begin{align*}
     \sgn(\sigma\tau) &= (-1)^{N(\sigma\tau)}\\
     &= (-1)^{N(\sigma) + N(\tau)}\\
@@ -3009,7 +3037,7 @@ meaning that $\sgn$ is a \textit{multiplicative map}. One can then quickly verif
 \[
     1 = \sgn(\id) = \sgn(\sigma\sigma^{-1}) = \sgn(\sigma)\sgn(\sigma^{-1})
 \]
-which means $\sgn(\sigma)$ and $\sgn(\sigma^{-1})$ have the same parity.
+which implies $\sgn(\sigma)$ and $\sgn(\sigma^{-1})$ have the same parity.
 
 \subsection{The Alternating Group}
 We are now ready to look at the alternating group.
@@ -3025,23 +3053,30 @@ We are now ready to look at the alternating group.
     $\An{n} \lhd \Sn{n}$ where $n \geq 2$.
 \end{proposition}
 \begin{proof}
-    Clearly from definition $\An{n} \subset \Sn{n}$ so we consider the subgroup test. Note that the identity function $\id \in \An{n}$ since $\id \in \Sn{n}$ and the identity is even.
+    Note that the identity function $\id \in \An{n}$ since $\id \in \Sn{n}$ and the identity is even.
 
-    Suppose now that $\mu$ and $\sigma$ are in $\An{n}$. We are to show that $\mu\sigma^{-1} \in \An{n}$. By \myref{lemma-permutations-as-product-of-transpositions}, we may write
+    Suppose now that $\mu$ and $\sigma$ are in $\An{n}$. We show that $\mu\sigma^{-1} \in \An{n}$. By \myref{lemma-permutations-as-product-of-transpositions}, we may write
     \[
         \mu = \tau_1\tau_2\cdots\tau_{2k} \text{ and } \sigma = \tau_1'\tau_2'\cdots\tau_{2m}'.
     \]
-    We note that any transposition is its own inverse, i.e. $\tau = \tau^{-1}$. Hence by Shoes and Socks, $\sigma^{-1} = \tau_{2m}'\tau_{2m-1}'\cdots\tau_2'\tau_1'$. Therefore,
+    We note that any transposition is its own inverse, i.e. $\tau = \tau^{-1}$. Hence $\sigma^{-1} = \tau_{2m}'\tau_{2m-1}'\cdots\tau_2'\tau_1'$, so
     \[
         \mu\sigma^{-1} = \underbrace{\tau_1\cdots\tau_{2k}\tau_{2m}'\cdots\tau_1'}_{2(k+m) \text{ transpositions}}
     \]
-    is an even permutation, meaning $\mu\sigma^{-1} \in \An{n}$. By subgroup test, $\An{n} < \Sn{n}$.
+    is an even permutation, meaning $\mu\sigma^{-1} \in \An{n}$. By subgroup test, $\An{n} \leq \Sn{n}$. But as $\An{n}$ contains only even permutations, thus $\An{n} < \Sn{n}$.
     
     Now take $\sigma \in \Sn{n}$ and $\mu \in \An{n}$. Note that
+    \begin{align*}
+        \sgn(\sigma\mu\sigma^{-1}) &= \sgn(\sigma)\sgn(\mu)\sgn(\sigma^{-1})\\
+        &= \sgn(\sigma)\sgn(\sigma^{-1})\sgn(\mu)\\
+        &= \sgn(\sigma\sigma^{-1})\sgn(\mu)\\
+        &= \sgn(\id)\sgn(\mu)\\
+        &= \sgn(\mu).
+    \end{align*}
     \[
         \sgn(\sigma\mu\sigma^{-1}) = \sgn(\sigma)\sgn(\mu)\sgn(\sigma^{-1}).
     \]
-    As above, we note $\sgn(\sigma)\sgn(\sigma^{-1}) = 1$ and $\sgn(\mu) = 1$ since $\mu$ is even. Hence $\sgn(\sigma\mu\sigma^{-1}) = 1$ which means that $\sigma\mu\sigma^{-1}$ is an even permutation. Therefore $\sigma\mu\sigma^{-1} \in \An{n}$, meaning that $\An{n} \lhd \Sn{n}$.
+    As $\mu$ is even, so $\sgn(\mu) = 1$. Hence $\sgn(\sigma\mu\sigma^{-1}) = 1$ which means that $\sigma\mu\sigma^{-1}$ is an even permutation. Therefore $\sigma\mu\sigma^{-1} \in \An{n}$, meaning that $\An{n} \lhd \Sn{n}$.
 \end{proof}
 
 \begin{proposition}\label{prop-order-of-An}
@@ -3054,9 +3089,9 @@ We are now ready to look at the alternating group.
     \]
     Clearly $A_n \cup \mathrm{O}_n = \Sn{n}$ and $A_n \cap \mathrm{O}_n = \emptyset$.
 
-    Define a map $f: \An{n} \to \mathrm{O}_n$ such that $\sigma \mapsto \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. We will show that this is a bijective map.
+    Define a map $f: \An{n} \to \mathrm{O}_n$ such that $\sigma \mapsto \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. We will show that this is a bijection.
     \begin{itemize}
-        \item \textbf{Injective}: Let $\mu$ and $\sigma$ be in $\An{n}$ such that $f(\mu) = f(\sigma)$. This means that $\begin{pmatrix}1 & 2\end{pmatrix}\mu = \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. Now by left-applying $\begin{pmatrix}1 & 2\end{pmatrix}$ on both sides yields $\mu = \sigma$ (since transpositions are their own self-inverse).
+        \item \textbf{Injective}: Let $\mu$ and $\sigma$ be in $\An{n}$ such that $f(\mu) = f(\sigma)$. This means that $\begin{pmatrix}1 & 2\end{pmatrix}\mu = \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. Now left-applying $\begin{pmatrix}1 & 2\end{pmatrix}$ on both sides yields $\mu = \sigma$ (since transpositions are their own self-inverse).
         
         \item \textbf{Surjective}: Take $\mu \in \mathrm{O}_n$, say $\mu = \tau_1\tau_2\cdots\tau_{2k-1}$ where $\tau_i$ is a transposition. Clearly,
         \[
@@ -3071,7 +3106,7 @@ We are now ready to look at the alternating group.
         \end{align*}
         which means that $\mu \in \mathrm{O}_n$ has a pre-image $\sigma$ in $\An{n}$.
     \end{itemize}
-    This proves that $f$ is bijective. Therefore $|\An{n}| = |\mathrm{O}_n|$.
+    This proves that $f$ is a bijection, so $|\An{n}| = |\mathrm{O}_n|$.
     
     Since $A_n \cup \mathrm{O}_n = \Sn{n}$ and $A_n \cap \mathrm{O}_n = \emptyset$, thus $|\Sn{n}| = |\An{n}| + |\mathrm{O}_n| = 2|\An{n}|$. Now because $|\Sn{n}| = n!$ by \myref{exercise-order-of-Sn}, therefore $|\An{n}| = \frac{n!}2$.
 \end{proof}
@@ -3095,17 +3130,17 @@ We look at a useful group in Number Theory: the \textbf{group of units modulo $n
     $\Un{n}$ is an abelian group.
 \end{proposition}
 \begin{proof}
-    We note that multiplication modulo $n$ is commutative. So, we only need to prove that $\Un{n}$ satisfies the four group axioms to show that $\Un{n}$ is an abelian group.
+    We note that multiplication modulo $n$ is commutative. So we only need to prove that $\Un{n}$ satisfies the four group axioms to show that $\Un{n}$ is an abelian group.
     \begin{enumerate}
         \item \textbf{Closure}: Let $x, y \in \Un{n}$. Then $\gcd(x, n) = \gcd(y, n) = 1$. Hence $\gcd(xy, n) = 1$ which means that $\gcd(x\otimes_ny,n)=1$. Thus $x\otimes_ny \in \Un{n}$.
         
-        \item \textbf{Associativity}: This is true since multiplication is associative.
+        \item \textbf{Associativity}: Multiplication is associative, so multiplication modulo $n$ is associative.
         
         \item \textbf{Identity}: Note that 1 is the identity in $\Un{n}$ since $1 \otimes_n x = x$.
         
-        \item \textbf{Inverse}: Let $x$ be in $\Un{n}$, meaning $\gcd(x, n) = 1$. Then \myref{prop-multiplicative-inverse-exists-iff-coprime} tells us that there exists an $m$ such that $mx \equiv 1 \pmod n$. Therefore $m \otimes_n x = 1$, which means $m$ is the left-inverse of $x$. Since multiplication is commutative, $m$ is also the right-inverse of $x$. Hence $m$ is the inverse of $x$.
+        \item \textbf{Inverse}: Let $x$ be in $\Un{n}$, meaning $\gcd(x, n) = 1$. Then \myref{prop-multiplicative-inverse-exists-iff-coprime} tells us that there exists an $m$ such that $mx \equiv 1 \pmod n$. Therefore $m \otimes_n x = 1$, which means $m$ is the inverse of $x$.
     \end{enumerate}
-    This thus shows that $\Un{n}$ is an abelian group under $\otimes_n$.
+    Thus $\Un{n}$ is an abelian group under $\otimes_n$.
 \end{proof}
 
 \begin{exercise}
@@ -3119,7 +3154,7 @@ A useful Number Theory function that will occur frequently in this section is \t
 \newpage
 
 \begin{definition}
-    \textbf{Euler's totient function} $\totient$ gives the number of numbers which are smaller than and coprime to a number $x$. That is,
+    \textbf{Euler's totient function} $\totient$ gives the number of positive integers that are smaller than and coprime to a positive integer $x$. That is,
     \[
         \totient(x) = |\{n \in \mathbb{Z} \vert 1 \leq n < x \text{ and } \gcd(n, x) = 1\}|.
     \]
@@ -3136,7 +3171,7 @@ Note $|\Un{n}| = \totient(n)$ by definition of $\Un{n}$.
 
 We look at the specific case where $|a| = \totient(n)$.
 \begin{definition}
-    If $\gcd(a, n) = 1$ we say that $a$ is a \textbf{primitive root modulo $n$}\index{primitive root} if $|a| = \totient(n)$ in $\Un{n}$.
+    Suppose $\gcd(a, n) = 1$. Then $a$ is a \textbf{primitive root modulo $n$}\index{primitive root} if $|a| = \totient(n)$ in $\Un{n}$.
 \end{definition}
 We state the following fact without proof:
 \begin{quote}
@@ -3147,9 +3182,9 @@ We state the following fact without proof:
     $\Un{n}$ is cyclic if and only if there is a primitive root modulo $n$.
 \end{proposition}
 \begin{proof}
-    We first prove the forward direction. Let $\Un{n}$ be cyclic. Then there exists an element $r \in \Un{n}$ such that $|r| = |\Un{n}| = \totient(n)$. By definition of a primitive root, this means that $r$ is a primitive root modulo $n$.
+    We first prove the forward direction. Let $\Un{n}$ be cyclic. Then there exists an element $r \in \Un{n}$ such that $|r| = |\Un{n}| = \totient(n)$, so $r$ is a primitive root modulo $n$ by definition of a primitive root.
 
-    We now prove the reverse direction. Let $r \in \Un{n}$ be a primitive root modulo $n$. Then $\langle r \rangle \cong \mathbb{Z}_{\totient(n)}$. Note that since $|\langle r \rangle| = \totient(n) = |\Un{n}|$, therefore $r$ is a generator of $\Un{n}$, proving that $\Un{n}$ is cyclic.
+    We now prove the reverse direction. Let $r \in \Un{n}$ be a primitive root modulo $n$. Then $\langle r \rangle \cong \mathbb{Z}_{\totient(n)}$. Note that since $|\langle r \rangle| = \totient(n) = |\Un{n}|$, therefore $r$ is a generator of $\Un{n}$, which means $\Un{n}$ is cyclic.
 \end{proof}
 \begin{remark}
     In fact, what \myref{prop-Un-cyclic-only-if-exists-primitive-root} shows is that $\Un{n} \cong \mathbb{Z}_{\totient(n)}$ if there exists a primitive root modulo $n$.
@@ -3178,9 +3213,9 @@ under the operation $\ast$ where $(a+n\mathbb{Z})\ast(b+n\mathbb{Z}) = (a\otimes
         \[
             \{x + pn \vert p \in \mathbb{Z} \} = \ \{y + qn \vert q \in \mathbb{Z} \}.
         \]
-        Hence we conclude that $x \equiv y \pmod{n}$. But since $1 \leq x, y < n$, therefore we must have $x = y$. Hence, $\phi(x) = \phi(y)$ implies $x = y$, meaning $\phi$ is injective.
+        Hence we conclude that $x \equiv y \pmod{n}$. But since $1 \leq x, y < n$, we must have $x = y$. Hence, $\phi(x) = \phi(y)$ implies $x = y$, meaning $\phi$ is injective.
 
-        \item \textbf{Surjective}: Let $x + n\mathbb{Z} \in \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$; thus $\gcd(x, n) = 1$. Performing division algorithm on $x$ yields
+        \item \textbf{Surjective}: Let $x + n\mathbb{Z} \in \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$; thus $\gcd(x, n) = 1$. Performing the division algorithm (\myref{lemma-euclid-division}) on $x$ yields
         \[
             x = qn + r, \text{ where } 0 \leq r < n.
         \]
@@ -3229,9 +3264,9 @@ is a matrix. In this section, we consider only square matrices\index{matrix!squa
     x^3 & x^4\\
     \end{pmatrix}
 \]
-are square matrices. For brevity, for a matrix \textbf{M}, we denote the element in the $i$th row and the $j$th column as $m_{i,j}$ (where $1 \leq i, j \leq n$ with $n$ being the number of rows and columns in \textbf{M}). For example, using the above matrices, $a_{2,2} = 5$, $b_{2,4}=1$, and $c_{1,1} = x$.
+are square matrices. For brevity, for a matrix \textbf{M}, we denote the element in the $i$th row and the $j$th column by $m_{i,j}$ (where $1 \leq i, j \leq n$ with $n$ being the number of rows and columns in \textbf{M}). For example, using the above matrices, $a_{2,2} = 5$, $b_{2,4}=1$, and $c_{1,1} = x$.
 
-We now need to introduce the idea of \textbf{matrix multiplication}\index{matrix!multiplication}. Consider two square matrices \textbf{A} and \textbf{B} with the same number of rows and columns (say, $n$ rows and columns). Let their product, denoted \textbf{AB}, be the matrix \textbf{C}. Then
+We now introduce the idea of \textbf{matrix multiplication}\index{matrix!multiplication}. Consider two square matrices \textbf{A} and \textbf{B} with the same number of rows and columns (say, $n$ rows and columns). Let their product, denoted \textbf{AB}, be the matrix \textbf{C}. Then
 \[
     c_{i,j} = \sum_{k=1}^n a_{i,k}b_{k,j}
 \]
@@ -3280,9 +3315,9 @@ Note that
 \[
     \textbf{AB} = \textbf{BA} = \textbf{I}_3
 \]
-so \textbf{B} is the inverse of \textbf{A} (and \textbf{A} is the inverse of \textbf{B}). We leave the verification of this claim as an exercise. We denote the inverse of a square matrix \textbf{M} by $\textbf{M}^{-1}$. We note that $\textbf{I}_n^{-1} = \textbf{I}_n$ but not prove it here.
+so \textbf{B} is the inverse of \textbf{A} (and \textbf{A} is the inverse of \textbf{B}). We denote the inverse of a square matrix \textbf{M} by $\textbf{M}^{-1}$. We note that $\textbf{I}_n^{-1} = \textbf{I}_n$ but we do not prove it here.
 
-One last thing we introduce here is the idea of a \textbf{matrix determinant}\index{matrix!determinant} (or simply the \textbf{determinant}). The determinant is only well defined for square matrices. The determinant of a square matrix \textbf{A} is denoted by $\det(\textbf{A})$ or just $\det \textbf{A}$. The rule for the determinant changes as we increase the number of rows and columns in the square matrix, so we only look at small cases.
+One last thing we introduce here is the idea of a \textbf{matrix determinant}\index{matrix!determinant} (or simply the \textbf{determinant}). The determinant is only well defined for square matrices (say $\textbf{A}$), and is denoted by $\det(\textbf{A})$ or just $\det \textbf{A}$. The rule for the determinant changes as we increase the number of rows and columns in the square matrix, so we only look at small cases.
 \begin{itemize}
     \item If the square matrix only has one row, then its determinant is the only element in the matrix. Thus, if $\textbf{A} = (a_{1,1})$ then $\det \textbf{A} = a_{1,1}$.
     \item If the square matrix has two rows, such as the matrix $\begin{pmatrix}a & b\\c & d\end{pmatrix}$, then its determinant is $ad-bc$.
@@ -3313,11 +3348,11 @@ With an introduction of matrices out of the way, we can introduce the first of t
     \]
     under the operation of matrix multiplication.
 \end{definition}
-In other words, $\GL{n}{\mathbb{R}}$ is the group of real-valued matrices with $n$ rows and columns that has an inverse. We show that $\GL{n}{\mathbb{R}}$ is in fact a group under matrix multiplication.
+In other words, $\GL{n}{\mathbb{R}}$ is the group of real-valued matrices with $n$ rows and columns that has an inverse. We show that $\GL{n}{\mathbb{R}}$ is a group under matrix multiplication.
 \begin{proof}
     We need to prove the four group axioms.
     \begin{enumerate}
-        \item \textbf{Closure}: Consider two matrices \textbf{A} and \textbf{B} that are in $\GL{n}{\mathbb{R}}$. Then that necessarily means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Note also that $\mathbb{AB}$ has $n$ rows and columns. Therefore $\textbf{AB}$ is also in $\GL{n}{\mathbb{R}}$, meaning that it is closed under matrix multiplication.
+        \item \textbf{Closure}: Consider two matrices \textbf{A} and \textbf{B} in $\GL{n}{\mathbb{R}}$. Then that means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Note also that $\textbf{AB}$ has $n$ rows and columns. Therefore $\textbf{AB}$ is also in $\GL{n}{\mathbb{R}}$, meaning that it is closed under matrix multiplication.
         
         \item \textbf{Associativity}: Consider three matrices \textbf{A}, \textbf{B}, and \textbf{C} in $\GL{n}{\mathbb{R}}$.
         \begin{itemize}
@@ -3338,21 +3373,21 @@ In other words, $\GL{n}{\mathbb{R}}$ is the group of real-valued matrices with $
                 s_{i,j} = \sum_{l=1}^n a_{i,l}\left(\sum_{k=1}^nb_{l,k}c_{k,j}\right) = \sum_{l=1}^n\sum_{k=1}^n a_{i,l}(b_{l,k}c_{k,j}).
             \]
         \end{itemize}
-        Now, multiplication is associative. Thus,
+        Now, multiplication is associative. So
         \[
                 (a_{i,l}b_{l,k})c_{k,j} = a_{i,l}(b_{l,k}c_{k,j})
         \]
-        so
+        which means
         \[
             \sum_{k=1}^n \sum_{l=1}^n (a_{i,l}b_{l,k})c_{k,j} = \sum_{l=1}^n\sum_{k=1}^n a_{i,l}(b_{l,k}c_{k,j}),
         \]
         thereby proving that matrix multiplication is associative.
         
-        \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n$ is in $\GL{n}{\mathbb{R}}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M}$ in $\GL{n}{\mathbb{R}}$, thus $\textbf{I}_n$ is the identity of $\GL{n}{\mathbb{R}}$.
+        \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n$ is in $\GL{n}{\mathbb{R}}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M} \in \GL{n}{\mathbb{R}}$, thus $\textbf{I}_n$ is the identity of $\GL{n}{\mathbb{R}}$.
         
-        \item \textbf{Inverse}: Let \textbf{M} be a matrix in $\GL{n}{\mathbb{R}}$. Consider the matrix $\textbf{M}^{-1}$. By properties of the determinant, we know that $\det \left(\textbf{M}^{-1}\right) = \left(\det \textbf{M}\right)^{-1}$, and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1}$ is in $\GL{n}{\mathbb{R}}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\mathbb{R}}$.
+        \item \textbf{Inverse}: Let \textbf{M} be a matrix in $\GL{n}{\mathbb{R}}$. As $\det \textbf{M} \neq 0$, thus $\textbf{M}^{-1}$ exists. By properties of the determinant, we know that $\det \left(\textbf{M}^{-1}\right) = \left(\det \textbf{M}\right)^{-1}$, and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1} \in \GL{n}{\mathbb{R}}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\mathbb{R}}$.
     \end{enumerate}
-    Thus $\GL{n}{\mathbb{R}}$ is a group since all four group axioms are satisfied.
+    Thus $\GL{n}{\mathbb{R}}$ is a group.
 \end{proof}
 
 \subsection{Special Linear Group over the Real Numbers}
@@ -3371,11 +3406,7 @@ One sees clearly that $\SL{n}{\mathbb{R}}$ is a sub\textit{set} of $\GL{n}{\math
 \begin{proof}
     We consider the subgroup test. Clearly $\textbf{I}_n$ is in $\SL{n}{\mathbb{R}}$ since its determinant is 1. Hence all we have to check the second condition of the subgroup test.
 
-    Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\mathbb{R}}$. This means that
-    \[
-        \det \textbf{A} = 1 \text{ and } \det \textbf{B} = 1.
-    \]
-    Note that $\det \textbf{B}^{-1} = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det \textbf{B}^{-1}) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\mathbb{R}}$. Hence by the subgroup test, $\SL{n}{\mathbb{R}} < \GL{n}{\mathbb{R}}$.
+    Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\mathbb{R}}$. This means that $\det \textbf{A} = 1$ and $\det \textbf{B} = 1$. Note that $\det(\textbf{B}^{-1}) = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det \textbf({B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\mathbb{R}}$. Hence by the subgroup test, $\SL{n}{\mathbb{R}} < \GL{n}{\mathbb{R}}$.
     
     Now let $\textbf{M}$ be a matrix in $\GL{n}{\mathbb{R}}$ and $\textbf{N}$ be a matrix in $\SL{n}{\mathbb{R}}$. We are to show that $\textbf{MNM}^{-1}$ is in $\SL{n}{\mathbb{R}}$. Since $\textbf{M} \in \GL{n}{\mathbb{R}}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\mathbb{R}}$ implies $\det \textbf{N} = 1$. Hence,
     \[
@@ -3399,17 +3430,13 @@ For brevity, let $\mathbb{R}^\times$ be the group of non-zero real numbers under
 \begin{proof}
     Define the map $\phi: \GL{n}{\mathbb{R}} \to \mathbb{R}^\times$ where $\textbf{M} \mapsto \det\textbf{M}$.
 	\begin{itemize}
-	    \item \textbf{Homomorphism}: Take $\textbf{M}, \textbf{N} \in \GL{n}{\mathbb{R}}$. Then we have
+	    \item \textbf{Homomorphism}: Take $\textbf{M}, \textbf{N} \in \GL{n}{\mathbb{R}}$. Then
 	    \[
 	        \phi(\textbf{MN}) = \det \textbf{MN} = \det(\textbf{M})\det(\textbf{N}) = \phi(\textbf{M})\phi(\textbf{N})
 	    \]
 	    which means that $\phi$ is a homomorphism.
 
-	    \item \textbf{Image}: We prove that $\phi$ is surjective to show that $\im \phi = \mathbb{R}^\times$.
-
-	    Suppose $r \in \mathbb{R}^\times$. Then $r^{\frac1n} \in \mathbb{R}^\times$, and a matrix with $r^{\frac1n}$ on its main diagonal (written as $r^{\frac1n}\textbf{I}_n$ where $\textbf{I}_n$ is the identity matrix with $n$ rows and columns) is in $\GL{n}{\mathbb{R}}$. Note that $\det(r^{\frac1n}\textbf{I}_n) = \left(r^{\frac1n}\right)^n\det(\textbf{I}_n) = r$. Thus there is a pre-image of $r$ inside the codomain $\mathbb{R}^\times$, meaning that $\phi$ is surjective.
-
-	    Hence, $\im \phi = \mathbb{R}^\times$.
+	    \item \textbf{Image}: We prove that $\phi$ is surjective to show that $\im \phi = \mathbb{R}^\times$. Suppose $r \in \mathbb{R}^\times$. Then $r^{\frac1n} \in \mathbb{R}^\times$, and a matrix with $r^{\frac1n}$ on its main diagonal (written as $r^{\frac1n}\textbf{I}_n$ where $\textbf{I}_n$ is the identity matrix with $n$ rows and columns) is in $\GL{n}{\mathbb{R}}$. Note that $\det\left(r^{\frac1n}\textbf{I}_n\right) = \left(r^{\frac1n}\right)^n\det(\textbf{I}_n) = r$. Thus there is a pre-image of $r$ inside the codomain $\mathbb{R}^\times$, meaning that $\phi$ is surjective. Hence, $\im \phi = \mathbb{R}^\times$.
 
 	    \item \textbf{Kernel}: Note that 1 is the identity in $\mathbb{R}^\times$. Thus
 	    \begin{align*}
@@ -3544,7 +3571,7 @@ Before we can state the consequence, we revisit the idea of the center of a grou
         \end{align*}
         which means that $\phi$ is a homomorphism.
 
-        \item \textbf{Image}: We show that $\phi$ is surjective to prove that $\im \phi = \Z{G}$. Suppose $\iota_g \in \Inn{G}$. Clearly $\phi(g) = \iota_g$  which means that $\phi$ is surjective, so $\im\phi = \Z{G}$.
+        \item \textbf{Image}: We show that $\phi$ is surjective to prove that $\im \phi = \Z{G}$. Suppose $\iota_g \in \Inn{G}$. Clearly $\phi(g) = \iota_g$ which means that $\phi$ is surjective. Hence $\im\phi = \Z{G}$.
 
         \item \textbf{Kernel}: Note that $\ker\phi = \{g \in G \vert \phi(g) = \id\}$. So, if $g \in \ker\phi$ then $(\phi(g))(x) = \iota_g(x) = \id(x) = x$ for all $x \in G$. This means that $gxg^{-1} = x$, meaning $gx = xg$ for all $x \in G$, so $g \in \Z{G}$. Hence $\ker\phi = \Z{G}$.
     \end{itemize}
@@ -3588,9 +3615,9 @@ Before we can state the consequence, we revisit the idea of the center of a grou
 
 %=========================================
 \chapter{Group Actions}
-\section{Definition and Examples}
 A group action is a representation of the elements of a group as symmetries of a set. Many groups have a `natural' group action coming from their construction. For example, the dihedral group of order 6, $D_3$, acts on the vertices of an equilateral triangle naturally because the group is, by definition, given as a set of symmetries of the equilateral triangle. A group action of a group on a set is a generalization of this idea, which can be used to derive useful facts about the group and the set it acts on.
 
+\section{Definition and Examples}
 \begin{definition}\label{definition-group-action}
     Let $G$ be a group, $e$ be the identity in $G$, and $X$ be a set. A \textbf{group action of $G$ on $X$}\index{group action} is a function $\alpha: G \times X \to X$ satisfying the following axioms.
     \begin{itemize}
@@ -3726,7 +3753,7 @@ We first look at the definition of a \textbf{fixed point} in relation to group a
 \end{example}
 
 \begin{exercise}
-    Let $X = \{1, 2, 3\}$, and let $\Sn{3}$ act on $X$. What are the fixed points of each of the 6 actions in $\Sn{3}$?
+    Let $X = \{1, 2, 3\}$, and let $\Sn{3}$ act on $X$. What are the fixed point(s) of each of the 6 actions in $\Sn{3}$?
 \end{exercise}
 
 With an understanding of fixed points, we can now look at the \textbf{stabilizer} of an element in $X$.
@@ -3742,7 +3769,7 @@ With an understanding of fixed points, we can now look at the \textbf{stabilizer
     Consider again the group $G = \{e, g\}$ and the set $X = \mathbb{Z}$ with relations defined in the previous example.
     \begin{itemize}
         \item Let's find the stabilizer of 0, $\Stab{G}{0}$. Thus we are finding the set of $f \in G$ such that 0 is a fixed point of $f$. Note that $e \cdot 0 = 0$ and $g \cdot 0 = -0 = 0$, so the entirety of $G$ forms the stabilizer of 0, i.e. $\Stab{G}{0} = G$.
-        \item Now consider the stabilizer of any non-zero integer in $X$, say $x \in X$. We are finding the set of $f \in G$ such that $x$ is a fixed point of $f$. Note that $g \cdot x = -x \neq x$. Thus, the only element in $G$ such makes $x$ a fixed point is $e$, i.e. $\Stab{G}{x} = \{e\}$ if $x \neq 0$.
+        \item Now consider the stabilizer of any non-zero integer in $X$, say $x \in X$. We are finding the set of $f \in G$ such that $x$ is a fixed point of $f$. Note that $g \cdot x = -x \neq x$. Thus, the only element in $G$ that makes $x$ a fixed point is $e$, i.e. $\Stab{G}{x} = \{e\}$ if $x \neq 0$.
     \end{itemize}
     To summarise, $\Stab{G}{0} = G$ and $\Stab{G}{x} = \{e\}$ if $x \neq 0$.
 \end{example}
@@ -3764,15 +3791,15 @@ What you might notice from the above example and exercise is that the stabilizer
     Now consider $g, h \in \Stab{G}{x}$. This means that $g\cdot x = x$ and $h \cdot x = x$. We note that
     \begin{align*}
         h^{-1} \cdot x &= h^{-1} \cdot (h \cdot x) & (\text{since } h \in \Stab{G}{x}, \text{ thus } h\cdot x = x)\\
-        &= (h^{-1}h) \cdot x & (\text{by \textbf{Compatibility} Axiom})\\
+        &= (h^{-1}h) \cdot x & (\text{\textbf{Compatibility} Axiom})\\
         &= e \cdot x\\
         &= x
     \end{align*}
     so $h^{-1} \in \Stab{G}{x}$. Now consider $gh^{-1}$.
     \begin{align*}
-        (gh^{-1}) \cdot x &= g \cdot (h^{-1} \cdot x) & (\text{by \textbf{Compatibility} Axiom})\\
-        &= g \cdot x & (\text{since } h^{-1} \in \Stab{G}{x})\\
-        &= x & (\text{since } g \in \Stab{G}{x})
+        (gh^{-1}) \cdot x &= g \cdot (h^{-1} \cdot x) & (\text{\textbf{Compatibility} Axiom})\\
+        &= g \cdot x & (h^{-1} \in \Stab{G}{x})\\
+        &= x & (g \in \Stab{G}{x})
     \end{align*}
     which means that $gh^{-1} \in \Stab{G}{x}$.
 
@@ -3815,10 +3842,10 @@ There is a natural relationship between orbits and stabilizers of a group action
 
 Let's think about the symmetric group of a cube (call it $G$) and suppose $G$ acts on the set of faces of the cube, $F$. How many elements are there in $G$? We could do the following:
 \begin{enumerate}
-    \item Fix one face (say the top face). There are 4 ways to move the cube because you can only rotate the cube now. These are the stabilizers.
-    \item Now there are 6 possible choices for which face to be fixed. This is the `orbit'.
+    \item Fix one face (say the top face). There are 4 ways to move the cube because you can only rotate the cube now. These are the `stabilizers'.
+    \item Now there are 6 choices for which face to be fixed. This is the `orbit'.
 \end{enumerate}
-Thus, the total number of elements in the symmetric group of a cube, $|G| = 4 \times 6$. Generally, the number of elements of a transformation group $G$ is the product of the orders of the stabilizer and orbit of an element $x$ in the $G$-set.
+Thus, the total number of elements in the symmetric group of a cube is 24, i.e. $|G| = 24$. Generally, the number of elements of a transformation group $G$ is the product of the orders of the stabilizer and orbit of an element $x$ in the $G$-set.
 
 Formally, this is captured in the \textbf{Orbit-Stabilizer Theorem}.
 \begin{theorem}[Orbit-Stabilizer]\label{thrm-orbit-stabilizer}\index{Orbit-Stabilizer Theorem}
@@ -3874,7 +3901,7 @@ We are now ready to introduce Burnside's lemma.
         |X/G| = \frac{1}{|G|}\sum_{g\in G} |\Fix{X}{g}|.
     \]
 \end{lemma}
-What Burnside's lemma tells us is the number of orbits equals the average number of fixed elements for each $g \in G$.
+In other words, Burnside's lemma tells us that the number of orbits is the average number of fixed elements for each $g \in G$.
 \begin{proof}[Proof (see \cite{proofwiki_burnsideslemma})]
     We start by noting that
     \begin{align*}
@@ -3910,14 +3937,14 @@ What Burnside's lemma tells us is the number of orbits equals the average number
 	    \caption{Square With Labelled Corners}
 	\end{figure}
 
-    Let $X$ denote the set of colourings of the corners of the square, and let $G$ denote the rotation group acting on $X$. Then two elements of $X$ belong to the same orbit precisely when one is simply a rotation of the other. We note that $G$ consists of four $90^\circ$ rotations, so $G \cong \Cn{4}$.
+    Let $X$ denote the set of colourings of the corners of the square, and let $G$ denote the rotation group acting on $X$. Then two elements of $X$ belong to the same orbit precisely when one is simply a rotation of the other. We note that $G$ consists of four $90^\circ$ rotations, so $G$ is generated by the $90^\circ$ rotation action, meaning $G \cong \Cn{4}$.
     \begin{enumerate}
         \item Rotating the square $0^\circ$ does not change the colourings at all, which means that the number of fixed points is the total number of possible colourings, which is $n^4$.
         \item Rotating the square $90^\circ$ results in all points affecting one another, so the only fixed points would be colourings of all the same color. Since there are $n$ different colours, thus the number of fixed points is $n$.
         \item Rotating the square $180^\circ$ swaps two pairs of vertices that are across from each other. Thus, a fixed point will occur if the two pairs have the same colour. Hence, there are $n^2$ fixed points.
         \item Finally, rotating the square $270^\circ$ is similar to rotating $90^\circ$, so there are $n$ fixed points.
     \end{enumerate}
-    Now there are 4 elements in $G$, so $|G| = 4$. By Burnside's Lemma,
+    There are 4 elements in $G$, so $|G| = 4$. By Burnside's lemma (\myref{lemma-burnside}),
     \[
         |X/G| = \frac{1}{|G|}\sum_{g\in G} |\Fix{X}{g}| = \frac14 (n^4 + n + n^2 + n),
     \]
@@ -3927,7 +3954,7 @@ What Burnside's lemma tells us is the number of orbits equals the average number
 \newpage
 
 \section{Conjugacy Classes}
-Before we look at the most important part of this chapter, the Class Equation, we look at the idea of conjugacy as a group action.
+Before we look at the most important part of this chapter, the class equation, we look at the idea of conjugacy as a group action.
 \begin{definition}
     Let $G$ be a group, and suppose $a, b \in G$. Then we say that $b$ is a \textbf{conjugate}\index{conjugate} of $a$ if there is an element $g \in G$ such that $b = gag^{-1}$ (or, alternatively, $a=g^{-1}bg$).
 \end{definition}
@@ -3960,7 +3987,7 @@ We can now look at conjugacy classes.
 \end{remark}
 
 \begin{example}\label{example-conjugacy-classes-of-Sn3}
-    We look at conjugacy classes of the group $\Sn{3}$.
+    We look at distinct conjugacy classes of $\Sn{3}$.
     \begin{itemize}
         \item The first is the conjugacy class of the identity, $\id$.
         \[
@@ -3986,13 +4013,13 @@ We can now look at conjugacy classes.
 \section{The Class Equation}
 The example of the previous section illustrates that the sum of the sizes of the conjugacy classes must be equal to the size of the group. This fact, along with the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), can be used to derive an important equation known as \textbf{the class equation}.
 
-Before we state and prove the class equation, we recall the idea of the center of a group as introduced in \myref{example-center-of-group}.
+Before we state and prove the class equation, we recall the center of a group as introduced in \myref{example-center-of-group}.
 \begin{quote}
     The center of a group $G$ is the normal subgroup
     \[
         \Z{G} = \{z \in G \vert gz = zg \text{ for all } g \in G\}.
     \]
-    In other words, $\Z{G} = \{z \in G \vert z = gzg^{-1} \text{ for all } g \in G\}$.
+    In other words, $\Z{G} = \{z \in G \vert z = gzg^{-1} \; \forall g \in G\}$.
 \end{quote}
 
 We now state and prove the class equation.
@@ -4005,13 +4032,13 @@ We now state and prove the class equation.
 \end{theorem}
 
 \begin{proof}
-    We know by \myref{exercise-distinct-orbits-partition-set} that distinct orbits partitions the set that the group is acting on. Hence, using the group action of conjugation, orbits under conjugation partition $G$. Hence,
+    We know by \myref{exercise-distinct-orbits-partition-set} that distinct orbits partitions the set that the group is acting on. Hence, using the group action of conjugation, orbits under conjugation partition $G$. So
     \[
         G = \bigcup_{i=1}^k \Orb{G}{\hat{g_i}} = \bigcup_{i=1}^k \Cl{\hat{g_i}}
     \]
     where $\hat{g_i}$'s are representatives of the $k$ conjugacy classes (including those with only 1 element).
 
-    Suppose now that an element $x$ is in a conjugacy class with one element. This means that $gxg^{-1} = x$ for all $g \in G$. Hence, this means that $x \in \Z{G}$.
+    Suppose now that an element $x$ is in a conjugacy class with one element. This means that $gxg^{-1} = x$ for all $g \in G$, so $x \in \Z{G}$.
 
     Therefore, one concludes that
     \[
@@ -4024,7 +4051,7 @@ We now state and prove the class equation.
 
     Finally, by \myref{exercise-order-of-conjugacy-class}, $|\Cl{g_i}| = [G : \C{G}{g_i}]$, which means that
     \[
-        |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}],
+        |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}]
     \]
     proving the theorem.
 \end{proof}
@@ -4079,14 +4106,14 @@ To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
 \begin{proof}
     We proceed with strong induction on $n$.
 
-    For the case where $n = 1$, $|G| = p$. Then by \myref{exercise-prime-order-element}, every element of the group has order $p$. Hence we proved the base case.
+    For the case where $n = 1$, $|G| = p$. Then by \myref{exercise-prime-order-element}, every element of the group has order $p$, proving the bas case.
 
     We now assume that the statement holds for all $n \leq k$ for some positive integer $k$. We need to prove the case for $k+1$, that is, a group $G$ with order $(k+1)p$ has an element of order $p$. We split the proof into two cases.
 
-    The first case is when $G$ is abelian. Take any non-identity element $x$, and define $H = \langle x \rangle \leq G$.
+    The first case is when $G$ is abelian. Take any non-identity element $x \in G$, and let $H = \langle x \rangle \leq G$.
     \begin{itemize}
         \item If $p$ divides $|H|$, say $|H| = mp$ where $m$ is a positive integer, then $x^m$ is an element of order $p$ (since $\left(x^m\right)^p = x^{|H|} = e$). Hence we find an element with order $p$.
-        \item If $p$ does not divide $|H|$, then $p$ must divide $[G:H] = |G/H| = \frac{|G|}{|H|}$ since $p$ divides $|G| = kp$. Note that $H \unlhd G$ since $G$ is abelian (\myref{prop-subgroup-of-abelian-group-is-normal}). So $G/H$ is a group. Writing $|x| = m$ we see
+        \item If $p$ does not divide $|H|$, then $p$ must divide $[G:H] = |G/H| = \frac{|G|}{|H|}$ since $p$ divides $|G| = kp$. Note that $H \unlhd G$ since $G$ is abelian (\myref{prop-subgroup-of-abelian-group-is-normal}), so $G/H$ is a group. Letting $m = |x|$ we see
         \[
             (xH)^m = (x^m)H = eH = H \in G/H.
         \]
@@ -4125,12 +4152,13 @@ To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
 \end{problem}
 
 \begin{problem}
-    A group action is said to be \textbf{free}\index{group action!free} if $g\cdot x = x$ means that $g$ is the identity (i.e., only the identity fixes any $x$).\newline
+    A group action is said to be \textbf{free}\index{group action!free} if $g\cdot x = x$ means that $g$ is the identity (i.e., only the identity fixes any $x$).
+    
     Let $G$ be a group and $S$ be a non-empty $G$-set. Suppose $G$ acts on $S$ freely and transitively. Prove that $G$ and $S$ have the same number of elements.
 \end{problem}
 
 \begin{problem}
-    Let $G$ be a group of order 25 and $X$ be a $G$-set of 24 elements. Show that there exists a $g \in G$ with a fixed point.
+    Let $G$ be a group of order 25 and $X$ be a $G$-set of 24 elements. Show that there exists an element in $G$ with a fixed point.
 \end{problem}
 
 \begin{problem}
@@ -4180,11 +4208,11 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
 
     We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$. Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
 
-    The first case is when $p$ divides the order of the center of $G$, $|\Z{G}|$. By Cauchy's Theorem (\myref{thrm-cauchy}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \lhd G$ since for all $x \in N$ and $g \in G$,
+    The first case is when $p$ divides the order of the center of $G$, $|\Z{G}|$. By Cauchy's Theorem (\myref{thrm-cauchy}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $x \in N$ and $g \in G$,
     \[
         gxg^{-1} = (gx)g^{-1} = x(gg^{-1}) = x \in N.
     \]
-    Hence $G/N$ is a group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the Inductive Hypothesis, $G/N$ has a Sylow $p$-subgroup, say $\bar{S}$, meaning that $\bar{S}$ has order $p^{k-1}$.
+    Hence $G/N$ is a group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the inductive hypothesis, $G/N$ has a Sylow $p$-subgroup, say $\bar{S}$, meaning that $\bar{S}$ has order $p^{k-1}$.
 
     We now construct the group $S = \{g \in G \vert gN \in \bar{S}\}$ under the group operation of $G$. Clearly $S$ is non-empty since $e \in S$ (as $eN = N \in \bar{S}$). Suppose $g_1, g_2 \in S$, meaning that $g_1N, g_2N \in \bar{S}$. Therefore $(g_1g_2^{-1})N = (g_1N)(g_2N)^{-1} \in \bar{S}$ which implies that $g_1g_2^{-1} \in S$. By the subgroup test, $S \leq G$. Also, $N \leq S$ since for all $n \in N$, $nN = N \in \bar{S}$.
 
@@ -4202,11 +4230,15 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
     \[
         |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}]
     \]
-    where $g_1, g_2, \dots, g_l$ are representatives of the $l$ distinct conjugacy classes with more than one element. We note that $p$ divides $|G|$. Since $p$ does not divide $|\Z{G}|$ in this case, thus $\sum_{i=1}^l [G:\C{G}{g_i}]$ must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then $|\C{G}{g_i}| = p^ka$ for some $a$.
+    where $g_1, g_2, \dots, g_l$ are representatives of the $l$ distinct conjugacy classes with more than one element. We note that $p$ divides $|G|$. Since $p$ does not divide $|\Z{G}|$ in this case, thus
+    \[
+        \sum_{i=1}^l [G:\C{G}{g_i}]
+    \]
+    must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then $|\C{G}{g_i}| = p^ka$ for some integer $a$.
 
     We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly $a \leq m$ since if $a > m$ then $\frac{p^k m}{|\C{G}{g_i}|}$ is not an integer. If instead $a = m$ then $|\C{G}{g_i}| = p^km = |G|$, and since $\C{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \C{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \Z{G}$. But an element is in $\Z{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
 
-    In summary, $\C{G}{g_i} < G$ with $|\C{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the Induction Hypothesis on $\C{G}{g_i}$ to say that $\C{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\C{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
+    In summary, $\C{G}{g_i} < G$ with $|\C{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the induction hypothesis on $\C{G}{g_i}$ to say that $\C{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\C{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
 
     Therefore, any finite group $G$ with order written as $p^k m$ has a Sylow $p$-subgroup, meaning that $\Syl{p}{G} \neq \emptyset$.
 \end{proof}
@@ -4214,6 +4246,8 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
 \begin{exercise}
     Find all primes $p$ such that $\Syl{p}{\Sn{5}} \neq \emptyset$.
 \end{exercise}
+
+\newpage
 
 \section{Conjugate Subgroup}
 Before we look at the next Sylow theorem, we need to introduce two more things. The first is the \textbf{conjugate subgroup}.
@@ -4242,7 +4276,7 @@ We prove some results regarding the conjugate subgroup here.
     When $n = 1$, $y = axa^{-1}$ is given. Now assume $n = k$ holds true for some positive integer $k$, meaning that $y^k = ax^ka^{-1}$. Then
     \begin{align*}
         y^{k+1} &= y(y^k)\\
-        &= (axa^{-1})(ax^ka^{-1}) & (\text{Induction Hypothesis})\\
+        &= (axa^{-1})(ax^ka^{-1}) & (\text{by induction hypothesis})\\
         &= axa^{-1}ax^ka^{-1}\\
         &= axx^ka^{-1}\\
         &= ax^{k+1}a^{-1}
@@ -4273,7 +4307,7 @@ We prove some results regarding the conjugate subgroup here.
     \end{align*}
     which means that $|gxg^{-1}| \leq n = |x|$.
 
-    Now consider $(gxg^{-1})^k = gx^kg^{-1}$. Suppose $k$ is a positive integer such that $x^k = h$ where $h \neq e$. Then $gx^kg^{-1} = ghg^{-1}$. We argue that $ghg^{-1} \neq e$.
+    Now consider $(gxg^{-1})^k = gx^kg^{-1}$. Let $h = x^k \neq e$. We argue that $ghg^{-1} \neq e$.
     \begin{itemize}
         \item If $gh = e$ then $gx^kg^{-1} = g^{-1} \neq e$ since $g \neq e$.
         \item If instead $hg^{-1} = e$ then $gx^kg^{-1} = g \neq e$.
@@ -4289,11 +4323,13 @@ We prove some results regarding the conjugate subgroup here.
 
 We note an important result with regards to the conjugate subgroup.
 \begin{theorem}\label{thrm-unique-subgroup-of-given-order-is-normal}
-    Let $G$ be a group. Suppose $H$ is the only subgroup of $G$ with a given order. Then $H \lhd G$.
+    Let $G$ be a group. Suppose $H$ is the only subgroup of $G$ with a given order. Then $H \unlhd G$.
 \end{theorem}
 \begin{proof}
-    Suppose $g \in G$. By \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup} we know $gHg^{-1} \cong H$ which means that $|gHg^{-1}| = |H|$. Furthermore, by \myref{exercise-conjugate-subgroup} we know that $gHg^{-1} \leq G$. Since $H$ is the only subgroup of that order (by assumption), we conclude that $gHg^{-1} = H$, which quickly means that $H \lhd G$ by definition of a normal subgroup.
+    Suppose $g \in G$. By \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup} we know $gHg^{-1} \cong H$ which means that $|gHg^{-1}| = |H|$. Furthermore, by \myref{exercise-conjugate-subgroup} we know that $gHg^{-1} \leq G$. Since $H$ is the only subgroup of that order (by assumption), we conclude that $gHg^{-1} = H$, which quickly means that $H \unlhd G$ by definition of a normal subgroup.
 \end{proof}
+
+\newpage
 
 \section{The Normalizer}
 We now look at the definition of the \textbf{normalizer}.
@@ -4307,8 +4343,6 @@ We now look at the definition of the \textbf{normalizer}.
 \begin{exercise}\label{exercise-normalizer-is-subgroup-of-main-group}
     Let $G$ be a group and $S$ be a subset of $G$. Prove that $\N{G}{S} \leq G$.
 \end{exercise}
-
-\newpage
 
 We prove some properties of the normalizer here.
 \begin{proposition}\label{prop-subgroup-is-a-normal-subgroup-of-normalizer}
@@ -4355,14 +4389,16 @@ We prove some properties of the normalizer here.
     \[
         |PQ| = \frac{|P||Q|}{|P \cap Q|} = p^{n+m-s}
     \]
-    where we define $|P \cap Q| = p^s$. By Lagrange's Theorem (\myref{thrm-lagrange}) we know that $|G| = a|PQ|$ for some integer $a$ so $p^n = ap^{n+m-s}$ which implies $1 = ap^{m-s}$. Thus $p^{m-s} = \frac 1a$ which means $m \leq s$.
+    where we let $|P \cap Q| = p^s$. By Lagrange's Theorem (\myref{thrm-lagrange}) we know that $|G| = a|PQ|$ for some integer $a$, so $p^n = ap^{n+m-s}$ which implies $1 = ap^{m-s}$. Thus $p^{m-s} = \frac 1a \leq 1$ which means $m \leq s$.
 
-    We note by \myref{problem-intersection-of-subgroups}, $P \cap Q \leq Q$, meaning $|Q| = b|P\cap Q|$ for some positive integer $b$ by Lagrange's Theorem. Thus $p^m = bp^s$ which implies $p^{m-s} = b \geq 1$ so $m \geq s$.
+    We note by \myref{problem-intersection-of-subgroups}, $P \cap Q \leq Q$. Therefore $|Q| = b|P\cap Q|$ for some positive integer $b$ by Lagrange's Theorem. Thus $p^m = bp^s$ which implies $p^{m-s} = b \geq 1$ so $m \geq s$.
 
     As $m \leq s$ and $m \geq s$, thus $m = s$ which means $|P \cap Q| = |Q|$, i.e. $P \cap Q = Q$. Therefore $Q \subseteq P$ which is the first part of the proposition proved.
 
     Now suppose $Q$ is, in particular, a Sylow $p$-subgroup of $\N{G}{P}$. Since $\N{G}{P} \leq G$ by \myref{exercise-normalizer-is-subgroup-of-main-group}, one concludes that $|G| = y|\N{G}{P}|$ for some positive integer $y$ by Lagrange's Theorem. Hence $xp^n = y|\N{G}{P}|$ which implies $|\N{G}{P}| = \frac{x}{y} p^n$. Set $z = \frac xy$ and note that $p \nmid z$. Therefore, if $Q$ is a Sylow $p$-subgroup, then $|Q| = p^n$. But since $|P| = p^n$ and $Q \subseteq P$, thus $P = Q$.
 \end{proof}
+
+\newpage
 
 \section{Second Sylow Theorem}
 We can now look at the \textbf{Second Sylow Theorem}.
@@ -4376,7 +4412,7 @@ We can now look at the \textbf{Second Sylow Theorem}.
     \]
     and denote an element from $\mathcal{X}$ by $X$.
 
-    Let the Sylow $p$-subgroup $H$ act on $\mathcal{X}$ by conjugation, meaning $h \cdot X = hXh^{-1}$. We prove that this is, in fact, a group action.
+    Let the Sylow $p$-subgroup $H$ act on $\mathcal{X}$ by conjugation, meaning $h \cdot X = hXh^{-1}$. We prove that this is a group action.
     
     \begin{itemize}
         \item \textbf{Closure}: We have to prove closure because it is not implicit in the definition of this action.
@@ -4385,7 +4421,7 @@ We can now look at the \textbf{Second Sylow Theorem}.
         \[
             h\cdot X = hXh^{-1} = h(gHg^{-1})h^{-1} = (hg)H(hg)^{-1}.
         \]
-        Since $h \in H \leq G$, then $hg \in G$, which thus means that $h \cdot X = (hg)H(hg)^{-1} \in \mathcal{X}$.
+        Since $h \in H \subseteq G$, then $hg \in G$, which thus means that $h \cdot X = (hg)H(hg)^{-1} \in \mathcal{X}$.
         \item \textbf{Identity}: $e \cdot X = eXe^{-1} = X$.
         \item \textbf{Compatibility}: Let $h_1, h_2 \in H$. Then
         \begin{align*}
@@ -4417,31 +4453,27 @@ We can now look at the \textbf{Second Sylow Theorem}.
     \[
         |\Stab{H}{gHg^{-1}}| = \frac{|H|}{|\Orb{H}{gHg^{-1}}|}
     \]
-    and since $|H|$ is a power of $p$ and $|\Stab{H}{gHg^{-1}}|$ is an integer, thus $|\Orb{H}{gHg^{-1}}|$ has to be a power of $p$, meaning $|\Orb{H}{gHg^{-1}}| \equiv 0 \pmod p$. Because distinct orbits partition $\mathcal{X}$ (\myref{exercise-distinct-orbits-partition-set}), thus $|\mathcal{X}| \equiv 1 \pmod p$.
+    and since $|H|$ is a power of $p$ and $|\Stab{H}{gHg^{-1}}|$ is an integer, thus $|\Orb{H}{gHg^{-1}}|$ has to be a power of $p$, meaning $|\Orb{H}{gHg^{-1}}| \equiv 0 \pmod p$. Because distinct orbits partition the set $\mathcal{X}$ (\myref{exercise-distinct-orbits-partition-set}), thus $|\mathcal{X}| \equiv 1 \pmod p$.
 
-    Now let the Sylow $p$-subgroup $K$ act on $\mathcal{X}$ by conjugation, meaning $k \star X = kXk^{-1}$. This is a group action as proven before, and the above conclusion means that there is at least one orbit of length 1. Hence there exists a $g \in G$ such that for all $k \in K$, we have $k(gHg^{-1})k^{-1} = gHg^{-1}$. Hence $g^{-1}kg \in \N{G}{H}$ which means $g^{-1}Kg \subset \N{G}{H}$. Therefore, since $|K| = |g^{-1}Kg|$ and by \myref{prop-normalizer-of-sylow-p-subgroup}, $g^{-1}Kg \subseteq H$, meaning $K \subseteq gHg^{-1}$. But because $|H| = |K|$ as they are both Sylow $p$-subgroups, therefore $K = gHg^{-1}$.
+    Now let the Sylow $p$-subgroup $K$ act on $\mathcal{X}$ by conjugation, meaning $k \star X = kXk^{-1}$. This is a group action as proven before, and the above conclusion means that there is at least one orbit of length 1. Hence there exists a $g \in G$ such that for all $k \in K$, we have $k(gHg^{-1})k^{-1} = gHg^{-1}$. Hence $g^{-1}kg \in \N{G}{H}$ which means $g^{-1}Kg \subseteq \N{G}{H}$. Therefore, since $|K| = |g^{-1}Kg|$ and by \myref{prop-normalizer-of-sylow-p-subgroup}, $g^{-1}Kg \subseteq H$, meaning $K \subseteq gHg^{-1}$. But because $|H| = |K|$ as they are both Sylow $p$-subgroups, therefore $K = gHg^{-1}$.
 \end{proof}
 \begin{remark}
     What part of this proof shows is that if $P$ is a Sylow $p$-subgroup but $Q$ is only a $p$-subgroup, then $Q \subseteq gPg^{-1}$ for some $g \in G$.
 \end{remark}
-
-\newpage
 
 We note one important corollary of the Second Sylow Theorem.
 \begin{corollary}\label{corollary-sylow-subgroup-is-normal-if-it-is-unique}
     Let $G$ be a finite group and $P$ be a Sylow $p$-subgroup for some prime $p$. Then $P$ is a normal subgroup of $G$ if and only if $P$ is the only Sylow $p$-subgroup of $G$.
 \end{corollary}
 \begin{proof}
-    The reverse direction is easy to prove. Since $P$ is the only Sylow $p$-subgroup of $G$, this means that $P$ is the only subgroup of order $p^k$. By \myref{thrm-unique-subgroup-of-given-order-is-normal}, this means that $P \lhd G$.
+    The reverse direction is easy to prove. Since $P$ is the only Sylow $p$-subgroup of $G$, this means that $P$ is the only subgroup of order $p^k$. By \myref{thrm-unique-subgroup-of-given-order-is-normal}, this means that $P \unlhd G$.
 
-    We work on the forward direction now and suppose $P$ is a normal subgroup of $G$. Let $\hat{P}$ be a normal Sylow $p$-subgroup. By the Second Sylow Theorem (\myref{thrm-sylow-2}), there exists $g \in G$ such that $g\hat{P}g^{-1} = P$. But since $\hat{P}$ is normal, thus $g^{-1}\hat{P}g = \hat{P}$ by definition of normality. Hence, $P = \hat{P}$, meaning that there is only one Sylow $p$-subgroup.
+    We work on the forward direction now and suppose $P$ is a normal subgroup of $G$. Let $\hat{P}$ be a normal Sylow $p$-subgroup. By the Second Sylow Theorem (\myref{thrm-sylow-2}), there exists $g \in G$ such that $g\hat{P}g^{-1} = P$. But since $\hat{P}$ is normal, thus $g\hat{P}g^{-1} = \hat{P}$ by definition of normality. Hence, $P = \hat{P}$, meaning that there is only one Sylow $p$-subgroup.
 \end{proof}
 
 \begin{exercise}
     Let $G$ be a finite group, $p$ be a prime number, and $H$ and $K$ be distinct Sylow $p$-subgroups of $G$. Prove that $H \cong K$.
 \end{exercise}
-
-\newpage
 
 \section{Third Sylow Theorem}
 We now state and prove the \textbf{Third Sylow Theorem}.
@@ -4466,7 +4498,7 @@ We now state and prove the \textbf{Third Sylow Theorem}.
         \]
         proving the first statement.
 
-        \item Let $P$ be a Sylow $p$-subgroup. We recall that $P \lhd \N{G}{P} \leq G$. Note that by Lagrange's Theorem (\myref{thrm-lagrange}) we know $|\N{G}{P}| = [\N{G}{P} : P]|P| = ap^k$ where $a \leq m$ (since $\N{G}{P} \leq G$). Furthermore
+        \item Let $P$ be a Sylow $p$-subgroup. We recall that $P \unlhd \N{G}{P} \leq G$. Note that by Lagrange's Theorem (\myref{thrm-lagrange}) we know $|\N{G}{P}| = [\N{G}{P} : P]|P| = ap^k$ where $a \leq m$ (since $\N{G}{P} \leq G$). Furthermore
         \[
             mp^k = |G| = [G: \N{G}{P}]|\N{G}{P}| = n_p \times ap^k
         \]
@@ -4478,8 +4510,10 @@ We now state and prove the \textbf{Third Sylow Theorem}.
 
         By a similar argument posed in the proof of the Second Sylow Theorem, for any $Q \in \Syl{p}{G}$ where $Q \neq H$ we must have $|\Orb{H}{Q}| \equiv 0 \pmod p$. Note $|\Orb{H}{H}| = 1$. Now since distinct orbits partition $\Syl{p}{G}$, we must have $n_p = |\Syl{p}{G}| \equiv 1 \pmod p$.
     \end{enumerate}
-    This completes the proof of the Third Sylow Theorem.
+    This completes the proof.
 \end{proof}
+
+\newpage
 
 \begin{example}
     We show that any group with order 4225 is abelian.
@@ -4495,11 +4529,11 @@ We now state and prove the \textbf{Third Sylow Theorem}.
     \[
         |PQ| = \frac{|P||Q|}{|P\cap Q|} = |P||Q| = 5^2\times13^2 = |G|
     \]
-    which means that $PQ$ and $G$ have the same number of elements. Hence, $G$ is the internal direct product of $P$ and $Q$. We note that
+    which means that $PQ$ and $G$ have the same number of elements. As $PQ \leq G$ by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3, thus $G = PQ$. Hence, $G$ is the internal direct product of $P$ and $Q$. We note that
     \[
         G = PQ \cong P\times Q
     \]
-    by direct product equivalence (\myref{thrm-direct-product-equivilance}). In addition, since $P$ and $Q$ are groups of prime-squared order, they are abelian (\myref{problem-group-of-order-prime-squared-is-abelian}), meaning that their external direct product $P\times Q$ is also abelian (\myref{problem-external-direct-product-of-abelian-groups-is-abelian}). Hence $G$ is also abelian.
+    by direct product equivalence (\myref{thrm-direct-product-equivilance}). In addition, since $P$ and $Q$ are groups of prime-squared order, they are abelian (\myref{problem-group-of-order-prime-squared-is-abelian}), meaning that their external direct product $P\times Q$ is also abelian (\myref{problem-external-direct-product-of-abelian-groups-is-abelian}). Hence $G$ is abelian.
 \end{example}
 
 \begin{exercise}
@@ -4525,11 +4559,11 @@ We may use part of the Third Sylow Theorem to create a test for non-simplicity.
     We first suppose $n = p^k$. Let $G$ be a group of order $n$. We consider two subcases.
     \begin{itemize}
         \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\myref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\myref{prop-subgroup-of-abelian-group-is-normal}), thus there exists a proper normal subgroup of $G$, meaning $G$ is non-simple.
-        \item Suppose now $G$ is non-abelian. By \myref{example-group-with-prime-power-order-has-non-trivial-center}, $G$ has a non-trivial center. Furthermore, $G \neq \Z{G}$ because $G$ is non-abelian (\myref{problem-center-of-G}). Since the center is a normal subgroup of $G$, it is thus a proper normal subgroup of $G$, meaning $G$ is non-simple.
+        \item Now suppose $G$ is non-abelian. By \myref{example-group-with-prime-power-order-has-non-trivial-center}, $G$ has a non-trivial center. Furthermore, $G \neq \Z{G}$ because $G$ is non-abelian (\myref{problem-center-of-G}). Since the center is a normal subgroup of $G$, it is thus a proper normal subgroup of $G$, meaning $G$ is non-simple.
     \end{itemize}
     Hence any group of order $p^k$ where $k > 1$ is non-simple.
 
-    Now suppose $n$ is not a prime power. By the Third Sylow Theorem (\myref{thrm-sylow-3}), the number of Sylow $p$-subgroups, $n_p$, is congruent to 1 modulo $p$ and divides $n$. Since 1 is the only such number by our assumption, thus $n_p = 1$, meaning that there is only one Sylow $p$-subgroup. By \myref{corollary-sylow-subgroup-is-normal-if-it-is-unique} this means that that Sylow $p$-subgroup (which is non-trivial) is normal, which thus means that any group of order $n$ is non-simple.
+    Now suppose $n$ is not a prime power. By the Third Sylow Theorem (\myref{thrm-sylow-3}), the number of Sylow $p$-subgroups, $n_p$, is congruent to 1 modulo $p$ and divides $n$. Since 1 is the only such number by our assumption, thus $n_p = 1$, meaning that there is only one Sylow $p$-subgroup. By \myref{corollary-sylow-subgroup-is-normal-if-it-is-unique} this means that that Sylow $p$-subgroup (which is proper) is normal, which thus means that any group of order $n$ is non-simple.
 \end{proof}
 \begin{example}
     Consider a group with order 15. Note $15 = 3 \times 5$, and consider $p = 5$. The divisors of 15 are 1, 3, 5, and 15, and clearly only 1 is congruent to 1 modulo 5. Hence by Sylow's Test we know that a group of order 15 cannot be simple.
@@ -4546,7 +4580,7 @@ For some groups of orders that do not satisfy the condition in Sylow's Test, we 
 
     The divisors of the $m$ given the following primes are listed below.
     \begin{itemize}
-        \item $p = 2$: $m = 319$ and so divisors are $\{1. 11, 29, 319\}$.
+        \item $p = 2$: $m = 319$ and so divisors are $\{1, 11, 29, 319\}$.
         \item $p = 11$: $m = 232$; divisors are $\{1, 2, 4, 8, 29, 58, 116, 232\}$.
         \item $p = 29$: $m = 88$; divisors are $\{1, 2, 4, 8, 11, 22, 44, 88\}$.
     \end{itemize}
@@ -4641,7 +4675,7 @@ We introduce the idea of a \textbf{subgroup series}\index{subgroup series} of a 
     \[
         1 = H_0 < H_1 < H_2 < \cdots < H_n = G,
     \]
-    where 1 is the trivial group $\{e\}$, and where $H_i \neq H_{i+1}$ (for $0 \leq i < n$). The \textbf{length} of such a series is $n$, or is infinite if there is no end.
+    where 1 is the trivial group, and where $H_i < H_{i+1}$ (for $0 \leq i < n$). The \textbf{length} of such a series is $n$, or is infinite if there is no end.
 \end{definition}
 \begin{remark}
     It is more often useful to consider subgroup series without repetition than it is to consider the weaker form of subgroup series\index{subgroup series!with repetition}, which requirement is only
@@ -4667,7 +4701,7 @@ Subgroup series can simplify the study of a group to the study of simpler subgro
     \]
 \end{example}
 
-We now consider the definition of a \textbf{subnormal series} of a group $G$.
+We now define a \textbf{subnormal series} of a group $G$.
 \begin{definition}
     Let $G$ be a group. A \textbf{subnormal series}\index{subnormal series} of $G$ is a sequence of subgroups $H_0, \dots, H_n$ such that
     \[
@@ -4711,7 +4745,7 @@ We now consider the definition of a \textbf{subnormal series} of a group $G$.
 \section{Maximal Normal Subgroup}
 Before looking at a more interesting category of subnormal series, we have to introduce the idea of a \textbf{maximal normal subgroup}.
 \begin{definition}
-    Let $G$ be a group and $N \lhd G$. Then $N$ is said to be a \textbf{maximal (proper) normal subgroup}\index{maximal normal subgroup} of $G$ if there does \textbf{not} exist a $H \lhd G$ such that $N < H < G$.
+    Let $G$ be a group and $N \lhd G$. Then $N$ is said to be a \textbf{maximal normal subgroup}\index{maximal normal subgroup} of $G$ if there does \textbf{not} exist a $H \lhd G$ such that $N < H < G$.
 \end{definition}
 \begin{remark}
     This means that if $N$ is a maximal normal subgroup of $G$ and there exists a subgroup $H$ such that $N \leq H \leq G$, then either $H = N$ or $H = G$.
@@ -4723,7 +4757,7 @@ There is an important consequence that we examine here.
 \end{theorem}
 
 \begin{proof}
-    We prove the forward direction first; assume that $N$ is a maximal normal subgroup of $G$. Suppose there exists a normal subgroup of $G/N$. Then by \myref{problem-subgroup-of-quotient-group-is-quotient-group} we know that subgroup takes the form of $H/N$, where $N \leq H \leq G$, such that $H/N \unlhd G/N$. Since $N$ is a maximal normal subgroup this means that $H = N$ or $H = G$. In the first case $H/N \cong 1$ and in the second $H / N = G/N$. Hence $G/N$ only has two normal subgroups, the trivial subgroup and itself, meaning that it has no proper normal subgroups and is hence simple.
+    We prove the forward direction first; assume that $N$ is a maximal normal subgroup of $G$. Suppose there exists a normal subgroup of $G/N$. Then by \myref{problem-subgroup-of-quotient-group-is-quotient-group} we know that that subgroup takes the form of $H/N$, where $N \leq H \leq G$, such that $H/N \unlhd G/N$. Since $N$ is a maximal normal subgroup this means that $H = N$ or $H = G$. In the first case $H/N \cong 1$ and in the second $H / N = G/N$. Hence $G/N$ only has two normal subgroups, the trivial subgroup and itself, meaning that it has no proper normal subgroups and is hence simple.
     
     We now prove the reverse direction; assume that $G/N$ is simple. Suppose there exists a $H \leq G$ such that $N \leq H \leq G$. By \myref{problem-subgroup-of-quotient-group-is-quotient-group} we know $H/N \leq G/N$. In fact, since $N \leq H \leq G$ we know $N \unlhd H \unlhd G$ which means $H/N \unlhd G/N$. As $G/N$ is simple, thus $H/N \cong 1$ or $H/N = G/N$. The case where $H/N \cong 1$ occurs if and only if $H = N$ and the case where $H/N = G/N$ occurs when $H = G$. Hence, this means that $N$ is a maximal normal subgroup of $G$.
 \end{proof}
@@ -4755,25 +4789,25 @@ For composition series, we often write a group that is isomorphic to the subgrou
 \begin{example}
     Consider the group $\mathbb{Z}_{12}$. Three composition series of it are
     \begin{align*}
-        &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},\\
-        &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_4 \lhd \mathbb{Z}_{12},\\
-        &1 \lhd \mathbb{Z}_3 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12},
+        &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12};\\
+        &1 \lhd \mathbb{Z}_2 \lhd \mathbb{Z}_4 \lhd \mathbb{Z}_{12}; \text{ and}\\
+        &1 \lhd \mathbb{Z}_3 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12}.
     \end{align*}
     
-    and the factors in each of the cases (up to isomorphism) are as follows:
+    The factors in each case (up to isomorphism) are:
     \begin{itemize}
         \item $\mathbb{Z}_2$, $\mathbb{Z}_3$, $\mathbb{Z}_2$;
         \item $\mathbb{Z}_2$, $\mathbb{Z}_2$, $\mathbb{Z}_3$; and
         \item $\mathbb{Z}_3$, $\mathbb{Z}_2$, $\mathbb{Z}_2$.
     \end{itemize}
-    Each of the composition series has composition length 3.
+    Each composition series has composition length 3.
 \end{example}
 
 \begin{example}
     Consider the symmetry group of the regular hexagon, the dihedral group of order 12, $D_6$. The three composition series of $D_6$, up to isomorphism, are
     \begin{align*}
-        &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6,\\
-        &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6, \text{ and}\\
+        &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6;\\
+        &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6; \text{ and}\\
         &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
     \end{align*}
     We note that the subgroup that is isomorphic to
@@ -4800,7 +4834,7 @@ One might wonder which groups have a composition series. As mentioned, not all g
     
     Otherwise, $G$ has a proper normal subgroup, at least one of which has maximal order. Let that subgroup be $G_1$. By \myref{thrm-maximal-normal-subgroup-iff-quotient-is-simple} this means that $G/G_1$ is simple. If $G_1$ does not have a proper normal subgroup then $G$ has composition series $\{e\} \lhd G_1 \lhd G$. Otherwise let $G_2$ be the maximal normal subgroup of $G_1$, and so on. 
     
-    Now Lagrange's Theorem (\myref{thrm-lagrange}) says that the order of the subgroup must divide the order of the group. Since $G_1$, $G_2$, etc. are proper subgroups of $G$, the orders of the found subgroups can be at most half the order of the preceding group. Hence the orders of the groups are strictly decreasing, meaning
+    Now Lagrange's Theorem (\myref{thrm-lagrange}) says that the order of the subgroup must divide the order of the group. Since $G_1$, $G_2$, etc. are proper subgroups of $G$, the orders of the found subgroups can be at most half the order of the preceding group. Hence the orders of the subgroups are strictly decreasing, meaning
     \[
         |G| > |G_1| > |G_2| > \cdots > |G_n| = 1,
     \]
@@ -4827,7 +4861,7 @@ Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes ca
     where an expression like $H'(H \cap K')$ denotes the subset product of $H'$ and $H \cap K'$.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[p.~110]{hungerford_1980}})]
-    We quickly note that $H' \unlhd H \cap K$ as $H' \unlhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \unlhd H \cap K$ by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 4. Since $H'\unlhd H$ we know $H' \subset H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \unlhd H \cap K$. Similarly, $H \cap K' \unlhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\myref{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, let $\mathcal{A} = (H' \cap K)(H \cap K')$.
+    We quickly note that $H' \unlhd H \cap K$ as $H' \unlhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \unlhd H \cap K$ by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 4. Since $H'\unlhd H$ we know $H' \subseteq H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \unlhd H \cap K$. Similarly, $H \cap K' \unlhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\myref{corollary-subgroup-product-is-normal-subgroup-iff-subgroups-are-normal}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, let $\mathcal{A} = (H' \cap K)(H \cap K')$.
     
     Define the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$, $hc \mapsto h\mathcal{A}$ where $h \in H'$ and $c \in H \cap K$. We show that $\phi$ is a well-defined homomorphic surjection with a goal to use the Fundamental Homomorphism Theorem to finish the proof.
     
@@ -4853,9 +4887,7 @@ Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes ca
         \end{align*}
         which shows that $\phi$ is a homomorphism.
         
-        \item \textbf{Image}: We prove that $\phi$ is surjective to show $\im \phi = (H\cap K)/\mathcal{A}$.
-        
-        Take any $c\mathcal{A} \in (H\cap K) / \mathcal{A}$. Clearly $e \in H$, so $\phi(c) = \phi(ec) = c\mathcal{A}$, meaning $\phi$ is surjective. Hence $\im \phi = (H\cap K)/\mathcal{A}$.
+        \item \textbf{Image}: We prove that $\phi$ is surjective to show $\im \phi = (H\cap K)/\mathcal{A}$. Take any $c\mathcal{A} \in (H\cap K) / \mathcal{A}$. Clearly $e \in H$, so $\phi(c) = \phi(ec) = c\mathcal{A}$, meaning $\phi$ is surjective. Hence $\im \phi = (H\cap K)/\mathcal{A}$.
         
         \item \textbf{Kernel}: Let $hc \in \ker\phi$ where $h \in H'$ and $c \in H \cap K$. Then $\phi(hc) = \mathcal{A}$, meaning $c\mathcal{A} = \mathcal{A}$. Hence $c \in \mathcal{A}$. Let $c = xy$ where $x \in H'\cap K$ and $y \in H \cap K'$. So $hc \in \ker\phi$ if $hc = h(xy) = (hx)y$. Note that $h \in H'$, and $x \in H' \cap K \subseteq H'$ so $x \in H'$, thus $hx \in H'$. Also $y \in H \cap K'$, so $hc = (hx)y \in H'(H \cap K')$. Thus if $hc \in \ker\phi$ then $hc \in H'(H \cap K')$, meaning $\ker\phi \subseteq H'(H \cap K')$.
         
@@ -4878,7 +4910,7 @@ Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes ca
 \end{proof}
 
 \section{Schreier Refinement Theorem and Jordan-H\"older Theorem}
-This next section proves fundamental theorems about composition series, but will be fairly technical.
+This next section proves two fundamental theorems about composition series, but will be fairly technical.
 
 Before we look at them, we introduce \textbf{refinements}.
 \begin{definition}
@@ -4936,7 +4968,7 @@ We can now introduce the \textbf{Schreier Refinement Theorem}.
     \]
     We note $H_q \subseteq H_{q+1}$. Thus the left-hand side is
     \begin{align*}
-        H_q(H_{q+1} \cap K_n) &= H_q(H_{q+1} \cap G) & (\text{since } K_n = G)\\
+        H_q(H_{q+1} \cap K_n) &= H_q(H_{q+1} \cap G) & (K_n = G)\\
         &= H_qH_{q+1}\\
         &= H_{q+1} & (\text{by \myref{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}})
     \end{align*}
@@ -4948,15 +4980,15 @@ We can now introduce the \textbf{Schreier Refinement Theorem}.
     \end{align*}
     so this is well-defined.
     
-    We next need to demonstrate that $\hat{H}_k \lhd \hat{H}_{k+1}$. Write $k$ as $qn+r$ in which $0 \leq q < m$ and $0 \leq r < n$. Hence
+    We next need to demonstrate that $\hat{H}_k \unlhd \hat{H}_{k+1}$. Write $k$ as $qn+r$ in which $0 \leq q < m$ and $0 \leq r < n$. Hence
     \[
         \hat{H}_{k+1} = \hat{H}_{qn+(r+1)} = H_q(H_{q+1}\cap K_{r+1}). 
     \]
     Since $K_r \lhd K_{r+1}$ we have
     \[
-        \hat{H}_k = H_q(H_{q+1}\cap K_r) \lhd H_q(H_{q+1}\cap K_{r+1}) = \hat{H}_{k+1}
+        \hat{H}_k = H_q(H_{q+1}\cap K_r) \unlhd H_q(H_{q+1}\cap K_{r+1}) = \hat{H}_{k+1}
     \]
-    by Zassenhaus' Lemma (\myref{lemma-zassenhaus}), statement 1. Thus $\hat{H}_k \lhd \hat{H}_{k+1}$, which is what we wanted to prove. However we note that \myref{eqn:thrm-schreier-eqn-a-prime} may not be a subnormal series, as it is possible for $\hat{H}_k = \hat{H}_{k+1}$ for some $k$. We will address this concern near the end.
+    by Zassenhaus' Lemma (\myref{lemma-zassenhaus}), statement 1. Thus $\hat{H}_k \unlhd \hat{H}_{k+1}$, which is what we wanted to prove. However we note that \myref{eqn:thrm-schreier-eqn-a-prime} may not be a subnormal series, as it is possible for $\hat{H}_k = \hat{H}_{k+1}$ for some $k$. We will address this concern near the end.
     
     Having created series \myref{eqn:thrm-schreier-eqn-a-prime}, use the same procedure to form
     \begin{equation}\label{eqn:thrm-schreier-eqn-b-prime}
@@ -4997,8 +5029,8 @@ We can now introduce and prove the \textbf{Jordan-H\"older Theorem}.
 \begin{example}
     We found in an earlier example the 3 distinct composition series for $D_6$:
     \begin{align*}
-        &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6,\\
-        &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6, \text{ and}\\
+        &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6;\\
+        &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6; \text{ and}\\
         &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
     \end{align*}
     The factors in each case (in order) are:
@@ -5007,7 +5039,7 @@ We can now introduce and prove the \textbf{Jordan-H\"older Theorem}.
         \item $\Cn{3}/1 \cong \Cn{3}$, $\Cn{6}/\Cn{3} \cong \Cn{2}$, $D_6 / \Cn{6}$; and
         \item $\Cn{3}/1 \cong \Cn{3}$, $D_3 / \Cn{3} \cong \Cn{2}$, $D_6 / D_3$.
     \end{itemize}
-    By the Jordan-H\"older theorem, the factors must be isomorphic to each other. Looking at the last 2 factor lists, only one factor from each is unaccounted for, namely the factors $D_6 / \Cn{6}$ and $D_6 / D_3$. Since Jordan-H\"older guarantees that they are isomorphic to each other, hence, technically, $D_6 / \Cn{6} \cong D_6 / D_3$.
+    By the Jordan-H\"older theorem (\myref{thrm-jordan-holder}), the factors must be isomorphic to each other. Looking at the last 2 factor lists, only one factor from each is unaccounted for, namely $D_6 / \Cn{6}$ and $D_6 / D_3$. Since Jordan-H\"older guarantees that they are isomorphic to each other, hence, technically, $D_6 / \Cn{6} \cong D_6 / D_3$.
 
     \textbf{Important note}: The $\Cn{6}$ and $D_3$ above represent \textbf{subgroups} of $D_6$ (up to isomorphism), not the actual groups themselves. The subgroup of $D_6$ that is isomorphic to $\Cn{6}$ is $\langle r \rangle$, while the subgroup isomorphic to $D_3$ is $\langle r^2, s\rangle$. Therefore the correct statement is
     \[
@@ -5056,9 +5088,9 @@ The first infinite family of simple groups we will look at is the family of \tex
     $\Cn{n}$ is simple if and only if $n$ is prime.
 \end{lemma}
 \begin{proof}
-    We prove the forward direction. Suppose $\Cn{n}$ is simple with generator $g$. Then the only normal subgroups of $\Cn{n}$ are the trivial group and the group itself. Seeking a contradiction, assume $n$ is not prime; write $n = ab$ where $a$ and $b$ are positive integers that are both smaller than $n$. Then clearly $\langle g^a\rangle$ is a subgroup of $\Cn{n}$. Now $\Cn{n}$ is abelian (\myref{prop-cyclic-group-is-abelian}) which means all subgroups are normal (\myref{prop-subgroup-of-abelian-group-is-normal}). Hence we have found another normal subgroup of $\Cn{n}$, contradicting that $\Cn{n}$ has no proper normal subgroups. Therefore $n$ is prime.
+    We prove the forward direction. Suppose $\Cn{n}$ is simple with generator $g$. Then the only normal subgroups of $\Cn{n}$ are the trivial group and the group itself. Seeking a contradiction, assume $n$ is not prime; write $n = ab$ where $a$ and $b$ are positive integers that are both smaller than $n$. Then clearly $\langle g^a\rangle$ is a subgroup of $\Cn{n}$. Now $\Cn{n}$ is abelian (\myref{prop-cyclic-group-is-abelian}) which means all subgroups are normal (\myref{prop-subgroup-of-abelian-group-is-normal}). Hence we have found a proper normal subgroup of $\Cn{n}$, namely $\langle g^a \rangle$, contradicting that $\Cn{n}$ has no proper normal subgroups. Therefore $n$ is prime.
     
-    We prove the reverse direction. Suppose $n$ is a prime. Then by a corollary of Lagrange's Theorem (\myref{corollary-group-with-prime-order-subgroups}), $\Cn{n}$ has no proper subgroups. So, the only subgroup with order smaller than $n$ is the trivial group, $\{e\}$. Clearly $\Cn{n}$ is normal in itself, and the trivial group is always a normal subgroup. Hence, as the only normal subgroups of $\Cn{n}$ is the trivial group and itself, $\Cn{n}$ is simple. Therefore, if $n$ is prime then $\Cn{n}$ is simple.
+    We prove the reverse direction. Suppose $n$ is a prime. Then by a corollary of Lagrange's Theorem (\myref{corollary-group-with-prime-order-subgroups}), $\Cn{n}$ has no proper subgroups. So, the only subgroup with order smaller than $n$ is the trivial group, $\{e\}$. Clearly $\Cn{n}$ is normal in itself, and the trivial group is always a normal subgroup. Hence, as the only normal subgroups of $\Cn{n}$ is the trivial group and itself, so $\Cn{n}$ is simple. Therefore, if $n$ is prime then $\Cn{n}$ is simple.
 \end{proof}
 
 In fact, we have a much stronger result which we prove here.
@@ -5176,7 +5208,7 @@ With these results, we are ready to prove that an alternating group with a degre
     \[
         \Stab{G}{i} \subseteq H \implies \Stab{G}{i} \leq H.
     \]
-    Now by \myref{exercise-conjugate-of-stabilizer} (later), for any $\sigma \in G$, we obtain the fact that $\sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{\sigma(i)}$. Therefore, by conjugating the above relation by $\sigma$, we see
+    Now by \myref{exercise-conjugate-of-stabilizer} (later), for any $\sigma \in G$, we know that $\sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{\sigma(i)}$. Therefore, by conjugating the above relation by $\sigma$, we see
     \[
         \sigma\Stab{G}{i}\sigma^{-1} \leq \sigma H\sigma^{-1} = H
     \]
@@ -5253,7 +5285,7 @@ We note that $\An4$ is non-simple by \myref{problem-S4-composition-series}'s sol
 up to isomorphism.
 
 \section{Groups of Lie Type}
-\textit{We briefly mention groups of Lie type here; we will not prove any significant results here.}
+\textit{We briefly mention groups of Lie type; we will not prove any significant results here.}
 
 Groups of Lie (pronounced ``lee'') type\index{groups of Lie type} usually refers to finite groups that are closely related to the group of rational points of a reductive linear algebraic group with values in a finite field. We will cover finite fields in Volume \rom{3}. We briefly mention these groups here.
 
