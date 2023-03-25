@@ -2657,47 +2657,19 @@ It should be noted that there is no consistency with the numbering of these theo
 \end{proof}
 
 \begin{example}
-    Take $G = \mathbb{Z}$, $H = m\mathbb{Z}$ and $N = mn\mathbb{Z}$. Note that clearly $H, N \leq G$, and since $G$ is abelian, we must also have $H \unlhd G$ and $N \unlhd G$. By the Third Isomorphism Theorem (\myref{thrm-isomorphism-3}),
+    Take $G = \mathbb{Z}$, $H = m\mathbb{Z}$, and $N = mn\mathbb{Z}$. Note that clearly $H, N \leq G$, and since $G$ is abelian, we must also have $H \unlhd G$ and $N \unlhd G$. By the Third Isomorphism Theorem (\myref{thrm-isomorphism-3}),
     \[
-        G/H \cong \frac{G/N}{H/N}.
+        \frac{G/N}{H/N} \cong G/H.
     \]
     Note $G/H = \mathbb{Z}/(m\mathbb{Z}) \cong \mathbb{Z}_m$ by \myref{problem-Zn-isomorphic-to-Z-by-nZ}. Note also
     \[
-        \frac{G/N}{H/N} = \frac{\mathbb{Z}/(mn\mathbb{Z})}{m\mathbb{Z}/(mn\mathbb{Z})}
+        \frac{G/N}{H/N} = \frac{\mathbb{Z}/(mn\mathbb{Z})}{m\mathbb{Z}/(mn\mathbb{Z})}.
     \]
-    and $\mathbb{Z}/(mn\mathbb{Z}) \cong \mathbb{Z}_{mn}$ by \myref{problem-Zn-isomorphic-to-Z-by-nZ} again.
-
-    Consider now $\phi: m\mathbb{Z} \to \mathbb{Z}_{mn}, mx \mapsto mx \mod mn$. Clearly $\phi$ is a homomorphism. Note $\im \phi = \langle m \rangle$ and $\ker \phi = mn\mathbb{Z}$. We leave the verification of these claims as an exercise to the reader.
-
-    The Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) tells us that
+    Hence we see that
     \[
-        m\mathbb{Z} / (mn\mathbb{Z}) \cong \langle m \rangle.
-    \]
-    Thus,
-    \[
-        \mathbb{Z}_m \cong G/H \cong \frac{G/N}{H/N} \cong \mathbb{Z}_{mn}/\langle m \rangle
-    \]
-    which means $\mathbb{Z}_m \cong \mathbb{Z}_{mn} / \langle m \rangle$.
-
-    In other words, if $d$ divides $n$, then
-    \[
-        \mathbb{Z}_n / \langle d \rangle \cong \mathbb{Z}_d.
+        \frac{\mathbb{Z}/(mn\mathbb{Z})}{m\mathbb{Z}/(mn\mathbb{Z})} \cong \mathbb{Z}/(m\mathbb{Z}) \cong \mathbb{Z}_m.
     \]
 \end{example}
-
-From this example we can come up with a more general result.
-\begin{proposition}\label{prop-Zn-mod-cyclic-subgroup-of-m}
-    $\mathbb{Z}_n / \langle m \rangle \cong \mathbb{Z}_{\gcd(m,n)}$
-\end{proposition}
-\begin{proof}
-    We want to show that $\langle m \rangle = \langle \gcd(m,n) \rangle$. For brevity let $\gcd(m,n) = d$.
-
-    \begin{itemize}
-        \item $\boxed{\langle m \rangle \leq \langle d \rangle}$ Since $d\;|\;m$, thus $m = dk$ for some integer $k$. Hence, $\langle m \rangle = \{mx \vert x \in \mathbb{Z}\} = \{dkx \vert x \in \mathbb{Z}\} \leq \langle d \rangle$. Hence, $\langle m \rangle \leq \langle d \rangle d$.
-        \item $\boxed{\langle m \rangle \geq \langle d \rangle}$ By the Extended Euclidean Algorithm we may write $d = \alpha m + \beta n$ for some integers $\alpha$ and $\beta$. In $\mathbb{Z}_n$, $d = \alpha m$ which quickly implies that $\langle d \rangle = \langle \alpha m \rangle \leq \langle m \rangle$.
-    \end{itemize}
-    Thus $\langle d \rangle = \langle m \rangle$, so the claim is proven by previous example.
-\end{proof}
 
 \begin{exercise}
     Suppose $x$ and $y$ are positive integers such that $y = mx$ for some integer $m$. Let $H = x\mathbb{Z}$ and $N = y\mathbb{Z}$ be groups under addition.
@@ -2750,7 +2722,6 @@ We previously covered several properties of cyclic groups:
     \item Any subgroup of a cyclic group is cyclic. (\myref{problem-subgroup-of-cyclic-group-is-cyclic})
     \item $\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_n$. (\myref{problem-Zn-isomorphic-to-Z-by-nZ})
     \item $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ if and only if $\gcd(m,n) = 1$. (\myref{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition})
-    \item $\mathbb{Z}_n / \langle m \rangle \cong \mathbb{Z}_{\gcd(m,n)}$. (\myref{prop-Zn-mod-cyclic-subgroup-of-m})
     \item $m\mathbb{Z} / n\mathbb{Z} \cong \mathbb{Z}_{\frac nm}$. (\myref{problem-mZ/nZ-isomorphic-to-Zn/m})
 \end{itemize}
 
