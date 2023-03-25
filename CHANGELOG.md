@@ -1,5 +1,39 @@
 # Abstract Algebra Book Changelog
 
+## [Build 10](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-09...build-10)
+
+### General Content Changes
+- Add a "suggestions" chapter to the front matter
+- Update chapter mark styling for front matter
+- Update preface for all volumes
+- Fix incorrect figure caption format
+- Fix citations
+
+### Volume 0 Changes
+- Add chapter interdependence diagram
+- Fix minor typo in section 0.3.4
+
+### Volume I Changes
+- Add chapter interdependence diagram
+- Increase image sizes in chapter I.1
+- Add new problem I.1.2 on the trivial group
+- Fix the incorrect solution for example I.3.6.3
+- Fix example I.7.5.2
+- Add minor note on lack of problems for chapter I.12
+- General improvements to volume I
+
+### Other Changes
+- Move commands in `SharedCommands.tex` to respective volumes
+- Include code-workspace file in the repository
+- Add some content to volume II
+- Change volume II cover image
+- Update `README.md`
+- Reorganise repository
+    - Renamed all directories to use Arabic numerals instead of roman numerals
+    - Renamed source files to reduce their name length
+    - Renamed `SharedCommands.tex` to `Common Commands.tex`
+    - Renamed images
+
 ## [Build 9](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-08...build-09)
 
 ### General Content Changes
