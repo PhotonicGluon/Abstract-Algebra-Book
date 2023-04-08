@@ -1,5 +1,22 @@
 # Abstract Algebra Book Changelog
 
+## [Build 11](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-10...build-11)
+
+### General Content Changes
+- Rename "Interdependence of Chapters" to "Chapter Interdependence"
+- Fix weird "chapter" in appendix headers
+
+### Volume 0 Changes
+- Update format for sections 0.3.2 and 0.3.3
+
+### Volume I Changes
+- Edit a sentence in the preface to be clearer
+- Fix citation for theorem I.10.4.1
+- Change the wording of the first sentence of the proof for theorem I.10.4.1
+
+### Other Changes
+- Add a list of required latex packages
+
 ## [Build 10](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-09...build-10)
 
 ### General Content Changes
