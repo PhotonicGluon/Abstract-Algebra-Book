@@ -56,7 +56,7 @@ A set is completely determined by its elements. Two sets are equal if and only i
 
 We denote the \textbf{empty set}\index{set!empty} by $\emptyset$, which is given by $\{\}$. That is, $\emptyset = \{\}$.
 
-Now if we have two sets $A$ and $B$, and if all the members of set A are also members of set B, then we say that $A$ is a \textbf{subset}\index{subset} of $B$, and we write $A \subseteq B$. For example, $\{1, 2\} \subseteq \{1, 2, 3\}$ but $\{1, 4\} \not\subseteq \{1, 2, 3\}$. It should be noted that for any set $S$, the empty $\emptyset \subseteq S$. It should also be noted that $S \subseteq S$ for any set $S$. Thus $A$ is called a \textbf{proper subset}\index{subset!proper} of $B$ if $A \neq B$ and $A \subseteq B$ (in this case, we write $A \subset B$).
+Now if we have two sets $A$ and $B$, and if all the members of set $A$ are also members of set $B$, then we say that $A$ is a \textbf{subset}\index{subset} of $B$, and we write $A \subseteq B$. For example, $\{1, 2\} \subseteq \{1, 2, 3\}$ but $\{1, 4\} \not\subseteq \{1, 2, 3\}$. It should be noted that for any set $S$, the empty set is a subset of the set, i.e. $\emptyset \subseteq S$. It should also be noted that $S \subseteq S$ for any set $S$. Thus $A$ is called a \textbf{proper subset}\index{subset!proper} of $B$ if $A \neq B$ and $A \subseteq B$ (in this case, we write $A \subset B$).
 
 \begin{exercise}
     Let $S$ be a non-empty set. Determine whether the following statements are true or false.
@@ -102,7 +102,7 @@ Set theory also features operations on sets. We list some of them here.
         \end{enumerate}
     \end{multicols}
 \end{exercise}
-It is quite useful to have a notation that describes a set that is defined by a logical formula that evaluates to true for an element of the set, and false otherwise. In this form, set-builder\index{set!builder notation} notation has three parts: a variable, a vertical bar separator, and the logical formula. Thus there is a variable on the left of the separator, and a rule on the right of it. These three parts are contained in curly brackets:
+It is quite useful to have a notation that describes a set that is defined by a logical formula that evaluates to true for an element of the set, and false otherwise. In this form, set-builder notation\index{set!builder notation} has three parts: a variable, a vertical bar separator, and the logical formula. Thus there is a variable on the left of the separator, and a rule on the right of it. These three parts are contained in curly brackets:
 \[
     \{x \ | \ \Phi(x)\}
 \]
@@ -144,9 +144,9 @@ A function\index{function} (or a map\index{map}) from a set $X$ to a set $Y$ is 
 
 A function, its domain, and its codomain, are declared by the notation $f: X\to Y$, and the value of a function $f$ at an element $x$ of $X$, denoted by $f(x)$, is called the \textbf{image}\index{function!image} of $x$ under $f$. The image or \textbf{range}\index{function!range} of a function is the set of the images of all elements in the domain. The image and the codomain are not necessarily the same. The image of the function $f: X \to Y$ is denoted either as $\im f$ or $f(X)$.
 
-Two functions $f$ and $g$ are equal\index{function!equality} if their domain and codomain sets are the same and their output values agree on the whole domain. More formally, given $f: X \to Y$ and $g: X \to Y$, $f = g$ if $f(x) = g(x)$ for all $x$ in $X$.
+Two functions $f$ and $g$ are equal\index{function!equality} if their domain and codomain sets are the same and their output values agree on the whole domain. More formally, given $f: X \to Y$ and $g: X \to Y$, $f = g$ if and only if $f(x) = g(x)$ for all $x$ in $X$.
 
-\textbf{Arrow notation}\index{function!arrow notation} can also be used to define the rule of a function. For example, $f: \mathbb{R} \to \mathbb{R}, x \mapsto x+1$ is the function which takes a real number as input and outputs that number plus 1. In the above example, ``$x + 1$'' is the \textbf{rule}\index{function!rule} of the function.
+\textbf{Arrow notation}\index{function!arrow notation} can also be used to define the rule of a function. For example, $f: \mathbb{R} \to \mathbb{R}, x \mapsto x+1$ is the function which takes a real number as input and outputs that number plus 1. In this example, ``$x + 1$'' is the \textbf{rule}\index{function!rule} of the function.
 
 \newpage
 
@@ -171,7 +171,7 @@ A function is said to be \textbf{well-defined}\index{function!well-defined} if \
     well-defined?
 \end{exercise}
 
-Functions may also be \textbf{composed}\index{function!composition} with each other. This is done by using the function composition operator $\circ$. The composition of two functions, say $f: X \to Y$ and $g: Y \to Z$, produces a function $f \circ g: X \to Z$ such that $(f \circ g)(x) = f(g(x))$.
+Functions may also be \textbf{composed}\index{function!composition} with each other using the function composition operator $\circ$. The composition of two functions, say $f: X \to Y$ and $g: Y \to Z$, produces a function $f \circ g: X \to Z$ such that $(f \circ g)(x) = f(g(x))$.
 
 It is important to note the following about function composition.
 \begin{itemize}
@@ -186,7 +186,7 @@ We may also alternatively write $fg$ in place of $f \circ g$.
 
 A function $f: X \to Y$ is said to be \textbf{injective}\index{function!injective} (or \textbf{one-to-one}\index{function!one-to-one}) if $f(x_1) = f(x_2)$ implies $x_1 = x_2$. Equivalently, if $x_1 \neq x_2$ then $f(x_1) \neq f(x_2)$ for all $x_1$ and $x_2$ in $X$.
 
-A function $f: X \to Y$ is said to be \textbf{surjective}\index{function!surjective} (or \textbf{onto}\index{function!onto}) is a function whose image is equal to its codomain. Equivalently, $f$ is surjective if and only if for all $y \in Y$, there exists $x \in X$ such that $f(x) = y$. In this case, $x$ is said to be the \textbf{pre-image}\index{function!pre-image} of $y$.
+A \textbf{surjective} function\index{function!surjective} (or a function that is \textbf{onto}\index{function!onto}) is a function whose image is equal to its codomain. Equivalently, the function $f: X \to Y$ is surjective if and only if for all $y \in Y$, there exists $x \in X$ such that $f(x) = y$. In this case, $x$ is said to be the \textbf{pre-image}\index{function!pre-image} of $y$.
 
 A function is \textbf{bijective}\index{function!bijective} if it is both injective and surjective. A bijective function is also called a \textbf{bijection}\index{bijection} or a \textbf{one-to-one correspondence}\index{function!one-to-one!correspondence}. A function is bijective if and only if every possible image is mapped to by exactly one argument.
 
@@ -473,7 +473,7 @@ We can also combine the quantifiers together with logical operators.
 \begin{exercise}
     Let $S$ denote the set of positive integers. Convert the statement
     \begin{quote}
-        for all positive integers $n > 2$ there exists integers $a$ and $b$ such that $a^3 + b^4 = n^5$
+        for all positive integers $n > 2$ there exist integers $a$ and $b$ such that $a^3 + b^4 = n^5$
     \end{quote}
     into symbolic notation using quantifiers and logical operators.
 \end{exercise}
@@ -526,7 +526,7 @@ Mathematical statements often have a certain `tier' attached to them. We look at
 In essence, a direct proof\index{proof!direct} for the statement ``if $P$ then $Q$'' would involve
 \begin{enumerate}
     \item supposing $P$ is true, (usually written as ``suppose $P$'')
-    \item unpacking $P$ via definitions; make appropriate calculations and logical arguments; repack $Q$ via definition,
+    \item unpacking $P$ via definitions; making appropriate calculations and logical arguments; repacking $Q$ via definitions,
     \item concluding that $Q$ is true. (usually written as ``thus $Q$'')
 \end{enumerate}
 \begin{example}
@@ -729,7 +729,7 @@ Mathematical induction\index{proof!induction} is a method for proving that a pro
     Mathematical induction proves that we can climb as high as we like on a ladder, by proving that we can climb onto the bottom rung (the base case) and that from each rung we can climb up to the next one (the induction step).
 \end{quote}
 
-A proof by induction consists of two steps. The first, the \textbf{base case}\index{proof!induction!base case}, proves the statement for $n = 1$ without assuming any knowledge of other cases. The second, the \textbf{induction step}\index{proof!induction!induction step}, proves that if the statement holds for any given case $n = k$, then it must also hold for the next case $n = k + 1$. These two steps establish that the statement holds for every positive integer $n$.
+A proof by induction consists of two steps. The first, the \textbf{base case}\index{proof!induction!base case}, proves the statement for $n = 1$ without assuming any knowledge of other cases. The second, the \textbf{induction step}\index{proof!induction!induction step}, proves that if the statement holds for any given case $n = k$, then it must also hold for the next case $n = k + 1$. These two steps establish that the statement holds for all positive integers $n$.
 
 The base case does not necessarily need to begin with $n = 1$. Sometimes we may begin with $n = 0$, and possibly with any fixed natural number $n = N$, establishing the truth of the statement for all natural numbers $n \geq N$.
 
@@ -792,7 +792,7 @@ In summary, mathematical induction involves two steps:
     Prove by induction that $a^2 - 1$ is a multiple of 8 for all positive odd integers $a$.
 \end{exercise}
 
-We now look at another form of mathematical induction, called \textbf{strong induction}\index{proof!induction!strong}. Unlike regular induction, strong induction assumes that all preceding cases are true, and proves the next case.
+We now look at another form of mathematical induction, called \textbf{strong induction}\index{proof!induction!strong}. Unlike regular induction, strong induction assumes that all preceding cases are true, and proves the truth of the next case.
 
 Strong mathematical induction involves two steps:
 \begin{itemize}
@@ -861,13 +861,8 @@ Strong mathematical induction involves two steps:
 \end{exercise}
 
 \section{Proving Non-Conditional Statements}
-\subsection{Biconditional Statements}
-Recall that a biconditional statement is a statement like ``$P \iff Q$'', i.e., ``$P$ if and only if $Q$''. We prove such a statement by proving\index{proof!biconditional} two things:
-\begin{itemize}
-    \item $P \implies Q$; and
-    \item $Q \implies P$.
-\end{itemize}
-Each of these statements may be proved using any of the proof techniques that we covered.
+\subsection{Biconditional Statements}\index{proof!biconditional}
+Recall that a biconditional statement is a statement like ``$P \iff Q$'', i.e., ``$P$ if and only if $Q$''. We prove such a statement by proving that $P \implies Q$ and $Q \implies P$. Each of these statements may be proved using any of the proof techniques that we covered.
 
 \begin{example}
     We will prove the biconditional statement ``the integer $n$ is even if and only if $n^2$ is even''.
@@ -944,7 +939,7 @@ We say that \textbf{$a$ divides $b$}\index{divides} if there is an integer $k$ s
 
 If $a$ divides $b$, then $b$ is a \textbf{multiple of $a$}\index{multiple}. For example, 63 is a multiple of 7, but 63 is not a multiple of 8.
 
-Here are some basic facts about divisibility that are not difficult to prove.
+We list some basic facts about divisibility that are not difficult to prove.
 \begin{itemize}
     \item If $a\vert b$ then $a\vert bc$ for all integers $c$.
     \item If $a\vert b$ and $b\vert c$ then $a\vert c$.
@@ -963,7 +958,7 @@ A number $p > 1$ with no positive divisors other than 1 and itself is called a \
 \end{exercise}
 
 \section{Euclid's Division Lemma}
-When dividing an integer by another, we may sometimes have a \textbf{remainder}\index{remainder} left over. For example, when 63 is divided by 8, a remainder of 7 is left over. More precisely, if you divide $n$ by $d$, then you get a quotient $q$ and a remainder $r$. This is given by Euclid's Division Lemma\index{Euclid's Division Lemma}.
+When dividing an integer by another, we may sometimes have a \textbf{remainder}\index{remainder}. For example, when 63 is divided by 8, a remainder of 7 is left over. More precisely, if you divide $n$ by $d$, then you get a quotient $q$ and a remainder $r$. This is given by Euclid's Division Lemma\index{Euclid's Division Lemma}.
 \begin{lemma}[Euclid's Division Lemma]\label{lemma-euclid-division}
     Given two integers $n$ and $d$, with $n \neq 0$, there exist unique integers $q$ and $r$ such that
     \[
@@ -990,7 +985,7 @@ When dividing an integer by another, we may sometimes have a \textbf{remainder}\
 In number theory, the idea of a greatest common divisor and the least common multiple are omnipresent.
 
 \begin{definition}
-    Let $m$ and $n$ be two non-zero integers. Then an integer $d$ is said to be the \textbf{greatest common divisor}\index{greatest common divisor} (GCD)!\index{GCD} of $m$ and $n$ if $m = pd$ and $n = qd$ for some integers $p$ and $q$, and that $d$ is the largest possible integer that achieves this.
+    Let $m$ and $n$ be two non-zero integers. Then an integer $d$ is said to be the \textbf{greatest common divisor}\index{greatest common divisor} (GCD)\index{GCD} of $m$ and $n$ if $m = pd$ and $n = qd$ for some integers $p$ and $q$, and that $d$ is the largest possible integer that achieves this.
 \end{definition}
 The GCD of $m$ and $n$ is denoted by $\gcd(m, n)$.
 
@@ -1058,12 +1053,12 @@ We note several properties of the GCD and LCM.
 \chapter{Modular Arithmetic}
 \section{Modulo and Modular Congruence}
 
-Given an integer $n>1$, called a \textbf{modulus}\index{modulus}, two integers $a$ and $b$ are said to be \textbf{congruent modulo $n$}\index{congruence} if $n$ is a divisor of their difference (that is, if there is an integer $k$ such that $a - b = kn$). It is denoted $a \equiv b \pmod{n}$. The parentheses mean that ``$\pmod{n}$'' applies to the entire equation, not just to the right-hand side (here, $b$). This notation is not to be confused with the notation ``$b \mod n$'' (without parentheses), which refers to the modulo operation.
+Given an integer $n>1$, called a \textbf{modulus}\index{modulus}, two integers $a$ and $b$ are said to be \textbf{congruent modulo $n$}\index{congruence} if $n$ is a divisor of their difference (that is, if there is an integer $k$ such that $a - b = kn$). It is denoted $a \equiv b \pmod{n}$. The parentheses mean that ``$\pmod{n}$'' applies to the entire equation, not just to the right-hand side (here, $b$). This notation is not to be confused with the notation ``$b \mod n$'' (without parentheses), which refers to the modulo operation that returns the remainder upon division by $n$.
 \begin{remark}
     Equivalently, $a \equiv b \pmod n$ means that $a = kn + b$ for some integer $k$.
 \end{remark}
 \begin{example}
-    In modulo 12, note that $38 \equiv 14 \pmod{12}$ since $38 - 14 = 24 = 2 \times 12$. Another way to express this is to say that both 38 and 14 have the same remainder 2, when divided by 12.
+    We see that $38 \equiv 14 \pmod{12}$ since $38 - 14 = 24 = 2 \times 12$. Another way to express this is to say that both 38 and 14 have the same remainder (i.e., 2) when divided by 12.
 \end{example}
 
 \begin{exercise}
@@ -1106,11 +1101,8 @@ The operation of congruence modulo $n$ has a few properties\index{congruence!pro
 
 \section{Modular Multiplicative Inverse}
 \begin{definition}
-    Let $m$ be a positive integer, and let $a$ be an integer. Then an integer $x$ that makes $ax \equiv 1 \pmod m$ is said to be the \textbf{modular multiplicative inverse of $a$}\index{multiplicative inverse!modular}.
+    Let $m$ be a positive integer, and let $a$ be an integer. Then an integer $x$ that makes $ax \equiv 1 \pmod m$ is said to be the \textbf{multiplicative inverse of $a$ modulo $m$}\index{multiplicative inverse modulo $n$}.
 \end{definition}
-\begin{remark}
-    In these books, however, we refer to the modular multiplicative inverse as just \textbf{multiplicative inverse}\index{multiplicative inverse}.
-\end{remark}
 \begin{example}
     4 is the multiplicative inverse of 7 modulo 9 since $4 \times 7 = 28 = 3 \times 9 + 1 \equiv 1 \pmod 9$.
 \end{example}
