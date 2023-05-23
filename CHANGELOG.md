@@ -3,7 +3,11 @@
 ---
 ## [Build 12](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-11...build-12)
 
+### General Content Changes
+- Edited the common preface for all volumes
+
 ### Volume 0 Changes
+- Edited preface for volume 0
 - Fixed non-italics of sets in chapter 0.1
 - Fixed definition of equality of functions to be "if and only if" in chapter 0.2
 - Cleared up definition of a surjective function in chapter 0.2
