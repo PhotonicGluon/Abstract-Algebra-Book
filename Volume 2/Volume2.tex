@@ -127,30 +127,30 @@ Before we introduce rings, we look at `simpler' algebraic structures and build o
 \section{Definition of a Ring}
 With all that setup, we are ready to define what a ring is. Note that we follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ringdefinition} for the definition of a ring.
 \begin{definition}
-    A \textbf{ring}\index{ring} is a set $R$ with two binary operations $\oplus$ and $\otimes$ satisfying the following axioms.
+    A \textbf{ring}\index{ring} is a set $R$ with two binary operations $+$ and $\cdot$ satisfying the following axioms.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: $(R, \oplus)$ is an abelian group.
-        \item \textbf{Multiplication-Semigroup}: $(R, \otimes)$ is a semigroup.
-        \item \textbf{Distributive}: $\otimes$ is distributive over $\oplus$. That is,
+        \item \textbf{Addition-Abelian}: $(R, +)$ is an abelian group.
+        \item \textbf{Multiplication-Semigroup}: $(R, \cdot)$ is a semigroup.
+        \item \textbf{Distributive}: $\cdot$ is distributive over $+$. That is,
         \begin{itemize}
-            \item $a \otimes (b \oplus c) = (a \otimes b) \oplus (b \otimes c)$; and
-            \item $(a \oplus b) \otimes c = (a \otimes c) \oplus (b \otimes c)$.
+            \item $a \cdot (b + c) = (a \cdot b) + (b \cdot c)$; and
+            \item $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
         \end{itemize}
     \end{itemize}
-    One may denote such a ring by $(R, \oplus, \otimes)$.
+    One may denote such a ring by $(R, +, \cdot)$.
 \end{definition}
 \begin{remark}
-    Other authors (e.g. \cite[p.~136]{cohn_1982}, \cite[pp.~145--146]{clark_1984}) may require that $(R, \otimes)$ is a monoid. In this book, any ring that satisfies the above condition is called a \textbf{ring with identity}\index{ring!with identity}.
+    Other authors (e.g. \cite[p.~136]{cohn_1982}, \cite[pp.~145--146]{clark_1984}) may require that $(R, \cdot)$ is a monoid. In this book, any ring that satisfies the above condition is called a \textbf{ring with identity}\index{ring!with identity}.
 \end{remark}
 \begin{remark}
-    A ring where $a \otimes b = b \otimes a$ for all $a$ and $b$ in $R$ is called a \textbf{commutative ring}\index{ring!commutative}.
+    A ring where $a \cdot b = b \cdot a$ for all $a$ and $b$ in $R$ is called a \textbf{commutative ring}\index{ring!commutative}.
 \end{remark}
 
 We end this chapter by introducing the \textbf{trivial ring}.
 \begin{definition}
-    The \textbf{trivial ring}\index{trivial ring} (or \textbf{zero ring}\index{zero ring}), denoted $\textbf{0}$, is the ring $(\{0\}, +, \times)$ where
+    The \textbf{trivial ring}\index{trivial ring} (or \textbf{zero ring}\index{zero ring}), denoted $\textbf{0}$, is the ring $(\{0\}, +, \cdot)$ where
     \[
-        0 + 0 = 0 \text{ and } 0 \times 0 = 0.    
+        0 + 0 = 0 \text{ and } 0 \cdot 0 = 0.    
     \]
 \end{definition}
 \begin{exercise}
@@ -162,12 +162,11 @@ We end this chapter by introducing the \textbf{trivial ring}.
 \section{Basic Examples of Rings}
 Before we introduce some examples of rings, we make some remarks for the notation that is used in Ring Theory.
 \begin{itemize}
-    \item We often write $\oplus$ using the standard addition symbol $+$, so $x \oplus y$ is written as $x + y$.
-    \item The multiplication symbol $\otimes$ is usually omitted, so $x \otimes y$ is written as $xy$.
+    \item The multiplication symbol $\cdot$ is usually omitted, so $x \cdot y$ is written as $xy$.
     \item The additive identity of $R$ will always be denoted by 0.
     \item The additive inverse of the element $x$ will be denoted by $-x$.
-    \item $n$ applications of $\oplus$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$).
-    \item $n$ applications of $\otimes$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if it exists).
+    \item $n$ applications of $+$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$).
+    \item $n$ applications of $\cdot$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if it exists).
 \end{itemize}
 
 Let's look at some examples of rings.
@@ -232,7 +231,7 @@ We need to define addition and multiplication within this set.
     $\Mn{n}{R}$ is a ring under matrix addition and matrix multiplication.
 \end{proposition}
 \begin{proof}
-    We need to prove that the ring axioms hold. For cl
+    We need to prove that the ring axioms hold.
     \begin{itemize}
         \item \textbf{Addition-Abelian}: We first prove that $(\Mn{n}{R}, +)$ is indeed an abelian group.
         \begin{itemize}
@@ -388,10 +387,10 @@ We list some properties of rings here.
     \item We note the following.
     \begin{itemize}
         \item \textbf{Addition-Abelian}: $(\{0\}, +)$ is an abelian group by Volume I.
-        \item \textbf{Multiplication-Semigroup}: $(\{0\}, \times)$ is an abelian group by Volume I.
-        \item \textbf{Distributive}: We know $+$ and $\times$ distribute.
+        \item \textbf{Multiplication-Semigroup}: $(\{0\}, \cdot)$ is an abelian group by Volume I.
+        \item \textbf{Distributive}: We know $+$ and $\cdot$ distribute.
     \end{itemize}
-    Hence $(\{0\}, +, \times)$ is a commutative ring with identity.
+    Hence $(\{0\}, +, \cdot)$ is a commutative ring with identity.
 \end{enumerate}
 
 \section{Basics of Rings}

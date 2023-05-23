@@ -33,6 +33,9 @@
 - Fixed definition of simple group in definition I.10.6.1
 - General updates to the flow and style of the book
 
+### Other Changes
+- Changed $\oplus$ and $\otimes$ in original definition of ring in volume II.
+
 ---
 ## [Build 11](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-10...build-11)
 
