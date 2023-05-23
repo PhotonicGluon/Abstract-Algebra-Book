@@ -1,5 +1,6 @@
 # Abstract Algebra Book Changelog
 
+---
 ## [Build 11](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-10...build-11)
 
 ### General Content Changes
@@ -17,6 +18,7 @@
 ### Other Changes
 - Add a list of required latex packages
 
+---
 ## [Build 10](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-09...build-10)
 
 ### General Content Changes
@@ -51,6 +53,7 @@
     - Renamed `SharedCommands.tex` to `Common Commands.tex`
     - Renamed images
 
+---
 ## [Build 9](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-08...build-09)
 
 ### General Content Changes
@@ -74,6 +77,7 @@
 - Fix typos in `CHANGELOG.md`
 - Replace old reference code with a new `\myref` command
 
+---
 ## [Build 8](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-07...build-08)
 
 Book Content Changes:
@@ -86,6 +90,7 @@ Other Changes:
 - Updated volume 1's preface content
 - Uploaded volume 2's and 3's initial contents
 
+---
 ## [Build 7](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-06...build-07)
 
 **Important Changes**:
@@ -98,6 +103,7 @@ Book Content Changes:
 Other Changes:
 - Move all front matter content to `SharedCommands.tex`
 
+---
 ## [Build 6](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-05...build-06)
 
 **Important change**: the books' licence has changed from the Creative Commons Attribution 4.0 International Licence (CC BY 4.0) to the **Creative Commons Attribution-NonCommercial 4.0 International Licence** (CC BY-NC 4.0). This new licence restricts the use of these books for commercial use, which are "primarily intended for or directed toward commercial advantage or monetary compensation" (source: [here](https://creativecommons.org/faq/#does-my-use-violate-the-noncommercial-clause-of-the-licenses)). The previous builds remain under the CC BY 4.0 licence; future builds and this one is under the CC BY-NC 4.0 licence.
@@ -123,6 +129,7 @@ Other Changes:
 - Remove weird newlines in the volume 1 source file
 - Renamed some labels things in the volume 1 source file
 
+---
 ## [Build 5](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-04...build-05)
 
 Changelog:
@@ -135,6 +142,7 @@ Changelog:
 - Add strong induction to subsection 0.3.5.4
 - Fix several typos in volumes 0 and I
 
+---
 ## [Build 4](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-03...build-04)
 
 Changelog:
@@ -146,6 +154,7 @@ Changelog:
 - Added more parts to a problem in chapter I.3
 - Added a new problem to chapter I.11
 
+---
 ## [Build 3](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-02...build-03)
 
 This is the third release of the Abstract Algebra books.
@@ -156,6 +165,7 @@ Changelog:
 - Added custom page headings for all volumes
 - Fixed annoying misalignment of text in Volume I's problem solutions
 
+---
 ## [Build 2](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-01...build-02)
 
 This is the second release of the Abstract Algebra books.
@@ -165,6 +175,7 @@ Changelog:
 - Fixed some typos in Volume I's earlier chapters
 - Added Chapter I.11: Composition Series
 
+---
 ## [Build 1](https://github.com/PhotonicGluon/Abstract-Algebra-Book/tree/build-01)
 
 This is the first official release of Volume I (Group Theory). Most of the essential content is present, but a few more chapters need to be worked on.
