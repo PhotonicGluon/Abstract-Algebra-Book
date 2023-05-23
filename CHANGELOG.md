@@ -1,6 +1,18 @@
 # Abstract Algebra Book Changelog
 
 ---
+## [Build 12](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-11...build-12)
+
+### Volume 0 Changes
+- Fixed non-italics of sets in chapter 0.1
+- Fixed definition of equality of functions to be "if and only if" in chapter 0.2
+- Cleared up definition of a surjective function in chapter 0.2
+- Removed redundant "left over" after "remainder" in section 0.4.2
+- Removed erroneous exclamation mark in definition 0.4.3.1
+- Clarified what the modulo operation is in section 0.5.1
+- General updates to the flow and style of the book
+
+---
 ## [Build 11](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-10...build-11)
 
 ### General Content Changes
