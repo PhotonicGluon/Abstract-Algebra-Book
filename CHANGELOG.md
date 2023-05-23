@@ -9,6 +9,7 @@
 - Cleared up definition of a surjective function in chapter 0.2
 - Removed redundant "left over" after "remainder" in section 0.4.2
 - Removed erroneous exclamation mark in definition 0.4.3.1
+- Fixed incorrect definition of LCM in definition 0.4.3.6
 - Clarified what the modulo operation is in section 0.5.1
 - General updates to the flow and style of the book
 
