@@ -46,11 +46,11 @@
 
 %=========================================
 \chapter{Introduction to Rings}
-\section{Basic Algebraic Structures}
 In Volume I, we looked exclusively at groups and their operations. We discussed how groups are a generalisation of symmetry and looked at results related to groups. In this volume, we look at rings.
 
 Before we introduce rings, we look at `simpler' algebraic structures and build our way up to them.
 
+\section{Basic Algebraic Structures}
 \begin{definition}
     A \textbf{magma}\index{magma} is a set $M$ together with a binary operation $\ast$ which is closed. That is, if $a$ and $b$ are in $M$, then $a \ast b \in M$. Such a magma is denoted $(M, \ast)$.
 \end{definition}
@@ -159,6 +159,8 @@ We end this chapter by introducing the \textbf{trivial ring}.
 
 %=========================================
 \chapter{Basics of Rings}
+With basic algebraic structures and the definition of a ring out of the way, we are now ready to tackle the basics of rings in this chapter.
+
 \section{Basic Examples of Rings}
 Before we introduce some examples of rings, we make some remarks for the notation that is used in Ring Theory.
 \begin{itemize}
@@ -173,7 +175,7 @@ Let's look at some examples of rings.
 \begin{example}
     We show that $(\Zn{n}, \oplus_n, \otimes_n)$, where $\oplus_n$ and $\otimes_n$ denote addition and multiplication modulo $n$ respectively, form a ring.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: From Volume I we know that $(\Zn, \oplus_n)$ is an abelian group.
+        \item \textbf{Addition-Abelian}: From Volume I, we know that $(\Zn, \oplus_n)$ is an abelian group.
         \item \textbf{Multiplication-Semigroup}: We can see that $(\Zn, \otimes_n)$ is a semigroup as
         \begin{itemize}
             \item $\Zn{n}$ is closed under $\otimes_n$ because $a \otimes_n b \in \{0, 1, 2, \dots, n-1\} = \Zn{n}$; and
@@ -189,7 +191,7 @@ Let's look at some examples of rings.
 \begin{example}
     We show that $(\Q, +, \times)$, where $+$ and $\times$ denote normal addition and multiplication, form a ring.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: From Volume I we know that $(\Q, +)$ is an abelian group.
+        \item \textbf{Addition-Abelian}: From Volume I, we know that $(\Q, +)$ is an abelian group.
         \item \textbf{Multiplication-Semigroup}: We note that $(\Q, \times)$ is a semigroup as
         \begin{itemize}
             \item $Q$ is closed under $\times$ because multiplying two rational numbers together produce a rational number; and
@@ -211,7 +213,6 @@ Note that, in this volume, $\Z$ refers to the ring $(\Z, +, \times)$.
 We look at one more ring: the ring of $n \times n$ matrices.
 
 Let $\Mn{n}{R}$ denote the set of $n\times n$ matrices with entries in the ring $(R, \oplus, \otimes)$ (or simply just $R$).
-We need to define addition and multiplication within this set.
 \begin{itemize}
     \item We define \textbf{matrix addition}\index{matrix addition} within this set. Suppose we have $\textbf{A}, \textbf{B} \in \Mn{n}{R}$, and let their sum be $\textbf{C} = \textbf{A} + \textbf{B}$. Then
     \[
@@ -239,8 +240,8 @@ We need to define addition and multiplication within this set.
 
             \item \textbf{Associative}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. Let $\textbf{P} = \textbf{A} + (\textbf{B} + \textbf{C})$ and $\textbf{Q} = (\textbf{A} + \textbf{B}) + \textbf{C}$. We note that $\textbf{P} = \textbf{Q}$ as
             \begin{align*}
-                p_{i,j} &= a_{i,j} \otimes (b_{i,j} \otimes c_{i,j})\\
-                &= (a_{i,j} \otimes b_{i,j}) \otimes c_{i,j} & (\otimes\text{ is associative})\\
+                p_{i,j} &= a_{i,j} \oplus (b_{i,j} \oplus c_{i,j})\\
+                &= (a_{i,j} \oplus b_{i,j}) \oplus c_{i,j} & (\oplus\text{ is associative})\\
                 &= q_{i,j}
             \end{align*}
             which proves that matrix addition is associative.
@@ -277,7 +278,7 @@ We need to define addition and multiplication within this set.
             r_{i,j} &= \sum_{k=1}^n \left(a_{i,k} \otimes \left(b_{k,j} \oplus c_{k,j}\right)\right)\\
             &= \sum_{k=1}^n \left((a_{i,k} \otimes b_{k,j}) \oplus (a_{i,k} \otimes c_{k,j})\right)\\
             &= \left(\sum_{k=1}^n (a_{i,k} \otimes b_{k,j})\right) \oplus \left(\sum_{k=1}^n (a_{i,k} \otimes c_{k,j})\right)\\
-            &= g_{i,j}\otimes h_{i,j}
+            &= g_{i,j}\oplus h_{i,j}
         \end{align*}
         which means $\textbf{R} = \textbf{G} + \textbf{H}$.
     \end{itemize}
@@ -375,8 +376,11 @@ We list some properties of rings here.
 \newpage
 
 \section{Problems}
-\begin{problem}  % TODO: Add solution
-    Prove that the trivial ring is the unique ring in which $0 = 1$.
+\begin{problem}
+    Prove that the trivial ring is the unique ring with identity in which $0 = 1$.
+\end{problem}
+\begin{problem}
+    Let $(R, \ast)$ be a magma. If $(R, \ast, \ast)$ is a ring, describe the elements in $R$.
 \end{problem}
 
 %=========================================
@@ -423,8 +427,21 @@ We list some properties of rings here.
 No problems.
 
 \section{Basics of Rings}
-%TODO: Add
+\begin{enumerate}
+    \item Suppose $R$ is a ring where 0 = 1, and let $x \in R$. Then
+    \begin{align*}
+        x &= 1x & (1 \text{ is the multiplicative identity})\\
+        &= 0x & (0 = 1)\\
+        &= 0 & (0x = 0 \text{ for all }x)
+    \end{align*}
+    which means that $R$ only contains one element, namely the identity 0. Hence the trivial ring is the unique ring where 0 = 1.
 
+    \item Since $(R, \ast, \ast)$ is a ring, we know that $(R, \ast)$ is an abelian group and that $a \ast(b\ast c) = (a \ast b) \ast (a \ast c)$ for all $a, b, c \in R$ (left distribution). Consider an element $x \in R$. Thus we must have
+    \[
+        x \ast (x \ast x) = (x \ast x) \ast (x \ast x)    
+    \]
+    which means $x^3 = x^4$. Since $(R, \ast)$ is a group, thus $x^{-3}$ exists. Applying that on both sides means $x = e$ where $e$ is the identity. Therefore, $R$ contains only one element, the identity, which means that $(R, \ast, \ast)$ is actually the trivial ring.
+\end{enumerate}
 %=========================================
 \chapter{Image Acknowledgements}
 Unless otherwise stated, all images are the author's own work, and are released under the same licence as this book.
