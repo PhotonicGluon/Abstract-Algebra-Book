@@ -15,6 +15,7 @@
 - Updated volumes to use $\mathbb{N}$ in place for the set of positive integers
 - Added preambles to chapters in volume II
 - Added more content to chapter II.2
+- Added problems and solutions to chapter II.2
 
 ---
 ## [Build 12](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-11...build-12)
