@@ -122,8 +122,9 @@ or by adjoining it to the logical formula:
 
 The cardinality\index{cardinality} of a set $S$, denoted $|S|$, is the number of elements in $S$. The cardinality of the empty set is zero. The list of elements of some sets is endless, or infinite. In this book, we denote the cardinality of such infinite sets as $|S| = \infty$ (even though it is poorly defined in other contexts).
 
-Finally, some notation that will be used:
+Finally, some notation that will be used in this and future volumes:
 \begin{itemize}
+    \item $\mathbb{N}$ denotes the set of positive integers\index{set!of positive integers};
     \item $\mathbb{Z}$ denotes the set of integers\index{set!of integers} (from the German ``z\"ahlen", which means ``numbers");
     \item $\mathbb{Q}$ denotes the set of rational numbers\index{set!of rational numbers}; and
     \item $\mathbb{R}$ denotes the set of real numbers\index{set!of real numbers}.
@@ -193,14 +194,14 @@ A function is \textbf{bijective}\index{function!bijective} if it is both injecti
 If a function $f: A \to B$ is bijective, then the sets $|A|$ and $|B|$ have the same cardinality, i.e., $|A| = |B|$. The sets $A$ and $B$ are said to be \textbf{equinumerous}\index{set!equinumerous} (i.e., `have the same number of elements') in this case. It should be noted that bijectivity is also implied if the function $f: X \to Y$ is injective and the sets $X$ and $Y$ are equinumerous.
 
 \begin{exercise}
-    Let the set $S = \{x \in \mathbb{Z} \vert x > 0\}$. Define the function $f: S \to \mathbb{Z}$ such that
+    Define the function $f: \mathbb{N} \to \mathbb{Z}$ such that
     \[
         f(x) = \begin{cases}
             \frac{x}{2} & \text{ if } x \text{ is even}\\
             \frac{1-x}{2} & \text{ if } x \text{ is odd} 
         \end{cases}
     \]
-    By considering $f$, prove that $|S| = |\mathbb{Z}|$.
+    By considering $f$, prove that $|\mathbb{N}| = |\mathbb{Z}|$.
 \end{exercise}
 
 %=========================================
@@ -463,15 +464,15 @@ We can also combine the quantifiers together with logical operators.
     The statement ``every odd integer is one less than an even integer'' can be written as ``$\forall n \in \mathbb{Z}$, $\exists k \in \mathbb{Z}$, $n = 2k - 1$''.
 \end{example}
 \begin{example}
-    Let $S$ denote the set of positive integers. Fermat's Last Theorem, which states that for all integers $n\geq 3$ the equation $x^n + y^n = z^n$ has no solution for $x, y, z \in S$, can be written as
+    Fermat's Last Theorem, which states that for all integers $n\geq 3$ the equation $x^n + y^n = z^n$ has no solution for $x, y, z \in \mathbb{N}$, can be written as
     \[
-        \left[(n \in \mathbb{Z}) \land (n \geq 3)\right] \implies \left[\forall x, y, z \in S, x^n + y^n \neq z^n\right].
+        \left[(n \in \mathbb{Z}) \land (n \geq 3)\right] \implies \left[\forall x, y, z \in \mathbb{N}, x^n + y^n \neq z^n\right].
     \]
     It should be noted that when translating from English to \textit{symbolic writing}, we may need to change some things around.
 \end{example}
 
 \begin{exercise}
-    Let $S$ denote the set of positive integers. Convert the statement
+    Convert the statement
     \begin{quote}
         for all positive integers $n > 2$ there exist integers $a$ and $b$ such that $a^3 + b^4 = n^5$
     \end{quote}
@@ -821,7 +822,7 @@ Strong mathematical induction involves two steps:
 \end{example}
 
 \begin{example}\label{example-strong-induction-on-function}
-    Let $\mathbb{Z}^+$ denote the set of positive integers, and consider the function $f: \left(\mathbb{Z}^+\right)^2\to\mathbb{Z}^+$ where
+    Consider the function $f: \left(\mathbb{N}\right)^2\to\mathbb{N}$ where
     \[
         f(m, n) =
         \begin{cases}
@@ -857,7 +858,7 @@ Strong mathematical induction involves two steps:
 \end{example}
 
 \begin{exercise}
-    Let $\mathbb{Z}^+$ denote the set of positive integers. Let the function $f: \mathbb{Z}^+ \to \mathbb{Z}$ be defined such that $f(1) = 0$, $f(2) = 1$, and $f(n+2) = 3f(n+1) - 2f(n) + 1$ for all positive integers $n$. Prove that $f(n) = 2^n - n - 1$ for all positive integers $n$.
+    Let the function $f: \mathbb{N} \to \mathbb{Z}$ be defined such that $f(1) = 0$, $f(2) = 1$, and $f(n+2) = 3f(n+1) - 2f(n) + 1$ for all positive integers $n$. Prove that $f(n) = 2^n - n - 1$ for all positive integers $n$.
 \end{exercise}
 
 \section{Proving Non-Conditional Statements}
@@ -902,13 +903,13 @@ Note that while an example suffices to prove an existence statement, a single ex
     Prove that a positive integer that is one less than a perfect cube and two less than a perfect square exists.
 \end{exercise}
 
-\newpage
-
 Existence proofs fall into two categories: \textbf{constructive}\index{proof!constructive} proofs and \textbf{non-constructive}\index{proof!non-constructive} proofs.
 \begin{itemize}
     \item Constructive proofs provide an explicit example that proves the statement. We have only seen constructive proofs so far.
     \item Non-constructive proofs prove that an example exists without providing it.
 \end{itemize}
+
+\newpage
 
 \begin{example}
     We prove the classic statement that ``there exist irrational $x$ and $y$ such that $x^y$ is rational'' using a non-constructive proof.
@@ -1169,7 +1170,7 @@ The operation of congruence modulo $n$ has a few properties\index{congruence!pro
     
     \item We prove the requirements of a bijection one by one.
     \begin{itemize}
-        \item \textbf{Injective}: Suppose $x_1, x_2 \in S$ such that $f(x_1) = f(x_2)$. We split into three cases.
+        \item \textbf{Injective}: Suppose $x_1, x_2 \in \mathbb{N}$ such that $f(x_1) = f(x_2)$. We split into three cases.
         \begin{itemize}
             \item The first case is if $f(x_1) = f(x_2) = 0$. In this case, one sees clearly that $x_1 = x_2 = 1$.
             \item The second case is if $f(x_1) = f(x_2) > 0$. Now since $x \neq 1$ (as this case leads to $f(x_1) = 0$), the `valid' odd numbers are at least 3. Therefore, $\frac{1-x}{2} \leq \frac{1-3}{2} = -1 < 0$, so $x_1$ and $x_2$ cannot be odd. Hence, $x_1$ and $x_2$ are even, meaning $\frac{x_1}{2} = \frac{x_2}{2}$ which quickly implies $x_1 = x_2$.
@@ -1182,9 +1183,9 @@ The operation of congruence modulo $n$ has a few properties\index{congruence!pro
             \item Now suppose $y > 0$. We note $2y \in S$, and clearly $2y$ is an even integer. So setting $x = 2y$ satisfies $f(x) = \frac{2y}{y} = y$.
             \item Suppose $y < 0$. Note $-2y > 0$, and $1 - 2y > 0 \in S$. Furthermore $1 - 2y$ is clearly an odd integer. Hence setting $x = 1 - 2y$ satisfies $f(x) = \frac{1-(1-2y)}{2} = y$.
         \end{itemize}
-        Therefore for every $y \in \mathbb{Z}$, there exists a pre-image $x \in S$ such that $f(x) = y$. Hence $f$ is surjective.
+        Therefore for every $y \in \mathbb{Z}$, there exists a pre-image $x \in \mathbb{N}$ such that $f(x) = y$. Hence $f$ is surjective.
     \end{itemize}
-    Therefore, as $f$ is both injective and surjective, $f$ is bijective. Hence, $|S| = |\mathbb{Z}|$.
+    Therefore, as $f$ is both injective and surjective, $f$ is bijective. Hence, $|\mathbb{N}| = |\mathbb{Z}|$.
 \end{enumerate}
 
 \section{Mathematical Logic and Proof Writing}
