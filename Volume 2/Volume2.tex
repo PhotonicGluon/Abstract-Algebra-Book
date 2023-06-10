@@ -15,11 +15,13 @@
 \externaldocument{../Volume 1/Volume1}
 
 %=========== Custom Commands =============
-\newcommand{\Mn}[2]{\mathcal{M}_{#1}(#2)}  % The ring of n by n matrices with entries in the ring R
+\newcommand{\Mn}[2]{\mathcal{M}_{#1\times#1}(#2)}  % The ring of n by n matrices with entries in the ring R
 
-\newcommand{\Q}{\mathbb{Q}}                % The ring rational numbers
-\newcommand{\Z}{\mathbb{Z}}                % The ring of integers
-\newcommand{\Zn}[1]{\mathbb{Z}_{#1}}       % The ring of integers modulo n
+\newcommand{\C}{\mathbb{C}}                        % The ring of complex numbers
+\newcommand{\Q}{\mathbb{Q}}                        % The ring of rational numbers
+\newcommand{\R}{\mathbb{R}}                        % The ring of real numbers
+\newcommand{\Z}{\mathbb{Z}}                        % The ring of integers
+\newcommand{\Zn}[1]{\mathbb{Z}_{#1}}               % The ring of integers modulo n
 
 %========= Front Matter Pages ============
 % Quote page
@@ -165,17 +167,16 @@ With basic algebraic structures and the definition of a ring out of the way, we 
 Before we introduce some examples of rings, we make some remarks for the notation that is used in Ring Theory.
 \begin{itemize}
     \item The multiplication symbol $\cdot$ is usually omitted, so $x \cdot y$ is written as $xy$.
-    \item The additive identity of $R$ will always be denoted by 0.
-    \item The additive inverse of the element $x$ will be denoted by $-x$.
-    \item $n$ applications of $+$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$).
-    \item $n$ applications of $\cdot$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if it exists).
+    \item The additive identity of $R$ will always be denoted by 0 and the multiplicative identity of $R$ (if it exists) will always be denoted by 1.
+    \item The additive inverse of the element $x$ will be denoted by $-x$ and the multiplicative inverse of $x$ (if it exists) will be denoted by $x^{-1}$.
+    \item $n$ applications of $+$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$), while $n$ applications of $\cdot$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if it exists).
 \end{itemize}
 
 Let's look at some examples of rings.
 \begin{example}
     We show that $(\Zn{n}, \oplus_n, \otimes_n)$, where $\oplus_n$ and $\otimes_n$ denote addition and multiplication modulo $n$ respectively, form a ring.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: From Volume I, we know that $(\Zn{n}, \oplus_n)$ is an abelian group.
+        \item \textbf{Addition-Abelian}: We know $(\Zn{n}, \oplus_n)$ is an abelian group from Volume I.
         \item \textbf{Multiplication-Semigroup}: We can see that $(\Zn{n}, \otimes_n)$ is a semigroup as
         \begin{itemize}
             \item $\Zn{n}$ is closed under $\otimes_n$ because $a \otimes_n b \in \{0, 1, 2, \dots, n-1\} = \Zn{n}$; and
@@ -209,6 +210,8 @@ Let's look at some examples of rings.
     (\textit{You do \textbf{not} need to prove the \textbf{Distributive} axiom.})
 \end{exercise}
 Note that, in this volume, $\Z$ refers to the ring $(\Z, +, \times)$.
+
+We remark that both $\R$ and $\C$ are rings under regular addition and multiplication, although we will not prove it here.
 
 We look at one more ring: the ring of $n \times n$ matrices.
 
@@ -286,33 +289,11 @@ Let $\Mn{n}{R}$ denote the set of $n\times n$ matrices with entries in the ring 
 \end{proof}
 For brevity, we let $\Mn{n}{R}$ denote the ring under matrix addition and multiplication.
 
-\section{Types of Rings}
-We now look at more specific types of rings.
-\begin{definition}
-    An \textbf{integral domain}\index{integral domain} $R$ is a commutative ring with identity such that for elements $a$ and $b$ in $R$,
-    \[
-        ab = 0 \text{ if and only if } a = 0 \text{ or } b = 0
-    \]
-\end{definition}
-
-\begin{definition}
-    A \textbf{division ring}\index{division ring} $R$ is a non-trivial ring such that every non-zero element $x$ in $R$ has a multiplicative inverse $x^{-1}$ where
-    \[
-        xx^{-1} = x^{-1}x = 1.    
-    \]
-\end{definition}
-
-\begin{definition}
-    A \textbf{field}\index{field} is a commutative division ring.
-\end{definition}
-We look at fields in more detail in Volume III.
-
-% TODO: Add
-
 \section{General Properties of Rings}
-We list some properties of rings here.
+We list some properties of rings here. For each of the propositions, assume $R$ is a ring.
+
 \begin{proposition}\label{prop-multiplying-by-zero-is-zero}
-    Let $R$ be a ring. Then $0x = x0 = 0$ for all $x \in R$.
+    $0x = x0 = 0$ for all $x \in R$.
 \end{proposition}
 \begin{proof}
     We note that
@@ -320,38 +301,11 @@ We list some properties of rings here.
         0x &= (0 + 0)x & (0 \text{ is additive inverse})\\
         &= 0x + 0x & (\text{by \textbf{Distributive} axiom})
     \end{align*}
-    so by `adding' $-0x$ on both sides (i.e., subtracting $0x$ on both sides) we see $0 = 0x$. A similar argument shows that $x0 = 0$.
+    so by `subtracting' $0x$ on both sides (i.e., adding $-0x$ on both sides) we see $0 = 0x$. A similar argument shows that $x0 = 0$.
 \end{proof}
 
-\begin{proposition}
-    Let $R$ be a ring with identity. Then the multiplicative identity is unique.
-\end{proposition}
-\begin{proof}
-    Similar proof to \myref{prop-identity-is-unique}.
-\end{proof}
-
-\begin{proposition}
-    Let $R$ be a division ring and $x$ be a non-zero element in $R$. Then the multiplicative inverse of $x$ is unique.
-\end{proposition}
-\begin{proof}
-    Similar proof to \myref{prop-inverse-of-element-is-unique}.
-\end{proof}
-
-\begin{proposition}
-    Let $R$ be a ring. Then $(-1)x = -x$ for all $x \in R$.
-\end{proposition}
-\begin{proof}
-    See \myref{exercise-negative-one-multiplied-by-element-is-inverse-of-element} (later).
-\end{proof}
-\begin{exercise}\label{exercise-negative-one-multiplied-by-element-is-inverse-of-element}
-    Prove that $(-1)x = -x$ for all $x \in R$ where $R$ is any ring.
-\end{exercise}
-\begin{proposition}
-    Let $R$ be a ring. Then
-    \[
-        (-a)b = a(-b) = -(ab)
-    \]
-    for any $a$ and $b$ in $R$.
+\begin{proposition}\label{prop-product-of-element-and-additive-inverse-is-additive-inverse-of-product}
+    $(-a)b = a(-b) = -(ab)$ for any $a$ and $b$ in $R$.
 \end{proposition}
 \begin{proof}
     We show that $(-a)b = -(ab)$ and $a(-b) = -(ab)$ to complete the proof.
@@ -363,15 +317,106 @@ We list some properties of rings here.
 \end{proof}
 
 \begin{proposition}
-    Let $R$ be an integral domain, and let $a,b,c\in R$ such that $a \neq 0$. Then $ab = ac$ if and only if $b = c$.
+    $(-a)(-b) = ab$ for any $a$ and $b$ in $R$.
 \end{proposition}
 \begin{proof}
-    The reverse direction is trivial: if $b = c$, then we may left-multiply both sides by $a$ to give $ab = ac$ as needed.
-
-    We prove the forward direction. Suppose $ab = ac$, meaning $ab - ac = 0$. By \textbf{Distributive} axiom we thus have $a(b - c) = 0$. Now by definition of an integral domain, $XY = 0$ if and only if $X = 0$ or $Y = 0$. Hence, $a = 0$ (which is impossible) or $b - c = 0$. Thus $b = c$.
+    See \myref{exercise-product-of-additive-inverses} (later).
 \end{proof}
 
-% TODO: Add more
+\begin{proposition}
+    If $R$ has an identity, it is unique.
+\end{proposition}
+\begin{proof}
+    Suppose 1 and $1'$ are identities, and consider the sum $1 + 1'$. Then
+    \begin{align*}
+        1 + 1' &= 1'(1+1') & (\text{multiplying by identity }1')\\
+        &= 1'1 + 1'1' & (\text{by \textbf{Distributive} axiom})\\
+        &= 1' + 1'. & (1 \text{ and } 1' \text{ are identities})
+    \end{align*}
+    Subtracting $1'$ on both sides yields $1 = 1'$, meaning that the identity is unique.
+\end{proof}
+
+\begin{exercise}\label{exercise-product-of-additive-inverses}
+    Show that $(-a)(-b) = ab$ for any $a$ and $b$ in $R$.
+\end{exercise}
+
+\section{More Definitions}
+Suppose $R$ is a ring.
+\begin{definition}
+    We say that $a \neq 0$ is a \textbf{zero divisor}\index{zero divisor} if there exists a $b \neq 0$ such that $ab = 0$.
+\end{definition}
+\begin{example}
+    Consider the ring $\Zn{12}$. Clearly 4 and 6 are in $\Zn{12}$, and their product is $24 = 2 \times 12 = 0$ in $\Zn{12}$. Hence 4 and 6 are zero divisors in $\Zn{12}$.
+\end{example}
+\begin{example}
+    We claim that the ring
+    \[
+        R = \{f: [0, 1] \to [0, 1]\}
+    \]
+    has zero divisors. Consider the functions
+    \begin{align*}
+        f(x) &= x\\
+        g(x) &= \begin{cases}
+            0 & \text{ if } x \neq 0\\
+            1 & \text{ if } x = 0
+        \end{cases}
+    \end{align*}
+    Clearly neither of them are the zero function. However, consider $f(x)g(x)$.
+    \begin{itemize}
+        \item If $x \neq 0$, then $g(x) = 0$ which means $f(x)g(x) = 0$.
+        \item If $x = 0$, then $f(x) = 0$ which means $f(x)g(x) = 0$.
+    \end{itemize}
+    Hence their product is the zero function, meaning that $R$ has zero divisors $f$ and $g$.
+\end{example}
+\begin{exercise}
+    Does the ring $\Mn{2}{\mathbb{R}}$ have zero divisors?
+\end{exercise}
+
+\begin{definition}
+    Suppose $0 \neq 1$. An element $u \in R$ is called a \textbf{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$.
+\end{definition}
+\begin{remark}
+    Equivalently, we say that $u$ is a unit if it has a multiplicative inverse.
+\end{remark}
+\begin{example}
+    3 and 7 are units in $\Zn{10}$ since $3 \times 7 = 7 \times 3 = 21 = 1$ in $\Zn{10}$.
+\end{example}
+
+\begin{definition}
+    If every non-zero element $x \in R$ is a unit, then $R$ is said to be a \textbf{division ring}\index{division ring}.
+\end{definition}
+
+\begin{definition}
+    A commutative division ring is called a \textbf{field}\index{field}.
+\end{definition}
+We look at fields in more detail in Volume III.
+
+\section{Subrings}
+We end this chapter off with an exploration about subrings.
+
+\begin{definition}
+    Let $R$ be a ring and $S$ be a subset of $R$. Then $S$ is a \textbf{subring}\index{subring} of $R$ if
+    \begin{itemize}
+        \item $(S, +) \leq (R, +)$, i.e. the set $S$ under addition is a subgroup of $R$ under addition; and
+        \item For all $a$ and $b$ in $S$ we have $ab \in S$, i.e. $S$ is closed under multiplication.
+    \end{itemize}
+\end{definition}
+\begin{remark}
+    Alternatively, one may show that $S$ is a ring to prove that $S$ is a subring of $R$.
+\end{remark}
+
+\begin{example}
+    We know that $\Z$ and $\Q$ are rings, and clearly $\Z \subset \Q$. Hence $\Z$ is a subring of $\Q$. Similarly, $\Q$ is a subring of $\R$, and $\R$ is a subring of $\C$.
+\end{example}
+
+\begin{example}
+    Consider the \textbf{gaussian integers}\index{gaussian integers},
+    \[
+        \Z[i] = \{a + bi \vert a,b\in\mathbb{Z}\},
+    \]
+    where $i$ is the imaginary unit (with $i^2 = -1$). Clearly $\Z[i] \subset \C$; we will show that $\Z[i]$ is a subring of $\C$.
+    %TODO: Add explanation
+\end{example}
 
 \newpage
 
@@ -382,6 +427,7 @@ We list some properties of rings here.
 \begin{problem}
     Let $(R, \ast)$ be a magma. If $(R, \ast, \ast)$ is a ring, describe the elements in $R$.
 \end{problem}
+%TODO: Add problems
 
 %=========================================
 \appendix
@@ -411,14 +457,17 @@ We list some properties of rings here.
     \end{itemize}
     Hence $(\Z, +, \times)$ is a ring.
 
-    \item We note that $-1$ is the additive inverse of the multiplicative identity, 1. One observes that
+    \item Consider $(-a)(-b) + (-ab)$ and note
     \begin{align*}
-        (-1)x + x &= (-1)x + 1x\\
-        &= (-1 + 1)x & (\textbf{Distributive} \text{ axiom})\\
-        &= 0x\\
-        &= 0 & (\text{by \myref{prop-multiplying-by-zero-is-zero}})
+        &(-a)(-b) + (-ab)\\
+        &= (-a)(-b) + (-a)b & (\text{\myref{prop-product-of-element-and-additive-inverse-is-additive-inverse-of-product}})\\
+        &= (-a)(-b + b) & (\text{by \textbf{Distributive} axiom})\\
+        &= (-a)0\\
+        &= 0 & (\myref{prop-multiplying-by-zero-is-zero})
     \end{align*}
-    which means $(-1)x + x = 0$. Subtracting $x$ on both sides yields $(-1)x = -x$ as required.
+    which means $(-a)(-b) = -(-ab) = ab$ as required.
+
+    \item The ring $\Mn{2}{\mathbb{R}}$ indeed has zero divisors, as $\begin{pmatrix}0&1\\0&0\end{pmatrix} \neq \begin{pmatrix}0&0\\0&0\end{pmatrix}$ but $\begin{pmatrix}0&1\\0&0\end{pmatrix}^2 = \begin{pmatrix}0&0\\0&0\end{pmatrix}$ which means that $\begin{pmatrix}0&1\\0&0\end{pmatrix}$ is a zero divisor.
 \end{enumerate}
 
 %=========================================
