@@ -406,7 +406,7 @@ We end this chapter off with an exploration about subrings.
 \end{remark}
 
 \begin{example}
-    We know that $\Z$ and $\Q$ are rings, and clearly $\Z \subset \Q$. Hence $\Z$ is a subring of $\Q$. Similarly, $\Q$ is a subring of $\R$, and $\R$ is a subring of $\C$.
+    We know that $\Z$ and $\Q$ are rings, and clearly $\Z \subseteq \Q$. Hence $\Z$ is a subring of $\Q$. Similarly, $\Q$ is a subring of $\R$, and $\R$ is a subring of $\C$.
 \end{example}
 
 \begin{example}
@@ -414,9 +414,31 @@ We end this chapter off with an exploration about subrings.
     \[
         \Z[i] = \{a + bi \vert a,b\in\mathbb{Z}\},
     \]
-    where $i$ is the imaginary unit (with $i^2 = -1$). Clearly $\Z[i] \subset \C$; we will show that $\Z[i]$ is a subring of $\C$.
-    %TODO: Add explanation
+    where $i$ is the imaginary unit (i.e., $i^2 = -1$). We will show that $\Z[i]$ is a subring of $\C$.
+    \begin{proof}
+        Clearly $\Z[i] \subseteq \C$. We show that $(\Z[i], +) \leq (\C, +)$.
+        \begin{itemize}
+            \item Clearly the identity of $(\C, +)$, which is 0, is inside $(\Z[i], +)$ as $0 = 0 + 0i$.
+            \item For any $a + bi, c+di \in \Z[i]$, we have $(a+bi) + (-(c+di)) = (a-c) + (b-d)i \in \Z[i]$.
+        \end{itemize}
+        Therefore by subgroup test we see $(\Z[i], +) \leq (\C, +)$.
+
+        Now we show that $\Z[i]$ is closed under multiplication. Let $a + bi, c+di \in \Z[i]$. Then their product is
+        \begin{align*}
+            (a+bi)(c+di) &= ac+adi+bci+bdi^2\\
+            &= (ac-bd) + (ad+bc)i
+            &\in \Z[i]
+        \end{align*}
+        so $\Z[i]$ is closed under multiplication. Therefore $\Z[i]$ is a subring of $\C$.
+    \end{proof}
 \end{example}
+\begin{exercise}
+    Show that
+    \[
+        R = \left\{\begin{pmatrix}a&a\\a&a\end{pmatrix} \vert a \in \R\right\}
+    \]
+    is a subring of $\Mn{2}{\mathbb{R}}$.
+\end{exercise}
 
 \newpage
 
@@ -468,6 +490,23 @@ We end this chapter off with an exploration about subrings.
     which means $(-a)(-b) = -(-ab) = ab$ as required.
 
     \item The ring $\Mn{2}{\mathbb{R}}$ indeed has zero divisors, as $\begin{pmatrix}0&1\\0&0\end{pmatrix} \neq \begin{pmatrix}0&0\\0&0\end{pmatrix}$ but $\begin{pmatrix}0&1\\0&0\end{pmatrix}^2 = \begin{pmatrix}0&0\\0&0\end{pmatrix}$ which means that $\begin{pmatrix}0&1\\0&0\end{pmatrix}$ is a zero divisor.
+    
+    \item We first show that $(R, +) \leq (\Mn{2}{\R}, +)$.
+    \begin{itemize}
+        \item Clearly the identity of $(\Mn{2}{\R}, +)$, the zero matrix $\begin{pmatrix}0&0\\0&0\end{pmatrix}$, is inside $R$.
+        \item Consider $\begin{pmatrix}a&a\\a&a\end{pmatrix}, \begin{pmatrix}b&b\\b&b\end{pmatrix} \in R$. The additive inverse of $\begin{pmatrix}b&b\\b&b\end{pmatrix}$ is $\begin{pmatrix}-b&-b\\-b&-b\end{pmatrix}$, and so their sum is
+        \[
+            \begin{pmatrix}a&a\\a&a\end{pmatrix} + \begin{pmatrix}-b&-b\\-b&-b\end{pmatrix} = \begin{pmatrix}a-b&a-b\\a-b&a-b\end{pmatrix} \in R
+        \]
+        which means $R$ is closed under addition.
+    \end{itemize}
+    Hence $(R, +) \leq (\Mn{2}{\R}, +)$ by subgroup test.
+
+    We now show that $R$ is closed under multiplication. Some calculation yields that
+    \[
+        \begin{pmatrix}a&a\\a&a\end{pmatrix}\begin{pmatrix}b&b\\b&b\end{pmatrix} = \begin{pmatrix}2ab&2ab\\2ab&2ab\end{pmatrix}
+    \]
+    which is clearly in $R$. Therefore $R$ is a subring of $\Mn{2}{\R}$.
 \end{enumerate}
 
 %=========================================
