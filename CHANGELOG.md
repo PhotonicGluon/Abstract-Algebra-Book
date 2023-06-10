@@ -7,13 +7,14 @@
 - Added acknowledgements to all volumes
 
 ### Volume 0 Changes
-- Add definition for the set of positive integers ($\mathbb{N}$) in volume 0
+- Added definition for the set of positive integers ($\mathbb{N}$) in volume 0
 - Fixed minor formatting issue in exercise 0.2.2
 
 ### Other Changes
-- Updated volumes to use $\mathbb{N}$ in place for the set of positive integers.
+- Added files to exclude in the workspace settings
+- Updated volumes to use $\mathbb{N}$ in place for the set of positive integers
 - Added preambles to chapters in volume II
-- Add more content to chapter II.2
+- Added more content to chapter II.2
 
 ---
 ## [Build 12](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-11...build-12)
