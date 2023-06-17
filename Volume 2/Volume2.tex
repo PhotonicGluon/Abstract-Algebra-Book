@@ -343,7 +343,7 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
 \section{More Definitions}
 Suppose $R$ is a ring.
 \begin{definition}
-    We say that $a \neq 0$ is a \textbf{zero divisor}\index{zero divisor} if there exists a $b \neq 0$ such that $ab = 0$.
+    We say that $a \neq 0$ is a \textbf{zero divisor}\index{zero divisor} if there exists $b \neq 0$ such that $ab = 0$.
 \end{definition}
 \begin{example}
     Consider the ring $\Zn{12}$. Clearly 4 and 6 are in $\Zn{12}$, and their product is $24 = 2 \times 12 = 0$ in $\Zn{12}$. Hence 4 and 6 are zero divisors in $\Zn{12}$.
@@ -371,6 +371,17 @@ Suppose $R$ is a ring.
 \begin{exercise}
     Does the ring $\Mn{2}{\mathbb{R}}$ have zero divisors?
 \end{exercise}
+We note one property about zero divisors, which will be used in future chapters.
+\begin{proposition}\label{prop-zero-divisors-have-no-inverses}
+    Zero divisors do not have inverses.
+\end{proposition}
+\begin{proof}
+    Assume $a \neq 0$ is a zero divisor in the ring $R$. That means that there exists a $b \neq 0$ in $R$ such that $ab = 0$. Seeking a contradiction, assume $a$ has an inverse. Then we must have
+    \[
+        b = (a^{-1}a)b = a^{-1}(ab) = a^{-1}0 = 0    
+    \]
+    which contradicts $b \neq 0$. Hence a zero divisor has no inverse.
+\end{proof}
 
 \begin{definition}
     Suppose $0 \neq 1$. An element $u \in R$ is called a \textbf{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$.
@@ -384,6 +395,7 @@ Suppose $R$ is a ring.
 
 \begin{definition}
     If every non-zero element $x \in R$ is a unit, then $R$ is said to be a \textbf{division ring}\index{division ring}.
+    %TODO: Add detail that every division ring is a ring with identity.
 \end{definition}
 
 \begin{definition}
@@ -496,7 +508,66 @@ We end this chapter off with an exploration about subrings.
     \end{enumerate}
 \end{problem}
 
-%TODO: Add problems
+%=========================================
+\chapter{Integral Domains}
+We explored the absolute basics of rings in the previous chapter. When working in abstract algebra, we usually prefer rings with slightly more structure as they allow us to generate more useful and applicable results. Integral domains are an important category of rings, which we explore in this chapter.
+
+\section{Definition and Examples}
+\begin{definition}
+    An \textbf{integral domain}\index{integral domain} is a commutative ring with identity and no zero divisors.
+\end{definition}
+Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$ such that $ab = 0$. What we mean is that an integral domain has no such element.
+
+\begin{example}
+    We show that the ring $\Z$ is an integral domain. We note that $\Z$ is a commutative ring as multiplication is commutative. Furthermore, clearly 1 is the multiplicative identity in $\Z$. All that remains is to show that there does not exist any zero divisors.
+
+    Suppose $a$ and $b$ are non-zero elements in $\Z$. We show that $ab \neq 0$ to prove that there does not exist any zero divisors. Let's first consider the case when $b > 0$. Then we may write
+    \[
+        ab = \underbrace{a + a + \cdots + a}_{b \text{ times}}
+    \]
+    which clearly is not zero since $a \neq 0$. Now if $b < 0$ then note
+    \[
+        ab = (-a)(-b) = \underbrace{(-a) + (-a) + \cdots + (-a)}_{(-b) \text{times}}
+    \]
+    which is also not zero as $-a \neq 0$. Hence there are no zero divisors in $\Z$.
+
+    Therefore $\Z$ is an integral domain.
+\end{example}
+\begin{example}
+    We show that the ring $\Z[i]$, the gaussian integers, is an integral domain. Similar to $\Z$, we note multiplication is commutative with identity 1.
+
+    Suppose $w$ and $z$ are non-zero elements in $\Z[i]$; write $w = a+bi$ and $z = c+di$. Note that $a^2+b^2 \neq 0$ and $c^2 + d^2 \neq 0$. Now clearly
+    \[
+        wz = (a+bi)(c+di) = ac+adi+bci+bdi^2 = (ac-bd) + (ad+bc)i
+    \]
+    and
+    \begin{align*}
+        (ac-bd)^2 + (ad+bc)^2 &= (a^2c^2 - 2abcd + b^2d^2) +\\
+        &\quad(a^2d^2 + 2abcd + b^2c^2)\\
+        &= a^2c^2 + a^2d^2 + b^2c^2 + b^2d^2\\
+        &= (a^2 + b^2)(c^2 + d^2)\\
+        &\neq 0
+    \end{align*}
+    which hence means that $wz \neq 0$. Therefore $\Z[i]$ has no zero divisors, thereby meaning that $\Z[i]$ is indeed an integral domain.
+\end{example}
+
+We note an interesting result regarding fields here.
+\begin{proposition}
+    Any field is an integral domain.
+\end{proposition}
+\begin{proof}
+    Any non-zero element in a field is a unit, i.e. has an inverse. Now by \myref{prop-zero-divisors-have-no-inverses}, any zero divisor must not have an inverse; the converse being that any element that has an inverse cannot be a zero divisor. Hence, there are no zero divisors in a field. Now a field is commutative, therefore meaning that the field is an integral domain.
+\end{proof}
+
+%TODO: Continue with non-examples and exercise that Z[\sqrt2] is a integral domain.
+
+\section{General Results}
+%TODO: Include examples of finite fields here
+\section{Characteristic of a Ring}
+\section{Links to Polynomial Rings}
+
+\newpage
+\section{Problems}
 
 %=========================================
 \appendix
