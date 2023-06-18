@@ -561,7 +561,27 @@ We note an interesting result regarding fields here.
     Any non-zero element in a field is a unit, i.e. has an inverse. Now by \myref{prop-zero-divisors-have-no-inverses}, any zero divisor must not have an inverse; the converse being that any element that has an inverse cannot be a zero divisor. Hence, there are no zero divisors in a field. Now a field is commutative, therefore meaning that the field is an integral domain.
 \end{proof}
 
-%TODO: Continue with non-examples and exercise that Z[\sqrt2] is a integral domain.
+Let's look at some non-examples of fields.
+\begin{example}
+    The ring $\Mn{n}{R}$ where $R$ is any ring is not an integral domain since $\Mn{n}{R}$ is not commutative.
+\end{example}
+\begin{example}
+    The ring $2\Z$ is not an integral domain as it does not contain a multiplicative identity (namely, 1).
+\end{example}
+\begin{example}
+    The ring $\Z \times \Z$ under pairwise addition and multiplication is not an integral domain as $(0,1) \neq (0, 0)$ and $(1, 0) \neq (0, 0)$ but $(0,1)(1,0) = (0, 0)$, meaning that $\Z \times \Z$ contains a zero divisor.
+\end{example}
+
+\begin{exercise}
+    Prove that the ring
+    \[
+        \Z[\sqrt2] = \left\{a + b\sqrt2 \vert a,b \in \Z\right\}
+    \]
+    is an integral domain.
+\end{exercise}
+\begin{exercise}
+    Explain why all $\Zn{n}$ where $n$ is a positive composite number are not integral domains.
+\end{exercise}
 
 \section{General Results}
 %TODO: Include examples of finite fields here
@@ -627,6 +647,19 @@ We note an interesting result regarding fields here.
         \begin{pmatrix}a&a\\a&a\end{pmatrix}\begin{pmatrix}b&b\\b&b\end{pmatrix} = \begin{pmatrix}2ab&2ab\\2ab&2ab\end{pmatrix}
     \]
     which is clearly in $R$. Therefore $R$ is a subring of $\Mn{2}{\R}$.
+\end{enumerate}
+
+\section{Integral Domains}
+\begin{enumerate}
+    \item Clearly multiplication is commutative and $1 = 1 + 0\sqrt2 \in \Z[\sqrt2]$. All that is needed is to show that there are no zero divisors in $\Z[\sqrt2]$.
+    
+    Take $a+b\sqrt2, c+d\sqrt2 \in \Z[\sqrt2]$ such that $a+b\sqrt2 \neq 0$ and $(a+b\sqrt2)(c+d\sqrt2) = 0$. We want to show that the only way this is possible is if $c = d = 0$. Now consider
+    \[
+        \left((a+b\sqrt2)\underbrace{(a-b\sqrt2)}_{\neq 0}\right)\left((c+d\sqrt2)\underbrace{(c-d\sqrt2)}_{\neq 0}\right) = 0.
+    \]
+    This simplifies to $(a^2-2b^2)(c^2-2d^2) = 0$. Hence either $a^2-2b^2 = 0$ or $c^2-2d^2 = 0$, implying $a = \sqrt2b$ or $c = \sqrt2d$. Now we cannot have $a = \sqrt2b$ as $\sqrt2$ is not an integer; the only case that is possible is if $c = \sqrt2d$ which finally means that $c = d = 0$.
+
+    \item Let $n = ab$ where $a,b \in Z$ and, without loss of generality, assume $1 < a \leq b < n$ (we exclude 1 and $n$ because we want $a$ and $b$ to be `proper' factors). Now clearly $a, b \in \Zn{n}$ with them both being non-zero but $ab = n = 0$ in $\Zn{n}$. Hence $a$ and $b$ are zero divisors in $\Zn{n}$, meaning $\Zn{n}$ is not an integral domain.
 \end{enumerate}
 
 %=========================================
@@ -706,7 +739,7 @@ No problems.
     \item \begin{enumerate}[label=(\roman*)]
         \item Suppose $R$ has an identity $E = \begin{pmatrix}e_1&e_2\\0&0\end{pmatrix}$. Take any matrix $M = \begin{pmatrix}a&b\\0&0\end{pmatrix} \in R$, so we must have $ME = EM = M$.
         \begin{itemize}
-            \item Note that $EM = \begin{pmatrix}e_1&e_2\\0&0\end{pmatrix}\begin{pmatrix}a&b\\0&0\end{pmatrix} = \begin{pmatrix}e_1a&e_1b\\0&0\end{pmatrix}$.
+            \item Note $EM = \begin{pmatrix}e_1&e_2\\0&0\end{pmatrix}\begin{pmatrix}a&b\\0&0\end{pmatrix} = \begin{pmatrix}e_1a&e_1b\\0&0\end{pmatrix}$.
             \item Also, $ME = \begin{pmatrix}a&b\\0&0\end{pmatrix}\begin{pmatrix}e_1&e_2\\0&0\end{pmatrix} = \begin{pmatrix}ae_1&ae_2\\0&0\end{pmatrix}$.
         \end{itemize}
         Now as $EM = M$ we must have $e_1 = 1$. But as $ME = M$ this means that
