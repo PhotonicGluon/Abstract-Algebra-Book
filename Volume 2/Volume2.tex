@@ -15,13 +15,14 @@
 \externaldocument{../Volume 1/Volume1}
 
 %=========== Custom Commands =============
-\newcommand{\Mn}[2]{\mathcal{M}_{#1\times#1}(#2)}  % The ring of n by n matrices with entries in the ring R
-
 \newcommand{\C}{\mathbb{C}}                        % The ring of complex numbers
+\newcommand{\Mn}[2]{\mathcal{M}_{#1\times#1}(#2)}  % The ring of n by n matrices with entries in the ring R
 \newcommand{\Q}{\mathbb{Q}}                        % The ring of rational numbers
 \newcommand{\R}{\mathbb{R}}                        % The ring of real numbers
 \newcommand{\Z}{\mathbb{Z}}                        % The ring of integers
 \newcommand{\Zn}[1]{\mathbb{Z}_{#1}}               % The ring of integers modulo n
+
+\newcommand{\Char}[1]{\mathrm{char}(#1)}  % Characteristic of a ring R
 
 %========= Front Matter Pages ============
 % Quote page
@@ -584,8 +585,62 @@ Let's look at some non-examples of fields.
 \end{exercise}
 
 \section{General Results}
-%TODO: Include examples of finite fields here
+With an introduction of integral domains out of the way, we introduce some general results applicable to integral domains.
+\begin{proposition}[Cancellation Law]\index{integral domain!cancellation law}
+    Let $R$ be an integral domain, $r, x, y \in R$, and $r \neq 0$. Then the following statements are equivalent.
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x = y$
+        \item $rx = ry$
+        \item $xr = yr$
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    We prove the statements in order.
+    \begin{itemize}
+        \item $\boxed{(1) \implies (2)}$ Given $x = y$, this means $x - y = 0$. Multiplying $r$ on the left on both sides yields $r(x-y) = r0 = 0$. Distributing yields $rx - ry = 0$ which hence means $rx = ry$.
+        
+        \item $\boxed{(2) \implies (3)}$ Given $rx = ry$. Multiplying $r$ on the right on both sides yields $rxr = ryr$, thereby meaning $rxr - ryr = 0$. Factoring yields $r(xr - yr) = 0$. As $R$ is an integral domain, the only way for this to occur is if $r = 0$ (which is impossible) or $xr - yr = 0$. Therefore $xr = yr$.
+        
+        \item $\boxed{(3) \implies (1)}$ Given $xr = yr$ we may write $xr - yr = (x-y)r = 0$. Since $R$ is an integral domain we must have $x - y = 0$ or $r = 0$ (impossible as $r \neq 0$). Hence $x = y$.
+    \end{itemize}
+    This proves the proposition.
+\end{proof}
+
+\begin{proposition}\label{prop-finite-integral-domain-is-field}
+    Every finite integral domain is a field.
+\end{proposition}
+\begin{proof}
+    A finite integral domain is a commutative ring with identity; all that remains is to prove that every non-zero element has an inverse.
+
+    Suppose $R$ is a finite integral domain and take a non-zero element $r$ in $R$. Consider the set
+    \begin{align*}
+        A &= \{r^k \vert k \in \Z,\;k\geq 0\}\\
+        &= \{1, r, r^2, r^3, \dots\}\\
+        &\subseteq R.
+    \end{align*}
+    Note that as $R$ is finite we must have $A$ be finite as well. Therefore there must exist positive integers $m$ and $n$ with $m > n$ such that $r^m = r^n$, meaning $r^m - r^n = 0$. As $m > n$, thus $r^n\left(r^{m-n}-1\right) = 0$. Hence either $r^n = 0$ or $r^{m-n} - 1 = 0$.
+
+    Now if $r^n = 0$ then $n > 1$ (since $r^1 = r \neq 0$ by assumption). Note $r^n = rr^{n-1} = 0$, which hence means $r^{n-1} = 0$ as $r \neq 0$ and $R$ has no zero divisors. But we may repeat this argument on $n - 1$ to eventually terminate at $r = 0$, which is a contradiction. Hence we must conclude that $r^{m-n} - 1 = 0$. We may write $r^{m-n}-1 = 0$ as $rr^{m-n-1} = 1$ which means that $r$ is a unit (as $r^{m-n-1}$ is its inverse). Therefore every non-zero element has an inverse.
+
+    Hence $R$ is a field.
+\end{proof}
+
+\begin{example}
+    Let $p$ be a prime and consider the ring $\Zn{p}$. Clearly multiplication is commutative with identity 1. Also, as the only way to factor $p$ is $1 \times p$ and since $p \notin \Zn{p}$, thus there are no zero divisors in $\Zn{p}$. Hence $\Zn{p}$ is an integral domain. Now $\Zn{p}$ only has $p$ elements (namely the integers 0 to $p - 1$), so it is finite. By \myref{prop-finite-integral-domain-is-field} we know that $\Zn{p}$ is a field.
+\end{example}
+
+%TODO: Include examples of finite integral domains here; also add exercises for this section
+
 \section{Characteristic of a Ring}
+\begin{definition}
+    Let $R$ be a ring. We say that \textbf{characteristic}\index{characteristic} of $R$ is $n$ if $n$ is the smallest positive integer such that
+    \[
+        nr = \underbrace{r+r+\cdots+r}_{n \text{ times}} = 0
+    \]
+    for all $r \in R$. We then write $\Char{R} = n$. If no such $n$ exists we say $\Char{R} = 0$.
+\end{definition}
+%TODO: Continue with the characteristic's properties
+
 \section{Links to Polynomial Rings}
 
 \newpage
