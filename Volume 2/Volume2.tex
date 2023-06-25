@@ -721,6 +721,82 @@ We look at two properties about the characteristic.
 \end{exercise}
 
 \section{Links to Polynomial Rings}
+We end this chapter off with introducing a theorem that provides a condition for when a ring is an integral domain. Before that, let's look at polynomial rings.
+\begin{definition}
+    Let $R$ be a ring and $x$ be an indeterminate (i.e., variable). Then the \textbf{polynomial ring}\index{polynomial ring} $R[x]$ is the set of all polynomials with coefficients in $R$. That is,
+    \[
+        R[x] = \left\{a_0+a_1x+a_2x^2+\cdots+a_nx^n \vert n \in \mathbb{N}\cup\{0\},\;a_i \in R\right\}.
+    \]
+    It should be noted that any polynomial in $R[x]$ has finitely many terms.
+\end{definition}
+\begin{example}
+    The polynomial ring $\R[x]$ is the most familiar for most of us, as this is the `standard' ring of polynomials. Examples of polynomials in this ring include $1+x$, $\sqrt2x^10 - 5x^3 + \pi x$, and $1+x+x^2+\cdots+x^n$. However, infinite polynomials such as $1+x+x^2+\cdots$ do not belong in $\R[x]$.
+\end{example}
+\begin{example}
+    Another commonly used polynomial ring is $\Q[x]$. Examples of polynomials in this ring are $1+x$, $\frac23x^5 - \frac7{11}x^13$, and $2x^2-5x-3$. However polynomials like $\sqrt2$, $\pi x + 1$, and $1+ex$ do not belong in $\Q[x]$.
+\end{example}
+\begin{example}
+    We look at the polynomial ring $\Mn{2}{\R}[x]$. One example of a polynomial in this ring is
+    \[
+        \begin{pmatrix}2&1\\-2&0\end{pmatrix} + \begin{pmatrix}\sqrt2&1\\1&1\end{pmatrix}x + \begin{pmatrix}5&4\\e&2\end{pmatrix}x^2 + \begin{pmatrix}0&1\\0&0\end{pmatrix}x^5.
+    \]
+\end{example}
+
+\newpage
+
+We look at the notion of the degree of a polynomial.
+\begin{definition}
+    The \textbf{degree}\index{degree} of a polynomial $a_0+a_1x+\cdots+a_nx^n$ in $R[x]$ is the largest $k$ such that $a_k \neq 0$. In this case, we write
+    \[
+        \deg(a_0+a_1x+\cdots+a_nx^n) = k.
+    \]
+\end{definition}
+We note two properties of the degree here. For the following, let $f(x)$ be a polynomial with degree $m$ and $g(x)$ be a polynomial with degree $n$.
+\begin{itemize}
+    \item $\deg(f(x) + g(x)) \leq \max(m,n)$; and
+    \item $\deg(f(x)g(x)) = m + n$.
+\end{itemize}
+
+\begin{example}
+    The degree of the polynomial $1+x+5x^2$ in $\Z[x]$ is 2.
+\end{example}
+\begin{example}
+    The degree of the polynomial
+    \[
+        \begin{pmatrix}0&1\\3&0\end{pmatrix}x^5 + \begin{pmatrix}3&4\\9&4\end{pmatrix}
+    \]
+    in $\Mn{2}{\Z}[x]$ is 5.
+\end{example}
+
+\begin{exercise}
+    Give an example of a degree 5 polynomial in the ring $\Zn{2}[x]$.
+\end{exercise}
+
+We can now state the theorem that produces a condition for a ring to be an integral domain.
+\begin{theorem}\label{thrm-integral-domain-iff-polynomial-ring-is-also}
+    Let $R$ be a ring. Then $R$ is an integral domain if and only if $R[x]$ is an integral domain.
+\end{theorem}
+\begin{proof}
+    We first need to show that $R$ is a commutative ring with identity if and only if $R[x]$ is a commutative ring with identity. We leave this for \myref{exercise-commutative-ring-with-identity-iff-polynomial-ring-is-also} (later). We only prove that $R$ has no zero divisors if and only if $R[x]$ has no zero divisors using a contrapositive proof.
+
+    For the forward direction, take non-zero $a$ and $b$ in $R$ such that $ab = 0$. We may view both $a$ and $b$ as degree 0 polynomials in $R[x]$. Clearly these two multiply together to form the zero polynomial in $R[x]$, meaning that they are zero divisors in $R[x]$.
+
+    For the reverse direction, take non-zero polynomials $f(x)$ and $g(x)$ in $R[x]$ such that $f(x)g(x) = 0$. Write
+    \begin{align*}
+        f(x) = a_0+a_1x+a_2x^2+\cdots+a_mx^m \text{ with } a_m \neq 0\\
+        g(x) = b_0+b_1x+b_2x^2+\cdots+b_nx^n \text{ with } b_n \neq 0
+    \end{align*}
+    where all coefficients are in $R$. Multiplying them together yields something like
+    \[
+        a_mb_nx^{m+n} + (\text{A polynomial with degree less than }m+n) = 0
+    \]
+    which hence means that all coefficients must be zero. Therefore $a_mb_n = 0$. This means that we have found non-zero elements $a_m$ and $b_n$ in $R$ such that their product is zero, meaning that they are zero divisors.
+
+    This completes the proof.
+\end{proof}
+\begin{exercise}\label{exercise-commutative-ring-with-identity-iff-polynomial-ring-is-also}
+    Let $R$ be a ring. Prove that $R$ is a commutative ring with identity if and only if $R[x]$ is a commutative ring with identity.
+\end{exercise} %TODO: Add solution
 
 \newpage
 \section{Problems}
@@ -812,6 +888,8 @@ We look at two properties about the characteristic.
     What we see from this table is that no non-zero elements multiply together to form zero, meaning that there are no zero divisors in $\Zn{2}[\alpha]$. Therefore $\Zn{2}[\alpha]$ is an integral field. Furthermore as $\Zn{2}[\alpha]$ is finite thus $\Zn{2}[\alpha]$ is a field by \myref{prop-finite-integral-domain-is-field}.
 
     \item The additive identity in $\Zn2[\alpha]$ is 1. Clearly $1 + 1 = 0$, so the order of 1 in $(\Zn2[\alpha],+)$ is 2. Now \myref{exercise-Zn2[alpha]} tells us that $\Zn2[\alpha]$ is an integral domain, so by the previous proposition this means that $\Char{\Zn2[\alpha]} = 2$.
+    
+    \item One example would be $x^5$. Essentially any polynomial where the highest term is $x^5$ would work.
 \end{enumerate}
 
 %=========================================
