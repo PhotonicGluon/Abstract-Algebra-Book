@@ -658,7 +658,7 @@ With an introduction of integral domains out of the way, we introduce some gener
     From the table, we have shown that no two non-zero elements in $\Zn{3}[i]$ multiply to zero. Therefore $\Zn{3}[i]$ has no zero divisors, which means $\Zn{3}[i]$ is an integral domain. Furthermore, as $\Zn{3}[i]$ is finite, therefore we know that it is a finite field by \myref{prop-finite-integral-domain-is-field}.
 \end{example}
 
-\begin{exercise}
+\begin{exercise}\label{exercise-Zn2[alpha]}
     Is the ring
     \[
         \Zn{2}[\alpha] = \{a+b\alpha \vert a,b\in\Zn{2}\}
@@ -674,7 +674,51 @@ With an introduction of integral domains out of the way, we introduce some gener
     \]
     for all $r \in R$. We then write $\Char{R} = n$. If no such $n$ exists we say $\Char{R} = 0$.
 \end{definition}
-%TODO: Continue with the characteristic's properties
+
+We look at two properties about the characteristic.
+\begin{proposition}
+    If $R$ is a ring with identity and $\Char{R} \neq 0$, then $\Char{R}$ is equal to the order of 1 in the group $(R, +)$.
+\end{proposition}
+\begin{proof}
+    Let $\Char{R} = n$ and the order of 1 in the group $(R, +)$ be $m$. Our goal is to show that $m = n$.
+
+    On one hand, note that
+    \[
+        n1 = \underbrace{1+1+1+\cdots+1}_{n \text{ times}} = 0
+    \]
+    by definition of the characteristic of a ring. Note also that $m1 = \underbrace{1+1+1+\cdots+1}_{m \text{ times}} = 0$ by definition of the order of an element in the group $(R, +)$. By \myref{problem-element-to-power-of-multiple-of-order-is-identity}, this means that $n$ is a multiple of $m$, which thus means $m \leq n$.
+
+    On another hand, for any $r \in R$, we know that
+    \begin{align*}
+        \underbrace{r + r + r + \cdots + r}_{m \text{ times}} &= r(\underbrace{1+1+1+\cdots+1}_{m \text{ times}})\\
+        &= r0 & (|1| = m \text{ in } (R,+))\\
+        &= 0.
+    \end{align*}
+    The minimality of the characteristic $n$ means that $m$ has to be at least $n$, i.e. $m \geq n$.
+
+    Since $m \leq n$ and $m \geq n$, thus $m = n$.
+\end{proof}
+
+\begin{proposition}
+    If $R$ is an integral domain, then either $\Char{R} = 0$ or $\Char{R} = p$ where $p$ is a prime.
+\end{proposition}
+\begin{proof}
+    If $\Char{R} = 0$ we are done, so assume that $\Char{R} = n \neq 0$. Furthermore assume $n = ab$ with $1 \leq a,b \leq n$.
+
+    Note that
+    \[
+        0 = \underbrace{1 + 1 + \cdots + 1}_{n \text{ times}} = (\underbrace{1+1+\cdots+1}_{a \text{ times}})(\underbrace{1+1+\cdots+1}_{b \text{ times}}).
+    \]
+    As $R$ is an integral domain, this means that either
+    \[
+        \underbrace{1+1+\cdots+1}_{a \text{ times}} = 0 \text{ or } \underbrace{1+1+\cdots+1}_{b \text{ times}} = 0.
+    \]
+    Without loss of generality, assume that $\underbrace{1+1+\cdots+1}_{a \text{ times}} = 0$. By the minimality of $\Char{R} = n$, this means that $a \geq n$. But we assumed that $a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$ which is exactly what we need to show that $n$ is a prime.
+\end{proof}
+
+\begin{exercise}
+    What is the characteristic of the ring $\Zn2[\alpha]$ (as defined in \myref{exercise-Zn2[alpha]})?
+\end{exercise}
 
 \section{Links to Polynomial Rings}
 
@@ -766,6 +810,8 @@ With an introduction of integral domains out of the way, we introduce some gener
     \end{table}
 
     What we see from this table is that no non-zero elements multiply together to form zero, meaning that there are no zero divisors in $\Zn{2}[\alpha]$. Therefore $\Zn{2}[\alpha]$ is an integral field. Furthermore as $\Zn{2}[\alpha]$ is finite thus $\Zn{2}[\alpha]$ is a field by \myref{prop-finite-integral-domain-is-field}.
+
+    \item The additive identity in $\Zn2[\alpha]$ is 1. Clearly $1 + 1 = 0$, so the order of 1 in $(\Zn2[\alpha],+)$ is 2. Now \myref{exercise-Zn2[alpha]} tells us that $\Zn2{\alpha}$ is an integral domain, so by the previous proposition this means that $\Char{\Zn2[\alpha]} = 2$.
 \end{enumerate}
 
 %=========================================
