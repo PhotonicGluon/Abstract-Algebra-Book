@@ -562,7 +562,7 @@ We note an interesting result regarding fields here.
     Any non-zero element in a field is a unit, i.e. has an inverse. Now by \myref{prop-zero-divisors-have-no-inverses}, any zero divisor must not have an inverse; the converse being that any element that has an inverse cannot be a zero divisor. Hence, there are no zero divisors in a field. Now a field is commutative, therefore meaning that the field is an integral domain.
 \end{proof}
 
-Let's look at some non-examples of fields.
+Let's look at some non-examples of integral domains.
 \begin{example}
     The ring $\Mn{n}{R}$ where $R$ is any ring is not an integral domain since $\Mn{n}{R}$ is not commutative.
 \end{example}
@@ -699,7 +699,7 @@ We look at two properties about the characteristic.
     Since $m \leq n$ and $m \geq n$, thus $m = n$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop-zero-of-prime-characteristic-if-integral-domain}
     If $R$ is an integral domain, then either $\Char{R} = 0$ or $\Char{R} = p$ where $p$ is a prime.
 \end{proposition}
 \begin{proof}
@@ -716,6 +716,9 @@ We look at two properties about the characteristic.
     Without loss of generality, assume that $\underbrace{1+1+\cdots+1}_{a \text{ times}} = 0$. By the minimality of $\Char{R} = n$, this means that $a \geq n$. But we assumed that $a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$ which is exactly what we need to show that $n$ is a prime.
 \end{proof}
 
+\begin{exercise}\label{exercise-trivial-ring-is-not-an-integral-domain}
+    Is the trivial ring an integral domain?
+\end{exercise}
 \begin{exercise}
     What is the characteristic of the ring $\Zn2[\alpha]$ (as defined in \myref{exercise-Zn2[alpha]})?
 \end{exercise}
@@ -917,6 +920,8 @@ We can now state the theorem that produces a condition for a ring to be an integ
     \end{table}
 
     What we see from this table is that no non-zero elements multiply together to form zero, meaning that there are no zero divisors in $\Zn{2}[\alpha]$. Therefore $\Zn{2}[\alpha]$ is an integral field. Furthermore as $\Zn{2}[\alpha]$ is finite thus $\Zn{2}[\alpha]$ is a field by \myref{prop-finite-integral-domain-is-field}.
+
+    \item The trivial ring $\{0\}$ is not an integral domain. Seeking a contradiction, if $\{0\}$ is indeed an integral domain, then by \myref{prop-zero-of-prime-characteristic-if-integral-domain}it has to have either 0 or prime characteristic. However, one sees clearly that the characteristic of the trivial ring is 1, which is neither 0 nor prime. Therefore $\{0\}$ is not an integral domain.
 
     \item The additive identity in $\Zn2[\alpha]$ is 1. Clearly $1 + 1 = 0$, so the order of 1 in $(\Zn2[\alpha],+)$ is 2. Now \myref{exercise-Zn2[alpha]} tells us that $\Zn2[\alpha]$ is an integral domain, so by the previous proposition this means that $\Char{\Zn2[\alpha]} = 2$.
     
