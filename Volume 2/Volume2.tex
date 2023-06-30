@@ -377,7 +377,7 @@ We note one property about zero divisors, which will be used in future chapters.
     Zero divisors do not have inverses.
 \end{proposition}
 \begin{proof}
-    Assume $a \neq 0$ is a zero divisor in the ring $R$. That means that there exists a $b \neq 0$ in $R$ such that $ab = 0$. Seeking a contradiction, assume $a$ has an inverse. Then we must have
+    Assume $a \neq 0$ and $b \neq 0$ are zero divisors in the ring $R$, so $ab = 0$. Seeking a contradiction, assume $a$ has an inverse, so
     \[
         b = (a^{-1}a)b = a^{-1}(ab) = a^{-1}0 = 0    
     \]
@@ -385,11 +385,8 @@ We note one property about zero divisors, which will be used in future chapters.
 \end{proof}
 
 \begin{definition}
-    Suppose $0 \neq 1$. An element $u \in R$ is called a \textbf{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$.
+    Suppose $0 \neq 1$. An element $u \in R$ is called a \textbf{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$. Equivalently, $u$ is a unit if it has a multiplicative inverse.
 \end{definition}
-\begin{remark}
-    Equivalently, we say that $u$ is a unit if it has a multiplicative inverse.
-\end{remark}
 \begin{example}
     3 and 7 are units in $\Zn{10}$ since $3 \times 7 = 7 \times 3 = 21 = 1$ in $\Zn{10}$.
 \end{example}
@@ -398,13 +395,17 @@ We note one property about zero divisors, which will be used in future chapters.
     If every non-zero element $x \in R$ is a unit, then $R$ is said to be a \textbf{division ring}\index{division ring}.
 \end{definition}
 \begin{remark}
-    One observes trivially that since every element is a unit in a division ring, therefore a division ring is a ring with identity.
+    A division ring is a ring with identity since every element is a unit in a division ring.
 \end{remark}
 
 \begin{definition}
     A commutative division ring where $0 \neq 1$ is called a \textbf{field}\index{field}.
 \end{definition}
 We look at fields in more detail in Volume III.
+
+\begin{exercise}\label{exercise-Z-is-not-a-field}
+    Is $\Z$ a field?
+\end{exercise}
 
 \section{Subrings}
 We end this chapter off with an exploration about subrings.
@@ -874,6 +875,8 @@ We can now state the theorem that produces a condition for a ring to be an integ
     which means $(-a)(-b) = -(-ab) = ab$ as required.
 
     \item The ring $\Mn{2}{\mathbb{R}}$ indeed has zero divisors, as $\begin{pmatrix}0&1\\0&0\end{pmatrix} \neq \begin{pmatrix}0&0\\0&0\end{pmatrix}$ but $\begin{pmatrix}0&1\\0&0\end{pmatrix}^2 = \begin{pmatrix}0&0\\0&0\end{pmatrix}$ which means that $\begin{pmatrix}0&1\\0&0\end{pmatrix}$ is a zero divisor.
+    
+    \item $\Z$ is not a field. Note that the multiplicative inverse of 2 is $\frac12$ which is not an integer. Hence not all non-zero elements in $\Z$ has a multiplicative inverse, meaning that not all non-zero elements are units.
     
     \item We first show that $(R, +) \leq (\Mn{2}{\R}, +)$.
     \begin{itemize}
