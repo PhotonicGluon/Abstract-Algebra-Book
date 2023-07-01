@@ -877,7 +877,7 @@ We are now ready to present the definition of an ideal.
         \item \textbf{ideal}\index{ideal} (or \textbf{two-sided ideal}\index{ideal!two-sided}) if $I$ is both a left ideal and right ideal.
     \end{itemize} 
 \end{definition}
-\begin{exercise}
+\begin{exercise}\label{exercise-ideal-is-a-subring}
     Let $I$ be an ideal of a ring $R$. Show that $I$ is a subring of $R$.
 \end{exercise}
 \begin{example}
@@ -962,6 +962,20 @@ We now define the quotient ring.
         in $R/I$.
     \end{enumerate}
 \end{exercise}
+
+We end this section by introducing the test for ideals\index{test for ideals}.
+\begin{theorem}[Test for Ideal]\label{thrm-test-for-ideal}
+    Let $R$ be a ring and $I$ be a non-empty subset of $R$. Then $I$ is an ideal of $R$ if and only if
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x - y \in I$ for all $x$ and $y$ in $I$; and
+        \item $ri$ and $ir$ are in $I$ for all $i$ in $I$ and $r$ in $R$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    The forward direction is trivial to prove; if $I$ is an ideal then $I$ is a subring by \myref{exercise-ideal-is-a-subring}, meaning statement 1 holds. Statement 2 holds because that is the definition of an ideal.
+
+    We now work in the reverse direction by assuming the two statements hold. First and foremost we know that $(I,+) \leq (R,+)$ by virtue of statement 1 and by applying the subgroup test (\myref{thrm-subgroup-test}). Now statement 2 tells us that $ri \in I$ for any $r \in R$, in particular we may choose an $r \in I$ so that $ri \in I$. Therefore $I$ is closed under multiplication, and so $I$ is a subring of $R$. Finally, statement 2 is exactly the condition for $I$ to be an ideal.
+\end{proof}
 
 \section{Forming New Ideals}
 \section{Principal Ideals}
