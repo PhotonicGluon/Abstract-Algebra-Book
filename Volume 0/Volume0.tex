@@ -206,6 +206,8 @@ If a function $f: A \to B$ is bijective, then the sets $|A|$ and $|B|$ have the 
 
 %=========================================
 \chapter{Mathematical Logic and Proof Writing}
+The heart of mathematics is in its logical statements. These statements are used to produce a series of logical steps to prove a claim. We explore the basics of logic and proof writing here.
+
 \section{Mathematical Statements}
 \begin{definition}
     A \textbf{(mathematical) statement}\index{statement} is a sentence that is definitely true or definitely false.
@@ -245,25 +247,18 @@ There are a few operations\index{logical operation} that may be carried out on m
     \item \textbf{Conditional}\index{logical operation!conditional}: Uses the symbol $\implies$. The statement $P \implies Q$ is read as ``$P$ implies $Q$''.  
 \end{itemize}
 \begin{example}
-    Consider the statements
-    \begin{align*}
-        P: &\ \text{3 is an odd number}\\
-        Q: &\ \text{4 is an odd number}
-    \end{align*}
-    Then
+    If $P$ is the statement ``3 is an odd number'' and $Q$ is the statement ``4 is an odd number'', then
     \begin{itemize}
-        \item $P\land Q$ is ``3 is an odd number \textbf{and} 4 is an odd number'', which is false.
-        \item $P\lor Q$ is ``3 is an odd number \textbf{or} 4 is an odd number'', which is true.
+        \item $P\land Q$ is ``3 is an odd number \textbf{and} 4 is an odd number'', which is false;
+        \item $P\lor Q$ is ``3 is an odd number \textbf{or} 4 is an odd number'', which is true; and
         \item $\lnot Q$ is ``4 is \textbf{not} an odd number'', which is true.
     \end{itemize}
 \end{example}
 \begin{exercise}
-    Let $P$ be the statement that ``1 is a positive number'', $Q$ be the statement ``$-1 > 0$'', and $R$ be the statement ``1 is an odd number''. Is the statement ``$\lnot((P\lor Q)\land R)$ is false'' true?
+    Let $P$ be ``1 is a positive number'', $Q$ be ``$-1 > 0$'', and $R$ be ``1 is an odd number''. Is the statement ``$\lnot((P\lor Q)\land R)$ is false'' true?
 \end{exercise}
 
-To explore the relationship between statements and operators, we use \textbf{truth tables}\index{truth table}. A truth table is like an operation table for statements. The idea is to list all possibilities of the truth or falsity of the statements $P$ and $Q$, and then write the truth for each of the combinations with operations.
-
-For example, here's the truth table for the logical AND operator:
+We use \textbf{truth tables}\index{truth table} to explore the relationships between statements and operators. They list all possibilities of the truth or falsity of the statements $P$ and $Q$, and then write the truth for each of the combinations with operations. In a truth table, we denote true statements by ``T'' and false statements by ``F''. For example, the truth table for the logical AND operator is:
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|l||l|}
@@ -276,9 +271,7 @@ For example, here's the truth table for the logical AND operator:
     \end{tabular}
 \end{table}
 
-(Note that we denote true statements by ``T'' and false statements by ``F'').
-
-Here's the truth table for the logical OR operator:
+The truth table for the logical OR operator is:
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|l||l|}
@@ -291,7 +284,7 @@ Here's the truth table for the logical OR operator:
     \end{tabular}
 \end{table}
 
-And the truth table for the logical NOT operator:
+The truth table for the logical NOT operator is:
 \begin{table}[h]
     \centering
     \begin{tabular}{|l||l|}
@@ -302,12 +295,7 @@ And the truth table for the logical NOT operator:
     \end{tabular}
 \end{table}
 
-We motivate the truth table for the conditional by considering these two statements:
-\begin{align*}
-    P: &\ \text{You have a red card}\\
-    Q: &\ \text{You have a green card}
-\end{align*}
-Then, $P \implies Q$ is the statement ``if you have a red card, then you have a green card''.
+We motivate the truth table for the conditional by considering the statements ``you have a red card'' and ``you have a green card'', which we will denote by $P$ and $Q$ respectively. So $P \implies Q$ would be ``if you have a red card, then you have a green card''.
 \begin{itemize}
     \item If $P$ and $Q$ are true, then that means that you have both a red and green card. Hence, ``if you have a red card, then you have a green card'' is \textbf{true}, meaning $P \implies Q$ is true.
     \item If $P$ is true and $Q$ is false, then that means that you have a red card but not a green card. Hence, ``if you have a red card, then you have a green card'' is \textbf{false}, meaning $P \implies Q$ is false.
@@ -330,6 +318,8 @@ In summary, the truth table for the conditional is:
 \begin{exercise}
     Let $P$ and $Q$ be statements. Draw the truth table for $P \land (\lnot Q)$.
 \end{exercise}
+
+\newpage
 
 We end this section by introducing the idea of the \textbf{biconditional}\index{logical operation!biconditional}.
 \begin{definition}
@@ -935,8 +925,10 @@ Existence proofs fall into two categories: \textbf{constructive}\index{proof!con
 
 %=========================================
 \chapter{Number Theory}
+Number theory is an important part of abstract algebra, as we will use some of its more famous results in proofs. In this chapter, we explore the essentials of number theory.
+
 \section{Divisibility}
-We say that \textbf{$a$ divides $b$}\index{divides} if there is an integer $k$ such that $ak = b$. This is denoted $a\vert b$. For example, $7\vert 63$ since $7 \times 9 = 63$. However, 8 does not divide 63, so we write $8 \nmid 63$. A consequence of this definition is that every number divides zero since $a \times 0 = 0$ for every integer $a$.
+We say that \textbf{$a$ divides $b$}\index{divides} (or that $a$ is a \textbf{divisor}\index{divisor} of $b$) if there is an integer $k$ such that $ak = b$. This is denoted $a\vert b$. For example, $7\vert 63$ since $7 \times 9 = 63$. However, 8 does not divide 63, so we write $8 \nmid 63$. A consequence of this definition is that every number divides zero since $a \times 0 = 0$ for every integer $a$.
 
 If $a$ divides $b$, then $b$ is a \textbf{multiple of $a$}\index{multiple}. For example, 63 is a multiple of 7, but 63 is not a multiple of 8.
 
@@ -948,10 +940,10 @@ We list some basic facts about divisibility that are not difficult to prove.
     \item If $c \neq 0$, then $a\vert b$ if and only if $ac\vert bc$.
 \end{itemize}
 
-A number $p > 1$ with no positive divisors other than 1 and itself is called a \textbf{prime}\index{prime}. Every other number greater than 1 is called \textbf{composite}\index{composite}. For example, 2, 3, 5, 7, 11, and 13 are all prime, but 4, 6, 8, and 9 are composite. The number 1 is considered neither prime nor composite.
+An integer $p > 1$ with no positive divisors other than 1 and itself is called a \textbf{prime}\index{prime}. Every other number greater than 1 is called \textbf{composite}\index{composite}. For example, 2, 3, 5, 7, 11, and 13 are all prime, but 4, 6, 8, and 9 are composite. The number 1 is considered neither prime nor composite.
 
 \begin{theorem}[Fundamental Theorem of Arithmetic]\label{thrm-fundamental-theorem-of-arithmetic}
-    For every integer $n > 1$, $n$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
+    Any integer $n > 1$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
 \end{theorem}
 
 \begin{exercise}
@@ -959,16 +951,12 @@ A number $p > 1$ with no positive divisors other than 1 and itself is called a \
 \end{exercise}
 
 \section{Euclid's Division Lemma}
-When dividing an integer by another, we may sometimes have a \textbf{remainder}\index{remainder}. For example, when 63 is divided by 8, a remainder of 7 is left over. More precisely, if you divide $n$ by $d$, then you get a quotient $q$ and a remainder $r$. This is given by Euclid's Division Lemma\index{Euclid's Division Lemma}.
+When dividing an integer by another, we may sometimes have a \textbf{remainder}\index{remainder}. For example, when 63 is divided by 8, a remainder of 7 is left over. More precisely, if you divide the \textbf{dividend}\index{dividend} $n$ by the divisor $d$, then you get a \textbf{quotient}\index{quotient} $q$ and a remainder $r$, as guaranteed by Euclid's Division Lemma\index{Euclid's Division Lemma}.
 \begin{lemma}[Euclid's Division Lemma]\label{lemma-euclid-division}
-    Given two integers $n$ and $d$, with $n \neq 0$, there exist unique integers $q$ and $r$ such that
-    \[
-        n = qd + r
-    \]
-    and $0 \leq r < |d|$ where $|d|$ denotes the absolute value of $d$.
+    Given two integers $n$ and $d$, with $d \neq 0$, there exist unique integers $q$ and $r$ such that $n = qd + r$ and $0 \leq r < |d|$, where $|d|$ denotes the absolute value of $d$.
 \end{lemma}
 \begin{remark}
-    Some authors may call this lemma \textbf{Euclid's division algorithm}, or \textbf{the division algorithm}\index{division algorithm}.
+    This is also known as \textbf{the division algorithm}\index{division algorithm} (e.g. \cite[p. 4]{dummit_foote_2004}) or \textbf{the division theorem}\index{division theorem} (e.g. \cite[\S 21]{clark_1984}).
 \end{remark}
 
 \begin{example}
@@ -1029,16 +1017,12 @@ The LCM of $m$ and $n$ is denoted by $\lcm(m,n)$.
     Find $\lcm(-112, -35)$.
 \end{exercise}
 
-We note several properties of the GCD and LCM.
+We note two important results regarding the GCD and LCM.
 \begin{lemma}[B\'{e}zout]\label{lemma-bezout}\index{B\'{e}zout's Lemma}
     Let $m$ and $n$ be non-zero integers such that $\gcd(m, n) = d$. Then there exist integers $x$ and $y$ such that $mx + ny = d$. Moreover, the integers of the form $am + bn$ (where $a$ and $b$ are integers) are multiples of $d$.
 \end{lemma}
 \begin{proposition}\label{prop-product-of-gcd-and-lcm}
-    Let $m$ and $n$ be non-zero integers. Then
-    \[
-        |mn| = \gcd(m,n) \times \lcm(m,n)    
-    \]
-    where $|mn|$ denotes the absolute value of $mn$.
+    Let $m$ and $n$ be non-zero integers. Then $|mn| = \gcd(m,n) \times \lcm(m,n)$ where $|mn|$ denotes the absolute value of $mn$.
 \end{proposition}
 
 \begin{exercise}
@@ -1052,8 +1036,9 @@ We note several properties of the GCD and LCM.
 
 %=========================================
 \chapter{Modular Arithmetic}
-\section{Modulo and Modular Congruence}
+One may think of modular arithmetic as a number system where numbers ``wrap around'' after reaching a certain value. We state some useful properties and results from this field here.
 
+\section{Modulo and Modular Congruence}
 Given an integer $n>1$, called a \textbf{modulus}\index{modulus}, two integers $a$ and $b$ are said to be \textbf{congruent modulo $n$}\index{congruence} if $n$ is a divisor of their difference (that is, if there is an integer $k$ such that $a - b = kn$). It is denoted $a \equiv b \pmod{n}$. The parentheses mean that ``$\pmod{n}$'' applies to the entire equation, not just to the right-hand side (here, $b$). This notation is not to be confused with the notation ``$b \mod n$'' (without parentheses), which refers to the modulo operation that returns the remainder upon division by $n$.
 \begin{remark}
     Equivalently, $a \equiv b \pmod n$ means that $a = kn + b$ for some integer $k$.
