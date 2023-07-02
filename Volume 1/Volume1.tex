@@ -284,13 +284,13 @@ One could use a \textbf{Cayley table}\index{cayley table} (or \textbf{group tabl
         \centering
         \begin{tabular}{|l|l|l|l|l|l|l|}
         \hline
-        \textbf{$\oplus_6$} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline
-        \textbf{0}          & 0          & 1          & 2          & 3          & 4          & 5          \\ \hline
-        \textbf{1}          & 1          & 2          & 3          & 4          & 5          & 0          \\ \hline
-        \textbf{2}          & 2          & 3          & 4          & 5          & 0          & 1          \\ \hline
-        \textbf{3}          & 3          & 4          & 5          & 0          & 1          & 2          \\ \hline
-        \textbf{4}          & 4          & 5          & 0          & 1          & 2          & 3          \\ \hline
-        \textbf{5}          & 5          & 0          & 1          & 2          & 3          & 4          \\ \hline
+        $\boldsymbol{\oplus_6}$ & $\boldsymbol{0}$ & $\boldsymbol{1}$ & $\boldsymbol{2}$ & $\boldsymbol{3}$ & $\boldsymbol{4}$ & $\boldsymbol{5}$ \\ \hline
+        $\boldsymbol{0}$          & 0          & 1          & 2          & 3          & 4          & 5          \\ \hline
+        $\boldsymbol{1}$          & 1          & 2          & 3          & 4          & 5          & 0          \\ \hline
+        $\boldsymbol{2}$          & 2          & 3          & 4          & 5          & 0          & 1          \\ \hline
+        $\boldsymbol{3}$          & 3          & 4          & 5          & 0          & 1          & 2          \\ \hline
+        $\boldsymbol{4}$          & 4          & 5          & 0          & 1          & 2          & 3          \\ \hline
+        $\boldsymbol{5}$          & 5          & 0          & 1          & 2          & 3          & 4          \\ \hline
         \end{tabular}
     \end{table}
 
@@ -314,20 +314,15 @@ It should be noted that, in this book, we use the convention of reading the \tex
 
 \section{General Properties of Groups}
 Before we get into the general properties of groups, we introduce notation for the repeated application of $\ast$ on a single element $x$ in the group $G$.
-\begin{definition}
-    Let $x$ be an element in $G$. Then
-    \[
-        x^n =
-        \begin{cases}
-            x\ast x\ast \cdots \ast x & \text{ if } n > 0 \ (n\text{ copies of }x)\\
-            e & \text{ if } n=0 \\
-            x^{-1}\ast x^{-1}\ast \cdots \ast x^{-1} & \text{ if } n<0 \ (|n|\text{ copies of }x^{-1})
-        \end{cases}
-    \]
-\end{definition}
-\begin{remark}
-    In the case of an additive group operation, $x^n$ is written as $nx$, where $n$ is an integer.
-\end{remark}
+\[
+    x^n =
+    \begin{cases}
+        \underbrace{x\ast x\ast \cdots \ast x}_{n \text{ copies of } x} & \text{ if } n > 0\\
+        e & \text{ if } n=0 \\
+        \underbrace{x^{-1}\ast x^{-1}\ast \cdots \ast x^{-1}}_{|n| \text{ copies of } x^{-1}} & \text{ if } n<0
+    \end{cases}
+\]
+In the case of an additive group operation, $x^n$ is written as $nx$, where $n$ is an integer.
 
 Note that some laws of exponents apply to the above operation.
 \begin{itemize}
@@ -338,7 +333,7 @@ Note that some laws of exponents apply to the above operation.
 Proof of these laws are left as an exercise for the reader.
 
 We are now ready to prove some properties of groups.
-\begin{proposition}\label{prop-identity-is-unique}
+\begin{proposition}
     The identity of a group $G$ is unique.
 \end{proposition}
 \begin{proof}
@@ -354,7 +349,7 @@ We are now ready to prove some properties of groups.
     Hence $e_1 = e_2$, meaning that the identity of a group is unique.
 \end{proof}
 
-\begin{proposition}\label{prop-inverse-of-identity-is-identity}
+\begin{proposition}
     $e^{-1} = e$
 \end{proposition}
 \begin{proof}
@@ -363,7 +358,7 @@ We are now ready to prove some properties of groups.
 
 \newpage
 
-\begin{proposition}\label{prop-inverse-of-element-is-unique}
+\begin{proposition}
     The inverse of an element $x$ of a group $G$ is unique.
 \end{proposition}
 \begin{proof}
@@ -631,7 +626,7 @@ where $r$ and $s$ can be thought of as `generators'\index{presentation!generator
         \centering
         \begin{tabular}{|l|l|l|l|l|l|l|}
         \hline
-        $\boldsymbol{\ast}$ & $\boldsymbol{e}$ & $\boldsymbol{r}$ & $\boldsymbol{r^2}$ & $\boldsymbol{s}$ & $\boldsymbol{rs}z$ & $\boldsymbol{r^2s}$ \\ \hline
+        $\boldsymbol{\ast}$ & $\boldsymbol{e}$ & $\boldsymbol{r}$ & $\boldsymbol{r^2}$ & $\boldsymbol{s}$ & $\boldsymbol{rs}$ & $\boldsymbol{r^2s}$ \\ \hline
         $\boldsymbol{e}$    & $e$    & $r$    & $r^2$  & $s$    & $rs$   & $r^2s$ \\ \hline
         $\boldsymbol{r}$    & $r$    & $r^2$  & $e$    & $rs$   & $r^2s$ & $s$    \\ \hline
         $\boldsymbol{r^2}$  & $r^2$  & $e$    & $r$    & $r^2s$ & $s$    & $rs$   \\ \hline
