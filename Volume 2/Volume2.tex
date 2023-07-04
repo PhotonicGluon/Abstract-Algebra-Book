@@ -23,6 +23,7 @@
 \newcommand{\Zn}[1]{\mathbb{Z}_{#1}}               % The ring of integers modulo n
 
 \newcommand{\Char}[1]{\mathrm{char}(#1)}  % Characteristic of a ring R
+\newcommand{\ideal}[1]{\mathfrak{#1}}     % Ideal of a ring
 
 %========= Front Matter Pages ============
 % Quote page
@@ -872,8 +873,8 @@ We are now ready to present the definition of an ideal.
 \begin{definition}
     Let $R$ be a ring and a subset $I$ of $R$. Suppose $(I,+) \leq (R,+)$. Then we say that $I$ is a
     \begin{itemize}
-        \item \textbf{left-ideal}\index{ideal!left} if for all $r \in R$ and $i \in I$ we have $ri \in I$;
-        \item \textbf{right-ideal}\index{ideal!right} if for all $r \in R$ and $i \in I$ we have $ir \in I$; and
+        \item \textbf{left ideal}\index{ideal!left} if for all $r \in R$ and $i \in I$ we have $ri \in I$;
+        \item \textbf{right ideal}\index{ideal!right} if for all $r \in R$ and $i \in I$ we have $ir \in I$; and
         \item \textbf{ideal}\index{ideal} (or \textbf{two-sided ideal}\index{ideal!two-sided}) if $I$ is both a left ideal and right ideal.
     \end{itemize} 
 \end{definition}
@@ -977,7 +978,84 @@ We end this section by introducing the test for ideals\index{test for ideals}.
     We now work in the reverse direction by assuming the two statements hold. First and foremost we know that $(I,+) \leq (R,+)$ by virtue of statement 1 and by applying the subgroup test (\myref{thrm-subgroup-test}). Now statement 2 tells us that $ri \in I$ for any $r \in R$, in particular we may choose an $r \in I$ so that $ri \in I$. Therefore $I$ is closed under multiplication, and so $I$ is a subring of $R$. Finally, statement 2 is exactly the condition for $I$ to be an ideal.
 \end{proof}
 
-\section{Forming New Ideals}
+\section{Ideal Operations}
+We first look at the sum of ideals.
+\begin{definition}\index{ideal!sum}
+    Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then the sum of the ideals $\ideal{a}$ and $\ideal{b}$ is
+    \[
+        \ideal{a} + \ideal{b} = \{a + b \vert a\in\ideal{a},\;b\in\ideal{b}\}.
+    \]
+\end{definition}
+\begin{example}
+    Consider the ring $\Z$ and the ideals $I = \{2n \vert n \in \Z\}$ and $J = \{3n \vert n \in \Z\}$. Then their sum is
+    \[
+        I + J = \{2a + 3b \vert a,b \in \Z\}.
+    \]
+\end{example}
+\begin{proposition}
+    Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then $\ideal{a} + \ideal{b}$ is an ideal of $R$.
+\end{proposition}
+\begin{proof}
+    We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove this.
+
+    Let $a_1, a_2 \in \ideal{a}$ and $b_1, b_2 \in \ideal{b}$. Then we know $a_1 - a_2 \in \ideal{a}$ and $b_1 - b_2 \in \ideal{b}$ by the test for ideal. Therefore $(a_1 - a_2) + (b_1 - b_2) = (a_1 + b_1) - (a_2 + b_2) \in \ideal{a} + \ideal{b}$, satisfying the first statement.
+
+    \newpage
+
+    Now take any $r \in R$ and $a+b \in \ideal{a}+\ideal{b}$.
+    \begin{itemize}
+        \item $r(a+b) = ra + rb \in \ideal{a}+\ideal{b}$ since $ra \in \ideal{a}$ (because $\ideal{a}$ is a left ideal) and $rb \in \ideal{b}$ (because $\ideal{b}$ is a left ideal).
+        \item $(a+b)r = ar + br \in \ideal{a}+\ideal{b}$ since $ar \in \ideal{a}$ (because $\ideal{a}$ is a right ideal) and $br \in \ideal{b}$ (because $\ideal{b}$ is a right ideal).
+    \end{itemize}
+    Therefore $\ideal{a} + \ideal{b}$ is a (two-sided) ideal by the test for ideal.
+\end{proof}
+
+We now look at the product of ideals.
+\begin{definition}\index{ideal!product}
+    Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then the product of the ideals $\ideal{a}$ and $\ideal{b}$ is
+    \[
+        \ideal{ab} = \{a_1b_1 + a_2b_2 + \cdots + a_nb_n \vert a_i\in\ideal{a},\;b_i\in\ideal{b}\}.
+    \]
+\end{definition}
+One may question the necessity for the summing of products in the product of ideals. To answer this, consider the following example.
+\begin{example}
+    Let $R = \Z[x]$ and $I = \{2a_0 + a_1x + \cdots + a_nx^n \vert a_i \in \Z\}$, i.e. $I$ is the set of all polynomials with integer coefficients and with an even constant term. Suppose we defined $I^2 = \{i^2 \vert i \in I\}$. One sees clearly that the polynomials 2 and $x$ belong in $I$, so 4 and $x^2$ belong in $I^2$. However, we note that $x^2 + 4 \notin I^2$ since $x^2 + 4$ cannot be factored over the integers.
+
+    This example gives a reason why we need to sum multiple products ($a_1b_1 + a_2b_2 + \cdots + a_nb_n$) in the definition for the product of ideals.
+\end{example}
+
+\newpage
+
+\begin{example}
+    Consider the ring $\Z$ and the ideals $I = \{2n \vert n \in \Z\}$ and $J = \{3n \vert n \in \Z\}$. Then their product is
+    \begin{align*}
+        IJ &= \{(2a_1)(3b_1) + (2a_2)(3b_2) + \cdots + (2a_n)(3b_n) \vert a_i,b_i \in \Z\}\\
+        &= \{6(a_1b_1 + a_2b_2 + \cdots + a_nb_n) \vert a_i,b_i \in \Z\}\\
+        &= \{6k \vert k \in \Z\}.
+    \end{align*}
+\end{example}
+\begin{proposition}
+    Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then $\ideal{ab}$ is an ideal of $R$.
+\end{proposition}
+\begin{proof}
+    We again consider the test for ideal (\myref{thrm-test-for-ideal}).
+
+    Let $a_1,a_2 \in \ideal{a}$ and $b_1,b_2 \in \ideal{b}$. Since $\ideal{a}$ is an ideal and is hence a subring, so $-a_2 \in \ideal{a}$. Thus $a_1b_1, (-a_2)(b_2) \in \ideal{ab}$. Clearly $a_1b_1 + (-a_2)(b_2) = a_1b_1 - a_2b_2 \in \ideal{ab}$ so this satisfies the first statement.
+
+    Now take any $r \in R$ and let $a_1b_1 + \cdots + a_nb_n \in \ideal{ab}$.
+    \begin{itemize}
+        \item $r(a_1b_1 + \cdots + a_nb_n) = (ra_1)b_1 + \cdots + (ra_n)b_n$. Note $ra_i \in \ideal{a}$ since $\ideal{a}$ is a left ideal, and $b_i \in \ideal{b}$. Hence $(ra_1)b_1 + \cdots + (ra_n)b_n \in \ideal{ab}$.
+        \item $(a_1b_1 + \cdots + a_nb_n)r = a_1(b_1r) + \cdots + a_n(b_nr)$. Note $b_ir \in \ideal{b}$ since $\ideal{b}$ is a right ideal, and $a_i \in \ideal{a}$. Hence $a_1(b_1r) + \cdots + a_n(b_nr) \in \ideal{ab}$.
+    \end{itemize}
+
+    Therefore $\ideal{ab}$ is a (two-sided) ideal by the test for ideal.
+\end{proof}
+
+\begin{exercise}
+    Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Prove that $\ideal{a} \cap \ideal{b}$ is an ideal of $R$.
+\end{exercise}
+
+
 \section{Principal Ideals}
 \section{Prime and Maximal Ideals}
 % Include important results of prime and maximal ideals here
@@ -1135,12 +1213,20 @@ We end this section by introducing the test for ideals\index{test for ideals}.
                 \begin{pmatrix}x&y\\0&z\end{pmatrix}\begin{pmatrix}a&b\\0&0\end{pmatrix} = \begin{pmatrix}xa&xb\\0&0\end{pmatrix} \in I;
             \]
             and
-            \item \textbf{Right Ideal}: \[\begin{pmatrix}a&b\\0&0\end{pmatrix}\begin{pmatrix}x&y\\0&z\end{pmatrix} = \begin{pmatrix}ax&ay+bz\\0&0\end{pmatrix} \in I.\]
+            \item \textbf{Right Ideal}: \[
+                \begin{pmatrix}a&b\\0&0\end{pmatrix}\begin{pmatrix}x&y\\0&z\end{pmatrix} = \begin{pmatrix}ax&ay+bz\\0&0\end{pmatrix} \in I.
+            \]
         \end{itemize}
         Therefore $I$ is an ideal of $R$.
 
         \item $\begin{pmatrix}1&0\\0&1\end{pmatrix} + I$
     \end{enumerate}
+
+    \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\ideal{a}\cap\ideal{b}$ is an ideal.
+    
+    Suppose $i,j\in\ideal{a}\cap\ideal{b}$, so $i,j \in \ideal{a}$ and $i,j \in \ideal{b}$. Note $\ideal{a}$ and $\ideal{b}$ are ideals and so are subrings, which means that $i-j \in \ideal{a}$ and $i-j \in \ideal{b}$, which hence means $i-j \in \ideal{a}\cap\ideal{b}$, satisfying the first statement for the test for ideals.
+
+    Now suppose $r \in R$ and $i \in \ideal{a}\cap\ideal{b}$. This means that $i \in \ideal{a}$ and $i \in \ideal{b}$. So we have $ri, ir \in \ideal{a}$ (since $\ideal{a}$ is an ideal) and $ri, ir \in \ideal{b}$ (since $\ideal{b}$ is an ideal). Therefore $ri,ir \in \ideal{a}\cap\ideal{b}$, so by the test for ideal we have $\ideal{a}\cap\ideal{b}$ is an ideal.
 \end{enumerate}
 
 %=========================================
