@@ -881,6 +881,14 @@ We are now ready to present the definition of an ideal.
 \begin{exercise}\label{exercise-ideal-is-a-subring}
     Let $I$ be an ideal of a ring $R$. Show that $I$ is a subring of $R$.
 \end{exercise}
+\begin{exercise}
+    Let $R$ be a ring with identity 1, and let $I$ be an ideal of $R$.
+    \begin{enumerate}[label=(\roman*)]
+        \item If $1 \in I$, what does this imply about $I$?
+        \item Prove that if $I$ contains a unit then $I = R$.
+    \end{enumerate}
+\end{exercise}
+
 \begin{example}
     The subset $\{0\}$ is an ideal of any ring, called the \textbf{zero ideal}\index{ideal!zero} (or \textbf{trivial ideal}\index{ideal!trivial}).
 \end{example}
@@ -964,6 +972,8 @@ We now define the quotient ring.
     \end{enumerate}
 \end{exercise}
 
+\newpage
+
 We end this section by introducing the test for ideals\index{test for ideals}.
 \begin{theorem}[Test for Ideal]\label{thrm-test-for-ideal}
     Let $R$ be a ring and $I$ be a non-empty subset of $R$. Then $I$ is an ideal of $R$ if and only if
@@ -977,6 +987,8 @@ We end this section by introducing the test for ideals\index{test for ideals}.
 
     We now work in the reverse direction by assuming the two statements hold. First and foremost we know that $(I,+) \leq (R,+)$ by virtue of statement 1 and by applying the subgroup test (\myref{thrm-subgroup-test}). Now statement 2 tells us that $ri \in I$ for any $r \in R$, in particular we may choose an $r \in I$ so that $ri \in I$. Therefore $I$ is closed under multiplication, and so $I$ is a subring of $R$. Finally, statement 2 is exactly the condition for $I$ to be an ideal.
 \end{proof}
+
+\newpage
 
 \section{Ideal Operations}
 We first look at the sum of ideals.
@@ -1000,8 +1012,6 @@ We first look at the sum of ideals.
 
     Let $a_1, a_2 \in \ideal{a}$ and $b_1, b_2 \in \ideal{b}$. Then we know $a_1 - a_2 \in \ideal{a}$ and $b_1 - b_2 \in \ideal{b}$ by the test for ideal. Therefore $(a_1 - a_2) + (b_1 - b_2) = (a_1 + b_1) - (a_2 + b_2) \in \ideal{a} + \ideal{b}$, satisfying the first statement.
 
-    \newpage
-
     Now take any $r \in R$ and $a+b \in \ideal{a}+\ideal{b}$.
     \begin{itemize}
         \item $r(a+b) = ra + rb \in \ideal{a}+\ideal{b}$ since $ra \in \ideal{a}$ (because $\ideal{a}$ is a left ideal) and $rb \in \ideal{b}$ (because $\ideal{b}$ is a left ideal).
@@ -1009,6 +1019,8 @@ We first look at the sum of ideals.
     \end{itemize}
     Therefore $\ideal{a} + \ideal{b}$ is a (two-sided) ideal by the test for ideal.
 \end{proof}
+
+\newpage
 
 We now look at the product of ideals.
 \begin{definition}\index{ideal!product}
@@ -1023,8 +1035,6 @@ One may question the necessity for the summing of products in the product of ide
 
     This example gives a reason why we need to sum multiple products ($a_1b_1 + a_2b_2 + \cdots + a_nb_n$) in the definition for the product of ideals.
 \end{example}
-
-\newpage
 
 \begin{example}
     Consider the ring $\Z$ and the ideals $I = \{2n \vert n \in \Z\}$ and $J = \{3n \vert n \in \Z\}$. Then their product is
@@ -1054,7 +1064,6 @@ One may question the necessity for the summing of products in the product of ide
 \begin{exercise}
     Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Prove that $\ideal{a} \cap \ideal{b}$ is an ideal of $R$.
 \end{exercise}
-
 
 \section{Principal Ideals}
 \section{Prime and Maximal Ideals}
@@ -1198,6 +1207,11 @@ One may question the necessity for the summing of products in the product of ide
 \section{Ideals and Quotient Rings}
 \begin{enumerate}
     \item We are given that $(I, +) \leq (R,+)$, so all that remains to show is that $I$ is closed under multiplication. Take any two elements $x$ and $y$ in $I$. Since $I$ is an ideal, thus we have $ri \in I$ for any $r \in R$ and $i \in I$. Viewing $x$ as an element of $R$ and $y$ as an element of $I$, we see that $xy \in I$, meaning $I$ is closed under multiplication. Hence $I$ is a subring of $R$.
+    
+    \item \begin{enumerate}[label=(\roman*)]
+        \item If $1 \in I$, then for any element $r \in R$, we must have $r = 1r \in I$ since $I$ is an ideal of $R$. Therefore $R \subseteq I$. But by definition of an ideal, $I \subseteq R$. Therefore $I = R$.
+        \item Suppose $I$ contains a unit $u$, meaning there exists a $v \in R$ such that $uv = 1$. Note $uv \in I$ since $u \in I$ and $I$ is an ideal, so $1 \in I$. By (i) we have $I = R$.
+    \end{enumerate}
     
     \item \begin{enumerate}[label=(\roman*)]
         \item Clearly the zero matrix, the additive identity of $R$, is inside $I$. Also,
