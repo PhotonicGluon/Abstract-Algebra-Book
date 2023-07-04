@@ -559,7 +559,7 @@ Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$
 \end{example}
 
 We note an interesting result regarding fields here.
-\begin{proposition}
+\begin{proposition}\label{prop-field-is-integral-domain}
     Any field is an integral domain.
 \end{proposition}
 \begin{proof}
@@ -612,9 +612,9 @@ With an introduction of integral domains out of the way, we introduce some gener
 
 \newpage
 
-\begin{proposition}\label{prop-finite-integral-domain-is-field}
+\begin{theorem}\label{thrm-finite-integral-domain-is-field}
     Every finite integral domain is a field.
-\end{proposition}
+\end{theorem}
 \begin{proof}
     A finite integral domain is a commutative ring with identity; all that remains is to prove that every non-zero element has an inverse.
 
@@ -636,7 +636,7 @@ With an introduction of integral domains out of the way, we introduce some gener
 \end{remark}
 
 \begin{example}
-    Let $p$ be a prime and consider the ring $\Zn{p}$. Clearly multiplication is commutative with identity 1. Also, as the only way to factor $p$ is $1 \times p$ and since $p \notin \Zn{p}$, thus there are no zero divisors in $\Zn{p}$. Hence $\Zn{p}$ is an integral domain. Now $\Zn{p}$ only has $p$ elements (namely the integers 0 to $p - 1$), so it is finite. By \myref{prop-finite-integral-domain-is-field} we know that $\Zn{p}$ is a field.
+    Let $p$ be a prime and consider the ring $\Zn{p}$. Clearly multiplication is commutative with identity 1. Also, as the only way to factor $p$ is $1 \times p$ and since $p \notin \Zn{p}$, thus there are no zero divisors in $\Zn{p}$. Hence $\Zn{p}$ is an integral domain. Now $\Zn{p}$ only has $p$ elements (namely the integers 0 to $p - 1$), so it is finite. By \myref{thrm-finite-integral-domain-is-field} we know that $\Zn{p}$ is a field.
 \end{example}
 
 \begin{example}
@@ -659,7 +659,7 @@ With an introduction of integral domains out of the way, we introduce some gener
         }
     \end{table}
     
-    From the table, we have shown that no two non-zero elements in $\Zn{3}[i]$ multiply to zero. Therefore $\Zn{3}[i]$ has no zero divisors, which means $\Zn{3}[i]$ is an integral domain. Furthermore, as $\Zn{3}[i]$ is finite, therefore we know that it is a finite field by \myref{prop-finite-integral-domain-is-field}.
+    From the table, we have shown that no two non-zero elements in $\Zn{3}[i]$ multiply to zero. Therefore $\Zn{3}[i]$ has no zero divisors, which means $\Zn{3}[i]$ is an integral domain. Furthermore, as $\Zn{3}[i]$ is finite, therefore we know that it is a finite field by \myref{thrm-finite-integral-domain-is-field}.
 \end{example}
 
 \begin{exercise}\label{exercise-Zn2[alpha]}
@@ -1194,6 +1194,9 @@ We now state some important results regarding prime and maximal ideals here.
     
     Now if $P = R$ then $R/P = \{0 + P\}$ which is the trivial quotient ring. But by \myref{exercise-trivial-ring-is-not-an-integral-domain} it is not an integral domain. Therefore $P \neq R$, meaning that $P$ is a prime ideal.
 \end{proof}
+\begin{exercise}
+    Is $\princ{3 - i}$ a prime ideal in the gaussian integers?
+\end{exercise}
 
 \begin{theorem}\label{thrm-maximal-ideal-iff-quotient-ring-is-field}
     Let $R$ be a commutative ring with identity, and let $M$ be an ideal of $R$. Then $M$ is maximal if and only if $R/M$ is a field.
@@ -1216,7 +1219,7 @@ We now state some important results regarding prime and maximal ideals here.
     All maximal ideals are prime ideals.
 \end{theorem}
 \begin{proof}
-    If $M$ is a maximal ideal in a commutative ring with identity $R$, then $R/M$ is a field by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}. Note that any field is an integral domain by definition of a field. Therefore $R/M$ is an integral domain, meaning $M$ is prime by \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}.
+    If $M$ is a maximal ideal in a commutative ring with identity $R$, then $R/M$ is a field by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}. Note that any field is an integral domain by \myref{prop-field-is-integral-domain}. Therefore $R/M$ is an integral domain, meaning $M$ is prime by \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}.
 \end{proof}
 
 \begin{theorem}\label{thrm-prime-ideal-is-maximal-in-finite-commutative-ring-with-identity}
@@ -1229,12 +1232,9 @@ We now state some important results regarding prime and maximal ideals here.
     Let $R$ be a finite commutative ring with identity, and let $P$ be a prime ideal in $R$. Show that $P$ is maximal in $R$.
 \end{exercise}
 
-\begin{exercise}
-    Is $\princ{3 - i}$ a prime ideal in the gaussian integers?
-\end{exercise}
-
-% Include important results of prime and maximal ideals here
 \section{The Annihilator and Radical}
+%TODO: Add
+
 \newpage
 \section{Problems}
 
@@ -1324,7 +1324,7 @@ We now state some important results regarding prime and maximal ideals here.
         }
     \end{table}
 
-    What we see from this table is that no non-zero elements multiply together to form zero, meaning that there are no zero divisors in $\Zn{2}[\alpha]$. Therefore $\Zn{2}[\alpha]$ is an integral field. Furthermore as $\Zn{2}[\alpha]$ is finite thus $\Zn{2}[\alpha]$ is a field by \myref{prop-finite-integral-domain-is-field}.
+    What we see from this table is that no non-zero elements multiply together to form zero, meaning that there are no zero divisors in $\Zn{2}[\alpha]$. Therefore $\Zn{2}[\alpha]$ is an integral field. Furthermore as $\Zn{2}[\alpha]$ is finite thus $\Zn{2}[\alpha]$ is a field by \myref{thrm-finite-integral-domain-is-field}.
 
     \item The trivial ring $\{0\}$ is not an integral domain. Seeking a contradiction, if $\{0\}$ is indeed an integral domain, then by \myref{prop-zero-of-prime-characteristic-if-integral-domain}it has to have either 0 or prime characteristic. However, one sees clearly that the characteristic of the trivial ring is 1, which is neither 0 nor prime. Therefore $\{0\}$ is not an integral domain.
 
@@ -1430,8 +1430,6 @@ We now state some important results regarding prime and maximal ideals here.
     \end{align*}
     so $\princ{n} \subset \princ{a}$. Similarly, $\princ{n} \subset \princ{b}$. However, as $\princ{n}$ is a maximal ideal, there does not exist a positive integer $k$ such that $\princ{n} \subset \princ{k} \subset \Z$. This contradicts the fact that we have both $\princ{n} \subset \princ{a}$ and $\princ{n} \subset \princ{b}$. Therefore, $n$ has to be prime.
 
-    \item If $P$ is a prime ideal of $R$, then $R/P$ is an integral domain by \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}. Now $R$ is finite, meaning that $R/P$ is finite. Therefore, by \myref{prop-finite-integral-domain-is-field}, $R/P$ is a field which therefore means that $P$ is maximal by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
-    
     \item No. Let $I = \princ{3-i}$. Observe that
     \begin{align*}
         ((1+i)+I)((1-2i)+I) &= (1+i)(1-2i) + I\\
@@ -1440,6 +1438,8 @@ We now state some important results regarding prime and maximal ideals here.
         &= 0 + I
     \end{align*}
     so $((1+i)+I)$ and $((1-2i)+I)$ are zero divisors in $\Z[i]/I$. Therefore $\Z[i]/I$ is not an integral domain, meaning that $I$ is not a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}).
+
+    \item If $P$ is a prime ideal of $R$, then $R/P$ is an integral domain by \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}. Now $R$ is finite, meaning that $R/P$ is finite. Therefore, by \myref{thrm-finite-integral-domain-is-field}, $R/P$ is a field which therefore means that $P$ is maximal by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
 \end{enumerate}
 
 %=========================================
