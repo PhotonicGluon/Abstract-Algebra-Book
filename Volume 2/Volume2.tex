@@ -25,7 +25,9 @@
 \newcommand{\Z}{\mathbb{Z}}                        % The ring of integers
 \newcommand{\Zn}[1]{\mathbb{Z}_{#1}}               % The ring of integers modulo n
 
-\newcommand{\Char}[1]{\mathrm{char}(#1)}  % Characteristic of a ring R
+\newcommand{\Ann}[2]{\mathrm{Ann}_{#1}(#2)}  % Annihilator of a subset A of a ring R
+\newcommand{\Char}[1]{\mathrm{char}(#1)}     % Characteristic of a ring R
+\newcommand{\Nilr}[1]{\mathfrak{N}_{#1}}     % Nilradical of a ring R
 
 %========= Front Matter Pages ============
 % Quote page
@@ -884,7 +886,7 @@ We are now ready to present the definition of an ideal.
 \end{exercise}
 
 \begin{example}
-    The subset $\{0\}$ is an ideal of any ring, called the \textbf{zero ideal}\index{ideal!zero} (or \textbf{trivial ideal}\index{ideal!trivial}).
+    The subset $\{0\}$ is an ideal of any ring, called the \textbf{trivial ideal}\index{trivial ideal} (or \textbf{zero ideal}\index{zero ideal}).
 \end{example}
 We also note that for any ring $R$, the ring itself is an ideal of $R$. Any ideal that is not the trivial ideal or $R$ is called a \textbf{proper ideal}\index{ideal!proper}.
 
@@ -1235,8 +1237,75 @@ We now state some important results regarding prime and maximal ideals here.
     Let $R$ be a finite commutative ring with identity, and let $P$ be a prime ideal in $R$. Show that $P$ is maximal in $R$.
 \end{exercise}
 
+\newpage
+
 \section{The Annihilator and Radical}
-%TODO: Add
+To end this chapter, we look at two constructs relating to a ring.
+\begin{definition}
+    Let $R$ be a commutative ring and $A$ a non-empty subset of $R$. The \textbf{annihilator}\index{annihilator} of $A$ is
+    \[
+        \Ann{R}{A} = \{r \in R \vert ra = 0 \text{ for all } a \in A\}.
+    \]
+\end{definition}
+\begin{example}
+    $\Ann{\Z}{\Z} = \{0\}$.
+\end{example}
+\begin{proposition}
+    Let $R$ be a commutative ring and $A$ a non-empty subset of $R$. Then $\Ann{R}{A}$ is an ideal of $R$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-annihilator-is-an-ideal} (later).
+\end{proof}
+\begin{exercise}\label{exercise-annihilator-is-an-ideal}
+    Let $R$ be a commutative ring and $A$ a non-empty subset of $R$. Show that $\Ann{R}{A}$ is an ideal of $R$.
+\end{exercise}
+
+\begin{definition}
+    Let $R$ be a commutative ring and $I$ be an ideal of $R$. The \textbf{radical}\index{radical} of $I$ is
+    \[
+        \sqrt I = \{r \in R \vert r^n \in I \text{ for some } n \in \mathbb{N}\}.
+    \]
+\end{definition}
+\begin{definition}
+    The radical of the trivial ideal is called the \textbf{nilradical}\index{nilradical} and is given by
+    \[
+        \Nilr{R} = \sqrt{\{0\}} = \{r \in R \vert r^n = 0 \text{ for some } n \in \mathbb{N}\}.
+    \]
+    That is, the nilradical of a commutative ring $R$ is the set of all nilpotents in $R$.
+\end{definition}
+\begin{example}
+    We find the nilradical of the ring $\Zn{12}$.
+    \begin{align*}
+        \Nilr{\Zn{12}} &= \{r \in \Zn{12} \vert r^n = 0 \text{ for some } n \in \mathbb{N}\}\\
+        &= \{0, 6\}.
+    \end{align*}
+\end{example}
+\begin{example}
+    In the integers, we show that $\sqrt{4\Z} = 2\Z$.
+
+    Suppose $r \in \sqrt{4\Z}$, so $r^n = 4m$ for some $m \in \Z$ and $n \in \mathbb{N}$. Clearly $r^n = 4m = 2(2m) \in 2\Z$, so $r \in 2\Z$. Thus this means that $\sqrt{4\Z} \subseteq 2\Z$.
+
+    On another hand, suppose $r \in 2\Z$, meaning $r = 2m$ for some $m \in \Z$. Note that $r^2 = (2m)^2 = 4m^2 \in 4\Z$, so $r \in \sqrt{4\Z}$. Thus $2\Z \subseteq \sqrt{4\Z}$.
+
+    Therefore $\sqrt{4\Z} = 2\Z$.
+\end{example}
+
+\begin{proposition}
+    Let $R$ be a commutative ring and $I$ be an ideal of $R$. Then $\sqrt{I}$ is an ideal of $R$.
+\end{proposition}
+\begin{proof}
+    We again consider the test for ideal (\myref{thrm-test-for-ideal}) to prove this. Note that $0 \in \sqrt{I}$ since $0^1 = 0 \in I$, so $\sqrt{I}$ is non-empty.
+
+    First let $r, s \in \sqrt{I}$, meaning $r^m \in I$ and $s^n \in I$ for some positive integers $m$ and $n$. Without loss of generality, assume $m \geq n$. Consider $(r-s)^{mn}$. The Binomial Theorem (\myref{thrm-binomial}) tells us that
+    \[
+        (r-s)^{mn} = \sum_{k=0}^{mn}(-1)^k{mn \choose k}r^{mn-k}s^k.
+    \]
+    Observe that at any one point, either $mn - k \geq m$ or $k \geq m$, so at any point either $r^{mn-k} \in I$ or $s^k \in I$, meaning that $(-1)^k{mn \choose k}r^{mn-k} \in I$. Therefore, $(r-s)^{mn} \in I$, which in turn means $r-s \in \sqrt{I}$.
+
+    Next suppose $x \in R$ and $r \in \sqrt{I}$, meaning $r^n \in I$ for some positive integer $n$. Note that $(rx)^n = (xr)^n = x^nr^n \in I$ since $R$ is commutative and $r^n \in I$. Therefore $rx, xr \in \sqrt{I}$.
+
+    By the test for ideal, we have $\sqrt{I}$ is an ideal of $R$.
+\end{proof}
 
 \newpage
 \section{Problems}
@@ -1443,6 +1512,14 @@ We now state some important results regarding prime and maximal ideals here.
     so $((1+i)+I)$ and $((1-2i)+I)$ are zero divisors in $\Z[i]/I$. Therefore $\Z[i]/I$ is not an integral domain, meaning that $I$ is not a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}).
 
     \item If $P$ is a prime ideal of $R$, then $R/P$ is an integral domain by \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}. Now $R$ is finite, meaning that $R/P$ is finite. Therefore, by \myref{thrm-finite-integral-domain-is-field}, $R/P$ is a field which therefore means that $P$ is maximal by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
+    
+    \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\Ann{R}{A}$ is an ideal of $R$. We note that $\Ann{R}{A}$ is non-empty since 0 is in $\Ann{R}{A}$ (because $0a = 0$ for any $a \in A$).
+
+    Take any $r, s \in \Ann{R}{A}$, and an $a \in A$. Then one sees clearly that $(r-s)a = rs - sa = 0 - 0 = 0$ so $r-s \in \Ann{R}{A}$.
+
+    Now take an $r \in \Ann{R}{A}$, an $a \in A$, and a $x \in R$. Note $(rx)a = (xr)a = x(ra) = x0 = 0$ since $R$ is commutative, which means that $rx, xr \in \Ann{R}{A}$.
+
+    By the test for ideal, $\Ann{R}{A}$ is an ideal of $R$.
 \end{enumerate}
 
 %=========================================
