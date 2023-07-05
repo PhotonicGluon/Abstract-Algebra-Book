@@ -1129,6 +1129,13 @@ We look at one example of a PID.
 \begin{remark}
     In the context of $\Z$, we usually write the principal ideal $\princ{m}$ as $m\Z$.
 \end{remark}
+\begin{exercise}
+    Let $I = \princ{x^2 + 3x - 1}$ be an ideal of $\Z[x]$. Simplify
+    \[
+        \left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)
+    \]
+    in the quotient ring $\Z[x]/I$.
+\end{exercise}
 
 \newpage
 
@@ -1488,6 +1495,15 @@ To end this chapter, we look at two constructs relating to a ring.
         \item Clearly $\{0\} = \princ{0}$ since $0r = 0$ for any $r \in R$.
         \item Let 1 be the identity of $R$. Then $R = \{r \vert r \in R\} = \{1r \vert r \in R\} = \princ{1}$.
     \end{enumerate}
+
+    \item We work step-by-step.
+    \begin{align*}
+        &\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)\\
+        &= \left((x + 3)(2x^2+3x-1)\right) + I\\
+        &= \left(2x^3 + 9x^2 + 8x - 3\right) + I\\
+        &= \left((2x+3)\underbrace{(x^2+3x-1)}_{\text{In }I} + x\right) + I\\
+        &= x + I
+    \end{align*}
 
     \item The principal ideal $I = \princ{3, x^2+8}$ is not prime in $\Z[x]$. Note that any element in $I$ has degree of at least 2. However, if one chooses $f(x) = -3$ and $g(x) = 1$ we see that
     \[
