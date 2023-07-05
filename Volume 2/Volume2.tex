@@ -1088,7 +1088,7 @@ We now look at principal ideals for commutative rings. They can be thought of as
 \begin{exercise}
     Show that all principal ideals are ideals.
 \end{exercise}
-\begin{exercise}
+\begin{exercise}\label{exercise-trivial-ideal-and-whole-ring-are-principal-ideals}
     Let $R$ be a commutative ring with identity. Show that the following ideals are principal in $R$.
     \begin{enumerate}[label=(\alph*)]
         \item The trivial ideal.
@@ -1316,6 +1316,61 @@ To end this chapter, we look at two constructs relating to a ring.
 
 \newpage
 \section{Problems}
+\begin{problem}
+    Find $\Ann{\Zn{36}}{\{15\}}$.
+\end{problem}
+
+\begin{problem}
+    Let $S = \{a + 2bi \vert a, b \in \Z\}$. Show that $S$ is a subring of $\Z[i]$ but not an ideal of $\Z[i]$.
+\end{problem}
+
+\begin{problem}
+    Consider
+    \[
+        I = \left\{\begin{pmatrix}2a&2b\\2c&2d\end{pmatrix} \vert a,b,c,d \in \Z\right\}.
+    \]
+    Show that $I$ is an ideal of $\Mn{2}{\Z}$.
+\end{problem}
+
+\begin{problem}
+    Show that $\princ{x}$ is a prime ideal in $\Z[x]$.
+\end{problem}
+
+\begin{problem}\label{problem-ring-is-field-iff-no-proper-ideals}
+    Let $R$ be a commutative ring with identity and $I$ be an ideal of $R$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Prove that if $R$ is a field then $I$ is either the trivial ring or $R$ (i.e., $R$ has no proper ideals). Hence prove that any field is a PID.
+        \item Prove that if $R$ has no proper ideals, then $R$ is a field.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Let $R$ be a commutative ring and let $I$ and $J$ be ideals in $R$. Prove the following statements.
+    \begin{enumerate}[label=(\alph*)]
+        \item $\sqrt{\sqrt{I}} = \sqrt{I}$
+        \item $\sqrt{I \cap J} = \sqrt{I} \cap \sqrt{J}$
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Suppose $m$ and $n$ be positive integers. Let $d = \gcd(m,n)$ and $l = \lcm(m,n)$. Prove the following.
+    \begin{enumerate}[label=(\alph*)]
+        \item $m\Z \cap n\Z = l\Z$
+        \item $m\Z + n\Z = d\Z$
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Let $R$ be a commutative ring. Prove that $R / \Nilr{R}$ has no non-zero nilpotents.
+\end{problem}
+
+\begin{problem}
+    Prove that every non-trivial prime ideal is a maximal ideal in a PID.
+\end{problem}
+
+\begin{problem}
+    Let $R$ be an integral domain, and let $a$ and $b$ be elements in $R$. Prove that $\princ{a} = \princ{b}$ if and only if $a = bu$ for some unit $u$ in $R$.
+\end{problem}
 
 %=========================================
 \appendix
@@ -1749,6 +1804,160 @@ No problems.
         \item Since $R$ is a subring of $\Mn{2}{\Zn{2}}$, it is a ring. Furthermore, by the Cayley table of $(R, \cdot)$, we see that $R$ is commutative with identity I. Finally, one sees that $\mathrm{A}^{-1} = \mathrm{B}$, $\mathrm{B}^{-1} = \mathrm{A}$, and $\mathrm{I}^{-1} = \mathrm{I}$. Therefore all non-zero elements of $R$ have inverses. Hence $R$ is a field.
     \end{enumerate}
 \end{enumerate}
+
+\section{Ideals and Quotient Rings}
+\begin{enumerate}
+    \item Note that $36 = 2^2 \times 3^2$. So
+    \begin{align*}
+        \Ann{\Zn{36}}{\{15\}} &= \{r \in \Zn{36} \vert 15r = 0\}\\
+        &= \{r \in \Zn{15} \vert 3(5r) = 0\}\\
+        &= \{r \in \Zn{15} \vert r \text{ is a multiple of }2^2\times3 = 12\}\\
+        &= \{0,12,24\}.
+    \end{align*}
+
+    \item We first show that $S$ is a subring of $\Z[i]$.
+    \begin{itemize}
+        \item The identity of $\Z[i]$ is $0 = 0 + 2(0)i \in S$.
+        \item For any $a+2bi, c+2di \in S$, clearly $a+2bi + (-(c + 2di)) = (a-c) + 2(b-d)i \in S$.
+        \item For any $a+2bi, c+2di \in S$, one sees that
+        \begin{align*}
+            (a+2bi)(c+2di) &= ac + 2adi + 2bci + 4bdi^2\\
+            &= (ac-4bd) + 2(ad+bc)i\\
+            &\in S.
+        \end{align*}
+    \end{itemize}
+    Therefore $S$ is a subring of $\Z[i]$.
+
+    We now show that $S$ is not an ideal of $\Z[i]$. Consider $1+2i \in \S$ and $1+i \in \Z[i]$. Then
+    \begin{align*}
+        (1+2i)(1+i) &= 1+i+2i+2i^2\\
+        &= -1 + 3i\\
+        &\notin S
+    \end{align*}
+    so there exists a $s \in S$ and a $r \in \Z[i]$ such that $rs\notin S$, meaning that $S$ is not a left ideal (and hence is not an ideal).
+
+    \item We consider the test for ideal (\myref{thrm-test-for-ideal}).
+    \begin{itemize}
+        \item Note that $\begin{pmatrix}0&0\\0&0\end{pmatrix}=\begin{pmatrix}2(0)&2(0)\\2(0)&(0)\end{pmatrix}$ is in $I$ so $I$ is non-empty.
+        \item $\begin{pmatrix}2a&2b\\2c&2d\end{pmatrix}-\begin{pmatrix}2e&2f\\2g&2h\end{pmatrix} = \begin{pmatrix}2(a-e)&2(b-f)\\2(c-g)&2(d-h)\end{pmatrix} \in I$.
+        \item To show left ideal, take $\begin{pmatrix}2a&2b\\2c&2d\end{pmatrix} \in I$ and $\begin{pmatrix}e&f\\g&h\end{pmatrix} \in \Mn{2}{\Z}$. Then
+        \begin{align*}
+            \begin{pmatrix}2a&2b\\2c&2d\end{pmatrix}\begin{pmatrix}e&f\\g&h\end{pmatrix} &= \begin{pmatrix}2ae+2bg&2af+2bh\\2ce+2dg&2cf+2dh\end{pmatrix}\\
+            &= \begin{pmatrix}2(ae+bg)&2(af+bh)\\2(ce+dg)&2(cf+dh)\end{pmatrix}\\
+            &\in I
+        \end{align*}
+        so $I$ is a left ideal of $\Mn{2}{\Z}$.
+        \item To show right ideal, take $\begin{pmatrix}a&b\\c&d\end{pmatrix} \in \Mn{2}{\Z}$ and $\begin{pmatrix}2e&2f\\2g&2h\end{pmatrix} \in I$. Then
+        \begin{align*}
+            \begin{pmatrix}a&b\\c&d\end{pmatrix}\begin{pmatrix}2e&2f\\2g&2h\end{pmatrix} &= \begin{pmatrix}2ae+2bg&2af+2bh\\2ce+2dg&2cf+2dh\end{pmatrix}\\
+            &= \begin{pmatrix}2(ae+bg)&2(af+bh)\\2(ce+dg)&2(cf+dh)\end{pmatrix}\\
+            &\in I
+        \end{align*}
+        so $I$ is a right ideal of $\Mn{2}{\Z}$.
+    \end{itemize}
+    Therefore by the test for ideal we have $I$ is an ideal of $\Mn{2}{\Z}$.
+
+    \item For brevity let $I = \princ{x} = \{xP(x) \vert P(x) \in \Z[x]\}$. This means that $I$ is the set of polynomials with integer coefficients and with constant term 0. Now suppose $f(x), g(x) \in \Z[x]$; write
+    \begin{align*}
+        f(x) &= a_0 + a_1x + \cdots + a_mx^m\\
+        g(x) &= b_0 + b_1x + \cdots + b_nx^n
+    \end{align*}
+    where $a_i, b_i \in \Z$ and $m$ and $n$ are positive integers. Note that
+    \[
+        f(x)g(x) = a_0b_0 + (a_1b_0+a_0b_1)x + \cdots.
+    \]
+    Now if $f(x)g(x) \in I$, this means that $a_0b_0 = 0$. Hence either $a_0 = 0$ or $b_0 = 0$, meaning that either $f(x)$ has zero constant term (so $f(x) \in I$) or $g(x)$ has zero constant term (so $g(x) \in I$). Thus $I$ is prime.
+
+    \item \begin{enumerate}[label=(\alph*)]
+        \item Suppose $I$ is not the trivial ring; we want to show that $I = R$. Since $I$ is non-trivial there there exists a non-zero element $a$ in $I$. Note that $a^{-1}$ exists since $R$ is a field, so $a$ is a unit. By \myref{exercise-ideal-containing-1-is-whole-ring} this means $I = R$. Note that $\{0\} = \princ{0}$ and $R = \princ{1}$ by \myref{exercise-trivial-ideal-and-whole-ring-are-principal-ideals}, so $R$ is indeed a PID.
+
+        \item Take a non-zero $x \in R$ and note that $\princ{x}$ is a non-trivial ideal. Since there are no proper ideals in $R$, thus $\princ{x} = R$. This means that $1 \in \princ{x}$ (since $\princ{x} = R$ is a ring with identity), meaning that there exists an element $r \in R$ such that $xr = 1$. Therefore $x$ is a unit.
+        
+        Since $x$ is an arbitrary non-zero element in $R$, this thus shows that all non-zero elements of the ring $R$ are units, meaning $R$ is a division ring.
+
+        Finally, because $R$ is commutative, thus $R$ is a field.
+    \end{enumerate}
+
+    \item \begin{enumerate}[label=(\alph*)]
+        \item Suppose $r \in \sqrt{\sqrt{I}}$, meaning that $r^m \in \sqrt{I}$ for some positive integer $m$, further meaning that $(r^m)^n \in I$ for some positive integer $n$. Note $(r^m)^n = r^{mn} \in I$, so $r \in \sqrt{I}$. Therefore $\sqrt{\sqrt{I}} \subseteq \sqrt{I}$.
+        
+        Now suppose $r \in \sqrt{I}$, meaning that $r^n \in I$ for some positive integer $n$. Note that $r = r^1 \in \sqrt{I}$, so $r \in \sqrt{\sqrt{I}}$. Hence $\sqrt{I} \subseteq \sqrt{\sqrt{I}}$.
+
+        Therefore, since $\sqrt{\sqrt{I}} \subseteq \sqrt{I}$ and $\sqrt{I} \subseteq \sqrt{\sqrt{I}}$, thus $\sqrt{\sqrt{I}} = \sqrt{I}$.
+
+        \item Suppose $r \in \sqrt{I\cap J}$, so $r^n \in I \cap J$ for some positive integer $n$. This means that $r^n \in I$ and $r^n \in J$. Hence $r \in \sqrt{I}$ and $r \in \sqrt{J}$ by definition of the radical, so $r \in \sqrt{I}\cap\sqrt{J}$. Thus $\sqrt{I\cap J} \subseteq \sqrt{I}\cap\sqrt{J}$.
+        
+        Now suppose $r \in \sqrt{I}\cap\sqrt{J}$, meaning that $r \in \sqrt{I}$ and $r \in \sqrt{J}$. Thus $r^m \in I$ and $r^n \in J$ for some positive integers $m$ and $n$. Note that
+        \[
+            (\underbrace{r^m}_{\text{In }I})^n \in I \text{ and } (\underbrace{r^n}_{\text{In }J})^m \in J
+        \]
+        so $r^{mn} \in I$ and $r^{mn} \in J$, meaning $r^{mn} \in I \cap J$. Thus $r \in \sqrt{I \cap J}$, showing that $\sqrt{I}\cap\sqrt{J} \subseteq \sqrt{I\cap J}$.
+
+        Therefore $\sqrt{I}\cap\sqrt{J} = \sqrt{I\cap J}$.
+    \end{enumerate}
+
+    \item \begin{enumerate}[label=(\alph*)]
+        \item Suppose $a \in m\Z\cap n\Z$. Thus $a \in m\Z$ and $a \in n\Z$, meaning that $a = mx = ny$ for some integers $x$ and $y$. Therefore $a = \lcm(m,n)z = lz$ for some integer $z$, meaning $a \in l\Z$. Hence $m\Z \cap n\Z \subseteq l\Z$.
+        
+        Now suppose $a \in l\Z$, so $a = lx$ for some integer $x$. Write $l = m\alpha = n\beta$ for some integers $\alpha$ and $\beta$. Note that
+        \begin{align*}
+            a &= (m\alpha)x = m(\alpha x) \in m\Z\\
+            a &= (n\beta)x = n(\beta x) \in n\Z
+        \end{align*}
+        so $a \in m\Z \cap n\Z$. Thus $l\Z \subseteq m\Z \cap n\Z$.
+
+        Therefore $m\Z\cap n\Z = l\Z$.
+
+        \item Suppose $a \in m\Z + n\Z$, meaning that there exist integers $x$ and $y$ such that $a = mx + ny$. By definition of the GCD, write $m = d\alpha$ and $n = d\beta$ for some integers $\alpha$ and $\beta$. Hence
+        \begin{align*}
+            a &= (d\alpha)x + (d\beta)y\\
+            &= d(\alpha x + \beta y)\\
+            &\in d\Z
+        \end{align*}
+        so $m\Z + n\Z \subseteq d\Z$.
+
+        On the other hand, suppose $a \in d\Z$, meaning $a = dt$ for some integer $t$. By B\'{e}zout's Lemma (\myref{lemma-bezout}), we may write $d = mx + ny$ for some integers $x$ and $y$. Hence
+        \begin{align*}
+            a &= (mx + ny)t\\
+            &= m(xt) + n(yt)\\
+            &\in m\Z + n\Z
+        \end{align*}
+        which means $d\Z \subseteq m\Z + n\Z$.
+
+        Therefore $m\Z + n\Z = d\Z$.
+    \end{enumerate}
+
+    \item Let $r \in R$, and suppose $x = r + \Nilr{R} \in R/\Nilr{R}$ is nilpotent, i.e. there is a positive integer $n$ such that
+    \[
+        x^n = (r + \Nilr{R})^n = r^n + \Nilr{R} = 0 + \Nilr{R}.
+    \]
+    By coset equality lemma (\myref{lemma-coset-equality}), this means that $r^n \in \Nilr{R}$. Note that $\Nilr{R}$ contains all the nilpotents of $R$. Thus $r^n$ is a nilpotent of $R$, i.e. there exists a positive integer $m$ such that $(r^n)^m = 0$. But clearly $(r^n)^m = r^{mn} = 0$, so $r$ is nilpotent, meaning $r \in \Nilr{R}$. Hence $x = r + \Nilr{R} = 0 + \Nilr{R}$, meaning that the only nilpotent of $R/\Nilr{R}$ is the zero element. Therefore $R/\Nilr{R}$ has no non-zero nilpotents.
+
+    \item Suppose $R$ is a PID and $I$ is a non-zero prime ideal. Let $J$ be an ideal such that $I \subseteq J \subseteq R$. Since $R$ is a PID, write $I = \princ{a}$ and $J = \princ{b}$ for some elements $a$ and $b$ in $R$. Note $a \in \princ{a} = I \subseteq J = \princ{b}$, so there exists an $r \in R$ such that $a = rb$. Now since $a = rb \in \princ{a} = I$ and $I$ is prime, therefore $r \in I$ or $b \in I$.
+    \begin{itemize}
+        \item If $r \in I$, write $r = sa$ for some $s \in R$. Then
+        \[
+            a = rb = (sa)b = (as)b = a(sb)
+        \]
+        since an integral domain is commutative. Thus $a - a(sb) = a(1-sb) = 0$. Now as $R$ is an integral domain thus either $a = 0$ (impossible since $a \neq 0$) or $1-sb = 0$. So $1-sb = 0$, meaning $sb = 1 \in J$ since $b \in J$. By \myref{exercise-ideal-containing-1-is-whole-ring} we have $J = R$.
+        \item If instead $b \in I$, take any $x \in J = \princ{b}$, so $x = rb$ for some $r \in R$. Thus $x = rb \in I$ since $b \in I$, so $J \subseteq I$. But $I \subseteq J$, so $J = I$.
+    \end{itemize}
+    Therefore we have shown that $I$ is maximal.
+
+    \item First we work in the forward direction. Suppose $\princ{a} = \princ{b}$. As $a \in \princ{a} = \princ{b}$, thus $a = bx$ for some $x \in R$. Also, as $b \in \princ{b} = \princ{a}$, thus $b = ay$ for some $y \in R$. Therefore
+    \[
+        b = ay = (bx)y = b(xy)
+    \]
+    which means $xy = 1$. Thus $x$ and $y$ are units, meaning $a = bx$ with $x$ being a unit.
+
+    Now we work in the reverse direction; suppose $a = bu$ for some unit $u$ in $R$.
+    \begin{itemize}
+        \item Take $r \in \princ{a}$, so $r = ax$ for some $x$ in $R$. Thus $r = (bu)x = b(ux) \in \princ{b}$, so $\princ{a} \subseteq \princ{b}$.
+        \item Note $b = au^{-1}$ since $u$ is a unit. Take $s \in \princ{b}$, so $s = by$ for some $y$ in $R$. But as $b = au^{-1}$, hence $s = (au^{-1})y = a(u^{-1}y) \in \princ{a}$, so $\princ{b} \subseteq \princ{a}$.
+    \end{itemize}
+    Therefore we see that $\princ{a} = \princ{b}$.
+\end{enumerate}
+
 %=========================================
 \chapter{Image Acknowledgements}
 Unless otherwise stated, all images are the author's own work, and are released under the same licence as this book.
