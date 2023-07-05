@@ -982,6 +982,9 @@ We end this section by introducing the test for ideals\index{test for ideals}.
 
     We now work in the reverse direction by assuming the two statements hold. First and foremost we know that $(I,+) \leq (R,+)$ by virtue of statement 1 and by applying the subgroup test (\myref{thrm-subgroup-test}). Now statement 2 tells us that $ri \in I$ for any $r \in R$, in particular we may choose an $r \in I$ so that $ri \in I$. Therefore $I$ is closed under multiplication, and so $I$ is a subring of $R$. Finally, statement 2 is exactly the condition for $I$ to be an ideal.
 \end{proof}
+\begin{remark}
+    Like with the subgroup test (\myref{thrm-subgroup-test}), we can check whether $I$ is non-empty by seeing if the additive identity 0 is in $I$.
+\end{remark}
 
 \newpage
 
@@ -1003,7 +1006,7 @@ We first look at the sum of ideals.
     Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then $\ideal{a} + \ideal{b}$ is an ideal of $R$.
 \end{proposition}
 \begin{proof}
-    We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove this.
+    We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove this. We note that since $\ideal{a}$ and $\ideal{b}$ are ideals, they are thus non-empty and so $\ideal{a}+\ideal{b}$ is non-empty.
 
     Let $a_1, a_2 \in \ideal{a}$ and $b_1, b_2 \in \ideal{b}$. Then we know $a_1 - a_2 \in \ideal{a}$ and $b_1 - b_2 \in \ideal{b}$ by the test for ideal. Therefore $(a_1 - a_2) + (b_1 - b_2) = (a_1 + b_1) - (a_2 + b_2) \in \ideal{a} + \ideal{b}$, satisfying the first statement.
 
@@ -1043,7 +1046,7 @@ One may question the necessity for the summing of products in the product of ide
     Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then $\ideal{ab}$ is an ideal of $R$.
 \end{proposition}
 \begin{proof}
-    We again consider the test for ideal (\myref{thrm-test-for-ideal}).
+    We again consider the test for ideal (\myref{thrm-test-for-ideal}). Once again, since $\ideal{a}$ and $\ideal{b}$ are non-empty as they are ideals, therefore $\ideal{ab}$ is non-empty.
 
     Let $a_1,a_2 \in \ideal{a}$ and $b_1,b_2 \in \ideal{b}$. Since $\ideal{a}$ is an ideal and is hence a subring, so $-a_2 \in \ideal{a}$. Thus $a_1b_1, (-a_2)(b_2) \in \ideal{ab}$. Clearly $a_1b_1 + (-a_2)(b_2) = a_1b_1 - a_2b_2 \in \ideal{ab}$ so this satisfies the first statement.
 
@@ -1402,13 +1405,13 @@ We now state some important results regarding prime and maximal ideals here.
         \item $\begin{pmatrix}1&0\\0&1\end{pmatrix} + I$
     \end{enumerate}
 
-    \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\ideal{a}\cap\ideal{b}$ is an ideal.
+    \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\ideal{a}\cap\ideal{b}$ is an ideal. We note that as $\ideal{a}$ and $\ideal{b}$ are ideals, they are therefore subrings of $R$. Thus, 0 is in both $\ideal{a}$ and $\ideal{b}$, meaning $0 \in \ideal{a}\cap\ideal{b}$. Hence $\ideal{a}\cap\ideal{b}$ is non-empty.
     
     Suppose $i,j\in\ideal{a}\cap\ideal{b}$, so $i,j \in \ideal{a}$ and $i,j \in \ideal{b}$. Note $\ideal{a}$ and $\ideal{b}$ are ideals and so are subrings, which means that $i-j \in \ideal{a}$ and $i-j \in \ideal{b}$, which hence means $i-j \in \ideal{a}\cap\ideal{b}$, satisfying the first statement for the test for ideals.
 
     Now suppose $r \in R$ and $i \in \ideal{a}\cap\ideal{b}$. This means that $i \in \ideal{a}$ and $i \in \ideal{b}$. So we have $ri, ir \in \ideal{a}$ (since $\ideal{a}$ is an ideal) and $ri, ir \in \ideal{b}$ (since $\ideal{b}$ is an ideal). Therefore $ri,ir \in \ideal{a}\cap\ideal{b}$, so by the test for ideal we have $\ideal{a}\cap\ideal{b}$ is an ideal.
 
-    \item Let $R$ be a commutative ring with identity and $\princ{a}$ be a principal ideal of $R$. We note any element in $\princ{a}$ takes the form $ar$ for some element $r \in R$. We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove this.
+    \item Let $R$ be a commutative ring with identity and $\princ{a}$ be a principal ideal of $R$. We note any element in $\princ{a}$ takes the form $ar$ for some element $r \in R$. We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove this. Clearly $\princ{a}$ is non-empty as $0 = a0 \in \princ{a}$.
     
     Let $ar_1, ar_2 \in \princ{a}$. Clearly $ar_1 - ar_2 = a(r_1-r_2) \in \princ{a}$, so the first condition for the test for ideal is satisfied. Now take any $r \in R$ and let $ax \in \princ{a}$. Then $r(ax) = (ax)r = a(xr) \in \princ{a}$ since $R$ is commutative. Therefore by the test for ideal we have $\princ{a}$ is an ideal of $R$.
 
