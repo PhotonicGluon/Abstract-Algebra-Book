@@ -738,7 +738,7 @@ We look at the definition of a subgroup of a group.
 \end{remark}
 We write $H \leq G$ if $H$ is a subgroup of $G$.
 
-\begin{example}
+\begin{example}\label{example-subgroups-of-Z}
     Let's look at all possible subgroups of the group $(\mathbb{Z}, +)$. Suppose $H$ is a subgroup of $G$ with $H \neq \{0\}$.
 
     Let $n$ be the smallest positive integer in $H$. Let $m$ be any other number in $H$. Then by Euclid's division lemma (\myref{lemma-euclid-division}), we may write $m = nq + r$ where $q$ and $r$ are integers such that $0 \leq r < n$. Hence,
@@ -1231,16 +1231,17 @@ For the quotient group, $G / N$ is read ``$G$ mod $N$''. Also note that, as per 
     \end{enumerate}
 \end{problem}
 
-\begin{problem}\label{problem-subgroup-of-cyclic-group-is-cyclic}
-    Let $G$ be a cyclic group with generator $g$. Prove that any subgroup of $G$ must also be cyclic.
-\end{problem}
-
 \begin{problem}
     Let $G$ be a group of order 1024 and let $H$ be a proper subgroup of $G$. Determine the maximum order of $H$. Give an example of the groups $G$ and $H$ such that $H$ has this maximum order.
 \end{problem}
 
 \begin{problem}
     Let $G$ be a finite group with even order. Show that there exists an element with order 2 in $G$.
+\end{problem}
+
+\begin{problem}\label{problem-subgroup-of-cyclic-group-is-cyclic}
+    Let $G$ be a cyclic group with generator $g$. Prove that any subgroup of $G$ must also be cyclic.\newline
+    (\textit{Hint: Consider the solution for \myref{example-subgroups-of-Z}.})
 \end{problem}
 
 \begin{problem}\label{problem-subgroup-of-index-2}
@@ -6114,16 +6115,6 @@ The remaining 2 sporadic groups are special in that they have extremely large or
         \item We will disprove this statement. Since $H \cup K$ is not closed it is not a group, meaning it cannot be a subgroup.
     \end{enumerate}
 
-    \item Suppose $G = \langle g \rangle$ and $H \leq G$. Then any element in $H$ is of the form $g^a$ where $a$ is an integer. Suppose $m$ is the smallest positive integer $m$ such that $g^m \in H$. Suppose now $g^n \in H$ for some $n$. By Euclid's division lemma (\myref{lemma-euclid-division}), $n = mq + r$ where $q$ and $r$ are non-negative integers such that $0 \leq r < m$. Hence,
-    \[
-        g^n = g^{mq}g^r = (g^m)^q g^r.
-    \]
-    Now, $m$ is the smallest positive integer such that $g^m \in H$. This means that if $r \neq 0$, $g^r \not\in H$ as $0 \leq r < m$. Hence, $r = 0$, which means
-    \[
-        g^n = (g^m)^q.
-    \]
-    Thus, every element in the subgroup $H$ can be formed by applying $g^m$ a certain number of times, meaning $H$ is cyclic with generator $g^m$.
-
     \item By Lagrange's Theorem (\myref{thrm-lagrange}), the order of a subgroup must divide the order of the group. Since $H \leq G$ is non-trivial, and since $1024 = 2^{10}$, the largest order that $H$ can be is $512$ with $[G:H] = 2$. An example is $G = \mathbb{Z}_{1024}$ and $H = \langle 2 \rangle$, since $|H| = |2| = 512$ as $2 \times 512 = 1024 \equiv 0 \pmod{1024}$.
 
     \item Let $|G| = 2n$. The identity is its own inverse, leaving an odd number of non-identity elements.
@@ -6133,6 +6124,16 @@ The remaining 2 sporadic groups are special in that they have extremely large or
     Remember that there is an odd number of non-identity elements. Hence, there must be at least one element which has not been paired off with any of the others, which is therefore its own self inverse.
 
     Since this element is not the identity, thus it has to have order 2 (as $g^{-1} = g$ implies $g^2 = e$).
+
+    \item Suppose $G = \langle g \rangle$ and $H \leq G$. Then any element in $H$ is of the form $g^a$ where $a$ is an integer. Suppose $m$ is the smallest positive integer $m$ such that $g^m \in H$. Suppose now $g^n \in H$ for some $n$. By Euclid's division lemma (\myref{lemma-euclid-division}), $n = mq + r$ where $q$ and $r$ are non-negative integers such that $0 \leq r < m$. Hence,
+    \[
+        g^n = g^{mq}g^r = (g^m)^q g^r.
+    \]
+    Now, $m$ is the smallest positive integer such that $g^m \in H$. This means that if $r \neq 0$, $g^r \not\in H$ as $0 \leq r < m$. Hence, $r = 0$, which means
+    \[
+        g^n = (g^m)^q.
+    \]
+    Thus, every element in the subgroup $H$ can be formed by applying $g^m$ a certain number of times, meaning $H$ is cyclic with generator $g^m$.
 
     \item \begin{enumerate}[label=(\roman*)]
         \item Let $xH$ be a coset in $G$. Since cosets partition $G$, either $xH = H$ or $xH = G \setminus H$ (since there are only two distinct cosets).
