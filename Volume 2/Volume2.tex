@@ -487,12 +487,12 @@ We end this chapter off with an exploration about subrings.
     \begin{enumerate}[label=(\roman*)]
         \item Find \textbf{four} closed forms for the geometric series $1 + x + x^2 + x^3 + \cdots + x^n$.
         \item What are the condition(s) such that the closed forms are valid?
-        \item Evaluate $36 \times 71$ in the ring $\Zn{73}$.
+        \item Evaluate 112 in the ring $\Zn{37}$.
         \item Hence, using the result(s) above, evaluate
         \[
-            1 + 3 + 3^2 + \cdots + 3^{19}
+            1 + 2^3 + 2^6 + 2^9 + \cdots + 2^{72}
         \]
-        in the ring $\Zn{73}$.
+        in the ring $\Zn{37}$.
     \end{enumerate}
 \end{problem}
 
@@ -1651,19 +1651,22 @@ No problems.
         \]
         which are the four closed forms that we require.
         \item The condition is that either $1-x$ is a unit or $x-1$ is a unit in $R$, i.e. $(1-x)^{-1}$ or $(x-1)^{-1}$ exists.
-        \item $36 \times 71 = 2556 = 1$ in $\Zn{73}$.
-        \item Note that $71 = -2 = 1 - 3$ in $\Zn{73}$, so $(1-3)^{-1}$ inverse is 36 by (iii). Thus the series sums to
+        \item $112 = 1$ in $\Zn{37}$ since $112 = 37\times3 + 1$.
+        \item Let $x = 2^3 = 8$. Note $(x-1)^{-1} = (8-1)^{-1} = 7^{-1} = 16$ by (iii). Thus
         \[
-            (1-3)^{-1}(1-3^{20}) = 36 \times (1-3^{20}).
+            1+2+\cdots+2^{72} = (8-1)^{-1}(8^{25}-1) = 16(8^{25}-1).
         \]
-        Note that
+        We also see that
         \begin{align*}
-            3^{20} &= 3^{10}\times3^{10}\\
-            &= 65 \times 65 & (\text{In } \Zn{73})\\
-            &= 4225\\
-            &= 64 & (\text{In } \Zn{73})
+            8^{25}-1 &= \left(8^{5}\right)^{5} - 1\\
+            &= 32768^5 - 1\\
+            &= (37\times885 + 23)^5 - 1\\
+            &= (23)^5 - 1\\
+            &= 6436342\\
+            &= 37\times173955 + 7\\
+            &= 7
         \end{align*}
-        and so the series sums to $36 \times 64 = 2304 = 41$ in $\Zn{73}$.
+        which means $1+2^3+\cdots+2^{72} = 16 \times 7 = 112 = 1$.
     \end{enumerate}
 
     \item For brevity let $R = \Q[\sqrt2]$. We first show that $(R,+)$ is an abelian group.
