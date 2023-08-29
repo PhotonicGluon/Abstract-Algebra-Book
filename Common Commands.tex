@@ -29,7 +29,7 @@
 \usepackage{imakeidx}
 \usepackage[breaklinks]{hyperref}
 \usepackage[capitalise, nameinlink]{cleveref}
-\usepackage[svgnames]{xcolor}
+\usepackage[x11names]{xcolor}
 \usepackage{crossreftools}
 
 \usepackage[
@@ -93,6 +93,12 @@
 \theoremstyle{theorem-style}\newtheorem{theoremhidden}{Theorem}[section]
 \renewcommand{\thetheoremhidden}{\Roman{part}.\arabic{chapter}.\arabic{section}.\arabic{theoremhidden}}
 
+\theoremstyle{theorem-style}\newtheorem{lemmahidden}[theoremhidden]{Lemma}
+
+\theoremstyle{theorem-style}\newtheorem{propositionhidden}[theoremhidden]{Proposition}
+
+\theoremstyle{theorem-style}\newtheorem{corollaryhidden}[theoremhidden]{Corollary}
+
 \theoremstyle{definition-style}\newtheorem{definitionhidden}[theoremhidden]{Definition}
 
 \theoremstyle{exercise-style}\newtheorem{exercisehidden}{Exercise}[chapter]
@@ -101,21 +107,28 @@
 \theoremstyle{definition}\newtheorem{problem}{Problem}[chapter]
 \renewcommand{\theproblem}{\Roman{part}.\arabic{chapter}.\arabic{problem}}
 
-\newtheorem{conjecture}[theoremhidden]{Conjecture}
-\newtheorem{proposition}[theoremhidden]{Proposition}
-\newtheorem{lemma}[theoremhidden]{Lemma}
-\newtheorem{corollary}[theoremhidden]{Corollary}
-
 \theoremstyle{definition}\newtheorem*{remark}{Remark}
 \theoremstyle{definition}\newtheorem{example}[theoremhidden]{Example}
 
 %============ Environments ===============
 \newenvironment{theorem}
-{\definecolor{shadecolor}{named}{PaleGreen}\begin{shaded}\noindent\begin{theoremhidden}}
+{\definecolor{shadecolor}{named}{DarkSeaGreen2}\begin{shaded}\noindent\begin{theoremhidden}}
 {\end{theoremhidden}\end{shaded}}
 
+\newenvironment{lemma}
+{\definecolor{shadecolor}{named}{Honeydew2}\begin{shaded}\noindent\begin{lemmahidden}}
+{\end{lemmahidden}\end{shaded}}
+
+\newenvironment{proposition}
+{\definecolor{shadecolor}{named}{Honeydew1}\begin{shaded}\noindent\begin{propositionhidden}}
+{\end{propositionhidden}\end{shaded}}
+
+\newenvironment{corollary}
+{\definecolor{shadecolor}{named}{DarkSeaGreen1}\begin{shaded}\noindent\begin{corollaryhidden}}
+{\end{corollaryhidden}\end{shaded}}
+
 \newenvironment{definition}
-{\definecolor{shadecolor}{named}{LightCyan}\begin{shaded}\noindent\begin{definitionhidden}}
+{\definecolor{shadecolor}{named}{LightCyan1}\begin{shaded}\noindent\begin{definitionhidden}}
 {\end{definitionhidden}\end{shaded}}
 
 \newenvironment{exercise}
