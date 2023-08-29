@@ -362,11 +362,7 @@ We are now ready to prove some properties of groups.
     The inverse of an element $x$ of a group $G$ is unique.
 \end{proposition}
 \begin{proof}
-    Suppose that $a$ and $b$ are inverses of $x$. Then by definition we have
-    \[
-        ax = xa = e \text{ and } bx = xb = e.
-    \]
-    Note that
+    Suppose that $a$ and $b$ are inverses of $x$. Then by definition, $ax = xa = e \text{ and } bx = xb = e$. So,
     \begin{align*}
         a &= ae & (e \text{ is the identity})\\
         &= a(xb) & (b \text{ is an inverse, so } xb = e)\\
@@ -2026,7 +2022,7 @@ Previously, we considered ways to transform elements from one group to another u
 \section{External Direct Product}
 The external direct product is one method of `combining' groups together.
 \begin{definition}
-    Let $(G, \ast)$ and $(H, \star)$ be groups. The \textbf{external direct product}\index{direct product!external} of $G$ and $H$ is denoted by $G\times H$ and is the group $(G\times H, (\ast, \star))$, where $G\times H$ is the Cartesian product of $G$ and $H$, and $(\ast, \star)$ are the operators performed component-wise.
+    Let $(G, \ast)$ and $(H, \star)$ be groups. The \textbf{external direct product}\index{direct product!external} of $G$ and $H$ is denoted by $G\times H$ and is the group $(G\times H, (\ast, \star))$, where $(\ast, \star)$ are the operators performed component-wise.
 \end{definition}
 Verifying that $(G\times H, (\ast, \star))$ is a group is left as an exercise for the reader. We note the identity of $G \times H$ is $(e_G, e_H)$, where $e_G$ is the identity of $G$ and $e_H$ is the identity of $H$. Also, $|G \times H| = |G||H|$ by definition of the Cartesian product.
 
@@ -2094,8 +2090,6 @@ We prove some results relating the external direct product.
         &= mn & (\gcd(m,n) = 1).
     \end{align*}
     Since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and $|(1,1)| = mn$, thus $\mathbb{Z}_m \times \mathbb{Z}_n$ is cyclic with generator $(1,1)$. By \myref{thrm-finite-cyclic-group-isomorphic-to-Zn}, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$.
-
-    This proves the theorem.
 \end{proof}
 
 \begin{exercise}
@@ -2283,8 +2277,6 @@ We note that the image of a homomorphism is a subgroup of the codomain $H$.
 \end{exercise}
 
 \section{Kernel of a Homomorphism}
-We look at the \textbf{kernel} of a homomorphism as well.
-
 \begin{definition}
     The \textbf{kernel}\index{homomorphism!kernel} of a homomorphism $\phi: G \to H$ is the set
     \[
@@ -2456,7 +2448,7 @@ We can capture the overall relationships between the subgroups of $G$ using a \t
     \caption{Subgroup Diagram for \myreffigures{thrm-isomorphism-2}}
 \end{figure}
 
-In the diagram, we only show subgroups that we care about. $G$ has a (direct) subgroup $HK$; $HK$ has subgroups $H$ and $K$; and $H$ and $K$ has a common subgroup $H\cap K$. In the case where $K \unlhd G$, the two dotted quotient groups are isomorphic to each other.
+We only show subgroups that we care about in the diagram. The group $G$ has a (direct) subgroup $HK$; $HK$ has subgroups $H$ and $K$; and $H$ and $K$ has a common subgroup $H\cap K$. The dotted quotient groups are isomorphic to each other if $K \unlhd G$.
 
 \begin{proof}
     We prove each statement in sequence.
@@ -2730,7 +2722,7 @@ Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead
 We prove more facts about cyclic groups here.
 \begin{lemma}\label{lemma-order-of-an-element-that-is-equivalent-to-identity}
     Let $\Cn{n}$ have generator $g$. Then $g^k = e$ if and only if $k$ is a multiple of $n$.\newline
-    (Equivalently, this means that if $g^k = e$, then $n$ divides $k$, i.e. $n\vert k$.)
+    (That is, if $g^k = e$ then $n$ divides $k$, i.e. $n\vert k$.)
 \end{lemma}
 \begin{proof}
     We note that the order of $g$ is $n$, since $g$ is a generator of $G$. Thus by \myref{problem-element-to-power-of-multiple-of-order-is-identity} the lemma is proven.
@@ -2803,11 +2795,11 @@ We are now ready to prove an essential theorem on cyclic groups.
 \section{Quaternion Group}
 We look at an interesting group that has use in computer graphics: the \textbf{Quaternion Group}. We present one definition here.
 \begin{definition}\label{definition-quaternion-group}
-    The quaternion group\index{Quaternion Group} is denoted by $\mathrm{Q}$ where
+    The quaternion group\index{Quaternion Group} is
     \[
             \mathrm{Q} = \{1, -1, i, -i, j, -j, k, -k\}
     \]
-    such that
+    where
     \begin{multicols}{2}
         \begin{itemize}
             \item 1 is the identity;
@@ -2820,18 +2812,9 @@ We look at an interesting group that has use in computer graphics: the \textbf{Q
     \end{multicols}
 \end{definition}
 
-The proper subgroups of $\mathrm{Q}$ are as follows.
-\begin{multicols}{2}
-    \begin{itemize}
-        \item $\langle -1 \rangle = \{\pm1\}$
-        \item $\langle i \rangle = \{\pm1, \pm i\}$
-        \item $\langle j \rangle = \{\pm1, \pm j\}$
-        \item $\langle k \rangle = \{\pm1, \pm k\}$
-    \end{itemize}
-\end{multicols}
+The quaternion group has 4 proper subgroups, namely $\langle -1 \rangle = \{\pm1\}$, $\langle i \rangle = \{\pm1, \pm i\}$, $\langle j \rangle = \{\pm1, \pm j\}$, and $\langle k \rangle = \{\pm1, \pm k\}$.
 
 With these subgroups, we can write a presentation for $\mathrm{Q}$.
-
 \begin{proposition}
     $\mathrm{Q} = \langle i, j \rangle$.
 \end{proposition}
@@ -2883,7 +2866,7 @@ We look at one lemma which can be said to help `break up' transpositions into a 
 \begin{proof}
     We induct on $d$.
 
-    When $d = 1$, we see $\tau = (i\quad i+1)$ so the statement is true for $d=1$.
+    When $d = 1$, note $\tau = (i\quad i+1)$ so the lemma is true for $d=1$.
 
     Assume that the given representation of $\tau$ holds for some positive integer $d$. Note this means that it holds for all $i$, including $i+1$. We are to show that it works for $d + 1$.
     \begin{align*}
@@ -2897,7 +2880,7 @@ We look at one lemma which can be said to help `break up' transpositions into a 
     which shows that $d+1$ works as well.
 \end{proof}
 \begin{remark}
-    In the above representation of $\tau$, we use $2d-1$ compositions.
+    The above representation of $\tau$ uses $2d-1$ compositions.
 \end{remark}
 \begin{example}
     An adjacent transposition decomposition of $(4\quad9)$ is
@@ -2933,9 +2916,8 @@ An inversion between the elements $i$ and $j$ is denoted by either $(i, j)$ or $
 
 We now define the idea of \textbf{even} permutations and \textbf{odd} permutations.
 \begin{definition}
-    A permutation $\sigma$ is said to be \textbf{even}\index{permutation!even} if there are an even number of inversions in $\sigma$. If $\sigma$ is not even then it is said to be \textbf{odd}\index{permutation!odd}.
+    A permutation $\sigma$ is said to be \textbf{even}\index{permutation!even} if there are an even number of inversions in $\sigma$. If $\sigma$ is not even then it is said to be \textbf{odd}\index{permutation!odd}. The evenness or oddness of a permutation $\sigma$ is called the \textbf{parity of $\sigma$}\index{permutation!parity}.
 \end{definition}
-The evenness or oddness of a permutation $\sigma$ is called the \textbf{parity of $\sigma$}\index{permutation!parity}.
 
 Counting the number of inversions in a permutation may be hard to do, so we have an alternative definition for the parity of a permutation.
 
@@ -3128,6 +3110,8 @@ Note $|\Un{n}| = \totient(n)$ by definition of $\Un{n}$.
 \begin{exercise}\label{exercise-order-of-a-divides-phi-a}
     Let $a \in \Un{n}$. Prove that $|a|$ divides $\totient(n)$.
 \end{exercise}
+
+\newpage
 
 We look at the specific case where $|a| = \totient(n)$.
 \begin{definition}
@@ -3425,8 +3409,6 @@ We now look at the group of automorphisms of a group $G$.
     under function composition (denoted by $\circ$).
 \end{definition}
 We prove that $\Aut{G}$ is indeed a group.
-
-\newpage
 
 \begin{proof}
     We look at the four group axioms.
@@ -4035,7 +4017,7 @@ An immediate consequence of this is that every element must have an order that i
 \begin{example}
     We look at the class equation of the symmetric group of degree 3, $\Sn{3}$.
 
-    We recall from \myref{example-conjugacy-classes-of-Sn3} that the conjugacy classes of $\Sn{3}$ are
+    Recall from \myref{example-conjugacy-classes-of-Sn3} that $\Sn{3}$ has the conjugacy classes
     \begin{align*}
         &\Cl{\id} = \{\id\}\\
         &\Cl{\tau} = \{\begin{pmatrix}1 & 2\end{pmatrix}, \begin{pmatrix}1 & 3\end{pmatrix}, \begin{pmatrix}2 & 3\end{pmatrix}\}\\
@@ -4045,7 +4027,7 @@ An immediate consequence of this is that every element must have an order that i
     \[
         6 = 1 + 2 + 3
     \]
-    where $|\Z{\Sn{3}}| = |\{e\}| = 1$.
+    where $|\Z{\Sn{3}}| = |\{e\}| = 1$.  
 \end{example}
 
 \begin{exercise}
@@ -4429,7 +4411,6 @@ We note one important corollary of the Second Sylow Theorem.
 \end{exercise}
 
 \section{Third Sylow Theorem}
-We now state and prove the \textbf{Third Sylow Theorem}.
 \begin{theorem}[Sylow III]\label{thrm-sylow-3}\index{Sylow Theorem!Third}
     Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. Let $n_p$ denote the number of Sylow $p$-subgroups in $G$, i.e. $n_p = |\Syl{p}{G}|$. Then,
     \begin{enumerate}
@@ -4438,8 +4419,6 @@ We now state and prove the \textbf{Third Sylow Theorem}.
         \item $n_p \equiv 1 \pmod p$.
     \end{enumerate}
 \end{theorem}
-
-\newpage
 
 \begin{proof}[Proof (see \cite{wielandt_1959})]
     We prove the three statements in order.
@@ -4722,7 +4701,7 @@ We can now look at a more interesting type of subnormal series: the \textbf{comp
     \[
         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G  
     \]
-    such that $H_i$ is a maximal normal subgroup of $H_{i+1}$ (for $0 \leq i < n$). The factor groups $H_{i+1}/H_i$ are called the \textbf{composition factors}\index{composition factor}, and the length $n$ above is called the \textbf{composition length}\index{composition length}.
+    such that $H_i$ is a maximal normal subgroup of $H_{i+1}$ (for $0 \leq i < n$). The factor groups $H_{i+1}/H_i$ are called the \textbf{composition factors}\index{composition factor}, and the length $n$ is called the \textbf{composition length}\index{composition length}.
 \end{definition}
 \begin{remark}
     Some authors (e.g. \cite{cohn_1982, clark_1984, proofwiki_compositionseriesdefinition}) require composition series to be a normal series. However we follow \cite{hungerford_1980, humphreys_1996, milne_2021} and others and only require it to be a subnormal series.
@@ -4877,7 +4856,7 @@ Before we look at them, we introduce \textbf{refinements}.
     \[
         1 \lhd \{e, r^2\} \lhd D_4 \text{ and } 1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.    
     \]
-    Thus $1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4$ is a refinement of $1 \lhd \{e, r^2\} \lhd D_4$.
+    Thus the subnormal series $1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4$ is a refinement of the subnormal series $1 \lhd \{e, r^2\} \lhd D_4$.
 \end{example}
 
 We can now introduce the \textbf{Schreier Refinement Theorem}.
@@ -4906,17 +4885,13 @@ We can now introduce the \textbf{Schreier Refinement Theorem}.
         1 = \hat{H}_0 \subseteq \hat{H}_1 \subseteq \hat{H}_2 \subseteq \cdots \subseteq \hat{H}_{mn - 1} \subseteq \hat{H}_{mn} = G
         \tag{A'}
     \end{equation}
-    such that
-    \[
-        \hat{H}_k = H_q(H_{q+1}\cap K_r)
-    \]
-    for $k = qn + r$, where $0 \leq q < m$ and $0 \leq r \leq n$. It needs to be demonstrated that $\hat{H}_k$ is well-defined. Consider the ambiguity of the $k = qn + r$ in the case where $r = n$, so $k = qn + n = (q+1)n + 0$. For \myref{eqn:thrm-schreier-eqn-a-prime} to be well defined, we require
+    such that $\hat{H}_k = H_q(H_{q+1}\cap K_r)$ for $k = qn + r$, where $0 \leq q < m$ and $0 \leq r \leq n$. It needs to be demonstrated that $\hat{H}_k$ is well-defined. Consider the ambiguity of the $k = qn + r$ in the case where $r = n$, so $k = qn + n = (q+1)n + 0$. For \myref{eqn:thrm-schreier-eqn-a-prime} to be well defined, we require
     \[
         H_q(H_{q+1} \cap K_n) = H_{q+1}(H_{q+2} \cap K_0).
     \]
     We note $H_q \subseteq H_{q+1}$. Thus the left-hand side is
     \begin{align*}
-        H_q(H_{q+1} \cap K_n) &= H_q(H_{q+1} \cap G) & (\text{note } K_n = G)\\
+        H_q(H_{q+1} \cap K_n) &= H_q(H_{q+1} \cap G) & (\text{note that } K_n = G)\\
         &= H_qH_{q+1}\\
         &= H_{q+1} & (\text{by \myref{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}})
     \end{align*}
@@ -4936,7 +4911,7 @@ We can now introduce the \textbf{Schreier Refinement Theorem}.
     \[
         \hat{H}_k = H_q(H_{q+1}\cap K_r) \unlhd H_q(H_{q+1}\cap K_{r+1}) = \hat{H}_{k+1}
     \]
-    by Zassenhaus' Lemma (\myref{lemma-zassenhaus}), statement 1. Thus $\hat{H}_k \unlhd \hat{H}_{k+1}$, which is what we wanted to prove. However we note that \myref{eqn:thrm-schreier-eqn-a-prime} may not be a subnormal series, as it is possible for $\hat{H}_k = \hat{H}_{k+1}$ for some $k$. We will address this concern near the end.
+    by Zassenhaus' Lemma (\myref{lemma-zassenhaus}), statement 1. Thus $\hat{H}_k \unlhd \hat{H}_{k+1}$, which is what we wanted to prove. However we note that \myref{eqn:thrm-schreier-eqn-a-prime} may not be a subnormal series, as it is possible for $\hat{H}_k = \hat{H}_{k+1}$ for some $k$. We address this concern near the end.
     
     Having created series \myref{eqn:thrm-schreier-eqn-a-prime}, use the same procedure to form
     \begin{equation}\label{eqn:thrm-schreier-eqn-b-prime}
@@ -4971,11 +4946,11 @@ We can now introduce and prove the \textbf{Jordan-H\"older Theorem}.
     
     Now a composition series has no proper refinements since all subgroups inside a composition series are maximal normal subgroups. Hence any refinements must be identical to the composition series themselves.
     
-    Therefore, any two composition series (which are their own refinements) for a finite group have the same length and composition factors.
+    Thus any two composition series (which are their own refinements) for a finite group have the same length and composition factors.
 \end{proof}
 
 \begin{example}
-    We found in an earlier example the 3 distinct composition series for $D_6$:
+    We found earlier that $D_6$ has 3 distinct composition series:
     \begin{align*}
         &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6;\\
         &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6; \text{ and}\\
@@ -4988,6 +4963,8 @@ We can now introduce and prove the \textbf{Jordan-H\"older Theorem}.
         \item $\Cn{3}/1 \cong \Cn{3}$, $D_3 / \Cn{3} \cong \Cn{2}$, $D_6 / D_3$.
     \end{itemize}
     By the Jordan-H\"older theorem (\myref{thrm-jordan-holder}), the factors must be isomorphic to each other. Looking at the last 2 factor lists, only one factor from each is unaccounted for, namely $D_6 / \Cn{6}$ and $D_6 / D_3$. Since Jordan-H\"older guarantees that they are isomorphic to each other, hence, technically, $D_6 / \Cn{6} \cong D_6 / D_3$.
+
+    \newpage
 
     \textbf{Important note}: The $\Cn{6}$ and $D_3$ above represent \textbf{subgroups} of $D_6$ (up to isomorphism), not the actual groups themselves. The subgroup of $D_6$ that is isomorphic to $\Cn{6}$ is $\langle r \rangle$, while the subgroup isomorphic to $D_3$ is $\langle r^2, s\rangle$. Therefore the correct statement is
     \[
@@ -5146,9 +5123,11 @@ With these results, we are ready to prove that an alternating group with a degre
     The group $\An{n}$ is simple if $n \geq 5$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[pp.~149--150, Theorem 24]{dummit_foote_2004}})]
-    We induct on $n$. For brevity, we denote the set $\mathcal{N}_n = \{1, 2, 3, \dots, n\}$.
+    We induct on $n$. For brevity, denote the set $\mathcal{N}_n = \{1, 2, 3, \dots, n\}$.
     
-    The base case of $n = 5$ is covered by \myref{corollary-A5-is-simple}. Assume that $\An{k-1}$ is simple for some $k \geq 6$; we will prove that $\An{k}$ is also simple.
+    The base case of $n = 5$ is covered by \myref{corollary-A5-is-simple}.
+    
+    Assume that $\An{k-1}$ is simple for some $k \geq 6$; we will prove that $\An{k}$ is also simple.
 
     Let $G = \An{k}$, and, seeking a contradiction, assume that $G$ has a proper normal subgroup $H$. Let $G$ act on $\mathcal{N}_{k}$ naturally; thus $\Stab{G}{i} \leq G$ with $\Stab{G}{i} \cong \An{k-1}$ (\myref{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}). Note $\An{k-1}$ is simple by Induction Hypothesis, so $\Stab{G}{i}$ is simple for each $i \in \mathcal{N}_{k}$.
 
@@ -5175,7 +5154,7 @@ With these results, we are ready to prove that an alternating group with a degre
     
     We conclude that if $\pi \in H$ and $\pi \neq \id$ then $\pi(i) \neq i$ for all $i \in \mathcal{N}_k$. Now suppose $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$. Then $\pi_2^{-1}\pi_1(i) = i$, which implies $\pi_2^{-1}\pi_1 = \id$. Hence $\pi_1 = \pi_2$. Therefore, if $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$, then $\pi_1 = \pi_2$.
 
-    Now suppose there exists a non-identity $\pi_1 \in H$ such that the cycle decomposition of $\pi_1$ contains a cycle of length of at least 3, say
+    Now suppose a non-identity $\pi_1 \in H$ exists such that the cycle decomposition of $\pi_1$ contains a cycle of length of at least 3, say
     \[
         \pi_1 = \begin{pmatrix}a_1&a_2&a_3&\cdots\end{pmatrix} \begin{pmatrix}b_1&b_2&\cdots\end{pmatrix}\cdots
     \]
