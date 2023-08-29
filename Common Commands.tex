@@ -87,22 +87,23 @@
     { }          % Space after theorem head; " " = normal inter-word space
     {\thmname{#1}\thmnumber{ #2}\textit{\thmnote{ (#3)}}}
 
-\newtheorem{theorem}{Theorem}[section]
-\renewcommand{\thetheorem}{\Roman{part}.\arabic{chapter}.\arabic{section}.\arabic{theorem}}
+\theoremstyle{theorem-style}\newtheorem{theoremhidden}{Theorem}[section]
+\renewcommand{\thetheoremhidden}{\Roman{part}.\arabic{chapter}.\arabic{section}.\arabic{theoremhidden}}
 
-\newtheorem{conjecture}[theorem]{Conjecture}
-\newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-\theoremstyle{definition}\newtheorem*{remark}{Remark}
-\theoremstyle{definition}\newtheorem{example}[theorem]{Example}
+\theoremstyle{definition-style}\newtheorem{definitionhidden}[theoremhidden]{Definition}
 
-\theoremstyle{definition-style}\newtheorem{definitionhidden}[theorem]{Definition}
 \theoremstyle{exercise-style}\newtheorem{exercisehidden}{Exercise}[chapter]
 \renewcommand{\theexercisehidden}{\Roman{part}.\arabic{chapter}.\arabic{exercisehidden}}
 
 \theoremstyle{definition}\newtheorem{problem}{Problem}[chapter]
 \renewcommand{\theproblem}{\Roman{part}.\arabic{chapter}.\arabic{problem}}
+
+\newtheorem{conjecture}[theoremhidden]{Conjecture}
+\newtheorem{proposition}[theoremhidden]{Proposition}
+\newtheorem{lemma}[theoremhidden]{Lemma}
+\newtheorem{corollary}[theoremhidden]{Corollary}
+\theoremstyle{definition}\newtheorem*{remark}{Remark}
+\theoremstyle{definition}\newtheorem{example}[theoremhidden]{Example}
 
 %============ Environments ===============
 \newenvironment{definition}
@@ -112,6 +113,10 @@
 \newenvironment{exercise}
 {\begin{framed}\noindent\begin{exercisehidden}}
 {\end{exercisehidden}\end{framed}}
+
+\newenvironment{theorem}
+{\definecolor{shadecolor}{named}{PaleGreen}\begin{shaded}\noindent\begin{theoremhidden}}
+{\end{theoremhidden}\end{shaded}}
 
 %=========== Custom Commands =============
 \newcommand{\code}[1]{\texttt{#1}}  % Code block
