@@ -29,6 +29,7 @@
 \usepackage{imakeidx}
 \usepackage[breaklinks]{hyperref}
 \usepackage[capitalise, nameinlink]{cleveref}
+\usepackage[svgnames]{xcolor}
 \usepackage{crossreftools}
 
 \usepackage[
@@ -58,27 +59,45 @@
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 
 %======== Theorem-Like Things ============
-\newtheoremstyle{exercise-style}
-    {-5pt}       % Space above
-    {\topsep}    % Space below
-    {}           % Font to use in exercise
+\newtheoremstyle{definition-style}
+    {-12pt}      % Space above
+    {-5pt}       % Space below
+    {}           % Font to use in the definition
     {0pt}        % Measure of space to indent
     {\bfseries}  % Name of the head font
     {.}          % Punctuation between head and body
     { }          % Space after theorem head; " " = normal inter-word space
     {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+\newtheoremstyle{exercise-style}
+    {-5pt}       % Space above
+    {\topsep}    % Space below
+    {}           % Font to use in the exercise
+    {0pt}        % Measure of space to indent
+    {\bfseries}  % Name of the head font
+    {.}          % Punctuation between head and body
+    { }          % Space after theorem head; " " = normal inter-word space
+    {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+\newtheoremstyle{theorem-style}
+    {-12pt}      % Space above
+    {-5pt}       % Space below
+    {}           % Font to use in the theorem
+    {0pt}        % Measure of space to indent
+    {\bfseries}  % Name of the head font
+    {.}          % Punctuation between head and body
+    { }          % Space after theorem head; " " = normal inter-word space
+    {\thmname{#1}\thmnumber{ #2}\textit{\thmnote{ (#3)}}}
 
 \newtheorem{theorem}{Theorem}[section]
 \renewcommand{\thetheorem}{\Roman{part}.\arabic{chapter}.\arabic{section}.\arabic{theorem}}
 
 \newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{proposition}[theorem]{Proposition}
-\newtheorem{definition}[theorem]{Definition}
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{definition}\newtheorem*{remark}{Remark}
 \theoremstyle{definition}\newtheorem{example}[theorem]{Example}
 
+\theoremstyle{definition-style}\newtheorem{definitionhidden}[theorem]{Definition}
 \theoremstyle{exercise-style}\newtheorem{exercisehidden}{Exercise}[chapter]
 \renewcommand{\theexercisehidden}{\Roman{part}.\arabic{chapter}.\arabic{exercisehidden}}
 
@@ -86,6 +105,10 @@
 \renewcommand{\theproblem}{\Roman{part}.\arabic{chapter}.\arabic{problem}}
 
 %============ Environments ===============
+\newenvironment{definition}
+{\definecolor{shadecolor}{named}{LightCyan}\begin{shaded}\noindent\begin{definitionhidden}}
+{\end{definitionhidden}\end{shaded}}
+
 \newenvironment{exercise}
 {\begin{framed}\noindent\begin{exercisehidden}}
 {\end{exercisehidden}\end{framed}}
