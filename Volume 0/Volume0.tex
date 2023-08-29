@@ -61,23 +61,18 @@ A set is often described by listing elements separated by commas, or by a charac
 \end{example}
 Some sets may have infinitely many elements.
 \begin{example}
-    The integers 
-    \[
-        \{\dots, -3, -2, -1, 0, 1, 2, 3, \dots\}
-    \]
-    is a set with infinitely many elements. Here, the dots indicate that the pattern of integers goes on forever in both directions.
+    The integers $\{\dots, -3, -2, -1, 0, 1, 2, 3, \dots\}$ is a set with infinitely many elements. Here, the dots indicate that the pattern of integers goes on forever in both directions.
 \end{example}
 
 \begin{definition}
     A set with a finite number of elements is called a \textbf{finite set}\index{set!finite}. A set with an infinite number of elements is called an \textbf{infinite set}\index{set!infinte}.
 \end{definition}
 
-A set is completely determined by its elements. Thus we come up with the following definition for the equality of sets.
 \begin{definition}\index{set!equality}
     Two sets $A$ and $B$ are equal if and only if they contain the same elements.
 \end{definition}
 \begin{example}
-    The sets $\{1, 2, 3, 4\}$, $\{4, 3, 2, 1\}$, and $\{3, 4, 1, 2\}$ are equal to each other even though their elements are listed in a different order.
+    The sets $A = \{1, 2, 3, 4\}$, $B = \{4, 3, 2, 1\}$, and $C = \{3, 4, 1, 2\}$ are equal to each other even though their elements are listed in a different order.
 \end{example}
 \begin{example}
     $\{1, 2, 3, 4\} \neq \{1, 2, 3, 5\}$ since the elements in the two sets differ.
@@ -88,7 +83,7 @@ What if a set has no elements?
     The \textbf{empty set}\index{set!empty} is the set $\{\}$ and is denoted by $\emptyset$. That is, $\emptyset = \{\}$.
 \end{definition}
 
-We introduce the idea of (proper) subsets.
+We introduce the idea of subsets.
 \begin{definition}
     Let $A$ and $B$ be sets.
     \begin{itemize}
@@ -97,7 +92,7 @@ We introduce the idea of (proper) subsets.
     \end{itemize}
 \end{definition}
 \begin{example}
-    Let $A = \{1, 2\}$, $B = \{1, 2, 3\}$, $C = \{1, 4\}$, and $S = \{1, 2, 3\}$. Then $A \subseteq S$ since the elements of $A$, namely 1 and 2, also appear in $S$. Also $B \subseteq S$ since all elements of $B$ appear in $S$. However $C \not\subseteq S$ since 4 is not an element of $S$>
+    Let $A = \{1, 2\}$, $B = \{1, 2, 3\}$, $C = \{1, 4\}$, and $S = \{1, 2, 3\}$. Then $A \subseteq S$ since the elements of $A$, namely 1 and 2, also appear in $S$. Also $B \subseteq S$ since all elements of $B$ appear in $S$. However $C \not\subseteq S$ since 4 is not an element of $S$.
 
     We note that $B \not\subset S$ since $S$ does not contain an element that is not in $B$. But $A \subset S$ since 3 is not in $A$.
 \end{example}
@@ -118,6 +113,16 @@ We introduce the idea of (proper) subsets.
         \end{enumerate}
     \end{multicols}
 \end{exercise}
+
+There are some special sets that are so common that we have given special names and symbols.
+\begin{itemize}
+    \item $\mathbb{N}$ denotes the set of positive integers\index{set!of positive integers};
+    \item $\mathbb{Z}$ denotes the set of integers\index{set!of integers} (from the German ``z\"{a}hlen", which means ``numbers");
+    \item $\mathbb{Q}$ denotes the set of rational numbers\index{set!of rational numbers}; and
+    \item $\mathbb{R}$ denotes the set of real numbers\index{set!of real numbers}.
+\end{itemize}
+
+\newpage
 
 \section{Set Operations}
 Certain operations could be performed on sets. We list the most commonly used ones here.
@@ -175,35 +180,62 @@ Certain operations could be performed on sets. We list the most commonly used on
     \end{multicols}
 \end{exercise}
 
-\newpage
-%TODO: Continue updating
-It is quite useful to have a notation that describes a set that is defined by a logical formula that evaluates to true for an element of the set, and false otherwise. In this form, set-builder notation\index{set!builder notation} has three parts: a variable, a vertical bar separator, and the logical formula. Thus there is a variable on the left of the separator, and a rule on the right of it. These three parts are contained in curly brackets:
-\[
-    \{x \ | \ \Phi(x)\}
-\]
-The vertical bar is a separator that can be read as ``such that'', ``for which'', or ``with the property that''. The formula $\Phi(x)$ is said to be the rule.
+\section{Set-Builder Notation}
+Sometimes, some sets are too big or complex to list between the braces. In these cases, we use set-builder notation to describe the sets.
+\begin{definition}
+    A set $S$ with \textbf{set-builder notation}\index{set!builder notation} has the syntax
+    \[
+        S = \{\mathrm{expression} \ | \ \mathrm{rule}\},
+    \]
+    where the elements of $S$ are understood to be all values of the {\normalfont expression} that satisfy the {\normalfont rule}.
+\end{definition}
 
-A domain $X$ can appear on the left of the vertical bar:
-\[
-    \{x \in X \ | \ \Phi(x)\},
-\]
-or by adjoining it to the logical formula:
-\[
-    \{x \ | \ x \in X,\; \Phi(x)\}.
-\]
+\begin{example}
+    Consider the infinite set of even integers, $E = \{\dots, -6, -4, -2, 0, 2, 4, 6, \dots\}$. It is often written as
+    \[
+        E = \{2n \vert n \in \mathbb{Z}\}.
+    \]
+    In this case, we may read the above expression as ``$E$ is the set of all things of form $2n$, where $n$ is an element of $\mathbb{Z}$''.
+
+    There are equivalent forms of $E$:
+    \[
+        E = \{n \vert n \textrm{ is an even integer}\} = \{n \vert n = 2k, k \in \mathbb{Z}\}.
+    \]
+
+    Another common way of writing $E$ is
+    \[
+        E = \{n \in \mathbb{Z} \vert n \textrm{ is even}\}
+    \]
+    where it could be read as ``$E$ is the set of all $n$ in $\mathbb{Z}$ such that $n$ is even''.
+\end{example}
+\begin{remark}
+    Some authors use the colon instead of the bar, i.e. $S = \{\mathrm{expression} \ : \ \mathrm{rule}\}$. We use the bar.
+\end{remark}
+
 \begin{example}
     The set $S = \{x \in \mathbb{R} \ | \ x \geq 0 \}$ is the set of all non-negative real numbers.
 \end{example}
 
-The cardinality\index{cardinality} of a set $S$, denoted $|S|$, is the number of elements in $S$. The cardinality of the empty set is zero. The list of elements of some sets is endless, or infinite. In this book, we denote the cardinality of such infinite sets as $|S| = \infty$ (even though it is poorly defined in other contexts).
-
-Finally, some notation that will be used in this and future volumes:
-\begin{itemize}
-    \item $\mathbb{N}$ denotes the set of positive integers\index{set!of positive integers};
-    \item $\mathbb{Z}$ denotes the set of integers\index{set!of integers} (from the German ``z\"{a}hlen", which means ``numbers");
-    \item $\mathbb{Q}$ denotes the set of rational numbers\index{set!of rational numbers}; and
-    \item $\mathbb{R}$ denotes the set of real numbers\index{set!of real numbers}.
-\end{itemize}
+\section{Cardinality}
+\begin{definition}
+    The \textbf{cardinality}\index{cardinality} of a set $S$, denoted by $|S|$, is a measure of the number of elements of the set.
+    \begin{itemize}
+        \item If $S$ is finite, then $|S|$ is the number of elements in $S$.
+        \item If $S$ is infinite, then we write $|S| = \infty$.
+    \end{itemize}
+\end{definition}
+\begin{remark}
+    Of course, the notion that $|S| = \infty$ is poorly defined in other contexts. However, for this book, this definition would be sufficient for most of the things we wish to accomplish.
+\end{remark}
+\begin{example}
+    The set $A = \{1, 2, 3\}$ has cardinality 3, i.e. $|A| = 3$.
+\end{example}
+\begin{example}
+    The empty set $\emptyset$ has cardinality 0 since it has no elements, i.e. $|\emptyset| = 0$.
+\end{example}
+\begin{example}
+    The set of integers has infinite elements, so we write $|\mathbb{Z}| = \infty$ for this book.
+\end{example}
 
 \begin{exercise}
     Let the sets
