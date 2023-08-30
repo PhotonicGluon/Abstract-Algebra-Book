@@ -1180,9 +1180,28 @@ Existence proofs fall into two categories: \textbf{constructive}\index{proof!con
 Number theory is an important part of abstract algebra, as we will use some of its more famous results in proofs. In this chapter, we explore the essentials of number theory.
 
 \section{Divisibility}
-We say that \textbf{$a$ divides $b$}\index{divides} (or that $a$ is a \textbf{divisor}\index{divisor} of $b$) if there is an integer $k$ such that $ak = b$. This is denoted $a\vert b$. For example, $7\vert 63$ since $7 \times 9 = 63$. However, 8 does not divide 63, so we write $8 \nmid 63$. A consequence of this definition is that every number divides zero since $a \times 0 = 0$ for every integer $a$.
+\begin{definition}
+    Let $a$ and $b$ be integers. Then \textbf{$a$ divides $b$}\index{divides} (or that $a$ is a \textbf{divisor}\index{divisor} of $b$) if there is an integer $k$ such that $ak = b$. This is denoted $a\vert b$.
+\end{definition}
+\begin{remark}
+    A consequence of this definition is that every number divides zero since $a \times 0 = 0$ for every integer $a$.
+\end{remark}
+\begin{example}
+    $7\vert 63$ since $7 \times 9 = 63$
+\end{example}
+\begin{example}
+    8 does not divide 63 since there is not an integer $k$ such that $8k = 63$, so we write $8 \nmid 63$.
+\end{example}
 
-If $a$ divides $b$, then $b$ is a \textbf{multiple of $a$}\index{multiple}. For example, 63 is a multiple of 7, but 63 is not a multiple of 8.
+\begin{definition}
+    Let $a$ and $b$ be integers. Then $b$ is a \textbf{multiple of $a$}\index{multiple} if and only if $a$ divides $b$.
+\end{definition}
+\begin{example}
+    63 is a multiple of 7 since 7 divides 63.
+\end{example}
+\begin{example}
+    63 is not a multiple of 8 since 8 does not divide 63.
+\end{example}
 
 We list some basic facts about divisibility that are not difficult to prove.
 \begin{itemize}
@@ -1192,8 +1211,17 @@ We list some basic facts about divisibility that are not difficult to prove.
     \item If $c \neq 0$, then $a\vert b$ if and only if $ac\vert bc$.
 \end{itemize}
 
-An integer $p > 1$ with no positive divisors other than 1 and itself is called a \textbf{prime}\index{prime}. Every other number greater than 1 is called \textbf{composite}\index{composite}. For example, 2, 3, 5, 7, 11, and 13 are all prime, but 4, 6, 8, and 9 are composite. The number 1 is considered neither prime nor composite.
+\begin{definition}
+    An integer $p > 1$ with no positive divisors other than 1 and itself is called \textbf{prime}\index{prime}. Every other number greater than 1 is called \textbf{composite}\index{composite}.
+\end{definition}
+\begin{example}
+    The integers 2, 3, 5, 7, 11, and 13 are all prime, but 4, 6, 8, and 9 are composite.
+\end{example}
+\begin{remark}
+    The number 1 is considered neither prime nor composite.
+\end{remark}
 
+Primes are useful since they can construct any positive integer $n>1$ uniquely.
 \begin{theorem}[Fundamental Theorem of Arithmetic]\label{thrm-fundamental-theorem-of-arithmetic}
     Any integer $n > 1$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
 \end{theorem}
@@ -1202,10 +1230,13 @@ An integer $p > 1$ with no positive divisors other than 1 and itself is called a
     Express 44100 as a product of primes.
 \end{exercise}
 
+\newpage
+
 \section{Euclid's Division Lemma}
-When dividing an integer by another, we may sometimes have a \textbf{remainder}\index{remainder}. For example, when 63 is divided by 8, a remainder of 7 is left over. More precisely, if you divide the \textbf{dividend}\index{dividend} $n$ by the divisor $d$, then you get a \textbf{quotient}\index{quotient} $q$ and a remainder $r$, as guaranteed by Euclid's Division Lemma\index{Euclid's Division Lemma}.
-\begin{lemma}[Euclid's Division Lemma]\label{lemma-euclid-division}
-    Given two integers $n$ and $d$, with $d \neq 0$, there exist unique integers $q$ and $r$ such that $n = qd + r$ and $0 \leq r < |d|$, where $|d|$ denotes the absolute value of $d$.
+\begin{lemma}[Euclid's Division Lemma]\label{lemma-euclid-division}\index{Euclid's Division Lemma}
+    Given two integers $n$ and $d$, with $d \neq 0$ being the \textbf{divisor}\index{divisor}, there exist unique integers $q$ and $r$ such that $n = qd + r$ and $0 \leq r < |d|$, where $|d|$ denotes the absolute value of $d$.
+
+    Here, $n$ is called the \textbf{dividend}\index{dividend}, $q$ is called the \textbf{quotient}\index{quotient}, and $r$ is called the \textbf{remainder}\index{remainder}.
 \end{lemma}
 \begin{remark}
     This is also known as \textbf{the division algorithm}\index{division algorithm} (e.g. \cite[p.~4]{dummit_foote_2004}) or \textbf{the division theorem}\index{division theorem} (e.g. \cite[\S 21]{clark_1984}).
