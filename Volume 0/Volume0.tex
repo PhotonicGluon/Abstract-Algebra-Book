@@ -1407,13 +1407,29 @@ The operation of congruence modulo $n$ has a few properties\index{congruence!pro
 Working with polynomials is essential when working in abstract algebra, especially when it comes to objects such as polynomial rings/fields. We note important details when it comes to working with polynomials here.
 
 \section{Basics of Polynomials}
-A polynomial\index{polynomial} is an expression consisting of \textbf{variables}\index{polynomial!variable} (or \textbf{indeterminates}\index{polynomial!indeterminate}) and coefficients, that involves only the operations of addition, subtraction, multiplication, and positive-integer powers of variables. For most operations in this series of books, we will look at polynomials in a single variable (i.e., \textbf{univariate polynomials}\index{polynomial!univariate}), such as $x^2 + 2x + 1$, $4x^5 + 1$, and $10x-123$. In general, a polynomial in a single variable $x$ takes the form
-\[
-    a_0+a_1x+a_2x^2+\cdots+a_nx^n = \sum_{i=0}^n a_ix^i,
-\]
-where $a_0, a_1, a_2, \dots, a_n$ are called the \textbf{coefficients}\index{polynomial!coefficient} of the polynomial. For now, treat these coefficients as numbers; as we progress, we will explore other objects that these coefficients can be.
+\begin{definition}
+    A \textbf{polynomial}\index{polynomial} is an expression consisting of \textbf{variables}\index{polynomial!variable} (or \textbf{indeterminates}\index{polynomial!indeterminate}) and coefficients, that involves only the operations of addition, subtraction, multiplication, and positive-integer powers of variables.
+\end{definition}
+\begin{definition}
+    Polynomials in a single variable are called \textbf{univariate polynomials}\index{polynomial!univariate} and takes the form
+    \[
+        a_0+a_1x+a_2x^2+\cdots+a_nx^n = \sum_{i=0}^n a_ix^i,
+    \]
+    where $a_0, a_1, a_2, \dots, a_n$ are called the \textbf{coefficients}\index{polynomial!coefficient} of the polynomial.
+\end{definition}
+\begin{remark}
+    For now, treat these coefficients as numbers; as we progress, we will explore other objects that these coefficients can be.
+\end{remark}
+\begin{example}
+    $x^2 + 2x + 1$, $4x^5 + 1$, and $10x-123$ are univariate polynomials in $x$.
+\end{example}
+\begin{definition}
+    A \textbf{term}\index{polynomial!term} in a univariate polynomial in $x$ takes the form $cx^n$, where $c$ is the coefficient and $n$ is a non-negative integer.
+\end{definition}
 
-A \textbf{term}\index{polynomial!term} in a univariate polynomial in $x$ takes the form $cx^n$, where $c$ is the coefficient and $n$ is a non-negative integer. The \textbf{degree}\index{polynomial!degree} of such a polynomial is the highest power of $x$ with a non-zero coefficient. The degree of a polynomial $P(x)$ is denoted by $\deg(P(x))$.
+\begin{definition}
+    The \textbf{degree}\index{polynomial!degree} of such a polynomial is the highest power of $x$ with a non-zero coefficient. The degree of a polynomial $P(x)$ is denoted by $\deg(P(x))$.
+\end{definition}
 \begin{example}
     $\deg(x^2 + 2x + 1) = 2$ is 2 since the highest power of $x$ with non-zero coefficient is 2.
 \end{example}
@@ -1424,8 +1440,11 @@ A \textbf{term}\index{polynomial!term} in a univariate polynomial in $x$ takes t
     $\deg(10x - 123) = 1$ is 1 since the highest power of $x$ with non-zero coefficient is 1.
 \end{example}
 \begin{example}
-    $\deg(456) = \deg(456x^0) = 0$ since the highest power of $x$ with non-zero coefficient is 0. A term where the power of $x$ is zero is called the \textbf{constant term}\index{polynomial!term!constant}
+    $\deg(456) = \deg(456x^0) = 0$ since the highest power of $x$ with non-zero coefficient is 0.
 \end{example}
+\begin{definition}
+    A term where the power of $x$ is zero is called the \textbf{constant term}\index{polynomial!term!constant}.
+\end{definition}
 We note that the zero polynomial (0) is generally treated as having undefined degree; however, for this series of books, it would be more enlightening to define $\deg(0) = -\infty$.
 
 We note some properties of the degree of a polynomial. Assume that $f(x)$ is a univariate polynomial of degree $m$ and $g(x)$ is a univariate polynomial in degree $n$. Then
