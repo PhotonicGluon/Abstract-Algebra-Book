@@ -1322,9 +1322,14 @@ We note two important results regarding the GCD and LCM.
 One may think of modular arithmetic as a number system where numbers ``wrap around'' after reaching a certain value. We state some useful properties and results from this field here.
 
 \section{Modulo and Modular Congruence}
-Given an integer $n>1$, called a \textbf{modulus}\index{modulus}, two integers $a$ and $b$ are said to be \textbf{congruent modulo $n$}\index{congruence} if $n$ is a divisor of their difference (that is, if there is an integer $k$ such that $a - b = kn$). It is denoted $a \equiv b \pmod{n}$. The parentheses mean that ``$\pmod{n}$'' applies to the entire equation, not just to the right-hand side (here, $b$). This notation is not to be confused with the notation ``$b \mod n$'' (without parentheses), which refers to the modulo operation that returns the remainder upon division by $n$.
+\begin{definition}
+    Given an integer $n>1$, called a \textbf{modulus}\index{modulus}, two integers $a$ and $b$ are said to be \textbf{congruent modulo $n$}\index{congruence} if $n$ is a divisor of $a - b$. It is denoted $a \equiv b \pmod{n}$.
+\end{definition}
 \begin{remark}
     Equivalently, $a \equiv b \pmod n$ means that $a = kn + b$ for some integer $k$.
+\end{remark}
+\begin{remark}
+    The parentheses mean that ``$\pmod{n}$'' applies to the entire equation, not just to the right-hand side (here, $b$). This notation is not to be confused with the notation ``$b \mod n$'' (without parentheses), which refers to the modulo operation that returns the remainder upon division by $n$.
 \end{remark}
 \begin{example}
     We see that $38 \equiv 14 \pmod{12}$ since $38 - 14 = 24 = 2 \times 12$. Another way to express this is to say that both 38 and 14 have the same remainder (i.e., 2) when divided by 12.
@@ -1339,12 +1344,16 @@ Given an integer $n>1$, called a \textbf{modulus}\index{modulus}, two integers $
     \end{enumerate}
 \end{exercise}
 
-The definition of congruence also applies to negative values. For example:
-\begin{itemize}
-    \item $-3 \equiv 2 \pmod5$
-    \item $-8 \equiv 7 \equiv 2 \pmod5$
-    \item $-1 \equiv n-1 \pmod{n}$
-\end{itemize}
+The definition of congruence also applies to negative values.
+\begin{example}
+    $-3 \equiv 2 \pmod5$ since $-3 = -1\times5 + 2$.
+\end{example}
+\begin{example}
+    $-8 \equiv 7 \pmod5$ since $-8 = -3\times5 + 7$. Furthermore, $7 \equiv 2 \pmod5$ since $7 = 1\times5 + 2$.
+\end{example}
+\begin{example}
+    $-1 \equiv n-1 \pmod{n}$ since $-1 = 1\times n + (n-1)$.
+\end{example}
 
 \begin{exercise}
     Explain why $-n \equiv n \pmod{2n}$.
