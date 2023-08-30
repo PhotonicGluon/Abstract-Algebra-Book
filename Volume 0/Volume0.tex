@@ -447,7 +447,7 @@ The heart of mathematics is in its logical statements. These statements are used
 
 \section{Mathematical Statements}
 \begin{definition}
-    A \textbf{(mathematical) statement}\index{statement} is a sentence that is definitely true or definitely false.
+    A \textbf{(mathematical) statement}\index{statement} (or \textbf{proposition}\index{proposition}) is a sentence that is definitely true or definitely false, but not both.
 \end{definition}
 \begin{remark}
     A statement can be written in English, or using mathematical notation.
@@ -478,9 +478,9 @@ We may name statements using variables like $P$, $Q$, $R$, etc.
 
 There are a few operations\index{logical operation} that may be carried out on mathematical statements. For the following, assume $P$ and $Q$ are mathematical statements.
 \begin{itemize}
+    \item \textbf{Logical NOT}\index{logical operation!NOT}: Uses the symbol $\lnot$. The statement $\lnot P$ is read as ``not $P$''.
     \item \textbf{Logical AND}\index{logical operation!AND}: Uses the symbol $\land$. The statement $P\land Q$ is read as ``$P$ and $Q$''.
     \item \textbf{Logical OR}\index{logical operation!OR}: Uses the symbol $\lor$. The statement $P\lor Q$ is read as ``$P$ or $Q$''.
-    \item \textbf{Logical NOT}\index{logical operation!NOT}: Uses the symbol $\lnot$. The statement $\lnot P$ is read as ``not $P$''.
     \item \textbf{Conditional}\index{logical operation!conditional}: Uses the symbol $\implies$. The statement $P \implies Q$ is read as ``$P$ implies $Q$''.  
 \end{itemize}
 \begin{example}
@@ -532,12 +532,18 @@ The truth table for the logical NOT operator is:
     \end{tabular}
 \end{table}
 
-We motivate the truth table for the conditional by considering the statements ``you have a red card'' and ``you have a green card'', which we will denote by $P$ and $Q$ respectively. So $P \implies Q$ would be ``if you have a red card, then you have a green card''.
+We motivate the truth table for the conditional by considering the statements ``you pass the exam'' and ``you pass the course'', which we will denote by $P$ and $Q$ respectively. So $P \implies Q$ would be ``if you pass the exam then you pass the course''.
 \begin{itemize}
-    \item If $P$ and $Q$ are true, then that means that you have both a red and green card. Hence, ``if you have a red card, then you have a green card'' is \textbf{true}, meaning $P \implies Q$ is true.
-    \item If $P$ is true and $Q$ is false, then that means that you have a red card but not a green card. Hence, ``if you have a red card, then you have a green card'' is \textbf{false}, meaning $P \implies Q$ is false.
-    \item Now consider the case when $P$ is false. Then regardless of what $Q$ is, the initial premise of the statement ``if you have a red card'' is not satisfied. Hence the ``promise'' that ``if you have a red card, then you have a green card'' is \textbf{not untrue}, which means that it is \textbf{vacuously true}. Hence, if $P$ is false, then $P \implies Q$ is true.
+    \item If $P$ and $Q$ are true, then that means that you passed the exam and passed the course. Hence, ``if you pass the exam then you pass the course'' is \textbf{true}, meaning $P \implies Q$ is true.
+    \item If $P$ is true and $Q$ is false, then that means that you passed the exam but failed the course. Hence, the promise that ``if you pass the exam then you pass the course'' is broken, meaning $P \implies Q$ is false.
+    \item Now consider the third case when $P$ is false but $Q$ is true. This means that you failed the exam but passed the course. This does not mean that the promise was broken; you could have passed the course through other means. The only promise was that if you pass the exam then you pass the course; the promise was not that passing the exam was the \textit{only} way of passing the course. Since the promise was not broken, thus the promise was kept, so $P \implies Q$ is true.
+    \item Finally we consider the case when $P$ and $Q$ are both false: you failed the exam and failed the course. The promise certainly was not broken in this case, so $P \implies Q$ is true.
 \end{itemize}
+\begin{remark}
+    A conditional statement that is true by the virtue of the fact that $P$ is false is called \textbf{vacuously true}\index{vacuously true}.
+\end{remark}
+
+\newpage
 
 In summary, the truth table for the conditional is:
 \begin{table}[h]
@@ -556,11 +562,9 @@ In summary, the truth table for the conditional is:
     Let $P$ and $Q$ be statements. Draw the truth table for $P \land (\lnot Q)$.
 \end{exercise}
 
-\newpage
-
 We end this section by introducing the idea of the \textbf{biconditional}\index{logical operation!biconditional}.
 \begin{definition}
-    Let $P$ and $Q$ be mathematical statements. If both $(P \implies Q)$ and $(Q \implies P)$ are true, then we write $(P \iff Q)$. In other words, $(P \iff Q) = ((P \implies Q) \land (Q \implies P))$.
+    Let $P$ and $Q$ be mathematical statements. If both $(P \implies Q)$ and $(Q \implies P)$ are true, then we write $(P \iff Q)$. In other words, $(P \iff Q) \equiv ((P \implies Q) \land (Q \implies P))$.
 \end{definition}
 \begin{remark}
     The statement $(P \iff Q)$ can be written in several ways in English:
@@ -570,6 +574,8 @@ We end this section by introducing the idea of the \textbf{biconditional}\index{
         \item $P$ is equivalent to $Q$.
     \end{itemize}
 \end{remark}
+
+\newpage
 
 The truth table for the biconditional is:
 \begin{table}[h]
@@ -596,7 +602,7 @@ The truth table for the biconditional is:
 A central idea of this section is that every mathematical statement can be built from just $\land$, $\lor$, and $\lnot$.
 
 \begin{example}
-    We show that $(P \implies Q) = (\lnot P) \lor Q$ by considering the truth table $(\lnot P) \lor Q$.
+    We show that $(P \implies Q) \equiv (\lnot P) \lor Q$ by considering the truth table $(\lnot P) \lor Q$.
     \begin{table}[h]
         \centering
         \begin{tabular}{|l|l||l||l|}
@@ -608,15 +614,17 @@ A central idea of this section is that every mathematical statement can be built
             T   & T   & F         & T                  \\ \hline
         \end{tabular}
     \end{table}
+
+    \newpage
     
-    By inspection, we see that $(\lnot P) \lor Q$ has the same truth table as $P \implies Q$. Thus $(P \implies Q) = (\lnot P) \lor Q$.
+    By inspection, we see that $(\lnot P) \lor Q$ has the same truth table as $P \implies Q$. Thus $(P \implies Q) \equiv (\lnot P) \lor Q$.
 \end{example}
 \begin{remark}
     We separate the intermediate value(s) (e.g. $\lnot P$ in the above example) from the rest by drawing a double line to the sides of the intermediate values.
 \end{remark}
 
 \begin{example}
-    We show that $(P \iff Q) = (P \land Q) \lor ((\lnot P) \land (\lnot Q))$. For brevity, let $R = (\lnot P) \land (\lnot Q)$.
+    We show that $(P \iff Q) \equiv (P \land Q) \lor ((\lnot P) \land (\lnot Q))$. For brevity, let $R = (\lnot P) \land (\lnot Q)$.
     \begin{table}[h]
         \centering
         \begin{tabular}{|l|l||l|l|l|l||l|}
@@ -635,29 +643,32 @@ A central idea of this section is that every mathematical statement can be built
 \begin{exercise}
     Show that
     \[
-        ((\lnot P) \iff Q) = (P \implies (\lnot Q)) \land ((\lnot Q) \implies P)
+        ((\lnot P) \iff Q) \equiv (P \implies (\lnot Q)) \land ((\lnot Q) \implies P)
     \]
     by drawing a truth table.
 \end{exercise}
 
 We note some important properties of logical operators.
 \begin{itemize}
-    \item \textbf{Contrapositive}\index{contrapositive}: $(P \implies Q) = ((\lnot Q) \implies (\lnot P))$
+    \item \textbf{Contrapositive}\index{contrapositive}: $(P \implies Q) \equiv ((\lnot Q) \implies (\lnot P))$
     \item \textbf{De Morgan's Laws}: \begin{itemize}
-        \item $(\lnot (P \land Q)) = ((\lnot P) \lor (\lnot Q))$
-        \item $(\lnot (P \lor Q)) = ((\lnot P) \land (\lnot Q))$
+        \item $(\lnot (P \land Q)) \equiv ((\lnot P) \lor (\lnot Q))$
+        \item $(\lnot (P \lor Q)) \equiv ((\lnot P) \land (\lnot Q))$
     \end{itemize}
+
+    \newpage
+
     \item \textbf{Commutativity of AND and OR}: \begin{itemize}
-        \item $P \land Q = Q \land P$
-        \item $P \lor Q = Q \lor P$
+        \item $P \land Q \equiv Q \land P$
+        \item $P \lor Q \equiv Q \lor P$
     \end{itemize}
     \item \textbf{Associativity of AND and OR}: \begin{itemize}
-        \item $P \land (Q \land R) = (P \land Q) \land R$
-        \item $P \lor (Q \lor R) = (P \lor Q) \lor R$
+        \item $P \land (Q \land R) \equiv (P \land Q) \land R$
+        \item $P \lor (Q \lor R) \equiv (P \lor Q) \lor R$
     \end{itemize}
     \item \textbf{Distributive Rules}: \begin{itemize}
-        \item $P \land (Q \lor R) = (P \land Q) \lor (P \land R)$
-        \item $P \lor (Q \land R) = (P \lor Q) \land (P \lor R)$
+        \item $P \land (Q \lor R) \equiv (P \land Q) \lor (P \land R)$
+        \item $P \lor (Q \land R) \equiv (P \lor Q) \land (P \lor R)$
     \end{itemize}
 \end{itemize}
 \begin{remark}
@@ -683,12 +694,15 @@ We note some important properties of logical operators.
     The \textbf{existential quantifier}\index{quantifier!existential} is $\exists$ and is  read as ``there exists''.
 \end{definition}
 \begin{example}
-    The statement ``there exists a subset of $\mathbb{Z}$ which has 10 elements'' can be written as ``$\exists S \subseteq \mathbb{Z}, |S| = 10$''.
+    The statement ``there exists a subset of $\mathbb{Z}$ which has 10 elements'' is equivalent to ``$\exists S \subseteq \mathbb{Z} \text{ such that } |S| = 10$''.
 \end{example}
+\begin{remark}
+    We usually shorten the ``such that'' as ``s.t.'', so the above statement is written symbolically as ``$\exists S \subseteq \mathbb{Z} \text{ s.t. } |S| = 10$''.
+\end{remark}
 
 We can also combine the quantifiers together with logical operators.
 \begin{example}
-    The statement ``every odd integer is one less than an even integer'' can be written as ``$\forall n \in \mathbb{Z}$, $\exists k \in \mathbb{Z}$, $n = 2k - 1$''.
+    The statement ``every odd integer is one less than an even integer'' can be written as ``$\forall n \in \mathbb{Z}$, $\exists k \in \mathbb{Z} \text { s.t. } n = 2k - 1$''.
 \end{example}
 \begin{example}
     Fermat's Last Theorem, which states that for all integers $n\geq 3$ the equation $x^n + y^n = z^n$ has no solution for $x, y, z \in \mathbb{N}$, can be written as
@@ -706,10 +720,12 @@ We can also combine the quantifiers together with logical operators.
     into symbolic notation using quantifiers and logical operators.
 \end{exercise}
 
+\newpage
+
 We now look at negating quantifiers\index{quantifier!negation}. Note that
 \begin{itemize}
-    \item $\lnot(\forall x, P) = (\exists x, \lnot P)$; and
-    \item $\lnot(\exists x, P) = (\forall x, \lnot P)$.
+    \item $\lnot(\forall x, P(x)) \equiv \exists x \text{ s.t. } \lnot P(x)$; and
+    \item $\lnot(\exists x \text{ s.t. } P(x)) \equiv \forall x, \lnot P(x)$.
 \end{itemize}
 \begin{example}
     Consider the statement ``for every integer $n$, the integer $2n$ is even''. One may write that using quantifiers as
@@ -723,13 +739,11 @@ We now look at negating quantifiers\index{quantifier!negation}. Note that
     i.e., ``there exists an integer $n$ such that $2n$ is odd''.
 \end{example}
 
-We also note that $\lnot(P \implies Q) = P \land \lnot Q$. We leave verifying this identity as an exercise to the reader.
+We also note that $\lnot(P \implies Q) \equiv P \land \lnot Q$. We leave verifying this identity as an exercise to the reader.
 
 \begin{example}
     Consider the statement ``if $n$ is odd then $n^3$ is odd''. We may write this using logical operators as ``($n$ is odd) $\implies$ ($n^3$ is odd)''. The negation of such a statement would hence be ``$n$ is odd \textbf{and} $n^3$ is \textbf{not} odd'', i.e. ``$n$ is odd and $n^3$ is even''.
 \end{example}
-
-\newpage
 
 \begin{exercise}
     Consider the statement ``if $x$ is a non-zero real number, then there exists a real number $y$ such that $xy = 1$''.
@@ -738,6 +752,8 @@ We also note that $\lnot(P \implies Q) = P \land \lnot Q$. We leave verifying th
         \item Negate the above statement, writing your answer in symbolic notation.
     \end{enumerate}
 \end{exercise}
+
+\newpage
 
 \section{Hierarchy of Mathematical Results}
 Mathematical statements often have a certain `tier' attached to them. We look at the hierarchy of some of these `tiers'.
@@ -825,8 +841,6 @@ Generally, we would want to prove in the direction from simplicity to complexity
     
     We first note that the contrapositive statement that we want to prove is ``if $x > y$ then $x^3 + xy^2 > x^2y + y^3$''.
 
-    \newpage
-
     \begin{proof}
         We consider a proof by contrapositive.
         
@@ -892,9 +906,7 @@ Usually, when writing a proof by contradiction, we would like to inform the read
     Prove that there exist no integers $a$ and $b$ such that $2a + 4b = 1$.
 \end{exercise}
 
-\newpage
-
-We now look at a proof by contradiction for conditional statements. Recall that $(\lnot(P \implies Q)) = (P \land \lnot Q)$. Hence, to prove the statement ``if $P$ then $Q$'', we would
+We now look at a proof by contradiction for conditional statements. Recall that $(\lnot(P \implies Q)) \equiv (P \land \lnot Q)$. Hence, to prove the statement ``if $P$ then $Q$'', we would
 \begin{enumerate}
     \item suppose that $P \land \lnot Q$ is true,
     \item work towards a statement $C$ such that another statement $C \land \lnot C$ is formed,
@@ -905,9 +917,9 @@ We now look at a proof by contradiction for conditional statements. Recall that 
 \begin{example}
     Suppose $a$ and $b$ are real numbers. We prove the statement ``if $a$ is rational and $ab$ is irrational then $b$ is irrational'' using a proof by contradiction.
     
-    We note that the statement we want to contradict is ``$a$ is rational and $ab$ is irrational \textbf{and} $b$ is \textbf{not} irrational'', i.e. ``$a$ is rational and $ab$ is irrational and $b$ is rational''.
+    We note that the statement we want to contradict is ``$a$ is rational and $ab$ is irrational \textbf{and} $b$ is \textbf{not} irrational'', i.e. ``$a$ is rational and $b$ is rational and $ab$ is irrational''.
     \begin{proof}
-        By way of contradiction assume $a$ is rational and $ab$ is irrational and $b$ is rational. We may then write $a = \frac mn$ and $b = \frac pq$ where $m, n, p, q \in \mathbb{Z}$. Hence $ab = \left(\frac mn\right)\left(\frac pq\right) = \frac{mp}{nq}$ which is clearly rational. Therefore we have that $ab$ is irrational (by assumption) and $ab$ is rational, a contradiction.
+        By way of contradiction assume $a$ is rational, $b$ is rational, and $ab$ is irrational. We may then write $a = \frac mn$ and $b = \frac pq$ where $m, n, p, q \in \mathbb{Z}$. Hence $ab = \left(\frac mn\right)\left(\frac pq\right) = \frac{mp}{nq}$ which is clearly rational. Therefore we have that $ab$ is irrational (by assumption) and $ab$ is rational, a contradiction.
     \end{proof}
 \end{example}
 
@@ -1130,13 +1142,13 @@ Note that while an example suffices to prove an existence statement, a single ex
     Prove that a positive integer that is one less than a perfect cube and two less than a perfect square exists.
 \end{exercise}
 
+\newpage
+
 Existence proofs fall into two categories: \textbf{constructive}\index{proof!constructive} proofs and \textbf{non-constructive}\index{proof!non-constructive} proofs.
 \begin{itemize}
     \item Constructive proofs provide an explicit example that proves the statement. We have only seen constructive proofs so far.
     \item Non-constructive proofs prove that an example exists without providing it.
 \end{itemize}
-
-\newpage
 
 \begin{example}
     We prove the classic statement that ``there exist irrational $x$ and $y$ such that $x^y$ is rational'' using a non-constructive proof.
@@ -1149,6 +1161,9 @@ Existence proofs fall into two categories: \textbf{constructive}\index{proof!con
         \end{itemize}
         Hence, either way, we have an irrational number to an irrational power that is rational.
     \end{proof}
+    
+    \newpage
+
     Notice that we did not explicitly prove whether $\sqrt2^{\sqrt2}$ is rational or irrational; we just showed that either case leads to a case where two irrational numbers, when exponentiated, results in a rational number.
 \end{example}
 
@@ -1527,7 +1542,7 @@ We note that ${n \choose k}$ is read as ``$n$ choose $k$'' and is known as the \
         \item If $n$ is a multiple of 5, then its last digit necessarily has to be 5 or 0, hence $P \implies Q$. If the last digit is 5 or 0, then the number $n$ is a multiple of 5, hence $Q \implies P$. Therefore $P \iff Q$.
     \end{enumerate}
     
-    \item For brevity, let $R = (P \implies (\lnot Q))$ and $S = ((\lnot Q) \implies P)$. So we want to show that $((\lnot P) \iff Q) = R \land S$.
+    \item For brevity, let $R = (P \implies (\lnot Q))$ and $S = ((\lnot Q) \implies P)$. So we want to show that $((\lnot P) \iff Q) \equiv R \land S$.
     \begin{table}[h]
         \centering
         \begin{tabular}{|l|l||l|l|l|l||l|l|}
@@ -1542,9 +1557,9 @@ We note that ${n \choose k}$ is read as ``$n$ choose $k$'' and is known as the \
 
     From inspection, the truth tables of $(\lnot P) \iff Q$ and $R \land S$ are the same, proving our required result.
     
-    \item For brevity, denote $X = P \lor \lnot Q$, $Y = \lnot R$, and $Z = (P \lor R) \land (P \lor \lnot R)$. Thus the original statement is something like $(X \land Y) \lor (X \land Z)$, which by distributive rules is equal to $X \land (Y \lor Z)$. Note $Z = P \lor (R \land \lnot R)$ by distributive rules, which is equal to $P$ since $R \land \lnot R$ is always false. Hence $X \land (Y \lor Z) = (P \lor \lnot Q) \land (\lnot R \lor P)$. Commutativity of $\lor$ means that $\lnot R \lor P = P \lor \lnot R$, so $(P \lor \lnot Q) \land (\lnot R \lor P) = (P \lor \lnot Q) \land (P \lor \lnot R)$. Now by distributive rules $(P \lor \lnot Q) \land (P \lor \lnot R) = P \lor (\lnot Q \land \lnot R)$. Finally, by De Morgan's Law, $\lnot Q \land \lnot R = \lnot(Q \lor R)$, so the original statement is equal to $P \lor \lnot(Q \lor R)$.
+    \item For brevity, denote $X = P \lor \lnot Q$, $Y = \lnot R$, and $Z = (P \lor R) \land (P \lor \lnot R)$. Thus the original statement is something like $(X \land Y) \lor (X \land Z)$, which by distributive rules is equal to $X \land (Y \lor Z)$. Note $Z \equiv P \lor (R \land \lnot R)$ by distributive rules, which is equal to $P$ since $R \land \lnot R$ is always false. Hence $X \land (Y \lor Z) \equiv (P \lor \lnot Q) \land (\lnot R \lor P)$. Commutativity of $\lor$ means that $\lnot R \lor P \equiv P \lor \lnot R$, so $(P \lor \lnot Q) \land (\lnot R \lor P) \equiv (P \lor \lnot Q) \land (P \lor \lnot R)$. Now by distributive rules $(P \lor \lnot Q) \land (P \lor \lnot R) \equiv P \lor (\lnot Q \land \lnot R)$. Finally, by De Morgan's Law, $\lnot Q \land \lnot R \equiv \lnot(Q \lor R)$, so the original statement is equal to $P \lor \lnot(Q \lor R)$.
     
-    \item $\left[(n \in \mathbb{Z}) \land (n > 2)\right] \implies \left[\exists a, b \in \mathbb{Z}, a^3 + b^4 = n^5\right]$
+    \item $\left[(n \in \mathbb{Z}) \land (n > 2)\right] \implies \left[\exists a, b \in \mathbb{Z} \text{ s.t. } a^3 + b^4 = n^5\right]$
     
     \item \begin{enumerate}[label=(\roman*)]
         \item Let
