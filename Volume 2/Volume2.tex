@@ -821,10 +821,33 @@ We can now state the theorem that produces a condition for a ring to be an integ
     \end{enumerate}
 \end{exercise}
 
+We end this chapter by linking the notation of $R[x]$ where $x$ is \textit{not} a variable.
+\begin{example}
+    Recall that $\Q[\sqrt2] = \{a + b\sqrt2 \vert a,b \in \Q\}$. If we use the definition of $\Q[x]$, we see that
+    \begin{align*}
+        &\Q[\sqrt2] \\
+        &= \{a_0 + a_1\sqrt2 + a_2(\sqrt2)^2 + a_3(\sqrt2)^3 + \cdots + a_n(\sqrt2)^n \vert a_i \in \Q \}\\
+        &= \{a_0 + a_1\sqrt2 + a_2(2) + a_3(2\sqrt2) + \cdots + a_n(\sqrt2)^n \vert a_i \in \Q \}\\
+        &= \{(a_0 + 2a_2 + 4a_4 + \cdots) + \sqrt2 (a_1 + 2a_3 + 4a_5 + \cdots) \vert a_i \in \Q\}\\
+        &= \{a + b\sqrt2 \vert a,b \in Q\}
+    \end{align*}
+    which agrees with the previous definition of $\Q[\sqrt2]$.
+\end{example}
+\begin{example}
+    Recall that $\Z[i]$, the gaussian integers, is the set $\{a+bi \vert a,b \in \Z\}$. If we use the definition of $\Z[x]$, we see that
+    \begin{align*}
+        \Z[i] &= \{a_0 + a_1i + a_2i^2 + a_3i^3 + \cdots + a_ni^n \vert a_i \in \Z\}\\
+        &= \{a_0 + a_1i + a_2(-1) + a_3(-i) + \cdots + a_ni^n \vert a_i \in \Z\}\\
+        &= \{(a_0 - a_2 + a_4 - \cdots) + i(a_1 - a_3 + a_5 - \cdots) \vert a_i \in \Z\}\\
+        &= \{a + bi \vert a,b \in \Z\}
+    \end{align*}
+    which agrees with the previous definition of $\Z[i]$.
+\end{example}
+
 \newpage
 \section{Problems}
 \begin{problem}
-    Find two zero divisors in the ring $\Zn{5}[i] = \{a+bi\vert a,b \in \Zn{5}\}$.
+    Find two zero divisors in the ring $\Zn{5}[i]$.
 \end{problem}
 
 \begin{problem}
@@ -1546,7 +1569,16 @@ We look at ring isomorphisms.
 \end{exercise}
 
 \section{Properties of Ring Homomorphisms}
+
 \section{Image and Kernel}
+Similar to groups, ring homomorphisms too have a image and kernel.
+\begin{definition}
+    The \textbf{image}\index{image} of a ring homomorphism $\phi: R_1 \to R_2$ is $\im\phi = \{\phi(r) \vert r \in R_1\}$.
+\end{definition}
+\begin{definition}
+    The \textbf{kernel}\index{kernel} of a ring homomorphism $\phi:R_1 \to R_2$ is $\ker\phi = \{r \in R_1 \vert \phi(r) = 0\}$.
+\end{definition}
+
 \section{The First Ring Isomorphism Theorem}
 \section{How Restrictive are Ring Homomorphisms?}
 
