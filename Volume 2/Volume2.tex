@@ -691,6 +691,15 @@ With an introduction of integral domains out of the way, we introduce some gener
 \end{exercise}
 
 \section{Characteristic of a Ring}
+Before we introduce the characteristic of a ring, we clarify the meaning of the order of an element in the group.
+\begin{definition}
+    Let $R$ be a ring and $x$ be an element of the ring $R$.
+    \begin{itemize}
+        \item The \textbf{additive order}\index{order!additive} of $x$ is the order of $x$ in the group $(R, +)$, and is denoted by $|x|_+$.
+        \item If $R$ is a group with identity 1, the \textbf{multiplicative order}\index{order!multiplicative} of $x$ is the smallest positive integer $n$ such that $x^n = 1$ and is denoted $|x|_\times$, if it exists.
+    \end{itemize}
+\end{definition}
+
 \begin{definition}
     Let $R$ be a ring. We say that \textbf{characteristic}\index{characteristic} of $R$ is $n$ if $n$ is the smallest positive integer such that
     \[
@@ -701,10 +710,10 @@ With an introduction of integral domains out of the way, we introduce some gener
 
 We look at two properties about the characteristic.
 \begin{proposition}
-    If $R$ is a ring with identity and $\Char{R} \neq 0$, then $\Char{R}$ is equal to the order of 1 in the group $(R, +)$.
+    If $R$ is a ring with identity and $\Char{R} \neq 0$, then $\Char{R}$ is equal to $|1|_+$.
 \end{proposition}
 \begin{proof}
-    Let $\Char{R} = n$ and the order of 1 in the group $(R, +)$ be $m$. Our goal is to show that $m = n$.
+    Let $\Char{R} = n$ and $|1|_+ = m$. Our goal is to show that $m = n$.
 
     On one hand, note that
     \[
@@ -715,7 +724,7 @@ We look at two properties about the characteristic.
     On another hand, for any $r \in R$, we know that
     \begin{align*}
         \underbrace{r + r + r + \cdots + r}_{m \text{ times}} &= r(\underbrace{1+1+1+\cdots+1}_{m \text{ times}})\\
-        &= r0 & (|1| = m \text{ in } (R,+))\\
+        &= r0 & (|1|_+ = m)\\
         &= 0.
     \end{align*}
     The minimality of the characteristic $n$ means that $m$ has to be at least $n$, i.e. $m \geq n$.
