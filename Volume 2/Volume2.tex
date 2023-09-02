@@ -1386,7 +1386,7 @@ To end this chapter, we look at two constructs relating to a ring.
 \chapter{Ring Homomorphisms and Isomorphisms}
 Just like with groups, rings too have homomorphisms and isomorphisms, although they are defined slightly differently than in groups. Like how group homomorphisms preserve some structure between the two groups, ring homomorphisms and isomorphisms also preserve structure between rings.
 
-\section{Ring Homomorphisms}
+\section{Ring Homomorphisms and Isomorphisms}
 \begin{definition}
     Let $R_1$ and $R_2$ be rings. A function $\phi: R_1 \to R_2$ is a \textbf{ring homomorphisms}\index{ring homomorphism} if for all $a, b \in R_1$, we have
     \begin{align*}
@@ -1477,14 +1477,76 @@ We introduce endomorphisms.
 \begin{exercise}
     Let $R$ be a ring and $\phi: R \to R$ is a map. Show that $\phi$ is a ring endomorphisms in the following cases.
     \begin{enumerate}[label=(\alph*)]
-        \item $\phi(r) = 0$
-        \item $\phi(r) = r$
+        \item $\phi(r) = 0$ (the \textbf{trivial homomorphism}\index{trivial homomorphism})
+        \item $\phi(r) = r$ (the \textbf{identity homomorphism}\index{identity homomorphism})
     \end{enumerate}
 \end{exercise}
 
-\section{Ring Isomorphisms}
-\section{Image and Kernel}
+We look at ring isomorphisms.
+\begin{definition}
+    A \textbf{ring isomorphism}\index{ring isomorphism} is a bijective ring homomorphism.
+\end{definition}
+\begin{example}
+    We show that $\Z_n \cong \Z/n\Z$.
+
+    \begin{proof}
+        Consider the map $\phi:\Z_n / \Z/n\Z$ where $m \mapsto m + n\Z$. We show that $\phi$ is an isomorphism.
+        \begin{itemize}
+            \item \textbf{Homomorphism}:
+            \[
+                \phi(a+b) = (a+b) + n\Z = (a + n\Z) + (b + n\Z) = \phi(a) + \phi(b)
+            \]
+            and
+            \[
+                \phi(ab) = (ab) + n\Z = (a+n\Z)(b+n\Z) = \phi(a)\phi(b)
+            \]
+
+            \item \textbf{Injective}: Suppose $a, b \in \Z_n$ such that $\phi(a) = \phi(b)$. This means $a + n\Z = b + n\Z$. Now note that $0 \leq a,b < n$ so we have $a = b$.
+            
+            \item \textbf{Surjective}: Suppose $m + n\Z \in \Z/n\Z$. Applying Euclid's division lemma (\myref{lemma-euclid-division}) on $m$ we have
+            \[
+                m = nq + r
+            \]
+            with $0 \leq r < n$. One sees that
+            \begin{align*}
+                \phi(r) &= r + n\Z\\
+                &= r + (nq + n\Z)\\
+                &= (r + nq) + n\Z\\
+                &= m + n\Z
+            \end{align*}
+            so $m + n\Z$ has a pre-image of $r$ in $\Z_n$.
+        \end{itemize}
+        Since $\phi$ is a bijective ring homomorphism, this $\phi$ is an isomorphism, meaning $\Z_n \cong \Z/n\Z$ as rings.
+    \end{proof}
+\end{example}
+\begin{example}
+    We show that $\Z \not\cong 2\Z$ as rings.
+
+    \begin{proof}
+        Suppose $\phi: \Z \to 2\Z$ is a ring isomorphism.
+
+        Set $a = \phi(1) = 2\Z$. Note that
+        \[
+            a = \phi(1) = \phi(1\times1) = (\phi(1))^2 = a^2
+        \]
+        so $a^2 = a$, which means $a = 0$ or $a = 1$. But as $a \in 2\Z$, thus $a \neq 1$ which means $a = 0$.
+
+        Now notice for any $n \in \Z$ we have
+        \begin{align*}
+            \phi(n) &= \phi(n1)\\
+            &= \phi(n)\phi(1)\\
+            &= \phi(n) \times 0\\
+            &= 0.
+        \end{align*}
+        Thus one sees that $\phi(0) = \phi(1) = 0$ which means $\phi$ is not injective, a contradiction.
+    \end{proof}
+\end{example}
+\begin{exercise}
+    Show that the identity homomorphism is an isomorphism.
+\end{exercise}
+
 \section{Properties of Ring Homomorphisms}
+\section{Image and Kernel}
 \section{The First Ring Isomorphism Theorem}
 \section{How Restrictive are Ring Homomorphisms?}
 
@@ -1747,6 +1809,13 @@ We introduce endomorphisms.
         \]
         so $\phi$ is indeed an endomorphism.
     \end{enumerate}
+
+    \item We have shown that the identity homomorphism is a homomorphism, so we just need to prove that it is a bijection.
+    \begin{itemize}
+        \item \textbf{Injective}: Suppose $a, b \in R$ are such that $\phi(a) = \phi(b)$. But since $\phi(x) = x$ thus $a = b$.
+        \item \textbf{Surjective}: As $\phi(x) = x$ thus any element is its own pre-image.
+    \end{itemize}
+    Therefore the identity homomorphism is an isomorphism.
 \end{enumerate}
 
 %=========================================
