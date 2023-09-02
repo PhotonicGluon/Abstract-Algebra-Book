@@ -2,7 +2,7 @@
 \usepackage{xr}
 
 %=========== Global Variables ============
-\newcommand{\version}{0.14}
+\newcommand{\version}{0.15}
 \newcommand{\volumenumber}{1}
 \newcommand{\volumename}{Groups}
 \newcommand{\volumeimage}{cover/Icosahedron.png}
@@ -1395,6 +1395,10 @@ For the next few properties, define
     Prove or disprove the following statement: if $H_1 \unlhd G_1$, then $\phi(H_1) \unlhd G_2$.
 \end{exercise}
 
+\begin{exercise}\label{exercise-order-of-homomorphism-divides-order}
+    Let $G$ and $H$ be groups, and let $\phi: G \to H$ be a homomorphism. Prove that $|\phi(a)|$ divides $|a|$ for any $a \in G$.
+\end{exercise}
+
 \section{Isomorphisms}
 We now look a special (and important) type of homomorphisms: \textbf{isomorphisms}.
 
@@ -1403,8 +1407,6 @@ We now look a special (and important) type of homomorphisms: \textbf{isomorphism
 \end{definition}
 
 If there exists an isomorphism from $G$ to $H$, then we say that $G$ and $H$ are \textbf{isomorphic}\index{isomorphic} and write $G \cong H$.
-
-\newpage
 
 \begin{example}
     Let $G = (\mathbb{Z}_2, \oplus_2)$ and $H = \{1, -1\}$ be a group under regular multiplication. Define the map $\phi: G \to H$ such that $\phi(0) = 1$ and $\phi(1) = -1$.
@@ -5487,6 +5489,12 @@ The remaining 2 sporadic groups are special in that they have extremely large or
     meaning that $xy^{-1}$ is in $\phi(H_1)$. Therefore, by subgroup test, $\phi(H_1) \leq G_2$.
 
     \item Disprove. Let $G_1 = H_1 = \mathbb{Z}$ be the additive group of integers and let $G_2 = H_2 = D_n$, the dihedral group of order $2n$. Consider the map $\phi: G_1 \to G_2$ where $\phi(m) = s^m$. Clearly, $H_1 \unlhd G_1$. Note that $\phi(H_1) = \{e, s\} = \langle s \rangle$. From \myref{example-normal-subgroups-of-d3}, we know that $\langle s \rangle$ is not a normal subgroup of $D_3 = G_2$, so $\phi(H_1)$ is not a normal subgroup of $G_2$.
+
+    \item Suppose $|a| = n$. Note that
+    \[
+        \left(\phi(a)\right)^n = \phi\left(a^n\right) = \phi(e_G) = e_H
+    \]
+    so $|\phi(a)|$ divides $n = |a|$ by \myref{problem-element-to-power-of-multiple-of-order-is-identity}.
 
     \item \begin{enumerate}[label=(\roman*)]
         \item Since $3^0 = 1$, $3^1 = 3$, $3^2 = 9 \equiv 4 \pmod{5}$, and $3^3 = 27 \equiv 2 \pmod{5}$, thus $G = \langle 3 \rangle$. Since $7^0 = 1$, $7^1 = 7$, $7^2 = 49 \equiv 9 \pmod{10}$, and $7^3 = 343 \equiv 3 \pmod{10}$, thus $H = \langle 7 \rangle$.
