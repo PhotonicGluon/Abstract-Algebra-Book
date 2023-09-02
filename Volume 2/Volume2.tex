@@ -1145,14 +1145,8 @@ We look at one example of a PID.
     In the context of $\Z$, we usually write the principal ideal $\princ{m}$ as $m\Z$.
 \end{remark}
 \begin{exercise}
-    Let $I = \princ{x^2 + 3x - 1}$ be an ideal of $\Z[x]$. Simplify
-    \[
-        \left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)
-    \]
-    in the quotient ring $\Z[x]/I$.
+    Let $I = \princ{x^2 + 3x - 1}$ be an ideal of $\Z[x]$. Simplify $\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)$ in the quotient ring $\Z[x]/I$.
 \end{exercise}
-
-\newpage
 
 \section{Prime and Maximal Ideals}
 We look at the definition of a prime ideal.
@@ -1330,6 +1324,7 @@ To end this chapter, we look at two constructs relating to a ring.
 \end{proof}
 
 \newpage
+
 \section{Problems}
 \begin{problem}
     Find $\Ann{\Zn{36}}{\{15\}}$.
@@ -1386,6 +1381,116 @@ To end this chapter, we look at two constructs relating to a ring.
 \begin{problem}
     Let $R$ be an integral domain, and let $a$ and $b$ be elements in $R$. Prove that $\princ{a} = \princ{b}$ if and only if $a = bu$ for some unit $u$ in $R$.
 \end{problem}
+
+%=========================================
+\chapter{Ring Homomorphisms and Isomorphisms}
+Just like with groups, rings too have homomorphisms and isomorphisms, although they are defined slightly differently than in groups. Like how group homomorphisms preserve some structure between the two groups, ring homomorphisms and isomorphisms also preserve structure between rings.
+
+\section{Ring Homomorphisms}
+\begin{definition}
+    Let $R_1$ and $R_2$ be rings. A function $\phi: R_1 \to R_2$ is a \textbf{ring homomorphisms}\index{ring homomorphism} if for all $a, b \in R_1$, we have
+    \begin{align*}
+        \phi(a+b) &= \phi(a) + \phi(b),\\
+        \phi(ab) &= \phi(a)\phi(b).
+    \end{align*}
+\end{definition}
+
+\begin{example}
+     We show that the map $\phi: \Z \to \Z/n\Z, x \mapsto x + n\Z$ is a ring homomorphism.
+     
+     \begin{proof}
+        Let $a, b \in \Z$. Note
+        \begin{align*}
+            \phi(a+b) &= (a+b) + n\Z\\
+            &= (a + n\Z) + (b + n\Z) & (\text{Definition of coset addition})\\
+            &=\phi(a)+\phi(b)
+        \end{align*}
+        and
+        \begin{align*}
+            \phi(ab) &= (ab) + n\Z\\
+            &= (a + n\Z)(b + n\Z) & (\text{Definition of coset multiplication})\\
+            &= \phi(a)\phi(b)
+        \end{align*}
+        so $\phi$ is a homomorphism.
+     \end{proof}
+\end{example}
+
+\begin{example}
+    Consider
+    \[
+        R = \left\{\begin{pmatrix}a&b\\0&c\end{pmatrix}\vert a,b,c\in\Z\right\}.
+    \]
+    Let $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$. We show that $\phi$ is a ring homomorphism.
+
+    \begin{proof}
+        We see that
+        \begin{align*}
+            \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix} + \begin{pmatrix}x&y\\0&z\end{pmatrix}\right) &= \phi\left(\begin{pmatrix}a+x&b+y\\0&c+z\end{pmatrix}\right)\\
+            &= (a+x,c+z)\\
+            &= (a,c) + (x,z)\\
+            &= \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\right) + \phi\left(\begin{pmatrix}x&y\\0&z\end{pmatrix}\right)
+        \end{align*}
+        and also
+        \begin{align*}
+            \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\begin{pmatrix}x&y\\0&z\end{pmatrix}\right) &= \phi\left(\begin{pmatrix}ax&ay+bz\\0&cz\end{pmatrix}\right)\\
+            &= (ax, cz)\\
+            &= (a,c)(x,z)\\
+            &= \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\right)\phi\left(\begin{pmatrix}x&y\\0&z\end{pmatrix}\right)
+        \end{align*}
+        so $\phi$ is a homomorphism.
+    \end{proof}
+\end{example}
+
+\begin{exercise}
+    Let $R$ be a ring. The \textbf{evaluation homomorphism}\index{evaluation homomorphism} is $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$ and $a \in R$. Prove that $\phi_a$ is indeed a ring homomorphism.
+\end{exercise}
+
+We introduce endomorphisms.
+\begin{definition}
+    An endomorphism of a ring $R$ is a homomorphism $\phi: R \to R$.
+\end{definition}
+\begin{example}
+    Let $R$ be a commutative ring with prime characteristic $p$. The \textbf{Frobenius endomorphism}\index{Frobenius endomorphism} $\phi: R \to R$ is such that $\phi(r) = r^p$. We show that $\phi$ is a ring endomorphism.
+    
+    \begin{proof}
+        Note that
+        \begin{align*}
+            \phi(a+b) &= (a+b)^p\\
+            &= a^p + pa^{p-1}b + {p \choose 2}a^{p-2}b^2 + \cdots + pab^{p-1} + b^p.
+        \end{align*}
+        Note that the binomial coefficients ${p \choose k}$ where $1 \leq k \leq p -1$ are all multiples of $p$. As the characteristic of the ring $R$ is $p$, thus $px = 0$ for any $x \in R$. Therefore,
+        \begin{align*}
+            \phi(a+b) = &a^p + pa^{p-1}b + {p \choose 2}a^{p-2}b^2 + \cdots + pab^{p-1} + b^p\\
+            &= a^p + 0 + 0 + \cdots + 0 + b^p\\
+            &= a^p + b^p\\
+            &=\phi(a) + \phi(b)
+        \end{align*}
+
+        Also,
+        \[
+            \phi(ab) = (ab)^p = a^pb^p = \phi(a)\phi(b).
+        \]
+        Therefore $\phi$ is a ring endomorphism.
+    \end{proof}
+\end{example}
+
+\begin{exercise}
+    Let $R$ be a ring and $\phi: R \to R$ is a map. Show that $\phi$ is a ring endomorphisms in the following cases.
+    \begin{enumerate}[label=(\alph*)]
+        \item $\phi(r) = 0$
+        \item $\phi(r) = r$
+    \end{enumerate}
+\end{exercise}
+
+\section{Ring Isomorphisms}
+\section{Image and Kernel}
+\section{Properties of Ring Homomorphisms}
+\section{The First Ring Isomorphism Theorem}
+\section{How Restrictive are Ring Homomorphisms?}
+
+\newpage
+
+\section{Problems}
 
 %=========================================
 \appendix
@@ -1606,6 +1711,42 @@ To end this chapter, we look at two constructs relating to a ring.
     Now take an $r \in \Ann{R}{A}$, an $a \in A$, and a $x \in R$. Note $(rx)a = (xr)a = x(ra) = x0 = 0$ since $R$ is commutative, which means that $rx, xr \in \Ann{R}{A}$.
 
     By the test for ideal, $\Ann{R}{A}$ is an ideal of $R$.
+\end{enumerate}
+
+\section{Ring Homomorphisms and Isomorphisms}
+\begin{enumerate}
+    \item Let $p(x), q(x) \in R$. Note
+    \[
+        \phi_a(p(x)+q(x)) = p(a) + q(a) = \phi_a(p(x)) + \phi_a(q(x))
+    \]
+    and
+    \[
+        \phi_a(p(x)q(x)) = p(a)q(a) = \phi_a(p(x))\phi_a(q(x))
+    \]
+    so $\phi_a$ is indeed a homomorphism.
+
+    \item Let $a, b \in R$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Note
+        \[
+            \phi(a+b) = 0 = 0 + 0 = \phi(a) + \phi(b)
+        \]
+        and
+        \[
+            \phi(ab) = 0 = 0\times0 = \phi(a)\phi(b)
+        \]
+        so $\phi$ is indeed an endomorphism.
+
+        \item Note
+        \[
+            \phi(a+b) = a + b = \phi(a) + \phi(b)
+        \]
+        and
+        \[
+            \phi(ab) = ab = \phi(a)\phi(b)
+        \]
+        so $\phi$ is indeed an endomorphism.
+    \end{enumerate}
 \end{enumerate}
 
 %=========================================
