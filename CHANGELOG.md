@@ -1,7 +1,7 @@
 # Abstract Algebra Book Changelog
 
 ---
-## [Build 15](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-13...build-14)
+## [Build 15](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-14...build-15)
 
 ### General Content Changes
 - Added background colour to definitions and important results in the books.
