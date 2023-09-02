@@ -1021,7 +1021,7 @@ We now define the quotient ring.
 We end this section by introducing the test for ideals\index{test for ideals}.
 \begin{theorem}[Test for Ideal]\label{thrm-test-for-ideal}
     Let $R$ be a ring and $I$ be a non-empty subset of $R$. Then $I$ is an ideal of $R$ if and only if
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item $x - y \in I$ for all $x$ and $y$ in $I$; and
         \item $ri$ and $ir$ are in $I$ for all $i$ in $I$ and $r$ in $R$.
     \end{enumerate}
@@ -1578,6 +1578,91 @@ We look at ring isomorphisms.
 \end{exercise}
 
 \section{Properties of Ring Homomorphisms}
+For the following, let $R_1$ and $R_2$ be rings, and $\phi: R_1 \to R_2$ be a ring homomorphism.
+
+\begin{exercise}
+    Show $\phi(0_1) = 0_2$, where $0_1$ is the additive identity of $R_1$ and $0_2$ is the additive identity of $R_2$.
+\end{exercise}
+
+\begin{exercise}
+    Suppose $R_1$ and $R_2$ are division rings. Show $\phi(1_1) = 1_2$, where $1_1$ is the multiplicative identity of $R_1$ and $1_2$ is the multiplicative identity of $R_2$.
+\end{exercise}
+
+\begin{exercise}
+    Let $x \in R_1$.
+    \begin{enumerate}[label=(\alph*)]
+        \item Show that $\phi(-x) = -\phi(x)$.
+        \item If $R_1$ and $R_2$ are division rings, show that $\phi(x^{-1}) = (\phi(x))^{-1}$.
+    \end{enumerate}
+\end{exercise}
+
+\begin{proposition}
+    If $S$ is a subring of $R_1$, then
+    \[
+        \phi(S) = \{\phi(s) | s \in S\}
+    \]
+    is a subring of $R_2$.
+\end{proposition}
+\begin{proof}
+    Let $S$ be a subring of $R_1$. Take $a, b \in \phi(S)$, which means that there exist $s_a$ and $s_b$ such that $\phi(s_a) = a$ and $\phi(s_b) = b$.
+    \begin{itemize}
+        \item We show that $(\phi(S), +) \leq (R_2, +)$.
+        \begin{itemize}
+            \item $\phi(S) \neq \emptyset$ since $\phi(0_1) = 0_2 \in \phi(S)$.
+            \item $a - b = \phi(s_a) - \phi(s_b) = \phi(s_a-s_b) \in \phi(S)$.
+        \end{itemize}
+
+        \item Now we show $ab \in \phi(S)$.
+        \[
+            ab = \phi(s_a)\phi(s_b) = \phi(s_as_b) \in \phi(S).
+        \]
+    \end{itemize}
+    Therefore $\phi(S)$ is a subring of $R_2$.
+\end{proof}
+
+\begin{proposition}
+    If $\phi$ is surjective and $I$ is an ideal of $R_1$, then $\phi(I)$ is an ideal of $R_2$.
+\end{proposition}
+\begin{proof}
+    From previous proposition $\phi(I)$ is a subring of $R_2$. We just need to show that $\phi(I)$ is an ideal of $R_2$.
+
+    Take $a \in \phi(I)$ and $r_2 \in R_2$. As $\phi$ is surjective, we can find a $r_1 \in R_1$ such that $\phi(r_1) = r_2$. Also, let $a = \phi(i)$ for an $i \in I$.
+
+    Note
+    \begin{align*}
+        ar_2 = \phi(i)\phi(r_1) = \phi(\underbrace{ir_1}_{\text{In }I}) \in \phi(I)\\
+        r_2a = \phi(r_1)\phi(i) = \phi(\underbrace{r_1i}_{\text{In }I}) \in \phi(I)
+    \end{align*}
+    so $\phi(I)$ is an ideal of $R_2$.
+\end{proof}
+
+\begin{proposition}
+    Let $J$ be an ideal of $R_2$. Then
+    \[
+        \phi^{-1} = \{r \in R_1 \vert \phi(r) \in J\}
+    \]
+    is an ideal of $R_1$.
+\end{proposition}
+\begin{proof}
+    Suppose $J$ is an ideal of $R_2$. We consider the test for ideal (\myref{thrm-test-for-ideal}) to show $\phi^{-1}(J)$ is an ideal of $R_1$.
+    
+    One sees that $\phi^{-1}(J) \neq \emptyset$ since $\phi(0_1) = 0_2 \in J$, so $0_1 \in \phi^{-1}(J)$.
+
+    Let $a, b \in \phi^{-1}(J)$, so $\phi(a), \phi(b) \in J$. Note that
+    \[
+        \phi(a-b) = \phi(a) - \phi(b) \in J
+    \]
+    so $a-b \in \phi^{-1}(J)$ for all $a,b \in J$.
+
+    Let $r \in R_1$ and $a \in \phi^{-1}(J)$. Note that $\phi(a) \in J$ and $\phi(r) \in R_2$, so
+    \begin{align*}
+        \underbrace{\phi(a)}_{\text{In }J}\underbrace{\phi(r)}_{\text{In }R_2} &\in J & (J\text{ is an ideal, so } rj \in J)\\
+        \phi(r)\phi(a) &\in J & (\text{since } jr \in J).
+    \end{align*}
+    Note $\phi(a)\phi(r) = \phi(ar) \in J$, so $ar \in \phi^{-1}(J)$, and similarly we have $\phi(r)\phi(a) = \phi(ra) \in J$, so $ra \in \phi^{-1}(J)$.
+
+    Therefore, by the test for ideal, is an ideal of $R_1$.
+\end{proof}
 
 \section{Image and Kernel}
 Similar to groups, ring homomorphisms too have a image and kernel.
@@ -1857,6 +1942,40 @@ Similar to groups, ring homomorphisms too have a image and kernel.
         \item \textbf{Surjective}: As $\phi(x) = x$ thus any element is its own pre-image.
     \end{itemize}
     Therefore the identity homomorphism is an isomorphism.
+
+    \item Note that
+    \[
+        \phi(0_1) = \phi(0_1 + 0_1) = \phi(0_1) + \phi(0_1)
+    \]
+    so by 'adding' $-\phi(0_1)$ on both sides we see that $\phi(0_1) = 0_2$.
+
+    \item Note that
+    \[
+        \phi(1_1) = \phi(1_1 \times 1_1) = \phi(1_1)\phi(1_1).
+    \]
+    Since $R_1$ and $R_2$ are division rings, we may apply $\phi(1_1)^{-1}$ on both sides to yield $\phi(1_1) = 1_2$.
+
+    \item \begin{enumerate}[label=(\alph*)]
+        \item Notice that
+        \[
+            \phi(x + (-x)) = \phi(x) + \phi(-x)
+        \]
+        and
+        \[
+            \phi(x + (-x)) = \phi(0_1) = 0_2
+        \]
+        so subtracting $-\phi(x)$ on both sides yields $\phi(-x) = -\phi(x)$.
+
+        \item Notice that
+        \[
+            \phi(xx^{-1}) = \phi(x)\phi(x^{-1})
+        \]
+        and
+        \[
+            \phi(xx^{-1}) = \phi(1_1) = 1_2
+        \]
+        so applying $\phi(x)^{-1}$ on the left on both sides $\phi(x^{-1}) = \phi(x)^{-1}$.
+    \end{enumerate}
 \end{enumerate}
 
 %=========================================
