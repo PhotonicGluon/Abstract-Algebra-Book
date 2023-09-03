@@ -1672,6 +1672,52 @@ Similar to groups, ring homomorphisms too have a image and kernel.
     The \textbf{kernel}\index{kernel} of a ring homomorphism $\phi:R_1 \to R_2$ is $\ker\phi = \{r \in R_1 \vert \phi(r) = 0\}$.
 \end{definition}
 
+\begin{example}
+    Consider the ring
+    \[
+        R = \left\{\begin{pmatrix}a&b\\0&c\end{pmatrix}\vert a,b,c\in\Z\right\}.
+    \]
+    and the homomorphism $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$.
+
+    We note that $\phi$ is surjective; for any $(x,y)\in\Z^2$, we note that $\phi\left(\begin{pmatrix}x&0\\0&y\end{pmatrix}\right) = (x,y)$ so $(x,y)$ has a pre-image in $R$. Therefore $\im \phi = \Z^2$.
+
+    We now find the kernel of $\phi$.
+    \begin{align*}
+        \ker\phi &= \left\{\begin{pmatrix}a&b\\0&c\end{pmatrix} \in R \vert \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\right) = (0,0)\right\}\\
+        &= \left\{\begin{pmatrix}a&b\\0&c\end{pmatrix} \in R \vert (a,c) = (0,0)\right\}\\
+        &= \left\{\begin{pmatrix}0&n\\0&0\end{pmatrix} \vert n \in \Z\right\}.
+    \end{align*}
+\end{example}
+
+\newpage
+
+We look at some results regarding the image and kernel of a ring homomorphism. These results may look familiar to those who read Volume I.
+\begin{proposition}
+    Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Then $\im\phi$ is a subring of $R_2$.
+\end{proposition}
+\begin{proof}
+    Note that $\im\phi = \phi(R_1)$ is a subring of $R_2$ by \myref{prop-homomorphism-on-subring-is-subring}.
+\end{proof}
+
+\begin{proposition}
+    Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Then $\ker\phi$ is an ideal of $R_1$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-kernel-is-an-ideal} (later).
+\end{proof}
+\begin{exercise}\label{exercise-kernel-is-an-ideal}
+    Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Prove that $\ker\phi$ is an ideal of $R_1$.
+\end{exercise}
+
+\begin{proposition}
+    Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Then $\phi$ is injective if and only if $\ker\phi = \{0_1\}$.
+\end{proposition}
+\begin{proof}
+    We first prove the forward direction; suppose $\phi$ is injective and let $a \in \ker\phi$. By definition of the kernel we have $\phi(a) = 0_2$. But by \myref{exercise-image-of-additive-identity-is-additive-identity}, we have $\phi(0_1) = 0_2$. Since $\phi$ is injective, therefore $a = 0_1$, meaning $\ker\phi = \{0_1\}$.
+
+    We now prove the reverse direction; suppose $\ker\phi = \{0_1\}$. Now let $a,b \in R_1$ such that $\phi(a) = \phi(b)$. Therefore $\phi(a) - \phi(b) = \phi(a-b) = 0_2$. Therefore $a-b \in \ker\phi$ by definition of the kernel. However $\ker\phi = \{0_1\}$ which means that $a - b = 0_1$. Therefore $a = b$, meaning $\phi$ is injective.
+\end{proof}
+
 \section{The First Ring Isomorphism Theorem}
 \section{How Restrictive are Ring Homomorphisms?}
 
@@ -1974,6 +2020,8 @@ Similar to groups, ring homomorphisms too have a image and kernel.
             \phi(xx^{-1}) = \phi(1_1) = 1_2
         \]
         so applying $\phi(x)^{-1}$ on the left on both sides $\phi(x^{-1}) = \phi(x)^{-1}$.
+
+        \item Recall that $\{0_2\}$, the trivial ideal, is an ideal of $R_2$, where $0_2$ is the additive identity of $R_2$. Therefore $\ker\phi = \phi^{-1}(\{0\})$ is an ideal of $R_1$ by \myref{prop-inverse-homomorphism-on-ideal-is-ideal}.
     \end{enumerate}
 \end{enumerate}
 
