@@ -25,7 +25,6 @@
 \newcommand{\Q}{\mathbb{Q}}                        % The ring of rational numbers
 \newcommand{\R}{\mathbb{R}}                        % The ring of real numbers
 \newcommand{\Z}{\mathbb{Z}}                        % The ring of integers
-\newcommand{\Zn}[1]{\mathbb{Z}_{#1}}               % The ring of integers modulo n
 
 \newcommand{\Ann}[2]{\mathrm{Ann}_{#1}(#2)}  % Annihilator of a subset A of a ring R
 \newcommand{\Char}[1]{\mathrm{char}(#1)}     % Characteristic of a ring R
@@ -182,19 +181,19 @@ Before we introduce some examples of rings, we make some remarks for the notatio
 
 Let's look at some examples of rings.
 \begin{example}
-    We show that $(\Zn{n}, \oplus_n, \otimes_n)$, where $\oplus_n$ and $\otimes_n$ denote addition and multiplication modulo $n$ respectively, form a ring.
+    We show that $(\Z_n, \oplus_n, \otimes_n)$, where $\oplus_n$ and $\otimes_n$ denote addition and multiplication modulo $n$ respectively, form a ring.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: We know $(\Zn{n}, \oplus_n)$ is an abelian group from Volume I.
-        \item \textbf{Multiplication-Semigroup}: We can see that $(\Zn{n}, \otimes_n)$ is a semigroup as
+        \item \textbf{Addition-Abelian}: We know $(\Z_n, \oplus_n)$ is an abelian group from Volume I.
+        \item \textbf{Multiplication-Semigroup}: We can see that $(\Z_n, \otimes_n)$ is a semigroup as
         \begin{itemize}
-            \item $\Zn{n}$ is closed under $\otimes_n$ because $a \otimes_n b \in \{0, 1, 2, \dots, n-1\} = \Zn{n}$; and
+            \item $\Z_n$ is closed under $\otimes_n$ because $a \otimes_n b \in \{0, 1, 2, \dots, n-1\} = \Z_n$; and
             \item multiplication is associative, so multiplication modulo $n$ is associative.
         \end{itemize}
         \item \textbf{Distributive}: It is clear that $\oplus_n$ and $\otimes_n$ distribute.
     \end{itemize}
-    Hence $(\Zn{n}, \oplus_n, \otimes_n)$ is a ring. Furthermore, $\otimes_n$ has an identity of 1 and is commutative, so in fact $(\Zn{n}, \otimes_n)$ is a commutative monoid. Therefore $(\Zn{n}, \oplus_n, \otimes_n)$ is a commutative ring with identity.
+    Hence $(\Z_n, \oplus_n, \otimes_n)$ is a ring. Furthermore, $\otimes_n$ has an identity of 1 and is commutative, so in fact $(\Z_n, \otimes_n)$ is a commutative monoid. Therefore $(\Z_n, \oplus_n, \otimes_n)$ is a commutative ring with identity.
 
-    Note that, in this volume, $\Zn{n}$ refers to the ring $(\Zn{n}, \oplus_n, \otimes_n)$.
+    Note that, in this volume, $\Z_n$ refers to the ring $(\Z_n, \oplus_n, \otimes_n)$.
 \end{example}
 
 \begin{example}
@@ -208,7 +207,7 @@ Let's look at some examples of rings.
         \end{itemize}
         \item \textbf{Distributive}: It is clear that $+$ and $\times$ distribute.
     \end{itemize}
-    Hence $(\Q, +, \times)$ is a ring. Furthermore, $\times$ has an identity of 1 and is commutative. So, just like $\Zn{n}$, we see that $(\Q, +, \times)$ is a commutative ring with identity.
+    Hence $(\Q, +, \times)$ is a ring. Furthermore, $\times$ has an identity of 1 and is commutative. So, just like $\Z_n$, we see that $(\Q, +, \times)$ is a commutative ring with identity.
 
     Note that, in this volume, $\Q$ refers to the ring $(\Q, +, \times)$.
 \end{example}
@@ -354,7 +353,7 @@ Suppose $R$ is a ring.
     We say that $a \neq 0$ is a \textbf{zero divisor}\index{zero divisor} if there exists $b \neq 0$ such that $ab = 0$.
 \end{definition}
 \begin{example}
-    Consider the ring $\Zn{12}$. Clearly 4 and 6 are in $\Zn{12}$, and their product is $24 = 2 \times 12 = 0$ in $\Zn{12}$. Hence 4 and 6 are zero divisors in $\Zn{12}$.
+    Consider the ring $\Z_{12}$. Clearly 4 and 6 are in $\Z_{12}$, and their product is $24 = 2 \times 12 = 0$ in $\Z_{12}$. Hence 4 and 6 are zero divisors in $\Z_{12}$.
 \end{example}
 \begin{example}
     We claim that the ring
@@ -395,7 +394,7 @@ We note one property about zero divisors, which will be used in future chapters.
     Suppose $0 \neq 1$. An element $u \in R$ is called a \textbf{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$. Equivalently, $u$ is a unit if it has a multiplicative inverse.
 \end{definition}
 \begin{example}
-    3 and 7 are units in $\Zn{10}$ since $3 \times 7 = 7 \times 3 = 21 = 1$ in $\Zn{10}$.
+    3 and 7 are units in $\Z_{10}$ since $3 \times 7 = 7 \times 3 = 21 = 1$ in $\Z_{10}$.
 \end{example}
 
 \begin{definition}
@@ -487,12 +486,12 @@ We end this chapter off with an exploration about subrings.
     \begin{enumerate}[label=(\roman*)]
         \item Find \textbf{four} closed forms for the geometric series $1 + x + x^2 + x^3 + \cdots + x^n$.
         \item What are the condition(s) such that the closed forms are valid?
-        \item Evaluate 112 in the ring $\Zn{37}$.
+        \item Evaluate 112 in the ring $\Z_{37}$.
         \item Hence, using the result(s) above, evaluate
         \[
             1 + 2^3 + 2^6 + 2^9 + \cdots + 2^{72}
         \]
-        in the ring $\Zn{37}$.
+        in the ring $\Z_{37}$.
     \end{enumerate}
 \end{problem}
 
@@ -605,7 +604,7 @@ Let's look at some non-examples of integral domains.
     is an integral domain.
 \end{exercise}
 \begin{exercise}
-    Explain why all $\Zn{n}$ where $n$ is a positive composite number are not integral domains.
+    Explain why all $\Z_n$ where $n$ is a positive composite number are not integral domains.
 \end{exercise}
 
 \section{General Results}
@@ -656,11 +655,11 @@ With an introduction of integral domains out of the way, we introduce some gener
 \end{remark}
 
 \begin{example}
-    Let $p$ be a prime and consider the ring $\Zn{p}$. Clearly multiplication is commutative with identity 1. Also, as the only way to factor $p$ is $1 \times p$ and since $p \notin \Zn{p}$, thus there are no zero divisors in $\Zn{p}$. Hence $\Zn{p}$ is an integral domain. Now $\Zn{p}$ only has $p$ elements (namely the integers 0 to $p - 1$), so it is finite. By \myref{thrm-finite-integral-domain-is-field} we know that $\Zn{p}$ is a field.
+    Let $p$ be a prime and consider the ring $\Z_p$. Clearly multiplication is commutative with identity 1. Also, as the only way to factor $p$ is $1 \times p$ and since $p \notin \Z_p$, thus there are no zero divisors in $\Z_p$. Hence $\Z_p$ is an integral domain. Now $\Z_p$ only has $p$ elements (namely the integers 0 to $p - 1$), so it is finite. By \myref{thrm-finite-integral-domain-is-field} we know that $\Z_p$ is a field.
 \end{example}
 
 \begin{example}
-    We show that $\Zn{3}[i] = \{a+bi \vert a,b \in \Zn{3}\}$ is a finite integral domain in order to show that it is a field. Clearly multiplication is commutative with identity 1, so we just need to show that there are no zero divisors in $\Zn{3}[i]$.
+    We show that $\Z_p[i] = \{a+bi \vert a,b \in \Z_p\}$ is a finite integral domain in order to show that it is a field. Clearly multiplication is commutative with identity 1, so we just need to show that there are no zero divisors in $\Z_p[i]$.
     \begin{table}[h]
         \centering
         \resizebox{\textwidth}{!}{
@@ -679,13 +678,13 @@ With an introduction of integral domains out of the way, we introduce some gener
         }
     \end{table}
     
-    From the table, we have shown that no two non-zero elements in $\Zn{3}[i]$ multiply to zero. Therefore $\Zn{3}[i]$ has no zero divisors, which means $\Zn{3}[i]$ is an integral domain. Furthermore, as $\Zn{3}[i]$ is finite, therefore we know that it is a finite field by \myref{thrm-finite-integral-domain-is-field}.
+    From the table, we have shown that no two non-zero elements in $\Z_p[i]$ multiply to zero. Therefore $\Z_p[i]$ has no zero divisors, which means $\Z_p[i]$ is an integral domain. Furthermore, as $\Z_p[i]$ is finite, therefore we know that it is a finite field by \myref{thrm-finite-integral-domain-is-field}.
 \end{example}
 
 \begin{exercise}\label{exercise-Zn2[alpha]}
     Is the ring
     \[
-        \Zn{2}[\alpha] = \{a+b\alpha \vert a,b\in\Zn{2}\}
+        \Z_p[\alpha] = \{a+b\alpha \vert a,b\in\Z_p\}
     \]
     where $\alpha^2 = 1 + \alpha$ under regular addition and multiplication a field?
 \end{exercise}
@@ -753,7 +752,7 @@ We look at two properties about the characteristic.
     Is the trivial ring an integral domain?
 \end{exercise}
 \begin{exercise}
-    What is the characteristic of the ring $\Zn2[\alpha]$ (as defined in \myref{exercise-Zn2[alpha]})?
+    What is the characteristic of the ring $\Z_2[\alpha]$ (as defined in \myref{exercise-Zn2[alpha]})?
 \end{exercise}
 
 \section{Links to Polynomial Rings}
@@ -797,7 +796,7 @@ We covered some properties of the degree of a polynomial in Volume 0. However, w
 \end{itemize}
 
 \begin{exercise}
-    Give an example of a degree 5 polynomial in the ring $\Zn{2}[x]$.
+    Give an example of a degree 5 polynomial in the ring $\Z_2[x]$.
 \end{exercise}
 
 We can now state the theorem that produces a condition for a ring to be an integral domain.
@@ -856,7 +855,7 @@ We end this chapter by linking the notation of $R[x]$ where $x$ is \textit{not} 
 \newpage
 \section{Problems}
 \begin{problem}
-    Find two zero divisors in the ring $\Zn{5}[i]$.
+    Find two zero divisors in the ring $\Z_5[i]$.
 \end{problem}
 
 \begin{problem}
@@ -876,9 +875,9 @@ We end this chapter by linking the notation of $R[x]$ where $x$ is \textit{not} 
     \[
         R = \left\{\begin{pmatrix}0&0\\0&0\end{pmatrix},\begin{pmatrix}1&0\\0&1\end{pmatrix},\begin{pmatrix}1&1\\1&0\end{pmatrix},\begin{pmatrix}0&1\\1&1\end{pmatrix}\right\}
     \]
-    with entries in $\Zn{2}$ is
+    with entries in $\Z_2$ is
     \begin{enumerate}[label=(\roman*)]
-        \item a subring of $\Mn{2}{\Zn{2}}$; and
+        \item a subring of $\Mn{2}{\Z_2}$; and
         \item a field.
     \end{enumerate}
 \end{problem}
@@ -1322,9 +1321,9 @@ To end this chapter, we look at two constructs relating to a ring.
     That is, the nilradical of a commutative ring $R$ is the set of all nilpotents in $R$.
 \end{definition}
 \begin{example}
-    We find the nilradical of the ring $\Zn{12}$.
+    We find the nilradical of the ring $\Z_{12}$.
     \begin{align*}
-        \Nilr{\Zn{12}} &= \{r \in \Zn{12} \vert r^n = 0 \text{ for some } n \in \mathbb{N}\}\\
+        \Nilr{\Z_{12}} &= \{r \in \Z_{12} \vert r^n = 0 \text{ for some } n \in \mathbb{N}\}\\
         &= \{0, 6\}.
     \end{align*}
 \end{example}
@@ -1359,7 +1358,7 @@ To end this chapter, we look at two constructs relating to a ring.
 
 \section{Problems}
 \begin{problem}
-    Find $\Ann{\Zn{36}}{\{15\}}$.
+    Find $\Ann{\Z_{36}}{\{15\}}$.
 \end{problem}
 
 \begin{problem}
@@ -1750,9 +1749,9 @@ Similar to groups, ring homomorphisms too have a image and kernel.
     \]
     This simplifies to $(a^2-2b^2)(c^2-2d^2) = 0$. Hence either $a^2-2b^2 = 0$ or $c^2-2d^2 = 0$, implying $a = \sqrt2b$ or $c = \sqrt2d$. Now we cannot have $a = \sqrt2b$ as $\sqrt2$ is not an integer; the only case that is possible is if $c = \sqrt2d$ which finally means that $c = d = 0$.
 
-    \item Let $n = ab$ where $a,b \in Z$ and, without loss of generality, assume $1 < a \leq b < n$ (we exclude 1 and $n$ because we want $a$ and $b$ to be `proper' factors). Now clearly $a, b \in \Zn{n}$ with them both being non-zero but $ab = n = 0$ in $\Zn{n}$. Hence $a$ and $b$ are zero divisors in $\Zn{n}$, meaning $\Zn{n}$ is not an integral domain.
+    \item Let $n = ab$ where $a,b \in Z$ and, without loss of generality, assume $1 < a \leq b < n$ (we exclude 1 and $n$ because we want $a$ and $b$ to be `proper' factors). Now clearly $a, b \in \Z_n$ with them both being non-zero but $ab = n = 0$ in $\Z_n$. Hence $a$ and $b$ are zero divisors in $\Z_n$, meaning $\Z_n$ is not an integral domain.
     
-    \item We show that that $\Zn{2}[\alpha]$ is indeed a field. We note that multiplication is commutative with identity 1. The multiplication table in $\Zn{2}[\alpha]$ is provided below.
+    \item We show that that $\Z_2[\alpha]$ is indeed a field. We note that multiplication is commutative with identity 1. The multiplication table in $\Z_2[\alpha]$ is provided below.
     \begin{table}[h]
         \centering
         \resizebox{\textwidth}{!}{
@@ -1766,11 +1765,11 @@ Similar to groups, ring homomorphisms too have a image and kernel.
         }
     \end{table}
 
-    What we see from this table is that no non-zero elements multiply together to form zero, meaning that there are no zero divisors in $\Zn{2}[\alpha]$. Therefore $\Zn{2}[\alpha]$ is an integral field. Furthermore as $\Zn{2}[\alpha]$ is finite thus $\Zn{2}[\alpha]$ is a field by \myref{thrm-finite-integral-domain-is-field}.
+    What we see from this table is that no non-zero elements multiply together to form zero, meaning that there are no zero divisors in $\Z_2[\alpha]$. Therefore $\Z_2[\alpha]$ is an integral field. Furthermore as $\Z_2[\alpha]$ is finite thus $\Z_2[\alpha]$ is a field by \myref{thrm-finite-integral-domain-is-field}.
 
     \item The trivial ring $\{0\}$ is not an integral domain. Seeking a contradiction, if $\{0\}$ is indeed an integral domain, then by \myref{prop-zero-of-prime-characteristic-if-integral-domain}it has to have either 0 or prime characteristic. However, one sees clearly that the characteristic of the trivial ring is 1, which is neither 0 nor prime. Therefore $\{0\}$ is not an integral domain.
 
-    \item The additive identity in $\Zn2[\alpha]$ is 1. Clearly $1 + 1 = 0$, so the order of 1 in $(\Zn2[\alpha],+)$ is 2. Now \myref{exercise-Zn2[alpha]} tells us that $\Zn2[\alpha]$ is an integral domain, so by the previous proposition this means that $\Char{\Zn2[\alpha]} = 2$.
+    \item The additive identity in $\Z_2[\alpha]$ is 1. Clearly $1 + 1 = 0$, so the order of 1 in $(\Z_2[\alpha],+)$ is 2. Now \myref{exercise-Zn2[alpha]} tells us that $\Z_2[\alpha]$ is an integral domain, so by the previous proposition this means that $\Char{\Z_2[\alpha]} = 2$.
     
     \item One example would be $x^5$. Essentially any polynomial where the highest term is $x^5$ would work.
     
@@ -2021,7 +2020,7 @@ No problems.
         \]
         which are the four closed forms that we require.
         \item The condition is that either $1-x$ is a unit or $x-1$ is a unit in $R$, i.e. $(1-x)^{-1}$ or $(x-1)^{-1}$ exists.
-        \item $112 = 1$ in $\Zn{37}$ since $112 = 37\times3 + 1$.
+        \item $112 = 1$ in $\Z_{37}$ since $112 = 37\times3 + 1$.
         \item Let $x = 2^3 = 8$. Note $(x-1)^{-1} = (8-1)^{-1} = 7^{-1} = 16$ by (iii). Thus
         \[
             1+2+\cdots+2^{72} = (8-1)^{-1}(8^{25}-1) = 16(8^{25}-1).
@@ -2148,7 +2147,7 @@ No problems.
 
 \section{Integral Domains}
 \begin{enumerate}
-    \item To find a $a+bi \in \Zn{5}[i]$ such that there exists a $c+di \in \Zn{5}[i]$ where $(a+bi)(c+di) = 0$ but both $a+bi$ and $c+di$ are non-zero. Expanding $(a+bi)(c+di)$ yields $(ac-bd)+(ad+bc)i = 0$. Therefore we must have $ac-bd = 0$ and $ad+bc = 0$. For simplicity let's choose $a=c=1$. Using second equation we have $d+b = 0$ which means $d = -b$. Hence $(1 - b(-b))+(-b + b)i = 1+b^2 = 0$. Therefore choosing $b = 2$ would make it work. Therefore one solution is $a = 1, b = 2, c = 1, d = -2 = 3$; i.e. two zero divisors are $1+2i$ and $1+3i$.
+    \item To find a $a+bi \in \Z_5[i]$ such that there exists a $c+di \in \Z_5[i]$ where $(a+bi)(c+di) = 0$ but both $a+bi$ and $c+di$ are non-zero. Expanding $(a+bi)(c+di)$ yields $(ac-bd)+(ad+bc)i = 0$. Therefore we must have $ac-bd = 0$ and $ad+bc = 0$. For simplicity let's choose $a=c=1$. Using second equation we have $d+b = 0$ which means $d = -b$. Hence $(1 - b(-b))+(-b + b)i = 1+b^2 = 0$. Therefore choosing $b = 2$ would make it work. Therefore one solution is $a = 1, b = 2, c = 1, d = -2 = 3$; i.e. two zero divisors are $1+2i$ and $1+3i$.
     
     \item Take $w, z \in \Z[i]$ such that $w \neq 0$ and $wz = 0$. We want to show that $z = 0$. Let $z = a+bi$ and $w = c+di$. Since $w \neq 0$ we must have $c^2+d^2 \neq 0$. Now
     \[
@@ -2181,9 +2180,9 @@ No problems.
     \item For brevity let O$ = \begin{pmatrix}0&0\\0&0\end{pmatrix}$, I$ = \begin{pmatrix}1&0\\0&1\end{pmatrix}$, A$ = \begin{pmatrix}1&1\\1&0\end{pmatrix}$, and B$ = \begin{pmatrix}0&1\\1&1\end{pmatrix}$.
     
     \begin{enumerate}[label=(\roman*)]
-        \item Clearly one sees that $R$ is a subset of $\Mn{2}{\Zn{2}}$.
+        \item Clearly one sees that $R$ is a subset of $\Mn{2}{\Z_2}$.
         \begin{itemize}
-            \item We show $(R, +)\leq(\Mn{2}{\Zn{2}},+)$.
+            \item We show $(R, +)\leq(\Mn{2}{\Z_2},+)$.
             \begin{table}[h]
                 \centering
                 \begin{tabular}{|l|l|l|l|l|}
@@ -2196,7 +2195,7 @@ No problems.
                 \end{tabular}
             \end{table}
             
-            From the Cayley table, clearly the identity of the ring $\Mn{2}{\Zn{2}}$ is in $R$ and $R$ is closed under addition. Hence $(R, +)\leq(\Mn{2}{\Zn{2}},+)$
+            From the Cayley table, clearly the identity of the ring $\Mn{2}{\Z_2}$ is in $R$ and $R$ is closed under addition. Hence $(R, +)\leq(\Mn{2}{\Z_2},+)$
 
             \item We show $R$ is closed under multiplication.
             \begin{table}[h]
@@ -2213,9 +2212,9 @@ No problems.
             
             From the Cayley table, clearly $R$ is closed under multiplication.
         \end{itemize}
-        Therefore $R$ is a subring of $\Mn{2}{\Zn2}$.
+        Therefore $R$ is a subring of $\Mn{2}{\Z_2}$.
 
-        \item Since $R$ is a subring of $\Mn{2}{\Zn{2}}$, it is a ring. Furthermore, by the Cayley table of $(R, \cdot)$, we see that $R$ is commutative with identity I. Finally, one sees that $\mathrm{A}^{-1} = \mathrm{B}$, $\mathrm{B}^{-1} = \mathrm{A}$, and $\mathrm{I}^{-1} = \mathrm{I}$. Therefore all non-zero elements of $R$ have inverses. Hence $R$ is a field.
+        \item Since $R$ is a subring of $\Mn{2}{\Z_2}$, it is a ring. Furthermore, by the Cayley table of $(R, \cdot)$, we see that $R$ is commutative with identity I. Finally, one sees that $\mathrm{A}^{-1} = \mathrm{B}$, $\mathrm{B}^{-1} = \mathrm{A}$, and $\mathrm{I}^{-1} = \mathrm{I}$. Therefore all non-zero elements of $R$ have inverses. Hence $R$ is a field.
     \end{enumerate}
 \end{enumerate}
 
@@ -2223,9 +2222,9 @@ No problems.
 \begin{enumerate}
     \item Note that $36 = 2^2 \times 3^2$. So
     \begin{align*}
-        \Ann{\Zn{36}}{\{15\}} &= \{r \in \Zn{36} \vert 15r = 0\}\\
-        &= \{r \in \Zn{15} \vert 3(5r) = 0\}\\
-        &= \{r \in \Zn{15} \vert r \text{ is a multiple of }2^2\times3 = 12\}\\
+        \Ann{\Z_{36}}{\{15\}} &= \{r \in \Z_{36} \vert 15r = 0\}\\
+        &= \{r \in \Z_{15} \vert 3(5r) = 0\}\\
+        &= \{r \in \Z_{15} \vert r \text{ is a multiple of }2^2\times3 = 12\}\\
         &= \{0,12,24\}.
     \end{align*}
 
