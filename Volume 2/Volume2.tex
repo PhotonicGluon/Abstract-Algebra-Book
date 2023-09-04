@@ -1517,11 +1517,13 @@ We look at ring isomorphisms.
 \begin{definition}
     A \textbf{ring isomorphism}\index{ring isomorphism} is a bijective ring homomorphism.
 \end{definition}
+Similar to groups, if two rings $R$ and $R'$ are isomorphic, then we write $R \cong R'$.
+
 \begin{example}
     We show that $\Z_n \cong \Z/n\Z$.
 
     \begin{proof}
-        Consider the map $\phi:\Z_n / \Z/n\Z$ where $m \mapsto m + n\Z$. We show that $\phi$ is an isomorphism.
+        Consider the map $\phi:\Z_n \to \Z/n\Z$ where $m \mapsto m + n\Z$. We show that $\phi$ is an isomorphism.
         \begin{itemize}
             \item \textbf{Homomorphism}:
             \[
@@ -1689,8 +1691,6 @@ Similar to groups, ring homomorphisms too have a image and kernel.
     \end{align*}
 \end{example}
 
-\newpage
-
 We look at some results regarding the image and kernel of a ring homomorphism. These results may look familiar to those who read Volume I.
 \begin{proposition}
     Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Then $\im\phi$ is a subring of $R_2$.
@@ -1718,12 +1718,161 @@ We look at some results regarding the image and kernel of a ring homomorphism. T
     We now prove the reverse direction; suppose $\ker\phi = \{0_1\}$. Now let $a,b \in R_1$ such that $\phi(a) = \phi(b)$. Therefore $\phi(a) - \phi(b) = \phi(a-b) = 0_2$. Therefore $a-b \in \ker\phi$ by definition of the kernel. However $\ker\phi = \{0_1\}$ which means that $a - b = 0_1$. Therefore $a = b$, meaning $\phi$ is injective.
 \end{proof}
 
-\section{The First Ring Isomorphism Theorem}
+\section{The Ring Isomorphism Theorems}
+Similar to group theory, there are three main ring isomorphism theorems. However, we will only explicitly prove the first ring isomorphism theorem; the other two will be left as problems.
+
+\begin{theorem}[First Ring Isomorphism Theorem (FRIT)]\label{thrm-ring-isomorphism-1}\index{ring isomorphism theorem!first}\index{FRIT}
+    Let $R$ and $R'$ be rings, and suppose $\phi: R \to R'$ is a ring homomorphism. Then the map $\psi: R / \ker\phi \to \im\phi$, defined by $\psi(r + \ker\phi) = \phi(r)$, is a ring isomorphism.
+\end{theorem}
+\begin{remark}
+    Equivalently, the FRIT states that
+    \[
+        R / \ker\phi \cong \im\phi
+    \]
+    for any ring homomorphism $\phi$.
+\end{remark}
+
+\newpage
+
+We include the commutativity diagram of the maps stated to aid clarity:
+\begin{figure}[h]
+    \centering
+    \fbox{\includegraphics[width=4.5cm]{images/chapter5/Isomorphism 1 - Diagram.png}}
+    \caption{Commutativity Diagram for \myreffigures{thrm-ring-isomorphism-1}}
+\end{figure}
+
+In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elements from $R$ to $R/\ker\phi$. Then the map $\psi$ is a unique map that sends elements from $R/\ker\phi$ to the image of $\phi$.
+
+\begin{proof}
+    We need to show that $\psi$ is a well-defined bijective homomorphism.
+    \begin{itemize}
+        \item \textbf{Well-Defined}: Suppose $a + \ker\phi$ and $b + \ker\phi$ are in $R/\ker\phi$ such that $a + \ker\phi = b+\ker\phi$. This means that $a - b \in \ker\phi$ by Coset Equality (\myref{lemma-coset-equality}). Thus $\phi(a-b) = 0$ by definition of the kernel. Hence $\phi(a) - \phi(b) = 0$ which means $\phi(a) = \phi(b)$. Therefore, we see that
+        \[
+            \psi(a + \ker\phi) = \phi(a) = \phi(b) = \psi(b + \ker\phi)
+        \]
+        which means $\psi$ is well-defined.
+
+        \item \textbf{Homomorphism}: We first show that $\psi$ is a ring homomorphism.
+        \begin{itemize}
+            \item $\boxed{+}$: If $a + \ker\phi$ and $b + \ker\phi$ are in $R/\ker\phi$,
+            \begin{align*}
+                &\psi((a + \ker\phi)+(b+\ker\phi))\\
+                &= \psi((a+b)+\ker\phi)\\
+                &= \phi(a+b)\\
+                &= \phi(a) + \phi(b)\\
+                &= \psi(a + \ker\phi) + \psi(b + \ker\phi).
+            \end{align*}
+            \item $\boxed{\times}$: If $a + \ker\phi$ and $b + \ker\phi$ are in $R/\ker\phi$,
+            \begin{align*}
+                \psi((a + \ker\phi)(b+\ker\phi)) &= \psi((ab)+\ker\phi)\\
+                &= \phi(ab)\\
+                &= \phi(a)\phi(b)\\
+                &= \psi(a + \ker\phi)\psi(b + \ker\phi).
+            \end{align*}
+        \end{itemize}
+        Therefore $\psi$ is a ring homomorphism.
+
+        \item \textbf{Injective}: Suppose $\psi(a+\ker\phi) = \psi(b+\ker\phi)$.
+        \begin{align*}
+            \phi(a) &= \phi(b) & (\text{definition of }\psi)\\
+            \phi(a) - \phi(b) &= 0\\
+            \phi(a-b) &= 0 & (\phi \text{ is a ring homomorphism})\\
+            a - b &\in \ker\phi & (\text{definition of kernel})\\
+            a + \ker\phi &= b + \ker\phi & (\text{Coset Equality})
+        \end{align*}
+        Therefore if $\psi(a+\ker\phi) = \psi(b+\ker\phi)$ then $a+\ker\phi = b+\ker\phi$, which means $\psi$ is injective.
+
+        \item \textbf{Surjective}: Suppose $s \in \im\phi$, so there is an $r \in R$ such that $s = \phi(r)$. Clearly $\psi(r + \ker\phi) = \phi(r) = s$, so $s$ has a pre-image of $r + \ker\phi$, i.e. $\psi$ is surjective.
+    \end{itemize}
+    Therefore, $\psi$ is a bijective ring homomorphism, i.e. $\psi$ is a ring isomorphism, proving the FRIT.
+\end{proof}
+
+\begin{example}
+    We show that $\Z[x] / \langle x \rangle \cong \Z$ by way of the FRIT.
+
+    Let $\phi: \Z[x] \to \Z$ be defined such that $p(x) \mapsto p(0)$.
+
+    We claim $\phi$ is surjective. Let $n \in \Z$. Note that
+    \[
+        n = n + 0x + 0x^2 + \cdots \in \Z[x]
+    \]
+    so
+    \begin{align*}
+        \phi(n) &= \phi(n + 0x + 0x^2 + \cdots)\\
+        &= n + 0(0) + 0(0)^2 + \cdots\\
+        &= n
+    \end{align*}
+    which means that $n$ is its own pre-image. Thus $\im\phi = \Z$.
+
+    Now we find the kernel of $\phi$. Suppose $p(x) \in \ker\phi$, i.e. $\phi(p(x)) = 0$. This means that $p(0) = 0$. The general form for a univariate polynomial $p(x)$ is $a_0 + a_1x + a_2x^2 + \cdots$, so if $p(0) = 0$ then $a_0 = 0$. Thus,
+    \begin{align*}
+        p(x) &= 0 + a_1x + a_2x^2 + \cdots\\
+        &= x(a_1 + a_2x + \cdots)\\
+        &= xq(x)
+    \end{align*}
+    where $q(x) \in \Z[x]$. Therefore
+    \[
+        \ker\phi = \{xq(x) \vert q(x) \in \Z[x]\} = \langle x \rangle.
+    \]
+
+    Thus, the FRIT (\myref{thrm-ring-isomorphism-1}) tells us that
+    \[
+        \Z[x] / \langle x \rangle \cong \Z.
+    \]
+\end{example}
+\begin{exercise}
+    Show that $\Z_n \cong \Z/n\Z$ via the ring homomorphism
+    \[
+        \phi: \Z \to \Z_n, m \mapsto m \mod n
+    \]
+    and by using the FRIT.
+\end{exercise}
+
+We briefly mention the other two main ring isomorphism theorems, although the proof of them will be left as problems. They are much less used than the FRIT, so we make only a passing mention of them.
+\begin{theorem}[Second Ring Isomorphism Theorem]\label{thrm-ring-isomorphism-2}\index{ring isomorphism theorem!second}
+    Let $R$ be a ring with subring $R$ and ideal $I$. Then
+    \begin{enumerate}
+        \item $S+I = \{s+i \vert s\in S,\;i\in I\}$ is a subring of $R$;
+        \item $S \cap I$ is an ideal of $S$; and
+        \item $(S+I)/I \cong S/(S\cap I)$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    See \myref{problem-ring-isomorphism-2} (later).
+\end{proof}
+
+\begin{theorem}[Third Ring Isomorphism Theorem]\label{thrm-ring-isomorphism-3}\index{ring isomorphism theorem!third}
+    Let $R$ be a ring with ideals $I$ and $J$ such that $I$ is a subset of $J$. Then
+    \begin{enumerate}
+        \item $J/I$ is an ideal of $R/I$; and
+        \item $\frac{R/I}{J/I} \cong R/J$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    See \myref{problem-ring-isomorphism-3} (later).
+\end{proof}
+
 \section{How Restrictive are Ring Homomorphisms?}
 
 \newpage
 
 \section{Problems}
+\begin{problem}\label{problem-ring-isomorphism-2}
+    Let $R$ be a ring with subring $S$ and ideal $I$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Prove $S+I$ is a subring of $R$.
+        \item Prove $S \cap I$ is an ideal of $S$.
+        \item Prove $S/(S\cap I)\cong (S+I)/I$.
+    \end{enumerate}
+\end{problem}
+\begin{problem}\label{problem-ring-isomorphism-3}
+    Let $R$ be a ring with ideals $I$ and $J$ such that $I$ is a subset of $J$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Prove that $J/I$ is an ideal of $R/I$.
+        \item Prove that $\frac{R/I}{J/I} \cong R/J$.\newline
+        (\textit{Note: remember to prove that the map is well-defined.})
+    \end{enumerate}
+\end{problem}
 
 %=========================================
 \appendix
@@ -2020,9 +2169,24 @@ We look at some results regarding the image and kernel of a ring homomorphism. T
             \phi(xx^{-1}) = \phi(1_1) = 1_2
         \]
         so applying $\phi(x)^{-1}$ on the left on both sides $\phi(x^{-1}) = \phi(x)^{-1}$.
-
-        \item Recall that $\{0_2\}$, the trivial ideal, is an ideal of $R_2$, where $0_2$ is the additive identity of $R_2$. Therefore $\ker\phi = \phi^{-1}(\{0\})$ is an ideal of $R_1$ by \myref{prop-inverse-homomorphism-on-ideal-is-ideal}.
     \end{enumerate}
+
+    \item Recall that $\{0_2\}$, the trivial ideal, is an ideal of $R_2$, where $0_2$ is the additive identity of $R_2$. Therefore $\ker\phi = \phi^{-1}(\{0\})$ is an ideal of $R_1$ by \myref{prop-inverse-homomorphism-on-ideal-is-ideal}.
+
+    \item We show that $\phi$ is surjective. Note that for any $k \in \Z_n$, we have $k \leq n$. Thus, $\phi(k) = k$, so $\phi$ is surjective.
+    
+    We now find the kernel of $\phi$.
+    \begin{align*}
+        \ker\phi &= \{m \in \Z \vert \phi(m) = 0\}\\
+        &= \{m \in \Z \vert m \cong 0 \pmod n\}\\
+        &= \{kn \vert k \in \Z\}\\
+        &= n\Z.
+    \end{align*}
+
+    The FRIT (\myref{thrm-ring-isomorphism-1}) on $\phi$ tells us that
+    \[
+        \Z/n\Z \cong \Z_n.
+    \]
 \end{enumerate}
 
 %=========================================
