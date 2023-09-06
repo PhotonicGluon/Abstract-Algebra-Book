@@ -108,11 +108,11 @@ Before we introduce rings, we look at `simpler' algebraic structures and build o
     for all $m \in M$.
 \end{definition}
 \begin{example}
-    Let $X$ be a set. Let the set
+    The structure $(S, \circ)$, where
     \[
-        S = \{f \vert  f: X \to X\}.
+        S = \{f \vert  f: X \to X\},
     \]
-    and let $\circ$ denote function composition. Then $(S, \circ)$ forms a monoid:
+    $X$ is a set, and $\circ$ denotes function composition forms a monoid.
     \begin{itemize}
         \item \textbf{Closure}: If $f, g \in S$ then $f\circ g \in S$ since function composition is closed.
         \item \textbf{Associative}: Function composition is associative.
@@ -218,7 +218,7 @@ Let's look at some examples of rings.
 \end{exercise}
 Note that, in this volume, $\Z$ refers to the ring $(\Z, +, \times)$.
 
-We remark that both $\R$ and $\C$ are rings under regular addition and multiplication, although we will not prove it here.
+We remark that $\R$ is a ring under regular addition and multiplication, although we will not prove it here.
 
 We look at one more ring: the ring of $n \times n$ matrices.
 
@@ -258,20 +258,10 @@ Let $\Mn{n}{R}$ denote the set of $n\times n$ matrices with entries in the ring 
     
             \item \textbf{Identity}: Denote the $n \times n$ matrix with contains only the zero in $R$ by $\textbf{0}_n$. One sees clearly that this is the identity in $\Mn{n}{R}$ as $\textbf{M} + \textbf{0}_n = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
             
-            \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ where
-            \[
-                b_{i,j} = -a_{i,j},    
-            \]
-            that is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \textbf{0}_n$.\newline
+            \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ such that $b_{i,j} = -a_{i,j}$. That is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \textbf{0}_n$.\newline
             (Note that we denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$.)
 
-            \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{C}$. Then
-            \begin{align*}
-                c_{i,j} &= a_{i,j} \oplus b_{i,j}\\
-                &= b_{i,j} \oplus a_{i,j} & (\oplus \text{ is commutative})\\
-                &= d_{i,j}
-            \end{align*}
-            which means $\textbf{C} = \textbf{D}$.
+            \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{C}$. Consider $c_{i,j} = a_{i,j} \oplus b_{i,j}$. Since $\oplus$ is commutative, thus $a_{i,j} \oplus b_{i,j} = b_{i,j} \oplus a_{i,j}$. But $d_{i,j} = b_{i,j} \oplus a_{i,j}$, so we have $c_{i,j} = d_{i,j}$. Therefore $\textbf{C} = \textbf{D}$.
         \end{itemize}
 
         \item \textbf{Multiplication-Semigroup}: We now need to prove that $(\Mn{n}{R}, \cdot)$ is a semigroup.
@@ -347,6 +337,8 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
     Show that $(-a)(-b) = ab$ for any $a$ and $b$ in $R$.
 \end{exercise}
 
+\newpage
+
 \section{More Definitions}
 Suppose $R$ is a ring.
 \begin{definition}
@@ -413,6 +405,8 @@ We look at fields in more detail in Volume III.
     Is $\Z$ a field?
 \end{exercise}
 
+\newpage
+
 \section{Subrings}
 We end this chapter off with an exploration about subrings.
 
@@ -428,11 +422,15 @@ We end this chapter off with an exploration about subrings.
 \end{remark}
 
 \begin{example}
-    We know that $\Z$ and $\Q$ are rings, and clearly $\Z \subseteq \Q$. Hence $\Z$ is a subring of $\Q$. Similarly, $\Q$ is a subring of $\R$, and $\R$ is a subring of $\C$.
+    We know that $\Z$ and $\Q$ are rings, and clearly $\Z \subseteq \Q$. Hence $\Z$ is a subring of $\Q$. Similarly, since $\Q \subseteq \R$, thus $\Q$ is a subring of $\R$.
 \end{example}
 
 \begin{example}
-    Consider the \textbf{gaussian integers}\index{gaussian integers},
+    Consider the ring of \textbf{complex numbers}\index{complex numbers},
+    \[
+        \C = \{x + yi \vert x, y \in \R\},
+    \]
+    and the set of \textbf{gaussian integers}\index{gaussian integers},
     \[
         \Z[i] = \{a + bi \vert a,b\in\mathbb{Z}\},
     \]
@@ -443,12 +441,12 @@ We end this chapter off with an exploration about subrings.
             \item Clearly the identity of $(\C, +)$, which is 0, is inside $(\Z[i], +)$ as $0 = 0 + 0i$.
             \item For any $a + bi, c+di \in \Z[i]$, we have $(a+bi) + (-(c+di)) = (a-c) + (b-d)i \in \Z[i]$.
         \end{itemize}
-        Therefore by subgroup test we see $(\Z[i], +) \leq (\C, +)$.
+        Thus the subgroup test (\myref{thrm-subgroup-test}) tells us $(\Z[i], +) \leq (\C, +)$.
 
         Now we show that $\Z[i]$ is closed under multiplication. Let $a + bi, c+di \in \Z[i]$. Then their product is
         \begin{align*}
             (a+bi)(c+di) &= ac+adi+bci+bdi^2\\
-            &= (ac-bd) + (ad+bc)i
+            &= (ac-bd) + (ad+bc)i\\
             &\in \Z[i]
         \end{align*}
         so $\Z[i]$ is closed under multiplication. Therefore $\Z[i]$ is a subring of $\C$.
@@ -651,7 +649,7 @@ With an introduction of integral domains out of the way, we introduce some gener
 \end{proof}
 
 \begin{remark}
-    We note that finite fields are also known as \textbf{Galois fields}\index{Galois Field}, so-named in honour of \'{E}variste Galois. We explore more properties of fields and Galois fields in Volume III.
+    We note that finite fields are also known as \textbf{Galois fields}\index{Galois Field}, so-named in honour of \'Evariste Galois. We explore more properties of fields and Galois fields in Volume III.
 \end{remark}
 
 \begin{example}
@@ -1419,12 +1417,19 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
 
 \section{Ring Homomorphisms and Isomorphisms}
 \begin{definition}
-    Let $R_1$ and $R_2$ be rings. A function $\phi: R_1 \to R_2$ is a \textbf{ring homomorphisms}\index{ring homomorphism} if for all $a, b \in R_1$, we have
+    Let $(R_1, +, \cdot)$ and $(R_2, \oplus, \otimes)$ be rings. A function $\phi: R_1 \to R_2$ is a \textbf{ring homomorphism}\index{ring homomorphism} if for all $a, b \in R_1$,
     \begin{align*}
-        \phi(a+b) &= \phi(a) + \phi(b),\\
-        \phi(ab) &= \phi(a)\phi(b).
+        \phi(a+b) &= \phi(a) \oplus \phi(b), \text{ and}\\
+        \phi(a\cdot b) &= \phi(a)\otimes\phi(b).
     \end{align*}
 \end{definition}
+\begin{remark}
+    Like with group homomorphisms, we usually suppress the multiplication operation and use ``$+$'' for both addition operations. That is, the ring homomorphism conditions become
+    \begin{align*}
+        \phi(a+b) &= \phi(a) + \phi(b) \text{ and}\\
+        \phi(ab) &= \phi(a)\phi(b).
+    \end{align*}
+\end{remark}
 
 \begin{example}
      We show that the map $\phi: \Z \to \Z/n\Z, x \mapsto x + n\Z$ is a ring homomorphism.
@@ -1476,7 +1481,7 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
     Let $R$ be a ring. The \textbf{evaluation homomorphism}\index{evaluation homomorphism} is $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$ and $a \in R$. Prove that $\phi_a$ is indeed a ring homomorphism.
 \end{exercise}
 
-We introduce endomorphisms.
+An endomorphism is a specific type of homomorphism.
 \begin{definition}
     Let $R$ be a ring. A \textbf{ring endomorphism}\index{ring endomorphism} of $R$ is a homomorphism $\phi: R \to R$.
 \end{definition}
@@ -1513,7 +1518,7 @@ We introduce endomorphisms.
     \end{partquestions}
 \end{exercise}
 
-We look at ring isomorphisms.
+Similar to group isomorphisms, rings too have an analogous `isomorphism' definition.
 \begin{definition}
     A \textbf{ring isomorphism}\index{ring isomorphism} is a bijective ring homomorphism.
 \end{definition}
@@ -1640,7 +1645,7 @@ For the following, let $R_1$ and $R_2$ be rings, and $\phi: R_1 \to R_2$ be a ri
 \begin{proposition}\label{prop-inverse-homomorphism-on-ideal-is-ideal}
     Let $J$ be an ideal of $R_2$. Then
     \[
-        \phi^{-1} = \{r \in R_1 \vert \phi(r) \in J\}
+        \phi^{-1}(J) = \{r \in R_1 \vert \phi(r) \in J\}
     \]
     is an ideal of $R_1$.
 \end{proposition}
@@ -1744,7 +1749,7 @@ We include the commutativity diagram of the maps stated to aid clarity:
 In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elements from $R$ to $R/\ker\phi$. Then the map $\psi$ is a unique map that sends elements from $R/\ker\phi$ to the image of $\phi$.
 
 \begin{proof}
-    We need to show that $\psi$ is a well-defined bijective homomorphism.
+    We need to show that $\psi$ is a well-defined bijective ring homomorphism.
     \begin{itemize}
         \item \textbf{Well-Defined}: Suppose $a + \ker\phi$ and $b + \ker\phi$ are in $R/\ker\phi$ such that $a + \ker\phi = b+\ker\phi$. This means that $a - b \in \ker\phi$ by Coset Equality (\myref{lemma-coset-equality}). Thus $\phi(a-b) = 0$ by definition of the kernel. Hence $\phi(a) - \phi(b) = 0$ which means $\phi(a) = \phi(b)$. Therefore, we see that
         \[
@@ -1788,7 +1793,7 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
 \end{proof}
 
 \begin{example}
-    We show that $\Z[x] / \princ{x} \cong \Z$ by way of the FRIT.
+    We show that $\Z[x] / \princ{x} \cong \Z$ by using the FRIT.
 
     Let $\phi: \Z[x] \to \Z$ be defined such that $p(x) \mapsto p(0)$.
 
@@ -1890,7 +1895,7 @@ Note that in \myref{example-endomorphisms-of-Z} we started the entire computatio
     Let $R$ be a ring. Then an element $x$ in $R$ is an \textbf{idempotent}\index{idempotent} if and only if $x^2 = x$.
 \end{definition}
 \begin{proposition}\label{prop-homomorphism-on-multiplicative-identity-is-idempotent}
-    Let $R$ and $R'$ be rings with identity, and let $\phi: R \to R'$ be a ring homomorphism. Then $\phi(1)$ is an idempotent.
+    Let $R$ and $R'$ be rings, and let $\phi: R \to R'$ be a ring homomorphism. If $R$ is a ring with identity, then $\phi(1)$ is an idempotent.
 \end{proposition}
 \begin{proof}
     Note
@@ -2036,6 +2041,9 @@ In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents
         (\textit{Note: remember to prove that the map is well-defined.})
     \end{partquestions}
 \end{problem}
+
+%=========================================
+\chapter{Polynomial Rings and Division}
 
 %=========================================
 \appendix
