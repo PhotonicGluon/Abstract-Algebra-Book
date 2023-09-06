@@ -10,7 +10,7 @@
 - Volume III covers field theory.
 
 ## Latest Release
-You can find the latest release [on Overwrite](https://overwrite.site/project?id=abstract-algebra), or on [GitHub](https://github.com/PhotonicGluon/Abstract-Algebra-Book/releases/latest).
+You can find the latest release [on Overwrite](https://overwrite.site/projects/abstract-algebra), or on [GitHub](https://github.com/PhotonicGluon/Abstract-Algebra-Book/releases/latest).
 
 ## Licence
 This work is released under a Creative Commons [Attribution-NonCommercial-ShareAlike 4.0 International Licence](LICENSE).
