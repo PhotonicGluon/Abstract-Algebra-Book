@@ -111,6 +111,7 @@
 \theoremstyle{definition}\newtheorem{example}[theoremhidden]{Example}
 
 %============ Environments ===============
+% 'Results' environments
 \newenvironment{theorem}
 {\definecolor{shadecolor}{named}{DarkSeaGreen2}\begin{shaded}\noindent\begin{theoremhidden}}
 {\end{theoremhidden}\end{shaded}}
@@ -134,6 +135,15 @@
 \newenvironment{exercise}
 {\begin{framed}\noindent\begin{exercisehidden}}
 {\end{exercisehidden}\end{framed}}
+
+% 'Questions' environments
+\newenvironment{questions}
+{\begin{enumerate}[label=\textbf{\arabic*.}]}
+{\end{enumerate}}
+
+\newenvironment{partquestions}[1]
+{\begin{enumerate}[label=\textbf{(#1)}]}
+{\end{enumerate}}
 
 %=========== Custom Commands =============
 \newcommand{\code}[1]{\texttt{#1}}  % Code block
