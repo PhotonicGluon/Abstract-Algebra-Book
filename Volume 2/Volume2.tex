@@ -1574,7 +1574,7 @@ Similar to groups, if two rings $R$ and $R'$ are isomorphic, then we write $R \c
         Thus one sees that $\phi(0) = \phi(1) = 0$ which means $\phi$ is not injective, a contradiction.
     \end{proof}
 \end{example}
-\begin{exercise}
+\begin{exercise}\label{exercise-identity-homomorphism-is-an-isomorphism}
     Show that the identity homomorphism is an isomorphism.
 \end{exercise}
 
@@ -1692,14 +1692,14 @@ Similar to groups, ring homomorphisms too have a image and kernel.
 \end{example}
 
 We look at some results regarding the image and kernel of a ring homomorphism. These results may look familiar to those who read Volume I.
-\begin{proposition}
+\begin{proposition}\label{prop-image-is-a-subring}
     Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Then $\im\phi$ is a subring of $R_2$.
 \end{proposition}
 \begin{proof}
     Note that $\im\phi = \phi(R_1)$ is a subring of $R_2$ by \myref{prop-homomorphism-on-subring-is-subring}.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop-kernel-is-an-ideal}
     Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Then $\ker\phi$ is an ideal of $R_1$.
 \end{proposition}
 \begin{proof}
@@ -1885,20 +1885,29 @@ Although ring homomorphisms appear to be quite general, we explore how restricte
 \begin{exercise}\label{exercise-homomorphism-maps-n-to-n-if-n-is-positive}
     In the above example, show that $\phi(n) = n$ for all positive integers $n$.
 \end{exercise}
-Note that, in the above example, we started the entire computation with the observation that $\phi(1) = \phi(1)^2$. This means that $\phi(1)$ is an idempotent.
+Note that in \myref{example-endomorphisms-of-Z} we started the entire computation with the observation that $\phi(1) = \phi(1)^2$. This means that $\phi(1)$ is an idempotent.
 \begin{definition}
     Let $R$ be a ring. Then an element $x$ in $R$ is an \textbf{idempotent}\index{idempotent} if and only if $x^2 = x$.
 \end{definition}
-In the above example, we used the fact that the only idempotents of $\Z$ are 0 and 1. However, this is not true for all rings.
+\begin{proposition}\label{prop-homomorphism-on-multiplicative-identity-is-idempotent}
+    Let $R$ and $R'$ be rings with identity, and let $\phi: R \to R'$ be a ring homomorphism. Then $\phi(1)$ is an idempotent.
+\end{proposition}
+\begin{proof}
+    Note
+    \[
+        \phi(1) = \phi(1 \times 1) = \phi(1) \times \phi(1) = \left(\phi(1)\right)^2
+    \]
+    which means $\phi(1)$ is an idempotent.
+\end{proof}
 
-\begin{example}
+In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents of $\Z$ are 0 and 1. However, this is not true for all rings.
+
+\begin{example}\label{example-homomorphisms-from-Z12-to-Z28}
     We find all ring homomorphisms $\phi: \Z_{12} \to \Z_{28}$. Note that $\Z_{12}$ is a ring with identity.
 
-    Set $a = \phi(1)$ and note
-    \[
-        a = \phi(1) = \phi(1\times1) = \phi(1)\phi(1) = a^2
-    \]
-    so $a^2 = a$. Again, $a$ is an idempotent. However, we cannot just assume that 0 and 1 are the \textit{only} idempotents in $\Z_{28}$; we need to check for them exhaustively.
+    By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent}, $a = \phi(1)$ is an idempotent. However, we cannot just assume that 0 and 1 are the \textit{only} idempotents in $\Z_{28}$; we need to check for them exhaustively.
+
+    \newpage
 
     By exhaustion, we see that
     \begin{itemize}
@@ -1938,13 +1947,78 @@ In the above example, we used the fact that the only idempotents of $\Z$ are 0 a
     Thus the only homomorphisms $\phi: \Z_{12} \to \Z_{28}$ are $\phi(n) = 0$ and $\phi(n) = 21n$ for all $n \in \Z_{12}$.
 \end{example}
 
-\begin{exercise}
+\begin{exercise}\label{exercise-homomorphism-over-Q-fixes-elements-of-Q}
     Suppose $R$ and $R'$ are rings such that $\Q$ is a subring of both $R$ and $R'$. Let $\phi: R \to R'$ be a ring homomorphism such that $\phi(1) = 1$. Show that for any $q \in Q$ we have $\phi(q) = q$.
 \end{exercise}
 
 \newpage
 
 \section{Problems}
+\begin{problem}
+    Let $R$ be a ring.
+    \begin{enumerate}[label=(\roman*)]
+        \item Show that $R/\{0\} \cong R$.
+        \item Prove that $R$ is an integral domain if and only if $\{0\}$ is a prime ideal.
+        \item Prove that $R$ is a field if and only if $\{0\}$ is a maximal ideal.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Find all ring endomorphisms of $\Q$.
+\end{problem}
+
+\begin{problem}
+    Show $\Z^2 \not\cong \Q$.
+\end{problem}
+
+\begin{problem}
+    Show $\Q[\sqrt2] \not\cong \Q[\sqrt3]$.
+\end{problem}
+
+\begin{problem}
+    Let
+    \[
+        R = \left\{\begin{pmatrix}a&0\\0&b\end{pmatrix}\vert a,b \in \Z\right\},
+    \]
+    which is a subring of $\Mn{2}{\Z}$. Show that $R \cong \Z^2$.
+\end{problem}
+
+\begin{problem}
+    Let $R$ and $R'$ be rings, and let $\phi: R \to R'$ be a ring isomorphism. Prove or disprove the following statements.
+    \begin{enumerate}[label=(\alph*)]
+        \item $\phi^{-1}: R' \to R$ is a ring isomorphism.
+        \item If $R$ has a subring with $n$ elements, then so does $R'$.
+        \item If $R$ has an ideal, then so does $R'$.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Let $I = \{f(x) \in \Z[x] \vert f(-2) = 0\}$ be a subset of $\Z[x]$, and let the map $\phi:\Z[x]\to\Z, f(x) \mapsto f(-2)$.
+    \begin{enumerate}[label=(\roman*)]
+        \item Show that $\phi$ is a ring homomorphism.
+        \item Show that $I$ is an ideal of $\Z[x]$.
+        \item Hence determine if the ideal $I$ is prime, maximal, or both.
+    \end{enumerate}
+\end{problem}
+
+\begin{problem}
+    Find all ring endomorphisms of $\Z_{10}$.\newline
+    Hence find all ring isomorphisms $\psi: \Z_{10} \to \Z_{10}$.
+\end{problem}
+
+\begin{problem}
+    Find all endomorphisms over $\Q[\sqrt3]$.\newline
+    Hence find all ring isomorphisms $\psi: \Q[\sqrt3] \to \Q[\sqrt3]$.
+\end{problem}
+
+\begin{problem}
+    Let $R$ and $R'$ be commutative rings, $I$ be an ideal of $R$, and $\phi: R\to R'$ be a ring homomorphism.
+    \begin{enumerate}[label=(\roman*)]
+        \item Show that $\phi(\sqrt I) \subseteq \sqrt{\phi(I)}$.
+        \item If $\phi$ is surjective with $\ker\phi \subseteq I$, prove that $\phi(\sqrt I) = \sqrt{\phi(I)}$.
+    \end{enumerate}
+\end{problem}
+
 \begin{problem}\label{problem-ring-isomorphism-2}
     Let $R$ be a ring with subring $S$ and ideal $I$.
     \begin{enumerate}[label=(\roman*)]
@@ -1953,6 +2027,7 @@ In the above example, we used the fact that the only idempotents of $\Z$ are 0 a
         \item Prove $S/(S\cap I)\cong (S+I)/I$.
     \end{enumerate}
 \end{problem}
+
 \begin{problem}\label{problem-ring-isomorphism-3}
     Let $R$ be a ring with ideals $I$ and $J$ such that $I$ is a subset of $J$.
     \begin{enumerate}[label=(\roman*)]
@@ -2693,6 +2768,378 @@ No problems.
         \item Note $b = au^{-1}$ since $u$ is a unit. Take $s \in \princ{b}$, so $s = by$ for some $y$ in $R$. But as $b = au^{-1}$, hence $s = (au^{-1})y = a(u^{-1}y) \in \princ{a}$, so $\princ{b} \subseteq \princ{a}$.
     \end{itemize}
     Therefore we see that $\princ{a} = \princ{b}$.
+\end{enumerate}
+
+\section{Ring Homomorphisms and Isomorphisms}
+\begin{enumerate}
+    \item \begin{enumerate}[label=(\roman*)]
+        \item Consider the identity homomorphism $\phi: R \to R, r \mapsto r$. Clearly $\phi$ is surjective. Note that
+        \begin{align*}
+            \ker\phi &= \{r \in R \vert \phi(r) = 0\}\\
+            &= \{r \in R \vert r = 0\}\\
+            &= \{0\}.
+        \end{align*}
+        By the FRIT (\myref{thrm-ring-isomorphism-1}),
+        \[
+            R / \{0\} \cong R
+        \]
+        which is what we wanted to show.
+
+        \item By \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}, $\{0\}$ is prime if and only if $R/\{0\}$ is an integral domain. But since $R/\{0\} \cong R$, thus $\{0\}$ is prime if and only if $R$ is an integral domain.
+        
+        \item By \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}, $\{0\}$ is maximal if and only if $R/\{0\} \cong R$ is a field.
+    \end{enumerate}
+
+    \item Let $\phi: \Q \to Q$ be a ring endomorphism. From \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent}, we know that $\phi(1)$ is an idempotent in $\Q$, meaning that $\phi(1) = 0$ or $\phi(1) = 1$.
+    
+    Clearly if $\phi(1) = 0$ then
+    \[
+        \phi(x) = \phi(1x) = \phi(1)\phi(x) = 0\phi(x) = 0
+    \]
+    so $\phi(x)$ is the trivial homomorphism.
+    
+    If instead $\phi(1) = 1$, then from \myref{exercise-homomorphism-over-Q-fixes-elements-of-Q} we know that $\phi(x) = x$ for all $x \in Q$, i.e. $\phi$ is the identity homomorphism.
+
+    Therefore the only two endomorphisms in $\Q$ are the trivial and identity homomorphisms.
+
+    \item BWOC, suppose $\phi: \Z^2 \to \Q$ is an isomorphism. Then \myref{exercise-image-of-additive-identity-is-additive-identity} tells us that $\phi((0,0)) = 0$. Also \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent} tells us that $\phi((1,1))$ is an idempotent in $\Q$, which means that $\phi((1,1)) = 0$ or $\phi((1,1)) = 1$.
+    
+    If $\phi((1,1)) = 0$ then we have $\phi((0,0)) = \phi((1,1)) = 0$, so $\phi$ is not injective, which thus means that $\phi$ is not an isomorphism, a contradiction.
+
+    Thus $\phi((1,1)) = 1$. Note that
+    \begin{align*}
+        \phi((1,1)) &= \phi((0,1)) + \phi((1,0)) = 1,\\
+        \phi((0,0)) &= \phi((0,1)) \times \phi((1,0)) = 0
+    \end{align*}
+    so this means that either $\phi((0,1)) = 0$ or $\phi((1,0)) = 0$. But this means that either $\phi((0,0)) = \phi((0,1)) = 0$ or $\phi((0,0)) = \phi((1,0)) = 0$ which again contradicts the fact that $\phi$ is injective and hence an isomorphism.
+
+    Therefore $\Z^2 \not\cong \Q$.
+
+    \item BWOC, suppose $\phi: \Q[\sqrt2] \to \Q[\sqrt3]$ is an isomorphism.
+    
+    Suppose $\phi(\sqrt2) = a + b\sqrt3$ where $a$ and $b$ are rational numbers. Note that $\phi(2) = 2$ by \myref{exercise-homomorphism-over-Q-fixes-elements-of-Q}, so
+    \[
+        2 = \phi(2) = \phi({\sqrt2}^2) = \left(\phi(\sqrt2)\right)^2 = a^2 + 2\sqrt3ab + 3b^2.
+    \]
+    This means that $2ab = 0$, which means that $a = 0$ or $b = 0$.
+
+    If $a = 0$ then $2 = 3b^2$ which means $b = \pm\sqrt{\frac23}$. But $\sqrt{\frac23}$ is not a rational number, contradicting the fact that $b$ is a rational number.
+
+    Thus $b = 0$. But this means that
+    \[
+        \phi(\sqrt2) = a = \phi(a),
+    \]
+    since $a \in \Q$, which means $\phi$ is not injective, contradicting the fact that $\phi$ is an isomorphism.
+
+    Therefore $\Q[\sqrt2] \not\cong \Q[\sqrt3]$.
+
+    \item Let $\phi: \Z^2 \to R, (a,b)\mapsto \begin{pmatrix}a&0\\0&b\end{pmatrix}$. We show that $\phi$ is a bijective ring homomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}:
+        \begin{align*}
+            \phi((a,b) + (x,y)) &= \phi((a+x,b+y))\\
+            &= \begin{pmatrix}a+x&0\\0&b+y\end{pmatrix}\\
+            &= \begin{pmatrix}a&0\\0&b\end{pmatrix} + \begin{pmatrix}x&0\\0&y\end{pmatrix}\\
+            &= \phi((a,b)) + \phi((x,y))
+        \end{align*}
+        and
+        \begin{align*}
+            \phi((a,b)(x,y)) &= \phi((ax,by))\\
+            &= \begin{pmatrix}ax&0\\0&by\end{pmatrix}\\
+            &= \begin{pmatrix}a&0\\0&b\end{pmatrix}\begin{pmatrix}x&0\\0&y\end{pmatrix}\\
+            &= \phi((a,b))\phi((x,y))
+        \end{align*}
+        so $\phi$ is a ring homomorphism.
+
+        \item \textbf{Injective}: Let $(a, b), (x, y) \in \Z^2$ such that $\phi((a,b)) = \phi((x,y))$. Therefore $\begin{pmatrix}a&0\\0&b\end{pmatrix} = \begin{pmatrix}x&0\\0&y\end{pmatrix}$. Thus $a = x$ and $b = y$, which means $(a,b) = (x,y)$. Therefore $\phi$ is injective.
+
+        \item \textbf{Surjective}: Let $\begin{pmatrix}a&0\\0&b\end{pmatrix} \in R$. Clearly one sees that $\phi((a, b)) = \begin{pmatrix}a&0\\0&b\end{pmatrix}$ so $\phi$ is surjective.
+    \end{itemize}
+
+    Therefore $\phi$ is a ring isomorphism, which means $R \cong \Z^2$.
+
+    \item \begin{enumerate}[label=(\alph*)]
+        \item We prove the statement. Note that since $\phi$ is bijective, thus $\phi^{-1}$ is bijective. We just need to show that $\phi^{-1}$ is a homomorphism.
+        
+        Let $u,v\in R'$. Then there is a $x,y \in R$ such that $\phi(x) = u$ and $\phi(y) = v$. Note
+        \begin{align*}
+            \phi^{-1}(u + v) &= \phi^{-1}(\phi(x) + \phi(y))\\
+            &= \phi^{-1}(\phi(x + y))\\
+            &= x + y\\
+            &= \phi^{-1}(u) + \phi^{-1}(v)
+        \end{align*}
+        and
+        \begin{align*}
+            \phi^{-1}(uv) &= \phi^{-1}(\phi(x)\phi(y))\\
+            &= \phi^{-1}(\phi(xy))\\
+            &= xy\\
+            &= \phi^{-1}(u)\phi^{-1}(v)
+        \end{align*}
+        so $\phi^{-1}$ is a ring homomorphism. Therefore $\phi^{-1}$ is a ring isomorphism.
+
+        \item We prove the statement. Suppose $S$ is a subring of $R$ with $n$ elements. Consider $\phi(S)$; by \myref{prop-homomorphism-on-subring-is-subring} we know $\phi(S)$ is a subring of $R'$. Also, since $\phi$ is a bijection, thus $S$ and $\phi(S)$ are equinumerous. Therefore $\phi(S)$ is a subring of $R'$ with $n$ elements.
+        
+        \item Suppose $I$ is an ideal of $R$. Consider $\phi(I)$; by \myref{prop-homomorphism-on-subring-is-subring} we know $\phi(I)$ is a subring of $R'$. We just need to check that $\phi(I)$ is an ideal of $R'$.
+        
+        Let $r' \in R'$ and $i' \in \phi(I)$. Since $\phi$ is surjective, there is an $r \in R$ and an $i \in I$ such that $r' = \phi(r)$ and $i' = \phi(i)$. Note
+        \begin{align*}
+            r'i' = \phi(r)\phi(i) = \phi(\underbrace{ri}_{\text{In }I}) \in \phi(I)\\
+            i'r' = \phi(i)\phi(r) = \phi(\underbrace{ir}_{\text{In }I}) \in \phi(I)
+        \end{align*}
+        so $\phi(I)$ is an ideal of $R'$.
+    \end{enumerate}
+
+    \item \begin{enumerate}[label=(\roman*)]
+        \item Let $f(x), g(x) \in \Z[x]$. Then
+        \[
+            \phi(f(x) + g(x)) = f(-2) + g(-2) = \phi(f(x)) + \phi(g(x))
+        \]
+        and
+        \[
+            \phi(f(x)g(x)) = f(-2)g(-2) = \phi(f(x))\phi(g(x))
+        \]
+        so $\phi$ is a ring homomorphism.
+
+        \item Note that
+        \begin{align*}
+            \ker\phi &= \{f(x) \in \Z[x] \vert \phi(f(x)) = 0\}\\
+            &= \{f(x) \in \Z[x] \vert f(-2) = 0\}\\
+            &= I.
+        \end{align*}
+        \myref{prop-kernel-is-an-ideal} tells us that $\ker\phi$ is an ideal of $\Z[x]$, so $I$ is an ideal of $\Z[x]$.
+
+        \item We first show that $\phi$ is surjective. Let $n \in \Z$, note that $n$ is a degree zero polynomial, so $n \in \Z[x]$. Clearly $\phi(n) = n$ so $n$ is its own pre-image. Therefore $\im\phi = \Z$.
+        
+        By FRIT (\myref{thrm-ring-isomorphism-1}),
+        \[
+            \Z[x]/I \cong \Z.
+        \]
+        Note that $\Z$ is an integral domain but not a field. Thus $I$ is prime but not maximal.
+    \end{enumerate}
+
+    \item Suppose $\phi: \Z_{10}\to\Z_{10}$ is a ring homomorphism. Let $a = \phi(1)$. By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent} we know that $a^2 = \phi(1)^2 = \phi(1) = a$. Once again, we cannot assume that 0 and 1 are the only idempotents in $\Z_{10}$; by exhaustion we see that
+    \begin{itemize}
+        \item $0^2 = 0$;
+        \item $1^2 = 1$;
+        \item $5^2 = 25 = 5$; and
+        \item $6^2 = 36 = 6$
+    \end{itemize}
+    so the idempotents in $\Z_{10}$ are 0, 1, 5, and 6.
+
+    Recall from \myref{example-homomorphisms-from-Z12-to-Z28} we have $|\phi(1)|_+$ divides $|1|_+$ (\myref{exercise-order-of-homomorphism-divides-order}) so $|\phi(1)|_+$ divides 10, and $|k|_+ = \frac{n}{\gcd(k,10)}$ (\myref{thrm-order-of-element-in-cyclic-group}). Observe that
+    \begin{itemize}
+        \item $|0|_+ = 1$ which divides 10;
+        \item $|1|_+ = 10$ which divides 10;
+        \item $|5|_+ = \frac{10}{\gcd(5,10)} = \frac{10}{5} = 2$ which divides 10; and
+        \item $|6|_+ = \frac{10}{\gcd(6,10)} = \frac{10}{2} = 5$ which divides 10.
+    \end{itemize}
+    Therefore the possible values of $\phi(1)$ are 0, 1, 5, and 6.
+
+    Note that
+    \begin{align*}
+        \phi(n) &= \phi(\underbrace{1+1+\cdots+1}_{n \text{ times}})\\
+        &= \underbrace{\phi(1)+\phi(1)+\cdots+\phi(1)}_{n \text{ times}}\\
+        &= \underbrace{a + a + \cdots + a}_{n \text{ times}}\\
+        &= na
+    \end{align*}
+    so the only homomorphisms in $\phi(n) = 0$, $\phi(n) = n$, $\phi(n) = 5n$, and $\phi(n) = 6n$.
+
+    Now consider the possibility that $\psi: \Z_{10} \to \Z_{10}$ is an isomorphism.
+    \begin{itemize}
+        \item Clearly $\psi(n) = 0$ is not a valid isomorphism since $\psi(0) = \psi(1) = 0$ which means that $\psi$ is not an injective.
+        \item $\psi(n) = n$, the identity homomorphism, is an isomorphism by \myref{exercise-identity-homomorphism-is-an-isomorphism}.
+        \item $\psi(n) = 5n$ is not possible since $\psi(0) = 0$ and $\psi(2) = 10 = 0$, so $\psi$ is not injective.
+        \item $\psi(n) = 6n$ is not possible since $\psi(0) = 0$ and $\psi(5) = 30 = 0$, so $\psi$ is not injective.
+    \end{itemize}
+    Therefore the only isomorphism $\psi:\Z_{10} \to \Z_{10}$ is $\psi(n) = n$.
+
+    \item Let $\phi: \Q[\sqrt3] \to \Q[\sqrt3]$ be an endomorphism. By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent} we know that $\phi(1)^2 = \phi(1)$, so $\phi(1) = 0$ or $\psi(1) = 1$ (since 0 and 1 are the only idempotents in $\Q[\sqrt3]$).
+    
+    If $\phi(1) = 0$ then
+    \[
+        \phi(a+b\sqrt3) = \phi(1)\phi(a+b\sqrt3) = 0\phi(a+b\sqrt3) = 0
+    \]
+    so $\phi$ is the trivial homomorphism.
+
+    If instead $\phi(1) = 1$, then $\phi(q) = q$ for all $q \in \Q$ (\myref{exercise-homomorphism-over-Q-fixes-elements-of-Q}). Let $\phi(\sqrt3) = a+b\sqrt3$ where $a$ and $b$ are rational numbers. Note
+    \[
+        3 = \phi(3) = \phi((\sqrt3)^3) = \left(\phi(\sqrt3)\right)^2 = a^2+2\sqrt3ab+3b^2
+    \]
+    which means $2ab = 0$, so $a = 0$ or $b = 0$. If $b = 0$ then $3 = a^2$ which means $a = \pm\sqrt3$, a contradiction since $\sqrt3$ is not a rational number. Therefore $a = 0$, so $3 = 3b^2$ which means $b = \pm1$. Thus $\phi(\sqrt3) = \sqrt3$ or $\phi(\sqrt3) = -\sqrt3$.
+
+    Thus we have 3 possibilities:
+    \begin{itemize}
+        \item $\phi(a+b\sqrt3) = 0$;
+        \item $\phi(a+b\sqrt3) = a+b\sqrt3$; and
+        \item $\phi(a+b\sqrt3) = a-b\sqrt3$.
+    \end{itemize}
+    The first two possibilities are the trivial and identity homomorphism respectively, so we just need to check whether the last possibility is a homomorphism. Because
+    \begin{align*}
+        \phi((a+b\sqrt3) + (x+y\sqrt3)) &= \phi((a+x)+(b+y)\sqrt3)\\
+        &= (a+x)-(b+y)\sqrt3\\
+        &= (a-b\sqrt3) + (x-y\sqrt3)\\
+        &= \phi(a+b\sqrt3) + \phi(x+y\sqrt3)
+    \end{align*}
+    and
+    \begin{align*}
+        \phi((a+b\sqrt3)(x+y\sqrt3)) &= \phi((ax+3by)+(ay+bx)\sqrt3)\\
+        &= (ax+3by)-(ay+bx)\sqrt3\\
+        &= (a-b\sqrt3)(x-y\sqrt3)\\
+        &= \phi(a+b\sqrt3)\phi(x+y\sqrt3)
+    \end{align*}
+    so $\phi(a+b\sqrt3) = a-b\sqrt3$ is indeed a homomorphism.
+
+    Therefore the 3 possible homomorphisms are $\phi(a+b\sqrt3) = 0$, $\phi(a+b\sqrt3) = a+b\sqrt3$, and $\phi(a+b\sqrt3) = a-b\sqrt3$.
+
+    Now consider the possibility that $\psi: \Q[\sqrt3] \to \Q[\sqrt3]$ is an isomorphism. Clearly the trivial homomorphism is not; the identity homomorphism is (\myref{exercise-identity-homomorphism-is-an-isomorphism}). We consider $\psi(a+b\sqrt3) = a-b\sqrt3$.
+    \begin{itemize}
+        \item \textbf{Injective}: Suppose $a+b\sqrt3, x+y\sqrt3 \in \Q[\sqrt3]$ such that $\phi(a+b\sqrt3) = \phi(x+y\sqrt3)$. Thus $a - b\sqrt3 = x - y\sqrt3$, which clearly means $a = x$ and $b = y$. Therefore $a+b\sqrt3 = x+y\sqrt3$ which means that $\psi$ is injective.
+        \item \textbf{Surjective}: For any $x+y\sqrt3 \in \Q[\sqrt3]$, note that $x-y\sqrt3 \in \Q[\sqrt3]$ and $\psi(x-y\sqrt3) = x+y\sqrt3$, so $\psi$ is surjective.
+    \end{itemize}
+    Therefore $\psi(a+b\sqrt3) = a-b\sqrt3$ is also an isomorphism. Hence, the two isomorphisms $\psi: \Q[\sqrt3] \to \Q[\sqrt3]$ are $\psi(a+b\sqrt3) = a+b\sqrt3$ and $\psi(a+b\sqrt3) = a-b\sqrt3$.
+
+    \item \begin{enumerate}[label=(\roman*)]
+        \item Let $x \in \phi(\sqrt I)$. Therefore there is an $a \in \sqrt{I}$ such that $\phi(a) = x$. Now by definition of $\sqrt{I}$, this means that there is a positive integer $n$ such that $a^n \in I$. Note that
+        \[
+            x^n = \left(\phi(a)\right)^n = \phi(a^n) \in \phi(I)
+        \]
+        which means $x \in \sqrt{\phi(I)}$. Therefore $\phi(\sqrt I) \subseteq \sqrt{\phi(I)}$.
+
+        \item Let $y \in \sqrt{\phi(I)}$, so there is a positive integer $n$ such that $y^n \in \phi(I)$. Thus there exists an $a \in I$ such that $\phi(a) = y^n$.
+        
+        Note $y \in R'$, and since $\phi$ is surjective, therefore there is an $x \in R$ such that $\phi(x) = y$. Therefore
+        \[
+            \phi(a) = y^n = \left(\phi(x)\right)^n = \phi\left(x^n\right)
+        \]
+        which thus means $\phi(a-x^n) = 0$. Hence $a-x^n \in \ker\phi \subseteq I$, so $a-x^n \in I$. Since $a \in I$, this means that $x^n \in I$, so $x \in \sqrt{I}$.
+
+        So,
+        \[
+            y = \phi(x) = \phi(\sqrt I)
+        \]
+        which thus means $\sqrt{\phi(I)} \subseteq \phi(\sqrt I)$. But by (i), we found out that $\phi(\sqrt I) \subseteq \sqrt{\phi(I)}$, so $\phi(\sqrt I) = \sqrt{\phi(I)}$ as needed.
+    \end{enumerate}
+
+    \item \begin{enumerate}[label=(\roman*)]
+        \item We first show $(S+I, +) \leq (R,+)$.
+        \begin{itemize}
+            \item $0 = 0 + 0 \in S + I$ so $S + I \neq \emptyset$.
+            \item For any $s_1, s_2 \in S$ and $i_1, i_2 \in I$ we see that
+            \[
+                (s_1+i_1) - (s_2 + i_2) = (\underbrace{s_1 - s_2}_{\text{In }S}) + (\underbrace{i_1 + i_2}_{\text{In }I}) \in S + I
+            \]
+        \end{itemize}
+        Therefore $(S+I, +) \leq (R,+)$ by the subgroup test (\myref{thrm-subgroup-test}).
+
+        We now show $S+I$ is closed under multiplication. Let $s_1, s_2 \in S$ and $i_1, i_2 \in I$. Then
+        \[
+            (s_1 + i_1)(s_2 + i_2) = s_1s_2 + s_1i_2 + i_1s_2 + i_1i_2.
+        \]
+        Note $s_1i_2 \in I$ since $I$ is a left ideal, and $i_1s_2 \in I$ since $I$ is a right ideal, so
+        \[
+            (s_1 + i_1)(s_2 + i_2) = \underbrace{s_1s_2}_{\text{In }S} + \underbrace{s_1i_2 + i_1s_2 + i_1i_2}_{\text{In }I} \in S + I.
+        \]
+
+        Therefore $S+I$ is a subring of $R$.
+
+        \item We consider the test for ideal.
+        \begin{itemize}
+            \item $S \cap I \neq \emptyset$ since $0 \in S$ and $0 \in I$ so $0 \in S \cap I$.
+            \item Let $a$ and $b$ are in $S \cap I$. Thus $a, b \in S$ and $a, b \in I$, which means $a - b \in S$ and $a - b \in I$ as $S$ and $I$ are both subrings. Therefore $a - b \in S \cap I$.
+            \item Let $s \in S$ and $a \in S \cap I$, which means $a \in S$ and $a \in I$.
+            \begin{itemize}
+                \item Note $sa \in S$ (because $S$ is a subring) and $sa \in I$ (because $I$ is a left ideal), so $sa \in S \cap I$.
+                \item Note also $as \in S$ (because $S$ is a subring) and $as \in I$ (because $I$ is a right ideal), so $as \in S \cap I$.
+            \end{itemize}
+        \end{itemize}
+        By the test for ideal (\myref{thrm-test-for-ideal}), $S \cap I$ is an ideal of $S$.
+
+        \item Define $\phi: S \to (S+I)/I, s \mapsto s+I$. We show that $\phi$ is a homomorphism and then find its image and kernel.
+        \begin{itemize}
+            \item \textbf{Homomorphism}: Let $s_1, s_2 \in S$. Then
+            \begin{align*}
+                \phi(s_1 + s_2) &= (s_1 + s_2) + I\\
+                &= (s_1 + I) + (s_2 + I)\\
+                &= \phi(s_1) + \phi(s_2)
+            \end{align*}
+            and
+            \begin{align*}
+                \phi(s_1s_2) &= (s_1s_2) + I\\
+                &= (s_1+I)(s_2+I)\\
+                &= \phi(s_1)\phi(s_2)
+            \end{align*}
+            so $\phi$ is a ring homomorphism.
+    
+            \item \textbf{Image}: We show that $\phi$ is surjective. Let $(s+i) + I \in S+I$. Note since $i \in I$,
+            \[
+                (s+i)+I = (s+I) + (i+I) = (s+I) + (0+I) = s+I.
+            \]
+            Clearly $\phi(s) = s+I = (s+i)+I$, so for any $(s+i)\in (S+I)/I$ has a pre-image in $S$. Therefore $\im\phi = (S+I)/I$.
+    
+            \item \textbf{Kernel}: We find the kernel of $\phi$.
+            \begin{align*}
+                \ker\phi &= \{s \in S \vert \phi(s) = 0 + I\}\\
+                &= \{s \in S \vert s + I = 0 + I\}\\
+                &= \{s \in S \vert s \in I\}\\
+                &= S \cap I,
+            \end{align*}
+            where $s + I = 0 + I$ implies $s \in I$ due to Coset Equality, \myref{lemma-coset-equality}.
+        \end{itemize}
+    
+        By the FRIT (\myref{thrm-ring-isomorphism-1}),
+        \[
+            S/(S\cap I) \cong (S+I)/I
+        \]
+        which is what we needed to prove for the Second Ring Isomorphism Theorem.
+    \end{enumerate}
+
+    \item \begin{enumerate}[label=(\roman*)]
+        \item We consider the test for ideal.
+        \begin{itemize}
+            \item $J/I$ is non-empty since $0+I \in J/I$.
+            \item Let $a+I,b+I \in J/I$. This means that $a,b \in J$, so $a - b \in J$ (since $J$ is a subring), which means $(a+I) - (b+I) = (a-b) + I \in J/I$.
+            \item Let $r+I \in R/I$ and $j+I \in J/I$. Clearly $rj \in J$ and $jr \in J$ since $J$ is an ideal. Thus $(r+I)(j+I) = rj + I \in J/I$ and $(j+I)(r+I) = jr + I \in J/I$.
+        \end{itemize}
+        By the test for ideal (\myref{thrm-test-for-ideal}), $J/I$ is an ideal of $R/I$.
+    
+        \item Consider $\phi: R/I \to R/J, r+I\mapsto r+J$. We show that $\phi$ is a well-defined homomorphism and then find its image and kernel.
+        \begin{itemize}
+            \item \textbf{Well-Defined}: Suppose $r_1 + I = r_2 + I \in R/I$. This means $r_1 - r_2 + I = I$, so $r_1 - r_2 \in I$ by Coset Equality (\myref{lemma-coset-equality}). Since $I \subset J$ thus $r_1 - r_2 \in J$, meaning $r_1 + J = r_2 + J$ by Coset Equality. Therefore
+            \[
+                \phi(r_1 + I) = r_1 + J = r_2 + J = \phi(r_2 + I)
+            \]
+            so $\phi$ is well defined.
+    
+            \item \textbf{Homomorphism}: Let $r_1 + I, r_2 + I \in R/I$. Note
+            \begin{align*}
+                \phi(r_1+r_2) &= (r_1+r_2) + I\\
+                &= (r_1+I) + (r_2+I)\\
+                &= \phi(r_1) + \phi(r_2)
+            \end{align*}
+            and
+            \begin{align*}
+                \phi(r_1r_2) = &= (r_1r_2) + I\\
+                &= (r_1+I)(r_2+I)\\
+                &= \phi(r_1)\phi(r_2)
+            \end{align*}
+            so $\phi$ is a ring homomorphism.
+    
+            \item \textbf{Image}: We show $\phi$ is surjective. Suppose $r + J \in R/J$. Then clearly $\phi(r+I) = r+J$ so any $r+J$ has a pre-image in $R/I$. Thus $\im\phi = R/J$.
+            
+            \item \textbf{Kernel}: We find the kernel of $\phi$.
+            \begin{align*}
+                \ker\phi &= \{r+I \in R/I \vert \phi(r+I) = 0+J\}\\
+                &= \{r+I \in R/I \vert r+J = J\}\\
+                &= \{r+I \in R/I \vert r \in J\}\\
+                &= J/I
+            \end{align*}
+            where $r+J=J$ implies $r \in J$ due to Coset Equality, \myref{lemma-coset-equality}.
+        \end{itemize}
+        Finally, by FRIT (\myref{thrm-ring-isomorphism-1}),
+        \[
+            \frac{R/I}{J/I} \cong R/J.
+        \]
+    \end{enumerate}
 \end{enumerate}
 
 %=========================================
