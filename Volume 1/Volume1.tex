@@ -685,7 +685,7 @@ The \textit{canonical form}\index{dihedral group!canonical form} of an element i
 \end{problem}
 
 \begin{problem}\label{problem-element-to-power-of-multiple-of-order-is-identity}
-    Let $G$ be a group with identity $e$. Suppose an element $x$ in $G$ has finite order $k$. Prove that $n$ is a multiple of $k$ if and only if $x^n = e$.\newline
+    Let $G$ be a group with identity $e$. Suppose an element $x$ in $G$ has finite order $n$. Prove that a positive integer $m$ is a multiple of $n$ if and only if $x^m = e$.\newline
     (\textit{Hint: consider Euclid's division lemma (\myref{lemma-euclid-division}) to prove one direction of the claim.})
 \end{problem}
 
@@ -6006,19 +6006,19 @@ The remaining 2 sporadic groups are special in that they have extremely large or
 
     \item If every element in $G$ is its own inverse, then for every element $g$ in $G$, $g^{-1} = g$. Consider $(gh)^{-1}$ where $g$ and $h$ are elements in $g$. On one hand, by Shoes and Socks, $(gh)^{-1} = h^{-1}g^{-1} = hg$ since each element is its own inverse. On the other hand, since $gh$ is an element in $G$, thus $(gh)^{-1} = gh$. Thus $gh = hg$ which means $G$ is abelian.
     
-    \item As $|a| = k$ thus $k$ is the smallest positive integer that satisfies $a^k = e$.
+    \item Recall that $n = |x|$ is the smallest positive integer that satisfies $x^n = e$.
     
-    We prove the forward direction first. Suppose $n$ is a multiple of $k$, say $n = qk$ for some integer $q$. Then
+    We prove the forward direction first. Suppose $m$ is a multiple of $n$, say $m = qn$ for some integer $q$. Then
     \[
-        a^n = a^{qk} = \left(a^k\right)^q = e^q = e    
+        x^m = x^{qn} = \left(x^n\right)^q = e^q = e    
     \]
-    which means $a^n = e$.
+    which means $x^m = e$.
     
-    We now prove the reverse direction. Suppose $a^n = e$. Using Euclid's division lemma (\myref{lemma-euclid-division}), we write $n = qk + r$ where $q$ and $r$ are integers with $0 \leq r < k$. Hence
+    We now prove the reverse direction. Suppose $x^m = e$. Using Euclid's division lemma (\myref{lemma-euclid-division}), we write $m = qn + r$ where $q$ and $r$ are integers with $0 \leq r < n$. Hence
     \[
-        a^n = a^{qk + r} = a^{qk}a^r = \left(a^k\right)^qa^r = e^qa^r = a^r.
+        x^m = x^{qn + r} = x^{qn}x^r = \left(x^n\right)^qx^r = e^qx^r = x^r.
     \]
-    Note that for all integers $i$ where $1 \leq i < k$, we have $a^i \neq e$ since $k$ is the smallest positive integer where $a^k = e$. Hence, if $a^r = e$, we conclude $r = 0$. Therefore $n = qk$, meaning $n$ is a multiple of $k$.
+    Note that for all integers $k$ where $1 \leq k < n$, we have $x^k \neq e$ since $n$ is the smallest positive integer such that $x^n = e$. Hence, if $x^r = e$, we conclude $r = 0$. Therefore $m = qn$, meaning $m$ is a multiple of $n$.
 
     \item \begin{partquestions}{\alph*}
         \item Note that $(gh)^2 = ghgh$. Given that $(gh)^2 = g^2h^2 = gghh$. By cancellation law, $hg = gh$ which means $G$ is abelian.
