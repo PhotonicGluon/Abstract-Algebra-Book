@@ -1,0 +1,80 @@
+\section{Group Actions}
+\begin{questions}
+    \item We prove the two group action axioms.
+    \begin{itemize}
+        \item \textbf{Identity}: $\alpha(e, x) = exe^{-1} = x$.
+        \item \textbf{Compatibility}: Note
+        \begin{align*}
+            \alpha(g, \alpha(h, x)) &= \alpha(g, hxh^{-1})\\
+            &= gh x h^{-1}g^{-1}\\
+            &= (gh)x(gh)^{-1}\\
+            &= \alpha(gh, x).
+        \end{align*}
+    \end{itemize}
+    Therefore $\alpha$ is a group action of $G$ on $G$.
+
+    \item Recall there are 6 elements in $\Sn{3}$: $\id$, $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$, $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 3\end{pmatrix}$, and $\begin{pmatrix}2 & 3\end{pmatrix}$. Clearly the identity has all elements of $X$ as fixed points. It is also clear that $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$ have no fixed points since they permute all elements. For the rest, the fixed points are the missing element from the cycle notation, i.e. $\begin{pmatrix}1 & 2\end{pmatrix}$ has fixed point 3, $\begin{pmatrix}1 & 3\end{pmatrix}$ has fixed point 2, and $\begin{pmatrix}2 & 3\end{pmatrix}$ has fixed point 1.
+
+    \item For 1, it is $\{\id, \begin{pmatrix}2 & 3\end{pmatrix}\}$. For 2, it is $\{\id, \begin{pmatrix}1 & 3\end{pmatrix}\}$. For 3, it is $\{\id, \begin{pmatrix}1 & 2\end{pmatrix}\}$.
+
+    \item We work from the statement forwards. Note that each of these statements are ``if and only if'' statements.
+    \begin{align*}
+	    g \cdot x = h \cdot x &\iff g^{-1} \cdot (g \cdot x) = g^{-1} \cdot (h \cdot x)\\
+	    &\iff (g^{-1}g) \cdot x = (g^{-1}h) \cdot x\\
+	    &\iff e \cdot x = (g^{-1}h) \cdot x\\
+	    &\iff x = (g^{-1}h) \cdot x\\
+	    &\iff (g^{-1}h) \cdot x = x\\
+	    &\iff g^{-1}h \in \Stab{G}{x}
+	\end{align*}
+
+	\item We prove the forward direction first: suppose the action is transitive. Then there exists $x \in X$ such that $\Orb{G}{x} = X$. Now consider any other element $y \in X$. Since the action is transitive, this means that there exists a $\hat{g} \in G$ such that $\hat{g} \cdot x = y$. Note that $\Orb{G}{y} = \Orb{G}{\hat{g} \cdot x}$, and that $\Orb{G}{x} = \{g \cdot x \vert g \in G\}$. Hence,
+	\[
+        \Orb{G}{\hat{g} \cdot x} = \{g\cdot (\hat{g} \cdot x) \vert g \in G\} = \{(g\hat{g}) \cdot x \vert g \in G\}.
+	\]
+	Since $G$ is a group, $g\hat{g} \in G$. In particular, we may pick $g = g'\hat{g}^{-1}$ to obtain any arbitrary element $g' \in G$. Thus, this means that
+	\[
+        	\{(g\hat{g}) \cdot x \vert g \in G\} = \{g' \cdot x \vert g' \in G \} = \Orb{G}{x} = X.
+	\]
+	Hence, for any element $y \in X$, $\Orb{G}{y} = \Orb{G}{g \cdot x} = X$.
+
+	The reverse direction is trivial: suppose $\Orb{G}{x} = X$ for all $x \in X$. Then certainly there exists an element $x \in X$ such that $\Orb{G}{x} = X$, meaning that the group action is transitive.
+
+	\item \begin{partquestions}{\alph*}
+	    \item Clearly $e \cdot x = x$, so $x \in \Orb{G}{x}$.
+	    \item Suppose $x \in \Orb{G}{x_1} \cap \Orb{G}{x_2}$ (as their intersection is non-empty). Then there exists $g_1, g_2 \in G$ such that $g_1\cdot x_1 = x = g_2\cdot x_2$. Thus,
+	    \begin{align*}
+	        x_1 &= e \cdot x_1\\
+	        &= (g_1^{-1}g_1)\cdot x_1\\
+	        &= g_1^{-1} \cdot (g_1 \cdot x_1)\\
+	        &= g_1^{-1} \cdot (g_2 \cdot x_2)\\
+	        &= (g_1^{-1}g_2) \cdot x_2.
+	    \end{align*}
+	    Now suppose $y \in \Orb{G}{x_1}$. Then $y = g\cdot x_1$ for some $g \in G$. Hence,
+	    \begin{align*}
+	        y &= g\cdot x_1 \\
+	        &= g \cdot \left((g_1^{-1}g_2) \cdot x_2\right)\\
+	        &= (\underbrace{gg_1^{-1}g_2}_{\text{In } G})\cdot x_2\\
+	        &\in \Orb{G}{x_2}
+	    \end{align*}
+	    which means that any element in $\Orb{G}{x_1}$ is also in $\Orb{G}{x_2}$. Hence, $\Orb{G}{x_1} \subseteq \Orb{G}{x_2}$. A similar argument can be used to show that $\Orb{G}{x_2} \subseteq \Orb{G}{x_1}$. Hence $\Orb{G}{x_1} = \Orb{G}{x_2}$.
+	\end{partquestions}
+
+	\item \begin{partquestions}{\alph*}
+	    \item Consider $x = n$. The orbit of $n$ is all of $X$. Consider the permutation $\sigma = \begin{pmatrix}k & n\end{pmatrix}$ where $1 \leq k \leq n$. Clearly $\sigma \in \Sn{n}$. Note that $\sigma \cdot n = \sigma(n) = k$. Thus, $\Orb{G}{n} = X$, meaning that the group action ``$\cdot$'' given by $g \cdot x \mapsto g(x)$ is transitive.
+	    \item Note that $|X| = n$ and $|\Sn{n}| = n!$. By Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), the stabilizer of $x$ by $G$ must have order $\frac{n!}{n} = (n-1)!$.
+	\end{partquestions}
+
+	\item By the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}),
+	\[
+        |\Orb{G}{x}| = \frac{|G|}{|\Stab{G}{x}|} = [G : \Stab{G}{x}]	.
+	\]
+	Under the group action of conjugation, $\Orb{G}{x} = \Cl{x}$ and $\Stab{G}{x} = \C{G}{x}$. Hence, $|\Cl{x}| = [G : \C{G}{x}]$ as required.
+
+	\item \begin{partquestions}{\alph*}
+	    \item One sees that $\Z{D_3} = \{e\}$ based on the group table of $D_3$.
+	    \item Recall that every element in $D_3$ can be expressed in the form $r^as^b$ where $a \in \{0, 1, 2\}$ and $b \in \{0, 1\}$. One finds that $\Cl{r} = \{r, r^2\}$ and $\Cl{s} = \{s, rs, rs^2\}$.
+	    \item The class equation is $6 = 1 + 2 + 3$.
+	\end{partquestions}
+
+	\item By Cauchy's Theorem (\myref{thrm-cauchy}) there exists an element (say $x$) with order $p$. Consider $H = \langle x \rangle$. Note that $|H| = p$ and $H \leq G$. Hence we found a subgroup of $G$ of order $p$.
+\end{questions}

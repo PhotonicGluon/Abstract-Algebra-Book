@@ -1,0 +1,71 @@
+\section{Direct Products of Groups}
+\begin{questions}
+    \item Let $g_1, g_2 \in G$ and $h_1, h_2 \in H$. Then for $(g_1, h_1), (g_2, h_2) \in G\times H$ we see that
+    \begin{align*}
+        (g_1, h_1)(g_2, h_2) &= (g_1g_2, h_1h_2)\\
+        &= (g_2g_1, h_2h_1)\\
+        &= (g_2,h_2)(g_1,h_1)
+    \end{align*}
+    which means that $G \times H$ is abelian.
+
+    \item Let the map $\phi: G\times H \to H \times G, (g, h) \mapsto (h, g)$. We prove that $\phi$ is an isomorphism:
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $(g_1, h_1), (g_2, h_2) \in G \times H$. We note that
+        \begin{align*}
+            \phi((g_1, h_1)(g_2, h_2)) &= \phi((g_1g_2, h_1h_2))\\
+            &= (h_1h_2, g_1g_2)\\
+            &= (h_1, g_1)(h_2, g_2)\\
+            &= \phi((g_1, h_1))\phi((g_2, h_2))
+        \end{align*}
+        which proves that $\phi$ is a homomorphism.
+        \item \textbf{Injective}: Suppose there exists $(g_1, h_1), (g_2, h_2) \in G \times H$ such that $\phi((g_1, h_1)) = \phi((g_2, h_2))$. Then by definition of $\phi$ we have $(h_1, g_1) = (h_2, g_2)$. Clearly by comparing component parts of each ordered pair, we have $g_1 = g_2$ and $h_1 = h_2$, meaning $(g_1, h_1) = (g_2, h_2)$. Hence $\phi$ is injective.
+        \item \textbf{Surjective}: Let $(h, g) \in H \times G$. Clearly $(g, h) \in G \times H$ and $\phi((g, h)) = (h, g)$, meaning that $(h, g)$ has a pre-image of $(g, h)$. Therefore $\phi$ is surjective.
+    \end{itemize}
+    Therefore $\phi$ is an isomorphism, meaning $G \times H \cong H \times G$.
+
+    \item We claim that $G$ is the internal direct product of $H$ and $K$. We need to check 3 things.
+    \begin{itemize}
+        \item $\boxed{G = HK}$ We note that
+        \begin{align*}
+            HK &= \{h \oplus_6 k \vert h \in H, k \in K\}\\
+            &= \{0 \oplus_6 0, 0 \oplus_6 3, 2 \oplus_6 0, 2 \oplus_6 3, 4 \oplus_3 0, 4 \oplus_3 3\}\\
+            &= \{0, 3, 2, 5, 4, 1\}\\
+            &= \mathbb{Z}_6\\
+            &= G
+        \end{align*}
+        so in fact $G = HK$.
+
+        \item $\boxed{H \cap K = \{e\}}$ Clearly $H \cap K = \{0\}$.
+
+        \item $\boxed{hk = kh}$ Since $\oplus_6$ is commutative, thus $h \oplus_6 k = k \oplus_6$.
+    \end{itemize}
+    Thus $G$ is the internal direct product of $H$ and $K$.
+
+    \item Define the subgroups $H = \{e, a\}$ and $K = \{e, b\}$. We show the $\mathrm{V}$ is the internal direct product of $H$ and $K$.
+    \begin{itemize}
+        \item $\boxed{\mathrm{V} = HK}$ Observe that
+        \begin{align*}
+            HK &= \{hk \vert h \in H, k \in K\}\\
+            &= \{ee, eb, ae, ab\}\\
+            &= \{e, b, a, ab\}\\
+            &= \mathrm{V}
+        \end{align*}
+        so in fact $\mathrm{V} = HK$.
+
+        \item $\boxed{H \cap K = \{e\}}$ Clearly $H \cap K = \{e\}$.
+
+        \item $\boxed{hk = kh}$ Clearly if one of the elements is the identity then result follows. So assume that $h$ and $k$ are both non-identity elements, so $h = a$ and $k = b$. Note
+        \begin{align*}
+            kh &= ba\\
+            &= (ba)\left((ab)(ab)\right) & (\text{since }(ab)^2 = e)\\
+            &= (ba ab)(ab)\\
+            &= (bb)(ab) & (\text{since }a^2 = e)\\
+            &= ab & (\text{since }b^2 = e)\\
+            &= hk
+        \end{align*}
+        so in fact $hk = kh$ for all $h \in H$, $k \in K$.
+    \end{itemize}
+    Therefore $\mathrm{V}$ is the internal direct product of $H$ and $K$. 
+    
+    We note $H = \langle a\rangle \cong \mathbb{Z}_2$ and $K = \langle b \rangle \cong \mathbb{Z}_2$. By direct product equivalence (\myref{thrm-direct-product-equivilance}) we know $\mathrm{V} \cong H \times K \cong \mathbb{Z}_2 \times \mathbb{Z}_2 = (\mathbb{Z}_2)^2$.
+\end{questions}

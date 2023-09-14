@@ -1,0 +1,74 @@
+\section{More Types of Groups}
+\begin{questions}    
+    \item We note that the two questions are equivalent to finding the orders of 3774 and 1870 in the group $\mathbb{Z}_{10101}$. We note that
+    \begin{align*}
+        1870 &= 2 \times 5 \times 11 \times 17,\\
+        3774 &= 2 \times 3 \times 17 \times 37, \text{ and}\\
+        10101 &= 3 \times 7 \times 13 \times 37.
+    \end{align*}
+    Therefore, $\gcd(1870, 10101) = 1$ and $\gcd(3774, 10101) = 3 \times 37 = 111$. Hence $|1870| = 10101$ and $|3774| = \frac{10101}{111} = 91$. Therefore, $a = 10101$ and $b = 91$.
+
+    \item We claim that $\An{n}$ is non-abelian for $n > 3$. Note that $\pi = \begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\sigma = \begin{pmatrix}2 & 3 & 4\end{pmatrix}$ are both even permutations, and hence are in $\An{n}$ for $n > 3$. We note
+    \begin{itemize}
+        \item $\pi\sigma = \begin{pmatrix}1 & 2 & 3\end{pmatrix}\begin{pmatrix}2 & 3 & 4\end{pmatrix} = \begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix}$; and
+        \item $\sigma\pi = \begin{pmatrix}2 & 3 & 4\end{pmatrix}\begin{pmatrix}1 & 2 & 3\end{pmatrix} = \begin{pmatrix}1 & 3\end{pmatrix}\begin{pmatrix}2 & 4\end{pmatrix}$.
+    \end{itemize}
+    Hence $\pi\sigma \neq \sigma\pi$ for $\An{n}$ where $n > 3$, meaning that $\An{n}$ is non-abelian for $n > 3$. We note that
+    \begin{itemize}
+        \item $\An{2}$ has order 1 so $\An{2}$ is the trivial group, which is abelian (and cyclic); and
+        \item $\An{3}$ has order 3 so $\An{3}$ is cyclic and thus abelian.
+    \end{itemize}
+    Thus the largest integer $n$ for which $\An{n}$ is abelian is $n = 3$. Furthermore $\An{k}$ is cyclic if $k = 2$ ore $k = 3$.
+    
+    \item We first note that
+    \[
+        \totient(2p^k) = 2p^k\left(1-\frac12\right)\left(1-\frac1p\right) = p^k\left(1-\frac1p\right) = \totient(p^k).
+    \]
+
+    Now we are given that $r$ is an odd primitive root of $p^k$. Then $\gcd(r, 2p^k) = 1$ since $\gcd(r, p^k) = 1$ (as $r \in \Un{p^k}$). Now because $r$ is odd, thus $r \in \Un{2p^k}$. Let $n = |r|$ in $\Un{2p^k}$. Then by \myref{exercise-order-of-a-divides-phi-a}, $n$ divides $\totient(2p^k)$. But at the same time, $r$ is a generator in $\Un{p^k} \cong \mathbb{Z}_{\phi(p^k)}$, so $\totient(p^k) = \totient(2p^k)$ divides $n$ by \myref{lemma-order-of-an-element-that-is-equivalent-to-identity}. Since $n$ divides $\totient(2p^k)$ and $\totient(2p^k)$ divides $n$ simultaneously, therefore $n = \totient(2p^k) = |\Un{2p^k}|$ which means that $r$ is a primitive root modulo $2p^k$.
+    
+    \item \begin{partquestions}{\roman*}
+        \item The forward direction is clearly true so we only prove the reverse direction. Assume $f(g) = h(g)$. Note that
+        \[
+            f(g^k) = (f(g))^k = (h(g))^k = h(g^k)    
+        \]
+        for any integer $k$. Since $g$ is a generator, thus we have $f(x) = h(x)$ for all $x \in G$, meaning $f = h$.
+        
+        \item We note $f(g) \in G$. Since $g$ is a generator hence $f(g) = g^k$ for some $k$. Hence any homomorphism from $G$ to $G$ is of the form $f(g) = g^{m_f}$ where $0 \leq m_f \leq n-1$.
+        
+        \item Consider $f(h(g))$. On one hand,
+        \[
+            f(h(g)) = f(g^{m_h}) = (f(g))^{m_h} = g^{m_fm_h},
+        \]
+        while on the other,
+        \[
+            f(h(g)) = (f \circ h)(g) = g^{m_{f\circ h}}.     
+        \]
+        Therefore $m_{f\circ h} \equiv m_fm_h \pmod n$. In other words, $m_{f\circ h} = m_f \otimes_n m_h$.
+        
+        \item We prove the forward direction first by assuming that $f$ is an automorphism. Hence $f$ is surjective, meaning that there exists an $a \in G$ such that $f(a) = g$. Since $a \in G$ thus $a = g^k$ for some $k \in \mathbb{Z}_n$ (we will show $k \in \Un{n}$ later). Observe
+        \[
+            g = f(a) = f(g^k) = (f(g))^k = g^{m_fk}        
+        \]
+        which means $m_fk \equiv 1 \pmod n$. By \myref{prop-multiplicative-inverse-exists-iff-coprime}, this means that we have $\gcd(m_f, n) = 1$ and $\gcd(k, n) = 1$. Therefore, $m_f, k \in \Un{n}$. Hence $k$ is the multiplicative inverse of $m_f$.
+        
+        We now prove the reverse direction. Assume $m_f$ has a multiplicative inverse (say $k$), meaning $m_fk \equiv 1 \pmod n$. As above this means $m_f, k \in \Un{n}$. We show that $f$ is a bijection.
+        \begin{itemize}
+            \item \textbf{Injective}: Suppose $x, y \in G$ such that $f(x) = f(y)$. Since $g$ is a generator we may take $x = g^p$ and $y = g^q$. Hence we have $g^{m_fp} = g^{m_fq}$. Then
+            \[
+                \left(g^{m_fp}\right)^k = g^{km_fp} = \left(g^{km_f}\right)^p = g^p            
+            \]
+            and $\left(g^{m_fq}\right)^k = g^q$. Hence this implies $g^p = g^q$ which means $x = y$.
+            \item \textbf{Surjective}: Suppose $x \in G$. Since $g$ is a generator we may take $x = g^p$. Then $f(g^{kp}) = g^{m_fkp} = g^p = x$.
+        \end{itemize}
+        Also $f$ is given to be a homomorphism. Hence $f$ is an isomorphism. Since $f: G \to G$, it is thus an automorphism.
+        
+        \item We prove that $\phi$ is an isomorphism.
+        \begin{itemize}
+            \item \textbf{Homomorphism}: Let $f, h \in \Aut{G}$. Then $\phi(f\circ h) = m_{f\circ h} = m_f \otimes_n m_h = \phi(f)\otimes_n\phi(h)$.
+            \item \textbf{Injective}: Suppose we have $f, h \in \Aut{G}$ such that $\phi(f) = \phi(h)$, meaning $m_f = m_h$. By \textbf{(i)} and \textbf{(ii)}, the value of $m$ uniquely defines a homomorphism from $G$ to $G$. Hence $f = h$.
+            \item \textbf{Surjective}: Suppose $r \in \Un{n}$. Define $f: G \to G$ where $f(g) = g^r$. Since $r \in \Un{n}$ it has a multiplicative inverse, which means that $f$ is an automorphism by \textbf{(iii)}. Clearly $\phi(f) = r$, so $r$ has a pre-image.
+        \end{itemize}
+        Hence $\phi$ is an isomorphism, meaning $\Aut{G} \cong \Un{n}$.
+    \end{partquestions}
+\end{questions}

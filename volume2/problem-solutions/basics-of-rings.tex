@@ -1,0 +1,162 @@
+\section{Basics of Rings}
+\begin{questions}
+    \item Since $u$ is a unit, thus $u^{-1}$ exists. Consider the element $(-u)(-u^{-1})$. We know from an earlier proposition that this equals $uu^{-1} = 1$. Similarly, $(-u^{-1})(-u) = 1$. Hence $-u$ is a unit.
+
+    \item Suppose $R$ is a ring where 0 = 1, and let $x \in R$. Then
+    \begin{align*}
+        x &= 1x & (1 \text{ is the multiplicative identity})\\
+        &= 0x & (0 = 1)\\
+        &= 0 & (0x = 0 \text{ for all }x)
+    \end{align*}
+    which means that $R$ only contains one element, namely the identity 0. Hence the trivial ring is the unique ring where 0 = 1.
+
+    \item Since $(R, \ast, \ast)$ is a ring, we know that $(R, \ast)$ is an abelian group and that $a \ast(b\ast c) = (a \ast b) \ast (a \ast c)$ for all $a, b, c \in R$ (left distribution). Consider an element $x \in R$. Thus we must have
+    \[
+        x \ast (x \ast x) = (x \ast x) \ast (x \ast x)    
+    \]
+    which means $x^3 = x^4$. Since $(R, \ast)$ is a group, thus $x^{-3}$ exists. Applying that on both sides means $x = e$ where $e$ is the identity. Therefore, $R$ contains only one element, the identity, which means that $(R, \ast, \ast)$ is actually the trivial ring.
+
+    \item By way of contradiction assume that the element $x$ is both a zero divisor and a unit. Since $x$ is a zero divisor, we know $x \neq 0$ and there exists a non-zero $y \in R$ such that $xy = 0$. Since $x$ is a unit, thus $x^{-1}$ exists such that $xx^{-1} = x^{-1}x = 1$. However we note that
+    \begin{align*}
+        y &= (x^{-1}x)y & (\text{as }x^{-1}x = 1)\\
+        &= x^{-1}(xy) & (\text{associativity})\\
+        &= x^{-1}0 & (\text{as }x \text{ is a zero divisor})\\
+        &= 0
+    \end{align*}
+    which contradicts the fact that $y \neq 0$. Therefore it is impossible for an element to be both a zero divisor and a unit.
+
+    \item \begin{partquestions}{\roman*}
+        \item Let $1 + x + \cdots + x^n = y$, which is an element of $R$ since $R$ is closed under addition and multiplication. Note $xy = x + x^2 + \cdots + x^n + x^{n+1}$ and $yx = x + x^2 + \cdots + x^n + x^{n+1}$ as well. Thus we have $1 - x^{n+1} = y - xy = y - yx$ and $x^{n+1} = xy - y = yx - y$, so
+        \[
+            (1-x)^{-1}(1-x^{n+1}) = (1-x^{n+1})(1-x)^{-1} = y
+        \]
+        and
+        \[
+            (x-1)^{-1}(x^{n+1}-1) = (x^{n+1}-1)(x-1)^{-1} = y
+        \]
+        which are the four closed forms that we require.
+        \item The condition is that either $1-x$ is a unit or $x-1$ is a unit in $R$, i.e. $(1-x)^{-1}$ or $(x-1)^{-1}$ exists.
+        \item $112 = 1$ in $\Z_{37}$ since $112 = 37\times3 + 1$.
+        \item Let $x = 2^3 = 8$. Note $(x-1)^{-1} = (8-1)^{-1} = 7^{-1} = 16$ by \textbf{(iii)}. Thus
+        \[
+            1+2+\cdots+2^{72} = (8-1)^{-1}(8^{25}-1) = 16(8^{25}-1).
+        \]
+        We also see that
+        \begin{align*}
+            8^{25}-1 &= \left(8^{5}\right)^{5} - 1\\
+            &= 32768^5 - 1\\
+            &= (37\times885 + 23)^5 - 1\\
+            &= (23)^5 - 1\\
+            &= 6436342\\
+            &= 37\times173955 + 7\\
+            &= 7
+        \end{align*}
+        which means $1+2^3+\cdots+2^{72} = 16 \times 7 = 112 = 1$.
+    \end{partquestions}
+
+    \item For brevity let $R = \Q[\sqrt2]$. We first show that $(R,+)$ is an abelian group.
+    \begin{itemize}
+        \item \textbf{Closure}: Take $a+b\sqrt2, c+d\sqrt2 \in R$. Clearly
+        \[
+            (a+b\sqrt2) + (c+d\sqrt2) = (a+c) + (b+d)\sqrt2 \in R
+        \]
+        which means that $R$ is closed under addition.
+        \item \textbf{Associativity}: + is associative.
+        \item \textbf{Identity}: The identity is $0 = 0 + 0\sqrt2$.
+        \item \textbf{Inverse}: The inverse of $a+b\sqrt2 \in R$ is $(-a) + (-b)\sqrt2$ which is in $R$.
+        \item \textbf{Commutative}: + is commutative.
+    \end{itemize}
+    Hence $(R, +)$ is an abelian group.
+
+    Now we show that $(R, \cdot)$ is a semigroup.
+    \begin{itemize}
+        \item \textbf{Closure}: Take $a+b\sqrt2, c+d\sqrt2 \in R$. Then
+        \begin{align*}
+            (a+b\sqrt2)(c+d\sqrt2) &= ac + ad\sqrt2 + bc\sqrt2 + 2bd\\
+            &= (ac+2bd) + (ad+bc)\sqrt2\\
+            &\in R.
+        \end{align*}
+        \item \textbf{Associative}: $\cdot$ is associative.
+    \end{itemize}
+    So $(R, \cdot)$ is an abelian group.
+
+    Clearly $+$ and $\cdot$ distribute, so we have shown that $R$ is in fact a ring.
+
+    Furthermore,
+    \begin{itemize}
+        \item $\cdot$ is commutative, meaning that $R$ is a commutative ring;
+        \item $1 = 1 + 0\sqrt2 \in R$ is the multiplicative identity, so $R$ is a ring with identity; and
+        \item for any non-zero element $a+b\sqrt2$ we have its multiplicative inverse as
+        \begin{align*}
+            \frac{1}{a+b\sqrt2} &= \frac{a-b\sqrt2}{(a-b\sqrt2)(a+b\sqrt2)}\\
+            &= \frac{a-b\sqrt2}{a^2-2b}\\
+            &= \frac{a}{a^2-2b} + \left(-\frac{b}{a^2-2b}\right)\sqrt2\\
+            &\in R.
+        \end{align*}
+    \end{itemize}
+    Therefore $R$ is a field.
+
+    \item \begin{partquestions}{\roman*}
+        \item Suppose $R$ has an identity $E = \begin{pmatrix}e_1&e_2\\0&0\end{pmatrix}$. Take any matrix $M = \begin{pmatrix}a&b\\0&0\end{pmatrix} \in R$, so we must have $ME = EM = M$.
+        \begin{itemize}
+            \item Note $EM = \begin{pmatrix}e_1&e_2\\0&0\end{pmatrix}\begin{pmatrix}a&b\\0&0\end{pmatrix} = \begin{pmatrix}e_1a&e_1b\\0&0\end{pmatrix}$.
+            \item Also, $ME = \begin{pmatrix}a&b\\0&0\end{pmatrix}\begin{pmatrix}e_1&e_2\\0&0\end{pmatrix} = \begin{pmatrix}ae_1&ae_2\\0&0\end{pmatrix}$.
+        \end{itemize}
+        Now as $EM = M$ we must have $e_1 = 1$. But as $ME = M$ this means that
+        \[
+            \begin{pmatrix}a&ae_2\\0&0\end{pmatrix} = \begin{pmatrix}a&b\\0&0\end{pmatrix}
+        \]
+        which implies that $ae_2 = b$, hence meaning $e_2 = \frac{b}{a}$ which is not a constant. Hence there does not exist a fixed identity $E$ in $R$.
+
+        \item Consider the subset
+        \[
+            S = \left\{\begin{pmatrix}a&0\\0&0\end{pmatrix} \vert a \in \R\right\}
+        \]
+        of $R$. We first show that $S$ is a subring of $R$. Clearly $(S, +) \leq (R, +)$ so we only show that $S$ is closed under matrix multiplication.
+        \[
+            \begin{pmatrix}a&0\\0&0\end{pmatrix}\begin{pmatrix}b&0\\0&0\end{pmatrix} = \begin{pmatrix}ab&0\\0&0\end{pmatrix} \in S.
+        \]
+
+        One sees clearly based on the above calculation that $\begin{pmatrix}1&0\\0&0\end{pmatrix}$ is the identity in $S$. Hence $S$ is a subring of $R$ with identity.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
+        \item Consider $(r+r)^2$. CLearly $(r+r)^2 = r+r$ by definition of a Boolean ring. On the other hand, one may expand $(r+r)^2$ to yield
+        \begin{align*}
+            (r+r)^2 &= r^2 + r^2 + r^2 + r^2 \\
+            &= r + r + r + r & (r^2 = r \text{ for all }r \in R)
+        \end{align*}
+        which means $r+r = r+r+r+r$. Thus $r+r = 0$ which hence means $r=-r$.
+
+        \item Let $x,y\in R$. Then
+        \begin{align*}
+            x+y &= (x+y)^2 & (r = r^2 \text{ for all }r \in R)\\
+            &= x^2 + xy + yx + y^2\\
+            &= x + xy + yx + y. & (r = r^2 \text{ for all }r \in R)
+        \end{align*}
+        Subtracting $x+y$ on both sides yields $xy +yx = 0$. Hence $xy = -yx$ which means $xy = yx$ by \textbf{(i)}. Therefore every Boolean ring is commutative.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
+        \item Let $u$ and $v$ be units, meaning that $u^{-1}$ and $v^{-1}$ exist. Then one sees that $(uv)(v^{-1}u^{-1}) = (v^{-1}u^{-1})(uv) = 1$, which means that $uv$ is also a unit.
+        
+        \item Let $n$ be a positive integer such that $x^n = 0$. Then
+        \begin{align*}
+            (ux)^n &= u^nx^n & (R\text{ is commutative})\\
+            &= u^n0 & (x \text{ is nilpotent})\\
+            &= 0
+        \end{align*}
+        which means that $ux$ is also nilpotent.
+
+        \item One sees that $1-x$ is a unit as
+        \[
+            (1-x)(1+x+x^2+x^3+\cdots+x^{n-1}) = 1.    
+        \]
+        Now we write
+        \begin{align*}
+            u-x &= u(1-xu^{-1}) & (u \text{ is a unit})\\
+            &= u(1-u^{-1}x). & (R \text{ is commutative})
+        \end{align*}
+        Note that $u^{-1}$ is a unit, so by \textbf{(ii)} we know that $u^{-1}x$ is nilpotent. By the above argument this means that $1-u^{-1}x$ is a unit. Finally, since both $u$ and $1-u^{-1}x$ are units, this means that $u-x = u(1-u^{-1}x)$ is a unit by \textbf{(i)}.
+    \end{partquestions}
+\end{questions}

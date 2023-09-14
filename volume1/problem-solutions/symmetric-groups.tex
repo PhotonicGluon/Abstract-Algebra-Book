@@ -1,0 +1,63 @@
+\section{Symmetric Groups}
+\begin{questions}
+    \item We work from the right to the left.
+    \begin{itemize}
+        \item $\gamma \delta$ has cycle notation
+        \begin{align*}
+            &\begin{pmatrix}1 & 2 & 5\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix}\begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix}\\
+            &= \begin{pmatrix}1 & 4 & 3 & 5 & 2\end{pmatrix};
+        \end{align*}
+        \item $\beta \gamma \delta$ has cycle notation
+        \begin{align*}
+            &\begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix}\begin{pmatrix}1 & 4 & 3 & 5 & 2\end{pmatrix}\\
+            &= \begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix}\\
+            &= \delta;
+        \end{align*}
+        and
+        \item $\alpha \beta \gamma \delta$ has cycle notation 
+        \begin{align*}
+            &\begin{pmatrix}1 & 5 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix}\\
+            &= \id,
+        \end{align*}
+        the identity.
+    \end{itemize}
+
+    \item Recall that $D_3$ has presentation
+    \[
+        \langle r, s \vert r^3 = s^2 = e, rs = sr^2 \rangle.
+    \]
+
+    Let the map $\phi: D_3 \to \Sn{3}$ be given such that $r \mapsto \begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $s \mapsto \begin{pmatrix}1 & 2\end{pmatrix}$. We show that $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\begin{pmatrix}1 & 2\end{pmatrix}$ satisfy the two rules above. For brevity let $\sigma = \begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\tau = \begin{pmatrix}1 & 2\end{pmatrix}$.
+    \begin{itemize}
+        \item We check that $\phi(r^3) = \phi(s^2) = \phi(e)$.
+        \begin{itemize}
+            \item $\sigma^2 = \begin{pmatrix}1 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 2 & 3\end{pmatrix} = \begin{pmatrix}1 & 3 & 2\end{pmatrix} \neq \id$; and $\sigma^3 = \begin{pmatrix}1 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 3 & 2\end{pmatrix} = \id$; and
+            \item $\tau^2 = \begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 2\end{pmatrix} = \id$.
+        \end{itemize}
+        \item We check that $\phi(rs) = \phi(sr^2)$.
+        \begin{itemize}
+            \item $rs \mapsto \sigma\tau = \begin{pmatrix}1 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 2\end{pmatrix} = \begin{pmatrix}1 & 3\end{pmatrix}$; and
+            \item $sr^2 \mapsto \tau\sigma^2 = \begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 3 & 2\end{pmatrix} = \begin{pmatrix}1 & 3\end{pmatrix}$.
+        \end{itemize}
+    \end{itemize}
+    Thus $\phi$ is an isomorphism and so $D_3 \cong \Sn{3}$.
+
+    \item We note that $|\Sn{4}| = 4! = 24$.
+    \begin{partquestions}{\alph*}
+        \item Consider $H = \left\langle \begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix} \right\rangle$. For brevity, let $\sigma = \begin{pmatrix}1 & 2 & 3 & 4\end{pmatrix}$. Note that
+        \begin{itemize}
+            \item $\sigma^2 = \begin{pmatrix}1 & 3\end{pmatrix}\begin{pmatrix}2 & 4\end{pmatrix} \neq \id$;
+            \item $\sigma^3 = \begin{pmatrix}1 & 4 & 3 & 2\end{pmatrix} \neq \id$; and
+            \item $\sigma^4 = \id$.
+        \end{itemize}
+        Thus, $|\sigma| = 4$ which means $|H| = 4$. Therefore, $G \cong H \leq \Sn{4}$.
+
+        \item Let $\sigma = \begin{pmatrix}1 & 2\end{pmatrix}$ and $\tau = \begin{pmatrix}3 & 4\end{pmatrix}$. Let $H$ have presentation $\langle \sigma, \tau \rangle$. Notice that
+        \begin{itemize}
+            \item $\sigma^2 = \id$;
+            \item $\tau^2 = \id$; and
+            \item $(\sigma\tau)^2 = \id$.
+        \end{itemize}
+        Therefore $H = \{\id, \sigma, \tau, \sigma\tau\}$, so $G \cong H \leq \Sn{4}$.
+    \end{partquestions}
+\end{questions}
