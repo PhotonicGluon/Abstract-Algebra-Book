@@ -1,0 +1,364 @@
+\chapter{Simple Groups}
+This can be thought of as the `capstone' chapter for this volume.
+
+Simple groups can be thought of as the `building blocks' of all (finite) groups. The finite simple groups have been completely classified; each belongs to one of 18 infinite families, or is one of 26 sporadic groups that do not follow a specific pattern. We look at the classification of the families of these simple groups here.
+
+\section{Cyclic Groups of Prime Order}
+The first infinite family of simple groups we will look at is the family of \textbf{Cyclic Groups of Prime Order}\index{cyclic group!of prime order}.
+
+\begin{lemma}\label{lemma-cyclic-group-simple-iff-order-is-prime}
+    $\Cn{n}$ is simple if and only if $n$ is prime.
+\end{lemma}
+\begin{proof}
+    We prove the forward direction. Suppose $\Cn{n}$ is simple with generator $g$. Then the only normal subgroups of $\Cn{n}$ are the trivial group and the group itself. Seeking a contradiction, assume $n$ is not prime; write $n = ab$ where $a$ and $b$ are positive integers that are both smaller than $n$. Then clearly $\langle g^a\rangle$ is a subgroup of $\Cn{n}$. Now $\Cn{n}$ is abelian (\myref{prop-cyclic-group-is-abelian}) which means all subgroups are normal (\myref{prop-subgroup-of-abelian-group-is-normal}). Hence we have found a proper normal subgroup of $\Cn{n}$, namely $\langle g^a \rangle$, contradicting that $\Cn{n}$ has no proper normal subgroups. Therefore $n$ is prime.
+    
+    We prove the reverse direction. Suppose $n$ is a prime. Then by a corollary of Lagrange's Theorem (\myref{corollary-group-with-prime-order-subgroups}), $\Cn{n}$ has no proper subgroups. So, the only subgroup with order smaller than $n$ is the trivial group, $\{e\}$. Clearly $\Cn{n}$ is normal in itself, and the trivial group is always a normal subgroup. Hence, as the only normal subgroups of $\Cn{n}$ is the trivial group and itself, so $\Cn{n}$ is simple. Therefore, if $n$ is prime then $\Cn{n}$ is simple.
+\end{proof}
+
+In fact, we have a much stronger result which we prove here.
+\begin{theorem}\label{thrm-abelian-group-simple-iff-cylic-group-of-prime-order}
+    An abelian group is simple if and only if it has prime order.
+\end{theorem}
+Note that we do not assume that the abelian group is finite; we will show that the group is finite in the proof below.
+\begin{proof}
+    The reverse direction of the claim follows immediately from \myref{lemma-cyclic-group-simple-iff-order-is-prime}, so we prove the forward direction only.
+    
+    Suppose $G$ is a simple abelian group; we show that $G$ is finite. Suppose $g \in G$ such that $g \neq e$. Then the group $H = \langle g \rangle \leq G$. In fact, since $G$ is abelian, $H \unlhd G$ (\myref{prop-subgroup-of-abelian-group-is-normal}), therefore $H = G$ as $G$ is simple. Now if $G$ is an infinite group, then $\langle g^2 \rangle < G$ which implies $\langle g^2 \rangle \lhd G$, contradicting the fact that $G$ is simple. Hence $G$ is a finite abelian group with generator $g$, meaning $G$ is cyclic. Result follows directly from \myref{lemma-cyclic-group-simple-iff-order-is-prime}.
+\end{proof}
+
+From this, we have found that the only family of simple abelian groups is the family of cyclic groups of prime order.
+
+\newpage
+
+\section{Alternating Group with Degree \texorpdfstring{$>4$}{More Than 4}}
+The other family of simple groups that is relatively easy to find is the family of \textbf{alternating groups with degree of above 4}\index{alternating group!of degree $>4$}.
+
+However, to prove this claim, we need several preliminary results.
+
+\begin{lemma}\label{lemma-group-of-order-60-with->1-sylow-5-subgroup-is-simple}
+    Let $G$ be a group of order 60. If $G$ has more than one Sylow 5-subgroup then $G$ is simple.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[p.~145, Proposition 21]{dummit_foote_2004}})]
+    We fill in most details of the proof here, although we leave some exercises for the reader.
+
+    By way of contradiction assume $G$ is a group of order 60 with more than one Sylow 5-subgroup, but has a proper normal subgroup $H$. Note $60 = 5 \times 12$, so by the Third Sylow Theorem (\myref{thrm-sylow-3}):
+    \begin{itemize}
+        \item $12 \vert n_5$, so $n_5 \in \{1, 2, 3, 4, 6, 12\}$; and
+        \item $n_5 \equiv 1 \pmod 5$, so $n_5 \in \{1, 6, 11, 16, \dots\}$.
+    \end{itemize}
+    Therefore $n_5 = 6$ as $n_5 > 1$. Let $P \in \Syl{5}{G}$.
+
+    We note by Lagrange's theorem (\myref{thrm-lagrange}) that the order of $H$ belongs in the set $\{1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60\}$, since the order of $G$ must be a multiple of the order of $H$. As $H$ is a proper subgroup of $G$, thus $|H| \neq 1$ and $|H| \neq 60$. That leaves 4 cases which we will deal with separately.
+    \begin{enumerate}
+        \item $|H| = 6$. Note $6 = 2 \times 3$, so \myref{problem-group-of-order-pq-has-normal-subgroup-of-order-q} tells us that there exists a $N \lhd H$ with $|N| = 3$. Note also $[G:H] = 10$ which is not a multiple of 3, so \myref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups} tells us that all Sylow 3-subgroups of $G$ are in $H$. But $N \lhd H$ means that $N$ is the unique Sylow 3-subgroup of $H$ and $G$ (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}), so $N \lhd G$ (by the same corollary). Proceed to case 3, using $N$ in place of $H$.
+        
+        \item $|H| = 12$. Note $12 = 2^2 \times 3$. Now \myref{exercise-group-of-order-12-has-normal-subgroup-of-3-or-4} (later) tells us that there exists a normal subgroup of $H$ with order 3 or 4 (or both). Call that subgroup $N$. If $|N| = 3$ then it is a Sylow 3-subgroup; if $|N| = 4 = 2^2$ it is a Sylow 2-subgroup. Since $H \lhd G$, thus $H$ contains all Sylow 2- and 3-subgroups of $G$ (\myref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}), meaning $G$ has only one Sylow 2-subgroup or one Sylow 3-subgroup (or both), in particular $N$. Hence, $N \lhd G$ since a Sylow $p$-subgroup is unique if and only if it is normal (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}). Proceed with case 3, using $N$ instead of $H$.
+        
+        \item $|H| \in \{2, 3, 4\}$. Since $H \lhd G$, thus $G/H$ is a group. Note $|G/H| \in \{15, 20, 30\}$. We claim that each of these cases produces a new normal subgroup of $G/H$ (call it $\bar{P}$) with order 5. This is proven for the case where $|G/H| = 30$ in \myref{problem-group-of-order-30-has-normal-subgroup-of-order-5}; the other two cases are for \myref{exercise-group-of-order-15-or-20-has-normal-subgroup-of-order-5} (later).
+
+        Now \myref{problem-subgroup-of-quotient-group-is-quotient-group} tells us that $\bar{P}$ has the form $K/H$ where $K < G$ and $H \subseteq K$. Since $\bar{P} = K/H \lhd G/H$, thus for any $g \in G$ and $kH \in \bar{P}$ we have
+        \[
+            (gH)(kH)(g^{-1}H) = (gkg^{-1})H \in K/H,
+        \]
+        which means $gkg^{-1} \in K$. Therefore $K \lhd G$ by definition of normality.
+
+        Observe that this means that
+        \[
+            |K| = |K/H||H| = |\bar{P}||H| = 5|H|,    
+        \]
+        meaning $K$ is a normal subgroup of $G$ with an order that is a multiple of 5. Proceed to case 4, using $K$ in place of $H$.
+
+        \item $|H|$ is a multiple of 5, meaning $H$ has a Sylow 5-subgroup. Note $5 \nmid [G:H]$, so \myref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups} implies all Sylow 5-subgroups of $G$ are in $H$ and vice versa. Note there are $5-1=4$ non-identity elements in each Sylow 5-subgroup; therefore
+        \[
+            |H| \geq n_5(5-1) = 24
+        \]
+        which means that $|H| = 30$. By \myref{problem-group-of-order-30-has-normal-subgroup-of-order-5} again, such a group has only a unique Sylow 5-subgroup. However, right at the start, we concluded that $n_5 = 6$, a contradiction.
+    \end{enumerate}
+    Hence, $H$ does not exist; $G$ is simple.
+\end{proof}
+
+\begin{exercise}\label{exercise-group-of-order-12-has-normal-subgroup-of-3-or-4}
+    Prove that a group of order 12 either has a normal subgroup of order 3, or a normal subgroup of order 4, or both.
+\end{exercise}
+
+\begin{exercise}\label{exercise-group-of-order-15-or-20-has-normal-subgroup-of-order-5}
+    Prove that a group of each of the following orders has a normal subgroup of order 5.
+    \begin{partquestions}{\alph*}
+        \item 15
+        \item 20
+    \end{partquestions}
+\end{exercise}
+
+\begin{corollary}\label{corollary-A5-is-simple}
+    The group $\An5$ is simple.
+\end{corollary}
+\begin{proof}
+    \myref{exercise-A5-has-two-distinct-subgroups-of-order-5} (later) gives two distinct subgroups of order 5. Since $|\An{5}| = 60 = 2^2 \times 3 \times 5$, thus subgroups of order 5 are Sylow 5-subgroups. Therefore $\An5$ is simple by \myref{lemma-group-of-order-60-with->1-sylow-5-subgroup-is-simple}. 
+\end{proof}
+\begin{exercise}\label{exercise-A5-has-two-distinct-subgroups-of-order-5}
+    Consider the permutation
+    \[
+        \sigma = \begin{pmatrix}1&3&2&4&5\end{pmatrix}.
+    \]
+    \begin{partquestions}{\roman*}
+        \item Explain why $\sigma \in \An{5}$.
+        \item Find the order of the subgroup $\langle \sigma \rangle$.
+        \item Find another subgroup of $\An{5}$ with order 5.
+    \end{partquestions}
+\end{exercise}
+
+We also state and prove a fairly obvious proposition.
+\begin{proposition}\label{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}
+    Let the integer $n \geq 3$. Let $\{1, 2, 3, \dots, n\}$ be denoted by $\mathcal{N}_n$. Suppose $\An{n}$ acts on $\mathcal{N}_n$ naturally. Then $\Stab{\An{n}}{r} \cong \An{n-1}$.
+\end{proposition}
+\begin{proof}
+    We note that elements of $\Stab{\An{n}}{r}$ are permutations that fix $r$, thereby permuting the $n - 1$ other elements. Therefore elements of $\Stab{\An{n}}{r}$ are even permutations on $n - 1$ elements, i.e. $\Stab{\An{n}}{r} \cong \An{n-1}$.
+\end{proof}
+
+With these results, we are ready to prove that an alternating group with a degree above 4 is simple.
+\begin{theorem}\label{thrm-An-is-simple-for-n>=5}
+    The group $\An{n}$ is simple if $n \geq 5$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[pp.~149--150, Theorem 24]{dummit_foote_2004}})]
+    We induct on $n$. For brevity, denote the set $\mathcal{N}_n = \{1, 2, 3, \dots, n\}$.
+    
+    The base case of $n = 5$ is covered by \myref{corollary-A5-is-simple}.
+    
+    Assume that $\An{k-1}$ is simple for some $k \geq 6$; we will prove that $\An{k}$ is also simple.
+
+    Let $G = \An{k}$, and, seeking a contradiction, assume that $G$ has a proper normal subgroup $H$. Let $G$ act on $\mathcal{N}_{k}$ naturally; thus $\Stab{G}{i} \leq G$ with $\Stab{G}{i} \cong \An{k-1}$ (\myref{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}). Note $\An{k-1}$ is simple by Induction Hypothesis, so $\Stab{G}{i}$ is simple for each $i \in \mathcal{N}_{k}$.
+
+    Suppose first that there is some non-identity $\pi \in H$ such that $\pi(i) = i$ for some $i \in \mathcal{N}_{k}$. This means that $\pi$ fixes $i$; thus $\pi \in H \cap \Stab{G}{i}$. Note that since $H \lhd G$ and $\Stab{G}{i} \leq G$ thus $H \cap \Stab{G}{i} \lhd \Stab{G}{i}$ by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 4. But as $\Stab{G}{i}$ is simple (and non-trivial) we must have $H \cap \Stab{G}{i} = \Stab{G}{i}$. Therefore
+    \[
+        \Stab{G}{i} \subseteq H \implies \Stab{G}{i} \leq H.
+    \]
+    Now by \myref{exercise-conjugate-of-stabilizer} (later), for any $\sigma \in G$, we know that $\sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{\sigma(i)}$. Therefore, by conjugating the above relation by $\sigma$, we see
+    \[
+        \sigma\Stab{G}{i}\sigma^{-1} \leq \sigma H\sigma^{-1} = H
+    \]
+    since $H \lhd G$. Thus, by choosing $\sigma \in G$ such that $\sigma(i) = j$ for any $j \in \mathcal{N}_{k+1}$ required, we see
+    \[
+        \sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{j} \leq H \text{ for all } j \in \mathcal{N}_{k}.
+    \]
+    
+    Note that any element in $G$ (say $\lambda$) may be written as a product of an even number of transpositions (\myref{thrm-parity-of-permutation}), say $2t$ transpositions. Thus, we may write
+    \[
+        \lambda = \lambda_1\lambda_2\cdots\lambda_t
+    \]
+    where each $\lambda_i$ is a product of two transpositions. Now as $k \geq 5$, each $\lambda_i$ (which could, at most, consist of two disjoint cycles of 4 elements) must fix at least one element in $\mathcal{N}_{k}$, say $j$. That is, $\lambda_i \in \Stab{G}{j}$ for some $j \in \mathcal{N}_{k}$.
+    
+    As noted above, every $\lambda \in G$ is generated by these $\lambda_i$'s, and since $\lambda_i \in \Stab{G}{j} \leq H$ for some $j \in \mathcal{N}_{k}$, thus $\lambda_i \in H$. Hence, as $H$ is a subgroup and hence closed, therefore $\lambda = \lambda_1\lambda_2\cdots\lambda_t \in H$. Therefore, any element in $G$ is also in $H$, meaning $G \subseteq H$, contradicting the fact that $H \lhd G$ which means $H \subset G$.
+    
+    We conclude that if $\pi \in H$ and $\pi \neq \id$ then $\pi(i) \neq i$ for all $i \in \mathcal{N}_k$. Now suppose $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$. Then $\pi_2^{-1}\pi_1(i) = i$, which implies $\pi_2^{-1}\pi_1 = \id$. Hence $\pi_1 = \pi_2$. Therefore, if $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$, then $\pi_1 = \pi_2$.
+
+    Now suppose a non-identity $\pi_1 \in H$ exists such that the cycle decomposition of $\pi_1$ contains a cycle of length of at least 3, say
+    \[
+        \pi_1 = \begin{pmatrix}a_1&a_2&a_3&\cdots\end{pmatrix} \begin{pmatrix}b_1&b_2&\cdots\end{pmatrix}\cdots
+    \]
+    where $a_1$, $a_2$, $a_3$, $b_1$, $b_2$, etc. are distinct (which is possible since $k \geq 5$). We note an element $\sigma \in G$ exists such that $\sigma(a_1) = a_1$, $\sigma(a_2) = a_2$, but $\sigma(a_3) \neq a_3$, because $k \geq 4$. Then \myref{exercise-conjugation-of-permutation-by-another} (later) gives
+    \[
+        \sigma\pi_1\sigma^{-1} = \begin{pmatrix}a_1&a_2&\sigma(a_3)&\cdots\end{pmatrix} \begin{pmatrix}\sigma(b_1)&\sigma(b_2)&\cdots\end{pmatrix}\cdots.
+    \]
+    Set $\pi_2 = \sigma\pi_1\sigma^{-1}$, which is clearly distinct from $\pi_1$. Then we see $\pi_1(a_1) = \pi_2(a_1) = a_2$, contrary to the above observation that $\pi_1(i) = \pi_2(i)$ implies $\pi_1 = \pi_2$. Therefore only 2-cycles can appear in the cycle decomposition of non-identity elements of $H$.
+
+    Let $\pi_1 \in H$ be a non-identity element, so that
+    \[
+        \pi_1 = \begin{pmatrix}a_1&a_2\end{pmatrix} \begin{pmatrix}a_3&a_4\end{pmatrix} \begin{pmatrix}a_5&a_6\end{pmatrix}\cdots
+    \]
+    where each $a_i$ is distinct (note that $k \geq 6$ is used above). Consider $\sigma = \begin{pmatrix}a_1&a_2\end{pmatrix} \begin{pmatrix}a_3&a_5\end{pmatrix}$, which is in $G$ since it is made up of 2 transpositions. Then \myref{exercise-conjugation-of-permutation-by-another} again gives
+    \[
+        \sigma\pi_1\sigma^{-1} = \begin{pmatrix}a_1&a_2\end{pmatrix} \begin{pmatrix}a_5&a_4\end{pmatrix} \begin{pmatrix}a_3&a_6\end{pmatrix}\cdots.
+    \]
+    Setting $\pi_2 = \sigma\pi_1\sigma^{-1}$ again gives two distinct permutations $\pi_1$ and $\pi_2$ such that $\pi_1(a_1) = \pi_2(a_1) = a_2$, again contrary to the above observation.
+
+    We conclude that such a proper normal subgroup $H$ cannot exist. Thus, $\An{k-1}$ being simple implies that $\An{k}$ is also simple.
+
+    By mathematical induction, $\An{n}$ is simple for all $n \geq 5$.
+\end{proof}
+
+\begin{exercise}\label{exercise-conjugate-of-stabilizer}
+    Let $S$ be a set and let $G \leq \Sym{S}$ act on $S$. Let $\sigma \in G$ and $x \in S$. Show that
+    \[
+        \sigma\Stab{G}{x}\sigma^{-1} = \Stab{G}{\sigma(x)}.
+    \]
+\end{exercise}
+
+\begin{exercise}\label{exercise-conjugation-of-permutation-by-another}
+    Let $\sigma, \pi \in \Sn{n}$. Suppose $\sigma$ has cycle decomposition
+    \[
+        \begin{pmatrix}a_1&a_2&\cdots&a_{k_1}\end{pmatrix} \begin{pmatrix}b_1&b_2&\cdots&b_{k_2}\end{pmatrix}\cdots,
+    \]
+    where $a_1, a_2, \dots, a_{k+1}$. Show that $\pi\sigma\pi^{-1}$ has cycle decomposition
+    \[
+        \begin{pmatrix}\pi(a_1)&\cdots&\pi(a_{k_1})\end{pmatrix} \begin{pmatrix}\pi(b_1)&\cdots&\pi(b_{k_2})\end{pmatrix}\cdots,
+    \]
+    that is, $\pi\sigma\pi^{-1}$ is obtained from $\sigma$ by replacing each entry $i$ in the cycle decomposition by $\pi(i)$.
+\end{exercise}
+
+\begin{corollary}
+    The group $\An{n}$ is simple if $n \geq 3$ and $n \neq 4$.
+\end{corollary}
+\begin{proof}
+    We note $\An3$ has order $\frac{3!}{2} = 3$ which is prime, so $\An3 \cong \Cn3$ which is simple. Also $\An{n}$ is simple for $n \geq 5$ by \myref{thrm-An-is-simple-for-n>=5}.
+\end{proof}
+
+We note that $\An4$ is non-simple by \myref{problem-S4-composition-series}'s solution that $\An4$ has a unique composition series of
+\[
+    1 \lhd \Cn2 \lhd \mathrm{V} \lhd \An4
+\]
+up to isomorphism.
+
+\section{Groups of Lie Type}
+\textit{We briefly mention groups of Lie type; we will not prove any significant results here.}
+
+Groups of Lie (pronounced ``lee'') type\index{groups of Lie type} usually refers to finite groups that are closely related to the group of rational points of a reductive linear algebraic group with values in a finite field. We will cover finite fields in Volume \rom{3}. We briefly mention these groups here.
+
+In what follows, taken from \cite{wikipedia_list-of-simple-groups}, $n$ is a positive integer, and $q$ is a positive power of a prime number $p$.
+\begin{itemize}
+    \item \textbf{Classical Chevalley groups}\index{Chevalley groups!classical}: there are 4 families of simple groups in this category.
+    \begin{itemize}
+        \item $A_n(q)$, except for $A_1(2)$ and $A_1(3)$. There are several duplicates, which are
+        \begin{itemize}
+            \item $A_1(4) \cong A_1(5) \cong \An{5}$;
+            \item $A_1(7) \cong A_2(2)$;
+            \item $A_1(9) \cong \An{6}$; and
+            \item $A_3(2) \cong \An{8}$.
+        \end{itemize}
+        We note that $\An{n}$ is not the same as $A_n(q)$. We distinguish between the alternating group of degree $n$ ($\An{n}$) and the groups of Lie type $A_n(q)$ by letting the latter be in italics and the former be in `normal' font.
+
+        \item $B_n(q)$ for $n > 1$, except for $B_2(2)$. There are several duplicates, which are
+        \begin{itemize}
+            \item $B_n(2^m) \cong C_n(2^m)$; and
+            \item $B_2(3) \cong {^2A_3(2^2)} = {^2A_3(4)}$.
+        \end{itemize}
+        \item $C_n(q)$ for $n > 2$. The only duplicate is $C_n(2^m) \cong B_n(2^m)$.
+        \item $D_n(q)$ for $n > 3$.
+    \end{itemize}
+    
+    \item \textbf{Exceptional Chevalley groups}\index{Chevalley groups!exceptional}: there are 5 families of simple groups in this category:
+    \begin{itemize}
+        \item $E_6(q)$;
+        \item $E_7(q)$;
+        \item $E_8(q)$;
+        \item $F_4(q)$; and
+        \item $G_2(q)$, except for $G_2(2)$.
+    \end{itemize}
+    
+    \item \textbf{Classical Steinberg groups}\index{Steinberg groups!classical}: there are 2 families of simple groups in this category.
+    \begin{itemize}
+        \item ${^2A_n(q^2)}$ for $n > 1$, except for ${^2A_2(2^2)} = {^2A_2(4)}$. The only duplicate is ${^2A_3(2^2)} \cong B_2(3)$.
+        \item ${^2D_n(q^2)}$ for $n > 3$.
+    \end{itemize}
+    
+    \item \textbf{Exceptional Steinberg groups}\index{Steinberg groups!exceptional}: there are 2 families of simple groups in this category:
+    \begin{itemize}
+        \item ${^2E_6(q^2)}$; and
+        \item ${^3D_4(q^3)}$.
+    \end{itemize}
+    
+    \item \textbf{Suzuki groups}\index{Suzuki groups}: there is 1 family of simple groups in this category, which is ${^2B_2(q)}$ where $q = 2^{2n+1}$ and $n \geq 1$. Such a group has order $q^2(q^2+1)(q-1)$.
+    
+    \item \textbf{Ree groups}\index{Ree groups}: there are 2 families of simple groups in this category.
+    \begin{itemize}
+        \item $^2F_4(q)$ where $q = 2^{2n+1}$ and $n \geq 1$. The order of such a group is $q^{12}(q^6+1)(q^4-1)(q^3+1)(q-1)$.
+        \item $^2G_2(q)$ where $q = 3^{2n+1}$ and $n \geq 1$. The order of such a group is $q^3(q^3+1)(q-1)$.
+    \end{itemize}
+\end{itemize}
+
+There is also the \textbf{Tits group}\index{Tits group}, $^2F_4(2)'$. That group has an order of $17,971,200$.
+
+\newpage
+
+\section{The Sporadic Groups}
+Along with the 18 infinite families of simple groups, there are also 26 sporadic simple groups\index{sporadic group} that do not fall within the families.
+
+We first list four categories of sporadic groups.
+\begin{itemize}
+    \item \textbf{Mathieu groups}\index{Mathieu groups}: There are 5 Mathieu sporadic groups.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Group}    & \textbf{Order} \\ \hline
+            $\mathrm{M}_{11}$ & 7,290          \\ \hline
+            $\mathrm{M}_{12}$ & 95,040         \\ \hline
+            $\mathrm{M}_{22}$ & 443,520        \\ \hline
+            $\mathrm{M}_{23}$ & 10,200,960     \\ \hline
+            $\mathrm{M}_{24}$ & 244,823,040    \\ \hline
+        \end{tabular}
+    \end{table}
+
+    \item \textbf{Janko groups}\index{Janko groups}: There are 4 Janko sporadic groups.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Group} & \textbf{Order}             \\ \hline
+            $\mathrm{J}_1$ & 175,560                    \\ \hline
+            $\mathrm{J}_2$ & 604,800                    \\ \hline
+            $\mathrm{J}_3$ & 50,232,960                 \\ \hline
+            $\mathrm{J}_4$ & 86,775,571,046,077,562,880 \\ \hline
+        \end{tabular}
+    \end{table}
+
+    \item \textbf{Conway groups}\index{Conway groups}: There are 3 Conway sporadic groups.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Group}  & \textbf{Order}            \\ \hline
+            $\mathrm{Co}_3$ & 495,766,656,000           \\ \hline
+            $\mathrm{Co}_2$ & 42,305,421,312,000        \\ \hline
+            $\mathrm{Co}_1$ & 4,157,776,806,543,360,000 \\ \hline
+        \end{tabular}
+    \end{table}
+
+    \newpage
+
+    \item \textbf{Fischer groups}\index{Fischer groups}: There are 3 Fischer sporadic groups.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            \textbf{Group}     & \textbf{Order}                    \\ \hline
+            $\mathrm{Fi}_{22}$ & 64,561,751,654,400                \\ \hline
+            $\mathrm{Fi}_{23}$ & 4,089,470,473,293,004,800         \\ \hline
+            $\mathrm{Fi}_{24}$ & 1,255,205,709,190,661,721,292,800 \\ \hline
+        \end{tabular}
+    \end{table}
+\end{itemize}
+
+More sporadic groups are listed below.
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        \textbf{Group}        & \textbf{Symbol} & \textbf{Order}  \\ \hline
+        Higman-Sims group\index{Higman-Sims group}     & HS              & 44,352,000      \\ \hline
+        McLaughlin group\index{McLaughlin group}      & McL             & 898,128,000     \\ \hline
+        Held group\index{Held group}            & He              & 4,030,387,200   \\ \hline
+        Rudvalis group\index{Rudvalis group}        & Ru              & 145,926,144,000 \\ \hline
+        Suzuki sporadic group\index{Suzuki sporadic group} & Suz             & 448,345,497,600 \\ \hline
+        O'Nan group\index{O'Nan group}           & $\mathrm{O'N}$  & 460,815,505,920 \\ \hline
+        Harada-Norton group\index{Harada-Norton group}   & HN              & 273,030,912,000,000    \\ \hline
+        Lyons group\index{Lyons group}           & Ly              & 51,765,179,004,000,000 \\ \hline
+        Thompson group\index{Thompson group}        & Th              & 90,745,943,887,872,000 \\ \hline
+    \end{tabular}
+\end{table}
+
+The remaining 2 sporadic groups are special in that they have extremely large order.
+\begin{itemize}
+    \item The \textbf{Baby Monster group}\index{Baby Monster group}, usually denoted $\mathrm{B}$, contains
+    \begin{align*}
+        &2^{41} \times 3^{13} \times 5^6 \times 7^2 \times 11 \times 13 \times 17 \times 19 \times 23 \times 31 \times 47\\
+        &= 4,154,781,481,226,426,191,177,580,544,000,000
+    \end{align*}
+    elements.
+    \item The \textbf{Monster group}\index{Monster group}, usually denoted $\mathrm{M}$, contains
+    \begin{align*}
+        &2^{46} \times 3^{20} \times 5^9 \times 7^6 \times 11^{2} \times 13^3 \times 17 \times 19 \times 23 \times 29 \times 31 \times \\
+        &\quad 41 \times 47 \times 59 \times 71\\
+        &> 8 \times 10^{53}
+    \end{align*}
+    elements. It is the largest sporadic group.
+\end{itemize}

@@ -1,0 +1,575 @@
+\chapter{Exercise Solutions}
+
+\section{Introduction to Groups}
+\begin{questions}
+    \item There are 6! = 720 possible permutations of 6 points, so there are 720 symmetries in the group given. That is, the order of the symmetric group of degree 6 is 720.
+\end{questions}
+
+\section{Basics of Groups}
+\begin{questions}
+    \item The Cayley table of $(\mathbb{Z}_6, \otimes_6)$ is as follows:
+
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|l|l|}
+        \hline
+        \textbf{$\otimes_n$} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline
+        \textbf{0}       & 0          & 0          & 0          & 0          & 0          & 0          \\ \hline
+        \textbf{1}       & 0          & 1          & 2          & 3          & 4          & 5          \\ \hline
+        \textbf{2}       & 0          & 2          & 4          & 0          & 2          & 4          \\ \hline
+        \textbf{3}       & 0          & 3          & 0          & 3          & 0          & 3          \\ \hline
+        \textbf{4}       & 0          & 4          & 2          & 0          & 4          & 2          \\ \hline
+        \textbf{5}       & 0          & 5          & 4          & 3          & 2          & 1          \\ \hline
+        \end{tabular}
+    \end{table}
+
+    Since the identity is $1$, and the row (and column) of 0 does not have a $1$, thus $0$ does not have an inverse. Therefore $(\mathbb{Z}_6, \oplus_6)$ is not a group.
+    
+    \item Note that $(xx^{-1})^{-1} = (x^{-1})^{-1}x^{-1}$ by Shoes and Socks and $(xx^{-1})^{-1} = e^{-1} = e$. Thus $(x^{-1})^{-1}x^{-1} = e$. Multiplying both sides on the right by $x$ yields $(x^{-1})^{-1} = ex = x$, i.e. $(x^{-1})^{-1} = x$.
+    \item \begin{partquestions}{\roman*}
+        \item The identity is $1$ since:
+        \begin{itemize}
+            \item $1 \times 1 = 1$;
+            \item $1 \times (-1) = (-1) \times 1 = -1$;
+            \item $1 \times i = i \times 1 = i$; and
+            \item $1 \times (-i) = (-i) \times 1 = -i$.
+        \end{itemize}
+        \item The order of the identity $1$ is 1, so we look at the other elements:
+        \begin{itemize}
+            \item $|-1| = 2$ since $-1 \neq 1$ and $(-1)^2 = -1 \times -1 = 1$.
+            \item $|i| = 4$ since $i \neq 1$, $i^2 = -1 \neq 1$, $i^3 = -i \neq 1$, but $i^4 = 1$.
+            \item $|-i| = 4$ since $-i \neq 1$, $(-i)^2 = -1 \neq 1$, $(-i)^3 = i \neq 1$, but $(-i)^4 = 1$.
+        \end{itemize}
+    \end{partquestions}
+
+    \item $-i$ is the other generator since $(-i)^1 = -i$, $(-i)^2 = -1$, $(-i)^3 = i$, and $(-i)^4 = 1$.
+
+    \item We work slowly:
+    \begin{align*}
+        rsr^4sr^3 &= r(sr^4)(sr^3)\\
+        &= r(r^2s)(r^3s)\\
+        &= r^3sr^3s\\
+        &= r^3(sr^3)s\\
+        &= r^3(r^3s)s\\
+        &= r^6s^2\\
+        &= e
+    \end{align*}
+\end{questions}
+
+\section{Subgroups}
+\begin{questions}
+    \item We will prove this claim by using the 3 axioms. For brevity let $H = \{e\}$. Clearly $H \subseteq G$.
+    \begin{itemize}
+        \item The only element in $H$ is $e$, and $e \ast e = e \in H$. Hence $H$ is closed.
+        \item The identity of the group $G$ is $e$ which is in $H$.
+        \item The inverse of $e$ is $e$ which is in $H$.
+    \end{itemize}
+    Hence, $\{e\} \leq G$.
+
+    \item Clearly $e$ is in $S$ since $e \in H$ and $geg^{-1} = gg^{-1} = e$, so $S$ is non-empty and $S \subseteq G$.
+
+    Now suppose $x$ and $y$ are in $S$. Then there exist elements $h_x$ and $h_y$ in $H$ such that $x = gh_xg^{-1}$ and $y = gh_yg^{-1}$. Note that
+    \begin{align*}
+        xy^{-1} &= (gh_xg^{-1})(gh_yg^{-1})^{-1}\\
+        &= (gh_xg^{-1})(g{h_y}^{-1}g^{-1}) & (\text{Shoes and Shocks})\\
+        &= gh_xg^{-1}g{h_y}^{-1}g^{-1} & (\text{associativity})\\
+        &= gh_x{h_y}^{-1}g^{-1} & (g^{-1}g = e).
+    \end{align*}
+    Note that since $H \leq G$, thus $h_x{h_y}^{-1} \in H$. Hence $xy^{-1} = g(h_x{h_y}^{-1})g^{-1} \in S$. By subgroup test, $S \leq G$.
+
+    \item \begin{partquestions}{\alph*}
+        \item Since $\oplus_8$ is commutative, thus $gH = Hg$.\newline
+        (Actually, since $G$ is an additive group, the better thing to write is $g \oplus_8 H = H \oplus_8 g$.)
+        \item There are 4 distinct left cosets of $H$ in $G$.
+        \begin{itemize}
+            \item $0 \oplus_8 H = \{0, 4\} = H$
+            \item $1 \oplus_8 H = \{1, 5\}$
+            \item $2 \oplus_8 H = \{2, 6\}$
+            \item $3 \oplus_8 H = \{3, 7\}$
+        \end{itemize}
+    \end{partquestions}
+
+    \item Let $x$ be in $g_1H \cap g_2H$. Then $x \in g_1H$ and $x \in g_2H$ simultaneously. Hence, $x = g_1h = g_2\hat{h}$ for some $h, \hat{h} \in H$. Thus, by rearrangement, $g_2^{-1}g_1 = \hat{h}h^{-1} \in H$. By Coset Equality (\myref{lemma-coset-equality}), statements 1 and 5, $g_1H = g_2H$.
+
+    \item Note that $|G| = 99$ and $|H| = 3$, so $[G:H] = \frac{99}{3} = 33$ by Lagrange's theorem.
+
+    \item Let $x \in G$ with $x \neq e$. Then $|x| > 1$. By \myref{corollary-order-of-group-multiple-of-order-of-element}, the order of $x$ is a factor of $|G| = p$. Since $p$ is prime, $|x| = 1$ (which is not possible) or $|x| = p$. Hence $|x| = p$.
+    
+    \item \begin{partquestions}{\roman*}
+        \item By \myref{prop-subgroup-of-abelian-group-is-normal} every subgroup of $G$ is normal. Hence $H$ is a normal subgroup of $G$, meaning $G/H$ is a quotient group by \myref{thrm-quotient-group-requirement}.
+        \item Let $g$ be the generator of $G$. Consider $xH \in G/H$. Since $x \in G$ and $G$ is cyclic, thus there exists an integer $k$ such that $x = g^k$. Hence, $xH = g^kH = (gH)^k$ which means that $gH$ generates any element in $G/H$. Therefore $gH$ is a generator of $G/H$, meaning $G/H$ is cyclic.
+    \end{partquestions}
+\end{questions}
+
+\section{Homomorphisms and Isomorphisms}
+\begin{questions}
+    \item \begin{partquestions}{\alph*}
+        \item No, since $\phi(m+n) = m + n$ while $\phi(m)\phi(n) = mn \neq m+n$.
+        \item Yes, since $\phi(m+n) = 2^{m+n} = 2^m2^n = \phi(m)\phi(n)$.
+    \end{partquestions}
+
+    \item Clearly $e_2 \in \phi(H_1)$ since $e_2 = \phi(e_1)$ and $e_1 \in H_1$. Now suppose $x$ and $y$ are in $\phi(H_1)$, meaning that $\phi(h_x) = x$ and $\phi(h_y) = y$ for some $h_x$ and $h_y$ in $H$. So $h_xh_y^{-1}$ is in $H$. Furthermore,
+    \begin{align*}
+        \phi(h_xh_y^{-1}) &= \phi(h_x)\phi(h_y^{-1})\\
+        &= \phi(h_x)\left(\phi(h_y)\right)^{-1}\\
+        &= xy^{-1},
+    \end{align*}
+    meaning that $xy^{-1}$ is in $\phi(H_1)$. Therefore, by subgroup test, $\phi(H_1) \leq G_2$.
+
+    \item Disprove. Let $G_1 = H_1 = \mathbb{Z}$ be the additive group of integers and let $G_2 = H_2 = D_n$, the dihedral group of order $2n$. Consider the map $\phi: G_1 \to G_2$ where $\phi(m) = s^m$. Clearly, $H_1 \unlhd G_1$. Note that $\phi(H_1) = \{e, s\} = \langle s \rangle$. From \myref{example-normal-subgroups-of-d3}, we know that $\langle s \rangle$ is not a normal subgroup of $D_3 = G_2$, so $\phi(H_1)$ is not a normal subgroup of $G_2$.
+
+    \item Suppose $|a| = n$. Note that
+    \[
+        \left(\phi(a)\right)^n = \phi\left(a^n\right) = \phi(e_G) = e_H
+    \]
+    so $|\phi(a)|$ divides $n = |a|$ by \myref{problem-element-to-power-of-multiple-of-order-is-identity}.
+
+    \item \begin{partquestions}{\roman*}
+        \item Since $3^0 = 1$, $3^1 = 3$, $3^2 = 9 \equiv 4 \pmod{5}$, and $3^3 = 27 \equiv 2 \pmod{5}$, thus $G = \langle 3 \rangle$. Since $7^0 = 1$, $7^1 = 7$, $7^2 = 49 \equiv 9 \pmod{10}$, and $7^3 = 343 \equiv 3 \pmod{10}$, thus $H = \langle 7 \rangle$.
+        \item We need to prove that it is a homomorphic bijection.
+        \begin{itemize}
+            \item \textbf{Homomorphism}:
+            \begin{align*}
+                \phi(3^m3^n) &= \phi(3^{m+n})\\
+                &= 7^{m+n}\\
+                &= 7^m7^n\\
+                &= \phi(3^m)\phi(3^n)
+            \end{align*}
+
+            \item \textbf{Bijection}: Note that $1 \mapsto 1$, $3 \mapsto 7$, $4 \mapsto 9$, $2 \mapsto 3$ which clearly shows that $\phi$ is bijective.
+        \end{itemize}
+        Therefore $\phi$ is an isomorphism, meaning $G \cong H$.
+    \end{partquestions}
+
+    \item Suppose $N \unlhd G$ such that $|N| = k$. Then $\phi(N)$ is a subgroup of $H$ with order $k$ by the theorem. All that remains to prove is that $\phi(N)$ is normal.
+
+    Let $n \in N$ and $\hat{n} \in \phi(N)$ such that $\hat{n} = \phi(n)$. Let $h \in H$ be an arbitrary element. To prove that $h\hat{n}h^{-1}$ is in $\phi(N)$.
+
+    Let $g$ be in $G$ such that $\phi(g) = h$. Then
+    \begin{align*}
+        h\hat{n}h^{-1} &= \phi(g)\phi(n)\phi(g^{-1})\\
+        &= \phi(\underbrace{gng^{-1}}_{\text{In } N})\\
+        &\in \phi(N)
+    \end{align*}
+    which proves that $\phi(N)$ is normal. Hence there exists a normal subgroup of order $k$, namely $\phi(N)$.
+
+    \item Since $7^0 = 1$, $7^1 = 7$, $7^2 = 49 \equiv 9 \pmod{10}$, and $7^3 = 343 \equiv 3 \pmod{10}$, thus $G = \langle 7 \rangle$. Note $|7| = 4$ so $G \cong \mathbb{Z}_4$, i.e. $n = 4$.
+\end{questions}
+
+\section{Cayley's Theorem}
+\begin{questions}
+    \item \begin{partquestions}{\alph*}
+        \item $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$
+        \item $\begin{pmatrix}1 & 3\end{pmatrix}$
+        \item $\begin{pmatrix}1 & 3\end{pmatrix}\begin{pmatrix}2 & 4 & 5\end{pmatrix}$
+    \end{partquestions}
+
+    \item This exercise can be solved in two ways.
+    \begin{enumerate}
+        \item Notice that
+        \[
+            \pi = \begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix} = \begin{pmatrix}1 & 5 & 3 & 4 \end{pmatrix}
+        \]
+        and so $\pi^{-1} = \begin{pmatrix}4 & 3 & 5 & 1\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5\end{pmatrix}$.
+        \item Using Shoes and Socks,
+        \begin{align*}
+            \pi^{-1} &= \left(\begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}\right)^{-1}\\
+            &= \begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} \begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1}.
+        \end{align*}
+        Now, $\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} = \begin{pmatrix}4 & 3 & 5 & 2\end{pmatrix} = \begin{pmatrix}2 & 4 & 3 & 5\end{pmatrix}$ and $\begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1} = \begin{pmatrix}2 & 5 & 1\end{pmatrix} = \begin{pmatrix}1 & 2 & 5\end{pmatrix}$. Therefore $\pi^{-1} = \begin{pmatrix}2 & 4 & 3 & 5\end{pmatrix}\begin{pmatrix}1 & 2 & 5\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5\end{pmatrix}$.
+    \end{enumerate}
+
+    \item To see why, consider the fact that elements of $\Sn{n}$ are permutations. Each element is only able to permute the elements of the set $X = \{1, 2, 3, \dots, n\}$. For a set of $n$ elements, there are $n!$ permutations. Thus, $|\Sn{n}| = n!$ since $\Sn{n}$ is the set of all permutations of $n$ letters.
+\end{questions}
+
+\section{Direct Products of Groups}
+\begin{questions}
+    \item We work component-wise:
+    \begin{align*}
+        (s, rs)(r^2s, r^3) &= (sr^2s, rsr^3)\\
+        &= (s(r^2s), r(sr^3))\\
+        &= (s(sr), r(rs))\\
+        &= ((ss)r, (rr)s)\\
+        &= (r, r^2s)
+    \end{align*}
+
+    \item Note that $180 = 2^2 \times 3^2 \times 5$. By \myref{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition}, we must have $mn = 180$ and $\gcd(m, n) = 1$. Thus, the valid pairs of $(m,n)$ are (4, 45), (5, 36), and (9, 20).
+
+    \item Note that $5 \otimes_{12} 7 = 11$. Hence $GH = \{1, 5, 7, 11\}$.
+
+    \item From above exercise, $GH = \mathcal{S}$. Now $G = \langle 5 \rangle \cong \mathbb{Z}_2$ and $H \langle 7 \rangle \cong \mathbb{Z}_2$. Thus, $\mathcal{S} = GH = \cong G \times H \cong \mathbb{Z}_2 \times \mathbb{Z}_2 = (\mathbb{Z}_2)^2$, meaning $n = 2$.
+\end{questions}
+
+\section{Further Properties of Homomorphisms}
+\begin{questions}
+    \item $\phi$ is a homomorphism since
+    \begin{align*}
+        \phi(a \oplus_3 b) &= 2(a\oplus_3 b)\\
+        &= (2a) \oplus_6 (2b)\\
+        &= \phi(a) \oplus_6 \phi(b).
+    \end{align*}
+    The image is $\{0, 2, 4\}$.
+
+    \item $\phi$ is a homomorphism since
+    \begin{align*}
+        \phi(a+b) &= i^{a+b}\\
+        &=i^ai^b\\
+        &=\phi(a)\phi(b).
+    \end{align*}
+    The kernel is the set of values which map to the identity of $H$, i.e. $\{n \in \mathbb{Z} \vert \phi(n) = 1\}$. Now note $H$ is a cyclic group and $|i| = 4$. Thus $i^4 = 1$. Furthermore $i^8 = (i^4)^2 = 1, i^{12} = 1, \dots, i^{4k} = 1$. Thus $\ker\phi = \{4n \vert n \in \mathbb{Z}\} = 4\mathbb{Z}$ (using coset notation).
+
+    \item We prove the forward direction first. Suppose that $\phi$ is injective. Clearly $\phi(e_G) = e_H$. Let $x$ be an element which is in the kernel of $\phi$, meaning $\phi(x) = e_H$. Then, $\phi(x) = \phi(e_G) = e_H$ which means $x = e_G$ by injectivity of $\phi$. Hence the kernel is trivial.
+
+    Now we prove the reverse direction. Suppose the kernel of $\phi$ is trivial, i.e. $\ker \phi = \{e_G\}$. Suppose now there exists elements $x$ and $y$ in $G$ such that $\phi(x) = \phi(y)$. This means that $(\phi(x))^{-1} = \phi(x^{-1}) = \phi(y^{-1}) = (\phi(y))^{-1}$. Hence,
+    \[
+        \phi(xy^{-1})
+        = \phi(x)\phi(y^{-1})
+        = \phi(x)\left(\phi(y)\right)^{-1}
+        = e_H.
+    \]
+    Now since the kernel is trivial, this must mean that $xy^{-1} = e_G$ which immediately leads $x=y$. Hence $\phi$ is injective.
+
+    \item Recall that $G / \ker \phi \cong \im \phi$ by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}). Furthermore, we note that $|G / \ker \phi| = \frac{|G|}{|\ker\phi|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Hence, $\frac{|G|}{|\ker\phi|} = |\im\phi|$ which leads to the result quickly.
+
+    \item The Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 6, states that $H / (H\cap N) \cong HN / N$. Taking orders on both sides yields $\frac{|H|}{|H \cap N|} = \frac{|HN|}{|N|}$. Rearranging yields required result.
+
+    \item \begin{partquestions}{\roman*}
+        \item Note $H = x\mathbb{Z} = \{ax \vert a \in \mathbb{Z}\}$ and $N = mx\mathbb{Z} = \{a(mx) \vert a \in \mathbb{Z}\}$, which necessarily means $N \subseteq H$.
+        \item Let $G = \mathbb{Z}$. Then both $H$ and $N$ are clearly subgroups of $G$. Now since $G$ is abelian (since addition is commutative), therefore $H$ and $N$ are normal by \myref{prop-subgroup-of-abelian-group-is-normal}.
+        \item The Third Isomorphism Theorem (\myref{thrm-isomorphism-3}) tells us that
+        \[
+            (G/N)/(H/N) \cong G/H.
+        \]
+        Now by \myref{problem-Zn-isomorphic-to-Z-by-nZ} we have $|G/H| = |\mathbb{Z}/(x\mathbb{Z})| = x$ and $|G/N| = |\mathbb{Z}/(y\mathbb{Z})| = y$. Hence
+        \[
+            \frac{x}{|H/N|} = y
+        \]
+        which quickly implies $|H/N| = \frac yx$.
+    \end{partquestions}
+\end{questions}
+
+\section{More Types of Groups}
+\begin{questions}
+    \item Let $G = \mathbb{Z}_{mn}$ and $H = \{0, n, 2n, \dots, (m-1)n\}$. Clearly $H$ is a subgroup of $G$ of order $m$. By \myref{problem-subgroup-of-cyclic-group-is-cyclic} we know $H$ is normal and cyclic with order $m$ and by \myref{exercise-quotient-group-of-cyclic-group-is-cyclic} we know $G/H$ is cyclic. The order of $G/H$ is $\frac{|G|}{|H|} = \frac{mn}{m} = n$ by Lagrange's Theorem (\myref{thrm-lagrange}), meaning that $G/H \cong \mathbb{Z}_n$. Hence, $\mathbb{Z}_{mn}/\mathbb{Z}_m \cong G/H \cong \mathbb{Z}_n$.
+    
+    \item Note 0 is the identity in $\mathbb{Z}_n$. By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity}, we know that if $12$ is equivalent to the identity in $\mathbb{Z}_n$, then $12 = mn$ for some integer $m$. Since $n > 0$ we restrict $m$ to positive integers. Now $12 = 2^2 \times 3$. Thus the possible cases are:
+    \begin{itemize}
+        \item $n = 1$ with $m = 12$;
+        \item $n = 2$ with $m = 6$;
+        \item $n = 3$ with $m = 4$;
+        \item $n = 4$ with $m = 3$;
+        \item $n = 6$ with $m = 2$; and
+        \item $n = 12$ with $m = 1$.
+    \end{itemize}
+
+    \item $|10| = \frac{210}{\gcd(10, 210)} = \frac{210}{10} = 21$, $|42| = \frac{210}{\gcd(42, 210)} = \frac{210}{42} = 5$, $|75| = \frac{210}{\gcd(75, 210)} = \frac{210}{15} = 14$, and $|140| = \frac{210}{\gcd(140, 210)} = \frac{210}{70} = 3$.
+
+    \item \begin{partquestions}{\alph*}
+        \item Note that $10 = 2 \times 5$. Generators of the group $\mathbb{Z}_n$ (which has order 10) has to satisfy $\gcd(m,n) = 1$ by \myref{corollary-element-in-cyclic-group-is-generator-iff-gcd-is-1}. The positive integers that satisfy this requirement (and which are less than 10) are 1, 3, 7, 9. Thus they are the generators of $\mathbb{Z}_{10}$.
+        \item Note that 101 is prime. Hence all positive integers from 1 to 100 (inclusive) are generators. (Note that 0 is not as 0 is the identity.)
+    \end{partquestions}
+
+    \item We show that all subgroups of $\mathrm{Q}$ are, in fact, normal. We consider the first definition of the quaternion group.
+    \begin{itemize}
+        \item Clearly $\{1\} \lhd \mathrm{Q}$ and $\mathrm{Q} \unlhd \mathrm{Q}$.
+        \item The subgroups $\langle i\rangle$, $\langle j\rangle$, and $\langle k\rangle$ have order 4. Therefore, Lagrange's Theorem (\myref{thrm-lagrange}) tells us that they have index 2. Hence these subgroups are normal by \myref{problem-subgroup-of-index-2}.
+        \item Consider the subgroup $\langle -1 \rangle = \{1, -1\}$. \begin{itemize}
+            \item $1\langle -1 \rangle = \langle -1 \rangle1$, since 1 is the identity;
+            \item $-1\langle -1 \rangle = \{1, -1\} = \langle -1 \rangle(-1)$;
+            \item $i\langle -1 \rangle = \{-i, i\} = \langle -1 \rangle i$;
+            \item $-i\langle -1 \rangle = \{i, -i\} = \langle -1 \rangle (-i)$;
+            \item $j\langle -1 \rangle = \{-j, j\} = \langle -1 \rangle j$;
+            \item $-j\langle -1 \rangle = \{j, -j\} = \langle -1 \rangle (-j)$;
+            \item $k\langle -1 \rangle = \{-k, k\} = \langle -1 \rangle k$; and
+            \item $-k\langle -1 \rangle = \{k, -k\} = \langle -1 \rangle (-k)$.
+        \end{itemize}
+        Thus $\langle -1 \rangle$ is normal.
+    \end{itemize}
+    Hence all subgroups of $\mathrm{Q}$ are normal.
+
+    \item (2 6) = (2 3)(3 4)(4 5)(5 6)(4 5)(3 4)(2 3).
+
+    \item Note that (1 3 2 5 4) = (1 4)(1 5)(1 2)(1 3). Thus by \myref{thrm-parity-of-permutation}, (1 3 2 5 4) is even and thus has a sign of $+1$.
+
+    \item Note that $\An{3}$ has order $\frac{3!}{2} = 3$ so we should expect 3 permutations. Clearly the identity is one such permutation. Looking at \myref{example-symmetric-group-of-degree-3} we can find two more: (1 2 3) and (1 3 2).
+
+    \item $\Un{10} = \{1, 3, 7, 9\}$.
+
+    \item By a corollary of Lagrange's Theorem (\myref{corollary-order-of-group-multiple-of-order-of-element}), the order of $a$ dives the order of the group $\Un{n}$. Now the order of $\Un{n} = \totient(n)$. Thus the order of $a$ divides $\totient(n)$.
+
+    \item The matrix product should be $\begin{pmatrix}2&1&2\\1&0&1\\2&1&2\end{pmatrix}$.
+
+    \item We already proved that $\Inn{G} \leq \Aut{G}$ so we only need to prove normality.
+
+    Let $\phi \in \Aut{G}$ and $\iota_g \in \Inn{G}$. For brevity let $f = \phi\iota_g\phi^{-1}$. We note that $f \in \Aut{G}$; we need to prove that $f \in \Inn{G}$.
+
+    Suppose $x \in G$ such that $w = \phi^{-1}(x)$ (as $\phi$ is an isomorphism, there exists a $w \in G$). Then
+    \begin{align*}
+        f(x) &= \left(\phi\iota_g\phi^{-1}\right)(x)\\
+        &= \phi(\iota_g(\phi^{-1}(x)))\\
+        &= \phi(\iota_g(w))\\
+        &= \phi(gwg^{-1})\\
+        &= \phi(g)\phi(w)\phi(g^{-1})\\
+        &= \phi(g)x\left(\phi(g)\right)^{-1}
+    \end{align*}
+    which shows that $f \in \Inn{G}$. Hence, $\Inn{G} \unlhd \Aut{G}$.
+\end{questions}
+
+\section{Group Actions}
+\begin{questions}
+    \item We prove the two group action axioms.
+    \begin{itemize}
+        \item \textbf{Identity}: $\alpha(e, x) = exe^{-1} = x$.
+        \item \textbf{Compatibility}: Note
+        \begin{align*}
+            \alpha(g, \alpha(h, x)) &= \alpha(g, hxh^{-1})\\
+            &= gh x h^{-1}g^{-1}\\
+            &= (gh)x(gh)^{-1}\\
+            &= \alpha(gh, x).
+        \end{align*}
+    \end{itemize}
+    Therefore $\alpha$ is a group action of $G$ on $G$.
+
+    \item Recall there are 6 elements in $\Sn{3}$: $\id$, $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$, $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 3\end{pmatrix}$, and $\begin{pmatrix}2 & 3\end{pmatrix}$. Clearly the identity has all elements of $X$ as fixed points. It is also clear that $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$ have no fixed points since they permute all elements. For the rest, the fixed points are the missing element from the cycle notation, i.e. $\begin{pmatrix}1 & 2\end{pmatrix}$ has fixed point 3, $\begin{pmatrix}1 & 3\end{pmatrix}$ has fixed point 2, and $\begin{pmatrix}2 & 3\end{pmatrix}$ has fixed point 1.
+
+    \item For 1, it is $\{\id, \begin{pmatrix}2 & 3\end{pmatrix}\}$. For 2, it is $\{\id, \begin{pmatrix}1 & 3\end{pmatrix}\}$. For 3, it is $\{\id, \begin{pmatrix}1 & 2\end{pmatrix}\}$.
+
+    \item We work from the statement forwards. Note that each of these statements are ``if and only if'' statements.
+    \begin{align*}
+	    g \cdot x = h \cdot x &\iff g^{-1} \cdot (g \cdot x) = g^{-1} \cdot (h \cdot x)\\
+	    &\iff (g^{-1}g) \cdot x = (g^{-1}h) \cdot x\\
+	    &\iff e \cdot x = (g^{-1}h) \cdot x\\
+	    &\iff x = (g^{-1}h) \cdot x\\
+	    &\iff (g^{-1}h) \cdot x = x\\
+	    &\iff g^{-1}h \in \Stab{G}{x}
+	\end{align*}
+
+	\item We prove the forward direction first: suppose the action is transitive. Then there exists $x \in X$ such that $\Orb{G}{x} = X$. Now consider any other element $y \in X$. Since the action is transitive, this means that there exists a $\hat{g} \in G$ such that $\hat{g} \cdot x = y$. Note that $\Orb{G}{y} = \Orb{G}{\hat{g} \cdot x}$, and that $\Orb{G}{x} = \{g \cdot x \vert g \in G\}$. Hence,
+	\[
+        \Orb{G}{\hat{g} \cdot x} = \{g\cdot (\hat{g} \cdot x) \vert g \in G\} = \{(g\hat{g}) \cdot x \vert g \in G\}.
+	\]
+	Since $G$ is a group, $g\hat{g} \in G$. In particular, we may pick $g = g'\hat{g}^{-1}$ to obtain any arbitrary element $g' \in G$. Thus, this means that
+	\[
+        	\{(g\hat{g}) \cdot x \vert g \in G\} = \{g' \cdot x \vert g' \in G \} = \Orb{G}{x} = X.
+	\]
+	Hence, for any element $y \in X$, $\Orb{G}{y} = \Orb{G}{g \cdot x} = X$.
+
+	The reverse direction is trivial: suppose $\Orb{G}{x} = X$ for all $x \in X$. Then certainly there exists an element $x \in X$ such that $\Orb{G}{x} = X$, meaning that the group action is transitive.
+
+	\item \begin{partquestions}{\alph*}
+	    \item Clearly $e \cdot x = x$, so $x \in \Orb{G}{x}$.
+	    \item Suppose $x \in \Orb{G}{x_1} \cap \Orb{G}{x_2}$ (as their intersection is non-empty). Then there exists $g_1, g_2 \in G$ such that $g_1\cdot x_1 = x = g_2\cdot x_2$. Thus,
+	    \begin{align*}
+	        x_1 &= e \cdot x_1\\
+	        &= (g_1^{-1}g_1)\cdot x_1\\
+	        &= g_1^{-1} \cdot (g_1 \cdot x_1)\\
+	        &= g_1^{-1} \cdot (g_2 \cdot x_2)\\
+	        &= (g_1^{-1}g_2) \cdot x_2.
+	    \end{align*}
+	    Now suppose $y \in \Orb{G}{x_1}$. Then $y = g\cdot x_1$ for some $g \in G$. Hence,
+	    \begin{align*}
+	        y &= g\cdot x_1 \\
+	        &= g \cdot \left((g_1^{-1}g_2) \cdot x_2\right)\\
+	        &= (\underbrace{gg_1^{-1}g_2}_{\text{In } G})\cdot x_2\\
+	        &\in \Orb{G}{x_2}
+	    \end{align*}
+	    which means that any element in $\Orb{G}{x_1}$ is also in $\Orb{G}{x_2}$. Hence, $\Orb{G}{x_1} \subseteq \Orb{G}{x_2}$. A similar argument can be used to show that $\Orb{G}{x_2} \subseteq \Orb{G}{x_1}$. Hence $\Orb{G}{x_1} = \Orb{G}{x_2}$.
+	\end{partquestions}
+
+	\item \begin{partquestions}{\alph*}
+	    \item Consider $x = n$. The orbit of $n$ is all of $X$. Consider the permutation $\sigma = \begin{pmatrix}k & n\end{pmatrix}$ where $1 \leq k \leq n$. Clearly $\sigma \in \Sn{n}$. Note that $\sigma \cdot n = \sigma(n) = k$. Thus, $\Orb{G}{n} = X$, meaning that the group action ``$\cdot$'' given by $g \cdot x \mapsto g(x)$ is transitive.
+	    \item Note that $|X| = n$ and $|\Sn{n}| = n!$. By Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), the stabilizer of $x$ by $G$ must have order $\frac{n!}{n} = (n-1)!$.
+	\end{partquestions}
+
+	\item By the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}),
+	\[
+        |\Orb{G}{x}| = \frac{|G|}{|\Stab{G}{x}|} = [G : \Stab{G}{x}]	.
+	\]
+	Under the group action of conjugation, $\Orb{G}{x} = \Cl{x}$ and $\Stab{G}{x} = \C{G}{x}$. Hence, $|\Cl{x}| = [G : \C{G}{x}]$ as required.
+
+	\item \begin{partquestions}{\alph*}
+	    \item One sees that $\Z{D_3} = \{e\}$ based on the group table of $D_3$.
+	    \item Recall that every element in $D_3$ can be expressed in the form $r^as^b$ where $a \in \{0, 1, 2\}$ and $b \in \{0, 1\}$. One finds that $\Cl{r} = \{r, r^2\}$ and $\Cl{s} = \{s, rs, rs^2\}$.
+	    \item The class equation is $6 = 1 + 2 + 3$.
+	\end{partquestions}
+
+	\item By Cauchy's Theorem (\myref{thrm-cauchy}) there exists an element (say $x$) with order $p$. Consider $H = \langle x \rangle$. Note that $|H| = p$ and $H \leq G$. Hence we found a subgroup of $G$ of order $p$.
+\end{questions}
+
+\section{Sylow Theorems}
+\begin{questions}
+    \item We note that $12 = 2^2 \times 3$. Thus a Sylow 2-subgroup must have order 4. Clearly $|3| = 4$ so $\langle 3 \rangle = \{0, 3, 6, 9\}$ is the Sylow 2-subgroup of $\mathbb{Z}_{12}$.
+
+    \item Recall that $|\Sn{5}| = 120 = 2^3 \times 3 \times 5$. By the First Sylow Theorem (\myref{thrm-sylow-1}), $\Syl{p}{G} \neq \emptyset$ if $p$ is 2, 3, or 5.
+
+    \item We prove this by constructing the map $\phi: H \to gHg^{-1}$ where $h \mapsto ghg^{-1}$. We note that $\phi$ is an isomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $x, y \in H$. Then
+        \[
+            \phi(xy) = g(xy)g^{-1} = (gxg^{-1})(gyg^{-1}) = \phi(x)\phi(y)
+        \]
+        which clearly means that $\phi$ is an isomorphism.
+        \item \textbf{Injective}: Suppose $x, y \in H$ such that $\phi(x) = \phi(y)$. Then $gxg^{-1} = gyg^{-1}$ which quickly implies $x = y$ by cancellation law.
+        \item \textbf{Surjective}: Suppose $ghg^{-1} \in gHg^{-1}$. Clearly we have $\phi(h) = ghg^{-1}$, so any element in $gHg^{-1}$ has a pre-image inside $H$.
+    \end{itemize}
+    Hence $H \cong gHg^{-1}$.
+
+    \item By \myref{prop-order-of-conjugate-element-equals-order-of-element} we know that $|xyx^{-1}| = |y|$ for all $x, y \in G$. Substituting $x = g$, and $y = hg$ yields
+    \[
+        |xyx^{-1}| = |gh gg^{-1}| = |gh| \text{ and } |y| = |hg|
+    \]
+    so the result follows.
+
+    \item Clearly $e \in \N{G}{S}$ since $eSe^{-1} = S$. Consider $x, y \in \N{G}{S}$, meaning that $xSx^{-1} = S$ and $ySy^{-1} = S$. Note that $y^{-1} \in \N{G}{S}$ since
+    \begin{align*}
+        y^{-1}S\left(y^{-1}\right)^{-1} &= y^{-1}Sy\\
+        &= y^{-1}\left(ySy^{-1}\right)y & (y \in \N{G}{S})\\
+        &= (y^{-1}y)S(y^{-1}y)\\
+        &= S.
+    \end{align*}
+    Therefore
+    \begin{align*}
+        \left(xy^{-1}\right)S\left(xy^{-1}\right)^{-1} &= \left(xy^{-1}\right)S\left(yx^{-1}\right)\\
+        &= x\left(y^{-1}Sy\right)x^{-1}\\
+        &= xSx^{-1} & (y^{-1} \in \N{G}{S})\\
+        &= S & (x \in \N{G}{S})
+    \end{align*}
+    which means that $xy^{-1} \in \N{G}{S}$. Hence, by the subgroup test, we have $\N{G}{S} \leq G$.
+
+    \item By the Second Sylow Theorem (\myref{thrm-sylow-2}), we know that $gHg^{-1} = K$. Since $H \cong gHg^{-1}$ by \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup} thus $H \cong gHg^{-1} = K$ as required.
+
+    \item We note $784 = 2^4 \times 7^2$, so $m = 16$, $p = 7$, and $k = 2$. By the Third Sylow Theorem (\myref{thrm-sylow-3}), we know that
+    \begin{itemize}
+        \item $n_7 = [G : \N{G}{P}] = \frac{|G|}{|\N{G}{P}|}$;
+        \item $n_7 \mid 16$, which implies $n_7 \in \{1, 2, 4, 8, 16\}$; and
+        \item $n_7 \equiv 1 \pmod 7$, which implies $n_7 \in \{1, 8, 15, 22, \dots\}$.
+    \end{itemize}
+    Hence $n_7 = 1$ or $n_7 = 8$. But since $P$ is not a normal subgroup of $G$, by \myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}, $P$ cannot be the only Sylow 7-subgroup, meaning $n_7 \neq 1$. Hence $n_7 = 8$, so
+    \[
+        8 = n_7 = \frac{|G|}{|\N{G}{P}|} = \frac{784}{|\N{G}{P}|}
+    \]
+    which means that $|\N{G}{P}| = 98$.
+
+    \item Note $130 = 2 \times 5 \times 13$. Consider the number of Sylow 13-subgroups, $n_{13}$. The Third Sylow Theorem (\myref{thrm-sylow-3}) tells us that
+    \begin{itemize}
+        \item $n_{13} \mid 2 \times 5 = 10$, so $n_{13} \in \{1, 2, 5, 10\}$, and
+        \item $n_{13} \equiv 1 \pmod{13}$ so $n_{13} \in \{1, 14, 27, \dots\}$.
+    \end{itemize}
+    Hence $n_{13} = 1$. But by \myref{corollary-sylow-subgroup-is-normal-if-it-is-unique} this means that the only Sylow 13-subgroup is normal. Hence a group of order 130 is non-simple.
+\end{questions}
+
+\section{Composition Series}
+\begin{questions}
+    \item \begin{partquestions}{\roman*}
+        \item One sees clearly that $\{0, 2\}$ is the only proper normal subgroup of $G$, so the subnormal series of length 2 is $1 \lhd \{0, 2\} \lhd G$.
+        \item There are 2 factors of the above subnormal series. The first is $\{0, 2\} / 1 = \{0, 2\} \cong \mathbb{Z}_2$ and the second is
+        \begin{align*}
+            G / \{0, 2\} &= \{g \oplus_4 \{0, 2\} \vert g \in G\}\\
+            &= \{\{0, 2\}, \{1, 3\}, \{2, 0\}, \{3, 1\}\}\\
+            &= \{\{0, 2\}, \{1, 3\}\}\\
+            &= \langle \{1, 3\} \rangle\\
+            &\cong \mathbb{Z}_2.
+        \end{align*}
+        \item Since $1 \lhd G$ and $\{0, 2\} \lhd G$ thus the subnormal series in \textbf{(i)} is also a normal series of $G$.
+    \end{partquestions}
+    
+    \item By Lagrange's Theorem (\myref{thrm-lagrange}) the order of a subgroup must divide the order of the group. Furthermore $\mathbb{Z}_{120}$ is abelian, so any subgroup of it is normal. Now the subgroup $N = \{0, 2, 4, \dots, 118\}$ has 60 elements which is the maximum possible guaranteed by Lagrange. Hence $N$ is the maximal normal subgroup of $\mathbb{Z}_{120}$, which has order 60.
+    
+    \item $\Cn{6}$ has these two composition series up to isomorphism
+    \begin{align*}
+        &1 \lhd \Cn{2} \lhd \Cn{6} \text{ and }\\
+        &1 \lhd \Cn{3} \lhd \Cn{6}.
+    \end{align*}
+    In both cases, their composition length is 2. Their respective composition factors are:
+    \begin{itemize}
+        \item $\Cn{2} / 1 \cong \Cn{2}$ and $\Cn{6} / \Cn{2} \cong \Cn{3}$ by \myref{exercise-Zmn-mod-Zn-cong-Zn}; and
+        \item $\Cn{3} / 1 \cong \Cn{3}$ and $\Cn{6} / \Cn{3} \cong \Cn{2}$ by \myref{exercise-Zmn-mod-Zn-cong-Zn},
+    \end{itemize}
+    up to isomorphism.
+    
+    \item Let the group in question be $G$. We know by Cauchy's Theorem (\myref{thrm-cauchy}) and \myref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}, and by writing $p^2$ as $p \times p$, that $G$ has a subgroup of order $p$ (call this $H$).
+    
+    Lagrange's Theorem (\myref{thrm-lagrange}) tells us that the possible orders of the subgroups of $G$ are 1, $p$, and $p^2$. These subgroups are $\{e\}$, $H$, and $G$ respectively. Furthermore, by \myref{problem-group-of-order-prime-squared-is-abelian}, $G$ must be abelian, thereby its subgroups are all normal (\myref{prop-subgroup-of-abelian-group-is-normal}). Finally, a corollary of Lagrange's Theorem (\myref{corollary-group-with-prime-order-subgroups}) says that the only subgroups of $H$ are the trivial group and the group itself. Hence, $G$ has only one composition series, namely $1 \lhd H \lhd G$.
+\end{questions}
+
+\section{Simple Groups}
+\begin{questions}
+    \item We find the number of Sylow 2- and Sylow 3-subgroups (denoted $n_2$ and $n_3$ respectively) of the group of order 12 (call it $G$) using the Third Sylow Theorem (\myref{thrm-sylow-3}):
+    \begin{itemize}
+        \item For $n_2$, note $12 = 2^2 \times 3$. So,
+        \begin{itemize}
+            \item $3 \vert n_2$ meaning $n_2 \in \{1, 3\}$; and
+            \item $n_2 \equiv 1 \pmod 2$ meaning $n_2 \in \{1, 3, 5, \dots\}$.
+        \end{itemize}
+        Hence $n_2 = 1$ or $n_2 = 3$.
+
+        \item For $n_3$, note $12 = 3 \times 2^2$. So,
+        \begin{itemize}
+            \item $4 \vert n_3$ meaning $n_3 \in \{1, 2, 4\}$; and
+            \item $n_3 \equiv 1 \pmod 3$ meaning $n_3 \in \{1, 4, 7, \dots\}$.
+        \end{itemize}
+        Hence $n_3 = 1$ or $n_3 = 4$.
+    \end{itemize}
+
+    Now by way of contradiction suppose both $n_2$ and $n_3$ are not 1. Thus $n_2 = 3$ and $n_3 = 4$. We consider the number of elements of a certain order.
+    \begin{itemize}
+        \item Number of elements with order 2 or 4 is $3(4-1) = 9$, since each of the 3 Sylow 2-subgroups has 4 elements, 1 of which is the identity.
+        \item Number of elements with order 3 is $4(3-1) = 8$, since each of the 4 Sylow 3-subgroups has 3 elements, 1 of which is the identity.
+    \end{itemize}
+    Therefore, the number of elements in $G$ must be at least $9 + 8 = 17 > 12$, a contradiction.
+
+    Thus, at least one of $n_2$ and $n_3$ must be 1, meaning that there must exist a normal subgroup of order 4 or 3 (or both) by \myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}.
+
+    \item \begin{partquestions}{\alph*}
+        \item Note $15 = 3 \times 5$, so \myref{problem-group-of-order-pq-has-normal-subgroup-of-order-q} means that there exists a unique (and hence normal) subgroup of order 5.
+        \item Note $20 = 2^2 \times 5$. Then the Third Sylow Theorem (\myref{thrm-sylow-3}) tells us that
+        \begin{itemize}
+            \item $2^2 \vert n_5$, so $n_5 \in \{1, 2, 4\}$; and
+            \item $n_5 \equiv 1 \pmod 5$, so $n_5 \in \{1, 6, 11, 16, \dots\}$.
+        \end{itemize}
+        Hence $n_5 = 1$, so there exists a unique (and hence normal) subgroup of order 5.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\alph*}
+        \item Note that $\sigma = \begin{pmatrix}1&3\end{pmatrix}\begin{pmatrix}2&3\end{pmatrix}\begin{pmatrix}2&4\end{pmatrix}\begin{pmatrix}4&5\end{pmatrix}$, so $\sigma$ is an even permutation (\myref{thrm-parity-of-permutation}), and since the highest integer that appears in $\sigma$ is 5, thus $\sigma \in \An5$.
+
+        \item Observe that
+        \begin{itemize}
+            \item $\sigma^0 = \id$;
+            \item $\sigma^1 = \sigma \neq \id$;
+            \item $\sigma^2 = \begin{pmatrix}1&2&5&3&4\end{pmatrix} \neq \id$;
+            \item $\sigma^3 = \begin{pmatrix}1&4&3&5&2\end{pmatrix} \neq \id$;
+            \item $\sigma^4 = \begin{pmatrix}1&5&4&2&3\end{pmatrix} \neq \id$; and
+            \item $\sigma^5 = \id$.
+        \end{itemize}
+        Hence the order of $\langle \sigma \rangle$ is 5 since that cyclic subgroup contains 5 distinct elements.
+
+        \item Consider the other permutation $\pi = \begin{pmatrix}1&2&3&4&5\end{pmatrix}$. We note $\pi = \begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}2&3\end{pmatrix}\begin{pmatrix}3&4\end{pmatrix}\begin{pmatrix}4&5\end{pmatrix} \in \An5$. Also,
+        \begin{itemize}
+            \item $\pi^0 = \id$;
+            \item $\pi^1 = \pi \neq \id$;
+            \item $\pi^2 = \begin{pmatrix}1&3&5&2&4\end{pmatrix} \neq \id$;
+            \item $\pi^3 = \begin{pmatrix}1&4&2&5&3\end{pmatrix} \neq \id$;
+            \item $\pi^4 = \begin{pmatrix}1&5&4&3&2\end{pmatrix} \neq \id$; and
+            \item $\pi^5 = \id$,
+        \end{itemize}
+        meaning $|\langle \pi \rangle| = 5$ with $\langle \pi \rangle \neq \langle \sigma \rangle$, so we have found another subgroup of $\An5$.
+    \end{partquestions}
+
+    \item Note that $\sigma \in G$, and
+    \begin{align*}
+        \sigma\Stab{G}{x}\sigma^{-1} &= \{\underbrace{\sigma\pi\sigma^{-1}}_{\text{Set as }\pi'} \vertalt \pi \in G,\; \pi(x) = x\}\\
+        &= \{\pi' \vertalt \underbrace{\sigma^{-1}\pi'\sigma \in G}_{\text{True if } \pi' \in G},\; \sigma^{-1}\pi'\sigma(x) = x\}\\
+        &= \{\pi' \vert \pi' \in G,\; \sigma^{-1}\pi'(\sigma(x)) = x\}\\
+        &= \{\pi' \vert \pi' \in G,\; \pi'(\sigma(x)) = \sigma(x)\}\\
+        &= \{\pi \vert \pi \in G,\; \pi(\sigma(x)) = \sigma(x)\}\\
+        &= \Stab{G}{\sigma(x)}
+    \end{align*}
+    which proves the claim.
+
+    \item Observe that if $\sigma(i) = j$, then we must have
+    \[
+        \pi\sigma\pi^{-1}(\pi(i)) = \pi\sigma(i) = \pi(j).  
+    \]
+    Thus if the ordered pair $(i, j)$ appears in the cycle decomposition of $\sigma$, then the ordered pair $(\pi(i), \pi(j))$ appears in the cycle decomposition of $\pi\sigma\pi^{-1}$, completing the proof of the claim.
+\end{questions}
