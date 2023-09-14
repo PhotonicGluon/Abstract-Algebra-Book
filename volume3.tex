@@ -40,14 +40,32 @@
     \end{itemize}
 }
 
+%==== Include only relevant chapters =====
+\IfFileExists{\jobname.run.xml}
+{
+    \includeonly{
+        front-matter,
+        % Main chapters
+        % TODO Add
+        % Appendices
+        volume3/exercise-solutions,
+        volume3/problem-solutions,
+        volume3/appendices
+    }
+}
+{
+    % Do a full document initially to generate all the aux files
+}
+
 %=========================================
 \begin{document}
-\frontmatterpages  % Use lowercase roman numerals for page numbers
+\frontmatter  % Use lowercase roman numerals for page numbers
+\include{front-matter}
 
-%=========================================
+\mainmatter  % Now use arabic numerals for page numbers
 \chapter{Introduction to Fields}
+TODO Add
 
-%=========================================
 \appendix
 \include{volume3/exercise-solutions}
 \include{volume3/problem-solutions}

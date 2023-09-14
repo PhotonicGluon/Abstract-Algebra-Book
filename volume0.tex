@@ -48,6 +48,7 @@
 \IfFileExists{\jobname.run.xml}
 {
     \includeonly{
+        front-matter,
         % Main chapters
         volume0/sets,
         volume0/functions,
@@ -66,9 +67,11 @@
 
 %=========================================
 \begin{document}
-\frontmatterpages
 
-%=========================================
+\frontmatter  % Use lowercase roman numerals for page numbers
+\include{front-matter}
+
+\mainmatter  % Now use arabic numerals for page numbers
 \include{volume0/sets}
 \include{volume0/functions}
 \include{volume0/proofs}
@@ -76,9 +79,8 @@
 \include{volume0/modular-arithmetic}
 \include{volume0/polynomials}
 
-%=========================================
 \appendix
 \include{volume0/exercise-solutions}
-
 \include{volume0/appendices}
+
 \end{document}

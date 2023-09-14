@@ -74,6 +74,7 @@
 \IfFileExists{\jobname.run.xml}
 {
     \includeonly{
+        front-matter,
         % Main chapters
         volume1/introduction-to-groups,
         volume1/basics-of-groups,
@@ -99,9 +100,10 @@
 
 %=========================================
 \begin{document}
-\frontmatterpages
+\frontmatter  % Use lowercase roman numerals for page numbers
+\include{front-matter}
 
-%=========================================
+\mainmatter  % Now use arabic numerals for page numbers
 \include{volume1/introduction-to-groups}
 \include{volume1/basics-of-groups}
 \include{volume1/subgroups}
@@ -115,7 +117,6 @@
 \include{volume1/composition-series}
 \include{volume1/simple-groups}
 
-%=========================================
 \appendix
 \include{volume1/exercise-solutions}
 \include{volume1/problem-solutions}

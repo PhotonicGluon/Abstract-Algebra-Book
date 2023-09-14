@@ -61,6 +61,7 @@
 \IfFileExists{\jobname.run.xml}
 {
     \includeonly{
+        front-matter,
         % Main chapters
         volume2/intro-to-rings,
         volume2/basics-of-rings,
@@ -80,9 +81,10 @@
 
 %=========================================
 \begin{document}
-\frontmatterpages
+\frontmatter  % Use lowercase roman numerals for page numbers
+\include{front-matter}
 
-%=========================================
+\mainmatter  % Now use arabic numerals for page numbers
 \include{volume2/intro-to-rings}
 \include{volume2/basics-of-rings}
 \include{volume2/integral-domains}
@@ -90,7 +92,6 @@
 \include{volume2/ring-homomorphisms}
 \include{volume2/polynomial-rings}
 
-%=========================================
 \appendix
 \include{volume2/exercise-solutions}
 \include{volume2/problem-solutions}
