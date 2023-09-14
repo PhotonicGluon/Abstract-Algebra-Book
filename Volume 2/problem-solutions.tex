@@ -1,0 +1,767 @@
+\chapter{Problem Solutions}
+\section{Introduction to Rings}
+No problems.
+
+\section{Basics of Rings}
+\begin{questions}
+    \item Since $u$ is a unit, thus $u^{-1}$ exists. Consider the element $(-u)(-u^{-1})$. We know from an earlier proposition that this equals $uu^{-1} = 1$. Similarly, $(-u^{-1})(-u) = 1$. Hence $-u$ is a unit.
+
+    \item Suppose $R$ is a ring where 0 = 1, and let $x \in R$. Then
+    \begin{align*}
+        x &= 1x & (1 \text{ is the multiplicative identity})\\
+        &= 0x & (0 = 1)\\
+        &= 0 & (0x = 0 \text{ for all }x)
+    \end{align*}
+    which means that $R$ only contains one element, namely the identity 0. Hence the trivial ring is the unique ring where 0 = 1.
+
+    \item Since $(R, \ast, \ast)$ is a ring, we know that $(R, \ast)$ is an abelian group and that $a \ast(b\ast c) = (a \ast b) \ast (a \ast c)$ for all $a, b, c \in R$ (left distribution). Consider an element $x \in R$. Thus we must have
+    \[
+        x \ast (x \ast x) = (x \ast x) \ast (x \ast x)    
+    \]
+    which means $x^3 = x^4$. Since $(R, \ast)$ is a group, thus $x^{-3}$ exists. Applying that on both sides means $x = e$ where $e$ is the identity. Therefore, $R$ contains only one element, the identity, which means that $(R, \ast, \ast)$ is actually the trivial ring.
+
+    \item By way of contradiction assume that the element $x$ is both a zero divisor and a unit. Since $x$ is a zero divisor, we know $x \neq 0$ and there exists a non-zero $y \in R$ such that $xy = 0$. Since $x$ is a unit, thus $x^{-1}$ exists such that $xx^{-1} = x^{-1}x = 1$. However we note that
+    \begin{align*}
+        y &= (x^{-1}x)y & (\text{as }x^{-1}x = 1)\\
+        &= x^{-1}(xy) & (\text{associativity})\\
+        &= x^{-1}0 & (\text{as }x \text{ is a zero divisor})\\
+        &= 0
+    \end{align*}
+    which contradicts the fact that $y \neq 0$. Therefore it is impossible for an element to be both a zero divisor and a unit.
+
+    \item \begin{partquestions}{\roman*}
+        \item Let $1 + x + \cdots + x^n = y$, which is an element of $R$ since $R$ is closed under addition and multiplication. Note $xy = x + x^2 + \cdots + x^n + x^{n+1}$ and $yx = x + x^2 + \cdots + x^n + x^{n+1}$ as well. Thus we have $1 - x^{n+1} = y - xy = y - yx$ and $x^{n+1} = xy - y = yx - y$, so
+        \[
+            (1-x)^{-1}(1-x^{n+1}) = (1-x^{n+1})(1-x)^{-1} = y
+        \]
+        and
+        \[
+            (x-1)^{-1}(x^{n+1}-1) = (x^{n+1}-1)(x-1)^{-1} = y
+        \]
+        which are the four closed forms that we require.
+        \item The condition is that either $1-x$ is a unit or $x-1$ is a unit in $R$, i.e. $(1-x)^{-1}$ or $(x-1)^{-1}$ exists.
+        \item $112 = 1$ in $\Z_{37}$ since $112 = 37\times3 + 1$.
+        \item Let $x = 2^3 = 8$. Note $(x-1)^{-1} = (8-1)^{-1} = 7^{-1} = 16$ by \textbf{(iii)}. Thus
+        \[
+            1+2+\cdots+2^{72} = (8-1)^{-1}(8^{25}-1) = 16(8^{25}-1).
+        \]
+        We also see that
+        \begin{align*}
+            8^{25}-1 &= \left(8^{5}\right)^{5} - 1\\
+            &= 32768^5 - 1\\
+            &= (37\times885 + 23)^5 - 1\\
+            &= (23)^5 - 1\\
+            &= 6436342\\
+            &= 37\times173955 + 7\\
+            &= 7
+        \end{align*}
+        which means $1+2^3+\cdots+2^{72} = 16 \times 7 = 112 = 1$.
+    \end{partquestions}
+
+    \item For brevity let $R = \Q[\sqrt2]$. We first show that $(R,+)$ is an abelian group.
+    \begin{itemize}
+        \item \textbf{Closure}: Take $a+b\sqrt2, c+d\sqrt2 \in R$. Clearly
+        \[
+            (a+b\sqrt2) + (c+d\sqrt2) = (a+c) + (b+d)\sqrt2 \in R
+        \]
+        which means that $R$ is closed under addition.
+        \item \textbf{Associativity}: + is associative.
+        \item \textbf{Identity}: The identity is $0 = 0 + 0\sqrt2$.
+        \item \textbf{Inverse}: The inverse of $a+b\sqrt2 \in R$ is $(-a) + (-b)\sqrt2$ which is in $R$.
+        \item \textbf{Commutative}: + is commutative.
+    \end{itemize}
+    Hence $(R, +)$ is an abelian group.
+
+    Now we show that $(R, \cdot)$ is a semigroup.
+    \begin{itemize}
+        \item \textbf{Closure}: Take $a+b\sqrt2, c+d\sqrt2 \in R$. Then
+        \begin{align*}
+            (a+b\sqrt2)(c+d\sqrt2) &= ac + ad\sqrt2 + bc\sqrt2 + 2bd\\
+            &= (ac+2bd) + (ad+bc)\sqrt2\\
+            &\in R.
+        \end{align*}
+        \item \textbf{Associative}: $\cdot$ is associative.
+    \end{itemize}
+    So $(R, \cdot)$ is an abelian group.
+
+    Clearly $+$ and $\cdot$ distribute, so we have shown that $R$ is in fact a ring.
+
+    Furthermore,
+    \begin{itemize}
+        \item $\cdot$ is commutative, meaning that $R$ is a commutative ring;
+        \item $1 = 1 + 0\sqrt2 \in R$ is the multiplicative identity, so $R$ is a ring with identity; and
+        \item for any non-zero element $a+b\sqrt2$ we have its multiplicative inverse as
+        \begin{align*}
+            \frac{1}{a+b\sqrt2} &= \frac{a-b\sqrt2}{(a-b\sqrt2)(a+b\sqrt2)}\\
+            &= \frac{a-b\sqrt2}{a^2-2b}\\
+            &= \frac{a}{a^2-2b} + \left(-\frac{b}{a^2-2b}\right)\sqrt2\\
+            &\in R.
+        \end{align*}
+    \end{itemize}
+    Therefore $R$ is a field.
+
+    \item \begin{partquestions}{\roman*}
+        \item Suppose $R$ has an identity $E = \begin{pmatrix}e_1&e_2\\0&0\end{pmatrix}$. Take any matrix $M = \begin{pmatrix}a&b\\0&0\end{pmatrix} \in R$, so we must have $ME = EM = M$.
+        \begin{itemize}
+            \item Note $EM = \begin{pmatrix}e_1&e_2\\0&0\end{pmatrix}\begin{pmatrix}a&b\\0&0\end{pmatrix} = \begin{pmatrix}e_1a&e_1b\\0&0\end{pmatrix}$.
+            \item Also, $ME = \begin{pmatrix}a&b\\0&0\end{pmatrix}\begin{pmatrix}e_1&e_2\\0&0\end{pmatrix} = \begin{pmatrix}ae_1&ae_2\\0&0\end{pmatrix}$.
+        \end{itemize}
+        Now as $EM = M$ we must have $e_1 = 1$. But as $ME = M$ this means that
+        \[
+            \begin{pmatrix}a&ae_2\\0&0\end{pmatrix} = \begin{pmatrix}a&b\\0&0\end{pmatrix}
+        \]
+        which implies that $ae_2 = b$, hence meaning $e_2 = \frac{b}{a}$ which is not a constant. Hence there does not exist a fixed identity $E$ in $R$.
+
+        \item Consider the subset
+        \[
+            S = \left\{\begin{pmatrix}a&0\\0&0\end{pmatrix} \vert a \in \R\right\}
+        \]
+        of $R$. We first show that $S$ is a subring of $R$. Clearly $(S, +) \leq (R, +)$ so we only show that $S$ is closed under matrix multiplication.
+        \[
+            \begin{pmatrix}a&0\\0&0\end{pmatrix}\begin{pmatrix}b&0\\0&0\end{pmatrix} = \begin{pmatrix}ab&0\\0&0\end{pmatrix} \in S.
+        \]
+
+        One sees clearly based on the above calculation that $\begin{pmatrix}1&0\\0&0\end{pmatrix}$ is the identity in $S$. Hence $S$ is a subring of $R$ with identity.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
+        \item Consider $(r+r)^2$. CLearly $(r+r)^2 = r+r$ by definition of a Boolean ring. On the other hand, one may expand $(r+r)^2$ to yield
+        \begin{align*}
+            (r+r)^2 &= r^2 + r^2 + r^2 + r^2 \\
+            &= r + r + r + r & (r^2 = r \text{ for all }r \in R)
+        \end{align*}
+        which means $r+r = r+r+r+r$. Thus $r+r = 0$ which hence means $r=-r$.
+
+        \item Let $x,y\in R$. Then
+        \begin{align*}
+            x+y &= (x+y)^2 & (r = r^2 \text{ for all }r \in R)\\
+            &= x^2 + xy + yx + y^2\\
+            &= x + xy + yx + y. & (r = r^2 \text{ for all }r \in R)
+        \end{align*}
+        Subtracting $x+y$ on both sides yields $xy +yx = 0$. Hence $xy = -yx$ which means $xy = yx$ by \textbf{(i)}. Therefore every Boolean ring is commutative.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
+        \item Let $u$ and $v$ be units, meaning that $u^{-1}$ and $v^{-1}$ exist. Then one sees that $(uv)(v^{-1}u^{-1}) = (v^{-1}u^{-1})(uv) = 1$, which means that $uv$ is also a unit.
+        
+        \item Let $n$ be a positive integer such that $x^n = 0$. Then
+        \begin{align*}
+            (ux)^n &= u^nx^n & (R\text{ is commutative})\\
+            &= u^n0 & (x \text{ is nilpotent})\\
+            &= 0
+        \end{align*}
+        which means that $ux$ is also nilpotent.
+
+        \item One sees that $1-x$ is a unit as
+        \[
+            (1-x)(1+x+x^2+x^3+\cdots+x^{n-1}) = 1.    
+        \]
+        Now we write
+        \begin{align*}
+            u-x &= u(1-xu^{-1}) & (u \text{ is a unit})\\
+            &= u(1-u^{-1}x). & (R \text{ is commutative})
+        \end{align*}
+        Note that $u^{-1}$ is a unit, so by \textbf{(ii)} we know that $u^{-1}x$ is nilpotent. By the above argument this means that $1-u^{-1}x$ is a unit. Finally, since both $u$ and $1-u^{-1}x$ are units, this means that $u-x = u(1-u^{-1}x)$ is a unit by \textbf{(i)}.
+    \end{partquestions}
+\end{questions}
+
+\section{Integral Domains}
+\begin{questions}
+    \item To find a $a+bi \in \Z_5[i]$ such that there exists a $c+di \in \Z_5[i]$ where $(a+bi)(c+di) = 0$ but both $a+bi$ and $c+di$ are non-zero. Expanding $(a+bi)(c+di)$ yields $(ac-bd)+(ad+bc)i = 0$. Therefore we must have $ac-bd = 0$ and $ad+bc = 0$. For simplicity let's choose $a=c=1$. Using second equation we have $d+b = 0$ which means $d = -b$. Hence $(1 - b(-b))+(-b + b)i = 1+b^2 = 0$. Therefore choosing $b = 2$ would make it work. Therefore one solution is $a = 1, b = 2, c = 1, d = -2 = 3$; i.e. two zero divisors are $1+2i$ and $1+3i$.
+    
+    \item Take $w, z \in \Z[i]$ such that $w \neq 0$ and $wz = 0$. We want to show that $z = 0$. Let $z = a+bi$ and $w = c+di$. Since $w \neq 0$ we must have $c^2+d^2 \neq 0$. Now
+    \[
+        (a+bi)(c+di) = (ac-bd)+(ad+bc)i = 0
+    \]
+    which means $ac - bd = 0$ and $ad+bc = 0$. Multiplying first equation by $d$ yields $acd - bd^2 = 0$; multiplying second equation by $c$ yields $acd + bc^2 = 0$. Now summing them up yields $bc^2+bd^2 = b(c^2+d^2) = 0$ which hence means $b = 0$ since $c^2+d^2 \neq 0$. Therefore $ac - 0d = 0$ implies $ac = 0$ and $ad+0c = 0$ implies $ad = 0$. Squaring both equations and adding them up yields $a^2c^2 + a^2d^2 = a^2(c^2+d^2) = 0$ which hence means $a^2$ (and thus $a$) is zero. Therefore we have shown $z = 0$, meaning that there are no zero divisors in $\Z[i]$, so $\Z[i]$ is an integral domain.
+
+    \item \begin{partquestions}{\alph*}
+        \item Note that multiplication is commutative with identity $1 = 1 + 0\sqrt{n} \in R$. We just need to show that there are no zero divisors in $R$.
+        
+        Take $a+b\sqrt n, c+d\sqrt n \in R$ such that $a+b\sqrt n \neq 0$ but $(a+b\sqrt n)(c+d\sqrt n) = 0$. We want to show $c = d = 0$. Consider
+        \[
+            \left((a+b\sqrt n)(\underbrace{a-b\sqrt n}_{\neq 0})\right)\left((c+d\sqrt n)(\underbrace{c-d\sqrt n}_{\neq 0})\right) = 0.
+        \]
+        This means that $(a^2-nb^2)(c^2-nd^2) = 0$, so either $a^2-nb^2 = 0$ or $c^2-nd^2 = 0$.
+
+        Now if $n < 0$ then clearly we have to have $c = d = 0$. Otherwise we have $a = b\sqrt n$ or $c = d\sqrt n$. But $\sqrt n$ is not an integer, so the only way for equality is if $c = d = 0$. Thus $\Z[\sqrt n]$ has no zero divisors, meaning $\Z[\sqrt n]$ is an integral domain.
+
+        \item Consider $2 + \sqrt 2 \in \Z[\sqrt 2]$. Its multiplicative inverse is
+        \begin{align*}
+            \frac{1}{2+\sqrt2} &= \frac{2-\sqrt2}{(2+\sqrt2)(2-\sqrt2)}\\
+            &= \frac{2-\sqrt2}{4-2}\\
+            &= 1 - \frac12\sqrt2 \notin \Z[\sqrt2].
+        \end{align*}
+        This means that $2+\sqrt2$, a non-zero element in $\Z[\sqrt2]$, does not have an inverse in $\Z[\sqrt2]$. Therefore $\Z[\sqrt2]$ is not a field, meaning $R$ is not a field in the general case.
+    \end{partquestions}
+
+    \newpage
+
+    \item For brevity let O$ = \begin{pmatrix}0&0\\0&0\end{pmatrix}$, I$ = \begin{pmatrix}1&0\\0&1\end{pmatrix}$, A$ = \begin{pmatrix}1&1\\1&0\end{pmatrix}$, and B$ = \begin{pmatrix}0&1\\1&1\end{pmatrix}$.
+    
+    \begin{partquestions}{\roman*}
+        \item Clearly one sees that $R$ is a subset of $\Mn{2}{\Z_2}$.
+        \begin{itemize}
+            \item We show $(R, +)\leq(\Mn{2}{\Z_2},+)$.
+            \begin{table}[h]
+                \centering
+                \begin{tabular}{|l|l|l|l|l|}
+                    \hline
+                    \textbf{+} & \textbf{O} & \textbf{I} & \textbf{A} & \textbf{B} \\ \hline
+                    \textbf{O} & O          & I          & A          & B          \\ \hline
+                    \textbf{I} & I          & O          & B          & A          \\ \hline
+                    \textbf{A} & A          & B          & O          & I          \\ \hline
+                    \textbf{B} & B          & A          & I          & O          \\ \hline
+                \end{tabular}
+            \end{table}
+            
+            From the Cayley table, clearly the identity of the ring $\Mn{2}{\Z_2}$ is in $R$ and $R$ is closed under addition. Hence $(R, +)\leq(\Mn{2}{\Z_2},+)$
+
+            \item We show $R$ is closed under multiplication.
+            \begin{table}[h]
+                \centering
+                \begin{tabular}{|l|l|l|l|l|}
+                    \hline
+                    $\boldsymbol{\cdot}$ & \textbf{O} & \textbf{I} & \textbf{A} & \textbf{B} \\ \hline
+                    \textbf{O}           & O          & O          & O          & O          \\ \hline
+                    \textbf{I}           & O          & I          & A          & B          \\ \hline
+                    \textbf{A}           & O          & A          & B          & I          \\ \hline
+                    \textbf{B}           & O          & B          & I          & A          \\ \hline
+                \end{tabular}
+            \end{table}
+            
+            From the Cayley table, clearly $R$ is closed under multiplication.
+        \end{itemize}
+        Therefore $R$ is a subring of $\Mn{2}{\Z_2}$.
+
+        \item Since $R$ is a subring of $\Mn{2}{\Z_2}$, it is a ring. Furthermore, by the Cayley table of $(R, \cdot)$, we see that $R$ is commutative with identity I. Finally, one sees that $\mathrm{A}^{-1} = \mathrm{B}$, $\mathrm{B}^{-1} = \mathrm{A}$, and $\mathrm{I}^{-1} = \mathrm{I}$. Therefore all non-zero elements of $R$ have inverses. Hence $R$ is a field.
+    \end{partquestions}
+\end{questions}
+
+\section{Ideals and Quotient Rings}
+\begin{questions}
+    \item Note that $36 = 2^2 \times 3^2$. So
+    \begin{align*}
+        \Ann{\Z_{36}}{\{15\}} &= \{r \in \Z_{36} \vert 15r = 0\}\\
+        &= \{r \in \Z_{15} \vert 3(5r) = 0\}\\
+        &= \{r \in \Z_{15} \vert r \text{ is a multiple of }2^2\times3 = 12\}\\
+        &= \{0,12,24\}.
+    \end{align*}
+
+    \item We first show that $S$ is a subring of $\Z[i]$.
+    \begin{itemize}
+        \item The identity of $\Z[i]$ is $0 = 0 + 2(0)i \in S$.
+        \item For any $a+2bi, c+2di \in S$, clearly $a+2bi + (-(c + 2di)) = (a-c) + 2(b-d)i \in S$.
+        \item For any $a+2bi, c+2di \in S$, one sees that
+        \begin{align*}
+            (a+2bi)(c+2di) &= ac + 2adi + 2bci + 4bdi^2\\
+            &= (ac-4bd) + 2(ad+bc)i\\
+            &\in S.
+        \end{align*}
+    \end{itemize}
+    Therefore $S$ is a subring of $\Z[i]$.
+
+    We now show that $S$ is not an ideal of $\Z[i]$. Consider $1+2i \in \S$ and $1+i \in \Z[i]$. Then
+    \begin{align*}
+        (1+2i)(1+i) &= 1+i+2i+2i^2\\
+        &= -1 + 3i\\
+        &\notin S
+    \end{align*}
+    so there exists a $s \in S$ and a $r \in \Z[i]$ such that $rs\notin S$, meaning that $S$ is not a left ideal (and hence is not an ideal).
+
+    \item We consider the test for ideal (\myref{thrm-test-for-ideal}).
+    \begin{itemize}
+        \item Note that $\begin{pmatrix}0&0\\0&0\end{pmatrix}=\begin{pmatrix}2(0)&2(0)\\2(0)&(0)\end{pmatrix}$ is in $I$ so $I$ is non-empty.
+        \item $\begin{pmatrix}2a&2b\\2c&2d\end{pmatrix}-\begin{pmatrix}2e&2f\\2g&2h\end{pmatrix} = \begin{pmatrix}2(a-e)&2(b-f)\\2(c-g)&2(d-h)\end{pmatrix} \in I$.
+        \item To show left ideal, take $\begin{pmatrix}2a&2b\\2c&2d\end{pmatrix} \in I$ and $\begin{pmatrix}e&f\\g&h\end{pmatrix} \in \Mn{2}{\Z}$. Then
+        \begin{align*}
+            \begin{pmatrix}2a&2b\\2c&2d\end{pmatrix}\begin{pmatrix}e&f\\g&h\end{pmatrix} &= \begin{pmatrix}2ae+2bg&2af+2bh\\2ce+2dg&2cf+2dh\end{pmatrix}\\
+            &= \begin{pmatrix}2(ae+bg)&2(af+bh)\\2(ce+dg)&2(cf+dh)\end{pmatrix}\\
+            &\in I
+        \end{align*}
+        so $I$ is a left ideal of $\Mn{2}{\Z}$.
+        \item To show right ideal, take $\begin{pmatrix}a&b\\c&d\end{pmatrix} \in \Mn{2}{\Z}$ and $\begin{pmatrix}2e&2f\\2g&2h\end{pmatrix} \in I$. Then
+        \begin{align*}
+            \begin{pmatrix}a&b\\c&d\end{pmatrix}\begin{pmatrix}2e&2f\\2g&2h\end{pmatrix} &= \begin{pmatrix}2ae+2bg&2af+2bh\\2ce+2dg&2cf+2dh\end{pmatrix}\\
+            &= \begin{pmatrix}2(ae+bg)&2(af+bh)\\2(ce+dg)&2(cf+dh)\end{pmatrix}\\
+            &\in I
+        \end{align*}
+        so $I$ is a right ideal of $\Mn{2}{\Z}$.
+    \end{itemize}
+    Therefore by the test for ideal we have $I$ is an ideal of $\Mn{2}{\Z}$.
+
+    \item \begin{partquestions}{\alph*}
+        \item Suppose $I$ is not the trivial ring; we want to show that $I = R$. Since $I$ is non-trivial there there exists a non-zero element $a$ in $I$. Note that $a^{-1}$ exists since $R$ is a field, so $a$ is a unit. By \myref{exercise-ideal-containing-1-is-whole-ring} this means $I = R$. Note that $\{0\} = \princ{0}$ and $R = \princ{1}$ by \myref{exercise-trivial-ideal-and-whole-ring-are-principal-ideals}, so $R$ is indeed a PID.
+
+        \item Take a non-zero $x \in R$ and note that $\princ{x}$ is a non-trivial ideal. Since there are no proper ideals in $R$, thus $\princ{x} = R$. This means that $1 \in \princ{x}$ (since $\princ{x} = R$ is a ring with identity), meaning that there exists an element $r \in R$ such that $xr = 1$. Therefore $x$ is a unit.
+        
+        Since $x$ is an arbitrary non-zero element in $R$, this thus shows that all non-zero elements of the ring $R$ are units, meaning $R$ is a division ring.
+
+        Finally, because $R$ is commutative, thus $R$ is a field.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\alph*}
+        \item Suppose $r \in \sqrt{\sqrt{I}}$, meaning that $r^m \in \sqrt{I}$ for some positive integer $m$, further meaning that $(r^m)^n \in I$ for some positive integer $n$. Note $(r^m)^n = r^{mn} \in I$, so $r \in \sqrt{I}$. Therefore $\sqrt{\sqrt{I}} \subseteq \sqrt{I}$.
+        
+        Now suppose $r \in \sqrt{I}$, meaning that $r^n \in I$ for some positive integer $n$. Note that $r = r^1 \in \sqrt{I}$, so $r \in \sqrt{\sqrt{I}}$. Hence $\sqrt{I} \subseteq \sqrt{\sqrt{I}}$.
+
+        Therefore, since $\sqrt{\sqrt{I}} \subseteq \sqrt{I}$ and $\sqrt{I} \subseteq \sqrt{\sqrt{I}}$, thus $\sqrt{\sqrt{I}} = \sqrt{I}$.
+
+        \item Suppose $r \in \sqrt{I\cap J}$, so $r^n \in I \cap J$ for some positive integer $n$. This means that $r^n \in I$ and $r^n \in J$. Hence $r \in \sqrt{I}$ and $r \in \sqrt{J}$ by definition of the radical, so $r \in \sqrt{I}\cap\sqrt{J}$. Thus $\sqrt{I\cap J} \subseteq \sqrt{I}\cap\sqrt{J}$.
+        
+        Now suppose $r \in \sqrt{I}\cap\sqrt{J}$, meaning that $r \in \sqrt{I}$ and $r \in \sqrt{J}$. Thus $r^m \in I$ and $r^n \in J$ for some positive integers $m$ and $n$. Note that
+        \[
+            (\underbrace{r^m}_{\text{In }I})^n \in I \text{ and } (\underbrace{r^n}_{\text{In }J})^m \in J
+        \]
+        so $r^{mn} \in I$ and $r^{mn} \in J$, meaning $r^{mn} \in I \cap J$. Thus $r \in \sqrt{I \cap J}$, showing that $\sqrt{I}\cap\sqrt{J} \subseteq \sqrt{I\cap J}$.
+
+        Therefore $\sqrt{I}\cap\sqrt{J} = \sqrt{I\cap J}$.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\alph*}
+        \item Suppose $a \in m\Z\cap n\Z$. Thus $a \in m\Z$ and $a \in n\Z$, meaning that $a = mx = ny$ for some integers $x$ and $y$. Therefore $a = \lcm(m,n)z = lz$ for some integer $z$, meaning $a \in l\Z$. Hence $m\Z \cap n\Z \subseteq l\Z$.
+        
+        Now suppose $a \in l\Z$, so $a = lx$ for some integer $x$. Write $l = m\alpha = n\beta$ for some integers $\alpha$ and $\beta$. Note that
+        \begin{align*}
+            a &= (m\alpha)x = m(\alpha x) \in m\Z\\
+            a &= (n\beta)x = n(\beta x) \in n\Z
+        \end{align*}
+        so $a \in m\Z \cap n\Z$. Thus $l\Z \subseteq m\Z \cap n\Z$.
+
+        Therefore $m\Z\cap n\Z = l\Z$.
+
+        \item Suppose $a \in m\Z + n\Z$, meaning that there exist integers $x$ and $y$ such that $a = mx + ny$. By definition of the GCD, write $m = d\alpha$ and $n = d\beta$ for some integers $\alpha$ and $\beta$. Hence
+        \begin{align*}
+            a &= (d\alpha)x + (d\beta)y\\
+            &= d(\alpha x + \beta y)\\
+            &\in d\Z
+        \end{align*}
+        so $m\Z + n\Z \subseteq d\Z$.
+
+        On the other hand, suppose $a \in d\Z$, meaning $a = dt$ for some integer $t$. By B\'{e}zout's Lemma (\myref{lemma-bezout}), we may write $d = mx + ny$ for some integers $x$ and $y$. Hence
+        \begin{align*}
+            a &= (mx + ny)t\\
+            &= m(xt) + n(yt)\\
+            &\in m\Z + n\Z
+        \end{align*}
+        which means $d\Z \subseteq m\Z + n\Z$.
+
+        Therefore $m\Z + n\Z = d\Z$.
+    \end{partquestions}
+
+    \item Let $r \in R$, and suppose $x = r + \Nilr{R} \in R/\Nilr{R}$ is nilpotent, i.e. there is a positive integer $n$ such that
+    \[
+        x^n = (r + \Nilr{R})^n = r^n + \Nilr{R} = 0 + \Nilr{R}.
+    \]
+    Coset Equality (\myref{lemma-coset-equality}) thus tells us that $r^n \in \Nilr{R}$. Note that $\Nilr{R}$ contains all the nilpotents of $R$. Thus $r^n$ is a nilpotent of $R$, i.e. there exists a positive integer $m$ such that $(r^n)^m = 0$. But clearly $(r^n)^m = r^{mn} = 0$, so $r$ is nilpotent, meaning $r \in \Nilr{R}$. Hence $x = r + \Nilr{R} = 0 + \Nilr{R}$, meaning that the only nilpotent of $R/\Nilr{R}$ is the zero element. Therefore $R/\Nilr{R}$ has no non-zero nilpotents.
+
+    \item Suppose $R$ is a PID and $I$ is a non-zero prime ideal. Let $J$ be an ideal such that $I \subseteq J \subseteq R$. Since $R$ is a PID, write $I = \princ{a}$ and $J = \princ{b}$ for some elements $a$ and $b$ in $R$. Note $a \in \princ{a} = I \subseteq J = \princ{b}$, so there exists an $r \in R$ such that $a = rb$. Now since $a = rb \in \princ{a} = I$ and $I$ is prime, therefore $r \in I$ or $b \in I$.
+    \begin{itemize}
+        \item If $r \in I$, write $r = sa$ for some $s \in R$. Then
+        \[
+            a = rb = (sa)b = (as)b = a(sb)
+        \]
+        since an integral domain is commutative. Thus $a - a(sb) = a(1-sb) = 0$. Now as $R$ is an integral domain thus either $a = 0$ (impossible since $a \neq 0$) or $1-sb = 0$. So $1-sb = 0$, meaning $sb = 1 \in J$ since $b \in J$. By \myref{exercise-ideal-containing-1-is-whole-ring} we have $J = R$.
+        \item If instead $b \in I$, take any $x \in J = \princ{b}$, so $x = rb$ for some $r \in R$. Thus $x = rb \in I$ since $b \in I$, so $J \subseteq I$. But $I \subseteq J$, so $J = I$.
+    \end{itemize}
+    Therefore we have shown that $I$ is maximal.
+
+    \item First we work in the forward direction. Suppose $\princ{a} = \princ{b}$. As $a \in \princ{a} = \princ{b}$, thus $a = bx$ for some $x \in R$. Also, as $b \in \princ{b} = \princ{a}$, thus $b = ay$ for some $y \in R$. Therefore
+    \[
+        b = ay = (bx)y = b(xy)
+    \]
+    which means $xy = 1$. Thus $x$ and $y$ are units, meaning $a = bx$ with $x$ being a unit.
+
+    Now we work in the reverse direction; suppose $a = bu$ for some unit $u$ in $R$.
+    \begin{itemize}
+        \item Take $r \in \princ{a}$, so $r = ax$ for some $x$ in $R$. Thus $r = (bu)x = b(ux) \in \princ{b}$, so $\princ{a} \subseteq \princ{b}$.
+        \item Note $b = au^{-1}$ since $u$ is a unit. Take $s \in \princ{b}$, so $s = by$ for some $y$ in $R$. But as $b = au^{-1}$, hence $s = (au^{-1})y = a(u^{-1}y) \in \princ{a}$, so $\princ{b} \subseteq \princ{a}$.
+    \end{itemize}
+    Therefore we see that $\princ{a} = \princ{b}$.
+\end{questions}
+
+\section{Ring Homomorphisms and Isomorphisms}
+\begin{questions}
+    \item \begin{partquestions}{\roman*}
+        \item Consider the identity homomorphism $\phi: R \to R, r \mapsto r$. Clearly $\phi$ is surjective. Note that
+        \begin{align*}
+            \ker\phi &= \{r \in R \vert \phi(r) = 0\}\\
+            &= \{r \in R \vert r = 0\}\\
+            &= \{0\}.
+        \end{align*}
+        By the FRIT (\myref{thrm-ring-isomorphism-1}),
+        \[
+            R / \{0\} \cong R
+        \]
+        which is what we wanted to show.
+
+        \item By \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}, $\{0\}$ is prime if and only if $R/\{0\}$ is an integral domain. But since $R/\{0\} \cong R$, thus $\{0\}$ is prime if and only if $R$ is an integral domain.
+        
+        \item By \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}, $\{0\}$ is maximal if and only if $R/\{0\} \cong R$ is a field.
+    \end{partquestions}
+
+    \item Let $\phi: \Q \to Q$ be a ring endomorphism. From \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent}, we know that $\phi(1)$ is an idempotent in $\Q$, meaning that $\phi(1) = 0$ or $\phi(1) = 1$.
+    
+    Clearly if $\phi(1) = 0$ then
+    \[
+        \phi(x) = \phi(1x) = \phi(1)\phi(x) = 0\phi(x) = 0
+    \]
+    so $\phi(x)$ is the trivial homomorphism.
+    
+    If instead $\phi(1) = 1$, then from \myref{exercise-homomorphism-over-Q-fixes-elements-of-Q} we know that $\phi(x) = x$ for all $x \in Q$, i.e. $\phi$ is the identity homomorphism.
+
+    Therefore the only two endomorphisms in $\Q$ are the trivial and identity homomorphisms.
+
+    \item BWOC, suppose $\phi: \Z^2 \to \Q$ is an isomorphism. Then \myref{exercise-image-of-additive-identity-is-additive-identity} tells us that $\phi((0,0)) = 0$. Also \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent} tells us that $\phi((1,1))$ is an idempotent in $\Q$, which means that $\phi((1,1)) = 0$ or $\phi((1,1)) = 1$.
+    
+    If $\phi((1,1)) = 0$ then we have $\phi((0,0)) = \phi((1,1)) = 0$, so $\phi$ is not injective, which thus means that $\phi$ is not an isomorphism, a contradiction.
+
+    Thus $\phi((1,1)) = 1$. Note that
+    \begin{align*}
+        \phi((1,1)) &= \phi((0,1)) + \phi((1,0)) = 1,\\
+        \phi((0,0)) &= \phi((0,1)) \times \phi((1,0)) = 0
+    \end{align*}
+    so this means that either $\phi((0,1)) = 0$ or $\phi((1,0)) = 0$. But this means that either $\phi((0,0)) = \phi((0,1)) = 0$ or $\phi((0,0)) = \phi((1,0)) = 0$ which again contradicts the fact that $\phi$ is injective and hence an isomorphism.
+
+    Therefore $\Z^2 \not\cong \Q$.
+
+    \item BWOC, suppose $\phi: \Q[\sqrt2] \to \Q[\sqrt3]$ is an isomorphism.
+    
+    Suppose $\phi(\sqrt2) = a + b\sqrt3$ where $a$ and $b$ are rational numbers. Note that $\phi(2) = 2$ by \myref{exercise-homomorphism-over-Q-fixes-elements-of-Q}, so
+    \[
+        2 = \phi(2) = \phi({\sqrt2}^2) = \left(\phi(\sqrt2)\right)^2 = a^2 + 2\sqrt3ab + 3b^2.
+    \]
+    This means that $2ab = 0$, which means that $a = 0$ or $b = 0$.
+
+    If $a = 0$ then $2 = 3b^2$ which means $b = \pm\sqrt{\frac23}$. But $\sqrt{\frac23}$ is not a rational number, contradicting the fact that $b$ is a rational number.
+
+    Thus $b = 0$. But this means that
+    \[
+        \phi(\sqrt2) = a = \phi(a),
+    \]
+    since $a \in \Q$, which means $\phi$ is not injective, contradicting the fact that $\phi$ is an isomorphism.
+
+    Therefore $\Q[\sqrt2] \not\cong \Q[\sqrt3]$.
+
+    \item Let $\phi: \Z^2 \to R, (a,b)\mapsto \begin{pmatrix}a&0\\0&b\end{pmatrix}$. We show that $\phi$ is a bijective ring homomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}:
+        \begin{align*}
+            \phi((a,b) + (x,y)) &= \phi((a+x,b+y))\\
+            &= \begin{pmatrix}a+x&0\\0&b+y\end{pmatrix}\\
+            &= \begin{pmatrix}a&0\\0&b\end{pmatrix} + \begin{pmatrix}x&0\\0&y\end{pmatrix}\\
+            &= \phi((a,b)) + \phi((x,y))
+        \end{align*}
+        and
+        \begin{align*}
+            \phi((a,b)(x,y)) &= \phi((ax,by))\\
+            &= \begin{pmatrix}ax&0\\0&by\end{pmatrix}\\
+            &= \begin{pmatrix}a&0\\0&b\end{pmatrix}\begin{pmatrix}x&0\\0&y\end{pmatrix}\\
+            &= \phi((a,b))\phi((x,y))
+        \end{align*}
+        so $\phi$ is a ring homomorphism.
+
+        \item \textbf{Injective}: Let $(a, b), (x, y) \in \Z^2$ such that $\phi((a,b)) = \phi((x,y))$. Therefore $\begin{pmatrix}a&0\\0&b\end{pmatrix} = \begin{pmatrix}x&0\\0&y\end{pmatrix}$. Thus $a = x$ and $b = y$, which means $(a,b) = (x,y)$. Therefore $\phi$ is injective.
+
+        \item \textbf{Surjective}: Let $\begin{pmatrix}a&0\\0&b\end{pmatrix} \in R$. Clearly one sees that $\phi((a, b)) = \begin{pmatrix}a&0\\0&b\end{pmatrix}$ so $\phi$ is surjective.
+    \end{itemize}
+
+    Therefore $\phi$ is a ring isomorphism, which means $R \cong \Z^2$.
+
+    \item \begin{partquestions}{\alph*}
+        \item We prove the statement. Note that since $\phi$ is bijective, thus $\phi^{-1}$ is bijective. We just need to show that $\phi^{-1}$ is a homomorphism.
+        
+        Let $u,v\in R'$. Then there is a $x,y \in R$ such that $\phi(x) = u$ and $\phi(y) = v$. Note
+        \begin{align*}
+            \phi^{-1}(u + v) &= \phi^{-1}(\phi(x) + \phi(y))\\
+            &= \phi^{-1}(\phi(x + y))\\
+            &= x + y\\
+            &= \phi^{-1}(u) + \phi^{-1}(v)
+        \end{align*}
+        and
+        \begin{align*}
+            \phi^{-1}(uv) &= \phi^{-1}(\phi(x)\phi(y))\\
+            &= \phi^{-1}(\phi(xy))\\
+            &= xy\\
+            &= \phi^{-1}(u)\phi^{-1}(v)
+        \end{align*}
+        so $\phi^{-1}$ is a ring homomorphism. Therefore $\phi^{-1}$ is a ring isomorphism.
+
+        \item We prove the statement. Suppose $S$ is a subring of $R$ with $n$ elements. Consider $\phi(S)$; by \myref{prop-homomorphism-on-subring-is-subring} we know $\phi(S)$ is a subring of $R'$. Also, since $\phi$ is a bijection, thus $S$ and $\phi(S)$ are equinumerous. Therefore $\phi(S)$ is a subring of $R'$ with $n$ elements.
+        
+        \item Suppose $I$ is an ideal of $R$. Consider $\phi(I)$; by \myref{prop-homomorphism-on-subring-is-subring} we know $\phi(I)$ is a subring of $R'$. We just need to check that $\phi(I)$ is an ideal of $R'$.
+        
+        Let $r' \in R'$ and $i' \in \phi(I)$. Since $\phi$ is surjective, there is an $r \in R$ and an $i \in I$ such that $r' = \phi(r)$ and $i' = \phi(i)$. Note
+        \begin{align*}
+            r'i' = \phi(r)\phi(i) = \phi(\underbrace{ri}_{\text{In }I}) \in \phi(I)\\
+            i'r' = \phi(i)\phi(r) = \phi(\underbrace{ir}_{\text{In }I}) \in \phi(I)
+        \end{align*}
+        so $\phi(I)$ is an ideal of $R'$.
+    \end{partquestions}
+
+    \item Suppose $\phi: \Z_{10}\to\Z_{10}$ is a ring homomorphism. Let $a = \phi(1)$. By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent} we know that $a^2 = \phi(1)^2 = \phi(1) = a$. Once again, we cannot assume that 0 and 1 are the only idempotents in $\Z_{10}$; by exhaustion we see that
+    \begin{itemize}
+        \item $0^2 = 0$;
+        \item $1^2 = 1$;
+        \item $5^2 = 25 = 5$; and
+        \item $6^2 = 36 = 6$
+    \end{itemize}
+    so the idempotents in $\Z_{10}$ are 0, 1, 5, and 6.
+
+    Recall from \myref{example-homomorphisms-from-Z12-to-Z28} we have $|\phi(1)|_+$ divides $|1|_+$ (\myref{exercise-order-of-homomorphism-divides-order}) so $|\phi(1)|_+$ divides 10, and $|k|_+ = \frac{n}{\gcd(k,10)}$ (\myref{thrm-order-of-element-in-cyclic-group}). Observe that
+    \begin{itemize}
+        \item $|0|_+ = 1$ which divides 10;
+        \item $|1|_+ = 10$ which divides 10;
+        \item $|5|_+ = \frac{10}{\gcd(5,10)} = \frac{10}{5} = 2$ which divides 10; and
+        \item $|6|_+ = \frac{10}{\gcd(6,10)} = \frac{10}{2} = 5$ which divides 10.
+    \end{itemize}
+    Therefore the possible values of $\phi(1)$ are 0, 1, 5, and 6.
+
+    Note that
+    \begin{align*}
+        \phi(n) &= \phi(\underbrace{1+1+\cdots+1}_{n \text{ times}})\\
+        &= \underbrace{\phi(1)+\phi(1)+\cdots+\phi(1)}_{n \text{ times}}\\
+        &= \underbrace{a + a + \cdots + a}_{n \text{ times}}\\
+        &= na
+    \end{align*}
+    so the only homomorphisms in $\phi(n) = 0$, $\phi(n) = n$, $\phi(n) = 5n$, and $\phi(n) = 6n$.
+
+    Now consider the possibility that $\psi: \Z_{10} \to \Z_{10}$ is an isomorphism.
+    \begin{itemize}
+        \item Clearly $\psi(n) = 0$ is not a valid isomorphism since $\psi(0) = \psi(1) = 0$ which means that $\psi$ is not an injective.
+        \item $\psi(n) = n$, the identity homomorphism, is an isomorphism by \myref{exercise-identity-homomorphism-is-an-isomorphism}.
+        \item $\psi(n) = 5n$ is not possible since $\psi(0) = 0$ and $\psi(2) = 10 = 0$, so $\psi$ is not injective.
+        \item $\psi(n) = 6n$ is not possible since $\psi(0) = 0$ and $\psi(5) = 30 = 0$, so $\psi$ is not injective.
+    \end{itemize}
+    Therefore the only isomorphism $\psi:\Z_{10} \to \Z_{10}$ is $\psi(n) = n$.
+
+    \item Let $\phi: \Q[\sqrt3] \to \Q[\sqrt3]$ be an endomorphism. By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent} we know that $\phi(1)^2 = \phi(1)$, so $\phi(1) = 0$ or $\psi(1) = 1$ (since 0 and 1 are the only idempotents in $\Q[\sqrt3]$).
+    
+    If $\phi(1) = 0$ then
+    \[
+        \phi(a+b\sqrt3) = \phi(1)\phi(a+b\sqrt3) = 0\phi(a+b\sqrt3) = 0
+    \]
+    so $\phi$ is the trivial homomorphism.
+
+    If instead $\phi(1) = 1$, then $\phi(q) = q$ for all $q \in \Q$ (\myref{exercise-homomorphism-over-Q-fixes-elements-of-Q}). Let $\phi(\sqrt3) = a+b\sqrt3$ where $a$ and $b$ are rational numbers. Note
+    \[
+        3 = \phi(3) = \phi((\sqrt3)^3) = \left(\phi(\sqrt3)\right)^2 = a^2+2\sqrt3ab+3b^2
+    \]
+    which means $2ab = 0$, so $a = 0$ or $b = 0$. If $b = 0$ then $3 = a^2$ which means $a = \pm\sqrt3$, a contradiction since $\sqrt3$ is not a rational number. Therefore $a = 0$, so $3 = 3b^2$ which means $b = \pm1$. Thus $\phi(\sqrt3) = \sqrt3$ or $\phi(\sqrt3) = -\sqrt3$.
+
+    Thus we have 3 possibilities:
+    \begin{itemize}
+        \item $\phi(a+b\sqrt3) = 0$;
+        \item $\phi(a+b\sqrt3) = a+b\sqrt3$; and
+        \item $\phi(a+b\sqrt3) = a-b\sqrt3$.
+    \end{itemize}
+    The first two possibilities are the trivial and identity homomorphism respectively, so we just need to check whether the last possibility is a homomorphism. Because
+    \begin{align*}
+        \phi((a+b\sqrt3) + (x+y\sqrt3)) &= \phi((a+x)+(b+y)\sqrt3)\\
+        &= (a+x)-(b+y)\sqrt3\\
+        &= (a-b\sqrt3) + (x-y\sqrt3)\\
+        &= \phi(a+b\sqrt3) + \phi(x+y\sqrt3)
+    \end{align*}
+    and
+    \begin{align*}
+        \phi((a+b\sqrt3)(x+y\sqrt3)) &= \phi((ax+3by)+(ay+bx)\sqrt3)\\
+        &= (ax+3by)-(ay+bx)\sqrt3\\
+        &= (a-b\sqrt3)(x-y\sqrt3)\\
+        &= \phi(a+b\sqrt3)\phi(x+y\sqrt3)
+    \end{align*}
+    so $\phi(a+b\sqrt3) = a-b\sqrt3$ is indeed a homomorphism.
+
+    Therefore the 3 possible homomorphisms are $\phi(a+b\sqrt3) = 0$, $\phi(a+b\sqrt3) = a+b\sqrt3$, and $\phi(a+b\sqrt3) = a-b\sqrt3$.
+
+    Now consider the possibility that $\psi: \Q[\sqrt3] \to \Q[\sqrt3]$ is an isomorphism. Clearly the trivial homomorphism is not; the identity homomorphism is (\myref{exercise-identity-homomorphism-is-an-isomorphism}). We consider $\psi(a+b\sqrt3) = a-b\sqrt3$.
+    \begin{itemize}
+        \item \textbf{Injective}: Suppose $a+b\sqrt3, x+y\sqrt3 \in \Q[\sqrt3]$ such that $\phi(a+b\sqrt3) = \phi(x+y\sqrt3)$. Thus $a - b\sqrt3 = x - y\sqrt3$, which clearly means $a = x$ and $b = y$. Therefore $a+b\sqrt3 = x+y\sqrt3$ which means that $\psi$ is injective.
+        \item \textbf{Surjective}: For any $x+y\sqrt3 \in \Q[\sqrt3]$, note that $x-y\sqrt3 \in \Q[\sqrt3]$ and $\psi(x-y\sqrt3) = x+y\sqrt3$, so $\psi$ is surjective.
+    \end{itemize}
+    Therefore $\psi(a+b\sqrt3) = a-b\sqrt3$ is also an isomorphism. Hence, the two isomorphisms $\psi: \Q[\sqrt3] \to \Q[\sqrt3]$ are $\psi(a+b\sqrt3) = a+b\sqrt3$ and $\psi(a+b\sqrt3) = a-b\sqrt3$.
+
+    \item \begin{partquestions}{\roman*}
+        \item Let $x \in \phi(\sqrt I)$. Therefore there is an $a \in \sqrt{I}$ such that $\phi(a) = x$. Now by definition of $\sqrt{I}$, this means that there is a positive integer $n$ such that $a^n \in I$. Note that
+        \[
+            x^n = \left(\phi(a)\right)^n = \phi(a^n) \in \phi(I)
+        \]
+        which means $x \in \sqrt{\phi(I)}$. Therefore $\phi(\sqrt I) \subseteq \sqrt{\phi(I)}$.
+
+        \item Let $y \in \sqrt{\phi(I)}$, so there is a positive integer $n$ such that $y^n \in \phi(I)$. Thus there exists an $a \in I$ such that $\phi(a) = y^n$.
+        
+        Note $y \in R'$, and since $\phi$ is surjective, therefore there is an $x \in R$ such that $\phi(x) = y$. Therefore
+        \[
+            \phi(a) = y^n = \left(\phi(x)\right)^n = \phi\left(x^n\right)
+        \]
+        which thus means $\phi(a-x^n) = 0$. Hence $a-x^n \in \ker\phi \subseteq I$, so $a-x^n \in I$. Since $a \in I$, this means that $x^n \in I$, so $x \in \sqrt{I}$.
+
+        So,
+        \[
+            y = \phi(x) = \phi(\sqrt I)
+        \]
+        which thus means $\sqrt{\phi(I)} \subseteq \phi(\sqrt I)$. But by (i), we found out that $\phi(\sqrt I) \subseteq \sqrt{\phi(I)}$, so $\phi(\sqrt I) = \sqrt{\phi(I)}$ as needed.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
+        \item We first show $(S+I, +) \leq (R,+)$.
+        \begin{itemize}
+            \item $0 = 0 + 0 \in S + I$ so $S + I \neq \emptyset$.
+            \item For any $s_1, s_2 \in S$ and $i_1, i_2 \in I$ we see that
+            \[
+                (s_1+i_1) - (s_2 + i_2) = (\underbrace{s_1 - s_2}_{\text{In }S}) + (\underbrace{i_1 + i_2}_{\text{In }I}) \in S + I
+            \]
+        \end{itemize}
+        Therefore $(S+I, +) \leq (R,+)$ by the subgroup test (\myref{thrm-subgroup-test}).
+
+        We now show $S+I$ is closed under multiplication. Let $s_1, s_2 \in S$ and $i_1, i_2 \in I$. Then
+        \[
+            (s_1 + i_1)(s_2 + i_2) = s_1s_2 + s_1i_2 + i_1s_2 + i_1i_2.
+        \]
+        Note $s_1i_2 \in I$ since $I$ is a left ideal, and $i_1s_2 \in I$ since $I$ is a right ideal, so
+        \[
+            (s_1 + i_1)(s_2 + i_2) = \underbrace{s_1s_2}_{\text{In }S} + \underbrace{s_1i_2 + i_1s_2 + i_1i_2}_{\text{In }I} \in S + I.
+        \]
+
+        Therefore $S+I$ is a subring of $R$.
+
+        \item We consider the test for ideal.
+        \begin{itemize}
+            \item $S \cap I \neq \emptyset$ since $0 \in S$ and $0 \in I$ so $0 \in S \cap I$.
+            \item Let $a$ and $b$ are in $S \cap I$. Thus $a, b \in S$ and $a, b \in I$, which means $a - b \in S$ and $a - b \in I$ as $S$ and $I$ are both subrings. Therefore $a - b \in S \cap I$.
+            \item Let $s \in S$ and $a \in S \cap I$, which means $a \in S$ and $a \in I$.
+            \begin{itemize}
+                \item Note $sa \in S$ (because $S$ is a subring) and $sa \in I$ (because $I$ is a left ideal), so $sa \in S \cap I$.
+                \item Note also $as \in S$ (because $S$ is a subring) and $as \in I$ (because $I$ is a right ideal), so $as \in S \cap I$.
+            \end{itemize}
+        \end{itemize}
+        By the test for ideal (\myref{thrm-test-for-ideal}), $S \cap I$ is an ideal of $S$.
+
+        \item Define $\phi: S \to (S+I)/I, s \mapsto s+I$. We show that $\phi$ is a homomorphism and then find its image and kernel.
+        \begin{itemize}
+            \item \textbf{Homomorphism}: Let $s_1, s_2 \in S$. Then
+            \begin{align*}
+                \phi(s_1 + s_2) &= (s_1 + s_2) + I\\
+                &= (s_1 + I) + (s_2 + I)\\
+                &= \phi(s_1) + \phi(s_2)
+            \end{align*}
+            and
+            \begin{align*}
+                \phi(s_1s_2) &= (s_1s_2) + I\\
+                &= (s_1+I)(s_2+I)\\
+                &= \phi(s_1)\phi(s_2)
+            \end{align*}
+            so $\phi$ is a ring homomorphism.
+    
+            \item \textbf{Image}: We show that $\phi$ is surjective. Let $(s+i) + I \in S+I$. Note since $i \in I$,
+            \[
+                (s+i)+I = (s+I) + (i+I) = (s+I) + (0+I) = s+I.
+            \]
+            Clearly $\phi(s) = s+I = (s+i)+I$, so for any $(s+i)\in (S+I)/I$ has a pre-image in $S$. Therefore $\im\phi = (S+I)/I$.
+    
+            \item \textbf{Kernel}: We find the kernel of $\phi$.
+            \begin{align*}
+                \ker\phi &= \{s \in S \vert \phi(s) = 0 + I\}\\
+                &= \{s \in S \vert s + I = 0 + I\}\\
+                &= \{s \in S \vert s \in I\}\\
+                &= S \cap I,
+            \end{align*}
+            where $s + I = 0 + I$ implies $s \in I$ due to Coset Equality, \myref{lemma-coset-equality}.
+        \end{itemize}
+    
+        By the FRIT (\myref{thrm-ring-isomorphism-1}),
+        \[
+            S/(S\cap I) \cong (S+I)/I
+        \]
+        which is what we needed to prove for the Second Ring Isomorphism Theorem.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
+        \item We consider the test for ideal.
+        \begin{itemize}
+            \item $J/I$ is non-empty since $0+I \in J/I$.
+            \item Let $a+I,b+I \in J/I$. This means that $a,b \in J$, so $a - b \in J$ (since $J$ is a subring), which means $(a+I) - (b+I) = (a-b) + I \in J/I$.
+            \item Let $r+I \in R/I$ and $j+I \in J/I$. Clearly $rj \in J$ and $jr \in J$ since $J$ is an ideal. Thus $(r+I)(j+I) = rj + I \in J/I$ and $(j+I)(r+I) = jr + I \in J/I$.
+        \end{itemize}
+        By the test for ideal (\myref{thrm-test-for-ideal}), $J/I$ is an ideal of $R/I$.
+    
+        \item Consider $\phi: R/I \to R/J, r+I\mapsto r+J$. We show that $\phi$ is a well-defined homomorphism and then find its image and kernel.
+        \begin{itemize}
+            \item \textbf{Well-Defined}: Suppose $r_1 + I = r_2 + I \in R/I$. This means $r_1 - r_2 + I = I$, so $r_1 - r_2 \in I$ by Coset Equality (\myref{lemma-coset-equality}). Since $I \subset J$ thus $r_1 - r_2 \in J$, meaning $r_1 + J = r_2 + J$ by Coset Equality. Therefore
+            \[
+                \phi(r_1 + I) = r_1 + J = r_2 + J = \phi(r_2 + I)
+            \]
+            so $\phi$ is well defined.
+    
+            \item \textbf{Homomorphism}: Let $r_1 + I, r_2 + I \in R/I$. Note
+            \begin{align*}
+                \phi(r_1+r_2) &= (r_1+r_2) + I\\
+                &= (r_1+I) + (r_2+I)\\
+                &= \phi(r_1) + \phi(r_2)
+            \end{align*}
+            and
+            \begin{align*}
+                \phi(r_1r_2) = &= (r_1r_2) + I\\
+                &= (r_1+I)(r_2+I)\\
+                &= \phi(r_1)\phi(r_2)
+            \end{align*}
+            so $\phi$ is a ring homomorphism.
+    
+            \item \textbf{Image}: We show $\phi$ is surjective. Suppose $r + J \in R/J$. Then clearly $\phi(r+I) = r+J$ so any $r+J$ has a pre-image in $R/I$. Thus $\im\phi = R/J$.
+            
+            \item \textbf{Kernel}: We find the kernel of $\phi$.
+            \begin{align*}
+                \ker\phi &= \{r+I \in R/I \vert \phi(r+I) = 0+J\}\\
+                &= \{r+I \in R/I \vert r+J = J\}\\
+                &= \{r+I \in R/I \vert r \in J\}\\
+                &= J/I
+            \end{align*}
+            where $r+J=J$ implies $r \in J$ due to Coset Equality, \myref{lemma-coset-equality}.
+        \end{itemize}
+        Finally, by FRIT (\myref{thrm-ring-isomorphism-1}),
+        \[
+            \frac{R/I}{J/I} \cong R/J.
+        \]
+    \end{partquestions}
+\end{questions}
+
+\section{Polynomial Rings}
+\begin{questions}
+    \item For brevity let $I = \princ{x} = \{xP(x) \vert P(x) \in \Z[x]\}$. This means that $I$ is the set of polynomials with integer coefficients and with constant term 0. Now suppose $f(x), g(x) \in \Z[x]$; write
+    \begin{align*}
+        f(x) &= a_0 + a_1x + \cdots + a_mx^m\\
+        g(x) &= b_0 + b_1x + \cdots + b_nx^n
+    \end{align*}
+    where $a_i, b_i \in \Z$ and $m$ and $n$ are positive integers. Note that
+    \[
+        f(x)g(x) = a_0b_0 + (a_1b_0+a_0b_1)x + \cdots.
+    \]
+    Now if $f(x)g(x) \in I$, this means that $a_0b_0 = 0$. Hence either $a_0 = 0$ or $b_0 = 0$, meaning that either $f(x)$ has zero constant term (so $f(x) \in I$) or $g(x)$ has zero constant term (so $g(x) \in I$). Thus $I$ is prime.
+
+    \item \begin{partquestions}{\roman*}
+        \item Let $f(x), g(x) \in \Z[x]$. Then
+        \[
+            \phi(f(x) + g(x)) = f(-2) + g(-2) = \phi(f(x)) + \phi(g(x))
+        \]
+        and
+        \[
+            \phi(f(x)g(x)) = f(-2)g(-2) = \phi(f(x))\phi(g(x))
+        \]
+        so $\phi$ is a ring homomorphism.
+
+        \item Note that
+        \begin{align*}
+            \ker\phi &= \{f(x) \in \Z[x] \vert \phi(f(x)) = 0\}\\
+            &= \{f(x) \in \Z[x] \vert f(-2) = 0\}\\
+            &= I.
+        \end{align*}
+        \myref{prop-kernel-is-an-ideal} tells us that $\ker\phi$ is an ideal of $\Z[x]$, so $I$ is an ideal of $\Z[x]$.
+
+        \item We first show that $\phi$ is surjective. Let $n \in \Z$, note that $n$ is a degree zero polynomial, so $n \in \Z[x]$. Clearly $\phi(n) = n$ so $n$ is its own pre-image. Therefore $\im\phi = \Z$.
+        
+        By FRIT (\myref{thrm-ring-isomorphism-1}),
+        \[
+            \Z[x]/I \cong \Z.
+        \]
+        Note that $\Z$ is an integral domain but not a field. Thus $I$ is prime but not maximal.
+    \end{partquestions}
+\end{questions}

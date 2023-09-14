@@ -1,0 +1,344 @@
+\chapter{Exercise Solutions}
+\section{Introduction to Rings}
+\begin{questions}
+    \item We note the following.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: $(\{0\}, +)$ is an abelian group by Volume I.
+        \item \textbf{Multiplication-Semigroup}: $(\{0\}, \cdot)$ is an abelian group by Volume I.
+        \item \textbf{Distributive}: We know $+$ and $\cdot$ distribute.
+    \end{itemize}
+    Hence $(\{0\}, +, \cdot)$ is a commutative ring with identity.
+\end{questions}
+
+\section{Basics of Rings}
+\begin{questions}
+    \item We note the following.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: $(\Z, +)$ is an abelian group by Volume I.
+        \item \textbf{Multiplication-Semigroup}: $(\Z, \times)$ is a semigroup since
+        \begin{itemize}
+            \item multiplying two integers always results in an integer, so $\Z$ is closed under $\times$; and
+            \item $\times$ is associative.
+        \end{itemize}
+        \item \textbf{Distributive}: We know $+$ and $\times$ distribute.
+    \end{itemize}
+    Hence $(\Z, +, \times)$ is a ring.
+
+    \item Consider $(-a)(-b) + (-ab)$ and note
+    \begin{align*}
+        &(-a)(-b) + (-ab)\\
+        &= (-a)(-b) + (-a)b & (\text{\myref{prop-product-of-element-and-additive-inverse-is-additive-inverse-of-product}})\\
+        &= (-a)(-b + b) & (\text{by \textbf{Distributive} axiom})\\
+        &= (-a)0\\
+        &= 0 & (\myref{prop-multiplying-by-zero-is-zero})
+    \end{align*}
+    which means $(-a)(-b) = -(-ab) = ab$ as required.
+
+    \item The ring $\Mn{2}{\mathbb{R}}$ indeed has zero divisors, as $\begin{pmatrix}0&1\\0&0\end{pmatrix} \neq \begin{pmatrix}0&0\\0&0\end{pmatrix}$ but $\begin{pmatrix}0&1\\0&0\end{pmatrix}^2 = \begin{pmatrix}0&0\\0&0\end{pmatrix}$ which means that $\begin{pmatrix}0&1\\0&0\end{pmatrix}$ is a zero divisor.
+    
+    \item $\Z$ is not a field. Note that the multiplicative inverse of 2 is $\frac12$ which is not an integer. Hence not all non-zero elements in $\Z$ has a multiplicative inverse, meaning that not all non-zero elements are units.
+    
+    \item We first show that $(R, +) \leq (\Mn{2}{\R}, +)$.
+    \begin{itemize}
+        \item Clearly the identity of $(\Mn{2}{\R}, +)$, the zero matrix $\begin{pmatrix}0&0\\0&0\end{pmatrix}$, is inside $R$.
+        \item Consider $\begin{pmatrix}a&a\\a&a\end{pmatrix}, \begin{pmatrix}b&b\\b&b\end{pmatrix} \in R$. The additive inverse of $\begin{pmatrix}b&b\\b&b\end{pmatrix}$ is $\begin{pmatrix}-b&-b\\-b&-b\end{pmatrix}$, and so their sum is
+        \[
+            \begin{pmatrix}a&a\\a&a\end{pmatrix} + \begin{pmatrix}-b&-b\\-b&-b\end{pmatrix} = \begin{pmatrix}a-b&a-b\\a-b&a-b\end{pmatrix} \in R
+        \]
+        which means $R$ is closed under addition.
+    \end{itemize}
+    Hence $(R, +) \leq (\Mn{2}{\R}, +)$ by subgroup test.
+
+    We now show that $R$ is closed under multiplication. Some calculation yields that
+    \[
+        \begin{pmatrix}a&a\\a&a\end{pmatrix}\begin{pmatrix}b&b\\b&b\end{pmatrix} = \begin{pmatrix}2ab&2ab\\2ab&2ab\end{pmatrix}
+    \]
+    which is clearly in $R$. Therefore $R$ is a subring of $\Mn{2}{\R}$.
+\end{questions}
+
+\section{Integral Domains}
+\begin{questions}
+    \item Clearly multiplication is commutative and $1 = 1 + 0\sqrt2 \in \Z[\sqrt2]$. All that is needed is to show that there are no zero divisors in $\Z[\sqrt2]$.
+    
+    Take $a+b\sqrt2, c+d\sqrt2 \in \Z[\sqrt2]$ such that $a+b\sqrt2 \neq 0$ and $(a+b\sqrt2)(c+d\sqrt2) = 0$. We want to show that the only way this is possible is if $c = d = 0$. Now consider
+    \[
+        \left((a+b\sqrt2)\underbrace{(a-b\sqrt2)}_{\neq 0}\right)\left((c+d\sqrt2)\underbrace{(c-d\sqrt2)}_{\neq 0}\right) = 0.
+    \]
+    This simplifies to $(a^2-2b^2)(c^2-2d^2) = 0$. Hence either $a^2-2b^2 = 0$ or $c^2-2d^2 = 0$, implying $a = \sqrt2b$ or $c = \sqrt2d$. Now we cannot have $a = \sqrt2b$ as $\sqrt2$ is not an integer; the only case that is possible is if $c = \sqrt2d$ which finally means that $c = d = 0$.
+
+    \item Let $n = ab$ where $a,b \in Z$ and, without loss of generality, assume $1 < a \leq b < n$ (we exclude 1 and $n$ because we want $a$ and $b$ to be `proper' factors). Now clearly $a, b \in \Z_n$ with them both being non-zero but $ab = n = 0$ in $\Z_n$. Hence $a$ and $b$ are zero divisors in $\Z_n$, meaning $\Z_n$ is not an integral domain.
+    
+    \item We show that that $\Z_2[\alpha]$ is indeed a field. We note that multiplication is commutative with identity 1. The multiplication table in $\Z_2[\alpha]$ is provided below.
+    \begin{table}[h]
+        \centering
+        \resizebox{\textwidth}{!}{
+            \begin{tabular}{|l|l|l|l|}
+                \hline
+                $\boldsymbol{\times}$   & \textbf{1} & $\boldsymbol{\alpha}$                 & $\boldsymbol{1+\alpha}$                     \\ \hline
+                \textbf{1}          & 1          & $\alpha$                          & $1+\alpha$                              \\ \hline
+                $\boldsymbol{\alpha}$   & $\alpha$   & $\alpha^2 = 1+\alpha$             & $\alpha+\alpha^2 = 1+2\alpha = 1$       \\ \hline
+                $\boldsymbol{1+\alpha}$ & $1+\alpha$ & $\alpha+\alpha^2 = 1+2\alpha = 1$ & $1+2\alpha+\alpha^2 = 2+3\alpha=\alpha$ \\ \hline
+            \end{tabular}
+        }
+    \end{table}
+
+    What we see from this table is that no non-zero elements multiply together to form zero, meaning that there are no zero divisors in $\Z_2[\alpha]$. Therefore $\Z_2[\alpha]$ is an integral field. Furthermore as $\Z_2[\alpha]$ is finite thus $\Z_2[\alpha]$ is a field by \myref{thrm-finite-integral-domain-is-field}.
+
+    \item The trivial ring $\{0\}$ is not an integral domain. Seeking a contradiction, if $\{0\}$ is indeed an integral domain, then by \myref{prop-zero-of-prime-characteristic-if-integral-domain}it has to have either 0 or prime characteristic. However, one sees clearly that the characteristic of the trivial ring is 1, which is neither 0 nor prime. Therefore $\{0\}$ is not an integral domain.
+
+    \item The additive identity in $\Z_2[\alpha]$ is 1. Clearly $1 + 1 = 0$, so the order of 1 in $(\Z_2[\alpha],+)$ is 2. Now \myref{exercise-Zn2[alpha]} tells us that $\Z_2[\alpha]$ is an integral domain, so by the previous proposition this means that $\Char{\Z_2[\alpha]} = 2$.
+\end{questions}
+
+\section{Ideals and Quotient Rings}
+\begin{questions}
+    \item We are given that $(I, +) \leq (R,+)$, so all that remains to show is that $I$ is closed under multiplication. Take any two elements $x$ and $y$ in $I$. Since $I$ is an ideal, thus we have $ri \in I$ for any $r \in R$ and $i \in I$. Viewing $x$ as an element of $R$ and $y$ as an element of $I$, we see that $xy \in I$, meaning $I$ is closed under multiplication. Hence $I$ is a subring of $R$.
+    
+    \item \begin{partquestions}{\roman*}
+        \item If $1 \in I$, then for any element $r \in R$, we must have $r = 1r \in I$ since $I$ is an ideal of $R$. Therefore $R \subseteq I$. But by definition of an ideal, $I \subseteq R$. Therefore $I = R$.
+        \item Suppose $I$ contains a unit $u$, meaning there exists a $v \in R$ such that $uv = 1$. Note $uv \in I$ since $u \in I$ and $I$ is an ideal, so $1 \in I$. By \textbf{(i)} we have $I = R$.
+    \end{partquestions}
+    
+    \item \begin{partquestions}{\roman*}
+        \item Clearly the zero matrix, the additive identity of $R$, is inside $I$. Also,
+        \[
+            \begin{pmatrix}a&b\\0&0\end{pmatrix} + (-\begin{pmatrix}c&d\\0&0\end{pmatrix}) = \begin{pmatrix}a-c&b-d\\0&0\end{pmatrix} \in I
+        \]
+        so $I$ is a subring of $R$.
+
+        \item Let $\begin{pmatrix}a&b\\0&0\end{pmatrix} \in I$ and $\begin{pmatrix}x&y\\0&z\end{pmatrix} \in R$. We need to show that $I$ is both a left and right ideal.
+        \begin{itemize}
+            \item \textbf{Left Ideal}:
+            \[
+                \begin{pmatrix}x&y\\0&z\end{pmatrix}\begin{pmatrix}a&b\\0&0\end{pmatrix} = \begin{pmatrix}xa&xb\\0&0\end{pmatrix} \in I;
+            \]
+            and
+            \item \textbf{Right Ideal}: \[
+                \begin{pmatrix}a&b\\0&0\end{pmatrix}\begin{pmatrix}x&y\\0&z\end{pmatrix} = \begin{pmatrix}ax&ay+bz\\0&0\end{pmatrix} \in I.
+            \]
+        \end{itemize}
+        Therefore $I$ is an ideal of $R$.
+
+        \item $\begin{pmatrix}1&0\\0&1\end{pmatrix} + I$
+    \end{partquestions}
+
+    \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\ideal{a}\cap\ideal{b}$ is an ideal. We note that as $\ideal{a}$ and $\ideal{b}$ are ideals, they are therefore subrings of $R$. Thus, 0 is in both $\ideal{a}$ and $\ideal{b}$, meaning $0 \in \ideal{a}\cap\ideal{b}$. Hence $\ideal{a}\cap\ideal{b}$ is non-empty.
+    
+    Suppose $i,j\in\ideal{a}\cap\ideal{b}$, so $i,j \in \ideal{a}$ and $i,j \in \ideal{b}$. Note $\ideal{a}$ and $\ideal{b}$ are ideals and so are subrings, which means that $i-j \in \ideal{a}$ and $i-j \in \ideal{b}$, which hence means $i-j \in \ideal{a}\cap\ideal{b}$, satisfying the first statement for the test for ideals.
+
+    Now suppose $r \in R$ and $i \in \ideal{a}\cap\ideal{b}$. This means that $i \in \ideal{a}$ and $i \in \ideal{b}$. So we have $ri, ir \in \ideal{a}$ (since $\ideal{a}$ is an ideal) and $ri, ir \in \ideal{b}$ (since $\ideal{b}$ is an ideal). Therefore $ri,ir \in \ideal{a}\cap\ideal{b}$, so by the test for ideal we have $\ideal{a}\cap\ideal{b}$ is an ideal.
+
+    \item Let $R$ be a commutative ring with identity and $\princ{a}$ be a principal ideal of $R$. We note any element in $\princ{a}$ takes the form $ar$ for some element $r \in R$. We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove this. Clearly $\princ{a}$ is non-empty as $0 = a0 \in \princ{a}$.
+    
+    Let $ar_1, ar_2 \in \princ{a}$. Clearly $ar_1 - ar_2 = a(r_1-r_2) \in \princ{a}$, so the first condition for the test for ideal is satisfied. Now take any $r \in R$ and let $ax \in \princ{a}$. Then $r(ax) = (ax)r = a(xr) \in \princ{a}$ since $R$ is commutative. Therefore by the test for ideal we have $\princ{a}$ is an ideal of $R$.
+
+    \item \begin{partquestions}{\alph*}
+        \item Clearly $\{0\} = \princ{0}$ since $0r = 0$ for any $r \in R$.
+        \item Let 1 be the identity of $R$. Then $R = \{r \vert r \in R\} = \{1r \vert r \in R\} = \princ{1}$.
+    \end{partquestions}
+
+    \item We show that $\princ2$ is indeed a prime ideal of $\Z_8$. Without loss of generality, assume that $a \leq b$.
+    \begin{itemize}
+        \item If $ab = 0 \in \princ{2}$, then clearly $a = b = 0$ which is in $\princ{2}$.
+        \item If $ab = 2 \in \princ{2}$, then $a = 1$ and $b = 2$. Note $b = 2 \in \princ{2}$.
+        \item If $ab = 4 \in \princ{2}$, then $a = 1$ and $b = 4$ or $a = b = 2$. Note $2 \in \princ{2}$ and $4 \in \princ{2}$.
+        \item If $ab = 6 \in \princ{2}$, then $a = 1$ and $b = 6$ or $a = 2$ and $b = 3$. Note $2 \in \princ{2}$ and $6 \in \princ{2}$.
+    \end{itemize}
+    In all cases, we see that if $ab \in \princ{2}$, then at least one of $a$ or $b$ is also in $\princ{2}$. Thus $\princ{2}$ is a prime ideal of $\Z_8$.
+
+    \item Note that $\Z$ is a PID. We claim that $n$ has to be prime. By way of contradiction suppose $n$ is composite, meaning $n = ab$ where $2 \leq a,b < n$. Note $\princ{n} = \princ{ab} = \{\dots, -ab, 0, ab, \dots\}$. Observe that
+    \begin{align*}
+        \princ{a} &= \{\dots, -a(b+1), -ab, -a(b-1), \dots, -a,\\
+        &\quad\quad0, a, \dots, a(b-1), ab, a(b+1), \dots\}
+    \end{align*}
+    so $\princ{n} \subset \princ{a}$. Similarly, $\princ{n} \subset \princ{b}$. However, as $\princ{n}$ is a maximal ideal, there does not exist a positive integer $k$ such that $\princ{n} \subset \princ{k} \subset \Z$. This contradicts the fact that we have both $\princ{n} \subset \princ{a}$ and $\princ{n} \subset \princ{b}$. Therefore, $n$ has to be prime.
+
+    \item No. Let $I = \princ{3-i}$. Observe that
+    \begin{align*}
+        ((1+i)+I)((1-2i)+I) &= (1+i)(1-2i) + I\\
+        &= (1-2i+i-2i^2) + I\\
+        &= \underbrace{(3 - i)}_{\text{In }I} + I\\
+        &= 0 + I
+    \end{align*}
+    so $((1+i)+I)$ and $((1-2i)+I)$ are zero divisors in $\Z[i]/I$. Therefore $\Z[i]/I$ is not an integral domain, meaning that $I$ is not a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}).
+
+    \item If $P$ is a prime ideal of $R$, then $R/P$ is an integral domain by \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}. Now $R$ is finite, meaning that $R/P$ is finite. Therefore, by \myref{thrm-finite-integral-domain-is-field}, $R/P$ is a field which therefore means that $P$ is maximal by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
+    
+    \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\Ann{R}{A}$ is an ideal of $R$. We note that $\Ann{R}{A}$ is non-empty since 0 is in $\Ann{R}{A}$ (because $0a = 0$ for any $a \in A$).
+
+    Take any $r, s \in \Ann{R}{A}$, and an $a \in A$. Then one sees clearly that $(r-s)a = rs - sa = 0 - 0 = 0$ so $r-s \in \Ann{R}{A}$.
+
+    Now take an $r \in \Ann{R}{A}$, an $a \in A$, and a $x \in R$. Note $(rx)a = (xr)a = x(ra) = x0 = 0$ since $R$ is commutative, which means that $rx, xr \in \Ann{R}{A}$.
+
+    By the test for ideal, $\Ann{R}{A}$ is an ideal of $R$.
+\end{questions}
+
+\section{Ring Homomorphisms and Isomorphisms}
+\begin{questions}
+    \item Let $p(x), q(x) \in R$. Note
+    \[
+        \phi_a(p(x)+q(x)) = p(a) + q(a) = \phi_a(p(x)) + \phi_a(q(x))
+    \]
+    and
+    \[
+        \phi_a(p(x)q(x)) = p(a)q(a) = \phi_a(p(x))\phi_a(q(x))
+    \]
+    so $\phi_a$ is indeed a homomorphism.
+
+    \item Let $a, b \in R$.
+    \begin{partquestions}{\alph*}
+        \item Note
+        \[
+            \phi(a+b) = 0 = 0 + 0 = \phi(a) + \phi(b)
+        \]
+        and
+        \[
+            \phi(ab) = 0 = 0\times0 = \phi(a)\phi(b)
+        \]
+        so $\phi$ is indeed an endomorphism.
+
+        \item Note
+        \[
+            \phi(a+b) = a + b = \phi(a) + \phi(b)
+        \]
+        and
+        \[
+            \phi(ab) = ab = \phi(a)\phi(b)
+        \]
+        so $\phi$ is indeed an endomorphism.
+    \end{partquestions}
+
+    \item We have shown that the identity homomorphism is a homomorphism, so we just need to prove that it is a bijection.
+    \begin{itemize}
+        \item \textbf{Injective}: Suppose $a, b \in R$ are such that $\phi(a) = \phi(b)$. But since $\phi(x) = x$ thus $a = b$.
+        \item \textbf{Surjective}: As $\phi(x) = x$ thus any element is its own pre-image.
+    \end{itemize}
+    Therefore the identity homomorphism is an isomorphism.
+
+    \item Note that
+    \[
+        \phi(0_1) = \phi(0_1 + 0_1) = \phi(0_1) + \phi(0_1)
+    \]
+    so by 'adding' $-\phi(0_1)$ on both sides we see that $\phi(0_1) = 0_2$.
+
+    \item Note that
+    \[
+        \phi(1_1) = \phi(1_1 \times 1_1) = \phi(1_1)\phi(1_1).
+    \]
+    Since $R_1$ and $R_2$ are division rings, we may apply $\phi(1_1)^{-1}$ on both sides to yield $\phi(1_1) = 1_2$.
+
+    \item \begin{partquestions}{\alph*}
+        \item Notice that
+        \[
+            \phi(x + (-x)) = \phi(x) + \phi(-x)
+        \]
+        and
+        \[
+            \phi(x + (-x)) = \phi(0_1) = 0_2
+        \]
+        so subtracting $-\phi(x)$ on both sides yields $\phi(-x) = -\phi(x)$.
+
+        \item Notice that
+        \[
+            \phi(xx^{-1}) = \phi(x)\phi(x^{-1})
+        \]
+        and
+        \[
+            \phi(xx^{-1}) = \phi(1_1) = 1_2
+        \]
+        so applying $\phi(x)^{-1}$ on the left on both sides $\phi(x^{-1}) = \phi(x)^{-1}$.
+    \end{partquestions}
+
+    \item Recall that $\{0_2\}$, the trivial ideal, is an ideal of $R_2$, where $0_2$ is the additive identity of $R_2$. Therefore $\ker\phi = \phi^{-1}(\{0\})$ is an ideal of $R_1$ by \myref{prop-inverse-homomorphism-on-ideal-is-ideal}.
+
+    \item We show that $\phi$ is surjective. Note that for any $k \in \Z_n$, we have $k \leq n$. Thus, $\phi(k) = k$, so $\phi$ is surjective.
+    
+    We now find the kernel of $\phi$.
+    \begin{align*}
+        \ker\phi &= \{m \in \Z \vert \phi(m) = 0\}\\
+        &= \{m \in \Z \vert m \cong 0 \pmod n\}\\
+        &= \{kn \vert k \in \Z\}\\
+        &= n\Z.
+    \end{align*}
+
+    The FRIT (\myref{thrm-ring-isomorphism-1}) on $\phi$ tells us that
+    \[
+        \Z/n\Z \cong \Z_n.
+    \]
+
+    \item Note that $\phi(1) = 1$ is given. Now suppose $\phi(k) = k$ for some positive integer $k$. Then
+    \[
+        \phi(k+1) = \phi(k) + \phi(1) = k + 1
+    \]
+    by induction hypothesis and by the base case. Thus by mathematical induction we prove the statement.
+
+    \item We borrow some calculation in the case where $\phi(1) = 1$ from \myref{example-endomorphisms-of-Z} to yield $\phi(n) = n$ for all integers $n$. Now note that for any positive integer $n$ we have
+    \begin{align*}
+        1 = \phi(1) &= \phi\left(\underbrace{\frac1n + \frac1n + \cdots + \frac1n}_{n \text{ times}}\right)\\
+        &= \underbrace{\phi\left(\frac1n\right) + \phi\left(\frac1n\right) + \cdots + \phi\left(\frac1n\right)}_{n \text{ times}}\\
+        &= n\phi\left(\frac1n\right)
+    \end{align*}
+    which means $\phi\left(\frac1n\right) = \frac1n$.
+
+    Note that for any positive $\frac mn \in \Q$ with $m$ and $n$ as positive integers, we have
+    \[
+        \phi\left(\frac mn\right) = \phi(m)\phi\left(\frac1n\right) = m \times \frac1n = \frac mn
+    \]
+    and
+    \[
+        \phi\left(-\frac mn\right) = \phi(-m)\phi\left(\frac1n\right) = (-m) \times \frac1n = -\frac mn
+    \]
+    so $\phi(q) = q$ for any $q \in \Q$.
+\end{questions}
+
+\section{Polynomial Rings}
+\begin{questions}
+    \item We work step-by-step.
+    \begin{align*}
+        &\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)\\
+        &= \left((x + 3)(2x^2+3x-1)\right) + I\\
+        &= \left(2x^3 + 9x^2 + 8x - 3\right) + I\\
+        &= \left((2x+3)\underbrace{(x^2+3x-1)}_{\text{In }I} + x\right) + I\\
+        &= x + I
+    \end{align*}
+
+    \item One example would be $x^5$. Essentially any polynomial where the highest term is $x^5$ would work.
+    
+    \item \begin{partquestions}{\alph*}
+        \item We first suppose $R$ is a ring with identity 1. We may see 1 as a degree 0 polynomial in $R[x]$. Now for any polynomial $f(x) = a_0+a_1x+a_2x^2+\cdots+a_nx^n$ in $R[x]$ we have
+        \begin{align*}
+            (1)(f(x)) &= (1)(a_0+a_1x+\cdots+a_nx^n)\\
+            &= (1a_0)+(1a_1)x+\cdots+(1a_n)x^n\\
+            &= a_0+a_1x+\cdots+a_nx^n\\
+            &= f(x)
+        \end{align*}
+        and
+        \begin{align*}
+            (f(x))(1) &= (a_0+a_1x+\cdots+a_nx^n)(1)\\
+            &= (a_{0}1)+(a_{1}1)x+\cdots+(a_{n}1)x^n\\
+            &= a_0+a_1x+\cdots+a_nx^n\\
+            &= f(x)
+        \end{align*}
+        so 1 is the identity in $R[x]$.
+
+        Now suppose $R[x]$ is a ring with identity $\id(x)$. Note $\id(x)f(x) = f(x)\id(x) = f(x)$ for any $f(x) \in R[x]$, meaning $\deg(\id(x)f(x)) = \deg(f(x))$. We note that $\deg(\id(x)f(x)) = \deg(\id(x)) + \deg(f(x))$, this means that $\id$ has degree 0, meaning we may write $\id(x) = e$ for some $e \in R$. Now if $f(x) = a$ for some $a \in R$, we must have $\id(x)f(x) = ae = a$ and $f(x)\id(x) = ea = a$, meaning that $e$ is the identity of $R$.
+        
+        \item Suppose first that $R$ is a commutative ring. Let
+        \[
+            f(x) = \sum_{i=0}^ma_ix^i \text{ and } g(x) = \sum_{j=0}^nb_jx^j
+        \]
+        be polynomials in $R[x]$. Then
+        \begin{align*}
+            f(x)g(x) &= \left(\sum_{i=0}^ma_ix^i\right)\left(\sum_{j=0}^nb_jx^j\right)\\
+            &= \sum_{k=0}^{m+n}\left(\sum_{i=0}^k a_{i}b_{k-i}\right)x^k\\
+            &= \sum_{k=0}^{m+n}\left(\sum_{i=0}^k b_{k-i}a_{i}\right)x^k\\
+            &= \sum_{k=0}^{m+n}\left(\sum_{i=0}^k b_{i}a_{k-i}\right)x^k\\
+            &= \left(\sum_{j=0}^nb_jx^j\right)\left(\sum_{i=0}^ma_ix^i\right)\\
+            &= g(x)f(x)
+        \end{align*}
+        which therefore means that $R[x]$ is commutative.
+
+        Now suppose $R[x]$ is commutative. Consider two degree 0 polynomials $f(x) = a$ and $g(x) = b$. We thus have $ab = f(x)g(x) = g(x)f(x) = ba$ for all $a,b \in R$ which means $R$ is commutative.
+    \end{partquestions}
+\end{questions}
+
+%=========================================
