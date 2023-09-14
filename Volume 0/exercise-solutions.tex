@@ -1,0 +1,250 @@
+\chapter{Exercise Solutions}
+\section{Set Theory}
+\begin{questions}
+    \item \begin{partquestions}{\alph*}
+        \item True, as both 1 and 2 appear in the set $\{1, 2, 3, 4\}$.
+        \item False, 3 does not appear in $\{1, 2, 4\}$.
+        \item True. Any set is a subset of itself, including the empty set.
+        \item False, the set $S$ does not contain any element that is not in $S$. That is, $S \subseteq S$ but not $S \subset S$.
+        \item True. $S$ is indeed an element of $\{S, \emptyset\}$.
+        \item True. The set containing S is not an element of $\{S, \emptyset\}$.
+        \item False, the set $S$ is not a subset of the set $\{S, \emptyset\}$.
+        \item True. The set containing $S$ is a subset of the set containing $S$ and the empty set.
+    \end{partquestions}
+    
+    \item \begin{partquestions}{\alph*}
+        \item True.
+        \item False, $S \cup U = \{1, 2, 3, 4, (2, 2), (3, 3), (5, 5)\}$.
+        \item True.
+        \item True.
+        \item True.
+        \item False, $S \setminus \{1, 4\} = \{2, 3\}$, not $T = \{2, 3, 5\}$.
+        \item True.
+        \item True. $(S \cup T)^2 = \{(1,1), (2,2), (3,3), (4,4), (5,5)\}$, so $U = \{(2,2), (3,3), (5,5)\} \subset (S \cup T)^2$.
+    \end{partquestions}
+
+    \item We note $S$ are all the non-positive rational numbers, and the $T$ has elements $\{-2, 0, 2, \dots, 8, 10\}$. Hence $S \cap T$ has only two elements, namely $-2$ and $0$.
+\end{questions}
+
+\section{Functions / Maps}
+\begin{questions}
+    \item \begin{partquestions}{\roman*}
+        \item $f: \{1, 2, 3\} \to \{1, 4, 9, 16, 25\}, x \mapsto x^2$. (Or just $x \mapsto x^2$)
+        \item Domain is $\{1, 2, 3\}$, codomain is $\{1, 4, 9, 16, 25\}$, range is $\{1, 4, 9\}$.
+        \item The image of 2 under $f$ is $2^2 = 4$.
+        \item No. The element 3 would map to 27, which is not in the codomain.
+    \end{partquestions}
+    
+    \item It is not well-defined. Note $\frac 12 = \frac 24$, but $f(\frac12) = 1 + 2 = 3$ and $f(\frac24) = 2 + 4 = 6$.
+    
+    \item $fg(x) = \left(\frac1{x^2+1}\right)^2 - \frac1{x^2+1} + 1$.
+    
+    \item We prove the requirements of a bijection one by one.
+    \begin{itemize}
+        \item \textbf{Injective}: Suppose $x_1, x_2 \in \mathbb{N}$ such that $f(x_1) = f(x_2)$. We split into three cases.
+        \begin{itemize}
+            \item The first case is if $f(x_1) = f(x_2) = 0$. In this case, one sees clearly that $x_1 = x_2 = 1$.
+            \item The second case is if $f(x_1) = f(x_2) > 0$. Now since $x \neq 1$ (as this case leads to $f(x_1) = 0$), the `valid' odd numbers are at least 3. Therefore, $\frac{1-x}{2} \leq \frac{1-3}{2} = -1 < 0$, so $x_1$ and $x_2$ cannot be odd. Hence, $x_1$ and $x_2$ are even, meaning $\frac{x_1}{2} = \frac{x_2}{2}$ which quickly implies $x_1 = x_2$.
+            \item The third case is if $f(x_1) = f(x_2) < 0$. As argued above, this means that $x_1$ and $x_2$ must be odd numbers of at least 3. Hence, $\frac{1-x_1}{2} = \frac{1-x_2}{2}$ which quickly implies $x_1 = x_2$.
+        \end{itemize}
+        Thus, in all three cases, $f(x_1) = f(x_2)$ implies $x_1 = x_2$, meaning $f$ is injective.
+        \item \textbf{Surjective}: Suppose $y \in \mathbb{Z}$. We split into three cases again.
+        \begin{itemize}
+            \item If $y = 0$, then setting $x = 1$ satisfies $f(x) = y$.
+            \item Now suppose $y > 0$. We note $2y \in S$, and clearly $2y$ is an even integer. So setting $x = 2y$ satisfies $f(x) = \frac{2y}{y} = y$.
+            \item Suppose $y < 0$. Note $-2y > 0$, and $1 - 2y > 0 \in S$. Furthermore $1 - 2y$ is clearly an odd integer. Hence setting $x = 1 - 2y$ satisfies $f(x) = \frac{1-(1-2y)}{2} = y$.
+        \end{itemize}
+        Therefore for every $y \in \mathbb{Z}$, there exists a pre-image $x \in \mathbb{N}$ such that $f(x) = y$. Hence $f$ is surjective.
+    \end{itemize}
+    Therefore, as $f$ is both injective and surjective, $f$ is bijective. Hence, $|\mathbb{N}| = |\mathbb{Z}|$.
+\end{questions}
+
+\section{Mathematical Logic and Proof Writing}
+\begin{questions}
+    \item We work from the inner-most bracket outwards. We note $P$ is true, $Q$ is false, and $R$ is true.
+    \begin{itemize}
+        \item $P \lor Q$ is ``1 is a positive number \textbf{or} $-1 > 0$'', which is true since $P$ is true.
+        \item $(P \lor Q) \land R$ is ``(1 is a positive number or $-1 > 0$) \textbf{and} 1 is an odd number'', which is true since $P \lor Q$ is true and 1 is, indeed, an odd number.
+        \item $\lnot((P \lor Q) \land R)$ is false, since $(P \lor Q) \land R$ is true.
+    \end{itemize}
+    Hence the statement ``$\lnot((P \lor Q) \land R)$ is false'' is a true statement.
+    
+    \item The truth table for $P \land (\lnot Q)$ is given below:
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l||l|}
+            \hline
+            $P$ & $Q$ & $P\land (\lnot Q)$ \\ \hline
+            F   & F   & F                  \\ \hline
+            F   & T   & F                  \\ \hline
+            T   & F   & T                  \\ \hline
+            T   & T   & F                  \\ \hline
+        \end{tabular}
+    \end{table}
+    
+    \item \begin{partquestions}{\roman*}
+        \item $R$: $n$ is a multiple of 5 if and only if the last digit of $n$ is 0 or 5.
+        \item If $n$ is a multiple of 5, then its last digit necessarily has to be 5 or 0, hence $P \implies Q$. If the last digit is 5 or 0, then the number $n$ is a multiple of 5, hence $Q \implies P$. Therefore $P \iff Q$.
+    \end{partquestions}
+    
+    \item For brevity, let $R = (P \implies (\lnot Q))$ and $S = ((\lnot Q) \implies P)$. So we want to show that $((\lnot P) \iff Q) \equiv R \land S$.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l||l|l|l|l||l|l|}
+            \hline
+            $P$ & $Q$ & $\lnot P$ & $\lnot Q$ & $R$ & $S$ & $R \land S$ & $(\lnot P) \iff Q$ \\ \hline
+            F   & F   & T         & T         & T   & F   & F           & F                  \\ \hline
+            F   & T   & T         & F         & T   & T   & T           & T                  \\ \hline
+            T   & F   & F         & T         & T   & T   & T           & T                  \\ \hline
+            T   & T   & F         & F         & F   & T   & F           & F                  \\ \hline
+        \end{tabular}
+    \end{table}
+
+    From inspection, the truth tables of $(\lnot P) \iff Q$ and $R \land S$ are the same, proving our required result.
+    
+    \item For brevity, denote $X = P \lor \lnot Q$, $Y = \lnot R$, and $Z = (P \lor R) \land (P \lor \lnot R)$. Thus the original statement is something like $(X \land Y) \lor (X \land Z)$, which by distributive rules is equal to $X \land (Y \lor Z)$. Note $Z \equiv P \lor (R \land \lnot R)$ by distributive rules, which is equal to $P$ since $R \land \lnot R$ is always false. Hence $X \land (Y \lor Z) \equiv (P \lor \lnot Q) \land (\lnot R \lor P)$. Commutativity of $\lor$ means that $\lnot R \lor P \equiv P \lor \lnot R$, so $(P \lor \lnot Q) \land (\lnot R \lor P) \equiv (P \lor \lnot Q) \land (P \lor \lnot R)$. Now by distributive rules $(P \lor \lnot Q) \land (P \lor \lnot R) \equiv P \lor (\lnot Q \land \lnot R)$. Finally, by De Morgan's Law, $\lnot Q \land \lnot R \equiv \lnot(Q \lor R)$, so the original statement is equal to $P \lor \lnot(Q \lor R)$.
+    
+    \item $\left[(n \in \mathbb{Z}) \land (n > 2)\right] \implies \left[\exists a, b \in \mathbb{Z} \text{ s.t. } a^3 + b^4 = n^5\right]$
+    
+    \item \begin{partquestions}{\roman*}
+        \item Let
+        \begin{align*}
+            P:&\ (x \in \mathbb{R}) \land (x \neq 0)\\
+            Q:&\ \exists y \in \mathbb{R}, xy = 1
+        \end{align*}
+        then the given statement is $P \implies Q$ as required.
+        \item $(x \in \mathbb{R}) \land (x \neq 0) \land (\forall y \in \mathbb{R}, xy \neq 1)$
+    \end{partquestions}
+    
+    \item Suppose that $m$ and $n$ have the same parity. We split into two cases.
+    \begin{itemize}
+        \item If both $m$ and $n$ are even, then we may write $m = 2a$ and $n = 2b$ where $a$ and $b$ are integers. Hence
+        \[
+            m + n = 2a + 2b = 2(a+b)        
+        \]
+        which clearly means that $m + n$ is even.
+        \item If both $m$ and $n$ are odd, then we may write $m = 2a + 1$ and $n = 2b + 1$ where $a$ and $b$ are integers. Hence
+        \[
+            m + n = (2a + 1) + (2b + 1) = 2(a + b + 1)        
+        \]
+        which clearly means that $m+n$ is even.
+    \end{itemize}
+    Hence in both cases $m + n$ is even.
+    
+    \item We consider a proof by contrapositive; the statement that we want to prove is ''if \textbf{not} ($a$ is even or $b$ is odd) then $a(b^2+5)$ is \textbf{not} even''. That is, ''if $a$ is \textbf{not} even \textbf{and} $b$ is \textbf{not} odd then $a(b^2+5)$ is \textbf{not} even'', meaning ''if $a$ is odd and $b$ is even then $a(b^2+5)$ is odd''.
+    
+    Suppose that $a$ is odd and $b$ is even. Then we may write $a = 2m + 1$ and $b = 2n$ where $m$ and $n$ are integers. Hence
+    \begin{align*}
+        a(b^2+5) &= (2m+1)\left((2n)^2 + 5\right)\\
+        &= (2m+1)(4n^2 + 5)\\
+        &= 8mn^2 + 10m + 4n^2 + 5\\
+        &= 8mn^2 + 10m + 4n^2 + 4 + 1\\
+        &= 2(4mn^2 + 5m + 2n^2 + 2) + 1
+    \end{align*}
+    which clearly means that $a(b^2+5)$ is odd.
+    
+    \item By way of contradiction assume there exist integers $a$ and $b$ such that $2a + 4b = 1$. Then dividing both sides by 2 leads to $a + 2b = \frac12$. Note the left hand side is clearly an integer, while the right hand side is not an integer, a contradiction.
+    
+    \item By way of contradiction assume that $a$ and $b$ are positive real numbers, and $\frac{a+b}{2} < \sqrt{ab}$. This means $a+b<2\sqrt ab$. Squaring both sides yields $(a+b)^2 < 4ab$. Note
+    \[
+        (a+b)^2 = a^2 + 2ab + b^2 < 4ab    
+    \]
+    which implies $a^2 + b^2 < 2ab$, leading to $a^2 - 2ab + b^2 < 0$. However $a^2 - 2ab + b^2 = (a-b)^2 \geq 0$ for all positive real numbers $a$ and $b$. Hence we have $(a-b)^2 < 0$ and $(a-b)^2 \geq 0$, a contradiction.
+    
+    \item We note that a positive odd number is of the form $2n - 1$ where $n$ is a positive integer. Setting $a = 2n - 1$; we induct on $n$.
+    
+    When $n = 1$, we have $a^2 - 1 = (2(1) - 1)^2 - 1 = 1 - 1 = 0$ which is clearly a multiple of 8.
+    
+    Assume that the statement holds for some positive integer $k$, i.e. $(2k-1)^2 - 1 = 8m$ for some integer $m$. We show that the statement holds for $k + 1$.
+    
+    We note that $(2k-1)^2 - 1 = 4k^2 - 4k$. Observe
+    \begin{align*}
+        (2(k+1)-1)^2 - 1 &= (2k+1)^2 - 1\\
+        &= 4k^2 + 4k + 1 - 1\\
+        &= (4k^2 - 4k) + 8k\\
+        &= 8m + 8k & (\text{by hypothesis})\\
+        &= 8(m+k)
+    \end{align*}
+    which means that $(2(k+1)-1)^2 - 1$ is a multiple of 8, proving that the statement holds for $k+1$. By mathematical induction, $a^2 - 1$ is a multiple of 8 for all positive odd integers $a$.
+    
+    \item We induct on $n$ using strong induction.
+    
+    We prove the base cases of 1 and 2 first:
+    \begin{itemize}
+        \item When $n = 1$, we have $2^1 - 1 - 1 = 0 = f(1)$, so this case is true.
+        \item When $n = 2$, we have $2^2 - 2 - 1 = 1 = f(2)$, so this case is also true.
+    \end{itemize}
+    
+    Assume that for some positive integer $k \geq 2$, for all positive integers $m \leq k$ we have $f(m) = 2^m - m - 1$. We want to show that $f(k+1) = 2^{k+1} - (k+1) - 1$.
+    \begin{align*}
+        f(k+1) &= 3f(k) - 2f(k-1) + 1\\
+        &= 3(2^k - k - 1) - & (\text{hypothesis})\\
+        &\quad\quad2(2^{k-1} - (k-1) - 1) + 1 & (\text{hypothesis}) \\
+        &= 3\times 2^k - 3k - 3 -2^k + 2k + 1\\
+        &= 2\times2^k - k - 2\\
+        &= 2^{k+1} - (k+1) - 1
+    \end{align*}
+    so the statement holds for $k+1$.
+    
+    By mathematical induction, we conclude $f(n) = 2^n - n - 1$ for all positive integers $n$.
+    
+    \item We prove the forward direction using direct proof. Assume $n$ is one more than a multiple of 5. Then we may write $n = 5a + 1$ where $a$ is an integer. Note $5a + 1 = 5a + (5 - 4) = (5a + 5) - 4 = 5(a+1) - 4$. Setting $k = a+1$ yields required result.
+    
+    We now prove the reverse direction, using direct proof as well. Assume $n = 5k - 4$. Observe $5k - 4 = 5k - 5 + 1 = 5(k-1) + 1$, meaning $n$ is one more than a multiple of 5.
+    
+    \item The number 7 satisfies this as $7 = 2^3 - 1$ and $7 = 3^2 - 2$.
+    
+    \item \begin{partquestions}{\roman*}
+        \item We use a proof by contradiction to prove this claim. Seeking a contradiction, assume $y$ is rational. Write $y = \frac pq$ where $p$ and $q$ are integers. Note $2^y = 2^{\frac pq}$ and $2^y = 2^{2\log_2{3}} = 9$. Hence $2^{\frac pq} = 9$ meaning $2^p = 9^q$. However $2^p$ is always even and $9^q$ is always odd, a contradiction.
+        \item Note
+        \[
+            x^y = (\sqrt2)^{2\log_2{3}} = \left(\sqrt{2}^2\right)^{\log_2{3}} = 2^{\log_2{3}} = 3        
+        \]
+        which is rational.
+    \end{partquestions}
+\end{questions}
+
+\section{Number Theory}
+\begin{questions}
+    \item $44100 = 2^2 \times 3^2 \times 5^2 \times 7^2$.
+    \item $-210 = 11 - 13 \times 17$, so $a = 11$ and $b = 17$.
+    \item $\gcd(-112, -35) = 7$ since $-112 = -16 \times 7$ and $-35 = -5 \times 7$, with 7 being the largest integer that achieves this.
+    \item $\lcm(-112, -35) = 560$ since $560 = -5 \times -112$ and $-35 = -16 \times -35$, with 560 being the smallest \textit{positive} integer that achieves this.
+    \item \begin{partquestions}{\roman*}
+        \item $\gcd(42, 70) = 14$ since $42 = 3 \times 14$ and $70 = 5 \times 14$, and 14 is the largest integer achieving this.
+        \item $\lcm(42, 70) = \frac{42 \times 70}{\gcd(m, n)} = \frac{2940}{14} = 210$ by \myref{prop-product-of-gcd-and-lcm}.
+        \item Note that $x = 2$ and $y = -1$ works as $42 \times 2 + 70 \times (-1) = 84 - 70 = 14$.
+    \end{partquestions}
+\end{questions}
+
+\section{Modular Arithmetic}
+\begin{questions}
+    \item \begin{partquestions}{\alph*}
+        \item $17 \mod 5 = 2$ since $17 = 3 \times 5 + 2$ by the division algorithm.
+        \item As $19 = 3 \times 5 + 4$, thus $19 \equiv 4 \pmod 5$. Hence $x = 4$.
+        \item $A \mod n = 5 \mod 3 = 2$.
+    \end{partquestions}
+    \item $-n = (-1) \times 2n + n$, which means that $-n \equiv n \pmod{2n}$.
+    \item Finding the last two digits of a number is the same as finding the remainder of that number when divided by 100. We note $778899 \equiv 99 \pmod{100}$, so $778899^{112233} \equiv 99^{112233} \pmod{100}$. Furthermore, $99 \equiv -1 \pmod{100}$, so $99^{112233}\equiv (-1)^{112233} \equiv -1 \equiv 99 \pmod{100}$. Hence the last two digits of $778899^{112233}$ are both 9.
+    \item Note $123 \equiv 3 \pmod 5$. One can easily find by trial and error that 2 is the multiplicative inverse of 3, since $3 \times 2 = 6 \equiv 1 \pmod 5$. Hence the multiplicative inverse of 123 is 2 modulo 5.
+\end{questions}
+
+\section{Polynomial Algebra}
+\begin{questions}
+    \item \begin{partquestions}{\alph*}
+        \item The degree of $f(x)$ is 2 and the degree of $g(x)$ is 3, so $\deg(fg(x)) = \deg(f(x))\deg(g(x)) = 2 \times 3 = 6$.
+        \item We note $f(x)g(x) = 4x^5+3x^4+6x^3+4x^2+2x+1$, so the term with degree 4 is $3x^4$.
+    \end{partquestions}
+
+    \item We note that
+    \[
+        x^4 + 2x^3 + 3x^2 - 2x + 2 = (x^2 - 1)(x^2+2x+4) + 6
+    \]
+    so $Q(x) = x^2+2x+4$ and $R(x) = 6$.
+
+    \item The term with degree 6 is
+    \[
+        {9 \choose 7}(7x)^7(-3)^{9-7} = -266827932x^6
+    \]
+    so its coefficient is -266827932.
+\end{questions}
