@@ -889,21 +889,7 @@ We now define the quotient ring.
         \item $(5+6\Z)^2 = 25+6\Z = (1 + 6\times4) + 6\Z = 1 + 6\Z$.
     \end{itemize}
 \end{example}
-\begin{example}
-    Let $R = \Z[x]$ and $I$ be the subring of $\Z[x]$ containing polynomials of degree of at least 2. We show that $I$ is an ideal of $R$.
-    \begin{proof}
-        Take $f(x) \in R$ and $g(x) \in I$. Recall that
-        \[
-            \deg(f(x)g(x)) = \deg(f(x)) + \deg(g(x)).
-        \]
-        Since $I$ contains polynomials of degree of at least 2, this means that $\deg(f(x)g(x)) \geq 2$. Hence $f(x)g(x) \in I$. A similar argument can be used to show $g(x)f(x) \in I$. Thus $I$ is an ideal of $R$.
-    \end{proof}
-    Note that all cosets in $R/I$ take the form $(ax+b) + I$ since all higher terms are ``absorbed'' into $I$. Thus we may simplify the multiplication of elements in $I$ as follows.
-    \begin{align*}
-        ((ax+b)+I)((cx+d)+I) &= (\underbrace{acx^2}_{\text{In } I} + (ad+bc)x + bd) + I\\
-        &= ((ad+bc)x + bd) + I.
-    \end{align*}
-\end{example}
+
 \begin{exercise}
     Let
     \begin{align*}
@@ -922,7 +908,7 @@ We now define the quotient ring.
     \end{partquestions}
 \end{exercise}
 
-\newpage
+% \newpage
 
 We end this section by introducing the test for ideals\index{test for ideals}.
 \begin{theorem}[Test for Ideal]\label{thrm-test-for-ideal}
@@ -940,8 +926,6 @@ We end this section by introducing the test for ideals\index{test for ideals}.
 \begin{remark}
     Like with the subgroup test (\myref{thrm-subgroup-test}), we can check whether $I$ is non-empty by seeing if the additive identity 0 is in $I$.
 \end{remark}
-
-\newpage
 
 \section{Ideal Operations}
 We first look at the sum of ideals.
@@ -973,8 +957,6 @@ We first look at the sum of ideals.
     Therefore $\ideal{a} + \ideal{b}$ is a (two-sided) ideal by the test for ideal.
 \end{proof}
 
-\newpage
-
 We now look at the product of ideals.
 \begin{definition}\index{ideal!product}
     Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then the product of the ideals $\ideal{a}$ and $\ideal{b}$ is
@@ -982,12 +964,6 @@ We now look at the product of ideals.
         \ideal{ab} = \{a_1b_1 + a_2b_2 + \cdots + a_nb_n \vert a_i\in\ideal{a},\;b_i\in\ideal{b}\}.
     \]
 \end{definition}
-One may question the necessity for the summing of products in the product of ideals. To answer this, consider the following example.
-\begin{example}
-    Let $R = \Z[x]$ and $I = \{2a_0 + a_1x + \cdots + a_nx^n \vert a_i \in \Z\}$, i.e. $I$ is the set of all polynomials with integer coefficients and with an even constant term. Suppose we defined $I^2 = \{i^2 \vert i \in I\}$. One sees clearly that the polynomials 2 and $x$ belong in $I$, so 4 and $x^2$ belong in $I^2$. However, we note that $x^2 + 4 \notin I^2$ since $x^2 + 4$ cannot be factored over the integers.
-
-    This example gives a reason why we need to sum multiple products ($a_1b_1 + a_2b_2 + \cdots + a_nb_n$) in the definition for the product of ideals.
-\end{example}
 
 \begin{example}
     Consider the ring $\Z$ and the ideals $I = \{2n \vert n \in \Z\}$ and $J = \{3n \vert n \in \Z\}$. Then their product is
@@ -1082,9 +1058,8 @@ We look at one example of a PID.
 \begin{remark}
     In the context of $\Z$, we usually write the principal ideal $\princ{m}$ as $m\Z$.
 \end{remark}
-\begin{exercise}
-    Let $I = \princ{x^2 + 3x - 1}$ be an ideal of $\Z[x]$. Simplify $\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)$ in the quotient ring $\Z[x]/I$.
-\end{exercise}
+
+\newpage
 
 \section{Prime and Maximal Ideals}
 We look at the definition of a prime ideal.
@@ -1099,15 +1074,16 @@ We look at the definition of a prime ideal.
 
     Now suppose we have a non-trivial prime ideal $P$ of $\Z$. As $\Z$ is a PID, we may write $P = n\Z$ where $n \geq 2$ (note that if $n = 1$ we will get $P = \Z$). Furthermore write $n = ab$ where $1 \leq a,b \leq n$. Since $ab = n \in P$, therefore $a \in P$ or $b \in P$. Without loss of generality assume $a \in P$. We note $P = n\Z = \{\dots, -2n, -n, 0, n, 2n, \dots\}$ and $1 \leq a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$, which shows that $n$ is prime. Hence, the prime ideal $P = n\Z$ where $n$ is prime.
 \end{proof}
+% \begin{exercise}
+%     Determine whether the principal ideal
+%     \[
+%         \princ{3, x^2 + 8} = \{3f(x) + (x^2+8)g(x) \vert f(x),g(x) \in \Z[x]\}
+%     \]
+%     is prime in $\Z[x]$.
+% \end{exercise}
 \begin{exercise}
-    Determine whether the principal ideal
-    \[
-        \princ{3, x^2 + 8} = \{3f(x) + (x^2+8)g(x) \vert f(x),g(x) \in \Z[x]\}
-    \]
-    is prime in $\Z[x]$.
+    Determine whether the principal ideal $\princ{2} = \{0, 2, 4, 6\}$ is prime in $\Z_8$.
 \end{exercise}
-
-\newpage
 
 We now look at the definition of a maximal ideal.
 \begin{definition}
@@ -1116,31 +1092,25 @@ We now look at the definition of a maximal ideal.
 \begin{remark}
     To show maximality of an ideal, we usually assume that $I \neq M$ and show that $I$ has to be equal to $R$.
 \end{remark}
-\begin{proposition}
-    $\princ{x^2 + 1}$ is a maximal ideal of $\R[x]$.
-\end{proposition}
-\begin{proof}
-    Clearly $\princ{x^2 + 1} \subset \R[x]$. Suppose we have an ideal $I$ of $\R[x]$ such that $\princ{x^2 + 1} \subset I \subseteq \R[x]$. Our goal is to show $I = \R[x]$.
+\begin{example}
+    We show that $M = \princ{2} = \{0, 2, 4, \dots, 32, 34\}$ is a maximal ideal of $\Z_{36}$.
 
-    Take a $P(x) \in I \setminus \princ{x^2 + 1}$. Polynomial Division (\myref{prop-polynomial-division}) tells us that we may write
+    Suppose we have an ideal $I$ of $\Z_{36}$ such that $M \subset I \subseteq \Z_{36}$. We show that $I = \Z_{36}$.
+
+    Take an $n \in I \setminus M$. Then Euclid's division lemma (\myref{lemma-euclid-division}) tells us that we may write
     \[
-        P(x) = (x^2+1)Q(x) + R(x) \text{ with } \deg(R(x)) \leq 1.
+        n = 2q + r \text{ with } 0 \leq r < 2
     \]
-    Now since $P(x) \notin \princ{x^2 + 1}$, there must be a remainder after performing polynomial division. Therefore $0 \leq \deg(R(x)) \leq 1$, meaning we may write $R(x) = ax + b$ for some $a,b \in \R$ and both are not zero. Note that
-    \[
-        R(x) = ax + b = \underbrace{P(x)}_{\text{In }I} - \underbrace{(x^2+1)Q(x)}_{\text{In }I} \in I.
-    \]
-    Furthermore, we have $(ax-b)(ax+b) = a^2x^2 - b^2 \in I$ since $(ax+b) \in I$ and $I$ is a left ideal, and $a^2(x^2+1) = a^2x^2 + a^2 \in I$ since $x^2+1 \in I$ and $I$ is a left ideal. Thus their difference $a^2 + b^2 \in I$. As not both $a$ and $b$ are zero, therefore $a^2 + b^2 \neq 0$. In fact,
-    \[
-        1 = \underbrace{(a^2+b^2)}_{\text{In }I}\underbrace{\left(\frac1{a^2+b^2}\right)}_{\text{In }\R[x]} \in I
-    \]
-    which therefore means that $I = \R[x]$ by \myref{exercise-ideal-containing-1-is-whole-ring}. Hence $\princ{x^2 + 1}$ is a maximal ideal of $\R[x]$.
-\end{proof}
+    Now since $n \notin M$, therefore $n$ is not a multiple of 2. Thus there must be a remainder, i.e. $1 \leq r < 2$, meaning that $r = 1$. Furthermore, one sees that $r = 1 = n - 2q$, and because $n \in I$ and $2q \in I$ (since $2q \in M$ and $M \subset I$), therefore $1 \in I$. Hence, by \myref{exercise-ideal-containing-1-is-whole-ring}, $I = \Z_{36}$, which means that $\princ{2}$ is a maximal ideal of $\Z_{36}$.
+\end{example}
 \begin{exercise}
     What conditions must be placed on the positive integer $n$ so that $n\Z$ is a maximal ideal in $\Z$?
 \end{exercise}
 
-We now state some important results regarding prime and maximal ideals here.
+We end this section by stating some important results regarding prime and maximal ideals.
+
+\newpage
+
 \begin{theorem}\label{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}
     Let $R$ be a commutative ring with identity, and let $P$ be an ideal of $R$. Then $P$ is prime if and only if $R/P$ is an integral domain.
 \end{theorem}
@@ -1280,10 +1250,6 @@ To end this chapter, we look at two constructs relating to a ring.
     Show that $I$ is an ideal of $\Mn{2}{\Z}$.
 \end{problem}
 
-\begin{problem}
-    Show that $\princ{x}$ is a prime ideal in $\Z[x]$.
-\end{problem}
-
 \begin{problem}\label{problem-ring-is-field-iff-no-proper-ideals}
     Let $R$ be a commutative ring with identity and $I$ be an ideal of $R$.
     \begin{partquestions}{\alph*}
@@ -1341,9 +1307,9 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
 \end{remark}
 
 \begin{example}
-     We show that the map $\phi: \Z \to \Z/n\Z, x \mapsto x + n\Z$ is a ring homomorphism.
+    We show that the map $\phi: \Z \to \Z/n\Z, x \mapsto x + n\Z$ is a ring homomorphism.
      
-     \begin{proof}
+    \begin{proof}
         Let $a, b \in \Z$. Note
         \begin{align*}
             \phi(a+b) &= (a+b) + n\Z\\
@@ -1357,7 +1323,7 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
             &= \phi(a)\phi(b)
         \end{align*}
         so $\phi$ is a homomorphism.
-     \end{proof}
+    \end{proof}
 \end{example}
 
 \begin{example}
@@ -1386,9 +1352,17 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
     \end{proof}
 \end{example}
 
+%TODO: Replace with another exercise; move this to polynomial rings (somewhere?)
 \begin{exercise}
     Let $R$ be a ring. The \textbf{evaluation homomorphism}\index{evaluation homomorphism} is $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$ and $a \in R$. Prove that $\phi_a$ is indeed a ring homomorphism.
 \end{exercise}
+% \begin{exercise}
+%     Define the ring
+%     \[
+%         R = \left\{\begin{pmatrix}a&b\\0&c\end{pmatrix}\vert a,b,c\in\Z\right\}.
+%     \]
+%     Let $\phi: R \to \Z, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto a+c$. Is $\phi$ a ring homomorphism?
+% \end{exercise}
 
 An endomorphism is a specific type of homomorphism.
 \begin{definition}
@@ -1701,6 +1675,7 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
     Therefore, $\psi$ is a bijective ring homomorphism, i.e. $\psi$ is a ring isomorphism, proving the FRIT.
 \end{proof}
 
+%TODO: Replace
 \begin{example}
     We show that $\Z[x] / \princ{x} \cong \Z$ by using the FRIT.
 
@@ -1907,15 +1882,6 @@ In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents
 \end{problem}
 
 \begin{problem}
-    Let $I = \{f(x) \in \Z[x] \vert f(-2) = 0\}$ be a subset of $\Z[x]$, and let the map $\phi:\Z[x]\to\Z, f(x) \mapsto f(-2)$.
-    \begin{partquestions}{\roman*}
-        \item Show that $\phi$ is a ring homomorphism.
-        \item Show that $I$ is an ideal of $\Z[x]$.
-        \item Hence determine if the ideal $I$ is prime, maximal, or both.
-    \end{partquestions}
-\end{problem}
-
-\begin{problem}
     Find all ring endomorphisms of $\Z_{10}$.\newline
     Hence find all ring isomorphisms $\psi: \Z_{10} \to \Z_{10}$.
 \end{problem}
@@ -2008,6 +1974,10 @@ Let's look at some examples of polynomial rings.
         \begin{pmatrix}2&1\\-2&0\end{pmatrix} + \begin{pmatrix}\sqrt2&1\\1&1\end{pmatrix}x + \begin{pmatrix}5&4\\e&2\end{pmatrix}x^2 + \begin{pmatrix}0&1\\0&0\end{pmatrix}x^5.
     \]
 \end{example}
+
+\begin{exercise}
+    Let $I = \princ{x^2 + 3x - 1}$ be an ideal of $\Z[x]$. Simplify $\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)$ in the quotient ring $\Z[x]/I$.
+\end{exercise}
 
 We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a variable.
 \begin{example}
@@ -2115,6 +2085,21 @@ We can now state the theorem that produces a condition for a ring to be an integ
         \item Prove that $R$ is a commutative ring if and only if $R[x]$ is a commutative ring.
     \end{partquestions}
 \end{exercise}
+
+\newpage
+
+\section{Problems}
+\begin{problem}
+    Show that $\princ{x}$ is a prime ideal in $\Z[x]$.
+\end{problem}
+\begin{problem}
+    Let $I = \{f(x) \in \Z[x] \vert f(-2) = 0\}$ be a subset of $\Z[x]$, and let the map $\phi:\Z[x]\to\Z, f(x) \mapsto f(-2)$.
+    \begin{partquestions}{\roman*}
+        \item Show that $\phi$ is a ring homomorphism.
+        \item Show that $I$ is an ideal of $\Z[x]$.
+        \item Hence determine if the ideal $I$ is prime, maximal, or both.
+    \end{partquestions}
+\end{problem}
 
 %=========================================
 \appendix
@@ -2256,20 +2241,14 @@ We can now state the theorem that produces a condition for a ring to be an integ
         \item Let 1 be the identity of $R$. Then $R = \{r \vert r \in R\} = \{1r \vert r \in R\} = \princ{1}$.
     \end{partquestions}
 
-    \item We work step-by-step.
-    \begin{align*}
-        &\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)\\
-        &= \left((x + 3)(2x^2+3x-1)\right) + I\\
-        &= \left(2x^3 + 9x^2 + 8x - 3\right) + I\\
-        &= \left((2x+3)\underbrace{(x^2+3x-1)}_{\text{In }I} + x\right) + I\\
-        &= x + I
-    \end{align*}
-
-    \item The principal ideal $I = \princ{3, x^2+8}$ is not prime in $\Z[x]$. Note that any element in $I$ has degree of at least 2. However, if one chooses $f(x) = -3$ and $g(x) = 1$ we see that
-    \[
-        3(-3) + (x^2+8)(1) = x^2 - 1 = (x+1)(x-1) \in I
-    \]
-    but neither $x+1$ not $x-1$ belong in $I$. Therefore $I$ is not prime.
+    \item We show that $\princ2$ is indeed a prime ideal of $\Z_8$. Without loss of generality, assume that $a \leq b$.
+    \begin{itemize}
+        \item If $ab = 0 \in \princ{2}$, then clearly $a = b = 0$ which is in $\princ{2}$.
+        \item If $ab = 2 \in \princ{2}$, then $a = 1$ and $b = 2$. Note $b = 2 \in \princ{2}$.
+        \item If $ab = 4 \in \princ{2}$, then $a = 1$ and $b = 4$ or $a = b = 2$. Note $2 \in \princ{2}$ and $4 \in \princ{2}$.
+        \item If $ab = 6 \in \princ{2}$, then $a = 1$ and $b = 6$ or $a = 2$ and $b = 3$. Note $2 \in \princ{2}$ and $6 \in \princ{2}$.
+    \end{itemize}
+    In all cases, we see that if $ab \in \princ{2}$, then at least one of $a$ or $b$ is also in $\princ{2}$. Thus $\princ{2}$ is a prime ideal of $\Z_8$.
 
     \item Note that $\Z$ is a PID. We claim that $n$ has to be prime. By way of contradiction suppose $n$ is composite, meaning $n = ab$ where $2 \leq a,b < n$. Note $\princ{n} = \princ{ab} = \{\dots, -ab, 0, ab, \dots\}$. Observe that
     \begin{align*}
@@ -2418,6 +2397,15 @@ We can now state the theorem that produces a condition for a ring to be an integ
 
 \section{Polynomial Rings}
 \begin{questions}
+    \item We work step-by-step.
+    \begin{align*}
+        &\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)\\
+        &= \left((x + 3)(2x^2+3x-1)\right) + I\\
+        &= \left(2x^3 + 9x^2 + 8x - 3\right) + I\\
+        &= \left((2x+3)\underbrace{(x^2+3x-1)}_{\text{In }I} + x\right) + I\\
+        &= x + I
+    \end{align*}
+
     \item One example would be $x^5$. Essentially any polynomial where the highest term is $x^5$ would work.
     
     \item \begin{partquestions}{\alph*}
@@ -2751,17 +2739,6 @@ No problems.
     \end{itemize}
     Therefore by the test for ideal we have $I$ is an ideal of $\Mn{2}{\Z}$.
 
-    \item For brevity let $I = \princ{x} = \{xP(x) \vert P(x) \in \Z[x]\}$. This means that $I$ is the set of polynomials with integer coefficients and with constant term 0. Now suppose $f(x), g(x) \in \Z[x]$; write
-    \begin{align*}
-        f(x) &= a_0 + a_1x + \cdots + a_mx^m\\
-        g(x) &= b_0 + b_1x + \cdots + b_nx^n
-    \end{align*}
-    where $a_i, b_i \in \Z$ and $m$ and $n$ are positive integers. Note that
-    \[
-        f(x)g(x) = a_0b_0 + (a_1b_0+a_0b_1)x + \cdots.
-    \]
-    Now if $f(x)g(x) \in I$, this means that $a_0b_0 = 0$. Hence either $a_0 = 0$ or $b_0 = 0$, meaning that either $f(x)$ has zero constant term (so $f(x) \in I$) or $g(x)$ has zero constant term (so $g(x) \in I$). Thus $I$ is prime.
-
     \item \begin{partquestions}{\alph*}
         \item Suppose $I$ is not the trivial ring; we want to show that $I = R$. Since $I$ is non-trivial there there exists a non-zero element $a$ in $I$. Note that $a^{-1}$ exists since $R$ is a field, so $a$ is a unit. By \myref{exercise-ideal-containing-1-is-whole-ring} this means $I = R$. Note that $\{0\} = \princ{0}$ and $R = \princ{1}$ by \myref{exercise-trivial-ideal-and-whole-ring-are-principal-ideals}, so $R$ is indeed a PID.
 
@@ -2969,34 +2946,6 @@ No problems.
             i'r' = \phi(i)\phi(r) = \phi(\underbrace{ir}_{\text{In }I}) \in \phi(I)
         \end{align*}
         so $\phi(I)$ is an ideal of $R'$.
-    \end{partquestions}
-
-    \item \begin{partquestions}{\roman*}
-        \item Let $f(x), g(x) \in \Z[x]$. Then
-        \[
-            \phi(f(x) + g(x)) = f(-2) + g(-2) = \phi(f(x)) + \phi(g(x))
-        \]
-        and
-        \[
-            \phi(f(x)g(x)) = f(-2)g(-2) = \phi(f(x))\phi(g(x))
-        \]
-        so $\phi$ is a ring homomorphism.
-
-        \item Note that
-        \begin{align*}
-            \ker\phi &= \{f(x) \in \Z[x] \vert \phi(f(x)) = 0\}\\
-            &= \{f(x) \in \Z[x] \vert f(-2) = 0\}\\
-            &= I.
-        \end{align*}
-        \myref{prop-kernel-is-an-ideal} tells us that $\ker\phi$ is an ideal of $\Z[x]$, so $I$ is an ideal of $\Z[x]$.
-
-        \item We first show that $\phi$ is surjective. Let $n \in \Z$, note that $n$ is a degree zero polynomial, so $n \in \Z[x]$. Clearly $\phi(n) = n$ so $n$ is its own pre-image. Therefore $\im\phi = \Z$.
-        
-        By FRIT (\myref{thrm-ring-isomorphism-1}),
-        \[
-            \Z[x]/I \cong \Z.
-        \]
-        Note that $\Z$ is an integral domain but not a field. Thus $I$ is prime but not maximal.
     \end{partquestions}
 
     \item Suppose $\phi: \Z_{10}\to\Z_{10}$ is a ring homomorphism. Let $a = \phi(1)$. By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent} we know that $a^2 = \phi(1)^2 = \phi(1) = a$. Once again, we cannot assume that 0 and 1 are the only idempotents in $\Z_{10}$; by exhaustion we see that
@@ -3221,6 +3170,48 @@ No problems.
         \[
             \frac{R/I}{J/I} \cong R/J.
         \]
+    \end{partquestions}
+\end{questions}
+
+\section{Polynomial Rings}
+\begin{questions}
+    \item For brevity let $I = \princ{x} = \{xP(x) \vert P(x) \in \Z[x]\}$. This means that $I$ is the set of polynomials with integer coefficients and with constant term 0. Now suppose $f(x), g(x) \in \Z[x]$; write
+    \begin{align*}
+        f(x) &= a_0 + a_1x + \cdots + a_mx^m\\
+        g(x) &= b_0 + b_1x + \cdots + b_nx^n
+    \end{align*}
+    where $a_i, b_i \in \Z$ and $m$ and $n$ are positive integers. Note that
+    \[
+        f(x)g(x) = a_0b_0 + (a_1b_0+a_0b_1)x + \cdots.
+    \]
+    Now if $f(x)g(x) \in I$, this means that $a_0b_0 = 0$. Hence either $a_0 = 0$ or $b_0 = 0$, meaning that either $f(x)$ has zero constant term (so $f(x) \in I$) or $g(x)$ has zero constant term (so $g(x) \in I$). Thus $I$ is prime.
+
+    \item \begin{partquestions}{\roman*}
+        \item Let $f(x), g(x) \in \Z[x]$. Then
+        \[
+            \phi(f(x) + g(x)) = f(-2) + g(-2) = \phi(f(x)) + \phi(g(x))
+        \]
+        and
+        \[
+            \phi(f(x)g(x)) = f(-2)g(-2) = \phi(f(x))\phi(g(x))
+        \]
+        so $\phi$ is a ring homomorphism.
+
+        \item Note that
+        \begin{align*}
+            \ker\phi &= \{f(x) \in \Z[x] \vert \phi(f(x)) = 0\}\\
+            &= \{f(x) \in \Z[x] \vert f(-2) = 0\}\\
+            &= I.
+        \end{align*}
+        \myref{prop-kernel-is-an-ideal} tells us that $\ker\phi$ is an ideal of $\Z[x]$, so $I$ is an ideal of $\Z[x]$.
+
+        \item We first show that $\phi$ is surjective. Let $n \in \Z$, note that $n$ is a degree zero polynomial, so $n \in \Z[x]$. Clearly $\phi(n) = n$ so $n$ is its own pre-image. Therefore $\im\phi = \Z$.
+        
+        By FRIT (\myref{thrm-ring-isomorphism-1}),
+        \[
+            \Z[x]/I \cong \Z.
+        \]
+        Note that $\Z$ is an integral domain but not a field. Thus $I$ is prime but not maximal.
     \end{partquestions}
 \end{questions}
 
