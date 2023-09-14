@@ -109,7 +109,7 @@
 
 ### Volume I Changes
 - Fixed inconsistent use of "division algorithm" and "Euclid's division lemma"
-    - We now **only** use "Euclid's division lemma"
+  - We now **only** use "Euclid's division lemma"
 - Added preambles to all chapters
 - Fixed incorrect use of $\pmod{n}$ in chapter I.2 (specifically, in proposition I.2.1.3 and in exercise I.2.1)
 - Fixed erroneous calculation in theorem I.2.4.5 (specifically, fixed incorrect expression of $g^{j-1}$ to $g^{j-i}$)
@@ -178,10 +178,10 @@
 - Change volume II cover image
 - Update `README.md`
 - Reorganise repository
-    - Renamed all directories to use Arabic numerals instead of roman numerals
-    - Renamed source files to reduce their name length
-    - Renamed `SharedCommands.tex` to `Common Commands.tex`
-    - Renamed images
+  - Renamed all directories to use Arabic numerals instead of roman numerals
+  - Renamed source files to reduce their name length
+  - Renamed `SharedCommands.tex` to `Common Commands.tex`
+  - Renamed images
 
 ---
 ## [Build 9](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-08...build-09)
@@ -241,8 +241,8 @@ Other Changes:
 Book Content Changes:
 - Added chapter I.12, a chapter on the classification of the finite simple groups
 - Updated formatting of volumes 0 and 1.
-    - Fixed overfull `hbox`es
-    - Fixed "token not allowed" errors
+  - Fixed overfull `hbox`es
+  - Fixed "token not allowed" errors
 - Fix grammar in image acknowledgements in volume 1
 - Fix the month format in the bibliography
 - Fix publisher for "Algebra" by Cohn
@@ -279,7 +279,7 @@ Changelog:
 - Add edition notice to all volumes
 - Made front matter pages use lowercase roman numerals
 - Reformat headings for solutions
-    - Make the solutions' sections (as well as the image acknowledgement sections) be appendices
+  - Make the solutions' sections (as well as the image acknowledgement sections) be appendices
 - Fix critical error with a definition in section I.11.3
 - Added more parts to a problem in chapter I.3
 - Added a new problem to chapter I.11
