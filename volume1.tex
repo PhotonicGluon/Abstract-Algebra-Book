@@ -1,0 +1,122 @@
+\input{common-commands.tex}
+\usepackage{xr}
+
+%=========== Global Variables ============
+\newcommand{\version}{0.16}
+\newcommand{\volumenumber}{1}
+\newcommand{\volumename}{Groups}
+\newcommand{\volumeimage}{icosahedron.png}
+
+%============== Resources ================
+\externaldocument{volume0/number-theory}
+\externaldocument{volume0/modular-arithmetic}
+
+%=========== Path to images ==============
+\graphicspath{{volume1/images}}
+
+%=========== Custom Commands =============
+\newcommand{\An}[1]{\mathrm{A}_{#1}}                  % Alternating group of degree n
+\newcommand{\Aut}[1]{\mathrm{Aut}(#1)}                % Group of automorphisms of G
+\newcommand{\C}[2]{\mathrm{C}_{#1}(#2)}               % Centralizer of an element in G
+\newcommand{\Cl}[1]{\mathrm{Cl}(#1)}                  % Conjugacy class of the element x
+\newcommand{\Cn}[1]{\mathrm{C}_{#1}}                  % Cyclic group of order n
+\newcommand{\GL}[2]{\mathrm{GL}_{#1}\left(#2\right)}  % General Linear Group of degree n
+\newcommand{\Inn}[1]{\mathrm{Inn}(#1)}                % Group of inner automorphisms of G
+\newcommand{\N}[2]{\mathrm{N}_{#1}(#2)}               % Normalizer of S in G
+\newcommand{\Out}[1]{\mathrm{Out}(#1)}                % Group of outer automorphisms of G
+\newcommand{\SL}[2]{\mathrm{SL}_{#1}\left(#2\right)}  % Special Linear Group of degree n
+\newcommand{\Sn}[1]{\mathrm{S}_{#1}}                  % Symmetric group of degree n
+\newcommand{\Syl}[2]{\mathrm{Syl}_{#1}(#2)}           % Set of Sylow p-groups of G
+\newcommand{\Sym}[1]{\mathrm{Sym}(#1)}                % Symmetric group of a set
+\newcommand{\Un}[1]{\mathcal{U}_{#1}}                 % Group of units modulo n
+\newcommand{\Z}[1]{\mathrm{Z}(#1)}                    % Center of a group G
+
+\newcommand{\Stab}[2]{\mathrm{Stab}_{#1}(#2)}         % Stabilizer of x by G
+\newcommand{\Fix}[2]{\mathrm{Fix}_{#1}(#2)}           % Set of all elements in X which is fixed by g
+\newcommand{\Orb}[2]{\mathrm{Orb}_{#1}(#2)}           % Orbit of x under G
+
+%========= Front Matter Pages ============
+% Quote page
+\newcommand{\quotepagetext}{
+    [The] axioms for a group are short and natural... [yet] somehow hidden behind these axioms is the monster simple group, a huge and extraordinary mathematical object, which appears to rely on numerous bizarre coincidences to exist. The axioms for groups give no obvious hint that anything like this exists.
+}
+\newcommand{\quotepageattribution}{Richard Borcherds, 2009}
+\newcommand{\quotepagecitation}{\cite{cook_borcherds_2009}}
+
+% Preface
+\newcommand{\prefacevolumetext}{
+    Groups are one of the most fundamental structures in abstract algebra. They underpin the ideas of symmetry and allow us to explore the relationships between symmetrical objects. An analysis of all the different ways an object can be symmetric is also possible with groups. It would be an understatement to say that groups are important in abstract algebra; without them, there can be no further and more in-depth exploration of the other structures.
+
+    Volume I is a simple introduction to the world of groups. As with most books on this topic, we concentrate on abstract groups, and, in particular, on finite groups. We also discuss and explore some crucial results about the structure of groups. The content covered in this volume should be ample for one to understand the fundamentals of group theory, and appreciate the wonders of groups and symmetry.
+}
+\newcommand{\prefacevolumedate}{22 March, 2023}
+
+% Suggestions of use
+\newcommand{\interdependencenotes}{
+    \begin{itemize}
+        \item This volume assumes understanding of the prerequisites in volume 0.
+        \item Chapter 1 is essentially independent from the rest of the other chapters. It provides motivation for the axioms of groups, but readers who want to skip this introduction can move straight to chapter 2.
+        \item Chapters 2, 3, and 4 are considered to be the essentials of group theory.
+        \item Chapter 4 is required reading for chapters 5, 6, 7, and 9.
+        \item Chapter 7 requires a small result from chapter 6 (specifically, \myref{prop-subgroup-product-is-subgroup}); otherwise these two chapters are relatively independent.
+        \item Chapter 8, on more types of groups, assumes knowledge of chapter 7. Chapter 8 also assumes knowledge of permutations and the symmetric group from chapter 5.
+        \item Chapter 9 could be read after chapter 4.
+        \item Chapter 10 only requires chapters 7 and 9.
+        \item Chapter 11 only require results from chapter 7, except for one problem (\myref{problem-S4-composition-series}) which uses the alternating group introduced in chapter 8.
+        \item Chapter 12 assumes full knowledge of chapter 7; minor results from chapter 8 (specifically, the alternating group), chapter 10 (the Third Sylow Theorem), and chapter 11 (\myref{problem-S4-composition-series}) are required.
+    \end{itemize}
+}
+
+%==== Include only relevant chapters =====
+\IfFileExists{\jobname.run.xml}
+{
+    \includeonly{
+        front-matter,
+        % Main chapters
+        volume1/intro-to-groups,
+        volume1/basics-of-groups,
+        volume1/subgroups,
+        volume1/homomorphisms-and-isomorphisms,
+        volume1/symmetry-groups,
+        volume1/products,
+        volume1/further-homomorphisms,
+        volume1/more-groups,
+        volume1/group-actions,
+        volume1/sylow-theorems,
+        volume1/composition-series,
+        volume1/simple-groups,
+        % Appendices
+        volume1/exercise-solutions,
+        volume1/problem-solutions,
+        volume1/appendices
+    }
+}
+{
+    % Do a full document initially to generate all the aux files
+}
+
+%=========================================
+\begin{document}
+\frontmatter  % Use lowercase roman numerals for page numbers
+\include{front-matter}
+
+\mainmatter  % Now use arabic numerals for page numbers
+\include{volume1/intro-to-groups}
+\include{volume1/basics-of-groups}
+\include{volume1/subgroups}
+\include{volume1/homomorphisms-and-isomorphisms}
+\include{volume1/symmetry-groups}
+\include{volume1/products}
+\include{volume1/further-homomorphisms}
+\include{volume1/more-groups}
+\include{volume1/group-actions}
+\include{volume1/sylow-theorems}
+\include{volume1/composition-series}
+\include{volume1/simple-groups}
+
+\appendix
+\include{volume1/exercise-solutions}
+\include{volume1/problem-solutions}
+\include{volume1/appendices}
+
+\end{document}

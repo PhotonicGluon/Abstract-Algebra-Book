@@ -1,0 +1,71 @@
+\input{common-commands.tex}
+\usepackage{xr}
+
+\setasdraft  % TODO: Remove once no longer a draft
+
+%=========== Global Variables ============
+\newcommand{\version}{0.1}
+\newcommand{\volumenumber}{3}
+\newcommand{\volumename}{Fields}
+\newcommand{\volumeimage}{regular-heptagon.png}
+
+%============== Resources ================
+
+%=========== Path to images ==============
+\graphicspath{{volume3/images}}
+
+%========= Front Matter Pages ============
+% Quote page
+\newcommand{\quotepagetext}{
+    I became convinced that studying the algebraic relationship of numbers is most conveniently based on a concept that is directly connected with the simplest arithmetic properties. I had originally used the term ``rational domain'', which I later changed to ``field''.
+}
+\newcommand{\quotepageattribution}{Richard Dedekind, 1871}
+\newcommand{\quotepagecitation}{\cite[p.~66]{kleiner_2007}}
+
+% Preface
+\newcommand{\prefacevolumetext}{
+    We cover field theory essentials in Volume III. %TODO: Add
+}
+\newcommand{\prefacevolumedate}{}  %TODO: Add
+
+% Suggestions of use
+\newcommand{\interdependencenotes}{
+    \begin{itemize}
+        \item Number 1
+        \item number 2
+        \item 3
+    \end{itemize}
+}
+
+%==== Include only relevant chapters =====
+\IfFileExists{\jobname.run.xml}
+{
+    \includeonly{
+        front-matter,
+        % Main chapters
+        % TODO Add
+        % Appendices
+        volume3/exercise-solutions,
+        volume3/problem-solutions,
+        volume3/appendices
+    }
+}
+{
+    % Do a full document initially to generate all the aux files
+}
+
+%=========================================
+\begin{document}
+\frontmatter  % Use lowercase roman numerals for page numbers
+\include{front-matter}
+
+\mainmatter  % Now use arabic numerals for page numbers
+\chapter{Introduction to Fields}
+TODO Add
+
+\appendix
+\include{volume3/exercise-solutions}
+\include{volume3/problem-solutions}
+\include{volume3/appendices}
+
+\end{document}

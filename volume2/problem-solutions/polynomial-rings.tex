@@ -1,0 +1,41 @@
+\section{Polynomial Rings}
+\begin{questions}
+    \item For brevity let $I = \princ{x} = \{xP(x) \vert P(x) \in \Z[x]\}$. This means that $I$ is the set of polynomials with integer coefficients and with constant term 0. Now suppose $f(x), g(x) \in \Z[x]$; write
+    \begin{align*}
+        f(x) &= a_0 + a_1x + \cdots + a_mx^m\\
+        g(x) &= b_0 + b_1x + \cdots + b_nx^n
+    \end{align*}
+    where $a_i, b_i \in \Z$ and $m$ and $n$ are positive integers. Note that
+    \[
+        f(x)g(x) = a_0b_0 + (a_1b_0+a_0b_1)x + \cdots.
+    \]
+    Now if $f(x)g(x) \in I$, this means that $a_0b_0 = 0$. Hence either $a_0 = 0$ or $b_0 = 0$, meaning that either $f(x)$ has zero constant term (so $f(x) \in I$) or $g(x)$ has zero constant term (so $g(x) \in I$). Thus $I$ is prime.
+
+    \item \begin{partquestions}{\roman*}
+        \item Let $f(x), g(x) \in \Z[x]$. Then
+        \[
+            \phi(f(x) + g(x)) = f(-2) + g(-2) = \phi(f(x)) + \phi(g(x))
+        \]
+        and
+        \[
+            \phi(f(x)g(x)) = f(-2)g(-2) = \phi(f(x))\phi(g(x))
+        \]
+        so $\phi$ is a ring homomorphism.
+
+        \item Note that
+        \begin{align*}
+            \ker\phi &= \{f(x) \in \Z[x] \vert \phi(f(x)) = 0\}\\
+            &= \{f(x) \in \Z[x] \vert f(-2) = 0\}\\
+            &= I.
+        \end{align*}
+        \myref{prop-kernel-is-an-ideal} tells us that $\ker\phi$ is an ideal of $\Z[x]$, so $I$ is an ideal of $\Z[x]$.
+
+        \item We first show that $\phi$ is surjective. Let $n \in \Z$, note that $n$ is a degree zero polynomial, so $n \in \Z[x]$. Clearly $\phi(n) = n$ so $n$ is its own pre-image. Therefore $\im\phi = \Z$.
+        
+        By FRIT (\myref{thrm-ring-isomorphism-1}),
+        \[
+            \Z[x]/I \cong \Z.
+        \]
+        Note that $\Z$ is an integral domain but not a field. Thus $I$ is prime but not maximal.
+    \end{partquestions}
+\end{questions}

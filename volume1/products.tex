@@ -1,0 +1,216 @@
+\chapter{Direct Products of Groups}
+Previously, we considered ways to transform elements from one group to another using homomorphisms. We now slightly shift our focus to ways to combine groups together, using the direct product.
+
+\section{External Direct Product}
+The external direct product is one method of `combining' groups together.
+\begin{definition}
+    Let $(G, \ast)$ and $(H, \star)$ be groups. The \textbf{external direct product}\index{direct product!external} of $G$ and $H$ is denoted by $G\times H$ and is the group $(G\times H, (\ast, \star))$, where $(\ast, \star)$ are the operators performed component-wise.
+\end{definition}
+Verifying that $(G\times H, (\ast, \star))$ is a group is left as an exercise for the reader. We note the identity of $G \times H$ is $(e_G, e_H)$, where $e_G$ is the identity of $G$ and $e_H$ is the identity of $H$. Also, $|G \times H| = |G||H|$ by definition of the Cartesian product.
+
+\begin{example}
+    $\mathbb{Z}_5 \times \mathbb{Z} = \{(m,n) \vert m \in \mathbb{Z}_5 \text{ and } n \in \mathbb{Z}\}$.
+
+    Thus, $(2, 5)(5, 9) = (2 \oplus_5 5, 5 + 9) = (7 \mod 5, 14) = (2, 14)$.
+\end{example}
+
+\begin{example}
+    Let $\mathcal{S} = \mathbb{R}\setminus\{0\}$ be a group under multiplication. Then $\mathcal{S} \times \mathbb{Z}_3 = \{ (x, n) \vert x \in \mathcal{S} \text{ and } n \in \mathbb{Z}_3\}$.
+
+    So, $(3, 2)^{-1} = \left(\frac13, 1\right)$ since
+    \begin{align*}
+        (3, 2)\left(\frac13, 1\right) &= \left(3 \times \frac13, 2 \oplus_3 1\right)\\
+        &= (1, 0)\\
+        &= (\text{Identity in }\mathcal{S}, \text{Identity in }\mathbb{Z}_3)
+    \end{align*}
+\end{example}
+
+\begin{exercise}
+    Simplify $(s, rs)(r^2s, r^3)$ in $D_3 \times D_4$.
+\end{exercise}
+
+We prove some results relating the external direct product.
+\begin{proposition}\label{prop-order-of-element-in-external-direct-product}
+    Let $G_1$ and $G_2$ be groups with identities $e_1$ and $e_2$ respectively. Let $(x, y) \in G_1 \times G_2$, $|x| = r$, and $|y| = s$. Then $|(x, y)| = \lcm(r, s)$.
+\end{proposition}
+\begin{proof}[Proof (see \cite{proofwiki_order-of-group-element-in-external-direct-product})]
+    For brevity let $l = \lcm(r, s)$, so $l = \alpha r = \beta s$ for some positive integers $\alpha$ and $\beta$. Let $m = |(x, y)|$.
+
+    Note that
+    \begin{align*}
+        (x, y)^l &= (x^l, y^l)\\
+        &= (x^{\alpha r}, y^{\beta s})\\
+        &= \left((x^r)^\alpha, (y^s)^\beta\right)\\
+        &= (e_1^\alpha, e_2^\beta)\\
+        &= (e_1, e_2).
+    \end{align*}
+    Therefore $l = k|(x, y)| = km$ for some positive integer $k$, i.e. $m\vert l$.
+
+    Note also that $(x, y)^m = (x^m, y^m)$ and $(x, y)^m = (e_1, e_2)$. Therefore $x^m = e_1$ and $y^m = e_2$, which means $m = p|x| = pr$ and $m = q|y| = qs$ for some positive integers $p$ and $q$, so $r$ and $s$ both divide $m$. Therefore $\lcm(r, s) = l\vert m$.
+
+    Since $m\vert l$ and $l\vert m$, thus $m = l$. Therefore we see that $|(x, y)| = \lcm(|x|, |y|)$.
+\end{proof}
+
+\begin{theorem}\label{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition}
+    $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ if and only if $\gcd(m,n) = 1$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Proposition 13.1 (3)]{humphreys_1996}})]
+    We first work on the forward direction. Suppose $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$, and for brevity let $d = \gcd(m,n)$.
+    
+    Suppose on the contrary that $d > 1$. Take $(a, b) \in \mathbb{Z}_m \times \mathbb{Z}_n$. Note that $\frac{mn}{d} = \lcm(m,n)$ (\myref{prop-product-of-gcd-and-lcm}) which is a positive integer. Then
+    \begin{align*}
+        \underbrace{(a,b)(a,b)(a,b)\cdots(a,b)}_{\frac{mn}{d}\text{ times}} &= \left(\frac{mn}{d}a, \frac{mn}{d}b\right)\\
+        &= \left(m\frac{na}{d}, n\frac{mb}{d}\right) & (\text{as } d \vert m \text{ and } d \vert n)\\
+        &= (\underbrace{0}_{\text{In } \mathbb{Z}_m}, \underbrace{0}_{\text{In } \mathbb{Z}_n})
+    \end{align*}
+    which implies $|(a, b)| \leq \frac{mn}{d} < mn$ for all $(a, b) \in \mathbb{Z}_m \times \mathbb{Z}_n$. Hence, this means that $\mathbb{Z}_m \times \mathbb{Z}_n$ is \textit{not} cyclic, since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and no element in $\mathbb{Z}_m \times \mathbb{Z}_n$ has order $mn$. However, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ is cyclic, a clear contradiction. Hence, $d \not>1$ which means $d = 1$, so $\gcd(m,n) = 1$.
+
+    We now work on the reverse direction. Suppose $\gcd(m,n) = 1$. Note that $|1| = m$ in $\mathbb{Z}_m$ and $|1| = n$ in $\mathbb{Z}_n$. Thus
+    \begin{align*}
+        |(1, 1)| &= \lcm(m, n) & (\myref{prop-order-of-element-in-external-direct-product})\\
+        &= \frac{mn}{\gcd(m,n)}\\
+        &= mn & (\gcd(m,n) = 1).
+    \end{align*}
+    Since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and $|(1,1)| = mn$, thus $\mathbb{Z}_m \times \mathbb{Z}_n$ is cyclic with generator $(1,1)$. By \myref{thrm-finite-cyclic-group-isomorphic-to-Zn}, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$.
+\end{proof}
+
+\begin{exercise}
+    Find all pairs of integers $(m, n)$ with $1 < m < n$ such that $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{180}$.
+\end{exercise}
+
+\section{Internal Direct Product}
+Before we look at the internal direct product, we look at the \textbf{subgroup product}\index{subgroup product}.
+\begin{definition}
+    Let $G$ be a group and $H, K \leq G$. Then
+    \[
+        HK = \{hk \vert h \in H, k \in K\}
+    \]
+    is called the \textbf{subgroup product of $H$ and $K$}.
+\end{definition}
+
+\begin{proposition}\label{prop-subgroup-product-is-subgroup}
+    Let $G$ be a group and $H, K \leq G$. Then $HK \leq G$ if and only if $HK = KH$.
+\end{proposition}
+
+An important point to note is that $HK = KH$ does not imply that $hk = kh$ for all $h \in H$ and $k \in K$. Finding a counterexample to this claim is left as an exercise to the reader.
+
+\begin{proof}
+    We first prove the forward direction; assume that $HK \leq G$. First take an arbitrary $kh \in KH$. Then we note
+    \begin{align*}
+        kh &= \left(\left(kh\right)^{-1}\right)^{-1}\\
+        &= (\underbrace{h^{-1}}_{\text{In } H}\underbrace{k^{-1}}_{\text{In } K})^{-1}\\
+        &\in HK
+    \end{align*}
+    since $HK \leq G$ so the inverse of any element is in $HK$. Therefore any element in $KH$ is also in $HK$, meaning that $KH \subseteq HK$. Now take an arbitrary $hk \in HK$. Note that $k^{-1}h^{-1} = (hk)^{-1} \in HK$, so set $k^{-1}h^{-1} = \hat{h}\hat{k}$ for some $\hat{h} \in H$ and $\hat{k} \in K$. Hence $hk = \left(k^{-1}h^{-1}\right)^{-1} = \hat{k}^{-1}\hat{h}^{-1} \in KH$, meaning $HK \subseteq KH$. Therefore $HK = KH$ as needed.
+
+    We now prove the reverse direction; assume that $HK = KH$. Clearly $e \in HK$ since $e \in H$ and $e \in K$. Now suppose $h_1k_1$ and $h_2k_2$ are in $HK$. We note
+    \begin{align*}
+        (h_1k_1)(h_2k_2)^{-1} &= h_1k_1k_2^{-1}h_2^{-1}\\
+        &= h_1(\underbrace{k_1k_2^{-1}h_2^{-1}}_{\text{In } KH = HK})\\
+        &= h_1(h'k') & (\text{set }(k_1k_2^{-1})h_2^{-1} = h'k')\\
+        &= (\underbrace{h_1h'}_{\text{In } H})k'\\
+        &\in HK
+    \end{align*}
+    so by subgroup test, $HK \leq G$.
+\end{proof}
+
+We now look at the \textbf{internal direct product}, another way of combining elements of two groups.
+
+\begin{definition}
+    Let $G$ be a group and $H$ and $K$ be subgroups of $G$ such that
+    \begin{enumerate}
+        \item $G = HK$,
+        \item $H \cap K = \{e\}$, and
+        \item for all $h \in H$ and $k \in K$, $hk = kh$.
+    \end{enumerate}
+    Then $G$ is said to be the \textbf{internal direct product}\index{direct product!internal} of $H$ and $K$.
+\end{definition}
+
+\begin{example}
+    Consider $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. Note that
+    \begin{align*}
+        HK &= \{hk \vert h \in H, k \in K\}\\
+        &= \{e, r^2, r^4, s, r^2s, r^4s, r^3, r^5, r^7, r^3s, r^5s, r^7s\}\\
+        &= \{e, r^2, r^4, s, r^2s, r^4s, r^3, r^5, r, r^3s, r^5s, rs\}\\
+        &= D_6\\
+        &= G
+    \end{align*}
+    so $G = HK$. Note also that $H \cap K = \{e\}$ and $hk = kh$ for all $h$ in $H$ and $k$ in $K$. Thus $G$ is the internal direct product of $H$ and $K$.
+\end{example}
+
+\begin{exercise}
+    Let $G = \{1, 5\}$ and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the internal direct product of $G$ and $H$.
+\end{exercise}
+
+\section{The Isomorphism Between Them}
+It is certainly tiring to remember that there is an \textit{external} direct product and an \textit{internal} direct product. One might rightly wonder whether we can simplify both into one unified ``direct product''. In fact, there exists an isomorphism between the external direct product and the internal direct product of two groups.
+
+\begin{theorem}\label{thrm-direct-product-equivilance}
+    If $G$ is the internal direct product of $H$ and $K$, then $G \cong H \times K$.
+\end{theorem}
+
+\newpage
+
+\begin{proof}
+    Let $\phi: G \to H \times K$, $g \mapsto (h, k)$ where $g = hk$. We will show that $\phi$ is a well-defined isomorphism.
+    \begin{itemize}
+        \item \textbf{Well-defined}: Suppose $g = hk = h'k'$ where $h, h' \in H$ and $k, k' \in K$. Since $hk = h'k'$ thus $h^{-1}h' = k(k')^{-1}$.
+
+        Note that $h^{-1}h' \in H$ and $k(k')^{-1} \in K$. So if $h^{-1}h' = k(k')^{-1}$ then $h^{-1}h' \in H \cap K$ and $k(k')^{-1} \in H \cap K$. But $H \cap K = \{e\}$. Thus $h^{-1}h' = k(k')^{-1} = e$, which means that $h = h'$ and $k = k'$.
+        
+        \item \textbf{Homomorphism}: Let $g, g' \in G$, $h, h' \in H$, and $k, k' \in K$ such that $g = hk$ and $g' = h'k'$. Then $gg' = hkh'k' = h(kh')k'$. We note that $kh' = h'k$ since $hk = kh$ for all $h \in H$ and $k \in K$. Hence $gg' = hh'kk'$.
+        
+        Thus
+        \[
+            \phi(gg') = \phi(\underbrace{hh'}_{\text{In }H}\underbrace{kk'}_{\text{In }K}) = (hh', kk').
+        \]
+        Now we are in the group $H \times K$, so $(h, k)(h', k') = (hh', kk')$. Therefore,
+        \begin{align*}
+            \phi(gg') &= (h,k)(h',k')\\
+            &= \phi(hk)\phi(h'k')\\
+            &= \phi(g)\phi(g')
+        \end{align*}
+        which means that $\phi$ is a homomorphism.
+        
+        \item \textbf{Injective}: Let $g, g' \in G$, $h, h' \in H$, and $k, k' \in K$ such that $g = hk$, $g' = h'k'$, and $\phi(g) = \phi(g')$. Then $\phi(hk) = \phi(h'k')$, meaning $(h,k) = (h',k')$. Thus $h = h'$ and $k = k'$ by equality of ordered pairs, meaning $g = hk = h'k' = g'$.
+        
+        \item \textbf{Surjective}: Let $(h, k) \in H \times K$. Note that $hk \in G$ since $G$ is the internal direct product of $H$ and $K$, so $\phi(hk) = (h, k)$. Thus a pre-image of $(h, k)$ is $hk$.
+    \end{itemize}
+    Therefore $\phi$ is a well-defined isomorphism from $G$ to $H \times K$, meaning $G \cong H \times K$.
+\end{proof}
+
+\begin{example}
+    Consider again $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. As we have found before, $G$ is the internal direct product of $H$ and $K$; but we now know that $G \cong H \times K$.
+
+    Note that $|H| = 2$ so $H \cong \mathbb{Z}_2$ and $K \cong D_3$ (we leave the latter as an exercise for the reader to prove). Thus,
+    \[
+        D_6 = G = HK \cong H \times K = \mathbb{Z}_2 \times D_3.
+    \]
+\end{example}
+
+\begin{exercise}
+    Let $\mathcal{S} = \{1, 5, 7, 11\}$, $G = \{1, 5\}$, and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the value of $n$ such that $\mathcal{S} \cong (\mathbb{Z}_n)^2$.
+\end{exercise}
+
+\newpage
+
+\section{Problems}
+\begin{problem}\label{problem-external-direct-product-of-abelian-groups-is-abelian}
+    Let $G$ and $H$ be abelian groups. Prove that $G \times H$ is also an abelian group.
+\end{problem}
+
+\begin{problem}
+    Let $G$ and $H$ be groups. Prove that $G \times H \cong H \times G$.
+\end{problem}
+
+\begin{problem}
+    Let $G = \mathbb{Z}_6$, and let the subgroups $H = \{0, 2, 4\}$ and $K = \{0, 3\}$. Determine whether $G$ is the internal direct product of $H$ and $K$.
+\end{problem}
+
+\begin{problem}
+    Consider the \textit{Klein four-group}\index{Klein four-group} $\mathrm{V}$ with presentation
+    \[
+        \langle a, b \vert a^2 = b^2 = (ab)^2 = e \rangle.
+    \]
+    Show that $\mathrm{V} \cong (\mathbb{Z}_2)^2$.
+\end{problem}

@@ -1,0 +1,119 @@
+\section{Homomorphisms and Isomorphisms}
+\begin{questions}
+    \item We will prove that $f$ is a homomorphism, is injective, and is surjective.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $x, y \in G$. Then
+        \begin{align*}
+            f(xy) &= g(xy)g^{-1}\\
+            &= (gxg^{-1})(gyg^{-1})\\
+            &= f(x)f(y)
+        \end{align*}
+        which means that $f$ is a homomorphism.
+        \item \textbf{Injective}: Let $x, y \in G$ be such that $f(x) = f(y)$. Then $gxg^{-1} = gyg^{-1}$. By cancellation law, $x = y$.
+        \item \textbf{Surjective}: Suppose $y \in G$. Set $x = g^{-1}yg$. Since $G$ is closed, thus $x \in G$. Note $f(x) = g(g^{-1}yg)g^{-1} = y$. Hence $y$ has a pre-image of $x = g^{-1}yg$ in $G$.
+    \end{itemize}
+    Therefore $f$ is an isomorphism.
+
+    \item Suppose on the contrary there exists an isomorphism $\phi: G \to H$. Since $\phi$ is an isomorphism, it is surjective. Hence, there must exists a rational number $r \in G$ such that $\phi(r) = 2$. As $r$ is rational, so is $\frac r2$.
+
+    Now consider $\phi\left(\frac r2 + \frac r2\right)$. On one hand, $\phi\left(\frac r2 + \frac r2\right) = \phi(r) = 2$. On another hand, $\phi(\frac r2 + \frac r2) = \left(\phi\left(\frac r2\right)\right)^2$ as $\phi$ is a homomorphism. Therefore, $\left(\phi\left(\frac r2\right)\right)^2 = 2$ which quickly implies $\phi\left(\frac r2\right) = \sqrt 2$ since $\phi\left(\frac r2\right)$ must be positive. However, $\sqrt 2 \notin H$ while $\phi\left(\frac r2\right) \in H$, a contradiction.
+
+    Hence, $G \not\cong H$.
+
+    \item \begin{partquestions}{\alph*}
+        \item Let $m, n \in G$. Then
+        \[
+            \phi(m + n) = 2(m + n) = 2m + 2n = \phi(m) + \phi(n)
+        \]
+        which means $\phi$ is a homomorphism.
+
+        \item Suppose $m, n \in G$ such that $\phi(m) = \phi(n)$. Then $2m = 2n$. Clearly this means that $m = n$. Thus $\phi$ is injective.
+
+        \item Suppose on the contrary there existed a homomorphism $\psi: H \to G$ such that $\psi(\phi(n)) = n$. Then $\psi(2n) = n$ by definition of $\phi$. Note that
+        \[
+            \psi(2n) = \psi(n + n) = \psi(n) + \psi(n) = 2\psi(n)
+        \]
+        since $\psi$ is a homomorphism. Hence $2\psi(n) = n$ which implies that $\psi(n) = \frac n2$. But for the case of $n = 1$, $\psi(1) = \frac 12 \notin G$. Hence $\psi$ does not exist.
+    \end{partquestions}
+
+    \item We prove the forward direction first: assume that $G$ is abelian. Then $f$ is a homomorphism since
+    \[
+        f(gh) = (gh)^{-1} = h^{-1}g^{-1} = g^{-1}h^{-1} = f(g)h(g).
+    \]
+
+    We now prove the reverse direction: assume that $f$ is a homomorphism, meaning $f(gh) = f(g)f(h) = g^{-1}h^{-1}$. But $f(gh) = (gh)^{-1} = h^{-1}g^{-1}$. Therefore we have $g^{-1}h^{-1} = h^{-1}g^{-1}$ which clearly shows that the group is abelian.
+
+    \item Suppose $\phi: G \to H$ is a surjective homomorphism and $G$ is abelian. Since $\phi$ is surjective, thus $\im \phi = H$. Let $g_1, g_2 \in G$ and $h_1, h_2 \in H$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Consider $\phi(g_1g_2)$.
+    \begin{itemize}
+        \item On one hand, $\phi(g_1g_2) = \phi(g_1)\phi(g_2) = h_1h_2$.
+        \item On another hand, $\phi(g_1g_2) = \phi(g_2g_1) = \phi(g_2)\phi(g_1) = h_2h_1$.
+    \end{itemize}
+    Hence $h_1h_2 = h_2h_1$ which means that $H$ is abelian.
+
+    \item We first prove $\phi(N)$ is a subgroup of $H$ by using subgroup test before proving normality.
+
+    Note that $e_H \in \phi(N)$ since $e_G \in N$ and $\phi(e_G) = e_H$. Now let $x, y \in \phi(N)$. As $\phi$ is surjective, we know that there exists $n_x, n_y \in N$ where $\phi(n_x) = x$ and $\phi(n_y) = y$. Note that $\phi(n_y^{-1}) = y^{-1}$ and $n_xn_y^{-1} \in N$. Hence, $xy^{-1} = \phi(n_xn_y^{-1}) \in \phi(N)$. By subgroup test, $\phi(N) \leq H$.
+
+    We now show that $\phi(N)$ is a normal subgroup of $H$. Take $g \in G$, $h \in H$, $n \in N$, and $x \in \phi(N)$, such that $\phi(g) = h$ and $\phi(n) = x$. Note that since $N \unlhd G$, thus $gng^{-1} \in N$. Therefore,
+    \begin{align*}
+        hxh^{-1} &= \phi(g)\phi(n)\phi(g^{-1})\\
+        &= \phi(\underbrace{gng^{-1}}_{\text{In }N})\\
+        &\in \phi(N)
+    \end{align*}
+    which means that $\phi(N) \unlhd H$.
+
+    \item Consider the map $\phi: G \to H, a \mapsto a + n\mathbb{Z}$. We show that $\phi$ is an isomorphism:
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $a$ and $b$ be in $G$. Then
+        \begin{align*}
+            \phi(a\oplus_n b) &= (a\oplus_n b) + n\mathbb{Z}\\
+            &= \{(a \oplus_n b) + pn \vert p \in \mathbb{Z}\}\\
+            &= \{a+b + pn \vert p \in \mathbb{Z}\}\\
+            &= \{a+b + pn + qn\vert p, q \in \mathbb{Z}\}\\
+            &= a+b+n\mathbb{Z} + n\mathbb{Z}\\
+            &= (a+n\mathbb{Z}) + (b + n\mathbb{Z})\\
+            &= \phi(a) + \phi(b).
+        \end{align*}
+        \item \textbf{Injective}: Let $a$ and $b$ be in $G$ such that $\phi(a) = \phi(b)$. Thus
+        \[
+            \{a + pn \vert p \in \mathbb{Z} \} = \ \{b + qn \vert q \in \mathbb{Z} \}
+        \]
+        by definition of $\phi$. Hence $a \equiv b \pmod n$. But since $0 \leq a, b < n$, we must have $a = b$.
+        \item \textbf{Surjective}: Let $x + n\mathbb{Z} \in H$. We use Euclid's division lemma (\myref{lemma-euclid-division}) on $x$ to yield
+        \[
+            x = qn + r, \text{ where } 0 \leq r < n.
+        \]
+        Note that
+        \begin{align*}
+            x + n\mathbb{Z} &= \{x + kn \vert k \in \mathbb{Z}\}\\
+            &= \{(qn + r) + kn \vert k \in \mathbb{Z}\}\\
+            &= \{r + n(\underbrace{q + k}_{\text{In }\mathbb{Z}}) \vertalt k \in \mathbb{Z} \}\\
+            &= r + n\mathbb{Z}
+        \end{align*}
+        with $0 \leq r < n$, meaning $r \in G$. Now observe $\phi(r) = r+n\mathbb{Z} = x+n\mathbb{Z}$ which means that there is a pre-image for every element in $H$, hence proving that $\phi$ is surjective.
+    \end{itemize}
+    Therefore $\phi$ is an isomorphism, proving $G \cong H$.
+    
+    \item Consider the map $\phi: G \to G/N$ such that $g \mapsto gN$. We note that $\phi$ is a homomorphism as
+    \[
+        \phi(gh) = (gh)N = (gN)(hN) = \phi(g)\phi(H).
+    \]
+    We note by \myref{prop-homomorphism-inverse-is-subgroup} that $A = \phi^{-1}(B) \leq G$. Thus
+    \begin{align*}
+        \phi^{-1}(N) &= \{g \in G \vert \phi(g) = N\}\\
+        &= \{g \in G \vert gN = N\}\\
+        &= \{g \in G \vert g \in N\}\\
+        &= G \cap N\\
+        &= N\\
+        &\subseteq A
+    \end{align*}
+    by assumption. Since $N$ is a group, we know $N \leq A$. Furthermore $N \leq A \leq G$ and $N \unlhd G$, meaning $N \unlhd A$ (since $gN = Ng$ for all $g \in G$, including those in $A$). Hence $A/N$ is a group.
+    
+    Now clearly $\phi$ is surjective (since for any $gN \in G/N$ we know $\phi(g) = gN$), which means that $\phi(\phi^{-1}(B)) = B$. Since $\phi^{-1}(B) = A$, so $\phi(A) = B$. Finally,
+    \begin{align*}
+        \phi(A) &= \{\phi(a) \vert a \in A\}\\
+        &= \{aN \vert a \in A\}\\
+        &= A/N
+    \end{align*}
+    which means $B = A/N$.
+\end{questions}

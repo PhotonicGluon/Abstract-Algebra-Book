@@ -1,0 +1,50 @@
+\section{Polynomial Rings}
+\begin{questions}
+    \item We work step-by-step.
+    \begin{align*}
+        &\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)\\
+        &= \left((x + 3)(2x^2+3x-1)\right) + I\\
+        &= \left(2x^3 + 9x^2 + 8x - 3\right) + I\\
+        &= \left((2x+3)\underbrace{(x^2+3x-1)}_{\text{In }I} + x\right) + I\\
+        &= x + I
+    \end{align*}
+
+    \item One example would be $x^5$. Essentially any polynomial where the highest term is $x^5$ would work.
+    
+    \item \begin{partquestions}{\alph*}
+        \item We first suppose $R$ is a ring with identity 1. We may see 1 as a degree 0 polynomial in $R[x]$. Now for any polynomial $f(x) = a_0+a_1x+a_2x^2+\cdots+a_nx^n$ in $R[x]$ we have
+        \begin{align*}
+            (1)(f(x)) &= (1)(a_0+a_1x+\cdots+a_nx^n)\\
+            &= (1a_0)+(1a_1)x+\cdots+(1a_n)x^n\\
+            &= a_0+a_1x+\cdots+a_nx^n\\
+            &= f(x)
+        \end{align*}
+        and
+        \begin{align*}
+            (f(x))(1) &= (a_0+a_1x+\cdots+a_nx^n)(1)\\
+            &= (a_{0}1)+(a_{1}1)x+\cdots+(a_{n}1)x^n\\
+            &= a_0+a_1x+\cdots+a_nx^n\\
+            &= f(x)
+        \end{align*}
+        so 1 is the identity in $R[x]$.
+
+        Now suppose $R[x]$ is a ring with identity $\id(x)$. Note $\id(x)f(x) = f(x)\id(x) = f(x)$ for any $f(x) \in R[x]$, meaning $\deg(\id(x)f(x)) = \deg(f(x))$. We note that $\deg(\id(x)f(x)) = \deg(\id(x)) + \deg(f(x))$, this means that $\id$ has degree 0, meaning we may write $\id(x) = e$ for some $e \in R$. Now if $f(x) = a$ for some $a \in R$, we must have $\id(x)f(x) = ae = a$ and $f(x)\id(x) = ea = a$, meaning that $e$ is the identity of $R$.
+        
+        \item Suppose first that $R$ is a commutative ring. Let
+        \[
+            f(x) = \sum_{i=0}^ma_ix^i \text{ and } g(x) = \sum_{j=0}^nb_jx^j
+        \]
+        be polynomials in $R[x]$. Then
+        \begin{align*}
+            f(x)g(x) &= \left(\sum_{i=0}^ma_ix^i\right)\left(\sum_{j=0}^nb_jx^j\right)\\
+            &= \sum_{k=0}^{m+n}\left(\sum_{i=0}^k a_{i}b_{k-i}\right)x^k\\
+            &= \sum_{k=0}^{m+n}\left(\sum_{i=0}^k b_{k-i}a_{i}\right)x^k\\
+            &= \sum_{k=0}^{m+n}\left(\sum_{i=0}^k b_{i}a_{k-i}\right)x^k\\
+            &= \left(\sum_{j=0}^nb_jx^j\right)\left(\sum_{i=0}^ma_ix^i\right)\\
+            &= g(x)f(x)
+        \end{align*}
+        which therefore means that $R[x]$ is commutative.
+
+        Now suppose $R[x]$ is commutative. Consider two degree 0 polynomials $f(x) = a$ and $g(x) = b$. We thus have $ab = f(x)g(x) = g(x)f(x) = ba$ for all $a,b \in R$ which means $R$ is commutative.
+    \end{partquestions}
+\end{questions}

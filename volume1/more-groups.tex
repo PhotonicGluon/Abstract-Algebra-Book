@@ -1,0 +1,858 @@
+\chapter{More Types of Groups}
+We previously introduced some types of groups, like the cyclic groups, the dihedral groups, and the Klein-four group. We now introduce more types of groups to expand our knowledge of the types of groups that are involved in group theory.
+
+\section{More About Cyclic Groups}
+We previously covered several properties of cyclic groups.
+\begin{itemize}
+    \item Every cyclic group is abelian. (\myref{prop-cyclic-group-is-abelian})
+    \item A finite group $G$ is cyclic if and only if there exists an element $g$ in the group $G$ with the same order as the group. (\myref{thrm-cyclic-group-has-element-with-same-order})
+    \item If $G$ is cyclic and $H \leq G$ then $G/H$ is cyclic. (\myref{exercise-quotient-group-of-cyclic-group-is-cyclic})
+    \item Any subgroup of a cyclic group is cyclic. (\myref{problem-subgroup-of-cyclic-group-is-cyclic})
+    \item $\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_n$. (\myref{problem-Zn-isomorphic-to-Z-by-nZ})
+    \item $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ if and only if $\gcd(m,n) = 1$. (\myref{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition})
+    \item $m\mathbb{Z} / n\mathbb{Z} \cong \mathbb{Z}_{\frac nm}$. (\myref{problem-mZ/nZ-isomorphic-to-Zn/m})
+\end{itemize}
+
+\begin{exercise}\label{exercise-Zmn-mod-Zn-cong-Zn}
+    Prove that for any positive integers $m$ and $n$, we have
+    \[
+        \mathbb{Z}_{mn} / \mathbb{Z}_m \cong \mathbb{Z}_n.
+    \]
+\end{exercise}
+
+Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead of $\mathbb{Z}_n$. This may be sometimes used to distinguish (finite) cyclic subgroups of a group from the integers modulo $n$.
+
+We prove more facts about cyclic groups here.
+\begin{lemma}\label{lemma-order-of-an-element-that-is-equivalent-to-identity}
+    Let $\Cn{n}$ have generator $g$. Then $g^k = e$ if and only if $k$ is a multiple of $n$.\newline
+    (That is, if $g^k = e$ then $n$ divides $k$, i.e. $n\vert k$.)
+\end{lemma}
+\begin{proof}
+    We note that the order of $g$ is $n$, since $g$ is a generator of $G$. Thus by \myref{problem-element-to-power-of-multiple-of-order-is-identity} the lemma is proven.
+\end{proof}
+
+\begin{exercise}
+    The number 12 is equivalent to 0 in the group $\mathbb{Z}_n$. What are the possible value(s) of $n$?
+\end{exercise}
+
+We are now ready to prove an essential theorem on cyclic groups.
+\begin{theorem}\label{thrm-order-of-element-in-cyclic-group}
+    Let $\Cn{n}$ have generator $g$. Let $x = g^k$ for some integer $k$. Then the order of $x$ is $\frac{n}{\gcd(k,n)}$.
+\end{theorem}
+\begin{proof}
+    For brevity let $m = |x|$ and suppose $k = \lambda \gcd(k, n)$ for some positive integer $\lambda$.
+
+    Let $\mathcal{X} = \langle x \rangle = \{x, x^2, x^3, \dots, x^m\}$. Note that $\mathcal{X}$ is a cyclic group with order $m$ and generator $x$.
+
+    Observe that
+    \[
+        x^m = \left(g^k\right)^m = g^{km}
+    \]
+    and since $|x| = m$, this means that $x^m = e$. Hence
+    \[
+        g^{km} = e.
+    \]
+
+    By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity} on $\Cn{n}$, $n \vert km$. This implies that
+    \[
+        \frac{n}{\gcd(k,n)} \vert \frac{km}{\gcd(k,m)} = \lambda m.
+    \]
+    Note that $\gcd\left(\lambda, \frac{n}{\gcd(k,n)}\right) = \gcd\left(\frac{k}{\gcd(k,n)}, \frac{n}{\gcd(k,n)}\right) = 1$. This means that $\frac{n}{\gcd(k,n)}$ does not divide $\lambda$, meaning $\frac{n}{\gcd(k,n)} \vert m$.
+
+    Also note that
+    \begin{align*}
+        x^{\frac{n}{\gcd(k,n)}} &= \left(g^k\right)^{\frac{n}{\gcd(k,n)}}\\
+        &= \left(g^n\right)^{\frac{k}{\gcd(k,n)}}\\
+        &= \left(g^n\right)^\lambda\\
+        &= e^\lambda & (\text{since } |g| = n)\\
+        &= e,
+    \end{align*}
+    implying $x^{\frac{n}{\gcd(k,n)}} = e$. By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity} on group $\mathcal{X}$, we have $m \vert \frac{n}{\gcd(k,n)}$.
+
+    Since $\frac{n}{\gcd(k,n)} \vert m$ and $m \vert \frac{n}{\gcd(k,n)}$ simultaneously, thus $m = \frac{n}{\gcd(k,n)}$, that is $|x| = \frac{n}{\gcd(k,n)}$.
+\end{proof}
+
+\begin{exercise}
+    In the group $\mathbb{Z}_{210}$, find the order of 10, 42, 75, and 140.
+\end{exercise}
+
+\begin{corollary}\label{corollary-element-in-cyclic-group-is-generator-iff-gcd-is-1}
+    Let $\Cn{n}$ have generator $g$. Then $g^m$ is also a generator if and only if $\gcd(m, n) = 1$.
+\end{corollary}
+\begin{proof}
+    We prove the forward direction first. Suppose that $\Cn{n}$ has a generator of $g^m$. On one hand, $|g^m| = n$ since a generator of a group necessarily has to have an order equal to that of the group. On another hand, by \myref{thrm-order-of-element-in-cyclic-group}, $|g^m| = \frac{n}{\gcd(m, n)}$. Hence, $n = \frac{n}{\gcd(m, n)}$ which quickly implies $\gcd(m, n) = 1$.
+
+    Now we prove the reverse direction. Suppose $\gcd(m,n) = 1$. Then $|g^m| = \frac{n}{\gcd(m,n)} = \frac{n}{1} = n$ by \myref{thrm-order-of-element-in-cyclic-group}. Hence $g^m$ is a generator of the group $\Cn{n}$ by \myref{thrm-cyclic-group-has-element-with-same-order}.
+\end{proof}
+
+\begin{exercise}
+    Find all the generators of the following groups.
+    \begin{partquestions}{\alph*}
+        \item $\mathbb{Z}_{10}$
+        \item $\mathbb{Z}_{101}$
+    \end{partquestions}
+\end{exercise}
+
+\newpage
+
+\section{Quaternion Group}
+We look at an interesting group that has use in computer graphics: the \textbf{Quaternion Group}. We present one definition here.
+\begin{definition}\label{definition-quaternion-group}
+    The quaternion group\index{Quaternion Group} is
+    \[
+            \mathrm{Q} = \{1, -1, i, -i, j, -j, k, -k\}
+    \]
+    where
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item 1 is the identity;
+            \item $(-1)^2 = 1$;
+            \item $i^2 = j^2 = k^2 = -1$;
+            \item $ij = k$ and $ji = -k$;
+            \item $jk = i$ and $kj = -i$; and
+            \item $ki = j$ and $ik = -j$.
+        \end{itemize}
+    \end{multicols}
+\end{definition}
+
+The quaternion group has 4 proper subgroups, namely $\langle -1 \rangle = \{\pm1\}$, $\langle i \rangle = \{\pm1, \pm i\}$, $\langle j \rangle = \{\pm1, \pm j\}$, and $\langle k \rangle = \{\pm1, \pm k\}$.
+
+With these subgroups, we can write a presentation for $\mathrm{Q}$.
+\begin{proposition}
+    $\mathrm{Q} = \langle i, j \rangle$.
+\end{proposition}
+\begin{proof}
+    For brevity let $G = \langle i, j \rangle$. We note that $i^0 = 1$, $i^4 = j^4 = 1$ and $ji = -k = -ij = i^3j$. Hence,
+    \begin{align*}
+        G &= \{1, i, i^2, i^3, j, ij, i^2j, i^3j\}\\
+        &= \{1, i, -1, -i, j, ij, -j, -ij\}\\
+        &= \{1, -1, i, -i, j, -j, ij, -ij\} & (\text{reordering})\\
+        &= \{1, -1, i, -i, j, -j, k, -k\} & (\text{since } ij = k)\\
+        &= \mathrm{Q}
+    \end{align*}
+    so $\mathrm{Q} = \langle i, j \rangle$.
+\end{proof}
+
+Thus, an alternate definition of $\mathrm{Q}$ is
+\[
+    \mathrm{Q} = \langle \alpha, \beta \vert \alpha^4 = e,\; \alpha^2 = \beta^2, \text{ and } \beta\alpha = \alpha^3\beta \rangle.
+\]
+One sees clearly that $\alpha = i$ and $\beta = j$ in this definition.
+
+\begin{exercise}\label{exercise-normal-subgroups-of-quarternion-group}
+    Find all the normal subgroups of the quaternion group $\mathrm{Q}$.\newline
+    (\textit{Hint: consider \myref{problem-subgroup-of-index-2}.})
+\end{exercise}
+
+\section{Alternating Group}
+The alternating group is a very important group in the field of group theory. However, before we can properly define it, we need to introduce the idea of \textbf{transpositions}.
+
+\subsection{Transpositions}
+\begin{definition}
+    A \textbf{transposition}\index{transposition} is a 2-cycle. That is, a transposition $\tau$ is represented as $(a\quad b)$ in cycle notation.
+\end{definition}
+For example, we see that (1 5), (4 7), (3 6) etc. are transpositions, while (1 4 5), (3 4 6 5 9), (1 3 4 5) etc. are not. One sees clearly that every transposition is its own inverse.
+
+We call transpositions which has cycle decomposition $\begin{pmatrix}i&i+1\end{pmatrix}$ \textbf{adjacent transpositions}\index{transposition!adjacent}, and we may denote them by $\alpha$.
+
+We look at one lemma which can be said to help `break up' transpositions into a composition of adjacent transpositions. Note that line breaks are to be ignored in the following lemma.
+\begin{lemma}\label{lemma-decompose-transposition}
+    Let a transposition $\tau = (i\quad i+d)$ where $d$ is a positive integer. Then the permutation
+    \begin{align*}
+        & (i\quad i+1)(i+1\quad i+2)\cdots(i+d-2\quad i+d-1)\\
+        &\quad (i+d-1\quad i+d)(i+d-2\quad i+d-1)\cdots\\
+        &\quad (i+1\quad i+2)(i\quad i+1)
+    \end{align*}
+    is equal to $\tau$.
+\end{lemma}
+
+\begin{proof}
+    We induct on $d$.
+
+    When $d = 1$, note $\tau = (i\quad i+1)$ so the lemma is true for $d=1$.
+
+    Assume that the given representation of $\tau$ holds for some positive integer $d$. Note this means that it holds for all $i$, including $i+1$. We are to show that it works for $d + 1$.
+    \begin{align*}
+        (i\quad i+(d+1)) &= (i\quad i+1)(i+1\quad i+d+1)(i\quad i+1)\\
+        &= (i\quad i+1)\underbrace{((i+1)\quad (i+d)+1)}_{\text{use induction hypothesis here}}(i\quad i+1)\\
+        &= (i\quad i+1)((i+1)\quad(i+1)+1)\cdots\\
+        &\quad\quad((i+1)\quad(i+1)+1)(i\quad i+1)\\
+        &= (i\quad i+1)(i+1\quad i+2)\cdots\\
+        &\quad\quad(i+1\quad i+2)(i\quad i+1)
+    \end{align*}
+    which shows that $d+1$ works as well.
+\end{proof}
+\begin{remark}
+    The above representation of $\tau$ uses $2d-1$ compositions.
+\end{remark}
+\begin{example}
+    An adjacent transposition decomposition of $(4\quad9)$ is
+    \[
+        (4\quad 5)(5\quad 6)(6\quad 7)(7\quad 8)(8\quad 9)(7\quad 8)(6\quad 7)(5\quad 6)(4\quad 5).
+    \]
+\end{example}
+\begin{exercise}
+    `Decompose' the transposition (2 6) into a composition of adjacent transpositions.
+\end{exercise}
+
+\subsection{Links with Permutations}
+As mentioned before, a transposition is a 2-cycle permutation. We note that transpositions are important as seen in the following lemma.
+\begin{lemma}\label{lemma-permutations-as-product-of-transpositions}
+    Every permutation can be expressed as a product of transpositions.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[\S 80 Corollary]{clark_1984}})]
+    For the identity $\id$ it can be expressed as $(a\quad b)(a \quad b)$. For any permutation with length $k \geq 2$, say $\sigma = \begin{pmatrix}a_1 & a_2 & a_3 & \cdots & a_k\end{pmatrix}$, write
+    \[
+        \sigma = \begin{pmatrix}a_1 & a_k\end{pmatrix}\begin{pmatrix}a_1 & a_{k-1}\end{pmatrix}\begin{pmatrix}a_1 & a_{k-2}\end{pmatrix}\cdots\begin{pmatrix}a_1 & a_3\end{pmatrix}\begin{pmatrix}a_1 & a_2\end{pmatrix}
+    \]
+    and since every permutation is a product of cycles, thus every permutation is a product of transpositions.
+\end{proof}
+
+We now look at the idea of \textbf{inversions} inside permutations.
+\begin{definition}
+    Let $\sigma$ be a permutation. An \textbf{inversion}\index{permutation!inversion} of $\sigma$ between $i$ and $j$ exists if $i > j$ and $\sigma(i) < \sigma(j)$.
+\end{definition}
+An inversion between the elements $i$ and $j$ is denoted by either $(i, j)$ or $(\sigma(i), \sigma(j))$.
+\begin{example}
+    In the permutation $\sigma = \begin{pmatrix}1 & 3 & 2 & 4\end{pmatrix}$, we see that $3 \mapsto 2$ but $2 \mapsto 4$. Thus there is an inversion (3, 2) = (2, 4).
+\end{example}
+
+We now define the idea of \textbf{even} permutations and \textbf{odd} permutations.
+\begin{definition}
+    A permutation $\sigma$ is said to be \textbf{even}\index{permutation!even} if there are an even number of inversions in $\sigma$. If $\sigma$ is not even then it is said to be \textbf{odd}\index{permutation!odd}. The evenness or oddness of a permutation $\sigma$ is called the \textbf{parity of $\sigma$}\index{permutation!parity}.
+\end{definition}
+
+Counting the number of inversions in a permutation may be hard to do, so we have an alternative definition for the parity of a permutation.
+
+\begin{theorem}\label{thrm-parity-of-permutation}
+    Let $\sigma$ be a permutation. Suppose $\sigma$ can be expressed as a product of $n$ transpositions. Then $\sigma$ is even if and only if $n$ is even.
+\end{theorem}
+\begin{proof}
+    We only need to show that the parity of $n$ and the parity of the permutation is the same to prove this.
+
+    By \myref{lemma-permutations-as-product-of-transpositions}, all permutations can be produced by a sequence of transpositions, say $\sigma = \tau_1\tau_2\tau_3\cdots\tau_k$.
+
+    By \myref{lemma-decompose-transposition}, every transposition can be written as a product of $2d - 1$ adjacent transpositions. Expressing each $\tau_i$ as a product of adjacent transpositions yields
+    \[
+        \sigma = \alpha_1\alpha_2\cdots\alpha_m
+    \]
+    where $\alpha_i$ is an adjacent transposition for $1 \leq i \leq m$. Note that the parity of $m$ is the same as that of $k$.
+
+    It is clear that for any permutation $\pi$ and adjacent permutation $\alpha$, the permutation $\alpha\pi$ has either one more or one less inversion than $\pi$. Thus the parity of the number of inversions of a permutation is switched when composed with adjacent transpositions.
+
+    We note that the identity permutation $\id$ is an even permutation. So $\alpha_1$ is odd, $\alpha_1\alpha_2$ is even, $\alpha_1\alpha_2\alpha_3$ is odd, etc., so $\alpha_1\alpha_2\cdots\alpha_m$ has the parity of $m$. Therefore the parity of the number of inversions of $\sigma$ is the parity of $k$ (since $m$ and $k$ have the same parity), proving the theorem.
+\end{proof}
+
+\begin{proposition}\label{prop-permutation-and-inverse-have-same-parity}
+    Let $\sigma$ be a permutation. Then $\sigma$ and $\sigma^{-1}$ have the same parity.
+\end{proposition}
+\begin{proof}
+    One observes clearly that $\sigma\sigma^{-1} = \id$. Since $\id$ is even, thus $\sigma\sigma^{-1}$ must be composed of an even number of transpositions (\myref{thrm-parity-of-permutation}).
+    \begin{itemize}
+        \item If $\sigma$ is even, then $\sigma$ can be expressed as a product of an even number of transpositions. Hence $\sigma^{-1}$ must also be a product of an even number of transpositions in order for $\sigma\sigma^{-1} = \id$ to be even.
+        \item If $\sigma$ is odd, then $\sigma$ can be expressed as a product of an odd number of transpositions. Hence $\sigma^{-1}$ must also be a product of an odd number of transpositions in order for $\sigma\sigma^{-1} = \id$ to be even.
+    \end{itemize}
+    This proves the claim.
+\end{proof}
+
+We look at one final useful construct: the sign of a permutation.
+\begin{definition}
+    The \textbf{sign of a permutation}\index{permutation!sign} is $+1$ if the permutation is even and $-1$ if the permutation is odd.
+\end{definition}
+If $\sigma$ is the permutation, $N(\sigma)$ is the number of inversions in $\sigma$, and $m$ is the number of transpositions in the decomposition of $\sigma$, then the sign of $\sigma$ is given by the \textbf{signum} function:
+\[
+    \sgn(\sigma) = (-1)^{N(\sigma)} = (-1)^m.
+\]
+\begin{exercise}
+    Find $\sgn\left(\begin{pmatrix}1&3&2&5&4\end{pmatrix}\right)$.
+\end{exercise}
+
+One observes that the number of inversions in $\sigma\tau$ is the same as the sum of inversions in $\sigma$ and $\tau$ separately, which means
+\[
+    N(\sigma\tau) = N(\sigma) + N(\tau)
+\]
+so
+\begin{align*}
+    \sgn(\sigma\tau) &= (-1)^{N(\sigma\tau)}\\
+    &= (-1)^{N(\sigma) + N(\tau)}\\
+    &= (-1)^{N(\sigma)}(-1)^{N(\tau)}\\
+    &= \sgn(\sigma)\sgn(\tau),
+\end{align*}
+meaning that $\sgn$ is a \textit{multiplicative map}. One can then quickly verify \myref{prop-permutation-and-inverse-have-same-parity} by noting
+\[
+    1 = \sgn(\id) = \sgn(\sigma\sigma^{-1}) = \sgn(\sigma)\sgn(\sigma^{-1})
+\]
+which implies $\sgn(\sigma)$ and $\sgn(\sigma^{-1})$ have the same parity.
+
+\subsection{The Alternating Group}
+We are now ready to look at the alternating group.
+\begin{definition}
+    The \textbf{alternating group of degree $n$}\index{alternating group!of degree $n$}, denoted by $\An{n}$, is given by
+    \[
+        \An{n} = \left\{\sigma \in \Sn{n} \vert \sigma \text{ is even}\right\}
+    \]
+    for $n \geq 2$.
+\end{definition}
+
+\begin{proposition}\label{prop-An-normal-subgroup-of-Sn}
+    $\An{n} \lhd \Sn{n}$ where $n \geq 2$.
+\end{proposition}
+\begin{proof}
+    Note that the identity function $\id \in \An{n}$ since $\id \in \Sn{n}$ and the identity is even.
+
+    Suppose now that $\mu$ and $\sigma$ are in $\An{n}$. We show that $\mu\sigma^{-1} \in \An{n}$. By \myref{lemma-permutations-as-product-of-transpositions}, we may write
+    \[
+        \mu = \tau_1\tau_2\cdots\tau_{2k} \text{ and } \sigma = \tau_1'\tau_2'\cdots\tau_{2m}'.
+    \]
+    We note that any transposition is its own inverse, i.e. $\tau = \tau^{-1}$. Hence $\sigma^{-1} = \tau_{2m}'\tau_{2m-1}'\cdots\tau_2'\tau_1'$, so
+    \[
+        \mu\sigma^{-1} = \underbrace{\tau_1\cdots\tau_{2k}\tau_{2m}'\cdots\tau_1'}_{2(k+m) \text{ transpositions}}
+    \]
+    is an even permutation, meaning $\mu\sigma^{-1} \in \An{n}$. By subgroup test, $\An{n} \leq \Sn{n}$. But as $\An{n}$ contains only even permutations, thus $\An{n} < \Sn{n}$.
+    
+    Now take $\sigma \in \Sn{n}$ and $\mu \in \An{n}$. Note that
+    \begin{align*}
+        \sgn(\sigma\mu\sigma^{-1}) &= \sgn(\sigma)\sgn(\mu)\sgn(\sigma^{-1})\\
+        &= \sgn(\sigma)\sgn(\sigma^{-1})\sgn(\mu)\\
+        &= \sgn(\sigma\sigma^{-1})\sgn(\mu)\\
+        &= \sgn(\id)\sgn(\mu)\\
+        &= \sgn(\mu).
+    \end{align*}
+    \[
+        \sgn(\sigma\mu\sigma^{-1}) = \sgn(\sigma)\sgn(\mu)\sgn(\sigma^{-1}).
+    \]
+    As $\mu$ is even, so $\sgn(\mu) = 1$. Hence $\sgn(\sigma\mu\sigma^{-1}) = 1$ which means that $\sigma\mu\sigma^{-1}$ is an even permutation. Therefore $\sigma\mu\sigma^{-1} \in \An{n}$, meaning that $\An{n} \lhd \Sn{n}$.
+\end{proof}
+
+\newpage
+
+\begin{proposition}\label{prop-order-of-An}
+    The order of $\An{n}$ is $\frac{n!}{2}$ for $n \geq 2$.
+\end{proposition}
+\begin{proof}
+    For brevity, let
+    \[
+        \mathrm{O}_n = \left\{\sigma \in \Sn{n} \vert \sigma \text{ is odd}\right\} = \Sn{n} \setminus \An{n}.
+    \]
+    Clearly $A_n \cup \mathrm{O}_n = \Sn{n}$ and $A_n \cap \mathrm{O}_n = \emptyset$.
+
+    Define a map $f: \An{n} \to \mathrm{O}_n$ such that $\sigma \mapsto \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. We will show that this is a bijection.
+    \begin{itemize}
+        \item \textbf{Injective}: Let $\mu$ and $\sigma$ be in $\An{n}$ such that $f(\mu) = f(\sigma)$. This means that $\begin{pmatrix}1 & 2\end{pmatrix}\mu = \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. Now left-applying $\begin{pmatrix}1 & 2\end{pmatrix}$ on both sides yields $\mu = \sigma$ (since transpositions are their own self-inverse).
+        
+        \item \textbf{Surjective}: Take $\mu \in \mathrm{O}_n$, say $\mu = \tau_1\tau_2\cdots\tau_{2k-1}$ where $\tau_i$ is a transposition. Clearly,
+        \[
+            \mu = \underbrace{\begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 2\end{pmatrix}}_{\id}\tau_1\tau_2\cdots\tau_{2k-1}.
+        \]
+        Consider $\sigma = \begin{pmatrix}1 & 2\end{pmatrix}\tau_1\tau_2\cdots\tau_{2k-1}$, which is an even permutation and thus is in $\An{n}$. Observe that
+        \begin{align*}
+            f(\sigma) &= \begin{pmatrix}1 & 2\end{pmatrix}\sigma\\
+            &= \begin{pmatrix}1 & 2\end{pmatrix}\left(\begin{pmatrix}1 & 2\end{pmatrix}\tau_1\tau_2\cdots\tau_{2k-1}\right)\\
+            &= \tau_1\tau_2\cdots\tau_{2k-1}\\
+            &= \mu
+        \end{align*}
+        which means that $\mu \in \mathrm{O}_n$ has a pre-image $\sigma$ in $\An{n}$.
+    \end{itemize}
+    This proves that $f$ is a bijection, so $|\An{n}| = |\mathrm{O}_n|$.
+    
+    Since $A_n \cup \mathrm{O}_n = \Sn{n}$ and $A_n \cap \mathrm{O}_n = \emptyset$, thus $|\Sn{n}| = |\An{n}| + |\mathrm{O}_n| = 2|\An{n}|$. Now because $|\Sn{n}| = n!$ by \myref{exercise-order-of-Sn}, therefore $|\An{n}| = \frac{n!}2$.
+\end{proof}
+
+\begin{exercise}
+    List all elements of $\An{3}$.
+\end{exercise}
+
+\section{Group of Units Modulo \texorpdfstring{$n$}{n}}
+We look at a useful group in Number Theory: the \textbf{group of units modulo $n$}.
+
+\begin{definition}
+    For a positive integer $n \geq 2$, the \textbf{group of units modulo $n$}\index{group of units modulo $n$}, denoted by $\Un{n}$, is the set
+    \[
+        \Un{n} = \{m \in \mathbb{Z} \vert 1 \leq m < n \text{ and } \gcd(m, n) = 1\}
+    \]
+    together with the operation $\otimes_n$ (multiplication modulo $n$).
+\end{definition}
+
+\begin{proposition}
+    $\Un{n}$ is an abelian group.
+\end{proposition}
+\begin{proof}
+    We note that multiplication modulo $n$ is commutative. So we only need to prove that $\Un{n}$ satisfies the four group axioms to show that $\Un{n}$ is an abelian group.
+    \begin{enumerate}
+        \item \textbf{Closure}: Let $x, y \in \Un{n}$. Then $\gcd(x, n) = \gcd(y, n) = 1$. Hence $\gcd(xy, n) = 1$ which means that $\gcd(x\otimes_ny,n)=1$. Thus $x\otimes_ny \in \Un{n}$.
+        
+        \item \textbf{Associativity}: Multiplication is associative, so multiplication modulo $n$ is associative.
+        
+        \item \textbf{Identity}: Note that 1 is the identity in $\Un{n}$ since $1 \otimes_n x = x$.
+        
+        \item \textbf{Inverse}: Let $x$ be in $\Un{n}$, meaning $\gcd(x, n) = 1$. Then \myref{prop-multiplicative-inverse-exists-iff-coprime} tells us that there exists an $m$ such that $mx \equiv 1 \pmod n$. Therefore $m \otimes_n x = 1$, which means $m$ is the inverse of $x$.
+    \end{enumerate}
+    Thus $\Un{n}$ is an abelian group under $\otimes_n$.
+\end{proof}
+
+\begin{exercise}
+    List the elements of $\Un{10}$.
+\end{exercise}
+
+There is another representation of $\Un{n}$, but we leave it to later in this section.
+
+A useful Number Theory function that will occur frequently in this section is \textbf{Euler's totient function}\index{Euler's totient function}.
+
+\begin{definition}
+    \textbf{Euler's totient function} $\totient$ gives the number of positive integers that are smaller than and coprime to a positive integer $x$. That is,
+    \[
+        \totient(x) = |\{n \in \mathbb{Z} \vert 1 \leq n < x \text{ and } \gcd(n, x) = 1\}|.
+    \]
+\end{definition}
+In particular, if $x = p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$ where $p_1, p_2,\dots,p_k$ are distinct primes and $n_1,n_2,\dots,n_k$ are positive integers, then
+\[
+    \totient(x) = x \left(1 - \frac1{p_1}\right)\left(1 - \frac1{p_2}\right)\cdots\left(1 - \frac1{p_k}\right).
+\]
+Note $|\Un{n}| = \totient(n)$ by definition of $\Un{n}$.
+
+\begin{exercise}\label{exercise-order-of-a-divides-phi-a}
+    Let $a \in \Un{n}$. Prove that $|a|$ divides $\totient(n)$.
+\end{exercise}
+
+\newpage
+
+We look at the specific case where $|a| = \totient(n)$.
+\begin{definition}
+    Suppose $\gcd(a, n) = 1$. Then $a$ is a \textbf{primitive root modulo $n$}\index{primitive root} if $|a| = \totient(n)$ in $\Un{n}$.
+\end{definition}
+We state the following fact without proof:
+\begin{quote}
+    There is a primitive root modulo $n$ if and only if $n$ is 1, 2, 4, $p^k$, or $2p^k$ where $p$ is an odd prime.
+\end{quote}
+
+\begin{proposition}\label{prop-Un-cyclic-only-if-exists-primitive-root}
+    $\Un{n}$ is cyclic if and only if there is a primitive root modulo $n$.
+\end{proposition}
+\begin{proof}
+    We first prove the forward direction. Let $\Un{n}$ be cyclic. Then there exists an element $r \in \Un{n}$ such that $|r| = |\Un{n}| = \totient(n)$, so $r$ is a primitive root modulo $n$ by definition of a primitive root.
+
+    We now prove the reverse direction. Let $r \in \Un{n}$ be a primitive root modulo $n$. Then $\langle r \rangle \cong \mathbb{Z}_{\totient(n)}$. Note that since $|\langle r \rangle| = \totient(n) = |\Un{n}|$, therefore $r$ is a generator of $\Un{n}$, meaning $\Un{n}$ is cyclic.
+\end{proof}
+\begin{remark}
+    In fact, what \myref{prop-Un-cyclic-only-if-exists-primitive-root} shows is that $\Un{n} \cong \mathbb{Z}_{\totient(n)}$ if there exists a primitive root modulo $n$.
+\end{remark}
+
+We end this section by looking at an alternate representation of $\Un{n}$. Define the group
+\[
+    \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times} = \left\{m + n\mathbb{Z} \ \vert \ m,n \in \mathbb{Z},\; 1 \leq m < n,\; \gcd(m, n)=1\right\}
+\]
+under the operation $\ast$ where $(a+n\mathbb{Z})\ast(b+n\mathbb{Z}) = (a\otimes_n b) + n\mathbb{Z}$ for $n \geq 2$.
+\begin{proposition}
+    $\Un{n} \cong \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$.
+\end{proposition}
+\begin{proof}
+    Define the map $\phi: \Un{n} \to \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$ such that $m \mapsto m + n\mathbb{Z}$. We show that $\phi$ is an isomorphism.
+
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $x, y \in \Un{n}$. Then $\phi$ is a homomorphism since
+        \begin{align*}
+            \phi(x \otimes_n y) &= (x \otimes_n y) + n\mathbb{Z}\\
+            &= (x + n\mathbb{Z}) \ast (y + n\mathbb{Z})\\
+            &= \phi(x) \ast \phi(y).
+        \end{align*}
+
+        \item \textbf{Injective}: Suppose we have $x, y \in \Un{n}$ such that $\phi(x) = \phi(y)$. Then this means that $x + n\mathbb{Z} = y + n\mathbb{Z}$. Thus
+        \[
+            \{x + pn \vert p \in \mathbb{Z} \} = \ \{y + qn \vert q \in \mathbb{Z} \}.
+        \]
+        Hence we conclude that $x \equiv y \pmod{n}$. But since $1 \leq x, y < n$, we must have $x = y$. Therefore $\phi(x) = \phi(y)$ implies $x = y$, meaning $\phi$ is injective.
+
+        \item \textbf{Surjective}: Let $x + n\mathbb{Z} \in (\mathbb{Z}/(n\mathbb{Z}))^\times$, so $\gcd(x,n) = 1$. Using Euclid's division lemma (\myref{lemma-euclid-division}) on $x$ yields
+        \[
+            x = qn + r, \text{ where } 0 \leq r < n.
+        \]
+        Note that
+        \begin{align*}
+            x + n\mathbb{Z} &= \{x + kn \vert k \in \mathbb{Z}\}\\
+            &= \{(qn + r) + kn \vert k \in \mathbb{Z}\}\\
+            &= \{r + n(\underbrace{q+k}_{\text{In } \mathbb{Z}}) \vertalt k \in \mathbb{Z}\}\\
+            &= r + n\mathbb{Z}
+        \end{align*}
+        with $0 \leq r < n$. Note that if $r = 0$, this means that $x = qn$, which means that $\gcd(x, n) = \gcd(qn, n) = n \neq 1$. Thus, $r \neq 0$, meaning $1 \leq r < n$ so $r \in \Un{n}$.
+
+        Observing that $\phi(r) = r + n\mathbb{Z} = x + n\mathbb{Z}$ shows that $x + n\mathbb{Z}$ has a pre-image $r$ in $\Un{n}$, which means that $\phi$ is surjective.
+    \end{itemize}
+
+    Thus $\phi$ is an isomorphism, meaning $\Un{n} \cong \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$.
+\end{proof}
+
+\section{Groups of Matrices}
+\subsection{Introduction to Matrices}
+Before we can introduce the groups of matrices, we need to understand what they are, and to learn some operations that can be applied to matrices.
+
+A matrix\index{matrix} is a rectangular array of numbers, symbols, or expressions, arranged in rows and columns. They are used to represent mathematical objects or properties of objects.
+
+For example,
+\[
+    \textbf{M} = \begin{pmatrix}
+    1 & 2\\
+    3 & 4\\
+    5 & 6
+    \end{pmatrix}
+\]
+is a matrix. In this section, we consider only square matrices\index{matrix!square}, which have the same number of rows as columns. For example,
+\[
+    \textbf{A} = \begin{pmatrix}
+    1 & 2 & 3\\
+    4 & 5 & 6\\
+    7 & 8 & 9
+    \end{pmatrix}, \textbf{B} = \begin{pmatrix}
+    -1 & 0 & 1 & 1\\
+    1 & 0 & -1 & 1\\
+    1 & 1 & 1 & 1\\
+    2 & 3 & 3 & 3
+    \end{pmatrix}, \textrm{ and } \textbf{C} = \begin{pmatrix}
+    x & x^2\\
+    x^3 & x^4\\
+    \end{pmatrix}
+\]
+are square matrices. For brevity, for a matrix \textbf{M}, we denote the element in the $i$th row and the $j$th column by $m_{i,j}$ (where $1 \leq i, j \leq n$ with $n$ being the number of rows and columns in \textbf{M}). For example, using the above matrices, $a_{2,3} = 6$, $b_{2,4}=1$, and $c_{1,2} = x^2$.
+
+We now introduce the idea of \textbf{matrix multiplication}\index{matrix!multiplication}. Consider two square matrices \textbf{A} and \textbf{B} with the same number of rows and columns (say, $n$ rows and columns). Let their product, denoted \textbf{AB}, be the matrix \textbf{C}. Then
+\[
+    c_{i,j} = \sum_{k=1}^n a_{i,k}b_{k,j}
+\]
+for any $1 \leq i, j \leq n$. For example, if $\textbf{A} = \begin{pmatrix}1 & 2\\3 & 4\end{pmatrix}$ and $\textbf{B} = \begin{pmatrix}5 & 6\\7 & 8\end{pmatrix}$ then
+\[
+    \textbf{AB} = \begin{pmatrix}1\times5+2\times7 & 1\times6+2\times8\\3\times5+4\times7 & 3\times6+4\times8\end{pmatrix}
+    = \begin{pmatrix}19 & 22\\43 & 50\end{pmatrix}.
+\]
+Note that matrix multiplication is \textbf{not} commutative, as
+\[
+    \textbf{AB} = \begin{pmatrix}19 & 22\\43 & 50\end{pmatrix} \text{ but } \textbf{BA} = \begin{pmatrix}23 & 34\\31 & 46\end{pmatrix}.
+\]
+
+\begin{exercise}
+    Find the matrix given by the product
+    \[
+        \begin{pmatrix}1&1&0\\0&1&0\\0&1&1\end{pmatrix}\begin{pmatrix}1&1&1\\1&0&1\\1&1&1\end{pmatrix}.
+    \]
+\end{exercise}
+
+Matrices can also be `multiplied' by real numbers (known as \textbf{scalar multiplication}\index{scalar multiplication}). For example,
+\[
+    1.23\begin{pmatrix}1 & 2\\3 & 4\end{pmatrix} = \begin{pmatrix}1.23 & 2.46\\3.69 & 4.92\end{pmatrix}.
+\]
+
+We now look at a special kind of square matrix: the \textbf{identity matrix of order $n$}\index{matrix!identity}. It is denoted $\textbf{I}_n$ and it is a matrix with $n$ rows and columns with 1s on the main diagonal and 0s everywhere else. For example,
+\[
+    \textbf{I}_2 = \begin{pmatrix}1 & 0\\0 & 1\end{pmatrix},
+\textbf{I}_3 = \begin{pmatrix}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\end{pmatrix}, \text{ and }
+\textbf{I}_4 = \begin{pmatrix}1 & 0 & 0 & 0\\0 & 1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{pmatrix}.
+\]
+We note that for any matrix \textbf{M} with $n$ rows and columns,
+\[
+    \textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}.
+\]
+
+A square matrix may have an \textbf{inverse}\index{matrix!inverse}. Consider a square matrix \textbf{A} with $n$ rows and columns. Then \textbf{B} is an inverse of \textbf{A} if
+\[
+    \textbf{AB} = \textbf{BA} = \textbf{I}_n.
+\]
+For example, consider the matrices
+\[
+    \textbf{A} = \begin{pmatrix}1&1&0\\ 0&1&0\\ 0&1&1\end{pmatrix} \text{ and } \textbf{B} = \begin{pmatrix}1&-1&0\\0&1&0\\0&-1&1\end{pmatrix}.
+\]
+Note that
+\[
+    \textbf{AB} = \textbf{BA} = \textbf{I}_3
+\]
+so \textbf{B} is the inverse of \textbf{A} (and \textbf{A} is the inverse of \textbf{B}). We denote the inverse of a square matrix \textbf{M} by $\textbf{M}^{-1}$. We note that $\textbf{I}_n^{-1} = \textbf{I}_n$ but we do not prove it here.
+
+One last thing we introduce here is the idea of a \textbf{matrix determinant}\index{matrix!determinant} (or simply the \textbf{determinant}). The determinant is only well defined for square matrices (say $\textbf{A}$), and is denoted by $\det(\textbf{A})$ or $\det \textbf{A}$. The rule for the determinant changes as we increase the number of rows and columns in the square matrix, so we only look at small cases.
+\begin{itemize}
+    \item If the square matrix only has one row, then its determinant is the only element in the matrix. Thus, if $\textbf{A} = (a_{1,1})$ then $\det \textbf{A} = a_{1,1}$.
+    \item If the square matrix has two rows, such as the matrix $\begin{pmatrix}a & b\\c & d\end{pmatrix}$, then its determinant is $ad-bc$.
+    \item If the square matrix has three rows, like $\begin{pmatrix}a & b & c \\ d & e & f \\ g & h & i\end{pmatrix}$, then its determinant is $aei+bfg+cdh-ceg-bdi-afh$.
+\end{itemize}
+An important property of the determinant is that it is a \textit{multiplicative map}: for two square matrices \textbf{A} and \textbf{B},
+\[
+    \det (\textbf{AB}) = \det(\textbf{A}) \times \det(\textbf{B}).
+\]
+Finally, not all square matrices has an inverse. The necessary and sufficient condition that determines whether a square matrix \textbf{M} has an inverse is whether $\det \textbf{M} \neq 0$. That is,
+\[
+    \textbf{M}^{-1} \text{ exists if and only if } \det \textbf{M} \neq 0.
+\]
+
+We conclude this subsection with a few properties of the determinant that we state but not prove:
+\begin{itemize}
+    \item $\det(\textbf{I}_n) = 1$;
+    \item $\det(\textbf{M}^{-1}) = \left(\det \textbf{M}\right)^{-1}$; and
+    \item $\det(k\textbf{M}) = k^n \det\textbf{M}$ for a matrix \textbf{M} with $n$ rows and columns.
+\end{itemize}
+
+\subsection{General Linear Group over the Real Numbers}
+With an introduction of matrices out of the way, we can introduce the first of two important matrix groups: the \textbf{General Linear Group of degree $n$} over the real numbers.
+\begin{definition}
+    The \textbf{General Linear Group of degree $n$}\index{General Linear Group} over the real numbers is denoted by $\GL{n}{\mathbb{R}}$ and is the group with set
+    \[
+        \left\{\textbf{M} \vert \text{\textbf{M} is a matrix with } n \text{ rows and columns, and } \det \textbf{M} \neq 0\right\}
+    \]
+    under the operation of matrix multiplication.
+\end{definition}
+In other words, $\GL{n}{\mathbb{R}}$ is the group of real-valued matrices with $n$ rows and columns that has an inverse. We show that $\GL{n}{\mathbb{R}}$ is a group under matrix multiplication.
+\begin{proof}
+    We need to prove the four group axioms.
+    \begin{enumerate}
+        \item \textbf{Closure}: Consider two matrices \textbf{A} and \textbf{B} in $\GL{n}{\mathbb{R}}$. Then that means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Note also that $\textbf{AB}$ has $n$ rows and columns. Therefore $\textbf{AB}$ is also in $\GL{n}{\mathbb{R}}$, meaning that it is closed under matrix multiplication.
+        
+        \item \textbf{Associativity}: Consider three matrices \textbf{A}, \textbf{B}, and \textbf{C} in $\GL{n}{\mathbb{R}}$.
+        \begin{itemize}
+            \item Consider $(\textbf{AB})\textbf{C}$. Let $\textbf{R} = \textbf{AB}$ and $\textbf{S} = (\textbf{AB})\textbf{C}$. Then
+            \[
+                r_{i,k} = \sum_{l=1}^n a_{i,l}b_{l,k} \text{ and } s_{i,j} = \sum_{k=1}^n r_{i,k}c_{k,j}
+            \]
+            which means that
+            \[
+                s_{i,j} = \sum_{k=1}^n \left(\sum_{l=1}^n a_{i,l}b_{l,k}\right)c_{k,j} = \sum_{k=1}^n \sum_{l=1}^n (a_{i,l}b_{l,k})c_{k,j}.
+            \]
+            \item Now consider $\textbf{A}(\textbf{BC})$. Let $\textbf{R} = \textbf{BC}$ and $\textbf{S} = \textbf{A}(\textbf{BC})$. Then
+            \[
+                r_{l,j} = \sum_{k=1}^nb_{l,k}c_{k,j} \text{ and } s_{i,j} = \sum_{l=1}^n a_{i,l}r_{l,j}
+            \]
+            which means that
+            \[
+                s_{i,j} = \sum_{l=1}^n a_{i,l}\left(\sum_{k=1}^nb_{l,k}c_{k,j}\right) = \sum_{l=1}^n\sum_{k=1}^n a_{i,l}(b_{l,k}c_{k,j}).
+            \]
+        \end{itemize}
+        Now, multiplication is associative. So
+        \[
+                (a_{i,l}b_{l,k})c_{k,j} = a_{i,l}(b_{l,k}c_{k,j})
+        \]
+        which means
+        \[
+            \sum_{k=1}^n \sum_{l=1}^n (a_{i,l}b_{l,k})c_{k,j} = \sum_{l=1}^n\sum_{k=1}^n a_{i,l}(b_{l,k}c_{k,j}),
+        \]
+        thereby proving that matrix multiplication is associative.
+        
+        \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n$ is in $\GL{n}{\mathbb{R}}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M} \in \GL{n}{\mathbb{R}}$, thus $\textbf{I}_n$ is the identity of $\GL{n}{\mathbb{R}}$.
+        
+        \item \textbf{Inverse}: Let \textbf{M} be a matrix in $\GL{n}{\mathbb{R}}$. As $\det \textbf{M} \neq 0$, thus $\textbf{M}^{-1}$ exists. By properties of the determinant, we know that $\det \left(\textbf{M}^{-1}\right) = \left(\det \textbf{M}\right)^{-1}$, and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1} \in \GL{n}{\mathbb{R}}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\mathbb{R}}$.
+    \end{enumerate}
+    Thus $\GL{n}{\mathbb{R}}$ is a group.
+\end{proof}
+
+\subsection{Special Linear Group over the Real Numbers}
+We look at another group of matrices: the \textbf{Special Linear Group of degree $n$} over the real numbers.
+\begin{definition}
+    The \textbf{Special Linear Group of degree $n$}\index{Special Linear Group} over the real numbers is denoted by $\SL{n}{\mathbb{R}}$ and is the group with set
+    \[
+        \left\{\textbf{M} \vert \text{\textbf{M} is a matrix with } n \text{ rows and columns, and } \det \textbf{M} = 1\right\}
+    \]
+    under matrix multiplication.
+\end{definition}
+One sees clearly that $\SL{n}{\mathbb{R}}$ is a sub\textit{set} of $\GL{n}{\mathbb{R}}$: the set of $\GL{n}{\mathbb{R}}$ requires non-zero determinant while the set of $\SL{n}{\mathbb{R}}$ requires the determinant to be 1, which satisfies the non-zero determinant requirement. What we want to prove here is that $\SL{n}{\mathbb{R}}$ is a sub\textit{group} of $\GL{n}{\mathbb{R}}$. In fact,
+\begin{proposition}
+    $\SL{n}{\mathbb{R}} \lhd \GL{n}{\mathbb{R}}$.
+\end{proposition}
+\begin{proof}
+    We consider the subgroup test. Clearly $\textbf{I}_n$ is in $\SL{n}{\mathbb{R}}$ since its determinant is 1. Hence all we have to check the second condition of the subgroup test.
+
+    Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\mathbb{R}}$. This means that $\det \textbf{A} = 1$ and $\det \textbf{B} = 1$. Note that $\det(\textbf{B}^{-1}) = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det \textbf({B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\mathbb{R}}$. Hence by the subgroup test, $\SL{n}{\mathbb{R}} < \GL{n}{\mathbb{R}}$.
+    
+    Now let $\textbf{M}$ be a matrix in $\GL{n}{\mathbb{R}}$ and $\textbf{N}$ be a matrix in $\SL{n}{\mathbb{R}}$. We are to show that $\textbf{MNM}^{-1}$ is in $\SL{n}{\mathbb{R}}$. Since $\textbf{M} \in \GL{n}{\mathbb{R}}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\mathbb{R}}$ implies $\det \textbf{N} = 1$. Hence,
+    \[
+        \det \textbf{MNM}^{-1} = (\det \textbf{M})(\det \textbf{N})(\det \textbf{M})^{-1} = \det \textbf{N} = 1
+    \]
+    which means that $\textbf{MNM}^{-1}$ is in $\SL{n}{\mathbb{R}}$.
+
+    Therefore $\SL{n}{\mathbb{R}} \lhd \GL{n}{\mathbb{R}}$.
+\end{proof}
+
+\subsection{A Consequence of the Fundamental Homomorphism Theorem}
+We end this section with a consequence of the Fundamental Homomorphism Theorem on these groups of matrices. For brevity, let $\mathbb{R}^\times$ be the group of non-zero real numbers under multiplication.
+
+\begin{proposition}
+    $\GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times$.
+\end{proposition}
+\begin{proof}
+    Define the map $\phi: \GL{n}{\mathbb{R}} \to \mathbb{R}^\times$ where $\textbf{M} \mapsto \det\textbf{M}$.
+	\begin{itemize}
+	    \item \textbf{Homomorphism}: Take $\textbf{M}, \textbf{N} \in \GL{n}{\mathbb{R}}$. Then
+	    \[
+	        \phi(\textbf{MN}) = \det \textbf{MN} = \det(\textbf{M})\det(\textbf{N}) = \phi(\textbf{M})\phi(\textbf{N})
+	    \]
+	    which means that $\phi$ is a homomorphism.
+
+	    \item \textbf{Image}: We prove that $\phi$ is surjective to show that $\im \phi = \mathbb{R}^\times$. Suppose $r \in \mathbb{R}^\times$. Then $r^{\frac1n} \in \mathbb{R}^\times$, and a matrix with $r^{\frac1n}$ on its main diagonal (written as $r^{\frac1n}\textbf{I}_n$ where $\textbf{I}_n$ is the identity matrix with $n$ rows and columns) is in $\GL{n}{\mathbb{R}}$. Note that $\det\left(r^{\frac1n}\textbf{I}_n\right) = \left(r^{\frac1n}\right)^n\det(\textbf{I}_n) = r$. Thus there is a pre-image of $r$ inside the codomain $\mathbb{R}^\times$, meaning that $\phi$ is surjective. Hence, $\im \phi = \mathbb{R}^\times$.
+
+	    \item \textbf{Kernel}: Note that 1 is the identity in $\mathbb{R}^\times$. Thus
+	    \begin{align*}
+	        \ker\phi &= \{\textbf{M} \in \GL{n}{\mathbb{R}} \vert \phi(\textbf{M}) = 1\} \\
+	        &= \{\textbf{M} \in \GL{n}{\mathbb{R}} \vert \det(\textbf{M}) = 1\}\\
+	        &= \SL{n}{\mathbb{R}}.
+	    \end{align*}
+	\end{itemize}
+	The Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) tells us that
+	\[
+	    \GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times
+	\]
+	which proves the claim.
+\end{proof}
+
+\section{Automorphism Groups}
+\subsection{Group of Automorphisms of \texorpdfstring{$G$}{G}}
+We look at automorphisms, an important type of map in abstract algebra.
+\begin{definition}
+    An \textbf{automorphism}\index{automorphism} of a group $G$ is an isomorphism from a group $G$ to itself. That is, $\phi: G \to G$ is an automorphism if $\phi$ is an isomorphism.
+\end{definition}
+Clearly, from this definition, the identity function $\id$ is an automorphism.
+
+We now look at the group of automorphisms of a group $G$.
+\begin{definition}
+    Let $G$ be a group. The \textbf{group of automorphisms of $G$}\index{automorphism group}, denoted $\Aut{G}$, is given by
+    \[
+        \Aut{G} = \{\phi: G \to G \vert \phi \text{ is an isomorphism}\}
+    \]
+    under function composition (denoted by $\circ$).
+\end{definition}
+We prove that $\Aut{G}$ is indeed a group.
+
+\begin{proof}
+    We look at the four group axioms.
+    \begin{itemize}
+        \item \textbf{Closure}: If $f, g \in \Aut{G}$, and $h = fg$, then $h: G \to G$ is a bijection. Furthermore $h$ is a homomorphism since for any $x, y \in G$ we have
+        \begin{align*}
+            h(xy) &= f(g(xy))\\
+            &= f(g(x)g(y)) & (g \text{ is isomorphism})\\
+            &= f(g(x))f(g(y)) & (f \text{ is isomorphism})\\
+            &= h(x)h(y)
+        \end{align*}
+        so $h$ is an isomorphism, meaning $h = fg \in \Aut{G}$.
+
+        \item \textbf{Associativity}: Function composition is associative.
+
+        \item \textbf{Identity}: As mentioned above, the identity isomorphism $\id: G \to G, g \mapsto g$ is in $\Aut{G}$. By definition of $\id$, $f \circ \id = f$ and $\id \circ f = f$, so $\id$ is indeed the identity in $\Aut{G}$.
+
+        \item \textbf{Inverse}: Suppose $f \in \Aut{G}$. Then $f$ is an isomorphism. By \myref{thrm-isomorphism-consequences}, $f^{-1}: G \to G$ is also an isomorphism, so $f^{-1} \in \Aut{G}$. Recall also that
+        \[
+            f\circ f^{-1} = \id \text{ and } f^{-1}\circ f = \id
+        \]
+        so $f^{-1}$ is indeed the identity of $f$.
+    \end{itemize}
+    Since the four group axioms are satisfied, thus $\Aut{G}$ is a group under function composition.
+\end{proof}
+
+\newpage
+
+\subsection{Group of Inner Automorphisms of \texorpdfstring{$G$}{G}}
+We now look at inner automorphisms and its group.
+\begin{definition}
+    An \textbf{inner automorphism}\index{automorphism!inner} of a group $G$ is an automorphism $\iota: G \to G$ such that $\iota(x) = gxg^{-1}$ for some fixed $g \in G$.
+\end{definition}
+\begin{definition}
+    Let $G$ be a group. The \textbf{group of inner automorphisms of $G$}\index{automorphism group!inner}, $\Inn{G}$, is given by
+    \[
+        \Inn{G} = \{\iota_g: G \to G \vert \iota_g(x) = gxg^{-1},\; g \in G\}
+    \]
+    under function composition (denoted by $\circ$).
+\end{definition}
+
+\begin{proposition}
+    $\Inn{G} \leq \Aut{G}$.
+\end{proposition}
+\begin{proof}
+    Clearly $\id \in \Inn{G}$ since $\id = \iota_e$ and 
+    \[
+        \id(x) = \iota_e(x) = exe^{-1} = x.
+    \]
+    for any $x \in G$. Hence $\Inn{G}$ is non-empty and, furthermore, $\Inn{G} \subseteq \Aut{G}$.
+
+    Now take $\iota_x, \iota_y \in \Inn{G}$. Note that $\left(\iota_y\right)^{-1} = \iota_{y^{-1}}$ since
+    \[
+        \left(\iota_y\right)\left(\iota_{y^{-1}}\right)(g) = \left(\iota_y\right)\left(y^{-1}gy\right) = y\left(y^{-1}gy\right)y^{-1} = g
+    \]
+    which means $\left(\iota_y\right)\left(\iota_{y^{-1}}\right) = \id$. Therefore $\iota_x\left(\iota_y\right)^{-1} = \iota_{xy^{-1}}$ since for any $g \in G$ we have
+    \begin{align*}
+        \iota_x\left(\iota_y\right)^{-1}(g) &= \iota_x\iota_{y^{-1}}(g)\\
+        &= \iota_x\left(y^{-1}gy\right)\\
+        &= xy^{-1}gyx^{-1}\\
+        &= \left(xy^{-1}\right) g \left(xy^{-1}\right)^{-1}\\
+        &= \iota_{xy^{-1}}(g),
+    \end{align*}
+    which means that $\iota_x\left(\iota_y\right)^{-1} = \iota_{xy^{-1}} \in \Inn{G}$.
+
+    Hence, by subgroup test, $\Inn{G} \leq \Aut{G}$.
+\end{proof}
+
+\begin{exercise}
+    Let $G$ be a group. Prove that $\Inn{G} \unlhd \Aut{G}$.
+\end{exercise}
+
+\subsection{A Consequence of the Fundamental Homomorphism Theorem}
+Before we can state the consequence, we revisit the idea of the center of a group as introduced in \myref{example-center-of-group}.
+\begin{quote}
+    The center of a group $G$ is the normal subgroup
+    \[
+        \Z{G} = \{z \in G \vert z = gzg^{-1} \text{ for all } g \in G\}.
+    \]
+\end{quote}
+
+\begin{proposition}
+    $G/\Z{G} \cong \Inn{G}$.
+\end{proposition}
+\begin{proof}
+    We define $\phi: G \to \Inn{G}, g \mapsto \iota_g$ where $\iota_g(x) = gxg^{-1}$.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $g, h \in G$. Then for any $x \in G$,
+        \begin{align*}
+            (\phi(gh))(x) = \iota_{gh}(x) &= (gh)x(gh)^{-1}\\
+            &= gh x h^{-1}g^{-1}\\
+            &= g(hxh^{-1})g^{-1}\\
+            &= g(\iota_h(x))g^{-1}\\
+            &=\iota_g(\iota_h(x))\\
+            &=(\iota_g\circ\iota_h)(x)\\
+            &=(\phi(g)\phi(h))(x)
+        \end{align*}
+        which means that $\phi$ is a homomorphism.
+
+        \item \textbf{Image}: We show that $\phi$ is surjective to prove that $\im \phi = \Z{G}$. Suppose $\iota_g \in \Inn{G}$. Clearly $\phi(g) = \iota_g$ which means that $\phi$ is surjective. Hence $\im\phi = \Z{G}$.
+
+        \item \textbf{Kernel}: Note that $\ker\phi = \{g \in G \vert \phi(g) = \id\}$. So, if $g \in \ker\phi$ then $(\phi(g))(x) = \iota_g(x) = \id(x) = x$ for all $x \in G$. This means that $gxg^{-1} = x$, meaning $gx = xg$ for all $x \in G$, so $g \in \Z{G}$. Hence $\ker\phi = \Z{G}$.
+    \end{itemize}
+    Therefore, ones sees that by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}),
+    \[
+        G/\ker\phi \cong \im\phi,
+    \]
+    implying that
+    \[
+        G/\Z{G} \cong \Inn{G}    
+    \]
+    which proves the result.
+\end{proof}
+
+\newpage
+
+\section{Problems}
+\begin{problem}
+    By considering the group $\mathbb{Z}_{10101}$, find the smallest positive integers $a$ and $b$ such that
+    \begin{partquestions}{\alph*}
+        \item $1870a$ is a multiple of 10101.
+        \item $3774b$ is a multiple of 10101.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Find the largest integer $n$ such that $\An{n}$ is an abelian group, proving your claim. Hence find all integers $k$ such that $\An{k}$ is cyclic.
+\end{problem}
+
+\begin{problem}
+    Suppose $r$ is a primitive root modulo $p^k$, where $p$ is an odd prime and $k \geq 1$. Prove that $r$ is also a primitive root modulo $2p^k$.
+\end{problem}
+
+\begin{problem}
+    Let $G$ be a finite cyclic group of order $n$ with generator $g$.
+    \begin{partquestions}{\roman*}
+        \item Suppose $f: G \to G$ and $h: G \to G$ are homomorphisms. Prove that $f = h$ if and only if $f(g) = h(g)$.
+        \item Let $f: G \to G$ be a homomorphism. Explain why $f(g) = g^{m_f}$ where $m_f$ is a integer unique to $f$.
+        \item Suppose $f: G \to G$ and $h: G \to G$ are homomorphisms. Prove that $m_{f\circ h} = m_f \otimes_n m_h$, where $\circ$ denotes function composition and $\otimes_n$ denotes multiplication modulo $n$.
+        \item Let $f: G \to G$ be a homomorphism. Prove that $f$ is an automorphism if and only if $m_f$ has a multiplicative inverse modulo $n$. That is, there exists $k \in \Un{n}$ such that $m_fk \equiv 1 \pmod n$ if and only if $f$ is an automorphism.\newline
+        (\textit{Hint: consider \myref{prop-multiplicative-inverse-exists-iff-coprime}, where we have $ab \equiv 1 \pmod m$ if and only if $\gcd(a, m) = 1$.})
+        \item Hence, by considering the map $\phi: \Aut{G} \to \Un{n}$ where $f \mapsto m_f$, prove $\Aut{G} \cong \Un{n}$. 
+    \end{partquestions}
+\end{problem}

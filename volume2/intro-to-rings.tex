@@ -1,0 +1,111 @@
+\chapter{Introduction to Rings}
+In Volume I, we looked exclusively at groups and their operations. We discussed how groups are a generalisation of symmetry and looked at results related to groups. In this volume, we look at rings.
+
+Before we introduce rings, we look at `simpler' algebraic structures and build our way up to them.
+
+\section{Basic Algebraic Structures}
+\begin{definition}
+    A \textbf{magma}\index{magma} is a set $M$ together with a binary operation $\ast$ which is closed. That is, if $a$ and $b$ are in $M$, then $a \ast b \in M$. Such a magma is denoted $(M, \ast)$.
+\end{definition}
+\begin{example}
+    Consider the set $M = \{1, 2, 3, 4\}$ with the operation $\ast$ such that $(M, \ast)$ has the Cayley table as shown below.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            $\ast$     & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} \\ \hline
+            \textbf{1} & 1          & 2          & 1          & 2          \\ \hline
+            \textbf{2} & 2          & 3          & 4          & 1          \\ \hline
+            \textbf{3} & 1          & 3          & 4          & 2          \\ \hline
+            \textbf{4} & 2          & 1          & 2          & 1          \\ \hline
+        \end{tabular}
+    \end{table}
+    
+    Clearly for any $a, b\in M$ we have $a \ast b \in M$, so $(M, \ast)$ is a magma.
+\end{example}
+
+\begin{definition}
+    A \textbf{semigroup}\index{semigroup} is a magma $(\mathcal{S}, \ast)$ where the operation $\ast$ is associative. That is, $a\ast(b\ast c) = (a\ast b)\ast c$.
+\end{definition}
+\begin{example}
+    Consider the set $S = \{1, 2, 3, 4\}$ with the operation $\ast$ such that $(S, \ast)$ has the Cayley table as shown below.
+    \begin{table}[h]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            $\ast$     & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} \\ \hline
+            \textbf{1} & 1          & 1          & 1          & 1          \\ \hline
+            \textbf{2} & 2          & 2          & 2          & 2          \\ \hline
+            \textbf{3} & 3          & 3          & 3          & 3          \\ \hline
+            \textbf{4} & 4          & 4          & 4          & 4          \\ \hline
+        \end{tabular}
+    \end{table}
+    
+    One sees that $(S, \ast)$ is closed under $\ast$. In addition, $\ast$ is associative. Hence $(S, \ast)$ is a semigroup.
+\end{example}
+
+\begin{definition}
+    A \textbf{monoid}\index{monoid} is a semigroup $(M, \ast)$ with an element $e$, called the \textbf{identity}, such that
+    \[
+        e \ast m = m \ast e = m
+    \]
+    for all $m \in M$.
+\end{definition}
+\begin{example}
+    The structure $(S, \circ)$, where
+    \[
+        S = \{f \vert  f: X \to X\},
+    \]
+    $X$ is a set, and $\circ$ denotes function composition forms a monoid.
+    \begin{itemize}
+        \item \textbf{Closure}: If $f, g \in S$ then $f\circ g \in S$ since function composition is closed.
+        \item \textbf{Associative}: Function composition is associative.
+        \item \textbf{Identity}: The identity function $\id: X \to X, x\mapsto x$ is inside $S$ and
+        \[
+            \id \circ f = f \circ \id = f
+        \]
+        for all $f \in S$.
+    \end{itemize}
+    Thus $(S, \circ)$ forms a monoid.
+\end{example}
+
+\begin{definition}
+    A \textbf{group}\index{group} is a monoid $(G, \ast)$ where every element has an inverse. That is to say, for every $g \in G$, there exists $g^{-1} \in G$ such that
+    \[
+        g \ast g^{-1} = g^{-1} \ast g = e
+    \]
+    where $e$ is the identity in $G$.
+\end{definition}
+
+\section{Definition of a Ring}
+With all that set up, we are ready to define what a ring is. Note that we follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ring-definition} for the definition of a ring.
+\begin{definition}
+    A \textbf{ring}\index{ring} is a set $R$ with two binary operations $+$ and $\cdot$ satisfying the following axioms.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: $(R, +)$ is an abelian group.
+        \item \textbf{Multiplication-Semigroup}: $(R, \cdot)$ is a semigroup.
+        \item \textbf{Distributive}: $\cdot$ is distributive over $+$. That is,
+        \begin{itemize}
+            \item $a \cdot (b + c) = (a \cdot b) + (b \cdot c)$; and
+            \item $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
+        \end{itemize}
+    \end{itemize}
+    One may denote such a ring by $(R, +, \cdot)$.
+\end{definition}
+\begin{remark}
+    Other authors (e.g. \cite[p.~136]{cohn_1982}, \cite[pp.~145--146]{clark_1984}) may require that $(R, \cdot)$ is a monoid. In this book, any ring that satisfies the above condition is called a \textbf{ring with identity}\index{ring!with identity}.
+\end{remark}
+\begin{remark}
+    A ring where $a \cdot b = b \cdot a$ for all $a$ and $b$ in $R$ is called a \textbf{commutative ring}\index{ring!commutative}.
+\end{remark}
+
+We end this chapter by introducing the \textbf{trivial ring}.
+\begin{definition}
+    The \textbf{trivial ring}\index{trivial ring} (or \textbf{zero ring}\index{zero ring}), denoted $\textbf{0}$, is the ring $(\{0\}, +, \cdot)$ where
+    \[
+        0 + 0 = 0 \text{ and } 0 \cdot 0 = 0.    
+    \]
+\end{definition}
+\begin{exercise}
+    Prove that the trivial ring is a commutative ring with identity.
+\end{exercise}

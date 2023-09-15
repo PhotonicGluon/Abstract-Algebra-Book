@@ -1,0 +1,105 @@
+\chapter{Polynomial Algebra}
+Working with polynomials is essential when working in abstract algebra, especially when it comes to objects such as polynomial rings/fields. We note important details when it comes to working with polynomials here.
+
+\section{Basics of Polynomials}
+\begin{definition}
+    A \textbf{polynomial}\index{polynomial} is an expression consisting of \textbf{variables}\index{polynomial!variable} (or \textbf{indeterminates}\index{polynomial!indeterminate}) and coefficients, that involves only the operations of addition, subtraction, multiplication, and positive-integer powers of variables.
+\end{definition}
+\begin{definition}
+    Polynomials in a single variable are called \textbf{univariate polynomials}\index{polynomial!univariate} and takes the form
+    \[
+        a_0+a_1x+a_2x^2+\cdots+a_nx^n = \sum_{i=0}^n a_ix^i,
+    \]
+    where $a_0, a_1, a_2, \dots, a_n$ are called the \textbf{coefficients}\index{polynomial!coefficient} of the polynomial.
+\end{definition}
+\begin{remark}
+    For now, treat these coefficients as numbers; as we progress, we will explore other objects that these coefficients can be.
+\end{remark}
+\begin{example}
+    $x^2 + 2x + 1$, $4x^5 + 1$, and $10x-123$ are univariate polynomials in $x$.
+\end{example}
+\begin{definition}
+    A \textbf{term}\index{polynomial!term} in a univariate polynomial in $x$ takes the form $cx^n$, where $c$ is the coefficient and $n$ is a non-negative integer.
+\end{definition}
+
+\begin{definition}
+    The \textbf{degree}\index{polynomial!degree} of such a polynomial is the highest power of $x$ with a non-zero coefficient. The degree of a polynomial $P(x)$ is denoted by $\deg(P(x))$.
+\end{definition}
+\begin{example}
+    $\deg(x^2 + 2x + 1) = 2$ is 2 since the highest power of $x$ with non-zero coefficient is 2.
+\end{example}
+\begin{example}
+    $\deg(4x^5 + 1) = 5$ since the highest power of $x$ with non-zero coefficient is 5.
+\end{example}
+\begin{example}
+    $\deg(10x - 123) = 1$ is 1 since the highest power of $x$ with non-zero coefficient is 1.
+\end{example}
+\begin{example}
+    $\deg(456) = \deg(456x^0) = 0$ since the highest power of $x$ with non-zero coefficient is 0.
+\end{example}
+\begin{definition}
+    A term where the power of $x$ is zero is called the \textbf{constant term}\index{polynomial!term!constant}.
+\end{definition}
+We note that the zero polynomial (0) is generally treated as having undefined degree.
+
+We note some properties of the degree of a polynomial. Assume that $f(x)$ is a univariate polynomial of degree $m$ and $g(x)$ is a univariate polynomial in degree $n$. Then
+\begin{enumerate}
+    \item $\deg(f(x) + g(x)) = \max(m, n)$;
+    \item $\deg(f(x)g(x)) = m+n$; and
+    \item $\deg((f\circ g)(x)) = mn$.
+\end{enumerate}
+We note that properties 2 and 3 do not always hold for all structures that we will be analysing in this course; we will note their exceptions when the time comes. For now, assume that all three properties hold.
+
+\begin{exercise}
+    Consider the polynomials $f(x) = x^2 + 1$ and $g(x) = 1 + 2x + 3x^2 + 4x^3$.
+    \begin{partquestions}{\alph*}
+        \item State $\deg(fg(x))$.
+        \item Find the term with degree 4 in $f(x)g(x)$.
+    \end{partquestions}
+\end{exercise}
+
+\section{Polynomial Division}
+In an earlier chapter, we introduced Euclid's Division Lemma (\myref{lemma-euclid-division}), which states that an integer can be expressed in terms of a divisor, a quotient, and a remainder. A more general result can be found within polynomial algebra, which is known as \textbf{Polynomial Division}\index{Polynomial Division}.
+\begin{proposition}[Polynomial Division]\label{prop-polynomial-division}
+    Given two univariate polynomials $P(x)$ and $D(x)$, there exist unique univariate polynomials $Q(x)$ and $R(x)$ such that
+    \[
+        P(x) = D(x)Q(x) + R(x)
+    \]
+    and $\deg(R(x)) < \deg(D(x))$.
+\end{proposition}
+It should be noted that there is some nuance that is being glossed over with the statement of this proposition (in particular, that $P(x)$ and $D(x)$ have to be defined over a field), but when working in the ``standard'' real numbers this is sufficient.
+
+\begin{exercise}
+    Find polynomials $Q(x)$ and $R(x)$ such that
+    \[
+        x^4 + 2x^3 + 3x^2 - 2x + 2 = (x^2-1)Q(x) + R(x)
+    \]
+    and $R(x)$ has degree of at most 1.
+\end{exercise}
+
+\section{The Binomial Theorem}
+Sometimes when we work with polynomials we are forced to expand expressions such as $(x-1)^5$, $(3x^2 + 5)^4$, and $(7x - 3)^9$. These expressions can be readily expanded using the \textbf{binomial theorem}\index{Bionomial Theorem}.
+\begin{theorem}[Binomial Theorem]\label{thrm-binomial}
+    Let $n$ be a non-negative integer. Then
+    \[
+        (x+y)^n = \sum_{k=0}^n {n \choose k}x^ky^{n-k} = \sum_{k=0}^n {n \choose k}x^{n-k}y^k
+    \]
+    where
+    \[
+        {n \choose k} = \frac{n!}{k!(n-k)!}.
+    \]
+\end{theorem}
+We note that ${n \choose k}$ is read as ``$n$ choose $k$'' and is known as the \textbf{binomial coefficient}\index{binomial coefficient}.
+
+\begin{example}
+    $(x+1)^4 = x^4 + 4x^3 + 6x^2 + 4x + 1$
+\end{example}
+\begin{example}
+    $(x-1)^5 = x^5-5x^4+10x^3-10x^2+5x-1$
+\end{example}
+\begin{example}
+    $(3x^2 + 5)^4 = 81x^8+540x^6+1350x^4+1500x^2+625$
+\end{example}
+\begin{exercise}
+    Find the coefficient of the term with degree 6 in $(7x-3)^9$.
+\end{exercise}

@@ -1,0 +1,229 @@
+\documentclass[
+    a5paper,
+    pagesize,
+    11pt,
+    bibtotoc,
+    normalheadings,
+    twoside,
+    openany,
+    chapterprefix,
+    DIV=9
+]{scrbook}
+
+\usepackage[utf8]{inputenc}
+\usepackage{tocloft}
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage[hmargin=2cm, vmargin=2.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{parskip}
+\usepackage{framed}
+\usepackage{fancyhdr}
+\usepackage{emptypage}
+\usepackage{multicol}
+\usepackage{imakeidx}
+\usepackage[breaklinks]{hyperref}
+\usepackage[capitalise, nameinlink]{cleveref}
+\usepackage[x11names]{xcolor}
+\usepackage{crossreftools}
+
+\usepackage[
+    backend=bibtex,
+    style=alphabetic,
+    sorting=ynt
+]{biblatex}
+
+%============== Resources ================
+\addbibresource{abstract-algebra.bib}
+
+%============= Formatting ================
+\linespread{1.05}
+
+%============ Redefinitions ==============
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\let\totient\varphi
+
+\renewcommand{\vert}{ \ \vline \ }
+\newcommand{\vertalt}{ \ | \ }
+
+\newcommand{\myref}[1]{\textbf{\crthypercref{#1}}}
+\newcommand{\myreffigures}[1]{\textbf{\cref{#1}}}
+
+\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
+%=========== Theorem Styles ==============
+\newtheoremstyle{theorem-style}
+    {-12pt}      % Space above
+    {-5pt}       % Space below
+    {}           % Font to use in the theorem
+    {0pt}        % Measure of space to indent
+    {\bfseries}  % Name of the head font
+    {.}          % Punctuation between head and body
+    { }          % Space after theorem head; " " = normal inter-word space
+    {\thmname{#1}\thmnumber{ #2}\textit{\thmnote{ (#3)}}}
+
+\newtheoremstyle{definition-style}
+    {-12pt}      % Space above
+    {-5pt}       % Space below
+    {}           % Font to use in the definition
+    {0pt}        % Measure of space to indent
+    {\bfseries}  % Name of the head font
+    {.}          % Punctuation between head and body
+    { }          % Space after theorem head; " " = normal inter-word space
+    {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+
+\newtheoremstyle{exercise-style}
+    {-5pt}       % Space above
+    {\topsep}    % Space below
+    {}           % Font to use in the exercise
+    {0pt}        % Measure of space to indent
+    {\bfseries}  % Name of the head font
+    {.}          % Punctuation between head and body
+    { }          % Space after theorem head; " " = normal inter-word space
+    {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
+
+%======== Theorem-Like Things ============
+\theoremstyle{theorem-style}\newtheorem{theoremhidden}{Theorem}[section]
+\renewcommand{\thetheoremhidden}{\ZeroRoman{part}.\arabic{chapter}.\arabic{section}.\arabic{theoremhidden}}
+
+\theoremstyle{theorem-style}\newtheorem{lemmahidden}[theoremhidden]{Lemma}
+
+\theoremstyle{theorem-style}\newtheorem{propositionhidden}[theoremhidden]{Proposition}
+
+\theoremstyle{theorem-style}\newtheorem{corollaryhidden}[theoremhidden]{Corollary}
+
+\theoremstyle{definition-style}\newtheorem{definitionhidden}[theoremhidden]{Definition}
+
+\theoremstyle{exercise-style}\newtheorem{exercisehidden}{Exercise}[chapter]
+\renewcommand{\theexercisehidden}{\ZeroRoman{part}.\arabic{chapter}.\arabic{exercisehidden}}
+
+\theoremstyle{definition}\newtheorem{problem}{Problem}[chapter]
+\renewcommand{\theproblem}{\ZeroRoman{part}.\arabic{chapter}.\arabic{problem}}
+
+\theoremstyle{definition}\newtheorem*{remark}{Remark}
+\theoremstyle{definition}\newtheorem{example}[theoremhidden]{Example}
+
+%============ Environments ===============
+% 'Results' environments
+\newenvironment{theorem}
+{\definecolor{shadecolor}{named}{DarkSeaGreen2}\begin{shaded}\noindent\begin{theoremhidden}}
+{\end{theoremhidden}\end{shaded}}
+
+\newenvironment{lemma}
+{\definecolor{shadecolor}{named}{Honeydew2}\begin{shaded}\noindent\begin{lemmahidden}}
+{\end{lemmahidden}\end{shaded}}
+
+\newenvironment{proposition}
+{\definecolor{shadecolor}{named}{Honeydew1}\begin{shaded}\noindent\begin{propositionhidden}}
+{\end{propositionhidden}\end{shaded}}
+
+\newenvironment{corollary}
+{\definecolor{shadecolor}{named}{DarkSeaGreen1}\begin{shaded}\noindent\begin{corollaryhidden}}
+{\end{corollaryhidden}\end{shaded}}
+
+\newenvironment{definition}
+{\definecolor{shadecolor}{named}{LightCyan1}\begin{shaded}\noindent\begin{definitionhidden}}
+{\end{definitionhidden}\end{shaded}}
+
+\newenvironment{exercise}
+{\begin{framed}\noindent\begin{exercisehidden}}
+{\end{exercisehidden}\end{framed}}
+
+% 'Questions' environments
+\newenvironment{questions}
+{\begin{enumerate}[label=\textbf{\arabic*.}]}
+{\end{enumerate}}
+
+\newenvironment{partquestions}[1]
+{\begin{enumerate}[label=\textbf{(#1)}]}
+{\end{enumerate}}
+
+%=========== Custom Commands =============
+\newcommand{\ZeroRoman}[1]{\ifcase\value{#1}\relax0\else\Roman{#1}\fi}  % Roman numeral
+
+\newcommand{\code}[1]{\texttt{#1}}  % Code block
+
+\newcommand{\lcm}{\mathrm{lcm}}  % Lowest common multiple function
+\newcommand{\sgn}{\mathrm{sgn}}  % Signum function
+
+\newcommand{\im}{\mathrm{im}\;}  % Image of a function
+\newcommand{\id}{\mathrm{id}}    % Identity function
+
+%======== Custom Chapter Styling =========
+\makeatletter
+\renewcommand{\chaptermark}[1]{
+    \markboth{\if@mainmatter\chapapp~\thechapter.\ \fi#1}{}
+}
+
+\renewcommand*{\chapterformat}{
+  \MakeUppercase{\chapapp\nobreakspace\thechapter}
+}
+
+\renewcommand*{\chapterlineswithprefixformat}[3]{
+    \Ifstr{#1}{chapter}{
+        \vspace{-60px}
+        \Ifstr{#2}{\empty}{\vspace{40px}}{\raggedleft#2}
+        \vspace{-15px}
+        \rule{\linewidth}{1pt}\par\nobreak
+        \centering{#3}
+        \vspace{-10px}
+        \rule{\linewidth}{1pt}\par\nobreak
+        \vspace{-10px}
+    }{#2#3}
+}
+\makeatother
+
+%======== Figure Caption Format ==========
+\usepackage[labelfont=bf]{caption}
+\DeclareCaptionLabelFormat{custom}{#1 \ZeroRoman{part}.#2.}
+\captionsetup{labelformat=custom,labelsep=space}
+
+%============ Custom Header ==============
+\fancypagestyle{plain}{\fancyhf{}\renewcommand{\headrulewidth}{0pt}}  % To clear page numbers from footer, and header line at the start of every chapter
+
+\pagestyle{fancy}
+\fancyhf{}  % Clear header/footer
+
+\fancyhead[LE,RO]{\thepage}
+\fancyhead[LO,RE]{\textit{\nouppercase\leftmark}}
+
+%========= Customise TOC Heading =========
+\makeatletter
+\def\createtoc{
+    \renewcommand\tableofcontents{
+        \chapter*{\contentsname}
+        \@starttoc{toc}
+    }
+    \tableofcontents
+}
+\makeatother
+
+%======= Customise Draft Watermark =======
+\newcommand{\setasdraft}{
+    \usepackage{draftwatermark}
+    \SetWatermarkLightness{0.95}
+    \SetWatermarkScale{5}
+}
+
+%============= Index Pages ===============
+\usepackage[
+    totoc,
+    columnsep=20pt,
+    hangindent=8pt,
+    subindent=20pt,
+    subsubindent=30pt
+]{idxlayout}
+
+\makeindex[options= -s index-style.ist]
+
+%======= Bibliography Formatting =========
+% These two lines are here to ensure that URLs do not exceed the page by too much
+\setcounter{biburllcpenalty}{7000}
+\setcounter{biburlucpenalty}{8000}

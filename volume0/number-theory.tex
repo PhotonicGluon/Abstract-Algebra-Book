@@ -1,0 +1,140 @@
+\chapter{Number Theory}
+Number theory is an important part of abstract algebra, as we will use some of its more famous results in proofs. In this chapter, we explore the essentials of number theory.
+
+\section{Divisibility}
+\begin{definition}
+    Let $a$ and $b$ be integers. Then \textbf{$a$ divides $b$}\index{divides} (or that $a$ is a \textbf{divisor}\index{divisor} of $b$) if there is an integer $k$ such that $ak = b$. This is denoted $a\vert b$.
+\end{definition}
+\begin{remark}
+    A consequence of this definition is that every number divides zero since $a \times 0 = 0$ for every integer $a$.
+\end{remark}
+\begin{example}
+    $7\vert 63$ since $7 \times 9 = 63$
+\end{example}
+\begin{example}
+    8 does not divide 63 since there is not an integer $k$ such that $8k = 63$, so we write $8 \nmid 63$.
+\end{example}
+
+\begin{definition}
+    Let $a$ and $b$ be integers. Then $b$ is a \textbf{multiple of $a$}\index{multiple} if and only if $a$ divides $b$.
+\end{definition}
+\begin{example}
+    63 is a multiple of 7 since 7 divides 63.
+\end{example}
+\begin{example}
+    63 is not a multiple of 8 since 8 does not divide 63.
+\end{example}
+
+We list some basic facts about divisibility that are not difficult to prove.
+\begin{itemize}
+    \item If $a\vert b$ then $a\vert bc$ for all integers $c$.
+    \item If $a\vert b$ and $b\vert c$ then $a\vert c$.
+    \item If $a\vert b$ and $a\vert c$ then $a\vert sb+tc$ for all integers $s$ and $t$.
+    \item If $c \neq 0$, then $a\vert b$ if and only if $ac\vert bc$.
+\end{itemize}
+
+\begin{definition}
+    An integer $p > 1$ with no positive divisors other than 1 and itself is called \textbf{prime}\index{prime}. Every other number greater than 1 is called \textbf{composite}\index{composite}.
+\end{definition}
+\begin{example}
+    The integers 2, 3, 5, 7, 11, and 13 are all prime, but 4, 6, 8, and 9 are composite.
+\end{example}
+\begin{remark}
+    The number 1 is considered neither prime nor composite.
+\end{remark}
+
+Primes are useful since they can construct any positive integer $n>1$ uniquely.
+\begin{theorem}[Fundamental Theorem of Arithmetic]\label{thrm-fundamental-theorem-of-arithmetic}
+    Any integer $n > 1$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
+\end{theorem}
+
+\begin{exercise}
+    Express 44100 as a product of primes.
+\end{exercise}
+
+\newpage
+
+\section{Euclid's Division Lemma}
+\begin{lemma}[Euclid's Division Lemma]\label{lemma-euclid-division}\index{Euclid's Division Lemma}
+    Given two integers $n$ and $d$, with $d \neq 0$ being the \textbf{divisor}\index{divisor}, there exist unique integers $q$ and $r$ such that $n = qd + r$ and $0 \leq r < |d|$, where $|d|$ denotes the absolute value of $d$.
+
+    Here, $n$ is called the \textbf{dividend}\index{dividend}, $q$ is called the \textbf{quotient}\index{quotient}, and $r$ is called the \textbf{remainder}\index{remainder}.
+\end{lemma}
+\begin{remark}
+    This is also known as \textbf{the division algorithm}\index{division algorithm} (e.g. \cite[p.~4]{dummit_foote_2004}) or \textbf{the division theorem}\index{division theorem} (e.g. \cite[\S 21]{clark_1984}).
+\end{remark}
+
+\begin{example}
+    Using $n = 63$ and $d = 8$, we will have $63 = 7\times8 + 7$.
+\end{example}
+\begin{example}
+    Using $n = 14$ and $d = -3$, we will have $13 = -5\times3 + 1$.
+\end{example}
+
+\begin{exercise}
+    Express $-210$ in the form $a-13b$, where $a$ and $b$ are positive integers with $0 \leq a \leq 12$.
+\end{exercise}
+
+\section{Greatest Common Divisor (GCD) and Lowest Common Multiple (LCM)}
+In number theory, the idea of a greatest common divisor and the least common multiple are omnipresent.
+
+\begin{definition}
+    Let $m$ and $n$ be two non-zero integers. Then an integer $d$ is said to be the \textbf{greatest common divisor}\index{greatest common divisor} (GCD)\index{GCD} of $m$ and $n$ if $m = pd$ and $n = qd$ for some integers $p$ and $q$, and that $d$ is the largest possible integer that achieves this.
+\end{definition}
+The GCD of $m$ and $n$ is denoted by $\gcd(m, n)$.
+
+\begin{example}
+    $\gcd(2, 8) = 2$ since $2 = 1 \times 2$ and $8 = 4 \times 2$.
+\end{example}
+\begin{example}
+    $\gcd(42, 231) = 21$ since $42 = 2 \times 21$ and $231 = 11 \times 21$.
+\end{example}
+\begin{example}
+    $\gcd(-10, 25) = 5$ since $-10 = -2 \times 5$ and $25 = 5 \times 5$.
+\end{example}
+\begin{exercise}
+    Find $\gcd(-112, -35)$.
+\end{exercise}
+
+\begin{remark}
+    If $\gcd(m, n) = 1$ for non-zero integers $m$ and $n$, then $m$ and $n$ are said to be \textbf{coprime}\index{coprime} to each other.
+\end{remark}
+\begin{example}
+    17 and 18 are coprime as $\gcd(17, 18) = 1$.
+\end{example}
+
+We now look at the lowest common multiple of two integers.
+\begin{definition}
+    Let $m$ and $n$ be two non-zero integers. Then an integer $l$ is said to be the \textbf{lowest common multiple}\index{lowest common multiple} (LCM)\index{LCM} of $m$ and $n$ if $l = pm = qn$ for some integers $p$ and $q$, and that $l$ is the smallest possible \textbf{positive} integer that achieves this.
+\end{definition}
+The LCM of $m$ and $n$ is denoted by $\lcm(m,n)$.
+
+\begin{example}
+    $\lcm(2, 8) = 8$ since $8 = 4 \times 2$ and $8 = 1 \times 8$.
+\end{example}
+\begin{example}
+    $\lcm(42, 231) = 462$ since $462 = 11 \times 42$ and $462 = 2 \times 231$.
+\end{example}
+\begin{example}
+    $\lcm(-10, 25) = 50$ since $50 = 5 \times -10$ and $50 = 2 \times 25$.
+\end{example}
+\begin{exercise}
+    Find $\lcm(-112, -35)$.
+\end{exercise}
+
+We note two important results regarding the GCD and LCM.
+\begin{lemma}[B\'{e}zout]\label{lemma-bezout}\index{B\'{e}zout's Lemma}
+    Let $m$ and $n$ be non-zero integers such that $\gcd(m, n) = d$. Then there exist integers $x$ and $y$ such that $mx + ny = d$. Moreover, the integers of the form $am + bn$ (where $a$ and $b$ are integers) are multiples of $d$.
+\end{lemma}
+\begin{proposition}\label{prop-product-of-gcd-and-lcm}
+    Let $m$ and $n$ be non-zero integers. Then $|mn| = \gcd(m,n) \times \lcm(m,n)$ where $|mn|$ denotes the absolute value of $mn$.
+\end{proposition}
+
+\begin{exercise}
+    Suppose $m = 42$ and $n = 70$.
+    \begin{partquestions}{\roman*}
+        \item Let $d = \gcd(m,n)$. Find $d$.
+        \item Hence find $\lcm(m,n)$.
+        \item Find a pair of integers $x$ and $y$ such that $mx + ny = d$.
+    \end{partquestions}
+\end{exercise}

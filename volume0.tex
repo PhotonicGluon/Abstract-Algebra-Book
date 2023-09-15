@@ -1,0 +1,78 @@
+\input{common-commands.tex}
+
+%=========== Global Variables ============
+\newcommand{\version}{0.15}
+\newcommand{\volumenumber}{0}
+\newcommand{\volumename}{Prerequisites}
+\newcommand{\volumeimage}{venn-diagram.png}
+
+%=========== Path to images ==============
+\graphicspath{{volume0/images}}
+
+%========= Front Matter Pages ============
+% Quote page
+\newcommand{\quotepagetext}{
+    Aus dem Paradies, das Cantor uns geschaffen, soll uns niemand vertreiben k\"{o}nnen.\\
+    (\textit{No one shall expel us from the Paradise that Cantor has created.})
+}
+\newcommand{\quotepageattribution}{David Hilbert, 1926}
+\newcommand{\quotepagecitation}{\cite[p.~170]{hilbert_1926}}
+
+% Preface
+\newcommand{\prefacevolumetext}{
+    To understand the subject material covered in the later volumes, the prerequisites and fundamentals must be understood. Volume 0 gives one sufficient knowledge to dive into the meat of abstract algebra. We cover basic set theory, functions/mappings, mathematical logic and proof writing, elementary number theory, and simple modular arithmetic, which should be plenty for one to understand the content covered in future volumes.
+}
+\newcommand{\prefacevolumedate}{22 March, 2023}
+
+% Suggestions of use
+\newcommand{\interdependencenotes}{
+    \begin{itemize}
+        \item All chapters of this volume are essential to understand for future volumes. Readers who are familiar with the content may skip this volume.
+        \item Knowledge of chapter 1 is needed for both chapters 2 and 3.
+        \item The only thing that is needed from chapter 2 for chapter 3 is knowledge of function notation. In particular, \myref{example-strong-induction-on-function} is the only example that requires knowledge of functions.
+        \item Chapters 4, 5, and 6 are independent from the other chapters of this book.
+        \item B\'{e}zout's Lemma (\myref{lemma-bezout}) is the sole result that is used from chapter 4 in chapter 5.
+        \item Chapter 6 on polynomial algebra can be understood without reading any other chapters. B\'{e}zout's Lemma (\myref{lemma-bezout}) is casually mentioned in this chapter, but its knowledge is not assumed.
+    \end{itemize}
+}
+
+%==== Include only relevant chapters =====
+\IfFileExists{\jobname.run.xml}
+{
+    \includeonly{
+        front-matter,
+        % Main chapters
+        volume0/sets,
+        volume0/functions,
+        volume0/proofs,
+        volume0/number-theory,
+        volume0/modular-arithmetic,
+        volume0/polynomials,
+        % Appendices
+        volume0/exercise-solutions,
+        volume0/appendices
+    }
+}
+{
+    % Do a full document initially to generate all the aux files
+}
+
+%=========================================
+\begin{document}
+
+\frontmatter  % Use lowercase roman numerals for page numbers
+\include{front-matter}
+
+\mainmatter  % Now use arabic numerals for page numbers
+\include{volume0/sets}
+\include{volume0/functions}
+\include{volume0/proofs}
+\include{volume0/number-theory}
+\include{volume0/modular-arithmetic}
+\include{volume0/polynomials}
+
+\appendix
+\include{volume0/exercise-solutions}
+\include{volume0/appendices}
+
+\end{document}
