@@ -88,7 +88,7 @@
 
 %======== Theorem-Like Things ============
 \theoremstyle{theorem-style}\newtheorem{theoremhidden}{Theorem}[section]
-\renewcommand{\thetheoremhidden}{\Roman{part}.\arabic{chapter}.\arabic{section}.\arabic{theoremhidden}}
+\renewcommand{\thetheoremhidden}{\ZeroRoman{part}.\arabic{chapter}.\arabic{section}.\arabic{theoremhidden}}
 
 \theoremstyle{theorem-style}\newtheorem{lemmahidden}[theoremhidden]{Lemma}
 
@@ -99,10 +99,10 @@
 \theoremstyle{definition-style}\newtheorem{definitionhidden}[theoremhidden]{Definition}
 
 \theoremstyle{exercise-style}\newtheorem{exercisehidden}{Exercise}[chapter]
-\renewcommand{\theexercisehidden}{\Roman{part}.\arabic{chapter}.\arabic{exercisehidden}}
+\renewcommand{\theexercisehidden}{\ZeroRoman{part}.\arabic{chapter}.\arabic{exercisehidden}}
 
 \theoremstyle{definition}\newtheorem{problem}{Problem}[chapter]
-\renewcommand{\theproblem}{\Roman{part}.\arabic{chapter}.\arabic{problem}}
+\renewcommand{\theproblem}{\ZeroRoman{part}.\arabic{chapter}.\arabic{problem}}
 
 \theoremstyle{definition}\newtheorem*{remark}{Remark}
 \theoremstyle{definition}\newtheorem{example}[theoremhidden]{Example}
@@ -143,8 +143,9 @@
 {\end{enumerate}}
 
 %=========== Custom Commands =============
+\newcommand{\ZeroRoman}[1]{\ifcase\value{#1}\relax0\else\Roman{#1}\fi}  % Roman numeral
+
 \newcommand{\code}[1]{\texttt{#1}}  % Code block
-\makeatletter\newcommand*{\rom}[1]{\Ifstr{#1}{0}{0}{\expandafter\@slowromancap\romannumeral #1@}}\makeatother  % Roman numeral
 
 \newcommand{\lcm}{\mathrm{lcm}}  % Lowest common multiple function
 \newcommand{\sgn}{\mathrm{sgn}}  % Signum function
@@ -178,7 +179,7 @@
 
 %======== Figure Caption Format ==========
 \usepackage[labelfont=bf]{caption}
-\DeclareCaptionLabelFormat{custom}{#1 \Roman{part}.#2.}
+\DeclareCaptionLabelFormat{custom}{#1 \ZeroRoman{part}.#2.}
 \captionsetup{labelformat=custom,labelsep=space}
 
 %============ Custom Header ==============
