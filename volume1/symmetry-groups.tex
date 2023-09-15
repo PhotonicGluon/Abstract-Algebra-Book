@@ -6,13 +6,13 @@ A bijective function is too abstract an object. Such functions can take many for
 
 A bijective function is a function that maps all elements from one set to another set exactly. There are no leftovers (surjective), and each output has exactly one input that produces it (injective). In a sense, a bijective function \textit{rearranges} the elements in a set; it renames elements and shuffles them around, without destroying the relative relationships between the elements.
 
-For bijections between finite groups, each group has the same number of elements, so it is reasonable to talk about the rearrangement and enumeration of elements in such groups.
+For bijections between finite sets, each set has the same number of elements, so it is reasonable to talk about the rearrangement and enumeration of elements in such sets.
 \begin{itemize}
     \item What we mean by \textbf{rearrange} is to rename elements. We can give elements a new name and place it in the codomain.
-    \item What we mean by \textbf{enumerate} is to assign each element in each finite group a unique `index number', per se. Each element can have a unique number identifying its original \textit{position} in the group, and its final position in the destination group.
+    \item What we mean by \textbf{enumerate} is to assign each element in each finite set a unique `index number', per se. Each element can have a unique number identifying its original \textit{position} in the set, and its final position in the destination set.
 \end{itemize}
 
-Such bijections between finite groups are called \textbf{permutations}\index{permutations}, since they simply permute the `index number' of the elements in the groups.
+Such bijections between finite sets are called \textbf{permutations}\index{permutations}, since they simply permute the `index number' of the elements in the sets.
 
 \begin{example}
     Consider the set $S = \{1, 2, 3, 4, 5\}$. A bijection $f: S \to S$ could perform the following mapping:
@@ -275,10 +275,10 @@ Finally, we prove an important result regarding symmetric groups of equal order.
 \end{proof}
 
 \begin{corollary}\label{corollary-symmetric-group-of-finite-order}
-    If $G$ is finite with order $n$ then $\Sym{G} \cong \Sn{n}$.
+    If the set $A$ is finite with cardinality $n$ then $\Sym{A} \cong \Sn{n}$.
 \end{corollary}
 \begin{proof}
-    Let $X = \{1, 2, 3, \dots, n\}$. We note that $\Sn{n} = \Sym{X}$ by definition, and that $|X| = n$. We also note that $|G| = n$ so $G$ and $X$ are two finite sets with equal cardinality. Result follows from \myref{thrm-symmetric-groups-of-same-order-are-isomorphic}.
+    Let $X = \{1, 2, 3, \dots, n\}$. We note that $\Sn{n} = \Sym{X}$ by definition, and that $|X| = n$. We also note that $|A| = n$ so $A$ and $X$ are two finite sets with equal cardinality. Result follows from \myref{thrm-symmetric-groups-of-same-order-are-isomorphic}.
 \end{proof}
 
 \section{Cayley's Theorem}
@@ -303,7 +303,7 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
     \end{itemize}
     Since $\lambda_g$ is both injective and surjective it is thus bijective.
 
-    Now let $H = \{\lambda_g \vert g \in G\}$. Since $\lambda_g$ is a bijective function from $G$ to $G$, it thus is an element of $\Sym{X}$, meaning that $H \subseteq \Sym{G}$. It remains to show that $H \leq \Sym{G}$. We do this by using the subgroup test.
+    Now let $H = \{\lambda_g \vert g \in G\}$. Since $\lambda_g$ is a bijective function from $G$ to $G$, it thus is an element of $\Sym{G}$, meaning that $H \subseteq \Sym{G}$. It remains to show that $H \leq \Sym{G}$. We do this by using the subgroup test.
 
     We first note that $\lambda_e = \id$ since
     \[
@@ -323,7 +323,7 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
         &= g_1g_2^{-1}x\\
         &= \lambda_{g_1g_2^{-1}}(x).
     \end{align*}
-    Note $\lambda_{g_1g_2^{-1}}$ is clearly an element of $H$. Thus if $\lambda_{g_1}$ and $\lambda_{g_2}$ are functions in $H$, then $\left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right)$ is also a function in $H$. Since $H$ is non-empty, therefore by the Subgroup Test, we have shown $H \leq \Sym{G}$.
+    Note $\lambda_{g_1g_2^{-1}}$ is clearly an element of $H$. Thus if $\lambda_{g_1}$ and $\lambda_{g_2}$ are functions in $H$, then $\left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right)$ is also a function in $H$. Since $H$ is non-empty, therefore by the Subgroup Test (\myref{thrm-subgroup-test}), we have shown $H \leq \Sym{G}$.
 
     We finally show that $G \cong H$ by considering the map $\phi: G\to H$ where $g \mapsto \lambda_g$. We need to show that $\phi$ is an isomorphism.
     \begin{itemize}
