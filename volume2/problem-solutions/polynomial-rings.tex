@@ -38,4 +38,36 @@
         \]
         Note that $\Z$ is an integral domain but not a field. Thus $I$ is prime but not maximal.
     \end{partquestions}
+
+    \item We show that $\Z[x] / \princ{x} \cong \Z$ by using the FRIT.
+
+    Let $\phi: \Z[x] \to \Z$ be defined such that $p(x) \mapsto p(0)$.
+
+    We claim $\phi$ is surjective. Let $n \in \Z$. Note that
+    \[
+        n = n + 0x + 0x^2 + \cdots \in \Z[x]
+    \]
+    so
+    \begin{align*}
+        \phi(n) &= \phi(n + 0x + 0x^2 + \cdots)\\
+        &= n + 0(0) + 0(0)^2 + \cdots\\
+        &= n
+    \end{align*}
+    which means that $n$ is its own pre-image. Thus $\im\phi = \Z$.
+
+    Now we find the kernel of $\phi$. Suppose $p(x) \in \ker\phi$, i.e. $\phi(p(x)) = 0$. This means that $p(0) = 0$. The general form for a univariate polynomial $p(x)$ is $a_0 + a_1x + a_2x^2 + \cdots$, so if $p(0) = 0$ then $a_0 = 0$. Thus,
+    \begin{align*}
+        p(x) &= 0 + a_1x + a_2x^2 + \cdots\\
+        &= x(a_1 + a_2x + \cdots)\\
+        &= xq(x)
+    \end{align*}
+    where $q(x) \in \Z[x]$. Therefore
+    \[
+        \ker\phi = \{xq(x) \vert q(x) \in \Z[x]\} = \princ{x}.
+    \]
+
+    Thus, the FRIT (\myref{thrm-ring-isomorphism-1}) tells us that
+    \[
+        \Z[x] / \princ{x} \cong \Z.
+    \]
 \end{questions}

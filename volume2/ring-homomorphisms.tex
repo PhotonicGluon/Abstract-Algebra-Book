@@ -62,18 +62,13 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
         so $\phi$ is a homomorphism.
     \end{proof}
 \end{example}
-
-%TODO: Replace with another exercise; move this to polynomial rings (somewhere?)
 \begin{exercise}
-    Let $R$ be a ring. The \textbf{evaluation homomorphism}\index{evaluation homomorphism} is $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$ and $a \in R$. Prove that $\phi_a$ is indeed a ring homomorphism.
+    Let $\phi: \Mn{2}{\Z} \to \Z$ be such that
+    \[
+        \phi\left(\begin{pmatrix}a&b\\c&d\end{pmatrix}\right) = a+d.
+    \]
+    Is $\phi$ a ring homomorphism?
 \end{exercise}
-% \begin{exercise}
-%     Define the ring
-%     \[
-%         R = \left\{\begin{pmatrix}a&b\\0&c\end{pmatrix}\vert a,b,c\in\Z\right\}.
-%     \]
-%     Let $\phi: R \to \Z, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto a+c$. Is $\phi$ a ring homomorphism?
-% \end{exercise}
 
 An endomorphism is a specific type of homomorphism.
 \begin{definition}
@@ -273,7 +268,7 @@ Similar to groups, ring homomorphisms too have a image and kernel.
     The \textbf{kernel}\index{kernel} of a ring homomorphism $\phi:R_1 \to R_2$ is $\ker\phi = \{r \in R_1 \vert \phi(r) = 0\}$.
 \end{definition}
 
-\begin{example}
+\begin{example}\label{example-homomorphism-on-upper-triangle-matrices}
     Consider the ring
     \[
         R = \left\{\begin{pmatrix}a&b\\0&c\end{pmatrix}\vert a,b,c\in\Z\right\}.
@@ -386,38 +381,18 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
     Therefore, $\psi$ is a bijective ring homomorphism, i.e. $\psi$ is a ring isomorphism, proving the FRIT.
 \end{proof}
 
-%TODO: Replace
 \begin{example}
-    We show that $\Z[x] / \princ{x} \cong \Z$ by using the FRIT.
-
-    Let $\phi: \Z[x] \to \Z$ be defined such that $p(x) \mapsto p(0)$.
-
-    We claim $\phi$ is surjective. Let $n \in \Z$. Note that
+    Consider the ring
     \[
-        n = n + 0x + 0x^2 + \cdots \in \Z[x]
+        R = \left\{\begin{pmatrix}a&b\\0&c\end{pmatrix}\vert a,b,c\in\Z\right\}
     \]
-    so
-    \begin{align*}
-        \phi(n) &= \phi(n + 0x + 0x^2 + \cdots)\\
-        &= n + 0(0) + 0(0)^2 + \cdots\\
-        &= n
-    \end{align*}
-    which means that $n$ is its own pre-image. Thus $\im\phi = \Z$.
-
-    Now we find the kernel of $\phi$. Suppose $p(x) \in \ker\phi$, i.e. $\phi(p(x)) = 0$. This means that $p(0) = 0$. The general form for a univariate polynomial $p(x)$ is $a_0 + a_1x + a_2x^2 + \cdots$, so if $p(0) = 0$ then $a_0 = 0$. Thus,
-    \begin{align*}
-        p(x) &= 0 + a_1x + a_2x^2 + \cdots\\
-        &= x(a_1 + a_2x + \cdots)\\
-        &= xq(x)
-    \end{align*}
-    where $q(x) \in \Z[x]$. Therefore
+    and the homomorphism $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$. We found in \myref{example-homomorphism-on-upper-triangle-matrices} that $\phi$ is surjective (i.e., $\im\phi = \Z^2$) with kernel
     \[
-        \ker\phi = \{xq(x) \vert q(x) \in \Z[x]\} = \princ{x}.
+        \left\{\begin{pmatrix}0&n\\0&0\end{pmatrix} \vert n \in \Z\right\}
     \]
-
-    Thus, the FRIT (\myref{thrm-ring-isomorphism-1}) tells us that
+    which, for brevity, we shall denote by $I$. Then, we see via the FRIT (\myref{thrm-ring-isomorphism-1}) that
     \[
-        \Z[x] / \princ{x} \cong \Z.
+        R/I \cong \Z^2.
     \]
 \end{example}
 \begin{exercise}
@@ -427,6 +402,8 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
     \]
     and by using the FRIT.
 \end{exercise}
+
+\newpage
 
 We briefly mention the other two main ring isomorphism theorems, although the proof of them will be left as problems. They are much less used than the FRIT, so we make only a passing mention of them.
 \begin{theorem}[Second Ring Isomorphism Theorem]\label{thrm-ring-isomorphism-2}\index{ring isomorphism theorem!second}
@@ -451,6 +428,8 @@ We briefly mention the other two main ring isomorphism theorems, although the pr
 \begin{proof}
     See \myref{problem-ring-isomorphism-3} (later).
 \end{proof}
+
+\newpage
 
 \section{How Restrictive are Ring Homomorphisms?}
 Although ring homomorphisms appear to be quite general, we explore how restricted they really are when dealing with certain rings.
