@@ -1,7 +1,7 @@
 \chapter{Ring Homomorphisms and Isomorphisms}
 Just like with groups, rings too have homomorphisms and isomorphisms, although they are defined slightly differently than in groups. Like how group homomorphisms preserve some structure between the two groups, ring homomorphisms and isomorphisms also preserve structure between rings.
 
-\section{Ring Homomorphisms and Isomorphisms}
+\section{Ring Homomorphisms, Endomorphisms, and Isomorphisms}
 \begin{definition}
     Let $(R_1, +, \cdot)$ and $(R_2, \oplus, \otimes)$ be rings. A function $\phi: R_1 \to R_2$ is a \textbf{ring homomorphism}\index{ring homomorphism} if for all $a, b \in R_1$,
     \begin{align*}
@@ -316,7 +316,7 @@ We look at some results regarding the image and kernel of a ring homomorphism. T
 Similar to group theory, there are three main ring isomorphism theorems. However, we will only explicitly prove the first ring isomorphism theorem; the other two will be left as problems.
 
 \begin{theorem}[First Ring Isomorphism Theorem (FRIT)]\label{thrm-ring-isomorphism-1}\index{ring isomorphism theorem!first}\index{FRIT}
-    Let $R$ and $R'$ be rings, and suppose $\phi: R \to R'$ is a ring homomorphism. Then the map $\psi: R / \ker\phi \to \im\phi$, defined by $\psi(r + \ker\phi) = \phi(r)$, is a ring isomorphism.
+    Let $R$ and $R'$ be rings. Let $\phi: R \to R'$ be a ring homomorphism, and let $\pi: R \to R/\ker\phi$ where $r\mapsto r + \ker\phi$ be the natural surjective homomorphism. Then there exists a unique ring isomorphism $\psi: R / \ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
 \end{theorem}
 \begin{remark}
     Equivalently, the FRIT states that
@@ -337,8 +337,8 @@ We include the commutativity diagram of the maps stated to aid clarity:
 
 In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elements from $R$ to $R/\ker\phi$. Then the map $\psi$ is a unique map that sends elements from $R/\ker\phi$ to the image of $\phi$.
 
-\begin{proof}
-    We need to show that $\psi$ is a well-defined bijective ring homomorphism.
+\begin{proof}[Proof (cf. {\cite[p.~302, Factor Theorem For Rings]{cohn_1982}})]
+    Let the map $\phi$ be defined such that $\psi(r + \ker\phi) = \phi(r)$. We first show that $\psi$ is a well-defined ring isomorphism.
     \begin{itemize}
         \item \textbf{Well-Defined}: Suppose $a + \ker\phi$ and $b + \ker\phi$ are in $R/\ker\phi$ such that $a + \ker\phi = b+\ker\phi$. This means that $a - b \in \ker\phi$ by Coset Equality (\myref{lemma-coset-equality}). Thus $\phi(a-b) = 0$ by definition of the kernel. Hence $\phi(a) - \phi(b) = 0$ which means $\phi(a) = \phi(b)$. Therefore, we see that
         \[
@@ -378,7 +378,26 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
 
         \item \textbf{Surjective}: Suppose $s \in \im\phi$, so there is an $r \in R$ such that $s = \phi(r)$. Clearly $\psi(r + \ker\phi) = \phi(r) = s$, so $s$ has a pre-image of $r + \ker\phi$, i.e. $\psi$ is surjective.
     \end{itemize}
-    Therefore, $\psi$ is a bijective ring homomorphism, i.e. $\psi$ is a ring isomorphism, proving the FRIT.
+    Therefore, $\psi$ is a well-defined bijective ring homomorphism, i.e. $\psi$ is a well-defined ring isomorphism.
+
+    We now check that $\psi$ satisfies the requirement that $\psi\pi = \phi$. Let $x \in R$. Note that $\pi(x) = x + \ker\phi$, and
+    \[
+        \psi\pi(x) = \psi(x + \ker\phi) = \phi(x)
+    \]
+    for all $x \in R$, so $\psi\pi = \phi$.
+
+    Finally we show that $\psi$ is unique. Suppose $f: R/\ker\phi \to \im\phi$ is an isomorphism satisfying $f\pi=\phi$. Take $x + \ker\phi \in R/\ker\phi$. Note that
+    \begin{align*}
+        f(x + \ker\phi) &= f(\pi(x))\\
+        &= (f\pi)(x)\\
+        &= \phi(x)\\
+        &= (\psi\pi)(x)\\
+        &= \psi(\pi(x))\\
+        &= \psi(x + \ker\phi)
+    \end{align*}
+    for all $x \in R$, meaning that $f = \psi$. Therefore $\psi$ is unique.
+
+    Hence, $\psi$ is a unique ring isomorphism satisfying $\psi\pi = \phi$.
 \end{proof}
 
 \begin{example}
@@ -390,10 +409,7 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
     \[
         \left\{\begin{pmatrix}0&n\\0&0\end{pmatrix} \vert n \in \Z\right\}
     \]
-    which, for brevity, we shall denote by $I$. Then, we see via the FRIT (\myref{thrm-ring-isomorphism-1}) that
-    \[
-        R/I \cong \Z^2.
-    \]
+    which, for brevity, we shall denote by $I$. Thus we see via the FRIT (\myref{thrm-ring-isomorphism-1}) that $R/I \cong \Z^2$.
 \end{example}
 \begin{exercise}
     Show that $\Z_n \cong \Z/n\Z$ via the ring homomorphism
@@ -402,8 +418,6 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
     \]
     and by using the FRIT.
 \end{exercise}
-
-\newpage
 
 We briefly mention the other two main ring isomorphism theorems, although the proof of them will be left as problems. They are much less used than the FRIT, so we make only a passing mention of them.
 \begin{theorem}[Second Ring Isomorphism Theorem]\label{thrm-ring-isomorphism-2}\index{ring isomorphism theorem!second}
@@ -428,8 +442,6 @@ We briefly mention the other two main ring isomorphism theorems, although the pr
 \begin{proof}
     See \myref{problem-ring-isomorphism-3} (later).
 \end{proof}
-
-\newpage
 
 \section{How Restrictive are Ring Homomorphisms?}
 Although ring homomorphisms appear to be quite general, we explore how restricted they really are when dealing with certain rings.
