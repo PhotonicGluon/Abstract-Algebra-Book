@@ -9,16 +9,16 @@ The heart of mathematics is in its logical statements. These statements are used
     A statement can be written in English, or using mathematical notation.
 \end{remark}
 \begin{example}
-    The sentence ``every square with length $x$ has area $x^2$'' is a true mathematical statement.
+    ``Every square with length $x$ has area $x^2$'' is a true statement.
 \end{example}
 \begin{example}
-    The sentence ``every circle with radius $x$ has area $x^2$'' is a false mathematical statement.
+    `Every circle with radius $x$ has area $x^2$'' is a false statement.
 \end{example}
 \begin{example}
-    The sentence ``$12 \in \mathbb{Z}$'' is a true mathematical statement.
+    ``$12 \in \mathbb{Z}$'' is a true statement.
 \end{example}
 \begin{example}
-    The sentence ``$\sqrt2 \in \mathbb{Z}$'' is a false mathematical statement.
+    ``$\sqrt2 \in \mathbb{Z}$'' is a false statement.
 \end{example}
 
 We may name statements using variables like $P$, $Q$, $R$, etc.
@@ -34,10 +34,21 @@ We may name statements using variables like $P$, $Q$, $R$, etc.
 
 There are a few operations\index{logical operation} that may be carried out on mathematical statements. For the following, assume $P$ and $Q$ are mathematical statements.
 \begin{itemize}
-    \item \textbf{Logical NOT}\index{logical operation!NOT}: Uses the symbol $\lnot$. The statement $\lnot P$ is read as ``not $P$''.
-    \item \textbf{Logical AND}\index{logical operation!AND}: Uses the symbol $\land$. The statement $P\land Q$ is read as ``$P$ and $Q$''.
-    \item \textbf{Logical OR}\index{logical operation!OR}: Uses the symbol $\lor$. The statement $P\lor Q$ is read as ``$P$ or $Q$''.
-    \item \textbf{Conditional}\index{logical operation!conditional}: Uses the symbol $\implies$. The statement $P \implies Q$ is read as ``$P$ implies $Q$''.  
+    \item \textbf{Logical NOT}\index{logical operation!NOT}/\textbf{Negation}\index{logical operation!negation} ($\lnot$): The statement $\lnot P$ is read as ``not $P$''.
+    \item \textbf{Logical AND}\index{logical operation!AND}/\textbf{Conjunction}\index{logical operation!conjunction} ($\land$): The statement $P\land Q$ is read as ``$P$ and $Q$''.
+    \item \textbf{Logical OR}\index{logical operation!OR}/\textbf{Disjunction}\index{logical operation!disjunction} ($\lor$): The statement $P\lor Q$ is read as ``$P$ or $Q$''.
+    
+    \newpage
+
+    \item \textbf{Conditional}\index{logical operation!conditional}/\textbf{Implication}\index{logical operation!implication} ($\implies$): The statement $P \implies Q$ can be read many different ways. We list a few:
+    \begin{itemize}
+        \item $P$ implies $Q$;
+        \item if $P$ then $Q$;
+        \item $Q$ if $P$;
+        \item $P$ only if $Q$;
+        \item $P$ is a sufficient condition for $Q$; and
+        \item $Q$ is a necessary condition for $P$.
+    \end{itemize}
 \end{itemize}
 \begin{example}
     If $P$ is the statement ``3 is an odd number'' and $Q$ is the statement ``4 is an odd number'', then
@@ -77,6 +88,8 @@ The truth table for the logical OR operator is:
     \end{tabular}
 \end{table}
 
+\newpage
+
 The truth table for the logical NOT operator is:
 \begin{table}[h]
     \centering
@@ -99,8 +112,6 @@ We motivate the truth table for the conditional by considering the statements ``
     A conditional statement that is true by the virtue of the fact that $P$ is false is called \textbf{vacuously true}\index{vacuously true}.
 \end{remark}
 
-\newpage
-
 In summary, the truth table for the conditional is:
 \begin{table}[h]
     \centering
@@ -118,6 +129,8 @@ In summary, the truth table for the conditional is:
     Let $P$ and $Q$ be statements. Draw the truth table for $P \land (\lnot Q)$.
 \end{exercise}
 
+\newpage
+
 We end this section by introducing the idea of the \textbf{biconditional}\index{logical operation!biconditional}.
 \begin{definition}
     Let $P$ and $Q$ be mathematical statements. If both $(P \implies Q)$ and $(Q \implies P)$ are true, then we write $(P \iff Q)$. In other words, $(P \iff Q) \equiv ((P \implies Q) \land (Q \implies P))$.
@@ -130,8 +143,6 @@ We end this section by introducing the idea of the \textbf{biconditional}\index{
         \item $P$ is equivalent to $Q$.
     \end{itemize}
 \end{remark}
-
-\newpage
 
 The truth table for the biconditional is:
 \begin{table}[h]
@@ -171,8 +182,6 @@ A central idea of this section is that every mathematical statement can be built
         \end{tabular}
     \end{table}
 
-    \newpage
-    
     By inspection, we see that $(\lnot P) \lor Q$ has the same truth table as $P \implies Q$. Thus $(P \implies Q) \equiv (\lnot P) \lor Q$.
 \end{example}
 \begin{remark}
@@ -211,9 +220,6 @@ We note some important properties of logical operators.
         \item $(\lnot (P \land Q)) \equiv ((\lnot P) \lor (\lnot Q))$
         \item $(\lnot (P \lor Q)) \equiv ((\lnot P) \land (\lnot Q))$
     \end{itemize}
-
-    \newpage
-
     \item \textbf{Commutativity of AND and OR}: \begin{itemize}
         \item $P \land Q \equiv Q \land P$
         \item $P \lor Q \equiv Q \lor P$
@@ -309,8 +315,6 @@ We also note that $\lnot(P \implies Q) \equiv P \land \lnot Q$. We leave verifyi
     \end{partquestions}
 \end{exercise}
 
-\newpage
-
 \section{Hierarchy of Mathematical Results}
 Mathematical statements often have a certain `tier' attached to them. We look at the hierarchy of some of these `tiers'.
 \begin{itemize}
@@ -327,16 +331,16 @@ In essence, a direct proof\index{proof!direct} for the statement ``if $P$ then $
 \begin{enumerate}
     \item supposing $P$ is true, (usually written as ``suppose $P$'')
     \item unpacking $P$ via definitions; making appropriate calculations and logical arguments; repacking $Q$ via definitions,
-    \item concluding that $Q$ is true. (usually written as ``thus $Q$'')
+    \item concluding that $Q$ is true (usually written as ``thus $Q$'').
 \end{enumerate}
 \begin{example}
-    We look at a proof of the statement ``if the integer $n$ is odd then $n^2$ is odd''.
+    We prove that ``if the integer $n$ is odd then $n^2$ is odd'' using direct proof.
     \begin{proof}
-        Suppose $n\in\mathbb{Z}$ is an odd number.
-        
-        Then $n$ can be written in the form $n = 2k + 1$ where $k$ is an integer. Hence $n^2 = (2k+1)^2 = 4k^2 + 4k + 1$. Note $4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$, so $n^2$ is one more than a multiple of 2.
-        
-        Thus $n^2 = 2(2k^2 + 2k) + 1$ is odd.
+        Suppose $n\in\mathbb{Z}$ is an odd number. Then $n$ can be written in the form $n = 2k + 1$ where $k$ is an integer. Hence
+        \[
+            n^2 = (2k+1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1
+        \]
+        so $n^2$ is one more than a multiple of 2. Thus $n^2 = 2(2k^2 + 2k) + 1$ is odd.
     \end{proof}
 \end{example}
 
@@ -519,6 +523,8 @@ Despite the power of proof by contradiction, it's best to use it only when the d
     While there is nothing wrong with this proof, notice that part of it assumes that $n$ is even and concludes that  $n^2 - 6n + 5$ is odd, which is the contrapositive approach done in \myref{example-if-(n-1)(n-5)-is-even-then-n-is-odd}.
 \end{example}
 
+\newpage
+
 \subsection{Proof by Mathematical Induction}
 Mathematical induction\index{proof!induction} is a method for proving that a proposition $P_n$ is true for every positive integer $n$, that is, that the infinitely many cases $P_1, P_2, P_3, \dots,$ all hold. Informal metaphors help to explain this technique, such as falling dominoes or climbing a ladder:
 \begin{quote}
@@ -580,7 +586,7 @@ In summary, mathematical induction involves two steps:
         \end{align*}
         Hence we see $(1+x)^{k+1} \geq 1+(k+1)x$, meaning that the statement is true for $k+1$.
         
-        Therefore by mathematical induction we have $(1+x)^n \geq 1+nx$ if $n$ is a positive integer.
+        Therefore $(1+x)^n \geq 1+nx$ if $n$ is a positive integer.
     \end{proof}
 \end{example}
 
@@ -603,9 +609,9 @@ Strong mathematical induction involves two steps:
         
         We show the base cases of 8, 9, and 10 hold:
         \begin{itemize}
-            \item When $n = 8$, note $8 = 3 + 5$.
-            \item When $n = 9$, note $9 = 3 \times 3 + 5 \times 0$.
-            \item When $n = 10$, note $10 = 3 \times 0 + 5 \times 2$.
+            \item When $n = 8$, we have $8 = 3 + 5$.
+            \item When $n = 9$, we have $9 = 3 \times 3 + 5 \times 0$.
+            \item When $n = 10$, we have $10 = 3 \times 0 + 5 \times 2$.
         \end{itemize}
         
         Now assume that for some positive integer $k \geq 8$, for every integer $m$ satisfying $8 \leq m \leq k$ the statement holds true, i.e. $m$ can be written in the form $3a + 5b$. We are to show that the statement for $k+1$ is true, i.e. $k+1$ can be expressed in the form $3a + 5b$.
@@ -631,13 +637,15 @@ Strong mathematical induction involves two steps:
         We show the base cases of 1 and 2 hold:
         \begin{itemize}
             \item When $n = 1$, we have $f(2, 1) = 2$, so the first case is true.
-            \item When $n = 2$, we have $f(3, 2)$. Note that
+            \item When $n = 2$, we have
             \[
                 f(3,2) = f(1, f(1, 2)) = f(1, 2) = 2
             \]
             so the second case is true.
         \end{itemize}
         
+        \newpage
+
         Now suppose for some positive integer $k$, for every integer $1 \leq m \leq k$ the statement holds true, i.e. $f(m+1,m) = 2$. We want to show that the case for $k+1$ is true, i.e. $f(k+2, k+1) = 2$.
         \begin{align*}
             f(k+2, k+1) &= f(k, f(k, k+1))\\
@@ -698,8 +706,6 @@ Note that while an example suffices to prove an existence statement, a single ex
     Prove that a positive integer that is one less than a perfect cube and two less than a perfect square exists.
 \end{exercise}
 
-\newpage
-
 Existence proofs fall into two categories: \textbf{constructive}\index{proof!constructive} proofs and \textbf{non-constructive}\index{proof!non-constructive} proofs.
 \begin{itemize}
     \item Constructive proofs provide an explicit example that proves the statement. We have only seen constructive proofs so far.
@@ -717,8 +723,6 @@ Existence proofs fall into two categories: \textbf{constructive}\index{proof!con
         \end{itemize}
         Hence, either way, we have an irrational number to an irrational power that is rational.
     \end{proof}
-    
-    \newpage
 
     Notice that we did not explicitly prove whether $\sqrt2^{\sqrt2}$ is rational or irrational; we just showed that either case leads to a case where two irrational numbers, when exponentiated, results in a rational number.
 \end{example}

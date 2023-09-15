@@ -39,16 +39,15 @@ The definition of congruence also applies to negative values.
     Explain why $-n \equiv n \pmod{2n}$.
 \end{exercise}
 
-The operation of congruence modulo $n$ has a few properties\index{congruence!properties} which we will state without proof. Let $k$ be an integer, $a_1 \equiv b_1 \pmod n$ and $a_2 \equiv b_2 \pmod n$, or if $a \equiv b \pmod n$. Then
+The operation of congruence modulo $n$ has a few properties\index{congruence!properties} which we state without proof. Let $k$ be an integer, $a \equiv b \pmod n$, $a_1 \equiv b_1 \pmod n$ and $a_2 \equiv b_2 \pmod n$. Then
 \begin{itemize}
     \item $a + k \equiv b + k \pmod n$;
+    \item if $a+k \equiv b+k \pmod n$ then $a \equiv b \pmod n$;
     \item $ka \equiv kb \pmod n$;
     \item $ka \equiv kb \pmod {kn}$;
-    \item $a_1 + a_2 \equiv b_1 + b_2 \pmod n$;
-    \item $a_1 - a_2 \equiv b_1 - b_2 \pmod n$;
+    \item $a_1 \pm a_2 \equiv b_1 \pm b_2 \pmod n$;
     \item $a_1a_2 \equiv b_1b_2 \pmod n$;
     \item $a^k \equiv b^k \pmod n$ if $k \geq 0$;
-    \item if $a+k \equiv b+k \pmod n$ then $a \equiv b \pmod n$;
     \item if $ka \equiv kb \pmod n$ and $\gcd(k, n) = 1$, then $a \equiv b \pmod n$; and
     \item if $ka \equiv kb \pmod{kn}$ where $k \neq 0$ then $a \equiv b \pmod n$.
 \end{itemize}
@@ -59,19 +58,20 @@ The operation of congruence modulo $n$ has a few properties\index{congruence!pro
 
 \section{Modular Multiplicative Inverse}
 \begin{definition}
-    Let $m$ be a positive integer, and let $a$ be an integer. Then an integer $x$ that makes $ax \equiv 1 \pmod m$ is said to be the \textbf{multiplicative inverse of $a$ modulo $m$}\index{multiplicative inverse modulo $n$}.
+    Let $m$ be a positive integer, and let $a$ be an integer. An integer $x$ such that $ax \equiv 1 \pmod m$ is said to be the \textbf{multiplicative inverse of $a$ modulo $m$}\index{multiplicative inverse modulo $n$}.
 \end{definition}
 \begin{example}
     4 is the multiplicative inverse of 7 modulo 9 since $4 \times 7 = 28 = 3 \times 9 + 1 \equiv 1 \pmod 9$.
 \end{example}
 
 \begin{proposition}\label{prop-multiplicative-inverse-exists-iff-coprime}
-    A multiplicative inverse of $a$ modulo $m$ exists if and only if $\gcd(a,m) = 1$.
+    $a$ has a multiplicative inverse modulo $m$ if and only if $\gcd(a,m) = 1$.
+    % A multiplicative inverse of $a$ modulo $m$ exists if and only if $\gcd(a,m) = 1$.
 \end{proposition}
 \begin{proof}
     We first work forwards and suppose $k$ is the multiplicative inverse of $a$ modulo $m$. Then $ka \equiv 1 \pmod m$. Hence $ka - 1 \equiv 0 \pmod m$, so $m$ divides $ka - 1$. This means that $ka - 1$ is a multiple of $m$, so $ka - 1 = pm$ for some integer $p$. Therefore $ka + pm = 1$ By B\'{e}zout's Lemma (\myref{lemma-bezout}) this means that $\gcd(a, m) = 1$.
     
-    Now, working in the reverse direction, suppose $\gcd(a, m) = 1$. By B\'{e}zout's Lemma this means there exist integers $k$ and $p$ such that $ka + pm = 1$. Then $ka - 1 = pm$ which means $m$ divides $ka - 1$, which hence means $ka - 1 \equiv 0 \pmod m$ which the result quickly yields.
+    Now, working in the reverse direction, suppose $\gcd(a, m) = 1$. B\'{e}zout's Lemma tells us that integers $k$ and $p$ exist such that $ka + pm = 1$, meaning $ka - 1 = pm$. So $m$ divides $ka - 1$, meaning $ka - 1 \equiv 0 \pmod m$ which the result quickly yields.
 \end{proof}
 
 \begin{example}
