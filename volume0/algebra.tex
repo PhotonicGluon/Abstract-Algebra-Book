@@ -1,5 +1,95 @@
 \chapter{Algebra}
-Competent algebraic manipulation in the real numbers is assumed. We collect a few important and useful results when we manipulate algebraic objects.
+Competent algebraic manipulation in the real numbers is assumed. We collect a few important and useful concepts and results when we manipulate algebraic objects.
+
+\section{Summation}
+When we are summing many similar terms, we use the capital Greek letter sigma ($\sum$) to represent the sum of similar terms. 
+\begin{definition}\index{summation}
+    Define
+    \[
+        \sum_{i=m}^{n}a_i = a_m + a_{m+1} + a_{m+2} + \cdots + a_{n-1} + a_n,
+    \]
+    where $i$ is the \textbf{index of summation}\index{summation!index}, $a_i$ represents each \textbf{summand}\index{summation!summand} of the sum, $m$ is the \textbf{lower bound of summation}\index{summation!lower bound}, and $n$ is the \textbf{upper bound of summation}\index{summation!upper bound}.
+\end{definition}
+\begin{remark}
+    $\displaystyle \sum_{i=m}^{n}a_i$ is read as ``the sum of $a_i$ from $i=m$ to $n$''.
+\end{remark}
+\begin{remark}
+    The ``$i = m$'' at the bottom of the summation means that the index of summation starts at $m$, increments by 1 for each successive term, and continues until $i = n$.
+\end{remark}
+
+\begin{example}
+    The sum of the first 10 positive integers can be written as
+    \[
+        \sum_{i=1}^{10}i = 1 + 2 + \cdots + 9 + 10
+    \]
+    and is evaluated to 55.
+\end{example}
+
+\begin{example}
+    The sum of the squares from 3 to 9 can be written as
+    \[
+        \sum_{i=3}^{9}i^2 = 3^2 + 4^2 + \cdots + 8^2 + 9^2.
+    \]
+    There is no reason to just use ``$i$'' for the index; we may also use other letters, such as $j$:
+    \[
+        \sum_{j=3}^{9}j^2 = 3^2 + 4^2 + \cdots + 8^2 + 9^2.
+    \]
+\end{example}
+
+\begin{example}
+    The case where the summation has one summand is just equal to the summand itself. That is,
+    \[
+        \sum_{i=k}^{k}a_i = a_k.
+    \]
+    For instance,
+    \[
+        \sum_{i=4}^4(i+2)^2 = (4+2)^2 = 36.
+    \]
+\end{example}
+
+There is one degenerate case for summation, which we note as a definition.
+\begin{definition}
+    Let $k$ and $n$ be integers such that $k > n$. Define
+    \[
+        \sum_{i=k}^{n}a_i = 0.
+    \]
+\end{definition}
+\begin{example}
+    We see
+    \[
+        \sum_{i=5}^{4}i = \sum_{i=3}^{2}1 = \sum_{i=12}^{3}(i^4 + 2i^3 + 3i^2 + 4i + 5) = 0
+    \]
+    by virtue of the above definition.
+\end{example}
+\begin{exercise}
+    Evaluate the following sums.
+    \begin{multicols}{3}
+        \begin{partquestions}{\alph*}
+            \item $\displaystyle \sum_{i=3}^{5}(7ix+11)$
+            \item $\displaystyle \sum_{x=3}^{5}(7ix+11)$
+            \item $\displaystyle \sum_{i=-3}^{-5}(-7ix-11)$
+            \item $\displaystyle \sum_{i=4}^{8}ijk$
+            \item $\displaystyle \sum_{j=4}^{8}ijk$
+            \item $\displaystyle \sum_{n=4}^{8}ijk$
+            \item $\displaystyle \sum_{i=3}^{7}13$
+            \item $\displaystyle \sum_{i=1}^{3}i^2 + \sum_{j=4}^{6}j^2$
+            \item $\displaystyle \sum_{i=1}^{3}\left(\sum_{j=5}^{7}(i+j)\right)$
+        \end{partquestions}
+    \end{multicols}
+\end{exercise}
+
+We note some properties of summation.
+\begin{itemize}
+    \item $\displaystyle \sum_{i=m}^na_i = \sum_{j=m}^na_j$\hfill(Index renaming)
+    \item $\displaystyle \sum_{i=m}^n(Ca_i) = C\sum_{i=m}^na_i$\hfill(Factor constants out of a sum)
+    \item $\displaystyle \left(\sum_{i=m}^na_i\right) \pm \left(\sum_{i=m}^nb_i\right) = \sum_{i=m}^n(a_i \pm b_i)$\hfill(Break sum across sum or difference)
+    \item $\displaystyle \sum_{i=m}^ka_i = \left(\sum_{i=m}^na_i\right) + \left(\sum_{j={n+1}}^ka_j\right)$\hfill(Splitting the sum)
+    \item $\displaystyle \sum_{i=m}^na_i = \sum_{i=m+k}^{n+k}a_{i-k}$\hfill(Index shift)
+\end{itemize}
+
+\begin{exercise}
+    Given $\displaystyle \sum_{i=1}^5a_i^2 = 100$, $\displaystyle \sum_{i=2}^5a_{i-1} = 10$, and $\displaystyle \sum_{i=1}^5(a_i+2)^2 = 200$, what is $a_5$?
+\end{exercise}
 
 \section{The Binomial Theorem}
 Sometimes we are forced to expand expressions such as $(x-1)^5$, $(3x^2 + 5)^4$, and $(7x - 3)^9$. These expressions can be readily expanded using the \textbf{binomial theorem}\index{Bionomial Theorem}.
