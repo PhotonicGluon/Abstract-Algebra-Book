@@ -1,8 +1,7 @@
 \chapter{Subgroups}
 We introduced the simple properties of groups and simple examples of groups in the previous chapter. Sometimes, subsets of a group can also be a group. Such groups are called subgroups; we explore important properties and results relating to them in this chapter, with the most important result being Lagrange's theorem.
 
-\section{Definition and Examples}
-We look at the definition of a subgroup of a group.
+\section{What is a Subgroup?}
 \begin{definition}
     Let $G$ be a group with operation $\ast$. Let $H$ be a subset of $G$. Then $H$ is said to be a \textbf{subgroup}\index{subgroup} of $G$ if it satisfies the following conditions.
     \begin{enumerate}
@@ -10,11 +9,11 @@ We look at the definition of a subgroup of a group.
         \item \textbf{Identity}: The identity of the group $G$ is in $H$.
         \item \textbf{Inverse}: For all elements $x$ in $H$, there exists an element $x^{-1}$ in $H$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
     \end{enumerate}
+    We write $H \leq G$ if $H$ is a subgroup of $G$.
 \end{definition}
 \begin{remark}
-    Equivalently, $H$ is a subgroup of $G$ if $H$ is a subset of $G$ and $H$ is a group under $\ast$.
+    Equivalently, $H \leq G$ if $H$ is a subset of $G$ and $H$ is a group under $\ast$.
 \end{remark}
-We write $H \leq G$ if $H$ is a subgroup of $G$.
 
 \begin{example}\label{example-subgroups-of-Z}
     Let's look at all possible subgroups of the group $(\mathbb{Z}, +)$. Suppose $H$ is a subgroup of $G$ with $H \neq \{0\}$.
@@ -29,37 +28,49 @@ We write $H \leq G$ if $H$ is a subgroup of $G$.
     \[
     H = \{nk \vert k \in \mathbb{Z}\},
     \]
-    which is often written as the group $n\mathbb{Z}$.
+    which is often written as $n\mathbb{Z}$.
 \end{example}
 
 \begin{exercise}
-    Let $G$ be a group with identity $e$. Prove that $\{e\} \leq G$.
+    Let $G$ be a group with identity $e$. 
+    \begin{partquestions}{\alph*}
+        \item Prove that the \textbf{trivial subgroup}\index{subgroup!trivial}, $\{e\}$, is a subgroup of $G$.
+        \item Prove that $G \leq G$.
+    \end{partquestions}
 \end{exercise}
+\begin{remark}
+    A subgroup that is \textit{not} $\{e\}$ is called a \textbf{non-trivial subgroup}\index{subgroup!non-trivial}.
+\end{remark}
 
-We note that the trivial group (i.e., $\{e\}$) is always a subgroup of any group. This is known as the \textbf{trivial subgroup}\index{subgroup!trivial}. We also note that the group itself is a subgroup of itself (that is, $G \leq G$). Any subgroup that are \textbf{not} these two groups is known as a \textbf{proper subgroup}\index{subgroup!proper} of $G$, and we write $H < G$ if $H$ is a proper subgroup of $G$.
+We end this section by defining the idea of a proper subgroup.
+\begin{definition}
+    A subgroup $H$ be of a group $G$ is a \textbf{proper subgroup}\index{subgroup!proper} if $H \neq G$, and we write $H < G$.
+\end{definition}
+\begin{remark}
+    Some authors (e.g. {\cite[p.~32]{hungerford_1980}}) require a proper subgroup to also be non-trivial. We do not adopt this definition here.
+\end{remark}
+\begin{remark}
+    Equivalently, a subgroup $H$ is a proper subgroup of $G$ if $H$ is a \textit{proper} subset of $G$ (i.e. $H \subset G$).
+\end{remark}
 
 \section{Subgroup Test}
 To prove that a subset of a group is a subgroup using the axioms is too tedious. Wouldn't it be nice if we have a simple test to determine if a subset is a subgroup? Well, there is; it is called the \textbf{subgroup test}\index{subgroup test}.
 \begin{theorem}[Subgroup Test]\label{thrm-subgroup-test}
-    Let $G$ be a group and $H \subseteq G$ such that $H \neq \emptyset$ (i.e., $H$ is not the empty set). Then $H \leq G$ if and only if $xy^{-1} \in H$ for all $x, y \in H$.
+    Let $G$ be a group with identity $e$, and let $H$ be a subset of $G$. Then $H \leq G$ if and only if $e \in H$ and $xy^{-1} \in H$ for all $x, y \in H$.
 \end{theorem}
-\begin{proof}
-    We prove the forward direction first. Suppose $H \leq G$ and let $x$ and $y$ be elements in $H$. Since $H$ is a subgroup of $G$, inverses exist. Thus $y^{-1}$ is in $H$. Also, since $H$ is a subgroup of $G$, thus $H$ is closed under the group operation. Hence, $xy^{-1}$ is in $H$. Therefore, if $H \leq G$ then $xy^{-1} \in H$ for all $x, y \in H$.
+\begin{proof}[Proof (cf. {\cite[Proposition 4.2]{humphreys_1996}})]
+    We prove the forward direction first. Suppose $H \leq G$, so $e \in H$ by definition of subgroup. Now let $x$ and $y$ be elements in $H$. Since $H$ is a subgroup of $G$, inverses exist. Thus $y^{-1}$ is in $H$. Also, since $H$ is a subgroup of $G$, thus $H$ is closed under the group operation. Hence, $xy^{-1}$ is in $H$. Therefore, if $H \leq G$ then $e \in H$ and $xy^{-1} \in H$ for all $x, y \in H$.
 
-    We now prove the reverse direction. Suppose $xy^{-1}\in H$ for all $x$ and $y$ in $H$.
+    We now prove the reverse direction. Suppose $e \in H$ and $xy^{-1}\in H$ for all $x$ and $y$ in $H$.
     \begin{itemize}
-        \item Suppose $h$ is an arbitrary element in $H$. Set $x = h$ and $y = h$. Then $xy^{-1} = hh^{-1} = e$ is in $H$. Thus the identity of $G$ is present in $H$.
+        \item The identity of $G$ is present in $H$ by assumption.
         \item Set $x = e$ and let $y = h$. Then $xy^{-1} = eh^{-1} = h^{-1}$ is in $H$. Hence every element in $H$ has an inverse in $H$.
         \item Let $a$ and $b$ be elements in $H$. Then by above point, $b^{-1}$ is in $H$. Set $x = a$ and $y = b^{-1}$. Then $xy^{-1} = a\left(b^{-1}\right)^{-1} = ab$ is in $H$. Hence $H$ is closed under the group operation.
     \end{itemize}
-    Therefore if $xy^{-1}$ is in $H$ if for all $x$ and $y$ in $H$, then $H \leq G$.
+    Therefore if $e \in H$ and $xy^{-1}$ is in $H$ for all $x$ and $y$ in $H$, then $H \leq G$.
 
     This completes the proof of the subgroup test.
 \end{proof}
-
-\begin{remark}
-We usually verify the `non-empty' and `subset' requirement by checking if the identity of $G$ is in $H$.
-\end{remark}
 
 We look at some examples of the use of the subgroup test.
 \begin{example}\label{example-centralizer-of-a-subset}
@@ -110,26 +121,23 @@ We look at some examples of the use of the subgroup test.
     \end{proof}
 \end{example}
 
-\begin{exercise}\label{exercise-conjugate-subgroup}
-    Let $G$ be a group, $H \leq G$, and $g \in G$. Define the set
-    \[
-        S = \{ghg^{-1} \vert h \text{ is in } H\}.
-    \]
-    Prove that $S \leq G$ under the group operation of $G$.
+\begin{exercise}
+    Let $G$ be a group, and let $g \in G$. Show that $\langle g \rangle = \{g^k \vert k \in \mathbb{Z}\}$ is a subgroup of $G$, called the \textbf{cyclic subgroup}\index{subgroup!cyclic} generated by $g$.
 \end{exercise}
 
-\newpage
+\begin{exercise}\label{exercise-conjugate-subgroup}
+    Let $G$ be a group, $H \leq G$, and $g \in G$. Define the set $S = \{ghg^{-1} \vert h \in H\}$. Prove that $S \leq G$ under the group operation of $G$.
+\end{exercise}
 
 \section{Cosets}
-We now introduce the idea of \textbf{cosets}\index{coset} of a group $G$.
 \begin{definition}
-    Let $G$ be a group, $H \leq G$, and $g$ be an element of $G$. Then
+    Let $G$ be a group, $H \leq G$, and $g$ be an element of $G$.
     \begin{itemize}
-        \item the \textbf{left coset}\index{coset!left} of $H$ in $G$ by $g$ is $gH = \{gh \vert h \in H\}$; and
-        \item the \textbf{right coset}\index{coset!right} of $H$ in $G$ by $g$ is $Hg = \{hg \vert h \in H\}$.
+        \item The \textbf{left coset}\index{coset!left} of $H$ in $G$ is defined to be $gH = \{gh \vert h \in H\}$.
+        \item The \textbf{right coset}\index{coset!right} of $H$ in $G$ is defined to be $Hg = \{hg \vert h \in H\}$.
+        \item Any element in a coset is called a \textbf{representative}\index{coset!representative} of a coset.
     \end{itemize}
 \end{definition}
-
 \begin{remark}
     The subgroup $H$ is both a left and right coset of $H$ in $G$. This is because the element $g$ in question is $g = e$, so $gH = eH = H$ and $Hg = He = H$.
 \end{remark}
@@ -198,8 +206,6 @@ We now state and prove a result that relates the equality of cosets.
         \end{align*}
         Since $h^{-1}$ is an element in $H$ thus $g_1^{-1}g_2 = h^{-1}$ is also in $H$, meaning $g_1^{-1}g_2 \in H$.
 
-        \newpage
-
         \item $\boxed{(5) \implies (1)}$
         Suppose $g_1^{-1}g_2$ is an element of $H$. Thus, $g_1^{-1}g_2 = \hat{h}$ for some $\hat{h}$ in $H$. Let $x$ be an element from $g_1H$, so $x = g_1h$ for some $h$ in $H$. Then
         \begin{align*}
@@ -217,11 +223,9 @@ We now state and prove a result that relates the equality of cosets.
     Thus, $(1) \implies (2) \implies (3) \implies (4) \implies (5) \implies (1)$, completing the proof.
 \end{proof}
 
-\begin{exercise}\label{exercise-intersection-of-cosets}
+\begin{exercise}\label{exercise-intersection-of-distinct-cosets-is-empty}
     Let $G$ be a group, $H \leq G$, and $g_1$ and $g_2$ be elements in $G$. Prove that if $g_1H \cap g_2H \neq \emptyset$ then $g_1H = g_2H$.
 \end{exercise}
-
-\newpage
 
 \section{Lagrange's Theorem}
 Lagrange's theorem is an important result relating the order of a subgroup and the order of the group itself. Before that, we introduce the idea of the \textbf{index} of a subgroup.
@@ -234,17 +238,20 @@ Note that since the number of left cosets is the number of right cosets, $[G : H
     If $G = D_3$ and $H = \{e, s\}$, then there are 3 distinct left cosets, namely $H$, $rH$, and $r^2H$. Thus, $[G:H] = 3$ in this case.
 \end{example}
 
+\newpage
+
 We require two lemmas to properly prove Lagrange's theorem.
 \begin{lemma}\label{lemma-left-coset-partition}
     Let $G$ be a group and $H \leq G$. Then distinct left cosets of $H$ in $G$ partition $G$.
 \end{lemma}
 \begin{proof}
-    To prove that the distinct left cosets of $H$ in $G$ partition $G$, we need to show two things.
+    To prove that the distinct left cosets of $H$ in $G$ partition $G$, we need to show three things.
     \begin{itemize}
-        \item The intersection of any 2 left cosets is either the empty set or is one of the left cosets (i.e., distinct left cosets are disjoint).
+        \item Every left coset is non-empty.
+        \item The intersection of any 2 distinct left cosets is the empty set (i.e., distinct left cosets are disjoint).
         \item The union of all left cosets is the group.
     \end{itemize}
-    The first bullet point is proven by \myref{exercise-intersection-of-cosets}, so we work only on the second bullet point.
+    The first bullet point is clear, since the identity $e$ is in every left coset. The second bullet point is proven by \myref{exercise-intersection-of-distinct-cosets-is-empty}. We only need to show the third bullet point to prove the lemma.
 
     Suppose $g$ is in $G$. We will find a left coset that $g$ is in. Clearly $g = ge$, and since $e$ is an element of $H$, thus $g = ge$ is an element of the left coset $gH$. So any element in $G$ belongs to a left coset of $H$ in $G$. Thus the union of all left cosets is the group.
 
@@ -280,7 +287,7 @@ We are now ready to state and prove Lagrange's theorem.
         &=\sum_{i=1}^k|H| & (\myref{lemma-order-of-coset})\\
         &= k|H|.
     \end{align*}
-    Recall that we set $k = [G: H]$, therefore $|G| = [G:H]|H|$, proving Lagrange's theorem.
+    Recall $k = [G: H]$, so $|G| = [G:H]|H|$, proving Lagrange's theorem.
 \end{proof}
 
 \begin{exercise}
@@ -292,10 +299,13 @@ Let's look at some corollaries of Lagrange's theorem.
     Let $G$ be a finite group and let $g$ be an element in $G$. Then $|G|$ is a multiple of $|g|$.
 \end{corollary}
 \begin{proof}
-    We show that $|G| = m|g|$ for some positive integer $m$. Clearly $|e| = 1$ which means $|G| = |G| \times 1 = |G||e|$, so suppose $g$ is a non-identity element of $G$ with order $n$. Consider $\mathcal{S} = \langle g \rangle = \{g, g^2, g^3, \dots, g^n\}$. Note that $\mathcal{S}$ is a (cyclic) subgroup of $G$ and $|\mathcal{S}| = n$. By Lagrange's theorem (\myref{thrm-lagrange}), $|G| = [G:\mathcal{S}]|\mathcal{S}| = [G:\mathcal{S}]|g|$. Hence, in this case, $m = [G:\mathcal{S}]$, proving the claim.
+    We are to show that $|G| = m|g|$ for some positive integer $m$.
+    \begin{enumerate}
+        \item When $g = e$, we see $|e| = 1$ which means $|G| = |G| \times 1 = |G||e|$.
+        \item When $g \neq e$, set $|g| = n$. Consider the cyclic subgroup $\langle g \rangle = \{g, g^2, g^3, \dots, g^n\}$. Note that $|g| = |\mathcal{S}| = n$, so by Lagrange's theorem (\myref{thrm-lagrange}) we have $|G| = [G:\mathcal{S}]|\mathcal{S}| = [G:\mathcal{S}]|g|$. Hence, in this case, $m = [G:\mathcal{S}]$.
+    \end{enumerate}
+    This proves the claim.
 \end{proof}
-
-\newpage
 
 \begin{corollary}\label{corollary-group-with-prime-order-subgroups}
     A finite group $G$ with prime order $p$ has no proper subgroups.
@@ -304,18 +314,27 @@ Let's look at some corollaries of Lagrange's theorem.
     By Lagrange's theorem (\myref{thrm-lagrange}), the order of a subgroup must be a factor of the order of the group. Since the order of the group is prime, it only has 2 factors, namely 1 and $p$. The subgroup of order 1 is the trivial subgroup and the subgroup of order $p$ is $G$ itself. Hence $G$ has no proper subgroups.
 \end{proof}
 
-\begin{exercise}\label{exercise-prime-order-element}
-    Let $G$ be a finite group with prime order $p$. Let $x$ be a non-identity element in $G$. Prove that $|x| = p$.
-\end{exercise}
+\begin{corollary}\label{corollary-prime-order-element}
+    Let $G$ be a finite group with prime order $p$. Let $x$ be a non-identity element in $G$. Then $|x| = p$.
+\end{corollary}
+\begin{proof}
+    See \myref{exercise-prime-order-element} (later).
+\end{proof}
+
+\newpage
 
 \begin{corollary}\label{corollary-group-with-prime-order-is-cyclic}
     A finite group $G$ with prime order $p$ is cyclic.
 \end{corollary}
 \begin{proof}
-    By \myref{exercise-prime-order-element}, any non-identity element $g$ in $G$ has $|g| = p$. Thus $\langle g \rangle \neq \{e\}$.
+    By \myref{corollary-prime-order-element}, any non-identity element $g$ in $G$ has $|g| = p$. Thus $\langle g \rangle \neq \{e\}$.
 
     Note that $\langle g \rangle = \{g, g^2, g^3, \dots, g^p\} \leq G$. However, by \myref{corollary-group-with-prime-order-subgroups}, the only subgroups of $G$ are $\{e\}$ and $G$. Since $\langle g \rangle \neq \{e\}$ thus $\langle g \rangle = G$, meaning $G$ is cyclic with generator $g$.
 \end{proof}
+
+\begin{exercise}\label{exercise-prime-order-element}
+    Let $G$ be a finite group with prime order $p$. Prove that any non-identity element in $G$ has order $p$.
+\end{exercise}
 
 \section{Normal Subgroups}
 We now look at a special type of subgroup, known as a \textbf{normal subgroup}.
@@ -323,8 +342,6 @@ We now look at a special type of subgroup, known as a \textbf{normal subgroup}.
     Let $G$ be a group and $N \leq G$. We say that $N$ is a \textbf{normal subgroup}\index{subgroup!normal} of $G$ if $gN = Ng$ for all $g \in G$.
 \end{definition}
 If $N$ is a normal subgroup of $G$, we write $N \unlhd G$. Furthermore if $N$ is a \textit{proper} normal subgroup of $G$, we write $N \lhd G$.
-
-\newpage
 
 Note that $gN = Ng$ is equivalent to the following two statements:
 \begin{itemize}
@@ -347,12 +364,12 @@ Note that $gN = Ng$ is equivalent to the following two statements:
     which is an element of $H$. Thus $ghg^{-1}$ is an element of $H$ for all $g$ in $G$ and $h$ in $H$, meaning $H \unlhd G$.
 \end{proof}
 
+\newpage
+
 \begin{example}\label{example-normal-subgroups-of-d3}
     Let's find the normal subgroups of the dihedral group of order 6, $D_3$.
 
     Recall $D_3 = \{e, r, r^2, s, rs, r^2s\}$. Note that $|r| = 3$, $|s| = 2$, $\langle r \rangle = \{e, r, r^2\}$, and $\langle s \rangle = \{e, s\}$. We will show that $\langle r \rangle$ is a (proper) normal subgroup of $D_3$ but not $\langle s \rangle$. Note that since $r$ and $s$ are generators, we just need to check $s\langle r\rangle$, $\langle r\rangle s$, $r\langle s\rangle$, and $\langle s\rangle r$ to verify normality.
-
-    \newpage
 
     For $\langle r \rangle$,
     \begin{itemize}
@@ -390,7 +407,9 @@ Note that if $G/H$ is \textbf{not} a group, it is read ``$G$ by $H$''. Recall th
         (xN) \star (yN) = (xy)N.
     \]
 \end{theorem}
-For the quotient group, $G / N$ is read ``$G$ mod $N$''. Also note that, as per usual, we suppress the operation $\star$ and just write $(xN)(yN) = (xy)N$.
+\begin{remark}
+    For the quotient group, $G / N$ is read ``$G$ mod $N$''. Also note that, as per usual, we suppress the operation $\star$ and just write $(xN)(yN) = (xy)N$.
+\end{remark}
 \begin{proof}
     Before we can prove that it forms a group, we need to show that $\star$ is well defined. This is because we worry that if $x_1N = x_2N$ and $y_1N = y_2N$ there may be a situation that $(x_1y_1)N \neq (x_2y_2)N$ under this operation. Thus we need to check if it is well defined before we can proceed.
 
@@ -497,8 +516,6 @@ For the quotient group, $G / N$ is read ``$G$ mod $N$''. Also note that, as per 
     \end{partquestions}
 \end{problem}
 
-\newpage
-
 \begin{problem}\label{problem-intersection-of-subgroups}
     Let $G$ be a group, and $H, K \leq G$. Prove or disprove the following statements.
     \begin{partquestions}{\alph*}
@@ -530,8 +547,6 @@ For the quotient group, $G / N$ is read ``$G$ mod $N$''. Also note that, as per 
         \item an element $x \in G$ is in $H$ if $x$ has odd order.
     \end{partquestions}
 \end{problem}
-
-\newpage
 
 \begin{problem}\label{problem-intersection-of-coprime-subgroups}
     Let $G$ be a finite group, $H \leq G$, and $K \leq G$. Suppose the greatest common divisor (GCD) of the order of $H$ and the order of $K$ is 1.

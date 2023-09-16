@@ -1,14 +1,29 @@
 \section{Subgroups}
 \begin{questions}
-    \item We will prove this claim by using the 3 axioms. For brevity let $H = \{e\}$. Clearly $H \subseteq G$.
-    \begin{itemize}
-        \item The only element in $H$ is $e$, and $e \ast e = e \in H$. Hence $H$ is closed.
-        \item The identity of the group $G$ is $e$ which is in $H$.
-        \item The inverse of $e$ is $e$ which is in $H$.
-    \end{itemize}
-    Hence, $\{e\} \leq G$.
+    \item \begin{partquestions}{\alph*}
+        \item We will prove this claim by using the 3 axioms. For brevity let $H = \{e\}$. Clearly $H \subseteq G$.
+        \begin{itemize}
+            \item The only element in $H$ is $e$, and $e \ast e = e \in H$. Hence $H$ is closed.
+            \item The identity of the group $G$ is $e$ which is in $H$.
+            \item The inverse of $e$ is $e$ which is in $H$.
+        \end{itemize}
+        Hence, $\{e\} \leq G$.
+        \item We note that $G$ is a subset of $G$, and that $G$ is a group. Thus, $G$ is a subgroup of $G$ by definition of a subgroup.
+    \end{partquestions}
 
-    \item Clearly $e$ is in $S$ since $e \in H$ and $geg^{-1} = gg^{-1} = e$, so $S$ is non-empty and $S \subseteq G$.
+    \item Clearly $e = g^0 \in \langle g\rangle$ by definition of $\langle g\rangle$.
+    
+    Now suppose $x$ and $y$ are in $\langle g \rangle$, meaning that we may write $x = g^m$ and $y = g^n$ for some integers $m$ and $n$. One sees clearly that
+    \begin{align*}
+        xy^{-1} &= g^m\left(g^n\right)^{-1}\\
+        &= g^mg^{-n}\\
+        &= g^{m-n}\\
+        &\in \langle g\rangle.
+    \end{align*}
+
+    Therefore $\langle g \rangle \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
+
+    \item Clearly $e$ is in $S$ since $geg^{-1} = gg^{-1} = e$ and $e \in H$.
 
     Now suppose $x$ and $y$ are in $S$. Then there exist elements $h_x$ and $h_y$ in $H$ such that $x = gh_xg^{-1}$ and $y = gh_yg^{-1}$. Note that
     \begin{align*}
@@ -17,7 +32,9 @@
         &= gh_xg^{-1}g{h_y}^{-1}g^{-1} & (\text{associativity})\\
         &= gh_x{h_y}^{-1}g^{-1} & (g^{-1}g = e).
     \end{align*}
-    Note that since $H \leq G$, thus $h_x{h_y}^{-1} \in H$. Hence $xy^{-1} = g(h_x{h_y}^{-1})g^{-1} \in S$. By subgroup test, $S \leq G$.
+    Note that since $H \leq G$, thus $h_x{h_y}^{-1} \in H$. Hence $xy^{-1} = g(h_x{h_y}^{-1})g^{-1} \in S$.
+    
+    Therefore $S \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
 
     \item \begin{partquestions}{\alph*}
         \item Since $\oplus_8$ is commutative, thus $gH = Hg$.\newline
@@ -33,7 +50,7 @@
 
     \item Let $x$ be in $g_1H \cap g_2H$. Then $x \in g_1H$ and $x \in g_2H$ simultaneously. Hence, $x = g_1h = g_2\hat{h}$ for some $h, \hat{h} \in H$. Thus, by rearrangement, $g_2^{-1}g_1 = \hat{h}h^{-1} \in H$. By Coset Equality (\myref{lemma-coset-equality}), statements 1 and 5, $g_1H = g_2H$.
 
-    \item Note that $|G| = 99$ and $|H| = 3$, so $[G:H] = \frac{99}{3} = 33$ by Lagrange's theorem.
+    \item Note that $|G| = 99$ and $|H| = 3$, so $[G:H] = \frac{99}{3} = 33$ by Lagrange's theorem (\myref{thrm-lagrange}).
 
     \item Let $x \in G$ with $x \neq e$. Then $|x| > 1$. By \myref{corollary-order-of-group-multiple-of-order-of-element}, the order of $x$ is a factor of $|G| = p$. Since $p$ is prime, $|x| = 1$ (which is not possible) or $|x| = p$. Hence $|x| = p$.
     
