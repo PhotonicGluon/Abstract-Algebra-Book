@@ -106,13 +106,6 @@ We prove some properties of groups.
     Hence $e_1 = e_2$, meaning that the identity of a group is unique.
 \end{proof}
 
-\begin{proposition}\label{prop-inverse-of-identity-is-identity}
-    $e^{-1} = e$
-\end{proposition}
-\begin{proof}
-    Clearly $e = ee^{-1}$ since $xx^{-1} = e$ for all elements $x$ in $G$, including $x = e$. Thus, by left multiplying $e^{-1}$ on both sides, we see $e = e^{-1}$.
-\end{proof}
-
 \begin{proposition}
     The inverse of an element $x$ of a group $G$ is unique.
 \end{proposition}
@@ -126,6 +119,20 @@ We prove some properties of groups.
         &= b & (e \text{ is the identity})
     \end{align*}
     Therefore $a = b$. Thus the inverse of $x$ is unique.
+\end{proof}
+
+\begin{proposition}\label{prop-inverse-of-identity-is-identity}
+    $e^{-1} = e$.
+\end{proposition}
+\begin{proof}
+    Clearly $e = ee^{-1}$ since $xx^{-1} = e$ for all elements $x$ in $G$, including $x = e$. Thus, by left multiplying $e^{-1}$ on both sides, we see $e = e^{-1}$.
+\end{proof}
+
+\begin{proposition}
+    $\left(x^{-1}\right)^{-1} = x$ for all $x$ in $G$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-inverse-of-inverse-is-element} (later).
 \end{proof}
 
 \begin{proposition}[Shoes and Socks]\index{Shoes and Socks}
@@ -146,7 +153,7 @@ We prove some properties of groups.
     Thus, $b^{-1}a^{-1}$ is the inverse of $ab$, i.e. $(ab)^{-1} = b^{-1}a^{-1}$
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}\label{exercise-inverse-of-inverse-is-element}
 Prove that for all $x$ in $G$, $\left(x^{-1}\right)^{-1} = x$.
 \end{exercise}
 
@@ -285,12 +292,12 @@ Note that if $n$ is infinite, we say that the order of $g$ is infinite (or that 
 
 We note a few things about the order of elements in a group.
 \begin{itemize}
-    \item The identity element always has order 1.
-    \item A group in which every element has finite order is said to be \textbf{periodic}\index{group!periodic}.
-    \item A finite group is always periodic because all elements in a finite group has finite order.
+    \item The identity element has order 1.
+    \item A group where every element has finite order is a \textbf{periodic group}\index{group!periodic}.
+    \item A finite group is always periodic since all elements in it has finite order.
     \item The order of any element in a group divides the order of the group.
 \end{itemize}
-The last point is actually a consequence of Lagrange's Theorem (\myref{thrm-lagrange}). We will look into its proof in the next chapter.
+The last point is actually a consequence of Lagrange's theorem (\myref{thrm-lagrange}). We will look into its proof in the next chapter.
 
 \begin{exercise}
     Let $i$ be a number such that $i^2 = -1$. Let $\mathcal{S} = \{1, -1, i, -i\}$.
@@ -406,6 +413,8 @@ The group of symmetries of an equilateral triangle is called the \textbf{dihedra
     \caption{Symmetries of a Square}
 \end{figure}
 
+\newpage
+
 Thus, in general, the set $D_n$ consists of the following elements.
 \[
     D_n = \{e, r, r^2, \dots, r^{n-1}, s, rs, r^2s, \dots, r^{n-1}s\}
@@ -415,8 +424,6 @@ with the relationship between $r$ and $s$ given by $r^n = s^2 = e$ and $rs = sr^
 \begin{remark}
     Some authors (e.g. \cite{humphreys_1996}) will write the reflections of $D_n$ with $s$ leading $r$, i.e. $s, sr, sr^2, sr^3, \dots, sr^{n-1}$. The underlying definition, however, remains the same in either case. This fact will become evident with the proof of \myref{prop-Dn-cannonical-form} (later).
 \end{remark}
-
-\newpage
 
 These relationships are succinctly given by the following \textit{presentation}\index{presentation}, and is the actual definition of the dihedral group.
 \begin{definition}
@@ -470,8 +477,6 @@ Let's look at the less intuitive dihedral groups: the groups $D_1$ and $D_2$.
     \]
     So we see that $D_2 = \{e, r, s, rs\}$, and is, in fact, abelian. We leave drawing the Cayley table of $D_2$ and verifying that it is, indeed, abelian as an exercise for the reader.
 \end{example}
-
-\newpage
 
 The \textit{canonical form}\index{dihedral group!canonical form} of an element in a dihedral group is $r^ms^n$, where $m$ and $n$ are non-negative integers. So how do we find the canonical form of elements like $sr$, $srs$, or $rsr^3$? We have this useful proposition to help.
 \begin{proposition}\label{prop-Dn-cannonical-form}
