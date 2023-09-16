@@ -22,6 +22,21 @@
     so $|\phi(a)|$ divides $n = |a|$ by \myref{problem-element-to-power-of-multiple-of-order-is-identity}.
 
     \item \begin{partquestions}{\roman*}
+        \item We show that $\id$ is both injective and surjective.
+        \begin{itemize}
+            \item \textbf{Injective}: Suppose $x, y \in S$ such that $\id(x) = \id(y)$. Then clearly $x = y$ by definition of the identity map.
+            \item \textbf{Surjective}: Suppose $y \in S$. Clearly $\id(y) = y$, so $y$ is its own pre-image.
+        \end{itemize}
+        Thus $\id$ is a bijection.
+
+        \item Clearly
+        \[
+            \id(xy) = xy = \id(x)\id(y)
+        \]
+        so $\id$ is a homomorphism. Coupled with \textbf{(i)}, this means that $\id$ is an isomorphism.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
         \item Since $3^0 = 1$, $3^1 = 3$, $3^2 = 9 \equiv 4 \pmod{5}$, and $3^3 = 27 \equiv 2 \pmod{5}$, thus $G = \langle 3 \rangle$. Since $7^0 = 1$, $7^1 = 7$, $7^2 = 49 \equiv 9 \pmod{10}$, and $7^3 = 343 \equiv 3 \pmod{10}$, thus $H = \langle 7 \rangle$.
         \item We need to prove that it is a homomorphic bijection.
         \begin{itemize}
@@ -38,7 +53,36 @@
         Therefore $\phi$ is an isomorphism, meaning $G \cong H$.
     \end{partquestions}
 
-    \item Suppose $N \unlhd G$ such that $|N| = k$. Then $\phi(N)$ is a subgroup of $H$ with order $k$ by the theorem. All that remains to prove is that $\phi(N)$ is normal.
+    \item \begin{partquestions}{\roman*}
+        \item We show that $h = g\circ f$ is both injective and surjective.
+        \begin{itemize}
+            \item \textbf{Injective}: Let $x, y \in A$. Then
+            \begin{align*}
+                &h(x) = h(y)\\
+                \iff&g(f(x)) = g(f(y))\\
+                \iff&f(x) = f(y) & (g \text{ is bijective})\\
+                \iff&x = y & (f \text{ is injective})
+            \end{align*}
+            so $h$ is injective.
+            \item \textbf{Surjective}: Suppose $c \in C$. Note that $f^{-1}: B \to A$ and $g^{-1}: C \to B$ both exist since both $f$ and $g$ are injective. Let $a = f^{-1}(g^{-1}(c)) \in A$. Then note
+            \[
+                h(a) = g(f(f^{-1}(g^{-1}(c)))) = c
+            \]
+            so $c$ has a pre-image of $a$, meaning $h$ is surjective.
+        \end{itemize}
+        Therefore $h$ is a bijection.
+
+        \item Recall that an isomorphism is also a homomorphism.  Note that
+        \begin{align*}
+            h(xy) &= g(f(xy))\\
+            &= g(f(x)f(y)) & (f \text( is a homomorphism))\\
+            &= g(f(x))g(f(y)) & (g \text{ is a homomorphism})\\
+            &= h(x)h(y)
+        \end{align*}
+        so $h$ is a homomorphism. As $h$ is also a bijection (from \textbf{(i)}), thus $h$ is an isomorphism.
+    \end{partquestions}
+
+    \item Suppose $N \unlhd G$ such that $|N| = k$. Then $\phi(N)$ is a subgroup of $H$ with order $k$ by \myref{thrm-isomorphism-consequences}, statement 5. All that remains to prove is that $\phi(N)$ is normal.
 
     Let $n \in N$ and $\hat{n} \in \phi(N)$ such that $\hat{n} = \phi(n)$. Let $h \in H$ be an arbitrary element. To prove that $h\hat{n}h^{-1}$ is in $\phi(N)$.
 
@@ -49,6 +93,12 @@
         &\in \phi(N)
     \end{align*}
     which proves that $\phi(N)$ is normal. Hence there exists a normal subgroup of order $k$, namely $\phi(N)$.
+
+    \item \begin{partquestions}{\alph*}
+        \item We know that $\id: G \to G, g \mapsto g$ is an isomorphism (\myref{exercise-identity-map-is-isomorphism}), so $G \cong G$.
+        \item Suppose $G \cong H$. This means that there is an isomorphism $\phi: G \to H$. \myref{thrm-isomorphism-consequences}, statement 2 tells us that $\phi^{-1}: H \to G$ is also an isomorphism. Therefore $H \cong G$.
+        \item Suppose $G \cong H$ and $H \cong K$. Then there exist isomorphisms $\phi: G \to H$ and $\psi: H \to K$. We know that $f: G \to K, g \mapsto \psi(\phi(g))$ is an isomorphism by \myref{exercise-composition-of-isomorphisms-is-isomorphisms}, which means $G \cong K$.
+    \end{partquestions}
 
     \item Since $7^0 = 1$, $7^1 = 7$, $7^2 = 49 \equiv 9 \pmod{10}$, and $7^3 = 343 \equiv 3 \pmod{10}$, thus $G = \langle 7 \rangle$. Note $|7| = 4$ so $G \cong \mathbb{Z}_4$, i.e. $n = 4$.
 \end{questions}

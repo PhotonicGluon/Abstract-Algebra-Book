@@ -17,8 +17,6 @@ Now that we have introduced the idea of a group, one wonders about how elements 
     It is important to note that $xy$ uses the group operation on $G$ (i.e., $\ast$) while $\phi(x)\phi(y)$ uses the group operation on $H$ (i.e., $\star$).
 \end{remark}
 
-\newpage
-
 Let's look at two examples of homomorphisms between groups.
 \begin{example}
     Let $G$ be any group. Take $g$ from $G$. Let $\phi: \mathbb{Z} \to G$ (where $\mathbb{Z}$ is the additive group of integers) be such that $\phi(n) = g^n$ for all integers $n$. Then $\phi$ is a homomorphism, since
@@ -45,8 +43,6 @@ Let's look at two examples of homomorphisms between groups.
     \end{partquestions}
 \end{exercise}
 
-\newpage
-
 \section{Properties of Homomorphisms}
 With an understanding on what homomorphisms are, let's look at some properties of homomorphisms. Before stating and proving them, let
 \begin{itemize}
@@ -70,17 +66,18 @@ With an understanding on what homomorphisms are, let's look at some properties o
     Note that $xx^{-1} = e_1$. Thus, $\phi(xx^{-1}) = \phi(e_1) = e_2$ by applying $\phi$ on both sides. Note also that $\phi(xx^{-1}) = \phi(x)\phi(x^{-1})$ by definition of homomorphism. Hence, $\phi(x)\phi(x^{-1}) = e_2$ which quickly implies $\phi(x^{-1}) = \left(\phi(x)\right)^{-1}$ after left-multiplying both sides by $\left(\phi(x)\right)^{-1}$.
 \end{proof}
 
-\newpage
-
 For the next few properties, define
 \begin{gather*}
     \phi(H_1) = \{\phi(h) \vert h \in H_1\}, \text{ and}\\
     \phi^{-1}(H_2) = \{g \in G_1 \vert \phi(g) \in H_2\}
 \end{gather*}
 
-\begin{exercise}
-    Prove that $\phi(H_1) \leq G_2$.
-\end{exercise}
+\begin{proposition}
+    $\phi(H_1) \leq G_2$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-homomorphism-image-is-subgroup} (later).
+\end{proof}
 
 \begin{proposition}\label{prop-homomorphism-inverse-is-subgroup}
     $\phi^{-1}(H_2) \leq G_1$.
@@ -116,8 +113,12 @@ For the next few properties, define
     This proves that $\phi^{-1}(H_2) \unlhd G_1$.
 \end{proof}
 
+\begin{exercise}\label{exercise-homomorphism-image-is-subgroup}
+    Prove that $\phi(H_1) \leq G_2$.
+\end{exercise}
+
 \begin{exercise}
-    Prove or disprove the following statement: if $H_1 \unlhd G_1$, then $\phi(H_1) \unlhd G_2$.
+    Prove or disprove: if $H_1 \unlhd G_1$, then $\phi(H_1) \unlhd G_2$.
 \end{exercise}
 
 \begin{exercise}\label{exercise-order-of-homomorphism-divides-order}
@@ -125,13 +126,16 @@ For the next few properties, define
 \end{exercise}
 
 \section{Isomorphisms}
-We now look a special (and important) type of homomorphisms: \textbf{isomorphisms}.
+We now look a special (and important) type of homomorphism: \textbf{isomorphisms}.
 
 \begin{definition}
     Let $(G, \ast)$ and $(H, \star)$ be groups. Let $\phi: G \to H$ be a homomorphism. Then $\phi$ is an \textbf{isomorphism}\index{isomorphism} if $\phi$ is a bijection.
 \end{definition}
+\begin{definition}
+    Let $G$ and $H$ be groups. We say that $G$ and $H$ are \textbf{isomorphic}\index{isomorphic} if there exists an isomorphism $\phi: G \to H$.
 
-If there exists an isomorphism from $G$ to $H$, then we say that $G$ and $H$ are \textbf{isomorphic}\index{isomorphic} and write $G \cong H$.
+    If two groups $G$ and $H$ are isomorphic, we write $G \cong H$.
+\end{definition}
 
 \begin{example}
     Let $G = (\mathbb{Z}_2, \oplus_2)$ and $H = \{1, -1\}$ be a group under regular multiplication. Define the map $\phi: G \to H$ such that $\phi(0) = 1$ and $\phi(1) = -1$.
@@ -168,11 +172,27 @@ If there exists an isomorphism from $G$ to $H$, then we say that $G$ and $H$ are
     Thus $\phi$ is an isomorphism, meaning that $(\mathbb{R}, +) \cong (S, \times)$.
 \end{example}
 
+\begin{exercise}\label{exercise-identity-map-is-isomorphism}
+    Let $S$ be a set. Define the \textbf{identity function}\index{identity function} (or \textbf{identity map}\index{identity map}) $\id: S \to s$ such that $\id(x) = x$.
+    \begin{partquestions}{\roman*}
+        \item Show that $\id$ is a bijection.
+        \item If $S$ is a group, show that $\id$ is an isomorphism.
+    \end{partquestions}
+\end{exercise}
+
 \begin{exercise}
     Let the groups $G = (\{1, 2, 3, 4\}, \otimes_5)$ and $H = (\{1, 3, 7, 9\}, \otimes_{10})$.
     \begin{partquestions}{\roman*}
         \item Show that $G = \langle 3 \rangle$ and $H = \langle 7 \rangle$.
         \item Prove that $G \cong H$ by considering $\phi: G \to H, 3^k \mapsto 7^k$.
+    \end{partquestions}
+\end{exercise}
+
+\begin{exercise}\label{exercise-composition-of-isomorphisms-is-isomorphisms}
+    Let $A$, $B$, and $C$ be sets. Let $f: A \to B$ and $g: B \to C$ be bijections. Let $h = g\circ f$ where $\circ$ represents function composition, that is $h: A \to C, x \mapsto g(f(x))$.
+    \begin{partquestions}{\roman*}
+        \item Show that $h$ is a bijection.
+        \item If $A$, $B$, and $C$ are groups, and $f$ and $g$ are isomorphisms, show that $h$ is an isomorphism.
     \end{partquestions}
 \end{exercise}
 
@@ -189,14 +209,14 @@ Isomorphisms between groups means that the two groups \textit{share the same str
     \end{enumerate}
 \end{theorem}
 
-\newpage
-
 \begin{proof}
     We prove each of these statements individually.
     \begin{enumerate}
         \item Follows immediately from properties of a bijective function.
 
         \item Since $\phi$ is an isomorphism, it is bijective, which means that $\phi^{-1}$ exists and is also bijective. All that remains is to show that $\phi^{-1}$ is a homomorphism.
+
+        \newpage
 
         Let $u$ and $v$ be in $H$. Then, since $\phi$ is surjective, there exist elements $x$ and $y$ in $G$ such that $\phi(x) = u$ and $\phi(y) = v$. Hence,
         \begin{align*}
@@ -229,7 +249,7 @@ Isomorphisms between groups means that the two groups \textit{share the same str
 
         However, as $\phi(g) \in H$, thus $\left\langle \phi(g) \right\rangle \leq H$ which means that $\left\langle \phi(g) \right\rangle \subseteq H$. Therefore, we have $H \subseteq \left\langle \phi(g) \right\rangle$ and $\left\langle \phi(g) \right\rangle \subseteq H$ simultaneously, meaning $H = \left\langle \phi(g) \right\rangle$, i.e. $H$ is a cyclic group.
 
-        \item Suppose $K \leq G$ with $|K| = n$. Consider the subgroup $\phi(K)$. By properties of homomorphism, $\phi(K) \leq H = \phi(G)$. Now by the first property, $|K| = |\phi(K)| = n$, meaning that there is a subgroup of $H$ with order $n$, namely the subgroup $\phi(K)$.
+        \item Suppose $K \leq G$ with $|K| = n$. Consider the subgroup $\phi(K)$. By properties of homomorphism, $\phi(K) \leq H = \phi(G)$. Now by statement 1, $|K| = |\phi(K)| = n$, meaning that there is a subgroup of $H$ with order $n$, namely the subgroup $\phi(K)$.
     \end{enumerate}
 
     This proves the theorem.
@@ -239,7 +259,14 @@ Isomorphisms between groups means that the two groups \textit{share the same str
     Let $\phi: G \to H$ be an isomorphism between the groups $G$ and $H$. Show that if $G$ has a normal subgroup with order $k$, then $H$ also has a normal subgroup of order $k$.
 \end{exercise}
 
-\newpage
+\begin{exercise}
+    Let $G$, $H$, and $K$ be groups. Prove the following statements.
+    \begin{partquestions}{\alph*}
+        \item $G \cong G$.
+        \item If $G \cong H$ then $H \cong G$.
+        \item If $G \cong H$ and $H \cong K$ then $G \cong K$.
+    \end{partquestions}
+\end{exercise}
 
 \section{Links to Cyclic Groups}
 With the tool of isomorphisms under our belt, we can prove two important theorems regarding cyclic groups. Before that, however, we formally introduce the idea of infinite cyclic groups.
@@ -320,11 +347,11 @@ In summary:
 \end{problem}
 
 \begin{problem}
-    Let $G$ and $H$ \textbf{both} be the additive group of integers. Define a map $\phi: G \to H$ such that $\phi(n) = 2n$.
+    Define a map $\phi: \mathbb{Z} \to \mathbb{Z}$ such that $\phi(n) = 2n$.
     \begin{partquestions}{\alph*}
         \item Prove that $\phi$ is a homomorphism.
         \item Prove that $\phi$ is injective.
-        \item Prove that there does \textbf{not} exist a homomorphism $\psi: H \to G$ such that $\psi(\phi(n)) = n$.
+        \item Prove that there does \textbf{not} exist a homomorphism $\psi: \mathbb{Z} \to \mathbb{Z}$ where $\psi(\phi(n)) = n$.
     \end{partquestions}
 \end{problem}
 
@@ -341,13 +368,11 @@ In summary:
     (That is, the image of $N$ under $\phi$ is a normal subgroup of $H$.)
 \end{problem}
 
-\newpage
-
 \begin{problem}\label{problem-Zn-isomorphic-to-Z-by-nZ}
-    Let $G = (\mathbb{Z}_n, \oplus_n)$, and $H = \mathbb{Z}/(n\mathbb{Z})$ be under addition. Prove that $G \cong H$.
+    Let $G = \mathbb{Z}_n$, and let $H = \mathbb{Z}/(n\mathbb{Z})$ be under addition. Prove that $G \cong H$.
 \end{problem}
 \begin{remark}
-    Whenever we are dealing with homomorphisms involving $(\mathbb{Z}_n, \oplus_n)$, it is usually easier to replace it with $\mathbb{Z}/(n\mathbb{Z})$ and do the homomorphism that way.
+    Whenever we are dealing with homomorphisms involving $\mathbb{Z}_n$, it is usually easier to replace it with $\mathbb{Z}/(n\mathbb{Z})$ and do the homomorphism that way.
 \end{remark}
 
 \begin{problem}\label{problem-subgroup-of-quotient-group-is-quotient-group}
