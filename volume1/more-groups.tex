@@ -48,12 +48,7 @@ We are now ready to prove an essential theorem on cyclic groups.
     \[
         x^m = \left(g^k\right)^m = g^{km}
     \]
-    and since $|x| = m$, this means that $x^m = e$. Hence
-    \[
-        g^{km} = e.
-    \]
-
-    By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity} on $\Cn{n}$, $n \vert km$. This implies that
+    and since $|x| = m$, this means that $x^m = e$. Hence $g^{km} = e$. By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity} on $\Cn{n}$, $n \vert km$. This implies that
     \[
         \frac{n}{\gcd(k,n)} \vert \frac{km}{\gcd(k,m)} = \lambda m.
     \]
@@ -69,7 +64,10 @@ We are now ready to prove an essential theorem on cyclic groups.
     \end{align*}
     implying $x^{\frac{n}{\gcd(k,n)}} = e$. By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity} on group $\mathcal{X}$, we have $m \vert \frac{n}{\gcd(k,n)}$.
 
-    Since $\frac{n}{\gcd(k,n)} \vert m$ and $m \vert \frac{n}{\gcd(k,n)}$ simultaneously, thus $m = \frac{n}{\gcd(k,n)}$, that is $|x| = \frac{n}{\gcd(k,n)}$.
+    Since $\frac{n}{\gcd(k,n)} \vert m$ and $m \vert \frac{n}{\gcd(k,n)}$ simultaneously, thus $m = \frac{n}{\gcd(k,n)}$, that is,
+    \[
+        |x| = \frac{n}{\gcd(k,n)}.
+    \]
 \end{proof}
 
 \begin{exercise}
@@ -82,7 +80,7 @@ We are now ready to prove an essential theorem on cyclic groups.
 \begin{proof}
     We prove the forward direction first. Suppose that $\Cn{n}$ has a generator of $g^m$. On one hand, $|g^m| = n$ since a generator of a group necessarily has to have an order equal to that of the group. On another hand, by \myref{thrm-order-of-element-in-cyclic-group}, $|g^m| = \frac{n}{\gcd(m, n)}$. Hence, $n = \frac{n}{\gcd(m, n)}$ which quickly implies $\gcd(m, n) = 1$.
 
-    Now we prove the reverse direction. Suppose $\gcd(m,n) = 1$. Then $|g^m| = \frac{n}{\gcd(m,n)} = \frac{n}{1} = n$ by \myref{thrm-order-of-element-in-cyclic-group}. Hence $g^m$ is a generator of the group $\Cn{n}$ by \myref{thrm-cyclic-group-has-element-with-same-order}.
+    Now we prove the reverse direction. Suppose $\gcd(m,n) = 1$. Then $|g^m| = \frac{n}{\gcd(m,n)} = \frac{n}{1} = n$ by \myref{thrm-order-of-element-in-cyclic-group}. Hence $g^m$ is a generator of $\Cn{n}$ by \myref{thrm-cyclic-group-has-element-with-same-order}.
 \end{proof}
 
 \begin{exercise}
@@ -92,8 +90,6 @@ We are now ready to prove an essential theorem on cyclic groups.
         \item $\mathbb{Z}_{101}$
     \end{partquestions}
 \end{exercise}
-
-\newpage
 
 \section{Quaternion Group}
 We look at an interesting group that has use in computer graphics: the \textbf{Quaternion Group}. We present one definition here.
@@ -121,6 +117,9 @@ With these subgroups, we can write a presentation for $\mathrm{Q}$.
 \begin{proposition}
     $\mathrm{Q} = \langle i, j \rangle$.
 \end{proposition}
+
+\newpage
+
 \begin{proof}
     For brevity let $G = \langle i, j \rangle$. We note that $i^0 = 1$, $i^4 = j^4 = 1$ and $ji = -k = -ij = i^3j$. Hence,
     \begin{align*}
@@ -155,13 +154,12 @@ For example, we see that (1 5), (4 7), (3 6) etc. are transpositions, while (1 4
 
 We call transpositions which has cycle decomposition $\begin{pmatrix}i&i+1\end{pmatrix}$ \textbf{adjacent transpositions}\index{transposition!adjacent}, and we may denote them by $\alpha$.
 
-We look at one lemma which can be said to help `break up' transpositions into a composition of adjacent transpositions. Note that line breaks are to be ignored in the following lemma.
+We look at one lemma which can be said to help `break up' transpositions into a composition of adjacent transpositions. Ignore line breaks in the following lemma.
 \begin{lemma}\label{lemma-decompose-transposition}
     Let a transposition $\tau = (i\quad i+d)$ where $d$ is a positive integer. Then the permutation
     \begin{align*}
-        & (i\quad i+1)(i+1\quad i+2)\cdots(i+d-2\quad i+d-1)\\
-        &\quad (i+d-1\quad i+d)(i+d-2\quad i+d-1)\cdots\\
-        &\quad (i+1\quad i+2)(i\quad i+1)
+        & (i\quad i+1)(i+1\quad i+2)\cdots(i+d-2\quad i+d-1)(i+d-1\quad i+d)\\
+        &\quad (i+d-2\quad i+d-1)\cdots(i+1\quad i+2)(i\quad i+1)
     \end{align*}
     is equal to $\tau$.
 \end{lemma}
@@ -175,10 +173,8 @@ We look at one lemma which can be said to help `break up' transpositions into a 
     \begin{align*}
         (i\quad i+(d+1)) &= (i\quad i+1)(i+1\quad i+d+1)(i\quad i+1)\\
         &= (i\quad i+1)\underbrace{((i+1)\quad (i+d)+1)}_{\text{use induction hypothesis here}}(i\quad i+1)\\
-        &= (i\quad i+1)((i+1)\quad(i+1)+1)\cdots\\
-        &\quad\quad((i+1)\quad(i+1)+1)(i\quad i+1)\\
-        &= (i\quad i+1)(i+1\quad i+2)\cdots\\
-        &\quad\quad(i+1\quad i+2)(i\quad i+1)
+        &= (i\quad i+1)((i+1)\quad(i+1)+1)\cdots((i+1)\quad(i+1)+1)(i\quad i+1)\\
+        &= (i\quad i+1)(i+1\quad i+2)\cdots(i+1\quad i+2)(i\quad i+1)
     \end{align*}
     which shows that $d+1$ works as well.
 \end{proof}
@@ -230,9 +226,7 @@ Counting the number of inversions in a permutation may be hard to do, so we have
 \begin{proof}
     We only need to show that the parity of $n$ and the parity of the permutation is the same to prove this.
 
-    By \myref{lemma-permutations-as-product-of-transpositions}, all permutations can be produced by a sequence of transpositions, say $\sigma = \tau_1\tau_2\tau_3\cdots\tau_k$.
-
-    By \myref{lemma-decompose-transposition}, every transposition can be written as a product of $2d - 1$ adjacent transpositions. Expressing each $\tau_i$ as a product of adjacent transpositions yields
+    By \myref{lemma-permutations-as-product-of-transpositions}, all permutations can be produced by a sequence of transpositions, say $\sigma = \tau_1\tau_2\tau_3\cdots\tau_k$. By \myref{lemma-decompose-transposition}, every transposition can be written as a product of $2d - 1$ adjacent transpositions. Expressing each $\tau_i$ as a product of adjacent transpositions yields
     \[
         \sigma = \alpha_1\alpha_2\cdots\alpha_m
     \]
@@ -240,12 +234,12 @@ Counting the number of inversions in a permutation may be hard to do, so we have
 
     It is clear that for any permutation $\pi$ and adjacent permutation $\alpha$, the permutation $\alpha\pi$ has either one more or one less inversion than $\pi$. Thus the parity of the number of inversions of a permutation is switched when composed with adjacent transpositions.
 
-    We note that the identity permutation $\id$ is an even permutation. So $\alpha_1$ is odd, $\alpha_1\alpha_2$ is even, $\alpha_1\alpha_2\alpha_3$ is odd, etc., so $\alpha_1\alpha_2\cdots\alpha_m$ has the parity of $m$. Therefore the parity of the number of inversions of $\sigma$ is the parity of $k$ (since $m$ and $k$ have the same parity), proving the theorem.
+    We note that the identity permutation $\id$ is an even permutation. So $\alpha_1$ is odd, $\alpha_1\alpha_2$ is even, $\alpha_1\alpha_2\alpha_3$ is odd, etc., so $\alpha_1\alpha_2\cdots\alpha_m$ has the parity of $m$. Therefore the parity of the number of inversions of $\sigma$ is the parity of $k$ (since $m$ and $k$ have the same parity).
 \end{proof}
 
-\begin{proposition}\label{prop-permutation-and-inverse-have-same-parity}
-    Let $\sigma$ be a permutation. Then $\sigma$ and $\sigma^{-1}$ have the same parity.
-\end{proposition}
+\begin{corollary}\label{coro-permutation-and-inverse-have-same-parity}
+    $\sigma$ and $\sigma^{-1}$ have the same parity for any permutation $\sigma$.
+\end{corollary}
 \begin{proof}
     One observes clearly that $\sigma\sigma^{-1} = \id$. Since $\id$ is even, thus $\sigma\sigma^{-1}$ must be composed of an even number of transpositions (\myref{thrm-parity-of-permutation}).
     \begin{itemize}
@@ -278,7 +272,7 @@ so
     &= (-1)^{N(\sigma)}(-1)^{N(\tau)}\\
     &= \sgn(\sigma)\sgn(\tau),
 \end{align*}
-meaning that $\sgn$ is a \textit{multiplicative map}. One can then quickly verify \myref{prop-permutation-and-inverse-have-same-parity} by noting
+meaning that $\sgn$ is a \textit{multiplicative map}. One can then quickly verify \myref{coro-permutation-and-inverse-have-same-parity} by noting
 \[
     1 = \sgn(\id) = \sgn(\sigma\sigma^{-1}) = \sgn(\sigma)\sgn(\sigma^{-1})
 \]
@@ -304,7 +298,7 @@ We are now ready to look at the alternating group.
     \[
         \mu = \tau_1\tau_2\cdots\tau_{2k} \text{ and } \sigma = \tau_1'\tau_2'\cdots\tau_{2m}'.
     \]
-    We note that any transposition is its own inverse, i.e. $\tau = \tau^{-1}$. Hence $\sigma^{-1} = \tau_{2m}'\tau_{2m-1}'\cdots\tau_2'\tau_1'$, so
+    We note that any transposition is its own inverse, that is $\tau = \tau^{-1}$. Hence $\sigma^{-1} = \tau_{2m}'\tau_{2m-1}'\cdots\tau_2'\tau_1'$, so
     \[
         \mu\sigma^{-1} = \underbrace{\tau_1\cdots\tau_{2k}\tau_{2m}'\cdots\tau_1'}_{2(k+m) \text{ transpositions}}
     \]
@@ -323,8 +317,6 @@ We are now ready to look at the alternating group.
     \]
     As $\mu$ is even, so $\sgn(\mu) = 1$. Hence $\sgn(\sigma\mu\sigma^{-1}) = 1$ which means that $\sigma\mu\sigma^{-1}$ is an even permutation. Therefore $\sigma\mu\sigma^{-1} \in \An{n}$, meaning that $\An{n} \lhd \Sn{n}$.
 \end{proof}
-
-\newpage
 
 \begin{proposition}\label{prop-order-of-An}
     The order of $\An{n}$ is $\frac{n!}{2}$ for $n \geq 2$.
@@ -381,7 +373,7 @@ We look at a useful group in Number Theory: the \textbf{group of units modulo $n
     \begin{enumerate}
         \item \textbf{Closure}: Let $x, y \in \Un{n}$. Then $\gcd(x, n) = \gcd(y, n) = 1$. Hence $\gcd(xy, n) = 1$ which means that $\gcd(x\otimes_ny,n)=1$. Thus $x\otimes_ny \in \Un{n}$.
         
-        \item \textbf{Associativity}: Multiplication is associative, so multiplication modulo $n$ is associative.
+        \item \textbf{Associativity}: Multiplication is associative, so $\otimes_n$ is associative.
         
         \item \textbf{Identity}: Note that 1 is the identity in $\Un{n}$ since $1 \otimes_n x = x$.
         
@@ -401,10 +393,10 @@ A useful Number Theory function that will occur frequently in this section is \t
 \begin{definition}
     \textbf{Euler's totient function} $\totient$ gives the number of positive integers that are smaller than and coprime to a positive integer $x$. That is,
     \[
-        \totient(x) = |\{n \in \mathbb{Z} \vert 1 \leq n < x \text{ and } \gcd(n, x) = 1\}|.
+        \totient(x) = \left|\{n \in \mathbb{Z} \vert 1 \leq n < x \text{ and } \gcd(n, x) = 1\}\right|.
     \]
 \end{definition}
-In particular, if $x = p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$ where $p_1, p_2,\dots,p_k$ are distinct primes and $n_1,n_2,\dots,n_k$ are positive integers, then
+In particular, if the positive integer $x = p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$, where $p_1, p_2, \dots, p_k$ are distinct primes and $n_1,n_2,\dots,n_k$ are positive integers, then
 \[
     \totient(x) = x \left(1 - \frac1{p_1}\right)\left(1 - \frac1{p_2}\right)\cdots\left(1 - \frac1{p_k}\right).
 \]
@@ -413,8 +405,6 @@ Note $|\Un{n}| = \totient(n)$ by definition of $\Un{n}$.
 \begin{exercise}\label{exercise-order-of-a-divides-phi-a}
     Let $a \in \Un{n}$. Prove that $|a|$ divides $\totient(n)$.
 \end{exercise}
-
-\newpage
 
 We look at the specific case where $|a| = \totient(n)$.
 \begin{definition}
@@ -738,8 +728,6 @@ We prove that $\Aut{G}$ is indeed a group.
     Since the four group axioms are satisfied, thus $\Aut{G}$ is a group under function composition.
 \end{proof}
 
-\newpage
-
 \subsection{Group of Inner Automorphisms of \texorpdfstring{$G$}{G}}
 We now look at inner automorphisms and its group.
 \begin{definition}
@@ -815,7 +803,7 @@ Before we can state the consequence, we revisit the idea of the center of a grou
 
         \item \textbf{Kernel}: Note that $\ker\phi = \{g \in G \vert \phi(g) = \id\}$. So, if $g \in \ker\phi$ then $(\phi(g))(x) = \iota_g(x) = \id(x) = x$ for all $x \in G$. This means that $gxg^{-1} = x$, meaning $gx = xg$ for all $x \in G$, so $g \in \Z{G}$. Hence $\ker\phi = \Z{G}$.
     \end{itemize}
-    Therefore, ones sees that by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}),
+    Thus, one sees that by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}),
     \[
         G/\ker\phi \cong \im\phi,
     \]
@@ -846,13 +834,16 @@ Before we can state the consequence, we revisit the idea of the center of a grou
 \end{problem}
 
 \begin{problem}
-    Let $G$ be a finite cyclic group of order $n$ with generator $g$.
+    Let $G = \Cn{n}$ with generator $g$.
     \begin{partquestions}{\roman*}
         \item Suppose $f: G \to G$ and $h: G \to G$ are homomorphisms. Prove that $f = h$ if and only if $f(g) = h(g)$.
         \item Let $f: G \to G$ be a homomorphism. Explain why $f(g) = g^{m_f}$ where $m_f$ is a integer unique to $f$.
         \item Suppose $f: G \to G$ and $h: G \to G$ are homomorphisms. Prove that $m_{f\circ h} = m_f \otimes_n m_h$, where $\circ$ denotes function composition and $\otimes_n$ denotes multiplication modulo $n$.
         \item Let $f: G \to G$ be a homomorphism. Prove that $f$ is an automorphism if and only if $m_f$ has a multiplicative inverse modulo $n$. That is, there exists $k \in \Un{n}$ such that $m_fk \equiv 1 \pmod n$ if and only if $f$ is an automorphism.\newline
         (\textit{Hint: consider \myref{prop-multiplicative-inverse-exists-iff-coprime}, where we have $ab \equiv 1 \pmod m$ if and only if $\gcd(a, m) = 1$.})
-        \item Hence, by considering the map $\phi: \Aut{G} \to \Un{n}$ where $f \mapsto m_f$, prove $\Aut{G} \cong \Un{n}$. 
+        \item Hence, by considering the map $\phi: \Aut{G} \to \Un{n}$ where $f \mapsto m_f$, prove that
+        \[
+            \Aut{G} \cong \Un{n}.
+        \] 
     \end{partquestions}
 \end{problem}
