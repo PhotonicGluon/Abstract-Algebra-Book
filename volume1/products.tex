@@ -78,22 +78,18 @@ We prove some results relating the external direct product.
     Find all pairs of integers $(m, n)$ with $1 < m < n$ such that $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{180}$.
 \end{exercise}
 
-\section{Internal Direct Product}
+\section{Subgroup Product and Internal Direct Product}
 Before we look at the internal direct product, we look at the \textbf{subgroup product}\index{subgroup product}.
 \begin{definition}
-    Let $G$ be a group and $H, K \leq G$. Then
+    Let $G$ be a group with subgroups $H$ and $K$. Then the \textbf{subgroup product of $H$ and $K$} is
     \[
-        HK = \{hk \vert h \in H, k \in K\}
+        HK = \{hk \vert h \in H, k \in K\}.
     \]
-    is called the \textbf{subgroup product of $H$ and $K$}.
 \end{definition}
 
 \begin{proposition}\label{prop-subgroup-product-is-subgroup}
-    Let $G$ be a group and $H, K \leq G$. Then $HK \leq G$ if and only if $HK = KH$.
+    Let $G$ be a group with subgroups $H$ and $K$. Then $HK \leq G$ if and only if $HK = KH$.
 \end{proposition}
-
-An important point to note is that $HK = KH$ does not imply that $hk = kh$ for all $h \in H$ and $k \in K$. Finding a counterexample to this claim is left as an exercise to the reader.
-
 \begin{proof}
     We first prove the forward direction; assume that $HK \leq G$. First take an arbitrary $kh \in KH$. Then we note
     \begin{align*}
@@ -113,8 +109,11 @@ An important point to note is that $HK = KH$ does not imply that $hk = kh$ for a
     \end{align*}
     so by subgroup test, $HK \leq G$.
 \end{proof}
+\begin{remark}
+    An important point to note is that $HK = KH$ does not imply that $hk = kh$ for all $h \in H$ and $k \in K$. Finding a counterexample is left as an exercise to the reader.
+\end{remark}
 
-We now look at the \textbf{internal direct product}, another way of combining elements of two groups.
+We now look at the \textbf{internal direct product}, another way of `combining' groups.
 
 \begin{definition}
     Let $G$ be a group and $H$ and $K$ be subgroups of $G$ such that
@@ -148,8 +147,6 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \begin{theorem}\label{thrm-direct-product-equivilance}
     If $G$ is the internal direct product of $H$ and $K$, then $G \cong H \times K$.
 \end{theorem}
-
-\newpage
 
 \begin{proof}
     Let $\phi: G \to H \times K$, $g \mapsto (h, k)$ where $g = hk$. We will show that $\phi$ is a well-defined isomorphism.
