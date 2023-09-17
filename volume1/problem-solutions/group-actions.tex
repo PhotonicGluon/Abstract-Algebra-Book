@@ -1,11 +1,11 @@
 \section{Group Actions}
 \begin{questions}
-    \item \begin{partquestions}{\alph*}
+    \item \begin{partquestions}{\roman*}
         \item Since $G = D_5$ has order $10 = 2 \times 5$, by \myref{thrm-cauchy}, $G$ must have subgroups of orders 2 and 5.
-        \item For the one with order 2, $\{e, s\} \leq G$. For the one with order 5, $\{e, r, r^2, r^3, r^4\} \leq G$.
+        \item For the subgroup with order 2, $\{e, s\} \leq G$. For the subgroup with order 5, $\{e, r, r^2, r^3, r^4\} \leq G$.
     \end{partquestions}
 
-    \item Suppose that $n = mp$ where $m$ is a positive integer and $p$ is an odd prime. Then there must exist an element, say $x$, such that $x^p = e$ by Cauchy's Theorem (\myref{thrm-cauchy}). But all elements in $G$ satisfy $x^2 = e$. Since $p$ is odd, thus $x^p \neq e$ which is a contradiction. Hence, $n$ cannot be a multiple of an odd prime, meaning that $n = 2^k$ where $k$ is a positive integer.
+    \item Suppose that $n = mp$ where $m$ is a positive integer and $p$ is an odd prime. Then there must exist an element $x$ such that $x^p = e$ by Cauchy's Theorem (\myref{thrm-cauchy}). But all elements in $G$ satisfy $x^2 = e$. Since $p$ is odd, thus $x^p \neq e$ which is a contradiction. Hence, $n$ cannot be a multiple of an odd prime, meaning that $n = 2^k$ where $k$ is a positive integer.
 
     \item We define the map $\phi: G \to S, g \mapsto g \cdot x$ where $x \in S$ is a fixed element. We show that $\phi$ is a bijection.
     \begin{itemize}
@@ -16,7 +16,7 @@
 
     \item Recall that $\Orb{G}{x} = \{y \in X \vert g\cdot x = y \text{ for some } g \in G\}$.
     
-    Let $x \in X$. By the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), $|\Orb{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$. Since $\Stab{G}{x} \leq G$ thus it has order of either 1, 5, or 25 by Lagrange's Theorem (\myref{thrm-lagrange}). Hence, the number of elements in $\Orb{G}{x}$ is either 1, 5, or 25.
+    Let $x \in X$. Then by the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), $|\Orb{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$. Since $\Stab{G}{x} \leq G$ thus it has order of either 1, 5, or 25 by Lagrange's Theorem (\myref{thrm-lagrange}). Hence, the number of elements in $\Orb{G}{x}$ is either 1, 5, or 25.
 
     Now $X$ has 24 elements. Since $\Orb{G}{x}$ can, at most, be the entire set $X$ which has 24 elements, thus $|\Orb{G}{x}| \neq 25$. Hence $\Orb{G}{x}$ has either 1 or 5 elements. Now by \myref{exercise-distinct-orbits-partition-set}, distinct orbits must partition the set $X$. Let the number of orbits of size 1 be $a$ and the number of orbits of size 5 be $b$. Hence, $1a + 5b = 24$. Since $b$ is an integer, thus $5b$ must be a multiple of 5, which means that $a \geq 1$. Hence, there exists an orbit of size 1, which means that there is a $g \in G$ with a fixed point.
 
@@ -37,11 +37,11 @@
 
     \item Let $G$ be a group of order $p^2$. We note that $\Z{G} \leq G$, so by Lagrange's Theorem (\myref{thrm-lagrange}) the order of $\Z{G}$ must divide the order of $G$, meaning $|\Z{G}|$ divides $p^2$. Hence $|\Z{G}|$ is 1, $p$, or $p^2$.
 
-    We note that $|\Z{G}| \neq 1$ by \myref{example-group-with-prime-power-order-has-non-trivial-center}, so we consider the case where $|\Z{G}| = p$. We note
+    We note that $|\Z{G}| \neq 1$ by \myref{example-group-with-prime-power-order-has-non-trivial-center}. If instead $|\Z{G}| = p$, note
     \[
         |G/\Z{G}| = \frac{|G|}{|\Z{G}|} = \frac{p^2}{p} = p
     \]
-    so $G/\Z{G}$ is a group of prime order. Hence by a corollary of Lagrange's Theorem (\myref{corollary-group-with-prime-order-is-cyclic}), $G/\Z{G}$ is cyclic. Hence, by \myref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}, $G = \Z{G}$. But this means $p^2 = |G| = |\Z{G}| = p$ which is a contradiction.
+    so $G/\Z{G}$ is a group of prime order. Hence by a corollary of Lagrange's Theorem (\myref{corollary-group-with-prime-order-is-cyclic}), $G/\Z{G}$ is cyclic. But by \myref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}, $G = \Z{G}$, meaning $p^2 = |G| = |\Z{G}| = p$, a contradiction.
 
     Hence $|\Z{G}| = p^2$. Since $\Z{G} \leq G$ and $|G| = |\Z{G}| = p^2$, therefore $G = \Z{G}$, meaning $G$ is abelian by \myref{problem-center-of-G}.
 

@@ -8,15 +8,13 @@ A group action is a representation of the elements of a group as symmetries of a
         \item \textbf{Identity}: $\alpha(e, x) = x$ for all $x \in X$.
         \item \textbf{Compatibility}: $\alpha(g, \alpha(h, x)) = \alpha(gh, x)$ for all $g, h \in G$ and $x \in X$.
     \end{itemize}
+    In this case, the group $G$ is called a \textbf{transformation group}\index{transformation group} and $X$ is called a \textbf{$G$-set}\index{$G$-set}.
 \end{definition}
 \begin{remark}
     Some sources will use $f$ (e.g. \cite{brilliant_group-actions}) or $\phi$ (e.g. \cite{rowland_group-action}) as the group action.
 \end{remark}
-In this case, the group $G$ is called a \textbf{transformation group}\index{transformation group} and $X$ is called a \textbf{$G$-set}\index{$G$-set}.
 
-\newpage
-
-Often the function $\alpha(g, x)$ is often written as $g \cdot x$ instead. Note that, when mentioning the group action, we \textbf{will} write the dot in this book. With this notation, the axioms above become:
+Often the function $\alpha(g, x)$ is often written as $g \cdot x$ instead. Note that, when mentioning the group action, we \textbf{will} write the dot. With this notation, the axioms become:
 \begin{itemize}
     \item $e \cdot x = x$ for all $x \in X$; and
     \item $g \cdot (h \cdot x) = (gh) \cdot x$ for all $g, h \in G$ and $x \in X$.
@@ -49,6 +47,11 @@ We note that there is an equivalent definition of a group action of $G$ on $X$.
 \begin{theorem}\label{thrm-group-action-definition-equivalence}
     \myref{definition-group-action} and \myref{definition-group-action-alt} are equivalent.
 \end{theorem}
+\begin{remark}
+    What this theorem also shows is that a group action $\alpha$ induces a group homomorphism $\phi: G \to \Sym{X}$. In addition, if $X$ is finite with $n$ elements, a homomorphism $\phi: G \to \Sn{n}$ exists (since $\Sym{X} \cong \Sn{n}$ by \myref{corollary-symmetric-group-of-finite-order}).
+\end{remark}
+
+This theorem is useful because it may sometimes be useful to use \myref{definition-group-action-alt} in place of \myref{definition-group-action}, especially when we are working with permutations and bijections. However, \myref{definition-group-action} is the standard definition that we will use most of the time.
 \begin{proof}
     We first work forwards, assuming \myref{definition-group-action} is true and proving \myref{definition-group-action-alt} is true as well.
     
@@ -117,9 +120,6 @@ We note that there is an equivalent definition of a group action of $G$ on $X$.
 
     Therefore, this shows that the maps $\alpha \mapsto \phi$ and $\phi \mapsto \alpha$ are inverses of each other, so we have a one-to-one correspondence between \myref{definition-group-action} and \myref{definition-group-action-alt}.
 \end{proof}
-\begin{remark}
-    What this theorem also shows is that a group action $\alpha$ induces a group homomorphism $\phi: G \to \Sym{X}$. In addition, if $X$ is finite with $n$ elements, a homomorphism $\phi: G \to \Sn{n}$ exists (since $\Sym{X} \cong \Sn{n}$ by \myref{corollary-symmetric-group-of-finite-order}).
-\end{remark}
 
 \section{Fixed Points, Stabilizers, and Orbits}
 We first look at the definition of a \textbf{fixed point} in relation to group actions.
@@ -132,7 +132,7 @@ We first look at the definition of a \textbf{fixed point} in relation to group a
     Consider the group $G = \{e, g\}$ (where $g^2 = e$) and the set $X = \mathbb{Z}$. Let $G$ act on $X$ by the formulae $e\cdot x = x$ and $g\cdot x = -x$. We find the fixed points of every element in $G$.
     \begin{itemize}
         \item For $e$, every element in $X$ is a fixed point of it.
-        \item For any other element $g$, 0 is the only fixed point since $g\cdot 0 = -0 = 0$.
+        \item For any other element, 0 is the only fixed point since $g\cdot 0 = -0 = 0$ for any $g \neq e$.
     \end{itemize}
 \end{example}
 
@@ -140,7 +140,7 @@ We first look at the definition of a \textbf{fixed point} in relation to group a
     Let $X = \{1, 2, 3\}$, and let $\Sn{3}$ act on $X$. What are the fixed point(s) of each of the 6 actions in $\Sn{3}$?
 \end{exercise}
 
-With an understanding of fixed points, we can now look at the \textbf{stabilizer} of an element in $X$.
+With knowledge of fixed points, we can now look at the \textbf{stabilizer} of an element in $X$.
 
 \begin{definition}
     Let $G$ be a group acting on a set $X$, and let $x \in X$. The \textbf{stabilizer of $x$ by $G$}\index{group action!stabilizer}, denoted $\Stab{G}{x}$, is the set of $g \in G$ such that $x$ is a fixed point of $g$.
@@ -243,11 +243,11 @@ Formally, this is captured in the \textbf{Orbit-Stabilizer Theorem}.
 \begin{proof}[Proof (see {\cite[Theorem 10.16]{humphreys_1996}})]
     We consider the map $f_x: G/\Stab{G}{x} \to \Orb{G}{x}$ given by $g\Stab{G}{x} \mapsto g \cdot x$ (note that $f_x$ is \textit{not} a homomorphism as $\Orb{G}{x}$ is not a group). We prove that $f_x$ is a well-defined bijection.
     \begin{itemize}
-        \item \textbf{Well-defined}: Suppose we have $g, h \in G$ such that we have $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality (\myref{lemma-coset-equality}), this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
-        \item \textbf{Injective}: Suppose we have $g, h \in G$ such that we have $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$, so $g^{-1}h \in \Stab{G}{x}$ by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality (\myref{lemma-coset-equality}), meaning $f_x$ is injective.
+        \item \textbf{Well-defined}: Let $g, h \in G$ such that $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality (\myref{lemma-coset-equality}), this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
+        \item \textbf{Injective}: Let $g, h \in G$ such that $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$, so $g^{-1}h \in \Stab{G}{x}$ by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality (\myref{lemma-coset-equality}), meaning $f_x$ is injective.
         \item \textbf{Surjective}: Suppose $y \in \Orb{G}{x}$. This means that there exists $g \in G$ such that $g\cdot x = y$. Note $f_x(g\Stab{G}{x}) = g\cdot x = y$ by definition of $f_x$. Hence, the pre-image of $y$ is $g\Stab{G}{x}$, meaning that $f_x$ is surjective.
     \end{itemize}
-    Hence $f_x$ is a bijection from $G/\Stab{G}{x}$ to $\Orb{G}{x}$. Therefore we must have $|\Orb{G}{x}| = |G/\Stab{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). This quickly implies $|G| = |\Stab{G}{x}|\times|\Orb{G}{x}|$.
+    Hence $f_x$ is a bijection from $G/\Stab{G}{x}$ to $\Orb{G}{x}$. Thus we must have $|\Orb{G}{x}| = |G/\Stab{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). This quickly implies $|G| = |\Stab{G}{x}|\times|\Orb{G}{x}|$.
 \end{proof}
 
 \begin{exercise}
@@ -271,8 +271,6 @@ Burnside's lemma gives a way to count the number of orbits of a finite set acted
 \begin{remark}
     The number of distinct orbits is given by the number of elements of the set $X/G$, i.e. $|X/G|$.
 \end{remark}
-
-\newpage
 
 We are now ready to introduce Burnside's lemma.
 \begin{lemma}[Burnside]\label{lemma-burnside}\index{Burnside's Lemma}
@@ -312,6 +310,8 @@ In other words, Burnside's lemma tells us that the number of orbits is the avera
     which the result follows immediately.
 \end{proof}
 
+\newpage
+
 \begin{example}
     We find the number of distinct colourings of the corners on a square with $n$ colours (up to rotation) using by Burnside's lemma.
 
@@ -335,8 +335,6 @@ In other words, Burnside's lemma tells us that the number of orbits is the avera
     i.e., the number of distinct possible colourings of the corners on a square with $n$ colours (up to rotation) is $\frac n4 (n^3 + n + 2)$.
 \end{example}
 
-\newpage
-
 \section{Conjugacy Classes}
 Before we look at the most important part of this chapter, the class equation, we look at the idea of conjugacy as a group action.
 \begin{definition}
@@ -355,8 +353,6 @@ Hence, under the action of conjugation,
     \item $\Orb{G}{x} = $ Conjugates of $x$; and
     \item $\Stab{G}{x} = \C{G}{x}$.
 \end{itemize}
-
-\newpage
 
 We can now look at conjugacy classes.
 \begin{definition}
@@ -473,6 +469,8 @@ An immediate consequence of this is that every element must have an order that i
     where $|\Z{\Sn{3}}| = |\{e\}| = 1$.  
 \end{example}
 
+\newpage
+
 \begin{exercise}
     The Cayley table of $D_3$ is in \myref{example-presentation-of-D3}.
     \begin{partquestions}{\alph*}
@@ -494,7 +492,7 @@ To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
 
     We now assume that the statement holds for all $n \leq k$ for some positive integer $k$. We need to prove the case for $k+1$, that is, a group $G$ with order $(k+1)p$ has an element of order $p$. We split the proof into two cases.
 
-    The first case is when $G$ is abelian. Take any non-identity element $x \in G$, and let $H = \langle x \rangle \leq G$.
+    The first case is when $G$ is abelian. Take any $x \in G$ with $x \neq e$, and let $H = \langle x \rangle \leq G$.
     \begin{itemize}
         \item If $p$ divides $|H|$, say $|H| = mp$ where $m$ is a positive integer, then $x^m$ is an element of order $p$ (since $\left(x^m\right)^p = x^{|H|} = e$). Hence we find an element with order $p$.
         \item If $p$ does not divide $|H|$, then $p$ must divide $[G:H] = |G/H| = \frac{|G|}{|H|}$ since $p$ divides $|G| = kp$. Note that $H \unlhd G$ since $G$ is abelian (\myref{prop-subgroup-of-abelian-group-is-normal}), so $G/H$ is a group. Letting $m = |x|$ we see
@@ -525,7 +523,7 @@ To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
 \section{Problems}
 \begin{problem}
     Let $G = D_5$, the dihedral group of order 10.
-    \begin{partquestions}{\alph*}
+    \begin{partquestions}{\roman*}
         \item Suppose $H$ is a proper subgroup of $G$. What are the possible order(s) of $H$?
         \item For each of the possible order(s) identified, find such a subgroup.
     \end{partquestions}
@@ -553,8 +551,6 @@ To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
     Let $p$ be a prime number. Prove that a group of order $p^2$ must be abelian.\newline
     (\textit{Hint: Consider \myref{problem-center-of-G} and \myref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}.})
 \end{problem}
-
-\newpage
 
 \begin{problem}
     Let $G$ be a finite $p$-group, and $X$ be a $G$-set. Denote the set of points of $X$ that are fixed under the action of $G$ by $\Omega$. Prove that $|X| \equiv |\Omega| \pmod p$.\newline
