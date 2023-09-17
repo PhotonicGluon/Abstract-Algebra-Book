@@ -76,12 +76,12 @@ How $\phi$ operates on an element can be described in \textbf{cycle notation}\in
 We note some important things about this process.
 \begin{itemize}
     \item Omit any elements that maps to itself. For example, if $1 \mapsto 3$, $2 \mapsto 6$, $3 \mapsto 4$, $4 \mapsto 1$, $5 \mapsto 5$, $6 \mapsto 2$, and $7 \mapsto 7$, then we ignore the 5 and 7; the corresponding cycle notation is ``(1 3 4)(2 6)''.
-    \item If the permutation is the identity permutation, then it is notated by ``(1)'' or just $\id$.
+    \item If the permutation is the identity permutation, then it is denoted by $\id$.
 \end{itemize}
 
 \begin{example}
-    Consider the permutation $\alpha$ which has cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$. So
-    \begin{multicols}{2}
+    Let the permutation $\alpha$ have cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$. Then
+    \begin{multicols}{3}
         \begin{itemize}
             \item $\alpha(1) = 3$;
             \item $\alpha(2) = 1$;
@@ -93,11 +93,9 @@ We note some important things about this process.
     \end{multicols}
 \end{example}
 
-\newpage
-
 \begin{example}
-    Consider the permutation $\beta$ which has cycle notation $\begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}$. So
-    \begin{multicols}{2}
+    Let the permutation $\beta$ have cycle notation $\begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}$. Then
+    \begin{multicols}{3}
         \begin{itemize}
             \item $\beta(1) = 6$;
             \item $\beta(2) = 9$;
@@ -114,7 +112,7 @@ We note some important things about this process.
 \end{example}
 
 \begin{exercise}
-    Find the cycle decomposition for the following permutations.
+    Find the cycle decomposition of the following permutations.
     \begin{partquestions}{\alph*}
         \item $1 \mapsto 2$, $2 \mapsto 3$, $3 \mapsto 1$
         \item $1 \mapsto 3$, $2 \mapsto 2$, $3 \mapsto 1$
@@ -133,12 +131,17 @@ We now look at composing permutations\index{permutation!composing}.
         \item $h(5) = f(g(5)) = f(5) = 2$.
     \end{itemize}
 
-    So $h$ maps 1 to 3, 2 to 4, 3 to 1, 4 to 5, and 5 to 2. Thus $h$ has cycle notation $\begin{pmatrix}1 & 3\end{pmatrix}\begin{pmatrix}2 & 4 & 5\end{pmatrix}$.
+    So $h$ maps 1 to 3, 2 to 4, 3 to 1, 4 to 5, and 5 to 2, meaning $h$ has cycle notation
+    \[
+        \begin{pmatrix}1 & 3\end{pmatrix}\begin{pmatrix}2 & 4 & 5\end{pmatrix}.
+    \]
 \end{example}
 
 \begin{example}
     We have
-    \[\begin{pmatrix}2 & 9 & 7 & 4\end{pmatrix}\begin{pmatrix}1 & 6 & 4\end{pmatrix} = \begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}.\]
+    \[
+        \begin{pmatrix}2 & 9 & 7 & 4\end{pmatrix}\begin{pmatrix}1 & 6 & 4\end{pmatrix} = \begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}.
+    \]
 \end{example}
 
 We now describe how to find the inverse of a permutation\index{permutation!inverse}. Given a cycle decomposition for the permutation $f$, simply read the cycle notation backwards, ensuring that the smallest element remains at the front.
@@ -173,31 +176,11 @@ With the definition of permutations out of the way, we can finally introduce a v
 \begin{proof}
     We prove the 4 group axioms.
     \begin{enumerate}
-        \item \textbf{Closure}: Let $f$ and $g$ be functions in $\Sym{X}$, so $f: X\to X$ and $g:X \to X$ are bijective functions. Define $h:X \to X$ where $h = f\circ g$. We show that $h$ is bijective.
-        \begin{itemize}
-            \item \textbf{Injective}: Let $x$ and $y$ be elements in $X$ such that $h(x) = h(y)$. Then,
-            \begin{align*}
-                f(g(x)) &= f(g(y)) & (\text{by definition of } h)\\
-                g(x) &= g(y) & (\text{since } f \text{ is bijective})\\
-                x &= y & (\text{since } g \text{ is bijective})
-            \end{align*}
-            so $h(x) = h(y)$ implies $x = y$. Hence $h$ is injective.
-            \item \textbf{Surjective}: Let $y$ be an element in $X$. Note that since $f$ and $g$ are bijective, therefore $f^{-1}(y)$ is in $X$ and so is $g^{-1}(f^{-1}(y))$. Note also that
-            \[
-                h(g^{-1}(f^{-1}(y))) = f(g(g^{-1}(f^{-1}(y)))) = y
-            \]
-            so a preimage of $y$ exists in the domain, meaning that $h$ is surjective.
-        \end{itemize}
-        Since $h$ is injective and surjective, it is hence bijective. Thus $\Sym{X}$ is closed under $\circ$.
+        \item \textbf{Closure}: Let $f$ and $g$ be functions in $\Sym{X}$, so $f: X\to X$ and $g:X \to X$ are bijective functions. Define $h:X \to X$ where $h = f\circ g$. By \myref{exercise-composition-of-isomorphisms-is-isomorphisms} we know $h$ is bijective. Thus $\Sym{X}$ is closed under $\circ$.
         
         \item \textbf{Associativity}: Function composition is associative.
         
-        \item \textbf{Identity}: Clearly the identity map, $\id$, is in $\Sym{X}$.
-        \begin{itemize}
-            \item \textbf{Injective}: If $x$ and $y$ are in $X$ such that $\id(x) = \id(y)$ then clearly $x = y$.
-            \item \textbf{Surjective}: Let $y$ be in $X$. Since $\id(y) = y$ thus $y$ is its own pre-image under $\id$.
-        \end{itemize}
-        Now we show that $\id$ is indeed the identity in $\Sym{X}$. Let $x$ be an arbitrary element of $X$, and $f$ be any function in $\Sym{X}$. Then
+        \item \textbf{Identity}: Clearly the identity map, $\id$, is in $\Sym{X}$. Also $\id$ is a bijection by \myref{exercise-identity-map-is-isomorphism}. Now we show that $\id$ is indeed the identity in $\Sym{X}$. Let $x$ be an arbitrary element of $X$, and $f$ be any function in $\Sym{X}$. Then
         \[
             (\id \circ f)(x) = \id(f(x)) = f(x)
         \]
@@ -220,13 +203,11 @@ The group $(\Sym{X}, \circ)$ is called the \textbf{symmetric group} of $X$\index
 
 The most relevant type of symmetric group we encounter when working with finite groups is the \textbf{symmetric group of degree $n$}\index{symmetric group!of degree $n$} (or \textbf{symmetric group of $n$ letters}\index{symmetric group!of $n$ letters}).
 \begin{definition}
-    The \textbf{symmetric group of degree $n$} is denoted by $\Sn{n}$ and is $\Sym{\{1, 2, 3, \dots, n\}}$.
+    The \textbf{symmetric group of degree $n$} is denoted by $\Sn{n}$ and is given by the group $\Sym{\{1, 2, 3, \dots, n\}}$.
 \end{definition}
 \begin{remark}
     Elements of $\Sn{n}$ are called permutations.
 \end{remark}
-
-\newpage
 
 \begin{example}\label{example-symmetric-group-of-degree-3}
     Consider the symmetric group of degree 3, $\Sn{3}$. We show all function mappings of $\Sn{3}$.
@@ -247,7 +228,10 @@ It should also be noted that subgroups of $\Sym{X}$ are called \textbf{permutati
 
 Finally, we prove an important result regarding symmetric groups of equal order.
 \begin{theorem}\label{thrm-symmetric-groups-of-same-order-are-isomorphic}
-    Let $S_1$ and $S_2$ be two finite sets with cardinality $n$. Then $\Sym{S_1} \cong \Sym{S_2}$.
+    Let $S_1$ and $S_2$ be two finite sets with cardinality $n$. Then
+    \[
+        \Sym{S_1} \cong \Sym{S_2}.
+    \]
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Proof 2]{proofwiki_symmetric-group-of-same-order-are-isomorphic}})]
     Since the two sets $S_1$ and $S_2$ have the same cardinality, they have the same number of elements. Hence there exists a bijection $f: S_1 \to S_2$.
@@ -303,13 +287,13 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
     \end{itemize}
     Since $\lambda_g$ is both injective and surjective it is thus bijective.
 
-    Now let $H = \{\lambda_g \vert g \in G\}$. Since $\lambda_g$ is a bijective function from $G$ to $G$, it thus is an element of $\Sym{G}$, meaning that $H \subseteq \Sym{G}$. It remains to show that $H \leq \Sym{G}$. We do this by using the subgroup test.
+    Now let $H = \{\lambda_g \vert g \in G\}$. We show that $H \leq \Sym{G}$ via the subgroup test.
 
     We first note that $\lambda_e = \id$ since
     \[
         \lambda_e(x) = ex = x = \id(x)
     \]
-    for all $x$ in $G$. Also, the inverse of any function $\lambda_g$ is $\lambda_{g^{-1}}$ since
+    for all $x$ in $G$, meaning $\id = \lambda_e \in H$. Also, the inverse of any function $\lambda_g$ is $\lambda_{g^{-1}}$ since
     \[
         (\lambda_g \circ \lambda_{g^{-1}})(x) = gg^{-1}x = x = \lambda_e(x)
     \]
@@ -323,7 +307,7 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
         &= g_1g_2^{-1}x\\
         &= \lambda_{g_1g_2^{-1}}(x).
     \end{align*}
-    Note $\lambda_{g_1g_2^{-1}}$ is clearly an element of $H$. Thus if $\lambda_{g_1}$ and $\lambda_{g_2}$ are functions in $H$, then $\left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right)$ is also a function in $H$. Since $H$ is non-empty, therefore by the Subgroup Test (\myref{thrm-subgroup-test}), we have shown $H \leq \Sym{G}$.
+    Note $\lambda_{g_1g_2^{-1}}$ is clearly an element of $H$. Thus if $\lambda_{g_1}$ and $\lambda_{g_2}$ are functions in $H$, then $\left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right)$ is also a function in $H$. Therefore by the subgroup test (\myref{thrm-subgroup-test}) we have $H \leq \Sym{G}$.
 
     We finally show that $G \cong H$ by considering the map $\phi: G\to H$ where $g \mapsto \lambda_g$. We need to show that $\phi$ is an isomorphism.
     \begin{itemize}
@@ -342,7 +326,11 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
         
         \item \textbf{Surjective}: Let $\lambda_g \in H$. Clearly $\phi(g) = \lambda_g$, which means $\lambda_g$ has a pre-image of $g$. Thus $\phi$ is surjective.
     \end{itemize}
-    Therefore we have proven that $\phi$ is an isomorphism, which means that $G \cong H \leq \Sym{G}$, that is, any group $G$ is isomorphic to a subgroup of the symmetric group of $G$ (i.e., a permutation group).
+    Therefore we have proven that $\phi$ is an isomorphism, which means that
+    \[
+        G \cong H \leq \Sym{G},
+    \]
+    that is, any group $G$ is isomorphic to a subgroup of the symmetric group of $G$ (i.e., a permutation group).
 \end{proof}
 
 We note one corollary of this theorem.
