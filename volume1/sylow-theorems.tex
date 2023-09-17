@@ -15,8 +15,6 @@ We denote the set of all Sylow $p$-subgroups of the group $G$ for a given prime 
     Find the Sylow 2-subgroup of $\mathbb{Z}_{12}$.
 \end{exercise}
 
-\newpage
-
 We are now ready to state and prove the \textbf{First Sylow Theorem}.
 \begin{theorem}[Sylow I]\label{thrm-sylow-1}\index{Sylow Theorem!First}
     Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then $\Syl{p}{G} \neq \emptyset$.
@@ -29,17 +27,27 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
 
     When the order of $G$ is 1, $|G| = p^0$ for any prime $p$, so $G$ is clearly a Sylow $p$-subgroup of itself.
 
-    We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$. Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
+    We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$.
+    
+    Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
 
-    The first case is when $p$ divides the order of the center of $G$, $|\Z{G}|$. By Cauchy's Theorem (\myref{thrm-cauchy}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $x \in N$ and $g \in G$,
+    The first case is when order of the center of $G$ is a multiple of $p$, i.e. $|\Z{G}| = ap$ for some positive integer $a$. By Cauchy's Theorem (\myref{thrm-cauchy}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $n \in N$ and $g \in G$,
+    \begin{align*}
+        gng^{-1} &= (gn)g^{-1}\\
+        &= (ng)g^{-1} & (\text{since n} \in N \subseteq \Z{G})\\
+        &= n(gg^{-1})\\
+        &= n\\
+        &\in N
+    \end{align*}
+    Hence $G/N$ is a quotient group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the inductive hypothesis, $G/N$ has a Sylow $p$-subgroup. Let that Sylow $p$-subgroup be $\bar{S}$, which means $\bar{S}$ has order $p^{k-1}$.
+
+    We now construct $S = \{g \in G \vert gN \in \bar{S}\}$; we show that $S$ is a subgroup of $G$ under the group operation of $G$. Clearly $e \in S$ as $eN = N \in \bar{S}$. Also for any $g_1, g_2 \in S$ (which means $g_1N, g_2N \in \bar{S}$), we see that
     \[
-        gxg^{-1} = (gx)g^{-1} = x(gg^{-1}) = x \in N.
+        (g_1g_2^{-1})N = (g_1N)(g_2N)^{-1} \in \bar{S},
     \]
-    Hence $G/N$ is a group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the inductive hypothesis, $G/N$ has a Sylow $p$-subgroup, say $\bar{S}$, meaning that $\bar{S}$ has order $p^{k-1}$.
+    which implies that $g_1g_2^{-1} \in S$. By the subgroup test, $S \leq G$. Also, $N \leq S$ since for all $n \in N$, $nN = N \in \bar{S}$.
 
-    We now construct the group $S = \{g \in G \vert gN \in \bar{S}\}$ under the group operation of $G$. Clearly $S$ is non-empty since $e \in S$ (as $eN = N \in \bar{S}$). Suppose $g_1, g_2 \in S$, meaning that $g_1N, g_2N \in \bar{S}$. Therefore $(g_1g_2^{-1})N = (g_1N)(g_2N)^{-1} \in \bar{S}$ which implies that $g_1g_2^{-1} \in S$. By the subgroup test, $S \leq G$. Also, $N \leq S$ since for all $n \in N$, $nN = N \in \bar{S}$.
-
-    We construct the homomorphism $\phi: S \to \bar{S}$ such that $g \mapsto gN$. By construction one sees clearly that $\phi$ is surjective, meaning that $\im \phi = \bar{S}$. Furthermore,
+    We construct the homomorphism $\phi: S \to \bar{S}$ such that $g \mapsto gN$. Clearly any $gN \in \bar{S}$ has a pre-image of $g$ under $\phi$, so $\phi$ is surjective, meaning that $\im \phi = \bar{S}$. Furthermore,
     \begin{align*}
         \ker\phi &= \{s \in S \vert \phi(s) = N\}\\
         &= \{s \in S \vert sN = N \}\\
@@ -47,9 +55,9 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
         &= S \cap N\\
         &= N & (\text{since } N \subseteq S).
     \end{align*}
-    Now we know that $S/N \cong \bar{S}$ by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}), meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$, which quickly implies that $|S| = p^k$. Hence, there exists a subgroup $S$ such that $|S| = p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
+    Now we know that $S/N \cong \bar{S}$ by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}), meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$, which quickly implies that $|S| = p^k$. Hence $S$ is a subgroup of $G$ with order $p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
 
-    We can now start on the second case where $p$ does not divide the order of the center of $G$. Recall the class equation (\myref{thrm-class-equation})
+    We can now start on the second case where the order of the center of $G$ is not a multiple of $p$. Recall the class equation (\myref{thrm-class-equation})
     \[
         |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}]
     \]
@@ -57,9 +65,9 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
     \[
         \sum_{i=1}^l [G:\C{G}{g_i}]
     \]
-    must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then $|\C{G}{g_i}| = p^ka$ for some integer $a$.
+    must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then $|\C{G}{g_i}| = p^ka$ for some positive integer $a$.
 
-    We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly $a \leq m$ since if $a > m$ then $\frac{p^k m}{|\C{G}{g_i}|}$ is not an integer. If instead $a = m$ then $|\C{G}{g_i}| = p^km = |G|$, and since $\C{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \C{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \Z{G}$. But an element is in $\Z{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
+    We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly if $a > m$ then $\frac{p^k m}{|\C{G}{g_i}|}$ is not an integer, so $a \leq m$. If instead $a = m$ then $|\C{G}{g_i}| = p^km = |G|$, and since $\C{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \C{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \Z{G}$. But an element is in $\Z{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
 
     In summary, $\C{G}{g_i} < G$ with $|\C{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the induction hypothesis on $\C{G}{g_i}$ to say that $\C{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\C{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
 
@@ -158,8 +166,6 @@ We now look at the definition of the \textbf{normalizer}.
     Let $G$ be a group and $S$ be a subset of $G$. Prove that $\N{G}{S} \leq G$.
 \end{exercise}
 
-\newpage
-
 We prove some properties of the normalizer here.
 \begin{proposition}\label{prop-subgroup-is-a-normal-subgroup-of-normalizer}
     Let $G$ be a group, and $H \leq G$. Then $H \unlhd \N{G}{H}$.
@@ -229,7 +235,7 @@ We can now look at the \textbf{Second Sylow Theorem}.
     Let the Sylow $p$-subgroup $H$ act on $\mathcal{X}$ by conjugation, meaning $h \cdot X = hXh^{-1}$. We prove that this is a group action.
     
     \begin{itemize}
-        \item \textbf{Closure}: We have to prove closure because it is not implicit in the definition of this action.
+        \item \textbf{Closure}: We have to prove closure as it is not implicit in the action's definition.
 
         Let $X = gHg^{-1}$ for some $g \in G$. Then
         \[
@@ -246,7 +252,7 @@ We can now look at the \textbf{Second Sylow Theorem}.
         \end{align*}
     \end{itemize}
 
-    We consider the orbits of this group action. In particular, we find element(s) with orbit(s) of only one element. Suppose $X \in \mathcal{X}$ has one element in its orbit, so for all $h \in H$ we have
+    We consider orbits of this group action. In particular, we find element(s) with orbit(s) of only one element. Suppose $X \in \mathcal{X}$ has one element in its orbit, so for all $h \in H$ we have
     \[
         h\cdot X = hXh^{-1} = X.    
     \]
@@ -259,17 +265,17 @@ We can now look at the \textbf{Second Sylow Theorem}.
         \iff&g^{-1}hg \in \N{G}{H}\\
         \iff&g^{-1}Hg \subseteq \N{G}{H}.
     \end{align*}
-    Since $|g^{-1}hg| = |h|$ by \myref{prop-order-of-conjugate-element-equals-order-of-element} and because $H$ is a $p$-subgroup, hence $|g^{-1}hg| = p^r$ where $r$ is some positive integer. Note that $g^{-1}Hg$ is a (sub)group by \myref{exercise-conjugate-subgroup}. Therefore $g^{-1}Hg$ is a $p$-subgroup of $\N{G}{H}$.
+    Since $|g^{-1}hg| = |h|$ by \myref{prop-order-of-conjugate-element-equals-order-of-element}, and because $H$ is a $p$-subgroup, therefore $|g^{-1}hg| = p^r$ where $r$ is some positive integer. Note that $g^{-1}Hg$ is a (sub)group by \myref{exercise-conjugate-subgroup}. Therefore $g^{-1}Hg$ is a $p$-subgroup of $\N{G}{H}$.
     
     Furthermore $g^{-1}Hg \cong H$ by \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup} so $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, by \myref{prop-normalizer-of-sylow-p-subgroup}, we see $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But $X = gHg^{-1}$, so $X = H$.
     
-    Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, by Orbit-Stabilizer Theorem (\myref{thrm-orbit-stabilizer}), one sees that
+    Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, by Orbit-Stabilizer Theorem (\myref{thrm-orbit-stabilizer}), one sees
     \[
         |\Stab{H}{gHg^{-1}}| = \frac{|H|}{|\Orb{H}{gHg^{-1}}|}
     \]
     and since $|H|$ is a power of $p$ and $|\Stab{H}{gHg^{-1}}|$ is an integer, thus $|\Orb{H}{gHg^{-1}}|$ has to be a power of $p$, meaning $|\Orb{H}{gHg^{-1}}| \equiv 0 \pmod p$. Because distinct orbits partition the set $\mathcal{X}$ (\myref{exercise-distinct-orbits-partition-set}), thus $|\mathcal{X}| \equiv 1 \pmod p$.
 
-    Now let the Sylow $p$-subgroup $K$ act on $\mathcal{X}$ by conjugation, meaning $k \star X = kXk^{-1}$. This is a group action as proven before, and the above conclusion means that there is at least one orbit of length 1. Hence there exists a $g \in G$ such that for all $k \in K$, we have $k(gHg^{-1})k^{-1} = gHg^{-1}$. Hence $g^{-1}kg \in \N{G}{H}$ which means $g^{-1}Kg \subseteq \N{G}{H}$. Therefore, since $|K| = |g^{-1}Kg|$ and by \myref{prop-normalizer-of-sylow-p-subgroup}, $g^{-1}Kg \subseteq H$, meaning $K \subseteq gHg^{-1}$. But because $|H| = |K|$ as they are both Sylow $p$-subgroups, therefore $K = gHg^{-1}$.
+    Now let the Sylow $p$-subgroup $K$ act on $\mathcal{X}$ by conjugation, meaning $k \star X = kXk^{-1}$. This is a group action as proven before, and the above conclusion means that there is at least one orbit of length 1. Hence there exists a $g \in G$ such that for all $k \in K$, we have $k(gHg^{-1})k^{-1} = gHg^{-1}$. Thus $g^{-1}kg \in \N{G}{H}$ which means $g^{-1}Kg \subseteq \N{G}{H}$. Therefore, since $|K| = |g^{-1}Kg|$ and by \myref{prop-normalizer-of-sylow-p-subgroup}, $g^{-1}Kg \subseteq H$, meaning $K \subseteq gHg^{-1}$. But because $|H| = |K|$ as they are both Sylow $p$-subgroups, therefore $K = gHg^{-1}$.
 \end{proof}
 \begin{remark}
     What part of this proof shows is that if $P$ is a Sylow $p$-subgroup but $Q$ is only a $p$-subgroup, then $Q \subseteq gPg^{-1}$ for some $g \in G$.
@@ -302,17 +308,13 @@ We note one important corollary of the Second Sylow Theorem.
 \begin{proof}[Proof (see \cite{wielandt_1959})]
     We prove the three statements in order.
     \begin{enumerate}
-        \item Let $G$ act on $\Syl{p}{G}$ by conjugation, meaning that for any $g \in G$ and $P \in \Syl{p}{G}$, $g\cdot P = gPg^{-1}$. By the Second Sylow Theorem (\myref{thrm-sylow-2}), all Sylow $p$-subgroups are conjugates of each other, so the orbit of any $P \in \Syl{p}{G}$ is the set of all Sylow $p$-subgroups, meaning $|\Orb{G}{P}| = |\Syl{p}{G}| = n_p$. Now consider $\Stab{G}{P}$; note
-        \[
-            \Stab{G}{P} = \{g \in G \vert gPg^{-1} = P\} = \N{G}{P}
-        \]
-        by definition of the normalizer. Therefore, by the Orbit-Stabilizer Theorem (\myref{thrm-orbit-stabilizer}),
+        \item Let $G$ act on $\Syl{p}{G}$ by conjugation, meaning that for any $g \in G$ and $P \in \Syl{p}{G}$, $g\cdot P = gPg^{-1}$. By the Second Sylow Theorem (\myref{thrm-sylow-2}), all Sylow $p$-subgroups are conjugates of each other, so the orbit of any $P \in \Syl{p}{G}$ is the set of all Sylow $p$-subgroups, meaning $|\Orb{G}{P}| = |\Syl{p}{G}| = n_p$. Now consider $\Stab{G}{P}$; note $\Stab{G}{P} = \{g \in G \vert gPg^{-1} = P\} = \N{G}{P}$ by definition of the normalizer. Therefore
         \[
             n_p = |\Orb{G}{P}| = \frac{|G|}{|\Stab{G}{P}|} = \frac{|G|}{|\N{G}{P}|} = [G : \N{G}{P}],
         \]
-        proving the first statement.
+        by the Orbit-Stabilizer Theorem (\myref{thrm-orbit-stabilizer}), proving the first statement.
 
-        \item Let $P$ be a Sylow $p$-subgroup. We recall that $P \unlhd \N{G}{P} \leq G$. Note that by Lagrange's Theorem (\myref{thrm-lagrange}) we know $|\N{G}{P}| = [\N{G}{P} : P]|P| = ap^k$ where $a \leq m$ (since $\N{G}{P} \leq G$). Furthermore
+        \item Let $P$ be a Sylow $p$-subgroup. We recall that $P \unlhd \N{G}{P} \leq G$. Note that by Lagrange's theorem (\myref{thrm-lagrange}) we know $|\N{G}{P}| = [\N{G}{P} : P]|P| = ap^k$ where $a \leq m$ (since $\N{G}{P} \leq G$). Furthermore
         \[
             mp^k = |G| = [G: \N{G}{P}]|\N{G}{P}| = n_p \times ap^k
         \]
@@ -322,7 +324,7 @@ We note one important corollary of the Second Sylow Theorem.
 
         Suppose $Q \in \Omega$, which means that $hQh^{-1} = Q$ for all $h \in H$. Thus $H \subseteq \N{G}{Q}$ as $\N{G}{Q} = \{g \in G \vert gQg^{-1} = Q\}$. In fact, since $H$ is a Sylow $p$-subgroup, $H \leq \N{G}{Q}$. We note $Q \unlhd \N{G}{Q}$ by \myref{prop-subgroup-is-a-normal-subgroup-of-normalizer}. Hence $H$ and $Q$ are Sylow $p$-subgroups of $\N{G}{Q}$, which means there exists $n \in \N{G}{Q}$ such that $nQn^{-1} = H$ by the Second Sylow Theorem (\myref{thrm-sylow-2}). Furthermore $nQn^{-1} = Q$ since $Q \unlhd \N{G}{Q}$. Hence $Q = H$, which means that the only element in $\Omega$ is $H$.
 
-        By a similar argument posed in the proof of the Second Sylow Theorem, for any $Q \in \Syl{p}{G}$ where $Q \neq H$ we must have $|\Orb{H}{Q}| \equiv 0 \pmod p$. Note $|\Orb{H}{H}| = 1$. Now since distinct orbits partition $\Syl{p}{G}$, we must have $n_p = |\Syl{p}{G}| \equiv 1 \pmod p$.
+        By a similar argument posed in the proof of the Second Sylow Theorem, for any $Q \in \Syl{p}{G}$ where $Q \neq H$ we have $|\Orb{H}{Q}| \equiv 0 \pmod p$. Note $|\Orb{H}{H}| = 1$. As distinct orbits partition $\Syl{p}{G}$ we must have $n_p = |\Syl{p}{G}| \equiv 1 \pmod p$.
     \end{enumerate}
     This completes the proof.
 \end{proof}
@@ -358,7 +360,7 @@ To end this chapter, we look at the idea of \textbf{simple groups} and describe 
     Let $G$ be a group where $|G| \geq 2$. Then $G$ is \textbf{simple}\index{group!simple} if the only normal subgroups of $G$ are the trivial subgroup and $G$ itself.
 \end{definition}
 \begin{remark}
-    Equivalently, $G$ is simple if $G$ has no proper normal subgroups.
+    Equivalently, $G$ is simple if $G$ has no non-trivial proper normal subgroups.
 \end{remark}
 
 We may use part of the Third Sylow Theorem to create a test for non-simplicity.
@@ -370,8 +372,8 @@ We may use part of the Third Sylow Theorem to create a test for non-simplicity.
     
     We first suppose $n = p^k$. Let $G$ be a group of order $n$. We consider two subcases.
     \begin{itemize}
-        \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\myref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\myref{prop-subgroup-of-abelian-group-is-normal}), thus there exists a proper normal subgroup of $G$, meaning $G$ is non-simple.
-        \item Now suppose $G$ is non-abelian. By \myref{example-group-with-prime-power-order-has-non-trivial-center}, $G$ has a non-trivial center. Furthermore, $G \neq \Z{G}$ because $G$ is non-abelian (\myref{problem-center-of-G}). Since the center is a normal subgroup of $G$, it is thus a proper normal subgroup of $G$, meaning $G$ is non-simple.
+        \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\myref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\myref{prop-subgroup-of-abelian-group-is-normal}), thus there exists a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
+        \item Now suppose $G$ is non-abelian. By \myref{example-group-with-prime-power-order-has-non-trivial-center}, $G$ has a non-trivial center. Furthermore, $G \neq \Z{G}$ because $G$ is non-abelian (\myref{problem-center-of-G}). Since the center is a normal subgroup of $G$, it is thus a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
     \end{itemize}
     Hence any group of order $p^k$ where $k > 1$ is non-simple.
 
@@ -420,7 +422,7 @@ For some groups of orders that do not satisfy the condition in Sylow's Test, we 
     \[
         36 = |G| = |\ker\phi| = \left|\bigcap_{x \in G} xPx^{-1}\right| \leq |xPx^{-1}| = |P| = 9,
     \]
-    a contradiction. Hence $\ker\phi$ is a proper subgroup of $G$. We note that $\ker\phi \lhd G$, so we have found a proper normal subgroup of $G$, meaning that $G$ is non-simple.
+    a contradiction. Hence $\ker\phi$ is a non-trivial proper subgroup of $G$. We note that $\ker\phi \lhd G$, so we have found a non-trivial proper normal subgroup of $G$, meaning that $G$ is non-simple.
 \end{example}
 
 \begin{exercise}
