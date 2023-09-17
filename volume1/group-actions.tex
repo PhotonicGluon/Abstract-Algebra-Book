@@ -162,7 +162,7 @@ With knowledge of fixed points, we can now look at the \textbf{stabilizer} of an
     Let $X = \{1, 2, 3\}$, and let $\Sn{3}$ act on $X$. What are the stabilizers of each of the 3 elements in $X$?
 \end{exercise}
 
-What you might notice from the above example and exercise is that the stabilizers are sub\textit{sets} of the original group $G$. In fact, we will prove that the stabilizer is a sub\textit{group} of $G$.
+What you might notice from the above example and exercise is that the stabilizers are sub\textit{sets} of the original group $G$. In fact, we show that the stabilizer is a sub\textit{group} of $G$.
 
 \begin{lemma}\label{lemma-stabilizer-is-subgroup}
     Let $G$ be a group that acts on a set $X$. Then for any $x \in X$, $\Stab{G}{x} \leq G$.
@@ -170,7 +170,7 @@ What you might notice from the above example and exercise is that the stabilizer
 \begin{proof}
     We consider the subgroup test.
 
-    We note $e \in G$. From the group action axiom of \textbf{Identity}, we know that $e \cdot x = x$. Thus, for any element $x$, we have $e \in \Stab{G}{x}$. Hence $\Stab{G}{x}$ is non-empty.
+    We note $e \in G$. From the group action axiom of \textbf{Identity}, we know that $e \cdot x = x$. Thus, for any element $x$, we have $e \in \Stab{G}{x}$.
 
     Now consider $g, h \in \Stab{G}{x}$. This means that $g\cdot x = x$ and $h \cdot x = x$. We note that
     \begin{align*}
@@ -206,19 +206,39 @@ We now look at the definition of the \textbf{orbit} of an element.
     Consider again the group $G = \{e, g\}$ with $g^2 = e$ and let $G$ act on the set $X = \mathbb{Z}$ such that $e \cdot x = x$ and $g \cdot x = -x$. Note that the orbit for any non-zero element $x \in X$ is the set $\{x, -x\}$, while the orbit for 0 is $\{0\}$ itself.
 \end{example}
 
-We say that a group action is \textbf{transitive}\index{group action!transitive} if and only if it has one orbit. That is to say, the group action is transitive if there exists $x \in X$ such that $\Orb{G}{x} = X$.
+\begin{proposition}\label{prop-distinct-orbits-partition-set}
+    Let $G$ be a group that acts on a non-empty set $X$. Then distinct orbits partition $X$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-distinct-orbits-partition-set} (later).
+\end{proof}
 
-\begin{exercise}
-    Let $G$ be a group that acts on a non-empty set $X$. Show that if the group action is transitive if and only if $\Orb{G}{x} = X$ for \textbf{all} $x \in X$.
-\end{exercise}
+We end this section by looking at \textbf{transitive} group actions.
+\begin{definition}
+    We say that a group action is \textbf{transitive}\index{group action!transitive} if and only if it has one orbit. That is to say, the group action is transitive if there exists a $x \in X$ such that $\Orb{G}{x} = X$.
+\end{definition}
+\begin{proposition}
+    Let $G$ be a group that acts on a non-empty set $X$. The group action is transitive if and only if $\Orb{G}{x} = X$ for all $x \in X$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-group-action-transitive-iff-all-orbits-is-whole-set} (later).
+\end{proof}
+
+\begin{example}
+    Let $G = \Sn{n}$ act on the set $X = \{1, 2, 3, \cdots, n\}$ via the group action $g\cdot x = g(x)$. Note that $\Orb{G}{1} = X$ since there is a $\sigma = \begin{pmatrix}1&k\end{pmatrix} \in \Sn{n}$ where $\sigma(1) = k$ for any $k \in X$. Therefore the group action is transitive. By the above proposition we actually know that $\Orb{G}{k} = X$ for any $k \in X$.
+\end{example}
 
 \begin{exercise}\label{exercise-distinct-orbits-partition-set}
     Let $G$ be a group that acts on a non-empty set $X$. Prove that
     \begin{partquestions}{\alph*}
+        \item every orbit is non-empty;
         \item every element in $X$ is in some orbit; and
         \item if $\Orb{G}{x_1} \cap \Orb{G}{x_2} \neq \emptyset$ where $x_1, x_2 \in X$, then $\Orb{G}{x_1} = \Orb{G}{x_2}$.
     \end{partquestions}
-    \textit{(That is, prove that distinct orbits partition $X$.)}
+\end{exercise}
+
+\begin{exercise}\label{exercise-group-action-transitive-iff-all-orbits-is-whole-set}
+    Let $G$ be a group that acts on a non-empty set $X$. Show that if the group action is transitive if and only if $\Orb{G}{x} = X$ for all $x \in X$.
 \end{exercise}
 
 \section{The Orbit-Stabilizer Theorem}
@@ -237,7 +257,7 @@ Formally, this is captured in the \textbf{Orbit-Stabilizer Theorem}.
     \[
         |G| = |\Stab{G}{x}| \times |\Orb{G}{x}|.
     \]
-    In other words, the order of the group $G$ is the product of the order of the stabilizer of $x$ and the number of elements in the orbit of $x$.
+    In other words, the order of the group $G$ is the product of the order of the stabilizer of $x$ and the cardinality of the orbit of $x$.
 \end{theorem}
 
 \begin{proof}[Proof (see {\cite[Theorem 10.16]{humphreys_1996}})]
@@ -257,6 +277,8 @@ Formally, this is captured in the \textbf{Orbit-Stabilizer Theorem}.
         \item Find the order of the stabilizer of $x \in X$ by $G$.
     \end{partquestions}
 \end{exercise}
+
+\newpage
 
 \section{Burnside's Lemma}
 Burnside's lemma gives a way to count the number of orbits of a finite set acted on by a finite group. Before we get into it, we look at the \textbf{set of orbits of $X$}.
@@ -297,7 +319,7 @@ In other words, Burnside's lemma tells us that the number of orbits is the avera
         \sum_{x\in X} |\Stab{G}{x}| &= \sum_{x\in X} \frac{|G|}{|\Orb{G}{x}|}\\
         &= |G|\sum_{x\in X} \frac{1}{|\Orb{G}{x}|}.
     \end{align*}
-    Notice that $X$ is the disjoint union of all orbits in $X/G$ (\myref{exercise-distinct-orbits-partition-set}), which means the sum over $X$ may be broken up into separate sums over each individual orbit. Thus,
+    Notice that $X$ is the disjoint union of all orbits in $X/G$ (\myref{prop-distinct-orbits-partition-set}), which means the sum over $X$ may be broken up into separate sums over each individual orbit. Thus,
     \begin{align*}
         \sum_{x\in X} \frac{1}{|\Orb{G}{x}|} &= \sum_{\Orb{G}{x} \in X/G}\left(\sum_{x \in \Orb{G}{x}} \frac{1}{|\Orb{G}{x}|}\right)\\
         &= \sum_{\Orb{G}{x} \in X/G} 1\\
@@ -310,14 +332,12 @@ In other words, Burnside's lemma tells us that the number of orbits is the avera
     which the result follows immediately.
 \end{proof}
 
-\newpage
-
 \begin{example}
     We find the number of distinct colourings of the corners on a square with $n$ colours (up to rotation) using by Burnside's lemma.
 
     \begin{figure}[h]
 	    \centering
-	    \fbox{\includegraphics[width=3.5cm]{group-actions/labelled-square.png}}
+	    \fbox{\includegraphics[width=0.25\textwidth]{group-actions/labelled-square.png}}
 	    \caption{Square With Labelled Corners}
 	\end{figure}
 
@@ -338,11 +358,10 @@ In other words, Burnside's lemma tells us that the number of orbits is the avera
 \section{Conjugacy Classes}
 Before we look at the most important part of this chapter, the class equation, we look at the idea of conjugacy as a group action.
 \begin{definition}
-    Let $G$ be a group, and suppose $a, b \in G$. Then we say that $b$ is a \textbf{conjugate}\index{conjugate} of $a$ if there is an element $g \in G$ such that $b = gag^{-1}$ (or, alternatively, $a=g^{-1}bg$).
+    Let $G$ be a group, and suppose $a, b \in G$. Then we say that $b$ is a \textbf{conjugate}\index{conjugate} of $a$ if there is an element $g \in G$ such that $b = gag^{-1}$.
 \end{definition}
-We can frame this idea in terms of group actions.
 
-Consider the map $\alpha: G\times G\to G$ such that $\alpha(g, x) = gxg^{-1}$. We showed that $\alpha$ is a group action in \myref{exercise-conjugacy-is-group-action}. Let's look at the orbit and stabilizer of an arbitrary element $x \in G$ under this group action.
+We can frame this idea in terms of group actions. Consider the map $\alpha: G\times G\to G$ such that $\alpha(g, x) = gxg^{-1}$. We showed that $\alpha$ is a group action in \myref{exercise-conjugacy-is-group-action}. Let's look at the orbit and stabilizer of an arbitrary element $x \in G$ under this group action.
 \begin{itemize}
     \item For the orbits, we are to find a $y \in G$ such that there exists a $g \in G$ where $gxg^{-1} = y$. Hence, the orbit of $x$ under this group action are the conjugates of $x$.
     \item For the stabilizer, we are to find elements $g \in G$ such that $gxg^{-1} = x$. Hence any such element satisfies $gx = xg$. Therefore, $g \in \C{G}{x}$ where $\C{G}{x}$ is the centralizer of $x$ (recall how it is defined in \myref{example-centralizer-of-a-subset}).
@@ -360,11 +379,21 @@ We can now look at conjugacy classes.
     \[
         \Cl{x} = \{gxg^{-1} \vert g \in G\}.
     \]
-    In other words, the set $\Cl{x}$ is a subset of $G$ where all elements inside it are conjugates of each other.
+    That is, $\Cl{x}$ is a subset of $G$ where all elements in it are conjugates of each other.
 \end{definition}
 \begin{remark}
     We omit having the subscript of $G$ for the conjugacy class since $x \in G$. Also, under the group action of conjugation, $\Orb{G}{x} = \Cl{x}$.
 \end{remark}
+
+\begin{proposition}\label{prop-cardinality-of-conjugacy-class}
+    Let $G$ be a group and $x \in G$. Then
+    \[
+        |\Cl{x}| = [G : \C{G}{x}].
+    \]
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-cardinality-of-conjugacy-class} (later).
+\end{proof}
 
 \begin{example}\label{example-conjugacy-classes-of-Sn3}
     We look at distinct conjugacy classes of $\Sn{3}$.
@@ -383,11 +412,21 @@ We can now look at conjugacy classes.
     \end{itemize}
 \end{example}
 
-\begin{exercise}\label{exercise-order-of-conjugacy-class}
-    Let $G$ be a group and $x \in G$. Prove that
-    \[
-        |\Cl{x}| = [G : \C{G}{x}].
-    \]
+We note an important fact about conjugacy classes with only one element.
+\begin{proposition}\label{prop-element-with-singleton-conjugacy-class-in-center}
+    Let $G$ be a group and $x \in G$. Then $|\Cl{x}| = 1$ if and only if $x \in \Z{G}$.
+\end{proposition}
+\begin{remark}
+    Remember that $\Cl{x}$ is \textit{not} a group, so $|\Cl{x}|$ is just the cardinality of $\Cl{x}$.
+\end{remark}
+\begin{proof}
+    We first work in the forward direction. Let $x \in G$ be in a conjugacy class with one element. This means that $gxg^{-1} = x$ for all $g \in G$ by definition of the conjugacy class, so $x \in \Z{G}$.
+
+    Now we work in the reverse direction by assuming $x \in \Z{G}$, meaning $gxg^{-1} = x$ for all $g \in G$. Note $\Cl{x} = \{gxg^{-1} \vert g \in G\}$ and since $gxg^{-1} = x$ for all $g \in G$, thus $\Cl{x} = \{x\}$, i.e. $|\Cl{x}| = 1$.
+\end{proof}
+
+\begin{exercise}\label{exercise-cardinality-of-conjugacy-class}
+    Let $G$ be a group and $x \in G$. Prove that $|\Cl{x}| = [G : \C{G}{x}]$.
 \end{exercise}
 
 \section{The Class Equation}
@@ -412,15 +451,13 @@ We now state and prove the class equation.
 \end{theorem}
 
 \begin{proof}
-    We know by \myref{exercise-distinct-orbits-partition-set} that distinct orbits partitions the set that the group is acting on. Hence, using the group action of conjugation, orbits under conjugation partition $G$. So
+    We know by \myref{prop-distinct-orbits-partition-set} that distinct orbits partitions the set that the group is acting on. Hence, using the group action of conjugation, orbits under conjugation partition $G$. So
     \[
         G = \bigcup_{i=1}^k \Orb{G}{\hat{g_i}} = \bigcup_{i=1}^k \Cl{\hat{g_i}}
     \]
     where $\hat{g_i}$'s are representatives of the $k$ conjugacy classes (including those with only 1 element).
-
-    Suppose now that an element $x$ is in a conjugacy class with one element. This means that $gxg^{-1} = x$ for all $g \in G$, so $x \in \Z{G}$.
-
-    Therefore, one concludes that
+    
+    Recall from \myref{prop-element-with-singleton-conjugacy-class-in-center} that an element $x$ in a conjugacy class with one element is in the center of $G$. Therefore, one concludes that
     \[
         G = \left(\Z{G}\right) \cup \left(\bigcup_{i=1}^l \Cl{g_i}\right).
     \]
@@ -429,7 +466,7 @@ We now state and prove the class equation.
         |G| = |\Z{G}| + \sum_{i=1}^l |\Cl{g_i}|.
     \]
 
-    Finally, by \myref{exercise-order-of-conjugacy-class}, $|\Cl{g_i}| = [G : \C{G}{g_i}]$, which means that
+    Finally, by \myref{prop-cardinality-of-conjugacy-class}, $|\Cl{g_i}| = [G : \C{G}{g_i}]$, which means that
     \[
         |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}]
     \]
@@ -445,7 +482,7 @@ An immediate consequence of this is that every element must have an order that i
 \begin{example}\label{example-group-with-prime-power-order-has-non-trivial-center}
     Let $G$ be a finite $p$-group, meaning $|G| = p^n$. We will show that $G$ has a non-trivial center using the class equation.
 
-    Recall that $|\Cl{x}| = \frac{|G|}{|\C{G}{x}|}$ by \myref{exercise-order-of-conjugacy-class}. Hence, the order of the group must divide the order of any conjugacy class, i.e. $\frac{|G|}{|\C{G}{x}|} \vert |G|$. Since $|G| = p^n$, it follows that $|\Cl{x}| = p^k$ for some $1 \leq k \leq n$ (assuming $x \notin \Z{G}$).
+    Recall that $|\Cl{x}| = \frac{|G|}{|\C{G}{x}|}$ by \myref{prop-cardinality-of-conjugacy-class}. Hence, the order of the group must divide the order of any conjugacy class, i.e. $\frac{|G|}{|\C{G}{x}|} \vert |G|$. Since $|G| = p^n$, it follows that $|\Cl{x}| = p^k$ for some $1 \leq k \leq n$ (assuming $x \notin \Z{G}$).
 
     If $g_1, g_2, \dots, g_l$ are representatives from the conjugacy classes with more than 1 element, then this means that
     \[
@@ -469,8 +506,6 @@ An immediate consequence of this is that every element must have an order that i
     where $|\Z{\Sn{3}}| = |\{e\}| = 1$.  
 \end{example}
 
-\newpage
-
 \begin{exercise}
     The Cayley table of $D_3$ is in \myref{example-presentation-of-D3}.
     \begin{partquestions}{\alph*}
@@ -480,6 +515,8 @@ An immediate consequence of this is that every element must have an order that i
     \end{partquestions}
 \end{exercise}
 
+\newpage
+
 \section{Cauchy's Theorem}
 To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
 \begin{theorem}[Cauchy]\label{thrm-cauchy}\index{Cauchy's Theorem}
@@ -488,7 +525,7 @@ To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
 \begin{proof}
     We proceed with strong induction on $n$.
 
-    For the case where $n = 1$, $|G| = p$. Then by \myref{exercise-prime-order-element}, every element of the group has order $p$, proving the base case.
+    For the case where $n = 1$, $|G| = p$. Then by \myref{corollary-prime-order-element}, every element of the group has order $p$, proving the base case.
 
     We now assume that the statement holds for all $n \leq k$ for some positive integer $k$. We need to prove the case for $k+1$, that is, a group $G$ with order $(k+1)p$ has an element of order $p$. We split the proof into two cases.
 

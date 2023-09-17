@@ -27,20 +27,9 @@
 	    &\iff g^{-1}h \in \Stab{G}{x}
 	\end{align*}
 
-	\item We prove the forward direction first: suppose the action is transitive. Then there exists $x \in X$ such that $\Orb{G}{x} = X$. Now consider any other element $y \in X$. Since the action is transitive, this means that there exists a $\hat{g} \in G$ such that $\hat{g} \cdot x = y$. Note that $\Orb{G}{y} = \Orb{G}{\hat{g} \cdot x}$, and that $\Orb{G}{x} = \{g \cdot x \vert g \in G\}$. Hence,
-	\[
-        \Orb{G}{\hat{g} \cdot x} = \{g\cdot (\hat{g} \cdot x) \vert g \in G\} = \{(g\hat{g}) \cdot x \vert g \in G\}.
-	\]
-	Since $G$ is a group, $g\hat{g} \in G$. In particular, we may pick $g = g'\hat{g}^{-1}$ to obtain any arbitrary element $g' \in G$. Thus, this means that
-	\[
-        	\{(g\hat{g}) \cdot x \vert g \in G\} = \{g' \cdot x \vert g' \in G \} = \Orb{G}{x} = X.
-	\]
-	Hence, for any element $y \in X$, $\Orb{G}{y} = \Orb{G}{g \cdot x} = X$.
-
-	The reverse direction is trivial: suppose $\Orb{G}{x} = X$ for all $x \in X$. Then certainly there exists an element $x \in X$ such that $\Orb{G}{x} = X$, meaning that the group action is transitive.
-
 	\item \begin{partquestions}{\alph*}
-	    \item Clearly $e \cdot x = x$, so $x \in \Orb{G}{x}$.
+		\item An orbit takes the form $\Orb{G}{x}$. Clearly $e \cdot x = x$ so $x \in \Orb{G}{x}$ and thus $\Orb{G}{x}$ is non-empty.
+	    \item Let $x \in X$. Since $e \cdot x = x$, so $x \in \Orb{G}{x}$.
 	    \item Suppose $x \in \Orb{G}{x_1} \cap \Orb{G}{x_2}$ (as their intersection is non-empty). Then there exists $g_1, g_2 \in G$ such that $g_1\cdot x_1 = x = g_2\cdot x_2$. Thus,
 	    \begin{align*}
 	        x_1 &= e \cdot x_1\\
@@ -58,6 +47,18 @@
 	    \end{align*}
 	    which means any element in $\Orb{G}{x_1}$ is also in $\Orb{G}{x_2}$. Hence, $\Orb{G}{x_1}$ is a subset of $\Orb{G}{x_2}$. A similar argument can be used to show that $\Orb{G}{x_2}$ is a subset of $\Orb{G}{x_1}$. Hence $\Orb{G}{x_1} = \Orb{G}{x_2}$.
 	\end{partquestions}
+
+	\item We prove the forward direction first: suppose the action is transitive. Then there exists $x \in X$ such that $\Orb{G}{x} = X$. Now consider any other element $y \in X$. Since the action is transitive, this means that there exists a $\hat{g} \in G$ such that $\hat{g} \cdot x = y$. Note that $\Orb{G}{y} = \Orb{G}{\hat{g} \cdot x}$, and that $\Orb{G}{x} = \{g \cdot x \vert g \in G\}$. Hence,
+	\[
+        \Orb{G}{\hat{g} \cdot x} = \{g\cdot (\hat{g} \cdot x) \vert g \in G\} = \{(g\hat{g}) \cdot x \vert g \in G\}.
+	\]
+	Since $G$ is a group, $g\hat{g} \in G$. In particular, we may pick $g = g'\hat{g}^{-1}$ to obtain any arbitrary element $g' \in G$. Thus, this means that
+	\[
+        	\{(g\hat{g}) \cdot x \vert g \in G\} = \{g' \cdot x \vert g' \in G \} = \Orb{G}{x} = X.
+	\]
+	Hence, for any element $y \in X$, $\Orb{G}{y} = \Orb{G}{g \cdot x} = X$.
+
+	The reverse direction is trivial: suppose $\Orb{G}{x} = X$ for all $x \in X$. Then certainly there exists an element $x \in X$ such that $\Orb{G}{x} = X$, meaning that the group action is transitive.
 
 	\item \begin{partquestions}{\alph*}
 	    \item Consider $x = n$. The orbit of $n$ is all of $X$. Consider the permutation $\sigma = \begin{pmatrix}k & n\end{pmatrix}$ where $1 \leq k \leq n$. Clearly $\sigma \in \Sn{n}$. Note that $\sigma \cdot n = \sigma(n) = k$. Thus, $\Orb{G}{n} = X$, meaning that the group action ``$\cdot$'' given by $g \cdot x \mapsto g(x)$ is transitive.
