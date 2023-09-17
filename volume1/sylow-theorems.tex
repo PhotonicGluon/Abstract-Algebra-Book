@@ -15,6 +15,8 @@ We denote the set of all Sylow $p$-subgroups of the group $G$ for a given prime 
     Find the Sylow 2-subgroup of $\mathbb{Z}_{12}$.
 \end{exercise}
 
+\newpage
+
 We are now ready to state and prove the \textbf{First Sylow Theorem}.
 \begin{theorem}[Sylow I]\label{thrm-sylow-1}\index{Sylow Theorem!First}
     Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then $\Syl{p}{G} \neq \emptyset$.
@@ -27,27 +29,17 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
 
     When the order of $G$ is 1, $|G| = p^0$ for any prime $p$, so $G$ is clearly a Sylow $p$-subgroup of itself.
 
-    We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$.
-    
-    Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
+    We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$. Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
 
-    The first case is when order of the center of $G$ is a multiple of $p$, i.e. $|\Z{G}| = ap$ for some positive integer $a$. By Cauchy's Theorem (\myref{thrm-cauchy}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $n \in N$ and $g \in G$,
-    \begin{align*}
-        gng^{-1} &= (gn)g^{-1}\\
-        &= (ng)g^{-1} & (\text{since n} \in N \subseteq \Z{G})\\
-        &= n(gg^{-1})\\
-        &= n\\
-        &\in N
-    \end{align*}
-    Hence $G/N$ is a quotient group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the inductive hypothesis, $G/N$ has a Sylow $p$-subgroup. Let that Sylow $p$-subgroup be $\bar{S}$, which means $\bar{S}$ has order $p^{k-1}$.
-
-    We now construct $S = \{g \in G \vert gN \in \bar{S}\}$; we show that $S$ is a subgroup of $G$ under the group operation of $G$. Clearly $e \in S$ as $eN = N \in \bar{S}$. Also for any $g_1, g_2 \in S$ (which means $g_1N, g_2N \in \bar{S}$), we see that
+    The first case is when $p$ divides the order of the center of $G$, $|\Z{G}|$. By Cauchy's Theorem (\myref{thrm-cauchy}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $x \in N$ and $g \in G$,
     \[
-        (g_1g_2^{-1})N = (g_1N)(g_2N)^{-1} \in \bar{S},
+        gxg^{-1} = (gx)g^{-1} = x(gg^{-1}) = x \in N.
     \]
-    which implies that $g_1g_2^{-1} \in S$. By the subgroup test, $S \leq G$. Also, $N \leq S$ since for all $n \in N$, $nN = N \in \bar{S}$.
+    Hence $G/N$ is a group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the inductive hypothesis, $G/N$ has a Sylow $p$-subgroup, say $\bar{S}$, meaning that $\bar{S}$ has order $p^{k-1}$.
 
-    We construct the homomorphism $\phi: S \to \bar{S}$ such that $g \mapsto gN$. Clearly any $gN \in \bar{S}$ has a pre-image of $g$ under $\phi$, so $\phi$ is surjective, meaning that $\im \phi = \bar{S}$. Furthermore,
+    We now construct the group $S = \{g \in G \vert gN \in \bar{S}\}$ under the group operation of $G$. Clearly $S$ is non-empty since $e \in S$ (as $eN = N \in \bar{S}$). Suppose $g_1, g_2 \in S$, meaning that $g_1N, g_2N \in \bar{S}$. Therefore $(g_1g_2^{-1})N = (g_1N)(g_2N)^{-1} \in \bar{S}$ which implies that $g_1g_2^{-1} \in S$. By the subgroup test, $S \leq G$. Also, $N \leq S$ since for all $n \in N$, $nN = N \in \bar{S}$.
+
+    We construct the homomorphism $\phi: S \to \bar{S}$ such that $g \mapsto gN$. By construction one sees clearly that $\phi$ is surjective, meaning that $\im \phi = \bar{S}$. Furthermore,
     \begin{align*}
         \ker\phi &= \{s \in S \vert \phi(s) = N\}\\
         &= \{s \in S \vert sN = N \}\\
@@ -55,9 +47,9 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
         &= S \cap N\\
         &= N & (\text{since } N \subseteq S).
     \end{align*}
-    Now we know that $S/N \cong \bar{S}$ by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}), meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$, which quickly implies that $|S| = p^k$. Hence $S$ is a subgroup of $G$ with order $p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
+    Now we know that $S/N \cong \bar{S}$ by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}), meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$, which quickly implies that $|S| = p^k$. Hence, there exists a subgroup $S$ such that $|S| = p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
 
-    We can now start on the second case where the order of the center of $G$ is not a multiple of $p$. Recall the class equation (\myref{thrm-class-equation})
+    We can now start on the second case where $p$ does not divide the order of the center of $G$. Recall the class equation (\myref{thrm-class-equation})
     \[
         |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}]
     \]
@@ -65,9 +57,9 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
     \[
         \sum_{i=1}^l [G:\C{G}{g_i}]
     \]
-    must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then $|\C{G}{g_i}| = p^ka$ for some positive integer $a$.
+    must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then $|\C{G}{g_i}| = p^ka$ for some integer $a$.
 
-    We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly if $a > m$ then $\frac{p^k m}{|\C{G}{g_i}|}$ is not an integer, so $a \leq m$. If instead $a = m$ then $|\C{G}{g_i}| = p^km = |G|$, and since $\C{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \C{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \Z{G}$. But an element is in $\Z{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
+    We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly $a \leq m$ since if $a > m$ then $\frac{p^k m}{|\C{G}{g_i}|}$ is not an integer. If instead $a = m$ then $|\C{G}{g_i}| = p^km = |G|$, and since $\C{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \C{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \Z{G}$. But an element is in $\Z{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
 
     In summary, $\C{G}{g_i} < G$ with $|\C{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the induction hypothesis on $\C{G}{g_i}$ to say that $\C{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\C{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
 
@@ -165,6 +157,8 @@ We now look at the definition of the \textbf{normalizer}.
 \begin{exercise}\label{exercise-normalizer-is-subgroup-of-main-group}
     Let $G$ be a group and $S$ be a subset of $G$. Prove that $\N{G}{S} \leq G$.
 \end{exercise}
+
+\newpage
 
 We prove some properties of the normalizer here.
 \begin{proposition}\label{prop-subgroup-is-a-normal-subgroup-of-normalizer}
