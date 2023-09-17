@@ -42,6 +42,9 @@ Let's look at two examples of homomorphisms between groups.
         \item $\phi(n) = 2^n$
     \end{partquestions}
 \end{exercise}
+\begin{exercise}
+    Let $G$ and $H$ be groups with identities $e_G$ and $e_H$ respectively. Show that the \textbf{trivial homomorphism}\index{homomorphism!trivial} $\phi: G \to H, g \mapsto e_H$ is, indeed, a homomorphism.
+\end{exercise}
 
 \section{Properties of Homomorphisms}
 With an understanding on what homomorphisms are, let's look at some properties of homomorphisms. Before stating and proving them, let
@@ -52,18 +55,52 @@ With an understanding on what homomorphisms are, let's look at some properties o
     \item $\phi: G_1 \to G_2$ be a homomorphism.
 \end{itemize}
 
-\begin{proposition}
+\begin{proposition}\label{prop-homomorphism-maps-identities-to-each-other}
     $\phi(e_1) = e_2$.
 \end{proposition}
 \begin{proof}
     Let $x$ in $G_1$. Then $e_1x = x$. Thus $\phi(e_1x) = \phi(x)$ by applying $\phi$ on both sides. Hence $\phi(e_1)\phi(x) = \phi(x)$ by applying the definition of a homomorphism. Therefore, by cancellation law, $\phi(e_1) = e_2$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop-homomorphism-maps-inverses}
     For all $x$ in $G_1$, $\phi(x^{-1}) = \left(\phi(x)\right)^{-1}$.
 \end{proposition}
 \begin{proof}
     Note that $xx^{-1} = e_1$. Thus, $\phi(xx^{-1}) = \phi(e_1) = e_2$ by applying $\phi$ on both sides. Note also that $\phi(xx^{-1}) = \phi(x)\phi(x^{-1})$ by definition of homomorphism. Hence, $\phi(x)\phi(x^{-1}) = e_2$ which quickly implies $\phi(x^{-1}) = \left(\phi(x)\right)^{-1}$ after left-multiplying both sides by $\left(\phi(x)\right)^{-1}$.
+\end{proof}
+
+\begin{proposition}
+    $\phi(x^n) = (\phi(x))^n$ for all $x \in G_1$ and integers $n$.
+\end{proposition}
+\begin{proof}
+    We first prove the proposition for non-negative integers $n$ via induction.
+
+    When $n = 0$, then $\phi(x^0) = \phi(e_G) = e_H = (\phi(x))^0$ by \myref{prop-homomorphism-maps-identities-to-each-other}, so the statement holds for $n = 0$.
+
+    Now suppose the statement holds for some non-negative integer $k$, i.e. $\phi(x^k) = (\phi(x))^k$. We show that the statement holds for $k + 1$, i.e. $\phi(x^{k+1}) = (\phi(x))^{k+1}$.
+    
+    We see
+    \begin{align*}
+        \phi(x^{k+1}) &= \phi(x^kx) \\
+        &= \phi(x^k)\phi(x) & (\text{definition of homomorphism})\\
+        &= (\phi(x))^k\phi(x) & (\text{by hypothesis})\\
+        &= (\phi(x))^{k+1}
+    \end{align*}
+    so the statement holds for $k+1$.
+
+    Thus $\phi(x^n) = (\phi(x))^n$ for all non-negative integers $n$.
+
+    For the case when $n < 0$, write $n = -m$ where $m > 0$. Then
+    \begin{align*}
+        \phi(x^n) &= \phi(x^{-m})\\
+        &= \phi((x^m)^{-1})\\
+        &= (\phi(x^m))^{-1} & (\myref{prop-homomorphism-maps-inverses})\\
+        &= ((\phi(x))^m)^{-1} & (\text(by the case for )m>0)\\
+        &= (\phi(x))^{-m}\\
+        &= (\phi(x))^n
+    \end{align*}
+
+    This proves the proposition for all integers $n$.
 \end{proof}
 
 For the next few properties, define
@@ -116,11 +153,9 @@ For the next few properties, define
 \begin{exercise}\label{exercise-homomorphism-image-is-subgroup}
     Prove that $\phi(H_1) \leq G_2$.
 \end{exercise}
-
 \begin{exercise}
     Prove or disprove: if $H_1 \unlhd G_1$, then $\phi(H_1) \unlhd G_2$.
 \end{exercise}
-
 \begin{exercise}\label{exercise-order-of-homomorphism-divides-order}
     Let $G$ and $H$ be groups, and let $\phi: G \to H$ be a homomorphism. Prove that $|\phi(a)|$ divides $|a|$ for any $a \in G$.
 \end{exercise}
@@ -216,8 +251,6 @@ Isomorphisms between groups means that the two groups \textit{share the same str
 
         \item Since $\phi$ is an isomorphism, it is bijective, which means that $\phi^{-1}$ exists and is also bijective. All that remains is to show that $\phi^{-1}$ is a homomorphism.
 
-        \newpage
-
         Let $u$ and $v$ be in $H$. Then, since $\phi$ is surjective, there exist elements $x$ and $y$ in $G$ such that $\phi(x) = u$ and $\phi(y) = v$. Hence,
         \begin{align*}
             \phi^{-1}(uv) &= \phi^{-1}\left(\phi(x)\phi(y)\right)\\
@@ -227,6 +260,8 @@ Isomorphisms between groups means that the two groups \textit{share the same str
         \end{align*}
         Thus $\phi^{-1}$ is an isomorphism.
 
+        \newpage
+        
         \item Suppose $u$ and $v$ are in $H$. Let $x$ and $y$ be elements in $G$ such that $\phi(x) = u$ and $\phi(y) = v$. Thus
         \begin{align*}
             uv = &= \phi(x)\phi(y) \\
@@ -237,11 +272,10 @@ Isomorphisms between groups means that the two groups \textit{share the same str
         \end{align*}
         which means that $uv = vu$. Hence $H$ is abelian.
 
-        \item Suppose $u$ is in $H$. Let $x$ be in $G$ such that $\phi(x) = u$. Since $G$ is cyclic, suppose $g$ is the generator of $G$, so $x = g^n$ for some integer $n$. This means that
+        \item Suppose $u$ is in $H$. As $\phi$ is an isomorphism, there is an $x \in G$ where $\phi(x) = u$. Since $G$ is cyclic, suppose $g$ is the generator of $G$, so $x = g^n$ for some integer $n$. This means that
         \begin{align*}
             u &= \phi(x)\\
             &= \phi(g^n)\\
-            &= \underbrace{\phi(g)\phi(g)\phi(g)\cdots\phi(g)}_{n \text{ times}}\\
             &= \left(\phi(g)\right)^n\\
             &\in \left\langle \phi(g) \right\rangle.
         \end{align*}
