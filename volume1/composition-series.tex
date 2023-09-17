@@ -1,5 +1,5 @@
 \chapter{Composition Series}
-In the previous chapter, we introduced simple groups, which are groups with no proper normal subgroups. We may think of such groups as \textit{atoms} making up any group, as we will soon find out that every group may be uniquely decomposed into a series of groups in what is known as the group's composition series up to isomorphisms.
+In the previous chapter, we introduced simple groups, which are groups with no non-trivial proper normal subgroups. We may think of such groups as \textit{atoms} making up any group, as we will soon find out that every group may be uniquely decomposed into a series of groups in what is known as the group's composition series up to isomorphism.
 
 \section{Subgroup Series and Subnormal Series}
 We introduce the idea of a \textbf{subgroup series}\index{subgroup series} of a group.
@@ -8,7 +8,7 @@ We introduce the idea of a \textbf{subgroup series}\index{subgroup series} of a 
     \[
         1 = H_0 < H_1 < H_2 < \cdots < H_n = G,
     \]
-    where 1 is the trivial group, and where $H_i < H_{i+1}$ (for $0 \leq i < n$). The \textbf{length} of such a series is $n$, or is infinite if there is no end.
+    where 1 is the trivial subgroup, and where $H_i < H_{i+1}$ (for $0 \leq i < n$). The \textbf{length} of such a series is $n$, or is infinite if there is no end.
 \end{definition}
 \begin{remark}
     The above definition gives an \textbf{ascending}\index{subgroup series!ascending} subgroup series without repetition. A \textbf{descending}\index{subgroup series!descending} subgroup series without repetition is
@@ -33,7 +33,7 @@ We now define a \textbf{subnormal series} of a group $G$.
     \[
         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G.    
     \]
-    The quotient groups $H_{i+1}/H_i$ are called the \textbf{factor groups}\index{factor group} of the subnormal series.
+    The quotient groups $H_{i+1}/H_i$ are called the \textbf{factor groups}\index{subnormal series!factor group} of the subnormal series.
 \end{definition}
 \begin{remark}
     Note that there is no requirement that $H_i \lhd G$, only that $H_i \lhd H_{i+1}$. If all subgroups in a subnormal series are such that $H_i \lhd G$, then such a series is called a \textbf{normal series}\index{normal series} of $G$.
@@ -48,8 +48,6 @@ We now define a \textbf{subnormal series} of a group $G$.
         1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.
     \]
 
-    \newpage
-
     In fact,
     \begin{itemize}
         \item $1 \lhd D_4$;
@@ -63,7 +61,7 @@ We now define a \textbf{subnormal series} of a group $G$.
     Let the group $G = \mathbb{Z}_4$.
     \begin{partquestions}{\roman*}
         \item Find a subnormal series of length 2 for $G$.
-        \item Hence find the factors of that subnormal series.
+        \item Hence find the factor groups of that subnormal series.
         \item Explain whether the subnormal series found in \textbf{(i)} is a normal series.
     \end{partquestions}
 \end{exercise}
@@ -83,7 +81,7 @@ There is an important consequence that we examine here.
 \end{theorem}
 
 \begin{proof}
-    We prove the forward direction first; assume that $N$ is a maximal normal subgroup of $G$. Suppose there exists a normal subgroup of $G/N$. Then by \myref{problem-subgroup-of-quotient-group-is-quotient-group} we know that that subgroup takes the form of $H/N$, where $N \leq H \leq G$, such that $H/N \unlhd G/N$. Since $N$ is a maximal normal subgroup this means that $H = N$ or $H = G$. In the first case $H/N \cong 1$ and in the second $H / N = G/N$. Hence $G/N$ only has two normal subgroups, the trivial subgroup and itself, meaning that it has no proper normal subgroups and is hence simple.
+    We prove the forward direction first; assume that $N$ is a maximal normal subgroup of $G$. Suppose there exists a normal subgroup of $G/N$. Then by \myref{problem-subgroup-of-quotient-group-is-quotient-group} we know that that subgroup takes the form of $H/N$, where $N \leq H \leq G$, such that $H/N \unlhd G/N$. Since $N$ is a maximal normal subgroup this means that $H = N$ or $H = G$. In the first case $H/N \cong 1$ and in the second $H / N = G/N$. Hence $G/N$ only has two normal subgroups, the trivial subgroup and itself, meaning that it has no non-trivial proper normal subgroups and is hence simple.
     
     We now prove the reverse direction; assume that $G/N$ is simple. Suppose there exists a $H \leq G$ such that $N \leq H \leq G$. By \myref{problem-subgroup-of-quotient-group-is-quotient-group} we know $H/N \leq G/N$. In fact, since $N \leq H \leq G$ we know $N \unlhd H \unlhd G$ which means $H/N \unlhd G/N$. As $G/N$ is simple, thus $H/N \cong 1$ or $H/N = G/N$. The case where $H/N \cong 1$ occurs if and only if $H = N$ and the case where $H/N = G/N$ occurs when $H = G$. Hence, this means that $N$ is a maximal normal subgroup of $G$.
 \end{proof}
@@ -91,8 +89,6 @@ There is an important consequence that we examine here.
 \begin{exercise}
     Find the order of the maximal normal subgroup of $\mathbb{Z}_{120}$.
 \end{exercise}
-
-\newpage
 
 \section{Composition Series}
 We can now look at a more interesting type of subnormal series: the \textbf{composition series} of a group.
@@ -107,7 +103,7 @@ We can now look at a more interesting type of subnormal series: the \textbf{comp
     Some authors (e.g. \cite{cohn_1982, clark_1984, proofwiki_composition-series-definition}) require composition series to be a normal series. However we follow \cite{hungerford_1980, humphreys_1996, milne_2021} and others and only require it to be a subnormal series.
 \end{remark}
 \begin{remark}
-    An equivalent definition of a composition series is a normal series where the factor groups $H_{i+1}/H_i$ are simple, as guaranteed by \myref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}.
+    An equivalent definition of a composition series is that it is a normal series where the composition factors $H_{i+1}/H_i$ are simple, as guaranteed by \myref{thrm-maximal-normal-subgroup-iff-quotient-is-simple}.
 \end{remark}
 
 For composition series, we often write a group that is isomorphic to the subgroup rather than the actual subgroup. For example, instead of the subgroup $\{0, 3\}$ in $\mathbb{Z}_6$, we may write $\mathbb{Z}_2$ or $\Cn{2}$ instead. Composition series written in this form instead are called composition series \textbf{up to isomorphism}\index{composition series!up to isomorphism}.
@@ -120,7 +116,9 @@ For composition series, we often write a group that is isomorphic to the subgrou
         &1 \lhd \mathbb{Z}_3 \lhd \mathbb{Z}_6 \lhd \mathbb{Z}_{12}.
     \end{align*}
     
-    The factors in each case (up to isomorphism) are:
+    \newpage
+
+    The composition factors in each case (up to isomorphism) are:
     \begin{itemize}
         \item $\mathbb{Z}_2$, $\mathbb{Z}_3$, $\mathbb{Z}_2$;
         \item $\mathbb{Z}_2$, $\mathbb{Z}_2$, $\mathbb{Z}_3$; and
@@ -130,7 +128,7 @@ For composition series, we often write a group that is isomorphic to the subgrou
 \end{example}
 
 \begin{example}
-    Consider the symmetry group of the regular hexagon, the dihedral group of order 12, $D_6$. The three composition series of $D_6$, up to isomorphism, are
+    Consider $D_6$, the symmetry group of the regular hexagon. The three composition series of $D_6$, up to isomorphism, are
     \begin{align*}
         &1 \lhd \Cn{2} \lhd \Cn{6} \lhd D_6;\\
         &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6; \text{ and}\\
@@ -148,25 +146,23 @@ For composition series, we often write a group that is isomorphic to the subgrou
 \textbf{Important note}: It is crucial to remember that all of the groups written in the composition series (except for the trivial group and the group itself) represent \textbf{subgroups} of the group itself (up to isomorphism), not the actual groups themselves.
 
 \begin{exercise}
-    Find the two composition series for $\Cn{6}$ (up to isomorphism), their composition lengths, and their factors (up to isomorphism).
+    Find the two composition series for $\Cn{6}$ (up to isomorphism), their composition lengths, and their composition factors (up to isomorphism).
 \end{exercise}
 
 One might wonder which groups have a composition series. As mentioned, not all groups have a composition series (e.g., $\mathbb{Z}$). However, finite groups will definitely have a composition series.
 \begin{theorem}\label{thrm-finite-group-has-composition-series}
     Any finite group has a composition series.
 \end{theorem}
-\begin{proof}[Proof (see \cite{hungerford_1980, proofwiki_finite-group-has-composition-series})]
-    Let $G$ be a finite group. If $G$ is simple then it does not have a proper normal subgroup, so it has a composition series $\{e\} \lhd G$.
+\begin{proof}[Proof (see {\cite[Theorem I.8.4]{hungerford_1980}}, \cite{proofwiki_finite-group-has-composition-series})]
+    Let $G$ be a finite group. If $G$ is simple then it does not have a non-trivial proper normal subgroup, so it has a composition series $\{e\} \lhd G$.
     
-    Otherwise, $G$ has a proper normal subgroup, at least one of which has maximal order. Let that subgroup be $G_1$. By \myref{thrm-maximal-normal-subgroup-iff-quotient-is-simple} this means that $G/G_1$ is simple. If $G_1$ does not have a proper normal subgroup then $G$ has composition series $\{e\} \lhd G_1 \lhd G$. Otherwise let $G_2$ be the maximal normal subgroup of $G_1$, and so on. 
+    Otherwise, $G$ has a non-trivial proper normal subgroup, at least one of which has maximal order. Let that subgroup be $G_1$. By \myref{thrm-maximal-normal-subgroup-iff-quotient-is-simple} this means that $G/G_1$ is simple. If $G_1$ does not have a non-trivial proper normal subgroup then $G$ has composition series $\{e\} \lhd G_1 \lhd G$. Otherwise let $G_2$ be the maximal normal subgroup of $G_1$, and so on. 
     
-    Now Lagrange's Theorem (\myref{thrm-lagrange}) says that the order of the subgroup must divide the order of the group. Since $G_1$, $G_2$, etc. are proper subgroups of $G$, the orders of the found subgroups can be at most half the order of the preceding group. Hence the orders of the subgroups are strictly decreasing, meaning
+    Now Lagrange's Theorem (\myref{thrm-lagrange}) says that the order of the subgroup must divide the order of the group. Since $G_1$, $G_2$, etc. are non-trivial proper subgroups of $G$, the orders of the found subgroups can be at most half the order of the preceding group. Hence the orders of the subgroups are strictly decreasing, meaning
     \[
         |G| > |G_1| > |G_2| > \cdots > |G_n| = 1,
     \]
     with the process terminating at some integer $n$ where $G_n = \{e\}$.
-    
-    \newpage
 
     Now set $H_i = G_{n-i}$. Note $H_{i+1}/H_i = G_i/G_{i+1}$ is simple as discussed above. Hence
     \[
@@ -176,7 +172,7 @@ One might wonder which groups have a composition series. As mentioned, not all g
 \end{proof}
 
 \section{Zassenhaus' Lemma}
-Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes called the Fourth Isomorphism Theorem. The proof of this lemma is fairly technical, but we try to include as much detail as necessary to clarify difficult parts of the proof.
+Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes called the \textbf{Fourth Isomorphism Theorem}\index{Isomorphism Theorem!Fourth}. The proof of this lemma is fairly technical, but we try to include as much detail as necessary to clarify difficult parts of the proof.
 
 \begin{lemma}[Zassenhaus]\label{lemma-zassenhaus}\index{Zassenhaus' Lemma}
     Let $G$ be a group. Let $H$, $H'$, $K$, and $K'$ be subgroups of $G$ such that $H' \unlhd H$ and $K' \unlhd K$. Then
@@ -187,23 +183,25 @@ Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes ca
     \end{enumerate}
     where an expression like $H'(H \cap K')$ denotes the subset product of $H'$ and $H \cap K'$.
 \end{lemma}
-\begin{proof}[Proof (see {\cite[p.~110]{hungerford_1980}})]
-    We quickly note that $H' \unlhd H \cap K$ as $H' \unlhd H$, meaning $H'$ is a normal subgroup of any subset of $H$, including $H \cap K$. Thus $H' \cap (H \cap K) \unlhd H \cap K$ by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 4. Since $H'\unlhd H$ we know $H' \subseteq H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \unlhd H \cap K$. Similarly, $H \cap K' \unlhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\myref{corollary-subgroup-product-is-normal-subgroup-if-subgroups-are-normal}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, let $\mathcal{A} = (H' \cap K)(H \cap K')$.
+\begin{proof}[Proof (see {\cite[Lemma I.8.9]{hungerford_1980}})]
+    We first note that $H \cap K$ is a non-empty subset of $H$ since $e \in H \cap K$. As $H'$ is a normal subgroup of any non-empty subset of $H$, including $H \cap K$, thus $H' \unlhd H \cap K$. So $H' \cap (H \cap K) \unlhd H \cap K$ by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 4. Since $H'\unlhd H$ we know $H' \subseteq H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \unlhd H \cap K$. Similarly, $H \cap K' \unlhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\myref{corollary-subgroup-product-is-normal-subgroup-if-subgroups-are-normal}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, let $\mathcal{A} = (H' \cap K)(H \cap K')$.
     
     Define the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$, $hc \mapsto h\mathcal{A}$ where $h \in H'$ and $c \in H \cap K$. We show that $\phi$ is a well-defined homomorphic surjection with a goal to use the Fundamental Homomorphism Theorem to finish the proof.
     
+    \newpage
+
     \begin{itemize}
         \item \textbf{Well-defined}: Suppose $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ such that $h_1h_2 = c_1c_2$. Then $c_1c_2^{-1} = h_2^{-1}h_1$. We note that
         \[
             (H \cap K) \cap H' = H' \cap K \leq \mathcal{A}    
         \]
-        by Diamond Isomorphism Theorem statement 2, and that $c_1c_2^{-1} \in (H \cap K) \cap H'$ since $c_1c_2^{-1} \in H \cap K$ and $c_1c_2^{-1} = h_2^{-1}h_1 \in H'$. Thus $c_1c_2^{-1} \in \mathcal{A}$, meaning $c_1\mathcal{A} = c_2\mathcal{A}$ by Coset Equality (\myref{lemma-coset-equality}). Hence
+        by Diamond Isomorphism Theorem statement 2. Also we see $c_1c_2^{-1} \in (H \cap K) \cap H'$ since $c_1c_2^{-1} \in H \cap K$ and $c_1c_2^{-1} = h_2^{-1}h_1 \in H'$. Thus $c_1c_2^{-1} \in \mathcal{A}$, meaning $c_1\mathcal{A} = c_2\mathcal{A}$ by Coset Equality (\myref{lemma-coset-equality}). Hence
         \[
             \phi(h_1c_1) = c_1\mathcal{A} = c_2\mathcal{A} = \phi(h_2c_2)        
         \]
         which means $\phi$ is well-defined.
         
-        \item \textbf{Homomorphism}: We first note that $H \cap K \leq H$ by Diamond Isomorphism Theorem statement 1. Since $H' \unlhd H$ (given), thus $H'(H\cap K) = (H\cap K)H'$ and so $H'(H\cap K) \leq H$ by Diamond Isomorphism Theorem statement 3. By \myref{prop-subgroup-product-is-subgroup}, since $H'(H\cap K) \leq H$, thus $H'(H\cap K) = (H\cap K)H'$. So, for any $c_1h_2 \in (H\cap K)H' = H'(H\cap K)$ we have $c_1h_2 = h_3c_1$ for some $h_3 \in H'$. Therefore for $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ we have
+        \item \textbf{Homomorphism}: We first note that $H \cap K \leq H$ by Diamond Isomorphism Theorem statement 1. Since $H' \unlhd H$ (given), thus $(H\cap K)H' \leq H$ by Diamond Isomorphism Theorem statement 3, which further means $H'(H\cap K) = (H\cap K)H'$ by \myref{prop-subgroup-product-is-subgroup}. So for any $c_1h_2 \in (H\cap K)H' = H'(H\cap K)$ we have $c_1h_2 = h_3c_1$ for some $h_3 \in H'$. Therefore for $h_1, h_2 \in H'$ and $c_1, c_2 \in H \cap K$ we have
         \begin{align*}
             \phi((h_1c_1)(h_2c_2)) &= \phi(h_1(c_1h_2)c_2)\\
             &= \phi(h_1(h_3c_1)c_2)\\
@@ -216,16 +214,16 @@ Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes ca
         
         \item \textbf{Image}: We prove that $\phi$ is surjective to show $\im \phi = (H\cap K)/\mathcal{A}$. Take any $c\mathcal{A} \in (H\cap K) / \mathcal{A}$. Clearly $e \in H$, so $\phi(c) = \phi(ec) = c\mathcal{A}$, meaning $\phi$ is surjective. Hence $\im \phi = (H\cap K)/\mathcal{A}$.
         
-        \item \textbf{Kernel}: Let $hc \in \ker\phi$ where $h \in H'$ and $c \in H \cap K$. Then $\phi(hc) = \mathcal{A}$, meaning $c\mathcal{A} = \mathcal{A}$. Hence $c \in \mathcal{A}$. Let $c = xy$ where $x \in H'\cap K$ and $y \in H \cap K'$. So $hc \in \ker\phi$ if $hc = h(xy) = (hx)y$. Note that $h \in H'$, and $x \in H' \cap K \subseteq H'$ so $x \in H'$, thus $hx \in H'$. Also $y \in H \cap K'$, so $hc = (hx)y \in H'(H \cap K')$. Thus if $hc \in \ker\phi$ then $hc \in H'(H \cap K')$, meaning $\ker\phi \subseteq H'(H \cap K')$.
+        \item \textbf{Kernel}: Let $hc \in \ker\phi$ where $h \in H'$ and $c \in H \cap K$. Then $\phi(hc) = \mathcal{A}$, meaning $c\mathcal{A} = \mathcal{A}$ and so $c \in \mathcal{A}$ by Coset Equality (\myref{lemma-coset-equality}). Let $c = xy$ where $x \in H'\cap K$ and $y \in H \cap K'$. So $hc \in \ker\phi$ if $hc = h(xy) = (hx)y$. Note that $h \in H'$, and $x \in H' \cap K \subseteq H'$ so $x \in H'$, thus $hx \in H'$. Also $y \in H \cap K'$, so $hc = (hx)y \in H'(H \cap K')$. Thus if $hc \in \ker\phi$ then $hc \in H'(H \cap K')$, meaning $\ker\phi \subseteq H'(H \cap K')$.
         
-        Now take $hy \in H'(H \cap K')$ where $h \in H'$ and $y \in H \cap K'$. Recall that $H\cap K' \subseteq H\cap K$ as $K' \unlhd K$ means $K' \subset K$. Thus $\phi(hy) = y\mathcal{A}$. Since $y \in H \cap K' \leq (H' \cap K)(H \cap K') = \mathcal{A}$ by Diamond Isomorphism Theorem statement 2, so $y \in \mathcal{A}$, meaning $y\mathcal{A} = \mathcal{A}$. Hence $\phi(hy) = \mathcal{A}$, so $hy \in \ker\phi$. Therefore any $hy \in H'(H \cap K')$ also belongs in $\ker\phi$, meaning $H'(H \cap K') \subseteq \ker\phi$.
+        Now take $hy \in H'(H \cap K')$ where $h \in H'$ and $y \in H \cap K'$. Since $H \cap K' \unlhd H \cap K$, thus $H \cap K' \subseteq H \cap K$. Thus $\phi(hy) = y\mathcal{A}$. Note $H \cap K' \leq (H' \cap K)(H \cap K') = \mathcal{A}$ by Diamond Isomorphism Theorem statement 2, so $y \in H \cap K' \subseteq \mathcal{A}$ which means $y \in \mathcal{A}$, meaning $y\mathcal{A} = \mathcal{A}$. Hence $\phi(hy) = \mathcal{A}$, so $hy \in \ker\phi$. Therefore any $hy \in H'(H \cap K')$ also belongs in $\ker\phi$, meaning $H'(H \cap K') \subseteq \ker\phi$.
         
         As $\ker\phi \subseteq H'(H\cap K')$ and $H'(H\cap K') \subseteq \ker\phi$, therefore $\ker\phi = H'(H \cap K')$.
     \end{itemize}
     
     Now finding that $\ker\phi = H'(H \cap K')$, and knowing that $\ker\phi \unlhd H'(H\cap K)$ (\myref{prop-kernel-is-normal-subgroup-of-domain}), means that $H'(H \cap K') \unlhd H'(H\cap K)$, proving statement 1 of this lemma.
     
-    A similar argument follows for a similar map $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, yielding $\im\psi = (H\cap K)/\mathcal{A}$ and $\ker\psi = K'(H\cap K)$ which proves statement 2.
+    A similar argument follows for a similar map $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, which yields $\im\psi = (H\cap K)/\mathcal{A}$ and $\ker\psi = K'(H\cap K)$ which proves statement 2.
     
     The final step is to apply the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) to both $\phi$ and $\psi$. This yields
     \[
@@ -241,34 +239,31 @@ This next section proves two fundamental theorems about composition series, but 
 
 Before we look at them, we introduce \textbf{refinements}.
 \begin{definition}
-    Let $G$ be a group. Let $\mathcal{H} = \langle H_i \rangle_{i\in\{0,\dots,m\}}$ be a subnormal series for $G$, where
-    \[
-        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m = G,
-    \]
-    and let $\mathcal{K} = \langle K_j \rangle_{j\in\{0,\dots,n\}}$ be a subnormal series for $G$, where
-    \[
-        1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_n = G.
-    \]
-    If every $H_i$ appears in $\mathcal{K}$ (i.e., $\mathcal{H}$ is a subsequence of $\mathcal{K}$), then $\mathcal{K}$ is a \textbf{refinement}\index{refinement} of $\mathcal{H}$.
+    Let $G$ be a group. Let $\mathcal{H} = \langle H_i \rangle_{i\in\{0,\dots,m\}}$ and $\mathcal{K} = \langle K_j \rangle_{j\in\{0,\dots,n\}}$ be subnormal series for $G$, where
+    \begin{align*}
+        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m &= G \text{ and}\\
+        1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_n &= G.
+    \end{align*}
+    If every $H_i$ appears in $\mathcal{K}$ (i.e., $\mathcal{H}$ is a subsequence of $\mathcal{K}$), then $\mathcal{K}$ is a \textbf{refinement}\index{refinement} of $\mathcal{H}$. Furthermore, $\mathcal{K}$ is a \textbf{proper refinement}\index{refinement!proper} of $\mathcal{H}$ if at least one $K_j$ is not in $\mathcal{H}$.
 \end{definition}
 \begin{example}
     We previously found that
     \[
         1 \lhd \{e, r^2\} \lhd D_4 \text{ and } 1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4.    
     \]
-    Thus the subnormal series $1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4$ is a refinement of the subnormal series $1 \lhd \{e, r^2\} \lhd D_4$.
+    Thus the subnormal series $1 \lhd \{e, r^2\} \lhd \{e, r, r^2, r^3\} \lhd D_4$ is a proper refinement of the subnormal series $1 \lhd \{e, r^2\} \lhd D_4$.
 \end{example}
 
 We can now introduce the \textbf{Schreier Refinement Theorem}.
 \begin{theorem}[Schreier Refinement Theorem]\label{thrm-schreier}\index{Schreier Refinement Theorem}
-    Let $G$ be a finite group. Two (sub)normal series for $G$ have refinements of equal length whose factor groups are isomorphic.
+    Two (sub)normal series for any finite group have refinements of equal length whose factor groups are isomorphic.
 \end{theorem}
 \begin{remark}
     This theorem is also called the \textbf{Schreier-Zassenhaus Theorem} (e.g. in \cite{clark_1984,proofwiki_schreier-zassenhaus}) due to the use of Zassenhaus' Lemma in the proof.
 \end{remark}
 
 \begin{proof}[Proof (see {\cite[\S 72]{clark_1984}} and \cite{proofwiki_schreier-zassenhaus})]
-    Suppose that
+    Let $G$ be a finite group, and suppose that
     \begin{equation}\label{eqn:thrm-schreier-eqn-a}
         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_m = G    
         \tag{A}
@@ -322,7 +317,7 @@ We can now introduce the \textbf{Schreier Refinement Theorem}.
     \[
         \hat{K}_l = H_q(H_{q+1}\cap K_r)
     \]
-    for $l = qm + r$, where $0 \leq q < n$ and $0 \leq r \leq m$. The same statements made for \myref{eqn:thrm-schreier-eqn-a-prime} apply to \myref{eqn:thrm-schreier-eqn-b-prime}.
+    for $l = qm + r$, where $0 \leq q < n$ and $0 \leq r \leq m$. The conclusions made for \myref{eqn:thrm-schreier-eqn-a-prime} apply to \myref{eqn:thrm-schreier-eqn-b-prime}.
     
     Now let $k = un + v$ and let $l = vm + u$. It follows that
     \begin{align*}
@@ -363,8 +358,6 @@ We can now introduce and prove the \textbf{Jordan-H\"older Theorem}.
         \item $\Cn{3}/1 \cong \Cn{3}$, $D_3 / \Cn{3} \cong \Cn{2}$, $D_6 / D_3$.
     \end{itemize}
     By the Jordan-H\"older theorem (\myref{thrm-jordan-holder}), the factors must be isomorphic to each other. Looking at the last 2 factor lists, only one factor from each is unaccounted for, namely $D_6 / \Cn{6}$ and $D_6 / D_3$. Since Jordan-H\"older guarantees that they are isomorphic to each other, hence, technically, $D_6 / \Cn{6} \cong D_6 / D_3$.
-
-    \newpage
 
     \textbf{Important note}: The $\Cn{6}$ and $D_3$ above represent \textbf{subgroups} of $D_6$ (up to isomorphism), not the actual groups themselves. The subgroup of $D_6$ that is isomorphic to $\Cn{6}$ is $\langle r \rangle$, while the subgroup isomorphic to $D_3$ is $\langle r^2, s\rangle$. Therefore the correct statement is
     \[
