@@ -10,7 +10,7 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
     \]
 \end{definition}
 \begin{remark}
-    Some authors (e.g. \cite{libretexts_im-and-ker}) will use the notation $\phi(G)$ for the image of $\phi: G \to H$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by \cite{clark_1984, hungerford_1980}).
+    Some authors (e.g. \cite{libretexts_im-and-ker}) will use the notation $\phi(G)$ for the image of $\phi$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by \cite{clark_1984, hungerford_1980}).
 \end{remark}
 
 \begin{example}
@@ -20,16 +20,14 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
     The homomorphism $f: \mathbb{R} \to \mathbb{R}$ where $f(x) = |x|$ has an image of $\{x \in \mathbb{R} \vert x \geq 0\}$, i.e. all non-negative real numbers.
 \end{example}
 
-\newpage
-
 We note that the image of a homomorphism is a subgroup of the codomain $H$.
 \begin{proposition}\label{prop-image-is-subgroup-of-codomain}
     Let $\phi: G \to H$ be a homomorphism. Then $\im\phi \leq H$.
 \end{proposition}
 \begin{proof}
-    We consider the subgroup test. Let $e_G$ and $e_H$ be the identities of $G$ and $H$ respectively.
+    We consider the subgroup test.
     
-    Note that $\phi(e_G) = e_H \in \im\phi$. Thus $\im\phi$ is non-empty.
+    Note that $\phi(e_G) = e_H \in \im\phi$, where $e_G$ and $e_H$ are the identities of $G$ and $H$ respectively.
     
     Now suppose $h_1$ and $h_2$ are in the image of $\phi$, meaning that there exists $g_1$ and $g_2$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Note that $\phi(g_2^{-1}) = h_2^{-1}$ by homomorphism property. Hence $\phi(g_1g_2^{-1}) = h_1h_2^{-1} \in \im\phi$.
 
@@ -102,13 +100,11 @@ We are now ready to tackle the three most important theorems regarding homomorph
     for any homomorphism $\phi$.
 \end{remark}
 
-\newpage
-
 We include the commutativity diagram of the homomorphisms stated to aid clarity:
 
 \begin{figure}[h]
     \centering
-    \fbox{\includegraphics[width=4.5cm]{further-homomorphisms/iso-1-comm-diagram.png}}
+    \fbox{\includegraphics[width=0.25\textwidth]{further-homomorphisms/iso-1-comm-diagram.png}}
     \caption{Commutativity Diagram for \myreffigures{thrm-isomorphism-1}}
 \end{figure}
 
@@ -163,6 +159,9 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
     Let $R = \{x \vert x > 0\}$, $G = \{x \in \mathbb{R} \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under multiplication. We show $G / H \cong R$.
 
     Consider the map $\phi: G \to R$ where $x \mapsto |x|$. We show that $\phi$ is a homomorphism, then find the image of $\phi$, and finally find its kernel.
+
+    \newpage
+
     \begin{itemize}
         \item \textbf{Homomorphism}: $\phi$ is a homomorphism since $\phi(xy) = |xy| = |x||y| = \phi(x)\phi(y)$.
         \item \textbf{Image}: We find the image of $\phi$.
@@ -207,10 +206,13 @@ We now look at the next theorem, called the \textbf{Diamond Isomorphism Theorem}
         \item $H / (H\cap N) \cong HN / N$.
     \end{enumerate}
 \end{theorem}
-We can capture the overall relationships between the subgroups of $G$ using a \textbf{subgroup lattice}.
+
+\newpage
+
+We can capture the overall relationships of the subgroups of $G$ using a \textbf{subgroup lattice}.
 \begin{figure}[h]
     \centering
-    \fbox{\includegraphics[width=4.5cm]{further-homomorphisms/iso-2-subgroup-diagram.png}}
+    \fbox{\includegraphics[width=0.25\textwidth]{further-homomorphisms/iso-2-subgroup-diagram.png}}
     \caption{Subgroup Diagram for \myreffigures{thrm-isomorphism-2}}
 \end{figure}
 
@@ -220,9 +222,7 @@ We only show subgroups that we care about in the diagram. The group $G$ has a (d
     We prove each statement in sequence.
 
     \begin{enumerate}
-        \item Clearly $e_G \in H$ and $e_G \in K$ so $e_G \in H \cap K$.
-        
-        Now take $x, y \in H \cap K$, meaning $x, y \in H$ and $x, y \in K$. Since $H, K \leq G$ so $xy^{-1} \in H$ and $xy^{-1} \in K$. Thus $xy^{-1} \in H \cap K$. By the subgroup test, this means that $H \cap K \leq H$.
+        \item Clearly $e_G \in H$ and $e_G \in K$ so $e_G \in H \cap K$. Now take $x, y \in H \cap K$, meaning $x, y \in H$ and $x, y \in K$. Since $H, K \leq G$ so $xy^{-1} \in H$ and $xy^{-1} \in K$. Thus $xy^{-1} \in H \cap K$. By the subgroup test, this means that $H \cap K \leq H$.
         
         \item Note that $H = \{he_G \vert h \in H\} \subseteq \{hk \vert h \in H, k \in K\} = HK$, and $H$ is a group (as $H$ is a subgroup). Therefore $H \leq HK$.
         
@@ -354,7 +354,7 @@ It should be noted that there is no consistency with the numbering of these theo
         \]
         Now since $N \subseteq H \subseteq G$, thus for all $n$ in $N$, $nH = Hn$ (since $n \in G$). This means that $N \unlhd H$.
 
-        \item We first prove that it is a subgroup using the subgroup test, before proving normality.
+        \item We first prove that it is a subgroup before proving normality.
 
         Clearly $N = eN \in H/N$. Let $x$ and $y$ be in $H/N$. Then $x=h_xN$ and $y=h_yN$ for some $h_x, h_y \in H$. Note that $y^{-1} = (h_y^{-1})N$ by group operator on cosets. Hence,
         \begin{align*}
@@ -437,7 +437,7 @@ It should be noted that there is no consistency with the numbering of these theo
 \end{problem}
 
 \begin{problem}
-    Let $R = \mathbb{R}$ be a group under addition. Let $G = R^2$ and $H = \left\{(r\sqrt2, r\sqrt3) \vert r\in R\right\}$ be groups under component-wise addition. Prove that $G/H \cong R$.
+    Let $R = (\mathbb{R}, +)$. Also let $G = R^2$ and $H = \left\{(r\sqrt2, r\sqrt3) \vert r\in R\right\}$ be groups under component-wise addition. Prove that $G/H \cong R$.
 \end{problem}
 
 \begin{problem}\label{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}
