@@ -113,7 +113,7 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
 \begin{proof}[Proof (cf. {\cite[p.~250, Theorem 2]{cohn_1982}})]
     We know by \myref{prop-image-is-subgroup-of-codomain} that $\im\phi \leq H$. Let $\psi: G/\ker\phi \to \im\phi$ such that $\psi(x\ker\phi) = \phi(x)$. We need to check that $\psi$ is a well-defined isomorphism.
     \begin{itemize}
-        \item \textbf{Well-defined}: Suppose $x\ker\phi = y\ker\phi$ where $x, y \in G$. Then $xy^{-1} \in \ker\phi$ by Coset Equality (\myref{lemma-coset-equality}). This means that $\phi(xy^{-1}) = e_H$ by definition of the kernel. Note $\phi(xy^{-1}) = \phi(x)\left(\phi(y)\right)^{-1}$, so we have $\phi(x)\left(\phi(y)\right)^{-1} = e_H$. Hence $\phi(x) = \phi(y)$. Thus,
+        \item \textbf{Well-defined}: Suppose $x\ker\phi = y\ker\phi$ where $x, y \in G$. Then $xy^{-1} \in \ker\phi$ by Coset Equality (\myref{lemma-coset-equality}), statements 1 and 5. This means that $\phi(xy^{-1}) = e_H$ by definition of the kernel. Note $\phi(xy^{-1}) = \phi(x)\left(\phi(y)\right)^{-1}$, so $\phi(x)\left(\phi(y)\right)^{-1} = e_H$. Hence $\phi(x) = \phi(y)$. Thus,
         \[
             \psi(x\ker\phi) = \phi(x) = \phi(y) = \psi(y\ker\phi)
         \]
@@ -129,7 +129,7 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
         so $\psi$ is a homomorphism.
         \item \textbf{Injective}: By \myref{exercise-trivial-kernel-means-injective}, we check that $\psi$ is injective by showing that $\ker\psi$ is trivial, i.e. $\ker\psi = \{\ker\phi\}$.
 
-        Suppose $x\ker\phi\in\ker\psi$. Then $\psi(x\ker\phi) = e_H$ by definition of kernel. Hence $\phi(x) = e_H$ by definition of $\psi$, which means $x \in \ker\phi$ by definition of kernel. This means that $xe^{-1} \in \ker\phi$. So $x\ker\phi = e\ker\phi = \ker\phi$ by Coset Equality (\myref{lemma-coset-equality}) meaning that $\ker\psi = \{\ker\phi\}$. Therefore $\psi$ is injective.
+        Suppose $x\ker\phi\in\ker\psi$. Then $\psi(x\ker\phi) = e_H$ by definition of kernel. Hence $\phi(x) = e_H$ by definition of $\psi$, which means $x \in \ker\phi$ by definition of kernel. Thus $x\ker\phi = \ker\phi$ by Element in Coset (\myref{corollary-equivalence-of-element-in-coset}). Therefore $\psi$ is injective.
 
         \item \textbf{Surjective}: Suppose $y$ is in the image of $\phi$, meaning there exists a $x \in G$ such that $\phi(x) = y$. Note that $\psi(x\ker\phi) = \phi(x) = y$. Thus $\psi$ is surjective.
     \end{itemize}
@@ -254,7 +254,7 @@ We only show subgroups that we care about in the diagram. The group $G$ has a (d
 
             \item \textbf{Kernel}: We claim that $\ker\phi = H \cap N$.
             
-            Note that $\ker\phi = \{h \in H \vert \phi(h) = eN = N\}$ by definition of kernel. This means that if $h \in \ker\phi$ then $\phi(h) = N$. Hence $\phi(h) = hN = N$ which means $h \in N$ by Coset Equality (\myref{lemma-coset-equality}). Thus, $h \in H$ and $h \in n$, meaning $h \in H \cap N$. Therefore $\ker \phi \subseteq H \cap N$.
+            Note that $\ker\phi = \{h \in H \vert \phi(h) = eN = N\}$ by definition of kernel. This means that if $h \in \ker\phi$ then $\phi(h) = N$. Hence $\phi(h) = hN = N$, which means $h \in N$ by Element in Coset (\myref{corollary-equivalence-of-element-in-coset}). Thus, $h \in H$ and $h \in n$, meaning $h \in H \cap N$. Therefore $\ker \phi \subseteq H \cap N$.
     
             Now suppose $x \in H \cap N$. This means that $x \in N$ necessarily, implying $xN = N$. Thus $\phi(x) = N$ which quickly implies $x \in \ker\phi$. Therefore $H \cap N \subseteq \ker\phi$.
     
@@ -372,7 +372,7 @@ It should be noted that there is no consistency with the numbering of these theo
 
         Define $\phi: G/N \to G/H, gN \mapsto gH$. We check that $\phi$ is a well-defined homomorphism and find its image and kernel.
         \begin{itemize}
-            \item \textbf{Well-defined}: Suppose $gN = g'N$. Then $g(g')^{-1} \in N$ by Coset Equality (\myref{lemma-coset-equality}). Since $N \subseteq H$, thus $g(g')^{-1} \in H$ which implies $gH = g'H$ by \myref{lemma-coset-equality}. Hence
+            \item \textbf{Well-defined}: Suppose $gN = g'N$. Then $g(g')^{-1} \in N$ by Coset Equality (\myref{lemma-coset-equality}), statements 1 and 5. Since $N \subseteq H$, thus $g(g')^{-1} \in H$ which implies $gH = g'H$, again by Coset Equality, statements 1 and 5. Hence
             \[
                 \phi(gN) = gH = g'H = \phi(g'N)
             \]
