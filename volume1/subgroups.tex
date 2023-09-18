@@ -56,21 +56,22 @@ We end this section by defining the idea of a proper subgroup.
 \section{Subgroup Test}
 To prove that a subset of a group is a subgroup using the axioms is too tedious. Wouldn't it be nice if we have a simple test to determine if a subset is a subgroup? Well, there is; it is called the \textbf{subgroup test}\index{subgroup test}.
 \begin{theorem}[Subgroup Test]\label{thrm-subgroup-test}
-    Let $G$ be a group with identity $e$, and let $H$ be a subset of $G$. Then $H \leq G$ if and only if $e \in H$ and $xy^{-1} \in H$ for all $x, y \in H$.
+    Let $G$ be a group with identity $e$, and let $H$ be a non-empty subset of $G$. Then $H \leq G$ if and only if $xy^{-1} \in H$ for all $x, y \in H$.
 \end{theorem}
-\begin{proof}[Proof (cf. {\cite[Proposition 4.2]{humphreys_1996}})]
-    We prove the forward direction first. Suppose $H \leq G$, so $e \in H$ by definition of subgroup. Now let $x$ and $y$ be elements in $H$. Since $H$ is a subgroup of $G$, inverses exist. Thus $y^{-1}$ is in $H$. Also, since $H$ is a subgroup of $G$, thus $H$ is closed under the group operation. Hence, $xy^{-1}$ is in $H$. Therefore, if $H \leq G$ then $e \in H$ and $xy^{-1} \in H$ for all $x, y \in H$.
+\begin{proof}
+    We prove the forward direction first. Suppose $H \leq G$, and let $x$ and $y$ be elements in $H$. Since $H$ is a subgroup of $G$, inverses exist. Thus $y^{-1}$ is in $H$. Also, since $H$ is a subgroup of $G$, thus $H$ is closed under the group operation. Hence, $xy^{-1}$ is in $H$. Therefore, if $H \leq G$ then $xy^{-1} \in H$ for all $x, y \in H$.
 
-    We now prove the reverse direction. Suppose $e \in H$ and $xy^{-1}\in H$ for all $x$ and $y$ in $H$.
+    We now prove the reverse direction. Suppose $xy^{-1}\in H$ for all $x$ and $y$ in $H$.
     \begin{itemize}
-        \item The identity of $G$ is present in $H$ by assumption.
+        \item Set $x = h$ and $y = h$. Then $xy^{-1} = hh^{-1} = e$ is in $H$. Thus the identity of $G$ is in $H$.
         \item Set $x = e$ and let $y = h$. Then $xy^{-1} = eh^{-1} = h^{-1}$ is in $H$. Hence every element in $H$ has an inverse in $H$.
         \item Let $a$ and $b$ be elements in $H$. Then by above point, $b^{-1}$ is in $H$. Set $x = a$ and $y = b^{-1}$. Then $xy^{-1} = a\left(b^{-1}\right)^{-1} = ab$ is in $H$. Hence $H$ is closed under the group operation.
     \end{itemize}
-    Therefore if $e \in H$ and $xy^{-1}$ is in $H$ for all $x$ and $y$ in $H$, then $H \leq G$.
-
-    This completes the proof of the subgroup test.
+    Therefore if $xy^{-1}$ is in $H$ for all $x$ and $y$ in $H$, then $H \leq G$.
 \end{proof}
+\begin{remark}
+    We usually check the `non-empty' requirement by checking if the identity of $G$ is in $H$.
+\end{remark}
 
 We look at some examples of the use of the subgroup test.
 \begin{example}\label{example-centralizer-of-a-subset}
@@ -78,11 +79,11 @@ We look at some examples of the use of the subgroup test.
     \[
         \C{G}{S} = \left\{g \in G \vert \text{for all } s \in S \text{ we have } gs = sg\right\}.
     \]
-    We claim that $\C{G}{S}$ is a subgroup of $G$.
+    Note $\C{G}{S}$ is a subset of $G$. We claim that $\C{G}{S}$ is a subgroup of $G$.
     \begin{proof}
         We show that for all elements $x$ and $y$ in $\C{G}{S}$, $xy^{-1}$ is also in the centralizer. Note that the condition $gs = sg$ is equivalent to the condition $sg^{-1} = g^{-1}s$.
 
-        Clearly for all $s \in S$ we have $es = se$, so $e \in \C{G}{S}$. This means that $\C{G}{S}$ is non-empty and $\C{G}{S}$ is a subset of $G$.
+        Clearly for all $s \in S$ we have $es = se$, so $e \in \C{G}{S}$. This means that $\C{G}{S}$ is non-empty.
         
         Now suppose $x$ and $y$ are in $\C{G}{S}$. Let $s$ be in $S$. Then
         \begin{align*}
@@ -104,10 +105,10 @@ We look at some examples of the use of the subgroup test.
     \[
         \Z{G} = \{z \in G \vert gz = zg \text{ for all } g \in G\}.
     \]
-    We claim that $\Z{G}$ is a subgroup of $G$.
+    Clearly $\Z{G}$ is a subset of $G$. We claim that $\Z{G}$ is a subgroup of $G$.
 
     \begin{proof}
-	    Note that $e \in \Z{G}$ since $ge = eg$ for all $g \in G$.
+	    Note that $e \in \Z{G}$ since $ge = eg$ for all $g \in G$, so $\Z{G}$ is non-empty.
 
 	    Let $x$ and $y$ be in $\Z{G}$, meaning that $gx = xg$ and $gy = yg$ for all $g \in G$. Note that $gy = yg$ implies $y^{-1}g = gy^{-1}$, so $y^{-1} \in \Z{G}$. Now,
 	    \begin{align*}
@@ -117,7 +118,9 @@ We look at some examples of the use of the subgroup test.
 	        &= (gx)y^{-1} & (\text{since } x \in \Z{G})\\
 	        &= g(xy^{-1}) & (\text{associativity})
 	    \end{align*}
-	    which means that $xy^{-1} \in \Z{G}$. Hence $\Z{G} \leq G$ by the subgroup test.
+	    which means that $xy^{-1} \in \Z{G}$.
+        
+        Hence $\Z{G} \leq G$ by the subgroup test.
     \end{proof}
 \end{example}
 
@@ -227,6 +230,29 @@ We now state and prove a result that relates the equality of cosets.
     Let $G$ be a group, $H \leq G$, and $g_1$ and $g_2$ be elements in $G$. Prove that if $g_1H \cap g_2H \neq \emptyset$ then $g_1H = g_2H$.
 \end{exercise}
 
+We note one very useful corollary of Coset Equality.
+\begin{corollary}[Element in Coset]\label{corollary-equivalence-of-element-in-coset}
+    Let $G$ be a group, $H \leq G$, and $x \in G$. Then the following statements are equivalent.
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x \in H$
+        \item $xH = H$
+        \item $Hx = H$
+    \end{enumerate}
+\end{corollary}
+\begin{proof}
+    We prove this corollary by showing $(1) \iff (2)$ and $(1) \iff (3)$, which will imply $(2) \iff (3)$.
+    \begin{itemize}
+        \item $\boxed{(1) \iff (2)}$ Let $g_1 = e$ and $g_2 = x$. Result is clear from Coset Equality (\myref{lemma-coset-equality}), statements 1 and 5.
+        \item $\boxed{(1) \iff (3)}$ We note $x \in H$ if and only if $x^{-1} \in H$ (since $H$ is a subgroup). Let $g_1 = x^{-1}$ and $g_2 = e$. Result follows from Coset Equality (\myref{lemma-coset-equality}), statements 2 and 5.
+    \end{itemize}
+    This completes the proof.
+\end{proof}
+\begin{remark}
+    This corollary is very useful, and arguably more useful than Coset Equality (\myref{lemma-coset-equality}), as we often consider cases where we see a coset equalling the subgroup itself. In the next two chapters, we will still cite this corollary when justifying why $xH = H$ (or $Hx = H$) means $x \in H$, but in later chapters we will not.
+\end{remark}
+
+\newpage
+
 \section{Lagrange's Theorem}
 Lagrange's theorem is an important result relating the order of a subgroup and the order of the group itself. Before that, we introduce the idea of the \textbf{index} of a subgroup.
 \begin{definition}
@@ -238,11 +264,9 @@ Note that since the number of left cosets is the number of right cosets, $[G : H
     If $G = D_3$ and $H = \{e, s\}$, then there are 3 distinct left cosets, namely $H$, $rH$, and $r^2H$. Thus, $[G:H] = 3$ in this case.
 \end{example}
 
-\newpage
-
 We require two lemmas to properly prove Lagrange's theorem.
 \begin{lemma}\label{lemma-left-coset-partition}
-    Let $G$ be a group and $H \leq G$. Then distinct left cosets of $H$ in $G$ partition $G$.
+    The distinct left cosets of a subgroup $H$ of a group $G$ partition $G$.
 \end{lemma}
 \begin{proof}
     To prove that the distinct left cosets of $H$ in $G$ partition $G$, we need to show three things.
@@ -321,8 +345,6 @@ Let's look at some corollaries of Lagrange's theorem.
     See \myref{exercise-prime-order-element} (later).
 \end{proof}
 
-\newpage
-
 \begin{corollary}\label{corollary-group-with-prime-order-is-cyclic}
     A finite group $G$ with prime order $p$ is cyclic.
 \end{corollary}
@@ -337,11 +359,9 @@ Let's look at some corollaries of Lagrange's theorem.
 \end{exercise}
 
 \section{Normal Subgroups}
-We now look at a special type of subgroup, known as a \textbf{normal subgroup}.
 \begin{definition}
-    Let $G$ be a group and $N \leq G$. We say that $N$ is a \textbf{normal subgroup}\index{subgroup!normal} of $G$ if $gN = Ng$ for all $g \in G$.
+    Let $G$ be a group and $N \leq G$. We say that $N$ is a \textbf{normal subgroup}\index{subgroup!normal} of $G$ if $gN = Ng$ for all $g \in G$, and we write $N \unlhd G$.
 \end{definition}
-If $N$ is a normal subgroup of $G$, we write $N \unlhd G$. Furthermore if $N$ is a \textit{proper} normal subgroup of $G$, we write $N \lhd G$.
 
 Note that $gN = Ng$ is equivalent to the following two statements:
 \begin{itemize}
@@ -364,7 +384,9 @@ Note that $gN = Ng$ is equivalent to the following two statements:
     which is an element of $H$. Thus $ghg^{-1}$ is an element of $H$ for all $g$ in $G$ and $h$ in $H$, meaning $H \unlhd G$.
 \end{proof}
 
-\newpage
+\begin{definition}
+    A proper subgroup $N$ of a group $G$ that is normal is called a \textbf{proper normal subgroup}\index{subgroup!normal!proper} of $G$, and we write $N \lhd G$.
+\end{definition}
 
 \begin{example}\label{example-normal-subgroups-of-d3}
     Let's find the normal subgroups of the dihedral group of order 6, $D_3$.
@@ -392,23 +414,23 @@ We end this chapter by looking at a special (and useful) type of group: the quot
 \begin{definition}
     Let $G$ be a group and $H \leq G$. The \textbf{set of left cosets}\index{set of left cosets} is denoted by
     \[
-        G/H = \{gH \vert g \in G \}.
+        G/H = \{gH \vert g \in G \}
     \]
+    and has a cardinality of $[G:H] = \frac{|G|}{|H|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). $G/H$ is read ``$G$ by $H$''.
 \end{definition}
 \begin{remark}
     We may sometimes write $G/H$ using fractions (i.e. $\frac GH$) if it serves to improve readability.
 \end{remark}
-
-Note that if $G/H$ is \textbf{not} a group, it is read ``$G$ by $H$''. Recall that the number of left cosets is $[G:H] = \frac{|G|}{|H|}$ by Lagrange's Theorem (\myref{thrm-lagrange}).
 
 \begin{theorem}\label{thrm-quotient-group-requirement}
     Let $G$ be a group and $N \unlhd G$. Then $G / N$ forms a group called the \textbf{quotient group}\index{quotient group} with group operation $\star$ where
     \[
         (xN) \star (yN) = (xy)N.
     \]
+    In this case, $G / N$ is read ``$G$ mod $N$'' instead of ``$G$ by $N$''.
 \end{theorem}
 \begin{remark}
-    For the quotient group, $G / N$ is read ``$G$ mod $N$''. Also note that, as per usual, we suppress the operation $\star$ and just write $(xN)(yN) = (xy)N$.
+    As per usual, we suppress the operation $\star$ and just write $(xN)(yN) = (xy)N$.
 \end{remark}
 \begin{proof}
     Before we can prove that it forms a group, we need to show that $\star$ is well defined. This is because we worry that if $x_1N = x_2N$ and $y_1N = y_2N$ there may be a situation that $(x_1y_1)N \neq (x_2y_2)N$ under this operation. Thus we need to check if it is well defined before we can proceed.
@@ -459,7 +481,7 @@ Note that if $G/H$ is \textbf{not} a group, it is read ``$G$ by $H$''. Recall th
 \end{proof}
 
 \begin{example}
-    Let's look at possible quotients of the group $D_3$, which has the underlying set of $\{e, r, r^2, s, rs, r^2s\}$. Recall from a previous example (\myref{example-normal-subgroups-of-d3}) that $\langle r \rangle \lhd D_3$. Thus $D_3 / \langle r \rangle$ is a quotient group, with $|D_3 / \langle r \rangle| = \frac{|D_3|}{|\langle r\rangle|} = \frac63 = 2$.
+    Let's look at possible quotient groups of the group $D_3$, which has the underlying set of $\{e, r, r^2, s, rs, r^2s\}$. Recall from a previous example (\myref{example-normal-subgroups-of-d3}) that $\langle r \rangle \lhd D_3$. Thus $D_3 / \langle r \rangle$ is a quotient group, with $|D_3 / \langle r \rangle| = \frac{|D_3|}{|\langle r\rangle|} = \frac63 = 2$.
 
     Let's now look at the elements of $D_3 / \langle r \rangle$.
     \begin{align*}
