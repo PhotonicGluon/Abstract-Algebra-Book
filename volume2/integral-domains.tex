@@ -3,14 +3,16 @@ We explored the absolute basics of rings in the previous chapter. When working i
 
 \section{Definition and Examples}
 \begin{definition}
-    An \textbf{integral domain}\index{integral domain} is a commutative ring with identity and no zero divisors.
+    An \textbf{integral domain}\index{integral domain} is a commutative ring with identity and contains no zero divisors.
 \end{definition}
-Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$ such that $ab = 0$. What we mean is that an integral domain has no such element.
+\begin{remark}
+    Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$ such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the integral domain.
+\end{remark}
 
 \begin{example}
-    We show that the ring $\Z$ is an integral domain. We note that $\Z$ is a commutative ring as multiplication is commutative. Furthermore, clearly 1 is the multiplicative identity in $\Z$. All that remains is to show that there does not exist any zero divisors.
+    We show that $\Z$ is an integral domain. We note that $\Z$ is a commutative ring as multiplication is commutative. Furthermore, clearly 1 is the multiplicative identity in $\Z$. All that remains is to show that there does not exist any zero divisors.
 
-    Suppose $a$ and $b$ are non-zero elements in $\Z$. We show that $ab \neq 0$ to prove that there does not exist any zero divisors. Let's first consider the case when $b > 0$. Then we may write
+    Suppose $a$ and $b$ are non-zero elements in $\Z$. We show that $ab \neq 0$ to prove that there does not exist any zero divisors. Let's first consider the case when $b > 0$. We may write
     \[
         ab = \underbrace{a + a + \cdots + a}_{b \text{ times}}
     \]
@@ -22,8 +24,11 @@ Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$
 
     Therefore $\Z$ is an integral domain.
 \end{example}
+
 \begin{example}
     We show that the ring $\Z[i]$, the gaussian integers, is an integral domain. Similar to $\Z$, we note multiplication is commutative with identity 1.
+
+    \newpage
 
     Suppose $w$ and $z$ are non-zero elements in $\Z[i]$; write $w = a+bi$ and $z = c+di$. Note that $a^2+b^2 \neq 0$ and $c^2 + d^2 \neq 0$. Now clearly
     \[
@@ -92,15 +97,13 @@ With an introduction of integral domains out of the way, we introduce some gener
     This proves the proposition.
 \end{proof}
 
-\newpage
-
 \begin{theorem}\label{thrm-finite-integral-domain-is-field}
     Every finite integral domain is a field.
 \end{theorem}
 \begin{proof}
     A finite integral domain is a commutative ring with identity; all that remains is to prove that every non-zero element has an inverse.
 
-    Suppose $R$ is a finite integral domain and take a non-zero element $r$ in $R$. Consider the set
+    Suppose $R$ is a finite integral domain and take a non-zero element $r$ in $R$. Consider
     \begin{align*}
         A &= \{r^k \vert k \in \Z,\;k\geq 0\}\\
         &= \{1, r, r^2, r^3, \dots\}\\
@@ -153,11 +156,11 @@ With an introduction of integral domains out of the way, we introduce some gener
 \end{exercise}
 
 \section{Characteristic of a Ring}
-Before we introduce the characteristic of a ring, we clarify the meaning of the order of an element in the group.
+Before we introduce the characteristic of a ring, we clarify the meaning of the order of an element in the ring.
 \begin{definition}
-    Let $R$ be a ring and $x$ be an element of the ring $R$.
+    Let $R$ be a ring and $x$ an element of the ring $R$.
     \begin{itemize}
-        \item The \textbf{additive order}\index{order!additive} of $x$ is the order of $x$ in the group $(R, +)$, and is denoted by $|x|_+$.
+        \item The \textbf{additive order}\index{order!additive} of $x$ is the order of $x$ in the group $(R, +)$. We denote the additive order of $x$ by $|x|_+$.
         \item If $R$ is a group with identity 1, the \textbf{multiplicative order}\index{order!multiplicative} of $x$ is the smallest positive integer $n$ such that $x^n = 1$ and is denoted $|x|_\times$, if it exists.
     \end{itemize}
 \end{definition}
@@ -219,6 +222,7 @@ We look at two properties about the characteristic.
 \end{exercise} 
 
 \newpage
+
 \section{Problems}
 \begin{problem}
     Find two zero divisors in the ring

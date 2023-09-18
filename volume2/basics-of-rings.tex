@@ -27,6 +27,8 @@ Let's look at some examples of rings.
     Note that, in this volume, $\Z_n$ refers to the ring $(\Z_n, \oplus_n, \otimes_n)$.
 \end{example}
 
+\newpage
+
 \begin{example}
     We show that $(\Q, +, \times)$, where $+$ and $\times$ denote normal addition and multiplication, form a ring.
     \begin{itemize}
@@ -68,6 +70,9 @@ Let $\Mn{n}{R}$ denote the set of $n\times n$ matrices with entries in the ring 
     \end{align*}
     where $\oplus$ and $\otimes$ are the addition and multiplication operations in the ring $R$ respectively.
 \end{itemize}
+For brevity, we let $\Mn{n}{R}$ denote the ring under matrix addition and multiplication.
+
+\newpage
 
 \begin{proposition}
     $\Mn{n}{R}$ is a ring under matrix addition and matrix multiplication.
@@ -80,31 +85,26 @@ Let $\Mn{n}{R}$ denote the set of $n\times n$ matrices with entries in the ring 
             \item \textbf{Closure}: Clearly the sum of any two matrices in $\Mn{n}{R}$ is also a square matrix with $n$ rows with elements inside $R$, meaning that $\Mn{n}{R}$ is closed under matrix addition.
 
             \item \textbf{Associative}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. Let $\textbf{P} = \textbf{A} + (\textbf{B} + \textbf{C})$ and $\textbf{Q} = (\textbf{A} + \textbf{B}) + \textbf{C}$. We note that $\textbf{P} = \textbf{Q}$ as
-            \begin{align*}
-                p_{i,j} &= a_{i,j} \oplus (b_{i,j} \oplus c_{i,j})\\
-                &= (a_{i,j} \oplus b_{i,j}) \oplus c_{i,j} & (\oplus\text{ is associative})\\
-                &= q_{i,j}
-            \end{align*}
-            which proves that matrix addition is associative.
+            \[
+                p_{i,j} = a_{i,j} \oplus (b_{i,j} \oplus c_{i,j}) = (a_{i,j} \oplus b_{i,j}) \oplus c_{i,j} = q_{i,j}
+            \]
+            by associativity of $\oplus$, which proves that matrix addition is associative.
     
-            \item \textbf{Identity}: Denote the $n \times n$ matrix with contains only the zero in $R$ by $\textbf{0}_n$. One sees clearly that this is the identity in $\Mn{n}{R}$ as $\textbf{M} + \textbf{0}_n = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
+            \item \textbf{Identity}: Denote the $n \times n$ matrix of all zeros by $\textbf{0}_n$. One sees clearly that this is the identity in $\Mn{n}{R}$ as $\textbf{M} + \textbf{0}_n = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
             
-            \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ such that $b_{i,j} = -a_{i,j}$. That is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \textbf{0}_n$.\newline
-            (Note that we denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$.)
+            \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ such that $b_{i,j} = -a_{i,j}$. That is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \textbf{0}_n$. (We denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$).
 
             \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{C}$. Consider $c_{i,j} = a_{i,j} \oplus b_{i,j}$. Since $\oplus$ is commutative, thus $a_{i,j} \oplus b_{i,j} = b_{i,j} \oplus a_{i,j}$. But $d_{i,j} = b_{i,j} \oplus a_{i,j}$, so we have $c_{i,j} = d_{i,j}$. Therefore $\textbf{C} = \textbf{D}$.
         \end{itemize}
 
-        \item \textbf{Multiplication-Semigroup}: We now need to prove that $(\Mn{n}{R}, \cdot)$ is a semigroup.
+        \item \textbf{Multiplication-Semigroup}: We show that $(\Mn{n}{R}, \cdot)$ is a semigroup.
         \begin{itemize}
             \item \textbf{Closure}: In Volume I we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entries of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
         
             \item \textbf{Associative}: We proved matrix multiplication is associative in Volume I.
         \end{itemize}
         
-        \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly.
-        
-        Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
+        \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly. Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
         \begin{align*}
             r_{i,j} &= \sum_{k=1}^n \left(a_{i,k} \otimes \left(b_{k,j} \oplus c_{k,j}\right)\right)\\
             &= \sum_{k=1}^n \left((a_{i,k} \otimes b_{k,j}) \oplus (a_{i,k} \otimes c_{k,j})\right)\\
@@ -115,7 +115,6 @@ Let $\Mn{n}{R}$ denote the set of $n\times n$ matrices with entries in the ring 
     \end{itemize}
     As all the ring axioms are satisfied, thus $\Mn{n}{R}$ is a ring.
 \end{proof}
-For brevity, we let $\Mn{n}{R}$ denote the ring under matrix addition and multiplication.
 
 \section{General Properties of Rings}
 We list some properties of rings here. For each of the propositions, assume $R$ is a ring.
@@ -168,12 +167,10 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
     Show that $(-a)(-b) = ab$ for any $a$ and $b$ in $R$.
 \end{exercise}
 
-\newpage
-
 \section{More Definitions}
 Suppose $R$ is a ring.
 \begin{definition}
-    We say that $a \neq 0$ is a \textbf{zero divisor}\index{zero divisor} if there exists $b \neq 0$ such that $ab = 0$.
+    We say that $a \neq 0$ is a \textbf{zero divisor}\index{zero divisor} in $R$ if there exists $b \neq 0$ such that $ab = 0$.
 \end{definition}
 \begin{example}
     Consider the ring $\Z_{12}$. Clearly 4 and 6 are in $\Z_{12}$, and their product is $24 = 2 \times 12 = 0$ in $\Z_{12}$. Hence 4 and 6 are zero divisors in $\Z_{12}$.
@@ -181,7 +178,7 @@ Suppose $R$ is a ring.
 \begin{example}
     We claim that the ring
     \[
-        R = \{f: [0, 1] \to [0, 1]\}
+        R = \{f: \R \to \R \vert f: [0, 1] \to [0, 1]\}
     \]
     has zero divisors. Consider the functions
     \begin{align*}
@@ -214,18 +211,15 @@ We note one property about zero divisors, which will be used in future chapters.
 \end{proof}
 
 \begin{definition}
-    Suppose $0 \neq 1$. An element $u \in R$ is called a \textbf{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$. Equivalently, $u$ is a unit if it has a multiplicative inverse.
+    Suppose $R$ is a ring with identity such that $0 \neq 1$. An element $u \in R$ is called a \textbf{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$. Equivalently, $u$ is a unit if it has a multiplicative inverse.
 \end{definition}
 \begin{example}
     3 and 7 are units in $\Z_{10}$ since $3 \times 7 = 7 \times 3 = 21 = 1$ in $\Z_{10}$.
 \end{example}
 
 \begin{definition}
-    If every non-zero element $x \in R$ is a unit, then $R$ is said to be a \textbf{division ring}\index{division ring}.
+    Suppose $R$ is a ring with identity such that $0 \neq 1$. If every non-zero element $x \in R$ is a unit, then $R$ is said to be a \textbf{division ring}\index{division ring}.
 \end{definition}
-\begin{remark}
-    A division ring is a ring with identity since every element is a unit in a division ring.
-\end{remark}
 
 \begin{definition}
     A commutative division ring where $0 \neq 1$ is called a \textbf{field}\index{field}.
@@ -236,16 +230,14 @@ We look at fields in more detail in Volume III.
     Is $\Z$ a field?
 \end{exercise}
 
-\newpage
-
 \section{Subrings}
 We end this chapter off with an exploration about subrings.
 
 \begin{definition}
     Let $R$ be a ring and $S$ be a subset of $R$. Then $S$ is a \textbf{subring}\index{subring} of $R$ if
     \begin{itemize}
-        \item $(S, +) \leq (R, +)$, i.e. the set $S$ under addition is a subgroup of $R$ under addition; and
-        \item For all $a$ and $b$ in $S$ we have $ab \in S$, i.e. $S$ is closed under multiplication.
+        \item $(S, +) \leq (R, +)$, that is, the subset $S$ under addition is a subgroup of $R$ under addition; and
+        \item for all $a$ and $b$ in $S$ we have $ab \in S$, i.e. $S$ is closed under multiplication.
     \end{itemize}
 \end{definition}
 \begin{remark}
@@ -283,6 +275,9 @@ We end this chapter off with an exploration about subrings.
         so $\Z[i]$ is closed under multiplication. Therefore $\Z[i]$ is a subring of $\C$.
     \end{proof}
 \end{example}
+\begin{remark}
+    One sees that $\R \subseteq \C$ so $\R$ is actually a subring of $\C$.
+\end{remark}
 \begin{exercise}
     Show that
     \[
@@ -331,8 +326,6 @@ We end this chapter off with an exploration about subrings.
     \]
     is a ring. Hence show it is a field.
 \end{problem}
-
-\newpage
 
 \begin{problem}
     Let
