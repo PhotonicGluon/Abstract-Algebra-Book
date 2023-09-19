@@ -1,31 +1,62 @@
 \chapter{Introduction to Rings}
 In Volume I, we looked exclusively at groups and their operations. We discussed how groups are a generalisation of symmetry and looked at results related to groups. In this volume, we look at rings.
 
-Before we introduce rings, we look at `simpler' algebraic structures and build our way up to them.
+\section{Extending Number Systems}
+The entire field fo ring theory was kickstarted to generalize number systems.
 
-\section{Basic Algebraic Structures}
+We are intimately familiar with number systems in our daily lives. The simplest number system that was developed involved only the positive integers (which we denote by $\mathbb{N}$). What properties do we have in the positive integers?
+
+Let's start with addition. Adding two positive numbers together still results in a positive integer. For example, we see $2 + 3 = 5$, $3 + 4 = 7$, $58 + 95 = 153$, and so on. It is impossible to add two positive integers and end up with a non-positive integer. This means that the set of positive integers is closed under addition. Furthermore, we want addition to be associative. Take for example the expression $1 + 2 + 3$. We want $1 + (2 + 3) = (1 + 2) + 3 = 6$, as we really don't care about the order of addition within brackets. Finally addition is commutative. As an example, the sum $4 + 6$ is equal to $6 + 4$, and we don't care what order we perform the addition in.
+
+Let's now turn our attention to multiplication. One sees that multiplying two positive integers together still results in a positive integer, and that we don't care about the order of evaluating multiplication of three positive integers.
+
+Finally, we see that multiplication distributes over addition. To see what this means, consider the expression $5(6+7)$. How could we evaluate this? Well, we could sum $6+7 = 13$ first, then multiply it by 5 to get $5\times13 = 65$. Alternatively, we could notice that $5(6+7) = 5 \times 6 + 5 \times 7$ and evaluate it that way. This is called left distribution; right distribution is defined similarly.
+
+In summary, we may call the set of positive integers, along with addition and multiplication, a \textbf{semiring} (see \cite{mathworld_semiring-definition}).
+
+\newpage
+
 \begin{definition}
-    A \textbf{magma}\index{magma} is a set $M$ together with a binary operation $\ast$ which is closed. That is, if $a$ and $b$ are in $M$, then $a \ast b \in M$. Such a magma is denoted $(M, \ast)$.
+    A set $S$ together with two operations $+$ and $\cdot$ is called a \textbf{semiring}\index{semiring} if it satisfies the following properties.
+    \begin{itemize}
+        \item \textbf{Additive Closure}\index{axiom!semiring!additive closure}: For any two elements $a$ and $b$ in $S$, $a + b$ is also in $S$.
+        \item \textbf{Additive Associativity}\index{axiom!semiring!additive associativity}: For any three elements $a$, $b$, and $c$ in $S$, $a+(b+c) = (a+b)+c$.
+        \item \textbf{Additive Commutativity}\index{axiom!semiring!additive commutativity}: For any two elements $a$ and $b$ in $S$, $a + b = b + a$.
+        \item \textbf{Multiplicative Closure}\index{axiom!semiring!multiplicative closure}: For any two elements $a$ and $b$ in $S$, $a \cdot b$ is also in $S$.
+        \item \textbf{Multiplicative Associativity}\index{axiom!semiring!multiplicative associativity}: For any three elements $a$, $b$, and $c$ in $S$, $a\cdot(b\cdot c) = (a\cdot b)\cdot c$.
+        \item \textbf{Left and Right Distributivity}\index{axiom!semiring!distributivity}: For any three elements $a$, $b$, and $c$ in $S$, $a\cdot(b + c) = (a \cdot b) + (a \cdot c)$ and $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
+    \end{itemize}
 \end{definition}
-\begin{example}
-    Consider the set $M = \{1, 2, 3, 4\}$ with the operation $\ast$ such that $(M, \ast)$ has the Cayley table as shown below.
-    \begin{table}[h]
-        \centering
-        \begin{tabular}{|l|l|l|l|l|}
-            \hline
-            $\ast$     & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} \\ \hline
-            \textbf{1} & 1          & 2          & 1          & 2          \\ \hline
-            \textbf{2} & 2          & 3          & 4          & 1          \\ \hline
-            \textbf{3} & 1          & 3          & 4          & 2          \\ \hline
-            \textbf{4} & 2          & 1          & 2          & 1          \\ \hline
-        \end{tabular}
-    \end{table}
-    
-    Clearly for any $a, b\in M$ we have $a \ast b \in M$, so $(M, \ast)$ is a magma.
-\end{example}
 
+However, one may notice that $\mathbb{N}$ isn't particularly fun to work in. We only have these trivial properties to work with, and these do not give us enough to generate results about the positive integers. So ancient civilizations decided to include the notion of a ``additive identity'', which is called zero (0). Now, adding zero to any positive integer results in the positive integer itself.
+
+We also notice that \textit{multiplying} any number by 0 results in 0: this is obvious, especially for us who work with integers. This set of non-negative integers (which, for brevity, we denote by $N$ in this chapter only) with addition and multiplication is called a \textbf{rig} (see \cite{proofwiki_rig-definition}).
 \begin{definition}
-    A \textbf{semigroup}\index{semigroup} is a magma $(\mathcal{S}, \ast)$ where the operation $\ast$ is associative. That is, $a\ast(b\ast c) = (a\ast b)\ast c$.
+    A set $S$ together with two operations $+$ and $\cdot$ is called a \textbf{rig}\index{rig} if it is a semiring and satisfies these additional properties.
+    \begin{itemize}
+        \item \textbf{Additive Identity}\index{axiom!rig!additive identity}: There is an element $0_S$ in $S$ such that for any $x$ in $S$ we have $0_S + x = x + 0_S = x$.
+        \item \textbf{Multiplication by Zero}\index{axiom!rig!multiplication by zero}: For any element $x$ in $S$ we have $0_S \cdot x = x \cdot 0_S = 0_S$.
+    \end{itemize}
+\end{definition}
+\begin{remark}
+    A rig is a ri\textbf{n}g without \textbf{n}egative elements.
+\end{remark}
+
+Now, for any element $n$ in $N$, it would be nice to have a `corresponding' element in that sums to the additive identity 0. Clearly $N$ doesn't have such an element, but the integers ($\Z$) does. For example, the integer 3 has a `corresponding' element -3 that results in a sum of 0, i.e. $3 + (-3) = 0$. In general, for any integer $n$, summing $n$ with $-n$ results in 0. This `corresponding' element is called the additive inverse of $n$. With additive inverses, we finally have a construction for a \textbf{ring}. Note that we follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ring-definition} for the definition of a ring.
+\begin{definition}
+    A set $S$ together with two operations $+$ and $\cdot$ is called a \textbf{ring}\index{ring} if it is a rig and satisfies the \textbf{Additive Inverse} property, where for every element $x$ in $S$, there exists an element $-x$ in $S$ such that $x + (-x) = (-x) + x = 0_S$.
+\end{definition}
+
+\section{Rings as Algebraic Structures}
+With an intuition of what rings are, we more concretely define what a ring is using algebraic structures.
+
+In the previous volume, we explored the concept of groups. We weaken the conditions required for that structure to form a \textbf{semigroup}.
+\begin{definition}
+    A \textbf{semigroup}\index{semigroup} is a set $S$ together with an operation $\ast$ satisfying the \textbf{semigroup axioms}\index{axiom!semigroup}.
+    \begin{itemize}
+        \item \textbf{Closure}\index{axiom!semigroup!closure}: For any two elements $a$ and $b$ in $S$, the element $a\ast b$ is also in $S$.
+        \item \textbf{Associativity}\index{axiom!semigroup!associativity}: For any $a$, $b$, and $c$ in $S$, we have $a \ast (b \ast c) = (a \ast b) \ast c$.
+    \end{itemize}
 \end{definition}
 \begin{example}
     Consider the set $S = \{1, 2, 3, 4\}$ with the operation $\ast$ such that $(S, \ast)$ has the Cayley table as shown below.
@@ -44,60 +75,41 @@ Before we introduce rings, we look at `simpler' algebraic structures and build o
     One sees that $(S, \ast)$ is closed under $\ast$. In addition, $\ast$ is associative. Hence $(S, \ast)$ is a semigroup.
 \end{example}
 
-\begin{definition}
-    A \textbf{monoid}\index{monoid} is a semigroup $(M, \ast)$ with an element $e$, called the \textbf{identity}, such that
-    \[
-        e \ast m = m \ast e = m
-    \]
-    for all $m \in M$.
-\end{definition}
-\begin{example}
-    The structure $(S, \circ)$, where
-    \[
-        S = \{f \vert  f: X \to X\},
-    \]
-    $X$ is a set, and $\circ$ denotes function composition forms a monoid.
-    \begin{itemize}
-        \item \textbf{Closure}: If $f, g \in S$ then $f\circ g \in S$ since function composition is closed.
-        \item \textbf{Associative}: Function composition is associative.
-        \item \textbf{Identity}: The identity function $\id: X \to X, x\mapsto x$ is inside $S$ and
-        \[
-            \id \circ f = f \circ \id = f
-        \]
-        for all $f \in S$.
-    \end{itemize}
-    Thus $(S, \circ)$ forms a monoid.
-\end{example}
-
-\begin{definition}
-    A \textbf{group}\index{group} is a monoid $(G, \ast)$ where every element has an inverse. That is to say, for every $g \in G$, there exists $g^{-1} \in G$ such that
-    \[
-        g \ast g^{-1} = g^{-1} \ast g = e
-    \]
-    where $e$ is the identity in $G$.
-\end{definition}
-
-\section{Definition of a Ring}
-With all that set up, we are ready to define what a ring is. Note that we follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ring-definition} for the definition of a ring.
+With all that set up, we are ready to rigorously define what a ring is.
 \begin{definition}
     A \textbf{ring}\index{ring} is a set $R$ with two binary operations $+$ and $\cdot$ satisfying the following axioms.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: $(R, +)$ is an abelian group.
-        \item \textbf{Multiplication-Semigroup}: $(R, \cdot)$ is a semigroup.
-        \item \textbf{Distributive}: $\cdot$ is distributive over $+$. That is,
+        \item \textbf{Addition-Abelian}\index{axiom!ring!addition-abelian}: $(R, +)$ is an abelian group.
+        \item \textbf{Multiplication-Semigroup}\index{axiom!ring!multiplication-semigroup}: $(R, \cdot)$ is a semigroup.
+        \item \textbf{Distributive}\index{axiom!ring!distributive}: $\cdot$ is distributive over $+$. That is,
         \begin{itemize}
             \item $a \cdot (b + c) = (a \cdot b) + (b \cdot c)$; and
             \item $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
         \end{itemize}
     \end{itemize}
-    One may denote such a ring by $(R, +, \cdot)$.
+    We denote such a ring by $(R, +, \cdot)$.
 \end{definition}
 \begin{remark}
-    Other authors (e.g. \cite[p.~136]{cohn_1982}, \cite[pp.~145--146]{clark_1984}) may require that $(R, \cdot)$ is a monoid. In this book, any ring that satisfies the above condition is called a \textbf{ring with identity}\index{ring!with identity}.
+    We do not need to define \textbf{Multiplication by Zero} as an axiom here because it is implied by the three ring axioms above. We prove this in the next chapter.
 \end{remark}
+
+We note two important types of rings here.
+\begin{definition}
+    A \textbf{ring with identity}\index{ring!with identity} is a ring $(R, +, \cdot)$ with an element $1_R$ such that for any $x \in R$ we have $1_R \cdot x = x \cdot 1_R = x$.
+\end{definition}
 \begin{remark}
-    A ring where $a \cdot b = b \cdot a$ for all $a$ and $b$ in $R$ is called a \textbf{commutative ring}\index{ring!commutative}.
+    Other authors (e.g. \cite[p.~136]{cohn_1982}, \cite[pp.~145--146]{clark_1984}) define a ring as a ring with identity.
 \end{remark}
+\begin{example}
+    We introduced the integers ($\mathbb{Z}$) in the previous section. One sees clearly that 1 is the multiplicative identity in the integers since $1n = n$ for any integer $n$, os $\mathbb{Z}$ is a ring with identity.
+\end{example}
+
+\begin{definition}
+    A ring where $a \cdot b = b \cdot a$ for all $a$ and $b$ in $R$ is called a \textbf{commutative ring}\index{ring!commutative}.
+\end{definition}
+\begin{example}
+    Considering the integers again, we see that $mn = nm$ for any two integers $m$ and $n$. Thus $\mathbb{Z}$ is a commutative ring.
+\end{example}
 
 We end this chapter by introducing the \textbf{trivial ring}.
 \begin{definition}
