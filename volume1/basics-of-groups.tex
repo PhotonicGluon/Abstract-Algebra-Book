@@ -11,18 +11,22 @@ Recall that a group satisfies four axioms.
 \end{enumerate}
 
 Recall also we write $a \ast b$ as $ab$, and denote the group $(G, \ast)$ by $G$ only.
-
 \begin{remark}
     If the group operation is additive\index{group!additive}, we write $a + b$ instead of $ab$.
 \end{remark}
 
-Let's look at some examples of groups.
+We also note the following fact.
+\begin{axiom}\label{axiom-addition-is-associative-and-commutative}\index{axiom!of associative addition}\index{axiom!of commutative addition}
+    Addition over the integers, the rational numbers, and the real numbers is assumed to be associative and commutative.
+\end{axiom}
+It is possible to prove that addition is both associative and commutative, but their proof is too involved to be reproduced here. As such, we leave it as an axiom.
 
+Let's look at some examples of groups.
 \begin{example}
     Let $\mathbb{Z}$ be the set of integers and let $+$ denote regular addition. Then $(\mathbb{Z}, +)$ forms a group.
     \begin{enumerate}
         \item \textbf{Closure}: For all integers $a$ and $b$, we know $a + b$ is an integer.
-        \item \textbf{Associativity}: We know $a + (b + c) = (a + b) + c$.
+        \item \textbf{Associativity}: By \myref{axiom-addition-is-associative-and-commutative} we know for all integers $a$, $b$, and $c$ that $a + (b + c) = (a + b) + c$.
         \item \textbf{Identity}: The identity is 0, since $0 + x = x + 0 = x$.
         \item \textbf{Inverse}: The inverse of the integer $x$ is $-x$, since $x + (-x) = (-x) + x = 0$.
     \end{enumerate}
@@ -41,7 +45,7 @@ We now look at the notion of $\mathbb{Z}_n$.
     We prove this by showing the group axioms hold.
     \begin{enumerate}
         \item \textbf{Closure}: For $a$ and $b$ in $\mathbb{Z}_n$, $a \oplus_n b = (a + b) \mod{n}$ is a integer between 0 and $n - 1$. Thus $a \oplus b$ is inside $\mathbb{Z}_n$.
-        \item \textbf{Associativity}: For $a$, $b$, and $c$ in $\mathbb{Z}_n$, since addition is associative, thus $a \oplus_n (b \oplus_n c) = (a + (b + c)) \mod{n} = ((a + b) + c) \mod{n} = (a \oplus_n b) \oplus_n c$.
+        \item \textbf{Associativity}: For $a$, $b$, and $c$ in $\mathbb{Z}_n$, since addition is associative (\myref{axiom-addition-is-associative-and-commutative}), thus $a \oplus_n (b \oplus_n c) = (a + (b + c)) \mod{n} = ((a + b) + c) \mod{n} = (a \oplus_n b) \oplus_n c$.
         \item \textbf{Identity}: The identity is $0$ since for every $x$ in $\mathbb{Z}_n$, $0 \oplus_n x = (0 + x) \mod{n} = (x + 0) \mod{n} = x \oplus_n 0 = x$.
         \item \textbf{Inverse}:
         \begin{itemize}
@@ -72,7 +76,9 @@ One could use a \textbf{Cayley table}\index{cayley table} (or \textbf{group tabl
         \end{tabular}
     \end{table}
 
-    One observes from the above table that
+    \newpage
+
+    One observes from the Cayley table that
     \begin{enumerate}
         \item for all $x$ and $y$ in $\mathbb{Z}_6$, $x \oplus_6 y$ is in $\mathbb{Z}_6$;
         \item for all $x, y$, and $z$ in $\mathbb{Z}_6$, $x \oplus_6 (y \oplus_6 z) = (x \oplus_6 y) \oplus_6 z$;
@@ -166,6 +172,9 @@ We now prove an important property of groups: the \textbf{cancellation law}.
         \item $xg = yg$
     \end{enumerate}
 \end{proposition}
+
+\newpage
+
 \begin{proof}
     We prove the statements in order.
     \begin{itemize}
