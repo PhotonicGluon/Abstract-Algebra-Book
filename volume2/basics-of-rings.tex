@@ -1,7 +1,7 @@
 \chapter{Basics of Rings}
-With basic algebraic structures and the definition of a ring out of the way, we are now ready to tackle the basics of rings in this chapter.
+With an intuition and definition of rings out of the way, we are now ready to tackle the basics in this chapter.
 
-\section{Basic Examples of Rings}
+\section{Obvious Rings}
 Before we introduce some examples of rings, we make some remarks for the notation that is used in Ring Theory.
 \begin{itemize}
     \item The multiplication symbol $\cdot$ is usually omitted, so $x \cdot y$ is written as $xy$.
@@ -11,110 +11,196 @@ Before we introduce some examples of rings, we make some remarks for the notatio
 \end{itemize}
 
 Let's look at some examples of rings.
-\begin{example}
-    We show that $(\Z_n, \oplus_n, \otimes_n)$, where $\oplus_n$ and $\otimes_n$ denote addition and multiplication modulo $n$ respectively, form a ring.
+\begin{definition}
+    The \textbf{ring of integers}\index{ring!of integers} is the set $\Z$ together with integer addition and multiplication.
+\end{definition}
+\begin{remark}
+    We denote the ring of integers by $\Z$.
+\end{remark}
+\begin{proposition}
+    $\Z$ is a commutative ring with identity.
+\end{proposition}
+\begin{proof}
+    \myref{exercise-ring-of-integers-is-a-ring} (later) shows that $\Z$ is a ring. In addition, multiplication is commutative (\myref{axiom-multiplication-is-commutative}), and 1 is the multiplicative identity. Thus $\Z$ is a commutative ring with identity.
+\end{proof}
+
+\begin{definition}
+    Let the integer $n > 2$. The \textbf{ring of integers modulo $n$}\index{ring!of integers!modulo $n$} is $(\Z_n, \oplus_n, \otimes_n)$, where $\oplus_n$ and $\otimes_n$ denote addition and multiplication modulo $n$ respectively.
+\end{definition}
+\begin{remark}
+    We denote the ring of integers modulo $n$ by $\Z_n$.
+\end{remark}
+\begin{proposition}
+    $\Z_n$ is a commutative ring with identity.
+\end{proposition}
+\begin{proof}
+    We first prove the ring axioms before showing that it is commutative with a multiplicative identity.
     \begin{itemize}
         \item \textbf{Addition-Abelian}: We know $(\Z_n, \oplus_n)$ is an abelian group from Volume I.
         \item \textbf{Multiplication-Semigroup}: We can see that $(\Z_n, \otimes_n)$ is a semigroup as
         \begin{itemize}
             \item $\Z_n$ is closed under $\otimes_n$ because $a \otimes_n b \in \{0, 1, 2, \dots, n-1\} = \Z_n$; and
-            \item multiplication is associative, so multiplication modulo $n$ is associative.
+            \item multiplication is associative (\myref{axiom-multiplication-is-associative}), so multiplication modulo $n$ is associative.
         \end{itemize}
-        \item \textbf{Distributive}: It is clear that $\oplus_n$ and $\otimes_n$ distribute.
+        \item \textbf{Distributive}: Since multiplication distributes over addition (\myref{axiom-distributivity}), thus multiplication modulo $n$ (i.e. $\otimes_n$) distributes over addition modulo $n$ (i.e. $\oplus_n$).
     \end{itemize}
-    Hence $(\Z_n, \oplus_n, \otimes_n)$ is a ring. Furthermore, $\otimes_n$ has an identity of 1 and is commutative, so in fact $(\Z_n, \otimes_n)$ is a commutative monoid. Therefore $(\Z_n, \oplus_n, \otimes_n)$ is a commutative ring with identity.
+    Hence $(\Z_n, \oplus_n, \otimes_n)$ is a ring.
+    
+    Furthermore, multiplication is commutative (\myref{axiom-multiplication-is-commutative}), so $\otimes_n$ is commutative. Also $\otimes_n$ has an identity of 1. Therefore $(\Z_n, \oplus_n, \otimes_n)$ is a commutative ring with identity.
+\end{proof}
 
-    Note that, in this volume, $\Z_n$ refers to the ring $(\Z_n, \oplus_n, \otimes_n)$.
-\end{example}
-
-\newpage
-
-\begin{example}
-    We show that $(\Q, +, \times)$, where $+$ and $\times$ denote normal addition and multiplication, form a ring.
+\begin{definition}
+    The \textbf{ring of rational numbers}\index{ring!of rational numbers} is $(\Q, +, \times)$, where $+$ and $\times$ denote normal addition and multiplication.
+\end{definition}
+\begin{remark}
+    We denote the ring of rational numbers by $(\Q, +, \times)$.
+\end{remark}
+\begin{proposition}
+    $\Q$ is a commutative ring with identity.
+\end{proposition}
+\begin{proof}
+    We first show that $\Q$ satisfies the ring axioms.
     \begin{itemize}
         \item \textbf{Addition-Abelian}: From Volume I, we know that $(\Q, +)$ is an abelian group.
         \item \textbf{Multiplication-Semigroup}: We note that $(\Q, \times)$ is a semigroup as
         \begin{itemize}
-            \item $Q$ is closed under $\times$ because multiplying two rational numbers together produce a rational number; and
-            \item multiplication is associative.
+            \item $\Q$ is closed under $\times$ because multiplying two rational numbers together produce a rational number; and
+            \item multiplication is associative (\myref{axiom-multiplication-is-associative}).
         \end{itemize}
-        \item \textbf{Distributive}: It is clear that $+$ and $\times$ distribute.
+        \item \textbf{Distributive}: Multiplication distributes over addition by \myref{axiom-distributivity}.
     \end{itemize}
-    Hence $(\Q, +, \times)$ is a ring. Furthermore, $\times$ has an identity of 1 and is commutative. So, just like $\Z_n$, we see that $(\Q, +, \times)$ is a commutative ring with identity.
+    Hence $\Q$ is a ring. Furthermore, $\times$ has an identity of 1 and is commutative (\myref{axiom-multiplication-is-commutative}). So $\Q$ is a commutative ring with identity.
+\end{proof}
 
-    Note that, in this volume, $\Q$ refers to the ring $(\Q, +, \times)$.
-\end{example}
+\begin{definition}
+    The \textbf{ring of real numbers}\index{ring!of real numbers} is the ring $(\R, +, \times)$ where $+$ and $\times$ denotes regular addition and multiplication respectively.
+\end{definition}
+\begin{remark}
+    We denote the ring of real numbers by $(\R, +, \times)$.
+\end{remark}
+\begin{proposition}
+    $\R$ is a commutative ring with identity.
+\end{proposition}
+\begin{proof}
+    Replace $(\Q, +)$ with $(\R, +)$ and $(\Q, \times)$ with $(\R, \times)$ in the previous proof.
+\end{proof}
 
-\begin{exercise}
+We end this section by looking at the ring of complex numbers.
+\begin{definition}
+    Let the set of \textbf{complex numbers}\index{complex numbers}
+    \[
+        \C = \{a + bi \vert a, b \in \R\}
+    \]
+    where $i = \sqrt{-1}$ is known as the \textbf{imaginary unit}\index{imaginary unit}, where $i^2 = -1$. Define complex addition and multiplication by
+    \begin{align*}
+        (a+bi) + (c+di) &= (a+c) + (b+d)i,\\
+        (a+bi) \cdot (c+di) &= (ac-bd) + (ad+bc)i.
+    \end{align*}
+    Then $\C$ under complex addition and multiplication is the \textbf{ring of complex numbers}\index{ring!of complex numbers}.
+\end{definition}
+\begin{remark}
+    We denote the ring of complex numbers by $\C$.
+\end{remark}
+\begin{proposition}
+    $\C$ is a commutative ring with identity.
+\end{proposition}
+\begin{proof}
+    We first show that $\C$ satisfies the ring axioms.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: We show that $(\C, +)$ satisfies the group axioms, and then show that $(\C, +)$ is commutative.
+        \begin{itemize}
+            \item \textbf{Closure}: Clearly for all real numbers $a$, $b$, $c$, and $d$ we have $a + c \in \R$ and $b+d \in \R$. Thus $(a+bi) + (c+di) = (a+c) + (b+d)i \in \C$, meaning $\C$ is closed under complex addition.
+            
+            \item \textbf{Associativity}: Let $a+bi, c+di, e+fi \in \C$. Then note that
+            \begin{align*}
+                &(a+bi) + ((c+di) + (e+fi))\\
+                &= (a+bi) + ((c+e) + (d+f)i)\\
+                &= (a+(c+e)) + (b+(d+f))i\\
+                &= ((a+c)+e) + ((b+d)+f)i & (+ \text{ is associative, }\myref{axiom-addition-is-associative})\\
+                &= ((a+c) + (b+d)i) + (e+fi)\\
+                &= ((a+bi) + (c+di)) + (e+fi)
+            \end{align*}
+            so complex addition is associative.
+            
+            \item \textbf{Identity}: The identity in $\C$ is $0 + 0i = 0$ since
+            \[
+                (0+0i) + (a+bi) = (0+a) + (0+b)i = a+bi
+            \]
+            and complex addition is commutative (to be proved later), so $(\C,+)$ has an additive identity.
+            
+            \item \textbf{Inverse}: Let $a+bi \in \C$. Clearly $-a, -b \in \R$ and that
+            \[
+                (a+bi) + (-a+(-b)i)= (a+(-a)) + (b+(-b))i = 0
+            \]
+            and complex addition is commutative (to be proved later), so any $a+bi\in C$ has an additive inverse of $-a-bi \in \C$.
+
+            \item \textbf{Commutative}: Let $a+bi, c+di \in \C$. Then
+            \begin{align*}
+                (a+bi) + (c+di) &= (a+c) + (b+d)i\\
+                &= (c+a) + (d+b)i & (+\text{ is commutative, } \myref{axiom-addition-is-commutative})\\
+                &= (c+di) + (a+bi)
+            \end{align*}
+            so complex addition is commutative.
+        \end{itemize}
+        
+        \item \textbf{Multiplication-Semigroup}: We show that $(\C, \times)$ is a semigroup.
+        \begin{itemize}
+            \item \textbf{Closure}: Clearly for all real numbers $a$, $b$, $c$, and $d$ we have $ac, bd, ad, bc \in \R$, so $ac - bd, ad + bc \in \R$. Therefore
+            \[
+                (a+bi)(c+di) = (ac-bd) + (ad+bc)i \in \C
+            \]
+            which means $\C$ is closed under multiplication.
+
+            \item \textbf{Associativity}: Let $a+bi, c+di, e+fi \in \C$. Note that
+            \begin{align*}
+                &(a+bi)((c+di)(e+fi))\\
+                &= (a+bi)((ce-df)+(cf+de)i)\\
+                &= (a(ce-df) - b(cf+de)) + (a(cf+de) + b(ce-df))i\\
+                &= (ace - adf - bcf - bde) + (acf + ade + bce - bdf)i\\
+                &= (ace - bde - adf - bcf) + (acf - bdf + ade + bce)i\\
+                &= ((ac-bd)e - (ad+bc)f) + ((ac-bd)f + (ad+bc)e)i\\
+                &= ((ac-bd)+(ad+bc)i)(e+fi)\\
+                &= ((a+bi)(c+di))(e+fi)
+            \end{align*}
+            so complex multiplication is associative.
+        \end{itemize}
+        
+        \item \textbf{Distributive}: We only prove left distributivity because we will show that complex multiplication is commutative later. Let $a+bi, c+di, e+fi \in \C$. Note that
+        \begin{align*}
+            &(a+bi)((c+di) + (e+fi))\\
+            &= (a+bi)((c+e) + (d+f)i)\\
+            &= (a(c+e)-b(d+f)) + (a(d+f) + b(c+e))i\\
+            &= (ac+ae-bd-bf) + (ad+af+bc+be)i\\
+            &= (ac-bd+ae-bf) + (ad+bc+af+be)i & (+ \text{ is associative})\\
+            &= ((ac-bd) + (ad+bc)i) + ((ae - bf) + (af + be)i)\\
+            &= (a+bi)(c+di) + (a+bi)(e+fi)
+        \end{align*}
+        so complex multiplication distributes over complex addition.
+    \end{itemize}
+    Hence $\C$ is a ring.
+    
+    We now show that complex multiplication is commutative. Let $a+bi, c+di \in C$. Then we see
+    \begin{align*}
+        (a+bi)(c+di) &= (ac-bd) + (ad+bc)i\\
+        &= (ca-db) + (da+cb)i & (\times\text{ is commutative, } \myref{axiom-multiplication-is-commutative})\\
+        &= (c+di)(a+bi)
+    \end{align*}
+    so complex multiplication is commutative.
+
+    Finally we show that complex multiplication has an identity. Consider $1 + 0i \in \C$. Note that
+    \[
+        (1+0i)(a+bi) = (1a-0b) + (1b+0a)i = a+bi,
+    \]
+    and since complex multiplication is commutative, therefore $1+0i$ is the multiplicative identity in $\C$.
+    
+    Therefore $\C$ is a commutative ring with identity.
+\end{proof}
+
+These are just some examples of rings; we explore more later in this chapter.
+\begin{exercise}\label{exercise-ring-of-integers-is-a-ring}
     Prove that $\Z$ is a ring under regular addition and multiplication.\newline
     (\textit{You do \textbf{not} need to prove the \textbf{Distributive} axiom.})
 \end{exercise}
-Note that, in this volume, $\Z$ refers to the ring $(\Z, +, \times)$.
-
-We remark that $\R$ is a ring under regular addition and multiplication, although we will not prove it here.
-
-We look at one more ring: the ring of $n \times n$ matrices.
-
-Let $\Mn{n}{R}$ denote the set of $n\times n$ matrices with entries in the ring $(R, \oplus, \otimes)$.
-\begin{itemize}
-    \item We define \textbf{matrix addition}\index{matrix addition} within this set. Suppose we have $\textbf{A}, \textbf{B} \in \Mn{n}{R}$, and let their sum be $\textbf{C} = \textbf{A} + \textbf{B}$. Then
-    \[
-        c_{i,j} = a_{i,j} \oplus b_{i,j}    
-    \]
-    where $\oplus$ is the addition operation in the ring $R$.
-    
-    \item We define \textbf{matrix multiplication}\index{matrix multiplication} within this set. Suppose $\textbf{A}, \textbf{B} \in \Mn{n}{R}$, and let their product be $\textbf{C} = \textbf{AB}$. Then
-    \begin{align*}
-        c_{i,j} &= (a_{i,1}\otimes b_{1,j}) \oplus (a_{i,2}\otimes b_{2,j}) \oplus \cdots \oplus (a_{i,n}\otimes b_{n,j})\\
-        &= \sum_{k=1}^n (a_{i,k}\otimes b_{i,k})
-    \end{align*}
-    where $\oplus$ and $\otimes$ are the addition and multiplication operations in the ring $R$ respectively.
-\end{itemize}
-For brevity, we let $\Mn{n}{R}$ denote the ring under matrix addition and multiplication.
-
-\newpage
-
-\begin{proposition}
-    $\Mn{n}{R}$ is a ring under matrix addition and matrix multiplication.
-\end{proposition}
-\begin{proof}
-    We need to prove that the ring axioms hold.
-    \begin{itemize}
-        \item \textbf{Addition-Abelian}: We first prove that $(\Mn{n}{R}, +)$ is indeed an abelian group.
-        \begin{itemize}
-            \item \textbf{Closure}: Clearly the sum of any two matrices in $\Mn{n}{R}$ is also a square matrix with $n$ rows with elements inside $R$, meaning that $\Mn{n}{R}$ is closed under matrix addition.
-
-            \item \textbf{Associative}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. Let $\textbf{P} = \textbf{A} + (\textbf{B} + \textbf{C})$ and $\textbf{Q} = (\textbf{A} + \textbf{B}) + \textbf{C}$. We note that $\textbf{P} = \textbf{Q}$ as
-            \[
-                p_{i,j} = a_{i,j} \oplus (b_{i,j} \oplus c_{i,j}) = (a_{i,j} \oplus b_{i,j}) \oplus c_{i,j} = q_{i,j}
-            \]
-            by associativity of $\oplus$, which proves that matrix addition is associative.
-    
-            \item \textbf{Identity}: Denote the $n \times n$ matrix of all zeros by $\textbf{0}_n$. One sees clearly that this is the identity in $\Mn{n}{R}$ as $\textbf{M} + \textbf{0}_n = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
-            
-            \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ such that $b_{i,j} = -a_{i,j}$. That is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \textbf{0}_n$. (We denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$).
-
-            \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{C}$. Consider $c_{i,j} = a_{i,j} \oplus b_{i,j}$. Since $\oplus$ is commutative, thus $a_{i,j} \oplus b_{i,j} = b_{i,j} \oplus a_{i,j}$. But $d_{i,j} = b_{i,j} \oplus a_{i,j}$, so we have $c_{i,j} = d_{i,j}$. Therefore $\textbf{C} = \textbf{D}$.
-        \end{itemize}
-
-        \item \textbf{Multiplication-Semigroup}: We show that $(\Mn{n}{R}, \cdot)$ is a semigroup.
-        \begin{itemize}
-            \item \textbf{Closure}: In Volume I we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entries of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
-        
-            \item \textbf{Associative}: We proved matrix multiplication is associative in Volume I.
-        \end{itemize}
-        
-        \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly. Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
-        \begin{align*}
-            r_{i,j} &= \sum_{k=1}^n \left(a_{i,k} \otimes \left(b_{k,j} \oplus c_{k,j}\right)\right)\\
-            &= \sum_{k=1}^n \left((a_{i,k} \otimes b_{k,j}) \oplus (a_{i,k} \otimes c_{k,j})\right)\\
-            &= \left(\sum_{k=1}^n (a_{i,k} \otimes b_{k,j})\right) \oplus \left(\sum_{k=1}^n (a_{i,k} \otimes c_{k,j})\right)\\
-            &= g_{i,j}\oplus h_{i,j}
-        \end{align*}
-        which means $\textbf{R} = \textbf{G} + \textbf{H}$.
-    \end{itemize}
-    As all the ring axioms are satisfied, thus $\Mn{n}{R}$ is a ring.
-\end{proof}
 
 \section{General Properties of Rings}
 We list some properties of rings here. For each of the propositions, assume $R$ is a ring.
@@ -128,7 +214,16 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
         0x &= (0 + 0)x & (0 \text{ is additive inverse})\\
         &= 0x + 0x & (\text{by \textbf{Distributive} axiom})
     \end{align*}
-    so by `subtracting' $0x$ on both sides (i.e., adding $-0x$ on both sides) we see $0 = 0x$. A similar argument shows that $x0 = 0$.
+    so by `subtracting' $0x$ on both sides (i.e., adding $-0x$ on both sides) we see $0 = 0x$.
+    
+    Also
+    \begin{align*}
+        x0 &= x(0 + 0) & (0 \text{ is additive inverse})\\
+        &= x0 + x0 & (\text{by \textbf{Distributive} axiom})
+    \end{align*}
+    so by `subtracting' $x0$ on both sides we see $0 = x0$.
+    
+    Therefore $0x = x0 = 0$ for all $x \in R$.
 \end{proof}
 
 \begin{proposition}\label{prop-product-of-element-and-additive-inverse-is-additive-inverse-of-product}
@@ -156,16 +251,180 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
 \begin{proof}
     Suppose 1 and $1'$ are identities, and consider the sum $1 + 1'$. Then
     \begin{align*}
-        1 + 1' &= 1'(1+1') & (\text{multiplying by identity }1')\\
-        &= 1'1 + 1'1' & (\text{by \textbf{Distributive} axiom})\\
-        &= 1' + 1'. & (1 \text{ and } 1' \text{ are identities})
+        1 + 1' &= 1\times(1+1') & (\text{multiplying by identity }1)\\
+        &= 1\times1 + 1\times1' & (\text{by \textbf{Distributive} axiom})\\
+        &= 1 + 1. & (1 \text{ and } 1' \text{ are identities})
     \end{align*}
-    Subtracting $1'$ on both sides yields $1 = 1'$, meaning that the identity is unique.
+    Subtracting 1 on both sides yields $1 = 1'$, meaning that the identity is unique.
 \end{proof}
 
 \begin{exercise}\label{exercise-product-of-additive-inverses}
     Show that $(-a)(-b) = ab$ for any $a$ and $b$ in $R$.
 \end{exercise}
+
+% \section{Some Non-Obvious Rings}
+\section{Matrix Rings}
+The rings that we explored in previous sections can be thought of as the `obvious' rings, since they are number systems. As rings were made to generalize number systems, they should clearly be rings. However, there are less obvious `number systems' that are, in fact, rings.
+
+% \subsection{Matrix Rings}
+We looked at matrices in the previous volumes, in the context of the General/Special Linear Group of matrices. Here we see that matrices in fact form rings, known as matrix rings. Before that though, we need to define the operations within that ring.
+
+\begin{definition}[Matrix Addition]\index{matrix addition}
+    For any two matrices $\textbf{A}$ and $\textbf{B}$ with $n$ rows and columns and entries in the ring $(R, \oplus, \otimes)$, their sum is the matrix $\textbf{C} = \textbf{A} + \textbf{B}$ with $n$ rows and columns such that
+    \[
+        c_{i,j} = a_{i,j} \oplus b_{i,j}
+    \]
+    for all $i,j \in \{1, 2, \dots, n\}$.
+\end{definition}
+\begin{definition}[Matrix Multiplication]\index{matrix multiplication}
+    For any two matrices $\textbf{A}$ and $\textbf{B}$ with $n$ rows and columns and entries in the ring $(R, \oplus, \otimes)$, their product is the matrix $\textbf{C} = \textbf{AB}$ with $n$ rows and columns such that
+    \begin{align*}
+        c_{i,j} &= (a_{i,1}\otimes b_{1,j}) \oplus (a_{i,2}\otimes b_{2,j}) \oplus \cdots \oplus (a_{i,n}\otimes b_{n,j})\\
+        &= \bigoplus_{k=1}^n (a_{i,k}\otimes b_{k,j})
+    \end{align*}
+    for all $i,j \in \{1, 2, \dots, n\}$.
+\end{definition}
+
+We also define two matrices that will become useful when we work with matrix rings.
+\begin{definition}
+    The \textbf{zero matrix}\index{zero matrix} with $n$ rows and columns is
+    \[
+        \ZeroM{n} = 
+        \begin{pmatrix}
+            0 & 0 & 0 & \cdots & 0 \\
+            0 & 0 & 0 & \cdots & 0 \\
+            0 & 0 & 0 & \cdots & 0 \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & \cdots & 0 \\
+        \end{pmatrix}
+    \]
+    where 0 is the additive identity (i.e. zero) in the ring $(R, \oplus, \otimes)$.
+\end{definition}
+\begin{definition}
+    The \textbf{identity matrix}\index{identity matrix} with $n$ rows and columns is
+    \[
+        \IdentityM{n} = 
+        \begin{pmatrix}
+            1 & 0 & 0 & \cdots & 0 \\
+            0 & 1 & 0 & \cdots & 0 \\
+            0 & 0 & 1 & \cdots & 0 \\
+            \vdots & \vdots & \vdots & \ddots & \vdots \\
+            0 & 0 & 0 & \cdots & 1 \\
+        \end{pmatrix}
+    \]
+    where 0 and 1 are the additive and multiplicative identities (i.e. zero and one) in the ring $(R, \oplus, \otimes)$ respectively. That is, the identity matrix is the matrix with 1s in the leading diagonal.
+\end{definition}
+
+We can now define what is a matrix ring.
+\begin{definition}
+    Let $(R, \oplus, \otimes)$ be a ring and $n$ be a positive integer. Then $\Mn{n}{R}$ under matrix addition and multiplication is a ring, known as the \textbf{matrix ring}\index{matrix ring} with elements in $(R, \oplus, \otimes)$.
+\end{definition}
+\begin{proposition}
+    $\Mn{n}{R}$ is a ring with identity.
+\end{proposition}
+\begin{proof}
+    We need to prove that the ring axioms hold.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: We first prove that $(\Mn{n}{R}, +)$ is indeed an abelian group.
+        \begin{itemize}
+            \item \textbf{Closure}: Clearly the sum of any two matrices in $\Mn{n}{R}$ is also a square matrix with $n$ rows with elements inside $R$, meaning that $\Mn{n}{R}$ is closed under matrix addition.
+
+            \item \textbf{Associative}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. Let $\textbf{P} = \textbf{A} + (\textbf{B} + \textbf{C})$ and $\textbf{Q} = (\textbf{A} + \textbf{B}) + \textbf{C}$. We note that $\textbf{P} = \textbf{Q}$ as
+            \[
+                p_{i,j} = a_{i,j} \oplus (b_{i,j} \oplus c_{i,j}) = (a_{i,j} \oplus b_{i,j}) \oplus c_{i,j} = q_{i,j}
+            \]
+            by associativity of $\oplus$, which proves that matrix addition is associative.
+    
+            \item \textbf{Identity}: We show that $\ZeroM{n}$ is the additive identity in $\Mn{n}{R}$. Let $\textbf{M} \in \Mn{n}{R}$; let $\textbf{N} = \textbf{M} + \ZeroM{n}$. Note that $n_{i,j} = m_{i,j} \oplus 0 = m_{i,j}$ so $\textbf{M} + \ZeroM{n} = \textbf{M}$. Therefore $\textbf{M} + \ZeroM{n} = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
+            
+            \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ such that $b_{i,j} = -a_{i,j}$. That is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \ZeroM{n}$. (We denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$).
+
+            \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{C}$. Consider $c_{i,j} = a_{i,j} \oplus b_{i,j}$. Since $\oplus$ is commutative, thus $a_{i,j} \oplus b_{i,j} = b_{i,j} \oplus a_{i,j}$. But $d_{i,j} = b_{i,j} \oplus a_{i,j}$, so we have $c_{i,j} = d_{i,j}$. Therefore $\textbf{C} = \textbf{D}$.
+        \end{itemize}
+
+        \item \textbf{Multiplication-Semigroup}: We show that $(\Mn{n}{R}, \cdot)$ is a semigroup.
+        \begin{itemize}
+            \item \textbf{Closure}: In Volume I we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entries of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
+        
+            \item \textbf{Associative}: We proved matrix multiplication is associative in Volume I.
+        \end{itemize}
+        
+        \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly. Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
+        \begin{align*}
+            r_{i,j} &= \bigoplus_{k=1}^n \left(a_{i,k} \otimes \left(b_{k,j} \oplus c_{k,j}\right)\right)\\
+            &= \bigoplus_{k=1}^n \left((a_{i,k} \otimes b_{k,j}) \oplus (a_{i,k} \otimes c_{k,j})\right)\\
+            &= \left(\bigoplus_{k=1}^n (a_{i,k} \otimes b_{k,j})\right) \oplus \left(\bigoplus_{k=1}^n (a_{i,k} \otimes c_{k,j})\right)\\
+            &= g_{i,j}\oplus h_{i,j}
+        \end{align*}
+        which means $\textbf{R} = \textbf{G} + \textbf{H}$.
+    \end{itemize}
+    As all the ring axioms are satisfied, thus $\Mn{n}{R}$ is a ring.
+
+    We now show that $\Mn{n}{R}$ has a multiplicative identity, namely the identity matrix $\IdentityM{n}$. Let $\textbf{A} \in \Mn{n}{R}$ and let $\textbf{B} = \IdentityM{n}$. Note that $b_{i,j} = 1$ if and only if $i = j$.
+    \begin{itemize}
+        \item Let $\textbf{C} = \textbf{AB}$ and we see
+        \begin{align*}
+            &c_{i,j}\\
+            &= \bigoplus_{k=1}^n(a_{i,k}\otimes b_{k,j})\\
+            &= (a_{i,1}\otimes b_{1,j}) \oplus \cdots \oplus (a_{i,j-1}\otimes b_{j-1,j}) \oplus (a_{i,j}\otimes b_{j,j})\\
+            &\quad\quad\oplus (a_{i,{j+1}}\otimes b_{j+1,j}) \oplus \cdots \oplus (a_{i,n}\otimes b_{n,j})\\
+            &= (a_{i,1}\otimes 0) \oplus \cdots \oplus (a_{i,{j-1}}\otimes 0)\oplus (a_{i,j}\otimes 1) \oplus (a_{i,{j+1}}\otimes 0) \oplus \cdots \oplus (a_{i,n}\otimes 0)\\
+            &= 0 \oplus \cdots \oplus 0 \oplus a_{i,j} \oplus 0 \oplus \cdots \oplus 0\\
+            &= a_{i,j}
+        \end{align*}
+        so $\textbf{A}\IdentityM{n} = \textbf{A}$.
+
+        \item Now let $\textbf{D} = \textbf{BA}$ and we also see
+        \begin{align*}
+            &d_{i,j}\\
+            &= \bigoplus_{k=1}^n(b_{i,k}\otimes a_{k,j})\\
+            &= (b_{i,1}\otimes a_{1,j}) \oplus \cdots \oplus (b_{i,i-1}\otimes b_{i-1,j}) \oplus (b_{i,i}\otimes a_{i,j})\\
+            &\quad\quad\oplus (b_{i,{i+1}}\otimes a_{i+1,j}) \oplus \cdots \oplus (b_{i,n}\otimes a_{n,j})\\
+            &= (0 \otimes a_{1,j}) \oplus \cdots \oplus (0\otimes a_{i-1,j})\oplus (1\otimes a_{i,j}) \oplus (0\otimes a_{i+1,j}) \oplus \cdots \oplus (0\otimes a_{n,j})\\
+            &= 0 \oplus \cdots \oplus 0 \oplus a_{i,j} \oplus 0 \oplus \cdots \oplus 0\\
+            &= a_{i,j}
+        \end{align*}
+        so $\IdentityM{n}\textbf{A} = \textbf{A}$.
+    \end{itemize}
+    Therefore the identity matrix $\IdentityM{n}$ is the multiplicative identity.
+
+    Hence $\Mn{n}{R}$ is a ring with identity.
+\end{proof}
+
+% \subsection{Hamilton's Quaternions}
+% The quaternions is a way to extend the complex numbers into 4 dimensions. Irish mathematician William Rowan Hamilton was looking for a way represent points in 3-dimensional space using numbers. He knew how to add and subtract triples of numbers, but had difficulty in defining a way to multiply and divide these numbers, just like in the ring of complex numbers. The breakthrough in quaternions came in 1843 when he thought of using 4-dimensional numbers instead of 3-dimensional numbers.
+
+% We define what quaternions are, and what the quaternion ring is.
+% \begin{definition}
+%     A \textbf{quaternion}\index{quaternion} is an expression of the form
+%     \[
+%         a + b\qi + c\qj + d\qk
+%     \]
+%     where $a,b,c,d \in \R$ and $\qi$, $\qj$, and $\qk$ are quantities such that
+%     \begin{itemize}
+%         \item $\qi\qj = -\qj\qi = \qk$;
+%         \item $\qj\qk = -\qk\qj = \qi$;
+%         \item $\qk\qi = -\qi\qk = \qj$; and
+%         \item $\qi^2 = \qk^2 = \qk^2 = \qi\qj\qk = -1$.
+%     \end{itemize}
+% \end{definition}
+% \begin{definition}
+%     The \textbf{quaternion ring}\index{quaternion ring} is
+%     \[
+%         \H = \{a + b\qi + c\qj + d\qk \vert a,b,c,d \in \R\}
+%     \]
+%     where, for two quaternions $q_1 = a_1+b_1\qi+c_1\qj+d_1\qk$ and $q_2 = a_2+b_2\qi+c_2\qj+d_2\qk$, addition is
+%     \[
+%         q_1 + q_2 = (a_1+a_2) + (b_1+b_2)\qi + (c_1+c_2)\qj + (d_1+d_2)\qk
+%     \]
+%     and multiplication is
+%     \begin{align*}
+%         q_1q_2 &= (a_1a_2 - b_1b_2 - c_1c_2 - d_1d_2)\\
+%         &+(a_1b_2 + b_1a_2 + c_1d_2 - d_1c_2)\qi\\
+%         &+(a_1c_2 - b_1d_2 + c_1a_2 + d_1b_2)\qj\\
+%         &+(a_1d_2 + b_1c_2 - c_1b_2 + d_1a_2)\qk.
+%     \end{align*}
+% \end{definition}
 
 \section{More Definitions}
 Suppose $R$ is a ring.
@@ -176,14 +435,10 @@ Suppose $R$ is a ring.
     Consider the ring $\Z_{12}$. Clearly 4 and 6 are in $\Z_{12}$, and their product is $24 = 2 \times 12 = 0$ in $\Z_{12}$. Hence 4 and 6 are zero divisors in $\Z_{12}$.
 \end{example}
 \begin{example}
-    We claim that the ring
-    \[
-        R = \{f: \R \to \R \vert f: [0, 1] \to [0, 1]\}
-    \]
-    has zero divisors. Consider the functions
+    Let $R$ be the ring of functions with domain and codomain $[0, 1]$. We claim that $R$ has zero divisors. Consider the functions
     \begin{align*}
-        f(x) &= x\\
-        g(x) &= \begin{cases}
+        f:[0,1]\to[0,1], x &\mapsto x\\
+        g:[0,1]\to[0,1], x &\mapsto \begin{cases}
             0 & \text{ if } x \neq 0\\
             1 & \text{ if } x = 0
         \end{cases}
@@ -245,39 +500,36 @@ We end this chapter off with an exploration about subrings.
 \end{remark}
 
 \begin{example}
-    We know that $\Z$ and $\Q$ are rings, and clearly $\Z \subseteq \Q$. Hence $\Z$ is a subring of $\Q$. Similarly, since $\Q \subseteq \R$, thus $\Q$ is a subring of $\R$.
+    We know that $\Z$ and $\Q$ are rings, and clearly $\Z \subseteq \Q$. Hence $\Z$ is a subring of $\Q$. Similarly, since $\Q \subseteq \R$ and $\R \subseteq \C$, thus $\Q$ is a subring of $\R$ and $\R$ is a subring of $\C$.
 \end{example}
 
 \begin{example}
-    Consider the ring of \textbf{complex numbers}\index{complex numbers},
-    \[
-        \C = \{x + yi \vert x, y \in \R\},
-    \]
-    and the set of \textbf{gaussian integers}\index{gaussian integers},
+    Consider the set of \textbf{gaussian integers}\index{gaussian integers}
     \[
         \Z[i] = \{a + bi \vert a,b\in\mathbb{Z}\},
     \]
-    where $i$ is the imaginary unit (i.e., $i^2 = -1$). We will show that $\Z[i]$ is a subring of $\C$.
+    read as ``$\Z$ adjoin $i$''. We first show that $\Z[i]$ is a subring of $\C$.
     \begin{proof}
         Clearly $\Z[i] \subseteq \C$. We show that $(\Z[i], +) \leq (\C, +)$.
         \begin{itemize}
             \item Clearly the identity of $(\C, +)$, which is 0, is inside $(\Z[i], +)$ as $0 = 0 + 0i$.
-            \item For any $a + bi, c+di \in \Z[i]$, we have $(a+bi) + (-(c+di)) = (a-c) + (b-d)i \in \Z[i]$.
+            \item For any $a + bi, c+di \in \Z[i]$, we have
+            \[
+                (a+bi) + (-(c+di)) = (a-c) + (b-d)i \in \Z[i].
+            \]
         \end{itemize}
-        Thus the subgroup test (\myref{thrm-subgroup-test}) tells us $(\Z[i], +) \leq (\C, +)$.
+        Thus the subgroup test (\myref{thrm-subgroup-test}) tells us that $(\Z[i], +) \leq (\C, +)$.
 
-        Now we show that $\Z[i]$ is closed under multiplication. Let $a + bi, c+di \in \Z[i]$. Then their product is
+        Now we show that $\Z[i]$ is closed under multiplication. Let $a + bi, c+di \in \Z[i]$. Note that $ac, bd, ad, bc \in \Z$; the product of the two gaussian integers is
         \begin{align*}
-            (a+bi)(c+di) &= ac+adi+bci+bdi^2\\
-            &= (ac-bd) + (ad+bc)i\\
+            (a+bi)(c+di) &= (ac-bd) + (ad+bc)i\\
             &\in \Z[i]
         \end{align*}
-        so $\Z[i]$ is closed under multiplication. Therefore $\Z[i]$ is a subring of $\C$.
+        so $\Z[i]$ is closed under multiplication.
+        
+        Therefore $\Z[i]$ is a subring of $\C$.
     \end{proof}
 \end{example}
-\begin{remark}
-    One sees that $\R \subseteq \C$ so $\R$ is actually a subring of $\C$.
-\end{remark}
 \begin{exercise}
     Show that
     \[
@@ -298,7 +550,7 @@ We end this chapter off with an exploration about subrings.
 \end{problem}
 
 \begin{problem}
-    Let $(R, \ast)$ be a magma. If $(R, \ast, \ast)$ is a ring, describe the elements in $R$.
+    Let $R$ be a set with an operation $\ast$ such that for all elements $x$ and $y$ in $R$ we have $x \ast y \in R$. If $(R, \ast, \ast)$ is a ring, describe the elements in $R$.
 \end{problem}
 
 \begin{problem}
