@@ -355,13 +355,7 @@ We are now ready to look at the alternating group.
 \end{exercise}
 
 \section{Group of Units Modulo \texorpdfstring{$n$}{n}}
-Before we can explore the aforementioned group, we note one fact about multiplication.
-\begin{axiom}\label{axiom-multiplication-is-associative-and-commutative}\index{axiom!of associative multiplication}\index{axiom!of commutative multiplication}
-    Multiplication over the integers, the rational numbers, and the real numbers is assumed to be associative and commutative.
-\end{axiom}
-Again, the proof of this claim is outside the scope of these books, so we leave this as an axiom that we assume to be true.
-
-Now we look at a useful group in Number Theory: the \textbf{group of units modulo $n$}.
+We look at a useful group in Number Theory: the \textbf{group of units modulo $n$}.
 
 \begin{definition}
     For a positive integer $n \geq 2$, the \textbf{group of units modulo $n$}\index{group of units modulo $n$}, denoted by $\Un{n}$, is the set
@@ -379,13 +373,13 @@ Now we look at a useful group in Number Theory: the \textbf{group of units modul
     \begin{enumerate}
         \item \textbf{Closure}: Let $x, y \in \Un{n}$. Then $\gcd(x, n) = \gcd(y, n) = 1$. Hence $\gcd(xy, n) = 1$ which means that $\gcd(x\otimes_ny,n)=1$. Thus $x\otimes_ny \in \Un{n}$.
         
-        \item \textbf{Associativity}: Multiplication is associative (\myref{axiom-multiplication-is-associative-and-commutative}), so $\otimes_n$ is associative.
+        \item \textbf{Associativity}: Multiplication is associative (\myref{axiom-multiplication-is-associative}), so $\otimes_n$ is associative.
         
         \item \textbf{Identity}: Note that 1 is the identity in $\Un{n}$ since $1 \otimes_n x = x$.
         
         \item \textbf{Inverse}: Let $x$ be in $\Un{n}$, meaning $\gcd(x, n) = 1$. Then \myref{prop-multiplicative-inverse-exists-iff-coprime} tells us that there exists an $m$ such that $mx \equiv 1 \pmod n$. Therefore $m \otimes_n x = 1$, which means $m$ is the inverse of $x$.
     \end{enumerate}
-    Now multiplication is commutative (\myref{axiom-multiplication-is-associative-and-commutative}), so multiplication modulo $n$ is also commutative. Thus $\Un{n}$ is an abelian group under $\otimes_n$.
+    Now multiplication is commutative (\myref{axiom-multiplication-is-commutative}), so multiplication modulo $n$ is also commutative. Thus $\Un{n}$ is an abelian group under $\otimes_n$.
 \end{proof}
 
 \begin{exercise}
@@ -621,7 +615,7 @@ In other words, $\GL{n}{\mathbb{R}}$ is the group of real-valued matrices with $
                 s_{i,j} = \sum_{l=1}^n a_{i,l}\left(\sum_{k=1}^nb_{l,k}c_{k,j}\right) = \sum_{l=1}^n\sum_{k=1}^n a_{i,l}(b_{l,k}c_{k,j}).
             \]
         \end{itemize}
-        Now, multiplication is associative (\myref{axiom-multiplication-is-associative-and-commutative}). So
+        Now, multiplication is associative (\myref{axiom-multiplication-is-associative}). So
         \[
                 (a_{i,l}b_{l,k})c_{k,j} = a_{i,l}(b_{l,k}c_{k,j})
         \]

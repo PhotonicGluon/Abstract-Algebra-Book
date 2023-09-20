@@ -1,6 +1,131 @@
 \chapter{Algebra}
 Competent algebraic manipulation in the real numbers is assumed. We collect a few important and useful concepts and results when we manipulate algebraic objects.
 
+\section{Addition and Multiplication}
+Addition and multiplication in the real numbers are fundamental operations when we want to perform algebraic manipulations. We formally state some of their properties here. We note that these properties are really hard to prove directly since they are so ingrained in calculation; although a proof exists, it is too hard to reproduce them here. Thus we leave these properties as axioms: statements that are assumed to be true.
+
+We first look at two important properties of addition over the real numbers.
+\begin{axiom}\label{axiom-addition-is-commutative}\index{axiom!of commutative addition}
+    Addition is commutative. That is,
+    \[
+        x + y = y + x
+    \]
+    for any real numbers $x$ and $y$.
+\end{axiom}
+\begin{remark}
+    This also applies to subsets of the real numbers, such as the integers.
+\end{remark}
+\begin{example}
+    Clearly adding 3 to 4 (i.e., $3 + 4$) is the same as adding 4 to 3 (i.e., $4 + 3$) through our everyday intuition of adding numbers together.
+\end{example}
+
+\begin{axiom}\label{axiom-addition-is-associative}\index{axiom!of associative addition}
+    Addition is associative. That is, 
+    \[
+        x+(y+z) = (x+y)+z
+    \]
+    for any real numbers $x$, $y$, and $z$.
+\end{axiom}
+\begin{example}
+    We may evaluate the expression $5+(6+7)$ in two ways.
+    \begin{itemize}
+        \item We may first evaluate $6+7 = 13$, and then sum 5 to it to get $5 + 13 = 18$.
+        \item Alternatively, we may use \myref{axiom-addition-is-associative} to rewrite $5+(6+7)$ to be $(5+6)+7$. Then we first evaluate $5+6 = 11$ and then add 7 to it, yielding $11 + 7 = 18$.
+    \end{itemize}
+\end{example}
+
+Combining the two axioms for addition gives us multiple ways to evaluate expressions.
+\begin{example}
+    Consider the expression $(3 + 4) + (1 + 2)$.
+    \begin{itemize}
+        \item We could directly compute the values $3 + 4 = 7$, $1 + 2 = 3$, and then taking their sum to be $7 + 3 = 10$.
+        \item Alternatively, via commutativity of addition (\myref{axiom-addition-is-commutative}) we can rewrite $(3 + 4) + (1 + 2) = (1+2)+(3+4)$ and then use associativity (\myref{axiom-addition-is-associative}) to further see that $(1+2)+(3+4) = ((1+2)+3)+4$. We can then compute the sum inside out, $1 + 2 = 3$, $3 + 3 = 6$, and finally $6 + 4 = 10$.
+    \end{itemize}
+\end{example}
+\begin{example}
+    Consider the expression $(x^4 + x^2) + (x^3 + x + 1)$. The two axioms above allow us to rewrite this as a nicer expression of $x^4 + x^3 + x^2 + x + 1$.
+\end{example}
+
+We now look at two properties of multiplication over the real numbers.
+\begin{axiom}\label{axiom-multiplication-is-commutative}\index{axiom!of commutative multiplication}
+    Multiplication is commutative. That is,
+    \[
+        x \times y = y \times x
+    \]
+    for any real numbers $x$ and $y$.
+\end{axiom}
+\begin{remark}
+    This also applies to subsets of the real numbers, such as the integers.
+\end{remark}
+\begin{remark}
+    We may also denote multiplication using the centred dot ($\cdot$), or suppress the operator. That is, $x\times y = x\cdot y = xy$.
+\end{remark}
+\begin{example}
+    Clearly multiplying 3 by 4 (i.e., $3 \times 4$) is the same as multiplying 4 by 3 (i.e., $4 \times 3$) through our everyday intuition of adding numbers together.
+\end{example}
+
+\begin{axiom}\label{axiom-multiplication-is-associative}\index{axiom!of associative multiplication}
+    Multiplication is associative. That is,
+    \[
+        x\times(y\times z) = (x\times y)\times z
+    \]
+    for any real numbers $x$, $y$, and $z$.
+\end{axiom}
+\begin{example}
+    We may evaluate the expression $5\times(6\times7)$ in two ways.
+    \begin{itemize}
+        \item We may first evaluate $6\times7 = 42$, and then multiply 5 to it to get $5 \times 42 = 210$.
+        \item Alternatively, we may use \myref{axiom-multiplication-is-associative} to rewrite $5\times(6\times7)$ to be $(5\times6)\times7$. Then we first evaluate $5\times6 = 30$ and then multiply 7 to it, yielding $30\times7 = 210$.
+    \end{itemize}
+\end{example}
+
+Again, using the two axioms for multiplication gives us several ways to evaluate expressions.
+\begin{example}
+    Consider the expression $(3\times4)(1\times2)$.
+    \begin{itemize}
+        \item We could directly compute the values $3 \times 4 = 12$, $1 \times 2 = 2$, and then taking their product to be $12\times2 = 24$.
+        \item Alternatively, via commutativity of multiplication (\myref{axiom-multiplication-is-commutative}) we can rewrite $(3\times4)(1\times2)=(1\times2)\times(3\times4)$ and then use associativity (\myref{axiom-multiplication-is-associative}) to further see that $(1\times2)\times(3\times4) = ((1\times2)\times3)\times4$. We can then compute the sum inside out, $1 \times 2 = 2$, $2 \times 3 = 6$, and finally $6 \times 4 = 24$.
+    \end{itemize}
+\end{example}
+\begin{example}
+    Consider the expression $(x^4\times x^2)(x^3 \times x \times 1)$. The two axioms above allow us to rewrite this as a nicer expression of $x^4 \times x^3 \times x^2 \times x \times 1 = x^{10}$.
+\end{example}
+
+We note one property when we combine both addition and multiplication together.
+\begin{axiom}\label{axiom-distributivity}\index{axiom!of distributivity}
+    Multiplication distributes over addition. That is, for any real numbers $x$, $y$, and $z$, we have
+    \[
+        x\times(y+z) = (x\times y) + (x\times z)
+    \]
+    and
+    \[
+        (x+y)\times z = (x\times z) + (y\times z).
+    \]
+\end{axiom}
+\begin{example}
+    Consider the expression $4\times(5+6)$.
+    \begin{itemize}
+        \item We could first evaluate $5+6=11$ and then multiply 4 by that to yield $4\times11=44$.
+        \item Alternatively, we can use \myref{axiom-distributivity} to write $4\times(5+6) = (4\times5)+(4\times6)$. Then we can evaluate each part separately, seeing that $4\times5 = 20$, $4\times6 = 24$, so $(4\times5)+(4\times6) = 20+24=44$.
+    \end{itemize}
+\end{example}
+\begin{example}
+    Consider the expression $(x+1)(x+2)$. We use the axioms to expand the expression.
+    \begin{align*}
+        (x+1)(x+2) &= ((x+1)x) + ((x+1)\times2) & (\myref{axiom-distributivity})\\
+        &= ((x\times x) + (1\times x)) + ((x\times2) + (1\times2)) & (\myref{axiom-distributivity})\\
+        &= (x^2+x) + (2x+2)\\
+        &= x^2+(x + (2x+2)) & (\myref{axiom-addition-is-associative})\\
+        &= x^2+((x + 2x)+2) & (\myref{axiom-addition-is-associative})\\
+        &= x^2 + (3x+2)\\
+        &= x^2 + 3x + 2.
+    \end{align*}
+\end{example}
+
+Clearly, these axioms have been ingrained into us whenever we did algebra. We simply state these axioms here whenever we need to use them to prove that a certain structure has a certain property that we need.
+
+\newpage
+
 \section{Summation}
 When we are summing many similar terms, we use the capital Greek letter sigma ($\sum$) to represent the sum of similar terms. 
 \begin{definition}\index{summation}

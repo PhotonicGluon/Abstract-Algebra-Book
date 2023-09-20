@@ -15,37 +15,31 @@ Recall also we write $a \ast b$ as $ab$, and denote the group $(G, \ast)$ by $G$
     If the group operation is additive\index{group!additive}, we write $a + b$ instead of $ab$.
 \end{remark}
 
-We also note the following fact.
-\begin{axiom}\label{axiom-addition-is-associative-and-commutative}\index{axiom!of associative addition}\index{axiom!of commutative addition}
-    Addition over the integers, the rational numbers, and the real numbers is assumed to be associative and commutative.
-\end{axiom}
-It is possible to prove that addition is both associative and commutative, but their proof is too involved to be reproduced here. As such, we leave it as an axiom.
-
 Let's look at some examples of groups.
 \begin{example}
     Let $\mathbb{Z}$ be the set of integers and let $+$ denote regular addition. Then $(\mathbb{Z}, +)$ forms a group.
     \begin{enumerate}
         \item \textbf{Closure}: For all integers $a$ and $b$, we know $a + b$ is an integer.
-        \item \textbf{Associativity}: By \myref{axiom-addition-is-associative-and-commutative} we know for all integers $a$, $b$, and $c$ that $a + (b + c) = (a + b) + c$.
+        \item \textbf{Associativity}: By \myref{axiom-addition-is-associative} we know for all integers $a$, $b$, and $c$ that $a + (b + c) = (a + b) + c$.
         \item \textbf{Identity}: The identity is 0, since $0 + x = x + 0 = x$.
         \item \textbf{Inverse}: The inverse of the integer $x$ is $-x$, since $x + (-x) = (-x) + x = 0$.
     \end{enumerate}
 \end{example}
 
-An important thing to note about addition is that it is \textit{commutative}: $a + b = b + a$. A group with a commutative operation is called a \textbf{commutative group}\index{group!commutative}. However, it is more often called an \textbf{abelian group}\index{group!abelian}, named after Norwegian mathematician Niels Henrik Abel.
+An important thing to note about addition is that it is commutative (by \myref{axiom-addition-is-commutative}). A group with a commutative operation is called a \textbf{commutative group}\index{group!commutative}. However, it is more often called an \textbf{abelian group}\index{group!abelian}, named after Norwegian mathematician Niels Henrik Abel.
 
 We now look at the notion of $\mathbb{Z}_n$.
 \begin{definition}
     The set $\mathbb{Z}_n = \{0, 1, 2, \dots, n-1\}$ where $n$ is a non-negative integer.
 \end{definition}
 \begin{proposition}
-    The set $\mathbb{Z}_n$ with the operation $\oplus_n$ forms a group, where $\oplus_n$ is addition modulo $n$. That is, $a \oplus_n b = (a + b) \mod{n}$.
+    The set $\mathbb{Z}_n$ with the operation $\oplus_n$ forms an abelian group, where $\oplus_n$ is addition modulo $n$. That is, $a \oplus_n b = (a + b) \mod{n}$.
 \end{proposition}
 \begin{proof}
-    We prove this by showing the group axioms hold.
+    We prove this by first showing that the group axioms hold.
     \begin{enumerate}
         \item \textbf{Closure}: For $a$ and $b$ in $\mathbb{Z}_n$, $a \oplus_n b = (a + b) \mod{n}$ is a integer between 0 and $n - 1$. Thus $a \oplus b$ is inside $\mathbb{Z}_n$.
-        \item \textbf{Associativity}: For $a$, $b$, and $c$ in $\mathbb{Z}_n$, since addition is associative (\myref{axiom-addition-is-associative-and-commutative}), thus $a \oplus_n (b \oplus_n c) = (a + (b + c)) \mod{n} = ((a + b) + c) \mod{n} = (a \oplus_n b) \oplus_n c$.
+        \item \textbf{Associativity}: For $a$, $b$, and $c$ in $\mathbb{Z}_n$, since addition is associative (\myref{axiom-addition-is-associative}), thus $a \oplus_n (b \oplus_n c) = (a + (b + c)) \mod{n} = ((a + b) + c) \mod{n} = (a \oplus_n b) \oplus_n c$.
         \item \textbf{Identity}: The identity is $0$ since for every $x$ in $\mathbb{Z}_n$, $0 \oplus_n x = (0 + x) \mod{n} = (x + 0) \mod{n} = x \oplus_n 0 = x$.
         \item \textbf{Inverse}:
         \begin{itemize}
@@ -53,7 +47,7 @@ We now look at the notion of $\mathbb{Z}_n$.
             \item For any other integer $x$ in $\mathbb{Z}_n$, the inverse is $n - x$. Since $1 \leq x \leq n - 1$, thus $1 \leq n - x \leq n - 1$ so $n - x$ is indeed in $\mathbb{Z}_n$. Also, $x \oplus_n (n - x) = (x + (n - x)) \mod{n} = n \mod{n} = 0$ and $(n - x) \oplus_n x = ((n-x) + x)\mod{n} = n \mod{n} = 0$.
         \end{itemize}
     \end{enumerate}
-    Since the four group axioms are satisfied, this is a group.
+    Since the four group axioms are satisfied, this is a group. Furthermore, as addition is commutative (\myref{axiom-addition-is-commutative}), thus addition modulo $n$ is commutative. Therefore $(\mathbb{Z}_n, \oplus_n)$ is a commutative group.
 \end{proof}
 \begin{remark}
     Some sources (e.g. \cite{clark_1984, humphreys_1996}) define $\mathbb{Z}_n$ as a set of congruence classes modulo $n$, i.e. $\mathbb{Z}/n\mathbb{Z}$. We will show that these two definitions are equivalent in a future chapter.
