@@ -10,7 +10,7 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
     \]
 \end{definition}
 \begin{remark}
-    Some authors (e.g. \cite{libretexts_im-and-ker}) will use the notation $\phi(G)$ for the image of $\phi$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by \cite{clark_1984, hungerford_1980}).
+    Some authors (e.g. {\cite[Definition 4.2.0]{libretexts_im-and-ker}}) will use the notation $\phi(G)$ for the image of $\phi$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by {\cite[Definition I.2.2]{hungerford_1980}} and \cite[\S 66]{clark_1984}).
 \end{remark}
 
 \begin{example}
@@ -20,13 +20,10 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
     The homomorphism $f: \mathbb{R} \to \mathbb{R}$ where $f(x) = |x|$ has an image of $\{x \in \mathbb{R} \vert x \geq 0\}$, i.e. all non-negative real numbers.
 \end{example}
 
-We note that the image of a homomorphism is a subgroup of the codomain $H$.
 \begin{proposition}\label{prop-image-is-subgroup-of-codomain}
     Let $\phi: G \to H$ be a homomorphism. Then $\im\phi \leq H$.
 \end{proposition}
 \begin{proof}
-    We consider the subgroup test.
-    
     Note that $\phi(e_G) = e_H \in \im\phi$, where $e_G$ and $e_H$ are the identities of $G$ and $H$ respectively.
     
     Now suppose $h_1$ and $h_2$ are in the image of $\phi$, meaning that there exists $g_1$ and $g_2$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Note that $\phi(g_2^{-1}) = h_2^{-1}$ by homomorphism property. Hence $\phi(g_1g_2^{-1}) = h_1h_2^{-1} \in \im\phi$.
@@ -49,7 +46,7 @@ We note that the image of a homomorphism is a subgroup of the codomain $H$.
 Basically, the kernel of $\phi$ is the set of elements in $G$ which map to the identity in $H$.
 
 \begin{remark}
-    Some authors (e.g. \cite{libretexts_im-and-ker}) will use the notation $\phi^{-1}(e_H)$ for the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. \cite{clark_1984, hungerford_1980}).
+    Some authors (e.g. {\cite[Definition 4.2.0]{libretexts_im-and-ker}}) will use the notation $\phi^{-1}(e_H)$ for the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. by {\cite[Definition I.2.2]{hungerford_1980}} and \cite[\S 65]{clark_1984}).
 \end{remark}
 
 \begin{example}
@@ -60,7 +57,6 @@ Basically, the kernel of $\phi$ is the set of elements in $G$ which map to the i
     Let $i$ be the imaginary unit, that is $i^2 = -1$. Let the group $G$ be the integers under addition and $H = \langle i \rangle$ be under multiplication. Let the map $\phi: G \to H, n \mapsto i^n$.  Show that $\phi$ is a homomorphism and hence find $\ker\phi$.
 \end{exercise}
 
-We observe that the kernel of $\phi$ is a subgroup of $G$. It is, in fact, a \textit{normal} subgroup of $G$.
 \begin{proposition}\label{prop-kernel-is-normal-subgroup-of-domain}
     Let $\phi: G \to H$ be a homomorphism. Then $\ker\phi \unlhd G$.
 \end{proposition}
@@ -88,7 +84,7 @@ We observe that the kernel of $\phi$ is a subgroup of $G$. It is, in fact, a \te
 \end{exercise}
 
 \section{The Fundamental Homomorphism Theorem}
-We are now ready to tackle the three most important theorems regarding homomorphisms. We first state the \textbf{Fundamental Homomorphism Theorem}, which is also sometimes called the \textbf{First Isomorphism Theorem}.
+We are now ready to tackle the three most important theorems regarding homomorphisms. We first state the \textbf{Fundamental Homomorphism Theorem}, which is also sometimes called the \textbf{First Isomorphism Theorem} (e.g. in {\cite[p.~251, Theorem 3]{cohn_1982}}).
 \begin{theorem}[Fundamental Homomorphism Theorem]\label{thrm-isomorphism-1}\index{Fundamental Homomorphism Theorem}\index{Isomorphism Theorem!First}
     Let $G$ and $H$ be groups. Let $\phi: G \to H$ be a homomorphism, and let $\pi: G \to G/\ker\phi$ where $g\mapsto g\ker\phi$ be the natural surjective homomorphism. Then there exists a unique isomorphism $\psi: G/\ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
 \end{theorem}
@@ -110,7 +106,7 @@ We include the commutativity diagram of the homomorphisms stated to aid clarity:
 
 In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elements from $G$ to $G/\ker\phi$. Then the map $\psi$ is a unique map that sends elements from $G/\ker\phi$ to the image of $\phi$.
 
-\begin{proof}[Proof (cf. {\cite[p.~250, Theorem 2]{cohn_1982}})]
+\begin{proof}
     We know by \myref{prop-image-is-subgroup-of-codomain} that $\im\phi \leq H$. Let $\psi: G/\ker\phi \to \im\phi$ such that $\psi(x\ker\phi) = \phi(x)$. We need to check that $\psi$ is a well-defined isomorphism.
     \begin{itemize}
         \item \textbf{Well-defined}: Suppose $x\ker\phi = y\ker\phi$ where $x, y \in G$. Then $xy^{-1} \in \ker\phi$ by Coset Equality (\myref{lemma-coset-equality}), statements 1 and 5. This means that $\phi(xy^{-1}) = e_H$ by definition of the kernel. Note $\phi(xy^{-1}) = \phi(x)\left(\phi(y)\right)^{-1}$, so $\phi(x)\left(\phi(y)\right)^{-1} = e_H$. Hence $\phi(x) = \phi(y)$. Thus,
@@ -191,7 +187,7 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
 \end{exercise}
 
 \section{The Diamond Isomorphism Theorem}
-We now look at the next theorem, called the \textbf{Diamond Isomorphism Theorem} or the \textbf{Second Isomorphism Theorem}.
+We now look at the next theorem, called the \textbf{Diamond Isomorphism Theorem} (e.g. in {\cite[Theorem 3.18]{dummit_foote_2004}}) or the \textbf{Second Isomorphism Theorem} (e.g. in {\cite[\S 69]{clark_1984}}).
 \begin{theorem}[Diamond Isomorphism Theorem]\label{thrm-isomorphism-2}\index{Diamond Isomorphism Theorem}\index{Isomorphism Theorem!Second}
     Let $G$ be a group and let $H$ and $K$ be subgroups of $G$. Then
     \begin{enumerate}
@@ -332,7 +328,7 @@ We look at another application of the Diamond Isomorphism Theorem, which has use
 \end{exercise}
 
 \section{The Third Isomorphism Theorem}
-We look at the last important theorem regarding homomorphisms and isomorphisms. This is often called the \textbf{Third Isomorphism Theorem} (e.g. in \cite{cohn_1982, hungerford_1980}).
+We look at the last important theorem regarding homomorphisms and isomorphisms. This is often called the \textbf{Third Isomorphism Theorem} (e.g. in {\cite[Corollary I.5.10]{hungerford_1980}} and {\cite[pp.~253--254, Theorem 5]{cohn_1982}}).
 
 It should be noted that there is no consistency with the numbering of these theorems in books (cf. {\cite[\S 68]{clark_1984}} as ``First Isomorphism Theorem'', {\cite[Theorem 8.16]{humphreys_1996}} as ``Second Isomorphism Theorem''), but the name ``Third Isomorphism Theorem'' is the easiest to research. Hence, we use that name here.
 
@@ -345,7 +341,7 @@ It should be noted that there is no consistency with the numbering of these theo
     \end{enumerate}
 \end{theorem}
 \begin{proof}
-    Like with the Diamond Isomorphism Theorem, we will prove the statements in sequence.
+    We prove the statements in sequence.
 
     \begin{enumerate}
         \item We note that since $N \subseteq H$ and $N$ is a group (since $N$ is a normal subgroup of $G$) thus $N \leq H$. We just need to prove normality. Since $H$ and $N$ are normal subgroups of $G$, thus for all $g \in G$,
