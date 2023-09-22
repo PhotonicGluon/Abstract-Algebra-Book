@@ -64,8 +64,8 @@
 
 %=========== Theorem Styles ==============
 \newtheoremstyle{theorem-style}
-    {-12pt}      % Space above
-    {-5pt}       % Space below
+    {}           % Space above
+    {}           % Space below
     {}           % Font to use in the theorem
     {0pt}        % Measure of space to indent
     {\bfseries}  % Name of the head font
@@ -74,8 +74,8 @@
     {\thmname{#1}\thmnumber{ #2}\textit{\thmnote{ (#3)}}}
 
 \newtheoremstyle{definition-style}
-    {-12pt}      % Space above
-    {-5pt}       % Space below
+    {}           % Space above
+    {}           % Space below
     {}           % Font to use in the definition
     {0pt}        % Measure of space to indent
     {\bfseries}  % Name of the head font
@@ -84,8 +84,8 @@
     {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
 
 \newtheoremstyle{exercise-style}
-    {-5pt}       % Space above
-    {\topsep}    % Space below
+    {}           % Space above
+    {}           % Space below
     {}           % Font to use in the exercise
     {0pt}        % Measure of space to indent
     {\bfseries}  % Name of the head font
@@ -121,33 +121,40 @@
 
 %============ Environments ===============
 % 'Results' environments
-\newenvironment{theorem}
-{\definecolor{shadecolor}{named}{DarkSeaGreen2}\begin{shaded}\noindent\begin{theoremhidden}}
-{\end{theoremhidden}\end{shaded}}
+\newcommand{\makeresultenv}[2]{
+    \newenvironment{#1}
+    {
+        \noindent\begin{#1hidden}
+        \setlength{\FrameSep}{5pt}
+        \definecolor{shadecolor}{named}{#2}
+        \begin{shaded}
+    }
+    {
+        \end{shaded}
+        \setlength{\FrameSep}{\fboxsep}
+        \end{#1hidden}
+    }
+}
 
-\newenvironment{lemma}
-{\definecolor{shadecolor}{named}{Honeydew2}\begin{shaded}\noindent\begin{lemmahidden}}
-{\end{lemmahidden}\end{shaded}}
+\makeresultenv{theorem}{DarkSeaGreen2}
+\makeresultenv{lemma}{Honeydew2}
+\makeresultenv{proposition}{Honeydew1}
+\makeresultenv{corollary}{DarkSeaGreen1}
 
-\newenvironment{proposition}
-{\definecolor{shadecolor}{named}{Honeydew1}\begin{shaded}\noindent\begin{propositionhidden}}
-{\end{propositionhidden}\end{shaded}}
-
-\newenvironment{corollary}
-{\definecolor{shadecolor}{named}{DarkSeaGreen1}\begin{shaded}\noindent\begin{corollaryhidden}}
-{\end{corollaryhidden}\end{shaded}}
-
-\newenvironment{definition}
-{\definecolor{shadecolor}{named}{LightCyan1}\begin{shaded}\noindent\begin{definitionhidden}}
-{\end{definitionhidden}\end{shaded}}
-
-\newenvironment{axiom}
-{\definecolor{shadecolor}{named}{Thistle2}\begin{shaded}\noindent\begin{axiomhidden}}
-{\end{axiomhidden}\end{shaded}}
+\makeresultenv{definition}{LightCyan1}
+\makeresultenv{axiom}{Thistle2}
 
 \newenvironment{exercise}
-{\begin{framed}\noindent\begin{exercisehidden}}
-{\end{exercisehidden}\end{framed}}
+{
+    \noindent\begin{exercisehidden}
+    \setlength{\FrameSep}{10pt}
+    \begin{framed}
+}
+{
+    \end{framed}
+    \setlength{\FrameSep}{\fboxsep}
+    \end{exercisehidden}
+}
 
 % 'Questions' environments
 \newenvironment{questions}
@@ -162,6 +169,10 @@
 \newenvironment{example}
 {\begin{examplehidden}}
 {\null\hfill\qedsymbolalt\end{examplehidden}}
+
+\newenvironment{examplealt}
+{\begin{examplehidden}}
+{\end{examplehidden}}
 
 %=========== Custom Commands =============
 \newcommand{\ZeroRoman}[1]{\ifcase\value{#1}\relax0\else\Roman{#1}\fi}  % Roman numeral
