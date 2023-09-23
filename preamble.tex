@@ -59,6 +59,16 @@
 \linespread{1.05}
 
 %============ Redefinitions ==============
+\let\oldpart\part
+\renewcommand*{\part}[1]{\cleardoubleoddpage\oldpart{#1}\cleardoubleemptypage}
+\newcommand{\unnumberedpart}[1]{
+    \cleardoubleoddpage
+    \addcontentsline{toc}{part}{#1}
+    \oldpart*{#1}
+    \cleardoubleemptypage
+}
+
+% Symbols redefinitions
 \let\oldemptyset\emptyset
 \let\emptyset\varnothing
 
