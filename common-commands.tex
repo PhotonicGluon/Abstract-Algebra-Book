@@ -21,11 +21,11 @@
 \usepackage{amsmath}
 \usepackage{amsthm}
 \usepackage{amssymb}
+\usepackage{thmtools}
 \usepackage[inner=1.5cm, outer=2.5cm, vmargin=2.5cm]{geometry}
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{parskip}
-\usepackage{framed}
 \usepackage{fancyhdr}
 \usepackage{emptypage}
 \usepackage{multicol}
@@ -33,6 +33,7 @@
 \usepackage[breaklinks]{hyperref}
 \usepackage[capitalise, nameinlink]{cleveref}
 \usepackage[x11names]{xcolor}
+\usepackage{mdframed}
 \usepackage{crossreftools}
 
 \usepackage[
@@ -63,99 +64,72 @@
 \newcommand{\qedsymbolalt}{\ensuremath{\square}}
 
 %=========== Theorem Styles ==============
-\newtheoremstyle{theorem-style}
-    {}           % Space above
-    {}           % Space below
-    {}           % Font to use in the theorem
-    {0pt}        % Measure of space to indent
-    {\bfseries}  % Name of the head font
-    {.}          % Punctuation between head and body
-    { }          % Space after theorem head; " " = normal inter-word space
-    {\thmname{#1}\thmnumber{ #2}\textit{\thmnote{ (#3)}}}
-
-\newtheoremstyle{definition-style}
-    {}           % Space above
-    {}           % Space below
-    {}           % Font to use in the definition
-    {0pt}        % Measure of space to indent
-    {\bfseries}  % Name of the head font
-    {.}          % Punctuation between head and body
-    { }          % Space after theorem head; " " = normal inter-word space
-    {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
-
-\newtheoremstyle{exercise-style}
-    {}           % Space above
-    {}           % Space below
-    {}           % Font to use in the exercise
-    {0pt}        % Measure of space to indent
-    {\bfseries}  % Name of the head font
-    {.}          % Punctuation between head and body
-    { }          % Space after theorem head; " " = normal inter-word space
-    {\thmname{#1}\thmnumber{ #2}\textnormal{\thmnote{ (#3)}}}
-
-%======== Theorem-Like Things ============
 % 'Results' definitions
-\theoremstyle{theorem-style}\newtheorem{theoremhidden}{Theorem}[section]
-\renewcommand{\thetheoremhidden}{\ZeroRoman{part}.\arabic{chapter}.\arabic{section}.\arabic{theoremhidden}}
+\newcommand{\makenewresultstyle}[2]{
+    \declaretheoremstyle[
+        headfont=\normalfont\bfseries,
+        bodyfont=\normalfont,
+        notefont=\normalfont\bfseries\itshape,
+        spaceabove=0pt,  % Space between previous paragraph and current block
+        spacebelow=0pt,  % Space between current block and next paragraph
+        mdframed={
+            skipabove=3pt,  % Space between top of block and beginning of coloured frame
+            skipbelow=3pt,  % Space between bottom of block and beginning of coloured frame
+            hidealllines=true,
+            backgroundcolor=#2,
+            usetwoside=false,  % Needed for `leftmargin` and `rightmargin` to work
+            leftmargin=-5pt,
+            rightmargin=-5pt,
+            innerleftmargin=5pt,
+            innerrightmargin=5pt
+        }
+    ]{#1-style}
+}
 
-\theoremstyle{theorem-style}\newtheorem{lemmahidden}[theoremhidden]{Lemma}
+\makenewresultstyle{theorem}{DarkSeaGreen2}
+\declaretheorem[name=Theorem,style=theorem-style,within=section]{theorem}
+\renewcommand*{\thetheorem}{\ZeroRoman{part}.\arabic{chapter}.\arabic{section}.\arabic{theorem}}
 
-\theoremstyle{theorem-style}\newtheorem{propositionhidden}[theoremhidden]{Proposition}
+\makenewresultstyle{lemma}{Honeydew2}
+\declaretheorem[style=lemma-style,sibling=theorem]{lemma}
 
-\theoremstyle{theorem-style}\newtheorem{corollaryhidden}[theoremhidden]{Corollary}
+\makenewresultstyle{proposition}{Honeydew1}
+\declaretheorem[style=proposition-style,sibling=theorem]{proposition}
 
-\theoremstyle{definition-style}\newtheorem{definitionhidden}[theoremhidden]{Definition}
+\makenewresultstyle{corollary}{DarkSeaGreen1}
+\declaretheorem[style=corollary-style,sibling=theorem]{corollary}
 
-\theoremstyle{definition-style}\newtheorem{axiomhidden}[theoremhidden]{Axiom}
+\makenewresultstyle{definition}{LightCyan1}
+\declaretheorem[style=definition-style,sibling=theorem]{definition}
+
+\makenewresultstyle{axiom}{Thistle2}
+\declaretheorem[style=axiom-style,sibling=theorem]{axiom}
 
 % 'Questions' definitions
-\theoremstyle{exercise-style}\newtheorem{exercisehidden}{Exercise}[chapter]
-\renewcommand{\theexercisehidden}{\ZeroRoman{part}.\arabic{chapter}.\arabic{exercisehidden}}
+\declaretheoremstyle[
+    headfont=\normalfont\bfseries,
+    bodyfont=\normalfont,
+    spaceabove=5pt,  % Space between previous paragraph and current block
+    prefoothook={\vspace{5pt}},
+    mdframed={
+        skipabove=10pt,  % Space between top of block and beginning of frame
+        skipbelow=10pt,  % Space between bottom of block and beginning of frame
+        usetwoside=false,
+        innerleftmargin=10pt,
+        innerrightmargin=10pt
+    }
+]{exercise-style}
+\declaretheorem[style=exercise-style,within=chapter]{exercise}
+\renewcommand*{\theexercise}{\ZeroRoman{part}.\arabic{chapter}.\arabic{exercise}}
 
-\theoremstyle{definition}\newtheorem{problem}{Problem}[chapter]
-\renewcommand{\theproblem}{\ZeroRoman{part}.\arabic{chapter}.\arabic{problem}}
+\declaretheorem[name=Problem,style=definition-style,within=chapter]{problem}
+\renewcommand*{\theproblem}{\ZeroRoman{part}.\arabic{chapter}.\arabic{problem}}
 
 % Miscellaneous definitions
 \theoremstyle{definition}\newtheorem*{remark}{Remark}
-\theoremstyle{definition}\newtheorem{examplehidden}[theoremhidden]{Example}
+\theoremstyle{definition}\newtheorem{examplehidden}[theorem]{Example}
 
 %============ Environments ===============
-% 'Results' environments
-\newcommand{\makeresultenv}[2]{
-    \newenvironment{#1}
-    {
-        \noindent\begin{#1hidden}
-        \setlength{\FrameSep}{5pt}
-        \definecolor{shadecolor}{named}{#2}
-        \begin{shaded}
-    }
-    {
-        \end{shaded}
-        \setlength{\FrameSep}{\fboxsep}
-        \end{#1hidden}
-    }
-}
-
-\makeresultenv{theorem}{DarkSeaGreen2}
-\makeresultenv{lemma}{Honeydew2}
-\makeresultenv{proposition}{Honeydew1}
-\makeresultenv{corollary}{DarkSeaGreen1}
-
-\makeresultenv{definition}{LightCyan1}
-\makeresultenv{axiom}{Thistle2}
-
-\newenvironment{exercise}
-{
-    \noindent\begin{exercisehidden}
-    \setlength{\FrameSep}{10pt}
-    \begin{framed}
-}
-{
-    \end{framed}
-    \setlength{\FrameSep}{\fboxsep}
-    \end{exercisehidden}
-}
-
 % 'Questions' environments
 \newenvironment{questions}
 {\begin{enumerate}[label=\textbf{\arabic*.}]}
