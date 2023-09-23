@@ -63,8 +63,8 @@
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
 \newcommand{\qedsymbolalt}{\ensuremath{\square}}
 
-%=========== Theorem Styles ==============
-% 'Results' definitions
+%=========== Theorem Things ==============
+% 'Results' declarations
 \newcommand{\makenewresultstyle}[2]{
     \declaretheoremstyle[
         headfont=\normalfont\bfseries,
@@ -105,7 +105,7 @@
 \makenewresultstyle{axiom}{Thistle2}
 \declaretheorem[style=axiom-style,sibling=theorem]{axiom}
 
-% 'Questions' definitions
+% 'Questions' declarations
 \declaretheoremstyle[
     headfont=\normalfont\bfseries,
     bodyfont=\normalfont,
@@ -122,15 +122,25 @@
 \declaretheorem[style=exercise-style,within=chapter]{exercise}
 \renewcommand*{\theexercise}{\ZeroRoman{part}.\arabic{chapter}.\arabic{exercise}}
 
-\declaretheorem[name=Problem,style=definition-style,within=chapter]{problem}
+\declaretheoremstyle[
+    headfont=\normalfont\bfseries,
+    bodyfont=\normalfont,
+    notefont=\normalfont\bfseries\itshape,
+    spaceabove=0pt,  % Space between previous paragraph and current block
+    spacebelow=0pt,  % Space between current block and next paragraph
+]{problem-style}
+\declaretheorem[name=Problem,style=problem-style,within=chapter]{problem}
 \renewcommand*{\theproblem}{\ZeroRoman{part}.\arabic{chapter}.\arabic{problem}}
 
-% Miscellaneous definitions
-\theoremstyle{definition}\newtheorem*{remark}{Remark}
-\theoremstyle{definition}\newtheorem{examplehidden}[theorem]{Example}
+% Miscellaneous declarations
+\declaretheoremstyle[
+    headfont=\normalfont\bfseries,
+    bodyfont=\normalfont
+]{general-style}
+\declaretheorem[style=general-style,sibling=theorem]{example}
+\declaretheorem[style=general-style,numbered=no]{remark}
 
 %============ Environments ===============
-% 'Questions' environments
 \newenvironment{questions}
 {\begin{enumerate}[label=\textbf{\arabic*.}]}
 {\end{enumerate}}
@@ -138,15 +148,6 @@
 \newenvironment{partquestions}[1]
 {\begin{enumerate}[label=\textbf{(#1)}]}
 {\end{enumerate}}
-
-% Miscellaneous environments
-\newenvironment{example}
-{\begin{examplehidden}}
-{\null\hfill\qedsymbolalt\end{examplehidden}}
-
-\newenvironment{examplealt}
-{\begin{examplehidden}}
-{\end{examplehidden}}
 
 %=========== Custom Commands =============
 \newcommand{\ZeroRoman}[1]{\ifcase\value{#1}\relax0\else\Roman{#1}\fi}  % Roman numeral
