@@ -31,10 +31,10 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
     
     Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
 
-    The first case is when order of the center of $G$ is a multiple of $p$, i.e. $|\Z{G}| = ap$ for some positive integer $a$. By Cauchy's Theorem (\myref{thrm-cauchy}), $\Z{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $n \in N$ and $g \in G$,
+    The first case is when order of the center of $G$ is a multiple of $p$, i.e. $|\CenterGrp{G}| = ap$ for some positive integer $a$. By Cauchy's Theorem (\myref{thrm-cauchy}), $\CenterGrp{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $n \in N$ and $g \in G$,
     \begin{align*}
         gng^{-1} &= (gn)g^{-1}\\
-        &= (ng)g^{-1} & (\text{since n} \in N \subseteq \Z{G})\\
+        &= (ng)g^{-1} & (\text{since n} \in N \subseteq \CenterGrp{G})\\
         &= n(gg^{-1})\\
         &= n\\
         &\in N
@@ -59,17 +59,17 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
 
     We can now start on the second case where the order of the center of $G$ is not a multiple of $p$. Recall the class equation (\myref{thrm-class-equation})
     \[
-        |G| = |\Z{G}| + \sum_{i=1}^l [G:\C{G}{g_i}]
+        |G| = |\CenterGrp{G}| + \sum_{i=1}^l [G:\Centralizer{G}{g_i}]
     \]
-    where $g_1, g_2, \dots, g_l$ are representatives of the $l$ distinct conjugacy classes with more than one element. We note that $p$ divides $|G|$. Since $p$ does not divide $|\Z{G}|$ in this case, thus
+    where $g_1, g_2, \dots, g_l$ are representatives of the $l$ distinct conjugacy classes with more than one element. We note that $p$ divides $|G|$. Since $p$ does not divide $|\CenterGrp{G}|$ in this case, thus
     \[
-        \sum_{i=1}^l [G:\C{G}{g_i}]
+        \sum_{i=1}^l [G:\Centralizer{G}{g_i}]
     \]
-    must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\C{G}{g_i}]$. We note that $[G:\C{G}{g_i}] = \frac{|G|}{|\C{G}{g_i}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Therefore, if $p$ does not divide $\frac{|G|}{|\C{G}{g_i}|} = \frac{p^k m}{|\C{G}{g_i}|}$, then $|\C{G}{g_i}| = p^ka$ for some positive integer $a$.
+    must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\Centralizer{G}{g_i}]$. We note that $[G:\Centralizer{G}{g_i}] = \frac{|G|}{|\Centralizer{G}{g_i}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Therefore, if $p$ does not divide $\frac{|G|}{|\Centralizer{G}{g_i}|} = \frac{p^k m}{|\Centralizer{G}{g_i}|}$, then $|\Centralizer{G}{g_i}| = p^ka$ for some positive integer $a$.
 
-    We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly if $a > m$ then $\frac{p^k m}{|\C{G}{g_i}|}$ is not an integer, so $a \leq m$. If instead $a = m$ then $|\C{G}{g_i}| = p^km = |G|$, and since $\C{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \C{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \Z{G}$. But an element is in $\Z{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
+    We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly if $a > m$ then $\frac{p^k m}{|\Centralizer{G}{g_i}|}$ is not an integer, so $a \leq m$. If instead $a = m$ then $|\Centralizer{G}{g_i}| = p^km = |G|$, and since $\Centralizer{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \Centralizer{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \CenterGrp{G}$. But an element is in $\CenterGrp{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
 
-    In summary, $\C{G}{g_i} < G$ with $|\C{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the induction hypothesis on $\C{G}{g_i}$ to say that $\C{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\C{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
+    In summary, $\Centralizer{G}{g_i} < G$ with $|\Centralizer{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the induction hypothesis on $\Centralizer{G}{g_i}$ to say that $\Centralizer{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\Centralizer{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
 
     Therefore, any finite group $G$ with order written as $p^k m$ has a Sylow $p$-subgroup, meaning that $\Syl{p}{G} \neq \emptyset$.
 \end{proof}
@@ -373,7 +373,7 @@ We may use part of the Third Sylow Theorem to create a test for non-simplicity.
     We first suppose $n = p^k$. Let $G$ be a group of order $n$. We consider two subcases.
     \begin{itemize}
         \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\myref{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\myref{prop-subgroup-of-abelian-group-is-normal}), thus there exists a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
-        \item Now suppose $G$ is non-abelian. By \myref{example-group-with-prime-power-order-has-non-trivial-center}, $G$ has a non-trivial center. Furthermore, $G \neq \Z{G}$ because $G$ is non-abelian (\myref{problem-center-of-G}). Since the center is a normal subgroup of $G$, it is thus a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
+        \item Now suppose $G$ is non-abelian. By \myref{example-group-with-prime-power-order-has-non-trivial-center}, $G$ has a non-trivial center. Furthermore, $G \neq \CenterGrp{G}$ because $G$ is non-abelian (\myref{problem-center-of-G}). Since the center is a normal subgroup of $G$, it is thus a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
     \end{itemize}
     Hence any group of order $p^k$ where $k > 1$ is non-simple.
 

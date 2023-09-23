@@ -77,15 +77,15 @@ We look at some examples of the use of the subgroup test.
 \begin{example}\label{example-centralizer-of-a-subset}
     Let $G$ be a group and $S \subseteq G$ where $S \neq \emptyset$. The \textbf{centralizer}\index{centralizer} of $S$ in $G$ is the set
     \[
-        \C{G}{S} = \left\{g \in G \vert \text{for all } s \in S \text{ we have } gs = sg\right\}.
+        \Centralizer{C}{G}{S} = \left\{g \in G \vert \text{for all } s \in S \text{ we have } gs = sg\right\}.
     \]
-    Note $\C{G}{S}$ is a subset of $G$. We claim that $\C{G}{S}$ is a subgroup of $G$.
+    Note $\Centralizer{C}{G}{S}$ is a subset of $G$. We claim that $\Centralizer{C}{G}{S}$ is a subgroup of $G$.
     \begin{proof}
-        We show that for all elements $x$ and $y$ in $\C{G}{S}$, $xy^{-1}$ is also in the centralizer. Note that the condition $gs = sg$ is equivalent to the condition $sg^{-1} = g^{-1}s$.
+        We show that for all elements $x$ and $y$ in $\Centralizer{C}{G}{S}$, $xy^{-1}$ is also in the centralizer. Note that the condition $gs = sg$ is equivalent to the condition $sg^{-1} = g^{-1}s$.
 
-        Clearly for all $s \in S$ we have $es = se$, so $e \in \C{G}{S}$. This means that $\C{G}{S}$ is non-empty.
+        Clearly for all $s \in S$ we have $es = se$, so $e \in \Centralizer{C}{G}{S}$. This means that $\Centralizer{C}{G}{S}$ is non-empty.
         
-        Now suppose $x$ and $y$ are in $\C{G}{S}$. Let $s$ be in $S$. Then
+        Now suppose $x$ and $y$ are in $\Centralizer{C}{G}{S}$. Let $s$ be in $S$. Then
         \begin{align*}
             (xy^{-1})s &= x(y^{-1}s) & (\text{associativity})\\
             &= x(sy^{-1}) & (\text{since } g^{-1}s = sg^{-1})\\
@@ -93,34 +93,34 @@ We look at some examples of the use of the subgroup test.
             &= (sx)y^{-1} & (\text{since } gs = sg)\\
             &= s(xy^{-1}) & (\text{associativity})
         \end{align*}
-        so $(xy^{-1})s = s(xy^{-1})$ for all $s$ in $S$. Thus, $xy^{-1}$ is in $\C{G}{S}$ for all $x$ and $y$ in $\C{G}{S}$, so by subgroup test $\C{G}{S} \leq G$.
+        so $(xy^{-1})s = s(xy^{-1})$ for all $s$ in $S$. Thus, $xy^{-1}$ is in $\Centralizer{C}{G}{S}$ for all $x$ and $y$ in $\Centralizer{C}{G}{S}$, so by subgroup test $\Centralizer{C}{G}{S} \leq G$.
     \end{proof}
 \end{example}
 \begin{remark}
-    In the case where the set $S$ contains a single element, say $S = \{x\}$, we write $\C{G}{x}$.
+    In the case where the set $S$ contains a single element, say $S = \{x\}$, we write $\Centralizer{G}{x}$.
 \end{remark}
 
 \begin{example}\label{example-center-of-group}
     Let $G$ be a group. The \textbf{center}\index{center} of a group $G$ is given by the set
     \[
-        \Z{G} = \{z \in G \vert gz = zg \text{ for all } g \in G\}.
+        \CenterGrp{G} = \{z \in G \vert gz = zg \text{ for all } g \in G\}.
     \]
-    Clearly $\Z{G}$ is a subset of $G$. We claim that $\Z{G}$ is a subgroup of $G$.
+    Clearly $\CenterGrp{G}$ is a subset of $G$. We claim that $\CenterGrp{G}$ is a subgroup of $G$.
 
     \begin{proof}
-	    Note that $e \in \Z{G}$ since $ge = eg$ for all $g \in G$, so $\Z{G}$ is non-empty.
+	    Note that $e \in \CenterGrp{G}$ since $ge = eg$ for all $g \in G$, so $\CenterGrp{G}$ is non-empty.
 
-	    Let $x$ and $y$ be in $\Z{G}$, meaning that $gx = xg$ and $gy = yg$ for all $g \in G$. Note that $gy = yg$ implies $y^{-1}g = gy^{-1}$, so $y^{-1} \in \Z{G}$. Now,
+	    Let $x$ and $y$ be in $\CenterGrp{G}$, meaning that $gx = xg$ and $gy = yg$ for all $g \in G$. Note that $gy = yg$ implies $y^{-1}g = gy^{-1}$, so $y^{-1} \in \CenterGrp{G}$. Now,
 	    \begin{align*}
 	        (xy^{-1})g &= x(y^{-1}g)\\
-	        &= x(gy^{-1}) & (\text{since } y^{-1} \in \Z{G})\\
+	        &= x(gy^{-1}) & (\text{since } y^{-1} \in \CenterGrp{G})\\
 	        &= (xg)y^{-1} & (\text{associativity})\\
-	        &= (gx)y^{-1} & (\text{since } x \in \Z{G})\\
+	        &= (gx)y^{-1} & (\text{since } x \in \CenterGrp{G})\\
 	        &= g(xy^{-1}) & (\text{associativity})
 	    \end{align*}
-	    which means that $xy^{-1} \in \Z{G}$.
+	    which means that $xy^{-1} \in \CenterGrp{G}$.
         
-        Hence $\Z{G} \leq G$ by the subgroup test.
+        Hence $\CenterGrp{G} \leq G$ by the subgroup test.
     \end{proof}
 \end{example}
 
@@ -531,10 +531,10 @@ We end this chapter by looking at a special (and useful) type of group: the quot
 \begin{problem}\label{problem-center-of-G}
     Let $G$ be a group.
     \begin{partquestions}{\alph*}
-        \item Prove that $\Z{G}$ is a normal subgroup of $G$.
-        \item Prove that $\Z{G} = G$ if and only if $G$ is abelian.
+        \item Prove that $\CenterGrp{G}$ is a normal subgroup of $G$.
+        \item Prove that $\CenterGrp{G} = G$ if and only if $G$ is abelian.
         \item Find the center of the group $D_4$.\newline
-        (You may assume $|\Z{G}| < \frac12 |G|$. The reason becomes apparent with \myref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}'s solution.)
+        (You may assume $|\CenterGrp{G}| < \frac12 |G|$. The reason becomes apparent with \myref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}'s solution.)
     \end{partquestions}
 \end{problem}
 
@@ -588,5 +588,5 @@ We end this chapter by looking at a special (and useful) type of group: the quot
 \end{problem}
 
 \begin{problem}\label{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}
-    Let $G$ be a group, and suppose $G / \Z{G}$ is cyclic. Prove that $G$ is abelian.
+    Let $G$ be a group, and suppose $G / \CenterGrp{G}$ is cyclic. Prove that $G$ is abelian.
 \end{problem}

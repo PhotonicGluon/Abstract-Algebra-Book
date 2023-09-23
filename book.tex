@@ -2,7 +2,6 @@
 
 %=========== Global Variables ============
 \newcommand{\version}{0.19}
-%TODO: REMOVE
 
 %=========== Path to images ==============
 \graphicspath{{part0/images}{part1/images}{part2/images}{part3/images}}
@@ -27,30 +26,38 @@
         front-matter,
         % Part 0
         part0/algebra,
-        % part0/sets,
-        % part0/functions,
-        % part0/proofs,
-        % part0/number-theory,
-        % part0/modular-arithmetic,
+        part0/sets,
+        part0/functions,
+        part0/proofs,
+        part0/number-theory,
+        part0/modular-arithmetic,
         % Part 1
         part1/intro-to-groups,
-        % part1/basics-of-groups,
-        % part1/subgroups,
-        % part1/homomorphisms-and-isomorphisms,
-        % part1/symmetry-groups,
-        % part1/products,
-        % part1/further-homomorphisms,
-        % part1/more-groups,
-        % part1/group-actions,
-        % part1/sylow-theorems,
-        % part1/composition-series,
-        % part1/simple-groups,
-        % % Appendices
-        % part0/exercise-solutions,
-        % part0/appendices,
-        % part1/exercise-solutions,
-        % part1/problem-solutions,
-        % part1/appendices
+        part1/basics-of-groups,
+        part1/subgroups,
+        part1/homomorphisms-and-isomorphisms,
+        part1/symmetry-groups,
+        part1/products,
+        part1/further-homomorphisms,
+        part1/more-groups,
+        part1/group-actions,
+        part1/sylow-theorems,
+        part1/composition-series,
+        part1/simple-groups,
+        % Part 2
+        part2/intro-to-rings,
+        part2/basics-of-rings,
+        part2/integral-domains,
+        part2/ideals-and-quotient-rings,
+        part2/ring-homomorphisms,
+        part2/polynomial-rings,
+        % Exercise solutions
+        part0/exercise-solutions,
+        part1/exercise-solutions,
+        part2/exercise-solutions,
+        % Problem solutions
+        part1/problem-solutions,
+        part2/problem-solutions
     }
 }
 {
@@ -66,6 +73,7 @@
 \setcounter{part}{-1}
 \mainmatter  % Now use arabic numerals for page numbers
 
+%=========================================
 \setpartpreamble[u][\textwidth]{
     \quoteattr{
         Aus dem Paradies, das Cantor uns geschaffen, soll uns niemand vertreiben k\"{o}nnen.\\
@@ -89,6 +97,7 @@
 \include{part0/number-theory}
 \include{part0/modular-arithmetic}
 
+%=========================================
 \setpartpreamble[u][\textwidth]{
     \quoteattr{
         [The] axioms for a group are short and natural... [yet] somehow hidden behind these axioms is the monster simple group, a huge and extraordinary mathematical object, which appears to rely on numerous bizarre coincidences to exist. The axioms for groups give no obvious hint that anything like this exists.
@@ -118,6 +127,7 @@
 \include{part1/composition-series}
 \include{part1/simple-groups}
 
+%=========================================
 \setpartpreamble[u][\textwidth]{
     \quoteattr{
         [Some] of the major discoveries in ring theory have helped shape the course of development of modern abstract algebra... A course in ring theory is an indispensable part of the education of any fledgling algebraist.
@@ -132,7 +142,14 @@
     This part covers the basics of ring theory. %TODO: Add
 }
 \part{Ring Theory}
+\include{part2/intro-to-rings}
+\include{part2/basics-of-rings}
+\include{part2/integral-domains}
+\include{part2/ideals-and-quotient-rings}
+\include{part2/ring-homomorphisms}
+\include{part2/polynomial-rings}
 
+%=========================================
 \setpartpreamble[u][\textwidth]{
     \quoteattr{
         I became convinced that studying the algebraic relationship of numbers is most conveniently based on a concept that is directly connected with the simplest arithmetic properties. I had originally used the term ``rational domain'', which I later changed to ``field''.
@@ -148,12 +165,40 @@
 }
 \part{Field Theory}
 
+%=========================================
 \part*{Appendices}
 \appendix
+
+\chapter{Exercise Solutions}
+\begingroup
+\let\clearpage\relax  % To prevent the `\include`s from inserting a blank page
 \include{part0/exercise-solutions}
-\include{part0/appendices}
 \include{part1/exercise-solutions}
+\include{part2/exercise-solutions}
+\endgroup
+
+\chapter{Problem Solutions}
+\begingroup
+\let\clearpage\relax  % To prevent the `\include`s from inserting a blank page
+% Part 0 has no problems
 \include{part1/problem-solutions}
-\include{part1/appendices}
+\include{part2/problem-solutions}
+\endgroup
+
+\chapter{Image Acknowledgements}
+Unless otherwise stated, all images are the author's own work, and are released under the same licence as this book.
+
+\section{Introduction to Groups}
+\begin{itemize}
+    \item Image of the circular decorative knot with twelve crossings is released into the public domain by user \code{AnonMoos} on Wikimedia. The original file is available \href{https://commons.wikimedia.org/wiki/File:Circular-cross-decorative-knot-12crossings.svg}{here}.
+\end{itemize}
+
+\section{Basics of Groups}
+\begin{itemize}
+    \item Images of symmetries of an equilateral triangle and a square taken from \cite[p. 13]{milne_2021}.
+\end{itemize}
+
+\printbibliography[heading=bibintoc, title={References and Bibliography}]
+\printindex
 
 \end{document}

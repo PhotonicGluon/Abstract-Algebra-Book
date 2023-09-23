@@ -17,21 +17,21 @@
     \end{partquestions}
 
     \item \begin{partquestions}{\alph*}
-        \item We have proved that $\Z{G} \leq G$ so we only prove normality. Let $g$ and $z$ be arbitrary elements from $G$ and $\mathrm{Z}(G)$ respectively. Then
+        \item We have proved that $\CenterGrp{G} \leq G$ so we only prove normality. Let $g$ and $z$ be arbitrary elements from $G$ and $\CenterGrp{G}$ respectively. Then
         \begin{align*}
             gzg^{-1} &= g(zg^{-1})\\
-            &= g(g^{-1}z) & (\text{since }z \in \mathrm{Z}(G))\\
+            &= g(g^{-1}z) & (\text{since }z \in \CenterGrp{G})\\
             &= (gg^{-1})z \\
             &= z\\
-            &\in \mathrm{Z}(G)
+            &\in \CenterGrp{G}
         \end{align*}
-        which proves that $\mathrm{Z}(G) \unlhd G$.
+        which proves that $\CenterGrp{G} \unlhd G$.
 
-        \item We first work in the forward direction by assuming $G = \Z{G}$. Then for all $z \in \Z{G} = G$ we have $gz = zg$ for any $g \in G$ by definition, which means that $G$ is abelian.
+        \item We first work in the forward direction by assuming $G = \CenterGrp{G}$. Then for all $z \in \CenterGrp{G} = G$ we have $gz = zg$ for any $g \in G$ by definition, which means that $G$ is abelian.
 
-        We now work in the reverse direction by assuming that $G$ is abelian. Note $\mathrm{Z}(G) = \{z \in G \vert gz = zg \text{ for all } g \in G\}$. But since $G$ is abelian, $gh = hg$ for all $g$ and $h$ in $G$. Thus every element in $G$ satisfies the condition to be in the center of $G$, meaning $\mathrm{Z}(G) = G$.
+        We now work in the reverse direction by assuming that $G$ is abelian. Note $\CenterGrp{G} = \{z \in G \vert gz = zg \text{ for all } g \in G\}$. But since $G$ is abelian, $gh = hg$ for all $g$ and $h$ in $G$. Thus every element in $G$ satisfies the condition to be in the center of $G$, meaning $\CenterGrp{G} = G$.
 
-        \item We note that $D_4 = \{e, r, r^2, r^3, s, rs, r^2s, r^3s\}$. Since $\mathrm{Z}(D_4)$ is a subgroup of $D_4$ it has a maximum order of 2, by Lagrange's theorem (\myref{thrm-lagrange}) and the note given. Since 2 is prime the subgroups must be cyclic. Thus the non-trivial proper subgroups of $D_4$ are $\{e, r^2\}$ and $\{e, s\}$ (since $|r^2| = |s| = 2$). Now like how we proved that $\langle s \rangle = \{e, s\}$ is not a normal subgroup in $D_3$ in \myref{example-normal-subgroups-of-d3}, $\{e, s\}$ is not a normal subgroup of $D_4$. One verifies easily that $\{e, r^2\} = \langle r^2 \rangle$ is a normal subgroup of $D_4$. Thus $\mathrm{Z}(D_4) = \langle r^2 \rangle$ since $\mathrm{Z}(D_4)$ must be a normal subgroup of $D_4$ with order not exceeding 2.
+        \item We note that $D_4 = \{e, r, r^2, r^3, s, rs, r^2s, r^3s\}$. Since $\CenterGrp{D_4}$ is a subgroup of $D_4$ it has a maximum order of 2, by Lagrange's theorem (\myref{thrm-lagrange}) and the note given. Since 2 is prime the subgroups must be cyclic. Thus the non-trivial proper subgroups of $D_4$ are $\{e, r^2\}$ and $\{e, s\}$ (since $|r^2| = |s| = 2$). Now like how we proved that $\langle s \rangle = \{e, s\}$ is not a normal subgroup in $D_3$ in \myref{example-normal-subgroups-of-d3}, $\{e, s\}$ is not a normal subgroup of $D_4$. One verifies easily that $\{e, r^2\} = \langle r^2 \rangle$ is a normal subgroup of $D_4$. Thus $\CenterGrp{D_4} = \langle r^2 \rangle$ since $\CenterGrp{D_4}$ must be a normal subgroup of $D_4$ with order not exceeding 2.
     \end{partquestions}
 
     \item \begin{partquestions}{\alph*}
@@ -127,13 +127,13 @@
         \item For all even $n \geq 6$, the group $D_{\frac n2}$ has $n$ elements and $rs = sr^{\frac n2 - 1} \neq sr$, so $D_{\frac n2}$ is non-abelian.
     \end{partquestions}
 
-    \item Suppose $G / \Z{G}$ is cyclic. Then by definition, $G / \Z{G} = \langle g\Z{G}\rangle$ for some $g \in G$, and any element in $G/\Z{G}$ is of the form $g^n\Z{G}$.
+    \item Suppose $G / \CenterGrp{G}$ is cyclic. Then by definition, $G / \CenterGrp{G} = \langle g\CenterGrp{G}\rangle$ for some $g \in G$, and any element in $G/\CenterGrp{G}$ is of the form $g^n\CenterGrp{G}$.
 
-    Now take $x, y \in G$. By \myref{lemma-left-coset-partition}, left cosets partition the group, so we may assume $x \in g^m\Z{G}$ and $y \in g^n\Z{G}$, meaning $x = g^mz_1$ and $y = g^nz_2$ for some $z_1, z_2 \in \Z{G}$. We note
+    Now take $x, y \in G$. By \myref{lemma-left-coset-partition}, left cosets partition the group, so we may assume $x \in g^m\CenterGrp{G}$ and $y \in g^n\CenterGrp{G}$, meaning $x = g^mz_1$ and $y = g^nz_2$ for some $z_1, z_2 \in \CenterGrp{G}$. We note
     \begin{align*}
         xy &= (g^mz_1)(g^nz_2)\\
         &= g^m(z_1g^n)z_2\\
-        &= g^m(g^nz_1)z_2 & (\text{since }z_1 \in \Z{G})\\
+        &= g^m(g^nz_1)z_2 & (\text{since }z_1 \in \CenterGrp{G})\\
         &= (g^mg^n)(z_1z_2)\\
         &= g^{m+n}z_1z_2\\
         &= g^{n+m}z_2z_1\\
