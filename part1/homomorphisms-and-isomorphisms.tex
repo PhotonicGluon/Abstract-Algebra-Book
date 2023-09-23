@@ -19,7 +19,7 @@ Now that we have introduced the idea of a group, one wonders about how elements 
 
 Let's look at two examples of homomorphisms between groups.
 \begin{example}
-    Let $G$ be any group. Take $g$ from $G$. Let $\phi: \mathbb{Z} \to G$ (where $\mathbb{Z}$ is the additive group of integers) be such that $\phi(n) = g^n$ for all integers $n$. Then $\phi$ is a homomorphism, since
+    Let $G$ be any group. Take $g$ from $G$. Let $\phi: \Z \to G$ (where $\Z$ is the additive group of integers) be such that $\phi(n) = g^n$ for all integers $n$. Then $\phi$ is a homomorphism, since
     \[
         \phi(m + n) = g^{m+n} = g^m g^n = \phi(m)\phi(n)
     \]
@@ -27,9 +27,9 @@ Let's look at two examples of homomorphisms between groups.
 \end{example}
 
 \begin{example}
-    Let $\mathbb{R}^\times$ denote the set of non-zero real numbers and $\mathbb{R}_{>0}$ denote the set of positive real numbers.
+    Let $\R^\times$ denote the set of non-zero real numbers and $\R_{>0}$ denote the set of positive real numbers.
 
-    Let $\mathbb{R}^\times$ and $\mathbb{R}_{>0}$ be groups under regular multiplication. Define $f: \mathbb{R}^\times \to \mathbb{R}_{>0}, x \mapsto |x|$ where $|x|$ represents the absolute value of $x$. Then $f$ is a homomorphism as
+    Let $\R^\times$ and $\R_{>0}$ be groups under regular multiplication. Define $f: \R^\times \to \R_{>0}, x \mapsto |x|$ where $|x|$ represents the absolute value of $x$. Then $f$ is a homomorphism as
     \[
         f(xy) = |xy| = |x||y| = f(x)f(y).
     \]
@@ -128,7 +128,7 @@ For the next few properties, define
     \[
         \phi(x)\phi(y^{-1}) = \phi(xy^{-1}) \in H_2
     \]
-    which means $xy^{-1} \in \phi^{-1}(H_2)$. Hence $\phi^{-1}(H_2) \leq G_1$ by subgroup test (\myref{thrm-subgroup-test}).
+    which means $xy^{-1} \in \phi^{-1}(H_2)$. Hence we see that $\phi^{-1}(H_2) \leq G_1$ by the subgroup test (\myref{thrm-subgroup-test}).
 \end{proof}
 
 \begin{proposition}
@@ -172,8 +172,10 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
     If two groups $G$ and $H$ are isomorphic, we write $G \cong H$.
 \end{definition}
 
+\newpage
+
 \begin{example}
-    Let $G = (\mathbb{Z}_2, \oplus_2)$ and $H = \{1, -1\}$ be a group under regular multiplication. Define the map $\phi: G \to H$ such that $\phi(0) = 1$ and $\phi(1) = -1$.
+    Let $G = (\Z_2, \oplus_2)$ and $H = \{1, -1\}$ be a group under regular multiplication. Define the map $\phi: G \to H$ such that $\phi(0) = 1$ and $\phi(1) = -1$.
 
     \begin{itemize}
         \item $\phi$ is clearly a bijection based on function mapping diagram shown.
@@ -192,19 +194,19 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
 \end{example}
 
 \begin{example}
-    Let $S$ denote the set of positive real numbers. We show that $(\mathbb{R}, +) \cong (S, \times)$ by considering the map $\phi: \mathbb{R} \to S, x \mapsto e^x$.
+    Let $S$ denote the set of positive real numbers. We show that $(\R, +) \cong (S, \times)$ by considering the map $\phi: \R \to S, x \mapsto e^x$.
     \begin{itemize}
         \item \textbf{Homomorphism}:
         \[
             \phi(x+y) = e^{x+y} = e^xe^y = \phi(x)\phi(y)
         \]
 
-        \item \textbf{Injective}: Suppose $x$ and $y$ are elements in $\mathbb{R}$ such that $\phi(x) = \phi(y)$. Therefore $e^x = e^y$ which quickly implies $x = y$ by applying the natural logarithm ($\ln$) on both sides.
+        \item \textbf{Injective}: Suppose $x$ and $y$ are elements in $\R$ such that $\phi(x) = \phi(y)$. Therefore $e^x = e^y$ which quickly implies $x = y$ by applying the natural logarithm ($\ln$) on both sides.
 
-        \item \textbf{Surjective}: Suppose $y \in S$. Then $\ln y \in \mathbb{R}$, so $\phi(\ln y) = e^{\ln y} = y$, meaning every element in the codomain $S$ has a preimage.
+        \item \textbf{Surjective}: Suppose $y \in S$. Then $\ln y \in \R$, so $\phi(\ln y) = e^{\ln y} = y$, meaning every element in the codomain $S$ has a preimage.
     \end{itemize}
 
-    Thus $\phi$ is an isomorphism, meaning that $(\mathbb{R}, +) \cong (S, \times)$.
+    Thus $\phi$ is an isomorphism, meaning that $(\R, +) \cong (S, \times)$.
 \end{example}
 
 \begin{exercise}\label{exercise-identity-map-is-isomorphism}
@@ -315,15 +317,15 @@ With the tool of isomorphisms under our belt, we can prove two important theorem
 
 For brevity, we also have notation regarding the integers under addition.
 \begin{itemize}
-    \item When we write $\mathbb{Z}_n$, we mean the group $(\mathbb{Z}_n, \oplus_n)$\index{integers under addition!modulo $n$}.
-    \item When we write $\mathbb{Z}$, we mean the group $(\mathbb{Z}, +)$\index{integers under addition}.
+    \item When we write $\Z_n$, we mean the group $(\Z_n, \oplus_n)$\index{integers under addition!modulo $n$}.
+    \item When we write $\Z$, we mean the group $(\Z, +)$\index{integers under addition}.
 \end{itemize}
 
 \begin{theorem}
-    If $G$ is an infinite cyclic group with generator $g$, then $G \cong \mathbb{Z}$.
+    If $G$ is an infinite cyclic group with generator $g$, then $G \cong \Z$.
 \end{theorem}
 \begin{proof}[Proof (see \cite{proofwiki_infinite-cyclic-group})]
-    Consider $\phi: \mathbb{Z} \to G$ where $\phi(n) = g^n$. We prove that $\phi$ is an isomorphism.
+    Consider $\phi: \Z \to G$ where $\phi(n) = g^n$. We prove that $\phi$ is an isomorphism.
     \begin{itemize}
         \item \textbf{Homomorphism}:
         \[
@@ -337,14 +339,14 @@ For brevity, we also have notation regarding the integers under addition.
         \item \textbf{Surjective}: Suppose $x \in G = \langle g\rangle$, so $x = g^n$ for some integer $n$. Then $\phi(n) = g^n = x$ which means that $x$ has a preimage of $n$. Hence $\phi$ is surjective.
     \end{itemize}
 
-    Therefore, $\phi$ is an isomorphism which means $G \cong \mathbb{Z}$.
+    Therefore, $\phi$ is an isomorphism which means $G \cong \Z$.
 \end{proof}
 
 \begin{theorem}\label{thrm-finite-cyclic-group-isomorphic-to-Zn}
-    If $G$ is a finite cyclic group of order $n$ with generator $g$, then $G \cong \mathbb{Z}_n$.
+    If $G$ is a finite cyclic group of order $n$ with generator $g$, then $G \cong \Z_n$.
 \end{theorem}
 \begin{proof}[Proof (cf. {\cite[\S 63]{clark_1984}})]
-    Consider $\phi: \mathbb{Z}_n \to G$ such that $\phi(m) = g^m$. We prove that $\phi$ is an isomorphism.
+    Consider $\phi: \Z_n \to G$ such that $\phi(m) = g^m$. We prove that $\phi$ is an isomorphism.
     \begin{itemize}
         \item \textbf{Homomorphism}:
         \[
@@ -355,20 +357,20 @@ For brevity, we also have notation regarding the integers under addition.
 
         By way of contradiction, assume $l < m$, which means $m - l \in \{1, 2,\dots, n-1\}$. Therefore $m-l \leq n - 1 < n$. But since $g$ is a generator of $G$, thus $|g| = |G| = n$. Therefore, we have $n$ dividing $m-l$, which is smaller than $n$, a contradiction. Thus $l = m$, meaning $\phi$ is injective.
 
-        \item \textbf{Surjective}: Suppose $x \in G = \langle g\rangle$, so $x = g^m$ for some integer $m$ in $\mathbb{Z}_n$. Then $\phi(m) = g^m = x$ which means that $x$ has a preimage of $m$. Hence $\phi$ is surjective.
+        \item \textbf{Surjective}: Suppose $x \in G = \langle g\rangle$, so $x = g^m$ for some integer $m$ in $\Z_n$. Then $\phi(m) = g^m = x$ which means that $x$ has a preimage of $m$. Hence $\phi$ is surjective.
     \end{itemize}
 
-    Therefore, $\phi$ is an isomorphism which means $G \cong \mathbb{Z}_n$.
+    Therefore, $\phi$ is an isomorphism which means $G \cong \Z_n$.
 \end{proof}
 
 In summary:
 \begin{itemize}
-    \item All cyclic groups with \textbf{infinite} order are isomorphic to the group of integers under addition, $\mathbb{Z}$.
-    \item All cyclic groups with \textbf{finite} order $n$ are isomorphic to the group of integers under addition modulo $n$, $\mathbb{Z}_n$.
+    \item All cyclic groups with \textbf{infinite} order are isomorphic to the group of integers under addition, $\Z$.
+    \item All cyclic groups with \textbf{finite} order $n$ are isomorphic to the group of integers under addition modulo $n$, $\Z_n$.
 \end{itemize}
 
 \begin{exercise}
-    Let $G = (\{1, 3, 7, 9\}, \otimes_{10})$ be a group. Show that $G \cong \mathbb{Z}_n$ for some integer $n$.
+    Let $G = (\{1, 3, 7, 9\}, \otimes_{10})$ be a group. Show that $G \cong \Z_n$ for some integer $n$.
 \end{exercise}
 
 \newpage
@@ -379,15 +381,15 @@ In summary:
 \end{problem}
 
 \begin{problem}
-    Let $\mathbb{Q}_{>0}$ denote the set of positive rational numbers. Let $G = (\mathbb{Q}, +)$ and $H = (\mathbb{Q}_{>0}, \times)$ be groups. Prove that $G \not\cong H$.
+    Let $\Q_{>0}$ denote the set of positive rational numbers. Let $G = (\Q, +)$ and $H = (\Q_{>0}, \times)$ be groups. Prove that $G \not\cong H$.
 \end{problem}
 
 \begin{problem}
-    Define a map $\phi: \mathbb{Z} \to \mathbb{Z}$ such that $\phi(n) = 2n$.
+    Define a map $\phi: \Z \to \Z$ such that $\phi(n) = 2n$.
     \begin{partquestions}{\alph*}
         \item Prove that $\phi$ is a homomorphism.
         \item Prove that $\phi$ is injective.
-        \item Prove that there does \textbf{not} exist a homomorphism $\psi: \mathbb{Z} \to \mathbb{Z}$ where $\psi(\phi(n)) = n$.
+        \item Prove that there does \textbf{not} exist a homomorphism $\psi: \Z \to \Z$ where $\psi(\phi(n)) = n$.
     \end{partquestions}
 \end{problem}
 
@@ -405,10 +407,10 @@ In summary:
 \end{problem}
 
 \begin{problem}\label{problem-Zn-isomorphic-to-Z-by-nZ}
-    Let $G = \mathbb{Z}_n$, and let $H = \mathbb{Z}/(n\mathbb{Z})$ be under addition. Prove that $G \cong H$.
+    Let $G = \Z_n$, and let $H = \Z/(n\Z)$ be under addition. Prove that $G \cong H$.
 \end{problem}
 \begin{remark}
-    Whenever we are dealing with homomorphisms involving $\mathbb{Z}_n$, it is usually easier to replace it with $\mathbb{Z}/(n\mathbb{Z})$ and do the homomorphism that way.
+    Whenever we are dealing with homomorphisms involving $\Z_n$, it is usually easier to replace it with $\Z/(n\Z)$ and do the homomorphism that way.
 \end{remark}
 
 \begin{problem}\label{problem-subgroup-of-quotient-group-is-quotient-group}

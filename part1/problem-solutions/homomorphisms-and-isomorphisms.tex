@@ -21,7 +21,7 @@
     Hence, $G \not\cong H$.
 
     \item \begin{partquestions}{\alph*}
-        \item Let $m, n \in \mathbb{Z}$. Then
+        \item Let $m, n \in \Z$. Then
         \[
             \phi(m + n) = 2(m + n) = 2m + 2n = \phi(m) + \phi(n)
         \]
@@ -29,11 +29,11 @@
 
         \item Suppose $m, n \in G$ such that $\phi(m) = \phi(n)$. Then $2m = 2n$. Clearly this means that $m = n$. Thus $\phi$ is injective.
 
-        \item Suppose on the contrary there existed a homomorphism $\psi: \mathbb{Z} \to \mathbb{Z}$ such that $\psi(\phi(n)) = n$. Then $\psi(2n) = n$ by definition of $\phi$. Note that
+        \item Suppose on the contrary there existed a homomorphism $\psi: \Z \to \Z$ such that $\psi(\phi(n)) = n$. Then $\psi(2n) = n$ by definition of $\phi$. Note that
         \[
             \psi(2n) = \psi(n + n) = \psi(n) + \psi(n) = 2\psi(n)
         \]
-        since $\psi$ is a homomorphism. Hence $2\psi(n) = n$ which implies that $\psi(n) = \frac n2$. But for the case of $n = 1$, $\psi(1) = \frac 12 \notin \mathbb{Z}$. Hence $\psi$ does not exist.
+        since $\psi$ is a homomorphism. Hence $2\psi(n) = n$ which implies that $\psi(n) = \frac n2$. But for the case of $n = 1$, $\psi(1) = \frac 12 \notin \Z$. Hence $\psi$ does not exist.
     \end{partquestions}
 
     \item We prove the forward direction first: assume that $G$ is abelian. Then $f$ is a homomorphism since
@@ -62,35 +62,35 @@
     \end{align*}
     which means that $\phi(N) \unlhd H$.
 
-    \item Consider the map $\phi: G \to H, a \mapsto a + n\mathbb{Z}$. We show that $\phi$ is an isomorphism:
+    \item Consider the map $\phi: G \to H, a \mapsto a + n\Z$. We show that $\phi$ is an isomorphism:
     \begin{itemize}
         \item \textbf{Homomorphism}: Let $a$ and $b$ be in $G$. Then
         \begin{align*}
-            \phi(a\oplus_n b) &= (a\oplus_n b) + n\mathbb{Z}\\
-            &= \{(a \oplus_n b) + pn \vert p \in \mathbb{Z}\}\\
-            &= \{a+b + pn \vert p \in \mathbb{Z}\}\\
-            &= \{a+b + pn + qn\vert p, q \in \mathbb{Z}\}\\
-            &= a+b+n\mathbb{Z} + n\mathbb{Z}\\
-            &= (a+n\mathbb{Z}) + (b + n\mathbb{Z})\\
+            \phi(a\oplus_n b) &= (a\oplus_n b) + n\Z\\
+            &= \{(a \oplus_n b) + pn \vert p \in \Z\}\\
+            &= \{a+b + pn \vert p \in \Z\}\\
+            &= \{a+b + pn + qn\vert p, q \in \Z\}\\
+            &= a+b+n\Z + n\Z\\
+            &= (a+n\Z) + (b + n\Z)\\
             &= \phi(a) + \phi(b).
         \end{align*}
         \item \textbf{Injective}: Let $a$ and $b$ be in $G$ such that $\phi(a) = \phi(b)$. Thus
         \[
-            \{a + pn \vert p \in \mathbb{Z} \} = \ \{b + qn \vert q \in \mathbb{Z} \}
+            \{a + pn \vert p \in \Z \} = \ \{b + qn \vert q \in \Z \}
         \]
         by definition of $\phi$. Hence $a \equiv b \pmod n$. But since $0 \leq a, b < n$, we must have $a = b$.
-        \item \textbf{Surjective}: Let $x + n\mathbb{Z} \in H$. We use Euclid's division lemma (\myref{lemma-euclid-division}) on $x$ to yield
+        \item \textbf{Surjective}: Let $x + n\Z \in H$. We use Euclid's division lemma (\myref{lemma-euclid-division}) on $x$ to yield
         \[
             x = qn + r, \text{ where } 0 \leq r < n.
         \]
         Note that
         \begin{align*}
-            x + n\mathbb{Z} &= \{x + kn \vert k \in \mathbb{Z}\}\\
-            &= \{(qn + r) + kn \vert k \in \mathbb{Z}\}\\
-            &= \{r + n(\underbrace{q + k}_{\text{In }\mathbb{Z}}) \vertalt k \in \mathbb{Z} \}\\
-            &= r + n\mathbb{Z}
+            x + n\Z &= \{x + kn \vert k \in \Z\}\\
+            &= \{(qn + r) + kn \vert k \in \Z\}\\
+            &= \{r + n(\underbrace{q + k}_{\text{In }\Z}) \vertalt k \in \Z \}\\
+            &= r + n\Z
         \end{align*}
-        with $0 \leq r < n$, meaning $r \in G$. Now observe $\phi(r) = r+n\mathbb{Z} = x+n\mathbb{Z}$ which means that there is a pre-image for every element in $H$, hence proving that $\phi$ is surjective.
+        with $0 \leq r < n$, meaning $r \in G$. Now observe $\phi(r) = r+n\Z = x+n\Z$ which means that there is a pre-image for every element in $H$, hence proving that $\phi$ is surjective.
     \end{itemize}
     Therefore $\phi$ is an isomorphism, proving $G \cong H$.
     
