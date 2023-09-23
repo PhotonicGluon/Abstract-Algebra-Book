@@ -1,10 +1,6 @@
 % Define roman numerals for front matter
 \makeatletter\newcommand*{\rom}[1]{\Ifstr{#1}{0}{0}{\expandafter\@slowromancap\romannumeral #1@}}\makeatother
 
-% Define volume title and full name
-\newcommand{\volumetitle}{Volume \rom{\volumenumber}: \volumename}
-\newcommand{\volumefullname}{A Complete Introduction to Abstract Algebra -- \volumetitle}
-
 % Title page
 \begin{titlepage}
     \newgeometry{hmargin=2cm, vmargin=2.5cm}
@@ -29,12 +25,9 @@
         {\fontsize{48pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
 
         \vspace{0.5cm}
-        % {\fontsize{16pt}{0pt}\selectfont Version \version}\\
-        {\fontsize{16pt}{0pt}\selectfont \volumetitle}\\
-        {\fontsize{14pt}{0pt}\selectfont Version \version}\\
+        {\fontsize{16pt}{0pt}\selectfont Version \version}\\
         
-        % \vspace{1.25cm}
-        \vspace{0.75cm}  % Used temporarily, remove once we don't use the volume title any more
+        \vspace{1.25cm}
         {\fontsize{20pt}{0pt}\selectfont Kan Onn Kit}\\
     \end{center}
     \vspace*{\fill}
@@ -53,7 +46,7 @@
     Singapore
     \vspace{5cm}
 
-    \textbf{\volumefullname}\par
+    \textbf{A Complete Introduction to Abstract Algebra}\par
     Version \version
     \vspace{0.3cm}
 
@@ -62,7 +55,7 @@
     Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Licence.\par
     \includegraphics[width=2.5cm]{images/CC_BY-NC-SA_4.0.png}\\
     The full licence text is available at \url{http://creativecommons.org/licenses/by-nc-sa/4.0/}.\par    
-    The source files for the project are available \href{https://github.com/PhotonicGluon/Abstract-Algebra-Book}{here}.
+    The source files for the project are available at \url{https://github.com/PhotonicGluon/Abstract-Algebra-Book}.
     \vspace{0.3cm}
 
     Typeset in 10pt \TeX~Gyre Pagella using PDF\LaTeX.
@@ -98,7 +91,6 @@
 
 % Table of contents
 \createtoc
-\setcounter{part}{\volumenumber}
 
 % Acknowledgements
 \chapter{Acknowledgements}
@@ -131,11 +123,6 @@ This series of books serves to achieve several goals.
 I hope that these books can accomplish these goals and let readers enjoy the wonders of abstract algebra.
 
 \hfill{\textit{22 March, 2023}}
-
-\section*{Preface for Volume \rom{\volumenumber}}
-\prefacevolumetext
-
-\hfill{\textit{\prefacevolumedate}}
 
 % Suggestions on the use of this book
 \chapter{Suggestions on the Use of This Book}

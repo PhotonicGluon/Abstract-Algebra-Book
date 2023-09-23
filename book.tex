@@ -1,0 +1,159 @@
+\input{common-commands.tex}
+
+%=========== Global Variables ============
+\newcommand{\version}{0.19}
+%TODO: REMOVE
+
+%=========== Path to images ==============
+\graphicspath{{part0/images}{part1/images}{part2/images}{part3/images}}
+
+%========= Front Matter Pages ============
+% Quote page
+\newcommand{\quotepagetext}{
+    TODO: ADD
+}
+\newcommand{\quotepageattribution}{NONE}
+\newcommand{\quotepagecitation}{NONE}
+
+% Suggestions of use
+\newcommand{\interdependencenotes}{
+    TODO: ADD
+}
+
+%==== Include only relevant chapters =====
+\IfFileExists{\jobname.run.xml}
+{
+    \includeonly{
+        front-matter,
+        % Part 0
+        part0/algebra,
+        % part0/sets,
+        % part0/functions,
+        % part0/proofs,
+        % part0/number-theory,
+        % part0/modular-arithmetic,
+        % Part 1
+        part1/intro-to-groups,
+        % part1/basics-of-groups,
+        % part1/subgroups,
+        % part1/homomorphisms-and-isomorphisms,
+        % part1/symmetry-groups,
+        % part1/products,
+        % part1/further-homomorphisms,
+        % part1/more-groups,
+        % part1/group-actions,
+        % part1/sylow-theorems,
+        % part1/composition-series,
+        % part1/simple-groups,
+        % % Appendices
+        % part0/exercise-solutions,
+        % part0/appendices,
+        % part1/exercise-solutions,
+        % part1/problem-solutions,
+        % part1/appendices
+    }
+}
+{
+    % Do a full document generation initially to generate all the aux files
+}
+
+%=========================================
+\begin{document}
+
+\frontmatter  % Use lowercase roman numerals for page numbers
+\include{front-matter}
+
+\setcounter{part}{-1}
+\mainmatter  % Now use arabic numerals for page numbers
+
+\setpartpreamble[u][\textwidth]{
+    \quoteattr{
+        Aus dem Paradies, das Cantor uns geschaffen, soll uns niemand vertreiben k\"{o}nnen.\\
+        (\textit{No one shall expel us from the Paradise that Cantor has created.})
+    }
+    {
+        David Hilbert, 1926
+    }
+    {
+        \cite[p.~170]{hilbert_1926}
+    }
+
+    To understand the subject material covered in the later volumes, the prerequisites and fundamentals must be understood. This part gives one sufficient knowledge to dive into the meat of abstract algebra. We cover basic set theory, functions/mappings, mathematical logic and proof writing, elementary number theory, and simple modular arithmetic, which should be plenty for one to understand the content covered in future volumes.
+}
+\part{Preliminaries}
+
+\include{part0/algebra}
+\include{part0/sets}
+\include{part0/functions}
+\include{part0/proofs}
+\include{part0/number-theory}
+\include{part0/modular-arithmetic}
+
+\setpartpreamble[u][\textwidth]{
+    \quoteattr{
+        [The] axioms for a group are short and natural... [yet] somehow hidden behind these axioms is the monster simple group, a huge and extraordinary mathematical object, which appears to rely on numerous bizarre coincidences to exist. The axioms for groups give no obvious hint that anything like this exists.
+    }
+    {
+        Richard Borcherds, 2009
+    }
+    {
+        \cite{cook_borcherds_2009}
+    }
+
+    Groups are one of the most fundamental structures in abstract algebra. They underpin the ideas of symmetry and allow us to explore the relationships between symmetrical objects. An analysis of all the different ways an object can be symmetric is also possible with groups. It would be an understatement to say that groups are important in abstract algebra; without them, there can be no further and more in-depth exploration of the other structures.
+
+    Part I is a simple introduction to the world of groups. As with most books on this topic, we concentrate on abstract groups, and, in particular, on finite groups. We also discuss and explore some crucial results about the structure of groups. The content covered in this volume should be ample for one to understand the fundamentals of group theory, and appreciate the wonders of groups and symmetry.
+}
+\part{Group Theory}
+\include{part1/intro-to-groups}
+\include{part1/basics-of-groups}
+\include{part1/subgroups}
+\include{part1/homomorphisms-and-isomorphisms}
+\include{part1/symmetry-groups}
+\include{part1/products}
+\include{part1/further-homomorphisms}
+\include{part1/more-groups}
+\include{part1/group-actions}
+\include{part1/sylow-theorems}
+\include{part1/composition-series}
+\include{part1/simple-groups}
+
+\setpartpreamble[u][\textwidth]{
+    \quoteattr{
+        [Some] of the major discoveries in ring theory have helped shape the course of development of modern abstract algebra... A course in ring theory is an indispensable part of the education of any fledgling algebraist.
+    }
+    {
+        Tsit-Yuen Lam, 2001
+    }
+    {
+        \cite{lam_2001}
+    }
+
+    This part covers the basics of ring theory. %TODO: Add
+}
+\part{Ring Theory}
+
+\setpartpreamble[u][\textwidth]{
+    \quoteattr{
+        I became convinced that studying the algebraic relationship of numbers is most conveniently based on a concept that is directly connected with the simplest arithmetic properties. I had originally used the term ``rational domain'', which I later changed to ``field''.
+    }
+    {
+        Richard Dedekind, 1871
+    }
+    {
+        \cite[p.~66]{kleiner_2007}
+    }
+
+    We cover field theory essentials in part III. %TODO: Add
+}
+\part{Field Theory}
+
+\part*{Appendices}
+\appendix
+\include{part0/exercise-solutions}
+\include{part0/appendices}
+\include{part1/exercise-solutions}
+\include{part1/problem-solutions}
+\include{part1/appendices}
+
+\end{document}
