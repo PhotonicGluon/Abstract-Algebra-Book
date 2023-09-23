@@ -297,7 +297,14 @@
 \fancyhead[LE,RO]{\thepage}
 \fancyhead[LO,RE]{\textit{\nouppercase\leftmark}}
 
-%========= Customise TOC Heading =========
+%====== Customise Table of Contents ======
+% Customise part styling in table of contents
+\newlength\parttoclen
+\renewcommand\cftpartpresnum{Part~}
+\settowidth\parttoclen{\bfseries\cftpartpresnum\cftpartaftersnum}
+\addtolength\cftpartnumwidth{\parttoclen+1em}  % +1em to make it nicer and more spaced out
+
+% Heading customisation
 \makeatletter
 \def\createtoc{
     \renewcommand\tableofcontents{
