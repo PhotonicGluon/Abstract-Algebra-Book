@@ -3,33 +3,41 @@
 
 % Define volume title and full name
 \newcommand{\volumetitle}{Volume \rom{\volumenumber}: \volumename}
-\newcommand{\volumefullname}{Abstract Algebra: A Simple Introduction -- \volumetitle}
+\newcommand{\volumefullname}{A Complete Introduction to Abstract Algebra -- \volumetitle}
 
 % Title page
 \begin{titlepage}
     \newgeometry{hmargin=2cm, vmargin=2.5cm}
 
-    \centering{
-        \selectfont
-        \Huge
-        \textbf{Abstract Algebra}\\
-        \vspace{-0.15cm}
-        
-        \Large
-        \textbf{A Simple Introduction}\\
+    \AddToShipoutPictureBG*{%
+        \AtPageLowerLeft{%
+            \includegraphics[width=\paperwidth,height=\paperheight]{images/cover/cover.png}%
+        }%
+    }
+
+    \vspace*{\fill}
+    \vspace{0.4cm}  % To make "ABSTRACT ALGEBRA" centred
+
+    \begin{center}
+        \color{white}
+
+        {\fontsize{20pt}{0pt}\selectfont \textbf{A Complete}\\\textbf{Introduction To}}\\
+
+        \vspace{0.4cm}
+        {\fontsize{48pt}{0pt}\selectfont \textbf{ABSTRACT}}\\
+        \vspace{0.15cm}
+        {\fontsize{48pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
+
         \vspace{0.5cm}
+        % {\fontsize{16pt}{0pt}\selectfont Version \version}\\
+        {\fontsize{16pt}{0pt}\selectfont \volumetitle}\\
+        {\fontsize{14pt}{0pt}\selectfont Version \version}\\
         
-        \LARGE
-        \volumetitle
-        \vspace{2cm}
-    }\\
-    \centering{\Large{Overwrite}}
-    \vspace{\fill}
-
-    \includegraphics[width=5cm]{\volumeimage}
-    \vspace{\fill}
-
-    \centering \small{\textit{Version \version}}
+        % \vspace{1.25cm}
+        \vspace{0.75cm}  % Used temporarily, remove once we don't use the volume title any more
+        {\fontsize{20pt}{0pt}\selectfont Kan Onn Kit}\\
+    \end{center}
+    \vspace*{\fill}
 \end{titlepage}
 
 \newpage{}
