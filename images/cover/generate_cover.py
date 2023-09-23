@@ -1,6 +1,4 @@
 # IMPORTS
-import colorsys
-
 from numpy import sin, cos, arange, linspace, pi
 from matplotlib import colors as mcolors
 import matplotlib.pyplot as plt
@@ -15,19 +13,40 @@ DPI = 100
 MIN_X = -1.15
 MAX_X = -MIN_X
 
-NUM_LINES = 1500
+NUM_LINES = 2000
 LINES_ALPHA = 0.125
+LINES_SATURATION = 0.75
+LINES_VALUE = 1.
 NUM_CUSPS = 7  # Number of cusps to draw for the epicycloid
 OFFSET = 1.5 * pi / NUM_CUSPS  # Offset for the first plotted point
+# OFFSET = pi / NUM_CUSPS  # Offset for the first plotted point
 
 POLYGON_LINE_COLOUR = "white"
-POLYGON_LINE_ALPHA = 0.35
+POLYGON_LINE_ALPHA = 0
 POLYGON_LINE_THICKNESS = 5
 POLYGON_FILL_COLOUR = "black"
-POLYGON_FILL_ALPHA = 0.5
+POLYGON_FILL_ALPHA = 0.35
+
+COLOURS = [
+    "lightcoral",
+    "peachpuff",
+    "palegreen",
+    "green",
+    "lightblue",
+    "blue",
+    "orchid",
+    "lightpink"
+]
 
 
 # FUNCTIONS
+def get_colour(i, num_colours=7, saturation=1., value=1.):
+    return COLOURS[i % len(COLOURS)]
+
+    # import colorsys
+    # return colorsys.hsv_to_rgb((i % num_colours) / num_colours, saturation, value)
+
+
 def epicycloid_point(num_cusps, theta, offset=pi / 7):
     x = (num_cusps + 1) / (num_cusps + 2) * cos(theta + offset) + 1 / (num_cusps + 2) * cos(
         (num_cusps + 1) * theta + offset)
@@ -57,7 +76,7 @@ def draw_epicycloid(num_cusps, num_colours=7, saturation=0.5, value=1., offset=p
         # Draw a line connecting the two points
         plt.axline(
             (x1, y1), (x2, y2),
-            color=colorsys.hsv_to_rgb((i % num_colours) / num_colours, saturation, value),
+            color=get_colour(i, num_colours=num_colours, saturation=saturation, value=value),
             linestyle="-",
             alpha=alpha
         )
@@ -86,7 +105,8 @@ plt.ylim(ASPECT_RATIO * MIN_X, ASPECT_RATIO * MAX_X)
 plt.axis("off")
 
 # Draw things
-draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
+draw_epicycloid(NUM_CUSPS, saturation=LINES_SATURATION, value=LINES_VALUE, offset=OFFSET, alpha=LINES_ALPHA,
+                n=NUM_LINES)
 draw_inscribed_polygon(NUM_CUSPS, offset=OFFSET, line_colour=POLYGON_LINE_COLOUR, line_alpha=POLYGON_LINE_ALPHA,
                        line_thickness=POLYGON_LINE_THICKNESS, fill_colour=POLYGON_FILL_COLOUR,
                        fill_alpha=POLYGON_FILL_ALPHA)
