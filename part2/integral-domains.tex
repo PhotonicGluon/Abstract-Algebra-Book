@@ -1,16 +1,19 @@
 \chapter{Integral Domains}
 We explored the absolute basics of rings in the previous chapter. When working in abstract algebra, we usually prefer rings with slightly more structure as they allow us to generate more useful and applicable results. Integral domains are an important category of rings, which we explore in this chapter.
 
-\section{Definition and Examples}
+\section{What is an Integral Domain?}
 \begin{definition}
     An \textbf{integral domain}\index{integral domain} is a commutative ring with identity and contains no zero divisors.
 \end{definition}
 \begin{remark}
     Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$ such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the integral domain.
 \end{remark}
+\begin{remark}
+    What this property grants us is a ``cancellation law'', similar to that for groups. We will prove this in \myref{prop-integral-domain-cancellation-law}. However, there may not be inverses when performing multiplication. This is similar to how the integers do not have multiplicative inverses in general, hence the name of ``integral domain''.
+\end{remark}
 
 \begin{example}
-    We show that $\Z$ is an integral domain. We note that $\Z$ is a commutative ring as multiplication is commutative. Furthermore, clearly 1 is the multiplicative identity in $\Z$. All that remains is to show that there does not exist any zero divisors.
+    We show that the integers, $\Z$, the namesake for integral domains, is indeed an integral domain. We note that $\Z$ is a commutative ring as multiplication is commutative. Furthermore, 1 is the multiplicative identity in $\Z$. All that remains is to show that there does not exist any zero divisors in $\Z$.
 
     Suppose $a$ and $b$ are non-zero elements in $\Z$. We show that $ab \neq 0$ to prove that there does not exist any zero divisors. Let's first consider the case when $b > 0$. We may write
     \[
@@ -22,27 +25,24 @@ We explored the absolute basics of rings in the previous chapter. When working i
     \]
     which is also not zero as $-a \neq 0$. Hence there are no zero divisors in $\Z$.
 
-    Therefore $\Z$ is an integral domain.
+    Therefore $\Z$ is a commutative ring with identity without any zero divisors, meaning that $\Z$ is an integral domain.
 \end{example}
-
-\newpage
 
 \begin{example}
     We show that the ring $\Z[i]$, the gaussian integers, is an integral domain. Similar to $\Z$, we note multiplication is commutative with identity 1.
 
-    Suppose $w$ and $z$ are non-zero elements in $\Z[i]$; write $w = a+bi$ and $z = c+di$. Note that $a^2+b^2 \neq 0$ and $c^2 + d^2 \neq 0$. Now clearly
+    Suppose $w$ and $z$ are non-zero elements in $\Z[i]$; write $w = a+bi$ and $z = c+di$. Note that $a^2+b^2 \neq 0$ and $c^2 + d^2 \neq 0$. By definition of complex multiplication we have
     \[
-        wz = (a+bi)(c+di) = ac+adi+bci+bdi^2 = (ac-bd) + (ad+bc)i
+        wz = (a+bi)(c+di) = (ac-bd) + (ad+bc)i.
     \]
-    and
+    We just need to show that $ac-bd \neq 0$ and $ad+bc \neq 0$. Note that for any real numbers $x$ and $y$, we have $x^2 + y^2 \neq 0$ if and only if both $x$ and $y$ are non-zero. So we see
     \begin{align*}
-        (ac-bd)^2 + (ad+bc)^2 &= (a^2c^2 - 2abcd + b^2d^2) +\\
-        &\quad(a^2d^2 + 2abcd + b^2c^2)\\
+        (ac-bd)^2 + (ad+bc)^2 &= (a^2c^2 - 2abcd + b^2d^2) + (a^2d^2 + 2abcd + b^2c^2)\\
         &= a^2c^2 + a^2d^2 + b^2c^2 + b^2d^2\\
         &= (a^2 + b^2)(c^2 + d^2)\\
         &\neq 0
     \end{align*}
-    which hence means that $wz \neq 0$. Therefore $\Z[i]$ has no zero divisors, thereby meaning that $\Z[i]$ is indeed an integral domain.
+    which hence means that $ac-bd \neq 0$ and $ad+bc \neq 0$. Therefore $wz \neq 0$, meaning that $\Z[i]$ has no zero divisors. Thus $\Z[i]$ is indeed an integral domain.
 \end{example}
 
 We note an interesting result regarding fields here.
@@ -61,7 +61,7 @@ Let's look at some non-examples of integral domains.
     The ring $2\Z$ is not an integral domain as it does not contain a multiplicative identity (namely, 1).
 \end{example}
 \begin{example}
-    The ring $\Z \times \Z$ under pairwise addition and multiplication is not an integral domain as $(0,1) \neq (0, 0)$ and $(1, 0) \neq (0, 0)$ but $(0,1)(1,0) = (0, 0)$, meaning that $\Z \times \Z$ contains a zero divisor.
+    The ring $\Z \times \Z$ under pairwise addition and multiplication is not an integral domain as $(0,1) \neq (0, 0)$ and $(1, 0) \neq (0, 0)$ but $(0,1)(1,0) = (0, 0)$, meaning that $\Z \times \Z$ contains at least one zero divisor.
 \end{example}
 
 \begin{exercise}
@@ -77,7 +77,7 @@ Let's look at some non-examples of integral domains.
 
 \section{General Results}
 With an introduction of integral domains out of the way, we introduce some general results applicable to integral domains.
-\begin{proposition}[Cancellation Law]\index{integral domain!cancellation law}
+\begin{proposition}[Cancellation Law for Integral Domains]\index{integral domain!cancellation law}\label{prop-integral-domain-cancellation-law}
     Let $R$ be an integral domain, $r, x, y \in R$, and $r \neq 0$. Then the following statements are equivalent.
     \begin{enumerate}[label=(\arabic*)]
         \item $x = y$
@@ -109,7 +109,7 @@ With an introduction of integral domains out of the way, we introduce some gener
         &= \{1, r, r^2, r^3, \dots\}\\
         &\subseteq R.
     \end{align*}
-    Note that as $R$ is finite we must have $A$ be finite as well. Therefore there must exist positive integers $m$ and $n$ with $m > n$ such that $r^m = r^n$, meaning $r^m - r^n = 0$. As $m > n$, thus $r^n\left(r^{m-n}-1\right) = 0$. Hence either $r^n = 0$ or $r^{m-n} - 1 = 0$.
+    Note that since $R$ is finite, $A$ must be finite as well. Therefore there must exist positive integers $m$ and $n$ with $m > n$ such that $r^m = r^n$, meaning $r^m - r^n = 0$. As $m > n$, thus $r^n\left(r^{m-n}-1\right) = 0$. Hence, as there are no zero divisors in $R$, either $r^n = 0$ or $r^{m-n} - 1 = 0$.
 
     Now if $r^n = 0$ then $n > 1$ (since $r^1 = r \neq 0$ by assumption). Note $r^n = rr^{n-1} = 0$, which hence means $r^{n-1} = 0$ as $r \neq 0$ and $R$ has no zero divisors. But we may repeat this argument on $n - 1$ to eventually terminate at $r = 0$, which is a contradiction. Hence we must conclude that $r^{m-n} - 1 = 0$. We may write $r^{m-n}-1 = 0$ as $rr^{m-n-1} = 1$ which means that $r$ is a unit (as $r^{m-n-1}$ is its inverse). Therefore every non-zero element has an inverse.
 
@@ -125,7 +125,7 @@ With an introduction of integral domains out of the way, we introduce some gener
 \end{example}
 
 \begin{example}
-    We show that $\Z_p[i] = \{a+bi \vert a,b \in \Z_p\}$ is a finite integral domain in order to show that it is a field. Clearly multiplication is commutative with identity 1, so we just need to show that there are no zero divisors in $\Z_p[i]$.
+    We show that $\Z_3[i] = \{a+bi \vert a,b \in \Z_3\}$ is a finite integral domain in order to show that it is a field. Clearly multiplication is commutative with identity 1, so we just need to show that there are no zero divisors in $\Z_3[i]$.
     \begin{table}[h]
         \centering
         \resizebox{\textwidth}{!}{
@@ -144,13 +144,13 @@ With an introduction of integral domains out of the way, we introduce some gener
         }
     \end{table}
     
-    From the table, we have shown that no two non-zero elements in $\Z_p[i]$ multiply to zero. Therefore $\Z_p[i]$ has no zero divisors, which means $\Z_p[i]$ is an integral domain. Furthermore, as $\Z_p[i]$ is finite, therefore we know that it is a finite field by \myref{thrm-finite-integral-domain-is-field}.
+    From the table, we have shown that no two non-zero elements in $\Z_3[i]$ multiply to zero. Therefore $\Z_3[i]$ has no zero divisors, which means $\Z_3[i]$ is an integral domain. Furthermore, as $\Z_3[i]$ is finite, therefore we know that it is a finite field by \myref{thrm-finite-integral-domain-is-field}.
 \end{example}
 
 \begin{exercise}\label{exercise-Zn2[alpha]}
     Is the ring
     \[
-        \Z_p[\alpha] = \{a+b\alpha \vert a,b\in\Z_p\}
+        \Z_2[\alpha] = \{a+b\alpha \vert a,b\in\Z_2\}
     \]
     where $\alpha^2 = 1 + \alpha$ under regular addition and multiplication a field?
 \end{exercise}
@@ -184,12 +184,12 @@ We look at two properties about the characteristic.
     \[
         n1 = \underbrace{1+1+1+\cdots+1}_{n \text{ times}} = 0
     \]
-    by definition of the characteristic of a ring. Note also that $m1 = \underbrace{1+1+1+\cdots+1}_{m \text{ times}} = 0$ by definition of the order of an element in the group $(R, +)$. By \myref{problem-element-to-power-of-multiple-of-order-is-identity}, this means that $n$ is a multiple of $m$, which thus means $m \leq n$.
+    by definition of the characteristic of a ring. Note also that $m1 = \overbrace{1+1+1+\cdots+1}^{m \text{ times}} = 0$ by definition of the order of an element in the group $(R, +)$. By \myref{problem-element-to-power-of-multiple-of-order-is-identity}, this means that $n$ is a multiple of $m$, which thus means $m \leq n$.
 
     On another hand, for any $r \in R$, we know that
     \begin{align*}
         \underbrace{r + r + r + \cdots + r}_{m \text{ times}} &= r(\underbrace{1+1+1+\cdots+1}_{m \text{ times}})\\
-        &= r0 & (|1|_+ = m)\\
+        &= r0 & (\text{since } |1|_+ = m)\\
         &= 0.
     \end{align*}
     The minimality of the characteristic $n$ means that $m$ has to be at least $n$, i.e. $m \geq n$.
@@ -211,7 +211,7 @@ We look at two properties about the characteristic.
     \[
         \underbrace{1+1+\cdots+1}_{a \text{ times}} = 0 \text{ or } \underbrace{1+1+\cdots+1}_{b \text{ times}} = 0.
     \]
-    Without loss of generality, assume that $\underbrace{1+1+\cdots+1}_{a \text{ times}} = 0$. By the minimality of $\Char{R} = n$, this means that $a \geq n$. But we assumed that $a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$ which is exactly what we need to show that $n$ is a prime.
+    Without loss of generality, assume that $\underbrace{1+1+\cdots+1}_{a \text{ times}} = 0$. By minimality of $\Char{R} = n$, this means that $a \geq n$. But we assumed that $a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$ which is exactly what we need to show that $n$ is a prime.
 \end{proof}
 
 \begin{exercise}\label{exercise-trivial-ring-is-not-an-integral-domain}
