@@ -16,13 +16,15 @@ Such bijections between finite sets are called \textbf{permutations}\index{permu
 
 \begin{example}
     Consider the set $S = \{1, 2, 3, 4, 5\}$. A bijection $f: S \to S$ could perform the following mapping:
-    \begin{itemize}
-        \item $1 \mapsto 2$;
-        \item $2 \mapsto 4$;
-        \item $3 \mapsto 3$;
-        \item $4 \mapsto 5$; and
-        \item $5 \mapsto 1$.
-    \end{itemize}
+    \begin{multicols}{3}
+        \begin{itemize}
+            \item $1 \mapsto 2$;
+            \item $2 \mapsto 4$;
+            \item $3 \mapsto 3$;
+            \item $4 \mapsto 5$; and
+            \item $5 \mapsto 1$.
+        \end{itemize}
+    \end{multicols}
     In this case, the function $f$ is said to be a permutation because the ordered list $[2, 4, 3, 5, 1]$ is one rearrangement of the items in the set $\{1, 2, 3, 4, 5\}$.
 \end{example}
 
@@ -30,54 +32,89 @@ Such bijections between finite sets are called \textbf{permutations}\index{permu
     It is certainly confusing that the operation of rearranging the items is also called \textit{permuting} the items in the set, and one such rearrangement is called a permutation. For groups, treat a ``permutation'' as a bijective function between finite groups.
 \end{remark}
 
-Permutations come in many different forms, but the core thing that they do is to rearrange items. From the above example, one could form a `cycle'\index{cycle} of how each item is mapped to another:
+Permutations come in many different forms, but the core thing that they do is to rearrange items. From the above example, one could form a `cycle' of how each item is mapped to another:
 \begin{itemize}
     \item $1 \mapsto 2 \mapsto 4 \mapsto 5 \mapsto 1$; and
     \item $3 \mapsto 3$.
 \end{itemize}
-We can describe a permutation based on how it cycles elements. Consider this mapping performed by the map $\phi: S \to S$:
-\begin{itemize}
-    \item $1 \mapsto 2$;
-    \item $2 \mapsto 4$;
-    \item $3 \mapsto 5$;
-    \item $4 \mapsto 1$; and
-    \item $5 \mapsto 3$.
-\end{itemize}
-How $\phi$ operates on an element can be described in \textbf{cycle notation}\index{cycle!notation}. The cycle notation of a permutation may also be called its \textbf{cycle decomposition}\index{cycle!decomposition}. Here's how to describe a permutation in cycle notation.
+We formally describe what a cycle is.
+\begin{definition}
+    A \textbf{cycle}\index{cycle} is a permutation that cyclically permutes the integers in the cycle and fixes all other integers. In particular, for distinct $a_1, a_2, \dots, a_n$, the cycle
+    \[
+        \pi = \begin{pmatrix}a_1&a_2&a_3&\cdots&a_n\end{pmatrix}
+    \]
+    is the permutation with \textbf{cycle length}\index{cycle!length} $n$ such that
+    \[
+        \pi(a_i) = \begin{cases}
+            a_{i+1}& \text{if } 1 \leq i \leq n - 1\\
+            a_1 & \text{if } i = n
+        \end{cases}
+    \]
+\end{definition}
+\begin{example}
+    The cycle $f = \begin{pmatrix}1 & 2 & 4 & 5\end{pmatrix}$ is the map that performs the following mapping:
+    \begin{multicols}{3}
+        \begin{itemize}
+            \item $1 \mapsto 2$;
+            \item $2 \mapsto 4$;
+            \item $3 \mapsto 3$;
+            \item $4 \mapsto 5$;
+            \item $5 \mapsto 1$; and
+            \item $n \mapsto n$ for $n \geq 6$.
+        \end{itemize}
+    \end{multicols}
+\end{example}
+
+We can describe a permutation $\phi$ based on its cycles; such a description is the \textbf{cycle decomposition}\index{cycle!decomposition} (or \textbf{cycle notation}\index{cycle!notation}) of the permutation. For brevity let $S = \{1, 2, 3, \dots, n\}$.
 \begin{enumerate}
-    \item Start by opening a bracket: ``(''.
-    \item Write the first element that has not appeared yet in the cycle notation.
-    \begin{itemize}
-        \item Initially, we write the number 1, so it currently is ``(1''.
-    \end{itemize}
-    \item Find out where that element is mapped to.
-    \begin{itemize}
-        \item For the case of the element 1, it is mapped to 2.
-    \end{itemize}
-    \item Write the mapped element next to the previous element.
-    \begin{itemize}
-        \item In this case, we will write ``(1 2''
-    \end{itemize}
-    \item Repeat steps 3 and 4 with the mapped element, until reaching an element that has already appeared in the cycle notation.
-    \begin{itemize}
-        \item Since 2 maps to 4, we write ``(1 2 4''
-        \item Since 4 maps to 1, we terminate this process.
-    \end{itemize}
-    \item Close the bracket.
-    \begin{itemize}
-        \item So our first cycle looks like ``(1 2 4)''
-    \end{itemize}
-    \item Repeat steps 1 to 6 until all elements are used.
-    \begin{itemize}
-        \item So our final cycle notation for $g$ is ``(1 2 4)(3 5)''
-    \end{itemize}
+    \item If all elements of $S$ are used in some cycle, head to step 8.
+    \item Otherwise, pick the smallest element of $S$ that has not appeared in a previous cycle; call it $m$. Set $a = m$.
+    \item Begin the new cycle with $(a$, placing it to the right of any existing cycle.
+    \item Set $b = \phi(a)$.
+    \item If $b = m$, end the cycle with a right parenthesis and return to step 1.
+    \item Otherwise, write $b$ next to $a$.
+    \item Set $a = b$ and go to step 4.
+    \item Remove all cycles with length 1.
+    \item If there are no cycles left, denote the permutation by $\id$.
 \end{enumerate}
 
-We note some important things about this process.
-\begin{itemize}
-    \item Omit any elements that maps to itself. For example, if $1 \mapsto 3$, $2 \mapsto 6$, $3 \mapsto 4$, $4 \mapsto 1$, $5 \mapsto 5$, $6 \mapsto 2$, and $7 \mapsto 7$, then we ignore the 5 and 7; the corresponding cycle notation is ``(1 3 4)(2 6)''.
-    \item If the permutation is the identity permutation, then it is denoted by $\id$.
-\end{itemize}
+\begin{example}
+    Let $S = \{1,2,3,4,5\}$. Consider this mapping performed by the map $f: S \to S$:
+    \begin{itemize}
+        \item $1 \mapsto 2$;
+        \item $2 \mapsto 4$;
+        \item $3 \mapsto 5$;
+        \item $4 \mapsto 1$; and
+        \item $5 \mapsto 3$.
+    \end{itemize}
+    We describe how we write $f$ in cycle notation.
+    \begin{itemize}
+        \item Not all elements of $S$ are used, so we continue.
+        \item The smallest element of $S$ not used is 1; set $a = m = 1$.
+        \item We begin the cycle with $(1$.
+        \item Set $b = f(1) = 2$.
+        \item As $b = 2 \neq m = 1$, we write $b$ next to $a$: $(1\quad2$.
+        \item Set $a = 2$; head back to step 4.
+        \item Set $b = f(2) = 4$.
+        \item As $b = 4 \neq m = 1$, we write $b$ next to $a$: $(1\quad2\quad4$.
+        \item Set $a = 4$; head back to step 4.
+        \item Set $b = f(4) = 1$.
+        \item As $b = 1 = m = 1$, we end the cycle: $(1\quad2\quad4)$. Return to step 1.
+        \item There are elements of $S$ that are unused, so we continue.
+        \item The smallest unused element of $S$ is 3; set $a = m = 3$.
+        \item We begin the new cycle with $(3$, so our current decomposition is $(1\quad2\quad4)(3$.
+        \item Set $b = f(3) = 5$.
+        \item As $b = 5 \neq m = 3$, we write $b$ next to $a$: $(1\quad2\quad4)(3\quad5$.
+        \item Set $a = 5$ and head back to step 4.
+        \item Set $b = f(5) = 3$.
+        \item As $b = 3 = m = 3$, we end the cycle: $(1\quad2\quad4)(3\quad5)$.
+        \item All elements of $S$ are used in some cycle.
+        \item No cycle contains one element.
+    \end{itemize}
+    Therefore, $f = (1\quad2\quad4)(3\quad5)$ in cycle notation.
+\end{example}
+
+\newpage
 
 \begin{example}
     Let the permutation $\alpha$ have cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$. Then
@@ -131,23 +168,20 @@ We now look at composing permutations\index{permutation!composing}.
         \item $h(5) = f(g(5)) = f(5) = 2$.
     \end{itemize}
 
-    So $h$ maps 1 to 3, 2 to 4, 3 to 1, 4 to 5, and 5 to 2, meaning $h$ has cycle notation
+    So $h$ maps 1 to 3, 2 to 4, 3 to 1, 4 to 5, and 5 to 2, meaning
     \[
-        \begin{pmatrix}1 & 3\end{pmatrix}\begin{pmatrix}2 & 4 & 5\end{pmatrix}.
+        h = \begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 4 & 3\end{pmatrix} = \begin{pmatrix}1 & 3\end{pmatrix}\begin{pmatrix}2 & 4 & 5\end{pmatrix}.
     \]
 \end{example}
 
 \begin{example}
-    We have
-    \[
-        \begin{pmatrix}2 & 9 & 7 & 4\end{pmatrix}\begin{pmatrix}1 & 6 & 4\end{pmatrix} = \begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}.
-    \]
+    We have $ \begin{pmatrix}2 & 9 & 7 & 4\end{pmatrix}\begin{pmatrix}1 & 6 & 4\end{pmatrix} = \begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}$.
 \end{example}
 
 We now describe how to find the inverse of a permutation\index{permutation!inverse}. Given a cycle decomposition for the permutation $f$, simply read the cycle notation backwards, ensuring that the smallest element remains at the front.
 
 \begin{example}
-    Consider the permutation $\begin{pmatrix}1 & 8 & 4 & 2\end{pmatrix}$. Its inverse is $\begin{pmatrix}2 & 4 & 8 & 1\end{pmatrix} = \begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}$.
+    The inverse of $\begin{pmatrix}1 & 8 & 4 & 2\end{pmatrix}$ is $\begin{pmatrix}2 & 4 & 8 & 1\end{pmatrix} = \begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}$.
 \end{example}
 
 \begin{example}
@@ -332,6 +366,8 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
     \]
     that is, any group $G$ is isomorphic to a subgroup of the symmetric group of $G$ (i.e., a permutation group).
 \end{proof}
+
+\newpage
 
 We note one corollary of this theorem.
 \begin{corollary}
