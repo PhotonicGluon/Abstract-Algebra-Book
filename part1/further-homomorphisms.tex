@@ -14,10 +14,10 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
 \end{remark}
 
 \begin{example}
-    Consider the homomorphism $f: \mathbb{Z} \to \mathbb{Z}, x \mapsto 0$. Clearly, all possible values of $x$ maps to 0, so $\im f = \{0\}$.
+    Consider the homomorphism $f: \Z \to \Z, x \mapsto 0$. Clearly, all possible values of $x$ maps to 0, so $\im f = \{0\}$.
 \end{example}
 \begin{example}
-    The homomorphism $f: \mathbb{R} \to \mathbb{R}$ where $f(x) = |x|$ has an image of $\{x \in \mathbb{R} \vert x \geq 0\}$, i.e. all non-negative real numbers.
+    The homomorphism $f: \R \to \R$ where $f(x) = |x|$ has an image of $\{x \in \R \vert x \geq 0\}$, i.e. all non-negative real numbers.
 \end{example}
 
 \begin{proposition}\label{prop-image-is-subgroup-of-codomain}
@@ -32,7 +32,7 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
 \end{proof}
 
 \begin{exercise}
-    Consider the map $\phi: \mathbb{Z}_3 \to \mathbb{Z}_6, n \mapsto 2n$. Determine whether $\phi$ is a homomorphism and, if so, find its image.
+    Consider the map $\phi: \Z_3 \to \Z_6, n \mapsto 2n$. Determine whether $\phi$ is a homomorphism and, if so, find its image.
 \end{exercise}
 
 \section{Kernel of a Homomorphism}
@@ -49,7 +49,7 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
 \end{remark}
 
 \begin{example}
-    Let the groups $G = (\mathbb{Z}^2, (+, +))$ and $H = (\mathbb{Z}, +)$. Let the map $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$. This means that $a+b = 0$, implying $ b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \mathbb{Z}\}$.
+    Let the groups $G = (\Z^2, (+, +))$ and $H = (\Z, +)$. Let the map $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$. This means that $a+b = 0$, implying $ b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \Z\}$.
 \end{example}
 
 \begin{exercise}
@@ -151,7 +151,7 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
 \end{proof}
 
 \begin{example}
-    Let $R = \{x \in \mathbb{R} \vert x > 0\}$, $G = \{x \in \mathbb{R} \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under multiplication. We show $G / H \cong R$.
+    Let $R = \{x \in \R \vert x > 0\}$, $G = \{x \in \R \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under multiplication. We show $G / H \cong R$.
 
     Consider the map $\phi: G \to R$ where $x \mapsto |x|$. We show that $\phi$ is a homomorphism, then find the image of $\phi$, and finally find its kernel.
 
@@ -161,7 +161,7 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
         \begin{align*}
             \im\phi &= \{\phi(x) \vert x \in G\}\\
             &= \{|x| \vert x \neq 0\}\\
-            &= \{x \in \mathbb{R} \vert x > 0\} & (\text{by definition of } |x|)\\
+            &= \{x \in \R \vert x > 0\} & (\text{by definition of } |x|)\\
             &= R
         \end{align*}
         which actually means that $\phi$ is surjective.
@@ -296,21 +296,21 @@ We look at another application of the Diamond Isomorphism Theorem, which has use
 \begin{example}
     We will prove that $\lcm(m,n)\times\gcd(m,n) = mn$ (\myref{prop-product-of-gcd-and-lcm}) by considering the Diamond Isomorphism Theorem. For brevity, let $d = \gcd(m,n)$ and $l = \lcm(m,n)$.
 
-    Consider the groups $G = \mathbb{Z}$, $H = m\mathbb{Z}$, and $N = n\mathbb{Z}$ under addition. By Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}),
+    Consider the groups $G = \Z$, $H = m\Z$, and $N = n\Z$ under addition. By Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}),
     \[
-        m\mathbb{Z}/(m\mathbb{Z} \cap n\mathbb{Z}) \cong (m\mathbb{Z} + n\mathbb{Z})/(n\mathbb{Z}).
+        m\Z/(m\Z \cap n\Z) \cong (m\Z + n\Z)/(n\Z).
     \]
 
-    Now $m\mathbb{Z} \cap n\mathbb{Z}$ is the set of integers that are both a multiple of $m$ and $n$. Hence, $m\mathbb{Z} \cap n\mathbb{Z} = \lcm(m,n)\mathbb{Z} = l\mathbb{Z}$. On the other hand, $m\mathbb{Z} + n\mathbb{Z}$ is the set of all integers of the form $mx+ny$ where $x$ and $y$ are integers. B\'{e}zout's lemma (\myref{lemma-bezout}) tells us that this set consists of the multiples of $\gcd(m,n)$, i.e. $m\mathbb{Z} + n\mathbb{Z} = \gcd(m,n)\mathbb{Z} = d\mathbb{Z}$. Hence,
+    Now $m\Z \cap n\Z$ is the set of integers that are both a multiple of $m$ and $n$. Hence, $m\Z \cap n\Z = \lcm(m,n)\Z = l\Z$. On the other hand, $m\Z + n\Z$ is the set of all integers of the form $mx+ny$ where $x$ and $y$ are integers. B\'{e}zout's lemma (\myref{lemma-bezout}) tells us that this set consists of the multiples of $\gcd(m,n)$, i.e. $m\Z + n\Z = \gcd(m,n)\Z = d\Z$. Hence,
     \[
-        m\mathbb{Z}/(l\mathbb{Z}) \cong d\mathbb{Z}/(n\mathbb{Z}).
+        m\Z/(l\Z) \cong d\Z/(n\Z).
     \]
 
-    We claim that $m\mathbb{Z} / (l\mathbb{Z}) \cong \mathbb{Z}_{\frac lm} \text{ and } d\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd}$. This is a specific case of \myref{problem-mZ/nZ-isomorphic-to-Zn/m} which we have left as a problem for later. Hence,
+    We claim that $m\Z / (l\Z) \cong \Z_{\frac lm} \text{ and } d\Z / (n\Z) \cong \Z_{\frac nd}$. This is a specific case of \myref{problem-mZ/nZ-isomorphic-to-Zn/m} which we have left as a problem for later. Hence,
     \[
-    \mathbb{Z}_{\frac lm} \cong m\mathbb{Z}/(l\mathbb{Z}) \cong d\mathbb{Z}/(n\mathbb{Z}) \cong \mathbb{Z}_{\frac nd},
+    \Z_{\frac lm} \cong m\Z/(l\Z) \cong d\Z/(n\Z) \cong \Z_{\frac nd},
     \]
-    which means that $\mathbb{Z}_{\frac lm} \cong \mathbb{Z}_{\frac nd}$. We can now finally take orders on both sides:
+    which means that $\Z_{\frac lm} \cong \Z_{\frac nd}$. We can now finally take orders on both sides:
     \[
         \frac{l}{m} = \frac{n}{d},
     \]
@@ -399,22 +399,22 @@ It should be noted that there is no consistency with the numbering of these theo
 \end{proof}
 
 \begin{example}
-    Take $G = \mathbb{Z}$, $H = m\mathbb{Z}$, and $N = mn\mathbb{Z}$. Note that clearly $H, N \leq G$, and since $G$ is abelian, we must also have $H \unlhd G$ and $N \unlhd G$. By the Third Isomorphism Theorem (\myref{thrm-isomorphism-3}), statement 3,
+    Take $G = \Z$, $H = m\Z$, and $N = mn\Z$. Note that clearly $H, N \leq G$, and since $G$ is abelian, we must also have $H \unlhd G$ and $N \unlhd G$. By the Third Isomorphism Theorem (\myref{thrm-isomorphism-3}), statement 3,
     \[
         \frac{G/N}{H/N} \cong G/H.
     \]
-    Note $G/H = \mathbb{Z}/(m\mathbb{Z}) \cong \mathbb{Z}_m$ by \myref{problem-Zn-isomorphic-to-Z-by-nZ}. Note also
+    Note $G/H = \Z/(m\Z) \cong \Z_m$ by \myref{problem-Zn-isomorphic-to-Z-by-nZ}. Note also
     \[
-        \frac{G/N}{H/N} = \frac{\mathbb{Z}/(mn\mathbb{Z})}{m\mathbb{Z}/(mn\mathbb{Z})}.
+        \frac{G/N}{H/N} = \frac{\Z/(mn\Z)}{m\Z/(mn\Z)}.
     \]
     Hence we see that
     \[
-        \frac{\mathbb{Z}/(mn\mathbb{Z})}{m\mathbb{Z}/(mn\mathbb{Z})} \cong \mathbb{Z}/(m\mathbb{Z}) \cong \mathbb{Z}_m.
+        \frac{\Z/(mn\Z)}{m\Z/(mn\Z)} \cong \Z/(m\Z) \cong \Z_m.
     \]
 \end{example}
 
 \begin{exercise}
-    Suppose $x$ and $y$ are positive integers such that $y = mx$ for some integer $m$. Let $H = x\mathbb{Z}$ and $N = y\mathbb{Z}$ be groups under addition.
+    Suppose $x$ and $y$ are positive integers such that $y = mx$ for some integer $m$. Let $H = x\Z$ and $N = y\Z$ be groups under addition.
     \begin{partquestions}{\roman*}
         \item Explain why $N \subseteq H$.
         \item Find a group $G$ such that $H \lhd G$ and $N \lhd G$.
@@ -430,7 +430,7 @@ It should be noted that there is no consistency with the numbering of these theo
 \end{problem}
 
 \begin{problem}
-    Let $R = (\mathbb{R}, +)$. Also let $G = R^2$ and $H = \left\{(r\sqrt2, r\sqrt3) \vert r\in R\right\}$ be groups under component-wise addition. Prove that $G/H \cong R$.
+    Let $R = (\R, +)$. Also let $G = R^2$ and $H = \left\{(r\sqrt2, r\sqrt3) \vert r\in R\right\}$ be groups under component-wise addition. Prove that $G/H \cong R$.
 \end{problem}
 
 \begin{problem}\label{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}
@@ -446,9 +446,9 @@ It should be noted that there is no consistency with the numbering of these theo
 \end{problem}
 
 \begin{problem}\label{problem-mZ/nZ-isomorphic-to-Zn/m}
-    Let $G = m\mathbb{Z}$ and $H = n\mathbb{Z}$ be groups under addition, where $m\vert n$ and $m \neq n$. Let the map $\phi: G \to \mathbb{Z}/({\frac nm}\mathbb{Z})$ be defined such that
+    Let $G = m\Z$ and $H = n\Z$ be groups under addition, where $m\vert n$ and $m \neq n$. Let the map $\phi: G \to \Z/({\frac nm}\Z)$ be defined such that
     \[
-        \phi(am) = a + \frac nm \mathbb{Z}.
+        \phi(am) = a + \frac nm \Z.
     \]
-    Prove that $G/H \cong \mathbb{Z}_{\frac nm}$.
+    Prove that $G/H \cong \Z_{\frac nm}$.
 \end{problem}

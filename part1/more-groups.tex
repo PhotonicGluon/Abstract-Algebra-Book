@@ -8,19 +8,19 @@ We previously covered several properties of cyclic groups.
     \item A finite group $G$ is cyclic if and only if there exists an element $g$ in the group $G$ with the same order as the group. (\myref{thrm-cyclic-group-has-element-with-same-order})
     \item If $G$ is cyclic and $H \leq G$ then $G/H$ is cyclic. (\myref{exercise-quotient-group-of-cyclic-group-is-cyclic})
     \item Any subgroup of a cyclic group is cyclic. (\myref{problem-subgroup-of-cyclic-group-is-cyclic})
-    \item $\mathbb{Z} / (n\mathbb{Z}) \cong \mathbb{Z}_n$. (\myref{problem-Zn-isomorphic-to-Z-by-nZ})
-    \item $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ if and only if $\gcd(m,n) = 1$. (\myref{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition})
-    \item $m\mathbb{Z} / n\mathbb{Z} \cong \mathbb{Z}_{\frac nm}$. (\myref{problem-mZ/nZ-isomorphic-to-Zn/m})
+    \item $\Z / (n\Z) \cong \Z_n$. (\myref{problem-Zn-isomorphic-to-Z-by-nZ})
+    \item $\Z_m \times \Z_n \cong \Z_{mn}$ if and only if $\gcd(m,n) = 1$. (\myref{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition})
+    \item $m\Z / n\Z \cong \Z_{\frac nm}$. (\myref{problem-mZ/nZ-isomorphic-to-Zn/m})
 \end{itemize}
 
 \begin{exercise}\label{exercise-Zmn-mod-Zn-cong-Zn}
     Prove that for any positive integers $m$ and $n$, we have
     \[
-        \mathbb{Z}_{mn} / \mathbb{Z}_m \cong \mathbb{Z}_n.
+        \Z_{mn} / \Z_m \cong \Z_n.
     \]
 \end{exercise}
 
-Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead of $\mathbb{Z}_n$. This may be sometimes used to distinguish (finite) cyclic subgroups of a group from the integers modulo $n$.
+Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead of $\Z_n$. This may be sometimes used to distinguish (finite) cyclic subgroups of a group from the integers modulo $n$.
 
 We prove more facts about cyclic groups here.
 \begin{lemma}\label{lemma-order-of-an-element-that-is-equivalent-to-identity}
@@ -32,7 +32,7 @@ We prove more facts about cyclic groups here.
 \end{proof}
 
 \begin{exercise}
-    The number 12 is equivalent to 0 in the group $\mathbb{Z}_n$. What are the possible value(s) of $n$?
+    The number 12 is equivalent to 0 in the group $\Z_n$. What are the possible value(s) of $n$?
 \end{exercise}
 
 We are now ready to prove an essential theorem on cyclic groups.
@@ -71,7 +71,7 @@ We are now ready to prove an essential theorem on cyclic groups.
 \end{proof}
 
 \begin{exercise}
-    In the group $\mathbb{Z}_{210}$, find the order of 10, 42, 75, and 140.
+    In the group $\Z_{210}$, find the order of 10, 42, 75, and 140.
 \end{exercise}
 
 \begin{corollary}\label{corollary-element-in-cyclic-group-is-generator-iff-gcd-is-1}
@@ -86,8 +86,8 @@ We are now ready to prove an essential theorem on cyclic groups.
 \begin{exercise}
     Find all the generators of the following groups.
     \begin{partquestions}{\alph*}
-        \item $\mathbb{Z}_{10}$
-        \item $\mathbb{Z}_{101}$
+        \item $\Z_{10}$
+        \item $\Z_{101}$
     \end{partquestions}
 \end{exercise}
 
@@ -361,7 +361,7 @@ We look at a useful group in Number Theory: the \textbf{group of units modulo $n
 \begin{definition}
     For a positive integer $n \geq 2$, the \textbf{group of units modulo $n$}\index{group of units modulo $n$}, denoted by $\Un{n}$, is the set
     \[
-        \Un{n} = \{m \in \mathbb{Z} \vert 1 \leq m < n \text{ and } \gcd(m, n) = 1\}
+        \Un{n} = \{m \in \Z \vert 1 \leq m < n \text{ and } \gcd(m, n) = 1\}
     \]
     together with the operation $\otimes_n$ (multiplication modulo $n$).
 \end{definition}
@@ -394,7 +394,7 @@ A useful Number Theory function that will occur frequently in this section is \t
 \begin{definition}
     \textbf{Euler's totient function} $\totient$ gives the number of positive integers that are smaller than and coprime to a positive integer $x$. That is,
     \[
-        \totient(x) = \left|\{n \in \mathbb{Z} \vert 1 \leq n < x \text{ and } \gcd(n, x) = 1\}\right|.
+        \totient(x) = \left|\{n \in \Z \vert 1 \leq n < x \text{ and } \gcd(n, x) = 1\}\right|.
     \]
 \end{definition}
 In particular, if the positive integer $x = p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$, where $p_1, p_2, \dots, p_k$ are distinct primes and $n_1,n_2,\dots,n_k$ are positive integers, then
@@ -424,57 +424,57 @@ We now note the condition for $\Un{n}$ to be cyclic.
 \begin{proof}
     We first prove the forward direction. Let $\Un{n}$ be cyclic. Then there exists an element $r \in \Un{n}$ such that $|r| = |\Un{n}| = \totient(n)$, so $r$ is a primitive root modulo $n$ by definition of a primitive root.
 
-    We now prove the reverse direction. Let $r \in \Un{n}$ be a primitive root modulo $n$. Then $\langle r \rangle \cong \mathbb{Z}_{\totient(n)}$. Note that since $|\langle r \rangle| = \totient(n) = |\Un{n}|$, therefore $r$ is a generator of $\Un{n}$, meaning $\Un{n}$ is cyclic.
+    We now prove the reverse direction. Let $r \in \Un{n}$ be a primitive root modulo $n$. Then $\langle r \rangle \cong \Z_{\totient(n)}$. Note that since $|\langle r \rangle| = \totient(n) = |\Un{n}|$, therefore $r$ is a generator of $\Un{n}$, meaning $\Un{n}$ is cyclic.
 \end{proof}
 \begin{remark}
-    In fact, what \myref{prop-Un-cyclic-only-if-exists-primitive-root} shows is that $\Un{n} \cong \mathbb{Z}_{\totient(n)}$ if there exists a primitive root modulo $n$.
+    In fact, what \myref{prop-Un-cyclic-only-if-exists-primitive-root} shows is that $\Un{n} \cong \Z_{\totient(n)}$ if there exists a primitive root modulo $n$.
 \end{remark}
 
 We end this section by looking at an alternate representation of $\Un{n}$. 
 \begin{definition}
     Define the group
     \[
-        \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times} = \left\{m + n\mathbb{Z} \ \vert \ m,n \in \mathbb{Z},\; 1 \leq m < n,\; \gcd(m, n)=1\right\}
+        \left(\Z/(n\Z)\right)^{\times} = \left\{m + n\Z \ \vert \ m,n \in \Z,\; 1 \leq m < n,\; \gcd(m, n)=1\right\}
     \]
-    under the operation $\ast$ where $(a+n\mathbb{Z})\ast(b+n\mathbb{Z}) = (a\otimes_n b) + n\mathbb{Z}$ for $n \geq 2$.
+    under the operation $\ast$ where $(a+n\Z)\ast(b+n\Z) = (a\otimes_n b) + n\Z$ for $n \geq 2$.
 \end{definition}
 \begin{proposition}
-    $\Un{n} \cong \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$.
+    $\Un{n} \cong \left(\Z/(n\Z)\right)^{\times}$.
 \end{proposition}
 \begin{proof}
-    Define the map $\phi: \Un{n} \to \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$ such that $m \mapsto m + n\mathbb{Z}$. We show that $\phi$ is an isomorphism.
+    Define the map $\phi: \Un{n} \to \left(\Z/(n\Z)\right)^{\times}$ such that $m \mapsto m + n\Z$. We show that $\phi$ is an isomorphism.
 
     \begin{itemize}
         \item \textbf{Homomorphism}: Let $x, y \in \Un{n}$. Then $\phi$ is a homomorphism since
         \begin{align*}
-            \phi(x \otimes_n y) &= (x \otimes_n y) + n\mathbb{Z}\\
-            &= (x + n\mathbb{Z}) \ast (y + n\mathbb{Z})\\
+            \phi(x \otimes_n y) &= (x \otimes_n y) + n\Z\\
+            &= (x + n\Z) \ast (y + n\Z)\\
             &= \phi(x) \ast \phi(y).
         \end{align*}
 
-        \item \textbf{Injective}: Suppose we have $x, y \in \Un{n}$ such that $\phi(x) = \phi(y)$. Then this means that $x + n\mathbb{Z} = y + n\mathbb{Z}$. Thus
+        \item \textbf{Injective}: Suppose we have $x, y \in \Un{n}$ such that $\phi(x) = \phi(y)$. Then this means that $x + n\Z = y + n\Z$. Thus
         \[
-            \{x + pn \vert p \in \mathbb{Z} \} = \ \{y + qn \vert q \in \mathbb{Z} \}.
+            \{x + pn \vert p \in \Z \} = \ \{y + qn \vert q \in \Z \}.
         \]
         Hence we conclude that $x \equiv y \pmod{n}$. But since $1 \leq x, y < n$, we must have $x = y$. Therefore $\phi(x) = \phi(y)$ implies $x = y$, meaning $\phi$ is injective.
 
-        \item \textbf{Surjective}: Let $x + n\mathbb{Z} \in (\mathbb{Z}/(n\mathbb{Z}))^\times$, so $\gcd(x,n) = 1$. Using Euclid's division lemma (\myref{lemma-euclid-division}) on $x$ yields
+        \item \textbf{Surjective}: Let $x + n\Z \in (\Z/(n\Z))^\times$, so $\gcd(x,n) = 1$. Using Euclid's division lemma (\myref{lemma-euclid-division}) on $x$ yields
         \[
             x = qn + r, \text{ where } 0 \leq r < n.
         \]
         Note that
         \begin{align*}
-            x + n\mathbb{Z} &= \{x + kn \vert k \in \mathbb{Z}\}\\
-            &= \{(qn + r) + kn \vert k \in \mathbb{Z}\}\\
-            &= \{r + n(\underbrace{q+k}_{\text{In } \mathbb{Z}}) \vertalt k \in \mathbb{Z}\}\\
-            &= r + n\mathbb{Z}
+            x + n\Z &= \{x + kn \vert k \in \Z\}\\
+            &= \{(qn + r) + kn \vert k \in \Z\}\\
+            &= \{r + n(\underbrace{q+k}_{\text{In } \Z}) \vertalt k \in \Z\}\\
+            &= r + n\Z
         \end{align*}
         with $0 \leq r < n$. Note that if $r = 0$, this means that $x = qn$, which means that $\gcd(x, n) = \gcd(qn, n) = n \neq 1$. Thus, $r \neq 0$, meaning $1 \leq r < n$ so $r \in \Un{n}$.
 
-        Observing that $\phi(r) = r + n\mathbb{Z} = x + n\mathbb{Z}$ shows that $x + n\mathbb{Z}$ has a pre-image $r$ in $\Un{n}$, which means that $\phi$ is surjective.
+        Observing that $\phi(r) = r + n\Z = x + n\Z$ shows that $x + n\Z$ has a pre-image $r$ in $\Un{n}$, which means that $\phi$ is surjective.
     \end{itemize}
 
-    Thus $\phi$ is an isomorphism, meaning $\Un{n} \cong \left(\mathbb{Z}/(n\mathbb{Z})\right)^{\times}$.
+    Thus $\phi$ is an isomorphism, meaning $\Un{n} \cong \left(\Z/(n\Z)\right)^{\times}$.
 \end{proof}
 
 \section{Groups of Matrices}
@@ -585,19 +585,19 @@ We conclude this subsection with a few properties of the determinant that we sta
 \subsection{General Linear Group over the Real Numbers}
 With an introduction of matrices out of the way, we can introduce the first of two important matrix groups: the \textbf{General Linear Group of degree $n$} over the real numbers.
 \begin{definition}
-    The \textbf{General Linear Group of degree $n$}\index{General Linear Group} over the real numbers is denoted by $\GL{n}{\mathbb{R}}$ and is the group with set
+    The \textbf{General Linear Group of degree $n$}\index{General Linear Group} over the real numbers is denoted by $\GL{n}{\R}$ and is the group with set
     \[
         \left\{\textbf{M} \vert \text{\textbf{M} is a matrix with } n \text{ rows and columns, and } \det \textbf{M} \neq 0\right\}
     \]
     under the operation of matrix multiplication.
 \end{definition}
-In other words, $\GL{n}{\mathbb{R}}$ is the group of real-valued matrices with $n$ rows and columns that has an inverse. We show that $\GL{n}{\mathbb{R}}$ is a group under matrix multiplication.
+In other words, $\GL{n}{\R}$ is the group of real-valued matrices with $n$ rows and columns that has an inverse. We show that $\GL{n}{\R}$ is a group under matrix multiplication.
 \begin{proof}
     We need to prove the four group axioms.
     \begin{enumerate}
-        \item \textbf{Closure}: Consider two matrices \textbf{A} and \textbf{B} in $\GL{n}{\mathbb{R}}$. Then that means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Note also that $\textbf{AB}$ has $n$ rows and columns. Therefore $\textbf{AB}$ is also in $\GL{n}{\mathbb{R}}$, meaning that it is closed under matrix multiplication.
+        \item \textbf{Closure}: Consider two matrices \textbf{A} and \textbf{B} in $\GL{n}{\R}$. Then that means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Note also that $\textbf{AB}$ has $n$ rows and columns. Therefore $\textbf{AB}$ is also in $\GL{n}{\R}$, meaning that it is closed under matrix multiplication.
         
-        \item \textbf{Associativity}: Consider three matrices \textbf{A}, \textbf{B}, and \textbf{C} in $\GL{n}{\mathbb{R}}$.
+        \item \textbf{Associativity}: Consider three matrices \textbf{A}, \textbf{B}, and \textbf{C} in $\GL{n}{\R}$.
         \begin{itemize}
             \item Consider $(\textbf{AB})\textbf{C}$. Let $\textbf{R} = \textbf{AB}$ and $\textbf{S} = (\textbf{AB})\textbf{C}$. Then
             \[
@@ -626,67 +626,67 @@ In other words, $\GL{n}{\mathbb{R}}$ is the group of real-valued matrices with $
         \]
         thereby proving that matrix multiplication is associative.
         
-        \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n$ is in $\GL{n}{\mathbb{R}}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M} \in \GL{n}{\mathbb{R}}$, thus $\textbf{I}_n$ is the identity of $\GL{n}{\mathbb{R}}$.
+        \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n$ is in $\GL{n}{\R}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M} \in \GL{n}{\R}$, thus $\textbf{I}_n$ is the identity of $\GL{n}{\R}$.
         
-        \item \textbf{Inverse}: Let \textbf{M} be a matrix in $\GL{n}{\mathbb{R}}$. As $\det \textbf{M} \neq 0$, thus $\textbf{M}^{-1}$ exists. By properties of the determinant, we know that $\det \left(\textbf{M}^{-1}\right) = \left(\det \textbf{M}\right)^{-1}$, and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1} \in \GL{n}{\mathbb{R}}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\mathbb{R}}$.
+        \item \textbf{Inverse}: Let \textbf{M} be a matrix in $\GL{n}{\R}$. As $\det \textbf{M} \neq 0$, thus $\textbf{M}^{-1}$ exists. By properties of the determinant, we know that $\det \left(\textbf{M}^{-1}\right) = \left(\det \textbf{M}\right)^{-1}$, and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1} \in \GL{n}{\R}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\R}$.
     \end{enumerate}
-    Thus $\GL{n}{\mathbb{R}}$ is a group.
+    Thus $\GL{n}{\R}$ is a group.
 \end{proof}
 
 \subsection{Special Linear Group over the Real Numbers}
 We look at another group of matrices: the \textbf{Special Linear Group of degree $n$} over the real numbers.
 \begin{definition}
-    The \textbf{Special Linear Group of degree $n$}\index{Special Linear Group} over the real numbers is denoted by $\SL{n}{\mathbb{R}}$ and is the group with set
+    The \textbf{Special Linear Group of degree $n$}\index{Special Linear Group} over the real numbers is denoted by $\SL{n}{\R}$ and is the group with set
     \[
         \left\{\textbf{M} \vert \text{\textbf{M} is a matrix with } n \text{ rows and columns, and } \det \textbf{M} = 1\right\}
     \]
     under matrix multiplication.
 \end{definition}
-One sees clearly that $\SL{n}{\mathbb{R}}$ is a sub\textit{set} of $\GL{n}{\mathbb{R}}$: the set of $\GL{n}{\mathbb{R}}$ requires non-zero determinant while the set of $\SL{n}{\mathbb{R}}$ requires the determinant to be 1, which satisfies the non-zero determinant requirement. What we want to prove here is that $\SL{n}{\mathbb{R}}$ is a sub\textit{group} of $\GL{n}{\mathbb{R}}$. In fact,
+One sees clearly that $\SL{n}{\R}$ is a sub\textit{set} of $\GL{n}{\R}$: the set of $\GL{n}{\R}$ requires non-zero determinant while the set of $\SL{n}{\R}$ requires the determinant to be 1, which satisfies the non-zero determinant requirement. What we want to prove here is that $\SL{n}{\R}$ is a sub\textit{group} of $\GL{n}{\R}$. In fact,
 \begin{proposition}
-    $\SL{n}{\mathbb{R}} \lhd \GL{n}{\mathbb{R}}$.
+    $\SL{n}{\R} \lhd \GL{n}{\R}$.
 \end{proposition}
 \begin{proof}
-    We consider the subgroup test. Clearly $\textbf{I}_n$ is in $\SL{n}{\mathbb{R}}$ since its determinant is 1.
+    We consider the subgroup test. Clearly $\textbf{I}_n$ is in $\SL{n}{\R}$ since its determinant is 1.
 
-    Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\mathbb{R}}$. This means that $\det \textbf{A} = 1$ and $\det \textbf{B} = 1$. Note that $\det(\textbf{B}^{-1}) = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det \textbf({B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\mathbb{R}}$. Hence by the subgroup test, $\SL{n}{\mathbb{R}} < \GL{n}{\mathbb{R}}$.
+    Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\R}$. This means that $\det \textbf{A} = 1$ and $\det \textbf{B} = 1$. Note that $\det(\textbf{B}^{-1}) = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det \textbf({B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\R}$. Hence by the subgroup test, $\SL{n}{\R} < \GL{n}{\R}$.
     
-    Now let $\textbf{M}$ be a matrix in $\GL{n}{\mathbb{R}}$ and $\textbf{N}$ be a matrix in $\SL{n}{\mathbb{R}}$. We are to show that $\textbf{MNM}^{-1}$ is in $\SL{n}{\mathbb{R}}$. Since $\textbf{M} \in \GL{n}{\mathbb{R}}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\mathbb{R}}$ implies $\det \textbf{N} = 1$. Hence,
+    Now let $\textbf{M}$ be a matrix in $\GL{n}{\R}$ and $\textbf{N}$ be a matrix in $\SL{n}{\R}$. We are to show that $\textbf{MNM}^{-1}$ is in $\SL{n}{\R}$. Since $\textbf{M} \in \GL{n}{\R}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\R}$ implies $\det \textbf{N} = 1$. Hence,
     \[
         \det \textbf{MNM}^{-1} = (\det \textbf{M})(\det \textbf{N})(\det \textbf{M})^{-1} = \det \textbf{N} = 1
     \]
-    which means that $\textbf{MNM}^{-1}$ is in $\SL{n}{\mathbb{R}}$.
+    which means that $\textbf{MNM}^{-1}$ is in $\SL{n}{\R}$.
 
-    Therefore $\SL{n}{\mathbb{R}} \lhd \GL{n}{\mathbb{R}}$.
+    Therefore $\SL{n}{\R} \lhd \GL{n}{\R}$.
 \end{proof}
 
 \subsection{A Consequence of the Fundamental Homomorphism Theorem}
-We end this section with a consequence of the Fundamental Homomorphism Theorem on these groups of matrices. For brevity, let $\mathbb{R}^\times$ be the group of non-zero real numbers under multiplication.
+We end this section with a consequence of the Fundamental Homomorphism Theorem on these groups of matrices. For brevity, let $\R^\times$ be the group of non-zero real numbers under multiplication.
 
 \begin{proposition}
-    $\GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times$.
+    $\GL{n}{\R} / \SL{n}{\R} \cong \R^\times$.
 \end{proposition}
 \begin{proof}
-    Define the map $\phi: \GL{n}{\mathbb{R}} \to \mathbb{R}^\times$ where $\textbf{M} \mapsto \det\textbf{M}$.
+    Define the map $\phi: \GL{n}{\R} \to \R^\times$ where $\textbf{M} \mapsto \det\textbf{M}$.
 	\begin{itemize}
-	    \item \textbf{Homomorphism}: Take $\textbf{M}, \textbf{N} \in \GL{n}{\mathbb{R}}$. Then
+	    \item \textbf{Homomorphism}: Take $\textbf{M}, \textbf{N} \in \GL{n}{\R}$. Then
 	    \[
 	        \phi(\textbf{MN}) = \det \textbf{MN} = \det(\textbf{M})\det(\textbf{N}) = \phi(\textbf{M})\phi(\textbf{N})
 	    \]
 	    which means that $\phi$ is a homomorphism.
 
-	    \item \textbf{Image}: We prove that $\phi$ is surjective to show that $\im \phi = \mathbb{R}^\times$. Suppose $r \in \mathbb{R}^\times$. Then $r^{\frac1n} \in \mathbb{R}^\times$, and a matrix with $r^{\frac1n}$ on its main diagonal (written as $r^{\frac1n}\textbf{I}_n$ where $\textbf{I}_n$ is the identity matrix with $n$ rows and columns) is in $\GL{n}{\mathbb{R}}$. Note that $\det\left(r^{\frac1n}\textbf{I}_n\right) = \left(r^{\frac1n}\right)^n\det(\textbf{I}_n) = r$. Thus there is a pre-image of $r$ inside the codomain $\mathbb{R}^\times$, meaning that $\phi$ is surjective. Hence, $\im \phi = \mathbb{R}^\times$.
+	    \item \textbf{Image}: We prove that $\phi$ is surjective to show that $\im \phi = \R^\times$. Suppose $r \in \R^\times$. Then $r^{\frac1n} \in \R^\times$, and a matrix with $r^{\frac1n}$ on its main diagonal (written as $r^{\frac1n}\textbf{I}_n$ where $\textbf{I}_n$ is the identity matrix with $n$ rows and columns) is in $\GL{n}{\R}$. Note that $\det\left(r^{\frac1n}\textbf{I}_n\right) = \left(r^{\frac1n}\right)^n\det(\textbf{I}_n) = r$. Thus there is a pre-image of $r$ inside the codomain $\R^\times$, meaning that $\phi$ is surjective. Hence, $\im \phi = \R^\times$.
 
-	    \item \textbf{Kernel}: Note that 1 is the identity in $\mathbb{R}^\times$. Thus
+	    \item \textbf{Kernel}: Note that 1 is the identity in $\R^\times$. Thus
 	    \begin{align*}
-	        \ker\phi &= \{\textbf{M} \in \GL{n}{\mathbb{R}} \vert \phi(\textbf{M}) = 1\} \\
-	        &= \{\textbf{M} \in \GL{n}{\mathbb{R}} \vert \det(\textbf{M}) = 1\}\\
-	        &= \SL{n}{\mathbb{R}}.
+	        \ker\phi &= \{\textbf{M} \in \GL{n}{\R} \vert \phi(\textbf{M}) = 1\} \\
+	        &= \{\textbf{M} \in \GL{n}{\R} \vert \det(\textbf{M}) = 1\}\\
+	        &= \SL{n}{\R}.
 	    \end{align*}
 	\end{itemize}
 	The Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) tells us that
 	\[
-	    \GL{n}{\mathbb{R}} / \SL{n}{\mathbb{R}} \cong \mathbb{R}^\times
+	    \GL{n}{\R} / \SL{n}{\R} \cong \R^\times
 	\]
 	which proves the claim.
 \end{proof}
@@ -824,7 +824,7 @@ Before we can state the consequence, we revisit the idea of the center of a grou
 
 \section{Problems}
 \begin{problem}
-    By considering the group $\mathbb{Z}_{10101}$, find the smallest positive integers $a$ and $b$ such that
+    By considering the group $\Z_{10101}$, find the smallest positive integers $a$ and $b$ such that
     \begin{partquestions}{\alph*}
         \item $1870a$ is a multiple of 10101.
         \item $3774b$ is a multiple of 10101.

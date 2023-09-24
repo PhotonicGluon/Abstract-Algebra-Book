@@ -9,19 +9,19 @@ The external direct product is one method of `combining' groups together.
 Verifying that $(G\times H, (\ast, \star))$ is a group is left as an exercise for the reader. We note the identity of $G \times H$ is $(e_G, e_H)$, where $e_G$ is the identity of $G$ and $e_H$ is the identity of $H$. Also, $|G \times H| = |G||H|$ by definition of the Cartesian product.
 
 \begin{example}
-    $\mathbb{Z}_5 \times \mathbb{Z} = \{(m,n) \vert m \in \mathbb{Z}_5 \text{ and } n \in \mathbb{Z}\}$.
+    $\Z_5 \times \Z = \{(m,n) \vert m \in \Z_5 \text{ and } n \in \Z\}$.
 
     Thus, $(2, 5)(5, 9) = (2 \oplus_5 5, 5 + 9) = (7 \mod 5, 14) = (2, 14)$.
 \end{example}
 
 \begin{example}
-    Let $\mathcal{S} = \mathbb{R}\setminus\{0\}$ be a group under multiplication. Then $\mathcal{S} \times \mathbb{Z}_3 = \{ (x, n) \vert x \in \mathcal{S} \text{ and } n \in \mathbb{Z}_3\}$.
+    Let $\mathcal{S} = \R\setminus\{0\}$ be a group under multiplication. Then $\mathcal{S} \times \Z_3 = \{ (x, n) \vert x \in \mathcal{S} \text{ and } n \in \Z_3\}$.
 
     So, $(3, 2)^{-1} = \left(\frac13, 1\right)$ since
     \begin{align*}
         (3, 2)\left(\frac13, 1\right) &= \left(3 \times \frac13, 2 \oplus_3 1\right)\\
         &= (1, 0)\\
-        &= (\text{Identity in }\mathcal{S}, \text{Identity in }\mathbb{Z}_3)
+        &= (\text{Identity in }\mathcal{S}, \text{Identity in }\Z_3)
     \end{align*}
 \end{example}
 
@@ -52,30 +52,30 @@ We prove some results relating the external direct product.
 \end{proof}
 
 \begin{theorem}\label{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition}
-    $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ if and only if $\gcd(m,n) = 1$.
+    $\Z_m \times \Z_n \cong \Z_{mn}$ if and only if $\gcd(m,n) = 1$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Proposition 13.1 (3)]{humphreys_1996}})]
-    We first work on the forward direction. Suppose $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$, and for brevity let $d = \gcd(m,n)$.
+    We first work on the forward direction. Suppose $\Z_m \times \Z_n \cong \Z_{mn}$, and for brevity let $d = \gcd(m,n)$.
     
-    Suppose on the contrary that $d > 1$. Take $(a, b) \in \mathbb{Z}_m \times \mathbb{Z}_n$. Note that $\frac{mn}{d} = \lcm(m,n)$ (\myref{prop-product-of-gcd-and-lcm}) which is a positive integer. Then
+    Suppose on the contrary that $d > 1$. Take $(a, b) \in \Z_m \times \Z_n$. Note that $\frac{mn}{d} = \lcm(m,n)$ (\myref{prop-product-of-gcd-and-lcm}) which is a positive integer. Then
     \begin{align*}
         \underbrace{(a,b)(a,b)(a,b)\cdots(a,b)}_{\frac{mn}{d}\text{ times}} &= \left(\frac{mn}{d}a, \frac{mn}{d}b\right)\\
         &= \left(m\frac{na}{d}, n\frac{mb}{d}\right) & (\text{as } d \vert m \text{ and } d \vert n)\\
-        &= (\underbrace{0}_{\text{In } \mathbb{Z}_m}, \underbrace{0}_{\text{In } \mathbb{Z}_n})
+        &= (\underbrace{0}_{\text{In } \Z_m}, \underbrace{0}_{\text{In } \Z_n})
     \end{align*}
-    which implies $|(a, b)| \leq \frac{mn}{d} < mn$ for all $(a, b) \in \mathbb{Z}_m \times \mathbb{Z}_n$. Hence, this means that $\mathbb{Z}_m \times \mathbb{Z}_n$ is \textit{not} cyclic, since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and no element in $\mathbb{Z}_m \times \mathbb{Z}_n$ has order $mn$. However, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$ is cyclic, a clear contradiction. Hence, $d \not>1$ which means $d = 1$, so $\gcd(m,n) = 1$.
+    which implies $|(a, b)| \leq \frac{mn}{d} < mn$ for all $(a, b) \in \Z_m \times \Z_n$. Hence, this means that $\Z_m \times \Z_n$ is \textit{not} cyclic, since $|\Z_m \times \Z_n| = mn$ and no element in $\Z_m \times \Z_n$ has order $mn$. However, $\Z_m \times \Z_n \cong \Z_{mn}$ is cyclic, a clear contradiction. Hence, $d \not>1$ which means $d = 1$, so $\gcd(m,n) = 1$.
 
-    We now work on the reverse direction. Suppose $\gcd(m,n) = 1$. Note that $|1| = m$ in $\mathbb{Z}_m$ and $|1| = n$ in $\mathbb{Z}_n$. Thus
+    We now work on the reverse direction. Suppose $\gcd(m,n) = 1$. Note that $|1| = m$ in $\Z_m$ and $|1| = n$ in $\Z_n$. Thus
     \begin{align*}
         |(1, 1)| &= \lcm(m, n) & (\myref{prop-order-of-element-in-external-direct-product})\\
         &= \frac{mn}{\gcd(m,n)}\\
         &= mn & (\gcd(m,n) = 1).
     \end{align*}
-    Since $|\mathbb{Z}_m \times \mathbb{Z}_n| = mn$ and $|(1,1)| = mn$, thus $\mathbb{Z}_m \times \mathbb{Z}_n$ is cyclic with generator $(1,1)$. By \myref{thrm-finite-cyclic-group-isomorphic-to-Zn}, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{mn}$.
+    Since $|\Z_m \times \Z_n| = mn$ and $|(1,1)| = mn$, thus $\Z_m \times \Z_n$ is cyclic with generator $(1,1)$. By \myref{thrm-finite-cyclic-group-isomorphic-to-Zn}, $\Z_m \times \Z_n \cong \Z_{mn}$.
 \end{proof}
 
 \begin{exercise}
-    Find all integers $m$ and $n$ with $1 < m < n$ such that $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z}_{180}$.
+    Find all integers $m$ and $n$ with $1 < m < n$ such that $\Z_m \times \Z_n \cong \Z_{180}$.
 \end{exercise}
 
 \section{Subgroup Product and Internal Direct Product}
@@ -179,14 +179,14 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \begin{example}
     Consider again $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. As we have found before, $G$ is the internal direct product of $H$ and $K$; but we now know that $G \cong H \times K$.
 
-    Note that $|H| = 2$ so $H \cong \mathbb{Z}_2$ and $K \cong D_3$ (we leave the latter as an exercise for the reader to prove). Thus,
+    Note that $|H| = 2$ so $H \cong \Z_2$ and $K \cong D_3$ (we leave the latter as an exercise for the reader to prove). Thus,
     \[
-        D_6 = G = HK \cong H \times K = \mathbb{Z}_2 \times D_3.
+        D_6 = G = HK \cong H \times K = \Z_2 \times D_3.
     \]
 \end{example}
 
 \begin{exercise}
-    Let $\mathcal{S} = \{1, 5, 7, 11\}$, $G = \{1, 5\}$, and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the value of $n$ such that $\mathcal{S} \cong (\mathbb{Z}_n)^2$.
+    Let $\mathcal{S} = \{1, 5, 7, 11\}$, $G = \{1, 5\}$, and $H = \{1, 7\}$ be groups under $\otimes_{12}$. Find the value of $n$ such that $\mathcal{S} \cong (\Z_n)^2$.
 \end{exercise}
 
 \newpage
@@ -201,7 +201,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \end{problem}
 
 \begin{problem}
-    Let $G = \mathbb{Z}_6$, and let the subgroups $H = \{0, 2, 4\}$ and $K = \{0, 3\}$. Determine whether $G$ is the internal direct product of $H$ and $K$.
+    Let $G = \Z_6$, and let the subgroups $H = \{0, 2, 4\}$ and $K = \{0, 3\}$. Determine whether $G$ is the internal direct product of $H$ and $K$.
 \end{problem}
 
 \begin{problem}
@@ -209,5 +209,5 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
     \[
         \langle a, b \vert a^2 = b^2 = (ab)^2 = e \rangle.
     \]
-    Show that $\mathrm{V} \cong (\mathbb{Z}_2)^2$.
+    Show that $\mathrm{V} \cong (\Z_2)^2$.
 \end{problem}
