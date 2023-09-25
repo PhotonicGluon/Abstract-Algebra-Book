@@ -17,19 +17,15 @@ Now that we have introduced the idea of a group, one wonders about how elements 
     It is important to note that $xy$ uses the group operation on $G$ (i.e., $\ast$) while $\phi(x)\phi(y)$ uses the group operation on $H$ (i.e., $\star$).
 \end{remark}
 
-Let's look at two examples of homomorphisms between groups.
 \begin{example}
-    Let $G$ be any group. Take $g$ from $G$. Let $\phi: \Z \to G$ (where $\Z$ is the additive group of integers) be such that $\phi(n) = g^n$ for all integers $n$. Then $\phi$ is a homomorphism, since
+    Let $G$ be any group, and let $g \in G$. Let $\phi: \Z \to G$ (where $\Z$ is the additive group of integers) be such that $\phi(n) = g^n$ for all integers $n$. Then $\phi$ is a homomorphism, since
     \[
-        \phi(m + n) = g^{m+n} = g^m g^n = \phi(m)\phi(n)
+        \phi(m + n) = g^{m+n} = g^m g^n = \phi(m)\phi(n).
     \]
-    which means that $\phi$ satisfies the homomorphism condition.
 \end{example}
 
 \begin{example}
-    Let $\R^\times$ denote the set of non-zero real numbers and $\R_{>0}$ denote the set of positive real numbers.
-
-    Let $\R^\times$ and $\R_{>0}$ be groups under regular multiplication. Define $f: \R^\times \to \R_{>0}, x \mapsto |x|$ where $|x|$ represents the absolute value of $x$. Then $f$ is a homomorphism as
+    Let $G = \{r \in \R \vert r \neq 0\}$ and $H = (0, \infty)$ be groups under regular multiplication. Define $f: G \to H, x \mapsto |x|$ where $|x|$ represents the absolute value of $x$. Then $f$ is a homomorphism as
     \[
         f(xy) = |xy| = |x||y| = f(x)f(y).
     \]
@@ -172,8 +168,6 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
     If two groups $G$ and $H$ are isomorphic, we write $G \cong H$.
 \end{definition}
 
-\newpage
-
 \begin{example}
     Let $G = (\Z_2, \oplus_2)$ and $H = \{1, -1\}$ be a group under regular multiplication. Define the map $\phi: G \to H$ such that $\phi(0) = 1$ and $\phi(1) = -1$.
 
@@ -181,8 +175,9 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
         \item $\phi$ is clearly a bijection based on function mapping diagram shown.
         \begin{figure}[h]
             \centering
-            \fbox{\includegraphics[width=2.5cm]{homomorphisms-and-isomorphisms/isomorphism-function-map.jpg}}
+            \fbox{\includegraphics[width=0.2\textwidth]{homomorphisms-and-isomorphisms/isomorphism-function-map.jpg}}
         \end{figure}
+
         \item $\phi$ is a homomorphism:\begin{itemize}
             \item $\phi(0\oplus_20) = \phi(0) = 1 = 1 \times 1 = \phi(0)\phi(0)$
             \item $\phi(0 \oplus_2 1) = \phi(1) = -1 = 1 \times (-1) = \phi(0)\phi(1)$
@@ -194,14 +189,14 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
 \end{example}
 
 \begin{example}
-    Let $S$ denote the set of positive real numbers. We show that $(\R, +) \cong (S, \times)$ by considering the map $\phi: \R \to S, x \mapsto e^x$.
+    Let $S = (0,\infty)$. We show that $(\R, +) \cong (S, \times)$ by considering the map $\phi: \R \to S, x \mapsto e^x$.
     \begin{itemize}
         \item \textbf{Homomorphism}:
         \[
             \phi(x+y) = e^{x+y} = e^xe^y = \phi(x)\phi(y)
         \]
 
-        \item \textbf{Injective}: Suppose $x$ and $y$ are elements in $\R$ such that $\phi(x) = \phi(y)$. Therefore $e^x = e^y$ which quickly implies $x = y$ by applying the natural logarithm ($\ln$) on both sides.
+        \item \textbf{Injective}: Suppose $x$ and $y$ are elements in $\R$ such that $\phi(x) = \phi(y)$, meaning $e^x = e^y$. Applying the natural logarithm ($\ln$) on both sides yields $x = y$.
 
         \item \textbf{Surjective}: Suppose $y \in S$. Then $\ln y \in \R$, so $\phi(\ln y) = e^{\ln y} = y$, meaning every element in the codomain $S$ has a preimage.
     \end{itemize}
@@ -216,9 +211,6 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
         \item If $S$ is a group, show that $\id$ is an isomorphism.
     \end{partquestions}
 \end{exercise}
-
-\newpage
-
 \begin{exercise}
     Let the groups $G = (\{1, 2, 3, 4\}, \otimes_5)$ and $H = (\{1, 3, 7, 9\}, \otimes_{10})$.
     \begin{partquestions}{\roman*}
@@ -226,7 +218,6 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
         \item Prove that $G \cong H$ by considering $\phi: G \to H, 3^k \mapsto 7^k$.
     \end{partquestions}
 \end{exercise}
-
 \begin{exercise}\label{exercise-composition-of-isomorphisms-is-isomorphisms}
     Let $A$, $B$, and $C$ be sets. Let $f: A \to B$ and $g: B \to C$ be bijections. Let $h = g\circ f$ where $\circ$ represents function composition, that is $h: A \to C, x \mapsto g(f(x))$.
     \begin{partquestions}{\roman*}
@@ -263,8 +254,6 @@ Isomorphisms between groups means that the two groups \textit{share the same str
             &= \phi^{-1}(u) \phi^{-1}(v).
         \end{align*}
         Thus $\phi^{-1}$ is an isomorphism.
-
-        \newpage
         
         \item Suppose $u$ and $v$ are in $H$. Let $x$ and $y$ be elements in $G$ such that $\phi(x) = u$ and $\phi(y) = v$. Thus
         \begin{align*}
@@ -353,7 +342,7 @@ For brevity, we also have notation regarding the integers under addition.
             \phi(l+m) = g^{l+m} = g^lg^m = \phi(l)\phi(m)
         \]
 
-        \item \textbf{Injective}: Let $l$ and $m$ be integers such that $\phi(l) = \phi(m)$. Without loss of generality, assume that $l \leq m$. Since $\phi(l) = \phi(m)$ we have $g^l = g^m = g^lg^{m-l}$ which implies that $g^{m-l} = e$ by cancellation law. This means that $|g|$ divides $m-l$ by \myref{problem-element-to-power-of-multiple-of-order-is-identity}.
+        \item \textbf{Injective}: Let $l$ and $m$ be integers such that $\phi(l) = \phi(m)$. Without loss of generality, assume that $l \leq m$. Since $\phi(l) = \phi(m)$ we have $g^l = g^m = g^lg^{m-l}$ which implies that $g^{m-l} = e$ by cancellation law. Therefore $|g|$ divides $m-l$ by \myref{problem-element-to-power-of-multiple-of-order-is-identity}.
 
         By way of contradiction, assume $l < m$, which means $m - l \in \{1, 2,\dots, n-1\}$. Therefore $m-l \leq n - 1 < n$. But since $g$ is a generator of $G$, thus $|g| = |G| = n$. Therefore, we have $n$ dividing $m-l$, which is smaller than $n$, a contradiction. Thus $l = m$, meaning $\phi$ is injective.
 
@@ -363,11 +352,11 @@ For brevity, we also have notation regarding the integers under addition.
     Therefore, $\phi$ is an isomorphism which means $G \cong \Z_n$.
 \end{proof}
 
-In summary:
-\begin{itemize}
-    \item All cyclic groups with \textbf{infinite} order are isomorphic to the group of integers under addition, $\Z$.
-    \item All cyclic groups with \textbf{finite} order $n$ are isomorphic to the group of integers under addition modulo $n$, $\Z_n$.
-\end{itemize}
+% In summary:
+% \begin{itemize}
+%     \item All cyclic groups with \textbf{infinite} order are isomorphic to the group of integers under addition, $\Z$.
+%     \item All cyclic groups with \textbf{finite} order $n$ are isomorphic to the group of integers under addition modulo $n$, $\Z_n$.
+% \end{itemize}
 
 \begin{exercise}
     Let $G = (\{1, 3, 7, 9\}, \otimes_{10})$ be a group. Show that $G \cong \Z_n$ for some integer $n$.

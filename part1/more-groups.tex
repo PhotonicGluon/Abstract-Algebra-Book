@@ -14,15 +14,16 @@ We previously covered several properties of cyclic groups.
 \end{itemize}
 
 \begin{exercise}\label{exercise-Zmn-mod-Zn-cong-Zn}
-    Prove that for any positive integers $m$ and $n$, we have
+    Prove that
     \[
         \Z_{mn} / \Z_m \cong \Z_n.
     \]
+    for any positive integers $m$ and $n$.
 \end{exercise}
 
 Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead of $\Z_n$. This may be sometimes used to distinguish (finite) cyclic subgroups of a group from the integers modulo $n$.
 
-We prove more facts about cyclic groups here.
+We prove an essential theorem on cyclic groups. Before that, we require the following lemma.
 \begin{lemma}\label{lemma-order-of-an-element-that-is-equivalent-to-identity}
     Let $\Cn{n}$ have generator $g$. Then $g^k = e$ if and only if $k$ is a multiple of $n$.\newline
     (That is, if $g^k = e$ then $n$ divides $k$, i.e. $n\vert k$.)
@@ -31,13 +32,13 @@ We prove more facts about cyclic groups here.
     We note that the order of $g$ is $n$, since $g$ is a generator of $G$. Thus by \myref{problem-element-to-power-of-multiple-of-order-is-identity} the lemma is proven.
 \end{proof}
 
-\begin{exercise}
-    The number 12 is equivalent to 0 in the group $\Z_n$. What are the possible value(s) of $n$?
-\end{exercise}
+\newpage
 
-We are now ready to prove an essential theorem on cyclic groups.
 \begin{theorem}\label{thrm-order-of-element-in-cyclic-group}
-    Let $\Cn{n}$ have generator $g$. Let $x = g^k$ for some integer $k$. Then the order of $x$ is $\frac{n}{\gcd(k,n)}$.
+    Let $\Cn{n}$ have generator $g$. Let $x = g^k$ for some integer $k$. Then
+    \[
+        |x| = \frac{n}{\gcd(k,n)}.
+    \]
 \end{theorem}
 \begin{proof}
     For brevity let $m = |x|$ and suppose $k = \lambda \gcd(k, n)$ for some positive integer $\lambda$.
@@ -70,6 +71,9 @@ We are now ready to prove an essential theorem on cyclic groups.
     \]
 \end{proof}
 
+\begin{exercise}
+    The number 12 is equivalent to 0 in the group $\Z_n$. What are the possible value(s) of $n$?
+\end{exercise}
 \begin{exercise}
     In the group $\Z_{210}$, find the order of 10, 42, 75, and 140.
 \end{exercise}
@@ -117,9 +121,6 @@ With these subgroups, we can write a presentation for $\mathrm{Q}$.
 \begin{proposition}
     $\mathrm{Q} = \langle i, j \rangle$.
 \end{proposition}
-
-\newpage
-
 \begin{proof}
     For brevity let $G = \langle i, j \rangle$. We note that $i^0 = 1$, $i^4 = j^4 = 1$ and $ji = -k = -ij = i^3j$. Hence,
     \begin{align*}
@@ -247,8 +248,6 @@ Counting the number of inversions in a permutation may be hard to do, so we have
     \end{itemize}
     This proves the claim.
 \end{proof}
-
-\newpage
 
 We look at one final useful construct: the sign of a permutation.
 \begin{definition}

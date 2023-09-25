@@ -2,7 +2,6 @@
 Earlier in this book, we introduced homomorphisms and isomorphisms, special types of maps that transform elements of one group to another. We look at more properties of such maps in this chapter and describe the uses of these new properties.
 
 \section{Image of a Homomorphism}
-As a homomorphism is a mapping between two groups, it is worthy to look at the \textbf{image} of the homomorphism.
 \begin{definition}
     The \textbf{image}\index{homomorphism!image} (or \textbf{range}\index{homomorphism!range}) of a homomorphism $\phi: G \to H$ is the set
     \[
@@ -35,6 +34,8 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
     Consider the map $\phi: \Z_3 \to \Z_6, n \mapsto 2n$. Determine whether $\phi$ is a homomorphism and, if so, find its image.
 \end{exercise}
 
+\newpage
+
 \section{Kernel of a Homomorphism}
 \begin{definition}
     The \textbf{kernel}\index{homomorphism!kernel} of a homomorphism $\phi: G \to H$ is the set of elements in the group $G$ which map to the identity in the group $H$. That is, if the identity of $H$ is $e_H$, then the kernel of $\phi$ is the set
@@ -42,7 +43,6 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
         \ker\phi = \{x \in G \vert \phi(x) = e_H\}.
     \]
 \end{definition}
-
 
 \begin{remark}
     Some authors (e.g. {\cite[Definition 4.2.0]{libretexts_im-and-ker}}) will use the notation $\phi^{-1}(e_H)$ for the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. by {\cite[Definition I.2.2]{hungerford_1980}} and \cite[\S 65]{clark_1984}).
@@ -68,10 +68,10 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
     \end{align*}
     which means that $xy^{-1}\in\ker\phi$. By subgroup test, $\ker\phi\leq G$.
 
-    Now we prove normality. Let $x \in G$ and $n \in \ker\phi$. We need to show that $xnx^{-1}\in\ker\phi$ to prove normality. Observe that
+    Now we prove normality. Let $x \in G$ and $n \in \ker\phi$. Observe that
     \begin{align*}
         \phi(xnx^{-1}) &= \phi(x)\phi(n)\phi(x^{-1})\\
-        &= \phi(x)e_H\phi(x)^{-1} & (n \in \ker\phi)\\
+        &= \phi(x)e_H\phi(x)^{-1} & (\text{since } n \in \ker\phi)\\
         &= \phi(x)\phi(x)^{-1}\\
         &= e_H,
     \end{align*}
@@ -82,8 +82,11 @@ As a homomorphism is a mapping between two groups, it is worthy to look at the \
     Prove that a homomorphism $\phi:G\to H$ is injective if and only if $\ker \phi$ is trivial, i.e. $\ker \phi = \{e_G\}$.
 \end{exercise}
 
+\newpage
+
 \section{The Fundamental Homomorphism Theorem}
-We are now ready to tackle the three most important theorems regarding homomorphisms. We first state the \textbf{Fundamental Homomorphism Theorem}, which is also sometimes called the \textbf{First Isomorphism Theorem} (e.g. in {\cite[p.~251, Theorem 3]{cohn_1982}}).
+We are now ready to tackle important theorems regarding homomorphisms. We first state the \textbf{Fundamental Homomorphism Theorem}, which is also sometimes called the \textbf{First Isomorphism Theorem} (e.g. in {\cite[p.~251, Theorem 3]{cohn_1982}}).
+
 \begin{theorem}[Fundamental Homomorphism Theorem]\label{thrm-isomorphism-1}\index{Fundamental Homomorphism Theorem}\index{Isomorphism Theorem!First}
     Let $G$ and $H$ be groups. Let $\phi: G \to H$ be a homomorphism, and let $\pi: G \to G/\ker\phi$ where $g\mapsto g\ker\phi$ be the natural surjective homomorphism. Then there exists a unique isomorphism $\psi: G/\ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
 \end{theorem}
@@ -185,6 +188,7 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
 
 \section{The Diamond Isomorphism Theorem}
 We now look at the next theorem, called the \textbf{Diamond Isomorphism Theorem} (e.g. in {\cite[Theorem 3.18]{dummit_foote_2004}}) or the \textbf{Second Isomorphism Theorem} (e.g. in {\cite[\S 69]{clark_1984}}).
+
 \begin{theorem}[Diamond Isomorphism Theorem]\label{thrm-isomorphism-2}\index{Diamond Isomorphism Theorem}\index{Isomorphism Theorem!Second}
     Let $G$ be a group and let $H$ and $K$ be subgroups of $G$. Then
     \begin{enumerate}
@@ -280,7 +284,6 @@ We only show subgroups that we care about in the diagram. The group $G$ has a (d
     which means that $HK \unlhd G$.
 \end{proof}
 
-We look at two examples using the Diamond Isomorphism Theorem.
 \begin{example}
     We say a group $G$ is \textbf{metabelian}\index{metabelian} if and only if there exists $A \unlhd G$ such that $A$ and $G/A$ are both abelian. We will prove that any subgroup of a metabelian group is also metabelian.
 
