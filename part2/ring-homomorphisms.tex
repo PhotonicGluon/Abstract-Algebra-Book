@@ -69,6 +69,9 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
     \]
     Is $\phi$ a ring homomorphism?
 \end{exercise}
+\begin{exercise}
+    Let $R$ and $S$ be rings with additive identities $0_R$ and $0_S$ respectively. Show that the \textbf{trivial homomorphism}\index{trivial homomorphism} $\phi: R \to S, r \mapsto 0_S$ is, indeed, a ring homomorphism.
+\end{exercise}
 
 An endomorphism is a specific type of homomorphism.
 \begin{definition}
@@ -100,11 +103,7 @@ An endomorphism is a specific type of homomorphism.
 \end{example}
 
 \begin{exercise}
-    Let $R$ be a ring and $\phi: R \to R$ is a map. Show that $\phi$ is a ring endomorphisms in the following cases.
-    \begin{partquestions}{\alph*}
-        \item $\phi(r) = 0$ (the \textbf{trivial homomorphism}\index{trivial homomorphism})
-        \item $\phi(r) = r$ (the \textbf{identity homomorphism}\index{identity homomorphism})
-    \end{partquestions}
+    Let $R$ be a ring. Show that the \textbf{identity homomorphism}\index{identity homomorphism} $\id: R \to R, r \mapsto r$ is a ring endomorphism.
 \end{exercise}
 
 Similar to group isomorphisms, rings too have an analogous `isomorphism' definition.
@@ -173,23 +172,35 @@ Similar to groups, if two rings $R$ and $R'$ are isomorphic, then we write $R \c
 \end{exercise}
 
 \section{Properties of Ring Homomorphisms}
-For the following, let $R_1$ and $R_2$ be rings, and $\phi: R_1 \to R_2$ be a ring homomorphism.
+For the following, let $R_1$ and $R_2$ be rings with additive identities $0_1$ and $0_2$ respectively. Also let $\phi: R_1 \to R_2$ be a ring homomorphism.
 
-\begin{exercise}\label{exercise-image-of-additive-identity-is-additive-identity}
-    Show $\phi(0_1) = 0_2$, where $0_1$ is the additive identity of $R_1$ and $0_2$ is the additive identity of $R_2$.
-\end{exercise}
+\begin{proposition}\label{prop-ring-image-of-additive-identity-is-additive-identity}
+    $\phi(0_1) = 0_2$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-ring-image-of-identity-is-identity} (later).
+\end{proof}
 
-\begin{exercise}
-    Suppose $R_1$ and $R_2$ are division rings. Show $\phi(1_1) = 1_2$, where $1_1$ is the multiplicative identity of $R_1$ and $1_2$ is the multiplicative identity of $R_2$.
-\end{exercise}
+\begin{proposition}
+    If $R_1$ and $R_2$ are division rings, then $\phi(1_1) = 1_2$ where $1_1$ and $1_2$ are the multiplicative identities of $R_1$ and $R_2$ respectively.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-ring-image-of-identity-is-identity} (later).
+\end{proof}
 
-\begin{exercise}
-    Let $x \in R_1$.
-    \begin{partquestions}{\alph*}
-        \item Show that $\phi(-x) = -\phi(x)$.
-        \item If $R_1$ and $R_2$ are division rings, show that $\phi(x^{-1}) = (\phi(x))^{-1}$.
-    \end{partquestions}
-\end{exercise}
+\begin{proposition}
+    $\phi(-x) = -\phi(x)$ for all $x \in R_1$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-ring-image-of-inverse-is-inverse} (later).
+\end{proof}
+
+\begin{proposition}
+    If $R_1$ and $R_2$ are division rings, then $\phi(x^{-1}) = (\phi(x))^{-1}$ for all $x \in R_1$. 
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-ring-image-of-inverse-is-inverse} (later).
+\end{proof}
 
 \begin{proposition}\label{prop-homomorphism-on-subring-is-subring}
     If $S$ is a subring of $R_1$, then
@@ -259,13 +270,37 @@ For the following, let $R_1$ and $R_2$ be rings, and $\phi: R_1 \to R_2$ be a ri
     Therefore, by the test for ideal, is an ideal of $R_1$.
 \end{proof}
 
+\begin{exercise}\label{exercise-ring-image-of-identity-is-identity}
+    Let $R_1$ and $R_2$ be rings, and $\phi: R_1 \to R_2$ be a ring homomorphism.
+    \begin{partquestions}{\alph*}
+        \item Show $\phi(0_1) = 0_2$, where $0_1$ and $0_2$ is the additive identity of $R_1$ and $R_2$ respectively.
+        \item If $R_1$ and $R_2$ are division rings, then show $\phi(1_1) = 1_2$, where $1_1$ and $1_2$ is the multiplicative identity of $R_1$ and $R_2$ respectively.
+    \end{partquestions}
+\end{exercise}
+
+\begin{exercise}\label{exercise-ring-image-of-inverse-is-inverse}
+    Let $R_1$ and $R_2$ be rings, $x \in R_1$, and $\phi: R_1 \to R_2$ be a ring homomorphism.
+    \begin{partquestions}{\alph*}
+        \item Show that $\phi(-x) = -\phi(x)$.
+        \item If $R_1$ and $R_2$ are division rings, show that $\phi(x^{-1}) = (\phi(x))^{-1}$.
+    \end{partquestions}
+\end{exercise}
+
+\newpage
+
 \section{Image and Kernel}
 Similar to groups, ring homomorphisms too have a image and kernel.
 \begin{definition}
-    The \textbf{image}\index{image} of a ring homomorphism $\phi: R_1 \to R_2$ is $\im\phi = \{\phi(r) \vert r \in R_1\}$.
+    The \textbf{image}\index{image} of a ring homomorphism $\phi: R_1 \to R_2$ is
+    \[
+        \im\phi = \{\phi(r) \vert r \in R_1\}.
+    \]
 \end{definition}
 \begin{definition}
-    The \textbf{kernel}\index{kernel} of a ring homomorphism $\phi:R_1 \to R_2$ is $\ker\phi = \{r \in R_1 \vert \phi(r) = 0\}$.
+    The \textbf{kernel}\index{kernel} of a ring homomorphism $\phi:R_1 \to R_2$ is
+    \[
+        \ker\phi = \{r \in R_1 \vert \phi(r) = 0\}.
+    \]
 \end{definition}
 
 \begin{example}\label{example-homomorphism-on-upper-triangle-matrices}
@@ -299,18 +334,19 @@ We look at some results regarding the image and kernel of a ring homomorphism. T
 \begin{proof}
     See \myref{exercise-kernel-is-an-ideal} (later).
 \end{proof}
-\begin{exercise}\label{exercise-kernel-is-an-ideal}
-    Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Prove that $\ker\phi$ is an ideal of $R_1$.
-\end{exercise}
 
 \begin{proposition}
     Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Then $\phi$ is injective if and only if $\ker\phi = \{0_1\}$.
 \end{proposition}
 \begin{proof}
-    We first prove the forward direction; suppose $\phi$ is injective and let $a \in \ker\phi$. By definition of the kernel we have $\phi(a) = 0_2$. But by \myref{exercise-image-of-additive-identity-is-additive-identity}, we have $\phi(0_1) = 0_2$. Since $\phi$ is injective, therefore $a = 0_1$, meaning $\ker\phi = \{0_1\}$.
+    We first prove the forward direction; suppose $\phi$ is injective and let $a \in \ker\phi$. By definition of the kernel we have $\phi(a) = 0_2$. But by \myref{prop-ring-image-of-additive-identity-is-additive-identity}, we have $\phi(0_1) = 0_2$. Since $\phi$ is injective, therefore $a = 0_1$, meaning $\ker\phi = \{0_1\}$.
 
     We now prove the reverse direction; suppose $\ker\phi = \{0_1\}$. Now let $a,b \in R_1$ such that $\phi(a) = \phi(b)$. Therefore $\phi(a) - \phi(b) = \phi(a-b) = 0_2$. Therefore $a-b \in \ker\phi$ by definition of the kernel. However $\ker\phi = \{0_1\}$ which means that $a - b = 0_1$. Therefore $a = b$, meaning $\phi$ is injective.
 \end{proof}
+
+\begin{exercise}\label{exercise-kernel-is-an-ideal}
+    Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Prove that $\ker\phi$ is an ideal of $R_1$.
+\end{exercise}
 
 \section{The Ring Isomorphism Theorems}
 Similar to group theory, there are three main ring isomorphism theorems. However, we will only explicitly prove the first ring isomorphism theorem; the other two will be left as problems.
@@ -407,7 +443,10 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
     \[
         \left\{\begin{pmatrix}0&n\\0&0\end{pmatrix} \vert n \in \Z\right\}
     \]
-    which, for brevity, we shall denote by $I$. Thus we see via the FRIT (\myref{thrm-ring-isomorphism-1}) that $R/I \cong \Z^2$.
+    which, for brevity, we shall denote by $I$. Thus we see via the FRIT (\myref{thrm-ring-isomorphism-1}) that
+    \[
+        R/I \cong \Z^2.
+    \]
 \end{example}
 \begin{exercise}
     Show that $\Z_n \cong \Z/n\Z$ via the ring homomorphism
@@ -416,6 +455,8 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
     \]
     and by using the FRIT.
 \end{exercise}
+
+\newpage
 
 We briefly mention the other two main ring isomorphism theorems, although the proof of them will be left as problems. They are much less used than the FRIT, so we make only a passing mention of them.
 \begin{theorem}[Second Ring Isomorphism Theorem]\label{thrm-ring-isomorphism-2}\index{ring isomorphism theorem!second}
@@ -461,7 +502,7 @@ Although ring homomorphisms appear to be quite general, we explore how restricte
 
     Now consider the case that $a = 1$. We claim that $\phi(n) = n$ for all $n \in \Z$.
 
-    We leave the proof that $\phi(n) = n$ for all \textit{positive} integers $n$ for \myref{exercise-homomorphism-maps-n-to-n-if-n-is-positive} (later). Furthermore $\phi(0) = 0$ by the properties of ring homomorphism (specifically \myref{exercise-image-of-additive-identity-is-additive-identity}). Finally, note that for any non-negative integer $n$,
+    We leave the proof that $\phi(n) = n$ for all \textit{positive} integers $n$ for \myref{exercise-homomorphism-maps-n-to-n-if-n-is-positive} (later). Furthermore $\phi(0) = 0$ by the properties of ring homomorphism (specifically \myref{prop-ring-image-of-additive-identity-is-additive-identity}). Finally, note that for any non-negative integer $n$,
     \begin{align*}
         0 = \phi(0) &= \phi(n - n)\\
         &= \phi(n) + \phi(-n)\\
@@ -605,6 +646,8 @@ In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents
         \item Prove $S/(S\cap I)\cong (S+I)/I$.
     \end{partquestions}
 \end{problem}
+
+\newpage
 
 \begin{problem}\label{problem-ring-isomorphism-3}
     Let $R$ be a ring with ideals $I$ and $J$ such that $I$ is a subset of $J$.
