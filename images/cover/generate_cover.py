@@ -5,18 +5,34 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # CONSTANTS
-WIDTH = 1760
-HEIGHT = 2500
-ASPECT_RATIO = HEIGHT / WIDTH
+SCALE_FACTOR = 10
+NUM_PAGES = 700  # Todo: check and update
+
+COVER_WIDTH = 174.62 * SCALE_FACTOR  # In mm
+COVER_HEIGHT = 247.65 * SCALE_FACTOR
+COVER_ASPECT_RATIO = COVER_HEIGHT / COVER_WIDTH
+OUTER_MARGIN_AND_BLEED = (3.17 + 3.17) * SCALE_FACTOR
+SPINE_WIDTH = 0.0572 * NUM_PAGES * SCALE_FACTOR
+FULL_WIDTH = OUTER_MARGIN_AND_BLEED + COVER_WIDTH + SPINE_WIDTH + COVER_WIDTH + OUTER_MARGIN_AND_BLEED
+FULL_HEIGHT = OUTER_MARGIN_AND_BLEED + COVER_HEIGHT + OUTER_MARGIN_AND_BLEED
 DPI = 100
 
-MIN_X = -1.15
-MAX_X = -MIN_X
+COVER_MIN_X = -1.15
+COVER_MAX_X = 1.15
+COVER_RANGE_X = COVER_MAX_X - COVER_MIN_X
+PIXEL_PER_X = COVER_RANGE_X / COVER_WIDTH
+MIN_X = COVER_MIN_X - (SPINE_WIDTH + COVER_WIDTH + OUTER_MARGIN_AND_BLEED) * PIXEL_PER_X
+MAX_X = COVER_MAX_X + OUTER_MARGIN_AND_BLEED * PIXEL_PER_X
 
-NUM_LINES = 2000
+COVER_MIN_Y = COVER_MIN_X * COVER_ASPECT_RATIO
+COVER_MAX_Y = COVER_MAX_X * COVER_ASPECT_RATIO
+COVER_RANGE_Y = COVER_MAX_Y - COVER_MIN_Y
+PIXEL_PER_Y = COVER_RANGE_Y / COVER_HEIGHT
+MIN_Y = COVER_MIN_Y - OUTER_MARGIN_AND_BLEED * PIXEL_PER_Y
+MAX_Y = COVER_MAX_Y + OUTER_MARGIN_AND_BLEED * PIXEL_PER_Y
+
+NUM_LINES = 2500
 LINES_ALPHA = 0.125
-LINES_SATURATION = 0.75
-LINES_VALUE = 1.
 NUM_CUSPS = 7  # Number of cusps to draw for the epicycloid
 OFFSET = 1.5 * pi / NUM_CUSPS  # Offset for the first plotted point
 # OFFSET = pi / NUM_CUSPS  # Offset for the first plotted point
@@ -40,11 +56,8 @@ COLOURS = [
 
 
 # FUNCTIONS
-def get_colour(i, num_colours=7, saturation=1., value=1.):
+def get_colour(i):
     return COLOURS[i % len(COLOURS)]
-
-    # import colorsys
-    # return colorsys.hsv_to_rgb((i % num_colours) / num_colours, saturation, value)
 
 
 def epicycloid_point(num_cusps, theta, offset=pi / 7):
@@ -56,8 +69,7 @@ def epicycloid_point(num_cusps, theta, offset=pi / 7):
     return x, y
 
 
-def draw_epicycloid(num_cusps, num_colours=7, saturation=0.5, value=1., offset=pi / 7, alpha=0.1, n=200,
-                    tolerance=1e-8):
+def draw_epicycloid(num_cusps, offset=pi / 7, alpha=0.1, n=200, tolerance=1e-8):
     # Generate the thetas to sample the points at
     thetas = linspace(0, 2 * pi, n)
 
@@ -76,7 +88,7 @@ def draw_epicycloid(num_cusps, num_colours=7, saturation=0.5, value=1., offset=p
         # Draw a line connecting the two points
         plt.axline(
             (x1, y1), (x2, y2),
-            color=get_colour(i, num_colours=num_colours, saturation=saturation, value=value),
+            color=get_colour(i),
             linestyle="-",
             alpha=alpha
         )
@@ -98,15 +110,14 @@ def draw_inscribed_polygon(num_cusps, offset=pi / 7, line_colour="#ffffff", line
 
 # MAIN CODE
 # Initialize plotting figure
-plt.figure(figsize=(WIDTH / DPI, HEIGHT / DPI), dpi=DPI, facecolor="black")
+plt.figure(figsize=(FULL_WIDTH / DPI, FULL_HEIGHT / DPI), dpi=DPI, facecolor="black")
 plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
 plt.xlim(MIN_X, MAX_X)
-plt.ylim(ASPECT_RATIO * MIN_X, ASPECT_RATIO * MAX_X)
+plt.ylim(MIN_Y, MAX_Y)
 plt.axis("off")
 
 # Draw things
-draw_epicycloid(NUM_CUSPS, saturation=LINES_SATURATION, value=LINES_VALUE, offset=OFFSET, alpha=LINES_ALPHA,
-                n=NUM_LINES)
+draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
 draw_inscribed_polygon(NUM_CUSPS, offset=OFFSET, line_colour=POLYGON_LINE_COLOUR, line_alpha=POLYGON_LINE_ALPHA,
                        line_thickness=POLYGON_LINE_THICKNESS, fill_colour=POLYGON_FILL_COLOUR,
                        fill_alpha=POLYGON_FILL_ALPHA)
