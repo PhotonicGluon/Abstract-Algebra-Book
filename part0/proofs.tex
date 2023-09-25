@@ -37,9 +37,6 @@ There are a few operations\index{logical operation} that may be carried out on s
     \item \textbf{Logical NOT}\index{logical operation!NOT}/\textbf{Negation}\index{logical operation!negation} ($\lnot$): The statement $\lnot P$ is read as ``not $P$''.
     \item \textbf{Logical AND}\index{logical operation!AND}/\textbf{Conjunction}\index{logical operation!conjunction} ($\land$): The statement $P\land Q$ is read as ``$P$ and $Q$''.
     \item \textbf{Logical OR}\index{logical operation!OR}/\textbf{Disjunction}\index{logical operation!disjunction} ($\lor$): The statement $P\lor Q$ is read as ``$P$ or $Q$''.
-    
-    \newpage
-
     \item \textbf{Conditional}\index{logical operation!conditional}/\textbf{Implication}\index{logical operation!implication} ($\implies$): The statement $P \implies Q$ can be read many different ways. We list a few:
     \begin{itemize}
         \item $P$ implies $Q$;
@@ -88,8 +85,6 @@ The truth table for the logical OR operator is:
     \end{tabular}
 \end{table}
 
-\newpage
-
 The truth table for the logical NOT operator is:
 \begin{table}[h]
     \centering
@@ -129,8 +124,6 @@ In summary, the truth table for the conditional is:
     Let $P$ and $Q$ be statements. Draw the truth table for $P \land (\lnot Q)$.
 \end{exercise}
 
-\newpage
-
 We now introduce the idea of the \textbf{biconditional}\index{logical operation!biconditional}.
 \begin{definition}
     Let $P$ and $Q$ be mathematical statements. If both $(P \implies Q)$ and $(Q \implies P)$ are true, then we write $(P \iff Q)$. In other words, $(P \iff Q) \equiv ((P \implies Q) \land (Q \implies P))$.
@@ -138,11 +131,13 @@ We now introduce the idea of the \textbf{biconditional}\index{logical operation!
 \begin{remark}
     The statement $(P \iff Q)$ can be written in several ways in English:
     \begin{itemize}
-        \item $P$ if and only if $Q$;
+        \item $P$ if and only if (iff) $Q$;
         \item $P$ is a necessary and sufficient condition for $Q$; or
         \item $P$ is equivalent to $Q$.
     \end{itemize}
 \end{remark}
+
+\newpage
 
 The truth table for the biconditional is:
 \begin{table}[h]
@@ -158,7 +153,7 @@ The truth table for the biconditional is:
 \end{table}
 
 \begin{exercise}
-    Suppose $n$ is an integer. Let $P$ be the statement ``$n$ is a multiple of 5'' and $Q$ be the statement ``the last digit of $n$ is 0 or 5''. Let the statement $R = (P \iff Q)$.
+    Let $n$ be an integer. Let $P$ be the statement ``$n$ is a multiple of 5'' and $Q$ be the statement ``the last digit of $n$ is 0 or 5''. Let the statement $R = (P \iff Q)$.
     \begin{partquestions}{\roman*}
         \item Write the statement $R$ in English.
         \item Is the statement $R$ true? Justify your answer.
@@ -172,8 +167,6 @@ We end this section by noting the order of operations of the logical operators.
     \item $\implies$ and $\iff$ are performed last, and are coequal in their order of operation.
 \end{itemize}
 To disambiguate the order of operations, we use parentheses (i.e., brackets).
-
-\newpage
 
 \section{Logical Equivalence and Properties of Logical Operators}
 \begin{definition}
@@ -224,8 +217,6 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
     by drawing a truth table.
 \end{exercise}
 
-\newpage
-
 We note some important properties of logical operators.
 \begin{itemize}
     \item \textbf{Contrapositive}\index{contrapositive}: $(P \implies Q) \equiv ((\lnot Q) \implies (\lnot P))$
@@ -246,9 +237,6 @@ We note some important properties of logical operators.
         \item $P \lor (Q \land R) \equiv (P \lor Q) \land (P \lor R)$
     \end{itemize}
 \end{itemize}
-\begin{remark}
-    The most important one of these properties would arguably be the contrapositive. We will use this result several times later and in later chapters.
-\end{remark}
 \begin{exercise}
     Simplify the statement
     \[
@@ -298,6 +286,8 @@ There are other ways to convert predicates into statements. One way is to use qu
 \begin{remark}
     We usually shorten the ``such that'' as ``s.t.'', so the above statement is written symbolically as ``$\exists S \subseteq \mathbb{Z} \text{ s.t. } |S| = 10$''.
 \end{remark}
+
+\newpage
 
 We can also combine quantifiers and logical operators together.
 \begin{example}
@@ -682,8 +672,6 @@ Strong mathematical induction involves two steps:
     Let the function $f: \mathbb{N} \to \mathbb{Z}$ be defined such that $f(1) = 0$, $f(2) = 1$, and $f(n+2) = 3f(n+1) - 2f(n) + 1$ for all positive integers $n$. Prove that $f(n) = 2^n - n - 1$ for all positive integers $n$.
 \end{exercise}
 
-\newpage
-
 \section{Proving Non-Conditional Statements}
 \subsection{Biconditional Statements}\index{proof!biconditional}
 Recall that a biconditional statement is a statement like ``$P \iff Q$'', i.e., ``$P$ if and only if $Q$''. We prove such a statement by proving that $P \implies Q$ (which we call the `forward direction') and $Q \implies P$ (which we call the `reverse direction'). Each of these statements may be proved using any of the proof techniques that we covered.
@@ -716,12 +704,12 @@ Some statements only assert the existence of something. These are called \textbf
     The statement ``there exists an even prime number'' is readily proven by noticing that 2 is an even prime number.
 \end{example}
 
-\newpage
-
 \begin{example}
     The statement ``an integer that can be expressed as the sum of two perfect cubes in two different ways exists'' is proven by giving the example 1729, since $1729 = 1^3 + 12^3 = 9^3 + 10^3$.
 \end{example}
+
 Note that while an example suffices to prove an existence statement, a single example does not prove a conditional statement.
+
 \begin{exercise}
     Prove that there is a positive integer that is one less than a perfect cube and two less than a perfect square.
 \end{exercise}
@@ -736,11 +724,14 @@ We have only seen constructive proofs so far, so let's look at an example of a n
 \begin{example}
     We prove the classic statement that ``there exist irrational numbers $x$ and $y$ such that $x^y$ is rational'' using a non-constructive proof.
     \begin{proof}
-        Let $x = \sqrt2^{\sqrt2}$ and $y = \sqrt2$. We know that $\sqrt2$ is irrational from \myref{example-sqrt2-is-irrational}. Now consider two cases.
+        We know that $\sqrt2$ is irrational from \myref{example-sqrt2-is-irrational}. Consider the number $\sqrt2^{\sqrt2}$. There are two possibilities for the rationality of this number.
         \begin{itemize}
-            \item If $x$ is rational, then we have found two irrational numbers (in particular, $x = \sqrt 2$ and $y = \sqrt 2$) such that their exponentiation (i.e.,  $x = \sqrt2^{\sqrt2}$) is rational.
-            \item If $x$ is irrational, then \[x^y = \left(\sqrt2^{\sqrt2}\right)^{\sqrt2} = (\sqrt2)^{\sqrt2 \times \sqrt2} = (\sqrt2)^2 = 2\]
-            is rational.
+            \item If $\sqrt2^{\sqrt2}$ is rational, then set $x = y = \sqrt2$. We have found two irrational numbers such that their exponentiation (i.e.,  $x = \sqrt2^{\sqrt2}$) is rational.
+            \item If instead $\sqrt2^{\sqrt2}$ is irrational, set $x = \sqrt2^{\sqrt2}$ and $y = \sqrt2$. Observe that
+            \[
+                x^y = \left(\sqrt2^{\sqrt2}\right)^{\sqrt2} = (\sqrt2)^{\sqrt2 \times \sqrt2} = (\sqrt2)^2 = 2
+            \]
+            is a rational number. So we again found two irrational numbers such that their exponentiation is rational.
         \end{itemize}
         Hence, in both cases, we have an irrational number to an irrational power that results in a rational number.
     \end{proof}
