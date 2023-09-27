@@ -1,2 +1,153 @@
 \section{Algebra}
-No problems.
+\begin{questions}
+    \item Without commutativity, we cannot use the binomial theorem (\myref{thrm-binomial}). We just have to expand it slowly.
+    \begin{align*}
+        (x+y)^3 &= (x+y)(x+y)(x+y)\\
+        &= xxx + xxy + xyx + xyy + yxx + yxy + yyx + yyy\\
+        &= x^3 + x^2y + xyx + xy^2 + yx^2 + yxy + y^2x + y^3.
+    \end{align*}
+
+    \item First we rewrite the equation to become $x^6 - 6x^5 + 6x^4 + 16x^3 - 12x^2 - 24x + 19 = 0$. Now we try to rewrite it using the given substitution.
+    \begin{align*}
+        &x^6 - 6x^5 + 6x^4 + 16x^3 - 12x^2 - 24x + 19\\
+        &=x^4(x^2-2x-2) - 4x^3(x^2-2x-2) + 0x^2(x^2-2x-2) + 8x(x^2-2x-2)\\
+        &\quad\quad+ 4(x^2-2x-2) + 27\\
+        &= (x^4-4x^3+8x+4)(x^2-2x-2) + 27\\
+        &= (x^2(x^2-2x-2) - 2x(x^2-2x-2) - 2(x^2-2x-2))(x^2-2x-2) + 27\\
+        &= ((x^2-2x-2)(x^2-2x-2))(x^2-2x-2)+27\\
+        &= (x^2-2x-2)^3 + 27\\
+        &= u^3 + 3^3\\
+        &= 0.
+    \end{align*}
+    Note $u^3 + 3^3 = (u+3)(u^2 - 3u + 9)$, so $u+3 = 0$ or $u^2 - 3u + 9 = 0$. One sees that the quadratic equation has no real solutions; so $u = -3$. Therefore $x^2 - 2x - 2 = -3$, meaning $x^2-2x+1 = 0$, Thus $x = 1$.
+
+    \item \begin{partquestions}{\roman*}
+        \item $(x-2)(x^2-3x+1) = (x^3 - 3x^2 + x) - 2x^2 + 6x - 2 = x^3 - 5x^2 + 7x - 2$
+        \item Note $(x-2)(x^2-18) = x^3 - 2x^2 - 18x + 36$. Subtracting both sides by 3 we see
+        \begin{align*}
+            &\frac{4x^3 - 11x^2 - 47x + 106}{(x-2)(x^2-18)} - 3\\
+            &= \frac{4x^3 - 11x^2 - 47x + 106 - 3(x^3 - 2x^2 - 18x + 36)}{(x-2)(x^2-18)}\\
+            &= \frac{x^3 - 5x^2 + 7x - 2}{(x-2)(x^2-18)}\\
+            &= \frac{(x-2)(x^2-3x+1)}{(x-2)(x^2-18)}\\
+            &= \frac{(x-2)\left(x - \frac{3+\sqrt5}{2}\right)\left(x - \frac{3-\sqrt5}{2}\right)}{(x-2)(x-3\sqrt2)(x+3\sqrt2)}\\
+            &\geq 0.
+        \end{align*}
+        Therefore $x < -3\sqrt2$ or $\frac{3-\sqrt5}{2} \leq x \leq \frac{3+\sqrt5}{2}$ with $x \neq 2$ or $x > 3\sqrt2$. Hence, when restricting to $x \in [0, 3]$, we see $\frac{3-\sqrt5}{2} \leq x \leq \frac{3+\sqrt5}{2}$ with $x \neq 2$.
+    \end{partquestions}
+
+    \item For easier computation later, let $u = |x-3|$. Note that
+    \[
+        x^2 - 6x + 5 = (x-3)^2 - 4 = |x-3|^2 - 4 = u^2 - 4
+    \]
+    so the original inequality becomes
+    \[
+        \frac{3u}{u^2 - 4} > 1.
+    \]
+    Thus
+    \begin{align*}
+        \frac{3u}{u^2-4} - \frac{u^2 - 4}{u^2 - 4} &= \frac{-u^2 + 3u + 4}{u^2-4}\\
+        &= \frac{-(u+1)(u-4)}{(u+2)(u-2)}\\
+        &> 0.
+    \end{align*}
+    Note $u \geq 0$, so $u+1 > 0$ and $u+2 > 0$. So $\frac{u+1}{u+2} > 0$, meaning that we are only concerned with $\frac{-(u-4)}{u-2} > 0$, i.e. $\frac{u-4}{u-2} < 0$. Therefore $2 < u < 4$, meaning $2 < |x - 3| < 4$.
+
+    Note $2 < |x - 3| < 4$ means $(|x-3| > 2) \land (|x-3| < 4)$. We split the inequality into two parts.
+    \begin{itemize}
+        \item First we solve $|x-3| > 2$. This means that $x - 3 > 2$ or $x - 3 < -2$, so $x > 5$ or $x < 1$, i.e. $x \in (5, \infty) \cup (-\infty, 1)$
+        \item Now we solve $|x - 3| < 4$. Thus $-4 < x-3 < 4$, meaning $-1 < x < 7$, i.e. $x \in (-1, 7)$
+    \end{itemize}
+    Thus the solution we are seeking is the intersection of the two intervals,
+    \[
+        x \in ((5, \infty) \cup (-\infty, 1)) \cap (-1, 7)
+    \]
+    which therefore means $x \in (-1, 1) \cup (5, 7)$, i.e. $-1 < x < 1$ or $5 < x < 7$.
+
+    \item \begin{partquestions}{\roman*}
+        \item Setting $\frac{7x+4}{x^3+3x^2+2x} = \frac{A}{x} + \frac{B}{x+1} + \frac{C}{x+2}$ and multiplying both sides by $x^3+3x^2+2x = x(x+1)(x+2)$ we see that $7x+4 = A(x+1)(x+2) + Bx(x+2) + Cx(x+1)$.
+        \begin{itemize}
+            \item Setting $x = 0$ we see that $4 = A(0+1)(0+2) = 2A$, meaning $A = 2$.
+            \item Setting $x = -1$ we see $7(-1) + 4 = B(-1)(-1+2)$, i.e. $-3 = -B$, meaning $B = 3$.
+            \item Setting $x = -2$ we see $7(-2) + 4 = C(-2)(-2+1)$, i.e. $-10 = 2C$, meaning $C = -5$.
+        \end{itemize}
+        Therefore $\frac{7x+4}{x^3+3x^2+2x} = \frac{2}{x} + \frac{3}{x+1} - \frac{5}{x+2}$.
+
+        \item Note that
+        \begin{align*}
+            \sum_{r=1}^N \frac{7r+4}{r^3+3r^2+2r} &= \sum_{r=1}^N \left(\frac{2}{r} + \frac{3}{r+1} - \frac{5}{r+2}\right)\\
+            &= \frac21 + \frac32 - \frac53\\
+            &+ \frac22 + \frac33 - \frac54\\
+            &+ \frac23 + \frac34 - \frac55\\
+            &+ \frac24 + \frac35 - \frac56\\
+            &\cdots\\
+            &+ \frac2{N-3} + \frac{3}{N-2} - \frac{5}{N-1}\\
+            &+ \frac2{N-2} + \frac{3}{N-1} - \frac{5}{N}\\
+            &+ \frac2{N-1} + \frac{3}{N} - \frac{5}{N+1}\\
+            &+ \frac2{N} + \frac{3}{N+1} - \frac{5}{N+2}\\
+            &= \frac21 + \frac32 + \frac22 - \frac{5}{N+1} + \frac{3}{N+1} - \frac{5}{N+2}\\
+            &= \frac92 - \frac{2}{N+1} - \frac{5}{N+2}\\
+            &= \frac92 - \frac{7N+9}{N^2+3N+2}
+        \end{align*}
+        so we see
+        \begin{align*}
+            \frac{7N+9}{N^2+3N+2} + \sum_{r=1}^N \frac{7r+4}{r^3+3r^2+2r} &= \frac{7N+9}{N^2+3N+2} + \left(\frac92 - \frac{7N+9}{N^2+3N+2}\right)\\
+            &= \frac92.
+        \end{align*}
+    \end{partquestions}
+
+    \item We consider a proof by induction. We induct on $n$.
+    
+    When $n = 0$, it is clearly true that $0 \times 0! = 0 = (0+1)! - 1$. Thus the statement holds for $n = 0$.
+
+    Now assume that the statement holds for some non-negative integer $k$, meaning
+    \[
+        \sum_{r=0}^k (r\times r!) = (k+1)! - 1.
+    \]
+    We are to show that it holds for $k+1$, i.e.
+    \[
+        \sum_{r=0}^{k+1} (r\times r!) = (k+2)! - 1.
+    \]
+
+    We see that
+    \begin{align*}
+        \sum_{r=0}^{k+1} (r\times r!) &= \left(\sum_{r=0}^k (r\times r!)\right) + ((k+1) \times (k+1)!)\\
+        &= ((k+1)! - 1) + ((k+1) \times (k+1!)) & (\text{by induction hypothesis})\\
+        &= (k+1)! + (k+1) \times (k+1)! - 1\\
+        &= (1 + (k+1))\times(k+1)! - 1\\
+        &= (k+2) \times (k+1)! - 1\\
+        &= (k+2)! - 1
+    \end{align*}
+    proving the statement for $k + 2$.
+
+    By mathematical induction we see
+    \[
+        \sum_{r=0}^n (r\times r!) = (n+1)! - 1
+    \]
+    for all non-negative integers $n$.
+    
+    \item \begin{partquestions}{\roman*}
+        \item We consider three cases.
+        \begin{itemize}
+            \item The first case is when $x$ and $y$ are both non-negative. Then $|x| = x$, $|y| = y$, and $|xy| = xy$. Thus $|xy| = xy = |x||y|$.
+            \item The second case is if $x$ and $y$ are both negative. So $|x| = -x$, $|y| = -y$, and $|xy| = xy$, since the product of two negative real numbers is a positive real number. Therefore $|xy| = xy = (-x)(-y) = |x||y|$.
+            \item The last case is when one of them is non-negative and the other is negative. Without loss of generality, assume $x$ is non-negative and $y$ is negative. Then their product is negative. So $|x| = x$, $|y| = -y$, and $|xy| = -xy$. Hence $|xy| = -xy = (x)(-y) = |x||y|$.
+        \end{itemize}
+        Therefore $|xy| = |x||y|$ for all real numbers $x$ and $y$.
+
+        \item We induct on positive integer values for $n$.
+    
+        When $n = 1$ the statement holds trivially since $|x_1| = |x_1|$.
+    
+        Assume that the statement holds for some positive integer $k$, i.e. $|x_1\cdots x_k| = |x_1|\cdots|x_k|$. We show that the statement holds for $k+1$, i.e. $|x_1\cdots x_kx_{k+1}| = |x_1|\cdots|x_k||x_{k+1}|$
+    
+        Observe
+        \begin{align*}
+            |x_1x_2\cdots x_kx_{k+1}| &= |(x_1x_2\cdots x_k)(x_{k+1})|\\
+            &= |x_1x_2\cdots x_k||x_{k+1}| & (\text{by part (\textbf{i})})\\
+            &= (|x_1||x_2|\cdots|x_k|)|x_{k+1}| & (\text{by induction hypothesis})\\
+            &= |x_1||x_2|\cdots|x_k||x_{k+1}|
+        \end{align*}
+        proving the statement for $k + 1$.
+    
+        Thus, by mathematical induction, $|x_1x_2\cdots x_n| = |x_1||x_2|\cdots|x_n|$ for all real values $x_1, x_2, \dots, x_n$.
+    \end{partquestions}
+\end{questions}
