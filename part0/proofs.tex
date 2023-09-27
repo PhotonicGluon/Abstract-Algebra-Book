@@ -4,15 +4,48 @@ Proofs compel belief. Without proofs, statements are just meaningless words with
 \section{Direct Proof}
 In essence, a direct proof\index{proof!direct} for the statement ``if $P$ then $Q$'' would begin by assuming $P$ is true and showing that this forces $Q$ to be true. We don't need to worry about the case of $P$ being false, since $P \implies Q$ is vacuously true in the case when $P$ is false.
 \begin{example}
-    We prove that ``if $n$ is an odd integer then $n^2$ is odd'' using direct proof.
+    We prove that ``if $n$ is an odd integer then $n^2$ is odd'' using direct proof. We first write out the proof step-by-step.
+    \begin{proof}
+        Suppose $n\in\mathbb{Z}$ is an odd integer.
+        
+        Then $n$ can be written in the form $n = 2k + 1$ where $k$ is an integer.
+        
+        Hence
+        \begin{align*}
+            n^2 &= (2k+1)^2\\
+            &= 4k^2 + 4k + 1\\
+            &= 2(2k^2 + 2k) + 1.
+        \end{align*}
+        
+        We see $n^2$ is one more than a multiple of 2.
+        
+        Thus $n^2 = 2(2k^2 + 2k) + 1$ is odd.
+    \end{proof}
+
+    Of course, proofs are often not written this way; we often make it more succinct and remove unnecessary paragraph breaks. We produce a more `natural' proof below.
     \begin{proof}
         Suppose $n\in\mathbb{Z}$ is an odd integer. Then $n$ can be written in the form $n = 2k + 1$ where $k$ is an integer. Hence
-        \[
-            n^2 = (2k+1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1
-        \]
-        so $n^2$ is one more than a multiple of 2. Thus $n^2 = 2(2k^2 + 2k) + 1$ is odd.
+        \begin{align*}
+            n^2 &= (2k+1)^2\\
+            &= 4k^2 + 4k + 1\\
+            &= 2(2k^2 + 2k) + 1,
+        \end{align*}
+        so $n^2$ is one more than a multiple of 2, meaning $n^2 = 2(2k^2 + 2k) + 1$ is odd.
     \end{proof}
 \end{example}
+\begin{example}
+    Let $x$ and $y$ be positive real numbers. We prove that ``if $x \leq y$ then $\sqrt x \leq \sqrt y$.''
+    \begin{proof}
+        Suppose $x \leq y$. This means $x - y \leq 0$. As $x$ and $y$ are positive real numbers, we may write that inequality as $(\sqrt x)^2 - (\sqrt y)^2 \leq 0$. We can factor the left hand side as $(\sqrt x + \sqrt y)(\sqrt x - \sqrt y) \leq 0$. Now $\sqrt x + \sqrt y$ is always positive, so if the entire inequality is less than or equal to 0 we must have $\sqrt x - \sqrt y \leq 0$. Therefore $\sqrt x \leq \sqrt y$.
+    \end{proof}
+\end{example}
+
+\begin{exercise}
+    Let $x$ be a positive real number. Prove that $x(1-x) > 0$ if $0 < x < 1$.
+\end{exercise}
+
+\section{Proof by Division Into Cases}
+Division into cases can be considered as a variant of direct proof. We split a difficult statement into different cases which are individually easier to prove, and then conjoin them together in order to prove the full statement.
 
 \begin{example}
     We look at a proof of the statement ``$1 + (-1)^n(2n-1)$ is a multiple of 4 if $n$ is an integer''.
@@ -31,6 +64,39 @@ In essence, a direct proof\index{proof!direct} for the statement ``if $P$ then $
             which is a multiple of 4.
         \end{itemize}
         Hence, in both cases, $1 + (-1)^n(2n-1)$ is a multiple of 4.
+    \end{proof}
+\end{example}
+
+\begin{example}
+    We look at a proof of the statement ``if two integers have opposite parity, then their sum is odd''. Note that ``opposite parity'' means that one integer is odd and one integer is even.
+    \begin{proof}
+        Suppose $m$ and $n$ are two integers with opposite parity. We consider two cases.
+        \begin{itemize}
+            \item If $m$ is even and $n$ is odd, then we may write $m = 2a$ and $n = 2b + 1$ where $a$ and $b$ are some integers. Thus
+            \begin{align*}
+                m + n &= (2a) + (2b + 1)\\
+                &= 2(a+b) + 1
+            \end{align*}
+            which is one more than a multiple of 2, so $m + n$ is odd.
+            \item On the other hand, if $m$ is odd and $n$ is even, then we may write $m = 2a + 1$ and $n = 2b$ where $a$ and $b$ are some integers. Thus
+            \begin{align*}
+                m + n &= (2a + 1) + (2b)\\
+                &= 2(a+b) + 1
+            \end{align*}
+            which is one more than a multiple of 2, so $m + n$ is odd.
+        \end{itemize}
+        Hence, in either case, $m + n$ is odd.
+    \end{proof}
+
+    Now, the two cases in the above proof are almost the same, except for whether $m$ or $n$ is the even integer. It is more productive to just do one case and indicate that the other case is nearly (or exactly) identical to the current case. The phrase ``without loss of generality'' (or WLOG for short) is a way to signpost to the reader that the proof is treating only one of several nearly identical cases. We produce a more succinct version of the proof above.
+
+    \begin{proof}[Proof (see {\cite[p.~126]{hammack_2018}})]
+        Suppose $m$ and $n$ are two integers with opposite parity. Without loss of generality, suppose $m$ is even and $n$ is odd. Therefore $m = 2a$ and $n = 2b + 1$ for some integers $a$ and $b$. Hence
+        \begin{align*}
+            m + n &= (2a) + (2b + 1)\\
+            &= 2(a+b) + 1
+        \end{align*}
+        which is one more than a multiple of 2, so $m + n$ is odd.
     \end{proof}
 \end{example}
 
@@ -57,7 +123,7 @@ Generally, we would want to prove in the direction from simplicity to complexity
             &= (4k^2 - 12k + 4) + 1\\
             &= 2(2k^2 - 6k + 2) + 1
         \end{align*}
-        which means that $n^2 - 6n + 5$ is one more than a multiple of 2, which hence means $n^2 - 6n + 5$ is odd.
+        which means $n^2 - 6n + 5$ is odd.
     \end{proof}    
 \end{example}
 
@@ -79,7 +145,7 @@ Generally, we would want to prove in the direction from simplicity to complexity
 \end{example}
 
 \begin{exercise}
-    Suppose that $a$ and $b$ are integers. Prove that either $a$ is even or $b$ is odd if $a(b^2 + 5)$ is even.
+    Suppose that $a$ and $b$ are integers. Prove that if $a(b^2 + 5)$ is even then either $a$ is even or $b$ is odd.
 \end{exercise}
 
 \section{Proof by Contradiction}
@@ -180,9 +246,7 @@ Despite the power of proof by contradiction, it's best to use it only when the d
 \end{example}
 
 \section{Proof by Mathematical Induction}
-Mathematical induction\index{proof!induction} is a method for proving that a predicate $P(n)$ is true for every positive integer $n$, that is, that the infinitely many statements $P(1), P(2), P(3), \dots$ all hold.
-
-A proof by induction consists of two steps.
+Mathematical induction\index{proof!induction} is a method for proving that a predicate $P(n)$ is true for every positive integer $n$, that is, that the infinitely many statements $P(1), P(2), P(3), \dots$ all hold. A proof by induction consists of two steps.
 \begin{itemize}
     \item The first, the \textbf{base case}\index{proof!induction!base case}, proves the statement for $n = 1$ without assuming any knowledge of other cases. In other words, the base case proves the statement $P(1)$. 
     \item The second, the \textbf{induction step}\index{proof!induction!induction step}, proves that if the statement holds for any given case $n = k$, then it must also hold for the next case $n = k + 1$. In other words, $\forall k \in \mathbb{N}, (P(k) \implies P(k+1))$. The assumption that $P(k)$ being true is called the \textbf{induction hypothesis}.
@@ -279,48 +343,69 @@ Strong mathematical induction involves two steps:
     \end{proof}
 \end{example}
 
-\begin{example}\label{example-strong-induction-on-function}
-    Consider the function $f: \left(\mathbb{N}\right)^2\to\mathbb{N}$ where
-    \[
-        f(m, n) =
-        \begin{cases}
-            n & \text{if } m = 1, \\
-            m & \text{if } n = 1, \\
-            f\left(n-1,f(n-1,m-1)\right) & \text{otherwise.}
-        \end{cases}
-    \]
-    We will prove the non-obvious fact that $f(n+1, n) = 2$ for all positive integers $n$.
-    \begin{proof}
-        We show the base cases of 1 and 2 hold:
-        \begin{itemize}
-            \item When $n = 1$, we have $f(2, 1) = 2$, so the first case is true.
-            \item When $n = 2$, we have
-            \[
-                f(3,2) = f(1, f(1, 2)) = f(1, 2) = 2
-            \]
-            so the second case is true.
-        \end{itemize}
+% \begin{example}\label{example-strong-induction-on-function}
+%     Consider the function $f: \left(\mathbb{N}\right)^2\to\mathbb{N}$ where
+%     \[
+%         f(m, n) =
+%         \begin{cases}
+%             n & \text{if } m = 1, \\
+%             m & \text{if } n = 1, \\
+%             f\left(n-1,f(n-1,m-1)\right) & \text{otherwise.}
+%         \end{cases}
+%     \]
+%     We will prove the non-obvious fact that $f(n+1, n) = 2$ for all positive integers $n$.
+%     \begin{proof}
+%         We show the base cases of 1 and 2 hold:
+%         \begin{itemize}
+%             \item When $n = 1$, we have $f(2, 1) = 2$, so the first case is true.
+%             \item When $n = 2$, we have
+%             \[
+%                 f(3,2) = f(1, f(1, 2)) = f(1, 2) = 2
+%             \]
+%             so the second case is true.
+%         \end{itemize}
 
-        Now suppose for some positive integer $k$, every integer $1 \leq m \leq k$ results in the statement being true, i.e. $f(m+1,m) = 2$. We want to show that the case for $k+1$ is true, i.e. $f(k+2, k+1) = 2$.
-        \begin{align*}
-            f(k+2, k+1) &= f(k, f(k, k+1))\\
-            &= f(k, f(k, f(k, k-1)))\\
-            &= f(k, f(k, 2)) & (\text{hypothesis on } k-1)\\
-            &= f(k, f(1, f(1, k-1)))\\
-            &= f(k, f(1, k-1))\\
-            &= f(k, k-1) \\
-            &= 2 & (\text{hypothesis on } k-1)
-        \end{align*}
-        which proves that the statement for $k+1$ holds. Hence by mathematical induction, $f(n+1, n) = 2$.
+%         Now suppose for some positive integer $k$, every integer $1 \leq m \leq k$ results in the statement being true, i.e. $f(m+1,m) = 2$. We want to show that the case for $k+1$ is true, i.e. $f(k+2, k+1) = 2$.
+%         \begin{align*}
+%             f(k+2, k+1) &= f(k, f(k, k+1))\\
+%             &= f(k, f(k, f(k, k-1)))\\
+%             &= f(k, f(k, 2)) & (\text{hypothesis on } k-1)\\
+%             &= f(k, f(1, f(1, k-1)))\\
+%             &= f(k, f(1, k-1))\\
+%             &= f(k, k-1) \\
+%             &= 2 & (\text{hypothesis on } k-1)
+%         \end{align*}
+%         which proves that the statement for $k+1$ holds. Hence by mathematical induction, $f(n+1, n) = 2$.
+%     \end{proof}
+% \end{example}
+
+% \begin{exercise}
+%     Let the function $f: \mathbb{N} \to \mathbb{Z}$ be defined such that $f(1) = 0$, $f(2) = 1$, and $f(n+2) = 3f(n+1) - 2f(n) + 1$ for all positive integers $n$. Prove that $f(n) = 2^n - n - 1$ for all positive integers $n$.
+% \end{exercise}
+
+\begin{example}
+    Suppose we have a candy bar with $n \geq 1$ pieces. We prove that $n - 1$ breaks are required to break it into $n$ individual pieces.
+    \begin{proof}
+        We consider strong induction on $n$.
+
+        When $n = 1$, the candy bar is already in individual pieces. Thus $1 - 1 = 0$ breaks are required.
+
+        Now assume that for some integer $k \geq 1$, every candy bar with $m$ pieces (where $1 \leq m \leq k$) can be broken into individual pieces using $m - 1$ breaks. We are to show that a candy bar with $k + 1$ pieces can be broken into individual pieces using $k$ pieces.
+
+        Consider any possible break in a $(k + 1)$-piece candy bar. This will break the candy bar into two pieces, one with $m$ pieces and one with $(k+1)-m$ pieces. Note $1 \leq m \leq k$ which means $1 \leq (k+1)-m \leq k$, so both pieces are non-empty and not the entire bar.
+        
+        Applying the induction hypothesis on both bars, we see that the $m$-piece bar can be broken into individual pieces using $m-1$ breaks; the $((k+1)-m)$-piece bar can be broke into individual pieces using $((k+1)-m)-1 = k-m$ breaks. Adding the first break needed to separate the candy bar into these two pieces, that means a total of $(m-1) + (k-m) + 1 = k$ breaks are needed, proving the statement for $k+1$.
+
+        Therefore by mathematical induction, $n - 1$ breaks are required to break a candy bar of $n$ pieces into individual pieces.
     \end{proof}
 \end{example}
 
 \begin{exercise}
-    Let the function $f: \mathbb{N} \to \mathbb{Z}$ be defined such that $f(1) = 0$, $f(2) = 1$, and $f(n+2) = 3f(n+1) - 2f(n) + 1$ for all positive integers $n$. Prove that $f(n) = 2^n - n - 1$ for all positive integers $n$.
+    Prove that every integer $n \geq 2$ is either prime or can be expressed as a product of primes.
 \end{exercise}
 
 \section{Proving Non-Conditional Statements}
-\section{Biconditional Statements}\index{proof!biconditional}
+\subsection{Biconditional Statements}\index{proof!biconditional}
 Recall that a biconditional statement is a statement like ``$P \iff Q$'', i.e., ``$P$ if and only if $Q$''. We prove such a statement by proving that $P \implies Q$ (which we call the `forward direction') and $Q \implies P$ (which we call the `reverse direction'). Each of these statements may be proved using any of the proof techniques that we covered.
 
 \begin{example}
@@ -345,7 +430,7 @@ Recall that a biconditional statement is a statement like ``$P \iff Q$'', i.e., 
     Let $n$ be an integer. Prove that $n$ is one more than a multiple of 5 if and only if $n$ is of the form $5k - 4$ where $k$ is an integer.
 \end{exercise}
 
-\section{Existence Statements}
+\subsection{Existence Statements}
 Some statements only assert the existence of something. These are called \textbf{existence statements} and one only has to provide a particular example that shows it is true.\index{proof!existence proof} 
 \begin{example}
     The statement ``there exists an even prime number'' is readily proven by noticing that 2 is an even prime number.
@@ -355,7 +440,7 @@ Some statements only assert the existence of something. These are called \textbf
     The statement ``an integer that can be expressed as the sum of two perfect cubes in two different ways exists'' is proven by giving the example 1729, since $1729 = 1^3 + 12^3 = 9^3 + 10^3$.
 \end{example}
 
-Note that while an example suffices to prove an existence statement, a single example does not prove a conditional statement.
+Note that while an example suffices to prove an existence statement, a single example does not prove a (universal) conditional statement.
 
 \begin{exercise}
     Prove that there is a positive integer that is one less than a perfect cube and two less than a perfect square.
