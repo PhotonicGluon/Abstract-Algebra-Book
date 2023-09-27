@@ -1,2 +1,74 @@
 \section{Mathematical Logic}
-No problems.
+\begin{questions}
+    \item \begin{partquestions}{\alph*}
+        \item Statement.
+        \item Predicate, since it depends on the value of $n$ for the truth or falsity of the expression.
+        \item Statement.
+        \item Predicate. Although it is true for all real $x$, the truth or falsity can only be determined when a value of $x$ is substituted.
+        \item Statement. This is an existential statement.
+        \item Predicate. The truth or falsity can only be determined when a value of $x$ is substituted.
+        \item Statement. This is a universal statement.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\alph*}
+        \item We claim that they are not equivalent.
+        \begin{table}[h]
+            \centering
+            \begin{tabular}{|l|l|l||l|l||l|l|}
+                \hline
+                $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{r}$ & $\boldsymbol{p \implies q}$ & $\boldsymbol{q \implies r}$ & $\boldsymbol{p \implies (q \implies r)}$ & $\boldsymbol{(p \implies q) \implies r}$ \\ \hline
+                F & F & F & T & T & T & F \\ \hline
+                F & F & T & T & T & T & T \\ \hline
+                F & T & F & T & F & T & F \\ \hline
+                F & T & T & T & T & T & T \\ \hline
+                T & F & F & F & T & T & T \\ \hline
+                T & F & T & F & T & T & T \\ \hline
+                T & T & F & T & F & F & F \\ \hline
+                T & T & T & T & T & T & T \\ \hline
+            \end{tabular}
+        \end{table}
+       
+        We can see from the truth table that if $p$ is false, $q$ is true, and $r$ is false, then $p \implies (q \implies r)$ is true while $(p \implies q) \implies r$ is false. Thus $(p \implies (q \implies r)) \not\equiv ((p \implies q) \implies r)$.
+
+        \item We claim that they are equivalent.
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|l|l|l||l|l||l|l|}
+                \hline
+                $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{r}$ & $\boldsymbol{p \iff q}$ & $\boldsymbol{q \iff r}$ & $\boldsymbol{p \iff (q \iff r)}$ & $\boldsymbol{(p \iff q) \iff r}$ \\ \hline
+                F & F & F & T & T & F & F \\ \hline
+                F & F & T & T & F & T & T \\ \hline
+                F & T & F & F & F & T & T \\ \hline
+                F & T & T & F & T & F & F \\ \hline
+                T & F & F & F & T & T & T \\ \hline
+                T & F & T & F & F & F & F \\ \hline
+                T & T & F & T & F & F & F \\ \hline
+                T & T & T & T & T & T & T \\ \hline
+            \end{tabular}
+        \end{table}
+
+        By inspection, $(p \iff (q \iff r)) \equiv ((p \iff q) \iff r)$.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\alph*}
+        \item False. Let $p$ be a false statement and $q$ be a true statement and the result is clear.
+        \item True. Set $q$ to be the same as $p$ and result follows.
+        \item False. For any statement $p$, if $p$ is true then set $q$ to be a false statement and set $q$ to be true otherwise. Result yields.
+        \item True. Choose any two true statements and it will be clear.
+        \item False. Let $p$ and $q$ be both the same statement and the result is clear.
+        \item True. If $p$ is true then let $q$ be a false statement, and if $p$ is false then let $q$ be a true statement. The result follows.
+        \item False. For any statement $p$, set $q$ to be the same as $p$ and result follows.
+        \item True. Choose a true and false statement and result is clear.
+    \end{partquestions}
+
+    \item Recall from \myref{example-implication-law} that $(x \implies y) \equiv \lnot x \lor y$.
+    \begin{align*}
+        \lnot p \land (\lnot p \implies (p \land q)) &\equiv \lnot p \land (\lnot(\lnot p) \lor (p \land q)) & (\text{by } \myref{example-implication-law})\\
+        &\equiv \lnot p \land (p \lor (p \land q))\\
+        &\equiv \lnot p \land ((p \lor p) \land (p \lor q)) & (\text{Distributivity})\\
+        &\equiv \lnot p \land (p \land (p \lor q))\\
+        &\equiv (\lnot p \land p) \land (p \lor q) & (\text{Associativity})\\
+        &\equiv \textbf{false} \land (p \lor q)\\
+        &\equiv \textbf{false}.
+    \end{align*}
+\end{questions}

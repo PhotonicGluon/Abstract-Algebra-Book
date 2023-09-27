@@ -66,7 +66,7 @@ When statement variables are combined using the above operators, the resulting s
 \end{example}
 
 \begin{exercise}
-    Let
+    Let the statements
     \begin{align*}
         p: &\ \text{1 is a positive number}\\
         q: &\ -1 > 0\\
@@ -152,7 +152,7 @@ In summary, the truth table for the conditional is:
     \end{tabular}
 \end{table}
 
-\begin{exercise}
+\begin{exercise}\label{exercise-negation-of-implication}
     Let $p$ and $q$ be statements. Draw the truth table for $p \land (\lnot q)$.
 \end{exercise}
 
@@ -207,8 +207,8 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
 \begin{definition}
     Two statements $p$ and $q$ are \textbf{logically equivalent}\index{logically equivalent} if and only if they have identical truth values for each possible statement that $p$ and $q$ may take. If $p$ and $q$ are logically equivalent, we write $p \equiv q$.
 \end{definition}
-\begin{example}
-    We show that $p \implies q \equiv \lnot p \lor q$ by considering the truth table for $\lnot p \lor q$.
+\begin{example}\label{example-implication-law}
+    We show that $(p \implies q) \equiv \lnot p \lor q$ by considering the truth table for $\lnot p \lor q$.
     \begin{table}[h]
         \centering
         \begin{tabular}{|l|l||l||l|}
@@ -221,7 +221,7 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
         \end{tabular}
     \end{table}
 
-    By inspection, we see that $\lnot p \lor q$ has the same truth table as $p \implies q$. Thus $p \implies q \equiv \lnot p \lor q$.
+    By inspection, we see that $\lnot p \lor q$ has the same truth table as $p \implies q$. Thus $(p \implies q) \equiv \lnot p \lor q$.
 \end{example}
 \begin{remark}
     We separate the intermediate value(s) (e.g. $\lnot p$ in the above example) from the rest by drawing a double line to the sides of the intermediate values.
@@ -230,7 +230,7 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
 \newpage
 
 \begin{example}
-    We show that $p \iff q \equiv (p \land q) \lor (\lnot p \land \lnot q)$. For brevity, let $r = \lnot p \land \lnot q$.
+    We show that $(p \iff q) \equiv (p \land q) \lor (\lnot p \land \lnot q)$. For brevity, let $r = \lnot p \land \lnot q$.
     \begin{table}[h]
         \centering
         \begin{tabular}{|l|l||l|l|l|l||l|}
@@ -256,10 +256,10 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
 
 We note some important properties of logical operators.
 \begin{itemize}
-    \item \textbf{Contrapositive}\index{contrapositive}: $(p \implies q) \equiv ((\lnot q) \implies (\lnot p))$
+    \item \textbf{Contrapositive}\index{contrapositive}: $(p \implies q) \equiv (\lnot q \implies \lnot p)$
     \item \textbf{De Morgan's Laws}: \begin{itemize}
-        \item $(\lnot (p \land q)) \equiv ((\lnot p) \lor (\lnot q))$
-        \item $(\lnot (p \lor q)) \equiv ((\lnot p) \land (\lnot q))$
+        \item $\lnot (p \land q) \equiv \lnot p \lor \lnot q$
+        \item $\lnot (p \lor q) \equiv \lnot p \land \lnot q$
     \end{itemize}
     \item \textbf{Commutativity of AND and OR}: \begin{itemize}
         \item $p \land q \equiv q \land p$
@@ -334,7 +334,7 @@ We can also combine quantifiers and logical operators together.
 \begin{example}
     Fermat's Last Theorem, which states that for all integers $n\geq 3$ the equation $x^n + y^n = z^n$ has no solution for $x, y, z \in \mathbb{N}$, can be written as
     \[
-        \left((n \in \mathbb{Z}) \land (n \geq 3)\right) \implies \left(\forall x, y, z \in \mathbb{N}, x^n + y^n \neq z^n\right).
+        \left((n \in \mathbb{Z}) \land (n \geq 3)\right) \implies \left(\forall x, y, z \in \mathbb{N},\; x^n + y^n \neq z^n\right).
     \]
     It should be noted that when translating from English to \textit{symbolic writing}, we may need to change some things around.
 \end{example}
@@ -360,7 +360,7 @@ We now look at negating quantifiers\index{quantifier!negation}. Note that
     i.e., ``there exists an integer $n$ such that $2n$ is odd''.
 \end{example}
 
-We also note that $\lnot(P \implies Q) \equiv P \land \lnot Q$. We leave verifying this identity as an exercise to the reader.
+We also note for statements $p$ and $q$ that $\lnot(p \implies q) \equiv p \land \lnot q$ by \myref{exercise-negation-of-implication}. This result is useful when negating conditional statements within quantified statements.
 
 \begin{example}
     Consider the statement ``$n^3$ is odd if $n$ is odd for all integers $n$''. We may write this as
@@ -395,4 +395,43 @@ Mathematical statements often have a certain `tier' attached to them. We look at
 \newpage
 
 \section{Problems}
-%TODO: Add
+\begin{problem}
+    Which of the following are statements? Which are predicates?
+    \begin{partquestions}{\alph*}
+        \item 4 equals 5.
+        \item $n \geq 4$.
+        \item $8 = 2 \times 4$.
+        \item $x^2 - 1 = (x-1)(x+1)$.
+        \item There is a prime number $p$ that is one less than a cube and two less than a square.
+        \item $P(x) \equiv P(x)$.
+        \item $P(x) \iff P(x)$ for all $x$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Assume $p$, $q$, and $r$ are statements. By considering a truth table,
+    \begin{partquestions}{\alph*}
+        \item is $(p \implies (q \implies r)) \equiv ((p \implies q) \implies r)$?
+        \item is $(p \iff (q \iff r)) \equiv ((p \iff q) \iff r)$?
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    For the following, assume $p$ and $q$ are statements. Which of the following are true statements?
+    \begin{multicols}{2}
+        \begin{partquestions}{\alph*}
+            \item $\forall p\; \forall q\; (p \equiv q)$.
+            \item $\forall p\; \exists q\; (p \equiv q)$.
+            \item $\exists p\; \forall q\; (p \equiv q)$.
+            \item $\exists p\; \exists q\; (p \equiv q)$.
+            \item $\forall p\; \forall q\; (p \not\equiv q)$.
+            \item $\forall p\; \exists q\; (p \not\equiv q)$.
+            \item $\exists p\; \forall q\; (p \not\equiv q)$.
+            \item $\exists p\; \exists q\; (p \not\equiv q)$.
+        \end{partquestions}
+    \end{multicols}
+\end{problem}
+
+\begin{problem}
+    Simplify $\lnot p \land (\lnot p \implies (p \land q))$.
+\end{problem}
