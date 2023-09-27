@@ -24,19 +24,6 @@
     {part3/images}
 }
 
-%========= Front Matter Pages ============
-% Quote page
-\newcommand{\quotepagetext}{
-    Symmetry is a vast subject, significant in art and nature. Mathematics lies at its root, and it would be hard to find a better one on which to demonstrate the working of the mathematical intellect.
-}
-\newcommand{\quotepageattribution}{Hermann Weyl, 1952}
-\newcommand{\quotepagecitation}{{\cite[p.~145]{weyl_1952}}}
-
-% Suggestions of use
-\newcommand{\interdependencenotes}{
-    TODO: ADD
-}
-
 %==== Include only relevant chapters =====
 \IfFileExists{\jobname.run.xml}
 {
@@ -44,6 +31,7 @@
         front-matter,
         %
         % Part 0
+        part0/preamble,
         part0/sets,
         part0/logic,
         part0/proofs,
@@ -53,6 +41,7 @@
         part0/modular-arithmetic,
         %
         % Part 1
+        part1/preamble,
         part1/intro-to-groups,
         part1/basics-of-groups,
         part1/subgroups,
@@ -67,6 +56,7 @@
         part1/simple-groups,
         %
         % Part 2
+        part2/preamble,
         part2/intro-to-rings,
         part2/basics-of-rings,
         part2/integral-domains,
@@ -74,10 +64,15 @@
         part2/ring-homomorphisms,
         part2/polynomial-rings,
         %
+        % Part 3
+        part3/preamble,
+        %
         % Appendices
-        exercise-solutions,
-        problem-solutions,
-        image-acknowledgements
+        appendices/preamble,
+        appendices/exercise-solutions,
+        appendices/problem-solutions,
+        appendices/image-acknowledgements,
+        appendices/bib-and-index
     }
 }
 {
@@ -94,21 +89,7 @@
 \mainmatter  % Now use arabic numerals for page numbers
 
 %=========================================
-\setpartpreamble[u][\textwidth]{
-    \quoteattr{
-        Aus dem Paradies, das Cantor uns geschaffen, soll uns niemand vertreiben k\"{o}nnen.\\
-        \textnormal{(No one shall expel us from the Paradise that Cantor has created.)}
-    }
-    {
-        David Hilbert, 1926
-    }
-    {
-        \cite[p.~170]{hilbert_1926}
-    }
-
-    To understand the subject material covered in the later parts, the preliminaries and fundamentals must first be understood. This part gives one sufficient knowledge to dive into the meat of abstract algebra. We cover mathematical logic, important facts about algebra, basic set theory, functions and maps, and proof writing, elementary number theory, and simple modular arithmetic, which should be plenty for one to understand the content covered in future parts.
-}
-\part{Preliminaries}
+\include{part0/preamble}
 \include{part0/sets}
 \include{part0/logic}
 \include{part0/proofs}
@@ -118,22 +99,7 @@
 \include{part0/modular-arithmetic}
 
 %=========================================
-\setpartpreamble[u][\textwidth]{
-    \quoteattr{
-        [The] axioms for a group are short and natural... [yet] somehow hidden behind these axioms is the monster simple group, a huge and extraordinary mathematical object, which appears to rely on numerous bizarre coincidences to exist. The axioms for groups give no obvious hint that anything like this exists.
-    }
-    {
-        Richard Borcherds, 2009
-    }
-    {
-        \cite{cook_borcherds_2009}
-    }
-
-    Groups are one of the most fundamental structures in abstract algebra. They underpin the ideas of symmetry and allow us to explore the relationships between symmetrical objects. An analysis of all the different ways an object can be symmetric is also possible with groups. It would be an understatement to say that groups are important in abstract algebra; without them, there can be no further and more in-depth exploration of the other structures.
-
-    Part I is a simple introduction to the world of groups. As with most books on this topic, we concentrate on abstract groups, and, in particular, on finite groups. We also discuss and explore some crucial results about the structure of groups. The content covered in this part should be ample for one to understand the fundamentals of group theory, and appreciate the wonders of groups and symmetry.
-}
-\part{Group Theory}
+\include{part1/preamble}
 \include{part1/intro-to-groups}
 \include{part1/basics-of-groups}
 \include{part1/subgroups}
@@ -148,22 +114,7 @@
 \include{part1/simple-groups}
 
 %=========================================
-\setpartpreamble[u][\textwidth]{
-    \quoteattr{
-        [Some] of the major discoveries in ring theory have helped shape the course of development of modern abstract algebra... A course in ring theory is an indispensable part of the education of any fledgling algebraist.
-    }
-    {
-        Tsit-Yuen Lam, 2001
-    }
-    {
-        \cite{lam_2001}
-    }
-
-    The investigation into the properties of rings is primarily motivated by rings' connections to other fields in mathematics, such as algebraic geometry, algebraic number theory and commutative algebra. The discovery of results relating to rings reveals deeper connections in related algebraic structures, such as fields. Results relating to rings are often technical but are necessary as they provide the underpinnings of more useful results in other areas.
-    
-    %TODO: Add
-}
-\part{Ring Theory}
+\include{part2/preamble}
 \include{part2/intro-to-rings}
 \include{part2/basics-of-rings}
 \include{part2/integral-domains}
@@ -172,29 +123,13 @@
 \include{part2/polynomial-rings}
 
 %=========================================
-\setpartpreamble[u][\textwidth]{
-    \quoteattr{
-        I became convinced that studying the algebraic relationship of numbers is most conveniently based on a concept that is directly connected with the simplest arithmetic properties. I had originally used the term ``rational domain'', which I later changed to ``field''.
-    }
-    {
-        Richard Dedekind, 1871
-    }
-    {
-        \cite[p.~66]{kleiner_2007}
-    }
-
-    We cover field theory essentials in part III. %TODO: Add
-}
-\part{Field Theory}
+\include{part3/preamble}
 
 %=========================================
-\appendix
-\unnumberedpart{Appendices}
-\include{exercise-solutions}
-\include{problem-solutions}
-\include{image-acknowledgements}
-
-\printbibliography[heading=bibintoc, title={References and Bibliography}]
-\printindex
+\include{appendices/preamble}
+\include{appendices/exercise-solutions}
+\include{appendices/problem-solutions}
+\include{appendices/image-acknowledgements}
+\include{appendices/bib-and-index}
 
 \end{document}
