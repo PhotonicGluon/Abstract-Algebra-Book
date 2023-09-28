@@ -1,4 +1,4 @@
-\chapter{Number Theory}
+\chapter{Elementary Number Theory}
 Number theory is an important part of abstract algebra, as we will use some of its more famous results in proofs. In this chapter, we explore the essentials of number theory.
 
 \section{Divisibility}
@@ -31,6 +31,7 @@ We list some basic facts about divisibility that are not difficult to prove.
     \item If $a\vert b$ and $b\vert c$ then $a\vert c$.
     \item If $a\vert b$ and $a\vert c$ then $a\vert sb+tc$ for all integers $s$ and $t$.
     \item If $c \neq 0$, then $a\vert b$ if and only if $ac\vert bc$.
+    \item If $a \vert b$ and $b \vert a$ then $a = b$.
 \end{itemize}
 
 \begin{definition}
@@ -81,8 +82,9 @@ In number theory, the idea of a greatest common divisor and the least common mul
 
 \begin{definition}
     Let $m$ and $n$ be two non-zero integers. Then an integer $d$ is said to be the \textbf{greatest common divisor}\index{greatest common divisor} (GCD)\index{GCD} of $m$ and $n$ if $m = pd$ and $n = qd$ for some integers $p$ and $q$, and that $d$ is the largest possible integer that achieves this.
+
+    The GCD of $m$ and $n$ is denoted by $\gcd(m, n)$.
 \end{definition}
-The GCD of $m$ and $n$ is denoted by $\gcd(m, n)$.
 
 \begin{example}
     $\gcd(2, 8) = 2$ since $2 = 1 \times 2$ and $8 = 4 \times 2$.
@@ -100,15 +102,13 @@ The GCD of $m$ and $n$ is denoted by $\gcd(m, n)$.
 \begin{remark}
     If $\gcd(m, n) = 1$ for non-zero integers $m$ and $n$, then $m$ and $n$ are said to be \textbf{coprime}\index{coprime} to each other.
 \end{remark}
-\begin{example}
-    17 and 18 are coprime as $\gcd(17, 18) = 1$.
-\end{example}
 
 We now look at the lowest common multiple of two integers.
 \begin{definition}
     Let $m$ and $n$ be two non-zero integers. Then an integer $l$ is said to be the \textbf{lowest common multiple}\index{lowest common multiple} (LCM)\index{LCM} of $m$ and $n$ if $l = pm = qn$ for some integers $p$ and $q$, and that $l$ is the smallest possible \textbf{positive} integer that achieves this.
+
+    The LCM of $m$ and $n$ is denoted by $\lcm(m,n)$.
 \end{definition}
-The LCM of $m$ and $n$ is denoted by $\lcm(m,n)$.
 
 \begin{example}
     $\lcm(2, 8) = 8$ since $8 = 4 \times 2$ and $8 = 1 \times 8$.
@@ -123,13 +123,22 @@ The LCM of $m$ and $n$ is denoted by $\lcm(m,n)$.
     Find $\lcm(-112, -35)$.
 \end{exercise}
 
-We note two important results regarding the GCD and LCM.
+We note some important results regarding the GCD and LCM.
 \begin{lemma}[B\'{e}zout]\label{lemma-bezout}\index{B\'{e}zout's Lemma}
-    Let $m$ and $n$ be non-zero integers such that $\gcd(m, n) = d$. Then there exist integers $x$ and $y$ such that $mx + ny = d$. Moreover, the integers of the form $am + bn$ (where $a$ and $b$ are integers) are multiples of $d$.
+    Let $m$ and $n$ be non-zero integers such that $\gcd(m, n) = d$. Then there exist integers $\lambda$ and $\mu$ such that $\lambda m + \mu n = d$. Moreover, the integers of the form $am + bn$ (where $a$ and $b$ are integers) are multiples of $d$.
 \end{lemma}
 \begin{proposition}\label{prop-product-of-gcd-and-lcm}
-    Let $m$ and $n$ be non-zero integers. Then $|mn| = \gcd(m,n) \times \lcm(m,n)$ where $|mn|$ denotes the absolute value of $mn$.
+    Let $m$ and $n$ be non-zero integers. Then
+    \[
+        |mn| = \gcd(m,n) \times \lcm(m,n).
+    \]
 \end{proposition}
+\begin{proposition}\label{prop-gcd-divides-common-divisor}
+    Let $a$, $b$, and $d$ are integers. If $d \vert a$ and $d \vert b$ then $d \vert \gcd(a, b)$.
+\end{proposition}
+\begin{proof}
+    We know $\gcd(a,b) \vert a$ and $\gcd(a,b) \vert b$ by definition of GCD. By B\'{e}zout's Lemma (\myref{lemma-bezout}) there exist integers $\lambda$ and $\mu$ such that $\lambda a + \lambda b = \gcd(a,b)$. Now since $d \vert a$ and $d \vert b$ we must have $d \vert \lambda a + \mu b$ by properties of division. Therefore $d \vert \gcd(a,b)$.
+\end{proof}
 
 \begin{exercise}
     Suppose $m = 42$ and $n = 70$.
@@ -139,3 +148,34 @@ We note two important results regarding the GCD and LCM.
         \item Find a pair of integers $x$ and $y$ such that $mx + ny = d$.
     \end{partquestions}
 \end{exercise}
+
+\newpage
+
+\section{Problems}
+\begin{problem}
+    Find the positive integer $a$ such that $\gcd(a, 50) = 5$ and $\lcm(a, 50) = 150$.
+\end{problem}
+
+\begin{problem}
+    Let $a$ and $b$ be positive integers such that $\lcm(a, b) = a^2$. What does this imply about $b$?
+\end{problem}
+
+\begin{problem}
+    Show $n^2 \vert (1+n)^n - 1$ for all positive integers $n$.
+\end{problem}
+
+\begin{problem}
+    Let $n$ be an integer.
+    \begin{partquestions}{\roman*}
+        \item Prove that if $n$ is positive, then $6 \vert 2n^3 + 3n^2 + n$.
+        \item Prove that $12 \vert n^4 - n^2$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let $a$ and $b$ be non-negative integers.
+    \begin{partquestions}{\roman*}
+        \item Prove that $\gcd(a^2, b^2) = \gcd(a,b)^2$.
+        \item Find a similar expression for $\lcm(a^2, b^2)$.
+    \end{partquestions}
+\end{problem}
