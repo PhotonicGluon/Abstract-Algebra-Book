@@ -343,46 +343,6 @@ Strong mathematical induction involves two steps:
     \end{proof}
 \end{example}
 
-% \begin{example}\label{example-strong-induction-on-function}
-%     Consider the function $f: \left(\mathbb{N}\right)^2\to\mathbb{N}$ where
-%     \[
-%         f(m, n) =
-%         \begin{cases}
-%             n & \text{if } m = 1, \\
-%             m & \text{if } n = 1, \\
-%             f\left(n-1,f(n-1,m-1)\right) & \text{otherwise.}
-%         \end{cases}
-%     \]
-%     We will prove the non-obvious fact that $f(n+1, n) = 2$ for all positive integers $n$.
-%     \begin{proof}
-%         We show the base cases of 1 and 2 hold:
-%         \begin{itemize}
-%             \item When $n = 1$, we have $f(2, 1) = 2$, so the first case is true.
-%             \item When $n = 2$, we have
-%             \[
-%                 f(3,2) = f(1, f(1, 2)) = f(1, 2) = 2
-%             \]
-%             so the second case is true.
-%         \end{itemize}
-
-%         Now suppose for some positive integer $k$, every integer $1 \leq m \leq k$ results in the statement being true, i.e. $f(m+1,m) = 2$. We want to show that the case for $k+1$ is true, i.e. $f(k+2, k+1) = 2$.
-%         \begin{align*}
-%             f(k+2, k+1) &= f(k, f(k, k+1))\\
-%             &= f(k, f(k, f(k, k-1)))\\
-%             &= f(k, f(k, 2)) & (\text{hypothesis on } k-1)\\
-%             &= f(k, f(1, f(1, k-1)))\\
-%             &= f(k, f(1, k-1))\\
-%             &= f(k, k-1) \\
-%             &= 2 & (\text{hypothesis on } k-1)
-%         \end{align*}
-%         which proves that the statement for $k+1$ holds. Hence by mathematical induction, $f(n+1, n) = 2$.
-%     \end{proof}
-% \end{example}
-
-% \begin{exercise}
-%     Let the function $f: \mathbb{N} \to \mathbb{Z}$ be defined such that $f(1) = 0$, $f(2) = 1$, and $f(n+2) = 3f(n+1) - 2f(n) + 1$ for all positive integers $n$. Prove that $f(n) = 2^n - n - 1$ for all positive integers $n$.
-% \end{exercise}
-
 \begin{example}
     Suppose we have a candy bar with $n \geq 1$ pieces. We prove that $n - 1$ breaks are required to break it into $n$ individual pieces.
     \begin{proof}

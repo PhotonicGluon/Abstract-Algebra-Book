@@ -32,7 +32,7 @@ We now look at the definition of the image and range.
     Let $f: X \to Y$ be a function, and $x \in X$.
     \begin{itemize}
         \item The \textbf{image}\index{function!image} of an element $x \in X$ under the function $f$ is denoted $f(x)$ and is defined to be the value after applying $f$ to $x$.
-        \item The \textbf{image} or \textbf{range}\index{function!range} of $f$ is denoted by either $\im f$ or $f(X)$ and is the set of the images of all elements in the domain.
+        \item The \textbf{image} or \textbf{range}\index{function!range} of $f$ is denoted by either $\im f$ or $f(X)$ and is the set of the images of all elements in the domain. It is a subset of the codomain, i.e. $\im f \subseteq Y$.
     \end{itemize}
 \end{definition}
 
@@ -122,7 +122,7 @@ Informally, \textit{identical inputs} produce \textit{identical outputs} for a w
 It is important to note the following about function composition.
 \begin{itemize}
     \item Function composition is associative\index{function!composition!associative}. That is, if $f$, $g$, and $h$ are composable, then $f \circ (g \circ h) = (f \circ g) \circ h$. As parentheses do not change the result, they are usually omitted.
-    \item The composition $f \circ g$ is only meaningful if the codomain of $g$ is a subset of the domain of $f$. That is, if $f: A \to B$ and $g: C \to D$, then $f \circ g$ is only meaningful if $\im g \subseteq A$.
+    \item The composition $f \circ g$ is only meaningful if the image of $g$ is a subset of the domain of $f$. That is, if $f: A \to B$ and $g: C \to D$, then $f \circ g$ is only meaningful if $\im g \subseteq A$.
 \end{itemize}
 
 \begin{exercise}
@@ -172,14 +172,16 @@ It is important to note the following about function composition.
     Since $f$ is both injective and surjective it is thus bijective.
 \end{example}
 
-\newpage
-
 \begin{definition}
     Let $A$ and $B$ be sets. Then $A$ and $B$ are \textbf{equinumerous}\index{set!equinumerous} if there exists a bijective function $f: A \to B$. In this case, $A$ and $B$ have the same cardinality, i.e., $|A| = |B|$.
 \end{definition}
-\begin{remark}
-    It should be noted that bijectivity is also implied if the function $f: X \to Y$ is injective and the sets $X$ and $Y$ are equinumerous.  % TODO: Add proof
-\end{remark}
+
+\begin{proposition}
+    Let $X$ and $Y$ be finite equinumerous sets. If $f: X \to Y$ is an injective function, then $f$ is bijective.
+\end{proposition}
+\begin{proof}
+    Suppose $f: X \to Y$ is injective, meaning $x_1 \neq x_2$ implies $f(x_1) \neq f(x_2)$ for all $x_1, x_2 \in X$. Thus every $x$ produces a unique $f(x)$, meaning $|X| = |\im f|$. Since $X$ and $Y$ are equinumerous sets (given), thus $|\im f| = |Y|$. As $\im f \subseteq Y$ and they have the same cardinality, therefore $\im f = Y$, i.e. $f$ is surjective. Therefore $f$ is injective (by assumption) and $f$ is surjective, meaning $f$ is bijective.
+\end{proof}
 
 \begin{exercise}
     Define the function $f: \mathbb{N} \to \mathbb{Z}$ such that
@@ -191,3 +193,65 @@ It is important to note the following about function composition.
     \]
     By considering $f$, prove that $|\mathbb{N}| = |\mathbb{Z}|$.
 \end{exercise}
+
+\newpage
+
+\section{Problems}
+\begin{problem}
+    Let the set $A = \{1, 2, 3, 4\}$. Find a function $f: A \to A$ that is bijective but is \textbf{not} equal to the function $g: A \to A, x \mapsto x$.
+\end{problem}
+
+\begin{problem}
+    Let the functions
+    \begin{align*}
+        &f: [0, \infty) \to \mathbb{R},\; x\mapsto x^2+1,\\
+        &g: (-1, 1] \to \mathbb{R},\; x\mapsto 1-x^2,\\
+        &h: (-\infty, -1] \to \mathbb{R},\; x\mapsto \ln(-x).
+    \end{align*}
+    \begin{partquestions}{\alph*}
+        \item Which of the given function(s) are injective? If they are, prove it. If not, provide a counterexample.
+        \item Does the composite function $hf$ exist? If so, give a definition of $hf$ using arrow notation and state its image. Otherwise, explain why not.
+        \item Does the composite function $fg$ exist? If so, give a definition of $fg$ using arrow notation and state its image. Otherwise, explain why not.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let $X$ be any set, and let $f: X \to X$, $g: X \to X$, and $h: X \to X$ be functions. Suppose $h$ is injective. Prove or disprove the following statements.
+    \begin{partquestions}{\alph*}
+        \item If $hf = hg$ then $f = g$.
+        \item If $fh = gh$ then $f = g$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    The McCarthy 91 function $M: \Z \to \Z$ is a recursive function created by computer scientist John McCarthy to test formal verification in computer science. It is defined as follows.
+    \[
+        M(n) = \begin{cases}
+            n - 10 & \text{if } n > 100\\
+            M(M(n+11)) & \text{if } n \leq 100
+        \end{cases}
+    \]
+    \begin{partquestions}{\roman*}
+        \item Show $M(101) = 91$.
+        \item Show $M(n) = M(n+1)$ for all $90 \leq n \leq 100$.
+        \item Deduce that $M(n) = 91$ for any $90 \leq n \leq 100$.
+        \item Hence prove that $M(n) = 91$ for all $n \leq 100$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let the function $f: \left(\mathbb{N}\right)^2\to\mathbb{N}$ be defined such that
+    \[
+        f(m, n) =
+        \begin{cases}
+            n & \text{if } m = 1, \\
+            m & \text{if } n = 1, \\
+            f\left(n-1,f(n-1,m-1)\right) & \text{otherwise.}
+        \end{cases}
+    \]
+    \begin{partquestions}{\roman*}
+        \item Prove that $f(n,2) = n - 1$ for all integers $n > 1$.
+        \item Prove that $f(n+1, n) = 2$ for all positive integers $n$.
+        \item Prove that $f(n, 4) = 2$ for all integers $n > 1$.
+    \end{partquestions}
+\end{problem}
