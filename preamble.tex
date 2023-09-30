@@ -106,9 +106,20 @@
 }
 
 % PDF-TeX image definitions
-\newcommand{\pdfteximg}[2]{
-    \def\svgwidth{#1}
-    \input{#2}
+\newcommand{\pdfteximg}[3][10pt]{
+    {
+        \fontsize{#1}{0pt}\selectfont
+        \def\svgwidth{#2}
+        \input{#3}
+    }
+}
+
+\newcommand{\pdfteximgframed}[3][10pt]{
+    {
+        \fontsize{#1}{0pt}\selectfont
+        \def\svgwidth{#2}
+        \fbox{\input{#3}}
+    }
 }
 
 %=========== Theorem Things ==============
