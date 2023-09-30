@@ -172,18 +172,22 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
     Let $G = (\Z_2, \oplus_2)$ and $H = \{1, -1\}$ be a group under regular multiplication. Define the map $\phi: G \to H$ such that $\phi(0) = 1$ and $\phi(1) = -1$.
 
     \begin{itemize}
-        \item $\phi$ is clearly a bijection based on function mapping diagram shown.
-        \begin{figure}[h]
-            \centering
-            \fbox{\includegraphics[width=0.2\textwidth]{homomorphisms-and-isomorphisms/isomorphism-function-map.jpg}}
-        \end{figure}
-
-        \item $\phi$ is a homomorphism:\begin{itemize}
+        \item \textbf{Homomorphism}: \begin{itemize}
             \item $\phi(0\oplus_20) = \phi(0) = 1 = 1 \times 1 = \phi(0)\phi(0)$
             \item $\phi(0 \oplus_2 1) = \phi(1) = -1 = 1 \times (-1) = \phi(0)\phi(1)$
             \item $\phi(1 \oplus_2 0) = \phi(1) = -1 = (-1) \times 1 = \phi(1)\phi(0)$
             \item $\phi(1 \oplus_2 1) = \phi(0) = 1 = (-1) \times (-1) = \phi(1)\phi(1)$
         \end{itemize}
+        Thus $\phi(x\oplus_2y) = \phi(x)\times\phi(y)$ for all $x, y \in G$.
+        
+        \item \textbf{Injective}: Clearly if $\phi(x) = \phi(y)$ then $x = y$ based on the definition of $\phi$, meaning $\phi$ is injective.
+        
+        \item \textbf{Surjective}: Let $y \in H$.
+        \begin{itemize}
+            \item If $y = 1$ then note that $0 \in G$ is its pre-image since $\phi(0) = 1$.
+            \item If $y = -1$ then note that $1 \in G$ is its pre-image since $\phi(1) = -1$.
+        \end{itemize}
+        So every $y \in H$ has a pre-image under $\phi$, i.e. $\phi$ is surjective.
     \end{itemize}
     Thus $\phi$ is an isomorphism, which means $G \cong H$.
 \end{example}
