@@ -55,6 +55,7 @@
 
 % Graphics locations
 \graphicspath{
+    {images}
     {part0/images}
     {part1/images}
     {part2/images}
@@ -65,7 +66,8 @@
 \linespread{1.05}
 \setlength{\parindent}{1.5em}
 
-%============ Redefinitions ==============
+%=========== (Re)definitions =============
+% Part page configuration
 \let\oldpart\part
 \renewcommand*{\part}[1]{\cleardoubleoddpage\oldpart{#1}\cleardoubleemptypage}
 \newcommand{\unnumberedpart}[1]{
@@ -88,6 +90,26 @@
 \newcommand{\myreffigures}[1]{\textbf{\cref{#1}}}
 
 \renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+
+% Quote definitions
+\newcommand{\quoteattr}[3]{
+    \vspace{0.5cm}
+    \begin{center}
+        \parbox{8cm}{
+            {\itshape#1}\\
+            \null\hfill--- #2\\
+            \vspace{-0.1cm}
+            \hfill\small(#3)
+        }
+    \end{center}
+    \vspace{0.5cm}
+}
+
+% PDF-TeX image definitions
+\newcommand{\pdfteximg}[2]{
+    \def\svgwidth{#1}
+    \input{#2}
+}
 
 %=========== Theorem Things ==============
 % 'Results' declarations
@@ -169,6 +191,7 @@
 \declaretheorem[style=general-style,numbered=no]{remark}
 
 %============ Environments ===============
+% Questions environments
 \newenvironment{questions}
 {\begin{enumerate}[label=\textbf{\arabic*.}]}
 {\end{enumerate}}
@@ -176,19 +199,6 @@
 \newenvironment{partquestions}[1]
 {\begin{enumerate}[label=\textbf{(#1)}]}
 {\end{enumerate}}
-
-\newcommand{\quoteattr}[3]{
-    \vspace{0.5cm}
-    \begin{center}
-        \parbox{8cm}{
-            {\itshape#1}\\
-            \null\hfill--- #2\\
-            \vspace{-0.1cm}
-            \hfill\small(#3)
-        }
-    \end{center}
-    \vspace{0.5cm}
-}
 
 %=========== Custom Commands =============
 % Miscellaneous commands
