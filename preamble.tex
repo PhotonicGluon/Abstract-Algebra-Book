@@ -78,6 +78,9 @@
 \linespread{1.05}
 \setlength{\parindent}{1.5em}
 
+\newlength{\normalparindent}
+\setlength{\normalparindent}{\parindent}
+
 %=========== (Re)definitions =============
 % Part page configuration
 \let\oldpart\part
@@ -88,6 +91,10 @@
     \oldpart*{#1}
     \cleardoubleemptypage
 }
+
+\makeatletter
+\patchcmd{\set@@@@preamble}{#6}{\setlength{\parindent}{\normalparindent}#6}{}{}  % Make paragraph indent correctly for part preambles
+\makeatother
 
 % Symbols redefinitions
 \let\oldemptyset\emptyset
