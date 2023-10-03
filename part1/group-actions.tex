@@ -52,10 +52,13 @@ We note that there is an equivalent definition of a group action of $G$ on $X$.
 \end{remark}
 
 This theorem is useful because it may sometimes be useful to use \myref{definition-group-action-alt} in place of \myref{definition-group-action}, especially when we are working with permutations and bijections. However, \myref{definition-group-action} is the standard definition that we will use most of the time.
+
+\begin{proofsketch}
+    First assume \myref{definition-group-action} is true and prove \myref{definition-group-action-alt} is true as well. Then assume \myref{definition-group-action-alt} is true and show that \myref{definition-group-action} holds as well. Finally, show that the processes that converts between definitions is reversible, which thus means that the definitions are equivalent.
+\end{proofsketch}
+
 \begin{proof}
-    We first work forwards, assuming \myref{definition-group-action} is true and proving \myref{definition-group-action-alt} is true as well.
-    
-    Assume $\alpha: G \times X \to X$ is a group action. Define $\psi: G \to \Sym{X}$ by $g \mapsto f_g$ where the map $f_g: X \to X, x \mapsto \alpha(g, x)$. We show that $f_g$ is a bijection.
+    We first work forwards, assuming \myref{definition-group-action} is true and proving \myref{definition-group-action-alt} is true as well. Assume $\alpha: G \times X \to X$ is a group action. Define $\psi: G \to \Sym{X}$ by $g \mapsto f_g$ where the map $f_g: X \to X, x \mapsto \alpha(g, x)$. We show that $f_g$ is a bijection.
     \begin{itemize}
         \item \textbf{Injective}: Suppose there exists $x, y \in X$ such that $f_g(x) = f_g(y)$. Then,
         \begin{align*}
@@ -84,9 +87,7 @@ This theorem is useful because it may sometimes be useful to use \myref{definiti
     \end{align*}
     for any $x \in X$, which means $\psi(gh) = \psi(g)\psi(h)$. Hence $\phi$ is indeed a homomorphism, satisfying \myref{definition-group-action-alt}.
 
-    We now work in the reverse direction, assuming that \myref{definition-group-action-alt} holds and proving \myref{definition-group-action} holds as well.
-    
-    Suppose $\phi: G \to \Sym{X}$ is a group homomorphism. We define $\beta: G \times X \to X$ where $\beta(g, x) = (\phi(g))(x)$. We verify \myref{definition-group-action} holds for $\beta$.
+    We now work in the reverse direction, assuming that \myref{definition-group-action-alt} holds and proving \myref{definition-group-action} holds as well. Suppose $\phi: G \to \Sym{X}$ is a group homomorphism. We define $\beta: G \times X \to X$ where $\beta(g, x) = (\phi(g))(x)$. We verify \myref{definition-group-action} holds for $\beta$.
     \begin{itemize}
         \item \textbf{Identity}: Since $\phi$ is a homomorphism, it must map the identity in $G$ to the identity in $\Sym{X}$, which is $\id$. Hence, $\beta(e, x) = (\phi(e))(x) = \id(x) = x$.
         \item \textbf{Compatibility}: Let $g, h \in G$ and $x \in X$. Then
@@ -105,7 +106,7 @@ This theorem is useful because it may sometimes be useful to use \myref{definiti
         \item if we start with $\alpha$, derive $\psi$ based on $\alpha$, and then derive $\beta$ based off $\psi$, then $\alpha = \beta$; and
         \item if we start with $\phi$, derive $\beta$, and then derive $\psi$ based off $\beta$, then $\phi = \psi$.
     \end{itemize}
-
+    
     Suppose we have an $\alpha$ that is used to derive $\psi$ which is in turn used to derive $\beta$. Then the above processes yields
     \[
         \psi(g) = f_g \text{ and } \beta(g, x) = (\psi(g))(x)
@@ -118,7 +119,7 @@ This theorem is useful because it may sometimes be useful to use \myref{definiti
     \]
     where $f_g(x) = \beta(g, x)$ in this case. Hence $(\phi(g))(x) = \beta(g, x) = f_g(x) = (\psi(g))(x)$ for any $g \in G$ and $x \in X$. Hence $\phi = \psi$.
 
-    Therefore, this shows that the maps $\alpha \mapsto \phi$ and $\phi \mapsto \alpha$ are inverses of each other, so we have a one-to-one correspondence between \myref{definition-group-action} and \myref{definition-group-action-alt}.
+    Therefore, this shows that the maps $\alpha \mapsto \phi$ and $\phi \mapsto \alpha$ are inverses of each other, meaning \myref{definition-group-action} and \myref{definition-group-action-alt} are equivalent.
 \end{proof}
 
 \section{Fixed Points, Stabilizers, and Orbits}
@@ -140,7 +141,7 @@ We first look at the definition of a \textbf{fixed point} in relation to group a
     Let $X = \{1, 2, 3\}$, and let $\Sn{3}$ act on $X$. What are the fixed point(s) of each of the 6 actions in $\Sn{3}$?
 \end{exercise}
 
-With knowledge of fixed points, we can now look at the \textbf{stabilizer} of an element in $X$.
+We can now look at the \textbf{stabilizer} of an element in $X$.
 
 \begin{definition}
     Let $G$ be a group acting on a set $X$, and let $x \in X$. The \textbf{stabilizer of $x$ by $G$}\index{group action!stabilizer}, denoted $\Stab{G}{x}$, is the set of $g \in G$ such that $x$ is a fixed point of $g$.
@@ -517,9 +518,18 @@ An immediate consequence of this is that every element must have an order that i
 
 \section{Cauchy's Theorem}
 To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
+
 \begin{theorem}[Cauchy]\label{thrm-cauchy}\index{Cauchy's Theorem}
     Let $G$ be a finite group such that $|G| = np$ where $p$ is a prime and $n$ is a positive integer. Then $G$ contains an element of order $p$.
 \end{theorem}
+\begin{proofsketch}
+    Assuming a constant prime $p$, consider strong induction on $n$. Base case is trivial. For the induction step, we need to consider two cases.
+    \begin{itemize}
+        \item When $G$ is abelian, consider the cyclic subgroup $H = \langle x \rangle$ of $G$, and find an element of order $p$ in each case.
+        \item When $G$ is non-abelian, start by assuming the contrary that there is no element of order $p$. Then show that this implies $p$ does not divide $|H|$ for every proper subgroup $H$ by considering contrapositive of induction hypothesis. Thereafter use the class equation to show that $p$ divides $|\CenterGrp{G}|$, leading to a contradiction. Conclude that there is an element of order $p$.
+    \end{itemize}
+    Conclude that the statement holds for the induction step.
+\end{proofsketch}
 \begin{proof}
     We proceed with strong induction on $n$.
 
@@ -546,7 +556,9 @@ To end this chapter, we prove \textbf{Cauchy's Group Theorem}.
     \]
     Note that $|\Cl{g_i}| = [G:\Centralizer{G}{g_i}] = \frac{|G|}{|\Centralizer{G}{g_i}|} > 1$, which means that $|G| > |\Centralizer{G}{g_i}|$. Thus $\Centralizer{G}{g_i} \neq G$ for all $i$. Recall that $\Centralizer{G}{g_i}$ is a subgroup of $G$ (\myref{example-centralizer-of-a-subset}), so by the above observation, $p$ divides $[G:\Centralizer{G}{g_i}]$.
 
-    In the class equation, $p$ divides $|G|$ and $p$ divides $[G:\Centralizer{G}{g_i}]$, which means that $p$ must divide $|\CenterGrp{G}|$. But $\CenterGrp{G} < G$ and by above observation, $p$ does not divide any proper subgroup of $G$. Hence, $\CenterGrp{G}$ must be trivial. However $\CenterGrp{G} \neq \{e\}$ because that would imply $p$ divides $1$ which is the contradiction that we needed. We thus conclude that there exists an element of order $p$.
+    In the class equation, $p$ divides $|G|$ and $p$ divides $[G:\Centralizer{G}{g_i}]$, which means that $p$ must divide $|\CenterGrp{G}|$. But $\CenterGrp{G} < G$ and by above observation, $p$ does not divide any proper subgroup of $G$, which means $p$ does not divide $|\CenterGrp{G}|$, a contradiction. We thus conclude that there exists an element of order $p$.
+
+    Therefore a group of order $(k+1)p$ also has an element of order $p$. Result follows by mathematical induction.
 \end{proof}
 
 \begin{exercise}\label{exercise-group-of-order-multiple-of-prime-has-subgroup-of-prime-order}
