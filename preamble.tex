@@ -107,7 +107,9 @@
 \newcommand{\myref}[1]{\textbf{\crthypercref{#1}}}
 \newcommand{\myreffigures}[1]{\textbf{\cref{#1}}}
 
-\renewcommand{\qedsymbol}{\ensuremath{\blacksquare}}
+\newcommand{\qedproof}{\ensuremath{\blacksquare}}
+\newcommand{\qedsketch}{\ensuremath{\square}}
+\renewcommand{\qedsymbol}{\qedproof}  % Actually changes the QED symbol
 
 % Quote definitions
 \newcommand{\quoteattr}[3]{
@@ -228,6 +230,11 @@
 \newenvironment{partquestions}[1]
 {\begin{enumerate}[label=\textbf{(#1)}]}
 {\end{enumerate}}
+
+% Proof environments
+\newenvironment{proofsketch}
+{\begin{proof}[Sketch of Proof.]}
+{\renewcommand{\qedsymbol}{\qedsketch}\end{proof}\renewcommand{\qedsymbol}{\qedproof}}
 
 %=========== Custom Commands =============
 % Miscellaneous commands
