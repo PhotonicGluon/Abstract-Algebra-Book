@@ -144,7 +144,7 @@
 
 %=========== Theorem Things ==============
 % 'Results' declarations
-\newcommand{\makenewresultstyle}[2]{
+\newcommand{\makenewresultstyle}[3]{
     \declaretheoremstyle[
         headfont=\normalfont\bfseries,
         bodyfont=\normalfont,
@@ -152,9 +152,9 @@
         spaceabove=0pt,  % Space between previous paragraph and current block
         spacebelow=0pt,  % Space between current block and next paragraph
         mdframed={
+            linecolor=#3,
             skipabove=3pt,  % Space between top of block and beginning of coloured frame
             skipbelow=3pt,  % Space between bottom of block and beginning of coloured frame
-            hidealllines=true,
             backgroundcolor=#2,
             usetwoside=false,  % Needed for `leftmargin` and `rightmargin` to work
             leftmargin=-5pt,
@@ -165,23 +165,23 @@
     ]{#1-style}
 }
 
-\makenewresultstyle{theorem}{DarkSeaGreen2}
+\makenewresultstyle{theorem}{DarkSeaGreen2}{Green4}
 \declaretheorem[name=Theorem,style=theorem-style,within=section]{theorem}
 \renewcommand*{\thetheorem}{\arabic{chapter}.\arabic{section}.\arabic{theorem}}
 
-\makenewresultstyle{lemma}{Honeydew2}
+\makenewresultstyle{lemma}{Honeydew2}{SeaGreen3}
 \declaretheorem[style=lemma-style,sibling=theorem]{lemma}
 
-\makenewresultstyle{proposition}{Honeydew1}
+\makenewresultstyle{proposition}{Honeydew1}{SpringGreen4}
 \declaretheorem[style=proposition-style,sibling=theorem]{proposition}
 
-\makenewresultstyle{corollary}{DarkSeaGreen1}
+\makenewresultstyle{corollary}{DarkSeaGreen1}{SeaGreen4}
 \declaretheorem[style=corollary-style,sibling=theorem]{corollary}
 
-\makenewresultstyle{definition}{LightCyan1}
+\makenewresultstyle{definition}{LightCyan1}{Cyan4}
 \declaretheorem[style=definition-style,sibling=theorem]{definition}
 
-\makenewresultstyle{axiom}{Thistle2}
+\makenewresultstyle{axiom}{Thistle2}{Plum4}
 \declaretheorem[style=axiom-style,sibling=theorem]{axiom}
 
 % 'Questions' declarations
@@ -376,13 +376,6 @@
     \tableofcontents
 }
 \makeatother
-
-%======= Customise Draft Watermark =======
-\newcommand{\setasdraft}{
-    \usepackage{draftwatermark}
-    \SetWatermarkLightness{0.95}
-    \SetWatermarkScale{1}
-}
 
 %============= Index Pages ===============
 \makeindex[options= -s index-style.ist]
