@@ -1,10 +1,15 @@
 # IMPORTS
+from pathlib import Path
+
 from numpy import sin, cos, arange, linspace, pi
 from matplotlib import colors as mcolors
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # CONSTANTS
+BANNER_DIR = Path("banner")
+IMAGE_FILE_NAME = "banner-background.png"
+
 WIDTH = 1600
 HEIGHT = 900
 ASPECT_RATIO = HEIGHT / WIDTH
@@ -107,5 +112,5 @@ draw_inscribed_polygon(NUM_CUSPS, offset=OFFSET, line_colour=POLYGON_LINE_COLOUR
                        fill_alpha=POLYGON_FILL_ALPHA)
 
 # Show result
-plt.show()
+plt.savefig(BANNER_DIR / IMAGE_FILE_NAME)
 plt.close()
