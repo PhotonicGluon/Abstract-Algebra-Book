@@ -1,10 +1,16 @@
 # IMPORTS
+from pathlib import Path
+
 from numpy import sin, cos, arange, linspace, pi
 from matplotlib import colors as mcolors
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # CONSTANTS
+COVER_DIR = Path("cover")
+COVER_PAGE_FILE_NAME = "cover-page-background.svg"
+COVER_FULL_FILE_NAME = "cover-full-background.svg"
+
 SCALE_FACTOR = 10
 NUM_PAGES = 700  # Todo: check and update
 
@@ -108,20 +114,28 @@ def draw_inscribed_polygon(num_cusps, offset=pi / 7, line_colour="#ffffff", line
              zorder=1e6)  # High z-order to make polygon be on top
 
 
+def plot_figure(width, height, filename, x_range, y_range):
+    # Initialize plotting figure
+    plt.figure(figsize=(width / DPI, height / DPI), dpi=DPI, facecolor="black")
+    plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
+    plt.xlim(x_range)
+    plt.ylim(y_range)
+    plt.axis("off")
+
+    # Draw things
+    draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
+    draw_inscribed_polygon(NUM_CUSPS, offset=OFFSET, line_colour=POLYGON_LINE_COLOUR, line_alpha=POLYGON_LINE_ALPHA,
+                           line_thickness=POLYGON_LINE_THICKNESS, fill_colour=POLYGON_FILL_COLOUR,
+                           fill_alpha=POLYGON_FILL_ALPHA)
+
+    # Save result
+    plt.savefig(COVER_DIR / filename)
+    plt.close()
+
+
 # MAIN CODE
-# Initialize plotting figure
-plt.figure(figsize=(FULL_WIDTH / DPI, FULL_HEIGHT / DPI), dpi=DPI, facecolor="black")
-plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
-plt.xlim(MIN_X, MAX_X)
-plt.ylim(MIN_Y, MAX_Y)
-plt.axis("off")
-
-# Draw things
-draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
-draw_inscribed_polygon(NUM_CUSPS, offset=OFFSET, line_colour=POLYGON_LINE_COLOUR, line_alpha=POLYGON_LINE_ALPHA,
-                       line_thickness=POLYGON_LINE_THICKNESS, fill_colour=POLYGON_FILL_COLOUR,
-                       fill_alpha=POLYGON_FILL_ALPHA)
-
-# Show result
-plt.show()
-plt.close()
+print("Creating cover page only")
+plot_figure(COVER_WIDTH, COVER_HEIGHT, COVER_PAGE_FILE_NAME, (COVER_MIN_X, COVER_MAX_X), (COVER_MIN_Y, COVER_MAX_Y))
+print("Creating full cover")
+plot_figure(FULL_WIDTH, FULL_HEIGHT, COVER_FULL_FILE_NAME, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
+print("Done")

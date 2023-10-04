@@ -72,7 +72,7 @@ Before looking at a more interesting type of subnormal series, we have to introd
     Let $G$ be a group and $N \lhd G$. Then $N$ is said to be a \textbf{maximal normal subgroup}\index{maximal normal subgroup} of $G$ if there does \textbf{not} exist a $H \lhd G$ such that $N < H < G$.
 \end{definition}
 \begin{remark}
-    This means that if $N$ is a maximal normal subgroup of $G$ and there exists a subgroup $H$ such that $N \leq H \leq G$, then either $H = N$ or $H = G$.
+    This means that if $N$ is a maximal normal subgroup of $G$ and there exists a normal subgroup $H$ such that $N \leq H \leq G$, then either $H = N$ or $H = G$.
 \end{remark}
 
 There is an important consequence that we examine here.
@@ -83,7 +83,7 @@ There is an important consequence that we examine here.
 \begin{proof}
     We prove the forward direction first; assume that $N$ is a maximal normal subgroup of $G$. Suppose there exists a normal subgroup of $G/N$. Then by \myref{problem-subgroup-of-quotient-group-is-quotient-group} we know that that subgroup takes the form of $H/N$, where $N \leq H \leq G$, such that $H/N \unlhd G/N$. Since $N$ is a maximal normal subgroup this means that $H = N$ or $H = G$. In the first case $H/N \cong 1$ and in the second $H / N = G/N$. Hence $G/N$ only has two normal subgroups, the trivial subgroup and itself, meaning that it has no non-trivial proper normal subgroups and is hence simple.
     
-    We now prove the reverse direction; assume that $G/N$ is simple. Suppose there exists a $H \leq G$ such that $N \leq H \leq G$. By \myref{problem-subgroup-of-quotient-group-is-quotient-group} we know $H/N \leq G/N$. In fact, since $N \leq H \leq G$ we know $N \unlhd H \unlhd G$ which means $H/N \unlhd G/N$. As $G/N$ is simple, thus $H/N \cong 1$ or $H/N = G/N$. The case where $H/N \cong 1$ occurs if and only if $H = N$ and the case where $H/N = G/N$ occurs when $H = G$. Hence, this means that $N$ is a maximal normal subgroup of $G$.
+    We now prove the reverse direction; assume that $G/N$ is simple. Suppose there exists a $H \unlhd G$ such that $N \leq H \leq G$. By \myref{problem-subgroup-of-quotient-group-is-quotient-group} we know $H/N \leq G/N$. In fact, since $H \lhd G$, $N \lhd G$, and $N \subseteq H$, we know $H/N \unlhd G/N$ by the Third Isomorphism Theorem (\myref{thrm-isomorphism-3}), statement 2. As $G/N$ is simple, thus $H/N \cong 1$ or $H/N = G/N$. The case where $H/N \cong 1$ occurs if and only if $H = N$ and the case where $H/N = G/N$ occurs when $H = G$. Hence, this means that $N$ is a maximal normal subgroup of $G$.
 \end{proof}
 
 \begin{exercise}
@@ -181,6 +181,9 @@ Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes ca
     \end{enumerate}
     where an expression like $H'(H \cap K')$ denotes the subset product of $H'$ and $H \cap K'$.
 \end{lemma}
+\begin{proofsketch}
+    First show that $\mathcal{A} = (H' \cap K)(H \cap K')$ is a normal subgroup of $H \cap K$. Then construct the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$, $hc \mapsto h\mathcal{A}$ where $h \in H'$ and $c \in H \cap K$, verifying that it is a well-defined homomorphism. Showing that the kernel of this homomorphism is $H'(H \cap K')$ and knowing that the kernel is a normal subgroup of $H'(H\cap K)$ is sufficient to prove statement 1 of the lemma. Constructing a similar well-defined homomorphism $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, and finding its kernel proves statement 2. Finally, using the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) on both homomorphisms proves statement 3.
+\end{proofsketch}
 \begin{proof}[Proof (see {\cite[Lemma I.8.9]{hungerford_1980}})]
     We first note that $H \cap K$ is a non-empty subset of $H$ since $e \in H \cap K$. As $H'$ is a normal subgroup of any non-empty subset of $H$, including $H \cap K$, thus $H' \unlhd H \cap K$. So $H' \cap (H \cap K) \unlhd H \cap K$ by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 4. Since $H'\unlhd H$ we know $H' \subseteq H$, and so $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \unlhd H \cap K$. Similarly, $H \cap K' \unlhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Diamond Isomorphism Theorem (\myref{corollary-subgroup-product-is-normal-subgroup-if-subgroups-are-normal}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, let $\mathcal{A} = (H' \cap K)(H \cap K')$.
     
@@ -221,13 +224,10 @@ Before we continue, we look at \textbf{Zassenhaus' Lemma}, which is sometimes ca
     
     A similar argument follows for a similar map $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, which yields $\im\psi = (H\cap K)/\mathcal{A}$ and $\ker\psi = K'(H\cap K)$ which proves statement 2.
     
-    Finally, we apply the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) to both $\phi$ and $\psi$, yielding
+    Finally, we apply the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) to both $\phi$ and $\psi$, yielding statement 3,
     \[
-        \frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{H\cap K}{\mathcal{A}} 
-        \text{ and }
-        \frac{K'(H\cap K)}{K'(H'\cap K)} \cong \frac{H\cap K}{\mathcal{A}}
+        \frac{H'(H\cap K)}{H'(H\cap K')} \cong \frac{H\cap K}{\mathcal{A}} \cong \frac{K'(H\cap K)}{K'(H'\cap K)}.\qedhere
     \]
-    whence statement 3 immediately follows.
 \end{proof}
 
 \section{The Schreier Refinement Theorem and Jordan-H\"older Theorem}
