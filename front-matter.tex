@@ -1,6 +1,15 @@
-% Define roman numerals for front matter
-\makeatletter\newcommand*{\rom}[1]{\Ifstr{#1}{0}{0}{\expandafter\@slowromancap\romannumeral #1@}}\makeatother
+%=========== Custom Commands =============
+% Roman numerals
+\makeatletter
+\newcommand*{\rom}[1]{\Ifstr{#1}{0}{0}{\expandafter\@slowromancap\romannumeral #1@}}
+\makeatother
 
+% Text for writing the edition
+\newcommand*{\editiontext}{
+    \editionnumber~Edition~\Ifstr{\buildnumber}{}{}{(Build \buildnumber)}
+}
+
+%============= Front Matter ==============
 % Half title page
 \thispagestyle{empty}
 \null\vspace{4cm}
@@ -20,7 +29,7 @@
         {\fontsize{48pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
 
         \vspace{0.5cm}
-        {\fontsize{16pt}{0pt}\selectfont Version \version}\\
+        {\fontsize{16pt}{0pt}\selectfont \editiontext}\\
         
         \vspace{1.25cm}
         {\fontsize{20pt}{0pt}\selectfont Kan Onn Kit}\\
@@ -42,7 +51,7 @@
     \vspace{5cm}
 
     \textbf{A Complete Introduction To Abstract Algebra}\par
-    Version \version
+    \editiontext
     \vspace{0.3cm}
 
     Copyright \copyright \ 2022 -- \the\year\ by Kan Onn Kit\par
