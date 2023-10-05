@@ -34,28 +34,6 @@ We list some basic facts about divisibility that are not difficult to prove.
     \item If $a \vert b$ and $b \vert a$ then $a = b$.
 \end{itemize}
 
-\begin{definition}
-    An integer $p > 1$ with no positive divisors other than 1 and itself is called \textbf{prime}\index{prime}. Every other number greater than 1 is called \textbf{composite}\index{composite}.
-\end{definition}
-\begin{example}
-    The integers 2, 3, 5, 7, 11, and 13 are all prime, but 4, 6, 8, and 9 are composite.
-\end{example}
-\begin{remark}
-    The number 1 is considered neither prime nor composite.
-\end{remark}
-
-\newpage
-
-Primes are useful since they can construct any positive integer $n>1$ uniquely.
-
-\begin{theorem}[Fundamental Theorem of Arithmetic]\label{thrm-fundamental-theorem-of-arithmetic}
-    Any integer $n > 1$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
-\end{theorem}
-
-\begin{exercise}
-    Express 44100 as a product of primes.
-\end{exercise}
-
 \section{Euclid's Division Lemma}
 \begin{lemma}[Euclid's Division Lemma]\label{lemma-euclid-division}\index{Euclid's Division Lemma}
     Given two integers $n$ and $d$, with $d \neq 0$ being the \textbf{divisor}\index{divisor}, there exist unique integers $q$ and $r$ such that $n = qd + r$ and $0 \leq r < |d|$, where $|d|$ denotes the absolute value of $d$.
@@ -63,7 +41,7 @@ Primes are useful since they can construct any positive integer $n>1$ uniquely.
     Here, $n$ is called the \textbf{dividend}\index{dividend}, $q$ is called the \textbf{quotient}\index{quotient}, and $r$ is called the \textbf{remainder}\index{remainder}.
 \end{lemma}
 \begin{remark}
-    This is also known as \textbf{the division algorithm}\index{division algorithm} (e.g. \cite[p.~4]{dummit_foote_2004}) or \textbf{the division theorem}\index{division theorem} (e.g. \cite[\S 21]{clark_1984}).
+    This is also known as \textbf{the division algorithm}\index{division algorithm} (e.g. \cite[p.~4]{dummit_foote_2004}, \cite[p.~3]{gallian_2016}) or \textbf{the division theorem}\index{division theorem} (e.g. \cite[\S 21]{clark_1984}).
 \end{remark}
 
 \begin{example}
@@ -99,21 +77,17 @@ In number theory, the idea of a greatest common divisor and the least common mul
     Find $\gcd(-112, -35)$.
 \end{exercise}
 
-\begin{definition}
-    Two non-zero integers $m$ and $n$ are said to be \textbf{coprime}\index{coprime} to each other if and only if $\gcd(m, n) = 1$.
-\end{definition}
-\begin{example}
-    17 and 18 are coprime since $\gcd(17, 18) = 1$.
-\end{example}
-\begin{example}
-    25 and 27 are coprime since $\gcd(25, 27) = 1$.
-\end{example}
-\begin{example}
-    12 and 24 are not coprime since $\gcd(12, 24) = 2 \neq 1$.
-\end{example}
-\begin{example}
-    10 and 15 are not coprime since $\gcd(10, 15) = 5 \neq 1$.
-\end{example}
+We note some properties of the GCD.
+\begin{lemma}[B\'{e}zout]\label{lemma-bezout}\index{B\'{e}zout's Lemma}
+    Let $m$ and $n$ be non-zero integers such that $\gcd(m, n) = d$. Then there exist integers $\lambda$ and $\mu$ such that $\lambda m + \mu n = d$. Moreover, the integers of the form $am + bn$ (where $a$ and $b$ are integers) are multiples of $d$.
+\end{lemma}
+
+\begin{proposition}\label{prop-gcd-divides-common-divisor}
+    Let $a$, $b$, and $d$ are integers. If $d \vert a$ and $d \vert b$ then $d \vert \gcd(a, b)$.
+\end{proposition}
+\begin{proof}
+    We know $\gcd(a,b) \vert a$ and $\gcd(a,b) \vert b$ by definition of GCD. By B\'{e}zout's lemma (\myref{lemma-bezout}) there exist integers $\lambda$ and $\mu$ such that $\lambda a + \lambda b = \gcd(a,b)$. Now since $d \vert a$ and $d \vert b$ we must have $d \vert \lambda a + \mu b$ by properties of division. Therefore $d \vert \gcd(a,b)$.
+\end{proof}
 
 We now look at the lowest common multiple of two integers.
 \begin{definition}
@@ -135,22 +109,13 @@ We now look at the lowest common multiple of two integers.
     Find $\lcm(-112, -35)$.
 \end{exercise}
 
-We note some important results regarding the GCD and LCM.
-\begin{lemma}[B\'{e}zout]\label{lemma-bezout}\index{B\'{e}zout's Lemma}
-    Let $m$ and $n$ be non-zero integers such that $\gcd(m, n) = d$. Then there exist integers $\lambda$ and $\mu$ such that $\lambda m + \mu n = d$. Moreover, the integers of the form $am + bn$ (where $a$ and $b$ are integers) are multiples of $d$.
-\end{lemma}
+We note one property of the LCM.
 \begin{proposition}\label{prop-product-of-gcd-and-lcm}
     Let $m$ and $n$ be non-zero integers. Then
     \[
         |mn| = \gcd(m,n) \times \lcm(m,n).
     \]
 \end{proposition}
-\begin{proposition}\label{prop-gcd-divides-common-divisor}
-    Let $a$, $b$, and $d$ are integers. If $d \vert a$ and $d \vert b$ then $d \vert \gcd(a, b)$.
-\end{proposition}
-\begin{proof}
-    We know $\gcd(a,b) \vert a$ and $\gcd(a,b) \vert b$ by definition of GCD. By B\'{e}zout's Lemma (\myref{lemma-bezout}) there exist integers $\lambda$ and $\mu$ such that $\lambda a + \lambda b = \gcd(a,b)$. Now since $d \vert a$ and $d \vert b$ we must have $d \vert \lambda a + \mu b$ by properties of division. Therefore $d \vert \gcd(a,b)$.
-\end{proof}
 
 \begin{exercise}
     Suppose $m = 42$ and $n = 70$.
@@ -160,6 +125,98 @@ We note some important results regarding the GCD and LCM.
         \item Find a pair of integers $x$ and $y$ such that $mx + ny = d$.
     \end{partquestions}
 \end{exercise}
+
+\section{Primes and Coprimality}
+\begin{definition}
+    An integer $p > 1$ with no positive divisors other than 1 and itself is called \textbf{prime}\index{prime}. Every other number greater than 1 is called \textbf{composite}\index{composite}.
+\end{definition}
+\begin{example}
+    The integers 2, 3, 5, 7, 11, and 13 are all prime, but 4, 6, 8, and 9 are composite.
+\end{example}
+\begin{remark}
+    The number 1 is considered neither prime nor composite.
+\end{remark}
+
+Primes are useful since they can construct any positive integer $n>1$ uniquely.
+
+\begin{theorem}[Fundamental Theorem of Arithmetic]\label{thrm-fundamental-theorem-of-arithmetic}
+    Any integer $n > 1$ can be expressed as the product of one or more prime numbers, uniquely up to the order in which they appear.
+\end{theorem}
+
+\begin{exercise}
+    Express 44100 as a product of primes.
+\end{exercise}
+
+We now look at coprime integers.
+\begin{definition}
+    Two non-zero integers $m$ and $n$ are said to be \textbf{coprime}\index{coprime} to each other if and only if $\gcd(m, n) = 1$.
+\end{definition}
+\begin{example}
+    17 and 18 are coprime since $\gcd(17, 18) = 1$.
+\end{example}
+\begin{example}
+    25 and 27 are coprime since $\gcd(25, 27) = 1$.
+\end{example}
+\begin{example}
+    12 and 24 are not coprime since $\gcd(12, 24) = 2 \neq 1$.
+\end{example}
+\begin{example}
+    10 and 15 are not coprime since $\gcd(10, 15) = 5 \neq 1$.
+\end{example}
+
+We note two properties of coprime numbers.
+\begin{proposition}\label{prop-prime-is-coprime-or-divisor}
+    A positive integer $n > 1$ is prime if and only if $\gcd(a,n) = 1$ or $n \vert a$ for all integers $a$.
+\end{proposition}
+\begin{proof}
+    For the forward direction, assume $n$ is prime. Then for any integer $a$ we must have $\gcd(a, n) = 1$ or $\gcd(a, n) = n$. If $\gcd(a,n) = n$ this means that $n \vert a$ (since the GCD of $a$ and $n$ must divide $a$); otherwise we obtain $\gcd(a,n) = 1$ as required.
+
+    For the reverse direction, suppose that $\gcd(a,n) = 1$ or $n \vert a$ for all integers $a$. In particular, suppose the integer $k$ divides $n$, i.e. $k \vert n$, meaning $\gcd(k, n) = k$. So either $\gcd(k,n) = 1 = k$ or $n \vert k$. In the first case, we have $k = 1$. In the second case we have $k \vert n$ and $n \vert k$ simultaneously, meaning $k = n$. Therefore $n$ has no positive divisors other than 1 and itself, meaning it is prime.
+\end{proof}
+
+\begin{theorem}\label{theorem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b}
+    Let $n$, $a$, and $b$ be integers. If $n \vert ab$, and $n$ is coprime with $a$, then $n \vert b$.
+\end{theorem}
+\begin{proof}
+    We present a proof using induction here; \myref{problem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b} (later) will produce a proof using B\'ezout's lemma (\myref{lemma-bezout}).
+
+    Suppose $n \vert ab$, meaning $ab = kn$ for some integer $k$. Since $x\vert y$ means $x\vert yz$ for all integers $z$, we see $x \vert -y$ (and $-x \vert y$), meaning divisibility is independent of the signs of the integers. Thus, without loss of generality, assume $a$, $b$, $k$, and $n$ are all positive. We induct on the value of $ab$.
+
+    When $ab = 1$, if $n \vert 1$, this means $n = 1$ since 1 divides any integer. In particular, this means that $n \vert b$.
+
+    Now assume that the theorem holds for all (positive) integers smaller than $ab$. We need to show that the theorem holds for $ab$. There are 3 cases.
+    \begin{itemize}
+        \item $\boxed{n=a}$ Given that $n = a$ and $n$ is coprime with $a$, this means that $\gcd(n,n) = 1$ which shows that $n = 1$. As 1 divides all integers, thus $n \vert b$.
+        
+        \item $\boxed{n<a}$ As $ab = kn$ we see that
+        \[
+            (a-n)b = ab - nb = kn - nb = n(k-b)
+        \]
+        which means $n$ divides $(a-n)b$. Now suppose $d$ is the GCD of $a-n$ and $n$. By divisibility properties this means that $d$ divides their sum $(a-n)+n = a$. Thus $d$ divides both $a$ and $n$, which means $d = 1$ since $a$ and $n$ are coprime. Since $0 < (a-n)b < ab$, Applying induction hypothesis on $a-n$ and $b$ yields required result.
+        
+        \item $\boxed{n>a}$ As $ab = kn$ we see that
+        \[
+            (n-a)k = nk - ak = ab - ak = a(b-k)
+        \]
+        which means $a$ divides $n-a$. By similar argument as above we see $a$ and $n-a$ are coprime. Since $0 < a(b-k)<ab$, applying induction hypothesis on $a$ and $n-a$ yields $n-a$ divides $b-k$. Thus $b-k = q(n-a)$ for some integer $q$. Therefore
+        \[
+            (n-a)k = a(b-k) = aq(n-a)
+        \]
+        so dividing by $n-a$ means $aq = k$. Hence $ab = kn = aqn$ which thus means $b = qn$, i.e. $n$ divides $b$.
+    \end{itemize}
+    In all three cases we have $n \vert b$. Thus the theorem holds for $ab$.
+
+    Therefore by induction the theorem is proven.
+\end{proof}
+
+We note one corollary of this theorem, which is often cited as \textbf{Euclid's Lemma}\index{Euclid's Lemma}.
+
+\begin{corollary}[Euclid's Lemma]\label{corollary-euclid}
+    Let $p$ be a prime, and let $a$ and $b$ be integers. If $p \vert ab$ then $p \vert a$ or $p \vert b$.
+\end{corollary}
+\begin{proof}
+    If $p$ is prime, then either $p$ divides $a$ or $p$ does not divide $a$. The case where $p$ divides $a$ yields the conclusion, so we work assuming that $p$ does not divide $a$. By \myref{prop-prime-is-coprime-or-divisor} this means that $a$ and $p$ are coprime, so by \myref{theorem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b} we know that $p$ divides $b$.
+\end{proof}
 
 \newpage
 
@@ -190,4 +247,8 @@ We note some important results regarding the GCD and LCM.
         \item Prove that $\gcd(a^2, b^2) = \gcd(a,b)^2$.
         \item Find a similar expression for $\lcm(a^2, b^2)$.
     \end{partquestions}
+\end{problem}
+
+\begin{problem}\label{problem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b}
+    Prove \myref{theorem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b} by considering B\`ezout's lemma (\myref{lemma-bezout}).
 \end{problem}
