@@ -1,5 +1,30 @@
 \section{Polynomial Rings}
 \begin{questions}
+    \item For simplicity let
+    \begin{align*}
+        f(x)(g(x)h(x)) &= \sum_{k=0}^{m+n+l}u_kx^k\\
+        (f(x)g(x))h(x) &= \sum_{k=0}^{m+n+l}v_kx^k
+    \end{align*}
+    for some $u_k, v_k \in \R$.
+    \begin{itemize}
+        \item On one hand,
+        \begin{align*}
+            u_k &= \sum_{r+s=k}\left(a_r\left(\sum_{p+q=s}b_pc_q\right)\right) & (\text{Definition of polynomial multiplication})\\
+            &= \sum_{r+s=k}\left(\sum_{p+q=s}a_rb_pc_q\right)\\
+            &= \sum_{p+q+r=k}a_rb_pc_q\\
+            &= \sum_{p+q+r=k}a_pb_qc_r & (\text{Order of }p,\;q,\;r \text{ is arbitrary})
+        \end{align*}
+
+        \item On another hand,
+        \begin{align*}
+            v_k &= \sum_{r+s=k}\left(\left(\sum_{p+q=r}a_pb_q\right)c_s\right) & (\text{Definition of polynomial multiplication})\\
+            &= \sum_{r+s=k}\left(\sum_{p+q=r}a_pb_qc_s\right)\\
+            &= \sum_{p+q+s=k}a_pb_qc_s\\
+            &= \sum_{p+q+r=k}a_pb_qc_r & (s\text{ is dummy variable})
+        \end{align*}
+    \end{itemize}
+    Therefore $u_k = v_k$ for all $k$, meaning that $f(x)(g(x)h(x)) = (f(x)g(x))h(x)$.
+
     \item Let $p(x), q(x) \in R$. Note
     \[
         \phi_a(p(x)+q(x)) = p(a) + q(a) = \phi_a(p(x)) + \phi_a(q(x))

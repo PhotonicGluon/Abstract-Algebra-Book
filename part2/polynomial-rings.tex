@@ -20,18 +20,86 @@ Note that in the above definition, we did not explicitly state where the coeffic
     \[
         R[x] = \{a_0 + a_1x + \cdots + a_nx^n \vert n \in \mathbb{N} \cup \{0\}, a_i \in R\},
     \]
-    where for $f(x) = a_0 + \cdots + a_mx^m, g(x) = b_0 + \cdots + b_nx^n \in R[x]$, and assuming $m \leq n$, we define
+    where for $f(x) = a_0 + \cdots + a_mx^m, g(x) = b_0 + \cdots + b_nx^n \in R[x]$, and assuming $m \leq n$, we define addition\index{polynomial!addition} and multiplication\index{polynomial!multiplication} by
     \begin{align*}
-        f(x) + g(x) &= \sum_{i=0}^n\left((a_i+b_i)x^i\right),\\
-        f(x)g(x) &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k a_ib_{k-i}\right)x^k\right),
+        f(x) + g(x) &= \sum_{i=0}^n\left((a_i+b_i)x^i\right)\\
+        f(x)\times g(x) &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k a_ib_{k-i}\right)x^k\right)
     \end{align*}
-    where $a_l = 0$ for all $l > m$.
+    respectively, where $a_l = 0$ for all $l > m$.
 \end{definition}
 \begin{proposition}
-    A polynomial ring is a commutative ring.
+    The polynomial ring $R[x]$ is a commutative ring.
 \end{proposition}
-\begin{proof}[Proof (cf. {\cite{proofwiki_polynomial-ring-is-commutative}})]
-    Let $R[x]$ be a polynomial ring, and let $f(x) = a_0 + \cdots + a_mx^m, g(x) = b_0 + \cdots + b_nx^n \in R[x]$, and $m \leq n$. We show $f(x)g(x) = g(x)f(x)$.
+\begin{proof}
+    We first prove that $R[x]$ is indeed a ring, before proving commutativity of multiplication of polynomials. For brevity, let $f(x), g(x), h(x) \in R[x]$ where
+    \begin{align*}
+        f(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_mx^m,\\
+        g(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_nx^n,\\
+        h(x) &= c_0 + c_1x + c_2x^2 + \cdots + c_lx^l,
+    \end{align*}
+    each $a_i$, $b_j$, and $c_k$ are elements from $R$, the integers $m$, $n$, and $l$ are all non-negative, and $a_m$, $b_n$, and $c_l$ are all non-zero. Without loss of generality, assume $m \geq n \geq l$, and `pad' the polynomials $g(x)$ and $h(x)$ with extra terms so that the highest power in $x$ is $m$.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: We show that $(R[x], +)$ is an abelian group.
+        \begin{itemize}
+            \item \textbf{Closure}: We see
+            \[
+                f(x) + g(x) = \sum_{i=0}^n\left((a_i+b_i)x^i\right)
+            \]
+            and since $R$ is a ring, thus $a_i+b_i \in R$, meaning $f(x) + g(x)$ is another polynomial in $R[x]$. Therefore $R[x]$ is closed under addition.
+            
+            \item \textbf{Associativity}: Note
+            \begin{align*}
+                f(x) + (g(x) + h(x)) &= f(x) + \sum_{i=0}^m\left((b_i+c_i)x^i\right)\\
+                &= \sum_{i=0}^m\left((a_i + (b_i + c_i))x^i\right)\\
+                &= \sum_{i=0}^m\left(((a_i + b_i) + c_i)x^i\right) & (+ \text{ is associative in }R)\\
+                &= \sum_{i=0}^m\left((a_i+b_i)x^i\right) + h(x)\\
+                &= (f(x) + g(x)) + h(x)
+            \end{align*}
+            so addition of functions is associative.
+            
+            \item \textbf{Identity}: Note that $0 \in R$ is also the identity in $R[x]$, since
+            \[
+                0 + f(x) = \sum_{i=0}^m\left((0+a_i)x^i\right) = \sum_{i=0}^m\left(a_ix^i\right) = f(x).
+            \]
+            
+            \item \textbf{Inverse}: For the polynomial $f(x)$, construct the polynomial $-f(x)$ where the coefficient of $x^i$ in $-f(x)$ is $-a_i$. Then
+            \[
+                f(x) + (-f(x)) = \sum_{i=0}^m\left((a_i+(-a_i))x^i\right) \sum_{i=0}^m\left(0x^i\right) = 0
+           \]
+           so $-f(x)$ is indeed the additive inverse of $f(x)$.
+            
+            \item \textbf{Commutativity}: One sees clearly that
+            \[
+                f(x) + g(x) = \sum_{i=0}^m\left((a_i+b_i)x^i\right) = \sum_{i=0}^m\left((b_i + a_i)x^i\right) = g(x) + f(x)
+            \]
+            since addition in $R$ is commutative. Therefore addition in $R[x]$ is also commutative.
+        \end{itemize}
+
+        \item \textbf{Multiplication-Subgroup}: We show that $(R[x], \times)$ is a subgroup.
+        \begin{itemize}
+            \item \textbf{Closure}: We note that
+            \[
+                f(x)\times g(x) = \sum_{k=0}^{m+n}\left(\underbrace{\left(\sum_{i=0}^k a_ib_{k-i}\right)}_{\text{In }R}x^k\right)
+            \]
+            so $f(x) \times g(x)$ is another polynomial in $R$.
+            
+            \item \textbf{Associativity}: \myref{exercise-polynomial-multiplication-is-associative} (later) proves that polynomial multiplication is associative.
+        \end{itemize}
+
+        \item \textbf{Distributive}: We finally show that $\times$ distributes over $+$. We only show that $f(x)(g(x) + h(x)) = f(x)g(x) + f(x)h(x)$ as we will later prove that $R[x]$ is commutative. Note
+        \begin{align*}
+            f(x)(g(x) + h(x)) &= \sum_{i=0}^m\left(\left(\sum_{j=0}^ia_j(b_{i-j}+c_{i-j})\right)x^i\right)\\
+            &= \sum_{i=0}^m\left(\left(\sum_{j=0}^i(a_jb_{i-j}+a_jc_{i-j})\right)x^i\right) & (\text{Distribute in }R)\\
+            &= \sum_{i=0}^m\left(\sum_{j=0}^i(a_jb_{i-j}x^i+a_jc_{i-j}x^i)\right)\\
+            &= \sum_{i=0}^m\left(\sum_{j=0}^ia_jb_{i-j}x^i + \sum_{j=0}^ia_jc_{i-j}x^i\right)\\
+            &= \sum_{i=0}^m\left(\sum_{j=0}^ia_jb_{i-j}x^i\right) + \sum_{i=0}^m\left(\sum_{j=0}^ia_jc_{i-j}x^i\right)\\
+            &= f(x)g(x) + f(x)h(x)
+        \end{align*}
+        which is what was needed to be shown.
+    \end{itemize}
+    Therefore $R[x]$ is a ring.
+
+    Now we prove commutativity of multiplication. Let $f(x) = a_0 + \cdots + a_mx^m, g(x) = b_0 + \cdots + b_nx^n \in R[x]$, and $m \leq n$. Then
     \begin{align*}
         f(x)g(x) &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k a_ib_{k-i}\right)x^k\right)\\
         &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k b_{k-i}a_i\right)x^k\right) & (R\text{ is commutative})\\
@@ -40,9 +108,6 @@ Note that in the above definition, we did not explicitly state where the coeffic
     \end{align*}
     which therefore means that $R[x]$ is a commutative ring.
 \end{proof}
-\begin{exercise}
-    Let $R$ be a ring. The \textbf{evaluation homomorphism}\index{evaluation homomorphism} is $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$ and $a \in R$. Prove that $\phi_a$ is indeed a ring homomorphism.
-\end{exercise}
 
 Let's look at some examples of polynomial rings.
 \begin{example}
@@ -58,6 +123,13 @@ Let's look at some examples of polynomial rings.
     \]
 \end{example}
 
+\begin{exercise}\label{exercise-polynomial-multiplication-is-associative}
+    Prove that polynomial multiplication is associative.\newline
+    (\textit{Hint: $\displaystyle \sum_{i=0}^k a_ib_{k-i} = \sum_{i+j=k} a_ib_j$. The second sum is the sum over all non-negative integers $i$ and $j$ with the property that $i+j=k$.})
+\end{exercise}
+\begin{exercise}
+    Let $R$ be a ring. The \textbf{evaluation homomorphism}\index{evaluation homomorphism} is $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$ and $a \in R$. Prove that $\phi_a$ is indeed a ring homomorphism.
+\end{exercise}
 \begin{exercise}
     Let $I$ be a principal ideal of $\Z[x]$ generated by the polynomial $x^2 + 3x - 1$. Simplify $\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)$ in the quotient ring $\Z[x]/I$.
 \end{exercise}
