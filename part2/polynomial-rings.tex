@@ -2,7 +2,8 @@
 Polynomial rings are an important part of algebra and in ring theory, since polynomials are ubiquitous in modern algebra. We explore polynomials and polynomial rings in this chapter.
 
 \section{What is a Polynomial Ring?}
-We first define polynomials.
+One of the most familiar concepts that one encounters in algebra are polynomials.
+
 \begin{definition}
     A \textbf{polynomial}\index{polynomial} is an expression consisting of \textbf{variables}\index{polynomial!variable} (or \textbf{indeterminates}\index{polynomial!indeterminate}) and coefficients, that involves only the operations of addition, subtraction, multiplication, and positive-integer powers of variables.
 \end{definition}
@@ -14,30 +15,63 @@ We first define polynomials.
     where $a_0, a_1, a_2, \dots, a_n$ are called the \textbf{coefficients}\index{polynomial!coefficient} of the polynomial.
 \end{definition}
 
-Note that in the above definition, we did not explicitly state where the coefficients originate from; we do so now in the definition for a polynomial ring.
+We are most familiar with polynomials with integer coefficients, rational coefficients, and real coefficients. We abstract the idea of coefficients to those belonging in a ring.
+
 \begin{definition}
-    Let $R$ be a commutative ring with identity, where $1 \neq 0$. Then the \textbf{polynomial ring}\index{polynomial ring} in \textbf{indeterminate}\index{indeterminate} (or \textbf{variable}\index{variable}) $x$ and coefficients in $R$ is
+    Let $R$ be a commutative ring. The set
     \[
-        R[x] = \{a_0 + a_1x + \cdots + a_nx^n \vert n \in \mathbb{N} \cup \{0\}, a_i \in R\},
+        R[x] = \left\{\sum_{i=0}^n a_ix^i \vert n \in \mathbb{N} \cup \{0\}, \; a_i \in R\right\},
     \]
-    where for $f(x) = a_0 + \cdots + a_mx^m, g(x) = b_0 + \cdots + b_nx^n \in R[x]$, and assuming $m \leq n$, we define addition\index{polynomial!addition} and multiplication\index{polynomial!multiplication} by
-    \begin{align*}
-        f(x) + g(x) &= \sum_{i=0}^n\left((a_i+b_i)x^i\right)\\
-        f(x)\times g(x) &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k a_ib_{k-i}\right)x^k\right)
-    \end{align*}
-    respectively, where $a_l = 0$ for all $l > m$.
+    read ``R adjoin $x$'', is called the \textbf{ring of polynomials over $R$}\index{polynomial ring} in the \textbf{indeterminate}\index{indeterminate} (or \textbf{variable}\index{variable}) $x$.
 \end{definition}
+
+One must take care to disambiguate between the polynomial and the \textit{function} determined by the polynomial.
+\begin{example}
+    Consider the polynomial ring $\Z_3[x]$, and the polynomials $f(x) = x$ and $g(x) = x^3$. We note that $f(x)$ and $g(x)$ are \textit{distinct} elements of $\Z_3[x]$. However, we note that
+    \begin{align*}
+        f(0) &= 0 = g(0),\\
+        f(1) &= 1 = g(1), \text{ and }\\
+        f(2) &= 2 = 8 = 2^3 = g(2)
+    \end{align*}
+    in $\Z_3$, so these two functions are equal.
+\end{example}
+
+Note that, in general, the expression $f(a)$ for an $a \in R$ means to substitute $a$ for $x$ in the formula for $f(x)$. We leave proving that this is actually a ring homomorphism for \myref{exercise-polynomial-evaluation-is-ring-homomorphism} (later).
+
+To make $R[x]$ into a ring, we need to define addition and multiplication on that set.
+\begin{definition}
+    Let $R$ be a commutative ring. Let
+    \begin{gather*}
+        f(x) = a_0 + \cdots + a_mx^m\\
+        g(x) = b_0 + \cdots + b_nx^n
+    \end{gather*}
+    be polynomials in $R[x]$. Let $s$ be the maximum of $m$ and $n$, and define $a_i = 0$ for $i > m$ and $b_i = 0$ for $i > n$. Then \textbf{polynomial addition}\index{polynomial!addition} is defined to be
+    \[
+        f(x)+g(x) = \sum_{i=0}^s\left((a_i+b_i)x^i\right)
+    \]
+    and \textbf{polynomial multiplication}\index{polynomial!multiplication} is defined to be
+    \[
+        f(x)g(x) = \sum_{i=0}^{m+n}c_ix^i
+    \]
+    where
+    \[
+        c_k = \sum_{i=0}^k a_ib_{k-i}
+    \]
+    for all $0 \leq k \leq m + n$.
+\end{definition}
+Although this definition of multiplication of polynomials may seem complicated, this is just a formalization of the usual process of using the distributive axiom of real numbers (\myref{axiom-distributivity}) and collecting like terms. So multiplying polynomials over a commutative ring $R$ is the same as how polynomials are always multiplied.
+
 \begin{proposition}
-    The polynomial ring $R[x]$ is a commutative ring.
+    $R[x]$ is a commutative ring under polynomial addition and multiplication.
 \end{proposition}
 \begin{proof}
-    We first prove that $R[x]$ is indeed a ring, before proving commutativity of multiplication of polynomials. For brevity, let $f(x), g(x), h(x) \in R[x]$ where
+    We first prove that $R[x]$ is indeed a ring, before proving commutativity of multiplication of polynomials. For brevity, let $f(x)$, $g(x)$, and $h(x)$ be polynomials in the set $R[x]$ such that
     \begin{align*}
         f(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_mx^m,\\
         g(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_nx^n,\\
         h(x) &= c_0 + c_1x + c_2x^2 + \cdots + c_lx^l,
     \end{align*}
-    each $a_i$, $b_j$, and $c_k$ are elements from $R$, the integers $m$, $n$, and $l$ are all non-negative, and $a_m$, $b_n$, and $c_l$ are all non-zero. Without loss of generality, assume $m \geq n \geq l$, and `pad' the polynomials $g(x)$ and $h(x)$ with extra terms so that the highest power in $x$ is $m$.
+    each $a_i$, $b_j$, and $c_k$ are elements from $R$, the integers $m$, $n$, and $l$ are all non-negative, and $a_m$, $b_n$, and $c_l$ are all non-zero. Without loss of generality, assume $m \geq n \geq l$, let $b_i = 0$ for $i > n$, and let $c_i = 0$ for $i > l$. This still results in the argument being general as we will later show that both addition and multiplication in the polynomial ring are commutative.
     \begin{itemize}
         \item \textbf{Addition-Abelian}: We show that $(R[x], +)$ is an abelian group.
         \begin{itemize}
@@ -62,7 +96,11 @@ Note that in the above definition, we did not explicitly state where the coeffic
                 0 + f(x) = \sum_{i=0}^m\left((0+a_i)x^i\right) = \sum_{i=0}^m\left(a_ix^i\right) = f(x).
             \]
             
-            \item \textbf{Inverse}: For the polynomial $f(x)$, construct the polynomial $-f(x)$ where the coefficient of $x^i$ in $-f(x)$ is $-a_i$. Then
+            \item \textbf{Inverse}: For the polynomial $f(x)$, let
+            \[
+                -f(x) = \sum_{i=0}^m(-a_i)x^i.
+            \]
+            Then
             \[
                 f(x) + (-f(x)) = \sum_{i=0}^m\left((a_i+(-a_i))x^i\right) \sum_{i=0}^m\left(0x^i\right) = 0
            \]
@@ -79,9 +117,13 @@ Note that in the above definition, we did not explicitly state where the coeffic
         \begin{itemize}
             \item \textbf{Closure}: We note that
             \[
-                f(x)\times g(x) = \sum_{k=0}^{m+n}\left(\underbrace{\left(\sum_{i=0}^k a_ib_{k-i}\right)}_{\text{In }R}x^k\right)
+                c_k = \sum_{i=0}^k a_ib_{k-i}
             \]
-            so $f(x) \times g(x)$ is another polynomial in $R$.
+            is an element of $R$, so
+            \[
+                f(x)g(x) = \sum_{k=0}^{m+n}c_kx^k
+            \]
+            is another polynomial in $R[x]$.
             
             \item \textbf{Associativity}: \myref{exercise-polynomial-multiplication-is-associative} (later) proves that polynomial multiplication is associative.
         \end{itemize}
@@ -123,20 +165,17 @@ Let's look at some examples of polynomial rings.
     \]
 \end{example}
 
+\begin{exercise}\label{exercise-polynomial-evaluation-is-ring-homomorphism}
+    Let $R$ be a commutative ring. The \textbf{evaluation homomorphism}\index{evaluation homomorphism} is $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$ and $a \in R$. Prove that $\phi_a$ is indeed a ring homomorphism.
+\end{exercise}
 \begin{exercise}\label{exercise-polynomial-multiplication-is-associative}
     Prove that polynomial multiplication is associative.\newline
-    (\textit{Hint: $\displaystyle \sum_{i=0}^k a_ib_{k-i} = \sum_{i+j=k} a_ib_j$. The second sum is the sum over all non-negative integers $i$ and $j$ with the property that $i+j=k$.})
-\end{exercise}
-\begin{exercise}
-    Let $R$ be a ring. The \textbf{evaluation homomorphism}\index{evaluation homomorphism} is $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$ and $a \in R$. Prove that $\phi_a$ is indeed a ring homomorphism.
-\end{exercise}
-\begin{exercise}
-    Let $I$ be a principal ideal of $\Z[x]$ generated by the polynomial $x^2 + 3x - 1$. Simplify $\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)$ in the quotient ring $\Z[x]/I$.
+    (\textit{Hint: $\displaystyle c_k = \sum_{i+j=k} a_ib_j$, which is the sum over all non-negative integers $i$ and $j$ with the property that $i+j=k$.})
 \end{exercise}
 
 We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a variable.
 \begin{example}
-    Recall that $\Q[\sqrt2] = \{a + b\sqrt2 \vert a,b \in \Q\}$. If we use the definition of $\Q[x]$, we see that
+    Recall that $\Q[\sqrt2] = \{a + b\sqrt2 \vert a,b \in \Q\}$. If we use the definition of $\Q[x]$, and `substitute' $x$ with $\sqrt2$, we see that
     \begin{align*}
         &\Q[\sqrt2] \\
         &= \{a_0 + a_1\sqrt2 + a_2(\sqrt2)^2 + a_3(\sqrt2)^3 + \cdots + a_n(\sqrt2)^n \vert a_i \in \Q \}\\
@@ -147,7 +186,7 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     which agrees with the previous definition of $\Q[\sqrt2]$.
 \end{example}
 \begin{example}
-    Recall that $\Z[i]$, the gaussian integers, is the set $\{a+bi \vert a,b \in \Z\}$. If we use the definition of $\Z[x]$, we see that
+    Recall that $\Z[i]$, the gaussian integers, is the set $\{a+bi \vert a,b \in \Z\}$. If we use the definition of $\Z[x]$ and `substitute' $x$ with $i$ we see that
     \begin{align*}
         \Z[i] &= \{a_0 + a_1i + a_2i^2 + a_3i^3 + \cdots + a_ni^n \vert a_i \in \Z\}\\
         &= \{a_0 + a_1i + a_2(-1) + a_3(-i) + \cdots + a_ni^n \vert a_i \in \Z\}\\
@@ -156,6 +195,10 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     \end{align*}
     which agrees with the previous definition of $\Z[i]$.
 \end{example}
+
+\begin{exercise}
+    Show that $\Q[\sqrt[3]{2}] = \left\{a + b\sqrt[3]{2} + c\sqrt[3]4 \vert a,b,c \in \Q\right\}$.
+\end{exercise}
 
 \section{Basic Terminology in Polynomial Rings}
 We define the degree of a polynomial.
@@ -245,8 +288,13 @@ We can now state the theorem that produces a condition for a ring to be an integ
 
 \section{Problems}
 \begin{problem}
+    Let $I$ be a principal ideal of $\Z[x]$ generated by the polynomial $x^2 + 3x - 1$. Simplify $\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)$ in the quotient ring $\Z[x]/I$.
+\end{problem}
+
+\begin{problem}
     Show that $\princ{x}$ is a prime ideal in $\Z[x]$.
 \end{problem}
+
 \begin{problem}
     Let $I = \{f(x) \in \Z[x] \vert f(-2) = 0\}$ be a subset of $\Z[x]$, and let the map $\phi:\Z[x]\to\Z, f(x) \mapsto f(-2)$.
     \begin{partquestions}{\roman*}
@@ -255,6 +303,7 @@ We can now state the theorem that produces a condition for a ring to be an integ
         \item Hence determine if the ideal $I$ is prime, maximal, or both.
     \end{partquestions}
 \end{problem}
+
 \begin{problem}
     Prove that $\Z[x] / \princ{x} \cong \Z$.
 \end{problem}

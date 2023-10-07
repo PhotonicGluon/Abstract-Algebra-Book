@@ -1,5 +1,15 @@
 \section{Polynomial Rings}
 \begin{questions}
+    \item Let $p(x), q(x) \in R$. Note
+    \[
+        \phi_a(p(x)+q(x)) = p(a) + q(a) = \phi_a(p(x)) + \phi_a(q(x))
+    \]
+    and
+    \[
+        \phi_a(p(x)q(x)) = p(a)q(a) = \phi_a(p(x))\phi_a(q(x))
+    \]
+    so $\phi_a$ is indeed a homomorphism.
+
     \item For simplicity let
     \begin{align*}
         f(x)(g(x)h(x)) &= \sum_{k=0}^{m+n+l}u_kx^k\\
@@ -25,24 +35,14 @@
     \end{itemize}
     Therefore $u_k = v_k$ for all $k$, meaning that $f(x)(g(x)h(x)) = (f(x)g(x))h(x)$.
 
-    \item Let $p(x), q(x) \in R$. Note
-    \[
-        \phi_a(p(x)+q(x)) = p(a) + q(a) = \phi_a(p(x)) + \phi_a(q(x))
-    \]
-    and
-    \[
-        \phi_a(p(x)q(x)) = p(a)q(a) = \phi_a(p(x))\phi_a(q(x))
-    \]
-    so $\phi_a$ is indeed a homomorphism.
-    
-    \item We work step-by-step.
+    \item We note
     \begin{align*}
-        &\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)\\
-        &= \left((x + 3)(2x^2+3x-1)\right) + I\\
-        &= \left(2x^3 + 9x^2 + 8x - 3\right) + I\\
-        &= \left((2x+3)\underbrace{(x^2+3x-1)}_{\text{In }I} + x\right) + I\\
-        &= x + I
+        \Q[\sqrt[3]{2}] &= \left\{a_0 + a_1\sqrt[3]{2} + a_2\left(\sqrt[3]{2}\right)^2 + a_3\left(\sqrt[3]{2}\right)^3 + \cdots + a_n\left(\sqrt[3]{2}\right)^n \vert a_i \in \Q\right\}\\
+        &= \left\{a_0 + a_1\sqrt[3]{2} + a_2\sqrt[3]{4} + 2a_3 + \cdots + a_n\left(\sqrt[3]{2}\right)^n \vert a_i \in \Q\right\}\\
+        &= \left\{(a_0 + 2a_3 + \cdots) + (a_1 + 2a_4 + \cdots)\sqrt[3]{2} + (a_2 + 2a_5 + \cdots)\sqrt[3]{4} \vert a_i \in \Q\right\}\\
+        &= \left\{a + b\sqrt[3]{2} + c\sqrt[3]{4} \vert a,b,c \in \Q\right\}
     \end{align*}
+    which establishes the required result.
 
     \item One example would be $x^5$. Essentially any polynomial where the highest term is $x^5$ would work.
     
