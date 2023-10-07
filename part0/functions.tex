@@ -5,6 +5,9 @@ Functions (or maps) play a fundamental role in mathematics. Functions compare an
 \begin{definition}
     A \textbf{function}\index{function} (or a \textbf{map}\index{map}) $f$ from a set $X$ to a set $Y$ assigns each value in $X$ to exactly one element in $Y$, and is denoted by $f: X \to Y$.
 \end{definition}
+\begin{remark}
+    The formal definition of functions involve relations, but that is out of the scope of this book.
+\end{remark}
 \begin{definition}
     For a function $f: X \to Y$, the set $X$ is called the \textbf{domain}\index{domain} of the function and the set $Y$ is called the \textbf{codomain}\index{codomain} of the function.
 \end{definition}
@@ -27,7 +30,6 @@ Functions (or maps) play a fundamental role in mathematics. Functions compare an
     Let $h: \mathbb{Z} \to \mathbb{R}$ where $h(x^2) = x$. This can be written succinctly as either $h: \mathbb{Z} \to \mathbb{R}, x^2 \mapsto x$ or $h: \mathbb{Z} \to \mathbb{R}, n \mapsto \sqrt n$.
 \end{example}
 
-We now look at the definition of the image and range.
 \begin{definition}
     Let $f: X \to Y$ be a function, and $x \in X$.
     \begin{itemize}
@@ -35,9 +37,6 @@ We now look at the definition of the image and range.
         \item The \textbf{image} or \textbf{range}\index{function!range} of $f$ is denoted by either $\im f$ or $f(X)$ and is the set of the images of all elements in the domain. It is a subset of the codomain, i.e. $\im f \subseteq Y$.
     \end{itemize}
 \end{definition}
-
-\newpage
-
 \begin{example}
     Consider the function $f: \mathbb{Z} \to \mathbb{Z}, n \mapsto 1$.
     \begin{itemize}
@@ -174,10 +173,6 @@ It is important to note the following about function composition.
     Since $f$ is both injective and surjective it is thus bijective.
 \end{example}
 
-\begin{definition}
-    Let $A$ and $B$ be sets. Then $A$ and $B$ are \textbf{equinumerous}\index{set!equinumerous} if there exists a bijective function $f: A \to B$. In this case, $A$ and $B$ have the same cardinality, i.e., $|A| = |B|$.
-\end{definition}
-
 \begin{proposition}
     Let $X$ and $Y$ be finite equinumerous sets. If $f: X \to Y$ is an injective function, then $f$ is bijective.
 \end{proposition}
@@ -185,6 +180,12 @@ It is important to note the following about function composition.
     Suppose $f: X \to Y$ is injective, meaning $x_1 \neq x_2$ implies $f(x_1) \neq f(x_2)$ for all $x_1, x_2 \in X$. Thus every $x$ produces a unique $f(x)$, meaning $|X| = |\im f|$. Since $X$ and $Y$ are equinumerous sets (given), thus $|\im f| = |Y|$. As $\im f \subseteq Y$ and they have the same cardinality, therefore $\im f = Y$, i.e. $f$ is surjective. Therefore $f$ is injective (by assumption) and $f$ is surjective, meaning $f$ is bijective.
 \end{proof}
 
+\begin{definition}
+    Let $A$ and $B$ be sets. Then $A$ and $B$ are \textbf{equinumerous}\index{set!equinumerous} if there exists a bijective function $f: A \to B$. In this case, $A$ and $B$ have the same cardinality, i.e., $|A| = |B|$.
+\end{definition}
+\begin{example}
+    Consider the sets $X = \{1, 2, 3\}$ and $Y = \{a, b, c\}$. The function $f: X \to Y$ defined by $1 \mapsto a$, $2 \mapsto b$, and $3 \mapsto c$ is clearly a bijection, so $|X| = |Y|$.
+\end{example}
 \begin{exercise}
     Define the function $f: \mathbb{N} \to \mathbb{Z}$ such that
     \[
