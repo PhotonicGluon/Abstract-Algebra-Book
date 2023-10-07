@@ -278,9 +278,50 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
 \begin{definition}
     A \textbf{constant polynomial}\index{constant polynomial} is either the zero polynomial of a polynomial of degree 0.
 \end{definition}
-\begin{remark}
-    This definition immediately implies that any constant polynomial in the polynomial ring $R[x]$ is an element of $R$.
-\end{remark}
+\begin{proposition}
+    For a commutative ring $R$,
+    \begin{itemize}
+        \item a constant polynomial in $R[x]$ is an element of $R$,
+        \item an element of $R$ is a constant polynomial of $R[x]$.
+    \end{itemize}
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-constant-polynomial-iff-ring-element} (later).
+\end{proof}
+\begin{example}
+    Both 0 and 2 are constant polynomials in $\Z[x]$. However $x + 1$ and $x^2 + x + 1$ are not constant polynomials in $\Z[x]$.
+\end{example}
+\begin{example}
+    $\frac{12}{34}$ is a constant polynomial in $\Q[x]$, $\R[x]$, and $\C[x]$.
+\end{example}
+
+\begin{definition}
+    A \textbf{root}\index{polynomial!roots} (or \textbf{zero}\index{polynomial!zeroes}) of a polynomial $f(x)$ in the polynomial ring $R[x]$ is an $r \in R$ such that $f(r) = 0$ in $R$.
+\end{definition}
+\begin{example}
+    The zeroes of $f(x) = x^2+7$ in $\Z_8[x]$ are 1, 3, 5, and 7, since
+    \begin{align*}
+        f(1) &= 1^2 + 7 = 8 = 0,\\
+        f(3) &= 3^2 + 7 = 16 = 0,\\
+        f(5) &= 5^2 + 7 = 32 = 0, \text{ and}\\
+        f(7) &= 7^2 + 7 = 56 = 0
+    \end{align*}
+    in $\Z_8$.
+\end{example}
+\begin{example}
+    The zeroes of the zero polynomial in a polynomial ring $R[x]$ is the entirety of the ring $R$, since it always equals 0.
+\end{example}
+
+\begin{exercise}
+    Find the zeroes of the polynomial $x^2-1$ in $\Z_4[x]$.
+\end{exercise}
+\begin{exercise}\label{exercise-constant-polynomial-iff-ring-element}
+    Let $R$ be a commutative ring.
+    \begin{partquestions}{\alph*}
+        \item Show that any element in $R$ is a constant polynomial of $R[x]$.
+        \item If $f(x)$ is a constant polynomial in $R[x]$, show that $f(x) \in R$.
+    \end{partquestions}
+\end{exercise}
 
 \section{Properties of Polynomials and Polynomial Rings}
 We can now state the theorem that produces a condition for a ring to be an integral domain.
