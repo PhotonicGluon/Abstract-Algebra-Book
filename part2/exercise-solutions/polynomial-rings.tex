@@ -97,4 +97,39 @@
 
         Now suppose $R[x]$ is commutative. Consider the polynomials $f(x) = a$ and $g(x) = b$ where $a$ and $b$ are non-zero. We thus have $ab = f(x)g(x) = g(x)f(x) = ba$ for all $a,b \in R$ which means $R$ is commutative.
     \end{partquestions}
+
+    \item For brevity, let
+    \begin{align*}
+        f(x) &= \sum_{i=0}^ma_ix^i,\\
+        g(x) &= \sum_{i=0}^nb_ix^i
+    \end{align*}
+    be polynomials in $R[x]$. Without loss of generality assume $m \geq n$, and define $b_i = 0$ for $i > n$. Then
+    \begin{align*}
+        \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m (a_i+b_i)x^i\right)\\
+        &= \sum_{i=0}^m (a_i+b_i + I)x^i\\
+        &= \sum_{i=0}^m ((a_i + I) + (b_i + I))x^i\\
+        &= \sum_{i=0}^m (a_i + I)x^i + \sum_{i=0}^m (b_i + I)x^i\\
+        &= \sum_{i=0}^m (a_i + I)x^i + \sum_{i=0}^n (b_i + I)x^i & (\text{since } b_i = 0\text{ for } i > n)\\
+        &= \phi(f(x)) + \phi(g(x))
+    \end{align*}
+    and
+    \begin{align*}
+        \phi(f(x)g(x)) &= \phi\left(\sum_{i=0}^{m+n}\left(\sum_{j=0}^i a_jb_{i-j}\right)x^i\right)\\
+        &= \sum_{i=0}^{m+n}\left(\left(\sum_{j=0}^i a_jb_{i-j}\right) + I\right)x^i\\
+        &= \sum_{i=0}^{m+n}\left(\sum_{j=0}^i (a_jb_{i-j} + I)\right)x^i\\
+        &= \sum_{i=0}^{m+n}\left(\sum_{j=0}^i ((a_j+I)(b_{i-j}+I))\right)x^i\\
+        &= \left(\sum_{i=0}^m(a_i+I)x^i\right)\left(\sum_{i=0}^n(b_i+I)x^i\right)\\
+        &= \phi(f(x))\phi(g(x))
+    \end{align*}
+    so $\phi$ is indeed a ring homomorphism.
+
+    \item We note
+    \begin{align*}
+        &P \text{ is a prime ideal of }R\\
+        \iff&R/P \text{ is an integral domain} & (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain})\\
+        \iff&(R/P)[x] \text{ is an integral domain} & (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain})\\
+        \iff&R[x]/P[x] \text{ is an integral domain} & (\myref{prop-polynomial-ring-quotient-ideal-polynomial-ring-cong-quotient-polynomial-ring})\\
+        \iff&P[x]\text{ is a prime ideal of }R[x] & (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain})
+    \end{align*}
+    proving the theorem.
 \end{questions}
