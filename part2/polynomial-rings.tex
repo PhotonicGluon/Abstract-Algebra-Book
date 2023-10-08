@@ -30,30 +30,27 @@ One of the most familiar concepts that one encounters in algebra are polynomials
 \end{remark}
 
 \begin{definition}
-    Two polynomials $f(x) = a_0 + \cdots + a_mx^m$ and $g(x) = b_0 + \cdots + b_nx^n$ in $R[x]$ are \textbf{equal}\index{polynomial!equality} if and only if $m = n$ and $a_i = b_i$ for all $0 \leq i \leq m$.
+    Two polynomials $f(x) = a_0 + \cdots + a_mx^m$ and $g(x) = b_0 + \cdots + b_nx^n$ in $R[x]$ are \textbf{equal}\index{polynomial!equality} if and only if $m = n$ and $a_i = b_i$ when working in $R$ for all $0 \leq i \leq m$.
 \end{definition}
 
 One must take care to disambiguate between the polynomial and the \textit{function} determined by the polynomial.
 \begin{example}
-    Consider the polynomial ring $\Z_3[x]$, and the polynomials $f(x) = x$ and $g(x) = x^3$. We note that $f(x)$ and $g(x)$ are \textit{distinct} elements of $\Z_3[x]$. However, we note that
+    Consider the polynomial ring $\Z_3[x]$, and the polynomials $f(x) = x$ and $g(x) = x^3$. We note that $f(x) = 4x = 7x = 10x = \cdots$ and, similarly, $g(x) = 4x^3 = 7x^3 = 10x^3 = \cdots$, since all the coefficients are equal to each other when working in $\Z_3[x]$.
+    
+    Note that $f(x)$ and $g(x)$ are \textit{distinct} elements of $\Z_3[x]$. However one sees that the \textit{functions} $f(x)$ and $g(x)$ are equal since
     \begin{align*}
         f(0) &= 0 = g(0),\\
         f(1) &= 1 = g(1), \text{ and }\\
         f(2) &= 2 = 8 = 2^3 = g(2)
     \end{align*}
-    in $\Z_3$, so these two functions are equal.
+    in $\Z_3$.
 \end{example}
 
 Note that, in general, the expression $f(a)$ for an $a \in R$ means to substitute $a$ for $x$ in the formula for $f(x)$. We leave proving that this is actually a ring homomorphism for \myref{exercise-polynomial-evaluation-is-ring-homomorphism} (later).
 
 To make $R[x]$ into a ring, we need to define polynomial addition and polynomial multiplication.
 \begin{definition}
-    Let $R$ be a commutative ring. Let
-    \begin{gather*}
-        f(x) = a_0 + \cdots + a_mx^m\\
-        g(x) = b_0 + \cdots + b_nx^n
-    \end{gather*}
-    be polynomials in $R[x]$. Let $s$ be the maximum of $m$ and $n$, and define $a_i = 0$ for $i > m$ and $b_i = 0$ for $i > n$. Then \textbf{polynomial addition}\index{polynomial!addition} is defined to be
+    Let $R$ be a commutative ring. Let $f(x) = a_0 + \cdots + a_mx^m$ and $g(x) = b_0 + \cdots + b_nx^n$ be polynomials in $R[x]$. Let $s$ be the maximum of $m$ and $n$, and define $a_i = 0$ for $i > m$ and $b_i = 0$ for $i > n$. Then \textbf{polynomial addition}\index{polynomial!addition} is defined to be
     \[
         f(x)+g(x) = \sum_{i=0}^s\left((a_i+b_i)x^i\right)
     \]
@@ -703,7 +700,7 @@ We end this section by noting two theorems.
 \end{problem}
 
 \begin{problem}\label{problem-remainder-theorem}
-    Prove \myref{corollary-remainder-theorem}.
+    Prove the remainder theorem (\myref{corollary-remainder-theorem}).
 \end{problem}
 
 \begin{problem}\label{problem-criterion-for-principal-ideal-in-polynomial-field}
