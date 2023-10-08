@@ -20,8 +20,9 @@ One of the most familiar concepts that one encounters in algebra are polynomials
     \begin{itemize}
         \item $rx = xr$ for all $r \in R$, i.e. $x$ commutes with all elements of $r$;
         \item $rx^0 = r$ for all $r \in R$;
-        \item $x^1 = x$; and
-        \item $x^k \times x^l = x^{k+l}$ for all non-negative integers $k$ and $l$.
+        \item $x^1 = x$;
+        \item $x^k \times x^l = x^{k+l}$ for all non-negative integers $k$ and $l$; and
+        \item if $R$ is a ring with identity 1, then $x^k = 1x^k$.
     \end{itemize}
 \end{remark}
 \begin{remark}
@@ -166,10 +167,7 @@ Let's look at some examples of polynomial rings.
     Another commonly used polynomial ring is $\Q[x]$. Examples of polynomials in this ring are $1+x$, $\frac23x^5 - \frac7{11}x^{13}$, and $2x^2-5x-3$. However polynomials like $\sqrt2$, $\pi x + 1$, and $1+ex$ do not belong in $\Q[x]$.
 \end{example}
 \begin{example}
-    We look at the polynomial ring $\Mn{2}{\R}[x]$. One example of a polynomial in this ring is
-    \[
-        \begin{pmatrix}2&1\\-2&0\end{pmatrix} + \begin{pmatrix}\sqrt2&1\\1&1\end{pmatrix}x + \begin{pmatrix}5&4\\e&2\end{pmatrix}x^2 + \begin{pmatrix}0&1\\0&0\end{pmatrix}x^5.
-    \]
+    Consider the polynomial ring $\Z_3[x]$. Examples of polynomials here are 0, $2x^2 + x$, $x^7+x^5+x^3+x+1$, and $2x$. However polynomials like $3x$, $-2x^2$, and $7x^3$ are not in $\Z_3[x]$. We note that these polynomials can be converted to polynomials in $\Z_3[x]$ by evaluating the coefficients modulo 3, so $3x = 0x = 0$, $-2x^2 = x^2$, and $7x^3 = x^3$ in $\Z_3[x]$.
 \end{example}
 
 We now look at an example of polynomial addition and multiplication.
@@ -248,12 +246,12 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     The degree of the polynomial $1+x+5x^2$ in $\Z[x]$ is 2.
 \end{example}
 \begin{example}
-    The degree of the polynomial
-    \[
-        \begin{pmatrix}0&1\\3&0\end{pmatrix}x^5 + \begin{pmatrix}3&6\\7&2\end{pmatrix}x^4 + \begin{pmatrix}3&4\\9&4\end{pmatrix}
-    \]
-    in $\Mn{2}{\Z}[x]$ is 5.
+    The degree of the polynomial $\frac12x^3 - \frac43x^2$ in $\Q[x]$ is 3.
 \end{example}
+\begin{example}
+    The degree of the constant $\pi$ in $\R[x]$ is 0.
+\end{example}
+
 \begin{exercise}
     Give an example of a degree 5 polynomial in the ring $\Z_2[x]$.
 \end{exercise}
@@ -270,15 +268,19 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     For the zero polynomial, the constant term is 0, the leading term is undefined, and the leading coefficient is undefined.
 \end{remark}
 \begin{example}
-    Consider the polynomial
-    \[
-        \begin{pmatrix}0&1\\3&0\end{pmatrix}x^5 + \begin{pmatrix}3&6\\7&2\end{pmatrix}x^4 + \begin{pmatrix}3&4\\9&4\end{pmatrix}
-    \]
-    in $\Mn{2}{\Z}[x]$. Then
+    Consider the polynomial $5x^4 + 4x^3 + 3x^2 + 2x + 1$ in $\Z[x]$. Then
     \begin{itemize}
-        \item the constant term is $\begin{pmatrix}3&4\\9&4\end{pmatrix}$;
-        \item the leading term is $\begin{pmatrix}0&1\\3&0\end{pmatrix}x^5$; and
-        \item the leading coefficient is $\begin{pmatrix}0&1\\3&0\end{pmatrix}$.
+        \item the constant term is 1;
+        \item the leading term is $5x^4$; and
+        \item the leading coefficient is 5.
+    \end{itemize}
+\end{example}
+\begin{example}
+    Consider the polynomial $\frac54x^3$ in $\Q[x]$. Then
+    \begin{itemize}
+        \item the constant term is 0;
+        \item the leading term is $\frac54x^3$; and
+        \item the leading coefficient is $\frac54$.
     \end{itemize}
 \end{example}
 
@@ -329,6 +331,8 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
         \item If $f(x)$ is a constant polynomial in $R[x]$, show that $f(x) \in R$.
     \end{partquestions}
 \end{exercise}
+
+\newpage
 
 \section{Properties of Polynomials and Polynomial Rings}
 With an introduction of polynomials and polynomial rings out of the way, we can start looking at properties of them. In fact, often properties of $R$ carry over to $R[x]$, as given by the following theorem.
