@@ -1,5 +1,12 @@
 \section{Polynomial Rings}
 \begin{questions}
+    \item Note
+    \begin{align*}
+        1 - 2x + 3x^2 - 4x^3 + 5x^4 - 6x^5 &= 1 + x + 0x^2 + 2x^3 + 2x^4 + 0x^5\\
+        &= 1 + x + 2x^3 + 2x^4
+    \end{align*}
+    so a degree 4 polynomial that is equal to the given polynomial is $1 + x + 2x^3 + 2x^4$.
+
     \item We work step-by-step.
     \begin{align*}
         &\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)\\
@@ -8,29 +15,22 @@
         &= \left((2x+3)\underbrace{(x^2+3x-1)}_{\text{In }I} + x\right) + I\\
         &= x + I
     \end{align*}
+
+    \item % TODO: Add 3
     
-    \item For brevity let $I = \princ{x} = \{xP(x) \vert P(x) \in \Z[x]\}$. This means that $I$ is the set of polynomials with integer coefficients and with constant term 0. Now suppose $f(x), g(x) \in \Z[x]$; write
-    \begin{align*}
-        f(x) &= a_0 + a_1x + \cdots + a_mx^m\\
-        g(x) &= b_0 + b_1x + \cdots + b_nx^n
-    \end{align*}
-    where $a_i, b_i \in \Z$ and $m$ and $n$ are positive integers. Note that
+    \item % TODO: Add 4
+    
+    \item Using polynomial long division (\myref{thrm-polynomial-long-division}) we write
     \[
-        f(x)g(x) = a_0b_0 + (a_1b_0+a_0b_1)x + \cdots.
+        f(x) = q(x)(x-a) + r(x) \text{ with } r(x) \text{ or } \deg r(x) < \deg(x-a) = 1.
     \]
-    Now if $f(x)g(x) \in I$, this means that $a_0b_0 = 0$. Hence either $a_0 = 0$ or $b_0 = 0$, meaning that either $f(x)$ has zero constant term (so $f(x) \in I$) or $g(x)$ has zero constant term (so $g(x) \in I$). Thus $I$ is prime.
+    Thus $r(x) = b \in F$. Evaluating $f(x)$ at a yields
+    \[
+        f(a) = q(x)(a-a) + b = b
+    \]
+    which means $f(a)$ is the remainder of the division of $f(x)$ by $x-a$.
 
     \item \begin{partquestions}{\roman*}
-        \item Let $f(x), g(x) \in \Z[x]$. Then
-        \[
-            \phi(f(x) + g(x)) = f(-2) + g(-2) = \phi(f(x)) + \phi(g(x))
-        \]
-        and
-        \[
-            \phi(f(x)g(x)) = f(-2)g(-2) = \phi(f(x))\phi(g(x))
-        \]
-        so $\phi$ is a ring homomorphism.
-
         \item Note that
         \begin{align*}
             \ker\phi &= \{f(x) \in \Z[x] \vert \phi(f(x)) = 0\}\\
@@ -47,6 +47,17 @@
         \]
         Note that $\Z$ is an integral domain but not a field. Thus $I$ is prime but not maximal.
     \end{partquestions}
+    
+    \item For brevity let $I = \princ{x} = \{xP(x) \vert P(x) \in \Z[x]\}$. This means that $I$ is the set of polynomials with integer coefficients and with constant term 0. Now suppose $f(x), g(x) \in \Z[x]$; write
+    \begin{align*}
+        f(x) &= a_0 + a_1x + \cdots + a_mx^m\\
+        g(x) &= b_0 + b_1x + \cdots + b_nx^n
+    \end{align*}
+    where $a_i, b_i \in \Z$ and $m$ and $n$ are positive integers. Note that
+    \[
+        f(x)g(x) = a_0b_0 + (a_1b_0+a_0b_1)x + \cdots.
+    \]
+    Now if $f(x)g(x) \in I$, this means that $a_0b_0 = 0$. Hence either $a_0 = 0$ or $b_0 = 0$, meaning that either $f(x)$ has zero constant term (so $f(x) \in I$) or $g(x)$ has zero constant term (so $g(x) \in I$). Thus $I$ is prime.
 
     \item We show that $\Z[x] / \princ{x} \cong \Z$ by using the FRIT.
 
@@ -80,15 +91,7 @@
         \Z[x] / \princ{x} \cong \Z.
     \]
 
-    \item Using polynomial long division (\myref{thrm-polynomial-long-division}) we write
-    \[
-        f(x) = q(x)(x-a) + r(x) \text{ with } r(x) \text{ or } \deg r(x) < \deg(x-a) = 1.
-    \]
-    Thus $r(x) = b \in F$. Evaluating $f(x)$ at a yields
-    \[
-        f(a) = q(x)(a-a) + b = b
-    \]
-    which means $f(a)$ is the remainder of the division of $f(x)$ by $x-a$.
+    \item % TODO: Add 9
 
     \item \begin{partquestions}{\roman*}
         \item Suppose $g(x) \in I$ is a non-zero polynomial of minimum degree.
@@ -98,7 +101,7 @@
         \end{itemize}
         This shows that $I = \princ{g(x)}$.
 
-        \item If $g(x) = 0$ then $I = \princ{0} = \{0\}$, which is the zero ideal. Thus $g(x) \neq 0$. Let $g(x)$ have degree $n$. Now suppose there exists a $h(x) \in I$ that has a smaller degree than $g(x)$. By \textbf{(a)} we know $I = \princ{h(x)} = \{f(x)h(x) \vert f(x) \in F[x]\}$. Let $h(x)$ have degree $m$, so $g(x) = h(x) + x^{n-m}k(x)$ for some polynomial $k(x)$ with $\deg k(x) < m$ (since if $\deg k(x) = m$ this means $g(x)$ also has degree $m$, a contradiction). We also know
+        \item If $g(x) = 0$ then $I = \princ{0} = \{0\}$, which is the zero ideal. Thus $g(x) \neq 0$. Let $g(x)$ have degree $n$. Now suppose there exists a $h(x) \in I$ that has a smaller degree than $g(x)$. By \textbf{(i)} we know $I = \princ{h(x)} = \{f(x)h(x) \vert f(x) \in F[x]\}$. Let $h(x)$ have degree $m$, so $g(x) = h(x) + x^{n-m}k(x)$ for some polynomial $k(x)$ with $\deg k(x) < m$ (since if $\deg k(x) = m$ this means $g(x)$ also has degree $m$, a contradiction). We also know
         \begin{align*}
             I &= \princ{g(x)}\\
             &= \{f(x)g(x) \vert f(x) \in F[x]\}\\
@@ -110,4 +113,10 @@
         \end{align*}
         a contradiction.
     \end{partquestions}
+    
+    \item % TODO: Add 11
+    
+    \item % TODO: Add 12
+    
+    \item % TODO: Add 13
 \end{questions}
