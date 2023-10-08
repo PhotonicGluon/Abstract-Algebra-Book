@@ -458,6 +458,7 @@ We now look at a theorem that tells us the degree of a sum or product of polynom
 \begin{proof}
     See \myref{exercise-prime-ideal-iff-prime-ideal-in-polynomial-ring} (later).
 \end{proof}
+
 \begin{example}
     Consider the commutative ring $\Z$. We proved in \myref{prop-ideals-of-Z} that prime ideals of $\Z$ take the form $p\Z$ where $p$ is a prime number. \myref{thrm-prime-ideal-iff-prime-ideal-in-polynomial-ring} tells us that $(p\Z)[x]$ are prime ideals of $\Z[x]$.
 
@@ -634,7 +635,7 @@ With these definitions, we can now state some corollaries of polynomial long div
     Divide $3x^4 + 3x^3 + 4x^2 + 3x + 3$ by $x^2 + 2x + 3$ in $\Z_5[x]$ and hence state two factors of $3x^4 + 3x^3 + 4x^2 + 3x + 3$ in $\Z_5[x]$.
 \end{exercise}
 
-We end this section by noting an important theorem about the number of zeroes of a polynomial.
+We note an important theorem about the number of zeroes of a polynomial.
 \begin{theorem}
     Suppose $F$ is a field and $f(x) \in F[x]$. If the degree of $f(x)$ is $n$, then $f(x)$ has at most $n$ distinct zeroes.
 \end{theorem}
@@ -656,6 +657,26 @@ We end this section by noting an important theorem about the number of zeroes of
     \end{align*}
     So $f(x)$ has 4 roots but has degree 2.
 \end{example}
+
+We end this section by noting two theorems.
+\begin{theorem}\label{thrm-criterion-for-principal-ideal-in-polynomial-field}
+    Let $F$ be a field, $I$ a non-zero ideal in $F[x]$, and $g(x) \in F[x]$. Then $I = \princ{g(x)}$ if and only if $g(x)$ is a non-zero polynomial of minimum degree in $I$.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-criterion-for-principal-ideal-in-polynomial-field} (later).
+\end{proof}
+
+\begin{theorem}
+    $F[x]$ is a PID if $F$ is a field.
+\end{theorem}
+\begin{proof}
+    By \myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain} we know that $F[x]$ is an integral domain. Now suppose $I$ is an ideal of $F[x]$.
+    \begin{itemize}
+        \item If $I = \{0\}$ then we may write $I = \princ{0}$.
+        \item If $I \neq \{0\}$, then among the elements of $I$, there is a polynomial $g(x) \in I$ with minimal degree. By \myref{thrm-criterion-for-principal-ideal-in-polynomial-field} $I = \princ{g(x)}$.
+    \end{itemize}
+    In either case, any ideal of $F[x]$ is a principal ideal. Thus $F[x]$ is a PID.
+\end{proof}
 
 \newpage
 
@@ -683,4 +704,12 @@ We end this section by noting an important theorem about the number of zeroes of
 
 \begin{problem}\label{problem-remainder-theorem}
     Prove \myref{corollary-remainder-theorem}.
+\end{problem}
+
+\begin{problem}\label{problem-criterion-for-principal-ideal-in-polynomial-field}
+    Let $F$ be a field and $I$ a non-zero ideal in $F[x]$.
+    \begin{partquestions}{\roman*}
+        \item If $g(x) \in I$ is a non-zero polynomial of minimum degree, prove $I = \princ{g(x)}$.
+        \item If $I = \princ{g(x)}$ for some $g(x) \in I$, prove that $g(x)$ is non-zero and of minimum degree.
+    \end{partquestions}
 \end{problem}

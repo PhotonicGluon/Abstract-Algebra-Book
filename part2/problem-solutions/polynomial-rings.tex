@@ -89,4 +89,25 @@
         f(a) = q(x)(a-a) + b = b
     \]
     which means $f(a)$ is the remainder of the division of $f(x)$ by $x-a$.
+
+    \item \begin{partquestions}{\roman*}
+        \item Suppose $g(x) \in I$ is a non-zero polynomial of minimum degree.
+        \begin{itemize}
+            \item Since $g(x) \in I$ thus $\princ{g(x)} \subseteq I$.
+            \item Now suppose $f(x) \in I$. By polynomial long division (\myref{thrm-polynomial-long-division}) write $f(x) = q(x)g(x) + r(x)$ where $r(x) = 0$ or $\deg r(x) < \deg g(x)$. Note $r(x) = f(x) - \underbrace{g(x)q(x)}_{\text{In }I} \in I$, so the minimality of $\deg g(x)$ means that $\deg r(x) \not< \deg g(x)$, i.e. $r(x) = 0$. Thus $f(x) = q(x)g(x) \in \princ{g(x)}$, meaning $I \subseteq \princ{g(x)}$.
+        \end{itemize}
+        This shows that $I = \princ{g(x)}$.
+
+        \item If $g(x) = 0$ then $I = \princ{0} = \{0\}$, which is the zero ideal. Thus $g(x) \neq 0$. Let $g(x)$ have degree $n$. Now suppose there exists a $h(x) \in I$ that has a smaller degree than $g(x)$. By \textbf{(a)} we know $I = \princ{h(x)} = \{f(x)h(x) \vert f(x) \in F[x]\}$. Let $h(x)$ have degree $m$, so $g(x) = h(x) + x^{n-m}k(x)$ for some polynomial $k(x)$ with $\deg k(x) < m$ (since if $\deg k(x) = m$ this means $g(x)$ also has degree $m$, a contradiction). We also know
+        \begin{align*}
+            I &= \princ{g(x)}\\
+            &= \{f(x)g(x) \vert f(x) \in F[x]\}\\
+            &= \{f(x)(h(x) + x^{n-m}k(x)) \vert f(x) \in F[x]\}\\
+            &= \{f(x)h(x) + x^{n-m}f(x)k(x) \vert f(x) \in F[x]\}\\
+            &\subset \{f(x)h(x) \vert f(x) \in F[x]\}\\
+            & \princ{h(x)}\\
+            &= I,
+        \end{align*}
+        a contradiction.
+    \end{partquestions}
 \end{questions}
