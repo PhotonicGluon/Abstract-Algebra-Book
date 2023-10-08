@@ -469,6 +469,194 @@ We now look at a theorem that tells us the degree of a sum or product of polynom
     (\textit{Hint: most of the statements required are if and only if statements.})
 \end{exercise}
 
+\section{Polynomial Division}
+In previous chapters, we have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) to rewrite any integer $n$ in the form $qd + r$ where $q$ and $r$ are distinct integers such that $0 \leq r < |d|$. There is an analogous theorem for polynomial rings over a field, known as polynomial long division.
+
+\begin{theorem}[Polynomial Long Division]\label{thrm-polynomial-long-division}\index{Polynomial Long Division Theorem}
+    Suppose $F$ is a field and let $f(x)$ and $d(x)$ be polynomials in $F[x]$, where $d(x) \neq 0$ is called the \textbf{divisor}\index{divisor!for polynomial division}. Then there exist unique polynomials $q(x)$ and $r(x)$ in $F[x]$ such that
+    \[
+        f(x) = q(x)d(x) + r(x)
+    \]
+    where $r(x) = 0$ or $\deg r(x) < \deg d(x)$.
+
+    We call $f(x)$ the \textbf{dividend}\index{dividend!for polynomial division}, $q(x)$ the \textbf{quotient}\index{quotient!for polynomial division}, and $r(x)$ the \textbf{remainder}\index{remainder!for polynomial division}.
+\end{theorem}
+\begin{proof}
+    We note some simple cases.
+    \begin{itemize}
+        \item If $f(x) = 0$, we note $0 = 0d(x) + 0$ for any $d(x)$, so we may choose $q(x) = 0$ and $r(x) = 0$.
+        \item If $f(x) \neq 0$ and $\deg d(x) > \deg f(x)$, we note $f(x) = 0d(x) + f(x)$. Thus $q(x) = 0$ and $r(x) = f(x)$ since $\deg f(x) < \deg d(x)$.
+    \end{itemize}
+
+    Thus, we assume that $\deg f(x) \geq \deg d(x)$ and $f(x) \neq 0$. Let $\deg f(x) = n$. We induct on $n$ to show the existence of both $q(x)$ and $r(x)$.
+
+    When $n = 0$, we note $\deg f(x) = \deg d(x) = 0$. Thus $f(x) = a \in F$ and $d(x) = b \in F$ for some elements $a$ and $b$ in $F$ where $b \neq 0$. We note $b^{-1}$ exists since $F$ is a field. Thus we may write $f(x) = a = b(b^{-1}a) + 0$, so $q(x) = b^{-1}a$ and $r(x) = 0$.
+
+    Now assume that for all polynomials with degree $0 \leq k < n$, there exists a quotient and remainder for a given divisor with degree of at least $k$. We show that a quotient and remainder exists for any divisor of degree of at least $n$.
+
+    Let
+    \begin{align*}
+        f(x) &= a_nx^n + f_0(x) \text{ with } a_n \neq 0 \text{ and } \deg f_0(x) < n,\\
+        d(x) &= b_mx^m + d_0(x) \text{ with } b_m \neq 0 \text{ and } \deg d_0(x) < m.
+    \end{align*}
+    Define
+    \[
+        f_1(x) = f(x) - a_nb_m^{-1}x^{n-m}d(x).
+    \]
+    Again $b_m^{-1}$ exists in the field $F$, and since $m \leq n$ thus $x^{n-m}$ is well defined. We see that
+    \begin{align*}
+        f_1(x) &= f(x) - a_nb_m^{-1}x^{n-m}d(x)\\
+        &= (a_nx^n + f_0(x)) - a_nb_m^{-1}x^{n-m}\left(b_mx^m + d_0(x)\right)\\
+        &= a_nx^n + f_0(x) - a_nx^n - a_nb_m^{-1}x^{n-m}d_0(x)\\
+        &= f_0(x) - a_nb_m^{-1}x^{n-m}d_0(x)
+    \end{align*}
+    and observe $\deg f_0(x) < n$ and $\deg(x^{n-m}d_0(x)) < (n-m) + n = n$. Therefore we have $\deg f_1(x) < n$.
+
+    Applying the induction hypothesis on the divisor $f_1(x)$ means that there exists a quotient $q_1(x)$ and remainder $r(x)$ upon division by $d(x)$ such that
+    \[
+        f_1(x) = q_1(x)d(x) + r(x) \text{ with } r(x) = 0 \text{ or } \deg r(x) < \deg d(x).
+    \]
+    Now set $q(x) = q_1(x) + a_nb_m^{-1}x^{n-m}$ and observe that
+    \begin{align*}
+        q(x)d(x) + r(x) &= (q_1(x) + a_nb_m^{-1}x^{n-m})d(x) + r(x)\\
+        &= q_1(x)d(x) + a_nb_m^{-1}x^{n-m}d(x) + r(x)\\
+        &= (q_1(x)d(x) + r(x)) + a_nb_m^{-1}x^{n-m}d(x)\\
+        &= f_1(x) + a_nb_m^{-1}x^{n-m}d(x)\\
+        &= (f(x) - a_nb_m^{-1}x^{n-m}d(x)) + a_nb_m^{-1}x^{n-m}d(x)\\
+        &= f(x)
+    \end{align*}
+    which means that there exists a quotient $q(x)$ and remainder $r(x)$ upon division by $d(x)$ for the divisor $f(x)$.
+
+    With the existence shown, we now show uniqueness. Let the dividend be $f(x)$, the divisor be $d(x)$, the quotients $q_1(x)$ and $q_2(x)$, and the remainders $r_1(x)$ and $r_2(x)$ be polynomials in $F[x]$ such that
+    \[
+        f(x) = q_1(x)d(x) + r_1(x) = q_2(x)d(x) + r_2(x).
+    \]
+    
+    By way of contradiction we assume $q_1(x) \neq q_2(x)$. Note
+    \[
+        d(x)(q_1(x) - q_2(x)) = r_2(x) - r_1(x)
+    \]
+    so the degree of the left hand side is $\deg d(x) + \deg(q_1(x) - q_2(x)) \geq \deg d(x)$. However the right hand side is $\deg(r_2(x) - r_1(x)) < \deg d(x)$ by definition of the remainders $r_1(x)$ and $r_2(x)$, contradicting that the left hand side is at least $\deg d(x)$.
+
+    Therefore $q_1(x) = q_2(x)$. So
+    \[
+        d(x)(q_1(x) - q_2(x)) = 0 = r_2(x) - r_1(x)
+    \]
+    which means $r_1(x) = r_2(x)$. Therefore the quotient and remainder are unique for a given dividend and divisor.
+\end{proof}
+
+\begin{example}
+    Let the dividend $f(x) = 3x^4 + 2x^3 + x^2$ and divisor $d(x) = x^2 + 2x + 3$ be polynomials in $\Z_5[x]$. We proceed with polynomial long division, keeping in mind that addition and multiplication are done modulo 5. We see
+    \begin{align*}
+        3x^4 + 2x^3 + x^2 &= 3x^2(x^2 + 2x + 3) - 4x(x^2 + 2x + 3) + 12x + 0\\
+        &= (3x^2-4x)(x^2+2x+3) + 12x\\
+        &= (3x^2+x)(x^2+2x+3) + 2x
+    \end{align*}
+    so $3x^2+x$ is the quotient and $2x$ is the remainder.
+\end{example}
+
+\begin{example}
+    We divide $f(x) = x^2 + 2x - 1$ by $x-i$ in $\C[x]$. Note
+    \begin{align*}
+        f(x) &= x(x-i) + (2+i)(x-i) + (-2+2i)\\
+        &= (x+2+i)(x-i) - 2 + 2i
+    \end{align*}
+    so the quotient is $x+2+i$ and the remainder is $-2+2i$.
+\end{example}
+
+We define a few more terms relating to division of polynomials.
+\begin{definition}
+    Let $f(x)$ and $g(x)$ be polynomials in an integral domain $R[x]$. We say that $g(x)$ \textbf{divides}\index{polynomial!divides} $f(x)$, and say that $g(x)$ is a \textbf{factor}\index{polynomial!factor} of $f(x)$, if there is a polynomial $h(x) \in R[x]$ such that $f(x) = g(x)h(x)$.
+\end{definition}
+\begin{definition}
+    Let $F$ be a field and $f(x)$ be a polynomial in $F[x]$. Suppose $a \in F$ is a zero of $f(x)$. Then $a$ is a \textbf{zero of multiplicity $n$}\index{polynomial!zeroes!of multiplicity $n$} where $n \geq 1$ if $(x-a)^n$ is a factor of $f(x)$ but $(x-a)^{n+1}$ is not a factor of $f(x)$.
+\end{definition}
+
+With these definitions, we can now state some corollaries of polynomial long division.
+
+\begin{corollary}[Remainder Theorem]\label{corollary-remainder-theorem}
+    Let $F$ be a field, $a \in F$, and $f(x)$ be a polynomial in $F[x]$. Then $f(a)$ is the remainder of the division of $f(x)$ by $x-a$.
+\end{corollary}
+\begin{proof}
+    See \myref{problem-remainder-theorem} (later).
+\end{proof}
+
+\begin{corollary}[Factor Theorem]\label{corollary-factor-theorem}
+    Let $F$ be a field and $f(x)$ be a polynomial in $F[x]$. Then $a$ is a zero of $f(x)$ if and only if $x-a$ is a factor of $f(x)$.
+\end{corollary}
+\begin{proof}
+    For the forward direction, use polynomial long division (\myref{thrm-polynomial-long-division}) with dividend $f(x)$ and divisor $x-a$ to write
+    \[
+        f(x) = (x-a)d(x) + r(x) \text{ with } r(x) = 0 \text{ or } \deg r(x) < \deg(x-a) = 1
+    \]
+    which means $r(x) = b \in F$. Evaluating $f(x)$ at $x = a$ we see
+    \[
+        0 = (a-a)d(x) + b = 0 + b
+    \]
+    which means $b = 0$. Therefore $f(x) = (x-a)g(x)$, meaning $x-a$ is a factor of $f(x)$.
+
+    For the reverse direction, if $x - a$ is a factor of $f(x)$, then we write $f(x) = (x-a)g(x)$ for some polynomial $g(x)$ in $F[x]$. Then clearly
+    \[
+        f(a) = (a-a)g(a) = 0g(a) = 0
+    \]
+    so $a$ is a zero of $f(x)$.
+\end{proof}
+
+\begin{example}
+    We find the zeroes of $f(x) = x^4 - 2x^3 + 2x^2 - 2x + 1$ in $\Z[x]$. One sees that 1 is a zero of $f(x)$ since $1 - 2 + 2 - 2 + 1 = 0$. We find the multiplicity of 1.
+
+    Since 1 is a zero thus it has multiplicity of at least 1. Consider the divisor $(x-1)^2 = x^2 - 2x + 1$ and we see
+    \begin{align*}
+        x^4 - 2x^3 + 2x^2 - 2x + 1 &= x^2(x^2 - 2x + 1) + 1(x^2 - 2x + 1)\\
+        &= (x-1)^2(x^2+1)
+    \end{align*}
+    so 1 is a zero of multiplicity 2. It can't be a zero of multiplicity 3 since $(x-1)^3 = x^3 - 3x^2 + 3x - 1$ and
+    \begin{align*}
+        x^4 - 2x^3 + 2x^2 - 2x + 1 &= x(x^3 - 3x^2 + 3x - 1) + 1(x^3 - 3x^2 + 3x - 1) + 2x^2 - 4x + 2\\
+        &= (x-1)^3(x+1) + 2x^2 - 4x + 2
+    \end{align*}
+    which means $(x-1)^3$ is not a factor of $f(x)$. Thus 1 is a zero of multiplicity 2.
+\end{example}
+
+\begin{example}
+    Let $f(x) = x^4 + x^3 + x + 1$ be in $\Z_2[x]$. Clearly 1 is the only zero of $f(x)$. We find the multiplicity of 1.
+    
+    Since 1 is a zero thus it has multiplicity of at least 1. Consider the divisor $(x-1)^2 = x^2 - 2x + 1 = x^2 + 1$ and we see
+    \begin{align*}
+        f(x) &= x^2(x^2+1) + x(x^2+1) - x^2 + 1\\
+        &= (x^2+1)(x^2+x) - x^2 + 1\\
+        &= (x^2+1)(x^2+x) + x^2 + 1
+    \end{align*}
+    so $(x-1)^2$ is not a divisor of $f(x)$. Thus 1 is not a zero of multiplicity 2, meaning that 1 is a zero of multiplicity 1.
+\end{example}
+
+\begin{exercise}
+    Divide $3x^4 + 3x^3 + 4x^2 + 3x + 3$ by $x^2 + 2x + 3$ in $\Z_5[x]$ and hence state two factors of $3x^4 + 3x^3 + 4x^2 + 3x + 3$ in $\Z_5[x]$.
+\end{exercise}
+
+We end this section by noting an important theorem about the number of zeroes of a polynomial.
+\begin{theorem}
+    Suppose $F$ is a field and $f(x) \in F[x]$. If the degree of $f(x)$ is $n$, then $f(x)$ has at most $n$ distinct zeroes.
+\end{theorem}
+\begin{proof}
+    We induct on $n$. Clearly a polynomial with degree 0 has no zeroes. Now suppose any polynomial of degree $k$ has at most $k$ distinct zeroes. Let $f(x) \in F[x]$ be a polynomial of degree $k + 1$. The case when $f(x)$ has no zeroes is trivially true, so assume that $f(x)$ has at least one zero $a \in F$. By \myref{corollary-factor-theorem} we can write
+    \[
+        f(x) = (x-a)g(x)
+    \]
+    where $\deg g(x) = k$ since $x-a$ is a polynomial of degree 1. By induction hypothesis $g(x)$ has at most $k$ distinct zeroes, which means $f(x) = (x-a)g(x)$ has at most $k + 1$ distinct zeroes. Therefore by induction we establish the required result.
+\end{proof}
+
+\begin{example}
+    We give and example of when the previous theorem fails. Consider $\Z_{12}[x]$ and $f(x) = x^2 + 11 \in \Z_{12}[x]$. We note $\Z_{12}$ is not a field since $3 \times 4 = 12 = 0$, which means $\Z_{12}$ is not an integral domain (and hence not a field). We see that $f(x)$ has 4 zeroes 1, 5, 7, and 11 since
+    \begin{align*}
+        f(1) &= 1^2 + 11 = 12 = 0,\\
+        f(5) &= 5^2 + 11 = 36 = 0,\\
+        f(7) &= 7^2 + 11 = 60 = 0, \text{ and}\\
+        f(11) &= 11^2 + 11 = 132 = 0.
+    \end{align*}
+    So $f(x)$ has 4 roots but has degree 2.
+\end{example}
+
 \newpage
 
 \section{Problems}
@@ -491,4 +679,8 @@ We now look at a theorem that tells us the degree of a sum or product of polynom
 
 \begin{problem}
     Prove that $\Z[x] / \princ{x} \cong \Z$.
+\end{problem}
+
+\begin{problem}\label{problem-remainder-theorem}
+    Prove \myref{corollary-remainder-theorem}.
 \end{problem}
