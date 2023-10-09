@@ -16,9 +16,29 @@
         &= x + I
     \end{align*}
 
-    \item % TODO: Add 3
+    \item \begin{partquestions}{\alph*}
+        \item False. $2x-1$ is a polynomial with integer coefficients with no integer zeroes.
+        
+        \item False. By definition, zeroes must always come from the ground ring, so if $f(x) \in \Z[x]$ has zero(es) they must be integers.
+        
+        \item True. $2x-1 \in \R[x]$ is a polynomial with integer coefficients and has a non-integer zero of $\frac12$.
+    \end{partquestions}
     
-    \item % TODO: Add 4
+    \item \begin{partquestions}{\alph*}
+        \item We guess the form of $f(x)$ for $4x^2 + 2x + 1$. 
+        
+        Guess first that $f(x)$ is a degree 0 polynomial, i.e. $f(x) = a$. Then $4ax^2 + 2ax + a = 1$, meaning $a = 1$. But that is the same as the original polynomial, so we conclude $f(x)$ cannot be a polynomial of degree 0.
+
+        Guess next that $f(x)$ is a degree 1 polynomial, i.e. $f(x) = ax + b$. Then $(4x^2+2x+1)(ax+b) = 1$, meaning $4ax^3 + 2(a+2b)x^2 + (a+2b)x + b = 1$. Thus $b = 1$, otherwise it would not be possible for its product to be 1. Thus it reduces to $4ax^3 + 2(a+2)x^2 + (a+2)x + 1$, which means that $a+2 = 0$. Therefore $a = -2 = 6$. We check that
+        \begin{align*}
+            (4x^2+2x+1)(6x+1) &= 24x^3 + 16x^2 + 8x + 1\\
+            &= 0x^3 + 0x^2 + 0x + 1\\
+            &= 1
+        \end{align*}
+        so $f(x) = 6x+1$ works.
+        
+        \item We note $\Z_7$ is a field (\myref{example-Zp-is-field}) and so $\Z_7$ is an integral domain. This means $\Z_7[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}). So a unit of $\Z_7[x]$ is a unit of $\Z_7$ (\myref{prop-unit-of-ring-iff-unit-of-polynomial-ring}), which means only constants can be units. Thus $x^2 + 2x + 1$ has no corresponding $f(x)$ such that $(x^2+2x+1)f(x) = 1$.
+    \end{partquestions}
     
     \item Using polynomial long division (\myref{thrm-polynomial-long-division}) we write
     \[
@@ -91,7 +111,27 @@
         \Z[x] / \princ{x} \cong \Z.
     \]
 
-    \item % TODO: Add 9
+    \item We first note that the polynomial functions $f: x \mapsto x$ and $g: x \mapsto x^5$ are equal since
+    \begin{align*}
+        g(0) &= 0^5 = 0 = f(0),\\
+        g(1) &= 1^5 = 1 = f(1),\\
+        g(1) &= 2^5 = 32 = 2 = f(2),\\
+        g(3) &= 3^5 = 243 = 3 = f(3), \text{ and}\\
+        g(4) &= 4^5 = 1024 = 4 = f(4).
+    \end{align*}
+    One sees thereafter that the polynomial $h(x) = x^5 + 4x$ has the entirety of $\Z_5$ as zeroes, since
+    \begin{align*}
+        h(0) &= 0^5 + 4(0) = 0,\\
+        h(1) &= 1^5 + 4(1) = 5 = 0,\\
+        h(2) &= 2^5 + 4(2) = 40 = 0,\\
+        h(3) &= 3^5 + 4(3) = 255 = 0, \text{ and}\\
+        h(4) &= 4^5 + 4(4) + 1040 = 0.
+    \end{align*}
+    We note that the polynomial $(x^n)(x^5 + 4x)$ where $n$ is a non-negative integer would also have the entirety of $\Z_5$ as zeroes. Therefore a set $S$ that works is
+    \[
+        S = \{x^n(x^5+4x) \vert n \geq 0\}
+    \]
+    and we note that this is an infinite set where distinct polynomials in $S$ have different degrees.
 
     \item \begin{partquestions}{\roman*}
         \item Suppose $g(x) \in I$ is a non-zero polynomial of minimum degree.
@@ -108,15 +148,123 @@
             &= \{f(x)(h(x) + x^{n-m}k(x)) \vert f(x) \in F[x]\}\\
             &= \{f(x)h(x) + x^{n-m}f(x)k(x) \vert f(x) \in F[x]\}\\
             &\subset \{f(x)h(x) \vert f(x) \in F[x]\}\\
-            & \princ{h(x)}\\
+            &= \princ{h(x)}\\
             &= I,
         \end{align*}
         a contradiction.
     \end{partquestions}
     
-    \item % TODO: Add 11
+    \item Consider the map $\phi: R[x] \to R[x^k]$ where
+    \[
+        \sum_{i=0}^n a_ix^i \mapsto \sum_{i=0}^na_ix^{ki}.
+    \]
+    We show that $\phi$ is a ring isomorphism. For brevity let $f(x), g(x) \in R[x]$ where, without loss of generality, assume $m \geq n$,
+    \begin{align*}
+        f(x) &= \sum_{i=0}^m a_ix^i,\\
+        g(x) &= \sum_{i=0}^n b_ix^i,
+    \end{align*}
+    and set $b_i = 0$ for any $i > n$.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Note that
+        \begin{align*}
+            \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
+            &= \sum_{i=0}^m(a_i+b_i)x^{ki}\\
+            &= \sum_{i=0}^ma_ix^{ki} + \sum_{i=0}^mb_ix^{ki}\\
+            &= \sum_{i=0}^ma_ix^{ki} + \sum_{i=0}^mb_ix^{ki} & (\text{since } b_i = 0 \text{ for } i > n)\\
+            &= \phi(f(x)) + \phi(g(x))
+        \end{align*}
+        and
+        \begin{align*}
+            \phi(f(x)g(x)) &= \phi\left(\sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)x^r\right)\\
+            &= \sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)x^{kr}\\
+            &= \left(\sum_{i=0}^ma_ix_{ki}\right)\left(\sum_{i=0}^nb_ix_{ki}\right)\\
+            &= \phi(f(x))\phi(g(x))
+        \end{align*}
+        so $\phi$ is a ring homomorphism.
+
+        \item \textbf{Injective}: Suppose $\phi(f(x)) = \phi(g(x))$. Thus
+        \[
+            \sum_{i=0}^m a_ix^{ki} = \sum_{i=0}^n b_ix^{ki}
+        \]
+        which clearly means that $a_i = b_i$ for all $0 \leq i \leq m$ (where, again, $b_i = 0$ if $i > n$). Thus
+        \[
+            f(x) = \sum_{i=0}^m a_ix^i = \sum_{i=0}^n b_ix^i = g(x)
+        \]
+        which shows that $\phi$ is injective.
+        
+        \item \textbf{Surjective}: Suppose $h(x) = c_0 + c_kx^k + c_{2k}x^{2k} + \cdots + c_{pk}x^{pk} \in R[x^k]$. Set $a_i = c_{ki}$ for all $0 \leq i \leq p$ and one sees that
+        \[
+            \phi\left(\sum_{i=0}^pa_ix^i\right) = \sum_{i=0}^pa_ix^{ki} = \sum_{i=0}^pc_{ki}x^{ki} = h(x)
+        \]
+        which means that any $h(x) \in R[x^k]$ has a pre-image in $R[x]$. Thus $\phi$ is surjective.
+    \end{itemize}
+    Hence $\phi$ is a ring isomorphism, meaning $R[x] \cong R[x^k]$.
     
-    \item % TODO: Add 12
+    \item \begin{partquestions}{\roman*}
+        \item Let $f(x), g(x) \in R[x]$ where, without loss of generality, assume $m \geq n$,
+        \begin{align*}
+            f(x) &= \sum_{i=0}^m a_ix^i,\\
+            g(x) &= \sum_{i=0}^n b_ix^i,
+        \end{align*}
+        and set $b_i = 0$ for any $i > n$. Note that
+        \begin{align*}
+            \psi(f(x) + g(x)) &= \psi\left(\sum_{i=0}^m(a_i+b_i)x_i\right)\\
+            &= \sum_{i=0}^m\phi(a_i + b_i)x_i\\
+            &= \sum_{i=0}^m\left(\phi(a_i) + \phi(b_i)\right)x_i\\
+            &= \sum_{i=0}^m\phi(a_i)x_i + \sum_{i=0}^m\phi(b_i)x_i\\
+            &= \sum_{i=0}^m\phi(a_i)x_i + \sum_{i=0}^n\phi(b_i)x_i & (\text{since } b_i = 0 \text{ for } i > n)\\
+            &= \psi(f(x)) + \psi(g(x))
+        \end{align*}
+        and
+        \begin{align*}
+            \psi(f(x)g(x)) &= \psi\left(\sum_{k=0}^{m+n}\left(\sum_{i=0}^ka_ib_{k-i}\right)x^k\right)\\
+            &= \sum_{k=0}^{m+n}\left(\phi\left(\sum_{i=0}^ka_ib_{k-i}\right)x^k\right)\\
+            &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k\phi(a_ib_{k-i})\right)x^k\right)\\
+            &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k\phi(a_i)\phi(b_{k-i})\right)x^k\right)\\
+            &= \left(\sum_{i=0}^m\phi(a_i)x_i\right)\left(\sum_{i=0}^n\phi(b_i)x_i\right)\\
+            &= \psi(f(x))\psi(g(x))
+        \end{align*}
+        so $\psi$ is a ring homomorphism.
+
+        \item We prove that $\psi$ is both injective and surjective. We use the same functions and notation as in \textbf{(i)}.
+        \begin{itemize}
+            \item \textbf{Injective}: Suppose $\psi(f(x)) = \psi(g(x))$. Thus
+            \[
+                \sum_{i=0}^m \phi(a_i)x^i = \sum_{i=0}^n \phi(b_i)x^i
+            \]
+            by definition of $\psi$, which means $\phi(a_i) = \phi(b_i)$ for all $0 \leq i \leq m$ (where $b_i = 0$ for $i > n$). Now as $\phi$ is an isomorphism, thus we see $a_i = b_i$ for all $0 \leq i \leq m$ (where, again, $b_i = 0$ for $i > n$). Therefore
+            \[
+                \sum_{i=0}^m a_ix^i = \sum_{i=0}^n b_ix^i
+            \]
+            which therefore means $f(x) = g(x)$. So $\psi$ is an injective function.
+            
+            \item \textbf{Surjective}: Suppose $F(x) = a_0 + a_1x + a_2x^2 + \cdots + a_mx^m \in S[x]$. Let $G(x) = \phi^{-1}(a_0) + \phi^{-1}(a_1)x + \cdots + \phi^{-1}(a_m)x^m \in R[x]$. Then note
+            \[
+                \psi(G(x)) = \sum_{i=0}^m\phi(\phi^{-1}(a_i))x_i = \sum_{i=0}^ma_ix_i = F(x)
+            \]
+            so any $F(x) \in S[x]$ has a pre-image in $R[x]$. Therefore $\psi$ is a surjective function.
+        \end{itemize}
+
+        So $\psi$ is a bijection. Furthermore by \textbf{(i)} we know that $\psi$ is a homomorphism. Therefore $\psi$ is a ring isomorphism, meaning $R[x] \cong S[x]$.
+    \end{partquestions}
     
-    \item % TODO: Add 13
+    \item Let $\ideal{a} = \princ{2}$ and $\ideal{b} = \princ{x}$ be principal ideals. Note that
+    \[
+        I = \ideal{a} + \ideal{b} = \{2f(x) + xg(x) \vert f(x),g(x) \in \Z[x]\}
+    \]
+    is a sum of ideals and thus is an ideal (\myref{prop-sum-of-ideals-is-ideal}). We show that $I$ is not a principal ideal.
+
+    Suppose on the contrary that $I = \princ{F(x)}$ for some $F(x) \in \Z[x]$. Then $2 \in I$, meaning that $2 = f(x)F(x)$ for some $f(x) \in \Z[x]$. We note that $\Z$ is an integral domain, so $\Z[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}) which means that
+    \[
+        \deg(f(x)F(x)) = \deg f(x) + \deg F(x) = \deg 2 = 0,
+    \]
+    so $f(x)$ and $F(x)$ are both constant polynomials. Thus $f(x) = m \in \Z$ and $F(x) = n \in \Z$. Actually, since $2 \in I$, one sees that the only possibilities for $n$ are $\pm1$ and $\pm2$.
+
+    Note that an element of $I$ takes the form $2a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$.
+    \begin{itemize}
+        \item We note $\princ{1} = \princ{-1}$. But this means that $1 \in I$ which is impossible (since the constant term must be an even integer).
+        \item We note $\princ{2} = \princ{-2}$. But this means that $I = \princ{2}$ is the set of all polynomials of even coefficients. But $2 + x \in I$ although $2 + x \notin \princ{2}$, a contradiction.
+    \end{itemize}
+
+    Therefore $I$ is non-principal, which means that $\Z[x]$ is not a PID.
 \end{questions}
