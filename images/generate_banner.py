@@ -7,8 +7,8 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # CONSTANTS
-BANNER_DIR = Path("banner")
-IMAGE_FILE_NAME = "banner-background.png"
+BANNER_DIR = Path("banner") 
+IMAGE_FILE_NAME = "banner-background.svg"
 
 WIDTH = 1600
 HEIGHT = 900
