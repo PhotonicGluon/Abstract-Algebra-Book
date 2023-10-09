@@ -1,37 +1,152 @@
-\chapter{Polynomial Rings and Division}
+\chapter{Polynomial Rings}
 Polynomial rings are an important part of algebra and in ring theory, since polynomials are ubiquitous in modern algebra. We explore polynomials and polynomial rings in this chapter.
 
 \section{What is a Polynomial Ring?}
-We first define polynomials.
+One of the most familiar concepts that one encounters in algebra are polynomials. We are most familiar with polynomials with integer coefficients, rational coefficients, and real coefficients. We abstract the idea of coefficients to those belonging in a ring.
+
 \begin{definition}
-    A \textbf{polynomial}\index{polynomial} is an expression consisting of \textbf{variables}\index{polynomial!variable} (or \textbf{indeterminates}\index{polynomial!indeterminate}) and coefficients, that involves only the operations of addition, subtraction, multiplication, and positive-integer powers of variables.
-\end{definition}
-\begin{definition}
-    Polynomials in a single variable are called \textbf{univariate polynomials}\index{polynomial!univariate} and takes the form
+    Let $R$ be a commutative ring. A \textbf{polynomial}\index{polynomial} $f(x)$ over $R$ in \textbf{indeterminate}\index{polynomial!indeterminate} (or \textbf{variable}\index{polynomial!variable}) $x$ takes the form
     \[
-        a_0+a_1x+a_2x^2+\cdots+a_nx^n = \sum_{i=0}^n a_ix^i,
+        f(x) = a_0+a_1x+a_2x^2+\cdots+a_nx^n = \sum_{i=0}^n a_ix^i,
     \]
-    where $a_0, a_1, a_2, \dots, a_n$ are called the \textbf{coefficients}\index{polynomial!coefficient} of the polynomial.
+    where $n \geq 0$ and $a_0, a_1, a_2, \dots, a_n \in R$. The set
+    \[
+        R[x] = \left\{\sum_{i=0}^n a_ix^i \vert n \geq 0, \; a_i \in R\right\},
+    \]
+    read ``R adjoin $x$'', is called the \textbf{ring of polynomials over $R$}\index{polynomial ring} in the indeterminate $x$. In this case $R$ is called the \textbf{ground ring}\index{polynomial ring!ground ring} for $R[x]$.
+\end{definition}
+\begin{remark}
+    The indeterminate $x$ is \textit{not} an element of $R$. The healthy way to interpret $x$ is as an object that satisfies the following rules:
+    \begin{itemize}
+        \item $rx = xr$ for all $r \in R$, i.e. $x$ commutes with all elements of $r$;
+        \item $rx^0 = r$ for all $r \in R$;
+        \item $x^1 = x$;
+        \item $x^k \times x^l = x^{k+l}$ for all non-negative integers $k$ and $l$; and
+        \item if $R$ is a ring with identity 1, then $x^k = 1x^k$.
+    \end{itemize}
+\end{remark}
+\begin{remark}
+    A term $x^i$ in the polynomial is understood to be the same as $1x^i$, where 1 is the multiplicative identity of $R$.
+\end{remark}
+
+\begin{definition}
+    Two polynomials $f(x) = a_0 + \cdots + a_mx^m$ and $g(x) = b_0 + \cdots + b_nx^n$ in $R[x]$ are \textbf{equal}\index{polynomial!equality} if and only if $m = n$ and $a_i = b_i$ when working in $R$ for all $0 \leq i \leq m$.
 \end{definition}
 
-Note that in the above definition, we did not explicitly state where the coefficients originate from; we do so now in the definition for a polynomial ring.
-\begin{definition}
-    Let $R$ be a commutative ring with identity, where $1 \neq 0$. Then the \textbf{polynomial ring}\index{polynomial ring} in \textbf{indeterminate}\index{indeterminate} (or \textbf{variable}\index{variable}) $x$ and coefficients in $R$ is
-    \[
-        R[x] = \{a_0 + a_1x + \cdots + a_nx^n \vert n \in \mathbb{N} \cup \{0\}, a_i \in R\},
-    \]
-    where for $f(x) = a_0 + \cdots + a_mx^m, g(x) = b_0 + \cdots + b_nx^n \in R[x]$, and assuming $m \leq n$, we define
+One must take care to disambiguate between the polynomial and the \textit{function} determined by the polynomial.
+\begin{example}
+    Consider the polynomial ring $\Z_3[x]$, and the polynomials $f(x) = x$ and $g(x) = x^3$. We note that $f(x) = 4x = 7x = 10x = \cdots$ and, similarly, $g(x) = 4x^3 = 7x^3 = 10x^3 = \cdots$, since all the coefficients are equal to each other when working in $\Z_3[x]$.
+    
+    Note that $f(x)$ and $g(x)$ are \textit{distinct} elements of $\Z_3[x]$. However one sees that the \textit{functions} $f(x)$ and $g(x)$ are equal since
     \begin{align*}
-        f(x) + g(x) &= \sum_{i=0}^n\left((a_i+b_i)x^i\right),\\
-        f(x)g(x) &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k a_ib_{k-i}\right)x^k\right),
+        f(0) &= 0 = g(0),\\
+        f(1) &= 1 = g(1), \text{ and }\\
+        f(2) &= 2 = 8 = 2^3 = g(2)
     \end{align*}
-    where $a_l = 0$ for all $l > m$.
+    in $\Z_3$.
+\end{example}
+
+Note that, in general, the expression $f(a)$ for an $a \in R$ means to substitute $a$ for $x$ in the formula for $f(x)$. We leave proving that this is actually a ring homomorphism for \myref{exercise-polynomial-evaluation-is-ring-homomorphism} (later).
+
+To make $R[x]$ into a ring, we need to define polynomial addition and polynomial multiplication.
+\begin{definition}
+    Let $R$ be a commutative ring. Let $f(x) = a_0 + \cdots + a_mx^m$ and $g(x) = b_0 + \cdots + b_nx^n$ be polynomials in $R[x]$. Let $s$ be the maximum of $m$ and $n$, and define $a_i = 0$ for $i > m$ and $b_i = 0$ for $i > n$. Then \textbf{polynomial addition}\index{polynomial!addition} is defined to be
+    \[
+        f(x)+g(x) = \sum_{i=0}^s\left((a_i+b_i)x^i\right)
+    \]
+    and \textbf{polynomial multiplication}\index{polynomial!multiplication} is defined to be
+    \[
+        f(x)g(x) = \sum_{i=0}^{m+n}c_ix^i
+    \]
+    where
+    \[
+        c_k = \sum_{i=0}^k a_ib_{k-i}
+    \]
+    for all $0 \leq k \leq m + n$.
 \end{definition}
+Although this definition of multiplication of polynomials may seem complicated, this is just a formalization of the usual process of using the distributive axiom of real numbers (\myref{axiom-distributivity}) and collecting like terms. So multiplying polynomials over a commutative ring $R$ is the same as how polynomials are always multiplied.
+
 \begin{proposition}
-    A polynomial ring is a commutative ring.
+    Let $R$ be a commutative ring. Then $R[x]$ is a commutative ring under polynomial addition and multiplication.
 \end{proposition}
-\begin{proof}[Proof (cf. {\cite{proofwiki_polynomial-ring-is-commutative}})]
-    Let $R[x]$ be a polynomial ring, and let $f(x) = a_0 + \cdots + a_mx^m, g(x) = b_0 + \cdots + b_nx^n \in R[x]$, and $m \leq n$. We show $f(x)g(x) = g(x)f(x)$.
+\begin{proof}
+    We first prove that $R[x]$ is indeed a ring, before proving commutativity of multiplication of polynomials. For brevity, let $f(x)$, $g(x)$, and $h(x)$ be polynomials in the set $R[x]$ such that
+    \begin{align*}
+        f(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_mx^m,\\
+        g(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_nx^n,\\
+        h(x) &= c_0 + c_1x + c_2x^2 + \cdots + c_lx^l,
+    \end{align*}
+    each $a_i$, $b_j$, and $c_k$ are elements from $R$, the integers $m$, $n$, and $l$ are all non-negative, and $a_m$, $b_n$, and $c_l$ are all non-zero. Without loss of generality, assume $m \geq n \geq l$, let $b_i = 0$ for $i > n$, and let $c_i = 0$ for $i > l$. This still results in the argument being general as we will later show that both addition and multiplication in the polynomial ring are commutative.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: We show that $(R[x], +)$ is an abelian group.
+        \begin{itemize}
+            \item \textbf{Closure}: We see
+            \[
+                f(x) + g(x) = \sum_{i=0}^n\left((a_i+b_i)x^i\right)
+            \]
+            and since $R$ is a ring, thus $a_i+b_i \in R$, meaning $f(x) + g(x)$ is another polynomial in $R[x]$. Therefore $R[x]$ is closed under addition.
+            
+            \item \textbf{Associativity}: Note
+            \begin{align*}
+                f(x) + (g(x) + h(x)) &= f(x) + \sum_{i=0}^m\left((b_i+c_i)x^i\right)\\
+                &= \sum_{i=0}^m\left((a_i + (b_i + c_i))x^i\right)\\
+                &= \sum_{i=0}^m\left(((a_i + b_i) + c_i)x^i\right) & (+ \text{ is associative in }R)\\
+                &= \sum_{i=0}^m\left((a_i+b_i)x^i\right) + h(x)\\
+                &= (f(x) + g(x)) + h(x)
+            \end{align*}
+            so addition of functions is associative.
+            
+            \item \textbf{Identity}: Note that $0 \in R$ is also the identity in $R[x]$, since
+            \[
+                0 + f(x) = \sum_{i=0}^m\left((0+a_i)x^i\right) = \sum_{i=0}^m\left(a_ix^i\right) = f(x).
+            \]
+            
+            \item \textbf{Inverse}: For the polynomial $f(x)$, let
+            \[
+                -f(x) = \sum_{i=0}^m(-a_i)x^i.
+            \]
+            Then
+            \[
+                f(x) + (-f(x)) = \sum_{i=0}^m\left((a_i+(-a_i))x^i\right) \sum_{i=0}^m\left(0x^i\right) = 0
+           \]
+           so $-f(x)$ is indeed the additive inverse of $f(x)$.
+            
+            \item \textbf{Commutativity}: One sees clearly that
+            \[
+                f(x) + g(x) = \sum_{i=0}^m\left((a_i+b_i)x^i\right) = \sum_{i=0}^m\left((b_i + a_i)x^i\right) = g(x) + f(x)
+            \]
+            since addition in $R$ is commutative. Therefore addition in $R[x]$ is also commutative.
+        \end{itemize}
+
+        \item \textbf{Multiplication-Subgroup}: We show that $(R[x], \times)$ is a subgroup.
+        \begin{itemize}
+            \item \textbf{Closure}: We note that
+            \[
+                c_k = \sum_{i=0}^k a_ib_{k-i}
+            \]
+            is an element of $R$, so
+            \[
+                f(x)g(x) = \sum_{k=0}^{m+n}c_kx^k
+            \]
+            is another polynomial in $R[x]$.
+            
+            \item \textbf{Associativity}: \myref{exercise-polynomial-multiplication-is-associative} (later) proves that polynomial multiplication is associative.
+        \end{itemize}
+
+        \item \textbf{Distributive}: We finally show that $\times$ distributes over $+$. We only show that $f(x)(g(x) + h(x)) = f(x)g(x) + f(x)h(x)$ as we will later prove that $R[x]$ is commutative. Note
+        \begin{align*}
+            f(x)(g(x) + h(x)) &= \sum_{i=0}^m\left(\left(\sum_{j=0}^ia_j(b_{i-j}+c_{i-j})\right)x^i\right)\\
+            &= \sum_{i=0}^m\left(\left(\sum_{j=0}^i(a_jb_{i-j}+a_jc_{i-j})\right)x^i\right) & (\text{Distribute in }R)\\
+            &= \sum_{i=0}^m\left(\sum_{j=0}^i(a_jb_{i-j}x^i+a_jc_{i-j}x^i)\right)\\
+            &= \sum_{i=0}^m\left(\sum_{j=0}^ia_jb_{i-j}x^i + \sum_{j=0}^ia_jc_{i-j}x^i\right)\\
+            &= \sum_{i=0}^m\left(\sum_{j=0}^ia_jb_{i-j}x^i\right) + \sum_{i=0}^m\left(\sum_{j=0}^ia_jc_{i-j}x^i\right)\\
+            &= f(x)g(x) + f(x)h(x)
+        \end{align*}
+        which is what was needed to be shown.
+    \end{itemize}
+    Therefore $R[x]$ is a ring.
+
+    Now we prove commutativity of multiplication. Let $f(x) = a_0 + \cdots + a_mx^m, g(x) = b_0 + \cdots + b_nx^n \in R[x]$, and $m \leq n$. Then
     \begin{align*}
         f(x)g(x) &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k a_ib_{k-i}\right)x^k\right)\\
         &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k b_{k-i}a_i\right)x^k\right) & (R\text{ is commutative})\\
@@ -40,9 +155,6 @@ Note that in the above definition, we did not explicitly state where the coeffic
     \end{align*}
     which therefore means that $R[x]$ is a commutative ring.
 \end{proof}
-\begin{exercise}
-    Let $R$ be a ring. The \textbf{evaluation homomorphism}\index{evaluation homomorphism} is $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$ and $a \in R$. Prove that $\phi_a$ is indeed a ring homomorphism.
-\end{exercise}
 
 Let's look at some examples of polynomial rings.
 \begin{example}
@@ -52,19 +164,50 @@ Let's look at some examples of polynomial rings.
     Another commonly used polynomial ring is $\Q[x]$. Examples of polynomials in this ring are $1+x$, $\frac23x^5 - \frac7{11}x^{13}$, and $2x^2-5x-3$. However polynomials like $\sqrt2$, $\pi x + 1$, and $1+ex$ do not belong in $\Q[x]$.
 \end{example}
 \begin{example}
-    We look at the polynomial ring $\Mn{2}{\R}[x]$. One example of a polynomial in this ring is
-    \[
-        \begin{pmatrix}2&1\\-2&0\end{pmatrix} + \begin{pmatrix}\sqrt2&1\\1&1\end{pmatrix}x + \begin{pmatrix}5&4\\e&2\end{pmatrix}x^2 + \begin{pmatrix}0&1\\0&0\end{pmatrix}x^5.
-    \]
+    Consider the polynomial ring $\Z_3[x]$. Examples of polynomials here are 0, $2x^2 + x$, $x^7+x^5+x^3+x+1$, and $2x$. However polynomials like $3x$, $-2x^2$, and $7x^3$ are not in $\Z_3[x]$. We note that these polynomials can be converted to polynomials in $\Z_3[x]$ by evaluating the coefficients modulo 3, so $3x = 0x = 0$, $-2x^2 = x^2$, and $7x^3 = x^3$ in $\Z_3[x]$.
 \end{example}
 
-\begin{exercise}
-    Let $I$ be a principal ideal of $\Z[x]$ generated by the polynomial $x^2 + 3x - 1$. Simplify $\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)$ in the quotient ring $\Z[x]/I$.
+We now look at an example of polynomial addition and multiplication.
+\begin{example}
+    Consider the polynomial ring $\Z_3[x]$, and the polynomials $f(x) = x^2 + 2x + 2$ and $g(x) = 2x^2 + 2x + 1$. Then
+    \begin{align*}
+        f(x) + g(x) &= (1+2)x^2 + (2+2)x + (2+1)\\
+        &= 3x^2 + 4x + 3\\
+        &= 0x^2 + x + 0 & (\text{Coefficients are written in }\Z_3)\\
+        &= x
+    \end{align*}
+    and
+    \begin{align*}
+        f(x)g(x) &= (x^2+2x+2)(2x^2+2x+1)\\
+        &= 2x^4 + 6x^3 + 9x^2 + 6x + 2\\
+        &= 2x^4 + 0x^3 + 0x^2 + 0x + 2 & (\text{Coefficients are written in }\Z_3)\\
+        &= 2x^4 + 2.
+    \end{align*}
+    Note that there are equivalent functions to $f(x)+g(x)$ and $f(x)g(x)$. Let $A(x) = x^3$ and $B(x) = 2-x^2$. When iterating through all values in $\Z_3$, we generate the following table.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|}
+            \hline
+            $\boldsymbol{x}$ & $\boldsymbol{f(x)+g(x)}$ & $\boldsymbol{A(x)}$ & $\boldsymbol{f(x)g(x)}$ & $\boldsymbol{B(x)}$ \\ \hline
+            \textbf{0} & 0 & 0 & 2 & 2 \\ \hline
+            \textbf{1} & 1 & 1 & 1 & 1 \\ \hline
+            \textbf{2} & 2 & 2 & 1 & 1 \\ \hline
+        \end{tabular}
+    \end{table}
+    Thus, we see that $f(x)+g(x) = A(x)$ and $f(x)g(x) = B(x)$ as functions, even though they are distinct as polynomials.
+\end{example}
+
+\begin{exercise}\label{exercise-polynomial-evaluation-is-ring-homomorphism}
+    Let $R$ be a commutative ring. The \textbf{evaluation homomorphism}\index{evaluation homomorphism} is $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$ and $a \in R$. Prove that $\phi_a$ is indeed a ring homomorphism.
+\end{exercise}
+\begin{exercise}\label{exercise-polynomial-multiplication-is-associative}
+    Prove that polynomial multiplication is associative.\newline
+    (\textit{Hint: $\displaystyle c_k = \sum_{i+j=k} a_ib_j$, which is the sum over all non-negative integers $i$ and $j$ with the property that $i+j=k$.})
 \end{exercise}
 
 We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a variable.
 \begin{example}
-    Recall that $\Q[\sqrt2] = \{a + b\sqrt2 \vert a,b \in \Q\}$. If we use the definition of $\Q[x]$, we see that
+    Recall that $\Q[\sqrt2] = \{a + b\sqrt2 \vert a,b \in \Q\}$. If we use the definition of $\Q[x]$, and `substitute' $x$ with $\sqrt2$, we see that
     \begin{align*}
         &\Q[\sqrt2] \\
         &= \{a_0 + a_1\sqrt2 + a_2(\sqrt2)^2 + a_3(\sqrt2)^3 + \cdots + a_n(\sqrt2)^n \vert a_i \in \Q \}\\
@@ -75,7 +218,7 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     which agrees with the previous definition of $\Q[\sqrt2]$.
 \end{example}
 \begin{example}
-    Recall that $\Z[i]$, the gaussian integers, is the set $\{a+bi \vert a,b \in \Z\}$. If we use the definition of $\Z[x]$, we see that
+    Recall that $\Z[i]$, the gaussian integers, is the set $\{a+bi \vert a,b \in \Z\}$. If we use the definition of $\Z[x]$ and `substitute' $x$ with $i$ we see that
     \begin{align*}
         \Z[i] &= \{a_0 + a_1i + a_2i^2 + a_3i^3 + \cdots + a_ni^n \vert a_i \in \Z\}\\
         &= \{a_0 + a_1i + a_2(-1) + a_3(-i) + \cdots + a_ni^n \vert a_i \in \Z\}\\
@@ -85,10 +228,13 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     which agrees with the previous definition of $\Z[i]$.
 \end{example}
 
-\section{Basic Terminology in Polynomial Rings}
-We define the degree of a polynomial.
+\begin{exercise}
+    Show that $\Q[\sqrt[3]{2}] = \left\{a + b\sqrt[3]{2} + c\sqrt[3]4 \vert a,b,c \in \Q\right\}$.
+\end{exercise}
+
+\section{Polynomial Terminology}
 \begin{definition}
-    Let $R[x]$ be a polynomial ring. The \textbf{degree}\index{degree} of a polynomial $f(x) \in R[x]$, denoted $\deg f(x)$, is the largest integer $k$ such that the coefficient of $x^k$ of $f(x)$ is non-zero.
+    Let $R[x]$ be a polynomial ring. The \textbf{degree}\index{degree} of a polynomial $f(x) \in R[x]$, denoted $\deg f(x)$, is the largest non-negative integer $k$ such that the coefficient of $x^k$ of $f(x)$ is non-zero.
 \end{definition}
 \begin{remark}
     For the zero polynomial (0), the degree is undefined.
@@ -97,12 +243,12 @@ We define the degree of a polynomial.
     The degree of the polynomial $1+x+5x^2$ in $\Z[x]$ is 2.
 \end{example}
 \begin{example}
-    The degree of the polynomial
-    \[
-        \begin{pmatrix}0&1\\3&0\end{pmatrix}x^5 + \begin{pmatrix}3&6\\7&2\end{pmatrix}x^4 + \begin{pmatrix}3&4\\9&4\end{pmatrix}
-    \]
-    in $\Mn{2}{\Z}[x]$ is 5.
+    The degree of the polynomial $\frac12x^3 - \frac43x^2$ in $\Q[x]$ is 3.
 \end{example}
+\begin{example}
+    The degree of the constant $\pi$ in $\R[x]$ is 0.
+\end{example}
+
 \begin{exercise}
     Give an example of a degree 5 polynomial in the ring $\Z_2[x]$.
 \end{exercise}
@@ -119,28 +265,76 @@ We define the degree of a polynomial.
     For the zero polynomial, the constant term is 0, the leading term is undefined, and the leading coefficient is undefined.
 \end{remark}
 \begin{example}
-    Consider the polynomial
-    \[
-        \begin{pmatrix}0&1\\3&0\end{pmatrix}x^5 + \begin{pmatrix}3&6\\7&2\end{pmatrix}x^4 + \begin{pmatrix}3&4\\9&4\end{pmatrix}
-    \]
-    in $\Mn{2}{\Z}[x]$. Then
+    Consider the polynomial $5x^4 + 4x^3 + 3x^2 + 2x + 1$ in $\Z[x]$. Then
     \begin{itemize}
-        \item the constant term is $\begin{pmatrix}3&4\\9&4\end{pmatrix}$;
-        \item the leading term is $\begin{pmatrix}0&1\\3&0\end{pmatrix}x^5$; and
-        \item the leading coefficient is $\begin{pmatrix}0&1\\3&0\end{pmatrix}$.
+        \item the constant term is 1;
+        \item the leading term is $5x^4$; and
+        \item the leading coefficient is 5.
+    \end{itemize}
+\end{example}
+\begin{example}
+    Consider the polynomial $\frac54x^3$ in $\Q[x]$. Then
+    \begin{itemize}
+        \item the constant term is 0;
+        \item the leading term is $\frac54x^3$; and
+        \item the leading coefficient is $\frac54$.
     \end{itemize}
 \end{example}
 
 \begin{definition}
     A \textbf{constant polynomial}\index{constant polynomial} is either the zero polynomial of a polynomial of degree 0.
 \end{definition}
-\begin{remark}
-    This definition immediately implies that any constant polynomial in the polynomial ring $R[x]$ is an element of $R$.
-\end{remark}
+\begin{proposition}
+    For a commutative ring $R$,
+    \begin{itemize}
+        \item a constant polynomial in $R[x]$ is an element of $R$,
+        \item an element of $R$ is a constant polynomial of $R[x]$.
+    \end{itemize}
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-constant-polynomial-iff-ring-element} (later).
+\end{proof}
+\begin{example}
+    Both 0 and 2 are constant polynomials in $\Z[x]$. However $x + 1$ and $x^2 + x + 1$ are not constant polynomials in $\Z[x]$.
+\end{example}
+\begin{example}
+    $\frac{12}{34}$ is a constant polynomial in $\Q[x]$, $\R[x]$, and $\C[x]$.
+\end{example}
+
+\begin{definition}
+    A \textbf{zero}\index{polynomial!zeroes} (or \textbf{root}\index{polynomial!roots}) of a polynomial $f(x)$ in the polynomial ring $R[x]$ is an $r \in R$ such that $f(r) = 0$, where 0 is the additive identity of $R$.
+\end{definition}
+\begin{example}
+    The zeroes of $f(x) = x^2+7$ in $\Z_8[x]$ are 1, 3, 5, and 7, since
+    \begin{align*}
+        f(1) &= 1^2 + 7 = 8 = 0,\\
+        f(3) &= 3^2 + 7 = 16 = 0,\\
+        f(5) &= 5^2 + 7 = 32 = 0, \text{ and}\\
+        f(7) &= 7^2 + 7 = 56 = 0
+    \end{align*}
+    in $\Z_8$.
+\end{example}
+\begin{example}
+    The zeroes of the zero polynomial in a polynomial ring $R[x]$ is the entirety of the ring $R$, since it always equals 0.
+\end{example}
+
+\begin{exercise}
+    Find the zeroes of the polynomial $x^2-1$ in $\Z_4[x]$.
+\end{exercise}
+\begin{exercise}\label{exercise-constant-polynomial-iff-ring-element}
+    Let $R$ be a commutative ring.
+    \begin{partquestions}{\alph*}
+        \item Show that any element in $R$ is a constant polynomial of $R[x]$.
+        \item If $f(x)$ is a constant polynomial in $R[x]$, show that $f(x) \in R$.
+    \end{partquestions}
+\end{exercise}
+
+\newpage
 
 \section{Properties of Polynomials and Polynomial Rings}
-We can now state the theorem that produces a condition for a ring to be an integral domain.
-\begin{theorem}\label{thrm-integral-domain-iff-polynomial-ring-is-also}
+With an introduction of polynomials and polynomial rings out of the way, we can start looking at properties of them. In fact, often properties of $R$ carry over to $R[x]$, as given by the following theorem.
+
+\begin{theorem}\label{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}
     Let $R$ be a ring. Then $R$ is an integral domain if and only if $R[x]$ is an integral domain.
 \end{theorem}
 \begin{proof}
@@ -158,9 +352,14 @@ We can now state the theorem that produces a condition for a ring to be an integ
         a_mb_nx^{m+n} + (\text{A polynomial with degree less than }m+n) = 0
     \]
     which hence means that all coefficients must be zero. Therefore $a_mb_n = 0$. This means that we have found non-zero elements $a_m$ and $b_n$ in $R$ such that their product is zero, meaning that they are zero divisors.
-
-    This completes the proof.
 \end{proof}
+
+\begin{example}
+    Since $\Z$ is an integral domain (\myref{example-integers-is-integral-domain}), thus $\Z[x]$ is also an integral domain by \myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}. What this means is that if two polynomials from $\Z[x]$, say $p(x)$ and $q(x)$, have a product that equals the zero polynomial, then either $p(x)$ is the zero polynomial or $q(x)$ is the zero polynomial.
+
+    As a concrete example of this fact, since $x^2-3x+2 = (x-1)(x-2)$, thus if $x^2-3x+2 = 0$, we know that either $x-1 = 0$ or $x-2 = 0$, which means either $x = 1$ or $x = 2$.
+\end{example}
+
 \begin{exercise}\label{exercise-commutative-ring-with-identity-iff-polynomial-ring-is-also}
     Let $R$ be a ring.
     \begin{partquestions}{\alph*}
@@ -169,20 +368,390 @@ We can now state the theorem that produces a condition for a ring to be an integ
     \end{partquestions}
 \end{exercise}
 
+We now look at a theorem that tells us the degree of a sum or product of polynomials within a polynomial ring.
+\begin{theorem}\label{thrm-polynomial-degree-properties}
+    Let $R$ be an integral domain, with $f(x)$ and $g(x)$ being polynomials in $R[x]$ with degrees $m$ and $n$. Let $s$ be the maximum of $m$ and $n$. Then
+    \begin{itemize}
+        \item $\deg(f(x) + g(x)) = s$
+        \item $\deg(f(x)g(x)) = m + n$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Without loss of generality, assume $m \geq n$. Write
+    \begin{align*}
+        f(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_mx^m\\
+        g(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_nx^n + b_{n+1}x^{n+1} + \cdots + b_mx^m
+    \end{align*}
+    where $b_i = 0$ for $i > n$. Then by definition of polynomial addition we see
+    \[
+        f(x) + g(x) = \sum_{i=0}^m(a_i+b_i)x^i
+    \]
+    which means $\deg(f(x) + g(x)) = m$ as needed.
+
+    Also,
+    \begin{align*}
+        f(x)g(x) &= \sum_{i=0}^{m+n}c_ia^i\\
+        &= c_{m+n}x^{m+n} + \sum_{i=0}^{m+n-1}c_ia^i
+    \end{align*}
+    where $c_{m+n} = a_mb_n$. Since $f(x)$ is a degree $m$ polynomial, therefore $a_m \neq 0$. Similarly $b_n \neq 0$. As $R$ is an integral domain, this therefore means $c_{m+n} = a_mb_n \neq 0$, which shows that $f(x)g(x)$ has degree $m + n$.
+\end{proof}
+\begin{example}
+    We show that the condition for $R$ to be an integral domain is necessary for the above theorem to hold.
+
+    Note that $\Z_4$ is not an integral domain since $2 \times 2 = 4 = 0$ in $\Z_4$. Consider the polynomials $f(x) = 2x$ and $g(x) = 2x + 1$, which both have degree 1. However their sum is $2x + (2x + 1) = 4x + 1= 1$, which has degree 0. Similarly, their product is $2x \times (2x+1) = 4x^2 + 2x = 2x$ which has degree 1.
+\end{example}
+
+\begin{proposition}\label{prop-unit-of-ring-iff-unit-of-polynomial-ring}
+    Let $R$ be an integral domain. Then $u$ is a unit of $R$ if and only if $u$ is a unit of $R[x]$.
+\end{proposition}
+\begin{proof}
+    We first show the forward direction; assume $u$ is a unit of $R$. Then there exists a $v \in R$ such that $uv = 1$. Since $u$ and $v$ are in $R$, thus they are constant polynomials in $R[x]$ with the property that $uv = 1$, meaning that $u$ and $v$ are units of $R[x]$ also.
+
+    We now show the reverse direction; assume $u$ is a unit of $R[x]$. In fact $u$ is actually a polynomial, say $f(x) \in R[x]$. Then there exists a $g(x) \in R[x]$ such that $f(x)g(x) = 1$. Now suppose $\deg f(x) = m$ and $\deg g(x) = n$. As $R$ is an integral domain so is $R[x]$ (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}), which means
+    \begin{align*}
+        \deg(f(x)g(x)) &= \deg(f(x)) + \deg(g(x)) & (\myref{thrm-polynomial-degree-properties})\\
+        &= m + n\\
+        &= \deg(1) & (\text{since }f(x)g(x) = 1)\\
+        &= 0 & (\text{degree of constant polynomial is 0})
+    \end{align*}
+    so $m + n = 0$. Therefore, as $m$ and $n$ must be non-negative integers, we conclude $m = n = 0$, meaning $f(x)$ and $g(x)$ are constant polynomials, say $f(x) = a \in R$ and $g(x) = b \in R$, with the property that $ab = 1$. Therefore $f(x)$ and $g(x)$ are also units of $R$.
+\end{proof}
+\begin{example}
+    Consider the ring $\Z_7$, which is an integral domain (actually, it is a field) by \myref{example-Zp-is-field}. Note that $3 \times 5 = 15 = 1$ in $\Z_7$, so 3 and 5 are units in $\Z_7$. This means that 3 and 5 are also units of the polynomial ring $\Z_7[x]$ by \myref{prop-unit-of-ring-iff-unit-of-polynomial-ring}.
+\end{example}
+
+\begin{proposition}\label{prop-polynomial-ring-quotient-ideal-polynomial-ring-cong-quotient-polynomial-ring}
+    Let $R$ b a commutative ring, let $I$ be an ideal of $R$. Then
+    \[
+        R[x]/I[x] \cong (R/I)[x].
+    \]
+\end{proposition}
+\begin{proof}
+    Consider the map $\phi: R[x] \to (R/I)[x]$ where, for a degree $n$ polynomial, we have
+    \[
+        \phi\left(\sum_{i=0}^na_ix^i\right) = \sum_{i=0}^n (a_i+I)x^i.
+    \]
+    We show that $\phi$ is a ring homomorphism, then find its image and kernel, and finally use the FRIT (\myref{thrm-ring-isomorphism-1}) to end the proof.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: \myref{exercise-polynomial-ring-maps-to-quotient-polynomial-ring-is-homomorphism} (later) shows that it is a ring homomorphism.
+        
+        \item \textbf{Image}: We show that $\phi$ is surjective. For any polynomial $(a_0+I) + (a_1+I)x + \cdots + (a_n+I)x^n$ in $(R/I)[x]$, clearly the polynomial $a_0 + a_1x + \cdots + a_nx^n$ is its pre-image. Therefore $\phi$ is surjective, meaning $\im \phi = (R/I)[x]$.
+        
+        \item \textbf{Kernel}: Let $f(x) = a_0 + a_1x + \cdots + a_nx^n$. Then $f(x) \in \ker\phi$ if and only if $\phi(f(x)) = 0$, which means $(a_0+I) + \cdots + (a_n+I)x^n = 0$. This happens if and only if $a_k + I = 0$ for all $0 \leq k \leq n$, which in turn occurs if and only if $a_k \in I$. So $f(x) \in \ker\phi$ if and only if $f(x) \in I[x]$, meaning $\ker\phi = I[x]$.
+    \end{itemize}
+    By the FRIT,
+    \[
+        R[x]/I[x] \cong (R/I)[x].\qedhere
+    \]
+\end{proof}
+
+\begin{exercise}\label{exercise-polynomial-ring-maps-to-quotient-polynomial-ring-is-homomorphism}
+    Show that the map $\phi$ in \myref{prop-polynomial-ring-quotient-ideal-polynomial-ring-cong-quotient-polynomial-ring} is a ring homomorphism.
+\end{exercise}
+
+\begin{theorem}\label{thrm-prime-ideal-iff-prime-ideal-in-polynomial-ring}
+    Let $R$ be a commutative ring. Then $P$ is a prime ideal of $R$ if and only if $P[x]$ is a prime ideal of $R[x]$.
+\end{theorem}
+\begin{proof}
+    See \myref{exercise-prime-ideal-iff-prime-ideal-in-polynomial-ring} (later).
+\end{proof}
+
+\begin{example}
+    Consider the commutative ring $\Z$. We proved in \myref{prop-ideals-of-Z} that prime ideals of $\Z$ take the form $p\Z$ where $p$ is a prime number. \myref{thrm-prime-ideal-iff-prime-ideal-in-polynomial-ring} tells us that $(p\Z)[x]$ are prime ideals of $\Z[x]$.
+
+    For example, one sees clearly that $2x^2 + 4x + 2 \in (2\Z)[x]$. Note $2x^2 + 4x + 2 = 2(x+1)^2$, so either $(x+1) \in (2\Z)[x]$ (which is false since the coefficients are not multiples of 2) or $2(x+1) \in (2\Z)[x]$.
+\end{example}
+
+\begin{exercise}\label{exercise-prime-ideal-iff-prime-ideal-in-polynomial-ring}
+    Prove \myref{thrm-prime-ideal-iff-prime-ideal-in-polynomial-ring}.\newline
+    (\textit{Hint: most of the statements required are if and only if statements.})
+\end{exercise}
+
+\section{Polynomial Division}
+In previous chapters, we have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) to rewrite any integer $n$ in the form $qd + r$ where $q$ and $r$ are distinct integers such that $0 \leq r < |d|$. There is an analogous theorem for polynomial rings over a field, known as polynomial long division.
+
+\begin{theorem}[Polynomial Long Division]\label{thrm-polynomial-long-division}\index{Polynomial Long Division Theorem}
+    Suppose $F$ is a field and let $f(x)$ and $d(x)$ be polynomials in $F[x]$, where $d(x) \neq 0$ is called the \textbf{divisor}\index{divisor!for polynomial division}. Then there exist unique polynomials $q(x)$ and $r(x)$ in $F[x]$ such that
+    \[
+        f(x) = q(x)d(x) + r(x)
+    \]
+    where $r(x) = 0$ or $\deg r(x) < \deg d(x)$.
+
+    We call $f(x)$ the \textbf{dividend}\index{dividend!for polynomial division}, $q(x)$ the \textbf{quotient}\index{quotient!for polynomial division}, and $r(x)$ the \textbf{remainder}\index{remainder!for polynomial division}.
+\end{theorem}
+\begin{proof}
+    We note some simple cases.
+    \begin{itemize}
+        \item If $f(x) = 0$, we note $0 = 0d(x) + 0$ for any $d(x)$, so we may choose $q(x) = 0$ and $r(x) = 0$.
+        \item If $f(x) \neq 0$ and $\deg d(x) > \deg f(x)$, we note $f(x) = 0d(x) + f(x)$. Thus $q(x) = 0$ and $r(x) = f(x)$ since $\deg f(x) < \deg d(x)$.
+    \end{itemize}
+
+    Thus, we assume that $\deg f(x) \geq \deg d(x)$ and $f(x) \neq 0$. Let $\deg f(x) = n$. We induct on $n$ to show the existence of both $q(x)$ and $r(x)$.
+
+    When $n = 0$, we note $\deg f(x) = \deg d(x) = 0$. Thus $f(x) = a \in F$ and $d(x) = b \in F$ for some elements $a$ and $b$ in $F$ where $b \neq 0$. We note $b^{-1}$ exists since $F$ is a field. Thus we may write $f(x) = a = b(b^{-1}a) + 0$, so $q(x) = b^{-1}a$ and $r(x) = 0$.
+
+    Now assume that for all polynomials with degree $0 \leq k < n$, there exists a quotient and remainder for a given divisor with degree of at least $k$. We show that a quotient and remainder exists for any divisor of degree of at least $n$.
+
+    Let
+    \begin{align*}
+        f(x) &= a_nx^n + f_0(x) \text{ with } a_n \neq 0 \text{ and } \deg f_0(x) < n,\\
+        d(x) &= b_mx^m + d_0(x) \text{ with } b_m \neq 0 \text{ and } \deg d_0(x) < m.
+    \end{align*}
+    Define
+    \[
+        f_1(x) = f(x) - a_nb_m^{-1}x^{n-m}d(x).
+    \]
+    Again $b_m^{-1}$ exists in the field $F$, and since $m \leq n$ thus $x^{n-m}$ is well defined. We see that
+    \begin{align*}
+        f_1(x) &= f(x) - a_nb_m^{-1}x^{n-m}d(x)\\
+        &= (a_nx^n + f_0(x)) - a_nb_m^{-1}x^{n-m}\left(b_mx^m + d_0(x)\right)\\
+        &= a_nx^n + f_0(x) - a_nx^n - a_nb_m^{-1}x^{n-m}d_0(x)\\
+        &= f_0(x) - a_nb_m^{-1}x^{n-m}d_0(x)
+    \end{align*}
+    and observe $\deg f_0(x) < n$ and $\deg(x^{n-m}d_0(x)) < (n-m) + n = n$. Therefore we have $\deg f_1(x) < n$.
+
+    Applying the induction hypothesis on the divisor $f_1(x)$ means that there exists a quotient $q_1(x)$ and remainder $r(x)$ upon division by $d(x)$ such that
+    \[
+        f_1(x) = q_1(x)d(x) + r(x) \text{ with } r(x) = 0 \text{ or } \deg r(x) < \deg d(x).
+    \]
+    Now set $q(x) = q_1(x) + a_nb_m^{-1}x^{n-m}$ and observe that
+    \begin{align*}
+        q(x)d(x) + r(x) &= (q_1(x) + a_nb_m^{-1}x^{n-m})d(x) + r(x)\\
+        &= q_1(x)d(x) + a_nb_m^{-1}x^{n-m}d(x) + r(x)\\
+        &= (q_1(x)d(x) + r(x)) + a_nb_m^{-1}x^{n-m}d(x)\\
+        &= f_1(x) + a_nb_m^{-1}x^{n-m}d(x)\\
+        &= (f(x) - a_nb_m^{-1}x^{n-m}d(x)) + a_nb_m^{-1}x^{n-m}d(x)\\
+        &= f(x)
+    \end{align*}
+    which means that there exists a quotient $q(x)$ and remainder $r(x)$ upon division by $d(x)$ for the divisor $f(x)$.
+
+    With the existence shown, we now show uniqueness. Let the dividend be $f(x)$, the divisor be $d(x)$, the quotients $q_1(x)$ and $q_2(x)$, and the remainders $r_1(x)$ and $r_2(x)$ be polynomials in $F[x]$ such that
+    \[
+        f(x) = q_1(x)d(x) + r_1(x) = q_2(x)d(x) + r_2(x).
+    \]
+    
+    By way of contradiction we assume $q_1(x) \neq q_2(x)$. Note
+    \[
+        d(x)(q_1(x) - q_2(x)) = r_2(x) - r_1(x)
+    \]
+    so the degree of the left hand side is $\deg d(x) + \deg(q_1(x) - q_2(x)) \geq \deg d(x)$. However the right hand side is $\deg(r_2(x) - r_1(x)) < \deg d(x)$ by definition of the remainders $r_1(x)$ and $r_2(x)$, contradicting that the left hand side is at least $\deg d(x)$.
+
+    Therefore $q_1(x) = q_2(x)$. So
+    \[
+        d(x)(q_1(x) - q_2(x)) = 0 = r_2(x) - r_1(x)
+    \]
+    which means $r_1(x) = r_2(x)$. Therefore the quotient and remainder are unique for a given dividend and divisor.
+\end{proof}
+
+\begin{example}
+    Let the dividend $f(x) = 3x^4 + 2x^3 + x^2$ and divisor $d(x) = x^2 + 2x + 3$ be polynomials in $\Z_5[x]$. We proceed with polynomial long division, keeping in mind that addition and multiplication are done modulo 5. We see
+    \begin{align*}
+        3x^4 + 2x^3 + x^2 &= 3x^2(x^2 + 2x + 3) - 4x(x^2 + 2x + 3) + 12x + 0\\
+        &= (3x^2-4x)(x^2+2x+3) + 12x\\
+        &= (3x^2+x)(x^2+2x+3) + 2x
+    \end{align*}
+    so $3x^2+x$ is the quotient and $2x$ is the remainder.
+\end{example}
+
+\begin{example}
+    We divide $f(x) = x^2 + 2x - 1$ by $x-i$ in $\C[x]$. Note
+    \begin{align*}
+        f(x) &= x(x-i) + (2+i)(x-i) + (-2+2i)\\
+        &= (x+2+i)(x-i) - 2 + 2i
+    \end{align*}
+    so the quotient is $x+2+i$ and the remainder is $-2+2i$.
+\end{example}
+
+We define a few more terms relating to division of polynomials.
+\begin{definition}
+    Let $f(x)$ and $g(x)$ be polynomials in an integral domain $R[x]$. We say that $g(x)$ \textbf{divides}\index{polynomial!divides} $f(x)$, and say that $g(x)$ is a \textbf{factor}\index{polynomial!factor} of $f(x)$, if there is a polynomial $h(x) \in R[x]$ such that $f(x) = g(x)h(x)$.
+\end{definition}
+\begin{definition}
+    Let $F$ be a field and $f(x)$ be a polynomial in $F[x]$. Suppose $a \in F$ is a zero of $f(x)$. Then $a$ is a \textbf{zero of multiplicity $n$}\index{polynomial!zeroes!of multiplicity $n$} where $n \geq 1$ if $(x-a)^n$ is a factor of $f(x)$ but $(x-a)^{n+1}$ is not a factor of $f(x)$.
+\end{definition}
+
+With these definitions, we can now state some corollaries of polynomial long division.
+
+\begin{corollary}[Remainder Theorem]\label{corollary-remainder-theorem}
+    Let $F$ be a field, $a \in F$, and $f(x)$ be a polynomial in $F[x]$. Then $f(a)$ is the remainder of the division of $f(x)$ by $x-a$.
+\end{corollary}
+\begin{proof}
+    See \myref{problem-remainder-theorem} (later).
+\end{proof}
+
+\begin{corollary}[Factor Theorem]\label{corollary-factor-theorem}
+    Let $F$ be a field and $f(x)$ be a polynomial in $F[x]$. Then $a$ is a zero of $f(x)$ if and only if $x-a$ is a factor of $f(x)$.
+\end{corollary}
+\begin{proof}
+    For the forward direction, use polynomial long division (\myref{thrm-polynomial-long-division}) with dividend $f(x)$ and divisor $x-a$ to write
+    \[
+        f(x) = (x-a)d(x) + r(x) \text{ with } r(x) = 0 \text{ or } \deg r(x) < \deg(x-a) = 1
+    \]
+    which means $r(x) = b \in F$. Evaluating $f(x)$ at $x = a$ we see
+    \[
+        0 = (a-a)d(x) + b = 0 + b
+    \]
+    which means $b = 0$. Therefore $f(x) = (x-a)g(x)$, meaning $x-a$ is a factor of $f(x)$.
+
+    For the reverse direction, if $x - a$ is a factor of $f(x)$, then we write $f(x) = (x-a)g(x)$ for some polynomial $g(x)$ in $F[x]$. Then clearly
+    \[
+        f(a) = (a-a)g(a) = 0g(a) = 0
+    \]
+    so $a$ is a zero of $f(x)$.
+\end{proof}
+
+\begin{example}
+    We find the zeroes of $f(x) = x^4 - 2x^3 + 2x^2 - 2x + 1$ in $\Z[x]$. One sees that 1 is a zero of $f(x)$ since $1 - 2 + 2 - 2 + 1 = 0$. We find the multiplicity of 1.
+
+    Since 1 is a zero thus it has multiplicity of at least 1. Consider the divisor $(x-1)^2 = x^2 - 2x + 1$ and we see
+    \begin{align*}
+        x^4 - 2x^3 + 2x^2 - 2x + 1 &= x^2(x^2 - 2x + 1) + 1(x^2 - 2x + 1)\\
+        &= (x-1)^2(x^2+1)
+    \end{align*}
+    so 1 is a zero of multiplicity 2. It can't be a zero of multiplicity 3 since $(x-1)^3 = x^3 - 3x^2 + 3x - 1$ and
+    \begin{align*}
+        x^4 - 2x^3 + 2x^2 - 2x + 1 &= x(x^3 - 3x^2 + 3x - 1) + 1(x^3 - 3x^2 + 3x - 1) + 2x^2 - 4x + 2\\
+        &= (x-1)^3(x+1) + 2x^2 - 4x + 2
+    \end{align*}
+    which means $(x-1)^3$ is not a factor of $f(x)$. Thus 1 is a zero of multiplicity 2.
+\end{example}
+
+\begin{example}
+    Let $f(x) = x^4 + x^3 + x + 1$ be in $\Z_2[x]$. Clearly 1 is the only zero of $f(x)$. We find the multiplicity of 1.
+    
+    Since 1 is a zero thus it has multiplicity of at least 1. Consider the divisor $(x-1)^2 = x^2 - 2x + 1 = x^2 + 1$ and we see
+    \begin{align*}
+        f(x) &= x^2(x^2+1) + x(x^2+1) - x^2 + 1\\
+        &= (x^2+1)(x^2+x) - x^2 + 1\\
+        &= (x^2+1)(x^2+x) + x^2 + 1
+    \end{align*}
+    so $(x-1)^2$ is not a divisor of $f(x)$. Thus 1 is not a zero of multiplicity 2, meaning that 1 is a zero of multiplicity 1.
+\end{example}
+
+\begin{exercise}
+    Divide $3x^4 + 3x^3 + 4x^2 + 3x + 3$ by $x^2 + 2x + 3$ in $\Z_5[x]$ and hence state two factors of $3x^4 + 3x^3 + 4x^2 + 3x + 3$ in $\Z_5[x]$.
+\end{exercise}
+
+We note an important theorem about the number of zeroes of a polynomial.
+\begin{theorem}
+    Suppose $F$ is a field and $f(x) \in F[x]$. If the degree of $f(x)$ is $n$, then $f(x)$ has at most $n$ distinct zeroes.
+\end{theorem}
+\begin{proof}
+    We induct on $n$. Clearly a polynomial with degree 0 has no zeroes. Now suppose any polynomial of degree $k$ has at most $k$ distinct zeroes. Let $f(x) \in F[x]$ be a polynomial of degree $k + 1$. The case when $f(x)$ has no zeroes is trivially true, so assume that $f(x)$ has at least one zero $a \in F$. By \myref{corollary-factor-theorem} we can write
+    \[
+        f(x) = (x-a)g(x)
+    \]
+    where $\deg g(x) = k$ since $x-a$ is a polynomial of degree 1. By induction hypothesis $g(x)$ has at most $k$ distinct zeroes, which means $f(x) = (x-a)g(x)$ has at most $k + 1$ distinct zeroes. Therefore by induction we establish the required result.
+\end{proof}
+
+\begin{example}
+    We give and example of when the previous theorem fails. Consider $\Z_{12}[x]$ and $f(x) = x^2 + 11 \in \Z_{12}[x]$. We note $\Z_{12}$ is not a field since $3 \times 4 = 12 = 0$, which means $\Z_{12}$ is not an integral domain (and hence not a field). We see that $f(x)$ has 4 zeroes 1, 5, 7, and 11 since
+    \begin{align*}
+        f(1) &= 1^2 + 11 = 12 = 0,\\
+        f(5) &= 5^2 + 11 = 36 = 0,\\
+        f(7) &= 7^2 + 11 = 60 = 0, \text{ and}\\
+        f(11) &= 11^2 + 11 = 132 = 0.
+    \end{align*}
+    So $f(x)$ has 4 roots but has degree 2.
+\end{example}
+
+We end this section by noting two theorems.
+\begin{theorem}\label{thrm-criterion-for-principal-ideal-in-polynomial-field}
+    Let $F$ be a field, $I$ a non-zero ideal in $F[x]$, and $g(x) \in F[x]$. Then $I = \princ{g(x)}$ if and only if $g(x)$ is a non-zero polynomial of minimum degree in $I$.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-criterion-for-principal-ideal-in-polynomial-field} (later).
+\end{proof}
+
+\begin{theorem}
+    $F[x]$ is a PID if $F$ is a field.
+\end{theorem}
+\begin{proof}
+    By \myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain} we know that $F[x]$ is an integral domain. Now suppose $I$ is an ideal of $F[x]$.
+    \begin{itemize}
+        \item If $I = \{0\}$ then we may write $I = \princ{0}$.
+        \item If $I \neq \{0\}$, then among the elements of $I$, there is a polynomial $g(x) \in I$ with minimal degree. By \myref{thrm-criterion-for-principal-ideal-in-polynomial-field} $I = \princ{g(x)}$.
+    \end{itemize}
+    In either case, any ideal of $F[x]$ is a principal ideal. Thus $F[x]$ is a PID.
+\end{proof}
+
 \newpage
 
 \section{Problems}
 \begin{problem}
-    Show that $\princ{x}$ is a prime ideal in $\Z[x]$.
+    Find a degree 4 polynomial that is equal to the polynomial $1 - 2x + 3x^2 - 4x^3 + 5x^4 - 6x^5$ in $\Z_3[x]$.
 \end{problem}
+
 \begin{problem}
-    Let $I = \{f(x) \in \Z[x] \vert f(-2) = 0\}$ be a subset of $\Z[x]$, and let the map $\phi:\Z[x]\to\Z, f(x) \mapsto f(-2)$.
+    Let $I$ be a principal ideal of $\Z[x]$ generated by the polynomial $x^2 + 3x - 1$. Simplify $\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)$ in the quotient ring $\Z[x]/I$.
+\end{problem}
+
+\begin{problem}
+    Determine if the following statements are true or false, and justify your answer.
+    \begin{partquestions}{\alph*}
+        \item All polynomials $f(x) \in \Z[x]$ has at least one integer zero.
+        \item There exists a polynomial $f(x) \in \Z[x]$ with non-integer zero(es).
+        \item There exists a polynomial $f(x) \in \R[x]$ with integer coefficients with non-integer zero(es).
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    For the polynomials
+    \begin{partquestions}{\alph*}
+        \item $4x^2 + 2x + 1 \in \Z_8[x]$ and
+        \item $x^2 + 2x + 1 \in \Z_7[x]$,
+    \end{partquestions}
+    find another polynomial $f(x)$ such that their product is 1 for all $x$ in the ground ring. If such an $f(x)$ does not exist, explain why.
+\end{problem}
+
+\begin{problem}\label{problem-remainder-theorem}
+    Prove the remainder theorem (\myref{corollary-remainder-theorem}).
+\end{problem}
+
+\begin{problem}
+    Let $I = \{f(x) \in \Z[x] \vert f(-2) = 0\}$ be a subset of $\Z[x]$, and let the homomorphism $\phi:\Z[x]\to\Z, f(x) \mapsto f(-2)$.
     \begin{partquestions}{\roman*}
-        \item Show that $\phi$ is a ring homomorphism.
         \item Show that $I$ is an ideal of $\Z[x]$.
         \item Hence determine if the ideal $I$ is prime, maximal, or both.
     \end{partquestions}
 \end{problem}
+
+\begin{problem}
+    Show that $\princ{x}$ is a prime ideal in $\Z[x]$.
+\end{problem}
+
 \begin{problem}
     Prove that $\Z[x] / \princ{x} \cong \Z$.
+\end{problem}
+
+\begin{problem}
+    Find an infinite set of polynomials $S \subseteq \Z_5[x]$ such that any two distinct polynomials in $S$ have different degrees and all of $\Z_5$ are zeroes of a polynomial in $S$.
+\end{problem}
+
+\begin{problem}\label{problem-criterion-for-principal-ideal-in-polynomial-field}
+    Let $F$ be a field and $I$ a non-zero ideal in $F[x]$.
+    \begin{partquestions}{\roman*}
+        \item If $g(x) \in I$ is a non-zero polynomial of minimum degree, prove $I = \princ{g(x)}$.
+        \item If $I = \princ{g(x)}$ for some $g(x) \in I$, prove that $g(x)$ is non-zero and of minimum degree.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Prove $R[x] \cong R[x^k]$ for any positive integer $k$ and commutative ring $R$.
+\end{problem}
+
+\begin{problem}
+    Let $R$ and $S$ be commutative rings, and let $\phi: R \to S$ be a ring homomorphism. Define the map $\psi: R[x] \to S[x]$ where
+    \[
+        \psi\left(\sum_{i=0}^na_ix^i\right) = \sum_{i=0}^n\phi(a_i)x^i.
+    \]
+    \begin{partquestions}{\roman*}
+        \item Show that $\psi$ is a ring homomorphism.
+        \item If $R \cong S$ given by the isomorphism $\phi$, prove that $R[x] \cong S[x]$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Prove that $\Z[x]$ is \textit{not} a PID.\newline
+    (\textit{Hint: consider the set $\{2f(x) + xg(x) \vert f(x),g(x) \in \Z[x]\}$.})
 \end{problem}
