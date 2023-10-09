@@ -3,7 +3,7 @@ We explored the absolute basics of rings in the previous chapter. When working i
 
 \section{What is an Integral Domain?}
 \begin{definition}
-    An \textbf{integral domain}\index{integral domain} is a commutative ring with identity and contains no zero divisors.
+    An \textbf{integral domain}\index{integral domain}, generally denoted $D$, is a commutative ring with identity and contains no zero divisors.
 \end{definition}
 \begin{remark}
     Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$ such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the integral domain.
@@ -78,7 +78,7 @@ Let's look at some non-examples of integral domains.
 \section{General Results}
 With an introduction of integral domains out of the way, we introduce some general results applicable to integral domains.
 \begin{proposition}[Cancellation Law for Integral Domains]\index{integral domain!cancellation law}\label{prop-integral-domain-cancellation-law}
-    Let $R$ be an integral domain, $r, x, y \in R$, and $r \neq 0$. Then the following statements are equivalent.
+    Let $D$ be an integral domain, $r, x, y \in D$, and $r \neq 0$. Then the following statements are equivalent.
     \begin{enumerate}[label=(\arabic*)]
         \item $x = y$
         \item $rx = ry$
@@ -103,17 +103,17 @@ With an introduction of integral domains out of the way, we introduce some gener
 \begin{proof}
     A finite integral domain is a commutative ring with identity; all that remains is to prove that every non-zero element has an inverse.
 
-    Suppose $R$ is a finite integral domain and take a non-zero element $r$ in $R$. Consider
+    Suppose $D$ is a finite integral domain and take a non-zero element $r$ in $D$. Consider
     \begin{align*}
         A &= \{r^k \vert k \in \Z,\;k\geq 0\}\\
         &= \{1, r, r^2, r^3, \dots\}\\
-        &\subseteq R.
+        &\subseteq D.
     \end{align*}
-    Note that since $R$ is finite, $A$ must be finite as well. Therefore there must exist positive integers $m$ and $n$ with $m > n$ such that $r^m = r^n$, meaning $r^m - r^n = 0$. As $m > n$, thus $r^n\left(r^{m-n}-1\right) = 0$. Hence, as there are no zero divisors in $R$, either $r^n = 0$ or $r^{m-n} - 1 = 0$.
+    Note that since $D$ is finite, $A$ must be finite as well. Therefore there must exist positive integers $m$ and $n$ with $m > n$ such that $r^m = r^n$, meaning $r^m - r^n = 0$. As $m > n$, thus $r^n\left(r^{m-n}-1\right) = 0$. Hence, as there are no zero divisors in $R$, either $r^n = 0$ or $r^{m-n} - 1 = 0$.
 
-    Now if $r^n = 0$ then $n > 1$ (since $r^1 = r \neq 0$ by assumption). Note $r^n = rr^{n-1} = 0$, which hence means $r^{n-1} = 0$ as $r \neq 0$ and $R$ has no zero divisors. But we may repeat this argument on $n - 1$ to eventually terminate at $r = 0$, which is a contradiction. Hence we must conclude that $r^{m-n} - 1 = 0$. We may write $r^{m-n}-1 = 0$ as $rr^{m-n-1} = 1$ which means that $r$ is a unit (as $r^{m-n-1}$ is its inverse). Therefore every non-zero element has an inverse.
+    Now if $r^n = 0$ then $n > 1$ (since $r^1 = r \neq 0$ by assumption). Note $r^n = rr^{n-1} = 0$, which hence means $r^{n-1} = 0$ as $r \neq 0$ and $D$ has no zero divisors. But we may repeat this argument on $n - 1$ to eventually terminate at $r = 0$, which is a contradiction. Hence we must conclude that $r^{m-n} - 1 = 0$. We may write $r^{m-n}-1 = 0$ as $rr^{m-n-1} = 1$ which means that $r$ is a unit (as $r^{m-n-1}$ is its inverse). Therefore every non-zero element has an inverse.
 
-    Hence $R$ is a field.
+    Hence $D$ is a field.
 \end{proof}
 
 \begin{remark}
@@ -198,10 +198,10 @@ We look at two properties about the characteristic.
 \end{proof}
 
 \begin{proposition}\label{prop-zero-of-prime-characteristic-if-integral-domain}
-    If $R$ is an integral domain, then either $\Char{R} = 0$ or $\Char{R} = p$ where $p$ is a prime.
+    If $D$ is an integral domain, then either $\Char{D} = 0$ or $\Char{D} = p$ where $p$ is a prime.
 \end{proposition}
 \begin{proof}
-    If $\Char{R} = 0$ we are done, so assume that $\Char{R} = n \neq 0$. Furthermore assume $n = ab$ with $1 \leq a,b \leq n$.
+    If $\Char{D} = 0$ we are done, so assume that $\Char{D} = n \neq 0$. Furthermore assume $n = ab$ with $1 \leq a,b \leq n$.
 
     Note that
     \[
