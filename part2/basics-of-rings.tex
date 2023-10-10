@@ -264,11 +264,9 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
     Show that $(-a)(-b) = ab$ for any $a$ and $b$ in $R$.
 \end{exercise}
 
-% \section{Some Non-Obvious Rings}
 \section{Matrix Rings}
 The rings that we explored in previous sections can be thought of as the `obvious' rings, since they are number systems. As rings were made to generalize number systems, they should clearly be rings. However, there are less obvious rings.
 
-% \subsection{Matrix Rings}
 We looked at matrices in the context of the General/Special Linear Group of matrices. Here we see that matrices in fact form rings, known as matrix rings. Before that though, we need to define the operations within that ring.
 
 \begin{definition}[Matrix Addition]\index{matrix addition}
@@ -347,7 +345,7 @@ We can now define what is a matrix ring.
         \begin{itemize}
             \item \textbf{Closure}: In \myref{subsection-intro-to-matrices} we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entries of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
         
-            \item \textbf{Associativity}: We proved matrix multiplication is associative in \myref{subsection-GLR-matrix-group}.
+            \item \textbf{Associativity}: We proved that matrix multiplication is associative in \myref{subsection-GLR-matrix-group}.
         \end{itemize}
         
         \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly. Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
@@ -391,41 +389,6 @@ We can now define what is a matrix ring.
 
     Hence $\Mn{n}{R}$ is a ring with identity.
 \end{proof}
-
-% \subsection{Hamilton's Quaternions}
-% The quaternions is a way to extend the complex numbers into 4 dimensions. Irish mathematician William Rowan Hamilton was looking for a way represent points in 3-dimensional space using numbers. He knew how to add and subtract triples of numbers, but had difficulty in defining a way to multiply and divide these numbers, just like in the ring of complex numbers. The breakthrough in quaternions came in 1843 when he thought of using 4-dimensional numbers instead of 3-dimensional numbers.
-
-% We define what quaternions are, and what the quaternion ring is.
-% \begin{definition}
-%     A \textbf{quaternion}\index{quaternion} is an expression of the form
-%     \[
-%         a + b\qi + c\qj + d\qk
-%     \]
-%     where $a,b,c,d \in \R$ and $\qi$, $\qj$, and $\qk$ are quantities such that
-%     \begin{itemize}
-%         \item $\qi\qj = -\qj\qi = \qk$;
-%         \item $\qj\qk = -\qk\qj = \qi$;
-%         \item $\qk\qi = -\qi\qk = \qj$; and
-%         \item $\qi^2 = \qk^2 = \qk^2 = \qi\qj\qk = -1$.
-%     \end{itemize}
-% \end{definition}
-% \begin{definition}
-%     The \textbf{quaternion ring}\index{quaternion ring} is
-%     \[
-%         \H = \{a + b\qi + c\qj + d\qk \vert a,b,c,d \in \R\}
-%     \]
-%     where, for two quaternions $q_1 = a_1+b_1\qi+c_1\qj+d_1\qk$ and $q_2 = a_2+b_2\qi+c_2\qj+d_2\qk$, addition is
-%     \[
-%         q_1 + q_2 = (a_1+a_2) + (b_1+b_2)\qi + (c_1+c_2)\qj + (d_1+d_2)\qk
-%     \]
-%     and multiplication is
-%     \begin{align*}
-%         q_1q_2 &= (a_1a_2 - b_1b_2 - c_1c_2 - d_1d_2)\\
-%         &+(a_1b_2 + b_1a_2 + c_1d_2 - d_1c_2)\qi\\
-%         &+(a_1c_2 - b_1d_2 + c_1a_2 + d_1b_2)\qj\\
-%         &+(a_1d_2 + b_1c_2 - c_1b_2 + d_1a_2)\qk.
-%     \end{align*}
-% \end{definition}
 
 \section{More Definitions}
 Suppose $R$ is a ring.
@@ -480,10 +443,34 @@ We note one property about zero divisors, which will be used in future chapters.
 \begin{definition}
     A commutative division ring is called a \textbf{field}\index{field}.
 \end{definition}
+
+\begin{example}
+    Earlier, we shown that $\R$ is a commutative ring. We now show that $\R$ is actually a field by noting that every non-zero $x \in \R$ has a reciprocal $\frac1x$ that is a real number (\myref{axiom-reciprocal}) such that $x\left(\frac1x\right) = \left(\frac1x\right)x = 1$. Thus every non-zero $x$ in $\R$ is a unit, meaning that $\R$ is a division ring. Coupled with the fact that $\R$ is a commutative ring means that $\R$ is a field.
+\end{example}
+\begin{example}
+    We also shown earlier that $\C$ is a commutative ring. We note that any non-zero complex number $z = a + bi$ has a multiplicative inverse given by
+    \[
+        w = \frac{a}{a^2+b^2} - \frac{b}{a^2+b^2}i
+    \]
+    since
+    \begin{align*}
+        zw &= (a+bi)\left(\frac{a}{a^2+b^2} - \frac{b}{a^2+b^2}i\right)\\
+        &= \frac{(a+bi)(a-bi)}{a^2+b^2}\\
+        &= \frac{a^2 - b^2i^2}{a^2+b^2}\\
+        &= \frac{a^2+b^2}{a^2+b^2} & (i^2 = -1)\\
+        &= 1.
+    \end{align*}
+    Thus any non-zero complex number is a unit, meaning that $\C$ is a division ring. As $\C$ is also a commutative ring, this means that $\C$ is a field.
+\end{example}
+
 We look at fields in more detail in part III.
 
-\begin{exercise}\label{exercise-Z-is-not-a-field}
-    Is $\Z$ a field?
+\begin{exercise}
+    Which of the following rings, if any, are fields?
+    \begin{partquestions}{\alph*}
+        \item $\Z$
+        \item $\Q$
+    \end{partquestions}
 \end{exercise}
 
 \section{Subrings}
