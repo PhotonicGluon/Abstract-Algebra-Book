@@ -1,15 +1,22 @@
 \chapter{Integral Domains}
-We explored the absolute basics of rings in the previous chapter. When working in abstract algebra, we usually prefer rings with slightly more structure as they allow us to generate more useful and applicable results. Integral domains are an important category of rings, which we explore in this chapter.
+Unlike groups, rings do not inherently have the `cancellation law' built in. Rings may have zero divisors, which break the cancellation law. We look at a special category of rings, called domains, and commutative domains, called integral domains.
 
-\section{What is an Integral Domain?}
+\section{What are (Integral) Domains?}
 \begin{definition}
-    An \textbf{integral domain}\index{integral domain}, generally denoted $D$, is a commutative ring with identity and contains no zero divisors.
+    A \textbf{domain}\index{domain!ring} is a ring with identity with no zero divisors.
 \end{definition}
 \begin{remark}
-    Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$ such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the integral domain.
+    Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$ such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the domain.
 \end{remark}
 \begin{remark}
-    What this property grants us is a ``cancellation law'', similar to that for groups. We will prove this in \myref{prop-integral-domain-cancellation-law}. However, there may not be inverses when performing multiplication. This is similar to how the integers do not have multiplicative inverses in general, hence the name of ``integral domain''.
+    What this property grants us is a ``cancellation law'', similar to that for groups. We will prove this in \myref{prop-domain-cancellation-law}. However, there may not be inverses when performing multiplication.
+\end{remark}
+
+\begin{definition}
+    An \textbf{integral domain}\index{integral domain} is a commutative domain.
+\end{definition}
+\begin{remark}
+    This is similar to how the integers do not have multiplicative inverses in general, hence the name of ``integral domain''.
 \end{remark}
 
 \begin{example}\label{example-integers-is-integral-domain}
@@ -45,23 +52,19 @@ We explored the absolute basics of rings in the previous chapter. When working i
     which hence means that $ac-bd \neq 0$ and $ad+bc \neq 0$. Therefore $wz \neq 0$, meaning that $\Z[i]$ has no zero divisors. Thus $\Z[i]$ is indeed an integral domain.
 \end{example}
 
-We note an interesting result regarding fields here.
-\begin{proposition}\label{prop-field-is-integral-domain}
-    Any field is an integral domain.
-\end{proposition}
-\begin{proof}
-    Any non-zero element in a field is a unit, i.e. has an inverse. Now by \myref{prop-zero-divisors-have-no-inverses}, any zero divisor must not have an inverse; the converse being that any element that has an inverse cannot be a zero divisor. Hence, there are no zero divisors in a field. Now a field is commutative, therefore meaning that the field is an integral domain.
-\end{proof}
-
-Let's look at some non-examples of integral domains.
+Let's look at some non-examples of domains.
 \begin{example}
-    The ring $\Mn{n}{R}$ where $R$ is any ring is not an integral domain since $\Mn{n}{R}$ is not commutative.
+    The ring $\Mn{n}{R}$ where $R$ is any ring and $n$ is any integer greater than 1 is not a domain since, for $n = 2$, we have the non-zero matrices
+    \[
+        A = \begin{pmatrix}0&0\\0&1\end{pmatrix} \text{ and } B = \begin{pmatrix}1&0\\0&0\end{pmatrix}
+    \]
+    which have a product that is the zero matrix. Thus $\Mn{n}{R}$ has zero divisors, meaning that $\Mn{n}{R}$ is not a domain (and hence not an integral domain).
 \end{example}
 \begin{example}
-    The ring $2\Z$ is not an integral domain as it does not contain a multiplicative identity (namely, 1).
+    The ring $2\Z$ is not a domain as it does not contain a multiplicative identity (namely, 1). Thus $2\Z$ is also not an integral domain.
 \end{example}
 \begin{example}
-    The ring $\Z \times \Z$ under pairwise addition and multiplication is not an integral domain as $(0,1) \neq (0, 0)$ and $(1, 0) \neq (0, 0)$ but $(0,1)(1,0) = (0, 0)$, meaning that $\Z \times \Z$ contains at least one zero divisor.
+    The ring $\Z \times \Z$ under pairwise addition and multiplication is not a domain as $(0,1) \neq (0, 0)$ and $(1, 0) \neq (0, 0)$ but $(0,1)(1,0) = (0, 0)$, meaning that $\Z \times \Z$ contains at least one zero divisor.
 \end{example}
 
 \begin{exercise}
@@ -75,10 +78,20 @@ Let's look at some non-examples of integral domains.
     Explain why all $\Z_n$ where $n$ is a positive composite number are not integral domains.
 \end{exercise}
 
+\newpage
+
+We note an interesting result regarding fields here.
+\begin{proposition}\label{prop-field-is-integral-domain}
+    Any field is an integral domain.
+\end{proposition}
+\begin{proof}
+    Any non-zero element in a field is a unit, i.e. has an inverse. Now by \myref{prop-zero-divisors-have-no-inverses}, any zero divisor must not have an inverse; the converse being that any element that has an inverse cannot be a zero divisor. Hence, there are no zero divisors in a field. Now a field is commutative, therefore meaning that the field is an integral domain.
+\end{proof}
+
 \section{General Results}
-With an introduction of integral domains out of the way, we introduce some general results applicable to integral domains.
-\begin{proposition}[Cancellation Law for Integral Domains]\index{integral domain!cancellation law}\label{prop-integral-domain-cancellation-law}
-    Let $D$ be an integral domain, $r, x, y \in D$, and $r \neq 0$. Then the following statements are equivalent.
+With an introduction of domains and integral domains out of the way, we introduce some general results applicable to them.
+\begin{proposition}[Cancellation Law for Domains]\index{domain!ring!cancellation law}\label{prop-domain-cancellation-law}
+    Let $D$ be a domain, $r, x, y \in D$, and $r \neq 0$. Then the following statements are equivalent.
     \begin{enumerate}[label=(\arabic*)]
         \item $x = y$
         \item $rx = ry$
@@ -90,9 +103,9 @@ With an introduction of integral domains out of the way, we introduce some gener
     \begin{itemize}
         \item $\boxed{(1) \implies (2)}$ Given $x = y$, this means $x - y = 0$. Multiplying $r$ on the left on both sides yields $r(x-y) = r0 = 0$. Distributing yields $rx - ry = 0$ which hence means $rx = ry$.
         
-        \item $\boxed{(2) \implies (3)}$ Given $rx = ry$. Multiplying $r$ on the right on both sides yields $rxr = ryr$, thereby meaning $rxr - ryr = 0$. Factoring yields $r(xr - yr) = 0$. As $R$ is an integral domain, the only way for this to occur is if $r = 0$ (which is impossible) or $xr - yr = 0$. Therefore $xr = yr$.
+        \item $\boxed{(2) \implies (3)}$ Given $rx = ry$. Multiplying $r$ on the right on both sides yields $rxr = ryr$, thereby meaning $rxr - ryr = 0$. Factoring yields $r(xr - yr) = 0$. As $R$ is a domain, the only way for this to occur is if $r = 0$ (which is impossible) or $xr - yr = 0$. Therefore $xr = yr$.
         
-        \item $\boxed{(3) \implies (1)}$ Given $xr = yr$ we may write $xr - yr = (x-y)r = 0$. Since $R$ is an integral domain we must have $x - y = 0$ or $r = 0$ (impossible as $r \neq 0$). Hence $x = y$.
+        \item $\boxed{(3) \implies (1)}$ Given $xr = yr$ we may write $xr - yr = (x-y)r = 0$. Since $R$ is a domain we must have $x - y = 0$ or $r = 0$ (impossible as $r \neq 0$). Hence $x = y$.
     \end{itemize}
     This proves the proposition.
 \end{proof}
