@@ -45,7 +45,78 @@ It is often more useful to talk about irreducible polynomials over a field. In t
 \end{exercise}
 
 \section{Reducibility Tests}
-%TODO: Add
+Trying to see if a polynomial is (ir)reducible by definition is not a trivial task. For example, it is hard to see that $x^2 + 1$ is irreducible over $\Z_3$ but reducible over $\Z_5$ by just using the definition directly. Therefore we develop some tests for (ir)reducibility to more easily see which polynomials are reducible or irreducible.
+
+The first test applies to fields and polynomials of degree 2 or 3.
+\begin{theorem}\label{thrm-degree-2-or-3-reducible-iff-has-zero}
+    Let $F$ be a field. If $f(x) \in F[x]$ has degree 2 or 3, then $f(x)$ is reducible over $F$ if and only if $f(x)$ has a zero in $F$.
+\end{theorem}
+\begin{proof}
+    We first work in the forward direction, assuming that $f(x) \in F[x]$ has degree $n \in \{2, 3\}$ and is reducible. Then $f(x) = p(x)q(x)$ where both $p(x)$ and $q(x)$ have degrees less than $n$ (\myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}). Note $n = \deg p(x) + \deg q(x)$, if $n = 2$ then both $p(x)$ and $q(x)$ must have degree 1, and if $n = 3$ then at one of $p(x)$ and $q(x)$ has degree 1. So we know that at least one of $p(x)$ or $q(x)$ has degree 1. Without loss of generality assume $p(x)$ has degree 1; set $p(x) = ax + b$ where $a,b \in F$. Note $a^{-1} \in F$; setting $\alpha = -a^{-1}b$ we see
+    \begin{align*}
+        f(\alpha) &= (a\alpha+b)q(\alpha)\\
+        &= \left(a\left(-a^{-1}b\right) + b\right)q(\alpha)\\
+        &= \left(-aa^{-1}b + b\right)q(\alpha)\\
+        &= (-b+b)q(\alpha)\\
+        &= 0.
+    \end{align*}
+    Since $\alpha \in F$ thus $\alpha$ is a zero of $f(x)$.
+
+    For the reverse direction, if $f(x)$ has a zero in $F$, say $\alpha$, then by factor theorem (\myref{corollary-factor-theorem}) we know $(x-\alpha)$ is a factor of $f(x)$ and thus is reducible over $F$.
+\end{proof}
+
+\myref{thrm-degree-2-or-3-reducible-iff-has-zero} is particularly useful for finite fields, since we just have to check all elements of the field for a zero.
+
+\begin{example}
+    Consider the opening example: the polynomial $f(x) = x^2 + 1$. In $\Z_3$, we note that
+    \begin{align*}
+        f(0) &= 0^2 + 1 = 1 \neq 0,\\
+        f(1) &= 1^2 + 1 = 2 \neq 0, \text{ and}\\
+        f(2) &= 2^2 + 1 = 5 = 2 \neq 0,
+    \end{align*}
+    so $f(x)$ is not reducible (i.e., irreducible) over $\Z_3$ by \myref{thrm-degree-2-or-3-reducible-iff-has-zero}. However, note that $f(2) = 5 = 0$ in $\Z_5$, meaning $f(x)$ has a zero in $\Z_5$. Thus $x^2 + 1$ is reducible over $\Z_5$.
+\end{example}
+
+\begin{example}
+    Consider the polynomial $f(x) = x^2 - 2$. One sees that $f(3) = 3^2 - 2 = 7 = 0$ in $\Z_7$, so $f(x)$ is reducible in the field $\Z_7$. However $f(x)$ is not reducible in $\Q$ since it has no zeroes in $\Q$. But $f(x)$ is reducible in $\R$ since $f(\sqrt2) = 0$.
+\end{example}
+
+\begin{example}
+    The theorem fails for polynomials with degree of at least 4. For example, $f(x) = x^4 + 2x^2 + 1$ is reducible in $\Q$ since $x^4 + 2x^2 + 1 = (x^2+1)^2$, but $f(x)$ has no zeroes in $\Q$.
+\end{example}
+
+\begin{exercise}
+    Let the polynomial $f(x) = 2x^3 + 4x + 9$. For which field(s) listed below is $f(x)$ irreducible?
+    \begin{partquestions}{\alph*}
+        \item $\Z_2$
+        \item $\Z_3$
+        \item $\Z_5$
+        \item $\Z_7$
+    \end{partquestions}
+\end{exercise}
+
+Before we introduce the next test for reducibility, which involves polynomials with integer coefficients, we first introduce some terminology and a result to ease the proof of the test.
+
+\begin{definition}
+    The \textbf{content}\index{polynomial!content} of a non-zero polynomial with integer coefficients is the GCD of the coefficients.
+\end{definition}
+
+\begin{definition}
+    A \textbf{primitive polynomial}\index{polynomial!primitive} is a non-zero polynomial with integer coefficients and content 1.
+\end{definition}
+
+\begin{lemma}[Gauss]\index{Gauss's Lemma}
+    The product of two primitive polynomials is primitive.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[p.~291]{gallian_2016}})]
+    Seeking a contradiction, suppose $f(x)$ and $g(x)$ are primitive polynomials with a non-primitive product $h(x) = f(x)g(x)$. Therefore the content of $h(x)$ is not 1; in fact it is at least 2, meaning the content of $h(x)$ is either prime or composite.
+    
+    Let $p$ be a prime divisor of the content of $h(x)$, and let $\bar{f}(x)$, $\bar{g}(x)$, and $\bar{h}(x)$ be polynomials obtained from $f(x)$, $g(x)$, and $h(x)$ by reducing their coefficients modulo $p$. Since the content of $h(x)$ is not 1, thus coefficients of $h(x)$ are multiples of $p$; accordingly when they are reduced modulo $p$, we see $\bar{h}(x) = 0$. Also, we may interpret $\bar{f}(x)$ and $\bar{g}(x)$ as polynomials belonging in $\Z_p[x]$ where $(\bar{f}(x))(\bar{g}(x)) = \bar{h}(x) = 0$. Since $\Z_p[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}), this means that $\bar{f}(x) = 0$ or $\bar{g}(x) = 0$. Without loss of generality assume $\bar{f}(x) = 0$. Therefore $p$ divides every coefficient of $f(x)$, meaning that the content of $f(x)$ is at least $p$, i.e. $f(x)$ is not primitive, a contradiction.
+
+    The contradiction means that a product of two primitive polynomials must be primitive.
+\end{proof}
+
+%TODO: Continue
 
 \section{Irreducibility Tests}
 %TODO: Add
