@@ -2,7 +2,47 @@
 One of the underappreciated facts about working with polynomials with real coefficients, like in high school, is that they can be factored simply. The idea of an `irreducible' polynomial is simple to understand within the reals -- it simply cannot be `broken down' into `smaller' polynomials without `breaking the rules'. We explore how polynomials are factored in a more general setting -- polynomial rings.
 
 \section{(Ir)reducible Polynomials}
-%TODO: Add
+We formally define what (ir)reducible polynomials are in a polynomial ring that is an integral domain.
+\begin{definition}
+    Let $D$ be an integral domain and $f(x) \in D[x]$ be a non-zero, non-unit polynomial. Then $f(x)$ is \textbf{irreducible over $D$}\index{polynomial!irreducible} if, whenever we write $f(x) = p(x)q(x)$ for some polynomials $p(x)$ and $q(x)$ in $D[x]$, then either $p(x)$ is a unit or $q(x)$ is a unit in $D[x]$.
+
+    A non-zero, non-unit polynomial that is not irreducible over $D$ is said to be \textbf{reducible over $D$}\index{polynomial!reducible}.
+\end{definition}
+
+\begin{example}
+    The polynomial $x + 1$ is irreducible over $\Z$ since we are unable to express $x+1$ as a product of non-unit polynomials in $\Z[x]$.
+\end{example}
+
+\begin{example}
+    The polynomial $2x + 2$ is reducible over $\Z$ since $2x+2 = 2(x+1)$ and both 2 and $x+1$ are not units in $\Z[x]$.
+\end{example}
+
+It is often more useful to talk about irreducible polynomials over a field. In this case, we have this useful theorem to simplify the task of determining the irreducibility of a polynomial.
+\begin{theorem}\label{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}
+    Let $F$ be a field. A non-constant polynomial $f(x) \in F[x]$ with degree $n$ is irreducible if and only if $f(x)$ cannot be expressed as a product of two polynomials each of degree lower than $n$.
+\end{theorem}
+\begin{proof}
+    For the forward direction, assume that a non-constant polynomial $f(x)$ with degree $n$ is irreducible. So there does not exist two non-unit polynomials $p(x)$ and $q(x)$ such that $f(x) = p(x)q(x)$, which thus means that it cannot be expressed as two polynomials of degree lower than $n$.
+
+    For the reverse direction, assume that $f(x)$ with degree $n$ cannot be expressed as a product of two polynomials of degree lower than $n$. This means that it is possible for $f(x) = p(x)q(x)$ where at least one of the polynomials $p(x)$ and $q(x)$ have degree $n$. Without loss of generality assume $p(x)$ has degree $n$, thereby meaning $q(x)$ has degree $n - n = 0$ (see \myref{thrm-polynomial-degree-properties}). Thus $q(x)$ is a constant polynomial, so $q(x) = u \in F$ (\myref{prop-constant-polynomial-iff-ring-element}). Note $u \neq 0$ since otherwise $f(x) = 0$, a constant polynomial (a contradiction). But every non-zero element in $F$ is a unit. Therefore the only factorization of $f(x)$ is as a product of a unit and a polynomial of equal degree. Thus $f(x)$ is irreducible.
+\end{proof}
+
+\begin{example}
+    One sees that $2x^2 + 4$ is reducible over $\Z$ since $2x^2 + 4 = 2(x^2 + 2)$ and neither 2 nor $x^2 + 2$ are units in $\Z[x]$. However, in $\Q$, the given polynomial is irreducible by \myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}.
+\end{example}
+
+\begin{example}
+    The polynomial $2x^2 + 4$ is irreducible in $\Q$ and $\R$, but reducible in $\C$ since $2x^2 + 4 = (2x-4i)(x+2i)$.
+\end{example}
+
+\begin{exercise}
+    Let the polynomial $f(x) = 3x^2 - 6$. Which of the following integral domains is $f(x)$ irreducible?
+    \begin{partquestions}{\alph*}
+        \item $\Z$
+        \item $\Q$
+        \item $\R$
+    \end{partquestions} 
+\end{exercise}
 
 \section{Reducibility Tests}
 %TODO: Add
