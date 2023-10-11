@@ -47,12 +47,22 @@ It is often more useful to talk about irreducible polynomials over a field. In t
 \section{Reducibility Tests}
 Trying to see if a polynomial is (ir)reducible by definition is not a trivial task. For example, it is hard to see that $x^2 + 1$ is irreducible over $\Z_3$ but reducible over $\Z_5$ by just using the definition directly. Therefore we develop some tests for (ir)reducibility to more easily see which polynomials are reducible or irreducible.
 
-The first test applies to fields and polynomials of degree 2 or 3.
-\begin{theorem}\label{thrm-degree-2-or-3-reducible-iff-has-zero}
-    Let $F$ be a field. If $f(x) \in F[x]$ has degree 2 or 3, then $f(x)$ is reducible over $F$ if and only if $f(x)$ has a zero in $F$.
+The first test is a consequence of the factor theorem.
+\begin{theorem}\label{thrm-degree-above-1-reducible-if-has-zero}
+    Let $F$ be a field and $f(x) \in F[x]$ have degree above 1. If $f(x)$ has a zero then $f(x)$ is reducible.
 \end{theorem}
 \begin{proof}
-    We first work in the forward direction, assuming that $f(x) \in F[x]$ has degree $n \in \{2, 3\}$ and is reducible. Then $f(x) = p(x)q(x)$ where both $p(x)$ and $q(x)$ have degrees less than $n$ (\myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}). Note $n = \deg p(x) + \deg q(x)$, if $n = 2$ then both $p(x)$ and $q(x)$ must have degree 1, and if $n = 3$ then at one of $p(x)$ and $q(x)$ has degree 1. So we know that at least one of $p(x)$ or $q(x)$ has degree 1. Without loss of generality assume $p(x)$ has degree 1; set $p(x) = ax + b$ where $a,b \in F$. Note $a^{-1} \in F$; setting $\alpha = -a^{-1}b$ we see
+    Since $f(x)$ has a zero, say $\alpha \in F$, we may write $f(x) = (x-\alpha)q(x)$ (\myref{corollary-factor-theorem}). Note $\deg f(x) = \deg(x-\alpha) + \deg q(x) = 1 + \deg q(x)$ (\myref{thrm-polynomial-degree-properties}), and clearly $1 \leq \deg q(x) < \deg f(x)$ (since degree of $f(x)$ is above 1), so $f(x)$ is expressible as a product of two polynomials of lower degree in $F[x]$. Thus $f(x)$ is reducible in $F$. 
+\end{proof}
+
+The next test provides a partial converse to the above theorem for polynomials of degree 2 or 3.
+\begin{theorem}\label{thrm-degree-2-or-3-reducible-iff-has-zero}
+    Let $F$ be a field and $f(x) \in F[x]$ have degree 2 or 3. Then $f(x)$ is reducible over $F$ if and only if $f(x)$ has a zero.
+\end{theorem}
+\begin{proof}
+    The reverse direction follows immediately from \myref{thrm-degree-above-1-reducible-if-has-zero} so we only work in the forward direction.
+
+    Assume that $f(x) \in F[x]$ has degree $n \in \{2, 3\}$ and is reducible. Then $f(x) = p(x)q(x)$ where both $p(x)$ and $q(x)$ have degrees less than $n$ (\myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}). Note $n = \deg p(x) + \deg q(x)$, if $n = 2$ then both $p(x)$ and $q(x)$ must have degree 1, and if $n = 3$ then at one of $p(x)$ and $q(x)$ has degree 1. So we know that at least one of $p(x)$ or $q(x)$ has degree 1. Without loss of generality assume $p(x)$ has degree 1; set $p(x) = ax + b$ where $a,b \in F$. Note $a^{-1} \in F$; setting $\alpha = -a^{-1}b$ we see
     \begin{align*}
         f(\alpha) &= (a\alpha+b)q(\alpha)\\
         &= \left(a\left(-a^{-1}b\right) + b\right)q(\alpha)\\
@@ -60,9 +70,7 @@ The first test applies to fields and polynomials of degree 2 or 3.
         &= (-b+b)q(\alpha)\\
         &= 0.
     \end{align*}
-    Since $\alpha \in F$ thus $\alpha$ is a zero of $f(x)$.
-
-    For the reverse direction, if $f(x)$ has a zero in $F$, say $\alpha$, then by factor theorem (\myref{corollary-factor-theorem}) we know $(x-\alpha)$ is a factor of $f(x)$ and thus is reducible over $F$.
+    Since $\alpha \in F$ thus $\alpha$ is a zero of $f(x)$. Hence $f(x)$ has a zero in $F$.
 \end{proof}
 
 \myref{thrm-degree-2-or-3-reducible-iff-has-zero} is particularly useful for finite fields, since we just have to check all elements of the field for a zero.
@@ -98,14 +106,14 @@ The first test applies to fields and polynomials of degree 2 or 3.
 Before we introduce the next test for reducibility, which involves polynomials with integer coefficients, we first introduce some terminology and a result to ease the proof of the test.
 
 \begin{definition}
-    The \textbf{content}\index{polynomial!content} of a non-zero polynomial with integer coefficients is the GCD of the coefficients.
+    The \textbf{content}\index{polynomial!content} of a non-zero polynomial $f(x) \in \Z[x]$ is the GCD of its coefficients.
 \end{definition}
 
 \begin{definition}
-    A \textbf{primitive polynomial}\index{polynomial!primitive} is a non-zero polynomial with integer coefficients and content 1.
+    A \textbf{primitive polynomial}\index{polynomial!primitive} is a non-zero polynomial $f(x) \in \Z[x]$ with content 1.
 \end{definition}
 
-\begin{lemma}[Gauss]\index{Gauss's Lemma}
+\begin{lemma}[Gauss]\label{lemma-gauss}\index{Gauss's Lemma}
     The product of two primitive polynomials is primitive.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[p.~291]{gallian_2016}})]
@@ -116,7 +124,54 @@ Before we introduce the next test for reducibility, which involves polynomials w
     The contradiction means that a product of two primitive polynomials must be primitive.
 \end{proof}
 
-%TODO: Continue
+\begin{theorem}\label{thrm-reducible-over-Q-means-reducible-over-Z}
+    If $f(x) \in \Z[x]$ is reducible over $\Q$ then it is reducible over $\Z$.
+\end{theorem}
+\begin{proof}
+    Suppose $f(x) \in \Z[x]$ is reducible over $\Q$, meaning that $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Q[x]$. Without loss of generality, assume the content of $f(x)$ is 1, since otherwise we can just divide $p(x)$ and $q(x)$ by the content of $f(x)$ to obtain the same result. Thus $f(x)$ is primitive.
+
+    Suppose $a$ is the LCM of the denominators of the coefficients of $p(x)$, and likewise $b$ is the LCM of the denominators of the coefficients of $q(x)$. Then
+    \[
+        ab\times f(x) = (a\times p(x))(b\times q(x)),
+    \]
+    noting that $a\times p(x)$ and $b\times q(x)$ are now polynomials with integer coefficients. Let $C_p$ and $C_q$ denote the contents of $a \times p(x)$ and $b \times q(x)$ respectively; write $a\times p(x) = C_p\times P(x)$ and $b \times q(x) = C_q\times Q(x)$ where one sees clearly that $P(x)$ and $Q(x)$ are polynomials with content 1 (i.e., primitive polynomials). One also sees that
+    \[
+        ab \times f(x) = C_pC_q \times P(x)Q(x).
+    \]
+    As $f(x)$ is primitive, thus the content of $ab \times f(x)$ is $ab$. The product of primitive polynomials is primitive (\myref{lemma-gauss}), so $P(x)Q(x)$ is also primitive; the content of $C_pC_q \times P(x)Q(x)$ is therefore $C_pC_q$. So $ab = C_pC_q$.
+    
+    Dividing both sides by $ab = C_pC_q$ leaves $f(x) = P(x)Q(x)$, where both $P(x)$ and $Q(x)$ are polynomials with integer coefficients. Note that
+    \begin{align*}
+        \deg p(x) &= \deg (a\times p(x)) & (\text{multiplying by constant does not change degree})\\
+        &= \deg(C_p\times P(x)) & (\text{as } a\times p(x) = C_p\times P(x))\\
+        &= \deg P(x)
+    \end{align*}
+    and likewise $\deg q(x) = \deg Q(x)$. Since $f(x) = p(x)q(x)$ and $\Q$ is a field, thus we see that $\deg f(x) = \deg p(x) + \deg q(x)$ (\myref{thrm-polynomial-degree-properties}), meaning $\deg p(x) = \deg P(x) < \deg f(x)$, and likewise $\deg Q(x) < \deg f(x)$, So we have expressed $f(x)$, a polynomial with integer coefficients, as a product of two polynomials $P(x)$ and $Q(x)$ with integer coefficients and of smaller degree than $f(x)$, showing that $f(x)$ is reducible in $\Z$.
+\end{proof}
+
+\begin{example}
+    Consider the polynomial $f(x) = 6x^2 + 5x - 4$. One sees that $f(x)$ is reducible in $\Q$ since $6x^2 + 5x - 4 = \left(2x + \frac83\right)\left(3x - \frac32\right)$. Set $p(x) = 2x + \frac83$ and $q(x) = 3x - \frac32$. In this case, and using the notation in \myref{thrm-reducible-over-Q-means-reducible-over-Z}, we see $a = 3$, $b = 2$, $C_p = 2$, $C_q = 3$. So $P(x) = 3x + 4$ and $Q(x) = 2x - 1$, which means
+    \[
+        (3\times2)\times (6x^2 + 5x - 4) = (2\times3)(3x+4)(2x-1),
+    \]
+    so $6x^2 + 5x - 4 = (3x+4)(2x-1)$, i.e. $f(x)$ is reducible over $\Z$.
+\end{example}
+
+\begin{example}
+    Consider the polynomial $f(x) = 144x^4 + 168x^3 + 73x^2 + 14x + 1$ and note $f(x) = \left(16x^2 + \frac{32}3x + \frac{16}9\right)\left(9x^2 + \frac92x + \frac9{16}\right)$. Set $p(x) = 16x^2 + \frac{32}3x + \frac{16}9$ and $q(x) = 9x^2 + \frac92x + \frac9{16}$ and using the notation in \myref{thrm-reducible-over-Q-means-reducible-over-Z} we see $a = 9$, $b = 16$, $C_p = 16$, and $C_q = 9$. So $P(x) = 9x^2+6x+1$ and $Q(x) = 16x^2 + 8x + 9$, which means
+    \[
+        (9 \times 16)\left(144x^4 + 168x^3 + 73x^2 + 14x + 1\right) = (16 \times 9)(9x^2+6x+1)(16x^2 + 8x + 9)
+    \]
+    so $144x^4 + 168x^3 + 73x^2 + 14x + 1 = (9x^2+6x+1)(16x^2 + 8x + 9)$, i.e. $f(x)$ is reducible over $\Z$.
+\end{example}
+
+\begin{exercise}
+    Let $f(x) \in \Z[x]$. Prove or disprove the following statements.
+    \begin{partquestions}{\alph*}
+        \item If $f(x)$ is irreducible in $\Z$ then it is irreducible in $\Q$.
+        \item If $f(x)$ is irreducible in $\Q$ then it is irreducible in $\Z$.
+    \end{partquestions}
+\end{exercise}
 
 \section{Irreducibility Tests}
 %TODO: Add
