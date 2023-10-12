@@ -186,7 +186,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
     \end{partquestions}
 \end{exercise}
 
-\subsection{Substitution Rule}
+\subsection{Substitution Rule}  % TODO: Produce a more rigorous proof
 To ease checking the irreducibility of polynomials, we come up with the following substitution rule to simplify some polynomials.
 
 \begin{theorem}\label{thrm-substitution-rule-for-irreducibility}
@@ -318,6 +318,60 @@ The Mod $p$ Irreducibility Test can also be used to check for irreducibility of 
 
     Since $\bar{F}(x)$ is irreducible, thus $F(x)$ is also irreducible by Mod 2 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}). By contrapositive of \myref{thrm-reducible-over-Q-means-reducible-over-Z} we know $F(x)$ is irreducible over $\Q$, thus $f(x)$ is irreducible over $\Q$.
 \end{example}
+
+\subsection{Eisenstein's Criterion}
+We now look at another irreducibility test, given by Gotthold Eisenstein in 1850.
+
+\begin{theorem}[Eisenstein's Criterion]\label{thrm-eisenstein-criterion}\index{Eisenstein's Criterion}
+    Let the polynomial
+    \[
+        f(x) = a_0 + a_1x + \cdots + a_{n-1}x^{n-1} + a_nx^n
+    \]
+    be in $\Z[x]$. If there is a prime number $p$ such that
+    \begin{itemize}
+        \item $p \nmid a_n$,
+        \item $p \vert a_i$ for all $0 \leq i < n$, and
+        \item $p^2 \nmid a_0$,
+    \end{itemize}
+    then $f(x)$ is irreducible over $\Q$.
+\end{theorem}
+\begin{proof}
+    Seeking a contradiction, suppose that $f(x)$ is reducible over $\Q$. By \myref{thrm-reducible-over-Q-means-reducible-over-Z} this means there exist non-constant polynomials $g(x),h(x) \in \Z[x]$ with degree smaller than that of $f(x)$ such that $f(x) = g(x)h(x)$.
+
+    Write
+    \begin{align*}
+        g(x) &= b_0 + b_1x + \cdots + b_rx^r\\
+        h(x) &= c_0 + c_1x + \cdots + c_sx^s
+    \end{align*}
+    where $0 < r, s < n$. Note $a_0 = b_0c_0$. Since $p \vert a_0$ but $p^2 \nmid a_0$ thus $p$ divides exactly one of $b_0$ and $c_0$. Without loss of generality assume $p \vert b_0$ and $p \nmid c_0$. Note also that $a_n = b_rc_s$ and $p \nmid a_n$. Thus $p \nmid b_r$. So there must exist a smallest integer $t$, where $0 < t \leq r$, such that $p \nmid b_t$.
+
+    Consider the coefficient of the degree $t$ term in $f(x)$, which is
+    \[
+        a_t = \sum_{i=0}^tb_ic_{t-i} = b_0c_t + b_1c_{t-1} + \cdots + b_tc_0.
+    \]
+    By assumption, $p \vert a_t$ since $0 < t \leq r < n$; also $p \vert b_i$ for all $0 \leq i < t$, so every term except for the last is divisible by $p$. This means that
+    \[
+        p \vert (a_t - (b_0c_t + b_1c_{t-1} + \cdots + b_{t-1}c_1)).
+    \]
+    However $a_t - (b_0c_t + b_1c_{t-1} + \cdots + b_{t-1}c_1) = b_tc_0$, and neither $b_t$ nor $c_0$ is divisible by $p$, a contradiction.
+
+    Hence $f(x)$ is irreducible over $\Q$.
+\end{proof}
+
+\begin{example}
+    The polynomial $f(x) = 3x^4 + 15x^2 + 10$ is irreducible over $\Q$ by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) since the prime 5 divides 10 and 15 but does not divide 3, and also that $5^2 = 25$ does not divide 10.
+\end{example}
+
+\begin{example}
+    We can show that $f(x) = x^2 + x + 2$ is irreducible in $\Q$. Since the coefficient of $x$, 1, is not divisible by any prime, we cannot directly apply Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}). But using the substitution $x + 3$, we see $f(x+3) = (x+3)^2 + (x+3) + 2 = x^2 + 7x + 14$ which is irreducible by Eisenstein's Criterion using the prime 7. Therefore $f(x)$ is irreducible by substitution rule (\myref{thrm-substitution-rule-for-irreducibility}).
+\end{example}
+
+\begin{exercise}
+    Find a polynomial $f(x) \in \Z[x]$ of degree $n \geq 1$ that is irreducible in $n$.
+\end{exercise}
+
+\section{Uses of Irreducible Polynomials}
+%TODO: Add
 
 \section{Unique Factorization in $\Z[x]$}
 %TODO: Add
