@@ -49,11 +49,11 @@ We prove an essential theorem on cyclic groups. Before that, we require the foll
     \[
         x^m = \left(g^k\right)^m = g^{km}
     \]
-    and since $|x| = m$, this means that $x^m = e$. Hence $g^{km} = e$. By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity} on $\Cn{n}$, $n \vert km$. This implies that
+    and since $|x| = m$, this means that $x^m = e$. Hence $g^{km} = e$. By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity} on $\Cn{n}$, $n \vert kn$. Dividing both sides by $\gcd(k,n)$ yields
     \[
         \frac{n}{\gcd(k,n)} \vert \frac{km}{\gcd(k,m)} = \lambda m.
     \]
-    Note that $\gcd\left(\lambda, \frac{n}{\gcd(k,n)}\right) = \gcd\left(\frac{k}{\gcd(k,n)}, \frac{n}{\gcd(k,n)}\right) = 1$. This means that $\frac{n}{\gcd(k,n)}$ does not divide $\lambda$, meaning $\frac{n}{\gcd(k,n)} \vert m$.
+    Note that $\gcd\left(\lambda, \frac{n}{\gcd(k,n)}\right) = \gcd\left(\frac{k}{\gcd(k,n)}, \frac{n}{\gcd(k,n)}\right) = 1$. Thus $\frac{n}{\gcd(k,n)}$ does not divide $\lambda$, further meaning $\frac{n}{\gcd(k,n)} \vert m$ (\myref{theorem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b}).
 
     Also note that
     \begin{align*}
@@ -210,7 +210,7 @@ We now look at the idea of \textbf{inversions} inside permutations.
 \end{definition}
 An inversion between the elements $i$ and $j$ is denoted by either $(i, j)$ or $(\sigma(i), \sigma(j))$.
 \begin{example}
-    In the permutation $\sigma = \begin{pmatrix}1 & 3 & 2 & 4\end{pmatrix}$, we see that $3 \mapsto 2$ but $2 \mapsto 4$. Thus there is an inversion (3, 2) = (2, 4).
+    In the permutation $\sigma = \begin{pmatrix}1 & 3 & 2 & 4\end{pmatrix}$, we see that $3 > 2$ but $\sigma(3) = 2 < 4 = \sigma(2)$. Thus there is an inversion (3, 2) = (2, 4).
 \end{example}
 
 We now define the idea of \textbf{even} permutations and \textbf{odd} permutations.
@@ -648,7 +648,7 @@ One sees clearly that $\SL{n}{\R}$ is a sub\textit{set} of $\GL{n}{\R}$: the set
 \begin{proof}
     We consider the subgroup test. Clearly $\textbf{I}_n$ is in $\SL{n}{\R}$ since its determinant is 1.
 
-    Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\R}$. This means that $\det \textbf{A} = 1$ and $\det \textbf{B} = 1$. Note that $\det(\textbf{B}^{-1}) = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det \textbf({B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\R}$. Hence by the subgroup test, $\SL{n}{\R} < \GL{n}{\R}$.
+    Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\R}$. This means that $\det \textbf{A} = 1$ and $\det \textbf{B} = 1$. Note that $\det(\textbf{B}^{-1}) = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det(\textbf{B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\R}$. Hence by the subgroup test, $\SL{n}{\R} < \GL{n}{\R}$.
     
     Now let $\textbf{M}$ be a matrix in $\GL{n}{\R}$ and $\textbf{N}$ be a matrix in $\SL{n}{\R}$. We are to show that $\textbf{MNM}^{-1}$ is in $\SL{n}{\R}$. Since $\textbf{M} \in \GL{n}{\R}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\R}$ implies $\det \textbf{N} = 1$. Hence,
     \[
