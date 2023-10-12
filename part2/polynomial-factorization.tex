@@ -44,9 +44,10 @@ It is often more useful to talk about irreducible polynomials over a field. In t
     \end{partquestions} 
 \end{exercise}
 
-\section{Reducibility Tests}
+\section{Criteria for (Ir)reducibility}
 Trying to see if a polynomial is (ir)reducible by definition is not a trivial task. For example, it is hard to see that $x^2 + 1$ is irreducible over $\Z_3$ but reducible over $\Z_5$ by just using the definition directly. Therefore we develop some tests for (ir)reducibility to more easily see which polynomials are reducible or irreducible.
 
+\subsection{Zeroes Of A Polynomial}
 The first test is a consequence of the factor theorem.
 \begin{theorem}\label{thrm-degree-above-1-reducible-if-has-zero}
     Let $F$ be a field and $f(x) \in F[x]$ have degree above 1. If $f(x)$ has a zero then $f(x)$ is reducible.
@@ -56,13 +57,13 @@ The first test is a consequence of the factor theorem.
 \end{proof}
 
 The next test provides a partial converse to the above theorem for polynomials of degree 2 or 3.
-\begin{theorem}\label{thrm-degree-2-or-3-reducible-iff-has-zero}
-    Let $F$ be a field and $f(x) \in F[x]$ have degree 2 or 3. Then $f(x)$ is reducible over $F$ if and only if $f(x)$ has a zero.
+\begin{theorem}\label{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}
+    Let $F$ be a field and $f(x) \in F[x]$ have degree 2 or 3. Then $f(x)$ is irreducible over $F$ if and only if $f(x)$ has no zeroes.
 \end{theorem}
 \begin{proof}
-    The reverse direction follows immediately from \myref{thrm-degree-above-1-reducible-if-has-zero} so we only work in the forward direction.
+    The forward direction follows immediately as it is the contrapositive of \myref{thrm-degree-above-1-reducible-if-has-zero}, so we only work in the reverse direction.
 
-    Assume that $f(x) \in F[x]$ has degree $n \in \{2, 3\}$ and is reducible. Then $f(x) = p(x)q(x)$ where both $p(x)$ and $q(x)$ have degrees less than $n$ (\myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}). Note $n = \deg p(x) + \deg q(x)$, if $n = 2$ then both $p(x)$ and $q(x)$ must have degree 1, and if $n = 3$ then at one of $p(x)$ and $q(x)$ has degree 1. So we know that at least one of $p(x)$ or $q(x)$ has degree 1. Without loss of generality assume $p(x)$ has degree 1; set $p(x) = ax + b$ where $a,b \in F$. Note $a^{-1} \in F$; setting $\alpha = -a^{-1}b$ we see
+    We consider a contrapositive proof. Assume that $f(x) \in F[x]$ has degree $n \in \{2, 3\}$ and is reducible. Then $f(x) = p(x)q(x)$ where both $p(x)$ and $q(x)$ have degrees less than $n$ (\myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}). Note $n = \deg p(x) + \deg q(x)$, if $n = 2$ then both $p(x)$ and $q(x)$ must have degree 1, and if $n = 3$ then at one of $p(x)$ and $q(x)$ has degree 1. So we know that at least one of $p(x)$ or $q(x)$ has degree 1. Without loss of generality assume $p(x)$ has degree 1; set $p(x) = ax + b$ where $a,b \in F$. Note $a^{-1} \in F$; setting $\alpha = -a^{-1}b$ we see
     \begin{align*}
         f(\alpha) &= (a\alpha+b)q(\alpha)\\
         &= \left(a\left(-a^{-1}b\right) + b\right)q(\alpha)\\
@@ -73,7 +74,7 @@ The next test provides a partial converse to the above theorem for polynomials o
     Since $\alpha \in F$ thus $\alpha$ is a zero of $f(x)$. Hence $f(x)$ has a zero in $F$.
 \end{proof}
 
-\myref{thrm-degree-2-or-3-reducible-iff-has-zero} is particularly useful for finite fields, since we just have to check all elements of the field for a zero.
+\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes} is particularly useful for finite fields, since we just have to check all elements of the field for a zero.
 
 \begin{example}
     Consider the opening example: the polynomial $f(x) = x^2 + 1$. In $\Z_3$, we note that
@@ -82,7 +83,7 @@ The next test provides a partial converse to the above theorem for polynomials o
         \item $f(1) = 1^2 + 1 = 2 \neq 0$; and
         \item $f(2) = 2^2 + 1 = 5 = 2 \neq 0$,
     \end{itemize}
-    so $f(x)$ is not reducible (i.e., irreducible) over $\Z_3$ by \myref{thrm-degree-2-or-3-reducible-iff-has-zero}. However, note that $f(2) = 5 = 0$ in $\Z_5$, meaning $f(x)$ has a zero in $\Z_5$. Thus $x^2 + 1$ is reducible over $\Z_5$.
+    so $f(x)$ is not reducible (i.e., irreducible) over $\Z_3$ by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}. However, note that $f(2) = 5 = 0$ in $\Z_5$, meaning $f(x)$ has a zero in $\Z_5$. Thus $x^2 + 1$ is reducible over $\Z_5$.
 \end{example}
 
 \begin{example}
@@ -95,15 +96,18 @@ The next test provides a partial converse to the above theorem for polynomials o
 
 \begin{exercise}
     Let the polynomial $f(x) = 2x^3 + 4x + 9$. For which field(s) listed below is $f(x)$ irreducible?
-    \begin{partquestions}{\alph*}
-        \item $\Z_2$
-        \item $\Z_3$
-        \item $\Z_5$
-        \item $\Z_7$
-    \end{partquestions}
+    \begin{multicols}{4}
+        \begin{partquestions}{\alph*}
+            \item $\Z_2$
+            \item $\Z_3$
+            \item $\Z_5$
+            \item $\Z_7$
+        \end{partquestions} 
+    \end{multicols}
 \end{exercise}
 
-Before we introduce the next test for reducibility, which involves polynomials with integer coefficients, we first introduce some terminology and a result to ease the proof of the test.
+\subsection{(Ir)reducibility In $\Q$}
+Before we introduce the next test, which involves polynomials with integer coefficients, we first introduce some terminology and a lemma to ease the proof of the test.
 
 \begin{definition}
     The \textbf{content}\index{polynomial!content} of a non-zero polynomial $f(x) \in \Z[x]$ is the GCD of its coefficients.
@@ -125,10 +129,15 @@ Before we introduce the next test for reducibility, which involves polynomials w
 \end{proof}
 
 \begin{theorem}\label{thrm-reducible-over-Q-means-reducible-over-Z}
-    If $f(x) \in \Z[x]$ is reducible over $\Q$ then it is reducible over $\Z$.
+    Let $f(x) \in \Z[x]$.
+    \begin{itemize}
+        \item If $f(x)$ is irreducible in $\Z$ then it is irreducible in $\Q$.
+        \item If $f(x)$ is a primitive polynomial and is irreducible in $\Q$ then it is irreducible in $\Z$.
+    \end{itemize}
+    Furthermore, if $f(x)$ is reducible in $\Z$ with $f(x) = p(x)q(x)$ for some non-unit polynomials $p(x)$ and $q(x)$ in $\Z[x]$, then neither $p(x)$ nor $q(x)$ are constant polynomials.
 \end{theorem}
 \begin{proof}
-    Suppose $f(x) \in \Z[x]$ is reducible over $\Q$, meaning that $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Q[x]$. Without loss of generality, assume the content of $f(x)$ is 1, since otherwise we can just divide $p(x)$ and $q(x)$ by the content of $f(x)$ to obtain the same result. Thus $f(x)$ is primitive.
+    We prove the converse of the first statement. Suppose $f(x) \in \Z[x]$ is reducible over $\Q$, meaning that $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Q[x]$. Without loss of generality, assume the content of $f(x)$ is 1, since otherwise we can just divide $p(x)$ and $q(x)$ by the content of $f(x)$ to obtain the same result. Thus $f(x)$ is primitive.
 
     Suppose $a$ is the LCM of the denominators of the coefficients of $p(x)$, and likewise $b$ is the LCM of the denominators of the coefficients of $q(x)$. Then
     \[
@@ -147,6 +156,10 @@ Before we introduce the next test for reducibility, which involves polynomials w
         &= \deg P(x)
     \end{align*}
     and likewise $\deg q(x) = \deg Q(x)$. Since $f(x) = p(x)q(x)$ and $\Q$ is a field, thus we see that $\deg f(x) = \deg p(x) + \deg q(x)$ (\myref{thrm-polynomial-degree-properties}), meaning $\deg p(x) = \deg P(x) < \deg f(x)$, and likewise $\deg Q(x) < \deg f(x)$, So we have expressed $f(x)$, a polynomial with integer coefficients, as a product of two polynomials $P(x)$ and $Q(x)$ with integer coefficients and of smaller degree than $f(x)$, showing that $f(x)$ is reducible in $\Z$.
+
+    Before we prove the second statement, we note that the final assertion made in the theorem is readily proven by noticing that $P(x)$ and $Q(x)$ are non-constant polynomials of degree smaller than $f(x)$.
+
+    We now prove the converse of the second statement. If $f(x)$ is reducible in $\Z$, then $f(x) = p(x)q(x)$ where $p(x)$ and $q(x)$ are non-unit polynomials. We note that $p(x)$ and $q(x)$ cannot be constant polynomials, since otherwise that would mean that $f(x)$ has a content that is not 1. Thus $p(x)$ and $q(x)$ are non-constant polynomials of degree smaller than $f(x)$. As all integers are also rational numbers, these same polynomials appear in $\Q[x]$ and so $f(x)$ is reducible in $\Q$.
 \end{proof}
 
 \begin{example}
@@ -173,10 +186,63 @@ Before we introduce the next test for reducibility, which involves polynomials w
     \end{partquestions}
 \end{exercise}
 
-\section{Irreducibility Tests}
+\subsection{Substitution Rule}
+To ease checking the irreducibility of polynomials, we come up with the following substitution rule to simplify some polynomials.
+
+\begin{theorem}\label{thrm-substitution-rule-for-irreducibility}
+    Let $D$ be an integral domain, $f(x) \in D[x]$, and $a \in D$.
+    \begin{enumerate}
+        \item $f(x)$ is irreducible if and only if $f(x + a)$ is irreducible.
+        \item Suppose $a$ has an inverse. Then $f(x)$ is irreducible if and only if $f(ax)$ is irreducible.
+    \end{enumerate} 
+\end{theorem}
+\begin{proof}
+    We prove the contrapositive for each of the statements.
+    \begin{enumerate}
+        \item We first show the forward direction via contrapositive; suppose $f(x+a)$ is reducible, meaning that there exists non-unit polynomials $p(x)$ and $q(x)$ in $D[x]$ such that $f(x+a) = p(x)q(x)$. Substituting $x$ with $x - a$ we see $f(x) = p(x-a)q(x-a)$.
+        \begin{itemize}
+            \item If $p(x)$ is a constant polynomial, then it is the same as $p(x-a)$, so $p(x-a)$ is not a unit (since $p(x)$ is assumed to not be a unit). Similar analysis applies to the case when $q(x)$ is a constant polynomial.
+            \item Otherwise, $p(x)$ and $q(x)$ are polynomials, which cannot be units by \myref{prop-unit-of-ring-iff-unit-of-polynomial-ring}. Thus $p(x-a)$ and $q(x-a)$ are also polynomials that are not units since both have the same degree as $p(x)$ and $q(x)$ respectively.
+        \end{itemize}
+        Therefore $f(x)$ is a product of two non-unit polynomials $p(x-a)$ and $q(x-a)$, meaning $f(x)$ is reducible in $D$.
+
+        The reverse direction is readily proven by using $-a$ instead of $a$ in the above proof.
+
+        \item For the forward direction, and working with the contrapositive statement, suppose $f(ax)$ is reducible. So there exist non-unit polynomials $p(x)$ and $q(x)$ in $D[x]$ such that $f(ax) = p(x)q(x)$. As $a$ has an inverse, thus substituting $x$ with $a^{-1}x$ yields $f(x) = p(a^{-1}x)q(a^{-1}x)$. Similar analysis to above also shows that $f(x)$ is reducible.
+        
+        The reverse direction is also readily proven by using $a^{-1}$ (which exists by hypothesis) in the above proof.
+    \end{enumerate}
+    This proves the theorem.
+\end{proof}
+
+\begin{example}
+    Since $x^2 + 1$ is irreducible in $\Z$, we know that $(x+2)^2 + 1 = x^2 + 4x + 5$ is also irreducible in $\Z$.
+\end{example}
+
+\begin{example}
+    We note that $x^2 + x + 2$ is irreducible in $\Z_3$ since
+    \begin{align*}
+        x^2 + x + 2 &= x^2 + 4x + 5\\
+        &= (x^2 + 4x + 4) + 1\\
+        &= (x+2)^2 + 1
+    \end{align*}
+    and $x^2 + 1$ is irreducible in $\Z_3$.
+\end{example}
+
+\begin{example}
+    We note that $x^3 + 1$ has no zeroes in $\Q$ so $x^3 + 1$ is irreducible in $\Q$. So we also know that
+    \begin{itemize}
+        \item $(x+1)^3 + 1 = x^3 + 3x^2 + 3x + 2$;
+        \item $(\frac12x)^3 + 1 = \frac18x^3 + 1$; and
+        \item $(\frac12x + 3)^3 + 1 = \frac18x^3 + \frac94x^2 + \frac{27}2x + 28$
+    \end{itemize}
+    are all irreducible polynomials in $\Q$.
+\end{example}
+
+\subsection{Mod $p$ Irreducibility Test}
 We covered some reducibility tests in the previous section; each of their contrapositives can be considered as irreducibility tests, as listed below:
 \begin{itemize}
-    \item For a field $F$ and a degree 2 or 3 polynomial $f(x) \in F[x]$, $f(x)$ is irreducible if and only if $f(x)$ has no zeroes. (\myref{thrm-degree-2-or-3-reducible-iff-has-zero})
+    \item For a field $F$ and a degree 2 or 3 polynomial $f(x) \in F[x]$, $f(x)$ is irreducible if and only if $f(x)$ has no zeroes. (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes})
     \item If $f(x) \in \Z[x]$ is irreducible in $\Z$ then it is irreducible in $\Q$. (\myref{thrm-reducible-over-Q-means-reducible-over-Z})
 \end{itemize}
 We look at more irreducibility tests, starting with one that is related to \myref{thrm-reducible-over-Q-means-reducible-over-Z}.
@@ -185,7 +251,7 @@ We look at more irreducibility tests, starting with one that is related to \myre
     Let $p$ be a prime and suppose $f(x) \in \Z[x]$ is a non-constant polynomial. Let $\bar{f}(x) \in \Z_p[x]$ be the polynomial obtained after reducing all coefficients of $f(x)$ modulo $p$. If $\bar{f}(x)$ is irreducible in $\Z_p$ and $\deg \bar{f}(x) = \deg f(x)$ then $f(x)$ is irreducible over $\Q$.
 \end{theorem}
 \begin{proof}
-    Seeking a contrapositive proof, suppose $f(x)$ is reducible over $\Q$. Then by \myref{thrm-reducible-over-Q-means-reducible-over-Z} there exist polynomials $p(x), q(x) \in \Z[x]$, both with degree smaller than that of $f(x)$, such that $f(x) = p(x)q(x)$. Let $\bar{f}(x), \bar{p}(x), \bar{q}(x) \in \Z_p[x]$ be the polynomials after reducing the coefficients of $f(x)$, $p(x)$, and $q(x)$ modulo $p$ respectively. Since $\deg \bar{f}(x) = \deg f(x)$ by assumption, we have
+    Seeking a contrapositive proof, suppose $f(x)$ is reducible over $\Q$. Then by \myref{thrm-reducible-over-Q-means-reducible-over-Z} there exist non-constant polynomials $p(x), q(x) \in \Z[x]$, both with degree smaller than that of $f(x)$, such that $f(x) = p(x)q(x)$. Let $\bar{f}(x), \bar{p}(x), \bar{q}(x) \in \Z_p[x]$ be the polynomials after reducing the coefficients of $f(x)$, $p(x)$, and $q(x)$ modulo $p$ respectively. Since $\deg \bar{f}(x) = \deg f(x)$ by assumption, we have
     \begin{align*}
         \deg \bar{p}(x) &\leq \deg p(x) < \deg f(x),\\
         \deg \bar{q}(x) &\leq \deg q(x) < \deg f(x),
@@ -199,14 +265,14 @@ We look at more irreducibility tests, starting with one that is related to \myre
         \item $\bar{f}(0) = 0^3 + 0^2 + 1 = 1 \neq 0$; and
         \item $\bar{f}(1) = 1^3 + 1^2 + 1 = 3 = 1 \neq 0$,
     \end{itemize}
-    so $\bar{f}(x)$ has no zeroes in $\Z_2$. Thus $\bar{f}(x)$ is irreducible in $\Z_2$ (\myref{thrm-degree-2-or-3-reducible-iff-has-zero}) and so it is irreducible in $\Q$ by Mod 2 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}).
+    so $\bar{f}(x)$ has no zeroes in $\Z_2$. Thus $\bar{f}(x)$ is irreducible in $\Z_2$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}) and so it is irreducible in $\Q$ by Mod 2 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}).
 \end{example}
 \begin{example}
     Consider now $f(x) = 2x^2 + 3x + 4$.
     
     We note that reducing $f(x)$ modulo 2 yields $3x$, but we cannot use \myref{thrm-mod-p-irreducibility-test} on it since $3x$ is of smaller degree than $f(x)$.
 
-    If instead we reduce $f(x)$ modulo 3, we get the polynomial $\bar{f}(x) = 2x^2 + 1$. But one sees clearly that $\bar{f}(1) = 2(1)^2 + 1 = 3 = 0$ in $\Z_3$, so $\bar{f}(x)$ is reducible modulo 3 (\myref{thrm-degree-2-or-3-reducible-iff-has-zero}).
+    If instead we reduce $f(x)$ modulo 3, we get the polynomial $\bar{f}(x) = 2x^2 + 1$. But one sees clearly that $\bar{f}(1) = 2(1)^2 + 1 = 3 = 0$ in $\Z_3$, so $\bar{f}(x)$ is reducible modulo 3 (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
 
     Let's try reducing $f(x)$ modulo 5, yielding a polynomial with the same coefficients in $\Z_5[x]$. Observe that, when evaluating in $\Z_5$, we have
     \begin{itemize}
@@ -216,7 +282,7 @@ We look at more irreducibility tests, starting with one that is related to \myre
         \item $f(3) = 2(3)^2 + 3(3) + 4 = 31 = 1 \neq 0$; and
         \item $f(4) = 2(4)^2 + 3(4) + 4 = 48 = 3 \neq 0$,
     \end{itemize}
-    so $f(x)$ is irreducible modulo 5 (\myref{thrm-degree-2-or-3-reducible-iff-has-zero}). Therefore $f(x)$ is irreducible in $\Q$ by Mod 5 Irreducibility Test.
+    so $f(x)$ is irreducible modulo 5 (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). Therefore $f(x)$ is irreducible in $\Q$ by Mod 5 Irreducibility Test.
 \end{example}
 
 It is important to know that not all values of $p$ in the Mod $p$ Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}) will result in a polynomial that is irreducible in $\Z_p$, as seen in the above example. As long as \textit{one} prime $p$ makes $f(x)$ irreducible in $\Z_p$, then the Mod $p$ Irreducibility Test holds and we may conclude that $f(x)$ is irreducible in $\Q$.
@@ -224,6 +290,34 @@ It is important to know that not all values of $p$ in the Mod $p$ Irreducibility
 \begin{exercise}
     Prove that, for all prime numbers $p$, there exists a non-negative integer $n < p$ such that $n^2 + 2n + 1 \equiv 0 \pmod{p}$.
 \end{exercise}
+
+The Mod $p$ Irreducibility Test can also be used to check for irreducibility of polynomials of degree greater than 3, though more thought needs to be executed in order to come up with a rigorous proof.
+
+\begin{example}
+    We will show that $f(x) = \frac15x^4 + \frac8{15}x^3 + \frac45x^2 + \frac13x + 3$ is irreducible in $\Q$. First, let $F(x) = 15f(x) = 3x^4 + 8x^3 + 12x^2 + 5x + 45$, which is a polynomial with integer coefficients. Reducing coefficients of $F(x)$ modulo 2 yields $\bar{F}(x) = x^4 + x + 1$. One sees that
+    \begin{itemize}
+        \item $\bar{F}(0) = 0^4 + 0 + 1 = 1 \neq 0$; and
+        \item $\bar{F}(1) = 1^4 + 1 + 1 = 3 = 1 \neq 0$
+    \end{itemize}
+    so $\bar{F}(x)$ has no zeroes in $\Z_2$. Now we \textit{cannot} conclude that $F(x)$ is irreducible at this juncture as $\bar{F}(x)$ is a degree 4 polynomial, and \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes} only applies to degree 2 or 3 polynomials. We need to be more creative.
+
+    Seeking a contradiction, suppose that $\bar{F}(x) = p(x)q(x)$ where $p(x), q(x) \in \Z_2[x]$ are polynomials with lower degree than $\bar{F}(x)$. Note neither $p(x)$ nor $q(x)$ can be linear, as this would imply that $\bar{F}(x)$ has a zero in $\Z_2$ (which it does not). So both $p(x)$ and $q(x)$ are quadratic factors. There are 4 quadratic factors in $\Z_2[x]$:
+    \begin{enumerate}
+        \item $x^2$;
+        \item $x^2 + 1$;
+        \item $x^2 + x$; and
+        \item $x^2 + x + 1$,
+    \end{enumerate}
+    and clearly options 1, 2, and 3 are not possible factors of $\bar{F}(x)$ since they clearly have zeroes in $\Z_2$. That leaves $x^2 + x + 1$ being the only possible quadratic factor; since $p(x)$ and $q(x)$ are both quadratic this means $p(x) = q(x) = x^2 + x + 1$. But one sees that
+    \begin{align*}
+        (x^2 + x + 1)^2 &= (x^4 + x^3 + x^2) + (x^3 + x^2 + x) + (x^2 + x + 1)\\
+        &= x^4 + 2x^3 + 3x^2 + 2x + 1\\
+        &= x^4 + x^2 + 1
+    \end{align*}
+    which is not $\bar{F}(x)$, a contradiction. Thus $\bar{F}(x)$ is irreducible in $\Z_2$.
+
+    Since $\bar{F}(x)$ is irreducible, thus $F(x)$ is also irreducible by Mod 2 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}). By contrapositive of \myref{thrm-reducible-over-Q-means-reducible-over-Z} we know $F(x)$ is irreducible over $\Q$, thus $f(x)$ is irreducible over $\Q$.
+\end{example}
 
 \section{Unique Factorization in $\Z[x]$}
 %TODO: Add
