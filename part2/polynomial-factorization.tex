@@ -44,7 +44,7 @@ It is often more useful to talk about irreducible polynomials over a field. In t
     \end{partquestions} 
 \end{exercise}
 
-\section{Criteria for (Ir)reducibility}
+\section{Tests for (Ir)reducibility}
 Trying to see if a polynomial is (ir)reducible by definition is not a trivial task. For example, it is hard to see that $x^2 + 1$ is irreducible over $\Z_3$ but reducible over $\Z_5$ by just using the definition directly. Therefore we develop some tests for (ir)reducibility to more easily see which polynomials are reducible or irreducible.
 
 \subsection{Zeroes Of A Polynomial}
@@ -186,59 +186,6 @@ Before we introduce the next test, which involves polynomials with integer coeff
     \end{partquestions}
 \end{exercise}
 
-\subsection{Substitution Rule}  % TODO: Produce a more rigorous proof
-To ease checking the irreducibility of polynomials, we come up with the following substitution rule to simplify some polynomials.
-
-\begin{theorem}\label{thrm-substitution-rule-for-irreducibility}
-    Let $D$ be an integral domain, $f(x) \in D[x]$, and $a \in D$.
-    \begin{enumerate}
-        \item $f(x)$ is irreducible if and only if $f(x + a)$ is irreducible.
-        \item Suppose $a$ has an inverse. Then $f(x)$ is irreducible if and only if $f(ax)$ is irreducible.
-    \end{enumerate} 
-\end{theorem}
-\begin{proof}
-    We prove the contrapositive for each of the statements.
-    \begin{enumerate}
-        \item We first show the forward direction via contrapositive; suppose $f(x+a)$ is reducible, meaning that there exists non-unit polynomials $p(x)$ and $q(x)$ in $D[x]$ such that $f(x+a) = p(x)q(x)$. Substituting $x$ with $x - a$ we see $f(x) = p(x-a)q(x-a)$.
-        \begin{itemize}
-            \item If $p(x)$ is a constant polynomial, then it is the same as $p(x-a)$, so $p(x-a)$ is not a unit (since $p(x)$ is assumed to not be a unit). Similar analysis applies to the case when $q(x)$ is a constant polynomial.
-            \item Otherwise, $p(x)$ and $q(x)$ are polynomials, which cannot be units by \myref{prop-unit-of-ring-iff-unit-of-polynomial-ring}. Thus $p(x-a)$ and $q(x-a)$ are also polynomials that are not units since both have the same degree as $p(x)$ and $q(x)$ respectively.
-        \end{itemize}
-        Therefore $f(x)$ is a product of two non-unit polynomials $p(x-a)$ and $q(x-a)$, meaning $f(x)$ is reducible in $D$.
-
-        The reverse direction is readily proven by using $-a$ instead of $a$ in the above proof.
-
-        \item For the forward direction, and working with the contrapositive statement, suppose $f(ax)$ is reducible. So there exist non-unit polynomials $p(x)$ and $q(x)$ in $D[x]$ such that $f(ax) = p(x)q(x)$. As $a$ has an inverse, thus substituting $x$ with $a^{-1}x$ yields $f(x) = p(a^{-1}x)q(a^{-1}x)$. Similar analysis to above also shows that $f(x)$ is reducible.
-        
-        The reverse direction is also readily proven by using $a^{-1}$ (which exists by hypothesis) in the above proof.
-    \end{enumerate}
-    This proves the theorem.
-\end{proof}
-
-\begin{example}
-    Since $x^2 + 1$ is irreducible in $\Z$, we know that $(x+2)^2 + 1 = x^2 + 4x + 5$ is also irreducible in $\Z$.
-\end{example}
-
-\begin{example}
-    We note that $x^2 + x + 2$ is irreducible in $\Z_3$ since
-    \begin{align*}
-        x^2 + x + 2 &= x^2 + 4x + 5\\
-        &= (x^2 + 4x + 4) + 1\\
-        &= (x+2)^2 + 1
-    \end{align*}
-    and $x^2 + 1$ is irreducible in $\Z_3$.
-\end{example}
-
-\begin{example}
-    We note that $x^3 + 1$ has no zeroes in $\Q$ so $x^3 + 1$ is irreducible in $\Q$. So we also know that
-    \begin{itemize}
-        \item $(x+1)^3 + 1 = x^3 + 3x^2 + 3x + 2$;
-        \item $(\frac12x)^3 + 1 = \frac18x^3 + 1$; and
-        \item $(\frac12x + 3)^3 + 1 = \frac18x^3 + \frac94x^2 + \frac{27}2x + 28$
-    \end{itemize}
-    are all irreducible polynomials in $\Q$.
-\end{example}
-
 \subsection{Mod $p$ Irreducibility Test}
 We covered some reducibility tests in the previous section; each of their contrapositives can be considered as irreducibility tests, as listed below:
 \begin{itemize}
@@ -362,13 +309,126 @@ We now look at another irreducibility test, given by Gotthold Eisenstein in 1850
     The polynomial $f(x) = 3x^4 + 15x^2 + 10$ is irreducible over $\Q$ by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) since the prime 5 divides 10 and 15 but does not divide 3, and also that $5^2 = 25$ does not divide 10.
 \end{example}
 
-\begin{example}
-    We can show that $f(x) = x^2 + x + 2$ is irreducible in $\Q$. Since the coefficient of $x$, 1, is not divisible by any prime, we cannot directly apply Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}). But using the substitution $x + 3$, we see $f(x+3) = (x+3)^2 + (x+3) + 2 = x^2 + 7x + 14$ which is irreducible by Eisenstein's Criterion using the prime 7. Therefore $f(x)$ is irreducible by substitution rule (\myref{thrm-substitution-rule-for-irreducibility}).
-\end{example}
-
 \begin{exercise}
     Find a polynomial $f(x) \in \Z[x]$ of degree $n \geq 1$ that is irreducible in $n$.
 \end{exercise}
+
+\section{Irreducibility via Transformation}
+Sometimes, the tests may not be applied directly. In these cases, appropriate substitutions or transformations are needed to convert polynomials into a form that is suitable for testing its (ir)reducibility.
+
+\begin{theorem}[Transformation Rule]\label{thrm-transformation-rule-for-irreducibility}
+    Let $D[x]$ be an integral domain and $f(x) \in D[x]$ be a non-zero, non-unit polynomial. Suppose $\phi: D[x] \to D[x]$ is an isomorphism. Then $f(x)$ is irreducible if and only if $\phi(f(x))$ is irreducible.
+\end{theorem}
+\begin{proof}
+    We prove the reverse direction first, i.e. we are proving that if $\phi(f(x))$ is irreducible then $f(x)$ is irreducible, via contrapositive. Let $f(x) \in D[x]$ be reducible, meaning there exist non-unit $p(x), q(x) \in D[x]$ such that $f(x) = p(x)q(x)$. Then
+    \[
+        \phi(f(x)) = \phi(p(x)q(x)) = \phi(p(x))\phi(q(x)).
+    \]
+    Note that, for a polynomial $u(x) \in D[x]$,
+    \begin{align*}
+        &u(x) \text{ is a unit}\\
+        \iff&u(x)v(x) = 1 \text{ for some }v(x) \in D[x] & (\text{Definition of unit})\\
+        \iff&\phi(u(x))\phi(v(x))  = \phi(u(x)v(x)) = \phi(1) = 1 & (\text{Ring homomorphism properties})\\
+        \iff&\phi(u(x)) \text{ is a unit.} & (\text{Definition of unit})
+    \end{align*}
+    Note that the second if and only if statement holds because $\phi$ is an isomorphism. So we know that neither $\phi(p(x))$ nor $\phi(q(x))$ are units. Therefore $\phi(f(x))$ is also reducible.
+
+    We now show the forward direction, again via contrapositive. Suppose $\phi(f(x))$ is reducible. Note $\phi^{-1}$ is also a ring isomorphism (\myref{problem-properties-of-ring-isomorphism}), so use the reverse direction's result to conclude that $f(x)$ is also reducible.
+\end{proof}
+
+With this general result proven, we come up with a few rules for substitution.
+
+\begin{corollary}\label{coro-irreducible-iff-translation-is-irreducible}
+    Let $D$ be an integral domain, $k \in D$, and let $f(x) \in D[x]$. Then $f(x)$ is irreducible if and only if $f(x + k)$ is irreducible.
+\end{corollary}
+\begin{proof}
+    We consider the map $\phi: R[x] \to R[x]$ where
+    \[
+        \sum_{i=0}^n a_ix^i \mapsto \sum_{i=0}^na_i(x+k)^i.  
+    \]
+    We show that this is a ring isomorphism. For brevity let
+    \begin{align*}
+        f(x) &= a_0 + a_1x + \cdots + a_mx^m\\
+        g(x) &= b_0 + b_1x + \cdots + b_nx^n
+    \end{align*}
+    be polynomials in $D[x]$, where we assume, without loss of generality, that $m \geq n$, and set $b_i = 0$ for $i > n$.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: One sees that
+        \begin{align*}
+            \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
+            &= \sum_{i=0}^m(a_i+b_i)(x+k)^i\\
+            &= \left(\sum_{i=0}^ma_i(x+k)^i\right) + \left(\sum_{i=0}^mb_i(x+k)^i\right)\\
+            &= \left(\sum_{i=0}^ma_i(x+k)^i\right) + \left(\sum_{i=0}^nb_i(x+k)^i\right) & (\because b_i = 0 \text{ for } i > n)\\
+            &= \phi(f(x)) + \phi(g(x))
+        \end{align*}
+        and
+        \begin{align*}
+            \phi(f(x)g(x)) &= \phi\left(\sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)x^r\right)\\
+            &= \sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)(x+k)^r\\
+            &= \left(\sum_{r=0}^ma_r(x+k)^r\right)\left(\sum_{r=0}^nb_r(x+k)^r\right)\\
+            &= \phi(f(x))\phi(g(x))
+        \end{align*}
+        so $\phi$ is a ring homomorphism.
+        
+        \item \textbf{Injective}: Suppose $\phi(f(x)) = \phi(g(x))$. Then
+        \[
+            \sum_{i=0}^ma_i(x+k)^i = \sum_{i=0}^nb_i(x+k)^i
+        \]
+        which, by comparing coefficients, we see $a_i = b_i$ for all $0 \leq i \leq m$. Therefore $f(x) = g(x)$ originally, meaning $\phi$ is injective.
+        
+        \item \textbf{Surjective}: Let $p(x) = c_0 + c_1x + \cdots + c_rx^r$ be a polynomial in $D[x]$. Note that $q(x) = c_0 + c_1(x-k) + \cdots + c_r(x-k)^r$ is also a polynomial in $D[x]$; observe
+        \begin{align*}
+            \phi(q(x)) &= c_0 + c_1((x-k)+k) + \cdots + c_r((x-k)+k)^r\\
+            &= c_0 + c_1x + \cdots + c_rx^r\\
+            &= p(x)
+        \end{align*}
+        so any $p(x) \in D[x]$ has a pre-image under $\phi$.
+    \end{itemize}
+    Therefore $\phi$ is an isomorphism, so $f(x)$ is irreducible if and only if $f(x+k)$ is irreducible by \myref{thrm-transformation-rule-for-irreducibility}.
+\end{proof}
+
+\begin{corollary}\label{coro-irreducible-iff-constant-factor-multiple-is-irreducible}
+    Let $D$ be an integral domain, $k \in D$ be a unit, and let $f(x) \in D[x]$. Then $f(x)$ is irreducible if and only if $f(kx)$ is irreducible.
+\end{corollary}
+\begin{proof}
+    Consider the map $\phi: R[x] \to R[x]$ where
+    \[
+        \sum_{i=0}^n a_ix^i \mapsto \sum_{i=0}^na_i(kx)^i.  
+    \]
+    \myref{exercise-substitution-by-constant-factor-multiple-map} (later) shows that this is a ring isomorphism, so this means that $f(x)$ is irreducible if and only if $f(kx)$ is irreducible.
+\end{proof}
+
+\begin{exercise}\label{exercise-substitution-by-constant-factor-multiple-map}
+    Show that the map $\phi$ given in \myref{coro-irreducible-iff-constant-factor-multiple-is-irreducible} is indeed a ring isomorphism.
+\end{exercise}
+
+\begin{example}
+    Since $x^2 + 1$ is irreducible in $\Z$, we know that $(x+2)^2 + 1 = x^2 + 4x + 5$ is also irreducible in $\Z$.
+\end{example}
+
+\begin{example}
+    We note that $x^2 + x + 2$ is irreducible in $\Z_3$ since
+    \begin{align*}
+        x^2 + x + 2 &= x^2 + 4x + 5\\
+        &= (x^2 + 4x + 4) + 1\\
+        &= (x+2)^2 + 1
+    \end{align*}
+    and $x^2 + 1$ is irreducible in $\Z_3$.
+\end{example}
+
+\begin{example}
+    We note that $x^3 + 1$ has no zeroes in $\Q$ so $x^3 + 1$ is irreducible in $\Q$. So we also know that
+    \begin{itemize}
+        \item $(x+1)^3 + 1 = x^3 + 3x^2 + 3x + 2$;
+        \item $(\frac12x)^3 + 1 = \frac18x^3 + 1$; and
+        \item $(\frac12x + 3)^3 + 1 = \frac18x^3 + \frac94x^2 + \frac{27}2x + 28$
+    \end{itemize}
+    are all irreducible polynomials in $\Q$.
+\end{example}
+
+\begin{example}
+    We can show that $f(x) = x^2 + x + 2$ is irreducible in $\Q$. Since the coefficient of $x$, 1, is not divisible by any prime, we cannot directly apply Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}). But using the substitution $x + 3$, we see $f(x+3) = (x+3)^2 + (x+3) + 2 = x^2 + 7x + 14$ which is irreducible by Eisenstein's Criterion using the prime 7. Therefore $f(x)$ is irreducible.
+\end{example}
 
 \section{Uses of Irreducible Polynomials}
 %TODO: Add

@@ -31,4 +31,41 @@
     \item Clearly $1^2 + 2(1) + 1 = 4 \equiv 0 \pmod2$, so we consider $p > 3$. Consider the polynomial $f(x) = x^2 + 2x + 1$. Clearly $f(-1) = 0$ so $f(x)$ is reducible in $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). Thus the converse of the Mod $p$ Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}) tells us that $f(x)$ is reducible in $\Z_p$ (since reducing the coefficients modulo $p$ yields the same polynomial). Therefore $f(x) \in \Z_p[x]$ must have a zero (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}), i.e. there is an integer $n \in \Z_p$ such that $f(n) = n^2 + 2n + 1 = 0$ when working modulo $p$. That same $n$ satisfies $n^2 + 2n + 1 \equiv 0 \pmod{p}$ as required.
     
     \item We claim that $f(x) = x^n + 2$ is irreducible in $\Q$ for any $n \geq 1$. We note that 2 does not divide 1, 2 divides 2, and $2^2 = 4$ does not divide 2. Thus $f(x)$ is irreducible in $\Q$ by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2.
+    
+    \item We prove the three requirements for a ring isomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: One sees that
+        \begin{align*}
+            \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
+            &= \sum_{i=0}^m(a_i+b_i)(kx)^i\\
+            &= \left(\sum_{i=0}^ma_i(kx)^i\right) + \left(\sum_{i=0}^mb_i(kx)^i\right)\\
+            &= \left(\sum_{i=0}^ma_i(kx)^i\right) + \left(\sum_{i=0}^nb_i(kx)^i\right) & (\because b_i = 0 \text{ for } i > n)\\
+            &= \phi(f(x)) + \phi(g(x))
+        \end{align*}
+        and
+        \begin{align*}
+            \phi(f(x)g(x)) &= \phi\left(\sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)x^r\right)\\
+            &= \sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)(kx)^r\\
+            &= \left(\sum_{r=0}^ma_r(kx)^r\right)\left(\sum_{r=0}^nb_r(kx)^r\right)\\
+            &= \phi(f(x))\phi(g(x))
+        \end{align*}
+        so $\phi$ is a ring homomorphism.
+        
+        \item \textbf{Injective}: Suppose $\phi(f(x)) = \phi(g(x))$. Then
+        \begin{align*}
+            \sum_{i=0}^m(a_ik^i)x^i &= \sum_{i=0}^ma_i(kx)^i\\
+            &= \sum_{i=0}^nb_i(kx)^i\\
+            &= \sum_{i=0}^n(b_ik^i)x^i
+        \end{align*}
+        which, by comparing coefficients, we see $a_i = b_i$ for all $0 \leq i \leq m$. Therefore $f(x) = g(x)$, meaning $\phi$ is injective.
+        
+        \item \textbf{Surjective}: Let $p(x) = c_0 + c_1x + \cdots + c_rx^r$ be a polynomial in $D[x]$. Since $k$ is a unit, therefore $k^{-1}$ exists. Note that $q(x) = c_0 + c_1(k^{-1}x) + \cdots + c_r(k^{-1}x)^r$ is also a polynomial in $D[x]$. Observe
+        \begin{align*}
+            \phi(q(x)) &= c_0 + c_1(k(k^{-1}x)) + \cdots + c_r(k(k^{-1}x))^r\\
+            &= c_0 + c_1x + \cdots + c_rx^r\\
+            &= p(x)
+        \end{align*}
+        so any $p(x) \in D[x]$ has a pre-image under $\phi$.
+    \end{itemize}
+    Therefore $\phi$ is an isomorphism.
 \end{questions}
