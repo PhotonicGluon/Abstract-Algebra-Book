@@ -554,6 +554,45 @@ With this theorem and corollaries, we are able to construct finite fields with p
         \Z_3/\princ{x^2+1} = \left\{ax+b + \princ{x^2+1} \vert a,b \in \Z_3\right\}
     \]
     is a field with 9 elements.
+
+    Let $F = \Z_3/\princ{x^2+1}$. We produce the Cayley table for $(F, +)$ below.
+    \begin{table}[H]
+        \centering
+        \fontsize{9pt}{12pt}\selectfont
+        \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+            \hline
+            \textbf{+} & $\boldsymbol{0}$ & $\boldsymbol{1}$ & $\boldsymbol{2}$ & $\boldsymbol{x}$ & $\boldsymbol{x+1}$ & $\boldsymbol{x+2}$ & $\boldsymbol{2x}$ & $\boldsymbol{2x+1}$ & $\boldsymbol{2x+2}$ \\ \hline
+            $\boldsymbol{0}$ & 0 & 1 & 2 & $x$ & $x+1$ & $x+2$ & $2x$ & $2x+1$ & $2x+2$ \\ \hline
+            $\boldsymbol{1}$ & 1 & 2 & 0 & $x+1$ & $x+2$ & $x$ & $2x+1$ & $2x+2$ & $2x$ \\ \hline
+            $\boldsymbol{2}$ & 2 & 0 & 1 & $x+2$ & $x$ & $x+1$ & $2x+2$ & $2x$ & $2x+1$ \\ \hline
+            $\boldsymbol{x}$ & $x$ & $x+1$ & $x+2$ & $2x$ & $2x+1$ & $2x+2$ & 0 & 1 & 2 \\ \hline
+            $\boldsymbol{x+1}$ & $x+1$ & $x+2$ & $x$ & $2x+1$ & $2x+2$ & $2x$ & 1 & 2 & 0 \\ \hline
+            $\boldsymbol{x+2}$ & $x+2$ & $x$ & $x+1$ & $2x+2$ & $2x$ & $2x+1$ & 2 & 0 & 1 \\ \hline
+            $\boldsymbol{2x}$ & $2x$ & $2x+1$ & $2x+2$ & 0 & 1 & 2 & $x$ & $x+1$ & $x+2$ \\ \hline
+            $\boldsymbol{2x+1}$ & $2x+1$ & $2x+2$ & $2x$ & 1 & 2 & 0 & $x+1$ & $x+2$ & $x$ \\ \hline
+            $\boldsymbol{2x+2}$ & $2x+2$ & $2x$ & $2x+1$ & 2 & 0 & 1 & $x+2$ & $x$ & $x+1$ \\ \hline
+        \end{tabular}
+    \end{table}
+
+    We also provide a partial multiplication table for $(F, \times)$. Filling in the missing spots in the table is left for \myref{exercise-fill-in-missing-elements-in-table-of-Z3/<x^2+1>} (later).
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+            \hline
+            $\boldsymbol{\times}$ & $\boldsymbol{0}$ & $\boldsymbol{1}$ & $\boldsymbol{2}$ & $\boldsymbol{x}$ & $\boldsymbol{x+1}$ & $\boldsymbol{x+2}$ & $\boldsymbol{2x}$ & $\boldsymbol{2x+1}$ & $\boldsymbol{2x+2}$ \\ \hline
+            $\boldsymbol{0}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+            $\boldsymbol{1}$ & 0 & 1 & 2 & $x$ & $x+1$ & $x+2$ & $2x$ & $2x+1$ & $2x+2$ \\ \hline
+            $\boldsymbol{2}$ & 0 & 2 & 1 & $2x$ & $2x+2$ & $2x+1$ & $x$ & $x+2$ & $x+1$ \\ \hline
+            $\boldsymbol{x}$ & 0 & $x$ & $2x$ & \textbf{(a)} & $x+2$ & $2x+2$ & 1 & $x+1$ & $2x+1$ \\ \hline
+            $\boldsymbol{x+1}$ & 0 & $x+1$ & $2x+2$ & $x+2$ & $2x$ & 1 & $2x+1$ & \textbf{(b)} & $x$ \\ \hline
+            $\boldsymbol{x+2}$ & 0 & $x+2$ & $2x+1$ & $2x+2$ & 1 & $x$ & $x+1$ & $2x$ & \textbf{(c)} \\ \hline
+            $\boldsymbol{2x}$ & 0 & $2x$ & $x$ & 1 & $2x+1$ & $x+1$ & 2 & $2x+2$ & $2x$ \\ \hline
+            $\boldsymbol{2x+1}$ & 0 & $2x+1$ & $x+2$ & $x+1$ & \textbf{(b)} & $2x$ & $2x+2$ & $x$ & \textbf{(d)} \\ \hline
+            $\boldsymbol{2x+2}$ & 0 & $2x+2$ & $x+1$ & $2x+1$ & $x$ & \textbf{(c)} & $2x$ & \textbf{(d)} & $2x$ \\ \hline
+        \end{tabular}
+    \end{table}
+
 \end{example}
 
 \begin{exercise}
@@ -569,9 +608,9 @@ With this theorem and corollaries, we are able to construct finite fields with p
     \end{partquestions}
 \end{exercise}
 
-\section{Unique Factorization in $\Z[x]$}
-%TODO: Add
-
+\begin{exercise}\label{exercise-fill-in-missing-elements-in-table-of-Z3/<x^2+1>}
+    Fill in the rest of the multiplication table of $\Z_3/\princ{x^2+1}$.
+\end{exercise}
 \newpage
 
 \section{Problems}
