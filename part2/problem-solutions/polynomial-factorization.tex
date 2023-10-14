@@ -1,4 +1,181 @@
 \section{Factorization of Polynomials}
-No problems.
-% \begin{questions}
-% \end{questions}
+\begin{questions}
+    \item \begin{partquestions}{\alph*}
+        \item Reducible. Since
+        \[
+            f(-1) = (-1)^3 + (-1)^2 + (-1) + 1 = 0
+        \]
+        thus $f(x)$ has a zero in $\Q$, meaning that it is reducible over $\Q$ (\myref{thrm-degree-above-1-reducible-if-has-zero}).
+        
+        \item Reducible. Since
+        \[
+            g\left(-\frac12\right) = 6\left(-\frac12\right)^3 + \left(-\frac12\right)^2 + \left(-\frac12\right) + 1 = 0
+        \]
+        thus $g(x)$ has a zero in $\Q$, meaning that it is reducible over $\Q$ (\myref{thrm-degree-above-1-reducible-if-has-zero}).
+
+        \item Irreducible. Note that 5 does not divide 1, 5 divides 5, and $5^2 = 25$ does not divide 5, so $h(x)$ is irreducible over $\Q$ by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 5.
+        
+        \item Irreducible. Note that reducing the coefficients of $F(x)$ modulo 7 results in the polynomial $\bar{F}(x) = x^4 + 2$, and that
+        \begin{itemize}
+            \item $\bar{F}(0) = 0^4 + 2 = 2 \neq 0$;
+            \item $\bar{F}(1) = 1^4 + 2 = 3 \neq 0$;
+            \item $\bar{F}(2) = 2^4 + 2 = 18 = 4 \neq 0$;
+            \item $\bar{F}(3) = 3^4 + 2 = 83 = 6 \neq 0$;
+            \item $\bar{F}(4) = 4^4 + 2 = 258 = 6 \neq 0$;
+            \item $\bar{F}(5) = 5^4 + 2 = 627 = 4 \neq 0$; and
+            \item $\bar{F}(6) = 6^4 + 2 = 1928 = 3 \neq 0$,
+        \end{itemize}
+        so $F(x)$ is irreducible over $\Q$ by Mod 7 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}).
+
+        \item Reducible. Since
+        \[
+            G(1) = (1)^4 - 2(1)^3 + (1)^2 - (1) + 1 = 0
+        \]
+        thus $G(x)$ has a zero in $\Q$ and so is reducible over $\Q$ (\myref{thrm-degree-above-1-reducible-if-has-zero}).
+
+        \item Irreducible. As
+        \begin{align*}
+            H(x) &= x^4 + 12x^3 + 54x^2 + 108x + 86\\
+            &= (x^4 + 12x^3 + 54x^2 + 108x + 81) + 5\\
+            &= (x+3)^4 + 5,
+        \end{align*}
+        and since $x^4 + 5$ is irreducible by \textbf{(c)}, therefore $H(x)$ is also irreducible by a corollary of the Transformation Rule (\myref{corollary-irreducible-iff-translation-is-irreducible}).
+    \end{partquestions}
+
+    \item Let $f(x) = x^2 - 2$. Reducing coefficients of $f(x)$ modulo 3 yields $\bar{f}(x) = x^2 + 1$. Note that in $\Z_3$ we have
+    \begin{itemize}
+        \item $\bar{f}(0) = 1 \neq 0$;
+        \item $\bar{f}(1) = 1^2 + 1 = 2 \neq 0$; and
+        \item $\bar{f}(2) = 2^2 + 1 = 5 = 2 \neq 0$.
+    \end{itemize}
+    Therefore $f(x)$ is irreducible over $\Q$ by Mod 3 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}), which means $f(x)$ has no zeroes in $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). But in $\R$ one sees that $f(x)$ has the zeroes $\pm\sqrt2$. Therefore $\sqrt2 \notin \Q$.
+
+    \item \begin{partquestions}{\roman*}
+        \item Note $f(1) = 1^3 + 6 = 7 = 0$ so $f(x)$ has a zero in $\Z_7$.
+        
+        \item As 1 is a zero of $f(x)$, thus $x-1 = x+6$ is a factor of $f(x)$ (\myref{corollary-factor-theorem}). Performing long division on $x+6$ we see
+        \begin{align*}
+            x^3 + 6 &= x^2(x+6) - 6x(x+6) + 36(x+6) - 210\\
+            &= (x^2-6x+36)(x+6) - 210\\
+            &= (x^2+x+1)(x+6) + 0 & (\text{Evaluating in }\Z_7)\\
+            &= (x^2+x+1)(x+6).
+        \end{align*}
+        One can see that 2 is a zero of $x^2 + x + 1$ in $\Z_7$, so $x - 2 = x+5$ is a factor of $x^2 + x + 1$. Performing division on it yields
+        \begin{align*}
+            x^2 + x + 1 &= x(x+5) - 4(x+5) + 21\\
+            &= (x-4)(x+5) + 21\\
+            &= (x+3)(x+5) + 0 & (\text{Evaluating in }\Z_7)\\
+            &= (x+3)(x+5)
+        \end{align*}
+        which means that
+        \[
+            x^3 + 6 = (x+3)(x+5)(x+6).
+        \]
+        We note that $x+3$, $x+5$, and $x+6$ are all irreducible polynomials in $\Z_7$, so we have accomplished our goal.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\alph*}
+        \item We note that there are only 4 degree 2 polynomials in $\Z_2[x]$. We evaluate the reducibility of each of the polynomials.
+        \begin{itemize}
+            \item $\boxed{x^2}$ Reducible since 0 is a zero of $x^2$.
+            \item $\boxed{x^2 + 1}$ Reducible since 1 is a zero of $x^2 + 1$.
+            \item $\boxed{x^2+x}$ Reducible since 0 is a zero of $x^2 + x$.
+            \item $\boxed{x^2+x+1}$ Irreducible since neither 0 nor 1 are zeroes of the polynomial (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
+        \end{itemize}
+        Thus the only degree 2 polynomial that is irreducible in $\Z_2[x]$ is $x^2+x+1$.
+
+        \item We do the same for degree 3 polynomials. We note that there are 8 such polynomials.
+        \begin{itemize}
+            \item $\boxed{x^3}$ Reducible since 0 is a zero.
+            \item $\boxed{x^3 + 1}$ Reducible since 1 is a zero.
+            \item $\boxed{x^3 + x}$ Reducible since 0 is a zero.
+            \item $\boxed{x^3 + x + 1}$ Irreducible since Irreducible since neither 0 nor 1 are zeroes of the polynomial.
+            \item $\boxed{x^3 + x^2}$ Reducible since 0 is a zero.
+            \item $\boxed{x^3 + x^2 + 1}$ Irreducible since neither 0 nor 1 are zeroes of the polynomial.
+            \item $\boxed{x^3 + x^2 + x}$ Reducible since 0 is a zero.
+            \item $\boxed{x^3 + x^2 + x + 1}$ Reducible since 1 is a zero.
+        \end{itemize}
+        Therefore the only irreducible degree 3 polynomials in $\Z_2[x]$ are $x^3+x+1$ and $x^3+x^2+1$.
+    \end{partquestions}
+
+    \item A reducible polynomial of the required form must have the factorization $(x+\alpha)(x+\beta)$. We split into two cases.
+    \begin{itemize}
+        \item If $\alpha \neq \beta$, then there are $p$ possibilities for $\alpha$ and $p - 1$ possibilities for $\beta$. However, we need to account for commutativity of the two factors, so we divide the total by 2. This leaves us with a total of $\frac{p(p-1)}{2}$ distinct polynomials for this case.
+        \item If instead $\alpha = \beta$, then there are just $p$ choses for $\alpha = \beta$.
+    \end{itemize}
+    All in all, there are $\frac{p(p-1)}{2} + p = \frac{p(p+1)}{2}$ distinct polynomials of the required form.
+    
+    \item \begin{partquestions}{\alph*}
+        \item Note that
+        \begin{align*}
+            (x+1)^4 + 1 &= (x^4 + 4x^3 + 6x^2 + 4x + 1) + 1\\
+            &= x^4 + 4x^3 + 6x^2 + 4x + 2.
+        \end{align*}
+        We see that the prime 2 does not divide the leading coefficient 1, divides all other coefficients, and $2^2 = 4$ does not divide the constant term 2. Therefore, by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2, we know $(x+1)^4 + 1$ is irreducible. Hence $x^4 + 1$ is irreducible by a corollary of the Transformation Rule (\myref{corollary-irreducible-iff-translation-is-irreducible}).
+        
+        \item Note that in $\Z_2[x]$ we have
+        \begin{align*}
+            x^4 + 1 &= x^4 + 2x + 1\\
+            &= (x^2+1)^2
+        \end{align*}
+        so $f(x) = x^4+1$ is reducible over $\Z_2$.
+        
+        \begin{partquestions}{\roman*}
+            \item \begin{partquestions}{\alph*}
+                \item If $r^2 = 2$, then note
+                \begin{align*}
+                    x^4 + 1 &= (x^4 + 2x^2 +1) - 2x^2\\
+                    &= (x^2+1)^2 - 2x^2\\
+                    &= (x^2+1)^2 - r^2x^2 & (\text{since } r^2 = 2)\\
+                    &= (x^2+1+rx)(x^2+1-rx)
+                \end{align*}
+                so $f(x)$ is reducible.
+                
+                \item If instead $r^2 = -1$, then one sees
+                \begin{align*}
+                    x^4 + 1 &= x^4 - (-1)\\
+                    &= x^4 - r^2 & (\text{since } r^2 = -1)\\
+                    &= (x^2+r)(x^2-r)
+                \end{align*}
+                so, once again, $f(x)$ is reducible.
+                
+                \item In the third case, if $r^2 = -2$, then
+                \begin{align*}
+                    x^4 + 1 &= (x^4 - 2x^2 +1) + 2x^2\\
+                    &= (x^2-1)^2 - (-2)x^2\\
+                    &= (x^2-1)^2 - r^2x^2 & (\text{since } r^2 = -2)\\
+                    &= (x^2-1+rx)(x^2-1-rx)
+                \end{align*}
+                so $f(x)$ is, again, reducible.
+            \end{partquestions}
+
+            \item We note that, as sets, we obtain
+            \begin{align*}
+                \Z_p^\ast &= \{0, 1, 2, \dots, p-1\} \setminus \{0\}\\
+                &= \{1, 2, \dots, p-1\}\\
+                &= \left\{m \vert 1 \leq m < p \text{ and } \gcd(m,p) = 1\right\}\\
+                &= \Un{p},
+            \end{align*}
+            where the third line is justified since any prime is coprime to any positive integer that is smaller than it. Now because the group operations on both sets is the same (i.e., multiplication modulo $p$), they must be the same group.
+            
+            \item There are $p - 1$ numbers from 1 to $p - 1$ inclusive. As $p > 2$, thus $p$ is odd and therefore $p - 1$ is even, meaning $\Un{p}$ is a group with even order.
+            
+            Also, as $p$ is an odd integer, there exists a primitive root modulo $p$ (\myref{axiom-primitive-root-modulo-p}). Therefore $\Un{p}$ is cyclic (\myref{prop-Un-cyclic-only-if-exists-primitive-root}), which therefore means that $\Un{p}$ is a cyclic group with even order.
+            
+            \item Let $g$ be the generator of $\Un{p}$. We consider again the three cases.
+            \begin{itemize}
+                \item If $2 = g^{2k}$ for some positive integer $k$, then the integer $r$ in question is $g^k$. The case in \textbf{(b)(i)(a)} applies.
+                \item Otherwise, if $-1 = g^{2k}$ for some positive integer $k$, then the integer $r$ in question is $g^k$. The case in \textbf{(b)(i)(b)} applies.
+                \item Otherwise, we must have $2 = g^{2m - 1}$ and $-1 = g^{2n - 1}$ for some positive integers $m$ and $n$. So one sees that
+                \begin{align*}
+                    -2 &= (2)(-1)\\
+                    &= \left(g^{2m-1}\right)\left(g^{2n-1}\right)\\
+                    &= g^{2m+2n-2}\\
+                    &= g^{2(m+n-1)},
+                \end{align*}
+                so the integer $r$ in question is $g^{m+n-1}$ and the case in \textbf{(b)(i)(c)} applies.
+            \end{itemize}
+            In all cases, we obtain a factorization of $f(x)$.
+        \end{partquestions}
+    \end{partquestions}
+\end{questions}
