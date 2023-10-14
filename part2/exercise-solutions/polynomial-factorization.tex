@@ -87,4 +87,40 @@
         so any $p(x) \in D[x]$ has a pre-image under $\phi$.
     \end{itemize}
     Therefore $\phi$ is an isomorphism.
+
+    \item Since $p(x)$ is irreducible we know $D[x]/\princ{p(x)}$ is a field (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}), which is a integral domain (\myref{prop-field-is-integral-domain}), and so $\princ{p(x)}$ is a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}). As $p(x) = a(x)b(x)$ therefore $a(x)b(x) \in \princ{p(x)}$. Hence $a(x) \in \princ{p(x)}$ or $b(x) \in \princ{p(x)}$ by definition of prime ideal. So $a(x) = k(x)p(x)$ or $b(x) = k(x)p(x)$ for some $k(x) \in D[x]$, meaning $p(x) \vert a(x)$ or $p(x) \vert b(x)$.
+    
+    \item \begin{partquestions}{\roman*}
+        \item Let $p(x) = x^2 + 2 \in \Z_5[x]$. One sees that
+        \begin{itemize}
+            \item $p(0) = 0^2 + 2 = 2 \neq 0$;
+            \item $p(1) = 1^2 + 2 = 3 \neq 0$;
+            \item $p(2) = 2^2 + 2 = 6 = 1 \neq 0$;
+            \item $p(3) = 3^2 + 2 = 11 = 1 \neq 0$; and
+            \item $p(4) = 4^2 + 2 = 18 = 3 \neq 0$,
+        \end{itemize}
+        so $p(x)$ is irreducible in $\Z_5$ by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}.
+        
+        \item $F = Z_5[x]/\princ{p(x)}$ is a field of 25 elements.
+        
+        \item \begin{partquestions}{\alph*}
+            \item We see
+            \begin{align*}
+                \left(2x+3 + I\right) + \left(4x^2+3x+2 + I\right) &= (4x^2+5x+5) + I\\
+                &= 4(x^2+2) + 5x - 3 + I\\
+                &= 5x - 3 + I\\
+                &= 0x + 2 + I
+            \end{align*}
+            so $(f(x) + I) + (g(x) + I) = 2 + I$.
+        
+            \item We note
+            \begin{align*}
+                (2x+3 + I)(4x^2+3x+2 + I) &= (8 x^3 + 18 x^2 + 13 x + 6) + I\\
+                &= \left((8x + 18)(x^2+2) - 3x - 30\right) + I\\
+                &= -3x - 30 + I\\
+                &= 2x + I
+            \end{align*}
+            so $(f(x) + I)(g(x) + I) = 2x + I$.
+        \end{partquestions}
+    \end{partquestions}
 \end{questions}
