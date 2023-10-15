@@ -65,14 +65,6 @@ We are now ready to present the definition of an ideal.
     with swapping of $m$ and $n$ possible since $\Z$ is a commutative ring. Therefore $n\Z$ is an ideal of $\Z$.
 \end{example}
 
-\begin{exercise}\label{exercise-ideal-containing-1-is-whole-ring}
-    Let $R$ be a ring with identity 1, and let $I$ be an ideal of $R$.
-    \begin{partquestions}{\roman*}
-        \item If $1 \in I$, what does this imply about $I$?
-        \item Prove $I$ contains a unit if and only if $I = R$.
-    \end{partquestions}
-\end{exercise}
-
 \begin{example}
     The subset $\{0\}$ is an ideal of any ring, called the \textbf{trivial ideal}\index{ideal!trivial} (or \textbf{zero ideal}\index{ideal!zero}). An ideal that is not $\{0\}$ is called a \textbf{non-trivial ideal}\index{ideal!non-trivial} (or \textbf{non-zero ideal}\index{ideal!non-zero}).
 \end{example}
@@ -165,8 +157,6 @@ We can now define the quotient ring.
     Therefore $R/I$ is a ring.
 \end{proof}
 
-\newpage
-
 \begin{example}
     Consider the subring $6\Z$. From \myref{example-nZ-ideal-of-Z} we know that $6\Z$ is an ideal of $\Z$. Thus $\Z/6\Z$ is a quotient ring; it is given by
     \[
@@ -198,7 +188,7 @@ We can now define the quotient ring.
     \end{partquestions}
 \end{exercise}
 
-We end this section by introducing the test for ideals\index{test for ideals}.
+To save us hassle of testing whether a subset of a ring is an ideal, we introduce the test for ideal\index{test for ideal}.
 \begin{theorem}[Test for Ideal]\label{thrm-test-for-ideal}
     Let $R$ be a ring and $I$ be a non-empty subset of $R$. Then $I$ is an ideal of $R$ if and only if
     \begin{enumerate}
@@ -214,6 +204,22 @@ We end this section by introducing the test for ideals\index{test for ideals}.
 \begin{remark}
     Like with the subgroup test (\myref{thrm-subgroup-test}), we can check whether $I$ is non-empty by seeing if the additive identity 0 is in $I$.
 \end{remark}
+
+We end this section by noting one result.
+\begin{proposition}\label{prop-ideal-contains-unit-iff-ideal-is-whole-ring}
+    Let $R$ be a ring and $I$ an ideal of $R$. Then $I$ contains a unit if and only if $I = R$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-ideal-contains-unit-iff-ideal-is-whole-ring} (later).
+\end{proof}
+
+\begin{exercise}\label{exercise-ideal-contains-unit-iff-ideal-is-whole-ring}
+    Let $R$ be a ring with identity 1, and let $I$ be an ideal of $R$.
+    \begin{partquestions}{\roman*}
+        \item If $1 \in I$, what does this imply about $I$?
+        \item Prove $I$ contains a unit if and only if $I = R$.
+    \end{partquestions}
+\end{exercise}
 
 \section{Ideal Operations}
 We first look at the sum of ideals.
@@ -398,7 +404,7 @@ We now look at the definition of a maximal ideal.
     \[
         n = 2q + r \text{ with } 0 \leq r < 2
     \]
-    Now since $n \notin M$, therefore $n$ is not a multiple of 2. Thus there must be a remainder, i.e. $1 \leq r < 2$, meaning that $r = 1$. Furthermore, one sees that $r = 1 = n - 2q$, and because $n \in I$ and $2q \in I$ (since $2q \in M$ and $M \subset I$), therefore $1 \in I$. Hence, by \myref{exercise-ideal-containing-1-is-whole-ring}, $I = \Z_{36}$, which means that $\princ{2}$ is a maximal ideal of $\Z_{36}$.
+    Now since $n \notin M$, therefore $n$ is not a multiple of 2. Thus there must be a remainder, i.e. $1 \leq r < 2$, meaning that $r = 1$. Furthermore, one sees that $r = 1 = n - 2q$, and because $n \in I$ and $2q \in I$ (since $2q \in M$ and $M \subset I$), therefore $1 \in I$. Hence, by \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring}, $I = \Z_{36}$, which means that $\princ{2}$ is a maximal ideal of $\Z_{36}$.
 \end{example}
 \begin{exercise}
     What conditions must be placed on the positive integer $n$ so that $n\Z$ is a maximal ideal in $\Z$?
@@ -434,7 +440,7 @@ We note that there are much easier ways to determine whether an ideal is prime, 
 
     Now we work in the reverse direction; assume that $R/M$ is a field. Suppose $I$ is an ideal such that $M \subset I \subseteq R$. We want to show that $I = R$.
 
-    Take $a \in I \setminus M$ with $a \neq 0$, so $a + M \in R/M$ is non-zero. As $R/M$ is a field, therefore there exists a $b + M \in R/M$ such that $(a+M)(b+M) = 1 + M$, meaning $ab+M = 1+M$. Then Coset Equality tells us that $ab - 1 \in M \subset I$. Since $ab \in I$ and $ab - 1 \in I$, the only way for this to happen is if $1 \in I$. By \myref{exercise-ideal-containing-1-is-whole-ring} this means $I = R$.
+    Take $a \in I \setminus M$ with $a \neq 0$, so $a + M \in R/M$ is non-zero. As $R/M$ is a field, therefore there exists a $b + M \in R/M$ such that $(a+M)(b+M) = 1 + M$, meaning $ab+M = 1+M$. Then Coset Equality tells us that $ab - 1 \in M \subset I$. Since $ab \in I$ and $ab - 1 \in I$, the only way for this to happen is if $1 \in I$. By \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring} this means $I = R$.
 
     Finally, if $M = R$, then $R/M = \{0 + M\}$, the trivial ring. But in the trivial ring, the additive and multiplicative inverses is the same element, so $R/M$ is not a field by definition. Hence $M \neq R$, so $M \subset R$, meaning $M$ is maximal.
 \end{proof}
