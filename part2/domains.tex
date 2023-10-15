@@ -1,2 +1,139 @@
 \chapter{Domains and Factorization}
-Earlier, we introduced domains, before focusing our attention mainly on integral domains. We explore more types of domains here.
+Earlier, we introduced domains, before focusing our attention mainly on integral domains. We then explored concepts of factorization, but restricted the discussion to polynomial rings. We explore more types of domains here, and explore the factorization available in such domains.
+
+\section{Associates, Irreducibles, and Primes}
+\begin{definition}
+    Let $D$ be an integral domain, and $a,b \in D$. Then $a$ and $b$ are said to be \textbf{associates}\index{associates} if and only if there exists a unit $u \in D$ such that $a = ub$.
+\end{definition}
+
+\begin{example}
+    In $\Z$, 2 and -2 are associates since $-2 = (-1)(2)$ and -1 is a unit in $\Z$.
+\end{example}
+
+\begin{example}
+    In $\Z_7$, 3 and 5 are associates since $5 = 12 = (4)(3)$. In fact, any two non-zero elements in $\Z_7$ are associates of each other, since every non-zero element of $\Z_7$ is a unit.
+\end{example}
+
+\begin{example}
+    In $\Q$, any two non-zero elements are associates of each other, since every non-zero element in $\Q$ is a unit. As an example, $\frac{12}{35}$ and $\frac{71}{25}$ are associates since $\frac{71}{25} = \left(\frac{35}{12} \times \frac{71}{25}\right)\left(\frac{12}{35}\right)$.
+\end{example}
+
+From the previous two examples, we can come up with the following proposition.
+
+\begin{proposition}
+    Any two non-zero elements in a field $F$ are associates.
+\end{proposition}
+\begin{proof}
+    Let $a, b \in F$ be non-zero elements. Note $a^{-1}$ exists since $F$ is a field, and $a^{-1}b$ is an element of the field by closure. Since a field is a division ring (by definition), $a^{-1}b$ has an inverse, so it is a unit. Therefore one sees $b = (a^{-1}b)a$ which means $a$ and $b$ are associates.
+\end{proof}
+
+Thus, in a sense, it is only meaningful to talk about associates when we restrict or view to that of integral domains that are \textit{not} fields.
+
+We now look at irreducibles and primes.
+\begin{definition}
+    Let $D$ be an integral domain and $x \in D$. Then $x$ is an \textbf{irreducible}\index{irreducible!element} if and only if, when $x$ is written as $x = pq$ where $p, q \in D$, then either $p$ is a unit or $q$ is a unit.
+\end{definition}
+\begin{definition}
+    Let $D$ be an integral domain and $p \in D$. Then $p$ is a \textbf{prime}\index{prime} if $p$ is not a unit and, for all $a, b \in D$, we have $p \vert ab$ implies $p \vert a$ or $p \vert b$.
+\end{definition}
+
+We note that the above definition of irreducibles is similar to that of irreducible polynomials, and the definition of primes is similarly defined to that of prime ideals.
+
+The principal confusion one may have with the definition of a prime above is that, in the integers, we defined prime numbers to satisfy the definition of an irreducible (\myref{definition-prime-number}), and that primes also satisfy the primality definition above (\myref{corollary-euclid}). The reason for this confusion is that, over the integers, irreducibles are primes. However, in general, they are \textit{not} the same. We will look at such examples in a while.
+
+To explore the differences between irreducibles and primes, we look at quadratic integers, with a more detailed exploration done in the next chapter.
+\begin{definition}
+    Let $d$ be a square free integer, i.e. an integer that is not divisible by any square number other than 1. The set
+    \[
+        \Z[\sqrt{d}] = \left\{a + b\sqrt{d} \vert a,b \in \Z\right\}
+    \]
+    forms an integral domain.
+\end{definition}
+We will leave proving that this is indeed an integral domain to the next section.
+\begin{definition}
+    The \textbf{norm}\index{quadratic integer!norm} of an integer in $\Z[\sqrt{d}]$ is given by the function $N: \Z[\sqrt{d}] \to \Z$ where
+    \[
+        N(a+b\sqrt{d}) = a^2 - db^2.
+    \]
+\end{definition}
+We note 4 properties of the norm, which we will prove later as well.
+\begin{itemize}
+    \item $N(x) = 0$ if and only if $x = 0$.
+    \item $N(xy) = N(x)N(y)$ for all $x, y \in \Z[\sqrt{d}]$.
+    \item $x$ is a unit if and only if $N(x) = 1$; and
+    \item if $N(x)$ is a prime number, then $x$ is irreducible in $\Z[\sqrt{d}]$.
+\end{itemize}
+
+\begin{example}
+    We show that it is possible for an irreducible in $D = \Z[\sqrt{-3}]$ to not be prime. Note that $N(a+b\sqrt{-3}) = a^2 + 3b^2$. Let $r = 1 + \sqrt{-3}$.
+    \begin{itemize}
+        \item We claim that $r$ is irreducible. Seeking a contradiction, suppose $r = xy$ where neither $x$ nor $y$ is a unit. Then $N(r) = N(x)N(y) = N(1+\sqrt{-3}) = 4$. It follows that, since $x$ and $y$ are not units, that $N(x) = N(y) = 2$. But, there are no integers $a$ and $b$ such that $a^2 + 3b^2 = 2$ required for $x$ (and $y$), a contradiction. Therefore $x$ or $y$ is a unit, meaning that $r$ is irreducible.
+
+        \item We claim that $r$ is \textit{not} a prime. Observe that
+        \[
+            (1+\sqrt{-3})(1-\sqrt{-3}) = 1-(-3) = 4 = 2 \times 2
+        \]
+        so $1 + \sqrt{-3}$ divides $2 \times 2$. However, for integers $a$ and $b$ to exist so that $2 = (1+\sqrt{-3})(a+b\sqrt{-3}) = (a-3b) + (a+b)\sqrt{-3}$, we must have $a - 3b = 2$ and $a + b = 0$, which has a solution $a = \frac12$ and $b = -\frac12$ which is not an integer. Therefore $r$ is not prime.
+    \end{itemize}
+    Hence it is possible for an irreducible to not be a prime.
+\end{example}
+
+We note one property of irreducibles.
+\begin{proposition}\label{prop-associates-of-irreducible-is-irreducible}
+    In an integral domain, associates of an irreducible is irreducible.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-associates-of-irreducible-is-irreducible} (later).
+\end{proof}
+
+One might wonder whether it is possible for a prime to not be an irreducible. It turns out that it is not possible.
+\begin{theorem}\label{thrm-in-integral-domain-primes-are-irreducibles}
+    In an integral domain $D$, all primes are irreducibles.
+\end{theorem}
+\begin{proof}
+    Suppose $p \in D$ is a prime. Suppose $p = xy$ where $x, y\in D$. Then clearly $p = (1)(xy)$ and so $p \vert xy$, meaning $p \vert x$ or $p \vert y$. Without loss of generality, assume $p \vert x$, meaning $x = kp$ for some $k \in D$. Then one sees
+    \begin{align*}
+        1x &= x\\
+        &= kp\\
+        &= k(xy)\\
+        &= (ky)x & (\text{Integral domain is commutative})
+    \end{align*}
+    which means $ky = 1$ by cancellation law (\myref{prop-domain-cancellation-law}). Hence $y$ is a unit; $p$ is an irreducible.
+\end{proof}
+
+If we are working in a principal ideal domain then we have a stronger result.
+\begin{theorem}\label{thrm-in-PID-prime-iff-irreducible}
+    Let $D$ be a PID. Then an element is a prime if and only if it is an irreducible.
+\end{theorem}
+\begin{proof}
+    The forward direction is proven by \myref{thrm-in-integral-domain-primes-are-irreducibles}, so we only work in the reverse direction: proving that an element is prime if it is irreducible in $D$.
+
+    Suppose $r$ is an irreducible in $D$ and suppose $r \vert xy$ where $x, y \in D$. Consider the set
+    \[
+        I = \{\lambda r + \mu x \vert \lambda, \mu \in D\}.
+    \]
+    We know that $I$ is an ideal since it is the sum of principal ideals $\princ{r}$ and $\princ{x}$ (\myref{prop-sum-of-ideals-is-ideal}). Since $D$ is a PID let $I = \princ{d}$ for some $d \in D$. As $r \in I$, write $r = kd$ for some $k \in D$. Note that because $r$ is irreducible we know that either $k$ is a unit or $d$ is a unit.
+    \begin{itemize}
+        \item If $k$ is a unit, then $\princ{r} = \princ{kd} = \princ{d} = I$ (\myref{prop-principal-ideals-equal-iff-associates}). Since $x \in I$, there is a $t \in D$ such that $x = rt$, meaning $r \vert x$.
+        \item Otherwise, if $d$ is a unit, then $I$ contains a unit and so $I = D$ (\myref{exercise-ideal-containing-1-is-whole-ring}), meaning $1 \in I$. Write $1 = \lambda r + \mu x$, so $y = \lambda ry + \mu xy$. Since $r \vert \lambda ry$ and $r \vert xy$ (by assumption), thus $r \vert (\lambda ry + \mu xy)$, meaning $r \vert y$.
+    \end{itemize}
+    Therefore, if $r \vert xy$ then either $r \vert x$ or $r \vert y$, meaning $r$ is prime.
+\end{proof}
+\begin{exercise}\label{exercise-associates-of-irreducible-is-irreducible}
+    Prove \myref{prop-associates-of-irreducible-is-irreducible}.
+\end{exercise}
+
+\section{Quadratic Integers}
+% TODO: Add
+
+\section{Unique Factorization Domains (UFDs)}
+% TODO: Add
+% TODO: Add facts about Z[x] being a UFD here
+
+\section{Euclidean Domains}
+% TODO: Add
+
+\newpage
+
+\section{Problems}
+% TODO: Add
