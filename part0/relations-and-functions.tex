@@ -1,8 +1,57 @@
 \chapter{Relations and Functions}
-Relations and Functions play a fundamental role in mathematics. Both compare and relate different kinds of mathematical structures to each other, and provide a way to relate elements from one structure to another.
+Relations and functions play a fundamental role in mathematics. Both compare and relate different kinds of mathematical structures to each other, and provide a way to relate elements from one structure to another.
 
 \section{What is a Relation?}
-% TODO: Add
+\begin{definition}
+    Let $A$ and $B$ be sets. A \textbf{relation from $A$ to $B$}\index{relation} is a subset of $A \times B$.
+
+    For elements $x \in X$ and $y \in Y$, we say \textbf{$x$ is related to $y$ by $R$}\index{related to} (or \textbf{$x$ is $R$-related to $y$}), denoted $x\mathrel{R}y$, if and only if $(x,y) \in R$.
+\end{definition}
+\begin{remark}
+    Symbolically, $x\mathrel{R}y$ if and only if $(x,y)\in R$ and $x\not\mathrel{R}y$ if and only if $(x,y) \notin R$.
+\end{remark}
+\begin{remark}
+    If there is no confusion of what relation we are talking about, we may just say that $x$ is related to $y$.
+\end{remark}
+
+This may be too abstract for now, so we produce some concrete examples.
+\begin{example}
+    Let $M$, a subset of the set of all mathematicians, denote the set
+    \[
+        \{\text{Cardano}, \text{Lagrange}, \text{Dedekind}, \text{Euler}, \text{Noether}, \text{Zassenhaus}\}
+    \]
+    and let $C$, a subset of the set of all countries, be
+    \[
+        \{\text{Italy}, \text{Switzerland}, \text{Germany}\}.
+    \]
+    Then we may define $R$ to be the ``is born in'' relation, where
+    \begin{align*}
+        R &= \{(\text{Cardano}, \text{Italy}),(\text{Lagrange}, \text{Italy}),(\text{Dedekind}, \text{Germany}),\\
+        &\quad\quad(\text{Euler}, \text{Switzerland}),(\text{Noether}, \text{Italy}),(\text{Zassenhaus}, \text{Germany})\}
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Let $A = \{0, 1, 2\}$ and $B = \{1, 2, 3\}$. Define the relation $R$ such that
+    \[
+        x\mathrel{R}y \text{ if and only if } x < y.
+    \]
+    Then $0\mathrel{R}1$, $0\mathrel{R}2$, $0\mathrel{R}3$, $1\mathrel{R}2$, $1\mathrel{R}3$, and $2\mathrel{R}3$. However, $1\not\mathrel{R}1$, $2\not\mathrel{R}1$, and $2\not\mathrel{R}2$. Therefore
+    \[
+        R = \{(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)\}.
+    \]
+\end{example}
+
+\begin{definition}
+    A \textbf{relation $R$ on a set $A$}\index{relation!on a set} is a relation from $A$ to $A$. In other words, $R$ is a subset of $A^2$.
+\end{definition}
+\begin{example}
+    Let $A = \{3, 4, 5, 6, 7\}$ and define a relation $R$ on $A$ such that
+    \[
+        x\mathrel{R}y \iff 2 \vert (x-y).
+    \]
+    Then $R = \{(3, 3), (3, 5), (3, 7), (4, 4), (4, 6), (5, 3), (5, 5), (6, 4), (6, 6), (7, 3), (7, 7)\}$.
+\end{example}
 
 \section{Equivalence Relations}
 % TODO: Add
@@ -131,8 +180,6 @@ It is important to note the following about function composition.
 \begin{exercise}
     Let $f: \mathbb{R} \to \mathbb{R}$ and $g: \mathbb{R} \to \mathbb{R}$. Write down the rule of the function $fg$ if $f(x) = x^2 - x + 1$ and $g(y) = \frac1{y^2+1}$.
 \end{exercise}
-
-\newpage
 
 \section{Injective, Surjective, and Bijective Functions}
 \begin{definition}
