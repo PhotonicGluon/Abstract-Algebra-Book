@@ -27,7 +27,7 @@ This may be too abstract for now, so we produce some concrete examples.
     Then we may define $R$ to be the ``is born in'' relation, where
     \begin{align*}
         R &= \{(\text{Cardano}, \text{Italy}),(\text{Lagrange}, \text{Italy}),(\text{Dedekind}, \text{Germany}),\\
-        &\quad\quad(\text{Euler}, \text{Switzerland}),(\text{Noether}, \text{Italy}),(\text{Zassenhaus}, \text{Germany})\}
+        &\quad\quad(\text{Euler}, \text{Switzerland}),(\text{Noether}, \text{Italy}),(\text{Zassenhaus}, \text{Germany})\}.
     \end{align*}
 \end{example}
 
@@ -54,7 +54,97 @@ This may be too abstract for now, so we produce some concrete examples.
 \end{example}
 
 \section{Equivalence Relations}
-% TODO: Add
+Before we can define what an equivalence relation is, we define three properties that a relation could possess.
+
+\begin{definition}
+    Let $R$ be a relation on a set $A$.
+    \begin{itemize}
+        \item $R$ is \textbf{reflexive}\index{relation!reflexive} if and only if $x\mathrel{R}x$ for all $x \in A$.
+        \item $R$ is \textbf{symmetric}\index{relation!symmetric} if and only if, for all $x, y \in A$, if $x\mathrel{R}y$ then $y\mathrel{R}x$.
+        \item $R$ is \textbf{transitive}\index{relation!transitive} if and only if, for all $x,y,z\in A$, if $x\mathrel{R}y$ and $y\mathrel{R}z$ then $x\mathrel{R}z$.
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    Let the set $A = \{0,1,2,3\}$. Define the relations
+    \begin{align*}
+        R &= \{(0,0),(0,1),(0,3),(1,0),(1,1),(2,2),(3,0),(3,3)\}\\
+        S &= \{(0,0),(0,2),(0,3),(2,3)\}
+    \end{align*}
+    on $A$.
+    
+    Consider first the relation $R$.
+    \begin{itemize}
+        \item $R$ is reflexive since $0\mathrel{R}0$, $1\mathrel{R}1$, and $2\mathrel{R}2$.
+        \item $R$ is symmetric, since
+        \begin{itemize}
+            \item given $0\mathrel{R}1$ we also see $1\mathrel{R}0$; and
+            \item given $0\mathrel{R}3$ we also see $3\mathrel{R}0$.
+        \end{itemize}
+        \item $R$ is \textit{not} transitive, since $1\mathrel{R}0$ and $0\mathrel{R}3$ but $1\not\mathrel{R}3$.
+    \end{itemize}
+
+    Now look at the relation $S$.
+    \begin{itemize}
+        \item $S$ is \textit{not} reflexive since $1\not\mathrel{S}1$.
+        \item $S$ is \textit{not} symmetric since, while $0\mathrel{S}2$, we see $2\not\mathrel{S}0$.
+        \item $S$ is transitive since $0\mathrel{S}2$ and $2\mathrel{S}3$ means $0\mathrel{S}3$.
+    \end{itemize}
+\end{example}
+
+\begin{exercise}
+    Let $A = \{0, 1, 2, 3\}$ and define the relation $T = \{(0, 1), (2, 3)\}$ on $A$.
+    \begin{partquestions}{\alph*}
+        \item Is $T$ reflexive?
+        \item Is $T$ symmetric?
+        \item Is $T$ transitive?
+    \end{partquestions}
+\end{exercise}
+
+With these three properties defined, we can specify what an equivalence relation is.
+
+\begin{definition}
+    An equivalence relation is a relation that is reflexive, symmetric, and transitive.
+\end{definition}
+
+\begin{example}
+    The equality relation, $=$, the namesake for equivalence relations, is an equivalence relation.
+    \begin{itemize}
+        \item For any $x$, one knows that $x = x$.
+        \item For any $x$ and $y$, one knows that if $x = y$ then $y = x$.
+        \item For any $x$, $y$, and $z$, if $x = y$ and $y = z$ one sees that $x = z$.
+    \end{itemize}
+\end{example}
+
+\begin{example}
+    Consider the set $A = \{0, 1, 2, 3\}$ and define a relation $R$ on $A$ by
+    \[
+        R = \{(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2), (3, 3)\}
+    \]
+    then $R$ is
+    \begin{itemize}
+        \item reflexive since $0\mathrel{R}0$, $1\mathrel{R}1$, $2\mathrel{R}2$, and $3\mathrel{R}3$;
+        \item symmetric since
+        \begin{itemize}
+            \item given $0\mathrel{R}1$ we have $1\mathrel{R}0$;
+            \item given $0\mathrel{R}2$ we have $2\mathrel{R}0$; and
+            \item given $1\mathrel{R}2$ we have $2\mathrel{R}1$.
+        \end{itemize}
+        All other symmetric requirements are implied by reflexivity.
+        \item transitive since
+        \begin{itemize}
+            \item given $0\mathrel{R}1$ and $1\mathrel{R}2$ we have $0\mathrel{R}2$;
+            \item given $1\mathrel{R}2$ and $2\mathrel{R}0$ we have $1\mathrel{R}0$; and
+            \item given $2\mathrel{R}0$ and $0\mathrel{R}1$ we have $2\mathrel{R}1$. 
+        \end{itemize}
+        All other transitive requirements are implied by the prior properties.
+    \end{itemize}
+    Therefore $R$ is an equivalence relation.
+\end{example}
+
+\begin{exercise}
+    Is the less-than-or-equal-to relation, $\leq$, an equivalence relation on $\Z$?
+\end{exercise}
 
 \section{What is a Function?}
 \begin{definition}
