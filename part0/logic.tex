@@ -185,8 +185,6 @@ The truth table for the biconditional is:
     \end{tabular}
 \end{table}
 
-\newpage
-
 \begin{exercise}
     Let $n$ be an integer. Let $p$ be the statement ``$n$ is a multiple of 5'' and $q$ be the statement ``the last digit of $n$ is 0 or 5''. Let the statement $r = p \iff q$.
     \begin{partquestions}{\roman*}
@@ -208,12 +206,12 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
     Two statements $p$ and $q$ are \textbf{logically equivalent}\index{logically equivalent} if and only if they have identical truth values for each possible statement that $p$ and $q$ may take. If $p$ and $q$ are logically equivalent, we write $p \equiv q$.
 \end{definition}
 \begin{example}\label{example-implication-law}
-    We show that $(p \implies q) \equiv \lnot p \lor q$ by considering the truth table for $\lnot p \lor q$.
-    \begin{table}[h]
+    We show that $(p \implies q) \equiv \lnot p \lor q$ by drawing the truth table of $\lnot p \lor q$.
+    \begin{table}[H]
         \centering
         \begin{tabular}{|l|l||l||l|}
             \hline
-            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot P \lor Q}$ \\ \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot p \lor q}$ \\ \hline
             F   & F   & T         & T                  \\ \hline
             F   & T   & T         & T                  \\ \hline
             T   & F   & F         & F                  \\ \hline
@@ -221,21 +219,19 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
         \end{tabular}
     \end{table}
 
-    By inspection, we see that $\lnot p \lor q$ has the same truth table as $p \implies q$. Thus $(p \implies q) \equiv \lnot p \lor q$.
+    By inspection, we see that $\lnot p \lor q$ has the same truth table as $p \implies q$. Therefore we can conclude that $(p \implies q) \equiv \lnot p \lor q$.
 \end{example}
 \begin{remark}
     We separate the intermediate value(s) (e.g. $\lnot p$ in the above example) from the rest by drawing a double line to the sides of the intermediate values.
 \end{remark}
 
-\newpage
-
 \begin{example}
-    We show that $(p \iff q) \equiv (p \land q) \lor (\lnot p \land \lnot q)$. For brevity, let $r = \lnot p \land \lnot q$.
-    \begin{table}[h]
+    We show that $(p \iff q) \equiv (p \land q) \lor (\lnot p \land \lnot q)$.
+    \begin{table}[H]
         \centering
         \begin{tabular}{|l|l||l|l|l|l||l|}
             \hline
-            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot q}$ & $\boldsymbol{p \land q}$ & $\boldsymbol{r}$ & $\boldsymbol{(p \land q) \lor r}$ \\ \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot q}$ & $\boldsymbol{p \land q}$ & $\boldsymbol{\lnot p \land \lnot q}$ & $\boldsymbol{(p \land q) \lor (\lnot p \land \lnot q)}$ \\ \hline
             F   & F   & T         & T         & F           & T   & T                    \\ \hline
             F   & T   & T         & F         & F           & F   & F                    \\ \hline
             T   & F   & F         & T         & F           & F   & F                    \\ \hline
@@ -247,12 +243,10 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
 \end{example}
 
 \begin{exercise}
-    Show that
-    \[
-        ((\lnot p) \iff q) \equiv (p \implies (\lnot q)) \land ((\lnot q) \implies p)
-    \]
-    by drawing a truth table.
+    Show that $(\lnot p \iff q) \equiv (p \implies \lnot q) \land (\lnot q \implies p)$ by drawing a truth table.
 \end{exercise}
+
+\newpage
 
 We note some important properties of logical operators.
 \begin{itemize}
@@ -342,6 +336,8 @@ We can also combine quantifiers and logical operators together.
 \begin{exercise}
     Convert the statement ``for all positive integers $n > 2$ there exist integers $a$ and $b$ such that $a^3 + b^4 = n^5$'' into symbolic notation using quantifiers and logical operators.
 \end{exercise}
+
+\newpage
 
 We now look at negating quantifiers\index{quantifier!negation}. Note that
 \begin{itemize}
