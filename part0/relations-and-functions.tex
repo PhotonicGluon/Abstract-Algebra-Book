@@ -148,7 +148,7 @@ With these three properties defined, we can specify what an equivalence relation
 
 \section{What is a Function?}
 \begin{definition}
-    A \textbf{function}\index{function} (or a \textbf{map}\index{map}) $f$ from a set $X$ to a set $Y$, denoted $f: X \to Y$,  is a relation $f \subseteq X \times Y$ such that for every $x \in X$, there is exactly $y \in Y$ where $x\mathrel{f}y$.
+    A \textbf{function}\index{function} (or a \textbf{map}\index{map}) $f$ from a set $X$ to a set $Y$, denoted $f: X \to Y$,  is a relation $f \subseteq X \times Y$ such that for every $x \in X$, there is exactly one $y \in Y$ where $x\mathrel{f}y$.
 \end{definition}
 \begin{remark}
     One can think of a function/map $f:X\to Y$ as a `black box' that assigns every element of $X$ to exactly one element in $Y$.
@@ -157,14 +157,14 @@ With these three properties defined, we can specify what an equivalence relation
     For a function $f: X \to Y$, the set $X$ is called the \textbf{domain}\index{domain!function} of the function and the set $Y$ is called the \textbf{codomain}\index{codomain} of the function.
 \end{definition}
 \begin{example}
-    Consider the simple function $f: \mathbb{Z} \to \mathbb{Q}$ where $f(n) = \frac1n$. In this case, $f$ has a domain of $\mathbb{Z}$, i.e. the integers, and a codomain of $\mathbb{Q}$, i.e. the rational numbers.
+    Consider the simple function $f: \Z \to \Q$ where $f(n) = \frac1n$. In this case, $f$ has a domain of $\Z$, i.e. the integers, and a codomain of $\Q$, i.e. the rational numbers.
 
-    We may evaluate the function $f$ at $2 \in \mathbb{Z}$ to get the resulting value of $f(2) = \frac12$.
+    We may evaluate the function $f$ at $2 \in \Z$ to get the resulting value of $f(2) = \frac12$.
 \end{example}
 
 \textbf{Arrow notation}\index{function!arrow notation} can also be used to define the rule of a function. There is no good way of defining arrow notation, but some examples should help illustrate the basics.
 \begin{example}
-    Consider $f: \mathbb{N} \to \mathbb{Q}$ where $f(n) = \frac1n$. We may write this more succinctly as $f: \mathbb{N} \to \mathbb{Q}, n \mapsto \frac1n$. Specifically, $n \mapsto \frac1n$ is read as ``$n$ maps to $\frac1n$''.
+    Consider $f: \mathbb{N} \to \Q$ where $f(n) = \frac1n$. We may write this more succinctly as $f: \mathbb{N} \to \Q, n \mapsto \frac1n$. Specifically, $n \mapsto \frac1n$ is read as ``$n$ maps to $\frac1n$''.
     
     It is important to note that $\to$ indicates the domain and codomain, and that $\mapsto$ indicates how an element in the domain is `transformed' into an element in the codomain.
 \end{example}
@@ -172,32 +172,45 @@ With these three properties defined, we can specify what an equivalence relation
     The function $g: \mathbb{R} \to \mathbb{R}$ where $g(x) = x^2 - 2x + 1$ can be more succinctly written as $g: \mathbb{R} \to \mathbb{R}, x \mapsto x^2 - 2x + 1$.
 \end{example}
 \begin{example}
-    Let $h: \mathbb{Z} \to \mathbb{R}$ where $h(x^2) = x$. This can be written succinctly as either $h: \mathbb{Z} \to \mathbb{R}, x^2 \mapsto x$ or $h: \mathbb{Z} \to \mathbb{R}, n \mapsto \sqrt n$.
+    Let $h: \Z \to \mathbb{R}$ where $h(x^2) = x$. This can be written succinctly as either $h: \Z \to \mathbb{R}, x^2 \mapsto x$ or $h: \Z \to \mathbb{R}, n \mapsto \sqrt n$.
 \end{example}
 
 \begin{definition}
     Let $f: X \to Y$ be a function, and $x \in X$.
     \begin{itemize}
         \item The \textbf{image}\index{function!image} of an element $x \in X$ under the function $f$ is denoted $f(x)$ and is defined to be the value after applying $f$ to $x$.
-        \item The \textbf{image} or \textbf{range}\index{function!range} of $f$ is denoted by either $\im f$ or $f(X)$ and is the set of the images of all elements in the domain. It is a subset of the codomain, i.e. $\im f \subseteq Y$.
+        \item The \textbf{image} (or \textbf{range}\index{function!range}) of $f$ is denoted by either $\im f$ or $f(X)$ and is the set of the images of all elements in the domain. It is a subset of the codomain, i.e. $\im f \subseteq Y$.
     \end{itemize}
 \end{definition}
 \begin{example}
-    Consider the function $f: \mathbb{Z} \to \mathbb{Z}, n \mapsto 1$.
+    Consider the function $f: \Z \to \Z, n \mapsto 1$.
     \begin{itemize}
         \item The image of 0 under $f$ is the \textit{element} 1.
-        \item The range/image of $f$ is the \textit{set} $\{1\}$, i.e. $\im f = f(\mathbb{Z}) = \{1\}$.
+        \item The image/range of $f$ is the \textit{set} $\{1\}$, i.e. $\im f = f(\Z) = \{1\}$.
     \end{itemize}
     It is important to note that the image of an element is a single element, while the image of the function is a set.
 \end{example}
 \begin{example}
-    Consider the function $g: \mathbb{Z} \to \mathbb{Z}, n \mapsto |n|$, where $|n|$ denotes the absolute value of $n$.
+    Consider the function $g: \Z \to \Z, n \mapsto |n|$, where $|n|$ denotes the absolute value of $n$.
     \begin{itemize}
         \item The image of 2 under $g$ is $|2| = 2$.
         \item The image of -3 under $g$ is $|-3| = 3$.
         \item The image of 0 under $g$ is $|0| = 0$.
     \end{itemize}
-    The range of the function $g$ is the set of non-negative integers, i.e. $\im g = g(\mathbb{Z}) = \mathbb{N} \cup \{0\}$.
+    The image/range of $g$ is the set of non-negative integers, i.e. $\im g = \mathbb{N} \cup \{0\}$.
+\end{example}
+\begin{example}
+    Let the function $h: \Z \to \Q, n\mapsto\frac n3$.
+    \begin{itemize}
+        \item The image of 2 under $h$ is $\frac23$.
+        \item The image of -3 under $h$ is $\frac{-3}3 = -1$.
+        \item The image of 0 under $h$ is $\frac03 = 0$.
+    \end{itemize}
+    The image/range of the function $h$ is the set
+    \[
+        \left\{\frac n3 \vert n \in \Z\right\},
+    \]
+    that is, $\im h$ is the set of all integers divided by 3.
 \end{example}
 
 \begin{exercise}
@@ -221,20 +234,14 @@ We end this section with defining equality of two functions.
 \end{definition}
 In other words, two functions $f$ and $g$ are equal if their domain and codomain sets are the same and their output values agree on the whole domain.
 \begin{example}
-    Consider the functions $f: \mathbb{Z} \to \mathbb{Z}, x \mapsto (x-1)^2$ and $g: \mathbb{Z} \to \mathbb{Z}, x \mapsto x^2 - 2x + 1$. Since the two functions' domains and codomains are the same, and because $(x-1)^2 = x^2 - 2x + 1$, thus $f = g$.
+    Consider the functions $f: \Z \to \Z, x \mapsto (x-1)^2$ and $g: \Z \to \Z, x \mapsto x^2 - 2x + 1$. Since the two functions' domains and codomains are the same, and because $(x-1)^2 = x^2 - 2x + 1$, thus $f = g$.
 \end{example}
 \begin{example}
-    The functions $f: \mathbb{Z} \to \mathbb{R}, x \mapsto (x-1)^2$ and $g: \mathbb{Z} \to \mathbb{Q}, x \mapsto x^2 - 2x + 1$ are not equal because their codomains differ.
+    The functions $f: \Z \to \mathbb{R}, x \mapsto (x-1)^2$ and $g: \Z \to \Q, x \mapsto x^2 - 2x + 1$ are not equal because their codomains differ.
 \end{example}
 
 \section{Well-Defined Functions}
-\begin{definition}
-    A function $f: X \to Y$ is \textbf{well-defined} if and only if for each $x \in X$ there is a unique $y \in Y$ such that $f(x) = y$.
-\end{definition}
-Informally, \textit{identical inputs} produce \textit{identical outputs} for a well-defined function.
-\begin{remark}
-    Functions that are not well-defined are called `ambiguous' or `ill-defined' functions, and is not a valid function.
-\end{remark}
+Sometimes, a `function' with a given rule may not satisfy the requirement that for every $x$ in the domain there is \textit{exactly} one $y$ in the codomain that $f(x) = y$. A `function' that fails this requirement is called ``ambiguous'' or ``ill-defined'', and is not a valid function. Otherwise, a function that satisfies this requirement is called \textbf{well-defined}\index{function!well-defined}.
 
 \begin{example}
     Let $S_1$ and $S_2$ be sets, and let $S = S_1 \cup S_2$. Let $f: S \to \{1, 2\}$, such that
@@ -250,7 +257,7 @@ Informally, \textit{identical inputs} produce \textit{identical outputs} for a w
 \end{example}
 
 \begin{exercise}
-    Is $f: \mathbb{Q} \to \mathbb{Z},\;\frac pq \mapsto p + q$ a well-defined function?
+    Is $f: \Q \to \Z,\;\frac pq \mapsto p + q$ a well-defined function?
 \end{exercise}
 
 \section{Function Composition}
@@ -284,7 +291,7 @@ It is important to note the following about function composition.
     Note that if $n_1, n_2 \in \mathbb{N}$ are such that $f(n_1) = n_1^2 = f(n_2) = n_2^2$ then $n_1 = n_2$ (since $n_1, n_2 > 0$ so taking the square root is okay). Thus $f$ is injective.
 \end{example}
 \begin{example}
-    Consider instead $g: \mathbb{Z} \to \mathbb{Z}, n \mapsto n^2$. Then $g$ is not injective since $g(-2) = g(2) = 4$.
+    Consider instead $g: \Z \to \Z, n \mapsto n^2$. Then $g$ is not injective since $g(-2) = g(2) = 4$.
 \end{example}
 
 \begin{definition}
@@ -327,15 +334,18 @@ It is important to note the following about function composition.
 \begin{example}
     Consider the sets $X = \{1, 2, 3\}$ and $Y = \{a, b, c\}$. The function $f: X \to Y$ defined by $1 \mapsto a$, $2 \mapsto b$, and $3 \mapsto c$ is clearly a bijection, so $|X| = |Y|$.
 \end{example}
+
+\newpage
+
 \begin{exercise}
-    Define the function $f: \mathbb{N} \to \mathbb{Z}$ such that
+    Define the function $f: \mathbb{N} \to \Z$ such that
     \[
         f(x) = \begin{cases}
             \frac{x}{2} & \text{ if } x \text{ is even}\\
             \frac{1-x}{2} & \text{ if } x \text{ is odd} 
         \end{cases}
     \]
-    By considering $f$, prove that $|\mathbb{N}| = |\mathbb{Z}|$.
+    By considering $f$, prove that $|\mathbb{N}| = |\Z|$.
 \end{exercise}
 
 \newpage
