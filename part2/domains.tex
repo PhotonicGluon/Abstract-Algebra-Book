@@ -1,7 +1,19 @@
 \chapter{Domains and Factorization}
 Earlier, we introduced domains, before focusing our attention mainly on integral domains. We then explored concepts of factorization, but restricted the discussion to polynomial rings. We explore more types of domains here, and explore the factorization available in such domains.
 
-\section{Associates, Irreducibles, and Primes}
+\section{Factorization in Domains}
+Before we define some constructs present in integral domains, we first look at what is means for an element to be a factor/divisor of another element in that domain.
+
+\begin{definition}
+    Let $D$ be an integral domain and $a,b \in D$. Then \textbf{$a$ divides $b$}\index{divides!for integral domains} (or that $a$ is a \textbf{factor}\index{factor!for integral domains} of $b$) if there is an element $k \in D$ such that $ak = b$. This is denoted $a \vert b$.
+\end{definition}
+\begin{example}
+    One sees that 2 divides 6 in $\Z$ since $2 \times 3 = 6$. Similarly 3 divides 6 since $3 \times 2 = 6$.
+\end{example}
+\begin{example}
+    In $\Z_7$, we see that 3 divides 5 since $3 \times 4 = 12 = 5$. We also see that 5 divides 3 since $5 \times 2 = 10 = 3$.
+\end{example}
+
 \begin{definition}
     Let $D$ be an integral domain, and $a,b \in D$. Then $a$ and $b$ are said to be \textbf{associates}\index{associates} if and only if there exists a unit $u \in D$ such that $a = ub$.
 \end{definition}
@@ -28,6 +40,10 @@ From the previous two examples, we can come up with the following proposition.
 \end{proof}
 
 Thus, in a sense, it is only meaningful to talk about associates when we restrict or view to that of integral domains that are \textit{not} fields.
+
+\begin{exercise}
+    Let $D$ be an integral domain and $a,b \in D$. Prove that $a \vert b$ and $b \vert a$ if and only if $a$ and $b$ are associates.
+\end{exercise}
 
 We now look at irreducibles and primes.
 \begin{definition}
@@ -72,7 +88,7 @@ For now, we note that $N(xy) = N(x)N(y)$ for all $x, y \in \Z[\sqrt{d}]$. We wil
 
 We note one property of irreducibles.
 \begin{proposition}\label{prop-associates-of-irreducible-is-irreducible}
-    In an integral domain, associates of an irreducible is irreducible.
+    In an integral domain, associates of an irreducible are irreducible.
 \end{proposition}
 \begin{proof}
     See \myref{exercise-associates-of-irreducible-is-irreducible} (later).
