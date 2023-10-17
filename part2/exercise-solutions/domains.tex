@@ -10,7 +10,71 @@
 
     \item Suppose $r$ is an irreducible and $q$ an associate of $r$, meaning there exists a unit $u$ in the integral domain (say $D$) such that $q = ru$. Suppose on the contrary that $q$ is reducible, meaning $q = ab$ where neither $a$ nor $b$ are units in $D$. Then $ru = ab$ which means $r = (u^{-1}a)b$. As $r$ is irreducible we know that either $b$ is a unit (contradicting the assumption) or $u^{-1}a$ is a unit. Since the product of units is a unit, thus $u(u^{-1}a) = a$ is a unit, contradicting the assumption. Therefore $q = ru$ is irreducible.
     
-    \item % TODO: Add solution
+    \item \begin{partquestions}{\alph*}
+        \item Note $2 = (1+i)(1-i)$ and $5 = (2+i)(2-i)$, and one can easily verify that each of these factors do not have a norm of $\pm1$. Therefore 2 and 5 are reducible in $\Z[i]$, so they cannot be prime (contrapositive of \myref{thrm-in-integral-domain-primes-are-irreducibles}).
+        
+        \item \begin{partquestions}{\roman*}
+            \item Without loss of generality we consider only $a$. We note that
+            \begin{itemize}
+                \item if $a \equiv 0 \pmod4$ then $a^2 \equiv 0 \pmod4$;
+                \item if $a \equiv 1 \pmod4$ then $a^2 \equiv 1 \pmod4$;
+                \item if $a \equiv 2 \pmod4$ then $a^2 \equiv 4 \equiv 0 \pmod4$; and
+                \item if $a \equiv 3 \pmod4$ then $a^2 \equiv 9 \equiv 1 \pmod4$.
+            \end{itemize}
+            So the sum of two squares modulo 4 can only be 0, 1, or 2. Thus it is impossible for $a^2+b^2 \equiv 3\pmod4$.
+
+            \item Seeking a contradiction, suppose $3 = pq$ where $p,q\in\Z[i]$ are both non-units. Then
+            \[
+                9 = N(3) = N(pq) = N(p)N(q).
+            \]
+            Since $p$ and $q$ are non-units we must have $N(p) = N(q) = 3$ (since otherwise $N(p) = 1$ which means $p$ is a unit by \myref{prop-properties-of-quadratic-integer-norm}). So if $p = a+bi$ then $a^2+b^2 = 3$. But we just proved in \textbf{(b)(i)} that this is impossible. Thus 3 is irreducible.
+
+            \item Let $x = m+ni$, so $N(x) = m^2 + n^2$. Given $9 \vert N(x)$, we know $m^2 + n^2 \equiv 0 \pmod9$. We note the possibilities of squares modulo 9.
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|}
+                    \hline
+                    $k\mod9$ & $k^2$ & $k^2\mod9$ \\ \hline
+                    0 & 0 & 0 \\ \hline
+                    1 & 1 & 1 \\ \hline
+                    2 & 4 & 4 \\ \hline
+                    3 & 9 & 0 \\ \hline
+                    4 & 16 & 7 \\ \hline
+                    5 & 25 & 7 \\ \hline
+                    6 & 36 & 0 \\ \hline
+                    7 & 49 & 4 \\ \hline
+                    8 & 64 & 1 \\ \hline
+                \end{tabular}
+            \end{table}
+            One may then verify that the set of pairs of $(m,n)$ that results in $m^2 + n^2 \equiv 0 \pmod9$ is
+            \[
+                \left\{(0,0),(0,3),(0,6),(3,0),(3,3),(3,6),(6,0),(6,3),(6,6)\right\}.
+            \]
+            In each case, both $m$ and $n$ are divisible by 3. Say $m = 3p$ and $n = 3q$ for some integers $p$ and $q$. Then $x = m + ni = 3p + (3q)i = 3(p+qi)$ which therefore means $3 \vert x$.
+
+            \item Suppose $3 \vert uv$ for some $u,v\in D$. This means $uv = 3w$ for some $w \in D$. Note
+            \[
+                N(u)N(v) = N(uv) = N(3w) = 9N(w)
+            \]
+            and $9 = 3\times3$. We have 3 cases.
+            \begin{enumerate}[label=\arabic*.]
+                \item If $9 \vert N(u)$ we may use \textbf{(b)(iii)} to see that $3 \vert u$.
+                \item Otherwise, if $9 \vert N(v)$ we may again use \textbf{(b)(iii)} to see that $3 \vert v$.
+                \item Otherwise, we must have $3 \vert N(u)$ and $3 \vert N(v)$. Let's focus on $3 \vert N(u)$ only; let $u = x+yi$ for some integers $x$ and $y$. Then $3 \vert x^2+y^2$. Note for any integer $n$,
+                \begin{itemize}
+                    \item $n \equiv 0 \pmod3$ means $n^2 \equiv 0 \pmod3$;
+                    \item $n \equiv 1 \pmod3$ means $n^2 \equiv 1 \pmod3$; and
+                    \item $n \equiv 2 \pmod3$ means $n^2 \equiv 4 \equiv 1 \pmod3$.
+                \end{itemize}
+                So for $x^2+y^2$ to be divisible by 3, both $x$ and $y$ must be multiples of 3. Let $x = 3m$ and $y = 3n$ for some integers $n$; we see
+                \[
+                    N(u) = x^2+y^2 = (3m)^2 + (3n)^2 = 9(m^2+n^2)
+                \]
+                which means $9 \vert N(u)$. Finally use \textbf{(b)(iii)} to see that $3 \vert u$.
+            \end{enumerate}
+            Hence in any case, $3 \vert uv$ means $3 \vert u$ or $3 \vert v$, meaning 3 is prime.
+        \end{partquestions}
+    \end{partquestions}
 
     \item Suppose $N(x) = \pm p$ where $p$ is a prime number, and $x = ab$. Taking norms yields $N(x) = N(ab) = N(a)N(b) = \pm p$. But since $p$ is prime, one of $N(a)$ or $N(b)$ is 1 (or -1), which by \myref{prop-properties-of-quadratic-integer-norm}, statement 3, we know that $a$ or $b$ is a unit. Therefore $x$ is irreducible.
 \end{questions}
