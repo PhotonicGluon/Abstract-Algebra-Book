@@ -337,6 +337,89 @@ Of course, UFDs are very abstract in this sense. However, we shall soon see that
     Now, since $D$ is a PID, there is an element $a \in D$ such that $I = \princ{a}$. Since $a \in I$ and $I$ is, by definition, the union of all ideals in the chain, $a$ must belong to some member in the chain, say $a \in I_n$. Clearly for any member $I_i$ in the chain we have $I_i \subseteq I$, and $I = \princ{a} \subseteq I_n$. Therefore every ideal in the chain is a subset of $I_n$, which means $I_n$ is the last member of the chain. Therefore the chain is finite.
 \end{proof}
 
+We are now ready to state an important theorem, with very useful corollaries.
+
+\begin{theorem}\label{thrm-pid-is-ufd}
+    Every PID is a UFD.
+\end{theorem}
+\begin{proofsketch}
+    We need to show two parts.
+
+    The first is existence of a factorization. We show that every non-zero non-unit element in a PID has at least one irreducible factor; thereafter, using repeated factorization, show that we can express each non-irreducible factor as a product of irreducible factors. This would be enough to show that any element has a factorization into irreducible factors.
+
+    The next is to prove uniqueness, which we will do via induction. We suppose that there are two factorizations of a non-zero non-unit element. The base case of 1 irreducible factor is trivial. The induction step involves observing that a prime must divide an element in a product; doing so would allow us to conclude that at least one pair of irreducible factors that are associates with each other. This would be enough for us to `cancel out' that factor on both factorizations, and use the induction hypothesis to finish the proof.
+\end{proofsketch}
+\begin{proof}[Proof (see {\cite[pp.~313-314]{gallian_2016}})]
+    Suppose $D$ is a PID and $a_0 \in D$ be a non-zero non-unit element. We first show that there exists a product of irreducibles (which may consist of only one factor) that results in $a_0$. We might as well assume $a_0$ is reducible, since if $a_0$ is irreducible we are done ($a_0$ is a product of irreducibles, which is itself). So let $a_0 = b_1a_1$ where neither $b_1$ nor $a_1$ are units and $a_1 \neq 0$. Again, if $a_1$ is irreducible we are done with this process (where $a_0 = b_0a_1$); otherwise write $a_1 = b_2a_2$ where neither $b_2$ nor $a_2$ are units and $a_2 \neq 0$. Continuing in this fashion, we get a sequence $b_1,b_2,\dots$ of non-unit elements in $D$ and a sequence $a_0,a_1,a_2,\dots$ of non-zero elements in $D$ with $a_n = b_{n+1}a_{n+1}$ for each $n$. Hence,
+    \[
+        \princ{a_0} \subset \princ{a_1} \subset \princ{a_2} \subset \cdots
+    \]
+    is a strictly increasing chain of ideals by \myref{exercise-princ-ab-subset-of-b-iff-a-not-unit} (later). Using \myref{lemma-pid-satisfies-accp} we know that the above chain is finite, say
+    \[
+        \princ{a_0} \subset \princ{a_1} \subset \princ{a_2} \subset \princ{a_r}.
+    \]
+    In particular, by our construction, we know that $a_r$ is an irreducible factor of $a_0$, which means every non-zero non-unit element of $D$ has at least one irreducible factor.
+
+    Now we write $a_0 = p_1c_1$ where $p_1$ is irreducible and $c_1$ is a non-unit. Like before, if $c_1$ is not irreducible, write $c_1 = p_2c_2$, where $p_2$ is irreducible and $c_2$ is not a unit. Continuing like this we obtain another strictly increasing chain
+    \[
+        \princ{a_0} \subset \princ{c_1} \subset \princ{c_2} \subset \cdots
+    \]
+    which terminates (\myref{lemma-pid-satisfies-accp}), say at $\princ{c_s}$. This means $c_s$ is irreducible by our construction, and so we have
+    \[
+        a_0 = p_1p_2\cdots p_sc_s,
+    \]
+    where we note that each $p_i$ is also irreducible. Therefore every non-zero non-unit of a PID is a product of irreducibles.
+
+    We now show the uniqueness of such a factorization, up to associates and the reordering of terms. We first suppose that some non-zero non-unit element of $D$, say $a$, can be written
+    \[
+        a = p_1p_2p_3\cdots p_n = q_1q_2 \cdots q_m
+    \]
+    where each $p_i$ and $q_j$ are irreducible. We induct on $n$.
+
+    When $n = 1$, we have $a = p_1$, which means $a$ is irreducible. So $a = q_1$ (since otherwise $a$ would be a product of more than one irreducible factor, meaning $a$ is irreducible), which therefore results in $m = n = 1$ and $p_1 = q_1$. Therefore the base case is proven.
+
+    Assume that we obtain uniqueness (up to associates and reordering) for any $k$ irreducible factors in the expression involving $p$, where $k$ is a positive integer. That is, if $a = q_1q_2 \cdots q_m$ then $m = k$ and $p_1p_2\cdots p_k = q_1q_2 \cdots q_m$. We show that uniqueness is also attained for $k + 1$ irreducible factors in the expression in $p$, i.e. if $a = p_1p_2\cdots p_kp_{k+1}$ and $a = q_1q_2 \cdots q_m$, then $m = k+1$ and $p_1p_2\cdots p_kp_{k+1} = q_1q_2 \cdots q_m$.
+
+    Since $D$ is a PID, every irreducible in $D$ is prime (\myref{thrm-in-PID-prime-iff-irreducible}). In particular, every $p_i$ in the product $p_1p_2\cdots p_kp_{k+1}$ is prime. Since $p_1p_2\cdots p_kp_{k+1} = q_1\cdots q_m$, therefore $p_1$ divides $q_1\cdots q_m$, which therefore means that $p_1$ divides some $q_j$ in the product (see \myref{problem-prime-element-divides-some-element-in-product} later). Say $p_1 \vert q_1$ (which is permitted since $D$ is commutative). Then since $q_1$ is irreducible, we must have $q_1 = up_1$ where $u$ is some unit of $D$. Now since
+    \begin{align*}
+        (up_1)p_2p_3\cdots p_kp_{k+1} &= u\left(p_1p_2p_3\cdots p_kp_{k+1}\right)\\
+        &= u\left(q_1q_2q_3\cdots q_m\right)\\
+        &= q_1(uq_2)q_3\cdots q_m
+    \end{align*}
+    and because $q_1 = up_1$, we have
+    \[
+        p_2p_3\cdots p_kp_{k+1} = (uq_2)q_3\cdots q_m
+    \]
+    by cancellation law (\myref{prop-domain-cancellation-law}). Since associates of an irreducible are irreducible (\myref{prop-associates-of-irreducible-is-irreducible}), we might as well write $uq_2$ as $Q$, which is an irreducible, meaning
+    \[
+        p_2p_3\cdots p_kp_{k+1} = Qq_3\cdots q_m.
+    \]
+    By induction hypothesis, we know that these two factorizations are unique up to associates and rearrangements. Therefore, the same is true for that of $a = p_1p_2\cdots p_kp_{k+1}$.
+
+    Hence, by induction, the factorization is unique, completing the proof.
+\end{proof}
+
+\begin{exercise}\label{exercise-princ-ab-subset-of-b-iff-a-not-unit}
+    Let $D$ be an integral domain, $a,b\in D$, and $b \neq 0$. Prove that $\princ{ab} \subset \princ{b}$ if and only if $a$ is not a unit.\newline
+    (\textit{Hint: consider contrapositives.})
+\end{exercise}
+
+We observe one immediate corollary, which is incredibly useful.
+
+\begin{corollary}
+    Let $F$ be a field. Then $F[x]$ is a UFD.
+\end{corollary}
+\begin{proof}
+    We know that $F[x]$ is a PID (\myref{thrm-polynomial-ring-over-field-is-a-PID}). Therefore $F[x]$ is a UFD by \myref{thrm-pid-is-ufd}.
+\end{proof}
+
+\begin{example}
+    We know factorization of polynomials in the rationals is unique, since $\Q$ is a field which therefore means $\Q[x]$ is a UFD.
+\end{example}
+\begin{example}
+    The same is true for factorization in $\R[x]$ and $\C[x]$ as both of them are UFDs.
+\end{example}
+% TODO: Continue
 % TODO: Add facts about Z[x] being a UFD here
 
 \section{Euclidean Domains (EDs)}
@@ -349,4 +432,9 @@ Of course, UFDs are very abstract in this sense. However, we shall soon see that
 \newpage
 
 \section{Problems}
+\begin{problem}\label{problem-prime-element-divides-some-element-in-product}
+    Let $D$ be an integral domain and $p$ a prime in $D$. Suppose $a_1, a_2, a_3, \dots, a_n$ are elements in $D$ such that $p \vert a_1a_2a_3\dots a_n$, where $n \geq 2$. Prove that $p \vert a_i$ for some $i \in \{1, 2, \dots, n\}$.
+\end{problem}
 % TODO: Add
+
+% TODO: Add Sicherman Dice
