@@ -216,6 +216,7 @@ As discussed in the previous section, there is a function, called the norm, that
 
         \item See \myref{exercise-quadratic-integer-irreducible-if-norm-is-prime} (later).
     \end{enumerate}
+    This proves all properties of the norm.
 \end{proof}
 
 We are now ready to define the ring of quadratic integers.
@@ -232,12 +233,51 @@ We are now ready to define the ring of quadratic integers.
     For a square-free integer $d \neq 1$, $\Z[\sqrt{d}]$ is a subring of $\Q[\sqrt{d}]$. Furthermore $\Z[\sqrt{d}]$ is an integral domain.
 \end{proposition}
 \begin{proof}
-    % TODO: Add
+    We first check that $(\Z[\sqrt{d}], +) \leq (\Q[\sqrt{d}], +)$.
+    \begin{itemize}
+        \item Clearly the identity of $\Q[\sqrt{d}]$, which is 0, is also in $\Z[\sqrt{d}]$.
+        \item For any $a+bi, x+y\sqrt{d} \in \Z[\sqrt{d}]$ we note
+        \[
+            a + b\sqrt{d} + (-(x+y\sqrt{d})) = (a-x) + (b-y)\sqrt{d} \in \Z[\sqrt{d}].
+        \]
+    \end{itemize}
+    Thus the subgroup test (\myref{thrm-subgroup-test}) tells us that $(\Z[\sqrt{d}], +) \leq (\Q[\sqrt{d}], +)$.
+
+    Now one sees that for any $a+b\sqrt{d}, x+y\sqrt{d} \in \Z[\sqrt{d}]$ we have
+    \[
+        (a+b\sqrt{d})(x+y\sqrt{d}) = (ax+(by)d) + (ay+bx)\sqrt{d}
+    \]
+    which is also in $\Z[\sqrt{d}]$. Thus $\Z[\sqrt{d}]$ is closed under multiplication. Hence $\Z[\sqrt{d}]$ is a subring of $\Q[\sqrt{d}]$. Furthermore, since $\Q[\sqrt{d}]$ is a field, thus the multiplication is commutative, which means $\Z[\sqrt{d}]$ is a commutative subring.
+
+    Now we show that $\Z[\sqrt{d}]$ is an integral domain. Suppose $uv = 0$ in $\Z[\sqrt{d}]$. Then
+    \[
+        N(u)N(v) = N(uv) = N(0) = 0.
+    \]
+    Since $\Z$ is an integral domain, thus this means that $N(u) = 0$ or $N(v) = 0$, which further means that $u = 0$ or $v = 0$ by properties of the norm (\myref{prop-properties-of-quadratic-integer-norm}). Therefore $\Z[\sqrt{d}]$ is an integral domain.
 \end{proof}
 
 \begin{exercise}\label{exercise-quadratic-integer-irreducible-if-norm-is-prime}
     Let $d$ be a square-free integer that is not 1. Prove that $x \in \Z[\sqrt{d}]$ is irreducible if $N(x) = \pm p$, where $p$ is a prime number.
 \end{exercise}
+
+We look at more examples of irreducible elements in $\Z[\sqrt{d}]$.
+\begin{example}
+    We claim that 7 is irreducible in $\Z[\sqrt{5}]$. Suppose $7 = xy$ where neither $x$ nor $y$ is a unit. Then note
+    \[
+        N(x)N(y) = N(xy) = N(7) = 49.
+    \]
+    Since neither $x$ nor $y$ is a unit, we cannot have $N(x) = \pm1$, and also cannot have $N(y) = \pm1$. This leaves $N(x) = N(y) = \pm7$. 
+    
+    Now suppose $x = a + b\sqrt{5}$ where $a, b \in \Z$. We are to find a possible solution to $N(a+b\sqrt{5}) = a^2 - 5b^2 = \pm7$. Reducing both sides of the equation modulo 5 we see $a^2 \equiv \pm7 \pmod5$, so $a^2 \equiv 2$ or $a^2 \equiv 3 \pmod5$. Note that, in modulo 5,
+    \begin{itemize}
+        \item if $a \equiv 0$ then $a^2 \equiv 0$;
+        \item if $a \equiv 1$ then $a^2 \equiv 1$;
+        \item if $a \equiv 2$ then $a^2 \equiv 4$;
+        \item if $a \equiv 3$ then $a^2 \equiv 9 \equiv 4$; and
+        \item if $a \equiv 4$ then $a^2 \equiv 16 \equiv 1$.
+    \end{itemize}
+    Therefore it is impossible to find a value for $a$ to achieve $a^2 - 5b^2 = \pm7$. Hence 7 is irreducible.
+\end{example}
 
 \begin{exercise}
     Recall that the Gaussian integers is the set $\Z[i] = \Z[\sqrt{-1}]$.
@@ -251,7 +291,6 @@ We are now ready to define the ring of quadratic integers.
             \item Prove that 3 is a prime in the Gaussian integers, which is called a \textbf{Gaussian prime}\index{Gaussian prime}.
         \end{partquestions}
     \end{partquestions}
-    % TODO: Add solution
 \end{exercise}
 
 %TODO: Continue
