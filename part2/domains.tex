@@ -339,15 +339,15 @@ Of course, UFDs are very abstract in this sense. However, we shall soon see that
 
 We are now ready to state an important theorem, with very useful corollaries.
 
-\begin{theorem}\label{thrm-pid-is-ufd}
+\begin{theorem}\label{thrm-PID-is-UFD}
     Every PID is a UFD.
 \end{theorem}
 \begin{proofsketch}
-    We need to show two parts.
+    We need to show two parts. First is to show existence; the second uniqueness.
 
-    The first is existence of a factorization. We show that every non-zero non-unit element in a PID has at least one irreducible factor; thereafter, using repeated factorization, show that we can express each non-irreducible factor as a product of irreducible factors. This would be enough to show that any element has a factorization into irreducible factors.
+    To show the existence, we first show that every non-zero non-unit element in a PID has at least one irreducible factor; thereafter, using repeated factorization, show that we can express each non-irreducible factor as a product of irreducible factors. This would be enough to show that any element has a factorization into irreducible factors.
 
-    The next is to prove uniqueness, which we will do via induction. We suppose that there are two factorizations of a non-zero non-unit element. The base case of 1 irreducible factor is trivial. The induction step involves observing that a prime must divide an element in a product; doing so would allow us to conclude that at least one pair of irreducible factors that are associates with each other. This would be enough for us to `cancel out' that factor on both factorizations, and use the induction hypothesis to finish the proof.
+    We then show uniqueness, which we will do via induction. We suppose that there are two factorizations of a non-zero non-unit element. The base case of 1 irreducible factor is trivial. The induction step involves observing that a prime must divide an element in a product; doing so would allow us to conclude that at least one pair of irreducible factors that are associates with each other. This would be enough for us to `cancel out' that factor on both factorizations, and use the induction hypothesis to finish the proof.
 \end{proofsketch}
 \begin{proof}[Proof (see {\cite[pp.~313-314]{gallian_2016}})]
     Suppose $D$ is a PID and $a_0 \in D$ be a non-zero non-unit element. We first show that there exists a product of irreducibles (which may consist of only one factor) that results in $a_0$. We might as well assume $a_0$ is reducible, since if $a_0$ is irreducible we are done ($a_0$ is a product of irreducibles, which is itself). So let $a_0 = b_1a_1$ where neither $b_1$ nor $a_1$ are units and $a_1 \neq 0$. Again, if $a_1$ is irreducible we are done with this process (where $a_0 = b_0a_1$); otherwise write $a_1 = b_2a_2$ where neither $b_2$ nor $a_2$ are units and $a_2 \neq 0$. Continuing in this fashion, we get a sequence $b_1,b_2,\dots$ of non-unit elements in $D$ and a sequence $a_0,a_1,a_2,\dots$ of non-zero elements in $D$ with $a_n = b_{n+1}a_{n+1}$ for each $n$. Hence,
@@ -410,7 +410,7 @@ We observe one immediate corollary, which is incredibly useful.
     Let $F$ be a field. Then $F[x]$ is a UFD.
 \end{corollary}
 \begin{proof}
-    We know that $F[x]$ is a PID (\myref{thrm-polynomial-ring-over-field-is-a-PID}). Therefore $F[x]$ is a UFD by \myref{thrm-pid-is-ufd}.
+    We know that $F[x]$ is a PID (\myref{thrm-polynomial-ring-over-field-is-a-PID}). Therefore $F[x]$ is a UFD by \myref{thrm-PID-is-UFD}.
 \end{proof}
 
 \begin{example}
@@ -419,8 +419,76 @@ We observe one immediate corollary, which is incredibly useful.
 \begin{example}
     The same is true for factorization in $\R[x]$ and $\C[x]$ as both of them are UFDs.
 \end{example}
-% TODO: Continue
-% TODO: Add facts about Z[x] being a UFD here
+
+The trouble comes with the ring of polynomials with integer coefficients, $\Z[x]$. We showed earlier that $\Z[x]$ is \textit{not} a PID (\myref{problem-Z[x]-is-not-a-PID}), so we cannot directly use \myref{thrm-PID-is-UFD} to conclude that $\Z[x]$ is a UFD. Does this mean that factorization over polynomials with integer coefficients is not unique? No! In fact, $\Z[x]$ is a counterexample for the converse of \myref{thrm-PID-is-UFD}, showing that a UFD need not be a PID.
+
+\begin{theorem}
+    $\Z[x]$ is a UFD.
+\end{theorem}
+\begin{proofsketch}
+    Just like in \myref{thrm-PID-is-UFD}, we need to show two parts: existence and uniqueness.
+
+    For existence, we first show that the problem for any general non-zero non-unit polynomial can be reduced to showing the existence of a factorization for non-constant primitive polynomials. We then use strong induction to prove that a factorization into irreducible polynomials is possible for any degree.
+
+    For uniqueness it is more challenging, since we have to worry about irreducibility via factoring out non-unit constants. We first show that if two factorizations are achieved, and if the content of both factorizations is `taken out', then they are equal to each other, up to a possible negative sign. Therefore, they can be cancelled, leaving us with the problem of showing uniqueness of factorization of a product of irreducible primitive polynomials.
+
+    The trick is to view each one of these polynomials as an element of $\Q[x]$, which is a field. We can then invoke theorems in such a field (specifically, that irreducibles are primes) to show that the `leading' factors of both factorizations are associates. Cancellation of that factor on both sides leaves a `simpler' problem; the cancellation argument also shows that there must be an equal number of factors on each side, and the factors are associates of each other, thereby showing that such a factorization is unique.
+\end{proofsketch}
+\begin{proof}[Proof (see {\cite[pp.~297-298]{gallian_2016}})]
+    We first prove the existence of a factorization into irreducible polynomials. Suppose $f(x)$ is a non-zero non-unit polynomial in $\Z[x]$. If $f(x)$ is a constant polynomial we are done since the result follows from the Fundamental Theorem of Arithmetic (\myref{thrm-fundamental-theorem-of-arithmetic}). So let $\deg f(x) > 0$, and let $C_f$ denote the content of $f(x)$. By the Fundamental Theorem of Arithmetic we may factor $C_f$ as a product of primes (which are irreducible, \myref{thrm-in-integral-domain-primes-are-irreducibles}), say $C_f = p_1p_2\cdots p_s$. Then write
+    \[
+        f(x) = p_1p_2\cdots p_s F(x)
+    \]
+    where one sees that $F(x) \in \Z[x]$, $\deg F(x) = \deg f(x)$, and $F(x)$ is primitive. So, to prove the existence of a factorization of non-constant polynomials in $\Z[x]$ into irreducible polynomials, it suffices to show that non-constant primitive polynomials factor into irreducible polynomials. To do this, we proceed by strong induction on the degree of $F(x)$.
+
+    If $\deg F(x) = 1$, then $F(x)$ is irreducible since it is a degree 1 primitive polynomial (\myref{problem-primitive-degree-1-polynomial-in-Z[x]-is-irreducible}). Therefore, trivially, $F(x)$ can be factored into itself, so this case is proven.
+
+    Now suppose that for all polynomials lower than a certain degree, say $k$, that we have a factorization into irreducible polynomials. We show that a polynomial of degree $k+1$ can also be factored into irreducible polynomials.
+
+    If $F(x)$, a primitive degree $k+1$ polynomial, is irreducible, we are done. Otherwise, it is reducible, meaning we may write $F(x) = g(x)h(x)$ where $g(x)$ and $h(x)$ are non-unit polynomials. We note that if $g(x)$ nor $h(x)$ are non-primitive polynomials, then the content of $F(x)$ is not 1 i.e., $F(x)$ is not primitive, a contradiction. So $g(x)$ and $h(x)$ are both primitive polynomials of degree lower than $k+1$, i.e. both are polynomials of degree of at most $k$. We use the induction hypothesis to factor $g(x)$ and $h(x)$ into irreducible polynomials, thereby showing $F(x)$ can be factored into irreducible polynomials. Therefore, a degree $k+1$ polynomial can also be factored into irreducible polynomials.
+
+    Hence, by induction, we have shown the existence of a factorization into irreducible polynomials for any (primitive) polynomial.
+
+    We now show the uniqueness of such a factorization, and we return to using $f(x)$, which may not be primitive. Suppose
+    \[
+        f(x) = p_1p_2\cdots p_s g_1(x)g_2(x) \cdots g_m(x)
+    \]
+    and
+    \[
+        f(x) = q_1q_2\cdots q_t h_1(x)h_2(x) \cdots h_n(x)
+    \]
+    are two factorizations of $f(x)$, where $p_1, p_2, \dots, p_s, q_1, q_2, \dots, q_t$ are irreducible polynomials of degree 0 (i.e., prime numbers) and $g_1(x), g_2(x), \dots, g_m(x), h_1(x), h_2(x), \dots, h_n(x)$ are non-constant primitive irreducible polynomials. Let
+    \begin{align*}
+        P &= p_1p_2\cdots p_s,\\
+        Q &= q_1q_2\cdots q_t.
+    \end{align*}
+    Since each $g_i(x)$ and each $h_j(x)$ are primitive, it follows from Gauss's Lemma (\myref{lemma-gauss}) that their product, $g_1(x)g_2(x) \cdots g_m(x)$ and $h_1(x)h_2(x) \cdots h_n(x)$ respectively, are both primitive. So $P$ and $Q$ must be equal to plus or minus the content of $f(x)$; thus $P$ and $Q$ are equal in absolute value. It follows from the Fundamental Theorem of Arithmetic that $s = t$ and, after renumbering, $p_i = \pm q_i$ for all $i \in \{1, 2, \dots, s\}$. So we may cancel these constant terms in the factorization of $f(x)$, leaving us with
+    \[
+        g_1(x)g_2(x) \cdots g_m(x) = \pm h_1(x)h_2(x) \cdots h_n(x).
+    \]
+    
+    Now we view each $g_i(x)$ and $q_j(x)$ as elements of $\Q[x]$. We note $\Q[x]$ is a PID since $\Q$ is a field (\myref{thrm-polynomial-ring-over-field-is-a-PID}), so each $g_i(x)$ and $q_j(x)$, which are irreducibles, are prime in $\Q[x]$ (\myref{thrm-in-PID-prime-iff-irreducible}). Since $p_1(x) \vert h_1(x)h_2(x) \cdots h_n(x)$, it follows from \myref{problem-prime-element-divides-some-element-in-product} (later) that $p_1(x) \vert h_j(x)$ for some $j \in \{1, 2, \dots, n\}$. We might as well assume $p_1(x) \vert h_1(x)$, since $Q[x]$ is an integral domain which means that we can commute the factors on the right hand side. As $h_1(x)$ is irreducible, for $p_1(x)$ to divide $h_1(x)$ we must have $h_1(x) = up(x)$, where $u$ is a unit in $\Q$. But both $g_1(x)$ and $h_1(x)$ are primitive, so $u = \pm 1$, which means $g_1(x) = \pm h_1(x)$. Therefore, by cancellation, we see
+    \[
+        g_2(x) \cdots g_m(x) = \pm h_2(x) \cdots h_n(x).
+    \]
+    We may now repeat the argument with $p_2(x)$ in place of $p_1(x)$, and so on.
+
+    We note that
+    \begin{itemize}
+        \item if $m < n$, then after $m$ steps we would get $\pm 1$ on the left hand side and a non-constant polynomial on the right hand side, which is impossible; and
+        \item if $m > n$, then after $n$ steps we would get a  non-constant polynomial on the left hand side and $\pm1$ on the right hand side, which is also impossible.
+    \end{itemize}
+    Therefore, $m = n$, and $p_i(x) = \pm q_i(x)$ after suitable rearrangement. Since the only units in $\Z$ are 1 and -1, we see that any $p_i(x)$ and $q_i(x)$ are associates, which means that the factorization is unique.
+
+    Hence, we have shown that $\Z[x]$ is a UFD.
+\end{proof}
+
+Clearly, proving that an integral domain is a UFD is a tedious ordeal. Hence, we would usually show that an integral domain is a `simpler' type of domain, such as a PID, to indirectly show that it is a UFD.
+
+\begin{exercise}
+    Prove the Fundamental Theorem of Arithmetic (\myref{thrm-fundamental-theorem-of-arithmetic}).\newline
+    (\textit{Hint: What type of domain is $\Z$?})
+\end{exercise}
 
 \section{Euclidean Domains (EDs)}
 % TODO: Add
