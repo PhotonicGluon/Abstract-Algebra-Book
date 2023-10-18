@@ -68,7 +68,7 @@ Let $d$ be a square-free integer not equal to 1. We note that the set
 \]
 forms an integral domain. We will leave proving that this is indeed an integral domain to the next section. We also define the norm, the map $N: \Z[\sqrt{d}] \to \Z$ where
 \[
-    N(a+b\sqrt{d}) = a^2 - db^2.
+    N(a+b\sqrt{d}) = |a^2 - db^2|.
 \]
 For now, we note that $N(xy) = N(x)N(y)$ for all $x, y \in \Z[\sqrt{d}]$. We will prove this and other properties of the norm later.
 
@@ -177,17 +177,20 @@ As discussed in the previous section, there is a function, called the norm, that
 \begin{definition}
     The \textbf{norm}\index{quadratic integer!norm} of an element $a+b\sqrt{d} \in \Z[\sqrt{d}]$, where $d$ is a square-free integer not equal to 1, is given by the map $N: \Z[\sqrt{d}] \to \Z$ where
     \[
-        N(a+b\sqrt{d}) = a^2-db^2.
+        N(a+b\sqrt{d}) = |a^2-db^2|.
     \]
 \end{definition}
+\begin{remark}
+    Most texts prefer to define the norm \textit{without} the absolute value. However, as we will see later, defining it with the absolute value makes some properties easier to reason.
+\end{remark}
 
 \begin{proposition}\label{prop-properties-of-quadratic-integer-norm}
     Let $x,y \in \Z[\sqrt{d}]$, where $d$ is a square-free integer not equal to 1. Then
     \begin{enumerate}
         \item $x = 0$ if and only if $N(x) = 0$;
         \item $N(xy) = N(x)N(y)$ for all $x$ and $y$;
-        \item $x$ is a unit if and only if $N(x) = \pm1$; and
-        \item if $N(x) = \pm p$ where $p$ is a prime number, then $x$ is irreducible.
+        \item $x$ is a unit if and only if $N(x) = 1$; and
+        \item if $N(x) = p$ where $p$ is a prime number, then $x$ is irreducible.
     \end{enumerate}
 \end{proposition}
 \begin{proof}
@@ -199,20 +202,20 @@ As discussed in the previous section, there is a function, called the norm, that
         \begin{align*}
             N(xy) &= N((p+q\sqrt{d})(r+s\sqrt{d}))\\
             &= N((pr + qsd) + (ps + qr)\sqrt{d})\\
-            &= (pr+qsd)^2 - d(ps+qr)^2\\
-            &= ((pr)^2 + 2(pqrsd) + (qsd)^2) - d((ps)^2 + 2(pqrs) + (qr)^2)\\
-            &= p^2r^2 + 2pqrsd + q^2s^2d^2 - p^2s^2d - 2pqrsd - q^2r^2d\\
-            &= p^2r^2 + q^2s^2d^2 - p^2s^2d - q^2r^2d\\
-            &= p^2r^2 - p^2s^2d - q^2r^2d + q^2s^2d^2\\
-            &= (p^2 - dq^2)(r^2 - ds^2)\\
+            &= |(pr+qsd)^2 - d(ps+qr)^2|\\
+            &= |((pr)^2 + 2(pqrsd) + (qsd)^2) - d((ps)^2 + 2(pqrs) + (qr)^2)|\\
+            &= |p^2r^2 + 2pqrsd + q^2s^2d^2 - p^2s^2d - 2pqrsd - q^2r^2d|\\
+            &= |p^2r^2 + q^2s^2d^2 - p^2s^2d - q^2r^2d|\\
+            &= |p^2r^2 - p^2s^2d - q^2r^2d + q^2s^2d^2|\\
+            &= |(p^2 - dq^2)(r^2 - ds^2)|\\
+            &= |p^2 - dq^2||r^2 - ds^2|\\
             &= N(p+q\sqrt{d})N(r+s\sqrt{d})\\
-            &= N(x)N(y)
+            &= N(x)N(y).
         \end{align*}
-        which proves this statement.
 
-        \item For the forward direction, if $x$ is a unit then there exists a $x^{-1}$ such that $xx^{-1} = 1$. Note $N(xx^{-1}) = N(x)N(x^{-1}) = N(1) = 1$. Therefore, since we are working in the integers, either both $N(x)$ and $N(x^{-1})$ are 1 or both $N(x)$ and $N(x^{-1})$ are -1.
+        \item For the forward direction, if $x$ is a unit then there exists a $x^{-1}$ such that $xx^{-1} = 1$. Note $N(xx^{-1}) = N(x)N(x^{-1}) = N(1) = 1$. Therefore, since we are working in the integers, we see $N(x)$ and $N(x^{-1})$ are both 1.
         
-        For the reverse direction, consider $x = p+q\sqrt{d}$ and $\bar{x} = p-q\sqrt{d}$. Note $x\bar{x} = p^2-dq^2 = N(x)$. Therefore if $N(x) = 1$ we see $x\bar{x} = 1$, meaning that $x$ is a unit. Otherwise if $N(x) = -1$ one sees $x(-\bar{x}) = 1$, so again $x$ is a unit.
+        For the reverse direction, consider $x = p+q\sqrt{d}$ and $\bar{x} = p-q\sqrt{d}$. Note $x\bar{x} = p^2-dq^2 = N(x)$. Therefore if $N(x) = 1$ we see $x\bar{x} = 1$, meaning that $x$ is a unit.
 
         \item See \myref{exercise-quadratic-integer-irreducible-if-norm-is-prime} (later).
     \end{enumerate}
@@ -257,7 +260,7 @@ We are now ready to define the ring of quadratic integers.
 \end{proof}
 
 \begin{exercise}\label{exercise-quadratic-integer-irreducible-if-norm-is-prime}
-    Let $d$ be a square-free integer that is not 1. Prove that $x \in \Z[\sqrt{d}]$ is irreducible if $N(x) = \pm p$, where $p$ is a prime number.
+    Let $d$ be a square-free integer that is not 1. Prove that $x \in \Z[\sqrt{d}]$ is irreducible if $N(x) = p$, where $p$ is a prime number.
 \end{exercise}
 
 We look at more examples of irreducible elements in $\Z[\sqrt{d}]$.
@@ -266,9 +269,9 @@ We look at more examples of irreducible elements in $\Z[\sqrt{d}]$.
     \[
         N(x)N(y) = N(xy) = N(7) = 49.
     \]
-    Since neither $x$ nor $y$ is a unit, we cannot have $N(x) = \pm1$, and also cannot have $N(y) = \pm1$. This leaves $N(x) = N(y) = \pm7$. 
+    Since neither $x$ nor $y$ is a unit, we cannot have $N(x) = 1$, and also cannot have $N(y) = 1$. This leaves $N(x) = N(y) = 7$. 
     
-    Now suppose $x = a + b\sqrt{5}$ where $a, b \in \Z$. We are to find a possible solution to $N(a+b\sqrt{5}) = a^2 - 5b^2 = \pm7$. Reducing both sides of the equation modulo 5 we see $a^2 \equiv \pm7 \pmod5$, so $a^2 \equiv 2$ or $a^2 \equiv 3 \pmod5$. Note that, in modulo 5,
+    Now suppose $x = a + b\sqrt{5}$ where $a, b \in \Z$. We are to find a possible solution to $N(a+b\sqrt{5}) = |a^2 - 5b^2| = 7$, i.e. $a^2 - 5b^2 = \pm 7$. Reducing both sides of the equation modulo 5 we see $a^2 \equiv \pm7 \pmod5$, so $a^2 \equiv 2$ or $a^2 \equiv 3 \pmod5$. Note that, in modulo 5,
     \begin{itemize}
         \item if $a \equiv 0$ then $a^2 \equiv 0$;
         \item if $a \equiv 1$ then $a^2 \equiv 1$;
