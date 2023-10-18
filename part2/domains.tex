@@ -307,7 +307,10 @@ We formalize these conditions in the definition of a unique factorization domain
     where $m$ is a positive integer, then $m = n$ and there exists a bijection $\sigma: \{1,2,\dots,n\} \to \{1,2,\dots,m\}$ such that $p_i$ and $q_{\sigma(i)}$ are associates for all $i \in \{1,2,\dots,n\}$.
 \end{definition}
 
-Of course, UFDs are very abstract in this sense. However, we shall soon see that most of the integral domains that we are familiar with are, in fact, UFDs. Before that though, we need to introduce the ascending chain condition.
+Of course, UFDs are very abstract in this sense. However, we shall soon see that most of the integral domains that we are familiar with are, in fact, UFDs.
+
+\subsection{UFDs and PIDs}
+Before we can state the theorem though, we need to introduce the ascending chain condition.
 
 \begin{definition}
     Let $R$ be a ring. The \textbf{ascending chain condition on principal ideals (ACCP)}\index{ascending chain condition on principal ideals}\index{ACCP} is satisfied if every strictly increasing sequence of principal ideals 
@@ -413,7 +416,41 @@ We observe one immediate corollary, which is incredibly useful.
     The same is true for factorization in $\R[x]$ and $\C[x]$ as both of them are UFDs.
 \end{example}
 
+\subsection{UFDs and Their Polynomial Rings}
 The trouble comes with the ring of polynomials with integer coefficients, $\Z[x]$. We showed earlier that $\Z[x]$ is \textit{not} a PID (\myref{problem-Z[x]-is-not-a-PID}), so we cannot directly use \myref{thrm-PID-is-UFD} to conclude that $\Z[x]$ is a UFD. Does this mean that factorization over polynomials with integer coefficients is not unique? No! In fact, $\Z[x]$ is a counterexample for the converse of \myref{thrm-PID-is-UFD}, showing that a UFD need not be a PID.
+
+However, just proving that $\Z[x]$ is a UFD is too little for the amount of work that we are about to do. So let's try and prove a more general result. Before that though, we need to generalize Gauss's lemma (\myref{lemma-gauss-for-integer-coefficients}) for UFDs.
+
+\begin{lemma}[Gauss's Lemma]\label{lemma-gauss}\index{Gauss's Lemma}
+    Let $D$ be a UFD and $f(x), g(x) \in D[x]$ be primitive polynomials. Then $f(x)g(x)$ is primitive.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[p.~232]{judson_beezer_2022}})]
+    Let
+    \begin{align*}
+        f(x) &= \sum_{i=0}^m a_ix^i \text{ and}\\
+        g(x) &= \sum_{i=0}^n b_ix^i.
+    \end{align*}
+    Seeking a contradiction, suppose $p$ is a prime that divides the coefficients of $f(x)g(x)$. Since $f(x)$ and $g(x)$ are primitive, thus $p$ does not divide all coefficients of $f(x)$ and $g(x)$. Let $r$ be the smallest integer such that $p \nmid a_r$ and $s$ the smallest integer such that $p \nmid b_s$. Then the coefficient of $x^{r+s}$ in $f(x)g(x)$ is
+    \[
+        c_{r+s} = a_0b_{r+s} + a_1b_{r+s-1} + \cdots + a_{r+s-1}b_1 + a_{r+s}b_0.
+    \]
+    Since $p$ divides all of $a_1, a_2, \dots, a_{r-1}$ and $p$ also divides all of $b_1, b_2, \dots, b_{s-1}$, we see that $p$ divides every term except for $a_rb_s$. However, since $p$ divides all coefficients of $f(x)g(x)$, we know $p$ divides $c_{r+s}$, which means that either $p \vert a_r$ or $p \vert b_s$, a contradiction.
+    
+    Therefore, no prime $p$ divides the coefficients of $f(x)g(x)$, which means the GCD of $f(x)g(x)$ is 1. Hence $f(x)g(x)$ is primitive.
+\end{proof}
+
+We note one immediate consequence of Gauss's lemma.
+
+\begin{corollary}\label{corollary-content-of-product-is-product-of-content-for-polynomials}
+    Let $D$ be a UFD and $f(x), g(x) \in D[x]$. Then the content of $f(x)g(x)$ is the product of the contents of $f(x)$ and $g(x)$.
+\end{corollary}
+\begin{proof}
+    Suppose $f(x), g(x) \in D[x]$. Write $f(x) = C_f F(x)$ and $g(x) = C_g G(x)$ where $C_f$ and $C_g$ are the contents pf $f(x)$ and $g(x)$ respectively and $F(x), G(x) \in D[x]$. Thus one sees that $F(x)$ and $G(x)$ are primitive. Therefore
+    \[
+        f(x)g(x) = (C_f F(x))(C_g G(x)) = C_fC_g \times F(x)G(x).
+    \]
+    We note $F(x)G(x)$ is primitive by Gauss's lemma (\myref{lemma-gauss}), so we see that the content of $f(x)g(x)$ is $C_fC_g$, which is the product of the contents of $f(x)$ and $g(x)$.
+\end{proof}
 
 \begin{theorem}
     $\Z[x]$ is a UFD.
