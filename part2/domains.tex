@@ -339,6 +339,8 @@ Clearly, we have a few things to prove in the above definition of the field of f
     Therefore $\sim$ is an equivalence relation.
 \end{proof}
 
+With the equivalence relation verified, we can now check that the operations defined in $\Frac{D}$ are, indeed, valid operations that we can perform. Remember that we define the equivalence class of $[(a, b)]$ as $\frac ab$.
+
 \begin{proposition}
     Addition and multiplication as defined in \myref{definition-field-of-fractions} are well-defined operations.
 \end{proposition}
@@ -358,18 +360,99 @@ Clearly, we have a few things to prove in the above definition of the field of f
     \end{align*}
     so we have shown that $\frac{a_1}{b_1} + \frac{c_1}{d_1} = \frac{a_2}{b_2} + \frac{c_2}{d_2}$, meaning addition is well-defined.
 
-    For multiplication, \myref{exercise-multiplication-over-field-of-fractions-is-well-defined} (later) proves that multiplication is well-defined.
+    For multiplication, \myref{exercise-multiplication-over-field-of-fractions-is-well-defined-and-commutative} (later) proves that multiplication in $\Frac{D}$ is well-defined.
 \end{proof}
+
+With the operations verified to be valid, we can now finally check that $\Frac{D}$ is indeed a field as claimed.
 
 \begin{proposition}
-    Let $D$ be an integral domain. $\Frac{D}$ as given in \myref{definition-field-of-fractions} is indeed a field.
+    Let $D$ be an integral domain. Then $\Frac{D}$ as given in \myref{definition-field-of-fractions} is indeed a field.
 \end{proposition}
 \begin{proof}
-    % TODO: Add
+    We first prove that $\Frac{D}$ is a ring, before proving the additional properties required for $\Frac{D}$ to be a field.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: We show that $(\Frac{D}, +)$ is a abelian group.
+        \begin{itemize}
+            \item \textbf{Closure}: Let $\frac ab, \frac cd \in \Frac{D}$. One sees clearly that both $ad + bc$ and $bd$ are in $D$. Also, since $b \neq 0$ and $d \neq 0$, therefore $bd \neq 0$ as $D$ is an integral domain. Therefore, $\frac ab + \frac cd = \frac{ad + bc}{bd} \in \Frac{D}$, which means $\Frac{D}$ is closed under addition.
+            
+            \item \textbf{Associativity}: Let $\frac ab, \frac cd, \frac ef \in \Frac{D}$. Then
+            \begin{align*}
+                \frac ab + \left(\frac cd + \frac ef\right) &= \frac ab + \frac {cf + de}{df}\\
+                &= \frac{a(df) + b(cf + de)}{b(df)}\\
+                &= \frac{adf + bcf + bde}{bdf}\\
+                &= \frac{(ad + bc)f + (bd)e}{(bd)f}\\
+                &= \frac{ad+bc}{bd} + \frac ef\\
+                &= \left(\frac ab + \frac cd\right) + \frac ef
+            \end{align*}
+            so addition in $\Frac{D}$ is associative.
+            
+            \item \textbf{Identity}: Define $0 = \frac 01$. Then for any $\frac ab \in \Frac{D}$, we see
+            \begin{align*}
+                0 + \frac ab &= \frac 01 + \frac ab\\
+                &= \frac{0b + 1a}{1b}\\
+                &= \frac ab
+            \end{align*}
+            so 0 is the additive identity.
+            
+            \item \textbf{Inverse}: For any $\frac ab \in \Frac{D}$, define $-\frac ab = \frac{-a}b$. Then we see
+            \begin{align*}
+                \frac ab + \left(-\frac ab\right) &= \frac ab + \frac{-a}b\\
+                &= \frac{ab + b(-a)}{b^2}\\
+                &= \frac 0{b^2}\\
+                &= \frac 01\\
+                &= 0
+            \end{align*}
+            so any element in $\Frac{D}$ has an additive inverse.
+            
+            \item \textbf{Commutativity}: Suppose $\frac ab, \frac cd \in \Frac{D}$. Then
+            \begin{align*}
+                \frac ab + \frac cd &= \frac{ad + bc}{bd}\\
+                &= \frac{cb + da}{db}\\
+                &= \frac cd + \frac ab
+            \end{align*}
+            so addition in $\Frac{D}$ is commutative.
+        \end{itemize}
+
+        \item \textbf{Multiplication-Semigroup}: We show that $(\Frac{D}, \times)$ is a semigroup.
+        \begin{itemize}
+            \item \textbf{Closure}: Let $\frac ab, \frac cd \in \Frac{D}$. We note that $ac, bd \in D$. Also, since $b \neq 0$ and $d \neq 0$, we again see $bd \neq 0$ as $D$ is an integral domain. Therefore $\frac ab \times \frac cd = \frac{ac}{bd} \in \Frac{D}$, which means that $\Frac{D}$ is closed under multiplication.
+            
+            \item \textbf{Associativity}: Let $\frac ab, \frac cd, \frac ef \in \Frac{D}$. Then
+            \begin{align*}
+                \frac ab \times \left(\frac cd \times \frac ef\right) &= \frac ab \times \frac {ce}{df}\\
+                &= \frac {a(ce)}{b(df)}\\
+                &= \frac {(ac)e}{(bd)f}\\
+                &= \frac {ac}{bd} \times \frac ef\\
+                &= \left(\frac ab \times \frac cd\right) \times \frac ef
+            \end{align*}
+            so multiplication is associative in $\Frac{D}$.
+        \end{itemize}
+    \end{itemize}
+    Therefore $\Frac{D}$ is a ring. 
+    
+    We note \myref{exercise-multiplication-over-field-of-fractions-is-well-defined-and-commutative} (later) proves that multiplication is commutative.
+
+    We now show that $\Frac{D}$ has a multiplicative identity. Define $1 = \frac 11$. We see that, for any $\frac ab \in \Frac{D}$, we have
+    \begin{align*}
+        1 \times \frac ab &= \frac 11 \times \frac ab\\
+        &= \frac {1a}{1b}\\
+        &= \frac ab
+    \end{align*}
+    so $1 = \frac 11$ is the multiplicative identity.
+
+    Finally, we show that $\Frac{D}$ is a division ring. Suppose $\frac ab \in \Frac{D}$. We note that $\frac ba \in \Frac{D}$ is the inverse of $\frac ab$ since
+    \begin{align*}
+        \frac ab \times \frac ba &= \frac{ab}{ba}\\
+        &= \frac{ab}{ab} & (\text{since } D \text{ is commutative})\\
+        &= 1
+    \end{align*}
+    so every non-zero element of $\Frac{D}$ has an inverse, i.e. every non-zero element of $\Frac{D}$ is a unit.
+
+    Therefore, $\Frac{D}$ is a commutative ring with identity that is a division ring. Therefore, $\Frac{D}$ is a field.
 \end{proof}
 
-\begin{exercise}\label{exercise-multiplication-over-field-of-fractions-is-well-defined}
-    Prove that multiplication over the field of fractions is a well-defined operation.
+\begin{exercise}\label{exercise-multiplication-over-field-of-fractions-is-well-defined-and-commutative}
+    Prove that multiplication over the field of fractions is a well-defined operation, and that it is commutative.
 \end{exercise}
 
 We note that the original integral domain is a subring of the field of fractions.
@@ -378,7 +461,27 @@ We note that the original integral domain is a subring of the field of fractions
     Let $D$ be an integral domain and $\Frac{D}$ be its field of fractions. Then there exists a subring of $\Frac{D}$ that is ring isomorphic to $D$.
 \end{theorem}
 \begin{proof}
-    % TODO: Add
+    Consider the map $\phi: D \to \Frac{D}$ where $x \mapsto \frac x1$. We show that $\phi$ is an injective ring homomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $x, y \in D$. We note
+        \begin{align*}
+            \phi(x + y) &= \frac{x+y}{1}\\
+            &= \frac{x1 + 1y}{1 \times 1}\\
+            &= \frac x1 + \frac y1\\
+            &= \phi(x) + \phi(y)
+        \end{align*}
+        and
+        \begin{align*}
+            \phi(xy) &= \frac{xy}1\\
+            &= \frac{xy}{1 \times 1}\\
+            &= \frac x1 \times \frac y1\\
+            &= \phi(x)\phi(y)
+        \end{align*}
+        so $\phi$ is a ring homomorphism.
+        
+        \item \textbf{Injective}: Suppose $x, y \in D$ such that $\phi(x) = \phi(y)$. Then $\frac x1 = \frac y1$, which means $x1 \mathrel{\sim} y1$ (\myref{thrm-equivalence-class-equivalence}). Therefore $x1 = 1y$ by definition of $\sim$, which means $x = y$. Hence $\phi$ is injective.
+    \end{itemize}
+    We note that $\im \phi$ is a subring of $\Frac{D}$, so $\phi$ is a ring isomorphism from $D$ to $\im \phi$ which is a subring of $\Frac{D}$.
 \end{proof}
 
 \section{Unique Factorization Domains (UFDs)}
