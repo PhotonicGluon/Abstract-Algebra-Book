@@ -146,6 +146,51 @@ With these three properties defined, we can specify what an equivalence relation
     Is the less-than-or-equal-to relation, $\leq$, an equivalence relation on $\Z$?
 \end{exercise}
 
+We now look at equivalence classes.
+
+\begin{definition}
+    Let $\sim$ be an equivalence relation on a set $A$, and let $a \in A$. The \textbf{equivalence class of $a$}\index{equivalence class}, denoted $[a]$, is given by
+    \[
+        [a] = \left\{x \in A \vert a\mathrel{\sim}x\right\}.
+    \]
+\end{definition}
+
+\begin{example}
+    Consider the set $A = \{0, 1, 2, 3\}$ and the equivalence relation $R$ given by
+    \[
+        R = \{(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2), (3, 3)\}.
+    \]
+    Let us find the distinct equivalence classes under the relation $R$.
+    
+    We first find the equivalence class of 0.
+    \begin{align*}
+        [0] &= \{x \in A \vert 0 \mathrel{R} x\}\\
+        &= \{0, 1, 2\}.
+    \end{align*}
+
+    We note that the equivalence class of 1 and 2 are also the equivalence class of 0. We can illustrate this by finding the equivalence class of 1.
+    \begin{align*}
+        [1] &= \{x \in A \vert 1 \mathrel{R} x\}\\
+        &= \{0, 1, 2\}\\
+        &= [0].
+    \end{align*}
+
+    We also note that $[3] = \{3\}$. Thus the distinct equivalence classes are $[0]$ and $[3]$.
+\end{example}
+
+We end this section by looking at the equivalence of equivalence classes.
+\begin{theorem}\label{thrm-equivalence-class-equivalence}
+    Let $\sim$ be an equivalence relation on a set $A$, and let $x$ and $y$ be elements in $A$. Then the following statements are equivalent.
+    \begin{enumerate}
+        \item $x \mathrel{\sim} y$
+        \item $[x] = [y]$
+        \item $[x] \cap [y] \neq \emptyset$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    See \myref{problem-equivalence-class-equivalence} (later).
+\end{proof}
+
 \section{What is a Function?}
 \begin{definition}
     A \textbf{function}\index{function} (or a \textbf{map}\index{map}) $f$ from a set $X$ to a set $Y$, denoted $f: X \to Y$,  is a relation $f \subseteq X \times Y$ such that for every $x \in X$, there is exactly one $y \in Y$ where $x\mathrel{f}y$.
@@ -191,7 +236,7 @@ With these three properties defined, we can specify what an equivalence relation
     It is important to note that the image of an element is a single element, while the image of the function is a set.
 \end{example}
 \begin{example}
-    Consider the function $g: \Z \to \Z, n \mapsto |n|$, where $|n|$ denotes the absolute value of $n$.
+    Consider the function $g: \Z \to \Z, n \mapsto |n|$.
     \begin{itemize}
         \item The image of 2 under $g$ is $|2| = 2$.
         \item The image of -3 under $g$ is $|-3| = 3$.
@@ -206,11 +251,7 @@ With these three properties defined, we can specify what an equivalence relation
         \item The image of -3 under $h$ is $\frac{-3}3 = -1$.
         \item The image of 0 under $h$ is $\frac03 = 0$.
     \end{itemize}
-    The image/range of the function $h$ is the set
-    \[
-        \left\{\frac n3 \vert n \in \Z\right\},
-    \]
-    that is, $\im h$ is the set of all integers divided by 3.
+    The image/range of the function $h$ is the set $\left\{\frac n3 \vert n \in \Z\right\}$, that is, $\im h$ is the set of all integers divided by 3.
 \end{example}
 
 \begin{exercise}
@@ -222,6 +263,8 @@ With these three properties defined, we can specify what an equivalence relation
         \item Is the function $g: \{1, 2, 3\} \to \{1, 8\}, x \mapsto x^3$ \textit{valid}?
     \end{partquestions}
 \end{exercise}
+
+\newpage
 
 We end this section with defining equality of two functions.
 \begin{definition}
@@ -312,6 +355,9 @@ It is important to note the following about function composition.
 \begin{definition}
     A function is \textbf{bijective}\index{function!bijective} (or a \textbf{bijection}\index{bijection} or a \textbf{one-to-one correspondence}\index{function!one-to-one!correspondence}) if the function is both injective and surjective.
 \end{definition}
+
+\newpage
+
 \begin{example}
     Consider the function $f: \mathbb{R} \to \mathbb{R}, x \mapsto x^3$. We show that $f$ is bijective.
     \begin{itemize}
@@ -334,8 +380,6 @@ It is important to note the following about function composition.
 \begin{example}
     Consider the sets $X = \{1, 2, 3\}$ and $Y = \{a, b, c\}$. The function $f: X \to Y$ defined by $1 \mapsto a$, $2 \mapsto b$, and $3 \mapsto c$ is clearly a bijection, so $|X| = |Y|$.
 \end{example}
-
-\newpage
 
 \begin{exercise}
     Define the function $f: \mathbb{N} \to \Z$ such that
@@ -379,6 +423,15 @@ It is important to note the following about function composition.
     \end{partquestions}
 \end{problem}
 
+\begin{problem}\label{problem-equivalence-class-equivalence}
+    Let $\sim$ be an equivalence relation on a set $A$, and let $x$ and $y$ be elements in $A$. Prove that
+    \begin{partquestions}{\alph*}
+        \item if $[x] = [y]$ then $[x] \cap [y] \neq \emptyset$;
+        \item if $[x] \cap [y] \neq \emptyset$ then $x \mathrel{\sim} y$; and
+        \item if $x \mathrel{\sim} y$ then $[x] = [y]$.
+    \end{partquestions}
+\end{problem}
+
 \begin{problem}
     Let $X$ be any set, and let $f: X \to X$, $g: X \to X$, and $h: X \to X$ be functions. Suppose $h$ is injective. Prove or disprove the following statements.
     \begin{partquestions}{\alph*}
@@ -386,6 +439,8 @@ It is important to note the following about function composition.
         \item If $fh = gh$ then $f = g$.
     \end{partquestions}
 \end{problem}
+
+\newpage
 
 \begin{problem}
     The McCarthy 91 function $M: \Z \to \Z$ is a recursive function created by computer scientist John McCarthy to test formal verification in computer science. It is defined as follows.
