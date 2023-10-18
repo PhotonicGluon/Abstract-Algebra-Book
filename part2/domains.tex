@@ -286,6 +286,101 @@ We look at more examples of irreducible elements in $\Z[\sqrt{d}]$.
     \end{partquestions}
 \end{exercise}
 
+\section{Field of Fractions}
+We have been avoiding a construct that would usually be introduced early on in an exploration of rings: the Field of Fractions of an integral domain. This is because they had no purpose being introduced that early; we do so now because their use would help in an explanation of a property of a specific type of domains later.
+
+We know that every field is an integral domain (\myref{prop-field-is-integral-domain}), but not all integral domains are fields. The most familiar example would be the integers, which is an integral domain that is not a field. However, we may construct the rational numbers, which is a field, from the integers via fractions. We form an analogous process for constructing `fractions' based off an integral domain.
+
+\begin{definition}\label{definition-field-of-fractions}
+    Let $D$ be an integral domain, and let $D^\ast$ denote the set of non-zero elements of $D$. Define the equivalence relation $\sim$ on $D \times D^\ast$ by
+    \[
+        (a,b) \mathrel{\sim} (c,d) \iff ad = bc.
+    \]
+    Denote the equivalence class $[(a, b)]$ by $\frac ab$. Let $\Frac{D}$ be the set of equivalence classes of $D \times D^\ast$ under $\sim$. Then $\Frac{D}$ is called the \textbf{field of fractions}\index{field of fractions} of $D$ under addition and multiplication given by
+    \begin{align*}
+        \frac ab + \frac cd &= \frac{ad+bc}{bd} \text{ and}\\
+        \frac ab \times \frac cd &= \frac{ac}{bd}
+    \end{align*}
+    respectively.
+\end{definition}
+\begin{remark}
+    $\Frac{D}$ may also be called the field of quotients (e.g. \cite[p.~269]{gallian_2016}). The field of fractions may also be denoted by $F_D$ (e.g. \cite[p.~226]{judson_beezer_2022}).
+\end{remark}
+
+\begin{example}
+    The field of fractions of $\Z$ is the rational numbers $\Frac{\Z} = \Q$.
+\end{example}
+\begin{example}
+    The integral domain $\Q[x]$ has a field of fractions $\Frac{\Q[x]}$ which is the set of all rational expressions $p(x)/q(x)$, where $p(x), q(x) \in \Q[x]$ and $q(x) \neq 0$.
+\end{example}
+
+Clearly, we have a few things to prove in the above definition of the field of fractions.
+
+\begin{proposition}
+    The relation $\sim$ in \myref{definition-field-of-fractions} is indeed an equivalence relation.
+\end{proposition}
+\begin{proof}
+    We need to prove that $\sim$ is reflexive, symmetric, and transitive.
+    \begin{itemize}
+        \item \textbf{Reflexive}: Since $D$ is commutative we know $ab = ba$ for all $(a,b) \in D \times D^\ast$. Therefore $(a, b) \mathrel{\sim} (a, b)$, meaning $\sim$ is reflexive.
+        
+        \item \textbf{Symmetric}: Suppose now that $(a,b)\mathrel{\sim}(c,d)$. Then $ad = bc$. Again, since $D$ is commutative, we see $ad = cb$ which means $cb = da$. Hence, using the definition of $\sim$, we see $(c,d)\mathrel{\sim}(a,b)$, so $\sim$ is symmetric.
+        
+        \item \textbf{Transitive}: Suppose $(a,b)\mathrel{\sim}(c,d)$ and $(c,d)\mathrel{\sim}(e,f)$. Thus $ad = bc$ and $cf = de$. Multiplying both sides of $ad = bc$ by $f$, one sees
+        \begin{align*}
+            (af)d &= (ad)f\\
+            &= (bc)f\\
+            &= b(cf)\\
+            &= b(de)\\
+            &= (be)d
+        \end{align*}
+        so $af = be$ by cancellation law (\myref{prop-domain-cancellation-law}). Hence $(a,b)\mathrel{\sim}(e,f)$, meaning $\sim$ is transitive.
+    \end{itemize}
+    Therefore $\sim$ is an equivalence relation.
+\end{proof}
+
+\begin{proposition}
+    Addition and multiplication as defined in \myref{definition-field-of-fractions} are well-defined operations.
+\end{proposition}
+\begin{proof}
+    We prove that addition is well-defined. Suppose $\frac{a_1}{b_1} = \frac{a_2}{b_2}$ and $\frac{c_1}{d_1} = \frac{c_2}{d_2}$. We show that $\frac{a_1}{b_1} + \frac{c_1}{d_1} = \frac{a_2}{b_2} + \frac{c_2}{d_2}$, i.e. $\frac{a_1d_1+b_1c_1}{b_1d_1} = \frac{a_2d_2 + b_2c_2}{b_2c_2}$, which is equivalent to showing that $(a_1d_1+b_1c_1, b_1d_1) \mathrel{\sim} (a_2d_2+b_2c_2, b_2d_2)$ by \myref{thrm-equivalence-class-equivalence}, i.e.
+    \[
+        (a_1d_1+b_1c_1)(b_2d_2) = (b_1d_1)(a_2d_2+b_2c_2).
+    \]
+    As $\frac{a_1}{b_1} = \frac{a_2}{b_2}$, we know that $(a_1, b_1) \mathrel{\sim} (a_2, b_2)$ (\myref{thrm-equivalence-class-equivalence}) which means $a_1b_2 = b_1a_2$. Similarly, because $\frac{c_1}{d_1} = \frac{c_2}{d_2}$ thus $c_1d_2 = d_1c_2$. Hence
+    \begin{align*}
+        (a_1d_1+b_1c_1)(b_2d_2) &= a_1d_1b_2d_2 + b_1c_1b_2d_2\\
+        &= a_1b_2d_1d_2 + b_1b_2c_1d_2\\
+        &= (a_1b_2)d_1d_2 + b_1b_2(c_1d_2)\\
+        &= (b_1a_2)d_1d_2 + b_1b_2(d_1c_2)\\
+        &= b_1d_1a_2d_2 + b_1d_1b_2c_2\\
+        &= (b_1d_1)(a_2d_2 + b_2c_2)
+    \end{align*}
+    so we have shown that $\frac{a_1}{b_1} + \frac{c_1}{d_1} = \frac{a_2}{b_2} + \frac{c_2}{d_2}$, meaning addition is well-defined.
+
+    For multiplication, \myref{exercise-multiplication-over-field-of-fractions-is-well-defined} (later) proves that multiplication is well-defined.
+\end{proof}
+
+\begin{proposition}
+    Let $D$ be an integral domain. $\Frac{D}$ as given in \myref{definition-field-of-fractions} is indeed a field.
+\end{proposition}
+\begin{proof}
+    % TODO: Add
+\end{proof}
+
+\begin{exercise}\label{exercise-multiplication-over-field-of-fractions-is-well-defined}
+    Prove that multiplication over the field of fractions is a well-defined operation.
+\end{exercise}
+
+We note that the original integral domain is a subring of the field of fractions.
+
+\begin{theorem}
+    Let $D$ be an integral domain and $\Frac{D}$ be its field of fractions. Then there exists a subring of $\Frac{D}$ that is ring isomorphic to $D$.
+\end{theorem}
+\begin{proof}
+    % TODO: Add
+\end{proof}
+
 \section{Unique Factorization Domains (UFDs)}
 We now have the necessary terminology to formalize the idea of a unique factorization domain. Concisely, in a unique factorization domain $D$, for every non-zero non-unit element $x$ in $D$,
 \begin{enumerate}

@@ -79,6 +79,19 @@
 
     \item Suppose $N(x) = p$ where $p$ is a prime number, and $x = ab$ where $a,b \in \Z[\sqrt{d}]$. Taking norms yields $N(x) = N(ab) = N(a)N(b) = p$. But since $p$ is prime, one of $N(a)$ or $N(b)$ is 1, which by \myref{prop-properties-of-quadratic-integer-norm}, statement 3, we know that $a$ or $b$ is a unit. Therefore $x$ is irreducible.
     
+    \item Suppose $\frac{a_1}{b_1} = \frac{a_2}{b_2}$ and $\frac{c_1}{d_1} = \frac{c_2}{d_2}$. We show that $\frac{a_1}{b_1} \times \frac{c_1}{d_1} = \frac{a_2}{b_2} \times \frac{c_2}{d_2}$, i.e. $\frac{a_1c_1}{b_1d_1} = \frac{a_2c_2}{b_2c_2}$, which is equivalent to showing that $(a_1c_1, b_1d_1) \mathrel{\sim} (a_2c_2, b_2d_2)$ by \myref{thrm-equivalence-class-equivalence}, i.e.
+    \[
+        a_1c_1b_2d_2 = b_1d_1a_2c_2.
+    \]
+    As $\frac{a_1}{b_1} = \frac{a_2}{b_2}$, we know that $(a_1, b_1) \mathrel{\sim} (a_2, b_2)$ (\myref{thrm-equivalence-class-equivalence}) which means $a_1b_2 = b_1a_2$. Similarly, because $\frac{c_1}{d_1} = \frac{c_2}{d_2}$ thus $c_1d_2 = d_1c_2$. Hence
+    \begin{align*}
+        a_1c_1b_2d_2 &= a_1b_2c_1d_2\\
+        &= (a_1b_2)(c_1d_2)\\
+        &= (b_1a_2)(d_1c_2)\\
+        &= b_1d_1a_2c_2.
+    \end{align*}
+    so we have shown that $\frac{a_1}{b_1} \times \frac{c_1}{d_1} = \frac{a_2}{b_2} \times \frac{c_2}{d_2}$, meaning multiplication is well-defined.
+
     \item For the forward direction, we prove by contrapositive. If $a$ is a unit then $\princ{b} = \princ{ab}$ by \myref{prop-principal-ideals-equal-iff-associates}, so $\princ{ab} \not\subset \princ{b}$.
     
     For the reverse direction, we again consider contrapositive. Assume $\princ{ab}$ is not a proper subset of $\princ{b}$, meaning $\princ{b} \subseteq \princ{ab}$. But one clearly sees that $\princ{ab} \subseteq \princ{b}$. Thus $\princ{b} = \princ{ab}$ which means $a$ is a unit, again by \myref{prop-principal-ideals-equal-iff-associates}.
