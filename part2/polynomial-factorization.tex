@@ -110,15 +110,15 @@ The next test provides a partial converse to the above theorem for polynomials o
 Before we introduce the next test, which involves polynomials with integer coefficients, we first introduce some terminology and a lemma to ease the proof of the test.
 
 \begin{definition}
-    The \textbf{content}\index{polynomial!content} of a non-zero polynomial $f(x) \in \Z[x]$ is the GCD of its coefficients.
+    Let $D$ be an integral domain. The \textbf{content}\index{polynomial!content} of a non-zero polynomial $f(x) \in D[x]$ is the GCD of its coefficients.
 \end{definition}
 
 \begin{definition}
-    A \textbf{primitive polynomial}\index{polynomial!primitive} is a non-zero polynomial $f(x) \in \Z[x]$ with content 1.
+    Let $D$ be an integral domain. A \textbf{primitive polynomial}\index{polynomial!primitive} is a non-zero polynomial $f(x) \in D[x]$ with content 1.
 \end{definition}
 
-\begin{lemma}[Gauss]\label{lemma-gauss}\index{Gauss's Lemma}
-    The product of two primitive polynomials is primitive.
+\begin{lemma}[Gauss]\label{lemma-gauss-for-integer-coefficients}\index{Gauss's Lemma!for integer coefficients}
+    The product of two primitive polynomials in $\Z[x]$ is primitive.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[p.~291]{gallian_2016}})]
     Seeking a contradiction, suppose $f(x)$ and $g(x)$ are primitive polynomials with a non-primitive product $h(x) = f(x)g(x)$. Therefore the content of $h(x)$ is not 1; in fact it is at least 2, meaning the content of $h(x)$ is either prime or composite.
@@ -147,7 +147,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
     \[
         ab \times f(x) = C_pC_q \times P(x)Q(x).
     \]
-    As $f(x)$ is primitive, thus the content of $ab \times f(x)$ is $ab$. The product of primitive polynomials is primitive (\myref{lemma-gauss}), so $P(x)Q(x)$ is also primitive; the content of $C_pC_q \times P(x)Q(x)$ is therefore $C_pC_q$. So $ab = C_pC_q$.
+    As $f(x)$ is primitive, thus the content of $ab \times f(x)$ is $ab$. The product of primitive polynomials is primitive (\myref{lemma-gauss-for-integer-coefficients}), so $P(x)Q(x)$ is also primitive; the content of $C_pC_q \times P(x)Q(x)$ is therefore $C_pC_q$. So $ab = C_pC_q$.
     
     Dividing both sides by $ab = C_pC_q$ leaves $f(x) = P(x)Q(x)$, where both $P(x)$ and $Q(x)$ are polynomials with integer coefficients. Note that
     \begin{align*}
