@@ -427,6 +427,20 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
             \end{align*}
             so multiplication is associative in $\Frac{D}$.
         \end{itemize}
+
+        \item \textbf{Distributive}: Let $\frac ab, \frac cd, \frac ef \in \Frac{D}$. We prove only $\frac ab \times \left(\frac cd + \frac ef\right) = \frac ab \times \frac cd + \frac ab \times \frac ef$ since the other case is proven after we have shown that multiplication is commutative.
+        
+        One sees that
+        \begin{align*}
+            \frac ab \times \left(\frac cd + \frac ef\right) &= \frac ab \times \frac{cf + de}{df}\\
+            &= \frac{a(cf + de)}{b(df)}\\
+            &= \frac{acf + ade}{bdf}\\
+            &= \frac{b(acf + ade)}{b(bdf)}\\
+            &= \frac{(ac)(bf) + (bd)(ae)}{(bd)(bf)}\\
+            &= \frac{ac}{bd} + \frac {ae}{bf}\\
+            &= \frac ab \times \frac cd + \frac ab \times \frac ef
+        \end{align*}
+        so multiplication distributes over addition.
     \end{itemize}
     Therefore $\Frac{D}$ is a ring. 
     
@@ -650,6 +664,8 @@ We note one immediate consequence of Gauss's lemma.
     We note $F(x)G(x)$ is primitive by Gauss's lemma (\myref{lemma-gauss}), so we see that the content of $f(x)g(x)$ is $C_fC_g$, which is the product of the contents of $f(x)$ and $g(x)$.
 \end{proof}
 
+% TODO: Add proof that D is UFD implies D[x] is UFD using field of fractions
+
 \begin{theorem}
     $\Z[x]$ is a UFD.
 \end{theorem}
@@ -719,7 +735,15 @@ Clearly, proving that an integral domain is a UFD is a tedious ordeal. Hence, we
 \end{exercise}
 
 \section{Euclidean Domains (EDs)}
-% TODO: Add
+We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) to achieve division with remainder. We also seen polynomial long division (\myref{thrm-polynomial-long-division}) which is also similar to the division lemma. We generalize these properties abstractly, into what is known as a Euclidean domain.
+
+\begin{definition}
+    An integral domain $D$ is called a \textbf{Euclidean domain (ED)}\index{Euclidean domain}\index{ED} if there is a function $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \textbf{norm}\index{Euclidean domain!norm} or \textbf{measure}\index{Euclidean domain!measure}, such that
+    \begin{enumerate}
+        \item for all non-zero $a$ and $b$ in $D$ we have $N(a) \leq N(ab)$; and
+        \item if $n, d \in D$ and $d \neq 0$, then there exist elements $q$ and $r$ in $D$ such that $n = dq + r$, where $r = 0$ or $N(r) < N(d)$.
+    \end{enumerate}
+\end{definition}
 
 \section{Summary of Domains}
 % TODO: Add
