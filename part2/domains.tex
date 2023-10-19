@@ -498,6 +498,8 @@ We note that the original integral domain is a subring of the field of fractions
     We note that $\im \phi$ is a subring of $\Frac{D}$, so $\phi$ is a ring isomorphism from $D$ to $\im \phi$ which is a subring of $\Frac{D}$.
 \end{proof}
 
+To simplify the notation used when working with the field of fractions $\Frac{D}$ of an integral domain $D$, we will write $x$ in place of the equivalence class $\frac x1$ for any element $x \in D$. So we can find
+
 \section{Unique Factorization Domains (UFDs)}
 We now have the necessary terminology to formalize the idea of a unique factorization domain. Concisely, in a unique factorization domain $D$, for every non-zero non-unit element $x$ in $D$,
 \begin{enumerate}
@@ -614,7 +616,7 @@ We are now ready to state an important theorem, with very useful corollaries.
 
 We observe one immediate corollary, which is incredibly useful.
 
-\begin{corollary}
+\begin{corollary}\label{corollary-polynomial-ring-over-field-is-UFD}
     Let $F$ be a field. Then $F[x]$ is a UFD.
 \end{corollary}
 \begin{proof}
@@ -633,10 +635,10 @@ The trouble comes with the ring of polynomials with integer coefficients, $\Z[x]
 
 However, just proving that $\Z[x]$ is a UFD is too little for the amount of work that we are about to do. So let's try and prove a more general result. Before that though, we need to generalize Gauss's lemma (\myref{lemma-gauss-for-integer-coefficients}) for UFDs.
 
-\begin{lemma}[Gauss's Lemma]\label{lemma-gauss}\index{Gauss's Lemma}
+\begin{lemma}[Gauss]\label{lemma-gauss}\index{Gauss's Lemma}
     Let $D$ be a UFD and $f(x), g(x) \in D[x]$ be primitive polynomials. Then $f(x)g(x)$ is primitive.
 \end{lemma}
-\begin{proof}[Proof (see {\cite[p.~232]{judson_beezer_2022}})]
+\begin{proof}[Proof (see {\cite[Theorem 18.24]{judson_beezer_2022}})]
     Let
     \begin{align*}
         f(x) &= \sum_{i=0}^m a_ix^i \text{ and}\\
@@ -664,36 +666,58 @@ We note one immediate consequence of Gauss's lemma.
     We note $F(x)G(x)$ is primitive by Gauss's lemma (\myref{lemma-gauss}), so we see that the content of $f(x)g(x)$ is $C_fC_g$, which is the product of the contents of $f(x)$ and $g(x)$.
 \end{proof}
 
-% TODO: Add proof that D is UFD implies D[x] is UFD using field of fractions
+We note another lemma, this time relating an integral domain and its field of fractions.
 
-\begin{theorem}
-    $\Z[x]$ is a UFD.
+\begin{lemma}\label{lemma-reducible-in-field-of-fractions-means-reducible-in-UFD}
+    Let $D$ be a UFD and $\Frac{D}$ its field of fractions. Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Then there exist $P(x), Q(x) \in D[x]$ such that $f(x) = P(x)Q(x)$, $\deg P(x) = \deg p(x)$, and $\deg Q(x) = \deg g(x)$.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[Lemma 18.26]{judson_beezer_2022}})]
+    Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Let $a, b\in D$ such that $ap(x), bq(x) \in D[x]$. So we can find $C_P, C_Q \in D$ such that $ap(x) = C_P P(x)$ and $bq(x) = C_Q Q(x)$ where $P(x)$ and $Q(x)$ are primitive polynomials in $D[x]$. Therefore
+    \[
+        ab\times f(x) = C_P C_Q \times P(x)Q(x).
+    \]
+    Now we know that $P(x)Q(x)$ is primitive by Gauss's lemma (\myref{lemma-gauss}). Thus it must be the case that $ab \vert C_QC_Q$. Therefore there is an element $k \in D$ such that
+    \[
+        f(x) = k P(x)Q(x),
+    \]
+    and by considering the polynomials $k P(x)$ and $Q(x)$, we have found two polynomials in $D[x]$ which have a product of $f(x)$. Also, clearly $\deg (kP(x)) = \deg p(x)$ and $\deg Q(x) = \deg q(x)$ by construction, proving the lemma.
+\end{proof}
+
+\begin{corollary}\label{corollary-primitive-polynomial-irreducible-iff-polynomial-irreducible-in-field-of-fractions}
+    Let $D$ be a UFD and $\Frac{D}$ its field of fractions. A primitive polynomial $f(x)$ in $D[x]$ is irreducible in $\Frac{D}[x]$ if and only if it is irreducible in $D[x]$.
+\end{corollary}
+\begin{proof}
+    See \myref{exercise-primitive-polynomial-irreducible-iff-polynomial-irreducible-in-field-of-fractions} (later).
+\end{proof}
+
+\begin{theorem}\label{thrm-UFD-iff-polynomial-ring-is-UFD}
+    Let $D$ be an integral domain. Then $D$ is a UFD if and only if $D[x]$ is a UFD.
 \end{theorem}
 \begin{proofsketch}
-    Just like in \myref{thrm-PID-is-UFD}, we need to show two parts: existence and uniqueness.
+    We only prove the forward direction as the reverse direction is pretty clear. We need to show two parts: existence of a factorization, and the uniqueness of such a factorization.
 
-    For existence, we first show that the problem for any general non-zero non-unit polynomial can be reduced to showing the existence of a factorization for non-constant primitive polynomials. We then use strong induction to prove that a factorization into irreducible polynomials is possible for any degree.
+    For existence, we view the original problem as factorization in the field of fractions, which we can definitely find a unique factorization for since the field of fractions is a UFD. By multiplying the coefficients of the factors obtained by a common `denominator', we shift the problem back to factorization of the `leading' constant term (which is possible since $D$ is a UFD) and the polynomial terms (which is irreducibles since they were originally from the field of fractions).
 
-    For uniqueness it is more challenging, since we have to worry about irreducibility via factoring out non-unit constants. We first show that if two factorizations are achieved, and if the content of both factorizations is `taken out', then they are equal to each other, up to a possible negative sign. Therefore, they can be cancelled, leaving us with the problem of showing uniqueness of factorization of a product of irreducible primitive polynomials.
-
-    The trick is to view each one of these polynomials as an element of $\Q[x]$, which is a field. We can then invoke theorems in such a field (specifically, that irreducibles are primes) to show that the `leading' factors of both factorizations are associates. Cancellation of that factor on both sides leaves a `simpler' problem; the cancellation argument also shows that there must be an equal number of factors on each side, and the factors are associates of each other, thereby showing that such a factorization is unique.
+    For uniqueness, set two possible factorizations equal to each other and view them in the field of fractions. The polynomial terms must have the same length since the field of fractions is a UFD, and, furthermore, after rearrangement, the polynomial terms must be associates of each other. The unit that makes the terms associates is an element of $\Frac{D}$, so we again could `clear denominators' and return back to $D$. As the polynomials are associates, we can cancel them on both sides and leave only constant terms to worry about, which are, up to reordering and associates, equal to each other since $D$ is a UFD.
 \end{proofsketch}
-\begin{proof}[Proof (see {\cite[pp.~297-298]{gallian_2016}})]
-    We first prove the existence of a factorization into irreducible polynomials. Suppose $f(x)$ is a non-zero non-unit polynomial in $\Z[x]$. If $f(x)$ is a constant polynomial we are done since the result follows from the Fundamental Theorem of Arithmetic (\myref{thrm-fundamental-theorem-of-arithmetic}). So let $\deg f(x) > 0$, and let $C_f$ denote the content of $f(x)$. By the Fundamental Theorem of Arithmetic we may factor $C_f$ as a product of primes (which are irreducible, \myref{thrm-in-integral-domain-primes-are-irreducibles}), say $C_f = p_1p_2\cdots p_s$. Then write
+\begin{proof}[Proof (cf. {\cite[Theorem 18.29]{judson_beezer_2022}})]
+    The reverse direction is easy to show. Suppose $D[x]$ is a UFD. For any $r \in D$, we may interpret it as an element in $D[x]$. So $r$ can be uniquely factored into irreducibles in $D[x]$. But each irreducible that $r$ is factored into must be a constant polynomial, since otherwise $r$ would be a polynomial (and not an element of $D$). Therefore $r$ is uniquely factored into irreducibles of $D$, showing that $D$ is a UFD.
+
+    We now show the forward direction. We first prove the existence of a unique factorization. Suppose $f(x)$ is a non-zero polynomial in $D[x]$. If $f(x)$ is a constant polynomial then it has a unique factorization since $D$ is a UFD. So assume $f(x)$ is a non-constant polynomial. View $f(x)$ as a polynomial in $\Frac{D}$. Since $\Frac{D}$ is a field, thus $\Frac{D}[x]$ is a UFD (\myref{corollary-polynomial-ring-over-field-is-UFD}). Thus we may write
     \[
-        f(x) = p_1p_2\cdots p_s F(x)
+        f(x) = g_1(x)g_2(x)\cdots g_n(x)
     \]
-    where one sees that $F(x) \in \Z[x]$, $\deg F(x) = \deg f(x)$, and $F(x)$ is primitive. So, to prove the existence of a factorization of non-constant polynomials in $\Z[x]$ into irreducible polynomials, it suffices to show that non-constant primitive polynomials factor into irreducible polynomials. To do this, we proceed by strong induction on the degree of $F(x)$.
+    where each $g_i(x) \in \Frac{D}$ is irreducible. Now for each $g_i$, choose an $p_i \in D$ such that $p_ig_i(x) \in D[x]$. Hence there is also a $k_i \in D$ such that $p_ig_i(x) = k_iG_i(x)$ where $G_i(x)$ is a primitive polynomial in $D[x]$. Since $g_i(x)$ is irreducible, we know the primitive polynomial $G_i(x) \in D[x]$ is irreducible (\myref{corollary-primitive-polynomial-irreducible-iff-polynomial-irreducible-in-field-of-fractions}). Consequently we can write
+    \[
+        p_1p_2\cdots p_n f(x) = k_1k_2 \cdots k_n G_1(x)G_2(x) \cdots G_n(x).
+    \]
+    Let $p = p_1p_2\cdots p_n$ and $k = k_1k_2\cdots k_n$. Note $G_1(x)G_2(x) \cdots G_n(x)$ is a product of primitive polynomials and so $G_1(x)G_2(x) \cdots G_n(x)$ is also primitive by Gauss's lemma (\myref{lemma-gauss}), which thus results in $p \vert k$, meaning that there exists a $q \in D$ such that $k = pq$. Thus $p f(x) = pq G_1(x)G_2(x) \cdots PGn(x)$ which therefore means
+    \[
+        f(x) = qG_1(x)G_2(x) \cdots G_n(x)
+    \]
+    by cancellation law (\myref{prop-domain-cancellation-law}). Note that as $q \in D$ and $D$ is a UFD, we can uniquely factor $q$ into irreducibles of $D$. Therefore $f(x)$ is a product of irreducibles, showing the existence of such a factorization.
 
-    If $\deg F(x) = 1$, then $F(x)$ is irreducible since it is a degree 1 primitive polynomial (\myref{problem-primitive-degree-1-polynomial-in-Z[x]-is-irreducible}). Therefore, trivially, $F(x)$ can be factored into itself, so this case is proven.
-
-    Now suppose that for all polynomials lower than a certain degree, say $k$, that we have a factorization into irreducible polynomials. We show that a polynomial of degree $k+1$ can also be factored into irreducible polynomials.
-
-    If $F(x)$, a primitive degree $k+1$ polynomial, is irreducible, we are done. Otherwise, it is reducible, meaning we may write $F(x) = g(x)h(x)$ where $g(x)$ and $h(x)$ are non-unit polynomials. We note that if $g(x)$ nor $h(x)$ are non-primitive polynomials, then the content of $F(x)$ is not 1 i.e., $F(x)$ is not primitive, a contradiction. So $g(x)$ and $h(x)$ are both primitive polynomials of degree lower than $k+1$, i.e. both are polynomials of degree of at most $k$. We use the induction hypothesis to factor $g(x)$ and $h(x)$ into irreducible polynomials, thereby showing $F(x)$ can be factored into irreducible polynomials. Therefore, a degree $k+1$ polynomial can also be factored into irreducible polynomials.
-
-    Hence, by induction, we have shown the existence of a factorization into irreducible polynomials for any (primitive) polynomial.
-
-    We now show the uniqueness of such a factorization, and we return to using $f(x)$, which may not be primitive. Suppose
+    We now prove that the factorization is unique. Suppose
     \[
         f(x) = p_1p_2\cdots p_s g_1(x)g_2(x) \cdots g_m(x)
     \]
@@ -701,37 +725,39 @@ We note one immediate consequence of Gauss's lemma.
     \[
         f(x) = q_1q_2\cdots q_t h_1(x)h_2(x) \cdots h_n(x)
     \]
-    are two factorizations of $f(x)$, where $p_1, p_2, \dots, p_s, q_1, q_2, \dots, q_t$ are irreducible polynomials of degree 0 (i.e., prime numbers) and $g_1(x), g_2(x), \dots, g_m(x), h_1(x), h_2(x), \dots, h_n(x)$ are non-constant primitive irreducible polynomials. Let
+    are two factorizations of $f(x)$, where $p_1, p_2, \dots, p_s, q_1, q_2, \dots, q_t$ are irreducible constants in $D$ and each $g_i(x)$ and $h_j(x)$ is a non-constant primitive irreducible polynomial in $D[x]$. By \myref{corollary-primitive-polynomial-irreducible-iff-polynomial-irreducible-in-field-of-fractions} we know that $g_1(x), g_2(x), \dots, g_m(x), h_1(x), h_2(x), \dots, h_n(x)$ are all irreducible polynomials in $\Frac{D}(x)$. Since $\Frac{D}$ is a UFD therefore we must have $m = n$. Rearrange the non-constant polynomials so that $g_i(x)$ and $h_i(x)$ are associates; so $h_i(x) = \frac{a_i}{b_i}g_i(x)$ for some $a_i, b_i \in D$ (and $b_i \neq 0$). Hence
+    \[
+        a_i g_i(x) = b_i h_i(x) \in D[x]
+    \]
+    which means that $a_i$ and $b_i$ are associates (since $g_i(x)$ and $h_i(x)$ are primitive in $D[x]$). Write $b_i = u_ia_i$ where $u_i \in D$ is a unit. Hence
     \begin{align*}
-        P &= p_1p_2\cdots p_s,\\
-        Q &= q_1q_2\cdots q_t.
+        &(p_1p_2\cdots p_s)(a_1\cdots a_m) g_1(x)g_2(x) \cdots g_m(x)\\
+        &= (q_1q_2\cdots q_t)(u_1\cdots u_m)(a_1\cdots a_m)g_1(x)g_2(x) \cdots g_m(x)
     \end{align*}
-    Since each $g_i(x)$ and each $h_j(x)$ are primitive, it follows from Gauss's Lemma (\myref{lemma-gauss}) that their product, $g_1(x)g_2(x) \cdots g_m(x)$ and $h_1(x)h_2(x) \cdots h_n(x)$ respectively, are both primitive. So $P$ and $Q$ must be equal to plus or minus the content of $f(x)$; thus $P$ and $Q$ are equal in absolute value. It follows from the Fundamental Theorem of Arithmetic that $s = t$ and, after renumbering, $p_i = \pm q_i$ for all $i \in \{1, 2, \dots, s\}$. So we may cancel these constant terms in the factorization of $f(x)$, leaving us with
+    so we may cancel common terms on both sides to yield
     \[
-        g_1(x)g_2(x) \cdots g_m(x) = \pm h_1(x)h_2(x) \cdots h_n(x).
+        p_1p_2\cdots p_s = (q_1q_2\cdots q_t)(u_1\cdots u_m).
     \]
-    
-    Now we view each $g_i(x)$ and $q_j(x)$ as elements of $\Q[x]$. We note $\Q[x]$ is a PID since $\Q$ is a field (\myref{thrm-polynomial-ring-over-field-is-a-PID}), so each $g_i(x)$ and $q_j(x)$, which are irreducibles, are prime in $\Q[x]$ (\myref{thrm-in-PID-prime-iff-irreducible}). Since $p_1(x) \vert h_1(x)h_2(x) \cdots h_n(x)$, it follows from \myref{problem-prime-element-divides-some-element-in-product} (later) that $p_1(x) \vert h_j(x)$ for some $j \in \{1, 2, \dots, n\}$. We might as well assume $p_1(x) \vert h_1(x)$, since $Q[x]$ is an integral domain which means that we can commute the factors on the right hand side. As $h_1(x)$ is irreducible, for $p_1(x)$ to divide $h_1(x)$ we must have $h_1(x) = up(x)$, where $u$ is a unit in $\Q$. But both $g_1(x)$ and $h_1(x)$ are primitive, so $u = \pm 1$, which means $g_1(x) = \pm h_1(x)$. Therefore, by cancellation, we see
-    \[
-        g_2(x) \cdots g_m(x) = \pm h_2(x) \cdots h_n(x).
-    \]
-    We may now repeat the argument with $p_2(x)$ in place of $p_1(x)$, and so on.
+    But both sides of this equation are elements of $D$, which is a UFD. So $s = t$ and, after reordering, each $p_i$ and $q_i$ are associates. This completes the uniqueness part of the proof.
+\end{proof}
 
-    We note that
-    \begin{itemize}
-        \item if $m < n$, then after $m$ steps we would get $\pm 1$ on the left hand side and a non-constant polynomial on the right hand side, which is impossible; and
-        \item if $m > n$, then after $n$ steps we would get a  non-constant polynomial on the left hand side and $\pm1$ on the right hand side, which is also impossible.
-    \end{itemize}
-    Therefore, $m = n$, and $p_i(x) = \pm q_i(x)$ after suitable rearrangement. Since the only units in $\Z$ are 1 and -1, we see that any $p_i(x)$ and $q_i(x)$ are associates, which means that the factorization is unique.
+We can finally prove the result that we have been alluding to since the start of this subsection.
 
-    Hence, we have shown that $\Z[x]$ is a UFD.
+\begin{corollary}\label{corollary-Z-is-UFD}
+    $\Z[x]$ is a UFD.
+\end{corollary}
+\begin{proof}
+    See \myref{exercise-Z-is-UFD} (later).
 \end{proof}
 
 Clearly, proving that an integral domain is a UFD is a tedious ordeal. Hence, we would usually show that an integral domain is a `simpler' type of domain, such as a PID, to indirectly show that it is a UFD.
 
-\begin{exercise}
-    Prove the Fundamental Theorem of Arithmetic (\myref{thrm-fundamental-theorem-of-arithmetic}).\newline
-    (\textit{Hint: What type of domain is $\Z$?})
+\begin{exercise}\label{exercise-Z-is-UFD}
+    Prove that $\Z[x]$ is a UFD.
+\end{exercise}
+
+\begin{exercise}\label{exercise-primitive-polynomial-irreducible-iff-polynomial-irreducible-in-field-of-fractions}
+    Prove \myref{corollary-primitive-polynomial-irreducible-iff-polynomial-irreducible-in-field-of-fractions}.
 \end{exercise}
 
 \section{Euclidean Domains (EDs)}
