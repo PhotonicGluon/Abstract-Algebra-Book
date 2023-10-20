@@ -100,6 +100,46 @@
     \end{align*}
     so multiplication is commutative.
 
+    \item \begin{partquestions}{\alph*}
+        \item Disprove. One sees $1 \in \Z[x]$ and $x \in \Z[x]$ but $\frac1x \notin \Q[x]$.
+        
+        \item Prove. Define $\phi: \Frac{k\Z} \to \Q$ by $\phi([(ka, kb)]) = \frac ab$. We show that this is a well-defined isomorphism.
+        \begin{itemize}
+            \item \textbf{Well-defined}: Suppose $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$ such that $[(ka,kb)]=[(kc,kd)]$. Then $(ka, kb) \mathrel{\sim} (kc, kd)$ by \myref{thrm-equivalence-class-equivalence}, i.e. $k^2ad = k^2bc$. Hence one sees clearly that $\frac ab = \frac cd$. Therefore,
+            \[
+                \phi([(ka,kb)]) = \frac ab = \frac cd = \phi([(kc, kd)])
+            \]
+            and so $\phi$ is well-defined.
+            
+            \item \textbf{Homomorphism}: Let $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$. Note
+            \begin{align*}
+                \phi([(ka,kb)] + [(kc,kd)]) &= \phi([(k^2(ad+bc), k^2bd)])\\
+                &= \frac{k(ad+bc)}{kbd}\\
+                &= \frac{k^2(ad+bc)}{k^2bd}\\
+                &= \frac {ka}{kb} + \frac {kc}{kd}\\
+                &= \phi([(ka,kb)]) + \phi([(kc,kd)])
+            \end{align*}
+            and
+            \begin{align*}
+                \phi([(ka,kb)] \times [(kc,kd)]) &= \phi([(k^2ac, k^2bd)])\\
+                &= \frac{kac}{kbd}\\
+                &= \frac{k^2ac}{k^2bd}\\
+                &= \frac {ka}{kb} \times \frac {kc}{kd}\\
+                &= \phi([(ka,kb)]) \times \phi([(kc,kd)])
+            \end{align*}
+            which shows that $\phi$ is a homomorphism.
+            
+            \item \textbf{Injective}: Suppose $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$ such that $\phi([(ka, kb)]) = \phi([(kc, kd)])$. Then $\frac ab = \frac cd$, meaning $ad = bc$. Hence $(ka, kb) \mathrel{\sim} (kc, kd)$ by definition of the equivalence relation on $\Frac{k\Z}$, and so $[(ka, kb)] = [(kc, kd)]$ by \myref{thrm-equivalence-class-equivalence} again. Hence $\phi$ is injective.
+            
+            \item \textbf{Surjective}: Suppose $\frac ab \in \Q$ where $a, b \in \Z$ such that $b \neq 0$. Then note that $[(ka, kb)]$ is its pre-image since
+            \[
+                \phi([(ka, kb)]) = \frac ab
+            \]
+            which proves that $\phi$ is surjective.
+        \end{itemize}
+        Therefore $\phi$ is a well-defined ring isomorphism, meaning $\Frac{k\Z} \cong \Q$.
+    \end{partquestions}
+
     \item For the forward direction, we prove by contrapositive. If $a$ is a unit then $\princ{b} = \princ{ab}$ by \myref{prop-principal-ideals-equal-iff-associates}, so $\princ{ab} \not\subset \princ{b}$.
     
     For the reverse direction, we again consider contrapositive. Assume $\princ{ab}$ is not a proper subset of $\princ{b}$, meaning $\princ{b} \subseteq \princ{ab}$. But one clearly sees that $\princ{ab} \subseteq \princ{b}$. Thus $\princ{b} = \princ{ab}$ which means $a$ is a unit, again by \myref{prop-principal-ideals-equal-iff-associates}.

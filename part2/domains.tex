@@ -498,7 +498,86 @@ We note that the original integral domain is a subring of the field of fractions
     We note that $\im \phi$ is a subring of $\Frac{D}$, so $\phi$ is a ring isomorphism from $D$ to $\im \phi$ which is a subring of $\Frac{D}$.
 \end{proof}
 
-To simplify the notation used when working with the field of fractions $\Frac{D}$ of an integral domain $D$, we will write $x$ in place of the equivalence class $\frac x1$ for any element $x \in D$. So we can find
+\begin{theorem}\label{thrm-field-of-fractions-is-smallest-field-containing-integral-domain}
+    Let $D$ be an integral domain. Then $\Frac{D}$ is the smallest field containing a subring isomorphic to $D$. That is, if $F$ is a field that contains a subring isomorphic to $D$, then $F$ has a subring $K$ that is isomorphic to $\Frac{D}$.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-field-of-fractions-is-smallest-field-containing-integral-domain} (later).
+\end{proof}
+
+To simplify the notation used when working with the field of fractions $\Frac{D}$ of an integral domain $D$, we will write $x$ in place of the equivalence class $\frac x1$ for any element $x \in D$.
+
+We now show that some familiar fields are, indeed, the field of fractions of some integral domains.
+
+\begin{example}
+    We show that $\Frac{\Z}$ is isomorphic to $\Q$, which should be an obvious statement. To avoid confusion, we denote the equivalence class of $\Frac{\Z}$ by $[(a,b)]$; define the map $\phi: \Frac{\Z} \to \Q$ by $\phi([(a, b)]) = \frac ab$. We show that this is a well-defined isomorphism.
+    \begin{itemize}
+        \item \textbf{Well-defined}: Suppose $[(a, b)], [(c, d)] \in \Frac{\Z}$ such that $[(a,b)]=[(c,d)]$. Then $(a, b) \mathrel{\sim} (c, d)$ by \myref{thrm-equivalence-class-equivalence}, i.e. $ad = bc$. Hence one sees clearly that $\frac ab = \frac cd$. Therefore,
+        \[
+            \phi([(a,b)]) = \frac ab = \frac cd = \phi([(c, d)])
+        \]
+        and so $\phi$ is well-defined.
+        
+        \item \textbf{Homomorphism}: Let $[(a, b)], [(c, d)] \in \Frac{\Z}$. Note
+        \begin{align*}
+            \phi([(a,b)] + [(c,d)]) &= \phi([(ad+bc, bd)])\\
+            &= \frac{ad+bc}{bd}\\
+            &= \frac ab + \frac cd\\
+            &= \phi([(a,b)]) + \phi([(c,d)])
+        \end{align*}
+        and
+        \begin{align*}
+            \phi([(a,b)] \times [(c,d)]) &= \phi([(ac, bd)])\\
+            &= \frac{ac}{bd}\\
+            &= \frac ab \times \frac cd\\
+            &= \phi([(a,b)]) \times \phi([(c,d)])
+        \end{align*}
+        which shows that $\phi$ is a homomorphism.
+        
+        \item \textbf{Injective}: Suppose $[(a, b)], [(c, d)] \in \Frac{\Z}$ such that $\phi([(a, b)]) = \phi([(c, d)])$. Then $\frac ab = \frac cd$, meaning $ad = bc$. Hence $(a, b) \mathrel{\sim} (c, d)$ by definition of the equivalence relation on $\Frac{\Z}$, and so $[(a, b)] = [(c, d)]$ by \myref{thrm-equivalence-class-equivalence} again. Hence $\phi$ is injective.
+        
+        \item \textbf{Surjective}: Suppose $\frac ab \in \Q$ where $a, b \in \Z$ such that $b \neq 0$. Then note that $[(a, b)]$ is its pre-image since
+        \[
+            \phi([(a, b)]) = \frac ab
+        \]
+        which proves that $\phi$ is surjective.
+    \end{itemize}
+    So $\phi$ is a well-defined isomorphism, meaning $\Frac{\Z} \cong \Q$.
+\end{example}
+\begin{remark}
+    When working with maps between the field of fractions, one must take care to prove that the map is well-defined.
+\end{remark}
+
+\begin{example}\label{example-field-of-fractions-of-gaussian-integers-isomorphic-to-quadratic-integers-of-i}
+    We prove the less obvious fact that $\Frac{\Z[i]}$ is isomorphic to $\Q[i]$. Again, we denote the an equivalence class of $\Frac{\Z[i]}$ by $[(w, z)]$.
+    
+    Define the map $\phi: \Frac{\Z[i]} \to \Q[i]$ where $\phi([(w, z)]) = \frac wz$. One can check that $\frac wz$ is indeed in $\Q[i]$, since if $w = a+bi\in\Z[i]$ and $z = c+di\Z[i]$ with $z \neq 0$ then
+    \begin{align*}
+        \frac{a+bi}{c+di} &= \frac{(a+bi)(c-di)}{c^2 - d^2i^2}\\
+        &= \frac{ac-adi+bci-bdi^2}{c^2+d^2}\\
+        &= \frac{(ac+bd) - (ad-bc)i}{c^2+d^2}\\
+        &= \frac{ac+bd}{c^2+d^2} - \frac{ad-bc}{c^2+d^2}i,
+    \end{align*}
+    which is an element of $\Q[i]$.
+
+    We note that the proof that $\phi$ is well-defined is similar to that of the previous example (just with renaming some variables), so we omit it here. Similarly, the proof that $\phi$ is a homomorphism and is injective is also very similar (again, renaming some variables), so we also omit it here. We only prove that $\phi$ is surjective.
+
+    Let $\frac ab + \frac cd i \in \Q[i]$. By combining fractions, one can see that $\frac ab + \frac cd i = \frac{ad+(bc)i}{bd}$. So let $w = ad + (bc)i$ and $z = bd$. Clearly $ad + bc(i) \in \Z[i]$, and $bd \in \Z$ which means $bd \in \Z[i]$. We also note that since $b\neq 0$ and $d \neq 0$, therefore $bd \neq 0$. Hence we see
+    \[
+        \phi([(ad+(bc)i, bd)]) = \frac{ad+(bc)i}{bd} = \frac ab + \frac cd i \in \Q[i]
+    \]
+    which proves that $\phi$ is surjective.
+
+    So $\phi$ is a well-defined isomorphism, meaning $\Frac{\Z[i]} \cong \Q[i]$.
+\end{example}
+
+\begin{exercise}
+    Prove or disprove the following statements.
+    \begin{partquestions}{\alph*}
+        \item $\Frac{\Z[x]} \cong \Q[x]$.
+        \item $\Frac{k\Z} \cong \Q$ for all $k \in \Z$.
+    \end{partquestions}
+\end{exercise}
 
 \section{Unique Factorization Domains (UFDs)}
 We now have the necessary terminology to formalize the idea of a unique factorization domain. Concisely, in a unique factorization domain $D$, for every non-zero non-unit element $x$ in $D$,
@@ -780,6 +859,14 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
 \section{Problems}
 \begin{problem}\label{problem-prime-element-divides-some-element-in-product}
     Let $D$ be an integral domain and $p$ a prime in $D$. Suppose $a_1, a_2, a_3, \dots, a_n$ are elements in $D$ such that $p \vert a_1a_2a_3\dots a_n$, where $n \geq 2$. Prove that $p \vert a_i$ for some $i \in \{1, 2, \dots, n\}$.
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field. Prove that $\Frac{F} \cong F$.  % TODO: Add solution
+\end{problem}
+
+\begin{problem}\label{problem-field-of-fractions-is-smallest-field-containing-integral-domain}
+    Prove \myref{thrm-field-of-fractions-is-smallest-field-containing-integral-domain}.  % TODO: Add solution
 \end{problem}
 % TODO: Add
 
