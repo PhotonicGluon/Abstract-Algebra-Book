@@ -833,21 +833,114 @@ We can finally prove the result that we have been alluding to since the start of
     Prove \myref{corollary-primitive-polynomial-irreducible-iff-polynomial-irreducible-in-field-of-fractions}.
 \end{exercise}
 
-\section{Euclidean Domains (EDs)}
 Clearly, proving that an integral domain is a UFD is a tedious ordeal. Hence, we would usually show that an integral domain is a `simpler' type of domain, such as a PID, to indirectly show that it is a UFD.
 
 \section{Euclidean Domains}
 We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) to achieve division with remainder. We also seen polynomial long division (\myref{thrm-polynomial-long-division}) which is also similar to the division lemma. We generalize these properties abstractly, into what is known as a Euclidean domain.
 
 \begin{definition}
-    An integral domain $D$ is called a \textbf{Euclidean domain (ED)}\index{Euclidean domain}\index{ED} if there is a function $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \textbf{norm}\index{Euclidean domain!norm} or \textbf{measure}\index{Euclidean domain!measure}, such that
+    An integral domain $D$ is called a \textbf{Euclidean domain}\index{Euclidean domain} if there is a function $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \textbf{norm}\index{Euclidean domain!norm} or \textbf{measure}\index{Euclidean domain!measure}, such that
     \begin{enumerate}
         \item for all non-zero $a$ and $b$ in $D$ we have $N(a) \leq N(ab)$; and
         \item if $n, d \in D$ and $d \neq 0$, then there exist elements $q$ and $r$ in $D$ such that $n = dq + r$, where $r = 0$ or $N(r) < N(d)$.
     \end{enumerate}
 \end{definition}
 
-\section{Summary of Domains}
+\begin{example}
+    The ring of integers, $\Z$, is a Euclidean domain with $N(a) = |a|$, the absolute value of $a$.
+    \begin{itemize}
+        \item One sees that
+        \[
+            |a| \leq |a||b| = |ab|
+        \]
+        for all $a,b\in \Z$, so the first property is satisfied.
+
+        \item The second property is satisfied due to Euclid's division lemma (\myref{lemma-euclid-division}).
+    \end{itemize}
+    Therefore $\Z$ is indeed a Euclidean domain with norm $N(a) = |a|$.
+\end{example}
+
+\begin{example}
+    Suppose $F$ is a field. Then $F[x]$ is a Euclidean domain, since we could choose $N(f(x)) = \deg f(x)$.
+    \begin{itemize}
+        \item One sees that
+        \[
+            \deg f(x) \leq \deg f(x) + \deg g(x) = \deg(f(x)g(x))
+        \]
+        by \myref{thrm-polynomial-degree-properties}, so the first property is satisfied.
+
+        \item The second property is satisfied by virtue of polynomial long division (\myref{thrm-polynomial-long-division}).
+    \end{itemize}
+    Therefore $F[x]$ is indeed a Euclidean domain.
+\end{example}
+
+\begin{example}
+    We claim that the Gaussian integers is a Euclidean domain. We choose the norm to be the quadratic integers norm, that is,
+    \[
+        N(a+bi) = a^2 - (i)^2b^2 = a^2+b^2.
+    \]
+    We show that this norm satisfies the two properties required.
+    \begin{itemize}
+        \item Since $N(xy) = N(x)N(y)$ for all $x,y \in \Z[i]$ (\myref{prop-properties-of-quadratic-integer-norm}), therefore $N(x) \leq N(x)N(y) = N(xy)$, satisfying the first property.
+        
+        \item For the second property, we note that for all $z, d \in \Z[i]$ with $d \neq 0$, we have $zd^{-1} \in \Q[i]$, which is isomorphic to the field of fractions of $\Z[i]$ (\myref{example-field-of-fractions-of-gaussian-integers-isomorphic-to-quadratic-integers-of-i}). So suppose $zd^{-1} = s + ti$ for some $s,t \in \Q$ and $t \neq 0$. Let $m$ be the integer closest to $s$ and $n$ the integer closest to $t$ (we note that these integers may not be unique, but we will see later that this does not matter). So
+        \[
+            |m - s| \leq \frac12 \text{ and } |n - t| \leq \frac12.
+        \]
+        One sees then that
+        \begin{align*}
+            zd^{-1} &= s + ti\\
+            &= (m - m + s) + (n - n + t)i\\
+            &= (m+ni) + \left((s-m) + (t-n)i\right)
+        \end{align*}
+        which therefore means
+        \[
+            z = (m+ni)d + \left((s-m) + (t-n)i\right)d.
+        \]
+
+        We claim that choosing $q = m + ni$ and $r = \left((s-m) + (t-n)i\right)d$ will satisfy the second property. Clearly $q \in \Z[i]$, and since $r = z - qd$, so does $r$. If $r = 0$ we are done. Otherwise, notice that
+        \begin{align*}
+            N(r) &= N\left(\left((s-m) + (t-n)i\right)d\right)\\
+            &= N((s-m) + (t-n)i)N(d) & (\text{property 1 of the norm})\\
+            &= \left((s-m)^2 + (t-n)^2\right) N(d)\\
+            &= \left(|s-m|^2 + |t-n|^2\right) N(d)\\
+            &\leq \left(\left(\frac12\right)^2 + \left(\frac12\right)^2\right)N(d)\\
+            &= \frac12 N(d)\\
+            &< N(d),
+        \end{align*}
+        so the norm satisfies the second property.
+    \end{itemize}
+    Therefore, $\Z[i]$ is a Euclidean domain.
+\end{example}
+
+We note two important facts.
+
+\begin{theorem}\label{thrm-field-is-euclidean-domain}
+    Every field is a Euclidean domain.
+\end{theorem}
+\begin{proof}
+    See \myref{exercise-field-is-euclidean-domain} (later).
+\end{proof}
+
+\begin{theorem}\label{thrm-euclidean-domain-is-PID}
+    Every Euclidean domain is a PID.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 18.4]{gallian_2016}})]
+    Let $D$ be a Euclidean domain with norm $N$. Clearly the trivial ideal, $\{0\}$, is just $\princ{0}$, so we suppose we have a non-trivial ideal $I$ from this point onwards. Choose an element $d \in I$ such that $N(d)$ is minimal among all elements of $I$.
+
+    Observe that since $d \in I$ we must have $rd \in I$ for any $r \in D$. Thus
+    \[
+        \princ{d} = \left\{rd \vert a \in D\right\} \subseteq I.
+    \]
+    
+    Now we show that $I \subseteq \princ{d}$. Since $D$ is a Euclidean domain, for any $x \in I$, we can find $q$ and $r$ within $D$ such that $x = qd + r$ where $r = 0$ or $N(r) < N(d)$. As $r = x - qd$, and since $x \in I$ and $d \in I$, we must have $r \in I$. We cannot have $N(r) < N(d)$ since that would contradict the minimality of $N(d)$; so $r = 0$. It follows that $x = qd$, i.e. $x \in \princ{d}$. Hence $I \subseteq \princ{d}$.
+
+    Since $\princ{d} \subseteq I$ and $I \subseteq \princ{d}$, thus $I = \princ{d}$, completing the proof that every ideal in $D$ is a principal ideal. Hence $D$ is a PID.
+\end{proof}
+
+\begin{exercise}\label{exercise-field-is-euclidean-domain}
+    Prove \myref{thrm-field-is-euclidean-domain}.
+\end{exercise}
 % TODO: Add
 % See https://www.math3ma.com/blog/the-integral-domain-hierarchy-part-1
 
