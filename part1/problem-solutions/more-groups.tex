@@ -28,24 +28,30 @@
     Now we are given that $r$ is an odd primitive root of $p^k$. Then $\gcd(r, 2p^k) = 1$ since $\gcd(r, p^k) = 1$ (as $r \in \Un{p^k}$). Now because $r$ is odd, thus $r \in \Un{2p^k}$. Let $n = |r|$ in $\Un{2p^k}$. Then by \myref{exercise-order-of-a-divides-phi-a}, $n$ divides $\totient(2p^k)$. But at the same time, $r$ is a generator in $\Un{p^k} \cong \Z_{\phi(p^k)}$, so $\totient(p^k) = \totient(2p^k)$ divides $n$ by \myref{lemma-order-of-an-element-that-is-equivalent-to-identity}. Since $n$ divides $\totient(2p^k)$ and $\totient(2p^k)$ divides $n$ simultaneously, therefore $n = \totient(2p^k) = |\Un{2p^k}|$ which means that $r$ is a primitive root modulo $2p^k$.
     
     \item \begin{partquestions}{\roman*}
-        \item The forward direction is clearly true so we only prove the reverse direction. Assume $f(g) = h(g)$. Note that
+        \item The forward direction is clearly true since if $f_1 = f_2$, then $f_1(x) = f_2(x)$ for all $x \in G$, including $g \in G$. For the reverse direction, assume $f_1(g) = f_2(g)$. Note that
         \[
-            f(g^k) = (f(g))^k = (h(g))^k = h(g^k)    
+            f_1(g^k) = (f_1(g))^k = (f_2(g))^k = f_2(g^k)    
         \]
-        for any integer $k$. Since $g$ is a generator, thus we have $f(x) = h(x)$ for all $x \in G$, meaning $f = h$.
+        for any integer $k$. Since $g$ is a generator, thus we have $f_1(x) = f_2(x)$ for all $x \in G$, meaning $f_1 = f_2$.
         
-        \item We note $f(g) \in G$. Since $g$ is a generator hence $f(g) = g^k$ for some $k$. Hence any homomorphism from $G$ to $G$ is of the form $f(g) = g^{m_f}$ where $0 \leq m_f \leq n-1$.
+        \item We note $f(g) \in G$. Since $g$ is a generator hence $f(g) = g^k$ for some $k$. Hence any homomorphism from $G$ to $G$ is of the form $f(g) = g^{m_f}$ where $0 \leq m_f \leq n-1$, which means $m_f \in \Z_n$.
         
-        \item Consider $f(h(g))$. On one hand,
+        \item Suppose $f_2: G \to G$ is another homomorphism where $f_2(g) = g^{m_f}$. Then
         \[
-            f(h(g)) = f(g^{m_h}) = (f(g))^{m_h} = g^{m_fm_h},
+            f(g) = g^{m_f} = f_2(g)
+        \]
+        which means $f = f_2$ by \textbf{(i)}. Hence the value of $m_f$ is unique to $f$.
+        
+        \item Consider $f_1(f_2(g))$. On one hand,
+        \[
+            f_1(f_2(g)) = f_1(g^{m_{f_2}}) = (f_1(g))^{m_{f_2}} = g^{m_{f_1}m_{f_2}},
         \]
         while on the other,
         \[
-            f(h(g)) = (f \circ h)(g) = g^{m_{f\circ h}}.     
+            f_1(f_2(g)) = (f_1 \circ f_2)(g) = g^{m_{f_1\circ f_2}}
         \]
-        Therefore $m_{f\circ h} \equiv m_fm_h \pmod n$. In other words, $m_{f\circ h} = m_f \otimes_n m_h$.
-        
+        by definition of $m_f$ as introduced in \textbf{(ii)}. Therefore $m_{f_1\circ f_2} \equiv m_{f_1}m_{f_2} \pmod n$. In other words, $m_{f_1\circ f_2} = m_{f_1} \otimes_n m_{f_2}$.
+
         \item We prove the forward direction first by assuming that $f$ is an automorphism. Hence $f$ is surjective, meaning that there exists an $a \in G$ such that $f(a) = g$. Since $a \in G$ thus $a = g^k$ for some $k \in \Z_n$ (we will show $k \in \Un{n}$ later). Observe
         \[
             g = f(a) = f(g^k) = (f(g))^k = g^{m_fk}        
@@ -65,9 +71,17 @@
         
         \item We prove that $\phi$ is an isomorphism.
         \begin{itemize}
-            \item \textbf{Homomorphism}: Let $f, h \in \Aut{G}$. Then $\phi(f\circ h) = m_{f\circ h} = m_f \otimes_n m_h = \phi(f)\otimes_n\phi(h)$.
-            \item \textbf{Injective}: Suppose we have $f, h \in \Aut{G}$ such that $\phi(f) = \phi(h)$, meaning $m_f = m_h$. By \textbf{(i)} and \textbf{(ii)}, the value of $m$ uniquely defines a homomorphism from $G$ to $G$. Hence $f = h$.
-            \item \textbf{Surjective}: Suppose $r \in \Un{n}$. Define $f: G \to G$ where $f(g) = g^r$. Since $r \in \Un{n}$ it has a multiplicative inverse, which means that $f$ is an automorphism by \textbf{(iii)}. Clearly $\phi(f) = r$, so $r$ has a pre-image.
+            \item \textbf{Homomorphism}: Let $f_1, f_2 \in \Aut{G}$. Then
+            \begin{align*}
+                \phi(f_1\circ f_2) &= m_{f_1\circ f_2} & (\text{definition of } m_f \text{ in }\textbf{(ii)})\\
+                &= m_{f_1} \otimes_n m_{f_2} & (\text{by \textbf{(iv)}})\\
+                &= \phi(f_1)\otimes_n\phi(f_2),
+            \end{align*}
+            which means $\phi$ is a homomorphism.
+
+            \item \textbf{Injective}: Suppose we have $f_1, f_2 \in \Aut{G}$ such that $\phi(f_1) = \phi(f_2)$. Thus $m_{f_1} = m_{f_2}$ by definition of $\phi$. However, we know that the value of $m$ uniquely defines a homomorphism from $G$ to $G$ from \textbf{(iii)}. Hence $f_1 = f_2$, which shows that $\phi$ is injective.
+            
+            \item \textbf{Surjective}: Suppose $r \in \Un{n}$. Define $f: G \to G$ where $f(g) = g^r$. Since $r \in \Un{n}$ it has a multiplicative inverse, which means that $f$ is an automorphism by \textbf{(v)}. Clearly $\phi(f) = r$, so $r$ has a pre-image. So $\phi$ is surjective.
         \end{itemize}
         Hence $\phi$ is an isomorphism, meaning $\Aut{G} \cong \Un{n}$.
     \end{partquestions}
