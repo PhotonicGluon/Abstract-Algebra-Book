@@ -105,7 +105,7 @@
         
         \item Prove. Define $\phi: \Frac{k\Z} \to \Q$ by $\phi([(ka, kb)]) = \frac ab$. We show that this is a well-defined isomorphism.
         \begin{itemize}
-            \item \textbf{Well-defined}: Suppose $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$ such that $[(ka,kb)]=[(kc,kd)]$. Then $(ka, kb) \mathrel{\sim} (kc, kd)$ by \myref{thrm-equivalence-class-equivalence}, i.e. $k^2ad = k^2bc$. Hence one sees clearly that $\frac ab = \frac cd$. Therefore,
+            \item \textbf{Well-defined}: Suppose $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$ where $[(ka,kb)]=[(kc,kd)]$. Then $(ka, kb) \mathrel{\sim} (kc, kd)$ by \myref{thrm-equivalence-class-equivalence}, i.e. $k^2ad = k^2bc$. Hence one sees clearly that $\frac ab = \frac cd$. Therefore,
             \[
                 \phi([(ka,kb)]) = \frac ab = \frac cd = \phi([(kc, kd)])
             \]
@@ -129,7 +129,7 @@
             \end{align*}
             which shows that $\phi$ is a homomorphism.
             
-            \item \textbf{Injective}: Suppose $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$ such that $\phi([(ka, kb)]) = \phi([(kc, kd)])$. Then $\frac ab = \frac cd$, meaning $ad = bc$. Hence $(ka, kb) \mathrel{\sim} (kc, kd)$ by definition of the equivalence relation on $\Frac{k\Z}$, and so $[(ka, kb)] = [(kc, kd)]$ by \myref{thrm-equivalence-class-equivalence} again. Hence $\phi$ is injective.
+            \item \textbf{Injective}: Let $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$ such that $\phi([(ka, kb)]) = \phi([(kc, kd)])$. Then $\frac ab = \frac cd$, meaning $ad = bc$. Hence $(ka, kb) \mathrel{\sim} (kc, kd)$ by definition of the equivalence relation on $\Frac{k\Z}$, and so $[(ka, kb)] = [(kc, kd)]$ by \myref{thrm-equivalence-class-equivalence} again. Hence $\phi$ is injective.
             
             \item \textbf{Surjective}: Suppose $\frac ab \in \Q$ where $a, b \in \Z$ such that $b \neq 0$. Then note that $[(ka, kb)]$ is its pre-image since
             \[
@@ -146,7 +146,14 @@
 
     \item We prove the contrapositive of the forward direction. Suppose $f(x)$ is reducible in $D[x]$. Then, since $f(x)$ is primitive, $f(x) = p(x)q(x)$ for some non-unit polynomials $p(x), q(x) \in D[x]$. Therefore $p(x), q(x) \in \Frac{D}$, which are non-units in $\Frac{D}$. Thus $f(x) = p(x)q(x)$ for some non-unit polynomials in $p(x), q(x) \in \Frac{D}$, so $f(x)$ is reducible in $\Frac{D}$.
 
-    We now prove the contrapositive of the reverse direction. Suppose $f(x)$ is reducible in $\Frac{D}$, so there exists non-constant polynomials $p(x), q(x) \in \Frac{D}$ such that $f(x) = p(x)q(x)$. By \myref{lemma-reducible-in-field-of-fractions-means-reducible-in-UFD} there exists polynomials $P(x), Q(x) \in D[x]$ such that $f(x) = P(x)Q(x)$ and $\deg P(x) = \deg p(x)$ and $\deg Q(x) = \deg q(x)$. Hence $f(x)$ is reducible in $D[x]$.
+    We now prove the contrapositive of the reverse direction. Suppose $f(x)$ is reducible in $\Frac{D}$, so there exists non-constant polynomials $p(x), q(x) \in \Frac{D}$ such that $f(x) = p(x)q(x)$. Then there exists polynomials $P(x), Q(x) \in D[x]$ such that $f(x) = P(x)Q(x)$ and $\deg P(x) = \deg p(x)$ and $\deg Q(x) = \deg q(x)$ by \myref{lemma-reducible-in-field-of-fractions-means-reducible-in-UFD}. Hence $f(x)$ is reducible in $D[x]$.
 
     \item For a field $F$, choose the norm to be $N(x) = 1$ for any $x \in F$. Clearly the first property is satisfied since $1 = N(x) \leq N(xy) = 1$ for any $x,y\in F$. For the second property, for any $n, d \in F$, we can write $n = (nd^{-1})d + 0$. Note $nd^{-1}$ exists since we are in a field, so the second property is satisfied. Therefore $F$ is a Euclidean domain.
+    
+    \item We note
+    \begin{itemize}
+        \item all fields are Euclidean domains by \myref{thrm-field-is-euclidean-domain};
+        \item all Euclidean domains are PIDs by \myref{thrm-euclidean-domain-is-PID}; and
+        \item all PIDs are UFDs by \myref{thrm-PID-is-UFD}.
+    \end{itemize}
 \end{questions}
