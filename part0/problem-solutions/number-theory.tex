@@ -7,6 +7,15 @@
         ab = \gcd(a,b)\lcm(a,b) = \gcd(a,b)a^2.
     \]
     Let $d = \gcd(a,b)$, so $ab = da^2$ which means $b = da$. Note $\lcm(a,b) = \lcm(a, da) = da$, so $a^2 = da$ which means $d = a$. Therefore $b = a^2$.
+
+    \item Note
+    \begin{align*}
+        5^{2n+3} &= 5^3 \times 5^{2n}\\
+        &= 125 \times 25^n \\
+        &\equiv (5) \times (1)^n & (\text{since } 25 \equiv 1 \pmod8 \text{ and } 125 \equiv 8 \pmod8)\\
+        &= 5 \pmod8
+    \end{align*}
+    so $5^{2n+3} \equiv 5 \pmod8$ for all positive integers $n$.
     
     \item Note that
     \begin{align*}
@@ -14,6 +23,43 @@
         &= {n \choose 1}n + {n \choose 2}n^2 + \cdots + {n \choose n}n^n.
     \end{align*}
     From the second term onwards we see that they are all multiples of $n^2$; the first term is exactly $n^2$. Therefore $n^2 \vert (1+n)^n - 1$ for all positive integers $n$.
+
+    \item We induct on $n$.
+    
+    When $n = 1$, clearly $7^{3^1} = 7^3 = 343$ which is a multiple of 9.
+
+    Now assume that $7^{3^k} \equiv 1 \pmod9$ for some positive integer $k$; we show that $7^{3^{k+1}} \equiv 1 \pmod9$ for $k + 1$.
+
+    Note
+    \begin{align*}
+        7^{3^{k+1}} &= 7^{3\times3^k}\\
+        &= \left(7^{3^k}\right)^3\\
+        &\equiv 1^3 & (\text{by induction hypothesis})\\
+        &= 1 \pmod9
+    \end{align*}
+    so the statement holds for $k+1$.
+
+    Therefore by mathematical induction we see $7^{3^n} \equiv 1 \pmod9$ for all positive integers $n$.
+
+    \item Consider any integer $x$; it has to have a remainder of 0, 1, 2, or 3 when divided by 4. Thus we consider 4 cases.
+    \begin{itemize}
+        \item If $x \equiv 0 \pmod4$, then $x^2 \equiv 0 \pmod4$.
+        \item If $x \equiv 1 \pmod4$, then $x^2 \equiv 1 \pmod4$.
+        \item If $x \equiv 2 \pmod4$, then $x^2 \equiv 4 \equiv 0 \pmod4$.
+        \item If $x \equiv 3 \pmod4$, then $x^2 \equiv 9 \equiv 1 \pmod4$.
+    \end{itemize}
+    In any case, the remainder of any perfect square modulo 4 is either 0 or 1. If it is 1, then $x$ is odd; if it is 0 then $x$ is even. Thus if $x$ is an even perfect square then $x^2$ necessarily has to have a remainder 0 modulo 4, i.e. $x^2$ is a multiple of 4. Therefore no such even perfect square exists.
+
+    \item We work modulo 1000 to find the last 3 digits of the number. We note that $57^1 = 57$, $57^2 = 3249 \equiv 249 \pmod{1000}$, $57^3 = 185193 \equiv 193 \pmod{1000}$, and $57^4 = 10556001 \equiv 1 \pmod{1000}$. We note that powers of 57 cycle between 57, 249, 193, and 1 when taking modulo 1000.
+    
+    Note $2023 = 4\times505+3$, so we see
+    \begin{align*}
+        57^{2023} &= 57^{4\times505+3}\\
+        &= 57^3 \times \left(57^4\right)^{505}\\
+        &\equiv 193 \times 1^{505}\\
+        &= 193 \pmod{1000}
+    \end{align*}
+    which means $57^{2023}$ ends in 193.
 
     \item \begin{partquestions}{\roman*}
         \item We induct on $n$.
@@ -60,6 +106,20 @@
 
         Finally, since $n^4 - n^2 = (-n)^4 - (-n)^2$, this also holds for negative values of $n$.
     \end{partquestions}
+
+    \item Since $n$ and $a$ are coprime, therefore there exist integers $\lambda$ and $\mu$ such that
+    \[
+        \lambda n + \mu a = 1
+    \]
+    by B\'ezout's lemma (\myref{lemma-bezout}). Multiplying both sides by $b$ yields
+    \[
+        \lambda nb + \mu ab = b.
+    \]
+    Since $n \vert ab$ by assumption, thus $ab = kn$ for some integer $k$. Therefore
+    \[
+        \lambda nb + \mu kn = n(\lambda b + \mu k) = b.
+    \]
+    which means that $b$ is divisible by $n$ as required.
     
     \item \begin{partquestions}{\roman*}
         \item By B\'{e}zout's Lemma (\myref{lemma-bezout}) we can find integers $x$ and $y$ such that $ax + by = \gcd(a, b)$. For brevity let $d = \gcd(a,b)$, so $ax+by=d$.
@@ -77,7 +137,7 @@
 
         Also as $d$ divides both $a$ and $b$, thus $d^2$ divides both $a^2$ and $b^2$. Therefore we see that $d^2 \vert \gcd(a^2, b^2)$ by \myref{prop-gcd-divides-common-divisor}.
 
-        Therefore, as $\gcd(a^2, b^2) \vert d^2$ and $d^2 \vert \gcd(a^2, b^2)$ therefore $d^2 = (\gcd(a,b))^2 = \gcd(a^2, b^2)$.
+        Therefore, as $\gcd(a^2, b^2) \vert d^2$ and $d^2 \vert \gcd(a^2, b^2)$, one obtains the fact that $d^2 = (\gcd(a,b))^2 = \gcd(a^2, b^2)$.
 
         \item We see that
         \begin{align*}
@@ -89,18 +149,4 @@
         \end{align*}
         so $\lcm(a^2,b^2) = (\lcm(a,b))^2$.
     \end{partquestions}
-
-    \item Since $n$ and $a$ are coprime, therefore there exist integers $\lambda$ and $\mu$ such that
-    \[
-        \lambda n + \mu a = 1
-    \]
-    by B\'ezout's lemma (\myref{lemma-bezout}). Multiplying both sides by $b$ yields
-    \[
-        \lambda nb + \mu ab = b.
-    \]
-    Since $n \vert ab$ by assumption, thus $ab = kn$ for some integer $k$. Therefore
-    \[
-        \lambda nb + \mu kn = n(\lambda b + \mu k) = b.
-    \]
-    which means that $b$ is divisible by $n$ as required.
 \end{questions}

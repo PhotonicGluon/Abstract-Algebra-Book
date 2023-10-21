@@ -4,7 +4,7 @@ One of the underappreciated facts about working with polynomials with real coeff
 \section{(Ir)reducible Polynomials}
 We formally define what (ir)reducible polynomials are in a polynomial ring that is an integral domain.
 \begin{definition}
-    Let $D$ be an integral domain and $f(x) \in D[x]$ be a non-zero, non-unit polynomial. Then $f(x)$ is \textbf{irreducible over $D$}\index{polynomial!irreducible} if, whenever we write $f(x) = p(x)q(x)$ for some polynomials $p(x)$ and $q(x)$ in $D[x]$, then either $p(x)$ is a unit or $q(x)$ is a unit in $D[x]$.
+    Let $D$ be an integral domain and $f(x) \in D[x]$ be a non-zero, non-unit polynomial. Then $f(x)$ is \textbf{irreducible over $D$}\index{polynomial!irreducible}\index{irreducible!polynomial} if, whenever we write $f(x) = p(x)q(x)$ for some polynomials $p(x)$ and $q(x)$ in $D[x]$, then either $p(x)$ is a unit or $q(x)$ is a unit in $D[x]$.
 
     A non-zero, non-unit polynomial that is not irreducible over $D$ is said to be \textbf{reducible over $D$}\index{polynomial!reducible}.
 \end{definition}
@@ -47,7 +47,7 @@ It is often more useful to talk about irreducible polynomials over a field. In t
 \section{Tests for (Ir)reducibility}
 Trying to see if a polynomial is (ir)reducible by definition is not a trivial task. For example, it is hard to see that $x^2 + 1$ is irreducible over $\Z_3$ but reducible over $\Z_5$ by just using the definition directly. Therefore we develop some tests for (ir)reducibility to more easily see which polynomials are reducible or irreducible.
 
-\subsection{Zeroes Of A Polynomial}
+\subsection{Zeroes of a Polynomial}
 The first test is a consequence of the factor theorem.
 \begin{theorem}\label{thrm-degree-above-1-reducible-if-has-zero}
     Let $F$ be a field and $f(x) \in F[x]$ have degree above 1. If $f(x)$ has a zero then $f(x)$ is reducible.
@@ -110,15 +110,15 @@ The next test provides a partial converse to the above theorem for polynomials o
 Before we introduce the next test, which involves polynomials with integer coefficients, we first introduce some terminology and a lemma to ease the proof of the test.
 
 \begin{definition}
-    The \textbf{content}\index{polynomial!content} of a non-zero polynomial $f(x) \in \Z[x]$ is the GCD of its coefficients.
+    Let $D$ be an integral domain. The \textbf{content}\index{polynomial!content} of a non-zero polynomial $f(x) \in D[x]$ is the GCD of its coefficients.
 \end{definition}
 
 \begin{definition}
-    A \textbf{primitive polynomial}\index{polynomial!primitive} is a non-zero polynomial $f(x) \in \Z[x]$ with content 1.
+    Let $D$ be an integral domain. A \textbf{primitive polynomial}\index{polynomial!primitive} is a non-zero polynomial $f(x) \in D[x]$ with content 1.
 \end{definition}
 
-\begin{lemma}[Gauss]\label{lemma-gauss}\index{Gauss's Lemma}
-    The product of two primitive polynomials is primitive.
+\begin{lemma}[Gauss]\label{lemma-gauss-for-integer-coefficients}\index{Gauss's Lemma!for integer coefficients}
+    The product of two primitive polynomials in $\Z[x]$ is primitive.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[p.~291]{gallian_2016}})]
     Seeking a contradiction, suppose $f(x)$ and $g(x)$ are primitive polynomials with a non-primitive product $h(x) = f(x)g(x)$. Therefore the content of $h(x)$ is not 1; in fact it is at least 2, meaning the content of $h(x)$ is either prime or composite.
@@ -147,7 +147,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
     \[
         ab \times f(x) = C_pC_q \times P(x)Q(x).
     \]
-    As $f(x)$ is primitive, thus the content of $ab \times f(x)$ is $ab$. The product of primitive polynomials is primitive (\myref{lemma-gauss}), so $P(x)Q(x)$ is also primitive; the content of $C_pC_q \times P(x)Q(x)$ is therefore $C_pC_q$. So $ab = C_pC_q$.
+    As $f(x)$ is primitive, thus the content of $ab \times f(x)$ is $ab$. The product of primitive polynomials is primitive (\myref{lemma-gauss-for-integer-coefficients}), so $P(x)Q(x)$ is also primitive; the content of $C_pC_q \times P(x)Q(x)$ is therefore $C_pC_q$. So $ab = C_pC_q$.
     
     Dividing both sides by $ab = C_pC_q$ leaves $f(x) = P(x)Q(x)$, where both $P(x)$ and $Q(x)$ are polynomials with integer coefficients. Note that
     \begin{align*}
@@ -450,8 +450,8 @@ We reveal the first connection in the following theorem.
 \begin{proof}
     We first prove the forward direction. Assume that $f(x)$ is irreducible over $D$, and let $M = \princ{f(x)}$. Suppose we have an ideal $I$ of $D[x]$ such that $M \subseteq I \subseteq D[x]$. Since $D[x]$ is a PID, we know that $I = \princ{g(x)}$ for some $g(x) \in D[x]$. Note $f(x) \in I$ so $f(x) = g(x)h(x)$ for some polynomial $h(x) \in D[x]$. Since $f(x)$ is irreducible over $D$, thus either $g(x)$ or $h(x)$ is a unit.
     \begin{itemize}
-        \item If $g(x)$ is a unit, then $I = D[x]$ by \myref{exercise-ideal-containing-1-is-whole-ring}.
-        \item If $h(x)$ is a unit, say $h(x) = u \in D$, then $I = \princ{uf(x)} = \princ{f(x)} = M$.
+        \item If $g(x)$ is a unit, then $I = D[x]$ by \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring}.
+        \item If $h(x)$ is a unit, say $h(x) = u \in D$, then $I = \princ{uf(x)} = \princ{f(x)} = M$ (\myref{prop-principal-ideals-equal-iff-associates}).
     \end{itemize}
     Thus $M$ is a maximal ideal.
 
@@ -463,7 +463,7 @@ We reveal the first connection in the following theorem.
     \]
     which thus means $r(x)q(x) = 1$, and so $q(x)$ is a unit, contradicting the original assumption that neither $p(x)$ nor $q(x)$ are units. Thus $p(x) \notin \princ{f(x)}$. But clearly $p(x) \in \princ{p(x)}$, so $\princ{f(x)} \subset \princ{p(x)}$.
 
-    As $M = \princ{f(x)}$ is maximal, and since $M \subset \princ{p(x)} \subseteq D[x]$, thus $\princ{p(x)} = D[x]$. But $p(x)$ is not a unit, so there is not a $k(x) \in \princ{p(x)}$ such that $p(x)k(x) = 1$. In particular, this means no element of $\princ{p(x)}$ are units, and so $\princ{p(x)} \neq D[x]$ (\myref{exercise-ideal-containing-1-is-whole-ring}), the contradiction we wish to achieve. Therefore, at least one of $p(x)$ or $q(x)$ is a unit, meaning that $f(x)$ is irreducible.
+    As $M = \princ{f(x)}$ is maximal, and since $M \subset \princ{p(x)} \subseteq D[x]$, thus $\princ{p(x)} = D[x]$. But $p(x)$ is not a unit, so there is not a $k(x) \in \princ{p(x)}$ such that $p(x)k(x) = 1$. In particular, this means no element of $\princ{p(x)}$ are units, and so $\princ{p(x)} \neq D[x]$ (\myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring}), the contradiction we wish to achieve. Therefore, at least one of $p(x)$ or $q(x)$ is a unit, meaning that $f(x)$ is irreducible.
 \end{proof}
 
 We note two corollaries of this theorem.
@@ -630,6 +630,10 @@ With this theorem and corollaries, we are able to construct finite fields with p
 
 \begin{problem}
     Assuming $\sqrt2$ is a real number, and by considering the polynomial $x^2 - 2$, prove that $\sqrt2$ is irrational.
+\end{problem}
+
+\begin{problem}\label{problem-primitive-degree-1-polynomial-in-Z[x]-is-irreducible}
+    Prove that any primitive degree 1 polynomial in $\Z[x]$ is irreducible.
 \end{problem}
 
 \begin{problem}

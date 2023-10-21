@@ -1,6 +1,72 @@
 # Abstract Algebra Book Changelog
 
 ---
+## [1st Edition, Build 24](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.23...v1-build.24)
+
+### General Content Changes
+- Merged chapters on number theory and modular arithmetic into one; all chapters' numbers in parts 1 and 2 have been reduced by 1.
+
+### Part 0 (Preliminaries) Changes
+- Fixed wrongly capitalized statement variables in example 2.3.2.
+- Minor format changes to chapter 2.
+- Renamed and reformatted chapter 5 to become "Relations and Functions".
+- Added relations, equivalence relations, and equivalence classes to chapter 5.
+- Merged chapters on number theory and modular arithmetic into one.
+- Fixed an incorrect property of division.
+- Fixed typo of Bézout's lemma in problem 6.9.
+
+### Part I (Groups) Changes
+- Edited problem 14.4 and its solution to be more precise.
+
+### Part II (Rings) Changes
+- Fixed improper capitalisation for "Gaussian integers".
+- Added new proposition 20.4.7 on the product of units.
+- Edited problem 20.9.
+- Converted the exercise proving that an ideal is the original ring if and only if it has a unit into proposition 22.2.12.
+- Added new proposition 22.4.3 in relation to problem 22.9.
+- Added new chapter 26 on domains and factorization.
+
+### Other Changes
+- Changed some subsections'/sections' titles to be more consistent with the title case format.
+
+---
+## [1st Edition, Build 23](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.22...v1-build.23)
+
+### General Content Changes
+- Fixed some exercises' solutions formatting (especially misaligned/mispositioned tables).
+
+### Part 0 (Preliminaries) Changes
+- Added axiom of reciprocity to chapter 4 (as axiom 4.1.16).
+
+### Part I (Groups) Changes
+- Added further remark on definition of $\mathbb{Z}_n$ in chapter 9.
+- Amended definition of subgroup in chapter 10.
+- Fixed typo in the proof of theorem 15.1.2.
+- Added more detail in proof of theorem 15.1.2.
+- Fixed typo in example 15.3.6.
+- Fixed typo in the proof of proposition 15.5.3.
+- Fixed minor formatting ugliness in definition 15.6.2.
+
+### Part II (Rings) Changes
+- Added proofs that $\mathbb{Q}$, $\mathbb{R}$, and $\mathbb{C}$ are fields into chapter 21.
+- Amended definition of subring in chapter 21.
+- Added definition for what a domain is into chapter 22.
+- Updated exercise 23.2, part (ii), to become an if and only if statement.
+- Added definition of ring automorphisms into chapter 24.
+- Updated some exercises and problems in chapter 24 to use automorphisms.
+- Fixed wording of problem 25.12 part (ii).
+- Added new chapter 26 on factorization of polynomials.
+
+### Other Changes
+- Updated image acknowledgements section.
+- Updated frequently used notation.
+- Updated dedication page.
+- Changed background colours for environments.
+- Added bolding for math in notes for theorems.
+- Fixed appendix title page falling on the wrong side of the book, again.
+- Updated `.gitignore`.
+
+---
 ## [1st Edition, Build 22](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-21...v1-build.22)
 
 ### General Content Changes
