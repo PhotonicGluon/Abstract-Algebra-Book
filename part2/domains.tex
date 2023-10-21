@@ -959,17 +959,100 @@ Explaining why the rest class inclusions are true are left for \myref{exercise-d
 \newpage
 
 \section{Problems}
+\begin{problem}
+    Prove that if a prime $p$ can be written as $a^2+b^2$ where $a$ and $b$ are integers, then $a+bi$ is a Gaussian prime.
+\end{problem}
+
 \begin{problem}\label{problem-prime-element-divides-some-element-in-product}
     Let $D$ be an integral domain and $p$ a prime in $D$. Suppose $a_1, a_2, a_3, \dots, a_n$ are elements in $D$ such that $p \vert a_1a_2a_3\dots a_n$, where $n \geq 2$. Prove that $p \vert a_i$ for some $i \in \{1, 2, \dots, n\}$.
 \end{problem}
 
 \begin{problem}
-    Let $F$ be a field. Prove that $\Frac{F} \cong F$.  % TODO: Add solution
+    Determine whether the following Gaussian integers are Gaussian primes, proving your claims.
+    \begin{multicols}{3}
+        \begin{partquestions}{\alph*}
+            \item 6
+            \item 7
+            \item 13
+            \item $1+2i$
+            \item $3+4i$
+            \item $5+i$
+        \end{partquestions}
+    \end{multicols}
 \end{problem}
 
-\begin{problem}\label{problem-field-of-fractions-is-smallest-field-containing-integral-domain}
-    Prove \myref{thrm-field-of-fractions-is-smallest-field-containing-integral-domain}.  % TODO: Add solution
+\begin{problem}
+    Let $D$ be an integral domain. Define a relation $R$ on $D$ such that $a\mathrel{R}b$ if and only if $a$ and $b$ are associates. Prove that $R$ is an equivalence relation.
 \end{problem}
-% TODO: Add
 
-% TODO: Add Sicherman Dice
+\begin{problem}
+    Expand the polynomials $(3x+2)(x+4)$ and $(4x+1)(2x+3)$ in $\Z_5[x]$. Does this result contradict \myref{corollary-polynomial-ring-over-field-is-UFD}?
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field. Prove that $\Frac{F} \cong F$.
+\end{problem}
+
+\begin{problem}
+    Prove that $\Z[\sqrt{-6}]$ is not a UFD.\newline
+    (\textit{Hint: show that some specific elements are irreducible, and then factor 6 in two ways.})
+\end{problem}
+
+\begin{problem}
+    Let $D$ be a UFD and let $p \in D$. Prove that $p$ is irreducible if and only if $p$ is prime.
+\end{problem}
+
+\begin{problem}
+    Let $D$ be a Euclidean domain with norm $N$. Prove the following statements.
+    \begin{partquestions}{\alph*}
+        \item $a,b \in D$ are associates if $N(a) = N(b)$.
+        \item $u$ is a unit in $D$ if and only if $N(u) = N(1)$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Suppose $D$ is an integral domain and $\phi$ is a non-constant function from $D$ to $\mathbb{N} \cup \{0\}$ such that $\phi(xy) = \phi(x)\phi(y)$ for all $x,y\in D$. Prove that if $u$ is a unit in $D$ then $\phi(u) = 1$.
+\end{problem}
+
+\begin{problem}
+    Prove that, for any field $F$, there exist infinitely many irreducible polynomials in $F[x]$.
+\end{problem}
+
+\begin{problem}
+    Prove that for every non-trivial ideal $I$ of the Gaussian integers, the quotient ring $\Z[i]/I$ is finite.
+\end{problem}
+
+\newpage
+
+\begin{problem}[Sicherman Dice]
+    Consider
+    \[
+        P(x) = (x + x^2 + x^3 + x^4 + x^5 + x^6)^2
+    \]
+    in the polynomial ring $\Z[x]$.
+    \begin{partquestions}{\roman*}
+        \item Explain why the coefficient of the term of degree $k$ (where $2 \leq k \leq 12$) gives exactly the number of ways that a pair of two dice could sum to $k$.
+        
+        \item Factor $P(x)$ into a product of irreducible polynomials. Prove that the factorization, indeed, consists only of irreducible polynomials.
+        
+        \item Define the polynomials
+        \begin{align*}
+            f(x) &= x^{a_1} + x^{a_2} + x^{a_3} + x^{a_4} + x^{a_5} + x^{a_6} \text{ and}\\
+            g(x) &= x^{b_1} + x^{b_2} + x^{b_3} + x^{b_4} + x^{b_5} + x^{b_6},
+        \end{align*}
+        where each $a_i$ and $b_i$ are positive integers. Suppose $P(x) = f(x)g(x)$. Based on \textbf{(ii)}, explain why
+        \[
+            f(x) = x^q(x+1)^r(x^2+x+1)^s(x^2-x+1)^t
+        \]
+        where $0 \leq q,r,s,t \leq 2$.
+
+        \item Show $r = s = 1$, and $q \neq 0$. Note that we define $0^0 = 1$ for this part only.\newline
+        (\textit{Hint: compute $f(1)$ in two ways. Then compute $f(0)$ in two ways.})
+
+        \item Explain why $q \neq 2$.
+        
+        \item Hence, show that one possible choice of $a_1, a_2, \dots, a_6$ is 1, 2, 2, 3, 3, and 4. Find the other choice(s).
+        
+        \item Deduce the labels of a pair of dice (that are not the standard labels of 1 to 6 on both dice) that will lead to the same likelihood of rolling a sum of, say, $k$ (where $2 \leq k \leq 12$), as regular dice.
+    \end{partquestions}
+\end{problem}
