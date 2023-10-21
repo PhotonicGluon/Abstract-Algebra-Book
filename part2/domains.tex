@@ -831,7 +831,7 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
 
 \begin{definition}
     An integral domain $D$ is called a \textbf{Euclidean domain}\index{Euclidean domain} if there is a function $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \textbf{norm}\index{Euclidean domain!norm} or \textbf{measure}\index{Euclidean domain!measure}, such that
-    \begin{enumerate}
+    \begin{enumerate}[leftmargin=3em,label=\textbf{EF\arabic*}.]
         \item for all non-zero $a$ and $b$ in $D$ we have $N(a) \leq N(ab)$; and
         \item if $n, d \in D$ and $d \neq 0$, then there exist elements $q$ and $r$ in $D$ such that $n = dq + r$, where $r = 0$ or $N(r) < N(d)$.
     \end{enumerate}
@@ -844,9 +844,9 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
         \[
             |a| \leq |a||b| = |ab|
         \]
-        for all $a,b\in \Z$, so the first property is satisfied.
+        for all $a,b\in \Z$, so \textbf{EF1} is satisfied.
 
-        \item The second property is satisfied due to Euclid's division lemma (\myref{lemma-euclid-division}).
+        \item \textbf{EF2} is satisfied due to Euclid's division lemma (\myref{lemma-euclid-division}).
     \end{itemize}
     Therefore $\Z$ is indeed a Euclidean domain with norm $N(a) = |a|$.
 \end{example}
@@ -858,23 +858,23 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
         \[
             \deg f(x) \leq \deg f(x) + \deg g(x) = \deg(f(x)g(x))
         \]
-        by \myref{thrm-polynomial-degree-properties}, so the first property is satisfied.
+        by \myref{thrm-polynomial-degree-properties}, so \textbf{EF1} is satisfied.
 
-        \item The second property is satisfied by virtue of polynomial long division (\myref{thrm-polynomial-long-division}).
+        \item \textbf{EF2} is satisfied by virtue of polynomial long division (\myref{thrm-polynomial-long-division}).
     \end{itemize}
     Therefore $F[x]$ is indeed a Euclidean domain.
 \end{example}
 
-\begin{example}
+\begin{example}\label{example-gaussian-integers-is-euclidean-domain}
     We claim that the Gaussian integers is a Euclidean domain. We choose the norm to be the quadratic integers norm, that is,
     \[
         N(a+bi) = a^2 - (i)^2b^2 = a^2+b^2.
     \]
     We show that this norm satisfies the two properties required.
     \begin{itemize}
-        \item Since $N(xy) = N(x)N(y)$ for all $x,y \in \Z[i]$ (\myref{prop-properties-of-quadratic-integer-norm}), therefore $N(x) \leq N(x)N(y) = N(xy)$, satisfying the first property.
+        \item Since $N(xy) = N(x)N(y)$ for all $x,y \in \Z[i]$ (\myref{prop-properties-of-quadratic-integer-norm}), therefore $N(x) \leq N(x)N(y) = N(xy)$, satisfying \textbf{EF1}.
         
-        \item For the second property, we note that for all $z, d \in \Z[i]$ with $d \neq 0$, we have $zd^{-1} \in \Q[i]$, which is isomorphic to the field of fractions of $\Z[i]$ (\myref{example-field-of-fractions-of-gaussian-integers-isomorphic-to-quadratic-integers-of-i}). So suppose $zd^{-1} = s + ti$ for some $s,t \in \Q$ and $t \neq 0$. Let $m$ be the integer closest to $s$ and $n$ the integer closest to $t$ (we note that these integers may not be unique, but we will see later that this does not matter). So
+        \item For \textbf{EF2}, we note that for all $z, d \in \Z[i]$ with $d \neq 0$, we have $zd^{-1} \in \Q[i]$, which is isomorphic to the field of fractions of $\Z[i]$ (\myref{example-field-of-fractions-of-gaussian-integers-isomorphic-to-quadratic-integers-of-i}). So suppose $zd^{-1} = s + ti$ for some $s,t \in \Q$ and $t \neq 0$. Let $m$ be the integer closest to $s$ and $n$ the integer closest to $t$ (we note that these integers may not be unique, but we will see later that this does not matter). So
         \[
             |m - s| \leq \frac12 \text{ and } |n - t| \leq \frac12.
         \]
@@ -899,7 +899,7 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
             &= \frac12 N(d)\\
             &< N(d),
         \end{align*}
-        so the norm satisfies the second property.
+        so the norm satisfies \textbf{EF2}.
     \end{itemize}
     Therefore, $\Z[i]$ is a Euclidean domain.
 \end{example}
