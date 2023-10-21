@@ -74,6 +74,8 @@ For now, we note that $N(xy) = N(x)N(y)$ for all $x, y \in \Z[\sqrt{d}]$. We wil
     Hence it is possible for an irreducible to not be a prime.
 \end{example}
 
+\newpage
+
 We note one property of irreducibles.
 \begin{proposition}\label{prop-associates-of-irreducible-is-irreducible}
     In an integral domain, associates of an irreducible are irreducible.
@@ -251,7 +253,6 @@ We are now ready to define the ring of quadratic integers.
     Let $d$ be a square-free integer that is not 1. Prove that $x \in \Z[\sqrt{d}]$ is irreducible if $N(x) = p$, where $p$ is a prime number.
 \end{exercise}
 
-We look at more examples of irreducible elements in $\Z[\sqrt{d}]$.
 \begin{example}
     We claim that 7 is irreducible in $\Z[\sqrt{5}]$. Suppose $7 = xy$ where neither $x$ nor $y$ is a unit. Then note
     \[
@@ -597,7 +598,7 @@ Of course, UFDs are very abstract in this sense. However, we shall soon see that
 Before we can state the theorem though, we need to introduce the ascending chain condition.
 
 \begin{definition}
-    Let $R$ be a ring. The \textbf{ascending chain condition on principal ideals (ACCP)}\index{ascending chain condition on principal ideals}\index{ACCP} is satisfied if every strictly increasing sequence of principal ideals 
+    The \textbf{ascending chain condition on principal ideals (ACCP)} of a ring $R$\index{ascending chain condition on principal ideals of a ring}\index{ACCP} is satisfied if every strictly increasing sequence of principal ideals 
     \[
         I_1 \subset I_2 \subset I_3 \subset \cdots
     \]
@@ -830,7 +831,7 @@ Clearly, proving that an integral domain is a UFD is a tedious ordeal. Hence, we
 We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) to achieve division with remainder. We also seen polynomial long division (\myref{thrm-polynomial-long-division}) which is also similar to the division lemma. We generalize these properties abstractly, into what is known as a Euclidean domain.
 
 \begin{definition}
-    An integral domain $D$ is called a \textbf{Euclidean domain}\index{Euclidean domain} if there is a function $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \textbf{norm}\index{Euclidean domain!norm} or \textbf{measure}\index{Euclidean domain!measure}, such that
+    An integral domain $D$ is called a \textbf{Euclidean domain}\index{Euclidean domain} if there is a function $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \textbf{norm}\index{Euclidean domain!norm} or \textbf{measure}\index{Euclidean domain!measure}, that satisfies the following properties.
     \begin{enumerate}[leftmargin=3em,label=\textbf{EF\arabic*}.]
         \item for all non-zero $a$ and $b$ in $D$ we have $N(a) \leq N(ab)$; and
         \item if $n, d \in D$ and $d \neq 0$, then there exist elements $q$ and $r$ in $D$ such that $n = dq + r$, where $r = 0$ or $N(r) < N(d)$.
@@ -913,16 +914,15 @@ We note two important facts.
     See \myref{exercise-field-is-euclidean-domain} (later).
 \end{proof}
 
+\newpage
+
 \begin{theorem}\label{thrm-euclidean-domain-is-PID}
     Every Euclidean domain is a PID.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 18.4]{gallian_2016}})]
     Let $D$ be a Euclidean domain with norm $N$. Clearly the trivial ideal, $\{0\}$, is just $\princ{0}$, so we suppose we have a non-trivial ideal $I$ from this point onwards. Choose an element $d \in I$ such that $N(d)$ is minimal among all elements of $I$.
 
-    Observe that since $d \in I$ we must have $rd \in I$ for any $r \in D$. Thus
-    \[
-        \princ{d} = \left\{rd \vert a \in D\right\} \subseteq I.
-    \]
+    Observe that since $d \in I$ we must have $rd \in I$ for any $r \in D$. Thus we see that $\princ{d} = \left\{rd \vert a \in D\right\} \subseteq I$.
     
     Now we show that $I \subseteq \princ{d}$. Since $D$ is a Euclidean domain, for any $x \in I$, we can find $q$ and $r$ within $D$ such that $x = qd + r$ where $r = 0$ or $N(r) < N(d)$. As $r = x - qd$, and since $x \in I$ and $d \in I$, we must have $r \in I$. We cannot have $N(r) < N(d)$ since that would contradict the minimality of $N(d)$; so $r = 0$. It follows that $x = qd$, i.e. $x \in \princ{d}$. Hence $I \subseteq \princ{d}$.
 
@@ -1024,7 +1024,7 @@ Explaining why the rest class inclusions are true are left for \myref{exercise-d
 
 \newpage
 
-\begin{problem}[Sicherman Dice]
+\begin{problem}[Sicherman Dice]\index{Sicherman Dice}
     Consider
     \[
         P(x) = (x + x^2 + x^3 + x^4 + x^5 + x^6)^2
