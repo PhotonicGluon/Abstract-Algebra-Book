@@ -1,5 +1,5 @@
 \chapter{Rings and Encryption}
-Rings have practical use in the real world. Recently, with the threat of quantum computers breaking traditional encryption such as the Rivest-Shamir-Adleman (RSA) encryption scheme, post-quantum encryption schemes were developed. We look at the NTRU encryption scheme, a polynomial-based and allegedly post-quantum resistant encryption scheme.
+Rings have practical use in the real world. Recently, with the threat of quantum computers breaking traditional encryption such as the Rivest-Shamir-Adleman (RSA) encryption scheme, post-quantum encryption schemes were developed. We look at the NTRU encryption scheme as described in \cite{hoffstein_pipher_silverman_1996}, a polynomial-based and allegedly post-quantum resistant encryption scheme.
 
 \section{Cryptosystems}\index{cryptosystem}
 The study and use of methods for secure information sharing when third parties are present is known as cryptography. Within cryptography, there are different cryptosystems, which are systems that has their own encryption, decryption, and key generation methods.
@@ -18,7 +18,75 @@ The Caesar Cipher cryptosystem is what is known as a \textbf{private key cryptos
 In contrast, most encryption algorithms that form the backbone of communication on the internet are \textbf{public key cryptosystems}\index{cryptosystem!public key}. In such a system, both an encryption key and decryption key are generated. The encryption key is known to everyone who wants to communicate, while the decryption key is kept secret. Hence, the encryption key is called the \textbf{public key}\index{public key} and the decryption key is called the \textbf{private key}\index{private key}. It is often the case that the public key is \textit{different} to that of the private key, which is why most public key systems are also called \textbf{asymmetric cryptography}\index{asymmetric cryptography}. NTRU is an example of such a cryptosystem.
 
 \section{Truncated Polynomial Rings}
-%TODO: Add
+NTRU (as described in \cite{hoffstein_pipher_silverman_1998}) uses the truncated polynomial ring
+\[
+    R = \Z[x] / \princ{x^N - 1}
+\]
+where $N$ is a positive integer. An element in $R$ takes the form
+\[
+    \sum_{i=0}^{N-1}a_ix^i + \princ{x^N - 1} = a_0 + a_1x + a_2x^2 + \cdots + a_{N-1}x^{N-1} + \princ{x^N - 1}.
+\]
+However, since all polynomials will have the trailing $\princ{x^N - 1}$ at the end, we instead call an element in $R$ a `polynomial' (although it is not strictly a polynomial) and write an element $f(x) \in R$ by
+\[
+    f(x) = \sum_{i=0}^{N-1}f_ix^i
+\]
+where we follow the notation of \cite{hoffstein_pipher_silverman_1996,hoffstein_pipher_silverman_1998} and let the coefficients be written like above.
+
+\begin{example}
+    Let us work through an example of `polynomial addition' within $R$ for $N = 5$. Let $f(x) = x^3 + x + 2$ and $g(x) = 2x^4 + 5x^2 + 8x$ be `polynomials' in $R$. Then
+    \begin{align*}
+        f(x) + g(x) &= (x^3 + x + 2) + (2x^4 + 5x^2 + 8x)\\
+        &= 2x^4 + x^3 + 5x^2 + 9x + 2
+    \end{align*}
+    which is an element in $R$.
+    
+    The trouble comes with `polynomial multiplication', where we see
+    \begin{align*}
+        f(x)g(x) &= (x^3 + x + 2)(2x^4 + 5x^2 + 8x)\\
+        &= (2x^7 + 5x^5 + 8x^4) + (2x^5 + 5x^3 + 8x^2) + (4x^4 + 10x^2 + 16x)\\
+        &= 2x^7 + 7x^5 + 12x^4 + 5x^3 + 18x^2 + 16x
+    \end{align*}
+    which, if we are using normal polynomial multiplication, is \textit{not} an element of $R$.
+
+    However, recall that every polynomial in $R$ has a `hidden' $\princ{x^N - 1}$ at their end. In this case, the hidden ideal is $I = \princ{x^5-1}$; so in fact we can reduce their product $f(x)g(x)$,
+    \begin{align*}
+        f(x)g(x) &= 2x^7 + 7x^5 + 12x^4 + 5x^3 + 18x^2 + 16x + I\\
+        &= (2x^2(x^5-1) + 7(x^5-1) + 2x^2 + 7) + (12x^4 + 5x^3 + 18x^2 + 16x) + I\\
+        &= (2x^2+7)(x^5-1) + (12x^4 + 5x^3 + (18 + 2)x^2 + 16x + 7) + I\\
+        &= (12x^4 + 5x^3 + 20x^2 + 16x + 7) + I,
+    \end{align*}
+    which means that in $R$ our original product is `equal' to $12x^4 + 5x^3 + 20x^2 + 16x + 7$.
+\end{example}
+
+Such polynomials in $R$ shall henceforth be called \textbf{truncated polynomials}\index{truncated polynomials}.
+
+In summary, the rules for `polynomial addition' and `polynomial multiplication' are as follows.
+\begin{itemize}
+    \item `Polynomial addition' is the same as regular polynomial addition.
+    \item `Polynomial multiplication' is almost the same as regular polynomial multiplication, except that for each integer $m$ greater than $N - 1$, we replace $x^m$ with $x^{m \mod N}$.
+\end{itemize}
+
+For NTRU to work, the polynomials that we choose must have inverses. In particular, NTRU will involve reducing the \textit{coefficients} modulo certain integers. Suppose $p$ is a positive integer that we want to reduce the coefficients modulo of (note that $p$ may not be prime; this is just the notation used in \cite{hoffstein_pipher_silverman_1998}). Then an inverse of $f(x) \in R$ is an $F_p(x) \in R$ such that
+\[
+    F_p(x)f(x) \equiv 1 \pmod p
+\]
+Again, we follow the notation used in \cite{hoffstein_pipher_silverman_1998}. Note that $f(x)$ may not have an inverse; this problem is not significant when we are actually performing the encryption, since we may just choose another $f(x)$.
+
+\begin{example}
+    We claim that $F_3(x) = 2x^4 + 2x^3 + x^2 + x + 2$ is an inverse of $f(x) = x^2 + 1$ in $R$ when $N = 5$ and $p = 3$. Note
+    \begin{align*}
+        F_3(x)f(x) &= (2x^4 + 2x^3 + x^2 + x + 2)(x^2+1)\\
+        &= 2x^6 + 2x^5 + 3x^4 + 3x^3 + 3x^2 + x + 2\\
+        &= 2x + 2 + 3x^4 + 3x^3 + 3x^2 + x + 2 & (\text{reduce powers modulo }N = 5)\\
+        &= 3x^4 + 3x^3 + 3x^2 + 3x + 4\\
+        &= 1 & (\text{reduce coefficients modulo } p = 3)
+    \end{align*}
+    so $F_3(x)$ is an inverse of $f(x)$ when $N = 5$ and $p = 3$.
+\end{example}
+
+\begin{exercise}
+    Find an inverse of $f(x) = x + 2$ when $N = 2$ and $p = 4$.
+\end{exercise}
 
 \section{NTRU}
 %TODO: Add preamble
