@@ -7,38 +7,21 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # CONSTANTS
-COVER_DIR = Path("cover")
-COVER_PAGE_FILE_NAME = "cover-page-background.svg"
-COVER_FULL_FILE_NAME = "cover-full-background.svg"
+BANNER_DIR = Path("../../images/banner")
+IMAGE_FILE_NAME = "banner-background.svg"
 
-SCALE_FACTOR = 10
-NUM_PAGES = 700  # Todo: check and update
-
-COVER_WIDTH = 174.62 * SCALE_FACTOR  # In mm
-COVER_HEIGHT = 247.65 * SCALE_FACTOR
-COVER_ASPECT_RATIO = COVER_HEIGHT / COVER_WIDTH
-OUTER_MARGIN_AND_BLEED = (3.17 + 3.17) * SCALE_FACTOR
-SPINE_WIDTH = 0.0572 * NUM_PAGES * SCALE_FACTOR
-FULL_WIDTH = OUTER_MARGIN_AND_BLEED + COVER_WIDTH + SPINE_WIDTH + COVER_WIDTH + OUTER_MARGIN_AND_BLEED
-FULL_HEIGHT = OUTER_MARGIN_AND_BLEED + COVER_HEIGHT + OUTER_MARGIN_AND_BLEED
+WIDTH = 1600
+HEIGHT = 900
+ASPECT_RATIO = HEIGHT / WIDTH
 DPI = 100
 
-COVER_MIN_X = -1.15
-COVER_MAX_X = 1.15
-COVER_RANGE_X = COVER_MAX_X - COVER_MIN_X
-PIXEL_PER_X = COVER_RANGE_X / COVER_WIDTH
-MIN_X = COVER_MIN_X - (SPINE_WIDTH + COVER_WIDTH + OUTER_MARGIN_AND_BLEED) * PIXEL_PER_X
-MAX_X = COVER_MAX_X + OUTER_MARGIN_AND_BLEED * PIXEL_PER_X
-
-COVER_MIN_Y = COVER_MIN_X * COVER_ASPECT_RATIO
-COVER_MAX_Y = COVER_MAX_X * COVER_ASPECT_RATIO
-COVER_RANGE_Y = COVER_MAX_Y - COVER_MIN_Y
-PIXEL_PER_Y = COVER_RANGE_Y / COVER_HEIGHT
-MIN_Y = COVER_MIN_Y - OUTER_MARGIN_AND_BLEED * PIXEL_PER_Y
-MAX_Y = COVER_MAX_Y + OUTER_MARGIN_AND_BLEED * PIXEL_PER_Y
+MIN_X = -2.
+MAX_X = 2.
+MIN_Y = MIN_X * ASPECT_RATIO
+MAX_Y = MAX_X * ASPECT_RATIO
 
 NUM_LINES = 2500
-LINES_ALPHA = 0.125
+LINES_ALPHA = 0.05
 NUM_CUSPS = 7  # Number of cusps to draw for the epicycloid
 OFFSET = 1.5 * pi / NUM_CUSPS  # Offset for the first plotted point
 # OFFSET = pi / NUM_CUSPS  # Offset for the first plotted point
@@ -114,28 +97,20 @@ def draw_inscribed_polygon(num_cusps, offset=pi / 7, line_colour="#ffffff", line
              zorder=1e6)  # High z-order to make polygon be on top
 
 
-def plot_figure(width, height, filename, x_range, y_range):
-    # Initialize plotting figure
-    plt.figure(figsize=(width / DPI, height / DPI), dpi=DPI, facecolor="black")
-    plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
-    plt.xlim(x_range)
-    plt.ylim(y_range)
-    plt.axis("off")
-
-    # Draw things
-    draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
-    draw_inscribed_polygon(NUM_CUSPS, offset=OFFSET, line_colour=POLYGON_LINE_COLOUR, line_alpha=POLYGON_LINE_ALPHA,
-                           line_thickness=POLYGON_LINE_THICKNESS, fill_colour=POLYGON_FILL_COLOUR,
-                           fill_alpha=POLYGON_FILL_ALPHA)
-
-    # Save result
-    plt.savefig(COVER_DIR / filename)
-    plt.close()
-
-
 # MAIN CODE
-print("Creating cover page only")
-plot_figure(COVER_WIDTH, COVER_HEIGHT, COVER_PAGE_FILE_NAME, (COVER_MIN_X, COVER_MAX_X), (COVER_MIN_Y, COVER_MAX_Y))
-print("Creating full cover")
-plot_figure(FULL_WIDTH, FULL_HEIGHT, COVER_FULL_FILE_NAME, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
-print("Done")
+# Initialize plotting figure
+plt.figure(figsize=(WIDTH / DPI, HEIGHT / DPI), dpi=DPI, facecolor="black")
+plt.subplots_adjust(left=0, right=1, top=1, bottom=0)
+plt.xlim(MIN_X, MAX_X)
+plt.ylim(MIN_Y, MAX_Y)
+plt.axis("off")
+
+# Draw things
+draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
+draw_inscribed_polygon(NUM_CUSPS, offset=OFFSET, line_colour=POLYGON_LINE_COLOUR, line_alpha=POLYGON_LINE_ALPHA,
+                       line_thickness=POLYGON_LINE_THICKNESS, fill_colour=POLYGON_FILL_COLOUR,
+                       fill_alpha=POLYGON_FILL_ALPHA)
+
+# Show result
+plt.savefig(BANNER_DIR / IMAGE_FILE_NAME)
+plt.close()
