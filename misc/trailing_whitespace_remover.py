@@ -4,6 +4,7 @@ import os
 # CONSTANTS
 DIRECTORY = ".."
 
+
 # FUNCTIONS
 def remove_trailing_whitespace(file):
     with open(file, "r") as f:

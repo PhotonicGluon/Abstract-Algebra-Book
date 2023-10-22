@@ -1,5 +1,5 @@
 \chapter{Factorization of Polynomials}
-One of the underappreciated facts about working with polynomials with real coefficients, like in high school, is that they can be factored simply. The idea of an `irreducible' polynomial is simple to understand within the reals -- it simply cannot be `broken down' into `smaller' polynomials without `breaking the rules'. We explore how polynomials are factored in a more general setting -- polynomial rings.
+One of the underappreciated facts about working with polynomials with real coefficients is that they can be factored simply. The idea of an `irreducible' polynomial is simple to understand within the reals -- it simply cannot be `broken down' into `smaller' polynomials. We explore how polynomials are factored in a more general setting -- polynomial rings.
 
 \section{(Ir)reducible Polynomials}
 We formally define what (ir)reducible polynomials are in a polynomial ring that is an integral domain.
@@ -53,7 +53,7 @@ The first test is a consequence of the factor theorem.
     Let $F$ be a field and $f(x) \in F[x]$ have degree above 1. If $f(x)$ has a zero then $f(x)$ is reducible.
 \end{theorem}
 \begin{proof}
-    Since $f(x)$ has a zero, say $\alpha \in F$, we may write $f(x) = (x-\alpha)q(x)$ (\myref{corollary-factor-theorem}). Note $\deg f(x) = \deg(x-\alpha) + \deg q(x) = 1 + \deg q(x)$ (\myref{thrm-polynomial-degree-properties}), and clearly $1 \leq \deg q(x) < \deg f(x)$ (since degree of $f(x)$ is above 1), so $f(x)$ is expressible as a product of two polynomials of lower degree in $F[x]$. Thus $f(x)$ is reducible over $F$. 
+    Since $f(x)$ has a zero, say $\alpha \in F$, we may write $f(x) = (x-\alpha)q(x)$ (\myref{corollary-factor-theorem}). Note $\deg f(x) = \deg(x-\alpha) + \deg q(x) = 1 + \deg q(x)$ (\myref{thrm-polynomial-degree-properties}), and clearly $1 \leq \deg q(x) < \deg f(x)$ (since degree of $f(x)$ is above 1), so $f(x)$ is expressible as a product of two polynomials of lower degree in $F[x]$. Thus $f(x)$ is reducible over $F$ (\myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}). 
 \end{proof}
 
 The next test provides a partial converse to the above theorem for polynomials of degree 2 or 3.
@@ -71,7 +71,7 @@ The next test provides a partial converse to the above theorem for polynomials o
         &= (-b+b)q(\alpha)\\
         &= 0.
     \end{align*}
-    Since $\alpha \in F$ thus $\alpha$ is a zero of $f(x)$. Hence $f(x)$ has a zero in $F$.
+    Since $\alpha \in F$ thus $\alpha$ is a zero of $f(x)$ in $F$.
 \end{proof}
 
 \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes} is particularly useful for finite fields, since we just have to check all elements of the field for a zero.
@@ -187,13 +187,6 @@ Before we introduce the next test, which involves polynomials with integer coeff
 \end{exercise}
 
 \subsection{Mod $p$ Irreducibility Test}
-We covered some reducibility tests in the previous section; each of their contrapositives can be considered as irreducibility tests, as listed below:
-\begin{itemize}
-    \item For a field $F$ and a degree 2 or 3 polynomial $f(x) \in F[x]$, $f(x)$ is irreducible if and only if $f(x)$ has no zeroes. (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes})
-    \item If $f(x) \in \Z[x]$ is irreducible over $\Z$ then it is irreducible over $\Q$. (\myref{thrm-irreducible-over-Z-means-irreducible-over-Q})
-\end{itemize}
-We look at more irreducibility tests, starting with one that is related to \myref{thrm-irreducible-over-Z-means-irreducible-over-Q}.
-
 \begin{theorem}[Mod $p$ Irreducibility Test]\label{thrm-mod-p-irreducibility-test}\index{Mod $p$ Irreducibility Test}
     Let $p$ be a prime and suppose $f(x) \in \Z[x]$ is a non-constant polynomial. Let $\bar{f}(x) \in \Z_p[x]$ be the polynomial obtained after reducing all coefficients of $f(x)$ modulo $p$. If $\bar{f}(x)$ is irreducible over $\Z_p$ and $\deg \bar{f}(x) = \deg f(x)$ then $f(x)$ is irreducible over $\Q$.
 \end{theorem}
@@ -217,7 +210,7 @@ We look at more irreducibility tests, starting with one that is related to \myre
 \begin{example}
     Consider now $f(x) = 2x^2 + 3x + 4$.
     
-    We note that reducing $f(x)$ modulo 2 yields $3x$, but we cannot use \myref{thrm-mod-p-irreducibility-test} on it since $3x$ is of smaller degree than $f(x)$.
+    We note that reducing $f(x)$ modulo 2 yields $3x$, but we cannot use the Mod 2 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}) on it since $3x$ is of smaller degree than $f(x)$.
 
     If instead we reduce $f(x)$ modulo 3, we get the polynomial $\bar{f}(x) = 2x^2 + 1$. But one sees clearly that $\bar{f}(1) = 2(1)^2 + 1 = 3 = 0$ in $\Z_3$, so $\bar{f}(x)$ is reducible modulo 3 (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
 
@@ -246,9 +239,9 @@ The Mod $p$ Irreducibility Test can also be used to check for irreducibility of 
         \item $\bar{F}(0) = 0^4 + 0 + 1 = 1 \neq 0$; and
         \item $\bar{F}(1) = 1^4 + 1 + 1 = 3 = 1 \neq 0$
     \end{itemize}
-    so $\bar{F}(x)$ has no zeroes in $\Z_2$. Now we \textit{cannot} conclude that $F(x)$ is irreducible at this juncture as $\bar{F}(x)$ is a degree 4 polynomial, and \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes} only applies to degree 2 or 3 polynomials. We need to be more creative.
+    so $\bar{F}(x)$ has no zeroes in $\Z_2$. Note we \textit{cannot} conclude that $F(x)$ is irreducible at this juncture as $\bar{F}(x)$ is a degree 4 polynomial, and \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes} only applies to degree 2 and degree 3 polynomials. We need to do more work to conclude that $F(x)$ is irreducible.
 
-    Seeking a contradiction, suppose that $\bar{F}(x) = p(x)q(x)$ where $p(x), q(x) \in \Z_2[x]$ are polynomials with lower degree than $\bar{F}(x)$. Note neither $p(x)$ nor $q(x)$ can be linear, as this would imply that $\bar{F}(x)$ has a zero in $\Z_2$ (which it does not). So both $p(x)$ and $q(x)$ are quadratic factors. There are 4 quadratic factors in $\Z_2[x]$:
+    Seeking a contradiction, suppose that $\bar{F}(x) = p(x)q(x)$ where $p(x), q(x) \in \Z_2[x]$ are polynomials with lower degree than $\bar{F}(x)$. Note neither $p(x)$ nor $q(x)$ can be linear, as this would imply that $\bar{F}(x)$ has a zero in $\Z_2$ (which it does not). So both $p(x)$ and $q(x)$ are quadratic factors. There are 4 distinct quadratic polynomials in $\Z_2[x]$:
     \begin{enumerate}
         \item $x^2$;
         \item $x^2 + 1$;
@@ -263,7 +256,7 @@ The Mod $p$ Irreducibility Test can also be used to check for irreducibility of 
     \end{align*}
     which is not $\bar{F}(x)$, a contradiction. Thus $\bar{F}(x)$ is irreducible over $\Z_2$.
 
-    Since $\bar{F}(x)$ is irreducible, thus $F(x)$ is also irreducible by Mod 2 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}). By contrapositive of \myref{thrm-irreducible-over-Z-means-irreducible-over-Q} we know $F(x)$ is irreducible over $\Q$, thus $f(x)$ is irreducible over $\Q$.
+    Since $\bar{F}(x)$ is irreducible, thus $F(x)$ is irreducible in $\Q$ by Mod 2 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}). Hence $f(x) = \frac1{15} F(x)$ is irreducible over $\Q$.
 \end{example}
 
 \subsection{Eisenstein's Criterion}
@@ -283,14 +276,14 @@ We now look at another irreducibility test, given by Gotthold Eisenstein in 1850
     then $f(x)$ is irreducible over $\Q$.
 \end{theorem}
 \begin{proof}
-    Seeking a contradiction, suppose that $f(x)$ is reducible over $\Q$, so $f(x)$ is also reducible over $\Z$. By contrapositive of \myref{thrm-irreducible-over-Z-means-irreducible-over-Q} this means there exist non-constant polynomials $g(x),h(x) \in \Z[x]$ with degree smaller than that of $f(x)$ such that $f(x) = g(x)h(x)$.
+    Seeking a contradiction, suppose that $f(x)$ is reducible over $\Q$. Thus $f(x)$ is also reducible over $\Z$, and in fact, there exist non-constant polynomials $g(x),h(x) \in \Z[x]$ with degree smaller than that of $f(x)$ such that $f(x) = g(x)h(x)$ (\myref{thrm-irreducible-over-Z-means-irreducible-over-Q}).
 
     Write
     \begin{align*}
         g(x) &= b_0 + b_1x + \cdots + b_rx^r\\
         h(x) &= c_0 + c_1x + \cdots + c_sx^s
     \end{align*}
-    where $0 < r, s < n$. Note $a_0 = b_0c_0$. Since $p \vert a_0$ but $p^2 \nmid a_0$ thus $p$ divides exactly one of $b_0$ and $c_0$. Without loss of generality assume $p \vert b_0$ and $p \nmid c_0$. Note also that $a_n = b_rc_s$ and $p \nmid a_n$. Thus $p \nmid b_r$. So there must exist a smallest integer $t$, where $0 < t \leq r$, such that $p \nmid b_t$.
+    where $0 < r, s < n$. Note $a_0 = b_0c_0$. Since $p \vert a_0$ but $p^2 \nmid a_0$ thus $p$ divides exactly one of $b_0$ and $c_0$. Without loss of generality assume $p \vert b_0$ and $p \nmid c_0$. Note also that $a_n = b_rc_s$ and $p \nmid a_n$ by assumption. Thus $p \nmid b_r$. So there must exist a smallest integer $t$, where $0 < t \leq r$, such that $p \nmid b_t$.
 
     Consider the coefficient of the degree $t$ term in $f(x)$, which is
     \[
@@ -310,7 +303,7 @@ We now look at another irreducibility test, given by Gotthold Eisenstein in 1850
 \end{example}
 
 \begin{exercise}
-    Find a polynomial $f(x) \in \Z[x]$ of degree $n \geq 1$ that is irreducible over $n$.
+    Let $n$ be an arbitrary positive integer. Find a polynomial $f(x) \in \Z[x]$ of degree $n$ that is irreducible over $\Q$.
 \end{exercise}
 
 \section{Irreducibility via Transformation}
@@ -494,14 +487,14 @@ We now look at a polynomial analog of Euclid's lemma (\myref{corollary-euclid}).
     Prove \myref{corollary-irreducible-polynomial-division-rule}.
 \end{exercise}
 
-With this theorem and corollaries, we are able to construct finite fields with prime-power elements. Suppose we desire a field with $p^k$ elements. 
+With this theorem and corollaries, we are able to construct finite fields with prime-power number of elements. Suppose we desire a field with $p^k$ elements. 
 \begin{itemize}
     \item If $k = 1$ then we know $\Z_p$ is a field of $p^k = p$ elements.
     \item Otherwise, by finding an irreducible polynomial of degree $k$ in $\Z_p[x]$, say $f(x)$, we can see that
     \[
         \Z_p[x]/\princ{f(x)} = \left\{a_0 + a_1x + a_2x^2 + \cdots + a_{k-1}x^{k-1} + \princ{f(x)} \vert a_i \in \Z_p\right\}
     \]
-    has is a field of degree $p^k$ (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}).
+    is a field of degree $p^k$ (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}).
 \end{itemize}
 
 \begin{example}

@@ -35,13 +35,13 @@ Thus, in a sense, it is only meaningful to talk about associates when we restric
 
 We now look at irreducibles and primes.
 \begin{definition}
-    Let $D$ be an integral domain and $x \in D$. Then $x$ is an \textbf{irreducible}\index{irreducible!element} if and only if, when $x$ is written as $x = pq$ where $p, q \in D$, then either $p$ is a unit or $q$ is a unit.
+    Let $D$ be an integral domain and $x \in D$. Then $x$ is an \textbf{irreducible}\index{irreducible!element} if and only if, when $x$ is written as $x = pq$ where $p, q \in D$, either $p$ is a unit or $q$ is a unit.
 \end{definition}
 \begin{definition}
     Let $D$ be an integral domain and $p \in D$. Then $p$ is a \textbf{prime}\index{prime} if $p$ is not a unit and, for all $a, b \in D$, we have $p \vert ab$ implies $p \vert a$ or $p \vert b$.
 \end{definition}
 
-We note that the above definition of irreducibles is similar to that of irreducible polynomials, and the definition of primes is similarly defined to that of prime ideals. In fact, we have the following theorem linking prime \textit{elements} to prime \textit{ideals}.
+We note that the definition of irreducibles is similar to that of irreducible polynomials, and the definition of primes is similarly defined to that of prime ideals. In fact, we have the following theorem linking prime \textit{elements} to prime \textit{ideals}.
 \begin{theorem}\label{thrm-prime-element-iff-generates-prime-ideal}
     Let $D$ be an integral domain and $p \in D$. Then $p$ is prime if and only if $\princ{p}$ is prime.
 \end{theorem}
@@ -60,14 +60,14 @@ Let $d$ be a square-free integer not equal to 1. We note that the set
 \[
     \Z[\sqrt{d}] = \left\{a + b\sqrt{d} \vert a,b \in \Z\right\}
 \]
-forms an integral domain. We will leave proving that this is indeed an integral domain to the next section. We also define the norm, the map $N: \Z[\sqrt{d}] \to \Z$ where
+forms an integral domain. We will leave proving that this is indeed an integral domain to the next section. We also define the map $N: \Z[\sqrt{d}] \to \Z$ where
 \[
-    N(a+b\sqrt{d}) = |a^2 - db^2|.
+    N(a+b\sqrt{d}) = |a^2 - db^2|,
 \]
-For now, we note that $N(xy) = N(x)N(y)$ for all $x, y \in \Z[\sqrt{d}]$. We will prove this and other properties of the norm later.
+called the norm. For now, we note that $N(xy) = N(x)N(y)$ for all $x, y \in \Z[\sqrt{d}]$. We will prove this and other properties of the norm later.
 
 \begin{example}
-    We show that it is possible for an irreducible in $D = \Z[\sqrt{-3}]$ to not be prime. Note that $N(a+b\sqrt{-3}) = a^2 + 3b^2$. Let $r = 1 + \sqrt{-3}$.
+    We show that it is possible for an irreducible in $\Z[\sqrt{-3}]$ to not be prime. Note that $N(a+b\sqrt{-3}) = a^2 + 3b^2$. Let $r = 1 + \sqrt{-3}$.
     \begin{itemize}
         \item We claim that $r$ is irreducible. Seeking a contradiction, suppose $r = xy$ where neither $x$ nor $y$ is a unit. Then $N(r) = N(x)N(y) = N(1+\sqrt{-3}) = 4$. It follows that, since $x$ and $y$ are not units, that $N(x) = N(y) = 2$. But, there are no integers $a$ and $b$ such that $a^2 + 3b^2 = 2$ required for $x$ (and $y$), a contradiction. Therefore $x$ or $y$ is a unit, meaning that $r$ is irreducible.
 
@@ -129,7 +129,7 @@ If we are working in a principal ideal domain then we have a stronger result.
 We alluded to quadratic integers in the previous section; we make it formal what they are here.
 
 \begin{definition}
-    Let $d$ be a square-free integer not equal to 1. The \textbf{quadratic field}\index{quadratic field} of $d$ is
+    Let $d$ be a square-free integer not equal to 1. The \textbf{quadratic field}\index{quadratic field} is
     \[
         \Q[\sqrt{d}] = \{a + b\sqrt{d} \vert a,b\in\Q\}.
     \]
@@ -175,7 +175,7 @@ As discussed in the previous section, there is a function, called the norm, that
     \]
 \end{definition}
 \begin{remark}
-    Most texts prefer to define the norm \textit{without} the absolute value. However, as we will see later, defining it with the absolute value makes some properties easier to reason.
+    Most texts prefer to define the norm \textit{without} the absolute value. However, as we will see below, defining it with the absolute value makes some properties easier to reason.
 \end{remark}
 
 \begin{proposition}\label{prop-properties-of-quadratic-integer-norm}
@@ -290,7 +290,7 @@ We are now ready to define the ring of quadratic integers.
 \end{exercise}
 
 \section{Field of Fractions}
-We have been avoiding a construct that would usually be introduced early on in an exploration of rings: the Field of Fractions of an integral domain. This is because they had no purpose being introduced that early; we do so now because their use would help in an explanation of a property of a specific type of domains later.
+We have been avoiding a construct that would usually be introduced early on in an exploration of rings: the field of fractions of an integral domain. This is because they had no purpose being introduced that early; we do so now because their use would help in an explanation of a property of a specific type of domains later.
 
 We know that every field is an integral domain (\myref{prop-field-is-integral-domain}), but not all integral domains are fields. The most familiar example would be the integers, which is an integral domain that is not a field. However, we may construct the rational numbers, which is a field, from the integers via fractions. We form an analogous process for constructing `fractions' based off an integral domain.
 
@@ -332,9 +332,9 @@ Clearly, we have a few things to prove in the above definition of the field of f
         \item \textbf{Transitive}: Suppose $(a,b)\mathrel{\sim}(c,d)$ and $(c,d)\mathrel{\sim}(e,f)$. Thus $ad = bc$ and $cf = de$. Multiplying both sides of $ad = bc$ by $f$, one sees
         \begin{align*}
             (af)d &= (ad)f\\
-            &= (bc)f\\
+            &= (bc)f & (ad = bc)\\
             &= b(cf)\\
-            &= b(de)\\
+            &= b(de) & (cf = de)\\
             &= (be)d
         \end{align*}
         so $af = be$ by cancellation law (\myref{prop-domain-cancellation-law}). Hence $(a,b)\mathrel{\sim}(e,f)$, meaning $\sim$ is transitive.
@@ -357,7 +357,7 @@ With the equivalence relation verified, we can now check that the operations def
         (a_1d_1+b_1c_1)(b_2d_2) &= a_1d_1b_2d_2 + b_1c_1b_2d_2\\
         &= a_1b_2d_1d_2 + b_1b_2c_1d_2\\
         &= (a_1b_2)d_1d_2 + b_1b_2(c_1d_2)\\
-        &= (b_1a_2)d_1d_2 + b_1b_2(d_1c_2)\\
+        &= (b_1a_2)d_1d_2 + b_1b_2(d_1c_2) & (a_1b_2 = b_1a_2 \text{ and } c_1d_2 = d_1c_2)\\
         &= b_1d_1a_2d_2 + b_1d_1b_2c_2\\
         &= (b_1d_1)(a_2d_2 + b_2c_2)
     \end{align*}
@@ -461,6 +461,7 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
     \begin{align*}
         \frac ab \times \frac ba &= \frac{ab}{ba}\\
         &= \frac{ab}{ab} & (\text{since } D \text{ is commutative})\\
+        &= \frac11\\
         &= 1
     \end{align*}
     so every non-zero element of $\Frac{D}$ has an inverse, i.e. every non-zero element of $\Frac{D}$ is a unit.
@@ -615,7 +616,7 @@ Before we can state the theorem though, we need to introduce the ascending chain
 \begin{proof}
     Let $I_1 \subset I_2 \subset \cdots$ be a chain of strictly increasing ideals in a PID $D$. Let
     \[
-        I = \bigcup_{i=1} I_k
+        I = \bigcup_{i=1} I_i
     \]
     be the union of all the ideals in this chain. We show that $I$ is indeed an ideal. First, let $a,b\in I$ and $r \in D$. Then $a \in I_i$ and $b \in I_j$ for some $i$ and $j$. Set $k$ to be the larger of $i$ and $k$. Since we have a strict inclusion in the chain, we must have $a \in I_k$ and $b \in I_k$. Thus, since $I_k$ is an ideal, $a - b \in I_k \subseteq I$ and $ra, ar \in I_k \subseteq I$. Therefore $I$ is an ideal by test for ideal (\myref{thrm-test-for-ideal}).
 
@@ -641,7 +642,7 @@ We are now ready to state an important theorem, with very useful corollaries.
     \]
     is a strictly increasing chain of ideals by \myref{exercise-princ-ab-subset-of-b-iff-a-not-unit} (later). Using \myref{lemma-pid-satisfies-accp} we know that the above chain is finite, say
     \[
-        \princ{a_0} \subset \princ{a_1} \subset \princ{a_2} \subset \princ{a_r}.
+        \princ{a_0} \subset \princ{a_1} \subset \princ{a_2} \subset \cdots \subset \princ{a_r}.
     \]
     In particular, by our construction, we know that $a_r$ is an irreducible factor of $a_0$, which means every non-zero non-unit element of $D$ has at least one irreducible factor.
 
@@ -661,7 +662,7 @@ We are now ready to state an important theorem, with very useful corollaries.
     \]
     where each $p_i$ and $q_j$ are irreducible. We induct on $n$.
 
-    When $n = 1$, we have $a = p_1$, which means $a$ is irreducible. So $a = q_1$ (since otherwise $a$ would be a product of more than one irreducible factor, meaning $a$ is irreducible), which therefore results in $m = n = 1$ and $p_1 = q_1$. Therefore the base case is proven.
+    When $n = 1$, we have $a = p_1$, which means $a$ is irreducible. So $a = q_1$ (since otherwise $a$ would be a product of more than one irreducible factor, meaning $a$ is reducible), which therefore results in $m = n = 1$ and $p_1 = q_1$. Hence the base case is proven.
 
     Assume that we obtain uniqueness (up to associates and reordering) for any $k$ irreducible factors in the expression involving $p$, where $k$ is a positive integer. That is, if $a = q_1q_2 \cdots q_m$ then $m = k$ and $p_1p_2\cdots p_k = q_1q_2 \cdots q_m$. We show that uniqueness is also attained for $k + 1$ irreducible factors in the expression in $p$, i.e. if $a = p_1p_2\cdots p_kp_{k+1}$ and $a = q_1q_2 \cdots q_m$, then $m = k+1$ and $p_1p_2\cdots p_kp_{k+1} = q_1q_2 \cdots q_m$.
 
@@ -702,7 +703,7 @@ We observe one immediate corollary, which is incredibly useful.
     We know factorization of polynomials in the rationals is unique, since $\Q$ is a field which therefore means $\Q[x]$ is a UFD.
 \end{example}
 \begin{example}
-    The same is true for factorization in $\R[x]$ and $\C[x]$ as both of them are UFDs.
+    The same is true for factorization in $\R[x]$ and $\C[x]$ as both of them are PIDs and thus UFDs.
 \end{example}
 
 \subsection{UFDs and Their Polynomial Rings}
@@ -734,7 +735,7 @@ We note one immediate consequence of Gauss's lemma.
     Let $D$ be a UFD and $f(x), g(x) \in D[x]$. Then the content of $f(x)g(x)$ is the product of the contents of $f(x)$ and $g(x)$.
 \end{corollary}
 \begin{proof}
-    Suppose $f(x), g(x) \in D[x]$. Write $f(x) = C_f F(x)$ and $g(x) = C_g G(x)$ where $C_f$ and $C_g$ are the contents pf $f(x)$ and $g(x)$ respectively and $F(x), G(x) \in D[x]$. Thus one sees that $F(x)$ and $G(x)$ are primitive. Therefore
+    Suppose $f(x), g(x) \in D[x]$. Write $f(x) = C_f F(x)$ and $g(x) = C_g G(x)$ where $C_f$ and $C_g$ are the contents of $f(x)$ and $g(x)$ respectively and $F(x), G(x) \in D[x]$. Thus one sees that $F(x)$ and $G(x)$ are primitive. Therefore
     \[
         f(x)g(x) = (C_f F(x))(C_g G(x)) = C_fC_g \times F(x)G(x).
     \]
@@ -837,8 +838,8 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
 \begin{definition}
     An integral domain $D$ is called a \textbf{Euclidean domain}\index{Euclidean domain} if there is a function $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \textbf{norm}\index{Euclidean domain!norm} or \textbf{measure}\index{Euclidean domain!measure}, that satisfies the following properties.
     \begin{enumerate}[leftmargin=3em,label=\textbf{EF\arabic*}.]
-        \item for all non-zero $a$ and $b$ in $D$ we have $N(a) \leq N(ab)$; and
-        \item if $n, d \in D$ and $d \neq 0$, then there exist elements $q$ and $r$ in $D$ such that $n = dq + r$, where $r = 0$ or $N(r) < N(d)$.
+        \item For all non-zero $a$ and $b$ in $D$ we have $N(a) \leq N(ab)$; and
+        \item If $n, d \in D$ and $d \neq 0$, then there exist elements $q$ and $r$ in $D$ such that $n = dq + r$, where $r = 0$ or $N(r) < N(d)$.
     \end{enumerate}
 \end{definition}
 
@@ -897,7 +898,7 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
         We claim that choosing $q = m + ni$ and $r = \left((s-m) + (t-n)i\right)d$ will satisfy the second property. Clearly $q \in \Z[i]$, and since $r = z - qd$, so does $r$. If $r = 0$ we are done. Otherwise, notice that
         \begin{align*}
             N(r) &= N\left(\left((s-m) + (t-n)i\right)d\right)\\
-            &= N((s-m) + (t-n)i)N(d) & (\text{property 1 of the norm})\\
+            &= N((s-m) + (t-n)i)N(d) & (\text{by }\textbf{EF1})\\
             &= \left((s-m)^2 + (t-n)^2\right) N(d)\\
             &= \left(|s-m|^2 + |t-n|^2\right) N(d)\\
             &\leq \left(\left(\frac12\right)^2 + \left(\frac12\right)^2\right)N(d)\\
