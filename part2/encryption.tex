@@ -1,8 +1,21 @@
 \chapter{Rings and Encryption}
 Rings have practical use in the real world. Recently, with the threat of quantum computers breaking traditional encryption such as the Rivest-Shamir-Adleman (RSA) encryption scheme, post-quantum encryption schemes were developed. We look at the NTRU encryption scheme, a polynomial-based and allegedly post-quantum resistant encryption scheme.
 
-\section{Cryptosystems}
-%TODO: Add
+\section{Cryptosystems}\index{cryptosystem}
+The study and use of methods for secure information sharing when third parties are present is known as cryptography. Within cryptography, there are different cryptosystems, which are systems that has their own encryption, decryption, and key generation methods.
+\begin{itemize}
+    \item Encryption refers to the process of converting information or data into a usually random sequence of data, in order to prevent unauthorized parties from accessing the information.
+    \item Decryption refers to the process of undoing encryption.
+    \item Key generation is the process of creating keys that are used to encrypt and decrypt whatever data is being sent.
+\end{itemize}
+
+\begin{example}
+    The easiest example to illustrate a cryptosystem is the Caesar Cipher cryptosystem. The message $M = \code{HELLO WORLD}$ can be `encrypted' into $E = \code{JGNNQ YQTNF}$ by using an `encryption key' of $k_e = 2$, i.e. we shift each letter in $M$ by two places. To `decrypt', we reverse the process by shifting each letter in $E$ to letters behind to reveal $M$ again. The `decryption key' in this case is $k_d = 2$, since we are shifting the letters backwards 2 spaces. We note that $0 \leq k_e \leq 25$ (with $k_e = 0$ meaning that no encryption takes place), and $k_d = k_e$.
+\end{example}
+
+The Caesar Cipher cryptosystem is what is known as a \textbf{private key cryptosystem}\index{cryptosystem!private key}, meaning that the key that was generated for encryption is also used for that of decryption. As seen above, once one knows the encryption key, the decryption key can be retrieved very easily. Therefore, for a secure transmission, it is essential that both encryption and decryption keys are kept secret. This is why this is called a private key cryptosystem.
+
+In contrast, most encryption algorithms that form the backbone of communication on the internet are \textbf{public key cryptosystems}\index{cryptosystem!public key}. In such a system, both an encryption key and decryption key are generated. The encryption key is known to everyone who wants to communicate, while the decryption key is kept secret. Hence, the encryption key is called the \textbf{public key}\index{public key} and the decryption key is called the \textbf{private key}\index{private key}. It is often the case that the public key is \textit{different} to that of the private key, which is why most public key systems are also called \textbf{asymmetric cryptography}\index{asymmetric cryptography}. NTRU is an example of such a cryptosystem.
 
 \section{Truncated Polynomial Rings}
 %TODO: Add
