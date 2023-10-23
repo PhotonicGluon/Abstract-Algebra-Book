@@ -95,8 +95,8 @@ NTRU fits in the general framework of probabilistic cryptosystems, meaning that 
 An NTRU cryptosystem uses 3 integer parameters.
 \begin{itemize}
     \item $N$, the number of terms present in a `polynomial' in the ring $R$ defined above. Again, we remark that the maximum degree that a `polynomial' in $R$ is $N - 1$.
-    \item $p$, a so-called small modulus. This may not be prime.
-    \item $q$, a so-called large modulus. This may also not be prime, but has to be considerably larger than $p$. In addition, NTRU requires that $\gcd(p,q) = 1$.
+    \item $p$, a so-called small modulus, which is usually an odd number. This may not be prime.
+    \item $q$, a so-called large modulus. This is usually a power of 2, but has to be considerably larger than and coprime to $p$.
 \end{itemize}
 
 As defined in the previous section, NTRU works with `polynomials' within the ring
@@ -110,6 +110,23 @@ NTRU also uses 4 sub\textit{sets} of $R$.
     \item $\mathcal{L}_\phi$, the set of `encoding fuzz' polynomials \cite[\S 1.3]{hoffstein_pipher_silverman_1996}.
     \item $\mathcal{L}_m$, the set of possible message polynomials \cite[\S 1.3]{hoffstein_pipher_silverman_1998}.
 \end{itemize}
+
+For ease of computation of the multiplication of polynomials later, the coefficients of these polynomials would be small. We follow \cite[\S~2.2]{hoffstein_pipher_silverman_1998} on the description on the polynomials in the above sets.
+\begin{itemize}
+    \item For $\mathcal{L}_m$, let the coefficients of the polynomials lie within the interval $\left[-\frac{p-1}2, \frac{p-1}2\right]$, assuming $p$ is odd.
+    \item For the rest, first define $\mathcal{L}(d_1, d_2)$ to be the set of polynomials in $R$ with $d_1$ coefficients equalling 1, $d_2$ coefficients equalling -1, and the rest equal to 0. Then, by choosing positive integers $d_f$, $d_g$, and $d_\phi$, set
+    \begin{align*}
+        \mathcal{L}_f &= \mathcal{L}(d_f, d_f-1),\\
+        \mathcal{L}_g &= \mathcal{L}(d_g, d_g), \text{ and}\\
+        \mathcal{L}_\phi &= \mathcal{L}(d, d).
+    \end{align*}
+\end{itemize}
+
+A notable property of polynomials in $\mathcal{L}_g$ and $\mathcal{L}_\phi$ is that they all do not have inverses.
+\begin{exercise}
+    Show that a polynomial in $\mathcal{L}(k,k)$, where $k$ is some positive integer smaller than $\frac N2$, does not have an inverse modulo $p$ for any $p$.
+\end{exercise}
+Thus, to ensure that $f(x)$ has a chance to be invertible, we choose $\mathcal{L}_f$ to use $ \mathcal{L}(d_f, d_f-1)$, so that it has one more coefficient of 1 than than it does for -1.
 
 \subsection{Encryption}
 %TODO: Add
