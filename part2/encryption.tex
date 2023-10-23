@@ -128,13 +128,71 @@ A notable property of polynomials in $\mathcal{L}_g$ and $\mathcal{L}_\phi$ is t
 \end{exercise}
 Thus, to ensure that $f(x)$ has a chance to be invertible, we choose $\mathcal{L}_f$ to use $ \mathcal{L}(d_f, d_f-1)$, so that it has one more coefficient of 1 than than it does for -1.
 
+\subsection{Key Creation}
+Suppose Bob wants to send Alice a message. Before that, Alice needs to create her encryption and decryption key within the NTRU cryptosystem.
+
+Alice chooses two polynomials $f(x) \in \mathcal{L}_f$ and $g(x) \in \mathcal{L}_g$, which will have `small' coefficients (which, in this case, meaning that the coefficients are either 0 or $\pm1$). Now $g(x)$ can be anything, while $f(x)$ has to satisfy the additional requirement that it has inverses modulo $p$ and $q$. That is, there must exist polynomials $F_p(x), F_q(x) \in R$ such that
+\[
+    F_p(x)f(x) \equiv 1 \pmod p \text{ and } F_q(x)f(x) \equiv 1 \pmod q.
+\]
+For most choices of $f(x)$ this will be true; if not, just randomly pick another $f(x)$ from $\mathcal{L}_f$. Alice then computes the polynomial $h(x)$ given by
+\[
+    h(x) = F_q(x)g(x) \mod q,
+\]
+that is, $h(x)$ is $F_q(x)g(x)$ and then reducing the coefficients modulo $q$. Alice's public key is $h(x)$; her private key is $f(x)$, although in practice she will also store $F_p(x)$.
+
+\begin{example}
+    Suppose $N = 5$, $p = 3$, $q = 8$. Suppose Alice chooses $f(x) = x^4 + x^3 - x$ and $g(x) = x^3 - x^2 + x - 1$. We note that
+    \[
+        F_3(x) = 2x^4 + x^3 + 1
+    \]
+    and
+    \[
+        F_8(x) = 7x^4 + x^3 + 1
+    \]
+    So we see that $h(x)$ is
+    \begin{align*}
+        h(x) &= F_8(x)g(x)\\
+        &= (7x^4 + x^3 + 1)(x^3 - x^2 + x - 1)\\
+        &= 7x^7 - 6x^6 + 6x^5 - 6x^4 - x^2 + x - 1\\
+        &= 7x^2 - 6x + 6 - 6x^4 - x^2 + x - 1\\
+        &= -6x^4 + 6x^2 - 5x + 5\\
+        &\equiv 2x^4 + 6x^2 + 3x + 5 \pmod8
+    \end{align*}
+    which is Alice's public key. Alice would then keep $f(x) = x^4 + x^3 - x$ and $F_3(x) = 2x^4 + x^3 + 1$ secret as her private keys.
+\end{example}
+\begin{example}
+    Suppose $N = 7$, $p = 3$, $q = 32$. Suppose Alice chooses $f(x) = x^6 - x^3 + 1$ and $g(x) = x^5 + x^4 - x^2 - 1$, and note
+    \begin{align*}
+        F_3(x) &= 2x^6 + x^4 + 2x^2 + x + 1, \text{ and}\\
+        F_{32}(x) &= 31x^6 + x^4 + 31x^2 + x + 1.
+    \end{align*}
+    So Alice's public key is
+    \begin{align*}
+        h(x) &= F_{32}(x)g(x)\\
+        &= (31x^6 + x^4 + 31x^2 + x + 1)(x^5 + x^4 - x^2 - 1)\\
+        &= 31x^{11} + 31x^{10} + x^9 - 30x^8 + 31x^7 + 2x^5 - 31x^4 - x^3 - 32x^2 - x - 1\\
+        &= 31x^4 + 31x^3 + x^2 - 30x + 31 + 2x^4 - 31x^4 - x^3 - 32x^2 - x - 1\\
+        &= 2x^4 + 30x^3 - 31x^2 - 31x + 30\\
+        &\equiv 2x^4 + 30x^3 + x^2 + x + 30 \pmod{32}.
+    \end{align*}
+    Alice would then keep $f(x) = x^6 - x^3 + 1$ and $F_3(x) = 2x^6 + x^4 + 2x^2 + x + 1$ secret as her private keys.
+\end{example}
+
+\begin{exercise}
+    Let $N = 6$, $p = 5$, and $q = 16$, and suppose Alice chooses $f(x) = x^3 + x^2 - 1$ and $g(x) = x^4 - x^3 - x + 1$. Given
+    \begin{align*}
+        F_5(x) &= 3x^5 + 4x^4 + x^3 + 2x^2 + 2x + 4,\\
+        F_{16}(x) &= 7x^5 + 5x^4 + 14x^3 + 9x^2 + 12x + 2,
+    \end{align*}
+    what is Alice's public key?
+\end{exercise}
+
 \subsection{Encryption}
 %TODO: Add
 
-\subsection{Decryption}
-%TODO: Add
 
-\subsection{A Worked Example}
+\subsection{Decryption}
 %TODO: Add
 
 \section{Security Analysis}
