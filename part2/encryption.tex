@@ -18,7 +18,7 @@ The Caesar Cipher cryptosystem is what is known as a \textbf{private key cryptos
 In contrast, most encryption algorithms that form the backbone of communication on the internet are \textbf{public key cryptosystems}\index{cryptosystem!public key}. In such a system, both an encryption key and decryption key are generated. The encryption key is known to everyone who wants to communicate, while the decryption key is kept secret. Hence, the encryption key is called the \textbf{public key}\index{public key} and the decryption key is called the \textbf{private key}\index{private key}. It is often the case that the public key is \textit{different} to that of the private key, which is why most public key systems are also called \textbf{asymmetric cryptography}\index{asymmetric cryptography}. NTRU is an example of such a cryptosystem.
 
 \section{Truncated Polynomial Rings}
-NTRU (as described in \cite{hoffstein_pipher_silverman_1998}) uses the truncated polynomial ring
+NTRU (as described in \cite[\S 1.1]{hoffstein_pipher_silverman_1998}) uses the truncated polynomial ring
 \[
     R = \Z[x] / \princ{x^N - 1}
 \]
@@ -66,7 +66,7 @@ In summary, the rules for `polynomial addition' and `polynomial multiplication' 
     \item `Polynomial multiplication' is almost the same as regular polynomial multiplication, except that for each integer $m$ greater than $N - 1$, we replace $x^m$ with $x^{m \mod N}$.
 \end{itemize}
 
-For NTRU to work, the polynomials that we choose must have inverses. In particular, NTRU will involve reducing the \textit{coefficients} modulo certain integers. Suppose $p$ is a positive integer that we want to reduce the coefficients modulo of (note that $p$ may not be prime; this is just the notation used in \cite{hoffstein_pipher_silverman_1998}). Then an inverse of $f(x) \in R$ is an $F_p(x) \in R$ such that
+For NTRU to work, the polynomials that we choose must have inverses. In particular, NTRU will involve reducing the \textit{coefficients} modulo certain integers. Suppose $p$ is a positive integer that we want to reduce the coefficients modulo of (note that $p$ may not be prime; this is just the notation used in \cite[\S~1.1]{hoffstein_pipher_silverman_1998}). Then an inverse of $f(x) \in R$ is an $F_p(x) \in R$ such that
 \[
     F_p(x)f(x) \equiv 1 \pmod p
 \]
@@ -89,10 +89,27 @@ Again, we follow the notation used in \cite{hoffstein_pipher_silverman_1998}. No
 \end{exercise}
 
 \section{NTRU}
-%TODO: Add preamble
+NTRU fits in the general framework of probabilistic cryptosystems, meaning that any message that one wishes to encrypt may have many different possible encrypted values, since a hint of randomness is included. When compared to the more famous RSA encryption scheme, for a message of length $N$, it takes only the order of $N^2$ operations, compared to RSA which takes the order of $N^3$ operations \cite[p.~268]{hoffstein_pipher_silverman_1998}.
 
 \subsection{Parameters}
-%TODO: Add
+An NTRU cryptosystem uses 3 integer parameters.
+\begin{itemize}
+    \item $N$, the number of terms present in a `polynomial' in the ring $R$ defined above. Again, we remark that the maximum degree that a `polynomial' in $R$ is $N - 1$.
+    \item $p$, a so-called small modulus. This may not be prime.
+    \item $q$, a so-called large modulus. This may also not be prime, but has to be considerably larger than $p$. In addition, NTRU requires that $\gcd(p,q) = 1$.
+\end{itemize}
+
+As defined in the previous section, NTRU works with `polynomials' within the ring
+\[
+    R = \Z[x] / \princ{x^N - 1}.
+\]
+NTRU also uses 4 sub\textit{sets} of $R$.
+\begin{itemize}
+    \item $\mathcal{L}_f$, the set of possible private keys \cite[\S 1.2]{hoffstein_pipher_silverman_1998}.
+    \item $\mathcal{L}_g$, the set of `adjustment' polynomials. It should be noted that NTRU does not explicitly name what $\mathcal{L}_g$ is; we call it `adjustment' polynomials here since they adjust the private keys slightly, as we will see later.
+    \item $\mathcal{L}_\phi$, the set of `encoding fuzz' polynomials \cite[\S 1.3]{hoffstein_pipher_silverman_1996}.
+    \item $\mathcal{L}_m$, the set of possible message polynomials \cite[\S 1.3]{hoffstein_pipher_silverman_1998}.
+\end{itemize}
 
 \subsection{Encryption}
 %TODO: Add
