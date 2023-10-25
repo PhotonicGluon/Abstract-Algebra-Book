@@ -315,15 +315,15 @@ It is again emphasised that $q$ needs to be significantly larger than $p$ in ord
     \]
     which was encrypted using his public key
     \[
-        h(x) = 61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61
+        h(x) = 61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61.
     \]
-    Bob saved his private key
+    Bob saved his private key,
     \[
-        f(x) = x^3 - x^2 + 1
+        f(x) = x^3 - x^2 + 1,
     \]
-    and its inverse modulo $p$
+    and its inverse modulo $p$,
     \[
-        F_3(x) = x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x
+        F_3(x) = x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x,
     \]
     for decryption now.
 
@@ -404,5 +404,30 @@ It is again emphasised that $q$ needs to be significantly larger than $p$ in ord
 
 \newpage
 
-\section{Security Analysis}
-%TODO: Add
+\section{Implementation}
+We have been working with toy examples to understand the basic process that \cite{hoffstein_pipher_silverman_1998} (which references \cite{hoffstein_pipher_silverman_1996}) uses to encrypt and decrypt messages. In practice, the recommended parameters for NTRU (as described in \cite{hoffstein_pipher_silverman_1998}) for secure, post-quantum encryption are as provided in \cite{ntru_2020} and is listed below.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        & $N$ & $p$ & $q$ \\ \hline
+        128-Bit Security Margin & 509 & 3 & 2048 \\ \hline
+        192-Bit Security Margin & 677 & 3 & 2048 \\ \hline
+        256-Bit Security Margin & 821 & 3 & 4096 \\ \hline
+    \end{tabular}
+\end{table}
+
+We note that all values of $N$ in the above table are prime; we have elected to use small, possibly non-prime values of $N$ in our discussion of NTRU to reduce computation. In practice, computers are hardy enough to handle polynomials of huge degree.
+
+In addition, \cite{hulsing_rijneveld_schanck_schwabe_2018} proposes a new NTRU implementation, which eliminates decryption failures, eliminates invertibility checks for $f(x)$, and implements `cheaper' routines to generate keys. The NTRU-HRSS system uses $N = 701$, $p = 3$, and $q = 8192$.
+
+There have been many attacks proposed against NTRU (both the implementation in \cite{hoffstein_pipher_silverman_1996} and the implementation in \cite{hulsing_rijneveld_schanck_schwabe_2018}), including, but not limited to,
+\begin{itemize}
+    \item \textbf{brute-force attacks}: attempting to directly compute the private key $f(x)$;
+    \item \textbf{meet-in-the-middle attacks}: attempting to directly compute the private key $f(x)$ by splitting the task into finding two polynomials $f_1(x)$ and $f_2(x)$ such that $f(x) = f_1(x) + f_2(x)$;
+    \item \textbf{lattice reduction attacks}: use the Lenstra-Lenstra-Lov\`asz algorithm to obtain \textit{both} $f(x)$ and $g(x)$ from the public key $h(x)$; and
+    \item \textbf{chosen ciphertext attacks}: attempting to create a new message from the ciphertext and then tries to obtain the secret key from that.
+\end{itemize}
+The details of these attacks are, unfortunately, out of the scope of this book. Interested readers are encouraged to read up on these attacks and attempt to break the public keys generated in the examples of this chapter.
+
+A sample implementation of NTRU, as described in this chapter, is available on \href{https://github.com/PhotonicGluon/Abstract-Algebra-Book}{GitHub} under the \code{misc} directory.
