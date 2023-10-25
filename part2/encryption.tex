@@ -95,8 +95,8 @@ NTRU fits in the general framework of probabilistic cryptosystems, meaning that 
 An NTRU cryptosystem uses 3 integer parameters.
 \begin{itemize}
     \item $N$, the number of terms present in a `polynomial' in the ring $R$ defined above. Again, we remark that the maximum degree that a `polynomial' in $R$ is $N - 1$.
-    \item $p$, a so-called small modulus, which is usually an odd number. This may not be prime.
-    \item $q$, a so-called large modulus. This is usually a power of 2, but has to be considerably larger than and coprime to $p$.
+    \item $p$, a so-called small modulus, which is usually an odd prime.
+    \item $q$, a so-called large modulus. This is a power of a prime, usually 2, but has to be considerably larger than and coprime to $p$.
 \end{itemize}
 
 As defined in the previous section, NTRU works with `polynomials' within the ring
@@ -129,20 +129,20 @@ A notable property of polynomials in $\mathcal{L}_g$ and $\mathcal{L}_\phi$ is t
 Thus, to ensure that $f(x)$ has a chance to be invertible, we choose $\mathcal{L}_f$ to use $ \mathcal{L}(d_f, d_f-1)$, so that it has one more coefficient of 1 than than it does for -1.
 
 \subsection{Key Creation}
-Suppose Bob wants to send Alice a message. Before that, Alice needs to create her encryption and decryption key within the NTRU cryptosystem.
+Suppose Alice wants to send Bob a message. Before that, Bob needs to create his encryption and decryption key within the NTRU cryptosystem.
 
-Alice chooses two polynomials $f(x) \in \mathcal{L}_f$ and $g(x) \in \mathcal{L}_g$, which will have `small' coefficients (which, in this case, meaning that the coefficients are either 0 or $\pm1$). Now $g(x)$ can be anything, while $f(x)$ has to satisfy the additional requirement that it has inverses modulo $p$ and $q$. That is, there must exist polynomials $F_p(x), F_q(x) \in R$ such that
+Bob chooses two polynomials $f(x) \in \mathcal{L}_f$ and $g(x) \in \mathcal{L}_g$, which will have `small' coefficients (which, in this case, meaning that the coefficients are either 0 or $\pm1$). Now $g(x)$ can be anything, while $f(x)$ has to satisfy the additional requirement that it has inverses modulo $p$ and $q$. That is, there must exist polynomials $F_p(x), F_q(x) \in R$ such that
 \[
     F_p(x)f(x) \equiv 1 \pmod p \text{ and } F_q(x)f(x) \equiv 1 \pmod q.
 \]
-For most choices of $f(x)$ this will be true; if not, just randomly pick another $f(x)$ from $\mathcal{L}_f$. Alice then computes the polynomial $h(x)$ given by
+For most choices of $f(x)$ this will be true; if not, just randomly pick another $f(x)$ from $\mathcal{L}_f$. Bob then computes the polynomial $h(x)$ given by
 \[
     h(x) = F_q(x)g(x) \mod q,
 \]
-that is, $h(x)$ is $F_q(x)g(x)$ and then reducing the coefficients modulo $q$. Alice's public key is $h(x)$; her private key is $f(x)$, although in practice she will also store $F_p(x)$.
+that is, $h(x)$ is $F_q(x)g(x)$ and then reducing the coefficients modulo $q$. Bob's public key is $h(x)$; his private key is $f(x)$, although in practice he will also store $F_p(x)$.
 
 \begin{example}
-    Suppose $N = 5$, $p = 3$, $q = 8$. Suppose Alice chooses $f(x) = x^4 + x^3 - x$ and $g(x) = x^3 - x^2 + x - 1$. We note that
+    Suppose $N = 5$, $p = 3$, $q = 8$. Suppose Bob chooses $f(x) = x^4 + x^3 - x$ and $g(x) = x^3 - x^2 + x - 1$. We note that
     \[
         F_3(x) = 2x^4 + x^3 + 1
     \]
@@ -159,15 +159,15 @@ that is, $h(x)$ is $F_q(x)g(x)$ and then reducing the coefficients modulo $q$. A
         &= -6x^4 + 6x^2 - 5x + 5\\
         &\equiv 2x^4 + 6x^2 + 3x + 5 \pmod8
     \end{align*}
-    which is Alice's public key. Alice would then keep $f(x) = x^4 + x^3 - x$ and $F_3(x) = 2x^4 + x^3 + 1$ secret as her private keys.
+    which is Bob's public key. Bob would then keep $f(x) = x^4 + x^3 - x$ and $F_3(x) = 2x^4 + x^3 + 1$ secret as his private keys.
 \end{example}
 \begin{example}
-    Suppose $N = 7$, $p = 3$, $q = 32$. Suppose Alice chooses $f(x) = x^6 - x^3 + 1$ and $g(x) = x^5 + x^4 - x^2 - 1$, and note
+    Suppose $N = 7$, $p = 3$, $q = 32$. Suppose Bob chooses $f(x) = x^6 - x^3 + 1$ and $g(x) = x^5 + x^4 - x^2 - 1$, and note
     \begin{align*}
         F_3(x) &= 2x^6 + x^4 + 2x^2 + x + 1, \text{ and}\\
         F_{32}(x) &= 31x^6 + x^4 + 31x^2 + x + 1.
     \end{align*}
-    So Alice's public key is
+    So Bob's public key is
     \begin{align*}
         h(x) &= F_{32}(x)g(x)\\
         &= (31x^6 + x^4 + 31x^2 + x + 1)(x^5 + x^4 - x^2 - 1)\\
@@ -176,21 +176,107 @@ that is, $h(x)$ is $F_q(x)g(x)$ and then reducing the coefficients modulo $q$. A
         &= 2x^4 + 30x^3 - 31x^2 - 31x + 30\\
         &\equiv 2x^4 + 30x^3 + x^2 + x + 30 \pmod{32}.
     \end{align*}
-    Alice would then keep $f(x) = x^6 - x^3 + 1$ and $F_3(x) = 2x^6 + x^4 + 2x^2 + x + 1$ secret as her private keys.
+    Bob would then keep $f(x) = x^6 - x^3 + 1$ and $F_3(x) = 2x^6 + x^4 + 2x^2 + x + 1$ secret as his private keys.
 \end{example}
 
 \begin{exercise}
-    Let $N = 6$, $p = 5$, and $q = 16$, and suppose Alice chooses $f(x) = x^3 + x^2 - 1$ and $g(x) = x^4 - x^3 - x + 1$. Given
+    Let $N = 6$, $p = 5$, and $q = 16$, and suppose Bob chooses $f(x) = x^3 + x^2 - 1$ and $g(x) = x^4 - x^3 - x + 1$. Given
     \begin{align*}
         F_5(x) &= 3x^5 + 4x^4 + x^3 + 2x^2 + 2x + 4,\\
         F_{16}(x) &= 7x^5 + 5x^4 + 14x^3 + 9x^2 + 12x + 2,
     \end{align*}
-    what is Alice's public key?
+    what is Bob's public key?
 \end{exercise}
 
 \subsection{Encryption}
-%TODO: Add
+Before we can perform encryption, we need to encode our message. For simplicity, let's use the American Standard Code for Information Interchange\index{American Standard Code for Information Interchange} (ASCII)\index{ASCII} to encode simple alphabetical text.
 
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|l|l|}
+        \hline
+        \textbf{A} & 0100 0001 & \textbf{N} & 0100 1110 & \textbf{a} & 0110 0001 & \textbf{n} & 0110 1110 \\ \hline
+        \textbf{B} & 0100 0010 & \textbf{O} & 0100 1111 & \textbf{b} & 0110 0010 & \textbf{o} & 0110 1111 \\ \hline
+        \textbf{C} & 0100 0011 & \textbf{P} & 0101 0000 & \textbf{c} & 0110 0011 & \textbf{p} & 0111 0000 \\ \hline
+        \textbf{D} & 0100 0100 & \textbf{Q} & 0101 0001 & \textbf{d} & 0110 0100 & \textbf{q} & 0111 0001 \\ \hline
+        \textbf{E} & 0100 0101 & \textbf{R} & 0101 0010 & \textbf{e} & 0110 0101 & \textbf{r} & 0111 0010 \\ \hline
+        \textbf{F} & 0100 0110 & \textbf{S} & 0101 0011 & \textbf{f} & 0110 0110 & \textbf{s} & 0111 0011 \\ \hline
+        \textbf{G} & 0100 0111 & \textbf{T} & 0101 0100 & \textbf{g} & 0110 0111 & \textbf{t} & 0111 0100 \\ \hline
+        \textbf{H} & 0100 1000 & \textbf{U} & 0101 0101 & \textbf{h} & 0110 1000 & \textbf{u} & 0111 0101 \\ \hline
+        \textbf{I} & 0100 1001 & \textbf{V} & 0101 0110 & \textbf{i} & 0110 1001 & \textbf{v} & 0111 0110 \\ \hline
+        \textbf{J} & 0100 1010 & \textbf{W} & 0101 0111 & \textbf{j} & 0110 1010 & \textbf{w} & 0111 0111 \\ \hline
+        \textbf{K} & 0100 1011 & \textbf{X} & 0101 1000 & \textbf{k} & 0110 1011 & \textbf{x} & 0111 1000 \\ \hline
+        \textbf{L} & 0100 1100 & \textbf{Y} & 0101 1001 & \textbf{l} & 0110 1100 & \textbf{y} & 0111 1001 \\ \hline
+        \textbf{M} & 0100 1101 & \textbf{Z} & 0101 1010 & \textbf{m} & 0110 1101 & \textbf{z} & 0111 1010 \\ \hline
+    \end{tabular}
+    \caption{ASCII Character to Binary Conversion Table}\label{table-ASCII-conversion-table}
+\end{table}
+
+\begin{example}
+    For example, the character `H' has a binary code of \code{01001000}. The letter `i' has a binary code of \code{01101100}.
+\end{example}
+
+With such a conversion scheme, we are able to convert characters into polynomials that are compatible with NTRU.
+
+\begin{example}
+    Since `H' has a binary code of \code{01001000}, we may convert it into a polynomial with 8 terms (possibly with coefficients of zero):
+    \[
+        0x^7 + 1x^6 + 0x^5 + 0x^4 + 1x^3 + 0x^2 + 0x + 0 = x^3 + x^6.
+    \]
+    So `H' is represented by $x^6 + x^3$. Similarly, `i' can be represented by $x^6 + x^5 + x^3 + x^2$.
+\end{example}
+
+\begin{exercise}
+    Convert the character `U' into a representative polynomial.
+\end{exercise}
+
+Of course, there are more optimal ways of converting messages into message polynomials (since the coefficients range from $-\frac{p-1}2$ to $\frac{p-1}2$ and we are only using 0 or 1), but we simplify the process here.
+
+Now suppose Alice wants to send a message to Bob. She first converts her message into polynomials using the process described above. In particular, suppose that her message contains $l$ ASCII characters, so by using the process before he obtains representative polynomials $m_1(x), m_2(x), \dots, m_l(x)$. Next, she randomly chooses an `encoding fuzz' polynomial $\phi(x)$ from $\mathcal{L}_\phi$. She then performs encryption for a particular message polynomial $m_i(x)$ by computing the polynomial $e_i(x)$ where
+\[
+    e_i(x) = p\phi(x)h(x) + m_i(x) \mod q,
+\]
+that is, $e_i(x)$ is $p\phi(x)h(x) + m_i(x)$ but with all resulting coefficients reduced modulo $q$.
+
+\begin{example}
+    Suppose $N = 9$, $p = 3$, $q = 64$. Bob performs key generation using $f(x) = x^3 - x^2 + 1$ and $g(x) = x^3 - 1$, resulting in
+    \begin{align*}
+        F_3(x) &= x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x,\\
+        F_{64}(x) &= 37x^8 + 18x^7 + 9x^6 + 36x^5 + 18x^4 + 9x^3 + 37x^2 + 19x + 10, \text{ and}\\
+        h(x) &= 61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61.
+    \end{align*}
+    
+    Suppose Alice wants to transmit the character `H' to Bob. Using the conversion process described, Alice converts `H' into the message polynomial $m_1(x) = x^6 + x^3$. Say Alice obtains a random `encoding fuzz' polynomial of $\phi(x) = x^{3} - x^{2} + x - 1$. Hence her encrypted message will be
+    \begin{align*}
+        e_1(x) &= 3\phi(x)h(x) + m_1(x)\\
+        &= 3(x^3 -x^2 +x - 1)(61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61) + (x^6 + x^3)\\
+        &= 183x^{11} - 183x^{10} + 183x^9 - 174x^8 + 10x^6 - 9x^5 + 183x^4 - 8x^3 - 183\\
+        &= 183x^2 - 183x + 183 - 174x^8 + 10x^6 - 9x^5 + 183x^4 - 8x^3 - 183\\
+        &= -174x^8 + 10x^6 - 9x^5 + 183x^4 - 8x^3 + 183x^2 - 183x\\
+        &\equiv 18x^8 + 10x^6 + 55x^5 + 55x^4 + 56x^3 + 55x^2 + 9x \pmod{64}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Using the same parameters as the previous example, Alice then transmits the character `i' to Bob. Alice converts `i' into the message polynomial $m_2(x) = x^6 + x^5 + x^3 + x^2$, and her encrypted message will be
+    \begin{align*}
+        e_2(x) &= 3\phi(x)h(x) + m_2(x)\\
+        &= 3(x^3 - x^2 + x - 1)(61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61) + (x^6 + x^5 + x^3 + x^2)\\
+        &= 183x^{11} - 183x^{10} + 183x^9 - 174x^8 + 10x^6 - 8x^5 + 183x^4 - 8x^3 + x^2 - 183\\
+        &= 183x^2 - 183x + 183 - 174x^8 + 10x^6 - 8x^5 + 183x^4 - 8x^3 + x^2 - 183\\
+        &= -174x^8 + 10x^6 - 8x^5 + 183x^4 - 8x^3 + 184x^2 - 183x\\
+        &\equiv 18x^8 + 10x^6 + 56x^5 + 55x^4 + 56x^3 + 56x^2 + 9x \pmod{64}.
+    \end{align*}
+    Note that when transmitting parts of the same message, the `encoding fuzz' polynomial does not change.
+\end{example}
+
+\begin{exercise}
+    Let $N = 8$, $p = 3$, $q = 64$. Let Bob's public key be
+    \[
+        h(x) = 24x^7 + 15x^6 + 50x^5 + 48x^4 + 40x^3 + 46x^2 + 14x + 19.
+    \]
+    Alice wants to transmit the character `U' to Bob. Suppose Alice encodes `U' using the ASCII conversion table (\myref{table-ASCII-conversion-table}) and obtains an `encoding fuzz' polynomial of $x - 1$. What is the encrypted message polynomial?
+\end{exercise}
 
 \subsection{Decryption}
 %TODO: Add
