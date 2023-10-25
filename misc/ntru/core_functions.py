@@ -15,5 +15,9 @@ def encrypt(n: int, p: int, q: int, phi: Poly, public_key: Poly, m: Poly) -> Pol
 
 def decrypt(n: int, p: int, q: int, encrypted: Poly, private_key: Poly, inverse_of_f_in_p: Poly) -> Poly:
     a = reduce_powers_and_coeffs(private_key * encrypted, n, q, half_coeff=True)
+    # print("a(x)", a.as_expr())
     b = reduce_coeffs(a, p, half=True)
-    return reduce_powers_and_coeffs(inverse_of_f_in_p * b, n, p, half_coeff=True)
+    # print("b(x)", b.as_expr())
+    almost_message = inverse_of_f_in_p * b
+    # print(almost_message.as_expr())
+    return reduce_powers_and_coeffs(almost_message, n, p, half_coeff=True)

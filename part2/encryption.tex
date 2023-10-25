@@ -135,7 +135,12 @@ Bob chooses two polynomials $f(x) \in \mathcal{L}_f$ and $g(x) \in \mathcal{L}_g
 \[
     F_p(x)f(x) \equiv 1 \pmod p \text{ and } F_q(x)f(x) \equiv 1 \pmod q.
 \]
-For most choices of $f(x)$ this will be true; if not, just randomly pick another $f(x)$ from $\mathcal{L}_f$. Bob then computes the polynomial $h(x)$ given by
+For most choices of $f(x)$ this will be true; if not, randomly pick another $f(x)$ from $\mathcal{L}_f$.
+\begin{remark}
+    Finding inverses of $f(x)$ modulo $p$ and $q$ is not a trivial task, but \cite{silverman_1999} describes a method for the fast computation of \textit{almost inverses} which are good enough for NTRU.
+\end{remark}
+
+Bob then computes the polynomial $h(x)$ given by
 \[
     h(x) = F_q(x)g(x) \mod q,
 \]
@@ -238,7 +243,7 @@ Now suppose Alice wants to send a message to Bob. She first converts her message
 \]
 that is, $e_i(x)$ is $p\phi(x)h(x) + m_i(x)$ but with all resulting coefficients reduced modulo $q$.
 
-\begin{example}
+\begin{example}\label{example-ntru-case-1}
     Suppose $N = 9$, $p = 3$, $q = 64$. Bob performs key generation using $f(x) = x^3 - x^2 + 1$ and $g(x) = x^3 - 1$, resulting in
     \begin{align*}
         F_3(x) &= x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x,\\
@@ -246,7 +251,7 @@ that is, $e_i(x)$ is $p\phi(x)h(x) + m_i(x)$ but with all resulting coefficients
         h(x) &= 61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61.
     \end{align*}
     
-    Suppose Alice wants to transmit the character `H' to Bob. Using the conversion process described, Alice converts `H' into the message polynomial $m_1(x) = x^6 + x^3$. Say Alice obtains a random `encoding fuzz' polynomial of $\phi(x) = x^{3} - x^{2} + x - 1$. Hence her encrypted message will be
+    Suppose Alice wants to transmit the character `H' to Bob. Using \myref{table-ASCII-conversion-table}, Alice converts `H' into the message polynomial $m_1(x) = x^6 + x^3$. Say Alice obtains a random `encoding fuzz' polynomial of $\phi(x) = x^{3} - x^{2} + x - 1$. Hence her encrypted message will be
     \begin{align*}
         e_1(x) &= 3\phi(x)h(x) + m_1(x)\\
         &= 3(x^3 -x^2 +x - 1)(61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61) + (x^6 + x^3)\\
@@ -257,8 +262,8 @@ that is, $e_i(x)$ is $p\phi(x)h(x) + m_i(x)$ but with all resulting coefficients
     \end{align*}
 \end{example}
 
-\begin{example}
-    Using the same parameters as the previous example, Alice then transmits the character `i' to Bob. Alice converts `i' into the message polynomial $m_2(x) = x^6 + x^5 + x^3 + x^2$, and her encrypted message will be
+\begin{example}\label{example-ntru-case-2}
+    Using the same parameters as \myref{example-ntru-case-1}, Alice now wants to transmit the character `i' to Bob. Alice converts `i' into the message polynomial $m_2(x) = x^6 + x^5 + x^3 + x^2$ using \myref{table-ASCII-conversion-table}, and her encrypted message will be
     \begin{align*}
         e_2(x) &= 3\phi(x)h(x) + m_2(x)\\
         &= 3(x^3 - x^2 + x - 1)(61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61) + (x^6 + x^5 + x^3 + x^2)\\
@@ -275,11 +280,129 @@ that is, $e_i(x)$ is $p\phi(x)h(x) + m_i(x)$ but with all resulting coefficients
     \[
         h(x) = 24x^7 + 15x^6 + 50x^5 + 48x^4 + 40x^3 + 46x^2 + 14x + 19.
     \]
-    Alice wants to transmit the character `U' to Bob. Suppose Alice encodes `U' using the ASCII conversion table (\myref{table-ASCII-conversion-table}) and obtains an `encoding fuzz' polynomial of $x - 1$. What is the encrypted message polynomial?
+    Alice wants to transmit the character `U' to Bob. Suppose Alice encodes `U' using the ASCII conversion table (\myref{table-ASCII-conversion-table}) and obtains an `encoding fuzz' polynomial of $x - 1$. What is the encrypted message?
 \end{exercise}
 
 \subsection{Decryption}
-%TODO: Add
+Suppose that Bob has received the encrypted message $e(x)$ and wants to decrypt it using his private key $f(x)$. To do this, he requires the precomputed polynomial $F_p(x)$.
+\begin{enumerate}
+    \item Compute the polynomial $a(x) = f(x)e(x) \mod q$. Choose coefficients of $a(x)$ to be in the interval $\left[-\frac q2, \frac q2\right]$.
+    \item Set $b(x) = a(x) \mod p$, i.e. $b(x)$ is $a(x)$ with the coefficients reduced modulo $p$. Again, choose the coefficients of $b(x)$ to be in the interval $\left[-\frac p2, \frac p2\right]$.
+    \item Retrieve original message by computing $F_p(x)b(x) \mod p$.
+\end{enumerate}
+
+One might question why this decryption process works. Well, we see that
+\begin{align*}
+    a(x) &= f(x)e(x)\\
+    &\equiv f(x) \left(p\phi(x)h(x) + m(x)\right) \pmod q\\
+    &\equiv (f(x))(p\phi(x))(F_q(x)g(x)) + f(x)m(x) \pmod q\\
+    &= (F_q(x)f(x))(p\phi(x))(g(x)) + f(x)m(x)\\
+    &= p\phi(x)g(x) + f(x)m(x).
+\end{align*}
+Now, when we compute $b(x) = a(x) \mod p$, since we have chosen the coefficients of $a(x)$ to be in the interval $\left[-\frac q2, \frac q2\right]$, and since $q$ is sufficiently large, the second summand, $f(x)m(x)$, is unaffected by the operation of modulo $p$. Hence $b(x) = f(x)m(x)$ in modulo $p$. So
+\begin{align*}
+    F_p(x)b(x) &\equiv F_p(x)f(x)m(x) \pmod{p}\\
+    &\equiv m(x)
+\end{align*}
+and since the coefficients of $m(x)$ are restrained to $\left[-\frac{p-1}2, \frac{p-1}2\right]$ we retrieve $m(x)$ exactly.
+
+It is again emphasised that $q$ needs to be significantly larger than $p$ in order for this to work.
+
+\begin{example}
+    Suppose $N = 9$, $p = 3$, $q = 64$. Suppose Bob receives the encrypted message
+    \[
+        e(x) = 18x^8 + 10x^6 + 55x^5 + 55x^4 + 56x^3 + 55x^2 + 9x,
+    \]
+    which was encrypted using his public key
+    \[
+        h(x) = 61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61
+    \]
+    Bob saved his private key
+    \[
+        f(x) = x^3 - x^2 + 1
+    \]
+    and its inverse modulo $p$
+    \[
+        F_3(x) = x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x
+    \]
+    for decryption now.
+
+    First we compute $a(x)$,
+    \begin{align*}
+        a(x) &= f(x)e(x)\\
+        &= (x^3 - x^2 + 1)(18x^8 + 10x^6 + 55x^5 + 55x^4 + 56x^3 + 55x^2 + 9x)\\
+        &= 18x^11 - 18x^10 + 10x^9 + 63x^8 + 11x^6 + 54x^5 + 9x^4 + 47x^3 + 55x^2 + 9x\\
+        &= 18x^2 - 18x + 10x + 63x^8 + 11x^6 + 54x^5 + 9x^4 + 47x^3 + 55x^2 + 9x\\
+        &= 63x^8 + 11x^6 + 54x^5 + 9x^4 + 47x^3 + 73x^2 - 9x\\
+        &\equiv -x^8 + 11x^6 - 10x^5 + 9x^4 - 17x^3 + 9x^2 - 9x + 10 \pmod{64},
+    \end{align*}
+    remembering that we choose coefficients of $a(x)$ to be between -32 and 32.
+
+    Now we compute $b(x)$ by reducing the coefficients of $a(x)$ modulo 3, so
+    \[
+        b(x) \equiv -x^8 - x^6 - x^5 + x^3 + 1 \pmod{3},
+    \]
+    again remembering that we choose coefficients of $b(x)$ to be between -1 and 1.
+
+    Finally, we can retrieve the original message by computing
+    \begin{align*}
+        F_3(x)b(x) &= (x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x)(-x^8 - x^6 - x^5 + x^3 + 1)\\
+        &= -x^{15} - 2x^{14} - 3x^{13} - 4x^{12} - 6x^{11} - 2x^{10} - 3x^9 + 2x^6 + 2x^5 + 3x^4\\
+        &\quad\quad + 2x^3 + 2x\\
+        &= -x^6 - 2x^5 - 3x^4 - 4x^3 - 6x^2 - 2x - 3 + 2x^6 + 2x^5 + 3x^4 + 2x^3 + 2x\\
+        &= x^6 - 2x^3 - 6x^2 - 3\\
+        &\equiv x^6 + x^3 \pmod{3},
+    \end{align*}
+    which is the same message as we encrypted in \myref{example-ntru-case-1}.
+\end{example}
+
+\begin{example}
+    Let's say Bob now receives the encrypted message
+    \[
+        e(x) = 18x^8 + 10x^6 + 56x^5 + 55x^4 + 56x^3 + 56x^2 + 9x,
+    \]
+    encrypted the same way as in the previous example. So we first compute $a(x)$,
+    \begin{align*}
+        a(x) &= f(x)e(x)\\
+        &= (x^3 - x^2 + 1)(18x^8 + 10x^6 + 56x^5 + 55x^4 + 56x^3 + 56x^2 + 9x)\\
+        &= 18x^{11} - 18x^{10} + 10x^9 + 64x^8 - x^7 + 11x^6 + 56x^5 + 8x^4 + 47x^3 + 56x^2 + 9x\\
+        &= 18x^2 - 18x + 10 + 64x^8 - x^7 + 11x^6 + 56x^5 + 8x^4 + 47x^3 + 56x^2 + 9x\\
+        &= 64x^8 - x^7 + 11x^6 + 56x^5 + 8x^4 + 47x^3 + 74x^2 - 9x + 10\\
+        &\equiv -x^7 + 11x^6 - 8x^5 + 8x^4 - 17x^3 + 10x^2 - 9x + 10 \pmod{64},
+    \end{align*}
+    then compute $b(x)$ by reducing the coefficients of $a(x)$ modulo 3,
+    \[
+        b(x) \equiv -x^7 - x^6 + x^5 - x^4 + x^3 + x^2 + 1 \pmod{3},
+    \]
+    and finally retrieve the original message,
+    \begin{align*}
+        F_3(x)b(x) &= (x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x)(-x^7 - x^6 + x^5 - x^4 + x^3 + x^2 + 1)\\
+        &= -x^{14} - 3x^{13} - 3x^{12} - 2x^{11} - 2x^{10} + 3x^8 + 7x^6 + 2x^5 + 3x^4 + 4x^3 + 2x\\
+        &= -x^5 - 3x^4 - 3x^3 - 2x^2 - 2x + 3x^8 + 7x^6 + 2x^5 + 3x^4 + 4x^3 + 2x\\
+        &= 3x^8 + 7x^6 + x^5 + x^3 - 2x^2\\
+        &\equiv x^6 + x^5 + x^3 + x^2 \pmod{3},
+    \end{align*}
+    which is the same message as we encrypted in \myref{example-ntru-case-2}.
+\end{example}
+
+\begin{exercise}
+    Suppose $N = 8$, $p = 3$, and $q = 64$. Bob received an encrypted message from Alice,
+    \[
+        e(x) = 8x^7 + 12x^6 + 52x^5 + 26x^4 +x^3 + 62x^2 + 4x + 29,
+    \]
+    that was encrypted using his private key
+    \[
+        f(x) = x^7 +x^6 +x^5 -x^4 -x^3 -x + 1
+    \]
+    which has an inverse modulo 3 of
+    \[
+        F_3(x) = 2x^6 +x^5 +x^4 + 2x^2 + 2x + 2.
+    \]
+    What was the \textit{character} that Alice sent to him?\newline
+    (\textit{Note: although the private key and its inverse look familiar, we used a different $g(x)$ and $\phi(x)$ from the previous exercises to encrypt the message, so the answer from the previous exercises may not match.})
+\end{exercise}
+
+\newpage
 
 \section{Security Analysis}
 %TODO: Add
