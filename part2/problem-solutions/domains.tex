@@ -58,6 +58,10 @@
     \end{align*}
     and since $\Z_5$ is a field, so 2 and 3 are units as all non-zero elements in $\Z_5$ are units. Therefore $3x+2$ and $4x+1$ are associates, as are $x+4$ adn $2x+3$.
 
+    \item For the forward direction, suppose $p$ is a prime. Let $a, b \in D$ such that $ab \in \princ{p}$, which means there exists a $k \in D$ such that $ab = kp$. So $p \vert ab$. As $p$ is a prime, this means that either $p \vert a$ or $p \vert b$. Without loss of generality assume $p \vert a$, meaning $a = qp$ for some $q \in D$. Hence $a \in \princ{p}$, which shows that $\princ{p}$ is a prime ideal.
+    
+    For the reverse direction, suppose $\princ{p}$ is prime and $p \vert ab$. Thus $ab = kp$ for some $k \in D$, which means $ab \in \princ{p}$. So $a \in \princ{p}$ or $b \in \princ{p}$ by definition of prime ideal. Without loss of generality assume $a \in \princ{p}$; we see $a = qp$ for some $q \in D$, meaning $p \vert a$. Hence $p$ is a prime element.
+
     \item Define $\phi: \Frac{F} \to F$ such that $[(a,b)]\mapsto ab^{-1}$. We show that $\phi$ is a well-defined ring isomorphism.
     \begin{itemize}
         \item \textbf{Well-defined}: Let $[(a,b)], [(c,d)] \in \Frac{F}$ and suppose $[(a,b)] = [(c,d)]$. Then $(a,b) \mathrel{\sim} (c,d)$ by \myref{thrm-equivalence-class-equivalence}, which means $ad = bc$ by definition of the equivalence relation on the field of fractions. Hence $ab^{-1} = cd^{-1}$ (remembering that the operation is commutative in a field), so
@@ -212,10 +216,8 @@
         
         \item $P(x) = x^2(x+1)^2(x^2+x+1)^2(x^2-x+1)^2$.
         
-        We note that $x$ is irreducible since if $x = p(x)q(x)$ for some $p(x), q(x) \in \Z[x]$, then at least one of them must be a constant polynomial. But $x$ has a coefficient of 1, meaning that that constant polynomial has to be $\pm1$, a unit.
-
-        We also note that $x+1$ is irreducible since if $x+1 = p(x)q(x)$ for some $p(x), q(x) \in \Z[x]$, then at least one of them must be a constant polynomial. Again this means that that constant polynomial is a unit.
-
+        We know that both $x$ and $x+1$ are irreducible by \myref{problem-primitive-degree-1-polynomial-in-Z[x]-is-irreducible}.
+        
         $x^2+x+1$ is irreducible since it is equal to $(x+\frac12)^2 + \frac34$ which is never zero for all integers $x$, which means that $x^2+x+1$ has no zeroes in $\Z$ and so it is irreducible (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
 
         $x^2-x+1$ is irreducible since it is equal to $(x-\frac12)^2 + \frac34$ which is never zero for all integers $x$, which means that $x^2-x+1$ has no zeroes in $\Z$ and so it is irreducible (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).

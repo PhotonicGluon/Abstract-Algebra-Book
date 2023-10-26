@@ -7,7 +7,7 @@ Before we introduce some examples of rings, we make some remarks for the notatio
     \item The multiplication symbol $\cdot$ is usually omitted, so $x \cdot y$ is written as $xy$.
     \item The additive identity of $R$ will always be denoted by 0 and the multiplicative identity of $R$ (if it exists) will always be denoted by 1.
     \item The additive inverse of the element $x$ will be denoted by $-x$ and the multiplicative inverse of $x$ (if it exists) will be denoted by $x^{-1}$.
-    \item $n$ applications of $+$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$), while $n$ applications of $\cdot$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if it exists).
+    \item $n$ applications of $+$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$), while $n$ applications of $\cdot$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if $x^{-1}$ exists).
 \end{itemize}
 
 Let's look at some examples of rings.
@@ -36,7 +36,7 @@ Let's look at some examples of rings.
 \begin{proof}
     We first prove the ring axioms before showing that it is commutative with a multiplicative identity.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: We know $(\Z_n, \oplus_n)$ is an abelian group by \myref{prop-Zn-is-abelian-group}
+        \item \textbf{Addition-Abelian}: We know $(\Z_n, \oplus_n)$ is an abelian group by \myref{prop-Zn-is-abelian-group}.
         \item \textbf{Multiplication-Semigroup}: We can see that $(\Z_n, \otimes_n)$ is a semigroup as
         \begin{itemize}
             \item $\Z_n$ is closed under $\otimes_n$ because $a \otimes_n b \in \{0, 1, 2, \dots, n-1\} = \Z_n$; and
@@ -53,7 +53,7 @@ Let's look at some examples of rings.
     The \textbf{ring of rational numbers}\index{ring!of rational numbers} is $(\Q, +, \times)$, where $+$ and $\times$ denote normal addition and multiplication.
 \end{definition}
 \begin{remark}
-    We denote the ring of rational numbers by $(\Q, +, \times)$.
+    We denote the ring of rational numbers by $\Q$.
 \end{remark}
 \begin{proposition}
     $\Q$ is a commutative ring with identity.
@@ -76,7 +76,7 @@ Let's look at some examples of rings.
     The \textbf{ring of real numbers}\index{ring!of real numbers} is the ring $(\R, +, \times)$ where $+$ and $\times$ denotes regular addition and multiplication respectively.
 \end{definition}
 \begin{remark}
-    We denote the ring of real numbers by $(\R, +, \times)$.
+    We denote the ring of real numbers by $\R$.
 \end{remark}
 \begin{proposition}
     $\R$ is a commutative ring with identity.
@@ -207,7 +207,7 @@ These are just some examples of rings; we explore more later in this chapter.
 \section{General Properties of Rings}
 We list some properties of rings here. For each of the propositions, assume $R$ is a ring.
 
-\begin{proposition}\label{prop-multiplying-by-zero-is-zero}
+\begin{proposition}[Multiplication by Zero]\label{prop-multiplying-by-zero-is-zero}
     $0x = x0 = 0$ for all $x \in R$.
 \end{proposition}
 \begin{proof}
@@ -267,7 +267,7 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
 \section{Matrix Rings}
 The rings that we explored in previous sections can be thought of as the `obvious' rings, since they are number systems. As rings were made to generalize number systems, they should clearly be rings. However, there are less obvious rings.
 
-We looked at matrices in the context of the General/Special Linear Group of matrices. Here we see that matrices in fact form rings, known as matrix rings. Before that though, we need to define the operations within that ring.
+We looked at matrices in the context of the General/Special Linear Group of matrices (\myref{section-groups-of-matrices}). Here we see that matrices in fact form rings, known as matrix rings. Before that though, we need to define the operations within that ring.
 
 \begin{definition}[Matrix Addition]\index{matrix addition}
     For any two matrices $\textbf{A}$ and $\textbf{B}$ with $n$ rows and columns and entries in the ring $(R, \oplus, \otimes)$, their sum is the matrix $\textbf{C} = \textbf{A} + \textbf{B}$ with $n$ rows and columns such that
@@ -435,7 +435,16 @@ We note one property about zero divisors, which will be used in future chapters.
     Suppose $R$ is a ring with identity such that $0 \neq 1$. An element $u \in R$ is called a \textbf{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$. Equivalently, $u$ is a unit if it has a multiplicative inverse.
 \end{definition}
 \begin{example}
+    Every non-zero element of $\Z_3$ is a unit since $1 \times 1 = 1$ and $2 \times 2 = 4 = 1$.
+\end{example}
+\begin{example}
+    5 is a unit in $\Z_6$ since $5 \times 5 = 25 = 1$ in $\Z_6$.
+\end{example}
+\begin{example}
     3 and 7 are units in $\Z_{10}$ since $3 \times 7 = 7 \times 3 = 21 = 1$ in $\Z_{10}$.
+\end{example}
+\begin{example}
+    Every non-zero element of $\Q$ is a unit since, for any rational number $\frac pq \in \Q$, we can find $\frac qp \in \Q$ where $\frac pq \times \frac qp = 1$, the multiplicative identity.
 \end{example}
 
 \begin{proposition}\label{prop-product-of-units-is-unit}
@@ -444,6 +453,12 @@ We note one property about zero divisors, which will be used in future chapters.
 \begin{proof}
     See \myref{exercise-product-of-units-is-unit} (later).
 \end{proof}
+\begin{example}
+    Since 3 and 7 are units in $\Z_{10}$, their product, $3 \times 7 = 21 = 1$ is too.
+\end{example}
+\begin{example}
+    2 and 3 are units in $\Z_{13}$ since $2 \times 7 = 14 = 1$ and $3 \times 9 = 27 = 1$ in $\Z_{13}$. Thus their product, $2 \times 3 = 6$, is a unit too. Indeed, one sees $6 \times 11 = 66 = 1$, so 6 is in fact a unit in $\Z_{13}$.
+\end{example}
 
 \begin{definition}
     Suppose $R$ is a ring with identity such that $0 \neq 1$. If every non-zero element $x \in R$ is a unit, then $R$ is said to be a \textbf{division ring}\index{division ring}.

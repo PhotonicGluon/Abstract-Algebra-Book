@@ -64,7 +64,7 @@ To make $R[x]$ into a ring, we need to define polynomial addition and polynomial
     \]
     for all $0 \leq k \leq m + n$.
 \end{definition}
-Although this definition of multiplication of polynomials may seem complicated, this is just a formalization of the usual process of using the distributive axiom of real numbers (\myref{axiom-distributivity}) and collecting like terms. So multiplying polynomials over a commutative ring $R$ is the same as how polynomials are always multiplied.
+Although this definition of multiplication of polynomials may seem complicated, this is just a formalization of the usual process of using the distributive axiom of real numbers (\myref{axiom-distributivity}) and collecting like terms. So multiplying polynomials over a commutative ring $R$ is the same as how polynomials are always multiplied over the reals.
 
 \begin{proposition}
     Let $R$ be a commutative ring. Then $R[x]$ is a commutative ring under polynomial addition and multiplication.
@@ -298,7 +298,7 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     Both 0 and 2 are constant polynomials in $\Z[x]$. However $x + 1$ and $x^2 + x + 1$ are not constant polynomials in $\Z[x]$.
 \end{example}
 \begin{example}
-    $\frac{12}{34}$ is a constant polynomial in $\Q[x]$, $\R[x]$, and $\C[x]$.
+    $\frac{12}{35}$ is a constant polynomial in $\Q[x]$, $\R[x]$, and $\C[x]$.
 \end{example}
 
 \begin{definition}
@@ -437,7 +437,7 @@ We now look at a theorem that tells us the degree of a sum or product of polynom
         
         \item \textbf{Image}: We show that $\phi$ is surjective. For any polynomial $(a_0+I) + (a_1+I)x + \cdots + (a_n+I)x^n$ in $(R/I)[x]$, clearly the polynomial $a_0 + a_1x + \cdots + a_nx^n$ is its pre-image. Therefore $\phi$ is surjective, meaning $\im \phi = (R/I)[x]$.
         
-        \item \textbf{Kernel}: Let $f(x) = a_0 + a_1x + \cdots + a_nx^n$. Then $f(x) \in \ker\phi$ if and only if $\phi(f(x)) = 0$, which means $(a_0+I) + \cdots + (a_n+I)x^n = 0$. This happens if and only if $a_k + I = 0$ for all $0 \leq k \leq n$, which in turn occurs if and only if $a_k \in I$. So $f(x) \in \ker\phi$ if and only if $f(x) \in I[x]$, meaning $\ker\phi = I[x]$.
+        \item \textbf{Kernel}: Let $f(x) = a_0 + a_1x + \cdots + a_nx^n$. Then $f(x) \in \ker\phi$ if and only if $\phi(f(x)) = I$, which means $(a_0+I) + \cdots + (a_n+I)x^n = I$. This happens if and only if $a_k + I = 0$ for all $0 \leq k \leq n$, which in turn occurs if and only if $a_k \in I$ for all $0 \leq k \leq n$. So $f(x) \in \ker\phi$ if and only if $f(x) \in I[x]$, meaning $\ker\phi = I[x]$.
     \end{itemize}
     By the FRIT,
     \[
@@ -508,9 +508,9 @@ In previous chapters, we have repeatedly used Euclid's division lemma (\myref{le
         &= a_nx^n + f_0(x) - a_nx^n - a_nb_m^{-1}x^{n-m}d_0(x)\\
         &= f_0(x) - a_nb_m^{-1}x^{n-m}d_0(x)
     \end{align*}
-    and observe $\deg f_0(x) < n$ and $\deg(x^{n-m}d_0(x)) < (n-m) + n = n$. Therefore we have $\deg f_1(x) < n$.
+    and observe $\deg f_0(x) < n$ and $\deg(x^{n-m}d_0(x)) < (n-m) + m = n$. Therefore we have $\deg f_1(x) < n$.
 
-    Applying the induction hypothesis on the divisor $f_1(x)$ means that there exists a quotient $q_1(x)$ and remainder $r(x)$ upon division by $d(x)$ such that
+    Applying the induction hypothesis on the dividend $f_1(x)$ means that there exists a quotient $q_1(x)$ and remainder $r(x)$ upon division by the divisor $d(x)$ such that
     \[
         f_1(x) = q_1(x)d(x) + r(x) \text{ with } r(x) = 0 \text{ or } \deg r(x) < \deg d(x).
     \]
@@ -635,7 +635,7 @@ With these definitions, we can now state some corollaries of polynomial long div
 \end{exercise}
 
 We note an important theorem about the number of zeroes of a polynomial.
-\begin{theorem}
+\begin{theorem}\label{thrm-polynomial-of-degree-n-has-at-most-n-zeroes}
     Suppose $F$ is a field and $f(x) \in F[x]$. If the degree of $f(x)$ is $n$, then $f(x)$ has at most $n$ distinct zeroes.
 \end{theorem}
 \begin{proof}
@@ -647,14 +647,14 @@ We note an important theorem about the number of zeroes of a polynomial.
 \end{proof}
 
 \begin{example}
-    We give and example of when the previous theorem fails. Consider $\Z_{12}[x]$ and $f(x) = x^2 + 11 \in \Z_{12}[x]$. We note $\Z_{12}$ is not a field since $3 \times 4 = 12 = 0$, which means $\Z_{12}$ is not an integral domain (and hence not a field). We see that $f(x)$ has 4 zeroes 1, 5, 7, and 11 since
+    We give an example of when \myref{thrm-polynomial-of-degree-n-has-at-most-n-zeroes} fails. Consider $\Z_{12}[x]$ and $f(x) = x^2 + 11 \in \Z_{12}[x]$. We note $\Z_{12}$ is not a field since $3 \times 4 = 12 = 0$, which means $\Z_{12}$ is not an integral domain (and hence not a field). We see that $f(x)$ has 4 zeroes, namely 1, 5, 7, and 11, because
     \begin{align*}
         f(1) &= 1^2 + 11 = 12 = 0,\\
         f(5) &= 5^2 + 11 = 36 = 0,\\
         f(7) &= 7^2 + 11 = 60 = 0, \text{ and}\\
         f(11) &= 11^2 + 11 = 132 = 0.
     \end{align*}
-    So $f(x)$ has 4 roots but has degree 2.
+    So $f(x)$ has 4 zeroes but has degree 2.
 \end{example}
 
 We end this section by noting two theorems.
