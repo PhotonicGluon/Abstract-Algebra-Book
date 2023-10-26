@@ -24,7 +24,8 @@ def process_tex_files_in_dir(directory):
     for root, dirs, files in os.walk(directory):
         for file in files:
             path = os.path.join(root, file)
-            if os.path.splitext(path)[1] == ".tex":
+            extension = os.path.splitext(path)[1]
+            if extension in {".tex", ".bib"}:
                 remove_trailing_whitespace(path)
 
 
