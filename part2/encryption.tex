@@ -1,0 +1,433 @@
+\chapter{Rings and Encryption}
+Rings have practical use in the real world. Recently, with the threat of quantum computers breaking traditional encryption such as the Rivest-Shamir-Adleman (RSA) encryption scheme, post-quantum encryption schemes were developed. We look at the NTRU encryption scheme as described in \cite{hoffstein_pipher_silverman_1996}, a polynomial-based and allegedly post-quantum resistant encryption scheme.
+
+\section{Cryptosystems}\index{cryptosystem}
+The study and use of methods for secure information sharing when third parties are present is known as cryptography. Within cryptography, there are different cryptosystems, which are systems that has their own encryption, decryption, and key generation methods.
+\begin{itemize}
+    \item Encryption refers to the process of converting information or data into a usually random sequence of data, in order to prevent unauthorized parties from accessing the information.
+    \item Decryption refers to the process of undoing encryption.
+    \item Key generation is the process of creating keys that are used to encrypt and decrypt whatever data is being sent.
+\end{itemize}
+
+\begin{example}
+    The easiest example to illustrate a cryptosystem is the Caesar Cipher cryptosystem. The message $M = \code{HELLO WORLD}$ can be `encrypted' into $E = \code{JGNNQ YQTNF}$ by using an `encryption key' of $k_e = 2$, i.e. we shift each letter in $M$ by two places. To `decrypt', we reverse the process by shifting each letter in $E$ to letters behind to reveal $M$ again. The `decryption key' in this case is $k_d = 2$, since we are shifting the letters backwards 2 spaces. We note that $0 \leq k_e \leq 25$ (with $k_e = 0$ meaning that no encryption takes place), and $k_d = k_e$.
+\end{example}
+
+The Caesar Cipher cryptosystem is what is known as a \textbf{private key cryptosystem}\index{cryptosystem!private key}, meaning that the key that was generated for encryption is also used for that of decryption. As seen above, once one knows the encryption key, the decryption key can be retrieved very easily. Therefore, for a secure transmission, it is essential that both encryption and decryption keys are kept secret. This is why this is called a private key cryptosystem.
+
+In contrast, most encryption algorithms that form the backbone of communication on the internet are \textbf{public key cryptosystems}\index{cryptosystem!public key}. In such a system, both an encryption key and decryption key are generated. The encryption key is known to everyone who wants to communicate, while the decryption key is kept secret. Hence, the encryption key is called the \textbf{public key}\index{public key} and the decryption key is called the \textbf{private key}\index{private key}. It is often the case that the public key is \textit{different} to that of the private key, which is why most public key systems are also called \textbf{asymmetric cryptography}\index{asymmetric cryptography}. NTRU is an example of such a cryptosystem.
+
+\section{Truncated Polynomial Rings}
+NTRU (as described in \cite[\S 1.1]{hoffstein_pipher_silverman_1998}) uses the truncated polynomial ring
+\[
+    R = \Z[x] / \princ{x^N - 1}
+\]
+where $N$ is a positive integer. An element in $R$ takes the form
+\[
+    \sum_{i=0}^{N-1}a_ix^i + \princ{x^N - 1} = a_0 + a_1x + a_2x^2 + \cdots + a_{N-1}x^{N-1} + \princ{x^N - 1}.
+\]
+However, since all polynomials will have the trailing $\princ{x^N - 1}$ at the end, we instead call an element in $R$ a `polynomial' (although it is not strictly a polynomial) and write an element $f(x) \in R$ by
+\[
+    f(x) = \sum_{i=0}^{N-1}f_ix^i
+\]
+where we follow the notation of \cite{hoffstein_pipher_silverman_1996,hoffstein_pipher_silverman_1998} and let the coefficients be written like above.
+
+\begin{example}
+    Let us work through an example of `polynomial addition' within $R$ for $N = 5$. Let $f(x) = x^3 + x + 2$ and $g(x) = 2x^4 + 5x^2 + 8x$ be `polynomials' in $R$. Then
+    \begin{align*}
+        f(x) + g(x) &= (x^3 + x + 2) + (2x^4 + 5x^2 + 8x)\\
+        &= 2x^4 + x^3 + 5x^2 + 9x + 2
+    \end{align*}
+    which is an element in $R$.
+    
+    The trouble comes with `polynomial multiplication', where we see
+    \begin{align*}
+        f(x)g(x) &= (x^3 + x + 2)(2x^4 + 5x^2 + 8x)\\
+        &= (2x^7 + 5x^5 + 8x^4) + (2x^5 + 5x^3 + 8x^2) + (4x^4 + 10x^2 + 16x)\\
+        &= 2x^7 + 7x^5 + 12x^4 + 5x^3 + 18x^2 + 16x
+    \end{align*}
+    which, if we are using normal polynomial multiplication, is \textit{not} an element of $R$.
+
+    However, recall that every polynomial in $R$ has a `hidden' $\princ{x^N - 1}$ at their end. In this case, the hidden ideal is $I = \princ{x^5-1}$; so in fact we can reduce their product $f(x)g(x)$,
+    \begin{align*}
+        f(x)g(x) &= 2x^7 + 7x^5 + 12x^4 + 5x^3 + 18x^2 + 16x + I\\
+        &= (2x^2(x^5-1) + 7(x^5-1) + 2x^2 + 7) + (12x^4 + 5x^3 + 18x^2 + 16x) + I\\
+        &= (2x^2+7)(x^5-1) + (12x^4 + 5x^3 + (18 + 2)x^2 + 16x + 7) + I\\
+        &= (12x^4 + 5x^3 + 20x^2 + 16x + 7) + I,
+    \end{align*}
+    which means that in $R$ our original product is `equal' to $12x^4 + 5x^3 + 20x^2 + 16x + 7$.
+\end{example}
+
+Such polynomials in $R$ shall henceforth be called \textbf{truncated polynomials}\index{truncated polynomials}.
+
+In summary, the rules for `polynomial addition' and `polynomial multiplication' are as follows.
+\begin{itemize}
+    \item `Polynomial addition' is the same as regular polynomial addition.
+    \item `Polynomial multiplication' is almost the same as regular polynomial multiplication, except that for each integer $m$ greater than $N - 1$, we replace $x^m$ with $x^{m \mod N}$.
+\end{itemize}
+
+For NTRU to work, the polynomials that we choose must have inverses. In particular, NTRU will involve reducing the \textit{coefficients} modulo certain integers. Suppose $p$ is a positive integer that we want to reduce the coefficients modulo of (note that $p$ may not be prime; this is just the notation used in \cite[\S~1.1]{hoffstein_pipher_silverman_1998}). Then an inverse of $f(x) \in R$ is an $F_p(x) \in R$ such that
+\[
+    F_p(x)f(x) \equiv 1 \pmod p
+\]
+Again, we follow the notation used in \cite{hoffstein_pipher_silverman_1998}. Note that $f(x)$ may not have an inverse; this problem is not significant when we are actually performing the encryption, since we may just choose another $f(x)$.
+
+\begin{example}
+    We claim that $F_3(x) = 2x^4 + 2x^3 + x^2 + x + 2$ is an inverse of $f(x) = x^2 + 1$ in $R$ when $N = 5$ and $p = 3$. Note
+    \begin{align*}
+        F_3(x)f(x) &= (2x^4 + 2x^3 + x^2 + x + 2)(x^2+1)\\
+        &= 2x^6 + 2x^5 + 3x^4 + 3x^3 + 3x^2 + x + 2\\
+        &= 2x + 2 + 3x^4 + 3x^3 + 3x^2 + x + 2 & (\text{reduce powers modulo }N = 5)\\
+        &= 3x^4 + 3x^3 + 3x^2 + 3x + 4\\
+        &= 1 & (\text{reduce coefficients modulo } p = 3)
+    \end{align*}
+    so $F_3(x)$ is an inverse of $f(x)$ when $N = 5$ and $p = 3$.
+\end{example}
+
+\begin{exercise}
+    Find an inverse of $f(x) = x + 2$ when $N = 2$ and $p = 4$.
+\end{exercise}
+
+\section{NTRU}
+NTRU fits in the general framework of probabilistic cryptosystems, meaning that any message that one wishes to encrypt may have many different possible encrypted values, since a hint of randomness is included. When compared to the more famous RSA encryption scheme, for a message of length $N$, it takes only the order of $N^2$ operations, compared to RSA which takes the order of $N^3$ operations \cite[p.~268]{hoffstein_pipher_silverman_1998}.
+
+\subsection{Parameters}
+An NTRU cryptosystem uses 3 integer parameters.
+\begin{itemize}
+    \item $N$, the number of terms present in a `polynomial' in the ring $R$ defined above. Again, we remark that the maximum degree that a `polynomial' in $R$ is $N - 1$.
+    \item $p$, a so-called small modulus, which is usually an odd prime.
+    \item $q$, a so-called large modulus. This is a power of a prime, usually 2, but has to be considerably larger than and coprime to $p$.
+\end{itemize}
+
+As defined in the previous section, NTRU works with `polynomials' within the ring
+\[
+    R = \Z[x] / \princ{x^N - 1}.
+\]
+NTRU also uses 4 sub\textit{sets} of $R$.
+\begin{itemize}
+    \item $\mathcal{L}_f$, the set of possible private keys \cite[\S 1.2]{hoffstein_pipher_silverman_1998}.
+    \item $\mathcal{L}_g$, the set of `adjustment' polynomials. It should be noted that NTRU does not explicitly name what $\mathcal{L}_g$ is; we call it `adjustment' polynomials here since they adjust the private keys slightly, as we will see later.
+    \item $\mathcal{L}_\phi$, the set of `encoding fuzz' polynomials \cite[\S 1.3]{hoffstein_pipher_silverman_1996}.
+    \item $\mathcal{L}_m$, the set of possible message polynomials \cite[\S 1.3]{hoffstein_pipher_silverman_1998}.
+\end{itemize}
+
+For ease of computation of the multiplication of polynomials later, the coefficients of these polynomials would be small. We follow \cite[\S~2.2]{hoffstein_pipher_silverman_1998} on the description on the polynomials in the above sets.
+\begin{itemize}
+    \item For $\mathcal{L}_m$, let the coefficients of the polynomials lie within the interval $\left[-\frac{p-1}2, \frac{p-1}2\right]$, assuming $p$ is odd.
+    \item For the rest, first define $\mathcal{L}(d_1, d_2)$ to be the set of polynomials in $R$ with $d_1$ coefficients equalling 1, $d_2$ coefficients equalling -1, and the rest equal to 0. Then, by choosing positive integers $d_f$, $d_g$, and $d_\phi$, set
+    \begin{align*}
+        \mathcal{L}_f &= \mathcal{L}(d_f, d_f-1),\\
+        \mathcal{L}_g &= \mathcal{L}(d_g, d_g), \text{ and}\\
+        \mathcal{L}_\phi &= \mathcal{L}(d, d).
+    \end{align*}
+\end{itemize}
+
+A notable property of polynomials in $\mathcal{L}_g$ and $\mathcal{L}_\phi$ is that they all do not have inverses.
+\begin{exercise}
+    Show that a polynomial in $\mathcal{L}(k,k)$, where $k$ is some positive integer smaller than $\frac N2$, does not have an inverse modulo $p$ for any $p$.
+\end{exercise}
+Thus, to ensure that $f(x)$ has a chance to be invertible, we choose $\mathcal{L}_f$ to use $ \mathcal{L}(d_f, d_f-1)$, so that it has one more coefficient of 1 than than it does for -1.
+
+\subsection{Key Creation}
+Suppose Alice wants to send Bob a message. Before that, Bob needs to create his encryption and decryption key within the NTRU cryptosystem.
+
+Bob chooses two polynomials $f(x) \in \mathcal{L}_f$ and $g(x) \in \mathcal{L}_g$, which will have `small' coefficients (which, in this case, meaning that the coefficients are either 0 or $\pm1$). Now $g(x)$ can be anything, while $f(x)$ has to satisfy the additional requirement that it has inverses modulo $p$ and $q$. That is, there must exist polynomials $F_p(x), F_q(x) \in R$ such that
+\[
+    F_p(x)f(x) \equiv 1 \pmod p \text{ and } F_q(x)f(x) \equiv 1 \pmod q.
+\]
+For most choices of $f(x)$ this will be true; if not, randomly pick another $f(x)$ from $\mathcal{L}_f$.
+\begin{remark}
+    Finding inverses of $f(x)$ modulo $p$ and $q$ is not a trivial task, but \cite{silverman_1999} describes a method for the fast computation of \textit{almost inverses} which are good enough for NTRU.
+\end{remark}
+
+Bob then computes the polynomial $h(x)$ given by
+\[
+    h(x) = F_q(x)g(x) \mod q,
+\]
+that is, $h(x)$ is $F_q(x)g(x)$ and then reducing the coefficients modulo $q$. Bob's public key is $h(x)$; his private key is $f(x)$, although in practice he will also store $F_p(x)$.
+
+\begin{example}
+    Suppose $N = 5$, $p = 3$, $q = 8$. Suppose Bob chooses $f(x) = x^4 + x^3 - x$ and $g(x) = x^3 - x^2 + x - 1$. We note that
+    \[
+        F_3(x) = 2x^4 + x^3 + 1
+    \]
+    and
+    \[
+        F_8(x) = 7x^4 + x^3 + 1
+    \]
+    So we see that $h(x)$ is
+    \begin{align*}
+        h(x) &= F_8(x)g(x)\\
+        &= (7x^4 + x^3 + 1)(x^3 - x^2 + x - 1)\\
+        &= 7x^7 - 6x^6 + 6x^5 - 6x^4 - x^2 + x - 1\\
+        &= 7x^2 - 6x + 6 - 6x^4 - x^2 + x - 1\\
+        &= -6x^4 + 6x^2 - 5x + 5\\
+        &\equiv 2x^4 + 6x^2 + 3x + 5 \pmod8
+    \end{align*}
+    which is Bob's public key. Bob would then keep $f(x) = x^4 + x^3 - x$ and $F_3(x) = 2x^4 + x^3 + 1$ secret as his private keys.
+\end{example}
+\begin{example}
+    Suppose $N = 7$, $p = 3$, $q = 32$. Suppose Bob chooses $f(x) = x^6 - x^3 + 1$ and $g(x) = x^5 + x^4 - x^2 - 1$, and note
+    \begin{align*}
+        F_3(x) &= 2x^6 + x^4 + 2x^2 + x + 1, \text{ and}\\
+        F_{32}(x) &= 31x^6 + x^4 + 31x^2 + x + 1.
+    \end{align*}
+    So Bob's public key is
+    \begin{align*}
+        h(x) &= F_{32}(x)g(x)\\
+        &= (31x^6 + x^4 + 31x^2 + x + 1)(x^5 + x^4 - x^2 - 1)\\
+        &= 31x^{11} + 31x^{10} + x^9 - 30x^8 + 31x^7 + 2x^5 - 31x^4 - x^3 - 32x^2 - x - 1\\
+        &= 31x^4 + 31x^3 + x^2 - 30x + 31 + 2x^4 - 31x^4 - x^3 - 32x^2 - x - 1\\
+        &= 2x^4 + 30x^3 - 31x^2 - 31x + 30\\
+        &\equiv 2x^4 + 30x^3 + x^2 + x + 30 \pmod{32}.
+    \end{align*}
+    Bob would then keep $f(x) = x^6 - x^3 + 1$ and $F_3(x) = 2x^6 + x^4 + 2x^2 + x + 1$ secret as his private keys.
+\end{example}
+
+\begin{exercise}
+    Let $N = 6$, $p = 5$, and $q = 16$, and suppose Bob chooses $f(x) = x^3 + x^2 - 1$ and $g(x) = x^4 - x^3 - x + 1$. Given
+    \begin{align*}
+        F_5(x) &= 3x^5 + 4x^4 + x^3 + 2x^2 + 2x + 4,\\
+        F_{16}(x) &= 7x^5 + 5x^4 + 14x^3 + 9x^2 + 12x + 2,
+    \end{align*}
+    what is Bob's public key?
+\end{exercise}
+
+\subsection{Encryption}
+Before we can perform encryption, we need to encode our message. For simplicity, let's use the American Standard Code for Information Interchange\index{American Standard Code for Information Interchange} (ASCII)\index{ASCII} to encode simple alphabetical text.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|l|l|l|l|}
+        \hline
+        \textbf{A} & 0100 0001 & \textbf{N} & 0100 1110 & \textbf{a} & 0110 0001 & \textbf{n} & 0110 1110 \\ \hline
+        \textbf{B} & 0100 0010 & \textbf{O} & 0100 1111 & \textbf{b} & 0110 0010 & \textbf{o} & 0110 1111 \\ \hline
+        \textbf{C} & 0100 0011 & \textbf{P} & 0101 0000 & \textbf{c} & 0110 0011 & \textbf{p} & 0111 0000 \\ \hline
+        \textbf{D} & 0100 0100 & \textbf{Q} & 0101 0001 & \textbf{d} & 0110 0100 & \textbf{q} & 0111 0001 \\ \hline
+        \textbf{E} & 0100 0101 & \textbf{R} & 0101 0010 & \textbf{e} & 0110 0101 & \textbf{r} & 0111 0010 \\ \hline
+        \textbf{F} & 0100 0110 & \textbf{S} & 0101 0011 & \textbf{f} & 0110 0110 & \textbf{s} & 0111 0011 \\ \hline
+        \textbf{G} & 0100 0111 & \textbf{T} & 0101 0100 & \textbf{g} & 0110 0111 & \textbf{t} & 0111 0100 \\ \hline
+        \textbf{H} & 0100 1000 & \textbf{U} & 0101 0101 & \textbf{h} & 0110 1000 & \textbf{u} & 0111 0101 \\ \hline
+        \textbf{I} & 0100 1001 & \textbf{V} & 0101 0110 & \textbf{i} & 0110 1001 & \textbf{v} & 0111 0110 \\ \hline
+        \textbf{J} & 0100 1010 & \textbf{W} & 0101 0111 & \textbf{j} & 0110 1010 & \textbf{w} & 0111 0111 \\ \hline
+        \textbf{K} & 0100 1011 & \textbf{X} & 0101 1000 & \textbf{k} & 0110 1011 & \textbf{x} & 0111 1000 \\ \hline
+        \textbf{L} & 0100 1100 & \textbf{Y} & 0101 1001 & \textbf{l} & 0110 1100 & \textbf{y} & 0111 1001 \\ \hline
+        \textbf{M} & 0100 1101 & \textbf{Z} & 0101 1010 & \textbf{m} & 0110 1101 & \textbf{z} & 0111 1010 \\ \hline
+    \end{tabular}
+    \caption{ASCII Character to Binary Conversion Table}\label{table-ASCII-conversion-table}
+\end{table}
+
+\begin{example}
+    For example, the character `H' has a binary code of \code{01001000}. The letter `i' has a binary code of \code{01101100}.
+\end{example}
+
+With such a conversion scheme, we are able to convert characters into polynomials that are compatible with NTRU.
+
+\begin{example}
+    Since `H' has a binary code of \code{01001000}, we may convert it into a polynomial with 8 terms (possibly with coefficients of zero):
+    \[
+        0x^7 + 1x^6 + 0x^5 + 0x^4 + 1x^3 + 0x^2 + 0x + 0 = x^3 + x^6.
+    \]
+    So `H' is represented by $x^6 + x^3$. Similarly, `i' can be represented by $x^6 + x^5 + x^3 + x^2$.
+\end{example}
+
+\begin{exercise}
+    Convert the character `U' into a representative polynomial.
+\end{exercise}
+
+Of course, there are more optimal ways of converting messages into message polynomials (since the coefficients range from $-\frac{p-1}2$ to $\frac{p-1}2$ and we are only using 0 or 1), but we simplify the process here.
+
+Now suppose Alice wants to send a message to Bob. She first converts her message into polynomials using the process described above. In particular, suppose that her message contains $l$ ASCII characters, so by using the process before he obtains representative polynomials $m_1(x), m_2(x), \dots, m_l(x)$. Next, she randomly chooses an `encoding fuzz' polynomial $\phi(x)$ from $\mathcal{L}_\phi$. She then performs encryption for a particular message polynomial $m_i(x)$ by computing the polynomial $e_i(x)$ where
+\[
+    e_i(x) = p\phi(x)h(x) + m_i(x) \mod q,
+\]
+that is, $e_i(x)$ is $p\phi(x)h(x) + m_i(x)$ but with all resulting coefficients reduced modulo $q$.
+
+\begin{example}\label{example-ntru-case-1}
+    Suppose $N = 9$, $p = 3$, $q = 64$. Bob performs key generation using $f(x) = x^3 - x^2 + 1$ and $g(x) = x^3 - 1$, resulting in
+    \begin{align*}
+        F_3(x) &= x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x,\\
+        F_{64}(x) &= 37x^8 + 18x^7 + 9x^6 + 36x^5 + 18x^4 + 9x^3 + 37x^2 + 19x + 10, \text{ and}\\
+        h(x) &= 61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61.
+    \end{align*}
+    
+    Suppose Alice wants to transmit the character `H' to Bob. Using \myref{table-ASCII-conversion-table}, Alice converts `H' into the message polynomial $m_1(x) = x^6 + x^3$. Say Alice obtains a random `encoding fuzz' polynomial of $\phi(x) = x^{3} - x^{2} + x - 1$. Hence her encrypted message will be
+    \begin{align*}
+        e_1(x) &= 3\phi(x)h(x) + m_1(x)\\
+        &= 3(x^3 -x^2 +x - 1)(61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61) + (x^6 + x^3)\\
+        &= 183x^{11} - 183x^{10} + 183x^9 - 174x^8 + 10x^6 - 9x^5 + 183x^4 - 8x^3 - 183\\
+        &= 183x^2 - 183x + 183 - 174x^8 + 10x^6 - 9x^5 + 183x^4 - 8x^3 - 183\\
+        &= -174x^8 + 10x^6 - 9x^5 + 183x^4 - 8x^3 + 183x^2 - 183x\\
+        &\equiv 18x^8 + 10x^6 + 55x^5 + 55x^4 + 56x^3 + 55x^2 + 9x \pmod{64}.
+    \end{align*}
+\end{example}
+
+\begin{example}\label{example-ntru-case-2}
+    Using the same parameters as \myref{example-ntru-case-1}, Alice now wants to transmit the character `i' to Bob. Alice converts `i' into the message polynomial $m_2(x) = x^6 + x^5 + x^3 + x^2$ using \myref{table-ASCII-conversion-table}, and her encrypted message will be
+    \begin{align*}
+        e_2(x) &= 3\phi(x)h(x) + m_2(x)\\
+        &= 3(x^3 - x^2 + x - 1)(61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61) + (x^6 + x^5 + x^3 + x^2)\\
+        &= 183x^{11} - 183x^{10} + 183x^9 - 174x^8 + 10x^6 - 8x^5 + 183x^4 - 8x^3 + x^2 - 183\\
+        &= 183x^2 - 183x + 183 - 174x^8 + 10x^6 - 8x^5 + 183x^4 - 8x^3 + x^2 - 183\\
+        &= -174x^8 + 10x^6 - 8x^5 + 183x^4 - 8x^3 + 184x^2 - 183x\\
+        &\equiv 18x^8 + 10x^6 + 56x^5 + 55x^4 + 56x^3 + 56x^2 + 9x \pmod{64}.
+    \end{align*}
+    Note that when transmitting parts of the same message, the `encoding fuzz' polynomial does not change.
+\end{example}
+
+\begin{exercise}
+    Let $N = 8$, $p = 3$, $q = 64$. Let Bob's public key be
+    \[
+        h(x) = 24x^7 + 15x^6 + 50x^5 + 48x^4 + 40x^3 + 46x^2 + 14x + 19.
+    \]
+    Alice wants to transmit the character `U' to Bob. Suppose Alice encodes `U' using the ASCII conversion table (\myref{table-ASCII-conversion-table}) and obtains an `encoding fuzz' polynomial of $x - 1$. What is the encrypted message?
+\end{exercise}
+
+\subsection{Decryption}
+Suppose that Bob has received the encrypted message $e(x)$ and wants to decrypt it using his private key $f(x)$. To do this, he requires the precomputed polynomial $F_p(x)$.
+\begin{enumerate}
+    \item Compute the polynomial $a(x) = f(x)e(x) \mod q$. Choose coefficients of $a(x)$ to be in the interval $\left[-\frac q2, \frac q2\right]$.
+    \item Set $b(x) = a(x) \mod p$, i.e. $b(x)$ is $a(x)$ with the coefficients reduced modulo $p$. Again, choose the coefficients of $b(x)$ to be in the interval $\left[-\frac p2, \frac p2\right]$.
+    \item Retrieve original message by computing $F_p(x)b(x) \mod p$.
+\end{enumerate}
+
+One might question why this decryption process works. Well, we see that
+\begin{align*}
+    a(x) &= f(x)e(x)\\
+    &\equiv f(x) \left(p\phi(x)h(x) + m(x)\right) \pmod q\\
+    &\equiv (f(x))(p\phi(x))(F_q(x)g(x)) + f(x)m(x) \pmod q\\
+    &= (F_q(x)f(x))(p\phi(x))(g(x)) + f(x)m(x)\\
+    &= p\phi(x)g(x) + f(x)m(x).
+\end{align*}
+Now, when we compute $b(x) = a(x) \mod p$, since we have chosen the coefficients of $a(x)$ to be in the interval $\left[-\frac q2, \frac q2\right]$, and since $q$ is sufficiently large, the second summand, $f(x)m(x)$, is unaffected by the operation of modulo $p$. Hence $b(x) = f(x)m(x)$ in modulo $p$. So
+\begin{align*}
+    F_p(x)b(x) &\equiv F_p(x)f(x)m(x) \pmod{p}\\
+    &\equiv m(x)
+\end{align*}
+and since the coefficients of $m(x)$ are restrained to $\left[-\frac{p-1}2, \frac{p-1}2\right]$ we retrieve $m(x)$ exactly.
+
+It is again emphasised that $q$ needs to be significantly larger than $p$ in order for this to work.
+
+\begin{example}
+    Suppose $N = 9$, $p = 3$, $q = 64$. Suppose Bob receives the encrypted message
+    \[
+        e(x) = 18x^8 + 10x^6 + 55x^5 + 55x^4 + 56x^3 + 55x^2 + 9x,
+    \]
+    which was encrypted using his public key
+    \[
+        h(x) = 61x^8 + 3x^5 + 3x^4 + 3x^3 + 61x + 61.
+    \]
+    Bob saved his private key,
+    \[
+        f(x) = x^3 - x^2 + 1,
+    \]
+    and its inverse modulo $p$,
+    \[
+        F_3(x) = x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x,
+    \]
+    for decryption now.
+
+    First we compute $a(x)$,
+    \begin{align*}
+        a(x) &= f(x)e(x)\\
+        &= (x^3 - x^2 + 1)(18x^8 + 10x^6 + 55x^5 + 55x^4 + 56x^3 + 55x^2 + 9x)\\
+        &= 18x^11 - 18x^10 + 10x^9 + 63x^8 + 11x^6 + 54x^5 + 9x^4 + 47x^3 + 55x^2 + 9x\\
+        &= 18x^2 - 18x + 10x + 63x^8 + 11x^6 + 54x^5 + 9x^4 + 47x^3 + 55x^2 + 9x\\
+        &= 63x^8 + 11x^6 + 54x^5 + 9x^4 + 47x^3 + 73x^2 - 9x\\
+        &\equiv -x^8 + 11x^6 - 10x^5 + 9x^4 - 17x^3 + 9x^2 - 9x + 10 \pmod{64},
+    \end{align*}
+    remembering that we choose coefficients of $a(x)$ to be between -32 and 32.
+
+    Now we compute $b(x)$ by reducing the coefficients of $a(x)$ modulo 3, so
+    \[
+        b(x) \equiv -x^8 - x^6 - x^5 + x^3 + 1 \pmod{3},
+    \]
+    again remembering that we choose coefficients of $b(x)$ to be between -1 and 1.
+
+    Finally, we can retrieve the original message by computing
+    \begin{align*}
+        F_3(x)b(x) &= (x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x)(-x^8 - x^6 - x^5 + x^3 + 1)\\
+        &= -x^{15} - 2x^{14} - 3x^{13} - 4x^{12} - 6x^{11} - 2x^{10} - 3x^9 + 2x^6 + 2x^5 + 3x^4\\
+        &\quad\quad + 2x^3 + 2x\\
+        &= -x^6 - 2x^5 - 3x^4 - 4x^3 - 6x^2 - 2x - 3 + 2x^6 + 2x^5 + 3x^4 + 2x^3 + 2x\\
+        &= x^6 - 2x^3 - 6x^2 - 3\\
+        &\equiv x^6 + x^3 \pmod{3},
+    \end{align*}
+    which is the same message as we encrypted in \myref{example-ntru-case-1}.
+\end{example}
+
+\begin{example}
+    Let's say Bob now receives the encrypted message
+    \[
+        e(x) = 18x^8 + 10x^6 + 56x^5 + 55x^4 + 56x^3 + 56x^2 + 9x,
+    \]
+    encrypted the same way as in the previous example. So we first compute $a(x)$,
+    \begin{align*}
+        a(x) &= f(x)e(x)\\
+        &= (x^3 - x^2 + 1)(18x^8 + 10x^6 + 56x^5 + 55x^4 + 56x^3 + 56x^2 + 9x)\\
+        &= 18x^{11} - 18x^{10} + 10x^9 + 64x^8 - x^7 + 11x^6 + 56x^5 + 8x^4 + 47x^3 + 56x^2 + 9x\\
+        &= 18x^2 - 18x + 10 + 64x^8 - x^7 + 11x^6 + 56x^5 + 8x^4 + 47x^3 + 56x^2 + 9x\\
+        &= 64x^8 - x^7 + 11x^6 + 56x^5 + 8x^4 + 47x^3 + 74x^2 - 9x + 10\\
+        &\equiv -x^7 + 11x^6 - 8x^5 + 8x^4 - 17x^3 + 10x^2 - 9x + 10 \pmod{64},
+    \end{align*}
+    then compute $b(x)$ by reducing the coefficients of $a(x)$ modulo 3,
+    \[
+        b(x) \equiv -x^7 - x^6 + x^5 - x^4 + x^3 + x^2 + 1 \pmod{3},
+    \]
+    and finally retrieve the original message,
+    \begin{align*}
+        F_3(x)b(x) &= (x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x)(-x^7 - x^6 + x^5 - x^4 + x^3 + x^2 + 1)\\
+        &= -x^{14} - 3x^{13} - 3x^{12} - 2x^{11} - 2x^{10} + 3x^8 + 7x^6 + 2x^5 + 3x^4 + 4x^3 + 2x\\
+        &= -x^5 - 3x^4 - 3x^3 - 2x^2 - 2x + 3x^8 + 7x^6 + 2x^5 + 3x^4 + 4x^3 + 2x\\
+        &= 3x^8 + 7x^6 + x^5 + x^3 - 2x^2\\
+        &\equiv x^6 + x^5 + x^3 + x^2 \pmod{3},
+    \end{align*}
+    which is the same message as we encrypted in \myref{example-ntru-case-2}.
+\end{example}
+
+\begin{exercise}
+    Suppose $N = 8$, $p = 3$, and $q = 64$. Bob received an encrypted message from Alice,
+    \[
+        e(x) = 8x^7 + 12x^6 + 52x^5 + 26x^4 +x^3 + 62x^2 + 4x + 29,
+    \]
+    that was encrypted using his private key
+    \[
+        f(x) = x^7 +x^6 +x^5 -x^4 -x^3 -x + 1
+    \]
+    which has an inverse modulo 3 of
+    \[
+        F_3(x) = 2x^6 +x^5 +x^4 + 2x^2 + 2x + 2.
+    \]
+    What was the \textit{character} that Alice sent to him?\newline
+    (\textit{Note: although the private key and its inverse look familiar, we used a different $g(x)$ and $\phi(x)$ from the previous exercises to encrypt the message, so the answer from the previous exercises may not match.})
+\end{exercise}
+
+\newpage
+
+\section{Implementation}
+We have been working with toy examples to understand the basic process that \cite{hoffstein_pipher_silverman_1998} (which references \cite{hoffstein_pipher_silverman_1996}) uses to encrypt and decrypt messages. In practice, the recommended parameters for NTRU (as described in \cite{hoffstein_pipher_silverman_1998}) for secure, post-quantum encryption are as provided in \cite{ntru_2020} and is listed below.
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|}
+        \hline
+        & $N$ & $p$ & $q$ \\ \hline
+        128-Bit Security Margin & 509 & 3 & 2048 \\ \hline
+        192-Bit Security Margin & 677 & 3 & 2048 \\ \hline
+        256-Bit Security Margin & 821 & 3 & 4096 \\ \hline
+    \end{tabular}
+\end{table}
+
+We note that all values of $N$ in the above table are prime; we have elected to use small, possibly non-prime values of $N$ in our discussion of NTRU to reduce computation. In practice, computers are hardy enough to handle polynomials of huge degree.
+
+In addition, \cite{hulsing_rijneveld_schanck_schwabe_2018} proposes a new NTRU implementation, which eliminates decryption failures, eliminates invertibility checks for $f(x)$, and implements `cheaper' routines to generate keys. The NTRU-HRSS system uses $N = 701$, $p = 3$, and $q = 8192$.
+
+There have been many attacks proposed against NTRU (both the implementation in \cite{hoffstein_pipher_silverman_1996} and the implementation in \cite{hulsing_rijneveld_schanck_schwabe_2018}), including, but not limited to,
+\begin{itemize}
+    \item \textbf{brute-force attacks}: attempting to directly compute the private key $f(x)$;
+    \item \textbf{meet-in-the-middle attacks}: attempting to directly compute the private key $f(x)$ by splitting the task into finding two polynomials $f_1(x)$ and $f_2(x)$ such that $f(x) = f_1(x) + f_2(x)$;
+    \item \textbf{lattice reduction attacks}: use the Lenstra-Lenstra-Lov\`asz algorithm to obtain \textit{both} $f(x)$ and $g(x)$ from the public key $h(x)$; and
+    \item \textbf{chosen ciphertext attacks}: attempting to create a new message from the ciphertext and then tries to obtain the secret key from that.
+\end{itemize}
+The details of these attacks are, unfortunately, out of the scope of this book. Interested readers are encouraged to read up on these attacks and attempt to break the public keys generated in the examples of this chapter.
+
+A sample implementation of NTRU, as described in this chapter, is available on \href{https://github.com/PhotonicGluon/Abstract-Algebra-Book}{GitHub} under the \code{misc} directory.
