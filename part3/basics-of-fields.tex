@@ -50,8 +50,94 @@ As mentioned, fields are a more specific type of ring, so it is not surprising t
     The additive group of $\Z_p$ is $(\Z_p, \oplus_p)$, where $\oplus_p$ denotes addition modulo $p$. Again, we have already shown that this is a group in \myref{prop-Zn-is-abelian-group}. The multiplicative group of $\Z_p$ is $(\Z_p^\ast, \otimes_p)$, where $\otimes_p$ denotes multiplication modulo $p$. Since every element of $\Z_p^\ast$ is coprime with $p$, thus $(\Z_p^\ast, \otimes_p)$ is in fact $\Un{p}$, the group of units modulo $p$, which we have explored in chapter \myref{section-group-of-units-mod-n}.
 \end{example}
 
+To end this section, we note some notation that we use for fields, which is similar to that used for rings.
+\begin{itemize}
+    \item The multiplication symbol $\cdot$ is usually omitted, so $x \cdot y$ is written as $xy$.
+    \item The additive identity of $F$ will always be denoted by 0 and the multiplicative identity of $F$ will always be denoted by 1.
+    \item The additive inverse of the element $x$ will be denoted by $-x$ and the multiplicative inverse of $x$ will be denoted by $x^{-1}$.
+    \item $a - b$ means $a + (-b)$ for any two elements $a$ and $b$ in $F$.
+\end{itemize}
+
 \section{Basic Properties of Fields}
-% TODO: Add
+Most of these properties are inherited from the fact that fields are integral domains. However, we will restate them here in the context of fields for completeness.
+
+For the following, assume $F$ is a field.
+
+\begin{proposition}[Multiplication by Zero]
+    $0x = x0 = 0$ for all $x \in F$.
+\end{proposition}
+\begin{proof}
+    Follows from \myref{prop-multiplying-by-zero-is-zero}.
+\end{proof}
+
+\begin{proposition}
+    $-0 = 0$ and $1^{-1} = 1$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-inverse-of-additive-and-multiplicative-identities-are-themselves} (later).
+\end{proof}
+
+\begin{proposition}
+    $(-a)b = a(-b) = -(ab)$ for any $a$ and $b$ in $F$.
+\end{proposition}
+\begin{proof}
+    Follows from \myref{prop-product-of-element-and-additive-inverse-is-additive-inverse-of-product}.
+\end{proof}
+
+\begin{proposition}
+    $(-a)(-b) = ab$ for any $a$ and $b$ in $F$.
+\end{proposition}
+\begin{proof}
+    Follows from \myref{prop-product-of-additive-inverses}.
+\end{proof}
+
+\begin{proposition}
+    $F$ has unique additive and multiplicative identities.
+\end{proposition}
+\begin{proof}
+    Since the additive group and multiplicative group are groups, thus they each contain a single unique identity.
+\end{proof}
+
+\begin{proposition}
+    For all elements $a$ and $b$ in $F$, $-(a+b) = -a-b$ and $(ab)^{-1} = a^{-1}b^{-1}$.
+\end{proposition}
+\begin{proof}
+    Recall that the Shoes and Socks theorem tells us that $-(a+b) = -b - a$ and $(ab)^{-1} = b^{-1}a^{-1}$. But as the additive and multiplicative groups are abelian, we see $-(a+b) = -a-b$ and $(ab)^{-1} = a^{-1}b^{-1}$.
+\end{proof}
+
+\begin{proposition}[Cancellation Law for Fields]\index{cancellation law!fields}
+    Let $F$ be a domain, $r, x, y \in F$, and $r \neq 0$. Then the following statements are equivalent.
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x = y$
+        \item $rx = ry$
+        \item $xr = yr$
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Follows from \myref{prop-domain-cancellation-law}.
+\end{proof}
+
+\begin{proposition}
+    Let $F$ be a field, $x$ an element of the field, and let $m$ and $n$ be non-negative integers. Then
+    \begin{enumerate}
+        \item $mx + nx = (m+n)x$ and $(x^m)(x^n) = x^{m+n}$;
+        \item $n(mx) = (mn)x$ and $(x^m)^n = x^{mn}$; and
+        \item $n(-x) = -(nx)$ and $(x^{-1})^n = (x^n)^{-1}$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    All statements follow by applying \myref{prop-group-laws-of-exponents} on both the additive and multiplicative groups.
+\end{proof}
+
+\begin{exercise}\label{exercise-inverse-of-additive-and-multiplicative-identities-are-themselves}
+    Prove the following statements \textit{without} using any results from the previous chapters.
+    \begin{partquestions}{\alph*}
+        \item $-0 = 0$.
+        \item $1^{-1} = 1$.
+    \end{partquestions}
+\end{exercise}
+
+% TODO: Add characteristic
 
 \section{Subfields}
 % TODO: Add
