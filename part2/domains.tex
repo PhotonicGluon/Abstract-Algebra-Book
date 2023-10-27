@@ -56,7 +56,7 @@ To explore the differences between irreducibles and primes, we look at quadratic
     A \textbf{square-free integer}\index{square-free integer} is an integer that is not divisible by any square number other than 1.
 \end{definition}
 
-Let $d$ be a square-free integer not equal to 1. We note that the set 
+Let $d$ be a square-free integer not equal to 1. We note that the set
 \[
     \Z[\sqrt{d}] = \left\{a + b\sqrt{d} \vert a,b \in \Z\right\}
 \]
@@ -191,7 +191,7 @@ As discussed in the previous section, there is a function, called the norm, that
     We prove the statements in order.
     \begin{enumerate}
         \item For the forward direction, note that if $x = 0$ then clearly $N(0) = 0^2 - d(0)^2 = 0$. For the reverse direction suppose $N(x) = a^2 - db^2 = 0$ where $a,b \in \Z$. Then $a^2 = db^2$ which means $a = \pm\sqrt{d}b$. Now since $d$ is a square-free integer, therefore the only way for equality on both sides (with the left hand side being an integer and the right being irrational) is for $a = b = 0$. Therefore $x = 0$.
-        
+
         \item Let $x = p + q\sqrt{d}$ and $y = r + s\sqrt{d}$ where $p,q,r,s \in \Z$. Then
         \begin{align*}
             N(xy) &= N((p+q\sqrt{d})(r+s\sqrt{d}))\\
@@ -208,7 +208,7 @@ As discussed in the previous section, there is a function, called the norm, that
         \end{align*}
 
         \item For the forward direction, if $x$ is a unit then there exists a $x^{-1}$ such that $xx^{-1} = 1$. Note $N(xx^{-1}) = N(x)N(x^{-1}) = N(1) = 1$. Therefore, since we are working in the integers, we see $N(x)$ and $N(x^{-1})$ are both 1.
-        
+
         For the reverse direction, consider $x = p+q\sqrt{d}$ and $\bar{x} = p-q\sqrt{d}$. Note $x\bar{x} = p^2-dq^2 = N(x)$. Therefore if $N(x) = 1$ we see $x\bar{x} = 1$, meaning that $x$ is a unit.
 
         \item See \myref{exercise-quadratic-integer-irreducible-if-norm-is-prime} (later).
@@ -262,8 +262,8 @@ We are now ready to define the ring of quadratic integers.
     \[
         N(x)N(y) = N(xy) = N(7) = 49.
     \]
-    Since neither $x$ nor $y$ is a unit, we cannot have $N(x) = 1$, and also cannot have $N(y) = 1$. This leaves $N(x) = N(y) = 7$. 
-    
+    Since neither $x$ nor $y$ is a unit, we cannot have $N(x) = 1$, and also cannot have $N(y) = 1$. This leaves $N(x) = N(y) = 7$.
+
     Now suppose $x = a + b\sqrt{5}$ where $a, b \in \Z$. We are to find a possible solution to $N(a+b\sqrt{5}) = |a^2 - 5b^2| = 7$, i.e. $a^2 - 5b^2 = \pm 7$. Reducing both sides of the equation modulo 5 we see $a^2 \equiv \pm7 \pmod5$, so $a^2 \equiv 2$ or $a^2 \equiv 3 \pmod5$. Note that, in modulo 5,
     \begin{itemize}
         \item if $a \equiv 0$ then $a^2 \equiv 0$;
@@ -326,9 +326,9 @@ Clearly, we have a few things to prove in the above definition of the field of f
     We need to prove that $\sim$ is reflexive, symmetric, and transitive.
     \begin{itemize}
         \item \textbf{Reflexive}: Since $D$ is commutative we know $ab = ba$ for all $(a,b) \in D \times D^\ast$. Therefore $(a, b) \mathrel{\sim} (a, b)$, meaning $\sim$ is reflexive.
-        
+
         \item \textbf{Symmetric}: Suppose now that $(a,b)\mathrel{\sim}(c,d)$. Then $ad = bc$. Again, since $D$ is commutative, we see $ad = cb$ which means $cb = da$. Hence, using the definition of $\sim$, we see $(c,d)\mathrel{\sim}(a,b)$, so $\sim$ is symmetric.
-        
+
         \item \textbf{Transitive}: Suppose $(a,b)\mathrel{\sim}(c,d)$ and $(c,d)\mathrel{\sim}(e,f)$. Thus $ad = bc$ and $cf = de$. Multiplying both sides of $ad = bc$ by $f$, one sees
         \begin{align*}
             (af)d &= (ad)f\\
@@ -377,7 +377,7 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
         \item \textbf{Addition-Abelian}: We show that $(\Frac{D}, +)$ is a abelian group.
         \begin{itemize}
             \item \textbf{Closure}: Let $\frac ab, \frac cd \in \Frac{D}$. One sees clearly that both $ad + bc$ and $bd$ are in $D$. Also, since $b \neq 0$ and $d \neq 0$, therefore $bd \neq 0$ as $D$ is an integral domain. Therefore, $\frac ab + \frac cd = \frac{ad + bc}{bd} \in \Frac{D}$, which means $\Frac{D}$ is closed under addition.
-            
+
             \item \textbf{Associativity}: Let $\frac ab, \frac cd, \frac ef \in \Frac{D}$. Then
             \begin{align*}
                 \frac ab + \left(\frac cd + \frac ef\right) &= \frac ab + \frac {cf + de}{df}\\
@@ -388,7 +388,7 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
                 &= \left(\frac ab + \frac cd\right) + \frac ef
             \end{align*}
             so addition in $\Frac{D}$ is associative.
-            
+
             \item \textbf{Identity}: Define $0 = \frac 01$. Then for any $\frac ab \in \Frac{D}$, we see
             \begin{align*}
                 0 + \frac ab &= \frac 01 + \frac ab\\
@@ -396,7 +396,7 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
                 &= \frac ab
             \end{align*}
             so 0 is the additive identity.
-            
+
             \item \textbf{Inverse}: For any $\frac ab \in \Frac{D}$, define $-\frac ab = \frac{-a}b$. Then we see
             \begin{align*}
                 \frac ab + \left(-\frac ab\right) &= \frac ab + \frac{-a}b\\
@@ -406,7 +406,7 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
                 &= 0
             \end{align*}
             so any element in $\Frac{D}$ has an additive inverse.
-            
+
             \item \textbf{Commutativity}: Suppose $\frac ab, \frac cd \in \Frac{D}$. Then
             \begin{align*}
                 \frac ab + \frac cd &= \frac{ad + bc}{bd}\\
@@ -419,7 +419,7 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
         \item \textbf{Multiplication-Semigroup}: We show that $(\Frac{D}, \times)$ is a semigroup.
         \begin{itemize}
             \item \textbf{Closure}: Let $\frac ab, \frac cd \in \Frac{D}$. We note that $ac, bd \in D$. Also, since $b \neq 0$ and $d \neq 0$, we again see $bd \neq 0$ as $D$ is an integral domain. Therefore $\frac ab \times \frac cd = \frac{ac}{bd} \in \Frac{D}$, which means that $\Frac{D}$ is closed under multiplication.
-            
+
             \item \textbf{Associativity}: Let $\frac ab, \frac cd, \frac ef \in \Frac{D}$. Then
             \begin{align*}
                 \frac ab \times \left(\frac cd \times \frac ef\right) &= \frac ab \times \frac {ce}{df}\\
@@ -432,7 +432,7 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
         \end{itemize}
 
         \item \textbf{Distributive}: Let $\frac ab, \frac cd, \frac ef \in \Frac{D}$. We prove only $\frac ab \times \left(\frac cd + \frac ef\right) = \frac ab \times \frac cd + \frac ab \times \frac ef$ since the other case is proven after we have shown that multiplication is commutative.
-        
+
         One sees that
         \begin{align*}
             \frac ab \times \left(\frac cd + \frac ef\right) &= \frac ab \times \frac{cf + de}{df}\\
@@ -445,8 +445,8 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
         \end{align*}
         so multiplication distributes over addition.
     \end{itemize}
-    Therefore $\Frac{D}$ is a ring. 
-    
+    Therefore $\Frac{D}$ is a ring.
+
     We note \myref{exercise-multiplication-over-field-of-fractions-is-well-defined-and-commutative} (later) proves that multiplication is commutative.
 
     We now show that $\Frac{D}$ has a multiplicative identity. Define $1 = \frac 11$. We see that, for any $\frac ab \in \Frac{D}$, we have
@@ -496,7 +496,7 @@ We note that the original integral domain is a subring of the field of fractions
             &= \phi(x)\phi(y)
         \end{align*}
         so $\phi$ is a ring homomorphism.
-        
+
         \item \textbf{Injective}: Suppose $x, y \in D$ such that $\phi(x) = \phi(y)$. Then $\frac x1 = \frac y1$, which means $x1 \mathrel{\sim} y1$ (\myref{thrm-equivalence-class-equivalence}). Therefore $x1 = 1y$ by definition of $\sim$, which means $x = y$. Hence $\phi$ is injective.
     \end{itemize}
     We note that $\im \phi$ is a subring of $\Frac{D}$, so $\phi$ is a ring isomorphism from $D$ to $\im \phi$ which is a subring of $\Frac{D}$.
@@ -514,7 +514,7 @@ We now show that some familiar fields are, indeed, the field of fractions of som
             \phi([(a,b)]) = \frac ab = \frac cd = \phi([(c, d)])
         \]
         and so $\phi$ is well-defined.
-        
+
         \item \textbf{Homomorphism}: Let $[(a, b)], [(c, d)] \in \Frac{\Z}$. Note
         \begin{align*}
             \phi([(a,b)] + [(c,d)]) &= \phi([(ad+bc, bd)])\\
@@ -530,9 +530,9 @@ We now show that some familiar fields are, indeed, the field of fractions of som
             &= \phi([(a,b)]) \times \phi([(c,d)])
         \end{align*}
         which shows that $\phi$ is a homomorphism.
-        
+
         \item \textbf{Injective}: Suppose $[(a, b)], [(c, d)] \in \Frac{\Z}$ such that $\phi([(a, b)]) = \phi([(c, d)])$. Then $\frac ab = \frac cd$, meaning $ad = bc$. Hence $(a, b) \mathrel{\sim} (c, d)$ by definition of the equivalence relation on $\Frac{\Z}$, and so $[(a, b)] = [(c, d)]$ by \myref{thrm-equivalence-class-equivalence} again. Hence $\phi$ is injective.
-        
+
         \item \textbf{Surjective}: Suppose $\frac ab \in \Q$ where $a, b \in \Z$ such that $b \neq 0$. Then note that $[(a, b)]$ is its pre-image since
         \[
             \phi([(a, b)]) = \frac ab
@@ -547,7 +547,7 @@ We now show that some familiar fields are, indeed, the field of fractions of som
 
 \begin{example}\label{example-field-of-fractions-of-gaussian-integers-isomorphic-to-quadratic-integers-of-i}
     We prove the less obvious fact that $\Frac{\Z[i]}$ is isomorphic to $\Q[i]$. Again, we denote the an equivalence class of $\Frac{\Z[i]}$ by $[(w, z)]$.
-    
+
     Define the map $\phi: \Frac{\Z[i]} \to \Q[i]$ where $\phi([(w, z)]) = \frac wz$. One can check that $\frac wz$ is indeed in $\Q[i]$, since if $w = a+bi\in\Z[i]$ and $z = c+di\Z[i]$ with $z \neq 0$ then
     \begin{align*}
         \frac{a+bi}{c+di} &= \frac{(a+bi)(c-di)}{c^2 - d^2i^2}\\
@@ -603,7 +603,7 @@ Of course, UFDs are very abstract in this sense. However, we shall soon see that
 Before we can state the theorem though, we need to introduce the ascending chain condition.
 
 \begin{definition}
-    The \textbf{ascending chain condition on principal ideals (ACCP)} of a ring $R$\index{ascending chain condition on principal ideals of a ring}\index{ACCP} is satisfied if every strictly increasing sequence of principal ideals 
+    The \textbf{ascending chain condition on principal ideals (ACCP)} of a ring $R$\index{ascending chain condition on principal ideals of a ring}\index{ACCP} is satisfied if every strictly increasing sequence of principal ideals
     \[
         I_1 \subset I_2 \subset I_3 \subset \cdots
     \]
@@ -725,7 +725,7 @@ However, just proving that $\Z[x]$ is a UFD is too little for the amount of work
         c_{r+s} = a_0b_{r+s} + a_1b_{r+s-1} + \cdots + a_{r+s-1}b_1 + a_{r+s}b_0.
     \]
     Since $p$ divides all of $a_1, a_2, \dots, a_{r-1}$ and $p$ also divides all of $b_1, b_2, \dots, b_{s-1}$, we see that $p$ divides every term except for $a_rb_s$. However, since $p$ divides all coefficients of $f(x)g(x)$, we know $p$ divides $c_{r+s}$, which means that either $p \vert a_r$ or $p \vert b_s$, a contradiction.
-    
+
     Therefore, no prime $p$ divides the coefficients of $f(x)g(x)$, which means the GCD of $f(x)g(x)$ is 1. Hence $f(x)g(x)$ is primitive.
 \end{proof}
 
@@ -879,7 +879,7 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
     We show that this norm satisfies the two properties required.
     \begin{itemize}
         \item Since $N(xy) = N(x)N(y)$ for all $x,y \in \Z[i]$ (\myref{prop-properties-of-quadratic-integer-norm}), therefore $N(x) \leq N(x)N(y) = N(xy)$, satisfying \textbf{EF1}.
-        
+
         \item For \textbf{EF2}, we note that for all $z, d \in \Z[i]$ with $d \neq 0$, we have $zd^{-1} \in \Q[i]$, which is isomorphic to the field of fractions of $\Z[i]$ (\myref{example-field-of-fractions-of-gaussian-integers-isomorphic-to-quadratic-integers-of-i}). So suppose $zd^{-1} = s + ti$ for some $s,t \in \Q$ and $t \neq 0$. Let $m$ be the integer closest to $s$ and $n$ the integer closest to $t$ (we note that these integers may not be unique, but we will see later that this does not matter). So
         \[
             |m - s| \leq \frac12 \text{ and } |n - t| \leq \frac12.
@@ -928,7 +928,7 @@ We note two important facts.
     Let $D$ be a Euclidean domain with norm $N$. Clearly the trivial ideal, $\{0\}$, is just $\princ{0}$, so we suppose we have a non-trivial ideal $I$ from this point onwards. Choose an element $d \in I$ such that $N(d)$ is minimal among all elements of $I$.
 
     Observe that since $d \in I$ we must have $rd \in I$ for any $r \in D$. Thus we see that $\princ{d} = \left\{rd \vert a \in D\right\} \subseteq I$.
-    
+
     Now we show that $I \subseteq \princ{d}$. Since $D$ is a Euclidean domain, for any $x \in I$, we can find $q$ and $r$ within $D$ such that $x = qd + r$ where $r = 0$ or $N(r) < N(d)$. As $r = x - qd$, and since $x \in I$ and $d \in I$, we must have $r \in I$. We cannot have $N(r) < N(d)$ since that would contradict the minimality of $N(d)$; so $r = 0$. It follows that $x = qd$, i.e. $x \in \princ{d}$. Hence $I \subseteq \princ{d}$.
 
     Since $\princ{d} \subseteq I$ and $I \subseteq \princ{d}$, thus $I = \princ{d}$, completing the proof that every ideal in $D$ is a principal ideal. Hence $D$ is a PID.
@@ -1041,9 +1041,9 @@ Explaining why the rest class inclusions are true are left for \myref{exercise-d
     in the polynomial ring $\Z[x]$.
     \begin{partquestions}{\roman*}
         \item Explain why the coefficient of the term of degree $k$ (where $2 \leq k \leq 12$) gives exactly the number of ways that a pair of two dice could sum to $k$.
-        
+
         \item Factor $P(x)$ into a product of irreducible polynomials. Prove that the factorization, indeed, consists only of irreducible polynomials.
-        
+
         \item Define the polynomials
         \begin{align*}
             f(x) &= x^{a_1} + x^{a_2} + x^{a_3} + x^{a_4} + x^{a_5} + x^{a_6} \text{ and}\\
@@ -1059,9 +1059,9 @@ Explaining why the rest class inclusions are true are left for \myref{exercise-d
         (\textit{Hint: compute $f(1)$ in two ways. Then compute $f(0)$ in two ways.})
 
         \item Explain why $q \neq 2$.
-        
+
         \item Hence, show that one possible choice of $a_1, a_2, \dots, a_6$ is 1, 2, 2, 3, 3, and 4. Find the other choice(s).
-        
+
         \item Deduce the labels of a pair of dice (that are not the standard labels of 1 to 6 on both dice) that will lead to the same likelihood of rolling a sum of, say, $k$ (where $2 \leq k \leq 12$), as regular dice.
     \end{partquestions}
 \end{problem}

@@ -11,15 +11,15 @@
 
     \item For brevity let $q = 2^p - 1$, and we are given that $q$ is a prime. By the Third Sylow Theorem (\myref{thrm-sylow-3}), $n_q \mid 2^{p-1}$ and $n_q \equiv 1 \pmod p$. The factors of $2^{p-1}$ are $1, 2, 4, 8, \dots, 2^{p-1}$. We note $2^{p-1} < 2^p - 1 = q$ for any prime $p$ since
     \[
-        2^{p-1} + 1 < 2^{p-1} + 2^{p-1} = 2(2^{p-1}) = 2^p    
+        2^{p-1} + 1 < 2^{p-1} + 2^{p-1} = 2(2^{p-1}) = 2^p
     \]
     which result immediately follows by subtracting 1 on both sides. Hence, the only possible value that satisfies both conditions is $n_q = 1$. By a corollary of the Second Sylow Theorem (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}) this means that the only Sylow $q$-subgroup is normal, hence showing that a group with an even perfect number order is non-simple.
 
     \item \begin{partquestions}{\roman*}
         \item The divisors of $p$ are 1 and $p$ itself. By the Third Sylow Theorem (\myref{thrm-sylow-3}), $n_q$ divides $p$ and $n_q \equiv 1 \pmod q$. Since $p < q$ hence $p \not\equiv 1 \pmod q$ meaning that $n_q = 1$. By a corollary of the Second Sylow Theorem (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}) the only Sylow $q$-subgroup is normal.
-        
+
         \item The divisors of $q$ are 1 and $q$ itself. By the Third Sylow Theorem (\myref{thrm-sylow-3}), $n_p$ divides $q$ and $n_p \equiv 1 \pmod p$. Since $q \not\equiv 1 \pmod p$ by assumption, we must have $n_p = 1$.
-        
+
         Recall that the order of an element in a group of order $pq$ must divide $pq$ (\myref{corollary-order-of-group-multiple-of-order-of-element}). Hence the possible orders of an element in such a group are 1, $p$, $q$, or $pq$.
         \begin{itemize}
             \item There is only one element of order 1, the identity.
@@ -64,7 +64,7 @@
     which means that $G = PH$. Since $P \lhd G$, thus $ph = hp$ for any element $h \in H$, meaning elements in $P$ and $H$ commute. Hence, $G$ is the internal direct product of $P$ and $H$, meaning $G \cong P \times H$. As the external direct product of two abelian groups is also abelian (\myref{problem-external-direct-product-of-abelian-groups-is-abelian}) thus $G$ is abelian.
 
     \item Let $P$ be a Sylow $p$-subgroup of $G$. We note that $|G/P| = \frac{p^km}{p^k} = m$. Let $G$ act on the set of cosets $G/P$ by left multiplication, meaning $g\cdot (xP) = (gx)P$. We know by \myref{thrm-group-action-definition-equivalence} that this induces a homomorphism $\phi: G \to \Sn{m}$ where $\phi(g) = \sigma_g$ such that $\sigma_g(xP) = g\cdot (xP) = (gx)P$. By \myref{example-using-kernel-to-show-non-simple}, $\ker\phi = \bigcap_{x \in G}xPx^{-1}$.
-    
+
     We note $\ker\phi \neq \{e\}$ since otherwise it would imply that $\phi$ is injective (\myref{exercise-trivial-kernel-means-injective}), which is impossible as that would mean $p^km = |G| \leq |\Sn{m}| = m!$ which is a contradiction. Also $\ker\phi \neq G$ as otherwise
     \[
         p^km = |G| = |\ker\phi| = \left|\bigcap_{x \in G} xPx^{-1}\right| \leq |xPx^{-1}| = |P| = p^k,
@@ -98,9 +98,9 @@
     Hence $n_5 = 1$. Therefore the unique Sylow 5-subgroup is a normal subgroup of $G$ by \myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}.
 
     \item We prove that $G$ has a normal subgroup of order $p$, $q$, or $r$. By \myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}, subgroups of order $p$, $q$, or $r$ are normal if they are unique. By way of contradiction, assume that they are not unique, meaning $n_p, n_q, n_r > 1$.
-    
+
     By the Third Sylow Theorem (\myref{thrm-sylow-3}), $n_r \equiv 1 \pmod r$ and $n_r \mid pq$. The divisors of $pq$ are 1, $p$, $q$, and $pq$. We note that since both $p$ and $q$ are less than $r$, thus $p \not\equiv 1 \pmod r$ and $q \not\equiv 1 \pmod r$. The only possibility that is left is $n_r = pq$ as we assume $n_r \neq 1$. Similarly, $n_q \equiv 1 \pmod q$ and $n_q \mid pr$. The divisors of $pr$ are 1, $p$, $r$, and $pr$. Since $p < q$ thus $p \not\equiv 1 \pmod q$. Hence $n_q \geq r$ as we assume $n_q \neq 1$. Similarly, $n_p \geq q$.
-    
+
     We now consider the number of elements with order $p$, $q$, and $r$.
     \begin{itemize}
         \item $\boxed{p}$ With $n_p \geq q$, there are at least $q(p-1)$ elements of order $p$. We minus 1 because one of the elements in a Sylow $p$-subgroup is the identity with order 1.
@@ -115,7 +115,7 @@
     \end{align*}
     which means $qr - q - r \leq 0$. Rearranging, we see
     \[
-        q \leq \frac{r}{r-1} = 1 + \frac{1}{r-1}.    
+        q \leq \frac{r}{r-1} = 1 + \frac{1}{r-1}.
     \]
     Since $p < q$ and they are both primes, we must have $q \geq 3$. Hence one sees
     \[

@@ -45,7 +45,7 @@ Let's look at some examples of rings.
         \item \textbf{Distributive}: Since multiplication distributes over addition (\myref{axiom-distributivity}), thus multiplication modulo $n$ (i.e. $\otimes_n$) distributes over addition modulo $n$ (i.e. $\oplus_n$).
     \end{itemize}
     Hence $(\Z_n, \oplus_n, \otimes_n)$ is a ring.
-    
+
     Furthermore, multiplication is commutative (\myref{axiom-multiplication-is-commutative}), so $\otimes_n$ is commutative. Also $\otimes_n$ has an identity of 1. Therefore $(\Z_n, \oplus_n, \otimes_n)$ is a commutative ring with identity.
 \end{proof}
 
@@ -110,7 +110,7 @@ We end this section by looking at the ring of complex numbers.
         \item \textbf{Addition-Abelian}: We show that $(\C, +)$ satisfies the group axioms, and then show that $(\C, +)$ is commutative.
         \begin{itemize}
             \item \textbf{Closure}: Clearly for all real numbers $a$, $b$, $c$, and $d$ we have $a + c \in \R$ and $b+d \in \R$. Thus $(a+bi) + (c+di) = (a+c) + (b+d)i \in \C$, meaning $\C$ is closed under complex addition.
-            
+
             \item \textbf{Associativity}: Let $a+bi, c+di, e+fi \in \C$. Then note that
             \begin{align*}
                 &(a+bi) + ((c+di) + (e+fi))\\
@@ -121,13 +121,13 @@ We end this section by looking at the ring of complex numbers.
                 &= ((a+bi) + (c+di)) + (e+fi)
             \end{align*}
             so complex addition is associative.
-            
+
             \item \textbf{Identity}: The identity in $\C$ is $0 + 0i = 0$ since
             \[
                 (0+0i) + (a+bi) = (0+a) + (0+b)i = a+bi
             \]
             and complex addition is commutative (to be proved later), so $(\C,+)$ has an additive identity.
-            
+
             \item \textbf{Inverse}: Let $a+bi \in \C$. Clearly $-a, -b \in \R$ and that
             \[
                 (a+bi) + (-a+(-b)i)= (a+(-a)) + (b+(-b))i = 0
@@ -142,7 +142,7 @@ We end this section by looking at the ring of complex numbers.
             \end{align*}
             so complex addition is commutative.
         \end{itemize}
-        
+
         \item \textbf{Multiplication-Semigroup}: We show that $(\C, \times)$ is a semigroup.
         \begin{itemize}
             \item \textbf{Closure}: Clearly for all real numbers $a$, $b$, $c$, and $d$ we have $ac, bd, ad, bc \in \R$, so $ac - bd, ad + bc \in \R$. Therefore
@@ -164,7 +164,7 @@ We end this section by looking at the ring of complex numbers.
             \end{align*}
             so complex multiplication is associative.
         \end{itemize}
-        
+
         \item \textbf{Distributive}: We only prove left distributivity because we will show that complex multiplication is commutative later. Let $a+bi, c+di, e+fi \in \C$. Note that
         \begin{align*}
             &(a+bi)((c+di) + (e+fi))\\
@@ -178,9 +178,9 @@ We end this section by looking at the ring of complex numbers.
         so complex multiplication distributes over complex addition.
     \end{itemize}
     Hence $\C$ is a ring.
-    
+
     \newpage
-     
+
     We now show that complex multiplication is commutative. Let $a+bi, c+di \in C$. Then we see
     \begin{align*}
         (a+bi)(c+di) &= (ac-bd) + (ad+bc)i\\
@@ -194,7 +194,7 @@ We end this section by looking at the ring of complex numbers.
         (1+0i)(a+bi) = (1a-0b) + (1b+0a)i = a+bi,
     \]
     and since complex multiplication is commutative, therefore $1+0i$ is the multiplicative identity in $\C$.
-    
+
     Therefore $\C$ is a commutative ring with identity.
 \end{proof}
 
@@ -217,14 +217,14 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
         &= 0x + 0x & (\text{by \textbf{Distributive} axiom})
     \end{align*}
     so by `subtracting' $0x$ on both sides (i.e., adding $-0x$ on both sides) we see $0 = 0x$.
-    
+
     Also
     \begin{align*}
         x0 &= x(0 + 0) & (0 \text{ is additive inverse})\\
         &= x0 + x0 & (\text{by \textbf{Distributive} axiom})
     \end{align*}
     so by `subtracting' $x0$ on both sides we see $0 = x0$.
-    
+
     Therefore $0x = x0 = 0$ for all $x \in R$.
 \end{proof}
 
@@ -288,7 +288,7 @@ We also define two matrices that will become useful when we work with matrix rin
 \begin{definition}
     The \textbf{zero matrix}\index{zero matrix} with $n$ rows and columns is
     \[
-        \ZeroM{n} = 
+        \ZeroM{n} =
         \begin{pmatrix}
             0 & 0 & 0 & \cdots & 0 \\
             0 & 0 & 0 & \cdots & 0 \\
@@ -302,7 +302,7 @@ We also define two matrices that will become useful when we work with matrix rin
 \begin{definition}
     The \textbf{identity matrix}\index{identity matrix} with $n$ rows and columns is
     \[
-        \IdentityM{n} = 
+        \IdentityM{n} =
         \begin{pmatrix}
             1 & 0 & 0 & \cdots & 0 \\
             0 & 1 & 0 & \cdots & 0 \\
@@ -333,9 +333,9 @@ We can now define what is a matrix ring.
                 p_{i,j} = a_{i,j} \oplus (b_{i,j} \oplus c_{i,j}) = (a_{i,j} \oplus b_{i,j}) \oplus c_{i,j} = q_{i,j}
             \]
             by associativity of $\oplus$, which proves that matrix addition is associative.
-    
+
             \item \textbf{Identity}: We show that $\ZeroM{n}$ is the additive identity in $\Mn{n}{R}$. Let $\textbf{M} \in \Mn{n}{R}$; let $\textbf{N} = \textbf{M} + \ZeroM{n}$. Note that $n_{i,j} = m_{i,j} \oplus 0 = m_{i,j}$ so $\textbf{M} + \ZeroM{n} = \textbf{M}$. Therefore $\textbf{M} + \ZeroM{n} = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
-            
+
             \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ such that $b_{i,j} = -a_{i,j}$. That is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \ZeroM{n}$. (We denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$).
 
             \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{C}$. Consider $c_{i,j} = a_{i,j} \oplus b_{i,j}$. Since $\oplus$ is commutative, thus $a_{i,j} \oplus b_{i,j} = b_{i,j} \oplus a_{i,j}$. But $d_{i,j} = b_{i,j} \oplus a_{i,j}$, so we have $c_{i,j} = d_{i,j}$. Therefore $\textbf{C} = \textbf{D}$.
@@ -344,10 +344,10 @@ We can now define what is a matrix ring.
         \item \textbf{Multiplication-Semigroup}: We show that $(\Mn{n}{R}, \cdot)$ is a semigroup.
         \begin{itemize}
             \item \textbf{Closure}: In \myref{subsection-intro-to-matrices} we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entries of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
-        
+
             \item \textbf{Associativity}: We proved that matrix multiplication is associative in \myref{subsection-GLR-matrix-group}.
         \end{itemize}
-        
+
         \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly. Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
         \begin{align*}
             r_{i,j} &= \bigoplus_{k=1}^n \left(a_{i,k} \otimes \left(b_{k,j} \oplus c_{k,j}\right)\right)\\
@@ -426,7 +426,7 @@ We note one property about zero divisors, which will be used in future chapters.
 \begin{proof}
     Assume $a \neq 0$ and $b \neq 0$ are zero divisors in the ring $R$, so $ab = 0$. Seeking a contradiction, assume $a$ has an inverse, so
     \[
-        b = (a^{-1}a)b = a^{-1}(ab) = a^{-1}0 = 0    
+        b = (a^{-1}a)b = a^{-1}(ab) = a^{-1}0 = 0
     \]
     which contradicts $b \neq 0$. Hence a zero divisor has no inverse.
 \end{proof}
@@ -541,7 +541,7 @@ We end this chapter off with an exploration about subrings.
             (a+bi)(c+di) = (ac-bd) + (ad+bc)i \in \Z[i]
         \]
         so $\Z[i]$ is closed under multiplication.
-        
+
         Therefore $\Z[i]$ is a subring of $\C$.
     \end{proof}
 \end{example}
@@ -597,7 +597,7 @@ We end this chapter off with an exploration about subrings.
 \begin{problem}
     Let
     \[
-        R = \left\{\begin{pmatrix}a&b\\0&0\end{pmatrix} \vert a,b \in \R\right\}    
+        R = \left\{\begin{pmatrix}a&b\\0&0\end{pmatrix} \vert a,b \in \R\right\}
     \]
     be a ring under matrix addition and multiplication.
     \begin{partquestions}{\roman*}

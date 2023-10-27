@@ -14,24 +14,24 @@
         which is what we wanted to show.
 
         \item By \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}, $\{0\}$ is prime if and only if $R/\{0\}$ is an integral domain. But since $R/\{0\} \cong R$, thus $\{0\}$ is prime if and only if $R$ is an integral domain.
-        
+
         \item By \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}, $\{0\}$ is maximal if and only if $R/\{0\} \cong R$ is a field.
     \end{partquestions}
 
     \item Let $\phi: \Q \to Q$ be a ring endomorphism. From \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent}, we know that $\phi(1)$ is an idempotent in $\Q$, meaning that $\phi(1) = 0$ or $\phi(1) = 1$.
-    
+
     Clearly if $\phi(1) = 0$ then
     \[
         \phi(x) = \phi(1x) = \phi(1)\phi(x) = 0\phi(x) = 0
     \]
     so $\phi(x)$ is the trivial homomorphism.
-    
+
     If instead $\phi(1) = 1$, then from \myref{exercise-homomorphism-over-Q-fixes-elements-of-Q} we know that $\phi(x) = x$ for all $x \in Q$, i.e. $\phi$ is the identity homomorphism.
 
     Therefore the only two endomorphisms in $\Q$ are the trivial and identity homomorphisms.
 
     \item BWOC, suppose $\phi: \Z^2 \to \Q$ is an isomorphism. Then \myref{exercise-image-of-additive-identity-is-additive-identity} tells us that $\phi((0,0)) = 0$. Also \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent} tells us that $\phi((1,1))$ is an idempotent in $\Q$, which means that $\phi((1,1)) = 0$ or $\phi((1,1)) = 1$.
-    
+
     If $\phi((1,1)) = 0$ then we have $\phi((0,0)) = \phi((1,1)) = 0$, so $\phi$ is not injective, which thus means that $\phi$ is not an isomorphism, a contradiction.
 
     Thus $\phi((1,1)) = 1$. Note that
@@ -44,7 +44,7 @@
     Therefore $\Z^2 \not\cong \Q$.
 
     \item BWOC, suppose $\phi: \Q[\sqrt2] \to \Q[\sqrt3]$ is an isomorphism.
-    
+
     Suppose $\phi(\sqrt2) = a + b\sqrt3$ where $a$ and $b$ are rational numbers. Note that $\phi(2) = 2$ by \myref{exercise-homomorphism-over-Q-fixes-elements-of-Q}, so
     \[
         2 = \phi(2) = \phi({\sqrt2}^2) = \left(\phi(\sqrt2)\right)^2 = a^2 + 2\sqrt3ab + 3b^2.
@@ -88,7 +88,7 @@
 
     \item \begin{partquestions}{\alph*}
         \item We prove the statement. Note that since $\phi$ is bijective, thus $\phi^{-1}$ is bijective. We just need to show that $\phi^{-1}$ is a homomorphism.
-        
+
         Let $u,v\in R'$. Then there is a $x,y \in R$ such that $\phi(x) = u$ and $\phi(y) = v$. Note
         \begin{align*}
             \phi^{-1}(u + v) &= \phi^{-1}(\phi(x) + \phi(y))\\
@@ -106,9 +106,9 @@
         so $\phi^{-1}$ is a ring homomorphism. Therefore $\phi^{-1}$ is a ring isomorphism.
 
         \item We prove the statement. Suppose $S$ is a subring of $R$ with $n$ elements. Consider $\phi(S)$; by \myref{prop-homomorphism-on-subring-is-subring} we know $\phi(S)$ is a subring of $R'$. Also, since $\phi$ is a bijection, thus $S$ and $\phi(S)$ are equinumerous. Therefore $\phi(S)$ is a subring of $R'$ with $n$ elements.
-        
+
         \item Suppose $I$ is an ideal of $R$. Consider $\phi(I)$; by \myref{prop-homomorphism-on-subring-is-subring} we know $\phi(I)$ is a subring of $R'$. We just need to check that $\phi(I)$ is an ideal of $R'$.
-        
+
         Let $r' \in R'$ and $i' \in \phi(I)$. Since $\phi$ is surjective, there is an $r \in R$ and an $i \in I$ such that $r' = \phi(r)$ and $i' = \phi(i)$. Note
         \begin{align*}
             r'i' = \phi(r)\phi(i) = \phi(\underbrace{ri}_{\text{In }I}) \in \phi(I)\\
@@ -154,7 +154,7 @@
     Therefore the only automorphism $\psi:\Z_{10} \to \Z_{10}$ is $\psi(n) = n$.
 
     \item Let $\phi: \Q[\sqrt3] \to \Q[\sqrt3]$ be an endomorphism. By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent} we know that $\phi(1)^2 = \phi(1)$, so $\phi(1) = 0$ or $\psi(1) = 1$ (since 0 and 1 are the only idempotents in $\Q[\sqrt3]$).
-    
+
     If $\phi(1) = 0$ then
     \[
         \phi(a+b\sqrt3) = \phi(1)\phi(a+b\sqrt3) = 0\phi(a+b\sqrt3) = 0
@@ -206,7 +206,7 @@
         which means $x \in \sqrt{\phi(I)}$. Therefore $\phi(\sqrt I) \subseteq \sqrt{\phi(I)}$.
 
         \item Let $y \in \sqrt{\phi(I)}$, so there is a positive integer $n$ such that $y^n \in \phi(I)$. Thus there exists an $a \in I$ such that $\phi(a) = y^n$.
-        
+
         Note $y \in R'$, and since $\phi$ is surjective, therefore there is an $x \in R$ such that $\phi(x) = y$. Therefore
         \[
             \phi(a) = y^n = \left(\phi(x)\right)^n = \phi\left(x^n\right)
@@ -269,13 +269,13 @@
                 &= \phi(s_1)\phi(s_2)
             \end{align*}
             so $\phi$ is a ring homomorphism.
-    
+
             \item \textbf{Image}: We show that $\phi$ is surjective. Let $(s+i) + I \in S+I$. Note since $i \in I$,
             \[
                 (s+i)+I = (s+I) + (i+I) = (s+I) + (0+I) = s+I.
             \]
             Clearly $\phi(s) = s+I = (s+i)+I$, so for any $(s+i)\in (S+I)/I$ has a pre-image in $S$. Therefore $\im\phi = (S+I)/I$.
-    
+
             \item \textbf{Kernel}: We find the kernel of $\phi$.
             \begin{align*}
                 \ker\phi &= \{s \in S \vert \phi(s) = 0 + I\}\\
@@ -285,7 +285,7 @@
             \end{align*}
             where $s + I = 0 + I$ implies $s \in I$ due to Coset Equality, \myref{lemma-coset-equality}.
         \end{itemize}
-    
+
         By the FRIT (\myref{thrm-ring-isomorphism-1}),
         \[
             S/(S\cap I) \cong (S+I)/I
@@ -301,7 +301,7 @@
             \item Let $r+I \in R/I$ and $j+I \in J/I$. Clearly $rj \in J$ and $jr \in J$ since $J$ is an ideal. Thus $(r+I)(j+I) = rj + I \in J/I$ and $(j+I)(r+I) = jr + I \in J/I$.
         \end{itemize}
         By the test for ideal (\myref{thrm-test-for-ideal}), $J/I$ is an ideal of $R/I$.
-    
+
         \item Consider $\phi: R/I \to R/J, r+I\mapsto r+J$. We show that $\phi$ is a well-defined homomorphism and then find its image and kernel.
         \begin{itemize}
             \item \textbf{Well-Defined}: Suppose $r_1 + I = r_2 + I \in R/I$. This means $r_1 - r_2 + I = I$, so $r_1 - r_2 \in I$ by Coset Equality (\myref{lemma-coset-equality}). Since $I \subset J$ thus $r_1 - r_2 \in J$, meaning $r_1 + J = r_2 + J$ by Coset Equality. Therefore
@@ -309,7 +309,7 @@
                 \phi(r_1 + I) = r_1 + J = r_2 + J = \phi(r_2 + I)
             \]
             so $\phi$ is well defined.
-    
+
             \item \textbf{Homomorphism}: Let $r_1 + I, r_2 + I \in R/I$. Note
             \begin{align*}
                 \phi(r_1+r_2) &= (r_1+r_2) + I\\
@@ -323,9 +323,9 @@
                 &= \phi(r_1)\phi(r_2)
             \end{align*}
             so $\phi$ is a ring homomorphism.
-    
+
             \item \textbf{Image}: We show $\phi$ is surjective. Suppose $r + J \in R/J$. Then clearly $\phi(r+I) = r+J$ so any $r+J$ has a pre-image in $R/I$. Thus $\im\phi = R/J$.
-            
+
             \item \textbf{Kernel}: We find the kernel of $\phi$.
             \begin{align*}
                 \ker\phi &= \{r+I \in R/I \vert \phi(r+I) = 0+J\}\\
