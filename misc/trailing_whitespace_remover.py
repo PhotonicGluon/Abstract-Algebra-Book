@@ -21,7 +21,9 @@ def remove_trailing_whitespace(file):
 
 
 def process_tex_files_in_dir(directory):
-    for root, dirs, files in os.walk(directory):
+    dir_tree = sorted(list(os.walk(directory)), key=lambda tpl: tpl[0])
+    for root, _, files in dir_tree:
+        files = sorted(files)
         for file in files:
             path = os.path.join(root, file)
             extension = os.path.splitext(path)[1]
