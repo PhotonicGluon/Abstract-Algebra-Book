@@ -30,7 +30,7 @@ Rings have two operations defined on them (addition and multiplication). Therefo
 
 At this point, we only know that $(R/S,+)$ is a subgroup of $(R,+)$. What conditions do we need on $S$ such that $R/S$ is a ring? Well, we need a ``well-defined'' multiplication operation on the cosets, specifically, for any two elements $a$ and $b$ in $R$, we want
 \[
-    (a+S)(b+s) = ab + S.
+    (a+S)(b+S) = ab + S.
 \]
 We now try and find the condition(s) required for this operation to be well-defined.
 
@@ -188,7 +188,7 @@ We can now define the quotient ring.
     \end{partquestions}
 \end{exercise}
 
-To save us hassle of testing whether a subset of a ring is an ideal, we introduce the test for ideal\index{test for ideal}.
+To save us the hassle of testing whether a subset of a ring is an ideal, we introduce the test for ideal\index{test for ideal}.
 \begin{theorem}[Test for Ideal]\label{thrm-test-for-ideal}
     Let $R$ be a ring and $I$ be a non-empty subset of $R$. Then $I$ is an ideal of $R$ if and only if
     \begin{enumerate}
@@ -241,14 +241,14 @@ We first look at the sum of ideals.
 \begin{proof}
     We note that since $\ideal{a}$ and $\ideal{b}$ are ideals, they are thus non-empty and so $\ideal{a}+\ideal{b}$ is non-empty.
 
-    Let $a_1, a_2 \in \ideal{a}$ and $b_1, b_2 \in \ideal{b}$. Then we know $a_1 - a_2 \in \ideal{a}$ and $b_1 - b_2 \in \ideal{b}$ by the test for ideal. Therefore $(a_1 - a_2) + (b_1 - b_2) = (a_1 + b_1) - (a_2 + b_2) \in \ideal{a} + \ideal{b}$, satisfying the first statement.
+    Let $a_1, a_2 \in \ideal{a}$ and $b_1, b_2 \in \ideal{b}$. Then we know $a_1 - a_2 \in \ideal{a}$ and $b_1 - b_2 \in \ideal{b}$ by the test for ideal (\myref{thrm-test-for-ideal}). Therefore $(a_1 - a_2) + (b_1 - b_2) = (a_1 + b_1) - (a_2 + b_2) \in \ideal{a} + \ideal{b}$, satisfying the first requirement.
 
     Now take any $r \in R$ and $a+b \in \ideal{a}+\ideal{b}$.
     \begin{itemize}
         \item $r(a+b) = ra + rb \in \ideal{a}+\ideal{b}$ since $ra \in \ideal{a}$ (because $\ideal{a}$ is an ideal) and $rb \in \ideal{b}$ (because $\ideal{b}$ is an ideal).
         \item $(a+b)r = ar + br \in \ideal{a}+\ideal{b}$ since $ar \in \ideal{a}$ (because $\ideal{a}$ is an ideal) and $br \in \ideal{b}$ (because $\ideal{b}$ is an ideal).
     \end{itemize}
-    Therefore $\ideal{a} + \ideal{b}$ is an ideal by the test for ideal (\myref{thrm-test-for-ideal}).
+    Therefore $\ideal{a} + \ideal{b}$ is an ideal by the test for ideal.
 \end{proof}
 
 We now look at the product of ideals.
@@ -274,7 +274,7 @@ We now look at the product of ideals.
 \begin{proof}
     Since $\ideal{a}$ and $\ideal{b}$ are non-empty as they are ideals, therefore $\ideal{ab}$ is non-empty.
 
-    Let $a_1,a_2 \in \ideal{a}$ and $b_1,b_2 \in \ideal{b}$. Since $\ideal{a}$ is an ideal and is hence a subring, so $-a_2 \in \ideal{a}$. Thus $a_1b_1, (-a_2)(b_2) \in \ideal{ab}$. Clearly $a_1b_1 + (-a_2)(b_2) = a_1b_1 - a_2b_2 \in \ideal{ab}$ so this satisfies the first statement.
+    Let $a_1,a_2 \in \ideal{a}$ and $b_1,b_2 \in \ideal{b}$. Since $\ideal{a}$ is an ideal and is hence a subring, so $-a_2 \in \ideal{a}$. Thus $a_1b_1, (-a_2)(b_2) \in \ideal{ab}$. Clearly $a_1b_1 + (-a_2)(b_2) = a_1b_1 - a_2b_2 \in \ideal{ab}$ so this satisfies the first requirement in the test for ideal (\myref{thrm-test-for-ideal}).
 
     Now take any $r \in R$ and let $a_1b_1 + \cdots + a_nb_n \in \ideal{ab}$.
     \begin{itemize}
@@ -282,7 +282,7 @@ We now look at the product of ideals.
         \item $(a_1b_1 + \cdots + a_nb_n)r = a_1(b_1r) + \cdots + a_n(b_nr)$. Note $b_ir \in \ideal{b}$ since $\ideal{b}$ is an ideal, and $a_i \in \ideal{a}$. Hence $a_1(b_1r) + \cdots + a_n(b_nr) \in \ideal{ab}$.
     \end{itemize}
 
-    Therefore $\ideal{ab}$ is an ideal by the test for ideal (\myref{thrm-test-for-ideal}).
+    Therefore $\ideal{ab}$ is an ideal by the test for ideal.
 \end{proof}
 
 \begin{exercise}
@@ -351,7 +351,7 @@ We look at two related definitions to the principal ideal before we look at an i
     A commutative ring where every ideal is principal is called a \textbf{principal ideal ring}\index{principal ideal ring}.
 \end{definition}
 \begin{definition}
-    A principal ideal ring that is an integral domain is called a \textbf{principal ideal domain}\index{principal ideal domain}, or \textbf{PID}\index{PID}.
+    A principal ideal ring that is an integral domain is called a \textbf{principal ideal domain}\index{principal ideal domain} (\textbf{PID}\index{PID}).
 \end{definition}
 
 We look at one example of a PID.
@@ -361,7 +361,7 @@ We look at one example of a PID.
 \begin{proof}
     We note that $\Z$ is an integral domain, so all that remains to be proven is that every ideal of $\Z$ is principal.
 
-    Let $I$ be an ideal of $\Z$, and suppose $I$ is not the trivial ideal. This means that $I$ must contain both positive and negative numbers.
+    Let $I$ be an ideal of $\Z$, and suppose $I$ is not the trivial ideal. This means that $I$ must contain both positive and negative numbers, as otherwise elements may not have an additive inverse.
     
     Set $n = \min(I \cap \mathbb{N})$, i.e. $n$ is the smallest positive integer that is in $I$. Observe that since $n \in I$ we have $mn \in I$ for all $m \in \Z$. Therefore
     \[
@@ -384,14 +384,14 @@ Let's first look at the definition of a prime ideal.
 \end{definition}
 This definition may seem weird, but is completely natural when we consider the properties of primes in the positive integers. Recall that Euclid's Lemma (\myref{corollary-euclid}) tells us that if a prime $p$ divides $ab$, then either $p$ divides $a$ or $p$ divides $b$. Similarly, if the product $ab$ belongs within the prime ideal $P$, then either $a$ belongs in $P$ or $b$ belongs in $P$. However, prime ideals does not necessarily imply unique `factorization' like what occurs in the integers via the Fundamental Theorem of Arithmetic (\myref{thrm-fundamental-theorem-of-arithmetic}); we will explore the uniqueness criteria in a later chapter.
 
-We look at the connection between this definition of a prime ideal and primes in the integers.
+We look at the connection between this definition of a prime ideal and prime numbers in the integers.
 \begin{proposition}\label{prop-ideals-of-Z}
     The prime ideals of $\Z$ are the trivial ideal and $p\Z$, where $p$ is a prime number.
 \end{proposition}
 \begin{proof}
     First let's assume the ideal in question is the trivial ideal. Suppose $ab \in \{0\}$, meaning $ab = 0$. As $\Z$ is an integral domain, this means either $a = 0$ or $b = 0$, which therefore means either $a \in \{0\}$ or $b \in \{0\}$. Hence the trivial ideal is a prime ideal in $\Z$.
 
-    Now suppose we have a non-trivial prime ideal $P$ of $\Z$. As $\Z$ is a PID, we may write $P = n\Z$ where $n \geq 2$ (note that if $n = 1$ we will get $P = \Z$). Furthermore write $n = ab$ where $1 \leq a,b \leq n$. Since $ab = n \in P$, therefore $a \in P$ or $b \in P$. Without loss of generality assume $a \in P$. We note $P = n\Z = \{\dots, -2n, -n, 0, n, 2n, \dots\}$ and $1 \leq a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$, which shows that $n$ is prime. Hence, the prime ideal $P = n\Z$ where $n$ is prime.
+    Now suppose we have a non-trivial prime ideal $P$ of $\Z$. As $\Z$ is a PID, we may write $P = n\Z$ where $n \geq 2$ (note that if $n = 1$ we will get $P = \Z$). Furthermore write $n = ab$ where $1 \leq a,b \leq n$. Since $ab = n \in P$, therefore $a \in P$ or $b \in P$. Without loss of generality assume $a \in P$. We note $P = n\Z = \{\dots, -2n, -n, 0, n, 2n, \dots\}$ and $1 \leq a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$, which shows that $n$ is prime. Hence, the prime ideal $P = n\Z$, where $n$ is prime.
 \end{proof}
 \begin{exercise}
     Is the principal ideal $\princ{2} = \{0, 2, 4, 6\}$ prime in $\Z_8$?
@@ -426,13 +426,13 @@ We note that there are much easier ways to determine whether an ideal is prime, 
     Let $R$ be a commutative ring with identity, and let $P$ be an ideal of $R$. Then $P$ is prime if and only if $R/P$ is an integral domain.
 \end{theorem}
 \begin{proof}
-    We first prove the forward direction. Suppose $P$ is prime and $a+P, b+P \in R/P$ such that $(a+P)(b+P) = 0+P$. This means that $ab + P = 0 + P$. By Coset Equality (\myref{lemma-coset-equality}), this therefore means that $ab \in P$. Now as $P$ is prime, this thus means that either $a \in P$ or $b \in P$. Hence, $a + P = 0 + P$ or $b + P = 0 + P$. So we have shown that if two elements in $R/P$ multiply to zero, then one of the elements must be zero, meaning that $R/P$ has no zero divisors.
+    We first prove the forward direction. Suppose $P$ is prime and $a+P, b+P \in R/P$ such that $(a+P)(b+P) = 0+P$. This means that $ab + P = 0 + P$, so $ab \in P$. Now as $P$ is prime, this thus means that either $a \in P$ or $b \in P$. Hence, $a + P = 0 + P$ or $b + P = 0 + P$. So we have shown that if two elements in $R/P$ multiply to zero, then one of the elements must be zero, meaning that $R/P$ has no zero divisors.
     
     Now clearly $(a+P)(b+P) = ab + P = ba + P = (b+P)(a+P)$ since $R$ is commutative, so $R/P$ is commutative. Furthermore one sees that $1 + P$ is the identity in $R/P$. Therefore, $R/P$ is an integral domain.
 
-    Now we prove the reverse direction. Suppose $R/P$ is an integral domain. Take $a,b \in R$ such that $ab \in P$. This means that $ab + P = (a+P)(b+P) = 0 + P$. Therefore $a+P = 0 + P$ or $b + P = 0 + P$ since $R/P$ is an integral domain with no zero divisors. Hence $a \in P$ or $b \in P$ by Coset Equality.
+    Now we prove the reverse direction. Suppose $R/P$ is an integral domain. Take $a,b \in R$ such that $ab \in P$. This means that $ab + P = (a+P)(b+P) = 0 + P$. Therefore $a+P = 0 + P$ or $b + P = 0 + P$ since $R/P$ is an integral domain with no zero divisors. Hence $a \in P$ or $b \in P$.
     
-    Now if $P = R$ then $R/P = \{0 + P\}$ which is the trivial quotient ring. But by \myref{exercise-trivial-ring-is-not-an-integral-domain} it is not an integral domain. Therefore $P \neq R$, meaning that $P$ is a prime ideal.
+    Now if $P = R$ then $R/P = \{0 + P\}$ which is the trivial quotient ring. But by \myref{exercise-trivial-ring-is-not-an-integral-domain}, the trivial ring is not an integral domain. Therefore $P \neq R$, meaning that $P$ is a prime ideal.
 \end{proof}
 \begin{exercise}
     Is $\princ{3 - i}$ a prime ideal in the Gaussian integers?
@@ -446,11 +446,11 @@ We note that there are much easier ways to determine whether an ideal is prime, 
     \[
         M \subset \princ{a} + M \subseteq R,
     \]
-    with strict subset achieved because $a \notin M$, and the sum of ideals is an ideal. As $M$ is maximal, this means that $\princ{a} + M = R$. Therefore $1 \in \princ{a} + M$; write $1 = ar + m$ for some $r \in R$ and $m \in M$. Note $1-ar = m \in M$. Coset Equality (\myref{lemma-coset-equality}) therefore tells us that $ar + M = 1 + M$. Note $ar + M = (a+M)(r+M) = 1 + M$, so $(a+M)^{-1} = r+M$, meaning that any non-zero element in $R/M$ has an inverse. A similar argument to what is shown in \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain} shows that $R/M$ is commutative with identity $1 + M$, so $R/M$ is a field.
+    with strict subset achieved because $a \notin M$, and the sum of ideals is an ideal (\myref{prop-sum-of-ideals-is-ideal}). As $M$ is maximal, this means that $\princ{a} + M = R$. Therefore $1 \in \princ{a} + M$; write $1 = ar + m$ for some $r \in R$ and $m \in M$. Note $1-ar = m \in M$, so $ar + M = 1 + M$. Note $ar + M = (a+M)(r+M) = 1 + M$, so $(a+M)^{-1} = r+M$, meaning that any non-zero element in $R/M$ has an inverse. A similar argument to what is shown in \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain} shows that $R/M$ is commutative with identity $1 + M$, so $R/M$ is a field.
 
     Now we work in the reverse direction; assume that $R/M$ is a field. Suppose $I$ is an ideal such that $M \subset I \subseteq R$. We want to show that $I = R$.
 
-    Take $a \in I \setminus M$ with $a \neq 0$, so $a + M \in R/M$ is non-zero. As $R/M$ is a field, therefore there exists a $b + M \in R/M$ such that $(a+M)(b+M) = 1 + M$, meaning $ab+M = 1+M$. Then Coset Equality tells us that $ab - 1 \in M \subset I$. Since $ab \in I$ and $ab - 1 \in I$, the only way for this to happen is if $1 \in I$. By \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring} this means $I = R$.
+    Take $a \in I \setminus M$ with $a \neq 0$, so $a + M \in R/M$ is non-zero. As $R/M$ is a field, there exists a $b + M \in R/M$ such that $(a+M)(b+M) = 1 + M$, meaning $ab+M = 1+M$, thus $ab - 1 \in M \subset I$. Since $ab \in I$ and $ab - 1 \in I$, the only way for this to happen is if $1 \in I$. By \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring} this means $I = R$.
 
     Finally, if $M = R$, then $R/M = \{0 + M\}$, the trivial ring. But in the trivial ring, the additive and multiplicative inverses is the same element, so $R/M$ is not a field by definition. Hence $M \neq R$, so $M \subset R$, meaning $M$ is maximal.
 \end{proof}
@@ -571,10 +571,10 @@ To end this chapter, we look at two constructs relating to a ring.
 \end{problem}
 
 \begin{problem}
-    Let $R$ be a commutative ring and let $I$ and $J$ be ideals in $R$. Prove the following statements.
+    Let $R$ be a commutative ring and let $I$ and $J$ be ideals in $R$. Prove that
     \begin{partquestions}{\alph*}
-        \item $\sqrt{\sqrt{I}} = \sqrt{I}$
-        \item $\sqrt{I \cap J} = \sqrt{I} \cap \sqrt{J}$
+        \item $\sqrt{\sqrt{I}} = \sqrt{I}$; and
+        \item $\sqrt{I \cap J} = \sqrt{I} \cap \sqrt{J}$.
     \end{partquestions}
 \end{problem}
 
