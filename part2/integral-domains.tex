@@ -6,7 +6,7 @@ Unlike groups, rings do not inherently have the `cancellation law' built in. Rin
     A \textbf{domain}\index{domain!ring} is a ring with identity with no zero divisors.
 \end{definition}
 \begin{remark}
-    Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$ such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the domain.
+    Recall that an element $a \neq 0$ is a zero divisor if there exists a non-zero $b$ in the ring such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the domain.
 \end{remark}
 \begin{remark}
     What this property grants us is a ``cancellation law'', similar to that for groups. We will prove this in \myref{prop-domain-cancellation-law}. However, there may not be inverses when performing multiplication.
@@ -16,7 +16,7 @@ Unlike groups, rings do not inherently have the `cancellation law' built in. Rin
     An \textbf{integral domain}\index{integral domain} is a commutative domain.
 \end{definition}
 \begin{remark}
-    This is similar to how the integers do not have multiplicative inverses in general, hence the name of ``integral domain''.
+    This is similar to how the only way for two integers to multiply to zero is if both integers are zero, hence the name ``integral domain''.
 \end{remark}
 
 \begin{example}\label{example-integers-is-integral-domain}
@@ -85,7 +85,7 @@ We note an interesting result regarding fields here.
     Any field is an integral domain.
 \end{proposition}
 \begin{proof}
-    Any non-zero element in a field is a unit, i.e. has an inverse. Now by \myref{prop-zero-divisors-have-no-inverses}, any zero divisor must not have an inverse; the converse being that any element that has an inverse cannot be a zero divisor. Hence, there are no zero divisors in a field. Now a field is commutative, therefore meaning that the field is an integral domain.
+    Any non-zero element in a field is a unit, i.e. has an inverse. Now by \myref{prop-zero-divisors-have-no-inverses}, any zero divisor must not have an inverse; the contrapositive being that any element that has an inverse cannot be a zero divisor. Hence, there are no zero divisors in a field. Now a field is commutative, therefore meaning that the field is an integral domain.
 \end{proof}
 
 \section{General Properties and Results}
@@ -102,9 +102,9 @@ With an introduction of domains and integral domains out of the way, we introduc
     We prove the statements in order.
     \begin{itemize}
         \item $\boxed{(1) \implies (2)}$ Given $x = y$, this means $x - y = 0$. Multiplying $r$ on the left on both sides yields $r(x-y) = r0 = 0$. Distributing yields $rx - ry = 0$ which hence means $rx = ry$.
-        
+
         \item $\boxed{(2) \implies (3)}$ Given $rx = ry$. Multiplying $r$ on the right on both sides yields $rxr = ryr$, thereby meaning $rxr - ryr = 0$. Factoring yields $r(xr - yr) = 0$. As $R$ is a domain, the only way for this to occur is if $r = 0$ (which is impossible) or $xr - yr = 0$. Therefore $xr = yr$.
-        
+
         \item $\boxed{(3) \implies (1)}$ Given $xr = yr$ we may write $xr - yr = (x-y)r = 0$. Since $R$ is a domain we must have $x - y = 0$ or $r = 0$ (impossible as $r \neq 0$). Hence $x = y$.
     \end{itemize}
     This proves the proposition.
@@ -156,7 +156,7 @@ With an introduction of domains and integral domains out of the way, we introduc
             \end{tabular}
         }
     \end{table}
-    
+
     From the table, we have shown that no two non-zero elements in $\Z_3[i]$ multiply to zero. Therefore $\Z_3[i]$ has no zero divisors, which means $\Z_3[i]$ is an integral domain. Furthermore, as $\Z_3[i]$ is finite, therefore we know that it is a finite field by \myref{thrm-finite-integral-domain-is-field}.
 \end{example}
 
@@ -187,7 +187,7 @@ Before we introduce the characteristic of a ring, we clarify the meaning of the 
 \begin{definition}
     Let $R$ be a ring and $x$ an element of the ring $R$.
     \begin{itemize}
-        \item The \textbf{additive order}\index{order!additive} of $x$ is the order of $x$ in the group $(R, +)$. We denote the additive order of $x$ by $|x|_+$.
+        \item The \textbf{additive order}\index{order!additive} of $x$ is the order of $x$ in the group $(R, +)$ and is denoted $|x|_+$.
         \item If $R$ is a group with identity 1, the \textbf{multiplicative order}\index{order!multiplicative} of $x$ is the smallest positive integer $n$ such that $x^n = 1$ and is denoted $|x|_\times$, if it exists.
     \end{itemize}
 \end{definition}
@@ -246,7 +246,7 @@ We look at two properties about the characteristic.
 \end{exercise}
 \begin{exercise}
     What is the characteristic of the ring $\Z_2[\alpha]$ (as defined in \myref{exercise-Zn2[alpha]})?
-\end{exercise} 
+\end{exercise}
 
 \newpage
 

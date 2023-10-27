@@ -1,10 +1,10 @@
 \section{Relations and Functions}
 \begin{questions}
     \item Consider the function $f: A \to A$ such that $1 \mapsto 2$, $2 \mapsto 3$, $3 \mapsto 4$, and $4 \mapsto 1$. Then clearly it is both injective and surjective, meaning that $f$ is bijective.
-    
+
     \item \begin{partquestions}{\alph*}
         \item Is a relation since $A = \emptyset \subseteq S^2$. $A$ is not an equivalence relation since it is not reflexive (e.g., $1\not\mathrel{A}1$).
-        
+
         \item Is a relation since $B \subseteq S^2$. Note $B$ is an equivalence relation.
         \begin{itemize}
             \item Clearly it is reflexive.
@@ -14,10 +14,10 @@
         Since $B$ is reflexive, symmetric, and transitive, therefore $B$ is an equivalence relation.
 
         \item Is a relation since $C \subseteq S^2$. $C$ is not an equivalence relation since it is not symmetric ($1\mathrel{C}2$ but $2\not\mathrel{C}1$).
-        
+
         \item Is a relation since $D \subseteq S^2$. $D$ is not an equivalence relation since it is not transitive ($1\mathrel{D}2$ and $2\mathrel{D}3$ but $1\not\mathrel{D}3$).
     \end{partquestions}
-    
+
     \item \begin{partquestions}{\alph*}
         \item We look at each function individually.
         \begin{itemize}
@@ -28,27 +28,27 @@
         Therefore $f$ and $h$ are the two injective functions.
 
         \item We note that $\im f = [1, \infty)$. But $[1, \infty)$ is not a subset of $(-\infty, -1]$, which is the domain of $h$. Therefore $hf$ does not exist.
-        
+
         \item We note that $\im g = [0, 1]$, and $[0, 1]$ is a subset of $[0, \infty)$ which is the domain of $f$. Therefore $fg$ does exist.
-        
+
         One sees that
         \[
             fg: (-1, 1] \to \R, x \mapsto (1-x^2)^2 + 1.
         \]
         which has an image of $[1, 2]$.
     \end{partquestions}
-    
+
     \item \begin{partquestions}{\alph*}
         \item Suppose $[x] = [y]$. Then $[x] \cap [y] = [x]$. As $x \sim x$, therefore $x \in [x] \cap [y]$, which means $[x] \cap [y] \neq \emptyset$.
-        
+
         \item Suppose $[x] \cap [y] \neq \emptyset$. Then there is an $a \in [x] \cap [y]$. So $a \in [x]$ and $a \in [y]$. By definition of equivalence classes, we see $x \mathrel{\sim} a$ and $y \mathrel{\sim} a$. Note that $y \mathrel{\sim} a$ means $a \mathrel{\sim} y$ by symmetry of $\sim$. Therefore, $x \mathrel{\sim} y$ by transitivity of $\sim$.
-        
+
         \item Suppose $x \mathrel{\sim} y$. Then $y \mathrel{\sim} x$ since $\sim$ is a symmetric relation. Note that for any $a \in [x]$, we know $x \mathrel{\sim} a$ by definition of equivalence class. As $y \mathrel{\sim} x$ and $x \mathrel{\sim} a$, therefore $y \mathrel{\sim} a$ by transitivity of $\sim$. Therefore $a \in [y]$. Hence $[x] \subseteq [y]$. Switching the roles of $x$ and $y$ also yields $[y] \subseteq [x]$, which therefore leads to the conclusion that $[x] = [y]$.
     \end{partquestions}
-    
+
     \item \begin{partquestions}{\alph*}
         \item Prove. Given $h(f(x)) = h(g(x))$ for all $x \in X$. Since $h$ is injective, thus $f(x) = g(x)$ for all $x \in X$. Therefore $f = g$.
-        
+
         \item Disprove. Let $X = \Z$, and consider the functions
         \begin{align*}
             &f: n \mapsto n\\
@@ -58,7 +58,7 @@
             \end{cases}\\
             &h: n \mapsto 2n
         \end{align*}
-        
+
         We first claim that $h$ is injective. Suppose $m,n\in\Z$ such that $h(m) = h(n)$. Then $2m = 2n$, which clearly means $m = n$. Thus $h$ is injective.
 
         Now we show that $fh = gh$. Let $n \in \Z$ be arbitrary; then
@@ -76,7 +76,7 @@
 
     \item \begin{partquestions}{\roman*}
         \item $M(101) = 101 - 10 = 91$.
-        
+
         \item For $90 \leq n \leq 100$, we see that $101 \leq n+11 \leq 111$, meaning $n+11 > 100$. Therefore
         \begin{align*}
             M(n) &= M(M(n+11))\\
@@ -91,7 +91,7 @@
         which means $M(n) = 91$ for all $90 \leq n \leq 100$.
 
         \item For clarity, set $n = 101 - x$. We induct on positive integer values of $x$.
-        
+
         Base cases of $x = 1, 2, \dots, 11$ were proven in \textbf{(iii)}.
 
         Suppose for some positive integer $k$ every $1 \leq r \leq k$ satisfies $M(101 - r) = 91$. We show that the statement holds for $k + 11$, i.e. $M(101 - (k+11)) = M(90 - k) = 91$.
@@ -116,9 +116,9 @@
             &= n-1
         \end{align*}
         for all integers $n > 1$.
-        
+
         \item We induct on $n$.
-        
+
         We show the base cases of 1 and 2 hold:
         \begin{itemize}
             \item When $n = 1$, we have $f(2, 1) = 2$, so the first case is true.
@@ -128,7 +128,7 @@
             \]
             so the second case is true.
         \end{itemize}
-    
+
         Now suppose for some positive integer $k$, every integer $1 \leq m \leq k$ results in the statement being true, i.e. $f(m+1,m) = 2$. We want to show that the case for $k+1$ is true, i.e. $f(k+2, k+1) = 2$.
         \begin{align*}
             f(k+2, k+1) &= f(k, f(k, k+1))\\
@@ -140,7 +140,7 @@
             &= 2 & (\text{hypothesis on } k-1)
         \end{align*}
         which proves that the statement for $k+1$ holds. Hence by mathematical induction, $f(n+1, n) = 2$.
-        
+
         \item We first prove the `general' case.
         \begin{align*}
             f(n, 4) &= f(3, f(3, n-1))\\

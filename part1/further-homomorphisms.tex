@@ -24,7 +24,7 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
 \end{proposition}
 \begin{proof}
     Note that $\phi(e_G) = e_H \in \im\phi$, where $e_G$ and $e_H$ are the identities of $G$ and $H$ respectively.
-    
+
     Now suppose $h_1$ and $h_2$ are in the image of $\phi$, meaning that there exists $g_1$ and $g_2$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Note that $\phi(g_2^{-1}) = h_2^{-1}$ by homomorphism property. Hence $\phi(g_1g_2^{-1}) = h_1h_2^{-1} \in \im\phi$.
 
     Therefore, by subgroup test, $\im\phi \leq H$.
@@ -220,9 +220,9 @@ We only show subgroups that we care about in the diagram. The group $G$ has a (d
 
     \begin{enumerate}
         \item Clearly $e_G \in H$ and $e_G \in K$ so $e_G \in H \cap K$. Now take $x, y \in H \cap K$, meaning $x, y \in H$ and $x, y \in K$. Since $H, K \leq G$ so $xy^{-1} \in H$ and $xy^{-1} \in K$. Thus $xy^{-1} \in H \cap K$. By the subgroup test, this means that $H \cap K \leq H$.
-        
+
         \item Note that $H = \{he_G \vert h \in H\} \subseteq \{hk \vert h \in H, k \in K\} = HK$, and $H$ is a group (as $H$ is a subgroup). Therefore $H \leq HK$.
-        
+
         \item We note that, because $N$ is normal, hence $hN = Nh$ for all $h \in H \subseteq G$, meaning that $HN = NH$. Therefore by \myref{prop-subgroup-product-is-subgroup}, we have $HN \leq G$.
 
         \item We know $H \cap N \leq H$ by statement 1, so we only prove normality. Take $x \in H \cap N$. Since $H \leq G$, thus $x \in H \cap N \subseteq H$, meaning for all $g \in H$, $gxg^{-1} \in H$ (where we think of $g$ and $x$ as being in $H$). But since $x \in H \cap N \subseteq N$ and $N \unlhd G$, thus $gxg^{-1} \in N$ (where we think of $g \in H$ and $x \in N$). Therefore $H \cap N \unlhd H$.
@@ -240,7 +240,7 @@ We only show subgroups that we care about in the diagram. The group $G$ has a (d
         \begin{itemize}
             \item \textbf{Homomorphism}:
             \[
-                \phi(xy) = (xy)N = (xN)(yN) = \phi(x)\phi(y)    
+                \phi(xy) = (xy)N = (xN)(yN) = \phi(x)\phi(y)
             \]
 
             \item \textbf{Image}: We show that $\phi$ is surjective to show that $\im\phi = HN/N$. Suppose $x \in HN$, meaning $x = hn$ where $h \in H$ and $n \in N$. Thus $xN \in HN/N$, so
@@ -250,11 +250,11 @@ We only show subgroups that we care about in the diagram. The group $G$ has a (d
             meaning $\phi(h) = hN = xN$. Hence we have found a pre-image of the coset $xN$, meaning $\phi$ is surjective. Thus $\im \phi = HN/N$.
 
             \item \textbf{Kernel}: We claim that $\ker\phi = H \cap N$.
-            
+
             Note that $\ker\phi = \{h \in H \vert \phi(h) = eN = N\}$ by definition of kernel. This means that if $h \in \ker\phi$ then $\phi(h) = N$. Hence $\phi(h) = hN = N$, which means $h \in N$ by Element in Coset (\myref{corollary-equivalence-of-element-in-coset}). Thus, $h \in H$ and $h \in N$, meaning $h \in H \cap N$. Therefore $\ker \phi \subseteq H \cap N$.
-    
+
             Now suppose $x \in H \cap N$. This means that $x \in N$ necessarily, implying $xN = N$. Thus $\phi(x) = N$ which quickly implies $x \in \ker\phi$. Therefore $H \cap N \subseteq \ker\phi$.
-    
+
             Since $\ker \phi \subseteq H \cap N$ and  $H \cap N \subseteq \ker\phi$ therefore $\ker\phi = H\cap N$.
         \end{itemize}
 
@@ -382,9 +382,9 @@ It should be noted that there is no consistency with the numbering of these theo
                 &= \phi(gN)\phi(g'N)
             \end{align*}
             which means that $\phi$ is a homomorphism.
-            
+
             \item \textbf{Image}: We show $\phi$ is surjective to prove that $\im\phi = G/H$. Suppose $gH \in G/H$. Clearly $\phi(gN) = gH$. Thus $gN$ is a pre-image of $gH$, meaning that $\phi$ is surjective. Hence $\im\phi = G/H$.
-            
+
             \item \textbf{Kernel}: Suppose $gN \in \ker\phi = \{gN \vert \phi(gN) = eH = H\}$. Thus $\phi(gN) = gH = H$, which means $g \in H$. Hence $gN \in H/N$, so $\ker\phi \subseteq H/N$.
 
             Now assume $hN \in H/N$. Since $H\subseteq G$ (as $H \unlhd G$), thus $h \in G$. Therefore $hN \in G/N$, so $\phi(hN) = hH = H$. Hence $hN \in \ker\phi$ which means $H/N \subseteq \ker\phi$.

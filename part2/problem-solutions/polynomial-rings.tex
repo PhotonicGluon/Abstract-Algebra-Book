@@ -18,15 +18,15 @@
 
     \item \begin{partquestions}{\alph*}
         \item False. $2x-1$ is a polynomial with integer coefficients with no integer zeroes.
-        
+
         \item False. By definition, zeroes must always come from the ground ring, so if $f(x) \in \Z[x]$ has zero(es) they must be integers.
-        
+
         \item True. $2x-1 \in \R[x]$ is a polynomial with integer coefficients and has a non-integer zero of $\frac12$.
     \end{partquestions}
-    
+
     \item \begin{partquestions}{\alph*}
-        \item We guess the form of $f(x)$ for $4x^2 + 2x + 1$. 
-        
+        \item We guess the form of $f(x)$ for $4x^2 + 2x + 1$.
+
         Guess first that $f(x)$ is a degree 0 polynomial, i.e. $f(x) = a$. Then $4ax^2 + 2ax + a = 1$, meaning $a = 1$. But that is the same as the original polynomial, so we conclude $f(x)$ cannot be a polynomial of degree 0.
 
         Guess next that $f(x)$ is a degree 1 polynomial, i.e. $f(x) = ax + b$. Then $(4x^2+2x+1)(ax+b) = 1$, meaning $4ax^3 + 2(a+2b)x^2 + (a+2b)x + b = 1$. Thus $b = 1$, otherwise it would not be possible for its product to be 1. Thus it reduces to $4ax^3 + 2(a+2)x^2 + (a+2)x + 1$, which means that $a+2 = 0$. Therefore $a = -2 = 6$. We check that
@@ -36,10 +36,10 @@
             &= 1
         \end{align*}
         so $f(x) = 6x+1$ works.
-        
+
         \item We note $\Z_7$ is a field (\myref{example-Zp-is-field}) and so $\Z_7$ is an integral domain. This means $\Z_7[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}). So a unit of $\Z_7[x]$ is a unit of $\Z_7$ (\myref{prop-unit-of-ring-iff-unit-of-polynomial-ring}), which means only constants can be units. Thus $x^2 + 2x + 1$ has no corresponding $f(x)$ such that $(x^2+2x+1)f(x) = 1$.
     \end{partquestions}
-    
+
     \item Using polynomial long division (\myref{thrm-polynomial-long-division}) we write
     \[
         f(x) = q(x)(x-a) + r(x) \text{ with } r(x) \text{ or } \deg r(x) < \deg(x-a) = 1.
@@ -60,14 +60,14 @@
         \myref{prop-kernel-is-an-ideal} tells us that $\ker\phi$ is an ideal of $\Z[x]$, so $I$ is an ideal of $\Z[x]$.
 
         \item We first show that $\phi$ is surjective. Let $n \in \Z$, note that $n$ is a degree zero polynomial, so $n \in \Z[x]$. Clearly $\phi(n) = n$ so $n$ is its own pre-image. Therefore $\im\phi = \Z$.
-        
+
         By FRIT (\myref{thrm-ring-isomorphism-1}),
         \[
             \Z[x]/I \cong \Z.
         \]
         Note that $\Z$ is an integral domain but not a field. Thus $I$ is prime but not maximal.
     \end{partquestions}
-    
+
     \item For brevity let $I = \princ{x} = \{xP(x) \vert P(x) \in \Z[x]\}$. This means that $I$ is the set of polynomials with integer coefficients and with constant term 0. Now suppose $f(x), g(x) \in \Z[x]$; write
     \begin{align*}
         f(x) &= a_0 + a_1x + \cdots + a_mx^m\\
@@ -153,7 +153,7 @@
         \end{align*}
         a contradiction.
     \end{partquestions}
-    
+
     \item Consider the map $\phi: R[x] \to R[x^k]$ where
     \[
         \sum_{i=0}^n a_ix^i \mapsto \sum_{i=0}^na_ix^{ki}.
@@ -191,7 +191,7 @@
             f(x) = \sum_{i=0}^m a_ix^i = \sum_{i=0}^n b_ix^i = g(x)
         \]
         which shows that $\phi$ is injective.
-        
+
         \item \textbf{Surjective}: Suppose $h(x) = c_0 + c_kx^k + c_{2k}x^{2k} + \cdots + c_{pk}x^{pk} \in R[x^k]$. Set $a_i = c_{ki}$ for all $0 \leq i \leq p$ and one sees that
         \[
             \phi\left(\sum_{i=0}^pa_ix^i\right) = \sum_{i=0}^pa_ix^{ki} = \sum_{i=0}^pc_{ki}x^{ki} = h(x)
@@ -199,7 +199,7 @@
         which means that any $h(x) \in R[x^k]$ has a pre-image in $R[x]$. Thus $\phi$ is surjective.
     \end{itemize}
     Hence $\phi$ is a ring isomorphism, meaning $R[x] \cong R[x^k]$.
-    
+
     \item \begin{partquestions}{\roman*}
         \item Let $f(x), g(x) \in R[x]$ where, without loss of generality, assume $m \geq n$,
         \begin{align*}
@@ -237,7 +237,7 @@
                 \sum_{i=0}^m a_ix^i = \sum_{i=0}^n b_ix^i
             \]
             which therefore means $f(x) = g(x)$. So $\psi$ is an injective function.
-            
+
             \item \textbf{Surjective}: Suppose $F(x) = a_0 + a_1x + a_2x^2 + \cdots + a_mx^m \in S[x]$. Let $G(x) = \phi^{-1}(a_0) + \phi^{-1}(a_1)x + \cdots + \phi^{-1}(a_m)x^m \in R[x]$. Then note
             \[
                 \psi(G(x)) = \sum_{i=0}^m\phi(\phi^{-1}(a_i))x_i = \sum_{i=0}^ma_ix_i = F(x)
@@ -247,7 +247,7 @@
 
         So $\psi$ is a bijection. Furthermore by \textbf{(i)} we know that $\psi$ is a homomorphism. Therefore $\psi$ is a ring isomorphism, meaning $R[x] \cong S[x]$.
     \end{partquestions}
-    
+
     \item Let $\ideal{a} = \princ{2}$ and $\ideal{b} = \princ{x}$ be principal ideals. Note that
     \[
         I = \ideal{a} + \ideal{b} = \{2f(x) + xg(x) \vert f(x),g(x) \in \Z[x]\}

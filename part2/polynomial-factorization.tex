@@ -41,7 +41,7 @@ It is often more useful to talk about irreducible polynomials over a field. In t
         \item $\Z$
         \item $\Q$
         \item $\R$
-    \end{partquestions} 
+    \end{partquestions}
 \end{exercise}
 
 \section{Tests for (Ir)reducibility}
@@ -53,7 +53,7 @@ The first test is a consequence of the factor theorem.
     Let $F$ be a field and $f(x) \in F[x]$ have degree above 1. If $f(x)$ has a zero then $f(x)$ is reducible.
 \end{theorem}
 \begin{proof}
-    Since $f(x)$ has a zero, say $\alpha \in F$, we may write $f(x) = (x-\alpha)q(x)$ (\myref{corollary-factor-theorem}). Note $\deg f(x) = \deg(x-\alpha) + \deg q(x) = 1 + \deg q(x)$ (\myref{thrm-polynomial-degree-properties}), and clearly $1 \leq \deg q(x) < \deg f(x)$ (since degree of $f(x)$ is above 1), so $f(x)$ is expressible as a product of two polynomials of lower degree in $F[x]$. Thus $f(x)$ is reducible over $F$ (\myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}). 
+    Since $f(x)$ has a zero, say $\alpha \in F$, we may write $f(x) = (x-\alpha)q(x)$ (\myref{corollary-factor-theorem}). Note $\deg f(x) = \deg(x-\alpha) + \deg q(x) = 1 + \deg q(x)$ (\myref{thrm-polynomial-degree-properties}), and clearly $1 \leq \deg q(x) < \deg f(x)$ (since degree of $f(x)$ is above 1), so $f(x)$ is expressible as a product of two polynomials of lower degree in $F[x]$. Thus $f(x)$ is reducible over $F$ (\myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}).
 \end{proof}
 
 The next test provides a partial converse to the above theorem for polynomials of degree 2 or 3.
@@ -102,7 +102,7 @@ The next test provides a partial converse to the above theorem for polynomials o
             \item $\Z_3$
             \item $\Z_5$
             \item $\Z_7$
-        \end{partquestions} 
+        \end{partquestions}
     \end{multicols}
 \end{exercise}
 
@@ -122,7 +122,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
 \end{lemma}
 \begin{proof}[Proof (see {\cite[p.~291]{gallian_2016}})]
     Seeking a contradiction, suppose $f(x)$ and $g(x)$ are primitive polynomials with a non-primitive product $h(x) = f(x)g(x)$. Therefore the content of $h(x)$ is not 1; in fact it is at least 2, meaning the content of $h(x)$ is either prime or composite.
-    
+
     Let $p$ be a prime divisor of the content of $h(x)$, and let $\bar{f}(x)$, $\bar{g}(x)$, and $\bar{h}(x)$ be polynomials obtained from $f(x)$, $g(x)$, and $h(x)$ by reducing their coefficients modulo $p$. Since the content of $h(x)$ is not 1, thus coefficients of $h(x)$ are multiples of $p$; accordingly when they are reduced modulo $p$, we see $\bar{h}(x) = 0$. Also, we may interpret $\bar{f}(x)$ and $\bar{g}(x)$ as polynomials belonging in $\Z_p[x]$ where $(\bar{f}(x))(\bar{g}(x)) = \bar{h}(x) = 0$. Since $\Z_p[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}), this means that $\bar{f}(x) = 0$ or $\bar{g}(x) = 0$. Without loss of generality assume $\bar{f}(x) = 0$. Therefore $p$ divides every coefficient of $f(x)$, meaning that the content of $f(x)$ is at least $p$, i.e. $f(x)$ is not primitive, a contradiction.
 
     The contradiction means that a product of two primitive polynomials must be primitive.
@@ -148,7 +148,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
         ab \times f(x) = C_pC_q \times P(x)Q(x).
     \]
     As $f(x)$ is primitive, thus the content of $ab \times f(x)$ is $ab$. The product of primitive polynomials is primitive (\myref{lemma-gauss-for-integer-coefficients}), so $P(x)Q(x)$ is also primitive; the content of $C_pC_q \times P(x)Q(x)$ is therefore $C_pC_q$. So $ab = C_pC_q$.
-    
+
     Dividing both sides by $ab = C_pC_q$ leaves $f(x) = P(x)Q(x)$, where both $P(x)$ and $Q(x)$ are polynomials with integer coefficients. Note that
     \begin{align*}
         \deg p(x) &= \deg (a\times p(x)) & (\text{multiplying by constant does not change degree})\\
@@ -209,7 +209,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
 \end{example}
 \begin{example}
     Consider now $f(x) = 2x^2 + 3x + 4$.
-    
+
     We note that reducing $f(x)$ modulo 2 yields $3x$, but we cannot use the Mod 2 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}) on it since $3x$ is of smaller degree than $f(x)$.
 
     If instead we reduce $f(x)$ modulo 3, we get the polynomial $\bar{f}(x) = 2x^2 + 1$. But one sees clearly that $\bar{f}(1) = 2(1)^2 + 1 = 3 = 0$ in $\Z_3$, so $\bar{f}(x)$ is reducible modulo 3 (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
@@ -337,7 +337,7 @@ With this general result proven, we come up with a few rules for substitution.
 \begin{proof}
     We consider the map $\phi: D[x] \to D[x]$ where
     \[
-        \sum_{i=0}^n a_ix^i \mapsto \sum_{i=0}^na_i(x+k)^i.  
+        \sum_{i=0}^n a_ix^i \mapsto \sum_{i=0}^na_i(x+k)^i.
     \]
     We show that this is a ring automorphism. For brevity let
     \begin{align*}
@@ -362,13 +362,13 @@ With this general result proven, we come up with a few rules for substitution.
             &= \phi(f(x))\phi(g(x))
         \end{align*}
         so $\phi$ is a ring homomorphism.
-        
+
         \item \textbf{Injective}: Suppose $\phi(f(x)) = \phi(g(x))$. Then
         \[
             \sum_{i=0}^ma_i(x+k)^i = \sum_{i=0}^nb_i(x+k)^i
         \]
         which, by comparing coefficients, we see $a_i = b_i$ for all $0 \leq i \leq m$. Therefore $f(x) = g(x)$ originally, meaning $\phi$ is injective.
-        
+
         \item \textbf{Surjective}: Let $p(x) = c_0 + c_1x + \cdots + c_rx^r$ be a polynomial in $D[x]$. Note that $q(x) = c_0 + c_1(x-k) + \cdots + c_r(x-k)^r$ is also a polynomial in $D[x]$; observe
         \begin{align*}
             \phi(q(x)) &= c_0 + c_1((x-k)+k) + \cdots + c_r((x-k)+k)^r\\
@@ -386,7 +386,7 @@ With this general result proven, we come up with a few rules for substitution.
 \begin{proof}
     Consider the map $\phi: D[x] \to D[x]$ where
     \[
-        \sum_{i=0}^n a_ix^i \mapsto \sum_{i=0}^na_i(kx)^i.  
+        \sum_{i=0}^n a_ix^i \mapsto \sum_{i=0}^na_i(kx)^i.
     \]
     \myref{exercise-substitution-by-constant-factor-multiple-map} (later) shows that this is a ring isomorphism (and so is an automorphism), so this means that $f(x)$ is irreducible if and only if $f(kx)$ is irreducible.
 \end{proof}
@@ -449,7 +449,7 @@ We reveal the first connection in the following theorem.
     Thus $M$ is a maximal ideal.
 
     Now we prove the reverse direction; suppose $M = \princ{f(x)}$ is a maximal ideal in $D[x]$. Suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in D[x]$. We show that at least one of $p(x)$ or $q(x)$ is a unit.
-    
+
     Seeking a contradiction, suppose neither $p(x)$ nor $q(x)$ are units. We show that $\princ{f(x)} \subset \princ{p(x)}$. Let $g(x) \in \princ{f(x)}$, meaning there exists $k(x) \in D[x]$ such that $g(x) = f(x)k(x)$. Since $f(x) = p(x)q(x)$ we have $g(x) = (p(x)q(x))k(x) = p(x)(q(x)k(x)) \in \princ{p(x)}$. Therefore $\princ{f(x)} \subseteq \princ{p(x)}$. Now if $p(x) \in \princ{f(x)}$, then there exists an $r(x) \in F[x]$ such that $p(x) = f(x)r(x)$. As $f(x) = p(x)q(x)$ we have
     \[
         f(x) = p(x)q(x) = f(x)r(x)q(x)
@@ -489,7 +489,7 @@ We now look at a polynomial analog of Euclid's lemma (\myref{corollary-euclid}).
     Prove \myref{corollary-irreducible-polynomial-division-rule}.
 \end{exercise}
 
-With this theorem and corollaries, we are able to construct finite fields with prime-power number of elements. Suppose we desire a field with $p^k$ elements. 
+With this theorem and corollaries, we are able to construct finite fields with prime-power number of elements. Suppose we desire a field with $p^k$ elements.
 \begin{itemize}
     \item If $k = 1$ then we know $\Z_p$ is a field of $p^k = p$ elements.
     \item Otherwise, by finding an irreducible polynomial of degree $k$ in $\Z_p[x]$, say $f(x)$, we can see that
@@ -551,7 +551,7 @@ With this theorem and corollaries, we are able to construct finite fields with p
     is a field with 9 elements.
 
     \newpage
-    
+
     Let $F = \Z_3/\princ{x^2+1}$. We produce the Cayley table for $(F, +)$ below.
     \begin{table}[H]
         \centering

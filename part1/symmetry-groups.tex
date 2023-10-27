@@ -213,9 +213,9 @@ With the definition of permutations out of the way, we can finally introduce a v
     We prove the 4 group axioms.
     \begin{enumerate}
         \item \textbf{Closure}: Let $f$ and $g$ be functions in $\Sym{X}$, so $f: X\to X$ and $g:X \to X$ are bijective functions. Define $h:X \to X$ where $h = f\circ g$. By \myref{exercise-composition-of-isomorphisms-is-isomorphisms} we know $h$ is bijective. Thus $\Sym{X}$ is closed under $\circ$.
-        
+
         \item \textbf{Associativity}: Function composition is associative.
-        
+
         \item \textbf{Identity}: Clearly the identity map, $\id$, is in $\Sym{X}$. Also $\id$ is a bijection by \myref{exercise-identity-map-is-isomorphism}. Now we show that $\id$ is indeed the identity in $\Sym{X}$. Let $x$ be an arbitrary element of $X$, and $f$ be any function in $\Sym{X}$. Then
         \[
             (\id \circ f)(x) = \id(f(x)) = f(x)
@@ -225,7 +225,7 @@ With the definition of permutations out of the way, we can finally introduce a v
             (f \circ \id)(x) = f(\id(x)) = f(x)
         \]
         so $\id$ is the identity in $\Sym{X}$.
-        
+
         \item \textbf{Inverse}: For all functions $f$ in $\Sym{X}$, $f^{-1}$ exists since $f$ is a bijection. Furthermore, $f^{-1}$ is a bijection from $X$ to $X$, so $f^{-1}$ is in $\Sym{X}$. By definition of $f^{-1}$,
         \[
             f \circ f^{-1} = f^{-1} \circ f = \id
@@ -284,7 +284,7 @@ To end this section, we prove an important result regarding symmetric groups of 
         which shows that $\phi$ is a homomorphism.
 
         \item \textbf{Injective}: Let $\sigma, \pi \in \Sym{S_1}$ such that $\phi(\sigma) = \phi(\pi)$. Thus $f\sigma f^{-1} = f\pi f^{-1}$ which quickly implies $\sigma = \pi$ by cancellation law. Therefore $\phi$ is injective.
-        
+
         \item \textbf{Surjective}: Let $\pi \in \Sym{S_2}$. Let $\sigma = f^{-1}\pi f$. We note that $\sigma: S_1 \to S_1$ is a bijection, so $\sigma \in \Sym{S_1}$. Clearly
         \[
             \phi(\sigma) = \phi(f^{-1}\pi f) = f(f^{-1}\pi f)f^{-1} = \pi
@@ -320,7 +320,7 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
     For any $g$ in $G$ define the map $\lambda_g: G \to G$ such that $x \mapsto gx$. We claim that $\lambda_g$ is a bijection.
     \begin{itemize}
         \item \textbf{Injective}: Let $x$ and $y$ be elements of $G$ such that $\lambda_g(x) = \lambda_g(y)$. Then $gx = gy$ by definition of $\lambda_g$, which immediately means $x = y$ by cancellation law. Thus $\lambda_g(x) = \lambda_g(y)$ implies $x = y$, meaning $\lambda_g$ is injective.
-        
+
         \item \textbf{Surjective}: Let $y$ be an element of $G$. Note that $g^{-1}y$ is an element of $G$ (since $G$ is closed), and that $\lambda_g(g^{-1}y) = g(g^{-1}y) = y$. Thus, a preimage of $y$ is $g^{-1}y$ and it exists in the domain $G$, meaning $\lambda_g$ is surjective.
     \end{itemize}
     Since $\lambda_g$ is both injective and surjective it is thus bijective.
@@ -359,9 +359,9 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
                 &= (\phi(g)\phi(h))(x).
             \end{align*}
             Thus, $\phi(gh) = \phi(g)\phi(h)$.
-        
+
         \item \textbf{Injective}: Let $g_1, g_2 \in G$ such that $\phi(g_1) = \phi(g_2)$. Then $\lambda_{g_1} = \lambda_{g_2}$. Therefore, $\lambda_{g_1}(x) = \lambda_{g_2}(x)$ for all $x$ in $G$, which means that $\lambda_{g_1}(e) = \lambda_{g_2}(e)$ when $x = e$. By definition of $\lambda_g$, we have $eg_1 = eg_2$ which ultimately means that $g_1=g_2$. Thus if $\phi(g_1) = \phi(g_2)$ then $g_1=g_2$.
-        
+
         \item \textbf{Surjective}: Let $\lambda_g \in H$. Clearly $\phi(g) = \lambda_g$, which means $\lambda_g$ has a pre-image of $g$. Thus $\phi$ is surjective.
     \end{itemize}
     Therefore we have proven that $\phi$ is an isomorphism, which means that

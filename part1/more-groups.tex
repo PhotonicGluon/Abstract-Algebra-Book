@@ -303,7 +303,7 @@ We are now ready to look at the alternating group.
         \mu\sigma^{-1} = \underbrace{\tau_1\cdots\tau_{2k}\tau_{2m}'\cdots\tau_1'}_{2(k+m) \text{ transpositions}}
     \]
     is an even permutation, meaning $\mu\sigma^{-1} \in \An{n}$. By subgroup test, $\An{n} \leq \Sn{n}$. But as $\An{n}$ contains only even permutations, thus $\An{n} < \Sn{n}$.
-    
+
     Now take $\sigma \in \Sn{n}$ and $\mu \in \An{n}$. Note that
     \begin{align*}
         \sgn(\sigma\mu\sigma^{-1}) &= \sgn(\sigma)\sgn(\mu)\sgn(\sigma^{-1})\\
@@ -331,7 +331,7 @@ We are now ready to look at the alternating group.
     Define a map $f: \An{n} \to \mathrm{O}_n$ such that $\sigma \mapsto \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. We will show that this is a bijection.
     \begin{itemize}
         \item \textbf{Injective}: Let $\mu$ and $\sigma$ be in $\An{n}$ such that $f(\mu) = f(\sigma)$. This means that $\begin{pmatrix}1 & 2\end{pmatrix}\mu = \begin{pmatrix}1 & 2\end{pmatrix}\sigma$. Now left-applying $\begin{pmatrix}1 & 2\end{pmatrix}$ on both sides yields $\mu = \sigma$ (since transpositions are their own self-inverse).
-        
+
         \item \textbf{Surjective}: Take $\mu \in \mathrm{O}_n$, say $\mu = \tau_1\tau_2\cdots\tau_{2k-1}$ where $\tau_i$ is a transposition. Clearly,
         \[
             \mu = \underbrace{\begin{pmatrix}1 & 2\end{pmatrix}\begin{pmatrix}1 & 2\end{pmatrix}}_{\id}\tau_1\tau_2\cdots\tau_{2k-1}.
@@ -346,7 +346,7 @@ We are now ready to look at the alternating group.
         which means that $\mu \in \mathrm{O}_n$ has a pre-image $\sigma$ in $\An{n}$.
     \end{itemize}
     This proves that $f$ is a bijection, so $|\An{n}| = |\mathrm{O}_n|$.
-    
+
     Since $A_n \cup \mathrm{O}_n = \Sn{n}$ and $A_n \cap \mathrm{O}_n = \emptyset$, thus $|\Sn{n}| = |\An{n}| + |\mathrm{O}_n| = 2|\An{n}|$. Now because $|\Sn{n}| = n!$ by \myref{exercise-order-of-Sn}, therefore $|\An{n}| = \frac{n!}2$.
 \end{proof}
 
@@ -372,11 +372,11 @@ We look at a useful group in Number Theory: the \textbf{group of units modulo $n
     We first prove that $\Un{n}$ satisfies the four group axioms to show that $\Un{n}$ is a group.
     \begin{enumerate}
         \item \textbf{Closure}: Let $x, y \in \Un{n}$. Then $\gcd(x, n) = \gcd(y, n) = 1$. Hence $\gcd(xy, n) = 1$ which means that $\gcd(x\otimes_ny,n)=1$. Thus $x\otimes_ny \in \Un{n}$.
-        
+
         \item \textbf{Associativity}: Multiplication is associative (\myref{axiom-multiplication-is-associative}), so $\otimes_n$ is associative.
-        
+
         \item \textbf{Identity}: Note that 1 is the identity in $\Un{n}$ since $1 \otimes_n x = x$.
-        
+
         \item \textbf{Inverse}: Let $x$ be in $\Un{n}$, meaning $\gcd(x, n) = 1$. Then \myref{prop-multiplicative-inverse-exists-iff-coprime} tells us that there exists an $m$ such that $mx \equiv 1 \pmod n$. Therefore $m \otimes_n x = 1$, which means $m$ is the inverse of $x$.
     \end{enumerate}
     Now multiplication is commutative (\myref{axiom-multiplication-is-commutative}), so multiplication modulo $n$ is also commutative. Thus $\Un{n}$ is an abelian group under $\otimes_n$.
@@ -429,7 +429,7 @@ We now note the condition for $\Un{n}$ to be cyclic.
     In fact, what \myref{prop-Un-cyclic-only-if-exists-primitive-root} shows is that $\Un{n} \cong \Z_{\totient(n)}$ if there exists a primitive root modulo $n$.
 \end{remark}
 
-We end this section by looking at an alternate representation of $\Un{n}$. 
+We end this section by looking at an alternate representation of $\Un{n}$.
 \begin{definition}
     Define the group
     \[
@@ -596,7 +596,7 @@ In other words, $\GL{n}{\R}$ is the group of real-valued matrices with $n$ rows 
     We need to prove the four group axioms.
     \begin{enumerate}
         \item \textbf{Closure}: Consider two matrices \textbf{A} and \textbf{B} in $\GL{n}{\R}$. Then that means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Note also that $\textbf{AB}$ has $n$ rows and columns. Therefore $\textbf{AB}$ is also in $\GL{n}{\R}$, meaning that it is closed under matrix multiplication.
-        
+
         \item \textbf{Associativity}: Consider three matrices \textbf{A}, \textbf{B}, and \textbf{C} in $\GL{n}{\R}$.
         \begin{itemize}
             \item Consider $(\textbf{AB})\textbf{C}$. Let $\textbf{R} = \textbf{AB}$ and $\textbf{S} = (\textbf{AB})\textbf{C}$. Then
@@ -625,9 +625,9 @@ In other words, $\GL{n}{\R}$ is the group of real-valued matrices with $n$ rows 
             \sum_{k=1}^n \sum_{l=1}^n (a_{i,l}b_{l,k})c_{k,j} = \sum_{l=1}^n\sum_{k=1}^n a_{i,l}(b_{l,k}c_{k,j}),
         \]
         thereby proving that matrix multiplication is associative.
-        
+
         \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n$ is in $\GL{n}{\R}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M} \in \GL{n}{\R}$, thus $\textbf{I}_n$ is the identity of $\GL{n}{\R}$.
-        
+
         \item \textbf{Inverse}: Let \textbf{M} be a matrix in $\GL{n}{\R}$. As $\det \textbf{M} \neq 0$, thus $\textbf{M}^{-1}$ exists. By properties of the determinant, we know that $\det \left(\textbf{M}^{-1}\right) = \left(\det \textbf{M}\right)^{-1}$, and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1} \in \GL{n}{\R}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\R}$.
     \end{enumerate}
     Thus $\GL{n}{\R}$ is a group.
@@ -651,7 +651,7 @@ One sees clearly that $\SL{n}{\R}$ is a sub\textit{set} of $\GL{n}{\R}$: the set
     We consider the subgroup test. Clearly $\textbf{I}_n$ is in $\SL{n}{\R}$ since its determinant is 1.
 
     Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\R}$. This means that $\det \textbf{A} = 1$ and $\det \textbf{B} = 1$. Note that $\det(\textbf{B}^{-1}) = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det(\textbf{B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\R}$. Hence by the subgroup test, $\SL{n}{\R} < \GL{n}{\R}$.
-    
+
     Now let $\textbf{M}$ be a matrix in $\GL{n}{\R}$ and $\textbf{N}$ be a matrix in $\SL{n}{\R}$. We are to show that $\textbf{MNM}^{-1}$ is in $\SL{n}{\R}$. Since $\textbf{M} \in \GL{n}{\R}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\R}$ implies $\det \textbf{N} = 1$. Hence,
     \[
         \det \textbf{MNM}^{-1} = (\det \textbf{M})(\det \textbf{N})(\det \textbf{M})^{-1} = \det \textbf{N} = 1
@@ -752,7 +752,7 @@ We now look at inner automorphisms and its group.
     $\Inn{G} \leq \Aut{G}$.
 \end{proposition}
 \begin{proof}
-    Clearly $\id \in \Inn{G}$ since $\id = \iota_e$ and 
+    Clearly $\id \in \Inn{G}$ since $\id = \iota_e$ and
     \[
         \id(x) = \iota_e(x) = exe^{-1} = x.
     \]
@@ -816,7 +816,7 @@ Before we can state the consequence, we revisit the idea of the center of a grou
     \]
     implying that
     \[
-        G/\CenterGrp{G} \cong \Inn{G}    
+        G/\CenterGrp{G} \cong \Inn{G}
     \]
     which proves the result.
 \end{proof}
@@ -844,20 +844,20 @@ Before we can state the consequence, we revisit the idea of the center of a grou
     Let $G = \Cn{n}$ with generator $g$.
     \begin{partquestions}{\roman*}
         \item Suppose $f_1: G \to G$ and $f_2: G \to G$ are homomorphisms. Prove that $f_1 = f_2$ if and only if $f_1(g) = f_2(g)$.
-        
+
         \item Let $f: G \to G$ be a homomorphism. Explain why $f(g) = g^{m_f}$ for some $m_f \in \Z_n$.
-        
+
         \item Show that the $m_f$ obtained in \textbf{(ii)} is unique to $f$.
-        
+
         \item Suppose $f_1: G \to G$ and $f_2: G \to G$ are homomorphisms. Prove that
         \[
             m_{f_1\circ f_2} = m_{f_1} \otimes_n m_{f_2},
         \]
         where $\circ$ denotes function composition and $\otimes_n$ denotes multiplication modulo $n$.
-        
+
         \item Let $f: G \to G$ be a homomorphism. Prove that $f$ is an automorphism if and only if $m_f$ has a multiplicative inverse modulo $n$. That is, there exists $k \in \Un{n}$ such that $m_fk \equiv 1 \pmod n$ if and only if $f$ is an automorphism.\newline
         (\textit{Hint: consider \myref{prop-multiplicative-inverse-exists-iff-coprime}, where we have $ab \equiv 1 \pmod m$ if and only if $\gcd(a, m) = 1$.})
-        
+
         \item Hence, by considering the map $\phi: \Aut{G} \to \Un{n}$ where $\phi(f) = m_f$, prove that
         \[
             \Aut{G} \cong \Un{n}.
