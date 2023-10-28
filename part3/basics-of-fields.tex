@@ -1,0 +1,436 @@
+\chapter{Basics of Fields}
+In the previous part, we looked at rings. We explored the different types of rings and their properties. Fields are rings with more properties. We look at the basics of fields in this chapter.
+
+\section{What is a Field?}
+Recall that a ring is an algebraic structure with two operations, addition, and multiplication, defined on it. We succinctly summarised the ring axioms as follows.
+\begin{itemize}
+    \item \textbf{Addition-Abelian}: $(R, +)$ is an abelian group.
+    \item \textbf{Multiplication-Semigroup}: $(R, \cdot)$ is a semigroup.
+    \item \textbf{Distributive}: $\cdot$ is distributive over $+$. That is,
+    \begin{itemize}
+        \item $a \cdot (b + c) = (a \cdot b) + (b \cdot c)$; and
+        \item $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
+    \end{itemize}
+\end{itemize}
+
+Recall that a field is defined to be a commutative division ring; it has an identity, and every non-zero element of a field has a multiplicative inverse. Therefore, an equivalent definition of a field, which we will use in part III, is as follows.
+\begin{definition}
+    A \textbf{field}\index{field} is a set $F$ with two binary operations $+$ and $\cdot$ satisfying the following axioms.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}\index{axiom!field!addition-abelian}: $(F, +)$ is an abelian group.
+        \item \textbf{Multiplication-Abelian}\index{axiom!field!multiplication-abelian}: $(F^\ast, \cdot)$ is an abelian group, where $F^\ast$ denotes the set of non-zero elements of $F$.
+        \item \textbf{Distributive}\index{axiom!field!distributive}: $\cdot$ is distributive over $+$. That is, $a \cdot (b + c) = (a \cdot b) + (b \cdot c)$.
+    \end{itemize}
+\end{definition}
+
+As mentioned, fields are a more specific type of ring, so it is not surprising that the field axioms are very similar to that of the ring axioms. The notable difference here is that multiplication now is an abelian group, but only for the non-zero elements of the field.
+
+\begin{example}
+    We showed in part II (specifically in \myref{section-rings-more-definitions}) that $\Q$, $\R$, and $\C$ are fields.
+\end{example}
+
+\begin{example}
+    Let $p$ be a prime. We found in \myref{example-Zp-is-field} that $\Z_p$ is a field.
+\end{example}
+
+\begin{definition}
+    Let $F$ be a field under $+$ (addition) and $\cdot$ (multiplication).
+    \begin{itemize}
+        \item The \textbf{additive group}\index{field!additive group} of a field is $(F, +)$.
+        \item The \textbf{multiplicative group}\index{field!multiplicative group} of a field is $(F^\ast, +)$.
+    \end{itemize}
+    Both the additive group and multiplicative group are abelian groups.
+\end{definition}
+
+\begin{example}
+    The additive group of $\Q$ is $(\Q, +)$. We showed that this is, indeed, an abelian group in \myref{problem-Q-is-abelian-group-under-addition}. The multiplicative group of $\Q$ is $(\Q^\ast, \times)$. Note that $\Q^\ast$ is the set of all rational numbers except 0.
+\end{example}
+
+\begin{example}
+    The additive group of $\Z_p$ is $(\Z_p, \oplus_p)$, where $\oplus_p$ denotes addition modulo $p$. Again, we have already shown that this is a group in \myref{prop-Zn-is-abelian-group}. The multiplicative group of $\Z_p$ is $(\Z_p^\ast, \otimes_p)$, where $\otimes_p$ denotes multiplication modulo $p$. Since every element of $\Z_p^\ast$ is coprime with $p$, thus $(\Z_p^\ast, \otimes_p)$ is in fact $\Un{p}$, the group of units modulo $p$, which we have explored in chapter \myref{section-group-of-units-mod-n}.
+\end{example}
+
+We look at the notion of the order of a field.
+\begin{definition}
+    The \textbf{order}\index{order!field} of a field $F$, denoted $|F|$, is the cardinality of the set $F$.
+\end{definition}
+\begin{remark}
+    Equivalently, the order of $F$ is the order of the additive group of $F$.
+\end{remark}
+
+Like with groups, if $|F| = n$ where $n$ is finite, then we say $F$ is a \textbf{finite field}\index{field!finite}\index{finite field}. On the other hand, if $|F| = \infty$, then we say that $F$ is an \textbf{infinite field}\index{field!infinite}.
+
+\begin{example}
+    For the field $\Z_p$, we note $|\Z_p| = p$ since $\Z_p$ has $p$ elements, namely the integers 0 to $p - 1$.
+\end{example}
+\begin{example}
+    The fields $\Q$, $\R$, and $\C$ are all infinite fields, so we write $|\Q| = \infty$, $|\R| = \infty$, and $|\C| = \infty$.
+\end{example}
+
+To end this section, we note some notation that we use for fields, which is similar to that used for rings.
+\begin{itemize}
+    \item The multiplication symbol $\cdot$ is usually omitted, so $x \cdot y$ is written as $xy$.
+    \item The additive identity of $F$ will always be denoted by 0 and the multiplicative identity of $F$ will always be denoted by 1.
+    \item The additive inverse of the element $x$ will be denoted by $-x$ and the multiplicative inverse of $x$ will be denoted by $x^{-1}$.
+    \item $a - b$ means $a + (-b)$ for any two elements $a$ and $b$ in $F$.
+\end{itemize}
+
+\newpage
+
+\section{Basic Properties of Fields}
+Most of these properties are inherited from the fact that fields are integral domains. However, we will restate them here in the context of fields for completeness.
+
+For the following, assume $F$ is a field.
+
+\begin{proposition}[Multiplication by Zero]
+    $0x = x0 = 0$ for all $x \in F$.
+\end{proposition}
+\begin{proof}
+    Follows from \myref{prop-multiplying-by-zero-is-zero}.
+\end{proof}
+
+\begin{proposition}
+    $-0 = 0$ and $1^{-1} = 1$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-inverse-of-additive-and-multiplicative-identities-are-themselves} (later).
+\end{proof}
+
+\begin{proposition}
+    $(-a)b = a(-b) = -(ab)$ for any $a$ and $b$ in $F$.
+\end{proposition}
+\begin{proof}
+    Follows from \myref{prop-product-of-element-and-additive-inverse-is-additive-inverse-of-product}.
+\end{proof}
+
+\begin{proposition}
+    $(-a)(-b) = ab$ for any $a$ and $b$ in $F$.
+\end{proposition}
+\begin{proof}
+    Follows from \myref{prop-product-of-additive-inverses}.
+\end{proof}
+
+\begin{proposition}
+    $F$ has unique additive and multiplicative identities.
+\end{proposition}
+\begin{proof}
+    Since the additive group and multiplicative group are groups, thus they each contain a single unique identity.
+\end{proof}
+
+\begin{proposition}
+    For all elements $a$ and $b$ in $F$, $-(a+b) = -a-b$ and $(ab)^{-1} = a^{-1}b^{-1}$.
+\end{proposition}
+\begin{proof}
+    Recall that the Shoes and Socks theorem tells us that $-(a+b) = -b - a$ and $(ab)^{-1} = b^{-1}a^{-1}$. But as the additive and multiplicative groups are abelian, we see $-(a+b) = -a-b$ and $(ab)^{-1} = a^{-1}b^{-1}$.
+\end{proof}
+
+\begin{proposition}[Cancellation Law for Fields]\index{cancellation law!fields}
+    Let $F$ be a domain, $r, x, y \in F$, and $r \neq 0$. Then the following statements are equivalent.
+    \begin{enumerate}[label=(\arabic*)]
+        \item $x = y$
+        \item $rx = ry$
+        \item $xr = yr$
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    Follows from \myref{prop-domain-cancellation-law}.
+\end{proof}
+
+\newpage
+
+\begin{proposition}
+    Let $F$ be a field, $x$ an element of the field, and let $m$ and $n$ be non-negative integers. Then
+    \begin{enumerate}
+        \item $mx + nx = (m+n)x$ and $(x^m)(x^n) = x^{m+n}$;
+        \item $n(mx) = (mn)x$ and $(x^m)^n = x^{mn}$; and
+        \item $n(-x) = -(nx)$ and $(x^{-1})^n = (x^n)^{-1}$.
+    \end{enumerate}
+\end{proposition}
+\begin{proof}
+    All statements follow by applying \myref{prop-group-laws-of-exponents} on both the additive and multiplicative groups.
+\end{proof}
+
+\begin{exercise}\label{exercise-inverse-of-additive-and-multiplicative-identities-are-themselves}
+    Prove the following statements \textit{without} using any results from the previous chapters.
+    \begin{partquestions}{\alph*}
+        \item $-0 = 0$.
+        \item $1^{-1} = 1$.
+    \end{partquestions}
+\end{exercise}
+
+Recall that we have defined the characteristic in part II, being the smallest positive integer $n$ such that $nx = 0$ for all $x$ in the ring $R$, or is 0 if no such integer exists. We note the possible values of the characteristic for fields.
+
+\begin{proposition}
+    If $F$ is a field, then either $\Char{F} = 0$ or $\Char{F} = p$ where $p$ is a prime.
+\end{proposition}
+\begin{proof}
+    Follows from \myref{prop-zero-or-prime-characteristic-if-integral-domain} since a field is an integral domain.
+\end{proof}
+
+With this result, we deduce the number of elements of a finite field.
+\begin{theorem}\label{thrm-finite-field-has-prime-power-order}
+    Let $F$ be a finite field. Then $|F| = p^n$ where $p$ is a prime and $n$ is a positive integer.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-finite-field-has-prime-power-order} (later).
+\end{proof}
+
+We note one very useful result when it comes to homomorphisms of fields.
+\begin{theorem}\label{thrm-surjective-homomorphism-from-field-is-isomorphism-or-trivial}
+    Let $F$ be a field, $R$ be a ring, and let $\phi: F \to R$ be a surjective ring homomorphism. If $R$ is non-trivial then $\phi$ is an isomorphism. Otherwise $\phi(x) = 0$ for all $x \in F$.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-surjective-homomorphism-from-field-is-isomorphism-or-trivial} (later).
+\end{proof}
+
+\section{Subfields}
+Just like how groups have the idea of subgroups and rings have the idea of subrings, fields have the idea of subfields.
+\begin{definition}
+    Let $K$ be a subset of a field $F$. Then $K$ is said to be a \textbf{subfield}\index{subfield} of $F$ it is also a field under the same operations as $F$.
+\end{definition}
+
+\begin{example}
+    $\R$ is a subfield of $\C$ since $\R$ is a subset of $\C$ and $\R$ is a field.
+\end{example}
+\begin{example}
+    $\Q$ is a subfield of $\R$ (and $\C$) since $\Q$ is a subset of $\R$ (and $\C$) and $\Q$ is a field.
+\end{example}
+
+\begin{definition}
+    A subfield $K$ of a field $F$ is called a \textbf{proper subfield}\index{subfield!proper} if $K \neq F$.
+\end{definition}
+
+\begin{example}
+    $\Q$ is a proper subfield of $\R$, and $\R$ is a proper subfield of $\C$.
+\end{example}
+
+Now, trying to prove all the field axioms again for a subfield is too tedious. It would be nice to have a relatively simple test to determine if a subset of $F$ is a subfield, just like with groups. We do -- it is called the subfield test.
+
+\begin{theorem}[Subfield Test]\label{thrm-subfield-test}\index{subfield test}
+    Let $F$ be a field with additive identity 0 and multiplicative identity 1, and let $K$ be a subset of $F$. Then $K$ is a subfield of $F$ if and only if the following conditions holds.
+    \begin{enumerate}
+        \item $K^\ast \neq \emptyset$.
+        \item $x - y \in K$ for all $x, y \in K$.
+        \item $xy^{-1} \in K$ for all $x \in K$ and $y \in K^\ast$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    The forward direction is simple, since all 3 conditions are implied by the field axioms.
+    \begin{itemize}
+        \item Since $K$ is a field, thus $K^\ast$ is non-empty as $(K^\ast, \times)$ is a group.
+        \item Since $(K, +)$ is a group, thus $x - k \in K$ by the subgroup test (\myref{thrm-subgroup-test}) on the additive group.
+        \item If $x = 0$ then $xy^{-1} = 0 \in K$. Otherwise, both $x, y \in K^\ast$. Thus $xy^{-1} \in K^\ast \subset K$ by subgroup test on the multiplicative group.
+    \end{itemize}
+
+    We now work in the reverse direction. Suppose the three conditions hold. As $K^\ast \neq \emptyset$ we must have $K \neq \emptyset$. Using this result and condition 2 we know $(K, +) \leq (F, +)$ by subgroup test. Using condition 1 and 3 we also know that $(K^\ast, \times) \leq (F^\ast, \times)$, again by subgroup test. Furthermore as addition and multiplication are commutative, therefore $(K, +)$ and $(K^\ast, \times)$ are abelian groups. Finally $\times$ distributes over $+$ by the \textbf{Distributive} axiom on the field $F$. Hence, $K$ is a field by the field axioms; as $K \subseteq F$ this means that $K$ is a subfield of $F$.
+\end{proof}
+
+We use the subfield test in the proof of the following proposition.
+\begin{proposition}\label{prop-intersection-of-subfields-is-subfield}
+    The intersection of subfields is a subfield.
+\end{proposition}
+\begin{proof}
+    Suppose $F$ is a field with subfields $K$ and $L$. We show $K \cap L$ is also a subfield.
+
+    Since $K$ and $L$ are subfields, $K$ and $L$ both contain 0 and 1. Thus $K \cap L$ contains both 0 and 1, which means $(K \cap L)^\ast$ contains 1, i.e. $(K\cap L)^\ast \neq \emptyset$.
+
+    Now suppose $a, b \in K \cap L$. Thus $a, b \in K$ and $a, b \in L$. Therefore $a - b \in K$ and $a - b \in L$ by subfield test (\myref{thrm-subfield-test}), which means $a - b \in K \cap L$.
+
+    Finally, suppose $a \in K \cap L$ and $b \in (K \cap L)^\ast$. We note that $(K \cap L)^\ast = K^\ast \cap L^\ast$. Thus $a \in K$, $b \in K^\ast$, $a \in L$, and $b \in L^\ast$. Therefore $ab^{-1} \in K$ and $ab^{-1} \in L$ by subfield test, meaning $ab^{-1} \in K \cap L$.
+
+    Therefore $K \cap L$ is a subfield of $F$ by subfield test.
+\end{proof}
+
+\begin{exercise}
+    Let $d$ be a square-free integer that is not 1. Show that $\Q[\sqrt{d}]$ is a subfield of $\C$.
+\end{exercise}
+
+\section{Prime Subfields and Prime Fields}
+We first look at \textbf{prime subfields}, as defined in \cite[p.~268]{gallian_2016}.
+
+\begin{definition}\label{definition-prime-subfield}
+    Let $F$ be a field. The \textbf{prime subfield}\index{subfield!prime} of $F$ is the `smallest' subfield of $F$. That is, the prime subfield $K$ of $F$ is such that, if $L$ is a subfield of $F$, then $K \subseteq L$.
+\end{definition}
+\begin{proposition}
+    The prime subfield is indeed a subfield of $F$.
+\end{proposition}
+\begin{proof}
+    Since the intersection of subfields of a field is itself a subfield (\myref{prop-intersection-of-subfields-is-subfield}), the intersection of \textit{all} the subfields of the field is also a subfield.
+\end{proof}
+
+We note that other authors (e.g. \cite[p.~511]{dummit_foote_2004}) define prime subfields as follows.
+
+\begin{definition}\label{definition-prime-subfield-alt}
+    The \textbf{prime subfield}\index{subfield!prime} $K$ of a field $F$ is the subfield generated by 1, i.e. $K = \{n1 \vert n \in \Z\}$.
+\end{definition}
+\begin{remark}
+    Since the characteristic of a finite field is a prime number, $K$ must contain a prime number of elements, hence the name ``prime subfield''.
+\end{remark}
+\begin{theorem}
+    \myref{definition-prime-subfield} and \myref{definition-prime-subfield-alt} are equivalent.
+\end{theorem}
+\begin{proof}
+    For clarity, let $K$ denote $\{n1 \vert n \in \Z\}$ and $L$ denote the intersection of all subfields of $F$. We are to show $K = L$.
+
+    Clearly $L \subseteq K$ since $K$ is a subfield of $F$, and is therefore contained in the intersection that resulted in $L$. Also, since $1 \in L$, and since $L$ is a subfield, thus it is closed under addition, meaning $n1 \in L$ for any $n \in \Z$. This means any element of $K$ is also in $L$, meaning $K \subseteq L$.
+
+    As $L \subseteq K$ and $K \subseteq L$ thus $K = L$, showing that \myref{definition-prime-subfield} and \myref{definition-prime-subfield-alt} are equivalent.
+\end{proof}
+
+\newpage
+
+We note that a field's prime subfield is unique. We see this in the following theorem, first proposed by Ernst Steinitz in 1910.
+
+\begin{theorem}\label{thrm-prime-subfield-isomorphic-to-Zp-or-Q}
+    Let $F$ be a field with prime subfield $K$.
+    \begin{itemize}
+        \item If $F$ has characteristic $p$, a prime, then $K \cong \Z_p$.
+        \item If $F$ has characteristic 0, then $K \cong \Q$.
+    \end{itemize}
+\end{theorem}
+\begin{remark}
+    Isomorphism for fields is the same as isomorphism for rings.
+\end{remark}
+\begin{proof}
+    First consider the case where $F$ has characteristic $p$. Consider the map $\phi: \Z \to K$ given by $n \mapsto n1$. We note that $\phi$ is a ring homomorphism since
+    \begin{align*}
+        \phi(m + n) &= (m + n)1\\
+        &= m1 + n1\\
+        &= \phi(m) + \phi(n)
+    \end{align*}
+    and
+    \begin{align*}
+        \phi(mn) &= (mn)1\\
+        &= (m1)(n1)\\
+        &= \phi(m)\phi(n).
+    \end{align*}
+    One also clearly sees $\phi$ is surjective since any element $n1 \in K$ has a pre-image of $n \in \Z$. In addition, since the characteristic of $F$ is $p$, meaning $(pm)1 = 0$ for any $m \in \Z$, we see $\ker\phi = p\Z$. By the FRIT (\myref{thrm-ring-isomorphism-1}) we obtain
+    \[
+        \Z/p\Z \cong K.
+    \]
+    Note $\Z/p\Z \cong \Z_p$ by \myref{example-Zn-ring-isomorphic-to-Z/nZ}, which is a field. Hence $K \cong \Z_p$ as required.
+
+    If instead $n = 0$, consider the map $\phi: \Q \to K$ such that $\frac ab \mapsto (a1)(b1)^{-1}$. We just need to show that $\phi$ is a well-defined surjective homomorphism, as we can use \myref{thrm-surjective-homomorphism-from-field-is-isomorphism-or-trivial} to quickly conclude that it is also an isomorphism.
+
+    \begin{itemize}
+        \item \textbf{Well-defined}: Suppose $\frac ab, \frac cd \in \Q$ such that $\frac ab = \frac cd$. Then $ad = bc$; since $b \neq 0$ and $d \neq 0$ we note that $ad \neq 0$ and $bc \neq 0$. So
+        \[
+            (a1)(d1) = (ad)1 = (bc)1 = (b1)(c1)
+        \]
+        which means $(a1)(b1)^{-1} = (c1)(d1)^{-1}$. Hence
+        \[
+            \phi\left(\frac ab\right) = (a1)(b1)^{-1} = (c1)(d1)^{-1} = \phi\left(\frac cd\right)
+        \]
+        which shows that $\phi$ is well-defined.
+
+        \item \textbf{Homomorphism}: Let $\frac ab, \frac cd \in \Q$. Then
+        \begin{align*}
+            \phi\left(\frac ab + \frac cd\right) &= \phi\left(\frac{ad + bc}{bd}\right)\\
+            &= ((ad + bc)1)((bd)1)^{-1}\\
+            &= \left((a1)(d1) + (b1)(c1)\right)\left((b1)^{-1}(d1)^{-1}\right)\\
+            &= (a1)(d1)(b1)^{-1}(d1)^{-1} + (b1)(c1)(b1)^{-1}(d1)^{-1}\\
+            &= (a1)(b1)^{-1}(d1)(d1)^{-1} + (c1)(d1)^{-1}(b1)(b1)^{-1}\\
+            &= (a1)(b1)^{-1} + (c1)(d1)^{-1}\\
+            &= \phi\left(\frac ab\right) + \phi\left(\frac cd\right)
+        \end{align*}
+        and
+        \begin{align*}
+            \phi\left(\frac ab \times \frac cd\right) &= \phi\left(\frac{ac}{bd}\right)\\
+            &= (ac1)(bd1)^{-1}\\
+            &= (a1)(c1)(b1)^{-1}(d1)^{-1}\\
+            &= (a1)(b1)^{-1} \times (c1)(d1)^{-1}\\
+            &= \phi\left(\frac ab\right) \times \phi\left(\frac cd\right)
+        \end{align*}
+        which means that $\phi$ is a ring homomorphism.
+
+        \item \textbf{Surjective}: Suppose $n1 \in K$. Note $\phi(\frac n1) = n1$, so $n1$ has a pre-image in $\Q$, i.e. $\phi$ is a surjection.
+    \end{itemize}
+    Therefore, by \myref{thrm-surjective-homomorphism-from-field-is-isomorphism-or-trivial}, we see that $\phi$ is a isomorphism, meaning $K \cong \Q$.
+\end{proof}
+
+To end this chapter, we look at \textbf{prime fields}.
+
+\begin{definition}
+    A \textbf{prime field}\index{field!prime}\index{prime!field} is a field with no proper subfields.
+\end{definition}
+
+There is one obvious prime field.
+
+\begin{theorem}
+    $\Z_p$ is a prime field.
+\end{theorem}
+\begin{proof}
+    Suppose $K$ is a subfield of $\Z_p$. Then the additive group of $K$ is a subgroup of the additive group of $\Z_p$. But $(\Z_p, +)$ has no proper non-trivial subgroups (\myref{corollary-group-with-prime-order-subgroups}), and the trivial group does not form a field. Thus $K = \Z_p$.
+\end{proof}
+
+We note one non-obvious prime field, that was alluded to in the discovery of what prime subfields are isomorphic to.
+
+\begin{theorem}
+    $\Q$ is a prime field.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-Q-is-prime-field} (later).
+\end{proof}
+
+\begin{exercise}
+    Prove or disprove: $\R$ is a prime field.
+\end{exercise}
+
+\newpage
+
+\section{Problems}
+\begin{problem}
+    Find a ring without identity that is contained in a field.
+\end{problem}
+
+\begin{problem}
+    Prove or disprove: $\R \cong \C$ as fields.
+\end{problem}
+
+\begin{problem}
+    Show that $\Z_3[x]/\princ{x^2+x+1}$ is \textit{not} a field.
+\end{problem}
+
+\begin{problem}
+    Find an irreducible polynomial in $\Z_2[x]$. Hence construct a field $F$ of order 4. Find the prime subfield of $F$.
+\end{problem}
+
+\begin{problem}
+    Consider the ring $R = \Z[i] / \princ{2-i}$.
+    \begin{partquestions}{\roman*}
+        \item Show that $5 \in \princ{2-i}$ and $2 + \princ{2-i} = i + \princ{2-i}$.
+        \item Show that $R = \{k + \princ{2-i} \vert k \in \Z_5\}$.
+        \item Hence prove, via an isomorphism, that $R$ is a field with order 5.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}\label{problem-Q-is-prime-field}
+    Suppose $F$ is a subfield of $\Q$. Prove $F = \Q$.
+\end{problem}
+
+\begin{problem}\label{problem-finite-field-has-prime-power-order}
+    Let $F$ be a finite field with characteristic $p$, a prime.
+    \begin{partquestions}{\roman*}
+        \item Explain why $p$ divides $|F|$.
+        \item Suppose $q$ is another prime dividing $|F|$. Show there exist integers $\lambda$ and $\mu$ such that $(\lambda p + \mu q)x = x$ for all elements $x \in F$.
+        \item Deduce that the supposition in \textbf{(ii)} leads to a contradiction. Hence explain why $|F|$ must have order $p^n$, where $n$ is a positive integer.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Consider the field $F = \Frac{\Z_p[x]}$.
+    \begin{partquestions}{\alph*}
+        \item Prove $F$ is infinite.\newline
+        (\textit{Hint: it would be easier to prove $\Z_p[x]$ is infinite.})
+        \item Prove $\Char{F} \neq 0$.
+    \end{partquestions}
+\end{problem}
+\begin{remark}
+    This problem shows that an infinite field need not have a characteristic of zero.
+\end{remark}
+
+\begin{problem}\label{problem-surjective-homomorphism-from-field-is-isomorphism-or-trivial}
+    Prove \myref{thrm-surjective-homomorphism-from-field-is-isomorphism-or-trivial}.
+    Note that proving that $F \cong R$ is not sufficient. You are to explicitly prove that, if $\phi(x) \neq 0$ for some $x \in F$, then $\phi$ is an isomorphism.\newline
+    (\textit{Hint: consider the kernel, and the map generated by the FRIT (\myref{thrm-ring-isomorphism-1}).})
+\end{problem}

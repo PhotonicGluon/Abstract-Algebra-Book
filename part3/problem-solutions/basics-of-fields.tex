@@ -1,0 +1,146 @@
+\section{Basics of Fields}
+\begin{questions}
+    \item Note $2\Z$ is a ring (as it is a principal ideal) that is contained in the field $\Q$.
+    
+    \item Disprove. Suppose $\phi: \C \to \R$ is an isomorphism. Then there must exist a $w \in \C$ such that $\phi(w) = -1$. Note that $\sqrt{w} \in \C$; let $z = \sqrt{w}$. Then
+    \[
+        \left(\phi(z)\right)^2 = \phi\left(z^2\right) = \phi(w) = -1.
+    \]
+    So $\phi(z) = \sqrt{-1} = i$, the imaginary unit. But $\phi(z) \in \R$ and $\phi(z) = i \notin \R$, a contradiction. Therefore $\R \not\cong \C$.
+    
+    \item Let $f(x) = x^2 + x + 1$. Note $f(1) = 1^2 + 1 + 1 = 3 = 0$ in $\Z_3$, so $f(x)$ is reducible over $\Z_3$ (\myref{thrm-degree-above-1-reducible-if-has-zero}). Thus $\princ{x^2+x+1}$ is not a maximal ideal (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}), so $\Z_3[x]/\princ{x^2+x+1}$ is not a field (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field}).
+    
+    \item Let $f(x) = x^2 + x + 1$. Note $f(x)$ is irreducible over $\Z_2$ since $f(0) = 1 \neq 0$ and $f(1) = 3 = 1 \neq 0$ in $\Z_2$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
+    
+    $F = \Z_2[x]/\princ{x^2+x+1}$.
+
+    Let $I = \princ{x^2+x+1}$, and let the subset $K = \{0 + I, 1 + I\}$. We claim that $K$ is a subfield of $F$.
+    \begin{itemize}
+        \item $K^\ast = \{1 + I\} \neq \emptyset$.
+        \item One sees clearly that
+        \begin{itemize}
+            \item $(0 + I) - (0 + I) = (0 + I) \in K$;
+            \item $(0 + I) - (1 + I) = (-1 + I) = (1 + I) \in K$;
+            \item $(1 + I) - (0 + I) = (1 + I) \in K$; and
+            \item $(1 + I) - (1 + I) = (0 + I) \in K$,
+        \end{itemize}
+        so for any $x, y \in K$ we have $x - y \in K$.
+        \item One sees that $(1+I)^{-1} = 1+I$ since $(1+I)(1+I) = (1+I)$. Thus
+        \begin{itemize}
+            \item $(0+I)(1+I)^{-1} = (0+I)(1+I) = (0+I) \in K$; and
+            \item $(1+I)(1+I)^{-1} = (1+I)(1+I) = (1+I) \in K$,
+        \end{itemize}
+        so for any $x \in K$ and $y \in K^\ast$ we have $xy^{-1} \in K$.
+    \end{itemize}
+    Therefore $K$ is a subfield of $F$ by subfield test (\myref{thrm-subfield-test}). Clearly $K$ cannot contain a smaller subfield, since a field must contain at least 2 elements. Therefore, $K$ is the smallest subfield of $F$, meaning $K$ is the prime subfield.
+    
+    \item \begin{partquestions}{\roman*}
+        \item Note $5 = (2-i)(2+i) \in \princ{2-i}$ and
+        \[
+            i + \princ{2-i} = i + (2-i) + \princ{2-i} = 2 + \princ{2-i}.
+        \]
+        
+        \item Suppose $a + bi + \princ{2-i} \in \Z[i]/\princ{2-i}$. Note that
+        \begin{align*}
+            a + bi + \princ{2-i} &= (a+\princ{2-i}) + b(i + \princ{2-i})\\
+            &= (a+\princ{2-i}) + b(2 + \princ{2-i}) & (\text{by }\textbf{(i)})\\
+            &= (a + 2b) + \princ(2-i)\\
+            &= n + \princ{2-i}
+        \end{align*}
+        for some $n \in \Z$. Now using Euclid's division lemma (\myref{lemma-euclid-division}), write $n = 5q + r$ where $r \in \Z_5$. Then we see
+        \begin{align*}
+            a + bi + \princ{2-i} &= 5q + r + \princ{2-i}\\
+            &= (r + \princ{2-i}) + q(5 + \princ{2-i})\\
+            &= (r + \princ{2-i}) + q(0 + \princ{2-i}) & (\text{since } 5 \in \princ{2-i})\\
+            &= r + \princ{2-i}.
+        \end{align*}
+        Therefore any element of $\Z[i]/\princ{2-i}$ can be written as $r + \princ{2-i}$, where $r \in \Z_5$, as required.
+        
+        \item Define $\phi: \Z_5 \to R$ where $r \mapsto r + \princ{2-i}$. We show that $\phi$ is a surjective homomorphism.
+        \begin{itemize}
+            \item \textbf{Homomorphism}: We note that for $m,n \in \Z_5$ that
+            \begin{align*}
+                \phi(m+n) &= (m+n) + \princ{2-i}\\
+                &= (m + \princ{2-i}) + (n + \princ{2-i})\\
+                &= \phi(m) + \phi(n)
+            \end{align*}
+            and
+            \begin{align*}
+                \phi(mn) &= (mn) + \princ{2-i}\\
+                &= (m + \princ{2-i})(n + \princ(2-i))\\
+                &= \phi(m)\phi(n)
+            \end{align*}
+            and so $\phi$ is a homomorphism.
+
+            \item \textbf{Surjective}: Let $a+bi + \princ{2-i} \in R$. Using \textbf{(ii)}, find the $r \in \Z_5$ such that $a+bi + \princ{2-i} = r + \princ{2-i}$. Then $\phi(r) = r + \princ{2-i} = a+bi + \princ{2-i}$, meaning $\phi$ is surjective.
+        \end{itemize}
+        By \myref{thrm-surjective-homomorphism-from-field-is-isomorphism-or-trivial} we see $\phi$ is an isomorphism, meaning $R \cong \Z_5$, which shows that $R$ is a field of order 5.
+    \end{partquestions}
+    
+    \item Since $F$ is a subfield, we know both the additive and multiplicative identities of $\Q$ are in $F$, i.e. $0 \in F$ and $1 \in F$.
+    
+    We claim that any $n \in \mathbb{N} \in F$, via induction on $n$.
+    \begin{itemize}
+        \item Clearly $1 \in F$.
+        \item Since $n \in F$, $1 \in F$, and $F$ is closed under addition, therefore $n + 1 \in F$.
+    \end{itemize}
+    So all positive integers are in $F$. We also have $0 \in F$ by above result, and note $-n \in F$ for any $n \in \mathbb{N}$ since $F$ is closed under additive inverses. So all integers are in $F$.
+
+    Note also that for all $x \in F^\ast$, we have $x^{-1} \in F^\ast$.
+
+    So suppose $q \in \Q$, i.e. $q = \frac ab$ where $a, b \in \Z$ with $b \neq 0$. Then $b^{-1} \in F^\ast$ by above observation and so $q = \frac ab = ab^{-1} \in F$ since $F$ is closed under multiplication. We therefore see $\Q \subseteq F$.
+
+    However, we also know $F \subseteq \Q$ since $F$ is a subfield of $\Q$. Therefore, as $\Q \subseteq F$ and $F \subseteq \Q$, we must have $F = \Q$.
+    
+    \item \begin{partquestions}{\roman*}
+        \item Note that as a field is a ring with identity, we have $|1|_+ = p$ by \myref{prop-characteristic-of-ring-with-identity} and since $\Char{F} = p$. As the order of an element divides the order of the group (\myref{corollary-order-of-group-multiple-of-order-of-element}), therefore $p$ divides the order of the additive group of $F$. As the order of the additive group of $F$ is precisely the order of $F$, thus $p$ divides $|F|$.
+        
+        \item Since $q$ is another prime dividing $|F|$, it is not $p$. Thus $p$ and $q$ are coprime, meaning that there are integers $\lambda$ and $\mu$ such that $\lambda p + \mu q = 1$ by B\'ezout's lemma (\myref{lemma-bezout}). Hence $(\lambda p + \mu q)x = x$ for any element $x \in F$.
+        
+        \item Since $q$ divides $|F|$, then there is an element $x$ in the additive group of $F$ with order $q$ by Cauchy's theorem (\myref{thrm-cauchy}). This means $qx = 0$. But we also have $px = 0$ since $\Char{F} = p$. Thus,
+        \begin{align*}
+            (\lambda p + \mu q)x &= \lambda (px) + \mu (qx) \\
+            &= \lambda 0 + \mu 0\\
+            &= 0\\
+            &= x, & (\text{by \textbf{(ii)}})
+        \end{align*}
+        which shows $x = 0$. Note $|0|_+ = 1$ since 0 is the identity in the additive group. But $x$ has order $q$, a prime number, so $q \geq 2$, i.e. $|0|_+ \geq 2$, a contradiction.
+        
+        Therefore no other prime other than $p$ divides $|F|$, meaning that $|F| = p^n$ where $n$ is a \textit{non-negative} integer. But $n \neq 0$ since otherwise $F$ has order 1, which means that the multiplicative group has order 0, an impossibility. Thus $|F| = p^n$ where $n$ is a \textit{positive} integer.
+    \end{partquestions}
+    
+    \item \begin{partquestions}{\alph*}
+        \item We will just show that there are infinitely many equivalence classes of the form $\frac{f(x)}1$.
+        
+        Suppose, on the contrary, that there are only finitely many equivalence classes of the form $\frac{f(x)}1$; in particular, they are $\frac{f_1(x)}1, \frac{f_2(x)}1, \dots, \frac{f_n(x)}1$.
+
+        Consider the equivalence class
+        \[
+            \frac{x^nf_1(x)f_2(x)\cdots f_n(x)}{1} = \left(\frac{xf_1(x)}{1}\right)\left(\frac{xf_2(x)}{1}\right)\cdots\left(\frac{xf_n(x)}{1}\right).
+        \]
+        Clearly none of the equivalence classes $\frac{f_1(x)}1, \frac{f_2(x)}1, \dots, \frac{f_n(x)}1$ are equal to this class. This contradicts the fact that we have listed all of such equivalence classes.
+
+        Therefore there are infinitely many equivalence classes of of the form $\frac{f(x)}1$. As these are elements of $\Frac{\Z_p[x]}$, this means that $\Frac{\Z_p[x]}$ is infinite.
+        
+        \item Let $\frac{f(x)}{g(x)} \in \Frac{\Z_p[x]}$. Write $f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$ where $a_i \in \Z_p$. Note
+        \begin{align*}
+            p\left(\frac{f(x)}{g(x)}\right) &= \underbrace{\frac{f(x)}{g(x)} + \frac{f(x)}{g(x)} + \cdots + \frac{f(x)}{g(x)}}_{p \text{ times}}\\
+            &= \frac{pf(x)}{g(x)}\\
+            &= \frac{(pa_0) + (pa_1)x + (pa_2)x^2 + \cdots + (pa_n)x^n}{g(x)}\\
+            &= \frac{0 + 0x + 0x^2 + \cdots + 0x^n}{g(x)} & (\text{as }\Char{\Z_p} = p)\\
+            &= \frac0{g(x)}\\
+            &= 0.
+        \end{align*}
+        Thus $p\left(\frac{f(x)}{g(x)}\right) = 0$ for any $\frac{f(x)}{g(x)} \in \Frac{\Z_p[x]}$, meaning that $\Char{\Z_p[x]} \neq 0$.
+    \end{partquestions}
+    
+    \item Note that $\ker\phi$ is an ideal of $F$. But $F$ has no proper ideals (\myref{problem-ring-is-field-iff-no-proper-ideals}). So $\ker\phi = F$ or $\ker\phi = \{0\}$.
+    
+    For the first case, let $R \cong \{0\}$. If $\ker\phi = \{0\}$ then $F/\{0\} \cong R$ by the FRIT (\myref{thrm-ring-isomorphism-1}). but $F/\{0\} \cong F$ by \myref{problem-integral-domain-iff-trivial-ideal-is-prime}, so $F \cong R \cong \{0\}$, a contradiction since $F$ must contain at least 2 elements. Hence $\ker\phi = F$, meaning $\phi(x) = 0$ for all $x \in F$.
+
+    For the second case, if $\ker\phi = F$ then $F/F \cong R$ by the FRIT. But $F/F \cong \{0\}$, a contradiction since $R$ is non-trivial. Hence $\ker\phi = \{0\}$. The FRIT then tells us that there is a unique isomorphism $\psi: F/\{0\} \to R$ such that $x + \{0\} \mapsto \phi(x)$.
+    
+    We can now prove that $\phi$ is injective. Suppose $x, y \in F$ such that $\phi(x) = \phi(y)$. Note that as $\psi$ is an isomorphism, so $\psi^{-1}$ exists, meaning $\psi^{-1}\left(\phi(x)\right) = \psi^{-1}\left(\phi(y)\right)$. Therefore $x + \{0\} = y + \{0\}$, i.e. $\{x\} = \{y\}$. Hence $x = y$, showing that $\phi$ is injective.
+
+    As $\phi$ is already given to be a surjective homomorphism, proving that $\phi$ is injective is all that is needed to show that $\phi$ is an isomorphism.
+\end{questions}
