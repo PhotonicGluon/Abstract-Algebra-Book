@@ -188,86 +188,16 @@ Just like how groups have the idea of subgroups and rings have the idea of subri
     $\Q$ is a subfield of $\R$ (and $\C$) since $\Q$ is a subset of $\R$ (and $\C$) and $\Q$ is a field.
 \end{example}
 
-\newpage
+\begin{definition}
+    A subfield $K$ of a field $F$ is called a \textbf{proper subfield}\index{subfield!proper} if $K \neq F$.
+\end{definition}
 
-We note an important observation made by Ernst Steinitz in 1910.
-
-\begin{theorem}\label{thrm-field-contains-subfield-isomorphic-to-Zp-or-Q}
-    Let $F$ be a field.
-    \begin{itemize}
-        \item If $F$ has characteristic $p$, a prime, then $F$ contains a subfield isomorphic to $\Z_p$.
-        \item If $F$ has characteristic 0 then $F$ contains a subfield isomorphic to $\Q$.
-    \end{itemize}
-\end{theorem}
-\begin{remark}
-    Isomorphism for fields is the same as isomorphism for rings.
-\end{remark}
-
-\begin{proof}
-    Let $n = \Char{F}$. Consider the map $\phi: \Z \to F$ given by $n \mapsto n1$. We note that $\phi$ is a ring homomorphism since
-    \begin{align*}
-        \phi(m + n) &= (m + n)1\\
-        &= m1 + n1\\
-        &= \phi(m) + \phi(n)
-    \end{align*}
-    and
-    \begin{align*}
-        \phi(mn) &= (mn)1\\
-        &= (m1)(n1)\\
-        &= \phi(m)\phi(n).
-    \end{align*}
-    We note that the image of $\phi$ is the set $S = \{k1 \vert k \in \Z\}$, which is a subring of $F$. Also, since $F$ is a field with characteristic $p$, therefore $(nm)1 = 0$ for any $m \in \Z$, which means $\ker\phi = n\Z$. So by the FRIT (\myref{thrm-ring-isomorphism-1}) we see
-    \[
-        \Z/n\Z \cong S.
-    \]
-    
-    Now if $n$ is a prime number, say $p$, then $\Z/p\Z \cong \Z_p$ by \myref{example-Zn-ring-isomorphic-to-Z/nZ}, which is a field. Hence $S$ is also a subfield; therefore $S$ is a subfield of $F$ that is isomorphic to $\Z_p$.
-
-    If instead $n = 0$, then $\Z/0\Z = \Z/\{0\} \cong \Z$ by \myref{problem-integral-domain-iff-trivial-ideal-is-prime}, which means $S \cong \Z$. Suppose $\iota: S \to \Z$ is the isomorphism that gives $S \cong Z$. Now consider the set
-    \[
-        T = \{ab^{-1} \vert a, b \in S, b \neq 0\}.
-    \]
-    \myref{exercise-infinite-field-contains-Q-subset-is-subfield} (later) shows that $T$ is a subfield of $F$. Now we consider the map $\psi: T \to \Q$ such that $ab^{-1} \mapsto \frac{\iota{a}}{\iota{b}}$. We show that $\psi$ is a well-defined ring isomorphism (actually, a field isomorphism). Note that we have to show that $\psi$ is well-defined since, for example, $1 = aa^{-1} = bb^{-1}$, and so we need to check if this definition makes sense.
-    \begin{itemize}
-        \item \textbf{Well-defined}: Suppose $ab^{-1}, cd^{-1} \in T$ such that $ab^{-1} = cd^{-1}$. Then $ad = bc \in S$. Hence $\iota(ad) = \iota(bc)$, which means $\iota(a)\iota(d) = \iota(b)\iota(c)$ since $\iota$ is an isomorphism. So one sees clearly $\frac{\iota(a)}{\iota(b)} = \frac{\iota(c)}{\iota(d)}$ which means
-        \[
-            \psi(ab^{-1}) = \frac{\iota(a)}{\iota(b)} = \frac{\iota(c)}{\iota(d)} = \psi(cd^{-1}).
-        \]
-        Thus $\psi$ is well-defined.
-
-        \item \textbf{Homomorphism}: Let $ab^{-1}, cd^{-1} \in T$. Note
-        \begin{align*}
-            ab^{-1} + cd^{-1} &= (ab^{-1})(dd^{-1}) + (cd^{-1})(bb^{-1})\\
-            &= adb^{-1}d^{-1} + bcb^{-1}d^{-1}\\
-            &= (ad + bc)(bd)^{-1}\\
-            &\in T.
-        \end{align*}
-        Thus, one sees
-        \begin{align*}
-            \psi(ab^{-1} + cd^{-1}) &= \psi((ad+bc)(bd)^{-1})\\
-            &= \frac{\iota(ad+bc)}{\iota(bd)}\\
-            &= \frac{\iota(a)\iota(d) + \iota(b)\iota(c)}{\iota(b)\iota(d)} & (\iota \text{ is an isomorphism})\\
-            &= \frac{\iota(a)}{\iota(b)} + \frac{\iota(c)}{\iota(d)}\\
-            &= \psi(ab^{-1}) + \psi(cd^{-1})
-        \end{align*}
-        and
-        \begin{align*}
-            \psi((ab^{-1})(cd^{-1})) &= \psi((ac)(bd)^{-1})\\
-            &= \frac{\iota(ac)}{\iota(bd)}\\
-            &= \frac{\iota(a)\iota(c)}{\iota(b)\iota(d)}\\
-            &= \frac{\iota(a)}{\iota(b)} \times \frac{\iota(c)}{\iota(d)}\\
-            &= \psi(ab^{-1})\psi(cd^{-1})
-        \end{align*}
-        which means $\psi$ is a homomorphism.
-        
-        \item \textbf{Injective}: Suppose $ab^{-1}, cd^{-1} \in T$ such that $\psi(ab^{-1}) = \psi(cd^{-1})$. Thus $\frac{\iota(a)}{\iota(b)} = frac{\iota(c)}{\iota(d)}$, meaning $\iota(a)\iota(d) = \iota(b)\iota(c)$. Hence $\iota(ad) = \iota(bc)$ which means $ad = bc$ as $\iota$ is an isomorphism. Therefore $ab^{-1} = cd^{-1}$, showing that $\psi$ is injective.
-        
-        \item \textbf{Surjective}: Suppose $\frac pq \in \Q$. Then there exists $a, b \in S$ where $b \neq 0$ such that $\iota(a) = p$ and $\iota(b) = q$ as $\iota$ is an isomorphism. Therefore $\psi(ab^{-1}) = \frac{\iota(a)}{\iota(b)} = \frac pq$, meaning $\psi$ is a surjection.
-    \end{itemize}
-    Therefore we have shown that $\psi$ is a isomorphism, meaning $T \cong \Q$. Hence $F$ has a subfield $T$ that is isomorphic to $\Q$.
-\end{proof}
+\begin{example}
+    $\Q$ is a proper subfield of $\R$, and $\R$ is a proper subfield of $\C$.
+\end{example}
 
 Now, trying to prove all the field axioms again for a subfield is too tedious. It would be nice to have a relatively simple test to determine if a subset of $F$ is a subfield, just like with groups. We do -- it is called the subfield test.
+
 \begin{theorem}[Subfield Test]\label{thrm-subfield-test}\index{subfield test}
     Let $F$ be a field with additive identity 0 and multiplicative identity 1, and let $K$ be a subset of $F$. Then $K$ is a subfield of $F$ if and only if the following conditions holds.
     \begin{enumerate}
@@ -303,11 +233,12 @@ We use the subfield test in the proof of the following proposition.
     Therefore $K \cap L$ is a subfield of $F$ by subfield test.
 \end{proof}
 
-\begin{exercise}\label{exercise-infinite-field-contains-Q-subset-is-subfield}
-    Show that $T$ is a subfield of $F$, as defined in the proof of \myref{thrm-field-contains-subfield-isomorphic-to-Zp-or-Q}.
+\begin{exercise}
+    Let $d$ be a square-free integer that is not 1. Show that $\Q[\sqrt{d}]$ is a subfield of $\C$.
 \end{exercise}
 
-We end this chapter by looking at the \textbf{prime subfield}, as defined in \cite[p.~268]{gallian_2016}.
+\section{Prime Subfields and Prime Fields}
+We first look at \textbf{prime subfields}, as defined in \cite[p.~268]{gallian_2016}.
 
 \begin{definition}\label{definition-prime-subfield}
     Let $F$ be a field. The \textbf{prime subfield}\index{subfield!prime} of $F$ is the `smallest' subfield of $F$. That is, the prime subfield $K$ of $F$ is such that, if $L$ is a subfield of $F$, then $K \subseteq L$.
@@ -338,6 +269,105 @@ We note that other authors (e.g. \cite[p.~511]{dummit_foote_2004}) define prime 
     As $L \subseteq K$ and $K \subseteq L$ thus $K = L$, showing that \myref{definition-prime-subfield} and \myref{definition-prime-subfield-alt} are equivalent.
 \end{proof}
 
+We note that a field's prime subfield is unique. We see this in the following theorem, first proposed by Ernst Steinitz in 1910.
+
+\begin{theorem}\label{thrm-prime-subfield-isomorphic-to-Zp-or-Q}
+    Let $F$ be a field with prime subfield $K$.
+    \begin{itemize}
+        \item If $F$ has characteristic $p$, a prime, then $K \cong \Z_p$.
+        \item If $F$ has characteristic 0, then $K \cong \Q$.
+    \end{itemize}
+\end{theorem}
+\begin{remark}
+    Isomorphism for fields is the same as isomorphism for rings.
+\end{remark}
+\begin{proof}
+    First consider the case where $F$ has characteristic $p$. Consider the map $\phi: \Z \to K$ given by $n \mapsto n1$. We note that $\phi$ is a ring homomorphism since
+    \begin{align*}
+        \phi(m + n) &= (m + n)1\\
+        &= m1 + n1\\
+        &= \phi(m) + \phi(n)
+    \end{align*}
+    and
+    \begin{align*}
+        \phi(mn) &= (mn)1\\
+        &= (m1)(n1)\\
+        &= \phi(m)\phi(n).
+    \end{align*}
+    One also clearly sees $\phi$ is surjective since any element $N1 \in K$ has a pre-image of $n \in \Z$. In addition, since the characteristic of $F$ is $p$, meaning $(pm)1 = 0$ for any $m \in \Z$, we see $\ker\phi = p\Z$. By the FRIT (\myref{thrm-ring-isomorphism-1}) we obtain
+    \[
+        \Z/p\Z \cong K.
+    \]
+    Note $\Z/p\Z \cong \Z_p$ by \myref{example-Zn-ring-isomorphic-to-Z/nZ}, which is a field. Hence $K \cong \Z_p$ as required.
+
+    If instead $n = 0$, consider the map $\phi: \Q \to K$ such that $\frac ab \mapsto (a1)(b1)^{-1}$. We show that $\phi$ is a well-defined isomorphism.
+
+    \begin{itemize}
+        \item \textbf{Well-defined}: Suppose $\frac ab, \frac cd \in \Q$ such that $\frac ab = \frac cd$. Then $ad = bc$; since $b \neq 0$ and $d \neq 0$ we note that $ad \neq 0$ and $bc \neq 0$. So
+        \[
+            (a1)(d1) = (ad)1 = (bc)1 = (b1)(c1)
+        \]
+        which means $(a1)(b1)^{-1} = (c1)(d1)^{-1}$. Hence
+        \[
+            \phi\left(\frac ab\right) = (a1)(b1)^{-1} = (c1)(d1)^{-1} = \phi\left(\frac cd\right)
+        \]
+        which shows that $\phi$ is well-defined.
+
+        \item \textbf{Homomorphism}: Let $\frac ab, \frac cd \in \Q$. Then
+        \begin{align*}
+            \phi\left(\frac ab + \frac cd\right) &= \phi\left(\frac{ad + bc}{bd}\right)\\
+            &= ((ad + bc)1)((bd)1)^{-1}\\
+            &= \left((a1)(d1) + (b1)(c1)\right)\left((b1)^{-1}(d1)^{-1}\right)\\
+            &= (a1)(d1)(b1)^{-1}(d1)^{-1} + (b1)(c1)(b1)^{-1}(d1)^{-1}\\
+            &= (a1)(b1)^{-1}(d1)(d1)^{-1} + (c1)(d1)^{-1}(b1)(b1)^{-1}\\
+            &= (a1)(b1)^{-1} + (c1)(d1)^{-1}\\
+            &= \phi\left(\frac ab\right) + \phi\left(\frac cd\right)
+        \end{align*}
+        and
+        \begin{align*}
+            \phi\left(\frac ab \times \frac cd\right) &= \phi\left(\frac{ac}{bd}\right)\\
+            &= (ac1)(bd1)^{-1}\\
+            &= (a1)(c1)(b1)^{-1}(d1)^{-1}\\
+            &= (a1)(b1)^{-1} \times (c1)(d1)^{-1}\\
+            &= \phi\left(\frac ab\right) \times \phi\left(\frac cd\right)
+        \end{align*}
+        which means that $\phi$ is a ring homomorphism.
+        
+        \item \textbf{Injective}: Suppose $\frac ab, \frac cd \in \Q$ such that $\phi\left(\frac ab\right) = \phi\left(\frac cd\right)$. Thus we have $(a1)(b1)^{-1} = (c1)(d1)^{-1}$, meaning $(a1)(d1) = (b1)(c1)$. So $(ad)1 = (bc)1$ which means $(ad - bc)1 = 0$, i.e. $ad - bc = 0$. Therefore $ad = bc$ which means $\frac ab = \frac cd$, i.e. $\phi$ is injective.
+        
+        \item \textbf{Surjective}: Suppose $n1 \in K$. Note $\phi(\frac n1) = n1$, so $n1$ has a pre-image in $\Q$, i.e. $\phi$ is a surjection.
+    \end{itemize}
+    Therefore we have shown that $\phi$ is a isomorphism, meaning $K \cong \Q$.
+\end{proof}
+
+To end, we look at \textbf{prime fields}.
+
+\begin{definition}
+    A \textbf{prime field}\index{field!prime}\index{prime!field} is a field with no proper subfields.
+\end{definition}
+
+There is one quite obvious prime field.
+
+\begin{theorem}
+    $\Z_p$ is a prime field.
+\end{theorem}
+\begin{proof}
+    Suppose $K$ is a subfield of $\Z_p$. Then the additive group of $K$ is a subgroup of the additive group of $\Z_p$. But $(\Z_p, +)$ has no proper non-trivial subgroups (\myref{corollary-group-with-prime-order-subgroups}), and the trivial group does not form a field. Thus $K = \Z_p$.
+\end{proof}
+
+We note one non-obvious prime field, that was alluded to in the discovery of what prime subfields are isomorphic to.
+
+\begin{theorem}
+    $\Q$ is a prime field.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-Q-is-prime-field} (later).
+\end{proof}
+
+\begin{exercise}
+    Prove or disprove: $\R$ a prime field.
+\end{exercise}
+
 \newpage
 
 \section{Problems}
@@ -349,6 +379,10 @@ We note that other authors (e.g. \cite[p.~511]{dummit_foote_2004}) define prime 
         \item Suppose $q$ is another prime dividing $|F|$. Show there exist integers $\lambda$ and $\mu$ such that $(\lambda p + \mu q)x = x$ for all elements $x \in F$.
         \item Deduce that the supposition in \textbf{(ii)} leads to a contradiction. Hence explain why $|F|$ must have order $p^n$, where $n$ is a positive integer.
     \end{partquestions}
+\end{problem}
+
+\begin{problem}\label{problem-Q-is-prime-field}
+    % TODO: Add Q is a prime field; see https://proofwiki.org/wiki/Rational_Numbers_form_Prime_Field
 \end{problem}
 
 % TODO: Add
