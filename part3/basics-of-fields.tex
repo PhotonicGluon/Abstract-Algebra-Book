@@ -176,11 +176,11 @@ With this result, we deduce the number of elements of a finite field.
 \end{proof}
 
 We note one very useful result when it comes to homomorphisms of fields.
-\begin{theorem}\label{thrm-homomorphism-from-field-is-isomorphism-or-trivial}
-    Let $F$ be a field, $R$ be a ring, and let $\phi: F \to R$ be a ring homomorphism. Then either $\phi$ is an isomorphism or $\phi(x) = 0$ for all $x \in F$.
+\begin{theorem}\label{thrm-surjective-homomorphism-from-field-is-isomorphism-or-trivial}
+    Let $F$ be a field, $R$ be a ring, and let $\phi: F \to R$ be a surjective ring homomorphism. If $R$ is non-trivial then $\phi$ is an isomorphism. Otherwise $\phi(x) = 0$ for all $x \in F$.
 \end{theorem}
 \begin{proof}
-    See \myref{problem-homomorphism-from-field-is-isomorphism-or-trivial} (later).
+    See \myref{problem-surjective-homomorphism-from-field-is-isomorphism-or-trivial} (later).
 \end{proof}
 
 \section{Subfields}
@@ -310,7 +310,7 @@ We note that a field's prime subfield is unique. We see this in the following th
     \]
     Note $\Z/p\Z \cong \Z_p$ by \myref{example-Zn-ring-isomorphic-to-Z/nZ}, which is a field. Hence $K \cong \Z_p$ as required.
 
-    If instead $n = 0$, consider the map $\phi: \Q \to K$ such that $\frac ab \mapsto (a1)(b1)^{-1}$. We just need to show that $\phi$ is a well-defined homomorphism, as we can use \myref{thrm-homomorphism-from-field-is-isomorphism-or-trivial} to quickly conclude that it is also an isomorphism.
+    If instead $n = 0$, consider the map $\phi: \Q \to K$ such that $\frac ab \mapsto (a1)(b1)^{-1}$. We just need to show that $\phi$ is a well-defined surjective homomorphism, as we can use \myref{thrm-surjective-homomorphism-from-field-is-isomorphism-or-trivial} to quickly conclude that it is also an isomorphism.
 
     \begin{itemize}
         \item \textbf{Well-defined}: Suppose $\frac ab, \frac cd \in \Q$ such that $\frac ab = \frac cd$. Then $ad = bc$; since $b \neq 0$ and $d \neq 0$ we note that $ad \neq 0$ and $bc \neq 0$. So
@@ -342,8 +342,10 @@ We note that a field's prime subfield is unique. We see this in the following th
             &= \phi\left(\frac ab\right) \times \phi\left(\frac cd\right)
         \end{align*}
         which means that $\phi$ is a ring homomorphism.
+
+        \item \textbf{Surjective}: Suppose $n1 \in K$. Note $\phi(\frac n1) = n1$, so $n1$ has a pre-image in $\Q$, i.e. $\phi$ is a surjection.
     \end{itemize}
-    Therefore, by \myref{thrm-homomorphism-from-field-is-isomorphism-or-trivial}, we see that $\phi$ is a isomorphism, meaning $K \cong \Q$.
+    Therefore, by \myref{thrm-surjective-homomorphism-from-field-is-isomorphism-or-trivial}, we see that $\phi$ is a isomorphism, meaning $K \cong \Q$.
 \end{proof}
 
 To end this chapter, we look at \textbf{prime fields}.
@@ -377,7 +379,35 @@ We note one non-obvious prime field, that was alluded to in the discovery of wha
 \newpage
 
 \section{Problems}
-% TODO: likely this will be placed as the last problem
+\begin{problem}
+    Find a ring without identity that is contained in a field.
+\end{problem}
+
+\begin{problem}
+    Prove or disprove: $\R \cong \C$ as fields.
+\end{problem}
+
+\begin{problem}
+    Show that $\Z_3[x]/\princ{x^2+x+1}$ is \textit{not} a field.
+\end{problem}
+
+\begin{problem}
+    Find an irreducible polynomial in $\Z_2[x]$. Hence construct a field $F$ of order 4. Find the prime subfield of $F$.
+\end{problem}
+
+\begin{problem}
+    Consider the ring $R = \Z[i] / \princ{2-i}$.
+    \begin{partquestions}{\roman*}
+        \item Show that $5 \in \princ{2-i}$ and $2 + \princ{2-i} = i + \princ{2-i}$.
+        \item Show that $R = \{k + \princ{2-i} \vert k \in \Z_5\}$.
+        \item Hence prove, via an isomorphism, that $R$ is a field with order 5.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}\label{problem-Q-is-prime-field}
+    Suppose $F$ is a subfield of $\Q$. Prove $F = \Q$.
+\end{problem}
+
 \begin{problem}\label{problem-finite-field-has-prime-power-order}
     Let $F$ be a finite field with characteristic $p$, a prime.
     \begin{partquestions}{\roman*}
@@ -387,8 +417,20 @@ We note one non-obvious prime field, that was alluded to in the discovery of wha
     \end{partquestions}
 \end{problem}
 
-\begin{problem}\label{problem-Q-is-prime-field}
-    % TODO: Add Q is a prime field; see https://proofwiki.org/wiki/Rational_Numbers_form_Prime_Field
+\begin{problem}
+    Consider the field $F = \Frac{\Z_p[x]}$.
+    \begin{partquestions}{\alph*}
+        \item Prove $F$ is infinite.\newline
+        (\textit{Hint: it would be easier to prove $\Z_p[x]$ is infinite.})
+        \item Prove $\Char{F} \neq 0$.
+    \end{partquestions}
 \end{problem}
+\begin{remark}
+    This problem shows that an infinite field need not have a characteristic of zero.
+\end{remark}
 
-% TODO: Add
+\begin{problem}\label{problem-surjective-homomorphism-from-field-is-isomorphism-or-trivial}
+    Prove \myref{thrm-surjective-homomorphism-from-field-is-isomorphism-or-trivial}.
+    Note that proving that $F \cong R$ is not sufficient. You are to explicitly prove that, if $\phi(x) \neq 0$ for some $x \in F$, then $\phi$ is an isomorphism.\newline
+    (\textit{Hint: consider the kernel, and the map generated by the FRIT (\myref{thrm-ring-isomorphism-1}).})
+\end{problem}
