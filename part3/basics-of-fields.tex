@@ -175,6 +175,14 @@ With this result, we deduce the number of elements of a finite field.
     See \myref{problem-finite-field-has-prime-power-order} (later).
 \end{proof}
 
+We note one very useful result when it comes to homomorphisms of fields.
+\begin{theorem}\label{thrm-homomorphism-from-field-is-isomorphism-or-trivial}
+    Let $F$ be a field, $R$ be a ring, and let $\phi: F \to R$ be a ring homomorphism. Then either $\phi$ is an isomorphism or $\phi(x) = 0$ for all $x \in F$.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-homomorphism-from-field-is-isomorphism-or-trivial} (later).
+\end{proof}
+
 \section{Subfields}
 Just like how groups have the idea of subgroups and rings have the idea of subrings, fields have the idea of subfields.
 \begin{definition}
@@ -269,6 +277,8 @@ We note that other authors (e.g. \cite[p.~511]{dummit_foote_2004}) define prime 
     As $L \subseteq K$ and $K \subseteq L$ thus $K = L$, showing that \myref{definition-prime-subfield} and \myref{definition-prime-subfield-alt} are equivalent.
 \end{proof}
 
+\newpage
+
 We note that a field's prime subfield is unique. We see this in the following theorem, first proposed by Ernst Steinitz in 1910.
 
 \begin{theorem}\label{thrm-prime-subfield-isomorphic-to-Zp-or-Q}
@@ -294,13 +304,13 @@ We note that a field's prime subfield is unique. We see this in the following th
         &= (m1)(n1)\\
         &= \phi(m)\phi(n).
     \end{align*}
-    One also clearly sees $\phi$ is surjective since any element $N1 \in K$ has a pre-image of $n \in \Z$. In addition, since the characteristic of $F$ is $p$, meaning $(pm)1 = 0$ for any $m \in \Z$, we see $\ker\phi = p\Z$. By the FRIT (\myref{thrm-ring-isomorphism-1}) we obtain
+    One also clearly sees $\phi$ is surjective since any element $n1 \in K$ has a pre-image of $n \in \Z$. In addition, since the characteristic of $F$ is $p$, meaning $(pm)1 = 0$ for any $m \in \Z$, we see $\ker\phi = p\Z$. By the FRIT (\myref{thrm-ring-isomorphism-1}) we obtain
     \[
         \Z/p\Z \cong K.
     \]
     Note $\Z/p\Z \cong \Z_p$ by \myref{example-Zn-ring-isomorphic-to-Z/nZ}, which is a field. Hence $K \cong \Z_p$ as required.
 
-    If instead $n = 0$, consider the map $\phi: \Q \to K$ such that $\frac ab \mapsto (a1)(b1)^{-1}$. We show that $\phi$ is a well-defined isomorphism.
+    If instead $n = 0$, consider the map $\phi: \Q \to K$ such that $\frac ab \mapsto (a1)(b1)^{-1}$. We just need to show that $\phi$ is a well-defined homomorphism, as we can use \myref{thrm-homomorphism-from-field-is-isomorphism-or-trivial} to quickly conclude that it is also an isomorphism.
 
     \begin{itemize}
         \item \textbf{Well-defined}: Suppose $\frac ab, \frac cd \in \Q$ such that $\frac ab = \frac cd$. Then $ad = bc$; since $b \neq 0$ and $d \neq 0$ we note that $ad \neq 0$ and $bc \neq 0$. So
@@ -332,21 +342,17 @@ We note that a field's prime subfield is unique. We see this in the following th
             &= \phi\left(\frac ab\right) \times \phi\left(\frac cd\right)
         \end{align*}
         which means that $\phi$ is a ring homomorphism.
-        
-        \item \textbf{Injective}: Suppose $\frac ab, \frac cd \in \Q$ such that $\phi\left(\frac ab\right) = \phi\left(\frac cd\right)$. Thus we have $(a1)(b1)^{-1} = (c1)(d1)^{-1}$, meaning $(a1)(d1) = (b1)(c1)$. So $(ad)1 = (bc)1$ which means $(ad - bc)1 = 0$, i.e. $ad - bc = 0$. Therefore $ad = bc$ which means $\frac ab = \frac cd$, i.e. $\phi$ is injective.
-        
-        \item \textbf{Surjective}: Suppose $n1 \in K$. Note $\phi(\frac n1) = n1$, so $n1$ has a pre-image in $\Q$, i.e. $\phi$ is a surjection.
     \end{itemize}
-    Therefore we have shown that $\phi$ is a isomorphism, meaning $K \cong \Q$.
+    Therefore, by \myref{thrm-homomorphism-from-field-is-isomorphism-or-trivial}, we see that $\phi$ is a isomorphism, meaning $K \cong \Q$.
 \end{proof}
 
-To end, we look at \textbf{prime fields}.
+To end this chapter, we look at \textbf{prime fields}.
 
 \begin{definition}
     A \textbf{prime field}\index{field!prime}\index{prime!field} is a field with no proper subfields.
 \end{definition}
 
-There is one quite obvious prime field.
+There is one obvious prime field.
 
 \begin{theorem}
     $\Z_p$ is a prime field.
@@ -365,7 +371,7 @@ We note one non-obvious prime field, that was alluded to in the discovery of wha
 \end{proof}
 
 \begin{exercise}
-    Prove or disprove: $\R$ a prime field.
+    Prove or disprove: $\R$ is a prime field.
 \end{exercise}
 
 \newpage
