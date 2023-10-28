@@ -50,6 +50,23 @@ As mentioned, fields are a more specific type of ring, so it is not surprising t
     The additive group of $\Z_p$ is $(\Z_p, \oplus_p)$, where $\oplus_p$ denotes addition modulo $p$. Again, we have already shown that this is a group in \myref{prop-Zn-is-abelian-group}. The multiplicative group of $\Z_p$ is $(\Z_p^\ast, \otimes_p)$, where $\otimes_p$ denotes multiplication modulo $p$. Since every element of $\Z_p^\ast$ is coprime with $p$, thus $(\Z_p^\ast, \otimes_p)$ is in fact $\Un{p}$, the group of units modulo $p$, which we have explored in chapter \myref{section-group-of-units-mod-n}.
 \end{example}
 
+We look at the notion of the order of a field.
+\begin{definition}
+    The \textbf{order}\index{order!field} of a field $F$, denoted $|F|$, is the cardinality of the set $F$.
+\end{definition}
+\begin{remark}
+    Equivalently, the order of $F$ is the order of the additive group of $F$.
+\end{remark}
+
+Like with groups, if $|F| = n$ where $n$ is finite, then we say $F$ is a \textbf{finite field}\index{field!finite}\index{finite field}. On the other hand, if $|F| = \infty$, then we say that $F$ is an \textbf{infinite field}\index{field!infinite}.
+
+\begin{example}
+    For the field $\Z_p$, we note $|\Z_p| = p$ since $\Z_p$ has $p$ elements, namely the integers 0 to $p - 1$.
+\end{example}
+\begin{example}
+    The fields $\Q$, $\R$, and $\C$ are all infinite fields, so we write $|\Q| = \infty$, $|\R| = \infty$, and $|\C| = \infty$.
+\end{example}
+
 To end this section, we note some notation that we use for fields, which is similar to that used for rings.
 \begin{itemize}
     \item The multiplication symbol $\cdot$ is usually omitted, so $x \cdot y$ is written as $xy$.
@@ -57,6 +74,8 @@ To end this section, we note some notation that we use for fields, which is simi
     \item The additive inverse of the element $x$ will be denoted by $-x$ and the multiplicative inverse of $x$ will be denoted by $x^{-1}$.
     \item $a - b$ means $a + (-b)$ for any two elements $a$ and $b$ in $F$.
 \end{itemize}
+
+\newpage
 
 \section{Basic Properties of Fields}
 Most of these properties are inherited from the fact that fields are integral domains. However, we will restate them here in the context of fields for completeness.
@@ -117,6 +136,8 @@ For the following, assume $F$ is a field.
     Follows from \myref{prop-domain-cancellation-law}.
 \end{proof}
 
+\newpage
+
 \begin{proposition}
     Let $F$ be a field, $x$ an element of the field, and let $m$ and $n$ be non-negative integers. Then
     \begin{enumerate}
@@ -137,15 +158,36 @@ For the following, assume $F$ is a field.
     \end{partquestions}
 \end{exercise}
 
-% TODO: Add characteristic
+Recall that we have defined the characteristic in part II, being the smallest positive integer $n$ such that $nx = 0$ for all $x$ in the ring $R$, or is 0 if no such integer exists. We note the possible values of the characteristic for fields.
+
+\begin{proposition}
+    If $F$ is a field, then either $\Char{F} = 0$ or $\Char{F} = p$ where $p$ is a prime.
+\end{proposition}
+\begin{proof}
+    Follows from \myref{prop-zero-or-prime-characteristic-if-integral-domain} since a field is an integral domain.
+\end{proof}
+
+With this result, we deduce the number of elements of a finite field.
+\begin{theorem}\label{thrm-finite-field-has-prime-power-order}
+    Let $F$ be a finite field. Then $|F| = p^n$ where $p$ is a prime and $n$ is a positive integer.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-finite-field-has-prime-power-order} (later).
+\end{proof}
 
 \section{Subfields}
-% TODO: Add
-
-\section{What Are the Finite Fields?}
 % TODO: Add
 
 \newpage
 
 \section{Problems}
+% TODO: likely this will be placed as the last problem
+\begin{problem}\label{problem-finite-field-has-prime-power-order}
+    Let $F$ be a finite field with characteristic $p$, a prime.
+    \begin{partquestions}{\roman*}
+        \item Explain why $p$ divides $|F|$.
+        \item Suppose $q$ is another prime dividing $|F|$. Show there exist integers $\lambda$ and $\mu$ such that $(\lambda p + \mu q)x = x$ for all elements $x \in F$.
+        \item Deduce that the supposition in \textbf{(ii)} leads to a contradiction. Hence explain why $|F|$ must have order $p^n$, where $n$ is a positive integer.
+    \end{partquestions}
+\end{problem}
 % TODO: Add

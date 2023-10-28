@@ -1,4 +1,19 @@
 \section{Basics of Fields}
-No problems.
-% \begin{questions}
-% \end{questions}
+\begin{questions}
+    \item \begin{partquestions}{\roman*}
+        \item Note that as a field is a ring with identity, we have $|1|_+ = p$ by \myref{prop-characteristic-of-ring-with-identity} and since $\Char{F} = p$. As the order of an element divides the order of the group (\myref{corollary-order-of-group-multiple-of-order-of-element}), therefore $p$ divides the order of the additive group of $F$. As the order of the additive group of $F$ is precisely the order of $F$, thus $p$ divides $|F|$.
+        
+        \item Since $q$ is another prime dividing $|F|$, it is not $p$. Thus $p$ and $q$ are coprime, meaning that there are integers $\lambda$ and $\mu$ such that $\lambda p + \mu q = 1$ by B\'ezout's lemma (\myref{lemma-bezout}). Hence $(\lambda p + \mu q)x = x$ for any element $x \in F$.
+        
+        \item Since $q$ divides $|F|$, then there is an element $x$ in the additive group of $F$ with order $q$ by Cauchy's theorem (\myref{thrm-cauchy}). This means $qx = 0$. But we also have $px = 0$ since $\Char{F} = p$. Thus,
+        \begin{align*}
+            (\lambda p + \mu q)x &= \lambda (px) + \mu (qx) \\
+            &= \lambda 0 + \mu 0\\
+            &= 0
+            &= x, & (\text{by \textbf{(ii)}})
+        \end{align*}
+        which shows $x = 0$. Note $|0|_+ = 1$ since 0 is the identity in the additive group. But $x$ has order $q$, a prime number, so $q \geq 2$, i.e. $|0|_+ \geq 2$, a contradiction.
+        
+        Therefore no other prime other than $p$ divides $|F|$, meaning that $|F| = p^n$ where $n$ is a \textit{non-negative} integer. But $n \neq 0$ since otherwise $F$ has order 1, which means that the multiplicative group has order 0, an impossibility. Thus $|F| = p^n$ where $n$ is a \textit{positive} integer.
+    \end{partquestions}
+\end{questions}
