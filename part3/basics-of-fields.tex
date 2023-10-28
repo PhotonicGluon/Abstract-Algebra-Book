@@ -176,7 +176,167 @@ With this result, we deduce the number of elements of a finite field.
 \end{proof}
 
 \section{Subfields}
-% TODO: Add
+Just like how groups have the idea of subgroups and rings have the idea of subrings, fields have the idea of subfields.
+\begin{definition}
+    Let $K$ be a subset of a field $F$. Then $K$ is said to be a \textbf{subfield}\index{subfield} of $F$ it is also a field under the same operations as $F$.
+\end{definition}
+
+\begin{example}
+    $\R$ is a subfield of $\C$ since $\R$ is a subset of $\C$ and $\R$ is a field.
+\end{example}
+\begin{example}
+    $\Q$ is a subfield of $\R$ (and $\C$) since $\Q$ is a subset of $\R$ (and $\C$) and $\Q$ is a field.
+\end{example}
+
+\newpage
+
+We note an important observation made by Ernst Steinitz in 1910.
+
+\begin{theorem}\label{thrm-field-contains-subfield-isomorphic-to-Zp-or-Q}
+    Let $F$ be a field.
+    \begin{itemize}
+        \item If $F$ has characteristic $p$, a prime, then $F$ contains a subfield isomorphic to $\Z_p$.
+        \item If $F$ has characteristic 0 then $F$ contains a subfield isomorphic to $\Q$.
+    \end{itemize}
+\end{theorem}
+\begin{remark}
+    Isomorphism for fields is the same as isomorphism for rings.
+\end{remark}
+
+\begin{proof}
+    Let $n = \Char{F}$. Consider the map $\phi: \Z \to F$ given by $n \mapsto n1$. We note that $\phi$ is a ring homomorphism since
+    \begin{align*}
+        \phi(m + n) &= (m + n)1\\
+        &= m1 + n1\\
+        &= \phi(m) + \phi(n)
+    \end{align*}
+    and
+    \begin{align*}
+        \phi(mn) &= (mn)1\\
+        &= (m1)(n1)\\
+        &= \phi(m)\phi(n).
+    \end{align*}
+    We note that the image of $\phi$ is the set $S = \{k1 \vert k \in \Z\}$, which is a subring of $F$. Also, since $F$ is a field with characteristic $p$, therefore $(nm)1 = 0$ for any $m \in \Z$, which means $\ker\phi = n\Z$. So by the FRIT (\myref{thrm-ring-isomorphism-1}) we see
+    \[
+        \Z/n\Z \cong S.
+    \]
+    
+    Now if $n$ is a prime number, say $p$, then $\Z/p\Z \cong \Z_p$ by \myref{example-Zn-ring-isomorphic-to-Z/nZ}, which is a field. Hence $S$ is also a subfield; therefore $S$ is a subfield of $F$ that is isomorphic to $\Z_p$.
+
+    If instead $n = 0$, then $\Z/0\Z = \Z/\{0\} \cong \Z$ by \myref{problem-integral-domain-iff-trivial-ideal-is-prime}, which means $S \cong \Z$. Suppose $\iota: S \to \Z$ is the isomorphism that gives $S \cong Z$. Now consider the set
+    \[
+        T = \{ab^{-1} \vert a, b \in S, b \neq 0\}.
+    \]
+    \myref{exercise-infinite-field-contains-Q-subset-is-subfield} (later) shows that $T$ is a subfield of $F$. Now we consider the map $\psi: T \to \Q$ such that $ab^{-1} \mapsto \frac{\iota{a}}{\iota{b}}$. We show that $\psi$ is a well-defined ring isomorphism (actually, a field isomorphism). Note that we have to show that $\psi$ is well-defined since, for example, $1 = aa^{-1} = bb^{-1}$, and so we need to check if this definition makes sense.
+    \begin{itemize}
+        \item \textbf{Well-defined}: Suppose $ab^{-1}, cd^{-1} \in T$ such that $ab^{-1} = cd^{-1}$. Then $ad = bc \in S$. Hence $\iota(ad) = \iota(bc)$, which means $\iota(a)\iota(d) = \iota(b)\iota(c)$ since $\iota$ is an isomorphism. So one sees clearly $\frac{\iota(a)}{\iota(b)} = \frac{\iota(c)}{\iota(d)}$ which means
+        \[
+            \psi(ab^{-1}) = \frac{\iota(a)}{\iota(b)} = \frac{\iota(c)}{\iota(d)} = \psi(cd^{-1}).
+        \]
+        Thus $\psi$ is well-defined.
+
+        \item \textbf{Homomorphism}: Let $ab^{-1}, cd^{-1} \in T$. Note
+        \begin{align*}
+            ab^{-1} + cd^{-1} &= (ab^{-1})(dd^{-1}) + (cd^{-1})(bb^{-1})\\
+            &= adb^{-1}d^{-1} + bcb^{-1}d^{-1}\\
+            &= (ad + bc)(bd)^{-1}\\
+            &\in T.
+        \end{align*}
+        Thus, one sees
+        \begin{align*}
+            \psi(ab^{-1} + cd^{-1}) &= \psi((ad+bc)(bd)^{-1})\\
+            &= \frac{\iota(ad+bc)}{\iota(bd)}\\
+            &= \frac{\iota(a)\iota(d) + \iota(b)\iota(c)}{\iota(b)\iota(d)} & (\iota \text{ is an isomorphism})\\
+            &= \frac{\iota(a)}{\iota(b)} + \frac{\iota(c)}{\iota(d)}\\
+            &= \psi(ab^{-1}) + \psi(cd^{-1})
+        \end{align*}
+        and
+        \begin{align*}
+            \psi((ab^{-1})(cd^{-1})) &= \psi((ac)(bd)^{-1})\\
+            &= \frac{\iota(ac)}{\iota(bd)}\\
+            &= \frac{\iota(a)\iota(c)}{\iota(b)\iota(d)}\\
+            &= \frac{\iota(a)}{\iota(b)} \times \frac{\iota(c)}{\iota(d)}\\
+            &= \psi(ab^{-1})\psi(cd^{-1})
+        \end{align*}
+        which means $\psi$ is a homomorphism.
+        
+        \item \textbf{Injective}: Suppose $ab^{-1}, cd^{-1} \in T$ such that $\psi(ab^{-1}) = \psi(cd^{-1})$. Thus $\frac{\iota(a)}{\iota(b)} = frac{\iota(c)}{\iota(d)}$, meaning $\iota(a)\iota(d) = \iota(b)\iota(c)$. Hence $\iota(ad) = \iota(bc)$ which means $ad = bc$ as $\iota$ is an isomorphism. Therefore $ab^{-1} = cd^{-1}$, showing that $\psi$ is injective.
+        
+        \item \textbf{Surjective}: Suppose $\frac pq \in \Q$. Then there exists $a, b \in S$ where $b \neq 0$ such that $\iota(a) = p$ and $\iota(b) = q$ as $\iota$ is an isomorphism. Therefore $\psi(ab^{-1}) = \frac{\iota(a)}{\iota(b)} = \frac pq$, meaning $\psi$ is a surjection.
+    \end{itemize}
+    Therefore we have shown that $\psi$ is a isomorphism, meaning $T \cong \Q$. Hence $F$ has a subfield $T$ that is isomorphic to $\Q$.
+\end{proof}
+
+Now, trying to prove all the field axioms again for a subfield is too tedious. It would be nice to have a relatively simple test to determine if a subset of $F$ is a subfield, just like with groups. We do -- it is called the subfield test.
+\begin{theorem}[Subfield Test]\label{thrm-subfield-test}\index{subfield test}
+    Let $F$ be a field with additive identity 0 and multiplicative identity 1, and let $K$ be a subset of $F$. Then $K$ is a subfield of $F$ if and only if the following conditions holds.
+    \begin{enumerate}
+        \item $K^\ast \neq \emptyset$.
+        \item $x - y \in K$ for all $x, y \in K$.
+        \item $xy^{-1} \in K$ for all $x \in K$ and $y \in K^\ast$.
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    The forward direction is simple, since all 3 conditions are implied by the field axioms.
+    \begin{itemize}
+        \item Since $K$ is a field, thus $K^\ast$ is non-empty as $(K^\ast, \times)$ is a group.
+        \item Since $(K, +)$ is a group, thus $x - k \in K$ by the subgroup test (\myref{thrm-subgroup-test}) on the additive group.
+        \item If $x = 0$ then $xy^{-1} = 0 \in K$. Otherwise, both $x, y \in K^\ast$. Thus $xy^{-1} \in K^\ast \subset K$ by subgroup test on the multiplicative group.
+    \end{itemize}
+
+    We now work in the reverse direction. Suppose the three conditions hold. As $K^\ast \neq \emptyset$ we must have $K \neq \emptyset$. Using this result and condition 2 we know $(K, +) \leq (F, +)$ by subgroup test. Using condition 1 and 3 we also know that $(K^\ast, \times) \leq (F^\ast, \times)$, again by subgroup test. Furthermore as addition and multiplication are commutative, therefore $(K, +)$ and $(K^\ast, \times)$ are abelian groups. Finally $\times$ distributes over $+$ by the \textbf{Distributive} axiom on the field $F$. Hence, $K$ is a field by the field axioms; as $K \subseteq F$ this means that $K$ is a subfield of $F$.
+\end{proof}
+
+We use the subfield test in the proof of the following proposition.
+\begin{proposition}\label{prop-intersection-of-subfields-is-subfield}
+    The intersection of subfields is a subfield.
+\end{proposition}
+\begin{proof}
+    Suppose $F$ is a field with subfields $K$ and $L$. We show $K \cap L$ is also a subfield.
+
+    Since $K$ and $L$ are subfields, $K$ and $L$ both contain 0 and 1. Thus $K \cap L$ contains both 0 and 1, which means $(K \cap L)^\ast$ contains 1, i.e. $(K\cap L)^\ast \neq \emptyset$.
+
+    Now suppose $a, b \in K \cap L$. Thus $a, b \in K$ and $a, b \in L$. Therefore $a - b \in K$ and $a - b \in L$ by subfield test (\myref{thrm-subfield-test}), which means $a - b \in K \cap L$.
+
+    Finally, suppose $a \in K \cap L$ and $b \in (K \cap L)^\ast$. We note that $(K \cap L)^\ast = K^\ast \cap L^\ast$. Thus $a \in K$, $b \in K^\ast$, $a \in L$, and $b \in L^\ast$. Therefore $ab^{-1} \in K$ and $ab^{-1} \in L$ by subfield test, meaning $ab^{-1} \in K \cap L$.
+
+    Therefore $K \cap L$ is a subfield of $F$ by subfield test.
+\end{proof}
+
+\begin{exercise}\label{exercise-infinite-field-contains-Q-subset-is-subfield}
+    Show that $T$ is a subfield of $F$, as defined in the proof of \myref{thrm-field-contains-subfield-isomorphic-to-Zp-or-Q}.
+\end{exercise}
+
+We end this chapter by looking at the \textbf{prime subfield}, as defined in \cite[p.~268]{gallian_2016}.
+
+\begin{definition}\label{definition-prime-subfield}
+    Let $F$ be a field. The \textbf{prime subfield}\index{subfield!prime} of $F$ is the `smallest' subfield of $F$. That is, the prime subfield $K$ of $F$ is such that, if $L$ is a subfield of $F$, then $K \subseteq L$.
+\end{definition}
+\begin{proposition}
+    The prime subfield is indeed a subfield of $F$.
+\end{proposition}
+\begin{proof}
+    Since the intersection of subfields of a field is itself a subfield (\myref{prop-intersection-of-subfields-is-subfield}), the intersection of \textit{all} the subfields of the field is also a subfield.
+\end{proof}
+
+We note that other authors (e.g. \cite[p.~511]{dummit_foote_2004}) define prime subfields as follows.
+
+\begin{definition}\label{definition-prime-subfield-alt}
+    The \textbf{prime subfield}\index{subfield!prime} $K$ of a field $F$ is the subfield generated by 1, i.e. $K = \{n1 \vert n \in \Z\}$.
+\end{definition}
+\begin{remark}
+    Since the characteristic of a finite field is a prime number, $K$ must contain a prime number of elements, hence the name ``prime subfield''.
+\end{remark}
+\begin{theorem}
+    \myref{definition-prime-subfield} and \myref{definition-prime-subfield-alt} are equivalent.
+\end{theorem}
+\begin{proof}
+    For clarity, let $K$ denote $\{n1 \vert n \in \Z\}$ and $L$ denote the intersection of all subfields of $F$. We are to show $K = L$.
+
+    Clearly $L \subseteq K$ since $K$ is a subfield of $F$, and is therefore contained in the intersection that resulted in $L$. Also, since $1 \in L$, and since $L$ is a subfield, thus it is closed under addition, meaning $n1 \in L$ for any $n \in \Z$. This means any element of $K$ is also in $L$, meaning $K \subseteq L$.
+
+    As $L \subseteq K$ and $K \subseteq L$ thus $K = L$, showing that \myref{definition-prime-subfield} and \myref{definition-prime-subfield-alt} are equivalent.
+\end{proof}
 
 \newpage
 
@@ -190,4 +350,5 @@ With this result, we deduce the number of elements of a finite field.
         \item Deduce that the supposition in \textbf{(ii)} leads to a contradiction. Hence explain why $|F|$ must have order $p^n$, where $n$ is a positive integer.
     \end{partquestions}
 \end{problem}
+
 % TODO: Add
