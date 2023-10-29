@@ -2,7 +2,155 @@
 Abstract algebra has three core structures -- groups, rings, and fields. So far, we have looked at groups and rings in detail, and touched on some basic properties of fields. However, to properly explore the structure of fields, we need to cover the basics of vector spaces, which are typically covered in a linear algebra course. We provide a concise overview of vectors and vector spaces here.
 
 \section{What is a Vector Space?}
-% TODO: Add
+We first look at what a vector space is.
+\begin{definition}
+    A \textbf{vector space}\index{vector space} over a field $F$ is a non-empty set $V$ together with two operations,
+    \begin{itemize}
+        \item \textbf{addition}\index{vector space!addition}, denoted by $+$, where for $\textbf{u}, \textbf{v} \in V$ it produces a new element $\textbf{u} + \textbf{v} \in V$; and
+        \item \textbf{scalar multiplication}\index{vector space!scalar multiplication}, which assigns an $a \in F$ and a $\textbf{u} \in V$ to another element in $V$, denoted by $a\textbf{u} \in V$,
+    \end{itemize}
+    such that it satisfies the \textbf{vector space axioms}\index{axiom!vector space} listed below.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}\index{axiom!vector space!addition-abelian}: $(V, +)$ forms an abelian group.
+        \item \textbf{Multiplication-Identity}\index{axiom!vector space!multiplication-identity}: For all $\textbf{u} \in V$ we have $1\textbf{u} = \textbf{u}$, where $1 \in F$ denotes the multiplicative identity of $F$.
+        \item \textbf{Multiplication-Compatibility}\index{axiom!vector space!multiplication-compatibility}: For all $a,b  \in F$ and $\textbf{u} \in V$ we have $a(b\textbf{u}) = (ab)\textbf{u}$.
+        \item \textbf{Distributivity-Addition}\index{axiom!vector space!distributivity-addition}: For all $a \in F$ and $\textbf{u}, \textbf{v} \in V$ we have $a(\textbf{u} + \textbf{v}) = a\textbf{u} + a\textbf{v}$.
+        \item \textbf{Distributivity-Scalar}\index{axiom!vector space!distributivity-scalar}: For all $a, b \in F$ and $\textbf{u} \in V$ we have $(a+b)\textbf{u} = a\textbf{u} + b\textbf{u}$.
+    \end{itemize}
+\end{definition}
+
+To avoid confusion with denoting elements from these two sets, we adopt the following conventions regarding notation.
+\begin{itemize}
+    \item Elements in $F$ will generally be denoted by letters from the beginning of the alphabet. For example, $a, b, c, d \in F$.
+    \item Elements in $V$ will be indicated with boldface and are generally denoted by letters near the end of the alphabet. For example, $\textbf{u}, \textbf{v}, \textbf{w} \in V$.
+    \item Define $\textbf{u} - \textbf{v}$ as $\textbf{u} + (-\textbf{v})$, where $-\textbf{v}$ denotes the inverse of $\textbf{v}$ in the group $(V, +)$.
+\end{itemize}
+
+\begin{definition}
+    Let $V$ be a vector space over a field $F$.
+    \begin{itemize}
+        \item Elements of $V$ are called \textbf{vectors}\index{vector}.
+        \item Elements of $F$ are called \textbf{scalars}\index{scalar}.
+    \end{itemize}
+\end{definition}
+
+We look at some elementary examples of vector spaces.
+
+\begin{example}\label{example-R^n-is-vector-space}
+    The set $\R^n = \{(a_1, a_2, \dots, a_n) \vert a_i \in \R\}$ is a vector space over the field $\R$ with the `natural' choices of addition
+    \[
+        (a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n) = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)
+    \]
+    and scalar multiplication
+    \[
+        k(a_1, a_2, \dots, a_n) = (ka_1, ka_2, \dots, ka_n).
+    \]
+
+    Let's explicitly prove that $\R^n$ is indeed a vector space over $\R$ using these operations. We need to prove the five vector space axioms.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: \myref{exercise-R^n-is-abelian-group} (later) shows that $(\R^n, +)$ is an abelian group.
+        
+        \item \textbf{Multiplication-Identity}: Let $(a_1, a_2, \dots, a_n) \in \R^n$. We see
+        \begin{align*}
+            1(a_1, a_2, \dots, a_n) &= (1a_1, 1a_2, \dots, 1a_n)\\
+            &= (a_1, a_2, \dots, a_n)
+        \end{align*}
+        so this axiom is satisfied.
+
+        \item \textbf{Multiplication-Compatibility}: Let $p, q \in \R$ and $(a_1, a_2, \dots, a_n) \in \R^n$. Note
+        \begin{align*}
+            p\left(q(a_1, a_2, \dots, a_n)\right) &= p(qa_1, qa_2, \dots, qa_n)\\
+            &= (pqa_1, pqa_2, \dots, pqa_n)\\
+            &= (pq)(a_1, a_2, \dots, a_n)
+        \end{align*}
+        so this axiom is satisfied.
+        
+        \item \textbf{Distributivity-Addition}: Let $k \in \R$ and $(a_1, a_2, \dots, a_n), (b_1, b_2, \dots, b_n) \in \R^n$. We see
+        \begin{align*}
+            k\left((a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n)\right) &= k(a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)\\
+            &= (k(a_1 + b_1), k(a_2 + b_2), \dots, k(a_n + b_n))\\
+            &= (ka_1 + kb_1, ka_2 + kb_2, \dots, ka_n + kb_n)\\
+            &= (ka_1, ka_2, \dots, ka_n) + (kb_1, kb_2, \dots, kb_n)\\
+            &= k(a_1, a_2, \dots, a_n) + k(b_1, b_2, \dots, b_n)
+        \end{align*}
+        which shows that the axiom is satisfied.
+        
+        \item \textbf{Distributivity-Scalar}: Let $p, q \in \R$ and $(a_1, a_2, \dots, a_n) \in \R^n$. Then
+        \begin{align*}
+            (p+q)(a_1, a_2, \dots, a_n) &= ((p+q)a_1, (p+q)a_2, \dots, (p+q)a_n)\\
+            &= (pa_1 + qa_1, pa_2 + qa_2, \dots, pa_n + qa_n)\\
+            &= (pa_1, pa_2, \dots, pa_n) + (qa_1, qa_2, \dots, qa_n)\\
+            &= p(a_1, a_2, \dots, a_n) + q(a_1, a_2, \dots, a_n).
+        \end{align*}
+        Therefore this axiom is satisfied.
+    \end{itemize}
+    
+    Since all the vector space axioms are satisfied, we proved that $\R^n$ is a vector space over the field $\R$.
+\end{example}
+
+\begin{example}
+    $\C$ is a vector space over $\R$ under the usual definitions of addition and multiplication of complex numbers.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: We already proved that $\C$ is a field, so the additive group of $\C$, namely $(\C, +)$, is an abelian group.
+        
+        \item \textbf{Multiplication-Identity}: Let $a + bi \in \C$. We see $1(a+bi) = 1a + 1bi = a + bi$ so this axiom is satisfied.
+
+        \item \textbf{Multiplication-Compatibility}: Let $p, q \in \R$ and $a + bi \in \C$. Note
+        \begin{align*}
+            p(q(a+bi)) &= p(qa + qbi)\\
+            &= pqa + pqbi\\
+            &= (pq)(a+bi)
+        \end{align*}
+        so this axiom is satisfied.
+        
+        \item \textbf{Distributivity-Addition}: Let $k \in \R$ and $a + bi, c + di \in \C$. Then
+        \begin{align*}
+            k((a+bi) + (c+di)) &= k((a+c) + (b+d)i)\\
+            &= k(a+c) + k(b+d)i\\
+            &= ka + kc + kbi + kdi\\
+            &= (ka + kbi) + (kc + kdi)\\
+            &= k(a+bi) + k(c+di)
+        \end{align*}
+        which shows that the axiom is satisfied.
+        
+        \item \textbf{Distributivity-Scalar}: Let $p, q \in \R$ and $a + bi \in \C$. Note
+        \begin{align*}
+            (p+q)(a+bi) &= (p+q)a + (p+q)bi\\
+            &= pa + qa + pbi + qbi\\
+            &= (pa + pbi) + (qa + qbi)\\
+            &= p(a+bi) + q(a+bi)
+        \end{align*}
+        so this axiom is satisfied.
+    \end{itemize}
+    
+    Since all the vector space axioms are satisfied, we proved that $\C$ is a vector space over the field $\R$.
+\end{example}
+
+\begin{exercise}\label{exercise-R^n-is-abelian-group}
+    Prove that $\R^n$ under addition as defined in \myref{example-R^n-is-vector-space} is an abelian group.
+\end{exercise}
+
+One sees that $\R$ is a subfield of $\C$. The previous example gives us an indication of a much deeper result about vector fields, which we note in the following theorem.
+
+\begin{theorem}
+    Let $F$ be a field and $K$ a subfield of $F$. Then $F$ is a vector space over $K$, with vector addition and scalar multiplication being the operations of $F$.
+\end{theorem}
+\begin{proof}
+    We need to prove the five vector space axioms.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: Since $F$ is a field, therefore $(F, +)$, the additive group of $F$, is an abelian group.
+        
+        \item \textbf{Multiplication-Identity}: Let $\textbf{u} \in F$. Note $1\textbf{u} = \textbf{u}$ since 1 is the multiplicative identity of $F$, which shows that this axiom is satisfied.
+
+        \item \textbf{Multiplication-Compatibility}: Let $r, s \in K$ and $\textbf{u} \in F$. Then $r(s\textbf{u}) = (rs)\textbf{u}$ by the associativity of multiplication in the field $F$.
+        
+        \item \textbf{Distributivity-Addition}: Let $k \in K$ and $\textbf{u}, \textbf{v} \in F$. Then $k(\textbf{u} + \textbf{v}) = k\textbf{u} + k\textbf{v}$ by the distributivity of multiplication over addition in the field $F$.
+        
+        \item \textbf{Distributivity-Scalar}: Let $r, s \in K$ and $\textbf{u} \in \C$. Note that we see $(r+s)\textbf{u} = r\textbf{u} + s\textbf{u}$, again by the distributivity of multiplication over addition in the field $F$.
+    \end{itemize}
+
+    Therefore, all five vector space axioms are satisfied, proving that $F$ is a vector space over the subfield $K$.
+\end{proof}
 
 \section{Subspaces}
 % TODO: Add
@@ -12,5 +160,5 @@ Abstract algebra has three core structures -- groups, rings, and fields. So far,
 
 \newpage
 
-\section{Problem}
+\section{Problems}
 % TODO: Add
