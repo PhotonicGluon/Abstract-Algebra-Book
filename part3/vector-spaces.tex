@@ -89,6 +89,22 @@ We look at some elementary examples of vector spaces.
     Since all the vector space axioms are satisfied, we proved that $\R^n$ is a vector space over the field $\R$.
 \end{example}
 
+\begin{example}\label{example-polynomial-ring-over-field-is-vector-space}
+    Let $F$ be a field. We show that the polynomial ring $F[x]$ is a vector space over $F$, where vector addition is simply polynomial addition and scalar multiplication by $r \in F$ is polynomial multiplication by the constant polynomial $r$.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: We have repeatedly shown that $(R[x], +)$ is a commutative ring for any ring $R$, so it also applies to the field $F$.
+        
+        \item \textbf{Multiplication-Identity}: Let $f(x) \in F[x]$. Note $1f(x) = f(x)$ since 1 is the multiplicative identity of $F$.
+
+        \item \textbf{Multiplication-Compatibility}: Let $a, b \in F$ and $f(x) \in F$. Then clearly $a(bf(x)) = (ab)f(x)$ by polynomial multiplication rules.
+        
+        \item \textbf{Distributivity-Addition}: Let $a \in F$ and $f(x), g(x) \in F[x]$. Then we know from polynomial multiplication that $a(f(x) + g(x)) = af(x) + ag(x)$.
+        
+        \item \textbf{Distributivity-Scalar}: Let $a, b \in F$ and $f(x) \in F[x]$. Then we also know from polynomial multiplication that $(a+b)f(x) = af(x) + bf(x)$.
+    \end{itemize}
+    Therefore $F[x]$ is a vector space over $F$.
+\end{example}
+
 \begin{example}
     $\C$ is a vector space over $\R$ under the usual definitions of addition and multiplication of complex numbers.
     \begin{itemize}
@@ -223,8 +239,6 @@ Like how groups have subgroups, rings have subrings, and fields have subfields, 
 
 To prove all the axioms for vector spaces for the subspace is way too tedious. Like with groups, rings, and fields, we have a simple test to determine whether a subset of a vector space is a subspace, called the \textbf{subspace test}.
 
-\newpage
-
 \begin{theorem}[Subspace Test]\label{thrm-subspace-test}
     Let $V$ be a vector space over a field $F$ and $U$ be a non-empty subset of $V$. Then $U$ is a subspace of $V$ over $F$ and using the same operations as $V$ if and only if
     \begin{itemize}
@@ -296,6 +310,14 @@ Admittedly, the previous example is quite boring. Let's look at a more interesti
     Therefore $V$ is a subspace of $\R^4$ by the subspace test (\myref{thrm-subspace-test}).
 \end{example}
 
+\begin{exercise}
+    Let $F$ be a field and $n$ be a non-negative integer. Prove that
+    \[
+        V = \{f(x) \in F[x] \vert \deg f(x) \leq n\} \cup \{0\}
+    \]
+    is a vector space over $F$ using the definitions of polynomial addition and scalar multiplication.\newline
+    (\textit{Note: be careful with the zero polynomial!})
+\end{exercise}
 \section{Linear (In)dependence and Basis}
 % TODO: Add
 

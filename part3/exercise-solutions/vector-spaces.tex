@@ -48,4 +48,22 @@
         \textbf{0} = a\textbf{0} + \textbf{0},
     \]
     by \textbf{Addition-Abelian-Inverses}, and hence $a\textbf{0} = \textbf{0}$, by \textbf{Addition-Abelian-Identity}.
+
+    \item We know from \myref{example-polynomial-ring-over-field-is-vector-space} that $F[x]$ is a vector space, so we just need to prove that $V$ is a subspace of $F[x]$.
+    \begin{itemize}
+        \item Clearly $0 \in V$.
+        \item Let $f(x), g(x) \in V$. We consider two cases.
+        \begin{itemize}
+            \item Suppose that $f(x)$ or $g(x)$ is the zero polynomial; without loss of generality assume $g(x) = 0$. Then $f(x) + g(x) = f(x) + 0 = f(x) \in V$.
+            \item Otherwise, $\deg f(x), \deg g(x) \leq n$. By \myref{thrm-polynomial-degree-properties} we thus see that $\deg (f(x) + g(x)) \leq n$, meaning $f(x) + g(x) \in V$.
+        \end{itemize}
+        In either case, $f(x) + g(x) \in V$.
+        \item Let $a \in F$ and $f(x) \in V$. We again consider two cases.
+        \begin{itemize}
+            \item If $f(x) = 0$, then $af(x) = 0$ which is in $V$.
+            \item Otherwise, we know $\deg f(x) \leq n$ and multiplication by a constant does not change the degree. Hence $\deg (af(x)) \leq n$ and so $af(x) \in V$.
+        \end{itemize}
+        In either case, $af(x) \in V$.
+    \end{itemize}
+    Therefore, by subspace test (\myref{thrm-subspace-test}), we see $V$ is a subspace of $F[x]$ over $F$, meaning that $V$ is a subspace over $F$.
 \end{questions}
