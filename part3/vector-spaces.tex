@@ -318,6 +318,92 @@ Admittedly, the previous example is quite boring. Let's look at a more interesti
     is a vector space over $F$ using the definitions of polynomial addition and scalar multiplication.\newline
     (\textit{Note: be careful with the zero polynomial!})
 \end{exercise}
+
+\section{Linear Combinations and Span}
+Vector spaces have many elements. Using the vector space axioms, we may express these elements in terms of other elements from the vector space. One may wonder if there is a set of elements that `generates' the full vector space. This is the motivation for the \textbf{spanning set} of a vector space.
+
+Before that, let's define what a linear combination is.
+\begin{definition}
+    Let $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n$ be vectors belonging to a vector space $V$ over a field $F$. A vector $\textbf{u} \in V$ is said to be a \textbf{linear combination}\index{linear combination} of the vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n$ if
+    \[
+        \textbf{u} = \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_n \textbf{v}_n
+    \]
+    where $\alpha_1, \alpha_2, \dots, \alpha_n \in F$.
+\end{definition}
+
+\begin{definition}
+    Let $V$ be a vector space over a field $F$ and let $S$ be a subset of $V$. Then the \textbf{span}\index{span} of $S$ is denoted $\Span{S}$ and is the set of all linear combinations of the vectors of $S$. In other words, if $S = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\}$ then
+    \[
+        \Span{S} = \left\{\sum_{i=1}^n \alpha_i\textbf{v}_i \vert \alpha_i \in F\right\}.
+    \]
+\end{definition}
+\begin{remark}
+    \cite[p.~331]{gallian_2016} uses the alternate notation $\left\langle\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\right\rangle$, while \cite[p.~31]{treil_2017} uses the notation $\mathcal{L}\left(\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\right)$.
+\end{remark}
+
+\begin{definition}
+    Let $V$ be a vector space over a field $F$ and let $S$ be a subset of $V$. Then $S$ is called a \textbf{spanning set}\index{spanning set} of $V$ if and only if $\Span{S} = V$, and we say that $S$ \textbf{spans} $V$.
+\end{definition}
+
+\begin{example}
+    It is quite obvious that $\{(1, 0, 0), (0, 1, 0), (0, 0, 1)\} \subset \R^R$ spans $\R^3$.
+\end{example}
+
+\begin{example}
+    Consider the set $S = \{(1, 2, 1), (1, 0, 2), (1, 1, 0)\} \subset \R^3$. We show that $S$ spans $V$.
+
+    Let $(a, b, c) \in \R^3$. Consider $\alpha_1(1, 2, 1) + \alpha_2(1, 0, 2) + \alpha_3(1, 1, 0) = (a, b, c)$. Thus we see
+    \begin{align*}
+        \alpha_1 + \alpha_2 + \alpha_3 &= a\\
+        2\alpha_2  + \alpha_3 &= b\\
+        \alpha_1 + 2\alpha_2 &= c 
+    \end{align*}
+    which we may solve to get
+    \begin{align*}
+        \alpha_1 &= \frac13(c + 2b - 2a)\\
+        \alpha_2 &= \frac13(c - b + a)\\
+        \alpha_3 &= \frac13(4a - b - 2c)
+    \end{align*}
+    which means that each element in $\R^3$ has a unique set of $\alpha_1, \alpha_2, \alpha_3 \in \R$ that produces it. Therefore $\Span{S} = \R^3$.
+\end{example}
+
+\begin{example}
+    We show that $(-3, 1)$ does not lie in $\Span{(1,1), (2,2)}$.
+
+    Suppose otherwise, that $\alpha(1,1) + \beta(2,2) = (-3,1)$ for some $\alpha, \beta \in \R$. Then
+    \begin{align*}
+        \alpha + 2\beta = -3\\
+        \alpha + 2\beta = 1
+    \end{align*}
+    which clearly has no solution. Therefore $(-3, 1) \notin \Span{(1, 1), (2, 2)}$.
+\end{example}
+
+\begin{example}
+    Let the vector space
+    \[
+        V = \{f(x) \in \R[x] \vert \deg f(x) \leq 2\} \cup \{0\}.
+    \]
+    Let $S = \{x^2 + 2, x^2 + 2x + 1\}$. We show that $S$ is not a spanning set of $V$.
+
+    Consider the constant polynomial 1. Suppose that 1 can be expressed as a linear combination of the polynomials in $S$, i.e. $\alpha(x^2 + 2) + \beta(x^2+2x+1) = 1$ for some $\alpha, \beta \in \R$, i.e. $(\alpha + \beta)x^2 + 2\beta x + (2\alpha + \beta) = 1$. So we see
+    \begin{align*}
+        \alpha + \beta = 0\\
+        2\beta = 0\\
+        2\alpha + \beta = 1
+    \end{align*}
+    which has no solution. Therefore $1 \notin \Span{S}$, meaning that $\Span{S} \neq V$.
+\end{example}
+
+\begin{exercise}
+    Let the vector space
+    \[
+        V = \{f(x) \in \Q[x] \vert \deg f(x) \leq 2\} \cup \{0\}.
+    \]
+    Let $S = \{x, x + 2, x^2 + 2, x^2 + 2x + 3\}$. Prove or disprove: $S$ is a spanning set for $V$.
+\end{exercise}
+
+\newpage
+
 \section{Linear (In)dependence and Basis}
 % TODO: Add
 
