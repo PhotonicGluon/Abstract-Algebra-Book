@@ -208,7 +208,93 @@ We note some elementary properties of vectors in vector spaces.
 \end{exercise}
 
 \section{Subspaces}
-% TODO: Add
+Like how groups have subgroups, rings have subrings, and fields have subfields, vector spaces also have their own analogue, called \textbf{subspaces}.
+\begin{definition}
+    Let $V$ be a vector space over a field $F$ and let $U$ be a subset of $V$. Then $U$ is a \textbf{subspace}\index{subspace} of $V$ if and only if $U$ is also a vector space over $F$ under the operations of $V$.
+\end{definition}
+
+\begin{example}
+    Since $\R$ is a subset of $\C$ and $\R$ is a vector space over itself, thus $\R$ is a subspace of $\C$.
+\end{example}
+
+\begin{example}
+    Let $F$ be a field, $K$ a subfield of $F$, and $L$ a subfield of $K$. We note that $F$ is a vector space over $L$ (\myref{thrm-field-is-vector-space}). Also $K$ is a vector space over $L$ using the same reason. Since $K \subseteq F$, thus $K$ is a subspace of $F$.
+\end{example}
+
+To prove all the axioms for vector spaces for the subspace is way too tedious. Like with groups, rings, and fields, we have a simple test to determine whether a subset of a vector space is a subspace, called the \textbf{subspace test}.
+
+\newpage
+
+\begin{theorem}[Subspace Test]\label{thrm-subspace-test}
+    Let $V$ be a vector space over a field $F$ and $U$ be a non-empty subset of $V$. Then $U$ is a subspace of $V$ over $F$ and using the same operations as $V$ if and only if
+    \begin{itemize}
+        \item for any $\textbf{u}, \textbf{v} \in U$ we have $\textbf{u} + \textbf{v} \in U$; and
+        \item for any $\textbf{u} \in U$ and $a \in F$ we have $a\textbf{u} \in U$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    The forward direction is trivial, since any subspace of $V$ is a vector space, and these two conditions are exactly the closure conditions of addition and scalar multiplication.
+
+    We work in the reverse direction. Suppose these two conditions are satisfied. We will prove the remainder of the vector space axioms.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: Since addition is the same as that of the vector space $V$, addition is also already commutative. So all that remains is to show that $(U, +)$ is a group; we show $(U, +) \leq (V, +)$ instead.
+        
+        We note that $-1 \in F$ and so $(-1)\textbf{v}$ is in $U$ for any $\textbf{v} \in U$ by condition 2. Note $(-1)\textbf{v} = -\textbf{v}$ by \myref{prop-vector-inverse-is-negative-vector}, so $-\textbf{v} \in U$ for any $\textbf{v} \in U$. Finally, we see
+        \[
+            \textbf{u} + (-\textbf{v}) \in U
+        \]
+        by condition 1. Using the subgroup test (\myref{thrm-subgroup-test}) we know $(U, +) \leq (V, +)$.
+        
+        \item \textbf{Multiplication-Identity}: The axiom holds for $V$, i.e. for all $\textbf{u} \in V$ we have $1\textbf{u} = \textbf{u}$. Since $U \subseteq V$, this means that this statement holds for elements of $U$ too, i.e. for all $\textbf{u} \in U$ we have $1\textbf{u} = \textbf{u}$. Thus this axiom is satisfied.
+        
+        \item \textbf{Multiplication-Compatibility}: The axiom holds for $V$, so it holds for $U$ since $U \subseteq V$ and by using a similar reasoning as above.
+        
+        \item \textbf{Distributivity-Addition}: The axiom holds for $V$, so it holds for $U$ by using a similar reasoning as above.
+        
+        \item \textbf{Distributivity-Scalar}: The axiom holds for $V$, so it holds for $U$ by using a similar reasoning as above.
+    \end{itemize}
+    So all the vector space axioms are satisfied, meaning that $U$ is a vector space over $F$. As $U \subseteq V$, we therefore see that $U$ is a subspace of $V$.
+\end{proof}
+\begin{remark}
+    Like with the subgroup test, we usually verify $U$ is non-empty by asserting that the zero vector is inside $U$.
+\end{remark}
+
+\begin{example}
+    We prove that $\R$ is a subspace of $\C$ over $\R$ by considering the subspace test (\myref{thrm-subspace-test}).
+    \begin{itemize}
+        \item We note that the zero vector of $\C$, 0, is also present in $\R$, so $\R$ is non-empty.
+        \item Also note that for any real numbers $\textbf{x}$ and $\textbf{y}$ we have $\textbf{x} + \textbf{y} \in \R$.
+        \item Finally, the product of any two real numbers is real, so for $a \in \R$ and $\textbf{u} \in \R$ we have $a\textbf{u} \in \R$.
+    \end{itemize}
+    Thus $\R$ is a subspace of $\C$ over $\R$.
+\end{example}
+
+Admittedly, the previous example is quite boring. Let's look at a more interesting example.
+\begin{example}
+    We know that $\R^4$ is a vector space over $\R$ (\myref{example-R^n-is-vector-space}). Consider the set
+    \[
+        V = \{(a, b, a-b, a+b) \vert a, b \in \R\}.
+    \]
+    We show that $V$ is a subspace of $\R^4$ over $\R$.
+    \begin{itemize}
+        \item Note that the zero vector of $\R^4$, $(0,0,0,0)$, is in $V$ by choosing $a = b = 0$. Therefore $V$ is non-empty.
+        \item For any two vectors $\textbf{u} = (a, b, a-b, a+b)$ and $\textbf{v} = (c, d, c-d, c+d)$ in $V$, we see
+        \begin{align*}
+            \textbf{u} + \textbf{v} &= (a, b, a-b, a+b) + (c, d, c-d, c+d)\\
+            &= (a + c, b + d, a - b + c - d, a + b + c + d)\\
+            &= (a+c, b+d, (a+c)-(b+d), (a+c)+(b+d))\\
+            &\in V.
+        \end{align*}
+        \item For $\alpha \in \R$ and $\textbf{u} = (a, b, a-b, a+b) \in V$ we note
+        \begin{align*}
+            \alpha\textbf{u} &= \alpha(a, b, a-b, a+b)\\
+            &= (\alpha a, \alpha b, \alpha(a-b), \alpha(a+b))\\
+            &= (\alpha a, \alpha b, (\alpha a) - (\alpha b), (\alpha a) + (\alpha b))\\
+            &\in V.
+        \end{align*}
+    \end{itemize}
+    Therefore $V$ is a subspace of $\R^4$ by the subspace test (\myref{thrm-subspace-test}).
+\end{example}
 
 \section{Linear (In)dependence and Basis}
 % TODO: Add
