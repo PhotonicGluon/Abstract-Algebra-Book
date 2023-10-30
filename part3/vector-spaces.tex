@@ -6,7 +6,7 @@ We first look at what a vector space is.
 \begin{definition}
     A \textbf{vector space}\index{vector space} over a field $F$ is a non-empty set $V$ together with two operations,
     \begin{itemize}
-        \item \textbf{addition}\index{vector space!addition}, denoted by $+$, where for $\textbf{u}, \textbf{v} \in V$ it produces a new element $\textbf{u} + \textbf{v} \in V$; and
+        \item \textbf{(vector) addition}\index{vector space!vector addition}, denoted by $+$, where for $\textbf{u}, \textbf{v} \in V$ it produces a new element $\textbf{u} + \textbf{v} \in V$; and
         \item \textbf{scalar multiplication}\index{vector space!scalar multiplication}, which assigns an $a \in F$ and a $\textbf{u} \in V$ to another element in $V$, denoted by $a\textbf{u} \in V$,
     \end{itemize}
     such that it satisfies the \textbf{vector space axioms}\index{axiom!vector space} listed below.
@@ -23,6 +23,7 @@ To avoid confusion with denoting elements from these two sets, we adopt the foll
 \begin{itemize}
     \item Elements in $F$ will generally be denoted by letters from the beginning of the alphabet. For example, $a, b, c, d \in F$.
     \item Elements in $V$ will be indicated with boldface and are generally denoted by letters near the end of the alphabet. For example, $\textbf{u}, \textbf{v}, \textbf{w} \in V$.
+    \item The additive identity of the group $(V, +)$ will be denoted $\textbf{0}$, a boldface zero.
     \item Define $\textbf{u} - \textbf{v}$ as $\textbf{u} + (-\textbf{v})$, where $-\textbf{v}$ denotes the inverse of $\textbf{v}$ in the group $(V, +)$.
 \end{itemize}
 
@@ -128,7 +129,7 @@ We look at some elementary examples of vector spaces.
 
 One sees that $\R$ is a subfield of $\C$. The previous example gives us an indication of a much deeper result about vector fields, which we note in the following theorem.
 
-\begin{theorem}
+\begin{theorem}\label{thrm-field-is-vector-space}
     Let $F$ be a field and $K$ a subfield of $F$. Then $F$ is a vector space over $K$, with vector addition and scalar multiplication being the operations of $F$.
 \end{theorem}
 \begin{proof}
@@ -158,6 +159,52 @@ One sees that $\R$ is a subfield of $\C$. The previous example gives us an indic
         W = \{f(x) \in \R[x] \vert \deg f(x) = 5\}.
     \]
     Is $W$ a vector space?
+\end{exercise}
+
+We note some elementary properties of vectors in vector spaces.
+\begin{proposition}\label{prop-vector-scaled-by-zero-is-zero-vector}
+    Let $V$ be a vector space over $F$, and let $\textbf{u} \in V$. Then $0\textbf{u} = \textbf{0}$.
+\end{proposition}
+\begin{proof}
+    Note
+    \[
+        0\textbf{u} = (0 + 0)\textbf{u} = 0\textbf{u} + 0\textbf{u}
+    \]
+    by \textbf{Distributivity-Scalar}. Then, by adding $-(0\textbf{u})$ on both sides we see
+    \begin{align*}
+        0\textbf{u} + (-(0\textbf{u})) &= (0\textbf{u} + 0\textbf{u}) + (-(0\textbf{u}))\\
+        &= 0\textbf{u} + (0\textbf{u} + (-(0\textbf{u}))) & (\textbf{Addition-Abelian-Associativity})\\
+    \end{align*}
+    which means
+    \[
+        \textbf{0} = 0\textbf{u} + \textbf{0},
+    \]
+    by \textbf{Addition-Abelian-Inverses}, and hence $0\textbf{u} = \textbf{0}$, by \textbf{Addition-Abelian-Identity}.
+\end{proof}
+
+\begin{proposition}\label{prop-zero-vector-scaled-by-constant-is-zero-vector}
+    Let $V$ be a vector space over $F$, and let $a \in F$. Then $a\textbf{0} = \textbf{0}$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-zero-vector-scaled-by-constant-is-zero-vector}.
+\end{proof}
+
+\begin{proposition}\label{prop-vector-inverse-is-negative-vector}
+    Let $V$ be a vector space over $F$. Let -1 denote the additive inverse of the multiplicative identity of $F$. Let $\textbf{u} \in V$. Then $-\textbf{u} = (-1)\textbf{u}$.
+\end{proposition}
+\begin{proof}
+    One sees that
+    \begin{align*}
+        \textbf{u} + (-1)\textbf{u} &= 1\textbf{u} + (-1)\textbf{u} & (\textbf{Multiplication-Identity})\\
+        &= (1 + (-1))\textbf{u} & (\textbf{Distributivity-Scalar})\\
+        &= 0\textbf{u}\\
+        &= \textbf{0} & (\myref{prop-vector-scaled-by-zero-is-zero-vector})
+    \end{align*}
+    which means that $(-1)\textbf{u}$ is the additive inverse of $\textbf{u}$. Since the inverse in a group is unique, therefore \textit{the} additive inverse of $\textbf{u}$ is $(-1)\textbf{u}$, i.e. $-\textbf{u} = (-1)\textbf{u}$.
+\end{proof}
+
+\begin{exercise}\label{exercise-zero-vector-scaled-by-constant-is-zero-vector}
+    Prove \myref{prop-zero-vector-scaled-by-constant-is-zero-vector}.
 \end{exercise}
 
 \section{Subspaces}
