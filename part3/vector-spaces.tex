@@ -404,7 +404,81 @@ Before that, let's define what a linear combination is.
 
 \newpage
 
-\section{Linear (In)dependence and Basis}
+\section{Linear Independence}
+The next definition is crucial in vector space theory.
+\begin{definition}
+    Let $V$ be a vector space over a field $F$. The vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n \in V$ are said to be \textbf{linearly independent}\index{linearly independent} if and only if $\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0$ is the only solution to
+    \[
+        \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_n\textbf{v}_n = \textbf{0},
+    \]
+    where $\alpha_i \in F$.
+
+    If the vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n \in V$ are not linearly independent, they are said to be \textbf{linearly dependent}\index{linearly dependent}.
+\end{definition}
+
+\begin{example}
+    Consider the vector space $\R^2$ over $\R$, and the vectors $(0, 1)$ and $(1, 1)$. We claim that they are linearly independent. Suppose $\alpha, \beta \in \R$ such that
+    \[
+        \alpha(0, 1) + \beta(1, 1) = (0, 0)
+    \]
+    which means
+    \begin{align*}
+        \beta = 0\\
+        \alpha + \beta = 0
+    \end{align*}
+    and so one clearly sees $\alpha = \beta = 0$. Therefore $(0, 1)$ and $(1, 1)$ are linearly independent.
+
+    On the other hand, $(1, 1)$ and $(2, 2)$ are not linearly independent (i.e., linearly dependent) since
+    \[
+        2(1,1) + (-1)(2, 2) = (0, 0).
+    \]
+\end{example}
+
+\begin{example}
+    Consider the vectors $(1, 1, 1)$, $(1, 2, 1)$, and $(1, 2, 3)$ in $\R^3$ over $\R$. Unlike the previous example, it is not immediately clear that these vectors are linearly independent. But we can see this by setting
+    \[
+        \alpha(1, 1, 1) + \beta(1, 2, 1) + \gamma(1, 2, 3) = (0, 0, 0),
+    \]
+    which yields the system of equations
+    \begin{align*}
+        \alpha + \beta + \gamma &= 0\\
+        \alpha + 2\beta + 2\gamma &= 0\\
+        \alpha + \beta + 3\gamma &= 0,
+    \end{align*}
+    which has only the trivial solution $\alpha = \beta = \gamma = 0$.
+
+    On the other hand, the vectors $(0, 1, 1)$, $(1, 1, 2)$, and $(1, 2, 3)$ are linearly dependent since
+    \[
+        (0, 1, 1) + (1, 1, 2) + (-1)(1, 2, 3) = (0, 0, 0).
+    \]
+\end{example}
+
+\begin{example}
+    Let
+    \[
+        V = \{f(x) \in \R[x] \vert \deg f(x) \leq 3\} \cup \{0\}
+    \]
+    be a vector space over $\R$. We note that the `vectors' (in fact, polynomials) in the set $S = \{2, 3x, 5x^2, 7x^3\}$ are linearly independent as the equation
+    \[
+        \alpha\times2 + \beta(3x) + \gamma(5x^2) + \delta(7x^3) = 0
+    \]
+    clearly yields the solution that $\alpha = \beta = \gamma = \delta = 0$.
+\end{example}
+
+\begin{exercise}
+    For the vector space
+    \[
+        V = \{f(x) \in \Q[x] \vert \deg f(x) \leq 2\} \cup \{0\}
+    \]
+    over $\Q$, which of the following sets of vectors of $V$ is/are linearly independent?
+    \begin{partquestions}{\alph*}
+        \item $S = \{1, x + 2\}$
+        \item $T = \{1, x + 2, x^2 + 2x + 3\}$
+        \item $U = \{1, x + 2, x^2 + 2x + 3, x^2 - 2x - 3\}$
+    \end{partquestions}
+\end{exercise}
+
+\section{Basis}
 % TODO: Add
 
 \newpage
