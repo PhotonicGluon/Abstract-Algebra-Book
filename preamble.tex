@@ -13,7 +13,7 @@
 \usepackage{thmtools}
 
 % Page formatting, colour and images
-\usepackage[inner=2.5cm, outer=1.5cm, top=2.5cm, bottom=2cm]{geometry}
+\usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{tocloft}
 \usepackage[x11names]{xcolor}
@@ -47,6 +47,17 @@
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{enumitem}
+
+%=============== Geometry ================
+\makeatletter
+\Ifstr{\isebook}{true}{
+    % eBook geometry
+    \newgeometry{inner=2cm, outer=2cm, top=2.5cm, bottom=2cm}
+}{
+    % Normal paper geometry
+    \newgeometry{inner=2.5cm, outer=1.5cm, top=2.5cm, bottom=2cm}
+}
+\makeatother
 
 %============== Resources ================
 % Bibliography
