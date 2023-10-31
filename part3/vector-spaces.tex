@@ -13,15 +13,15 @@ We first look at what a vector space is.
     \begin{itemize}
         \item \textbf{Addition-Abelian}\index{axiom!vector space!addition-abelian}: $(V, +)$ forms an abelian group.
         \item \textbf{Multiplication-Identity}\index{axiom!vector space!multiplication-identity}: For all $\textbf{u} \in V$ we have $1\textbf{u} = \textbf{u}$, where $1 \in F$ denotes the multiplicative identity of $F$.
-        \item \textbf{Multiplication-Compatibility}\index{axiom!vector space!multiplication-compatibility}: For all $a,b  \in F$ and $\textbf{u} \in V$ we have $a(b\textbf{u}) = (ab)\textbf{u}$.
-        \item \textbf{Distributivity-Addition}\index{axiom!vector space!distributivity-addition}: For all $a \in F$ and $\textbf{u}, \textbf{v} \in V$ we have $a(\textbf{u} + \textbf{v}) = a\textbf{u} + a\textbf{v}$.
-        \item \textbf{Distributivity-Scalar}\index{axiom!vector space!distributivity-scalar}: For all $a, b \in F$ and $\textbf{u} \in V$ we have $(a+b)\textbf{u} = a\textbf{u} + b\textbf{u}$.
+        \item \textbf{Multiplication-Compatibility}\index{axiom!vector space!multiplication-compatibility}: For all $\alpha,\beta \in F$ and $\textbf{u} \in V$ we have $\alpha(\beta\textbf{u}) = (\alpha\beta)\textbf{u}$.
+        \item \textbf{Distributivity-Addition}\index{axiom!vector space!distributivity-addition}: For all $\alpha \in F$ and $\textbf{u}, \textbf{v} \in V$ we have $\alpha(\textbf{u} + \textbf{v}) = \alpha\textbf{u} + \alpha\textbf{v}$.
+        \item \textbf{Distributivity-Scalar}\index{axiom!vector space!distributivity-scalar}: For all $\alpha, \beta \in F$ and $\textbf{u} \in V$ we have $(\alpha+\beta)\textbf{u} = \alpha\textbf{u} + \beta\textbf{u}$.
     \end{itemize}
 \end{definition}
 
 To avoid confusion with denoting elements from these two sets, we adopt the following conventions regarding notation.
 \begin{itemize}
-    \item Elements in $F$ will generally be denoted by letters from the beginning of the alphabet. For example, $a, b, c, d \in F$.
+    \item Elements in $F$ will generally be denoted by greek letters. For example $\alpha, \beta, \gamma, \delta \in F$.
     \item Elements in $V$ will be indicated with boldface and are generally denoted by letters near the end of the alphabet. For example, $\textbf{u}, \textbf{v}, \textbf{w} \in V$.
     \item The additive identity of the group $(V, +)$ will be denoted $\textbf{0}$, a boldface zero.
     \item Define $\textbf{u} - \textbf{v}$ as $\textbf{u} + (-\textbf{v})$, where $-\textbf{v}$ denotes the inverse of $\textbf{v}$ in the group $(V, +)$.
@@ -58,30 +58,30 @@ We look at some elementary examples of vector spaces.
         \end{align*}
         so this axiom is satisfied.
 
-        \item \textbf{Multiplication-Compatibility}: Let $p, q \in \R$ and $(a_1, a_2, \dots, a_n) \in \R^n$. Note
+        \item \textbf{Multiplication-Compatibility}: Let $\alpha, \beta \in \R$ and $(a_1, a_2, \dots, a_n) \in \R^n$. Note
         \begin{align*}
-            p\left(q(a_1, a_2, \dots, a_n)\right) &= p(qa_1, qa_2, \dots, qa_n)\\
-            &= (pqa_1, pqa_2, \dots, pqa_n)\\
-            &= (pq)(a_1, a_2, \dots, a_n)
+            \alpha\left(\beta(a_1, a_2, \dots, a_n)\right) &= \alpha(\beta a_1, \beta a_2, \dots, \beta a_n)\\
+            &= (\alpha\beta a_1, \alpha\beta a_2, \dots, \alpha\beta a_n)\\
+            &= (\alpha\beta)(a_1, a_2, \dots, a_n)
         \end{align*}
         so this axiom is satisfied.
         
-        \item \textbf{Distributivity-Addition}: Let $k \in \R$ and $(a_1, a_2, \dots, a_n), (b_1, b_2, \dots, b_n) \in \R^n$. We see
+        \item \textbf{Distributivity-Addition}: Let $\alpha \in \R$ and $(a_1, a_2, \dots, a_n), (b_1, b_2, \dots, b_n) \in \R^n$. We see
         \begin{align*}
-            k\left((a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n)\right) &= k(a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)\\
-            &= (k(a_1 + b_1), k(a_2 + b_2), \dots, k(a_n + b_n))\\
-            &= (ka_1 + kb_1, ka_2 + kb_2, \dots, ka_n + kb_n)\\
-            &= (ka_1, ka_2, \dots, ka_n) + (kb_1, kb_2, \dots, kb_n)\\
-            &= k(a_1, a_2, \dots, a_n) + k(b_1, b_2, \dots, b_n)
+            \alpha\left((a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n)\right) &= \alpha(a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)\\
+            &= (\alpha(a_1 + b_1), \alpha(a_2 + b_2), \dots, \alpha(a_n + b_n))\\
+            &= (\alpha a_1 + \alpha b_1, \alpha a_2 + \alpha b_2, \dots, \alpha a_n + \alpha b_n)\\
+            &= (\alpha a_1, \alpha a_2, \dots, \alpha a_n) + (\alpha b_1, \alpha b_2, \dots, \alpha b_n)\\
+            &= \alpha(a_1, a_2, \dots, a_n) + \alpha(b_1, b_2, \dots, b_n)
         \end{align*}
         which shows that the axiom is satisfied.
         
-        \item \textbf{Distributivity-Scalar}: Let $p, q \in \R$ and $(a_1, a_2, \dots, a_n) \in \R^n$. Then
+        \item \textbf{Distributivity-Scalar}: Let $\alpha, \beta \in \R$ and $(a_1, a_2, \dots, a_n) \in \R^n$. Then
         \begin{align*}
-            (p+q)(a_1, a_2, \dots, a_n) &= ((p+q)a_1, (p+q)a_2, \dots, (p+q)a_n)\\
-            &= (pa_1 + qa_1, pa_2 + qa_2, \dots, pa_n + qa_n)\\
-            &= (pa_1, pa_2, \dots, pa_n) + (qa_1, qa_2, \dots, qa_n)\\
-            &= p(a_1, a_2, \dots, a_n) + q(a_1, a_2, \dots, a_n).
+            (\alpha+\beta)(a_1, a_2, \dots, a_n) &= ((\alpha+\beta)a_1, (\alpha+\beta)a_2, \dots, (\alpha+\beta)a_n)\\
+            &= (\alpha a_1 + \beta a_1, \alpha a_2 + \beta a_2, \dots, \alpha a_n + \beta a_n)\\
+            &= (\alpha a_1, \alpha a_2, \dots, \alpha a_n) + (\beta a_1, \beta a_2, \dots, \beta a_n)\\
+            &= \alpha(a_1, a_2, \dots, a_n) + \beta(a_1, a_2, \dots, a_n).
         \end{align*}
         Therefore this axiom is satisfied.
     \end{itemize}
@@ -90,17 +90,17 @@ We look at some elementary examples of vector spaces.
 \end{example}
 
 \begin{example}\label{example-polynomial-ring-over-field-is-vector-space}
-    Let $F$ be a field. We show that the polynomial ring $F[x]$ is a vector space over $F$, where vector addition is simply polynomial addition and scalar multiplication by $r \in F$ is polynomial multiplication by the constant polynomial $r$.
+    Let $F$ be a field. We show that the polynomial ring $F[x]$ is a vector space over $F$, where vector addition is simply polynomial addition and scalar multiplication by $\alpha \in F$ is polynomial multiplication by the constant polynomial $\alpha$.
     \begin{itemize}
         \item \textbf{Addition-Abelian}: We have repeatedly shown that $(R[x], +)$ is a commutative ring for any ring $R$, so it also applies to the field $F$.
         
         \item \textbf{Multiplication-Identity}: Let $f(x) \in F[x]$. Note $1f(x) = f(x)$ since 1 is the multiplicative identity of $F$.
 
-        \item \textbf{Multiplication-Compatibility}: Let $a, b \in F$ and $f(x) \in F$. Then clearly $a(bf(x)) = (ab)f(x)$ by polynomial multiplication rules.
+        \item \textbf{Multiplication-Compatibility}: Let $\alpha, \beta \in F$ and $f(x) \in F$. Then clearly $\alpha(\beta f(x)) = (\alpha\beta)f(x)$ by polynomial multiplication rules.
         
-        \item \textbf{Distributivity-Addition}: Let $a \in F$ and $f(x), g(x) \in F[x]$. Then we know from polynomial multiplication that $a(f(x) + g(x)) = af(x) + ag(x)$.
+        \item \textbf{Distributivity-Addition}: Let $\alpha \in F$ and $f(x), g(x) \in F[x]$. Then we know from polynomial multiplication that $\alpha(f(x) + g(x)) = \alpha f(x) + \alpha g(x)$.
         
-        \item \textbf{Distributivity-Scalar}: Let $a, b \in F$ and $f(x) \in F[x]$. Then we also know from polynomial multiplication that $(a+b)f(x) = af(x) + bf(x)$.
+        \item \textbf{Distributivity-Scalar}: Let $\alpha, \beta \in F$ and $f(x) \in F[x]$. Then we also know from polynomial multiplication that $(\alpha+\beta)f(x) = \alpha f(x) + \beta f(x)$.
     \end{itemize}
     Therefore $F[x]$ is a vector space over $F$.
 \end{example}
@@ -112,11 +112,11 @@ We look at some elementary examples of vector spaces.
         
         \item \textbf{Multiplication-Identity}: Let $a + bi \in \C$. We see $1(a+bi) = 1a + 1bi = a + bi$ so this axiom is satisfied.
 
-        \item \textbf{Multiplication-Compatibility}: Let $p, q \in \R$ and $a + bi \in \C$. Note
+        \item \textbf{Multiplication-Compatibility}: Let $\alpha, \beta \in \R$ and $a + bi \in \C$. Note
         \begin{align*}
-            p(q(a+bi)) &= p(qa + qbi)\\
-            &= pqa + pqbi\\
-            &= (pq)(a+bi)
+            p(\beta(a+bi)) &= \alpha(\beta a + \beta bi)\\
+            &= \alpha\beta a + \alpha\beta bi\\
+            &= (\alpha\beta)(a+bi)
         \end{align*}
         so this axiom is satisfied.
         
@@ -130,12 +130,12 @@ We look at some elementary examples of vector spaces.
         \end{align*}
         which shows that the axiom is satisfied.
         
-        \item \textbf{Distributivity-Scalar}: Let $p, q \in \R$ and $a + bi \in \C$. Note
+        \item \textbf{Distributivity-Scalar}: Let $\alpha, \beta \in \R$ and $a + bi \in \C$. Note
         \begin{align*}
-            (p+q)(a+bi) &= (p+q)a + (p+q)bi\\
-            &= pa + qa + pbi + qbi\\
-            &= (pa + pbi) + (qa + qbi)\\
-            &= p(a+bi) + q(a+bi)
+            (\alpha+\beta)(a+bi) &= (\alpha+\beta)a + (\alpha+\beta)bi\\
+            &= \alpha a + \beta a + \alpha bi + \beta bi\\
+            &= (\alpha a + \alpha bi) + (\beta a + \beta bi)\\
+            &= \alpha(a+bi) + \beta(a+bi)
         \end{align*}
         so this axiom is satisfied.
     \end{itemize}
@@ -199,7 +199,7 @@ We note some elementary properties of vectors in vector spaces.
 \end{proof}
 
 \begin{proposition}\label{prop-zero-vector-scaled-by-constant-is-zero-vector}
-    Let $V$ be a vector space over $F$, and let $a \in F$. Then $a\textbf{0} = \textbf{0}$.
+    Let $V$ be a vector space over $F$, and let $\alpha \in F$. Then $\alpha\textbf{0} = \textbf{0}$.
 \end{proposition}
 \begin{proof}
     See \myref{exercise-zero-vector-scaled-by-constant-is-zero-vector}.
@@ -243,7 +243,7 @@ To prove all the axioms for vector spaces for the subspace is way too tedious. L
     Let $V$ be a vector space over a field $F$ and $U$ be a non-empty subset of $V$. Then $U$ is a subspace of $V$ over $F$ and using the same operations as $V$ if and only if
     \begin{itemize}
         \item for any $\textbf{u}, \textbf{v} \in U$ we have $\textbf{u} + \textbf{v} \in U$; and
-        \item for any $\textbf{u} \in U$ and $a \in F$ we have $a\textbf{u} \in U$.
+        \item for any $\textbf{u} \in U$ and $\alpha \in F$ we have $\alpha\textbf{u} \in U$.
     \end{itemize}
 \end{theorem}
 \begin{proof}
@@ -278,7 +278,7 @@ To prove all the axioms for vector spaces for the subspace is way too tedious. L
     \begin{itemize}
         \item We note that the zero vector of $\C$, 0, is also present in $\R$, so $\R$ is non-empty.
         \item Also note that for any real numbers $\textbf{x}$ and $\textbf{y}$ we have $\textbf{x} + \textbf{y} \in \R$.
-        \item Finally, the product of any two real numbers is real, so for $a \in \R$ and $\textbf{u} \in \R$ we have $a\textbf{u} \in \R$.
+        \item Finally, the product of any two real numbers is real, so for $\alpha \in \R$ and $\textbf{u} \in \R$ we have $\alpha\textbf{u} \in \R$.
     \end{itemize}
     Thus $\R$ is a subspace of $\C$ over $\R$.
 \end{example}
