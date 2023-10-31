@@ -575,9 +575,84 @@ The usefulness of a basis is given by the following theorem.
     \end{partquestions}
 \end{exercise}
 
-% TODO: Add
+One may wonder if a vector space could have bases of different sizes. The answer is no. The tools needed to prove this in general are out of scope for this book, but we produce a proof of this claim for bases with finitely many elements.
+
+\begin{theorem}[Dimension Theorem for Finite Bases]\label{thrm-dimension-theorem-for-finite-bases}
+    Suppose $B_\textbf{u} = \{\textbf{u}_1, \textbf{u}_2, \dots, \textbf{u}_m\}$ and $B_\textbf{v} = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\}$ are both bases for a vector space $V$ over a field $F$. Then $m = n$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 19.1]{gallian_2016}})]
+    Seeking a contradiction, suppose $m \neq n$. Without loss of generality we may assume $m < n$.
+
+    Consider the set
+    \[
+        B_1 = \{\textbf{v}_1, \textbf{u}_2, \textbf{u}_3, \dots, \textbf{u}_m\}.
+    \]
+    Since $B_\textbf{u}$ is a basis for $V$, we may write $\textbf{v}_1$ as a linear combination of the vectors in $B_\textbf{u}$, say $\textbf{v}_1 = \alpha_1\textbf{u}_1 + \alpha_2\textbf{u}_2 + \cdots + \alpha_m\textbf{u}_m$ where $\alpha_1, \alpha_2, \dots, \alpha_m \in F$. Note $\textbf{v}_1 \neq \textbf{0}$ as otherwise $B_\textbf{v}$ would not be a set of linearly independent vectors (and hence not be a basis). So there is some $\alpha_i$ that is non-zero; assume for convenience that $\alpha_1 \neq 0$. We see
+    \[
+        \textbf{u}_1 = \alpha_1^{-1}\left(\textbf{v}_1 - \left(\alpha_2\textbf{u}_2 + \cdots + \alpha_m\textbf{u}_m\right)\right)
+    \]
+    which means $\textbf{u}_1 \in \Span{B_1}$. Also clearly $\textbf{u}_2, \textbf{u}_3, \dots, \textbf{u}_m \in \Span{B_1}$ and so $\Span{B_1} = \Span{B_\textbf{u}} = V$.
+
+    Now consider
+    \[
+        B_2 = \{\textbf{v}_1, \textbf{v}_2, \textbf{u}_3, \dots, \textbf{u}_m\}.
+    \]
+    This time $\textbf{v}_2$ as a linear combination of the vectors in $B_\textbf{u}$, say $\textbf{v}_2 = \beta_1\textbf{v}_1 + \beta_2\textbf{u}_2 + \cdots + \beta_m\textbf{u}_m$ where $\beta_1, \beta_2, \dots, \beta_m \in F$. We note that one of $\beta_2, \beta_3, \dots, \beta_m$ has to be non-zero, as otherwise we would have $\textbf{v}_2 = \beta_1\textbf{v}_1$, meaning that the vectors in $B_\textbf{v}$ are linearly dependent (a contradiction). For convenience choose $\beta_2 = 0$. Using the same argument as before we know $\Span{B_2} = \Span{B_\textbf{u}} = V$.
+
+    Continuing in this fashion we see
+    \[
+        B_m = \{\textbf{v}_1, \textbf{v}_2, \textbf{v}_3, \dots, \textbf{v}_m\}
+    \]
+    spans $V$. But as $\textbf{v}_{m+1} \in V$ and $\Span{B_m} = V$, therefore $\textbf{v}_{m+1}$ is a linear combination of the vectors in $B_m$. So the vectors in $B_\textbf{v}$ are not all linearly independent, contradicting the fact that $B_\textbf{v}$ is a basis for $V$ and thus contains only linearly independent vectors.
+
+    Therefore $m = n$.
+\end{proof}
+
+The uniqueness of the number of elements that a finite basis must have gives us motivation to define the \textbf{dimension} of a vector space.
+
+\begin{definition}
+    The cardinality of any basis of a vector space $V$ is called the \textbf{dimension}\index{dimension}\index{vector space!dimension} and is denoted $\dim{V}$.
+    \begin{itemize}
+        \item If $V$ is the trivial vector space $\{\textbf{0}\}$, containing only the zero vector, then $\dim{V} = 0$ with the empty set $\emptyset$ as its basis.
+        \item If a basis of $V$ has finite cardinality $n$ then $V$ is \textbf{finite dimensional}\index{dimension!finite} and we write $\dim{V} = n$.
+        \item If a basis of $V$ has infinite cardinality then $V$ is \textbf{infinite dimensional}\index{dimension!infinite} and we write $\dim{V} = \infty$.
+    \end{itemize}
+\end{definition}
+\begin{remark}
+    Like with the cardinality of a set, the notation that ``$\dim{V} = \infty$'' is very poorly defined in other contexts. However, this will be sufficient for our purposes in this book.
+\end{remark}
+
+\begin{example}
+    The vector space $\R^n$ over $\R$ has a basis of
+    \[
+        \left\{(\underbrace{1, 0, 0, \dots, 0, 0}_{n \text{ elements}}), (\underbrace{0, 1, 0, \dots, 0, 0}_{n \text{ elements}}), (\underbrace{0, 0, 1, \dots, 0, 0}_{n \text{ elements}}), \dots, (\underbrace{0, 0, 0, \dots, 1}_{n \text{ elements}})\right\}
+    \]
+    which has $n$ elements. Therefore $\dim{\R^n} = n$.
+\end{example}
+
+\begin{example}
+    We earlier found that the vector space
+    \[
+        V = \{(a, b, a-b, a+b) \vert a, b \in \R\}
+    \]
+    over $\R$ has a basis $S = \{(1, 0, 1, 1), (0, 1, -1, 1)\}$. Since $|S| = 2$ therefore $\dim{V} = 2$.
+\end{example}
+
+\begin{exercise}
+    What is the dimension of the vector space $V$ in \myref{exercise-polynomial-of-degree-at-most-2-vector-space}?
+\end{exercise}
+
+We see a very interesting result with regards to finite dimensional vector spaces.
+
+\begin{theorem}\label{thrm-vector-space-of-dimension-n-isomorphic-to-F^n}
+    If $V$ is a finite-dimensional vector space over a field $F$ with $\dim{V} = n$, then $V$ is isomorphic as a vector space to $F^n$ over $F$.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-vector-space-of-dimension-n-isomorphic-to-F^n} (later).
+\end{proof}
 
 \newpage
 
 \section{Problems}
 % TODO: Add
+\end{problem}
