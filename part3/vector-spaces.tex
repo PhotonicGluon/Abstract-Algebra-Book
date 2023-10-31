@@ -332,7 +332,7 @@ Before that, let's define what a linear combination is.
 \end{definition}
 
 \begin{definition}
-    Let $V$ be a vector space over a field $F$ and let $S$ be a subset of $V$. Then the \textbf{span}\index{span} of $S$ is denoted $\Span{S}$ and is the set of all linear combinations of the vectors of $S$. In other words, if $S = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\}$ then
+    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then the \textbf{span}\index{span} of $S$ is denoted $\Span{S}$ and is the set of all linear combinations of the vectors of $S$. In other words, if $S = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\}$ then
     \[
         \Span{S} = \left\{\sum_{i=1}^n \alpha_i\textbf{v}_i \vert \alpha_i \in F\right\}.
     \]
@@ -341,8 +341,35 @@ Before that, let's define what a linear combination is.
     \cite[p.~331]{gallian_2016} uses the alternate notation $\left\langle\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\right\rangle$, while \cite[p.~31]{treil_2017} uses the notation $\mathcal{L}\left(\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\right)$.
 \end{remark}
 
+\begin{proposition}
+    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then $\Span{S}$ is a subspace of $V$.
+\end{proposition}
+\begin{proof}
+    Suppose $S = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\}$. Note that
+    \[
+        0\textbf{v}_1 + 0\textbf{v}_2 + \cdots + 0\textbf{v}_n = \textbf{0}
+    \]
+    so $\textbf{0} \in \Span{S}$.
+
+    Now let $\textbf{a}, \textbf{b} \in \Span{S}$, where
+    \begin{align*}
+        \textbf{a} &= \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_n\textbf{v}_n \text{ and}\\
+        \textbf{b} &= \beta_1\textbf{v}_1 + \beta_2\textbf{v}_2 + \cdots + \beta_n\textbf{v}_n.
+    \end{align*}
+    Then clearly
+    \[
+        \textbf{a} + \textbf{b} = (\alpha_1+\beta_1)\textbf{v}_1 + (\alpha_2+\beta_2)\textbf{v}_2 + \cdots + (\alpha_n+\beta_n)\textbf{v}_n \in \Span{S}.
+    \]
+    Also, for any $\lambda \in F$ we see
+    \[
+        \lambda\textbf{a} = (\lambda\alpha_1)\textbf{v}_1 + (\lambda\alpha_2)\textbf{v}_2 + \cdots + (\lambda\alpha_n)\textbf{v}_n \in \Span{S}.
+    \]
+
+    Therefore $\Span{S}$ is a subspace of $V$ by subspace test (\myref{thrm-subspace-test}).
+\end{proof}
+
 \begin{definition}
-    Let $V$ be a vector space over a field $F$ and let $S$ be a subset of $V$. Then $S$ is called a \textbf{spanning set}\index{spanning set} of $V$ if and only if $\Span{S} = V$, and we say that $S$ \textbf{spans} $V$.
+    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then $S$ is called a \textbf{spanning set}\index{spanning set} of $V$ if and only if $\Span{S} = V$, and we say that $S$ \textbf{spans} $V$.
 \end{definition}
 
 \begin{example}
@@ -401,8 +428,6 @@ Before that, let's define what a linear combination is.
     \]
     Let $S = \{x, x + 2, x^2 + 2, x^2 + 2x + 3\}$. Prove or disprove: $S$ is a spanning set for $V$.
 \end{exercise}
-
-\newpage
 
 \section{Linear Independence}
 The next definition is crucial in vector space theory.
@@ -465,7 +490,7 @@ The next definition is crucial in vector space theory.
     clearly yields the solution that $\alpha = \beta = \gamma = \delta = 0$.
 \end{example}
 
-\begin{exercise}
+\begin{exercise}\label{exercise-polynomial-of-degree-at-most-2-vector-space}
     For the vector space
     \[
         V = \{f(x) \in \Q[x] \vert \deg f(x) \leq 2\} \cup \{0\}
@@ -479,6 +504,77 @@ The next definition is crucial in vector space theory.
 \end{exercise}
 
 \section{Basis}
+Earlier, we looked at spanning sets, which are sets of vectors that produce all vectors of a vector space $V$ (over a field $F$). One might rightly ask whether there is a `smallest' spanning set, that is, a spanning set with the smallest number of vectors possible but still able to span $V$. This question leads to the definition of a \textbf{basis}.
+\begin{definition}
+    Let $V$ be a vector space over a field $F$, and let $B$ be a non-empty set of vectors from $V$. Then $B$ is called a \textbf{basis}\index{basis} for $V$ if and only if the vectors in $B$ are linearly independent and $\Span{B} = V$.
+\end{definition}
+
+The usefulness of a basis is given by the following theorem.
+
+\begin{theorem}\label{thrm-basis-iff-has-unique-linear-combinatio}
+    A subset $S$ of a vector space $V$ over a field $F$ is a basis if and only if every member of $V$ can be expressed as a unique linear combination of the vectors in $S$.
+\end{theorem}
+\begin{proof}
+    The forward direction is proven by \myref{exercise-basis-means-unique-linear-combination} (later).
+
+    For the reverse direction, we suppose that every member of $V$ can be expressed as a unique linear combination of the elements of $S$. Then certainly $\Span{S} = V$ by definition of a spanning set. Now we show that the elements of $S$ are linearly independent; suppose there are $n$ vectors in $S$ and suppose $\alpha_1, \alpha_2, \dots, \alpha_n \in F$ such that
+    \[
+        \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_n\textbf{v}_n = \textbf{0}.
+    \]
+    One clearly sees
+    \[
+        0\textbf{v}_1 + 0\textbf{v}_2 + \cdots + 0\textbf{v}_n = \textbf{0},
+    \]
+    so the uniqueness of the expression of the linear combination means that $\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0$. Therefore the vectors in $S$ are linearly independent. Hence $S$ is a basis for $V$, by definition of a basis.
+\end{proof}
+
+\begin{exercise}\label{exercise-basis-means-unique-linear-combination}
+    Prove that if $S$ is a basis for $V$, then every vector in $V$ can be expressed uniquely as a linear combination of the vectors in $S$.
+\end{exercise}
+
+\begin{example}
+    Consider the vector space
+    \[
+        V = \{(a, b, a-b, a+b) \vert a, b \in \R\}
+    \]
+    over $\R$. We see that
+    \[
+        (a, b, a-b, a+b) = a(1, 0, 1, 1) + b(0, 1, -1, 1)
+    \]
+    so we know that $S = \{(1, 0, 1, 1), (0, 1, -1, 1)\}$ is a spanning set for $V$. We also see that the vectors in $S$ are linearly independent, as the equation
+    \[
+        a(1, 0, 1, 1) + b(0, 1, -1, 1) = (0, 0, 0, 0)
+    \]
+    clearly only has the trivial solution $a = b = 0$. Therefore $S$ is a basis for $V$.
+\end{example}
+
+\begin{example}
+    Consider the subspace $V = \Span{S}$ of $\R^3$ over $\R$, where the set $S$ is $\{(1, 3, -3), (2, 4, -3), (2, 0, 3)\}$. We note that
+    \[
+        -4(1, 3, -3) + 3(2, 4, -3) = (2, 0, 3),
+    \]
+    so $(2, 0, 3)$ is redundant in the set $S$. This means that the set $T = \{(1, 3, -3), (2, 4, -3)\}$ also spans $V$, i.e. $\Span{T} = V$. We note that the vectors in $T$ are also linearly independent, as the equation
+    \[
+        \alpha(1, 3, -3) + \beta(2, 4, -3) = (0, 0, 0),
+    \]
+    which yields the system of equations
+    \begin{align*}
+        \alpha + 2\beta &= 0\\
+        3\alpha + 4\beta &= 0\\
+        -3\alpha - 3\beta &= 0,
+    \end{align*}
+    has only the trivial solution of $\alpha = \beta = 0$. Therefore the vectors in $T$ are linearly independent, meaning that $T$ is a basis for $V$.
+\end{example}
+
+\begin{exercise}
+    For the vector space $V$ given in \myref{exercise-polynomial-of-degree-at-most-2-vector-space}, which of the following sets of vectors of $V$ is/are a basis for $V$?
+    \begin{partquestions}{\alph*}
+        \item $S = \{1, x + 2\}$
+        \item $T = \{1, x + 2, x^2 + 2x + 3\}$
+        \item $U = \{1, x + 2, x^2 + 2x + 3, x^2 - 2x - 3\}$
+    \end{partquestions}
+\end{exercise}
+
 % TODO: Add
 
 \newpage
