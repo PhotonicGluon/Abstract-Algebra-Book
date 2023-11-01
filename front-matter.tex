@@ -10,32 +10,66 @@
 }
 
 %============= Front Matter ==============
-% Half title page
-\thispagestyle{empty}
-\null\vspace{4cm}
-\begin{raggedleft}
-    {\fontsize{24pt}{0pt}\selectfont \textbf{A Complete Introduction To Abstract Algebra}}\\
-\end{raggedleft}
+\Ifstr{\isebook}{true}{
+    % Title page
+    \begin{titlepage}
+        \newgeometry{hmargin=2cm, vmargin=2.5cm}
 
-% Title page
-\begin{titlepage}
+        \AddToShipoutPictureBG*{%
+            \AtPageLowerLeft{%
+                \includegraphics[width=\paperwidth,height=\paperheight]{images/cover/cover-page-background.jpg}%
+            }%
+        }
+
+        \vspace*{\fill}
+        \vspace{0.4cm}  % To make "ABSTRACT ALGEBRA" centred
+
+        \begin{center}
+            \color{white}
+
+            {\fontsize{20pt}{0pt}\selectfont \textbf{A Complete}\\\textbf{Introduction To}}\\
+
+            \vspace{0.4cm}
+            {\fontsize{48pt}{0pt}\selectfont \textbf{ABSTRACT}}\\
+            \vspace{0.15cm}
+            {\fontsize{48pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
+
+            \vspace{0.5cm}
+            {\fontsize{14pt}{0pt}\selectfont \editiontext}\\
+            
+            \vspace{1.25cm}
+            {\fontsize{20pt}{0pt}\selectfont Kan Onn Kit}\\
+        \end{center}
+        \vspace*{\fill}
+    \end{titlepage}
+}{
+    % Half title page
+    \thispagestyle{empty}
     \null\vspace{4cm}
     \begin{raggedleft}
-        {\fontsize{20pt}{0pt}\selectfont \textbf{A Complete}\\\textbf{Introduction To}}\\
-
-        \vspace{0.4cm}
-        {\fontsize{48pt}{0pt}\selectfont \textbf{ABSTRACT}}\\
-        \vspace{0.15cm}
-        {\fontsize{48pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
-
-        \vspace{0.5cm}
-        {\fontsize{16pt}{0pt}\selectfont \editiontext}\\
-
-        \vspace{1.25cm}
-        {\fontsize{20pt}{0pt}\selectfont Kan Onn Kit}\\
+        {\fontsize{24pt}{0pt}\selectfont \textbf{A Complete Introduction To Abstract Algebra}}\\
     \end{raggedleft}
-    \vspace*{\fill}
-\end{titlepage}
+
+    % Title page
+    \begin{titlepage}
+        \null\vspace{4cm}
+        \begin{raggedleft}
+            {\fontsize{20pt}{0pt}\selectfont \textbf{A Complete}\\\textbf{Introduction To}}\\
+
+            \vspace{0.4cm}
+            {\fontsize{48pt}{0pt}\selectfont \textbf{ABSTRACT}}\\
+            \vspace{0.15cm}
+            {\fontsize{48pt}{0pt}\selectfont \textbf{ALGEBRA}}\\
+
+            \vspace{0.5cm}
+            {\fontsize{16pt}{0pt}\selectfont \editiontext}\\
+
+            \vspace{1.25cm}
+            {\fontsize{20pt}{0pt}\selectfont Kan Onn Kit}\\
+        \end{raggedleft}
+        \vspace*{\fill}
+    \end{titlepage}
+}
 
 \newpage{}
 
