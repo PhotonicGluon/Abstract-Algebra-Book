@@ -26,7 +26,7 @@
 \usepackage{float}
 
 % Hyperlinks and references
-\usepackage[breaklinks]{hyperref}
+\usepackage{hyperref}
 \usepackage[capitalise, nameinlink]{cleveref}
 \usepackage{crossreftools}
 \usepackage[
@@ -47,6 +47,14 @@
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{enumitem}
+
+%============= PDF Metadata ==============
+\hypersetup{
+    pdftitle={A Complete Introduction To Abstract Algebra},
+    pdfauthor={Kan Onn Kit},
+    pdfsubject={Abstract Algebra},
+    breaklinks=true
+}
 
 %=============== Geometry ================
 \makeatletter
@@ -368,6 +376,15 @@
     }{#2#3}
 }
 
+\makeatother
+
+%=========== Hyperlink Setup =============
+\makeatletter
+\Ifstr{\hideboxesforlinks}{true}{
+    \hypersetup{
+        pdfborder = {0 0 0}
+    }
+}{}
 \makeatother
 
 %======== Figure Caption Format ==========
