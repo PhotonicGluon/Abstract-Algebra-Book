@@ -1,4 +1,45 @@
 \section{Extension Fields and Splitting Fields}
-No exercises.
-% \begin{questions}
-% \end{questions}
+\begin{questions}
+    \item We need to prove that $\phi$ is a well-defined ring isomorphism.
+    \begin{itemize}
+        \item \textbf{Well-defined}: Suppose $ax + b + \princ{x^2+1}, cx + d + \princ{x^2+1} \in F$ such that $ax + b + \princ{x^2+1} = cx + d + \princ{x^2+1}$. Then $(a - c)x + (b - d) + \princ{x^2 + 1} = 0 + \princ{x^2+1}$ by Coset Equality, which therefore means that $(a-c)x + (b-d) \in \princ{x^2+1}$. Now elements of $\princ{x^2+1}$ have degree of at least 2, or is the zero polynomial. Since $(a-c)x + (b-d)$ has degree less than 2, we must have $(a-c)x + (b-d) = 0$ which means $a - c = 0$ and $b - d = 0$. Hence $a = c$ and $b = d$, and so
+        \begin{align*}
+            \phi\left(ax + b + \princ{x^2+1}\right) &= b + ai\\
+            &= d + ci\\
+            &= \phi\left(cx + d + \princ{x^2+1}\right)
+        \end{align*}
+        which proves that $\phi$ is well-defined.
+
+        \item \textbf{Homomorphism}. Let $ax + b + \princ{x^2+1}, cx + d + \princ{x^2+1} \in F$. Then
+        \begin{align*}
+            &\phi\left(\left(ax + b + \princ{x^2+1}\right) + \left(cx + d + \princ{x^2+1}\right)\right)\\
+            &= \phi\left((a+c)x + (b+d) + \princ{x^2+1}\right)\\
+            &= (b+d) + (a+c)i\\
+            &= (b+ai) + (d+ci)\\
+            &= \phi\left(ax + b + \princ{x^2+1}\right) + \phi\left(cx + d + \princ{x^2+1}\right)
+        \end{align*}
+        and
+        \begin{align*}
+            &\phi\left(\left(ax + b + \princ{x^2+1}\right)\left(cx + d + \princ{x^2+1}\right)\right)\\
+            &= \phi\left((acx^2 + (ad + bc)x + bd) + \princ{x^2+1}\right)\\
+            &= \phi\left(((ad + bc)x + (bd - ac)) + \princ{x^2+1}\right) & (\text{since } x^2 = -1 \text{ in } F)\\
+            &= (bd - ac) + (ad + bc)i\\
+            &= (b + ai)(d + ci)\\
+            &= \phi\left(ax + b + \princ{x^2+1}\right)\phi\left(cx + d + \princ{x^2+1}\right)
+        \end{align*}
+        which shows that $\phi$ is a ring homomorphism.
+
+        \item \textbf{Injective}: Suppose $ax + b + \princ{x^2+1}, cx + d + \princ{x^2+1} \in F$ such that
+        \[
+            \phi\left(ax + b + \princ{x^2+1}\right) = \phi\left(cx + d + \princ{x^2+1}\right).
+        \]
+        This means that $b + ai = d + ci$. Hence $b = d$ and $a = c$, which shows that $ax + b + \princ{x^2+1} = cx + d + \princ{x^2+1}$. Hence $\phi$ is injective.
+
+        \item \textbf{Surjective}: Suppose $u + vi \in \C$. Then clearly
+        \[
+            \phi\left(vx + u + \princ{x^2+1}\right) = u + vi
+        \]
+        which means that $\phi$ is surjective.
+    \end{itemize}
+    Therefore $\phi$ is a well-defined ring isomorphism, proving that $F \cong \C$.
+\end{questions}

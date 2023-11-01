@@ -2,7 +2,116 @@
 For all of the previous chapters, we have looked at `substructures', subsets of the original structure that are, themselves, of the same type. For groups, we looked at subgroups; for rings, we looked at subrings; for vector spaces, we looked at subspaces. For fields, we can go the `reverse' direction, by finding a larger field that contains the original field, called an extension field.
 
 \section{Extension Fields}
-% TODO: Add
+We motivate the definition for extension fields by looking at the following example.
+
+\begin{example}\label{example-R[x]-mod-x^2+1-is-isomorphic-to-C}
+    Consider the ring $F = \R[x]/\princ{x^2+1}$. We note that $x^2 + 1$ is irreducible over $\R$; this can be easily seen as $x^2+1$ has no zeroes in $\R$ and is therefore irreducible by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}. Therefore $\princ{x^2+1}$ is a maximal ideal in $\R[x]$ (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}) which means that, in fact, $F$ is a field (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field}).
+
+    We find the general form of elements in $F$. Suppose $f(x) \in \R[x]$. Then by polynomial long division (\myref{thrm-polynomial-long-division}) we may write
+    \[
+        f(x) = q(x)(x^2+1) + r(x)
+    \]
+    where $r(x) = 0$ or $\deg r(x) < \deg(x^2+1) = 2$. It follows that $r(x) = ax + b$ for some $a, b \in \R$. Note that $q(x)(x^2+1) \in \princ{x^2+1}$, so $f(x) + \princ{x^2+1} = r(x) + \princ{x^2+1}$ in $F$, meaning that
+    \[
+        F = \left\{ax + b + \princ{x^2+1} \vert a,b\in \R\right\}.
+    \]
+
+    Now because
+    \[
+        (x^2 + 1) + \princ{x^2 + 1} = 0 + \princ{x^2+1}
+    \]
+    it follows quickly that
+    \[
+        x^2 + \princ{x^2 + 1} = -1 + \princ{x^2+1},
+    \]
+    so, in this field, the polynomial $x^2$ is `equivalent' to -1. This means that, in this field, there is a `solution' to the equation $x^2 + 1 = 0$. It should not be too surprising, in light of this observation, that $F \cong \C$, via the map $\phi: F \to C$ where
+    \[
+        ax + b + \princ{x^2 + 1} \mapsto b + ai.
+    \]
+    We leave it to \myref{exercise-R[x]-mod-x^2+1-is-isomorphic-to-C} (later) to verify that $F \cong C$.
+\end{example}
+
+\begin{exercise}\label{exercise-R[x]-mod-x^2+1-is-isomorphic-to-C}
+    Verify that the field $F$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C} is indeed isomorphic to $\C$ by using the map $\phi$ given. For completeness, verify that $\phi$ is well-defined.
+\end{exercise}
+
+The idea that we can `extend' the real numbers to create a solution to $x^2 + 1 = 0$ is critical to our definition of \textbf{extension fields}.
+
+\begin{definition}
+    A field $E$ is an \textbf{extension field}\index{extension field} (or \textbf{field extension}\index{field!extension}) of a field $F$ if and only if there exists an injective homomorphism $\phi: F \to E$. In this case $F$ is called the \textbf{base field}\index{base field}\index{field!base}.
+    
+    The notation $E/F$ indicates that $E$ is an extension field of $F$ and is read ``$E$ over $F$''.
+\end{definition}
+\begin{remark}
+    This definition very much differs from most authors' definitions of a field extension (cf. \cite[p.~511]{dummit_foote_2004}, \cite[p.~442]{artin_2011}, \cite[p.~338]{gallian_2016}, \cite[p.~260]{judson_beezer_2022}), which is that a field extension is a field $E$ that has $F$ as a subfield.
+\end{remark}
+
+Before we answer why we use a different definition, we look at the following proposition.
+
+\begin{proposition}
+    Let $E$ and $F$ be fields. If $F \subseteq E$ then $E$ is an extension field of $F$.
+\end{proposition}
+\begin{remark}
+    We are trying to prove that most authors' definition of extension fields agrees with our definition.
+\end{remark}
+\begin{proof}
+    Construct the map $\phi: F \to E, x \mapsto x$ (note that the $x$ on the left is in $F$ and the $x$ on the right is in $E$). We show that $\phi$ is an injective homomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: For any $x,y\in F$ we clearly see $\phi(x + y) = x + y = \phi(x) + \phi(y)$ and $\phi(xy) = xy = \phi(x)\phi(y)$, so $\phi$ is a homomorphism.
+        
+        \item \textbf{Injective}: If $x,y \in F$ are such that $\phi(x) = \phi(y)$, then clearly $x = y$ by definition of $\phi$, and so $\phi$ is injective.
+    \end{itemize}
+    Therefore $\phi$ is an injective homomorphism, meaning that $E$ is an extension field of $F$.
+\end{proof}
+
+\begin{example}
+    Consider the quadratic field
+    \[
+        \Q[\sqrt{2}] = \{a + b\sqrt{2} \vert a,b\in\Q\}.
+    \]
+    We claim that $\Q[\sqrt{2}]$ is an extension field of $\Q$ (i.e., $\Q[\sqrt{2}]/\Q$). One sees clearly that any $q \in \Q$ is expressible as $q + 0\sqrt{2}$, and so $q \in \Q[\sqrt2]$. Therefore $\Q \subseteq \Q[\sqrt2]$. As $\Q$ is a field, therefore $\Q$ is a subfield of $\Q[\sqrt2]$, which in turn means $\Q[\sqrt2]$ is an extension field of $\Q$.
+\end{example}
+
+We return back to why we defined field extensions in the way that we do. The reason why is because, most of the time, the extension field that we use does \textit{not} contain the base field as a subset. Rather, the extension field contains a subfield that is \textit{isomorphic} to the base field. In fact, most authors actually use our definition of extension fields -- they find a subfield of the extension field that is isomorphic to the base field, but still claim that the extension field ``contains'' the base field (see \cite[Theorem 13.1.3]{dummit_foote_2004}, \cite[p.~339, Proof]{gallian_2016}, \cite[Example 21.2]{judson_beezer_2022}).
+
+\begin{example}
+    Consider the field $F = \R[x]/\princ{x^2+1}$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C}. We note that $F$ is a field extension of $\R$ by considering the map $\phi: \R \to F, r \mapsto r + \princ{x^2+1}$. We show that this is a injective homomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $a, b \in \R$. Then
+        \begin{align*}
+            \phi(a + b) &= (a + b) + \princ{x^2+1}\\
+            &= \left(a + \princ{x^2+1}\right) + \left(b + \princ{x^2+1}\right)\\
+            &= \phi(a) + \phi(b)
+        \end{align*}
+        and
+        \begin{align*}
+            \phi(ab) &= ab + \princ{x^2+1}\\
+            &= \left(a + \princ{x^2+1}\right)\left(b + \princ{x^2+1}\right)\\
+            &= \phi(a)\phi(b)
+        \end{align*}
+        which means $\phi$ is a homomorphism.
+
+        \item \textbf{Injective}: Let $a, b \in \R$ such that $\phi(a) = \phi(b)$. This means $a + \princ{x^2+1} = b + \princ{x^2+1}$, which quickly means $a - b \in \princ{x^2+1}$. Now elements in $\princ{x^2+1}$ either have degree of at least 2, or is the zero polynomial. Since $a-b$ is a constant polynomial, therefore $a - b = 0$, which hence means $a = b$.
+    \end{itemize}
+    So $\phi$ is an injective homomorphism, which shows that $F$ is an extension field of $\R$.
+
+    If this still feels uncomfortable, recall that we proved that $F \cong \C$ in \myref{exercise-R[x]-mod-x^2+1-is-isomorphic-to-C}. We have already shown that $\R \subseteq \C$, and since $F \cong \C$, it is natural to think that $F$ is an extension field of the real numbers.
+\end{example}
+
+It is certainly tiring to keep proving that the homomorphism required for an extension field is injective. We note the following proposition with regards to homomorphisms between fields.
+\begin{proposition}
+    Let $F$ and $F'$ be fields. If $\phi: F \to F'$ is a homomorphism, then either $\phi(x) = 0$ for all $x \in F$ or $\phi$ is injective.
+\end{proposition}
+\begin{remark}
+    This quickly means that $\im \phi = \{0\}$ or $\im \phi \cong F'$, since $\phi$ is surjective within the codomain of $\im \phi$.
+\end{remark}
+\begin{proof}
+    % TODO: Add proof
+\end{proof}
+
+In light of this proposition, we can finally follow most authors' definition of extension fields, identifying the base field $F$ within the extension field $E$ with its \textit{isomorphic copy} within $E$, which is $\im \phi$ that is produced by the injective homomorphism $\phi: F \to E$.
+
+% TODO: Add Kronecker's Theorem 1887
 
 \section{Splitting Fields}
 % TODO: Add
