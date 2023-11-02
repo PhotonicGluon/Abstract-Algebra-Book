@@ -32,18 +32,16 @@ We motivate the definition for extension fields by looking at the following exam
 \end{example}
 
 \begin{exercise}\label{exercise-R[x]-mod-x^2+1-is-isomorphic-to-C}
-    Verify that the field $F$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C} is indeed isomorphic to $\C$ by using the map $\phi$ given. For completeness, verify that $\phi$ is well-defined.
+    Verify that the field $F$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C} is indeed isomorphic to $\C$ by using the map $\phi$ given. For completeness, also verify that $\phi$ is well-defined.
 \end{exercise}
 
 The idea that we can `extend' the real numbers to create a solution to $x^2 + 1 = 0$ is critical to our definition of \textbf{extension fields}.
 
 \begin{definition}
-    A field $E$ is an \textbf{extension field}\index{extension field} (or \textbf{field extension}\index{field!extension}) of a field $F$ if and only if there exists an injective homomorphism $\phi: F \to E$. In this case $F$ is called the \textbf{base field}\index{base field}\index{field!base}.
-    
-    The notation $E/F$ indicates that $E$ is an extension field of $F$ and is read ``$E$ over $F$''.
+    A field $E$ is an \textbf{extension field}\index{extension field} (or \textbf{field extension}\index{field!extension}) of a field $F$ if and only if $E$ contains a subfield isomorphic to $F$. In this case $F$ is called the \textbf{base field}\index{base field}\index{field!base}.
 \end{definition}
 \begin{remark}
-    This definition very much differs from most authors' definitions of a field extension (cf. \cite[p.~511]{dummit_foote_2004}, \cite[p.~442]{artin_2011}, \cite[p.~338]{gallian_2016}, \cite[p.~260]{judson_beezer_2022}), which is that a field extension is a field $E$ that has $F$ as a subfield.
+    This definition differs from most authors' definitions of a field extension (cf. \cite[p.~511]{dummit_foote_2004}, \cite[p.~442]{artin_2011}, \cite[p.~338]{gallian_2016}, \cite[p.~260]{judson_beezer_2022}), which is that a field extension is a field $E$ that has $F$ as a subfield.
 \end{remark}
 
 Before we answer why we use a different definition, we look at the following proposition.
@@ -51,17 +49,8 @@ Before we answer why we use a different definition, we look at the following pro
 \begin{proposition}
     Let $E$ and $F$ be fields. If $F \subseteq E$ then $E$ is an extension field of $F$.
 \end{proposition}
-\begin{remark}
-    We are trying to prove that most authors' definition of extension fields agrees with our definition.
-\end{remark}
 \begin{proof}
-    Construct the map $\phi: F \to E, x \mapsto x$ (note that the $x$ on the left is in $F$ and the $x$ on the right is in $E$). We show that $\phi$ is an injective homomorphism.
-    \begin{itemize}
-        \item \textbf{Homomorphism}: For any $x,y\in F$ we clearly see $\phi(x + y) = x + y = \phi(x) + \phi(y)$ and $\phi(xy) = xy = \phi(x)\phi(y)$, so $\phi$ is a homomorphism.
-        
-        \item \textbf{Injective}: If $x,y \in F$ are such that $\phi(x) = \phi(y)$, then clearly $x = y$ by definition of $\phi$, and so $\phi$ is injective.
-    \end{itemize}
-    Therefore $\phi$ is an injective homomorphism, meaning that $E$ is an extension field of $F$.
+    Construct the map $\phi: F \to E, x \mapsto x$. We note that for any $x,y\in F$, we have $\phi(x + y) = x + y = \phi(x) + \phi(y)$ and $\phi(xy) = xy = \phi(x)\phi(y)$, so $\phi$ is a homomorphism. Therefore, $F/\ker\phi \cong \im\phi$ by the FRIT (\myref{thrm-ring-isomorphism-1}). As fields do not have proper ideals (\myref{prop-ring-is-field-iff-no-proper-ideals}), therefore $\ker\phi = F$, which is not the case since $\phi(1) = 1 \neq 0$, or $\ker\phi = \{0\}$, which results in $F/\ker\phi \cong F$ by \myref{problem-integral-domain-iff-trivial-ideal-is-prime}. Thus $\im\phi$ is a subfield of $E$ that is isomorphic to $F$, proving that $E$ is an extension field of $F$.
 \end{proof}
 
 \begin{example}
@@ -72,46 +61,78 @@ Before we answer why we use a different definition, we look at the following pro
     We claim that $\Q[\sqrt{2}]$ is an extension field of $\Q$ (i.e., $\Q[\sqrt{2}]/\Q$). One sees clearly that any $q \in \Q$ is expressible as $q + 0\sqrt{2}$, and so $q \in \Q[\sqrt2]$. Therefore $\Q \subseteq \Q[\sqrt2]$. As $\Q$ is a field, therefore $\Q$ is a subfield of $\Q[\sqrt2]$, which in turn means $\Q[\sqrt2]$ is an extension field of $\Q$.
 \end{example}
 
-We return back to why we defined field extensions in the way that we do. The reason why is because, most of the time, the extension field that we use does \textit{not} contain the base field as a subset. Rather, the extension field contains a subfield that is \textit{isomorphic} to the base field. In fact, most authors actually use our definition of extension fields -- they find a subfield of the extension field that is isomorphic to the base field, but still claim that the extension field ``contains'' the base field (see \cite[Theorem 13.1.3]{dummit_foote_2004}, \cite[p.~339, Proof]{gallian_2016}, \cite[Example 21.2]{judson_beezer_2022}).
+We return to why we defined field extensions in the way that we do. The reason why is because, most of the time, the extension field that we use does \textit{not} contain the base field as a subset. Rather, the extension field contains a subfield that is \textit{isomorphic} to the base field. In fact, most authors actually use our definition of extension fields -- they find a subfield of the extension field that is isomorphic to the base field (see \cite[Theorem 13.1.3]{dummit_foote_2004}, \cite[p.~339, Proof]{gallian_2016}, \cite[Example 21.2]{judson_beezer_2022}).
+
+We have this useful proposition to help us determine whether a field is an extension field of another field.
+
+\begin{proposition}\label{prop-extension-field-if-homomorphism-between-fields}
+    Let $E$ and $F$ be fields. Then $E$ is an extension field of $F$ if there is a non-trivial homomorphism $\phi: F \to E$.
+\end{proposition}
+\begin{proof}
+    Any homomorphism from a field is either trivial or injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}). Since $\phi$ is non-trivial, therefore $\phi$ is injective. Thus we see $F \cong \im\phi$. As $\im\phi$ is a subfield of $E$, therefore $E$ contains a subfield isomorphic to $F$.
+\end{proof}
 
 \begin{example}
-    Consider the field $F = \R[x]/\princ{x^2+1}$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C}. We note that $F$ is a field extension of $\R$ by considering the map $\phi: \R \to F, r \mapsto r + \princ{x^2+1}$. We show that this is a injective homomorphism.
-    \begin{itemize}
-        \item \textbf{Homomorphism}: Let $a, b \in \R$. Then
-        \begin{align*}
-            \phi(a + b) &= (a + b) + \princ{x^2+1}\\
-            &= \left(a + \princ{x^2+1}\right) + \left(b + \princ{x^2+1}\right)\\
-            &= \phi(a) + \phi(b)
-        \end{align*}
-        and
-        \begin{align*}
-            \phi(ab) &= ab + \princ{x^2+1}\\
-            &= \left(a + \princ{x^2+1}\right)\left(b + \princ{x^2+1}\right)\\
-            &= \phi(a)\phi(b)
-        \end{align*}
-        which means $\phi$ is a homomorphism.
-
-        \item \textbf{Injective}: Let $a, b \in \R$ such that $\phi(a) = \phi(b)$. This means $a + \princ{x^2+1} = b + \princ{x^2+1}$, which quickly means $a - b \in \princ{x^2+1}$. Now elements in $\princ{x^2+1}$ either have degree of at least 2, or is the zero polynomial. Since $a-b$ is a constant polynomial, therefore $a - b = 0$, which hence means $a = b$.
-    \end{itemize}
-    So $\phi$ is an injective homomorphism, which shows that $F$ is an extension field of $\R$.
+    Consider the field $F = \R[x]/\princ{x^2+1}$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C}. We note that $F$ is a field extension of $\R$ by considering the map $\phi: \R \to F, r \mapsto r + \princ{x^2+1}$. We note that $\phi$ is a homomorphism since, for all $a, b \in \R$, we have
+    \begin{align*}
+        \phi(a + b) &= (a + b) + \princ{x^2+1}\\
+        &= \left(a + \princ{x^2+1}\right) + \left(b + \princ{x^2+1}\right)\\
+        &= \phi(a) + \phi(b)
+    \end{align*}
+    and
+    \begin{align*}
+        \phi(ab) &= ab + \princ{x^2+1}\\
+        &= \left(a + \princ{x^2+1}\right)\left(b + \princ{x^2+1}\right)\\
+        &= \phi(a)\phi(b)
+    \end{align*}
+    which means $\phi$ is a homomorphism. Therefore $F$ is an extension field of $\R$ by \myref{prop-extension-field-if-homomorphism-between-fields}.
 
     If this still feels uncomfortable, recall that we proved that $F \cong \C$ in \myref{exercise-R[x]-mod-x^2+1-is-isomorphic-to-C}. We have already shown that $\R \subseteq \C$, and since $F \cong \C$, it is natural to think that $F$ is an extension field of the real numbers.
 \end{example}
 
-It is certainly tiring to keep proving that the homomorphism required for an extension field is injective. We note the following proposition with regards to homomorphisms between fields.
-\begin{proposition}
-    Let $F$ and $F'$ be fields. If $\phi: F \to F'$ is a homomorphism, then either $\phi(x) = 0$ for all $x \in F$ or $\phi$ is injective.
-\end{proposition}
-\begin{remark}
-    This quickly means that $\im \phi = \{0\}$ or $\im \phi \cong F'$, since $\phi$ is surjective within the codomain of $\im \phi$.
-\end{remark}
+Returning back to our exploration of extension fields, the critical observation that $\R[x]/\princ{x^2+1}$ contains a `zero' of $x^2+1$ lead Leopold Kronecker to come up with a generalization of this fact in 1887. This result is often called the \textbf{Fundamental Theorem of Field Theory} (e.g. \cite[Theorem 20.1]{gallian_2016}, \cite[Theorem 21.5]{judson_beezer_2022}).
+\begin{theorem}[Fundamental Theorem of Field Theory]\label{thrm-fundamental-theorem-of-field-theory}\index{Fundamental Theorem of Field Theory}
+    Let $F$ be a field and $f(x)$ be a non-constant polynomial in $F[x]$. Then there exists an extension field $E$ of $F$ that has a zero of $f(x)$.
+\end{theorem}
 \begin{proof}
-    % TODO: Add proof
+    Since $F$ is a field and thus a UFD, therefore $F[x]$ is a UFD (\myref{thrm-UFD-iff-polynomial-ring-is-UFD}). So $f(x)$ has an irreducible factor, say $p(x)$. Thus it suffices to show that an irreducible polynomial $p(x) \in F[x]$ has a zero in $E$.
+
+    We note that $\princ{p(x)}$ is a maximal ideal since $p(x)$ is irreducible (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}), and therefore $E = F[x]/\princ{p(x)}$ is a field (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field}). Construct the map $\phi: F \to E$ where $a \mapsto a + \princ{p(x)}$. We note that $\phi$ is a homomorphism between fields since
+    \begin{align*}
+        \phi(a+b) &= (a+b) + \princ{p(x)}\\
+        &= (a + \princ{p(x)}) + (b + \princ{p(x)})\\
+        &= \phi(a) + \phi(b)
+    \end{align*}
+    and
+    \begin{align*}
+        \phi(ab) &= ab + \princ{p(x)}\\
+        &= (a+\princ{p(x)})(b+\princ{p(x)})\\
+        &= \phi(a)\phi(b).
+    \end{align*}
+    Therefore means that $E$ is a field extension of $F$ by \myref{prop-extension-field-if-homomorphism-between-fields}.
+    
+    It remains to show that $E$ contains a zero of $p(x)$. Write
+    \[
+        p(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n
+    \]
+    where $a_0, a_1, \dots, a_n \in F$. In $E$, the polynomial becomes
+    \[
+        \overline{p}(x) = (a_0 + \princ{p(x)}) + (a_1 + \princ{p(x)})x + (a_2 + \princ{p(x)})x^2 + \cdots + (a_n + \princ{p(x)})x^n
+    \]
+    For brevity let $\overline{a_i} = a_0 + \princ{p(x)}$. One sees clearly that $\alpha = x + \princ{p(x)} \in E$. Note
+    \begin{align*}
+        \overline{p}(\alpha) &= \overline{a_0} + \overline{a_1}\alpha + \overline{a_2}\alpha^2 + \cdots + \overline{a_n}\alpha^n\\
+        &= (a_0 + \princ{p(x)}) + (a_1 + \princ{p(x)})(x + \princ{p(x)}) + (a_2 + \princ{p(x)})(x + \princ{p(x)})^2\\
+        &\quad\quad+ \cdots + (a_n + \princ{p(x)})(x + \princ{p(x)})^n\\
+        &= (a_0 + \princ{p(x)}) + (a_1x + \princ{p(x)}) + (a_2x^2 + \princ{p(x)}) + \cdots + (a_nx^n + \princ{p(x)})\\
+        &= (a_0 + a_1x + a_2x^2 + \cdots + a_nx^n) + \princ{p(x)}\\
+        &= p(x) + \princ{p(x)}\\
+        &= 0 + \princ{p(x)}.
+    \end{align*}
+    Therefore, the irreducible polynomial $p(x) \in F[x]$ has a zero in $E$, after suitable conversion has been made.
 \end{proof}
 
-In light of this proposition, we can finally follow most authors' definition of extension fields, identifying the base field $F$ within the extension field $E$ with its \textit{isomorphic copy} within $E$, which is $\im \phi$ that is produced by the injective homomorphism $\phi: F \to E$.
-
-% TODO: Add Kronecker's Theorem 1887
+% TODO: Add
 
 \section{Splitting Fields}
 % TODO: Add
