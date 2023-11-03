@@ -24,11 +24,11 @@ We motivate the definition for extension fields by looking at the following exam
     \[
         x^2 + \princ{x^2 + 1} = -1 + \princ{x^2+1},
     \]
-    so, in this field, the polynomial $x^2$ is `equivalent' to -1. This means that, in this field, there is a `solution' to the equation $x^2 + 1 = 0$. It should not be too surprising, in light of this observation, that $F \cong \C$, via the map $\phi: F \to C$ where
+    so, in this field, the polynomial $x^2$ is `equivalent' to -1. This means that, in this field, there is a `solution' to the equation $x^2 + 1 = 0$. It should not be too surprising, in light of this observation, that $F \cong \C$, via the map $\phi: F \to \C$ where
     \[
         ax + b + \princ{x^2 + 1} \mapsto b + ai.
     \]
-    We leave it to \myref{exercise-R[x]-mod-x^2+1-is-isomorphic-to-C} (later) to verify that $F \cong C$.
+    We leave it to \myref{exercise-R[x]-mod-x^2+1-is-isomorphic-to-C} (later) to verify that $F \cong \C$.
 \end{example}
 
 \begin{exercise}\label{exercise-R[x]-mod-x^2+1-is-isomorphic-to-C}
@@ -41,7 +41,7 @@ The idea that we can `extend' the real numbers to create a solution to $x^2 + 1 
     A field $E$ is an \textbf{extension field}\index{extension field} (or \textbf{field extension}\index{field!extension}) of a field $F$ if and only if $E$ contains a subfield isomorphic to $F$. In this case $F$ is called the \textbf{base field}\index{base field}\index{field!base}.
 \end{definition}
 \begin{remark}
-    This definition differs from most authors' definitions of a field extension (cf. \cite[p.~511]{dummit_foote_2004}, \cite[p.~442]{artin_2011}, \cite[p.~338]{gallian_2016}, \cite[p.~260]{judson_beezer_2022}), which is that a field extension is a field $E$ that has $F$ as a subfield.
+    This definition differs from most authors' definitions of a field extension (cf. \cite[p.~511]{dummit_foote_2004}, \cite[p.~442]{artin_2011}, \cite[p.~338]{gallian_2016}, \cite[p.~260]{judson_beezer_2022}), which is that a field extension is a field $E$ that just has $F$ as a subfield.
 \end{remark}
 
 Before we answer why we use a different definition, we look at the following proposition.
@@ -132,7 +132,37 @@ Returning back to our exploration of extension fields, the critical observation 
     Therefore, the irreducible polynomial $p(x) \in F[x]$ has a zero in $E$, after suitable conversion has been made.
 \end{proof}
 
-% TODO: Add
+\begin{example}
+    Consider the irreducible polynomial $f(x) = x^2 + x + 1 \in \Z_2[x]$. To find an extension field $E$ of $\Z_2$ such that $f(x)$ has a zero, we may take $E = \Z_2[x]/\princ{f(x)}$, which is a field of 4 elements. Then by \myref{thrm-fundamental-theorem-of-field-theory} we know that $x + \princ{f(x)}$ is a zero of the `transformed' version of $f(x)$ in $E$. Indeed, we see
+    \begin{align*}
+        &(1 + \princ{f(x)})(x + \princ{f(x)})^2 + (1 + \princ{f(x)})(x + \princ{f(x)}) + (1 + \princ{f(x)})\\
+        &= (x^2+\princ{f(x)}) + (x + \princ{f(x)}) + (1 + \princ{f(x)})\\
+        &= (x^2 + x + 1) + \princ{f(x)}\\
+        &= f(x) + \princ{f(x)}\\
+        &= 0 + \princ{x^2+x+1},
+    \end{align*}
+    so $f(x)$ has a zero in $E$.
+\end{example}
+
+\begin{example}
+    Consider the polynomial $f(x) = x^5 + 2x^2 + 2x + 2 \in \Z_3[x]$. We may factor $f(x)$ into irreducibles by noting $f(x) = (x^2+1)(x^3+2x+2)$. Then \myref{thrm-fundamental-theorem-of-field-theory} tells us that the fields
+    \[
+        \Z_3[x]/\princ{x^2+1} \quad\text{and}\quad \Z_3[x]/\princ{x^3+2x+2}
+    \]
+    are both extension fields of $\Z_3$ that contain a zero of $f(x)$.
+\end{example}
+
+The Fundamental Theorem of Field Theory (\myref{thrm-fundamental-theorem-of-field-theory}) may actually be extended to integral domains. Suppose $f(x) \in D[x]$ where $D$ is an integral domain. Since the field of fractions contains a subring isomorphic to the original integral domain (\myref{thrm-field-of-fractions-contains-integral-domain}), thus we may interpret $f(x)$ as a polynomial in $\Frac{D}[x]$ instead. Then the Fundamental Theorem of Field Theory gives us the required result.
+
+However, this does not apply to commutative rings in general, as seen in the following exercise.
+
+\begin{exercise}
+    Let $f(x) = 2x + 1$ be a polynomial in $\Z_4[x]$. Prove that no ring that contains a subring that is isomorphic to $\Z_4$ has a zero of $f(x)$.    
+\end{exercise}
+
+\begin{exercise}
+    Find two extension fields that contains a zero of the polynomial $x^4 + 3x^2 + 1 \in \Q[x]$.
+\end{exercise}
 
 \section{Splitting Fields}
 % TODO: Add
