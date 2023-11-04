@@ -38,7 +38,7 @@ We motivate the definition for extension fields by looking at the following exam
 The idea that we can `extend' the real numbers to create a solution to $x^2 + 1 = 0$ is critical to our definition of \textbf{extension fields}.
 
 \begin{definition}
-    A field $E$ is an \textbf{extension field}\index{extension field} (or \textbf{field extension}\index{field!extension}) of a field $F$ if and only if $E$ contains a subfield isomorphic to $F$. In this case $F$ is called the \textbf{base field}\index{base field}\index{field!base}.
+    A field $E$ is an \textbf{extension field}\index{extension field} of a field $F$ if and only if $E$ contains a subfield isomorphic to $F$. In this case $F$ is called the \textbf{base field}\index{base field}\index{field!base}.
 \end{definition}
 \begin{remark}
     This definition differs from most authors' definitions of a field extension (cf. \cite[p.~511]{dummit_foote_2004}, \cite[p.~442]{artin_2011}, \cite[p.~338]{gallian_2016}, \cite[p.~260]{judson_beezer_2022}), which is that a field extension is a field $E$ that just has $F$ as a subfield.
@@ -90,9 +90,19 @@ We have this useful proposition to help us determine whether a field is an exten
     If this still feels uncomfortable, recall that we proved that $F \cong \C$ in \myref{exercise-R[x]-mod-x^2+1-is-isomorphic-to-C}. We have already shown that $\R \subseteq \C$, and since $F \cong \C$, it is natural to think that $F$ is an extension field of the real numbers.
 \end{example}
 
+\begin{definition}
+    A \textbf{field extension}\index{field!extension}, denoted $E/F$ and read ``$E$ over $F$'', indicates that $E$ is an extension field over the base field $F$.
+\end{definition}
+\begin{remark}
+    We may say ``let $E/F$ be a field extension'', which is the same as saying ``let $E$ be an extension field of the field $F$''.
+\end{remark}
+\begin{remark}
+    This notation should not be confused with the notation for quotient rings. However, in times of doubt of notation, we elect to explicitly state what the extension field is.
+\end{remark}
+
 Returning back to our exploration of extension fields, the critical observation that $\R[x]/\princ{x^2+1}$ contains a `zero' of $x^2+1$ lead Leopold Kronecker to come up with a generalization of this fact in 1887. This result is often called the \textbf{Fundamental Theorem of Field Theory} (e.g. \cite[Theorem 20.1]{gallian_2016}, \cite[Theorem 21.5]{judson_beezer_2022}).
 \begin{theorem}[Fundamental Theorem of Field Theory]\label{thrm-fundamental-theorem-of-field-theory}\index{Fundamental Theorem of Field Theory}
-    Let $F$ be a field and $f(x)$ be a non-constant polynomial in $F[x]$. Then there exists an extension field $E$ of $F$ that has a zero of $f(x)$.
+    Let $F$ be a field and $f(x)$ be a non-constant polynomial in $F[x]$. Then there exists a field extension $E/F$ that has a zero of $f(x)$.
 \end{theorem}
 \begin{proof}
     Since $F$ is a field and thus a UFD, therefore $F[x]$ is a UFD (\myref{thrm-UFD-iff-polynomial-ring-is-UFD}). So $f(x)$ has an irreducible factor, say $p(x)$. Thus it suffices to show that an irreducible polynomial $p(x) \in F[x]$ has a zero in $E$.
@@ -133,7 +143,7 @@ Returning back to our exploration of extension fields, the critical observation 
 \end{proof}
 
 \begin{example}
-    Consider the irreducible polynomial $f(x) = x^2 + x + 1 \in \Z_2[x]$. To find an extension field $E$ of $\Z_2$ such that $f(x)$ has a zero, we may take $E = \Z_2[x]/\princ{f(x)}$, which is a field of 4 elements. Then by \myref{thrm-fundamental-theorem-of-field-theory} we know that $x + \princ{f(x)}$ is a zero of the `transformed' version of $f(x)$ in $E$. Indeed, we see
+    Consider the irreducible polynomial $f(x) = x^2 + x + 1 \in \Z_2[x]$. To find a field extension $E/\Z_2$ such that $f(x)$ has a zero, we may take $E = \Z_2[x]/\princ{f(x)}$, which is a field of 4 elements. Then by \myref{thrm-fundamental-theorem-of-field-theory} we know that $x + \princ{f(x)}$ is a zero of the `transformed' version of $f(x)$ in $E$. Indeed, we see
     \begin{align*}
         &(1 + \princ{f(x)})(x + \princ{f(x)})^2 + (1 + \princ{f(x)})(x + \princ{f(x)}) + (1 + \princ{f(x)})\\
         &= (x^2+\princ{f(x)}) + (x + \princ{f(x)}) + (1 + \princ{f(x)})\\
@@ -163,6 +173,14 @@ However, this does not apply to commutative rings in general, as seen in the fol
 \begin{exercise}
     Find two extension fields that contains a zero of the polynomial $x^4 + 3x^2 + 1 \in \Q[x]$.
 \end{exercise}
+
+Henceforth, to simplify the notation used for elements of the extension field, we will simply identify elements in the subset isomorphic to the base field with the actual element within the base field. Furthermore, whenever we say that an extension field $E$ \textit{contains} the base field $F$, it means that $E$ contains a subfield isomorphic to $F$.
+
+\begin{example}
+    Consider the extension field $E = \R[x]/\princ{x^2+1}$ of $\R$. The coset $1 + \princ{x^2+1}$ will henceforth be written as just 1, since the conversion from the element in $\R$ to the coset $1 + \princ{x^2+1}$ is simple -- just add the principal ideal $\princ{x^2+1}$ to the end.
+
+    For polynomials within $\R[x]$, such as $x^2 + 2x + 3$, we may interpret $x^2 + 2x + 3$ as a polynomial in $E$, just remembering that the coefficients of that polynomial are actually the cosets $1 + \princ{x^2+1}$, $2 + \princ{x^2+1}$, and $3 + \princ{x^2+1}$ respectively.
+\end{example}
 
 \section{Splitting Fields}
 % TODO: Add
