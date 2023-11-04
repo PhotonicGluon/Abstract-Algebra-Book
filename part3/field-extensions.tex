@@ -183,7 +183,99 @@ Henceforth, to simplify the notation used for elements of the extension field, w
 \end{example}
 
 \section{Splitting Fields}
-% TODO: Add
+To motivate our next definition, we return back to the extension field $E = \R[x]/\princ{x^2+1}$ of $\R$.
+\begin{example}
+    We note by the Fundamental Theorem of Field Theory (\myref{thrm-fundamental-theorem-of-field-theory}) that $\alpha = x + \princ{x^2+1}$ is a zero of the polynomial $x^2+1$ in $E$. One also sees that $-\alpha$ is also a zero of $x^2+1$, since
+    \begin{align*}
+        (-\alpha)^2 + 1 &= (-x + \princ{x^2+1})^2 + 1\\
+        &= x^2 + 1 + \princ{x^2+1}\\
+        &= 0 + \princ{x^2+1}.
+    \end{align*}
+    By the Factor Theorem (\myref{corollary-factor-theorem}), it should follow that both $x - \alpha$ and $x + \alpha$ are factors of $x^2 + 1$ in $E$. Let's try and verify this. One sees
+    \begin{align*}
+        (x-\alpha)(x+\alpha) &= x^2 - \alpha^2\\
+        &= x^2 - (x^2 + \princ{x^2+1})\\
+        &= x^2 - (-1 + \princ{x^2+1}) & (\text{since } x^2 + \princ{x^2+1} = -1 + \princ{x^2+1})\\
+        &= x^2 + 1 + \princ{x^2+1}\\
+        &= x^2 + 1 & (\text{we identity elements without the coset})
+    \end{align*}
+    so we indeed can factor $x^2 + 1$ into two linear factors within the extension field $E$.
+\end{example}
+
+One may wonder if polynomials from any field can be `split' nicely into linear factors within a certain extension field. In fact, they can -- these extension fields are called splitting fields.
+
+Before we can define what a splitting field is, we need to look at the smallest subfield of an extension field that contains the base field and a specific subset of elements of the extension field.
+\begin{definition}
+    Let $F$ be a field and $E/F$ be a field extension. Let $S$ be a subset of $E$. Then $F(S)$, read as ``$F$ adjoin $S$'', is the smallest subfield of $E$ that contains $F$ and the set $S$.
+
+    If $S$ is a finite set, say $S = \{a_1, a_2, \dots, a_n\}$, then we write $F(a_1, a_2, \dots, a_n)$, and say that $F(S)$ is finitely generated over $F$.
+\end{definition}
+
+\begin{proposition}
+    $F(S)$ is the intersection of all subfields of $E$ that contain both $F$ and $S$.
+\end{proposition}
+\begin{proof}
+    Let $K$ be the intersection of all subfields of $E$ that contain both $F$ and $S$.
+    
+    By \myref{prop-intersection-of-subfields-is-subfield} the intersection of subfields is a subfield, so $K$ is indeed a subfield of $E$. Note by definition of $K$ that it contains both $F$ and $S$. Since $F(S)$ contains both $F$ and the set $S$ by definition, thus we have $K \subseteq F(S)$.
+
+    Also, since $F(S)$ contains both $F$ and $S$, it must be inside the intersection that is $K$, which means that $F(S) \subseteq K$.
+
+    Therefore we see $K = F(S)$.
+\end{proof}
+
+With this definition, we can now define \textbf{splitting fields}.
+
+\begin{definition}
+    Let $F$ be a field, $E/F$ be a field extension, and $f(x) \in F[x]$ be a non-constant polynomial. We say that $f(x)$ \textbf{splits}\index{polynomial!splits} in $E$ if and only if there exist an element $a \in F$ and elements $a_1, a_2, \dots, a_n \in E$ such that
+    \[
+        f(x) = a(x-a_1)(x-a_2)\cdots(x-a_n).
+    \]
+    We call $E$ a \textbf{splitting field for $f(x)$ over $F$}\index{splitting field}\index{field!splitting} if
+    \[
+        E = F(a_1, a_2, \dots, a_n).
+    \]
+\end{definition}
+\begin{remark}
+    In other words, the splitting field of $f(x)$ over $F$ is a smallest extension field that allows $f(x)$ to split.
+\end{remark}
+
+We note that the splitting field for a polynomial not only depends on the polynomial itself, but also the base field.
+\begin{example}
+    Consider the polynomial $x^2 + 1$. If we interpret $x^2 + 1$ being in $\R[x]$, then naturally the splitting field of $x^2 + 1$ is $\C$, since $x^2 + 1 = (x-i)(x+i)$.
+
+    However, if we think of $x^2+1$ as being a polynomial in $\Q$, then the splitting field is $\Q(i, -i)$. In fact, $\Q(i, -i) = \Q(i)$ since any field containing $i$ must also contain $-i$ (as it is the additive inverse of $i$). One sees that $\Q(i) \neq \C$ since $\C$ contains irrational numbers (such as $\sqrt2$) while $\Q(i)$ must at least contain $\Q$ and so does not contain irrational numbers.
+\end{example}
+\begin{example}
+    Consider the polynomial $x^2 - 2 \in \Q[x]$. Clearly $x^2 - 2$ splits in $\R$ since $x^2 - 2 = (x - \sqrt2)(x + \sqrt2)$, but the splitting field of $x^2 - 2 \in \Q[x]$ is $\Q(\sqrt2, -\sqrt2)$ which, again, is $\Q(\sqrt 2)$.
+\end{example}
+
+One may wonder if a splitting field always exists for a given polynomial and a given field. The answer -- yes.
+
+\begin{theorem}
+    Let $F$ be a field and $f(x)$ be a non-constant polynomial in $F[x]$. Then there exists a splitting field $E$ for $f(x)$ over $F$.
+\end{theorem}
+\begin{proof}
+    Let $f(x)$ have degree $n$. We use strong induction on $n$.
+    
+    When $n = 1$, we know $f(x)$ is of the form $ax + b$, and so we may write
+    \[
+        f(x) = a\left(x - \left(\frac ba\right)\right),
+    \]
+    which means $f(x)$ splits over the original field $F$.
+
+    Now assume that, for some positive integer $k$, there exists a splitting field $E$ for any field $F$ and for any polynomial in $F[x]$ with degree that is at most $k$. We show that any polynomial of degree $k + 1$ in the field $F[x]$ has a splitting field.
+
+    Let $f(x) \in F[x]$ be an arbitrary polynomial with degree $k + 1$. By the Fundamental Theorem of Field Theory (\myref{thrm-fundamental-theorem-of-field-theory}), there exists an extension field $E$ in which $f(x)$ has a zero. Suppose this zero is $a_1$, meaning that we may write
+    \[
+        f(x) = (x - a_1)g(x)
+    \]
+    for some $g(x) \in E[x]$, by the Factor Theorem (\myref{corollary-factor-theorem}). We note that $\deg g(x) < \deg f(x) = k + 1$ which means $\deg g(x) \leq k$. By the induction hypothesis, there is a splitting field of $g(x)$, say $L$, that contains $E$ and all the zeroes of $g(x)$, which are, say, $a_2, a_3, \dots, a_k, a_{k+1}$. Since $L$ contains $E$ we may also find $a_1 \in L$ (of course, this $a_1$ needs to be converted into the appropriate form within $L$). One then sees that $F(a_1, a_2, \dots, a_{k+1})$ is a splitting field for $f(x)$ over $F$, which shows that the theorem holds for $k + 1$ as well.
+
+    The theorem is proven by induction.
+\end{proof}
+
+% TODO: Continue
 
 \section{The Derivative}
 % TODO: Add
