@@ -59,4 +59,33 @@
         \Q[x]/\princ{x^2+1} \quad\text{or}\quad \Q[x]/\princ{x^2+2}
     \]
     as the possible extension fields.
+
+    \item For brevity let $K = F(a_1, a_2, \dots, a_{n-1})(a_n)$. Note that $K$ contains the field $F(a_1, a_2, \dots, a_{n-1})$ and the element $a_n$, and that $F(a_1, a_2, \dots, a_{n-1})$ contains the field $F$ and the elements $a_1, a_2, \dots, a_{n-1}$. Thus $K$ contains $F$ and the elements $a_1, a_2, \dots, a_{n-1}, a_n$, which means that $K$ is included in the intersection that generates $F(a_1, a_2, \dots, a_n)$, so $K \subseteq F(a_1, a_2, \dots, a_n)$. But $F(a_1, a_2, \dots, a_n)$ is the smallest subfield of $E$ that contains $F$ and the elements $a_1, a_2, \dots, a_n$. Therefore $K = F(a_1, a_2, \dots, a_n)$ as required.
+    
+    \item \begin{partquestions}{\roman*}
+        \item One sees that
+        \[
+            f(x) = (x-\sqrt2)(x+\sqrt2)(x-\sqrt3)(x+\sqrt3)
+        \]
+        and so a splitting field of $f(x)$ over $\Q$ is
+        \begin{align*}
+            &\Q(\sqrt2, -\sqrt2, \sqrt3, -\sqrt3)\\
+            &=\Q(\sqrt2, \sqrt3)\\
+            &=\Q(\sqrt2)(\sqrt3)\\
+            &\cong \Q[\sqrt2][\sqrt3]. & (\myref{thrm-simple-extension-isomorphism})
+        \end{align*}
+
+        \item We work backwards. Note
+        \begin{align*}
+            &\Q(\sqrt2 + \sqrt3)\\
+            &= \Q[\sqrt2 + \sqrt3] & (\myref{thrm-simple-extension-isomorphism})\\
+            &= \{s + t(\sqrt2 + \sqrt3) + u(\sqrt2 + \sqrt3)^2 + v(\sqrt2 + \sqrt3)^3 \vert s,t,u,v \in \Q\}\\
+            &= \{(s + 5u) + (t + 11v)\sqrt2 + (t + 9v)\sqrt3 + 2u\sqrt6 \vert s, t, u, v \in \Q\}\\
+            &= \{a + b\sqrt2 + c\sqrt3 + d\sqrt6 \vert a, b, c, d \in \Q\}\\
+            &=\{(a+b\sqrt2) + (c+d\sqrt2)\sqrt3 \vert a, b, c, d \in \Q\}\\
+            &=\{u + v\sqrt3 \vert u, v \in \Q[\sqrt2]\}\\
+            &= \Q[\sqrt2][\sqrt3]
+        \end{align*}
+        and so there is a splitting field of $f(x)$ over $\Q$ that is isomorphic to $\Q(\sqrt2 + \sqrt3)$.
+    \end{partquestions}
 \end{questions}
