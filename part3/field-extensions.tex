@@ -250,7 +250,100 @@ We note that the splitting field for a polynomial not only depends on the polyno
     Consider the polynomial $x^2 - 2 \in \Q[x]$. Clearly $x^2 - 2$ splits in $\R$ since $x^2 - 2 = (x - \sqrt2)(x + \sqrt2)$, but the splitting field of $x^2 - 2 \in \Q[x]$ is $\Q(\sqrt2, -\sqrt2)$ which, again, is $\Q(\sqrt 2)$.
 \end{example}
 
-One may wonder if a splitting field always exists for a given polynomial and a given field. The answer -- yes.
+There is a name for extension fields of the form $F(\alpha)$ where $\alpha$ is a single element.
+
+\begin{definition}
+    Let $F$ be a field, $E/F$ a field extension, and $\alpha \in E$. Then $F(\alpha)$ is called a \textbf{simple extension}\index{extension!simple} and $\alpha$ is called the \textbf{primitive element}\index{primitive element}\index{extension!simple!primitive element}.
+\end{definition}
+
+The next theorem produces a general form for simple extensions for specific types of $\alpha$, such as $\Q(i)$ and $\Q(\sqrt 2)$.
+
+\begin{theorem}
+    Let $F$ be a field and let $p(x) \in F[x]$ be irreducible over $F$. If $\alpha \in F$ is a zero of $p(x)$ in some field extension $E/F$, then
+    \[
+        F(\alpha) \cong F[x] / \princ{p(x)}.
+    \]
+    Furthermore if $\deg p(x) = n$ then
+    \[
+        F(\alpha) \cong F[\alpha] = \{a_0 + a_1\alpha + a_2\alpha^2 + \cdots + a_{n-1}\alpha^{n-1} \vert a_i \in F\}.
+    \]
+\end{theorem}
+\begin{proof}
+    Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. We show that $\phi$ is a homomorphism, then find its image and kernel.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: For any $f(x), g(x) \in F[x]$ we see
+        \[
+            \phi(f(x) + g(x)) = f(\alpha) + g(\alpha) = \phi(f(x)) + \phi(g(x))
+        \]
+        and
+        \[
+            \phi(f(x)g(x)) = f(\alpha)g(\alpha) = \phi(f(x))\phi(g(x))
+        \]
+        so $\phi$ is a homomorphism.
+
+        \item \textbf{Image}: We note that $\im\phi$ is a subfield of $F(\alpha)$. Therefore $\im\phi$ contains both $F$ and $\alpha$. But $F(\alpha)$ is defined to be the smallest subfield of $E$ that contains both $F$ and $\alpha$, which means $\im\phi = F(\alpha)$.
+        
+        \item \textbf{Kernel}: We claim that $\ker\phi = \princ{p(x)}$. Since $p(\alpha) = 0$ by definition of $\alpha$, therefore $\princ{p(x)} \subseteq \ker\phi$. On the other hand, notice that $\princ{p(x)}$ is a maximal ideal (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}), and since $\ker\phi \neq F[x]$ (as the constant polynomial 1 does not map to 0), therefore $\ker\phi = \princ{p(x)}$, by definition of a maximal ideal.
+    \end{itemize}
+    
+    Hence, by the FRIT (\myref{thrm-ring-isomorphism-1}),
+    \[
+        F[x]/\princ{p(x)} \cong F(\alpha).
+    \]
+
+    Now, if $f(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$ then we may use polynomial long division (\myref{thrm-polynomial-long-division}) to write $f(x) = q(x)p(x) + r(x)$ where $r(x)$ is a \textit{unique} polynomial where $r(x) = 0$ or $\deg r(x) < \deg p(x) = n$. Hence if $r(x) = a_0 + a_1x + \cdots + a_{n-1}x^{n-1}$ we see
+    \[
+        f(x) + \princ{p(x)} = (a_0 + a_1x + \cdots + a_{n-1}x^{n-1}) + \princ{p(x)}
+    \]
+    where $r(x)$ is unique. Now we show that the map $\psi: F[x]/\princ{p(x)} \to F[\alpha]$ given by $\psi(f(x) + \princ{p(x)}) = f(\alpha)$ is a well-defined isomorphism.
+    \begin{itemize}
+        \item \textbf{Well-defined}: First, by using the above observation, for any $f(x) + \princ{p(x)}, g(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$, find $r_f(x), r_g(x) \in F[x]$ where
+        \begin{align*}
+            f(x) + \princ{p(x)} &= r_f(x) + \princ{p(x)}\\
+            g(x) + \princ{p(x)} &= r_g(x) + \princ{p(x)}
+        \end{align*}
+        and so if $f(x) + \princ{p(x)} = g(x) + \princ{p(x)}$ we see $r_f(x) + \princ{p(x)} = r_g(x) + \princ{p(x)}$. Hence $r_f(x) - r_g(x) \in \princ{p(x)}$. Note elements in $\princ{p(x)}$ have degree of at least $p(x)$, or are the zero polynomial. Therefore $r_f(x) - r_g(x) = 0$, meaning $r_f(x) = r_g(x)$ and therefore
+        \[
+            \psi(f(x) + \princ{p(x)}) = r_f(\alpha) = r_g(\alpha) = \psi(g(x) + \princ{p(x)}),
+        \]
+        showing that $\psi$ is well-defined.
+
+        \item \textbf{Homomorphism}: For any $f(x) + \princ{p(x)}, g(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$ we see that
+        \begin{align*}
+            \psi((f(x) + \princ{p(x)}) + (g(x) + \princ{p(x)})) &= \psi((f(x) + g(x)) + \princ{p(x)})\\
+            &= f(\alpha) + g(\alpha)\\
+            &= \psi(f(x) + \princ{p(x)}) + \phi(g(x) + \princ{p(x)})
+        \end{align*}
+        and
+        \begin{align*}
+            \psi((f(x) + \princ{p(x)})(g(x) + \princ{p(x)})) &= \psi((f(x)g(x)) + \princ{p(x)})\\
+            &= f(\alpha)g(\alpha)\\
+            &= \psi(f(x) + \princ{p(x)})\phi(g(x) + \princ{p(x)})
+        \end{align*}
+        which shows that $\psi$ is a homomorphism.
+
+        \item \textbf{Injective}: Since $\psi$ is non-trivial we know that $\psi$ is injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}.
+        
+        \item \textbf{Surjective}: Suppose $f(\alpha) = a_0 + a_1\alpha + \cdots + a_k\alpha^k \in F[\alpha]$. Let $p(x) = b_0 + b_1x + \cdots + b_{n-1}x^{n-1}$. Then by polynomial long division we see
+        \[
+            f(\alpha) = q(\alpha)p(\alpha) + r(\alpha).
+        \]
+        Where $r(x) = 0$ or $\deg r(x) < \deg p(x) = n$. Since $\alpha$ is a zero of $p(\alpha)$ thus $f(\alpha) = r(\alpha)$. Therefore $\psi(r(x) + \princ{p(x)}) = r(\alpha) = f(\alpha)$, which shows that $\psi$ is surjective.
+    \end{itemize}
+    Hence, $F[x]/\princ{p(x)} \cong F[\alpha]$, which proves
+    \[
+        F(\alpha) \cong F[\alpha].\qedhere
+    \]
+\end{proof}
+
+\begin{example}
+    $\Q(i)$ is isomorphic to $\Q[i] = \{a + bi \vert a, b \in \Q\}$.
+\end{example}
+\begin{example}
+    $\Q(\sqrt 2)$ is isomorphic to $\Q[\sqrt{2}] = \{a + b\sqrt{2} \vert a, b \in \Q\}$.
+\end{example}
+
+The next theorem shows that a splitting field for a given polynomial and a given field always exists.
 
 \begin{theorem}
     Let $F$ be a field and $f(x)$ be a non-constant polynomial in $F[x]$. Then there exists a splitting field $E$ for $f(x)$ over $F$.
