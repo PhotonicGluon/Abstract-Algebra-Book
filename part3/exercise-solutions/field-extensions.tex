@@ -60,7 +60,7 @@
     \]
     as the possible extension fields.
 
-    \item For brevity let $K = F(a_1, a_2, \dots, a_{n-1})(a_n)$. Note that $K$ contains the field $F(a_1, a_2, \dots, a_{n-1})$ and the element $a_n$, and that $F(a_1, a_2, \dots, a_{n-1})$ contains the field $F$ and the elements $a_1, a_2, \dots, a_{n-1}$. Thus $K$ contains $F$ and the elements $a_1, a_2, \dots, a_{n-1}, a_n$, which means that $K$ is included in the intersection that generates $F(a_1, a_2, \dots, a_n)$, so $K \subseteq F(a_1, a_2, \dots, a_n)$. But $F(a_1, a_2, \dots, a_n)$ is the smallest subfield of $E$ that contains $F$ and the elements $a_1, a_2, \dots, a_n$. Therefore $K = F(a_1, a_2, \dots, a_n)$ as required.
+    \item For brevity let $K = F(a_1, a_2, \dots, a_{n-1})(a_n)$. Note $K$ contains $F(a_1, a_2, \dots, a_{n-1})$ and the element $a_n$, and that $F(a_1, a_2, \dots, a_{n-1})$ contains the field $F$ and the elements $a_1, a_2, \dots, a_{n-1}$. Thus $K$ contains $F$ and the elements $a_1, a_2, \dots, a_{n-1}, a_n$, which means that $K$ is included in the intersection that generates $F(a_1, a_2, \dots, a_n)$, so $K \subseteq F(a_1, a_2, \dots, a_n)$. But $F(a_1, a_2, \dots, a_n)$ is the smallest subfield of $E$ that contains $F$ and the elements $a_1, a_2, \dots, a_n$. Therefore $K = F(a_1, a_2, \dots, a_n)$ as required.
     
     \item \begin{partquestions}{\roman*}
         \item One sees that
@@ -75,10 +75,29 @@
             &\cong \Q[\sqrt2][\sqrt3]. & (\myref{thrm-simple-extension-isomorphism})
         \end{align*}
 
-        \item We work backwards. Note
+        \item Reducing $p(x)$ modulo 5 yields $\bar{p}(x) = x^4 + 1$. One sees then that
+        \begin{itemize}
+            \item $\bar{p}(0) = 1 \neq 0$;
+            \item $\bar{p}(1) = 2 \neq 0$;
+            \item $\bar{p}(2) = 17 = 2 \neq 0$;
+            \item $\bar{p}(3) = 82 = 2 \neq 0$; and
+            \item $\bar{p}(4) = 257 = 2 \neq 0$.
+        \end{itemize}
+        Therefore $p(x)$ is irreducible over $\Q$ by Mod 5 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}). One also sees that
+        \begin{align*}
+            &p(\sqrt2 + \sqrt3)\\
+            &= (\sqrt2 + \sqrt3)^4 - 10(\sqrt2 + \sqrt3)^2 + 1\\
+            &= \left((\sqrt2)^4 + 4(\sqrt2)^3(\sqrt3) + 6(\sqrt2)^2(\sqrt3)^2 + 4(\sqrt2)(\sqrt3)^3 + (\sqrt3)^4\right)\\
+            &\quad\quad- 10\left((\sqrt2)^2 + 2\sqrt2\sqrt3 + (\sqrt3)^2\right) + 1\\
+            &=\left(49 + 20\sqrt6\right) - 10\left(5 + 2\sqrt6\right) + 1\\
+            &= 0
+        \end{align*}
+        so $\sqrt2 + \sqrt3$ is indeed a zero of $p(x)$ in $\R$.
+
+        \item We work backwards. Since $p(x) = x^4 - 10x + 1$ is an irreducible polynomial of degree 4, therefore $\Q[\sqrt2 + \sqrt3]$ has 4 basis vectors. Therefore
         \begin{align*}
             &\Q(\sqrt2 + \sqrt3)\\
-            &= \Q[\sqrt2 + \sqrt3] & (\myref{thrm-simple-extension-isomorphism})\\
+            &\cong \Q[\sqrt2 + \sqrt3]\\
             &= \{s + t(\sqrt2 + \sqrt3) + u(\sqrt2 + \sqrt3)^2 + v(\sqrt2 + \sqrt3)^3 \vert s,t,u,v \in \Q\}\\
             &= \{(s + 5u) + (t + 11v)\sqrt2 + (t + 9v)\sqrt3 + 2u\sqrt6 \vert s, t, u, v \in \Q\}\\
             &= \{a + b\sqrt2 + c\sqrt3 + d\sqrt6 \vert a, b, c, d \in \Q\}\\
