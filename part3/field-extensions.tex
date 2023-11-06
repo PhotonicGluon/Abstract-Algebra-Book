@@ -265,8 +265,9 @@ The next theorem produces a general form for simple extensions for specific type
     \]
     Furthermore if $\deg p(x) = n$ then
     \[
-        F(\alpha) \cong F[\alpha] = \{a_0 + a_1\alpha + a_2\alpha^2 + \cdots + a_{n-1}\alpha^{n-1} \vert a_i \in F\}.
+        F(\alpha) \cong F[\alpha]
     \]
+    and every element in $F[\alpha]$ can be expressed uniquely as $a_0 + a_1\alpha + a_2\alpha^2 + \cdots + a_{n-1}\alpha^{n-1}$ where $a_i \in F$.
 \end{theorem}
 \begin{proof}
     Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. We show that $\phi$ is a homomorphism, then find its image and kernel.
@@ -332,8 +333,9 @@ The next theorem produces a general form for simple extensions for specific type
     \end{itemize}
     Hence, $F[x]/\princ{p(x)} \cong F[\alpha]$, which proves
     \[
-        F(\alpha) \cong F[\alpha].\qedhere
+        F(\alpha) \cong F[\alpha]
     \]
+    and uniqueness is inherited from the fact that $r(\alpha)$ is unique.
 \end{proof}
 
 \begin{example}
@@ -448,6 +450,98 @@ forms a basis for $F[\alpha]$, and $F[\alpha]$ has dimension $n$.
         \item Hence show that there exists a splitting field of $f(x)$ over $\Q$ that is isomorphic to the simple extension $\Q(\sqrt2 + \sqrt3)$.
     \end{partquestions}
 \end{exercise}
+
+Henceforth, for elements $\alpha$ that are roots of a polynomial with coefficients in $F$, we will write $F(\alpha)$ instead of $F[\alpha]$ to indicate that we are working with fields.
+
+Looking back at the polynomial $x^2+1$, we note that both $\Q(i)$ and $\Q[x]/\princ{x^2+1}$ split $x^2+1$. But are these two fields different? Not really; we end this section by proving that a splitting field of a polynomial over a given field is unique up to isomorphism.
+
+But we introduce some terminology and notation first.
+
+\begin{definition}
+    Let $F$ and $F'$ be fields and $\phi: F \to F'$ be a homomorphism. Suppose $E/F$ and $E'/F'$ are field extensions, and suppose $\psi: E \to E'$ is a homomorphism. Then we say \textbf{$\psi$ agrees with $\phi$ on $F$}\index{agrees with} if and only if $\psi(x) = \phi(x)$ for all $x \in F$.
+\end{definition}
+
+% \begin{definition}
+%     For given fields $F$ and $F'$, a polynomial $f(x) = a_0 + a_1x + \cdots + a_nx^n \in F[x]$, and an isomorphism $\phi: F \to F'$, we define
+%     \[
+%         \phi(f(x)) = \phi(a_0) + \phi(a_1)x + \cdots + \phi(a_n)x^n,
+%     \]
+%     which is a polynomial in $F'[x]$.
+% \end{definition}
+
+% \newpage
+
+% \begin{lemma}\label{lemma-isomorphism-extension-lemma}
+%     Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $a$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an isomorphism and $b$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an isomorphism $\overline{\phi}: F(a) \to F'(b)$ that agrees with $\phi$ on $F$ and maps $a$ to $b$.
+% \end{lemma}
+% \begin{proof}[Proof (see {\cite[p.~345]{gallian_2016}} and {\cite[Lemma 21.32]{judson_beezer_2022}})]
+%     We note that $F(a) \cong F[a]$ and $F'(b) \cong F'[b]$ by \myref{thrm-simple-extension-isomorphism}. Furthermore, if $\deg p(x) = n$, we have that both $F[a]$ and $F'[b]$ have dimension $n$ with bases
+%     \[
+%         \{1, a, a^2, \dots, a^n\} \quad\text{and}\quad\{1, b, b^2, \dots, b^n\}
+%     \]
+%     respectively. Define the isomorphism $\overline{\phi}: F(a) \to F'(b)$ where
+%     \[
+%         \overline{\phi}(a_0 + a_1)
+%     \]
+
+%     For brevity let $q(x) = \phi(p(x))$. Note that $q(x)$ is irreducible over $F'$. Therefore we know that both $\princ{p(x)}$ and $\princ{q(x)}$ are maximal ideals (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}), and so both $F/\princ{p(x)}$ and $F'/\princ{q(x)}$ are fields (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field}). Define the map $\psi: F[x]/\princ{p(x)} \to F'[x]/\princ{q(x)}$ by
+%     \[
+%         \psi(f(x) + \princ{p(x)}) = \phi(f(x)) + \princ{q(x)}.
+%     \]
+%     We check that $\psi$ is an isomorphism.
+%     \begin{itemize}
+%         \item \textbf{Homomorphism}: % TODO: Add
+        
+%         \item \textbf{Injective}: Since $\psi$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}).
+        
+%         \item \textbf{Surjective}: % TODO: Add
+%     \end{itemize}
+%     So $\psi$ is an isomorphism. Also, \myref{thrm-simple-extension-isomorphism} allows us to find the isomorphisms $\alpha: F(a) \to F[x]/\princ{p(x)}$ and $\beta: F'(b) \to F'[x]/\princ{q(x)}$. Hence $\overline{\phi}: F(a) \to F'(b)$ where $\overline{\phi} = \beta^{-1}\psi\alpha$ is an isomorphism (since it is the composition of isomorphisms).
+% \end{proof}
+
+\begin{lemma}\label{lemma-isomorphism-extension-lemma}
+    Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $\alpha$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an isomorphism and $\beta$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an isomorphism $\overline{\phi}: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
+\end{lemma}
+\begin{proof}[Proof (cf. {\cite[Lemma 21.32]{judson_beezer_2022}})]
+    We note that, by \myref{thrm-simple-extension-isomorphism}, if $\deg p(x) = n$, we have that both $F(\alpha)$ and $F'(\beta)$ have dimension $n$ with bases
+    \[
+        \{1, \alpha, \alpha^2, \dots, \alpha^n\} \quad\text{and}\quad\{1, \beta, \beta^2, \dots, \beta^n\}
+    \]
+    respectively. Define the map $\overline{\phi}: F(\alpha) \to F'(\beta)$ where
+    \[
+        \overline{\phi}\left(a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}\right) = \phi(a_0) + \phi(a_1)\beta + \cdots + \phi(a_{n-1})\beta^{n-1}.
+    \]
+    We show that this is an isomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}$ and $b_0 + b_1\alpha + \cdots + b_{n-1}\alpha^{n-1}$ be elements in $F(\alpha)$. Note
+        \begin{align*}
+            \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i + \sum_{i=0}^nb_i\alpha^i\right) &=\overline{\phi}\left(\sum_{i=0}^n(a_i+b_i)\alpha^i\right)\\
+            &=\sum_{i=0}^n\phi(a_i+b_i)\beta^i\\
+            &= \sum_{i=0}^n\phi(a_i)\beta^i + \sum_{i=0}^n\phi(b_i)\beta^i\\
+            &= \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i\right) + \overline{\phi}\left(\sum_{i=0}^nb_i\alpha^i\right).
+        \end{align*}
+        Also,
+        \begin{align*}
+            \overline{\phi}\left(\left(\sum_{i=0}^na_i\alpha^i\right)\left(\sum_{i=0}^nb_i\alpha^i\right)\right) &= \overline{\phi}\left(\sum_{k=0}^{2n}\left(\left(\sum_{i=0}^ka_ib_{k-i}\right)\alpha^i\right)\right)\\
+            &= \sum_{k=0}^{2n}\left(\phi\left(\sum_{i=0}^ka_ib_{k-i}\right)\beta^i\right)\\
+            &= \sum_{k=0}^{2n}\left(\left(\sum_{i=0}^k\phi(a_i)\phi(b_{k-i})\right)\beta^i\right)\\
+            &=\left(\sum_{i=0}^n\phi(a_i)\beta^i\right)\left(\sum_{i=0}^n\phi(b_i)\beta^i\right)\\
+            &= \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i\right)\overline{\phi}\left(\sum_{i=0}^nb_i\alpha^i\right)
+        \end{align*}
+        so $\overline{\phi}$ is a homomorphism.
+        
+        \item \textbf{Injective}: Since $\psi$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}).
+        
+        \item \textbf{Surjective}: Suppose $b_0 + b_1\beta + \cdots + b_{n-1}\beta^{n-1} \in F'(\beta)$. Since $\phi$ is an isomorphism, for any $b_i \in F'$, there is a pre-image $a_i \in F$ such that $\phi(a_i) = b_i$. Consequently
+        \[
+            \overline{\phi}\left(a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}\right) = b_0 + b_1\beta + \cdots + b_{n-1}\beta^{n-1}
+        \]
+        so any element in $F'(\beta)$ has a pre-image in $F(\alpha)$.
+    \end{itemize}
+    Therefore $\overline{\phi}$ is an isomorphism.
+
+    Finally, notice for any $r \in F$ that $\overline{\phi}(r) = \phi(r)$, so $\overline{\phi}$ agrees with $\phi$ on $F$. Also, clearly, $\overline{\phi}(\alpha) = \beta$. Therefore this isomorphism satisfies the required properties.
+\end{proof}
 
 \section{The Derivative}
 % TODO: Add
