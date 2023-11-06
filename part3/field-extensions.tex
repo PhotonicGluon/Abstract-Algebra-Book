@@ -461,45 +461,17 @@ But we introduce some terminology and notation first.
     Let $F$ and $F'$ be fields and $\phi: F \to F'$ be a homomorphism. Suppose $E/F$ and $E'/F'$ are field extensions, and suppose $\psi: E \to E'$ is a homomorphism. Then we say \textbf{$\psi$ agrees with $\phi$ on $F$}\index{agrees with} if and only if $\psi(x) = \phi(x)$ for all $x \in F$.
 \end{definition}
 
-% \begin{definition}
-%     For given fields $F$ and $F'$, a polynomial $f(x) = a_0 + a_1x + \cdots + a_nx^n \in F[x]$, and an isomorphism $\phi: F \to F'$, we define
-%     \[
-%         \phi(f(x)) = \phi(a_0) + \phi(a_1)x + \cdots + \phi(a_n)x^n,
-%     \]
-%     which is a polynomial in $F'[x]$.
-% \end{definition}
+\begin{definition}
+    For given fields $F$ and $F'$, a polynomial $f(x) = a_0 + a_1x + \cdots + a_nx^n \in F[x]$, and an isomorphism $\phi: F \to F'$, we define
+    \[
+        \phi(f(x)) = \phi(a_0) + \phi(a_1)x + \cdots + \phi(a_n)x^n,
+    \]
+    which is a polynomial in $F'[x]$.
+\end{definition}
 
-% \newpage
+\newpage
 
-% \begin{lemma}\label{lemma-isomorphism-extension-lemma}
-%     Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $a$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an isomorphism and $b$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an isomorphism $\overline{\phi}: F(a) \to F'(b)$ that agrees with $\phi$ on $F$ and maps $a$ to $b$.
-% \end{lemma}
-% \begin{proof}[Proof (see {\cite[p.~345]{gallian_2016}} and {\cite[Lemma 21.32]{judson_beezer_2022}})]
-%     We note that $F(a) \cong F[a]$ and $F'(b) \cong F'[b]$ by \myref{thrm-simple-extension-isomorphism}. Furthermore, if $\deg p(x) = n$, we have that both $F[a]$ and $F'[b]$ have dimension $n$ with bases
-%     \[
-%         \{1, a, a^2, \dots, a^n\} \quad\text{and}\quad\{1, b, b^2, \dots, b^n\}
-%     \]
-%     respectively. Define the isomorphism $\overline{\phi}: F(a) \to F'(b)$ where
-%     \[
-%         \overline{\phi}(a_0 + a_1)
-%     \]
-
-%     For brevity let $q(x) = \phi(p(x))$. Note that $q(x)$ is irreducible over $F'$. Therefore we know that both $\princ{p(x)}$ and $\princ{q(x)}$ are maximal ideals (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}), and so both $F/\princ{p(x)}$ and $F'/\princ{q(x)}$ are fields (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field}). Define the map $\psi: F[x]/\princ{p(x)} \to F'[x]/\princ{q(x)}$ by
-%     \[
-%         \psi(f(x) + \princ{p(x)}) = \phi(f(x)) + \princ{q(x)}.
-%     \]
-%     We check that $\psi$ is an isomorphism.
-%     \begin{itemize}
-%         \item \textbf{Homomorphism}: % TODO: Add
-        
-%         \item \textbf{Injective}: Since $\psi$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}).
-        
-%         \item \textbf{Surjective}: % TODO: Add
-%     \end{itemize}
-%     So $\psi$ is an isomorphism. Also, \myref{thrm-simple-extension-isomorphism} allows us to find the isomorphisms $\alpha: F(a) \to F[x]/\princ{p(x)}$ and $\beta: F'(b) \to F'[x]/\princ{q(x)}$. Hence $\overline{\phi}: F(a) \to F'(b)$ where $\overline{\phi} = \beta^{-1}\psi\alpha$ is an isomorphism (since it is the composition of isomorphisms).
-% \end{proof}
-
-\begin{lemma}\label{lemma-isomorphism-extension-lemma}
+\begin{lemma}\label{lemma-isomorphism-extension}
     Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $\alpha$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an isomorphism and $\beta$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an isomorphism $\overline{\phi}: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
 \end{lemma}
 \begin{proof}[Proof (cf. {\cite[Lemma 21.32]{judson_beezer_2022}})]
@@ -542,6 +514,36 @@ But we introduce some terminology and notation first.
 
     Finally, notice for any $r \in F$ that $\overline{\phi}(r) = \phi(r)$, so $\overline{\phi}$ agrees with $\phi$ on $F$. Also, clearly, $\overline{\phi}(\alpha) = \beta$. Therefore this isomorphism satisfies the required properties.
 \end{proof}
+
+We can now prove the following theorem.
+
+\begin{theorem}\label{thrm-isomorphism-extension}
+    Let $F$ and $F'$ be fields, $\phi: F \to F'$ be an isomorphism, and $f(x) \in F[x]$. If $E$ is a splitting field of $f(x)$ over $F$ and $E'$ is a splitting field of $\phi(f(x))$ over $F'$, then there exists an isomorphism from $E$ to $E'$ that agrees with $\phi$ on $F$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 20.4]{gallian_2016}})]
+    Let $\deg f(x) = n$; we induct on $n$.
+    
+    When $n = 1$, the polynomial $f(x)$ splits over the original field $F$. Similarly $\phi(f(x))$ splits over $F'$. Hence $E = F$ and $E' = F'$ and thus $\phi$ is the desired isomorphism.
+
+    Now assume that the result holds for all non-constant polynomials of degree of at most $k$. We show the result holds for a polynomial of degree $k + 1$.
+
+    Since $\deg f(x) = k+1$, we can find an irreducible factor $p(x) \in F[x]$ of $f(x)$. Let $\alpha$ be a zero of $p(x)$ in $E$ and let $\beta$ be a zero of $\phi(p(x))$ in $E'$. By \myref{lemma-isomorphism-extension} there exists an isomorphism $\psi: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
+
+    Now since $\alpha$ is a zero of the irreducible factor $p(x)$ of $f(x)$, thus $\alpha$ is a zero of $f(x)$. We may hence write
+    \[
+        f(x) = (x-\alpha)g(x)
+    \]
+    by Factor Theorem (\myref{corollary-factor-theorem}), where $g(x) \in F(\alpha)[x]$. Since $E$ is a splitting field of $f(x)$ over $F$, thus $E$ must also be a splitting field of $g(x)$ over $F$; likewise $E'$ is a splitting field of $\psi(g(x))$. As $\deg g(x) < \deg f(x) = k+1$, so $\deg g(x) \leq k$ and thus there must exist an isomorphism $\sigma: E \to E'$ that agrees with $\psi$ on $F(\alpha)$ by the induction hypothesis. Consequently, since $\psi$ agrees with $\phi$ on $F$, therefore $\sigma$ also agrees with $\phi$ on $F$. Therefore $\sigma$ is the required isomorphism, proving the statement for the $k+1$ case.
+\end{proof}
+
+\begin{corollary}\label{corollary-splitting-field-unique-up-to-isomorphism}
+    Let $F$ be a field and $f(x) \in F[x]$. Then any two splitting fields of $f(x)$ over $F$ are isomorphic.
+\end{corollary}
+\begin{proof}
+    Suppose $E$ and $E'$ are splitting fields of $f(x)$ over $F$. Then the result follows immediately from \myref{thrm-isomorphism-extension} by letting $\phi = \id$, i.e. the identity endomorphism from $F$ to $F$.
+\end{proof}
+
+In light of \myref{corollary-splitting-field-unique-up-to-isomorphism}, we may refer to ``the'' splitting field of $f(x)$ over $F$ without any ambiguity.
 
 \section{The Derivative}
 % TODO: Add
