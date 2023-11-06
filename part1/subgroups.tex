@@ -104,7 +104,7 @@ We look at some examples of the use of the subgroup test.
 \begin{example}\label{example-centralizer-of-a-subset}
     Let $G$ be a group and $S$ be a non-empty subset of $G$. The \textbf{centralizer}\index{centralizer} of $S$ in $G$ is the set
     \[
-        \Centralizer{G}{S} = \left\{g \in G \vert \text{for all } s \in S \text{ we have } gs = sg\right\}.
+        \Centralizer{G}{S} = \left\{g \in G \vert gs = sg \text{ for all } s \in S\right\}.
     \]
     Note $\Centralizer{G}{S}$ is a subset of $G$. We claim that $\Centralizer{G}{S}$ is a subgroup of $G$.
     \begin{proof}
@@ -232,7 +232,8 @@ We now state and prove a result that relates the equality of cosets.
     Let $G$ be a group, $H \leq G$, and $g_1$ and $g_2$ be elements in $G$. Prove that if $g_1H \cap g_2H \neq \emptyset$ then $g_1H = g_2H$.
 \end{exercise}
 
-We note one very useful corollary of Coset Equality.
+We note one very useful corollary of the Coset Equality lemma (\myref{lemma-coset-equality}).
+
 \begin{corollary}[Element in Coset]\label{corollary-equivalence-of-element-in-coset}
     Let $G$ be a group, $H \leq G$, and $x \in G$. Then the following statements are equivalent.
     \begin{enumerate}[label=(\arabic*)]
@@ -277,7 +278,7 @@ We require two lemmas to properly prove Lagrange's theorem.
     \end{itemize}
     The first bullet point is clear, since the identity $e$ is in every left coset. The second bullet point is proven by \myref{exercise-intersection-of-distinct-cosets-is-empty}. We only need to show the third bullet point to prove the lemma.
 
-    Suppose $g$ is in $G$. We will find a left coset that $g$ is in. Clearly $g = ge$, and since $e$ is an element of $H$, thus $g = ge$ is an element of the left coset $gH$. So any element in $G$ belongs to a left coset of $H$ in $G$. Thus the union of all left cosets is the group.
+    Suppose $g$ is in $G$. We will find a left coset that contains $g$. Clearly $g = ge$, and since $e$ is an element of $H$, thus $g = ge$ is an element of the left coset $gH$. So any element in $G$ belongs to a left coset of $H$ in $G$. Thus the union of all left cosets is the group.
 
     Hence, distinct left cosets of $H$ in $G$ partition $G$.
 \end{proof}
@@ -324,10 +325,10 @@ Let's look at some corollaries of Lagrange's theorem.
 \end{corollary}
 \begin{proof}
     We are to show that $|G| = m|g|$ for some positive integer $m$.
-    \begin{enumerate}
+    \begin{itemize}
         \item When $g = e$, we see $|e| = 1$ which means $|G| = |G| \times 1 = |G||e|$.
         \item When $g \neq e$, set $|g| = n$. Consider the cyclic subgroup $\langle g \rangle = \{g, g^2, g^3, \dots, g^n\}$. Note that $|g| = |\mathcal{S}| = n$, so by Lagrange's theorem (\myref{thrm-lagrange}) we have $|G| = [G:\mathcal{S}]|\mathcal{S}| = [G:\mathcal{S}]|g|$. Hence, in this case, $m = [G:\mathcal{S}]$.
-    \end{enumerate}
+    \end{itemize}
     This proves the claim.
 \end{proof}
 
@@ -414,9 +415,9 @@ We end this chapter by looking at a special (and useful) type of group: the quot
 \begin{definition}
     Let $G$ be a group and $H \leq G$. The \textbf{set of left cosets}\index{set!of left cosets} is denoted by
     \[
-        G/H = \{gH \vert g \in G \}
+        G/H = \{gH \vert g \in G \},
     \]
-    and has a cardinality of $[G:H] = \frac{|G|}{|H|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). $G/H$ is read ``$G$ by $H$''.
+    is read ``$G$ by $H$'', and has a cardinality of $[G:H] = \frac{|G|}{|H|}$ by Lagrange's Theorem (\myref{thrm-lagrange}).
 \end{definition}
 \begin{remark}
     We may sometimes write $G/H$ using fractions (i.e. $\frac GH$) if it serves to improve readability.
@@ -452,8 +453,8 @@ We end this chapter by looking at a special (and useful) type of group: the quot
 
     We can now show that $G/N$ under $\star$ satisfies the group axioms.
     \begin{enumerate}
-        \item \textbf{Closure}: Assume $xN$ and $yN$ are in the set $G/N$. Then $(xN)(yN) = (xy)N$. Since $xy$ is in $G$ thus $(xy)N$ is in $G/N$, meaning that $G/N$ is closed under $\star$.
-        \item \textbf{Associativity}: Take $xN$, $yN$, and $zN$ from $G/N$. Then
+        \item \textbf{Closure}: Assume $xN, yN \in G/N$. Then $(xN)(yN) = (xy)N$. Since $xy$ is in $G$ thus $(xy)N$ is in $G/N$, meaning that $G/N$ is closed under $\star$.
+        \item \textbf{Associativity}: Take $xN, yN, zN \in G/N$. Then
         \begin{align*}
             (xN)\left((yN)(zN)\right) &= (xN)\left((yz)N\right)\\
             &= (xyz)N\\
@@ -475,13 +476,13 @@ We end this chapter by looking at a special (and useful) type of group: the quot
         \[
         (x^{-1}N)(xN) = (x^{-1}x)N = eN = N,
         \]
-        which means $(xN)^{-1}$ is $x^{-1}N$.
+        which means any $xN \in G/N$ has an inverse.
     \end{enumerate}
     Since the four group axioms are satisfied, thus $G/N$ is a group under the operation $\star$.
 \end{proof}
 
 \begin{example}
-    Let's look at possible quotient groups of the group $D_3$, which has the underlying set of $\{e, r, r^2, s, rs, r^2s\}$. Recall from a previous example (\myref{example-normal-subgroups-of-d3}) that $\langle r \rangle \lhd D_3$. Thus $D_3 / \langle r \rangle$ is a quotient group, with $|D_3 / \langle r \rangle| = \frac{|D_3|}{|\langle r\rangle|} = \frac63 = 2$.
+    Let's look at possible quotient groups of the group $D_3$, which has the underlying set $\{e, r, r^2, s, rs, r^2s\}$. Recall from \myref{example-normal-subgroups-of-d3} that $\langle r \rangle \lhd D_3$. Thus $D_3 / \langle r \rangle$ is a quotient group, with $|D_3 / \langle r \rangle| = \frac{|D_3|}{|\langle r\rangle|} = \frac63 = 2$.
 
     Let's now look at the elements of $D_3 / \langle r \rangle$.
     \begin{align*}
@@ -517,7 +518,7 @@ We end this chapter by looking at a special (and useful) type of group: the quot
 \end{problem}
 
 \begin{problem}
-    Let $G$ be a group and $H \leq G$. Let
+    Let $G$ be a group and $H \leq G$. Define the set
     \[
         K = \{x \in G \vert x^2 \in H\}.
     \]
@@ -573,7 +574,7 @@ We end this chapter by looking at a special (and useful) type of group: the quot
 \end{problem}
 
 \begin{problem}\label{problem-intersection-of-coprime-subgroups}
-    Let $G$ be a finite group, $H \leq G$, and $K \leq G$. Suppose the greatest common divisor (GCD) of the order of $H$ and the order of $K$ is 1.
+    Let $G$ be a finite group, $H \leq G$, and $K \leq G$. Suppose the order of $H$ and the order of $K$ are coprime.
     \begin{partquestions}{\alph*}
         \item Show that the intersection of the groups $H$ and $K$ contains only the identity.
         \item Show that, if $H$ and $K$ are normal subgroups of $G$, then for any $h \in H$ and $k \in K$ we have $hk = kh$.
