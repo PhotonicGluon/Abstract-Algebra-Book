@@ -204,7 +204,8 @@ To motivate our next definition, we return back to the extension field $E = \R[x
 
 One may wonder if polynomials from any field can be `split' nicely into linear factors within a certain extension field. In fact, they can -- these extension fields are called splitting fields.
 
-Before we can define what a splitting field is, we need to look at the smallest subfield of an extension field that contains the base field and a specific subset of elements of the extension field.
+Before we can define what a splitting field is, we need to look at a special kind of extension field.
+
 \begin{definition}
     Let $F$ be a field and $E/F$ be a field extension. Let $S$ be a subset of $E$. Then $F(S)$, read as ``$F$ adjoin $S$'', is the smallest subfield of $E$ that contains $F$ and the set $S$.
 
@@ -212,7 +213,7 @@ Before we can define what a splitting field is, we need to look at the smallest 
 \end{definition}
 
 \begin{proposition}
-    $F(S)$ is the intersection of all subfields of $E$ that contain both $F$ and $S$.
+    $F(S)$ is the intersection of all subfields of $E$ that contain both the field $F$ and the subset $S$.
 \end{proposition}
 \begin{proof}
     Let $K$ be the intersection of all subfields of $E$ that contain both $F$ and $S$.
@@ -224,39 +225,17 @@ Before we can define what a splitting field is, we need to look at the smallest 
     Therefore we see $K = F(S)$.
 \end{proof}
 
-With this definition, we can now define \textbf{splitting fields}.
-
-\begin{definition}
-    Let $F$ be a field, $E/F$ be a field extension, and $f(x) \in F[x]$ be a non-constant polynomial. We say that $f(x)$ \textbf{splits}\index{polynomial!splits} in $E$ if and only if there exist an element $a \in F$ and elements $a_1, a_2, \dots, a_n \in E$ such that
-    \[
-        f(x) = a(x-a_1)(x-a_2)\cdots(x-a_n).
-    \]
-    We call $E$ a \textbf{splitting field for $f(x)$ over $F$}\index{splitting field}\index{field!splitting} if
-    \[
-        E = F(a_1, a_2, \dots, a_n).
-    \]
-\end{definition}
-\begin{remark}
-    In other words, the splitting field of $f(x)$ over $F$ is a smallest extension field that allows $f(x)$ to split.
-\end{remark}
-
-We note that the splitting field for a polynomial not only depends on the polynomial itself, but also the base field.
-\begin{example}
-    Consider the polynomial $x^2 + 1$. If we interpret $x^2 + 1$ being in $\R[x]$, then naturally the splitting field of $x^2 + 1$ is $\C$, since $x^2 + 1 = (x-i)(x+i)$.
-
-    However, if we think of $x^2+1$ as being a polynomial in $\Q$, then the splitting field is $\Q(i, -i)$. In fact, $\Q(i, -i) = \Q(i)$ since any field containing $i$ must also contain $-i$ (as it is the additive inverse of $i$). One sees that $\Q(i) \neq \C$ since $\C$ contains irrational numbers (such as $\sqrt2$) while $\Q(i)$ must at least contain $\Q$ and so does not contain irrational numbers.
-\end{example}
-\begin{example}
-    Consider the polynomial $x^2 - 2 \in \Q[x]$. Clearly $x^2 - 2$ splits in $\R$ since $x^2 - 2 = (x - \sqrt2)(x + \sqrt2)$, but the splitting field of $x^2 - 2 \in \Q[x]$ is $\Q(\sqrt2, -\sqrt2)$ which, again, is $\Q(\sqrt 2)$.
-\end{example}
-
 There is a name for extension fields of the form $F(\alpha)$ where $\alpha$ is a single element.
 
 \begin{definition}
     Let $F$ be a field, $E/F$ a field extension, and $\alpha \in E$. Then $F(\alpha)$ is called a \textbf{simple extension}\index{extension!simple} and $\alpha$ is called the \textbf{primitive element}\index{primitive element}\index{extension!simple!primitive element}.
 \end{definition}
 
-The next theorem produces a general form for simple extensions for specific types of $\alpha$, such as $\Q(i)$ and $\Q(\sqrt 2)$.
+\begin{example}
+    $\Q(i)$, $\R(1+2i)$, $\Q(\pi)$, and $\Q(\sqrt 2)$ are all simple extensions with the primitive elements of $i$, $1+2i$, $\pi$, and $\sqrt 2$ respectively.
+\end{example}
+
+A general form for simple extensions for specific types of primitive elements, such as $\Q(i)$ and $\Q(\sqrt 2)$, exists, and will simplify calculation drastically.
 
 \begin{theorem}\label{thrm-simple-extension-isomorphism}
     Let $F$ be a field and let $p(x) \in F[x]$ be irreducible over $F$. If $\alpha \in E$ is a zero of $p(x)$ in some field extension $E/F$, then
@@ -353,6 +332,19 @@ The next theorem produces a general form for simple extensions for specific type
 
 Henceforth, for elements $\alpha$ that are roots of a polynomial with coefficients in $F$, we will write $F(\alpha)$ instead of $F[\alpha]$ to indicate that we are working with fields.
 
+We note \myref{thrm-simple-extension-isomorphism} shows that an element of $F(\alpha)$, where $\alpha$ is the zero of some irreducible polynomial over $F$, takes the form $a_0+a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}$. Since this is, in fact, a unique representation, therefore, using the language of vector spaces, the set
+\[
+    \{1, \alpha, \alpha^2, \dots, \alpha^{n-1}\}
+\]
+forms a basis for $F(\alpha)$, and $F(\alpha)$ has dimension $n$.
+
+\begin{example}
+    Consider $f(x) = x^6 - 2 \in \Q[x]$. Eisenstein's criteria (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$. Since $\sqrt[6]2 \in \R$ is a zero of $f(x)$, we know that $\Q(\sqrt[6]2)$ has 6 basis vectors, so it has the underlying set
+    \[
+        \left\{a_0 + a_12^{\frac16} + a_22^{\frac26} + a_32^{\frac36} + a_42^{\frac46} + a_52^{\frac56} \vert a_i \in \Q\right\}.
+    \]
+\end{example}
+
 What about extensions of the form $F(a_1, a_2, \dots, a_n)$? We also have this useful result that simplifies calculation.
 \begin{proposition}\label{prop-field-generated-by-S-inductive-definition}
     Let $F$ be a field, $E/F$ be a field extension, and $a_1, a_2, \dots, a_n \in E$ where $n \geq 2$. Then
@@ -368,10 +360,10 @@ What about extensions of the form $F(a_1, a_2, \dots, a_n)$? We also have this u
 \end{proof}
 
 \begin{example}
-    Note that $i$ and $\sqrt 2$ are clearly zeroes of some polynomial in $\Q[x]$ (in particular, $x^2 + 1$ and $x^2 - 2$ respectively). Thus the extension field
+    Note that $i$ and $\sqrt 2$ are zeroes of the irreducible polynomials $x^2 + 1$ and $x^2 - 2$ respectively. Thus the extension field
     \begin{align*}
-        \Q(\sqrt 2, i) &= \Q(\sqrt 2)(i)\
-        &= \{u + vi \vert u,v \in \Q[\sqrt2]\}\\
+        \Q(\sqrt 2, i) &= \Q(\sqrt 2)(i)\\
+        &= \{u + vi \vert u,v \in \Q(\sqrt2)\}\\
         &= \{(a+b\sqrt2) + (c+d\sqrt2)i \vert a, b, c, d \in \Q\}\\
         &= \{a + b\sqrt2 + ci + d\sqrt2i \vert a, b, c, d \in \Q\}.
     \end{align*}
@@ -381,7 +373,37 @@ What about extensions of the form $F(a_1, a_2, \dots, a_n)$? We also have this u
     Prove \myref{prop-field-generated-by-S-inductive-definition}.
 \end{exercise}
 
-The next theorem shows that a splitting field for a given polynomial and a given field always exists.
+\newpage
+
+With all these results, we can finally define \textbf{splitting fields}.
+
+\begin{definition}
+    Let $F$ be a field, $E/F$ be a field extension, and $f(x) \in F[x]$ be a non-constant polynomial. We say that $f(x)$ \textbf{splits}\index{polynomial!splits} in $E$ if and only if there exist an element $a \in F$ and elements $a_1, a_2, \dots, a_n \in E$ such that
+    \[
+        f(x) = a(x-a_1)(x-a_2)\cdots(x-a_n).
+    \]
+    We call $E$ a \textbf{splitting field for $f(x)$ over $F$}\index{splitting field}\index{field!splitting} if
+    \[
+        E = F(a_1, a_2, \dots, a_n).
+    \]
+\end{definition}
+\begin{remark}
+    In other words, the splitting field of $f(x)$ over $F$ is a smallest extension field that allows $f(x)$ to split.
+\end{remark}
+
+We note that the splitting field for a polynomial not only depends on the polynomial itself, but also the base field.
+
+\begin{example}
+    Consider the polynomial $x^2 + 1$. If we interpret $x^2 + 1$ being in $\R[x]$, then naturally the splitting field of $x^2 + 1$ is $\C$, since $x^2 + 1 = (x-i)(x+i)$.
+
+    However, if we think of $x^2+1$ as being a polynomial in $\Q$, then the splitting field is $\Q(i, -i)$. In fact, $\Q(i, -i) = \Q(i)$. One sees that $\Q(i) \neq \C$ since $\C$ contains irrational numbers (such as $\sqrt2$) while $\Q(i)$ must at least contain $\Q$ and so does not contain irrational numbers.
+\end{example}
+
+\begin{example}
+    Consider the polynomial $x^2 - 2 \in \Q[x]$. Clearly $x^2 - 2$ splits in $\R$ since $x^2 - 2 = (x - \sqrt2)(x + \sqrt2)$, but the splitting field of $x^2 - 2 \in \Q[x]$ is $\Q(\sqrt2, -\sqrt2)$ which is $\Q(\sqrt 2)$.
+\end{example}
+
+Does a splitting field for a polynomial over a given field always exist? We answer in the affirmative by proving the following theorem.
 
 \begin{theorem}
     Let $F$ be a field and $f(x)$ be a non-constant polynomial in $F[x]$. Then there exists a splitting field $E$ for $f(x)$ over $F$.
@@ -434,19 +456,6 @@ The next theorem shows that a splitting field for a given polynomial and a given
     \end{align*}
 \end{example}
 
-We note \myref{thrm-simple-extension-isomorphism} shows that an element of $F(\alpha)$ takes the form $a_0+a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}$. Since this is, in fact, a unique representation, therefore, using the language of vector spaces, the set
-\[
-    \{1, \alpha, \alpha^2, \dots, \alpha^{n-1}\}
-\]
-forms a basis for $F(\alpha)$, and $F(\alpha)$ has dimension $n$.
-
-\begin{example}
-    Consider $f(x) = x^6 - 2 \in \Q[x]$. Eisenstein's criteria (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$. Since $\sqrt[6]2 \in \R$ is a zero of $f(x)$, we know that $\Q(\sqrt[6]2)$ has 6 basis vectors, so it has the underlying set
-    \[
-        \left\{a_0 + a_12^{\frac16} + a_22^{\frac26} + a_32^{\frac36} + a_42^{\frac46} + a_52^{\frac56} \vert a_i \in \Q\right\}.
-    \]
-\end{example}
-
 \begin{exercise}
     Let $f(x) = x^4 - 5x^2 + 6 \in \Q[x]$.
     \begin{partquestions}{\roman*}
@@ -456,9 +465,9 @@ forms a basis for $F(\alpha)$, and $F(\alpha)$ has dimension $n$.
     \end{partquestions}
 \end{exercise}
 
-Looking back at the polynomial $x^2+1$, we note that both $\Q(i)$ and $\Q[x]/\princ{x^2+1}$ split $x^2+1$. But are these two fields different? Not really; we end this section by proving that a splitting field of a polynomial over a given field is unique up to isomorphism.
+Looking back at the polynomial $x^2+1$, we note that both $\R(i)$ and $\R[x]/\princ{x^2+1}$ split $x^2+1$. But actually these two fields are not that different. We end this section by proving that a splitting field of a polynomial over a given field is unique up to isomorphism.
 
-But we introduce some terminology and notation first.
+Before we can prove this, we introduce some terminology and notation, and a preliminary result.
 
 \begin{definition}
     Let $F$ and $F'$ be fields and $\phi: F \to F'$ be a homomorphism. Suppose $E/F$ and $E'/F'$ are field extensions, and suppose $\psi: E \to E'$ is a homomorphism. Then we say \textbf{$\psi$ agrees with $\phi$ on $F$}\index{agrees with} if and only if $\psi(x) = \phi(x)$ for all $x \in F$.
@@ -537,6 +546,8 @@ We can now prove the following theorem.
     by Factor Theorem (\myref{corollary-factor-theorem}), where $g(x) \in F(\alpha)[x]$. Since $E$ is a splitting field of $f(x)$ over $F$, thus $E$ must also be a splitting field of $g(x)$ over $F$; likewise $E'$ is a splitting field of $\psi(g(x))$. As $\deg g(x) < \deg f(x) = k+1$, so $\deg g(x) \leq k$ and thus there must exist an isomorphism $\sigma: E \to E'$ that agrees with $\psi$ on $F(\alpha)$ by the induction hypothesis. Consequently, since $\psi$ agrees with $\phi$ on $F$, therefore $\sigma$ also agrees with $\phi$ on $F$. Therefore $\sigma$ is the required isomorphism, proving the statement for the $k+1$ case.
 \end{proof}
 
+The uniqueness of splitting fields for a given polynomial over a given field is a natural corollary of the theorem.
+
 \begin{corollary}\label{corollary-splitting-field-unique-up-to-isomorphism}
     Let $F$ be a field and $f(x) \in F[x]$. Then any two splitting fields of $f(x)$ over $F$ are isomorphic.
 \end{corollary}
@@ -546,8 +557,11 @@ We can now prove the following theorem.
 
 In light of \myref{corollary-splitting-field-unique-up-to-isomorphism}, we may refer to ``the'' splitting field of $f(x)$ over $F$ without any ambiguity.
 
-\section{The Derivative}
-% TODO: Add
+\begin{example}
+    Both $\R(i)$ and $\R[x]/\princ{x^2+1}$ split $x^2+1$, but \myref{corollary-splitting-field-unique-up-to-isomorphism} tells us that $\R(i) \cong \R[x]/\princ{x^2+1}$. In fact, $R(i)$ is just the complex numbers $\C$, and we already proved that $\R[x]/\princ{x^2+1} \cong \C$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C}. So \textit{the} splitting field of $x^2+1$ over $\R$ is $\R(i)$.
+\end{example}
+
+\section{The Formal Derivative}
 
 \section{Zeroes of an Irreducible Polynomial}
 % TODO: Add
