@@ -562,7 +562,7 @@ In light of \myref{corollary-splitting-field-unique-up-to-isomorphism}, we may r
 \end{example}
 
 \section{The Formal Derivative}
-Before we tackle the next section on the zeroes of irreducible polynomials, we borrow a tool whose origins are from calculus.
+Before we tackle the zeroes of irreducible polynomials, we borrow a tool whose origins are from calculus.
 
 \begin{definition}
     Let $F$ be a field and $f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_nx^n \in F[x]$. Then the \textbf{formal derivative}\index{formal derivative} (or just \textbf{derivative}\index{derivative}) of $f(x)$, denoted $f'(x)$, is
@@ -670,6 +670,76 @@ Those with a background in calculus would be familiar with the following propert
     \]
     where $n$ is a positive integer.
 \end{exercise}
+
+\section{Polynomial GCD}
+The investigation into the zeroes of irreducible polynomials also requires the generalization of the GCD to polynomials.
+
+\begin{definition}
+    A \textbf{monic polynomial}\index{polynomial!monic} is a non-zero polynomial which has a leading coefficient of 1. In other words, a monic polynomial takes the form
+    \[
+        c_0 + c_1x + c_2x^2 + \cdots + c_{n-1}x^{n-1} + x^n
+    \]
+    where $n \geq 0$.
+\end{definition}
+
+\begin{definition}
+    Let $F$ be a field. Given $f(x), g(x) \in F[x]$, a monic polynomial $d(x) \in F[x]$ is said to be a \textbf{greatest common divisor (GCD)}\index{greatest common divisor!polynomial}\index{GCD!polynomial} of $f(x)$ and $g(x)$ if and only if $d(x)$ divides both $f(x)$ and $g(x)$ and if another polynomial $c(x) \in F[x]$ divides both $f(x)$ and $g(x)$ then $c(x)$ divides $d(x)$.
+
+    We denote a GCD of $f(x)$ and $g(x)$ by $\gcd(f(x), g(x))$.
+\end{definition}
+
+We note an analogue of B\'ezout's lemma (\myref{lemma-bezout}) for the polynomial GCD.
+
+\begin{theorem}\label{thrm-bezout-lemma-for-polynomials}
+    Let $F$ be a polynomial. Let $f(x), g(x) \in F[x]$, and let $d(x)$ be a GCD of $f(x)$ and $g(x)$. Then there are $a(x), b(x) \in F[x]$ such that
+    \[
+        d(x) = a(x)f(x) + b(x)g(x).
+    \]
+    Furthermore the GCD of $f(x)$ and $g(x)$ is unique.
+\end{theorem}
+\begin{proof}
+    Consider the set
+    \[
+        S = \left\{u(x)f(x) + v(x)g(x) \vert u(x), v(x) \in F[x]\right\}.
+    \]
+    Let $d(x) \in S$ be a monic polynomial of minimal degree. Take $a(x),b(x) \in F[x]$ such that $d(x) = a(x)f(x) + b(x)g(x)$.
+
+    We show $d(x)$ divides $f(x)$. Performing polynomial long division (\myref{thrm-polynomial-long-division}) on $f(x)$ with divisor $d(x)$ yields
+    \[
+        f(x) = q(x)d(x) + r(x)
+    \]
+    where $r(x) = 0$ or $\deg r(x) < \deg d(x)$. Thus we see
+    \begin{align*}
+        r(x) &= f(x) - q(x)d(x)\\
+        &= f(x)-q(x)\left(a(x)f(x) + b(x)g(x)\right)\\
+        &= f(x) - a(x)f(x)q(x) - b(x)g(x)q(x)\\
+        &= (\underbrace{1 - q(x)a(x)}_{u(x)})(f(x)) - (\underbrace{q(x)b(x)}_{v(x)})(g(x))\\
+        &\in S
+    \end{align*}
+    and therefore if $\deg r(x) < \deg d(x)$ this contradicts the minimality of $d(x)$. Therefore $r(x) = 0$ and hence $f(x) = q(x)d(x)$, meaning $d(x)$ divides $f(x)$. Similarly $d(x)$ divides $g(x)$. Hence $d(x)$ is a common divisor of $f(x)$ and $g(x)$.
+
+    We now show that $d(x)$ is a GCD of $f(x)$ and $g(x)$. Suppose $c(x) \in F[x]$ divides both $f(x)$ and $g(x)$, i.e. $f(x) = p(x)c(x)$ and $g(x) = q(x)c(x)$ for some $p(x), q(x) \in F[x]$. We then see that
+    \begin{align*}
+        d(x) &= a(x)f(x) + b(x)g(x)\\
+        &= a(x)(p(x)c(x)) + b(x)(q(x)c(x))\\
+        &= c(x)(a(x)p(x) + b(x)q(x))
+    \end{align*}
+    and so $c(x)$ divides $d(x)$. Therefore $d(x)$ is a GCD of $f(x)$ and $g(x)$.
+
+    We now show that the GCD of $f(x)$ and $g(x)$ is unique. Let $d_0(x)$ be another GCD of $f(x)$ and $g(x)$. This means that there exists $p(x), q(x) \in F[x]$ such that $f(x) = p(x)d_0(x)$ and $g(x) = q(x)d_0(x)$. We then see
+    \begin{align*}
+        d(x) &= a(x)f(x) + b(x)g(x)\\
+        &= a(x)(p(x)d_0(x)) + b(x)(q(x)d_0(x))\\
+        &= d_0(x)(a(x)p(x) + b(x)q(x))
+    \end{align*}
+    and so we conclude $\deg d(x) = \deg d_0(x) + \deg\left(a(x)p(x) + b(x)q(x)\right)$ by properties of the degree. Since $d(x)$ is of minimal degree, thus we must have $\deg d(x) = \deg d_0(x)$ which means $\deg\left(a(x)p(x) + b(x)q(x)\right) = 0$. Hence $a(x)p(x) + b(x)q(x) = \alpha \in F$ where $\alpha \neq 0$, meaning $d(x) = \alpha d_0(x)$. But both $d(x)$ and $d_0(x)$ are monic polynomials, so the coefficients of the largest terms of both $d(x)$ and $d_0(x)$ are both 1. Therefore $\alpha = 1$, meaning $d(x) = d_0(x)$. This proves the uniqueness of the GCD.
+\end{proof}
+
+To end this section, we look at the analogue of coprime numbers in terms of polynomials.
+
+\begin{definition}
+    Let $F$ be a field. Two polynomials $f(x)$ and $g(x)$ in $F[x]$ are \textbf{coprime}\index{coprime!polynomial} if and only if $\gcd(f(x), g(x)) = 1$.
+\end{definition}
 
 \section{Zeroes of an Irreducible Polynomial}
 % TODO: Add
