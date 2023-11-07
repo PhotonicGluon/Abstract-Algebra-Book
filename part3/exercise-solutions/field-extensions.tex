@@ -71,8 +71,7 @@
         \begin{align*}
             &\Q(\sqrt2, -\sqrt2, \sqrt3, -\sqrt3)\\
             &=\Q(\sqrt2, \sqrt3)\\
-            &=\Q(\sqrt2)(\sqrt3)\\
-            &\cong \Q[\sqrt2][\sqrt3]. & (\myref{thrm-simple-extension-isomorphism})
+            &=\Q(\sqrt2)(\sqrt3).
         \end{align*}
 
         \item Reducing $p(x)$ modulo 5 yields $\bar{p}(x) = x^4 + 1$. One sees then that
@@ -94,17 +93,25 @@
         \end{align*}
         so $\sqrt2 + \sqrt3$ is indeed a zero of $p(x)$ in $\R$.
 
-        \item We work backwards. Since $p(x) = x^4 - 10x + 1$ is an irreducible polynomial of degree 4, therefore $\Q[\sqrt2 + \sqrt3]$ has 4 basis vectors. Therefore
+        \item We work backwards. Since $p(x) = x^4 - 10x + 1$ is an irreducible polynomial of degree 4, therefore $\Q(\sqrt2 + \sqrt3)$ has 4 basis vectors. Therefore
         \begin{align*}
             &\Q(\sqrt2 + \sqrt3)\\
-            &\cong \Q[\sqrt2 + \sqrt3]\\
             &= \{s + t(\sqrt2 + \sqrt3) + u(\sqrt2 + \sqrt3)^2 + v(\sqrt2 + \sqrt3)^3 \vert s,t,u,v \in \Q\}\\
             &= \{(s + 5u) + (t + 11v)\sqrt2 + (t + 9v)\sqrt3 + 2u\sqrt6 \vert s, t, u, v \in \Q\}\\
             &= \{a + b\sqrt2 + c\sqrt3 + d\sqrt6 \vert a, b, c, d \in \Q\}\\
             &=\{(a+b\sqrt2) + (c+d\sqrt2)\sqrt3 \vert a, b, c, d \in \Q\}\\
-            &=\{u + v\sqrt3 \vert u, v \in \Q[\sqrt2]\}\\
-            &= \Q[\sqrt2][\sqrt3]
+            &=\{u + v\sqrt3 \vert u, v \in \Q(\sqrt2)\}\\
+            &= \Q(\sqrt2)(\sqrt3)
         \end{align*}
-        and so there is a splitting field of $f(x)$ over $\Q$ that is isomorphic to $\Q(\sqrt2 + \sqrt3)$.
+        and so $\Q(\sqrt2 + \sqrt3)$ is a splitting field of $f(x)$ over $\Q$.
     \end{partquestions}
+
+    \item Let $f(x) = a_0 + a_1x + \cdots + a_mx^m$ and $g(x) = b_0 + b_1x + \cdots + b_nx^n$. Without loss of generality assume $m \geq n$, and set $b_i = 0$ for all $i > m$. Thus
+    \begin{align*}
+        (f(x) + g(x))' &= \left(\sum_{i=0}^m(a_i + b_i)x^i\right)'\\
+        &= \sum_{i=1}^m i(a_i+b_i)x^{i-1}\\
+        &= \sum_{i=1}^m ia_ix^{i-1} + \sum_{i=1}^m ib_ix^{i-1}\\
+        &= f'(x) + g'(x)
+    \end{align*}
+    as required.
 \end{questions}

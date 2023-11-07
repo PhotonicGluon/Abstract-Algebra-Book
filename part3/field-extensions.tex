@@ -259,7 +259,7 @@ There is a name for extension fields of the form $F(\alpha)$ where $\alpha$ is a
 The next theorem produces a general form for simple extensions for specific types of $\alpha$, such as $\Q(i)$ and $\Q(\sqrt 2)$.
 
 \begin{theorem}\label{thrm-simple-extension-isomorphism}
-    Let $F$ be a field and let $p(x) \in F[x]$ be irreducible over $F$. If $\alpha \in F$ is a zero of $p(x)$ in some field extension $E/F$, then
+    Let $F$ be a field and let $p(x) \in F[x]$ be irreducible over $F$. If $\alpha \in E$ is a zero of $p(x)$ in some field extension $E/F$, then
     \[
         F(\alpha) \cong F[x] / \princ{p(x)}.
     \]
@@ -337,13 +337,21 @@ The next theorem produces a general form for simple extensions for specific type
     \]
     and uniqueness is inherited from the fact that $r(\alpha)$ is unique.
 \end{proof}
+\begin{corollary}
+    Let $F$ be a field and let $p(x) \in F[x]$ be irreducible over $F$. If $\alpha \in E$ is a zero of $p(x)$ in some field extension $E/F$, then $F(\alpha) = F[\alpha]$.
+\end{corollary}
+\begin{proof}
+    Note that $F[\alpha] \subseteq E$ contains both $F$ and $\alpha$. Since $F(\alpha)$ is the intersection of subfields that contains both $F$ and $\alpha$, thus $F(\alpha) \subseteq F[\alpha]$. But \myref{thrm-simple-extension-isomorphism} proves that $F(\alpha) \cong F[\alpha]$. Thus $F(\alpha) = F[\alpha]$.
+\end{proof}
 
 \begin{example}
-    $\Q(i)$ is isomorphic to $\Q[i] = \{a + bi \vert a, b \in \Q\}$.
+    $\Q(i) = \Q[i] = \{a + bi \vert a, b \in \Q\}$.
 \end{example}
 \begin{example}
-    $\Q(\sqrt 2)$ is isomorphic to $\Q[\sqrt{2}] = \{a + b\sqrt{2} \vert a, b \in \Q\}$.
+    $\Q(\sqrt 2) = \Q[\sqrt{2}] = \{a + b\sqrt{2} \vert a, b \in \Q\}$.
 \end{example}
+
+Henceforth, for elements $\alpha$ that are roots of a polynomial with coefficients in $F$, we will write $F(\alpha)$ instead of $F[\alpha]$ to indicate that we are working with fields.
 
 What about extensions of the form $F(a_1, a_2, \dots, a_n)$? We also have this useful result that simplifies calculation.
 \begin{proposition}\label{prop-field-generated-by-S-inductive-definition}
@@ -363,7 +371,6 @@ What about extensions of the form $F(a_1, a_2, \dots, a_n)$? We also have this u
     Note that $i$ and $\sqrt 2$ are clearly zeroes of some polynomial in $\Q[x]$ (in particular, $x^2 + 1$ and $x^2 - 2$ respectively). Thus the extension field
     \begin{align*}
         \Q(\sqrt 2, i) &= \Q(\sqrt 2)(i)\
-        &\cong \Q[\sqrt 2][i] & (\myref{thrm-simple-extension-isomorphism})\\
         &= \{u + vi \vert u,v \in \Q[\sqrt2]\}\\
         &= \{(a+b\sqrt2) + (c+d\sqrt2)i \vert a, b, c, d \in \Q\}\\
         &= \{a + b\sqrt2 + ci + d\sqrt2i \vert a, b, c, d \in \Q\}.
@@ -403,9 +410,8 @@ The next theorem shows that a splitting field for a given polynomial and a given
     Consider $f(x) = x^4 - x^2 - 2 = (x^2+1)(x^2 - 2)$ over $\Q$. One sees that the zeroes of $f(x)$ in $\C$ are $\pm i$ and $\pm\sqrt2$. Thus a splitting field of $f(x)$ over $\Q$ is
     \begin{align*}
         \Q(i, -i, \sqrt2, -\sqrt2) &= \Q(i, \sqrt2)\\
-        &= \{a + b\sqrt2 + ci + d\sqrt2i \vert a, b, c, d \in \Q\}
+        &= \{a + b\sqrt2 + ci + d\sqrt2i \vert a, b, c, d \in \Q\}.
     \end{align*}
-    from an earlier example.
 \end{example}
 
 \begin{example}
@@ -417,7 +423,6 @@ The next theorem shows that a splitting field for a given polynomial and a given
     \begin{align*}
         &\Z_3(1+i, 1+2i)\\
         &= \Z_3(1+i)(1+2i)\\
-        &\cong\Z_3[1+i][1+2i] & (\myref{thrm-simple-extension-isomorphism})\\
         &=\{u + v(1+2i) \vert u, v \in \Z_3[1+i]\}\\
         &=\{(u+v) + 2vi \vert u, v \in \Z_3[1+i]\}\\
         &=\{w + 2vi \vert w, v \in \Z_3[1+i]\}\\
@@ -429,14 +434,14 @@ The next theorem shows that a splitting field for a given polynomial and a given
     \end{align*}
 \end{example}
 
-The statement of \myref{thrm-simple-extension-isomorphism} shows that $F(\alpha)$ is isomorphic to the field $F[\alpha]$ where an element of $F[\alpha]$ takes the form $a_0+a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}$. Since this is, in fact, a unique representation, therefore, using the language of vector spaces, the set
+We note \myref{thrm-simple-extension-isomorphism} shows that an element of $F(\alpha)$ takes the form $a_0+a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}$. Since this is, in fact, a unique representation, therefore, using the language of vector spaces, the set
 \[
     \{1, \alpha, \alpha^2, \dots, \alpha^{n-1}\}
 \]
-forms a basis for $F[\alpha]$, and $F[\alpha]$ has dimension $n$.
+forms a basis for $F(\alpha)$, and $F(\alpha)$ has dimension $n$.
 
 \begin{example}
-    Consider $f(x) = x^6 - 2 \in \Q[x]$. Eisenstein's criteria (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$. Since $\sqrt[6]2 \in \R$ is a zero of $f(x)$, we know that $\Q(\sqrt[6]2) \cong \Q[\sqrt[6]2]$ (\myref{thrm-simple-extension-isomorphism}) which has the underlying set
+    Consider $f(x) = x^6 - 2 \in \Q[x]$. Eisenstein's criteria (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$. Since $\sqrt[6]2 \in \R$ is a zero of $f(x)$, we know that $\Q(\sqrt[6]2)$ has 6 basis vectors, so it has the underlying set
     \[
         \left\{a_0 + a_12^{\frac16} + a_22^{\frac26} + a_32^{\frac36} + a_42^{\frac46} + a_52^{\frac56} \vert a_i \in \Q\right\}.
     \]
@@ -445,13 +450,11 @@ forms a basis for $F[\alpha]$, and $F[\alpha]$ has dimension $n$.
 \begin{exercise}
     Let $f(x) = x^4 - 5x^2 + 6 \in \Q[x]$.
     \begin{partquestions}{\roman*}
-        \item Find a splitting field of $f(x)$ over $\Q$ that is isomorphic to $\Q[\sqrt2][\sqrt3]$.
+        \item Show that a splitting field of $f(x)$ over $\Q$ is $\Q(\sqrt2)(\sqrt3)$.
         \item Show that $p(x) = x^4 - 10x + 1$ is an irreducible polynomial over $\Q$ with a zero of $\sqrt2 + \sqrt3$.
-        \item Hence show that there exists a splitting field of $f(x)$ over $\Q$ that is isomorphic to the simple extension $\Q(\sqrt2 + \sqrt3)$.
+        \item Hence show that $\Q(\sqrt2 + \sqrt3)$ is a splitting field of $f(x)$ over $\Q$.
     \end{partquestions}
 \end{exercise}
-
-Henceforth, for elements $\alpha$ that are roots of a polynomial with coefficients in $F$, we will write $F(\alpha)$ instead of $F[\alpha]$ to indicate that we are working with fields.
 
 Looking back at the polynomial $x^2+1$, we note that both $\Q(i)$ and $\Q[x]/\princ{x^2+1}$ split $x^2+1$. But are these two fields different? Not really; we end this section by proving that a splitting field of a polynomial over a given field is unique up to isomorphism.
 
@@ -468,8 +471,6 @@ But we introduce some terminology and notation first.
     \]
     which is a polynomial in $F'[x]$.
 \end{definition}
-
-\newpage
 
 \begin{lemma}\label{lemma-isomorphism-extension}
     Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $\alpha$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an isomorphism and $\beta$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an isomorphism $\overline{\phi}: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
