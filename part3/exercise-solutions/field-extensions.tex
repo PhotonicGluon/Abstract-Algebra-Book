@@ -132,4 +132,19 @@
     so the $k+1$ case also holds.
 
     Therefore by mathematical induction we have $((f(x))^n)' = n(f(x))^{n-1}f'(x)$ for all positive integers $n$.
+
+    \item If $f'(x) = 0$, we see
+    \[
+        a_1 + 2a_2x + 3a_3x^2 + \cdots + na_nx^{n-1} = 0.
+    \]
+    This means that all coefficients of $f'(x)$ must be zero; hence $ra_r = 0$ for all $r \in \{1, 2, \dots, n\}$.
+
+    \item We prove this by induction on $n$. The base case of $n = 1$ is the Freshman's Dream (\myref{prop-freshman-dream}). Assume that the statement holds for some positive integer $k$, i.e. $(x+y)^{p^k} = x^{p^k} + y^{p^k}$. Note that
+    \begin{align*}
+        (x+y)^{p^{k+1}} &= \left((x+y)^{p^k}\right)^p\\
+        &= (x^{p^k}+y^{p^k})^p & (\text{By Induction Hypothesis})\\
+        &= \left(x^{p^k}\right)^p + \left(y^{p^k}\right)^p & (\text{By Freshman's Dream})\\
+        &= x^{p^{k+1}} + y^{p^{k+1}}
+    \end{align*}
+    so the statement holds for $k + 1$. Thus by mathematical induction we have proven that $(x+y)^{p^n} = x^{p^n} + y^{p^n}$.
 \end{questions}
