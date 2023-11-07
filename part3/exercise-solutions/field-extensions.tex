@@ -114,4 +114,22 @@
         &= f'(x) + g'(x)
     \end{align*}
     as required.
+
+    \item We induct on $n$.
+    
+    When $n = 1$ clearly $((f(x))^1)' = (f(x))' = f'(x) = 1(f(x))^{1-1}f'(x)$.
+
+    Assume $((f(x))^k)' = k(f(x))^{k-1}f'(x)$ for some positive integer $k$. We show that the $k+1$ case also works.
+
+    Note
+    \begin{align*}
+        ((f(x))^{k+1})' &= ((f(x))(f(x))^k)'\\
+        &= f(x)((f(x))^k)' + f'(x)(f(x))^k\\
+        &= f(x)(k(f(x))^{k-1}f'(x)) + f'(x)(f(x))^k & (\text{Induction Hypothesis})\\
+        &= k(f(x))^kf'(x) + (f(x))^kf'(x)\\
+        &= (k+1)(f(x))^kf'(x)
+    \end{align*}
+    so the $k+1$ case also holds.
+
+    Therefore by mathematical induction we have $((f(x))^n)' = n(f(x))^{n-1}f'(x)$ for all positive integers $n$.
 \end{questions}
