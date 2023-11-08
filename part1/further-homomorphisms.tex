@@ -9,12 +9,13 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
     \]
 \end{definition}
 \begin{remark}
-    Some authors (e.g. {\cite[Definition 4.2.0]{libretexts_im-and-ker}}) will use the notation $\phi(G)$ for the image of $\phi$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by {\cite[Definition I.2.2]{hungerford_1980}} and \cite[\S 66]{clark_1984}).
+    Some authors (e.g. {\cite[Definition 4.2.0]{libretexts_im-and-ker}}) will use $\phi(G)$ to denote the image of $\phi$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by {\cite[Definition I.2.2]{hungerford_1980}} and \cite[\S 66]{clark_1984}).
 \end{remark}
 
 \begin{example}
     Consider the homomorphism $f: \Z \to \Z, x \mapsto 0$. Clearly, all possible values of $x$ maps to 0, so $\im f = \{0\}$.
 \end{example}
+
 \begin{example}
     The homomorphism $f: \R \to \R$ where $f(x) = |x|$ has an image of $\{x \in \R \vert x \geq 0\}$, i.e. all non-negative real numbers.
 \end{example}
@@ -25,7 +26,7 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
 \begin{proof}
     Note that $\phi(e_G) = e_H \in \im\phi$, where $e_G$ and $e_H$ are the identities of $G$ and $H$ respectively.
 
-    Now suppose $h_1$ and $h_2$ are in the image of $\phi$, meaning that there exists $g_1$ and $g_2$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Note that $\phi(g_2^{-1}) = h_2^{-1}$ by homomorphism property. Hence $\phi(g_1g_2^{-1}) = h_1h_2^{-1} \in \im\phi$.
+    Now suppose $h_1, h_2 \in \im\phi$, meaning that there exist $g_1, g_2 \in G$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Note that $\phi(g_2^{-1}) = h_2^{-1}$ by homomorphism property. Hence $\phi(g_1g_2^{-1}) = h_1h_2^{-1} \in \im\phi$.
 
     Therefore, by subgroup test, $\im\phi \leq H$.
 \end{proof}
@@ -45,15 +46,15 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
 \end{definition}
 
 \begin{remark}
-    Some authors (e.g. {\cite[Definition 4.2.0]{libretexts_im-and-ker}}) will use the notation $\phi^{-1}(e_H)$ for the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. by {\cite[Definition I.2.2]{hungerford_1980}} and \cite[\S 65]{clark_1984}).
+    Some authors (e.g. {\cite[Definition 4.2.0]{libretexts_im-and-ker}}) will use $\phi^{-1}(e_H)$ to denote the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. by {\cite[Definition I.2.2]{hungerford_1980}} and \cite[\S 65]{clark_1984}).
 \end{remark}
 
 \begin{example}
-    Let the groups $G = (\Z^2, (+, +))$ and $H = (\Z, +)$. Let the map $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$. This means that $a+b = 0$, implying $ b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \Z\}$.
+    Let $G = \Z^2$ be a group under component-wise addition and $H = \Z$ be a group under addition. Let the homomorphism $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$, i.e. $a+b = 0$, implying $ b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \Z\}$.
 \end{example}
 
 \begin{exercise}
-    Let $i$ be the imaginary unit, that is $i^2 = -1$. Let the group $G$ be the integers under addition and $H = \langle i \rangle$ be under multiplication. Let the map $\phi: G \to H, n \mapsto i^n$.  Show that $\phi$ is a homomorphism and hence find $\ker\phi$.
+    Let $i$ be the imaginary unit, i.e. $i^2 = -1$. Let the group $G = \Z$ be under addition and $H = \langle i \rangle$ be under multiplication. Let the map $\phi: G \to H, n \mapsto i^n$.  Show that $\phi$ is a homomorphism and hence find $\ker\phi$.
 \end{exercise}
 
 \begin{proposition}\label{prop-kernel-is-normal-subgroup-of-domain}
@@ -95,7 +96,7 @@ We are now ready to tackle important theorems regarding homomorphisms. We first 
     \[
         G/\ker\phi \cong \im\phi
     \]
-    for any homomorphism $\phi$. This means that the set of pre-images that have an image of $\phi(x)$ is $x\ker\phi$.
+    for any homomorphism $\phi: G \to H$. This means that the set of pre-images that have an image of $\phi(x)$ is $x\ker\phi$.
 \end{remark}
 
 We include the commutativity diagram of the homomorphisms stated to aid clarity:
@@ -106,7 +107,9 @@ We include the commutativity diagram of the homomorphisms stated to aid clarity:
     \caption{Commutativity Diagram for \myreffigures{thrm-isomorphism-1}}
 \end{figure}
 
-In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elements from $G$ to $G/\ker\phi$. Then the map $\psi$ is a unique map that sends elements from $G/\ker\phi$ to the image of $\phi$.
+In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elements from $G$ to $G/\ker\phi$. Then $\psi$ is a unique map that sends elements from $G/\ker\phi$ to the image of $\phi$.
+
+We now prove the Fundamental Homomorphism Theorem.
 
 \begin{proof}
     We know by \myref{prop-image-is-subgroup-of-codomain} that $\im\phi \leq H$. Let $\psi: G/\ker\phi \to \im\phi$ such that $\psi(x\ker\phi) = \phi(x)$. We need to check that $\psi$ is a well-defined isomorphism.
@@ -131,7 +134,7 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
 
         \item \textbf{Surjective}: Suppose $y$ is in the image of $\phi$, meaning there exists a $x \in G$ such that $\phi(x) = y$. Note that $\psi(x\ker\phi) = \phi(x) = y$. Thus $\psi$ is surjective.
     \end{itemize}
-    Thus $\psi$ is a well-defined isomorphism.
+    Hence $\psi$ is a well-defined isomorphism.
 
     We now check that $\psi$ satisfies the requirement that $\psi\pi = \phi$. Let $x \in G$. Note that $\pi(x) = x\ker\phi$, and
     \[
@@ -154,7 +157,7 @@ In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elem
 \end{proof}
 
 \begin{example}
-    Let $R = \{x \in \R \vert x > 0\}$, $G = \{x \in \R \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under multiplication. We show $G / H \cong R$.
+    Let $R = \{x \in \R \vert x > 0\}$, $G = \{x \in \R \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under regular multiplication. We show $G / H \cong R$.
 
     Consider the map $\phi: G \to R$ where $x \mapsto |x|$. We show that $\phi$ is a homomorphism, then find the image of $\phi$, and finally find its kernel.
 
@@ -207,13 +210,14 @@ We now look at the next theorem, called the \textbf{Diamond Isomorphism Theorem}
 \newpage
 
 We can capture the overall relationships of the subgroups of $G$ using a \textbf{subgroup lattice}.
-\begin{figure}[h]
+
+\begin{figure}[H]
     \centering
     \pdfteximgframed[12pt]{0.3\textwidth}{part1/images/further-homomorphisms/iso-2-subgroups.pdf_tex}
     \caption{Subgroup Lattice for \myreffigures{thrm-isomorphism-2}}
 \end{figure}
 
-We only show subgroups that we care about in the diagram. The group $G$ has a (direct) subgroup $HK$; $HK$ has subgroups $H$ and $K$; and $H$ and $K$ has a common subgroup $H\cap K$. The dotted quotient groups are isomorphic to each other if $H \unlhd G$.
+We only show subgroups that we care about in the figure above. The group $G$ has a (direct) subgroup $HK$; $HK$ has subgroups $H$ and $K$; and $H$ and $K$ has a common subgroup $H\cap K$. The dotted quotient groups are isomorphic to each other if $H \unlhd G$.
 
 \begin{proof}
     We prove each statement in sequence.
@@ -285,7 +289,7 @@ We only show subgroups that we care about in the diagram. The group $G$ has a (d
 \end{proof}
 
 \begin{example}
-    We say a group $G$ is \textbf{metabelian}\index{metabelian} if and only if there exists $A \unlhd G$ such that $A$ and $G/A$ are both abelian. We will prove that any subgroup of a metabelian group is also metabelian.
+    We say a group $G$ is \textbf{metabelian}\index{metabelian} if and only if there exists $A \unlhd G$ such that $A$ and $G/A$ are both abelian. We prove that any subgroup of a metabelian group is also metabelian.
 
     Let $H \leq G$. Then, by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), we know $H \cap A \unlhd H$ (statement 4) and $H/(H \cap A) \cong HA / A$ (statement 6). We just need to prove that both $H \cap A$ and $H/(H \cap A)$ are abelian.
     \begin{itemize}
@@ -309,7 +313,7 @@ We look at another application of the Diamond Isomorphism Theorem, which has use
         m\Z/(l\Z) \cong d\Z/(n\Z).
     \]
 
-    We claim that $m\Z / (l\Z) \cong \Z_{\frac lm} \text{ and } d\Z / (n\Z) \cong \Z_{\frac nd}$. This is a specific case of \myref{problem-mZ/nZ-isomorphic-to-Zn/m} which we have left as a problem for later. Hence,
+    We claim that $m\Z / (l\Z) \cong \Z_{\frac lm} \text{ and } d\Z / (n\Z) \cong \Z_{\frac nd}$. This is a specific case of \myref{problem-mZ/nZ-isomorphic-to-Zn/m} (later). Hence,
     \[
     \Z_{\frac lm} \cong m\Z/(l\Z) \cong d\Z/(n\Z) \cong \Z_{\frac nd},
     \]
@@ -350,7 +354,7 @@ It should be noted that there is no consistency with the numbering of these theo
         \]
         Now since $N \subseteq H \subseteq G$, thus for all $n$ in $N$, $nH = Hn$ (since $n \in G$). This means that $N \unlhd H$.
 
-        \item We first prove that it is a subgroup before proving normality.
+        \item We first prove that $H/N$ is a subgroup before proving normality.
 
         Clearly $N = eN \in H/N$. Let $x$ and $y$ be in $H/N$. Then $x=h_xN$ and $y=h_yN$ for some $h_x, h_y \in H$. Note that $y^{-1} = (h_y^{-1})N$ by group operator on cosets. Hence,
         \begin{align*}
