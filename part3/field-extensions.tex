@@ -751,7 +751,7 @@ Recall that polynomial $f(x)$ has a zero $\alpha$ if and only if $x-\alpha$ is a
 With the derivative, we can derive a test for multiple zeroes of a polynomial.
 
 \begin{theorem}\label{thrm-criterion-for-multiple-zeroes}
-    Let $F$ be a field and $f(x) \in F[x]$. Then $f(x)$ has a multiple zero in some field extension $F/E$ if and only if $f(x)$ and $f'(x)$ have a common factor of positive degree in $F[x]$.
+    Let $F$ be a field and $f(x) \in F[x]$. Then $f(x)$ has a multiple zero in some field extension $E/F$ if and only if $f(x)$ and $f'(x)$ have a common factor of positive degree in $F[x]$.
 \end{theorem}
 \begin{proof}
     For the forward direction, let $\alpha \in E$ be a multiple zero of $f(x)$. Then there is a $g(x) \in E[x]$ such that $f(x) = (x-\alpha)^2g(x)$, by Factor Theorem (\myref{corollary-factor-theorem}). One sees that
@@ -874,4 +874,53 @@ What if the irreducible polynomial does have multiple zeroes in a splitting fiel
 \newpage
 
 \section{Problems}
-% TODO: Add
+\begin{problem}\label{problem-simple-extension-absorbs-field-elements}
+    Let $F$ be a field, and let $p, q \in F$ where $p \neq 0$. Suppose $E/F$ is a field extension and $a \in E$. Prove that $F(pa + q) = F(a)$.
+\end{problem}
+
+\begin{problem}
+    Find the splitting fields of the following polynomial. If the splitting field found is a field extension, express it as a simple extension if possible.
+    \begin{partquestions}{\alph*}
+        \item $x^3 - 3x + 2$ over $\Q$.
+        \item $x^3 - 1$ over $\Q$.
+        \item $x^4 + x^2 + 1$ over $\Q$.\newline
+        (\textit{Hint: $x^4+x^2+1 = (x^2-x+1)(x^2+x+1)$.})
+        \item $x^2 - 2\sqrt{2}x + 3$ over $\Q(\sqrt2)$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Determine which of the following polynomials, if any, have multiple zeroes over the field $F$ specified. If the polynomial has a multiple zero, state it.
+    \begin{partquestions}{\alph*}
+        \item $x^4 + 2x + 7$ over $F = \Z_2$.
+        \item $x^{19} + x^8 + 1$ over $F = \Z_3$. 
+        \item $2x^6 + x^4 + 2x^3 + 2$ over $F = \Z_3$.
+        \item $x^8 + 3x^5 + x^3 + 5$ over $F = \Z_7$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let $p(x) \in \Z_2$ be a polynomial of degree 7 that is irreducible in $\Z_2$. Prove or disprove the following statements.
+    \begin{partquestions}{\roman*}
+        \item $\Z_2[x]/\princ{p(x)}$ is a field.
+        \item $\left(\Z_2[x]/\princ{p(x)}\right)^\ast$ is a group.
+        \item Every non-identity element in $\left(\Z_2[x]/\princ{p(x)}\right)^\ast$ is a generator.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field, $a \in F$, and $f(x) \in F[x]$. Show that $f(x)$ and $f(x+a)$ have the same splitting field over $F$.
+\end{problem}
+
+\begin{problem}
+    Find all subfields of $\Q(\sqrt2)$.
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field of prime characteristic $p$. Prove that $f(x) = x^{p^n} - x \in F[x]$, where $n$ is a positive integer, only has simple zeroes.
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field of prime characteristic $p$, and let $a \in F$. Prove that $f(x) = x^p - a \in F[x]$ is either irreducible or splits over $F$.\newline
+    (\textit{Hint: consider two cases -- either $f(x)$ has a zero in $F$ or it does not.})
+\end{problem}
