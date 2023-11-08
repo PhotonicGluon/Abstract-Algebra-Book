@@ -120,7 +120,7 @@ Returning back to our exploration of extension fields, the critical observation 
         &= \phi(a)\phi(b).
     \end{align*}
     Therefore means that $E$ is a field extension of $F$ by \myref{prop-extension-field-if-homomorphism-between-fields}.
-    
+
     It remains to show that $E$ contains a zero of $p(x)$. Write
     \[
         p(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n
@@ -167,7 +167,7 @@ The Fundamental Theorem of Field Theory (\myref{thrm-fundamental-theorem-of-fiel
 However, this does not apply to commutative rings in general, as seen in the following exercise.
 
 \begin{exercise}
-    Let $f(x) = 2x + 1$ be a polynomial in $\Z_4[x]$. Prove that no ring that contains a subring that is isomorphic to $\Z_4$ has a zero of $f(x)$.    
+    Let $f(x) = 2x + 1$ be a polynomial in $\Z_4[x]$. Prove that no ring that contains a subring that is isomorphic to $\Z_4$ has a zero of $f(x)$.
 \end{exercise}
 
 \begin{exercise}
@@ -204,7 +204,8 @@ To motivate our next definition, we return back to the extension field $E = \R[x
 
 One may wonder if polynomials from any field can be `split' nicely into linear factors within a certain extension field. In fact, they can -- these extension fields are called splitting fields.
 
-Before we can define what a splitting field is, we need to look at the smallest subfield of an extension field that contains the base field and a specific subset of elements of the extension field.
+Before we can define what a splitting field is, we need to look at a special kind of extension field.
+
 \begin{definition}
     Let $F$ be a field and $E/F$ be a field extension. Let $S$ be a subset of $E$. Then $F(S)$, read as ``$F$ adjoin $S$'', is the smallest subfield of $E$ that contains $F$ and the set $S$.
 
@@ -212,11 +213,11 @@ Before we can define what a splitting field is, we need to look at the smallest 
 \end{definition}
 
 \begin{proposition}
-    $F(S)$ is the intersection of all subfields of $E$ that contain both $F$ and $S$.
+    $F(S)$ is the intersection of all subfields of $E$ that contain both the field $F$ and the subset $S$.
 \end{proposition}
 \begin{proof}
     Let $K$ be the intersection of all subfields of $E$ that contain both $F$ and $S$.
-    
+
     By \myref{prop-intersection-of-subfields-is-subfield} the intersection of subfields is a subfield, so $K$ is indeed a subfield of $E$. Note by definition of $K$ that it contains both $F$ and $S$. Since $F(S)$ contains both $F$ and the set $S$ by definition, thus we have $K \subseteq F(S)$.
 
     Also, since $F(S)$ contains both $F$ and $S$, it must be inside the intersection that is $K$, which means that $F(S) \subseteq K$.
@@ -224,7 +225,157 @@ Before we can define what a splitting field is, we need to look at the smallest 
     Therefore we see $K = F(S)$.
 \end{proof}
 
-With this definition, we can now define \textbf{splitting fields}.
+There is a name for extension fields of the form $F(\alpha)$ where $\alpha$ is a single element.
+
+\begin{definition}
+    Let $F$ be a field, $E/F$ a field extension, and $\alpha \in E$. Then $F(\alpha)$ is called a \textbf{simple extension}\index{extension!simple} and $\alpha$ is called the \textbf{primitive element}\index{primitive element}\index{extension!simple!primitive element}.
+\end{definition}
+
+\begin{example}
+    $\Q(i)$, $\R(1+2i)$, $\Q(\pi)$, and $\Q(\sqrt 2)$ are all simple extensions with the primitive elements of $i$, $1+2i$, $\pi$, and $\sqrt 2$ respectively.
+\end{example}
+
+A general form for simple extensions for specific types of primitive elements, such as $\Q(i)$ and $\Q(\sqrt 2)$, exists, and will simplify calculation drastically.
+
+\begin{theorem}\label{thrm-simple-extension-isomorphism}
+    Let $F$ be a field and let $p(x) \in F[x]$ be irreducible over $F$. If $\alpha \in E$ is a zero of $p(x)$ in some field extension $E/F$, then
+    \[
+        F(\alpha) \cong F[x] / \princ{p(x)}.
+    \]
+    Furthermore if $\deg p(x) = n$ then
+    \[
+        F(\alpha) \cong F[\alpha]
+    \]
+    and every element in $F[\alpha]$ can be expressed uniquely as $a_0 + a_1\alpha + a_2\alpha^2 + \cdots + a_{n-1}\alpha^{n-1}$ where $a_i \in F$.
+\end{theorem}
+\begin{proof}
+    Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. We show that $\phi$ is a homomorphism, then find its image and kernel.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: For any $f(x), g(x) \in F[x]$ we see
+        \[
+            \phi(f(x) + g(x)) = f(\alpha) + g(\alpha) = \phi(f(x)) + \phi(g(x))
+        \]
+        and
+        \[
+            \phi(f(x)g(x)) = f(\alpha)g(\alpha) = \phi(f(x))\phi(g(x))
+        \]
+        so $\phi$ is a homomorphism.
+
+        \item \textbf{Image}: We note that $\im\phi$ is a subfield of $F(\alpha)$. Therefore $\im\phi$ contains both $F$ and $\alpha$. But $F(\alpha)$ is defined to be the smallest subfield of $E$ that contains both $F$ and $\alpha$, which means $\im\phi = F(\alpha)$.
+
+        \item \textbf{Kernel}: We claim that $\ker\phi = \princ{p(x)}$. Since $p(\alpha) = 0$ by definition of $\alpha$, therefore $\princ{p(x)} \subseteq \ker\phi$. On the other hand, notice that $\princ{p(x)}$ is a maximal ideal (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}), and since $\ker\phi \neq F[x]$ (as the constant polynomial 1 does not map to 0), therefore $\ker\phi = \princ{p(x)}$, by definition of a maximal ideal.
+    \end{itemize}
+
+    Hence, by the FRIT (\myref{thrm-ring-isomorphism-1}),
+    \[
+        F[x]/\princ{p(x)} \cong F(\alpha).
+    \]
+
+    Now, if $f(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$ then we may use polynomial long division (\myref{thrm-polynomial-long-division}) to write $f(x) = q(x)p(x) + r(x)$ where $r(x)$ is a \textit{unique} polynomial where $r(x) = 0$ or $\deg r(x) < \deg p(x) = n$. Hence if $r(x) = a_0 + a_1x + \cdots + a_{n-1}x^{n-1}$ we see
+    \[
+        f(x) + \princ{p(x)} = (a_0 + a_1x + \cdots + a_{n-1}x^{n-1}) + \princ{p(x)}
+    \]
+    where $r(x)$ is unique. Now we show that the map $\psi: F[x]/\princ{p(x)} \to F[\alpha]$ given by $\psi(f(x) + \princ{p(x)}) = f(\alpha)$ is a well-defined isomorphism.
+    \begin{itemize}
+        \item \textbf{Well-defined}: First, by using the above observation, for any $f(x) + \princ{p(x)}, g(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$, find $r_f(x), r_g(x) \in F[x]$ where
+        \begin{align*}
+            f(x) + \princ{p(x)} &= r_f(x) + \princ{p(x)}\\
+            g(x) + \princ{p(x)} &= r_g(x) + \princ{p(x)}
+        \end{align*}
+        and so if $f(x) + \princ{p(x)} = g(x) + \princ{p(x)}$ we see $r_f(x) + \princ{p(x)} = r_g(x) + \princ{p(x)}$. Hence $r_f(x) - r_g(x) \in \princ{p(x)}$. Note elements in $\princ{p(x)}$ have degree of at least $p(x)$, or are the zero polynomial. Therefore $r_f(x) - r_g(x) = 0$, meaning $r_f(x) = r_g(x)$ and therefore
+        \[
+            \psi(f(x) + \princ{p(x)}) = r_f(\alpha) = r_g(\alpha) = \psi(g(x) + \princ{p(x)}),
+        \]
+        showing that $\psi$ is well-defined.
+
+        \item \textbf{Homomorphism}: For any $f(x) + \princ{p(x)}, g(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$ we see that
+        \begin{align*}
+            \psi((f(x) + \princ{p(x)}) + (g(x) + \princ{p(x)})) &= \psi((f(x) + g(x)) + \princ{p(x)})\\
+            &= f(\alpha) + g(\alpha)\\
+            &= \psi(f(x) + \princ{p(x)}) + \phi(g(x) + \princ{p(x)})
+        \end{align*}
+        and
+        \begin{align*}
+            \psi((f(x) + \princ{p(x)})(g(x) + \princ{p(x)})) &= \psi((f(x)g(x)) + \princ{p(x)})\\
+            &= f(\alpha)g(\alpha)\\
+            &= \psi(f(x) + \princ{p(x)})\phi(g(x) + \princ{p(x)})
+        \end{align*}
+        which shows that $\psi$ is a homomorphism.
+
+        \item \textbf{Injective}: Since $\psi$ is non-trivial we know that $\psi$ is injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}.
+
+        \item \textbf{Surjective}: Suppose $f(\alpha) = a_0 + a_1\alpha + \cdots + a_k\alpha^k \in F[\alpha]$. Let $p(x) = b_0 + b_1x + \cdots + b_{n-1}x^{n-1}$. Then by polynomial long division we see
+        \[
+            f(\alpha) = q(\alpha)p(\alpha) + r(\alpha).
+        \]
+        Where $r(x) = 0$ or $\deg r(x) < \deg p(x) = n$. Since $\alpha$ is a zero of $p(\alpha)$ thus $f(\alpha) = r(\alpha)$. Therefore $\psi(r(x) + \princ{p(x)}) = r(\alpha) = f(\alpha)$, which shows that $\psi$ is surjective.
+    \end{itemize}
+    Hence, $F[x]/\princ{p(x)} \cong F[\alpha]$, which proves
+    \[
+        F(\alpha) \cong F[\alpha]
+    \]
+    and uniqueness is inherited from the fact that $r(\alpha)$ is unique.
+\end{proof}
+\begin{corollary}
+    Let $F$ be a field and let $p(x) \in F[x]$ be irreducible over $F$. If $\alpha \in E$ is a zero of $p(x)$ in some field extension $E/F$, then $F(\alpha) = F[\alpha]$.
+\end{corollary}
+\begin{proof}
+    Note that $F[\alpha] \subseteq E$ contains both $F$ and $\alpha$. Since $F(\alpha)$ is the intersection of subfields that contains both $F$ and $\alpha$, thus $F(\alpha) \subseteq F[\alpha]$. But \myref{thrm-simple-extension-isomorphism} proves that $F(\alpha) \cong F[\alpha]$. Thus $F(\alpha) = F[\alpha]$.
+\end{proof}
+
+\begin{example}
+    $\Q(i) = \Q[i] = \{a + bi \vert a, b \in \Q\}$.
+\end{example}
+\begin{example}
+    $\Q(\sqrt 2) = \Q[\sqrt{2}] = \{a + b\sqrt{2} \vert a, b \in \Q\}$.
+\end{example}
+
+Henceforth, for elements $\alpha$ that are roots of a polynomial with coefficients in $F$, we will write $F(\alpha)$ instead of $F[\alpha]$ to indicate that we are working with fields.
+
+We note \myref{thrm-simple-extension-isomorphism} shows that an element of $F(\alpha)$, where $\alpha$ is the zero of some irreducible polynomial over $F$, takes the form $a_0+a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}$. Since this is, in fact, a unique representation, therefore, using the language of vector spaces, the set
+\[
+    \{1, \alpha, \alpha^2, \dots, \alpha^{n-1}\}
+\]
+forms a basis for $F(\alpha)$, and $F(\alpha)$ has dimension $n$.
+
+\begin{example}
+    Consider $f(x) = x^6 - 2 \in \Q[x]$. Eisenstein's criteria (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$. Since $\sqrt[6]2 \in \R$ is a zero of $f(x)$, we know that $\Q(\sqrt[6]2)$ has 6 basis vectors, so it has the underlying set
+    \[
+        \left\{a_0 + a_12^{\frac16} + a_22^{\frac26} + a_32^{\frac36} + a_42^{\frac46} + a_52^{\frac56} \vert a_i \in \Q\right\}.
+    \]
+\end{example}
+
+What about extensions of the form $F(a_1, a_2, \dots, a_n)$? We also have this useful result that simplifies calculation.
+\begin{proposition}\label{prop-field-generated-by-S-inductive-definition}
+    Let $F$ be a field, $E/F$ be a field extension, and $a_1, a_2, \dots, a_n \in E$ where $n \geq 2$. Then
+    \[
+        F(a_1, a_2, \dots, a_n) = F(a_1, a_2, \dots, a_{n-1})(a_n).
+    \]
+\end{proposition}
+\begin{remark}
+    We interpret ``$F(a_1, a_2, \dots, a_{n-1})(a_n)$'' as the `simple extension' that contains the field $F(a_1, a_2, \dots, a_{n-1})$ and the element $a_n$.
+\end{remark}
+\begin{proof}
+    See \myref{exercise-field-generated-by-S-inductive-definition} (later).
+\end{proof}
+
+\begin{example}
+    Note that $i$ and $\sqrt 2$ are zeroes of the irreducible polynomials $x^2 + 1$ and $x^2 - 2$ respectively. Thus the extension field
+    \begin{align*}
+        \Q(\sqrt 2, i) &= \Q(\sqrt 2)(i)\\
+        &= \{u + vi \vert u,v \in \Q(\sqrt2)\}\\
+        &= \{(a+b\sqrt2) + (c+d\sqrt2)i \vert a, b, c, d \in \Q\}\\
+        &= \{a + b\sqrt2 + ci + d\sqrt2i \vert a, b, c, d \in \Q\}.
+    \end{align*}
+\end{example}
+
+\begin{exercise}\label{exercise-field-generated-by-S-inductive-definition}
+    Prove \myref{prop-field-generated-by-S-inductive-definition}.
+\end{exercise}
+
+\newpage
+
+With all these results, we can finally define \textbf{splitting fields}.
 
 \begin{definition}
     Let $F$ be a field, $E/F$ be a field extension, and $f(x) \in F[x]$ be a non-constant polynomial. We say that $f(x)$ \textbf{splits}\index{polynomial!splits} in $E$ if and only if there exist an element $a \in F$ and elements $a_1, a_2, \dots, a_n \in E$ such that
@@ -241,23 +392,25 @@ With this definition, we can now define \textbf{splitting fields}.
 \end{remark}
 
 We note that the splitting field for a polynomial not only depends on the polynomial itself, but also the base field.
+
 \begin{example}
     Consider the polynomial $x^2 + 1$. If we interpret $x^2 + 1$ being in $\R[x]$, then naturally the splitting field of $x^2 + 1$ is $\C$, since $x^2 + 1 = (x-i)(x+i)$.
 
-    However, if we think of $x^2+1$ as being a polynomial in $\Q$, then the splitting field is $\Q(i, -i)$. In fact, $\Q(i, -i) = \Q(i)$ since any field containing $i$ must also contain $-i$ (as it is the additive inverse of $i$). One sees that $\Q(i) \neq \C$ since $\C$ contains irrational numbers (such as $\sqrt2$) while $\Q(i)$ must at least contain $\Q$ and so does not contain irrational numbers.
-\end{example}
-\begin{example}
-    Consider the polynomial $x^2 - 2 \in \Q[x]$. Clearly $x^2 - 2$ splits in $\R$ since $x^2 - 2 = (x - \sqrt2)(x + \sqrt2)$, but the splitting field of $x^2 - 2 \in \Q[x]$ is $\Q(\sqrt2, -\sqrt2)$ which, again, is $\Q(\sqrt 2)$.
+    However, if we think of $x^2+1$ as being a polynomial in $\Q$, then the splitting field is $\Q(i, -i)$. In fact, $\Q(i, -i) = \Q(i)$. One sees that $\Q(i) \neq \C$ since $\C$ contains irrational numbers (such as $\sqrt2$) while $\Q(i)$ must at least contain $\Q$ and so does not contain irrational numbers.
 \end{example}
 
-One may wonder if a splitting field always exists for a given polynomial and a given field. The answer -- yes.
+\begin{example}
+    Consider the polynomial $x^2 - 2 \in \Q[x]$. Clearly $x^2 - 2$ splits in $\R$ since $x^2 - 2 = (x - \sqrt2)(x + \sqrt2)$, but the splitting field of $x^2 - 2 \in \Q[x]$ is $\Q(\sqrt2, -\sqrt2)$ which is $\Q(\sqrt 2)$.
+\end{example}
+
+Does a splitting field for a polynomial over a given field always exist? We answer in the affirmative by proving the following theorem.
 
 \begin{theorem}
     Let $F$ be a field and $f(x)$ be a non-constant polynomial in $F[x]$. Then there exists a splitting field $E$ for $f(x)$ over $F$.
 \end{theorem}
 \begin{proof}
     Let $f(x)$ have degree $n$. We use strong induction on $n$.
-    
+
     When $n = 1$, we know $f(x)$ is of the form $ax + b$, and so we may write
     \[
         f(x) = a\left(x - \left(\frac ba\right)\right),
@@ -275,15 +428,499 @@ One may wonder if a splitting field always exists for a given polynomial and a g
     The theorem is proven by induction.
 \end{proof}
 
-% TODO: Continue
+\begin{example}
+    Consider $f(x) = x^4 - x^2 - 2 = (x^2+1)(x^2 - 2)$ over $\Q$. One sees that the zeroes of $f(x)$ in $\C$ are $\pm i$ and $\pm\sqrt2$. Thus a splitting field of $f(x)$ over $\Q$ is
+    \begin{align*}
+        \Q(i, -i, \sqrt2, -\sqrt2) &= \Q(i, \sqrt2)\\
+        &= \{a + b\sqrt2 + ci + d\sqrt2i \vert a, b, c, d \in \Q\}.
+    \end{align*}
+\end{example}
 
-\section{The Derivative}
-% TODO: Add
+\begin{example}
+    Consider $f(x) = x^2 + x + 2$ over $\Z_3$. One sees that, if we permit the imaginary unit $i$, then
+    \[
+        f(x) = (x-(1+i))(x-(1+2i)).
+    \]
+    So a splitting field of $f(x)$ over $\Z_3$ is
+    \begin{align*}
+        &\Z_3(1+i, 1+2i)\\
+        &= \Z_3(1+i)(1+2i)\\
+        &=\{u + v(1+2i) \vert u, v \in \Z_3[1+i]\}\\
+        &=\{(u+v) + 2vi \vert u, v \in \Z_3[1+i]\}\\
+        &=\{w + 2vi \vert w, v \in \Z_3[1+i]\}\\
+        &=\{(a+b(1+i)) + 2(c+d(1+i))i \vert a,b,c,d\in\Z_3\}\\
+        &=\{a+b+bi + 2ci + 2di + 2di^2 \vert a,b,c,d\in\Z_3\}\\
+        &=\{(a+b-2d) + (b+2c+2d) \vert a,b,c,d\in\Z_3\}\\
+        &=\{p + qi \vert p,q\in\Z_3\}\\
+        &=\Z_3[i].
+    \end{align*}
+\end{example}
+
+\begin{exercise}
+    Let $f(x) = x^4 - 5x^2 + 6 \in \Q[x]$.
+    \begin{partquestions}{\roman*}
+        \item Show that a splitting field of $f(x)$ over $\Q$ is $\Q(\sqrt2)(\sqrt3)$.
+        \item Show that $p(x) = x^4 - 10x + 1$ is an irreducible polynomial over $\Q$ with a zero of $\sqrt2 + \sqrt3$.
+        \item Hence show that $\Q(\sqrt2 + \sqrt3)$ is a splitting field of $f(x)$ over $\Q$.
+    \end{partquestions}
+\end{exercise}
+
+Looking back at the polynomial $x^2+1$, we note that both $\R(i)$ and $\R[x]/\princ{x^2+1}$ split $x^2+1$. But actually these two fields are not that different. We end this section by proving that a splitting field of a polynomial over a given field is unique up to isomorphism.
+
+Before we can prove this, we introduce some terminology and notation, and a preliminary result.
+
+\begin{definition}
+    Let $F$ and $F'$ be fields and $\phi: F \to F'$ be a homomorphism. Suppose $E/F$ and $E'/F'$ are field extensions, and suppose $\psi: E \to E'$ is a homomorphism. Then we say \textbf{$\psi$ agrees with $\phi$ on $F$}\index{agrees with} if and only if $\psi(x) = \phi(x)$ for all $x \in F$.
+\end{definition}
+
+\begin{definition}
+    For given fields $F$ and $F'$, a polynomial $f(x) = a_0 + a_1x + \cdots + a_nx^n \in F[x]$, and an isomorphism $\phi: F \to F'$, we define
+    \[
+        \phi(f(x)) = \phi(a_0) + \phi(a_1)x + \cdots + \phi(a_n)x^n,
+    \]
+    which is a polynomial in $F'[x]$.
+\end{definition}
+
+\begin{lemma}\label{lemma-isomorphism-extension}
+    Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $\alpha$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an isomorphism and $\beta$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an isomorphism $\overline{\phi}: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
+\end{lemma}
+\begin{proof}[Proof (cf. {\cite[Lemma 21.32]{judson_beezer_2022}})]
+    We note that, by \myref{thrm-simple-extension-isomorphism}, if $\deg p(x) = n$, we have that both $F(\alpha)$ and $F'(\beta)$ have dimension $n$ with bases
+    \[
+        \{1, \alpha, \alpha^2, \dots, \alpha^n\} \quad\text{and}\quad\{1, \beta, \beta^2, \dots, \beta^n\}
+    \]
+    respectively. Define the map $\overline{\phi}: F(\alpha) \to F'(\beta)$ where
+    \[
+        \overline{\phi}\left(a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}\right) = \phi(a_0) + \phi(a_1)\beta + \cdots + \phi(a_{n-1})\beta^{n-1}.
+    \]
+    We show that this is an isomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}$ and $b_0 + b_1\alpha + \cdots + b_{n-1}\alpha^{n-1}$ be elements in $F(\alpha)$. Note
+        \begin{align*}
+            \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i + \sum_{i=0}^nb_i\alpha^i\right) &=\overline{\phi}\left(\sum_{i=0}^n(a_i+b_i)\alpha^i\right)\\
+            &=\sum_{i=0}^n\phi(a_i+b_i)\beta^i\\
+            &= \sum_{i=0}^n\phi(a_i)\beta^i + \sum_{i=0}^n\phi(b_i)\beta^i\\
+            &= \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i\right) + \overline{\phi}\left(\sum_{i=0}^nb_i\alpha^i\right).
+        \end{align*}
+        Also,
+        \begin{align*}
+            \overline{\phi}\left(\left(\sum_{i=0}^na_i\alpha^i\right)\left(\sum_{i=0}^nb_i\alpha^i\right)\right) &= \overline{\phi}\left(\sum_{k=0}^{2n}\left(\left(\sum_{i=0}^ka_ib_{k-i}\right)\alpha^i\right)\right)\\
+            &= \sum_{k=0}^{2n}\left(\phi\left(\sum_{i=0}^ka_ib_{k-i}\right)\beta^i\right)\\
+            &= \sum_{k=0}^{2n}\left(\left(\sum_{i=0}^k\phi(a_i)\phi(b_{k-i})\right)\beta^i\right)\\
+            &=\left(\sum_{i=0}^n\phi(a_i)\beta^i\right)\left(\sum_{i=0}^n\phi(b_i)\beta^i\right)\\
+            &= \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i\right)\overline{\phi}\left(\sum_{i=0}^nb_i\alpha^i\right)
+        \end{align*}
+        so $\overline{\phi}$ is a homomorphism.
+
+        \item \textbf{Injective}: Since $\psi$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}).
+
+        \item \textbf{Surjective}: Suppose $b_0 + b_1\beta + \cdots + b_{n-1}\beta^{n-1} \in F'(\beta)$. Since $\phi$ is an isomorphism, for any $b_i \in F'$, there is a pre-image $a_i \in F$ such that $\phi(a_i) = b_i$. Consequently
+        \[
+            \overline{\phi}\left(a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}\right) = b_0 + b_1\beta + \cdots + b_{n-1}\beta^{n-1}
+        \]
+        so any element in $F'(\beta)$ has a pre-image in $F(\alpha)$.
+    \end{itemize}
+    Therefore $\overline{\phi}$ is an isomorphism.
+
+    Finally, notice for any $r \in F$ that $\overline{\phi}(r) = \phi(r)$, so $\overline{\phi}$ agrees with $\phi$ on $F$. Also, clearly, $\overline{\phi}(\alpha) = \beta$. Therefore this isomorphism satisfies the required properties.
+\end{proof}
+
+We can now prove the following theorem.
+
+\begin{theorem}\label{thrm-isomorphism-extension}
+    Let $F$ and $F'$ be fields, $\phi: F \to F'$ be an isomorphism, and $f(x) \in F[x]$. If $E$ is a splitting field of $f(x)$ over $F$ and $E'$ is a splitting field of $\phi(f(x))$ over $F'$, then there exists an isomorphism from $E$ to $E'$ that agrees with $\phi$ on $F$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 20.4]{gallian_2016}})]
+    Let $\deg f(x) = n$; we induct on $n$.
+
+    When $n = 1$, the polynomial $f(x)$ splits over the original field $F$. Similarly $\phi(f(x))$ splits over $F'$. Hence $E = F$ and $E' = F'$ and thus $\phi$ is the desired isomorphism.
+
+    Now assume that the result holds for all non-constant polynomials of degree of at most $k$. We show the result holds for a polynomial of degree $k + 1$.
+
+    Since $\deg f(x) = k+1$, we can find an irreducible factor $p(x) \in F[x]$ of $f(x)$. Let $\alpha$ be a zero of $p(x)$ in $E$ and let $\beta$ be a zero of $\phi(p(x))$ in $E'$. By \myref{lemma-isomorphism-extension} there exists an isomorphism $\psi: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
+
+    Now since $\alpha$ is a zero of the irreducible factor $p(x)$ of $f(x)$, thus $\alpha$ is a zero of $f(x)$. We may hence write
+    \[
+        f(x) = (x-\alpha)g(x)
+    \]
+    by Factor Theorem (\myref{corollary-factor-theorem}), where $g(x) \in F(\alpha)[x]$. Since $E$ is a splitting field of $f(x)$ over $F$, thus $E$ must also be a splitting field of $g(x)$ over $F$; likewise $E'$ is a splitting field of $\psi(g(x))$. As $\deg g(x) < \deg f(x) = k+1$, so $\deg g(x) \leq k$ and thus there must exist an isomorphism $\sigma: E \to E'$ that agrees with $\psi$ on $F(\alpha)$ by the induction hypothesis. Consequently, since $\psi$ agrees with $\phi$ on $F$, therefore $\sigma$ also agrees with $\phi$ on $F$. Therefore $\sigma$ is the required isomorphism, proving the statement for the $k+1$ case.
+\end{proof}
+
+The uniqueness of splitting fields for a given polynomial over a given field is a natural corollary of the theorem.
+
+\begin{corollary}\label{corollary-splitting-field-unique-up-to-isomorphism}
+    Let $F$ be a field and $f(x) \in F[x]$. Then any two splitting fields of $f(x)$ over $F$ are isomorphic.
+\end{corollary}
+\begin{proof}
+    Suppose $E$ and $E'$ are splitting fields of $f(x)$ over $F$. Then the result follows immediately from \myref{thrm-isomorphism-extension} by letting $\phi = \id$, i.e. the identity endomorphism from $F$ to $F$.
+\end{proof}
+
+In light of \myref{corollary-splitting-field-unique-up-to-isomorphism}, we may refer to ``the'' splitting field of $f(x)$ over $F$ without any ambiguity.
+
+\begin{example}
+    Both $\R(i)$ and $\R[x]/\princ{x^2+1}$ split $x^2+1$, but \myref{corollary-splitting-field-unique-up-to-isomorphism} tells us that $\R(i) \cong \R[x]/\princ{x^2+1}$. In fact, $R(i)$ is just the complex numbers $\C$, and we already proved that $\R[x]/\princ{x^2+1} \cong \C$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C}. So \textit{the} splitting field of $x^2+1$ over $\R$ is $\R(i)$.
+\end{example}
+
+\section{The Formal Derivative}
+Before we tackle the zeroes of irreducible polynomials, we borrow a tool whose origins are from calculus.
+
+\begin{definition}
+    Let $F$ be a field and $f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_nx^n \in F[x]$. Then the \textbf{formal derivative}\index{formal derivative} (or just \textbf{derivative}\index{derivative}) of $f(x)$, denoted $f'(x)$, is
+    \[
+        a_1 + 2a_2x + 3a_3x^2 + \cdots + na_nx^{n-1}.
+    \]
+\end{definition}
+
+Notice that in our definition we did not use the notion of a limit, unlike in a standard calculus course.
+
+\begin{example}
+    Let $f(x) = x^2 + 2x + 3 \in \Q[x]$. Then $f'(x) = 2x + 2$.
+\end{example}
+
+\begin{example}
+    $\left((x-1)(x+2)(x-3)(x+4)\right)' = (x^4 + 2x^3 - 13x^2 - 14x + 24)' = 4x^3 + 6x^2 - 26x - 14$.
+\end{example}
+
+\begin{example}
+    One sees that $(x^3 + 2x^2 + 3x + 4)' = 3x^2 + 4x + 3$. But we also have $(x^3 + 2x^2 + 3x + 12345)' = 3x^2 + 4x + 3$. So multiple polynomials can have the same derivative.
+\end{example}
+
+Those with a background in calculus would be familiar with the following properties of the derivative. In the following, let $F$ be a field, $f(x), g(x) \in F[x]$, and $k \in F$.
+
+\begin{proposition}
+    $(kf(x))' = kf'(x)$.
+\end{proposition}
+\begin{proof}
+    Let $f(x) = a_0 + a_1x + \cdots + a_nx^n$. Then
+    \begin{align*}
+        (kf(x))' &= (k(a_0 + a_1x + \cdots + a_nx^n))'\\
+        &= (ka_0 + (ka_1)x + \cdots + (ka_n)x^n)'\\
+        &= ka_1 + \cdots + kna_nx^{n-1}\\
+        &= k(a_1 + \cdots + na_nx^{n-1})\\
+        &= kf'(x).\qedhere
+    \end{align*}
+\end{proof}
+
+\begin{proposition}
+    $(f(x) + g(x))' = f'(x) + g'(x)$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-derivative-sum-rule} (later).
+\end{proof}
+
+\begin{remark}
+    In fact, what these first two properties show is that the derivative is a linear transformation from $F[x]$ to $F[x]$.
+\end{remark}
+
+\begin{proposition}
+    $(f(x)g(x))' = f(x)g'(x) + f'(x)g(x)$.
+\end{proposition}
+\begin{proof}
+    We first prove the fact that
+    \[
+        (x^nf(x))' = nx^{n-1}f(x) + x^nf'(x)
+    \]
+    for all polynomials $f(x) \in F[x]$ and positive integers $n$ using strong induction on $n$.
+
+    When $n = 1$, one sees for $f(x) = a_0 + a_1x + \cdots + a_mx^m$ that
+    \begin{align*}
+        (xf(x))' &= \left(a_0x + a_1x^2 + a_2x^3 + \cdots + a_mx^{m+1}\right)'\\
+        &= a_0 + 2a_1x + 3a_2x^2 + \cdots + (m+1)a_mx^m\\
+        &= \left(a_0 + a_1x + a_2x^2 + \cdots + a_mx^m\right) + \left(a_1x + 2a_2x^2 + \cdots + ma_mx^m\right)\\
+        &= \left(a_0 + a_1x + a_2x^2 + \cdots + a_mx^m\right) + x\left(a_1 + 2a_2x + \cdots + ma_mx^{m-1}\right)\\
+        &= f(x) + xf'(x)
+    \end{align*}
+    which shows that the $n = 1$ case holds.
+
+    Now assume that $(x^rf(x))' = rx^{r-1}f(x) + x^rf'(x)$ for all polynomials $f(x) \in F[x]$ and for all $r \leq k$ for some positive integer $k$. We note that
+    \begin{align*}
+        (x^{k+1}f(x))' &= \left(x\left(x^kf(x)\right)\right)'\\
+        &= \left(x^kf(x)\right) + x\left(x^kf(x)\right)' & (\text{Case where }r=1)\\
+        &= x^kf(x) + x\left(kx^{k-1}f(x) + x^kf'(x)\right) & (\text{Case where }r=k)\\
+        &= x^kf(x) + kx^kf(x) + x^{k+1}f'(x)\\
+        &= (k+1)x^kf(x) + x^{k+1}f'(x)
+    \end{align*}
+    so this holds for $k + 1$ as well. Hence by induction we have proven that $(x^nf(x))' = nx^{n-1}f(x) + x^nf'(x)$ for all positive integers $n$.
+
+    Finally note that for any $f(x), g(x) \in F[x]$ where $f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_mx^m$ that
+    \begin{align*}
+        &(f(x)g(x))'\\
+        &= \left((a_0 + a_1x + a_2x^2 + \cdots + a_mx^m)g(x)\right)'\\
+        &= \left(a_0g(x) + a_1xg(x) + a_2x^2g(x) + \cdots + a_mx^mg(x)\right)'\\
+        &= (a_0g(x))' + (a_1xg(x))' + (a_2x^2g(x))' + \cdots + (a_mx^mg(x))'\\
+        &= a_0(g(x))' + a_1(xg(x))' + a_2(x^2g(x))' + \cdots + a_m(x^mg(x))'\\
+        &= a_0g'(x) + a_1(g(x) + xg'(x)) + a_2(2xg(x) + x^2g'(x)) + \cdots + a_m(mx^{m-1}g(x)\\
+        &\quad\quad+ x^mg'(x))\\
+        &= (a_0g'(x) + a_1xg'(x) + a_2x^2g'(x) + \cdots + a_mx^mg'(x)) + (a_1g(x) + 2a_2xg(x) + \cdots\\
+        &\quad\quad+ ma_mx^{m-1}g(x))\\
+        &= (a_0 + a_1x + a_2x^2 + \cdots + a_mx^m)g'(x) + (a_1 + 2a_2x + \cdots + ma_mx^{m-1})g(x)\\
+        &= f(x)g'(x) + f'(x)g(x)
+    \end{align*}
+    which proves the proposition.
+\end{proof}
+
+\begin{exercise}\label{exercise-derivative-sum-rule}
+    Prove for any field $F$ and any two polynomials $f(x), g(x) \in F[x]$ that $(f(x)+g(x))' = f'(x) + g'(x)$.
+\end{exercise}
+
+\begin{exercise}
+    Prove for any field $F$ and any polynomial $f(x) \in F[x]$ that
+    \[
+        \left((f(x))^n\right)' = n(f(x))^{n-1}f'(x),
+    \]
+    where $n$ is a positive integer.
+\end{exercise}
+
+\section{Polynomial GCD}
+The investigation into the zeroes of irreducible polynomials also requires the generalization of the GCD to polynomials.
+
+\begin{definition}
+    A \textbf{monic polynomial}\index{polynomial!monic} is a non-zero polynomial which has a leading coefficient of 1. In other words, a monic polynomial takes the form
+    \[
+        c_0 + c_1x + c_2x^2 + \cdots + c_{n-1}x^{n-1} + x^n
+    \]
+    where $n \geq 0$.
+\end{definition}
+
+\begin{definition}
+    Let $F$ be a field. Given $f(x), g(x) \in F[x]$, a monic polynomial $d(x) \in F[x]$ is said to be a \textbf{greatest common divisor (GCD)}\index{greatest common divisor!polynomial}\index{GCD!polynomial} of $f(x)$ and $g(x)$ if and only if $d(x)$ divides both $f(x)$ and $g(x)$ and if another polynomial $c(x) \in F[x]$ divides both $f(x)$ and $g(x)$ then $c(x)$ divides $d(x)$.
+
+    We denote a GCD of $f(x)$ and $g(x)$ by $\gcd(f(x), g(x))$.
+\end{definition}
+
+We note an analogue of B\'ezout's lemma (\myref{lemma-bezout}) for the polynomial GCD.
+
+\begin{theorem}\label{thrm-bezout-lemma-for-polynomials}
+    Let $F$ be a polynomial. Let $f(x), g(x) \in F[x]$, and let $d(x)$ be a GCD of $f(x)$ and $g(x)$. Then there are $a(x), b(x) \in F[x]$ such that
+    \[
+        d(x) = a(x)f(x) + b(x)g(x).
+    \]
+    Furthermore the GCD of $f(x)$ and $g(x)$ is unique.
+\end{theorem}
+\begin{proof}
+    Consider the set
+    \[
+        S = \left\{u(x)f(x) + v(x)g(x) \vert u(x), v(x) \in F[x]\right\}.
+    \]
+    Let $d(x) \in S$ be a monic polynomial of minimal degree. Take $a(x),b(x) \in F[x]$ such that $d(x) = a(x)f(x) + b(x)g(x)$.
+
+    We show $d(x)$ divides $f(x)$. Performing polynomial long division (\myref{thrm-polynomial-long-division}) on $f(x)$ with divisor $d(x)$ yields
+    \[
+        f(x) = q(x)d(x) + r(x)
+    \]
+    where $r(x) = 0$ or $\deg r(x) < \deg d(x)$. Thus we see
+    \begin{align*}
+        r(x) &= f(x) - q(x)d(x)\\
+        &= f(x)-q(x)\left(a(x)f(x) + b(x)g(x)\right)\\
+        &= f(x) - a(x)f(x)q(x) - b(x)g(x)q(x)\\
+        &= (\underbrace{1 - q(x)a(x)}_{u(x)})(f(x)) - (\underbrace{q(x)b(x)}_{v(x)})(g(x))\\
+        &\in S
+    \end{align*}
+    and therefore if $\deg r(x) < \deg d(x)$ this contradicts the minimality of $d(x)$. Therefore $r(x) = 0$ and hence $f(x) = q(x)d(x)$, meaning $d(x)$ divides $f(x)$. Similarly $d(x)$ divides $g(x)$. Hence $d(x)$ is a common divisor of $f(x)$ and $g(x)$.
+
+    We now show that $d(x)$ is a GCD of $f(x)$ and $g(x)$. Suppose $c(x) \in F[x]$ divides both $f(x)$ and $g(x)$, i.e. $f(x) = p(x)c(x)$ and $g(x) = q(x)c(x)$ for some $p(x), q(x) \in F[x]$. We then see that
+    \begin{align*}
+        d(x) &= a(x)f(x) + b(x)g(x)\\
+        &= a(x)(p(x)c(x)) + b(x)(q(x)c(x))\\
+        &= c(x)(a(x)p(x) + b(x)q(x))
+    \end{align*}
+    and so $c(x)$ divides $d(x)$. Therefore $d(x)$ is a GCD of $f(x)$ and $g(x)$.
+
+    We now show that the GCD of $f(x)$ and $g(x)$ is unique. Let $d_0(x)$ be another GCD of $f(x)$ and $g(x)$. This means that there exists $p(x), q(x) \in F[x]$ such that $f(x) = p(x)d_0(x)$ and $g(x) = q(x)d_0(x)$. We then see
+    \begin{align*}
+        d(x) &= a(x)f(x) + b(x)g(x)\\
+        &= a(x)(p(x)d_0(x)) + b(x)(q(x)d_0(x))\\
+        &= d_0(x)(a(x)p(x) + b(x)q(x))
+    \end{align*}
+    and so we conclude $\deg d(x) = \deg d_0(x) + \deg\left(a(x)p(x) + b(x)q(x)\right)$ by properties of the degree. Since $d(x)$ is of minimal degree, thus we must have $\deg d(x) = \deg d_0(x)$ which means $\deg\left(a(x)p(x) + b(x)q(x)\right) = 0$. Hence $a(x)p(x) + b(x)q(x) = \alpha \in F$ where $\alpha \neq 0$, meaning $d(x) = \alpha d_0(x)$. But both $d(x)$ and $d_0(x)$ are monic polynomials, so the coefficients of the largest terms of both $d(x)$ and $d_0(x)$ are both 1. Therefore $\alpha = 1$, meaning $d(x) = d_0(x)$. This proves the uniqueness of the GCD.
+\end{proof}
+
+To end this section, we look at the analogue of coprime numbers in terms of polynomials.
+
+\begin{definition}
+    Let $F$ be a field. Two polynomials $f(x)$ and $g(x)$ in $F[x]$ are \textbf{coprime}\index{coprime!polynomial} if and only if $\gcd(f(x), g(x)) = 1$.
+\end{definition}
 
 \section{Zeroes of an Irreducible Polynomial}
-% TODO: Add
+Recall that polynomial $f(x)$ has a zero $\alpha$ if and only if $x-\alpha$ is a factor of $f(x)$, by the Factor Theorem (\myref{corollary-factor-theorem}). Then $\alpha$ is a zero of multiplicity $n$ if $(x-\alpha)^n$ is a factor of $f(x)$ but $(x-\alpha)^{n+1}$ is not.
+
+\begin{definition}
+    Let $\alpha$ be a zero of multiplicity $n$ of a polynomial $f(x)$. If $n = 1$ then $\alpha$ is called a \textbf{simple zero}\index{polynomial!zeroes!simple}. If $n \geq 2$ then $\alpha$ is called a \textbf{multiple zero}\index{polynomial!zeroes!multiple}.
+\end{definition}
+
+With the derivative, we can derive a test for multiple zeroes of a polynomial.
+
+\begin{theorem}\label{thrm-criterion-for-multiple-zeroes}
+    Let $F$ be a field and $f(x) \in F[x]$. Then $f(x)$ has a multiple zero in some field extension $E/F$ if and only if $f(x)$ and $f'(x)$ have a common factor of positive degree in $F[x]$.
+\end{theorem}
+\begin{proof}
+    For the forward direction, let $\alpha \in E$ be a multiple zero of $f(x)$. Then there is a $g(x) \in E[x]$ such that $f(x) = (x-\alpha)^2g(x)$, by Factor Theorem (\myref{corollary-factor-theorem}). One sees that
+    \begin{align*}
+        f'(x) &= 2(x-\alpha)g(x) + (x-\alpha)^2g'(x)\\
+        &= (x-\alpha)\left(2g(x) + 2(x-\alpha)g'(x)\right)
+    \end{align*}
+    and so $x-\alpha$ is a common factor of both $f(x)$ and $f'(x)$ in $E[x]$. Now, seeking a contradiction, suppose that $f(x)$ and $f'(x)$ do not have a common factor of positive degree in $F[x]$. Hence $\gcd(f(x), f'(x)) = k$ where $k \in F$. By \myref{thrm-bezout-lemma-for-polynomials}, we can find $a(x), b(x) \in F[x]$ such that $a(x)f(x) + b(x)f'(x) = k$. Viewing $a(x)f(x) + b(x)f'(x)$ as an element of $E[x]$, since $x-\alpha$ is a common factor of $f(x)$ and $f'(x)$ in $E[x]$, we see that $x-a$ divides $k$, by definition of the GCD. This is clearly absurd. Hence, $f(x)$ and $f'(x)$ has a common divisor of positive degree in $F[x]$.
+
+    For the reverse direction, suppose $f(x)$ and $f'(x)$ have a common factor of positive degree. Then by the Fundamental Theorem of Field Theory (\myref{thrm-fundamental-theorem-of-field-theory}), this common factor must have a zero in some extension $E$, say $\alpha$. Thus $\alpha$ is a zero of $f(x)$ and $f'(x)$. Since $\alpha$ is a zero of $f(x)$, therefore $f(x) = (x-\alpha)q(x)$ for some $q(x) \in E[x]$ by Factor Theorem. Then
+    \[
+        f'(x) = q(x) + (x-\alpha)q'(x).
+    \]
+    Note $f'(\alpha) = 0$ since $\alpha$ is a zero of $f'(x)$. Thus $q(\alpha) = 0$, which means $(x-\alpha)$ is a factor of $q(x)$ by Factor Theorem again. Therefore $f(x)$ and $f'(x)$ share a common factor of positive degree, in particular $x-\alpha$.
+\end{proof}
+
+With this result, we can find the zeroes of an irreducible polynomial.
+\begin{theorem}\label{thrm-zeroes-of-an-irreducible}
+    Let $F$ be a field and $f(x) \in F[x]$ be irreducible over $F$.
+    \begin{itemize}
+        \item If $\Char{F} = 0$ then $f(x)$ has no multiple zeroes.
+        \item If $\Char{F} = p$, a prime number, then if $f(x) = g(x^p)$ for some $g(x) \in F[x]$, then $f(x)$ has a multiple zero.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    If $f(x)$ has a multiple zero, then \myref{thrm-criterion-for-multiple-zeroes} tells us that $f(x)$ and $f'(x)$ has a common divisor of positive degree in $F[x]$. As $f(x)$ is irreducible over $F$, the only divisor of positive degree of $f(x)$ in $F[x]$ is $f(x)$ itself (up to associates), which means $f(x)$ divides $f'(x)$. But $f'(x)$ has smaller degree than $f(x)$, so $f'(x) = 0$. Writing $f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$, since $f'(x) = 0$ we see $ra_r = 0$ for all $r \in \{1, 2, \dots, n\}$ by \myref{exercise-derivative-is-zero-implies-higher-terms-are-zero} (later).
+
+    Now if $\Char{F} = 0$, there does \textit{not} exist a positive integer $k$ such that $ka = 0$ for all $a \in F$. Thus, if $ra_r = 0$, we must have $a_r = 0$. Thus $f(x) = a_0$, a constant polynomial. But an irreducible polynomial has to be a non-constant polynomial by definition. This contradiction means that $f(x)$ has no multiple zeroes in $F$ if $\Char{F} = 0$.
+
+    If $\Char{F} = p$ instead, $pa = 0$ for all $a \in F$. So if $p$ does not divide $r$, we require $a_r = 0$ in order for $ra_r = 0$. Otherwise, if $p$ divides $r$ (say, $r = pk$), note $(pk)a_{pk} = p(ka_{pk}) = 0$, so $a_{pk}$ is free. Thus the only powers of $p$ that appear in $f(x)$ are those of the form $x^{kp} = \left(x^p\right)^k$. It follows that $f(x) = g(x^p)$ for some $g(x) \in F[x]$.
+\end{proof}
+
+\begin{exercise}\label{exercise-derivative-is-zero-implies-higher-terms-are-zero}
+    Let $F$ be a field and let $f(x) = a_0 + a_1x + \cdots + a_nx^n$. Prove that $f'(x) = 0$ implies $ra_r = 0$ for all $r \in \{1, 2, \dots, n\}$.
+\end{exercise}
+
+We found in \myref{thrm-zeroes-of-an-irreducible} that an irreducible polynomial either has no multiple zeroes (which is the case for a field of characteristic 0) or an irreducible polynomial $f(x) = g(x^p)$ (which is the case for a field of prime characteristic). This result can be generalized to a much larger class of fields.
+
+\begin{definition}
+    Let $F$ be a field and $n$ be a positive integer. Define
+    \[
+        F^n = \{a^n \vert a \in F\}.
+    \]
+\end{definition}
+
+\begin{definition}
+    A field $F$ is called \textbf{perfect}\index{field!perfect}\index{perfect field} if $F$ has characteristic 0 or if $F$ has prime characteristic $p$ and $F^p = F$.
+\end{definition}
+
+The most important family of perfect fields of prime characteristic are the finite fields.
+
+\begin{theorem}
+    Every finite field is perfect.
+\end{theorem}
+\begin{proof}
+    Let $F$ be a finite field of prime characteristic $p$. Recall the Frobenius endomorphism $\phi: F \to F$ where $\phi(x) = x^p$ for all $x \in F$. We prove that the Frobenius endomorphism is an automorphism within finite fields.
+    \begin{itemize}
+        \item \textbf{Injective}: Since $\phi$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}).
+        \item \textbf{Surjective}: Since $\phi$ is an injective function from $F$ to itself, it must be surjective by \myref{problem-injection-from-finite-set-to-itself-is-bijection}.
+    \end{itemize}
+    Hence $\phi$ is a bijection. Coupled with the fact that $\phi$ is an endomorphism means that $\phi$ is an automorphism. But clearly the image of $\phi$ is $F^p$, so $F = F^p$.
+\end{proof}
+
+The fact that the Frobenius endomorphism is an automorphism for finite fields leads to an interesting result.
+
+\begin{proposition}[Freshman's Dream]\label{prop-freshman-dream}\index{Freshman's Dream}
+    Let $F$ be a field of prime characteristic $p$. Then $(x + y)^p = x^p + y^p$ for all $x,y \in F$.
+\end{proposition}
+\begin{remark}
+    The name ``Freshman's Dream'' refers to the \textit{incorrect} expansion of $(x+y)^n$ as $x^n + y^n$ over $\R$. However, over finite fields, this incorrect expansion becomes correct.
+\end{remark}
+\begin{proof}
+    Since the Frobenius endomorphism is an automorphism, we see that $\phi(x+y) = \phi(x) + \phi(y)$ and so $(x+y)^p = x^p + y^p$ by definition of $\phi$.
+\end{proof}
+
+\begin{exercise}
+    Let $F$ be a field of prime characteristic $p$. Prove that $(x + y)^{p^n} = x^{p^n} + y^{p^n}$ for all $x,y \in F$ and for all positive integers $n$.
+\end{exercise}
+
+With this definition of perfect fields, we return back to exploring the zeroes of irreducible polynomials.
+
+\begin{theorem}\label{thrm-irreducible-polynomial-over-perfect-field-has-no-multiple-zeroes}
+    If $f(x)$ is an irreducible polynomial over a perfect field $F$, then $f(x)$ has no multiple zeroes.
+\end{theorem}
+\begin{proof}
+    The case when $\Char{F} = 0$ is done by \myref{thrm-zeroes-of-an-irreducible}. So assume $F$ is a perfect field of characteristic $p$ and let $f(x)$ be an irreducible polynomial in $F[x]$. Seeking a contradiction, assume $f(x)$ has multiple zeroes. By \myref{thrm-zeroes-of-an-irreducible} we know $f(x) = g(x^p)$ for some $g(x) \in F[x]$, say $g(x) = a_0 + a_1x + \cdots + a_nx^n$. Since $F = F^p$, each $a_i$ in $F$ can be written as $b_i^p$ for some $b_i \in F$. Thus,
+    \begin{align*}
+        f(x) &= g(x^p)\\
+        &= b_0^p + b_1^px^p + b_2^px^{2p} + \cdots + b_n^px^{np}\\
+        &= (b_0 + b_1x + b_2x^2 + \cdots + b_nx^n)^p & (\myref{prop-freshman-dream})\\
+        &= (h(x))^p
+    \end{align*}
+    where $h(x) = b_0 + b_1x + b_2x^2 + \cdots + b_nx^n \in F[x]$. But this clearly means $f(x)$ is not irreducible. Hence $f(x)$ does not have multiple zeroes.
+\end{proof}
+
+What if the irreducible polynomial does have multiple zeroes in a splitting field? In this case, there is something remarkable about the multiplicities of the zeroes.
+
+\begin{theorem}\label{thrm-zeroes-of-irreducible-over-splitting-field-have-same-multiplicity}
+    Let $f(x)$ be an irreducible polynomial over a field $F$, and let $E$ be a splitting field of $f(x)$ over $F$. Then the zeroes of $f(x)$ in $E$ all have the same multiplicity.
+\end{theorem}
+\begin{proof}
+    Let $\alpha, \beta \in E$ be distinct zeroes of $f(x)$. Suppose $\alpha$ has multiplicity $m$; we may thus write $f(x) = (x-\alpha)^mg(x)$ for some $g(x) \in E[x]$. Using \myref{lemma-isomorphism-extension} we choose $\phi$ to be the identity mapping $F$ to $F$ and so an isomorphism $\psi: E \to E$ exists such that $\psi(r) = r$ for all $r \in F$ and $\psi(\alpha) = \beta$. Thus
+    \[
+        f(x) = \psi(f(x)) = (x-\beta)^m\psi(g(x))
+    \]
+    and so the multiplicity of $\beta$ is greater than or equal to the multiplicity of $\alpha$. Interchanging $\alpha$ and $\beta$ means that the multiplicity of $\alpha$ is greater than or equal to the multiplicity of $\beta$. Hence $\alpha$ and $\beta$ have the same multiplicity.
+\end{proof}
+
+\begin{corollary}\label{corollary-factorization-of-irreducible-polynomial-over-splitting-field}
+    Let $f(x)$ be an irreducible polynomial over a field $F$, and let $E$ be a splitting field of $f(x)$ over $F$. Then $f(x)$ takes the form
+    \[
+        a(x-a_1)^n(x-a_2)^n\cdots(x-a_m)^n
+    \]
+    where $a \in F$ and $a_1, a_2, \dots, a_m \in E$ are distinct.
+\end{corollary}
+\begin{proof}
+    Follows from \myref{thrm-zeroes-of-irreducible-over-splitting-field-have-same-multiplicity} and the factorization of any polynomial in a splitting field.
+\end{proof}
 
 \newpage
 
 \section{Problems}
-% TODO: Add
+\begin{problem}\label{problem-simple-extension-absorbs-field-elements}
+    Let $F$ be a field, and let $p, q \in F$ where $p \neq 0$. Suppose $E/F$ is a field extension and $a \in E$. Prove that $F(pa + q) = F(a)$.
+\end{problem}
+
+\begin{problem}
+    Find the splitting fields of the following polynomial. If the splitting field found is a field extension, express it as a simple extension if possible.
+    \begin{partquestions}{\alph*}
+        \item $x^3 - 3x + 2$ over $\Q$.
+        \item $x^3 - 1$ over $\Q$.
+        \item $x^4 + x^2 + 1$ over $\Q$.\newline
+        (\textit{Hint: $x^4+x^2+1 = (x^2-x+1)(x^2+x+1)$.})
+        \item $x^2 - 2\sqrt{2}x + 3$ over $\Q(\sqrt2)$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Determine which of the following polynomials, if any, have multiple zeroes over the field $F$ specified. If the polynomial has a multiple zero, state it.
+    \begin{partquestions}{\alph*}
+        \item $x^4 + 2x + 7$ over $F = \Z_2$.
+        \item $x^{19} + x^8 + 1$ over $F = \Z_3$.
+        \item $2x^6 + x^4 + 2x^3 + 2$ over $F = \Z_3$.
+        \item $x^8 + 3x^5 + x^3 + 5$ over $F = \Z_7$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let $p(x) \in \Z_2$ be a polynomial of degree 7 that is irreducible in $\Z_2$. Prove or disprove the following statements.
+    \begin{partquestions}{\roman*}
+        \item $\Z_2[x]/\princ{p(x)}$ is a field.
+        \item $\left(\Z_2[x]/\princ{p(x)}\right)^\ast$ is a group.
+        \item Every non-identity element in $\left(\Z_2[x]/\princ{p(x)}\right)^\ast$ is a generator.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field, $a \in F$, and $f(x) \in F[x]$. Show that $f(x)$ and $f(x+a)$ have the same splitting field over $F$.
+\end{problem}
+
+\begin{problem}
+    Find all subfields of $\Q(\sqrt2)$.
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field of prime characteristic $p$. Prove that $f(x) = x^{p^n} - x \in F[x]$, where $n$ is a positive integer, only has simple zeroes.
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field of prime characteristic $p$, and let $a \in F$. Prove that $f(x) = x^p - a \in F[x]$ is either irreducible or splits over $F$.\newline
+    (\textit{Hint: consider two cases -- either $f(x)$ has a zero in $F$ or it does not.})
+\end{problem}

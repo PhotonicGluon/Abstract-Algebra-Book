@@ -1,15 +1,15 @@
 \chapter{Symmetry Groups}
-This chapter is central to the relevance and analysis of group theory. The core result of this chapter, Cayley's theorem, links our ideas of symmetry with the idea of groups, and how groups are a form of \textit{generalized symmetry}. It answers why group theory is oft called ``the study of symmetry'', and highlights the importance of bijections in the study of groups.
+This chapter is central to the relevance and analysis of group theory. The core result of this chapter, Cayley's theorem, links our ideas of symmetry with the idea of groups, and how groups are a form of `generalized symmetry'. It answers why group theory is oft called ``the study of symmetry'', and highlights the importance of bijections in the study of groups.
 
 \section{Permutations}
 A bijective function is too abstract an object. Such functions can take many forms. Thus, it is worth asking: what properties must a bijective function satisfy?
 
-A bijective function is a function that maps all elements from one set to another set exactly. There are no leftovers (surjective), and each output has exactly one input that produces it (injective). In a sense, a bijective function \textit{rearranges} the elements in a set; it renames elements and shuffles them around, without destroying the relative relationships between the elements.
+A bijective function is a function that maps all elements from one set to another set exactly. There are no leftovers (surjective), and each output has exactly one input that produces it (injective). In a sense, a bijective function rearranges the elements in a set; it renames elements and shuffles them around, without destroying the relative relationships between the elements.
 
 For bijections between finite sets, each set has the same number of elements, so it is reasonable to talk about the rearrangement and enumeration of elements in such sets.
 \begin{itemize}
-    \item What we mean by \textbf{rearrange} is to rename elements. We can give elements a new name and place it in the codomain.
-    \item What we mean by \textbf{enumerate} is to assign each element in each finite set a unique `index number', per se. Each element can have a unique number identifying its original \textit{position} in the set, and its final position in the destination set.
+    \item What we mean by ``rearrange'' is to rename elements. We can give elements a new name and place it in the codomain.
+    \item What we mean by ``enumerate'' is to assign each element in each finite set a unique `index number', per se. Each element can have a unique number identifying its original position in the set, and its final position in the destination set.
 \end{itemize}
 
 Such bijections between finite sets are called \textbf{permutations}\index{permutations}, since they simply permute the `index number' of the elements in the sets.
@@ -29,7 +29,7 @@ Such bijections between finite sets are called \textbf{permutations}\index{permu
 \end{example}
 
 \begin{remark}
-    It is certainly confusing that the operation of rearranging the items is also called \textit{permuting} the items in the set, and one such rearrangement is called a permutation. For groups, treat a ``permutation'' as a bijective function between finite groups.
+    It is certainly confusing that the operation of rearranging the items is also called ``permuting'' the items in the set, and one such rearrangement is called a permutation. For groups, treat a ``permutation'' as a bijective function between finite groups.
 \end{remark}
 
 Permutations come in many different forms, but the core thing that they do is to rearrange items. From the above example, one could form a `cycle' of how each item is mapped to another:
@@ -133,7 +133,7 @@ We can describe a permutation $\phi$ based on its cycles; such a description is 
 \end{example}
 
 \begin{example}
-    Let the permutation $\beta$ have cycle notation $\begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}$. Then
+    Let the permutation $\beta$ have cycle decomposition $\begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}$. Then
     \begin{multicols}{3}
         \begin{itemize}
             \item $\beta(1) = 6$;
@@ -161,7 +161,7 @@ We can describe a permutation $\phi$ based on its cycles; such a description is 
 
 We now look at composing permutations\index{permutation!composing}.
 \begin{example}
-    Let $f$ and $g$ be permutations. Let $f$ have cycle notation $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$ and $g$ have cycle notation $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$. Then $h = fg$ is a permutation with
+    Let $f$ and $g$ be permutations. Let $f$ have cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$ and $g$ have cycle decomposition $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$. Then $h = fg$ is a permutation with
     \begin{itemize}
         \item $h(1) = f(g(1)) = f(1) = 3$;
         \item $h(2) = f(g(2)) = f(4) = 4$;
@@ -191,7 +191,7 @@ We now describe how to find the inverse of a permutation\index{permutation!inver
 \end{example}
 
 \begin{exercise}
-    Find the inverse of the permutation $\pi$, which has cycle notation
+    Find the inverse of the permutation $\pi$, which has cycle decomposition
     \[
         \begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}.
     \]
@@ -207,14 +207,14 @@ With the definition of permutations out of the way, we can finally introduce a v
     \]
 \end{definition}
 \begin{proposition}
-    $(\Sym{X}, \circ)$ is a group, where $\circ$ is the function composition operator.
+    $(\Sym{X}, \circ)$ is a group, where $\circ$ denotes function composition.
 \end{proposition}
 \begin{proof}
     We prove the 4 group axioms.
     \begin{enumerate}
         \item \textbf{Closure}: Let $f$ and $g$ be functions in $\Sym{X}$, so $f: X\to X$ and $g:X \to X$ are bijective functions. Define $h:X \to X$ where $h = f\circ g$. By \myref{exercise-composition-of-isomorphisms-is-isomorphisms} we know $h$ is bijective. Thus $\Sym{X}$ is closed under $\circ$.
 
-        \item \textbf{Associativity}: Function composition is associative.
+        \item \textbf{Associativity}: Function composition is associative by \myref{axiom-function-composition-associative}.
 
         \item \textbf{Identity}: Clearly the identity map, $\id$, is in $\Sym{X}$. Also $\id$ is a bijection by \myref{exercise-identity-map-is-isomorphism}. Now we show that $\id$ is indeed the identity in $\Sym{X}$. Let $x$ be an arbitrary element of $X$, and $f$ be any function in $\Sym{X}$. Then
         \[
@@ -237,9 +237,10 @@ With the definition of permutations out of the way, we can finally introduce a v
 
 The group $(\Sym{X}, \circ)$ is called the \textbf{symmetric group} of $X$\index{symmetric group!of a set $X$}. We usually suppress the function composition operator and call $\Sym{X}$ the symmetric group of $X$.
 
-The most relevant type of symmetric group we encounter when working with finite groups is the \textbf{symmetric group of degree $n$}\index{symmetric group!of degree $n$} (or \textbf{symmetric group of $n$ letters}\index{symmetric group!of $n$ letters}).
+The most relevant type of symmetric group we encounter when working with finite groups is the \textbf{symmetric group of degree $n$}\index{symmetric group!of degree $n$}.
+
 \begin{definition}
-    The \textbf{symmetric group of degree $n$} is denoted by $\Sn{n}$ and is given by the group $\Sym{\{1, 2, 3, \dots, n\}}$.
+    The \textbf{symmetric group of degree $n$} (or the \textbf{symmetric group of $n$ letters}\index{symmetric group!of $n$ letters}) is denoted by $\Sn{n}$ and is given by the group $\Sym{\{1, 2, 3, \dots, n\}}$.
 \end{definition}
 \begin{remark}
     Elements of $\Sn{n}$ are called permutations.

@@ -6,8 +6,18 @@ The external direct product is one method of `combining' groups together.
 \begin{definition}
     Let $(G, \ast)$ and $(H, \star)$ be groups. The \textbf{external direct product}\index{direct product!external} of $G$ and $H$ is denoted by $G\times H$ and is the group $(G\times H, (\ast, \star))$, where $(\ast, \star)$ are the operators performed component-wise.
 \end{definition}
-%TODO: Add proof that this is indeed a group
-Verifying that $(G\times H, (\ast, \star))$ is a group is left as an exercise for the reader. We note the identity of $G \times H$ is $(e_G, e_H)$, where $e_G$ is the identity of $G$ and $e_H$ is the identity of $H$. Also, $|G \times H| = |G||H|$ by definition of the Cartesian product.
+
+\begin{proposition}\label{prop-external-direct-product-is-group}
+    Let $G$ and $H$ be groups under the operations $\ast$ and $\star$ respectively. Then $G \times H$ is indeed a group.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-external-direct-product-is-group} (later).
+\end{proof}
+\begin{exercise}\label{exercise-external-direct-product-is-group}
+    Prove \myref{prop-external-direct-product-is-group}.
+\end{exercise}
+
+We note $|G \times H| = |G||H|$ by definition of the Cartesian product.
 
 \begin{example}
     $\Z_5 \times \Z = \{(m,n) \vert m \in \Z_5 \text{ and } n \in \Z\}$.
@@ -16,13 +26,13 @@ Verifying that $(G\times H, (\ast, \star))$ is a group is left as an exercise fo
 \end{example}
 
 \begin{example}
-    Let $\mathcal{S} = \R\setminus\{0\}$ be a group under multiplication. Then $\mathcal{S} \times \Z_3 = \{ (x, n) \vert x \in \mathcal{S} \text{ and } n \in \Z_3\}$.
+    Let $\R^\ast = \R\setminus\{0\}$ be a group under multiplication. Then $\R^\ast \times \Z_3 = \{ (x, n) \vert x \in \R^\ast \text{ and } n \in \Z_3\}$.
 
     So, $(3, 2)^{-1} = \left(\frac13, 1\right)$ since
     \begin{align*}
         (3, 2)\left(\frac13, 1\right) &= \left(3 \times \frac13, 2 \oplus_3 1\right)\\
         &= (1, 0)\\
-        &= (\text{Identity in }\mathcal{S}, \text{Identity in }\Z_3)
+        &= (\text{Identity in }\R^\ast, \text{Identity in }\Z_3)
     \end{align*}
 \end{example}
 
@@ -35,7 +45,7 @@ We prove some results relating the external direct product.
     Let $G_1$ and $G_2$ be groups with identities $e_1$ and $e_2$ respectively. Let $(x, y) \in G_1 \times G_2$, $|x| = r$, and $|y| = s$. Then $|(x, y)| = \lcm(r, s)$.
 \end{proposition}
 \begin{proof}[Proof (see \cite{proofwiki_order-of-group-element-in-external-direct-product})]
-    For brevity let $l = \lcm(r, s)$, so $l = \alpha r = \beta s$ for some positive integers $\alpha$ and $\beta$. Let $m = |(x, y)|$.
+    For brevity let $l = \lcm(r, s)$, so $l = \alpha r = \beta s$ for some positive integers $\alpha$ and $\beta$. Let $n = |(x, y)|$.
 
     Note that
     \begin{align*}
@@ -45,11 +55,11 @@ We prove some results relating the external direct product.
         &= (e_1^\alpha, e_2^\beta)\\
         &= (e_1, e_2).
     \end{align*}
-    Therefore $l = k|(x, y)| = km$ for some positive integer $k$, i.e. $m\vert l$.
+    Therefore $l = k|(x, y)| = kn$ for some positive integer $k$, i.e. $n \vert l$.
 
-    Note also that $(x, y)^m = (x^m, y^m)$ and $(x, y)^m = (e_1, e_2)$. Therefore $x^m = e_1$ and $y^m = e_2$, which means $m = p|x| = pr$ and $m = q|y| = qs$ for some positive integers $p$ and $q$, so $r$ and $s$ both divide $m$. Therefore $\lcm(r, s) = l\vert m$.
+    Note also that $(x, y)^n = (x^n, y^n)$ and $(x, y)^n = (e_1, e_2)$. Therefore $x^n = e_1$ and $y^n = e_2$, which means $n = p|x| = pr$ and $n = q|y| = qs$ for some positive integers $p$ and $q$, so $r$ and $s$ both divide $n$. Therefore $\lcm(r, s) = l$ divides $n$.
 
-    Since $m\vert l$ and $l\vert m$, thus $m = l$. Therefore we see that $|(x, y)| = \lcm(|x|, |y|)$.
+    Since $n \vert l$ and $l \vert n$, thus $n = l$. Therefore we see that $|(x, y)| = \lcm(|x|, |y|)$.
 \end{proof}
 
 \begin{theorem}\label{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition}
@@ -111,10 +121,8 @@ Before we look at the internal direct product, we look at the \textbf{subgroup p
     so by subgroup test, $HK \leq G$.
 \end{proof}
 \begin{remark}
-    An important point to note is that $HK = KH$ does not imply that $hk = kh$ for all $h \in H$ and $k \in K$. Finding a counterexample is left as an exercise to the reader.
+    An important point to note is that $HK = KH$ does \textit{not} imply that $hk = kh$ for all $h \in H$ and $k \in K$.
 \end{remark}
-
-\newpage
 
 We now look at the \textbf{internal direct product}, another way of `combining' groups.
 
@@ -156,7 +164,11 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
     \begin{itemize}
         \item \textbf{Well-defined}: Suppose $g = hk = h'k'$ where $h, h' \in H$ and $k, k' \in K$. Since $hk = h'k'$ thus $h^{-1}h' = k(k')^{-1}$.
 
-        Note that $h^{-1}h' \in H$ and $k(k')^{-1} \in K$. So if $h^{-1}h' = k(k')^{-1}$ then $h^{-1}h' \in H \cap K$ and $k(k')^{-1} \in H \cap K$. But $H \cap K = \{e\}$. Thus $h^{-1}h' = k(k')^{-1} = e$, which means that $h = h'$ and $k = k'$.
+        Note that $h^{-1}h' \in H$ and $k(k')^{-1} \in K$. So if $h^{-1}h' = k(k')^{-1}$ then $h^{-1}h' \in H \cap K$ and $k(k')^{-1} \in H \cap K$. But $H \cap K = \{e\}$. Thus $h^{-1}h' = k(k')^{-1} = e$, which means that $h = h'$ and $k = k'$. So,
+        \[
+            \phi(hk) = (h, k) = (h', k') = \phi(h'k')
+        \]
+        which proves that $\phi$ is well-defined.
 
         \item \textbf{Homomorphism}: Let $g, g' \in G$, $h, h' \in H$, and $k, k' \in K$ such that $g = hk$ and $g' = h'k'$. Then $gg' = hkh'k' = h(kh')k'$. We note that $kh' = h'k$ since $hk = kh$ for all $h \in H$ and $k \in K$. Hence $gg' = hh'kk'$.
 
@@ -182,7 +194,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \begin{example}
     Consider again $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. As we have found before, $G$ is the internal direct product of $H$ and $K$; but we now know that $G \cong H \times K$.
 
-    Note that $|H| = 2$ so $H \cong \Z_2$ and $K \cong D_3$ (we leave the latter as an exercise for the reader to prove). Thus,
+    Note that $|H| = 2$ so $H \cong \Z_2$. Also, by mapping $r^2$ to $r$ and $s$ to $s$, we see that $K \cong D_3$. Thus,
     \[
         D_6 = G = HK \cong H \times K = \Z_2 \times D_3.
     \]
@@ -208,7 +220,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \end{problem}
 
 \begin{problem}
-    Consider the \textit{Klein four-group}\index{Klein four-group} $\mathrm{V}$ with presentation
+    Consider the \textbf{Klein four-group}\index{Klein four-group} $\mathrm{V}$ with presentation
     \[
         \langle a, b \vert a^2 = b^2 = (ab)^2 = e \rangle.
     \]
