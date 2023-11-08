@@ -75,7 +75,7 @@ No changes.
 - Slightly change the text before proposition 14.5.4.
 - Added missing brackets between the determinant function in the proof of proposition 14.5.4.
 - Made the notation for the multiplicative group of real numbers in subsection 14.5.4 consistent with future chapters.
-- Renamed subsections 14.6.1 and 14.6.2, removing the redundant "of $G".
+- Renamed subsections 14.6.1 and 14.6.2, removing the redundant "of $G$".
 - Added statement of proposition that claims that the group of automorphisms is indeed a group.
 - Fixed some grammar in the proof that the group of automorphisms is indeed a group.
 - Fixed some grammar issues in definition 14.6.5.
