@@ -34,8 +34,64 @@ For the case when the field in question is $\Q$, we have a more commonplace defi
     Is $\sqrt{2 - \sqrt{i}}$ a transcendental number?
 \end{exercise}
 
+\newpage
+
 \section{Characterising Extensions}
-% TODO: Add
+With an understanding of what algebraic and transcendental elements are, we link these definitions back to the idea of field extensions.
+
+\begin{definition}
+    Let $F$ be a field. A field extension $E/F$ is called an \textbf{algebraic extension}\index{extension!algebraic} if and only if every element of $E$ is algebraic over $F$. Otherwise $E$ is called a \textbf{transcendental extension}\index{extension!transcendental} of $F$.
+\end{definition}
+
+We expand upon \myref{thrm-simple-extension-isomorphism} and provide a characterisation of simple extensions of both algebraic and transcendental elements.
+
+\begin{theorem}\label{thrm-characterisation-of-extensions}
+    Let $F$ be a field, $E/F$ a field extension, and $\alpha \in E$.
+    \begin{itemize}
+        \item If $\alpha$ is algebraic then $F(\alpha) \cong F[x]/\princ{p(x)}$, where $p(x) \in F[x]$ is a polynomial in $F[x]$ of minimum degree such that $\alpha$ is a zero. Furthermore $p(x)$ is irreducible over $F$.
+        \item If $\alpha$ is transcendental over $F$ then $F(\alpha) \cong \Frac{F[x]}$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. Recall from \myref{thrm-simple-extension-isomorphism} that $\phi$ is a homomorphism.
+
+    If $\alpha$ is algebraic over $F$, then by definition of an algebraic element, thus there is a polynomial in $F[x]$, say $f(x)$, that $\alpha$ is a zero of, i.e. $f(\alpha) = 0$. Hence $\ker\phi$ is non-trivial; by \myref{thrm-criterion-for-principal-ideal-in-polynomial-field} there is a polynomial $p(x) \in F[x]$ such that $\ker\phi = \princ{p(x)}$ and where $p(x)$ has minimum degree among all non-zero elements of $\ker\phi$.
+
+    We now show that $p(x)$ is irreducible. Suppose not, that $p(x) = f(x)g(x)$ where $f(x), g(x) \in F[x]$ are non-constant polynomials. Hence $f(x)$ and $g(x)$ are polynomials of degree smaller than $p(x)$. However, since $\alpha$ is a zero of $p(x)$, this means that $f(\alpha) = 0$ or $g(\alpha) = 0$. But this contradicts the minimality of the degree of $p(x)$; therefore $p(x)$ is irreducible.
+
+    On the other hand, if $\alpha$ is transcendental, then there does not exist a polynomial in $F[x]$ such that $\alpha$ is a zero of. Therefore $\ker\phi$ is trivial. We extend $\phi$ to become the map $\psi: \Frac{F[x]} \to F(\alpha)$ where $\psi\left(\frac{f(x)}{g(x)}\right) = f(\alpha)(g(\alpha))^{-1}$. We prove that $\psi$ is a well-defined isomorphism.
+    \begin{itemize}
+        \item \textbf{Well-Defined}: Suppose $\frac{f(x)}{g(x)} = \frac{p(x)}{q(x)}$ for polynomials $f(x), g(x), p(x), q(x) \in F[x]$. Thus $f(x)q(x) = p(x)g(x)$ by definition of equality of equivalence classes in the field of fractions of $F[x]$. So we see $f(\alpha)q(\alpha) = p(\alpha)g(\alpha)$ which quickly means $f(\alpha)(g(\alpha))^{-1} = p(\alpha)(q(\alpha))^{-1}$. Therefore
+        \[
+            \psi\left(\frac{f(x)}{g(x)}\right) = f(\alpha)(g(\alpha))^{-1} = p(\alpha)(q(\alpha))^{-1} = \psi\left(\frac{p(x)}{q(x)}\right)
+        \]
+        which shows that $\psi$ is a well-defined map.
+
+        \item \textbf{Homomorphism}: Let $\frac{f(x)}{g(x)}, \frac{p(x)}{q(x)} \in \Frac{F[x]}$. Then we see
+        \begin{align*}
+            \psi\left(\frac{f(x)}{g(x)} + \frac{p(x)}{q(x)}\right) &= \psi\left(\frac{f(x)q(x) + g(x)p(x)}{g(x)q(x)}\right)\\
+            &= \left(f(\alpha)q(\alpha) + g(\alpha)p(\alpha)\right)\left(g(\alpha)q(\alpha)\right)^{-1}\\
+            &= f(\alpha)q(\alpha)\left(g(\alpha)q(\alpha)\right)^{-1} + g(\alpha)p(\alpha)\left(g(\alpha)q(\alpha)\right)^{-1}\\
+            &= f(\alpha)(g(\alpha))^{-1} + p(\alpha)(q(\alpha))^{-1}\\
+            &= \psi\left(\frac{f(x)}{g(x)}\right) + \psi\left(\frac{p(x)}{q(x)}\right)
+        \end{align*}
+        and
+        \begin{align*}
+            \psi\left(\frac{f(x)}{g(x)}\times \frac{p(x)}{q(x)}\right) &= \psi\left(\frac{f(x)p(x)}{g(x)q(x)}\right)\\
+            &= f(\alpha)p(\alpha)\left(g(\alpha)q(\alpha)\right)^{-1}\\
+            &= f(\alpha)(g(\alpha))^{-1}p(\alpha)(q(\alpha))^{-1}\\
+            &= \psi\left(\frac{f(x)}{p(x)}\right)\psi\left(\frac{p(x)}{q(x)}\right)
+        \end{align*}
+        so $\psi$ is indeed a homomorphism.
+        
+        \item \textbf{Injective}: Since $\psi$ is non-trivial it is thus injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}.
+        
+        \item \textbf{Surjective}: Suppose $r \in F(\alpha)$. Note that both  1 and $r$ are constant polynomials in $F[x]$, so $\frac r1 \in \Frac{F[x]}$. We therefore see $\psi\left(\frac r1\right) = r1^{-1} = r$ and hence every element in $F(\alpha)$ has a pre-image.
+    \end{itemize}
+    Hence $\psi$ is a well-defined isomorphism, meaning $F(\alpha) \cong \Frac{F[x]}$.
+\end{proof}
+
+% TODO: Continue
 
 \section{Finite Extensions}
 % TODO: Add
