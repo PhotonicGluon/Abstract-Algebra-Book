@@ -130,7 +130,87 @@ We note one more corollary regarding the characterisation of extensions.
 \end{proof}
 
 \section{Finite Extensions}
-% TODO: Add
+Recall from \myref{thrm-field-is-vector-space} that a field is a vector space over a subfield. Similarly, an extension field is a vector space over the base field. With the idea of vector spaces, we can define the degree of a particular field extension.
+
+\begin{definition}
+    Let $F$ be a field and $E/F$ be a field extension. We say that $E$ has \textbf{degree $n$ over $F$}\index{extension field!degree}\index{degree!extension field} and write $[E:F] = n$ if and only if $\dim E = n$ when viewed as a vector space over $F$.
+
+    If $[E:F]$ is finite, then $E$ is called a \textbf{finite extension}\index{extension!finite} of $F$. Otherwise $E$ is called an \textbf{infinite extension}\index{extension!infinite} of $F$.
+\end{definition}
+
+We can depict the degree of a field extension using a diagram.
+\begin{figure}[H]
+    \centering
+    \pdfteximg{0.2\textwidth}{part3/images/algebraic-extensions/degree-of-extension.pdf_tex}
+    \caption{Field Extension Diagram}
+\end{figure}
+
+Of course, such a diagram is meaningless without context, so let us look at some examples.
+
+\begin{examplewithcutout}{right}{0}{0.7\textwidth}{0pt}{7}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.6\linewidth}{part3/images/algebraic-extensions/Q-sqrt2-and-Q.pdf_tex}
+    \end{figure}
+}
+    Consider the simple extension $\Q(\sqrt2)$. Viewed as a vector space over $\Q$, we see that $\Q(\sqrt 2)$ has dimension 2, as a possible basis is $\{1, \sqrt2\}$. Hence, we write $[\Q(\sqrt2):\Q] = 2$ and produce the field extension diagram as shown on the right.
+
+    We note that $\Q(\sqrt2)$ is a finite extension over $\Q$ since its degree is finite.
+\end{examplewithcutout}
+
+\begin{examplewithcutout}{right}{0}{0.7\textwidth}{0pt}{7}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.6\linewidth}{part3/images/algebraic-extensions/Q-cbrt2-and-Q.pdf_tex}
+    \end{figure}
+}
+    Consider the simple extension $\Q(\sqrt[3]2)$. We note $\Q(\sqrt[3]2)$ has dimension 3 when viewed as a vector space over $\Q$, and a possible basis for $\Q(\sqrt[3]2)$ is $\{1, \sqrt[3]2, \sqrt[3]4\}$. Hence, we write $[\Q(\sqrt[3]2):\Q] = 3$ and produce the field extension diagram as shown on the right. Like with the previous example, $\Q(\sqrt[3]2)$ is a finite extension since its degree, 3, is finite.
+\end{examplewithcutout}
+
+\begin{examplewithcutout}{right}{0}{0.7\textwidth}{0pt}{7}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.6\linewidth}{part3/images/algebraic-extensions/C-and-R.pdf_tex}
+    \end{figure}
+}
+    The field of complex numbers, $\C$, has degree 2 over the reals, $\R$, since $\{1, i\}$ is a basis of $\C$ over $\R$. This produces the field extension diagram on the right.
+    
+    However, $\C$ over $\Q$ is an infinite extension. In such a case, a field extension diagram is not meaningful.
+\end{examplewithcutout}
+
+\begin{examplewithcutout}{right}{0}{0.7\textwidth}{0pt}{7}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.6\linewidth}{part3/images/algebraic-extensions/simple-algebraic-extension-degree.pdf_tex}
+    \end{figure}
+}
+    Let $F$ be a field and $E$ an extension field of $F$. If $\alpha \in E$ is algebraic over $F$ and its minimal polynomial $p(x) \in F[x]$ has degree $n$, then we know that $\{1, \alpha, \alpha^2, \dots, \alpha^{n-1}\}$ is a basis for the simple extension $F(\alpha)$ over $F$ by \myref{thrm-simple-extension-isomorphism}. Therefore, one sees that $[F(a): F] = n$ and we thus generate a field extension diagram as shown on the right.
+\end{examplewithcutout}
+
+The previous example leads us to define the degree of an algebraic element.
+
+\begin{definition}
+    Let $F$ be a field and $E/F$ be a field extension. If $\alpha \in E$ is algebraic and $F(\alpha)$ is a finite extension of $F$ of degree $n$, then the element $\alpha$ is said to have \textbf{degree $n$ over $F$}\index{degree!element}\index{algebraic!element!degree}.
+\end{definition}
+
+One sees clearly that algebraic elements `produce' finite extensions, but what about the reverse direction? What does a finite extension imply about the elements inside it? It turns out this implies that all elements inside the finite extension are algebraic over the base field.
+
+\begin{theorem}
+    If $E$ is a finite extension of a field $F$, then $E$ is an algebraic extension of $F$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 21.4]{gallian_2016}})]
+    Suppose the degree of $E$ over $F$ is $n$ and $\alpha \in E$. Then the set $\{1, \alpha, \alpha^2, \dots, \alpha^{n-1}, \alpha^n\}$ is a linearly dependent set over $F$ since this set has $n + 1$ elements while $\dim E = n$. Hence, by definition of linear dependence, there exist elements $a_0, a_1, \dots, a_n \in F$ that are not all zero such that
+    \[
+        a_0 + a_1\alpha + a_2\alpha^2 + \cdots + a_n\alpha^n = 0.
+    \]
+    Clearly this means that $\alpha$ is a zero of the non-zero polynomial
+    \[
+        f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n
+    \]
+    which means that $\alpha$ is algebraic. Since $\alpha$ is arbitrary, therefore every element in $E$ is algebraic; consequently $E$ is an algebraic extension of $F$.
+\end{proof}
+
+% TODO: Continue
 
 \section{Properties of Extensions}
 % TODO: Add

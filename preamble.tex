@@ -18,6 +18,7 @@
 \usepackage{tocloft}
 \usepackage[x11names]{xcolor}
 \usepackage{wrapfig}
+\usepackage{cutwin}
 \usepackage{fancyhdr}
 \usepackage{emptypage}
 \usepackage{imakeidx}
@@ -91,6 +92,7 @@
     {part2/images/domains}
     % Part 3
     {part3/images}
+    {part3/images/algebraic-extensions}
 }
 
 %============= Formatting ================
@@ -262,6 +264,17 @@
 \newenvironment{proofsketch}
 {\begin{proof}[Sketch of Proof.]}
 {\renewcommand{\qedsymbol}{\qedsketch}\end{proof}\renewcommand{\qedsymbol}{\qedproof}}
+
+% Miscellaneous environments
+\newenvironment{examplewithcutout}[6]
+{
+    \vspace{\baselineskip}
+    \begin{example}
+    \renewcommand\windowpagestuff{#6}
+    \Ifstr{#1}{left}{\opencutleft}{\Ifstr{#1}{right}{\opencutright}{\opencutcenter}}
+    \begin{cutout}{#2}{#3}{#4}{#5}
+}
+{\end{cutout}\end{example}}
 
 %=========== Custom Commands =============
 % Miscellaneous commands
