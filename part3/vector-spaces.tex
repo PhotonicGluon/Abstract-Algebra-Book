@@ -619,12 +619,9 @@ The uniqueness of the number of elements that a finite basis must have gives us 
     \begin{itemize}
         \item If $V$ is the trivial vector space $\{\textbf{0}\}$, containing only the zero vector, then $\dim{V} = 0$ with the empty set $\emptyset$ as its basis.
         \item If a basis of $V$ has finite cardinality $n$ then $V$ is \textbf{finite dimensional}\index{dimension!finite} and we write $\dim{V} = n$.
-        \item If a basis of $V$ has infinite cardinality then $V$ is \textbf{infinite dimensional}\index{dimension!infinite} and we write $\dim{V} = \infty$.
+        \item If a basis of $V$ has infinite cardinality then $V$ is \textbf{infinite dimensional}\index{dimension!infinite}.
     \end{itemize}
 \end{definition}
-\begin{remark}
-    Like with the cardinality of a set, the notation that ``$\dim{V} = \infty$'' is very poorly defined in other contexts. However, this will be sufficient for our purposes in this book.
-\end{remark}
 
 \begin{example}
     The vector space $\R^n$ over $\R$ has a basis of
@@ -653,6 +650,55 @@ We see a very interesting result with regards to finite dimensional vector space
 \end{theorem}
 \begin{proof}
     See \myref{problem-vector-space-of-dimension-n-isomorphic-to-F^n} (later).
+\end{proof}
+
+We end this chapter by looking at (finite) sets of vectors from a given vector space.
+
+\begin{theorem}\label{thrm-basis-is-smallest-spanning-and-largest-linearly-independent-set}
+    Let $V$ be a finite dimensional vector space with dimension $n$, and let $S = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_m\}$ be a subset of $V$.
+    \begin{itemize}
+        \item If $m < n$ then $S$ does not span $V$.
+        \item If $m > n$ then the vectors in $S$ are linearly dependent.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    For the case where $m < n$, by way of contradiction suppose $S$ spans $V$. Of the vectors in $S$, choose the largest subset of linearly independent vectors in $S$ and call it $\bar{S}$. So $\Span{\bar{S}} = \Span{S} = \Span{V}$ by assumption. As $\bar{S}$ is a spanning set of $V$ with linearly independent vectors, thus $\bar{S}$ forms a basis for $V$. Note that $|\bar{S}| \leq |S| = m$. Therefore $\dim V = |S| = m$. But $\dim V = n$ and $n > m$, a contradiction. Therefore $S$ does not span $V$.
+
+    For the case where $m > n$, we consider the equation
+    \[
+        \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_m\textbf{v}_m = \textbf{0};
+    \]
+    our goal is to show that there is an $\alpha_i$ that is non-zero. Let $\{\textbf{u}_1, \textbf{u}_2, \dots, \textbf{u}_n\}$ be a basis for $V$. Since each $\textbf{v}_i$ is an element of $V$, thus we see
+    \begin{align*}
+        \textbf{v}_1 &= \beta_{1,1}\textbf{u}_1 + \beta_{1,2}\textbf{u}_2 + \cdots + \beta_{1,n}\textbf{u}_n\\
+        \textbf{v}_2 &= \beta_{2,1}\textbf{u}_1 + \beta_{2,2}\textbf{u}_2 + \cdots + \beta_{2,n}\textbf{u}_n\\
+        \vdots\\
+        \textbf{v}_m &= \beta_{m,1}\textbf{u}_1 + \beta_{m,2}\textbf{u}_2 + \cdots + \beta_{m,n}\textbf{u}_n
+    \end{align*}
+    and therefore we obtain
+    \begin{align*}
+        &\alpha_1\left(\beta_{1,1}\textbf{u}_1 + \beta_{1,2}\textbf{u}_2 + \cdots + \beta_{1,n}\textbf{u}_n\right)\\
+        &+ \alpha_2\left(\beta_{2,1}\textbf{u}_1 + \beta_{2,2}\textbf{u}_2 + \cdots + \beta_{2,n}\textbf{u}_n\right)\\
+        &+ \cdots \\
+        &+ \alpha_m\left(\beta_{m,1}\textbf{u}_1 + \beta_{m,2}\textbf{u}_2 + \cdots + \beta_{m,n}\textbf{u}_n\right)\\
+        &= \textbf{0}.
+    \end{align*}
+    Rewriting, we get
+    \begin{align*}
+        &\left(\alpha_1\beta_{1,1} + \alpha_2\beta_{2,1} + \cdots + \alpha_m\beta_{m,1}\right)\textbf{u}_1\\
+        &+ \left(\alpha_1\beta_{1,2} + \alpha_2\beta_{2,2} + \cdots + \alpha_m\beta_{m,2}\right)\textbf{u}_2\\
+        &+ \cdots\\
+        &+ \left(\alpha_1\beta_{1,n} + \alpha_2\beta_{2,n} + \cdots + \alpha_m\beta_{m,n}\right)\textbf{u}_n\\
+        &= \textbf{0}.
+    \end{align*}
+    Since $\{\textbf{u}_1, \textbf{u}_2, \dots, \textbf{u}_n\}$ is a basis, the only way for this to occur is for
+    \begin{align*}
+        \alpha_1\beta_{1,1} + \alpha_2\beta_{2,1} + \cdots + \alpha_m\beta_{m,1} &= 0,\\
+        \alpha_1\beta_{1,2} + \alpha_2\beta_{2,2} + \cdots + \alpha_m\beta_{m,2} &= 0,\\
+        \vdots\\
+        \alpha_1\beta_{1,n} + \alpha_2\beta_{2,n} + \cdots + \alpha_m\beta_{m,n} &= 0.
+    \end{align*}
+    Recall we are solving for $\alpha_1, \alpha_2, \dots, \alpha_m$, and that $m > n$. So we have $m$ variables but only have $n$ equations, meaning that there are more variables than equations. Hence there will be infinitely many solutions, and in particular, there exists a solution where not all of $\alpha_1, \alpha_2, \dots, \alpha_m$ are zero. This is exactly the solution needed to prove that the vectors in $S$ are linearly dependent.
 \end{proof}
 
 \newpage
