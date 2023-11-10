@@ -91,7 +91,43 @@ We expand upon \myref{thrm-simple-extension-isomorphism} and provide a character
     Hence $\psi$ is a well-defined isomorphism, meaning $F(\alpha) \cong \Frac{F[x]}$.
 \end{proof}
 
-% TODO: Continue
+For an algebraic element $\alpha$, \myref{thrm-characterisation-of-extensions} gives us an irreducible polynomial $p(x)$ of minimum degree which $\alpha$ is a root of. If $p(x)$ is monic we have a slightly stronger result.
+
+\begin{corollary}\label{corollary-unique-minimal-polynomial}
+    Let $F$ be a field and $E/F$ be a field extension. If $\alpha \in E$ is algebraic over $F$, then there is a unique monic irreducible polynomial $p(x) \in F[x]$ such that $\alpha$ is a zero of $p(x)$.
+\end{corollary}
+\begin{proof}
+    Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. From \myref{thrm-characterisation-of-extensions} we know that $\ker\phi \neq \emptyset$ since $\alpha$ is algebraic over $F$. We also know that there exists a irreducible polynomial of minimal degree in $F[x]$ such that $\alpha$ is a zero of it. For brevity, let $J_\alpha = \ker\phi$.
+
+    Now suppose $f(x), g(x) \in F[x]$ are both monic irreducible polynomials of minimal degree in $F[x]$ with $\alpha$ as a zero. Hence $f(x), g(x) \in J_\alpha$. Let $r(x) = f(x) - g(x)$; note $r(x) \in J_\alpha$. 
+    
+    Seeking a contradiction, suppose $r(x) \neq 0$. Then $\deg r(x) < \deg f(x)$ since both $f(x)$ and $g(x)$ are minimal degree (which means that they are of the same degree). Let $m = \deg r(x)$ and $c_m$ be the leading coefficient of $r(x)$. Now observe that $c_m^{-1}r(x)$ is a monic polynomial with coefficients in $F$, and that $c_m^{-1}r(x) \in J_\alpha$. Furthermore $\alpha$ is a zero of $c_m^{-1}r(x)$; so we have found a polynomial of smaller degree than $f(x)$ (and $g(x)$) with $\alpha$ as a zero, contradicting the assumption that $f(x)$ (and $g(x)$) are of minimal degree.
+
+    Hence $r(x) = 0$, meaning that $f(x) - g(x) = 0$ and thus $f(x) = g(x)$, proving the uniqueness of the monic irreducible polynomial in $F[x]$ such that $\alpha$ is a zero.
+\end{proof}
+
+There is a name for the unique monic irreducible polynomial in \myref{corollary-unique-minimal-polynomial}.
+
+\begin{definition}
+    Let $F$ be a field, $E/F$ be a field extension, and $\alpha \in E$ be algebraic over $F$. The monic irreducible polynomial $p(x) \in F[x]$ which $\alpha$ is a root of is called the \textbf{minimal polynomial for $\alpha$ over $F$}\index{extension!algebraic!minimal polynomial}.
+\end{definition}
+
+We note one more corollary regarding the characterisation of extensions.
+
+\begin{corollary}\label{corollary-minimal-polynomial-divides-polynomial-with-same-root}
+    Let $F$ be a field, $E/F$ be a field extension, $\alpha \in E$ be algebraic over $F$, and $p(x) \in F[x]$ be the minimal polynomial for $\alpha$ over $F$. If $f(x) \in F[x]$ has a zero of $\alpha$ then $p(x)$ divides $f(x)$.
+\end{corollary}
+\begin{proof}
+    Let $p(x), f(x) \in F[x]$ be as above. Using polynomial long division with divisor $p(x)$ we see
+    \[
+        f(x) = q(x)p(x) + r(x)
+    \]
+    where $r(x) = 0$ or $\deg r(x) < \deg p(x)$. If the latter case applies, then we see
+    \[
+        f(\alpha) = q(\alpha)p(\alpha) + r(\alpha).
+    \]
+    Since $\alpha$ is a zero of both $f(x)$ and $p(x)$ we thus see $0 = 0 + r(\alpha)$ which means $\alpha$ is a zero of $r(x)$ too; but $\deg r(x) < \deg p(x)$ contradicts the minimality of the degree of $p(x)$. Therefore $r(x) = 0$ which means $f(x) = q(x)p(x)$, i.e. $p(x)$ divides $f(x)$.
+\end{proof}
 
 \section{Finite Extensions}
 % TODO: Add
