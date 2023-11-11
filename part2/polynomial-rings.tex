@@ -30,7 +30,7 @@ One of the most familiar concepts that one encounters in algebra are polynomials
 \end{remark}
 
 \begin{definition}
-    Two polynomials $f(x) = a_0 + \cdots + a_mx^m$ and $g(x) = b_0 + \cdots + b_nx^n$ in $R[x]$ are \textbf{equal}\index{polynomial!equality} if and only if $m = n$ and $a_i = b_i$ when working in $R$ for all $0 \leq i \leq m$.
+    Two polynomials $f(x) = a_0 + \cdots + a_mx^m$ and $g(x) = b_0 + \cdots + b_nx^n$ in $R[x]$ are \textbf{equal}\index{polynomial!equality} if and only if $m = n$ and $a_i = b_i$ for all $0 \leq i \leq m$.
 \end{definition}
 
 One must take care to disambiguate between the polynomial and the \textit{function} determined by the polynomial.
@@ -82,7 +82,7 @@ Although this definition of multiplication of polynomials may seem complicated, 
         \begin{itemize}
             \item \textbf{Closure}: We see
             \[
-                f(x) + g(x) = \sum_{i=0}^n\left((a_i+b_i)x^i\right)
+                f(x) + g(x) = \sum_{i=0}^m\left((a_i+b_i)x^i\right)
             \]
             and since $R$ is a ring, thus $a_i+b_i \in R$, meaning $f(x) + g(x)$ is another polynomial in $R[x]$. Therefore $R[x]$ is closed under addition.
 
@@ -98,7 +98,7 @@ Although this definition of multiplication of polynomials may seem complicated, 
 
             \item \textbf{Identity}: Note that $0 \in R$ is also the identity in $R[x]$, since
             \[
-                0 + f(x) = \sum_{i=0}^m\left((0+a_i)x^i\right) = \sum_{i=0}^m\left(a_ix^i\right) = f(x).
+                0 + f(x) = \sum_{i=0}^m\left((0+a_i)x^i\right) = \sum_{i=0}^ma_ix^i = f(x).
             \]
 
             \item \textbf{Inverse}: For the polynomial $f(x)$, let
@@ -380,7 +380,7 @@ We now look at a theorem that tells us the degree of a sum or product of polynom
     Without loss of generality, assume $m \geq n$. Write
     \begin{align*}
         f(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_mx^m\\
-        g(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_nx^n + b_{n+1}x^{n+1} + \cdots + b_mx^m
+        g(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_nx^n
     \end{align*}
     where $b_i = 0$ for $i > n$. Then by definition of polynomial addition we see
     \[
@@ -433,7 +433,7 @@ We now look at a theorem that tells us the degree of a sum or product of polynom
     \]
     We show that $\phi$ is a ring homomorphism, then find its image and kernel, and finally use the FRIT (\myref{thrm-ring-isomorphism-1}) to end the proof.
     \begin{itemize}
-        \item \textbf{Homomorphism}: \myref{exercise-polynomial-ring-maps-to-quotient-polynomial-ring-is-homomorphism} (later) shows that it is a ring homomorphism.
+        \item \textbf{Homomorphism}: \myref{exercise-polynomial-ring-maps-to-quotient-polynomial-ring-is-homomorphism} (later) shows that $\phi$ is a ring homomorphism.
 
         \item \textbf{Image}: We show that $\phi$ is surjective. For any polynomial $(a_0+I) + (a_1+I)x + \cdots + (a_n+I)x^n$ in $(R/I)[x]$, clearly the polynomial $a_0 + a_1x + \cdots + a_nx^n$ is its pre-image. Therefore $\phi$ is surjective, meaning $\im \phi = (R/I)[x]$.
 
@@ -446,7 +446,7 @@ We now look at a theorem that tells us the degree of a sum or product of polynom
 \end{proof}
 
 \begin{exercise}\label{exercise-polynomial-ring-maps-to-quotient-polynomial-ring-is-homomorphism}
-    Show that the map $\phi$ in \myref{prop-polynomial-ring-quotient-ideal-polynomial-ring-cong-quotient-polynomial-ring} is a ring homomorphism.
+    Show that $\phi$ in \myref{prop-polynomial-ring-quotient-ideal-polynomial-ring-cong-quotient-polynomial-ring} is a ring homomorphism.
 \end{exercise}
 
 \begin{theorem}\label{thrm-prime-ideal-iff-prime-ideal-in-polynomial-ring}
@@ -457,7 +457,7 @@ We now look at a theorem that tells us the degree of a sum or product of polynom
 \end{proof}
 
 \begin{example}
-    Consider the commutative ring $\Z$. We proved in \myref{prop-ideals-of-Z} that prime ideals of $\Z$ take the form $p\Z$ where $p$ is a prime number. \myref{thrm-prime-ideal-iff-prime-ideal-in-polynomial-ring} tells us that $(p\Z)[x]$ are prime ideals of $\Z[x]$.
+    Consider the commutative ring $\Z$. We proved in \myref{prop-ideals-of-Z} that the non-trivial prime ideals of $\Z$ take the form $p\Z$ where $p$ is a prime number. \myref{thrm-prime-ideal-iff-prime-ideal-in-polynomial-ring} tells us that $(p\Z)[x]$ are prime ideals of $\Z[x]$.
 
     For example, one sees clearly that $2x^2 + 4x + 2 \in (2\Z)[x]$. Note $2x^2 + 4x + 2 = 2(x+1)^2$, so either $(x+1) \in (2\Z)[x]$ (which is false since the coefficients are not multiples of 2) or $2(x+1) \in (2\Z)[x]$.
 \end{example}
@@ -639,7 +639,7 @@ We note an important theorem about the number of zeroes of a polynomial.
     Suppose $F$ is a field and $f(x) \in F[x]$. If the degree of $f(x)$ is $n$, then $f(x)$ has at most $n$ distinct zeroes.
 \end{theorem}
 \begin{proof}
-    We induct on $n$. Clearly a polynomial with degree 0 has no zeroes. Now suppose any polynomial of degree $k$ has at most $k$ distinct zeroes. Let $f(x) \in F[x]$ be a polynomial of degree $k + 1$. The case when $f(x)$ has no zeroes is trivially true, so assume that $f(x)$ has at least one zero $a \in F$. By \myref{corollary-factor-theorem} we can write
+    We induct on $n$. Clearly a polynomial of degree 0 has no zeroes. Now suppose any polynomial of degree $k$ has at most $k$ distinct zeroes. Let $f(x) \in F[x]$ be a polynomial of degree $k + 1$. The case when $f(x)$ has no zeroes is trivially true, so assume that $f(x)$ has at least one zero $a \in F$. By the Factor Theorem (\myref{corollary-factor-theorem}) we can write
     \[
         f(x) = (x-a)g(x)
     \]

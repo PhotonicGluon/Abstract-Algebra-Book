@@ -24,7 +24,7 @@ It is often more useful to talk about irreducible polynomials over a field. In t
 \begin{proof}
     For the forward direction, assume that a non-constant polynomial $f(x)$ with degree $n$ is irreducible. So there does not exist two non-unit polynomials $p(x)$ and $q(x)$ such that $f(x) = p(x)q(x)$, which thus means that it cannot be expressed as two polynomials of degree lower than $n$.
 
-    For the reverse direction, assume that $f(x)$ with degree $n$ cannot be expressed as a product of two polynomials of degree lower than $n$. This means that it is possible for $f(x) = p(x)q(x)$ where at least one of the polynomials $p(x)$ and $q(x)$ have degree $n$. Without loss of generality assume $p(x)$ has degree $n$, thereby meaning $q(x)$ has degree $n - n = 0$ (see \myref{thrm-polynomial-degree-properties}). Thus $q(x)$ is a constant polynomial, so $q(x) = u \in F$ (\myref{prop-constant-polynomial-iff-ring-element}). Note $u \neq 0$ since otherwise $f(x) = 0$, a constant polynomial (a contradiction). But every non-zero element in $F$ is a unit. Therefore the only factorization of $f(x)$ is as a product of a unit and a polynomial of equal degree. Thus $f(x)$ is irreducible.
+    For the reverse direction, assume that $f(x)$ with degree $n$ cannot be expressed as a product of two polynomials of degree lower than $n$. This means that it is possible for $f(x) = p(x)q(x)$ where at least one of the polynomials $p(x)$ and $q(x)$ have degree $n$. Without loss of generality assume $p(x)$ has degree $n$, thereby meaning $q(x)$ has degree $n - n = 0$ (\myref{thrm-polynomial-degree-properties}). Thus $q(x)$ is a constant polynomial, so $q(x) = u \in F$ (\myref{prop-constant-polynomial-iff-ring-element}). Note $u \neq 0$ since otherwise $f(x) = 0$, a constant polynomial (a contradiction). But every non-zero element in $F$ is a unit. Therefore the only factorization of $f(x)$ is as a product of a unit and a polynomial of equal degree. Thus $f(x)$ is irreducible.
 \end{proof}
 
 \begin{example}
@@ -53,7 +53,7 @@ The first test is a consequence of the factor theorem.
     Let $F$ be a field and $f(x) \in F[x]$ have degree above 1. If $f(x)$ has a zero then $f(x)$ is reducible.
 \end{theorem}
 \begin{proof}
-    Since $f(x)$ has a zero, say $\alpha \in F$, we may write $f(x) = (x-\alpha)q(x)$ (\myref{corollary-factor-theorem}). Note $\deg f(x) = \deg(x-\alpha) + \deg q(x) = 1 + \deg q(x)$ (\myref{thrm-polynomial-degree-properties}), and clearly $1 \leq \deg q(x) < \deg f(x)$ (since degree of $f(x)$ is above 1), so $f(x)$ is expressible as a product of two polynomials of lower degree in $F[x]$. Thus $f(x)$ is reducible over $F$ (\myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}).
+    Since $f(x)$ has a zero, say $\alpha \in F$, we may write $f(x) = (x-\alpha)q(x)$ by Factor Theorem (\myref{corollary-factor-theorem}). Note $\deg f(x) = \deg(x-\alpha) + \deg q(x) = 1 + \deg q(x)$ (\myref{thrm-polynomial-degree-properties}), and clearly $1 \leq \deg q(x) < \deg f(x)$ (since the degree of $f(x)$ is above 1), so $f(x)$ is expressible as a product of two polynomials of lower degree in $F[x]$. Thus $f(x)$ is reducible over $F$ (\myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}).
 \end{proof}
 
 The next test provides a partial converse to the above theorem for polynomials of degree 2 or 3.
@@ -125,7 +125,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
 
     Let $p$ be a prime divisor of the content of $h(x)$, and let $\bar{f}(x)$, $\bar{g}(x)$, and $\bar{h}(x)$ be polynomials obtained from $f(x)$, $g(x)$, and $h(x)$ by reducing their coefficients modulo $p$. Since the content of $h(x)$ is not 1, thus coefficients of $h(x)$ are multiples of $p$; accordingly when they are reduced modulo $p$, we see $\bar{h}(x) = 0$. Also, we may interpret $\bar{f}(x)$ and $\bar{g}(x)$ as polynomials belonging in $\Z_p[x]$ where $(\bar{f}(x))(\bar{g}(x)) = \bar{h}(x) = 0$. Since $\Z_p[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}), this means that $\bar{f}(x) = 0$ or $\bar{g}(x) = 0$. Without loss of generality assume $\bar{f}(x) = 0$. Therefore $p$ divides every coefficient of $f(x)$, meaning that the content of $f(x)$ is at least $p$, i.e. $f(x)$ is not primitive, a contradiction.
 
-    The contradiction means that a product of two primitive polynomials must be primitive.
+    The contradiction means a product of two primitive polynomials is primitive.
 \end{proof}
 
 \begin{theorem}\label{thrm-irreducible-over-Z-means-irreducible-over-Q}
@@ -137,13 +137,13 @@ Before we introduce the next test, which involves polynomials with integer coeff
     Furthermore, if $f(x)$ is reducible over $\Z$ with $f(x) = p(x)q(x)$ for some non-unit polynomials $p(x)$ and $q(x)$ in $\Z[x]$, then neither $p(x)$ nor $q(x)$ are constant polynomials.
 \end{theorem}
 \begin{proof}
-    We prove the converse of the first statement. Suppose $f(x) \in \Z[x]$ is reducible over $\Q$, meaning that $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Q[x]$. Without loss of generality, assume the content of $f(x)$ is 1, since otherwise we can just divide $p(x)$ and $q(x)$ by the content of $f(x)$ to obtain the same result. Thus $f(x)$ is primitive.
+    We prove the contrapositive of the first statement. Suppose $f(x) \in \Z[x]$ is reducible over $\Q$, meaning that $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Q[x]$ are non-constant polynomials. Without loss of generality, assume the content of $f(x)$ is 1, since otherwise we can just divide $p(x)$ and $q(x)$ by the content of $f(x)$ to obtain the same result. Thus $f(x)$ is primitive.
 
     Suppose $a$ is the LCM of the denominators of the coefficients of $p(x)$, and likewise $b$ is the LCM of the denominators of the coefficients of $q(x)$. Then
     \[
-        ab\times f(x) = (a\times p(x))(b\times q(x)),
+        abf(x) = (ap(x))(bq(x)),
     \]
-    noting that $a\times p(x)$ and $b\times q(x)$ are now polynomials with integer coefficients. Let $C_p$ and $C_q$ denote the contents of $a \times p(x)$ and $b \times q(x)$ respectively; write $a\times p(x) = C_p\times P(x)$ and $b \times q(x) = C_q\times Q(x)$ where one sees clearly that $P(x)$ and $Q(x)$ are polynomials with content 1 (i.e., primitive polynomials). One also sees that
+    noting that $ap(x)$ and $bq(x)$ are now polynomials with integer coefficients. Let $C_p$ and $C_q$ denote the contents of $ap(x)$ and $bq(x)$ respectively; write $ap(x) = C_pP(x)$ and $bq(x) = C_qQ(x)$ where one sees clearly that $P(x)$ and $Q(x)$ are polynomials with content 1 (i.e., primitive polynomials). One also sees that
     \[
         ab \times f(x) = C_pC_q \times P(x)Q(x).
     \]
@@ -151,21 +151,21 @@ Before we introduce the next test, which involves polynomials with integer coeff
 
     Dividing both sides by $ab = C_pC_q$ leaves $f(x) = P(x)Q(x)$, where both $P(x)$ and $Q(x)$ are polynomials with integer coefficients. Note that
     \begin{align*}
-        \deg p(x) &= \deg (a\times p(x)) & (\text{multiplying by constant does not change degree})\\
-        &= \deg(C_p\times P(x)) & (\text{as } a\times p(x) = C_p\times P(x))\\
+        \deg p(x) &= \deg (ap(x)) & (\text{multiplying by constant does not change degree})\\
+        &= \deg(C_pP(x)) & (\text{since } ap(x) = C_pP(x))\\
         &= \deg P(x)
     \end{align*}
     and likewise $\deg q(x) = \deg Q(x)$. Since $f(x) = p(x)q(x)$ and $\Q$ is a field, thus we see that $\deg f(x) = \deg p(x) + \deg q(x)$ (\myref{thrm-polynomial-degree-properties}), meaning $\deg p(x) = \deg P(x) < \deg f(x)$, and likewise $\deg Q(x) < \deg f(x)$, So we have expressed $f(x)$, a polynomial with integer coefficients, as a product of two polynomials $P(x)$ and $Q(x)$ with integer coefficients and of smaller degree than $f(x)$, showing that $f(x)$ is reducible over $\Z$.
 
     Before we prove the second statement, we note that the final assertion made in the theorem is readily proven by noticing that $P(x)$ and $Q(x)$ are non-constant polynomials of degree smaller than $f(x)$.
 
-    We now prove the converse of the second statement. If $f(x)$ is reducible over $\Z$, then $f(x) = p(x)q(x)$ where $p(x)$ and $q(x)$ are non-unit polynomials. We note that $p(x)$ and $q(x)$ cannot be constant polynomials, since otherwise that would mean that $f(x)$ has a content that is not 1. Thus $p(x)$ and $q(x)$ are non-constant polynomials of degree smaller than $f(x)$. As all integers are also rational numbers, these same polynomials appear in $\Q[x]$ and so $f(x)$ is reducible over $\Q$.
+    We now prove the contrapositive of the second statement. If $f(x)$ is reducible over $\Z$, then $f(x) = p(x)q(x)$ where $p(x)$ and $q(x)$ are non-unit polynomials. We note that $p(x)$ and $q(x)$ cannot be constant polynomials, since otherwise that would mean that $f(x)$ has a content that is not 1. Thus $p(x)$ and $q(x)$ are non-constant polynomials of degree smaller than $f(x)$. As all integers are also rational numbers, these same polynomials appear in $\Q[x]$ and so $f(x)$ is reducible over $\Q$.
 \end{proof}
 
 \begin{example}
     Consider the polynomial $f(x) = 6x^2 + 5x - 4$. One sees that $f(x)$ is reducible over $\Q$ since $6x^2 + 5x - 4 = \left(2x + \frac83\right)\left(3x - \frac32\right)$. Set $p(x) = 2x + \frac83$ and $q(x) = 3x - \frac32$. In this case, and using the notation in \myref{thrm-irreducible-over-Z-means-irreducible-over-Q}, we see $a = 3$, $b = 2$, $C_p = 2$, $C_q = 3$. So $P(x) = 3x + 4$ and $Q(x) = 2x - 1$, which means
     \[
-        (3\times2)\times (6x^2 + 5x - 4) = (2\times3)(3x+4)(2x-1),
+        (3\times2)(6x^2 + 5x - 4) = (2\times3)(3x+4)(2x-1),
     \]
     so $6x^2 + 5x - 4 = (3x+4)(2x-1)$, i.e. $f(x)$ is reducible over $\Z$.
 \end{example}
@@ -351,7 +351,7 @@ With this general result proven, we come up with a few rules for substitution.
             \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
             &= \sum_{i=0}^m(a_i+b_i)(x+k)^i\\
             &= \left(\sum_{i=0}^ma_i(x+k)^i\right) + \left(\sum_{i=0}^mb_i(x+k)^i\right)\\
-            &= \left(\sum_{i=0}^ma_i(x+k)^i\right) + \left(\sum_{i=0}^nb_i(x+k)^i\right) & (\because b_i = 0 \text{ for } i > n)\\
+            &= \left(\sum_{i=0}^ma_i(x+k)^i\right) + \left(\sum_{i=0}^nb_i(x+k)^i\right) & (\text{as } b_i = 0 \text{ for } i > n)\\
             &= \phi(f(x)) + \phi(g(x))
         \end{align*}
         and
@@ -543,7 +543,7 @@ With this theorem and corollaries, we are able to construct finite fields with p
     \end{align*}
 \end{example}
 
-\begin{example}
+\begin{example}\label{example-Z3/<x^2+1>}
     We construct a field of 9 elements. Writing $9 = 3^2$ we just need to find an irreducible degree 2 polynomial in $\Z_3$. Clearly $x^2 + 1$ is an irreducible polynomial in $\Z_3$ (by observing that $x^2 + 1$ has no zeroes in $\Z_3$) and so
     \[
         \Z_3/\princ{x^2+1} = \left\{ax+b + \princ{x^2+1} \vert a,b \in \Z_3\right\}
@@ -571,22 +571,21 @@ With this theorem and corollaries, we are able to construct finite fields with p
         \end{tabular}
     \end{table}
 
-    We also provide a partial multiplication table for $(F, \times)$. Filling in the missing spots in the table is left for \myref{exercise-fill-in-missing-elements-in-table-of-Z3/<x^2+1>} (later).
+    Let $F^\ast = F \setminus \left\{0 + \princ{x^2+1}\right\}$. We provide a partial multiplication table for $(F^\ast, \times)$. Filling in the missing spots in the table is left for \myref{exercise-fill-in-missing-elements-in-table-of-Z3/<x^2+1>} (later).
 
     \begin{table}[H]
         \centering
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
             \hline
-            $\boldsymbol{\times}$ & $\boldsymbol{0}$ & $\boldsymbol{1}$ & $\boldsymbol{2}$ & $\boldsymbol{x}$ & $\boldsymbol{x+1}$ & $\boldsymbol{x+2}$ & $\boldsymbol{2x}$ & $\boldsymbol{2x+1}$ & $\boldsymbol{2x+2}$ \\ \hline
-            $\boldsymbol{0}$ & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
-            $\boldsymbol{1}$ & 0 & 1 & 2 & $x$ & $x+1$ & $x+2$ & $2x$ & $2x+1$ & $2x+2$ \\ \hline
-            $\boldsymbol{2}$ & 0 & 2 & 1 & $2x$ & $2x+2$ & $2x+1$ & $x$ & $x+2$ & $x+1$ \\ \hline
-            $\boldsymbol{x}$ & 0 & $x$ & $2x$ & \textbf{(a)} & $x+2$ & $2x+2$ & 1 & $x+1$ & $2x+1$ \\ \hline
-            $\boldsymbol{x+1}$ & 0 & $x+1$ & $2x+2$ & $x+2$ & $2x$ & 1 & $2x+1$ & \textbf{(b)} & $x$ \\ \hline
-            $\boldsymbol{x+2}$ & 0 & $x+2$ & $2x+1$ & $2x+2$ & 1 & $x$ & $x+1$ & $2x$ & \textbf{(c)} \\ \hline
-            $\boldsymbol{2x}$ & 0 & $2x$ & $x$ & 1 & $2x+1$ & $x+1$ & 2 & $2x+2$ & $2x$ \\ \hline
-            $\boldsymbol{2x+1}$ & 0 & $2x+1$ & $x+2$ & $x+1$ & \textbf{(b)} & $2x$ & $2x+2$ & $x$ & \textbf{(d)} \\ \hline
-            $\boldsymbol{2x+2}$ & 0 & $2x+2$ & $x+1$ & $2x+1$ & $x$ & \textbf{(c)} & $2x$ & \textbf{(d)} & $2x$ \\ \hline
+            $\boldsymbol{\times}$ & $\boldsymbol{1}$ & $\boldsymbol{2}$ & $\boldsymbol{x}$ & $\boldsymbol{x+1}$ & $\boldsymbol{x+2}$ & $\boldsymbol{2x}$ & $\boldsymbol{2x+1}$ & $\boldsymbol{2x+2}$ \\ \hline
+            $\boldsymbol{1}$ & 1 & 2 & $x$ & $x+1$ & $x+2$ & $2x$ & $2x+1$ & $2x+2$ \\ \hline
+            $\boldsymbol{2}$ & 2 & 1 & $2x$ & $2x+2$ & $2x+1$ & $x$ & $x+2$ & $x+1$ \\ \hline
+            $\boldsymbol{x}$ & $x$ & $2x$ & \textbf{(a)} & $x+2$ & $2x+2$ & 1 & $x+1$ & $2x+1$ \\ \hline
+            $\boldsymbol{x+1}$ & $x+1$ & $2x+2$ & $x+2$ & $2x$ & 1 & $2x+1$ & \textbf{(b)} & $x$ \\ \hline
+            $\boldsymbol{x+2}$ & $x+2$ & $2x+1$ & $2x+2$ & 1 & $x$ & $x+1$ & $2x$ & \textbf{(c)} \\ \hline
+            $\boldsymbol{2x}$ & $2x$ & $x$ & 1 & $2x+1$ & $x+1$ & 2 & $2x+2$ & $2x$ \\ \hline
+            $\boldsymbol{2x+1}$ & $2x+1$ & $x+2$ & $x+1$ & \textbf{(b)} & $2x$ & $2x+2$ & $x$ & \textbf{(d)} \\ \hline
+            $\boldsymbol{2x+2}$ & $2x+2$ & $x+1$ & $2x+1$ & $x$ & \textbf{(c)} & $2x$ & \textbf{(d)} & $2x$ \\ \hline
         \end{tabular}
     \end{table}
 
@@ -606,7 +605,7 @@ With this theorem and corollaries, we are able to construct finite fields with p
 \end{exercise}
 
 \begin{exercise}\label{exercise-fill-in-missing-elements-in-table-of-Z3/<x^2+1>}
-    Fill in the rest of the multiplication table of $\Z_3/\princ{x^2+1}$.
+    Fill in the rest of the multiplication table in \myref{example-Z3/<x^2+1>}.
 \end{exercise}
 \newpage
 
