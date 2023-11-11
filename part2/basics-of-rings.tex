@@ -526,25 +526,24 @@ We end this chapter off with an exploration about subrings.
         \Z[i] = \{a + bi \vert a,b\in\mathbb{Z}\},
     \]
     read as ``$\Z$ adjoin $i$''. We first show that $\Z[i]$ is a subring of $\C$.
-    \begin{proof}
-        Clearly $\Z[i] \subseteq \C$. We show that $(\Z[i], +) \leq (\C, +)$.
-        \begin{itemize}
-            \item Clearly the identity of $(\C, +)$, which is 0, is inside $(\Z[i], +)$ as $0 = 0 + 0i$.
-            \item For any $a + bi, c+di \in \Z[i]$, we have
-            \[
-                (a+bi) + (-(c+di)) = (a-c) + (b-d)i \in \Z[i].
-            \]
-        \end{itemize}
-        Thus the subgroup test (\myref{thrm-subgroup-test}) tells us that $(\Z[i], +) \leq (\C, +)$.
 
-        Now we show that $\Z[i]$ is closed under multiplication. Let $a + bi, c+di \in \Z[i]$. Note that $ac, bd, ad, bc \in \Z$; the product of the two Gaussian integers is
+    Clearly $\Z[i] \subseteq \C$. We show that $(\Z[i], +) \leq (\C, +)$.
+    \begin{itemize}
+        \item Clearly the identity of $(\C, +)$, which is 0, is inside $(\Z[i], +)$ as $0 = 0 + 0i$.
+        \item For any $a + bi, c+di \in \Z[i]$, we have
         \[
-            (a+bi)(c+di) = (ac-bd) + (ad+bc)i \in \Z[i]
+            (a+bi) + (-(c+di)) = (a-c) + (b-d)i \in \Z[i].
         \]
-        so $\Z[i]$ is closed under multiplication.
+    \end{itemize}
+    Thus the subgroup test tells us that $(\Z[i], +) \leq (\C, +)$.
 
-        Therefore $\Z[i]$ is a subring of $\C$.
-    \end{proof}
+    Now we show that $\Z[i]$ is closed under multiplication. Let $a + bi, c+di \in \Z[i]$. Note that $ac, bd, ad, bc \in \Z$; the product of the two Gaussian integers is
+    \[
+        (a+bi)(c+di) = (ac-bd) + (ad+bc)i \in \Z[i]
+    \]
+    so $\Z[i]$ is closed under multiplication.
+
+    Therefore $\Z[i]$ is a subring of $\C$.
 \end{example}
 \begin{exercise}
     Show that
@@ -570,15 +569,11 @@ We end this chapter off with an exploration about subrings.
 \end{problem}
 
 \begin{problem}
-    Prove that it is impossible for an element of a ring $R$ to be both a zero divisor and a unit.
-\end{problem}
-
-\begin{problem}
     Let $R$ be a ring with identity 1, and let $x$ be an element from that ring.
     \begin{partquestions}{\roman*}
         \item Find \textbf{four} closed forms for the geometric series $1 + x + x^2 + x^3 + \cdots + x^n$.
         \item What are the condition(s) such that the closed forms are valid?
-        \item Evaluate 112 in the ring $\Z_{37}$.
+        \item Factor 112 into primes, and thus evaluate 112 in $\Z_{37}$.
         \item Hence, using the result(s) above, evaluate
         \[
             1 + 2^3 + 2^6 + 2^9 + \cdots + 2^{72}
