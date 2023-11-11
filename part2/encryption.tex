@@ -48,7 +48,7 @@ where we follow the notation of \cite{hoffstein_pipher_silverman_1996,hoffstein_
     \end{align*}
     which, if we are using normal polynomial multiplication, is \textit{not} an element of $R$.
 
-    However, recall that every polynomial in $R$ has a `hidden' $\princ{x^N - 1}$ at their end. In this case, the hidden ideal is $I = \princ{x^5-1}$; so in fact we can reduce their product $f(x)g(x)$,
+    However, recall that every polynomial in $R$ has a hidden $\princ{x^N - 1}$ at their end. In this case, the hidden ideal is $I = \princ{x^5-1}$; so in fact we can reduce their product $f(x)g(x)$,
     \begin{align*}
         f(x)g(x) &= 2x^7 + 7x^5 + 12x^4 + 5x^3 + 18x^2 + 16x + I\\
         &= (2x^2(x^5-1) + 7(x^5-1) + 2x^2 + 7) + (12x^4 + 5x^3 + 18x^2 + 16x) + I\\
@@ -299,7 +299,7 @@ One might question why this decryption process works. Well, we see that
     &= (F_q(x)f(x))(p\phi(x))(g(x)) + f(x)m(x)\\
     &= p\phi(x)g(x) + f(x)m(x).
 \end{align*}
-Now, when we compute $b(x) = a(x) \mod p$, since we have chosen the coefficients of $a(x)$ to be in the interval $\left[-\frac q2, \frac q2\right]$, and since $q$ is sufficiently large, the second summand, $f(x)m(x)$, is unaffected by the operation of modulo $p$. Hence $b(x) = f(x)m(x)$ in modulo $p$. So
+Now, when we compute $b(x) = a(x) \mod p$, since we have chosen the coefficients of $a(x)$ to be in the interval $\left[-\frac q2, \frac q2\right]$, and since $q$ is sufficiently large, $f(x)m(x)$ is unaffected by the operation of modulo $p$. Hence $b(x) = f(x)m(x)$ in modulo $p$. So
 \begin{align*}
     F_p(x)b(x) &\equiv F_p(x)f(x)m(x) \pmod{p}\\
     &\equiv m(x)
@@ -331,7 +331,7 @@ It is again emphasised that $q$ needs to be significantly larger than $p$ in ord
     \begin{align*}
         a(x) &= f(x)e(x)\\
         &= (x^3 - x^2 + 1)(18x^8 + 10x^6 + 55x^5 + 55x^4 + 56x^3 + 55x^2 + 9x)\\
-        &= 18x^11 - 18x^10 + 10x^9 + 63x^8 + 11x^6 + 54x^5 + 9x^4 + 47x^3 + 55x^2 + 9x\\
+        &= 18x^{11} - 18x^{10} + 10x^9 + 63x^8 + 11x^6 + 54x^5 + 9x^4 + 47x^3 + 55x^2 + 9x\\
         &= 18x^2 - 18x + 10x + 63x^8 + 11x^6 + 54x^5 + 9x^4 + 47x^3 + 55x^2 + 9x\\
         &= 63x^8 + 11x^6 + 54x^5 + 9x^4 + 47x^3 + 73x^2 - 9x\\
         &\equiv -x^8 + 11x^6 - 10x^5 + 9x^4 - 17x^3 + 9x^2 - 9x + 10 \pmod{64},
@@ -405,7 +405,7 @@ It is again emphasised that $q$ needs to be significantly larger than $p$ in ord
 \newpage
 
 \section{Implementation}
-We have been working with toy examples to understand the basic process that \cite{hoffstein_pipher_silverman_1998} (which references \cite{hoffstein_pipher_silverman_1996}) uses to encrypt and decrypt messages. In practice, the recommended parameters for NTRU (as described in \cite{hoffstein_pipher_silverman_1998}) for secure, post-quantum encryption are as provided in \cite{ntru_2020} and is listed below.
+We have been working with toy examples to understand the basic process that \cite{hoffstein_pipher_silverman_1998} uses to encrypt and decrypt messages. In practice, the recommended parameters for NTRU as described in \cite{hoffstein_pipher_silverman_1998} for secure, post-quantum encryption are provided in \cite{ntru_2020} and is listed below.
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|l|l|}
@@ -419,7 +419,7 @@ We have been working with toy examples to understand the basic process that \cit
 
 We note that all values of $N$ in the above table are prime; we have elected to use small, possibly non-prime values of $N$ in our discussion of NTRU to reduce computation. In practice, computers are hardy enough to handle polynomials of huge degree.
 
-In addition, \cite{hulsing_rijneveld_schanck_schwabe_2018} proposes a new NTRU implementation, which eliminates decryption failures, eliminates invertibility checks for $f(x)$, and implements `cheaper' routines to generate keys. The NTRU-HRSS system uses $N = 701$, $p = 3$, and $q = 8192$.
+In addition, \cite{hulsing_rijneveld_schanck_schwabe_2018} proposes a new NTRU implementation, which eliminates decryption failures, eliminates invertibility checks for $f(x)$, and implements `cheaper' routines to generate keys. This implementation, called NTRU-HRSS, uses $N = 701$, $p = 3$, and $q = 8192$.
 
 There have been many attacks proposed against NTRU (both the implementation in \cite{hoffstein_pipher_silverman_1996} and the implementation in \cite{hulsing_rijneveld_schanck_schwabe_2018}), including, but not limited to,
 \begin{itemize}
