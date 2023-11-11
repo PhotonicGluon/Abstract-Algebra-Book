@@ -210,6 +210,81 @@ One sees clearly that algebraic elements `produce' finite extensions, but what a
     which means that $\alpha$ is algebraic. Since $\alpha$ is arbitrary, therefore every element in $E$ is algebraic; consequently $E$ is an algebraic extension of $F$.
 \end{proof}
 
+The next result can be thought of the field theory counterpart to Lagrange's theorem (\myref{thrm-lagrange}) for finite groups.
+
+\begin{theorem}\label{thrm-multiplying-finite-extension-degrees}
+    Let $F$ be a field, $E$ a finite extension field of $F$, and $K$ a finite extension field of $E$. Then $K$ is a finite extension field of $F$ and
+    \[
+        [K:F] = [K:E][E:F].
+    \]
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 21.5]{gallian_2016}})]
+    Let $[K:E] = m$ and $[E:F] = n$. In addition let $X = \{\textbf{x}_1, \textbf{x}_2, \dots, \textbf{x}_m\}$ be a basis for $K$ over $E$, and $Y = \{\textbf{y}_1, \textbf{y}_2, \dots, \textbf{y}_n\}$ be a basis for $E$ over $F$. It suffices to prove that
+    \[
+        YX = \{\textbf{y}_j\textbf{x}_i \vert 1 \leq i \leq m \text{ and } 1 \leq j \leq n\}
+    \]
+    is a basis for $K$ over $F$, since this would imply that the dimension of $K$ over $F$ is $mn$.
+
+    We first show that $YX$ spans $K$ over $F$. Let $r \in K$. Then there we can find elements $a_1, a_2, \dots, a_n \in E$ such that
+    \[
+        r = a_1\textbf{x}_1 + a_2\textbf{x}_2 + \cdots + a_m\textbf{x}_m.
+    \]
+    Furthermore, for each $a_i$, there are elements $b_{i,1}, b_{i,2}, \dots, b_{i,n}\in F$ such that
+    \[
+        a_i = b_{i,1}\textbf{y}_1 + b_{i,2}\textbf{y}_2 + \cdots + b_{i,n}\textbf{y}_n.
+    \]
+    So we see
+    \[
+        r = \sum_{i=1}^m\left(\left(\sum_{j=1}^n b_{i,j}\textbf{y}_j\right)\textbf{x}_i\right) = \sum_{i=1}^m\sum_{j=1}^nb_{i,j}(\textbf{y}_j\textbf{x}_i)
+    \]
+    which proves that $YX$ spans $K$ over $F$.
+
+    Now we show that the vectors in $YX$ are linearly independent. Suppose there are elements $b_{i,j}$ in $F$ such that
+    \[
+        \sum_{i=1}^m\left(\left(\sum_{j=1}^n b_{i,j}\textbf{y}_j\right)\textbf{x}_i\right) = \sum_{i=1}^m\sum_{j=1}^nb_{i,j}(\textbf{y}_j\textbf{x}_i) = 0.
+    \]
+    Recall from above that
+    \[
+         \sum_{i=1}^m\sum_{j=1}^nb_{i,j}(\textbf{y}_j\textbf{x}_i) = \sum_{i=1}^m\left(\left(\sum_{j=1}^n b_{i,j}\textbf{y}_j\right)\textbf{x}_i\right)
+    \]
+    so we see
+    \[
+        \sum_{i=1}^m\left(\left(\sum_{j=1}^n b_{i,j}\textbf{y}_j\right)\textbf{x}_i\right) = 0.
+    \]
+    As $\displaystyle \sum_{j=1}^n b_{i,j}\textbf{y}_j \in E$ and $X$ is a basis for $K$ over $E$, we must have $\displaystyle \sum_{j=1}^n b_{i,j}\textbf{y}_j = 0$ for each $i$. But each $b_{i,j} \in F$ and $Y$ is a basis for $E$ over $F$, so $b_{i, j} = 0$. Therefore $YX$ is linearly independent over $F$.
+
+    Since $YX$ is a spanning set for $K$ over $F$ and since $YX$ is a set of linearly independent vectors, therefore $YX$ is a basis for $K$ over $F$.
+\end{proof}
+
+The statement of \myref{thrm-multiplying-finite-extension-degrees} can be summarised in the following field extension diagram.
+
+\begin{figure}[H]
+    \centering
+    \pdfteximg{0.2\textwidth}{part3/images/algebraic-extensions/multiplying-degrees.pdf_tex}
+    \caption{Multiplying Degrees of Finite Extensions}
+\end{figure}
+
+The following examples show how this theorem is often utilized.
+
+\begin{examplewithcutout}{right}{0}{0.6\textwidth}{0pt}{8}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.625\linewidth}{part3/images/algebraic-extensions/Q-sqrt3-sqrt5.pdf_tex}
+    \end{figure}
+}
+    We see that $[\Q(\sqrt3, \sqrt5), \Q(\sqrt5)] = 2$ and $[\Q(\sqrt5):\Q] = 2$, so $[\Q(\sqrt3, \sqrt5):\Q] = 4$ by \myref{thrm-multiplying-finite-extension-degrees}. In particular, one sees that $\{1, \sqrt3\}$ is a basis for $\Q(\sqrt3,\sqrt5)$ over $\Q(\sqrt5)$ and $\{1, \sqrt5\}$ is a basis for $\Q(\sqrt5)$ over $\Q$, so $\{1, \sqrt3, \sqrt5, \sqrt3\times\sqrt5\} = \{1, \sqrt3, \sqrt5, \sqrt{15}\}$ is a basis for $\Q(\sqrt3, \sqrt5)$.
+    
+    One also sees that $[\Q(\sqrt3, \sqrt5), \Q(\sqrt3)] = 2$ and $[\Q(\sqrt3):\Q] = 2$, so $[\Q(\sqrt3, \sqrt5):\Q] = 4$.
+\end{examplewithcutout}
+
+\begin{examplewithcutout}{right}{0}{0.6\textwidth}{0pt}{8}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.625\linewidth}{part3/images/algebraic-extensions/Q-cbrt2-4root3.pdf_tex}
+    \end{figure}
+}
+    Consider $\Q(\sqrt[3]2, \sqrt[4]3)$. One sees that $[\Q(\sqrt[3]2):\Q] = 3$ and $[\Q(\sqrt[4]3):\Q] = 4$. We note $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)]$ and $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[4]3)][\Q(\sqrt[4]3:\Q)]$ by \myref{thrm-multiplying-finite-extension-degrees}, so both 3 and 4 divides $[\Q(\sqrt[3]2, \sqrt[4]3):\Q]$, which means $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] \geq 3 \times 4 = 12$. On the other hand, note that $[\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)]$ is at most 4, since $\sqrt[4]3$ is a zero of the polynomial $x^4 - 3 \in \Q(\sqrt[3]2)[x]$. Hence $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)] \leq 4 \times 3 = 12$. Therefore we see $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = 12$. The missing degrees for the extensions can then be inferred quickly.
+\end{examplewithcutout}
 % TODO: Continue
 
 \section{Properties of Extensions}
