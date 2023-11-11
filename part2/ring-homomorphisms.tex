@@ -116,7 +116,7 @@ Similar to groups, if two rings $R$ and $R'$ are isomorphic, then we write $R \c
             \phi(ab) = (ab) + n\Z = (a+n\Z)(b+n\Z) = \phi(a)\phi(b)
         \]
 
-        \item \textbf{Injective}: Suppose $a, b \in \Z_n$ such that $\phi(a) = \phi(b)$. This means $a + n\Z = b + n\Z$, i.e. $a \equiv b \pmod n$.. Now note that $0 \leq a,b < n$ so we have $a = b$.
+        \item \textbf{Injective}: Suppose $a, b \in \Z_n$ such that $\phi(a) = \phi(b)$. This means $a + n\Z = b + n\Z$, i.e. $a \equiv b \pmod n$. Now note that $0 \leq a,b < n$ so we have $a = b$.
 
         \item \textbf{Surjective}: Suppose $m + n\Z \in \Z/n\Z$. Applying Euclid's division lemma (\myref{lemma-euclid-division}) on $m$ we have
         \[
@@ -131,7 +131,7 @@ Similar to groups, if two rings $R$ and $R'$ are isomorphic, then we write $R \c
         \end{align*}
         so $m + n\Z$ has a pre-image of $r$ in $\Z_n$.
     \end{itemize}
-    Since $\phi$ is a bijective ring homomorphism, this $\phi$ is an isomorphism, meaning $\Z_n \cong \Z/n\Z$ as rings.
+    Since $\phi$ is a bijective ring homomorphism, thus $\phi$ is an isomorphism, meaning $\Z_n \cong \Z/n\Z$ as rings.
 \end{example}
 \begin{example}
     We show that $\Z \not\cong 2\Z$ as rings. Suppose $\phi: \Z \to 2\Z$ is a ring isomorphism. Set $a = \phi(1) = 2\Z$. Note that
@@ -247,14 +247,9 @@ For the following, let $R_1$ and $R_2$ be rings with additive identities $0_1$ a
     \]
     so $a-b \in \phi^{-1}(J)$ for all $a,b \in J$.
 
-    Let $r \in R_1$ and $a \in \phi^{-1}(J)$. Note that $\phi(a) \in J$ and $\phi(r) \in R_2$, so
-    \begin{align*}
-        \underbrace{\phi(a)}_{\text{In }J}\underbrace{\phi(r)}_{\text{In }R_2} &\in J & (J\text{ is an ideal, so } rj \in J)\\
-        \phi(r)\phi(a) &\in J & (\text{since } jr \in J).
-    \end{align*}
-    Note $\phi(a)\phi(r) = \phi(ar) \in J$, so $ar \in \phi^{-1}(J)$, and similarly we have $\phi(r)\phi(a) = \phi(ra) \in J$, so $ra \in \phi^{-1}(J)$.
+    Let $r \in R_1$ and $a \in \phi^{-1}(J)$. Note that $\phi(a) \in J$ and $\phi(r) \in R_2$, so $\underbrace{\phi(a)}_{\text{In }J}\underbrace{\phi(r)}_{\text{In }R_2} \in J$ and $\phi(r)\phi(a) \in J$. Note $\phi(a)\phi(r) = \phi(ar) \in J$, so $ar \in \phi^{-1}(J)$, and similarly we have $\phi(r)\phi(a) = \phi(ra) \in J$, so $ra \in \phi^{-1}(J)$.
 
-    Therefore, by the test for ideal, is an ideal of $R_1$.
+    Therefore, by the test for ideal, $\phi^{-1}(J)$ is an ideal of $R_1$.
 \end{proof}
 
 \begin{exercise}\label{exercise-ring-image-of-identity-is-identity}
@@ -333,10 +328,10 @@ We look at some results regarding the image and kernel of a ring homomorphism. T
     Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Prove that $\ker\phi$ is an ideal of $R_1$.
 \end{exercise}
 
-\newpage
-
 \section{The Ring Isomorphism Theorems}
 Similar to group theory, there are three main ring isomorphism theorems. However, we will only explicitly prove the first ring isomorphism theorem; the other two will be left as problems.
+
+\newpage
 
 \begin{theorem}[First Ring Isomorphism Theorem (FRIT)]\label{thrm-ring-isomorphism-1}\index{isomorphism theorem!ring!first}\index{FRIT}
     Let $R$ and $R'$ be rings. Let $\phi: R \to R'$ be a ring homomorphism, and let $\pi: R \to R/\ker\phi$ where $r\mapsto r + \ker\phi$ be the natural surjective homomorphism. Then there exists a unique ring isomorphism $\psi: R / \ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
