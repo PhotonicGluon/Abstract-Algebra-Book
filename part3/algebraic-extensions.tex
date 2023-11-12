@@ -283,9 +283,36 @@ The following examples show how this theorem is often utilized.
         \pdfteximg{0.625\linewidth}{part3/images/algebraic-extensions/Q-cbrt2-4root3.pdf_tex}
     \end{figure}
 }
-    Consider $\Q(\sqrt[3]2, \sqrt[4]3)$. One sees that $[\Q(\sqrt[3]2):\Q] = 3$ and $[\Q(\sqrt[4]3):\Q] = 4$. We note $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)]$ and $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[4]3)][\Q(\sqrt[4]3:\Q)]$ by \myref{thrm-multiplying-finite-extension-degrees}, so both 3 and 4 divides $[\Q(\sqrt[3]2, \sqrt[4]3):\Q]$, which means $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] \geq 3 \times 4 = 12$. On the other hand, note that $[\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)]$ is at most 4, since $\sqrt[4]3$ is a zero of the polynomial $x^4 - 3 \in \Q(\sqrt[3]2)[x]$. Hence $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)] \leq 4 \times 3 = 12$. Therefore we see $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = 12$. The missing degrees for the extensions can then be inferred quickly.
+    Consider $\Q(\sqrt[3]2, \sqrt[4]3)$. One sees that $[\Q(\sqrt[3]2):\Q] = 3$ and $[\Q(\sqrt[4]3):\Q] = 4$. We note $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)]$ and $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[4]3)][\Q(\sqrt[4]3:\Q)]$ by \myref{thrm-multiplying-finite-extension-degrees}, so $[\Q(\sqrt[3]2, \sqrt[4]3):\Q]$ is a multiple of $\lcm(3, 4) = 12$. On the other hand, note that $[\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)]$ is at most 4, since $\sqrt[4]3$ is a zero of $x^4 - 3 \in \Q(\sqrt[3]2)[x]$. Hence $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)] \leq 4 \times 3 = 12$. Therefore we see $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = 12$. The missing degrees for the extensions can then be inferred quickly.
 \end{examplewithcutout}
-% TODO: Continue
+
+The theorem can sometimes be used to show that a field does not contain a particular element.
+
+\begin{example}
+    Consider the polynomial $p(x) = 15x^4 - 10x^2 + 9x + 21$. One sees by the Mod 2 Irreducibility test (\myref{thrm-mod-p-irreducibility-test}) that $p(x)$ is irreducible over $\Q$. Let $\alpha$ be a zero of $p(x)$ in some extension of $\Q$. Then, even though we do not know what $\alpha$ is, we can still prove that $\sqrt[3]2$ is not an element of $\Q(\alpha)$. This is because, otherwise, $\Q \subset \Q(\sqrt[3]2) \subseteq \Q(\alpha)$ and so
+    \[
+        [\Q(\alpha):\Q] = [\Q(\alpha):\Q(\sqrt[3]2)][\Q(\sqrt[3]2):\Q]
+    \]
+    by \myref{thrm-multiplying-finite-extension-degrees}. But $[\Q(\alpha):\Q] = 4$ (as $\deg p(x) = 4$) and $[\Q(\sqrt[3]2):\Q] = 3$, so we see that 3 divides 4, a clear contradiction. Therefore $\sqrt[3]2 \notin \Q(\alpha)$.
+\end{example}
+
+\begin{exercise}
+    \hfill
+    \begin{partquestions}{\alph*}
+        \item \begin{partquestions}{\roman*}
+            \item Find $[\Q(\sqrt2,\sqrt[3]3):\Q]$.
+            \item Hence find $[\Q(\sqrt2, \sqrt[3]3, \sqrt[6]{72}):\Q]$.
+        \end{partquestions}
+        \item Consider the polynomial $p(x) = x^5 + 2x + 1 \in \Q[x]$.
+        \begin{partquestions}{\roman*}
+            \item Prove that $p(x)$ is irreducible over $\Q$.
+            \item Let $\alpha$ be a zero of $p(x)$ in some extension of $\Q$. Prove that $\sqrt2 \notin \Q(\alpha)$.
+        \end{partquestions}
+    \end{partquestions}
+\end{exercise}
+
+\section{Primitive Elements}
+% TODO: Add
 
 \section{Properties of Extensions}
 % TODO: Add
