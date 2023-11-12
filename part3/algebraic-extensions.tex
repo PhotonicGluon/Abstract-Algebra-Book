@@ -143,7 +143,7 @@ We note an immediate observation from this definition.
     Let $F$ be a field and $E/F$ be a field extension. If $[E:F] = 1$ then $E \cong F$.
 \end{proposition}
 \begin{proof}
-    Viewing $E$ is a vector space over $F$, we know that $\dim(E) = 1$. By \myref{thrm-vector-space-of-dimension-n-isomorphic-to-F^n} we have $E\cong F^1 = F$.
+    Viewing $E$ is a vector space over $F$, we know that $\dim E = 1$. By \myref{thrm-vector-space-of-dimension-n-isomorphic-to-F^n} we have $E\cong F^1 = F$.
 \end{proof}
 
 We can depict the degree of a field extension using a diagram.
@@ -201,7 +201,7 @@ The previous example leads us to define the degree of an algebraic element.
 
 One sees clearly that algebraic elements `produce' finite extensions, but what about the reverse direction? What does a finite extension imply about the elements inside it? It turns out this implies that all elements inside the finite extension are algebraic over the base field.
 
-\begin{theorem}
+\begin{theorem}\label{thrm-finite-extension-is-algebraic}
     If $E$ is a finite extension of a field $F$, then $E$ is an algebraic extension of $F$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 21.4]{gallian_2016}})]
@@ -377,8 +377,92 @@ The previous example shows that an extension obtained adjoined by two elements t
     \end{partquestions}
 \end{exercise}
 
-\section{Properties of Extensions}
-% TODO: Add
+\section{Properties of Algebraic Extensions and Algebraic Closure}
+We explore more properties of algebraic extensions.
+\begin{theorem}\label{thrm-algebraic-over-algebraic-is-algebraic}
+    Let $F$ be a field, and let $E/F$ and $K/E$ be field extensions. If $K$ is an algebraic extension of $E$ and $E$ is an algebraic extension of $F$, then $K$ is an algebraic extension of $F$.
+\end{theorem}
+\begin{proof}
+    Let $\alpha \in K$. Since $\alpha$ is algebraic over $E$, thus $\alpha$ is a zero of some irreducible polynomial in $E[x]$, say $p(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$. We note that every $a_i \in E$ is algebraic over $F$ since $E$ is an algebraic extension of $F$.
+
+    Construct a `tower' of extension fields of $F$ as follows.
+    \begin{align*}
+        F_0 &= F(a_0),\\
+        F_1 &= F_0(a_1) = F(a_0, a_1),\\
+        F_2 &= F_1(a_2) = F(a_0, a_1, a_2),\\
+        \vdots\\
+        F_n &= F_{n-1}(a_n) = F(a_0, a_1, \dots, a_n).
+    \end{align*}
+    In particular we see $p(x) \in F_n[x]$. Therefore $[F_n(\alpha): F_n] = n$, which is finite. Also, since each $a_i$ is algebraic over $F$, thus each $[F_{i+1}:F_i] = [F_i(a_{i+1}):F_i]$ is finite. Therefore
+    \[
+        [F_n(\alpha):F] = [F_n(\alpha):F_n][F_n:F_{n-1}][F_{n-1}:F_{n-2}]\cdots[F_1:F_0][F_0:F]
+    \]
+    is finite. Hence $F_n(\alpha)$ is a finite extension of $F$, meaning that $F_n(\alpha)$ is an algebraic extension of $F$ (\myref{thrm-finite-extension-is-algebraic}). So every element of $F_n(\alpha)$, including $\alpha$, is algebraic over $F$. Since $\alpha$ was arbitrary, therefore every element of $K$ is algebraic over $F$, meaning $K$ is an algebraic extension of $F$.
+\end{proof}
+
+\begin{figure}[H]
+    \centering
+    \pdfteximg{0.5\textwidth}{part3/images/algebraic-extensions/algebraic-over-algebraic.pdf_tex}
+    \caption{Tower of Fields in \myreffigures{thrm-algebraic-over-algebraic-is-algebraic}}
+\end{figure}
+
+\begin{corollary}\label{corollary-algebraic-closure-is-subfield}
+    Let $F$ be a field and $E/F$ be a field extension. Then the set of all elements of $E$ that are algebraic over $F$ is a subfield of $E$.
+\end{corollary}
+\begin{proof}
+    Let $S$ denote the subset of $E$ containing the elements of $E$ that are algebraic over $F$. Clearly $0 \in E$ is algebraic over $F$ since 0 is a zero of the zero polynomial in $F[x]$, so $S$ is non-empty.
+
+    Now suppose $a,b \in S$. Note that
+    \[
+        [F(a,b):F] = [F(a,b):F(b)][F(b):F]
+    \]
+    by \myref{thrm-multiplying-finite-extension-degrees}. As $a$ is algebraic over $F$ it is certainly algebraic over $F(b)$. Therefore $[F(b):F]$ is finite (since $b$ is algebraic over $F$) and $[F(a,b):F(b)]$ is finite (since $a$ is algebraic over $F(b)$), meaning $[F(a,b):F]$ is finite. Hence $F(a,b)$ is a finite extension, $F(a,b)$ is an algebraic extension over $F$ (\myref{thrm-finite-extension-is-algebraic}). Therefore $a+b$, $a-b$, $ab$, and $ab^{-1}$ (where $b \neq 0$ in this last case) are all algebraic since $a+b,a-b,ab,ab^{-1} \in F(a,b)$ and $F(a,b)$ is an algebraic extension.
+
+    By the subfield test (\myref{thrm-subfield-test}) we have proven that the set of all elements of $E$ that are algebraic over $F$ is a subfield of $E$.
+\end{proof}
+
+The subfield identified in \myref{corollary-algebraic-closure-is-subfield} has a special name.
+
+\begin{definition}
+    Let $F$ be a field, and $E$ an extension field of $F$. The subfield of $E$ of the elements that are algebraic over $F$ is called the \textbf{algebraic closure of $F$ in $E$}\index{algebraic closure}.
+\end{definition}
+
+We can now introduce a related concept -- algebraically closed fields.
+
+\begin{definition}
+    A field $F$ is \textbf{algebraically closed}\index{algebraically closed} if every non-constant polynomial $F[x]$ has a zero in $F$.
+\end{definition}
+
+\begin{theorem}\label{thrm-algebraically-closed-iff-polynomials-split-in-field}
+    A field $F$ is algebraically closed if and only if every non-constant polynomial in $F[x]$ splits in $F$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 21.25]{judson_beezer_2022}})]
+    Let $F$ be an algebraically closed field. For the forward direction, if $f(x) \in F[x]$ is non-constant, then $f(x)$ must have a zero in $F$, say $\alpha_1$. So $x-\alpha_1$ is a factor of $f(x)$ by Factor Theorem (\myref{corollary-factor-theorem}); write $f(x) = (x-\alpha_1)q_1(x)$ where $\deg q_1(x) = \deg p(x) - 1$. Since $q_1(x) \in F[x]$, there must be a $\alpha_2\in F$ that is a zero of $q_1(x)$. Thus $x-\alpha_2$ is a factor of $q_1(x)$ and so $f(x) = (x-\alpha_1)(x-\alpha_2)q_2(x)$, where $\deg q_2(x) = \deg p(x) - 2$. Since $\deg p(x)$ is finite, so repeating this process we obtain a factorization
+    \[
+        f(x) = (x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n),
+    \]
+    i.e. $f(x)$ splits in $F$.
+
+    For the reverse direction, suppose that every non-constant polynomial $f(x) \in F[x]$ splits in $F$, i.e. a factorization of $f(x)$ consists only of linear factors. Let $ax-b$ be such a factor. Then clearly $f(ba^{-1}) = 0$. Consequently $F$ is algebraically closed.
+\end{proof}
+
+\begin{corollary}\label{corollary-in-algebraically-closed-field-irreducible-polynomial-is-degree-1}
+    In an algebraically closed field, all irreducible polynomials are of degree 1.
+\end{corollary}
+\begin{proof}
+    In \myref{thrm-algebraically-closed-iff-polynomials-split-in-field} we have shown that every polynomial splits in an algebraically closed field. So every polynomial of degree above 1 is reducible; consequently only degree 1 polynomials are irreducible.
+\end{proof}
+
+\begin{corollary}\label{corollary-algebraically-closed-field-has-no-proper-algebraic-extension}
+    An algebraically closed field has no proper algebraic extension.
+\end{corollary}
+\begin{proof}
+    See \myref{exercise-algebraically-closed-field-has-no-proper-algebraic-extension} (later).
+\end{proof}
+
+\begin{exercise}\label{exercise-algebraically-closed-field-has-no-proper-algebraic-extension}
+    Prove \myref{corollary-algebraically-closed-field-has-no-proper-algebraic-extension} (later).
+\end{exercise}
 
 \newpage
 
