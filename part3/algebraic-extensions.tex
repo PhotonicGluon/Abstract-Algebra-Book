@@ -139,7 +139,7 @@ Recall from \myref{thrm-field-is-vector-space} that a field is a vector space ov
 \end{definition}
 
 We note an immediate observation from this definition.
-\begin{proposition}
+\begin{proposition}\label{prop-finite-extension-of-degree-1-means-extension-isomorphic-to-base-field}
     Let $F$ be a field and $E/F$ be a field extension. If $[E:F] = 1$ then $E \cong F$.
 \end{proposition}
 \begin{proof}
@@ -369,7 +369,7 @@ The previous example shows that an extension obtained adjoined by two elements t
     So we have $F(c) \subseteq F(a, b)$ and $F(a, b) \subseteq F(c)$, proving that $F(a, b) = F(c)$.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}\label{exercise-Q-sqrt3-sqrt5}
     Consider $\Q(\sqrt3,\sqrt5)$.
     \begin{partquestions}{\roman*}
         \item Prove that $\Q(\sqrt3,\sqrt5) = \Q(\sqrt3+\sqrt5)$.
@@ -467,4 +467,62 @@ We can now introduce a related concept -- algebraically closed fields.
 \newpage
 
 \section{Problems}
-% TODO: Add
+\begin{problem}
+    Prove that $E = Q(2^{\frac12}, 2^{\frac13}, 2^{\frac14}, \dots, 2^{\frac1n}, \dots)$ is an algebraic extension of $\Q$ but not a finite extension of $\Q$.
+\end{problem}
+
+\begin{problem}
+    Find $[\Q(\sqrt3+\sqrt5):\Q(\sqrt{15})]$, and hence find
+    \begin{partquestions}{\alph*}
+        \item the minimal polynomial of $\sqrt3 + \sqrt5$ over $\Q(\sqrt{15})$; and
+        \item a basis for $\Q(\sqrt3+\sqrt5)$ over $\Q(\sqrt{15})$.
+    \end{partquestions}
+    (\textit{Hint: consider \myref{example-Q-sqrt3-sqrt5}.})
+\end{problem}
+
+\begin{problem}
+    Prove that $\Q(\sqrt2,\sqrt[3]2) = \Q(\sqrt[6]2)$.
+\end{problem}
+
+\begin{problem}
+    Let $a, b \in \Q$. Show that $\Q(\sqrt a, \sqrt b) = \Q(\sqrt a + \sqrt b)$.
+\end{problem}
+
+\begin{problem}
+    Suppose $F$ is a field and $E$ is a finite extension where $[E:F] = p$ where $p$ is a prime. Prove that for every $\alpha \in E$ we have $F(\alpha) = F$ or $F(\alpha) = E$.
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field and $E/F$ be a field extension. Prove that if $\alpha \in E$ is transcendental over $F$, then $\alpha^n$ is transcendental over $F$ for all positive integers $n$.
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field and $E$ be an extension field of $F$.
+    \begin{partquestions}{\roman*}
+        \item Let $a_0, a_1, \dots, a_n \in E$ be algebraic over $F$. Prove that the zero(es) of the polynomial
+        \[
+            f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n
+        \]
+        are also algebraic over $F$.
+
+        \item Deduce that if $\alpha$ and $\beta$ are both transcendental over $F$, then either $\alpha+\beta$ or $\alpha\beta$ is also transcendental.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Suppose $\alpha \in \C$ is a zero of $x^2 + x + 1$ over $\Q$. Prove that $\Q(\alpha) = \Q(\sqrt{\alpha})$.
+\end{problem}
+
+\begin{problem}
+    Prove that $\sqrt2 \notin \Q(\pi)$. You may assume $\pi$ is a transcendental number and that $\sqrt2$ is irrational.\newline
+    (\textit{Hint: refer to the proof of \myref{thrm-characterisation-of-extensions} on the form of an element in $\Q(\pi)$.})
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field and $f(x)$ is a non-constant polynomial in $F[x]$ with degree $n$. Let $E$ be the splitting field of $f(x)$ over $F$.
+    \begin{partquestions}{\roman*}
+        \item By considering the binomial coefficient ${a+b\choose a}$, explain why $a!b!$ divides $(a+b)!$ for all non-negative integers $a$ and $b$.
+        \item Prove that $[E:F]$ divides $n!$.\newline
+        (\textit{Hint: induct on $n$; break into two cases, where $f(x)$ is irreducible or $f(x)$ is reducible.})
+    \end{partquestions}
+\end{problem}
