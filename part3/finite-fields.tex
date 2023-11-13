@@ -1,11 +1,34 @@
 \chapter{Finite Fields}
-Finite fields appear in many applications of algebra, including cryptography (like in the NTRU cryptosystem). We already found out that $\Z_p$ is a field, and that we may construct fields of prime-power order via the use of irreducible polynomials. In this chapter, we will discover one of the most surprising and important results relating to these fields.
+Finite fields appear in many applications of algebra (like in the NTRU cryptosystem). We already found out that $\Z_p$ is a field, and that we may construct fields of prime-power order via the use of irreducible polynomials. In this chapter, we discover one of the most surprising and important results relating to these fields.
 
-\section{Classification of Finite Fields}
-% TODO: Add
+\section{Classification and Structure of Finite Fields}
+\'Evariste Galois first introduced finite fields in his proof of the insolvability of the quintic in 1830. Today, finite fields are immensely useful in many aspects of algebra and computing.
 
-\section{Structure of Finite Fields}
-% TODO: Add
+The most surprising and important result regarding finite fields is that there is a unique finite field (up to isomorphism) of order $p^n$ where $p$ is a prime. The existence of such a field was given by Galois and Gauss in the early 19th century, but it took until Dedekind in 1857 and Jordan in 1870 to produce a rigorous proof of the existence of such fields. The uniqueness of such a field was proved by Eliakim Hastings Moore in 1893. We state his theorem below.
+
+\begin{theorem}\label{thrm-finite-field-is-unique}
+    For each prime $p$ and every positive integer $n$, there exists a finite field of order $p^n$. Furthermore any field of order $p^n$ is isomorphic to the splitting field of $x^{p^n} - x$ over $\Z_p$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 22.1]{gallian_2016}} and {\cite[Theorem 22.6]{judson_beezer_2022}})]
+    Let $f(x) = x^{p^n} - x$ and let $F$ be the splitting field of $f(x)$ over $\Z_p$. We show that $|F| = p^n$. Since $f(x)$ has degree $p^n$ and splits over $F$, thus there must be $p^n$ zeroes of $f(x)$ in $F$. Also we know that each of these $p^n$ zeroes are simple (\myref{problem-(x^p^n-x)-only-has-simple-zeroes}), meaning that $f(x)$ has $p^n$ distinct zeroes in $F$. We note that \myref{exercise-zeroes-of-polynomial-form-subfield} (later) shows that the set of zeroes of $f(x)$ in $F$, which we will denote by $S$, form a subfield of $F$. Note $|S| = p^n$. But as $S$ contains all zeroes of $f(x)$ in $F$, we know that $f(x)$ splits over $S$. As $S \subseteq F$, thus $S = F$, meaning $|F| = p^n$.
+
+    We now show uniqueness. Suppose $K$ is another field of order $p^n$. To show that $K \cong F$, we need to show that every element of $K$ is a zero of $f(x)$. Certainly $0 \in K$ is a zero of $f(x)$. Let $\alpha \in K$ be a non-zero element. Since the multiplicative group of $K$ has order $p^n - 1$, thus we must have $\alpha^{p^n-1} = 1$, which means $\alpha^{p^n} = \alpha$ and so $\alpha^{p^n}-\alpha = 0$. Thus any non-zero $\alpha \in K$ is a zero of $f(x)$. Since $|K| = p^n$, thus $K$ must be a splitting field of $f(x)$ over $\Z_p$. But by \myref{corollary-splitting-field-unique-up-to-isomorphism}, splitting fields are unique up to isomorphism, meaning $K \cong F$.
+\end{proof}
+
+\begin{exercise}\label{exercise-zeroes-of-polynomial-form-subfield}
+    In \myref{thrm-finite-field-is-unique}, prove that $S$, the set of zeroes of $f(x)$ in $F$, is a subfield of $F$.
+\end{exercise}
+
+As there is only one field (up to isomorphism) that is of order $p^n$, we may unambiguously call such a field \text{the} field of order $p^n$.
+
+\begin{definition}
+    Let $p$ be a prime number and $n$ be a positive integer. The field of order $p^n$ is called the \textbf{Galois field of order $p^n$}\index{Galois field} and is denoted by $\GF{p^n}$.
+\end{definition}
+\begin{remark}
+    We call $\GF{p^n}$ the Galois field of order $p^n$ in honour of Galois who first introduced finite fields back in 1830.
+\end{remark}
+
+% TODO: Continue
 
 \section{Subfields of Finite Fields}
 % TODO: Add
