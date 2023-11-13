@@ -218,7 +218,7 @@ One sees clearly that algebraic elements `produce' finite extensions, but what a
 
 The next result can be thought of the field theory counterpart to Lagrange's theorem (\myref{thrm-lagrange}) for finite groups.
 
-\begin{theorem}\label{thrm-multiplying-finite-extension-degrees}
+\begin{theorem}[Tower Law]\index{Tower Law}\label{thrm-tower-law}
     Let $F$ be a field, $E$ a finite extension field of $F$, and $K$ a finite extension field of $E$. Then $K$ is a finite extension field of $F$ and
     \[
         [K:F] = [K:E][E:F].
@@ -262,7 +262,7 @@ The next result can be thought of the field theory counterpart to Lagrange's the
     Since $YX$ is a spanning set for $K$ over $F$ and since $YX$ is a set of linearly independent vectors, therefore $YX$ is a basis for $K$ over $F$.
 \end{proof}
 
-The statement of \myref{thrm-multiplying-finite-extension-degrees} can be summarised in the following field extension diagram.
+The Tower Law (\myref{thrm-tower-law}) can be summarised in the following field extension diagram.
 
 \begin{figure}[H]
     \centering
@@ -277,8 +277,8 @@ The following examples show how this theorem is often utilized.
         \centering
         \pdfteximg{0.625\linewidth}{part3/images/algebraic-extensions/Q-sqrt3-sqrt5.pdf_tex}
     \end{figure}
-}
-    We see that $[\Q(\sqrt3, \sqrt5), \Q(\sqrt5)] = 2$ and $[\Q(\sqrt5):\Q] = 2$, so $[\Q(\sqrt3, \sqrt5):\Q] = 4$ by \myref{thrm-multiplying-finite-extension-degrees}. In particular, one sees that $\{1, \sqrt3\}$ is a basis for $\Q(\sqrt3,\sqrt5)$ over $\Q(\sqrt5)$ and $\{1, \sqrt5\}$ is a basis for $\Q(\sqrt5)$ over $\Q$, so $\{1, \sqrt3, \sqrt5, \sqrt3\times\sqrt5\} = \{1, \sqrt3, \sqrt5, \sqrt{15}\}$ is a basis for $\Q(\sqrt3, \sqrt5)$.
+}\label{example-Q-sqrt3-sqrt5}
+    We see that $[\Q(\sqrt3, \sqrt5), \Q(\sqrt5)] = 2$ and $[\Q(\sqrt5):\Q] = 2$, so $[\Q(\sqrt3, \sqrt5):\Q] = 4$ by Tower Law (\myref{thrm-tower-law}). In particular, one sees that $\{1, \sqrt3\}$ is a basis for $\Q(\sqrt3,\sqrt5)$ over $\Q(\sqrt5)$ and $\{1, \sqrt5\}$ is a basis for $\Q(\sqrt5)$ over $\Q$, so $\{1, \sqrt3, \sqrt5, \sqrt3\times\sqrt5\} = \{1, \sqrt3, \sqrt5, \sqrt{15}\}$ is a basis for $\Q(\sqrt3, \sqrt5)$.
     
     One also sees that $[\Q(\sqrt3, \sqrt5), \Q(\sqrt3)] = 2$ and $[\Q(\sqrt3):\Q] = 2$, so $[\Q(\sqrt3, \sqrt5):\Q] = 4$.
 \end{examplewithcutout}
@@ -289,7 +289,7 @@ The following examples show how this theorem is often utilized.
         \pdfteximg{0.625\linewidth}{part3/images/algebraic-extensions/Q-cbrt2-4root3.pdf_tex}
     \end{figure}
 }
-    Consider $\Q(\sqrt[3]2, \sqrt[4]3)$. One sees that $[\Q(\sqrt[3]2):\Q] = 3$ and $[\Q(\sqrt[4]3):\Q] = 4$. We note $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)]$ and $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[4]3)][\Q(\sqrt[4]3:\Q)]$ by \myref{thrm-multiplying-finite-extension-degrees}, so $[\Q(\sqrt[3]2, \sqrt[4]3):\Q]$ is a multiple of $\lcm(3, 4) = 12$. On the other hand, note that $[\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)]$ is at most 4, since $\sqrt[4]3$ is a zero of $x^4 - 3 \in \Q(\sqrt[3]2)[x]$. Hence $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)] \leq 4 \times 3 = 12$. Therefore we see $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = 12$. The missing degrees for the extensions can then be inferred quickly.
+    Consider $\Q(\sqrt[3]2, \sqrt[4]3)$. One sees that $[\Q(\sqrt[3]2):\Q] = 3$ and $[\Q(\sqrt[4]3):\Q] = 4$. We note $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)]$ and $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[4]3)][\Q(\sqrt[4]3:\Q)]$ by Tower Law (\myref{thrm-tower-law}), so $[\Q(\sqrt[3]2, \sqrt[4]3):\Q]$ is a multiple of $\lcm(3, 4) = 12$. On the other hand, note that $[\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)]$ is at most 4, since $\sqrt[4]3$ is a zero of $x^4 - 3 \in \Q(\sqrt[3]2)[x]$. Hence $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)] \leq 4 \times 3 = 12$. Therefore we see $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = 12$. The missing degrees for the extensions can then be inferred quickly.
 \end{examplewithcutout}
 
 The theorem can sometimes be used to show that a field does not contain a particular element.
@@ -299,7 +299,7 @@ The theorem can sometimes be used to show that a field does not contain a partic
     \[
         [\Q(\alpha):\Q] = [\Q(\alpha):\Q(\sqrt[3]2)][\Q(\sqrt[3]2):\Q]
     \]
-    by \myref{thrm-multiplying-finite-extension-degrees}. But $[\Q(\alpha):\Q] = 4$ (as $\deg p(x) = 4$) and $[\Q(\sqrt[3]2):\Q] = 3$, so we see that 3 divides 4, a clear contradiction. Therefore $\sqrt[3]2 \notin \Q(\alpha)$.
+    by Tower Law (\myref{thrm-tower-law}). But $[\Q(\alpha):\Q] = 4$ (as $\deg p(x) = 4$) and $[\Q(\sqrt[3]2):\Q] = 3$, so we see that 3 divides 4, a clear contradiction. Therefore $\sqrt[3]2 \notin \Q(\alpha)$.
 \end{example}
 
 \begin{exercise}
@@ -341,7 +341,7 @@ Recall that a simple extension is `generated' by one element, called its primiti
     \[
         [\Q(\sqrt2, \sqrt3): \Q] = \underbrace{[\Q(\sqrt2, \sqrt3): \Q(\sqrt2)]}_2\underbrace{[\Q(\sqrt2):\Q]}_2 = 4
     \]
-    by \myref{thrm-multiplying-finite-extension-degrees}, which means that the minimal polynomial of $\sqrt2+\sqrt3$ has degree 4. How do we find this minimal polynomial? First set $\alpha = \sqrt2 + \sqrt3$, and note $\alpha^2 = 2 + 2\sqrt6 + 3$, which means $\alpha^2 - 5 = 2\sqrt6$. Hence $\alpha^4 - 10\alpha^2 + 25 = 24$, which means $\alpha^4 - 10\alpha^2 + 1 = 0$. Hence $\alpha$ is a zero of the monic degree 4 polynomial $p(x) = x^4 - 10x^2 + 1$. Since $p(x)$ is irreducible by \myref{exercise-splitting-field-sqrt2-sqrt3}, therefore $p(x)$ is the minimal polynomial of $\sqrt2 + \sqrt3$.
+    by Tower Law (\myref{thrm-tower-law}), which means that the minimal polynomial of $\sqrt2+\sqrt3$ has degree 4. How do we find this minimal polynomial? First set $\alpha = \sqrt2 + \sqrt3$, and note $\alpha^2 = 2 + 2\sqrt6 + 3$, which means $\alpha^2 - 5 = 2\sqrt6$. Hence $\alpha^4 - 10\alpha^2 + 25 = 24$, which means $\alpha^4 - 10\alpha^2 + 1 = 0$. Hence $\alpha$ is a zero of the monic degree 4 polynomial $p(x) = x^4 - 10x^2 + 1$. Since $p(x)$ is irreducible by \myref{exercise-splitting-field-sqrt2-sqrt3}, therefore $p(x)$ is the minimal polynomial of $\sqrt2 + \sqrt3$.
 \end{example}
 
 The previous example shows that an extension obtained adjoined by two elements to a field can sometimes be obtained by adjoining a single element to the field. We show that under certain conditions this can always be done.
@@ -416,7 +416,7 @@ We explore more properties of algebraic extensions.
     \[
         [F(a,b):F] = [F(a,b):F(b)][F(b):F]
     \]
-    by \myref{thrm-multiplying-finite-extension-degrees}. As $a$ is algebraic over $F$ it is certainly algebraic over $F(b)$. Therefore $[F(b):F]$ is finite (since $b$ is algebraic over $F$) and $[F(a,b):F(b)]$ is finite (since $a$ is algebraic over $F(b)$), meaning $[F(a,b):F]$ is finite. Hence $F(a,b)$ is a finite extension, $F(a,b)$ is an algebraic extension over $F$ (\myref{thrm-finite-extension-is-algebraic}). Therefore $a+b$, $a-b$, $ab$, and $ab^{-1}$ (where $b \neq 0$ in this last case) are all algebraic since $a+b,a-b,ab,ab^{-1} \in F(a,b)$ and $F(a,b)$ is an algebraic extension.
+    by Tower Law (\myref{thrm-tower-law}). As $a$ is algebraic over $F$ it is certainly algebraic over $F(b)$. Therefore $[F(b):F]$ is finite (since $b$ is algebraic over $F$) and $[F(a,b):F(b)]$ is finite (since $a$ is algebraic over $F(b)$), meaning $[F(a,b):F]$ is finite. Hence $F(a,b)$ is a finite extension, $F(a,b)$ is an algebraic extension over $F$ (\myref{thrm-finite-extension-is-algebraic}). Therefore $a+b$, $a-b$, $ab$, and $ab^{-1}$ (where $b \neq 0$ in this last case) are all algebraic since $a+b,a-b,ab,ab^{-1} \in F(a,b)$ and $F(a,b)$ is an algebraic extension.
 
     By the subfield test (\myref{thrm-subfield-test}) we have proven that the set of all elements of $E$ that are algebraic over $F$ is a subfield of $E$.
 \end{proof}
@@ -461,7 +461,7 @@ We can now introduce a related concept -- algebraically closed fields.
 \end{proof}
 
 \begin{exercise}\label{exercise-algebraically-closed-field-has-no-proper-algebraic-extension}
-    Prove \myref{corollary-algebraically-closed-field-has-no-proper-algebraic-extension} (later).
+    Prove \myref{corollary-algebraically-closed-field-has-no-proper-algebraic-extension}.
 \end{exercise}
 
 \newpage
