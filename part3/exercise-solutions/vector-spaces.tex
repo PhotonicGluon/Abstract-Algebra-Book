@@ -1,0 +1,137 @@
+\section{Vector Spaces}
+\begin{questions}
+    \item We first need to prove the four group axioms.
+    \begin{itemize}
+        \item \textbf{Closure}: We clearly see
+        \[
+            (a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n) = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n) \in \R^n
+        \]
+        so $\R^n$ is closed under vector addition.
+
+        \item \textbf{Associativity}: Let $(a_1, a_2, \dots, a_n), (b_1, b_2, \dots, b_n), (c_1, c_2, \dots, c_n) \in \R^n$. Note
+        \begin{align*}
+            &(a_1, a_2, \dots, a_n) + \left((b_1, b_2, \dots, b_n) + (c_1, c_2, \dots, c_n)\right)\\
+            &= (a_1, a_2, \dots, a_n) + (b_1 + c_1, b_2 + c_2, \dots, b_n + c_n)\\
+            &= (a_1 + (b_1 + c_1), a_2 + (b_2 + c_2), \dots, a_n + (b_n + c_n))\\
+            &= ((a_1 + b_1) + c_1, (a_2 + b_2) + c_2, \dots, (a_n + b_n) + c_n)\\
+            &= (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n) + (c_1, c_2, \dots, c_n)\\
+            &= \left((a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n)\right) + (c_1, c_2, \dots, c_n)
+        \end{align*}
+        so vector addition is associative.
+
+        \item \textbf{Identity}: One sees that $(0, 0, \dots, 0) \in \R^n$ is the identity.
+
+        \item \textbf{Inverse}: One sees that $(-a_1, -a_2, \dots, -a_n) \in \R^n$ is the inverse of the element $(a_1, a_2, \dots, a_n)$.
+    \end{itemize}
+
+    Thus $(\R^n, +)$ is a group. Also, for any $(a_1, a_2, \dots, a_n), (b_1, b_2, \dots, b_n) \in \R^n$ we see
+    \begin{align*}
+        (a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n) &= (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)\\
+        &= (b_1+a_1, b_2+a_2, \dots, b_n+a_n)\\
+        &= (b_1, b_2, \dots, b_n) + (a_1, a_2, \dots, a_n)
+    \end{align*}
+    so vector addition is also commutative. Therefore $(\R^n, +)$ is an abelian group.
+
+    \item No. Note $x^5 + 1 \in W$ and $-x^5 + 1 \in W$ but $(x^5+1) + (-x^5+1) = 2 \notin W$ since 2 has a degree of 0.
+
+    \item Note
+    \[
+        \alpha\textbf{0} = \alpha(\textbf{0} + \textbf{0}) = \alpha\textbf{0} + \alpha\textbf{0}
+    \]
+    by \textbf{Distributivity-Addition}. Then, by adding $-(\alpha\textbf{0})$ on both sides we see
+    \begin{align*}
+        \alpha\textbf{0} + (-(\alpha\textbf{0})) &= (\alpha\textbf{0} + \alpha\textbf{0}) + (-(\alpha\textbf{0}))\\
+        &= \alpha\textbf{0} + (\alpha\textbf{0} + (-(\alpha\textbf{0}))) & (\textbf{Addition-Abelian-Associativity})\\
+    \end{align*}
+    which means
+    \[
+        \textbf{0} = \alpha\textbf{0} + \textbf{0},
+    \]
+    by \textbf{Addition-Abelian-Inverses}, and hence $\alpha\textbf{0} = \textbf{0}$, by \textbf{Addition-Abelian-Identity}.
+
+    \item We know from \myref{example-polynomial-ring-over-field-is-vector-space} that $F[x]$ is a vector space, so we just need to prove that $V$ is a subspace of $F[x]$.
+    \begin{itemize}
+        \item Clearly $0 \in V$.
+        \item Let $f(x), g(x) \in V$. We consider two cases.
+        \begin{itemize}
+            \item Suppose that $f(x)$ or $g(x)$ is the zero polynomial; without loss of generality assume $g(x) = 0$. Then $f(x) + g(x) = f(x) + 0 = f(x) \in V$.
+            \item Otherwise, $\deg f(x), \deg g(x) \leq n$. By \myref{thrm-polynomial-degree-properties} we thus see that $\deg (f(x) + g(x)) \leq n$, meaning $f(x) + g(x) \in V$.
+        \end{itemize}
+        In either case, $f(x) + g(x) \in V$.
+        \item Let $\alpha \in F$ and $f(x) \in V$. We again consider two cases.
+        \begin{itemize}
+            \item If $f(x) = 0$, then $\alpha f(x) = 0$ which is in $V$.
+            \item Otherwise, we know $\deg f(x) \leq n$ and multiplication by a constant does not change the degree. Hence $\deg (\alpha f(x)) \leq n$ and so $\alpha f(x) \in V$.
+        \end{itemize}
+        In either case, $\alpha f(x) \in V$.
+    \end{itemize}
+    Therefore, by subspace test (\myref{thrm-subspace-test}), we see $V$ is a subspace of $F[x]$ over $F$, meaning that $V$ is a subspace over $F$.
+
+    \item We show that $S$ is a spanning set of $V$.
+
+    Let $a + bx + cx^2 \in V$. Consider
+    \[
+        \alpha x + \beta(x + 2) + \gamma(x^2 + 2) + \delta(x^2 + 2x + 3) = a + bx + cx^2,
+    \]
+    where $\alpha, \beta, \gamma, \delta \in \Q$, i.e.
+    \[
+        (\gamma + \delta)x^2 + (\alpha + \beta + 2\delta)x + (2\beta + 2\gamma + 3\delta) = a + bx + cx^2.
+    \]
+    So we see
+    \begin{align*}
+        \gamma + \delta = a\\
+        \alpha + \beta + 2\delta = b\\
+        2\beta + 2\gamma + 3\delta = c
+    \end{align*}
+    which we can solve for $\alpha, \beta, \gamma, \delta$, yielding
+    \begin{align*}
+        \alpha &= a + b - \frac{c}{2} - \frac{3\delta}{2}\\
+        \beta &= \frac{c}{2} - a - \frac{\delta}{2}\\
+        \gamma &= a - \delta
+    \end{align*}
+    and $\delta$ is a free variable. Therefore any element of $V$ can be expressed as a linear combination of vectors in $S$, meaning $\Span{S} = V$.
+
+    \item \begin{partquestions}{\alph*}
+        \item Linearly independent since the only solution to
+        \[
+            \alpha + \beta(x+2) = 0,
+        \]
+        which yields the system of equations
+        \begin{align*}
+            \alpha + 2\beta &= 0,\\
+            \beta &= 0,
+        \end{align*}
+        is the trivial solution $\alpha = \beta = 0$.
+
+        \item Linearly independent since the only solution to
+        \[
+            \alpha + \beta(x+2) + \gamma(x^2 + 2x + 3) = 0,
+        \]
+        which yields the system of equations
+        \begin{align*}
+            \alpha + 2\beta + 3\gamma &= 0,\\
+            \beta + 2\gamma &= 0,\\
+            \gamma = 0
+        \end{align*}
+        is the trivial solution $\alpha = \beta = \gamma = 0$.
+
+        \item Not linearly independent (i.e., linearly dependent) since
+        \[
+            1 - 2(x+2) + \frac12(x^2 + 2x + 3) - \frac12(x^2 - 2x - 3) = 0.
+        \]
+    \end{partquestions}
+
+    \item \begin{partquestions}{\alph*}
+        \item Not a basis since $x^2$ cannot be expressed as a linear combination of the polynomials in $S$, i.e. $\Span{S} \neq V$.
+
+        \item Is a basis. We found in \myref{exercise-polynomial-of-degree-at-most-2-vector-space} that the vectors in $T$ are linearly independent. Furthermore, any polynomial $ax^2 + bx + c \in V$ can be written as
+        \[
+            a(x^2+2x+3) + (-2a+b)(x+2) + (a-2b+c)
+        \]
+        which shows that $T$ spans $V$. Therefore $T$ is a basis for $V$.
+
+        \item As $U$ is not linearly independent (from \myref{exercise-polynomial-of-degree-at-most-2-vector-space}), $U$ cannot be a basis for $V$.
+    \end{partquestions}
+
+    \item We earlier found that $T = \{1, x + 2, x^2 + 2x + 3\}$ is a basis for $V$. Since $|T| = 3$ therefore $\dim{V} = 3$.
+\end{questions}

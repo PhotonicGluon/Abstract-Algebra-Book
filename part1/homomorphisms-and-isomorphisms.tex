@@ -3,18 +3,17 @@ Now that we have introduced the idea of a group, one wonders about how elements 
 
 \section{Homomorphisms}
 \begin{definition}
-    Suppose $(G, \ast)$ and $(H, \star)$ are groups. A map $\phi: G \to H$ is a \textbf{homomorphism}\index{homomorphism} if
+    Suppose $(G, \ast)$ and $(H, \star)$ are groups. A map $\phi: G \to H$ is a \textbf{homomorphism}\index{homomorphism} if and only if
     \[
         \phi(x \ast y) = \phi(x) \star \phi(y)
     \]
-    for all $x$ and $y$ in $G$.
+    for all $x, y \in G$.
 \end{definition}
 \begin{remark}
-    We usually suppress the binary operations of $\ast$ and $\star$ when working with homomorphisms. Thus, the above condition is usually written as
-    \[
-        \phi(xy) = \phi(x)\phi(y).
-    \]
-    It is important to note that $xy$ uses the group operation on $G$ (i.e., $\ast$) while $\phi(x)\phi(y)$ uses the group operation on $H$ (i.e., $\star$).
+    The term ``homomorphism'' can be roughly translated as ``same form'' from Ancient Greek.
+\end{remark}
+\begin{remark}
+    We usually suppress the binary operations of $\ast$ and $\star$ when working with homomorphisms. Thus, the above condition is usually written as $\phi(xy) = \phi(x)\phi(y)$. It is important to note that $xy$ uses the group operation on $G$ (i.e., $\ast$) while $\phi(x)\phi(y)$ uses the group operation on $H$ (i.e., $\star$).
 \end{remark}
 
 \begin{example}
@@ -25,9 +24,9 @@ Now that we have introduced the idea of a group, one wonders about how elements 
 \end{example}
 
 \begin{example}
-    Let $G = \{r \in \R \vert r \neq 0\}$ and $H = (0, \infty)$ be groups under regular multiplication. Define $f: G \to H, x \mapsto |x|$ where $|x|$ represents the absolute value of $x$. Then $f$ is a homomorphism as
+    Let $G = \{r \in \R \vert r \neq 0\}$ and $H = (0, \infty)$ be groups under regular multiplication. Define $\phi: G \to H, x \mapsto |x|$ where $|x|$ represents the absolute value of $x$. Then $\phi$ is a homomorphism as
     \[
-        f(xy) = |xy| = |x||y| = f(x)f(y).
+        \phi(xy) = |xy| = |x||y| = \phi(x)\phi(y).
     \]
 \end{example}
 
@@ -43,7 +42,7 @@ Now that we have introduced the idea of a group, one wonders about how elements 
 \end{exercise}
 
 \section{Properties of Homomorphisms}
-With an understanding on what homomorphisms are, let's look at some properties of homomorphisms. Before stating and proving them, let
+Let us now look at some properties of homomorphisms. For the following properties, let
 \begin{itemize}
     \item $G_1$ and $G_2$ be groups;
     \item $H_1 \leq G_1$ and $H_2 \leq G_2$;
@@ -66,7 +65,7 @@ With an understanding on what homomorphisms are, let's look at some properties o
 \end{proof}
 
 \begin{proposition}
-    $\phi(x^n) = (\phi(x))^n$ for all $x \in G_1$ and integers $n$.
+    $\phi(x^n) = (\phi(x))^n$ for all $x \in G_1$ and $n \in \Z$.
 \end{proposition}
 \begin{proof}
     We first prove the proposition for non-negative integers $n$ via induction.
@@ -74,7 +73,7 @@ With an understanding on what homomorphisms are, let's look at some properties o
     When $n = 0$, then $\phi(x^0) = \phi(e_G) = e_H = (\phi(x))^0$ by \myref{prop-homomorphism-maps-identities-to-each-other}, so the statement holds for $n = 0$.
 
     Now suppose the statement holds for some non-negative integer $k$, i.e. $\phi(x^k) = (\phi(x))^k$. We show that the statement holds for $k + 1$, i.e. $\phi(x^{k+1}) = (\phi(x))^{k+1}$.
-    
+
     We see
     \begin{align*}
         \phi(x^{k+1}) &= \phi(x^kx) \\
@@ -91,9 +90,9 @@ With an understanding on what homomorphisms are, let's look at some properties o
         \phi(x^n) &= \phi(x^{-m})\\
         &= \phi((x^m)^{-1})\\
         &= (\phi(x^m))^{-1} & (\myref{prop-homomorphism-maps-inverses})\\
-        &= ((\phi(x))^m)^{-1} & (\text(by the case for )m>0)\\
+        &= ((\phi(x))^m)^{-1} & (\text{by the case for } m>0)\\
         &= (\phi(x))^{-m}\\
-        &= (\phi(x))^n
+        &= (\phi(x))^n.
     \end{align*}
 
     This proves the proposition for all integers $n$.
@@ -102,7 +101,7 @@ With an understanding on what homomorphisms are, let's look at some properties o
 For the next few properties, define
 \begin{gather*}
     \phi(H_1) = \{\phi(h) \vert h \in H_1\}, \text{ and}\\
-    \phi^{-1}(H_2) = \{g \in G_1 \vert \phi(g) \in H_2\}
+    \phi^{-1}(H_2) = \{g \in G_1 \vert \phi(g) \in H_2\}.
 \end{gather*}
 
 \begin{proposition}
@@ -135,7 +134,7 @@ For the next few properties, define
 
     Take $n \in \phi^{-1}(H_2)$ and $g \in G_1$. We will show that $gng^{-1} \in \phi^{-1}(H_2)$ which is sufficient to prove normality.
 
-    Consider $\phi(gng^{-1})$.
+    Consider $\phi(gng^{-1})$. We note
     \begin{align*}
         \phi(gng^{-1}) &= \phi(g)\phi(n)\phi(g^{-1}) \\
         &= \underbrace{\phi(g)}_{\text{In }G_2} \underbrace{\phi(n)}_{\text{In }H_2} \underbrace{\left(\phi(g)\right)^{-1}}_{\text{In }G_2}\\
@@ -157,7 +156,7 @@ For the next few properties, define
 \end{exercise}
 
 \section{Isomorphisms}
-We now look a special (and important) type of homomorphism: \textbf{isomorphisms}.
+We now look a special (and important) type of homomorphism: \textbf{isomorphisms}, which roughly translates as ``equal form'' from Ancient Greek.
 
 \begin{definition}
     Let $(G, \ast)$ and $(H, \star)$ be groups. Let $\phi: G \to H$ be a homomorphism. Then $\phi$ is an \textbf{isomorphism}\index{isomorphism} if $\phi$ is a bijection.
@@ -172,16 +171,17 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
     Let $G = (\Z_2, \oplus_2)$ and $H = \{1, -1\}$ be a group under regular multiplication. Define the map $\phi: G \to H$ such that $\phi(0) = 1$ and $\phi(1) = -1$.
 
     \begin{itemize}
-        \item \textbf{Homomorphism}: \begin{itemize}
-            \item $\phi(0\oplus_20) = \phi(0) = 1 = 1 \times 1 = \phi(0)\phi(0)$
-            \item $\phi(0 \oplus_2 1) = \phi(1) = -1 = 1 \times (-1) = \phi(0)\phi(1)$
-            \item $\phi(1 \oplus_2 0) = \phi(1) = -1 = (-1) \times 1 = \phi(1)\phi(0)$
-            \item $\phi(1 \oplus_2 1) = \phi(0) = 1 = (-1) \times (-1) = \phi(1)\phi(1)$
+        \item \textbf{Homomorphism}: We note that
+        \begin{itemize}
+            \item $\phi(0\oplus_20) = \phi(0) = 1 = 1 \times 1 = \phi(0)\phi(0)$;
+            \item $\phi(0 \oplus_2 1) = \phi(1) = -1 = 1 \times (-1) = \phi(0)\phi(1)$;
+            \item $\phi(1 \oplus_2 0) = \phi(1) = -1 = (-1) \times 1 = \phi(1)\phi(0)$; and
+            \item $\phi(1 \oplus_2 1) = \phi(0) = 1 = (-1) \times (-1) = \phi(1)\phi(1)$.
         \end{itemize}
         Thus $\phi(x\oplus_2y) = \phi(x)\times\phi(y)$ for all $x, y \in G$.
-        
+
         \item \textbf{Injective}: Clearly if $\phi(x) = \phi(y)$ then $x = y$ based on the definition of $\phi$, meaning $\phi$ is injective.
-        
+
         \item \textbf{Surjective}: Let $y \in H$.
         \begin{itemize}
             \item If $y = 1$ then note that $0 \in G$ is its pre-image since $\phi(0) = 1$.
@@ -195,10 +195,11 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
 \begin{example}
     Let $S = (0,\infty)$. We show that $(\R, +) \cong (S, \times)$ by considering the map $\phi: \R \to S, x \mapsto e^x$.
     \begin{itemize}
-        \item \textbf{Homomorphism}:
+        \item \textbf{Homomorphism}: Let $x, y \in \R$. Then we see
         \[
             \phi(x+y) = e^{x+y} = e^xe^y = \phi(x)\phi(y)
         \]
+        so $\phi$ is a homomorphism.
 
         \item \textbf{Injective}: Suppose $x$ and $y$ are elements in $\R$ such that $\phi(x) = \phi(y)$, meaning $e^x = e^y$. Applying the natural logarithm ($\ln$) on both sides yields $x = y$.
 
@@ -231,7 +232,7 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
 \end{exercise}
 
 \section{Consequences of Isomorphisms}
-Isomorphisms between groups means that the two groups \textit{share the same structure}, in a manner of speaking. We look at a theorem that showcases the sharing of some of these properties.
+Isomorphisms between groups means that the two groups `share the same structure', in a manner of speaking. We look at a theorem that showcases the sharing of some of these properties.
 \begin{theorem}\label{thrm-isomorphism-consequences}
     Let $\phi: G \to H$ be an isomorphism between the groups $G$ and $H$. Then
     \begin{enumerate}
@@ -258,7 +259,7 @@ Isomorphisms between groups means that the two groups \textit{share the same str
             &= \phi^{-1}(u) \phi^{-1}(v).
         \end{align*}
         Thus $\phi^{-1}$ is an isomorphism.
-        
+
         \item Suppose $u$ and $v$ are in $H$. Let $x$ and $y$ be elements in $G$ such that $\phi(x) = u$ and $\phi(y) = v$. Thus
         \begin{align*}
             uv = &= \phi(x)\phi(y) \\
@@ -291,11 +292,11 @@ Isomorphisms between groups means that the two groups \textit{share the same str
 \end{exercise}
 
 \begin{exercise}
-    Let $G$, $H$, and $K$ be groups. Prove the following statements.
+    Prove that the ``isomorphism'' relation $\cong$ is an equivalence relation. In particular, for the groups $G$, $H$, and $K$, prove that
     \begin{partquestions}{\alph*}
-        \item $G \cong G$.
-        \item If $G \cong H$ then $H \cong G$.
-        \item If $G \cong H$ and $H \cong K$ then $G \cong K$.
+        \item $G \cong G$;
+        \item if $G \cong H$ then $H \cong G$; and
+        \item if $G \cong H$ and $H \cong K$ then $G \cong K$.
     \end{partquestions}
 \end{exercise}
 
@@ -320,10 +321,11 @@ For brevity, we also have notation regarding the integers under addition.
 \begin{proof}[Proof (see \cite{proofwiki_infinite-cyclic-group})]
     Consider $\phi: \Z \to G$ where $\phi(n) = g^n$. We prove that $\phi$ is an isomorphism.
     \begin{itemize}
-        \item \textbf{Homomorphism}:
+        \item \textbf{Homomorphism}: Let $m, n \in \Z$. Note
         \[
             \phi(m+n) = g^{m+n} = g^mg^n = \phi(m)\phi(n)
         \]
+        so $\phi$ is a homomorphism.
 
         \item \textbf{Injective}: Let $m$ and $n$ be integers such that $\phi(m) = \phi(n)$. Without loss of generality, assume that $m \leq n$. Since $\phi(m) = \phi(n)$ we have $g^m = g^n = g^mg^{n-m}$ which implies that $g^{n-m} = e$ by cancellation law.
 
@@ -341,10 +343,11 @@ For brevity, we also have notation regarding the integers under addition.
 \begin{proof}[Proof (cf. {\cite[\S 63]{clark_1984}})]
     Consider $\phi: \Z_n \to G$ such that $\phi(m) = g^m$. We prove that $\phi$ is an isomorphism.
     \begin{itemize}
-        \item \textbf{Homomorphism}:
+        \item \textbf{Homomorphism}: Let $l,m \in \Z$. We see that
         \[
             \phi(l+m) = g^{l+m} = g^lg^m = \phi(l)\phi(m)
         \]
+        and so $\phi$ is a homomorphism.
 
         \item \textbf{Injective}: Let $l$ and $m$ be integers such that $\phi(l) = \phi(m)$. Without loss of generality, assume that $l \leq m$. Since $\phi(l) = \phi(m)$ we have $g^l = g^m = g^lg^{m-l}$ which implies that $g^{m-l} = e$ by cancellation law. Therefore $|g|$ divides $m-l$ by \myref{problem-element-to-power-of-multiple-of-order-is-identity}.
 
@@ -355,12 +358,6 @@ For brevity, we also have notation regarding the integers under addition.
 
     Therefore, $\phi$ is an isomorphism which means $G \cong \Z_n$.
 \end{proof}
-
-% In summary:
-% \begin{itemize}
-%     \item All cyclic groups with \textbf{infinite} order are isomorphic to the group of integers under addition, $\Z$.
-%     \item All cyclic groups with \textbf{finite} order $n$ are isomorphic to the group of integers under addition modulo $n$, $\Z_n$.
-% \end{itemize}
 
 \begin{exercise}
     Let $G = (\{1, 3, 7, 9\}, \otimes_{10})$ be a group. Find the positive integer $n$ such that $G \cong \Z_n$.
@@ -374,7 +371,7 @@ For brevity, we also have notation regarding the integers under addition.
 \end{problem}
 
 \begin{problem}
-    Let $\Q_{>0}$ denote the set of positive rational numbers. Let $G = (\Q, +)$ and $H = (\Q_{>0}, \times)$ be groups. Prove that $G \not\cong H$.
+    Let $\Q_{>0}$ denote the set of positive rational numbers. Let the groups $G = (\Q, +)$ and $H = (\Q_{>0}, \times)$. Prove that $G \not\cong H$.
 \end{problem}
 
 \begin{problem}
@@ -382,7 +379,7 @@ For brevity, we also have notation regarding the integers under addition.
     \begin{partquestions}{\alph*}
         \item Prove that $\phi$ is a homomorphism.
         \item Prove that $\phi$ is injective.
-        \item Prove that there does \textbf{not} exist a homomorphism $\psi: \Z \to \Z$ where $\psi(\phi(n)) = n$.
+        \item Prove that there does \textit{not} exist a homomorphism $\psi: \Z \to \Z$ where $\psi(\phi(n)) = n$.
     \end{partquestions}
 \end{problem}
 

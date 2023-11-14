@@ -106,7 +106,7 @@ This theorem is useful because it may sometimes be useful to use \myref{definiti
         \item if we start with $\alpha$, derive $\psi$ based on $\alpha$, and then derive $\beta$ based off $\psi$, then $\alpha = \beta$; and
         \item if we start with $\phi$, derive $\beta$, and then derive $\psi$ based off $\beta$, then $\phi = \psi$.
     \end{itemize}
-    
+
     Suppose we have an $\alpha$ that is used to derive $\psi$ which is in turn used to derive $\beta$. Then the above processes yields
     \[
         \psi(g) = f_g \text{ and } \beta(g, x) = (\psi(g))(x)
@@ -252,7 +252,7 @@ Let's think about the symmetric group of a cube (call it $G$) and suppose $G$ ac
     \item Fix one face (say the top face). There are 4 ways to move the cube because you can only rotate the cube now. These are the `stabilizers'.
     \item Now there are 6 choices for which face to be fixed. This is the `orbit'.
 \end{enumerate}
-Thus, the total number of elements in the symmetric group of a cube is 24, i.e. $|G| = 24$. Generally, the number of elements of a transformation group $G$ is the product of the orders of the stabilizer and orbit of an element $x$ in the $G$-set.
+Thus, the total number of elements in the symmetric group of a cube is 24, i.e. $|G| = 24$. Generally, the number of elements of a transformation group $G$ is the product of the order of the stabilizer and the cardinality of the orbit of an element $x$ in the $G$-set.
 
 \newpage
 
@@ -287,7 +287,7 @@ Formally, this is captured in the \textbf{Orbit-Stabilizer Theorem}.
 Burnside's lemma gives a way to count the number of orbits of a finite set acted on by a finite group. Before we get into it, we look at the \textbf{set of orbits of $X$}.
 
 \begin{definition}
-    The \textbf{set of orbits}\index{set of orbits} acted upon by the group $G$ on a set $X$ is the set
+    The \textbf{set of orbits}\index{set!of orbits} acted upon by the group $G$ on a set $X$ is the set
     \[
         X / G = \{\Orb{G}{x} \vert x \in X\}.
     \]
@@ -403,12 +403,12 @@ We can now look at conjugacy classes.
     \begin{itemize}
         \item The first is the conjugacy class of the identity, $\id$.
         \[
-            \Cl{\id} = \{g\circ\id\circ g^{-1} \vert g \in G \} = \{\id\}.
+            \Cl{\id} = \{g\circ\id\circ g^{-1} \vert g \in \Sn{3} \} = \{\id\}.
         \]
         Thus the conjugacy class of the identity consists of only the identity.
         \item The second is the conjugacy class of transpositions. Let $\tau = \begin{pmatrix}a & b\end{pmatrix}$ be a transposition in $\Sn{3}$. Then
         \[
-            \Cl{\tau} = \{g\circ\tau\circ g^{-1} \vert g \in G\}.
+            \Cl{\tau} = \{g\circ\tau\circ g^{-1} \vert g \in \Sn{3}\}.
         \]
         Running through all 6 elements of $\Sn{3}$ reveals that $\Cl{\tau}$ is the set of all transpositions, i.e. the conjugacy class of transpositions is the set of transpositions.
         \item The third is the conjugacy class of 3-cycles. Let $\sigma = \begin{pmatrix}a & b & c\end{pmatrix}$ be a 3-cycle in $\Sn{3}$. One can see that $\Cl{\sigma}$ is the set of all 3-cycles.
@@ -459,7 +459,7 @@ We now state and prove the class equation.
         G = \bigcup_{i=1}^k \Orb{G}{\hat{g_i}} = \bigcup_{i=1}^k \Cl{\hat{g_i}}
     \]
     where $\hat{g_i}$'s are representatives of the $k$ conjugacy classes (including those with only 1 element).
-    
+
     Recall from \myref{prop-element-with-singleton-conjugacy-class-in-center} that an element $x$ in a conjugacy class with one element is in the center of $G$. Therefore, one concludes that
     \[
         G = \left(\CenterGrp{G}\right) \cup \left(\bigcup_{i=1}^l \Cl{g_i}\right).
@@ -508,7 +508,7 @@ An immediate consequence of this is that every element must have an order that i
     \[
         6 = 1 + 2 + 3
     \]
-    where $|\CenterGrp{\Sn{3}}| = |\{e\}| = 1$.  
+    where $|\CenterGrp{\Sn{3}}| = |\{e\}| = 1$.
 \end{example}
 
 \begin{exercise}
@@ -594,7 +594,7 @@ We note one immediate corollary of Cauchy's Theorem.
 
 \begin{problem}
     A group action is said to be \textbf{free}\index{group action!free} if $g\cdot x = x$ implies that $g$ is the identity (i.e., only the identity fixes any $x$).
-    
+
     Let $G$ be a group and $S$ be a non-empty $G$-set. Suppose $G$ acts on $S$ freely and transitively. Prove that $G$ and $S$ have the same number of elements.
 \end{problem}
 

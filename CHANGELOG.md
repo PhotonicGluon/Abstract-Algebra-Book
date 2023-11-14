@@ -1,6 +1,331 @@
 # Abstract Algebra Book Changelog
 
 ---
+## [1st Edition, Build 27](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.26...v1-build.27)
+
+### General Content Changes
+No changes.
+
+### Part 0 (Preliminaries) Changes
+- Added a new axiom 5.5.2 on the associativity of function composition.
+- Added a new problem 5.8 on how an injective function from a finite set to itself is a bijection.
+
+### Part I (Groups) Changes
+- Clarified definition of the centralizer in example 9.2.3.
+- Amended citation to coset equality lemma before corollary 9.3.4.
+- Fixed slight issue with wording in proof of lemma 9.4.3.
+- Changed numbered points to bullet points in the proof of corollary 9.4.6.
+- Cleaned up the organization of definition 9.6.1.
+- Tidied up proof of theorem 9.6.2.
+- Tidied up wording in example 9.6.3.
+- Edited wording of problem 9.3 and problem 9.9 to make it clearer and more precise.
+- Added remarks on the etymology of homomorphisms and isomorphisms.
+- Updated definition 10.1.1 to be more consistent with the more recently added definitions.
+- Changed homomorphism symbol used in example 10.1.3.
+- Made the preamble to section 10.2 less awkward.
+- Changed the wording of proposition 10.2.3 to be more precise.
+- Fixed formatting issues and typos in the proof of proposition 10.2.3.
+- Added missing full stop before proposition 10.2.4.
+- Edited style of the proof of proposition 10.2.6.
+- Edited style of example 10.3.3 and example 10.3.4 to be more consistent with more recent examples.
+- Removed italics from a phrase in the preamble of section 10.4.
+- Rephrased exercise 10.10 to use the language of equivalence relations.
+- Edited style of the proof to theorem 10.5.2 and 10.5.3.
+- Changed wording of problem 10.2.
+- Cleaned up the preamble for chapter 11.
+- Edited introduction for section 11.1 to be more consistent with formatting of text in later chapters.
+- Edited remark after example 11.1.1.
+- Made the use of "cycle notation" more consistent in example 11.1.6, example 11.1.7, and exercise 11.2.
+- Reworded proposition 11.2.2.
+- Modified the proof of proposition 11.2.2 to use axiom 5.5.2.
+- Changed definition 11.2.3 to include the alternate name for the symmetric group of degree $n$.
+- Added a new proposition and exercise explicitly proving that the external direct product is indeed a group.
+- Changed the notation used in example 12.1.4 to be more consistent with the notation of the multiplicative group of fields.
+- Cleaned up the proof of proposition 12.1.5 to be less confusing.
+- Modified the remark after proposition 12.2.2.
+- Amend the proof of the "well-definedness" of $\phi$ in the proof of theorem 12.3.1.
+- Fixed description of exercise 12.3.2.
+- Make "Klein four group" bolded in problem 12.4.
+- Edited remark after definition 13.1.1 and definition 13.2.1 to increase clarity.
+- Edited proof of proposition 13.1.4 to be more concise.
+- Reworded example 13.2.2 to be clearer.
+- Edited exercise 13.2 to be clearer.
+- Clarified remark after theorem 13.3.1.
+- Edited text after the statement of theorem 13.3.1.
+- Clarified wording of "multiplication" in example 13.3.2.
+- Changed description of the subgroup lattice for theorem 13.4.1.
+- Removed single word in example 13.4.3.
+- Removed some text in example 13.4.4.
+- Clarified what "it" refers to in the proof of statement 2 of theorem 13.5.1.
+- Rewrote lemma 14.3.2, its proof, and its remark to be more concise and clearer.
+- Rewrote lemma 14.3.4 to be clearer.
+- Modify the definition of an inversion in definition 14.3.5.
+- Remove notation for inversion after definition 14.3.5.
+- Modify example 14.3.6 to accommodate the new changes.
+- Reword the motivation for theorem 14.3.8.
+- Made description after exercise 14.7 more concise.
+- Slightly modify the proof of proposition 14.3.12.
+- Rewrite proposition 14.3.13 and its proof to be clearer.
+- Move the expression of Euler's totient function into definition 14.4.3.
+- Added condition that $a < n$ into definition 14.4.4.
+- Modified the proof of proposition 14.4.8 to be more concise.
+- Added small proof that the identity matrix is its inverse to subsection 14.5.1.
+- More concisely define the matrix determinant in subsection 14.5.1.
+- Added statement of proposition that claims that the general linear group is indeed a group.
+- Slightly change the text before proposition 14.5.4.
+- Added missing brackets between the determinant function in the proof of proposition 14.5.4.
+- Made the notation for the multiplicative group of real numbers in subsection 14.5.4 consistent with future chapters.
+- Renamed subsections 14.6.1 and 14.6.2, removing the redundant "of $G$".
+- Added statement of proposition that claims that the group of automorphisms is indeed a group.
+- Fixed some grammar in the proof that the group of automorphisms is indeed a group.
+- Fixed some grammar issues in definition 14.6.5.
+- Made the statements of proposition 14.6.6 and proposition 14.6.7 more precise.
+- Fixed a small typo in the sketch of the proof of theorem 16.1.2.
+
+### Part II (Rings) Changes
+- Added new proposition 22.2.13 on how fields have no proper ideals.
+
+### Part III (Fields) Changes
+- Changed the problem that proves theorem 28.2.11.
+- Added a new chapter 30 on extension fields and splitting fields.
+
+### Other Changes
+- Added correct PDF metadata.
+- Moved the "work in progress" watermark from the part on rings to the part on fields.
+
+---
+## [1st Edition, Build 26](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.25...v1-build.26)
+
+### General Content Changes
+- Changed index entry for the cancellation laws (groups, domains, and fields).
+- Added cover page for the eBook version of the book.
+
+### Part 0 (Preliminaries) Changes
+No changes.
+
+### Part I (Groups) Changes
+- Slightly changed the first line of section 8.3.
+- Slightly edited the proof of theorem 8.4.5.
+- Changed the description after example 8.5.3.
+- Slightly edited statement of problem 8.1(a).
+- Fixed description in the motivation of the Orbit-Stabilizer theorem in section 15.3.
+
+### Part II (Rings) Changes
+- Fixed proof that $\mathbb{Z}_p$ is a field in example 21.2.3.
+- Removed weird large space after example 22.6.7.
+- Made the link to the GitHub repository more explicit in section 27.4.
+
+### Part III (Fields) Changes
+- Added new chapter 28 on the basics of fields.
+- Added new chapter 29 on vector spaces.
+
+### Other Changes
+- Removed unused `questions` in problem solutions for encryption.
+- Changed appendix page number format to prevent ugliness with the table of contents.
+- Add eBook option to compilation options.
+
+---
+## [1st Edition, Build 25](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.24...v1-build.25)
+
+### General Content Changes
+- Updated acknowledgements and preface for the front matter.
+- Updated interdependence diagram and interdependence notes.
+
+### Part 0 (Preliminaries) Changes
+- Updated preamble for part 0.
+
+### Part I (Groups) Changes
+- Fixed exercise 15.6 solution to use partitions.
+- Fixed notation of example 15.5.4 to use $S_3$ instead of $G$.
+- Fixed typo in exercise 15.9 solution.
+
+### Part II (Rings) Changes
+- Added full preamble for part II.
+- Fixed typos and phrasing in chapter 19.
+- Edited the last remark for the notation used in ring theory in section 20.1.
+- Added missing full stop in one sentence in the proof of proposition 20.1.4.
+- Amended notation for the ring of rational numbers and the ring of real numbers.
+- Added name for proposition 20.2.1 (which is "Multiplication by Zero").
+- Added link back to section 14.5 in section 20.3's preamble.
+- Added more examples in section 20.4 to ease the load of the new definitions.
+- Fixed confusing remark after definition 21.1.1.
+- Fixed incorrect remark after definition 21.1.2.
+- Fixed incorrect claim that the "converse" was used, when the "contrapositive" was the actual thing used in the proof of proposition 21.1.8.
+- Edited definition 21.3.1 to be more concise, especially for the additive order of an element.
+- Fixed a minor typo in the description of "coset multiplication" in section 22.2.
+- Fixed minor grammar inconsistency of preamble of theorem 22.2.11 (test for ideal).
+- Moved citation for the test of ideal to the top in the proof of propositions 22.3.3 and 22.3.6.
+- Changed wording from "statement" to "requirement" in the proofs of propositions 22.3.3 and 22.3.6.
+- Placed abbreviation for principal ideal domains in definition 22.4.6 in brackets.
+- Added reason for why the ideal must contain both positive and negative integers in proof of proposition 22.4.7.
+- Clarified the meaning of "primes" in the preamble of proposition 22.5.2.
+- Added a missing comma in the proof of proposition 22.5.2.
+- Fixed weird large space in section 22.5.
+- Made proof of theorem 22.5.5 more concise.
+- Added missing justification for "the sum of ideals is an ideal" in the proof of theorem 22.5.6.
+- Made proof of theorem 22.5.6 more concise.
+- Fixed wording of problems 22.5 and 22.6.
+- Removed "proof" for examples in section 23.1.
+- Added more details for example 23.1.7.
+- Made example 23.1.8 more concise.
+- Added more details on what the FRIT says in the remark after theorem 23.4.1.
+- Fixed typos and made proof of theorem 23.4.1 more concise.
+- Fixed statement of exercise 23.8.
+- Amended description and wording of examples 23.5.1 and 23.5.4.
+- Slightly tweaked problem 23.8's statement.
+- Fixed description after definition of polynomial addition and multiplication (definition 24.1.4).
+- Fixed example of constant polynomial in example 24.2.11.
+- Fixed working out the kernel of $\phi$ in the proof of proposition 24.3.7.
+- Fixed typo in the proof of theorem 24.4.1.
+- Added more info in proof of theorem 24.4.1.
+- Fixed typos and wording in example 24.4.11.
+- Updated preamble for chapter 25.
+- Added citation for final line in proof of theorem 25.2.1.
+- Modified final line of proof of theorem 25.2.2.
+- Removed contradictory preamble to subsection 25.2.3.
+- Added more detail to example 25.2.14.
+- Fixed example 25.2.15's description.
+- Fixed wording of proof of theorem 25.2.16.
+- Fixed statement of exercise 25.5.
+- Corrected confusing wording of the description after exercise 25.8.
+- Fixed wording of definition 26.1.6.
+- Removed redundant "above" in the text after definition 26.1.7.
+- Added new theorem (theorem 26.1.8) and problem (problem 26.6) on the relationship between prime elements and prime ideals in an integral domain.
+- Adjusted the position of some text in the description after definition 26.1.9.
+- Removed redundant text in example 26.1.10.
+- Corrected minor misalignment in definition 26.2.1.
+- Adjusted remark after definition 26.2.3.
+- Fixed capitalization of "field of fractions" in the preamble of section 26.3.
+- Added reasons for equality in the proof for transitivity of proposition 26.3.4.
+- Added reason for well-defined addition in proposition 26.3.5.
+- Added justification for equality to 1 in the last few lines of the proof of proposition 26.3.6.
+- Placed abbreviation of unique factorization domain in definition 26.4.1 in brackets.
+- Fixed typo in the union of ideals in the proof of lemma 26.4.3.
+- Fixed several typos in the proof of theorem 26.4.4.
+- Added some more detail into example 26.4.7.
+- Fixed typo in proof of corollary 26.4.9.
+- Capitalised EF1 and EF2 statements in definition 26.5.1.
+- Fixed some reasons in example 26.5.4.
+- Updated solution to problem 26.14(ii) to use problem 25.3 instead of doing all the work again.
+
+### Other Changes
+- Added `trailing_whitespace_remover.py` to help remove any trailing whitespace present in the source LaTeX files.
+
+---
+## [1st Edition, Build 24](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.23...v1-build.24)
+
+### General Content Changes
+- Merged chapters on number theory and modular arithmetic into one; all chapters' numbers in parts 1 and 2 have been reduced by 1.
+
+### Part 0 (Preliminaries) Changes
+- Fixed wrongly capitalized statement variables in example 2.3.2.
+- Minor format changes to chapter 2.
+- Renamed and reformatted chapter 5 to become "Relations and Functions".
+- Added relations, equivalence relations, and equivalence classes to chapter 5.
+- Merged chapters on number theory and modular arithmetic into one.
+- Fixed an incorrect property of division.
+- Fixed typo of Bézout's lemma in problem 6.9.
+
+### Part I (Groups) Changes
+- Edited problem 14.4 and its solution to be more precise.
+
+### Part II (Rings) Changes
+- Fixed improper capitalisation for "Gaussian integers".
+- Added new proposition 20.4.7 on the product of units.
+- Edited problem 20.9.
+- Converted the exercise proving that an ideal is the original ring if and only if it has a unit into proposition 22.2.12.
+- Added new proposition 22.4.3 in relation to problem 22.9.
+- Added new chapter 26 on domains and factorization.
+
+### Other Changes
+- Changed some subsections'/sections' titles to be more consistent with the title case format.
+
+---
+## [1st Edition, Build 23](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.22...v1-build.23)
+
+### General Content Changes
+- Fixed some exercises' solutions formatting (especially misaligned/mispositioned tables).
+
+### Part 0 (Preliminaries) Changes
+- Added axiom of reciprocity to chapter 4 (as axiom 4.1.16).
+
+### Part I (Groups) Changes
+- Added further remark on definition of $\mathbb{Z}_n$ in chapter 9.
+- Amended definition of subgroup in chapter 10.
+- Fixed typo in the proof of theorem 15.1.2.
+- Added more detail in proof of theorem 15.1.2.
+- Fixed typo in example 15.3.6.
+- Fixed typo in the proof of proposition 15.5.3.
+- Fixed minor formatting ugliness in definition 15.6.2.
+
+### Part II (Rings) Changes
+- Added proofs that $\mathbb{Q}$, $\mathbb{R}$, and $\mathbb{C}$ are fields into chapter 21.
+- Amended definition of subring in chapter 21.
+- Added definition for what a domain is into chapter 22.
+- Updated exercise 23.2, part (ii), to become an if and only if statement.
+- Added definition of ring automorphisms into chapter 24.
+- Updated some exercises and problems in chapter 24 to use automorphisms.
+- Fixed wording of problem 25.12 part (ii).
+- Added new chapter 26 on factorization of polynomials.
+
+### Other Changes
+- Updated image acknowledgements section.
+- Updated frequently used notation.
+- Updated dedication page.
+- Changed background colours for environments.
+- Added bolding for math in notes for theorems.
+- Fixed appendix title page falling on the wrong side of the book, again.
+- Updated `.gitignore`.
+
+---
+## [1st Edition, Build 22](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-21...v1-build.22)
+
+### General Content Changes
+- Changed versioning format.
+- Updated list of frequently used notation.
+- Updated index entries.
+- Fixed formatting for some exercises and problems.
+
+### Part 0 (Preliminaries) Changes
+- Fixed minor ugliness with definition 2.1.8.
+- Fixed typo in the proof of proposition 4.3.8.
+- Cleaned up explanation in example 4.3.11.
+- Added remark about the actual definition of functions in section 5.1.
+- Fixed weird positioning of the heading for section 5.4.
+- Added an example for equinumerous functions in section 5.4.
+- Added more results about primes and coprime integers.
+- Added new problem 6.6 on proving theorem 6.4.10.
+- Fixed weird positioning of a paragraph in section 7.1.
+- Removed "modular" from exercise 7.4.
+
+### Part I (Groups) Changes
+- Added new problem 9.2 on proving that $\mathbb{Q}$ is a group under addition.
+- Changed "Shoes and Socks" (proposition 9.2.5) from a proposition to a theorem (theorem 9.2.5).
+- Fixed typo in proof of Coset Equality (lemma 10.3.3).
+- Fixed statement of corollary 10.4.7 to include "non-trivial" in the statement.
+- Clarified statement of problem 14.2.
+
+### Part II (Rings) Changes
+- Added justification why $(\mathbb{Q}, +)$ is an abelian group in chapter 21.
+- Fixed inconsistency with the "Associativity" axiom of rings in chapter 21.
+- Added unique symbol for integral domains as $D$.
+- Reordered symbols in the definition for principal ideal (definition 23.4.1).
+- Added more citations for the symbol used for principal ideals.
+- Added a connection between prime number divisibility and defining prime ideals in section 23.5.
+- Fixed typo in exercise 24.10.
+- Clarified statement of problem 24.8.
+- Added new chapter 25 on polynomial rings.
+
+### Other Changes
+- Fixed spacing for `\vert`.
+- Fixed appendix title page falling on the wrong side of the book.
+- Reformatted image acknowledgements.
+- Fixed unbolded $>4$ in section 19.2 heading.
+
+---
+Before 1st Edition, Build 22, build numbers did not include the edition number.
+
+---
 ## [Build 21](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-20...build-21)
 
 ### General Content Changes

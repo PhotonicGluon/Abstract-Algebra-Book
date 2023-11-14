@@ -1,9 +1,9 @@
 \chapter{Ring Homomorphisms and Isomorphisms}
 Just like with groups, rings too have homomorphisms and isomorphisms, although they are defined slightly differently than in groups. Like how group homomorphisms preserve some structure between the two groups, ring homomorphisms and isomorphisms also preserve structure between rings.
 
-\section{Ring Homomorphisms, Endomorphisms, and Isomorphisms}
+\section{Ring Homomorphisms and Isomorphisms}
 \begin{definition}
-    Let $(R_1, +, \cdot)$ and $(R_2, \oplus, \otimes)$ be rings. A function $\phi: R_1 \to R_2$ is a \textbf{ring homomorphism}\index{ring homomorphism} if for all $a, b \in R_1$,
+    Let $(R_1, +, \cdot)$ and $(R_2, \oplus, \otimes)$ be rings. A function $\phi: R_1 \to R_2$ is a \textbf{ring homomorphism}\index{homomorphism!ring} if for all $a, b \in R_1$,
     \begin{align*}
         \phi(a+b) &= \phi(a) \oplus \phi(b), \text{ and}\\
         \phi(a\cdot b) &= \phi(a)\otimes\phi(b).
@@ -18,23 +18,19 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
 \end{remark}
 
 \begin{example}
-    We show that the map $\phi: \Z \to \Z/n\Z, x \mapsto x + n\Z$ is a ring homomorphism.
-     
-    \begin{proof}
-        Let $a, b \in \Z$. Note
-        \begin{align*}
-            \phi(a+b) &= (a+b) + n\Z\\
-            &= (a + n\Z) + (b + n\Z) & (\text{Definition of coset addition})\\
-            &=\phi(a)+\phi(b)
-        \end{align*}
-        and
-        \begin{align*}
-            \phi(ab) &= (ab) + n\Z\\
-            &= (a + n\Z)(b + n\Z) & (\text{Definition of coset multiplication})\\
-            &= \phi(a)\phi(b)
-        \end{align*}
-        so $\phi$ is a homomorphism.
-    \end{proof}
+    We show that the map $\phi: \Z \to \Z/n\Z, x \mapsto x + n\Z$ is a ring homomorphism. Let $a, b \in \Z$. Note
+    \begin{align*}
+        \phi(a+b) &= (a+b) + n\Z\\
+        &= (a + n\Z) + (b + n\Z) & (\text{Definition of coset addition})\\
+        &=\phi(a)+\phi(b)
+    \end{align*}
+    and
+    \begin{align*}
+        \phi(ab) &= (ab) + n\Z\\
+        &= (a + n\Z)(b + n\Z) & (\text{Definition of coset multiplication})\\
+        &= \phi(a)\phi(b)
+    \end{align*}
+    so $\phi$ is a homomorphism.
 \end{example}
 
 \begin{example}
@@ -44,23 +40,21 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
     \]
     Let $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$. We show that $\phi$ is a ring homomorphism.
 
-    \begin{proof}
-        We see that
-        \begin{align*}
-            \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix} + \begin{pmatrix}x&y\\0&z\end{pmatrix}\right) &= \phi\left(\begin{pmatrix}a+x&b+y\\0&c+z\end{pmatrix}\right)\\
-            &= (a+x,c+z)\\
-            &= (a,c) + (x,z)\\
-            &= \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\right) + \phi\left(\begin{pmatrix}x&y\\0&z\end{pmatrix}\right)
-        \end{align*}
-        and also
-        \begin{align*}
-            \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\begin{pmatrix}x&y\\0&z\end{pmatrix}\right) &= \phi\left(\begin{pmatrix}ax&ay+bz\\0&cz\end{pmatrix}\right)\\
-            &= (ax, cz)\\
-            &= (a,c)(x,z)\\
-            &= \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\right)\phi\left(\begin{pmatrix}x&y\\0&z\end{pmatrix}\right)
-        \end{align*}
-        so $\phi$ is a homomorphism.
-    \end{proof}
+    We see that
+    \begin{align*}
+        \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix} + \begin{pmatrix}x&y\\0&z\end{pmatrix}\right) &= \phi\left(\begin{pmatrix}a+x&b+y\\0&c+z\end{pmatrix}\right)\\
+        &= (a+x,c+z)\\
+        &= (a,c) + (x,z)\\
+        &= \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\right) + \phi\left(\begin{pmatrix}x&y\\0&z\end{pmatrix}\right)
+    \end{align*}
+    and also
+    \begin{align*}
+        \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\begin{pmatrix}x&y\\0&z\end{pmatrix}\right) &= \phi\left(\begin{pmatrix}ax&ay+bz\\0&cz\end{pmatrix}\right)\\
+        &= (ax, cz)\\
+        &= (a,c)(x,z)\\
+        &= \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\right)\phi\left(\begin{pmatrix}x&y\\0&z\end{pmatrix}\right)
+    \end{align*}
+    so $\phi$ is a homomorphism.
 \end{example}
 \begin{exercise}
     Let $\phi: \Mn{2}{\Z} \to \Z$ be such that
@@ -70,105 +64,98 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
     Is $\phi$ a ring homomorphism?
 \end{exercise}
 \begin{exercise}
-    Let $R$ and $S$ be rings with additive identities $0_R$ and $0_S$ respectively. Show that the \textbf{trivial homomorphism}\index{trivial homomorphism} $\phi: R \to S, r \mapsto 0_S$ is, indeed, a ring homomorphism.
+    Let $R$ and $S$ be rings with additive identities $0_R$ and $0_S$ respectively. Show that the \textbf{trivial homomorphism}\index{homomorphism!trivial} $\phi: R \to S, r \mapsto 0_S$ is, indeed, a ring homomorphism.
 \end{exercise}
 
 An endomorphism is a specific type of homomorphism.
 \begin{definition}
-    A \textbf{ring endomorphism}\index{ring endomorphism} of a ring $R$ is a homomorphism $\phi: R \to R$.
+    A \textbf{ring endomorphism}\index{endomorphism!ring} of a ring $R$ is a homomorphism $\phi: R \to R$.
 \end{definition}
 \begin{example}
     Let $R$ be a commutative ring with prime characteristic $p$. The \textbf{Frobenius endomorphism}\index{Frobenius endomorphism} $\phi: R \to R$ is such that $\phi(r) = r^p$. We show that $\phi$ is a ring endomorphism.
-    
-    \begin{proof}
-        Note that
-        \begin{align*}
-            \phi(a+b) &= (a+b)^p\\
-            &= a^p + pa^{p-1}b + {p \choose 2}a^{p-2}b^2 + \cdots + pab^{p-1} + b^p.
-        \end{align*}
-        Note that the binomial coefficients ${p \choose k}$ where $1 \leq k \leq p-1$ are all multiples of $p$ (\myref{prop-binomial-coefficient-multiple-of-p}). As the characteristic of the ring $R$ is $p$, thus $px = 0$ for any $x \in R$. Therefore,
-        \begin{align*}
-            \phi(a+b) = &a^p + pa^{p-1}b + {p \choose 2}a^{p-2}b^2 + \cdots + pab^{p-1} + b^p\\
-            &= a^p + 0 + 0 + \cdots + 0 + b^p\\
-            &= a^p + b^p\\
-            &=\phi(a) + \phi(b)
-        \end{align*}
 
-        Also,
-        \[
-            \phi(ab) = (ab)^p = a^pb^p = \phi(a)\phi(b).
-        \]
-        Therefore $\phi$ is a ring endomorphism.
-    \end{proof}
+    Note that
+    \begin{align*}
+        \phi(a+b) &= (a+b)^p\\
+        &= a^p + pa^{p-1}b + {p \choose 2}a^{p-2}b^2 + \cdots + pab^{p-1} + b^p.
+    \end{align*}
+    Note that the binomial coefficients ${p \choose k}$ where $1 \leq k \leq p-1$ are all multiples of $p$ (\myref{prop-binomial-coefficient-multiple-of-p}). As the characteristic of the ring $R$ is $p$, thus $px = 0$ for any $x \in R$. Therefore,
+    \begin{align*}
+        \phi(a+b) = &a^p + pa^{p-1}b + {p \choose 2}a^{p-2}b^2 + \cdots + pab^{p-1} + b^p\\
+        &= a^p + 0 + 0 + \cdots + 0 + b^p\\
+        &= a^p + b^p\\
+        &=\phi(a) + \phi(b)
+    \end{align*}
+
+    Also,
+    \[
+        \phi(ab) = (ab)^p = a^pb^p = \phi(a)\phi(b).
+    \]
+    Therefore $\phi$ is a ring endomorphism.
 \end{example}
 
 \begin{exercise}
-    Let $R$ be a ring. Show that the \textbf{identity homomorphism}\index{identity homomorphism} $\id: R \to R, r \mapsto r$ is a ring endomorphism.
+    Let $R$ be a ring. Show that the \textbf{identity homomorphism}\index{homomorphism!identity} $\id: R \to R, r \mapsto r$ is a ring endomorphism.
 \end{exercise}
 
 Similar to group isomorphisms, rings too have an analogous `isomorphism' definition.
 \begin{definition}
-    A \textbf{ring isomorphism}\index{ring isomorphism} is a bijective ring homomorphism.
+    A \textbf{ring isomorphism}\index{isomorphism!ring} is a bijective ring homomorphism.
 \end{definition}
 Similar to groups, if two rings $R$ and $R'$ are isomorphic, then we write $R \cong R'$.
 
-\begin{example}
-    We show that $\Z_n \cong \Z/n\Z$.
-
-    \begin{proof}
-        Consider the map $\phi:\Z_n \to \Z/n\Z$ where $m \mapsto m + n\Z$. We show that $\phi$ is an isomorphism.
-        \begin{itemize}
-            \item \textbf{Homomorphism}:
-            \[
-                \phi(a+b) = (a+b) + n\Z = (a + n\Z) + (b + n\Z) = \phi(a) + \phi(b)
-            \]
-            and
-            \[
-                \phi(ab) = (ab) + n\Z = (a+n\Z)(b+n\Z) = \phi(a)\phi(b)
-            \]
-
-            \item \textbf{Injective}: Suppose $a, b \in \Z_n$ such that $\phi(a) = \phi(b)$. This means $a + n\Z = b + n\Z$. Now note that $0 \leq a,b < n$ so we have $a = b$.
-            
-            \item \textbf{Surjective}: Suppose $m + n\Z \in \Z/n\Z$. Applying Euclid's division lemma (\myref{lemma-euclid-division}) on $m$ we have
-            \[
-                m = nq + r
-            \]
-            with $0 \leq r < n$. One sees that
-            \begin{align*}
-                \phi(r) &= r + n\Z\\
-                &= r + (nq + n\Z)\\
-                &= (r + nq) + n\Z\\
-                &= m + n\Z
-            \end{align*}
-            so $m + n\Z$ has a pre-image of $r$ in $\Z_n$.
-        \end{itemize}
-        Since $\phi$ is a bijective ring homomorphism, this $\phi$ is an isomorphism, meaning $\Z_n \cong \Z/n\Z$ as rings.
-    \end{proof}
-\end{example}
-\begin{example}
-    We show that $\Z \not\cong 2\Z$ as rings.
-
-    \begin{proof}
-        Suppose $\phi: \Z \to 2\Z$ is a ring isomorphism.
-
-        Set $a = \phi(1) = 2\Z$. Note that
+\begin{example}\label{example-Zn-ring-isomorphic-to-Z/nZ}
+    We show that $\Z_n \cong \Z/n\Z$. Consider the map $\phi:\Z_n \to \Z/n\Z$ where $m \mapsto m + n\Z$. We show that $\phi$ is an isomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}:
         \[
-            a = \phi(1) = \phi(1\times1) = (\phi(1))^2 = a^2
+            \phi(a+b) = (a+b) + n\Z = (a + n\Z) + (b + n\Z) = \phi(a) + \phi(b)
         \]
-        so $a^2 = a$, which means $a = 0$ or $a = 1$. But as $a \in 2\Z$, thus $a \neq 1$ which means $a = 0$.
+        and
+        \[
+            \phi(ab) = (ab) + n\Z = (a+n\Z)(b+n\Z) = \phi(a)\phi(b)
+        \]
 
-        Now notice for any $n \in \Z$ we have
+        \item \textbf{Injective}: Suppose $a, b \in \Z_n$ such that $\phi(a) = \phi(b)$. This means $a + n\Z = b + n\Z$, i.e. $a \equiv b \pmod n$. Now note that $0 \leq a,b < n$ so we have $a = b$.
+
+        \item \textbf{Surjective}: Suppose $m + n\Z \in \Z/n\Z$. Applying Euclid's division lemma (\myref{lemma-euclid-division}) on $m$ we have
+        \[
+            m = nq + r
+        \]
+        with $0 \leq r < n$. One sees that
         \begin{align*}
-            \phi(n) &= \phi(n1)\\
-            &= \phi(n)\phi(1)\\
-            &= \phi(n) \times 0\\
-            &= 0.
+            \phi(r) &= r + n\Z\\
+            &= r + (nq + n\Z)\\
+            &= (r + nq) + n\Z\\
+            &= m + n\Z
         \end{align*}
-        Thus one sees that $\phi(0) = \phi(1) = 0$ which means $\phi$ is not injective, a contradiction.
-    \end{proof}
+        so $m + n\Z$ has a pre-image of $r$ in $\Z_n$.
+    \end{itemize}
+    Since $\phi$ is a bijective ring homomorphism, thus $\phi$ is an isomorphism, meaning $\Z_n \cong \Z/n\Z$ as rings.
 \end{example}
+\begin{example}
+    We show that $\Z \not\cong 2\Z$ as rings. Suppose $\phi: \Z \to 2\Z$ is a ring isomorphism. Set $a = \phi(1) = 2\Z$. Note that
+    \[
+        a = \phi(1) = \phi(1\times1) = (\phi(1))^2 = a^2
+    \]
+    so $a^2 = a$, which means $a = 0$ or $a = 1$. But as $a \in 2\Z$, thus $a \neq 1$ which means $a = 0$.
+
+    Now notice for any $n \in \Z$ we have
+    \begin{align*}
+        \phi(n) &= \phi(n1)\\
+        &= \phi(n)\phi(1)\\
+        &= \phi(n) \times 0\\
+        &= 0.
+    \end{align*}
+    Thus one sees that $\phi(0) = \phi(1) = 0$ which means $\phi$ is not injective, a contradiction.
+\end{example}
+
+\begin{definition}
+    A bijective ring endomorphism is called a \textbf{ring automorphism}\index{automorphism!ring}.
+\end{definition}
+
 \begin{exercise}\label{exercise-identity-homomorphism-is-an-isomorphism}
-    Show that the identity homomorphism is an isomorphism.
+    Show that the identity homomorphism is an automorphism.
 \end{exercise}
 
 \section{Properties of Ring Homomorphisms}
@@ -195,8 +182,8 @@ For the following, let $R_1$ and $R_2$ be rings with additive identities $0_1$ a
     See \myref{exercise-ring-image-of-inverse-is-inverse} (later).
 \end{proof}
 
-\begin{proposition}
-    If $R_1$ and $R_2$ are division rings, then $\phi(x^{-1}) = (\phi(x))^{-1}$ for all $x \in R_1$. 
+\begin{proposition}\label{prop-inverse-under-ring-homomorphism}
+    If $R_1$ and $R_2$ are division rings, then $\phi(x^{-1}) = (\phi(x))^{-1}$ for all $x \in R_1$.
 \end{proposition}
 \begin{proof}
     See \myref{exercise-ring-image-of-inverse-is-inverse} (later).
@@ -251,7 +238,7 @@ For the following, let $R_1$ and $R_2$ be rings with additive identities $0_1$ a
 \end{proposition}
 \begin{proof}
     Suppose $J$ is an ideal of $R_2$. We consider the test for ideal (\myref{thrm-test-for-ideal}) to show $\phi^{-1}(J)$ is an ideal of $R_1$.
-    
+
     One sees that $\phi^{-1}(J) \neq \emptyset$ since $\phi(0_1) = 0_2 \in J$, so $0_1 \in \phi^{-1}(J)$.
 
     Let $a, b \in \phi^{-1}(J)$, so $\phi(a), \phi(b) \in J$. Note that
@@ -260,14 +247,9 @@ For the following, let $R_1$ and $R_2$ be rings with additive identities $0_1$ a
     \]
     so $a-b \in \phi^{-1}(J)$ for all $a,b \in J$.
 
-    Let $r \in R_1$ and $a \in \phi^{-1}(J)$. Note that $\phi(a) \in J$ and $\phi(r) \in R_2$, so
-    \begin{align*}
-        \underbrace{\phi(a)}_{\text{In }J}\underbrace{\phi(r)}_{\text{In }R_2} &\in J & (J\text{ is an ideal, so } rj \in J)\\
-        \phi(r)\phi(a) &\in J & (\text{since } jr \in J).
-    \end{align*}
-    Note $\phi(a)\phi(r) = \phi(ar) \in J$, so $ar \in \phi^{-1}(J)$, and similarly we have $\phi(r)\phi(a) = \phi(ra) \in J$, so $ra \in \phi^{-1}(J)$.
+    Let $r \in R_1$ and $a \in \phi^{-1}(J)$. Note that $\phi(a) \in J$ and $\phi(r) \in R_2$, so $\underbrace{\phi(a)}_{\text{In }J}\underbrace{\phi(r)}_{\text{In }R_2} \in J$ and $\phi(r)\phi(a) \in J$. Note $\phi(a)\phi(r) = \phi(ar) \in J$, so $ar \in \phi^{-1}(J)$, and similarly we have $\phi(r)\phi(a) = \phi(ra) \in J$, so $ra \in \phi^{-1}(J)$.
 
-    Therefore, by the test for ideal, is an ideal of $R_1$.
+    Therefore, by the test for ideal, $\phi^{-1}(J)$ is an ideal of $R_1$.
 \end{proof}
 
 \begin{exercise}\label{exercise-ring-image-of-identity-is-identity}
@@ -346,12 +328,12 @@ We look at some results regarding the image and kernel of a ring homomorphism. T
     Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Prove that $\ker\phi$ is an ideal of $R_1$.
 \end{exercise}
 
-\newpage
-
 \section{The Ring Isomorphism Theorems}
 Similar to group theory, there are three main ring isomorphism theorems. However, we will only explicitly prove the first ring isomorphism theorem; the other two will be left as problems.
 
-\begin{theorem}[First Ring Isomorphism Theorem (FRIT)]\label{thrm-ring-isomorphism-1}\index{ring isomorphism theorem!first}\index{FRIT}
+\newpage
+
+\begin{theorem}[First Ring Isomorphism Theorem (FRIT)]\label{thrm-ring-isomorphism-1}\index{isomorphism theorem!ring!first}\index{FRIT}
     Let $R$ and $R'$ be rings. Let $\phi: R \to R'$ be a ring homomorphism, and let $\pi: R \to R/\ker\phi$ where $r\mapsto r + \ker\phi$ be the natural surjective homomorphism. Then there exists a unique ring isomorphism $\psi: R / \ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
 \end{theorem}
 \begin{remark}
@@ -359,7 +341,7 @@ Similar to group theory, there are three main ring isomorphism theorems. However
     \[
         R / \ker\phi \cong \im\phi
     \]
-    for any ring homomorphism $\phi$.
+    for any ring homomorphism $\phi$. This means that the set of pre-images that have an image of $\phi(x)$ is $x\ker\phi$.
 \end{remark}
 
 We include the commutativity diagram of the maps stated to aid clarity:
@@ -372,41 +354,38 @@ We include the commutativity diagram of the maps stated to aid clarity:
 In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elements from $R$ to $R/\ker\phi$. Then the map $\psi$ is a unique map that sends elements from $R/\ker\phi$ to the image of $\phi$.
 
 \begin{proof}[Proof (cf. {\cite[p.~302, Factor Theorem For Rings]{cohn_1982}})]
-    Let the map $\phi$ be defined such that $\psi(r + \ker\phi) = \phi(r)$. We first show that $\psi$ is a well-defined ring isomorphism.
+    Let the map $\psi$ be defined such that $\psi(r + \ker\phi) = \phi(r)$. We first show that $\psi$ is a well-defined ring isomorphism.
     \begin{itemize}
-        \item \textbf{Well-Defined}: Suppose $a + \ker\phi$ and $b + \ker\phi$ are in $R/\ker\phi$ such that $a + \ker\phi = b+\ker\phi$. This means that $a - b \in \ker\phi$ by Coset Equality (\myref{lemma-coset-equality}). Thus $\phi(a-b) = 0$ by definition of the kernel. Hence $\phi(a) - \phi(b) = 0$ which means $\phi(a) = \phi(b)$. Therefore, we see that
+        \item \textbf{Well-Defined}: Suppose $a + \ker\phi$ and $b + \ker\phi$ are in $R/\ker\phi$ such that $a + \ker\phi = b+\ker\phi$. This means that $a - b \in \ker\phi$, i.e. $\phi(a-b) = 0$ by definition of the kernel. Hence $\phi(a) - \phi(b) = 0$ which means $\phi(a) = \phi(b)$. Therefore, we see that
         \[
             \psi(a + \ker\phi) = \phi(a) = \phi(b) = \psi(b + \ker\phi)
         \]
         which means $\psi$ is well-defined.
 
-        \item \textbf{Homomorphism}: We first show that $\psi$ is a ring homomorphism.
-        \begin{itemize}
-            \item $\boxed{+}$: If $a + \ker\phi$ and $b + \ker\phi$ are in $R/\ker\phi$,
-            \begin{align*}
-                &\psi((a + \ker\phi)+(b+\ker\phi))\\
-                &= \psi((a+b)+\ker\phi)\\
-                &= \phi(a+b)\\
-                &= \phi(a) + \phi(b)\\
-                &= \psi(a + \ker\phi) + \psi(b + \ker\phi).
-            \end{align*}
-            \item $\boxed{\times}$: If $a + \ker\phi$ and $b + \ker\phi$ are in $R/\ker\phi$,
-            \begin{align*}
-                \psi((a + \ker\phi)(b+\ker\phi)) &= \psi((ab)+\ker\phi)\\
-                &= \phi(ab)\\
-                &= \phi(a)\phi(b)\\
-                &= \psi(a + \ker\phi)\psi(b + \ker\phi).
-            \end{align*}
-        \end{itemize}
-        Therefore $\psi$ is a ring homomorphism.
+        \item \textbf{Homomorphism}: Let $a + \ker\phi, b + \ker\phi \in R/\ker\phi$. Then note
+        \begin{align*}
+            &\psi((a + \ker\phi)+(b+\ker\phi))\\
+            &= \psi((a+b)+\ker\phi)\\
+            &= \phi(a+b)\\
+            &= \phi(a) + \phi(b)\\
+            &= \psi(a + \ker\phi) + \psi(b + \ker\phi)
+        \end{align*}
+        and
+        \begin{align*}
+            \psi((a + \ker\phi)(b+\ker\phi)) &= \psi((ab)+\ker\phi)\\
+            &= \phi(ab)\\
+            &= \phi(a)\phi(b)\\
+            &= \psi(a + \ker\phi)\psi(b + \ker\phi),
+        \end{align*}
+        so $\psi$ is a ring homomorphism.
 
-        \item \textbf{Injective}: Suppose $\psi(a+\ker\phi) = \psi(b+\ker\phi)$.
+        \item \textbf{Injective}: Suppose $a + \ker\phi, b + \ker\phi \in R/\ker\phi$ such that $\psi(a+\ker\phi) = \psi(b+\ker\phi)$. So,
         \begin{align*}
             \phi(a) &= \phi(b) & (\text{definition of }\psi)\\
             \phi(a) - \phi(b) &= 0\\
             \phi(a-b) &= 0 & (\phi \text{ is a ring homomorphism})\\
             a - b &\in \ker\phi & (\text{definition of kernel})\\
-            a + \ker\phi &= b + \ker\phi & (\text{Coset Equality})
+            a + \ker\phi &= b + \ker\phi.
         \end{align*}
         Therefore if $\psi(a+\ker\phi) = \psi(b+\ker\phi)$ then $a+\ker\phi = b+\ker\phi$, which means $\psi$ is injective.
 
@@ -414,13 +393,13 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
     \end{itemize}
     Therefore, $\psi$ is a well-defined bijective ring homomorphism, i.e. $\psi$ is a well-defined ring isomorphism.
 
-    We now check that $\psi$ satisfies the requirement that $\psi\pi = \phi$. Let $x \in R$. Note that $\pi(x) = x + \ker\phi$, and
+    We now check that $\psi$ satisfies the requirement that $\psi\pi = \phi$. Note that $\pi(x) = x + \ker\phi$ and
     \[
         \psi\pi(x) = \psi(x + \ker\phi) = \phi(x)
     \]
     for all $x \in R$, so $\psi\pi = \phi$.
 
-    Finally we show that $\psi$ is unique. Suppose $f: R/\ker\phi \to \im\phi$ is an isomorphism satisfying $f\pi=\phi$. Take $x + \ker\phi \in R/\ker\phi$. Note that
+    Finally, we show that $\psi$ is unique. Suppose $f: R/\ker\phi \to \im\phi$ is an isomorphism satisfying $f\pi=\phi$. Note that
     \begin{align*}
         f(x + \ker\phi) &= f(\pi(x))\\
         &= (f\pi)(x)\\
@@ -449,7 +428,7 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
     \]
 \end{example}
 \begin{exercise}
-    Show that $\Z_n \cong \Z/n\Z$ via the ring homomorphism
+    Show that $\Z_n \cong \Z/n\Z$ by considering the ring homomorphism
     \[
         \phi: \Z \to \Z_n, m \mapsto m \mod n
     \]
@@ -457,7 +436,7 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
 \end{exercise}
 
 We briefly mention the other two main ring isomorphism theorems, although the proof of them will be left as problems. They are much less used than the FRIT, so we make only a passing mention of them.
-\begin{theorem}[Second Ring Isomorphism Theorem]\label{thrm-ring-isomorphism-2}\index{ring isomorphism theorem!second}
+\begin{theorem}[Second Ring Isomorphism Theorem]\label{thrm-ring-isomorphism-2}\index{isomorphism theorem!ring!second}
     Let $R$ be a ring with subring $R$ and ideal $I$. Then
     \begin{enumerate}
         \item $S+I = \{s+i \vert s\in S,\;i\in I\}$ is a subring of $R$;
@@ -469,7 +448,7 @@ We briefly mention the other two main ring isomorphism theorems, although the pr
     See \myref{problem-ring-isomorphism-2} (later).
 \end{proof}
 
-\begin{theorem}[Third Ring Isomorphism Theorem]\label{thrm-ring-isomorphism-3}\index{ring isomorphism theorem!third}
+\begin{theorem}[Third Ring Isomorphism Theorem]\label{thrm-ring-isomorphism-3}\index{isomorphism theorem!ring!third}
     Let $R$ be a ring with ideals $I$ and $J$ such that $I$ is a subset of $J$. Then
     \begin{enumerate}
         \item $J/I$ is an ideal of $R/I$; and
@@ -498,17 +477,16 @@ Although ring homomorphisms appear to be quite general, we explore how restricte
     \]
     so $\phi(n) = 0$ for all $n \in \Z$, which is the trivial homomorphism.
 
-    Now consider the case that $a = 1$. We claim that $\phi(n) = n$ for all $n \in \Z$.
-
-    We leave the proof that $\phi(n) = n$ for all \textit{positive} integers $n$ for \myref{exercise-homomorphism-maps-n-to-n-if-n-is-positive} (later). Furthermore $\phi(0) = 0$ by the properties of ring homomorphism (specifically \myref{prop-ring-image-of-additive-identity-is-additive-identity}). Finally, note that for any non-negative integer $n$,
+    Now consider the case that $a = 1$. We claim that $\phi(n) = n$ for all $n \in \Z$. We leave the proof that $\phi(n) = n$ for all \textit{positive} integers $n$ for \myref{exercise-homomorphism-maps-n-to-n-if-n-is-positive} (later). Furthermore $\phi(0) = 0$ by the properties of ring homomorphism (specifically \myref{prop-ring-image-of-additive-identity-is-additive-identity}). Finally, note that for any non-negative integer $n$,
     \begin{align*}
-        0 = \phi(0) &= \phi(n - n)\\
+        0 &= \phi(0)\\
+        &= \phi(n - n)\\
         &= \phi(n) + \phi(-n)\\
         &= n + \phi(-n)
     \end{align*}
-    which means $\phi(-n) = -n$. Therefore $\phi(n) = n$ for all integers $n$.
+    which means $\phi(-n) = -n$. Thus $\phi(n) = n$ for all integers $n$, which is the identity endomorphism.
 
-    Therefore, the only ring endomorphisms $\phi:\Z\to\Z$ are $\phi(n) = 0$ or $\phi(n) = n$ for all integers $n$.
+    Therefore, the only ring endomorphisms $\phi:\Z\to\Z$ are the trivial homomorphism and the identity endomorphism.
 \end{example}
 \begin{exercise}\label{exercise-homomorphism-maps-n-to-n-if-n-is-positive}
     In the above example, show that $\phi(n) = n$ for all positive integers $n$.
@@ -528,28 +506,21 @@ Note that in \myref{example-endomorphisms-of-Z} we started the entire computatio
     which means $\phi(1)$ is an idempotent.
 \end{proof}
 
-In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents of $\Z$ are 0 and 1. However, this is not true for all rings.
+In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents of $\Z$ are 0 and 1. However, this is not true for a general ring.
 
 \begin{example}\label{example-homomorphisms-from-Z12-to-Z28}
-    We find all ring homomorphisms $\phi: \Z_{12} \to \Z_{28}$. Note that $\Z_{12}$ is a ring with identity.
+    We find all ring homomorphisms $\phi: \Z_{12} \to \Z_{28}$. Note that $\Z_{12}$ is a ring with an identity of 1.
 
     By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent}, $a = \phi(1)$ is an idempotent. However, we cannot just assume that 0 and 1 are the \textit{only} idempotents in $\Z_{28}$; we need to check for them exhaustively.
 
-    By exhaustion, we see that
-    \begin{itemize}
-        \item $0^2 = 0$;
-        \item $1^2 = 1$;
-        \item $8^2 = 64 = 2 \times 28 + 8 = 8$; and
-        \item $21^2 = 441 = 15 \times 28 + 21 = 21$.
-    \end{itemize}
-    So the idempotents in $\Z_{28}$ are 0, 1, 8, and 21. This is not enough to narrow down the possible values of $\phi(1)$, so we need to invoke more facts.
+    By exhaustion, we see that $0^2 = 0$, $1^2 = 1$, $8^2 = 64 = 2 \times 28 + 8 = 8$, $21^2 = 441 = 15 \times 28 + 21 = 21$. So the idempotents in $\Z_{28}$ are 0, 1, 8, and 21. This is not enough to narrow down the possible values of $\phi(1)$, so we need to invoke more facts.
 
     Recall from part I that $|\phi(1)|_+$ divides $|1|_+$ by \myref{exercise-order-of-homomorphism-divides-order}. Therefore $|\phi(1)|_+$ divides 12. Furthermore, \myref{thrm-order-of-element-in-cyclic-group} tells us that the additive order of an element $k$ in the group $(\Z_n, +)$ is $\frac{n}{\gcd(k,n)}$. So we must now exhaust all idempotents in $\Z_{28}$ to check whether it is a valid value of $\phi(1)$.
     \begin{itemize}
-        \item $|0|_+ = 1$ which clearly divides 12, so it is a valid value of $\phi(1)$.
-        \item $|1|_+ = 28$ which does not divide 12, so it is not a valid value of $\phi(1)$. This is one way that differs from the previous example, where 1 \textit{was} a possible value of $\phi(1)$.
-        \item $|8|_+ = \frac{28}{\gcd(8,28)} = \frac{28}4 = 7$ which does not divide 12, so it is not a valid value of $\phi(1)$.
-        \item $|21|_+ = \frac{28}{\gcd(21,28)} = \frac{28}7 = 4$ which divides 12, so it is a valid value of $\phi(1)$.
+        \item $|0|_+ = 1$ which divides 12, so 0 is a valid value of $\phi(1)$.
+        \item $|1|_+ = 28$ which does not divide 12, so 1 is not a valid value of $\phi(1)$. This is one thing that differed from the previous example, where 1 \textit{was} a possible value of $\phi(1)$.
+        \item $|8|_+ = \frac{28}{\gcd(8,28)} = \frac{28}4 = 7$ which does not divide 12, so 8 is not a valid value of $\phi(1)$.
+        \item $|21|_+ = \frac{28}{\gcd(21,28)} = \frac{28}7 = 4$ which divides 12, so 21 is a valid value of $\phi(1)$.
     \end{itemize}
     Hence $a \in \{0, 21\}$, i.e. $\phi(1) = 0$ or $\phi(1) = 21$.
 
@@ -574,13 +545,13 @@ In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents
 \end{example}
 
 \begin{exercise}\label{exercise-homomorphism-over-Q-fixes-elements-of-Q}
-    Suppose $R$ and $R'$ are rings such that $\Q$ is a subring of both $R$ and $R'$. Let $\phi: R \to R'$ be a ring homomorphism such that $\phi(1) = 1$. Show that for any $q \in Q$ we have $\phi(q) = q$.
+    Suppose $R$ and $R'$ are rings such that $\Q$ is a subring of both $R$ and $R'$. Let $\phi: R \to R'$ be a ring homomorphism such that $\phi(1) = 1$. Show that for any $q \in \Q$ we have $\phi(q) = q$.
 \end{exercise}
 
 \newpage
 
 \section{Problems}
-\begin{problem}
+\begin{problem}\label{problem-integral-domain-iff-trivial-ideal-is-prime}
     Let $R$ be a ring.
     \begin{partquestions}{\roman*}
         \item Show that $R/\{0\} \cong R$.
@@ -609,7 +580,7 @@ In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents
     which is a subring of $\Mn{2}{\Z}$. Show that $R \cong \Z^2$.
 \end{problem}
 
-\begin{problem}
+\begin{problem}\label{problem-properties-of-ring-isomorphism}
     Let $R$ and $R'$ be rings, and let $\phi: R \to R'$ be a ring isomorphism. Prove or disprove the following statements.
     \begin{partquestions}{\alph*}
         \item $\phi^{-1}: R' \to R$ is a ring isomorphism.
@@ -620,12 +591,12 @@ In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents
 
 \begin{problem}
     Find all ring endomorphisms of $\Z_{10}$.\newline
-    Hence find all ring isomorphisms $\psi: \Z_{10} \to \Z_{10}$.
+    Hence find all ring automorphisms $\psi: \Z_{10} \to \Z_{10}$.
 \end{problem}
 
 \begin{problem}
-    Find all endomorphisms over $\Q[\sqrt3]$.\newline
-    Hence find all ring isomorphisms $\psi: \Q[\sqrt3] \to \Q[\sqrt3]$.
+    Find all ring endomorphisms of $\Q[\sqrt3]$.\newline
+    Hence find all ring automorphisms $\psi: \Q[\sqrt3] \to \Q[\sqrt3]$.
 \end{problem}
 
 \begin{problem}

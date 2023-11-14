@@ -1,0 +1,54 @@
+\section{Algebraic Extensions}
+\begin{questions}
+    \item It is not transcendental, i.e. it is algebraic. Let $\alpha = \sqrt{2-\sqrt{i}}$; one sees $\alpha^2 = 2 - \sqrt{i}$. Thus $\alpha^2 - 2 = -\sqrt{i}$ and so $(\alpha^2-2)^2 = i$. Note that $(\alpha^2 - 2)^2 = \alpha^4 - 4\alpha^2 + 4$ and so $\alpha^4 - 4\alpha^2 + 4 = i$. Squaring one more time we see
+    \[
+        x^8 - 8x^6 + 24x^4 - 32x^2 + 16 = i^2 = -1
+    \]
+    and so $\alpha$ is a zero of the polynomial $x^8 - 8x^6 + 24x^4 - 32x^2 + 17 \in \Q$. Therefore $\alpha$ is algebraic.
+
+    \item \begin{partquestions}{\alph*}
+        \item \begin{partquestions}{\roman*}
+            \item We know by Tower Law (\myref{thrm-tower-law}) that
+            \begin{align*}
+                [\Q(\sqrt2, \sqrt[3]3): \Q] &= [\Q(\sqrt2, \sqrt[3]3): \Q(\sqrt2)][\Q(\sqrt2):\Q]\\
+                &= [\Q(\sqrt2, \sqrt[3]3): \Q(\sqrt[3]3)][\Q(\sqrt[3]3):\Q].
+            \end{align*}
+            Since $[\Q(\sqrt2):\Q] = 2$ and $[\Q(\sqrt[3]3):\Q] = 3$, thus $[\Q(\sqrt2, \sqrt[3]3): \Q]$ is a multiple of $\lcm(2, 3) = 6$. On the other hand, note that $x^3 - 3 \in \Q(\sqrt2)[x]$ has a zero of $\sqrt[3]3$, so $[\Q(\sqrt2, \sqrt[3]3): \Q(\sqrt2)]$ is at most 3. Hence $[\Q(\sqrt2, \sqrt[3]3): \Q] = [\Q(\sqrt2, \sqrt[3]3): \Q(\sqrt2)][\Q(\sqrt2):\Q] \leq 3 \times 2 = 6$. Hence $[\Q(\sqrt2, \sqrt[3]3): \Q] = 6$.
+            
+            \item Note that $\sqrt[6]{72} = \sqrt2 \times \sqrt[3]3$, so $\sqrt[6]{72} \in \Q(\sqrt2, \sqrt[3]3)$. Consequently, we see that $\Q(\sqrt2, \sqrt[3]3, \sqrt[6]{72}) = \Q(\sqrt2, \sqrt[3]3)$ and so $[\Q(\sqrt2, \sqrt[3]3, \sqrt[6]{72}):\Q] = [\Q(\sqrt2, \sqrt[3]3): \Q] = 6$.
+        \end{partquestions}
+        
+        \item \begin{partquestions}{\roman*}
+            \item Let $\bar{p}(x) = x^5 + 2x + 1 \in \Z_3[x]$. Note
+            \begin{itemize}
+                \item $\bar{p}(0) = 1 \neq 0$;
+                \item $\bar{p}(1) = 4 = 1 \neq 0$; and
+                \item $\bar{p}(2) = 37 = 1 \neq 0$,
+            \end{itemize}
+            so $\bar{p}(x)$ has no zeroes in $\Z_3$. Thus $p(x)$ is irreducible over $\Q$ by Mod 3 Irreducibility test (\myref{thrm-mod-p-irreducibility-test}).
+            
+            \item Suppose otherwise, that $\sqrt2 \in \Q(\alpha)$. So $\Q \subset \Q(\sqrt2) \subseteq \Q(\alpha)$. Thus we see
+            \[
+                [\Q(\alpha): \Q] = [\Q(\alpha):\Q(sqrt2)][\Q(\sqrt2):\Q].
+            \]
+            But $[\Q(\alpha): \Q] = 5$ (since $\alpha$ is a zero of the irreducible polynomial $p(x)$) and $[\Q(\sqrt2):\Q] = 2$, so we see that 2 divides 5, a contradiction. Therefore $\sqrt2 \notin \Q(\alpha)$.
+        \end{partquestions}
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
+        \item One clearly sees $\Q(\sqrt3 + \sqrt5) \subseteq \Q(\sqrt3, \sqrt5)$ as $\sqrt3 + \sqrt5 \in \Q(\sqrt3, \sqrt5)$. Now observe
+        \begin{align*}
+            \left(\sqrt3+\sqrt5\right)^{-1} &= \frac{\sqrt3-\sqrt5}{\left(\sqrt3+\sqrt5\right)\left(\sqrt3-\sqrt5\right)}\\
+            &= -\frac12\left(\sqrt3-\sqrt5\right)\\
+        \end{align*}
+        so $\sqrt3-\sqrt5 \in \Q(\sqrt3 + \sqrt5)$. It follows then $\frac12\left(\sqrt3 + \sqrt5\right) + \frac12\left(\sqrt3 - \sqrt5\right) = \sqrt3$ and $\frac12\left(\sqrt3 + \sqrt5\right) - \frac12\left(\sqrt3 - \sqrt5\right) = \sqrt5$ and so $\sqrt3,\sqrt5\in\Q(\sqrt3+\sqrt5)$. Hence $\Q(\sqrt3,\sqrt5)\subseteq\Q(\sqrt3+\sqrt5)$, and therefore $\Q(\sqrt3, \sqrt5) = \Q(\sqrt3 + \sqrt5)$.
+
+        \item We see
+        \[
+            [\Q(\sqrt3, \sqrt5): \Q] = \underbrace{[\Q(\sqrt3, \sqrt5): \Q(\sqrt3)]}_2\underbrace{[\Q(\sqrt3):\Q]}_2 = 4
+        \]
+        by Tower Law (\myref{thrm-tower-law}), which means that the minimal polynomial of $\sqrt3+\sqrt5$ has degree 4.
+    \end{partquestions}
+
+    \item Let $E$ be an algebraic extension of $F$, which means $F \subseteq E$. Now let $\alpha \in E$. Since $F$ is algebraically closed, by \myref{corollary-in-algebraically-closed-field-irreducible-polynomial-is-degree-1}, every irreducible polynomial is of degree 1. Consequently the minimal polynomial of $\alpha$ in $F$ is $x - \alpha$, which clearly means $\alpha \in F$. So $E \subseteq F$, meaning $F = E$.
+\end{questions}

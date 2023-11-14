@@ -1,0 +1,196 @@
+\section{Relations and Functions}
+\begin{questions}
+    \item Consider the function $f: A \to A$ such that $1 \mapsto 2$, $2 \mapsto 3$, $3 \mapsto 4$, and $4 \mapsto 1$. Then clearly it is both injective and surjective, meaning that $f$ is bijective.
+
+    \item \begin{partquestions}{\alph*}
+        \item Is a relation since $A = \emptyset \subseteq S^2$. $A$ is not an equivalence relation since it is not reflexive (e.g., $1\not\mathrel{A}1$).
+
+        \item Is a relation since $B \subseteq S^2$. Note $B$ is an equivalence relation.
+        \begin{itemize}
+            \item Clearly it is reflexive.
+            \item If $x = y$ then clearly $x\mathrel{B}y$ means $y\mathrel{B}x$. For $x \neq y$, the condition for symmetry is vacuously true. Therefore $B$ is symmetric.
+            \item If $x = y = z$ then clearly if $x\mathrel{B}y$ and $y\mathrel{B}z$ then $x\mathrel{B}z$. Otherwise the condition for transitivity is vacuously true. Therefore $B$ is transitive.
+        \end{itemize}
+        Since $B$ is reflexive, symmetric, and transitive, therefore $B$ is an equivalence relation.
+
+        \item Is a relation since $C \subseteq S^2$. $C$ is not an equivalence relation since it is not symmetric ($1\mathrel{C}2$ but $2\not\mathrel{C}1$).
+
+        \item Is a relation since $D \subseteq S^2$. $D$ is not an equivalence relation since it is not transitive ($1\mathrel{D}2$ and $2\mathrel{D}3$ but $1\not\mathrel{D}3$).
+    \end{partquestions}
+
+    \item \begin{partquestions}{\alph*}
+        \item We look at each function individually.
+        \begin{itemize}
+            \item $\boxed{f}$ Suppose $x_1,x_2 \in [0,\infty)$ such that $f(x_1) = f(x_2)$, i.e. $x_1^2 + 1 = x_2^2 + 1$. Therefore $x_1^2 = x_2^2$. Since $x_1$, $x_2$ are non-negative, we can directly take square root to yield $x_1 = x_2$, meaning $f$ is injective.
+            \item $\boxed{g}$ Note $g(0.5) = 1-(0.5)^2 = 1 - (-0.5)^2 = g(-0.5)$ so $g$ is not injective.
+            \item $\boxed{h}$ Suppose $x_1,x_2 \in (-\infty, -1]$ such that $h(x_1) = h(x_2)$, i.e. $\ln(-x_1) = \ln(-x_2)$. Exponentiating both sides by $e$ yields $-x_1 = -x_2$ which trivially means $x_1 = x_2$. Therefore $h$ is injective.
+        \end{itemize}
+        Therefore $f$ and $h$ are the two injective functions.
+
+        \item We note that $\im f = [1, \infty)$. But $[1, \infty)$ is not a subset of $(-\infty, -1]$, which is the domain of $h$. Therefore $hf$ does not exist.
+
+        \item We note that $\im g = [0, 1]$, and $[0, 1]$ is a subset of $[0, \infty)$ which is the domain of $f$. Therefore $fg$ does exist.
+
+        One sees that
+        \[
+            fg: (-1, 1] \to \R, x \mapsto (1-x^2)^2 + 1.
+        \]
+        which has an image of $[1, 2]$.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\alph*}
+        \item Suppose $[x] = [y]$. Then $[x] \cap [y] = [x]$. As $x \sim x$, therefore $x \in [x] \cap [y]$, which means $[x] \cap [y] \neq \emptyset$.
+
+        \item Suppose $[x] \cap [y] \neq \emptyset$. Then there is an $a \in [x] \cap [y]$. So $a \in [x]$ and $a \in [y]$. By definition of equivalence classes, we see $x \mathrel{\sim} a$ and $y \mathrel{\sim} a$. Note that $y \mathrel{\sim} a$ means $a \mathrel{\sim} y$ by symmetry of $\sim$. Therefore, $x \mathrel{\sim} y$ by transitivity of $\sim$.
+
+        \item Suppose $x \mathrel{\sim} y$. Then $y \mathrel{\sim} x$ since $\sim$ is a symmetric relation. Note that for any $a \in [x]$, we know $x \mathrel{\sim} a$ by definition of equivalence class. As $y \mathrel{\sim} x$ and $x \mathrel{\sim} a$, therefore $y \mathrel{\sim} a$ by transitivity of $\sim$. Therefore $a \in [y]$. Hence $[x] \subseteq [y]$. Switching the roles of $x$ and $y$ also yields $[y] \subseteq [x]$, which therefore leads to the conclusion that $[x] = [y]$.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\alph*}
+        \item Prove. Given $h(f(x)) = h(g(x))$ for all $x \in X$. Since $h$ is injective, thus $f(x) = g(x)$ for all $x \in X$. Therefore $f = g$.
+
+        \item Disprove. Let $X = \Z$, and consider the functions
+        \begin{align*}
+            &f: n \mapsto n\\
+            &g: n \mapsto \begin{cases}
+                n & \text{if } n \text{ is even}\\
+                0 & \text{otherwise}
+            \end{cases}\\
+            &h: n \mapsto 2n
+        \end{align*}
+
+        We first claim that $h$ is injective. Suppose $m,n\in\Z$ such that $h(m) = h(n)$. Then $2m = 2n$, which clearly means $m = n$. Thus $h$ is injective.
+
+        Now we show that $fh = gh$. Let $n \in \Z$ be arbitrary; then
+        \begin{align*}
+            fh(n) &= f(h(n))\\
+            &= f(2n) & (\text{definition of } h)\\
+            &= 2n & (\text{definition of } f)\\
+            &= g(2n) & (\text{since } 2n \text{ is even})\\
+            &= g(h(n)) & (\text{definition of } h)
+        \end{align*}
+        which means $fh = gh$.
+
+        But clearly $f \neq g$. Thus the statement is false.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
+        \item $M(101) = 101 - 10 = 91$.
+
+        \item For $90 \leq n \leq 100$, we see that $101 \leq n+11 \leq 111$, meaning $n+11 > 100$. Therefore
+        \begin{align*}
+            M(n) &= M(M(n+11))\\
+            &= M((n+11) - 10) & (\text{since } n+11 > 100)\\
+            &= M(n+1).
+        \end{align*}
+
+        \item Note by part \textbf{(ii)} we see $M(90) = M(90 + 1) = M(91)$. Similarly, $M(91) = M(91 + 1) = M(92)$. Therefore
+        \[
+            M(90) = M(91) = M(92) = \cdots = M(99) = M(100) = M(101) = 91
+        \]
+        which means $M(n) = 91$ for all $90 \leq n \leq 100$.
+
+        \item For clarity, set $n = 101 - x$. We induct on positive integer values of $x$.
+
+        Base cases of $x = 1, 2, \dots, 11$ were proven in \textbf{(iii)}.
+
+        Suppose for some positive integer $k$ every $1 \leq r \leq k$ satisfies $M(101 - r) = 91$. We show that the statement holds for $k + 11$, i.e. $M(101 - (k+11)) = M(90 - k) = 91$.
+
+        Since $k$ is positive, therefore $90 - k < 90 < 100$. Hence
+        \begin{align*}
+            M(90 - k) &= M(M((90 - k) + 11))\\
+            &= M(M(101 - k))\\
+            &= M(91) & (\text{induction hypothesis})\\
+            &= 91 & (\text{by part \textbf{(iii)}})
+        \end{align*}
+        which means that the statement holds for $k + 11$.
+
+        Therefore by mathematical induction we have $M(101 - x) = 91$ for all positive integers $x$. Equivalently, this means that $M(n) = 91$ for all integers $n \leq 100$.
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
+        \item Note that
+        \begin{align*}
+            f(n,2) &= f(1, f(1, n-1))\\
+            &= f(1, n-1)\\
+            &= n-1
+        \end{align*}
+        for all integers $n > 1$.
+
+        \item We induct on $n$.
+
+        We show the base cases of 1 and 2 hold:
+        \begin{itemize}
+            \item When $n = 1$, we have $f(2, 1) = 2$, so the first case is true.
+            \item When $n = 2$, we have
+            \[
+                f(3,2) = f(1, f(1, 2)) = f(1, 2) = 2
+            \]
+            so the second case is true.
+        \end{itemize}
+
+        Now suppose for some positive integer $k$, every integer $1 \leq m \leq k$ results in the statement being true, i.e. $f(m+1,m) = 2$. We want to show that the case for $k+1$ is true, i.e. $f(k+2, k+1) = 2$.
+        \begin{align*}
+            f(k+2, k+1) &= f(k, f(k, k+1))\\
+            &= f(k, f(k, f(k, k-1)))\\
+            &= f(k, f(k, 2)) & (\text{hypothesis on } k-1)\\
+            &= f(k, f(1, f(1, k-1)))\\
+            &= f(k, f(1, k-1))\\
+            &= f(k, k-1) \\
+            &= 2 & (\text{hypothesis on } k-1)
+        \end{align*}
+        which proves that the statement for $k+1$ holds. Hence by mathematical induction, $f(n+1, n) = 2$.
+
+        \item We first prove the `general' case.
+        \begin{align*}
+            f(n, 4) &= f(3, f(3, n-1))\\
+            &= f(3, f(n-2, f(n-2, 2)))\\
+            &= f(3, f(n-2, n-1)) & (\text{by \textbf{(i)}})\\
+            &= f(3, f(n-2, f(n-2, n-3)))\\
+            &= f(3, f(n-2, f((n-3)+1, n-3)))\\
+            &= f(3, f(n-2, 2)) & (\text{by \textbf{(ii)}})\\
+            &= f(3, n-3) & (\text{by \textbf{(i)}})\\
+            &= f(n-4, f(n-4, 2))\\
+            &= f(n-4, n-5) & (\text{by \textbf{(i)}})\\
+            &= f((n-5)+1, n-5)\\
+            &= 2. & (\text{by \textbf{(ii)}})
+        \end{align*}
+        Note that this only works for $n > 5$. So we now have to independently verify the cases $n = 2$, $n = 3$, $n = 4$, and $n = 5$.
+        \begin{itemize}
+            \item If $n = 2$, then
+            \begin{align*}
+                f(2, 4) &= f(3, f(3, 1))\\
+                &= f(3, 3)\\
+                &= f(2, f(2, 2))\\
+                &= f(2, 1) & (\text{by \textbf{(i)}})\\
+                &= 2
+            \end{align*}
+            \item If $n = 3$, then
+            \begin{align*}
+                f(3, 4) &= f(3, f(3, 2))\\
+                &= f(3, 2) & (\text{by \textbf{(ii)}})\\
+                &= 2 & (\text{by \textbf{(ii)}})
+            \end{align*}
+            \item If $n = 4$, then
+            \begin{align*}
+                f(4, 4) &= f(3, f(3, 3))\\
+                &= f(3, f(2, f(2, 2)))\\
+                &= f(3, f(2, 1)) & (\text{by \textbf{(i)}})\\
+                &= f(3, 2)\\
+                &= 2 & (\text{by \textbf{(ii)}})
+            \end{align*}
+            \item Finally, if $n = 5$ we see $f(5, 4) = 2$ by \textbf{(ii)}.
+        \end{itemize}
+        Therefore, combining these cases with the general result for $n > 5$, we see that $f(n, 4)$ for all integers $n > 1$.
+    \end{partquestions}
+
+    \item We consider strong induction on $n$.
+
+    When $n = 1$, the set $X$ has only one element, say $X = \{a\}$. The only possible injective function is $f: X \to X, a \mapsto a$ which is clearly surjective. Hence $f$ is bijective, proving the base case.
+
+    Assume that the statement holds for all $r \leq k$ for some positive integer $k$, i.e. for any set $S$ with cardinality $r \leq k$, every injective function $f: S \to S$ is injective. We prove the case for a set with cardinality $k + 1$.
+
+    Let $X$ be a set with cardinality $k + 1$. Seeking a contradiction, suppose $f: X \to X$ is a injective function that is not surjective. Hence $|\im f| < k + 1$, meaning $|\im f| \leq k$. Define the function $g: \im f \to \im f$ where $g(t) = f(t)$. We note $g$ is injective since if $g(t_1) = g(t_2)$ this means $f(t_1) = f(t_2)$. As $f$ is injective thus $t_1 = t_2$, meaning $g$ is injective. By the Inductive Hypothesis we know $g$ is bijective, meaning $\im g = \im f$. So for any $y \in \im f$ (where $\im f$ is the codomain of $g$) there exists a $x \in \im f$ (where $\im f$ is the domain of $g$) such that $g(x) = y$. By definition of $g$ we see $f(x) = y$. Hence $f$ is surjective. But we assumed that $f$ is not surjective, a contradiction. Hence $f$ must be injective, proving the statement for $k + 1$.
+
+    Therefore any injective function from a finite set to itself must be surjective.
+\end{questions}

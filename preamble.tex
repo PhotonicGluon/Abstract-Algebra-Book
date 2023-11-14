@@ -13,11 +13,12 @@
 \usepackage{thmtools}
 
 % Page formatting, colour and images
-\usepackage[inner=2.5cm, outer=1.5cm, top=2.5cm, bottom=2cm]{geometry}
+\usepackage{geometry}
 \usepackage{graphicx}
 \usepackage{tocloft}
 \usepackage[x11names]{xcolor}
 \usepackage{wrapfig}
+\usepackage{cutwin}
 \usepackage{fancyhdr}
 \usepackage{emptypage}
 \usepackage{imakeidx}
@@ -26,7 +27,7 @@
 \usepackage{float}
 
 % Hyperlinks and references
-\usepackage[breaklinks]{hyperref}
+\usepackage{hyperref}
 \usepackage[capitalise, nameinlink]{cleveref}
 \usepackage{crossreftools}
 \usepackage[
@@ -47,6 +48,25 @@
 \usepackage{multicol}
 \usepackage{multirow}
 \usepackage{enumitem}
+
+%============= PDF Metadata ==============
+\hypersetup{
+    pdftitle={A Complete Introduction To Abstract Algebra},
+    pdfauthor={Kan Onn Kit},
+    pdfsubject={Abstract Algebra},
+    breaklinks=true
+}
+
+%=============== Geometry ================
+\makeatletter
+\Ifstr{\isebook}{true}{
+    % eBook geometry
+    \newgeometry{inner=2cm, outer=2cm, top=2.5cm, bottom=2cm}
+}{
+    % Normal paper geometry
+    \newgeometry{inner=2.5cm, outer=1.5cm, top=2.5cm, bottom=2cm}
+}
+\makeatother
 
 %============== Resources ================
 % Bibliography
@@ -69,16 +89,23 @@
     % Part 2
     {part2/images}
     {part2/images/ring-homomorphisms}
+    {part2/images/domains}
     % Part 3
     {part3/images}
+    {part3/images/algebraic-extensions}
 }
 
 %============= Formatting ================
+% Line format
 \linespread{1.05}
-\setlength{\parindent}{1.5em}
 
+% Indent
+\setlength{\parindent}{1.5em}
 \newlength{\normalparindent}
 \setlength{\normalparindent}{\parindent}
+
+% Heading format
+\setkomafont{sectioning}{\sffamily\bfseries\boldmath}
 
 %=========== (Re)definitions =============
 % Part page configuration
@@ -101,8 +128,8 @@
 
 \let\totient\varphi
 
-\renewcommand{\vert}{ \ \vline \ }
-\newcommand{\vertalt}{ \ | \ }
+\renewcommand{\vert}{ \;\: \vline \;\: }
+\newcommand{\vertalt}{ \;\: | \;\: }
 
 \newcommand{\myref}[1]{\textbf{\crthypercref{#1}}}
 \newcommand{\myreffigures}[1]{\textbf{\cref{#1}}}
@@ -112,17 +139,17 @@
 \renewcommand{\qedsymbol}{\qedproof}  % Actually changes the QED symbol
 
 % Quote definitions
-\newcommand{\quoteattr}[3]{
-    \vspace{0.5cm}
+\newcommand{\quoteattr}[4][0.5cm]{
+    \vspace{#1}
     \begin{center}
         \parbox{8cm}{
-            {\itshape#1}\\
-            \null\hfill--- #2\\
+            {\itshape#2}\\
+            \null\hfill--- #3\\
             \vspace{-0.1cm}
-            \hfill\small(#3)
+            \hfill\small(#4)
         }
     \end{center}
-    \vspace{0.5cm}
+    \vspace{#1}
 }
 
 % PDF-TeX image definitions
@@ -148,7 +175,7 @@
     \declaretheoremstyle[
         headfont=\normalfont\bfseries,
         bodyfont=\normalfont,
-        notefont=\normalfont\bfseries\itshape,
+        notefont=\normalfont\bfseries\boldmath\itshape,
         spaceabove=0pt,  % Space between previous paragraph and current block
         spacebelow=0pt,  % Space between current block and next paragraph
         mdframed={
@@ -165,17 +192,17 @@
     ]{#1-style}
 }
 
-\makenewresultstyle{theorem}{DarkSeaGreen2}{Green4}
+\makenewresultstyle{theorem}{DarkSeaGreen2}{DarkSeaGreen4}
 \declaretheorem[name=Theorem,style=theorem-style,within=section]{theorem}
 \renewcommand*{\thetheorem}{\arabic{chapter}.\arabic{section}.\arabic{theorem}}
 
-\makenewresultstyle{lemma}{Honeydew2}{PaleTurquoise4}
+\makenewresultstyle{lemma}{AntiqueWhite1}{Bisque4}
 \declaretheorem[style=lemma-style,sibling=theorem]{lemma}
 
 \makenewresultstyle{proposition}{Honeydew1}{SpringGreen4}
 \declaretheorem[style=proposition-style,sibling=theorem]{proposition}
 
-\makenewresultstyle{corollary}{DarkSeaGreen1}{SeaGreen4}
+\makenewresultstyle{corollary}{Cornsilk1}{Ivory4}
 \declaretheorem[style=corollary-style,sibling=theorem]{corollary}
 
 \makenewresultstyle{definition}{LightCyan1}{Cyan4}
@@ -238,6 +265,17 @@
 {\begin{proof}[Sketch of Proof.]}
 {\renewcommand{\qedsymbol}{\qedsketch}\end{proof}\renewcommand{\qedsymbol}{\qedproof}}
 
+% Miscellaneous environments
+\newenvironment{examplewithcutout}[6]
+{
+    \vspace{\baselineskip}
+    \begin{example}
+    \renewcommand\windowpagestuff{#6}
+    \Ifstr{#1}{left}{\opencutleft}{\Ifstr{#1}{right}{\opencutright}{\opencutcenter}}
+    \begin{cutout}{#2}{#3}{#4}{#5}
+}
+{\end{cutout}\end{example}}
+
 %=========== Custom Commands =============
 % Miscellaneous commands
 \newcommand{\ZeroRoman}[1]{\ifcase\value{#1}\relax0\else\Roman{#1}\fi}  % Roman numeral that works with zero
@@ -249,6 +287,11 @@
 
 \newcommand{\im}{\mathrm{im}\;}  % Image of a function
 \newcommand{\id}{\mathrm{id}}    % Identity function
+
+\newcommand{\Z}{\mathbb{Z}}  % The set of integers
+\newcommand{\Q}{\mathbb{Q}}  % The set of rational numbers
+\newcommand{\R}{\mathbb{R}}  % The set of real numbers
+\newcommand{\C}{\mathbb{C}}  % The set of complex numbers
 
 % Part 1
 \newcommand{\An}[1]{\mathrm{A}_{#1}}                  % Alternating group of degree n
@@ -275,11 +318,6 @@
 \newcommand{\ideal}[1]{\mathfrak{#1}}                % Ideal of a ring
 \newcommand{\princ}[1]{\left\langle#1\right\rangle}  % Principal ideal generated by the element
 
-\newcommand{\Z}{\mathbb{Z}}                        % The ring of integers
-\newcommand{\Q}{\mathbb{Q}}                        % The ring of rational numbers
-\newcommand{\R}{\mathbb{R}}                        % The ring of real numbers
-\newcommand{\C}{\mathbb{C}}                        % The ring of complex numbers
-
 \newcommand{\Mn}[2]{\mathcal{M}_{#1\times#1}(#2)}  % The ring of n by n matrices with entries in the ring R
 \newcommand{\ZeroM}[1]{\textbf{0}_{#1}}      % Zero matrix
 \newcommand{\IdentityM}[1]{\textbf{I}_{#1}}  % Identity matrix
@@ -292,6 +330,12 @@
 \newcommand{\Ann}[2]{\mathrm{Ann}_{#1}(#2)}  % Annihilator of a subset A of a ring R
 \newcommand{\Char}[1]{\mathrm{char}(#1)}     % Characteristic of a ring R
 \newcommand{\Nilr}[1]{\mathfrak{N}_{#1}}     % Nilradical of a ring R
+\newcommand{\Frac}[1]{\mathrm{Frac}(#1)}     % Field of fractions of an integral domain D
+
+% Part 3
+\newcommand{\Span}[1]{\mathrm{span}(#1)}  % Span of a set S of vectors
+\let\olddim\dim
+\renewcommand*{\dim}[1]{\olddim(#1)}      % Dimension of a vector space V
 
 %======== Custom Chapter Styling =========
 % Fix part numbering
@@ -347,6 +391,15 @@
 
 \makeatother
 
+%=========== Hyperlink Setup =============
+\makeatletter
+\Ifstr{\hideboxesforlinks}{true}{
+    \hypersetup{
+        pdfborder = {0 0 0}
+    }
+}{}
+\makeatother
+
 %======== Figure Caption Format ==========
 \usepackage[labelfont=bf]{caption}
 \DeclareCaptionLabelFormat{custom}{#1 #2.}
@@ -358,8 +411,11 @@
 \pagestyle{fancy}
 \fancyhf{}  % Clear header/footer
 
-\fancyhead[LE,RO]{\thepage}
-\fancyhead[LO,RE]{\textit{\nouppercase\leftmark}}
+\fancyhead[EL,OR]{\thepage}
+\fancyhead[OL,ER]{\textit{\nouppercase\leftmark}}
+
+\newcommand{\draftstartmark}{\fancyfoot[EC,OC]{\textsc{Work In Progress (Build \buildnumber)}}}
+\newcommand{\draftendmark}{\fancyfoot[EC,OC]{}}
 
 %====== Customise Table of Contents ======
 % Customise part styling in table of contents

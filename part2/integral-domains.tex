@@ -1,18 +1,25 @@
 \chapter{Integral Domains}
-We explored the absolute basics of rings in the previous chapter. When working in abstract algebra, we usually prefer rings with slightly more structure as they allow us to generate more useful and applicable results. Integral domains are an important category of rings, which we explore in this chapter.
+Unlike groups, rings do not inherently have the `cancellation law' built in. Rings may have zero divisors, which break the cancellation law. We look at a special category of rings, called domains, and commutative domains, called integral domains.
 
-\section{What is an Integral Domain?}
+\section{What is an (Integral) Domain?}
 \begin{definition}
-    An \textbf{integral domain}\index{integral domain} is a commutative ring with identity and contains no zero divisors.
+    A \textbf{domain}\index{domain!ring} is a ring with identity with no zero divisors.
 \end{definition}
 \begin{remark}
-    Recall that an element $a \neq 0$ is a zero divisor if there exists a $b \neq 0$ such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the integral domain.
+    Recall that an element $a \neq 0$ is a zero divisor if there exists a non-zero $b$ in the ring such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the domain.
 \end{remark}
 \begin{remark}
-    What this property grants us is a ``cancellation law'', similar to that for groups. We will prove this in \myref{prop-integral-domain-cancellation-law}. However, there may not be inverses when performing multiplication. This is similar to how the integers do not have multiplicative inverses in general, hence the name of ``integral domain''.
+    What this property grants us is a ``cancellation law'', similar to that for groups. We will prove this in \myref{prop-domain-cancellation-law}. However, there may not be inverses when performing multiplication.
 \end{remark}
 
-\begin{example}
+\begin{definition}
+    An \textbf{integral domain}\index{integral domain} is a commutative domain.
+\end{definition}
+\begin{remark}
+    This is similar to how the only way for two integers to multiply to zero is if both integers are zero, hence the name ``integral domain''.
+\end{remark}
+
+\begin{example}\label{example-integers-is-integral-domain}
     We show that the integers, $\Z$, the namesake for integral domains, is indeed an integral domain. We note that $\Z$ is a commutative ring as multiplication is commutative. Furthermore, 1 is the multiplicative identity in $\Z$. All that remains is to show that there does not exist any zero divisors in $\Z$.
 
     Suppose $a$ and $b$ are non-zero elements in $\Z$. We show that $ab \neq 0$ to prove that there does not exist any zero divisors. Let's first consider the case when $b > 0$. We may write
@@ -29,7 +36,7 @@ We explored the absolute basics of rings in the previous chapter. When working i
 \end{example}
 
 \begin{example}
-    We show that the ring $\Z[i]$, the gaussian integers, is an integral domain. Similar to $\Z$, we note multiplication is commutative with identity 1.
+    We show that the ring $\Z[i]$, the Gaussian integers, is an integral domain. Similar to $\Z$, we note multiplication is commutative with identity 1.
 
     Suppose $w$ and $z$ are non-zero elements in $\Z[i]$; write $w = a+bi$ and $z = c+di$. Note that $a^2+b^2 \neq 0$ and $c^2 + d^2 \neq 0$. By definition of complex multiplication we have
     \[
@@ -45,23 +52,19 @@ We explored the absolute basics of rings in the previous chapter. When working i
     which hence means that $ac-bd \neq 0$ and $ad+bc \neq 0$. Therefore $wz \neq 0$, meaning that $\Z[i]$ has no zero divisors. Thus $\Z[i]$ is indeed an integral domain.
 \end{example}
 
-We note an interesting result regarding fields here.
-\begin{proposition}\label{prop-field-is-integral-domain}
-    Any field is an integral domain.
-\end{proposition}
-\begin{proof}
-    Any non-zero element in a field is a unit, i.e. has an inverse. Now by \myref{prop-zero-divisors-have-no-inverses}, any zero divisor must not have an inverse; the converse being that any element that has an inverse cannot be a zero divisor. Hence, there are no zero divisors in a field. Now a field is commutative, therefore meaning that the field is an integral domain.
-\end{proof}
-
-Let's look at some non-examples of integral domains.
+Let's look at some non-examples of domains.
 \begin{example}
-    The ring $\Mn{n}{R}$ where $R$ is any ring is not an integral domain since $\Mn{n}{R}$ is not commutative.
+    The ring $\Mn{n}{R}$ where $R$ is any ring and $n$ is any integer greater than 1 is not a domain since, for $n = 2$, we have the non-zero matrices
+    \[
+        A = \begin{pmatrix}0&0\\0&1\end{pmatrix} \text{ and } B = \begin{pmatrix}1&0\\0&0\end{pmatrix}
+    \]
+    which have a product that is the zero matrix. Thus $\Mn{n}{R}$ has zero divisors, meaning that $\Mn{n}{R}$ is not a domain (and hence not an integral domain).
 \end{example}
 \begin{example}
-    The ring $2\Z$ is not an integral domain as it does not contain a multiplicative identity (namely, 1).
+    The ring $2\Z$ is not a domain as it does not contain a multiplicative identity (namely, 1). Thus $2\Z$ is also not an integral domain.
 \end{example}
 \begin{example}
-    The ring $\Z \times \Z$ under pairwise addition and multiplication is not an integral domain as $(0,1) \neq (0, 0)$ and $(1, 0) \neq (0, 0)$ but $(0,1)(1,0) = (0, 0)$, meaning that $\Z \times \Z$ contains at least one zero divisor.
+    The ring $\Z \times \Z$ under pairwise addition and multiplication is not a domain as $(0,1) \neq (0, 0)$ and $(1, 0) \neq (0, 0)$ but $(0,1)(1,0) = (0, 0)$, meaning that $\Z \times \Z$ contains at least one zero divisor.
 \end{example}
 
 \begin{exercise}
@@ -72,13 +75,23 @@ Let's look at some non-examples of integral domains.
     is an integral domain.
 \end{exercise}
 \begin{exercise}
-    Explain why all $\Z_n$ where $n$ is a positive composite number are not integral domains.
+    Let $n$ be an arbitrary composite number. Prove that $\Z_n$ is not an integral domain.
 \end{exercise}
 
-\section{General Results}
-With an introduction of integral domains out of the way, we introduce some general results applicable to integral domains.
-\begin{proposition}[Cancellation Law for Integral Domains]\index{integral domain!cancellation law}\label{prop-integral-domain-cancellation-law}
-    Let $R$ be an integral domain, $r, x, y \in R$, and $r \neq 0$. Then the following statements are equivalent.
+\newpage
+
+We note an interesting result regarding fields here.
+\begin{proposition}\label{prop-field-is-integral-domain}
+    Any field is an integral domain.
+\end{proposition}
+\begin{proof}
+    Any non-zero element in a field is a unit, i.e. has an inverse. Now by \myref{prop-zero-divisors-have-no-inverses}, any zero divisor must not have an inverse; the contrapositive being that any element that has an inverse cannot be a zero divisor. Hence, there are no zero divisors in a field. Now a field is commutative, therefore meaning that the field is an integral domain.
+\end{proof}
+
+\section{General Properties and Results}
+With an introduction of domains and integral domains out of the way, we introduce some general results applicable to them.
+\begin{proposition}[Cancellation Law for Domains]\index{cancellation law!domains}\label{prop-domain-cancellation-law}
+    Let $D$ be a domain, $r, x, y \in D$, and $r \neq 0$. Then the following statements are equivalent.
     \begin{enumerate}[label=(\arabic*)]
         \item $x = y$
         \item $rx = ry$
@@ -89,10 +102,10 @@ With an introduction of integral domains out of the way, we introduce some gener
     We prove the statements in order.
     \begin{itemize}
         \item $\boxed{(1) \implies (2)}$ Given $x = y$, this means $x - y = 0$. Multiplying $r$ on the left on both sides yields $r(x-y) = r0 = 0$. Distributing yields $rx - ry = 0$ which hence means $rx = ry$.
-        
-        \item $\boxed{(2) \implies (3)}$ Given $rx = ry$. Multiplying $r$ on the right on both sides yields $rxr = ryr$, thereby meaning $rxr - ryr = 0$. Factoring yields $r(xr - yr) = 0$. As $R$ is an integral domain, the only way for this to occur is if $r = 0$ (which is impossible) or $xr - yr = 0$. Therefore $xr = yr$.
-        
-        \item $\boxed{(3) \implies (1)}$ Given $xr = yr$ we may write $xr - yr = (x-y)r = 0$. Since $R$ is an integral domain we must have $x - y = 0$ or $r = 0$ (impossible as $r \neq 0$). Hence $x = y$.
+
+        \item $\boxed{(2) \implies (3)}$ Given $rx = ry$. Multiplying $r$ on the right on both sides yields $rxr = ryr$, thereby meaning $rxr - ryr = 0$. Factoring yields $r(xr - yr) = 0$. As $R$ is a domain, the only way for this to occur is if $r = 0$ (which is impossible) or $xr - yr = 0$. Therefore $xr = yr$.
+
+        \item $\boxed{(3) \implies (1)}$ Given $xr = yr$ we may write $xr - yr = (x-y)r = 0$. Since $R$ is a domain we must have $x - y = 0$ or $r = 0$ (impossible as $r \neq 0$). Hence $x = y$.
     \end{itemize}
     This proves the proposition.
 \end{proof}
@@ -103,25 +116,25 @@ With an introduction of integral domains out of the way, we introduce some gener
 \begin{proof}
     A finite integral domain is a commutative ring with identity; all that remains is to prove that every non-zero element has an inverse.
 
-    Suppose $R$ is a finite integral domain and take a non-zero element $r$ in $R$. Consider
+    Suppose $D$ is a finite integral domain and take a non-zero element $r$ in $D$. Consider
     \begin{align*}
         A &= \{r^k \vert k \in \Z,\;k\geq 0\}\\
         &= \{1, r, r^2, r^3, \dots\}\\
-        &\subseteq R.
+        &\subseteq D.
     \end{align*}
-    Note that since $R$ is finite, $A$ must be finite as well. Therefore there must exist positive integers $m$ and $n$ with $m > n$ such that $r^m = r^n$, meaning $r^m - r^n = 0$. As $m > n$, thus $r^n\left(r^{m-n}-1\right) = 0$. Hence, as there are no zero divisors in $R$, either $r^n = 0$ or $r^{m-n} - 1 = 0$.
+    Note that since $D$ is finite, $A$ must be finite as well. Therefore there must exist positive integers $m$ and $n$ with $m > n$ such that $r^m = r^n$, meaning $r^m - r^n = 0$. As $m > n$, thus $r^n\left(r^{m-n}-1\right) = 0$. Hence, as there are no zero divisors in $R$, either $r^n = 0$ or $r^{m-n} - 1 = 0$.
 
-    Now if $r^n = 0$ then $n > 1$ (since $r^1 = r \neq 0$ by assumption). Note $r^n = rr^{n-1} = 0$, which hence means $r^{n-1} = 0$ as $r \neq 0$ and $R$ has no zero divisors. But we may repeat this argument on $n - 1$ to eventually terminate at $r = 0$, which is a contradiction. Hence we must conclude that $r^{m-n} - 1 = 0$. We may write $r^{m-n}-1 = 0$ as $rr^{m-n-1} = 1$ which means that $r$ is a unit (as $r^{m-n-1}$ is its inverse). Therefore every non-zero element has an inverse.
+    Now if $r^n = 0$ then $n > 1$ (since $r^1 = r \neq 0$ by assumption). Note $r^n = rr^{n-1} = 0$, which hence means $r^{n-1} = 0$ as $r \neq 0$ and $D$ has no zero divisors. But we may repeat this argument on $n - 1$ to eventually terminate at $r = 0$, which is a contradiction. Hence we must conclude that $r^{m-n} - 1 = 0$. We may write $r^{m-n}-1 = 0$ as $rr^{m-n-1} = 1$ which means that $r$ is a unit (as $r^{m-n-1}$ is its inverse). Therefore every non-zero element has an inverse.
 
-    Hence $R$ is a field.
+    Hence $D$ is a field.
 \end{proof}
 
 \begin{remark}
     We note that finite fields are also known as \textbf{Galois fields}\index{Galois Field}, so-named in honour of \'Evariste Galois. We explore more properties of fields and Galois fields in part III.
 \end{remark}
 
-\begin{example}
-    Let $p$ be a prime and consider the ring $\Z_p$. Clearly multiplication is commutative with identity 1. Also, as the only way to factor $p$ is $1 \times p$ and since $p \notin \Z_p$, thus there are no zero divisors in $\Z_p$. Hence $\Z_p$ is an integral domain. Now $\Z_p$ only has $p$ elements (namely the integers 0 to $p - 1$), so it is finite. By \myref{thrm-finite-integral-domain-is-field} we know that $\Z_p$ is a field.
+\begin{example}\label{example-Zp-is-field}
+    Let $p$ be a prime and consider the ring $\Z_p$. Clearly multiplication is commutative with identity 1. We just need to show that $\Z_p$ has no zero divisors. So suppose $a,b \in \Z_p$ such that $ab = 0$ in $\Z_p$. Thus $ab = pk$ for some integer $k$; Euclid's lemma (\myref{corollary-euclid}) tells us that $p \vert a$ or $p \vert b$, which means $a = 0$ or $b = 0$ in $\Z_p$. Thus there are no zero divisors in $\Z_p$, so $\Z_p$ is an integral domain. Now $\Z_p$ is finite as it only has $p$ elements; by \myref{thrm-finite-integral-domain-is-field} we know that $\Z_p$ is a field.
 \end{example}
 
 \begin{example}
@@ -143,8 +156,8 @@ With an introduction of integral domains out of the way, we introduce some gener
             \end{tabular}
         }
     \end{table}
-    
-    From the table, we have shown that no two non-zero elements in $\Z_3[i]$ multiply to zero. Therefore $\Z_3[i]$ has no zero divisors, which means $\Z_3[i]$ is an integral domain. Furthermore, as $\Z_3[i]$ is finite, therefore we know that it is a finite field by \myref{thrm-finite-integral-domain-is-field}.
+
+    From the table, we have shown that no two non-zero elements in $\Z_3[i]$ multiply to zero. Therefore $\Z_3[i]$ has no zero divisors, which means $\Z_3[i]$ is an integral domain. Furthermore, as $\Z_3[i]$ is finite, therefore it is a finite field by \myref{thrm-finite-integral-domain-is-field}.
 \end{example}
 
 \begin{exercise}\label{exercise-Zn2[alpha]}
@@ -155,12 +168,24 @@ With an introduction of integral domains out of the way, we introduce some gener
     where $\alpha^2 = 1 + \alpha$ under regular addition and multiplication a field?
 \end{exercise}
 
+We end this section by defining factors of an element in an integral domain. These definitions will not appear useful now, but their use will become evident when the time comes.
+
+\begin{definition}
+    Let $D$ be an integral domain and $a,b \in D$. Then \textbf{$a$ divides $b$}\index{divides!for integral domains} (or that $a$ is a \textbf{factor}\index{factor!for integral domains} of $b$) if there is an element $k \in D$ such that $ak = b$. This is denoted $a \vert b$.
+\end{definition}
+\begin{example}
+    One sees that 2 divides 6 in $\Z$ since $2 \times 3 = 6$. Similarly 3 divides 6 since $3 \times 2 = 6$.
+\end{example}
+\begin{example}
+    In $\Z_7$, we see that 3 divides 5 since $3 \times 4 = 12 = 5$. We also see that 5 divides 3 since $5 \times 2 = 10 = 3$.
+\end{example}
+
 \section{Characteristic of a Ring}
 Before we introduce the characteristic of a ring, we clarify the meaning of the order of an element in the ring.
 \begin{definition}
     Let $R$ be a ring and $x$ an element of the ring $R$.
     \begin{itemize}
-        \item The \textbf{additive order}\index{order!additive} of $x$ is the order of $x$ in the group $(R, +)$. We denote the additive order of $x$ by $|x|_+$.
+        \item The \textbf{additive order}\index{order!additive} of $x$ is the order of $x$ in the group $(R, +)$ and is denoted $|x|_+$.
         \item If $R$ is a group with identity 1, the \textbf{multiplicative order}\index{order!multiplicative} of $x$ is the smallest positive integer $n$ such that $x^n = 1$ and is denoted $|x|_\times$, if it exists.
     \end{itemize}
 \end{definition}
@@ -174,7 +199,7 @@ Before we introduce the characteristic of a ring, we clarify the meaning of the 
 \end{definition}
 
 We look at two properties about the characteristic.
-\begin{proposition}
+\begin{proposition}\label{prop-characteristic-of-ring-with-identity}
     If $R$ is a ring with identity and $\Char{R} \neq 0$, then $\Char{R} = |1|_+$.
 \end{proposition}
 \begin{proof}
@@ -197,11 +222,11 @@ We look at two properties about the characteristic.
     Since $m \leq n$ and $m \geq n$, thus $m = n$.
 \end{proof}
 
-\begin{proposition}\label{prop-zero-of-prime-characteristic-if-integral-domain}
-    If $R$ is an integral domain, then either $\Char{R} = 0$ or $\Char{R} = p$ where $p$ is a prime.
+\begin{proposition}\label{prop-zero-or-prime-characteristic-if-integral-domain}
+    If $D$ is an integral domain, then either $\Char{D} = 0$ or $\Char{D} = p$ where $p$ is a prime.
 \end{proposition}
 \begin{proof}
-    If $\Char{R} = 0$ we are done, so assume that $\Char{R} = n \neq 0$. Furthermore assume $n = ab$ with $1 \leq a,b \leq n$.
+    If $\Char{D} = 0$ we are done, so assume that $\Char{D} = n \neq 0$. Furthermore assume $n = ab$ with $1 \leq a,b \leq n$.
 
     Note that
     \[
@@ -218,8 +243,8 @@ We look at two properties about the characteristic.
     Is the trivial ring an integral domain?
 \end{exercise}
 \begin{exercise}
-    What is the characteristic of the ring $\Z_2[\alpha]$ (as defined in \myref{exercise-Zn2[alpha]})?
-\end{exercise} 
+    What is the characteristic of the ring $\Z_2[\alpha]$ in \myref{exercise-Zn2[alpha]}?
+\end{exercise}
 
 \newpage
 
@@ -229,10 +254,6 @@ We look at two properties about the characteristic.
     \[
         \Z_5[i] = \{a + bi \vert a,b\in\Z_5\}.
     \]
-\end{problem}
-
-\begin{problem}
-    Show that the ring of gaussian integers, $\Z[i]$, is an integral domain.
 \end{problem}
 
 \begin{problem}

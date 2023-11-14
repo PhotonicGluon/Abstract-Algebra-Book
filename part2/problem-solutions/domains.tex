@@ -1,0 +1,266 @@
+\section{Domains and Factorization}
+\begin{questions}
+    \item Given that we have integers $a$ and $b$ such that $a^2 + b^2$ is a prime, therefore $N(a+bi) = a^2+b^2$ is prime. Therefore $a+bi$ is irreducible (\myref{prop-properties-of-quadratic-integer-norm}). Since $\Z[i]$ is a Euclidean domain (\myref{example-gaussian-integers-is-euclidean-domain}) it is thus a PID (\myref{thrm-euclidean-domain-is-PID}) and so any irreducible in $\Z[i]$ is prime (\myref{thrm-in-PID-prime-iff-irreducible}).
+
+    \item We induct on $n$. When $n = 2$, this reduces down to the definition of a prime element in an integral domain. Now suppose $p \vert a_1a_2\cdots a_k$ for some $k \geq 2$. We are to show that this works for $k + 1$.
+
+    Note $p \vert a_1a_2\cdots a_ka_{k+1}$ is the same as $p \vert (a_1a_2\cdots a_k)a_{k+1}$. By definition of a prime element we know that $p \vert a_1a_2\cdots a_k$ or $p \vert a_{k+1}$. Therefore, using induction hypothesis on the former, we see $p\vert a_1$, or $p\vert a_2$, or $p \vert a_3$, etc., or $p \vert a_k$, or $p \vert a_{k+1}$, which proves the statement for $k + 1$.
+
+    Therefore by induction we establish the required result.
+
+    \item Since $\Z[i]$ is a PID (as shown earlier), any irreducible in $\Z[i]$ is prime (\myref{thrm-in-PID-prime-iff-irreducible}). So we just need to show whether the following are reducible or irreducible.
+    \begin{partquestions}{\alph*}
+        \item $6 = 2 \times 3$. As $N(2) = 4 \neq 1$ and $N(3) = 9 \neq 1$, neither 2 nor 3 are units in $\Z[i]$. Therefore 6 is reducible, and so it is not prime.
+
+        \item We claim 7 is irreducible. Suppose $7 = wz$ for some $w,z \in \Z[i]$. Then $49 = N(wz) = N(w)N(z)$. Suppose neither $w$ nor $z$ are units, which means $N(w) = N(z) = 7$.
+
+        If $w = a+bi$ for some integers $a$ and $b$, then $N(w) = a^2+b^2 = 7$. This means $a^2 = 7 - b^2$. For a solution to exist the right hand side cannot be negative, so we note that $b$ can only be -2, -1, 0, 1, or 2. For each one of these possibilities we see that $7 - b^2$ is not a square, so there is no solution for $w$ (and likewise for $z$).
+
+        Hence one of $N(w)$ or $N(z)$ is 1, meaning that one of $w$ or $z$ is a unit. Hence 7 is irreducible and therefore prime.
+
+        \item 13 is not since $13 = (3+2i)(3-2i)$, and one sees that $N(3+2i) = N(3-2i) = 13 \neq 1$, so neither $3+2i$ nor $3-2i$ are units. Hence 13 is reducible and therefore not prime.
+
+        \item $1+2i$ is irreducible since $N(1+2i) = 5$ is prime (\myref{prop-properties-of-quadratic-integer-norm}). Hence $1+2i$ is prime.
+
+        \item $3+2i$ is reducible since $3+4i = (2+i)^2$ and $N(2+i) = 5 \neq 1$, so $2+i$ is not a unit. Hence $3+2i$ is not prime.
+
+        \item $5+i$ is reducible since $5+i = (1+i)(3-2i)$ and $N(1+i) = 2 \neq 1$ and $N(3-2i) = 13 \neq 1$, so neither $1+i$ nor $3-2i$ are units. Hence $5+i$ is not a prime.
+    \end{partquestions}
+
+    \item To prove that $R$ is an equivalence relation, we need to show that $R$ is reflexive, symmetric, and transitive.
+    \begin{itemize}
+        \item \textbf{Reflexive}: Clearly for any $a \in D$ we see $a = 1a$. 1 is a unit since it is its own inverse. Hence $a$ is its own associate, so $a\mathrel{R}a$.
+
+        \item \textbf{Symmetric}: Suppose $a,b \in D$ such that $a\mathrel{R}b$. Then $a = ub$ for some unit $u \in D$. Then $b = u^{-1}a$, and since $u^{-1}$ is a unit, thus $b$ and $a$ are associates. Hence $b\mathrel{R}a$.
+
+        \item \textbf{Transitive}: Suppose $a,b,c\in D$ such that $a\mathrel{R}b$ and $b\mathrel{R}c$. Then there exist units $u,v \in D$ such that $a = ub$ and $b = vc$. Thus $a = uvc$. As the product of units is a unit \myref{prop-product-of-units-is-unit}, therefore $uv$ is a unit and so $a$ and $c$ are associates. Hence $a\mathrel{R}c$.
+    \end{itemize}
+    Therefore $R$ is an equivalence relation.
+
+    \item We see
+    \begin{align*}
+        (3x+2)(x+4) &= 3x^2 + 12x + 2x + 8\\
+        &= 3x^2 + 14x + 8\\
+        &= 3x^2 + 4x + 3
+    \end{align*}
+    in $\Z_5[x]$, and we also see
+    \begin{align*}
+        (4x+1)(2x+3) &= 8x^2 + 12x + 2x + 3\\
+        &= 8x^2 + 14x + 3\\
+        &= 3x^2 + 4x + 3
+    \end{align*}
+    in $\Z_5[x]$, which is the same polynomial as before.
+
+    We note that this does not contradict \myref{corollary-polynomial-ring-over-field-is-UFD} since the factors, up to reordering, are associates. Note
+    \begin{align*}
+        3x+2 = 8x+2 = 2(4x+1)\\
+        x+4 = 6x+9 = 3(2x3)
+    \end{align*}
+    and since $\Z_5$ is a field, so 2 and 3 are units as all non-zero elements in $\Z_5$ are units. Therefore $3x+2$ and $4x+1$ are associates, as are $x+4$ adn $2x+3$.
+
+    \item For the forward direction, suppose $p$ is a prime. Let $a, b \in D$ such that $ab \in \princ{p}$, which means there exists a $k \in D$ such that $ab = kp$. So $p \vert ab$. As $p$ is a prime, this means that either $p \vert a$ or $p \vert b$. Without loss of generality assume $p \vert a$, meaning $a = qp$ for some $q \in D$. Hence $a \in \princ{p}$, which shows that $\princ{p}$ is a prime ideal.
+
+    For the reverse direction, suppose $\princ{p}$ is prime and $p \vert ab$. Thus $ab = kp$ for some $k \in D$, which means $ab \in \princ{p}$. So $a \in \princ{p}$ or $b \in \princ{p}$ by definition of prime ideal. Without loss of generality assume $a \in \princ{p}$; we see $a = qp$ for some $q \in D$, meaning $p \vert a$. Hence $p$ is a prime element.
+
+    \item Define $\phi: \Frac{F} \to F$ such that $[(a,b)]\mapsto ab^{-1}$. We show that $\phi$ is a well-defined ring isomorphism.
+    \begin{itemize}
+        \item \textbf{Well-defined}: Let $[(a,b)], [(c,d)] \in \Frac{F}$ and suppose $[(a,b)] = [(c,d)]$. Then $(a,b) \mathrel{\sim} (c,d)$ by \myref{thrm-equivalence-class-equivalence}, which means $ad = bc$ by definition of the equivalence relation on the field of fractions. Hence $ab^{-1} = cd^{-1}$ (remembering that the operation is commutative in a field), so
+        \[
+            \phi([(a,b)]) = ab^{-1} = cd^{-1} = \phi([(c,d)]),
+        \]
+        meaning that $\phi$ is well-defined.
+
+        \item \textbf{Homomorphism}: Let $[(a,b)], [(c,d)] \in \Frac{F}$. Note
+        \begin{align*}
+            \phi([(a,b)] + [(c,d)]) &= \phi([(ad+bc, bd)])\\
+            &= (ad+bc)(bd)^{-1}\\
+            &= (ad)(bd)^{-1} + (bc)(bd)^{-1}\\
+            &= add^{-1}b^{-1} + bcd^{-1}b^{-1}\\
+            &= ab^{-1} + cd^{-1}\\
+            &= \phi([(a,b)]) + \phi([(c,d)])
+        \end{align*}
+        and
+        \begin{align*}
+            \phi([(a,b)][(c,d)]) &= \phi([(ac,bd)])\\
+            &= (ac)(bd)^{-1}\\
+            &= (ab^{-1})(cd^{-1})\\
+            &= \phi([(a,b)])\phi([(c,d)])
+        \end{align*}
+        so $\phi$ is a ring homomorphism.
+
+        \item \textbf{Injective}: Let $[(a,b)], [(c,d)] \in \Frac{F}$ such that $\phi([(a,b)]) = \phi([(c,d)])$. Then $ab^{-1} = cd^{-1}$, so $ad = bc$. Hence $(a,b) \mathrel{\sim} (c,d)$ by definition of the equivalence relation on the field of fractions, so $[(a,b)] = [(c,d)]$ by \myref{thrm-equivalence-class-equivalence}.
+
+        \item \textbf{Surjective}: Suppose $r \in F$. Note $r1^{-1} = r$. Therefore $\phi([(r, 1)]) = r1^{-1} = r$, meaning that every $r \in F$ has a pre-image under $\phi$.
+    \end{itemize}
+    Therefore $\phi$ is a well-defined ring isomorphism, meaning that $\Frac{F} \cong F$.
+
+    \item We note that the only units of $\Z[\sqrt{-6}]$ are $\pm1$. We claim that 2, 3, and $\sqrt{-6}$ are all irreducible in $\sqrt{-6}$.
+
+    We first show that 2 is irreducible in $\Z[\sqrt{-6}]$. Suppose $2 = (a+b\sqrt{-6})(c+d\sqrt{-6})$ for some integers $a,b,c,d\in \Z$. So
+    \[
+        4 = N(2) = N((a+b\sqrt{-6})(c+d\sqrt{-6})) = (a^2+6b^2)(c+6d^2)
+    \]
+    which means that $a^2+6b^2$ must be 1, 2, or 4.
+    \begin{itemize}
+        \item If $a^2+6b^2 = 1$, then one sees that we must have $a = \pm1$ and $b = 0$, which means $a+b\sqrt{-6} = \pm1$ is a unit.
+        \item If $a^2+6b^2 = 2$ then $a^2 = 2 - 6b^2$. As $b^2 \geq 0$, we see that $b = 0$ is the only way for the right hand side to not be negative. But $a^2 = 2$ has no solution. Thus $a^2+6b^2 = 2$ is impossible.
+        \item If $a^2+6b^2 = 4$ then $c^2+6d^2 = 1$. We may then use the argument for the first case to show that $c+d\sqrt{-6} = \pm1$ which is a unit.
+    \end{itemize}
+    Therefore 2 is an irreducible.
+
+    We next show that 3 is irreducible in $\Z[\sqrt{-6}]$. Suppose $3 = (a+b\sqrt{-6})(c+d\sqrt{-6})$ for some integers $a,b,c,d\in \Z$. So
+    \[
+        9 = N(3) = N((a+b\sqrt{-6})(c+d\sqrt{-6})) = (a^2+6b^2)(c+6d^2)
+    \]
+    which means that $a^2+6b^2$ must be 1, 3, or 9.
+    \begin{itemize}
+        \item If $a^2+6b^2 = 1$, then $a+b\sqrt{-6} = \pm1$ is a unit by previous working.
+        \item If $a^2+6b^2 = 3$ then $a^2 = 3 - 6b^2$. As $b^2 \geq 0$, we see that $b = 0$ is the only way for the right hand side to not be negative. But $a^2 = 3$ has no solution. Thus $a^2+6b^2 = 3$ is impossible.
+        \item If $a^2+6b^2 = 4$ then $c^2+6d^2 = 1$ which means $c+d\sqrt{-6} = \pm1$ which is a unit.
+    \end{itemize}
+    Therefore 3 is an irreducible.
+
+    We finally show that $\sqrt{-6}$ is an irreducible in $\Z[\sqrt{-6}]$. Suppose $\sqrt{-6} = (a+b\sqrt{-6})(c+d\sqrt{-6})$ for some integers $a,b,c,d\in \Z$. So
+    \[
+        6 = N(\sqrt{-6}) = N((a+b\sqrt{-6})(c+d\sqrt{-6})) = (a^2+6b^2)(c+6d^2)
+    \]
+    which means that $a^2+6b^2$ must be 1, 2, 3, or 6.
+    \begin{itemize}
+        \item If $a^2+6b^2 = 1$, then $a+b\sqrt{-6} = \pm1$ is a unit.
+        \item If $a^2+6b^2 = 2$ is impossible by earlier working.
+        \item If $a^2+6b^2 = 3$ is impossible by earlier working.
+        \item If $a^2+6b^2 = 6$ then $c^2+6d^2 = 1$ so $c+d\sqrt{-6} = \pm1$ which is a unit.
+    \end{itemize}
+    Therefore $\sqrt{-6}$ is an irreducible.
+
+    Clearly 2, 3, and $\sqrt{-6}$ are not associates of each other.
+
+    Finally, notice $6 = 2 \times 3 = (-\sqrt{-6})(\sqrt{-6})$ which is two factorizations of 6 into irreducibles. Therefore $\Z[\sqrt{-6}]$ is not a UFD.
+
+    \item For the forward direction, assume $p$ is an irreducible, and let $p \vert ab$ for some $a,b \in D$. Therefore $ab = pq$ for some $q \in D$. As $D$ is a UFD, we may factorise $a$, $b$, and $q$ into irreducibles, say $a_1, a_2, \dots, a_r$, $b_1, b_2, \dots, b_s$, and $q_1, q_2, \dots, q_t$ respectively. Therefore
+    \[
+        a_1a_2\cdots a_r b_1b_2\cdots b_s = p q_1q_2\cdots q_t.
+    \]
+    As $p$ is also an irreducible, $p$ must be a $a_i$ or $b_i$, which means $p$ divides $a$ or $b$.
+
+    For the reverse direction, since UFDs are integral domains, therefore any prime is an irreducible (\myref{thrm-in-integral-domain-primes-are-irreducibles}).
+
+    \item \begin{partquestions}{\alph*}
+        \item Suppose $a$ and $b$ are associates in $D$. So there is a unit $u \in D$ such that $a = ub$. Note
+        \begin{align*}
+            N(a) &= N(ub) \leq N(b) \text{ and}\\
+            N(b) &= N(u^{-1}a) \leq N(a)
+        \end{align*}
+        by \textbf{EF1}. Hence $N(a) = N(b)$.
+
+        \item For the forward direction, suppose $u \in D$ is a unit. Then there exists a $v \in D$ such that $uv = 1$. Therefore $N(uv) = N(1)$. Note that
+        \begin{align*}
+            N(u) &\leq N(uv) = N(1) \text{ and}\\
+            N(1) &\leq N(u1) = N(u)
+        \end{align*}
+        by \textbf{EF1}, so $N(u) = N(1)$.
+
+        For the reverse direction, suppose $N(u) = N(1)$. By \textbf{EF2}, there exists $q, r \in D$ such that $1 = uq + r$ with $r = 0$ or $N(r) < N(u)$. As $N(u) = N(1)$, so $r = 0$ or $N(r) < N(1)$. But $N(1) \leq N(1x) = N(x)$ for all $x \in D$, so $N(1) > N(r)$ is impossible. Hence $r = 0$, meaning $uq = 1$, which shows that $u$ is a unit.
+    \end{partquestions}
+
+    \item We first show that $\phi(1) = 1$. Let $\phi(1) = a$ for some $a \in \mathbb{N} \cup \{0\}$. Since $1 = 1 \times 1$, therefore
+    \[
+        a = \phi(1) = \phi(1 \times 1) = \phi(1)\phi(1) = a^2
+    \]
+    which shows $a^2 = a$. As we are in $\mathbb{N} \cup \{0\}$, thus $a = 0$ or $a = 1$. But if $\phi(1) = 0$ then we see
+    \[
+        \phi(x) = \phi(1x) = \phi(1)\phi(x) = 0\phi(x) = 0
+    \]
+    but $\phi$ is non-constant, a contradiction. Hence $\phi(1) = 1$.
+
+    Now let $u$ be a unit in $D$, meaning that there exists a $v \in D$ such that $uv = 1$. So one sees
+    \[
+        1 = \phi(1) = \phi(uv) = \phi(u)\phi(v).
+    \]
+    As we working with the non-negative integers, the only way to a product to equal 1 we must have $\phi(u) = \phi(v) = 1$.
+
+    \item Suppose there are only finitely many irreducible polynomials within $F[x]$, say $p_1(x), p_2(x), \dots, p_n(x)$. As $F[x]$ is a PID (\myref{thrm-polynomial-ring-over-field-is-a-PID}) thus these polynomials are also prime (\myref{thrm-in-PID-prime-iff-irreducible}).
+
+    Consider the polynomial
+    \[
+        q(x) = (p_1(x) + 1)(p_2(x) + 1)\cdots(p_n(x) + 1).
+    \]
+    By construction we see that none of $p_1(x), p_2(x), \dots, p_n(x)$ divide $q(x)$. Therefore, either
+    \begin{itemize}
+        \item $q(x)$ is prime and thus irreducible (\myref{thrm-in-integral-domain-primes-are-irreducibles}), meaning that the list of irreducible polynomials is not complete; or
+        \item there is another prime (and thus irreducible) polynomial that divides $q(x)$, which also means that the above list of irreducible polynomials is not complete.
+    \end{itemize}
+    Either way, this contradicts that there are a finite number of prime (and this irreducible) polynomials, meaning that there are infinitely many irreducible polynomials in $F[x]$.
+
+    \item Let $I$ be a non-trivial ideal in $\Z[i]$. As $\Z[i]$ is a PID (it is a Euclidean domain which means it is a PID), suppose $I = \princ{a+bi}$ for some $a,b \in \Z$. Note that
+    \[
+        a^2 + b^2 = (a+bi)(a-bi) \in I.
+    \]
+
+    Now let $x+yi \in \Z[i]$. Euclid's division lemma (\myref{lemma-euclid-division}) tells us that there exist $q_1, q_2, r_1, r_2 \in \Z$ such that
+    \begin{align*}
+        x &= q_1(a^2+b^2) + r_1\\
+        y &= q_2(a^2+b^2) + r_2
+    \end{align*}
+    where $0 \leq r_1, r_2 \leq a^2+b^2$. So
+    \begin{align*}
+        (x+yi)+I &= \left(\left(q_1(a^2+b^2) + r_1\right) + \left(q_2(a^2+b^2) + r_2\right)i\right) + I\\
+        &= \left((a^2+b^2)(q_1+q_2i) + r_1 + r_2i\right) + I\\
+        &= (r_1 + r_2i) + I & (\text{as } a^2+b^2 \in I)
+    \end{align*}
+    Notice that $(x+yi)+I = (r_1+r_2i)+I$ is an element of $\Z[i]/I$ and that there are only finitely many integers within the interval $[0, a^2+b^2]$. Therefore $\Z[i]/I$ is finite, since $0 \leq r_1, r_2 \leq a^2+b^2$.
+
+    \item As $\Z[x]$ is a UFD (\myref{corollary-Z-is-UFD}) we note that the factorizations mentioned below are unique.
+    \begin{partquestions}{\roman*}
+        \item We note that if one die shows $n$, then the other die must have a value of $k - n$ in order for both dice's sum to be $k$. Similarly, in order to obtain a term with degree $k$, and if the first term to multiply is $x^n$, then the other has to be $x^{k-n}$ in order for their product to have degree $k$.
+
+        \item $P(x) = x^2(x+1)^2(x^2+x+1)^2(x^2-x+1)^2$.
+
+        We know that both $x$ and $x+1$ are irreducible by \myref{problem-primitive-degree-1-polynomial-in-Z[x]-is-irreducible}.
+
+        $x^2+x+1$ is irreducible since it is equal to $(x+\frac12)^2 + \frac34$ which is never zero for all integers $x$, which means that $x^2+x+1$ has no zeroes in $\Z$ and so it is irreducible (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
+
+        $x^2-x+1$ is irreducible since it is equal to $(x-\frac12)^2 + \frac34$ which is never zero for all integers $x$, which means that $x^2-x+1$ has no zeroes in $\Z$ and so it is irreducible (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
+
+        Hence the factorization given here is indeed the unique factorization into irreducibles.
+
+        \item Since the factorization in \textbf{(ii)} is into irreducibles, $f(x)$ must consist of the same irreducibles. Thus $f(x) = x^q(x+1)^r(x^2+x+1)^s(x^2-x+1)^t$.
+
+        Note that $0 \leq q,r,s,t \leq 2$, since otherwise it would exceed the number of factors of the appropriate irreducible in the factorization of $P(x)$ obtained in \textbf{(ii)}.
+
+        \item We see
+        \[
+            f(1) = 1^{a_1} + 1^{a_2} + \cdots + 1^{a_6} = 6
+        \]
+        and
+        \[
+            f(1) = 1^q(1+1)^r(1+1+1)^s(1-1+1)^t = 2^r3^s
+        \]
+        so $6 = 2^r3^s$. But as $6 = 2 \times 3$, therefore $r = s = 1$.
+
+        We also note that
+        \[
+            f(0) = 0^{a_1} + 0^{a_2} + \cdots + 0^{a_6} = 0
+        \]
+        and
+        \[
+            f(0) = 0^q(0+1)^r(0+0+1)^s(0+0+1)^t = 0^q
+        \]
+        so $0^q = 0$. As we defined $0^0 = 1$, we see $q \neq 0$.
+
+        \item So far we have $f(x) = x^q(x+1)(x^2+x+1)(x^2-x+1)^t$. If $q = 2$ then $f(x) = x^2(x+1)(x^2+x+1)(x^2-x+1)^t$. But since $P(x) = f(x)g(x)$ and the smallest sum of two dice is 2, that means one of the $b_i$ in $g(x)$ must be zero. But in \textbf{(iii)} we said that every $b_i$ is a positive integer, a contradiction. Hence $q \neq 2$.
+
+        \item We deduce from \textbf{(iv)} and \textbf{(v)} that $q = 1$, meaning $f(x) = x(x+1)(x^2+x+1)(x^2-x+1)^t$. We now list all possibilities for $f(x)$.
+        \begin{itemize}
+            \item If $t = 0$ then $f(x) = x + 2x^2 + 2x^3 + x^4$, so one choice is 1, 2, 2, 3, 3, and 4.
+            \item If $t = 1$ then $f(x) = x + x^2 + x^3 + x^4 + x^5 + x^6$, so one choice is 1, 2, 3, 4, 5, and 6 (which is the normal choice for a dice).
+            \item If $t = 2$ then $f(x) = x + x^3 + x^4 + x^5 + x^6 + x^8$, so another choice is 1, 3, 4, 5, 6, and 8.
+        \end{itemize}
+
+        \item The labels of the other pair of dice are
+        \[
+            1,2,2,3,3,4 \quad\text{and}\quad 1,3,4,5,6,8
+        \]
+        which are known as Sicherman dice.
+    \end{partquestions}
+\end{questions}

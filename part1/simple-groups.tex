@@ -9,7 +9,7 @@ The first infinite family of simple groups we will look at is the family of \tex
 \end{lemma}
 \begin{proof}
     We prove the forward direction. Suppose $\Cn{n}$ is simple with generator $g$. Then the only normal subgroups of $\Cn{n}$ are the trivial group and the group itself. Seeking a contradiction, assume $n$ is not prime; write $n = ab$ where $a$ and $b$ are positive integers that are both smaller than $n$. Then clearly $\langle g^a\rangle$ is a subgroup of $\Cn{n}$. Now $\Cn{n}$ is abelian (\myref{prop-cyclic-group-is-abelian}) which means all subgroups are normal (\myref{prop-subgroup-of-abelian-group-is-normal}). Hence we have found a non-trivial proper normal subgroup of $\Cn{n}$, namely $\langle g^a \rangle$, contradicting that $\Cn{n}$ has no non-trivial proper normal subgroups. Therefore $n$ is prime.
-    
+
     We prove the reverse direction. Suppose $n$ is a prime. Then by a corollary of Lagrange's Theorem (\myref{corollary-group-with-prime-order-subgroups}), $\Cn{n}$ has no non-trivial proper subgroups. So, the only subgroup with order smaller than $n$ is the trivial group, $\{e\}$. Clearly $\Cn{n}$ is normal in itself, and the trivial group is always a normal subgroup. Hence, as the only normal subgroups of $\Cn{n}$ are the trivial group and itself, thus $\Cn{n}$ is simple. Therefore, if $n$ is prime then $\Cn{n}$ is simple.
 \end{proof}
 
@@ -20,13 +20,13 @@ In fact, we have a much stronger result which we prove here.
 Note that we do not assume that the abelian group is finite; we will show that the group is finite in the proof below.
 \begin{proof}
     The reverse direction of the claim follows immediately from \myref{lemma-cyclic-group-simple-iff-order-is-prime}, so we prove the forward direction only.
-    
+
     Suppose $G$ is a simple abelian group; we show that $G$ is finite. Let $g$ a non-identity element of $G$. Then $H = \langle g \rangle$ is a subgroup of $G$. In fact, since $G$ is abelian, $H \unlhd G$ (\myref{prop-subgroup-of-abelian-group-is-normal}). As $G$ is simple, therefore $H = G$, meaning that $g$ is a generator of $G$. Now if $G$ is an infinite group, then one also sees that $\langle g^2 \rangle < G$ which implies $\langle g^2 \rangle \lhd G$, contradicting the fact that $G$ is simple. Hence $G$ is a finite abelian group with generator $g$, meaning $G$ is cyclic. Result follows directly from \myref{lemma-cyclic-group-simple-iff-order-is-prime}.
 \end{proof}
 
 From this, we have found that the only family of simple abelian groups is the family of cyclic groups of prime order.
 
-\section{Alternating Group with Degree \texorpdfstring{$>4$}{More Than 4}}
+\section{Alternating Group With Degree $>4$}
 The other family of simple groups that is relatively easy to find is the family of \textbf{alternating groups with degree of above 4}\index{alternating group!of degree $>4$}.
 
 However, to prove this claim, we need several preliminary results.
@@ -47,9 +47,9 @@ However, to prove this claim, we need several preliminary results.
     We note by Lagrange's theorem (\myref{thrm-lagrange}) that the order of $H$ belongs in the set $\{1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60\}$, since the order of $G$ must be a multiple of the order of $H$. As $H$ is a non-trivial proper subgroup of $G$, thus $|H| \neq 1$ and $|H| \neq 60$. That leaves 4 cases which we will deal with separately.
     \begin{enumerate}
         \item $|H| = 6$. Note $6 = 2 \times 3$, so \myref{problem-group-of-order-pq-has-normal-subgroup-of-order-q} tells us that there exists a $N \lhd H$ with $|N| = 3$. Note also $[G:H] = 10$ which is not a multiple of 3, so \myref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups} tells us that all Sylow 3-subgroups of $G$ are in $H$. But $N \lhd H$ means that $N$ is the unique Sylow 3-subgroup of $H$ and $G$ (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}), so $N \lhd G$ (by the same corollary). Proceed to case 3, using $N$ in place of $H$.
-        
+
         \item $|H| = 12$. Note $12 = 2^2 \times 3$. Now \myref{exercise-group-of-order-12-has-normal-subgroup-of-3-or-4} (later) tells us that there exists a normal subgroup of $H$ with order 3 or 4 (or both). Call that subgroup $N$. If $|N| = 3$ then it is a Sylow 3-subgroup; if $|N| = 4 = 2^2$ it is a Sylow 2-subgroup. As $N \lhd H$, thus $N$ is the unique Sylow 2- or 3- subgroup (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}). Since $H \lhd G$, thus $H$ contains all Sylow 2- and 3-subgroups of $G$ (\myref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups}), meaning $G$ has only one Sylow 2-subgroup or one Sylow 3-subgroup (or both), in particular $N$. Hence, $N \lhd G$ since a Sylow $p$-subgroup is unique if and only if it is normal (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}). Proceed with case 3, using $N$ instead of $H$.
-        
+
         \item $|H| \in \{2, 3, 4\}$. Since $H \lhd G$, thus $G/H$ is a group. Note $|G/H| \in \{15, 20, 30\}$. We claim that each of these cases produces a new normal subgroup of $G/H$ (call it $\bar{P}$) with order 5. This is proven for the case where $|G/H| = 30$ in \myref{problem-group-of-order-30-has-normal-subgroup-of-order-5}; the other two cases are for \myref{exercise-group-of-order-15-or-20-has-normal-subgroup-of-order-5} (later).
 
         Now \myref{problem-subgroup-of-quotient-group-is-quotient-group} tells us that $\bar{P}$ has the form $K/H$ where $K < G$ and $H \subseteq K$. Since $\bar{P} = K/H \lhd G/H$, thus for any $g \in G$ and $kH \in \bar{P}$ we have
@@ -60,7 +60,7 @@ However, to prove this claim, we need several preliminary results.
 
         Observe that this means that
         \[
-            |K| = |K/H||H| = |\bar{P}||H| = 5|H|,    
+            |K| = |K/H||H| = |\bar{P}||H| = 5|H|,
         \]
         meaning $K$ is a normal subgroup of $G$ with an order that is a multiple of 5. Proceed to case 4, using $K$ in place of $H$.
 
@@ -89,7 +89,7 @@ However, to prove this claim, we need several preliminary results.
     The group $\An5$ is simple.
 \end{corollary}
 \begin{proof}
-    \myref{exercise-A5-has-two-distinct-subgroups-of-order-5} (later) gives two distinct subgroups of order 5. Since $|\An{5}| = 60 = 2^2 \times 3 \times 5$, thus subgroups of order 5 are Sylow 5-subgroups. Therefore $\An5$ is simple by \myref{thrm-group-of-order-60-with->1-sylow-5-subgroup-is-simple}. 
+    \myref{exercise-A5-has-two-distinct-subgroups-of-order-5} (later) gives two distinct subgroups of order 5. Since $|\An{5}| = 60 = 2^2 \times 3 \times 5$, thus subgroups of order 5 are Sylow 5-subgroups. Therefore $\An5$ is simple by \myref{thrm-group-of-order-60-with->1-sylow-5-subgroup-is-simple}.
 \end{proof}
 \begin{exercise}\label{exercise-A5-has-two-distinct-subgroups-of-order-5}
     Consider the permutation $\sigma = \begin{pmatrix}1&3&2&4&5\end{pmatrix}$.
@@ -127,15 +127,15 @@ With these results, we are ready to prove that an alternating group with a degre
     \[
         \sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{j} \leq H.
     \]
-    
+
     Note that any element in $G$ (say $\lambda$) may be written as a product of an even number of transpositions (\myref{thrm-parity-of-permutation}), say $2t$ transpositions. Thus, we may write
     \[
         \lambda = \lambda_1\lambda_2\cdots\lambda_t
     \]
     where each $\lambda_i$ is a product of two transpositions. Now as $k \geq 5$, each $\lambda_i$ (which could, at most, consist of two disjoint cycles of 4 elements) must fix at least one element in $\mathcal{N}_{k}$, say $j$. That is, $\lambda_i \in \Stab{G}{j}$ for some $j \in \mathcal{N}_{k}$.
-    
+
     As noted above, every $\lambda \in G$ is generated by these $\lambda_i$'s, and since $\lambda_i \in \Stab{G}{j} \leq H$ for some $j \in \mathcal{N}_{k}$, thus $\lambda_i \in H$. Hence $\lambda = \lambda_1\lambda_2\cdots\lambda_t \in H$. Therefore, any element in $G$ is also in $H$, meaning $G \subseteq H$, contradicting the fact that $H \lhd G$ which means $H \subset G$.
-    
+
     We conclude that for any $\pi \in H$ and for all $i \in \mathcal{N}_k$, if $\pi \neq \id$ then $\pi(i) \neq i$. The contrapositive of this statement would be $\pi(i) = i$ for some $i \in \mathcal{N}_k$ means that $\pi = \id$. Now suppose $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$. Then $\pi_2^{-1}\pi_1(i) = i$, which implies $\pi_2^{-1}\pi_1 = \id$. Hence $\pi_1 = \pi_2$. Therefore, if $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$, then $\pi_1 = \pi_2$.
 
     Now suppose a non-identity $\pi_1 \in H$ exists such that the cycle decomposition of $\pi_1$ contains a cycle of length of at least 3, say
@@ -218,7 +218,7 @@ In what follows, taken from \cite{wikipedia_list-of-simple-groups}, $n$ is a pos
         \item $C_n(q)$ for $n > 2$. The only duplicate is $C_n(2^m) \cong B_n(2^m)$.
         \item $D_n(q)$ for $n > 3$.
     \end{itemize}
-    
+
     \item \textbf{Exceptional Chevalley groups}\index{Chevalley groups!exceptional}: there are 5 families of simple groups.
     \begin{itemize}
         \item $E_6(q)$;
@@ -227,19 +227,19 @@ In what follows, taken from \cite{wikipedia_list-of-simple-groups}, $n$ is a pos
         \item $F_4(q)$; and
         \item $G_2(q)$, except for $G_2(2)$.
     \end{itemize}
-    
+
     \item \textbf{Classical Steinberg groups}\index{Steinberg groups!classical}: there are 2 families of simple groups.
     \begin{itemize}
         \item ${^2A_n(q^2)}$ for $n > 1$, except for ${^2A_2(2^2)} = {^2A_2(4)}$. The only duplicate is ${^2A_3(2^2)} \cong B_2(3)$.
         \item ${^2D_n(q^2)}$ for $n > 3$.
     \end{itemize}
-    
+
     \item \textbf{Exceptional Steinberg groups}\index{Steinberg groups!exceptional}: there are 2 families of simple groups.
     \begin{itemize}
         \item ${^2E_6(q^2)}$; and
         \item ${^3D_4(q^3)}$.
     \end{itemize}
-    
+
     \item \textbf{Suzuki groups}\index{Suzuki groups}: there is 1 family of simple groups, which is ${^2B_2(q)}$ where $q = 2^{2n+1}$ and $n \geq 1$. Such a group has order $q^2(q^2+1)(q-1)$.
 
     \item \textbf{Ree groups}\index{Ree groups}: there are 2 families of simple groups.
@@ -260,20 +260,20 @@ We first list four categories of sporadic groups.
     \begin{tabular}{|l|l|l|}
         \hline
         \textbf{Name} & \textbf{Group Symbol} & \textbf{Order} \\ \hline
-        \multirow{5}{*}{\textbf{Mathieu Groups}\index{Mathieu groups}} & $\mathrm{M}_{11}$ & 7,290 \\ \cline{2-3} 
-        & $\mathrm{M}_{12}$ & 95,040 \\ \cline{2-3} 
-        & $\mathrm{M}_{22}$ & 443,520 \\ \cline{2-3} 
-        & $\mathrm{M}_{23}$ & 10,200,960 \\ \cline{2-3} 
+        \multirow{5}{*}{\textbf{Mathieu Groups}\index{Mathieu groups}} & $\mathrm{M}_{11}$ & 7,290 \\ \cline{2-3}
+        & $\mathrm{M}_{12}$ & 95,040 \\ \cline{2-3}
+        & $\mathrm{M}_{22}$ & 443,520 \\ \cline{2-3}
+        & $\mathrm{M}_{23}$ & 10,200,960 \\ \cline{2-3}
         & $\mathrm{M}_{24}$ & 244,823,040 \\ \hline
-        \multirow{4}{*}{\textbf{Janko Groups}\index{Janko groups}} & $\mathrm{J}_1$ & 175,560 \\ \cline{2-3} 
-        & $\mathrm{J}_2$ & 604,800 \\ \cline{2-3} 
-        & $\mathrm{J}_3$ & 50,232,960 \\ \cline{2-3} 
+        \multirow{4}{*}{\textbf{Janko Groups}\index{Janko groups}} & $\mathrm{J}_1$ & 175,560 \\ \cline{2-3}
+        & $\mathrm{J}_2$ & 604,800 \\ \cline{2-3}
+        & $\mathrm{J}_3$ & 50,232,960 \\ \cline{2-3}
         & $\mathrm{J}_4$ & 86,775,571,046,077,562,880 \\ \hline
-        \multirow{3}{*}{\textbf{Conway Groups}\index{Conway groups}} & $\mathrm{Co}_3$ & 495,766,656,000 \\ \cline{2-3} 
-        & $\mathrm{Co}_2$ & 42,305,421,312,000 \\ \cline{2-3} 
+        \multirow{3}{*}{\textbf{Conway Groups}\index{Conway groups}} & $\mathrm{Co}_3$ & 495,766,656,000 \\ \cline{2-3}
+        & $\mathrm{Co}_2$ & 42,305,421,312,000 \\ \cline{2-3}
         & $\mathrm{Co}_1$ & 4,157,776,806,543,360,000 \\ \hline
-        \multirow{3}{*}{\textbf{Fischer Groups}\index{Fischer groups}} & $\mathrm{Fi}_{22}$ & 64,561,751,654,400 \\ \cline{2-3} 
-        & $\mathrm{Fi}_{23}$ & 4,089,470,473,293,004,800 \\ \cline{2-3} 
+        \multirow{3}{*}{\textbf{Fischer Groups}\index{Fischer groups}} & $\mathrm{Fi}_{22}$ & 64,561,751,654,400 \\ \cline{2-3}
+        & $\mathrm{Fi}_{23}$ & 4,089,470,473,293,004,800 \\ \cline{2-3}
         & $\mathrm{Fi}_{24}$ & 1,255,205,709,190,661,721,292,800 \\ \hline
     \end{tabular}
 \end{table}

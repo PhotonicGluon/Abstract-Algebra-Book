@@ -1,7 +1,7 @@
 \chapter{Sylow Theorems}
 The Sylow theorems are a collection of theorems named after the Norwegian mathematician Peter Ludwig Sylow that give detailed information about the number of subgroups of fixed order that a given finite group contains. The Sylow theorems form a fundamental part of finite group theory and have very important applications in the classification of finite simple groups.
 
-\section{First Sylow Theorem}
+\section{The First Sylow Theorem}
 Before we can state the First Sylow Theorem, we introduce some terminology.
 
 Recall that a group with order $p^k$ for some $k \geq 0$ is called a $p$-group.
@@ -26,10 +26,10 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
     We use strong induction on the order of $G$. The base case when the order of $G$ is 1 is trivial. For the induction step, consider two cases, regarding the center of the group $G$.
     \begin{itemize}
         \item If the order of the center of $G$ is a multiple of $p$, then use a corollary of Cauchy's Theorem (\myref{corollary-cauchy-theorem-with-subgroup}) to deduce that there exists a subgroup of order $p$, say $N$. After showing $N$ is normal, conclude that $G/N$ has order $p^{k-1}m$. Use induction hypothesis on $G/N$ to produce a Sylow $p$-subgroup $\overline{S}$.
-        
+
         Construct a new subgroup $S = \{g \in G \vert gN \in \overline{S}\}$ of $G$ and, noting $N \leq S$, construct a homomorphism mapping elements of $S$ to elements of $\overline{S}$. Conclude by Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) that $S/N \cong \overline{S}$ which means $S$ has order $p^k$, thus being a Sylow $p$-subgroup of $G$.
 
-        \item Otherwise, use the class equation (\myref{thrm-class-equation}) to deduce that there is at least one conjugacy class with more than one element with representative $g_i$ such that $p$ does not divide $[G: \Centralizer{G}{g_i}]$. Thereafter infer that $|\Centralizer{G}{g_i}| = P^ka$ for some positive integer $a$. After showing $a < m$, deduce that $\Centralizer{G}{g_i}$ is a proper subgroup of $G$ with order $p^ka$, so applying induction hypothesis on $\Centralizer{G}{g_i}$ yields a Sylow $p$-subgroup of $\Centralizer{G}{g_i}$, which is also a Sylow $p$-subgroup of $G$.
+        \item Otherwise, use the class equation (\myref{thrm-class-equation}) to deduce that there is at least one conjugacy class with more than one element with representative $g_i$ such that $p$ does not divide $[G: \Centralizer{G}{g_i}]$. Thereafter infer that $|\Centralizer{G}{g_i}| = p^ka$ for some positive integer $a$. After showing $a < m$, deduce that $\Centralizer{G}{g_i}$ is a proper subgroup of $G$ with order $p^ka$, so applying induction hypothesis on $\Centralizer{G}{g_i}$ yields a Sylow $p$-subgroup of $\Centralizer{G}{g_i}$, which is also a Sylow $p$-subgroup of $G$.
     \end{itemize}
     Therefore, in any case, we have found a Sylow $p$-subgroup of $G$.
 \end{proofsketch}
@@ -39,7 +39,7 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
     When the order of $G$ is 1, $|G| = p^0$ for any prime $p$, so $G$ is clearly a Sylow $p$-subgroup of itself.
 
     We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$.
-    
+
     Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
 
     The first case is when order of the center of $G$ is a multiple of $p$, i.e. $|\CenterGrp{G}| = ap$ for some positive integer $a$. By a corollary of Cauchy's Theorem (\myref{corollary-cauchy-theorem-with-subgroup}), $\CenterGrp{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $n \in N$ and $g \in G$,
@@ -91,7 +91,7 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
 
 \newpage
 
-\section{Conjugate Subgroup}
+\section{The Conjugate Subgroup}
 Before we look at the next Sylow theorem, we need to introduce two more things. The first of which is the \textbf{conjugate subgroup}.
 \begin{definition}
     Let $G$ be a group, $H \leq G$, and $g \in G$. Then the \textbf{conjugate subgroup of $H$ by $g$}\index{conjugate subgroup} is
@@ -112,7 +112,7 @@ We prove some results regarding the conjugate subgroup here.
 \end{proposition}
 \begin{proof}
     Trivially, when $n = 0$, $(axa^{-1})^0 = e = x^0 = ax^0a^{-1}$.
-    
+
     We consider a proof by induction for positive integers $n$ and then prove the case when $n$ is negative.
 
     When $n = 1$, $(axa^{-1})^1 = axa^{-1}$ is given. Now assume $n = k$ holds true for some positive integer $k$, meaning that $(axa^{-1})^k = ax^ka^{-1}$. Then
@@ -233,7 +233,7 @@ We prove some properties of the normalizer here.
     Now suppose $Q$ is, in particular, a Sylow $p$-subgroup of $\N{G}{P}$. Since $\N{G}{P} \leq G$ by \myref{exercise-normalizer-is-subgroup-of-main-group}, one concludes that $|G| = y|\N{G}{P}|$ for some positive integer $y$ by Lagrange's Theorem. Hence $xp^n = y|\N{G}{P}|$ which implies $|\N{G}{P}| = \frac{x}{y} p^n$. Set $z = \frac xy$ and note that $p \nmid z$. Therefore, if $Q$ is a Sylow $p$-subgroup, then $|Q| = p^n$. But since $|P| = p^n$ and $Q \subseteq P$, thus $P = Q$.
 \end{proof}
 
-\section{Second Sylow Theorem}
+\section{The Second Sylow Theorem}
 We can now look at the \textbf{Second Sylow Theorem}.
 \begin{theorem}[Sylow II]\label{thrm-sylow-2}\index{Sylow Theorem!Second}
     Let $G$ be a finite group and $p$ be a prime number. Suppose $H$ and $K$ are both Sylow $p$-subgroups of $G$. Then there exists an element $g \in G$ such that $gHg^{-1} = K$.
@@ -251,7 +251,7 @@ We can now look at the \textbf{Second Sylow Theorem}.
     and denote an element from $\mathcal{X}$ by $X$.
 
     Let the Sylow $p$-subgroup $H$ act on $\mathcal{X}$ by conjugation, meaning $h \cdot X = hXh^{-1}$. We prove that this is a group action.
-    
+
     \begin{itemize}
         \item \textbf{Closure}: We have to prove closure as it is not implicit in the action's definition.
 
@@ -272,7 +272,7 @@ We can now look at the \textbf{Second Sylow Theorem}.
 
     We consider orbits of this group action. In particular, we find element(s) with orbit(s) of only one element. Suppose $X \in \mathcal{X}$ has one element in its orbit, so for all $h \in H$ we have
     \[
-        h\cdot X = hXh^{-1} = X.    
+        h\cdot X = hXh^{-1} = X.
     \]
     Since $X = gHg^{-1}$ for some $g \in G$, thus
     \begin{align*}
@@ -284,9 +284,9 @@ We can now look at the \textbf{Second Sylow Theorem}.
         \iff&g^{-1}Hg \subseteq \N{G}{H}.
     \end{align*}
     Since $|g^{-1}hg| = |h|$ by \myref{prop-order-of-conjugate-element-equals-order-of-element}, and because $H$ is a $p$-subgroup, therefore $|g^{-1}hg| = p^r$ where $r$ is some positive integer. Note that $g^{-1}Hg$ is a (sub)group by \myref{exercise-conjugate-subgroup}. Therefore $g^{-1}Hg$ is a $p$-subgroup of $\N{G}{H}$.
-    
+
     Furthermore $g^{-1}Hg \cong H$ by \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup} so $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, by \myref{prop-normalizer-of-sylow-p-subgroup}, we see $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But $X = gHg^{-1}$, so $X = H$.
-    
+
     Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, by Orbit-Stabilizer Theorem (\myref{thrm-orbit-stabilizer}), one sees
     \[
         |\Stab{H}{gHg^{-1}}| = \frac{|H|}{|\Orb{H}{gHg^{-1}}|}
@@ -313,7 +313,7 @@ We note one important corollary of the Second Sylow Theorem.
     Let $G$ be a finite group, $p$ be a prime number, and $H$ and $K$ be distinct Sylow $p$-subgroups of $G$. Prove that $H \cong K$.
 \end{exercise}
 
-\section{Third Sylow Theorem}
+\section{The Third Sylow Theorem}
 The Third Sylow Theorem gives us a way to determine how many Sylow $p$-subgroups of a certain order exist within a group.
 \begin{theorem}[Sylow III]\label{thrm-sylow-3}\index{Sylow Theorem!Third}
     Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. Let $n_p$ denote the number of Sylow $p$-subgroups in $G$, i.e. $n_p = |\Syl{p}{G}|$. Then,
@@ -388,7 +388,7 @@ We may use part of the Third Sylow Theorem to create a test for non-simplicity.
 \end{theorem}
 \begin{proof}
     We consider two cases, namely the case where $n=p^k$ where $k>1$ and the case where $n \neq p^k$.
-    
+
     We first suppose $n = p^k$. Let $G$ be a group of order $n$. We consider two subcases.
     \begin{itemize}
         \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\myref{corollary-cauchy-theorem-with-subgroup}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\myref{prop-subgroup-of-abelian-group-is-normal}), thus there exists a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.

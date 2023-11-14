@@ -15,10 +15,10 @@ The heart of mathematics is in its logical statements. These statements are used
     ``A circle is a polygon'' is a false statement.
 \end{example}
 \begin{example}
-    ``$12 \in \mathbb{Z}$'' is a true statement.
+    ``$12 \in \Z$'' is a true statement.
 \end{example}
 \begin{example}
-    ``$\sqrt2 \in \mathbb{Z}$'' is a false statement.
+    ``$\sqrt2 \in \Z$'' is a false statement.
 \end{example}
 
 We may name statements using lowercase variables like $p$, $q$, $r$, etc.
@@ -27,7 +27,7 @@ We may name statements using lowercase variables like $p$, $q$, $r$, etc.
     \begin{align*}
         p: &\ \text{Every odd number is one more than an even number}\\
         q: &\ \text{Every triangle has sides of equal length}\\
-        r: &\ \frac12 \in \mathbb{Q}
+        r: &\ \frac12 \in \Q
     \end{align*}
     then $p$ is true, $q$ is false, and $r$ is true.
 \end{example}
@@ -59,7 +59,7 @@ There are a few operations\index{logical operation} that may be carried out on s
 
 When statement variables are combined using the above operators, the resulting statement is said to be in statement form.
 \begin{definition}
-    A \textbf{statement form}\index{statement form}(or \textbf{propositional form}\index{propositional form}) is an expression made up of statement variables (e.g. $p$, $q$, $r$) and logical operators that becomes a statement when actual statements are substituted for the component statement variables.
+    A \textbf{statement form}\index{statement form} (or \textbf{propositional form}\index{propositional form}) is an expression made up of statement variables (e.g. $p$, $q$, $r$) and logical operators that becomes a statement when actual statements are substituted for the component statement variables.
 \end{definition}
 \begin{example}
     The expressions $\lnot p$, $p \land q$, and $\lnot(p \land q) \lor r$ are all in statement form.
@@ -185,8 +185,6 @@ The truth table for the biconditional is:
     \end{tabular}
 \end{table}
 
-\newpage
-
 \begin{exercise}
     Let $n$ be an integer. Let $p$ be the statement ``$n$ is a multiple of 5'' and $q$ be the statement ``the last digit of $n$ is 0 or 5''. Let the statement $r = p \iff q$.
     \begin{partquestions}{\roman*}
@@ -208,12 +206,12 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
     Two statements $p$ and $q$ are \textbf{logically equivalent}\index{logically equivalent} if and only if they have identical truth values for each possible statement that $p$ and $q$ may take. If $p$ and $q$ are logically equivalent, we write $p \equiv q$.
 \end{definition}
 \begin{example}\label{example-implication-law}
-    We show that $(p \implies q) \equiv \lnot p \lor q$ by considering the truth table for $\lnot p \lor q$.
-    \begin{table}[h]
+    We show that $(p \implies q) \equiv \lnot p \lor q$ by drawing the truth table of $\lnot p \lor q$.
+    \begin{table}[H]
         \centering
         \begin{tabular}{|l|l||l||l|}
             \hline
-            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot P \lor Q}$ \\ \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot p \lor q}$ \\ \hline
             F   & F   & T         & T                  \\ \hline
             F   & T   & T         & T                  \\ \hline
             T   & F   & F         & F                  \\ \hline
@@ -221,21 +219,19 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
         \end{tabular}
     \end{table}
 
-    By inspection, we see that $\lnot p \lor q$ has the same truth table as $p \implies q$. Thus $(p \implies q) \equiv \lnot p \lor q$.
+    By inspection, we see that $\lnot p \lor q$ has the same truth table as $p \implies q$. Therefore we can conclude that $(p \implies q) \equiv \lnot p \lor q$.
 \end{example}
 \begin{remark}
     We separate the intermediate value(s) (e.g. $\lnot p$ in the above example) from the rest by drawing a double line to the sides of the intermediate values.
 \end{remark}
 
-\newpage
-
 \begin{example}
-    We show that $(p \iff q) \equiv (p \land q) \lor (\lnot p \land \lnot q)$. For brevity, let $r = \lnot p \land \lnot q$.
-    \begin{table}[h]
+    We show that $(p \iff q) \equiv (p \land q) \lor (\lnot p \land \lnot q)$.
+    \begin{table}[H]
         \centering
         \begin{tabular}{|l|l||l|l|l|l||l|}
             \hline
-            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot q}$ & $\boldsymbol{p \land q}$ & $\boldsymbol{r}$ & $\boldsymbol{(p \land q) \lor r}$ \\ \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot q}$ & $\boldsymbol{p \land q}$ & $\boldsymbol{\lnot p \land \lnot q}$ & $\boldsymbol{(p \land q) \lor (\lnot p \land \lnot q)}$ \\ \hline
             F   & F   & T         & T         & F           & T   & T                    \\ \hline
             F   & T   & T         & F         & F           & F   & F                    \\ \hline
             T   & F   & F         & T         & F           & F   & F                    \\ \hline
@@ -247,12 +243,10 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
 \end{example}
 
 \begin{exercise}
-    Show that
-    \[
-        ((\lnot p) \iff q) \equiv (p \implies (\lnot q)) \land ((\lnot q) \implies p)
-    \]
-    by drawing a truth table.
+    Show that $(\lnot p \iff q) \equiv (p \implies \lnot q) \land (\lnot q \implies p)$ by drawing a truth table.
 \end{exercise}
+
+\newpage
 
 We note some important properties of logical operators.
 \begin{itemize}
@@ -310,7 +304,7 @@ There are other ways to convert predicates into statements. One way is to use qu
     Values $x \in D$ for which $P(x)$ is false is called a \textbf{counterexample}\index{counterexample}.
 \end{definition}
 \begin{example}
-    The true statement ``for every integer $n$, the integer $2n$ is an even number'' can be written as ``$\forall n \in \mathbb{Z}, 2n$ is even''.
+    The true statement ``for every integer $n$, the integer $2n$ is an even number'' can be written as ``$\forall n \in \Z, 2n$ is even''.
 \end{example}
 
 \begin{definition}
@@ -321,10 +315,10 @@ There are other ways to convert predicates into statements. One way is to use qu
     \end{itemize}
 \end{definition}
 \begin{example}
-    The statement ``there exists a subset of $\mathbb{Z}$ which has 10 elements'' is equivalent to ``$\exists S \subseteq \mathbb{Z} \text{ such that } |S| = 10$''.
+    The statement ``there exists a subset of $\Z$ which has 10 elements'' is equivalent to ``$\exists S \subseteq \Z \text{ such that } |S| = 10$''.
 \end{example}
 \begin{remark}
-    We usually shorten the ``such that'' as ``s.t.'', so the above statement is written symbolically as ``$\exists S \subseteq \mathbb{Z} \text{ s.t. } |S| = 10$''.
+    We usually shorten the ``such that'' as ``s.t.'', so the above statement is written symbolically as ``$\exists S \subseteq \Z \text{ s.t. } |S| = 10$''.
 \end{remark}
 
 We can also combine quantifiers and logical operators together.
@@ -334,7 +328,7 @@ We can also combine quantifiers and logical operators together.
 \begin{example}
     Fermat's Last Theorem, which states that for all integers $n\geq 3$ the equation $x^n + y^n = z^n$ has no solution for $x, y, z \in \mathbb{N}$, can be written as
     \[
-        \left((n \in \mathbb{Z}) \land (n \geq 3)\right) \implies \left(\forall x, y, z \in \mathbb{N},\; x^n + y^n \neq z^n\right).
+        \left((n \in \Z) \land (n \geq 3)\right) \implies \left(\forall x, y, z \in \mathbb{N},\; x^n + y^n \neq z^n\right).
     \]
     It should be noted that when translating from English to \textit{symbolic writing}, we may need to change some things around.
 \end{example}
@@ -342,6 +336,8 @@ We can also combine quantifiers and logical operators together.
 \begin{exercise}
     Convert the statement ``for all positive integers $n > 2$ there exist integers $a$ and $b$ such that $a^3 + b^4 = n^5$'' into symbolic notation using quantifiers and logical operators.
 \end{exercise}
+
+\newpage
 
 We now look at negating quantifiers\index{quantifier!negation}. Note that
 \begin{itemize}
@@ -351,11 +347,11 @@ We now look at negating quantifiers\index{quantifier!negation}. Note that
 \begin{example}
     Consider the statement ``for every integer $n$, the integer $2n$ is even''. One may write that using quantifiers as
     \[
-        \forall n \in\mathbb{Z}, 2n \text{ is even}.
+        \forall n \in\Z, 2n \text{ is even}.
     \]
     Negating the above statement would make it
     \[
-        \exists n \in \mathbb{Z}, 2n \text{ is not even},
+        \exists n \in \Z, 2n \text{ is not even},
     \]
     i.e., ``there exists an integer $n$ such that $2n$ is odd''.
 \end{example}
@@ -365,11 +361,11 @@ We also note for statements $p$ and $q$ that $\lnot(p \implies q) \equiv p \land
 \begin{example}
     Consider the statement ``$n^3$ is odd if $n$ is odd for all integers $n$''. We may write this as
     \[
-        \forall n \in \mathbb{Z}, (n \text{ is odd}) \implies (n^3 \text{ is odd}).
+        \forall n \in \Z, (n \text{ is odd}) \implies (n^3 \text{ is odd}).
     \]
     The negation of such a statement would hence be
     \[
-        \exists n \in \mathbb{Z} \text{ s.t. }((n \text{ is odd}) \land \lnot(n^3 \text{ is odd})),
+        \exists n \in \Z \text{ s.t. }((n \text{ is odd}) \land \lnot(n^3 \text{ is odd})),
     \]
     which in english would be ``there exists an integer $n$ such that $n$ is odd and $n^3$ is even''.
 \end{example}

@@ -7,7 +7,8 @@ Before we introduce some examples of rings, we make some remarks for the notatio
     \item The multiplication symbol $\cdot$ is usually omitted, so $x \cdot y$ is written as $xy$.
     \item The additive identity of $R$ will always be denoted by 0 and the multiplicative identity of $R$ (if it exists) will always be denoted by 1.
     \item The additive inverse of the element $x$ will be denoted by $-x$ and the multiplicative inverse of $x$ (if it exists) will be denoted by $x^{-1}$.
-    \item $n$ applications of $+$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$), while $n$ applications of $\cdot$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if it exists).
+    \item $n$ applications of $+$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$), while $n$ applications of $\cdot$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if $x^{-1}$ exists).
+    \item $a - b$ means $a + (-b)$ for any two elements $a$ and $b$ in $R$.
 \end{itemize}
 
 Let's look at some examples of rings.
@@ -36,7 +37,7 @@ Let's look at some examples of rings.
 \begin{proof}
     We first prove the ring axioms before showing that it is commutative with a multiplicative identity.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: We know $(\Z_n, \oplus_n)$ is an abelian group by \myref{prop-Zn-is-abelian-group}
+        \item \textbf{Addition-Abelian}: We know $(\Z_n, \oplus_n)$ is an abelian group by \myref{prop-Zn-is-abelian-group}.
         \item \textbf{Multiplication-Semigroup}: We can see that $(\Z_n, \otimes_n)$ is a semigroup as
         \begin{itemize}
             \item $\Z_n$ is closed under $\otimes_n$ because $a \otimes_n b \in \{0, 1, 2, \dots, n-1\} = \Z_n$; and
@@ -45,7 +46,7 @@ Let's look at some examples of rings.
         \item \textbf{Distributive}: Since multiplication distributes over addition (\myref{axiom-distributivity}), thus multiplication modulo $n$ (i.e. $\otimes_n$) distributes over addition modulo $n$ (i.e. $\oplus_n$).
     \end{itemize}
     Hence $(\Z_n, \oplus_n, \otimes_n)$ is a ring.
-    
+
     Furthermore, multiplication is commutative (\myref{axiom-multiplication-is-commutative}), so $\otimes_n$ is commutative. Also $\otimes_n$ has an identity of 1. Therefore $(\Z_n, \oplus_n, \otimes_n)$ is a commutative ring with identity.
 \end{proof}
 
@@ -53,7 +54,7 @@ Let's look at some examples of rings.
     The \textbf{ring of rational numbers}\index{ring!of rational numbers} is $(\Q, +, \times)$, where $+$ and $\times$ denote normal addition and multiplication.
 \end{definition}
 \begin{remark}
-    We denote the ring of rational numbers by $(\Q, +, \times)$.
+    We denote the ring of rational numbers by $\Q$.
 \end{remark}
 \begin{proposition}
     $\Q$ is a commutative ring with identity.
@@ -61,7 +62,7 @@ Let's look at some examples of rings.
 \begin{proof}
     We first show that $\Q$ satisfies the ring axioms.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: From part I, we know that $(\Q, +)$ is an abelian group.  % TODO: Add proof
+        \item \textbf{Addition-Abelian}: We know that $(\Q, +)$ is an abelian group from \myref{problem-Q-is-abelian-group-under-addition}.
         \item \textbf{Multiplication-Semigroup}: We note that $(\Q, \times)$ is a semigroup as
         \begin{itemize}
             \item $\Q$ is closed under $\times$ because multiplying two rational numbers together produce a rational number; and
@@ -76,7 +77,7 @@ Let's look at some examples of rings.
     The \textbf{ring of real numbers}\index{ring!of real numbers} is the ring $(\R, +, \times)$ where $+$ and $\times$ denotes regular addition and multiplication respectively.
 \end{definition}
 \begin{remark}
-    We denote the ring of real numbers by $(\R, +, \times)$.
+    We denote the ring of real numbers by $\R$.
 \end{remark}
 \begin{proposition}
     $\R$ is a commutative ring with identity.
@@ -110,7 +111,7 @@ We end this section by looking at the ring of complex numbers.
         \item \textbf{Addition-Abelian}: We show that $(\C, +)$ satisfies the group axioms, and then show that $(\C, +)$ is commutative.
         \begin{itemize}
             \item \textbf{Closure}: Clearly for all real numbers $a$, $b$, $c$, and $d$ we have $a + c \in \R$ and $b+d \in \R$. Thus $(a+bi) + (c+di) = (a+c) + (b+d)i \in \C$, meaning $\C$ is closed under complex addition.
-            
+
             \item \textbf{Associativity}: Let $a+bi, c+di, e+fi \in \C$. Then note that
             \begin{align*}
                 &(a+bi) + ((c+di) + (e+fi))\\
@@ -121,13 +122,13 @@ We end this section by looking at the ring of complex numbers.
                 &= ((a+bi) + (c+di)) + (e+fi)
             \end{align*}
             so complex addition is associative.
-            
+
             \item \textbf{Identity}: The identity in $\C$ is $0 + 0i = 0$ since
             \[
                 (0+0i) + (a+bi) = (0+a) + (0+b)i = a+bi
             \]
             and complex addition is commutative (to be proved later), so $(\C,+)$ has an additive identity.
-            
+
             \item \textbf{Inverse}: Let $a+bi \in \C$. Clearly $-a, -b \in \R$ and that
             \[
                 (a+bi) + (-a+(-b)i)= (a+(-a)) + (b+(-b))i = 0
@@ -142,7 +143,7 @@ We end this section by looking at the ring of complex numbers.
             \end{align*}
             so complex addition is commutative.
         \end{itemize}
-        
+
         \item \textbf{Multiplication-Semigroup}: We show that $(\C, \times)$ is a semigroup.
         \begin{itemize}
             \item \textbf{Closure}: Clearly for all real numbers $a$, $b$, $c$, and $d$ we have $ac, bd, ad, bc \in \R$, so $ac - bd, ad + bc \in \R$. Therefore
@@ -164,7 +165,7 @@ We end this section by looking at the ring of complex numbers.
             \end{align*}
             so complex multiplication is associative.
         \end{itemize}
-        
+
         \item \textbf{Distributive}: We only prove left distributivity because we will show that complex multiplication is commutative later. Let $a+bi, c+di, e+fi \in \C$. Note that
         \begin{align*}
             &(a+bi)((c+di) + (e+fi))\\
@@ -178,9 +179,9 @@ We end this section by looking at the ring of complex numbers.
         so complex multiplication distributes over complex addition.
     \end{itemize}
     Hence $\C$ is a ring.
-    
+
     \newpage
-     
+
     We now show that complex multiplication is commutative. Let $a+bi, c+di \in C$. Then we see
     \begin{align*}
         (a+bi)(c+di) &= (ac-bd) + (ad+bc)i\\
@@ -194,7 +195,7 @@ We end this section by looking at the ring of complex numbers.
         (1+0i)(a+bi) = (1a-0b) + (1b+0a)i = a+bi,
     \]
     and since complex multiplication is commutative, therefore $1+0i$ is the multiplicative identity in $\C$.
-    
+
     Therefore $\C$ is a commutative ring with identity.
 \end{proof}
 
@@ -207,7 +208,7 @@ These are just some examples of rings; we explore more later in this chapter.
 \section{General Properties of Rings}
 We list some properties of rings here. For each of the propositions, assume $R$ is a ring.
 
-\begin{proposition}\label{prop-multiplying-by-zero-is-zero}
+\begin{proposition}[Multiplication by Zero]\label{prop-multiplying-by-zero-is-zero}
     $0x = x0 = 0$ for all $x \in R$.
 \end{proposition}
 \begin{proof}
@@ -217,14 +218,14 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
         &= 0x + 0x & (\text{by \textbf{Distributive} axiom})
     \end{align*}
     so by `subtracting' $0x$ on both sides (i.e., adding $-0x$ on both sides) we see $0 = 0x$.
-    
+
     Also
     \begin{align*}
         x0 &= x(0 + 0) & (0 \text{ is additive inverse})\\
         &= x0 + x0 & (\text{by \textbf{Distributive} axiom})
     \end{align*}
     so by `subtracting' $x0$ on both sides we see $0 = x0$.
-    
+
     Therefore $0x = x0 = 0$ for all $x \in R$.
 \end{proof}
 
@@ -240,7 +241,7 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
     Result follows.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop-product-of-additive-inverses}
     $(-a)(-b) = ab$ for any $a$ and $b$ in $R$.
 \end{proposition}
 \begin{proof}
@@ -264,12 +265,10 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
     Show that $(-a)(-b) = ab$ for any $a$ and $b$ in $R$.
 \end{exercise}
 
-% \section{Some Non-Obvious Rings}
 \section{Matrix Rings}
 The rings that we explored in previous sections can be thought of as the `obvious' rings, since they are number systems. As rings were made to generalize number systems, they should clearly be rings. However, there are less obvious rings.
 
-% \subsection{Matrix Rings}
-We looked at matrices in the context of the General/Special Linear Group of matrices. Here we see that matrices in fact form rings, known as matrix rings. Before that though, we need to define the operations within that ring.
+We looked at matrices in the context of the General/Special Linear Group of matrices (\myref{section-groups-of-matrices}). Here we see that matrices in fact form rings, known as matrix rings. Before that though, we need to define the operations within that ring.
 
 \begin{definition}[Matrix Addition]\index{matrix addition}
     For any two matrices $\textbf{A}$ and $\textbf{B}$ with $n$ rows and columns and entries in the ring $(R, \oplus, \otimes)$, their sum is the matrix $\textbf{C} = \textbf{A} + \textbf{B}$ with $n$ rows and columns such that
@@ -290,7 +289,7 @@ We also define two matrices that will become useful when we work with matrix rin
 \begin{definition}
     The \textbf{zero matrix}\index{zero matrix} with $n$ rows and columns is
     \[
-        \ZeroM{n} = 
+        \ZeroM{n} =
         \begin{pmatrix}
             0 & 0 & 0 & \cdots & 0 \\
             0 & 0 & 0 & \cdots & 0 \\
@@ -304,7 +303,7 @@ We also define two matrices that will become useful when we work with matrix rin
 \begin{definition}
     The \textbf{identity matrix}\index{identity matrix} with $n$ rows and columns is
     \[
-        \IdentityM{n} = 
+        \IdentityM{n} =
         \begin{pmatrix}
             1 & 0 & 0 & \cdots & 0 \\
             0 & 1 & 0 & \cdots & 0 \\
@@ -330,14 +329,14 @@ We can now define what is a matrix ring.
         \begin{itemize}
             \item \textbf{Closure}: Clearly the sum of any two matrices in $\Mn{n}{R}$ is also a square matrix with $n$ rows with elements inside $R$, meaning that $\Mn{n}{R}$ is closed under matrix addition.
 
-            \item \textbf{Associative}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. Let $\textbf{P} = \textbf{A} + (\textbf{B} + \textbf{C})$ and $\textbf{Q} = (\textbf{A} + \textbf{B}) + \textbf{C}$. We note that $\textbf{P} = \textbf{Q}$ as
+            \item \textbf{Associativity}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. Let $\textbf{P} = \textbf{A} + (\textbf{B} + \textbf{C})$ and $\textbf{Q} = (\textbf{A} + \textbf{B}) + \textbf{C}$. We note that $\textbf{P} = \textbf{Q}$ as
             \[
                 p_{i,j} = a_{i,j} \oplus (b_{i,j} \oplus c_{i,j}) = (a_{i,j} \oplus b_{i,j}) \oplus c_{i,j} = q_{i,j}
             \]
             by associativity of $\oplus$, which proves that matrix addition is associative.
-    
+
             \item \textbf{Identity}: We show that $\ZeroM{n}$ is the additive identity in $\Mn{n}{R}$. Let $\textbf{M} \in \Mn{n}{R}$; let $\textbf{N} = \textbf{M} + \ZeroM{n}$. Note that $n_{i,j} = m_{i,j} \oplus 0 = m_{i,j}$ so $\textbf{M} + \ZeroM{n} = \textbf{M}$. Therefore $\textbf{M} + \ZeroM{n} = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
-            
+
             \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ such that $b_{i,j} = -a_{i,j}$. That is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \ZeroM{n}$. (We denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$).
 
             \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{C}$. Consider $c_{i,j} = a_{i,j} \oplus b_{i,j}$. Since $\oplus$ is commutative, thus $a_{i,j} \oplus b_{i,j} = b_{i,j} \oplus a_{i,j}$. But $d_{i,j} = b_{i,j} \oplus a_{i,j}$, so we have $c_{i,j} = d_{i,j}$. Therefore $\textbf{C} = \textbf{D}$.
@@ -346,10 +345,10 @@ We can now define what is a matrix ring.
         \item \textbf{Multiplication-Semigroup}: We show that $(\Mn{n}{R}, \cdot)$ is a semigroup.
         \begin{itemize}
             \item \textbf{Closure}: In \myref{subsection-intro-to-matrices} we showed that matrix multiplication produces another $n \times n$ matrix. Furthermore the entries of the new matrix are elements of $R$. Hence $\Mn{n}{R}$ is closed under matrix multiplication.
-        
-            \item \textbf{Associative}: We proved matrix multiplication is associative in \myref{subsection-GLR-matrix-group}.
+
+            \item \textbf{Associativity}: We proved that matrix multiplication is associative in \myref{subsection-GLR-matrix-group}.
         \end{itemize}
-        
+
         \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly. Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
         \begin{align*}
             r_{i,j} &= \bigoplus_{k=1}^n \left(a_{i,k} \otimes \left(b_{k,j} \oplus c_{k,j}\right)\right)\\
@@ -392,42 +391,7 @@ We can now define what is a matrix ring.
     Hence $\Mn{n}{R}$ is a ring with identity.
 \end{proof}
 
-% \subsection{Hamilton's Quaternions}
-% The quaternions is a way to extend the complex numbers into 4 dimensions. Irish mathematician William Rowan Hamilton was looking for a way represent points in 3-dimensional space using numbers. He knew how to add and subtract triples of numbers, but had difficulty in defining a way to multiply and divide these numbers, just like in the ring of complex numbers. The breakthrough in quaternions came in 1843 when he thought of using 4-dimensional numbers instead of 3-dimensional numbers.
-
-% We define what quaternions are, and what the quaternion ring is.
-% \begin{definition}
-%     A \textbf{quaternion}\index{quaternion} is an expression of the form
-%     \[
-%         a + b\qi + c\qj + d\qk
-%     \]
-%     where $a,b,c,d \in \R$ and $\qi$, $\qj$, and $\qk$ are quantities such that
-%     \begin{itemize}
-%         \item $\qi\qj = -\qj\qi = \qk$;
-%         \item $\qj\qk = -\qk\qj = \qi$;
-%         \item $\qk\qi = -\qi\qk = \qj$; and
-%         \item $\qi^2 = \qk^2 = \qk^2 = \qi\qj\qk = -1$.
-%     \end{itemize}
-% \end{definition}
-% \begin{definition}
-%     The \textbf{quaternion ring}\index{quaternion ring} is
-%     \[
-%         \H = \{a + b\qi + c\qj + d\qk \vert a,b,c,d \in \R\}
-%     \]
-%     where, for two quaternions $q_1 = a_1+b_1\qi+c_1\qj+d_1\qk$ and $q_2 = a_2+b_2\qi+c_2\qj+d_2\qk$, addition is
-%     \[
-%         q_1 + q_2 = (a_1+a_2) + (b_1+b_2)\qi + (c_1+c_2)\qj + (d_1+d_2)\qk
-%     \]
-%     and multiplication is
-%     \begin{align*}
-%         q_1q_2 &= (a_1a_2 - b_1b_2 - c_1c_2 - d_1d_2)\\
-%         &+(a_1b_2 + b_1a_2 + c_1d_2 - d_1c_2)\qi\\
-%         &+(a_1c_2 - b_1d_2 + c_1a_2 + d_1b_2)\qj\\
-%         &+(a_1d_2 + b_1c_2 - c_1b_2 + d_1a_2)\qk.
-%     \end{align*}
-% \end{definition}
-
-\section{More Definitions}
+\section{More Definitions}\label{section-rings-more-definitions}
 Suppose $R$ is a ring.
 \begin{definition}
     We say that $a \neq 0$ is a \textbf{zero divisor}\index{zero divisor} in $R$ if there exists $b \neq 0$ such that $ab = 0$.
@@ -454,14 +418,16 @@ Suppose $R$ is a ring.
 \begin{exercise}
     Does the ring $\Mn{2}{\mathbb{R}}$ have zero divisors?
 \end{exercise}
+
 We note one property about zero divisors, which will be used in future chapters.
+
 \begin{proposition}\label{prop-zero-divisors-have-no-inverses}
     Zero divisors do not have inverses.
 \end{proposition}
 \begin{proof}
     Assume $a \neq 0$ and $b \neq 0$ are zero divisors in the ring $R$, so $ab = 0$. Seeking a contradiction, assume $a$ has an inverse, so
     \[
-        b = (a^{-1}a)b = a^{-1}(ab) = a^{-1}0 = 0    
+        b = (a^{-1}a)b = a^{-1}(ab) = a^{-1}0 = 0
     \]
     which contradicts $b \neq 0$. Hence a zero divisor has no inverse.
 \end{proof}
@@ -470,7 +436,29 @@ We note one property about zero divisors, which will be used in future chapters.
     Suppose $R$ is a ring with identity such that $0 \neq 1$. An element $u \in R$ is called a \textbf{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$. Equivalently, $u$ is a unit if it has a multiplicative inverse.
 \end{definition}
 \begin{example}
+    Every non-zero element of $\Z_3$ is a unit since $1 \times 1 = 1$ and $2 \times 2 = 4 = 1$.
+\end{example}
+\begin{example}
+    5 is a unit in $\Z_6$ since $5 \times 5 = 25 = 1$ in $\Z_6$.
+\end{example}
+\begin{example}
     3 and 7 are units in $\Z_{10}$ since $3 \times 7 = 7 \times 3 = 21 = 1$ in $\Z_{10}$.
+\end{example}
+\begin{example}
+    Every non-zero element of $\Q$ is a unit since, for any rational number $\frac pq \in \Q$, we can find $\frac qp \in \Q$ where $\frac pq \times \frac qp = 1$, the multiplicative identity.
+\end{example}
+
+\begin{proposition}\label{prop-product-of-units-is-unit}
+    The product of two units is a unit.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-product-of-units-is-unit} (later).
+\end{proof}
+\begin{example}
+    Since 3 and 7 are units in $\Z_{10}$, their product, $3 \times 7 = 21 = 1$ is too.
+\end{example}
+\begin{example}
+    2 and 3 are units in $\Z_{13}$ since $2 \times 7 = 14 = 1$ and $3 \times 9 = 27 = 1$ in $\Z_{13}$. Thus their product, $2 \times 3 = 6$, is a unit too. Indeed, one sees $6 \times 11 = 66 = 1$, so 6 is in fact a unit in $\Z_{13}$.
 \end{example}
 
 \begin{definition}
@@ -480,24 +468,52 @@ We note one property about zero divisors, which will be used in future chapters.
 \begin{definition}
     A commutative division ring is called a \textbf{field}\index{field}.
 \end{definition}
+
+\begin{example}
+    Earlier, we shown that $\R$ is a commutative ring. We now show that $\R$ is actually a field by noting that every non-zero $x \in \R$ has a reciprocal $\frac1x$ that is a real number (\myref{axiom-reciprocal}) such that $x\left(\frac1x\right) = \left(\frac1x\right)x = 1$. Thus every non-zero $x$ in $\R$ is a unit, meaning that $\R$ is a division ring. Coupled with the fact that $\R$ is a commutative ring means that $\R$ is a field.
+\end{example}
+\begin{example}
+    We also shown earlier that $\C$ is a commutative ring. We note that any non-zero complex number $z = a + bi$ has a multiplicative inverse given by
+    \[
+        w = \frac{a}{a^2+b^2} - \frac{b}{a^2+b^2}i
+    \]
+    since
+    \begin{align*}
+        zw &= (a+bi)\left(\frac{a}{a^2+b^2} - \frac{b}{a^2+b^2}i\right)\\
+        &= \frac{(a+bi)(a-bi)}{a^2+b^2}\\
+        &= \frac{a^2 - b^2i^2}{a^2+b^2}\\
+        &= \frac{a^2+b^2}{a^2+b^2} & (i^2 = -1)\\
+        &= 1.
+    \end{align*}
+    Thus any non-zero complex number is a unit, meaning that $\C$ is a division ring. As $\C$ is also a commutative ring, this means that $\C$ is a field.
+\end{example}
+
 We look at fields in more detail in part III.
 
-\begin{exercise}\label{exercise-Z-is-not-a-field}
-    Is $\Z$ a field?
+\begin{exercise}
+    Which of the following rings, if any, are fields?
+    \begin{partquestions}{\alph*}
+        \item $\Z$
+        \item $\Q$
+    \end{partquestions}
+\end{exercise}
+
+\begin{exercise}\label{exercise-product-of-units-is-unit}
+    Prove \myref{prop-product-of-units-is-unit}.
 \end{exercise}
 
 \section{Subrings}
 We end this chapter off with an exploration about subrings.
 
 \begin{definition}
-    Let $R$ be a ring and $S$ be a subset of $R$. Then $S$ is a \textbf{subring}\index{subring} of $R$ if
+    Let $R$ be a ring and $S$ be a subset of $R$. Then $S$ is a \textbf{subring}\index{subring} of $R$ if $S$ is also a ring under the same operations of addition and multiplication as $R$.
+\end{definition}
+\begin{remark}
+    Equivalently, a subset $S$ of $R$ is a subring of $R$ if is satisfies the following conditions.
     \begin{itemize}
         \item $(S, +) \leq (R, +)$, that is, the subset $S$ under addition is a subgroup of $R$ under addition; and
         \item for all $a$ and $b$ in $S$ we have $ab \in S$, i.e. $S$ is closed under multiplication.
     \end{itemize}
-\end{definition}
-\begin{remark}
-    Alternatively, one may show that $S$ is a ring to prove that $S$ is a subring of $R$.
 \end{remark}
 
 \begin{example}
@@ -505,31 +521,29 @@ We end this chapter off with an exploration about subrings.
 \end{example}
 
 \begin{example}
-    Consider the set of \textbf{gaussian integers}\index{gaussian integers}
+    Consider the set of \textbf{Gaussian integers}\index{Gaussian integers}
     \[
         \Z[i] = \{a + bi \vert a,b\in\mathbb{Z}\},
     \]
     read as ``$\Z$ adjoin $i$''. We first show that $\Z[i]$ is a subring of $\C$.
-    \begin{proof}
-        Clearly $\Z[i] \subseteq \C$. We show that $(\Z[i], +) \leq (\C, +)$.
-        \begin{itemize}
-            \item Clearly the identity of $(\C, +)$, which is 0, is inside $(\Z[i], +)$ as $0 = 0 + 0i$.
-            \item For any $a + bi, c+di \in \Z[i]$, we have
-            \[
-                (a+bi) + (-(c+di)) = (a-c) + (b-d)i \in \Z[i].
-            \]
-        \end{itemize}
-        Thus the subgroup test (\myref{thrm-subgroup-test}) tells us that $(\Z[i], +) \leq (\C, +)$.
 
-        Now we show that $\Z[i]$ is closed under multiplication. Let $a + bi, c+di \in \Z[i]$. Note that $ac, bd, ad, bc \in \Z$; the product of the two gaussian integers is
-        \begin{align*}
-            (a+bi)(c+di) &= (ac-bd) + (ad+bc)i\\
-            &\in \Z[i]
-        \end{align*}
-        so $\Z[i]$ is closed under multiplication.
-        
-        Therefore $\Z[i]$ is a subring of $\C$.
-    \end{proof}
+    Clearly $\Z[i] \subseteq \C$. We show that $(\Z[i], +) \leq (\C, +)$.
+    \begin{itemize}
+        \item Clearly the identity of $(\C, +)$, which is 0, is inside $(\Z[i], +)$ as $0 = 0 + 0i$.
+        \item For any $a + bi, c+di \in \Z[i]$, we have
+        \[
+            (a+bi) + (-(c+di)) = (a-c) + (b-d)i \in \Z[i].
+        \]
+    \end{itemize}
+    Thus the subgroup test tells us that $(\Z[i], +) \leq (\C, +)$.
+
+    Now we show that $\Z[i]$ is closed under multiplication. Let $a + bi, c+di \in \Z[i]$. Note that $ac, bd, ad, bc \in \Z$; the product of the two Gaussian integers is
+    \[
+        (a+bi)(c+di) = (ac-bd) + (ad+bc)i \in \Z[i]
+    \]
+    so $\Z[i]$ is closed under multiplication.
+
+    Therefore $\Z[i]$ is a subring of $\C$.
 \end{example}
 \begin{exercise}
     Show that
@@ -555,15 +569,11 @@ We end this chapter off with an exploration about subrings.
 \end{problem}
 
 \begin{problem}
-    Prove that it is impossible for an element of a ring $R$ to be both a zero divisor and a unit.
-\end{problem}
-
-\begin{problem}
     Let $R$ be a ring with identity 1, and let $x$ be an element from that ring.
     \begin{partquestions}{\roman*}
         \item Find \textbf{four} closed forms for the geometric series $1 + x + x^2 + x^3 + \cdots + x^n$.
         \item What are the condition(s) such that the closed forms are valid?
-        \item Evaluate 112 in the ring $\Z_{37}$.
+        \item Factor 112 into primes, and thus evaluate 112 in $\Z_{37}$.
         \item Hence, using the result(s) above, evaluate
         \[
             1 + 2^3 + 2^6 + 2^9 + \cdots + 2^{72}
@@ -583,7 +593,7 @@ We end this chapter off with an exploration about subrings.
 \begin{problem}
     Let
     \[
-        R = \left\{\begin{pmatrix}a&b\\0&0\end{pmatrix} \vert a,b \in \R\right\}    
+        R = \left\{\begin{pmatrix}a&b\\0&0\end{pmatrix} \vert a,b \in \R\right\}
     \]
     be a ring under matrix addition and multiplication.
     \begin{partquestions}{\roman*}
@@ -603,7 +613,6 @@ We end this chapter off with an exploration about subrings.
 \begin{problem}
     Let $R$ be a commutative ring with identity. We say that an element $x$ in $R$ is \textbf{nilpotent}\index{nilpotent} if there exists a positive integer $n$ such that $x^n = 0$.
     \begin{partquestions}{\roman*}
-        \item Show that the product of two units is a unit.
         \item Let $u \in R$ be a unit and $x \in R$ be nilpotent. Show that $ux$ is nilpotent.
         \item Show that $u - x$ is a unit.
     \end{partquestions}

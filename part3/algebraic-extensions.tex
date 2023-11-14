@@ -1,0 +1,528 @@
+\chapter{Algebraic Extensions}
+Elements in field extensions are one of two types. The first are elements that are a zero of a specific polynomial within the base field. The second are the rest. Elements that are a zero of a polynomial is of particular interest to us, and we will investigate the extensions that create all possible zeroes of polynomials.
+
+\section{Algebraic Elements}
+\begin{definition}
+    Let $E/F$ be a field extension. Then $\alpha \in E$ is \textbf{algebraic}\index{algebraic}\index{algebraic!element} over $F$ if and only if there exists some non-constant polynomial $f(x) \in F[x]$ such that $\alpha$ is a zero of $f(x)$.
+
+    An element that is not algebraic over $F$ is called \textbf{transcendental}\index{transcendental} over $F$.
+\end{definition}
+
+\begin{example}
+    We know that both $\sqrt2$ and $i = \sqrt{-1}$ are algebraic over $\Q$ since they are the zeroes of the polynomials $x^2 - 2$ and $x^2 + 1$ respectively.
+\end{example}
+
+\begin{example}
+    Both $\pi$ and $e$ are algebraic over $\R$ since they are the zeroes of the polynomials $x - \pi$ and $x - e$ respectively. However, it is non-trivial to show that $\pi$ and $e$ are not algebraic (i.e., transcendental) over $\Q$.
+\end{example}
+
+For the case when the field in question is $\Q$, we have a more commonplace definition for algebraic and transcendental elements.
+
+\begin{definition}
+    An $\alpha \in \C$ that is algebraic over $\Q$ is called an \textbf{algebraic number}\index{algebraic!number}. Otherwise it is called a \textbf{transcendental number}\index{transcendental!number}.
+\end{definition}
+
+\begin{example}
+    We show that $\sqrt{2+\sqrt3}$ is an algebraic number. Let $\alpha = \sqrt{2+\sqrt3}$; one sees $\alpha^2 = 2 + \sqrt3$. Therefore $\alpha^2 - 2 = \sqrt3$ and so $(\alpha^2 - 2)^2 = 3$, which means that
+    \[
+        (\alpha^2 - 2)^2 - 3 = 0.
+    \]
+    One may then expand the left hand side to yield $\alpha^4 - 4\alpha^2 + 1$. Therefore $\alpha$ is a zero of the polynomial $x^4 - 4x^2 + 1 \in \Q[x]$, meaning that $\alpha$ is an algebraic number.
+\end{example}
+
+\begin{exercise}
+    Is $\sqrt{2 - \sqrt{i}}$ a transcendental number?
+\end{exercise}
+
+\newpage
+
+\section{Characterising Extensions}
+With an understanding of what algebraic and transcendental elements are, we link these definitions back to the idea of field extensions.
+
+\begin{definition}
+    Let $F$ be a field. A field extension $E/F$ is called an \textbf{algebraic extension}\index{extension!algebraic} if and only if every element of $E$ is algebraic over $F$. Otherwise $E$ is called a \textbf{transcendental extension}\index{extension!transcendental} of $F$.
+\end{definition}
+
+We expand upon \myref{thrm-simple-extension-isomorphism} and provide a characterisation of simple extensions of both algebraic and transcendental elements.
+
+\begin{theorem}\label{thrm-characterisation-of-extensions}
+    Let $F$ be a field, $E/F$ a field extension, and $\alpha \in E$.
+    \begin{itemize}
+        \item If $\alpha$ is algebraic then $F(\alpha) \cong F[x]/\princ{p(x)}$, where $p(x) \in F[x]$ is a polynomial in $F[x]$ of minimum degree such that $\alpha$ is a zero. Furthermore $p(x)$ is irreducible over $F$.
+        \item If $\alpha$ is transcendental over $F$ then $F(\alpha) \cong \Frac{F[x]}$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. Recall from \myref{thrm-simple-extension-isomorphism} that $\phi$ is a homomorphism.
+
+    If $\alpha$ is algebraic over $F$, then by definition of an algebraic element, thus there is a polynomial in $F[x]$, say $f(x)$, that $\alpha$ is a zero of, i.e. $f(\alpha) = 0$. Hence $\ker\phi$ is non-trivial; by \myref{thrm-criterion-for-principal-ideal-in-polynomial-field} there is a polynomial $p(x) \in F[x]$ such that $\ker\phi = \princ{p(x)}$ and where $p(x)$ has minimum degree among all non-zero elements of $\ker\phi$.
+
+    We now show that $p(x)$ is irreducible. Suppose not, that $p(x) = f(x)g(x)$ where $f(x), g(x) \in F[x]$ are non-constant polynomials. Hence $f(x)$ and $g(x)$ are polynomials of degree smaller than $p(x)$. However, since $\alpha$ is a zero of $p(x)$, this means that $f(\alpha) = 0$ or $g(\alpha) = 0$. But this contradicts the minimality of the degree of $p(x)$; therefore $p(x)$ is irreducible.
+
+    On the other hand, if $\alpha$ is transcendental, then there does not exist a polynomial in $F[x]$ such that $\alpha$ is a zero of. Therefore $\ker\phi$ is trivial. We extend $\phi$ to become the map $\psi: \Frac{F[x]} \to F(\alpha)$ where $\psi\left(\frac{f(x)}{g(x)}\right) = f(\alpha)(g(\alpha))^{-1}$. We prove that $\psi$ is a well-defined isomorphism.
+    \begin{itemize}
+        \item \textbf{Well-Defined}: Suppose $\frac{f(x)}{g(x)} = \frac{p(x)}{q(x)}$ for polynomials $f(x), g(x), p(x), q(x) \in F[x]$. Thus $f(x)q(x) = p(x)g(x)$ by definition of equality of equivalence classes in the field of fractions of $F[x]$. So we see $f(\alpha)q(\alpha) = p(\alpha)g(\alpha)$ which quickly means $f(\alpha)(g(\alpha))^{-1} = p(\alpha)(q(\alpha))^{-1}$. Therefore
+        \[
+            \psi\left(\frac{f(x)}{g(x)}\right) = f(\alpha)(g(\alpha))^{-1} = p(\alpha)(q(\alpha))^{-1} = \psi\left(\frac{p(x)}{q(x)}\right)
+        \]
+        which shows that $\psi$ is a well-defined map.
+
+        \item \textbf{Homomorphism}: Let $\frac{f(x)}{g(x)}, \frac{p(x)}{q(x)} \in \Frac{F[x]}$. Then we see
+        \begin{align*}
+            \psi\left(\frac{f(x)}{g(x)} + \frac{p(x)}{q(x)}\right) &= \psi\left(\frac{f(x)q(x) + g(x)p(x)}{g(x)q(x)}\right)\\
+            &= \left(f(\alpha)q(\alpha) + g(\alpha)p(\alpha)\right)\left(g(\alpha)q(\alpha)\right)^{-1}\\
+            &= f(\alpha)q(\alpha)\left(g(\alpha)q(\alpha)\right)^{-1} + g(\alpha)p(\alpha)\left(g(\alpha)q(\alpha)\right)^{-1}\\
+            &= f(\alpha)(g(\alpha))^{-1} + p(\alpha)(q(\alpha))^{-1}\\
+            &= \psi\left(\frac{f(x)}{g(x)}\right) + \psi\left(\frac{p(x)}{q(x)}\right)
+        \end{align*}
+        and
+        \begin{align*}
+            \psi\left(\frac{f(x)}{g(x)}\times \frac{p(x)}{q(x)}\right) &= \psi\left(\frac{f(x)p(x)}{g(x)q(x)}\right)\\
+            &= f(\alpha)p(\alpha)\left(g(\alpha)q(\alpha)\right)^{-1}\\
+            &= f(\alpha)(g(\alpha))^{-1}p(\alpha)(q(\alpha))^{-1}\\
+            &= \psi\left(\frac{f(x)}{p(x)}\right)\psi\left(\frac{p(x)}{q(x)}\right)
+        \end{align*}
+        so $\psi$ is indeed a homomorphism.
+        
+        \item \textbf{Injective}: Since $\psi$ is non-trivial it is thus injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}.
+        
+        \item \textbf{Surjective}: Suppose $r \in F(\alpha)$. Note that both  1 and $r$ are constant polynomials in $F[x]$, so $\frac r1 \in \Frac{F[x]}$. We therefore see $\psi\left(\frac r1\right) = r1^{-1} = r$ and hence every element in $F(\alpha)$ has a pre-image.
+    \end{itemize}
+    Hence $\psi$ is a well-defined isomorphism, meaning $F(\alpha) \cong \Frac{F[x]}$.
+\end{proof}
+
+For an algebraic element $\alpha$, \myref{thrm-characterisation-of-extensions} gives us an irreducible polynomial $p(x)$ of minimum degree which $\alpha$ is a root of. If $p(x)$ is monic we have a slightly stronger result.
+
+\begin{corollary}\label{corollary-unique-minimal-polynomial}
+    Let $F$ be a field and $E/F$ be a field extension. If $\alpha \in E$ is algebraic over $F$, then there is a unique monic irreducible polynomial $p(x) \in F[x]$ such that $\alpha$ is a zero of $p(x)$.
+\end{corollary}
+\begin{proof}
+    Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. From \myref{thrm-characterisation-of-extensions} we know that $\ker\phi \neq \emptyset$ since $\alpha$ is algebraic over $F$. We also know that there exists a irreducible polynomial of minimal degree in $F[x]$ such that $\alpha$ is a zero of it. For brevity, let $J_\alpha = \ker\phi$.
+
+    Now suppose $f(x), g(x) \in F[x]$ are both monic irreducible polynomials of minimal degree in $F[x]$ with $\alpha$ as a zero. Hence $f(x), g(x) \in J_\alpha$. Let $r(x) = f(x) - g(x)$; note $r(x) \in J_\alpha$. 
+    
+    Seeking a contradiction, suppose $r(x) \neq 0$. Then $\deg r(x) < \deg f(x)$ since both $f(x)$ and $g(x)$ are minimal degree (which means that they are of the same degree). Let $m = \deg r(x)$ and $c_m$ be the leading coefficient of $r(x)$. Now observe that $c_m^{-1}r(x)$ is a monic polynomial with coefficients in $F$, and that $c_m^{-1}r(x) \in J_\alpha$. Furthermore $\alpha$ is a zero of $c_m^{-1}r(x)$; so we have found a polynomial of smaller degree than $f(x)$ (and $g(x)$) with $\alpha$ as a zero, contradicting the assumption that $f(x)$ (and $g(x)$) are of minimal degree.
+
+    Hence $r(x) = 0$, meaning that $f(x) - g(x) = 0$ and thus $f(x) = g(x)$, proving the uniqueness of the monic irreducible polynomial in $F[x]$ such that $\alpha$ is a zero.
+\end{proof}
+
+There is a name for the unique monic irreducible polynomial in \myref{corollary-unique-minimal-polynomial}.
+
+\begin{definition}
+    Let $F$ be a field, $E/F$ be a field extension, and $\alpha \in E$ be algebraic over $F$. The monic irreducible polynomial $p(x) \in F[x]$ which $\alpha$ is a root of is called the \textbf{minimal polynomial for $\alpha$ over $F$}\index{extension!algebraic!minimal polynomial}.
+\end{definition}
+
+We note one more corollary regarding the characterisation of extensions.
+
+\begin{corollary}\label{corollary-minimal-polynomial-divides-polynomial-with-same-root}
+    Let $F$ be a field, $E/F$ be a field extension, $\alpha \in E$ be algebraic over $F$, and $p(x) \in F[x]$ be the minimal polynomial for $\alpha$ over $F$. If $f(x) \in F[x]$ has a zero of $\alpha$ then $p(x)$ divides $f(x)$.
+\end{corollary}
+\begin{proof}
+    Let $p(x), f(x) \in F[x]$ be as above. Using polynomial long division with divisor $p(x)$ we see
+    \[
+        f(x) = q(x)p(x) + r(x)
+    \]
+    where $r(x) = 0$ or $\deg r(x) < \deg p(x)$. If the latter case applies, then we see
+    \[
+        f(\alpha) = q(\alpha)p(\alpha) + r(\alpha).
+    \]
+    Since $\alpha$ is a zero of both $f(x)$ and $p(x)$ we thus see $0 = 0 + r(\alpha)$ which means $\alpha$ is a zero of $r(x)$ too; but $\deg r(x) < \deg p(x)$ contradicts the minimality of the degree of $p(x)$. Therefore $r(x) = 0$ which means $f(x) = q(x)p(x)$, i.e. $p(x)$ divides $f(x)$.
+\end{proof}
+
+\section{Finite Extensions}
+Recall from \myref{thrm-field-is-vector-space} that a field is a vector space over a subfield. Similarly, an extension field is a vector space over the base field. With the idea of vector spaces, we can define the degree of a particular field extension.
+
+\begin{definition}
+    Let $F$ be a field and $E/F$ be a field extension. We say that $E$ has \textbf{degree $n$ over $F$}\index{extension field!degree}\index{degree!extension field} and write $[E:F] = n$ if and only if $\dim E = n$ when viewed as a vector space over $F$.
+
+    If $[E:F]$ is finite, then $E$ is called a \textbf{finite extension}\index{extension!finite} of $F$. Otherwise $E$ is called an \textbf{infinite extension}\index{extension!infinite} of $F$.
+\end{definition}
+
+We note an immediate observation from this definition.
+\begin{proposition}\label{prop-finite-extension-of-degree-1-means-extension-isomorphic-to-base-field}
+    Let $F$ be a field and $E/F$ be a field extension. If $[E:F] = 1$ then $E \cong F$.
+\end{proposition}
+\begin{proof}
+    Viewing $E$ is a vector space over $F$, we know that $\dim E = 1$. By \myref{thrm-vector-space-of-dimension-n-isomorphic-to-F^n} we have $E\cong F^1 = F$.
+\end{proof}
+
+We can depict the degree of a field extension using a diagram.
+\begin{figure}[H]
+    \centering
+    \pdfteximg{0.2\textwidth}{part3/images/algebraic-extensions/degree-of-extension.pdf_tex}
+    \caption{Field Extension Diagram}
+\end{figure}
+
+\begin{examplewithcutout}{right}{0}{0.7\textwidth}{0pt}{7}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.6\linewidth}{part3/images/algebraic-extensions/Q-sqrt2-and-Q.pdf_tex}
+    \end{figure}
+}
+    Consider the simple extension $\Q(\sqrt2)$. Viewed as a vector space over $\Q$, we see that $\Q(\sqrt 2)$ has dimension 2, as a possible basis is $\{1, \sqrt2\}$. Hence, we write $[\Q(\sqrt2):\Q] = 2$ and produce the field extension diagram as shown on the right.
+
+    We note that $\Q(\sqrt2)$ is a finite extension over $\Q$ since its degree is finite.
+\end{examplewithcutout}
+
+\begin{examplewithcutout}{right}{0}{0.7\textwidth}{0pt}{7}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.6\linewidth}{part3/images/algebraic-extensions/Q-cbrt2-and-Q.pdf_tex}
+    \end{figure}
+}
+    Consider the simple extension $\Q(\sqrt[3]2)$. We note $\Q(\sqrt[3]2)$ has dimension 3 when viewed as a vector space over $\Q$, and a possible basis for $\Q(\sqrt[3]2)$ is $\{1, \sqrt[3]2, \sqrt[3]4\}$. Hence, we write $[\Q(\sqrt[3]2):\Q] = 3$ and produce the field extension diagram as shown on the right. Like with the previous example, $\Q(\sqrt[3]2)$ is a finite extension since its degree, 3, is finite.
+\end{examplewithcutout}
+
+\begin{examplewithcutout}{right}{0}{0.7\textwidth}{0pt}{7}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.6\linewidth}{part3/images/algebraic-extensions/C-and-R.pdf_tex}
+    \end{figure}
+}
+    The field of complex numbers, $\C$, has degree 2 over the reals, $\R$, since $\{1, i\}$ is a basis of $\C$ over $\R$. This produces the field extension diagram on the right.
+    
+    However, $\C$ over $\Q$ is an infinite extension. In such a case, a field extension diagram is not meaningful.
+\end{examplewithcutout}
+
+\begin{examplewithcutout}{right}{0}{0.7\textwidth}{0pt}{7}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.6\linewidth}{part3/images/algebraic-extensions/simple-algebraic-extension-degree.pdf_tex}
+    \end{figure}
+}
+    Let $F$ be a field and $E$ an extension field of $F$. If $\alpha \in E$ is algebraic over $F$ and its minimal polynomial $p(x) \in F[x]$ has degree $n$, then we know that $\{1, \alpha, \alpha^2, \dots, \alpha^{n-1}\}$ is a basis for the simple extension $F(\alpha)$ over $F$ by \myref{thrm-simple-extension-isomorphism}. Therefore, one sees that $[F(a): F] = n$ and we thus generate a field extension diagram as shown on the right.
+\end{examplewithcutout}
+
+The previous example leads us to define the degree of an algebraic element.
+
+\begin{definition}
+    Let $F$ be a field and $E/F$ be a field extension. If $\alpha \in E$ is algebraic and $F(\alpha)$ is a finite extension of $F$ of degree $n$, then the element $\alpha$ is said to have \textbf{degree $n$ over $F$}\index{degree!element}\index{algebraic!element!degree}.
+\end{definition}
+
+One sees clearly that algebraic elements `produce' finite extensions, but what about the reverse direction? What does a finite extension imply about the elements inside it? It turns out this implies that all elements inside the finite extension are algebraic over the base field.
+
+\begin{theorem}\label{thrm-finite-extension-is-algebraic}
+    If $E$ is a finite extension of a field $F$, then $E$ is an algebraic extension of $F$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 21.4]{gallian_2016}})]
+    Suppose the degree of $E$ over $F$ is $n$ and $\alpha \in E$. Then the set $\{1, \alpha, \alpha^2, \dots, \alpha^{n-1}, \alpha^n\}$ is a linearly dependent set over $F$ since this set has $n + 1$ elements while $\dim E = n$ (\myref{thrm-basis-is-smallest-spanning-and-largest-linearly-independent-set}). Hence, by definition of linear dependence, there exist elements $a_0, a_1, \dots, a_n \in F$ that are not all zero such that
+    \[
+        a_0 + a_1\alpha + a_2\alpha^2 + \cdots + a_n\alpha^n = 0.
+    \]
+    Clearly this means that $\alpha$ is a zero of the non-zero polynomial
+    \[
+        f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n
+    \]
+    which means that $\alpha$ is algebraic. Since $\alpha$ is arbitrary, therefore every element in $E$ is algebraic; consequently $E$ is an algebraic extension of $F$.
+\end{proof}
+
+The next result can be thought of the field theory counterpart to Lagrange's theorem (\myref{thrm-lagrange}) for finite groups.
+
+\begin{theorem}[Tower Law]\index{Tower Law}\label{thrm-tower-law}
+    Let $F$ be a field, $E$ a finite extension field of $F$, and $K$ a finite extension field of $E$. Then $K$ is a finite extension field of $F$ and
+    \[
+        [K:F] = [K:E][E:F].
+    \]
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 21.5]{gallian_2016}})]
+    Let $[K:E] = m$ and $[E:F] = n$. In addition let $X = \{\textbf{x}_1, \textbf{x}_2, \dots, \textbf{x}_m\}$ be a basis for $K$ over $E$, and $Y = \{\textbf{y}_1, \textbf{y}_2, \dots, \textbf{y}_n\}$ be a basis for $E$ over $F$. It suffices to prove that
+    \[
+        YX = \{\textbf{y}_j\textbf{x}_i \vert 1 \leq i \leq m \text{ and } 1 \leq j \leq n\}
+    \]
+    is a basis for $K$ over $F$, since this would imply that the dimension of $K$ over $F$ is $mn$.
+
+    We first show that $YX$ spans $K$ over $F$. Let $r \in K$. Then there we can find elements $a_1, a_2, \dots, a_n \in E$ such that
+    \[
+        r = a_1\textbf{x}_1 + a_2\textbf{x}_2 + \cdots + a_m\textbf{x}_m.
+    \]
+    Furthermore, for each $a_i$, there are elements $b_{i,1}, b_{i,2}, \dots, b_{i,n}\in F$ such that
+    \[
+        a_i = b_{i,1}\textbf{y}_1 + b_{i,2}\textbf{y}_2 + \cdots + b_{i,n}\textbf{y}_n.
+    \]
+    So we see
+    \[
+        r = \sum_{i=1}^m\left(\left(\sum_{j=1}^n b_{i,j}\textbf{y}_j\right)\textbf{x}_i\right) = \sum_{i=1}^m\sum_{j=1}^nb_{i,j}(\textbf{y}_j\textbf{x}_i)
+    \]
+    which proves that $YX$ spans $K$ over $F$.
+
+    Now we show that the vectors in $YX$ are linearly independent. Suppose there are elements $b_{i,j}$ in $F$ such that
+    \[
+        \sum_{i=1}^m\left(\left(\sum_{j=1}^n b_{i,j}\textbf{y}_j\right)\textbf{x}_i\right) = \sum_{i=1}^m\sum_{j=1}^nb_{i,j}(\textbf{y}_j\textbf{x}_i) = 0.
+    \]
+    Recall from above that
+    \[
+         \sum_{i=1}^m\sum_{j=1}^nb_{i,j}(\textbf{y}_j\textbf{x}_i) = \sum_{i=1}^m\left(\left(\sum_{j=1}^n b_{i,j}\textbf{y}_j\right)\textbf{x}_i\right)
+    \]
+    so we see
+    \[
+        \sum_{i=1}^m\left(\left(\sum_{j=1}^n b_{i,j}\textbf{y}_j\right)\textbf{x}_i\right) = 0.
+    \]
+    As $\displaystyle \sum_{j=1}^n b_{i,j}\textbf{y}_j \in E$ and $X$ is a basis for $K$ over $E$, we must have $\displaystyle \sum_{j=1}^n b_{i,j}\textbf{y}_j = 0$ for each $i$. But each $b_{i,j} \in F$ and $Y$ is a basis for $E$ over $F$, so $b_{i, j} = 0$. Therefore $YX$ is linearly independent over $F$.
+
+    Since $YX$ is a spanning set for $K$ over $F$ and since $YX$ is a set of linearly independent vectors, therefore $YX$ is a basis for $K$ over $F$.
+\end{proof}
+
+The Tower Law (\myref{thrm-tower-law}) can be summarised in the following field extension diagram.
+
+\begin{figure}[H]
+    \centering
+    \pdfteximg{0.2\textwidth}{part3/images/algebraic-extensions/multiplying-degrees.pdf_tex}
+    \caption{Multiplying Degrees of Finite Extensions}
+\end{figure}
+
+The following examples show how this theorem is often utilized.
+
+\begin{examplewithcutout}{right}{0}{0.6\textwidth}{0pt}{8}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.625\linewidth}{part3/images/algebraic-extensions/Q-sqrt3-sqrt5.pdf_tex}
+    \end{figure}
+}\label{example-Q-sqrt3-sqrt5}
+    We see that $[\Q(\sqrt3, \sqrt5), \Q(\sqrt5)] = 2$ and $[\Q(\sqrt5):\Q] = 2$, so $[\Q(\sqrt3, \sqrt5):\Q] = 4$ by Tower Law (\myref{thrm-tower-law}). In particular, one sees that $\{1, \sqrt3\}$ is a basis for $\Q(\sqrt3,\sqrt5)$ over $\Q(\sqrt5)$ and $\{1, \sqrt5\}$ is a basis for $\Q(\sqrt5)$ over $\Q$, so $\{1, \sqrt3, \sqrt5, \sqrt3\times\sqrt5\} = \{1, \sqrt3, \sqrt5, \sqrt{15}\}$ is a basis for $\Q(\sqrt3, \sqrt5)$.
+    
+    One also sees that $[\Q(\sqrt3, \sqrt5), \Q(\sqrt3)] = 2$ and $[\Q(\sqrt3):\Q] = 2$, so $[\Q(\sqrt3, \sqrt5):\Q] = 4$.
+\end{examplewithcutout}
+
+\begin{examplewithcutout}{right}{0}{0.6\textwidth}{0pt}{8}{
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.625\linewidth}{part3/images/algebraic-extensions/Q-cbrt2-4root3.pdf_tex}
+    \end{figure}
+}
+    Consider $\Q(\sqrt[3]2, \sqrt[4]3)$. One sees that $[\Q(\sqrt[3]2):\Q] = 3$ and $[\Q(\sqrt[4]3):\Q] = 4$. We note $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)]$ and $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[4]3)][\Q(\sqrt[4]3:\Q)]$ by Tower Law (\myref{thrm-tower-law}), so $[\Q(\sqrt[3]2, \sqrt[4]3):\Q]$ is a multiple of $\lcm(3, 4) = 12$. On the other hand, note that $[\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)]$ is at most 4, since $\sqrt[4]3$ is a zero of $x^4 - 3 \in \Q(\sqrt[3]2)[x]$. Hence $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = [\Q(\sqrt[3]2, \sqrt[4]3):\Q(\sqrt[3]2)][\Q(\sqrt[3]2:\Q)] \leq 4 \times 3 = 12$. Therefore we see $[\Q(\sqrt[3]2, \sqrt[4]3):\Q] = 12$. The missing degrees for the extensions can then be inferred quickly.
+\end{examplewithcutout}
+
+The theorem can sometimes be used to show that a field does not contain a particular element.
+
+\begin{example}
+    Consider the polynomial $p(x) = 15x^4 - 10x^2 + 9x + 21$. One sees by the Mod 2 Irreducibility test (\myref{thrm-mod-p-irreducibility-test}) that $p(x)$ is irreducible over $\Q$. Let $\alpha$ be a zero of $p(x)$ in some extension of $\Q$. Then, even though we do not know what $\alpha$ is, we can still prove that $\sqrt[3]2$ is not an element of $\Q(\alpha)$. This is because, otherwise, $\Q \subset \Q(\sqrt[3]2) \subseteq \Q(\alpha)$ and so
+    \[
+        [\Q(\alpha):\Q] = [\Q(\alpha):\Q(\sqrt[3]2)][\Q(\sqrt[3]2):\Q]
+    \]
+    by Tower Law (\myref{thrm-tower-law}). But $[\Q(\alpha):\Q] = 4$ (as $\deg p(x) = 4$) and $[\Q(\sqrt[3]2):\Q] = 3$, so we see that 3 divides 4, a clear contradiction. Therefore $\sqrt[3]2 \notin \Q(\alpha)$.
+\end{example}
+
+\begin{exercise}
+    \hfill
+    \begin{partquestions}{\alph*}
+        \item \begin{partquestions}{\roman*}
+            \item Find $[\Q(\sqrt2,\sqrt[3]3):\Q]$.
+            \item Hence find $[\Q(\sqrt2, \sqrt[3]3, \sqrt[6]{72}):\Q]$.
+        \end{partquestions}
+        \item Consider the polynomial $p(x) = x^5 + 2x + 1 \in \Q[x]$.
+        \begin{partquestions}{\roman*}
+            \item Prove that $p(x)$ is irreducible over $\Q$.
+            \item Let $\alpha$ be a zero of $p(x)$ in some extension of $\Q$. Prove that $\sqrt2 \notin \Q(\alpha)$.
+        \end{partquestions}
+    \end{partquestions}
+\end{exercise}
+
+\section{Primitive Elements}
+Recall that a simple extension is `generated' by one element, called its primitive element. We wonder whether `non-simple' extensions can be converted into simple extensions.
+
+\begin{example}
+    Recall from \myref{exercise-splitting-field-sqrt2-sqrt3} that we have shown $\Q(\sqrt2, \sqrt3) = \Q(\sqrt2 + \sqrt3)$. We present another method for proving this fact.
+
+    The inclusion $\Q(\sqrt2 + \sqrt3) \subseteq \Q(\sqrt2, \sqrt3)$ is quite clear as $\sqrt2 + \sqrt3 \in \Q(\sqrt2, \sqrt3)$.
+
+    Now because
+    \begin{align*}
+        \left(\sqrt2 + \sqrt3\right)^{-1} &= \frac{\sqrt2-\sqrt3}{(\sqrt2+\sqrt3)(\sqrt2-\sqrt3)}\\
+        &= \sqrt3-\sqrt2\\
+        &= -(\sqrt2 - \sqrt3)
+    \end{align*}
+    so $\sqrt2 - \sqrt3 \in \Q(\sqrt2 + \sqrt3)$. It follows that
+    \[
+        \frac12\left(\sqrt2 + \sqrt3\right) + \frac12\left(\sqrt2 - \sqrt3\right) = \sqrt2 \quad\text{and}\quad \frac12\left(\sqrt2 + \sqrt3\right) - \frac12\left(\sqrt2 - \sqrt3\right) = \sqrt3
+    \]
+    which thus means that both $\sqrt2, \sqrt3 \in \Q(\sqrt2+\sqrt3)$. Hence $\Q(\sqrt2, \sqrt3) \subseteq \Q(\sqrt2 + \sqrt3)$. We therefore obtain $\Q(\sqrt2, \sqrt3) = \Q(\sqrt2+\sqrt3)$.
+
+    Now clearly
+    \[
+        [\Q(\sqrt2, \sqrt3): \Q] = \underbrace{[\Q(\sqrt2, \sqrt3): \Q(\sqrt2)]}_2\underbrace{[\Q(\sqrt2):\Q]}_2 = 4
+    \]
+    by Tower Law (\myref{thrm-tower-law}), which means that the minimal polynomial of $\sqrt2+\sqrt3$ has degree 4. How do we find this minimal polynomial? First set $\alpha = \sqrt2 + \sqrt3$, and note $\alpha^2 = 2 + 2\sqrt6 + 3$, which means $\alpha^2 - 5 = 2\sqrt6$. Hence $\alpha^4 - 10\alpha^2 + 25 = 24$, which means $\alpha^4 - 10\alpha^2 + 1 = 0$. Hence $\alpha$ is a zero of the monic degree 4 polynomial $p(x) = x^4 - 10x^2 + 1$. Since $p(x)$ is irreducible by \myref{exercise-splitting-field-sqrt2-sqrt3}, therefore $p(x)$ is the minimal polynomial of $\sqrt2 + \sqrt3$.
+\end{example}
+
+The previous example shows that an extension obtained adjoined by two elements to a field can sometimes be obtained by adjoining a single element to the field. We show that under certain conditions this can always be done.
+
+\begin{theorem}\label{thrm-two-elem-adjoined-convert-to-simple-extension}
+    Let $F$ be a field of characteristic 0. If $a$ and $b$ are algebraic over $F$, then there is an element in $c \in F(a,b)$ such that $F(a,b) = F(c)$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 21.6]{gallian_2016}})]
+    Let $p(x)$ and $q(x)$ be the minimal polynomials over $F$ for $a$ and $b$ respectively. Let $K/F$ be a field extension where $a_1, a_2, \dots, a_m$ and $b_1, b_2, \dots, b_n$ are the distinct zeroes of $p(x)$ and $q(x)$ in $K$, and where $a = a_1$ and $b = b_1$. Now of all the elements of $F$, choose a $d$ such that
+    \[
+        d \neq (a_i-a)(b-b_j)^{-1}
+    \]
+    for all $i \in \{1, 2, 3, \dots, m\}$ and $j \in \{2, 3, \dots, n\}$. In other words we have $a_i \neq a + d(b-b_j)$ for all $i \in \{1, 2, 3, \dots, m\}$ and $j \in \{2, 3, \dots, n\}$.
+
+    Now we show that $c = a + db$ has the property that $F(a, b) = F(c)$. Clearly $F(c) \subseteq F(a, b)$; we just need to show $F(a, b) \subseteq F(c)$. We note that $a = c - db$, so we just need to prove that $b \in F(c)$ and this would automatically imply that $a \in F(c)$ and therefore $F(a,b) \subseteq F(c)$.
+
+    Consider the polynomial $r(x) = p(c - dx)$, i.e. $r(x)$ is obtained by substituting $c - dx$ for $x$ in $p(x)$. One then sees that $q(b) = 0$ (by definition of the minimal polynomial of $b$ over $F$) and $r(b) = p(c - db) = p(a) = 0$, so both $q(x)$ and $r(x)$ are divisible by the minimal polynomial for $b$ over $F(c)$ by \myref{corollary-minimal-polynomial-divides-polynomial-with-same-root}. Let $s(x) \in F(c)[x]$ be the minimal polynomial of $b$ over $F(c)$. Since $s(x)$ is a common divisor of both $q(x)$ and $r(x)$, thus the only possible zeroes of $s(x)$ in $K$ are the zeroes of $q(x)$ that are also zeroes of $r(x)$. But note
+    \begin{align*}
+        r(b_j) &= p(c-db_j)\\
+        &= p((a+db) - db_j)\\
+        &= p(a+d(b-b_j))
+    \end{align*}
+    and $a_i \neq a+d(b-b_j)$ for all $i \in \{1, 2, 3, \dots, m\}$ and $j \in \{2, 3, \dots, n\}$. Therefore the only possible zero of $s(x)$ in $K$ is $b_1 = b$; consequently $s(x) = (x-b)^u$ for some positive integer $u$. However $s(x)$ is irreducible (by definition of a minimal polynomial), and because $F$ has characteristic 0, therefore $s(x)$ has no multiple zeroes (\myref{thrm-zeroes-of-an-irreducible}), meaning $u = 1$ and therefore $s(x) = x-b$. The only zero of $s(x)$ is clearly $b$, and by definition of a minimal polynomial, we must have $b \in F(c)$, proving $F(a, b) \subseteq F(c)$
+
+    So we have $F(c) \subseteq F(a, b)$ and $F(a, b) \subseteq F(c)$, proving that $F(a, b) = F(c)$.
+\end{proof}
+
+\begin{exercise}\label{exercise-Q-sqrt3-sqrt5}
+    Consider $\Q(\sqrt3,\sqrt5)$.
+    \begin{partquestions}{\roman*}
+        \item Prove that $\Q(\sqrt3,\sqrt5) = \Q(\sqrt3+\sqrt5)$.
+        \item Deduce the degree of the minimal polynomial of $\sqrt3+\sqrt5$.
+    \end{partquestions}
+\end{exercise}
+
+\section{Properties of Algebraic Extensions and Algebraic Closure}
+We explore more properties of algebraic extensions.
+\begin{theorem}\label{thrm-algebraic-over-algebraic-is-algebraic}
+    Let $F$ be a field, and let $E/F$ and $K/E$ be field extensions. If $K$ is an algebraic extension of $E$ and $E$ is an algebraic extension of $F$, then $K$ is an algebraic extension of $F$.
+\end{theorem}
+\begin{proof}
+    Let $\alpha \in K$. Since $\alpha$ is algebraic over $E$, thus $\alpha$ is a zero of some irreducible polynomial in $E[x]$, say $p(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$. We note that every $a_i \in E$ is algebraic over $F$ since $E$ is an algebraic extension of $F$.
+
+    Construct a `tower' of extension fields of $F$ as follows.
+    \begin{align*}
+        F_0 &= F(a_0),\\
+        F_1 &= F_0(a_1) = F(a_0, a_1),\\
+        F_2 &= F_1(a_2) = F(a_0, a_1, a_2),\\
+        \vdots\\
+        F_n &= F_{n-1}(a_n) = F(a_0, a_1, \dots, a_n).
+    \end{align*}
+    In particular we see $p(x) \in F_n[x]$. Therefore $[F_n(\alpha): F_n] = n$, which is finite. Also, since each $a_i$ is algebraic over $F$, thus each $[F_{i+1}:F_i] = [F_i(a_{i+1}):F_i]$ is finite. Therefore
+    \[
+        [F_n(\alpha):F] = [F_n(\alpha):F_n][F_n:F_{n-1}][F_{n-1}:F_{n-2}]\cdots[F_1:F_0][F_0:F]
+    \]
+    is finite. Hence $F_n(\alpha)$ is a finite extension of $F$, meaning that $F_n(\alpha)$ is an algebraic extension of $F$ (\myref{thrm-finite-extension-is-algebraic}). So every element of $F_n(\alpha)$, including $\alpha$, is algebraic over $F$. Since $\alpha$ was arbitrary, therefore every element of $K$ is algebraic over $F$, meaning $K$ is an algebraic extension of $F$.
+\end{proof}
+
+\begin{figure}[H]
+    \centering
+    \pdfteximg{0.5\textwidth}{part3/images/algebraic-extensions/algebraic-over-algebraic.pdf_tex}
+    \caption{Tower of Fields in \myreffigures{thrm-algebraic-over-algebraic-is-algebraic}}
+\end{figure}
+
+\begin{corollary}\label{corollary-algebraic-closure-is-subfield}
+    Let $F$ be a field and $E/F$ be a field extension. Then the set of all elements of $E$ that are algebraic over $F$ is a subfield of $E$.
+\end{corollary}
+\begin{proof}
+    Let $S$ denote the subset of $E$ containing the elements of $E$ that are algebraic over $F$. Clearly $0 \in E$ is algebraic over $F$ since 0 is a zero of the zero polynomial in $F[x]$, so $S$ is non-empty.
+
+    Now suppose $a,b \in S$. Note that
+    \[
+        [F(a,b):F] = [F(a,b):F(b)][F(b):F]
+    \]
+    by Tower Law (\myref{thrm-tower-law}). As $a$ is algebraic over $F$ it is certainly algebraic over $F(b)$. Therefore $[F(b):F]$ is finite (since $b$ is algebraic over $F$) and $[F(a,b):F(b)]$ is finite (since $a$ is algebraic over $F(b)$), meaning $[F(a,b):F]$ is finite. Hence $F(a,b)$ is a finite extension, $F(a,b)$ is an algebraic extension over $F$ (\myref{thrm-finite-extension-is-algebraic}). Therefore $a+b$, $a-b$, $ab$, and $ab^{-1}$ (where $b \neq 0$ in this last case) are all algebraic since $a+b,a-b,ab,ab^{-1} \in F(a,b)$ and $F(a,b)$ is an algebraic extension.
+
+    By the subfield test (\myref{thrm-subfield-test}) we have proven that the set of all elements of $E$ that are algebraic over $F$ is a subfield of $E$.
+\end{proof}
+
+The subfield identified in \myref{corollary-algebraic-closure-is-subfield} has a special name.
+
+\begin{definition}
+    Let $F$ be a field, and $E$ an extension field of $F$. The subfield of $E$ of the elements that are algebraic over $F$ is called the \textbf{algebraic closure of $F$ in $E$}\index{algebraic closure}.
+\end{definition}
+
+We can now introduce a related concept -- algebraically closed fields.
+
+\begin{definition}
+    A field $F$ is \textbf{algebraically closed}\index{algebraically closed} if every non-constant polynomial $F[x]$ has a zero in $F$.
+\end{definition}
+
+\begin{theorem}\label{thrm-algebraically-closed-iff-polynomials-split-in-field}
+    A field $F$ is algebraically closed if and only if every non-constant polynomial in $F[x]$ splits in $F$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 21.25]{judson_beezer_2022}})]
+    Let $F$ be an algebraically closed field. For the forward direction, if $f(x) \in F[x]$ is non-constant, then $f(x)$ must have a zero in $F$, say $\alpha_1$. So $x-\alpha_1$ is a factor of $f(x)$ by Factor Theorem (\myref{corollary-factor-theorem}); write $f(x) = (x-\alpha_1)q_1(x)$ where $\deg q_1(x) = \deg p(x) - 1$. Since $q_1(x) \in F[x]$, there must be a $\alpha_2\in F$ that is a zero of $q_1(x)$. Thus $x-\alpha_2$ is a factor of $q_1(x)$ and so $f(x) = (x-\alpha_1)(x-\alpha_2)q_2(x)$, where $\deg q_2(x) = \deg p(x) - 2$. Since $\deg p(x)$ is finite, so repeating this process we obtain a factorization
+    \[
+        f(x) = (x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n),
+    \]
+    i.e. $f(x)$ splits in $F$.
+
+    For the reverse direction, suppose that every non-constant polynomial $f(x) \in F[x]$ splits in $F$, i.e. a factorization of $f(x)$ consists only of linear factors. Let $ax-b$ be such a factor. Then clearly $f(ba^{-1}) = 0$. Consequently $F$ is algebraically closed.
+\end{proof}
+
+\begin{corollary}\label{corollary-in-algebraically-closed-field-irreducible-polynomial-is-degree-1}
+    In an algebraically closed field, all irreducible polynomials are of degree 1.
+\end{corollary}
+\begin{proof}
+    In \myref{thrm-algebraically-closed-iff-polynomials-split-in-field} we have shown that every polynomial splits in an algebraically closed field. So every polynomial of degree above 1 is reducible; consequently only degree 1 polynomials are irreducible.
+\end{proof}
+
+\begin{corollary}\label{corollary-algebraically-closed-field-has-no-proper-algebraic-extension}
+    An algebraically closed field has no proper algebraic extension.
+\end{corollary}
+\begin{proof}
+    See \myref{exercise-algebraically-closed-field-has-no-proper-algebraic-extension} (later).
+\end{proof}
+
+\begin{exercise}\label{exercise-algebraically-closed-field-has-no-proper-algebraic-extension}
+    Prove \myref{corollary-algebraically-closed-field-has-no-proper-algebraic-extension}.
+\end{exercise}
+
+\newpage
+
+\section{Problems}
+\begin{problem}
+    Prove that $E = Q(2^{\frac12}, 2^{\frac13}, 2^{\frac14}, \dots, 2^{\frac1n}, \dots)$ is an algebraic extension of $\Q$ but not a finite extension of $\Q$.
+\end{problem}
+
+\begin{problem}
+    Find $[\Q(\sqrt3+\sqrt5):\Q(\sqrt{15})]$, and hence find
+    \begin{partquestions}{\alph*}
+        \item the minimal polynomial of $\sqrt3 + \sqrt5$ over $\Q(\sqrt{15})$; and
+        \item a basis for $\Q(\sqrt3+\sqrt5)$ over $\Q(\sqrt{15})$.
+    \end{partquestions}
+    (\textit{Hint: consider \myref{example-Q-sqrt3-sqrt5}.})
+\end{problem}
+
+\begin{problem}
+    Prove that $\Q(\sqrt2,\sqrt[3]2) = \Q(\sqrt[6]2)$.
+\end{problem}
+
+\begin{problem}
+    Let $a, b \in \Q$. Show that $\Q(\sqrt a, \sqrt b) = \Q(\sqrt a + \sqrt b)$.
+\end{problem}
+
+\begin{problem}
+    Suppose $F$ is a field and $E$ is a finite extension where $[E:F] = p$ where $p$ is a prime. Prove that for every $\alpha \in E$ we have $F(\alpha) = F$ or $F(\alpha) = E$.
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field and $E/F$ be a field extension. Prove that if $\alpha \in E$ is transcendental over $F$, then $\alpha^n$ is transcendental over $F$ for all positive integers $n$.
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field and $E$ be an extension field of $F$.
+    \begin{partquestions}{\roman*}
+        \item Let $a_0, a_1, \dots, a_n \in E$ be algebraic over $F$. Prove that the zero(es) of the polynomial
+        \[
+            f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n
+        \]
+        are also algebraic over $F$.
+
+        \item Deduce that if $\alpha$ and $\beta$ are both transcendental over $F$, then either $\alpha+\beta$ or $\alpha\beta$ is also transcendental.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Suppose $\alpha \in \C$ is a zero of $x^2 + x + 1$ over $\Q$. Prove that $\Q(\alpha) = \Q(\sqrt{\alpha})$.
+\end{problem}
+
+\begin{problem}
+    Prove that $\sqrt2 \notin \Q(\pi)$. You may assume $\pi$ is a transcendental number and that $\sqrt2$ is irrational.\newline
+    (\textit{Hint: refer to the proof of \myref{thrm-characterisation-of-extensions} on the form of an element in $\Q(\pi)$.})
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field and $f(x)$ is a non-constant polynomial in $F[x]$ with degree $n$. Let $E$ be the splitting field of $f(x)$ over $F$.
+    \begin{partquestions}{\roman*}
+        \item By considering the binomial coefficient ${a+b\choose a}$, explain why $a!b!$ divides $(a+b)!$ for all non-negative integers $a$ and $b$.
+        \item Prove that $[E:F]$ divides $n!$.\newline
+        (\textit{Hint: induct on $n$; break into two cases, where $f(x)$ is irreducible or $f(x)$ is reducible.})
+    \end{partquestions}
+\end{problem}

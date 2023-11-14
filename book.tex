@@ -10,11 +10,15 @@
     DIV=9
 ]{scrbook}
 
+%=========== Global Variables ============
+\newcommand{\editionnumber}{1\textsuperscript{st}}
+\newcommand{\buildnumber}{28}
+
+\newcommand{\isebook}{true}
+\newcommand{\hideboxesforlinks}{false}
+
 %=============== Preamble ================
 \input{preamble.tex}
-
-%=========== Global Variables ============
-\newcommand{\version}{0.21}
 
 %==== Include only relevant chapters =====
 \IfFileExists{\jobname.run.xml}
@@ -28,9 +32,8 @@
         % part0/logic,
         % part0/proofs,
         % part0/algebra,
-        % part0/functions,
+        % part0/relations-and-functions,
         % part0/number-theory,
-        % part0/modular-arithmetic,
         % %
         % % Part 1
         % part1/preamble,
@@ -56,9 +59,16 @@
         % part2/ideals-and-quotient-rings,
         % part2/ring-homomorphisms,
         % part2/polynomial-rings,
-        % % %
-        % % % Part 3
-        % % part3/preamble,
+        % part2/polynomial-factorization,
+        % part2/domains,
+        % part2/encryption,
+        % %
+        % % Part 3
+        % part3/preamble,
+        % part3/basics-of-fields,
+        % part3/vector-spaces,
+        % part3/field-extensions,
+        part3/algebraic-extensions,
         % %
         % % Appendices
         % appendices/preamble,
@@ -89,9 +99,8 @@
 \include{part0/logic}
 \include{part0/proofs}
 \include{part0/algebra}
-\include{part0/functions}
+\include{part0/relations-and-functions}
 \include{part0/number-theory}
-\include{part0/modular-arithmetic}
 
 %=========================================
 \include{part1/preamble}
@@ -117,9 +126,19 @@
 \include{part2/ideals-and-quotient-rings}
 \include{part2/ring-homomorphisms}
 \include{part2/polynomial-rings}
+\include{part2/polynomial-factorization}
+\include{part2/domains}
+\include{part2/encryption}
 
 %=========================================
-% \include{part3/preamble}
+\draftstartmark  % TODO: Remove once no longer in draft
+\include{part3/preamble}
+\include{part3/basics-of-fields}
+\include{part3/vector-spaces}
+\include{part3/field-extensions}
+\include{part3/algebraic-extensions}
+
+\draftendmark  % TODO: Remove once no longer in draft
 
 %=========================================
 \appendix

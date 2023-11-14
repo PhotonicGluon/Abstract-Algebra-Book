@@ -1,0 +1,769 @@
+\chapter{Vector Spaces}
+Abstract algebra has three core structures -- groups, rings, and fields. So far, we have looked at groups and rings in detail, and touched on some basic properties of fields. However, to properly explore the structure of fields, we need to cover the basics of vector spaces, which are typically covered in a linear algebra course. We provide a concise overview of vectors and vector spaces here.
+
+\section{What is a Vector Space?}
+We first look at what a vector space is.
+\begin{definition}
+    A \textbf{vector space}\index{vector space} over a field $F$ is a non-empty set $V$ together with two operations,
+    \begin{itemize}
+        \item \textbf{(vector) addition}\index{vector space!vector addition}, denoted by $+$, where for $\textbf{u}, \textbf{v} \in V$ it produces a new element $\textbf{u} + \textbf{v} \in V$; and
+        \item \textbf{scalar multiplication}\index{vector space!scalar multiplication}, which assigns an $a \in F$ and a $\textbf{u} \in V$ to another element in $V$, denoted by $a\textbf{u} \in V$,
+    \end{itemize}
+    such that it satisfies the \textbf{vector space axioms}\index{axiom!vector space} listed below.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}\index{axiom!vector space!addition-abelian}: $(V, +)$ forms an abelian group.
+
+        \item \textbf{Multiplication-Identity}\index{axiom!vector space!multiplication-identity}: For all $\textbf{u} \in V$ we have $1\textbf{u} = \textbf{u}$, where $1 \in F$ denotes the multiplicative identity of $F$.
+
+        \item \textbf{Multiplication-Compatibility}\index{axiom!vector space!multiplication-compatibility}: For all $\alpha,\beta \in F$ and $\textbf{u} \in V$ we have $\alpha(\beta\textbf{u}) = (\alpha\beta)\textbf{u}$.
+
+        \item \textbf{Distributivity-Addition}\index{axiom!vector space!distributivity-addition}: For all $\alpha \in F$ and $\textbf{u}, \textbf{v} \in V$ we have $\alpha(\textbf{u} + \textbf{v}) = \alpha\textbf{u} + \alpha\textbf{v}$.
+
+        \item \textbf{Distributivity-Scalar}\index{axiom!vector space!distributivity-scalar}: For all $\alpha, \beta \in F$ and $\textbf{u} \in V$ we have $(\alpha+\beta)\textbf{u} = \alpha\textbf{u} + \beta\textbf{u}$.
+    \end{itemize}
+\end{definition}
+
+To avoid confusion with denoting elements from these two sets, we adopt the following conventions regarding notation.
+\begin{itemize}
+    \item Elements in $F$ will generally be denoted by greek letters. For example $\alpha, \beta, \gamma, \delta \in F$.
+    \item Elements in $V$ will be indicated with boldface and are generally denoted by letters near the end of the alphabet. For example, $\textbf{u}, \textbf{v}, \textbf{w} \in V$.
+    \item The additive identity of the group $(V, +)$ will be denoted $\textbf{0}$, a boldface zero.
+    \item Define $\textbf{u} - \textbf{v}$ as $\textbf{u} + (-\textbf{v})$, where $-\textbf{v}$ denotes the inverse of $\textbf{v}$ in the group $(V, +)$.
+\end{itemize}
+
+\begin{definition}
+    Let $V$ be a vector space over a field $F$.
+    \begin{itemize}
+        \item Elements of $V$ are called \textbf{vectors}\index{vector}.
+        \item Elements of $F$ are called \textbf{scalars}\index{scalar}.
+    \end{itemize}
+\end{definition}
+
+We look at some elementary examples of vector spaces.
+
+\begin{example}\label{example-R^n-is-vector-space}
+    The set $\R^n = \{(a_1, a_2, \dots, a_n) \vert a_i \in \R\}$ is a vector space over the field $\R$ with the `natural' choices of addition
+    \[
+        (a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n) = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)
+    \]
+    and scalar multiplication
+    \[
+        k(a_1, a_2, \dots, a_n) = (ka_1, ka_2, \dots, ka_n).
+    \]
+
+    Let's explicitly prove that $\R^n$ is indeed a vector space over $\R$ using these operations. We need to prove the five vector space axioms.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: \myref{exercise-R^n-is-abelian-group} (later) shows that $(\R^n, +)$ is an abelian group.
+
+        \item \textbf{Multiplication-Identity}: Let $(a_1, a_2, \dots, a_n) \in \R^n$. We see
+        \begin{align*}
+            1(a_1, a_2, \dots, a_n) &= (1a_1, 1a_2, \dots, 1a_n)\\
+            &= (a_1, a_2, \dots, a_n)
+        \end{align*}
+        so this axiom is satisfied.
+
+        \item \textbf{Multiplication-Compatibility}: Let $\alpha, \beta \in \R$ and $(a_1, a_2, \dots, a_n) \in \R^n$. Note
+        \begin{align*}
+            \alpha\left(\beta(a_1, a_2, \dots, a_n)\right) &= \alpha(\beta a_1, \beta a_2, \dots, \beta a_n)\\
+            &= (\alpha\beta a_1, \alpha\beta a_2, \dots, \alpha\beta a_n)\\
+            &= (\alpha\beta)(a_1, a_2, \dots, a_n)
+        \end{align*}
+        so this axiom is satisfied.
+
+        \item \textbf{Distributivity-Addition}: Let $\alpha \in \R$ and $(a_1, a_2, \dots, a_n), (b_1, b_2, \dots, b_n) \in \R^n$. We see
+        \begin{align*}
+            \alpha\left((a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n)\right) &= \alpha(a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)\\
+            &= (\alpha(a_1 + b_1), \alpha(a_2 + b_2), \dots, \alpha(a_n + b_n))\\
+            &= (\alpha a_1 + \alpha b_1, \alpha a_2 + \alpha b_2, \dots, \alpha a_n + \alpha b_n)\\
+            &= (\alpha a_1, \alpha a_2, \dots, \alpha a_n) + (\alpha b_1, \alpha b_2, \dots, \alpha b_n)\\
+            &= \alpha(a_1, a_2, \dots, a_n) + \alpha(b_1, b_2, \dots, b_n)
+        \end{align*}
+        which shows that the axiom is satisfied.
+
+        \item \textbf{Distributivity-Scalar}: Let $\alpha, \beta \in \R$ and $(a_1, a_2, \dots, a_n) \in \R^n$. Then
+        \begin{align*}
+            (\alpha+\beta)(a_1, a_2, \dots, a_n) &= ((\alpha+\beta)a_1, (\alpha+\beta)a_2, \dots, (\alpha+\beta)a_n)\\
+            &= (\alpha a_1 + \beta a_1, \alpha a_2 + \beta a_2, \dots, \alpha a_n + \beta a_n)\\
+            &= (\alpha a_1, \alpha a_2, \dots, \alpha a_n) + (\beta a_1, \beta a_2, \dots, \beta a_n)\\
+            &= \alpha(a_1, a_2, \dots, a_n) + \beta(a_1, a_2, \dots, a_n).
+        \end{align*}
+        Therefore this axiom is satisfied.
+    \end{itemize}
+
+    Since all the vector space axioms are satisfied, we proved that $\R^n$ is a vector space over the field $\R$.
+\end{example}
+
+\begin{example}\label{example-polynomial-ring-over-field-is-vector-space}
+    Let $F$ be a field. We show that the polynomial ring $F[x]$ is a vector space over $F$, where vector addition is simply polynomial addition and scalar multiplication by $\alpha \in F$ is polynomial multiplication by the constant polynomial $\alpha$.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: We have repeatedly shown that $(R[x], +)$ is a commutative ring for any ring $R$, so it also applies to the field $F$.
+
+        \item \textbf{Multiplication-Identity}: Let $f(x) \in F[x]$. Note $1f(x) = f(x)$ since 1 is the multiplicative identity of $F$.
+
+        \item \textbf{Multiplication-Compatibility}: Let $\alpha, \beta \in F$ and $f(x) \in F$. Then clearly $\alpha(\beta f(x)) = (\alpha\beta)f(x)$ by polynomial multiplication rules.
+
+        \item \textbf{Distributivity-Addition}: Let $\alpha \in F$ and $f(x), g(x) \in F[x]$. Then we know from polynomial multiplication that $\alpha(f(x) + g(x)) = \alpha f(x) + \alpha g(x)$.
+
+        \item \textbf{Distributivity-Scalar}: Let $\alpha, \beta \in F$ and $f(x) \in F[x]$. Then we also know from polynomial multiplication that $(\alpha+\beta)f(x) = \alpha f(x) + \beta f(x)$.
+    \end{itemize}
+    Therefore $F[x]$ is a vector space over $F$.
+\end{example}
+
+\begin{example}
+    $\C$ is a vector space over $\R$ under the usual definitions of addition and multiplication of complex numbers.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: We already proved that $\C$ is a field, so the additive group of $\C$, namely $(\C, +)$, is an abelian group.
+
+        \item \textbf{Multiplication-Identity}: Let $a + bi \in \C$. We see $1(a+bi) = 1a + 1bi = a + bi$ so this axiom is satisfied.
+
+        \item \textbf{Multiplication-Compatibility}: Let $\alpha, \beta \in \R$ and $a + bi \in \C$. Note
+        \begin{align*}
+            \alpha(\beta(a+bi)) &= \alpha(\beta a + \beta bi)\\
+            &= \alpha\beta a + \alpha\beta bi\\
+            &= (\alpha\beta)(a+bi)
+        \end{align*}
+        so this axiom is satisfied.
+
+        \item \textbf{Distributivity-Addition}: Let $\alpha \in \R$ and $a + bi, c + di \in \C$. Then
+        \begin{align*}
+            \alpha((a+bi) + (c+di)) &= \alpha((a+c) + (b+d)i)\\
+            &= \alpha(a+c) + \alpha(b+d)i\\
+            &= \alpha a + \alpha c + \alpha bi + \alpha di\\
+            &= (\alpha a + \alpha bi) + (\alpha c + \alpha di)\\
+            &= \alpha (a+bi) + \alpha (c+di)
+        \end{align*}
+        which shows that the axiom is satisfied.
+
+        \item \textbf{Distributivity-Scalar}: Let $\alpha, \beta \in \R$ and $a + bi \in \C$. Note
+        \begin{align*}
+            (\alpha+\beta)(a+bi) &= (\alpha+\beta)a + (\alpha+\beta)bi\\
+            &= \alpha a + \beta a + \alpha bi + \beta bi\\
+            &= (\alpha a + \alpha bi) + (\beta a + \beta bi)\\
+            &= \alpha(a+bi) + \beta(a+bi)
+        \end{align*}
+        so this axiom is satisfied.
+    \end{itemize}
+
+    Since all the vector space axioms are satisfied, we proved that $\C$ is a vector space over the field $\R$.
+\end{example}
+
+One sees that $\R$ is a subfield of $\C$. The previous example gives us an indication of a much deeper result about vector fields, which we note in the following theorem.
+
+\begin{theorem}\label{thrm-field-is-vector-space}
+    Let $F$ be a field and $K$ a subfield of $F$. Then $F$ is a vector space over $K$, with vector addition and scalar multiplication being the operations of $F$.
+\end{theorem}
+\begin{proof}
+    We need to prove the five vector space axioms.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: Since $F$ is a field, therefore $(F, +)$, the additive group of $F$, is an abelian group.
+
+        \item \textbf{Multiplication-Identity}: Let $\textbf{u} \in F$. Note $1\textbf{u} = \textbf{u}$ since 1 is the multiplicative identity of $F$, which shows that this axiom is satisfied.
+
+        \item \textbf{Multiplication-Compatibility}: Let $r, s \in K$ and $\textbf{u} \in F$. Then $r(s\textbf{u}) = (rs)\textbf{u}$ by the associativity of multiplication in the field $F$.
+
+        \item \textbf{Distributivity-Addition}: Let $k \in K$ and $\textbf{u}, \textbf{v} \in F$. Then $k(\textbf{u} + \textbf{v}) = k\textbf{u} + k\textbf{v}$ by the distributivity of multiplication over addition in the field $F$.
+
+        \item \textbf{Distributivity-Scalar}: Let $r, s \in K$ and $\textbf{u} \in \C$. Note that we see $(r+s)\textbf{u} = r\textbf{u} + s\textbf{u}$, again by the distributivity of multiplication over addition in the field $F$.
+    \end{itemize}
+
+    Therefore, all five vector space axioms are satisfied, proving that $F$ is a vector space over the subfield $K$.
+\end{proof}
+
+\begin{exercise}\label{exercise-R^n-is-abelian-group}
+    Prove that $\R^n$ under addition as defined in \myref{example-R^n-is-vector-space} is an abelian group.
+\end{exercise}
+
+\begin{exercise}
+    Let
+    \[
+        W = \{f(x) \in \R[x] \vert \deg f(x) = 5\}.
+    \]
+    Is $W$ a vector space?
+\end{exercise}
+
+We note some elementary properties of vectors in vector spaces.
+\begin{proposition}\label{prop-vector-scaled-by-zero-is-zero-vector}
+    Let $V$ be a vector space over $F$, and let $\textbf{u} \in V$. Then $0\textbf{u} = \textbf{0}$.
+\end{proposition}
+\begin{proof}
+    Note
+    \[
+        0\textbf{u} = (0 + 0)\textbf{u} = 0\textbf{u} + 0\textbf{u}
+    \]
+    by \textbf{Distributivity-Scalar}. Then, by adding $-(0\textbf{u})$ on both sides we see
+    \begin{align*}
+        0\textbf{u} + (-(0\textbf{u})) &= (0\textbf{u} + 0\textbf{u}) + (-(0\textbf{u}))\\
+        &= 0\textbf{u} + (0\textbf{u} + (-(0\textbf{u}))) & (\textbf{Addition-Abelian-Associativity})\\
+    \end{align*}
+    which means
+    \[
+        \textbf{0} = 0\textbf{u} + \textbf{0},
+    \]
+    by \textbf{Addition-Abelian-Inverses}, and hence $0\textbf{u} = \textbf{0}$, by \textbf{Addition-Abelian-Identity}.
+\end{proof}
+
+\begin{proposition}\label{prop-zero-vector-scaled-by-constant-is-zero-vector}
+    Let $V$ be a vector space over $F$, and let $\alpha \in F$. Then $\alpha\textbf{0} = \textbf{0}$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-zero-vector-scaled-by-constant-is-zero-vector}.
+\end{proof}
+
+\begin{proposition}\label{prop-vector-inverse-is-negative-vector}
+    Let $V$ be a vector space over $F$. Let -1 denote the additive inverse of the multiplicative identity of $F$. Let $\textbf{u} \in V$. Then $-\textbf{u} = (-1)\textbf{u}$.
+\end{proposition}
+\begin{proof}
+    One sees that
+    \begin{align*}
+        \textbf{u} + (-1)\textbf{u} &= 1\textbf{u} + (-1)\textbf{u} & (\textbf{Multiplication-Identity})\\
+        &= (1 + (-1))\textbf{u} & (\textbf{Distributivity-Scalar})\\
+        &= 0\textbf{u}\\
+        &= \textbf{0} & (\myref{prop-vector-scaled-by-zero-is-zero-vector})
+    \end{align*}
+    which means that $(-1)\textbf{u}$ is the additive inverse of $\textbf{u}$. Since the inverse in a group is unique, therefore \textit{the} additive inverse of $\textbf{u}$ is $(-1)\textbf{u}$, i.e. $-\textbf{u} = (-1)\textbf{u}$.
+\end{proof}
+
+\begin{exercise}\label{exercise-zero-vector-scaled-by-constant-is-zero-vector}
+    Prove \myref{prop-zero-vector-scaled-by-constant-is-zero-vector}.
+\end{exercise}
+
+\section{Subspaces}
+Like how groups have subgroups, rings have subrings, and fields have subfields, vector spaces also have their own analogue, called \textbf{subspaces}.
+\begin{definition}
+    Let $V$ be a vector space over a field $F$ and let $U$ be a subset of $V$. Then $U$ is a \textbf{subspace}\index{subspace} of $V$ if and only if $U$ is also a vector space over $F$ under the operations of $V$.
+\end{definition}
+
+\begin{example}
+    Since $\R$ is a subset of $\C$ and $\R$ is a vector space over itself, thus $\R$ is a subspace of $\C$.
+\end{example}
+
+\begin{example}
+    Let $F$ be a field, $K$ a subfield of $F$, and $L$ a subfield of $K$. We note that $F$ is a vector space over $L$ (\myref{thrm-field-is-vector-space}). Also $K$ is a vector space over $L$ using the same reason. Since $K \subseteq F$, thus $K$ is a subspace of $F$.
+\end{example}
+
+To prove all the axioms for vector spaces for the subspace is way too tedious. Like with groups, rings, and fields, we have a simple test to determine whether a subset of a vector space is a subspace, called the \textbf{subspace test}.
+
+\begin{theorem}[Subspace Test]\label{thrm-subspace-test}
+    Let $V$ be a vector space over a field $F$ and $U$ be a non-empty subset of $V$. Then $U$ is a subspace of $V$ over $F$ and using the same operations as $V$ if and only if
+    \begin{itemize}
+        \item for any $\textbf{u}, \textbf{v} \in U$ we have $\textbf{u} + \textbf{v} \in U$; and
+        \item for any $\textbf{u} \in U$ and $\alpha \in F$ we have $\alpha\textbf{u} \in U$.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    The forward direction is trivial, since any subspace of $V$ is a vector space, and these two conditions are exactly the closure conditions of addition and scalar multiplication.
+
+    We work in the reverse direction. Suppose these two conditions are satisfied. We will prove the remainder of the vector space axioms.
+    \begin{itemize}
+        \item \textbf{Addition-Abelian}: Since addition is the same as that of the vector space $V$, addition is also already commutative. So all that remains is to show that $(U, +)$ is a group; we show $(U, +) \leq (V, +)$ instead.
+
+        We note that $-1 \in F$ and so $(-1)\textbf{v}$ is in $U$ for any $\textbf{v} \in U$ by condition 2. Note $(-1)\textbf{v} = -\textbf{v}$ by \myref{prop-vector-inverse-is-negative-vector}, so $-\textbf{v} \in U$ for any $\textbf{v} \in U$. Finally, we see
+        \[
+            \textbf{u} + (-\textbf{v}) \in U
+        \]
+        by condition 1. Using the subgroup test (\myref{thrm-subgroup-test}) we know $(U, +) \leq (V, +)$.
+
+        \item \textbf{Multiplication-Identity}: The axiom holds for $V$, i.e. for all $\textbf{u} \in V$ we have $1\textbf{u} = \textbf{u}$. Since $U \subseteq V$, this means that this statement holds for elements of $U$ too, i.e. for all $\textbf{u} \in U$ we have $1\textbf{u} = \textbf{u}$. Thus this axiom is satisfied.
+
+        \item \textbf{Multiplication-Compatibility}: The axiom holds for $V$, so it holds for $U$ since $U \subseteq V$ and by using a similar reasoning as above.
+
+        \item \textbf{Distributivity-Addition}: The axiom holds for $V$, so it holds for $U$ by using a similar reasoning as above.
+
+        \item \textbf{Distributivity-Scalar}: The axiom holds for $V$, so it holds for $U$ by using a similar reasoning as above.
+    \end{itemize}
+    So all the vector space axioms are satisfied, meaning that $U$ is a vector space over $F$. As $U \subseteq V$, we therefore see that $U$ is a subspace of $V$.
+\end{proof}
+\begin{remark}
+    Like with the subgroup test, we usually verify $U$ is non-empty by asserting that the zero vector is inside $U$.
+\end{remark}
+
+\begin{example}
+    We prove that $\R$ is a subspace of $\C$ over $\R$ by considering the subspace test (\myref{thrm-subspace-test}).
+    \begin{itemize}
+        \item We note that the zero vector of $\C$, 0, is also present in $\R$, so $\R$ is non-empty.
+        \item Also note that for any real numbers $\textbf{x}$ and $\textbf{y}$ we have $\textbf{x} + \textbf{y} \in \R$.
+        \item Finally, the product of any two real numbers is real, so for $\alpha \in \R$ and $\textbf{u} \in \R$ we have $\alpha\textbf{u} \in \R$.
+    \end{itemize}
+    Thus $\R$ is a subspace of $\C$ over $\R$.
+\end{example}
+
+Admittedly, the previous example is quite boring. Let's look at a more interesting example.
+\begin{example}
+    We know that $\R^4$ is a vector space over $\R$ (\myref{example-R^n-is-vector-space}). Consider the set
+    \[
+        V = \{(a, b, a-b, a+b) \vert a, b \in \R\}.
+    \]
+    We show that $V$ is a subspace of $\R^4$ over $\R$.
+    \begin{itemize}
+        \item Note that the zero vector of $\R^4$, $(0,0,0,0)$, is in $V$ by choosing $a = b = 0$. Therefore $V$ is non-empty.
+        \item For any two vectors $\textbf{u} = (a, b, a-b, a+b)$ and $\textbf{v} = (c, d, c-d, c+d)$ in $V$, we see
+        \begin{align*}
+            \textbf{u} + \textbf{v} &= (a, b, a-b, a+b) + (c, d, c-d, c+d)\\
+            &= (a + c, b + d, a - b + c - d, a + b + c + d)\\
+            &= (a+c, b+d, (a+c)-(b+d), (a+c)+(b+d))\\
+            &\in V.
+        \end{align*}
+        \item For $\alpha \in \R$ and $\textbf{u} = (a, b, a-b, a+b) \in V$ we note
+        \begin{align*}
+            \alpha\textbf{u} &= \alpha(a, b, a-b, a+b)\\
+            &= (\alpha a, \alpha b, \alpha(a-b), \alpha(a+b))\\
+            &= (\alpha a, \alpha b, (\alpha a) - (\alpha b), (\alpha a) + (\alpha b))\\
+            &\in V.
+        \end{align*}
+    \end{itemize}
+    Therefore $V$ is a subspace of $\R^4$ by the subspace test (\myref{thrm-subspace-test}).
+\end{example}
+
+\begin{exercise}
+    Let $F$ be a field and $n$ be a non-negative integer. Prove that
+    \[
+        V = \{f(x) \in F[x] \vert \deg f(x) \leq n\} \cup \{0\}
+    \]
+    is a vector space over $F$ using the definitions of polynomial addition and scalar multiplication.\newline
+    (\textit{Note: be careful with the zero polynomial!})
+\end{exercise}
+
+\section{Linear Combinations and Span}
+Vector spaces have many elements. Using the vector space axioms, we may express these elements in terms of other elements from the vector space. One may wonder if there is a set of elements that `generates' the full vector space. This is the motivation for the \textbf{spanning set} of a vector space.
+
+Before that, let's define what a linear combination is.
+\begin{definition}
+    Let $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n$ be vectors belonging to a vector space $V$ over a field $F$. A vector $\textbf{u} \in V$ is said to be a \textbf{linear combination}\index{linear combination} of the vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n$ if
+    \[
+        \textbf{u} = \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_n \textbf{v}_n
+    \]
+    where $\alpha_1, \alpha_2, \dots, \alpha_n \in F$.
+\end{definition}
+
+\begin{definition}
+    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then the \textbf{span}\index{span} of $S$ is denoted $\Span{S}$ and is the set of all linear combinations of the vectors of $S$. In other words, if $S = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\}$ then
+    \[
+        \Span{S} = \left\{\sum_{i=1}^n \alpha_i\textbf{v}_i \vert \alpha_i \in F\right\}.
+    \]
+\end{definition}
+\begin{remark}
+    \cite[p.~331]{gallian_2016} uses the alternate notation $\left\langle\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\right\rangle$, while \cite[p.~31]{treil_2017} uses the notation $\mathcal{L}\left(\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\right)$.
+\end{remark}
+
+\begin{proposition}
+    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then $\Span{S}$ is a subspace of $V$.
+\end{proposition}
+\begin{proof}
+    Suppose $S = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\}$. Note that
+    \[
+        0\textbf{v}_1 + 0\textbf{v}_2 + \cdots + 0\textbf{v}_n = \textbf{0}
+    \]
+    so $\textbf{0} \in \Span{S}$.
+
+    Now let $\textbf{a}, \textbf{b} \in \Span{S}$, where
+    \begin{align*}
+        \textbf{a} &= \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_n\textbf{v}_n \text{ and}\\
+        \textbf{b} &= \beta_1\textbf{v}_1 + \beta_2\textbf{v}_2 + \cdots + \beta_n\textbf{v}_n.
+    \end{align*}
+    Then clearly
+    \[
+        \textbf{a} + \textbf{b} = (\alpha_1+\beta_1)\textbf{v}_1 + (\alpha_2+\beta_2)\textbf{v}_2 + \cdots + (\alpha_n+\beta_n)\textbf{v}_n \in \Span{S}.
+    \]
+    Also, for any $\lambda \in F$ we see
+    \[
+        \lambda\textbf{a} = (\lambda\alpha_1)\textbf{v}_1 + (\lambda\alpha_2)\textbf{v}_2 + \cdots + (\lambda\alpha_n)\textbf{v}_n \in \Span{S}.
+    \]
+
+    Therefore $\Span{S}$ is a subspace of $V$ by subspace test (\myref{thrm-subspace-test}).
+\end{proof}
+
+\begin{definition}
+    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then $S$ is called a \textbf{spanning set}\index{spanning set} of $V$ if and only if $\Span{S} = V$, and we say that $S$ \textbf{spans} $V$.
+\end{definition}
+
+\begin{example}
+    It is quite obvious that $\{(1, 0, 0), (0, 1, 0), (0, 0, 1)\} \subset \R^3$ spans $\R^3$.
+\end{example}
+
+\begin{example}
+    Consider the set $S = \{(1, 2, 1), (1, 0, 2), (1, 1, 0)\} \subset \R^3$. We show that $S$ spans $V$.
+
+    Let $(a, b, c) \in \R^3$. Consider $\alpha_1(1, 2, 1) + \alpha_2(1, 0, 2) + \alpha_3(1, 1, 0) = (a, b, c)$. Thus we see
+    \begin{align*}
+        \alpha_1 + \alpha_2 + \alpha_3 &= a\\
+        2\alpha_2  + \alpha_3 &= b\\
+        \alpha_1 + 2\alpha_2 &= c
+    \end{align*}
+    which we may solve to get
+    \begin{align*}
+        \alpha_1 &= \frac13(c + 2b - 2a)\\
+        \alpha_2 &= \frac13(c - b + a)\\
+        \alpha_3 &= \frac13(4a - b - 2c)
+    \end{align*}
+    which means that each element in $\R^3$ has a unique set of $\alpha_1, \alpha_2, \alpha_3 \in \R$ that produces it. Therefore $\Span{S} = \R^3$.
+\end{example}
+
+\begin{example}
+    We show that $(-3, 1)$ does not lie in $\Span{\{(1,1), (2,2)\}}$.
+
+    Suppose otherwise, that $\alpha(1,1) + \beta(2,2) = (-3,1)$ for some $\alpha, \beta \in \R$. Then
+    \begin{align*}
+        \alpha + 2\beta = -3\\
+        \alpha + 2\beta = 1
+    \end{align*}
+    which clearly has no solution. Therefore $(-3, 1) \notin \Span{\{(1, 1), (2, 2)\}}$.
+\end{example}
+
+\begin{example}
+    Let the vector space
+    \[
+        V = \{f(x) \in \R[x] \vert \deg f(x) \leq 2\} \cup \{0\}.
+    \]
+    Let $S = \{x^2 + 2, x^2 + 2x + 1\}$. We show that $S$ is not a spanning set of $V$.
+
+    Consider the constant polynomial 1. Suppose that 1 can be expressed as a linear combination of the polynomials in $S$, i.e. $\alpha(x^2 + 2) + \beta(x^2+2x+1) = 1$ for some $\alpha, \beta \in \R$, i.e. $(\alpha + \beta)x^2 + 2\beta x + (2\alpha + \beta) = 1$. So we see
+    \begin{align*}
+        \alpha + \beta = 0\\
+        2\beta = 0\\
+        2\alpha + \beta = 1
+    \end{align*}
+    which has no solution. Therefore $1 \notin \Span{S}$, meaning that $\Span{S} \neq V$.
+\end{example}
+
+\begin{exercise}
+    Let the vector space
+    \[
+        V = \{f(x) \in \Q[x] \vert \deg f(x) \leq 2\} \cup \{0\}.
+    \]
+    Let $S = \{x, x + 2, x^2 + 2, x^2 + 2x + 3\}$. Prove or disprove: $S$ is a spanning set for $V$.
+\end{exercise}
+
+\section{Linear Independence}
+The next definition is crucial in vector space theory.
+\begin{definition}
+    Let $V$ be a vector space over a field $F$. The vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n \in V$ are said to be \textbf{linearly independent}\index{linearly independent} if and only if $\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0$ is the only solution to
+    \[
+        \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_n\textbf{v}_n = \textbf{0},
+    \]
+    where $\alpha_i \in F$.
+
+    If the vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n \in V$ are not linearly independent, they are said to be \textbf{linearly dependent}\index{linearly dependent}.
+\end{definition}
+
+\begin{example}
+    Consider the vector space $\R^2$ over $\R$, and the vectors $(0, 1)$ and $(1, 1)$. We claim that they are linearly independent. Suppose $\alpha, \beta \in \R$ such that
+    \[
+        \alpha(0, 1) + \beta(1, 1) = (0, 0)
+    \]
+    which means
+    \begin{align*}
+        \beta = 0\\
+        \alpha + \beta = 0
+    \end{align*}
+    and so one clearly sees $\alpha = \beta = 0$. Therefore $(0, 1)$ and $(1, 1)$ are linearly independent.
+
+    On the other hand, $(1, 1)$ and $(2, 2)$ are not linearly independent (i.e., linearly dependent) since
+    \[
+        2(1,1) + (-1)(2, 2) = (0, 0).
+    \]
+\end{example}
+
+\begin{example}
+    Consider the vectors $(1, 1, 1)$, $(1, 2, 1)$, and $(1, 2, 3)$ in $\R^3$ over $\R$. Unlike the previous example, it is not immediately clear that these vectors are linearly independent. But we can see this by setting
+    \[
+        \alpha(1, 1, 1) + \beta(1, 2, 1) + \gamma(1, 2, 3) = (0, 0, 0),
+    \]
+    which yields the system of equations
+    \begin{align*}
+        \alpha + \beta + \gamma &= 0\\
+        \alpha + 2\beta + 2\gamma &= 0\\
+        \alpha + \beta + 3\gamma &= 0,
+    \end{align*}
+    which has only the trivial solution $\alpha = \beta = \gamma = 0$.
+
+    On the other hand, the vectors $(0, 1, 1)$, $(1, 1, 2)$, and $(1, 2, 3)$ are linearly dependent since
+    \[
+        (0, 1, 1) + (1, 1, 2) + (-1)(1, 2, 3) = (0, 0, 0).
+    \]
+\end{example}
+
+\begin{example}
+    Let
+    \[
+        V = \{f(x) \in \R[x] \vert \deg f(x) \leq 3\} \cup \{0\}
+    \]
+    be a vector space over $\R$. We note that the `vectors' (in fact, polynomials) in the set $S = \{2, 3x, 5x^2, 7x^3\}$ are linearly independent as the equation
+    \[
+        \alpha\times2 + \beta(3x) + \gamma(5x^2) + \delta(7x^3) = 0
+    \]
+    clearly yields the solution that $\alpha = \beta = \gamma = \delta = 0$.
+\end{example}
+
+\begin{exercise}\label{exercise-polynomial-of-degree-at-most-2-vector-space}
+    For the vector space
+    \[
+        V = \{f(x) \in \Q[x] \vert \deg f(x) \leq 2\} \cup \{0\}
+    \]
+    over $\Q$, which of the following sets of vectors of $V$ is/are linearly independent?
+    \begin{partquestions}{\alph*}
+        \item $S = \{1, x + 2\}$
+        \item $T = \{1, x + 2, x^2 + 2x + 3\}$
+        \item $U = \{1, x + 2, x^2 + 2x + 3, x^2 - 2x - 3\}$
+    \end{partquestions}
+\end{exercise}
+
+\section{Basis}
+Earlier, we looked at spanning sets, which are sets of vectors that produce all vectors of a vector space $V$ (over a field $F$). One might rightly ask whether there is a `smallest' spanning set, that is, a spanning set with the smallest number of vectors possible but still able to span $V$. This question leads to the definition of a \textbf{basis}.
+\begin{definition}
+    Let $V$ be a vector space over a field $F$, and let $B$ be a non-empty set of vectors from $V$. Then $B$ is called a \textbf{basis}\index{basis} for $V$ if and only if the vectors in $B$ are linearly independent and $\Span{B} = V$.
+\end{definition}
+
+The usefulness of a basis is given by the following theorem.
+
+\begin{theorem}\label{thrm-basis-iff-has-unique-linear-combinatio}
+    A subset $S$ of a vector space $V$ over a field $F$ is a basis if and only if every member of $V$ can be expressed as a unique linear combination of the vectors in $S$.
+\end{theorem}
+\begin{proof}
+    The forward direction is proven by \myref{exercise-basis-means-unique-linear-combination} (later).
+
+    For the reverse direction, we suppose that every member of $V$ can be expressed as a unique linear combination of the elements of $S$. Then certainly $\Span{S} = V$ by definition of a spanning set. Now we show that the elements of $S$ are linearly independent; suppose there are $n$ vectors in $S$ and suppose $\alpha_1, \alpha_2, \dots, \alpha_n \in F$ such that
+    \[
+        \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_n\textbf{v}_n = \textbf{0}.
+    \]
+    One clearly sees
+    \[
+        0\textbf{v}_1 + 0\textbf{v}_2 + \cdots + 0\textbf{v}_n = \textbf{0},
+    \]
+    so the uniqueness of the expression of the linear combination means that $\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0$. Therefore the vectors in $S$ are linearly independent. Hence $S$ is a basis for $V$, by definition of a basis.
+\end{proof}
+
+\begin{exercise}\label{exercise-basis-means-unique-linear-combination}
+    Prove that if $S$ is a basis for $V$, then every vector in $V$ can be expressed uniquely as a linear combination of the vectors in $S$.
+\end{exercise}
+
+\begin{example}
+    Consider the vector space
+    \[
+        V = \{(a, b, a-b, a+b) \vert a, b \in \R\}
+    \]
+    over $\R$. We see that
+    \[
+        (a, b, a-b, a+b) = a(1, 0, 1, 1) + b(0, 1, -1, 1)
+    \]
+    so we know that $S = \{(1, 0, 1, 1), (0, 1, -1, 1)\}$ is a spanning set for $V$. We also see that the vectors in $S$ are linearly independent, as the equation
+    \[
+        a(1, 0, 1, 1) + b(0, 1, -1, 1) = (0, 0, 0, 0)
+    \]
+    clearly only has the trivial solution $a = b = 0$. Therefore $S$ is a basis for $V$.
+\end{example}
+
+\begin{example}
+    Consider the subspace $V = \Span{S}$ of $\R^3$ over $\R$, where the set $S$ is $\{(1, 3, -3), (2, 4, -3), (2, 0, 3)\}$. We note that
+    \[
+        -4(1, 3, -3) + 3(2, 4, -3) = (2, 0, 3),
+    \]
+    so $(2, 0, 3)$ is redundant in the set $S$. This means that the set $T = \{(1, 3, -3), (2, 4, -3)\}$ also spans $V$, i.e. $\Span{T} = V$. We note that the vectors in $T$ are also linearly independent, as the equation
+    \[
+        \alpha(1, 3, -3) + \beta(2, 4, -3) = (0, 0, 0),
+    \]
+    which yields the system of equations
+    \begin{align*}
+        \alpha + 2\beta &= 0\\
+        3\alpha + 4\beta &= 0\\
+        -3\alpha - 3\beta &= 0,
+    \end{align*}
+    has only the trivial solution of $\alpha = \beta = 0$. Therefore the vectors in $T$ are linearly independent, meaning that $T$ is a basis for $V$.
+\end{example}
+
+\begin{exercise}
+    For the vector space $V$ given in \myref{exercise-polynomial-of-degree-at-most-2-vector-space}, which of the following sets of vectors of $V$ is/are a basis for $V$?
+    \begin{partquestions}{\alph*}
+        \item $S = \{1, x + 2\}$
+        \item $T = \{1, x + 2, x^2 + 2x + 3\}$
+        \item $U = \{1, x + 2, x^2 + 2x + 3, x^2 - 2x - 3\}$
+    \end{partquestions}
+\end{exercise}
+
+One may wonder if a vector space could have bases of different sizes. The answer is no. The tools needed to prove this in general are out of scope for this book, but we produce a proof of this claim for bases with finitely many elements.
+
+\begin{theorem}[Dimension Theorem for Finite Bases]\label{thrm-dimension-theorem-for-finite-bases}
+    Suppose $B_\textbf{u} = \{\textbf{u}_1, \textbf{u}_2, \dots, \textbf{u}_m\}$ and $B_\textbf{v} = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\}$ are both bases for a vector space $V$ over a field $F$. Then $m = n$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 19.1]{gallian_2016}})]
+    Seeking a contradiction, suppose $m \neq n$. Without loss of generality we may assume $m < n$.
+
+    Consider the set
+    \[
+        B_1 = \{\textbf{v}_1, \textbf{u}_2, \textbf{u}_3, \dots, \textbf{u}_m\}.
+    \]
+    Since $B_\textbf{u}$ is a basis for $V$, we may write $\textbf{v}_1$ as a linear combination of the vectors in $B_\textbf{u}$, say $\textbf{v}_1 = \alpha_1\textbf{u}_1 + \alpha_2\textbf{u}_2 + \cdots + \alpha_m\textbf{u}_m$ where $\alpha_1, \alpha_2, \dots, \alpha_m \in F$. Note $\textbf{v}_1 \neq \textbf{0}$ as otherwise $B_\textbf{v}$ would not be a set of linearly independent vectors (and hence not be a basis). So there is some $\alpha_i$ that is non-zero; assume for convenience that $\alpha_1 \neq 0$. We see
+    \[
+        \textbf{u}_1 = \alpha_1^{-1}\left(\textbf{v}_1 - \left(\alpha_2\textbf{u}_2 + \cdots + \alpha_m\textbf{u}_m\right)\right)
+    \]
+    which means $\textbf{u}_1 \in \Span{B_1}$. Also clearly $\textbf{u}_2, \textbf{u}_3, \dots, \textbf{u}_m \in \Span{B_1}$ and so $\Span{B_1} = \Span{B_\textbf{u}} = V$.
+
+    Now consider
+    \[
+        B_2 = \{\textbf{v}_1, \textbf{v}_2, \textbf{u}_3, \dots, \textbf{u}_m\}.
+    \]
+    This time $\textbf{v}_2$ as a linear combination of the vectors in $B_\textbf{u}$, say $\textbf{v}_2 = \beta_1\textbf{v}_1 + \beta_2\textbf{u}_2 + \cdots + \beta_m\textbf{u}_m$ where $\beta_1, \beta_2, \dots, \beta_m \in F$. We note that one of $\beta_2, \beta_3, \dots, \beta_m$ has to be non-zero, as otherwise we would have $\textbf{v}_2 = \beta_1\textbf{v}_1$, meaning that the vectors in $B_\textbf{v}$ are linearly dependent (a contradiction). For convenience choose $\beta_2 = 0$. Using the same argument as before we know $\Span{B_2} = \Span{B_\textbf{u}} = V$.
+
+    Continuing in this fashion we see
+    \[
+        B_m = \{\textbf{v}_1, \textbf{v}_2, \textbf{v}_3, \dots, \textbf{v}_m\}
+    \]
+    spans $V$. But as $\textbf{v}_{m+1} \in V$ and $\Span{B_m} = V$, therefore $\textbf{v}_{m+1}$ is a linear combination of the vectors in $B_m$. So the vectors in $B_\textbf{v}$ are not all linearly independent, contradicting the fact that $B_\textbf{v}$ is a basis for $V$ and thus contains only linearly independent vectors.
+
+    Therefore $m = n$.
+\end{proof}
+
+The uniqueness of the number of elements that a finite basis must have gives us motivation to define the \textbf{dimension} of a vector space.
+
+\begin{definition}
+    The cardinality of any basis of a vector space $V$ is called the \textbf{dimension}\index{dimension}\index{vector space!dimension} and is denoted $\dim{V}$.
+    \begin{itemize}
+        \item If $V$ is the trivial vector space $\{\textbf{0}\}$, containing only the zero vector, then $\dim{V} = 0$ with the empty set $\emptyset$ as its basis.
+        \item If a basis of $V$ has finite cardinality $n$ then $V$ is \textbf{finite dimensional}\index{dimension!finite} and we write $\dim{V} = n$.
+        \item If a basis of $V$ has infinite cardinality then $V$ is \textbf{infinite dimensional}\index{dimension!infinite}.
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    The vector space $\R^n$ over $\R$ has a basis of
+    \[
+        \left\{(\underbrace{1, 0, 0, \dots, 0, 0}_{n \text{ elements}}), (\underbrace{0, 1, 0, \dots, 0, 0}_{n \text{ elements}}), (\underbrace{0, 0, 1, \dots, 0, 0}_{n \text{ elements}}), \dots, (\underbrace{0, 0, 0, \dots, 1}_{n \text{ elements}})\right\}
+    \]
+    which has $n$ elements. Therefore $\dim{\R^n} = n$.
+\end{example}
+
+\begin{example}
+    We earlier found that the vector space
+    \[
+        V = \{(a, b, a-b, a+b) \vert a, b \in \R\}
+    \]
+    over $\R$ has a basis $S = \{(1, 0, 1, 1), (0, 1, -1, 1)\}$. Since $|S| = 2$ therefore $\dim{V} = 2$.
+\end{example}
+
+\begin{exercise}
+    What is the dimension of the vector space $V$ in \myref{exercise-polynomial-of-degree-at-most-2-vector-space}?
+\end{exercise}
+
+We see a very interesting result with regards to finite dimensional vector spaces.
+
+\begin{theorem}\label{thrm-vector-space-of-dimension-n-isomorphic-to-F^n}
+    If $V$ is a finite-dimensional vector space over a field $F$ with $\dim{V} = n$, then $V$ is isomorphic as a vector space to $F^n$ over $F$.
+\end{theorem}
+\begin{proof}
+    See \myref{problem-vector-space-of-dimension-n-isomorphic-to-F^n} (later).
+\end{proof}
+
+We end this chapter by looking at (finite) sets of vectors from a given vector space.
+
+\begin{theorem}\label{thrm-basis-is-smallest-spanning-and-largest-linearly-independent-set}
+    Let $V$ be a finite dimensional vector space with dimension $n$, and let $S = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_m\}$ be a subset of $V$.
+    \begin{itemize}
+        \item If $m < n$ then $S$ does not span $V$.
+        \item If $m > n$ then the vectors in $S$ are linearly dependent.
+    \end{itemize}
+\end{theorem}
+\begin{proof}
+    For the case where $m < n$, by way of contradiction suppose $S$ spans $V$. Of the vectors in $S$, choose the largest subset of linearly independent vectors in $S$ and call it $\bar{S}$. So $\Span{\bar{S}} = \Span{S} = \Span{V}$ by assumption. As $\bar{S}$ is a spanning set of $V$ with linearly independent vectors, thus $\bar{S}$ forms a basis for $V$. Note that $|\bar{S}| \leq |S| = m$. Therefore $\dim V = |S| = m$. But $\dim V = n$ and $n > m$, a contradiction. Therefore $S$ does not span $V$.
+
+    For the case where $m > n$, we consider the equation
+    \[
+        \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_m\textbf{v}_m = \textbf{0};
+    \]
+    our goal is to show that there is an $\alpha_i$ that is non-zero. Let $\{\textbf{u}_1, \textbf{u}_2, \dots, \textbf{u}_n\}$ be a basis for $V$. Since each $\textbf{v}_i$ is an element of $V$, thus we see
+    \begin{align*}
+        \textbf{v}_1 &= \beta_{1,1}\textbf{u}_1 + \beta_{1,2}\textbf{u}_2 + \cdots + \beta_{1,n}\textbf{u}_n\\
+        \textbf{v}_2 &= \beta_{2,1}\textbf{u}_1 + \beta_{2,2}\textbf{u}_2 + \cdots + \beta_{2,n}\textbf{u}_n\\
+        \vdots\\
+        \textbf{v}_m &= \beta_{m,1}\textbf{u}_1 + \beta_{m,2}\textbf{u}_2 + \cdots + \beta_{m,n}\textbf{u}_n
+    \end{align*}
+    and therefore we obtain
+    \begin{align*}
+        &\alpha_1\left(\beta_{1,1}\textbf{u}_1 + \beta_{1,2}\textbf{u}_2 + \cdots + \beta_{1,n}\textbf{u}_n\right)\\
+        &+ \alpha_2\left(\beta_{2,1}\textbf{u}_1 + \beta_{2,2}\textbf{u}_2 + \cdots + \beta_{2,n}\textbf{u}_n\right)\\
+        &+ \cdots \\
+        &+ \alpha_m\left(\beta_{m,1}\textbf{u}_1 + \beta_{m,2}\textbf{u}_2 + \cdots + \beta_{m,n}\textbf{u}_n\right)\\
+        &= \textbf{0}.
+    \end{align*}
+    Rewriting, we get
+    \begin{align*}
+        &\left(\alpha_1\beta_{1,1} + \alpha_2\beta_{2,1} + \cdots + \alpha_m\beta_{m,1}\right)\textbf{u}_1\\
+        &+ \left(\alpha_1\beta_{1,2} + \alpha_2\beta_{2,2} + \cdots + \alpha_m\beta_{m,2}\right)\textbf{u}_2\\
+        &+ \cdots\\
+        &+ \left(\alpha_1\beta_{1,n} + \alpha_2\beta_{2,n} + \cdots + \alpha_m\beta_{m,n}\right)\textbf{u}_n\\
+        &= \textbf{0}.
+    \end{align*}
+    Since $\{\textbf{u}_1, \textbf{u}_2, \dots, \textbf{u}_n\}$ is a basis, the only way for this to occur is for
+    \begin{align*}
+        \alpha_1\beta_{1,1} + \alpha_2\beta_{2,1} + \cdots + \alpha_m\beta_{m,1} &= 0,\\
+        \alpha_1\beta_{1,2} + \alpha_2\beta_{2,2} + \cdots + \alpha_m\beta_{m,2} &= 0,\\
+        \vdots\\
+        \alpha_1\beta_{1,n} + \alpha_2\beta_{2,n} + \cdots + \alpha_m\beta_{m,n} &= 0.
+    \end{align*}
+    Recall we are solving for $\alpha_1, \alpha_2, \dots, \alpha_m$, and that $m > n$. So we have $m$ variables but only have $n$ equations, meaning that there are more variables than equations. Hence there will be infinitely many solutions, and in particular, there exists a solution where not all of $\alpha_1, \alpha_2, \dots, \alpha_m$ are zero. This is exactly the solution needed to prove that the vectors in $S$ are linearly dependent.
+\end{proof}
+
+\newpage
+
+\section{Problems}
+\begin{problem}
+    Let $U$ and $W$ be subspaces of a vector space $V$ over a field $F$.
+    \begin{partquestions}{\alph*}
+        \item Prove that $U \cap W$ is a subspace of $V$.
+        \item Define the set
+        \[
+            U + W = \{\textbf{u} + \textbf{w} \vert \textbf{u} \in U \text{ and } \textbf{w} \in W\}.
+        \]
+        Prove that $U + W$ is a subspace of $V$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Suppose $V$ is a vector space over the field $F$ with basis $\{\textbf{v}_1, \textbf{v}_2, \textbf{v}_3\}$. Let
+    \begin{align*}
+        \textbf{u}_1 &= \textbf{v}_1,\\
+        \textbf{u}_2 &= \textbf{v}_1 + \textbf{v}_2, \text{ and}\\
+        \textbf{u}_3 &= \textbf{v}_1 + \textbf{v}_2 + \textbf{v}_3.
+    \end{align*}
+    Prove that $\{\textbf{u}_1, \textbf{u}_2, \textbf{u}_3\}$ is also a basis for $V$.
+\end{problem}
+
+\begin{problem}
+    Let $V = \R^4$ be a vector space over $\R$.
+    \begin{partquestions}{\alph*}
+        \item Let the set
+        \[
+            R = \{(a, b, c, d) \in V \vert a + b + c + d = 1\}.
+        \]
+        Show that $R$ is \textit{not} a subspace of $V$.
+
+        \item Let the set
+        \[
+            S = \{(a, b, c, d) \in V \vert a + b + c + d = 0\}.
+        \]
+        Show that $S$ is a subspace of $V$. Find a basis for $S$ and hence state the value of $\dim{S}$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field and $n$ be a positive integer. Define addition and scalar multiplication by
+    \[
+        (u_1, u_2, \dots, u_n) + (v_1, v_2, \dots, v_n) = (u_1 + v_1, u_2 + v_2, \dots, u_n + v_n)
+    \]
+    and
+    \[
+        \alpha(u_1, u_2, \dots, u_n) = (\alpha u_1, \alpha u_2, \dots, \alpha u_n).
+    \]
+    respectively, for any $(u_1, u_2, \dots, u_n), (v_1, v_2, \dots, v_n) \in F^n$ and $\alpha \in F$. Prove that $F^n$ is a vector space over $F$ under the above definitions of addition and scalar multiplication.
+\end{problem}
+
+\begin{problem}\label{problem-vector-space-of-dimension-n-isomorphic-to-F^n}
+    The vector space analogue of a group/ring homomorphism is called a \textbf{linear transformation}\index{linear transformation}. If $V$ and $W$ are vector spaces over a field $F$, then the map $T: V \to W$ is a linear transformation if it preserves vector addition and scalar multiplication, i.e.
+    \begin{align*}
+        T(\textbf{u} + \textbf{v}) &= T(\textbf{u}) + T(\textbf{v}) \text{ and}\\
+        T(\alpha\textbf{u}) &= \alpha T(\textbf{u})
+    \end{align*}
+    for all $\textbf{u}, \textbf{v} \in V$ and $\alpha \in F$.
+
+    To prove that two vector spaces are isomorphic, one needs to find a bijective linear transformation.
+
+    With this information, prove \myref{thrm-vector-space-of-dimension-n-isomorphic-to-F^n}.
+\end{problem}

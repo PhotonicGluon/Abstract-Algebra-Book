@@ -1,0 +1,483 @@
+\chapter{Relations and Functions}
+Relations and functions play a fundamental role in mathematics. Both compare and relate different kinds of mathematical structures to each other, and provide a way to relate elements from one structure to another.
+
+\section{What is a Relation?}
+\begin{definition}
+    Let $A$ and $B$ be sets. A \textbf{relation from $A$ to $B$}\index{relation} is a subset of $A \times B$.
+
+    For elements $x \in X$ and $y \in Y$, we say \textbf{$x$ is related to $y$ by $R$}\index{related to} (or \textbf{$x$ is $R$-related to $y$}), denoted $x\mathrel{R}y$, if and only if $(x,y) \in R$.
+\end{definition}
+\begin{remark}
+    Symbolically, $x\mathrel{R}y$ if and only if $(x,y)\in R$ and $x\not\mathrel{R}y$ if and only if $(x,y) \notin R$.
+\end{remark}
+\begin{remark}
+    If there is no confusion of what relation we are talking about, we may just say that $x$ is related to $y$.
+\end{remark}
+
+This may be too abstract for now, so we produce some concrete examples.
+\begin{example}
+    Let $M$, a subset of the set of all mathematicians, denote the set
+    \[
+        \{\text{Cardano}, \text{Lagrange}, \text{Dedekind}, \text{Euler}, \text{Noether}, \text{Zassenhaus}\}
+    \]
+    and let $C$, a subset of the set of all countries, be
+    \[
+        \{\text{Italy}, \text{Switzerland}, \text{Germany}\}.
+    \]
+    Then we may define $R$ to be the ``is born in'' relation, where
+    \begin{align*}
+        R &= \{(\text{Cardano}, \text{Italy}),(\text{Lagrange}, \text{Italy}),(\text{Dedekind}, \text{Germany}),\\
+        &\quad\quad(\text{Euler}, \text{Switzerland}),(\text{Noether}, \text{Italy}),(\text{Zassenhaus}, \text{Germany})\}.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    Let $A = \{0, 1, 2\}$ and $B = \{1, 2, 3\}$. Define the relation $R$ such that
+    \[
+        x\mathrel{R}y \text{ if and only if } x < y.
+    \]
+    Then $0\mathrel{R}1$, $0\mathrel{R}2$, $0\mathrel{R}3$, $1\mathrel{R}2$, $1\mathrel{R}3$, and $2\mathrel{R}3$. However, $1\not\mathrel{R}1$, $2\not\mathrel{R}1$, and $2\not\mathrel{R}2$. Therefore
+    \[
+        R = \{(0, 1), (0, 2), (0, 3), (1, 2), (1, 3), (2, 3)\}.
+    \]
+\end{example}
+
+\begin{definition}
+    A \textbf{relation $R$ on a set $A$}\index{relation!on a set} is a relation from $A$ to $A$. In other words, $R$ is a subset of $A^2$.
+\end{definition}
+\begin{example}
+    Let $A = \{3, 4, 5, 6, 7\}$ and define a relation $R$ on $A$ such that
+    \[
+        x\mathrel{R}y \iff 2 \vert (x-y).
+    \]
+    Then $R = \{(3, 3), (3, 5), (3, 7), (4, 4), (4, 6), (5, 3), (5, 5), (6, 4), (6, 6), (7, 3), (7, 7)\}$.
+\end{example}
+
+\section{Equivalence Relations}
+Before we can define what an equivalence relation is, we define three properties that a relation could possess.
+
+\begin{definition}
+    Let $R$ be a relation on a set $A$.
+    \begin{itemize}
+        \item $R$ is \textbf{reflexive}\index{relation!reflexive} if and only if $x\mathrel{R}x$ for all $x \in A$.
+        \item $R$ is \textbf{symmetric}\index{relation!symmetric} if and only if, for all $x, y \in A$, if $x\mathrel{R}y$ then $y\mathrel{R}x$.
+        \item $R$ is \textbf{transitive}\index{relation!transitive} if and only if, for all $x,y,z\in A$, if $x\mathrel{R}y$ and $y\mathrel{R}z$ then $x\mathrel{R}z$.
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    Let the set $A = \{0,1,2,3\}$. Define the relations
+    \begin{align*}
+        R &= \{(0,0),(0,1),(0,3),(1,0),(1,1),(2,2),(3,0),(3,3)\}\\
+        S &= \{(0,0),(0,2),(0,3),(2,3)\}
+    \end{align*}
+    on $A$.
+
+    Consider first the relation $R$.
+    \begin{itemize}
+        \item $R$ is reflexive since $0\mathrel{R}0$, $1\mathrel{R}1$, and $2\mathrel{R}2$.
+        \item $R$ is symmetric, since
+        \begin{itemize}
+            \item given $0\mathrel{R}1$ we also see $1\mathrel{R}0$; and
+            \item given $0\mathrel{R}3$ we also see $3\mathrel{R}0$.
+        \end{itemize}
+        \item $R$ is \textit{not} transitive, since $1\mathrel{R}0$ and $0\mathrel{R}3$ but $1\not\mathrel{R}3$.
+    \end{itemize}
+
+    Now look at the relation $S$.
+    \begin{itemize}
+        \item $S$ is \textit{not} reflexive since $1\not\mathrel{S}1$.
+        \item $S$ is \textit{not} symmetric since, while $0\mathrel{S}2$, we see $2\not\mathrel{S}0$.
+        \item $S$ is transitive since $0\mathrel{S}2$ and $2\mathrel{S}3$ means $0\mathrel{S}3$.
+    \end{itemize}
+\end{example}
+
+\begin{exercise}
+    Let $A = \{0, 1, 2, 3\}$ and define the relation $T = \{(0, 1), (2, 3)\}$ on $A$.
+    \begin{partquestions}{\alph*}
+        \item Is $T$ reflexive?
+        \item Is $T$ symmetric?
+        \item Is $T$ transitive?
+    \end{partquestions}
+\end{exercise}
+
+With these three properties defined, we can specify what an equivalence relation is.
+
+\begin{definition}
+    An equivalence relation is a relation that is reflexive, symmetric, and transitive.
+\end{definition}
+
+\begin{example}
+    The equality relation, $=$, the namesake for equivalence relations, is an equivalence relation.
+    \begin{itemize}
+        \item For any $x$, one knows that $x = x$.
+        \item For any $x$ and $y$, one knows that if $x = y$ then $y = x$.
+        \item For any $x$, $y$, and $z$, if $x = y$ and $y = z$ one sees that $x = z$.
+    \end{itemize}
+\end{example}
+
+\begin{example}
+    Consider the set $A = \{0, 1, 2, 3\}$ and define a relation $R$ on $A$ by
+    \[
+        R = \{(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2), (3, 3)\}
+    \]
+    then $R$ is
+    \begin{itemize}
+        \item reflexive since $0\mathrel{R}0$, $1\mathrel{R}1$, $2\mathrel{R}2$, and $3\mathrel{R}3$;
+        \item symmetric since
+        \begin{itemize}
+            \item given $0\mathrel{R}1$ we have $1\mathrel{R}0$;
+            \item given $0\mathrel{R}2$ we have $2\mathrel{R}0$; and
+            \item given $1\mathrel{R}2$ we have $2\mathrel{R}1$.
+        \end{itemize}
+        All other symmetric requirements are implied by reflexivity.
+        \item transitive since
+        \begin{itemize}
+            \item given $0\mathrel{R}1$ and $1\mathrel{R}2$ we have $0\mathrel{R}2$;
+            \item given $1\mathrel{R}2$ and $2\mathrel{R}0$ we have $1\mathrel{R}0$; and
+            \item given $2\mathrel{R}0$ and $0\mathrel{R}1$ we have $2\mathrel{R}1$.
+        \end{itemize}
+        All other transitive requirements are implied by the prior properties.
+    \end{itemize}
+    Therefore $R$ is an equivalence relation.
+\end{example}
+
+\begin{exercise}
+    Is the less-than-or-equal-to relation, $\leq$, an equivalence relation on $\Z$?
+\end{exercise}
+
+We now look at equivalence classes.
+
+\begin{definition}
+    Let $\sim$ be an equivalence relation on a set $A$, and let $a \in A$. The \textbf{equivalence class of $a$}\index{equivalence class}, denoted $[a]$, is given by
+    \[
+        [a] = \left\{x \in A \vert a\mathrel{\sim}x\right\}.
+    \]
+\end{definition}
+
+\begin{example}
+    Consider the set $A = \{0, 1, 2, 3\}$ and the equivalence relation $R$ given by
+    \[
+        R = \{(0, 0), (0, 1), (0, 2), (1, 0), (1, 1), (1, 2), (2, 0), (2, 1), (2, 2), (3, 3)\}.
+    \]
+    Let us find the distinct equivalence classes under the relation $R$.
+
+    We first find the equivalence class of 0.
+    \begin{align*}
+        [0] &= \{x \in A \vert 0 \mathrel{R} x\}\\
+        &= \{0, 1, 2\}.
+    \end{align*}
+
+    We note that the equivalence class of 1 and 2 are also the equivalence class of 0. We can illustrate this by finding the equivalence class of 1.
+    \begin{align*}
+        [1] &= \{x \in A \vert 1 \mathrel{R} x\}\\
+        &= \{0, 1, 2\}\\
+        &= [0].
+    \end{align*}
+
+    We also note that $[3] = \{3\}$. Thus the distinct equivalence classes are $[0]$ and $[3]$.
+\end{example}
+
+We end this section by looking at the equivalence of equivalence classes.
+\begin{theorem}\label{thrm-equivalence-class-equivalence}
+    Let $\sim$ be an equivalence relation on a set $A$, and let $x$ and $y$ be elements in $A$. Then the following statements are equivalent.
+    \begin{enumerate}
+        \item $x \mathrel{\sim} y$
+        \item $[x] = [y]$
+        \item $[x] \cap [y] \neq \emptyset$
+    \end{enumerate}
+\end{theorem}
+\begin{proof}
+    See \myref{problem-equivalence-class-equivalence} (later).
+\end{proof}
+
+\section{What is a Function?}
+\begin{definition}
+    A \textbf{function}\index{function} (or a \textbf{map}\index{map}) $f$ from a set $X$ to a set $Y$, denoted $f: X \to Y$,  is a relation $f \subseteq X \times Y$ such that for every $x \in X$, there is exactly one $y \in Y$ where $x\mathrel{f}y$.
+\end{definition}
+\begin{remark}
+    One can think of a function/map $f:X\to Y$ as a `black box' that assigns every element of $X$ to exactly one element in $Y$.
+\end{remark}
+\begin{definition}
+    For a function $f: X \to Y$, the set $X$ is called the \textbf{domain}\index{domain!function} of the function and the set $Y$ is called the \textbf{codomain}\index{codomain} of the function.
+\end{definition}
+\begin{example}
+    Consider the simple function $f: \Z \to \Q$ where $f(n) = \frac1n$. In this case, $f$ has a domain of $\Z$, i.e. the integers, and a codomain of $\Q$, i.e. the rational numbers.
+
+    We may evaluate the function $f$ at $2 \in \Z$ to get the resulting value of $f(2) = \frac12$.
+\end{example}
+
+\textbf{Arrow notation}\index{function!arrow notation} can also be used to define the rule of a function. There is no good way of defining arrow notation, but some examples should help illustrate the basics.
+\begin{example}
+    Consider $f: \mathbb{N} \to \Q$ where $f(n) = \frac1n$. We may write this more succinctly as $f: \mathbb{N} \to \Q, n \mapsto \frac1n$. Specifically, $n \mapsto \frac1n$ is read as ``$n$ maps to $\frac1n$''.
+
+    It is important to note that $\to$ indicates the domain and codomain, and that $\mapsto$ indicates how an element in the domain is `transformed' into an element in the codomain.
+\end{example}
+\begin{example}
+    The function $g: \mathbb{R} \to \mathbb{R}$ where $g(x) = x^2 - 2x + 1$ can be more succinctly written as $g: \mathbb{R} \to \mathbb{R}, x \mapsto x^2 - 2x + 1$.
+\end{example}
+\begin{example}
+    Let $h: \Z \to \mathbb{R}$ where $h(x^2) = x$. This can be written succinctly as either $h: \Z \to \mathbb{R}, x^2 \mapsto x$ or $h: \Z \to \mathbb{R}, n \mapsto \sqrt n$.
+\end{example}
+
+\begin{definition}
+    Let $f: X \to Y$ be a function, and $x \in X$.
+    \begin{itemize}
+        \item The \textbf{image}\index{function!image} of an element $x \in X$ under the function $f$ is denoted $f(x)$ and is defined to be the value after applying $f$ to $x$.
+        \item The \textbf{image} (or \textbf{range}\index{function!range}) of $f$ is denoted by either $\im f$ or $f(X)$ and is the set of the images of all elements in the domain. It is a subset of the codomain, i.e. $\im f \subseteq Y$.
+    \end{itemize}
+\end{definition}
+\begin{example}
+    Consider the function $f: \Z \to \Z, n \mapsto 1$.
+    \begin{itemize}
+        \item The image of 0 under $f$ is the \textit{element} 1.
+        \item The image/range of $f$ is the \textit{set} $\{1\}$, i.e. $\im f = f(\Z) = \{1\}$.
+    \end{itemize}
+    It is important to note that the image of an element is a single element, while the image of the function is a set.
+\end{example}
+\begin{example}
+    Consider the function $g: \Z \to \Z, n \mapsto |n|$.
+    \begin{itemize}
+        \item The image of 2 under $g$ is $|2| = 2$.
+        \item The image of -3 under $g$ is $|-3| = 3$.
+        \item The image of 0 under $g$ is $|0| = 0$.
+    \end{itemize}
+    The image/range of $g$ is the set of non-negative integers, i.e. $\im g = \mathbb{N} \cup \{0\}$.
+\end{example}
+\begin{example}
+    Let the function $h: \Z \to \Q, n\mapsto\frac n3$.
+    \begin{itemize}
+        \item The image of 2 under $h$ is $\frac23$.
+        \item The image of -3 under $h$ is $\frac{-3}3 = -1$.
+        \item The image of 0 under $h$ is $\frac03 = 0$.
+    \end{itemize}
+    The image/range of the function $h$ is the set $\left\{\frac n3 \vert n \in \Z\right\}$, that is, $\im h$ is the set of all integers divided by 3.
+\end{example}
+
+\begin{exercise}
+    Let the function $f: \{1, 2, 3\} \to \{1, 4, 9, 16, 25\}$ be such that $f(x) = x^2$.
+    \begin{partquestions}{\roman*}
+        \item Use arrow notation to write a definition for $f$.
+        \item State the domain, codomain, and range of $f$.
+        \item What is the image of 2 under $f$?
+        \item Is the function $g: \{1, 2, 3\} \to \{1, 8\}, x \mapsto x^3$ \textit{valid}?
+    \end{partquestions}
+\end{exercise}
+
+\newpage
+
+We end this section with defining equality of two functions.
+\begin{definition}
+    Let $f: A \to B$ and $g: C \to D$ be functions. Then $f$ and $g$ are \textbf{equal}\index{function!equality} if and only if
+    \begin{itemize}
+        \item $A = C$ and $B = D$; and
+        \item for all $x \in A = C$, we have $f(x) = g(x)$.
+    \end{itemize}
+    We denote $f = g$ if the two functions are equal.
+\end{definition}
+In other words, two functions $f$ and $g$ are equal if their domain and codomain sets are the same and their output values agree on the whole domain.
+\begin{example}
+    Consider the functions $f: \Z \to \Z, x \mapsto (x-1)^2$ and $g: \Z \to \Z, x \mapsto x^2 - 2x + 1$. Since the two functions' domains and codomains are the same, and because $(x-1)^2 = x^2 - 2x + 1$, thus $f = g$.
+\end{example}
+\begin{example}
+    The functions $f: \Z \to \mathbb{R}, x \mapsto (x-1)^2$ and $g: \Z \to \Q, x \mapsto x^2 - 2x + 1$ are not equal because their codomains differ.
+\end{example}
+
+\section{Well-Defined Functions}
+Sometimes, a `function' with a given rule may not satisfy the requirement that for every $x$ in the domain there is \textit{exactly} one $y$ in the codomain that $f(x) = y$. A `function' that fails this requirement is called ``ambiguous'' or ``ill-defined'', and is not a valid function. Otherwise, a function that satisfies this requirement is called \textbf{well-defined}\index{function!well-defined}.
+
+\begin{example}
+    Let $S_1$ and $S_2$ be sets, and let $S = S_1 \cup S_2$. Let $f: S \to \{1, 2\}$, such that
+    \[
+        f(x) = \begin{cases}
+            1 & \textrm{ if } x \in S_1\\
+            2 & \textrm{ if } x \in S_2
+        \end{cases}
+    \]
+    Then $f$ is well-defined if $S_1 \cap S_2 = \emptyset$. For example, if $S_1 = \{1, 2\}$ and $S_2 = \{3, 4\}$, then $f$ is well-defined.
+
+    On the other hand, if $S_1 \cap S_2 \neq \emptyset$, then $f$ is not well-defined. For example, if $S_1 = \{1, 2\}$ and $S_2 = \{2, 3\}$, then $f(2) = 1$ and $f(2) = 2$ simultaneously.
+\end{example}
+
+\begin{exercise}
+    Is $f: \Q \to \Z,\;\frac pq \mapsto p + q$ a well-defined function?
+\end{exercise}
+
+\section{Function Composition}
+\begin{definition}
+    Let $f: X \to Y$ and $g: Y \to Z$ be functions. Then \textbf{composing $f$ with $g$}\index{function!composition} produces a function $h: X \to Z$ where $h(x) = f(g(x))$. We denote $h = f \circ g$ where $\circ$ is the function composition operator.
+\end{definition}
+\begin{remark}
+    We may also alternatively write $fg$ in place of $f \circ g$.
+\end{remark}
+
+It is important to note that $f \circ g$ is only meaningful if the image of $g$ is a subset of the domain of $f$. That is, if $f: A \to B$ and $g: C \to D$, then $f \circ g$ is only meaningful if $\im g \subseteq A$.
+
+We note an important property of function compositions that we do not prove here, so we leave it as an axiom.
+
+\begin{axiom}\label{axiom-function-composition-associative}
+    Function composition is associative\index{function!composition!associative}. That is, if $f$, $g$, and $h$ are composable, then $f \circ (g \circ h) = (f \circ g) \circ h$. As parentheses do not change the result, they are usually omitted.
+\end{axiom}
+
+\begin{exercise}
+    Let $f: \mathbb{R} \to \mathbb{R}$ and $g: \mathbb{R} \to \mathbb{R}$. Write down the rule of the function $fg$ if $f(x) = x^2 - x + 1$ and $g(y) = \frac1{y^2+1}$.
+\end{exercise}
+
+\section{Injective, Surjective, and Bijective Functions}
+\begin{definition}
+    A function $f: X \to Y$ is \textbf{injective}\index{function!injective} (or \textbf{one-to-one}\index{function!one-to-one}) if $f(x_1) = f(x_2)$ implies $x_1 = x_2$.
+\end{definition}
+\begin{remark}
+    Equivalently, if $x_1 \neq x_2$ then $f(x_1) \neq f(x_2)$ for all $x_1$ and $x_2$ in $X$.
+\end{remark}
+\begin{example}
+    Consider $f: \mathbb{N} \to \mathbb{N}, n \mapsto n^2$. We show that $f$ is injective.
+
+    Note that if $n_1, n_2 \in \mathbb{N}$ are such that $f(n_1) = n_1^2 = f(n_2) = n_2^2$ then $n_1 = n_2$ (since $n_1, n_2 > 0$ so taking the square root is okay). Thus $f$ is injective.
+\end{example}
+\begin{example}
+    Consider instead $g: \Z \to \Z, n \mapsto n^2$. Then $g$ is not injective since $g(-2) = g(2) = 4$.
+\end{example}
+
+\begin{definition}
+    A function $f: X \to Y$ is \textbf{surjective}\index{function!surjective} (or \textbf{onto}\index{function!onto}) if for every $y \in Y$, there exists an $x \in X$ (called the \textbf{pre-image}\index{function!pre-image} of $y$) such that $f(x) = y$.
+\end{definition}
+\begin{remark}
+    Equivalently, the image of $f$ is equal to its codomain, i.e. $\im f = Y$.
+\end{remark}
+\begin{example}
+    Let $S$ denote the set of non-negative real numbers, i.e. $S = \{x\in\mathbb{R} | x \geq 0\}$. Consider the function $f: \mathbb{R} \to S, x \mapsto x^2$. We show that $f$ is surjective.
+
+    Let $y \in S$. Note that $\sqrt{y} \in \mathbb{R}$ since $y$ is a non-negative real number. Observe that $f(\sqrt{y}) = (\sqrt y)^2 = y$. Thus any $y \in Y$ has a pre-image $\sqrt y \in X$. Thus $f$ is surjective.
+\end{example}
+\begin{example}
+    Consider instead the function $g: \mathbb{R} \to \mathbb{R}, x \mapsto x^2$. Then $g$ is not surjective because there is no real number $x \in \mathbb{R}$ such that $g(x) = -1$.
+\end{example}
+
+\begin{definition}
+    A function is \textbf{bijective}\index{function!bijective} (or a \textbf{bijection}\index{bijection} or a \textbf{one-to-one correspondence}\index{function!one-to-one!correspondence}) if the function is both injective and surjective.
+\end{definition}
+
+\newpage
+
+\begin{example}
+    Consider the function $f: \mathbb{R} \to \mathbb{R}, x \mapsto x^3$. We show that $f$ is bijective.
+    \begin{itemize}
+        \item \textbf{Injective}: Let $a, b \in \mathbb{R}$ such that $f(a) = f(b)$, i.e. $a^3 = b^3$. Clearly we may take the cube root on both sides to yield $a = b$, so $f$ is injective.
+        \item \textbf{Surjective}: Let $y \in \mathbb{R}$. Set $x=y^{\frac13}$. Note $x \in \mathbb{R}$ and observe that $f(x) = \left(y^{\frac13}\right)^3 = y$. Thus $y$ has a pre-image of $y^{\frac13}$ in $\mathbb{R}$ and so $f$ is surjective.
+    \end{itemize}
+    Since $f$ is both injective and surjective it is thus bijective.
+\end{example}
+
+\begin{proposition}
+    Let $X$ and $Y$ be finite equinumerous sets. If $f: X \to Y$ is an injective function, then $f$ is bijective.
+\end{proposition}
+\begin{proof}
+    Suppose $f: X \to Y$ is injective, meaning $x_1 \neq x_2$ implies $f(x_1) \neq f(x_2)$ for all $x_1, x_2 \in X$. Thus every $x$ produces a unique $f(x)$, meaning $|X| = |\im f|$. Since $X$ and $Y$ are equinumerous sets (given), thus $|\im f| = |Y|$. As $\im f \subseteq Y$ and they have the same cardinality, therefore $\im f = Y$, i.e. $f$ is surjective. Therefore $f$ is injective (by assumption) and $f$ is surjective, meaning $f$ is bijective.
+\end{proof}
+
+\begin{definition}
+    Let $A$ and $B$ be sets. Then $A$ and $B$ are \textbf{equinumerous}\index{set!equinumerous} if there exists a bijective function $f: A \to B$. In this case, $A$ and $B$ have the same cardinality, i.e., $|A| = |B|$.
+\end{definition}
+\begin{example}
+    Consider the sets $X = \{1, 2, 3\}$ and $Y = \{a, b, c\}$. The function $f: X \to Y$ defined by $1 \mapsto a$, $2 \mapsto b$, and $3 \mapsto c$ is clearly a bijection, so $|X| = |Y|$.
+\end{example}
+
+\begin{exercise}
+    Define the function $f: \mathbb{N} \to \Z$ such that
+    \[
+        f(x) = \begin{cases}
+            \frac{x}{2} & \text{ if } x \text{ is even}\\
+            \frac{1-x}{2} & \text{ if } x \text{ is odd}
+        \end{cases}
+    \]
+    By considering $f$, prove that $|\mathbb{N}| = |\Z|$.
+\end{exercise}
+
+\newpage
+
+\section{Problems}
+\begin{problem}
+    Let the set $A = \{1, 2, 3, 4\}$. Find a function $f: A \to A$ that is bijective but is \textbf{not} equal to the function $g: A \to A, x \mapsto x$.
+\end{problem}
+
+\begin{problem}
+    Let the set $S = \{1, 2, 3\}$. Which of the following is/are relations on $S$? If it is a relation on $S$, is it an equivalence relation?
+    \begin{partquestions}{\alph*}
+        \item $A = \emptyset$
+        \item $B = \{(1, 1), (2, 2), (3, 3)\}$
+        \item $C = \{(1, 1), (1, 2), (2, 2), (3, 3)\}$
+        \item $D = \{(1, 1), (1, 2), (2, 1), (2, 2), (2, 3), (3, 2), (3, 3)\}$
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let the functions
+    \begin{align*}
+        &f: [0, \infty) \to \mathbb{R},\; x\mapsto x^2+1,\\
+        &g: (-1, 1] \to \mathbb{R},\; x\mapsto 1-x^2,\\
+        &h: (-\infty, -1] \to \mathbb{R},\; x\mapsto \ln(-x).
+    \end{align*}
+    \begin{partquestions}{\alph*}
+        \item Which of the given function(s) are injective? If they are, prove it. If not, provide a counterexample.
+        \item Does the composite function $hf$ exist? If so, give a definition of $hf$ using arrow notation and state its image. Otherwise, explain why not.
+        \item Does the composite function $fg$ exist? If so, give a definition of $fg$ using arrow notation and state its image. Otherwise, explain why not.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}\label{problem-equivalence-class-equivalence}
+    Let $\sim$ be an equivalence relation on a set $A$, and let $x$ and $y$ be elements in $A$. Prove that
+    \begin{partquestions}{\alph*}
+        \item if $[x] = [y]$ then $[x] \cap [y] \neq \emptyset$;
+        \item if $[x] \cap [y] \neq \emptyset$ then $x \mathrel{\sim} y$; and
+        \item if $x \mathrel{\sim} y$ then $[x] = [y]$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let $X$ be any set, and let $f: X \to X$, $g: X \to X$, and $h: X \to X$ be functions. Suppose $h$ is injective. Prove or disprove the following statements.
+    \begin{partquestions}{\alph*}
+        \item If $hf = hg$ then $f = g$.
+        \item If $fh = gh$ then $f = g$.
+    \end{partquestions}
+\end{problem}
+
+\newpage
+
+\begin{problem}
+    The McCarthy 91 function $M: \Z \to \Z$ is a recursive function created by computer scientist John McCarthy to test formal verification in computer science. It is defined as follows.
+    \[
+        M(n) = \begin{cases}
+            n - 10 & \text{if } n > 100\\
+            M(M(n+11)) & \text{if } n \leq 100
+        \end{cases}
+    \]
+    \begin{partquestions}{\roman*}
+        \item Show $M(101) = 91$.
+        \item Show $M(n) = M(n+1)$ for all $90 \leq n \leq 100$.
+        \item Deduce that $M(n) = 91$ for any $90 \leq n \leq 100$.
+        \item Hence prove that $M(n) = 91$ for all $n \leq 100$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let the function $f: \left(\mathbb{N}\right)^2\to\mathbb{N}$ be defined such that
+    \[
+        f(m, n) =
+        \begin{cases}
+            n & \text{if } m = 1, \\
+            m & \text{if } n = 1, \\
+            f\left(n-1,f(n-1,m-1)\right) & \text{otherwise.}
+        \end{cases}
+    \]
+    \begin{partquestions}{\roman*}
+        \item Prove that $f(n,2) = n - 1$ for all integers $n > 1$.
+        \item Prove that $f(n+1, n) = 2$ for all positive integers $n$.
+        \item Prove that $f(n, 4) = 2$ for all integers $n > 1$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}\label{problem-injection-from-finite-set-to-itself-is-bijection}
+    Let $X$ be a non-empty finite set of cardinality $n$ and let $f: X \to X$ be a injective function. Prove that $f$ is bijective.\newline
+    (\textit{Hint: consider strong induction on $n$.})
+\end{problem}

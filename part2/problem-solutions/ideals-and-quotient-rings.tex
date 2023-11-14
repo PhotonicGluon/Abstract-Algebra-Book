@@ -51,10 +51,10 @@
     Therefore by the test for ideal we have $I$ is an ideal of $\Mn{2}{\Z}$.
 
     \item \begin{partquestions}{\alph*}
-        \item Suppose $I$ is not the trivial ring; we want to show that $I = R$. Since $I$ is non-trivial there there exists a non-zero element $a$ in $I$. Note that $a^{-1}$ exists since $R$ is a field, so $a$ is a unit. By \myref{exercise-ideal-containing-1-is-whole-ring} this means $I = R$. Note that $\{0\} = \princ{0}$ and $R = \princ{1}$ by \myref{exercise-trivial-ideal-and-whole-ring-are-principal-ideals}, so $R$ is indeed a PID.
+        \item Suppose $I$ is not the trivial ring; we want to show that $I = R$. Since $I$ is non-trivial there there exists a non-zero element $a$ in $I$. Note that $a^{-1}$ exists since $R$ is a field, so $a$ is a unit. By \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring} this means $I = R$. Note that $\{0\} = \princ{0}$ and $R = \princ{1}$ by \myref{exercise-trivial-ideal-and-whole-ring-are-principal-ideals}, so $R$ is indeed a PID.
 
         \item Take a non-zero $x \in R$ and note that $\princ{x}$ is a non-trivial ideal. Since there are no proper ideals in $R$, thus $\princ{x} = R$. This means that $1 \in \princ{x}$ (since $\princ{x} = R$ is a ring with identity), meaning that there exists an element $r \in R$ such that $xr = 1$. Therefore $x$ is a unit.
-        
+
         Since $x$ is an arbitrary non-zero element in $R$, this thus shows that all non-zero elements of the ring $R$ are units, meaning $R$ is a division ring.
 
         Finally, because $R$ is commutative, thus $R$ is a field.
@@ -62,13 +62,13 @@
 
     \item \begin{partquestions}{\alph*}
         \item Suppose $r \in \sqrt{\sqrt{I}}$, meaning that $r^m \in \sqrt{I}$ for some positive integer $m$, further meaning that $(r^m)^n \in I$ for some positive integer $n$. Note $(r^m)^n = r^{mn} \in I$, so $r \in \sqrt{I}$. Therefore $\sqrt{\sqrt{I}} \subseteq \sqrt{I}$.
-        
+
         Now suppose $r \in \sqrt{I}$, meaning that $r^n \in I$ for some positive integer $n$. Note that $r = r^1 \in \sqrt{I}$, so $r \in \sqrt{\sqrt{I}}$. Hence $\sqrt{I} \subseteq \sqrt{\sqrt{I}}$.
 
         Therefore, since $\sqrt{\sqrt{I}} \subseteq \sqrt{I}$ and $\sqrt{I} \subseteq \sqrt{\sqrt{I}}$, thus $\sqrt{\sqrt{I}} = \sqrt{I}$.
 
         \item Suppose $r \in \sqrt{I\cap J}$, so $r^n \in I \cap J$ for some positive integer $n$. This means that $r^n \in I$ and $r^n \in J$. Hence $r \in \sqrt{I}$ and $r \in \sqrt{J}$ by definition of the radical, so $r \in \sqrt{I}\cap\sqrt{J}$. Thus $\sqrt{I\cap J} \subseteq \sqrt{I}\cap\sqrt{J}$.
-        
+
         Now suppose $r \in \sqrt{I}\cap\sqrt{J}$, meaning that $r \in \sqrt{I}$ and $r \in \sqrt{J}$. Thus $r^m \in I$ and $r^n \in J$ for some positive integers $m$ and $n$. Note that
         \[
             (\underbrace{r^m}_{\text{In }I})^n \in I \text{ and } (\underbrace{r^n}_{\text{In }J})^m \in J
@@ -80,7 +80,7 @@
 
     \item \begin{partquestions}{\alph*}
         \item Suppose $a \in m\Z\cap n\Z$. Thus $a \in m\Z$ and $a \in n\Z$, meaning that $a = mx = ny$ for some integers $x$ and $y$. Therefore $a = \lcm(m,n)z = lz$ for some integer $z$, meaning $a \in l\Z$. Hence $m\Z \cap n\Z \subseteq l\Z$.
-        
+
         Now suppose $a \in l\Z$, so $a = lx$ for some integer $x$. Write $l = m\alpha = n\beta$ for some integers $\alpha$ and $\beta$. Note that
         \begin{align*}
             a &= (m\alpha)x = m(\alpha x) \in m\Z\\
@@ -121,7 +121,7 @@
         \[
             a = rb = (sa)b = (as)b = a(sb)
         \]
-        since an integral domain is commutative. Thus $a - a(sb) = a(1-sb) = 0$. Now as $R$ is an integral domain thus either $a = 0$ (impossible since $a \neq 0$) or $1-sb = 0$. So $1-sb = 0$, meaning $sb = 1 \in J$ since $b \in J$. By \myref{exercise-ideal-containing-1-is-whole-ring} we have $J = R$.
+        since an integral domain is commutative. Thus $a - a(sb) = a(1-sb) = 0$. Now as $R$ is an integral domain thus either $a = 0$ (impossible since $a \neq 0$) or $1-sb = 0$. So $1-sb = 0$, meaning $sb = 1 \in J$ since $b \in J$. By \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring} we have $J = R$.
         \item If instead $b \in I$, take any $x \in J = \princ{b}$, so $x = rb$ for some $r \in R$. Thus $x = rb \in I$ since $b \in I$, so $J \subseteq I$. But $I \subseteq J$, so $J = I$.
     \end{itemize}
     Therefore we have shown that $I$ is maximal.
@@ -132,10 +132,10 @@
     \]
     which means $xy = 1$. Thus $x$ and $y$ are units, meaning $a = bx$ with $x$ being a unit.
 
-    Now we work in the reverse direction; suppose $a = bu$ for some unit $u$ in $R$.
+    Now we work in the reverse direction; suppose $a = bu$ for some unit $u$ in $D$.
     \begin{itemize}
-        \item Take $r \in \princ{a}$, so $r = ax$ for some $x$ in $R$. Thus $r = (bu)x = b(ux) \in \princ{b}$, so $\princ{a} \subseteq \princ{b}$.
-        \item Note $b = au^{-1}$ since $u$ is a unit. Take $s \in \princ{b}$, so $s = by$ for some $y$ in $R$. But as $b = au^{-1}$, hence $s = (au^{-1})y = a(u^{-1}y) \in \princ{a}$, so $\princ{b} \subseteq \princ{a}$.
+        \item Take $r \in \princ{a}$, so $r = ax$ for some $x$ in $D$. Thus $r = (bu)x = b(ux) \in \princ{b}$, so $\princ{a} \subseteq \princ{b}$.
+        \item Note $b = au^{-1}$ since $u$ is a unit. Take $s \in \princ{b}$, so $s = by$ for some $y$ in $D$. But as $b = au^{-1}$, hence $s = (au^{-1})y = a(u^{-1}y) \in \princ{a}$, so $\princ{b} \subseteq \princ{a}$.
     \end{itemize}
     Therefore we see that $\princ{a} = \princ{b}$.
 \end{questions}

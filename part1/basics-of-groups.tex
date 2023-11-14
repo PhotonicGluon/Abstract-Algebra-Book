@@ -28,7 +28,7 @@ Let's look at some examples of groups.
 
 An important thing to note about addition is that it is commutative (by \myref{axiom-addition-is-commutative}). A group with a commutative operation is called a \textbf{commutative group}\index{group!commutative}. However, it is more often called an \textbf{abelian group}\index{group!abelian}, named after Norwegian mathematician Niels Henrik Abel.
 
-We now look at the notion of $\Z_n$.
+We now look at $\Z_n$, the set of integers modulo $n$.
 \begin{definition}
     Define $\Z_n$ to be the set $\{0, 1, 2, \dots, n-1\}$ where $n$ is a non-negative integer.
 \end{definition}
@@ -53,7 +53,7 @@ We now look at the notion of $\Z_n$.
     Since the four group axioms are satisfied, this is a group. Furthermore, as addition is commutative (\myref{axiom-addition-is-commutative}), thus addition modulo $n$ is commutative. Therefore $(\Z_n, \oplus_n)$ is a commutative group.
 \end{proof}
 \begin{remark}
-    Some sources (e.g. {\cite[\S 33]{clark_1984}} and {\cite[Proposition 2.31]{humphreys_1996}}) define $\Z_n$ as a set of congruence classes modulo $n$, i.e. $\Z/n\Z$. We will show that these two definitions are equivalent in a future chapter.
+    Some sources (e.g. {\cite[\S 33]{clark_1984}} and {\cite[Proposition 2.31]{humphreys_1996}}) define $\Z_n$ as a set of congruence classes modulo $n$, i.e. $\Z/n\Z$. However we follow \cite[p.~42]{gallian_2016} and define $\Z_n$ as just the set of integers from 0 to $n - 1$ inclusive. We will show that these two definitions are equivalent in a future chapter.
 \end{remark}
 
 One could use a \textbf{Cayley table}\index{cayley table} (or \textbf{group table}\index{group table}) to show that a structure is a group.
@@ -83,7 +83,7 @@ One could use a \textbf{Cayley table}\index{cayley table} (or \textbf{group tabl
     Thus $(\Z_6, \oplus_6)$ is a group.
 \end{example}
 
-It should be noted that, in this book, we use the convention of reading the \textbf{row before the column} in a group table. However, since $(\Z_6, \oplus_6)$ is an abelian group, the order does not matter. We will look at Cayley tables of non-abelian groups later.
+It should be noted that, in this book, we use the convention of reading the \textit{row before the column} in a group table. However, since $(\Z_6, \oplus_6)$ is an abelian group, the order does not matter. We will look at Cayley tables of non-abelian groups later.
 
 \begin{definition}
     The operation $\otimes_n$ denotes multiplication modulo $n$. That is, $a \otimes_n b = (a \times b) \mod{n}$ for any integers $a$ and $b$.
@@ -162,9 +162,9 @@ It should be noted that, in this book, we use the convention of reading the \tex
     See \myref{exercise-inverse-of-inverse-is-element} (later).
 \end{proof}
 
-\begin{proposition}[Shoes and Socks]\index{Shoes and Socks}
+\begin{theorem}[Shoes and Socks]\index{Shoes and Socks Theorem}
     For all elements $a$ and $b$ in $G$, $(ab)^{-1} = b^{-1}a^{-1}$.
-\end{proposition}
+\end{theorem}
 \begin{proof}
     Recall that $g^{-1}$ is the inverse of $g$ if and only if $gg^{-1} = g^{-1}g = e$. We show that $(ab)(b^{-1}a^{-1}) = e$ and $(b^{-1}a^{-1})(ab) = e$.
     \begin{align*}
@@ -187,7 +187,7 @@ Prove that for all $x$ in $G$, $\left(x^{-1}\right)^{-1} = x$.
 \newpage
 
 We now prove an important property of groups: the \textbf{cancellation law}.
-\begin{proposition}[Cancellation Law]\index{group!cancellation law}
+\begin{proposition}[Cancellation Law]\index{cancellation law!groups}
     Let $g$, $x$, and $y$ be elements in the group $G$. Then the following statements are equivalent.
     \begin{enumerate}[label=(\arabic*)]
         \item $x = y$
@@ -200,10 +200,10 @@ We now prove an important property of groups: the \textbf{cancellation law}.
     We prove the statements in order.
     \begin{itemize}
         \item $\boxed{(1) \implies (2)}$ Given $x = y$, applying $g$ on the left on both sides yields $gx = gy$.
-        
-        \item $\boxed{(2) \implies (3)}$ Given $gx = gy$. Applying 
+
+        \item $\boxed{(2) \implies (3)}$ Given $gx = gy$. Applying
         $g^{-1}$ on the left on both sides yields $g^{-1}(gx) = g^{-1}(gy)$, meaning $(g^{-1}g)x = (g^{-1}g)y$ by associativity. Since $g^{-1}g = e$ by definition of $g^{-1}$, so $x = y$. Applying $g$ on the right on both sides yields $xg = yg$.
-        
+
         \item $\boxed{(3) \implies (1)}$ Given $xg = yg$ we may apply $g^{-1}$ on the right on both sides to obtain $(xg)g^{-1} = (yg)g^{-1}$. By associativity we have $x(gg^{-1}) = y(gg^{-1})$. Now $gg^{-1} = e$ by definition of $g^{-1}$, so $x = y$.
     \end{itemize}
     This completes the proof.
@@ -221,7 +221,7 @@ To end this section, we introduce notation for the repeated application of $\ast
 In the case of an additive group operation, $x^n$ is written as $nx$, where $n$ is an integer.
 
 Note that some laws of exponents apply to the above operation.
-\begin{proposition}
+\begin{proposition}\label{prop-group-laws-of-exponents}
     Let $G$ be a group, $x$ be an element in that group, and let $m$ and $n$ be non-negative integers. Then
     \begin{enumerate}
         \item $x^m \ast x^n = x^{m+n}$;
@@ -236,7 +236,7 @@ Note that some laws of exponents apply to the above operation.
     We prove each statement individually.
     \begin{enumerate}
         \item We consider a proof by induction by inducting on $n$.
-        
+
         When $n = 0$, one sees
         \begin{align*}
             x^m \ast x^0 &= x^m \ast e & (\text{definition of }x^0)\\
@@ -258,9 +258,9 @@ Note that some laws of exponents apply to the above operation.
         so the statement also holds for $k+1$.
 
         Hence, by mathematical induction, we have $x^m \ast x^n = x^{m+n}$ for all non-negative integers $m$ and $n$.
-        
+
         \item We again use a proof by induction by inducting on $n$.
-        
+
         When $n = 0$, one sees
         \begin{align*}
             \left(x^m\right)^0 &= e & (\text{definition of }g^0 \text{ for any }g\in G)\\
@@ -291,7 +291,7 @@ Note that some laws of exponents apply to the above operation.
 \end{exercise}
 
 \section{Order of a Group and Order of an Element}
-We look at the notion of the \textit{order}\index{order} of a group and the order of an element of a group.
+We look at the notion of the order\index{order} of a group.
 
 \begin{definition}
     Let $G$ be a group. The order of a group\index{order!group}, denoted by $|G|$, is the cardinality of the set $G$.
@@ -398,10 +398,10 @@ We now look at two results involving cyclic groups.
     \[
         G = \langle g \rangle = \{g^k \vert 1 \leq k \leq n, k \in \Z\},
     \]
-    i.e. $g$ is a generator of $G$. We just need to show $|g| = n$. Suppose on the contrary there exists an integer $1 \leq m < n$ where $g^m = e$. Then $\langle g \rangle = \{g, g^2, \dots, g^m\}$. Thus $|\langle g \rangle| = m < n = |G|$. But by the hypothesis of the forward direction, $G = \langle g \rangle$ so $n = |G| = |\langle g \rangle| = m$. This is a contradiction, i.e. there does \textbf{not} exist an integer $1 \leq m < n$ where $g^m = e$. Therefore $g^n = e$, i.e. $|g| = n$.
+    i.e. $g$ is a generator of $G$. We just need to show $|g| = n$. Suppose on the contrary there exists an integer $1 \leq m < n$ where $g^m = e$. Then $\langle g \rangle = \{g, g^2, \dots, g^m\}$. Thus $|\langle g \rangle| = m < n = |G|$. But by the hypothesis of the forward direction, $G = \langle g \rangle$ so $n = |G| = |\langle g \rangle| = m$. This is a contradiction, i.e. there does \textit{not} exist an integer $1 \leq m < n$ where $g^m = e$. Therefore $g^n = e$, i.e. $|g| = n$.
 
     We now prove the reverse direction: suppose there is an element $g$ in $G$ with order $n$.
-    
+
     We claim that $g, g^2, \dots, g^n$ are all distinct. Suppose on the contrary that there exist integers $i$ and $j$ where $1 \leq i < j \leq n$ such that $g^i = g^j$. Then $g^i = g^ig^{j-i}$, which means $g^{j-i} = e$ by the cancellation law. Note that $1 \leq j - i < n$. Thus, since $g^{j-i} = e$, therefore $|g| = j - i < n$ which contradicts $|g| = n$. Hence, $g, g^2, \dots, g^n$ are all distinct. Therefore, $\langle g \rangle = \{g, g^2, \dots, g^n\}$ contain distinct elements of $G$. But there are only $n$ elements in $G$ and $\langle g \rangle$ contains $n$ distinct elements. Therefore, $G = \langle g \rangle$ which means that $G$ is cyclic with generator $g$.
 
     This completes the proof.
@@ -440,7 +440,7 @@ The group of symmetries of an equilateral triangle is called the \textbf{dihedra
 
 \begin{example}
     The symmetries of the square is given by the group $D_4$.
-\end{example} 
+\end{example}
 \begin{figure}[h]
     \centering
     \pdfteximgframed[12pt]{0.3\textwidth}{part1/images/basics-of-groups/symmetries-of-square.pdf_tex}
@@ -507,7 +507,7 @@ Such a definition for the dihedral groups removes the need to associate the grou
         D_2 = \langle r, s \vert r^2 = s^2 = e, rs = sr \rangle.
     \]
     So we see that $D_2 = \{e, r, s, rs\}$.
-    
+
     \begin{table}[h]
         \centering
         \begin{tabular}{|l|l|l|l|l|}
@@ -519,7 +519,7 @@ Such a definition for the dihedral groups removes the need to associate the grou
             $\boldsymbol{rs}$   & $rs$             & $s$              & $r$              & $e$               \\ \hline
         \end{tabular}
     \end{table}
-    
+
     In fact, we can see from the above Cayley table that $D_2$ is indeed abelian.
 \end{example}
 
@@ -559,9 +559,14 @@ The \textit{canonical form}\index{dihedral group!canonical form} of an element i
     Draw the Cayley table for $D_4$, the dihedral group of order 8, representing the symmetries of a square.\newline
     By referring to the Cayley table,
     \begin{partquestions}{\alph*}
-        \item explain why $D_4$ is \textbf{not} abelian;
+        \item explain why $D_4$ is \textit{not} abelian;
         \item simplify $r^3srsr^3sr^3sr^2$.
     \end{partquestions}
+\end{problem}
+
+\begin{problem}\label{problem-Q-is-abelian-group-under-addition}
+    Prove that $\Q$ under addition forms an abelian group.\newline
+    (\textit{Note: addition is assumed to be associative and commutative by \myref{axiom-addition-is-associative} and \myref{axiom-addition-is-commutative} respectively, so you do not need to prove them.})
 \end{problem}
 
 \begin{problem}

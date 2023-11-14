@@ -1,0 +1,117 @@
+\section{Algebraic Extensions}
+\begin{questions}
+    \item Note that each of the $2^{\frac1n}$ is algebraic since they are a zero of the polynomial $x^n - 2$ over $\Q$. Therefore $E$ is an algebraic extension.
+    
+    However $E$ is not finite, since by Tower Law (\myref{thrm-tower-law}) we have
+    \begin{align*}
+        [E: F] &= \cdots[\Q(2^{\frac12},2^{\frac13},2^{\frac14}):\Q(2^{\frac12},2^{\frac13})]
+        [\Q(2^{\frac12},2^{\frac13}):\Q(2^{\frac12})][\Q(2^{\frac12}):\Q]\\
+        &= \cdots \times 4 \times 3 \times 2
+    \end{align*}
+    which is clearly not finite.
+    
+    \item Earlier in \myref{exercise-Q-sqrt3-sqrt5} we have shown $\Q(\sqrt3 + \sqrt5) = \Q(\sqrt3,\sqrt5)$. In \myref{example-Q-sqrt3-sqrt5} we have also shown that $[\Q(\sqrt3,\sqrt5):\Q] = 4$. Furthermore we see $[\Q(\sqrt{15}):\Q] = 2$ and
+    \[
+        [\Q(\sqrt3,\sqrt5):\Q] = [\Q(\sqrt3,\sqrt5):\Q(\sqrt{15})][\Q(\sqrt{15}):\Q]
+    \]
+    by Tower Law (\myref{thrm-tower-law}). Therefore
+    \[
+        4 = [\Q(\sqrt3,\sqrt5):\Q(\sqrt{15})]\times2
+    \]
+    and so $[\Q(\sqrt3,\sqrt5):\Q(\sqrt{15})] = 2$.
+
+    \begin{partquestions}{\alph*}
+        \item Let $\alpha = \sqrt3 + \sqrt5$. Then $\alpha^2 = 8 + 2\sqrt{15}$, so we see that the minimal polynomial of $\sqrt3+\sqrt5$ over $\Q(\sqrt{15})$ is $x^2 - (8 + 2\sqrt{15})$.
+        
+        \item A basis for $\Q(\sqrt3 + \sqrt5)$ over $\Q(\sqrt{15})$ is $\{1, \sqrt3 + \sqrt5\}$, since we have shown that $(\sqrt3 + \sqrt5)^2 \in \Q(\sqrt{15})$ in \textbf{(a)}.
+    \end{partquestions}
+    
+    \item We see $\sqrt[6]2 = (\sqrt2)(\sqrt[3]2)^{-1} \in \Q(\sqrt2, \sqrt[3]2)$ so $\Q(\sqrt[6]2) \subseteq \Q(\sqrt2,\sqrt[3]2)$. But also $\sqrt[3]2 = \left(\sqrt[6]2\right)^2$ and $\sqrt2 = \left(\sqrt[6]2\right)^3$, so $\sqrt2,\sqrt[3]2 \in \Q(\sqrt[6]2)$ and thus $\Q(\sqrt2,\sqrt[3]2) \subseteq \Q(\sqrt[6]2)$. Therefore $\Q(\sqrt2,\sqrt[3]2) = \Q(\sqrt[6]2)$.
+    
+    \item Note clearly $\Q(\sqrt a + \sqrt b) \subseteq \Q(\sqrt a, \sqrt b)$ since $\sqrt a + \sqrt b \in \Q(\sqrt a, \sqrt b)$.
+    
+    Note also
+    \[
+        (\sqrt a + \sqrt b)^{-1} = \frac{\sqrt a - \sqrt b}{a^2 - b^2} = \frac1{a^2-b^2}\left(\sqrt a - \sqrt b\right)
+    \]
+    so $\sqrt a - \sqrt b \in \Q(\sqrt a + \sqrt b)$. Consequently we see
+    \begin{align*}
+        \sqrt a &= \frac12(\sqrt a + \sqrt b) + \frac12(\sqrt a - \sqrt b) \in \Q(\sqrt a + \sqrt b)\\
+        \sqrt b &= \frac12(\sqrt a + \sqrt b) - \frac12(\sqrt a - \sqrt b) \in \Q(\sqrt a + \sqrt b)
+    \end{align*}
+    and therefore $\Q(\sqrt a, \sqrt b) \subseteq \Q(\sqrt a + \sqrt b)$.
+
+    Hence because $\Q(\sqrt a + \sqrt b) \subseteq \Q(\sqrt a, \sqrt b)$ and $\Q(\sqrt a, \sqrt b) \subseteq \Q(\sqrt a + \sqrt b)$ we have $\Q(\sqrt a, \sqrt b) = \Q(\sqrt a + \sqrt b)$ as required.
+
+    \item Note that $F \subseteq F(\alpha) \subseteq E$, so by Tower Law (\myref{thrm-tower-law}) we have
+    \[
+        p = [E:F] = [E:F(\alpha)][F(\alpha):F].
+    \]
+    Since $p$ is a prime we must have either $[E:F(\alpha)] = 1$ or $[F(\alpha):F] = 1$, meaning $E \cong F(\alpha)$ or $F(\alpha) \cong F$ by \myref{prop-finite-extension-of-degree-1-means-extension-isomorphic-to-base-field}. But as $F \subseteq F(\alpha) \subseteq E$ we see that $F(\alpha) = E$ or $F(\alpha) = F$.
+        
+    \item Seeking a contradiction, suppose $\alpha^n$ is algebraic. Thus $\alpha^n$ is a zero of some polynomial $f(x) \in F[x]$, i.e. $f(\alpha^n) = 0$. Consequently $\alpha$ is a zero of the polynomial $g(x) \in F[x]$ where $g(x) = f(x^n)$, which implies that $\alpha$ is algebraic over $F$, a contradiction. Therefore $\alpha^n$ is transcendental for all positive integers $n$.
+
+    \item \begin{partquestions}{\roman*}
+        \item Let $\alpha \in E$ be a zero of $f(x)$. We know that $F(a_0, a_1, \dots, a_n)$ is a finite extension over $F$. Furthermore we know that $\alpha$ is algebraic over $F(a_0, a_1, \dots, a_n)$ since $\alpha$ is a zero of $f(x) \in F(a_0, a_1, \dots, a_n)[x]$. Therefore we see
+        \[
+            [F(a_0, \dots, a_n, \alpha):F] = \underbrace{[F(a_0, \dots, a_n, \alpha):F(a_0, \dots, a_n)]}_{\leq n}\underbrace{[F(a_0, \dots, a_n):F]}_{\text{Finite}}
+        \]
+        by Tower Law (\myref{thrm-tower-law}), and so $[F(a_0, a_1, \dots, a_n, \alpha):F]$ is an algebraic extension over $F$ (\myref{thrm-finite-extension-is-algebraic}). Hence $\alpha$ is algebraic over $F$.
+        
+        \item Suppose not, that both $\alpha + \beta$ and $\alpha\beta$ are algebraic. Then note that
+        \[
+            x^2 - (\alpha+\beta)x + \alpha\beta
+        \]
+        is a polynomial of algebraic coefficients over $F$ with zeroes of $\alpha$ and $\beta$, which means that $\alpha$ and $\beta$ are algebraic over $F$, a contradiction. Therefore at least one of $\alpha + \beta$ and $\alpha\beta$ is transcendental over $F$.
+    \end{partquestions}
+
+    \item Clearly $\Q(\alpha) \subseteq \Q(\sqrt\alpha)$ since $\alpha = (\sqrt\alpha)^2 \in \Q(\sqrt\alpha)$.
+    
+    For brevity let $\omega = \sqrt\alpha$. Note that $\omega$ is a zero of the polynomial $x^4+x^2+1$. But we may factor that polynomial since
+    \begin{align*}
+        x^4 + x^2 + 1 &= (x^4 + 2x^2 + 1) - x^2\\
+        &= (x^2+1)^2 - x^2\\
+        &= (x^2+x+1)(x^2-x+1)
+    \end{align*}
+    and so we see that
+    \[
+        (\omega^2+\omega+1)(\omega^2-\omega+1) = 0.
+    \]
+    THerefore we have $\omega^2+\omega+1 = 0$ or $\omega^2-\omega+1 = 0$, which one may rearrange appropriately to yield $\omega = -\omega^2-1$ or $\omega = \omega^2 + 1$, i.e. $\sqrt\alpha = \pm(\alpha+1)$. Therefore we see $\sqrt\alpha \in \Q(\alpha)$, meaning $\Q(\sqrt\alpha) \subseteq \Q(\alpha)$.
+
+    Since $\Q(\alpha) \subseteq \Q(\sqrt\alpha)$ and $\Q(\sqrt\alpha) \subseteq \Q(\alpha)$ thus $\Q(\alpha) = \Q(\sqrt\alpha)$.
+    
+    \item From \myref{thrm-characterisation-of-extensions} we know that an element of $\Q(\pi)$ takes the form
+    \[
+        \frac{a_0 + a_1\pi + a_2\pi^2 + \cdots + a_m\pi^m}{b_0 + b_1\pi + b_2\pi^2 + \cdots + b_n\pi^n}
+    \]
+    where each $a_i, b_j \in \Q$.
+
+    By way of contradiction suppose $\sqrt2 \in \Q(\pi)$, meaning
+    \[
+        \sqrt2 = \frac{a_0 + a_1\pi + a_2\pi^2 + \cdots + a_m\pi^m}{b_0 + b_1\pi + b_2\pi^2 + \cdots + b_n\pi^n}
+    \]
+    for some $a_i, b_j \in \Q$. Rearranging we see
+    \[
+        \left(a_0 + a_1\pi + a_2\pi^2 + \cdots + a_m\pi^m\right)^2 = 2\left(b_0 + b_1\pi + b_2\pi^2 + \cdots + b_n\pi^n\right)^2.
+    \]
+    Equating the leading term on both sides we see $a_m^2\pi^{2m} = 2b_n^2\pi^{2n}$. Thus $m = n$ and $a_m^2 = 2b_n^2$ which means $\sqrt2 = \frac{a_m}{b_n}$, a rational number, which is a contradiction. Therefore $\sqrt2 \notin \Q(\pi)$.
+    
+    \item \begin{partquestions}{\roman*}
+        \item Note that ${a+b\choose a}$ is a positive integer. Also we have ${a+b\choose a} = \frac{(a+b)!}{a!b!}$ by definition of the binomial coefficient. Therefore we see that $a!b!$ divides $(a+b)!$ for all non-negative integers $a$ and $b$.
+        
+        \item We use strong induction on $n$.
+        
+        When $n = 1$, then the splitting field of $f(x)$ over $F$ is just $F$, so $[E:F] = [F:F] = 1$ which clearly divides $1! = 1$.
+
+        Assume that the claim holds for all polynomials $g(x) \in F[x]$ of degree of at most $k$ over all fields $F'$, for some positive integer $k$. We show that the claim holds for a polynomial of degree $k+1$ over $F$.
+
+        Let $f(x)$ be such a polynomial. We split into two cases.
+        \begin{itemize}
+            \item The first case is if $f(x)$ is irreducible over $F$. Let $E$ be the splitting field of $f(x)$ over $F$. Let $\alpha \in E$ be a zero of $f(x)$. Then by Factor Theorem (\myref{corollary-factor-theorem}) we may write $f(x) = (x-\alpha)g(x)$ where $g(x) \in F(\alpha)[x]$ has degree $k$. Note $E$ is a splitting field of $g(x)$ over $F(\alpha)$, so by Induction Hypothesis we know that $[E:F(\alpha)]$ divides $k!$. As $[F(\alpha):F] = k+1$ (since $f(x)$ is an irreducible polynomial of degree $k+1$ with a zero of $\alpha$), it follows from Tower Law (\myref{thrm-tower-law}) that $[E:F]$ divides $(k+1)k! = (k+1)!$.
+            
+            \item The second case is if $f(x)$ is reducible over $F$. Write $f(x) = g(x)h(x)$ where $g(x), h(x) \in F[x]$. Let $a = \deg g(x)$ and $b = \deg h(x)$. Let $K \subseteq E$ be the splitting field of $g(x)$ over $F$. Then $[K:F]$ divides $a!$ by Induction Hypothesis. Also we must have $E$ being the splitting field of $h(x) \in K[x]$, meaning $[E:K]$ divides $b!$. By Tower Law we see that $[E:F] = [E:K][K:F] = a!b!$ which divides $(a+b)! = (k+1)!$.
+        \end{itemize}
+        Therefore the statement holds for any polynomial of degree $k+1$ over $F$, proving this claim by induction.
+    \end{partquestions}
+\end{questions}
