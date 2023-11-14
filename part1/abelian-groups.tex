@@ -43,8 +43,6 @@ The Fundamental Theorem of Finite Abelian Groups is very powerful. One applicati
     Classify all abelian groups of order 100.
 \end{exercise}
 
-% With \myref{thrm-fundamental-theorem-finite-abelian-groups}, we obtain a much stronger converse to Lagrange's Theorem (\myref{thrm-lagrange}) than we could obtain by using Sylow's Theorems, but only for abelian groups.
-
 We also note a much stronger converse to Lagrange's Theorem (\myref{thrm-lagrange}) than we could obtain by using Sylow's Theorems, but only for abelian groups. This does not use the Fundamental Theorem of Finite Abelian Groups, but this is an important result nonetheless.
 
 \begin{theorem}
@@ -68,3 +66,107 @@ We also note a much stronger converse to Lagrange's Theorem (\myref{thrm-lagrang
 
     Therefore by mathematical induction this theorem is proven.
 \end{proof}
+
+\section{Proof of the Fundamental Theorem of Finite Abelian Groups}
+The proof of the Fundamental Theorem of Finite Abelian Groups is highly complex and technical. To ease the pain with the proof, we break the proof down into several lemmas.
+
+\begin{lemma}\label{lemma-fundamental-theorem-of-finite-abelian-groups-1}
+    Let $G$ be a finite abelian group of order $n = {p_1}^{\alpha_1}{p_2}^{\alpha_2}\cdots{p_k}^{\alpha_k}$ where $p_1, p_2, \dots, p_k$ are \textit{distinct} primes and $\alpha_1, \alpha_2, \dots, \alpha_k$ are positive integers. Then $G$ is the internal direct product of subgroups $G_1, G_2, \dots, G_k$, where $G_i$ is the subgroup of all elements of order $p_i^r$ for some non-negative integer $r$.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[Lemma 13.8]{judson_beezer_2022}})]
+    By the First Sylow Theorem (\myref{thrm-sylow-1}) we know that each $G_i$, which is a Sylow $p_i$-subgroup, exists within $G$. Note that if $g \in G_i$ is a non-identity element with order $p_i^r$ then $|g^{-1}|$ also have order $p_i^r$ by a property of $p$-groups. Observe also that if $h \in G_i$ has order $p_i^s$, then if $t$ is the larger of $r$ and $s$ we see
+    \[
+        (gh)^{p_i^t} = g^{p_i^t}h^{p_i^t} = e.
+    \]
+    
+    To complete the proof that $G$ is the internal direct product of $G_1, G_2, \dots, G_k$, we need to show two things.
+    \begin{enumerate}
+        \item $G = G_1G_2\cdots G_k$; and
+        \item $G_i \cap G_j = \{e\}$ for any $i \neq j$.
+    \end{enumerate}
+    We do not need to prove that the elements of $G_i$ and $G_j$ commute since $G$ is an abelian group, which means that this condition is already satisfied.
+
+    We first show that every $g \in G$ can be written as a product $g_1g_2\cdots g_k$ where $g_i \in G_i$. Since the order of an element divides the order of the group, we know that
+    \[
+        |g| = p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}
+    \]
+    for some non-negative integers $\alpha_1, \alpha_2, \dots, \alpha_k$. Let $a_i = \frac{|g|}{p_i^{\alpha_i}}$ and we see that the $a_i$'s are coprime; hence there must exist integers $b_1, b_2, \dots, b_k$ such that $a_1b_1 + a_2b_2 + \cdots + a_kb_k = 1$ by B\'ezout's lemma (\myref{lemma-bezout}), albeit a more generalized version. Therefore we have
+    \[
+        g = g^{a_1b_1 + a_2b_2 + \cdots + a_kb_k} = g^{a_1b_1}g^{a_2b_2}\cdots g^{a_kb_k}.
+    \]
+    Now because
+    \[
+        g^{a_ib_ip_i^{\alpha_i}} = g^{b_i|g|} = e
+    \]
+    it follows that $g^{a_ib_i} \in G_i$. So letting $g_i = g^{a_ib_i}$ we see $g = g_1g_2\cdots g_k \in G_1G_2\cdots G_k$ as required.
+
+    We now show that the intersection $G_i \cap G_j = \{e\}$ for any $i \neq j$. We only show that the intersection of $G_1$ with $G_2, G_3, \dots, G_k$ is the identity, since the proof for the other subgroups is similar. Suppose $g_1 \in G_1$ is in $G_2G_3\dots G_k$, i.e. $g_1 = g_2g_3\cdots g_k$ for $g_i \in G_i$. Since $g_i$ has order $p_i^{\alpha_i}$ for some non-negative integer $\alpha_i$, thus $g_i^{p_i^{\alpha_i}} = e$ for $i = 2,3\dots,k$, and therefore
+    \[
+        g_1^{p_2^{\alpha_2}p_3^{\alpha_3}\cdots p_k^{\alpha_k}} = g_2^{p_2^{\alpha_2}}g_3^{p_3^{\alpha_3}}\cdots g_k^{p_k^{\alpha_k}} = e
+    \]
+    which means that the $p_1^{\alpha_1}$ divides $p_2^{\alpha_2}p_3^{\alpha_3}\cdots p_k^{\alpha_k}$. But the primes $p_1, p_2, \dots, p_k$ are distinct, so the only way for $p_1^{\alpha_1}$ to divide $p_2^{\alpha_2}p_3^{\alpha_3}\cdots p_k^{\alpha_k}$ is for $\alpha_1 = 0$, which means the order of $g_1$ is 1 and therefore $g_1 = e$. Hence the only element that is in $G_1 \cap G_i$ is $e$ for all $i = 2, 3, \dots, k$; generalizing this argument we see $G_i \cap G_j = \{e\}$ for any $i \neq j$.
+
+    With these two conditions satisfied, we therefore see that $G$ is the internal direct product of $G_1, G_2, \dots, G_k$.
+\end{proof}
+
+\begin{lemma}\label{lemma-fundamental-theorem-of-finite-abelian-groups-2}
+    Let $G$ be a finite abelian $p$-group and suppose $g \in G$ has maximal order in $G$. Then $G \cong \langle g \rangle \times H$ for some subgroup $H \leq G$.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[Lemma 13.9]{judson_beezer_2022}})]
+    Let $|G| = p^n$; we use the strong induction on $n$.
+
+    When $n = 1$ then $|G| = p$, which means that $G$ is a cyclic group of prime order $p$ (\myref{corollary-group-with-prime-order-is-cyclic}) and must be generated by any non-identity element $g$. Hence $G \cong \langle g \rangle \times \{e\}$ where $e$ is the identity of $G$.
+
+    Suppose that the statement of the lemma holds for all integers $1 \leq r \leq k$ where $k$ is a positive integer. We show that the statement holds for a finite abelian group of order $p^{k+1}$.
+
+    Let $G$ be such a group, and let $g$ be an element of maximal order in $G$, say $|g| = p^m$. Then for all $x \in G$ we have $x^{p^m} = e$. Now try and choose $h \in G$ such that $h \notin \langle g \rangle$, where $h$ has the smallest possible order. If no such $h$ exists, then $G \cong \langle g \rangle \times \{e\}$ and we are done. So assume $h$ does exist and let $H = \langle h \rangle$.
+
+    We claim that $\langle g \rangle \cap H = \{e\}$. Since $|h^p| = \frac{|h|}{p}$ (\myref{thrm-order-of-power-of-element}), thus the order of $h^p$ is smaller than that of $h$. Note $h^p \notin H$ as this would contradict the minimality of the order of $h$. Thus $h^p \in \langle g \rangle$, i.e. $h^p = g^r$ for some non-negative integer $r$. Hence
+    \[
+        \left(g^r\right)^{p^{m-1}} = \left(h^p\right)^{p^{m-1}} = h^{p^m} = e
+    \]
+    since $p^m$ is the maximal order of all elements in $G$, and thus the order of $g^r$ must divide $p^{m-1}$ (\myref{lemma-order-of-an-element-that-is-equivalent-to-identity}); actually we only care that the order of $g^r$ is at most $p^{m-1}$ which is less than $p^m$. Thus $g^r$ cannot generate $\langle g \rangle$. Hence $\gcd(p^m, r) \neq 1$ by the contrapositive of \myref{corollary-element-in-cyclic-group-is-generator-iff-gcd-is-1}, which means that $r = ps$ for some positive integer $s$, which shows us that $h^p = g^{ps}$. Let $a = g^{-s}h$. Note that since $h = ag^{ps} \notin \langle g \rangle$, thus $a \notin \langle g \rangle$. Also,
+    \begin{align*}
+        a^p &= g^{-ps}h^p\\
+        &= g^{-r}h^p\\
+        &= h^{-p}h^p\\
+        &= e
+    \end{align*}
+    so the order of $a$ must divide $p$. But $p$ is prime, and $a \neq e$, so $|a| = p$. Hence $a$ is an element of order $p$ that is not in $\langle g \rangle$. Since $h$ was chosen to be the element of smallest order such that $h \notin \langle g \rangle$, and since the order of an element in a $p$-group must be a power of $p$, thus $|h| = p$ and so $|H| = p$. It follows that $\langle g\rangle \cap H = \{e\}$, since otherwise a non-identity element in the intersection would just generate $H$, contradicting $h \notin \langle g\rangle$.
+
+    We now show that the order of $gH$ in the quotient group $G/H$ is the same as the order of $g$ in $G$. If instead $|gH| < |g| = p^m$ then $|gH|$ is at most $p^{m-1}$, meaning
+    \[
+        H = (gH)^{p^{m-1}} = (g^{p^{m-1}})H
+    \]
+    and so $g^{p^{m-1}} \in H$ by Element in Coset. Thus $g^{p^{m-1}} \in \langle g\rangle \cap H = \{e\}$ which means $g^{p^{m-1}} = e$, contradicting the fact that the order of $g$ is $p^m$. So $|gH| = p^m$, meaning $gH$ has maximal order in $G/H$. By the Induction Hypothesis we know that
+    \[
+        G/H \cong \langle gH \rangle \times K/H
+    \]
+    for some $K/H \leq G/H$ (\myref{problem-subgroup-of-quotient-group-is-quotient-group}).
+
+    To end the proof, we need to show that $G$ is the internal direct product of $\langle g\rangle$ and $K$.
+    \begin{itemize}
+        \item We first prove that $\langle g\rangle \cap K = \{e\}$. If $b \in \langle g\rangle \cap K$ then $bH \in \langle gH\rangle \cap K/H = \{H\}$ and so $b \in \langle g \rangle \cap H = \{e\}$, i.e. $b = e$.
+        
+        \item Now we show that $G = \langle g\rangle K$. Since $G$ is an abelian group we certainly know that $\langle g\rangle K = K\langle g\rangle$, which means $\langle g\rangle K \leq G$ (\myref{prop-subgroup-product-is-subgroup}). But one also sees that
+        \begin{align*}
+            |\langle g\rangle K| &= \frac{|\langle g\rangle||K|}{|\langle g\rangle \cap K|} & (\myref{exercise-order-of-subgroup-product})\\
+            &= |\langle g\rangle||K|\\
+            &= \left(|\langle gH \rangle||K/H|\right)|H|\\
+            &= |G/H||H| & (\text{since }G/H \cong \langle gH \rangle \times K/H)\\
+            &= |G|
+        \end{align*}
+        which means $G = \langle g\rangle K$.
+    \end{itemize}
+    So $G$ is the internal direct product of $\langle g\rangle$ and $K$, which means $G \cong \langle g\rangle \times K$ by \myref{thrm-direct-product-equivilance}.
+\end{proof}
+
+The proof of \myref{thrm-fundamental-theorem-finite-abelian-groups} follows from \myref{lemma-fundamental-theorem-of-finite-abelian-groups-1} and \myref{lemma-fundamental-theorem-of-finite-abelian-groups-2}.
+\begin{proof}
+    % TODO: Add
+\end{proof}
+
+\newpage
+
+\section{Problems}
+% TODO: Add
