@@ -340,6 +340,27 @@ The last point is actually a consequence of Lagrange's theorem (\myref{thrm-lagr
     \end{partquestions}
 \end{exercise}
 
+\begin{lemma}\label{lemma-order-of-an-element-that-is-equivalent-to-identity}
+    Let $G$ be a group with identity $e$ and let $x \in G$ have finite order $n$. Then a positive integer $m$ is a multiple of $n$ if and only if $x^m = e$.
+\end{lemma}
+\begin{proof}
+    See \myref{problem-element-to-power-of-multiple-of-order-is-identity} (later).
+\end{proof}
+
+\begin{theorem}\label{thrm-order-of-power-of-element}
+    Let $G$ be a finite group and let $x \in G$ with order $n$. Then for any positive integer $k$ we have
+    \[
+        \left|x^k\right| = \frac{n}{\gcd(n,k)}.
+    \]
+\end{theorem}
+\begin{proof}
+    Let $d = \gcd(n,k)$ and $m = |x^k|$. Note that $d$ divides both $n$ and $k$, so $\frac nd$ and $\frac kd$ are integers. It is trivial to see then that $(x^k)^{\frac nd} = \left(x^n\right)^{\frac kd} = e$, which means that $m$ divides $\frac nd$ by \myref{lemma-order-of-an-element-that-is-equivalent-to-identity}.
+
+    Also, one sees that $x^{km} = (x^k)^m = e$ so $n$ divides $km$. Hence we must have $\frac nd$ divides $\frac {km}{d} = m\frac kd$. But one sees that $\frac nd$ and $\frac kd$ are coprime, so by \myref{theorem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b} we see that $\frac nd$ divides $m$.
+
+    As $m$ divides $\frac nd$ and $\frac nd$ divides $m$ thus $m = \frac nd$ as required.
+\end{proof}
+
 \section{Cyclic Groups}\index{cyclic group}
 Now that we have gotten some basic terminology and properties of groups out of the way, let's introduce a very simple type of group: the cyclic groups.
 
@@ -409,8 +430,6 @@ We now look at two results involving cyclic groups.
 
 There are more interesting properties of cyclic groups, but we will get to them when we develop more tools to explain and prove these properties.
 
-\newpage
-
 \section{Dihedral Groups}
 We motivate the definition of the dihedral groups by discussing the symmetries of an equilateral triangle.
 
@@ -435,8 +454,6 @@ There's another relationship governing $r$ and $s$. Consider this: how do we obt
 for the case of an equilateral triangle.
 
 The group of symmetries of an equilateral triangle is called the \textbf{dihedral group of order 6} (or the \textbf{dihedral group of degree 3}) and is denoted by $D_3$. In general, the \textbf{dihedral group of degree $n$}\index{dihedral group!of degree $n$} (or the \textbf{dihedral group of order $2n$}\index{dihedral group!of order $2n$}) is denoted by $D_n$ and can be thought of as the symmetries of a regular polygon of $n$ sides (a regular $n$-gon).
-
-\newpage
 
 \begin{example}
     The symmetries of the square is given by the group $D_4$.
@@ -473,9 +490,9 @@ These relationships are succinctly given by the following \textit{presentation}\
     \[
         D_3 = \langle r, s \vert r^3 = s^2 = e,\;rs = sr^2 \rangle.
     \]
-    The Cayley table of $D_3$ is given below.
+    The Cayley table of $D_3$ is given on the next page.
 
-    \begin{table}[h]
+    \begin{table}[H]
         \centering
         \begin{tabular}{|l|l|l|l|l|l|l|}
         \hline
