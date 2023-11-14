@@ -23,17 +23,6 @@ We previously covered several properties of cyclic groups.
 
 Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead of $\Z_n$. This may be sometimes used to distinguish (finite) cyclic subgroups of a group from the integers modulo $n$.
 
-We prove an essential theorem on cyclic groups. Before that, we require the following lemma.
-\begin{lemma}\label{lemma-order-of-an-element-that-is-equivalent-to-identity}
-    Let $\Cn{n}$ have generator $g$. Then $g^k = e$ if and only if $k$ is a multiple of $n$.\newline
-    (That is, if $g^k = e$ then $n$ divides $k$, i.e. $n\vert k$.)
-\end{lemma}
-\begin{proof}
-    We note that the order of $g$ is $n$, since $g$ is a generator of $G$. Thus by \myref{problem-element-to-power-of-multiple-of-order-is-identity} the lemma is proven.
-\end{proof}
-
-\newpage
-
 \begin{theorem}\label{thrm-order-of-element-in-cyclic-group}
     Let $\Cn{n}$ have generator $g$. Let $x = g^k$ for some integer $k$. Then
     \[
@@ -41,34 +30,7 @@ We prove an essential theorem on cyclic groups. Before that, we require the foll
     \]
 \end{theorem}
 \begin{proof}
-    For brevity let $m = |x|$ and suppose $k = \lambda \gcd(k, n)$ for some positive integer $\lambda$.
-
-    Let $\mathcal{X} = \langle x \rangle = \{x, x^2, x^3, \dots, x^m\}$. Note that $\mathcal{X}$ is a cyclic group with order $m$ and generator $x$.
-
-    Observe that
-    \[
-        x^m = \left(g^k\right)^m = g^{km}
-    \]
-    and since $|x| = m$, this means that $x^m = e$. Hence $g^{km} = e$. By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity} on $\Cn{n}$, $n \vert kn$. Dividing both sides by $\gcd(k,n)$ yields
-    \[
-        \frac{n}{\gcd(k,n)} \vert \frac{km}{\gcd(k,m)} = \lambda m.
-    \]
-    Note that $\gcd\left(\lambda, \frac{n}{\gcd(k,n)}\right) = \gcd\left(\frac{k}{\gcd(k,n)}, \frac{n}{\gcd(k,n)}\right) = 1$. Thus $\frac{n}{\gcd(k,n)}$ does not divide $\lambda$, further meaning $\frac{n}{\gcd(k,n)} \vert m$ (\myref{theorem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b}).
-
-    Also note that
-    \begin{align*}
-        x^{\frac{n}{\gcd(k,n)}} &= \left(g^k\right)^{\frac{n}{\gcd(k,n)}}\\
-        &= \left(g^n\right)^{\frac{k}{\gcd(k,n)}}\\
-        &= \left(g^n\right)^\lambda\\
-        &= e^\lambda & (\text{since } |g| = n)\\
-        &= e,
-    \end{align*}
-    implying $x^{\frac{n}{\gcd(k,n)}} = e$. By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity} on group $\mathcal{X}$, we have $m \vert \frac{n}{\gcd(k,n)}$.
-
-    Since $\frac{n}{\gcd(k,n)} \vert m$ and $m \vert \frac{n}{\gcd(k,n)}$ simultaneously, thus $m = \frac{n}{\gcd(k,n)}$, that is,
-    \[
-        |x| = \frac{n}{\gcd(k,n)}.\qedhere
-    \]
+    Direct application of \myref{thrm-order-of-power-of-element} proves this theorem.
 \end{proof}
 
 \begin{exercise}
