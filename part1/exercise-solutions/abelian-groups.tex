@@ -7,5 +7,31 @@
         \item $\Cn{4} \times \Cn{5} \times \Cn{5}$; and
         \item $\Cn{4} \times \Cn{25}$,
     \end{itemize}
-    by the Fundamental Theorem of Finite Abelian Groups (\myref{thrm-fundamental-theorem-finite-abelian-groups}).
+    by the Fundamental Theorem of Finite Abelian Groups (\myref{thrm-fundamental-theorem-of-finite-abelian-groups}).
+
+    \item \begin{partquestions}{\roman*}
+        \item Note that $e \in G^n$ since $e = e^n$.
+    
+        Now let $a, b \in G^n$, which means $a = x^n$ and $b = y^n$ for some $x, y \in G$. Then note
+        \begin{align*}
+            ab^{-1} &= (x^n)(y^n)^{-1}\\
+            &= x^n(y^{-1})^n\\
+            &= (xy^{-1})^n & (\text{rewriting possible as }G \text{ is abelian})\\
+            &\in G^n.
+        \end{align*}
+    
+        Thus $G^n \leq G$ by subgroup test.
+
+        \item By Cauchy's Theorem (\myref{thrm-cauchy}) tells us that an element of order $p$ must exist within $G$. Let this element be $a$. If $G = G^p$ then $\phi$ must be at least injective. But note $\phi(a) = a^p = e = \phi(e)$ and $a \neq e$, so $\phi$ is not injective and hence $G \neq G^p$. Therefore $G^p < G$.
+    \end{partquestions}
+
+    \item Let a finite abelian group of prime-power order have order $p^n$ where $p$ is prime and $n$ is a non-negative integer. We use strong induction on $n$.
+    
+    When $n = 0$ then $G$ is just the trivial group, which is itself cyclic.
+
+    Assume that the lemma holds for all finite abelian groups of order $p^r$ where $0 \leq r \leq k$ for some positive integer $k$. We show that a finite abelian $p$-group of order $p^{k+1}$ is also an internal direct product of cyclic groups.
+
+    Let $G$ be a finite abelian $p$-group of order $p^{k+1}$. Let $g$ be an element of maximal order in $G$. If $\langle g \rangle = G$ then we are done; otherwise \myref{lemma-fundamental-theorem-of-finite-abelian-groups-2} tells us that $G \cong \langle g \rangle \times H$ for some subgroup $H$ in $G$. Note that $|H| < |G|$ as otherwise $g = e$ which clearly does not have maximal order in $G$. Therefore we may use the Induction Hypothesis on $H$ to write it as an internal direct product of cyclic groups; thus $G$ itself is an internal direct product of cyclic groups.
+
+    Therefore the lemma is proven by mathematical induction.
 \end{questions}
