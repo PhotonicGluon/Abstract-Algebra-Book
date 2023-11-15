@@ -818,16 +818,20 @@ The most important family of perfect fields of prime characteristic are the fini
 The fact that the Frobenius endomorphism is an automorphism for finite fields leads to an interesting result.
 
 \begin{proposition}[Freshman's Dream]\label{prop-freshman-dream}\index{Freshman's Dream}
-    Let $F$ be a field of prime characteristic $p$. Then $(x + y)^p = x^p + y^p$ for all $x,y \in F$.
+    Let $F$ be a field of prime characteristic $p$. Then $(x + y)^{p^n} = x^{p^n} + y^{p^n}$ for all $x,y \in F$ and positive integers $n$.
 \end{proposition}
 \begin{remark}
     The name ``Freshman's Dream'' refers to the \textit{incorrect} expansion of $(x+y)^n$ as $x^n + y^n$ over $\R$. However, over finite fields, this incorrect expansion becomes correct.
 \end{remark}
 \begin{proof}
-    Since the Frobenius endomorphism is an automorphism, we see that $\phi(x+y) = \phi(x) + \phi(y)$ and so $(x+y)^p = x^p + y^p$ by definition of $\phi$.
+    We induct on $n$.
+
+    For the base case of $n = 1$, since the Frobenius endomorphism is an automorphism, we see that $\phi(x+y) = \phi(x) + \phi(y)$ and so $(x+y)^p = x^p + y^p$ by definition of $\phi$.
+
+    The induction step done in \myref{exercise-freshman-dream} (later) proves the rest of the proposition.
 \end{proof}
 
-\begin{exercise}
+\begin{exercise}\label{exercise-freshman-dream}
     Let $F$ be a field of prime characteristic $p$. Prove that $(x + y)^{p^n} = x^{p^n} + y^{p^n}$ for all $x,y \in F$ and for all positive integers $n$.
 \end{exercise}
 

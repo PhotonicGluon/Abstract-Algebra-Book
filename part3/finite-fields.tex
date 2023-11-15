@@ -177,7 +177,39 @@ Let us examine some finite fields in detail.
 \end{exercise}
 
 \section{Subfields of Finite Fields}
-% TODO: Add
+\myref{thrm-finite-field-is-unique} gives us a complete description of all finite fields of prime-power order. What about the subfields of a finite field? The following theorem describes the subfields of a given finite field.
+
+\begin{theorem}\label{thrm-subfields-of-finite-field}
+    For each divisor $m$ of $n$, the finite field $\GF{p^n}$ has a unique subfield of order $p^m$. Furthermore these are the only subfields of $\GF{p^n}$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 22.3]{gallian_2016}})]
+    To show the existence part of the theorem, suppose $m$ divides $n$. Then because
+    \[
+        p^n - 1 = (p^m-1)(p^{n-m} + p^{n-2m} + \cdots + p^m + 1)
+    \]
+    thus $p^m - 1$ divides $p^n - 1$, say $p^n - 1 = t(p^m - 1)$ for some positive integer $t$. Let $K = \{x \in \GF{p^n} \vert x^{p^m} = x\}$. Then \myref{exercise-prime-power-elements-idempotent-is-subfield} (later) shows that $K$ is a subfield of $\GF{p^n}$. Since $x^{p^m} - x$ has at most $p^m$ zeroes in $\GF{p^n}$ we must have $|K| \leq p^m$. Also, earlier in \myref{thrm-structure-of-finite-field}, we have shown that $\GF{p^n}\ast$ is a cyclic group. So let $a \in \GF{p^n}^\ast$ be such that $\princ{a} = \GF{p^n}^\ast$. Then, in $\GF{p^n}^\ast$,
+    \begin{align*}
+        |a^t| &= \frac{|a|}{\gcd(|a|, t)} & (\myref{thrm-order-of-power-of-element})\\
+        &= \frac{p^n - 1}{t}\\
+        &= p^m - 1.
+    \end{align*}
+    Thus $(a^t)^{p^m-1} = 1$ and so $(a^t)^{p^m} = a^t$ which means $a^t \in K$. So $|K| \geq p^m - 1$. But as the order of a subgroup must divide the order of the group, thus the order of additive group of $K$ must divide the order of the additive group of $\GF{p^n}$; thus $|K|$ must be a prime power and therefore $|K| = p^m$. Hence $K$ is a subfield of $\GF{p^n}$ of order $p^m$.
+
+    The uniqueness part of the theorem follows quickly from the observation that if $\GF{p^n}$ has more than one distinct subfield of order $p^m$, then the polynomial $x^{p^m} - x$ would have more than $p^m$ zeroes in $\GF{p^n}$, contradicting the fact that a polynomial of degree $p^m$ has exactly $p^m$ zeroes in $\GF{p^n}$ (\myref{thrm-polynomial-of-degree-n-has-at-most-n-zeroes}).
+
+    Finally, suppose that $F$ is a subfield of $\GF{p^n}$. Then $F$ has prime-power order and, therefore, $F \cong \GF{p^m}$ by \myref{thrm-finite-field-is-unique} for some integer $m$. Hence by \myref{thrm-tower-law} we see
+    \begin{align*}
+        n &= [\GF{p^n}:\GF{p}]\\
+        &= [\GF{p^n}:\GF{p^m}][\GF{p^m}:\GF{p}]\\
+        &= [\GF(p^n):\GF{p^m}]m
+    \end{align*}
+    which means $m$ divides $n$.
+\end{proof}
+\begin{exercise}\label{exercise-prime-power-elements-idempotent-is-subfield}
+    Prove that $K = \{x \in \GF{p^n} \vert x^{p^m} = x\}$ is a subfield of $\GF{p^n}$.
+\end{exercise}
+
+% TODO: Continue
 
 \newpage
 
