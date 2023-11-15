@@ -71,11 +71,115 @@ With this theorem, we obtain the following aesthetically pleasing corollary.
     by \myref{corollary-degree-of-galois-field-to-prime-power} and so $\GF{p}(a)$ is a finite extension over $\GF{p}$. Hence $\GF{p}(a)$ is an algebraic extension over $\GF{p}$ (\myref{thrm-finite-extension-is-algebraic}) and so $a$ is algebraic over $\GF{p}$ with degree $n$.
 \end{proof}
 
-% TODO: Continue
+Let us examine some finite fields in detail.
+\begin{example}\label{example-GF16-analysis}
+    Let us examine $\GF{16}$ in detail. In part of \myref{example-x^4+x+1-is-irreducible-over-Z2} we have shown that $x^4 + x + 1$ is irreducible over $\Z_2$. Therefore we know that $\princ{x^4 + x + 1}$ is a maximal ideal in $\Z_2[x]$ (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}) and therefore $\Z_2/\princ{x^4+x+1}$ is a field (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field}). In fact this is a field of order 16, which means that.
+    \[
+        \GF{16} \cong \Z_2/\princ{x^4+x+1}
+    \]
+    So we may think of $\GF{16}$ as the set
+    \[
+        F = \{a_0 + a_1\alpha + a_2\alpha^2 + a_3\alpha^3 \vert a_i \in \Z_2 \text{ and } \alpha^4 + \alpha + 1 = 0\}.
+    \]
+    Remembering that $\alpha^4 + \alpha + 1 = 0$ we add and multiply elements of $\GF{16}$ exactly as we add and multiply polynomials. The multiplicative group of $\GF{16}$ is isomorphic to $\Cn{15}$ with generator $\alpha$, meaning that we obtain the following conversions.
+    \begin{multicols}{3}
+        \begin{itemize}
+            \item $\alpha^1 = \alpha$
+            \item $\alpha^2 = \alpha^2$
+            \item $\alpha^3 = \alpha^3$
+            \item $\alpha^4 = \alpha + 1$
+            \item $\alpha^5 = \alpha^2 + \alpha$
+            \item $\alpha^6 = \alpha^3 + \alpha^2$
+            \item $\alpha^7 = \alpha^3 + \alpha + 1$
+            \item $\alpha^8 = \alpha^2 + 1$
+            \item $\alpha^9 = \alpha^3 + \alpha$
+            \item $\alpha^{10} = \alpha^2 + \alpha + 1$
+            \item $\alpha^{11} = \alpha^3 + \alpha^2 + \alpha$
+            \item $\alpha^{12} = \alpha^3 + \alpha^2 + \alpha + 1$
+            \item $\alpha^{13} = \alpha^3 + \alpha^2 + 1$
+            \item $\alpha^{14} = \alpha^3 + 1$
+            \item $\alpha^{15} = 1$
+        \end{itemize}
+    \end{multicols}
+    For example, we see
+    \begin{align*}
+        \alpha^{10} + \alpha^7 &= (\alpha^2 + \alpha + 1) + (\alpha^3 + \alpha + 1)\\
+        &= \alpha^3 + \alpha^2 + 2\alpha + 2\\
+        &= \alpha^3 + \alpha^2 & (\text{Evaluate coefficients in }\Z_2)\\
+        &= \alpha^6.
+    \end{align*}
+    Also, we see
+    \begin{align*}
+        (\alpha^3 + \alpha^2 + 1)(\alpha^3 + \alpha^2 + \alpha + 1) &= \alpha^{13}\alpha^{12}\\
+        &= \alpha^{25}\\
+        &= \alpha^{15}\alpha^{10}\\
+        &= \alpha^{10} & (\text{since }\alpha^{15} = 1)\\
+        &= \alpha^2 + \alpha + 1.
+    \end{align*}
+\end{example}
+
+\begin{example}
+    One sees clearly that $x^3 + x^2 + 1$ has no zeroes in $\Z_2$ and so $x^3 + x^2 + 1$ is irreducible over $\Z_2$. Therefore one sees $K = \Z_2/\princ{x^3+x^2+1}$ is a field of 8 elements, i.e. $\GF{8} \cong K$. Note that $f(x)$ has a zero in $F$ by \myref{thrm-fundamental-theorem-of-field-theory}, say $\alpha$. Note that $\GF{8}^\ast$ has order 7, a prime, so $|\alpha|_\times = 7$. Hence we may think of $\GF{8}$ as being the set
+    \begin{align*}
+        F &= \{0, 1, \alpha, \alpha^2, \alpha^3, \alpha^4, \alpha^5, \alpha^6\}\\
+        &= \{0, 1, \alpha, \alpha^2, \alpha^2 + 1, \alpha^2 + \alpha + 1, \alpha + 1, \alpha^2 + \alpha\}\\
+        &= \{0, 1, \alpha, \alpha + 1, \alpha^2, \alpha^2 + 1, \alpha^2 + \alpha, \alpha^2 + \alpha + 1\}
+    \end{align*}
+    where
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item $\alpha^1 = \alpha$
+            \item $\alpha^2 = \alpha^2$
+            \item $\alpha^3 = \alpha^2 + 1$
+            \item $\alpha^4 = \alpha^2 + \alpha + 1$
+            \item $\alpha^5 = \alpha + 1$
+            \item $\alpha^6 = \alpha^2 + \alpha$
+            \item $\alpha^7 = 1$
+        \end{itemize}
+    \end{multicols}
+
+    Let us find the other zeroes of $f(x)$ over $F$. We see that
+    \begin{align*}
+        f(\alpha^2) &= (\alpha^2)^3 + (\alpha^2)^2 + 1\\
+        &= \alpha^6 + \alpha^4 + 1\\
+        &= (\alpha^2 + \alpha) + (\alpha^2 + \alpha + 1) + 1\\
+        &= 2\alpha^2 + 2\alpha + 2\\
+        &= 0
+    \end{align*}
+    so $\alpha^2$ is another zero of $f(x)$. Next, we try $\alpha^3$ and we observe
+    \begin{align*}
+        f(\alpha^3) &= (\alpha^3)^3 + (\alpha^3)^2 + 1\\
+        &= \alpha^9 + \alpha^6 + 1\\
+        &= \alpha^2 + \alpha^6 + 1\\
+        &= \alpha^2 + (\alpha^2 + \alpha) + 1\\
+        &= 2\alpha^2 + \alpha + 1\\
+        &\neq 0
+    \end{align*}
+    so $\alpha^3$ is \textit{not} a zero of $f(x)$. Now we check $\alpha^4$ and note
+    \begin{align*}
+        f(\alpha^4) &= (\alpha^4)^3 + (\alpha^4)^2 + 1\\
+        &= \alpha^{12} + \alpha^8 + 1\\
+        &= \alpha^5 + \alpha + 1\\
+        &= (\alpha + 1) + \alpha + 1\\
+        &= 2\alpha + 2\\
+        &= 0
+    \end{align*}
+    so $\alpha^4$ is another zero of $f(x)$ in $F$. Since $f(x)$ has degree 3, this means that $f(x)$ has at most 3 zeroes over $F$; as we have found 3 zeroes that is it.
+
+    Therefore
+    \[
+        f(x) = (x - \alpha)(x - \alpha^2)(x - \alpha^4) = (x + \alpha)(x + \alpha^2)(x + \alpha^4).
+    \]
+\end{example}
+
+\begin{exercise}
+    Find all the zeroes of $f(x) = x^4 + x + 1$ over the field $F$ described in \myref{example-GF16-analysis}, using $\alpha$ as one possible zero of $f(x)$ in $F$.
+\end{exercise}
 
 \section{Subfields of Finite Fields}
 % TODO: Add
 
 \newpage
+
 \section{Problems}
 % TODO: Add
