@@ -1,0 +1,266 @@
+\chapter{Abelian Groups}
+Abelian groups are nice to work with, in the sense that the group operation is commutative. Thus, simplification of the group product is possible via commutativity. In this chapter, we focus on a theorem that describes the structure of all finite abelian groups.
+
+\section{The Fundamental Theorem of Finite Abelian Groups}
+We start off the chapter by introducing the theorem at the core of finite abelian groups, which was introduced by Leopold Kronecker in 1858.
+
+\begin{theorem}[Fundamental Theorem of Finite Abelian Groups]\index{Fundamental Theorem of Finite Abelian Groups}\label{thrm-fundamental-theorem-of-finite-abelian-groups}
+    Suppose $G$ is a finite abelian group. Then
+    \[
+        G \cong \Cn{p_1^{n_1}} \times \Cn{p_2^{n_2}} \times \cdots \times \Cn{p_k^{n_k}}
+    \]
+    where the $p_i$'s are \textit{not} necessarily distinct primes. Moreover, the isomorphism is unique up to the order of which the factors are written.
+\end{theorem}
+
+Obviously, this theorem is very technical. Essentially, what the theorem asserts is that any finite abelian group can be reduced to an (external) direct product of cyclic $p$-groups. We leave the proof of the theorem to the last section of this chapter.
+
+This is a very powerful theorem; questions about finite abelian groups have been reduced to questions regarding cyclic groups, which we have explored in depth in \myref{section-more-about-cyclic-groups}. Thus, the combination of \myref{thrm-fundamental-theorem-of-finite-abelian-groups} with results of cyclic groups usually answers any question about finite abelian groups.
+
+\section{Isomorphism Classes of Abelian Groups}
+The Fundamental Theorem of Finite Abelian Groups is very powerful. One application of it allows us to construct all abelian groups of any given order.
+
+\begin{example}
+    Suppose we wish to classify all abelian groups of order $60 = 2^2 \times 3 \times 5$. Then the Fundamental Theorem of Finite Abelian Groups (\myref{thrm-fundamental-theorem-of-finite-abelian-groups}) tells us that there are only two possibilities,
+    \begin{itemize}
+        \item $\Cn{2} \times \Cn{2} \times \Cn{3} \times \Cn{5}$; and
+        \item $\Cn{4} \times \Cn{3} \times \Cn{5}$.
+    \end{itemize}
+\end{example}
+
+Writing out the abelian groups in this manner is called writing out the \textbf{isomorphism class}\index{isomorphism class} of the abelian group.
+
+\begin{example}
+    Suppose we wish to classify all abelian groups of order $540 = 2^2 \times 3^3 \times 5$. Then the Fundamental Theorem of Finite Abelian Groups (\myref{thrm-fundamental-theorem-of-finite-abelian-groups}) tells us that there are only six possibilities,
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item $\Cn{2} \times \Cn{2} \times \Cn{3} \times \Cn{3} \times \Cn{3} \times \Cn{5}$;
+            \item $\Cn{2} \times \Cn{2} \times \Cn{3} \times \Cn{9} \times \Cn{5}$;
+            \item $\Cn{2} \times \Cn{2} \times \Cn{27} \times \Cn{5}$;
+            \item $\Cn{4} \times \Cn{3} \times \Cn{3} \times \Cn{3} \times \Cn{5}$;
+            \item $\Cn{4} \times \Cn{3} \times \Cn{9} \times \Cn{5}$; and
+            \item $\Cn{4} \times \Cn{27} \times \Cn{5}$.
+        \end{itemize}
+    \end{multicols}
+\end{example}
+
+\begin{exercise}
+    Classify all abelian groups of order 100.
+\end{exercise}
+
+We also note a much stronger converse to Lagrange's Theorem (\myref{thrm-lagrange}) than we could obtain by using Sylow's Theorems, but only for abelian groups. This does not use the Fundamental Theorem of Finite Abelian Groups, but this is an important result nonetheless.
+
+\begin{theorem}
+    If a positive integer $m$ divides the order of a finite abelian group $G$, then $G$ has a subgroup of order $m$.
+\end{theorem}
+\begin{proof}
+    Suppose $|G| = n$ and that $m$ divides $n$. We use strong induction on $n$.
+
+    When $n = 1$, then clearly $m = 1$. The trivial subgroup is a subgroup of any group, and it has order 1. Thus the theorem holds for the case when $n = 1$.
+
+    Now assume that, for all abelian groups $G'$, that for any $m$ that divides the order of $G'$ there exists a subgroup of $G'$ of order $m$, for any $m \leq k$, for some positive integer $k$. We show that for an abelian group of order $k+1$ this statement holds as well.
+    
+    Let $G$ be an abelian group of order $k+1$, and let $p$ be a prime that divides $m$. Then from a corollary of Cauchy's Theorem (\myref{corollary-cauchy-theorem-with-subgroup}) it follows that $G$ has a subgroup of order $p$, say $N$. As all subgroups of abelian groups are normal, thus $G/N$ is a quotient group. In fact, $G/N$ is an abelian group of order $\frac np$. Since $m$ divides $n$ thus $\frac mp$ divides $\frac np$. Therefore by the Induction Hypothesis we know that $G/N$ has a subgroup of the form $H/N$ where $H \leq G$ (see \myref{problem-subgroup-of-quotient-group-is-quotient-group}) with order $\frac mp$. Then one sees clearly that
+    \begin{align*}
+        |H| &= \frac{|H|}{|N|} \times |N|\\
+        &= |H/N| \times |N|\\
+        &= \frac mp \times p\\
+        &= m
+    \end{align*}
+    and so $H$ is a subgroup of $G$ with order $m$, proving the case for $k+1$.
+
+    Therefore by mathematical induction this theorem is proven.
+\end{proof}
+
+\section{Proof of the Fundamental Theorem of Finite Abelian Groups}
+The proof of the Fundamental Theorem of Finite Abelian Groups is highly complex and technical. To ease the pain with the proof, we break the proof down into several lemmas.
+
+\begin{lemma}\label{lemma-fundamental-theorem-of-finite-abelian-groups-1}
+    Let $G$ be a finite abelian group of order $n = {p_1}^{\alpha_1}{p_2}^{\alpha_2}\cdots{p_k}^{\alpha_k}$ where $p_1, p_2, \dots, p_k$ are \textit{distinct} primes and $\alpha_1, \alpha_2, \dots, \alpha_k$ are positive integers. Then $G$ is the internal direct product of subgroups $G_1, G_2, \dots, G_k$, where $G_i$ is the subgroup of all elements of order $p_i^r$ for some non-negative integer $r$.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[Lemma 13.8]{judson_beezer_2022}})]
+    By the First Sylow Theorem (\myref{thrm-sylow-1}) we know that each $G_i$, which is a Sylow $p_i$-subgroup, exists within $G$. Note that if $g \in G_i$ is a non-identity element with order $p_i^r$ then $|g^{-1}|$ also have order $p_i^r$ by a property of $p$-groups. Observe also that if $h \in G_i$ has order $p_i^s$, then if $t$ is the larger of $r$ and $s$ we see
+    \[
+        (gh)^{p_i^t} = g^{p_i^t}h^{p_i^t} = e.
+    \]
+    
+    To complete the proof that $G$ is the internal direct product of $G_1, G_2, \dots, G_k$, we need to show two things.
+    \begin{enumerate}
+        \item $G = G_1G_2\cdots G_k$; and
+        \item $G_i \cap G_j = \{e\}$ for any $i \neq j$.
+    \end{enumerate}
+    We do not need to prove that the elements of $G_i$ and $G_j$ commute since $G$ is an abelian group, which means that this condition is already satisfied.
+
+    We first show that every $g \in G$ can be written as a product $g_1g_2\cdots g_k$ where $g_i \in G_i$. Since the order of an element divides the order of the group, we know that
+    \[
+        |g| = p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}
+    \]
+    for some non-negative integers $\alpha_1, \alpha_2, \dots, \alpha_k$. Let $a_i = \frac{|g|}{p_i^{\alpha_i}}$ and we see that the $a_i$'s are coprime; hence there must exist integers $b_1, b_2, \dots, b_k$ such that $a_1b_1 + a_2b_2 + \cdots + a_kb_k = 1$ by B\'ezout's lemma (\myref{lemma-bezout}), albeit a more generalized version. Therefore we have
+    \[
+        g = g^{a_1b_1 + a_2b_2 + \cdots + a_kb_k} = g^{a_1b_1}g^{a_2b_2}\cdots g^{a_kb_k}.
+    \]
+    Now because
+    \[
+        g^{a_ib_ip_i^{\alpha_i}} = g^{b_i|g|} = e
+    \]
+    it follows that $g^{a_ib_i} \in G_i$. So letting $g_i = g^{a_ib_i}$ we see $g = g_1g_2\cdots g_k \in G_1G_2\cdots G_k$ as required.
+
+    We now show that the intersection $G_i \cap G_j = \{e\}$ for any $i \neq j$. We only show that the intersection of $G_1$ with $G_2, G_3, \dots, G_k$ is the identity, since the proof for the other subgroups is similar. Suppose $g_1 \in G_1$ is in $G_2G_3\dots G_k$, i.e. $g_1 = g_2g_3\cdots g_k$ for $g_i \in G_i$. Since $g_i$ has order $p_i^{\alpha_i}$ for some non-negative integer $\alpha_i$, thus $g_i^{p_i^{\alpha_i}} = e$ for $i = 2,3\dots,k$, and therefore
+    \[
+        g_1^{p_2^{\alpha_2}p_3^{\alpha_3}\cdots p_k^{\alpha_k}} = g_2^{p_2^{\alpha_2}}g_3^{p_3^{\alpha_3}}\cdots g_k^{p_k^{\alpha_k}} = e
+    \]
+    which means that the $p_1^{\alpha_1}$ divides $p_2^{\alpha_2}p_3^{\alpha_3}\cdots p_k^{\alpha_k}$. But the primes $p_1, p_2, \dots, p_k$ are distinct, so the only way for $p_1^{\alpha_1}$ to divide $p_2^{\alpha_2}p_3^{\alpha_3}\cdots p_k^{\alpha_k}$ is for $\alpha_1 = 0$, which means the order of $g_1$ is 1 and therefore $g_1 = e$. Hence the only element that is in $G_1 \cap G_i$ is $e$ for all $i = 2, 3, \dots, k$; generalizing this argument we see $G_i \cap G_j = \{e\}$ for any $i \neq j$.
+
+    With these two conditions satisfied, we therefore see that $G$ is the internal direct product of $G_1, G_2, \dots, G_k$.
+\end{proof}
+
+\begin{lemma}\label{lemma-fundamental-theorem-of-finite-abelian-groups-2}
+    Let $G$ be a finite abelian $p$-group and suppose $g \in G$ has maximal order in $G$. Then $G \cong \langle g \rangle \times H$ for some subgroup $H$ in $G$.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[Lemma 13.9]{judson_beezer_2022}})]
+    Let $|G| = p^n$; we use the strong induction on $n$.
+
+    When $n = 1$ then $|G| = p$, which means that $G$ is a cyclic group of prime order $p$ (\myref{corollary-group-with-prime-order-is-cyclic}) and must be generated by any non-identity element $g$. Hence $G \cong \langle g \rangle \times \{e\}$ where $e$ is the identity of $G$.
+
+    Suppose that the statement of the lemma holds for all integers $1 \leq r \leq k$ where $k$ is a positive integer. We show that the statement holds for a finite abelian group of order $p^{k+1}$.
+
+    Let $G$ be such a group, and let $g$ be an element of maximal order in $G$, say $|g| = p^m$. Then for all $x \in G$ we have $x^{p^m} = e$. Now try and choose $h \in G$ such that $h \notin \langle g \rangle$, where $h$ has the smallest possible order. If no such $h$ exists, then $G \cong \langle g \rangle \times \{e\}$ and we are done. So assume $h$ does exist and let $H = \langle h \rangle$.
+
+    We claim that $\langle g \rangle \cap H = \{e\}$. Since $|h^p| = \frac{|h|}{p}$ (\myref{thrm-order-of-power-of-element}), thus the order of $h^p$ is smaller than that of $h$. Note $h^p \notin H$ as this would contradict the minimality of the order of $h$. Thus $h^p \in \langle g \rangle$, i.e. $h^p = g^r$ for some non-negative integer $r$. Hence
+    \[
+        \left(g^r\right)^{p^{m-1}} = \left(h^p\right)^{p^{m-1}} = h^{p^m} = e
+    \]
+    since $p^m$ is the maximal order of all elements in $G$, and thus the order of $g^r$ must divide $p^{m-1}$ (\myref{lemma-order-of-an-element-that-is-equivalent-to-identity}); actually we only care that the order of $g^r$ is at most $p^{m-1}$ which is less than $p^m$. Thus $g^r$ cannot generate $\langle g \rangle$. Hence $\gcd(p^m, r) \neq 1$ by the contrapositive of \myref{corollary-element-in-cyclic-group-is-generator-iff-gcd-is-1}, which means that $r = ps$ for some positive integer $s$, which shows us that $h^p = g^{ps}$. Let $a = g^{-s}h$. Note that since $h = ag^{ps} \notin \langle g \rangle$, thus $a \notin \langle g \rangle$. Also,
+    \begin{align*}
+        a^p &= g^{-ps}h^p\\
+        &= g^{-r}h^p\\
+        &= h^{-p}h^p\\
+        &= e
+    \end{align*}
+    so the order of $a$ must divide $p$. But $p$ is prime, and $a \neq e$, so $|a| = p$. Hence $a$ is an element of order $p$ that is not in $\langle g \rangle$. Since $h$ was chosen to be the element of smallest order such that $h \notin \langle g \rangle$, and since the order of an element in a $p$-group must be a power of $p$, thus $|h| = p$ and so $|H| = p$. It follows that $\langle g\rangle \cap H = \{e\}$, since otherwise a non-identity element in the intersection would just generate $H$, contradicting $h \notin \langle g\rangle$.
+
+    We now show that the order of $gH$ in the quotient group $G/H$ is the same as the order of $g$ in $G$. If instead $|gH| < |g| = p^m$ then $|gH|$ is at most $p^{m-1}$, meaning
+    \[
+        H = (gH)^{p^{m-1}} = (g^{p^{m-1}})H
+    \]
+    and so $g^{p^{m-1}} \in H$ by Element in Coset. Thus $g^{p^{m-1}} \in \langle g\rangle \cap H = \{e\}$ which means $g^{p^{m-1}} = e$, contradicting the fact that the order of $g$ is $p^m$. So $|gH| = p^m$, meaning $gH$ has maximal order in $G/H$. By the Induction Hypothesis we know that
+    \[
+        G/H \cong \langle gH \rangle \times K/H
+    \]
+    for some $K/H \leq G/H$ (\myref{problem-subgroup-of-quotient-group-is-quotient-group}).
+
+    To end the proof, we need to show that $G$ is the internal direct product of $\langle g\rangle$ and $K$.
+    \begin{itemize}
+        \item We first prove that $\langle g\rangle \cap K = \{e\}$. If $b \in \langle g\rangle \cap K$ then $bH \in \langle gH\rangle \cap K/H = \{H\}$ and so $b \in \langle g \rangle \cap H = \{e\}$, i.e. $b = e$.
+        
+        \item Now we show that $G = \langle g\rangle K$. Since $G$ is an abelian group we certainly know that $\langle g\rangle K = K\langle g\rangle$, which means $\langle g\rangle K \leq G$ (\myref{prop-subgroup-product-is-subgroup}). But one also sees that
+        \begin{align*}
+            |\langle g\rangle K| &= \frac{|\langle g\rangle||K|}{|\langle g\rangle \cap K|} & (\myref{exercise-order-of-subgroup-product})\\
+            &= |\langle g\rangle||K|\\
+            &= \left(|\langle gH \rangle||K/H|\right)|H|\\
+            &= |G/H||H| & (\text{since }G/H \cong \langle gH \rangle \times K/H)\\
+            &= |G|
+        \end{align*}
+        which means $G = \langle g\rangle K$.
+    \end{itemize}
+    So $G$ is the internal direct product of $\langle g\rangle$ and $K$, which means $G \cong \langle g\rangle \times K$ by \myref{thrm-direct-product-equivilance}.
+\end{proof}
+
+We can now assert the following by using induction.
+\begin{lemma}\label{lemma-fundamental-theorem-of-finite-abelian-groups-3}
+    A finite abelian $p$-group is an internal direct product of cyclic groups.
+\end{lemma}
+\begin{proof}
+    See \myref{exercise-prove-lemma-fundamental-theorem-of-finite-abelian-groups-3} (later).
+\end{proof}
+
+Let us examine where we are in the proof of \myref{thrm-fundamental-theorem-of-finite-abelian-groups}. So far, we have shown that every finite abelian group of order $n = {p_1}^{\alpha_1}\cdots{p_k}^{\alpha_k}$ where $p_1, p_2, \dots, p_k$ are \textit{distinct} primes is the internal direct product of subgroups $G_1, G_2, \dots, G_k$ where $G_i$ is the subgroup of all elements of order $p_i^r$ (\myref{lemma-fundamental-theorem-of-finite-abelian-groups-1}). Note that since this is an internal direct product, the subgroup $G_i$ has an order of ${p_i}^{\alpha_i}$. Furthermore, \myref{lemma-fundamental-theorem-of-finite-abelian-groups-3} tells us that each $G_i$ is the internal direct product of cyclic groups. These internal cyclic groups are also of prime-power order, so we have shown the existence of the isomorphism required by \myref{thrm-fundamental-theorem-of-finite-abelian-groups}. We just need to prove the uniqueness of such an isomorphism, and then we can formally write the full proof of \myref{thrm-fundamental-theorem-of-finite-abelian-groups}.
+
+\begin{lemma}\label{lemma-fundamental-theorem-of-finite-abelian-groups-4}
+    Let $G$ be a finite abelian $p$-group. If
+    \[
+        G = H_1H_2\cdots H_m = K_1K_2\cdots K_n
+    \]
+    where each $H_i$ and $K_j$ are non-trivial cyclic subgroups with
+    \[
+        |H_1| \geq |H_2| \geq \cdots \geq |H_m|
+    \]
+    and
+    \[
+        |K_1| \geq |K_2| \geq \cdots \geq |K_n|,
+    \]
+    then $m = n$ and $|H_i| = |K_i|$ for all $i$.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[p.~219, Lemma 4]{gallian_2016}})]
+    Write $|G| = p^n$ where $p$ is a prime; we use strong induction on $n$.
+
+    Clearly the case when $n = 0$ is true, since the only subgroup of $G$ is the trivial subgroup and thus the requirements are satisfied immediately.
+
+    Suppose the lemma is true for all finite abelian $p$-groups of order of at most $p^k$ for some positive integer $k$. We show that the lemma holds for an arbitrary finite abelian $p$-group of order $p^{k+1}$.
+
+    We note that for any abelian group $A$, the set $A^p = \{x^p \vert x \in A\}$ forms a subgroup of $A$ by \myref{exercise-group-power-is-subgroup} (later). Since $G = H_1H_2\cdots H_m$, we see
+    \begin{align*}
+        G^p &= \left\{\left(h_1h_2\cdots h_m\right)^p \vert h_i \in H_i\right\}\\
+        &= \left\{h_1^ph_2^p\cdots h_m^p \vert h_i \in H_i\right\}\\
+        &= \left\{h_1^ph_2^p\cdots h_{m'}^p \vert h_i \in H_i\right\}\\
+        &= H_1^pH_2^p\cdots H_{m'}^p
+    \end{align*}
+    where $m'$ is the largest integer such that $|H_{m'}| > p$. Note that for any $H_i$ with $|H_i| \leq p$ we have $h^p = e$ for all $h \in H_i$, so $H_i^p = \{e\}$. Thus we exclude any of such subgroups in our construction. Likewise we see
+    \[
+        G^p = K_1^pK_2^p\cdots K_{n'}^p
+    \]
+    where $n'$ is the largest integer such that $|K_{n'}| > p$. This ensures that the two internal direct products do not have trivial factors. From \myref{exercise-group-power-is-subgroup} (later), because $p$ divides $|G|$, thus $G^p$ is a proper subgroup of $G$, so $|G^p| < |G|$. By Induction Hypothesis we thus obtain the fact that $m' = n'$ and $|H_i^p| = |K_i^p|$ all $i = 1, 2, \dots, m'$.
+
+    % TODO: This seems a bit hand-wavy
+    Now by our ordering we see that $|H_i| = p|H_i^p|$ and $|K_i| = p|K_i^p|$, which means $|H_i| = |K_i|$ for all $i = 1, 2, \dots, m'$. Note by construction of $m'$ we have for all $i > m'$ that $|H_i| = |K_i| = p$. It follows that
+    \[
+        |H_1^p||H_2^p|\cdots|H_{m'}^p|p^{m-m'} = |K_1^p||K_2^p|\cdots|K_{n'}^p|p^{n-n'}  
+    \]
+    so $m - m' = n - n'$. Because $m' = n'$, thus $m = n$. This proves the case for $k + 1$.
+
+    The lemma is proven by induction.
+\end{proof}
+
+\begin{exercise}\label{exercise-group-power-is-subgroup}
+    Let $G$ be an abelian group.
+    \begin{partquestions}{\roman*}
+        \item Prove that $G^n = \{x^n \vert x \in G\}$, where $n$ is a positive integer, is a subgroup of $G$.
+        \item Suppose also that $G$ is finite and $p$ is a prime that divides $|G|$. Using the map $\phi: G \to G^p$ where $\phi(x) = x^p$, prove that $G^p$ is a proper subgroup of $G$.\newline
+        (\textit{Hint: consider Cauchy's Theorem (\myref{thrm-cauchy}).})
+    \end{partquestions}
+\end{exercise}
+
+\begin{exercise}\label{exercise-prove-lemma-fundamental-theorem-of-finite-abelian-groups-3}
+    Prove \myref{lemma-fundamental-theorem-of-finite-abelian-groups-3}.
+\end{exercise}
+
+\newpage
+
+We are now ready to present the proof of the Fundamental Theorem of Finite Abelian Groups (\myref{thrm-fundamental-theorem-of-finite-abelian-groups}).
+\begin{proof}
+    Let $G$ be a finite abelian group. Write $|G|$ as ${p_1}^{\alpha_1}\cdots{p_k}^{\alpha_k}$, where $p_1, p_2, \dots, p_k$ are distinct primes. Then by \myref{lemma-fundamental-theorem-of-finite-abelian-groups-1}, $G$ is the internal direct product of subgroups $G_1, G_2, \dots, G_k$ where $G_i$ is the subgroup of all elements of order $p_i^r$. Note that since this is an internal direct product, the subgroup $G_i$ has an order of ${p_i}^{\alpha_i}$. Furthermore, \myref{lemma-fundamental-theorem-of-finite-abelian-groups-3} tells us that each $G_i$ is the internal direct product of cyclic groups. These internal cyclic groups are also of prime-power order, so we have shown the existence of the isomorphism required by \myref{thrm-fundamental-theorem-of-finite-abelian-groups}.
+    
+    For uniqueness, \myref{lemma-fundamental-theorem-of-finite-abelian-groups-4} shows that each $G_i$ has a unique internal direct product of cyclic groups. Therefore the overall product for $G$ is also unique, proving the theorem.
+\end{proof}
+
+\newpage
+
+\section{Problems}
+\begin{problem}
+    Suppose $p_1, p_2, \dots, p_n$ are distinct primes. How many distinct abelian groups of order $p_1p_2\cdots p_n$ are there, up to isomorphism?
+\end{problem}
+
+\begin{problem}
+    What is the smallest positive integer $n$ such that there exist two non-isomorphic abelian groups of order $n$? Write down the isomorphism class of these two groups.
+\end{problem}
+
+\begin{problem}
+    Write out all isomorphism classes of an abelian group of order $p^4$, where $p$ is a prime.
+\end{problem}
+
+\begin{problem}
+    Let $G$ be an abelian group of order 16. Suppose there exist elements $a$ and $b$ in $G$ such that $|a| = |b| = 4$ and $a^2 \neq b^2$. Determine the isomorphism class of $G$.
+\end{problem}
+
+\begin{problem}
+    How many abelian groups of order 16 have the property that $x^4 = e$ for all $x$ in the group, up to isomorphism?
+\end{problem}
