@@ -60,7 +60,7 @@ With this theorem, we obtain the following aesthetically pleasing corollary.
     and so $\dim{\GF{p^n}} = n$ over $\GF{p}$, i.e. $[\GF{p^n}: \GF{p}] = n$.
 \end{proof}
 
-\begin{corollary}
+\begin{corollary}\label{corollary-generator-of-finite-field-is-algebraic-over-subfield}
     Let $\alpha$ be a generator of $\GF{p^n}^\ast$. Then $\alpha$ is algebraic over $\GF{p}$. Furthermore $\alpha$ has degree $n$ over $\GF{p}$.
 \end{corollary}
 \begin{proof}
@@ -121,8 +121,7 @@ Let us examine some finite fields in detail.
 \end{example}
 
 \begin{example}\label{example-GF8-analysis}
-    One sees clearly that $x^3 + x^2 + 1$ has no zeroes in $\Z_2$ and so $x^3 + x^2 + 1$ is irreducible over $\Z_2$. Therefore one sees $K = \Z_2/\princ{x^3+x^2+1}$ is a field of 8 elements, i.e. $\GF{8} \cong K$. Note that $f(x)$ has a zero in $F$ by \myref{thrm-fundamental-theorem-of-field-theory}, say $\alpha$. Note that $\GF{8}^\ast$ has order 7, a prime. Since $\alpha \neq 1$, therefore $|\alpha|_\times = 7$ (since every non-identity element in a group of prime order $p$ must have order $p$). We see
-    Hence we may think of $\GF{8}$ as being the set
+    One sees clearly that $x^3 + x^2 + 1$ has no zeroes in $\Z_2$ and so $x^3 + x^2 + 1$ is irreducible over $\Z_2$. Therefore one sees $K = \Z_2/\princ{x^3+x^2+1}$ is a field of 8 elements, i.e. $\GF{8} \cong K$. Note that $f(x)$ has a zero in $F$ by \myref{thrm-fundamental-theorem-of-field-theory}, say $\alpha$. Note that $\GF{8}^\ast$ has order 7, a prime. Since $\alpha \neq 1$, therefore $|\alpha|_\times = 7$ (since every non-identity element in a group of prime order $p$ must have order $p$). Hence we may think of $\GF{8}$ as being the set
     \begin{align*}
         F &= \{0, 1, \alpha, \alpha^2, \alpha^3, \alpha^4, \alpha^5, \alpha^6\}\\
         &= \{0, 1, \alpha, \alpha^2, \alpha^2 + 1, \alpha^2 + \alpha + 1, \alpha + 1, \alpha^2 + \alpha\}\\
@@ -262,8 +261,56 @@ With \myref{thrm-subfields-of-finite-field} finding all the subfields of a given
 \newpage
 
 \section{Problems}
-% TODO: Add
+\begin{problem}
+    Is $\Z_2[x]/\princ{x^3+x+1} \cong \Z_2[x]/\princ{x^3+x^2+1}$? Justify your answer using a concise argument.
+\end{problem}
 
 \begin{problem}
-    Prove or disprove: $\Z_2[x]/\princ{x^3+x+1} \cong \Z_2[x]/\princ{x^3+x^2+1}$.
+    Let $\alpha$ be a zero of $x^3 + x^2 + 1$ in some extension field of $\Z_2$.
+    \begin{partquestions}{\roman*}
+        \item Find $(\alpha^2 + \alpha + 1)^{-1}$ in $\Z_2(\alpha)$.
+        \item Hence solve the equation
+        \[
+            (\alpha^2 + \alpha + 1)x + \alpha^2 = \alpha
+        \]
+        for $x$ over $\Z_2(\alpha)$.
+    \end{partquestions}
+    (\textit{Hint: refer to the conversion formulae given in \myref{example-GF8-analysis}.})
+\end{problem}
+
+\begin{problem}
+    Explain why every element of a finite field of characteristic $p$ can be written in the form $a^p$, where $a$ is an element of the same finite field.
+    (\textit{Hint: Consider the proof of \myref{thrm-finite-field-is-perfect}.})
+\end{problem}
+
+\begin{problem}
+    Consider the irreducible polynomial $f(x) = x^2 + 2x + 2$ over $\Z_3$. Let $\alpha$ be a zero of $f(x)$ in some extension field of $\Z_3$. Find the other zero(es) of $f(x)$ in $\Z_3(\alpha)$.
+\end{problem}
+
+\begin{problem}\label{problem-zero-of-irreducible-in-finite-field-is-not-generator}
+    Let $p(x) = x^3 + 2x + 2 \in \Z_3[x]$.
+    \begin{partquestions}{\roman*}
+        \item Show that $p(x)$ is irreducible over $\Z_3$.
+        \item Let $\alpha$ be a zero of $p(x)$ in the field $F = \Z_3[x]/\princ{p(x)}$. Show that $\alpha$ is \textit{not} a generator of $F^\ast$.
+        \item Find a generator of $F^\ast$, and prove that your answer is indeed a generator of $F^\ast$. Express your answer in terms of $\alpha$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Prove that any irreducible factor of $x^{32} - x$ over $\Z_2$ has a degree of 1 or 5.
+\end{problem}
+
+\begin{problem}
+    Prove that every finite extension of a finite field is simple.
+\end{problem}
+
+\begin{problem}
+    Prove that no finite field is algebraically closed.
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field. We say that $a \in F$ is a \textit{square} if and only if there exists a $b \in F$ such that $a = b^2$. If $a \in F$ is not a square it is called a \textit{non-square}.
+
+    Now let $p$ be an odd prime. Show that if any non-square in $\GF{p}$ is still a non-square in $\GF{p^n}$, then $n$ is an odd positive integer.
+    (\textit{Hint: consider the polynomial $f(x) = x^2-a$, where $a$ is a non-square.})
 \end{problem}
