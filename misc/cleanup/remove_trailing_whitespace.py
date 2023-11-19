@@ -1,9 +1,6 @@
 # IMPORTS
 import os
 
-# CONSTANTS
-DIRECTORY = ".."
-
 
 # FUNCTIONS
 def remove_trailing_whitespace(file):
@@ -20,7 +17,7 @@ def remove_trailing_whitespace(file):
     print(f"Processed '{file}'")
 
 
-def process_tex_files_in_dir(directory):
+def strip_trailing_whitespace(directory):
     dir_tree = sorted(list(os.walk(directory)), key=lambda tpl: tpl[0])
     for root, _, files in dir_tree:
         files = sorted(files)
@@ -29,7 +26,3 @@ def process_tex_files_in_dir(directory):
             extension = os.path.splitext(path)[1]
             if extension in {".tex", ".bib"}:
                 remove_trailing_whitespace(path)
-
-
-# MAIN CODE
-process_tex_files_in_dir(DIRECTORY)
