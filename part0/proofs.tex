@@ -2,7 +2,7 @@
 Proofs compel belief. Without proofs, statements are just meaningless words without justification. A series of logical steps must be provided in order to prove a claim. We explore the basics of proof writing here.
 
 \section{Direct Proof}
-In essence, a direct proof\index{proof!direct} for the statement ``if $P$ then $Q$'' would begin by assuming $P$ is true and showing that this forces $Q$ to be true. We don't need to worry about the case of $P$ being false, since $P \implies Q$ is vacuously true in the case when $P$ is false.
+In essence, a direct proof\index{proof!direct} for the statement ``if $p$ then $w$'' would begin by assuming $p$ is true and showing that this forces $q$ to be true. We don't need to worry about the case of $p$ being false, since $p \implies q$ is vacuously true in the case when $p$ is false.
 \begin{example}
     We prove that ``if $n$ is an odd integer then $n^2$ is odd'' using direct proof. We first write out the proof step-by-step.
     \begin{proof}
@@ -54,7 +54,7 @@ Division into cases can be considered as a variant of direct proof. We split a d
         \begin{itemize}
             \item If $n$ is odd, then $(-1)^n = -1$ and $n = 2k+1$ for some integer $k$. Thus
             \[
-                1 + (-1)^n(2n-1) = 1 - (2(2k+1)-1) = -4k
+                1 + (-1)^n(2n-1) = 1 - (2(2k+1)-1) = 4(-k)
             \]
             which is a multiple of 4.
             \item If $n$ is even, then $(-1)^n = 1$ and $n = 2k$ for some integer $k$. Thus
@@ -105,9 +105,9 @@ Division into cases can be considered as a variant of direct proof. We split a d
 \end{exercise}
 
 \section{Contrapositive Proof}
-We now look at a \textbf{contrapositive proof}\index{proof!contrapositive}. Recall that $(P \implies Q)$ is logically equivalent to $(\lnot Q \implies \lnot P)$. Thus, a contrapositive proof for ``if $P$ then $Q$'' would begin by assuming $\lnot Q$ is true and deducing that this means that $\lnot P$ is true.
+We now look at a \textbf{contrapositive proof}\index{proof!contrapositive}. Recall that $p \implies q$ is logically equivalent to $\lnot q \implies \lnot p$. Thus, a contrapositive proof for ``if $p$ then $q$'' would begin by assuming $\lnot q$ is true and deducing that this means that $\lnot p$ is true.
 
-Generally, we would want to prove in the direction from simplicity to complexity. So if $P$ is more complex than $Q$, we may consider using a contrapositive proof.
+Generally, we would want to prove in the direction from simple to complex. So if $p$ is more complex than $q$, we may consider using a contrapositive proof.
 
 \begin{example}\label{example-if-(n-1)(n-5)-is-even-then-n-is-odd}
     Suppose $n$ is an integer. We prove the statement ``if $n^2 - 6n + 5$ is even then $n$ is odd''. We note that a direct proof would be tedious and problematic. Using a contrapositive proof would be easier.
@@ -149,9 +149,9 @@ Generally, we would want to prove in the direction from simplicity to complexity
 \end{exercise}
 
 \section{Proof by Contradiction}
-The third proof technique is called a \textbf{proof by contradiction}\index{proof!contradiction}. This method can be used to prove any kind of statement. The basic idea is to assume that the statement we want to prove is false, and then show that this assumption leads to a contradiction. A proof by for the statement ``$P$'' (yes, just $P$) would start by assuming that $P$ is false, and then showing that this assumption would lead to a contradiction, which means that $P$ is \textit{not} false, i.e. $P$ is true.
+The third proof technique is called a \textbf{proof by contradiction}\index{proof!contradiction}. This method can be used to prove any kind of statement. The basic idea is to assume that the statement we want to prove is false, and then show that this assumption leads to a contradiction. A proof by contradiction for the statement ``$p$'' (yes, just $p$) would start by assuming that $p$ is false, and then showing that this assumption would lead to a contradiction, which means that $p$ is \textit{not} false, i.e. $p$ is true.
 \begin{remark}
-    In fact, what we are showing is that the statement ``$\lnot P \implies \textbf{false}$'' is true.
+    In fact, what we are showing is that the statement ``$\lnot p \implies \textbf{false}$'' is true.
 \end{remark}
 
 Usually, when writing a proof by contradiction, we would like to inform the reader that a proof by contradiction is being employed. Language such as ``by way of contradiction'', ``towards a contradiction'', ``suppose for the sake of contradiction'' etc. may be used to signpost the use of a proof by contradiction.
@@ -191,10 +191,10 @@ Usually, when writing a proof by contradiction, we would like to inform the read
 \end{remark}
 
 \begin{exercise}
-    Prove that there exist no integers $a$ and $b$ such that $2a + 4b = 1$.
+    Prove that no integers $a$ and $b$ exist such that $2a + 4b = 1$.
 \end{exercise}
 
-We now look at a proof by contradiction for conditional statements. Recall that $\lnot(P \implies Q) \equiv P \land \lnot Q$. Hence, to prove the statement ``if $P$ then $Q$'' via contradiction, we would start by assuming that $P \land \lnot Q$, and then showing that this assumption would lead to a contradiction, which means that $P \implies Q$ is \textit{not} false, i.e. $P\implies Q$ is true.
+We now look at a proof by contradiction for conditional statements. Recall that $\lnot(p \implies q) \equiv p \land \lnot q$. Hence, to prove the statement ``if $p$ then $q$'' via contradiction, we would start by assuming that $p \land \lnot q$, and then showing that this assumption would lead to a contradiction, which means that $p \implies q$ is \textit{not} false, i.e. $p \implies q$ is true.
 
 \begin{example}
     Suppose $a$ and $b$ are real numbers. We prove the statement ``if $a$ is rational and $ab$ is irrational then $b$ is irrational'' using a proof by contradiction.
