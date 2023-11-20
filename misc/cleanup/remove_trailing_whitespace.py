@@ -4,17 +4,23 @@ import os
 
 # FUNCTIONS
 def remove_trailing_whitespace(file):
+    changed_file = False
     with open(file, "r") as f:
         lines = f.readlines()
 
     for i in range(len(lines)):
-        lines[i] = lines[i].rstrip()
+        original = lines[i]
+        lines[i] = f"{lines[i].rstrip()}\n"
 
-    with open(file, "w") as f:
-        for line in lines:
-            f.write(f"{line}\n")
+        if lines[i] != original:
+            changed_file = True
 
-    print(f"Processed '{file}'")
+    if changed_file:
+        with open(file, "w") as f:
+            for line in lines:
+                f.write(line)
+
+    return changed_file
 
 
 def strip_trailing_whitespace(directory):
@@ -25,4 +31,5 @@ def strip_trailing_whitespace(directory):
             path = os.path.join(root, file)
             extension = os.path.splitext(path)[1]
             if extension in {".tex", ".bib"}:
-                remove_trailing_whitespace(path)
+                if remove_trailing_whitespace(path):
+                    print(f"Removed trailing whitespace from '{path}'")

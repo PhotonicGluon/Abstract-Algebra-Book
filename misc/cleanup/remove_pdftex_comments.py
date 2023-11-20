@@ -12,11 +12,12 @@ def remove_comments(file):
         if not lines[i].startswith("%"):
             final_lines.append(lines[i])
 
-    with open(file, "w") as f:
-        for line in final_lines:
-            f.write(line)
+    if lines != final_lines:
+        with open(file, "w") as f:
+            for line in final_lines:
+                f.write(line)
 
-    print(f"Processed '{file}'")
+    return lines != final_lines
 
 
 def remove_pdftex_comments(directory):
@@ -27,4 +28,5 @@ def remove_pdftex_comments(directory):
             path = os.path.join(root, file)
             extension = os.path.splitext(path)[1]
             if extension == ".pdf_tex":
-                remove_comments(path)
+                if remove_comments(path):
+                    print(f"Removed comments from '{path}'")
