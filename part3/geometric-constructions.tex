@@ -96,7 +96,7 @@ In this chapter, we elect to use radians instead of degrees to measure angles.
     For a right-angled triangle with legs $a$ and $b$, the hypotenuse has length $\sqrt{a^2 + b^2}$.
 \end{theorem}
 
-Of special interest to us when we are dealing with geometric constructions are that of similar and congruent triangles.
+Of special interest to us are similar and congruent triangles.
 
 \begin{definition}
     Two triangles $\triangle ABC$ and $\triangle A'B'C'$ are similar if and only if corresponding angles are equal in measure. That is,
@@ -144,7 +144,7 @@ Of special interest to us when we are dealing with geometric constructions are t
 \end{definition}
 
 \begin{proposition}
-    A circle with center $(x_c, y_c) \in \R^2$ and radius $r \geq 0$ has the cartesian equation
+    A circle with center $(x_c, y_c) \in \R^2$ and radius $r > 0$ has the cartesian equation
     \[
         (x-x_c)^2 + (y-y_c)^2 = r^2.
     \]
@@ -245,13 +245,13 @@ Let us look at some examples of construction with these rules.
 \begin{proposition}[Perpendicular Bisector]
     Given a line segment $AB$, we can construct a line that bisects $AB$ and is perpendicular to $AB$.
 \end{proposition}
-\constructionproof{4}{
+\constructionproof{5}{
     \begin{figure}[H]
         \centering
         \pdfteximg{0.7\linewidth}{part3/images/geometric-constructions/perpendicular-bisector.pdf_tex}
     \end{figure}
 }{
-    Construct a circle centred at $A$ with radius $AB$. Construct another circle centred at $B$ with radius $AB$. Denote the intersection of the two circles by $C$ and $D$ as shown in the diagram. Connect the points $C$ and $D$ using a straightedge.
+    Construct a circle centred at $A$ with radius $AB$. Construct another circle centred at $B$ with radius $AB$. Denote the intersection of the two circles by $C$ and $D$ as shown in the diagram. Connect the points $C$ and $D$ using a straightedge. Denote the intersection of $AB$ and $CD$ by $P$.
 }{
     $CD$ bisects $AB$ and is perpendicular to $AB$.
 }{
@@ -302,7 +302,7 @@ Let us look at some examples of construction with these rules.
     which means $\alpha+\beta = \frac\pi2$. But $\alpha+\beta$ is exactly the measure of $\angle APB$, meaning that $\angle APB$ is a right angle. Hence $\triangle APB$ is a right-angled triangle.
 }
 
-\section{Constructable Numbers}
+\section{Constructible Numbers}
 With the basics of construction out of the way, we can finally dive into the meat of this chapter -- constructible numbers.
 
 \begin{definition}
@@ -324,7 +324,7 @@ For brevity we denote the set of all constructible numbers by $\Con$.
     \end{figure}
     In the diagram, we first construct a line segment of length $|\alpha|$. Then, from the end, construct a line segment of length $|\beta|$. Whatever remains from the original start to the end of the line segment of length $|\beta|$ is a line segment of length $|\alpha - \beta|$, which shows that $\alpha - \beta$ is constructible.
 
-    Now for any $\alpha,\beta \in \Con$ with $\beta \neq 0$ we show that $\alpha\beta^{-1} = \frac\alpha\beta$ is constructible.
+    Now for any $\alpha,\beta \in \Con$ where $\beta \neq 0$ we show that $\alpha\beta^{-1} = \frac\alpha\beta$ is constructible.
     \begin{figure}[H]
         \centering
         \pdfteximg{0.5\textwidth}{part3/images/geometric-constructions/quotient.pdf_tex}
@@ -353,7 +353,7 @@ We also note that the square root of a non-negative constructible number is cons
 }{
     The length of $BD$ is $\sqrt{|\alpha|}$.
 }{
-    By Angle in Semicircle (\myref{prop-angle-in-semicircle}) we know that $\angle ABC$ is a right angle. Let $\angle BAD = \theta$. Since the sum of angles in a triangle is $\pi$, thus $\angle BCA = \frac\pi2 - \theta$. Consequently we see that $\angle ABD = \frac\pi2 - \theta$ and $\angle DBC = \theta$. Hence we see that $\triangle ABD$ and $\triangle BCD$ are similar. Thus
+    By Angle in Semicircle (\myref{prop-angle-in-semicircle}) we know that $\angle ABC$ is a right angle. Let $\angle BAD = \theta$. Since the sum of angles in a triangle is $\pi$, thus $\angle BCA = \frac\pi2 - \theta$. Consequently we see that $\angle DBA = \frac\pi2 - \theta$ and $\angle DBC = \theta$. Hence we see that $\triangle ABD$ and $\triangle BCD$ are similar. Thus
     \[
         \frac{AD}{BD} = \frac{BD}{CD}
     \]
@@ -401,15 +401,15 @@ From \myref{thrm-constructible-numbers-is-subfield-of-real-numbers} we know that
         \end{align*}
         where $a,b,c,d,e,f \in \con$. In the equation of the line, we may solve for $y$, yielding
         \[
-            y = \frac1b (-ax - c).    
+            y = -\frac1b(ax + c).    
         \]
         Substituting this into the equation of a circle and simplifying leaves us with an equation of the form $Ax^2 + Bx + C = 0$ where $A,B,C\in\con$. Solving for $x$ leaves us with
         \[
             x = -\frac{B}{2A} \pm \frac{1}{2A}\sqrt{B^2-4AC}.
         \]
-        Note that we already know that $-\frac{B}{2A}$ and $\frac{1}{2A}$ are in $\con$; the only uncertain part is $\sqrt{B^2-4AC}$. Since the line and circle do intersect, we know that $B^2-4AC \geq 0$; letting $\alpha = B^2 - 4AC$ we therefore see that $x \in \con(\alpha)$. Note if $\alpha = 0$ then $\con(\alpha) = \con$; otherwise $\con(\alpha)$ is an extension field of $\con$.
+        Note that we already know that $-\frac{B}{2A}$ and $\frac{1}{2A}$ are in $\con$; the only uncertain part is $\sqrt{B^2-4AC}$. Since the line and circle do intersect, we know that $B^2-4AC \geq 0$; letting $\alpha = B^2 - 4AC$ we therefore see that $x \in \con(\sqrt\alpha)$. Note if $\alpha = 0$ then $\con(\sqrt\alpha) = \con$; otherwise $\con(\sqrt\alpha)$ is an extension field of $\con$.
     \end{enumerate}
-    Therefore the points of intersections of lines and circles within $\con$ lie within the field $\con(\alpha)$ where $\alpha \in \con$ and $\alpha > 0$ as desired.
+    Therefore the points of intersections of lines and circles within $\con$ lie within the field $\con(\sqrt\alpha)$ where $\alpha \in \con$ and $\alpha > 0$ as desired.
 \end{proof}
 
 \begin{theorem}\label{thrm-condition-for-constructability}
@@ -424,9 +424,9 @@ From \myref{thrm-constructible-numbers-is-subfield-of-real-numbers} we know that
     \[
         [F_n:\Q] = [F_n:F_{n-1}][F_{n-1}:F_{n-2}]\cdots[F_2:F_1][F_1:\Q].
     \]
-    Now note that each $[F_i:F_{i-1}]$ is 2 since we defined $F_i = F_{i-1}(\sqrt{\alpha_i})$. Therefore $[F_n:\Q]$ is a power of 2, say $2^r$. In particular we note
+    Now note that each $[F_i:F_{i-1}]$ is 2 since we defined $F_i = F_{i-1}(\sqrt{\alpha_i})$. Therefore $[F_n:\Q] = 2^n$. In particular we note
     \[
-        \underbrace{[F_n:\Q]}_{2^r} = [F_n:\Q(\gamma)][\Q(\gamma):\Q]
+        \underbrace{[F_n:\Q]}_{2^n} = [F_n:\Q(\gamma)][\Q(\gamma):\Q]
     \]
     by Tower Law, which means that $[\Q(\gamma):\Q] = 2^k$ for some integer $k \geq 0$.
 \end{proof}
@@ -455,7 +455,7 @@ Consider a cube of side length 1. We are to create a cube of volume 2, meaning t
 \subsection{Squaring the Circle}
 Another problem the Greeks pondered was whether a square with the same area of a given circle can be constructed. Well, consider a circle with radius 1, meaning that the circle has area $\pi$. So we need to construct a square with area $\pi$, meaning that it has side length $\sqrt\pi$.
 
-However, $\pi$ is a transcendental number, and therefore $\sqrt\pi$ is also transcendental. This means that $\sqrt\pi$ is not only not algebraic, it is not constructible; therefore squaring a circle is impossible.
+However, $\pi$ is a transcendental number, and therefore $\sqrt\pi$ is also transcendental. This means that $\sqrt\pi$ is not only not algebraic, it is also not constructible; therefore squaring a circle is impossible.
 
 \subsection{Trisecting an Angle}
 The bisection of any given angle is easy for the Greeks; trisection was hard. In fact, this is yet another one of the impossible constructions that plagued the Greeks.
