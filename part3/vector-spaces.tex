@@ -6,8 +6,8 @@ We first look at what a vector space is.
 \begin{definition}
     A \textbf{vector space}\index{vector space} over a field $F$ is a non-empty set $V$ together with two operations,
     \begin{itemize}
-        \item \textbf{(vector) addition}\index{vector space!vector addition}, denoted by $+$, where for $\textbf{u}, \textbf{v} \in V$ it produces a new element $\textbf{u} + \textbf{v} \in V$; and
-        \item \textbf{scalar multiplication}\index{vector space!scalar multiplication}, which assigns an $a \in F$ and a $\textbf{u} \in V$ to another element in $V$, denoted by $a\textbf{u} \in V$,
+        \item \textbf{(vector) addition}\index{vector space!vector addition}, denoted by $+$, where for $\textbf{u}, \textbf{v} \in V$ it produces another element $\textbf{u} + \textbf{v} \in V$; and
+        \item \textbf{scalar multiplication}\index{vector space!scalar multiplication}, where for $\alpha \in F$ and $\textbf{u} \in V$ it produced another element in $V$, denoted by $\alpha\textbf{u} \in V$,
     \end{itemize}
     such that it satisfies the \textbf{vector space axioms}\index{axiom!vector space} listed below.
     \begin{itemize}
@@ -27,7 +27,7 @@ To avoid confusion with denoting elements from these two sets, we adopt the foll
 \begin{itemize}
     \item Elements in $F$ will generally be denoted by greek letters. For example $\alpha, \beta, \gamma, \delta \in F$.
     \item Elements in $V$ will be indicated with boldface and are generally denoted by letters near the end of the alphabet. For example, $\textbf{u}, \textbf{v}, \textbf{w} \in V$.
-    \item The additive identity of the group $(V, +)$ will be denoted $\textbf{0}$, a boldface zero.
+    \item The additive identity of the group $(V, +)$ will be denoted by a boldface zero, $\textbf{0}$.
     \item Define $\textbf{u} - \textbf{v}$ as $\textbf{u} + (-\textbf{v})$, where $-\textbf{v}$ denotes the inverse of $\textbf{v}$ in the group $(V, +)$.
 \end{itemize}
 
@@ -96,7 +96,7 @@ We look at some elementary examples of vector spaces.
 \begin{example}\label{example-polynomial-ring-over-field-is-vector-space}
     Let $F$ be a field. We show that the polynomial ring $F[x]$ is a vector space over $F$, where vector addition is simply polynomial addition and scalar multiplication by $\alpha \in F$ is polynomial multiplication by the constant polynomial $\alpha$.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: We have repeatedly shown that $(R[x], +)$ is a commutative ring for any ring $R$, so it also applies to the field $F$.
+        \item \textbf{Addition-Abelian}: The polynomial ring $F[x]$ is a ring, so we must have $(F[x], +)$ being an abelian group.
 
         \item \textbf{Multiplication-Identity}: Let $f(x) \in F[x]$. Note $1f(x) = f(x)$ since 1 is the multiplicative identity of $F$.
 
@@ -159,11 +159,11 @@ One sees that $\R$ is a subfield of $\C$. The previous example gives us an indic
 
         \item \textbf{Multiplication-Identity}: Let $\textbf{u} \in F$. Note $1\textbf{u} = \textbf{u}$ since 1 is the multiplicative identity of $F$, which shows that this axiom is satisfied.
 
-        \item \textbf{Multiplication-Compatibility}: Let $r, s \in K$ and $\textbf{u} \in F$. Then $r(s\textbf{u}) = (rs)\textbf{u}$ by the associativity of multiplication in the field $F$.
+        \item \textbf{Multiplication-Compatibility}: Let $\alpha, \beta \in K$ and $\textbf{u} \in F$. Then $\alpha(\beta\textbf{u}) = (\alpha\beta)\textbf{u}$ by the associativity of multiplication in the field $F$.
 
-        \item \textbf{Distributivity-Addition}: Let $k \in K$ and $\textbf{u}, \textbf{v} \in F$. Then $k(\textbf{u} + \textbf{v}) = k\textbf{u} + k\textbf{v}$ by the distributivity of multiplication over addition in the field $F$.
+        \item \textbf{Distributivity-Addition}: Let $\alpha \in K$ and $\textbf{u}, \textbf{v} \in F$. Then $\alpha(\textbf{u} + \textbf{v}) = \alpha\textbf{u} + \alpha\textbf{v}$ by the distributivity of multiplication over addition in the field $F$.
 
-        \item \textbf{Distributivity-Scalar}: Let $r, s \in K$ and $\textbf{u} \in \C$. Note that we see $(r+s)\textbf{u} = r\textbf{u} + s\textbf{u}$, again by the distributivity of multiplication over addition in the field $F$.
+        \item \textbf{Distributivity-Scalar}: Let $\alpha, \beta \in K$ and $\textbf{u} \in \C$. Note that we see $(\alpha+\beta)\textbf{u} = \alpha\textbf{u} + \beta\textbf{u}$, again by the distributivity of multiplication over addition in the field $F$.
     \end{itemize}
 
     Therefore, all five vector space axioms are satisfied, proving that $F$ is a vector space over the subfield $K$.
@@ -244,24 +244,24 @@ Like how groups have subgroups, rings have subrings, and fields have subfields, 
 To prove all the axioms for vector spaces for the subspace is way too tedious. Like with groups, rings, and fields, we have a simple test to determine whether a subset of a vector space is a subspace, called the \textbf{subspace test}.
 
 \begin{theorem}[Subspace Test]\label{thrm-subspace-test}
-    Let $V$ be a vector space over a field $F$ and $U$ be a non-empty subset of $V$. Then $U$ is a subspace of $V$ over $F$ and using the same operations as $V$ if and only if
-    \begin{itemize}
+    Let $V$ be a vector space over a field $F$ and $U$ be a non-empty subset of $V$. Then $U$ is a subspace of $V$ over $F$ under the same operations as $V$ if and only if
+    \begin{enumerate}
         \item for any $\textbf{u}, \textbf{v} \in U$ we have $\textbf{u} + \textbf{v} \in U$; and
         \item for any $\textbf{u} \in U$ and $\alpha \in F$ we have $\alpha\textbf{u} \in U$.
-    \end{itemize}
+    \end{enumerate}
 \end{theorem}
 \begin{proof}
     The forward direction is trivial, since any subspace of $V$ is a vector space, and these two conditions are exactly the closure conditions of addition and scalar multiplication.
 
     We work in the reverse direction. Suppose these two conditions are satisfied. We will prove the remainder of the vector space axioms.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: Since addition is the same as that of the vector space $V$, addition is also already commutative. So all that remains is to show that $(U, +)$ is a group; we show $(U, +) \leq (V, +)$ instead.
+        \item \textbf{Addition-Abelian}: Since addition is the same as that of the vector space $V$, addition is also already commutative. So all that remains is to show that $(U, +)$ is a group; it is sufficient to show $(U, +) \leq (V, +)$ instead.
 
-        We note that $-1 \in F$ and so $(-1)\textbf{v}$ is in $U$ for any $\textbf{v} \in U$ by condition 2. Note $(-1)\textbf{v} = -\textbf{v}$ by \myref{prop-vector-inverse-is-negative-vector}, so $-\textbf{v} \in U$ for any $\textbf{v} \in U$. Finally, we see
+        We note that $-1 \in F$ and so $(-1)\textbf{v} \in U$ for any $\textbf{v} \in U$ by condition 2. Note $(-1)\textbf{v} = -\textbf{v}$ by \myref{prop-vector-inverse-is-negative-vector}, so $-\textbf{v} \in U$ for any $\textbf{v} \in U$. Finally, we see
         \[
             \textbf{u} + (-\textbf{v}) \in U
         \]
-        by condition 1. Using the subgroup test (\myref{thrm-subgroup-test}) we know $(U, +) \leq (V, +)$.
+        by condition 1. Using the subgroup test we know $(U, +) \leq (V, +)$.
 
         \item \textbf{Multiplication-Identity}: The axiom holds for $V$, i.e. for all $\textbf{u} \in V$ we have $1\textbf{u} = \textbf{u}$. Since $U \subseteq V$, this means that this statement holds for elements of $U$ too, i.e. for all $\textbf{u} \in U$ we have $1\textbf{u} = \textbf{u}$. Thus this axiom is satisfied.
 
@@ -324,11 +324,11 @@ Admittedly, the previous example is quite boring. Let's look at a more interesti
 \end{exercise}
 
 \section{Linear Combinations and Span}
-Vector spaces have many elements. Using the vector space axioms, we may express these elements in terms of other elements from the vector space. One may wonder if there is a set of elements that `generates' the full vector space. This is the motivation for the \textbf{spanning set} of a vector space.
+Vector spaces have many elements. Using the vector space axioms, we may express these elements in terms of other elements from the vector space. One may wonder if there is a set of elements that `generates' the full vector space. This is the motivation for the spanning set of a vector space.
 
 Before that, let's define what a linear combination is.
 \begin{definition}
-    Let $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n$ be vectors belonging to a vector space $V$ over a field $F$. A vector $\textbf{u} \in V$ is said to be a \textbf{linear combination}\index{linear combination} of the vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n$ if
+    Let $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n$ be vectors belonging to a vector space $V$ over a field $F$. A vector $\textbf{u} \in V$ is said to be a \textbf{linear combination}\index{linear combination} of the vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n$ if and only if
     \[
         \textbf{u} = \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_n \textbf{v}_n
     \]
@@ -414,7 +414,7 @@ Before that, let's define what a linear combination is.
     \[
         V = \{f(x) \in \R[x] \vert \deg f(x) \leq 2\} \cup \{0\}.
     \]
-    Let $S = \{x^2 + 2, x^2 + 2x + 1\}$. We show that $S$ is not a spanning set of $V$.
+    Let $S = \{x^2 + 2, x^2 + 2x + 1\}$. We show that $S$ is \textit{not} a spanning set of $V$.
 
     Consider the constant polynomial 1. Suppose that 1 can be expressed as a linear combination of the polynomials in $S$, i.e. $\alpha(x^2 + 2) + \beta(x^2+2x+1) = 1$ for some $\alpha, \beta \in \R$, i.e. $(\alpha + \beta)x^2 + 2\beta x + (2\alpha + \beta) = 1$. So we see
     \begin{align*}
@@ -508,7 +508,7 @@ The next definition is crucial in vector space theory.
 \end{exercise}
 
 \section{Basis}
-Earlier, we looked at spanning sets, which are sets of vectors that produce all vectors of a vector space $V$ (over a field $F$). One might rightly ask whether there is a `smallest' spanning set, that is, a spanning set with the smallest number of vectors possible but still able to span $V$. This question leads to the definition of a \textbf{basis}.
+Earlier, we looked at spanning sets, which are sets of vectors that produce all vectors of a vector space $V$ (over a field $F$). One might rightly ask whether there is a `smallest' spanning set, that is, a spanning set with the smallest number of vectors possible but still able to span $V$. This question leads to the definition of a basis.
 \begin{definition}
     Let $V$ be a vector space over a field $F$, and let $B$ be a non-empty set of vectors from $V$. Then $B$ is called a \textbf{basis}\index{basis} for $V$ if and only if the vectors in $B$ are linearly independent and $\Span{B} = V$.
 \end{definition}
@@ -553,7 +553,7 @@ The usefulness of a basis is given by the following theorem.
 \end{example}
 
 \begin{example}
-    Consider the subspace $V = \Span{S}$ of $\R^3$ over $\R$, where the set $S$ is $\{(1, 3, -3), (2, 4, -3), (2, 0, 3)\}$. We note that
+    Let $S = \{(1, 3, -3), (2, 4, -3), (2, 0, 3)\} \subset \R^3$, and consider the subspace $V = \Span{S}$ of $\R^3$ over $\R$. We note that
     \[
         -4(1, 3, -3) + 3(2, 4, -3) = (2, 0, 3),
     \]
@@ -601,7 +601,7 @@ One may wonder if a vector space could have bases of different sizes. The answer
     \[
         B_2 = \{\textbf{v}_1, \textbf{v}_2, \textbf{u}_3, \dots, \textbf{u}_m\}.
     \]
-    This time $\textbf{v}_2$ as a linear combination of the vectors in $B_\textbf{u}$, say $\textbf{v}_2 = \beta_1\textbf{v}_1 + \beta_2\textbf{u}_2 + \cdots + \beta_m\textbf{u}_m$ where $\beta_1, \beta_2, \dots, \beta_m \in F$. We note that one of $\beta_2, \beta_3, \dots, \beta_m$ has to be non-zero, as otherwise we would have $\textbf{v}_2 = \beta_1\textbf{v}_1$, meaning that the vectors in $B_\textbf{v}$ are linearly dependent (a contradiction). For convenience choose $\beta_2 = 0$. Using the same argument as before we know $\Span{B_2} = \Span{B_\textbf{u}} = V$.
+    This time write $\textbf{v}_2$ as a linear combination of the vectors in $B_\textbf{u}$, say $\textbf{v}_2 = \beta_1\textbf{v}_1 + \beta_2\textbf{u}_2 + \cdots + \beta_m\textbf{u}_m$ where $\beta_1, \beta_2, \dots, \beta_m \in F$. We note that one of $\beta_2, \beta_3, \dots, \beta_m$ has to be non-zero, as otherwise we would have $\textbf{v}_2 = \beta_1\textbf{v}_1$, meaning that the vectors in $B_\textbf{v}$ are linearly dependent (a contradiction). For convenience choose $\beta_2 \neq 0$. Using the same argument as before we know $\Span{B_2} = \Span{B_\textbf{u}} = V$.
 
     Continuing in this fashion we see
     \[
