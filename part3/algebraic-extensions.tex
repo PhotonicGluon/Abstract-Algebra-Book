@@ -1,7 +1,9 @@
 \chapter{Algebraic Extensions}
-Elements in field extensions are one of two types. The first are elements that are a zero of a specific polynomial within the base field. The second are the rest. Elements that are a zero of a polynomial is of particular interest to us, and we will investigate the extensions that create all possible zeroes of polynomials.
+Elements in field extensions are one of two types. The first are elements that are a zero of a specific polynomial within the base field. The second are whatever is left. Elements that are a zero of a polynomial is of particular interest to us, and we will investigate the extensions that create all possible zeroes of polynomials.
 
 \section{Algebraic Elements}
+We first formally define the name of elements that are a zero of a polynomial in the base field.
+
 \begin{definition}
     Let $E/F$ be a field extension. Then $\alpha \in E$ is \textbf{algebraic}\index{algebraic}\index{algebraic!element} over $F$ if and only if there exists some non-constant polynomial $f(x) \in F[x]$ such that $\alpha$ is a zero of $f(x)$.
 
@@ -91,28 +93,31 @@ We expand upon \myref{thrm-simple-extension-isomorphism} and provide a character
     Hence $\psi$ is a well-defined isomorphism, meaning $F(\alpha) \cong \Frac{F[x]}$.
 \end{proof}
 
-For an algebraic element $\alpha$, \myref{thrm-characterisation-of-extensions} gives us an irreducible polynomial $p(x)$ of minimum degree which $\alpha$ is a root of. If $p(x)$ is monic we have a slightly stronger result.
+For an algebraic element $\alpha$, \myref{thrm-characterisation-of-extensions} gives us an irreducible polynomial $p(x)$ of minimum degree which has a zero of $\alpha$. If $p(x)$ is monic we have a special name for it.
 
-\begin{corollary}\label{corollary-unique-minimal-polynomial}
-    Let $F$ be a field and $E/F$ be a field extension. If $\alpha \in E$ is algebraic over $F$, then there is a unique monic irreducible polynomial $p(x) \in F[x]$ such that $\alpha$ is a zero of $p(x)$.
+\begin{definition}
+    Let $F$ be a field, $E/F$ be a field extension, and $\alpha \in E$ be algebraic over $F$. The monic polynomial $p(x) \in F[x]$ of minimal degree which $\alpha$ is a root of is called the \textbf{minimal polynomial for $\alpha$ over $F$}\index{extension!algebraic!minimal polynomial}.
+\end{definition}
+
+\begin{corollary}\label{corollary-minimal-polynomial-is-irreducible}
+    Let $F$ be a field and $E/F$ be a field extension. If $\alpha \in E$ is algebraic over $F$, then the minimal polynomial of $\alpha$ is irreducible.
 \end{corollary}
 \begin{proof}
-    Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. From \myref{thrm-characterisation-of-extensions} we know that $\ker\phi \neq \emptyset$ since $\alpha$ is algebraic over $F$. We also know that there exists a irreducible polynomial of minimal degree in $F[x]$ such that $\alpha$ is a zero of it. For brevity, let $J_\alpha = \ker\phi$.
+    Let $p(x) \in F[x]$ be the minimal polynomial of $\alpha$. Seeking a contradiction suppose $p(x) = f(x)g(x)$ where $f(x), g(x) \in F[x]$ where the degree of $f(x)$ and $g(x)$ are both smaller than $p(x)$. Thus $0 = p(\alpha) = f(\alpha)g(\alpha)$, which means one of $f(\alpha)$ or $g(\alpha)$ is 0. But this contradicts the minimality of the degree of $p(x)$. Therefore $p(x)$, the minimal polynomial of $\alpha$, is irreducible.
+\end{proof}
 
-    Now suppose $f(x), g(x) \in F[x]$ are both monic irreducible polynomials of minimal degree in $F[x]$ with $\alpha$ as a zero. Hence $f(x), g(x) \in J_\alpha$. Let $r(x) = f(x) - g(x)$; note $r(x) \in J_\alpha$.
+\begin{corollary}
+    Let $F$ be a field and $E/F$ be a field extension. If $\alpha \in E$ is algebraic over $F$, then the minimal polynomial of $\alpha$ is unique.
+\end{corollary}
+\begin{proof}
+    Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. From \myref{thrm-characterisation-of-extensions} we know that $\ker\phi \neq \emptyset$ since $\alpha$ is algebraic over $F$. For brevity, let $J_\alpha = \ker\phi$.
+
+    Now suppose $f(x), g(x) \in F[x]$ are both minimal polynomials of $\alpha$. Hence we see $f(x), g(x) \in J_\alpha$. Let $r(x) = f(x) - g(x)$; note $r(x) \in J_\alpha$.
 
     Seeking a contradiction, suppose $r(x) \neq 0$. Then $\deg r(x) < \deg f(x)$ since both $f(x)$ and $g(x)$ are minimal degree (which means that they are of the same degree). Let $m = \deg r(x)$ and $c_m$ be the leading coefficient of $r(x)$. Now observe that $c_m^{-1}r(x)$ is a monic polynomial with coefficients in $F$, and that $c_m^{-1}r(x) \in J_\alpha$. Furthermore $\alpha$ is a zero of $c_m^{-1}r(x)$; so we have found a polynomial of smaller degree than $f(x)$ (and $g(x)$) with $\alpha$ as a zero, contradicting the assumption that $f(x)$ (and $g(x)$) are of minimal degree.
 
-    Hence $r(x) = 0$, meaning that $f(x) - g(x) = 0$ and thus $f(x) = g(x)$, proving the uniqueness of the monic irreducible polynomial in $F[x]$ such that $\alpha$ is a zero.
+    Hence $r(x) = 0$, meaning that $f(x) - g(x) = 0$ and thus $f(x) = g(x)$, proving the uniqueness of the minimal polynomial of $\alpha$.
 \end{proof}
-
-There is a name for the unique monic irreducible polynomial in \myref{corollary-unique-minimal-polynomial}.
-
-\begin{definition}
-    Let $F$ be a field, $E/F$ be a field extension, and $\alpha \in E$ be algebraic over $F$. The monic irreducible polynomial $p(x) \in F[x]$ which $\alpha$ is a root of is called the \textbf{minimal polynomial for $\alpha$ over $F$}\index{extension!algebraic!minimal polynomial}.
-\end{definition}
-
-We note one more corollary regarding the characterisation of extensions.
 
 \begin{corollary}\label{corollary-minimal-polynomial-divides-polynomial-with-same-root}
     Let $F$ be a field, $E/F$ be a field extension, $\alpha \in E$ be algebraic over $F$, and $p(x) \in F[x]$ be the minimal polynomial for $\alpha$ over $F$. If $f(x) \in F[x]$ has a zero of $\alpha$ then $p(x)$ divides $f(x)$.
@@ -303,18 +308,11 @@ The theorem can sometimes be used to show that a field does not contain a partic
 \end{example}
 
 \begin{exercise}
-    \hfill
-    \begin{partquestions}{\alph*}
-        \item \begin{partquestions}{\roman*}
-            \item Find $[\Q(\sqrt2,\sqrt[3]3):\Q]$.
-            \item Hence find $[\Q(\sqrt2, \sqrt[3]3, \sqrt[6]{72}):\Q]$.
-        \end{partquestions}
-        \item Consider the polynomial $p(x) = x^5 + 2x + 1 \in \Q[x]$.
-        \begin{partquestions}{\roman*}
-            \item Prove that $p(x)$ is irreducible over $\Q$.
-            \item Let $\alpha$ be a zero of $p(x)$ in some extension of $\Q$. Prove that $\sqrt2 \notin \Q(\alpha)$.
-        \end{partquestions}
-    \end{partquestions}
+    Find $[\Q(\sqrt2,\sqrt[3]3):\Q]$ and hence find $[\Q(\sqrt2, \sqrt[3]3, \sqrt[6]{72}):\Q]$.
+\end{exercise}
+
+\begin{exercise}
+    Suppose $\alpha$ is an element of some extension of $\Q$ with minimal polynomial $p(x) = x^5 + 2x + 1 \in \Q[x]$. Prove that $\sqrt2 \notin \Q(\alpha)$.
 \end{exercise}
 
 \section{Primitive Elements}
@@ -393,7 +391,7 @@ We explore more properties of algebraic extensions.
         \vdots\\
         F_n &= F_{n-1}(a_n) = F(a_0, a_1, \dots, a_n).
     \end{align*}
-    In particular we see $p(x) \in F_n[x]$. Therefore $[F_n(\alpha): F_n] = n$, which is finite. Also, since each $a_i$ is algebraic over $F$, thus each $[F_{i+1}:F_i] = [F_i(a_{i+1}):F_i]$ is finite. Therefore
+    In particular we see $p(x) \in F_n[x]$. Therefore $[F_n(\alpha): F_n] = n$, which is finite. Also, since each $a_i$ is algebraic over $F$, thus each $[F_{i+1}:F_i] = [F_i(a_{i+1}):F_i]$ is finite. Therefore, by Tower Law (\myref{thrm-tower-law}),
     \[
         [F_n(\alpha):F] = [F_n(\alpha):F_n][F_n:F_{n-1}][F_{n-1}:F_{n-2}]\cdots[F_1:F_0][F_0:F]
     \]
@@ -453,6 +451,8 @@ We can now introduce a related concept -- algebraically closed fields.
     In \myref{thrm-algebraically-closed-iff-polynomials-split-in-field} we have shown that every polynomial splits in an algebraically closed field. So every polynomial of degree above 1 is reducible; consequently only degree 1 polynomials are irreducible.
 \end{proof}
 
+\newpage
+
 \begin{corollary}\label{corollary-algebraically-closed-field-has-no-proper-algebraic-extension}
     An algebraically closed field has no proper algebraic extension.
 \end{corollary}
@@ -468,7 +468,7 @@ We can now introduce a related concept -- algebraically closed fields.
 
 \section{Problems}
 \begin{problem}
-    Prove that $E = Q(2^{\frac12}, 2^{\frac13}, 2^{\frac14}, \dots, 2^{\frac1n}, \dots)$ is an algebraic extension of $\Q$ but not a finite extension of $\Q$.
+    Prove that $E = \Q(2^{\frac12}, 2^{\frac13}, 2^{\frac14}, \dots, 2^{\frac1n}, \dots)$ is an algebraic extension of $\Q$ but not a finite extension of $\Q$.
 \end{problem}
 
 \begin{problem}
@@ -514,7 +514,7 @@ We can now introduce a related concept -- algebraically closed fields.
 \end{problem}
 
 \begin{problem}
-    Prove that $\sqrt2 \notin \Q(\pi)$. You may assume $\pi$ is a transcendental number and that $\sqrt2$ is irrational.\newline
+    Prove that $\sqrt2 \notin \Q(\pi)$. You may assume that $\pi$ is a transcendental number and that $\sqrt2$ is irrational.\newline
     (\textit{Hint: refer to the proof of \myref{thrm-characterisation-of-extensions} on the form of an element in $\Q(\pi)$.})
 \end{problem}
 
