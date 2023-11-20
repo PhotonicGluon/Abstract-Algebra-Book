@@ -19,13 +19,16 @@ The most surprising and important result regarding finite fields is that there i
     In \myref{thrm-finite-field-is-unique}, prove that $S$, the set of zeroes of $f(x)$ in $F$, is a subfield of $F$.
 \end{exercise}
 
-As there is only one field (up to isomorphism) that is of order $p^n$, we may unambiguously call such a field \text{the} field of order $p^n$.
+As there is only one field (up to isomorphism) that is of order $p^n$, we may unambiguously call such a field \textit{the} field of order $p^n$.
 
 \begin{definition}
     Let $p$ be a prime number and $n$ be a positive integer. The field of order $p^n$ is called the \textbf{Galois field of order $p^n$}\index{Galois field} and is denoted by $\GF{p^n}$.
 \end{definition}
 \begin{remark}
     We call $\GF{p^n}$ the Galois field of order $p^n$ in honour of Galois who first introduced finite fields back in 1830.
+\end{remark}
+\begin{remark}
+    $\GF{p}$ is the field $\Z_p$.
 \end{remark}
 
 Since there is only one finite field of a given order (up to isomorphism), it is easy to classify the additive and multiplicative group of such a field.
@@ -64,7 +67,7 @@ With this theorem, we obtain the following aesthetically pleasing corollary.
     Let $\alpha$ be a generator of $\GF{p^n}^\ast$. Then $\alpha$ is algebraic over $\GF{p}$. Furthermore $\alpha$ has degree $n$ over $\GF{p}$.
 \end{corollary}
 \begin{proof}
-    Since $\alpha$ is a generator of $\GF{p^n}^\ast$, thus the extension field $\GF{p}(a)$ is simply $\GF{p^n}$. Therefore one sees
+    Since $\alpha$ is a generator of $\GF{p^n}^\ast$, thus the extension field $\GF{p}(\alpha)$ is simply $\GF{p^n}$. Therefore one sees
     \[
         [\GF{p}(\alpha): \GF{p}] = [\GF{p^n}:\GF{p}] = n
     \]
@@ -121,7 +124,7 @@ Let us examine some finite fields in detail.
 \end{example}
 
 \begin{example}\label{example-GF8-analysis}
-    One sees clearly that $x^3 + x^2 + 1$ has no zeroes in $\Z_2$ and so $x^3 + x^2 + 1$ is irreducible over $\Z_2$. Therefore one sees $K = \Z_2/\princ{x^3+x^2+1}$ is a field of 8 elements, i.e. $\GF{8} \cong K$. Note that $f(x)$ has a zero in $F$ by \myref{thrm-fundamental-theorem-of-field-theory}, say $\alpha$. Note that $\GF{8}^\ast$ has order 7, a prime. Since $\alpha \neq 1$, therefore $|\alpha|_\times = 7$ (since every non-identity element in a group of prime order $p$ must have order $p$). Hence we may think of $\GF{8}$ as being the set
+    One sees clearly that $x^3 + x^2 + 1$ has no zeroes in $\Z_2$ and so $x^3 + x^2 + 1$ is irreducible over $\Z_2$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). Therefore one sees $K = \Z_2/\princ{x^3+x^2+1}$ is a field of 8 elements, i.e. $\GF{8} \cong K$. Note that $f(x)$ has a zero in $F$ by \myref{thrm-fundamental-theorem-of-field-theory}, say $\alpha$. Note that $\GF{8}^\ast$ has order 7, a prime. Since $\alpha \neq 1$, therefore $|\alpha|_\times = 7$ (since every non-identity element in a group of prime order $p$ must have order $p$). Hence we may think of $\GF{8}$ as being the set
     \begin{align*}
         F &= \{0, 1, \alpha, \alpha^2, \alpha^3, \alpha^4, \alpha^5, \alpha^6\}\\
         &= \{0, 1, \alpha, \alpha^2, \alpha^2 + 1, \alpha^2 + \alpha + 1, \alpha + 1, \alpha^2 + \alpha\}\\
@@ -130,13 +133,13 @@ Let us examine some finite fields in detail.
     where
     \begin{multicols}{2}
         \begin{itemize}
-            \item $\alpha^1 = \alpha$
-            \item $\alpha^2 = \alpha^2$
-            \item $\alpha^3 = \alpha^2 + 1$
-            \item $\alpha^4 = \alpha^2 + \alpha + 1$
-            \item $\alpha^5 = \alpha + 1$
-            \item $\alpha^6 = \alpha^2 + \alpha$
-            \item $\alpha^7 = 1$
+            \item $\alpha^1 = \alpha$;
+            \item $\alpha^2 = \alpha^2$;
+            \item $\alpha^3 = \alpha^2 + 1$;
+            \item $\alpha^4 = \alpha^2 + \alpha + 1$;
+            \item $\alpha^5 = \alpha + 1$;
+            \item $\alpha^6 = \alpha^2 + \alpha$; and
+            \item $\alpha^7 = 1$.
         \end{itemize}
     \end{multicols}
 
@@ -166,7 +169,7 @@ Let us examine some finite fields in detail.
         &= 2\alpha + 2\\
         &= 0
     \end{align*}
-    so $\alpha^4$ is another zero of $f(x)$ in $F$. Since $f(x)$ has degree 3, this means that $f(x)$ has at most 3 zeroes over $F$; as we have found 3 zeroes that is it.
+    so $\alpha^4$ is another zero of $f(x)$ in $F$. Since $f(x)$ has degree 3, this means that $f(x)$ has at most 3 zeroes over $F$. Thus we have found all zeroes of $f(x)$.
 
     Therefore
     \[
@@ -189,7 +192,7 @@ Let us examine some finite fields in detail.
     \[
         p^n - 1 = (p^m-1)(p^{n-m} + p^{n-2m} + \cdots + p^m + 1)
     \]
-    thus $p^m - 1$ divides $p^n - 1$, say $p^n - 1 = t(p^m - 1)$ for some positive integer $t$. Let $K = \{x \in \GF{p^n} \vert x^{p^m} = x\}$. Then \myref{exercise-prime-power-elements-idempotent-is-subfield} (later) shows that $K$ is a subfield of $\GF{p^n}$. Since $x^{p^m} - x$ has at most $p^m$ zeroes in $\GF{p^n}$ we must have $|K| \leq p^m$. Also, earlier in \myref{thrm-structure-of-finite-field}, we have shown that $\GF{p^n}\ast$ is a cyclic group. So let $a \in \GF{p^n}^\ast$ be such that $\princ{a} = \GF{p^n}^\ast$. Then, in $\GF{p^n}^\ast$,
+    thus $p^m - 1$ divides $p^n - 1$, say $p^n - 1 = t(p^m - 1)$ for some positive integer $t$. Let $K = \{x \in \GF{p^n} \vert x^{p^m} = x\}$. Then \myref{exercise-prime-power-elements-idempotent-is-subfield} (later) shows that $K$ is a subfield of $\GF{p^n}$. Since $x^{p^m} - x$ has at most $p^m$ zeroes in $\GF{p^n}$ we must have $|K| \leq p^m$. Also, earlier in \myref{thrm-structure-of-finite-field}, we have shown that $\GF{p^n}^\ast$ is a cyclic group. So let $a \in \GF{p^n}^\ast$ be such that $\princ{a} = \GF{p^n}^\ast$. Then, in $\GF{p^n}^\ast$,
     \begin{align*}
         |a^t| &= \frac{|a|}{\gcd(|a|, t)} & (\myref{thrm-order-of-power-of-element})\\
         &= \frac{p^n - 1}{t}\\
@@ -235,7 +238,7 @@ With \myref{thrm-subfields-of-finite-field} finding all the subfields of a given
 \end{example}
 
 \begin{example}
-    We build a lattice of subfields of $\GF{p^{24}}$. Note that $24 = 2^3 \times 3$, and so its factors are 1, 2, 3, 4, 6, 8, 12, 24.
+    We build a lattice of subfields of $\GF{p^{24}}$. Note that $24 = 2^3 \times 3$, and so its factors are 1, 2, 3, 4, 6, 8, 12, and 24.
 
     \begin{figure}[H]
         \centering
