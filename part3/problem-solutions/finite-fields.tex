@@ -1,24 +1,24 @@
 \section{Finite Fields}
 \begin{questions}
     \item Yes. One sees that both $x^3 + x + 1$ and $x^3 + x^2 + 1$ are irreducible over $\Z_2$ since they both do not have zeroes in $\Z_2$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). Hence both $\Z_2[x]/\princ{x^3+x+1}$ and $\Z_2/\princ{x^3+x^2+1}$ are fields of order $2^3 = 8$, which means that they are isomorphic.
-    
+
     \item \begin{partquestions}{\roman*}
         \item From \myref{example-GF8-analysis} we see that $\alpha^2 + \alpha + 1 = \alpha^4$. Since $\alpha^7 = 1$, thus $(\alpha^2 + \alpha + 1)^{-1} = (\alpha^4)^{-1} = \alpha^3$, which is $\alpha^2 + 1$.
-        
+
         \item Note $(\alpha^2 + \alpha + 1)x + \alpha^2 = \alpha$ means $(\alpha^2 + \alpha + 1)x = \alpha^2 + \alpha$. Hence we see
         \begin{align*}
             x &= (\alpha^2+\alpha+1)^{-1}(\alpha^2 + \alpha)\\
             &= (\alpha^2 + 1)(\alpha^2 + \alpha)\\
             &= \alpha^4 + \alpha^3 + \alpha^2 + \alpha\\
             &= (\alpha^2 + \alpha + 1) + (\alpha^2 + 1) + \alpha^2 + 1\\
-            &= \alpha^2 + \alpha + 1. 
+            &= \alpha^2 + \alpha + 1.
         \end{align*}
     \end{partquestions}
-    
+
     \item In \myref{thrm-finite-field-is-perfect} we have shown that the Frobenius endomorphism $\phi: F \to F, x \mapsto x^p$ is actually an automorphism. The result yields immediately since an automorphism is an isomorphism, which means that every $a \in F$ has a unique $b \in F$ such that $a = b^p$.
-    
+
     \item Since $\deg f(x) = 2$ and $\alpha$ is given to be a zero of $f(x)$, there must only be one other zero in $\Z_3(\alpha)$. Note that $\Z_3(\alpha) \cong \Z_3[x]/\princ{f(x)}$ which is a finite field of $3^2 = 9$ elements (\myref{thrm-characterisation-of-extensions}).
-    
+
     One sees that $\alpha$ is a generator of $\Z_3(\alpha)$ since
     \begin{multicols}{2}
         \begin{itemize}
@@ -50,7 +50,7 @@
             \item $p(2) = 2^3 + 2(2) + 2 = 14 = 2 \neq 0$,
         \end{itemize}
         so $p(x)$ has no zeroes in $\Z_3$ and thus is irreducible over $\Z_3$ by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}.
-        
+
         \item Note $|F| = 3^3 = 27$ which means $|F^\ast| = 27 - 1 = 26$. So we require $|\alpha| = 26$ in order for $\alpha$ to be a generator of $F^\ast$. However we see
         \begin{align*}
             \alpha^{13} &= \alpha(\alpha^3)^4\\
@@ -66,9 +66,9 @@
             &= 1
         \end{align*}
         which means that $|\alpha| \leq 13$. Therefore $\alpha$ is not a generator of $F^\ast$.
-        
+
         \item We claim that $2\alpha$ is a generator of $F^\ast$. Since the order of an element must divide the order of a group (\myref{corollary-order-of-group-multiple-of-order-of-element}) we thus know that the order of $2\alpha$ can only be 1, 2, 13, or 26.
-        
+
         Clearly $2\alpha \neq 1$ and so $|2\alpha| \neq 1$. Also we clearly see $(2\alpha)^2 = 4\alpha^2 = \alpha^2 \neq 1$ so $|2\alpha| \neq 2$. Finally, we see
         \begin{align*}
             (2\alpha)^{13} &= 2^{13}\alpha^{13}\\
@@ -81,23 +81,23 @@
     \end{partquestions}
 
     \item Suppose $p(x)$ is an irreducible factor of $x^{32} - x$, where $\deg p(x) = n$. Then we know that $\Z_2[x]/\princ{p(x)}$ is a field of order $2^n$. But the splitting field of $x^{32} - x$ over $\Z_2$ has order 32 (\myref{thrm-finite-field-is-unique}), which means that $\Z_2[x]/\princ{p(x)}$ must be a subfield of $\GF{32}$.
-    
+
     Since $32 = 2^5$, the only possible subfields are of order $2^1 = 2$ and $2^5 = 32$ as 1 and 5 are the only divisors of 5. Hence, an irreducible factor of $x^{32} - x$ must have a degree of 1 or 5.
-    
+
     \item Let $E$ be a finite extension of $F = \GF{p^n}$. In particular, let $[E:F] = m$. So by virtue of \myref{corollary-divisibility-of-finite-field-degree} we see $E \cong \GF{p^{mn}}$. In particular, $E^\ast$ is cyclic (\myref{thrm-structure-of-finite-field}) and so it contains a generator, say $\alpha$. By \myref{corollary-generator-of-finite-field-is-algebraic-over-subfield} we then see that $\alpha$ is algebraic over $F$ and $\alpha$ has degree $m$. In particular we obtain
     \[
         \underbrace{[\GF{p^{mn}}:\GF{p^n}]}_m = [\GF{p^{mn}}:\GF{p}(\alpha)]\underbrace{[\GF{p}(\alpha):\GF{p}]}_{m}
     \]
     by Tower Law (\myref{thrm-tower-law}), which means $[\GF{p^{mn}}:\GF{p}(\alpha)] = 1$. Hence $\GF{p^{mn}} = \GF{p}(\alpha)$ by \myref{prop-finite-extension-of-degree-1-means-extension-equals-base-field}.
-    
+
     \item Let $\GF{p^n}$ be a finite field. In particular, since $\GF{p^n}$ is finite, we may write out all $p^n$ elements, i.e. $\GF{p^n} = \{a_1, a_2, \dots, a_{p^n}\}$ where each $a_i$ is distinct. Now we construct the polynomial
     \[
         f(x) = (x-a_1)(x-a_2)\cdots(x-a_{p^n}) + 1.
     \]
     It is clear that none of the elements in $\GF{p^n}$ are zeroes of $f(x)$. Hence $f(x)$ has no zeroes in $\GF{p^n}$, meaning that $\GF{p^n}$ is not algebraically closed.
-    
+
     \item Let $a$ be a non-square in $\GF{p}$. Consider the polynomial $f(x) = x^2 - a$, which has no zeroes in $\GF{p}$ by definition of a non-square. Thus $f(x)$ is irreducible (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
-    
+
     Now consider the field $F = \GF{p}/\princ{f(x)}$. Note that $|F| = p^2$, which means $F \cong \GF{p^2}$. This is an extension field of $\GF{p}$ that contains a zero of $f(x)$, i.e. $a$ is a square in $\GF{p^2}$.
 
     Furthermore, note that an extension field of $\GF{p^2}$ must take the form $\GF{p^{2m}}$ by \myref{thrm-subfields-of-finite-field}. In particular, we see that if $n$ is even, then $a$ becomes a square in $\GF{p^n}$. Taking the contrapositive means that if $a$ remains a non-square in $\GF{p^n}$, then $n$ must be odd.
