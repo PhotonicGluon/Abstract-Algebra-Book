@@ -15,40 +15,59 @@
     \end{proof}
 }
 
+\newcommand{\Con}{\mathfrak{C}}  % Field of all constructible numbers
+\newcommand{\con}{\mathcal{C}}  % A field of constructible numbers
+
 %=========================================
 \chapter{Geometric Constructions}
 Geometric constructions were a favourite of the ancient Greeks. They were particularly interested in constructions that could be created with just a compass and an unmarked straightedge. In this chapter, we explore how field theory can be used to answer ancient questions about some geometric constructions.
 
 \section{Basic Geometry}
-To ensure a level playing field, we state some foundational terminology and results from geometry.
+To ensure a level playing field, we state some foundational terminology and results from geometry. We will not prove the results here.
 
-\subsection{Basic Definitions}
+\subsection{Angles}
 \begin{definition}
     An \textbf{angle}\index{angle} is the figure formed by two sides and shares a common endpoint. An angle formed by the sides $AB$ and $BC$ with common endpoint $B$ is denoted $\angle ABC$.
 \end{definition}
 
 \begin{definition}
-    The total sum of angles about a point add up to $360^\circ = 2\pi$.
+    The total sum of angles about a point add up to $2\pi = 360^\circ$.
 \end{definition}
-
-In this chapter, we elect to use radians instead of degrees to measure angles.
 
 \begin{definition}
     A \textbf{right angle}\index{angle!right} is an angle which measures $\frac\pi2 = 90^\circ$.
 \end{definition}
 
-Right angles can be used to define the notion of parallel lines.
+In this chapter, we elect to use radians instead of degrees to measure angles.
+
+\subsection{Lines}
 \begin{definition}
-    Parallel lines are lines which, when produced indefinitely in both directions, do not meet one another in either direction.
+    A \textbf{line}\index{line} is an infinitely long object with no width, depth, or curvature. A \textbf{line segment}\index{line!segment} is part of a line of finite length.
+\end{definition}
+
+\begin{remark}
+    In this part, we may abuse the definition of lines and line segments and call line segments ``lines''.
+\end{remark}
+
+\begin{definition}
+    Two lines are \textbf{perpendicular}\index{line!perpendicular} to each other when, produced indefinitely in both directions, they meet each other at a right angle.
+\end{definition}
+
+\begin{definition}
+    Two lines are \textbf{parallel}\index{line!parallel} to each other when, produced indefinitely in both directions, they do not meet one another in either direction.
 \end{definition}
 
 \begin{axiom}[Parallel Postulate]
-    If the sum of the interior angles is less than two right angles, the two straight lines, produced indefinitely, meet on that side.
+    If the sum of the interior angles on one side is less than two right angles, the two straight lines, produced indefinitely, meet on that side.
 \end{axiom}
+
+\begin{proposition}
+    If the sum of interior angles on one side is exactly the sum of two right angles, the two straight lines, produced indefinitely, will never meet.
+\end{proposition}
 
 \subsection{Polygons}
 \begin{definition}
-    A \textbf{polygon}\index{polygon} is a plane figure made up of \textbf{sides}\index{polygon!side} connected to form a closed figure. An $n$-sided polygon is called a \textbf{$n$-gon}\index{$n$-gon}.
+    A \textbf{polygon}\index{polygon} is a plane figure made up of \textbf{sides}\index{polygon!side} connected to form a closed figure. An $n$-sided polygon (where $n \geq 3$) is called a \textbf{$n$-gon}\index{$n$-gon}.
 \end{definition}
 
 \begin{proposition}
@@ -62,7 +81,7 @@ Right angles can be used to define the notion of parallel lines.
 \begin{definition}
     A \textbf{triangle}\index{triangle} is a 3-gon.
     \begin{itemize}
-        \item An \textbf{equilateral triangle}\index{triangle!equilateral} is a triangle where all 3 sides are equal in length.
+        \item An \textbf{equilateral triangle}\index{triangle!equilateral} is a triangle where all 3 sides are equal in length. Such a triangle is also called a regular 3-gon.
         \item An \textbf{isosceles triangle}\index{triangle!isosceles} is a triangle where 2 of the sides are equal in length.
         \item A \textbf{scalene triangle}\index{triangle!scalene} is a triangle where all 3 sides are of different length.
     \end{itemize}
@@ -88,6 +107,17 @@ Of special interest to us when we are dealing with geometric constructions are t
     \end{itemize}
 \end{definition}
 
+\newpage
+
+\begin{proposition}
+    If $\triangle ABC$ and $\triangle PQR$ are similar, then the ratio of the corresponding sides of the two triangles are equal. That is,
+    \begin{itemize}
+        \item $\frac{AB}{AC} = \frac{PQ}{PR}$;
+        \item $\frac{AB}{BC} = \frac{PQ}{QR}$; and
+        \item $\frac{AC}{BC} = \frac{PR}{QR}$.
+    \end{itemize}
+\end{proposition}
+
 \begin{definition}
     Two triangles $\triangle ABC$ and $\triangle A'B'C'$ are congruent if and only if corresponding sides are equal in length. That is,
     \begin{itemize}
@@ -97,8 +127,31 @@ Of special interest to us when we are dealing with geometric constructions are t
     \end{itemize}
 \end{definition}
 
+\subsection{Coordinate Geometry}
+\begin{definition}
+    A line in $\R^2$ has general form $ax + by + c = 0$ where $a,b,c, \in \R$.
+\end{definition}
+
+\begin{proposition}
+    A line passing through the points $(x_1, y_1), (x_2, y_2) \in \R^2$ has the cartesian equation
+    \[
+        y - y_1 = \frac{y_2-y_1}{x_2-x_1}(x - x_1).
+    \]
+\end{proposition}
+
+\begin{definition}
+    A circle in $\R^2$ has general form $x^2 + y^2 + ax + by + c = 0$ where $a,b,c, \in \R$.
+\end{definition}
+
+\begin{proposition}
+    A circle with center $(x_c, y_c) \in \R^2$ and radius $r \geq 0$ has the cartesian equation
+    \[
+        (x-x_c)^2 + (y-y_c)^2 = r^2.
+    \]
+\end{proposition}
+
 \section{Basic Trigonometry}
-% Before we can introduce constructable numbers, we need to introduce the basics of trigonometry. Specifically, the sine, cosine, and tangent functions.
+% Before we can introduce constructible numbers, we need to introduce the basics of trigonometry. Specifically, the sine, cosine, and tangent functions.
 
 \begin{definition}
     Let $\triangle AOB$ be a right-angled triangle with hypotenuse $OA$ of length 1 and a right angle of $\angle OBA$. Let $\angle AOB = \theta$ where $\theta \in [0, \frac\pi2]$.
@@ -160,9 +213,9 @@ In particular, we observe the following.
     We note that $\frac{5\pi}6 \in [\frac\pi2, \pi)$. Therefore one sees that $\tan(\frac{5\pi}{6}) = -\tan(\pi-\frac{5\pi}{6}) = -\tan(\frac16\pi) = -\frac{\sqrt3}3$.
 \end{example}
 
-\begin{example}
-    As $\frac{5\pi}4 \in [\pi, \frac{3\pi}2)$, thus we see $\cos(\frac{5\pi}4) = -\cos(\frac{5\pi}4-\pi) = -\cos(\frac14\pi) = -\frac{\sqrt2}2$.
-\end{example}
+% \begin{example}
+%     As $\frac{5\pi}4 \in [\pi, \frac{3\pi}2)$, thus we see $\cos(\frac{5\pi}4) = -\cos(\frac{5\pi}4-\pi) = -\cos(\frac14\pi) = -\frac{\sqrt2}2$.
+% \end{example}
 
 \begin{example}
     One sees that $\sin(\frac{11\pi}{6}) = -\sin(2\pi-\frac{11\pi}{6}) = -\sin(\frac16\pi) = -\frac12$ because $\frac{11\pi}{6} \in [\frac{3\pi}2, 2\pi)$.
@@ -178,12 +231,15 @@ We note one important result about sine and cosine.
 \begin{theorem}
     $(\sin\theta)^2 + (\cos\theta)^2 = 1$ for all $\theta \in \R$.
 \end{theorem}
+\begin{remark}
+    $(\sin\theta)^2$ and $(\cos\theta)^2$ are more commonly written as $\sin^2\theta$ and $\cos^2\theta$.
+\end{remark}
 \begin{proof}
     From definition of sine and cosine we know that $\sin\theta$ and $\cos\theta$ are the two non-hypotenuse sides of a right-angled triangle with hypotenuse 1. By Pythagoras' Theorem we therefore obtain the required result.
 \end{proof}
 
 \section{Rules of Construction}
-We are finally ready to start the discussion on constructable numbers. Before that, we need to introduce the rules of construction.
+We are finally ready to start the discussion on constructible numbers. Before that, we need to introduce the rules of construction.
 
 We are only concerned with straightedge-and-compass constructions. It is important to note that \textit{a straightedge is not a ruler}. We cannot measure arbitrary lengths with a straightedge; it is merely a tool for drawing a line between two points on a line.
 
@@ -224,10 +280,10 @@ Let us look at some examples of construction with these rules.
 }{
     $A'B'$ is parallel to $AB$.
 }{
-    None of the interior angles sum to less than two right angles; in fact the sum is exactly that of two right angles. Therefore by the Parallel Postulate we conclude that $A'B'$ is parallel to $AB$.
+    The sum of the interior angles is exactly that of two right angles. Therefore $A'B'$ is parallel to $AB$.
 }
 
-\begin{proposition}[Angle in Semicircle]
+\begin{proposition}[Angle in Semicircle]\label{prop-angle-in-semicircle}
     Suppose a triangle is inscribed within a circle where one of its sides is the diameter. Then the triangle is a right-angled triangle.
 \end{proposition}
 \constructionproof{5}{
@@ -250,7 +306,146 @@ Let us look at some examples of construction with these rules.
 }
 
 \section{Constructable Numbers}
-% TODO: Add
+With the basics of construction out of the way, we can finally dive into the meat of this chapter -- constructible numbers.
+
+\begin{definition}
+    A real number $\alpha$ is \textbf{constructible}\index{constructible number} if and only if we can construct a line segment of length $|\alpha|$ in a finite number of steps from a line segment of length 1, a straightedge, and a compass.
+\end{definition}
+
+For brevity we denote the set of all constructible numbers by $\Con$.
+
+\begin{theorem}\label{thrm-constructible-numbers-is-subfield-of-real-numbers}
+    The set of all constructible numbers, $\Con$, is a subfield of the real numbers.
+\end{theorem}
+\begin{proof}
+    By definition we know that $\Con^\ast$ is non-empty since 1 is a constructible number.
+
+    Now let $\alpha, \beta \in \Con$. Without loss of generality we may assume $\alpha > \beta$, since we just need to construct $|\alpha - \beta|$.
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.5\textwidth}{part3/images/geometric-constructions/difference.pdf_tex}
+    \end{figure}
+    In the diagram, we first construct a line segment of length $|\alpha|$. Then, from the end, construct a line segment of length $|\beta|$. Whatever remains from the original start to the end of the line segment of length $|\beta|$ is a line segment of length $|\alpha - \beta|$, which shows that $\alpha - \beta$ is constructible.
+
+    Now for any $\alpha,\beta \in \Con$ with $\beta \neq 0$ we show that $\alpha\beta^{-1} = \frac\alpha\beta$ is constructible.
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.5\textwidth}{part3/images/geometric-constructions/quotient.pdf_tex}
+    \end{figure}
+    In the diagram, we first construct $\triangle APQ$ where the length of $AP$ is $|\alpha|$ and the length of $AQ$ is $|\beta|$. The length $PQ$ can be freely chosen. Next we construct a line segment $BC$ that is parallel to $PQ$ and such that the length of $AC$ is 1. Since $BC$ is parallel to $PQ$ we therefore know that $\angle ABC = \angle APQ$ and $\angle ACB = \angle AQP$. Coupled with the fact that $\angle BAC = \angle PAQ$ is a shared angle means that $\triangle ABC$ and $\triangle APQ$ are similar. Hence we obtain the relationship that
+    \[
+        \frac{AB}{AC} = \frac{AP}{AQ}
+    \]
+    and therefore $\frac{AB}{1} = \frac{\alpha}{\beta}$, i.e. $AB = \frac\alpha\beta$, proving that $\frac\alpha\beta$ is constructible.
+
+    Therefore by the subfield test (\myref{thrm-subfield-test}) we know that $\Con$ is a subfield of $\R$.
+\end{proof}
+
+We also note that the square root of a non-negative constructible number is constructible.
+\begin{proposition}
+    If $\alpha$ is a constructible number then $\sqrt{|\alpha|}$ is a constructible number.
+\end{proposition}
+\constructionproof[0.6\textwidth]{5}{
+    \vspace{0.75cm}
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.75\linewidth}{part3/images/geometric-constructions/sqrt-constructible.pdf_tex}
+    \end{figure}
+}{
+    First draw a line $AC$ of length $1 + |\alpha|$. Draw a circle of diameter $AC$. Mark a point $D$ on $AC$ such that $AD$ is of length 1. Construct a perpendicular line passing through $D$, marking the intersection point of this perpendicular line with the circle as $B$.
+}{
+    The length of $BD$ is $\sqrt{|\alpha|}$.
+}{
+    By Angle in Semicircle (\myref{prop-angle-in-semicircle}) we know that $\angle ABC$ is a right angle. Let $\angle BAD = \theta$. Since the sum of angles in a triangle is $\pi$, thus $\angle BCA = \frac\pi2 - \theta$. Consequently we see that $\angle ABD = \frac\pi2 - \theta$ and $\angle DBC = \theta$. Hence we see that $\triangle ABD$ and $\triangle BCD$ are similar. Thus
+    \[
+        \frac{AD}{BD} = \frac{BD}{CD}
+    \]
+    which means $\frac{1}{BD} = \frac{BD}{|\alpha|}$. Therefore $(BD)^2 = |\alpha|$, which proves that $BD = \sqrt{|\alpha|}$ as required.
+}
+
+\begin{exercise}
+    Let $\theta \in [0, \frac\pi2]$. Prove that $\sin\theta$ is constructible if and only if $\cos\theta$ is constructible.
+\end{exercise}
+
+From \myref{thrm-constructible-numbers-is-subfield-of-real-numbers} we know that we can locate any point in the plane with rational coordinates. So any field of constructible numbers must be an extension field of the rationals. With this fact, we determine what other points can be constructed just from a straightedge and compass. To do so, we work with coordinates.
+
+\begin{lemma}
+    Let $\con$ be a field of constructible numbers. Then the points determined by the intersections of lines and circles in $\con$ lie in the field $\con(\sqrt{\alpha})$ for some positive $\alpha \in \con$.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[pp.~272-273]{judson_beezer_2022}})]
+    Starting with the points in the plane of $\con$, there are only 3 ways to construct new points.
+    \begin{enumerate}
+        \item Intersect two lines in $\con$. Suppose we have two lines $a_1x + b_1y + c_1 = 0$ and $a_2x + b_2y + c_2 = 0$ in $\con$, where $a_1,a_2,b_1,b_2,c_1,c_2 \in \con$. Solving for $x$ yields
+        \[
+            x = \left(\frac{b_1b_2}{a_1b_2-a_2b_1}\right)\left(\frac{c_2}{b_2}-\frac{c_1}{b_1}\right)
+        \]
+        which could clearly already be constructed. So this case does not generate any new points.
+
+        \item Intersect two circles in $\con$. Suppose we have two circles with equations
+        \begin{align*}
+            x^2 + y^2 + a_1x + b_1y + c_1 &= 0\\
+            x^2 + y^2 + a_2x + b_2y + c_2 &= 0
+        \end{align*}
+        where $a_1,a_2,b_1,b_2,c_1,c_2 \in \con$. Subtracting the two equations yields
+        \[
+            (a_1-a_2)x + (b_1-b_2)y + (c_1-c_2) = 0
+        \]
+        which is the equation of a line. Therefore the second case reduces down to solving
+        \begin{align*}
+            x^2 + y^2 + a_1x + b_1y + c_1 &= 0\\
+            (a_1-a_2)x + (b_1-b_2)y + (c_1-c_2) &= 0
+        \end{align*}
+        which is the intersection of a circle and a line. This will be covered in the third case.
+
+        \item Intersect a line and a circle in $\con$. Suppose we have a line and a circle with equations
+        \begin{align*}
+            ax + by + c &= 0\\
+            x^2 + y^2 + dx + ey + f &= 0
+        \end{align*}
+        where $a,b,c,d,e,f \in \con$. In the equation of the line, we may solve for $y$, yielding
+        \[
+            y = \frac1b (-ax - c).    
+        \]
+        Substituting this into the equation of a circle and simplifying leaves us with an equation of the form $Ax^2 + Bx + C = 0$ where $A,B,C\in\con$. Solving for $x$ leaves us with
+        \[
+            x = -\frac{B}{2A} \pm \frac{1}{2A}\sqrt{B^2-4AC}.
+        \]
+        Note that we already know that $-\frac{B}{2A}$ and $\frac{1}{2A}$ are in $\con$; the only uncertain part is $\sqrt{B^2-4AC}$. Since the line and circle do intersect, we know that $B^2-4AC \geq 0$; letting $\alpha = B^2 - 4AC$ we therefore see that $x \in \con(\alpha)$. Note if $\alpha = 0$ then $\con(\alpha) = \con$; otherwise $\con(\alpha)$ is an extension field of $\con$.
+    \end{enumerate}
+    Therefore the points of intersections of lines and circles within $\con$ lie within the field $\con(\alpha)$ where $\alpha \in \con$ and $\alpha > 0$ as desired.
+\end{proof}
+
+\begin{theorem}\label{thrm-condition-for-constructability}
+    A real number $\gamma$ is constructible if and only if there exists a sequence of fields
+    \[
+        \Q = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_n
+    \]
+    where $F_i = F_{i-1}(\sqrt{\alpha_i})$ with $\alpha_i \in F_{i-1}$ and $\gamma \in F_n$. In particular, there exists an integer $k \geq 0$ such that $[\Q(\gamma):\Q] = 2^k$.
+\end{theorem}
+\begin{proof}
+    By the lemma we know that each $F_i$ and each $\alpha_i$ exists. By Tower Law (\myref{thrm-tower-law}) we therefore see that
+    \[
+        [F_n:\Q] = [F_n:F_{n-1}][F_{n-1}:F_{n-2}]\cdots[F_2:F_1][F_1:\Q].
+    \]
+    Now note that each $[F_i:F_{i-1}]$ is 2 since we defined $F_i = F_{i-1}(\sqrt{\alpha_i})$. Therefore $[F_n:\Q]$ is a power of 2, say $2^r$. In particular we note
+    \[
+        \underbrace{[F_n:\Q]}_{2^r} = [F_n:\Q(\gamma)][\Q(\gamma):\Q]
+    \]
+    by Tower Law, which means that $[\Q(\gamma):\Q] = 2^k$ for some integer $k \geq 0$.
+\end{proof}
+
+\begin{corollary}\label{corollary-field-of-all-constructible-numbers-is-algebraic-extension}
+    $\Con$ is an algebraic extension of $\Q$.
+\end{corollary}
+\begin{proof}
+    See \myref{exercise-field-of-all-constructible-numbers-is-algebraic-extension} (later).
+\end{proof}
+
+One sees that $\Con$ is not a finite extension, but is algebraic. This is yet another counterexample to the converse of \myref{thrm-finite-extension-is-algebraic} -- an algebraic field need \textit{not} be finite!
+
+\begin{exercise}\label{exercise-field-of-all-constructible-numbers-is-algebraic-extension}
+    Prove \myref{corollary-field-of-all-constructible-numbers-is-algebraic-extension}.
+\end{exercise}
 
 \section{Impossibility of Constructions}
 % TODO: Add
