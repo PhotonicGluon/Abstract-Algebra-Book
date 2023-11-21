@@ -2,7 +2,133 @@
 Classical algebra was largely dedicated to finding the solutions to polynomials. The quadratic formula solved any equation of degree 2; the cubic formula any equation of degree 3; the quartic formula any equation of degree 4. However, a quintic formula eluded mathematicians for countless years, until Galois finally proved that such a task was impossible. In this penultimate chapter, we prove the Fundamental Theorem of Galois Theory and establish the insolvability of the quintic.
 
 \section{Field Automorphisms}
-% TODO: Add
+Recall from \myref{section-automorphism-groups} that the set of automorphisms of a group forms a group, called the group of automorphisms. We note a similar result for that of field automorphisms.
+
+\begin{proposition}
+    The set of all automorphisms of a field $F$ is a group under function composition.
+\end{proposition}
+\begin{remark}
+    We may reuse the notation used for the group of automorphisms of a group and denote the group of automorphisms of a field $F$ by $\Aut{F}$.
+\end{remark}
+\begin{proof}
+    We prove the four group axioms.
+    \begin{itemize}
+        \item \textbf{Closure}: If $f, g \in \Aut{F}$, and $h = fg$, then $h: F \to F$ is a bijection. Furthermore $h$ is a homomorphism because for $x, y \in F$ we see
+        \begin{align*}
+            h(x+y) &= f(g(x + y))\\
+            &= f(g(x) + g(y)) & (g \text{ is an isomorphism})\\
+            &= f(g(x)) + f(g(y)) & (f \text{ is an isomorphism})\\
+            &= h(x) + h(y)
+        \end{align*}
+        and
+        \begin{align*}
+            h(xy) &= f(g(xy))\\
+            &= f(g(x)g(y)) & (g \text{ is an isomorphism})\\
+            &= f(g(x))f(g(y)) & (f \text{ is an isomorphism})\\
+            &= h(x)h(y).
+        \end{align*}
+        Therefore $h$ is a bijective homomorphism, meaning $h$ is an isomorphism. Because the domain and codomain of $h$ are both $F$, thus $h$ is an automorphism, meaning $h = fg \in \Aut{F}$.
+
+        \item \textbf{Associativity}: Function composition is associative by \myref{axiom-function-composition-associative}.
+        
+        \item \textbf{Identity}: We have proved that the identity endomorphism is an automorphism (\myref{exercise-identity-homomorphism-is-an-isomorphism}) which means that $\id \in \Aut{F}$. By definition of $\id$ we know that $f\circ\id = f$ and $\id\circ f = f$ for any $f \in \Aut{F}$, meaning that $\id$ is indeed the identity of $\Aut{F}$.
+        
+        \item \textbf{Inverse}: Suppose $f \in \Aut{F}$, meaning $f$ is an automorphism. Then we know that $f^{-1}$ is an automorphism with
+        \[
+            f\circ f^{-1} = \id \text{ and } f^{-1} \circ f = \id
+        \]
+        which means that $f^{-1}$ is indeed the inverse of $f$.
+    \end{itemize}
+    Since the four group axioms are satisfied, therefore $\Aut{F}$ is a group under function composition.
+\end{proof}
+
+We are particularly interested in automorphisms of an extension field that fixes elements of the base field.
+\begin{proposition}\label{prop-galois-group-is-indeed-group}
+    Let $F$ be a field and $E/F$ a field extension. Then the set of all automorphisms of $E$ that fix $F$ elementwise is a group. In other words, the set of automorphisms $\phi: E \to E$ such that $\phi(a) = a$ for all $a \in F$ is a group.
+\end{proposition}
+\begin{proof}
+    We show that this set is a subfield of $\Aut{E}$. Note that $\id$ is an element of this subfield since $\id(a) = a$ for all $a \in E$, including $a \in F$.
+
+    Now suppose $\phi$ and $\psi$ be two automorphisms of $E$ such that $\phi(a) = a$ and $\psi(a) = a$ for all $a \in F$. Then we note that $\phi\psi^{-1}$ is an automorphism of $E$ with
+    \begin{align*}
+        \phi\psi^{-1}(a) &= \phi(\psi^{-1}(a))\\
+        &= \phi(a) & (\text{since }\psi(a) = a \text{ thus } a = \psi^{-1}(a))\\
+        &= a & (\text{since }\phi(a) = a)
+    \end{align*}
+    and so $\phi\psi^{-1}$ is an automorphism of $E$ that fixes $F$ elementwise.
+
+    Therefore the result follows by the subgroup test.
+\end{proof}
+
+We have a special name for this group.
+\begin{definition}
+    Let $F$ be a field and $E/F$ a field extension. The group of all automorphisms of $E$ that fix $F$ elementwise is called the \textbf{Galois group of $E/F$}\index{Galois group} and is denoted $\Gal{E/F}$. That is,
+    \[
+        \Gal{E/F} = \left\{\phi \in \Aut{E} \vert \phi(a) = a \text{ for all } a \in F\right\}.
+    \]
+\end{definition}
+\begin{remark}
+    Let $F$ be a field. If $f(x) \in F[x]$ is $E$ is the splitting field of $f(x)$ over $F$, then the Galois group of $f(x)$ is $\Gal{E/F}$.
+\end{remark}
+
+\begin{example}
+    One sees that $\phi: \C \to \C$ where $a+bi \mapsto a - bi$ is an automorphism. Since
+    \[
+        \phi(a) = \phi(a + 0i) = a - 0i = a
+    \]
+    for all $a \in \R$, therefore we see $\phi \in \Gal{\C/\R}$.
+\end{example}
+
+\begin{example}
+    Consider the field $\Q \subset \Q(\sqrt5) \subset \Q(\sqrt3, \sqrt5)$. Then $\sigma: \Q(\sqrt3,\sqrt5)\to\Q(\sqrt3,\sqrt5)$ given by
+    \[
+        \sigma(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) = a - b\sqrt3 + c\sqrt5 + d\sqrt{15}
+    \]
+    is an automorphism. Also
+    \[
+        \sigma(a + b\sqrt{5}) = a+b\sqrt5
+    \]
+    so $\sigma$ fixes $\Q(\sqrt5)$. Similarly $\tau: \Q(\sqrt3,\sqrt5)\to\Q(\sqrt3,\sqrt5)$ given by
+    \[
+        \tau(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) = a + b\sqrt3 - c\sqrt5 + d\sqrt{15}
+    \]
+    is an automorphism that fixes $\Q(\sqrt3)$. The automorphism $\mu = \sigma\tau$ fixes $\Q$. It will be clear soon that $S = \{\id, \sigma, \tau, \mu\}$ is $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
+
+    \begin{minipage}[c]{0.475\textwidth}
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|l|l|l|l|l|}
+                \hline
+                & $\boldsymbol{\id}$ & $\boldsymbol{\sigma}$ & $\boldsymbol{\tau}$ & $\boldsymbol{\mu}$ \\ \hline
+                $\boldsymbol{\id}$ & $\id$ & $\sigma$ & $\tau$ & $\mu$ \\ \hline
+                $\boldsymbol{\sigma}$ & $\sigma$ & $\id$ & $\mu$ & $\tau$ \\ \hline
+                $\boldsymbol{\tau}$ & $\tau$ & $\mu$ & $\id$ & $\sigma$ \\ \hline
+                $\boldsymbol{\mu}$ & $\mu$ & $\tau$ & $\sigma$ & $\id$ \\ \hline
+            \end{tabular}
+        \end{table}
+    \end{minipage}
+    \begin{minipage}[c]{0.475\textwidth}
+        \begin{table}[H]
+            \centering
+            \begin{tabular}{|l|l|l|l|l|}
+                \hline
+                & $\boldsymbol{(0, 0)}$ & $\boldsymbol{(0, 1)}$ & $\boldsymbol{(1, 0)}$ & $\boldsymbol{(1, 1)}$ \\ \hline
+                $\boldsymbol{(0, 0)}$ & $(0, 0)$ & $(0, 1)$ & $(1, 0)$ & $(1, 1)$ \\ \hline
+                $\boldsymbol{(0, 1)}$ & $(0, 1)$ & $(0, 0)$ & $(1, 1)$ & $(1, 0)$ \\ \hline
+                $\boldsymbol{(1, 0)}$ & $(1, 0)$ & $(1, 1)$ & $(0, 0)$ & $(0, 1)$ \\ \hline
+                $\boldsymbol{(1, 1)}$ & $(1, 1)$ & $(1, 0)$ & $(0, 1)$ & $(0, 0)$ \\ \hline
+            \end{tabular}
+        \end{table}
+    \end{minipage}
+
+    From the above tables, we see that $\Gal{\Q(\sqrt3,\sqrt5)/\Q} \cong \Z_2^2$. We also note that $[\Q(\sqrt3,\sqrt5):\Q] = 4$ by \myref{example-Q-sqrt3-sqrt5}. It is no coincidence that
+    \[
+        |\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
+    \]
+    as we will see later.
+\end{example}
+
+% TODO: Continue
 
 \section{The Fundamental Theorem of Galois Theory}
 % TODO: Add
