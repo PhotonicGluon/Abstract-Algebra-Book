@@ -56,11 +56,21 @@ It would be nice to define the `tightest' interval that contains a subset. That 
 
 For the two examples we are able to find the supremum, and that it is a real number. Actually, in the definition of the supremum and infimum, we did not assume that they are actually real numbers. We correct for this oversight by stating the Completeness axiom.
 
-\begin{axiom}[Completeness]\index{axiom!completeness}
+\begin{axiom}[Completeness]\index{axiom!completeness}\label{axiom-completeness}
     Every non-empty subset of $\R$ that is bounded above has a supremum within the real numbers.
 
     That is, if $A \subseteq \R$ is non-empty and bounded above, then $\sup A$ exists and is a real number.
 \end{axiom}
+
+We end this section with a property of suprema.
+\begin{proposition}\label{prop-identifying-suprema}
+    Let $A$ be a set that is non-empty and bounded above. Let $p \in \R$. Then $p = \sup A$ if and only if $p$ is a upper bound of $A$ and for every $\epsilon > 0$ there exists an $a_\epsilon \in A$ such that $a_\epsilon > p - \epsilon$.
+\end{proposition}
+\begin{proof}
+    For the forward direction, we first assume that $p = \sup A$. Then clearly $p$ is an upper bound of $A$ by definition of the supremum. Now let $\epsilon > 0$. By definition of the supremum, we know that $p - \epsilon$ is not an upper bound of $A$. In particular there must be an element greater than $p - \epsilon$ and we may choose that element to be $a_\epsilon$ as required.
+
+    For the reverse direction we assume that the two conditions hold. Let $M$ be an upper bound of $A$ and, seeking a contradiction, suppose $M < p$. Set $\epsilon = p - M$. By the second condition there exists an $a_\epsilon \in A $ such that $a_\epsilon > p - \epsilon = p - (p - M) = M$, which clearly contradicts the fact that $M$ is an upper bound of $A$. Therefore $M \geq p$ which means that $\sup A = p$ as required.
+\end{proof}
 
 \section{The Intermediate Value Theorem}
 % TODO: Add
