@@ -2,7 +2,65 @@
 In this final chapter, it is fitting to prove the theorem that is intertwined with classical and abstract algebra -- the Fundamental Theorem of Algebra. First proven by Gauss in his doctoral thesis, it unfortunately requires some results from calculus. Regardless, we will try our best to provide a complete and self-contained proof here.
 
 \section{Completeness of the Real Numbers}
-% TODO: Add
+We first introduce the idea of upper bounds and lower bounds.
+
+\begin{definition}
+    Let $A$ be a subset of $\R$.
+    \begin{itemize}
+        \item A number $M$ is called a \textbf{upper bound}\index{upper bound} of $A$ if and only if $x \leq M$ for all $x \in A$. In this case, $A$ is said to be \textbf{bounded above}\index{bounded!above}.
+        \item A number $L$ is called a \textbf{lower bound}\index{upper bound} of $A$ if and only if $x \geq L$ for all $x \in A$. In this case, $A$ is said to be \textbf{bounded below}\index{bounded!below}.
+    \end{itemize}
+    The set $A$ is said to be \textbf{bounded}\index{bounded} if and only if it is bounded above and bounded below.
+\end{definition}
+
+\begin{proposition}
+    $A \subseteq \R$ is bounded if and only if there exists an $M \in \R$ such that $|x| \leq M$ for all $x \in A$.
+\end{proposition}
+\begin{proof}
+    For the forward direction, if $A$ is bounded, then there exists $m, l \in \R$ such that $l \leq x \leq m$ for all $x \in \R$. Let $M$ be the larger of $|l|$ and $|m|$. Then we see $|x| \leq M$ as required.
+
+    For the reverse direction, if there exists an $M \in \R$ such that $|x| \leq M$, this means that $M \geq 0$ and $-M \leq x \leq M$. Consequently $x \geq -M$ meaning that $A$ is bounded below and $x \leq M$ which means that $A$ is bounded above. Therefore $A$ is bounded.
+\end{proof}
+
+\begin{example}
+    Consider the subset $\{1, 2, 3\}$. It has upper bounds of 3, 4, 5, etc. It has lower bounds of 1, 0, -1, etc.
+\end{example}
+
+It would be nice to define the `tightest' interval that contains a subset. That motivates the definition of a least upper bound and a greatest lower bound.
+
+\begin{definition}
+    Let $A\subseteq \R$ be a non-empty set that is bounded above. Then $M$ is called the \textbf{supremum}\index{supremum} (or \textbf{least upper bound}\index{upper bound!least}) if and only if
+    \begin{itemize}
+        \item $M$ is an upper bound of $A$; and
+        \item for any upper bound $m$ of $A$ we have $M \leq m$.
+    \end{itemize}
+    The supremum of a set $A$ is denoted $\sup A$.
+\end{definition}
+
+\begin{definition}
+    Let $A\subseteq \R$ be a non-empty set that is bounded below. Then $L$ is called the \textbf{infimum}\index{infimum} (or \textbf{greatest lower bound}\index{lower bound!greatest}) if and only if
+    \begin{itemize}
+        \item $L$ is a lower bound of $A$; and
+        \item for any lower bound $l$ of $A$ we have $L \geq l$.
+    \end{itemize}
+    The infimum of a set $A$ is denoted $\inf A$.
+\end{definition}
+
+\begin{example}
+    Again consider the subset $S = \{1, 2, 3\}$. We see $\sup S = 3$ and $\inf S = 1$.
+\end{example}
+
+\begin{example}
+    Non-trivially, we see that $\sup [0, 3) = 3$ and $\inf [0, 3) = 0$.
+\end{example}
+
+For the two examples we are able to find the supremum, and that it is a real number. Actually, in the definition of the supremum and infimum, we did not assume that they are actually real numbers. We correct for this oversight by stating the Completeness axiom.
+
+\begin{axiom}[Completeness]\index{axiom!completeness}
+    Every non-empty subset of $\R$ that is bounded above has a supremum within the real numbers.
+
+    That is, if $A \subseteq \R$ is non-empty and bounded above, then $\sup A$ exists and is a real number.
+\end{axiom}
 
 \section{The Intermediate Value Theorem}
 % TODO: Add
