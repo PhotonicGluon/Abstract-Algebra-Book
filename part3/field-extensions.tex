@@ -463,8 +463,8 @@ Before we can prove this, we introduce some terminology and notation, and a prel
 
 \newpage
 
-\begin{lemma}\label{lemma-injective-homomorphism-extension}
-    Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $\alpha$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an injective homomorphism and $\beta$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an injective homomorphism $\overline{\phi}: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
+\begin{lemma}\label{lemma-isomorphism-extension}
+    Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $\alpha$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an isomorphism and $\beta$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an isomorphism $\overline{\phi}: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
 \end{lemma}
 \begin{proof}[Proof (cf. {\cite[Lemma 21.32]{judson_beezer_2022}})]
     We note that, by \myref{thrm-simple-extension-isomorphism}, if $\deg p(x) = n$, we have that both $F(\alpha)$ and $F'(\beta)$ have dimension $n$ with bases
@@ -475,38 +475,36 @@ Before we can prove this, we introduce some terminology and notation, and a prel
     \[
         \overline{\phi}\left(a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}\right) = \phi(a_0) + \phi(a_1)\beta + \cdots + \phi(a_{n-1})\beta^{n-1}.
     \]
+    We show that this is an isomorphism.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Let $a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}$ and $b_0 + b_1\alpha + \cdots + b_{n-1}\alpha^{n-1}$ be elements in $F(\alpha)$. Note
+        \begin{align*}
+            \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i + \sum_{i=0}^nb_i\alpha^i\right) &=\overline{\phi}\left(\sum_{i=0}^n(a_i+b_i)\alpha^i\right)\\
+            &=\sum_{i=0}^n\phi(a_i+b_i)\beta^i\\
+            &= \sum_{i=0}^n\phi(a_i)\beta^i + \sum_{i=0}^n\phi(b_i)\beta^i\\
+            &= \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i\right) + \overline{\phi}\left(\sum_{i=0}^nb_i\alpha^i\right).
+        \end{align*}
+        Also,
+        \begin{align*}
+            \overline{\phi}\left(\left(\sum_{i=0}^na_i\alpha^i\right)\left(\sum_{i=0}^nb_i\alpha^i\right)\right) &= \overline{\phi}\left(\sum_{k=0}^{2n}\left(\left(\sum_{i=0}^ka_ib_{k-i}\right)\alpha^i\right)\right)\\
+            &= \sum_{k=0}^{2n}\left(\phi\left(\sum_{i=0}^ka_ib_{k-i}\right)\beta^i\right)\\
+            &= \sum_{k=0}^{2n}\left(\left(\sum_{i=0}^k\phi(a_i)\phi(b_{k-i})\right)\beta^i\right)\\
+            &=\left(\sum_{i=0}^n\phi(a_i)\beta^i\right)\left(\sum_{i=0}^n\phi(b_i)\beta^i\right)\\
+            &= \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i\right)\overline{\phi}\left(\sum_{i=0}^nb_i\alpha^i\right)
+        \end{align*}
+        so $\overline{\phi}$ is a homomorphism.
 
-    We first show that $\overline{\phi}$ is a homomorphism. Let $a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}$ and $b_0 + b_1\alpha + \cdots + b_{n-1}\alpha^{n-1}$ be elements in $F(\alpha)$. Note
-    \begin{align*}
-        \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i + \sum_{i=0}^nb_i\alpha^i\right) &=\overline{\phi}\left(\sum_{i=0}^n(a_i+b_i)\alpha^i\right)\\
-        &=\sum_{i=0}^n\phi(a_i+b_i)\beta^i\\
-        &= \sum_{i=0}^n\phi(a_i)\beta^i + \sum_{i=0}^n\phi(b_i)\beta^i\\
-        &= \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i\right) + \overline{\phi}\left(\sum_{i=0}^nb_i\alpha^i\right).
-    \end{align*}
-    Also,
-    \begin{align*}
-        \overline{\phi}\left(\left(\sum_{i=0}^na_i\alpha^i\right)\left(\sum_{i=0}^nb_i\alpha^i\right)\right) &= \overline{\phi}\left(\sum_{k=0}^{2n}\left(\left(\sum_{i=0}^ka_ib_{k-i}\right)\alpha^i\right)\right)\\
-        &= \sum_{k=0}^{2n}\left(\phi\left(\sum_{i=0}^ka_ib_{k-i}\right)\beta^i\right)\\
-        &= \sum_{k=0}^{2n}\left(\left(\sum_{i=0}^k\phi(a_i)\phi(b_{k-i})\right)\beta^i\right)\\
-        &=\left(\sum_{i=0}^n\phi(a_i)\beta^i\right)\left(\sum_{i=0}^n\phi(b_i)\beta^i\right)\\
-        &= \overline{\phi}\left(\sum_{i=0}^na_i\alpha^i\right)\overline{\phi}\left(\sum_{i=0}^nb_i\alpha^i\right)
-    \end{align*}
-    so $\overline{\phi}$ is a homomorphism. Note that since $\overline{\phi}$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}). Therefore $\overline{\phi}$ is an injective homomorphism. Finally, notice for any $r \in F$ that $\overline{\phi}(r) = \phi(r)$, so $\overline{\phi}$ agrees with $\phi$ on $F$. Also, clearly, $\overline{\phi}(\alpha) = \beta$. Therefore $\overline{\phi}$ satisfies the required properties.
-\end{proof}
+        \item \textbf{Injective}: Since $\overline{\phi}$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}).
 
-The next lemma extends the preceding result.
+        \item \textbf{Surjective}: Suppose $b_0 + b_1\beta + \cdots + b_{n-1}\beta^{n-1} \in F'(\beta)$. Since $\phi$ is an isomorphism, for any $b_i \in F'$, there is a pre-image $a_i \in F$ such that $\phi(a_i) = b_i$. Consequently
+        \[
+            \overline{\phi}\left(a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}\right) = b_0 + b_1\beta + \cdots + b_{n-1}\beta^{n-1}
+        \]
+        so any element in $F'(\beta)$ has a pre-image in $F(\alpha)$.
+    \end{itemize}
+    Therefore $\overline{\phi}$ is an isomorphism.
 
-\begin{lemma}\label{lemma-isomorphism-extension}
-    Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $\alpha$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an isomorphism and $\beta$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an isomorphism $\overline{\phi}: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
-\end{lemma}
-\begin{proof}
-    By \myref{lemma-injective-homomorphism-extension} we can find an injective homomorphism $\overline{\phi}: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$. We just need to show that $\overline{\phi}$ is surjective.
-    
-    Suppose $b_0 + b_1\beta + \cdots + b_{n-1}\beta^{n-1} \in F'(\beta)$. Since $\phi$ is an isomorphism, for any $b_i \in F'$, there is a pre-image $a_i \in F$ such that $\phi(a_i) = b_i$. Consequently
-    \[
-        \overline{\phi}\left(a_0 + a_1\alpha + \cdots + a_{n-1}\alpha^{n-1}\right) = b_0 + b_1\beta + \cdots + b_{n-1}\beta^{n-1}
-    \]
-    so any element in $F'(\beta)$ has a pre-image in $F(\alpha)$, meaning $\overline{\phi}$ is surjective and therefore $\overline{\phi}$ is an isomorphism.
+    Finally, notice for any $r \in F$ that $\overline{\phi}(r) = \phi(r)$, so $\overline{\phi}$ agrees with $\phi$ on $F$. Also, clearly, $\overline{\phi}(\alpha) = \beta$. Therefore this isomorphism satisfies the required properties.
 \end{proof}
 
 We can now prove the following theorem.
