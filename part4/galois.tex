@@ -128,6 +128,70 @@ We have a special name for this group.
     as we will see later.
 \end{example}
 
+Why do we care about the Galois group? It turns out that an element of such a group (which is an automorphism) permutes the zeroes of a polynomial with coefficients in the base field.
+
+\begin{proposition}\label{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}
+    Let $F$ be a field and $E/F$ a field extension. Let $f(x) \in F[x]$. Then any $\sigma \in \Gal{E/F}$ defines a permutation of the zeroes of $f(x)$ in $E$.
+\end{proposition}
+\begin{proof}[Proof (see {\cite[Proposition 23.5]{judson_beezer_2022}})]
+    Let $f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$ and suppose $\alpha \in E$ is a zero of $f(x)$. Then for any $\sigma \in \Gal{E/F}$ we see
+    \begin{align*}
+        0 &= \sigma(0) & (\sigma \text{ fixes elements in }F)\\
+        &= \sigma(f(\alpha)) & (\alpha \text{ is a zero of }f(x))\\
+        &= \sigma(a_0 + a_1\alpha + a_2\alpha^2 + \cdots + a_n\alpha^n)\\
+        &= a_0 + a_1\sigma(\alpha) + a_2\sigma(\alpha)^2 + \cdots + a_n(\sigma(\alpha))^n & (\sigma \text{ fixes elements in }F)
+    \end{align*}
+    which means that $\sigma(\alpha)$ is also a zero of $f(x)$.
+\end{proof}
+
+A partial converse of the above proposition exists for special kinds of elements, called conjugates.
+
+\begin{definition}
+    Let $F$ be a field and $E/F$ be a field extension. Two elements $\alpha,\beta \in E$ are \textbf{conjugate over $F$}\index{conjugate} if and only if they have the same minimal polynomial.
+\end{definition}
+
+\begin{example}
+    In the field extension $\Q(\sqrt2)/\Q$, the elements $\sqrt2$ and $-\sqrt2$ are conjugates over $\Q$ since they are both zeroes of the minimal polynomial $x^2 - 2$.
+\end{example}
+
+\begin{example}
+    In the field extension $\C/\R$, we see $i$ and $-i$ are conjugates over $\R$ since they are both zeroes of the minimal polynomial $x^2 + 1$.
+\end{example}
+
+\begin{proposition}
+    Let $F$ be a field, $E/F$ be a field extension, and $\alpha,\beta \in E$ be conjugates over $F$. Then there exists an isomorphism $\sigma: F(\alpha) \to F(\beta)$ such that $\sigma(a) = a$ for all $a \in F$.
+\end{proposition}
+\begin{proof}
+    Use \myref{lemma-isomorphism-extension} where, using the notation in that lemma, we set $F' = F$ and $\phi = \id$ and the result follows.
+\end{proof}
+
+We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4$. We show that this is, in fact, not a coincidence.
+
+\begin{theorem}\label{thrm-order-of-galois-group-is-degree-of-field-extension}
+    Let $F$ be a field. Let $f(x) \in F[x]$ and suppose $E$ is the splitting field of $f(x)$ over $F$. If $f(x)$ only has simple zeroes, then
+    \[
+        |\Gal{E/F}| = [E:F],
+    \]
+    that is, the order of the Galois group of $E/F$ is equal to the degree of the field extension $E/F$.
+\end{theorem}
+\begin{proof}[Proof (cf. {\cite[Theorem 23.7]{judson_beezer_2022}})]
+    We use strong induction on $[E:F]$.
+
+    When $[E:F] = 1$, we have $E = F$ (\myref{prop-finite-extension-of-degree-1-means-extension-equals-base-field}). Therefore $\Gal{E/F}$ consists of only the identity automorphism and so $|\Gal{E/F}| = 1 = [E:F]$.
+
+    Now assume that for any field $F'$, any $\mathfrak{f}(x) \in F'[x]$, and the splitting field $E'$ of $\mathfrak{f}(x)$ over $F'$ such that $[E':F'] \leq k$ for some positive integer $k$, that $|\Gal{E'/F'}| = [E':F']$. We show that the theorem holds for a field $F$, a polynomial $f(x) \in F[x]$, and the splitting field $E$ of $f(x)$ over $F$ such that $[E:F] = k+1$, i.e. we are to show $|\Gal{E/F}| = k + 1$.
+
+    Let $f(x) = p(x)q(x)$, where $p(x), q(x) \in E[x]$ and $p(x)$ is irreducible of degree $d$. If $d = 1$, then $f(x)$ has a zero in $F$ and so $p(x) \in F[x]$. This thus means that $q(x) \in F[x]$ also, and thus $E = F$ which leads to $[E:F] = 1$. If instead $d > 1$, let $\alpha \in E$ be a zero of $p(x)$. Using \myref{lemma-isomorphism-extension} where we pick $F' = F$, $\phi = \id$, and $\beta$ to be a zero of $p(x)$ in $E$, we obtain an isomorphism $\phi: F(\alpha) \to F(\beta)$ where elements of $F$ are fixed under $\phi$ and where $\alpha$ is mapped to $\beta$, i.e. $\beta = \phi(\alpha)$. Since $f(x)$ only has simple zeroes, thus $p(x)$ has $d$ distinct zeroes in $E$, say $\beta_1, \beta_2, \dots, \beta_d$. By \myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial} we therefore see that there are exactly $d$ isomorphisms $\sigma: F(\alpha) \to F(\beta_i)$ that fix $F$, one for each zero $\beta_1, \beta_2, \dots, \beta_d$ of $p(x)$.
+
+    Since $E$ is a splitting field of $f(x)$ over $F$, thus $E$ is also a splitting field of $f(x)$ over $F(\alpha)$. Similarly $E$ is a splitting field of $f(x)$ over $F(\beta)$. By Tower Law (\myref{thrm-tower-law}) one notes that
+    \[
+        k+1 = [E:F] = [E:F(\alpha)]\underbrace{[F(\alpha):F]}_{d}
+    \]
+    and so $[E:F(\alpha)] = \frac{k + 1}{d}$. By Induction Hypothesis, this means that $|\Gal{E:F(\alpha)} = \frac{k+1}{d}$. In other words, there are $\frac{k+1}{d}$ automorphisms $\psi: E \to E$ that fix $F(\alpha)$. But there are $d$ isomorphisms $\sigma: F(\alpha) \to F(\beta_i)$ that fix $F$. Therefore there must be $\frac{k+1}{d} \times d = k+1$ choices for an automorphism in $\Aut{E}$ that fixes $F$, i.e. $|\Gal{E/F}| = k+1$ as required.
+
+    By mathematical induction the claim is proven.
+\end{proof}
+
 % TODO: Continue
 
 \section{The Fundamental Theorem of Galois Theory}
