@@ -79,7 +79,7 @@ We have a special name for this group.
     for all $a \in \R$, therefore we see $\phi \in \Gal{\C/\R}$.
 \end{example}
 
-\begin{example}
+\begin{example}\label{example-galois-group-of-Q-sqrt3-sqrt5-over-Q}
     Consider the field $\Q \subset \Q(\sqrt5) \subset \Q(\sqrt3, \sqrt5)$. Then $\sigma: \Q(\sqrt3,\sqrt5)\to\Q(\sqrt3,\sqrt5)$ given by
     \[
         \sigma(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) = a - b\sqrt3 + c\sqrt5 + d\sqrt{15}
@@ -192,7 +192,60 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
     By mathematical induction the claim is proven.
 \end{proof}
 
-% TODO: Continue
+\begin{corollary}
+    Let $F$ be a finite field with a finite extension $E$ such that $[E:F] = k$. Then $\Gal{E/F}$ is cyclic with order $k$.
+\end{corollary}
+\begin{proof}
+    Let $p$ be the characteristic of $E$ and $F$, and assume that the orders of $E$ and $F$ are $p^m$ and $p^n$ respectively. Then by \myref{thrm-subfields-of-finite-field} we know that $m = nk$. Also by \myref{thrm-finite-field-is-unique} we may assume that $E$ is the splitting field of $x^{p^m} - x$ over a subfield of $E$ of order $p$. In particular this means that $E$ must be the splitting field of $x^{p^m} - x$ over $F$. Since $[E:F] = k$ thus $|\Gal{E/F}| = k$ by \myref{thrm-order-of-galois-group-is-degree-of-field-extension}.
+
+    To prove that $\Gal{E/F}$ is cyclic we need to find a generator of $\Gal{E/F}$. In particular we need to find an isomorphism in $\Gal{E/F}$ of order $k$. Consider the map $\sigma: E \to E$ where $\phi(a) = a^{p^n}$ for any $a \in E$. We show that $\sigma \in \Aut{E}$.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: Note that if $a, b \in E$ then
+        \begin{align*}
+            \sigma(a+b) &= (a+b)^{p^n}\\
+            &= a^{p^n} + b^{p^n} & (\myref{prop-freshman-dream})\\
+            &= \sigma(a) + \sigma(b)
+        \end{align*}
+        and
+        \begin{align*}
+            \sigma(ab) &= (ab)^{p^n}\\
+            &= a^{p^n}b^{p^n}\\
+            &= \sigma(a)\sigma(b)
+        \end{align*}
+        which means that $\sigma$ is a homomorphism.
+        
+        \item \textbf{Injective}: Since $\sigma$ is non-trivial it must be injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}.
+        
+        \item \textbf{Surjective}: By \myref{problem-injection-from-finite-set-to-itself-is-bijection} we know that $\sigma$ is surjective.
+    \end{itemize}
+    Therefore $\sigma$ is an isomorphism from $E$ to $E$, i.e. $\sigma$ is an automorphism. So $\sigma \in \Aut{E}$.
+    
+    We also note that because $F$ is the splitting field of $x^{p^n}-x$ over the base field of order $p$, therefore every element of $F$ is a zero of $x^{p^n}-x$, in particular $a^{p^n} - a = 0$ which means $a = a^{p^n}$ for any $a \in F$. Hence $\sigma(a) = a$ for all $a \in F$, which shows that $\sigma \in \Gal{E/F}$.
+
+    Finally we show that the order of $\sigma$ in $\Gal{E/F}$ is $k$. Recall that since $E$ is the splitting field of $x^{p^m} - x$ over the base field of order $p$, therefore every element of $E$ is a zero of $x^{p^m} - x$ which results in $a^{p^m} = a$ for all $a \in E$. Thus one sees that
+    \begin{align*}
+        (\sigma^k)(a) &= a^{p^{nk}}\\
+        &= a^{p^m}\\
+        &= a
+    \end{align*}
+    for all $a \in E$, meaning that $\sigma^k$ is the identity of $\Gal{E/F}$. We also see that $\sigma^r$ cannot be the identity for $1 \leq r < k$ since otherwise $x^{p^{nr}} - x$ would have $p^m$ roots while the polynomial itself has a degree of $p^{nr}$, which is less than $p^m$, contradicting \myref{thrm-polynomial-of-degree-n-has-at-most-n-zeroes}. Therefore $|\sigma| = k$ in $\Gal{E/F}$, showing that $\Gal{E/F}$ is cyclic with order $k$.
+\end{proof}
+
+\begin{example}
+    Remember when we claimed that $\Gal{\Q(\sqrt3,\sqrt5)/\Q} \cong \Z_2^2$ in \myref{example-galois-group-of-Q-sqrt3-sqrt5-over-Q}? Certainly $H = \{\id, \sigma, \tau, \mu\}$ is a subgroup of $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$. However one sees that $|H| = 4$ and
+    \[
+        |\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
+    \]
+    by \myref{thrm-order-of-galois-group-is-degree-of-field-extension}. Therefore $H = \Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
+\end{example}
+
+\begin{exercise}
+    Consider the field extension $\C/\R$.
+    \begin{partquestions}{\roman*}
+        \item Find the order of $\Gal{\C/\R}$.
+        \item Find the element(s) of $\Gal{\C/\R}$.
+    \end{partquestions}
+\end{exercise}
 
 \section{The Fundamental Theorem of Galois Theory}
 % TODO: Add

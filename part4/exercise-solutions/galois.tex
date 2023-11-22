@@ -1,0 +1,30 @@
+\section{Galois Theory}
+\begin{questions}
+    \item \begin{partquestions}{\roman*}
+        \item We note that $[\C:\R] = 2$ since $\C = \R(i)$ and $i$ is a zero of the irreducible polynomial $x^2 + 1$ over $\R$. Therefore, by \myref{thrm-order-of-galois-group-is-degree-of-field-extension}, we see $|\Gal{\C/\R}| = [\C:\R] = 2$.
+        
+        \item Certainly $\id \in \Gal{\C/\R}$. We claim that the other element in $\Gal{\C/\R}$ is $\phi: \C \to \C$ where $\phi(a+bi) = a-bi$ for all $a+bi \in \C$. We first need to check that $\phi$ is an automorphism.
+        \begin{itemize}
+            \item \textbf{Homomorphism}: One sees clearly for any $a+bi, c+di \in \C$ that
+            \begin{align*}
+                \phi((a+bi)+(c+di)) &= \phi((a+c)+(b+d)i)\\
+                &= (a+c)-(b+d)i\\
+                &= (a-bi) + (c-di)\\
+                &= \phi(a+bi) + \phi(c+di)
+            \end{align*}
+            and
+            \begin{align*}
+                \phi((a+bi)(c+di)) &= \phi((ac-bd) + (ad+bc)i)\\
+                &= (ac-bd) - (ad+bc)i\\
+                &= (a-bi)(c-di)\\
+                &= \phi(a+bi)\phi(c+di)
+            \end{align*}
+            which proves that $\phi$ is indeed a homomorphism.
+
+            \item \textbf{Injective}: Since $\phi$ is non-trivial it is thus injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}.
+            
+            \item \textbf{Surjective}: For any $a + bi \in \C$ we note that $a - bi \in \C$ and that $\phi(a - bi) = a - (-b)i = a+bi$, proving that $\phi$ is surjective.
+        \end{itemize}
+        Therefore $\phi$ is a bijective homomorphism from $\C$ to $\C$, i.e. an automorphism. One also sees that $\phi(r) = r$ for all $r \in \R$, so $\phi$ fixes $\R$. Thus $\phi \in \Gal{\C/\R}$. But as $\Gal{\C/\R}$ has order 2, thus $\id$ and $\phi$ are the only two elements in $\Gal{\C/\R}$.
+    \end{partquestions}
+\end{questions}
