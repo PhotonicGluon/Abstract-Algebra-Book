@@ -247,7 +247,62 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
     \end{partquestions}
 \end{exercise}
 
+\section{Fixed Fields}
+\begin{definition}
+    Let $F$ be a field and $E/F$ be a field extension. Let $H$ be a subgroup of $\Gal{E/F}$. Then the \textbf{fixed field}\index{fixed field} of $H$ is
+    \[
+        \Fix{E}{H} = \{x \in E \vert \phi(x) = x \text{ for all } \phi \in H\}.
+    \]
+\end{definition}
+\begin{remark}
+    Other authors may choose to denote the fixed field of $H$ by $E_H$ (e.g. \cite[p.~531]{gallian_2016} and \cite[p.~298]{judson_beezer_2022}) or by $E^H$ (e.g. \cite[p.~486]{artin_2011}).
+\end{remark}
+
+\begin{proposition}\label{prop-fixed-field-is-subfield}
+    Let $F$ be a field, $E/F$ a field extension, and $H$ be a subgroup of $\Gal{E/F}$. Then $\Fix{E}{H}$ is a subfield of $E$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-fixed-field-is-subfield} (later).
+\end{proof}
+
+\begin{example}
+    Consider the field $\Q(\sqrt3,\sqrt5)$, and the automorphism $\sigma$ on that field such that $\sqrt3 \mapsto -\sqrt3$. Then the fixed field of $\langle\sigma\rangle$ is $\Q(\sqrt5)$, i.e. $\Fix{E}{\langle\sigma\rangle} = \Q(\sqrt5)$.
+\end{example}
+
+\begin{exercise}\label{exercise-fixed-field-is-subfield}
+    Prove \myref{prop-fixed-field-is-subfield}.
+\end{exercise}
+
+\begin{proposition}\label{prop-fixed-field-of-Gal-E/F-is-F}
+    Let $F$ be a field. Let $E$ be the splitting field of a polynomial $f(x) \in F[x]$ over $F$. Then
+    \[
+        \Fix{E}{\Gal{E/F}} = F.
+    \]
+\end{proposition}
+\begin{proof}[Proof (cf. {\cite[Proposition 23.17]{judson_beezer_2022}})]
+    For brevity let $G = \Gal{E/F}$.
+    
+    Note that $\Fix{E}{G} = \{a \in E \vert \phi(a) = a \text{ for all } \phi \in \Gal{E/F}\}$. But clearly every element of $F$ is fixed by any $\phi \in \Gal{E/F}$. Hence it is safe to say that $F \subseteq \Fix{E}{G}$. It is also clear that $\Fix{E}{G} \subseteq E$ since $\Fix{E}{G}$ is a subfield of $E$.
+
+    Now since $F \subseteq \Fix{E}{G}$, any automorphism of $E$ that fixes $\Fix{E}{G}$ must also fix $F$. Thus $\Gal{E/\Fix{E}{G}} \subseteq \Gal{E/F}$. On the other hand, suppose $\sigma \in \Gal{E/F} = G$. Note that
+    \[
+        \Fix{E}{G} = \{a \in E \vert \phi(a) = a \text{ for all } \phi \in \Gal{E/F}\}
+    \]
+    by definition, which means that $\sigma(a) = a$ for all $a \in \Fix{E}{G}$. Therefore, by definition of a Galois group, we see $\sigma \in \Gal{E/\Fix{E}{G}}$, meaning $\Gal{E/F} \subseteq \Gal{E/\Fix{E}{G}}$. Hence $\Gal{E/F} = \Gal{E/\Fix{E}{G}}$. Consequently, by \myref{thrm-order-of-galois-group-is-degree-of-field-extension} we see
+    \[
+        [E:F] = [E:\Fix{E}{G}].
+    \]
+    On the other hand, by Tower Law (\myref{thrm-tower-law}), one obtains
+    \[
+        [E:F] = [E:\Fix{E}{G}][\Fix{E}{G}:F].
+    \]
+    Therefore $[\Fix{E}{G}:F] = 1$ which yields $\Fix{E}{G} = F$ (\myref{prop-finite-extension-of-degree-1-means-extension-equals-base-field}), which is what was to be shown.
+\end{proof}
+
 \section{The Fundamental Theorem of Galois Theory}
+% TODO: Add
+
+\section{Solvability of Polynomials by Radicals}
 % TODO: Add
 
 \section{The Insolvability of the Quintic}
