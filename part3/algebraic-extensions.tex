@@ -315,9 +315,6 @@ The theorem can sometimes be used to show that a field does not contain a partic
     Suppose $\alpha$ is an element of some extension of $\Q$ with minimal polynomial $p(x) = x^5 + 2x + 1 \in \Q[x]$. Prove that $\sqrt2 \notin \Q(\alpha)$.
 \end{exercise}
 
-\section{Primitive Elements}
-Recall that a simple extension is `generated' by one element, called its primitive element. We wonder whether `non-simple' extensions can be converted into simple extensions.
-
 \begin{example}
     Recall from \myref{exercise-splitting-field-sqrt2-sqrt3} that we have shown $\Q(\sqrt2, \sqrt3) = \Q(\sqrt2 + \sqrt3)$. We present another method for proving this fact.
 
@@ -341,31 +338,6 @@ Recall that a simple extension is `generated' by one element, called its primiti
     \]
     by Tower Law (\myref{thrm-tower-law}), which means that the minimal polynomial of $\sqrt2+\sqrt3$ has degree 4. How do we find this minimal polynomial? First set $\alpha = \sqrt2 + \sqrt3$, and note $\alpha^2 = 2 + 2\sqrt6 + 3$, which means $\alpha^2 - 5 = 2\sqrt6$. Hence $\alpha^4 - 10\alpha^2 + 25 = 24$, which means $\alpha^4 - 10\alpha^2 + 1 = 0$. Hence $\alpha$ is a zero of the monic degree 4 polynomial $p(x) = x^4 - 10x^2 + 1$. Since $p(x)$ is irreducible by \myref{exercise-splitting-field-sqrt2-sqrt3}, therefore $p(x)$ is the minimal polynomial of $\sqrt2 + \sqrt3$.
 \end{example}
-
-The previous example shows that an extension obtained adjoined by two elements to a field can sometimes be obtained by adjoining a single element to the field. We show that under certain conditions this can always be done.
-
-\begin{theorem}\label{thrm-two-elem-adjoined-convert-to-simple-extension}
-    Let $F$ be a field of characteristic 0. If $a$ and $b$ are algebraic over $F$, then there is an element in $c \in F(a,b)$ such that $F(a,b) = F(c)$.
-\end{theorem}
-\begin{proof}[Proof (see {\cite[Theorem 21.6]{gallian_2016}})]
-    Let $p(x)$ and $q(x)$ be the minimal polynomials over $F$ for $a$ and $b$ respectively. Let $K/F$ be a field extension where $a_1, a_2, \dots, a_m$ and $b_1, b_2, \dots, b_n$ are the distinct zeroes of $p(x)$ and $q(x)$ in $K$, and where $a = a_1$ and $b = b_1$. Now of all the elements of $F$, choose a $d$ such that
-    \[
-        d \neq (a_i-a)(b-b_j)^{-1}
-    \]
-    for all $i \in \{1, 2, 3, \dots, m\}$ and $j \in \{2, 3, \dots, n\}$. In other words we have $a_i \neq a + d(b-b_j)$ for all $i \in \{1, 2, 3, \dots, m\}$ and $j \in \{2, 3, \dots, n\}$.
-
-    Now we show that $c = a + db$ has the property that $F(a, b) = F(c)$. Clearly $F(c) \subseteq F(a, b)$; we just need to show $F(a, b) \subseteq F(c)$. We note that $a = c - db$, so we just need to prove that $b \in F(c)$ and this would automatically imply that $a \in F(c)$ and therefore $F(a,b) \subseteq F(c)$.
-
-    Consider the polynomial $r(x) = p(c - dx)$, i.e. $r(x)$ is obtained by substituting $c - dx$ for $x$ in $p(x)$. One then sees that $q(b) = 0$ (by definition of the minimal polynomial of $b$ over $F$) and $r(b) = p(c - db) = p(a) = 0$, so both $q(x)$ and $r(x)$ are divisible by the minimal polynomial for $b$ over $F(c)$ by \myref{corollary-minimal-polynomial-divides-polynomial-with-same-root}. Let $s(x) \in F(c)[x]$ be the minimal polynomial of $b$ over $F(c)$. Since $s(x)$ is a common divisor of both $q(x)$ and $r(x)$, thus the only possible zeroes of $s(x)$ in $K$ are the zeroes of $q(x)$ that are also zeroes of $r(x)$. But note
-    \begin{align*}
-        r(b_j) &= p(c-db_j)\\
-        &= p((a+db) - db_j)\\
-        &= p(a+d(b-b_j))
-    \end{align*}
-    and $a_i \neq a+d(b-b_j)$ for all $i \in \{1, 2, 3, \dots, m\}$ and $j \in \{2, 3, \dots, n\}$. Therefore the only possible zero of $s(x)$ in $K$ is $b_1 = b$; consequently $s(x) = (x-b)^u$ for some positive integer $u$. However $s(x)$ is irreducible (by definition of a minimal polynomial), and because $F$ has characteristic 0, therefore $s(x)$ has no multiple zeroes (\myref{thrm-zeroes-of-an-irreducible}), meaning $u = 1$ and therefore $s(x) = x-b$. The only zero of $s(x)$ is clearly $b$, and by definition of a minimal polynomial, we must have $b \in F(c)$, proving $F(a, b) \subseteq F(c)$
-
-    So we have $F(c) \subseteq F(a, b)$ and $F(a, b) \subseteq F(c)$, proving that $F(a, b) = F(c)$.
-\end{proof}
 
 \begin{exercise}\label{exercise-Q-sqrt3-sqrt5}
     Consider $\Q(\sqrt3,\sqrt5)$.

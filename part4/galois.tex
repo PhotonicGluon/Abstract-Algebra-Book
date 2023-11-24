@@ -247,6 +247,78 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
     \end{partquestions}
 \end{exercise}
 
+\section{Separable Extensions}
+For many results, we are interested in polynomials with only simple zeroes within its splitting field over the base field. These polynomials are called separable polynomials.
+
+\begin{definition}
+    Let $F$ be a field and $f(x) \in F[x]$. Let $E$ be the splitting field of $f(x)$ over $F$. Then $f(x)$ is called \textbf{separable}\index{polynomial!separable} if and only if it has only simple zeroes in $E$. In other words, over $E$,
+    \[
+        f(x) = a(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n)
+    \]
+    where each $\alpha_i$ is distinct.
+\end{definition}
+
+Recall that \myref{thrm-criterion-for-multiple-zeroes} tells us that a polynomial $f(x)$ has multiple zeroes if and only if $\deg \gcd(f(x), f'(x)) > 0$. Therefore a polynomial $f(x)$ has only simple zeroes if and only if $\gcd(f(x), f'(x)) = k$, a constant in $F$.
+
+Recall also from \myref{thrm-zeroes-of-an-irreducible} that an irreducible polynomial in $F[x]$ is separable if
+\begin{itemize}
+    \item $\Char{F} = 0$; or
+    \item $\Char{F} = p$, a prime, and $f(x) \neq g(x^p)$ for some $g(x) \in F[x]$.
+\end{itemize}
+
+\begin{definition}
+    Let $F$ be a field. An extension $E$ is a \textbf{separable extension}\index{extension!separable} of $F$ if and only if every element of $E$ is a zero of a separable polynomial in $F[x]$.
+\end{definition}
+
+Separable extensions are nice in the way that they can be determined solely by one primitive element. Before we can prove this fact, we note one lemma.
+
+\begin{lemma}\label{lemma-primitive-element}
+    Let $F$ be an infinite field and $E$ a finite separable extension of $F$. If $E = F(a, b)$ then there exists a $c \in E$ such that $E = F(c)$.
+\end{lemma}
+\begin{proof}[Proof (see {\cite[Theorem 21.6]{gallian_2016}} and {\cite[Theorem 23.13]{judson_beezer_2022}})]
+    Let $p(x)$ and $q(x)$ be the minimal polynomials over $F$ for $a$ and $b$ respectively. Let $K/F$ be a field extension where $a_1, a_2, \dots, a_m$ and $b_1, b_2, \dots, b_n$ are the zeroes of $p(x)$ and $q(x)$ in $K$, and where $a = a_1$ and $b = b_1$. Choose a $d \in F$ such that
+    \[
+        d \neq (a_i-a)(b-b_j)^{-1}
+    \]
+    for all $i \in \{1, 2, 3, \dots, m\}$ and $j \in \{2, 3, \dots, n\}$. In other words we have $a_i \neq a + d(b-b_j)$ for all $i \in \{1, 2, 3, \dots, m\}$ and $j \in \{2, 3, \dots, n\}$.
+
+    Now we show that $c = a + db$ has the property that $F(a, b) = F(c)$. Clearly $F(c) \subseteq F(a, b)$; we just need to show $F(a, b) \subseteq F(c)$. We note that $a = c - db$, so we just need to prove that $b \in F(c)$ and this would automatically imply that $a \in F(c)$ and therefore $F(a,b) \subseteq F(c)$.
+
+    Consider the polynomial $r(x) = p(c - dx)$, i.e. $r(x)$ is obtained by substituting $c - dx$ for $x$ in $p(x)$. One then sees that $q(b) = 0$ (by definition of the minimal polynomial of $b$ over $F$) and $r(b) = p(c - db) = p(a) = 0$, so both $q(x)$ and $r(x)$ are divisible by the minimal polynomial for $b$ over $F(c)$ by \myref{corollary-minimal-polynomial-divides-polynomial-with-same-root}. Let $s(x) \in F(c)[x]$ be the minimal polynomial of $b$ over $F(c)$. Since $s(x)$ is a common divisor of both $q(x)$ and $r(x)$, thus the only possible zeroes of $s(x)$ in $K$ are the zeroes of $q(x)$ that are also zeroes of $r(x)$. But note
+    \begin{align*}
+        r(b_j) &= p(c-db_j)\\
+        &= p((a+db) - db_j)\\
+        &= p(a+d(b-b_j))
+    \end{align*}
+    and $a_i \neq a+d(b-b_j)$ for all $i \in \{1, 2, 3, \dots, m\}$ and $j \in \{2, 3, \dots, n\}$. Therefore the only possible zero of $s(x)$ in $K$ is $b_1 = b$; consequently $s(x) = (x-b)^u$ for some positive integer $u$. However $s(x)$ is irreducible (by definition of a minimal polynomial), and because $F$ has characteristic 0, therefore $s(x)$ has no multiple zeroes (\myref{thrm-zeroes-of-an-irreducible}), meaning $u = 1$ and therefore $s(x) = x-b$. The only zero of $s(x)$ is clearly $b$, and by definition of a minimal polynomial, we must have $b \in F(c)$, proving $F(a, b) \subseteq F(c)$.
+
+    So we have $F(c) \subseteq F(a, b)$ and $F(a, b) \subseteq F(c)$, proving that $F(a, b) = F(c)$.
+\end{proof}
+
+\begin{theorem}[Primitive Element Theorem]\index{Primitive Element Theorem}\label{thrm-primitive-element}
+    Every separable field extension of finite degree is simple.
+\end{theorem}
+\begin{proof}
+    Let $E$ be a finite separable extension of a field $F$. We show that there exists an $\alpha \in E$ such that $E = F(\alpha)$.
+
+    For the case when $F$ is finite, we know that $E$ is also finite (\myref{thrm-subfields-of-finite-field}) and so $E^\ast$ is cyclic (\myref{thrm-structure-of-finite-field}). Let $\alpha$ be a generator of $E^\ast$. Then one sees that $E = F(\alpha)$.
+
+    For the case when $F$ is infinite, suppose $[E:F] = n$, which means that we may write $E = F(a_1, a_2, \dots, a_n)$ where each $a_i$ is in $E$. We induct on $n$. We choose $n > 1$ since the case of $n = 1$ would lead to $E = F$ (\myref{prop-finite-extension-of-degree-1-means-extension-equals-base-field}).
+
+    When $n = 2$, then $E = F(a_1, a_2)$. \myref{lemma-primitive-element} immediately gives us a $\alpha \in E$ such that $E = F(\alpha)$.
+
+    Assume for some positive integer $k$ that if $E = F(a_1, a_2, \dots, a_k)$ then there exists an $\alpha \in E$ such that $E = F(\alpha)$. We show that this holds for the case of $k + 1$.
+
+    If $[E:F] = k + 1$ this means that $E = F(a_1, a_2, \dots, a_k, a_{k+1})$. Thus
+    \begin{align*}
+        F(a_1, a_2, \dots, a_k, a_{k+1}) &= F(a_1, a_2, \dots, a_k)(a_{k+1}) & (\myref{prop-field-generated-by-S-inductive-definition})\\
+        &= F(\alpha_1)(a_{k+1}) \text{ for some } \alpha_1 \in E & (\text{Induction Hypothesis})\\
+        &= F(\alpha_1, a_{k+1}) & (\myref{prop-field-generated-by-S-inductive-definition})\\
+        &= F(\alpha) \text{ for some } \alpha \in E & (\myref{lemma-primitive-element})
+    \end{align*}
+    which proves the case for $k + 1$.
+\end{proof}
+
 \section{Fixed Fields}
 \begin{definition}
     Let $F$ be a field and $E/F$ be a field extension. Let $H$ be a subgroup of $\Gal{E/F}$. Then the \textbf{fixed field}\index{fixed field} of $H$ is
