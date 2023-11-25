@@ -80,9 +80,9 @@ We have a special name for this group.
 \end{example}
 
 \begin{example}\label{example-galois-group-of-Q-sqrt3-sqrt5-over-Q}
-    Consider the field $\Q \subset \Q(\sqrt5) \subset \Q(\sqrt3, \sqrt5)$. Then $\sigma: \Q(\sqrt3,\sqrt5)\to\Q(\sqrt3,\sqrt5)$ given by
+    Consider the field $\Q \subset \Q(\sqrt5) \subset \Q(\sqrt3, \sqrt5)$. Then $\sigma: \Q(\sqrt3,\sqrt5) \to \Q(\sqrt3,\sqrt5)$ given by
     \[
-        \sigma(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) = a - b\sqrt3 + c\sqrt5 + d\sqrt{15}
+        \sigma(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) = a - b\sqrt3 + c\sqrt5 - d\sqrt{15}
     \]
     is an automorphism. Also
     \[
@@ -90,9 +90,9 @@ We have a special name for this group.
     \]
     so $\sigma$ fixes $\Q(\sqrt5)$. Similarly $\tau: \Q(\sqrt3,\sqrt5)\to\Q(\sqrt3,\sqrt5)$ given by
     \[
-        \tau(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) = a + b\sqrt3 - c\sqrt5 + d\sqrt{15}
+        \tau(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) = a + b\sqrt3 - c\sqrt5 - d\sqrt{15}
     \]
-    is an automorphism that fixes $\Q(\sqrt3)$. The automorphism $\mu = \sigma\tau$ fixes $\Q$. It will be clear soon that $S = \{\id, \sigma, \tau, \mu\}$ is $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
+    is an automorphism that fixes $\Q(\sqrt3)$. The automorphism $\mu = \sigma\tau$ fixes $\Q(\sqrt{15})$. It will be clear soon that $S = \{\id, \sigma, \tau, \mu\}$ is $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
 
     \begin{minipage}[c]{0.475\textwidth}
         \begin{table}[H]
@@ -469,7 +469,78 @@ We end this section by looking at a result regarding normal extensions.
 \end{proof}
 
 \section{The Fundamental Theorem of Galois Theory}
-% TODO: Add
+To motivate the Fundamental Theorem of Galois Theory, we return back to a familiar example.
+
+\begin{example}
+    In \myref{example-galois-group-of-Q-sqrt3-sqrt5-over-Q} we examined the automorphisms of $\Q(\sqrt3, \sqrt5)$ fixing $\Q$. Recall $\Gal{\Q(\sqrt3,\sqrt5)/\Q} = \{\id, \sigma, \tau, \mu\}$, where
+    \begin{align*}
+        \sigma(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) &= a - b\sqrt3 + c\sqrt5 - d\sqrt{15},\\
+        \tau(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) &= a + b\sqrt3 - c\sqrt5 - d\sqrt{15}, \text{ and}\\
+        \mu(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) &= a - b\sqrt3 - c\sqrt5 + d\sqrt{15}.
+    \end{align*}
+    Note that $\sigma$ fixes $\Q(\sqrt5)$, $\tau$ fixes $\Q(\sqrt3)$, and $\mu$ fixes $\Q(\sqrt{15})$. We compare the lattice of subgroups of $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$ with the field extension diagram of $\Q(\sqrt3, \sqrt5)$.
+
+    \begin{figure}[H]
+        \centering
+        \pdfteximg{0.475\textwidth}{part4/images/galois/Qsqrt3-Qsqrt5-Qsqrt15.pdf_tex}
+        \pdfteximg{0.475\textwidth}{part4/images/galois/Gal-Qsqrt3-Qsqrt5.pdf_tex}
+        \caption{Subfields of $\Q(\sqrt3,\sqrt5)$ and Subgroups of $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$}
+    \end{figure}
+\end{example}
+
+The preceding example shows that, in certain cases, there is an intimate connection between the lattice of subfields between the fields $E$ and $F$ and the lattice of subgroups of $\Gal{E/F}$. This is the core idea of the Fundamental Theorem of Galois Theory.
+
+\newpage
+
+\begin{theorem}[Fundamental Theorem of Galois Theory]\index{Fundamental Theorem of Galois Theory}\label{thrm-fundamental-theorem-of-galois-theory}
+    Let $F$ be a finite field or a field of characteristic 0 and $E$ a finite normal extension of $F$. Then the following statements are true.
+    \begin{enumerate}
+        \item The map $\mathcal{K} \mapsto \Gal{E/\mathcal{K}}$ is a bijection of subfields $\mathcal{K}$ of $E$ with the subfields of $\Gal{E/F}$. In more symbolic notation, letting $S = \{\mathcal{K} \vert \mathcal{K} \text{ is a field and } F \subseteq \mathcal{K} \subseteq E\}$, the map $f: S \to \Gal{E/F}, \mathcal{K} \mapsto \Gal{E/\mathcal{K}}$ is a bijection.
+        
+        \item If $K$ is a field such that $F \subseteq K \subseteq E$, then
+        \[
+            [E:K] = |\Gal{E/K}| \text{ and } [K:F] = [\Gal{E/F}:\Gal{E/K}].
+        \]
+
+        \item For fields $K$ and $L$, we have $F \subseteq K \subseteq L \subseteq E$ if and only if $\{\id\} \subseteq \Gal{E/L} \subseteq \Gal{E/K} \subseteq \Gal{E/F}$.
+        
+        \item $K$ is a normal extension of $F$ if and only if $\Gal{E/K}$ is a normal subgroup of $\Gal{E/F}$. In this case we have
+        \[
+            \Gal{K/F} \cong \Gal{E/F}/\Gal{E/K}.
+        \]
+    \end{enumerate}
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 23.23]{judson_beezer_2022}})]
+    We prove the statements in order.
+    \begin{enumerate}
+        \item We need to prove that $f$ is both injective and surjective.
+        \begin{itemize}
+            \item \textbf{Injective}: Suppose $\mathcal{K}, \mathcal{L} \in S$ such that $f(\mathcal{K}) = f(\mathcal{L})$. Then $\Gal{E/\mathcal{K}} = \Gal{E/\mathcal{L}}$. For brevity let $G = \Gal{E/\mathcal{K}} = \Gal{E/\mathcal{L}}$. Then we see that $\mathcal{K} = \Fix{E}{G}$ and $\mathcal{L} = \Fix{E}{G}$, meaning $\mathcal{K} = \mathcal{L}$.
+            
+            \item \textbf{Surjective}: Suppose $G$ is a subgroup of $\Gal{E/F}$. Let $\mathcal{K} = \Fix{E}{G}$. One clearly sees $F \subseteq \mathcal{K} \subseteq E$, so $E$ is a normal extension of $\mathcal{K}$. Then by \myref{thrm-subgroup-of-automorphisms-equals-galois-group-if-base-field-is-fixed-field} we see $G = \Gal{E/\mathcal{K}}$, so $\mathcal{K}$ is the pre-image of $G$ under $f$.
+        \end{itemize}
+        This proves that $f$ is a bijection.
+
+        \item By \myref{thrm-order-of-galois-group-is-degree-of-field-extension} we have $|\Gal{E/K}| = [E:K]$. Also, one sees that
+        \[
+            [E:F] = [E:K][K:F]
+        \]
+        by Tower Law (\myref{thrm-tower-law}),
+        \[
+            |\Gal{E/F}| = [\Gal{E/F}:\Gal{E/K}]|\Gal{E/K}|
+        \]
+        by Lagrange's Theorem (\myref{thrm-lagrange}), which shows that
+        \[
+            [E:F] = [\Gal{E/F}:\Gal{E/K}][E:K] = [E:K][K:F]
+        \]
+        and therefore $[\Gal{E/F}:\Gal{E/K}] = [K:F]$.
+
+        \item % TODO: Add
+        
+        \item % TODO: Add
+    \end{enumerate}
+    This completes the proof.
+\end{proof}
 
 \section{Solvability of Polynomials by Radicals}
 % TODO: Add
