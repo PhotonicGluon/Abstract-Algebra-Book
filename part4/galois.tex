@@ -47,7 +47,7 @@ We are particularly interested in automorphisms of an extension field that fixes
     Let $F$ be a field and $E/F$ a field extension. Then the set of all automorphisms of $E$ that fix $F$ elementwise is a group. In other words, the set of automorphisms $\phi: E \to E$ such that $\phi(a) = a$ for all $a \in F$ is a group.
 \end{proposition}
 \begin{proof}
-    We show that this set is a subfield of $\Aut{E}$. Note that $\id$ is an element of this subfield since $\id(a) = a$ for all $a \in E$, including $a \in F$.
+    We show that this set is a subgroup of $\Aut{E}$. Note that $\id$ is an element of this subgroup since $\id(a) = a$ for all $a \in E$, including $a \in F$.
 
     Now suppose $\phi$ and $\psi$ be two automorphisms of $E$ such that $\phi(a) = a$ and $\psi(a) = a$ for all $a \in F$. Then we note that $\phi\psi^{-1}$ is an automorphism of $E$ with
     \begin{align*}
@@ -430,18 +430,21 @@ Separable extensions are nice in the way that they can be determined solely by o
     which means $|G| = |\Gal{E/F}|$, and therefore $G = \Gal{E/F}$.
 \end{proof}
 
-We end this section by looking at a result regarding normal extensions.
+\section{Galois Extensions}
+We first define normal extensions.
 
 \begin{definition}
     Let $F$ be a field and $E$ an algebraic extension of $F$. Then $E$ is called a \textbf{normal extension}\index{extension!normal} of $F$ if and only if every irreducible polynomial in $F[x]$ with \textit{at least one} zero in $E$ has \textit{all} of its zeroes in $E$. In other words, every irreducible polynomial in $F[x]$ with a zero in $E$ splits in $E$.
 \end{definition}
 
-\newpage
+\begin{definition}
+    Let $F$ be a field. A normal separable field extension $E/F$ is called a \textbf{Galois extension}\index{extension!Galois} of $F$.
+\end{definition}
 
-\begin{theorem}\label{thrm-equivalence-of-finite-normal-separable-extensions}
+\begin{theorem}\label{thrm-equivalence-of-finite-galois-extension}
     Let $F$ be a field and $E/F$ be a field extension. Then the following statements are equivalent.
     \begin{enumerate}
-        \item $E$ is a finite, normal, separable extension of $F$.
+        \item $E$ is a finite Galois extension of $F$.
         \item $E$ is the splitting field of some separable polynomial $f(x) \in F[x]$ over $F$.
         \item $F = \Fix{E}{G}$ for some finite subgroup $G$ of $\Aut{E}$.
     \end{enumerate}
@@ -449,13 +452,13 @@ We end this section by looking at a result regarding normal extensions.
 \begin{proof}[Proof (see {\cite[Theorem 23.19]{judson_beezer_2022}})]
     We prove the statements in order.
     \begin{itemize}
-        \item $\boxed{(1) \implies (2)}$ $E$ is a finite, normal, separable extension of $F$. By the Primitive Element Theorem (\myref{thrm-primitive-element}) we can find an $\alpha \in E$ such that $E = F(\alpha)$. Let $f(x)$ be the minimal polynomial of $\alpha$ over $F$. Then since $\alpha$ is a zero of $f(x)$, thus $E$ must contain all zeroes of $f(x)$ because $E$ is a normal extension of $F$. Therefore $E$ is the splitting field of $f(x)$ over $F$. Now because $E$ is a separable extension, therefore $f(x)$ is separable over $F$. Therefore $E$ is a splitting field of the separable polynomial $f(x) \in F[x]$ over $F$.
+        \item $\boxed{(1) \implies (2)}$ Suppose $E$ is a finite Galois extension of $F$, i.e. $E$ is a finite, normal, and separable extension of $F$. By the Primitive Element Theorem (\myref{thrm-primitive-element}) we can find an $\alpha \in E$ such that $E = F(\alpha)$. Let $f(x)$ be the minimal polynomial of $\alpha$ over $F$. Then since $\alpha$ is a zero of $f(x)$, thus $E$ must contain all zeroes of $f(x)$ because $E$ is a normal extension of $F$. Therefore $E$ is the splitting field of $f(x)$ over $F$. Now because $E$ is a separable extension, therefore $f(x)$ is separable over $F$. Therefore $E$ is a splitting field of the separable polynomial $f(x) \in F[x]$ over $F$.
 
         \item $\boxed{(2) \implies (3)}$ Let $E$ be the splitting field of some separable polynomial $f(x) \in F[x]$ over $F$. Then by \myref{prop-fixed-field-of-Gal-E/F-is-F} we see $F = \Fix{E}{\Gal{E/F}}$. Note that $\Gal{E/F} \leq \Aut{E}$ by \myref{prop-galois-group-is-group}, and because $|\Gal{E/F}| = [E:F]$ (\myref{thrm-order-of-galois-group-is-degree-of-field-extension}) which is finite, therefore $\Gal{E/F}$ is a finite group. Therefore $F = \Fix{E}{G}$ where $G = \Gal{E/F}$, which is a finite subgroup of $\Aut{E}$.
 
         \item $\boxed{(3) \implies (1)}$ Let $F = \Fix{E}{G}$ for some finite subgroup $G$ of $\Aut{E}$. By \myref{thrm-subgroup-of-automorphisms-equals-galois-group-if-base-field-is-fixed-field} we see $[E:F] = |G|$, which means that $E$ is a finite extension of $F$.
 
-        To prove the normality and separability of the extension, let $f(x) \in F[x]$ be irreducible. We might as well assume $f(x)$ is monic since otherwise we may just divide all coefficients by the leading coefficient. Let $\alpha \in E$ be a zero of $f(x)$; we see that $f(x)$ is the minimal polynomial of $\alpha$. We show that $f(x)$ is the product of distinct linear factors in $E[x]$.
+        To prove that the extension is Galois, let $f(x) \in F[x]$ be irreducible. We might as well assume $f(x)$ is monic since otherwise we may just divide all coefficients by the leading coefficient. Let $\alpha \in E$ be a zero of $f(x)$; we see that $f(x)$ is the minimal polynomial of $\alpha$. We show that $f(x)$ is the product of distinct linear factors in $E[x]$.
         
         By \myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}, since $F$ is the set of elements of $E$ that are fixed by $G$, therefore automorphisms in $G$ permute the zeroes of $f(x)$ lying in $E$. Hence, applying the automorphisms of $G$ on the known zero $\alpha$ of $f(x)$, we can obtain distinct zeroes $\alpha_1 = \alpha, \alpha_2, \alpha_3, \dots, \alpha_n$ in $E$. Now let
         \[
@@ -463,9 +466,18 @@ We end this section by looking at a result regarding normal extensions.
         \]
         which is clearly separable over $F$ and has a zero of $\alpha_1 = \alpha$. Any automorphism $\sigma \in G$ permutes the factors of $g(x)$ since it permutes these zeroes; hence, when $\sigma$ acts on $g(x)$, it must fix the coefficients of $g(x)$, meaning the coefficients of $g(x)$ lie in $F$. Now because $\deg g(x) \leq \deg f(x)$ and $f(x)$ is the minimal polynomial of $\alpha$, therefore $f(x) = g(x)$ by the uniqueness of the minimal polynomial (\myref{corollary-minimal-polynomial-is-unique}).
         
-        Hence any irreducible polynomial $f(x)$ separates in $E$, and has all its zeroes in $E$, proving that $E$ is separable and normal.
+        Hence any irreducible polynomial $f(x)$ separates in $E$, and has all its zeroes in $E$, proving that $E$ is separable and normal, i.e. Galois.
     \end{itemize}
     This completes the proof.
+\end{proof}
+
+\begin{corollary}\label{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}
+    Let $F$ be a field and $E/F$ be a finite extension. Then $E/F$ is Galois if and only if $|\Gal{E/F}| = [E:F]$.
+\end{corollary}
+\begin{proof}
+    For the forward direction, if $E/F$ is finite and Galois, then $E$ is the splitting field of some separable polynomial $f(x) \in F[x]$ over $F$ (\myref{thrm-equivalence-of-finite-galois-extension}). Certainly a separable polynomial only has simple zeroes, so by \myref{thrm-order-of-galois-group-is-degree-of-field-extension} we have $|\Gal{E/F}| = [E:F]$.
+
+    For the reverse direction we first assume $|\Gal{E/F}| = [E:F]$. Note that $\Gal{E/F} \leq \Aut{E}$ by \myref{prop-galois-group-is-group}, $\Gal{E/F}$ is finite because $[E:F]$ is finite, and $F = \Fix{E}{\Gal{E/F}}$. So by \myref{thrm-equivalence-of-finite-galois-extension} we have $E$ is a finite Galois extension of $F$.
 \end{proof}
 
 \section{The Fundamental Theorem of Galois Theory}
