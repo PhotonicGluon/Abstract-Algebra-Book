@@ -3,12 +3,12 @@ With a basic intuition of the definition of groups, we look at the basic propert
 
 \section{Basic Examples of Groups}
 Recall that a group satisfies four axioms.
-\begin{enumerate}
+\begin{itemize}
     \item \textbf{Closure}: For all elements $a$ and $b$ in $G$, $a \ast b$ is also in $G$.
     \item \textbf{Associativity}: For all elements $a, b$, and $c$ in $G$, we have $a \ast (b \ast c) = (a \ast b) \ast c$.
     \item \textbf{Identity}: There exists an element $e$ in $G$, called the identity element\index{group!identity}, such that, for any element $x$ in $G$, we have $e \ast x = x \ast e = x$.
     \item \textbf{Inverse}: For every element $x$ in $G$, there exists an element $x^{-1}$ in $G$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
-\end{enumerate}
+\end{itemize}
 
 Recall also we write $a \ast b$ as $ab$, and denote the group $(G, \ast)$ by $G$ only.
 \begin{remark}
@@ -18,12 +18,12 @@ Recall also we write $a \ast b$ as $ab$, and denote the group $(G, \ast)$ by $G$
 Let's look at some examples of groups.
 \begin{example}
     Let $\Z$ be the set of integers and let $+$ denote regular addition. Then $(\Z, +)$ forms a group.
-    \begin{enumerate}
+    \begin{itemize}
         \item \textbf{Closure}: For all integers $a$ and $b$, we know $a + b$ is an integer.
         \item \textbf{Associativity}: By \myref{axiom-addition-is-associative} we know for all integers $a$, $b$, and $c$ that $a + (b + c) = (a + b) + c$.
         \item \textbf{Identity}: The identity is 0, since $0 + x = x + 0 = x$.
         \item \textbf{Inverse}: The inverse of the integer $x$ is $-x$, since $x + (-x) = (-x) + x = 0$.
-    \end{enumerate}
+    \end{itemize}
 \end{example}
 
 An important thing to note about addition is that it is commutative (by \myref{axiom-addition-is-commutative}). A group with a commutative operation is called a \textbf{commutative group}\index{group!commutative}. However, it is more often called an \textbf{abelian group}\index{group!abelian}, named after Norwegian mathematician Niels Henrik Abel.
@@ -40,7 +40,7 @@ We now look at $\Z_n$, the set of integers modulo $n$.
 \end{proposition}
 \begin{proof}
     We prove this by first showing that the group axioms hold.
-    \begin{enumerate}
+    \begin{itemize}
         \item \textbf{Closure}: For $a$ and $b$ in $\Z_n$, $a \oplus_n b = (a + b) \mod{n}$ is a integer between 0 and $n - 1$. Thus $a \oplus b$ is inside $\Z_n$.
         \item \textbf{Associativity}: For $a$, $b$, and $c$ in $\Z_n$, since addition is associative (\myref{axiom-addition-is-associative}), thus $a \oplus_n (b \oplus_n c) = (a + (b + c)) \mod{n} = ((a + b) + c) \mod{n} = (a \oplus_n b) \oplus_n c$.
         \item \textbf{Identity}: The identity is $0$ since for every $x$ in $\Z_n$, $0 \oplus_n x = (0 + x) \mod{n} = (x + 0) \mod{n} = x \oplus_n 0 = x$.
@@ -49,7 +49,7 @@ We now look at $\Z_n$, the set of integers modulo $n$.
             \item $0$ is its own inverse since $0 \oplus_n 0 = 0$ which is the identity.
             \item For any other integer $x$ in $\Z_n$, the inverse is $n - x$. Since $1 \leq x \leq n - 1$, thus $1 \leq n - x \leq n - 1$ so $n - x$ is indeed in $\Z_n$. Also, $x \oplus_n (n - x) = (x + (n - x)) \mod{n} = n \mod{n} = 0$ and $(n - x) \oplus_n x = ((n-x) + x)\mod{n} = n \mod{n} = 0$.
         \end{itemize}
-    \end{enumerate}
+    \end{itemize}
     Since the four group axioms are satisfied, this is a group. Furthermore, as addition is commutative (\myref{axiom-addition-is-commutative}), thus addition modulo $n$ is commutative. Therefore $(\Z_n, \oplus_n)$ is a commutative group.
 \end{proof}
 \begin{remark}
@@ -74,12 +74,12 @@ One could use a \textbf{Cayley table}\index{cayley table} (or \textbf{group tabl
     \end{table}
 
     One observes from the Cayley table that
-    \begin{enumerate}
+    \begin{itemize}
         \item for all $x$ and $y$ in $\Z_6$, $x \oplus_6 y$ is in $\Z_6$;
         \item for all $x, y$, and $z$ in $\Z_6$, $x \oplus_6 (y \oplus_6 z) = (x \oplus_6 y) \oplus_6 z$;
         \item 0 is the identity since adding anything to it returns the original number; and
         \item every row has an integer that, when added, gives 0.
-    \end{enumerate}
+    \end{itemize}
     Thus $(\Z_6, \oplus_6)$ is a group.
 \end{example}
 
@@ -103,12 +103,12 @@ It should be noted that, in this book, we use the convention of reading the \tex
     \end{table}
 
     One observes from the Cayley table that
-    \begin{enumerate}
+    \begin{itemize}
         \item for all $x$ and $y$ in $A$, $x \otimes_5 y$ is in $A$;
         \item for all $x, y$, and $z$ in $A$, $x \otimes_5 (y \otimes_5 z) = (x \otimes_5 y) \otimes_5 z$;
         \item 1 is the identity since multiplying anything to it returns the original number; and
         \item every row has an integer that, when multiplied, gives 1.
-    \end{enumerate}
+    \end{itemize}
     Thus $(A, \otimes_5)$ is a group.
 \end{example}
 
@@ -186,10 +186,10 @@ Prove that for all $x$ in $G$, $\left(x^{-1}\right)^{-1} = x$.
 
 \newpage
 
-We now prove an important property of groups: the \textbf{cancellation law}.
+We now prove the cancellation law, an important property of groups.
 \begin{proposition}[Cancellation Law]\index{cancellation law!groups}
     Let $g$, $x$, and $y$ be elements in the group $G$. Then the following statements are equivalent.
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item $x = y$
         \item $gx = gy$
         \item $xg = yg$
@@ -474,7 +474,7 @@ with the relationship between $r$ and $s$ given by $r^n = s^2 = e$ and $rs = sr^
     Some authors (e.g. {\cite[p.~25]{dummit_foote_2004}}) will write the reflections of $D_n$ with $s$ leading $r$, i.e. $s, sr, sr^2, sr^3, \dots, sr^{n-1}$. The underlying definition, however, remains the same in either case. This fact will become evident with the proof of \myref{prop-Dn-cannonical-form} (later).
 \end{remark}
 
-These relationships are succinctly given by the following \textit{presentation}\index{presentation}, and is the actual definition of the dihedral group.
+These relationships are succinctly given by the following \textbf{presentation}\index{presentation}, and is the actual definition of the dihedral group.
 \begin{definition}
     The \textbf{dihedral group of degree $n$}\index{dihedral group!of degree $n$} (or the \textbf{dihedral group of order $2n$}\index{dihedral group!of order $2n$}) is
     \[
@@ -490,7 +490,7 @@ These relationships are succinctly given by the following \textit{presentation}\
     \[
         D_3 = \langle r, s \vert r^3 = s^2 = e,\;rs = sr^2 \rangle.
     \]
-    The Cayley table of $D_3$ is given on the next page.
+    The Cayley table of $D_3$ is as follows.
 
     \begin{table}[H]
         \centering
@@ -506,10 +506,10 @@ These relationships are succinctly given by the following \textit{presentation}\
         \end{tabular}
     \end{table}
 
-    We use the convention of reading the \textbf{row before the column}, so the action $rs \ast r^2$ (usually written as $rsr^2$) is given by the row of $rs$ and the column of $r^2$, which is $r^2s$.
+    We use the convention of reading the row before the column, so the action $rs \ast r^2$ (usually written as $rsr^2$) is given by the row of $rs$ and the column of $r^2$, which is $r^2s$.
 \end{example}
 
-Such a definition for the dihedral groups removes the need to associate the group $D_n$ with any idea of an $n$-gon, and focuses solely on the relationship between $r$ and $s$. In fact, the removal of reliance on $n$-gons help define the non-intuitive groups $D_1$ and $D_2$.
+Such a definition for the dihedral groups removes the need to associate the group $D_n$ with any idea of a regular $n$-gon, and focuses solely on the relationship between $r$ and $s$. In fact, the removal of reliance on regular $n$-gons help define the non-intuitive groups $D_1$ and $D_2$.
 \begin{example}
     The group $D_1$ has presentation
     \[
