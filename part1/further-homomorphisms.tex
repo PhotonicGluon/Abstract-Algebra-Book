@@ -50,7 +50,7 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
 \end{remark}
 
 \begin{example}
-    Let $G = \Z^2$ be a group under component-wise addition and $H = \Z$ be a group under addition. Let the homomorphism $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$, i.e. $a+b = 0$, implying $ b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \Z\}$.
+    Let the groups $G = \Z^2$ and $H = \Z$. Consider the homomorphism $\phi: G \to H, (a, b) \mapsto a+b$. Then, $(a, b) \in \ker\phi$ if $\phi((a,b)) = 0$, so $a+b = 0$, implying $ b = -a$. Hence the kernel of $\phi$ is $\{(a, -a) \vert a \in \Z\}$.
 \end{example}
 
 \begin{exercise}
@@ -86,7 +86,7 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
 \newpage
 
 \section{The Fundamental Homomorphism Theorem}
-We are now ready to tackle important theorems regarding homomorphisms. We first state the \textbf{Fundamental Homomorphism Theorem}, which is also sometimes called the \textbf{First Isomorphism Theorem} (e.g. in {\cite[p.~251, Theorem 3]{cohn_1982}}).
+We are now ready to tackle important theorems regarding homomorphisms. We first state the Fundamental Homomorphism Theorem, which is also sometimes called the First Isomorphism Theorem (e.g. in {\cite[p.~251, Theorem 3]{cohn_1982}}).
 
 \begin{theorem}[Fundamental Homomorphism Theorem]\label{thrm-isomorphism-1}\index{Fundamental Homomorphism Theorem}\index{isomorphism theorem!group!first}
     Let $G$ and $H$ be groups. Let $\phi: G \to H$ be a homomorphism, and let $\pi: G \to G/\ker\phi$ where $g\mapsto g\ker\phi$ be the natural surjective homomorphism. Then there exists a unique isomorphism $\psi: G/\ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
@@ -157,12 +157,12 @@ We now prove the Fundamental Homomorphism Theorem.
 \end{proof}
 
 \begin{example}
-    Let $R = \{x \in \R \vert x > 0\}$, $G = \{x \in \R \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under regular multiplication. We show $G / H \cong R$.
+    Let $R = \{x \in \R \vert x > 0\}$, $G = \{x \in \R \vert x \neq 0\}$, and $H = \{1, -1\}$ be groups under multiplication. We show $G / H \cong R$.
 
     Consider the map $\phi: G \to R$ where $x \mapsto |x|$. We show that $\phi$ is a homomorphism, then find the image of $\phi$, and finally find its kernel.
 
     \begin{itemize}
-        \item \textbf{Homomorphism}: $\phi$ is a homomorphism since $\phi(xy) = |xy| = |x||y| = \phi(x)\phi(y)$.
+        \item \textbf{Homomorphism}: $\phi$ is a homomorphism since $\phi(xy) = |xy| = |x||y| = \phi(x)\phi(y)$ for all $x, y \in G$.
         \item \textbf{Image}: We find the image of $\phi$.
         \begin{align*}
             \im\phi &= \{\phi(x) \vert x \in G\}\\
@@ -190,7 +190,7 @@ We now prove the Fundamental Homomorphism Theorem.
 \end{exercise}
 
 \section{The Diamond Isomorphism Theorem}
-We now look at the next theorem, called the \textbf{Diamond Isomorphism Theorem} (e.g. in {\cite[Theorem 3.18]{dummit_foote_2004}}) or the \textbf{Second Isomorphism Theorem} (e.g. in {\cite[\S 69]{clark_1984}}).
+We now look at the next theorem, called the Diamond Isomorphism Theorem (e.g. in {\cite[Theorem 3.18]{dummit_foote_2004}}) or the Second Isomorphism Theorem (e.g. in {\cite[\S 69]{clark_1984}}).
 
 \begin{theorem}[Diamond Isomorphism Theorem]\label{thrm-isomorphism-2}\index{Diamond Isomorphism Theorem}\index{isomorphism theorem!group!second}
     Let $G$ be a group and let $H$ and $K$ be subgroups of $G$. Then
@@ -234,7 +234,7 @@ We only show subgroups that we care about in the figure above. The group $G$ has
         \item We know $N \leq HN$ by statement 2, so we only prove normality. Take $n \in N$ and $x \in HN$ such that $x = h_xn_x$. Then
         \begin{align*}
             xnx^{-1} &= (h_xn_x)n(h_xn_x)^{-1}\\
-            &= (h_xn_x)n(n_x^{-1}h_x^{-1}) & (\text{Shoes and Socks})\\
+            &= (h_xn_x)n(n_x^{-1}h_x^{-1})\\
             &= \underbrace{h_x}_{\text{In }G}\underbrace{n_xnn_x^{-1}}_{\text{In }N}\underbrace{h_x^{-1}}_{\text{In G}}\\
             &\in N
         \end{align*}
@@ -242,9 +242,9 @@ We only show subgroups that we care about in the figure above. The group $G$ has
 
         \item This is the main result of this theorem. We define $\phi: H \to HN/N, h \mapsto hN$. We show that $\phi$ is a homomorphism and then find its image and kernel.
         \begin{itemize}
-            \item \textbf{Homomorphism}:
+            \item \textbf{Homomorphism}: For any $x, y \in H$ we see
             \[
-                \phi(xy) = (xy)N = (xN)(yN) = \phi(x)\phi(y)
+                \phi(xy) = (xy)N = (xN)(yN) = \phi(x)\phi(y).
             \]
 
             \item \textbf{Image}: We show that $\phi$ is surjective to show that $\im\phi = HN/N$. Suppose $x \in HN$, meaning $x = hn$ where $h \in H$ and $n \in N$. Thus $xN \in HN/N$, so
@@ -303,7 +303,7 @@ We look at another application of the Diamond Isomorphism Theorem, which has use
 \begin{example}
     We will prove that $\lcm(m,n)\times\gcd(m,n) = mn$ (\myref{prop-product-of-gcd-and-lcm}) by considering the Diamond Isomorphism Theorem. For brevity, let $d = \gcd(m,n)$ and $l = \lcm(m,n)$.
 
-    Consider the groups $G = \Z$, $H = m\Z$, and $N = n\Z$ under addition. By Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}),
+    Consider the groups $G = \Z$, $H = m\Z$, and $N = n\Z$ under addition. By the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}),
     \[
         m\Z/(m\Z \cap n\Z) \cong (m\Z + n\Z)/(n\Z).
     \]
@@ -332,7 +332,7 @@ We look at another application of the Diamond Isomorphism Theorem, which has use
 \end{exercise}
 
 \section{The Third Isomorphism Theorem}
-We look at the last important theorem regarding homomorphisms and isomorphisms. This is often called the \textbf{Third Isomorphism Theorem} (e.g. in {\cite[Corollary I.5.10]{hungerford_1980}} and {\cite[pp.~253--254, Theorem 5]{cohn_1982}}).
+We look at the last important theorem regarding homomorphisms and isomorphisms. This is often called the Third Isomorphism Theorem (e.g. in {\cite[Corollary I.5.10]{hungerford_1980}} and {\cite[pp.~253--254, Theorem 5]{cohn_1982}}).
 
 It should be noted that there is no consistency with the numbering of these theorems in books (cf. {\cite[\S 68]{clark_1984}} as ``First Isomorphism Theorem'', {\cite[Theorem 8.16]{humphreys_1996}} as ``Second Isomorphism Theorem''), but the name ``Third Isomorphism Theorem'' is the easiest to research. Hence, we use that name here.
 

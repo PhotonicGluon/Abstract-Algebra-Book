@@ -74,7 +74,7 @@ We prove some results relating the external direct product.
         &= \left(m\frac{na}{d}, n\frac{mb}{d}\right) & (\text{as } d \vert m \text{ and } d \vert n)\\
         &= (\underbrace{0}_{\text{In } \Z_m}, \underbrace{0}_{\text{In } \Z_n})
     \end{align*}
-    which implies $|(a, b)| \leq \frac{mn}{d} < mn$ for all $(a, b) \in \Z_m \times \Z_n$. Hence, this means that $\Z_m \times \Z_n$ is \textit{not} cyclic, since $|\Z_m \times \Z_n| = mn$ and no element in $\Z_m \times \Z_n$ has order $mn$. However, $\Z_m \times \Z_n \cong \Z_{mn}$ is cyclic, a clear contradiction. Hence, $d \not>1$ which means $d = 1$, so $\gcd(m,n) = 1$.
+    which implies $|(a, b)| \leq \frac{mn}{d} < mn$ for all $(a, b) \in \Z_m \times \Z_n$. Hence, this means that $\Z_m \times \Z_n$ is \textit{not} cyclic, since $|\Z_m \times \Z_n| = mn$ and no element in $\Z_m \times \Z_n$ has order $mn$. However, $\Z_m \times \Z_n \cong \Z_{mn}$ is cyclic, a clear contradiction. Hence $d = 1$ and so $\gcd(m,n) = 1$.
 
     We now work on the reverse direction. Suppose $\gcd(m,n) = 1$. Note that $|1| = m$ in $\Z_m$ and $|1| = n$ in $\Z_n$. Thus
     \begin{align*}
@@ -90,9 +90,9 @@ We prove some results relating the external direct product.
 \end{exercise}
 
 \section{Subgroup Product and Internal Direct Product}
-Before we look at the internal direct product, we look at the \textbf{subgroup product}\index{subgroup product}.
+Before we look at the internal direct product, we look at the subgroup product.
 \begin{definition}\label{definition-subgroup-product}
-    Let $G$ be a group with subgroups $H$ and $K$. Then the \textbf{subgroup product of $H$ and $K$} is
+    Let $G$ be a group with subgroups $H$ and $K$. Then the \textbf{subgroup product of $H$ and $K$}\index{subgroup product} is
     \[
         HK = \{hk \vert h \in H, k \in K\}.
     \]
@@ -124,15 +124,15 @@ Before we look at the internal direct product, we look at the \textbf{subgroup p
     An important point to note is that $HK = KH$ does \textit{not} imply that $hk = kh$ for all $h \in H$ and $k \in K$.
 \end{remark}
 
-We now look at the \textbf{internal direct product}, another way of `combining' groups.
+We now look at the internal direct product, another way of `combining' groups.
 
 \begin{definition}
     Let $G$ be a group and $H$ and $K$ be subgroups of $G$ such that
-    \begin{enumerate}
+    \begin{itemize}
         \item $G = HK$,
         \item $H \cap K = \{e\}$, and
         \item for all $h \in H$ and $k \in K$, $hk = kh$.
-    \end{enumerate}
+    \end{itemize}
     Then $G$ is said to be the \textbf{internal direct product}\index{direct product!internal} of $H$ and $K$.
 \end{definition}
 
@@ -155,8 +155,8 @@ We now look at the \textbf{internal direct product}, another way of `combining' 
 \section{The Isomorphism Between Them}
 It is certainly tiring to remember that there is an \textit{external} direct product and an \textit{internal} direct product. One might rightly wonder whether we can simplify both into one unified ``direct product''. In fact, there exists an isomorphism between the external direct product and the internal direct product of two groups.
 
-\begin{theorem}\label{thrm-direct-product-equivilance}
-    If $G$ is the internal direct product of $H$ and $K$, then $G \cong H \times K$.
+\begin{theorem}\label{thrm-direct-product-equivalence}
+    Let $G$ be a group with subgroups $H$ and $K$. If $G$ is the internal direct product of $H$ and $K$, then $G \cong H \times K$.
 \end{theorem}
 
 \begin{proof}
@@ -174,7 +174,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 
         Thus
         \[
-            \phi(gg') = \phi(\underbrace{hh'}_{\text{In }H}\underbrace{kk'}_{\text{In }K}) = (hh', kk').
+            \phi(gg') = \phi(hkh'k') = \phi(hh'kk') = (hh', kk').
         \]
         Now we are in the group $H \times K$, so $(h, k)(h', k') = (hh', kk')$. Therefore,
         \begin{align*}
@@ -184,7 +184,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
         \end{align*}
         which means that $\phi$ is a homomorphism.
 
-        \item \textbf{Injective}: Let $g, g' \in G$, $h, h' \in H$, and $k, k' \in K$ such that $g = hk$, $g' = h'k'$, and $\phi(g) = \phi(g')$. Then $\phi(hk) = \phi(h'k')$, meaning $(h,k) = (h',k')$. Thus $h = h'$ and $k = k'$ by equality of ordered pairs, meaning $g = hk = h'k' = g'$.
+        \item \textbf{Injective}: Let $g, g' \in G$, $h, h' \in H$, and $k, k' \in K$ such that $g = hk$, $g' = h'k'$, and $\phi(g) = \phi(g')$. Then $\phi(hk) = \phi(h'k')$, so $(h,k) = (h',k')$. Thus $h = h'$ and $k = k'$ by equality of ordered pairs, meaning $g = hk = h'k' = g'$.
 
         \item \textbf{Surjective}: Let $(h, k) \in H \times K$. Note that $hk \in G$ since $G$ is the internal direct product of $H$ and $K$, so $\phi(hk) = (h, k)$. Thus a pre-image of $(h, k)$ is $hk$.
     \end{itemize}
@@ -192,7 +192,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \end{proof}
 
 \begin{example}
-    Consider again $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. As we have found before, $G$ is the internal direct product of $H$ and $K$; but we now know that $G \cong H \times K$.
+    Consider again $G = D_6$, $H = \langle r^3 \rangle$ and $K = \langle s, r^2 \rangle$. As we have found before, $G$ is the internal direct product of $H$ and $K$; but we now know that $G \cong H \times K$ by \myref{thrm-direct-product-equivalence}.
 
     Note that $|H| = 2$ so $H \cong \Z_2$. Also, by mapping $r^2$ to $r$ and $s$ to $s$, we see that $K \cong D_3$. Thus,
     \[
@@ -216,7 +216,7 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
 \end{problem}
 
 \begin{problem}
-    Let $G = \Z_6$, and let the subgroups $H = \{0, 2, 4\}$ and $K = \{0, 3\}$. Determine whether $G$ is the internal direct product of $H$ and $K$.
+    Let $G = \Z_6$, and consider the subgroups $H = \{0, 2, 4\}$ and $K = \{0, 3\}$ of $G$. Determine whether $G$ is the internal direct product of $H$ and $K$, justifying your answer.
 \end{problem}
 
 \begin{problem}
