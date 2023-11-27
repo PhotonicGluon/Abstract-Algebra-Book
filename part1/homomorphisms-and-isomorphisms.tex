@@ -58,7 +58,7 @@ Let us now look at some properties of homomorphisms. For the following propertie
 \end{proof}
 
 \begin{proposition}\label{prop-homomorphism-maps-inverses}
-    For all $x$ in $G_1$, $\phi(x^{-1}) = \left(\phi(x)\right)^{-1}$.
+    For all $x \in G_1$, $\phi(x^{-1}) = \left(\phi(x)\right)^{-1}$.
 \end{proposition}
 \begin{proof}
     Note that $xx^{-1} = e_1$. Thus, $\phi(xx^{-1}) = \phi(e_1) = e_2$ by applying $\phi$ on both sides. Note also that $\phi(xx^{-1}) = \phi(x)\phi(x^{-1})$ by definition of homomorphism. Hence, $\phi(x)\phi(x^{-1}) = e_2$ which quickly implies $\phi(x^{-1}) = \left(\phi(x)\right)^{-1}$ after left-multiplying both sides by $\left(\phi(x)\right)^{-1}$.
@@ -115,7 +115,7 @@ For the next few properties, define
     $\phi^{-1}(H_2) \leq G_1$.
 \end{proposition}
 \begin{proof}
-    The codomain of $\phi^{-1}$ is $G_1$, so $\phi^{-1}(H_2) \subseteq G_1$. Clearly $e_1 \in \phi^{-1}(H_2)$ since $\phi(e_1) = e_2 \in H_2$. Now suppose that $x$ and $y$ are in $\phi^{-1}(H_2)$, meaning that $\phi(x)$ and $\phi(y)$ are in $H_2$. Since $H_2 \leq G_2$, therefore
+    The codomain of $\phi^{-1}$ is $G_1$, so $\phi^{-1}(H_2) \subseteq G_1$. Clearly $e_1 \in \phi^{-1}(H_2)$ since $\phi(e_1) = e_2 \in H_2$. Now suppose that $x, y \in \phi^{-1}(H_2)$, meaning that $\phi(x), \phi(y) \in H_2$. Since $H_2 \leq G_2$, therefore
     \[
         \phi(x)\left(\phi(y)\right)^{-1} \in H_2
     \]
@@ -123,7 +123,7 @@ For the next few properties, define
     \[
         \phi(x)\phi(y^{-1}) = \phi(xy^{-1}) \in H_2
     \]
-    which means $xy^{-1} \in \phi^{-1}(H_2)$. Hence we see that $\phi^{-1}(H_2) \leq G_1$ by the subgroup test (\myref{thrm-subgroup-test}).
+    which means $xy^{-1} \in \phi^{-1}(H_2)$. Hence $\phi^{-1}(H_2) \leq G_1$ by the subgroup test (\myref{thrm-subgroup-test}).
 \end{proof}
 
 \begin{proposition}
@@ -140,7 +140,7 @@ For the next few properties, define
         &= \underbrace{\phi(g)}_{\text{In }G_2} \underbrace{\phi(n)}_{\text{In }H_2} \underbrace{\left(\phi(g)\right)^{-1}}_{\text{In }G_2}\\
         &= g'n'(g')^{-1}
     \end{align*}
-    where $g' = \phi(g)$ and $n' = \phi(n)$. Since $H_2$ is normal, so for all $g$ in $G_2$ and $n$ in $H_2$ we know $gng^{-1}$ is in $H_2$. Therefore $\phi(gng^{-1}) = g'n'(g')^{-1}$ is in $H_2$, meaning that $gng^{-1}$ is in $\phi^{-1}(H_2)$.
+    where $g' = \phi(g)$ and $n' = \phi(n)$. Since $H_2$ is normal, so for all $g \in G_2$ and $n \in H_2$ we know $gng^{-1} \in H_2$. Therefore $\phi(gng^{-1}) = g'n'(g')^{-1} \in H_2$, meaning that $gng^{-1} \in \phi^{-1}(H_2)$.
 
     This proves that $\phi^{-1}(H_2) \unlhd G_1$.
 \end{proof}
@@ -156,7 +156,7 @@ For the next few properties, define
 \end{exercise}
 
 \section{Isomorphisms}
-We now look a special (and important) type of homomorphism: \textbf{isomorphisms}, which roughly translates as ``equal form'' from Ancient Greek.
+We now look a special (and important) type of homomorphism: isomorphisms, which roughly translates as ``equal form'' from Ancient Greek.
 
 \begin{definition}
     Let $(G, \ast)$ and $(H, \star)$ be groups. Let $\phi: G \to H$ be a homomorphism. Then $\phi$ is an \textbf{isomorphism}\index{isomorphism} if $\phi$ is a bijection.
@@ -168,7 +168,7 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
 \end{definition}
 
 \begin{example}
-    Let $G = (\Z_2, \oplus_2)$ and $H = \{1, -1\}$ be a group under regular multiplication. Define the map $\phi: G \to H$ such that $\phi(0) = 1$ and $\phi(1) = -1$.
+    Let the groups $G = (\Z_2, \oplus_2)$ and $H = (\{1, -1\}, \times)$. Define the map $\phi: G \to H$ such that $\phi(0) = 1$ and $\phi(1) = -1$.
 
     \begin{itemize}
         \item \textbf{Homomorphism}: We note that
@@ -224,7 +224,7 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
     \end{partquestions}
 \end{exercise}
 \begin{exercise}\label{exercise-composition-of-isomorphisms-is-isomorphisms}
-    Let $A$, $B$, and $C$ be sets. Let $f: A \to B$ and $g: B \to C$ be bijections. Let $h = g\circ f$ where $\circ$ represents function composition, that is $h: A \to C, x \mapsto g(f(x))$.
+    Let $A$, $B$, and $C$ be sets. Let $f: A \to B$ and $g: B \to C$ be bijections. Let $h = g\circ f$, where $\circ$ represents function composition. That is, $h: A \to C, x \mapsto g(f(x))$.
     \begin{partquestions}{\roman*}
         \item Show that $h$ is a bijection.
         \item If $A$, $B$, and $C$ are groups, and $f$ and $g$ are isomorphisms, show that $h$ is an isomorphism.
@@ -234,13 +234,13 @@ We now look a special (and important) type of homomorphism: \textbf{isomorphisms
 \section{Consequences of Isomorphisms}
 Isomorphisms between groups means that the two groups `share the same structure', in a manner of speaking. We look at a theorem that showcases the sharing of some of these properties.
 \begin{theorem}\label{thrm-isomorphism-consequences}
-    Let $\phi: G \to H$ be an isomorphism between the groups $G$ and $H$. Then
+    Let $\phi: G \to H$ be an isomorphism between the groups $G$ and $H$. Then the following statements are true.
     \begin{enumerate}
-        \item $|G| = |H|$;
-        \item $\phi^{-1}: H \to G$ is an isomorphism;
-        \item if $G$ is abelian then so is $H$;
-        \item if $G$ is cyclic then so is $H$; and
-        \item if $G$ has a subgroup of order $n$, then so does $H$.
+        \item $|G| = |H|$.
+        \item $\phi^{-1}: H \to G$ is an isomorphism.
+        \item If $G$ is abelian then so is $H$.
+        \item If $G$ is cyclic then so is $H$.
+        \item If $G$ has a subgroup of order $n$, then so does $H$.
     \end{enumerate}
 \end{theorem}
 
@@ -251,7 +251,7 @@ Isomorphisms between groups means that the two groups `share the same structure'
 
         \item Since $\phi$ is an isomorphism, it is bijective, which means that $\phi^{-1}$ exists and is also bijective. All that remains is to show that $\phi^{-1}$ is a homomorphism.
 
-        Let $u$ and $v$ be in $H$. Then, since $\phi$ is surjective, there exist elements $x$ and $y$ in $G$ such that $\phi(x) = u$ and $\phi(y) = v$. Hence,
+        Let $u, v \in H$. Then, since $\phi$ is surjective, there exist elements $x, y \in G$ such that $\phi(x) = u$ and $\phi(y) = v$. Hence,
         \begin{align*}
             \phi^{-1}(uv) &= \phi^{-1}\left(\phi(x)\phi(y)\right)\\
             &= \phi^{-1}\left(\phi(xy)\right) & (\phi \text{ is a homomorphism})\\
@@ -260,7 +260,7 @@ Isomorphisms between groups means that the two groups `share the same structure'
         \end{align*}
         Thus $\phi^{-1}$ is an isomorphism.
 
-        \item Suppose $u$ and $v$ are in $H$. Let $x$ and $y$ be elements in $G$ such that $\phi(x) = u$ and $\phi(y) = v$. Thus
+        \item Suppose $u, v \in H$. Let $x, y \in G$ such that $\phi(x) = u$ and $\phi(y) = v$. Thus
         \begin{align*}
             uv = &= \phi(x)\phi(y) \\
             &= \phi(xy)\\
@@ -270,7 +270,7 @@ Isomorphisms between groups means that the two groups `share the same structure'
         \end{align*}
         which means that $uv = vu$. Hence $H$ is abelian.
 
-        \item Suppose $u$ is in $H$. As $\phi$ is an isomorphism, there is an $x \in G$ where $\phi(x) = u$. Since $G$ is cyclic, suppose $g$ is the generator of $G$, so $x = g^n$ for some integer $n$. This means that
+        \item Suppose $u \in H$. As $\phi$ is an isomorphism, there is an $x \in G$ where $\phi(x) = u$. Since $G$ is cyclic, suppose $g$ is the generator of $G$, so $x = g^n$ for some integer $n$. This means that
         \begin{align*}
             u &= \phi(x)\\
             &= \phi(g^n)\\
@@ -301,9 +301,9 @@ Isomorphisms between groups means that the two groups `share the same structure'
 \end{exercise}
 
 \section{Links to Cyclic Groups}
-With the tool of isomorphisms under our belt, we can prove two important theorems regarding cyclic groups. Before that, however, we formally introduce the idea of infinite cyclic groups.
+With the tool of isomorphisms under our belt, we can prove two important results regarding cyclic groups. Before that, however, we formally introduce the idea of infinite cyclic groups.
 \begin{definition}
-    An infinite cyclic group\index{cyclic group!infinite} $G$ generated by $g$ is denoted by $\langle g \rangle$ and has order $|G| = \infty$. So,
+    An infinite cyclic group\index{cyclic group!infinite} $G$ generated by $g$ is denoted by $\langle g \rangle$ and has order $|G| = \infty$. So
     \[
         G = \{\dots, g^{-2}, g^{-1}, e, g, g^2, \dots\}.
     \]
@@ -329,12 +329,12 @@ For brevity, we also have notation regarding the integers under addition.
 
         \item \textbf{Injective}: Let $m$ and $n$ be integers such that $\phi(m) = \phi(n)$. Without loss of generality, assume that $m \leq n$. Since $\phi(m) = \phi(n)$ we have $g^m = g^n = g^mg^{n-m}$ which implies that $g^{n-m} = e$ by cancellation law.
 
-        Seeking a contradiction, suppose $m < n$. Since $g^{n-m} = e$, so $|g|$ divides $n-m$ (\myref{lemma-order-of-an-element-that-is-equivalent-to-identity}). However, $g$ is a generator of $G$, which means that $|g| = |G| = \infty$ divides $n-m$, which is absurd and thus a contradiction. Therefore, $m = n$, so $\phi(m) = \phi(n)$ implies that $m = n$. Hence $\phi$ is injective.
+        Seeking a contradiction, suppose $m < n$. Since $g^{n-m} = e$, so $|g|$ divides $n-m$ (\myref{lemma-order-of-an-element-that-is-equivalent-to-identity}). However, $g$ is a generator of $G$, which means that $|g| = |G| = \infty$ divides $n-m$, which is clearly absurd. Therefore, $m = n$, so $\phi$ is injective.
 
         \item \textbf{Surjective}: Suppose $x \in G = \langle g\rangle$, so $x = g^n$ for some integer $n$. Then $\phi(n) = g^n = x$ which means that $x$ has a preimage of $n$. Hence $\phi$ is surjective.
     \end{itemize}
 
-    Therefore, $\phi$ is an isomorphism which means $G \cong \Z$.
+    Therefore, $\phi$ is an isomorphism, which means that $G \cong \Z$.
 \end{proof}
 
 \begin{theorem}\label{thrm-finite-cyclic-group-isomorphic-to-Zn}
@@ -392,16 +392,12 @@ For brevity, we also have notation regarding the integers under addition.
 \end{problem}
 
 \begin{problem}
-    Let $G$ and $H$ be groups. Suppose that we have a surjective homomorphism $\phi: G \to H$. Let $N \unlhd G$. Show that $\phi(N) \unlhd H$.\newline
-    (That is, the image of $N$ under $\phi$ is a normal subgroup of $H$.)
+    Let $G$ and $H$ be groups. Suppose that we have a surjective homomorphism $\phi: G \to H$. Let $N \unlhd G$. Show that $\phi(N) \unlhd H$. That is, show that the image of $N$ under $\phi$ is a normal subgroup of $H$.
 \end{problem}
 
 \begin{problem}\label{problem-Zn-isomorphic-to-Z-by-nZ}
-    Let $G = \Z_n$, and let $H = \Z/(n\Z)$ be under addition. Prove that $G \cong H$.
+    Let the groups $G = \Z_n$ and $H = \Z/(n\Z)$. Prove that $G \cong H$.
 \end{problem}
-\begin{remark}
-    Whenever we are dealing with homomorphisms involving $\Z_n$, it is usually easier to replace it with $\Z/(n\Z)$ and do the homomorphism that way.
-\end{remark}
 
 \begin{problem}\label{problem-subgroup-of-quotient-group-is-quotient-group}
     Let $G$ be a group and $N \unlhd G$. Let $B$ be a subgroup of the quotient group $G/N$. Prove that $B = A/N$, where $A$ is a subgroup of $G$ such that $N \subseteq A$.
