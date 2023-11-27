@@ -356,7 +356,7 @@ Separable extensions are nice in the way that they can be determined solely by o
     
     Note that $\Fix{E}{G} = \{a \in E \vert \phi(a) = a \text{ for all } \phi \in \Gal{E/F}\}$. But clearly every element of $F$ is fixed by any $\phi \in \Gal{E/F}$. Hence it is safe to say that $F \subseteq \Fix{E}{G}$. It is also clear that $\Fix{E}{G} \subseteq E$ since $\Fix{E}{G}$ is a subfield of $E$.
 
-    Now since $F \subseteq \Fix{E}{G}$, any automorphism of $E$ that fixes $\Fix{E}{G}$ must also fix $F$. Thus $\Gal{E/\Fix{E}{G}} \subseteq \Gal{E/F}$. But by \myref{exercise-subgroup-of-Aut-E-is-subgroup-of-Galois-group-of-fixed-field} (later) we see $\Gal{E/F} \leq \Gal{E/\Fix{E}{G}}$. Hence $\Gal{E/F} = \Gal{E/\Fix{E}{G}}$. Consequently, by \myref{thrm-order-of-galois-group-is-degree-of-field-extension} we see
+    Now since $F \subseteq \Fix{E}{G}$, any automorphism of $E$ that fixes $\Fix{E}{G}$ must also fix $F$. Thus $\Gal{E/\Fix{E}{G}} \subseteq \Gal{E/F}$. But by \myref{exercise-subgroup-of-Aut-E-is-subgroup-of-galois-group-of-fixed-field} (later) we see $\Gal{E/F} \leq \Gal{E/\Fix{E}{G}}$. Hence $\Gal{E/F} = \Gal{E/\Fix{E}{G}}$. Consequently, by \myref{thrm-order-of-galois-group-is-degree-of-field-extension} we see
     \[
         [E:F] = [E:\Fix{E}{G}].
     \]
@@ -367,7 +367,7 @@ Separable extensions are nice in the way that they can be determined solely by o
     Therefore $[\Fix{E}{G}:F] = 1$ which yields $\Fix{E}{G} = F$ (\myref{prop-finite-extension-of-degree-1-means-extension-equals-base-field}), which is what was to be shown.
 \end{proof}
 
-\begin{exercise}\label{exercise-subgroup-of-Aut-E-is-subgroup-of-Galois-group-of-fixed-field}
+\begin{exercise}\label{exercise-subgroup-of-Aut-E-is-subgroup-of-galois-group-of-fixed-field}
     Let $E$ be a field, $G$ be a subgroup of $\Aut{E}$, and $F = \Fix{E}{G}$. Show $G \leq \Gal{E/F}$.
 \end{exercise}
 
@@ -577,9 +577,91 @@ The preceding example shows that, in certain cases, there is an intimate connect
 \begin{proof}[Proof (see {\cite[Theorem 16.7.1]{artin_2011}})]
     We show that the composition of the two maps in either order is the identity, and the work would be done. In other words, we want to show that $\alpha\beta: \mathcal{G} \to \mathcal{G}$ results in $H \mapsto H$, and want to show that $\beta\alpha: \mathcal{F} \to \mathcal{F}$ results in $K \mapsto K$.
 
-    For the composition $\alpha\beta$, let $H \in \mathcal{G}$. Then $\beta(H) = \Fix{E}{H}$. By \myref{thrm-equivalence-of-finite-galois-extension} we therefore see that $E$ is a finite Galois extension of $\beta(H)$. For brevity let $K = \beta(H)$, so we have that $E$ is a finite Galois extension of $K$. Now on one hand, by the Fixed Field theorem (\myref{thrm-fixed-field}) we know that $|H| = [E:K]$. On the other hand, by \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}, since $E/K$ is finite and Galois, thus $|\Gal{E/K}| = [E:K]$. Therefore $|H| = |\Gal{E/K}|$; because $H \leq \Gal{E/K}$ by \myref{exercise-subgroup-of-Aut-E-is-subgroup-of-Galois-group-of-fixed-field}, so $H = \Gal{E/K}$. So one sees that $\alpha(\beta(H)) = \alpha(K) = \Gal{E/K} = H$, meaning that $\alpha\beta(H) = H$ for all $H \in \mathcal{G}$.
+    For the composition $\alpha\beta$, let $H \in \mathcal{G}$. Then $\beta(H) = \Fix{E}{H}$. By \myref{thrm-equivalence-of-finite-galois-extension} we therefore see that $E$ is a finite Galois extension of $\beta(H)$. For brevity let $K = \beta(H)$, so we have that $E$ is a finite Galois extension of $K$. Now on one hand, by the Fixed Field theorem (\myref{thrm-fixed-field}) we know that $|H| = [E:K]$. On the other hand, by \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}, since $E/K$ is finite and Galois, thus $|\Gal{E/K}| = [E:K]$. Therefore $|H| = |\Gal{E/K}|$; because $H \leq \Gal{E/K}$ by \myref{exercise-subgroup-of-Aut-E-is-subgroup-of-galois-group-of-fixed-field}, so $H = \Gal{E/K}$. So one sees that $\alpha(\beta(H)) = \alpha(K) = \Gal{E/K} = H$, meaning that $\alpha\beta(H) = H$ for all $H \in \mathcal{G}$.
 
     For the composition $\beta\alpha$, let $K \in \mathcal{F}$. Then $\alpha(K) = \Gal{E/K}$; let $H = \Gal{E/K}$. Since $E/F$ is a finite Galois extension, thus $\Gal{E/F}$ is also finite (\myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}) and so $H$, being a subgroup of $\Gal{E/F}$, is also finite. Now let $K' = \beta(H) = \Fix{E}{H}$. Note that by \myref{prop-intermediate-field-of-galois-extension-is-galois-extension} we know that $E/K$ is a Galois extension. Therefore $E$ is a splitting field of some separable polynomial in $K[x]$ (\myref{thrm-equivalence-of-finite-galois-extension}), and hence $\Fix{E}{H} = \Fix{E}{\Gal{E}{K}} = K$ by \myref{prop-fixed-field-of-Gal-E/F-is-F}. So we see $K' = \Fix{E}{H} = K$, whence one sees $\beta\alpha(K) = K$ for all $K \in \mathcal{F}$.
+\end{proof}
+
+The correspondence in the Fundamental Theorem of Galois Theory enjoys the following properties.
+
+\begin{corollary}\label{corollary-fundamental-theorem-of-galois-theory-is-inclusion-reversing}
+    The correspondence given by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}) reverses inclusions. That is, if $K, K' \in \mathcal{F}$ and $H, H' \in \mathcal{G}$ are the corresponding subgroups, then $K \subset K'$ if and only if $H > H'$.
+\end{corollary}
+\begin{proof}
+    For the forward direction, if $K \subset K'$, then by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}), the corresponding subgroups are $H = \Gal{E/K}$ and $H' = \Gal{E/K'}$. Now let $\sigma \in H'$. Then $\sigma(a) = a$ for all $a \in K'$. Since $K \subset K'$, we certainly must have $\sigma(a) = a$ for all $a \in K$, which shows that $\sigma \in H$. Therefore if $K \subset K'$ then $H > H'$.
+
+    For the reverse direction, if $H > H'$, then the corresponding fields are $K = \Fix{E}{H}$ and $K' = \Fix{E}{H'}$. Let $a \in K$. Then $\sigma(a) = a$ for all $\sigma \in H$. Since $H > H'$, we must have $\sigma(a) = a$ for all $\sigma \in H'$, which shows that $a \in K'$. Therefore if $H > H'$ then $K \subset K'$.
+\end{proof}
+
+\begin{corollary}\label{corollary-intermediate-field-galois-field-order}
+    Let $E/F$ be a finite Galois extension. If $K$ is a field such that $F \subseteq K \subseteq E$, then
+    \[
+        [E:K] = |\Gal{E/K}| \text{ and } [K:F] = [\Gal{E/F}:\Gal{E/K}].
+    \]
+\end{corollary}
+\begin{proof}
+    As $E/F$ is a Galois extension, therefore $E/K$ is also a Galois extension by \myref{prop-intermediate-field-of-galois-extension-is-galois-extension}, which means $|\Gal{E/K}| = [E:K]$ by \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}. Also, one sees that
+    \[
+        [E:F] = [E:K][K:F]
+    \]
+    by Tower Law (\myref{thrm-tower-law}), and that
+    \[
+        |\Gal{E/F}| = [\Gal{E/F}:\Gal{E/K}]|\Gal{E/K}|
+    \]
+    by Lagrange's Theorem (\myref{thrm-lagrange}). Hence
+    \[
+        [E:F] = [\Gal{E/F}:\Gal{E/K}][E:K] = [E:K][K:F]
+    \]
+    which means $[\Gal{E/F}:\Gal{E/K}] = [K:F]$.
+\end{proof}
+
+\begin{example}
+    One sees that the splitting field of the polynomial $(x^2 - 3)(x^2 - 5)$ over $\Q$ is $\Q(\sqrt3,\sqrt5)$, which is an extension of $\Q$ of degree 4. One clearly sees that $\Q(\sqrt3,\sqrt5)$ is both separable and normal over $\Q$, and so $\Q(\sqrt3,\sqrt5)/\Q$ is a Galois extension of $\Q$. Consequently we know that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = 4$ by \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}. For brevity let $G = \Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
+
+    Since $G$ is of order 4, there are only two possibilities that $G$ could be -- either $G \cong \Cn{4}$ or $G \cong \mathrm{V}$, the Klein four-group (this was explored way back in \myref{problem-smallest-nonabelian-group}), which are both abelian. It is easy to find three intermediate fields of degree 2 over $\Q$, namely $\Q(\sqrt3)$, $\Q(\sqrt5)$, and $\Q(\sqrt{15})$, so $G \cong \mathrm{V}$, since $\Cn{4}$ has only one subgroup of order 4.
+
+    The subgroups of order 2 are the only proper subgroups of $G$. Consequently one sees by \myref{corollary-intermediate-field-galois-field-order} that there are no more intermediate fields than the 3 that we have found.
+\end{example}
+
+Now suppose that we are given a chain of fields $F \subset K \subset E$, and that $E/F$ is a Galois extension. Then by \myref{prop-intermediate-field-of-galois-extension-is-galois-extension} we know that $E/K$ is a Galois extension. However, it is not guaranteed that $K/F$ is a Galois extension. We produce a condition for $K/F$ to be a Galois extension.
+
+\begin{theorem}\label{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}
+    Let $E/F$ be a finite Galois extension with Galois group $G$, and let $K = \Fix{E}{H}$ for some subgroup $H$ of $G$. Then the extension $K/F$ is Galois if and only if $H \unlhd G$. In this case we will have
+    \[
+        \Gal{K/F} \cong G/H.
+    \]
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 23.23, Statment 4]{judson_beezer_2022}})]
+    For the forward direction, suppose $K/F$ is Galois. We are to show that if $\sigma \in G$ and $\tau \in H$ then $\sigma\tau\sigma^{-1} \in H$, i.e. $\sigma\tau\sigma^{-1}(a) = a$ for all $a \in K$. Suppose $f(x)$ is the minimal polynomial of $a$ over $F$. Then, since $K$ is a Galois (and hence normal) extension of $F$, we know $\sigma^{-1}(a)$ is also a zero of $f(x)$ lying in $K$. Hence $\tau\sigma^{-1}(a) = \sigma^{-1}(a)$ because $\sigma^{-1}(a) \in K = \Fix{E}{H}$, and so $\sigma\tau\sigma^{-1}(a) = \sigma\sigma^{-1}(a) = a \in K$. Therefore $\sigma\tau\sigma^{-1} \in H$ and so $H \unlhd G$.
+
+    For the reverse direction, suppose $H \unlhd G$. We show that $F = \Fix{K}{\Gal{K/F}}$. Let $\tau \in H$; note $H = \Gal{E/K}$ by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}). As $H \lhd G$, for all $\sigma \in G$, there exists a $\tau' \in H$ such that $\tau\sigma = \sigma\tau'$. Thus for all $a \in K$ we have
+    \[
+        \tau\sigma(a) = \sigma\tau'(a) = \sigma(a)
+    \]
+    and so $\sigma(a) \in \Fix{E}{H}$. Now let $\bar{\sigma}$ be the restriction of $\sigma$ to $K$. Then $\bar{\sigma}$ is an automorphism of $K$ fixing $F$, since $\sigma(a) \in K$ for all $a \in K$, which means $\bar{\sigma} \in \Gal{K/F}$. Now let $b \in \Fix{K}{\Gal{K/F}}$. In particular, because $\bar{\sigma} \in \Gal{K/F}$, thus $\bar{\sigma}(b) = b$ for all $\sigma \in \Gal{E/F}$. So $b \in \Fix{E}{\Gal{E/F}}$. But we know that $\Fix{E}{\Gal{E/F}} = F$ by the Fundamental Theorem of Galois Theory, which means that $\Fix{K}{\Gal{K/F}} \subseteq F$. But we also know that $F \subseteq \Fix{K}{\Gal{K/F}} \subseteq K$, which means $F = \Fix{K}{\Gal{K/F}}$. By \myref{thrm-equivalence-of-finite-galois-extension} this means that $K/F$ is a finite Galois extension.
+
+    Finally we are to show that $\Gal{K/F} \cong G/H$. For any $\sigma \in G$, let $\sigma_K$ be the automorphism of $K$ that is obtained by restricting $\sigma$ to $K$. Since $K$ is a normal extension, we know by a similar argument to that of the preceding paragraph that $\sigma_K \in \Gal{K/F}$. Thus we have a map $\phi: G \to \Gal{K/F}$ where $\sigma \mapsto \sigma_K$. We show that $\phi$ is a homomorphism, and then find its kernel and image.
+    \begin{itemize}
+        \item \textbf{Homomorphism}: For all $\sigma, \tau \in G$ we have
+        \[
+            \phi(\sigma\tau) = (\sigma\tau)_K = \sigma_K\tau_K = \phi(\sigma)\phi(\tau).
+        \]
+        
+        \item \textbf{Kernel}: The kernel of $\phi$ is the set of automorphisms of $G$ that are the identity when restricted to $K$. Since $K = \Fix{E}{H}$, the kernel is $H$.
+        
+        \item \textbf{Image}: The Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) tells us that $G/H \cong \im\phi$, which means $|\im\phi| = |G/H|$. We note that $\im\phi \leq \Gal{K/F}$. However one also sees that
+        \begin{align*}
+            |\Gal{K/F}| &= [K:F] & (K/F \text{ is Galois; } \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension})\\
+            &= [\Gal{E/F}:\Gal{E/K}] & (\myref{corollary-intermediate-field-galois-field-order})\\
+            &= |\Gal{E/F}/\Gal{E/K}|\\
+            &= |G/H|
+        \end{align*}
+        which therefore means that $|\im\phi| = |G/H| = |\Gal{K/F}|$. Hence $\im\phi = \Gal{K/F}$.
+    \end{itemize}
+    Therefore by the Fundamental Homomorphism Theorem we have
+    \[
+        G/H \cong \Gal{K/F}.\qedhere
+    \]
 \end{proof}
 
 \section{Solvability of Polynomials by Radicals}
