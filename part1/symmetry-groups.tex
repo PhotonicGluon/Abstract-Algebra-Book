@@ -9,7 +9,7 @@ A bijective function is a function that maps all elements from one set to anothe
 For bijections between finite sets, each set has the same number of elements, so it is reasonable to talk about the rearrangement and enumeration of elements in such sets.
 \begin{itemize}
     \item What we mean by ``rearrange'' is to rename elements. We can give elements a new name and place it in the codomain.
-    \item What we mean by ``enumerate'' is to assign each element in each finite set a unique `index number', per se. Each element can have a unique number identifying its original position in the set, and its final position in the destination set.
+    \item What we mean by ``enumerate'' is to assign each element in each finite set a unique `index number'. Each element can have a unique number identifying its original position in the set, and its final position in the destination set.
 \end{itemize}
 
 Such bijections between finite sets are called \textbf{permutations}\index{permutations}, since they simply permute the `index number' of the elements in the sets.
@@ -43,7 +43,7 @@ We formally describe what a cycle is.
     \[
         \pi = \begin{pmatrix}a_1&a_2&a_3&\cdots&a_n\end{pmatrix}
     \]
-    is the permutation with \textbf{cycle length}\index{cycle!length} $n$ such that
+    is a permutation of \textbf{length}\index{cycle!length} $n$ such that
     \[
         \pi(a_i) = \begin{cases}
             a_{i+1}& \text{if } 1 \leq i \leq n - 1\\
@@ -52,7 +52,7 @@ We formally describe what a cycle is.
     \]
 \end{definition}
 \begin{example}
-    The cycle $f = \begin{pmatrix}1 & 2 & 4 & 5\end{pmatrix}$ is the map that performs the following mapping:
+    The cycle $f = \begin{pmatrix}1 & 2 & 4 & 5\end{pmatrix}$ is the map where
     \begin{multicols}{3}
         \begin{itemize}
             \item $1 \mapsto 2$;
@@ -67,21 +67,21 @@ We formally describe what a cycle is.
 
 We can describe a permutation $\phi$ based on its cycles; such a description is the \textbf{cycle decomposition}\index{cycle!decomposition} (or \textbf{cycle notation}\index{cycle!notation}) of the permutation. For brevity let $S = \{1, 2, 3, \dots, n\}$.
 \begin{enumerate}
-    \item If all elements of $S$ are used in some cycle, head to step 8.
+    \item If all elements of $S$ are present in some cycle, go to step 8.
     \item Otherwise, pick the smallest element of $S$ that has not appeared in a previous cycle; call it $m$. Set $a = m$.
-    \item Begin the new cycle with $(a$, placing it to the right of any existing cycle.
+    \item Begin the new cycle with ``$(a$'', placing it to the right of any existing cycle.
     \item Set $b = \phi(a)$.
     \item If $b = m$, end the cycle with a right parenthesis and return to step 1.
     \item Otherwise, write $b$ next to $a$.
     \item Set $a = b$ and go to step 4.
-    \item Remove all cycles with length 1.
+    \item Remove all cycles of length 1.
     \item If there are no cycles left, denote the permutation by $\id$.
 \end{enumerate}
 
 \newpage
 
 \begin{example}
-    Let $S = \{1,2,3,4,5\}$. Consider this mapping performed by the map $f: S \to S$:
+    Let $S = \{1,2,3,4,5\}$. Consider the map $f: S \to S$, where
     \begin{itemize}
         \item $1 \mapsto 2$;
         \item $2 \mapsto 4$;
@@ -89,31 +89,31 @@ We can describe a permutation $\phi$ based on its cycles; such a description is 
         \item $4 \mapsto 1$; and
         \item $5 \mapsto 3$.
     \end{itemize}
-    We describe how we write $f$ in cycle notation.
+    We describe how to find the cycle decomposition of $f$.
     \begin{itemize}
-        \item Not all elements of $S$ are used, so we continue.
+        \item Not all elements of $S$ are present in a cycle, so we continue.
         \item The smallest element of $S$ not used is 1; set $a = m = 1$.
-        \item We begin the cycle with $(1$.
+        \item We begin the cycle with ``$(1$''.
         \item Set $b = f(1) = 2$.
-        \item As $b = 2 \neq m = 1$, we write $b$ next to $a$: $(1\quad2$.
+        \item As $b = 2 \neq m = 1$, we write $b$ next to $a$: ``$(1\quad2$''.
         \item Set $a = 2$; head back to step 4.
         \item Set $b = f(2) = 4$.
-        \item As $b = 4 \neq m = 1$, we write $b$ next to $a$: $(1\quad2\quad4$.
+        \item As $b = 4 \neq m = 1$, we write $b$ next to $a$: ``$(1\quad2\quad4$''.
         \item Set $a = 4$; head back to step 4.
         \item Set $b = f(4) = 1$.
-        \item As $b = 1 = m = 1$, we end the cycle: $(1\quad2\quad4)$. Return to step 1.
-        \item There are elements of $S$ that are unused, so we continue.
+        \item As $b = 1 = m = 1$, we end the cycle: ``$(1\quad2\quad4)$''. Return to step 1.
+        \item There are elements of $S$ that are not present in a cycle, so we continue.
         \item The smallest unused element of $S$ is 3; set $a = m = 3$.
-        \item We begin the new cycle with $(3$, so our current decomposition is $(1\quad2\quad4)(3$.
+        \item We begin the new cycle with ``$(3$'', so our current decomposition is ``$(1\quad2\quad4)(3$''.
         \item Set $b = f(3) = 5$.
-        \item As $b = 5 \neq m = 3$, we write $b$ next to $a$: $(1\quad2\quad4)(3\quad5$.
+        \item As $b = 5 \neq m = 3$, we write $b$ next to $a$: ``$(1\quad2\quad4)(3\quad5$''.
         \item Set $a = 5$ and head back to step 4.
         \item Set $b = f(5) = 3$.
-        \item As $b = 3 = m = 3$, we end the cycle: $(1\quad2\quad4)(3\quad5)$.
-        \item All elements of $S$ are used in some cycle.
+        \item As $b = 3 = m = 3$, we end the cycle: ``$(1\quad2\quad4)(3\quad5)$''.
+        \item All elements of $S$ are present in some cycle.
         \item No cycle contains one element.
     \end{itemize}
-    Therefore, $f = (1\quad2\quad4)(3\quad5)$ in cycle notation.
+    Therefore the cycle decomposition of $f$ is $\begin{pmatrix}1&2&4\end{pmatrix}\begin{pmatrix}3&5\end{pmatrix}$.
 \end{example}
 
 \newpage
@@ -161,7 +161,7 @@ We can describe a permutation $\phi$ based on its cycles; such a description is 
 
 We now look at composing permutations\index{permutation!composing}.
 \begin{example}
-    Let $f$ and $g$ be permutations. Let $f$ have cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$ and $g$ have cycle decomposition $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$. Then $h = fg$ is a permutation with
+    Let $f$ be a permutation with cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$ and $g$ a permutation with cycle decomposition $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$. Then $h = fg$ is a permutation where
     \begin{itemize}
         \item $h(1) = f(g(1)) = f(1) = 3$;
         \item $h(2) = f(g(2)) = f(4) = 4$;
@@ -183,7 +183,7 @@ We now look at composing permutations\index{permutation!composing}.
 We now describe how to find the inverse of a permutation\index{permutation!inverse}. Given a cycle decomposition for the permutation $f$, simply read the cycle notation backwards, ensuring that the smallest element remains at the front.
 
 \begin{example}
-    The inverse of $\begin{pmatrix}1 & 8 & 4 & 2\end{pmatrix}$ is $\begin{pmatrix}2 & 4 & 8 & 1\end{pmatrix} = \begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}$.
+    The inverse of $\begin{pmatrix}1 & 8 & 4 & 2\end{pmatrix}$ is $\begin{pmatrix}2 & 4 & 8 & 1\end{pmatrix}$, which is $\begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}$.
 \end{example}
 
 \begin{example}
@@ -198,20 +198,28 @@ We now describe how to find the inverse of a permutation\index{permutation!inver
 \end{exercise}
 
 \section{The Symmetric Group of a Set}
-With the definition of permutations out of the way, we can finally introduce a very important type of group: the \textbf{symmetric group} of a set $X$.
+With the definition of permutations out of the way, we can finally introduce a very important type of group: the symmetric group of a set $X$.
 
 \begin{definition}
-    Let $X$ be a set. Define the \textbf{symmetric group of $X$}\index{symmetric group} by
+    Let $X$ be a set. The \textbf{symmetric group of $X$}\index{symmetric group}\index{symmetric group!of a set $X$} is
     \[
         \Sym{X} = \{f: X \to X \vert f \text{ is a bijection}\}.
     \]
+    under function composition (which is denoted by $\circ$).
 \end{definition}
+\begin{remark}
+    Elements of $\Sym{X}$ are called permutations.
+\end{remark}
+\begin{remark}
+    We usually suppress the function composition operator when working permutations in $\Sym{X}$.
+\end{remark}
+
 \begin{proposition}
-    $(\Sym{X}, \circ)$ is a group, where $\circ$ denotes function composition.
+    Let $X$ be a set. Then $\Sym{X}$ is indeed a group.
 \end{proposition}
 \begin{proof}
     We prove the 4 group axioms.
-    \begin{enumerate}
+    \begin{itemize}
         \item \textbf{Closure}: Let $f$ and $g$ be functions in $\Sym{X}$, so $f: X\to X$ and $g:X \to X$ are bijective functions. Define $h:X \to X$ where $h = f\circ g$. By \myref{exercise-composition-of-isomorphisms-is-isomorphisms} we know $h$ is bijective. Thus $\Sym{X}$ is closed under $\circ$.
 
         \item \textbf{Associativity}: Function composition is associative by \myref{axiom-function-composition-associative}.
@@ -231,28 +239,23 @@ With the definition of permutations out of the way, we can finally introduce a v
             f \circ f^{-1} = f^{-1} \circ f = \id
         \]
         so $f^{-1}$ is indeed the inverse of $f$ in $\Sym{X}$.
-    \end{enumerate}
+    \end{itemize}
     Therefore $(\Sym{X}, \circ)$ is a group.
 \end{proof}
 
-The group $(\Sym{X}, \circ)$ is called the \textbf{symmetric group} of $X$\index{symmetric group!of a set $X$}. We usually suppress the function composition operator and call $\Sym{X}$ the symmetric group of $X$.
-
-The most relevant type of symmetric group we encounter when working with finite groups is the \textbf{symmetric group of degree $n$}\index{symmetric group!of degree $n$}.
+The most relevant type of symmetric group we encounter when working with finite groups is the symmetric group of degree $n$.
 
 \begin{definition}
-    The \textbf{symmetric group of degree $n$} (or the \textbf{symmetric group of $n$ letters}\index{symmetric group!of $n$ letters}) is denoted by $\Sn{n}$ and is given by the group $\Sym{\{1, 2, 3, \dots, n\}}$.
+    The \textbf{symmetric group of degree $n$}\index{symmetric group!of degree $n$} (or the \textbf{symmetric group of $n$ letters}\index{symmetric group!of $n$ letters}) is denoted by $\Sn{n}$ and is the group $\Sym{\{1, 2, 3, \dots, n\}}$.
 \end{definition}
-\begin{remark}
-    Elements of $\Sn{n}$ are called permutations.
-\end{remark}
 
 \begin{example}\label{example-symmetric-group-of-degree-3}
-    Consider the symmetric group of degree 3, $\Sn{3}$. We show all function mappings of $\Sn{3}$.
+    Consider the symmetric group of degree 3, $\Sn{3}$. We show all permutations of $\Sn{3}$.
 
     \begin{figure}[h]
         \centering
         \pdfteximgframed{0.35\textwidth}{part1/images/symmetry-groups/maps-of-s3.pdf_tex}
-        \caption{All Mappings of $\Sn{3}$}
+        \caption{All Permutations of $\Sn{3}$}
     \end{figure}
 
     Thus, $|\Sn{3}| = 6$.
@@ -261,21 +264,18 @@ The most relevant type of symmetric group we encounter when working with finite 
     Explain why $|\Sn{n}| = n!$.
 \end{exercise}
 
-It should also be noted that subgroups of $\Sym{X}$ are called \textbf{permutation groups}\index{permutation groups}, primarily because they contain permutations. Since a group is its own subgroup, the symmetric group may sometimes be called \textit{the} permutation group.
+It should also be noted that subgroups of $\Sym{X}$ are called \textbf{permutation groups}\index{permutation groups} because they contain permutations.
 
 To end this section, we prove an important result regarding symmetric groups of equal order.
 \begin{theorem}\label{thrm-symmetric-groups-of-same-order-are-isomorphic}
-    Let $S_1$ and $S_2$ be two finite sets with cardinality $n$. Then
-    \[
-        \Sym{S_1} \cong \Sym{S_2}.
-    \]
+    Let $X_1$ and $X_2$ be two finite sets with cardinality $n$. Then we have $\Sym{X_1} \cong \Sym{X_2}$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Proof 2]{proofwiki_symmetric-group-of-same-order-are-isomorphic}})]
-    Since the two sets $S_1$ and $S_2$ have the same cardinality, they have the same number of elements. Hence there exists a bijection $f: S_1 \to S_2$.
+    Since the two sets $X_1$ and $X_2$ have the same cardinality, they have the same number of elements. Hence there exists a bijection $f: X_1 \to X_2$.
 
-    Let $\phi: \Sym{S_1} \to \Sym{S_2}$ where $\sigma \mapsto f\sigma f^{-1}$. We show that $\phi$ is an isomorphism.
+    Let $\phi: \Sym{X_1} \to \Sym{X_2}$ where $\phi(\sigma) = f\sigma f^{-1}$ for all $\sigma \in \Sym{X_1}$. We show that $\phi$ is an isomorphism.
     \begin{itemize}
-        \item \textbf{Homomorphism}: Let $\sigma, \pi \in \Sym{S_1}$. Then
+        \item \textbf{Homomorphism}: Let $\sigma, \pi \in \Sym{X_1}$. Then
         \begin{align*}
             \phi(\sigma\pi) &= f(\sigma\pi)f^{-1}\\
             &= f\sigma(f^{-1}f)\pi f^{-1}\\
@@ -284,15 +284,15 @@ To end this section, we prove an important result regarding symmetric groups of 
         \end{align*}
         which shows that $\phi$ is a homomorphism.
 
-        \item \textbf{Injective}: Let $\sigma, \pi \in \Sym{S_1}$ such that $\phi(\sigma) = \phi(\pi)$. Thus $f\sigma f^{-1} = f\pi f^{-1}$ which quickly implies $\sigma = \pi$ by cancellation law. Therefore $\phi$ is injective.
+        \item \textbf{Injective}: Let $\sigma, \pi \in \Sym{X_1}$ such that $\phi(\sigma) = \phi(\pi)$. Thus $f\sigma f^{-1} = f\pi f^{-1}$ which quickly implies $\sigma = \pi$ by cancellation law. Therefore $\phi$ is injective.
 
-        \item \textbf{Surjective}: Let $\pi \in \Sym{S_2}$. Let $\sigma = f^{-1}\pi f$. We note that $\sigma: S_1 \to S_1$ is a bijection, so $\sigma \in \Sym{S_1}$. Clearly
+        \item \textbf{Surjective}: Let $\pi \in \Sym{X_2}$. Let $\sigma = f^{-1}\pi f$. We note that $\sigma: X_1 \to X_1$ is a bijection, so $\sigma \in \Sym{X_1}$. Clearly
         \[
             \phi(\sigma) = \phi(f^{-1}\pi f) = f(f^{-1}\pi f)f^{-1} = \pi
         \]
         so $\sigma$ is the pre-image of $\pi$. Hence $\sigma$ is the pre-image of $\pi$.
     \end{itemize}
-    Therefore $\phi$ is an isomorphism, which means that $\Sym{S_1} \cong \Sym{S_2}$.
+    Therefore $\phi$ is an isomorphism, which means that $\Sym{X_1} \cong \Sym{X_2}$.
 \end{proof}
 
 \begin{corollary}\label{corollary-symmetric-group-of-finite-order}
@@ -309,7 +309,7 @@ We now have sufficient background to state and prove Cayley's theorem.
     Every group is isomorphic to a permutation group.
 \end{theorem}
 
-The statement of the theorem, although simple, is the reason \textit{why} group theorists study group theory: to explore all the ways that a group can be symmetric.
+The statement of the theorem, although simple, is the reason why group theorists study group theory: to explore all the ways that a group can be symmetric.
 
 The proof of this theorem is involved and technical, but we'll try and simplify its proof as much as possible. We first introduce the outline of the proof, before beginning proper.
 \begin{proofsketch}
@@ -318,15 +318,15 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
 \begin{proof}[Proof (cf. {\cite[Proof 2]{proofwiki_cayleys-theorem}})]
     Let $G$ be any group. We want to prove that there exists a group of bijective functions from $G$ to $G$ that is isomorphic to $G$ (i.e., a permutation group).
 
-    For any $g$ in $G$ define the map $\lambda_g: G \to G$ such that $x \mapsto gx$. We claim that $\lambda_g$ is a bijection.
+    For any $g \in G$ define the map $\lambda_g: G \to G$ such that $x \mapsto gx$. We claim that $\lambda_g$ is a bijection.
     \begin{itemize}
-        \item \textbf{Injective}: Let $x$ and $y$ be elements of $G$ such that $\lambda_g(x) = \lambda_g(y)$. Then $gx = gy$ by definition of $\lambda_g$, which immediately means $x = y$ by cancellation law. Thus $\lambda_g(x) = \lambda_g(y)$ implies $x = y$, meaning $\lambda_g$ is injective.
+        \item \textbf{Injective}: Let $x, y \in G$ such that $\lambda_g(x) = \lambda_g(y)$. Then $gx = gy$ by definition of $\lambda_g$, which immediately means $x = y$ by cancellation law. Thus $\lambda_g$ is injective.
 
-        \item \textbf{Surjective}: Let $y$ be an element of $G$. Note that $g^{-1}y$ is an element of $G$ (since $G$ is closed), and that $\lambda_g(g^{-1}y) = g(g^{-1}y) = y$. Thus, a preimage of $y$ is $g^{-1}y$ and it exists in the domain $G$, meaning $\lambda_g$ is surjective.
+        \item \textbf{Surjective}: Let $y \in G$. Note that $g^{-1}y \in G$ (since $G$ is closed), and that $\lambda_g(g^{-1}y) = g(g^{-1}y) = y$. Thus, a preimage of $y$ is $g^{-1}y$ and it exists in the domain $G$, meaning $\lambda_g$ is surjective.
     \end{itemize}
     Since $\lambda_g$ is both injective and surjective it is thus bijective.
 
-    Now let $H = \{\lambda_g \vert g \in G\}$. Since $\lambda_g$ are all bijections from $G$ to $G$, thus $H \subseteq \Sym{G}$. We show that $H \leq \Sym{G}$ via the subgroup test.
+    Now let $H = \{\lambda_g \vert g \in G\}$. Since $\lambda_g$ is a bijection from $G$ to $G$ for any $g \in G$, thus $H \subseteq \Sym{G}$. We show that $H \leq \Sym{G}$ via the subgroup test.
 
     We first note that $\lambda_e = \id$ since
     \[
@@ -340,13 +340,13 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
     \[
         (\lambda_{g^{-1}} \circ \lambda_g)(x) = g^{-1}gx = x = \lambda_e(x).
     \]
-    Now suppose $\lambda_{g_1}, \lambda_{g_2} \in H$ (where $g_1, g_2 \in G$). Note $g_1g_2^{-1}$ is an element of $G$ since $G$ is closed. Therefore, for all $x$ in $G$,
+    Now suppose $\lambda_{g_1}, \lambda_{g_2} \in H$ (where $g_1, g_2 \in G$). Note $g_1g_2^{-1} \in G$ since $G$ is closed. Therefore, for all $x \in G$,
     \begin{align*}
         \left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right)(x) &= \lambda_{g_1}\circ\lambda_{g_2^{-1}}(x)\\
         &= g_1g_2^{-1}x\\
         &= \lambda_{g_1g_2^{-1}}(x).
     \end{align*}
-    Note $\lambda_{g_1g_2^{-1}}$ is clearly an element of $H$. Thus if $\lambda_{g_1}$ and $\lambda_{g_2}$ are functions in $H$, then $\left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right)$ is also a function in $H$. Therefore by the subgroup test we have $H \leq \Sym{G}$.
+    Note $\lambda_{g_1g_2^{-1}}$ is clearly an element of $H$. Thus if $\lambda_{g_1}$ and $\lambda_{g_2}$ are functions in $H$, then $\left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right)$ is also a function in $H$. Therefore by the subgroup test (\myref{thrm-subgroup-test}) we have $H \leq \Sym{G}$.
 
     We finally show that $G \cong H$ by considering the map $\phi: G\to H$ where $g \mapsto \lambda_g$. We need to show that $\phi$ is an isomorphism.
     \begin{itemize}
@@ -361,15 +361,15 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
             \end{align*}
             Thus, $\phi(gh) = \phi(g)\phi(h)$.
 
-        \item \textbf{Injective}: Let $g_1, g_2 \in G$ such that $\phi(g_1) = \phi(g_2)$. Then $\lambda_{g_1} = \lambda_{g_2}$. Therefore, $\lambda_{g_1}(x) = \lambda_{g_2}(x)$ for all $x$ in $G$, which means that $\lambda_{g_1}(e) = \lambda_{g_2}(e)$ when $x = e$. By definition of $\lambda_g$, we have $eg_1 = eg_2$ which ultimately means that $g_1=g_2$. Thus if $\phi(g_1) = \phi(g_2)$ then $g_1=g_2$.
+        \item \textbf{Injective}: Let $g_1, g_2 \in G$ such that $\phi(g_1) = \phi(g_2)$. Then $\lambda_{g_1} = \lambda_{g_2}$. Therefore, $\lambda_{g_1}(x) = \lambda_{g_2}(x)$ for all $x \in G$, which means that $\lambda_{g_1}(e) = \lambda_{g_2}(e)$. By definition of $\lambda_g$, we have $eg_1 = eg_2$ which means that $g_1=g_2$. Thus $\phi$ is injective.
 
-        \item \textbf{Surjective}: Let $\lambda_g \in H$. Clearly $\phi(g) = \lambda_g$, which means $\lambda_g$ has a pre-image of $g$. Thus $\phi$ is surjective.
+        \item \textbf{Surjective}: Let $\lambda_g \in H$. Clearly $\phi(g) = \lambda_g$, which means $\lambda_g$ has a pre-image of $g$. So $\phi$ is surjective.
     \end{itemize}
     Therefore we have proven that $\phi$ is an isomorphism, which means that
     \[
         G \cong H \leq \Sym{G},
     \]
-    that is, any group $G$ is isomorphic to a subgroup of the symmetric group of $G$ (i.e., a permutation group).
+    that is, any group $G$ is isomorphic to a subgroup of the symmetric group of $G$. That is, $G$ is isomorphic to a permutation group.
 \end{proof}
 
 We note one corollary of this theorem.
@@ -377,7 +377,7 @@ We note one corollary of this theorem.
     Let $G$ be a finite group of order $n$. Then there exists a group $H \leq \Sn{n}$ such that $G \cong H$.
 \end{corollary}
 \begin{proof}
-    By Cayley's theorem (\myref{thrm-cayley}), there exists a group $H \leq \Sym{G}$ such that $G \cong H$. Now since $G$ is finite with order $n$, thus by \myref{corollary-symmetric-group-of-finite-order}, $\Sym{G} \cong \Sn{n}$. Thus, $H \leq \Sn{n}$, and $G \cong H$.
+    By Cayley's theorem (\myref{thrm-cayley}), there exists a group $H \leq \Sym{G}$ such that $G \cong H$. Now since $G$ is finite with order $n$, thus $\Sym{G} \cong \Sn{n}$ by \myref{corollary-symmetric-group-of-finite-order}. Hence $H \leq \Sn{n}$ and $G \cong H$.
 \end{proof}
 
 One might ask what the use of Cayley's Theorem is in group theory. To put it simply, it is a sanity check on the definition of a group. Before anyone had the idea of writing down the axioms for groups, people studied collections of bijections of sets closed under composition and inverses. Cayley's Theorem tells us that every abstract group is a type of the above collection, so the axioms of group theory capture the concrete phenomenon that groups were designed to capture.
