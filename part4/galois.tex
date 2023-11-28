@@ -629,7 +629,7 @@ Before we can answer that question, we need to build up some results regarding t
 In other words, a polynomial $f(x)$ is solvable over a field $F$ if we can obtain all its zeroes by adjoining $n$th roots (for various values of $n$) into some extension of $F$. In such cases, a zero of $f(x)$ would be written as a combination of addition, subtraction, multiplication, division, and taking $n$th roots.
 
 \begin{example}
-    The polynomial $x^3 + bx + c$ is solvable over $\R$ because its three zeroes
+    The polynomial $x^3 + bx + c$ is solvable by radicals over $\R$ because its three zeroes
     \begin{gather*}
         A+B,\\
         -\frac{A+B}2 + \frac{(A-B)\sqrt{-3}}{2},\\
@@ -717,7 +717,7 @@ We now introduce a concept that appears to be disconnected with what we are inte
 
 Our goal is to connect the notion of solvability by radicals with solvable groups.
 
-\begin{theorem}\label{thrm-condition-for-galois-group-to-be-solvable}
+\begin{theorem}\label{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable}
     Let $F$ be a field of characteristic 0 and $a \in F$. If $E$ is the splitting field of $x^n - a$ over $F$, then $\Gal{E/F}$ is solvable.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 32.2]{gallian_2016}})]
@@ -759,7 +759,79 @@ Our goal is to connect the notion of solvability by radicals with solvable group
     so $\Gal{E/F}$ is solvable.
 \end{proof}
 
-% TODO: Continue
+To reach our main result about the connection between polynomials that are solvable by radicals and solvable groups, we need two more theorems.
+
+\begin{theorem}\label{thrm-quotient-group-of-solvable-group-is-solvable}
+    A quotient group of a solvable group is solvable.
+\end{theorem}
+\begin{proof}
+    Suppose that $G$ has a subnormal series
+    \[
+        1 = H_0 \lhd H_1 \lhd \cdots \lhd H_n = G
+    \]
+    where each $H_{i+1}/H_i$ is abelian. Now consider any normal subgroup of $G$, say $N$. Now by \myref{corollary-subgroup-product-is-normal-subgroup-if-subgroups-are-normal} we know that each $H_iN \lhd H_{i+1}N$. In particular, we know that $H_iN/N \lhd H_{i+1}N$. Also, by the Third Isomorphism Theorem for groups (\myref{thrm-isomorphism-3}) we see
+    \[
+        H_{i+1}N / H_iN \cong H_{i+1}/H_i
+    \]
+    which is abelian. Therefore
+    \[
+        1 = H_0N/N \lhd H_1N/N \lhd \cdots \lhd H_nN/N = G/N
+    \]
+    is a subnormal series of $G/N$ where each factor group is abelian, proving that $G/N$ is solvable.
+\end{proof}
+
+\begin{theorem}\label{thrm-normal-group-and-quotient-group-solvable-means-base-group-is-solvable}
+    Let $G$ be a group and $N \unlhd G$. If both $N$ and $G/N$ are solvable, then $G$ is solvable.
+\end{theorem}
+\begin{proof}
+    Let a subnormal series of $N$ with abelian factor groups be
+    \[
+        1 = N_0 \lhd N_1 \lhd \cdots \lhd N_t = N
+    \]
+    and a subnormal series of $G/N$ with abelian factor groups be
+    \[
+        1 \cong N/N = H_0/N \lhd H_1/N \lhd \cdots \lhd H_s/N = G/N.
+    \]
+    Now note that $G$ has a subnormal series
+    \[
+        1 = N_0 \lhd N_1 \lhd \cdots \lhd N_t = N = H_0 \lhd H_1 \lhd \cdots \lhd H_s = G.
+    \]
+    where each factor group is abelian. Therefore $G$ is solvable.
+\end{proof}
+
+We are now ready to establish the connection between solvable groups and polynomials that are solvable by radicals over a field.
+
+\begin{theorem}\label{thrm-solvable-by-radicals-implies-solvable-group}
+    Let $F$ be a field of characteristic 0 and $f(x) \in F[x]$. Suppose $f(x)$ splits over $F(\alpha_1, \alpha_2, \dots, \alpha_n)$ where positive integers $k_1, k_2, \dots, k_n$ exist such that
+    \begin{itemize}
+        \item $\alpha_1^{k_1} \in F$; and
+        \item $\alpha_i^{k_i} \in F(\alpha_1, \alpha_2, \dots, \alpha_{i-1})$ for $1 < i \leq n$.
+    \end{itemize}
+    Let $E$ be the splitting field of $f(x)$ over $F$, where $E$ is contained in $F(\alpha_1, \alpha_2, \dots, \alpha_n)$. Then $\Gal{E/F}$ is solvable.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 32.5]{gallian_2016}})]
+    We induct on $n$.
+
+    When $n = 1$, we have the relation that $F \subseteq E \subseteq F(\alpha_1)$. For brevity let $a = \alpha_1^{k_1}$ and let $L$ be the splitting field of $x^{k_1} - a$ over $F$. Then we have $F \subseteq E \subseteq L$, and both $E$ and $L$ are splitting fields of polynomials over $F$, which means that both $L/F$ and $L/E$ are Galois extensions (\myref{thrm-equivalence-of-finite-galois-extension}). By \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal} we have
+    \[
+        \Gal{E/F} \cong \Gal{L/F}/\Gal{L/E}.
+    \]
+    It follows from \myref{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable} that $\Gal{L/F}$ is solvable, and therefore by \myref{thrm-quotient-group-of-solvable-group-is-solvable} we know that $\Gal{L/F}/\Gal{L/E}$ (and hence $\Gal{E/F}$) is solvable.
+
+    Now suppose that the theorem holds for a positive integer $t$; we show that the theorem holds for $t + 1$.
+
+    Let $a = \alpha_1^{k_1}$, $L$ be the splitting field of $x^{k_1} - a$ over $E$, and $K \subseteq E$ be the splitting field of $x^{k_1} - a$ over $F$. Then $L$ is the splitting field of $(x^{k_1}-a)f(x)$ over $F$, and $L$ is the splitting field of $f(x)$ over $K$. Since $F(\alpha_1) \subseteq K$, thus $f(x)$ splits over $K(\alpha_2, \alpha_3, \dots, \alpha_t, \alpha_{t+1})$. Using the induction hypothesis implies that $\Gal{L/K}$ is solvable. Also \myref{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable} tells us that $\Gal{K/F}$ is solvable. Note that both $L/F$ and $L/K$ are Galois extensions (\myref{thrm-equivalence-of-finite-galois-extension}) and so
+    \[
+        \Gal{L/F}/\Gal{L/K} \cong \Gal{K/F}
+    \]
+    by \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}, which means $\Gal{L/F}/\Gal{L/K}$ is solvable. As both $\Gal{L/K}$ and $\Gal{L/F}/\Gal{L/K}$ are solvable, thus by \myref{thrm-normal-group-and-quotient-group-solvable-means-base-group-is-solvable} we know that $\Gal{L/F}$ is solvable.
+    
+    Now \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal} tells us that $\Gal{L/E} \lhd \Gal{L/F}$ because $L$ is the splitting field of $x^{k_1} - a$ over $E$. Since $\Gal{L/F}$ is solvable, therefore \myref{thrm-quotient-group-of-solvable-group-is-solvable} tells us that $\Gal{L/F}/\Gal{L/E}$ is solvable. But note $L/F$ and $L/E$ are Galois extensions (\myref{thrm-equivalence-of-finite-galois-extension}) which means
+    \[
+        \Gal{L/F}/\Gal{L/E} \cong \Gal{E/F}.
+    \]
+    This proves that $\Gal{E/F}$ is solvable.
+\end{proof}
 
 \section{The Insolvability of the Quintic}
 % TODO: Add
@@ -768,3 +840,15 @@ Our goal is to connect the notion of solvability by radicals with solvable group
 
 \section{Problems}
 % TODO: Add
+
+% \begin{problem}
+%     Let $\theta \in \R$. \textbf{De Moivre's formula}\index{De Moivre's formula} states that
+%     \[
+%         (\cos\theta + i\sin\theta)^n = \cos(n\theta) + i\sin(n\theta)
+%     \]
+%     for all non-negative integers $n$.
+%     \begin{partquestions}{\roman*}
+%         \item Prove De Moivre's formula.
+%         \item Deduce a primitive $n$th root of unity in $\C$, proving your answer.
+%     \end{partquestions}
+% \end{problem}
