@@ -615,7 +615,93 @@ Now suppose that we are given a chain of fields $F \subset K \subset E$, and tha
 \end{proof}
 
 \section{Solvability of Polynomials by Radicals}
-% TODO: Add
+For Galois, the correspondence between groups and fields was only a means to an end; he wanted to answer a question that stumped mathematicians for centuries -- whether there exists a general solution for a quintic equation.
+
+Before we can answer that question, we need to build up some results regarding the solvability of equations by radicals.
+\begin{definition}
+    Let $F$ be a field and $f(x) \in F[x]$. We say that $f(x)$ is \textbf{solvable by radicals over $F$}\index{solvable!by radicals} if and only if $f(x)$ splits in some extension $F(\alpha_1, \alpha_2, \dots, \alpha_n)$ of $F$ and there exist positive integers $k_1, k_2, \dots, k_n$ such that
+    \begin{itemize}
+        \item $\alpha_1^{k_1} \in F$; and
+        \item $\alpha_i^{k_i} \in F(\alpha_1, \alpha_2, \dots, \alpha_{i-1})$ for $1 < i \leq n$.
+    \end{itemize}
+\end{definition}
+
+In other words, a polynomial $f(x)$ is solvable over a field $F$ if we can obtain all its zeroes by adjoining $n$th roots (for various values of $n$) into some extension of $F$. In such cases, a zero of $f(x)$ would be written as a combination of addition, subtraction, multiplication, division, and taking $n$th roots.
+
+\begin{example}
+    The polynomial $x^3 + bx + c$ is solvable over $\R$ because its three zeroes
+    \begin{gather*}
+        A+B,\\
+        -\frac{A+B}2 + \frac{(A-B)\sqrt{-3}}{2},\\
+        -\frac{A+B}2 - \frac{(A-B)\sqrt{-3}}{2},
+    \end{gather*}
+    where
+    \begin{align*}
+        A &= \sqrt[3]{-\frac c2 + \sqrt{\frac{b^3}{27} + \frac{c^2}4}}\\
+        B &= \sqrt[3]{-\frac c2 - \sqrt{\frac{b^3}{27} + \frac{c^2}4}}
+    \end{align*}
+    can be written as a combination of addition, subtraction, multiplication, division, and taking $n$th roots. In particular, the polynomial $x^3 + bx + c$ splits over the extension
+    \[
+        \R\left(A+B, -\frac{A+B}2 + \frac{(A-B)\sqrt{-3}}{2}, -\frac{A+B}2 - \frac{(A-B)\sqrt{-3}}{2}\right).
+    \]
+\end{example}
+
+\begin{example}
+    Consider the polynomial $f(x) = x^8 - 3$, and let $\omega = \frac{\sqrt2}{2} + \frac{\sqrt2}{2}i$. One observes that $\omega^8 = 1$. The splitting field of $f(x)$ over $\Q$ is $\Q(\sqrt[8]3, \omega)$, since
+    \[
+        f(x) = (x-\sqrt[8]3)(x-\sqrt[8]3\omega)(x-\sqrt[8]3\omega^2)\cdots(x-\sqrt[8]3\omega^7).
+    \]
+    Then $f(x)$ is solvable by radicals over $\Q$, since both $\omega^8 = 1 \in \Q$ and $(\sqrt[8]3)^8 = 3 \in \Q$.
+\end{example}
+
+Thus, we have transformed the problem of determining whether a polynomial is solvable by radicals into a problem of determining a certain type of field extension. At the same time, the Fundamental Theorem of Galois Theory allows us to transform problems about field extensions into problems about groups.
+
+We now introduce a concept that appears to be disconnected with what we are interested in -- solvable groups.
+
+\begin{definition}
+    We say that a group $G$ is \textbf{solvable}\index{solvable}\index{solvable!group}\index{group!solvable} if and only if it has a subnormal series
+    \[
+        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G
+    \]
+    where each factor group $H_{i+1}/H_i$ is abelian.
+\end{definition}
+
+\begin{example}
+    We note that the group $\Sn{4}$ is solvable. Recall from  \myref{problem-S4-composition-series} that the composition series of $\Sn{4}$ is
+    \[
+        1 \lhd \mathrm{V} \lhd \An{4} \lhd \Sn{4}.
+    \]
+    The composition factors are
+    \begin{itemize}
+        \item $\mathrm{V}/1 \cong \mathrm{V} \cong \Z_2^2$ which is abelian;
+        \item $\An{4}/\mathrm{V} \cong \Cn{3}$ which is abelian; and
+        \item $\Sn{4}/\An{4} \cong \Cn{2}$ which is abelian.
+    \end{itemize}
+    Therefore the composition series of $\Sn{4}$ is a subnormal series where each factor group is abelian. Therefore $\Sn{4}$ is solvable.
+\end{example}
+
+\begin{example}
+    The groups $\Sn{3}$, $\Sn{2}$, and $\Sn{1}$ are all solvable.
+    
+    
+    For $\Sn{3}$, its composition series is
+    \[
+        1 \lhd \An{3} \lhd \Sn{3}
+    \]
+    and clearly $\An{3}/1 \cong \Cn{3}$ and $\Sn{3}/\An{3} \cong \Cn{2}$ are both abelian.
+
+    For $\Sn{2}$, note $|\Sn{2}| = 2! = 2$ which is prime, which means $\Sn{2} \cong \Cn{2}$ which is abelian. Therefore the obvious subnormal series
+    \[
+        1 \lhd \Sn{2}
+    \]
+    only has abelian factor groups, proving that $\Sn{2}$ is solvable. The argument for $\Sn{1}$ goes similarly.
+\end{example}
+
+\begin{exercise}
+    Prove that all abelian groups are solvable.
+\end{exercise}
+
+% TODO: Continue
 
 \section{The Insolvability of the Quintic}
 % TODO: Add
