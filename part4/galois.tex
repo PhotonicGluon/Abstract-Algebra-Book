@@ -711,9 +711,53 @@ We now introduce a concept that appears to be disconnected with what we are inte
     only has abelian factor groups, proving that $\Sn{2}$ is solvable. The argument for $\Sn{1}$ goes similarly.
 \end{example}
 
-\begin{exercise}
+\begin{exercise}\label{exercise-abelian-groups-are-solvable}
     Prove that all abelian groups are solvable.
 \end{exercise}
+
+Our goal is to connect the notion of solvability by radicals with solvable groups.
+
+\begin{theorem}\label{thrm-condition-for-galois-group-to-be-solvable}
+    Let $F$ be a field of characteristic 0 and $a \in F$. If $E$ is the splitting field of $x^n - a$ over $F$, then $\Gal{E/F}$ is solvable.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 32.2]{gallian_2016}})]
+    We first note that if $a = 0$ then the only zero of $x^n - a$ is 0 itself (with multiplicity $n$), and so the splitting field $E$ is $F$ itself and thus $\Gal{E/F}$ is the trivial group, which is solvable. Thus we assume $a \neq 0$. We split the proof into two cases.
+
+    The first case is when $F$ contains a primitive $n$th root of unity $\omega$. Let $b \in E$ be a zero of $x^n - a$. Then the zeroes of $x^n - a$ are $b, b\omega, b\omega^2, \dots, b\omega^{n-1}$ and therefore $E = F(b)$ (since $\omega \in F$ already). Now note that any automorphism of $\Gal{E/F}$ is completely determined by its effect on $b$. Since $b$ is a zero of $x^n - a$, we know that any element of $\Gal{E/F}$ takes $b$ to $b\omega^i$ for some $i \in \{0, 1, 2, \dots, n - 1\}$ (\myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}). Now let $\sigma, \mu \in \Gal{E/F}$. Since $\omega \in F$, both $\sigma$ and $\mu$ fix $\omega$; let $\sigma(b) = b\omega^j$ and $\mu(b) = b\omega^k$ for some $j, k \in \{0, 1, 2, \dots, n - 1\}$. Therefore one sees
+    \[
+        (\sigma\mu)(b) = \sigma(\mu(b)) = \sigma(b\omega^k) = \sigma(b)\sigma(\omega^k) = (b\omega^j)\omega^k = b\omega^{j+k}
+    \]
+    and
+    \[
+        (\mu\sigma)(b) = \mu(\sigma(b)) = \mu(b\omega^j) = \mu(b)\mu(\omega^j) = (b\omega^k)\omega^j = b\omega^{k+j},
+    \]
+    which means that $\sigma\mu(b) = \mu\sigma(b)$ and both $\sigma\mu$ and $\mu\sigma$ fix elements of $F$. Therefore $\sigma\mu = \mu\sigma$ and so $\Gal{E/F}$ is abelian. By \myref{exercise-abelian-groups-are-solvable} this means that $\Gal{E/F}$ is solvable.
+
+    The second case is when $F$ does not contain a primitive $n$th root of unity. Let $\omega$ be a primitive $n$th root of unity and $b \in E$ a zero of $x^n - a$. Note $b \neq 0$ because $0^n-a \neq 0$. Since $b\omega$ is a zero of $x^n - a$, we know that both $b \in E$ and $b\omega \in E$, and consequently $\omega = (b\omega)(b)^{-1} \in E$. Hence $F(\omega) \subseteq E$ and, in particular, $F(\omega)$ is the splitting field of $x^n - 1$ over $F$. Using a similar argument as above, we know for any automorphisms $\sigma, \mu \in \Gal{F(\omega)/F}$ that $\sigma(\omega) = \omega^j$ and $\mu(\omega) = \omega^k$ for some $j, k \in \{0, 1, \dots, n - 1\}$. Again, any automorphism of $\Gal{F(\omega)/F}$ is completely determined by its effect on $\omega$. One sees that
+    \[
+        (\sigma\mu)(\omega) = \sigma(\mu(\omega)) = \sigma(\omega^k) = \sigma(\omega)^k = (\omega^j)^k = \omega^{jk}
+    \]
+    and
+    \[
+        (\mu\sigma)(\omega) = \mu(\sigma(\omega)) = \mu(\omega^j) = \mu(\omega)^j = (\omega^k)^j = \omega^{kj}
+    \]
+    which means that $\sigma\mu(\omega) = \mu\sigma(\omega)$, and both $\sigma\mu$ and $\mu\sigma$ fix $F$. Therefore $\sigma\mu = \mu\sigma$ and so $\Gal{F(\omega)/F}$ is abelian.
+
+    Now because $E$ is the splitting field of $x^n - a$ over $F$, we know $E$ must be the splitting field of $x^n - a$ over $F(\omega)$. In particular, $F(\omega)$ contains a primitive $n$th root of unity. Therefore by the first case we know that $\Gal{E/F(\omega)}$ is abelian. By \myref{prop-intermediate-field-of-galois-extension-is-galois-extension}, $E$ is a Galois extension of $F(\omega)$. Now we know that $F(\omega)$ is a Galois extension, which means
+    \[
+        \Gal{F(\omega)/F} \cong \Gal{E/F}/\Gal{E/F(\omega)}
+    \]
+    by \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}. In particular that theorem also says that $\Gal{E/F(\omega)} \lhd \Gal{E/F}$, which means that
+    \[
+        1 \lhd \Gal{E/F(\omega)} \lhd \Gal{E/F}
+    \]
+    is a subnormal series. In fact we know that
+    \begin{itemize}
+        \item $\Gal{E/F(\omega)}/1 \cong \Gal{E/F(\omega)}$ is abelian; and
+        \item $\Gal{E/F}/\Gal{E/F(\omega)} \cong \Gal{F(\omega)/F}$ is abelian,
+    \end{itemize}
+    so $\Gal{E/F}$ is solvable.
+\end{proof}
 
 % TODO: Continue
 
