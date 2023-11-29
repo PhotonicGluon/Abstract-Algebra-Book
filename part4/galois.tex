@@ -685,16 +685,36 @@ We now introduce a concept that appears to be disconnected with what we are inte
     where each factor group $H_{i+1}/H_i$ is abelian.
 \end{definition}
 
+For finite groups, we have the following equivalent definition.
+
+\begin{proposition}
+    A finite group $G$ is solvable if and only if it has a composition series whose composition factors are all cyclic groups of prime order.
+\end{proposition}
+\begin{proof}
+    The reverse direction is trivial -- a composition series is a subnormal series, and cyclic groups of prime order are abelian. So we only prove the forward direction here.
+
+    Suppose $G$ is solvable, meaning it has a subnormal series
+    \[
+        1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G
+    \]
+    where each factor group $H_{i+1}/H_i$ is abelian. By the Schreier Refinement Theorem (\myref{thrm-schreier}) we may refine this subnormal series into a composition series
+    \[
+        1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_r = G
+    \]
+    where each composition factor $K_{i+1}/K_i$ is abelian and simple. However by \myref{thrm-abelian-group-simple-iff-cylic-group-of-prime-order} we know that this means that each composition factor must be a cyclic group of prime order.
+\end{proof}
+
 \begin{example}
     We note that the group $\Sn{4}$ is solvable. Recall from  \myref{problem-S4-composition-series} that the composition series of $\Sn{4}$ is
     \[
-        1 \lhd \mathrm{V} \lhd \An{4} \lhd \Sn{4}.
+        1 \lhd \Cn{2} \lhd \mathrm{V} \lhd \An{4} \lhd \Sn{4}.
     \]
     The composition factors are
     \begin{itemize}
-        \item $\mathrm{V}/1 \cong \mathrm{V} \cong \Z_2^2$ which is abelian;
-        \item $\An{4}/\mathrm{V} \cong \Cn{3}$ which is abelian; and
-        \item $\Sn{4}/\An{4} \cong \Cn{2}$ which is abelian.
+        \item $\Cn{2}/1 \cong \Cn{2}$;
+        \item $\mathrm{V}/\Cn{2} \cong \Cn{2}$;
+        \item $\An{4}/\mathrm{V} \cong \Cn{3}$; and
+        \item $\Sn{4}/\An{4} \cong \Cn{2}$.
     \end{itemize}
     Therefore the composition series of $\Sn{4}$ is a subnormal series where each factor group is abelian. Therefore $\Sn{4}$ is solvable.
 \end{example}
@@ -837,46 +857,6 @@ We are now ready to establish the connection between solvable groups and polynom
     This proves that $\Gal{E/F}$ is solvable.
 \end{proof}
 
-% \begin{lemma}\label{lemma-radical-extension-means-normal-radical-extension-exists}
-%     Let $F$ be a field of characteristic 0 and let
-%     \[
-%         F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_n = E
-%     \]
-%     be a radical series of $F$. Then there exists a field $K$ that contains $E$ with a radical series
-%     \[
-%         F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_n = K
-%     \]
-%     such that $K_i$ is a normal extension of $K_{i-1}$. Such a series is called a \textbf{normal radical series}\index{radical series!normal}.
-% \end{lemma}
-% \begin{proof}
-%     Since $E$ is a radical extension of $F$, we know that $F_i = F_{i-1}(\alpha_i)$ where $\alpha_i^{k_i} \in F_{i-1}$ for some positive integer $k_i$. Define $K_1$ to be the splitting field of $x^{k_1} - \alpha_1^{k_1}$. The zeroes of this polynomial are $\alpha_1, \alpha_1\omega, \alpha_1\omega^2, \dots, \alpha_1\omega^{k_1-1}$ where $\omega$ is a primitive $k_1$th root of unity. We consider two cases.
-%     \begin{itemize}
-%         \item If $F$ contains a primitive $k_1$th root of unity, then $F$ contains all these zeroes. So $K_1 = F(\alpha_1)$ in this case.
-%         \item Otherwise $F$ does not contain a primitive $k_1$th root of unity. Suppose $\beta$ is a zero of $x^{k_1} - \alpha_1^{k_1}$ in $K_1$. By definition of a splitting field, all the zeroes of $x^{k_1} - \alpha_1^{k_1}$, namely $\beta, \beta\omega, \beta\omega^2, \dots, \beta\omega^{k_1-1}$, are all in $K_1$. In this case we see $K_1 = F(\beta\omega)$.
-%     \end{itemize}
-%     Thus one sees that $K_1$ is a simple normal radical extension of $F$ which contains $K_1$. Continuing in this manner we obtain the radical series
-%     \[
-%         F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_n = K  
-%     \]
-%     such that $K_i$ is a normal extension of $K_{i-1}$ and that $K_i$ contains $F_i$ for all $i = 1, 2, \dots, n$.
-% \end{proof}
-
-% With this lemma, we can prove the main result about solvability by radicals.
-
-% \begin{theorem}\label{thrm-solvable-by-radicals-iff-solvable-group}
-%     Let $F$ be a field of characteristic 0 and $f(x) \in F[x]$. Let $E$ be the splitting field of $f(x)$ over $F$. Then $f(x)$ is solvable by radicals if and only if $\Gal{E/F}$ is solvable.
-% \end{theorem}
-% \begin{proof}[Proof (see {\cite[Theorem 23.30]{judson_beezer_2022}})]
-%     For the forward direction, assume that $f(x)$ is solvable by radicals. Thus there exists a radical series $F = F_0 \subset F_1 \subset \cdots \subset F_n = E$. By \myref{lemma-radical-extension-means-normal-radical-extension-exists} we can just assume that each $F_i$ is normal (and separable) over $F_{i-1}$, which means that each $F_i$ is a Galois extension of $F_{i-1}$. By \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal} we therefore see that $\Gal{E/F_i} \lhd \Gal{E/F_{i-1}}$. Thus we obtain a subnormal series of subgroups of $\Gal{E/F}$,
-%     \[
-%         1 \lhd \Gal{E/F_{n-1}} \lhd \Gal{E/F_{n-2}} \lhd \cdots \lhd \Gal{E/F_1} \lhd \Gal{E/F_0} = \Gal{E/F}.
-%     \]
-%     Again, using \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}, we know that
-%     \[
-%         \Gal{E/F_{i-1}}/\Gal{E/F_i} \cong \Gal{F_i/F_{i-1}}
-%     \]
-%     and, by \myref{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable}, we know that each $\Gal{F_i/F_{i-1}}$ is solvable.
-% \end{proof}
 
 \section{The Insolvability of the Quintic}
 % TODO: Add
