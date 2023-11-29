@@ -682,12 +682,12 @@ We now introduce a concept that appears to be disconnected with what we are inte
     \[
         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G
     \]
-    where each factor group $H_{i+1}/H_i$ is abelian.
+    where each factor group $H_{i+1}/H_i$ is abelian for $i \in \{0, 1, 2, \dots, n-1\}$.
 \end{definition}
 
 For finite groups, we have the following equivalent definition.
 
-\begin{proposition}
+\begin{proposition}\label{prop-solvable-equivalence-for-finite-groups}
     A finite group $G$ is solvable if and only if it has a composition series whose composition factors are all cyclic groups of prime order.
 \end{proposition}
 \begin{proof}
@@ -697,7 +697,7 @@ For finite groups, we have the following equivalent definition.
     \[
         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G
     \]
-    where each factor group $H_{i+1}/H_i$ is abelian. By the Schreier Refinement Theorem (\myref{thrm-schreier}) we may refine this subnormal series into a composition series
+    where each factor group $H_{i+1}/H_i$ is abelian for $i \in \{0, 1, 2, \dots, n-1\}$. By the Schreier Refinement Theorem (\myref{thrm-schreier}) we may refine this subnormal series into a composition series
     \[
         1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_r = G
     \]
@@ -826,7 +826,7 @@ To reach our main result about the connection between polynomials that are solva
 
 We are now ready to establish the connection between solvable groups and polynomials that are solvable by radicals over a field.
 
-\begin{theorem}\label{thrm-solvable-by-radicals-implies-solvable-group}
+\begin{theorem}[Galois]\label{thrm-solvable-by-radicals-implies-solvable-group}
     Let $F$ be a field of characteristic 0 and $f(x) \in F[x]$. Suppose the splitting field of $f(x)$ over $F$ is $E$, and that $E$ is contained in a radical extension
     \[
         F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_n.
@@ -859,7 +859,72 @@ We are now ready to establish the connection between solvable groups and polynom
 
 
 \section{The Insolvability of the Quintic}
-% TODO: Add
+We are now in a position to dispatch a problem that has plagued mathematicians for a long time -- whether a general solution for a quintic equation exists. But first, a lemma.
+
+\begin{lemma}\label{lemma-subgroup-containing-transposition-and-maximal-length-cycle-is-whole-symmetric-group}
+    Let $p$ be a prime and $G$ be a subgroup of $\Sn{p}$. If $G$ contains a transposition and a cycle of length $p$, then $G = \Sn{p}$.
+\end{lemma}
+\begin{proof}
+    Let $G$ be a subgroup of $\Sn{p}$ that contains a cycle of length $p$ and a transposition, which we denote $\sigma$ and $\tau$ respectively. We can assume without loss of generality that $\tau = \begin{pmatrix}1&2\end{pmatrix}$, since otherwise we may just rename the elements to fit this form of $\tau$. Note also that $|\sigma| = p$ and so $\sigma^n$ must be a cycle of length $p$ for any $1 \leq n < p$. Therefore, assume without loss of generality that $\mu = \sigma^n = \begin{pmatrix}1&2&i_3&i_4&\cdots&i_p\end{pmatrix}$ for some $n$ where $1 \leq n < p$. Note that
+    \[
+        \begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}1&2&i_3&i_4&\cdots&i_p\end{pmatrix} = \begin{pmatrix}2&i_3&i_4&\cdots&i_p\end{pmatrix}
+    \]
+    and
+    \[
+        \begin{pmatrix}2&i_3&i_4&\cdots&i_p\end{pmatrix}^k\begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}2&i_3&i_4&\cdots&i_p\end{pmatrix}^{-k} = \begin{pmatrix}1&i_k\end{pmatrix}
+    \]
+    for any $1 \leq k < p$. Thus we see that every transposition of the form $\begin{pmatrix}1&n\end{pmatrix}$ is in $G$ for $1 \leq n < p$. But one sees that
+    \[
+        \begin{pmatrix}1&j\end{pmatrix}\begin{pmatrix}1&i\end{pmatrix}\begin{pmatrix}1&j\end{pmatrix} = \begin{pmatrix}i&j\end{pmatrix}
+    \]
+    which means that every transposition of $\Sn{p}$ is in $G$. However any permutation is a product of transpositions (\myref{lemma-permutations-as-product-of-transpositions}) so these transpositions generate $\Sn{p}$, i.e. $G = \Sn{p}$.
+\end{proof}
+
+Now we are going to do something unprecedented in this book -- we will use a result without proving it first. Have no fear though, this will be proven in the next (and final) chapter of the book.
+\begin{quote}
+    Let $f(x)$ be a polynomial with real coefficients. If $f(a) < 0$ and $f(b) > 0$, and $a < b$, then there exists a $c$ where $a < c < b$ such that $f(c) = 0$. If instead $a > b$, then there exists a $c$ where $b < c < a$ and $f(c) = 0$.
+\end{quote}
+
+We are now ready to state an intermediary claim.
+
+\begin{proposition}
+    Let $f(x) = x^5 - 4x - 2 \in \Q[x]$ and $F$ the splitting field of $f(x)$ over $\Q$. Then $\Gal{F/\Q} \cong \Sn{5}$.
+\end{proposition}
+\begin{proof}
+    TODO: Add
+\end{proof}
+
+Why is it important that the Galois group of that polynomial is $\Sn{5}$? It turns out that $\Sn{5}$ is \textit{not} solvable.
+
+\begin{proposition}
+    $\Sn{5}$ is not a solvable group.
+\end{proposition}
+\begin{proof}
+    We first find a composition series of $\Sn{5}$. Note that $\An{5}$ is a normal subgroup of $\Sn{5}$ (\myref{prop-An-normal-subgroup-of-Sn}), $|\Sn{5}| = 5! = 120$ (\myref{exercise-order-of-Sn}), and $|\An{5}| = \frac{5!}2 = 60$ (\myref{prop-order-of-An}). Since the order of a subgroup must divide the order of the group, the maximal order of a proper subgroup of $\Sn{5}$ is 60. Hence $\An{5}$ is the maximal (normal) subgroup of $\Sn{5}$. However $\An{5}$ is a simple group (\myref{thrm-An-is-simple-for-n>=5}) which means that it has no proper normal subgroups. Hence the composition series of $\Sn{5}$ is
+    \[
+        1 \lhd \An{5} \lhd \Sn{5}.
+    \]
+    
+    However, note that the composition factor $\An{5}/1 \cong \An{5}$ is not a cyclic group of prime order. Therefore, by \myref{prop-solvable-equivalence-for-finite-groups}, we see that $\Sn{5}$ is not solvable.
+\end{proof}
+
+Therefore we see the following fact.
+
+\begin{proposition}
+    $x^5 - 4x - 2$ is not solvable by radicals over $\Q$.
+\end{proposition}
+\begin{proof}
+    We know that the splitting field of $x^5 - 4x - 2$ over $\Q$, which we denote by $F$, has a Galois group isomorphic to $\Sn{5}$. But $\Sn{5}$ is not solvable. Hence, by the contrapositive of Galois' theorem (\myref{thrm-solvable-by-radicals-implies-solvable-group}), we see that the splitting field $F$ is not contained in a radical extension, which means that $f(x)$ is not solvable by radicals over $\Q$.
+\end{proof}
+
+The obvious generalisation of the above fact is captured by the Abel-Ruffini theorem.
+
+\begin{theorem}[Abel-Ruffini]\index{Abel-Ruffini Theorem}
+    A general polynomial with real coefficients with degree of 5 or more is not solvable by radicals.
+\end{theorem}
+\begin{proof}
+    The degree 5 polynomial $f(x) = x^5 - 4x - 2$ is not solvable by radicals over $\Q$. For $n > 5$ the existence of a solution by radicals of the general polynomial of degree $n$ yields a solution by radicals of the equation $f(x)x^{n-5} = 0$, contradicting the above.
+\end{proof}
 
 \newpage
 
@@ -876,4 +941,8 @@ We are now ready to establish the connection between solvable groups and polynom
 %         \item Prove De Moivre's formula.
 %         \item Deduce a primitive $n$th root of unity in $\C$, proving your answer.
 %     \end{partquestions}
+% \end{problem}
+
+% \begin{problem}
+%     Prove that $\Sn{n}$ is \textit{not} solvable for all $n \geq 5$.
 % \end{problem}
