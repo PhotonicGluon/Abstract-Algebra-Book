@@ -618,15 +618,20 @@ Now suppose that we are given a chain of fields $F \subset K \subset E$, and tha
 For Galois, the correspondence between groups and fields was only a means to an end; he wanted to answer a question that stumped mathematicians for centuries -- whether there exists a general solution for a quintic equation.
 
 Before we can answer that question, we need to build up some results regarding the solvability of equations by radicals.
+
 \begin{definition}
-    Let $F$ be a field and $f(x) \in F[x]$. We say that $f(x)$ is \textbf{solvable by radicals over $F$}\index{solvable!by radicals} if and only if $f(x)$ splits in some extension $F(\alpha_1, \alpha_2, \dots, \alpha_n)$ of $F$ and there exist positive integers $k_1, k_2, \dots, k_n$ such that
-    \begin{itemize}
-        \item $\alpha_1^{k_1} \in F$; and
-        \item $\alpha_i^{k_i} \in F(\alpha_1, \alpha_2, \dots, \alpha_{i-1})$ for $1 < i \leq n$.
-    \end{itemize}
+    An extension field $E$ of a field $F$ is a \textbf{radical extension}\index{extension!radical}\index{radical extension} if and only if there exists a chain of subfields
+    \[
+        F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_n = E,
+    \]
+    called a \textbf{radical series}\index{radical series}, such that for $i = 1, 2, \dots, n$ we have $F_i = F_{i-1}(\alpha_i)$ for some $\alpha_i$ where $\alpha_i^{k_i} \in F_{i-1}$ for some positive integer $k_i$. A radical extension of the form $F(\alpha)$ is called a \textbf{simple radical extension}\index{extension!radical!simple}\index{radical extension!simple}.
 \end{definition}
 
-In other words, a polynomial $f(x)$ is solvable over a field $F$ if we can obtain all its zeroes by adjoining $n$th roots (for various values of $n$) into some extension of $F$. In such cases, a zero of $f(x)$ would be written as a combination of addition, subtraction, multiplication, division, and taking $n$th roots.
+\begin{definition}
+    Let $F$ be a field and $f(x) \in F[x]$. We say that $f(x)$ is \textbf{solvable by radicals over $F$}\index{solvable!by radicals} if and only if the splitting field of $f(x)$ over $F$ is contained in a radical extension of $F$.
+\end{definition}
+
+In other words, a polynomial $f(x)$ is solvable by radicals over a field $F$ if we can obtain all its zeroes by adjoining $n$th roots (for various values of $n$) into some extension of $F$. In such cases, a zero of $f(x)$ would be written as a combination of addition, subtraction, multiplication, division, and taking $n$th roots.
 
 \begin{example}
     The polynomial $x^3 + bx + c$ is solvable by radicals over $\R$ because its three zeroes
@@ -802,12 +807,11 @@ To reach our main result about the connection between polynomials that are solva
 We are now ready to establish the connection between solvable groups and polynomials that are solvable by radicals over a field.
 
 \begin{theorem}\label{thrm-solvable-by-radicals-implies-solvable-group}
-    Let $F$ be a field of characteristic 0 and $f(x) \in F[x]$. Suppose $f(x)$ splits over $F(\alpha_1, \alpha_2, \dots, \alpha_n)$ where positive integers $k_1, k_2, \dots, k_n$ exist such that
-    \begin{itemize}
-        \item $\alpha_1^{k_1} \in F$; and
-        \item $\alpha_i^{k_i} \in F(\alpha_1, \alpha_2, \dots, \alpha_{i-1})$ for $1 < i \leq n$.
-    \end{itemize}
-    Let $E$ be the splitting field of $f(x)$ over $F$, where $E$ is contained in $F(\alpha_1, \alpha_2, \dots, \alpha_n)$. Then $\Gal{E/F}$ is solvable.
+    Let $F$ be a field of characteristic 0 and $f(x) \in F[x]$. Suppose the splitting field of $f(x)$ over $F$ is $E$, and that $E$ is contained in a radical extension
+    \[
+        F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_n.
+    \]
+    Then $\Gal{E/F}$ is solvable.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 32.5]{gallian_2016}})]
     We induct on $n$.
@@ -832,6 +836,47 @@ We are now ready to establish the connection between solvable groups and polynom
     \]
     This proves that $\Gal{E/F}$ is solvable.
 \end{proof}
+
+% \begin{lemma}\label{lemma-radical-extension-means-normal-radical-extension-exists}
+%     Let $F$ be a field of characteristic 0 and let
+%     \[
+%         F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_n = E
+%     \]
+%     be a radical series of $F$. Then there exists a field $K$ that contains $E$ with a radical series
+%     \[
+%         F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_n = K
+%     \]
+%     such that $K_i$ is a normal extension of $K_{i-1}$. Such a series is called a \textbf{normal radical series}\index{radical series!normal}.
+% \end{lemma}
+% \begin{proof}
+%     Since $E$ is a radical extension of $F$, we know that $F_i = F_{i-1}(\alpha_i)$ where $\alpha_i^{k_i} \in F_{i-1}$ for some positive integer $k_i$. Define $K_1$ to be the splitting field of $x^{k_1} - \alpha_1^{k_1}$. The zeroes of this polynomial are $\alpha_1, \alpha_1\omega, \alpha_1\omega^2, \dots, \alpha_1\omega^{k_1-1}$ where $\omega$ is a primitive $k_1$th root of unity. We consider two cases.
+%     \begin{itemize}
+%         \item If $F$ contains a primitive $k_1$th root of unity, then $F$ contains all these zeroes. So $K_1 = F(\alpha_1)$ in this case.
+%         \item Otherwise $F$ does not contain a primitive $k_1$th root of unity. Suppose $\beta$ is a zero of $x^{k_1} - \alpha_1^{k_1}$ in $K_1$. By definition of a splitting field, all the zeroes of $x^{k_1} - \alpha_1^{k_1}$, namely $\beta, \beta\omega, \beta\omega^2, \dots, \beta\omega^{k_1-1}$, are all in $K_1$. In this case we see $K_1 = F(\beta\omega)$.
+%     \end{itemize}
+%     Thus one sees that $K_1$ is a simple normal radical extension of $F$ which contains $K_1$. Continuing in this manner we obtain the radical series
+%     \[
+%         F = K_0 \subset K_1 \subset K_2 \subset \cdots \subset K_n = K  
+%     \]
+%     such that $K_i$ is a normal extension of $K_{i-1}$ and that $K_i$ contains $F_i$ for all $i = 1, 2, \dots, n$.
+% \end{proof}
+
+% With this lemma, we can prove the main result about solvability by radicals.
+
+% \begin{theorem}\label{thrm-solvable-by-radicals-iff-solvable-group}
+%     Let $F$ be a field of characteristic 0 and $f(x) \in F[x]$. Let $E$ be the splitting field of $f(x)$ over $F$. Then $f(x)$ is solvable by radicals if and only if $\Gal{E/F}$ is solvable.
+% \end{theorem}
+% \begin{proof}[Proof (see {\cite[Theorem 23.30]{judson_beezer_2022}})]
+%     For the forward direction, assume that $f(x)$ is solvable by radicals. Thus there exists a radical series $F = F_0 \subset F_1 \subset \cdots \subset F_n = E$. By \myref{lemma-radical-extension-means-normal-radical-extension-exists} we can just assume that each $F_i$ is normal (and separable) over $F_{i-1}$, which means that each $F_i$ is a Galois extension of $F_{i-1}$. By \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal} we therefore see that $\Gal{E/F_i} \lhd \Gal{E/F_{i-1}}$. Thus we obtain a subnormal series of subgroups of $\Gal{E/F}$,
+%     \[
+%         1 \lhd \Gal{E/F_{n-1}} \lhd \Gal{E/F_{n-2}} \lhd \cdots \lhd \Gal{E/F_1} \lhd \Gal{E/F_0} = \Gal{E/F}.
+%     \]
+%     Again, using \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}, we know that
+%     \[
+%         \Gal{E/F_{i-1}}/\Gal{E/F_i} \cong \Gal{F_i/F_{i-1}}
+%     \]
+%     and, by \myref{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable}, we know that each $\Gal{F_i/F_{i-1}}$ is solvable.
+% \end{proof}
 
 \section{The Insolvability of the Quintic}
 % TODO: Add
