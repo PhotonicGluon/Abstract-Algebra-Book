@@ -423,22 +423,33 @@ We can now introduce a related concept -- algebraically closed fields.
     For the reverse direction, suppose that every non-constant polynomial $f(x) \in F[x]$ splits in $F$, i.e. a factorization of $f(x)$ consists only of linear factors. Let $ax-b$ be such a factor. Then clearly $f(ba^{-1}) = 0$. Consequently $F$ is algebraically closed.
 \end{proof}
 
-\begin{corollary}\label{corollary-in-algebraically-closed-field-irreducible-polynomial-is-degree-1}
-    In an algebraically closed field, all irreducible polynomials are of degree 1.
+\begin{corollary}\label{corollary-field-is-algebraically-closed-iff-irreducible-polynomials-are-of-degree-1}
+    A field is algebraically closed if and only if all irreducible polynomials are of degree 1.
 \end{corollary}
 \begin{proof}
-    In \myref{thrm-algebraically-closed-iff-polynomials-split-in-field} we have shown that every polynomial splits in an algebraically closed field. So every polynomial of degree above 1 is reducible; consequently only degree 1 polynomials are irreducible.
+    For the forward direction, \myref{thrm-algebraically-closed-iff-polynomials-split-in-field} tells us that every polynomial splits in an algebraically closed field. So every polynomial of degree above 1 is reducible in an algebraically closed field; consequently only degree 1 polynomials are irreducible.
+
+    For the reverse direction, we show the contrapositive holds. Suppose $F$ is \textit{not} an algebraically closed field. Then there exists some non-constant $f(x) \in F[x]$ with no zeroes in $F$. Let $p(x)$ be an irreducible factor of $f(x)$. We see $p(x)$ also has no zeroes in $F$. Since every degree 1 polynomial has a zero in $F$, thus $\deg p(x) > 1$.
 \end{proof}
 
-\begin{corollary}\label{corollary-algebraically-closed-field-has-no-proper-algebraic-extension}
-    An algebraically closed field has no proper algebraic extension.
+\begin{corollary}\label{corollary-field-is-algebraically-closed-iff-no-proper-algebraic-extension}
+    A field is algebraically closed if and only if it has no proper algebraic extension.
 \end{corollary}
 \begin{proof}
-    See \myref{exercise-algebraically-closed-field-has-no-proper-algebraic-extension} (later).
+    See \myref{exercise-field-is-algebraically-closed-iff-no-proper-algebraic-extension} (later).
 \end{proof}
 
-\begin{exercise}\label{exercise-algebraically-closed-field-has-no-proper-algebraic-extension}
-    Prove \myref{corollary-algebraically-closed-field-has-no-proper-algebraic-extension}.
+\begin{corollary}\label{corollary-field-is-algebraically-closed-iff-no-proper-finite-extension}
+    A field is algebraically closed if and only if it has no proper finite extension.
+\end{corollary}
+\begin{proof}
+    For the forward direction, if a field is algebraically closed then it has no proper algebraic extension (\myref{corollary-field-is-algebraically-closed-iff-no-proper-algebraic-extension}). As all finite extensions are algebraic (\myref{thrm-finite-extension-is-algebraic}) this thus means that the field has no proper finite extension.
+
+    For the reverse direction, suppose a field $F$ has no proper finite extension. Suppose $f(x) \in F[x]$ is an irreducible polynomial. Then \myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible} tells us that $E = F[x]/\princ{f(x)}$ is an extension field of $F$ where $[E:F] = \deg f(x)$, which is finite. However since $F$ has no proper finite extension, thus $E = F$, meaning $[E:F] = 1$, and thus $\deg f(x) = 1$. The proof is complete by \myref{corollary-field-is-algebraically-closed-iff-irreducible-polynomials-are-of-degree-1}.
+\end{proof}
+
+\begin{exercise}\label{exercise-field-is-algebraically-closed-iff-no-proper-algebraic-extension}
+    Prove \myref{corollary-field-is-algebraically-closed-iff-no-proper-algebraic-extension}.
 \end{exercise}
 
 \newpage
