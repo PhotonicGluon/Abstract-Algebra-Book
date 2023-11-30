@@ -1,0 +1,126 @@
+\section{Galois Theory}
+\begin{questions}
+    \item Recall that $\Gal{E/F}$ permutes the $n$ zeroes of the polynomial (\myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}). Thus Cayley's theorem (\myref{thrm-cayley}) tells us that $\Gal{E/F}$ is isomorphic to a permutation group; in fact it is isomorphic to a subgroup of $\Sn{n}$. Since the order of a subgroup must divide the order of the group by Lagrange's theorem (\myref{thrm-lagrange}), thus $|\Gal{E/F}|$ must divide the order of $\Sn{n}$, which is $n!$.
+    
+    \item Clearly the zeroes of $x^2 + 3$ over $\R$ are $\pm\sqrt{-3} = \pm\sqrt3i$. Therefore
+    \[
+        F = \R(\sqrt3i, -\sqrt3i) = \R(i) = \C.
+    \]
+    Note that $[\C:\R] = 2$ which means that $\Gal{\C/\R} = 2$ (\myref{thrm-order-of-galois-group-is-degree-of-field-extension}). One thus sees that the elements of $\Gal{F/\R} = \Gal{\C/\R}$ are $\id$ and $\sigma$ where $\sigma(a + bi) = a - bi$ for any $a + bi \in \C$.
+
+    \item Since $f(x)$ is irreducible, it must be separable over its splitting field. In fact $[E:F] = 2$, which means $|\Gal{E/F}| = 2$. But by \myref{corollary-group-with-prime-order-is-cyclic} this means that $\Gal{E/f} \cong \Cn{2}$.
+    
+    \item Since $x > 0$ thus $\sqrt x \in \R$. In particular one sees that
+    \begin{align*}
+        \sigma(x) &= \sigma\left((\sqrt x)^2\right)\\
+        &= \left(\sigma(\sqrt x)\right)^2\\
+        &\geq 0
+    \end{align*}
+    which means that $\sigma(x) \geq 0$ for all $x > 0$. Now, seeking a contradiction, suppose $\sigma(a) = 0$ for some $a > 0$. But note that $\sigma(0) = 0$ by properties of homomorphism, which shows that $\sigma$ is not injective and hence not an automorphism, a contradiction. Therefore $\sigma(x) \neq 0$ for all $x > 0$, i.e. $\sigma(x) > 0$ for all $x > 0$.
+    
+    \item Given that $|\Gal{E/\GF{p}}| = q^6$, this means that $[E:\GF{p}] = q^6$ (\myref{thrm-order-of-galois-group-is-degree-of-field-extension}). Therefore by \myref{thrm-subfields-of-finite-field} we see that $E = \GF{p^{q^6}}$. Note by the same theorem that the number of subfields of $E$ is the number of distinct divisors of $q^6$, which is 7 ($q^0 = 1$, $q$, $q^2$, $q^3$, $q^4$, $q^5$, and $q^6$). But what we want are subfields that are strictly between $\GF{p}$ and $E$. The case of $q^0 = 1$ just gives us $\GF{p}$ and the case of $q^6$ gives us $E$, so the number of subfields that are strictly between $\GF{p}$ and $E$ is $7 - 2 = 5$.
+    
+    \item \begin{partquestions}{\roman*}
+        \item Note that $x^3 - 2 = (x-\sqrt[3]2)(x-\sqrt[3]2\omega)(x-\sqrt[3]2\omega^2)$ where $\omega$ is a primitive 3rd root of unity. So
+        \begin{align*}
+            E &= \Q(\sqrt[3]2, \sqrt[3]2\omega, \sqrt[3]2\omega^2)\\
+            &= \Q(\sqrt[3]2,\omega).
+        \end{align*}
+        So the only possible field $F$ that fits the requirements is $F = \Q(\sqrt[3]2)$.
+        
+        \item Suppose $\Q(\sqrt[3]2)$ is the splitting field of some polynomial $g(x) \in \Q[x]$, which means that $g(\sqrt[3]2) = 0$ for that polynomial. By \myref{corollary-minimal-polynomial-divides-polynomial-with-same-root} we know that the minimal polynomial of $\sqrt[3]2$ must divide $g(x)$. In fact note that the minimal polynomial of $\sqrt[3]2$ is exactly $f(x) = x^3 - 2$, which means that $\Q(\sqrt[3]2)$ has to have \textit{all} the zeroes of $f(x)$. However the zeroes of $f(x)$ are $\sqrt[3]2$, $\sqrt[3]2\omega$, and $\sqrt[3]2\omega^2$, of which the latter two are not in $\Q(\sqrt[3]2)$. Hence $\Q(\sqrt[3]2)$ cannot be the splitting field of any polynomial.
+    \end{partquestions}
+    
+    \item If $n < 3$ we see that $D_n$ is abelian and hence solvable. So let's assume that $n \geq 3$. We find a subnormal series for $D_n$ and show that it fits the requirements for a solvable series.
+    
+    Note that $\langle r \rangle = \{e, r, r^2, \dots, r^{n-1}\}$ is a subgroup of $D_n$. In fact one sees clearly that $\langle r \rangle \cong \Cn{n}$. Thus by Lagrange's theorem (\myref{thrm-lagrange}) we see that $[D_n:\langle r \rangle] = \frac{2n}{n} = 2$. Therefore by \myref{problem-subgroup-of-index-2} we see that $\langle r \rangle \lhd D_n$. So a subnormal series of $D_n$ is
+    \[
+        1 \lhd \Cn{n} \lhd D_n,
+    \]
+    where one sees that
+    \begin{itemize}
+        \item $\Cn{n}/1 \cong \Cn{n}$ is abelian; and
+        \item $D_n/\Cn{n} \cong \C_2$ is also abelian.
+    \end{itemize}
+    Therefore $D_n$ is solvable.
+    
+    \item By \myref{prop-solvable-equivalence-for-finite-groups} we just need to show that the composition series for $\Sn{n}$ fails the requirements to allow $\Sn{n}$ to be solvable.
+    
+    Note that $\An{n} \lhd \Sn{n}$ (\myref{prop-An-normal-subgroup-of-Sn}), $|\Sn{n}| = n!$ (\myref{exercise-order-of-Sn}), and $|\An{n}| = \frac{n!}2$ (\myref{prop-order-of-An}). Note that a subgroup of $\Sn{n}$ must divide the order of the group (namely $n!$), and a proper subgroup can have an order of at most $\frac{n!}2$. Therefore $\An{n}$ is the largest subgroup of $\Sn{n}$. In fact, $\An{n}$ is the maximal normal subgroup of $\Sn{n}$. However, note that $\An{n}$ is simple for $n \geq 5$ (\myref{thrm-An-is-simple-for-n>=5}) which means that it has no proper normal subgroups. Hence the composition series for $\Sn{n}$ is
+    \[
+        1 \lhd \An{n} \lhd \Sn{n}.
+    \]
+    One sees clearly that although $\Sn{n}/\An{n} \cong \Cn{2}$ works, $\An{n}/1 \cong \An{n}$ does not. Therefore $\Sn{n}$ is not solvable.
+    
+    \item \begin{partquestions}{\roman*}
+        \item We induct on $n$.
+        
+        When $n = 0$, one trivially sees that
+        \begin{align*}
+            (\cos\theta + i\sin\theta)^0 &= 1\\
+            &= \cos(0\theta) + i\sin(0\theta)
+        \end{align*}
+        which proves this case.
+
+        Assume that the statement holds for some non-negative integer $k$, i.e. $(\cos\theta + i\sin\theta)^k = \cos(k\theta) + i\sin(k\theta)$. We show that the statement holds for $k+1$ too.
+
+        Note that
+        \begin{align*}
+            &(\cos\theta + i\sin\theta)^{k+1}\\
+            &= (\cos\theta + i\sin\theta)^k(\cos\theta + i\sin\theta)\\
+            &= (\cos(k\theta) + i\sin(k\theta))(\cos\theta + i\sin\theta) & (\text{Induction Hypothesis})\\
+            &= \cos(k\theta)\cos\theta + i\cos(k\theta)\sin\theta\\
+            &\quad\quad+ i\cos\theta\sin(k\theta) + i^2\sin(k\theta)\sin\theta\\
+            &= (\cos(k\theta)\cos\theta - \sin(k\theta)\sin\theta)\\
+            &\quad\quad+ i(\cos(k\theta)\sin\theta + \cos\theta\sin(k\theta))\\
+            &= \cos(k\theta+\theta) + i\sin(k\theta+\theta) & (\myref{thrm-sine-sum-rule}, \myref{thrm-cosine-sum-rule})\\
+            &= \cos((k+1)\theta) + i\sin((k+1)\theta)
+        \end{align*}
+        which proves the statement for the $k + 1$ case.
+        
+        \item We show that $\omega = \cos\left(\frac{2\pi}n\right) + i\sin\left(\frac{2\pi}n\right)$ is a primitive $n$th root of unity.
+        
+        Note that
+        \begin{align*}
+            \omega^n &= (\cos\left(\frac{2\pi}n\right) + i\sin\left(\frac{2\pi}n\right))^n\\
+            &= \cos\left(\frac{2\pi}n\times n\right) + i\sin\left(\frac{2\pi}n\times n\right) & (\text{by }\textbf{(i)})\\
+            &= \cos(2\pi) + i\sin(2\pi)\\
+            &= 1 + 0i\\
+            &= 1
+        \end{align*}
+        so $\omega$ is a $n$th root of unity. Also one sees clearly that $\omega^k \neq 1$ for all $1 \leq k < n$, which shows that $\omega$ is indeed a primitive $n$th root of unity.
+    \end{partquestions}
+    
+    \item \begin{partquestions}{\roman*}
+        \item Note that the zeroes of $x^4 - 6x^3 + 11x^2 - 6x$ are 0, 1, 2, and 3. So
+        \begin{align*}
+            D &= (0-1)(0-2)(0-3)(1-2)(1-3)(2-3)\\
+            &= (-1)(-2)(-3)(-1)(-2)(-1)\\
+            &= 12
+        \end{align*}
+        and thus $\Delta = D^2 = 144$.
+
+        \item Let $\sigma \in \Gal{E/F}$. Note that
+        \begin{align*}
+            \sigma(D) &= \sigma\left(\prod_{i<j}(\alpha_i - \alpha_j)\right)\\
+            &= \prod_{i<j}(\sigma(\alpha_i) - \sigma(\alpha_j)).
+        \end{align*}
+        Note that \myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial} tells us that $\sigma(\alpha_r)$ is simply another zero of $f(x)$ for all $r \in \{1, 2, \dots, n\}$. This means that the overall effect of $\sigma$ on $D$ is that $\sigma(D) = \pm D$, where the change in sign could occur due to the swapping of zeroes. However one sees that
+        \[
+            \sigma(\Delta) = \sigma(D^2) = (\sigma(D))^2 = (\pm D)^2 = D^2 = \Delta.
+        \]
+        Now this is true for any automorphism $\sigma \in \Gal{E/F}$, which means that $\Delta \in \Fix{E}{\Gal{E/F}}$. But by \myref{prop-fixed-field-of-Gal-E/F-is-F} we see that $\Fix{E}{\Gal{E/F}} = F$ and thus $\Delta \in F$.
+        
+        \item Say $\sigma(\alpha_k) = \alpha_r$ and $\sigma(\alpha_r) = \alpha_k$ for some $k$ and $r$. Without loss of generality we may assume $k < r$. So when we apply $\sigma$ to $D$, the only thing that changes is the term $(\alpha_k - \alpha_r)$. In particular, $\sigma(\alpha_k - \alpha_r) = \alpha_r - \alpha_k = -(\alpha_k - \alpha_r)$ and so $\sigma(D) = -D$.
+        
+        \item Let $\sigma \in \Gal{E/F}$. Since $\sigma$ is a permutation it is made up of transpositions (\myref{lemma-permutations-as-product-of-transpositions}), say $\tau_1, \tau_2, \dots, \tau_k$. This means that $\sigma(D) = \tau_1\tau_2\cdots\tau_k(D)$. Now by \textbf{(iii)} each of these transpositions changes the sign of the resulting output, which therefore means that $\sigma(D) = (-1)^kD$.
+        
+        Now if $\sigma$ is an odd permutation, this means that $\sigma$ is made up of an odd number of transpositions (\myref{thrm-parity-of-permutation}). Therefore $k$ is odd and so $\sigma(D) = -D$. On the other hand if $\sigma$ is even then $\sigma(D) = D$.
+        
+        \item For the forward direction, suppose $\Gal{E/F} \cong H \leq \An{n}$. Thus any $\sigma \in \Gal{E/F}$ is an even permutation, which therefore means $\sigma(D) = D$ for all $\sigma \in \Gal{E/F}$ by \textbf{(iv)}. Thus $D \in \Fix{E}{\Gal{E/F}} = F$ by \myref{prop-fixed-field-of-Gal-E/F-is-F}.
+        
+        For the reverse direction, suppose $D \in F$. Then $\sigma(D) = D$ for all $\sigma \in \Gal{E/F}$. By \textbf{(iv)} again this means that $\sigma$ is even for all $\sigma \in \Gal{E/F}$. This means that $\Gal{E/F}$ contains only even permutations, and so must be isomorphic to a subgroup of $\An{n}$.
+        
+        \item One sees that $\Delta = -4(2)^3 - 27(-4)^2 = -464$. Clearly $D = \sqrt{\Delta} \notin \R$ and so $\Gal{E/F}$ is \textit{not} isomorphic to a subgroup of $\An{n}$ (in particular $\An{3}$) by \textbf{(v)}. However, we note $\Gal{E/F}$ is isomorphic to a subgroup of $\Sn{3}$ and that $\An{3}$ is the largest subgroup of $\Sn{3}$. Since $\Gal{E/F}$ is not a subgroup of $\An{3}$, this leaves the case where $\Gal{E/F} \cong \Sn{3}$ as the only possibility.
+    \end{partquestions}
+\end{questions}
