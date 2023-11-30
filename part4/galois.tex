@@ -890,8 +890,86 @@ We are now ready to state an intermediary claim.
 \begin{proposition}
     Let $f(x) = x^5 - 4x - 2 \in \Q[x]$ and $F$ the splitting field of $f(x)$ over $\Q$. Then $\Gal{F/\Q} \cong \Sn{5}$.
 \end{proposition}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[xscale=2, yscale=0.25, domain=-1.7:1.8, samples=200]
+        % Draw grid lines
+        \draw[very thin, color=gray] (-2,-12) grid [xstep=0.25, ystep=2] (2,12);
+    
+        % Add axes
+        \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+        \draw[->] (0,-12) -- (0,12) node[above] {$y$};
+    
+        % Draw actual graph
+        \draw[very thick, smooth, variable=\x] plot ({\x}, {\x^5 - 4*\x - 2}) node[left] {$f(x) = x^5 - 4x - 2$};
+    
+        % Add x-axis labels
+        \node [below] at (-1.5,0) {-1.5};
+        \node [below] at (-1,0) {-1};
+        \node [below] at (-0.5,0) {-0.5};
+        \node [below] at (0.5,0) {0.5};
+        \node [below] at (1,0) {1};
+        \node [below] at (1.5,0) {1.5};
+    
+        % Add y-axis labels
+        \node [left] at (0,-8) {-8};
+        \node [left] at (0,-4) {-4};
+        \node [left] at (0,4) {4};
+        \node [left] at (0,8) {8};
+    \end{tikzpicture}
+    \caption{Graph of $f(x) = x^5 - 4x - 2$}
+\end{figure}
+
+Do not be mislead by the graph of $f(x)$ -- one can easily verify that -1.25, 0.5, and 1.5 are \textit{not} zeroes of $f(x)$ in $\Q$.
+
 \begin{proof}
-    TODO: Add
+    One sees by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2 that $f(x)$ is irreducible over $\Q$; consequently this means that $f(x)$ is separable in $F$ (\myref{thrm-zeroes-of-an-irreducible}).
+
+    We first argue that there are only 3 real zeroes for $f(x)$. We first produce a table of values of $f(x)$.
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|l|}
+            \hline
+            $\boldsymbol{x}$ & $\boldsymbol{f(x)}$ \\ \hline
+            -1.25 & $-\frac{53}{1024}$ \\ \hline
+            -1 & 1 \\ \hline
+            -0.75 & $\frac{781}{1024}$ \\ \hline
+            -0.5 & $-\frac1{32}$ \\ \hline
+            $\vdots$ & $\vdots$ \\ \hline
+            1.5 & $-\frac{13}{32}$ \\ \hline
+            1.75 & $\frac{7591}{1024}$ \\ \hline
+        \end{tabular}
+    \end{table}
+    From this table, one sees that $f(x)$ changes sign from -1.25 to -1, from -0.75 to -0.5, and from 1.5 to 1.75. By the stated fact, this means that there are 3 distinct real zeroes from -1.25 to 1.75. Let these zeroes by denoted by $\alpha_1$, $\alpha_2$, and $\alpha_3$ respectively. Now, one sees for any $x < -1.25$ that
+    \[
+        4x + 2 > 4(-1.25) + 2 = -3 > (-1.25)^5 = -\frac{3125}{1024} > x^5
+    \]
+    which means that $x^5 - 4x - 2 < 0$ for all $x < -1.25$. Similarly,
+    \[
+        x^5 > 1.75^5 = \frac{16807}{1024} > 4(1.75) + 2 = 9 > 4x + 2
+    \]
+    for all $x > 1.75$, meaning $x^5 - 4x - 2 > 0$ for all $x > 1.75$. Therefore $\alpha_1$, $\alpha_2$, and $\alpha_3$ are the only 3 real zeroes of $f(x)$. Consequently the other two zeroes, which we call $\beta_1$ and $\beta_2$, are non-real and are present in $F$.
+
+    Now, by the Factor Theorem (\myref{corollary-factor-theorem}), we may factor $f(x)$ as
+    \[
+        f(x) = (x-\alpha_1)(x-\alpha_2)(x-\alpha_3)(x^2 + Ax + B)
+    \]
+    for some $A, B \in \R$. On the other hand, knowing that $\beta_1$ and $\beta_2$ are the remaining two zeroes of $f(x)$ means that they must be the zeroes of $x^2 + Ax + B$. Using the quadratic formula we see that the zeroes of the quadratic are
+    \[
+        \frac{-A\pm\sqrt{A^2 - 4B}}{2} = -\frac{A}{2} \pm \frac{\sqrt{A^2-4B}}2
+    \]
+    and these must be the values of $\beta_1$ and $\beta_2$ (in some order). In particular we know that since $\beta_1$ and $\beta_2$ are non-real, thus $A^2 - 4B < 0$; consequently $\beta_1, \beta_2 \in \C$. In particular we may write $\beta_1 = a + bi$ and $\beta_2 = a-bi$ for some $a, b \in \R$. Hence we have found all 5 zeroes of $f(x)$, and so $F = \Q(\alpha_1, \alpha_2, \alpha_3, a+bi, a-bi)$.
+
+    Now we proceed with determining the Galois group of $F/\Q$. \myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial} tells us that an element of $\Gal{F/\Q}$ permutes the zeroes of $f(x)$, and so Cayley's theorem (\myref{thrm-cayley}) tells us that $\Gal{F/\Q}$ is isomorphic to a subgroup of $\Sn{5}$ (since there are 5 zeroes), say $H$. Note also that
+    \[
+        [F:\Q] = [F:\Q(\alpha_1)][\Q(\alpha_1):\Q]
+    \]
+    by Tower Law (\myref{thrm-tower-law}) and $[\Q(\alpha_1):\Q] = 5$ as $\alpha_1$ is a zero of the degree 5 irreducible polynomial $f(x)$ over $\Q$. Hence $[F:\Q]$ is divisible by 5, and since $|\Gal{F/\Q}| = [F:\Q]$ by \myref{thrm-order-of-galois-group-is-degree-of-field-extension}, thus $|\Gal{F/\Q}|$ is also divisible by 5. So Cauchy's theorem (\myref{thrm-cauchy}) tells us that $\Gal{F/\Q}$ contains an element of order 5, meaning that $H$ contains a cycle of length 5. In addition, the automorphism
+    \[
+        \sigma: F \to F, u + vi \mapsto u - vi
+    \]
+    is an automorphism that fixes the real numbers and so fixes the rationals, meaning $\sigma \in \Gal{F/\Q}$. Note also that this automorphism fixes the 3 real zeroes ($\alpha_1$, $\alpha_2$, and $\alpha_3$) and interchanges the two complex zeroes ($a+bi$ and $a-bi$). Thus $\sigma^2 = \id$ and therefore $\sigma$ has order 2 in $\Gal{F/\Q}$, which means $H$ contains a 2-cycle (i.e., transposition). By \myref{lemma-subgroup-containing-transposition-and-maximal-length-cycle-is-whole-symmetric-group} we thus know that $H = \Sn{5}$ and so $\Gal{F/\Q} \cong \Sn{5}$.
 \end{proof}
 
 Why is it important that the Galois group of that polynomial is $\Sn{5}$? It turns out that $\Sn{5}$ is \textit{not} solvable.
@@ -919,12 +997,16 @@ Therefore we see the following fact.
 
 The obvious generalisation of the above fact is captured by the Abel-Ruffini theorem.
 
-\begin{theorem}[Abel-Ruffini]\index{Abel-Ruffini Theorem}
+\begin{theorem}[Abel-Ruffini]\index{Abel-Ruffini Theorem}\label{thrm-abel-ruffini}
     A general polynomial with real coefficients with degree of 5 or more is not solvable by radicals.
 \end{theorem}
 \begin{proof}
-    The degree 5 polynomial $f(x) = x^5 - 4x - 2$ is not solvable by radicals over $\Q$. For $n > 5$ the existence of a solution by radicals of the general polynomial of degree $n$ yields a solution by radicals of the equation $f(x)x^{n-5} = 0$, contradicting the above.
+    See \myref{exercise-prove-abel-ruffini} (later).
 \end{proof}
+
+\begin{exercise}\label{exercise-prove-abel-ruffini}
+    Prove \myref{thrm-abel-ruffini}.
+\end{exercise}
 
 \newpage
 
