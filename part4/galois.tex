@@ -633,7 +633,7 @@ Before we can answer that question, we need to build up some results regarding t
 
 In other words, a polynomial $f(x)$ is solvable by radicals over a field $F$ if we can obtain all its zeroes by adjoining $n$th roots (for various values of $n$) into some extension of $F$. In such cases, a zero of $f(x)$ would be written as a combination of addition, subtraction, multiplication, division, and taking $n$th roots.
 
-\begin{example}
+\begin{example}\label{example-depressed-cubic-formula}
     The polynomial $x^3 + bx + c$ is solvable by radicals over $\R$ because its three zeroes
     \begin{gather*}
         A+B,\\
@@ -1011,20 +1011,72 @@ The obvious generalisation of the above fact is captured by the Abel-Ruffini the
 \newpage
 
 \section{Problems}
-% TODO: Add
+\begin{problem}
+    Let $E$ be the splitting field of a polynomial of degree $n$ over the field $F$. Prove that $|\Gal{E/F}|$ divides $n!$.
+\end{problem}
 
-% \begin{problem}
-%     Let $\theta \in \R$. \textbf{De Moivre's formula}\index{De Moivre's formula} states that
-%     \[
-%         (\cos\theta + i\sin\theta)^n = \cos(n\theta) + i\sin(n\theta)
-%     \]
-%     for all non-negative integers $n$.
-%     \begin{partquestions}{\roman*}
-%         \item Prove De Moivre's formula.
-%         \item Deduce a primitive $n$th root of unity in $\C$, proving your answer.
-%     \end{partquestions}
-% \end{problem}
+\begin{problem}
+    Let $f(x) = x^2 + 3$ and $F$ be the splitting field of $f(x)$ over $\R$. Determine $F$ and $\Gal{F/\R}$.
+\end{problem}
 
-% \begin{problem}
-%     Prove that $\Sn{n}$ is \textit{not} solvable for all $n \geq 5$.
-% \end{problem}
+\begin{problem}
+    Let $f(x)$ be an irreducible quadratic polynomial, and let $E$ be its splitting field over a field $F$. Prove that $\Gal{E/F} \cong \Cn{2}$.
+\end{problem}
+
+\begin{problem}
+    Let $\sigma \in \Aut{\R}$. Prove that $\sigma(x) > 0$ for all $x > 0$.
+\end{problem}
+
+\begin{problem}
+    Suppose $E$ is the splitting field of some polynomial over $\GF{p}$, where $p$ is a prime. If $|\Gal{E/\GF{p}}| = q^6$ where $q$ is also a prime, how many fields are strictly between $E$ and $\GF{p}$? That is, how many fields $F$ are there such that $\GF{p} \subset F \subset E$?
+\end{problem}
+
+\begin{problem}
+    Consider the polynomial $f(x) = x^3 - 2$. Let $E$ be the splitting field of $f(x)$ over $\Q$.
+    \begin{partquestions}{\roman*}
+        \item Find a field $F$ such that $F$ is a simple extension of $\Q$, its primitive element is a real number, and $\Q \subset F \subset E$.
+        \item Show that $F$ is \textit{not} a splitting field of any polynomial in $\Q[x]$.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Prove that $D_n$ is solvable for all positive integers $n$.
+\end{problem}
+
+\begin{problem}
+    Prove that $\Sn{n}$ is \textit{not} solvable for all $n \geq 5$.
+\end{problem}
+
+\begin{problem}
+    Let $\theta \in \R$. \textbf{De Moivre's formula}\index{De Moivre's formula} states that
+    \[
+        (\cos\theta + i\sin\theta)^n = \cos(n\theta) + i\sin(n\theta)
+    \]
+    for all non-negative integers $n$.
+    \begin{partquestions}{\roman*}
+        \item Prove De Moivre's formula.\newline
+        (\textit{Hint: you will need \myref{thrm-sine-sum-rule} and \myref{thrm-cosine-sum-rule}.})
+        \item Deduce a primitive $n$th root of unity in $\C$, proving your answer.
+    \end{partquestions}
+\end{problem}
+
+\begin{problem}
+    Let $F$ be a field and $f(x) \in F[x]$ be a separable polynomial of degree $n$. Suppose $E$ is the splitting field of $f(x)$ over $F$. Let $\alpha_1, \alpha_2, \dots, \alpha_n$ be the zeroes of $f(x)$ in $E$. Let
+    \[
+        D = \prod_{i<j}(\alpha_i - \alpha_j).
+    \]
+    For example, for two distinct zeroes, $D = \alpha_1 - \alpha_2$. For three distinct zeroes, $D = (\alpha_1-\alpha_2)(\alpha_1-\alpha_3)(\alpha_2-\alpha_3)$. The \textbf{discriminant}\index{discriminant}\index{polynomial!discriminant} of $f(x)$ is defined to be $\Delta = D^2$.
+    \begin{partquestions}{\roman*}
+        \item Verify that if $F = \Q$ then the discriminant of $x^4 - 6x^3 + 11x^2 - 6x$ is 144.
+        \item Prove that $\Delta \in F$.\newline
+        (\textit{Hint: consider what an automorphism from $\Gal{E/F}$ does to $D$.})
+        \item If $\sigma \in \Gal{E/F}$ is the transposition of two zeroes of $f(x)$, show that $\sigma(D) = -D$.
+        \item Show that $\sigma \in \Gal{E/F}$ is an even permutation of the zeroes of $f(x)$ if and only if $\sigma(D) = D$.
+        \item Hence prove that $\Gal{E/F}$ is isomorphic to a subgroup of $\An{n}$ if and only if $D \in F$.
+        \item It is known that if $f(x) = x^3 + px + q$ for some constants $p, q \in F$, then
+        \[
+            \Delta = -4p^3 - 27q^2.
+        \]
+        Hence determine $\Gal{E/F}$ if $F = \R$ and $f(x) = x^3 + 2x - 4$.
+    \end{partquestions}
+\end{problem}
