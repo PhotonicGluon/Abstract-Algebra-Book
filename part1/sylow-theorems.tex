@@ -4,10 +4,28 @@ The Sylow theorems are a collection of theorems named after the Norwegian mathem
 \section{The First Sylow Theorem}
 The First Sylow Theorem is a follow-up to Cauchy's theorem.
 
+\begin{theorem}[Sylow I]\label{thrm-sylow-1}\index{Sylow Theorem!First}
+    Let $G$ be a finite group. Let $p$ be a prime and $n$ be a non-negative integer. If $p^n$ divides $|G|$ then there exists a subgroup of order $p^n$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 15.4]{judson_beezer_2022}})]
+    We use strong induction on the order of $|G|$.
 
-Before we can state the First Sylow Theorem, we introduce some terminology.
+    For the base case, if $|G| = 1$ and $p^n$ divides $|G|$ then it must be the case that $n = 0$. So a subgroup of order $p^n = p^0 = 1$ exists (which is the trivial group). Also, if $|G| = p$ then we are done -- the group itself is a subgroup of order $p$.
 
-Recall that a group with order $p^k$ for some $k \geq 0$ is called a $p$-group.
+    Now assume that the theorem holds for all groups with order less than $k$, where $k > p$ and $p$ divides $k$. We show that if $p^r$ divides $|G| = k$ then $G$ contains a subgroup of order $p^r$.
+
+    Consider the class equation (\myref{thrm-class-equation})
+    \[
+        |G| = |\CenterGrp{G}| + \sum_{i=1}^l [G:\Centralizer{G}{g_i}]
+    \]
+    where $g_1, g_2, \dots, g_l$ are representatives of the $l$ distinct conjugacy classes with more than one element. We consider two cases.
+
+    The first case is if $p$ does not divide $[G:\Centralizer{G}{g_i}]$ for some $i$. Since $|G| = [G:\Centralizer{G}{g_i}]|\Centralizer{G}{g_i}|$ by Lagrange's theorem (\myref{thrm-lagrange}) and $p$ divides $|G|$, thus it must be the case that $p$ divides $|\Centralizer{G}{g_i}|$. In fact since $p^r$ divides $|G|$ thus $p^r$ also divides $|\Centralizer{G}{g_i}|$. Using the induction hypothesis on $\Centralizer{G}{g_i}$ results in $\Centralizer{G}{g_i}$ having a subgroup of order $p^r$; as $\Centralizer{G}{g_i} \leq G$ thus $G$ itself has a subgroup of order $p^r$.
+
+    The second case is if $p$ divides every $[G:\Centralizer{G}{g_i}]$. Since $p$ divides $G$, the class equation tells us that $p$ must divide $|\CenterGrp{G}|$ too. By Cauchy's Theorem (\myref{thrm-cauchy}) we hence know that $\CenterGrp{G}$ has an element of order $p$, say $g$. Let $N = \langle g \rangle$. Clearly $N \lhd \CenterGrp{G}$ since $\CenterGrp{G}$ is abelian (\myref{prop-subgroup-of-abelian-group-is-normal}); therefore $N \lhd G$ since every element of $\CenterGrp{G}$ commutes with every element of $G$, resulting in $xN = Nx$ for all $x \in G$. Now consider $G/N$, which is a group since $N \lhd G$. Note $|G/N| = \frac{|G|}{|N|} = \frac{|G|}{p}$; since $p^r$ divides $|G|$ thus $p^{r-1}$ divides $\frac{|G|}{p} = |G/N|$. The induction hypothesis therefore gives us a subgroup $H/N$ of $G/N$ with order $p^{r-1}$ (note the form of a subgroup of $G/N$ is of the form $H/N$ as proven in \myref{problem-subgroup-of-quotient-group-is-quotient-group}). In particular one sees $|H/N| = \frac{|H|}{|N|} = \frac{|H|}{p} = p^{r-1}$, thereby meaning that $|H| = p^r$, showing that $G$ has a subgroup of order $p^r$.
+\end{proof}
+
+We note a special case of the First Sylow Theorem. Recall that a group with order $p^k$ for some $k \geq 0$ is called a $p$-group.
 
 \begin{definition}\label{definition-sylow-p-subgroup}
     Let $G$ be a finite group. Write the order of the group $G$ as $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then a subgroup $H$ with order $p^k$ is called a \textbf{Sylow $p$-subgroup}\index{Sylow $p$-subgroup} of $G$.
@@ -18,81 +36,19 @@ Recall that a group with order $p^k$ for some $k \geq 0$ is called a $p$-group.
     Find the Sylow 2-subgroup of $\Z_{12}$.
 \end{exercise}
 
-We are now ready to state and prove the \textbf{First Sylow Theorem}.
-\begin{theorem}[Sylow I]\label{thrm-sylow-1}\index{Sylow Theorem!First}
+\begin{corollary}\label{corollary-sylow-p-subgroup-exists}
     Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 0$, and $p \nmid m$. Then there exists a Sylow $p$-subgroup.
-\end{theorem}
+\end{corollary}
 \begin{remark}
-    Equivalently, for every prime factor $p$ of its order, there is a Sylow $p$-subgroup of $G$, i.e. $\Syl{p}{G} \neq \emptyset$.
+    This corollary is the result most often cited as the First Sylow Theorem.
 \end{remark}
-\begin{proofsketch}
-    We use strong induction on the order of $G$. The base case when the order of $G$ is 1 is trivial. For the induction step, consider two cases, regarding the center of the group $G$.
-    \begin{itemize}
-        \item If the order of the center of $G$ is a multiple of $p$, then use Cauchy's Theorem (\myref{thrm-cauchy}) to deduce that there exists a subgroup of order $p$, say $N$. After showing $N$ is normal, conclude that $G/N$ has order $p^{k-1}m$. Use induction hypothesis on $G/N$ to produce a Sylow $p$-subgroup $\overline{S}$.
-
-        Construct a new subgroup $S = \{g \in G \vert gN \in \overline{S}\}$ of $G$ and, noting $N \leq S$, construct a homomorphism mapping elements of $S$ to elements of $\overline{S}$. Conclude by Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) that $S/N \cong \overline{S}$ which means $S$ has order $p^k$, thus being a Sylow $p$-subgroup of $G$.
-
-        \item Otherwise, use the class equation (\myref{thrm-class-equation}) to deduce that there is at least one conjugacy class with more than one element with representative $g_i$ such that $p$ does not divide $[G: \Centralizer{G}{g_i}]$. Thereafter infer that $|\Centralizer{G}{g_i}| = p^ka$ for some positive integer $a$. After showing $a < m$, deduce that $\Centralizer{G}{g_i}$ is a proper subgroup of $G$ with order $p^ka$, so applying induction hypothesis on $\Centralizer{G}{g_i}$ yields a Sylow $p$-subgroup of $\Centralizer{G}{g_i}$, which is also a Sylow $p$-subgroup of $G$.
-    \end{itemize}
-    Therefore, in any case, we have found a Sylow $p$-subgroup of $G$.
-\end{proofsketch}
-\begin{proof}[Proof (see {\cite[pp.~1--3]{mann_2011}})]
-    We use strong induction on the order of $G$.
-
-    When the order of $G$ is 1, $|G| = p^0$ for any prime $p$, so $G$ is clearly a Sylow $p$-subgroup of itself.
-
-    We assume now that the theorem holds for all groups of order strictly less than $n$, meaning that for any group $H$ with order $p^k m < n$, $\Syl{p}{H} \neq \emptyset$. We need to prove the case where the group has order $n$.
-
-    Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
-
-    The first case is when order of the center of $G$ is a multiple of $p$, i.e. $|\CenterGrp{G}| = ap$ for some positive integer $a$. By Cauchy's Theorem (\myref{thrm-cauchy}), $\CenterGrp{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $n \in N$ and $g \in G$,
-    \begin{align*}
-        gng^{-1} &= (gn)g^{-1}\\
-        &= (ng)g^{-1} & (\text{since n} \in N \subseteq \CenterGrp{G})\\
-        &= n(gg^{-1})\\
-        &= n\\
-        &\in N
-    \end{align*}
-    Hence $G/N$ is a quotient group, and it has order $\frac np = \frac{p^km}{p} = p^{k-1}m$. Since $p^{k-1}m < p^km = n$, thus by the inductive hypothesis, $G/N$ has a Sylow $p$-subgroup. Let that Sylow $p$-subgroup be $\bar{S}$, which means $\bar{S}$ has order $p^{k-1}$.
-
-    We now construct $S = \{g \in G \vert gN \in \bar{S}\}$; we show that $S$ is a subgroup of $G$ under the group operation of $G$. Clearly $S \subseteq G$, and $e \in S$ as $eN = N \in \bar{S}$. Also for any $g_1, g_2 \in S$ (which means $g_1N, g_2N \in \bar{S}$), we see that
-    \[
-        (g_1g_2^{-1})N = (g_1N)(g_2N)^{-1} \in \bar{S},
-    \]
-    which implies that $g_1g_2^{-1} \in S$. By the subgroup test, $S \leq G$. Also, $N \leq S$ since for all $n \in N$, $nN = N \in \bar{S}$.
-
-    We construct the homomorphism $\phi: S \to \bar{S}$ such that $g \mapsto gN$. Clearly any $gN \in \bar{S}$ has a pre-image of $g$ under $\phi$, so $\phi$ is surjective, meaning that $\im \phi = \bar{S}$. Furthermore,
-    \begin{align*}
-        \ker\phi &= \{s \in S \vert \phi(s) = N\}\\
-        &= \{s \in S \vert sN = N \}\\
-        &= \{s \in S \vert s \in N \}\\
-        &= S \cap N\\
-        &= N & (\text{since } N \subseteq S).
-    \end{align*}
-    Now we know that $S/N \cong \bar{S}$ by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}), meaning that $p^{k-1} = |\bar{S}| = \frac{|S|}{|N|} = \frac{|S|}{p}$, which quickly implies that $|S| = p^k$. Hence $S$ is a subgroup of $G$ with order $p^k$, meaning that $S$ is a Sylow $p$-subgroup of $G$.
-
-    We can now start on the second case where the order of the center of $G$ is not a multiple of $p$. Recall the class equation (\myref{thrm-class-equation})
-    \[
-        |G| = |\CenterGrp{G}| + \sum_{i=1}^l [G:\Centralizer{G}{g_i}]
-    \]
-    where $g_1, g_2, \dots, g_l$ are representatives of the $l$ distinct conjugacy classes with more than one element. We note that $p$ divides $|G|$. Since $p$ does not divide $|\CenterGrp{G}|$ in this case, thus
-    \[
-        \sum_{i=1}^l [G:\Centralizer{G}{g_i}]
-    \]
-    must also not divide $p$ in order for their sum to be divisible by $p$. Hence, there is at least one conjugacy class with more than one element such that $p$ does not divide $[G:\Centralizer{G}{g_i}]$. We note that $[G:\Centralizer{G}{g_i}] = \frac{|G|}{|\Centralizer{G}{g_i}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Therefore, if $p$ does not divide $\frac{|G|}{|\Centralizer{G}{g_i}|} = \frac{p^k m}{|\Centralizer{G}{g_i}|}$, then $|\Centralizer{G}{g_i}| = p^ka$ for some positive integer $a$.
-
-    We now argue that $a < m$ (recalling that $|G| = p^km$). Clearly if $a > m$ then $\frac{p^k m}{|\Centralizer{G}{g_i}|}$ is not an integer, so $a \leq m$. If instead $a = m$ then $|\Centralizer{G}{g_i}| = p^km = |G|$, and since $\Centralizer{G}{g_i} \leq G$ with them having equal orders, we conclude $G = \Centralizer{G}{g_i}$. This means that every element in $G$ commutes with $g_i$, which quickly implies $g_i \in \CenterGrp{G}$. But an element is in $\CenterGrp{G}$ if its conjugacy class has only one element, which is not the case. Hence $a \neq m$, meaning that $a < m$.
-
-    In summary, $\Centralizer{G}{g_i} < G$ with $|\Centralizer{G}{g_i}| = p^ka < p^km = n$. Therefore we apply the induction hypothesis on $\Centralizer{G}{g_i}$ to say that $\Centralizer{G}{g_i}$ has a Sylow $p$-subgroup of order $p^k$. Clearly a subgroup of $\Centralizer{G}{g_i}$ has to also be a subgroup of $G$, meaning that $G$ has a Sylow $p$-subgroup.
-
-    Therefore, any finite group $G$ with order written as $p^k m$ has a Sylow $p$-subgroup, meaning that $\Syl{p}{G} \neq \emptyset$.
+\begin{proof}
+    By \myref{thrm-sylow-1} any group of order $p^km$ has a subgroup of $p^k$. This subgroup is exactly a Sylow $p$-subgroup of $G$ by definition.
 \end{proof}
 
 \begin{exercise}
     Find all primes $p$ such that $\Syl{p}{\Sn{5}}$ is non-empty.
 \end{exercise}
-
-\newpage
 
 \section{The Conjugate Subgroup}
 Before we look at the next Sylow theorem, we need to introduce two more things. The first of which is the \textbf{conjugate subgroup}.
@@ -375,8 +331,6 @@ The Third Sylow Theorem gives us a way to determine how many Sylow $p$-subgroups
 \begin{exercise}
     Let $G$ be a group of order 784, and let $P$ be a Sylow 7-subgroup that is \textbf{not} a normal subgroup of $G$. Find the order of $\N{G}{P}$.
 \end{exercise}
-
-\newpage
 
 \section{Testing Non-Simplicity Of Groups}
 To end this chapter, we look at the idea of \textbf{simple groups} and describe ways to prove the non-simplicity of groups.
