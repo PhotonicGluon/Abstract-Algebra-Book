@@ -1,0 +1,84 @@
+\section{Galois Theory}
+\begin{questions}
+    \item \begin{partquestions}{\roman*}
+        \item We note that $[\C:\R] = 2$ since $\C = \R(i)$ and $i$ is a zero of the irreducible polynomial $x^2 + 1$ over $\R$. Therefore, by \myref{thrm-order-of-galois-group-is-degree-of-field-extension}, we see $|\Gal{\C/\R}| = [\C:\R] = 2$.
+
+        \item Certainly $\id \in \Gal{\C/\R}$. We claim that the other element in $\Gal{\C/\R}$ is $\phi: \C \to \C$ where $\phi(a+bi) = a-bi$ for all $a+bi \in \C$. We first need to check that $\phi$ is an automorphism.
+        \begin{itemize}
+            \item \textbf{Homomorphism}: One sees clearly for any $a+bi, c+di \in \C$ that
+            \begin{align*}
+                \phi((a+bi)+(c+di)) &= \phi((a+c)+(b+d)i)\\
+                &= (a+c)-(b+d)i\\
+                &= (a-bi) + (c-di)\\
+                &= \phi(a+bi) + \phi(c+di)
+            \end{align*}
+            and
+            \begin{align*}
+                \phi((a+bi)(c+di)) &= \phi((ac-bd) + (ad+bc)i)\\
+                &= (ac-bd) - (ad+bc)i\\
+                &= (a-bi)(c-di)\\
+                &= \phi(a+bi)\phi(c+di)
+            \end{align*}
+            which proves that $\phi$ is indeed a homomorphism.
+
+            \item \textbf{Injective}: Since $\phi$ is non-trivial it is thus injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}.
+
+            \item \textbf{Surjective}: For any $a + bi \in \C$ we note that $a - bi \in \C$ and that $\phi(a - bi) = a - (-b)i = a+bi$, proving that $\phi$ is surjective.
+        \end{itemize}
+        Therefore $\phi$ is a bijective homomorphism from $\C$ to $\C$, i.e. an automorphism. One also sees that $\phi(r) = r$ for all $r \in \R$, so $\phi$ fixes $\R$. Thus $\phi \in \Gal{\C/\R}$. But as $\Gal{\C/\R}$ has order 2, thus $\id$ and $\phi$ are the only two elements in $\Gal{\C/\R}$.
+    \end{partquestions}
+
+    \item Let $\alpha \in E$. Since $E$ is algebraic, it is the zero of a polynomial $f(x) \in F[x]$. In particular we may choose $f(x)$ to be the minimal polynomial of $\alpha$. Since the minimal polynomial is irreducible (\myref{corollary-minimal-polynomial-is-irreducible}), thus \myref{thrm-zeroes-of-an-irreducible} tells us that $f(x)$ is separable. Therefore any $\alpha \in E$ is the zero of a separable polynomial in $F[x]$, which shows that $E$ is a separable extension of $F$.
+
+    \item Let $\phi \in H$. One sees that $1 \in \Fix{E}{H}^\ast$ since $\phi(1) = 1$ by properties of homomorphism. For any $a, b \in \Fix{E}{H}$ we also see that
+    \begin{align*}
+        \phi(a - b) &= \phi(a) - \phi(b)\\
+        &= a - b,
+    \end{align*}
+    which means $a - b \in \Fix{E}{H}$. Finally, for any $a \in \Fix{E}{H}$ and $b \in \Fix{E}{H}^\ast$ one notes
+    \begin{align*}
+        \phi(ab^{-1}) &= \phi(a)\phi(b^{-1})\\
+        &= \phi(a)\left(\phi(b)\right)^{-1}\\
+        &= ab^{-1}
+    \end{align*}
+    which means $ab^{-1} \in \Fix{E}{H}$. Therefore by subfield test (\myref{thrm-subfield-test}) we see $\Fix{E}{H}$ is a subfield of $E$.
+
+    \item All we need to show is that $G \subseteq \Gal{E/F}$ since $G$ is already a group. Suppose $\sigma \in G$. Note that
+    \[
+        \Fix{E}{G} = \{a \in E \vert \phi(a) = a \text{ for all } \phi \in G\}
+    \]
+    by definition, which means that $\sigma(a) = a$ for all $a \in \Fix{E}{G}$. Therefore, by definition of a Galois group, we see $\sigma \in \Gal{E/\Fix{E}{G}}$, meaning $G \subseteq \Gal{E/\Fix{E}{G}}$. Therefore $G \leq \Gal{E/\Fix{E}{G}}$.
+
+    \item We need to prove the group action axioms.
+    \begin{itemize}
+        \item \textbf{Identity}: One sees that for any $x \in E$ we have
+        \begin{align*}
+            \id\cdot x &= \id(x)\\
+            &= x.
+        \end{align*}
+        \item \textbf{Compatibility}: Let $\sigma, \mu \in G$ and $x \in E$. Then
+        \begin{align*}
+            \sigma \cdot (\mu \cdot x) &= \sigma \cdot (\mu(x))\\
+            &= \sigma(\mu(x))\\
+            &= (\sigma\circ \mu)(x) & (\text{where } \circ \text{ denotes function composition})\\
+            &= (\sigma\mu) \cdot x.
+        \end{align*}
+    \end{itemize}
+    Therefore the group action defined in \myref{thrm-degree-of-element-under-fixed-field-action} is, indeed, a group action.
+
+    \item By the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}) we know that
+    \[
+       |G| = |\Orb{G}{x}||\Stab{G}{x}|
+    \]
+    for all $x \in E$. Since the degree of $\alpha_1$ over $F$ is $|\Orb{G}{\alpha_1}| = r$ by \myref{thrm-degree-of-element-under-fixed-field-action}, therefore one sees clearly that the degree of $\alpha_1$ divides the order of $G$.
+
+    \item Clearly if every element of $E$ is a zero of a separable polynomial in $F[x]$, say $f(x)$, we may just view $f(x)$ as a polynomial in $K[x]$ and we would obtain the fact that every element of $E$ is a zero of a separable polynomial in $K[x]$. Therefore $E$ is a separable extension of $K$. Coupled with \myref{prop-intermediate-field-of-normal-extension-is-normal-extension} proves that $E/K$ is a Galois extension.
+
+    \item For any abelian group $G$, it has a subnormal series
+    \[
+        1 \lhd G.
+    \]
+    Clearly $G/1 \cong G$ is abelian, which means that all factor groups are abelian. Therefore, by definition of a solvable group, $G$ is solvable.
+
+    \item The degree 5 polynomial $f(x) = x^5 - 4x - 2$ is not solvable by radicals over $\Q$. For $n > 5$ the existence of a solution by radicals of the general polynomial of degree $n$ yields a solution by radicals of the equation $f(x)x^{n-5} = 0$, contradicting the above.
+\end{questions}

@@ -1,0 +1,263 @@
+\chapter{The Fundamental Theorem of Algebra}
+In this final chapter, it is fitting to prove the theorem that is intertwined with classical and abstract algebra -- the Fundamental Theorem of Algebra. First proven by Gauss in his doctoral thesis, it unfortunately requires some results from calculus. Regardless, we will try our best to provide a complete and self-contained proof here.
+
+\section{Completeness of the Real Numbers}
+We first introduce the idea of upper bounds and lower bounds.
+
+\begin{definition}
+    Let $A$ be a subset of $\R$.
+    \begin{itemize}
+        \item A number $M$ is called a \textbf{upper bound}\index{upper bound} of $A$ if and only if $x \leq M$ for all $x \in A$. In this case, $A$ is said to be \textbf{bounded above}\index{bounded!above}.
+        \item A number $L$ is called a \textbf{lower bound}\index{upper bound} of $A$ if and only if $x \geq L$ for all $x \in A$. In this case, $A$ is said to be \textbf{bounded below}\index{bounded!below}.
+    \end{itemize}
+    The set $A$ is said to be \textbf{bounded}\index{bounded} if and only if it is bounded above and bounded below.
+\end{definition}
+
+\begin{proposition}
+    $A \subseteq \R$ is bounded if and only if there exists an $M \in \R$ such that $|x| \leq M$ for all $x \in A$.
+\end{proposition}
+\begin{proof}
+    For the forward direction, if $A$ is bounded, then there exists $m, l \in \R$ such that $l \leq x \leq m$ for all $x \in \R$. Let $M$ be the larger of $|l|$ and $|m|$. Then we see $|x| \leq M$ as required.
+
+    For the reverse direction, if there exists an $M \in \R$ such that $|x| \leq M$, this means that $M \geq 0$ and $-M \leq x \leq M$. Consequently $x \geq -M$ meaning that $A$ is bounded below and $x \leq M$ which means that $A$ is bounded above. Therefore $A$ is bounded.
+\end{proof}
+
+\begin{example}
+    Consider the subset $\{1, 2, 3\}$. It has upper bounds of 3, 4, 5, etc. It has lower bounds of 1, 0, -1, etc.
+\end{example}
+
+It would be nice to define the `tightest' interval that contains a subset. That motivates the definition of a least upper bound and a greatest lower bound.
+
+\begin{definition}
+    Let $A\subseteq \R$ be a non-empty set that is bounded above. Then $M$ is called the \textbf{supremum}\index{supremum} (or \textbf{least upper bound}\index{upper bound!least}) if and only if
+    \begin{itemize}
+        \item $M$ is an upper bound of $A$; and
+        \item for any upper bound $m$ of $A$ we have $M \leq m$.
+    \end{itemize}
+    The supremum of a set $A$ is denoted $\sup A$.
+\end{definition}
+
+\begin{definition}
+    Let $A\subseteq \R$ be a non-empty set that is bounded below. Then $L$ is called the \textbf{infimum}\index{infimum} (or \textbf{greatest lower bound}\index{lower bound!greatest}) if and only if
+    \begin{itemize}
+        \item $L$ is a lower bound of $A$; and
+        \item for any lower bound $l$ of $A$ we have $L \geq l$.
+    \end{itemize}
+    The infimum of a set $A$ is denoted $\inf A$.
+\end{definition}
+
+\begin{example}
+    Again consider the subset $S = \{1, 2, 3\}$. We see $\sup S = 3$ and $\inf S = 1$.
+\end{example}
+
+\begin{example}
+    Non-trivially, we see that $\sup [0, 3) = 3$ and $\inf [0, 3) = 0$.
+\end{example}
+
+For the two examples we are able to find the supremum, and that it is a real number. Actually, in the definition of the supremum and infimum, we did not assume that they are actually real numbers. We correct for this oversight by stating the Completeness axiom.
+
+\begin{axiom}[Completeness]\index{axiom!completeness}\label{axiom-completeness}
+    Every non-empty subset of $\R$ that is bounded above has a supremum within the real numbers.
+
+    That is, if $A \subseteq \R$ is non-empty and bounded above, then $\sup A$ exists and is a real number.
+\end{axiom}
+
+We end this section with a property of suprema.
+\begin{proposition}\label{prop-identifying-suprema}
+    Let $A$ be a set that is non-empty and bounded above. Let $p \in \R$. Then $p = \sup A$ if and only if $p$ is a upper bound of $A$ and for every $\epsilon > 0$ there exists an $a_\epsilon \in A$ such that $a_\epsilon > p - \epsilon$.
+\end{proposition}
+\begin{proof}
+    For the forward direction, we first assume that $p = \sup A$. Then clearly $p$ is an upper bound of $A$ by definition of the supremum. Now let $\epsilon > 0$. By definition of the supremum, we know that $p - \epsilon$ is not an upper bound of $A$. In particular there must be an element greater than $p - \epsilon$ and we may choose that element to be $a_\epsilon$ as required.
+
+    For the reverse direction we assume that the two conditions hold. Let $M$ be an upper bound of $A$ and, seeking a contradiction, suppose $M < p$. Set $\epsilon = p - M$. By the second condition there exists an $a_\epsilon \in A $ such that $a_\epsilon > p - \epsilon = p - (p - M) = M$, which clearly contradicts the fact that $M$ is an upper bound of $A$. Therefore $M \geq p$ which means that $\sup A = p$ as required.
+\end{proof}
+
+\begin{exercise}
+    Let the set $S = \{1 - \frac1{2^n} \vert n \in \mathbb{N}\}$. Find $\inf S$ and $\sup S$, proving that the values found are indeed the infimum and supremum of $S$ respectively.
+\end{exercise}
+
+\section{The Intermediate Value Theorem}
+Next on our journey to prove the Fundamental Theorem of Algebra we need to prove the Intermediate Value Theorem. Before that, though, we need to introduce the idea of continuous functions.
+
+\begin{definition}
+    Let $D$ be a non-empty subset of $\R$ and $x_0 \in D$. A function $f: D \to \R$ is said to be \textbf{continuous at $x_0$}\index{continuous!at a point} if and only if for all $\epsilon > 0$ there exists $\delta > 0$ such that for all $x \in D$,
+    \[
+        \text{if } |x - x_0| < \delta \text{ then } |f(x) - f(x_0)| < \epsilon.
+    \]
+    The function $f: D \to \R$ is said to be \textbf{continuous}\index{continuous}\index{continuous!function}\index{function!continuous} if and only if $f$ is continuous at $x_0$ for all $x_0 \in D$.
+\end{definition}
+\begin{remark}
+    Usually the domain $D$ is either $\R$ or an interval over $\R$.
+\end{remark}
+
+The calculus inclined would be able to see the parallel of this definition to that of using limits. However, we choose not to use the limit definition here to reduce clutter of notation.
+
+\begin{example}
+    We show that $f: \R \to \R, x \mapsto x$ is continuous.
+
+    Given $\epsilon > 0$, we take $\delta = \epsilon$. Then if $|x - x_0| < \delta$ we see that
+    \begin{align*}
+        |f(x) - f(x_0)| &= |x - x_0|\\
+        &< \delta\\
+        &= \epsilon,
+    \end{align*}
+    proving that $f$ is continuous.
+\end{example}
+
+\begin{example}
+    We show that $f: \R \to \R, x \mapsto x^2$ is continuous. We will assume the \textit{triangle inequality} holds, i.e. $|a+b| \leq |a| + |b|$ for all $a,b \in \R$.
+
+    Given $\epsilon > 0$, we take
+    \[
+        \delta = -|x_0| + \sqrt{x_0^2 + \epsilon}.
+    \]
+    Then if $|x - x_0| < \delta$ we see
+    \begin{align*}
+        |f(x) - f(x_0)| &= |x^2 - x_0^2|\\
+        &= |(x+x_0)(x-x_0)|\\
+        &= |x+x_0||x-x_0|\\
+        &= |(x-x_0)+2x_0||x-x_0|\\
+        &\leq (|x-x_0| + 2|x_0|)|x-x_0|\\
+        &< (\delta + 2|x_0|)\delta\\
+        &= \delta^2 + 2|x_0|\delta\\
+        &= \left(-|x_0| + \sqrt{x_0^2 + \epsilon}\right)^2 + 2|x_0|\left(-|x_0| + \sqrt{x_0^2 + \epsilon}\right)\\
+        &= x_0^2 - 2|x_0|\sqrt{x_0^2+\epsilon} + (x_0^2 + \epsilon) - 2x_0^2 + 2|x_0|\sqrt{x_0^2+\epsilon}\\
+        &= \epsilon
+    \end{align*}
+    which proves that $f$ is continuous.
+\end{example}
+
+\begin{proposition}\label{prop-continuous-function-translated-is-continuous}
+    If $f: D \to \R$ is continuous, then $g: D \to \R$ given by $g(x) = f(x) - k$ is continuous.
+\end{proposition}
+\begin{proof}
+    Since $f$ is continuous, for all $\epsilon > 0$ there exists $\delta > 0$ such that for all $x \in D$, if $|x - x_0| < \delta$ then $|f(x) - f(x_0)| < \epsilon$. Note
+    \begin{align*}
+        |f(x) - f(x_0)| &= |f(x) - f(x_0) + (k - k)|\\
+        &= |(f(x) - k) - (f(x_0) - k)|\\
+        &= |g(x) - g(x_0)|\\
+        &< \epsilon
+    \end{align*}
+    which shows that $g(x)$ is also continuous.
+\end{proof}
+
+With the completeness of functions defined, we can now state and prove the Intermediate Value Theorem.
+
+\begin{theorem}[Intermediate Value Theorem]\index{Intermediate Value Theorem}\label{thrm-intermediate-value-theorem}
+    Let $I = [a, b]$ be an interval of real numbers and $f: I \to \R$ be a continuous function. Let $l = \min(f(a), f(b))$ and $u = \max(f(a), f(b))$. If $k \in \R$ is such that $l \leq k \leq u$ then there exists a $c \in I$ such that $f(c) = k$.
+\end{theorem}
+\begin{proof}
+    Without loss of generality assume that $f(a) < k < f(b)$ as the $f(a) > k > f(b)$ case is similar.
+
+    Define the function $g: I \to \R$ where $g(x) = f(x) - k$. Therefore $f(a) < k < f(b)$ means $g(a) < 0 < g(b)$. We note that $g$ is also continuous by \myref{prop-continuous-function-translated-is-continuous}. We are to prove that $g(c) = 0$ for some $c \in I$. Consider the set
+    \[
+        S = \{x \in I \vert g(x) \leq 0\}.
+    \]
+    As $g(a) < 0$ we know that $a \in S$ and so $S$ is non-empty. Moreover we see that $S \subseteq I$ which means that $S$ is bounded above by $b$. Therefore by the completeness axiom (\myref{axiom-completeness}) we know that $c = \sup S$ exists.
+
+    Now there are 3 cases for the value of $g(c)$.
+    \begin{enumerate}
+        \item If $g(c) < 0$, then by definition of continuity of functions, for $\epsilon = -g(c) > 0$ there exists a $\delta > 0$ such that
+        \[
+            \text{if } |x - c| < \delta \text{ then } |g(x) - g(c)| < \epsilon = -g(c),
+        \]
+        which means that $g(c) < g(x) - g(c) < -g(c)$ and therefore $g(x) < 0$. But if we choose $x_0 = c + \frac\delta2$, then we see $g(x_0) < 0$ and $c < x_0 < b$. It follows that $x_0 \in S$ and, since $x_0 > c = \sup S$, that $x_0$ is an upper bound of $S$. But $x_0$ is an element of $S$ that is larger than $c$, which is an upper bound of $S$, a contradiction.
+
+        \item If instead $g(c) > 0$, then choosing $\epsilon = g(c)$ we know there exists a $\delta > 0$ such that
+        \[
+            \text{if } |x - c| < \delta \text{ then } |g(x) - g(c)| < \epsilon = g(c)
+        \]
+        which means $g(x) > 0$. But by \myref{prop-identifying-suprema}, since $c$ is the supremum of $S$, thus there exists an $x_0 \in S$ such that $x_0 > c - \delta$, i.e. $c - x_0 < \delta$ and hence $|x_0 - c| < \delta$. For $x_0$ we see that $g(x_0) > 0$ by above working. But as $x_0 < \sup S = c$, we must have $g(x_0) \leq 0$ by definition of $S$, a contradiction.
+
+        \item The only case that is left is $g(c) = 0$, which means $f(c) = k$ as required.\qedhere
+    \end{enumerate}
+\end{proof}
+
+\section{The Fundamental Theorem of Algebra}
+With the Intermediate Value Theorem proven, we can prove two lemmas. These seem obvious, but we can now make them rigorous with the results that we have now.
+
+\begin{lemma}\label{lemma-odd-degree-polynomial-has-real-zero}
+    Every polynomial of odd degree has a real zero.
+\end{lemma}
+\begin{proof}
+    Let $f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_{2n-1}x^{2n-1}$ be such an odd degree polynomial. Without loss of generality we may assume $a_{2n-1} = 1$. Consider
+    \[
+        \frac{f(x)}{x^{2n+1}} = 1 + \sum_{k=0}^{2n}a_k\frac{x^k}{x^{2n+1}} = 1 + \sum_{k=0}^{2n}a_kx^{k-(2n+1)}.
+    \]
+    Note that $k - (2n+1) < 0$, so as $|x|$ gets larger $x^{k-(2n+1)}$ gets smaller. In particular, for every $\epsilon > 0$, there exists a positive integer $N > 0$ such that for all $|x| > N$ we have
+    \[
+        \left|\sum_{k=0}^{2n}a_kx^{k-(2n+1)}\right| < \epsilon.
+    \]
+    So for $x > N$ we have $f(x) > x^{2n+1} - \epsilon x^{2n+1} > 0$ and for $x < -N$ we have $f(x) < x^{2n+1} - \epsilon x^{2n+1} < 0$. Therefore by the Intermediate Value Theorem (\myref{thrm-intermediate-value-theorem}) we see that there exists a $a \in [N, -N]$ such that $f(a) = 0$.
+\end{proof}
+
+\begin{lemma}\label{lemma-non-negative-real-number-has-square-root}
+    $\sqrt x \in \R$ for any $x \geq 0$.
+\end{lemma}
+\begin{proof}
+    Clearly $\sqrt0=0$ since $0^2=0$, so assume $x > 0$. Consider the set
+    \[
+        S = \{y \in \R \vert y > 0 \text{ and } y^2 < x\}.
+    \]
+    We see $S$ is non-empty because
+    \begin{itemize}
+        \item if $x > 1$ then $1 \in S$ since $1^2 = 1 < x$; and
+        \item if $0 < x \leq 1$ then $\frac x2 \in S$ since $\left(\frac x2\right)^2 = \frac{x^2}4 < x^2 < x$.
+    \end{itemize}
+    Also $S$ is bounded above by $x + 1$ since every $y \in S$ is at most $x$. Hence by the completeness axiom (\myref{axiom-completeness}) tells us that $\sup S$ exists and is a real number. For brevity let $y = \sup S$.
+
+    Now seeking a contradiction suppose $y^2 < x$. Let $k = x - y^2$. Let $\epsilon = \min(y, \frac{k}{4y})$. Clearly $\epsilon > 0$. Note also that
+    \begin{align*}
+        0 &< 2y\epsilon + \epsilon^2\\
+        &<\epsilon(2y + \epsilon)\\
+        &\leq \frac{k}{4y}(2y + y)\\
+        &= \frac 34 k\\
+        &< k
+    \end{align*}
+    which means that
+    \[
+        y^2 < y^2 + 2y\epsilon + \epsilon^2 = (y+\epsilon)^2 < x
+    \]
+    and so $y + \epsilon \in S$, contradicting that $y = \sup S$ is an upper bound of $S$. Therefore $y^2 = x$ and so $\sqrt x = y \in \R$.
+\end{proof}
+
+With these two lemmas, we can prove the Fundamental Theorem of Algebra.
+
+\begin{theorem}[Fundamental Theorem of Algebra]\index{Fundamental Theorem of Algebra}\label{thrm-fundamental-theorem-of-algebra}
+    The field of complex numbers is algebraically closed. That is, every polynomial in $\C[x]$ has a zero in $\C$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 23.34]{judson_beezer_2022}})]
+    By \myref{corollary-field-is-algebraically-closed-iff-no-proper-finite-extension} it suffices to show that $\C$ has no proper finite extension. Suppose $E$ is a proper finite extension of $\C$. Since any finite extension is algebraic (\myref{thrm-finite-extension-is-algebraic}) and since every algebraic extension in a field of characteristic 0 is separable (\myref{prop-algebraic-extension-of-field-of-characteristic-0-is-separable}), we know that $E$ is a finite simple extension of $\C$ by the Primitive Element Theorem (\myref{thrm-primitive-element}). So let $E = \C(\alpha)$ where $\alpha$ is the zero of an irreducible polynomial $f(x) \in \C[x]$. The splitting field $L$ of $f(x)$ over $\C$ contains the zero $\alpha$ as well as the other zeroes of $f(x)$, which means that $L$ contains $E$. Furthermore $L$ is a finite normal separable extension of $\C$, which means that $L$ is a finite Galois extension of $\C$.
+
+    Seeking a contradiction, suppose $L$ is a proper finite Galois extension of $\C$. One may consider $L$ to be a splitting field of $x^2 + 1$ over $\R$, which shows that $L$ is also a finite normal separable extension (i.e. finite Galois) extension of $\R$. \myref{exercise-fta-real-extension-has-even-order} (later) tells us that $\Gal{L/\R}$ has even order, i.e. $|\Gal{L/R}| = 2k$ for some positive integer $k$, which means that $\Gal{L/R}$ has a Sylow 2-subgroup $G$ by a corollary of the First Sylow Theorem (\myref{corollary-sylow-p-subgroup-exists}). Let $K = \Fix{\R}{G}$; one sees $\R \subseteq K \subset L$ and that $L/K$ is a finite Galois extension, which means $|\Gal{L/K}| = |G| = [L:K]$ (\myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}). The Tower Law (\myref{thrm-tower-law}) tells us
+    \[
+        [L:\R] = [L:K][K:\R].
+    \]
+    Writing $[L:\R] = 2^km$ where $k$ and $m$ are positive integers, we see that $[K:\R]$ is odd because $[L:K] = |G| = 2^k$ by definition of a Sylow 2-subgroup. As $K/\R$ is a finite Galois extension it is thus simple by the Primitive Element Theorem again, so $K = \R(\beta)$ where $\beta$ is the zero of some polynomial $g(x) \in \R[x]$ with odd degree. However by \myref{lemma-odd-degree-polynomial-has-real-zero}, one of the zeroes of $g(x)$ is a real number. As $K/\R$ is Galois it is thus normal, meaning that all zeroes of $g(x)$ are in $\R$. Hence $\beta \in \R$ and so $K = \R$.
+
+    Now because $K = \R$ so $[L:\R] = [L:K] = 2^k$, which hence means that $\Gal{L/\R}$ is a 2-group. Also, because
+    \[
+        [L:\R] = [L:\C][\C:\R]
+    \]
+    it follows that $\Gal{L/\C}$ is also a 2-group, where $|\Gal{L/\C}| = 2^r$ where $r \geq 1$ because we assumed $L \neq \C$. So by the First Sylow Theorem (\myref{thrm-sylow-1}) $\Gal{L/\C}$ contains a subgroup $H$ of order $2^{r-1}$, meaning $[\Gal{L/\C}:H] = 2$ by Lagrange's theorem (\myref{thrm-lagrange}). In particular we can find a field $F = \Fix{L}{H}$ by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}), which also tells us that $H = \Gal{L/F}$. So we see
+    \[
+        [F:\C] = [\Gal{L/\C}:\Gal{L/F}] = [\Gal{L/\C}:H] = 2
+    \]
+    by \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}. As $F/\C$ is a finite algebraic extension of degree 2, there exists an element $\gamma \in F$ with minimal polynomial $x^2 + bx + c \in \C[x]$. However we know that such a polynomial has zeroes
+    \[
+        -\frac b2 \pm \frac{\sqrt{b^2 - 4c}}2
+    \]
+    by the quadratic formula. One note that $b^2 - 4c \in \C$ and so $\sqrt{b^2-4c} \in \C$ by \myref{exercise-square-root-of-complex-number-is-complex-number} (later). Hence the two zeroes of $x^2 + bx + c$ are both complex numbers, which therefore means $\gamma \in \C$. This is a contradiction to the fact that $F \neq \C$.
+
+    Therefore, $K = \C$, which shows that $\C$ is algebraically closed.
+\end{proof}
+
+\begin{exercise}\label{exercise-fta-real-extension-has-even-order}
+    In the proof of \myref{thrm-fundamental-theorem-of-algebra}, explain why $\Gal{L/\R}$ has even order.
+\end{exercise}
+
+\begin{exercise}\label{exercise-square-root-of-complex-number-is-complex-number}
+    Let $z = x + yi \in \C$ where $x, y \in \R$. Prove that $\sqrt{z} \in \C$ rigorously using \myref{lemma-non-negative-real-number-has-square-root}. That is, prove that there is a $w \in \C$ such that $w^2 = z$.
+\end{exercise}
+
+Although our proof was strictly algebraic, it is interesting to note that we required results from analysis to prove the Fundamental Theorem of Algebra rigorously. It appears that there is no possible way to avoid the use of results from analysis and to formulate a purely algebraic argument. It is also interesting to note that we can obtain a proof of such an important theorem from two very different fields (pun intended) of mathematics.
