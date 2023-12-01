@@ -8,4 +8,33 @@
         1 - \frac1{2^n} > 1 - \epsilon.
     \]
     Therefore by \myref{prop-identifying-suprema} we see that $\sup S = 1$.
+
+    \item Note by Tower Law (\myref{thrm-tower-law}) that
+    \[
+        [L:\R] = [L:\C][\C:\R]
+    \]
+    and because $[\C:\R] = 2$ and $[L:\C]$ is finite, thus we see that $[L:\R] = 2k$ for some integer $k$. As $L/\R$ is a finite Galois extension we therefore have $\Gal{L/\R} = [L:\R] = 2k$ by \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}. 
+
+    \item Let
+    \[
+        u = \pm\sqrt{\frac{x + \sqrt{x^2+y^2}}{2}} \text{ and } v = \pm\sqrt{\frac{-x + \sqrt{x^2+y^2}}{2}}.
+    \]
+    where the signs of $u$ and $v$ are chosen such that $uv$ has the same sign as $y$. Note that $x^2 + y^2 \geq 0$. By \myref{lemma-non-negative-real-number-has-square-root} we know that $\sqrt{x^2+y^2} \in \R$. Also $\sqrt{x^2+y^2} \geq \sqrt{x^2} = |x| \geq x$ so $-x + \sqrt{x^2+y^2} \geq 0$. Therefore by \myref{lemma-non-negative-real-number-has-square-root} again we see $u, v \in \R$. Without loss of generality let $u$ and $v$ both be positive. Let $w = u + vi \in \C$. Note that
+    \begin{align*}
+        uv &= \sqrt{\frac{x + \sqrt{x^2+y^2}}{2}}\sqrt{\frac{-x + \sqrt{x^2+y^2}}{2}}\\
+        &= \sqrt{\left(\frac{x + \sqrt{x^2+y^2}}{2}\right)\left(\frac{-x + \sqrt{x^2+y^2}}{2}\right)}\\
+        &= \sqrt{\frac{\left(x + \sqrt{x^2+y^2}\right)\left(-x + \sqrt{x^2+y^2}\right)}{4}}\\
+        &= \sqrt{\frac{(x^2+y^2)-x^2}{4}}\\
+        &= \sqrt{\frac{y^2}4}\\
+        &= \frac y2.
+    \end{align*}
+    Thus we see
+    \begin{align*}
+        w^2 &= (u+vi)^2\\
+        &= u^2 + 2uvi + (vi)^2\\
+        &= u^2 + 2uvi - v^2\\
+        &= \frac{x + \sqrt{x^2+y^2}}{2} + 2\left(\frac y2\right)i - \frac{-x + \sqrt{x^2+y^2}}{2}\\
+        &= x + yi
+    \end{align*}
+    which therefore means that $\sqrt{x+yi} = \sqrt{z} \in \C$.
 \end{questions}

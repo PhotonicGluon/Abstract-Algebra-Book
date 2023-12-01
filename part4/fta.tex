@@ -174,4 +174,90 @@ With the completeness of functions defined, we can now state and prove the Inter
 \end{proof}
 
 \section{The Fundamental Theorem of Algebra}
-% TODO: Add
+With the Intermediate Value Theorem proven, we can prove two lemmas. These seem obvious, but we can now make them rigorous with the results that we have now.
+
+\begin{lemma}\label{lemma-odd-degree-polynomial-has-real-zero}
+    Every polynomial of odd degree has a real zero.
+\end{lemma}
+\begin{proof}
+    Let $f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_{2n-1}x^{2n-1}$ be such an odd degree polynomial. Without loss of generality we may assume $a_{2n-1} = 1$. Consider
+    \[
+        \frac{f(x)}{x^{2n+1}} = 1 + \sum_{k=0}^{2n}a_k\frac{x^k}{x^{2n+1}} = 1 + \sum_{k=0}^{2n}a_kx^{k-(2n+1)}.
+    \]
+    Note that $k - (2n+1) < 0$, so as $|x|$ gets larger $x^{k-(2n+1)}$ gets smaller. In particular, for every $\epsilon > 0$, there exists a positive integer $N > 0$ such that for all $|x| > N$ we have
+    \[
+        \left|\sum_{k=0}^{2n}a_kx^{k-(2n+1)}\right| < \epsilon.
+    \]
+    So for $x > N$ we have $f(x) > x^{2n+1} - \epsilon x^{2n+1} > 0$ and for $x < -N$ we have $f(x) < x^{2n+1} - \epsilon x^{2n+1} < 0$. Therefore by the Intermediate Value Theorem (\myref{thrm-intermediate-value-theorem}) we see that there exists a $a \in [N, -N]$ such that $f(a) = 0$.
+\end{proof}
+
+\begin{lemma}\label{lemma-non-negative-real-number-has-square-root}
+    $\sqrt x \in \R$ for any $x \geq 0$.
+\end{lemma}
+\begin{proof}
+    Clearly $\sqrt0=0$ since $0^2=0$, so assume $x > 0$. Consider the set
+    \[
+        S = \{y \in \R \vert y > 0 \text{ and } y^2 < x\}.
+    \]
+    We see $S$ is non-empty because
+    \begin{itemize}
+        \item if $x > 1$ then $1 \in S$ since $1^2 = 1 < x$; and
+        \item if $0 < x \leq 1$ then $\frac x2 \in S$ since $\left(\frac x2\right)^2 = \frac{x^2}4 < x^2 < x$.
+    \end{itemize}
+    Also $S$ is bounded above by $x + 1$ since every $y \in S$ is at most $x$. Hence by the completeness axiom (\myref{axiom-completeness}) tells us that $\sup S$ exists and is a real number. For brevity let $y = \sup S$.
+
+    Now seeking a contradiction suppose $y^2 < x$. Let $k = x - y^2$. Let $\epsilon = \min(y, \frac{k}{4y})$. Clearly $\epsilon > 0$. Note also that
+    \begin{align*}
+        0 &< 2y\epsilon + \epsilon^2\\
+        &<\epsilon(2y + \epsilon)\\
+        &\leq \frac{k}{4y}(2y + y)\\
+        &= \frac 34 k\\
+        &< k
+    \end{align*}
+    which means that
+    \[
+        y^2 < y^2 + 2y\epsilon + \epsilon^2 = (y+\epsilon)^2 < x
+    \]
+    and so $y + \epsilon \in S$, contradicting that $y = \sup S$ is an upper bound of $S$. Therefore $y^2 = x$ and so $\sqrt x = y \in \R$.
+\end{proof}
+
+With these two lemmas, we can prove the Fundamental Theorem of Algebra.
+
+\begin{theorem}[Fundamental Theorem of Algebra]\index{Fundamental Theorem of Algebra}\label{thrm-fundamental-theorem-of-algebra}
+    The field of complex numbers is algebraically closed. That is, every polynomial in $\C[x]$ has a zero in $\C$.
+\end{theorem}
+\begin{proof}[Proof (see {\cite[Theorem 23.34]{judson_beezer_2022}})]
+    By \myref{corollary-field-is-algebraically-closed-iff-no-proper-finite-extension} it suffices to show that $\C$ has no proper finite extension. Suppose $E$ is a proper finite extension of $\C$. Since any finite extension is algebraic (\myref{thrm-finite-extension-is-algebraic}) and since every algebraic extension in a field of characteristic 0 is separable (\myref{prop-algebraic-extension-of-field-of-characteristic-0-is-separable}), we know that $E$ is a finite simple extension of $\C$ by the Primitive Element Theorem (\myref{thrm-primitive-element}). So let $E = \C(\alpha)$ where $\alpha$ is the zero of an irreducible polynomial $f(x) \in \C[x]$. The splitting field $L$ of $f(x)$ over $\C$ contains the zero $\alpha$ as well as the other zeroes of $f(x)$, which means that $L$ contains $E$. Furthermore $L$ is a finite normal separable extension of $\C$, which means that $L$ is a finite Galois extension of $\C$.
+
+    Seeking a contradiction, suppose $L$ is a proper finite Galois extension of $\C$. One may consider $L$ to be a splitting field of $x^2 + 1$ over $\R$, which shows that $L$ is also a finite normal separable extension (i.e. finite Galois) extension of $\R$. \myref{exercise-fta-real-extension-has-even-order} (later) tells us that $\Gal{L/\R}$ has even order, i.e. $|\Gal{L/R}| = 2k$ for some positive integer $k$, which means that $\Gal{L/R}$ has a Sylow 2-subgroup $G$ by a corollary of the First Sylow Theorem (\myref{corollary-sylow-p-subgroup-exists}). Let $K = \Fix{\R}{G}$; one sees $\R \subseteq K \subset L$ and that $L/K$ is a finite Galois extension, which means $|\Gal{L/K}| = |G| = [L:K]$ (\myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}). The Tower Law (\myref{thrm-tower-law}) tells us
+    \[
+        [L:\R] = [L:K][K:\R].
+    \]
+    Writing $[L:\R] = 2^km$ where $k$ and $m$ are positive integers, we see that $[K:\R]$ is odd because $[L:K] = |G| = 2^k$ by definition of a Sylow 2-subgroup. As $K/\R$ is a finite Galois extension it is thus simple by the Primitive Element Theorem again, so $K = \R(\beta)$ where $\beta$ is the zero of some polynomial $g(x) \in \R[x]$ with odd degree. However by \myref{lemma-odd-degree-polynomial-has-real-zero}, one of the zeroes of $g(x)$ is a real number. As $K/\R$ is Galois it is thus normal, meaning that all zeroes of $g(x)$ are in $\R$. Hence $\beta \in \R$ and so $K = \R$.
+
+    Now because $K = \R$ so $[L:\R] = [L:K] = 2^k$, which hence means that $\Gal{L/\R}$ is a 2-group. Also, because
+    \[
+        [L:\R] = [L:\C][\C:\R]
+    \]
+    it follows that $\Gal{L/\C}$ is also a 2-group, where $|\Gal{L/\C}| = 2^r$ where $r \geq 1$ because we assumed $L \neq \C$. So by the First Sylow Theorem (\myref{thrm-sylow-1}) $\Gal{L/\C}$ contains a subgroup $H$ of order $2^{r-1}$, meaning $[\Gal{L/\C}:H] = 2$ by Lagrange's theorem (\myref{thrm-lagrange}). In particular we can find a field $F = \Fix{L}{H}$ by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}), which also tells us that $H = \Gal{L/F}$. So we see
+    \[
+        [F:\C] = [\Gal{L/\C}:\Gal{L/F}] = [\Gal{L/\C}:H] = 2
+    \]
+    by \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}. As $F/\C$ is a finite algebraic extension of degree 2, there exists an element $\gamma \in F$ with minimal polynomial $x^2 + bx + c \in \C[x]$. However we know that such a polynomial has zeroes
+    \[
+        -\frac b2 \pm \frac{\sqrt{b^2 - 4c}}2
+    \]
+    by the quadratic formula. One note that $b^2 - 4c \in \C$ and so $\sqrt{b^2-4c} \in \C$ by \myref{exercise-square-root-of-complex-number-is-complex-number} (later). Hence the two zeroes of $x^2 + bx + c$ are both complex numbers, which therefore means $\gamma \in \C$. This is a contradiction to the fact that $F \neq \C$.
+
+    Therefore, $K = \C$, which shows that $\C$ is algebraically closed.
+\end{proof}
+
+\begin{exercise}\label{exercise-fta-real-extension-has-even-order}
+    In the proof of \myref{thrm-fundamental-theorem-of-algebra}, explain why $\Gal{L/\R}$ has even order.
+\end{exercise}
+
+\begin{exercise}\label{exercise-square-root-of-complex-number-is-complex-number}
+    Let $z = x + yi \in \C$ where $x, y \in \R$. Prove that $\sqrt{z} \in \C$ rigorously using \myref{lemma-non-negative-real-number-has-square-root}. That is, prove that there is a $w \in \C$ such that $w^2 = z$.
+\end{exercise}
+
+Although our proof was strictly algebraic, it is interesting to note that we required results from analysis to prove the Fundamental Theorem of Algebra rigorously. It appears that there is no possible way to avoid the use of results from analysis and to formulate a purely algebraic argument. It is also interesting to note that we can obtain a proof of such an important theorem from two very different fields (pun intended) of mathematics.
