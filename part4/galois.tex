@@ -30,9 +30,9 @@ Recall from \myref{section-automorphism-groups} that the set of automorphisms of
         Therefore $h$ is a bijective homomorphism, meaning $h$ is an isomorphism. Because the domain and codomain of $h$ are both $F$, thus $h$ is an automorphism, meaning $h = fg \in \Aut{F}$.
 
         \item \textbf{Associativity}: Function composition is associative by \myref{axiom-function-composition-associative}.
-        
+
         \item \textbf{Identity}: We have proved that the identity endomorphism is an automorphism (\myref{exercise-identity-homomorphism-is-an-isomorphism}) which means that $\id \in \Aut{F}$. By definition of $\id$ we know that $f\circ\id = f$ and $\id\circ f = f$ for any $f \in \Aut{F}$, meaning that $\id$ is indeed the identity of $\Aut{F}$.
-        
+
         \item \textbf{Inverse}: Suppose $f \in \Aut{F}$, meaning $f$ is an automorphism. Then we know that $f^{-1}$ is an automorphism with
         \[
             f\circ f^{-1} = \id \text{ and } f^{-1} \circ f = \id
@@ -213,13 +213,13 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
             &= \sigma(a)\sigma(b)
         \end{align*}
         which means that $\sigma$ is a homomorphism.
-        
+
         \item \textbf{Injective}: Since $\sigma$ is non-trivial it must be injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}.
-        
+
         \item \textbf{Surjective}: By \myref{problem-injection-from-finite-set-to-itself-is-bijection} we know that $\sigma$ is surjective.
     \end{itemize}
     Therefore $\sigma$ is an isomorphism from $E$ to $E$, i.e. $\sigma$ is an automorphism. So $\sigma \in \Aut{E}$.
-    
+
     We also note that because $F$ is the splitting field of $x^{p^n}-x$ over the base field of order $p$, therefore every element of $F$ is a zero of $x^{p^n}-x$, in particular $a^{p^n} - a = 0$ which means $a = a^{p^n}$ for any $a \in F$. Hence $\sigma(a) = a$ for all $a \in F$, which shows that $\sigma \in \Gal{E/F}$.
 
     Finally we show that the order of $\sigma$ in $\Gal{E/F}$ is $k$. Recall that since $E$ is the splitting field of $x^{p^m} - x$ over the base field of order $p$, therefore every element of $E$ is a zero of $x^{p^m} - x$ which results in $a^{p^m} = a$ for all $a \in E$. Thus one sees that
@@ -364,7 +364,7 @@ Separable extensions are nice in the way that they can be determined solely by o
 \end{proposition}
 \begin{proof}[Proof (cf. {\cite[Proposition 23.17]{judson_beezer_2022}})]
     For brevity let $G = \Gal{E/F}$.
-    
+
     Note that $\Fix{E}{G} = \{a \in E \vert \phi(a) = a \text{ for all } \phi \in \Gal{E/F}\}$. But clearly every element of $F$ is fixed by any $\phi \in \Gal{E/F}$. Hence it is safe to say that $F \subseteq \Fix{E}{G}$. It is also clear that $\Fix{E}{G} \subseteq E$ since $\Fix{E}{G}$ is a subfield of $E$.
 
     Now since $F \subseteq \Fix{E}{G}$, any automorphism of $E$ that fixes $\Fix{E}{G}$ must also fix $F$. Thus $\Gal{E/\Fix{E}{G}} \subseteq \Gal{E/F}$. But by \myref{exercise-subgroup-of-Aut-E-is-subgroup-of-galois-group-of-fixed-field} (later) we see $\Gal{E/F} \leq \Gal{E/\Fix{E}{G}}$. Hence $\Gal{E/F} = \Gal{E/\Fix{E}{G}}$. Consequently, by \myref{thrm-order-of-galois-group-is-degree-of-field-extension} we see
@@ -392,7 +392,7 @@ Separable extensions are nice in the way that they can be determined solely by o
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 16.5.2]{artin_2011}})]
     We only prove the first two parts and leave the third for \myref{exercise-degree-of-element-under-fixed-field-action} (later).
-    
+
     For the first part, say
     \[
         f(x) = (x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_r).
@@ -480,13 +480,13 @@ Later we will see that normal extensions are, in some way, related to normal sub
         \item $\boxed{(3) \implies (1)}$ Let $F = \Fix{E}{G}$ for some finite subgroup $G$ of $\Aut{E}$. By \myref{thrm-fixed-field} we see $[E:F] = |G|$, which means that $E$ is a finite extension of $F$.
 
         To prove that the extension is Galois, let $f(x) \in F[x]$ be irreducible. We might as well assume $f(x)$ is monic since otherwise we may just divide all coefficients by the leading coefficient. Let $\alpha \in E$ be a zero of $f(x)$; we see that $f(x)$ is the minimal polynomial of $\alpha$. We show that $f(x)$ is the product of distinct linear factors in $E[x]$.
-        
+
         By \myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}, since $F$ is the set of elements of $E$ that are fixed by $G$, therefore automorphisms in $G$ permute the zeroes of $f(x)$ lying in $E$. Hence, applying the automorphisms of $G$ on the known zero $\alpha$ of $f(x)$, we can obtain distinct zeroes $\alpha_1 = \alpha, \alpha_2, \alpha_3, \dots, \alpha_n$ in $E$. Now let
         \[
             g(x) = (x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n),
         \]
         which is clearly separable over $F$ and has a zero of $\alpha_1 = \alpha$. Any automorphism $\sigma \in G$ permutes the factors of $g(x)$ since it permutes these zeroes; hence, when $\sigma$ acts on $g(x)$, it must fix the coefficients of $g(x)$, meaning the coefficients of $g(x)$ lie in $F$. Now because $\deg g(x) \leq \deg f(x)$ and $f(x)$ is the minimal polynomial of $\alpha$, therefore $f(x) = g(x)$ by the uniqueness of the minimal polynomial (\myref{corollary-minimal-polynomial-is-unique}).
-        
+
         Hence any irreducible polynomial $f(x)$ separates in $E$, and has all its zeroes in $E$, proving that $E$ is separable and normal, i.e. Galois.
     \end{itemize}
     This completes the proof.
@@ -607,9 +607,9 @@ Now suppose that we are given a chain of fields $F \subset K \subset E$, and tha
         \[
             \phi(\sigma\tau) = (\sigma\tau)_K = \sigma_K\tau_K = \phi(\sigma)\phi(\tau).
         \]
-        
+
         \item \textbf{Kernel}: The kernel of $\phi$ is the set of automorphisms of $G$ that are the identity when restricted to $K$. Since $K = \Fix{E}{H}$, the kernel is $H$.
-        
+
         \item \textbf{Image}: The Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) tells us that $G/H \cong \im\phi$, which means $|\im\phi| = |G/H|$. We note that $\im\phi \leq \Gal{K/F}$. However one also sees that
         \begin{align*}
             |\Gal{K/F}| &= [K:F] & (K/F \text{ is Galois; } \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension})\\
@@ -732,8 +732,8 @@ For finite groups, we have the following equivalent definition.
 
 \begin{example}
     The groups $\Sn{3}$, $\Sn{2}$, and $\Sn{1}$ are all solvable.
-    
-    
+
+
     For $\Sn{3}$, its composition series is
     \[
         1 \lhd \An{3} \lhd \Sn{3}
@@ -860,7 +860,7 @@ We are now ready to establish the connection between solvable groups and polynom
         \Gal{L/F}/\Gal{L/K} \cong \Gal{K/F}
     \]
     by \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}, which means $\Gal{L/F}/\Gal{L/K}$ is solvable. As both $\Gal{L/K}$ and $\Gal{L/F}/\Gal{L/K}$ are solvable, thus by \myref{thrm-normal-group-and-quotient-group-solvable-means-base-group-is-solvable} we know that $\Gal{L/F}$ is solvable.
-    
+
     Now \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal} tells us that $\Gal{L/E} \lhd \Gal{L/F}$ because $L$ is the splitting field of $x^{k_1} - a$ over $E$. Since $\Gal{L/F}$ is solvable, therefore \myref{thrm-quotient-group-of-solvable-group-is-solvable} tells us that $\Gal{L/F}/\Gal{L/E}$ is solvable. But note $L/F$ and $L/E$ are Galois extensions (\myref{thrm-equivalence-of-finite-galois-extension}) which means
     \[
         \Gal{L/F}/\Gal{L/E} \cong \Gal{E/F}.
@@ -907,14 +907,14 @@ We are now ready to state an intermediary claim.
     \begin{tikzpicture}[xscale=2, yscale=0.25, domain=-1.7:1.8, samples=200]
         % Draw grid lines
         \draw[very thin, color=gray] (-2,-12) grid [xstep=0.25, ystep=2] (2,12);
-    
+
         % Add axes
         \draw[->] (-2,0) -- (2,0) node[right] {$x$};
         \draw[->] (0,-12) -- (0,12) node[above] {$y$};
-    
+
         % Draw actual graph
         \draw[very thick, smooth, variable=\x] plot ({\x}, {\x^5 - 4*\x - 2}) node[left] {$f(x) = x^5 - 4x - 2$};
-    
+
         % Add x-axis labels
         \node [below] at (-1.5,0) {-1.5};
         \node [below] at (-1,0) {-1};
@@ -922,7 +922,7 @@ We are now ready to state an intermediary claim.
         \node [below] at (0.5,0) {0.5};
         \node [below] at (1,0) {1};
         \node [below] at (1.5,0) {1.5};
-    
+
         % Add y-axis labels
         \node [left] at (0,-8) {-8};
         \node [left] at (0,-4) {-4};
@@ -993,7 +993,7 @@ Why is it important that the Galois group of that polynomial is $\Sn{5}$? It tur
     \[
         1 \lhd \An{5} \lhd \Sn{5}.
     \]
-    
+
     However, note that the composition factor $\An{5}/1 \cong \An{5}$ is not a cyclic group of prime order. Therefore, by \myref{prop-solvable-equivalence-for-finite-groups}, we see that $\Sn{5}$ is not solvable.
 \end{proof}
 
