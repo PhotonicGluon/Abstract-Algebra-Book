@@ -2,7 +2,7 @@
 [![Latest Release](https://img.shields.io/github/v/release/PhotonicGluon/Abstract-Algebra-Book?display_name=release&logo=github&label=Latest%20Release)](https://github.com/PhotonicGluon/Abstract-Algebra-Book/releases/latest)
 [![Latest Release Date](https://img.shields.io/github/release-date/PhotonicGluon/Abstract-Algebra-Book?label=Release%20Date)](https://github.com/PhotonicGluon/Abstract-Algebra-Book/releases/latest)
 ![Commits Since Latest Release](https://img.shields.io/github/commits-since/PhotonicGluon/Abstract-Algebra-Book/latest/main?label=Commits%20Since%20Latest%20Release)
-[![Licence](https://img.shields.io/badge/Licence-CC_BY--NC--SA_4.0-blueviolet)](LICENSE)
+[![Licence](https://img.shields.io/badge/Licence-CC_BY--SA_4.0-blueviolet)](LICENSE)
 ![Download Count](https://img.shields.io/github/downloads/PhotonicGluon/Abstract-Algebra-Book/total?label=Downloads)
 
 *A Complete Introduction To Abstract Algebra* is a textbook on abstract algebra.
@@ -20,4 +20,4 @@ I hope that this book can accomplish these goals and let readers enjoy the wonde
 You can find the latest release [on Overwrite](https://overwrite.site/projects/abstract-algebra), or on [GitHub](https://github.com/PhotonicGluon/Abstract-Algebra-Book/releases/latest).
 
 ## Licence
-This work is released under a Creative Commons [Attribution-NonCommercial-ShareAlike 4.0 International Licence](LICENSE).
+This work is released under a Creative Commons [Attribution-ShareAlike 4.0 International Licence](LICENSE).
