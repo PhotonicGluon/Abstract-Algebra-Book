@@ -2,6 +2,9 @@
 The Sylow theorems are a collection of theorems named after the Norwegian mathematician Peter Ludwig Sylow that give detailed information about the number of subgroups of fixed order that a given finite group contains. The Sylow theorems form a fundamental part of finite group theory and have very important applications in the classification of finite simple groups.
 
 \section{The First Sylow Theorem}
+The First Sylow Theorem is a follow-up to Cauchy's theorem.
+
+
 Before we can state the First Sylow Theorem, we introduce some terminology.
 
 Recall that a group with order $p^k$ for some $k \geq 0$ is called a $p$-group.
@@ -25,7 +28,7 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
 \begin{proofsketch}
     We use strong induction on the order of $G$. The base case when the order of $G$ is 1 is trivial. For the induction step, consider two cases, regarding the center of the group $G$.
     \begin{itemize}
-        \item If the order of the center of $G$ is a multiple of $p$, then use a corollary of Cauchy's Theorem (\myref{corollary-cauchy-theorem-with-subgroup}) to deduce that there exists a subgroup of order $p$, say $N$. After showing $N$ is normal, conclude that $G/N$ has order $p^{k-1}m$. Use induction hypothesis on $G/N$ to produce a Sylow $p$-subgroup $\overline{S}$.
+        \item If the order of the center of $G$ is a multiple of $p$, then use Cauchy's Theorem (\myref{thrm-cauchy}) to deduce that there exists a subgroup of order $p$, say $N$. After showing $N$ is normal, conclude that $G/N$ has order $p^{k-1}m$. Use induction hypothesis on $G/N$ to produce a Sylow $p$-subgroup $\overline{S}$.
 
         Construct a new subgroup $S = \{g \in G \vert gN \in \overline{S}\}$ of $G$ and, noting $N \leq S$, construct a homomorphism mapping elements of $S$ to elements of $\overline{S}$. Conclude by Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}) that $S/N \cong \overline{S}$ which means $S$ has order $p^k$, thus being a Sylow $p$-subgroup of $G$.
 
@@ -42,7 +45,7 @@ We are now ready to state and prove the \textbf{First Sylow Theorem}.
 
     Write $n = p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. We split the argument into two separate cases.
 
-    The first case is when order of the center of $G$ is a multiple of $p$, i.e. $|\CenterGrp{G}| = ap$ for some positive integer $a$. By a corollary of Cauchy's Theorem (\myref{corollary-cauchy-theorem-with-subgroup}), $\CenterGrp{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $n \in N$ and $g \in G$,
+    The first case is when order of the center of $G$ is a multiple of $p$, i.e. $|\CenterGrp{G}| = ap$ for some positive integer $a$. By Cauchy's Theorem (\myref{thrm-cauchy}), $\CenterGrp{G}$ contains a subgroup of order $p$, say $N$. We note that $N \unlhd G$ since for all $n \in N$ and $g \in G$,
     \begin{align*}
         gng^{-1} &= (gn)g^{-1}\\
         &= (ng)g^{-1} & (\text{since n} \in N \subseteq \CenterGrp{G})\\
@@ -220,7 +223,7 @@ We prove some properties of the normalizer here.
 \begin{proof}[Proof (see {\cite[Proposition 11.9]{humphreys_1996}})]
     For brevity, write the order of $G$ as $xp^n$ where $p \nmid x$, $|P| = p^n$, and $|Q| = p^m$.
 
-    By the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3, we have $PQ \leq \N{G}{P}$ since $P \unlhd \N{G}{P}$ by \myref{prop-subgroup-is-a-normal-subgroup-of-normalizer}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \myref{exercise-order-of-subgroup-product},
+    By the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3, we see that $PQ \leq \N{G}{P}$ since $P \unlhd \N{G}{P}$ by \myref{prop-subgroup-is-a-normal-subgroup-of-normalizer}. As $\N{G}{P} \leq G$ thus $PQ \leq G$. In addition, by \myref{exercise-order-of-subgroup-product},
     \[
         |PQ| = \frac{|P||Q|}{|P \cap Q|} = p^{n+m-s}
     \]
@@ -391,7 +394,7 @@ We may use part of the Third Sylow Theorem to create a test for non-simplicity.
 
     We first suppose $n = p^k$. Let $G$ be a group of order $n$. We consider two subcases.
     \begin{itemize}
-        \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, a corollary of Cauchy's Theorem (\myref{corollary-cauchy-theorem-with-subgroup}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\myref{prop-subgroup-of-abelian-group-is-normal}), thus there exists a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
+        \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, Cauchy's Theorem (\myref{thrm-cauchy}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\myref{prop-subgroup-of-abelian-group-is-normal}), thus there exists a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
         \item Now suppose $G$ is non-abelian. By \myref{example-group-with-prime-power-order-has-non-trivial-center}, $G$ has a non-trivial center. Furthermore, $G \neq \CenterGrp{G}$ because $G$ is non-abelian (\myref{problem-center-of-G}). Since the center is a normal subgroup of $G$, it is thus a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
     \end{itemize}
     Hence any group of order $p^k$ where $k > 1$ is non-simple.
