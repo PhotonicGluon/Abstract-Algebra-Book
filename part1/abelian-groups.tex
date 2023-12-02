@@ -210,8 +210,13 @@ Let us examine where we are in the proof of \myref{thrm-fundamental-theorem-of-f
     \]
     where $n'$ is the largest integer such that $|K_{n'}| > p$. This ensures that the two internal direct products do not have trivial factors. From \myref{exercise-group-power-is-subgroup} (later), because $p$ divides $|G|$, thus $G^p$ is a proper subgroup of $G$, so $|G^p| < |G|$. By Induction Hypothesis we thus obtain the fact that $m' = n'$ and $|H_i^p| = |K_i^p|$ all $i = 1, 2, \dots, m'$.
 
-    % TODO: This seems a bit hand-wavy
-    Now by our ordering we see that $|H_i| = p|H_i^p|$ and $|K_i| = p|K_i^p|$, which means $|H_i| = |K_i|$ for all $i = 1, 2, \dots, m'$. Note by construction of $m'$ we have for all $i > m'$ that $|H_i| = |K_i| = p$. It follows that
+    We claim now that $|H_i| = p|H_i^p|$. Note that $H_i$ is a cyclic $p$-group, so $H_i \cong \C_{p^{n_i}}$ for some $n_i$, meaning that there exists a $g \in H_i$ such that $|g| = p^{n_i}$. We thus see that $|g^p| = p^{n_i-1}$ and $g^p \in H_i^p$. Therefore we have the relation
+    \[
+        \langle g^p \rangle \leq H_i^p < H_i
+    \]
+    where we know that $H_i^p < H_i$ by \myref{exercise-group-power-is-subgroup} (later). However, note that the largest possible subgroup of $H_i$, which has order $p^{n_i}$, is $p^{n_i-1}$ by Lagrange's theorem (\myref{thrm-lagrange}). Since $H_i^p$ is a proper subgroup of $H_i^p$ and $\langle g^p \rangle$ is a subgroup of order $p^{n_i-1}$ of $H_i^p$, one concludes that $|H_i^p| = p^{n_i-1}$. Consequently $|H_i| = p|H_i^p|$.
+
+    Thus we have $|H_i| = p|H_i^p|$ and $|K_i| = p|K_i^p|$ by a similar argument, which means $|H_i| = |K_i|$ for all $i = 1, 2, \dots, m'$. Note by construction of $m'$ we have for all $i > m'$ that $|H_i| = |K_i| = p$. It follows that
     \[
         |H_1^p||H_2^p|\cdots|H_{m'}^p|p^{m-m'} = |K_1^p||K_2^p|\cdots|K_{n'}^p|p^{n-n'}
     \]
@@ -219,6 +224,10 @@ Let us examine where we are in the proof of \myref{thrm-fundamental-theorem-of-f
 
     The lemma is proven by induction.
 \end{proof}
+
+\begin{exercise}\label{exercise-prove-lemma-fundamental-theorem-of-finite-abelian-groups-3}
+    Prove \myref{lemma-fundamental-theorem-of-finite-abelian-groups-3}.
+\end{exercise}
 
 \begin{exercise}\label{exercise-group-power-is-subgroup}
     Let $G$ be an abelian group.
@@ -228,12 +237,6 @@ Let us examine where we are in the proof of \myref{thrm-fundamental-theorem-of-f
         (\textit{Hint: consider Cauchy's Theorem (\myref{thrm-cauchy}).})
     \end{partquestions}
 \end{exercise}
-
-\begin{exercise}\label{exercise-prove-lemma-fundamental-theorem-of-finite-abelian-groups-3}
-    Prove \myref{lemma-fundamental-theorem-of-finite-abelian-groups-3}.
-\end{exercise}
-
-\newpage
 
 We are now ready to present the proof of the Fundamental Theorem of Finite Abelian Groups (\myref{thrm-fundamental-theorem-of-finite-abelian-groups}).
 \begin{proof}
