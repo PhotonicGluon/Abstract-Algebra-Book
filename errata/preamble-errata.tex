@@ -1,0 +1,92 @@
+%=============== Packages ================
+% Fonts
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{tgpagella}
+\usepackage{mathpazo}
+
+% Math formatting
+\usepackage{mathtools}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{thmtools}
+
+% Page formatting, colour and images
+\usepackage{geometry}
+\usepackage{graphicx}
+\usepackage{tocloft}
+\usepackage[x11names]{xcolor}
+\usepackage{wrapfig}
+\usepackage{cutwin}
+\usepackage{tikz}
+\usepackage{fancyhdr}
+\usepackage{emptypage}
+\usepackage{imakeidx}
+\usepackage{mdframed}
+\usepackage{eso-pic}
+\usepackage{float}
+
+% Hyperlinks and references
+\usepackage{hyperref}
+\usepackage[capitalise, nameinlink]{cleveref}
+\usepackage{crossreftools}
+\usepackage[
+    backend=bibtex,
+    style=alphabetic,
+    sorting=ynt
+]{biblatex}
+\usepackage[
+    totoc,
+    columnsep=20pt,
+    hangindent=8pt,
+    subindent=20pt,
+    subsubindent=30pt
+]{idxlayout}
+\usepackage[record,symbols]{glossaries-extra}
+
+% Miscellaneous
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{enumitem}
+
+%=========== (Re)definitions =============
+% Symbols redefinitions
+\let\oldemptyset\emptyset
+\let\emptyset\varnothing
+
+\let\totient\varphi
+
+\renewcommand{\vert}{ \;\: \vline \;\: }
+\newcommand{\vertalt}{ \;\: | \;\: }
+
+%============= Formatting ================
+% Line format
+\linespread{1.05}
+
+% Indent
+\setlength{\parindent}{0pt}
+\newlength{\normalparindent}
+\setlength{\normalparindent}{\parindent}
+
+% Heading format
+\addtokomafont{disposition}{\rmfamily}
+
+%============ Environments ===============
+% Questions environments
+\newenvironment{partquestions}[1]
+{\begin{enumerate}[label=\textbf{(#1)}]}
+{\end{enumerate}}
+
+%=========== Custom Commands =============
+\newcommand{\ZeroRoman}[1]{\ifcase\value{#1}\relax0\else\Roman{#1}\fi}  % Roman numeral that works with zero
+\newcommand{\code}[1]{\texttt{#1}}  % Code block
+
+\input{../symbols.tex}
+
+%============ Other Setup ================
+\hypersetup{
+    pdfborder = {0 0 0}
+}
