@@ -1,9 +1,9 @@
 \chapter{Integral Domains}
 Unlike groups, rings do not inherently have the `cancellation law' built in. Rings may have zero divisors, which break the cancellation law. We look at a special category of rings, called domains, and commutative domains, called integral domains.
 
-\section{What is an (Integral) Domain?}
+\section{What are Domains and Integral Domains?}
 \begin{definition}
-    A \textbf{domain}\index{domain!ring} is a ring with identity with no zero divisors.
+    A \term{domain}\index{domain!ring} is a ring with identity without zero divisors.
 \end{definition}
 \begin{remark}
     Recall that an element $a \neq 0$ is a zero divisor if there exists a non-zero $b$ in the ring such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the domain.
@@ -13,7 +13,7 @@ Unlike groups, rings do not inherently have the `cancellation law' built in. Rin
 \end{remark}
 
 \begin{definition}
-    An \textbf{integral domain}\index{integral domain} is a commutative domain.
+    An \term{integral domain}\index{integral domain} is a commutative domain.
 \end{definition}
 \begin{remark}
     This is similar to how the only way for two integers to multiply to zero is if both integers are zero, hence the name ``integral domain''.
@@ -92,7 +92,7 @@ We note an interesting result regarding fields here.
 With an introduction of domains and integral domains out of the way, we introduce some general results applicable to them.
 \begin{proposition}[Cancellation Law for Domains]\index{cancellation law!domains}\label{prop-domain-cancellation-law}
     Let $D$ be a domain, $r, x, y \in D$, and $r \neq 0$. Then the following statements are equivalent.
-    \begin{enumerate}[label=(\arabic*)]
+    \begin{enumerate}
         \item $x = y$
         \item $rx = ry$
         \item $xr = yr$
@@ -130,7 +130,7 @@ With an introduction of domains and integral domains out of the way, we introduc
 \end{proof}
 
 \begin{remark}
-    We note that finite fields are also known as \textbf{Galois fields}\index{Galois Field}, so-named in honour of \'Evariste Galois. We explore more properties of fields and Galois fields in part III.
+    We note that finite fields are also known as \term{Galois fields}\index{Galois Field}, so-named in honour of \'Evariste Galois. We explore more properties of fields and Galois fields in part III.
 \end{remark}
 
 \begin{example}\label{example-Zp-is-field}
@@ -171,7 +171,7 @@ With an introduction of domains and integral domains out of the way, we introduc
 We end this section by defining factors of an element in an integral domain. These definitions will not appear useful now, but their use will become evident when the time comes.
 
 \begin{definition}
-    Let $D$ be an integral domain and $a,b \in D$. Then \textbf{$a$ divides $b$}\index{divides!for integral domains} (or that $a$ is a \textbf{factor}\index{factor!for integral domains} of $b$) if there is an element $k \in D$ such that $ak = b$. This is denoted $a \vert b$.
+    Let $D$ be an integral domain and $a,b \in D$. Then \term{$a$ divides $b$}\index{divides!for integral domains} (or that $a$ is a \term{factor}\index{factor!for integral domains} of $b$) if there is an element $k \in D$ such that $ak = b$. This is denoted $a \vert b$.
 \end{definition}
 \begin{example}
     One sees that 2 divides 6 in $\Z$ since $2 \times 3 = 6$. Similarly 3 divides 6 since $3 \times 2 = 6$.
@@ -185,13 +185,13 @@ Before we introduce the characteristic of a ring, we clarify the meaning of the 
 \begin{definition}
     Let $R$ be a ring and $x$ an element of the ring $R$.
     \begin{itemize}
-        \item The \textbf{additive order}\index{order!additive} of $x$ is the order of $x$ in the group $(R, +)$ and is denoted $|x|_+$.
-        \item If $R$ is a group with identity 1, the \textbf{multiplicative order}\index{order!multiplicative} of $x$ is the smallest positive integer $n$ such that $x^n = 1$ and is denoted $|x|_\times$, if it exists.
+        \item The \term{additive order}\index{order!additive} of $x$ is the order of $x$ in the group $(R, +)$ and is denoted $|x|_+$.
+        \item If $R$ is a group with identity 1, the \term{multiplicative order}\index{order!multiplicative} of $x$ is the smallest positive integer $n$ such that $x^n = 1$ and is denoted $|x|_\times$, if it exists.
     \end{itemize}
 \end{definition}
 
 \begin{definition}
-    Let $R$ be a ring. We say that \textbf{characteristic}\index{characteristic} of $R$ is $n$ if $n$ is the smallest positive integer such that
+    Let $R$ be a ring. We say that \term{characteristic}\index{characteristic} of $R$ is $n$ if $n$ is the smallest positive integer such that
     \[
         nr = \underbrace{r+r+\cdots+r}_{n \text{ times}} = 0
     \]
@@ -209,7 +209,7 @@ We look at two properties about the characteristic.
     \[
         n1 = \underbrace{1+1+1+\cdots+1}_{n \text{ times}} = 0
     \]
-    by definition of the characteristic of a ring. Note also that $m1 = \overbrace{1+1+1+\cdots+1}^{m \text{ times}} = 0$ by definition of the order of an element in the group $(R, +)$. By \myref{problem-element-to-power-of-multiple-of-order-is-identity}, this means that $n$ is a multiple of $m$, which thus means $m \leq n$.
+    by definition of the characteristic of a ring. Note also that $m1 = \overbrace{1+1+1+\cdots+1}^{m \text{ times}} = 0$ by definition of the order of an element in the group $(R, +)$. By \myref{lemma-order-of-an-element-that-is-equivalent-to-identity}, this means that $n$ is a multiple of $m$, which thus means $m \leq n$.
 
     On another hand, for any $r \in R$, we know that
     \begin{align*}
