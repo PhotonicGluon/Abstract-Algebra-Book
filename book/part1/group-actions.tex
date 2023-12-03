@@ -3,12 +3,12 @@ A group action is a representation of the elements of a group as symmetries of a
 
 \section{Definition and Examples}
 \begin{definition}\label{definition-group-action}
-    Let $G$ be a group, $e$ be the identity in $G$, and $X$ be a set. A \textbf{group action of $G$ on $X$}\index{group action} is a function $\alpha: G \times X \to X$ satisfying the following axioms.
+    Let $G$ be a group, $e$ be the identity in $G$, and $X$ be a set. A \term{group action of $G$ on $X$}\index{group action} is a function $\alpha: G \times X \to X$ satisfying the following axioms.
     \begin{itemize}
         \item \textbf{Identity}: $\alpha(e, x) = x$ for all $x \in X$.
         \item \textbf{Compatibility}: $\alpha(g, \alpha(h, x)) = \alpha(gh, x)$ for all $g, h \in G$ and $x \in X$.
     \end{itemize}
-    In this case, the group $G$ is called a \textbf{transformation group}\index{transformation group} and $X$ is called a \textbf{$G$-set}\index{$G$-set}.
+    In this case, the group $G$ is called a \term{transformation group}\index{transformation group} and $X$ is called a \term{$G$-set}\index{$G$-set}.
 \end{definition}
 \begin{remark}
     Some sources will use $f$ (e.g. \cite{brilliant_group-actions}) or $\phi$ (e.g. \cite{rowland_group-action}) as the group action.
@@ -73,8 +73,10 @@ This theorem is useful because it may sometimes be useful to use \myref{definiti
             &= y
         \end{align*}
         so $f_g$ is injective.
+
         \item \textbf{Surjective}: Suppose $y \in X$. We note that $\alpha(g^{-1}, y) \in X$ by definition of $\alpha$. Hence observe that $f_g(\alpha(g^{-1}, y)) = \alpha(g, \alpha(g^{-1}, y)) = y$, which means that any element $y \in X$ has a pre-image in $X$. This shows that $f_g$ is surjective.
     \end{itemize}
+
     Hence $f_g$ is a bijection from $X$ to $X$, which means $f_g \in \Sym{X}$. We just need to show that $\psi$ is a homomorphism. Take $x \in X$, and let $g, h \in G$. Then
     \begin{align*}
         (\psi(gh))(x) &= f_{gh}(x)\\
@@ -126,7 +128,7 @@ This theorem is useful because it may sometimes be useful to use \myref{definiti
 We first look at the definition of a fixed point in relation to group actions.
 
 \begin{definition}
-    Let $G$ be a group acting on a set $X$. A \textbf{fixed point of $g \in G$}\index{group action!fixed point} is an element $x \in X$ such that $g\cdot x = x$.
+    Let $G$ be a group acting on a set $X$. A \term{fixed point of $g \in G$}\index{group action!fixed point} is an element $x \in X$ such that $g\cdot x = x$.
 \end{definition}
 
 \begin{example}
@@ -144,7 +146,7 @@ We first look at the definition of a fixed point in relation to group actions.
 We can now look at the stabilizer of an element in $X$.
 
 \begin{definition}
-    Let $G$ be a group acting on a set $X$, and let $x \in X$. The \textbf{stabilizer of $x$ by $G$}\index{group action!stabilizer}, denoted $\Stab{G}{x}$, is the set of $g \in G$ such that $x$ is a fixed point of $g$.
+    Let $G$ be a group acting on a set $X$, and let $x \in X$. The \term{stabilizer of $x$ by $G$}\index{group action!stabilizer}, denoted $\Stab{G}{x}$, is the set of $g \in G$ such that $x$ is a fixed point of $g$.
 \end{definition}
 \begin{remark}
     Some authors will denote the stabilizer of $x$ by $G$ by $G_x$ (e.g. {\cite[\S 54]{clark_1984}}, {\cite[Definition 10.8]{humphreys_1996}}, and \cite{brilliant_group-actions}).
@@ -199,7 +201,7 @@ What you might notice from the above example and exercise is that the stabilizer
 
 We now look at the definition of the orbit of an element.
 \begin{definition}
-    Let $G$ be a group acting on a set $X$, and suppose $x \in X$. The \textbf{orbit of $x$ in $G$}\index{group action!orbit}, denoted $\Orb{G}{x}$, is the set of elements $y \in X$ such that $g \cdot x = y$ for some $g \in G$.
+    Let $G$ be a group acting on a set $X$, and suppose $x \in X$. The \term{orbit of $x$ in $G$}\index{group action!orbit}, denoted $\Orb{G}{x}$, is the set of elements $y \in X$ such that $g \cdot x = y$ for some $g \in G$.
 \end{definition}
 \begin{remark}
     Some authors will denote the orbit of $x$ in $G$ by $G \cdot x$ (e.g. {\cite[\S 54]{clark_1984}}) or simply by $Gx$ (e.g. {\cite[p.~58]{milne_2021}}).
@@ -218,7 +220,7 @@ We now look at the definition of the orbit of an element.
 
 We end this section by looking at transitive group actions.
 \begin{definition}
-    We say that a group action is \textbf{transitive}\index{group action!transitive} if and only if it has one orbit. That is to say, the group action is transitive if there exists a $x \in X$ such that $\Orb{G}{x} = X$.
+    We say that a group action is \term{transitive}\index{group action!transitive} if and only if it has one orbit. That is to say, the group action is transitive if there exists a $x \in X$ such that $\Orb{G}{x} = X$.
 \end{definition}
 \begin{proposition}
     Let $G$ be a group that acts on a non-empty set $X$. The group action is transitive if and only if $\Orb{G}{x} = X$ for all $x \in X$.
@@ -269,7 +271,9 @@ Formally, this is captured in the Orbit-Stabilizer Theorem.
     We consider the map $f_x: G/\Stab{G}{x} \to \Orb{G}{x}$ given by $g\Stab{G}{x} \mapsto g \cdot x$ (note that $f_x$ is \textit{not} a homomorphism as $\Orb{G}{x}$ is not a group). We prove that $f_x$ is a well-defined bijection.
     \begin{itemize}
         \item \textbf{Well-defined}: Let $g, h \in G$ such that $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality, statement 1 and 5, this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
+        
         \item \textbf{Injective}: Let $g, h \in G$ such that $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$, so $g^{-1}h \in \Stab{G}{x}$ by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality, statements 1 and 5, meaning $f_x$ is injective.
+        
         \item \textbf{Surjective}: Suppose $y \in \Orb{G}{x}$. This means that there exists $g \in G$ such that $g\cdot x = y$. Note $f_x(g\Stab{G}{x}) = g\cdot x = y$ by definition of $f_x$. Hence, the pre-image of $y$ is $g\Stab{G}{x}$, meaning that $f_x$ is surjective.
     \end{itemize}
     Hence $f_x$ is a bijection from $G/\Stab{G}{x}$ to $\Orb{G}{x}$. Thus we must have $|\Orb{G}{x}| = |G/\Stab{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). This quickly implies $|G| = |\Stab{G}{x}|\times|\Orb{G}{x}|$.
@@ -287,7 +291,7 @@ Formally, this is captured in the Orbit-Stabilizer Theorem.
 Burnside's lemma gives a way to count the number of orbits of a finite set acted on by a finite group. Before we get into it, we look at the set of orbits of $X$.
 
 \begin{definition}
-    The \textbf{set of orbits}\index{set!of orbits} acted upon by the group $G$ on a set $X$ is the set
+    The \term{set of orbits}\index{set!of orbits} acted upon by the group $G$ on a set $X$ is the set
     \[
         X / G = \{\Orb{G}{x} \vert x \in X\}.
     \]
@@ -360,7 +364,7 @@ In other words, Burnside's lemma tells us that the number of orbits is the avera
 \section{Conjugacy Classes}
 Before we look at the most important part of this chapter, the class equation, we look at the idea of conjugacy as a group action.
 \begin{definition}
-    Let $G$ be a group, and suppose $a, b \in G$. Then we say that $b$ is a \textbf{conjugate}\index{conjugate} of $a$ if there is an element $g \in G$ such that $b = gag^{-1}$.
+    Let $G$ be a group, and suppose $a, b \in G$. Then we say that $b$ is a \term{conjugate}\index{conjugate} of $a$ if there is an element $g \in G$ such that $b = gag^{-1}$.
 \end{definition}
 
 We can frame this idea in terms of group actions. Consider the map $\alpha: G\times G\to G$ such that $\alpha(g, x) = gxg^{-1}$. We showed that $\alpha$ is a group action in \myref{exercise-conjugacy-is-group-action}. Let's look at the orbit and stabilizer of an arbitrary element $x \in G$ under this group action.
@@ -377,7 +381,7 @@ Hence, under the action of conjugation,
 
 We can now look at conjugacy classes.
 \begin{definition}
-    Let $G$ be a group and take $x \in G$. The \textbf{conjugacy class of $x$}\index{conjugacy class} is the set
+    Let $G$ be a group and take $x \in G$. The \term{conjugacy class of $x$}\index{conjugacy class} is the set
     \[
         \Cl{x} = \{gxg^{-1} \vert g \in G\}.
     \]
@@ -446,7 +450,7 @@ The example of the previous section illustrates that the sum of the sizes of the
     \[
         |G| = |\CenterGrp{G}| + \sum_{i=1}^l [G : \Centralizer{G}{g_i}],
     \]
-    which is known as \textbf{the class equation}\index{Class Equation}.
+    which is known as \term{the class equation}\index{Class Equation}.
 \end{theorem}
 
 \begin{proof}
@@ -475,7 +479,7 @@ The example of the previous section illustrates that the sum of the sizes of the
 We look at one application of the class equation. Before that, we introduce $p$-groups.
 
 \begin{definition}
-    A \textbf{$p$-group}\index{$p$-group} $G$ is a finite group with order $p^n$ where $p$ is prime and $n$ is a non-negative integer.
+    A \term{$p$-group}\index{$p$-group} $G$ is a finite group with order $p^n$ where $p$ is prime and $n$ is a non-negative integer.
 \end{definition}
 An immediate consequence of this is that every element must have an order that is a power of $p$, i.e. for any element $x \in G$, $|x| = p^k$ where $0 \leq k \leq n$.
 
@@ -583,7 +587,7 @@ To end this chapter, we prove Cauchy's Group Theorem.
 \end{problem}
 
 \begin{problem}
-    A group action is said to be \textbf{free}\index{group action!free} if $g\cdot x = x$ implies that $g$ is the identity (i.e., only the identity fixes any $x$).
+    A group action is said to be \term{free}\index{group action!free} if $g\cdot x = x$ implies that $g$ is the identity (i.e., only the identity fixes any $x$).
 
     Let $G$ be a group and $S$ be a non-empty $G$-set. Suppose $G$ acts on $S$ freely and transitively. Prove that $G$ and $S$ have the same number of elements.
 \end{problem}
