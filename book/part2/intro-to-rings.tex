@@ -12,12 +12,12 @@ Let's now turn our attention to multiplication. One sees that multiplying two po
 
 Finally, we see that multiplication distributes over addition. To see what this means, consider the expression $5(6+7)$. How could we evaluate this? Well, we could sum $6+7 = 13$ first, then multiply it by 5 to get $5\times13 = 65$. Alternatively, we could notice that $5(6+7) = 5 \times 6 + 5 \times 7$ and evaluate it that way. This is called left distribution; right distribution is defined similarly.
 
-In summary, we may call the set of positive integers, along with addition and multiplication, a \textbf{semiring} (see \cite{mathworld_semiring-definition}).
+In summary, we may call the set of positive integers, along with addition and multiplication, a semiring (see \cite{mathworld_semiring-definition}).
 
 \newpage
 
 \begin{definition}
-    A set $S$ together with two operations $+$ and $\cdot$ is called a \textbf{semiring}\index{semiring} if it satisfies the following properties.
+    A set $S$ together with two operations $+$ and $\cdot$ is called a \term{semiring}\index{semiring} if it satisfies the following properties.
     \begin{itemize}
         \item \textbf{Additive Closure}\index{axiom!semiring!additive closure}: For any two elements $a$ and $b$ in $S$, $a + b$ is also in $S$.
         \item \textbf{Additive Associativity}\index{axiom!semiring!additive associativity}: For any three elements $a$, $b$, and $c$ in $S$, $a+(b+c) = (a+b)+c$.
@@ -30,29 +30,33 @@ In summary, we may call the set of positive integers, along with addition and mu
 
 However, one may notice that $\mathbb{N}$ isn't particularly fun to work in. We only have these trivial properties to work with, and these do not give us enough to generate results about the positive integers. So ancient civilizations decided to include the notion of a ``additive identity'', which is called zero (0). Now, adding zero to any positive integer results in the positive integer itself.
 
-We also notice that \textit{multiplying} any number by 0 results in 0: this is obvious, especially when we work with integers. This set of non-negative integers (which, for brevity, we denote by $N$ in this chapter only) with addition and multiplication is called a \textbf{rig} (see \cite{proofwiki_rig-definition}).
+We also notice that \textit{multiplying} any number by 0 results in 0: this is obvious, especially when we work with integers. This set of non-negative integers (which, for brevity, we denote by $N$ in this chapter only) with addition and multiplication is called a rig (see \cite{proofwiki_rig-definition}).
 \begin{definition}
-    A set $S$ together with two operations $+$ and $\cdot$ is called a \textbf{rig}\index{rig} if it is a semiring and satisfies these additional properties.
+    A set $S$ together with two operations $+$ and $\cdot$ is called a \term{rig}\index{rig} if it is a semiring and satisfies these additional properties.
     \begin{itemize}
         \item \textbf{Additive Identity}\index{axiom!rig!additive identity}: There is an element $0_S$ in $S$ such that for any $x$ in $S$ we have $0_S + x = x + 0_S = x$.
         \item \textbf{Multiplication by Zero}\index{axiom!rig!multiplication by zero}: For any element $x$ in $S$ we have $0_S \cdot x = x \cdot 0_S = 0_S$.
     \end{itemize}
 \end{definition}
 \begin{remark}
-    A rig is a ri\textit{\textbf{n}}g without \textit{\textbf{n}}egative elements.
+    A rig is a ri\underline{n}g without \underline{n}egative elements.
 \end{remark}
 
-Now, for any element $n$ in $N$, it would be nice to have a `corresponding' element in that sums to the additive identity 0. Clearly $N$ doesn't have such an element, but the integers ($\Z$) does. For example, the integer 3 has a `corresponding' element -3 that results in a sum of 0, i.e. $3 + (-3) = 0$. In general, for any integer $n$, summing $n$ with $-n$ results in 0. This `corresponding' element is called the additive inverse of $n$. With additive inverses, we finally have a construction for a \textbf{ring}. Note that we follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ring-definition} for the definition of a ring.
+Now, for any element $n$ in $N$, it would be nice to have a `corresponding' element in that sums to the additive identity 0. Clearly $N$ doesn't have such an element, but the integers ($\Z$) does. For example, the integer 3 has a `corresponding' element -3 that results in a sum of 0, i.e. $3 + (-3) = 0$. In general, for any integer $n$, summing $n$ with $-n$ results in 0. This `corresponding' element is called the additive inverse of $n$. With additive inverses, we finally have a construction for a ring.
+
 \begin{definition}
     A set $S$ together with two operations $+$ and $\cdot$ is called a \textbf{ring}\index{ring} if it is a rig and satisfies the \textbf{Additive Inverse} property, where for every element $x$ in $S$, there exists an element $-x$ in $S$ such that $x + (-x) = (-x) + x = 0_S$.
 \end{definition}
+\begin{remark}
+    Note that we follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ring-definition} for the definition of a ring.
+\end{remark}
 
 \section{Rings as Algebraic Structures}
 With an intuition of what rings are, we more concretely define what a ring is using algebraic structures.
 
-In the previous part, we explored the concept of groups. We weaken the conditions required for that structure to form a \textbf{semigroup}.
+In the previous part, we explored the concept of groups. We weaken the conditions required for that structure to form a semigroup.
 \begin{definition}
-    A \textbf{semigroup}\index{semigroup} is a set $S$ together with an operation $\ast$ satisfying the \textbf{semigroup axioms}\index{axiom!semigroup}.
+    A \term{semigroup}\index{semigroup} is a set $S$ together with an operation $\ast$ satisfying the \term{semigroup axioms}\index{axiom!semigroup}.
     \begin{itemize}
         \item \textbf{Closure}\index{axiom!semigroup!closure}: For any two elements $a$ and $b$ in $S$, the element $a\ast b$ is also in $S$.
         \item \textbf{Associativity}\index{axiom!semigroup!associativity}: For any $a$, $b$, and $c$ in $S$, we have $a \ast (b \ast c) = (a \ast b) \ast c$.
@@ -75,13 +79,14 @@ In the previous part, we explored the concept of groups. We weaken the condition
     One sees that $(S, \ast)$ is closed under $\ast$. In addition, $\ast$ is associative. Hence $(S, \ast)$ is a semigroup.
 \end{example}
 
-With all that set up, we are ready to rigorously define what a ring is.
+With the notion of semigroups defined, we are ready to rigorously define what a ring is.
+
 \begin{definition}
-    A \textbf{ring}\index{ring} is a set $R$ with two binary operations $+$ and $\cdot$ satisfying the following axioms.
+    A \term{ring}\index{ring} is a set $R$ with two binary operations $+$ and $\cdot$ satisfying the following axioms.
     \begin{itemize}
         \item \textbf{Addition-Abelian}\index{axiom!ring!addition-abelian}: $(R, +)$ is an abelian group.
         \item \textbf{Multiplication-Semigroup}\index{axiom!ring!multiplication-semigroup}: $(R, \cdot)$ is a semigroup.
-        \item \textbf{Distributive}\index{axiom!ring!distributive}: $\cdot$ is distributive over $+$. That is,
+        \item \textbf{Distributive}\index{axiom!ring!distributive}: $\cdot$ distributes over $+$. That is,
         \begin{itemize}
             \item $a \cdot (b + c) = (a \cdot b) + (b \cdot c)$; and
             \item $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
@@ -95,7 +100,7 @@ With all that set up, we are ready to rigorously define what a ring is.
 
 We note two important types of rings here.
 \begin{definition}
-    A \textbf{ring with identity}\index{ring!with identity} is a ring $(R, +, \cdot)$ with an element $1_R$ such that for any $x \in R$ we have $1_R \cdot x = x \cdot 1_R = x$.
+    A \term{ring with identity}\index{ring!with identity} is a ring $(R, +, \cdot)$ with an element $1_R$ such that for any $x \in R$ we have $1_R \cdot x = x \cdot 1_R = x$.
 \end{definition}
 \begin{remark}
     Other authors (e.g. \cite[p.~136]{cohn_1982}, \cite[pp.~145--146]{clark_1984}) define a ring as a ring with identity.
@@ -105,15 +110,16 @@ We note two important types of rings here.
 \end{example}
 
 \begin{definition}
-    A ring where $a \cdot b = b \cdot a$ for all $a$ and $b$ in $R$ is called a \textbf{commutative ring}\index{ring!commutative}.
+    A ring where $a \cdot b = b \cdot a$ for all $a$ and $b$ in $R$ is called a \term{commutative ring}\index{ring!commutative}.
 \end{definition}
 \begin{example}
     Considering the integers again, we see that $mn = nm$ for any two integers $m$ and $n$. Thus $\mathbb{Z}$ is a commutative ring.
 \end{example}
 
-We end this chapter by introducing the \textbf{trivial ring}.
+We end this chapter by introducing the trivial ring.
+
 \begin{definition}
-    The \textbf{trivial ring}\index{ring!trivial} (or \textbf{zero ring}\index{zero ring}), denoted $\textbf{0}$, is the ring $(\{0\}, +, \cdot)$ where
+    The \term{trivial ring}\index{ring!trivial} (or \term{zero ring}\index{zero ring}), denoted $\textbf{0}$, is the ring $(\{0\}, +, \cdot)$ where
     \[
         0 + 0 = 0 \text{ and } 0 \cdot 0 = 0.
     \]
