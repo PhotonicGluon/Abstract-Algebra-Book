@@ -298,12 +298,21 @@
 \makeatother
 
 %=========== Hyperlink Setup =============
+\newcommand{\hyperrefcolour}[2]{
+    \definecolor{hyperref-#1-colour}{HTML}{#2}
+    \hypersetup{#1color=hyperref-#1-colour}
+}
+
 \makeatletter
-\Ifstr{\hideboxesforlinks}{true}{
-    \hypersetup{
-        pdfborder = {0 0 0}
-    }
-}{}
+\hypersetup{
+    colorlinks=true,
+    pdfborder={0 0 0}
+}
+
+\hyperrefcolour{link}{0077b3}
+\hyperrefcolour{cite}{37992e}
+\hyperrefcolour{url}{990099}
+
 \makeatother
 
 %======== Figure Caption Format ==========
