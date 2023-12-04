@@ -5,7 +5,7 @@ For all of the previous chapters, we have looked at `substructures', subsets of 
 We motivate the definition for extension fields by looking at the following example.
 
 \begin{example}\label{example-R[x]-mod-x^2+1-is-isomorphic-to-C}
-    Consider the ring $F = \R[x]/\princ{x^2+1}$. We note that $x^2 + 1$ is irreducible over $\R$; this can be easily seen as $x^2+1$ has no zeroes in $\R$ and is therefore irreducible by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}. Therefore $\princ{x^2+1}$ is a maximal ideal in $\R[x]$ (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}) which means that, in fact, $F$ is a field (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field}).
+    Consider the ring $F = \R[x]/\princ{x^2+1}$. We note that $x^2 + 1$ is irreducible over $\R$; this can be easily seen as $x^2+1$ has no zeroes in $\R$ and is therefore irreducible by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}. Therefore $F$ is a field (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}).
 
     We find the general form of elements in $F$. Suppose $f(x) \in \R[x]$. Then by polynomial long division (\myref{thrm-polynomial-long-division}) we may write
     \[
@@ -35,10 +35,10 @@ We motivate the definition for extension fields by looking at the following exam
     Verify that the field $F$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C} is indeed isomorphic to $\C$ by using the map $\phi$ given. For completeness, also verify that $\phi$ is well-defined.
 \end{exercise}
 
-The idea that we can `extend' the real numbers to create a solution to $x^2 + 1 = 0$ is critical to our definition of \textbf{extension fields}.
+The idea that we can `extend' the real numbers to create a solution to $x^2 + 1 = 0$ is critical to our definition of extension fields.
 
 \begin{definition}
-    A field $E$ is an \textbf{extension field}\index{extension field}\index{extension!field} of a field $F$ if and only if $E$ contains a subfield isomorphic to $F$. In this case $F$ is called the \textbf{base field}\index{base field}\index{field!base}.
+    A field $E$ is an \term{extension field}\index{extension field}\index{extension!field} of a field $F$ if and only if $E$ contains a subfield isomorphic to $F$. In this case $F$ is called the \term{base field}\index{base field}\index{field!base}.
 \end{definition}
 \begin{remark}
     This definition differs from most authors' definitions of a field extension (cf. \cite[p.~511]{dummit_foote_2004}, \cite[p.~442]{artin_2011}, \cite[p.~338]{gallian_2016}, \cite[p.~260]{judson_beezer_2022}), which is that a field extension is a field $E$ that just has $F$ as a subfield.
@@ -50,7 +50,7 @@ Before we answer why we use a different definition, we look at the following pro
     Let $E$ and $F$ be fields. If $F \subseteq E$ then $E$ is an extension field of $F$.
 \end{proposition}
 \begin{proof}
-    Construct the map $\phi: F \to E, x \mapsto x$. We note that for any $x,y\in F$, we have $\phi(x + y) = x + y = \phi(x) + \phi(y)$ and $\phi(xy) = xy = \phi(x)\phi(y)$, so $\phi$ is a homomorphism. Therefore, $F/\ker\phi \cong \im\phi$ by the FRIT (\myref{thrm-ring-isomorphism-1}). As fields do not have proper ideals (\myref{prop-ring-is-field-iff-no-proper-ideals}), therefore $\ker\phi = F$, which is not the case since $\phi(1) = 1 \neq 0$, or $\ker\phi = \{0\}$, which results in $F/\ker\phi \cong F$ by \myref{problem-integral-domain-iff-trivial-ideal-is-prime}. Thus $\im\phi$ is a subfield of $E$ that is isomorphic to $F$, proving that $E$ is an extension field of $F$.
+    Construct the map $\phi: F \to E, x \mapsto x$. We note that for any $x,y\in F$, we have $\phi(x + y) = x + y = \phi(x) + \phi(y)$ and $\phi(xy) = xy = \phi(x)\phi(y)$, so $\phi$ is a homomorphism. Therefore, $F/\ker\phi \cong \im\phi$ by the FRIT (\myref{thrm-ring-isomorphism-1}). As fields do not have proper ideals (\myref{prop-ring-is-field-iff-no-proper-ideals}), therefore $\ker\phi = F$ or $\ker\phi = \{0\}$. Note $\ker\phi \neq F$ since $\phi(1) = 1 \neq 0$. Thus $\ker\phi = \{0\}$, which results in $F/\ker\phi \cong F$ by \myref{problem-integral-domain-iff-trivial-ideal-is-prime}. Thus $\im\phi$ is a subfield of $E$ that is isomorphic to $F$, proving that $E$ is an extension field of $F$.
 \end{proof}
 
 \begin{example}
@@ -91,7 +91,7 @@ We have this useful proposition to help us determine whether a field is an exten
 \end{example}
 
 \begin{definition}
-    A \textbf{field extension}\index{field!extension}, denoted $E/F$ and read ``$E$ over $F$'', indicates that $E$ is an extension field over the base field $F$.
+    A \term{field extension}\index{field!extension}, denoted $E/F$ and read ``$E$ over $F$'', indicates that $E$ is an extension field over the base field $F$.
 \end{definition}
 \begin{remark}
     We may say ``let $E/F$ be a field extension'', which is the same as saying ``let $E$ be an extension field of the field $F$''.
@@ -100,14 +100,14 @@ We have this useful proposition to help us determine whether a field is an exten
     This notation should not be confused with the notation for quotient rings. However, in times of doubt of notation, we elect to explicitly state what the extension field is.
 \end{remark}
 
-Returning back to our exploration of extension fields, the critical observation that $\R[x]/\princ{x^2+1}$ contains a `zero' of $x^2+1$ lead Leopold Kronecker to come up with a generalization of this fact in 1887. This result is often called the \textbf{Fundamental Theorem of Field Theory} (e.g. \cite[Theorem 20.1]{gallian_2016}, \cite[Theorem 21.5]{judson_beezer_2022}).
+Returning back to our exploration of extension fields, the critical observation that $\R[x]/\princ{x^2+1}$ contains a `zero' of $x^2+1$ lead Leopold Kronecker to come up with a generalization of this fact in 1887. This result is often called the Fundamental Theorem of Field Theory (e.g. \cite[Theorem 20.1]{gallian_2016}, \cite[Theorem 21.5]{judson_beezer_2022}).
 \begin{theorem}[Fundamental Theorem of Field Theory]\label{thrm-fundamental-theorem-of-field-theory}\index{Fundamental Theorem of Field Theory}
     Let $F$ be a field and $f(x)$ be a non-constant polynomial in $F[x]$. Then there exists a field extension $E/F$ that has a zero of $f(x)$.
 \end{theorem}
 \begin{proof}
     Since $F$ is a field and thus a UFD, therefore $F[x]$ is a UFD (\myref{thrm-UFD-iff-polynomial-ring-is-UFD}). So $f(x)$ has an irreducible factor, say $p(x)$. Thus it suffices to show that an irreducible polynomial $p(x) \in F[x]$ has a zero in $E$.
 
-    We note that $\princ{p(x)}$ is a maximal ideal since $p(x)$ is irreducible (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}), and therefore $E = F[x]/\princ{p(x)}$ is a field (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field}). Construct the map $\phi: F \to E$ where $a \mapsto a + \princ{p(x)}$. We note that $\phi$ is a homomorphism between fields since
+    We note that $E = F[x]/\princ{p(x)}$ is a field (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}). Construct the map $\phi: F \to E$ where $a \mapsto a + \princ{p(x)}$. We note that $\phi$ is a homomorphism between fields since
     \begin{align*}
         \phi(a+b) &= (a+b) + \princ{p(x)}\\
         &= (a + \princ{p(x)}) + (b + \princ{p(x)})\\
@@ -119,7 +119,7 @@ Returning back to our exploration of extension fields, the critical observation 
         &= (a+\princ{p(x)})(b+\princ{p(x)})\\
         &= \phi(a)\phi(b).
     \end{align*}
-    Therefore means that $E$ is a field extension of $F$ by \myref{prop-extension-field-if-homomorphism-between-fields}.
+    Therefore $E$ is a field extension of $F$ by \myref{prop-extension-field-if-homomorphism-between-fields}.
 
     It remains to show that $E$ contains a zero of $p(x)$. Write
     \[
@@ -129,7 +129,7 @@ Returning back to our exploration of extension fields, the critical observation 
     \[
         \overline{p}(x) = (a_0 + \princ{p(x)}) + (a_1 + \princ{p(x)})x + (a_2 + \princ{p(x)})x^2 + \cdots + (a_n + \princ{p(x)})x^n
     \]
-    For brevity let $\overline{a_i} = a_0 + \princ{p(x)}$. One sees clearly that $\alpha = x + \princ{p(x)} \in E$. Note
+    For brevity let $\overline{a_i} = a_i + \princ{p(x)}$. Let $\alpha = x + \princ{p(x)} \in E$. Note
     \begin{align*}
         \overline{p}(\alpha) &= \overline{a_0} + \overline{a_1}\alpha + \overline{a_2}\alpha^2 + \cdots + \overline{a_n}\alpha^n\\
         &= (a_0 + \princ{p(x)}) + (a_1 + \princ{p(x)})(x + \princ{p(x)}) + (a_2 + \princ{p(x)})(x + \princ{p(x)})^2\\
@@ -174,7 +174,7 @@ However, this does not apply to commutative rings in general, as seen in the fol
     Find two extension fields that contains a zero of the polynomial $x^4 + 3x^2 + 1 \in \Q[x]$.
 \end{exercise}
 
-Henceforth, to simplify the notation used for elements of the extension field, we will simply identify elements in the subset isomorphic to the base field with the actual element within the base field. Furthermore, whenever we say that an extension field $E$ \textit{contains} the base field $F$, it means that $E$ contains a subfield isomorphic to $F$.
+Henceforth, to simplify the notation used for elements of the extension field, we will simply identify elements in the subset isomorphic to the base field with the actual element within the base field. Furthermore, whenever we say that an extension field $E$ \term{contains} the base field $F$, it means that $E$ contains a subfield isomorphic to $F$.
 
 \begin{example}
     Consider the extension field $E = \R[x]/\princ{x^2+1}$ of $\R$. The coset $1 + \princ{x^2+1}$ will henceforth be written as just 1, since the conversion from the element in $\R$ to the coset $1 + \princ{x^2+1}$ is simple -- just add the principal ideal $\princ{x^2+1}$ to the end.
@@ -228,7 +228,7 @@ Before we can define what a splitting field is, we need to look at a special kin
 There is a name for extension fields of the form $F(\alpha)$ where $\alpha$ is a single element.
 
 \begin{definition}
-    Let $F$ be a field, $E/F$ a field extension, and $\alpha \in E$. Then $F(\alpha)$ is called a \textbf{simple extension}\index{extension!simple} and $\alpha$ is called the \textbf{primitive element}\index{primitive element}\index{extension!simple!primitive element}.
+    Let $F$ be a field, $E/F$ a field extension, and $\alpha \in E$. Then $F(\alpha)$ is called a \term{simple extension}\index{extension!simple} and $\alpha$ is called the \term{primitive element}\index{primitive element}\index{extension!simple!primitive element}.
 \end{definition}
 
 \begin{example}
@@ -277,7 +277,7 @@ A general form for simple extensions for specific types of primitive elements, s
     \]
     where $r(x)$ is unique. Now we show that the map $\psi: F[x]/\princ{p(x)} \to F[\alpha]$ given by $\psi(f(x) + \princ{p(x)}) = f(\alpha)$ is a well-defined isomorphism.
     \begin{itemize}
-        \item \textbf{Well-defined}: First, by using the above observation, for any $f(x) + \princ{p(x)}, g(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$, find $r_f(x), r_g(x) \in F[x]$ where
+        \item \textbf{Well-Defined}: First, by using the above observation, for any $f(x) + \princ{p(x)}, g(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$, find $r_f(x), r_g(x) \in F[x]$ where
         \begin{align*}
             f(x) + \princ{p(x)} &= r_f(x) + \princ{p(x)}\\
             g(x) + \princ{p(x)} &= r_g(x) + \princ{p(x)}
@@ -339,7 +339,7 @@ We note \myref{thrm-simple-extension-isomorphism} shows that an element of $F(\a
 forms a basis for $F(\alpha)$, and thus $F(\alpha)$ has dimension $n$.
 
 \begin{example}
-    Consider $f(x) = x^6 - 2 \in \Q[x]$. Eisenstein's criteria (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$. Since $\sqrt[6]2 \in \R$ is a zero of $f(x)$, we know that $\Q(\sqrt[6]2)$ has 6 basis vectors, so it has the underlying set
+    Consider $f(x) = x^6 - 2 \in \Q[x]$. Eisenstein's criterion (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$. Since $\sqrt[6]2 \in \R$ is a zero of $f(x)$, we know that $\Q(\sqrt[6]2)$ has 6 basis vectors, so it has the underlying set
     \[
         \left\{a_0 + a_12^{\frac16} + a_22^{\frac26} + a_32^{\frac36} + a_42^{\frac46} + a_52^{\frac56} \vert a_i \in \Q\right\}.
     \]
@@ -375,14 +375,14 @@ What about extensions of the form $F(a_1, a_2, \dots, a_n)$? We also have this u
 
 \newpage
 
-With all these results, we can finally define \textbf{splitting fields}.
+With all these results, we can finally define splitting fields.
 
 \begin{definition}
-    Let $F$ be a field, $E/F$ be a field extension, and $f(x) \in F[x]$ be a non-constant polynomial. We say that $f(x)$ \textbf{splits}\index{polynomial!splits} in $E$ if and only if there exist an element $a \in F$ and elements $a_1, a_2, \dots, a_n \in E$ such that
+    Let $F$ be a field, $E/F$ be a field extension, and $f(x) \in F[x]$ be a non-constant polynomial. We say that $f(x)$ \term{splits}\index{polynomial!splits} in $E$ if and only if there exist an element $a \in F$ and elements $a_1, a_2, \dots, a_n \in E$ such that
     \[
         f(x) = a(x-a_1)(x-a_2)\cdots(x-a_n).
     \]
-    We call $E$ a \textbf{splitting field for $f(x)$ over $F$}\index{splitting field}\index{field!splitting} if
+    We call $E$ a \term{splitting field for $f(x)$ over $F$}\index{splitting field}\index{field!splitting} if
     \[
         E = F(a_1, a_2, \dots, a_n).
     \]
@@ -394,7 +394,7 @@ With all these results, we can finally define \textbf{splitting fields}.
 We note that the splitting field for a polynomial not only depends on the polynomial itself, but also the base field.
 
 \begin{example}
-    Consider the polynomial $x^2 + 1$. If we interpret $x^2 + 1$ being in $\R[x]$, then naturally the splitting field of $x^2 + 1$ is $\C$, since $x^2 + 1 = (x-i)(x+i)$.
+    Consider the polynomial $x^2 + 1$. If we interpret $x^2 + 1$ being in $\R[x]$, then naturally the splitting field of $x^2 + 1$ is $\R(i, -i) = \C$, since $x^2 + 1 = (x-i)(x+i)$.
 
     However, if we think of $x^2+1$ as being a polynomial in $\Q[x]$, then the splitting field is $\Q(i, -i)$. In fact, $\Q(i, -i) = \Q(i)$. One sees that $\Q(i) \neq \C$ since $\C$ contains irrational numbers (such as $\sqrt2$) while $\Q(i)$ must at least contain $\Q$ and so does not contain irrational numbers.
 \end{example}
@@ -450,7 +450,7 @@ Looking back at the polynomial $x^2+1$, we note that both $\R(i)$ and $\R[x]/\pr
 Before we can prove this, we introduce some terminology and notation, and a preliminary result.
 
 \begin{definition}
-    Let $F$ and $F'$ be fields and $\phi: F \to F'$ be a homomorphism. Suppose $E/F$ and $E'/F'$ are field extensions, and suppose $\psi: E \to E'$ is a homomorphism. Then we say \textbf{$\psi$ agrees with $\phi$ on $F$}\index{agrees with} if and only if $\psi(x) = \phi(x)$ for all $x \in F$.
+    Let $F$ and $F'$ be fields and $\phi: F \to F'$ be a homomorphism. Suppose $E/F$ and $E'/F'$ are field extensions, and suppose $\psi: E \to E'$ is a homomorphism. Then we say \term{$\psi$ agrees with $\phi$ on $F$}\index{agrees with} if and only if $\psi(x) = \phi(x)$ for all $x \in F$.
 \end{definition}
 
 \begin{definition}
@@ -466,7 +466,7 @@ Before we can prove this, we introduce some terminology and notation, and a prel
 \begin{lemma}\label{lemma-isomorphism-extension}
     Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $\alpha$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an isomorphism and $\beta$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an isomorphism $\overline{\phi}: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
 \end{lemma}
-\begin{proof}[Proof (cf. {\cite[Lemma 21.32]{judson_beezer_2022}})]
+\begin{proof}
     We note that, by \myref{thrm-simple-extension-isomorphism}, if $\deg p(x) = n$, we have that both $F(\alpha)$ and $F'(\beta)$ have dimension $n$ with bases
     \[
         \{1, \alpha, \alpha^2, \dots, \alpha^{n-1}\} \quad\text{and}\quad\{1, \beta, \beta^2, \dots, \beta^{n-1}\}
@@ -537,7 +537,7 @@ The uniqueness of splitting fields for a given polynomial over a given field is 
     Suppose $E$ and $E'$ are splitting fields of $f(x)$ over $F$. Then the result follows immediately from \myref{thrm-isomorphism-extension} by letting $\phi = \id$, i.e. the identity endomorphism from $F$ to $F$.
 \end{proof}
 
-In light of \myref{corollary-splitting-field-unique-up-to-isomorphism}, we may refer to ``the'' splitting field of $f(x)$ over $F$ without any ambiguity.
+In light of \myref{corollary-splitting-field-unique-up-to-isomorphism}, we may refer to the splitting field of $f(x)$ over $F$ without any ambiguity.
 
 \begin{example}
     Both $\R(i)$ and $\R[x]/\princ{x^2+1}$ split $x^2+1$, but \myref{corollary-splitting-field-unique-up-to-isomorphism} tells us that $\R(i) \cong \R[x]/\princ{x^2+1}$. In fact, $R(i)$ is just the complex numbers $\C$, and we already proved that $\R[x]/\princ{x^2+1} \cong \C$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C}. So \textit{the} splitting field of $x^2+1$ over $\R$ is $\R(i)$.
@@ -547,7 +547,7 @@ In light of \myref{corollary-splitting-field-unique-up-to-isomorphism}, we may r
 Before we tackle the zeroes of irreducible polynomials, we borrow a tool whose origins are from calculus.
 
 \begin{definition}
-    Let $F$ be a field and $f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_nx^n \in F[x]$. Then the \textbf{formal derivative}\index{formal derivative} (or just \textbf{derivative}\index{derivative}) of $f(x)$, denoted $f'(x)$, is
+    Let $F$ be a field and $f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_nx^n \in F[x]$. Then the \term{formal derivative}\index{formal derivative} (or just \term{derivative}\index{derivative}) of $f(x)$, denoted $f'(x)$, is
     \[
         a_1 + 2a_2x + 3a_3x^2 + \cdots + na_nx^{n-1}.
     \]
@@ -673,7 +673,7 @@ We now note an important property of the derivative that we will use later.
 The investigation into the zeroes of irreducible polynomials also requires the generalization of the GCD to polynomials.
 
 \begin{definition}
-    A \textbf{monic polynomial}\index{polynomial!monic} is a non-zero polynomial which has a leading coefficient of 1. In other words, a monic polynomial takes the form
+    A \term{monic polynomial}\index{polynomial!monic} is a non-zero polynomial which has a leading coefficient of 1. In other words, a monic polynomial takes the form
     \[
         c_0 + c_1x + c_2x^2 + \cdots + c_{n-1}x^{n-1} + x^n
     \]
@@ -683,12 +683,12 @@ The investigation into the zeroes of irreducible polynomials also requires the g
 \newpage
 
 \begin{definition}
-    Let $F$ be a field. Given $f(x), g(x) \in F[x]$, a monic polynomial $d(x) \in F[x]$ is said to be a \textbf{greatest common divisor (GCD)}\index{greatest common divisor!polynomial}\index{GCD!polynomial} of $f(x)$ and $g(x)$ if and only if $d(x)$ divides both $f(x)$ and $g(x)$ and if another polynomial $c(x) \in F[x]$ divides both $f(x)$ and $g(x)$ then $c(x)$ divides $d(x)$.
+    Let $F$ be a field. Given $f(x), g(x) \in F[x]$, a monic polynomial $d(x) \in F[x]$ is said to be a \term{greatest common divisor (GCD)}\index{greatest common divisor!polynomial}\index{GCD!polynomial} of $f(x)$ and $g(x)$ if and only if $d(x)$ divides both $f(x)$ and $g(x)$ and if another polynomial $c(x) \in F[x]$ divides both $f(x)$ and $g(x)$ then $c(x)$ divides $d(x)$.
 
     We denote a GCD of $f(x)$ and $g(x)$ by $\gcd(f(x), g(x))$.
 \end{definition}
 
-We note an analogue of B\'ezout's lemma (\myref{lemma-bezout}) for the polynomial GCD.
+We note an analogue of B\'ezout's lemma (\myref{lemma-bezout}) for polynomial GCDs.
 
 \begin{theorem}\label{thrm-bezout-lemma-for-polynomials}
     Let $F$ be a polynomial. Let $f(x), g(x) \in F[x]$, and let $d(x)$ be a GCD of $f(x)$ and $g(x)$. Then there are polynomials $a(x), b(x) \in F[x]$ such that
@@ -738,14 +738,14 @@ We note an analogue of B\'ezout's lemma (\myref{lemma-bezout}) for the polynomia
 To end this section, we look at the analogue of coprime numbers in terms of polynomials.
 
 \begin{definition}
-    Let $F$ be a field. Two polynomials $f(x)$ and $g(x)$ in $F[x]$ are \textbf{coprime}\index{coprime!polynomial} if and only if $\gcd(f(x), g(x)) = 1$.
+    Let $F$ be a field. Two polynomials $f(x)$ and $g(x)$ in $F[x]$ are \term{coprime}\index{coprime!polynomial} if and only if $\gcd(f(x), g(x)) = 1$.
 \end{definition}
 
 \section{Zeroes of an Irreducible Polynomial}
 Recall that polynomial $f(x)$ has a zero $\alpha$ if and only if $x-\alpha$ is a factor of $f(x)$, by the Factor Theorem (\myref{corollary-factor-theorem}). Then $\alpha$ is a zero of multiplicity $n$ if $(x-\alpha)^n$ is a factor of $f(x)$ but $(x-\alpha)^{n+1}$ is not.
 
 \begin{definition}
-    Let $\alpha$ be a zero of multiplicity $n$ of a polynomial $f(x)$. If $n = 1$ then $\alpha$ is called a \textbf{simple zero}\index{polynomial!zeroes!simple}. If $n \geq 2$ then $\alpha$ is called a \textbf{multiple zero}\index{polynomial!zeroes!multiple}.
+    Let $\alpha$ be a zero of multiplicity $n$ of a polynomial $f(x)$. If $n = 1$ then $\alpha$ is called a \term{simple zero}\index{polynomial!zeroes!simple}. If $n \geq 2$ then $\alpha$ is called a \term{multiple zero}\index{polynomial!zeroes!multiple}.
 \end{definition}
 
 With the derivative, we can derive a test for multiple zeroes of a polynomial.
@@ -798,7 +798,7 @@ We found in \myref{thrm-zeroes-of-an-irreducible} that an irreducible polynomial
 \end{definition}
 
 \begin{definition}
-    A field $F$ is called \textbf{perfect}\index{field!perfect}\index{perfect field} if $F$ has characteristic 0 or if $F$ has prime characteristic $p$ and $F^p = F$.
+    A field $F$ is called \term{perfect}\index{field!perfect}\index{perfect field} if $F$ has characteristic 0 or if $F$ has prime characteristic $p$ and $F^p = F$.
 \end{definition}
 
 The most important family of perfect fields of prime characteristic are the finite fields.
@@ -841,7 +841,7 @@ With this definition of perfect fields, we return back to exploring the zeroes o
     If $f(x)$ is an irreducible polynomial over a perfect field $F$, then $f(x)$ has no multiple zeroes.
 \end{theorem}
 \begin{proof}
-    The case when $\Char{F} = 0$ is done by \myref{thrm-zeroes-of-an-irreducible}. So assume $F$ is a perfect field of characteristic $p$ and let $f(x)$ be an irreducible polynomial in $F[x]$. Seeking a contradiction, assume $f(x)$ has multiple zeroes. By \myref{thrm-zeroes-of-an-irreducible} we know $f(x) = g(x^p)$ for some $g(x) \in F[x]$, say $g(x) = a_0 + a_1x + \cdots + a_nx^n$. Since $F = F^p$, each $a_i$ in $F$ can be written as $b_i^p$ for some $b_i \in F$. Thus,
+    The case when $\Char{F} = 0$ is done by \myref{thrm-zeroes-of-an-irreducible}. So assume $F$ is a perfect field of characteristic $p$ and let $f(x)$ be an irreducible polynomial in $F[x]$. Seeking a contradiction, assume $f(x)$ has multiple zeroes. By \myref{thrm-zeroes-of-an-irreducible} again we know $f(x) = g(x^p)$ for some $g(x) \in F[x]$, say $g(x) = a_0 + a_1x + \cdots + a_nx^n$. Since $F = F^p$, each $a_i$ in $F$ can be written as $b_i^p$ for some $b_i \in F$. Thus,
     \begin{align*}
         f(x) &= g(x^p)\\
         &= b_0^p + b_1^px^p + b_2^px^{2p} + \cdots + b_n^px^{np}\\
