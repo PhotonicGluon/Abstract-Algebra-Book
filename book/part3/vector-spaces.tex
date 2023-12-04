@@ -2,14 +2,13 @@
 Abstract algebra has three core structures -- groups, rings, and fields. So far, we have looked at groups and rings in detail, and touched on some basic properties of fields. However, to properly explore the structure of fields, we need to cover the basics of vector spaces, which are typically covered in a linear algebra course. We provide a concise overview of vectors and vector spaces here.
 
 \section{What is a Vector Space?}
-We first look at what a vector space is.
 \begin{definition}
-    A \textbf{vector space}\index{vector space} over a field $F$ is a non-empty set $V$ together with two operations,
+    A \term{vector space}\index{vector space} over a field $F$ is a non-empty set $V$ together with two operations,
     \begin{itemize}
-        \item \textbf{(vector) addition}\index{vector space!vector addition}, denoted by $+$, where for $\textbf{u}, \textbf{v} \in V$ it produces another element $\textbf{u} + \textbf{v} \in V$; and
-        \item \textbf{scalar multiplication}\index{vector space!scalar multiplication}, where for $\alpha \in F$ and $\textbf{u} \in V$ it produced another element in $V$, denoted by $\alpha\textbf{u} \in V$,
+        \item \term{(vector) addition}\index{vector space!vector addition}, denoted by $+$, where for $\textbf{u}, \textbf{v} \in V$ it produces another element $\textbf{u} + \textbf{v} \in V$; and
+        \item \term{scalar multiplication}\index{vector space!scalar multiplication}, where for $\alpha \in F$ and $\textbf{u} \in V$ it produced another element in $V$, denoted by $\alpha\textbf{u} \in V$,
     \end{itemize}
-    such that it satisfies the \textbf{vector space axioms}\index{axiom!vector space} listed below.
+    such that it satisfies the \term{vector space axioms}\index{axiom!vector space} listed below.
     \begin{itemize}
         \item \textbf{Addition-Abelian}\index{axiom!vector space!addition-abelian}: $(V, +)$ forms an abelian group.
 
@@ -21,6 +20,7 @@ We first look at what a vector space is.
 
         \item \textbf{Distributivity-Scalar}\index{axiom!vector space!distributivity-scalar}: For all $\alpha, \beta \in F$ and $\textbf{u} \in V$ we have $(\alpha+\beta)\textbf{u} = \alpha\textbf{u} + \beta\textbf{u}$.
     \end{itemize}
+    Elements of $V$ are called \term{vectors}\index{vector} and elements of $F$ are called \term{scalars}\index{scalar}.
 \end{definition}
 
 To avoid confusion with denoting elements from these two sets, we adopt the following conventions regarding notation.
@@ -31,18 +31,10 @@ To avoid confusion with denoting elements from these two sets, we adopt the foll
     \item Define $\textbf{u} - \textbf{v}$ as $\textbf{u} + (-\textbf{v})$, where $-\textbf{v}$ denotes the inverse of $\textbf{v}$ in the group $(V, +)$.
 \end{itemize}
 
-\begin{definition}
-    Let $V$ be a vector space over a field $F$.
-    \begin{itemize}
-        \item Elements of $V$ are called \textbf{vectors}\index{vector}.
-        \item Elements of $F$ are called \textbf{scalars}\index{scalar}.
-    \end{itemize}
-\end{definition}
-
 We look at some elementary examples of vector spaces.
 
 \begin{example}\label{example-R^n-is-vector-space}
-    The set $\R^n = \{(a_1, a_2, \dots, a_n) \vert a_i \in \R\}$ is a vector space over the field $\R$ with the `natural' choices of addition
+    The set $\R^n = \{(a_1, a_2, \dots, a_n) \vert a_i \in \R\}$ is a vector space over the field $\R$ with the natural choices of addition
     \[
         (a_1, a_2, \dots, a_n) + (b_1, b_2, \dots, b_n) = (a_1 + b_1, a_2 + b_2, \dots, a_n + b_n)
     \]
@@ -147,7 +139,7 @@ We look at some elementary examples of vector spaces.
     Since all the vector space axioms are satisfied, we proved that $\C$ is a vector space over the field $\R$.
 \end{example}
 
-One sees that $\R$ is a subfield of $\C$. The previous example gives us an indication of a much deeper result about vector fields, which we note in the following theorem.
+The previous example gives us an indication of a much deeper result about vector spaces of fields over subfields, which we note in the following theorem.
 
 \begin{theorem}\label{thrm-field-is-vector-space}
     Let $F$ be a field and $K$ a subfield of $F$. Then $F$ is a vector space over $K$, with vector addition and scalar multiplication being the operations of $F$.
@@ -166,7 +158,7 @@ One sees that $\R$ is a subfield of $\C$. The previous example gives us an indic
         \item \textbf{Distributivity-Scalar}: Let $\alpha, \beta \in K$ and $\textbf{u} \in \C$. Note that we see $(\alpha+\beta)\textbf{u} = \alpha\textbf{u} + \beta\textbf{u}$, again by the distributivity of multiplication over addition in the field $F$.
     \end{itemize}
 
-    Therefore, all five vector space axioms are satisfied, proving that $F$ is a vector space over the subfield $K$.
+    Therefore, all vector space axioms are satisfied, proving that $F$ is a vector space over the subfield $K$.
 \end{proof}
 
 \begin{exercise}\label{exercise-R^n-is-abelian-group}
@@ -199,7 +191,7 @@ We note some elementary properties of vectors in vector spaces.
     \[
         \textbf{0} = 0\textbf{u} + \textbf{0},
     \]
-    by \textbf{Addition-Abelian-Inverses}, and hence $0\textbf{u} = \textbf{0}$, by \textbf{Addition-Abelian-Identity}.
+    by \textbf{Addition-Abelian-Inverse}, and hence $0\textbf{u} = \textbf{0}$ by \textbf{Addition-Abelian-Identity}.
 \end{proof}
 
 \begin{proposition}\label{prop-zero-vector-scaled-by-constant-is-zero-vector}
@@ -210,7 +202,7 @@ We note some elementary properties of vectors in vector spaces.
 \end{proof}
 
 \begin{proposition}\label{prop-vector-inverse-is-negative-vector}
-    Let $V$ be a vector space over $F$. Let -1 denote the additive inverse of the multiplicative identity of $F$. Let $\textbf{u} \in V$. Then $-\textbf{u} = (-1)\textbf{u}$.
+    Let $V$ be a vector space over $F$. Let $-1$ denote the additive inverse of the multiplicative identity of $F$. Let $\textbf{u} \in V$. Then $-\textbf{u} = (-1)\textbf{u}$.
 \end{proposition}
 \begin{proof}
     One sees that
@@ -228,9 +220,10 @@ We note some elementary properties of vectors in vector spaces.
 \end{exercise}
 
 \section{Subspaces}
-Like how groups have subgroups, rings have subrings, and fields have subfields, vector spaces also have their own analogue, called \textbf{subspaces}.
+Like how groups have subgroups, rings have subrings, and fields have subfields, vector spaces also have their own analogue, called subspaces.
+
 \begin{definition}
-    Let $V$ be a vector space over a field $F$ and let $U$ be a subset of $V$. Then $U$ is a \textbf{subspace}\index{subspace} of $V$ if and only if $U$ is also a vector space over $F$ under the operations of $V$.
+    Let $V$ be a vector space over a field $F$ and let $U$ be a subset of $V$. Then $U$ is a \term{subspace}\index{subspace} of $V$ if and only if $U$ is also a vector space over $F$ under the operations of $V$.
 \end{definition}
 
 \begin{example}
@@ -241,7 +234,7 @@ Like how groups have subgroups, rings have subrings, and fields have subfields, 
     Let $F$ be a field, $K$ a subfield of $F$, and $L$ a subfield of $K$. We note that $F$ is a vector space over $L$ (\myref{thrm-field-is-vector-space}). Also $K$ is a vector space over $L$ using the same reason. Since $K \subseteq F$, thus $K$ is a subspace of $F$.
 \end{example}
 
-To prove all the axioms for vector spaces for the subspace is way too tedious. Like with groups, rings, and fields, we have a simple test to determine whether a subset of a vector space is a subspace, called the \textbf{subspace test}.
+To prove all the axioms for vector spaces for the subspace is way too tedious. Like with groups, rings, and fields, we have a simple test to determine whether a subset of a vector space is a subspace, called the subspace test.
 
 \begin{theorem}[Subspace Test]\label{thrm-subspace-test}
     Let $V$ be a vector space over a field $F$ and $U$ be a non-empty subset of $V$. Then $U$ is a subspace of $V$ over $F$ under the same operations as $V$ if and only if
@@ -255,7 +248,7 @@ To prove all the axioms for vector spaces for the subspace is way too tedious. L
 
     We work in the reverse direction. Suppose these two conditions are satisfied. We will prove the remainder of the vector space axioms.
     \begin{itemize}
-        \item \textbf{Addition-Abelian}: Since addition is the same as that of the vector space $V$, addition is also already commutative. So all that remains is to show that $(U, +)$ is a group; it is sufficient to show $(U, +) \leq (V, +)$ instead.
+        \item \textbf{Addition-Abelian}: Since addition is the same as that of the vector space $V$, addition is also already commutative. So all that remains is to show that $(U, +)$ is a group; it is sufficient to show $(U, +) \leq (V, +)$.
 
         We note that $-1 \in F$ and so $(-1)\textbf{v} \in U$ for any $\textbf{v} \in U$ by condition 2. Note $(-1)\textbf{v} = -\textbf{v}$ by \myref{prop-vector-inverse-is-negative-vector}, so $-\textbf{v} \in U$ for any $\textbf{v} \in U$. Finally, we see
         \[
@@ -267,20 +260,20 @@ To prove all the axioms for vector spaces for the subspace is way too tedious. L
 
         \item \textbf{Multiplication-Compatibility}: The axiom holds for $V$, so it holds for $U$ since $U \subseteq V$ and by using a similar reasoning as above.
 
-        \item \textbf{Distributivity-Addition}: The axiom holds for $V$, so it holds for $U$ by using a similar reasoning as above.
+        \item \textbf{Distributivity-Addition}: The axiom holds for $V$, so it holds for $U$.
 
-        \item \textbf{Distributivity-Scalar}: The axiom holds for $V$, so it holds for $U$ by using a similar reasoning as above.
+        \item \textbf{Distributivity-Scalar}: The axiom holds for $V$, so it holds for $U$.
     \end{itemize}
     So all the vector space axioms are satisfied, meaning that $U$ is a vector space over $F$. As $U \subseteq V$, we therefore see that $U$ is a subspace of $V$.
 \end{proof}
 \begin{remark}
-    Like with the subgroup test, we usually verify $U$ is non-empty by asserting that the zero vector is inside $U$.
+    Like with the subgroup test, we usually verify $U$ is non-empty by asserting that the zero vector ($\textbf{0}$) is inside $U$.
 \end{remark}
 
 \begin{example}
     We prove that $\R$ is a subspace of $\C$ over $\R$ by considering the subspace test (\myref{thrm-subspace-test}).
     \begin{itemize}
-        \item We note that the zero vector of $\C$, 0, is also present in $\R$, so $\R$ is non-empty.
+        \item We note that the zero vector of $\C$, namely $0 + 0i$, is also present in $\R$, so $\R$ is non-empty.
         \item Also note that for any real numbers $\textbf{x}$ and $\textbf{y}$ we have $\textbf{x} + \textbf{y} \in \R$.
         \item Finally, the product of any two real numbers is real, so for $\alpha \in \R$ and $\textbf{u} \in \R$ we have $\alpha\textbf{u} \in \R$.
     \end{itemize}
@@ -324,7 +317,7 @@ Admittedly, the previous example is quite boring. Let's look at a more interesti
 \end{exercise}
 
 \section{Linear Combinations and Span}
-Vector spaces have many elements. Using the vector space axioms, we may express these elements in terms of other elements from the vector space. One may wonder if there is a set of elements that `generates' the full vector space. This is the motivation for the spanning set of a vector space.
+Vector spaces have many elements. Using the vector space axioms, we may express these elements in terms of other elements from the vector space. One may wonder if there is a set of elements that `generates' the full vector space. This is the motivation for the definition of a spanning set.
 
 Before that, let's define what a linear combination is.
 \begin{definition}
@@ -336,7 +329,7 @@ Before that, let's define what a linear combination is.
 \end{definition}
 
 \begin{definition}
-    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then the \textbf{span}\index{span} of $S$ is denoted $\Span{S}$ and is the set of all linear combinations of the vectors of $S$. In other words, if $S = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\}$ then
+    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then the \term{span}\index{span} of $S$ is denoted $\Span{S}$ and is the set of all linear combinations of the vectors of $S$. In other words, if $S = \{\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n\}$ then
     \[
         \Span{S} = \left\{\sum_{i=1}^n \alpha_i\textbf{v}_i \vert \alpha_i \in F\right\}.
     \]
@@ -369,11 +362,11 @@ Before that, let's define what a linear combination is.
         \lambda\textbf{a} = (\lambda\alpha_1)\textbf{v}_1 + (\lambda\alpha_2)\textbf{v}_2 + \cdots + (\lambda\alpha_n)\textbf{v}_n \in \Span{S}.
     \]
 
-    Therefore $\Span{S}$ is a subspace of $V$ by subspace test (\myref{thrm-subspace-test}).
+    Therefore $\Span{S}$ is a subspace of $V$ by the subspace test (\myref{thrm-subspace-test}).
 \end{proof}
 
 \begin{definition}
-    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then $S$ is called a \textbf{spanning set}\index{spanning set} of $V$ if and only if $\Span{S} = V$, and we say that $S$ \textbf{spans} $V$.
+    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then $S$ is called a \term{spanning set}\index{spanning set} of $V$ if and only if $\Span{S} = V$, and we say that $S$ \term{spans} $V$.
 \end{definition}
 
 \begin{example}
@@ -436,13 +429,13 @@ Before that, let's define what a linear combination is.
 \section{Linear Independence}
 The next definition is crucial in vector space theory.
 \begin{definition}
-    Let $V$ be a vector space over a field $F$. The vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n \in V$ are said to be \textbf{linearly independent}\index{linearly independent} if and only if $\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0$ is the only solution to
+    Let $V$ be a vector space over a field $F$. The vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n \in V$ are said to be \term{linearly independent}\index{linearly independent} if and only if $\alpha_1 = \alpha_2 = \cdots = \alpha_n = 0$ is the only solution to
     \[
         \alpha_1\textbf{v}_1 + \alpha_2\textbf{v}_2 + \cdots + \alpha_n\textbf{v}_n = \textbf{0},
     \]
     where $\alpha_i \in F$.
 
-    If the vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n \in V$ are not linearly independent, they are said to be \textbf{linearly dependent}\index{linearly dependent}.
+    If the vectors $\textbf{v}_1, \textbf{v}_2, \dots, \textbf{v}_n \in V$ are not linearly independent, they are said to be \term{linearly dependent}\index{linearly dependent}.
 \end{definition}
 
 \begin{example}
@@ -510,7 +503,7 @@ The next definition is crucial in vector space theory.
 \section{Basis}
 Earlier, we looked at spanning sets, which are sets of vectors that produce all vectors of a vector space $V$ (over a field $F$). One might rightly ask whether there is a `smallest' spanning set, that is, a spanning set with the smallest number of vectors possible but still able to span $V$. This question leads to the definition of a basis.
 \begin{definition}
-    Let $V$ be a vector space over a field $F$, and let $B$ be a non-empty set of vectors from $V$. Then $B$ is called a \textbf{basis}\index{basis} for $V$ if and only if the vectors in $B$ are linearly independent and $\Span{B} = V$.
+    Let $V$ be a vector space over a field $F$, and let $B$ be a non-empty set of vectors from $V$. Then $B$ is called a \term{basis}\index{basis} of $V$ if and only if the vectors in $B$ are linearly independent and $\Span{B} = V$.
 \end{definition}
 
 The usefulness of a basis is given by the following theorem.
@@ -547,9 +540,9 @@ The usefulness of a basis is given by the following theorem.
     \]
     so we know that $S = \{(1, 0, 1, 1), (0, 1, -1, 1)\}$ is a spanning set for $V$. We also see that the vectors in $S$ are linearly independent, as the equation
     \[
-        a(1, 0, 1, 1) + b(0, 1, -1, 1) = (0, 0, 0, 0)
+        \alpha(1, 0, 1, 1) + \beta(0, 1, -1, 1) = (0, 0, 0, 0)
     \]
-    clearly only has the trivial solution $a = b = 0$. Therefore $S$ is a basis for $V$.
+    clearly only has the trivial solution $\alpha = \beta = 0$. Therefore $S$ is a basis for $V$.
 \end{example}
 
 \begin{example}
@@ -569,15 +562,6 @@ The usefulness of a basis is given by the following theorem.
     \end{align*}
     has only the trivial solution of $\alpha = \beta = 0$. Therefore the vectors in $T$ are linearly independent, meaning that $T$ is a basis for $V$.
 \end{example}
-
-\begin{exercise}
-    For the vector space $V$ given in \myref{exercise-polynomial-of-degree-at-most-2-vector-space}, which of the following sets of vectors of $V$ is/are a basis for $V$?
-    \begin{partquestions}{\alph*}
-        \item $S = \{1, x + 2\}$
-        \item $T = \{1, x + 2, x^2 + 2x + 3\}$
-        \item $U = \{1, x + 2, x^2 + 2x + 3, x^2 - 2x - 3\}$
-    \end{partquestions}
-\end{exercise}
 
 One may wonder if a vector space could have bases of different sizes. The answer is no. The tools needed to prove this in general are out of scope for this book, but we produce a proof of this claim for bases with finitely many elements.
 
@@ -612,14 +596,25 @@ One may wonder if a vector space could have bases of different sizes. The answer
     Therefore $m = n$.
 \end{proof}
 
-The uniqueness of the number of elements that a finite basis must have gives us motivation to define the \textbf{dimension} of a vector space.
+\begin{exercise}
+    For the vector space $V$ given in \myref{exercise-polynomial-of-degree-at-most-2-vector-space}, which of the following sets of vectors of $V$ is/are a basis for $V$?
+    \begin{partquestions}{\alph*}
+        \item $S = \{1, x + 2\}$
+        \item $T = \{1, x + 2, x^2 + 2x + 3\}$
+        \item $U = \{1, x + 2, x^2 + 2x + 3, x^2 - 2x - 3\}$
+    \end{partquestions}
+\end{exercise}
+
+The uniqueness of the number of elements that a finite basis must have gives us motivation to define the dimension of a vector space.
+
+\newpage
 
 \begin{definition}
-    The cardinality of any basis of a vector space $V$ is called the \textbf{dimension}\index{dimension}\index{vector space!dimension} and is denoted $\dim{V}$.
+    The cardinality of any basis of a vector space $V$ is called the \term{dimension}\index{dimension}\index{vector space!dimension} and is denoted $\dim{V}$.
     \begin{itemize}
         \item If $V$ is the trivial vector space $\{\textbf{0}\}$, containing only the zero vector, then $\dim{V} = 0$ with the empty set $\emptyset$ as its basis.
-        \item If a basis of $V$ has finite cardinality $n$ then $V$ is \textbf{finite dimensional}\index{dimension!finite} and we write $\dim{V} = n$.
-        \item If a basis of $V$ has infinite cardinality then $V$ is \textbf{infinite dimensional}\index{dimension!infinite}.
+        \item If a basis of $V$ has finite cardinality $n$ then $V$ is \term{finite dimensional}\index{dimension!finite} and we write $\dim{V} = n$.
+        \item If a basis of $V$ has infinite cardinality then $V$ is \term{infinite dimensional}\index{dimension!infinite}.
     \end{itemize}
 \end{definition}
 
@@ -756,7 +751,7 @@ We end this chapter by looking at (finite) sets of vectors from a given vector s
 \end{problem}
 
 \begin{problem}\label{problem-vector-space-of-dimension-n-isomorphic-to-F^n}
-    The vector space analogue of a group/ring homomorphism is called a \textbf{linear transformation}\index{linear transformation}. If $V$ and $W$ are vector spaces over a field $F$, then the map $T: V \to W$ is a linear transformation if it preserves vector addition and scalar multiplication, i.e.
+    The vector space analogue of a group/ring homomorphism is called a \term{linear transformation}\index{linear transformation}. If $V$ and $W$ are vector spaces over a field $F$, then the map $T: V \to W$ is a linear transformation if it preserves vector addition and scalar multiplication, i.e.
     \begin{align*}
         T(\textbf{u} + \textbf{v}) &= T(\textbf{u}) + T(\textbf{v}) \text{ and}\\
         T(\alpha\textbf{u}) &= \alpha T(\textbf{u})
