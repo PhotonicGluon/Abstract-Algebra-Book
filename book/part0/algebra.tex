@@ -292,7 +292,7 @@ We look at some common expressions that appear in algebra.
 
 We note some properties of the absolute value.
 \begin{proposition}
-    $|x| \geq 0$ for all real values $x$.
+    $|x| \geq 0$ for all real numbers $x$.
 \end{proposition}
 \begin{proof}
     Let $x$ be a real number. We split into two cases.
@@ -304,10 +304,28 @@ We note some properties of the absolute value.
 \end{proof}
 
 \begin{proposition}
-    $|x|^2 = x^2$ for all real values $x$.
+    $-|x| \leq x \leq |x|$ for all real numbers $x$.
 \end{proposition}
 \begin{proof}
-    Supposing $x$ is a real value, we split into two cases.
+    Let $x$ be a real number. We split into two cases.
+    \begin{itemize}
+        \item If $x \geq 0$ then $|x| = x$. Thus
+        \[
+            -|x| = -x \leq x \leq x = |x|.
+        \]
+        \item If $x < 0$ then $|x| = -x$. Thus
+        \[
+            -|x| = -(-x) = x \leq x \leq -x = |x|
+        \]
+        where $x \leq -x$ since $x < 0$.\qedhere
+    \end{itemize}
+\end{proof}
+
+\begin{proposition}
+    $|x|^2 = x^2$ for all real numbers $x$.
+\end{proposition}
+\begin{proof}
+    Supposing $x$ is a real number, we split into two cases.
     \begin{itemize}
         \item If $x \geq 0$, then $|x| = x$. Clearly one sees that $|x|^2 = (x)^2 = x^2$.
         \item If $x < 0$, then $|x| = -x$. Thus $|x|^2 = (-x)^2 = x^2$.
@@ -316,10 +334,17 @@ We note some properties of the absolute value.
 \end{proof}
 
 \begin{proposition}
-    $|x_1x_2\cdots x_n| = |x_1||x_2|\cdots|x_n|$ for all real values $x_1, x_2, \dots, x_n$.
+    $|x_1x_2\cdots x_n| = |x_1||x_2|\cdots|x_n|$ for all real numbers $x_1, x_2, \dots, x_n$.
 \end{proposition}
 \begin{proof}
     See \myref{problem-absolute-value-is-multiplicative-map} (later).
+\end{proof}
+
+\begin{proposition}[Triangle Inequality]\index{Triangle Inequality}\label{prop-triangle-inequality}
+    $|x + y| \leq |x| + |y|$ for all real numbers $x$ and $y$.
+\end{proposition}
+\begin{proof}
+    See \myref{exercise-triangle-inequality} (later).
 \end{proof}
 
 \begin{example}
@@ -328,6 +353,10 @@ We note some properties of the absolute value.
 
 \begin{exercise}
     Solve the inequality $x^2 + 15 < 8|x|$.
+\end{exercise}
+
+\begin{exercise}\label{exercise-triangle-inequality}
+    Prove \myref{prop-triangle-inequality}.
 \end{exercise}
 
 \section{The Binomial Theorem}
@@ -372,6 +401,8 @@ We note two facts about the binomial coefficient here.
     \end{align*}
     which proves this proposition.
 \end{proof}
+
+\newpage
 
 \begin{proposition}\label{prop-binomial-coefficient-multiple-of-p}
     If $p$ is a prime, then $p\choose k$ is a multiple of $p$ for all integers $1 \leq k \leq p - 1$.
