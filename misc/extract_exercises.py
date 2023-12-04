@@ -47,11 +47,11 @@ def write_exercises_and_solutions(exercises, solutions):
 
 
 def write_chapter(part_num, chapter_id):
-    output = f"\n\\chapter{{{chapter_id.replace('-', ' ').title()}}}"
+    output = f"\n\\section{{{chapter_id.replace('-', ' ').title()}}}"
     print(part_num, chapter_id)
 
     for ex_or_prob in ["exercise", "problem"]:
-        output += f"\n\\section*{{{ex_or_prob.title()}s}}\n"
+        output += f"\n\\subsection*{{{ex_or_prob.title()}s}}\n"
         chapter_text, solutions_text = get_chapter_files(part_num, ex_or_prob, chapter_id)
         exercises, solutions = extract_exercises_and_solutions(ex_or_prob, chapter_text, solutions_text)
         output += write_exercises_and_solutions(exercises, solutions)
