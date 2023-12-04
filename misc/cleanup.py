@@ -2,7 +2,7 @@
 from cleanup import strip_trailing_whitespace, remove_pdftex_comments
 
 # CONSTANTS
-DIRECTORY = ".."
+DIRECTORY = "../book"
 
 # MAIN PROCESSES
 print("=" * 50)
