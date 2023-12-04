@@ -92,7 +92,19 @@ Next on our journey to prove the Fundamental Theorem of Algebra we need to prove
 
 The calculus inclined would be able to see the parallel of this definition to that of using limits. However, we choose not to use the limit definition here to reduce clutter of notation.
 
-\begin{example}
+\begin{example}\label{example-constant-function-is-continuous}
+    We show that $f: \R \to \R, x \mapsto k$ for some real number $k$ is continuous.
+
+    Given $\epsilon > 0$, we take $\delta = 1$. Then if $|x - x_0| < \delta$ we see
+    \begin{align*}
+        |f(x) - f(x_0)| &= |k - k|\\
+        &= 0\\
+        &< \epsilon,
+    \end{align*}
+    proving that $f$ is continuous.
+\end{example}
+
+\begin{example}\label{example-identity-polynomial-is-continuous}
     We show that $f: \R \to \R, x \mapsto x$ is continuous.
 
     Given $\epsilon > 0$, we take $\delta = \epsilon$. Then if $|x - x_0| < \delta$ we see that
@@ -104,42 +116,72 @@ The calculus inclined would be able to see the parallel of this definition to th
     proving that $f$ is continuous.
 \end{example}
 
-\begin{example}
-    We show that $f: \R \to \R, x \mapsto x^2$ is continuous. We will assume the \textit{triangle inequality} holds, i.e. $|a+b| \leq |a| + |b|$ for all $a,b \in \R$.
+In fact, polynomials are continuous. We will prove this fact in a few steps.
 
-    Given $\epsilon > 0$, we take
-    \[
-        \delta = -|x_0| + \sqrt{x_0^2 + \epsilon}.
-    \]
-    Then if $|x - x_0| < \delta$ we see
-    \begin{align*}
-        |f(x) - f(x_0)| &= |x^2 - x_0^2|\\
-        &= |(x+x_0)(x-x_0)|\\
-        &= |x+x_0||x-x_0|\\
-        &= |(x-x_0)+2x_0||x-x_0|\\
-        &\leq (|x-x_0| + 2|x_0|)|x-x_0|\\
-        &< (\delta + 2|x_0|)\delta\\
-        &= \delta^2 + 2|x_0|\delta\\
-        &= \left(-|x_0| + \sqrt{x_0^2 + \epsilon}\right)^2 + 2|x_0|\left(-|x_0| + \sqrt{x_0^2 + \epsilon}\right)\\
-        &= x_0^2 - 2|x_0|\sqrt{x_0^2+\epsilon} + (x_0^2 + \epsilon) - 2x_0^2 + 2|x_0|\sqrt{x_0^2+\epsilon}\\
-        &= \epsilon
-    \end{align*}
-    which proves that $f$ is continuous.
-\end{example}
-
-\begin{proposition}\label{prop-continuous-function-translated-is-continuous}
-    If $f: D \to \R$ is continuous, then $g: D \to \R$ given by $g(x) = f(x) - k$ is continuous.
+\begin{proposition}\label{prop-sum-of-continuous-functions-is-continuous}
+    If $f: D \to \R$ and $g: D \to \R$ are both continuous, then $h: D \to \R$ where $h(x) = f(x) + g(x)$ is also continuous.
 \end{proposition}
 \begin{proof}
-    Since $f$ is continuous, for all $\epsilon > 0$ there exists $\delta > 0$ such that for all $x \in D$, if $|x - x_0| < \delta$ then $|f(x) - f(x_0)| < \epsilon$. Note
+    Since $f$ and $g$ are continuous, for all $\epsilon_1 > 0$ and $\epsilon_2 > 0$ there exists $\delta_1 > 0$ and $\delta_2 > 0$ such that
+    \begin{gather*}
+        \text{ if } |x - x_0| < \delta_1 \text{ then } |f(x) - f(x_0)| < \epsilon_1,\\
+        \text{ if } |x - x_0| < \delta_2 \text{ then } |g(x) - g(x_0)| < \epsilon_2.
+    \end{gather*}
+    Now suppose we have an $\epsilon > 0$. In particular for $\epsilon_1 = \epsilon_2 = \frac\epsilon2$ we can find $\delta_1 > 0$ and $\delta_2 > 0$ such that
+    \begin{gather*}
+        \text{ if } |x - x_0| < \delta_1 \text{ then } |f(x) - f(x_0)| < \frac\epsilon2,\\
+        \text{ if } |x - x_0| < \delta_2 \text{ then } |g(x) - g(x_0)| < \frac\epsilon2.
+    \end{gather*}
+    Choose $\delta = \min(\delta_1, \delta_2)$ which is positive. Then note that if $|x - x_0| < \delta$ we have
     \begin{align*}
-        |f(x) - f(x_0)| &= |f(x) - f(x_0) + (k - k)|\\
-        &= |(f(x) - k) - (f(x_0) - k)|\\
-        &= |g(x) - g(x_0)|\\
-        &< \epsilon
+        &|(f(x) + g(x)) - (f(x_0) + g(x_0))|\\
+        &= |(f(x) - f(x_0)) + (g(x) - g(x_0))|\\
+        &\leq |f(x) - f(x_0)| + |g(x) - g(x_0)| & (\text{Triangle Inequality}, \myref{prop-triangle-inequality})\\
+        &< \frac\epsilon2 + \frac\epsilon2\\
+        &= \epsilon
     \end{align*}
-    which shows that $g(x)$ is also continuous.
+    which proves that $f(x) + g(x)$ is continuous.
 \end{proof}
+
+\begin{proposition}\label{prop-product-of-continuous-functions-is-continuous}
+    If $f: D \to \R$ and $g: D \to \R$ are both continuous, then $h: D \to \R$ where $h(x) = f(x)g(x)$ is also continuous.
+\end{proposition}
+\begin{proof}
+    Since $f$ and $g$ are continuous, thus for all $\epsilon_1 > 0$ and $\epsilon_2 > 0$ we can find $\delta_1 > 0$ and $\delta_2 > 0$ such that
+    \begin{gather*}
+        \text{ if } |x - x_0| < \delta_1 \text{ then } |f(x) - f(x_0)| < \epsilon_1,\\
+        \text{ if } |x - x_0| < \delta_2 \text{ then } |g(x) - g(x_0)| < \epsilon_2.
+    \end{gather*}
+    Now suppose we have an $\epsilon > 0$. Then there exists $\delta_1 > 0$, $\delta_2 > 0$, and $\delta_3 > 0$ such that
+    \begin{gather*}
+        \text{ if } |x - x_0| < \delta_1 \text{ then } |f(x) - f(x_0)| < \frac{\epsilon}{2(1+|g(x_0)|)},\\
+        \text{ if } |x - x_0| < \delta_2 \text{ then } |g(x) - g(x_0)| < \frac{\epsilon}{2(1+|f(x_0)|)}\\
+        \text{ if } |x - x_0| < \delta_3 \text{ then } |g(x) - g(x_0)| < 1.
+    \end{gather*}
+    In particular the last condition tells us $|g(x)| < 1 + |g(x_0)|$ if $|x - x_0| < \delta_3$. We leave the proof of this for \myref{exercise-product-of-continuous-functions-is-continuous-exercise} (later). Let $\delta = \min(\delta_1, \delta_2, \delta_3)$. Thus we see that if $|x - x_0| < \delta$ then
+    \begin{align*}
+        &|f(x)g(x) - f(x_0)g(x_0)|\\
+        &= |f(x)g(x) - f(x_0)g(x) + f(x_0)g(x) - f(x_0)g(x_0)|\\
+        &= |(f(x) - f(x_0))g(x) + f(x_0)(g(x)-g(x_0))|\\
+        &\leq |f(x)-f(x_0)||g(x)| + |f(x_0)||g(x) - g(x_0)|\\
+        &< \frac{\epsilon}{2(1+|g(x_0)|)}\times|g(x)| + |f(x_0)|\times\frac{\epsilon}{2(1+|f(x_0)|)}\\
+        &< \frac{\epsilon}{2(1+|g(x_0)|)}\times(1 + |g(x_0)|) + (1 + |f(x_0)|)\times\frac{\epsilon}{2(1+|f(x_0)|)}\\
+        &= \frac\epsilon2 + \frac\epsilon2\\
+        &= \epsilon
+    \end{align*}
+    which proves that $f(x)g(x)$ is continuous.
+\end{proof}
+
+\begin{proposition}\label{prop-polynomials-are-continuous}
+    Polynomials are continuous.
+\end{proposition}
+\begin{proof}
+    Since $x$ is continuous (\myref{example-identity-polynomial-is-continuous}), thus $x^n$ is continuous for all positive integers $n$ by repeated application of \myref{prop-product-of-continuous-functions-is-continuous}. In fact $kx^n$ is continuous by \myref{example-constant-function-is-continuous} and \myref{prop-product-of-continuous-functions-is-continuous}. Therefore the sum of terms of the form $kx^n$ (where the case where $n = 0$ is the constant term case) is also continuous by \myref{prop-sum-of-continuous-functions-is-continuous}.
+\end{proof}
+
+\begin{exercise}\label{exercise-product-of-continuous-functions-is-continuous-exercise}
+    Prove that if $|x - x_0| < \delta$ means $|f(x) - f(x_0)| < 1$, then $|x - x_0| < \delta$ also means $|f(x)| < 1 + |f(x_0)|$.
+\end{exercise}
 
 With the completeness of functions defined, we can now state and prove the Intermediate Value Theorem.
 
@@ -149,7 +191,7 @@ With the completeness of functions defined, we can now state and prove the Inter
 \begin{proof}
     Without loss of generality assume that $f(a) < k < f(b)$ as the $f(a) > k > f(b)$ case is similar.
 
-    Define the function $g: I \to \R$ where $g(x) = f(x) - k$. Therefore $f(a) < k < f(b)$ means $g(a) < 0 < g(b)$. We note that $g$ is also continuous by \myref{prop-continuous-function-translated-is-continuous}. We are to prove that $g(c) = 0$ for some $c \in I$. Consider the set
+    Define the function $g: I \to \R$ where $g(x) = f(x) - k$. Therefore $f(a) < k < f(b)$ means $g(a) < 0 < g(b)$. We note that $g$ is also continuous by \myref{prop-polynomials-are-continuous}. We are to prove that $g(c) = 0$ for some $c \in I$. Consider the set
     \[
         S = \{x \in I \vert g(x) \leq 0\}.
     \]
@@ -188,11 +230,11 @@ With the Intermediate Value Theorem proven, we can prove two lemmas. These seem 
     \[
         \left|\sum_{k=0}^{2n}a_kx^{k-(2n+1)}\right| < \epsilon.
     \]
-    So for $x > N$ we have $f(x) > x^{2n+1} - \epsilon x^{2n+1} > 0$ and for $x < -N$ we have $f(x) < x^{2n+1} - \epsilon x^{2n+1} < 0$. Therefore by the Intermediate Value Theorem (\myref{thrm-intermediate-value-theorem}) we see that there exists a $a \in [N, -N]$ such that $f(a) = 0$.
+    So for $x > N$ we have $f(x) > x^{2n+1} - \epsilon x^{2n+1} > 0$ and for $x < -N$ we have $f(x) < x^{2n+1} - \epsilon x^{2n+1} < 0$. Therefore, since polynomials are continuous (\myref{prop-polynomials-are-continuous}), by the Intermediate Value Theorem (\myref{thrm-intermediate-value-theorem}) we see that there exists an $a \in [N, -N]$ such that $f(a) = 0$.
 \end{proof}
 
 \begin{lemma}\label{lemma-non-negative-real-number-has-square-root}
-    $\sqrt x \in \R$ for any $x \geq 0$.
+    $\sqrt x \in \R$ for any $x \geq 0$. That is, there exists a non-negative real number $y \in \R$ such that $y^2 = x$.
 \end{lemma}
 \begin{proof}
     Clearly $\sqrt0=0$ since $0^2=0$, so assume $x > 0$. Consider the set
