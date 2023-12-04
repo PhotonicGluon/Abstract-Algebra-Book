@@ -1,5 +1,5 @@
 \chapter{The Fundamental Theorem of Algebra}
-In this final chapter, it is fitting to prove the theorem that is intertwined with classical and abstract algebra -- the Fundamental Theorem of Algebra. First proven by Gauss in his doctoral thesis, it unfortunately requires some results from calculus. Regardless, we will try our best to provide a complete and self-contained proof here.
+In this final chapter, it is fitting to prove the theorem that is intertwined with classical and abstract algebra -- the Fundamental Theorem of Algebra. First proven by Gauss in his doctoral thesis, it unfortunately requires some results from analysis. Regardless, we will try our best to provide a complete and self-contained proof here.
 
 \section{Completeness of the Real Numbers}
 We first introduce the idea of upper bounds and lower bounds.
@@ -7,10 +7,10 @@ We first introduce the idea of upper bounds and lower bounds.
 \begin{definition}
     Let $A$ be a subset of $\R$.
     \begin{itemize}
-        \item A number $M$ is called a \textbf{upper bound}\index{upper bound} of $A$ if and only if $x \leq M$ for all $x \in A$. In this case, $A$ is said to be \textbf{bounded above}\index{bounded!above}.
-        \item A number $L$ is called a \textbf{lower bound}\index{upper bound} of $A$ if and only if $x \geq L$ for all $x \in A$. In this case, $A$ is said to be \textbf{bounded below}\index{bounded!below}.
+        \item A number $M$ is called a \term{upper bound}\index{upper bound} of $A$ if and only if $x \leq M$ for all $x \in A$. In this case, $A$ is said to be \term{bounded above}\index{bounded!above}.
+        \item A number $L$ is called a \term{lower bound}\index{upper bound} of $A$ if and only if $x \geq L$ for all $x \in A$. In this case, $A$ is said to be \term{bounded below}\index{bounded!below}.
     \end{itemize}
-    The set $A$ is said to be \textbf{bounded}\index{bounded} if and only if it is bounded above and bounded below.
+    The set $A$ is said to be \term{bounded}\index{bounded} if and only if it is bounded above and bounded below.
 \end{definition}
 
 \begin{proposition}
@@ -23,13 +23,13 @@ We first introduce the idea of upper bounds and lower bounds.
 \end{proof}
 
 \begin{example}
-    Consider the subset $\{1, 2, 3\}$. It has upper bounds of 3, 4, 5, etc. It has lower bounds of 1, 0, -1, etc.
+    Consider the set $\{1, 2, 3\}$. It has upper bounds of 3, 4, 5, etc. It has lower bounds of 1, 0, -1, etc. Thus $\{1, 2, 3\}$ is bounded.
 \end{example}
 
 It would be nice to define the `tightest' interval that contains a subset. That motivates the definition of a least upper bound and a greatest lower bound.
 
 \begin{definition}
-    Let $A\subseteq \R$ be a non-empty set that is bounded above. Then $M$ is called the \textbf{supremum}\index{supremum} (or \textbf{least upper bound}\index{upper bound!least}) if and only if
+    Let $A\subseteq \R$ be a non-empty set that is bounded above. Then $M$ is called the \term{supremum}\index{supremum} (or \term{least upper bound}\index{upper bound!least}) if and only if
     \begin{itemize}
         \item $M$ is an upper bound of $A$; and
         \item for any upper bound $m$ of $A$ we have $M \leq m$.
@@ -38,7 +38,7 @@ It would be nice to define the `tightest' interval that contains a subset. That 
 \end{definition}
 
 \begin{definition}
-    Let $A\subseteq \R$ be a non-empty set that is bounded below. Then $L$ is called the \textbf{infimum}\index{infimum} (or \textbf{greatest lower bound}\index{lower bound!greatest}) if and only if
+    Let $A\subseteq \R$ be a non-empty set that is bounded below. Then $L$ is called the \term{infimum}\index{infimum} (or \term{greatest lower bound}\index{lower bound!greatest}) if and only if
     \begin{itemize}
         \item $L$ is a lower bound of $A$; and
         \item for any lower bound $l$ of $A$ we have $L \geq l$.
@@ -54,7 +54,7 @@ It would be nice to define the `tightest' interval that contains a subset. That 
     Non-trivially, we see that $\sup [0, 3) = 3$ and $\inf [0, 3) = 0$.
 \end{example}
 
-For the two examples we are able to find the supremum, and that it is a real number. Actually, in the definition of the supremum and infimum, we did not assume that they are actually real numbers. We correct for this oversight by stating the Completeness axiom.
+For these two examples we were able to find the supremum, and that it is a real number. Actually, in the definition of the supremum and infimum, we did not assume that they are actually real numbers. We correct for this oversight by stating the completeness axiom.
 
 \begin{axiom}[Completeness]\index{axiom!completeness}\label{axiom-completeness}
     Every non-empty subset of $\R$ that is bounded above has a supremum within the real numbers.
@@ -67,7 +67,7 @@ We end this section with a property of suprema.
     Let $A$ be a set that is non-empty and bounded above. Let $p \in \R$. Then $p = \sup A$ if and only if $p$ is a upper bound of $A$ and for every $\epsilon > 0$ there exists an $a_\epsilon \in A$ such that $a_\epsilon > p - \epsilon$.
 \end{proposition}
 \begin{proof}
-    For the forward direction, we first assume that $p = \sup A$. Then clearly $p$ is an upper bound of $A$ by definition of the supremum. Now let $\epsilon > 0$. By definition of the supremum, we know that $p - \epsilon$ is not an upper bound of $A$. In particular there must be an element greater than $p - \epsilon$ and we may choose that element to be $a_\epsilon$ as required.
+    For the forward direction, we first assume that $p = \sup A$. Then clearly $p$ is an upper bound of $A$ by definition of the supremum. Now let $\epsilon > 0$. By definition of the supremum, we know that $p - \epsilon$ is not an upper bound of $A$. In particular there must be an element greater than $p - \epsilon$ and we may choose that element to be $a_\epsilon$.
 
     For the reverse direction we assume that the two conditions hold. Let $M$ be an upper bound of $A$ and, seeking a contradiction, suppose $M < p$. Set $\epsilon = p - M$. By the second condition there exists an $a_\epsilon \in A $ such that $a_\epsilon > p - \epsilon = p - (p - M) = M$, which clearly contradicts the fact that $M$ is an upper bound of $A$. Therefore $M \geq p$ which means that $\sup A = p$ as required.
 \end{proof}
@@ -80,11 +80,11 @@ We end this section with a property of suprema.
 Next on our journey to prove the Fundamental Theorem of Algebra we need to prove the Intermediate Value Theorem. Before that, though, we need to introduce the idea of continuous functions.
 
 \begin{definition}
-    Let $D$ be a non-empty subset of $\R$ and $x_0 \in D$. A function $f: D \to \R$ is said to be \textbf{continuous at $x_0$}\index{continuous!at a point} if and only if for all $\epsilon > 0$ there exists $\delta > 0$ such that for all $x \in D$,
+    Let $D$ be a non-empty subset of $\R$ and $x_0 \in D$. A function $f: D \to \R$ is said to be \term{continuous at $x_0$}\index{continuous!at a point} if and only if for all $\epsilon > 0$ there exists $\delta > 0$ such that for all $x \in D$,
     \[
         \text{if } |x - x_0| < \delta \text{ then } |f(x) - f(x_0)| < \epsilon.
     \]
-    The function $f: D \to \R$ is said to be \textbf{continuous}\index{continuous}\index{continuous!function}\index{function!continuous} if and only if $f$ is continuous at $x_0$ for all $x_0 \in D$.
+    The function $f: D \to \R$ is said to be \term{continuous}\index{continuous}\index{continuous!function}\index{function!continuous} if and only if $f$ is continuous at $x_0$ for all $x_0 \in D$.
 \end{definition}
 \begin{remark}
     Usually the domain $D$ is either $\R$ or an interval over $\R$.
@@ -281,7 +281,7 @@ With these two lemmas, we can prove the Fundamental Theorem of Algebra.
     \[
         [L:\R] = [L:\C][\C:\R]
     \]
-    it follows that $\Gal{L/\C}$ is also a 2-group, where $|\Gal{L/\C}| = 2^r$ where $r \geq 1$ because we assumed $L \neq \C$. So by the First Sylow Theorem (\myref{thrm-sylow-1}) $\Gal{L/\C}$ contains a subgroup $H$ of order $2^{r-1}$, meaning $[\Gal{L/\C}:H] = 2$ by Lagrange's theorem (\myref{thrm-lagrange}). In particular we can find a field $F = \Fix{L}{H}$ by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}), which also tells us that $H = \Gal{L/F}$. So we see
+    it follows that $\Gal{L/\C}$ is also a 2-group, where $|\Gal{L/\C}| = 2^r$ where $r \geq 1$ because we assumed $L \neq \C$. So by the First Sylow Theorem (\myref{thrm-sylow-1}), $\Gal{L/\C}$ contains a subgroup $H$ of order $2^{r-1}$, meaning $[\Gal{L/\C}:H] = 2$ by Lagrange's theorem (\myref{thrm-lagrange}). In particular we can find $F = \Fix{L}{H}$ by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}), which also tells us that $H = \Gal{L/F}$. So we see
     \[
         [F:\C] = [\Gal{L/\C}:\Gal{L/F}] = [\Gal{L/\C}:H] = 2
     \]
@@ -289,7 +289,7 @@ With these two lemmas, we can prove the Fundamental Theorem of Algebra.
     \[
         -\frac b2 \pm \frac{\sqrt{b^2 - 4c}}2
     \]
-    by the quadratic formula. One note that $b^2 - 4c \in \C$ and so $\sqrt{b^2-4c} \in \C$ by \myref{exercise-square-root-of-complex-number-is-complex-number} (later). Hence the two zeroes of $x^2 + bx + c$ are both complex numbers, which therefore means $\gamma \in \C$. This is a contradiction to the fact that $F \neq \C$.
+    by the quadratic formula. One notes that $b^2 - 4c \in \C$ and so $\sqrt{b^2-4c} \in \C$ by \myref{exercise-square-root-of-complex-number-is-complex-number} (later). Hence the two zeroes of $x^2 + bx + c$ are both complex numbers, which therefore means $\gamma \in \C$. This is a contradiction to the fact that $F \neq \C$.
 
     Therefore, $K = \C$, which shows that $\C$ is algebraically closed.
 \end{proof}
