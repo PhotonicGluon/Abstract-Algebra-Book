@@ -8,7 +8,7 @@ Recall from \myref{section-automorphism-groups} that the set of automorphisms of
     The set of all automorphisms of a field $F$ is a group under function composition.
 \end{proposition}
 \begin{remark}
-    We may reuse the notation used for the group of automorphisms of a group and denote the group of automorphisms of a field $F$ by $\Aut{F}$.
+    We reuse the notation used for the group of automorphisms of a group and denote the group of automorphisms of a field $F$ by $\Aut{F}$.
 \end{remark}
 \begin{proof}
     We prove the four group axioms.
@@ -49,7 +49,7 @@ We are particularly interested in automorphisms of an extension field that fixes
 \begin{proof}
     We show that this set is a subgroup of $\Aut{E}$. Note that $\id$ is an element of this subgroup since $\id(a) = a$ for all $a \in E$, including $a \in F$.
 
-    Now suppose $\phi$ and $\psi$ be two automorphisms of $E$ such that $\phi(a) = a$ and $\psi(a) = a$ for all $a \in F$. Then we note that $\phi\psi^{-1}$ is an automorphism of $E$ with
+    Now suppose $\phi$ and $\psi$ be two automorphisms of $E$ such that $\phi(a) = a$ and $\psi(a) = a$ for all $a \in F$. Then $\phi\psi^{-1}$ is an automorphism of $E$ where
     \begin{align*}
         \phi\psi^{-1}(a) &= \phi(\psi^{-1}(a))\\
         &= \phi(a) & (\text{since }\psi(a) = a \text{ thus } a = \psi^{-1}(a))\\
@@ -57,12 +57,12 @@ We are particularly interested in automorphisms of an extension field that fixes
     \end{align*}
     and so $\phi\psi^{-1}$ is an automorphism of $E$ that fixes $F$ elementwise.
 
-    Therefore the result follows by the subgroup test.
+    The result follows by the subgroup test.
 \end{proof}
 
 We have a special name for this group.
 \begin{definition}
-    Let $F$ be a field and $E/F$ a field extension. The group of all automorphisms of $E$ that fix $F$ elementwise is called the \textbf{Galois group of $E/F$}\index{Galois group} and is denoted $\Gal{E/F}$. That is,
+    Let $F$ be a field and $E/F$ a field extension. The group of all automorphisms of $E$ that fix $F$ elementwise is called the \term{Galois group of $E/F$}\index{Galois group} and is denoted $\Gal{E/F}$. That is,
     \[
         \Gal{E/F} = \left\{\phi \in \Aut{E} \vert \phi(a) = a \text{ for all } a \in F\right\}.
     \]
@@ -76,15 +76,15 @@ We have a special name for this group.
     \[
         \phi(a) = \phi(a + 0i) = a - 0i = a
     \]
-    for all $a \in \R$, therefore we see $\phi \in \Gal{\C/\R}$.
+    for all $a \in \R$, therefore $\phi \in \Gal{\C/\R}$.
 \end{example}
 
 \begin{example}\label{example-galois-group-of-Q-sqrt3-sqrt5-over-Q}
-    Consider the field $\Q \subset \Q(\sqrt5) \subset \Q(\sqrt3, \sqrt5)$. Then $\sigma: \Q(\sqrt3,\sqrt5) \to \Q(\sqrt3,\sqrt5)$ given by
+    Consider the tower of fields $\Q \subset \Q(\sqrt5) \subset \Q(\sqrt3, \sqrt5)$. Then $\sigma: \Q(\sqrt3,\sqrt5) \to \Q(\sqrt3,\sqrt5)$ given by
     \[
         \sigma(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) = a - b\sqrt3 + c\sqrt5 - d\sqrt{15}
     \]
-    is an automorphism. Also
+    for any $a,b,c,d \in \Q$ is an automorphism. Also one sees for any $a + b\sqrt5 \in \Q(\sqrt5)$ that
     \[
         \sigma(a + b\sqrt{5}) = a+b\sqrt5
     \]
@@ -92,7 +92,7 @@ We have a special name for this group.
     \[
         \tau(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) = a + b\sqrt3 - c\sqrt5 - d\sqrt{15}
     \]
-    is an automorphism that fixes $\Q(\sqrt3)$. The automorphism $\mu = \sigma\tau$ fixes $\Q(\sqrt{15})$. It will be clear soon that $S = \{\id, \sigma, \tau, \mu\}$ is $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
+    for any $a,b,c,d \in \Q$ is an automorphism that fixes $\Q(\sqrt3)$. The automorphism $\mu = \sigma\tau$ fixes $\Q(\sqrt{15})$. It will be clear soon that $S = \{\id, \sigma, \tau, \mu\}$ is $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
 
     \begin{minipage}[c]{0.475\textwidth}
         \begin{table}[H]
@@ -133,7 +133,7 @@ Why do we care about the Galois group? It turns out that an element of such a gr
 \begin{proposition}\label{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}
     Let $F$ be a field and $E/F$ a field extension. Let $f(x) \in F[x]$. Then any $\sigma \in \Gal{E/F}$ defines a permutation of the zeroes of $f(x)$ in $E$.
 \end{proposition}
-\begin{proof}[Proof (see {\cite[Proposition 23.5]{judson_beezer_2022}})]
+\begin{proof}
     Let $f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$ and suppose $\alpha \in E$ is a zero of $f(x)$. Then for any $\sigma \in \Gal{E/F}$ we see
     \begin{align*}
         0 &= \sigma(0) & (\sigma \text{ fixes elements in }F)\\
@@ -147,7 +147,7 @@ Why do we care about the Galois group? It turns out that an element of such a gr
 A partial converse of the above proposition exists for special kinds of elements, called conjugates.
 
 \begin{definition}
-    Let $F$ be a field and $E/F$ be a field extension. Two elements $\alpha,\beta \in E$ are \textbf{conjugate over $F$}\index{conjugate} if and only if they have the same minimal polynomial.
+    Let $F$ be a field and $E/F$ be a field extension. Two elements $\alpha,\beta \in E$ are \term{conjugate over $F$}\index{conjugate} if and only if they have the same minimal polynomial.
 \end{definition}
 
 \begin{example}
@@ -179,7 +179,7 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
 
     When $[E:F] = 1$, we have $E = F$ (\myref{prop-finite-extension-of-degree-1-means-extension-equals-base-field}). Therefore $\Gal{E/F}$ consists of only the identity automorphism and so $|\Gal{E/F}| = 1 = [E:F]$.
 
-    Now assume that for any field $F'$, any $\mathfrak{f}(x) \in F'[x]$, and the splitting field $E'$ of $\mathfrak{f}(x)$ over $F'$ such that $[E':F'] \leq k$ for some positive integer $k$, that $|\Gal{E'/F'}| = [E':F']$. We show that the theorem holds for a field $F$, a polynomial $f(x) \in F[x]$, and the splitting field $E$ of $f(x)$ over $F$ such that $[E:F] = k+1$, i.e. we are to show $|\Gal{E/F}| = k + 1$.
+    Now assume that $|\Gal{E'/F'}| = [E':F']$ for any field $F'$, any $\mathfrak{f}(x) \in F'[x]$, and splitting field $E'$ of $\mathfrak{f}(x)$ over $F'$ such that $[E':F'] \leq k$ for some positive integer $k$. We show that the theorem holds for a field $F$, a polynomial $f(x) \in F[x]$, and the splitting field $E$ of $f(x)$ over $F$ such that $[E:F] = k+1$, i.e. we are to show $|\Gal{E/F}| = k + 1$.
 
     Let $f(x) = p(x)q(x)$, where $p(x), q(x) \in E[x]$ and $p(x)$ is irreducible of degree $d$. If $d = 1$, then $f(x)$ has a zero in $F$ and so $p(x) \in F[x]$. This thus means that $q(x) \in F[x]$ also, and thus $E = F$ which leads to $[E:F] = 1$. If instead $d > 1$, let $\alpha \in E$ be a zero of $p(x)$. Using \myref{lemma-isomorphism-extension} where we pick $F' = F$, $\phi = \id$, and $\beta$ to be a zero of $p(x)$ in $E$, we obtain an isomorphism $\phi: F(\alpha) \to F(\beta)$ where elements of $F$ are fixed under $\phi$ and where $\alpha$ is mapped to $\beta$, i.e. $\beta = \phi(\alpha)$. Since $f(x)$ only has simple zeroes, thus $p(x)$ has $d$ distinct zeroes in $E$, say $\beta_1, \beta_2, \dots, \beta_d$. By \myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial} we therefore see that there are exactly $d$ isomorphisms $\sigma: F(\alpha) \to F(\beta_i)$ that fix $F$, one for each zero $\beta_1, \beta_2, \dots, \beta_d$ of $p(x)$.
 
@@ -187,7 +187,7 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
     \[
         k+1 = [E:F] = [E:F(\alpha)]\underbrace{[F(\alpha):F]}_{d}
     \]
-    and so $[E:F(\alpha)] = \frac{k + 1}{d}$. By Induction Hypothesis, this means that $|\Gal{E:F(\alpha)} = \frac{k+1}{d}$. In other words, there are $\frac{k+1}{d}$ automorphisms $\psi: E \to E$ that fix $F(\alpha)$. But there are $d$ isomorphisms $\sigma: F(\alpha) \to F(\beta_i)$ that fix $F$. Therefore there must be $\frac{k+1}{d} \times d = k+1$ choices for an automorphism in $\Aut{E}$ that fixes $F$, i.e. $|\Gal{E/F}| = k+1$ as required.
+    and so $[E:F(\alpha)] = \frac{k + 1}{d}$. By the induction hypothesis, this means that $|\Gal{E:F(\alpha)} = \frac{k+1}{d}$. In other words, there are $\frac{k+1}{d}$ automorphisms $\psi: E \to E$ that fix $F(\alpha)$. But there are $d$ isomorphisms $\sigma: F(\alpha) \to F(\beta_i)$ that fix $F$. Therefore there must be $\frac{k+1}{d} \times d = k+1$ choices for an automorphism in $\Aut{E}$ that fixes $F$, i.e. $|\Gal{E/F}| = k+1$ as required.
 
     By mathematical induction the claim is proven.
 \end{proof}
@@ -220,7 +220,7 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
     \end{itemize}
     Therefore $\sigma$ is an isomorphism from $E$ to $E$, i.e. $\sigma$ is an automorphism. So $\sigma \in \Aut{E}$.
 
-    We also note that because $F$ is the splitting field of $x^{p^n}-x$ over the base field of order $p$, therefore every element of $F$ is a zero of $x^{p^n}-x$, in particular $a^{p^n} - a = 0$ which means $a = a^{p^n}$ for any $a \in F$. Hence $\sigma(a) = a$ for all $a \in F$, which shows that $\sigma \in \Gal{E/F}$.
+    We also note that because $F$ is the splitting field of $x^{p^n}-x$ over the base field of order $p$, therefore every element of $F$ is a zero of $x^{p^n}-x$, in particular $a^{p^n} - a = 0$ for any $a \in F$, which means $a = a^{p^n}$ for any $a \in F$. Hence $\sigma(a) = a$ for all $a \in F$, which shows that $\sigma \in \Gal{E/F}$.
 
     Finally we show that the order of $\sigma$ in $\Gal{E/F}$ is $k$. Recall that since $E$ is the splitting field of $x^{p^m} - x$ over the base field of order $p$, therefore every element of $E$ is a zero of $x^{p^m} - x$ which results in $a^{p^m} = a$ for all $a \in E$. Thus one sees that
     \begin{align*}
@@ -251,14 +251,14 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
 For many results, we are interested in polynomials with only simple zeroes within its splitting field over the base field. These polynomials are called separable polynomials.
 
 \begin{definition}
-    Let $F$ be a field and $f(x) \in F[x]$. Let $E$ be the splitting field of $f(x)$ over $F$. Then $f(x)$ is called \textbf{separable}\index{polynomial!separable} if and only if it has only simple zeroes in $E$. In other words, over $E$,
+    Let $F$ be a field and $f(x) \in F[x]$. Let $E$ be the splitting field of $f(x)$ over $F$. Then $f(x)$ is called \term{separable}\index{polynomial!separable} if and only if it has only simple zeroes in $E$. In other words, over $E$,
     \[
         f(x) = a(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n)
     \]
     where each $\alpha_i$ is distinct.
 \end{definition}
 
-Recall that \myref{thrm-criterion-for-multiple-zeroes} tells us that a polynomial $f(x)$ has multiple zeroes if and only if $\deg \gcd(f(x), f'(x)) > 0$. Therefore a polynomial $f(x)$ has only simple zeroes if and only if $\gcd(f(x), f'(x)) = k$, a constant in $F$.
+Recall that \myref{thrm-criterion-for-multiple-zeroes} tells us that a polynomial $f(x)$ has multiple zeroes if and only if $\deg(\gcd(f(x), f'(x))) > 0$. Therefore a polynomial $f(x)$ has only simple zeroes if and only if $\gcd(f(x), f'(x)) = k$, a constant in $F$.
 
 Recall also from \myref{thrm-zeroes-of-an-irreducible} that an irreducible polynomial in $F[x]$ is separable if
 \begin{itemize}
@@ -267,7 +267,7 @@ Recall also from \myref{thrm-zeroes-of-an-irreducible} that an irreducible polyn
 \end{itemize}
 
 \begin{definition}
-    Let $F$ be a field. An extension $E$ is a \textbf{separable extension}\index{extension!separable} of $F$ if and only if every element of $E$ is a zero of a separable polynomial in $F[x]$.
+    Let $F$ be a field. An extension $E$ is a \term{separable extension}\index{extension!separable} of $F$ if and only if every element of $E$ is a zero of a separable polynomial in $F[x]$.
 \end{definition}
 
 \begin{proposition}\label{prop-algebraic-extension-of-field-of-characteristic-0-is-separable}
@@ -282,7 +282,7 @@ Separable extensions are nice in the way that they can be determined solely by o
 \begin{lemma}\label{lemma-primitive-element}
     Let $F$ be an infinite field and $E$ a finite separable extension of $F$. If $E = F(a, b)$ then there exists a $c \in E$ such that $E = F(c)$.
 \end{lemma}
-\begin{proof}[Proof (see {\cite[Theorem 21.6]{gallian_2016}} and {\cite[Theorem 23.13]{judson_beezer_2022}})]
+\begin{proof}[Proof (see {\cite[Theorem 21.6]{gallian_2016}})]
     Let $p(x)$ and $q(x)$ be the minimal polynomials over $F$ for $a$ and $b$ respectively. Let $K/F$ be a field extension where $a_1, a_2, \dots, a_m$ and $b_1, b_2, \dots, b_n$ are the zeroes of $p(x)$ and $q(x)$ in $K$, and where $a = a_1$ and $b = b_1$. Choose a $d \in F$ such that
     \[
         d \neq (a_i-a)(b-b_j)^{-1}
@@ -331,8 +331,10 @@ Separable extensions are nice in the way that they can be determined solely by o
 \end{exercise}
 
 \section{Fixed Fields}
+The Galois group of a field extension $E/F$ is the set of automorphisms of $E$ that fixes the elements of the base field $F$. We look at a related construct: the fixed field of a subgroup of automorphisms of $E$.
+
 \begin{definition}
-    Let $F$ be a field and $E/F$ be a field extension. Let $H$ be a subgroup of $\Gal{E/F}$. Then the \textbf{fixed field}\index{fixed field} of $H$ is
+    Let $F$ be a field and $E/F$ be a field extension. Let $H$ be a subgroup of $\Aut{E}$. Then the \term{fixed field}\index{fixed field} of $H$ is
     \[
         \Fix{E}{H} = \{x \in E \vert \phi(x) = x \text{ for all } \phi \in H\}.
     \]
@@ -342,7 +344,7 @@ Separable extensions are nice in the way that they can be determined solely by o
 \end{remark}
 
 \begin{proposition}\label{prop-fixed-field-is-subfield}
-    Let $F$ be a field, $E/F$ a field extension, and $H$ be a subgroup of $\Gal{E/F}$. Then $\Fix{E}{H}$ is a subfield of $E$.
+    Let $F$ be a field, $E/F$ a field extension, and $H$ be a subgroup of $\Aut{E}$. Then $\Fix{E}{H}$ is a subfield of $E$.
 \end{proposition}
 \begin{proof}
     See \myref{exercise-fixed-field-is-subfield} (later).
@@ -439,7 +441,7 @@ We end this section with the Fixed Field Theorem.
 We first define normal extensions.
 
 \begin{definition}
-    Let $F$ be a field and $E$ an algebraic extension of $F$. Then $E$ is called a \textbf{normal extension}\index{extension!normal} of $F$ if and only if every irreducible polynomial in $F[x]$ with \textit{at least one} zero in $E$ has \textit{all} of its zeroes in $E$. In other words, every irreducible polynomial in $F[x]$ with a zero in $E$ splits in $E$.
+    Let $F$ be a field and $E$ an algebraic extension of $F$. Then $E$ is called a \term{normal extension}\index{extension!normal} of $F$ if and only if every irreducible polynomial in $F[x]$ with \textit{at least one} zero in $E$ has \textit{all} of its zeroes in $E$. In other words, every irreducible polynomial in $F[x]$ with a zero in $E$ splits in $E$.
 \end{definition}
 
 Later we will see that normal extensions are, in some way, related to normal subgroups.
@@ -452,7 +454,7 @@ Later we will see that normal extensions are, in some way, related to normal sub
 \end{proof}
 
 \begin{definition}
-    Let $F$ be a field. A normal separable field extension $E/F$ is called a \textbf{Galois extension}\index{extension!Galois} of $F$.
+    Let $F$ be a field. A normal separable field extension $E/F$ is called a \term{Galois extension}\index{extension!Galois} of $F$.
 \end{definition}
 
 \begin{proposition}\label{prop-intermediate-field-of-galois-extension-is-galois-extension}
@@ -481,7 +483,7 @@ Later we will see that normal extensions are, in some way, related to normal sub
 
         To prove that the extension is Galois, let $f(x) \in F[x]$ be irreducible. We might as well assume $f(x)$ is monic since otherwise we may just divide all coefficients by the leading coefficient. Let $\alpha \in E$ be a zero of $f(x)$; we see that $f(x)$ is the minimal polynomial of $\alpha$. We show that $f(x)$ is the product of distinct linear factors in $E[x]$.
 
-        By \myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}, since $F$ is the set of elements of $E$ that are fixed by $G$, therefore automorphisms in $G$ permute the zeroes of $f(x)$ lying in $E$. Hence, applying the automorphisms of $G$ on the known zero $\alpha$ of $f(x)$, we can obtain distinct zeroes $\alpha_1 = \alpha, \alpha_2, \alpha_3, \dots, \alpha_n$ in $E$. Now let
+        By \myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}, since $F$ is the set of elements of $E$ that are fixed by $G$, therefore automorphisms in $G$ permute the zeroes of $f(x)$ lying in $E$. Hence, applying the automorphisms of $G$ on the known zero $\alpha$ of $f(x)$, we can obtain distinct zeroes $\alpha_1 = \alpha, \alpha_2, \alpha_3, \dots, \alpha_n \in E$. Now let
         \[
             g(x) = (x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n),
         \]
@@ -498,7 +500,7 @@ Later we will see that normal extensions are, in some way, related to normal sub
 \begin{proof}
     For the forward direction, if $E/F$ is finite and Galois, then $E$ is the splitting field of some separable polynomial $f(x) \in F[x]$ over $F$ (\myref{thrm-equivalence-of-finite-galois-extension}). Certainly a separable polynomial only has simple zeroes, so by \myref{thrm-order-of-galois-group-is-degree-of-field-extension} we have $|\Gal{E/F}| = [E:F]$.
 
-    For the reverse direction we first assume $|\Gal{E/F}| = [E:F]$. Note that $\Gal{E/F} \leq \Aut{E}$ by \myref{prop-galois-group-is-group}, $\Gal{E/F}$ is finite because $[E:F]$ is finite, and $F = \Fix{E}{\Gal{E/F}}$. So by \myref{thrm-equivalence-of-finite-galois-extension} we have $E$ is a finite Galois extension of $F$.
+    For the reverse direction we first assume $|\Gal{E/F}| = [E:F]$. We know that $\Gal{E/F} \leq \Aut{E}$ by \myref{prop-galois-group-is-group}. Also we know that $\Gal{E/F}$ is finite because $[E:F]$ is finite, and finally we know that $F = \Fix{E}{\Gal{E/F}}$. So by \myref{thrm-equivalence-of-finite-galois-extension} we have $E$ is a finite Galois extension of $F$.
 \end{proof}
 
 \begin{exercise}\label{exercise-intermediate-field-of-galois-extension-is-galois-extension}
@@ -525,7 +527,7 @@ To motivate the Fundamental Theorem of Galois Theory, we return back to a famili
     \end{figure}
 \end{example}
 
-The preceding example shows that, in certain cases, there is an intimate connection between the lattice of subfields between the fields $E$ and $F$ and the lattice of subgroups of $\Gal{E/F}$. This is the core idea of the Fundamental Theorem of Galois Theory.
+This example shows that, in certain cases, there is a connection between the lattice of subfields between the fields $E$ and $F$ and the lattice of subgroups of $\Gal{E/F}$. This is the core idea of the Fundamental Theorem of Galois Theory.
 
 \begin{theorem}[Fundamental Theorem of Galois Theory]\index{Fundamental Theorem of Galois Theory}\label{thrm-fundamental-theorem-of-galois-theory}
     Let $E$ be a finite Galois extension of a field $F$. Let $\mathcal{F}$ be the set of fields $K$ such that $F \subseteq K \subseteq E$ and $\mathcal{G}$ be the set of subgroups of $\Gal{E/F}$. Then the maps
@@ -540,7 +542,7 @@ The preceding example shows that, in certain cases, there is an intimate connect
 
     For the composition $\alpha\beta$, let $H \in \mathcal{G}$. Then $\beta(H) = \Fix{E}{H}$. By \myref{thrm-equivalence-of-finite-galois-extension} we therefore see that $E$ is a finite Galois extension of $\beta(H)$. For brevity let $K = \beta(H)$, so we have that $E$ is a finite Galois extension of $K$. Now on one hand, by the Fixed Field theorem (\myref{thrm-fixed-field}) we know that $|H| = [E:K]$. On the other hand, by \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}, since $E/K$ is finite and Galois, thus $|\Gal{E/K}| = [E:K]$. Therefore $|H| = |\Gal{E/K}|$; because $H \leq \Gal{E/K}$ by \myref{exercise-subgroup-of-Aut-E-is-subgroup-of-galois-group-of-fixed-field}, so $H = \Gal{E/K}$. So one sees that $\alpha(\beta(H)) = \alpha(K) = \Gal{E/K} = H$, meaning that $\alpha\beta(H) = H$ for all $H \in \mathcal{G}$.
 
-    For the composition $\beta\alpha$, let $K \in \mathcal{F}$. Then $\alpha(K) = \Gal{E/K}$; let $H = \Gal{E/K}$. Since $E/F$ is a finite Galois extension, thus $\Gal{E/F}$ is also finite (\myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}) and so $H$, being a subgroup of $\Gal{E/F}$, is also finite. Now let $K' = \beta(H) = \Fix{E}{H}$. Note that by \myref{prop-intermediate-field-of-galois-extension-is-galois-extension} we know that $E/K$ is a Galois extension. Therefore $E$ is a splitting field of some separable polynomial in $K[x]$ (\myref{thrm-equivalence-of-finite-galois-extension}), and hence $\Fix{E}{H} = \Fix{E}{\Gal{E}{K}} = K$ by \myref{prop-fixed-field-of-Gal-E/F-is-F}. So we see $K' = \Fix{E}{H} = K$, whence one sees $\beta\alpha(K) = K$ for all $K \in \mathcal{F}$.
+    For the composition $\beta\alpha$, let $K \in \mathcal{F}$. Then $\alpha(K) = \Gal{E/K}$; let $H = \Gal{E/K}$. Since $E/F$ is a finite Galois extension, thus $\Gal{E/F}$ is also finite (\myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}) and so $H$, being a subgroup of $\Gal{E/F}$, is also finite. Now let $K' = \beta(H) = \Fix{E}{H}$. Note that by \myref{prop-intermediate-field-of-galois-extension-is-galois-extension} we know that $E/K$ is a Galois extension. Therefore $E$ is a splitting field of some separable polynomial in $K[x]$ (\myref{thrm-equivalence-of-finite-galois-extension}), and hence $\Fix{E}{H} = \Fix{E}{\Gal{E/K}} = K$ by \myref{prop-fixed-field-of-Gal-E/F-is-F}. So we see $K' = \Fix{E}{H} = K$, whence one sees $\beta\alpha(K) = K$ for all $K \in \mathcal{F}$.
 \end{proof}
 
 The correspondence in the Fundamental Theorem of Galois Theory enjoys the following properties.
@@ -631,15 +633,15 @@ For Galois, the correspondence between groups and fields was only a means to an 
 Before we can answer that question, we need to build up some results regarding the solvability of equations by radicals.
 
 \begin{definition}
-    An extension field $E$ of a field $F$ is a \textbf{radical extension}\index{extension!radical}\index{radical extension} if and only if there exists a chain of subfields
+    An extension field $E$ of a field $F$ is a \term{radical extension}\index{extension!radical}\index{radical extension} if and only if there exists a chain of subfields
     \[
         F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_n = E,
     \]
-    called a \textbf{radical series}\index{radical series}, such that for $i = 1, 2, \dots, n$ we have $F_i = F_{i-1}(\alpha_i)$ for some $\alpha_i$ where $\alpha_i^{k_i} \in F_{i-1}$ for some positive integer $k_i$. A radical extension of the form $F(\alpha)$ is called a \textbf{simple radical extension}\index{extension!radical!simple}\index{radical extension!simple}.
+    called a \term{radical series}\index{radical series}, such that for $i = 1, 2, \dots, n$ we have $F_i = F_{i-1}(\alpha_i)$ for some $\alpha_i$ where $\alpha_i^{k_i} \in F_{i-1}$ for some positive integer $k_i$. A radical extension of the form $F(\alpha)$ is called a \term{simple radical extension}\index{extension!radical!simple}\index{radical extension!simple}.
 \end{definition}
 
 \begin{definition}
-    Let $F$ be a field and $f(x) \in F[x]$. We say that $f(x)$ is \textbf{solvable by radicals over $F$}\index{solvable!by radicals} if and only if the splitting field of $f(x)$ over $F$ is contained in a radical extension of $F$.
+    Let $F$ be a field and $f(x) \in F[x]$. We say that $f(x)$ is \term{solvable by radicals over $F$}\index{solvable!by radicals} if and only if the splitting field of $f(x)$ over $F$ is contained in a radical extension of $F$.
 \end{definition}
 
 In other words, a polynomial $f(x)$ is solvable by radicals over a field $F$ if we can obtain all its zeroes by adjoining $n$th roots (for various values of $n$) into some extension of $F$. In such cases, a zero of $f(x)$ would be written as a combination of addition, subtraction, multiplication, division, and taking $n$th roots.
@@ -673,11 +675,11 @@ In other words, a polynomial $f(x)$ is solvable by radicals over a field $F$ if 
 One of the easiest polynomials that can be solved by radicals are those of the form $x^n - a$. In particular, the zeroes of $x^n - 1$ have a special name.
 
 \begin{definition}
-    The zeroes of $x^n - 1$ are called the \textbf{$n$th roots of unity}\index{$n$th roots of unity}.
+    The zeroes of $x^n - 1$ are called the \term{$n$th roots of unity}\index{$n$th roots of unity}.
 \end{definition}
 
 \begin{definition}
-    An $n$th root of unity $\omega$ is called a \textbf{primitive $n$th root of unity}\index{$n$th roots of unity!primitive} if and only if $\omega^m \neq 1$ for all $m \in \{1, 2, \dots, n-1\}$.
+    An $n$th root of unity $\omega$ is called a \term{primitive $n$th root of unity}\index{$n$th roots of unity!primitive} if and only if $\omega^m \neq 1$ for all $m \in \{1, 2, \dots, n-1\}$.
 \end{definition}
 
 \begin{example}
@@ -689,7 +691,7 @@ Thus, we have transformed the problem of determining whether a polynomial is sol
 We now introduce a concept that appears to be disconnected with what we are interested in -- solvable groups.
 
 \begin{definition}
-    We say that a group $G$ is \textbf{solvable}\index{solvable}\index{solvable!group}\index{group!solvable} if and only if it has a subnormal series
+    We say that a group $G$ is \term{solvable}\index{solvable}\index{solvable!group}\index{group!solvable} if and only if it has a subnormal series
     \[
         1 = H_0 \lhd H_1 \lhd H_2 \lhd \cdots \lhd H_n = G
     \]
@@ -712,7 +714,7 @@ For finite groups, we have the following equivalent definition.
     \[
         1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_r = G
     \]
-    where each composition factor $K_{i+1}/K_i$ is abelian and simple. However by \myref{thrm-abelian-group-simple-iff-cylic-group-of-prime-order} we know that this means that each composition factor must be a cyclic group of prime order.
+    where each composition factor $K_{i+1}/K_i$ is abelian and simple. By \myref{thrm-abelian-group-simple-iff-cylic-group-of-prime-order} we know that this means that each composition factor must be a cyclic group of prime order.
 \end{proof}
 
 \begin{example}
@@ -727,7 +729,7 @@ For finite groups, we have the following equivalent definition.
         \item $\An{4}/\mathrm{V} \cong \Cn{3}$; and
         \item $\Sn{4}/\An{4} \cong \Cn{2}$.
     \end{itemize}
-    Therefore the composition series of $\Sn{4}$ is a subnormal series where each factor group is abelian. Therefore $\Sn{4}$ is solvable.
+    Therefore the composition factors are all cyclic groups of prime order. Hence $\Sn{4}$ is solvable by \myref{prop-solvable-equivalence-for-finite-groups}.
 \end{example}
 
 \begin{example}
@@ -738,7 +740,7 @@ For finite groups, we have the following equivalent definition.
     \[
         1 \lhd \An{3} \lhd \Sn{3}
     \]
-    and clearly $\An{3}/1 \cong \Cn{3}$ and $\Sn{3}/\An{3} \cong \Cn{2}$ are both abelian.
+    and clearly $\An{3}/1 \cong \Cn{3}$ and $\Sn{3}/\An{3} \cong \Cn{2}$ are both cyclic groups of prime order.
 
     For $\Sn{2}$, note $|\Sn{2}| = 2! = 2$ which is prime, which means $\Sn{2} \cong \Cn{2}$ which is abelian. Therefore the obvious subnormal series
     \[
@@ -751,7 +753,7 @@ For finite groups, we have the following equivalent definition.
     Prove that all abelian groups are solvable.
 \end{exercise}
 
-Our goal is to connect the notion of solvability by radicals with solvable groups.
+Our goal is to connect the notion of solvability by radicals with solvable groups. We first note the solvability of one of the simplest polynomials.
 
 \begin{theorem}\label{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable}
     Let $F$ be a field of characteristic 0 and $a \in F$. If $E$ is the splitting field of $x^n - a$ over $F$, then $\Gal{E/F}$ is solvable.
@@ -870,13 +872,13 @@ We are now ready to establish the connection between solvable groups and polynom
 
 
 \section{The Insolvability of the Quintic}
-We are now in a position to dispatch a problem that has plagued mathematicians for a long time -- whether a general solution for a quintic equation exists. But first, a lemma.
+We are now in a position to dispatch a problem that has plagued mathematicians for a long time -- whether a general solution for a quintic equation exists. Before that, we need the following lemma.
 
 \begin{lemma}\label{lemma-subgroup-containing-transposition-and-maximal-length-cycle-is-whole-symmetric-group}
-    Let $p$ be a prime and $G$ be a subgroup of $\Sn{p}$. If $G$ contains a transposition and a cycle of length $p$, then $G = \Sn{p}$.
+    Let $p$ be a prime and $G$ be a subgroup of $\Sn{p}$. If $G$ contains a transposition and a $p$-cycle, then $G = \Sn{p}$.
 \end{lemma}
 \begin{proof}
-    Let $G$ be a subgroup of $\Sn{p}$ that contains a cycle of length $p$ and a transposition, which we denote $\sigma$ and $\tau$ respectively. We can assume without loss of generality that $\tau = \begin{pmatrix}1&2\end{pmatrix}$, since otherwise we may just rename the elements to fit this form of $\tau$. Note also that $|\sigma| = p$ and so $\sigma^n$ must be a cycle of length $p$ for any $1 \leq n < p$. Therefore, assume without loss of generality that $\mu = \sigma^n = \begin{pmatrix}1&2&i_3&i_4&\cdots&i_p\end{pmatrix}$ for some $n$ where $1 \leq n < p$. Note that
+    Let $G$ be a subgroup of $\Sn{p}$ that contains a $p$-cycle and a transposition, which we denote $\sigma$ and $\tau$ respectively. We can assume without loss of generality that $\tau = \begin{pmatrix}1&2\end{pmatrix}$, since otherwise we may just rename the elements to fit this form of $\tau$. Note also that $|\sigma| = p$ and so $\sigma^n$ must be a cycle of length $p$ for any $1 \leq n < p$. Therefore, assume without loss of generality that $\mu = \sigma^n = \begin{pmatrix}1&2&i_3&i_4&\cdots&i_p\end{pmatrix}$ for some $n$ where $1 \leq n < p$. Note that
     \[
         \begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}1&2&i_3&i_4&\cdots&i_p\end{pmatrix} = \begin{pmatrix}2&i_3&i_4&\cdots&i_p\end{pmatrix}
     \]
@@ -952,7 +954,7 @@ Do not be mislead by the graph of $f(x)$ -- one can easily verify that -1.25, 0.
             1.75 & $\frac{7591}{1024}$ \\ \hline
         \end{tabular}
     \end{table}
-    From this table, one sees that $f(x)$ changes sign from -1.25 to -1, from -0.75 to -0.5, and from 1.5 to 1.75. By the stated fact, this means that there are 3 distinct real zeroes from -1.25 to 1.75. Let these zeroes by denoted by $\alpha_1$, $\alpha_2$, and $\alpha_3$ respectively. Now, one sees for any $x < -1.25$ that
+    From this table, one sees that $f(x)$ changes sign from -1.25 to -1, from -0.75 to -0.5, and from 1.5 to 1.75. By the stated fact, this means that there are 3 distinct real zeroes in the interval of -1.25 to 1.75. Let these zeroes by denoted by $\alpha_1$, $\alpha_2$, and $\alpha_3$ respectively. Now, one sees for any $x < -1.25$ that
     \[
         4x + 2 > 4(-1.25) + 2 = -3 > (-1.25)^5 = -\frac{3125}{1024} > x^5
     \]
@@ -989,7 +991,7 @@ Why is it important that the Galois group of that polynomial is $\Sn{5}$? It tur
     $\Sn{5}$ is not a solvable group.
 \end{proposition}
 \begin{proof}
-    We first find a composition series of $\Sn{5}$. Note that $\An{5}$ is a normal subgroup of $\Sn{5}$ (\myref{prop-An-normal-subgroup-of-Sn}), $|\Sn{5}| = 5! = 120$ (\myref{exercise-order-of-Sn}), and $|\An{5}| = \frac{5!}2 = 60$ (\myref{prop-order-of-An}). Since the order of a subgroup must divide the order of the group, the maximal order of a proper subgroup of $\Sn{5}$ is 60. Hence $\An{5}$ is the maximal (normal) subgroup of $\Sn{5}$. However $\An{5}$ is a simple group (\myref{thrm-An-is-simple-for-n>=5}) which means that it has no proper normal subgroups. Hence the composition series of $\Sn{5}$ is
+    We first find a composition series of $\Sn{5}$. Note that $\An{5}$ is a normal subgroup of $\Sn{5}$ (\myref{prop-An-normal-subgroup-of-Sn}), $|\Sn{5}| = 5! = 120$ (\myref{exercise-order-of-Sn}), and $|\An{5}| = \frac{5!}2 = 60$ (\myref{prop-order-of-An}). Since the order of a subgroup must divide the order of the group by Lagrange's theorem (\myref{thrm-lagrange}), the maximal order of a proper subgroup of $\Sn{5}$ is 60. Hence $\An{5}$ is the maximal (normal) subgroup of $\Sn{5}$. However $\An{5}$ is a simple group (\myref{thrm-An-is-simple-for-n>=5}) which means that it has no proper normal subgroups. Hence the composition series of $\Sn{5}$ is
     \[
         1 \lhd \An{5} \lhd \Sn{5}.
     \]
@@ -1059,7 +1061,7 @@ The obvious generalisation of the above fact is captured by the Abel-Ruffini the
 \end{problem}
 
 \begin{problem}
-    Let $\theta \in \R$. \textbf{De Moivre's formula}\index{De Moivre's formula} states that
+    Let $\theta \in \R$. \term{De Moivre's formula}\index{De Moivre's formula} states that
     \[
         (\cos\theta + i\sin\theta)^n = \cos(n\theta) + i\sin(n\theta)
     \]
@@ -1076,7 +1078,7 @@ The obvious generalisation of the above fact is captured by the Abel-Ruffini the
     \[
         D = \prod_{i<j}(\alpha_i - \alpha_j).
     \]
-    For example, for two distinct zeroes, $D = \alpha_1 - \alpha_2$. For three distinct zeroes, $D = (\alpha_1-\alpha_2)(\alpha_1-\alpha_3)(\alpha_2-\alpha_3)$. The \textbf{discriminant}\index{discriminant}\index{polynomial!discriminant} of $f(x)$ is defined to be $\Delta = D^2$.
+    For example, for two distinct zeroes, $D = \alpha_1 - \alpha_2$. For three distinct zeroes, $D = (\alpha_1-\alpha_2)(\alpha_1-\alpha_3)(\alpha_2-\alpha_3)$. The \term{discriminant}\index{discriminant}\index{polynomial!discriminant} of $f(x)$ is defined to be $\Delta = D^2$.
     \begin{partquestions}{\roman*}
         \item Verify that if $F = \Q$ then the discriminant of $x^4 - 6x^3 + 11x^2 - 6x$ is 144.
         \item Prove that $\Delta \in F$.\newline
