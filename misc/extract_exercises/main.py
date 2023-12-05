@@ -38,14 +38,16 @@ def extract_exercises_and_solutions(ex_or_prob, chapter_text, solutions_text):
 def write_exercises_and_solutions(exercises, solutions):
     output = ""
     num = len(exercises)
-    # print(solutions)
-    # print(num, len(solutions))
-    for i in range(num):
-        output += "\\begin{mdframed}"
-        output += exercises[i].rstrip()
-        output += "\n\\end{mdframed}\n\\textbf{Solution}:\\newline\n"
-        output += solutions[i]
-        output += "\n"
+
+    if num == 0:
+        output = "NIL\n"
+    else:
+        for i in range(num):
+            output += "\\begin{mdframed}"
+            output += exercises[i].rstrip()
+            output += "\n\\end{mdframed}\n\\textbf{Solution}:\\newline\n"
+            output += solutions[i]
+            output += "\n"
     
     return output
 
@@ -89,7 +91,6 @@ def generate_exercises_and_solutions(book_path):
 # MAIN CODE
 # Generate exercise and solutions code
 code_to_add = generate_exercises_and_solutions(f"{RELATIVE_PATH}/book.tex")
-# code_to_add = "%THIS IS A TEST"
 
 # Get template
 with open("template.tex", "r") as f:
