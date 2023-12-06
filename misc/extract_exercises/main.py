@@ -44,7 +44,7 @@ def write_exercises_and_solutions(exercises, solutions):
         output = "NIL\n"
     else:
         for i in range(num):
-            output += "\\begin{mdframed}"
+            output += f"\\begin{{mdframed}}\n\\textbf{{{i + 1}.}}"
             output += exercises[i].rstrip()
             output += "\n\\end{mdframed}\n\\textbf{Solution}:\\newline\n"
             output += solutions[i]
@@ -94,7 +94,7 @@ def generate_exercises_and_solutions(book_path):
 code_to_add = generate_exercises_and_solutions(f"{RELATIVE_PATH}/book.tex")
 
 # Get template
-with open("template.tex", "r") as f:
+with open("template.txt", "r") as f:
     content = f.read()
 
 # Prepend the comment to before the template's content
