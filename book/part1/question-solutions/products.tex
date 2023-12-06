@@ -1,4 +1,64 @@
 \section{Direct Products of Groups}
+\subsection*{Exercises}
+\begin{questions}
+    \item We prove the group axioms.
+    \begin{itemize}
+        \item \textbf{Closure}: Let $(g_1, h_1), (g_2, h_2) \in G \times H$. So $g_1, g_2 \in G$ and $h_1, h_2 \in H$. Thus $g_1g_2 \in G$ and $h_1h_2 \in H$ by closure of groups, and therefore $(g_1g_2, h_1h_2) \in G\times H$. Note that $(g_1, h_1)(g_2, h_2) = (g_1g_2, h_1h_2)$ by definition of the group operation in the external direct product, so $G \times H$ is closed under component-wise application of the group operations.
+
+        \item \textbf{Associativity}: Let $(g_1, h_1), (g_2, h_2), (g_3, h_3) \in G \times H$. Then we see
+        \begin{align*}
+            (g_1, h_1)\left((g_2, h_2)(g_3, h_3)\right) &= (g_1, h_1)(g_2g_3, h_2h_3)\\
+            &= (g_1(g_2g_3), h_1(h_2h_3))\\
+            &= ((g_1g_2)g_3, (h_1h_2)h_3)\\
+            &= (g_1g_2, h_1h_2)(g_3,h_3)\\
+            &= \left((g_1,h_1)(g_2,h_2)\right)(g_3,h_3)
+        \end{align*}
+        which proves the associativity of the group operation.
+
+        \item \textbf{Identity}: Let $e_G \in G$ and $e_H \in H$ be the identities of $G$ and $H$ respectively. Then we see for any $(g, h) \in G \times H$ that
+        \[
+            (e_G, e_H)(g, h) = (e_Gg, e_Hh) = (g, h)
+        \]
+        and
+        \[
+            (g, h)(e_G, e_H) = (ge_G, he_H) = (g, h),
+        \]
+        so $(e_G, e_H)$ is indeed the identity of $G \times H$.
+
+        \item \textbf{Inverse}: Let $(g, h) \in G \times H$. Note that
+        \[
+            (g, h)(g^{-1}, h^{-1}) = (gg^{-1}, hh^{-1}) = (e_G, e_H)
+        \]
+        and
+        \[
+            (g^{-1}, h^{-1})(g, h) = (g^{-1}g, h^{-1}h) = (e_G, e_H)
+        \]
+        so $\left((g, h)\right)^{-1} = (g^{-1}, h^{-1})$.
+    \end{itemize}
+    Therefore $G \times H$ is a group.
+
+    \item We work component-wise:
+    \begin{align*}
+        (s, rs)(r^2s, r^3) &= (sr^2s, rsr^3)\\
+        &= (s(r^2s), r(sr^3))\\
+        &= (s(sr), r(rs))\\
+        &= ((ss)r, (rr)s)\\
+        &= (r, r^2s)
+    \end{align*}
+
+    \item Note that $180 = 2^2 \times 3^2 \times 5$. By \myref{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition}, we must have $mn = 180$ and $\gcd(m, n) = 1$. Thus, the possible values for $m$ and $n$ are
+    \begin{itemize}
+        \item $m = 4$ and $n = 45$;
+        \item $m = 5$ and $n = 36$; and
+        \item $m = 9$ and $n = 20$.
+    \end{itemize}
+
+    \item Note that $5 \otimes_{12} 7 = 11$. Hence $GH = \{1, 5, 7, 11\}$.
+
+    \item From above exercise, $GH = \mathcal{S}$. Now $G = \langle 5 \rangle \cong \Z_2$ and $H \langle 7 \rangle \cong \Z_2$. Thus, $\mathcal{S} = GH = \cong G \times H \cong \Z_2 \times \Z_2 = (\Z_2)^2$, meaning $n = 2$.
+\end{questions}
+
+\subsection*{Problems}
 \begin{questions}
     \item Let $g_1, g_2 \in G$ and $h_1, h_2 \in H$. Then for $(g_1, h_1), (g_2, h_2) \in G\times H$ we see that
     \begin{align*}

@@ -1,4 +1,78 @@
 \section{Basics of Groups}
+\subsection*{Exercises}
+\begin{questions}
+    \item The Cayley table of $(\Z_6, \otimes_6)$ is as follows:
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|l|l|l|l|l|l|}
+        \hline
+        \textbf{$\otimes_n$} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline
+        \textbf{0}       & 0          & 0          & 0          & 0          & 0          & 0          \\ \hline
+        \textbf{1}       & 0          & 1          & 2          & 3          & 4          & 5          \\ \hline
+        \textbf{2}       & 0          & 2          & 4          & 0          & 2          & 4          \\ \hline
+        \textbf{3}       & 0          & 3          & 0          & 3          & 0          & 3          \\ \hline
+        \textbf{4}       & 0          & 4          & 2          & 0          & 4          & 2          \\ \hline
+        \textbf{5}       & 0          & 5          & 4          & 3          & 2          & 1          \\ \hline
+        \end{tabular}
+    \end{table}
+
+    Since the identity is $1$, and the row (and column) of 0 does not have a $1$, thus $0$ does not have an inverse. Therefore $(\Z_6, \oplus_6)$ is not a group.
+
+    \item Note that $(xx^{-1})^{-1} = (x^{-1})^{-1}x^{-1}$ by Shoes and Socks and $(xx^{-1})^{-1} = e^{-1} = e$. Thus $(x^{-1})^{-1}x^{-1} = e$. Multiplying both sides on the right by $x$ yields $(x^{-1})^{-1} = ex = x$, i.e. $(x^{-1})^{-1} = x$.
+
+    \item We consider a proof by induction via inducting on $n$.
+
+    The base case of $n = 0$ clearly holds true since
+    \begin{align*}
+        (x^{-1})^0 &= e & (\text{definition of }g^0 \text{ for any }g\in G)\\
+        &= e^{-1} & (\myref{prop-inverse-of-identity-is-identity})\\
+        &= (x^0)^{-1}. & (\text{definition of }x^0)
+    \end{align*}
+
+    Now assume that the statement holds for a non-negative integer $k$, i.e. $(x^{-1})^k = (x^k)^{-1}$. We are to show that the statement holds for $k+1$, i.e. $(x^{-1})^{k+1} = (x^{k+1})^{-1}$.
+
+    Observe that
+    \begin{align*}
+        (x^{-1})^{k+1} &= (x^{-1})^k \ast x^{-1} & (\text{by statement 1})\\
+        &= (x^k)^{-1} \ast x^{-1} & (\text{by hypothesis})\\
+        &= (x\ast x^k)^{-1} & (\text{by Shoes and Socks})\\
+        &= (x^{k+1})^{-1} & (\text{by statement 1})
+    \end{align*}
+    so the statement is true for $k+1$.
+
+    Thus, by induction, we have $(x^{-1})^n = (x^n)^{-1}$ for any non-negative integer $n$.
+
+    \item \begin{partquestions}{\roman*}
+        \item The identity is $1$ since:
+        \begin{itemize}
+            \item $1 \times 1 = 1$;
+            \item $1 \times (-1) = (-1) \times 1 = -1$;
+            \item $1 \times i = i \times 1 = i$; and
+            \item $1 \times (-i) = (-i) \times 1 = -i$.
+        \end{itemize}
+        \item The order of the identity $1$ is 1, so we look at the other elements:
+        \begin{itemize}
+            \item $|-1| = 2$ since $-1 \neq 1$ and $(-1)^2 = -1 \times -1 = 1$.
+            \item $|i| = 4$ since $i \neq 1$, $i^2 = -1 \neq 1$, $i^3 = -i \neq 1$, but $i^4 = 1$.
+            \item $|-i| = 4$ since $-i \neq 1$, $(-i)^2 = -1 \neq 1$, $(-i)^3 = i \neq 1$, but $(-i)^4 = 1$.
+        \end{itemize}
+    \end{partquestions}
+
+    \item $-i$ is the other generator since $(-i)^1 = -i$, $(-i)^2 = -1$, $(-i)^3 = i$, and $(-i)^4 = 1$.
+
+    \item We work slowly:
+    \begin{align*}
+        rsr^4sr^3 &= r(sr^4)(sr^3)\\
+        &= r(r^2s)(r^3s)\\
+        &= r^3sr^3s\\
+        &= r^3(sr^3)s\\
+        &= r^3(r^3s)s\\
+        &= r^6s^2\\
+        &= e
+    \end{align*}
+\end{questions}
+
+\subsection*{Problems}
 \begin{questions}
     \item The group table of $D_4$ is given as follows.
     \begin{table}[H]

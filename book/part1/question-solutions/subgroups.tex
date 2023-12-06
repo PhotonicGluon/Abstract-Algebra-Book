@@ -1,4 +1,67 @@
 \section{Subgroups}
+\subsection*{Exercises}
+\begin{questions}
+    \item \begin{partquestions}{\alph*}
+        \item We will prove this claim by using the 3 axioms. Clearly $\{e\} \subseteq G$.
+        \begin{itemize}
+            \item The only element in $\{e\}$ is $e$, and $e \ast e = e \in \{e\}$. Hence $\{e\}$ is closed.
+            \item The identity of the group $G$ is $e$ which is in $\{e\}$.
+            \item The inverse of $e$ is $e$ which is in $\{e\}$.
+        \end{itemize}
+        Hence, $\{e\} \leq G$.
+        \item We note that $G$ is a subset of $G$, and that $G$ is a group. Thus, $G$ is a subgroup of $G$ by definition of a subgroup.
+    \end{partquestions}
+
+    \item Since $G$ is closed, thus $g^n \in G$ for any integer $n$. Therefore $\langle g \rangle$ is a subset of $G$. Furthermore $e = g^0 \in \langle g\rangle$ by definition of $\langle g\rangle$, so $\langle g \rangle$ is non-empty.
+
+    Now suppose $x$ and $y$ are in $\langle g \rangle$, meaning that we may write $x = g^m$ and $y = g^n$ for some integers $m$ and $n$. One sees clearly that
+    \begin{align*}
+        xy^{-1} &= g^m\left(g^n\right)^{-1}\\
+        &= g^mg^{-n}\\
+        &= g^{m-n}\\
+        &\in \langle g\rangle.
+    \end{align*}
+
+    Therefore $\langle g \rangle \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
+
+    \item Note that $h \in G$ for any $h \in H$ (as $H \leq G$ so $H \subseteq G$). Since $G$ is closed, thus $ghg^{-1} \in G$ for any $h \in H$. Therefore $S$ is a subset of $G$. Also one sees clearly that $e$ is in $S$ since $geg^{-1} = gg^{-1} = e$ and $e \in H$, so $S$ is non-empty.
+
+    Now suppose $x$ and $y$ are in $S$. Then there exist elements $h_x$ and $h_y$ in $H$ such that $x = gh_xg^{-1}$ and $y = gh_yg^{-1}$. Note that
+    \begin{align*}
+        xy^{-1} &= (gh_xg^{-1})(gh_yg^{-1})^{-1}\\
+        &= (gh_xg^{-1})(g{h_y}^{-1}g^{-1}) & (\text{Shoes and Shocks})\\
+        &= gh_xg^{-1}g{h_y}^{-1}g^{-1} & (\text{associativity})\\
+        &= gh_x{h_y}^{-1}g^{-1} & (g^{-1}g = e).
+    \end{align*}
+    Note that since $H \leq G$, thus $h_x{h_y}^{-1} \in H$. Hence $xy^{-1} = g(h_x{h_y}^{-1})g^{-1} \in S$.
+
+    Therefore $S \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
+
+    \item \begin{partquestions}{\alph*}
+        \item Since $\oplus_8$ is commutative, thus $gH = Hg$.\newline
+        (Actually, since $G$ is an additive group, the better thing to write is $g \oplus_8 H = H \oplus_8 g$.)
+        \item There are 4 distinct left cosets of $H$ in $G$.
+        \begin{itemize}
+            \item $0 \oplus_8 H = \{0, 4\} = H$
+            \item $1 \oplus_8 H = \{1, 5\}$
+            \item $2 \oplus_8 H = \{2, 6\}$
+            \item $3 \oplus_8 H = \{3, 7\}$
+        \end{itemize}
+    \end{partquestions}
+
+    \item Let $x$ be in $g_1H \cap g_2H$. Then $x \in g_1H$ and $x \in g_2H$ simultaneously. Hence, $x = g_1h = g_2\hat{h}$ for some $h, \hat{h} \in H$. Thus, by rearrangement, $g_2^{-1}g_1 = \hat{h}h^{-1} \in H$. By Coset Equality (\myref{lemma-coset-equality}), statements 1 and 5, $g_1H = g_2H$.
+
+    \item Note that $|G| = 99$ and $|H| = 3$, so $[G:H] = \frac{99}{3} = 33$ by Lagrange's theorem (\myref{thrm-lagrange}).
+
+    \item Let $x \in G$ with $x \neq e$. Then $|x| > 1$. By \myref{corollary-order-of-group-multiple-of-order-of-element}, the order of $x$ is a factor of $|G| = p$. Since $p$ is prime, $|x| = 1$ (which is not possible) or $|x| = p$. Hence $|x| = p$.
+
+    \item \begin{partquestions}{\roman*}
+        \item By \myref{prop-subgroup-of-abelian-group-is-normal} every subgroup of $G$ is normal. Hence $H$ is a normal subgroup of $G$, meaning $G/H$ is a quotient group by \myref{thrm-quotient-group-requirement}.
+        \item Let $g$ be the generator of $G$. Consider $xH \in G/H$. Since $x \in G$ and $G$ is cyclic, thus there exists an integer $k$ such that $x = g^k$. Hence, $xH = g^kH = (gH)^k$ which means that $gH$ generates any element in $G/H$. Therefore $gH$ is a generator of $G/H$, meaning $G/H$ is cyclic.
+    \end{partquestions}
+\end{questions}
+
+\subsection*{Problems}
 \begin{questions}
     \item We note that $G$ contains $\{e, r, r^2, r^3, s, rs, r^2s, r^3s\}$.
     \begin{partquestions}{\alph*}
