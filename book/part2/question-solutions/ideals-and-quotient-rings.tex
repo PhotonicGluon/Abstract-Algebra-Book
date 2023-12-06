@@ -1,4 +1,91 @@
 \section{Ideals and Quotient Rings}
+\subsection*{Exercises}
+\begin{questions}
+    \item We are given that $(I, +) \leq (R,+)$, so all that remains to show is that $I$ is closed under multiplication. Take any two elements $x$ and $y$ in $I$. Since $I$ is an ideal, thus we have $ri \in I$ for any $r \in R$ and $i \in I$. Viewing $x$ as an element of $R$ and $y$ as an element of $I$, we see that $xy \in I$, meaning $I$ is closed under multiplication. Hence $I$ is a subring of $R$.
+
+    \item \begin{partquestions}{\roman*}
+        \item Clearly the zero matrix, the additive identity of $R$, is inside $I$. Also,
+        \[
+            \begin{pmatrix}a&b\\0&0\end{pmatrix} + (-\begin{pmatrix}c&d\\0&0\end{pmatrix}) = \begin{pmatrix}a-c&b-d\\0&0\end{pmatrix} \in I
+        \]
+        so $I$ is a subring of $R$.
+
+        \item Let $\begin{pmatrix}a&b\\0&0\end{pmatrix} \in I$ and $\begin{pmatrix}x&y\\0&z\end{pmatrix} \in R$. We need to show that $I$ is both a left and right ideal.
+        \begin{itemize}
+            \item \textbf{Left Ideal}:
+            \[
+                \begin{pmatrix}x&y\\0&z\end{pmatrix}\begin{pmatrix}a&b\\0&0\end{pmatrix} = \begin{pmatrix}xa&xb\\0&0\end{pmatrix} \in I;
+            \]
+            and
+            \item \textbf{Right Ideal}: \[
+                \begin{pmatrix}a&b\\0&0\end{pmatrix}\begin{pmatrix}x&y\\0&z\end{pmatrix} = \begin{pmatrix}ax&ay+bz\\0&0\end{pmatrix} \in I.
+            \]
+        \end{itemize}
+        Therefore $I$ is an ideal of $R$.
+
+        \item $\begin{pmatrix}1&0\\0&1\end{pmatrix} + I$
+    \end{partquestions}
+
+    \item \begin{partquestions}{\roman*}
+        \item If $1 \in I$, then for any element $r \in R$, we must have $r = 1r \in I$ since $I$ is an ideal of $R$. Therefore $R \subseteq I$. But by definition of an ideal, $I \subseteq R$. Therefore $I = R$.
+
+        \item For the forward direction, if $I$ contains a unit $u$, then there exists a $v \in R$ such that $uv = 1$. Note $uv \in I$ since $u \in I$ and $I$ is an ideal, so $1 \in I$. By \textbf{(i)} we have $I = R$.
+
+        For the reverse direction, note that $1 \in R$ and so $1 \in I$ since $I = R$. Clearly 1 is a unit since $1\times1 = 1$. Therefore $I$ contains a unit.
+    \end{partquestions}
+
+    \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\ideal{a}\cap\ideal{b}$ is an ideal. We note that as $\ideal{a}$ and $\ideal{b}$ are ideals, they are therefore subrings of $R$. Thus, 0 is in both $\ideal{a}$ and $\ideal{b}$, meaning $0 \in \ideal{a}\cap\ideal{b}$. Hence $\ideal{a}\cap\ideal{b}$ is non-empty.
+
+    Suppose $i,j\in\ideal{a}\cap\ideal{b}$, so $i,j \in \ideal{a}$ and $i,j \in \ideal{b}$. Note $\ideal{a}$ and $\ideal{b}$ are ideals and so are subrings, which means that $i-j \in \ideal{a}$ and $i-j \in \ideal{b}$, which hence means $i-j \in \ideal{a}\cap\ideal{b}$, satisfying the first statement for the test for ideals.
+
+    Now suppose $r \in R$ and $i \in \ideal{a}\cap\ideal{b}$. This means that $i \in \ideal{a}$ and $i \in \ideal{b}$. So we have $ri, ir \in \ideal{a}$ (since $\ideal{a}$ is an ideal) and $ri, ir \in \ideal{b}$ (since $\ideal{b}$ is an ideal). Therefore $ri,ir \in \ideal{a}\cap\ideal{b}$, so by the test for ideal we have $\ideal{a}\cap\ideal{b}$ is an ideal.
+
+    \item Let $R$ be a commutative ring with identity and $\princ{a}$ be a principal ideal of $R$. We note any element in $\princ{a}$ takes the form $ar$ for some element $r \in R$. We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove this. Clearly $\princ{a}$ is non-empty as $0 = a0 \in \princ{a}$.
+
+    Let $ar_1, ar_2 \in \princ{a}$. Clearly $ar_1 - ar_2 = a(r_1-r_2) \in \princ{a}$, so the first condition for the test for ideal is satisfied. Now take any $r \in R$ and let $ax \in \princ{a}$. Then $r(ax) = (ax)r = a(xr) \in \princ{a}$ since $R$ is commutative. Therefore by the test for ideal we have $\princ{a}$ is an ideal of $R$.
+
+    \item \begin{partquestions}{\alph*}
+        \item Clearly $\{0\} = \princ{0}$ since $0r = 0$ for any $r \in R$.
+        \item Let 1 be the identity of $R$. Then $R = \{r \vert r \in R\} = \{1r \vert r \in R\} = \princ{1}$.
+    \end{partquestions}
+
+    \item We show that $\princ2$ is indeed a prime ideal of $\Z_8$. Without loss of generality, assume that $a \leq b$.
+    \begin{itemize}
+        \item If $ab = 0 \in \princ{2}$, then clearly $a = b = 0$ which is in $\princ{2}$.
+        \item If $ab = 2 \in \princ{2}$, then $a = 1$ and $b = 2$. Note $b = 2 \in \princ{2}$.
+        \item If $ab = 4 \in \princ{2}$, then $a = 1$ and $b = 4$ or $a = b = 2$. Note $2 \in \princ{2}$ and $4 \in \princ{2}$.
+        \item If $ab = 6 \in \princ{2}$, then $a = 1$ and $b = 6$ or $a = 2$ and $b = 3$. Note $2 \in \princ{2}$ and $6 \in \princ{2}$.
+    \end{itemize}
+    In all cases, we see that if $ab \in \princ{2}$, then at least one of $a$ or $b$ is also in $\princ{2}$. Thus $\princ{2}$ is a prime ideal of $\Z_8$.
+
+    \item Note that $\Z$ is a PID (\myref{prop-Z-is-PID}). We claim that $n$ has to be prime. By way of contradiction suppose $n$ is composite, meaning $n = ab$ where $2 \leq a,b < n$. Note $\princ{n} = \princ{ab} = \{\dots, -ab, 0, ab, \dots\}$. Observe that
+    \begin{align*}
+        \princ{a} &= \{\dots, -a(b+1), -ab, -a(b-1), \dots, -a,\\
+        &\quad\quad0, a, \dots, a(b-1), ab, a(b+1), \dots\}
+    \end{align*}
+    so $\princ{n} \subset \princ{a}$. Similarly, $\princ{n} \subset \princ{b}$. However, as $\princ{n}$ is a maximal ideal, there does not exist a positive integer $k$ such that $\princ{n} \subset \princ{k} \subset \Z$. This contradicts the fact that we have both $\princ{n} \subset \princ{a}$ and $\princ{n} \subset \princ{b}$. Therefore, $n$ has to be prime.
+
+    \item No. Let $I = \princ{3-i}$. Observe that
+    \begin{align*}
+        ((1+i)+I)((1-2i)+I) &= (1+i)(1-2i) + I\\
+        &= (1-2i+i-2i^2) + I\\
+        &= \underbrace{(3 - i)}_{\text{In }I} + I\\
+        &= 0 + I
+    \end{align*}
+    so $((1+i)+I)$ and $((1-2i)+I)$ are zero divisors in $\Z[i]/I$. Therefore $\Z[i]/I$ is not an integral domain, meaning that $I$ is not a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}).
+
+    \item If $P$ is a prime ideal of $R$, then $R/P$ is an integral domain by \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}. Now $R$ is finite, meaning that $R/P$ is finite. Therefore, by \myref{thrm-finite-integral-domain-is-field}, $R/P$ is a field which therefore means that $P$ is maximal by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
+
+    \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\Ann{R}{A}$ is an ideal of $R$. We note that $\Ann{R}{A}$ is non-empty since 0 is in $\Ann{R}{A}$ (because $0a = 0$ for any $a \in A$).
+
+    Take any $r, s \in \Ann{R}{A}$, and an $a \in A$. Then one sees clearly that $(r-s)a = rs - sa = 0 - 0 = 0$ so $r-s \in \Ann{R}{A}$.
+
+    Now take an $r \in \Ann{R}{A}$, an $a \in A$, and a $x \in R$. Note $(rx)a = (xr)a = x(ra) = x0 = 0$ since $R$ is commutative, which means that $rx, xr \in \Ann{R}{A}$.
+
+    By the test for ideal, $\Ann{R}{A}$ is an ideal of $R$.
+\end{questions}
+
+\subsection*{Problems}
 \begin{questions}
     \item Note that $36 = 2^2 \times 3^2$. So
     \begin{align*}
