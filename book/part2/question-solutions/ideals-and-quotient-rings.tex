@@ -6,21 +6,18 @@
     \item \begin{partquestions}{\roman*}
         \item Clearly the zero matrix, the additive identity of $R$, is inside $I$. Also,
         \[
-            \begin{pmatrix}a&b\\0&0\end{pmatrix} + (-\begin{pmatrix}c&d\\0&0\end{pmatrix}) = \begin{pmatrix}a-c&b-d\\0&0\end{pmatrix} \in I
+            \begin{pmatrix}a&b\\0&0\end{pmatrix} + \left(-\begin{pmatrix}c&d\\0&0\end{pmatrix}\right) = \begin{pmatrix}a-c&b-d\\0&0\end{pmatrix} \in I
         \]
         so $I$ is a subring of $R$.
 
-        \item Let $\begin{pmatrix}a&b\\0&0\end{pmatrix} \in I$ and $\begin{pmatrix}x&y\\0&z\end{pmatrix} \in R$. We need to show that $I$ is both a left and right ideal.
-        \begin{itemize}
-            \item \textbf{Left Ideal}:
-            \[
-                \begin{pmatrix}x&y\\0&z\end{pmatrix}\begin{pmatrix}a&b\\0&0\end{pmatrix} = \begin{pmatrix}xa&xb\\0&0\end{pmatrix} \in I;
-            \]
-            and
-            \item \textbf{Right Ideal}: \[
-                \begin{pmatrix}a&b\\0&0\end{pmatrix}\begin{pmatrix}x&y\\0&z\end{pmatrix} = \begin{pmatrix}ax&ay+bz\\0&0\end{pmatrix} \in I.
-            \]
-        \end{itemize}
+        \item Let $\begin{pmatrix}a&b\\0&0\end{pmatrix} \in I$ and $\begin{pmatrix}x&y\\0&z\end{pmatrix} \in R$. We note that
+        \[
+            \begin{pmatrix}x&y\\0&z\end{pmatrix}\begin{pmatrix}a&b\\0&0\end{pmatrix} = \begin{pmatrix}xa&xb\\0&0\end{pmatrix} \in I
+        \]
+        and
+        \[
+            \begin{pmatrix}a&b\\0&0\end{pmatrix}\begin{pmatrix}x&y\\0&z\end{pmatrix} = \begin{pmatrix}ax&ay+bz\\0&0\end{pmatrix} \in I.
+        \]
         Therefore $I$ is an ideal of $R$.
 
         \item $\begin{pmatrix}1&0\\0&1\end{pmatrix} + I$
@@ -44,7 +41,8 @@
 
     Let $ar_1, ar_2 \in \princ{a}$. Clearly $ar_1 - ar_2 = a(r_1-r_2) \in \princ{a}$, so the first condition for the test for ideal is satisfied. Now take any $r \in R$ and let $ax \in \princ{a}$. Then $r(ax) = (ax)r = a(xr) \in \princ{a}$ since $R$ is commutative. Therefore by the test for ideal we have $\princ{a}$ is an ideal of $R$.
 
-    \item \begin{partquestions}{\alph*}
+    \item Let $R$ be a commutative ring with identity.
+    \begin{partquestions}{\alph*}
         \item Clearly $\{0\} = \princ{0}$ since $0r = 0$ for any $r \in R$.
         \item Let 1 be the identity of $R$. Then $R = \{r \vert r \in R\} = \{1r \vert r \in R\} = \princ{1}$.
     \end{partquestions}
@@ -59,10 +57,9 @@
     In all cases, we see that if $ab \in \princ{2}$, then at least one of $a$ or $b$ is also in $\princ{2}$. Thus $\princ{2}$ is a prime ideal of $\Z_8$.
 
     \item Note that $\Z$ is a PID (\myref{prop-Z-is-PID}). We claim that $n$ has to be prime. By way of contradiction suppose $n$ is composite, meaning $n = ab$ where $2 \leq a,b < n$. Note $\princ{n} = \princ{ab} = \{\dots, -ab, 0, ab, \dots\}$. Observe that
-    \begin{align*}
-        \princ{a} &= \{\dots, -a(b+1), -ab, -a(b-1), \dots, -a,\\
-        &\quad\quad0, a, \dots, a(b-1), ab, a(b+1), \dots\}
-    \end{align*}
+    \[
+        \princ{a} = \{\dots, -a(b+1), -ab, -a(b-1), \dots, -a, 0, a, \dots, a(b-1), ab, a(b+1), \dots\}
+    \]
     so $\princ{n} \subset \princ{a}$. Similarly, $\princ{n} \subset \princ{b}$. However, as $\princ{n}$ is a maximal ideal, there does not exist a positive integer $k$ such that $\princ{n} \subset \princ{k} \subset \Z$. This contradicts the fact that we have both $\princ{n} \subset \princ{a}$ and $\princ{n} \subset \princ{b}$. Therefore, $n$ has to be prime.
 
     \item No. Let $I = \princ{3-i}$. Observe that
@@ -72,15 +69,15 @@
         &= \underbrace{(3 - i)}_{\text{In }I} + I\\
         &= 0 + I
     \end{align*}
-    so $((1+i)+I)$ and $((1-2i)+I)$ are zero divisors in $\Z[i]/I$. Therefore $\Z[i]/I$ is not an integral domain, meaning that $I$ is not a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}).
+    so $(1+i)+I$ and $(1-2i)+I$ are zero divisors in $\Z[i]/I$. Therefore $\Z[i]/I$ is not an integral domain, meaning that $I$ is not a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}).
 
     \item If $P$ is a prime ideal of $R$, then $R/P$ is an integral domain by \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}. Now $R$ is finite, meaning that $R/P$ is finite. Therefore, by \myref{thrm-finite-integral-domain-is-field}, $R/P$ is a field which therefore means that $P$ is maximal by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
 
     \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\Ann{R}{A}$ is an ideal of $R$. We note that $\Ann{R}{A}$ is non-empty since 0 is in $\Ann{R}{A}$ (because $0a = 0$ for any $a \in A$).
 
-    Take any $r, s \in \Ann{R}{A}$, and an $a \in A$. Then one sees clearly that $(r-s)a = rs - sa = 0 - 0 = 0$ so $r-s \in \Ann{R}{A}$.
+    Take any $r, s \in \Ann{R}{A}$ and $a \in A$. Then one sees clearly that $(r-s)a = rs - sa = 0 - 0 = 0$ so $r-s \in \Ann{R}{A}$.
 
-    Now take an $r \in \Ann{R}{A}$, an $a \in A$, and a $x \in R$. Note $(rx)a = (xr)a = x(ra) = x0 = 0$ since $R$ is commutative, which means that $rx, xr \in \Ann{R}{A}$.
+    Now take an $r \in \Ann{R}{A}$, $a \in A$, and $x \in R$. Note $(rx)a = (xr)a = x(ra) = x0 = 0$ since $R$ is commutative, which means that $rx, xr \in \Ann{R}{A}$.
 
     By the test for ideal, $\Ann{R}{A}$ is an ideal of $R$.
 \end{questions}
@@ -90,8 +87,8 @@
     \item Note that $36 = 2^2 \times 3^2$. So
     \begin{align*}
         \Ann{\Z_{36}}{\{15\}} &= \{r \in \Z_{36} \vert 15r = 0\}\\
-        &= \{r \in \Z_{15} \vert 3(5r) = 0\}\\
-        &= \{r \in \Z_{15} \vert r \text{ is a multiple of }2^2\times3 = 12\}\\
+        &= \{r \in \Z_{36} \vert 3(5r) = 0\}\\
+        &= \{r \in \Z_{36} \vert r \text{ is a multiple of }2^2\times3 = 12\}\\
         &= \{0,12,24\}.
     \end{align*}
 
@@ -108,34 +105,34 @@
     \end{itemize}
     Therefore $S$ is a subring of $\Z[i]$.
 
-    We now show that $S$ is not an ideal of $\Z[i]$. Consider $1+2i \in \S$ and $1+i \in \Z[i]$. Then
+    We now show that $S$ is not an ideal of $\Z[i]$. Consider $1+2i \in S$ and $1+i \in \Z[i]$. Then
     \begin{align*}
         (1+2i)(1+i) &= 1+i+2i+2i^2\\
         &= -1 + 3i\\
         &\notin S
     \end{align*}
-    so there exists a $s \in S$ and a $r \in \Z[i]$ such that $rs\notin S$, meaning that $S$ is not a left ideal (and hence is not an ideal).
+    so there exists $s \in S$ and $r \in \Z[i]$ such that $rs \notin S$, meaning that $S$ is not an ideal.
 
     \item We consider the test for ideal (\myref{thrm-test-for-ideal}).
     \begin{itemize}
-        \item Note that $\begin{pmatrix}0&0\\0&0\end{pmatrix}=\begin{pmatrix}2(0)&2(0)\\2(0)&(0)\end{pmatrix}$ is in $I$ so $I$ is non-empty.
+        \item Note that $\begin{pmatrix}0&0\\0&0\end{pmatrix}=\begin{pmatrix}2(0)&2(0)\\2(0)&(0)\end{pmatrix} \in I$ so $I$ is non-empty.
+        
         \item $\begin{pmatrix}2a&2b\\2c&2d\end{pmatrix}-\begin{pmatrix}2e&2f\\2g&2h\end{pmatrix} = \begin{pmatrix}2(a-e)&2(b-f)\\2(c-g)&2(d-h)\end{pmatrix} \in I$.
-        \item To show left ideal, take $\begin{pmatrix}2a&2b\\2c&2d\end{pmatrix} \in I$ and $\begin{pmatrix}e&f\\g&h\end{pmatrix} \in \Mn{2}{\Z}$. Then
+        
+        \item For any $\begin{pmatrix}2a&2b\\2c&2d\end{pmatrix} \in I$ and $\begin{pmatrix}e&f\\g&h\end{pmatrix} \in \Mn{2}{\Z}$ we see
         \begin{align*}
             \begin{pmatrix}2a&2b\\2c&2d\end{pmatrix}\begin{pmatrix}e&f\\g&h\end{pmatrix} &= \begin{pmatrix}2ae+2bg&2af+2bh\\2ce+2dg&2cf+2dh\end{pmatrix}\\
             &= \begin{pmatrix}2(ae+bg)&2(af+bh)\\2(ce+dg)&2(cf+dh)\end{pmatrix}\\
-            &\in I
+            &\in I.
         \end{align*}
-        so $I$ is a left ideal of $\Mn{2}{\Z}$.
-        \item To show right ideal, take $\begin{pmatrix}a&b\\c&d\end{pmatrix} \in \Mn{2}{\Z}$ and $\begin{pmatrix}2e&2f\\2g&2h\end{pmatrix} \in I$. Then
+        Also for any $\begin{pmatrix}a&b\\c&d\end{pmatrix} \in \Mn{2}{\Z}$ and $\begin{pmatrix}2e&2f\\2g&2h\end{pmatrix} \in I$ we have
         \begin{align*}
             \begin{pmatrix}a&b\\c&d\end{pmatrix}\begin{pmatrix}2e&2f\\2g&2h\end{pmatrix} &= \begin{pmatrix}2ae+2bg&2af+2bh\\2ce+2dg&2cf+2dh\end{pmatrix}\\
             &= \begin{pmatrix}2(ae+bg)&2(af+bh)\\2(ce+dg)&2(cf+dh)\end{pmatrix}\\
-            &\in I
+            &\in I.
         \end{align*}
-        so $I$ is a right ideal of $\Mn{2}{\Z}$.
     \end{itemize}
-    Therefore by the test for ideal we have $I$ is an ideal of $\Mn{2}{\Z}$.
+    Therefore by the test for ideal we see that $I$ is an ideal of $\Mn{2}{\Z}$.
 
     \item \begin{partquestions}{\alph*}
         \item Suppose $I$ is not the trivial ring; we want to show that $I = R$. Since $I$ is non-trivial there there exists a non-zero element $a$ in $I$. Note that $a^{-1}$ exists since $R$ is a field, so $a$ is a unit. By \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring} this means $I = R$. Note that $\{0\} = \princ{0}$ and $R = \princ{1}$ by \myref{exercise-trivial-ideal-and-whole-ring-are-principal-ideals}, so $R$ is indeed a PID.
