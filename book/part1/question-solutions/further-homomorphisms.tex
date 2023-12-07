@@ -7,7 +7,7 @@
         &= (2a) \oplus_6 (2b)\\
         &= \phi(a) \oplus_6 \phi(b).
     \end{align*}
-    The image is $\{0, 2, 4\}$.
+    The image of $\phi$ is $\{0, 2, 4\}$.
 
     \item $\phi$ is a homomorphism since
     \begin{align*}
@@ -15,20 +15,27 @@
         &=i^ai^b\\
         &=\phi(a)\phi(b).
     \end{align*}
-    The kernel is the set of values which map to the identity of $H$, i.e. $\{n \in \Z \vert \phi(n) = 1\}$. Now note $H$ is a cyclic group and $|i| = 4$. Thus $i^4 = 1$. Furthermore $i^8 = (i^4)^2 = 1, i^{12} = 1, \dots, i^{4k} = 1$. Thus $\ker\phi = \{4n \vert n \in \Z\} = 4\Z$ (using coset notation).
+    The kernel is the set of values which map to the identity of $H$, i.e. $\{n \in \Z \vert \phi(n) = 1\}$. Now note $H$ is a cyclic group and $|i| = 4$. Thus $i^4 = 1$. Furthermore $i^8 = (i^4)^2 = 1, i^{12} = 1, \dots, i^{4k} = 1$. Thus $\ker\phi = \{4n \vert n \in \Z\} = 4\Z$.
 
-    \item We prove the forward direction first. Suppose that $\phi$ is injective. Clearly $\phi(e_G) = e_H$. Let $x$ be an element which is in the kernel of $\phi$, meaning $\phi(x) = e_H$. Then, $\phi(x) = \phi(e_G) = e_H$ which means $x = e_G$ by injectivity of $\phi$. Hence the kernel is trivial.
+    \item We prove the forward direction first. Suppose that $\phi$ is injective. Clearly $\phi(e_G) = e_H$. Let $x \in \ker\phi$, meaning $\phi(x) = e_H$. Then, $\phi(x) = \phi(e_G) = e_H$ which means $x = e_G$ by injectivity of $\phi$. Hence the kernel is trivial.
 
-    Now we prove the reverse direction. Suppose the kernel of $\phi$ is trivial, i.e. $\ker \phi = \{e_G\}$. Suppose now there exists elements $x$ and $y$ in $G$ such that $\phi(x) = \phi(y)$. This means that $(\phi(x))^{-1} = \phi(x^{-1}) = \phi(y^{-1}) = (\phi(y))^{-1}$. Hence,
-    \[
-        \phi(xy^{-1})
-        = \phi(x)\phi(y^{-1})
-        = \phi(x)\left(\phi(y)\right)^{-1}
-        = e_H.
-    \]
-    Now since the kernel is trivial, this must mean that $xy^{-1} = e_G$ which immediately leads $x=y$. Hence $\phi$ is injective.
+    Now we prove the reverse direction. Suppose the kernel of $\phi$ is trivial, i.e. $\ker \phi = \{e_G\}$. Suppose now there exists elements $x, y \in G$ such that $\phi(x) = \phi(y)$. This means that
+    \begin{align*}
+        \phi(x^{-1}) &= \left(\phi(x)\right)^{-1}\\
+        &= \left(\phi(y)\right)^{-1}\\
+        &= \phi(y^{-1}).
+    \end{align*}
+    Hence,
+    \begin{align*}
+        \phi(xy^{-1}) &= \phi(x)\phi(y^{-1})\\
+        &= \phi(x)\phi(x^{-1})\\
+        &= \phi(xx^{-1})\\
+        &= \phi(e_G)\\
+        &= e_H.
+    \end{align*}
+    Now since the kernel is trivial, this must mean that $xy^{-1} = e_G$ which immediately means that $x = y$. Hence $\phi$ is injective.
 
-    \item Note $G / \ker \phi \cong \im \phi$ by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}). Furthermore, we note that $|G / \ker \phi| = \frac{|G|}{|\ker\phi|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). Hence, $\frac{|G|}{|\ker\phi|} = |\im\phi|$ which leads to the result quickly.
+    \item Note $G / \ker \phi \cong \im \phi$ by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}). Furthermore, we know that $|G / \ker \phi| = \frac{|G|}{|\ker\phi|}$ by Lagrange's theorem (\myref{thrm-lagrange}). Hence, $\frac{|G|}{|\ker\phi|} = |\im\phi|$ which leads to the result quickly.
 
     \item The Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 6, states that $H / (H\cap N) \cong HN / N$. Taking orders on both sides yields $\frac{|H|}{|H \cap N|} = \frac{|HN|}{|N|}$. Rearranging yields required result.
 
@@ -70,15 +77,15 @@
             &= \phi((x_1, y_1)) + \phi((x_2, y_2)).
         \end{align*}
 
-        \item \textbf{Image}: We show that $\phi$ is surjective to show that $\im\phi = R$. For any $r \in R$, we have $\phi((\frac{r}{\sqrt3}, 0)) = \frac{r}{\sqrt3} \times \sqrt3 + 0 = r$ and $(\frac{r}{\sqrt3}, 0) \in G$, so $\phi$ is surjective.
+        \item \textbf{Image}: We show that $\phi$ is surjective to show that $\im\phi = R$. For any $r \in R$, we have $\phi\left(\left(\frac{r}{\sqrt3}, 0\right)\right) = \frac{r}{\sqrt3} \times \sqrt3 + 0 = r$ and $\left(\frac{r}{\sqrt3}, 0\right) \in G$, so $\phi$ is surjective.
 
-        \item \textbf{Kernel}:
+        \item \textbf{Kernel}: We note that
         \begin{align*}
             \ker\phi &= \{(x, y) \in G \vert \phi((x, y)) = 0\}\\
             &= \{(x, y) \in G \vert x\sqrt3-y\sqrt2 = 0\}\\
             &= \left\{(x, y) \in G \vert y = \frac{\sqrt{3}}{\sqrt{2}}x\right\}\\
-            &= \left\{(x, \frac{\sqrt{3}}{\sqrt{2}}x) \vert x \in \R\right\}\\
-            &= \left\{(r\sqrt2, \frac{\sqrt{3}}{\sqrt{2}}(r\sqrt2)) \vert r \in \R\right\}\\
+            &= \left\{\left(x, \frac{\sqrt{3}}{\sqrt{2}}x\right) \vert x \in \R\right\}\\
+            &= \left\{\left(r\sqrt2, \frac{\sqrt{3}}{\sqrt{2}}(r\sqrt2)\right) \vert r \in \R\right\}\\
             &= \{(r\sqrt2, r\sqrt3) \vert r \in \R\}\\
             &= H.
         \end{align*}
@@ -90,11 +97,12 @@
         HK &= \{hk \vert h \in H, k \in K \subseteq H\}\\
         &\subseteq \{hk \vert h \in H, k \in H\}\\
         &= \{h_1h_2 \vert h_1, h_2 \in H\}\\
-        &= H. & (H \leq G \text{ so } H \text{ is closed})
+        &= \{h \vert h \in H\}\\
+        &= H.
     \end{align*}
     Therefore $HK \subseteq H$. Also, we know that $H \leq HK$ by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3, so $H \subseteq HK$. Hence we obtain the fact that $H \subseteq HK \subseteq H$ which means $HK = H$ as required.
 
-    \item \begin{partquestions}{\roman*}
+    \item \begin{partquestions}{\alph*}
         \item Consider the map $\phi: I \to G, (g, g^{-1}) \mapsto g$. We show that $\phi$ is an isomorphism:
         \begin{itemize}
             \item \textbf{Homomorphism}: Recall that $G$ is abelian, so $gh = hg$ for any $g, h \in G$. Let $(g, g^{-1}), (h, h^{-1}) \in I$. Then
