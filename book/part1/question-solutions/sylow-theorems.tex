@@ -11,22 +11,24 @@
         \[
             \phi(xy) = g(xy)g^{-1} = (gxg^{-1})(gyg^{-1}) = \phi(x)\phi(y)
         \]
-        which clearly means that $\phi$ is an isomorphism.
-        \item \textbf{Injective}: Suppose $x, y \in H$ such that $\phi(x) = \phi(y)$. Then $gxg^{-1} = gyg^{-1}$ which quickly implies $x = y$ by cancellation law.
+        which clearly means that $\phi$ is a homomorphism.
+        
+        \item \textbf{Injective}: Suppose $x, y \in H$ such that $\phi(x) = \phi(y)$. Then $gxg^{-1} = gyg^{-1}$ which quickly implies $x = y$.
+        
         \item \textbf{Surjective}: Suppose $ghg^{-1} \in gHg^{-1}$. Clearly we have $\phi(h) = ghg^{-1}$, so any element in $gHg^{-1}$ has a pre-image inside $H$.
     \end{itemize}
     Hence $H \cong gHg^{-1}$.
 
     \item By \myref{prop-order-of-conjugate-element-equals-order-of-element} we know that $|xyx^{-1}| = |y|$ for all $x, y \in G$. Substituting $x = g$, and $y = hg$ yields
     \[
-        |xyx^{-1}| = |gh gg^{-1}| = |gh| \text{ and } |y| = |hg|
+        |xyx^{-1}| = |g(hg)g^{-1}| = |gh| \text{ and } |y| = |hg|
     \]
     so the result follows.
 
     \item Clearly $e \in \N{G}{S}$ since $eSe^{-1} = S$. Consider $x, y \in \N{G}{S}$, meaning that $xSx^{-1} = S$ and $ySy^{-1} = S$. Note that $y^{-1} \in \N{G}{S}$ since
     \begin{align*}
         y^{-1}S\left(y^{-1}\right)^{-1} &= y^{-1}Sy\\
-        &= y^{-1}\left(ySy^{-1}\right)y & (y \in \N{G}{S})\\
+        &= y^{-1}\left(ySy^{-1}\right)y & (\text{since } y \in \N{G}{S})\\
         &= (y^{-1}y)S(y^{-1}y)\\
         &= S.
     \end{align*}
@@ -34,8 +36,8 @@
     \begin{align*}
         \left(xy^{-1}\right)S\left(xy^{-1}\right)^{-1} &= \left(xy^{-1}\right)S\left(yx^{-1}\right)\\
         &= x\left(y^{-1}Sy\right)x^{-1}\\
-        &= xSx^{-1} & (y^{-1} \in \N{G}{S})\\
-        &= S & (x \in \N{G}{S})
+        &= xSx^{-1} & (\text{since } y^{-1} \in \N{G}{S})\\
+        &= S & (\text{since } x \in \N{G}{S})
     \end{align*}
     which means that $xy^{-1} \in \N{G}{S}$. Hence, by the subgroup test, we have $\N{G}{S} \leq G$.
 
