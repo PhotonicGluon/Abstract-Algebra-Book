@@ -8,49 +8,44 @@
     \end{partquestions}
 
     \item This exercise can be solved in two ways.
-    \begin{enumerate}
-        \item Notice that
-        \[
-            \pi = \begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix} = \begin{pmatrix}1 & 5 & 3 & 4 \end{pmatrix}
-        \]
-        and so $\pi^{-1} = \begin{pmatrix}4 & 3 & 5 & 1\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5\end{pmatrix}$.
-        \item Using Shoes and Socks,
-        \begin{align*}
-            \pi^{-1} &= \left(\begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}\right)^{-1}\\
-            &= \begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} \begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1}.
-        \end{align*}
-        Now, $\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} = \begin{pmatrix}4 & 3 & 5 & 2\end{pmatrix} = \begin{pmatrix}2 & 4 & 3 & 5\end{pmatrix}$ and $\begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1} = \begin{pmatrix}2 & 5 & 1\end{pmatrix} = \begin{pmatrix}1 & 2 & 5\end{pmatrix}$. Therefore
-        \[
-            \pi^{-1} = \begin{pmatrix}2 & 4 & 3 & 5\end{pmatrix}\begin{pmatrix}1 & 2 & 5\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5\end{pmatrix}.
-        \]
-    \end{enumerate}
+    
+    One way is to first notice that
+    \[
+        \pi = \begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix} = \begin{pmatrix}1 & 5 & 3 & 4 \end{pmatrix}
+    \]
+    and so $\pi^{-1} = \begin{pmatrix}4 & 3 & 5 & 1\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5\end{pmatrix}$.
 
-    \item To see why, consider the fact that elements of $\Sn{n}$ are permutations. Each element is only able to permute the elements of the set $X = \{1, 2, 3, \dots, n\}$. For a set of $n$ elements, there are $n!$ permutations. Thus, $|\Sn{n}| = n!$ since $\Sn{n}$ is the set of all permutations of $n$ letters.
+    The other way is to use Shoes and Socks to see
+    \begin{align*}
+        \pi^{-1} &= \left(\begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}\right)^{-1}\\
+        &= \begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} \begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1}.
+    \end{align*}
+    Now note that $\begin{pmatrix}2 & 5 & 3 & 4\end{pmatrix}^{-1} = \begin{pmatrix}4 & 3 & 5 & 2\end{pmatrix} = \begin{pmatrix}2 & 4 & 3 & 5\end{pmatrix}$. Also we see $\begin{pmatrix}1 & 5 & 2\end{pmatrix}^{-1} = \begin{pmatrix}2 & 5 & 1\end{pmatrix} = \begin{pmatrix}1 & 2 & 5\end{pmatrix}$. Therefore
+    \[
+        \pi^{-1} = \begin{pmatrix}2 & 4 & 3 & 5\end{pmatrix}\begin{pmatrix}1 & 2 & 5\end{pmatrix} = \begin{pmatrix}1 & 4 & 3 & 5\end{pmatrix}.
+    \]
+
+    \item To see why, consider the fact that elements of $\Sn{n}$ are permutations. Each element permutes the elements of the set $X = \{1, 2, 3, \dots, n\}$. For a set of $n$ elements, there are $n!$ permutations. Thus, $|\Sn{n}| = n!$ since $\Sn{n}$ is the set of all permutations of $n$ letters.
 \end{questions}
 
 \subsection*{Problems}
 \begin{questions}
-    \item We work from the right to the left.
-    \begin{itemize}
-        \item $\gamma \delta$ has cycle notation
-        \begin{align*}
-            &\begin{pmatrix}1 & 2 & 5\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix}\begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix}\\
-            &= \begin{pmatrix}1 & 4 & 3 & 5 & 2\end{pmatrix};
-        \end{align*}
-        \item $\beta \gamma \delta$ has cycle notation
-        \begin{align*}
-            &\begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix}\begin{pmatrix}1 & 4 & 3 & 5 & 2\end{pmatrix}\\
-            &= \begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix}\\
-            &= \delta;
-        \end{align*}
-        and
-        \item $\alpha \beta \gamma \delta$ has cycle notation
-        \begin{align*}
-            &\begin{pmatrix}1 & 5 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix}\\
-            &= \id,
-        \end{align*}
-        the identity.
-    \end{itemize}
+    \item We work from right to left. Observe that
+    \begin{align*}
+        \gamma\delta &= \begin{pmatrix}1 & 2 & 5\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix}\begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix}\\
+        &= \begin{pmatrix}1 & 4 & 3 & 5 & 2\end{pmatrix}.
+    \end{align*}
+    Next we see that
+    \begin{align*}
+        \beta \gamma \delta &=\begin{pmatrix}1 & 5 & 2\end{pmatrix}\begin{pmatrix}3 & 4\end{pmatrix}\begin{pmatrix}1 & 4 & 3 & 5 & 2\end{pmatrix}\\
+        &= \begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix}\\
+        &= \delta.
+    \end{align*}
+    Finally one notes that
+    \begin{align*}
+        \alpha\beta\gamma\delta &= \begin{pmatrix}1 & 5 & 2 & 3\end{pmatrix}\begin{pmatrix}1 & 3 & 2 & 5\end{pmatrix}\\
+        &= \id.
+    \end{align*}
 
     \item Recall that $D_3$ has presentation
     \[

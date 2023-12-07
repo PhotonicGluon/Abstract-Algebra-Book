@@ -4,12 +4,12 @@
     \item \begin{partquestions}{\alph*}
         \item We will prove this claim by using the 3 axioms. Clearly $\{e\} \subseteq G$.
         \begin{itemize}
-            \item The only element in $\{e\}$ is $e$, and $e \ast e = e \in \{e\}$. Hence $\{e\}$ is closed.
-            \item The identity of the group $G$ is $e$ which is in $\{e\}$.
-            \item The inverse of $e$ is $e$ which is in $\{e\}$.
+            \item \textbf{Closure}: The only element in $\{e\}$ is $e$, and $e \ast e = e \in \{e\}$. Hence $\{e\}$ is closed.
+            \item \textbf{Identity}: The identity of the group $G$ is $e$ which is in $\{e\}$.
+            \item \textbf{Inverse}: The inverse of $e$ is $e$ which is in $\{e\}$.
         \end{itemize}
         Hence, $\{e\} \leq G$.
-        \item We note that $G$ is a subset of $G$, and that $G$ is a group. Thus, $G$ is a subgroup of $G$ by definition of a subgroup.
+        \item We note that $G \subseteq G$ and that $G$ is a group. Thus $G$ is a subgroup of $G$ by definition of a subgroup.
     \end{partquestions}
 
     \item Since $G$ is closed, thus $g^n \in G$ for any integer $n$. Therefore $\langle g \rangle$ is a subset of $G$. Furthermore $e = g^0 \in \langle g\rangle$ by definition of $\langle g\rangle$, so $\langle g \rangle$ is non-empty.
@@ -24,32 +24,36 @@
 
     Therefore $\langle g \rangle \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
 
-    \item Note that $h \in G$ for any $h \in H$ (as $H \leq G$ so $H \subseteq G$). Since $G$ is closed, thus $ghg^{-1} \in G$ for any $h \in H$. Therefore $S$ is a subset of $G$. Also one sees clearly that $e$ is in $S$ since $geg^{-1} = gg^{-1} = e$ and $e \in H$, so $S$ is non-empty.
+    \item Note that $h \in G$ for any $h \in H$ (as $H \leq G$ so $H \subseteq G$). Since $G$ is closed, thus $ghg^{-1} \in G$ for any $h \in H$. Therefore $gHg^{-1}$ is a subset of $G$. Also one sees clearly that $e$ is in $gHg^{-1}$ since $geg^{-1} = gg^{-1} = e$ and $e \in H$, so $gHg^{-1}$ is non-empty.
 
-    Now suppose $x$ and $y$ are in $S$. Then there exist elements $h_x$ and $h_y$ in $H$ such that $x = gh_xg^{-1}$ and $y = gh_yg^{-1}$. Note that
+    Now suppose $x, y \in gHg^{-1}$. Then there exist elements $h_x, h_y \in H$ such that $x = gh_xg^{-1}$ and $y = gh_yg^{-1}$. Note that
     \begin{align*}
         xy^{-1} &= (gh_xg^{-1})(gh_yg^{-1})^{-1}\\
         &= (gh_xg^{-1})(g{h_y}^{-1}g^{-1}) & (\text{Shoes and Shocks})\\
         &= gh_xg^{-1}g{h_y}^{-1}g^{-1} & (\text{associativity})\\
         &= gh_x{h_y}^{-1}g^{-1} & (g^{-1}g = e).
     \end{align*}
-    Note that since $H \leq G$, thus $h_x{h_y}^{-1} \in H$. Hence $xy^{-1} = g(h_x{h_y}^{-1})g^{-1} \in S$.
+    Note that since $H \leq G$, thus $h_x{h_y}^{-1} \in H$. Hence $xy^{-1} = g(h_x{h_y}^{-1})g^{-1} \in gHg^{-1}$.
 
-    Therefore $S \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
+    Therefore $gHg^{-1} \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
 
     \item \begin{partquestions}{\alph*}
-        \item Since $\oplus_8$ is commutative, thus $gH = Hg$.\newline
+        \item Since $\oplus_8$ is commutative, thus
+        \[
+            gH = \{gh \vert h \in H\} = \{hg \vert h \in H\} = Hg.
+        \]
         (Actually, since $G$ is an additive group, the better thing to write is $g \oplus_8 H = H \oplus_8 g$.)
-        \item There are 4 distinct left cosets of $H$ in $G$.
+        
+        \item There are 4 distinct left cosets of $H$ in $G$, namely
         \begin{itemize}
-            \item $0 \oplus_8 H = \{0, 4\} = H$
-            \item $1 \oplus_8 H = \{1, 5\}$
-            \item $2 \oplus_8 H = \{2, 6\}$
-            \item $3 \oplus_8 H = \{3, 7\}$
+            \item $0 \oplus_8 H = \{0, 4\} = H$;
+            \item $1 \oplus_8 H = \{1, 5\}$;
+            \item $2 \oplus_8 H = \{2, 6\}$; and
+            \item $3 \oplus_8 H = \{3, 7\}$.
         \end{itemize}
     \end{partquestions}
 
-    \item Let $x$ be in $g_1H \cap g_2H$. Then $x \in g_1H$ and $x \in g_2H$ simultaneously. Hence, $x = g_1h = g_2\hat{h}$ for some $h, \hat{h} \in H$. Thus, by rearrangement, $g_2^{-1}g_1 = \hat{h}h^{-1} \in H$. By Coset Equality (\myref{lemma-coset-equality}), statements 1 and 5, $g_1H = g_2H$.
+    \item Let $x$ be in $g_1H \cap g_2H$. Then $x \in g_1H$ and $x \in g_2H$ simultaneously. Hence, $x = g_1h = g_2\hat{h}$ for some $h, \hat{h} \in H$. Thus $g_2^{-1}g_1 = \hat{h}h^{-1} \in H$. By Coset Equality (\myref{lemma-coset-equality}), statements 1 and 5, $g_1H = g_2H$.
 
     \item Note that $|G| = 99$ and $|H| = 3$, so $[G:H] = \frac{99}{3} = 33$ by Lagrange's theorem (\myref{thrm-lagrange}).
 
@@ -57,7 +61,8 @@
 
     \item \begin{partquestions}{\roman*}
         \item By \myref{prop-subgroup-of-abelian-group-is-normal} every subgroup of $G$ is normal. Hence $H$ is a normal subgroup of $G$, meaning $G/H$ is a quotient group by \myref{thrm-quotient-group-requirement}.
-        \item Let $g$ be the generator of $G$. Consider $xH \in G/H$. Since $x \in G$ and $G$ is cyclic, thus there exists an integer $k$ such that $x = g^k$. Hence, $xH = g^kH = (gH)^k$ which means that $gH$ generates any element in $G/H$. Therefore $gH$ is a generator of $G/H$, meaning $G/H$ is cyclic.
+        
+        \item Let $g$ be the generator of $G$. Consider $xH \in G/H$. Since $x \in G$ and $G$ is cyclic, there exists an integer $k$ such that $x = g^k$. Hence, $xH = g^kH = (gH)^k$ which means that $gH$ generates any element in $G/H$. Therefore $gH$ is a generator of $G/H$, meaning $G/H$ is cyclic.
     \end{partquestions}
 \end{questions}
 
@@ -110,7 +115,7 @@
 
         \item We will disprove this statement. Consider
         \begin{align*}
-            &G = \Z_6 \text{ under }\oplus_6,\\
+            &G = (\Z_6, \oplus_6),\\
             &H = \{0, 2, 4\},\text{ and}\\
             &K = \{0, 3\}.
         \end{align*}
@@ -166,7 +171,7 @@
             \item On one hand, note that $hkh^{-1}k^{-1} = h(kh^{-1}k^{-1})$. Clearly $h \in H$ and $kh^{-1}k^{-1} \in H$ by normality of $H$. Therefore $hkh^{-1}k^{-1} \in H$.
             \item On another hand, $hkh^{-1}k^{-1} = (hkh^{-1})k^{-1}$. Note $hkh^{-1} \in K$ by normality of $K$ and $k^{-1} \in K$, so $hkh^{-1}k^{-1} \in K$.
         \end{itemize}
-        Therefore $hkh^{-1}k^{-1} \in H \cap K$. But by \textbf{(a)}, the only element in $H \cap K$ is the identity. Thus, $hkh^{-1}k^{-1} = e$ which the result follows quickly.
+        Therefore $hkh^{-1}k^{-1} \in H \cap K$. But by \textbf{(a)}, the only element in $H \cap K$ is the identity. Thus, $hkh^{-1}k^{-1} = e$ whence the result follows quickly.
     \end{partquestions}
 
     \item \begin{partquestions}{\alph*}
