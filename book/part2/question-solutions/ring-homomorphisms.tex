@@ -1,11 +1,7 @@
 \section{Ring Homomorphisms and Isomorphisms}
 \subsection*{Exercises}
 \begin{questions}
-    \item We show that $\phi$ is not a ring homomorphism. Consider the matrices
-    \[
-        \begin{pmatrix}1&0\\0&0\end{pmatrix} \text{ and } \begin{pmatrix}0&0\\0&1\end{pmatrix}.
-    \]
-    Note that $\phi\left(\begin{pmatrix}1&0\\0&0\end{pmatrix}\right) = 1 + 0 = 1$ and $\phi\left(\begin{pmatrix}0&0\\0&1\end{pmatrix}\right) = 0 + 1 = 1$, so
+    \item We show that $\phi$ is not a ring homomorphism. Consider the matrices $\begin{pmatrix}1&0\\0&0\end{pmatrix}$ and $\begin{pmatrix}0&0\\0&1\end{pmatrix}$. Note that $\phi\left(\begin{pmatrix}1&0\\0&0\end{pmatrix}\right) = 1 + 0 = 1$ and $\phi\left(\begin{pmatrix}0&0\\0&1\end{pmatrix}\right) = 0 + 1 = 1$, so
     \[
         \phi\left(\begin{pmatrix}1&0\\0&0\end{pmatrix}\right)\phi\left(\begin{pmatrix}0&0\\0&1\end{pmatrix}\right) = 1 \times 1 = 1.
     \]
@@ -15,7 +11,7 @@
     \]
     so $\phi\left(\begin{pmatrix}1&0\\0&0\end{pmatrix}\begin{pmatrix}0&0\\0&1\end{pmatrix}\right) = 0$. Thus $\phi$ is not a homomorphism.
 
-    \item Note
+    \item Note for any $a, b \in R$ we have
     \[
         \phi(a+b) = 0 = 0 + 0 = \phi(a) + \phi(b)
     \]
@@ -25,7 +21,7 @@
     \]
     so $\phi$ is indeed a ring homomorphism.
 
-    \item Note
+    \item Note for any $a, b \in R$ that
     \[
         \id(a+b) = a + b = \id(a) + \id(b)
     \]
@@ -140,7 +136,7 @@
         \item By \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}, $\{0\}$ is maximal if and only if $R/\{0\} \cong R$ is a field.
     \end{partquestions}
 
-    \item Let $\phi: \Q \to Q$ be a ring endomorphism. From \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent}, we know that $\phi(1)$ is an idempotent in $\Q$, meaning that $\phi(1) = 0$ or $\phi(1) = 1$.
+    \item Let $\phi: \Q \to \Q$ be a ring endomorphism. From \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent}, we know that $\phi(1)$ is an idempotent in $\Q$, meaning that $\phi(1) = 0$ or $\phi(1) = 1$.
 
     Clearly if $\phi(1) = 0$ then
     \[
@@ -148,7 +144,7 @@
     \]
     so $\phi(x)$ is the trivial homomorphism.
 
-    If instead $\phi(1) = 1$, then from \myref{exercise-homomorphism-over-Q-fixes-elements-of-Q} we know that $\phi(x) = x$ for all $x \in Q$, i.e. $\phi$ is the identity homomorphism.
+    If instead $\phi(1) = 1$, then from \myref{exercise-homomorphism-over-Q-fixes-elements-of-Q} we know that $\phi(x) = x$ for all $x \in \Q$, i.e. $\phi$ is the identity homomorphism.
 
     Therefore the only two endomorphisms in $\Q$ are the trivial and identity homomorphisms.
 
@@ -165,11 +161,11 @@
 
     Therefore $\Z^2 \not\cong \Q$.
 
-    \item BWOC, suppose $\phi: \Q[\sqrt2] \to \Q[\sqrt3]$ is an isomorphism.
+    \item By way of contradiction, suppose $\phi: \Q[\sqrt2] \to \Q[\sqrt3]$ is an isomorphism.
 
     Suppose $\phi(\sqrt2) = a + b\sqrt3$ where $a$ and $b$ are rational numbers. Note that $\phi(2) = 2$ by \myref{exercise-homomorphism-over-Q-fixes-elements-of-Q}, so
     \[
-        2 = \phi(2) = \phi({\sqrt2}^2) = \left(\phi(\sqrt2)\right)^2 = a^2 + 2\sqrt3ab + 3b^2.
+        2 = \phi(2) = \phi\left({\sqrt2}^2\right) = \left(\phi(\sqrt2)\right)^2 = a^2 + 2\sqrt3ab + 3b^2.
     \]
     This means that $2ab = 0$, which means that $a = 0$ or $b = 0$.
 
@@ -185,7 +181,7 @@
 
     \item Let $\phi: \Z^2 \to R, (a,b)\mapsto \begin{pmatrix}a&0\\0&b\end{pmatrix}$. We show that $\phi$ is a bijective ring homomorphism.
     \begin{itemize}
-        \item \textbf{Homomorphism}:
+        \item \textbf{Homomorphism}: For any $(a, b), (x, y) \in \Z^2$ we see
         \begin{align*}
             \phi((a,b) + (x,y)) &= \phi((a+x,b+y))\\
             &= \begin{pmatrix}a+x&0\\0&b+y\end{pmatrix}\\
@@ -211,7 +207,7 @@
     \item \begin{partquestions}{\alph*}
         \item We prove the statement. Note that since $\phi$ is bijective, thus $\phi^{-1}$ is bijective. We just need to show that $\phi^{-1}$ is a homomorphism.
 
-        Let $u,v\in R'$. Then there is a $x,y \in R$ such that $\phi(x) = u$ and $\phi(y) = v$. Note
+        Let $u,v\in R'$. Then there exists $x,y \in R$ such that $\phi(x) = u$ and $\phi(y) = v$. Note
         \begin{align*}
             \phi^{-1}(u + v) &= \phi^{-1}(\phi(x) + \phi(y))\\
             &= \phi^{-1}(\phi(x + y))\\
@@ -321,7 +317,7 @@
     Therefore $\psi(a+b\sqrt3) = a-b\sqrt3$ is also an isomorphism. Hence, the two automorphisms $\psi: \Q[\sqrt3] \to \Q[\sqrt3]$ are $\psi(a+b\sqrt3) = a+b\sqrt3$ and $\psi(a+b\sqrt3) = a-b\sqrt3$.
 
     \item \begin{partquestions}{\roman*}
-        \item Let $x \in \phi(\sqrt I)$. Therefore there is an $a \in \sqrt{I}$ such that $\phi(a) = x$. Now by definition of $\sqrt{I}$, this means that there is a positive integer $n$ such that $a^n \in I$. Note that
+        \item Let $x \in \phi(\sqrt I)$. Therefore there is an $a \in \sqrt{I}$ such that $\phi(a) = x$. Now by the definition of $\sqrt{I}$, this means that there is a positive integer $n$ such that $a^n \in I$. Note that
         \[
             x^n = \left(\phi(a)\right)^n = \phi(a^n) \in \phi(I)
         \]
@@ -412,7 +408,7 @@
         \[
             S/(S\cap I) \cong (S+I)/I
         \]
-        which is what we needed to prove for the Second Ring Isomorphism Theorem.
+        which is what we wanted to prove.
     \end{partquestions}
 
     \item \begin{partquestions}{\roman*}

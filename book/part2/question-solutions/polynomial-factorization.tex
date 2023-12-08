@@ -3,7 +3,7 @@
 \begin{questions}
     \item \begin{partquestions}{\alph*}
         \item Not irreducible since $3x^2 - 6 = 3(x^2-2)$ and both 3 and $x^2-2$ are non-units in $\Z$.
-        \item Irreducible in $\Q$ since we cannot express $3x^2-6$ as a product of two polynomial of smaller degree that are in $\Q[x]$ (by \myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}).
+        \item Irreducible in $\Q$ since we cannot express $3x^2-6$ as a product of two polynomials of smaller degree that are in $\Q[x]$ (by \myref{thrm-irreducible-iff-not-expressable-as-product-of-smaller-polynomials}).
         \item Reducible in $\R$ since $3x^2 - 6 = (3x-3\sqrt2)(x+\sqrt2)$ and both $3x-3\sqrt2, x+\sqrt2 \in \R[x]$.
     \end{partquestions}
 
@@ -25,11 +25,12 @@
     We therefore see that $f(x)$ has zeroes in $\Z_3$ and $\Z_5$ and no zeroes in $\Z_2$ and $\Z_7$. Thus $f(x)$ is irreducible over $\Z_2$ and $\Z_7$ and reducible in $\Z_3$ and $\Z_5$.
 
     \item \begin{partquestions}{\alph*}
-        \item Statement is the converse of \myref{thrm-irreducible-over-Z-means-irreducible-over-Q}, so it is true.
-        \item Disprove. $2(x^2+1)$ has no zeroes in $\Q$ and so is irreducible over $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). But $2(x^2+1)$ is reducible in $\Z$ as $2 \times (x^2 + 1)$ where 2 and $x^2 + 1$ are both non-units.
+        \item Disprove. $2(x^2+1)$ is reducible in $\Z$. However $2(x^2+1)$ has no zeroes in $\Q$ and so is irreducible over $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
+        
+        \item Prove. Statement is the contrapositive of \myref{thrm-irreducible-over-Z-means-irreducible-over-Q}.
     \end{partquestions}
 
-    \item Clearly $1^2 + 2(1) + 1 = 4 \equiv 0 \pmod2$, so we consider $p > 3$. Consider the polynomial $f(x) = x^2 + 2x + 1$. Clearly $f(-1) = 0$ so $f(x)$ is reducible in $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). Thus the converse of the Mod $p$ Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}) tells us that $f(x)$ is reducible in $\Z_p$ (since reducing the coefficients modulo $p$ yields the same polynomial). Therefore $f(x) \in \Z_p[x]$ must have a zero (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}), i.e. there is an integer $n \in \Z_p$ such that $f(n) = n^2 + 2n + 1 = 0$ when working modulo $p$. That same $n$ satisfies $n^2 + 2n + 1 \equiv 0 \pmod{p}$ as required.
+    \item Clearly $1^2 + 2(1) + 1 = 4 \equiv 0 \pmod2$, so we consider $p > 3$. Consider the polynomial $f(x) = x^2 + 2x + 1$. Clearly $f(-1) = 0$ so $f(x)$ is reducible over $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). Thus the contrapositive of the Mod $p$ Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}) tells us that $f(x)$ is reducible in $\Z_p$ (since reducing the coefficients modulo $p$ yields the same polynomial). Therefore $f(x) \in \Z_p[x]$ must have a zero (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}), i.e. there is an integer $n \in \Z_p$ such that $f(n) = n^2 + 2n + 1 = 0$ when working modulo $p$. That same $n$ satisfies $n^2 + 2n + 1 \equiv 0 \pmod{p}$ as required.
 
     \item We claim that $f(x) = x^n + 2$ is irreducible over $\Q$ for any $n \geq 1$. We note that 2 does not divide 1, 2 divides 2, and $2^2 = 4$ does not divide 2. Thus $f(x)$ is irreducible over $\Q$ by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2.
 
@@ -59,7 +60,7 @@
             \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
             &= \sum_{i=0}^m(a_i+b_i)(kx)^i\\
             &= \left(\sum_{i=0}^ma_i(kx)^i\right) + \left(\sum_{i=0}^mb_i(kx)^i\right)\\
-            &= \left(\sum_{i=0}^ma_i(kx)^i\right) + \left(\sum_{i=0}^nb_i(kx)^i\right) & (\because b_i = 0 \text{ for } i > n)\\
+            &= \left(\sum_{i=0}^ma_i(kx)^i\right) + \left(\sum_{i=0}^nb_i(kx)^i\right) & (\text{as } b_i = 0 \text{ for } i > n)\\
             &= \phi(f(x)) + \phi(g(x))
         \end{align*}
         and
@@ -100,23 +101,23 @@
             \item $p(3) = 3^2 + 2 = 11 = 1 \neq 0$; and
             \item $p(4) = 4^2 + 2 = 18 = 3 \neq 0$,
         \end{itemize}
-        so $p(x)$ is irreducible in $\Z_5$ by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}.
+        so $p(x)$ is irreducible over $\Z_5$ by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}.
 
         \item $F = Z_5[x]/\princ{p(x)}$ is a field of 25 elements.
 
         \item \begin{partquestions}{\alph*}
             \item We see
             \begin{align*}
-                \left(2x+3 + I\right) + \left(4x^2+3x+2 + I\right) &= (4x^2+5x+5) + I\\
+                \left((2x+3) + I\right) + \left((4x^2+3x+2) + I\right) &= (4x^2+5x+5) + I\\
                 &= 4(x^2+2) + 5x - 3 + I\\
                 &= 5x - 3 + I\\
-                &= 0x + 2 + I
+                &= 2 + I
             \end{align*}
             so $(f(x) + I) + (g(x) + I) = 2 + I$.
 
             \item We note
             \begin{align*}
-                (2x+3 + I)(4x^2+3x+2 + I) &= (8 x^3 + 18 x^2 + 13 x + 6) + I\\
+                ((2x+3) + I)((4x^2+3x+2) + I) &= (8 x^3 + 18 x^2 + 13 x + 6) + I\\
                 &= \left((8x + 18)(x^2+2) - 3x - 30\right) + I\\
                 &= -3x - 30 + I\\
                 &= 2x + I
@@ -141,7 +142,7 @@
         \item We see
         \begin{align*}
             (2x+2)(x+2) &= 2\left((x+1)(x+2)\right)\\
-            &= 2(1) & (\text{since} (x+1)(x+2) = 1 \text{ from table})\\
+            &= 2(1) & (\text{since } (x+1)(x+2) = 1 \text{ from table})\\
             &= 2.
         \end{align*}
 
@@ -170,19 +171,19 @@
         \]
         thus $f_2(x)$ has a zero in $\Q$, meaning that it is reducible over $\Q$ (\myref{thrm-degree-above-1-reducible-if-has-zero}).
 
-        \item Irreducible. Note that 5 does not divide 1, 5 divides 5, and $5^2 = 25$ does not divide 5, so $f_3(x)$ is irreducible over $\Q$ by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 5.
-
-        \item Irreducible. Note that reducing the coefficients of $f_4(x)$ modulo 7 results in the polynomial $\bar{f_4}(x) = x^4 + 2$, and that
+        \item Irreducible. Note that reducing the coefficients of $f_3(x)$ modulo 7 results in the polynomial $\bar{f_3}(x) = x^3 + 2$, and that
         \begin{itemize}
-            \item $\bar{f_4}(0) = 0^4 + 2 = 2 \neq 0$;
-            \item $\bar{f_4}(1) = 1^4 + 2 = 3 \neq 0$;
-            \item $\bar{f_4}(2) = 2^4 + 2 = 18 = 4 \neq 0$;
-            \item $\bar{f_4}(3) = 3^4 + 2 = 83 = 6 \neq 0$;
-            \item $\bar{f_4}(4) = 4^4 + 2 = 258 = 6 \neq 0$;
-            \item $\bar{f_4}(5) = 5^4 + 2 = 627 = 4 \neq 0$; and
-            \item $\bar{f_4}(6) = 6^4 + 2 = 1928 = 3 \neq 0$,
+            \item $\bar{f_3}(0) = 0^3 + 2 = 2 \neq 0$;
+            \item $\bar{f_3}(1) = 1^3 + 2 = 3 \neq 0$;
+            \item $\bar{f_3}(2) = 2^3 + 2 = 10 = 3 \neq 0$;
+            \item $\bar{f_3}(3) = 3^3 + 2 = 24 = 1 \neq 0$;
+            \item $\bar{f_3}(4) = 4^3 + 2 = 66 = 4 \neq 0$;
+            \item $\bar{f_3}(5) = 5^3 + 2 = 127 = 1 \neq 0$; and
+            \item $\bar{f_3}(6) = 6^3 + 2 = 218 = 1 \neq 0$,
         \end{itemize}
-        so $f_4(x)$ is irreducible over $\Q$ by Mod 7 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}).
+        so $\bar{f_3}(x)$ is irreducible over $\Z_7$ by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}, and so $f_3(x)$ is irreducible over $\Q$ by Mod 7 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}).
+
+        \item Irreducible. Note that 5 does not divide 1, 5 divides 5, and $5^2 = 25$ does not divide 5, so $f_4(x)$ is irreducible over $\Q$ by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 5.
 
         \item Reducible. Since
         \[
@@ -196,7 +197,7 @@
             &= (x^4 + 12x^3 + 54x^2 + 108x + 81) + 5\\
             &= (x+3)^4 + 5,
         \end{align*}
-        and since $x^4 + 5$ is irreducible by \textbf{(c)}, therefore $f_6(x)$ is also irreducible by a corollary of the Transformation Rule (\myref{corollary-irreducible-iff-translation-is-irreducible}).
+        and since $x^4 + 5$ is irreducible by \textbf{(d)}, therefore $f_6(x)$ is also irreducible by a corollary of the Transformation Rule (\myref{corollary-irreducible-iff-translation-is-irreducible}).
     \end{partquestions}
 
     \item Let $f(x) = x^2 - 2$. Reducing coefficients of $f(x)$ modulo 3 yields $\bar{f}(x) = x^2 + 1$. Note that in $\Z_3$ we have
@@ -205,7 +206,7 @@
         \item $\bar{f}(1) = 1^2 + 1 = 2 \neq 0$; and
         \item $\bar{f}(2) = 2^2 + 1 = 5 = 2 \neq 0$.
     \end{itemize}
-    Therefore $f(x)$ is irreducible over $\Q$ by Mod 3 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}), which means $f(x)$ has no zeroes in $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). But in $\R$ one sees that $f(x)$ has the zeroes $\pm\sqrt2$. Therefore $\sqrt2 \notin \Q$.
+    Therefore $\bar{f}(x)$ is irreducible over $\Z_3$ by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes} and thus $f(x)$ is irreducible over $\Q$ by Mod 3 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}), which means $f(x)$ has no zeroes in $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). But in $\R$ one sees that $f(x)$ has the zeroes $\pm\sqrt2$. Therefore $\sqrt2 \notin \Q$.
 
     \item Suppose $f(x)$ is a primitive, degree 1 polynomial in $\Z[x]$. By way of contradiction, suppose $f(x)$ is reducible, meaning $f(x) = p(x)q(x)$ for some non-zero non-unit polynomials $p(x), q(x) \in \Z[x]$. Since $\Z[x]$ is an integral domain, we must have
     \[
@@ -216,14 +217,14 @@
     \item \begin{partquestions}{\roman*}
         \item Note $f(1) = 1^3 + 6 = 7 = 0$ so $f(x)$ has a zero in $\Z_7$.
 
-        \item As 1 is a zero of $f(x)$, thus $x-1 = x+6$ is a factor of $f(x)$ (\myref{corollary-factor-theorem}). Performing long division on $x+6$ we see
+        \item As 1 is a zero of $f(x)$, thus $x-1 = x+6$ is a factor of $f(x)$ by Factor Theorem (\myref{corollary-factor-theorem}). Performing long division on $x+6$ we see
         \begin{align*}
             x^3 + 6 &= x^2(x+6) - 6x(x+6) + 36(x+6) - 210\\
             &= (x^2-6x+36)(x+6) - 210\\
             &= (x^2+x+1)(x+6) + 0 & (\text{Evaluating in }\Z_7)\\
             &= (x^2+x+1)(x+6).
         \end{align*}
-        One can see that 2 is a zero of $x^2 + x + 1$ in $\Z_7$, so $x - 2 = x+5$ is a factor of $x^2 + x + 1$. Performing division on it yields
+        One can see that 2 is a zero of $x^2 + x + 1$ in $\Z_7$, so $x - 2 = x+5$ is a factor of $x^2 + x + 1$ by Factor Theorem again. Performing division on it yields
         \begin{align*}
             x^2 + x + 1 &= x(x+5) - 4(x+5) + 21\\
             &= (x-4)(x+5) + 21\\
@@ -238,16 +239,16 @@
     \end{partquestions}
 
     \item \begin{partquestions}{\alph*}
-        \item We note that there are only 4 degree 2 polynomials in $\Z_2[x]$. We evaluate the reducibility of each of the polynomials.
+        \item We note that there are only 4 distinct degree 2 polynomials in $\Z_2[x]$. We determine the reducibility of each of the polynomials.
         \begin{itemize}
             \item $\boxed{x^2}$ Reducible since 0 is a zero of $x^2$.
             \item $\boxed{x^2 + 1}$ Reducible since 1 is a zero of $x^2 + 1$.
             \item $\boxed{x^2+x}$ Reducible since 0 is a zero of $x^2 + x$.
             \item $\boxed{x^2+x+1}$ Irreducible since neither 0 nor 1 are zeroes of the polynomial (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
         \end{itemize}
-        Thus the only degree 2 polynomial that is irreducible over $\Z_2[x]$ is $x^2+x+1$.
+        Thus the only distinct degree 2 polynomial that is irreducible over $\Z_2[x]$ is $x^2+x+1$.
 
-        \item We do the same for degree 3 polynomials. We note that there are 8 such polynomials.
+        \item We do the same for degree 3 polynomials. We note that there are 8 such distinct polynomials.
         \begin{itemize}
             \item $\boxed{x^3}$ Reducible since 0 is a zero.
             \item $\boxed{x^3 + 1}$ Reducible since 1 is a zero.
@@ -258,13 +259,13 @@
             \item $\boxed{x^3 + x^2 + x}$ Reducible since 0 is a zero.
             \item $\boxed{x^3 + x^2 + x + 1}$ Reducible since 1 is a zero.
         \end{itemize}
-        Therefore the only irreducible degree 3 polynomials in $\Z_2[x]$ are $x^3+x+1$ and $x^3+x^2+1$.
+        Therefore the only distinct irreducible degree 3 polynomials in $\Z_2[x]$ are $x^3+x+1$ and $x^3+x^2+1$.
     \end{partquestions}
 
     \item A reducible polynomial of the required form must have the factorization $(x+\alpha)(x+\beta)$. We split into two cases.
     \begin{itemize}
         \item If $\alpha \neq \beta$, then there are $p$ possibilities for $\alpha$ and $p - 1$ possibilities for $\beta$. However, we need to account for commutativity of the two factors, so we divide the total by 2. This leaves us with a total of $\frac{p(p-1)}{2}$ distinct polynomials for this case.
-        \item If instead $\alpha = \beta$, then there are just $p$ choses for $\alpha = \beta$.
+        \item If instead $\alpha = \beta$, then there are just $p$ choices for $\alpha = \beta$.
     \end{itemize}
     All in all, there are $\frac{p(p-1)}{2} + p = \frac{p(p+1)}{2}$ distinct polynomials of the required form.
 
@@ -312,7 +313,7 @@
                 so $f(x)$ is, again, reducible.
             \end{partquestions}
 
-            \item We note that, as sets, we obtain
+            \item As sets, we see that
             \begin{align*}
                 \Z_p^\ast &= \{0, 1, 2, \dots, p-1\} \setminus \{0\}\\
                 &= \{1, 2, \dots, p-1\}\\
@@ -338,7 +339,7 @@
                 \end{align*}
                 so the integer $r$ in question is $g^{m+n-1}$ and the case in \textbf{(b)(i)(c)} applies.
             \end{itemize}
-            In all cases, we obtain a factorization of $f(x)$.
+            In all cases, we obtain a factorization of $f(x)$, which shows that $f(x)$ is reducible over $\Z_p$ for all prime numbers $p$.
         \end{partquestions}
     \end{partquestions}
 \end{questions}
