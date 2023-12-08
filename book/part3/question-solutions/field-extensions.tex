@@ -1,9 +1,9 @@
 \section{Extension Fields and Splitting Fields}
 \subsection*{Exercises}
 \begin{questions}
-    \item We need to prove that $\phi$ is a well-defined ring isomorphism.
+    \item We need to prove that $\phi$ is a well-defined isomorphism.
     \begin{itemize}
-        \item \textbf{Well-defined}: Suppose $ax + b + \princ{x^2+1}, cx + d + \princ{x^2+1} \in F$ such that $ax + b + \princ{x^2+1} = cx + d + \princ{x^2+1}$. Then $(a - c)x + (b - d) + \princ{x^2 + 1} = 0 + \princ{x^2+1}$ by Coset Equality, which therefore means that $(a-c)x + (b-d) \in \princ{x^2+1}$. Now elements of $\princ{x^2+1}$ have degree of at least 2, or is the zero polynomial. Since $(a-c)x + (b-d)$ has degree less than 2, we must have $(a-c)x + (b-d) = 0$ which means $a - c = 0$ and $b - d = 0$. Hence $a = c$ and $b = d$, and so
+        \item \textbf{Well-defined}: Suppose $ax + b + \princ{x^2+1}, cx + d + \princ{x^2+1} \in F$ are such that $ax + b + \princ{x^2+1} = cx + d + \princ{x^2+1}$. Then $(a - c)x + (b - d) + \princ{x^2 + 1} = 0 + \princ{x^2+1}$ by Coset Equality, which therefore means that $(a-c)x + (b-d) \in \princ{x^2+1}$. Now elements of $\princ{x^2+1}$ have degree of at least 2, or is the zero polynomial. Since $(a-c)x + (b-d)$ has degree less than 2, we must have $(a-c)x + (b-d) = 0$ which means $a - c = 0$ and $b - d = 0$. Hence $a = c$ and $b = d$, and so
         \begin{align*}
             \phi\left(ax + b + \princ{x^2+1}\right) &= b + ai\\
             &= d + ci\\
@@ -34,7 +34,7 @@
         \[
             \phi\left(ax + b + \princ{x^2+1}\right) = \phi\left(cx + d + \princ{x^2+1}\right).
         \]
-        This means that $b + ai = d + ci$. Hence $b = d$ and $a = c$, which shows that $ax + b + \princ{x^2+1} = cx + d + \princ{x^2+1}$. Hence $\phi$ is injective.
+        This means that $b + ai = d + ci$. Hence $b = d$ and $a = c$, which shows that $ax + b + \princ{x^2+1} = cx + d + \princ{x^2+1}$. Therefore $\phi$ is injective.
 
         \item \textbf{Surjective}: Suppose $u + vi \in \C$. Then clearly
         \[
@@ -42,7 +42,7 @@
         \]
         which means that $\phi$ is surjective.
     \end{itemize}
-    Therefore $\phi$ is a well-defined ring isomorphism, proving that $F \cong \C$.
+    Therefore $\phi$ is a well-defined isomorphism, proving that $F \cong \C$.
 
     \item By way of contradiction, suppose a ring $R$ has an subring that is isomorphic to $\Z_4$, and that $f(x)$ has a zero in such a ring. Let this zero be denoted $\alpha$, which means $2\alpha + 1 = 0$ in $R$. Note that this means
     \begin{align*}
@@ -75,15 +75,7 @@
             &=\Q(\sqrt2)(\sqrt3).
         \end{align*}
 
-        \item Reducing $p(x)$ modulo 5 yields $\bar{p}(x) = x^4 + 1$. One sees then that
-        \begin{itemize}
-            \item $\bar{p}(0) = 1 \neq 0$;
-            \item $\bar{p}(1) = 2 \neq 0$;
-            \item $\bar{p}(2) = 17 = 2 \neq 0$;
-            \item $\bar{p}(3) = 82 = 2 \neq 0$; and
-            \item $\bar{p}(4) = 257 = 2 \neq 0$.
-        \end{itemize}
-        Therefore $p(x)$ is irreducible over $\Q$ by Mod 5 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}). One also sees that
+        \item One sees that
         \begin{align*}
             &p(\sqrt2 + \sqrt3)\\
             &= (\sqrt2 + \sqrt3)^4 - 10(\sqrt2 + \sqrt3)^2 + 1\\
@@ -92,7 +84,7 @@
             &=\left(49 + 20\sqrt6\right) - 10\left(5 + 2\sqrt6\right) + 1\\
             &= 0
         \end{align*}
-        so $\sqrt2 + \sqrt3$ is indeed a zero of $p(x)$ in $\R$.
+        so $\sqrt2 + \sqrt3$ is indeed a zero of $p(x)$.
 
         \item We work backwards. Since $p(x) = x^4 - 10x + 1$ is an irreducible polynomial of degree 4, therefore $\Q(\sqrt2 + \sqrt3)$ has 4 basis vectors. Therefore
         \begin{align*}
@@ -107,11 +99,12 @@
         and so $\Q(\sqrt2 + \sqrt3)$ is a splitting field of $f(x)$ over $\Q$.
     \end{partquestions}
 
-    \item Let $f(x) = a_0 + a_1x + \cdots + a_mx^m$ and $g(x) = b_0 + b_1x + \cdots + b_nx^n$. Without loss of generality assume $m \geq n$, and set $b_i = 0$ for all $i > m$. Thus
+    \item Let $f(x) = a_0 + a_1x + \cdots + a_mx^m$ and $g(x) = b_0 + b_1x + \cdots + b_nx^n$. Without loss of generality assume $m \geq n$, and set $b_i = 0$ for all $i > n$. Thus
     \begin{align*}
         (f(x) + g(x))' &= \left(\sum_{i=0}^m(a_i + b_i)x^i\right)'\\
         &= \sum_{i=1}^m i(a_i+b_i)x^{i-1}\\
         &= \sum_{i=1}^m ia_ix^{i-1} + \sum_{i=1}^m ib_ix^{i-1}\\
+        &= \sum_{i=1}^m ia_ix^{i-1} + \sum_{i=1}^n ib_ix^{i-1} & (\text{since } b_i = 0 \text{ for } i > n)\\
         &= f'(x) + g'(x)
     \end{align*}
     as required.
@@ -144,7 +137,7 @@
     \begin{align*}
         (x+y)^{p^{k+1}} &= \left((x+y)^{p^k}\right)^p\\
         &= (x^{p^k}+y^{p^k})^p & (\text{By Induction Hypothesis})\\
-        &= \left(x^{p^k}\right)^p + \left(y^{p^k}\right)^p & (\text{By Freshman's Dream})\\
+        &= \left(x^{p^k}\right)^p + \left(y^{p^k}\right)^p & (\text{By Freshman's Dream}, \myref{prop-freshman-dream})\\
         &= x^{p^{k+1}} + y^{p^{k+1}}
     \end{align*}
     so the statement holds for $k + 1$. Thus by mathematical induction we have proven that $(x+y)^{p^n} = x^{p^n} + y^{p^n}$.
@@ -222,9 +215,9 @@
     \]
     by the Freshman's Dream (\myref{prop-freshman-dream}). This clearly means that $f(x)$ splits over $F$.
 
-    Otherwise $f(x)$ has no zeroes in $F$. Let $E/F$ be the splitting field of $f(x)$, and suppose $\beta \in E$ is a zero of $f(x)$. Using the above working we know that $f(x) = (x-\beta)^p$.
+    Now suppose $f(x)$ has no zeroes in $F$. Let $E/F$ be the splitting field of $f(x)$, and suppose $\beta \in E$ is a zero of $f(x)$. Using the above working we know that $f(x) = (x-\beta)^p$.
 
-    Now, seeking a contradiction, suppose $f(x)$ is reducible over $F$, meaning that there exist non-constant polynomials $g(x), h(x) \in F[x]$ such that $f(x) = g(x)h(x)$. In particular, $g(x) = (x-\beta)^n$ for some positive integer $n$ where $1 \leq n \leq p$. Expanding $g(x)$ using the Binomial Theorem yields
+    Now, seeking a contradiction, suppose $f(x)$ is reducible over $F$, meaning that there exist non-constant polynomials $g(x), h(x) \in F[x]$ such that $f(x) = g(x)h(x)$. In particular, $g(x) = (x-\beta)^n$ for some positive integer $n$ where $1 \leq n \leq p$. Expanding $g(x)$ using the Binomial Theorem (\myref{thrm-binomial}) yields
     \[
         g(x) = x^n + n\beta x^{n-1} + {n\choose2}\beta^2x^{n-2} + \cdots + n\beta^{n-1}x + \beta^n \in F[x],
     \]
