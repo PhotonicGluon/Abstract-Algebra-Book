@@ -3,7 +3,7 @@ Relations and functions play a fundamental role in mathematics. Both compare and
 
 \section{What is a Relation?}
 \begin{definition}
-    Let $A$ and $B$ be sets. A \term{relation from $A$ to $B$}\index{relation} is a subset of $A \times B$.
+    Let $X$ and $Y$ be sets. A \term{relation from $X$ to $Y$}\index{relation} is a subset of $X \times Y$.
 
     For elements $x \in X$ and $y \in Y$, we say \term{$x$ is related to $y$ by $R$}\index{related to} (or \term{$x$ is $R$-related to $y$}), denoted $x\mathrel{R}y$, if and only if $(x,y) \in R$.
 \end{definition}
@@ -180,7 +180,7 @@ We now look at equivalence classes.
 
 We end this section by looking at the equivalence of equivalence classes.
 \begin{theorem}\label{thrm-equivalence-class-equivalence}
-    Let $\sim$ be an equivalence relation on a set $A$, and let $x$ and $y$ be elements in $A$. Then the following statements are equivalent.
+    Let $\sim$ be an equivalence relation on a set $A$, and let $x, y \in A$. Then the following statements are equivalent.
     \begin{enumerate}
         \item $x \mathrel{\sim} y$
         \item $[x] = [y]$
@@ -198,35 +198,41 @@ We end this section by looking at the equivalence of equivalence classes.
 \begin{remark}
     One can think of a function/map $f:X\to Y$ as a `black box' that assigns every element of $X$ to exactly one element in $Y$.
 \end{remark}
+
 \begin{definition}
     For a function $f: X \to Y$, the set $X$ is called the \term{domain}\index{domain!function} of the function and the set $Y$ is called the \term{codomain}\index{codomain} of the function.
 \end{definition}
-\begin{example}
-    Consider the simple function $f: \Z \to \Q$ where $f(n) = \frac1n$. In this case, $f$ has a domain of $\Z$, i.e. the integers, and a codomain of $\Q$, i.e. the rational numbers.
 
-    We may evaluate the function $f$ at $2 \in \Z$ to get the resulting value of $f(2) = \frac12$.
+\begin{example}
+    Consider the simple function $f: \mathbb{N} \to \Q$ where $f(n) = \frac1n$. In this case, $f$ has a domain of $\mathbb{N}$, i.e. the integers, and a codomain of $\Q$, i.e. the rational numbers.
+
+    We may evaluate the function $f$ at $2 \in \mathbb{N}$ to get the resulting value of $f(2) = \frac12$.
 \end{example}
 
 \term{Arrow notation}\index{function!arrow notation} can also be used to define the rule of a function. There is no good way of defining arrow notation, but some examples should help illustrate the basics.
+
 \begin{example}
     Consider $f: \mathbb{N} \to \Q$ where $f(n) = \frac1n$. We may write this more succinctly as $f: \mathbb{N} \to \Q, n \mapsto \frac1n$. Specifically, $n \mapsto \frac1n$ is read as ``$n$ maps to $\frac1n$''.
 
     It is important to note that $\to$ indicates the domain and codomain, and that $\mapsto$ indicates how an element in the domain is `transformed' into an element in the codomain.
 \end{example}
+
 \begin{example}
     The function $g: \mathbb{R} \to \mathbb{R}$ where $g(x) = x^2 - 2x + 1$ can be more succinctly written as $g: \mathbb{R} \to \mathbb{R}, x \mapsto x^2 - 2x + 1$.
 \end{example}
+
 \begin{example}
-    Let $h: \Z \to \mathbb{R}$ where $h(x^2) = x$. This can be written succinctly as either $h: \Z \to \mathbb{R}, x^2 \mapsto x$ or $h: \Z \to \mathbb{R}, n \mapsto \sqrt n$.
+    Let $h: \mathbb{N} \to \mathbb{R}$ where $h(x^2) = x$. This can be written succinctly as either $h: \mathbb{N} \to \mathbb{R}, x^2 \mapsto x$ or $h: \mathbb{N} \to \mathbb{R}, n \mapsto \sqrt n$.
 \end{example}
 
 \begin{definition}
-    Let $f: X \to Y$ be a function, and $x \in X$.
+    Let $f: X \to Y$ be a function.
     \begin{itemize}
         \item The \term{image}\index{function!image} of an element $x \in X$ under the function $f$ is denoted $f(x)$ and is defined to be the value after applying $f$ to $x$.
         \item The \term{image} (or \term{range}\index{function!range}) of $f$ is denoted by either $\im f$ or $f(X)$ and is the set of the images of all elements in the domain. It is a subset of the codomain, i.e. $\im f \subseteq Y$.
     \end{itemize}
 \end{definition}
+
 \begin{example}
     Consider the function $f: \Z \to \Z, n \mapsto 1$.
     \begin{itemize}
@@ -235,6 +241,7 @@ We end this section by looking at the equivalence of equivalence classes.
     \end{itemize}
     It is important to note that the image of an element is a single element, while the image of the function is a set.
 \end{example}
+
 \begin{example}
     Consider the function $g: \Z \to \Z, n \mapsto |n|$.
     \begin{itemize}
@@ -244,6 +251,7 @@ We end this section by looking at the equivalence of equivalence classes.
     \end{itemize}
     The image/range of $g$ is the set of non-negative integers, i.e. $\im g = \mathbb{N} \cup \{0\}$.
 \end{example}
+
 \begin{example}
     Let the function $h: \Z \to \Q, n\mapsto\frac n3$.
     \begin{itemize}
@@ -271,7 +279,7 @@ We end this section with defining equality of two functions.
     Let $f: A \to B$ and $g: C \to D$ be functions. Then $f$ and $g$ are equal\index{function!equality} if and only if
     \begin{itemize}
         \item $A = C$ and $B = D$; and
-        \item for all $x \in A = C$, we have $f(x) = g(x)$.
+        \item for all $x \in A$, we have $f(x) = g(x)$.
     \end{itemize}
     We denote $f = g$ if the two functions are equal.
 \end{definition}
@@ -305,19 +313,21 @@ Sometimes, a `function' with a given rule may not satisfy the requirement that f
 
 \section{Function Composition}
 \begin{definition}
-    Let $f: X \to Y$ and $g: Y \to Z$ be functions. Then \term{composing $f$ with $g$}\index{function!composition} produces a function $h: X \to Z$ where $h(x) = f(g(x))$. We denote $h = f \circ g$ where $\circ$ is the function composition operator.
+    Let $f: X \to Y$ and $g: Y \to Z$ be functions. Then \term{composing $f$ with $g$}\index{function!composition} produces a function $h: X \to Z$ where $h(x) = g(f(x))$. We denote $h = g \circ f$ where $\circ$ is the function composition operator.
 \end{definition}
 \begin{remark}
-    We may also alternatively write $fg$ in place of $f \circ g$.
+    We may also alternatively write $gf$ in place of $g \circ f$.
 \end{remark}
 
-It is important to note that $f \circ g$ is only meaningful if the image of $g$ is a subset of the domain of $f$. That is, if $f: A \to B$ and $g: C \to D$, then $f \circ g$ is only meaningful if $\im g \subseteq A$.
+It is important to note that $g \circ f$ is only meaningful if the image of $f$ is a subset of the domain of $g$. That is, if $f: A \to B$ and $g: C \to D$, then $g \circ f$ is only meaningful if $\im f \subseteq C$.
 
 We note an important property of function compositions that we do not prove here, so we leave it as an axiom.
 
 \begin{axiom}\label{axiom-function-composition-associative}
-    Function composition is associative\index{function!composition!associative}. That is, if $f$, $g$, and $h$ are composable, then $f \circ (g \circ h) = (f \circ g) \circ h$. As parentheses do not change the result, they are usually omitted.
+    Function composition is associative\index{function!composition!associative}. That is, if the functions $f$, $g$, and $h$ are composable, then $f \circ (g \circ h) = (f \circ g) \circ h$.
 \end{axiom}
+
+As parentheses do not change the result, they are usually omitted.
 
 \begin{exercise}
     Let $f: \mathbb{R} \to \mathbb{R}$ and $g: \mathbb{R} \to \mathbb{R}$. Write down the rule of the function $fg$ if $f(x) = x^2 - x + 1$ and $g(y) = \frac1{y^2+1}$.
@@ -325,11 +335,12 @@ We note an important property of function compositions that we do not prove here
 
 \section{Injective, Surjective, and Bijective Functions}
 \begin{definition}
-    A function $f: X \to Y$ is \term{injective}\index{function!injective} (or \term{one-to-one}\index{function!one-to-one}) if $f(x_1) = f(x_2)$ implies $x_1 = x_2$.
+    A function $f: X \to Y$ is \term{injective}\index{function!injective} (or \term{one-to-one}\index{function!one-to-one}) if and only if $f(x_1) = f(x_2)$ implies $x_1 = x_2$ for all $x_1, x_2 \in X$.
 \end{definition}
 \begin{remark}
-    Equivalently, if $x_1 \neq x_2$ then $f(x_1) \neq f(x_2)$ for all $x_1$ and $x_2$ in $X$.
+    Equivalently, if $x_1 \neq x_2$ then $f(x_1) \neq f(x_2)$ for all $x_1, x_2 \in X$.
 \end{remark}
+
 \begin{example}
     Consider $f: \mathbb{N} \to \mathbb{N}, n \mapsto n^2$. We show that $f$ is injective.
 
@@ -345,20 +356,20 @@ We note an important property of function compositions that we do not prove here
 \begin{remark}
     Equivalently, the image of $f$ is equal to its codomain, i.e. $\im f = Y$.
 \end{remark}
+
 \begin{example}
     Let $S$ denote the set of non-negative real numbers, i.e. $S = \{x\in\mathbb{R} | x \geq 0\}$. Consider the function $f: \mathbb{R} \to S, x \mapsto x^2$. We show that $f$ is surjective.
 
-    Let $y \in S$. Note that $\sqrt{y} \in \mathbb{R}$ since $y$ is a non-negative real number. Observe that $f(\sqrt{y}) = (\sqrt y)^2 = y$. Thus any $y \in Y$ has a pre-image $\sqrt y \in X$. Thus $f$ is surjective.
+    Let $y \in S$. Note that $\sqrt{y} \in \mathbb{R}$ since $y$ is a non-negative real number. Observe that $f(\sqrt{y}) = (\sqrt y)^2 = y$. Thus any $y \in S$ has a pre-image $\sqrt y \in \R$. Thus $f$ is surjective.
 \end{example}
+
 \begin{example}
     Consider instead the function $g: \mathbb{R} \to \mathbb{R}, x \mapsto x^2$. Then $g$ is not surjective because there is no real number $x \in \mathbb{R}$ such that $g(x) = -1$.
 \end{example}
 
 \begin{definition}
-    A function is \term{bijective}\index{function!bijective} (or a \term{bijection}\index{bijection} or a \term{one-to-one correspondence}\index{function!one-to-one!correspondence}) if the function is both injective and surjective.
+    A function is \term{bijective}\index{function!bijective} (or \term{a bijection}\index{bijection} or a \term{one-to-one correspondence}\index{function!one-to-one!correspondence}) if the function is both injective and surjective.
 \end{definition}
-
-\newpage
 
 \begin{example}
     Consider the function $f: \mathbb{R} \to \mathbb{R}, x \mapsto x^3$. We show that $f$ is bijective.
@@ -369,19 +380,20 @@ We note an important property of function compositions that we do not prove here
     Since $f$ is both injective and surjective it is thus bijective.
 \end{example}
 
+\begin{definition}
+    Let $A$ and $B$ be sets. Then $A$ and $B$ are \term{equinumerous}\index{set!equinumerous} if there exists a bijective function $f: A \to B$. In this case, $A$ and $B$ have the same cardinality, i.e., $|A| = |B|$.
+\end{definition}
+
+\begin{example}
+    Consider the sets $X = \{1, 2, 3\}$ and $Y = \{a, b, c\}$. The function $f: X \to Y$ defined by $1 \mapsto a$, $2 \mapsto b$, and $3 \mapsto c$ is clearly a bijection, so $|X| = |Y|$.
+\end{example}
+
 \begin{proposition}
     Let $X$ and $Y$ be finite equinumerous sets. If $f: X \to Y$ is an injective function, then $f$ is bijective.
 \end{proposition}
 \begin{proof}
     Suppose $f: X \to Y$ is injective, meaning $x_1 \neq x_2$ implies $f(x_1) \neq f(x_2)$ for all $x_1, x_2 \in X$. Thus every $x$ produces a unique $f(x)$, meaning $|X| = |\im f|$. Since $X$ and $Y$ are equinumerous sets (given), thus $|\im f| = |Y|$. As $\im f \subseteq Y$ and they have the same cardinality, therefore $\im f = Y$, i.e. $f$ is surjective. Therefore $f$ is injective (by assumption) and $f$ is surjective, meaning $f$ is bijective.
 \end{proof}
-
-\begin{definition}
-    Let $A$ and $B$ be sets. Then $A$ and $B$ are \term{equinumerous}\index{set!equinumerous} if there exists a bijective function $f: A \to B$. In this case, $A$ and $B$ have the same cardinality, i.e., $|A| = |B|$.
-\end{definition}
-\begin{example}
-    Consider the sets $X = \{1, 2, 3\}$ and $Y = \{a, b, c\}$. The function $f: X \to Y$ defined by $1 \mapsto a$, $2 \mapsto b$, and $3 \mapsto c$ is clearly a bijection, so $|X| = |Y|$.
-\end{example}
 
 \begin{exercise}
     Define the function $f: \mathbb{N} \to \Z$ such that
