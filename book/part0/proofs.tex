@@ -2,7 +2,7 @@
 Proofs compel belief. Without proofs, statements are just meaningless words without justification. A series of logical steps must be provided in order to prove a claim. We explore the basics of proof writing here.
 
 \section{Direct Proof}
-In essence, a direct proof\index{proof!direct} for the statement ``if $p$ then $w$'' would begin by assuming $p$ is true and showing that this forces $q$ to be true. We don't need to worry about the case of $p$ being false, since $p \implies q$ is vacuously true in the case when $p$ is false.
+In essence, a direct proof\index{proof!direct} for the statement ``if $p$ then $q$'' would begin by assuming $p$ is true and showing that this forces $q$ to be true. We don't need to worry about the case of $p$ being false, since $p \implies q$ is vacuously true in the case when $p$ is false.
 \begin{example}
     We prove that ``if $n$ is an odd integer then $n^2$ is odd'' using direct proof. We first write out the proof step-by-step.
     \begin{proof}
@@ -34,7 +34,7 @@ In essence, a direct proof\index{proof!direct} for the statement ``if $p$ then $
     \end{proof}
 \end{example}
 \begin{example}
-    Let $x$ and $y$ be positive real numbers. We prove that ``if $x \leq y$ then $\sqrt x \leq \sqrt y$.''
+    Let $x$ and $y$ be positive real numbers. We prove that ``if $x \leq y$ then $\sqrt x \leq \sqrt y$''.
     \begin{proof}
         Suppose $x \leq y$. This means $x - y \leq 0$. As $x$ and $y$ are positive real numbers, we may write that inequality as $(\sqrt x)^2 - (\sqrt y)^2 \leq 0$. We can factor the left hand side as $(\sqrt x + \sqrt y)(\sqrt x - \sqrt y) \leq 0$. Now $\sqrt x + \sqrt y$ is always positive, so if the entire inequality is less than or equal to 0 we must have $\sqrt x - \sqrt y \leq 0$. Therefore $\sqrt x \leq \sqrt y$.
     \end{proof}
@@ -49,7 +49,7 @@ Division into cases can be considered as a variant of direct proof. We split a d
 
 \begin{example}
     We look at a proof of the statement ``$1 + (-1)^n(2n-1)$ is a multiple of 4 if $n$ is an integer''.
-    \begin{proof}[Proof (see {\cite[p.~124]{hammack_2018}})]
+    \begin{proof}
         Suppose $n$ is an integer. Then, $n$ is either odd or even. We look at two cases.
         \begin{itemize}
             \item If $n$ is odd, then $(-1)^n = -1$ and $n = 2k+1$ for some integer $k$. Thus
@@ -88,9 +88,9 @@ Division into cases can be considered as a variant of direct proof. We split a d
         Hence, in either case, $m + n$ is odd.
     \end{proof}
 
-    Now, the two cases in the above proof are almost the same, except for whether $m$ or $n$ is the even integer. It is more productive to just do one case and indicate that the other case is nearly (or exactly) identical to the current case. The phrase ``without loss of generality'' (or WLOG for short) is a way to signpost to the reader that the proof is treating only one of several nearly identical cases. We produce a more succinct version of the proof above.
+    Now, the two cases in the above proof are almost the same, except for whether $m$ or $n$ is the even integer. It is more productive to just do one case and indicate that the other case is nearly (or exactly) identical to the current case. The phrase ``without loss of generality'' is a way to signpost to the reader that the proof is treating only one of several nearly identical cases. We produce a more succinct version of the proof above.
 
-    \begin{proof}[Proof (see {\cite[p.~126]{hammack_2018}})]
+    \begin{proof}
         Suppose $m$ and $n$ are two integers with opposite parity. Without loss of generality, suppose $m$ is even and $n$ is odd. Therefore $m = 2a$ and $n = 2b + 1$ for some integers $a$ and $b$. Hence
         \begin{align*}
             m + n &= (2a) + (2b + 1)\\
@@ -113,7 +113,8 @@ Generally, we would want to prove in the direction from simple to complex. So if
     Suppose $n$ is an integer. We prove the statement ``if $n^2 - 6n + 5$ is even then $n$ is odd''. We note that a direct proof would be tedious and problematic. Using a contrapositive proof would be easier.
 
     We first note that the contrapositive statement that we want to prove is ``if $n$ is \textit{not} odd, then $n^2 - 6n + 5$ is \textit{not} even'', that is, ``if $n$ is even, then $n^2 - 6n + 5$ is odd''.
-    \begin{proof}[Proof (see {\cite[p.~130]{hammack_2018}})]
+
+    \begin{proof}
         We consider a proof by contrapositive.
 
         Suppose $n$ is even. Then $n = 2k$ where $k$ is an integer. Note
@@ -132,7 +133,7 @@ Generally, we would want to prove in the direction from simple to complex. So if
 
     We first note that the contrapositive statement that we want to prove is ``if $x > y$ then $x^3 + xy^2 > x^2y + y^3$''.
 
-    \begin{proof}[Proof (cf. {\cite[p.~130]{hammack_2018}})]
+    \begin{proof}
         We consider a proof by contrapositive.
 
         Assume $x > y$. Then $x - y > 0$. Also, since $x > y$, thus $x$ and $y$ are not both zero. Hence $x^2 + y^2 > 0$.
@@ -155,9 +156,6 @@ The third proof technique is called a \term{proof by contradiction}\index{proof!
 \end{remark}
 
 Usually, when writing a proof by contradiction, we would like to inform the reader that a proof by contradiction is being employed. Language such as ``by way of contradiction'', ``towards a contradiction'', ``suppose for the sake of contradiction'' etc. may be used to signpost the use of a proof by contradiction.
-\begin{remark}
-    Some authors would also signal the use of contradiction by using the initialism ``BWOC'' (by way of contradiction).
-\end{remark}
 
 \begin{example}\label{example-sqrt2-is-irrational}
     We present the classic proof by contradiction for the statement ``$\sqrt 2$ is irrational''.
@@ -184,7 +182,7 @@ Usually, when writing a proof by contradiction, we would like to inform the read
     \end{proof}
 \end{example}
 \begin{remark}
-    The statement above is one where a direct proof would be easier. We provide a direct proof of it below.
+    A direct proof would be easier. We provide a direct proof of it below.
     \begin{proof}
         Since $x$ is a positive rational number write $x = \frac pq$ where $p$ and $q$ are positive integers. Then set $y = \frac{p}{q+1}$. Clearly $\frac{p}{q+1} < \frac{p}{q} = x$ and $\frac{p}{q+1}$ is positive, hence we have found a $y$ such that $y < x$.
     \end{proof}
@@ -201,7 +199,7 @@ We now look at a proof by contradiction for conditional statements. Recall that 
 
     We note that the statement we want to contradict is ``$a$ is rational and $ab$ is irrational \textit{and} $b$ is \textit{not} irrational'', i.e. ``$a$ is rational and $b$ is rational and $ab$ is irrational''.
     \begin{proof}
-        By way of contradiction assume $a$ is rational, $b$ is rational, and $ab$ is irrational. We may then write $a = \frac mn$ and $b = \frac pq$ where $m, n, p, q \in \Z$. Hence $ab = \left(\frac mn\right)\left(\frac pq\right) = \frac{mp}{nq}$ which is clearly rational. Therefore we have that $ab$ is irrational (by assumption) and $ab$ is rational, a contradiction.
+        By way of contradiction assume $a$ is rational, $b$ is rational, and $ab$ is irrational. We may then write $a = \frac mn$ and $b = \frac pq$ where $m, n, p, q \in \Z$ where $n, q \neq 0$. Hence $ab = \left(\frac mn\right)\left(\frac pq\right) = \frac{mp}{nq}$ which is clearly rational. Therefore we have that $ab$ is irrational (by assumption) and $ab$ is rational, a contradiction.
     \end{proof}
 \end{example}
 
@@ -292,7 +290,7 @@ In summary, mathematical induction involves two steps:
 
 \begin{example}
     Suppose $x > -1$. We will prove that $(1+x)^n \geq 1+nx$ if $n$ is a positive integer.
-    \begin{proof}[Proof (cf. {\cite[p.~186]{hammack_2018}})]
+    \begin{proof}
         When $n = 1$, the left hand side is $(1+x)^1 = 1+x$ which is exactly the right hand side. Thus the base case is true.
 
         Assume that the statement holds for some positive integer $k$, i.e. $(1+x)^k \geq 1+kx$. We show that the statement holds for $k+1$, i.e. $(1+x)^{k+1} \geq 1+(k+1)x$.
@@ -330,9 +328,9 @@ Strong mathematical induction involves two steps:
 
         We show the base cases of 8, 9, and 10 hold:
         \begin{itemize}
-            \item When $n = 8$, we have $8 = 3 + 5$.
-            \item When $n = 9$, we have $9 = 3 \times 3 + 5 \times 0$.
-            \item When $n = 10$, we have $10 = 3 \times 0 + 5 \times 2$.
+            \item When $n = 8$, we have $8 = 3(1) + 5(0)$.
+            \item When $n = 9$, we have $9 = 3(3) + 5(0)$.
+            \item When $n = 10$, we have $10 = 3(0) + 5(2)$.
         \end{itemize}
 
         Now assume that for some positive integer $k \geq 8$, every integer $m$ satisfying $8 \leq m \leq k$ results in the statement being true, i.e. $m$ can be written in the form $3a + 5b$. We are to show that the statement for $k+1$ is true, i.e. $k+1$ can be expressed in the form $3a + 5b$.
@@ -344,17 +342,15 @@ Strong mathematical induction involves two steps:
 \end{example}
 
 \begin{example}
-    Suppose we have a candy bar with $n \geq 1$ pieces. We prove that $n - 1$ breaks are required to break it into $n$ individual pieces.
+    Let $n$ be a positive integer. Suppose we have a candy bar with $n$ pieces. We prove that $n - 1$ breaks are required to break it into $n$ individual pieces.
     \begin{proof}
         We consider strong induction on $n$.
 
         When $n = 1$, the candy bar is already in individual pieces. Thus $1 - 1 = 0$ breaks are required.
 
-        Now assume that for some integer $k \geq 1$, every candy bar with $m$ pieces (where $1 \leq m \leq k$) can be broken into individual pieces using $m - 1$ breaks. We are to show that a candy bar with $k + 1$ pieces can be broken into individual pieces using $k$ pieces.
+        Now assume that for some positive integer $k$, every candy bar with $m$ pieces (where $1 \leq m \leq k$) can be broken into individual pieces using $m - 1$ breaks. We are to show that a candy bar with $k + 1$ pieces can be broken into individual pieces using $k$ pieces.
 
-        Consider any possible break in a $(k + 1)$-piece candy bar. This will break the candy bar into two pieces, one with $m$ pieces and one with $(k+1)-m$ pieces. Note $1 \leq m \leq k$ which means $1 \leq (k+1)-m \leq k$, so both pieces are non-empty and not the entire bar.
-
-        Applying the induction hypothesis on both bars, we see that the $m$-piece bar can be broken into individual pieces using $m-1$ breaks; the $((k+1)-m)$-piece bar can be broke into individual pieces using $((k+1)-m)-1 = k-m$ breaks. Adding the first break needed to separate the candy bar into these two pieces, that means a total of $(m-1) + (k-m) + 1 = k$ breaks are needed, proving the statement for $k+1$.
+        Consider any possible break in a candy bar with $k+1$ pieces. This will break the candy bar into two pieces, one with $m$ pieces and one with $(k+1)-m$ pieces. Note $1 \leq m \leq k$ which means $1 \leq (k+1)-m \leq k$, so both pieces are non-empty and not the entire bar. Applying the induction hypothesis on both bars, we see that the piece bar with $m$ pieces scan be broken into individual pieces using $m-1$ breaks; the piece bar with $(k+1)-m$ pieces can be broken into individual pieces using $((k+1)-m)-1 = k-m$ breaks. Adding the first break needed to separate the candy bar into these two pieces, that means a total of $(m-1) + (k-m) + 1 = k$ breaks are needed, proving the statement for $k+1$.
 
         Therefore by mathematical induction, $n - 1$ breaks are required to break a candy bar of $n$ pieces into individual pieces.
     \end{proof}
