@@ -64,19 +64,19 @@ One could use a \term{Cayley table}\index{cayley table} (or \term{group table}\i
         \begin{tabular}{|l|l|l|l|l|l|l|}
         \hline
         $\boldsymbol{\oplus_6}$ & $\boldsymbol{0}$ & $\boldsymbol{1}$ & $\boldsymbol{2}$ & $\boldsymbol{3}$ & $\boldsymbol{4}$ & $\boldsymbol{5}$ \\ \hline
-        $\boldsymbol{0}$          & 0          & 1          & 2          & 3          & 4          & 5          \\ \hline
-        $\boldsymbol{1}$          & 1          & 2          & 3          & 4          & 5          & 0          \\ \hline
-        $\boldsymbol{2}$          & 2          & 3          & 4          & 5          & 0          & 1          \\ \hline
-        $\boldsymbol{3}$          & 3          & 4          & 5          & 0          & 1          & 2          \\ \hline
-        $\boldsymbol{4}$          & 4          & 5          & 0          & 1          & 2          & 3          \\ \hline
-        $\boldsymbol{5}$          & 5          & 0          & 1          & 2          & 3          & 4          \\ \hline
+        $\boldsymbol{0}$ & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+        $\boldsymbol{1}$ & 1 & 2 & 3 & 4 & 5 & 0 \\ \hline
+        $\boldsymbol{2}$ & 2 & 3 & 4 & 5 & 0 & 1 \\ \hline
+        $\boldsymbol{3}$ & 3 & 4 & 5 & 0 & 1 & 2 \\ \hline
+        $\boldsymbol{4}$ & 4 & 5 & 0 & 1 & 2 & 3 \\ \hline
+        $\boldsymbol{5}$ & 5 & 0 & 1 & 2 & 3 & 4 \\ \hline
         \end{tabular}
     \end{table}
 
     One observes from the Cayley table that
     \begin{itemize}
-        \item for all $x$ and $y$ in $\Z_6$, $x \oplus_6 y$ is in $\Z_6$;
-        \item for all $x, y$, and $z$ in $\Z_6$, $x \oplus_6 (y \oplus_6 z) = (x \oplus_6 y) \oplus_6 z$;
+        \item for all $x, y \in \Z_6$ we see $x \oplus_6 y \in \Z_6$;
+        \item for all $x, y, z \in \Z_6$ we see $x \oplus_6 (y \oplus_6 z) = (x \oplus_6 y) \oplus_6 z$;
         \item 0 is the identity since adding anything to it returns the original number; and
         \item every row has an integer that, when added, gives 0.
     \end{itemize}
@@ -95,17 +95,17 @@ It should be noted that, in this book, we use the convention of reading the \tex
         \begin{tabular}{|l|l|l|l|l|l|l|}
         \hline
         $\boldsymbol{\otimes_5}$ & $\boldsymbol{1}$ & $\boldsymbol{2}$ & $\boldsymbol{3}$ & $\boldsymbol{4}$ \\ \hline
-        $\boldsymbol{1}$          & 1          & 2          & 3          & 4          \\ \hline
-        $\boldsymbol{2}$          & 2          & 4          & 1          & 3          \\ \hline
-        $\boldsymbol{3}$          & 3          & 1          & 4          & 2          \\ \hline
-        $\boldsymbol{4}$          & 4          & 3          & 2          & 1          \\ \hline
+        $\boldsymbol{1}$ & 1 & 2 & 3 & 4 \\ \hline
+        $\boldsymbol{2}$ & 2 & 4 & 1 & 3 \\ \hline
+        $\boldsymbol{3}$ & 3 & 1 & 4 & 2 \\ \hline
+        $\boldsymbol{4}$ & 4 & 3 & 2 & 1 \\ \hline
         \end{tabular}
     \end{table}
 
     One observes from the Cayley table that
     \begin{itemize}
-        \item for all $x$ and $y$ in $A$, $x \otimes_5 y$ is in $A$;
-        \item for all $x, y$, and $z$ in $A$, $x \otimes_5 (y \otimes_5 z) = (x \otimes_5 y) \otimes_5 z$;
+        \item for all $x, y \in A$ we see $x \otimes_5 y \in A$;
+        \item for all $x, y, z \in A$ we see $x \otimes_5 (y \otimes_5 z) = (x \otimes_5 y) \otimes_5 z$;
         \item 1 is the identity since multiplying anything to it returns the original number; and
         \item every row has an integer that, when multiplied, gives 1.
     \end{itemize}
@@ -118,10 +118,10 @@ It should be noted that, in this book, we use the convention of reading the \tex
 
 \section{General Properties of Groups}
 \begin{proposition}
-    The identity of a group $G$ is unique.
+    The identity of a group is unique.
 \end{proposition}
 \begin{proof}
-    Suppose $e_1$ and $e_2$ are identities of the group $G$. Then, for all $x$ in $G$, we have
+    Suppose $e_1$ and $e_2$ are identities of a group $G$. Then, for all $x \in G$, we have
     \[
         e_1x = xe_1 = x \text{ and } e_2x = xe_2 = x,
     \]
@@ -134,14 +134,14 @@ It should be noted that, in this book, we use the convention of reading the \tex
 \end{proof}
 
 \begin{proposition}
-    The inverse of an element $x$ of a group $G$ is unique.
+    The inverse of any element in a group is unique.
 \end{proposition}
 \begin{proof}
-    Suppose that $a$ and $b$ are inverses of $x$. Then by definition, $ax = xa = e \text{ and } bx = xb = e$. So,
+    Suppose that $a$ and $b$ are inverses of $x$ in a group $G$. Then by definition, $ax = xa = e$ and $bx = xb = e$. So,
     \begin{align*}
         a &= ae & (e \text{ is the identity})\\
         &= a(xb) & (b \text{ is an inverse, so } xb = e)\\
-        &= (ax)b & (\text{associativity})\\
+        &= (ax)b & (\textbf{Associativity})\\
         &= eb & (a \text{ is an inverse, so } ax = e)\\
         &= b & (e \text{ is the identity})
     \end{align*}
@@ -149,30 +149,30 @@ It should be noted that, in this book, we use the convention of reading the \tex
 \end{proof}
 
 \begin{proposition}\label{prop-inverse-of-identity-is-identity}
-    $e^{-1} = e$.
+    Let $G$ be a group with identity $e$. Then $e^{-1} = e$.
 \end{proposition}
 \begin{proof}
-    Clearly $e = ee^{-1}$ since $xx^{-1} = e$ for all elements $x$ in $G$, including $x = e$. Thus, by left multiplying $e^{-1}$ on both sides, we see $e = e^{-1}$.
+    Clearly $e = ee^{-1}$ since $xx^{-1} = e$ for all elements $x \in G$, including $x = e$. Thus, by left multiplying $e^{-1}$ on both sides, we see $e = e^{-1}$.
 \end{proof}
 
 \begin{proposition}
-    $\left(x^{-1}\right)^{-1} = x$ for all $x$ in $G$.
+    Let $G$ be a group. Then $\left(x^{-1}\right)^{-1} = x$ for all $x \in G$.
 \end{proposition}
 \begin{proof}
     See \myref{exercise-inverse-of-inverse-is-element} (later).
 \end{proof}
 
 \begin{theorem}[Shoes and Socks]\index{Shoes and Socks Theorem}
-    For all elements $a$ and $b$ in $G$, $(ab)^{-1} = b^{-1}a^{-1}$.
+    Let $G$ be a group. For all elements $a, b \in G$ we have $(ab)^{-1} = b^{-1}a^{-1}$.
 \end{theorem}
 \begin{proof}
     Recall that $g^{-1}$ is the inverse of $g$ if and only if $gg^{-1} = g^{-1}g = e$. We show that $(ab)(b^{-1}a^{-1}) = e$ and $(b^{-1}a^{-1})(ab) = e$.
     \begin{align*}
-        (ab)(b^{-1}a^{-1}) &= a(bb^{-1})a^{-1} & (\text{associativity})\\
+        (ab)(b^{-1}a^{-1}) &= a(bb^{-1})a^{-1} & (\textbf{Associativity})\\
         &= a(e)a^{-1} & (bb^{-1} = e)\\
         &= aa^{-1} & (e \text{ is the identity})\\
         &= e, & (aa^{-1} = e)\\
-        (b^{-1}a^{-1})(ab) &= b^{-1}(a^{-1}a)b & (\text{associativity})\\
+        (b^{-1}a^{-1})(ab) &= b^{-1}(a^{-1}a)b & (\textbf{Associativity})\\
         &= b^{-1}(e)b & (a^{-1}a = e)\\
         &= b^{-1}b & (e \text{ is the identity})\\
         &= e & ( b^{-1}b = e).
@@ -188,7 +188,7 @@ Prove that for all $x$ in $G$, $\left(x^{-1}\right)^{-1} = x$.
 
 We now prove the cancellation law, an important property of groups.
 \begin{proposition}[Cancellation Law]\index{cancellation law!groups}
-    Let $g$, $x$, and $y$ be elements in the group $G$. Then the following statements are equivalent.
+    Let $G$ be a group, and let $g, x, y \in G$. Then the following statements are equivalent.
     \begin{enumerate}
         \item $x = y$
         \item $gx = gy$
@@ -222,7 +222,7 @@ In the case of an additive group operation, $x^n$ is written as $nx$, where $n$ 
 
 Note that some laws of exponents apply to the above operation.
 \begin{proposition}\label{prop-group-laws-of-exponents}
-    Let $G$ be a group, $x$ be an element in that group, and let $m$ and $n$ be non-negative integers. Then
+    Let $G$ be a group, $x \in G$, and $m$ and $n$ be non-negative integers. Then
     \begin{enumerate}
         \item $x^m \ast x^n = x^{m+n}$;
         \item $\left(x^m\right)^n = x^{mn}$; and
@@ -235,7 +235,7 @@ Note that some laws of exponents apply to the above operation.
 \begin{proof}
     We prove each statement individually.
     \begin{enumerate}
-        \item We consider a proof by induction by inducting on $n$.
+        \item We consider strong induction on $n$.
 
         When $n = 0$, one sees
         \begin{align*}
@@ -250,7 +250,7 @@ Note that some laws of exponents apply to the above operation.
         Note
         \begin{align*}
             x^m\ast x^{k+1} &= x^m\ast (x^k\ast x) & (\text{base case})\\
-            &= (x^m \ast x^k) \ast x & (\text{associativity})\\
+            &= (x^m \ast x^k) \ast x & (\textbf{Associativity})\\
             &= x^{m+k}\ast x & (\text{by the }k^{\text{th}}\text{ case})\\
             &= x^{(m+k)+1} & (\text{base case})\\
             &= x^{m+(k+1)}
@@ -304,7 +304,7 @@ If $|G| = n$ where $n$ is finite, we say that $G$ is a \term{finite group}. On t
 \end{example}
 
 \begin{example}
-    The group $(\R, +)$ is an infinite group since $\R$ has an uncountably infinite number of elements.
+    The group $(\R, +)$ is an infinite group since $\R$ has an infinite number of elements.
 \end{example}
 
 Let's now look at the order of an element.
@@ -365,7 +365,7 @@ The last point is actually a consequence of Lagrange's theorem (\myref{thrm-lagr
 Now that we have gotten some basic terminology and properties of groups out of the way, let's introduce a very simple type of group: the cyclic groups.
 
 \begin{definition}
-    Let $G$ be a group and $g$ be in $G$. If
+    Let $G$ be a group and $g \in G$. If
     \[
         G = \{g, g^2, g^3, \dots, g^n\}
     \]
@@ -384,7 +384,7 @@ Now that we have gotten some basic terminology and properties of groups out of t
     Find the other generator of the group $(\{1, -1, i, -i\}, \times)$, where $i^2 = -1$.
 \end{exercise}
 
-It should be noted that not every element in a cyclic group is a generator, and that a cyclic group may have more than 1 generator.
+From the above exercise we see that not every element in a cyclic group is a generator, and that a cyclic group may have more than 1 generator.
 
 Cyclic groups may also be of \term{infinite order}. Such cyclic groups are called \term{cyclic groups of infinite order} or \term{infinite cyclic groups}\index{cyclic group!infinite}.
 \begin{example}
@@ -396,14 +396,12 @@ We now look at two results involving cyclic groups.
     Every cyclic group is abelian.
 \end{proposition}
 \begin{proof}
-    Let $G$ be the cyclic group with a generator $g$. Suppose $x$ and $y$ are elements in $g$. Then $x = g^m$ and $y = g^n$ for some positive integers $m$ and $n$.
-
-    Thus,
+    Let $G$ be a cyclic group with generator $g$. Suppose $x, y \in G$. Then $x = g^m$ and $y = g^n$ for some positive integers $m$ and $n$. Thus,
     \begin{align*}
         xy &= (g^m)(g^n)\\
         &= g^mg^n\\
         &= g^{m+n}\\
-        &= g^{n+m} & (\text{+ is commutative})\\
+        &= g^{n+m} & (\text{+ is commutative, } \myref{axiom-addition-is-commutative})\\
         &= g^ng^m\\
         &= (g^n)(g^m)\\
         &= yx
@@ -412,23 +410,17 @@ We now look at two results involving cyclic groups.
 \end{proof}
 
 \begin{theorem}\label{thrm-cyclic-group-has-element-with-same-order}
-    A finite group $G$ is cyclic if and only if there exists an element $g$ in $G$ with the same order as the group.
+    A finite group $G$ is cyclic if and only if there exists an element $g \in G$ with the same order as the group.
 \end{theorem}
 \begin{proof}
-    We first prove the forward direction: suppose $G$ is cyclic and $|G| = n$. Then, by definition, there exists an element $g$ in $G$ such that
+    We first prove the forward direction: suppose $G$ is cyclic and $|G| = n$. Then, by definition, there exists an element $g \in G$ such that
     \[
         G = \langle g \rangle = \{g^k \vert 1 \leq k \leq n, k \in \Z\},
     \]
     i.e. $g$ is a generator of $G$. We just need to show $|g| = n$. Suppose on the contrary there exists an integer $1 \leq m < n$ where $g^m = e$. Then $\langle g \rangle = \{g, g^2, \dots, g^m\}$. Thus $|\langle g \rangle| = m < n = |G|$. But by the hypothesis of the forward direction, $G = \langle g \rangle$ so $n = |G| = |\langle g \rangle| = m$. This is a contradiction, i.e. there does \textit{not} exist an integer $1 \leq m < n$ where $g^m = e$. Therefore $g^n = e$, i.e. $|g| = n$.
 
-    We now prove the reverse direction: suppose there is an element $g$ in $G$ with order $n$.
-
-    We claim that $g, g^2, \dots, g^n$ are all distinct. Suppose on the contrary that there exist integers $i$ and $j$ where $1 \leq i < j \leq n$ such that $g^i = g^j$. Then $g^i = g^ig^{j-i}$, which means $g^{j-i} = e$ by the cancellation law. Note that $1 \leq j - i < n$. Thus, since $g^{j-i} = e$, therefore $|g| = j - i < n$ which contradicts $|g| = n$. Hence, $g, g^2, \dots, g^n$ are all distinct. Therefore, $\langle g \rangle = \{g, g^2, \dots, g^n\}$ contain distinct elements of $G$. But there are only $n$ elements in $G$ and $\langle g \rangle$ contains $n$ distinct elements. Therefore, $G = \langle g \rangle$ which means that $G$ is cyclic with generator $g$.
-
-    This completes the proof.
+    We now prove the reverse direction: suppose there is an element $g \in G$ with order $n$. We claim that $g, g^2, \dots, g^n$ are all distinct. Suppose on the contrary that there exist integers $i$ and $j$ where $1 \leq i < j \leq n$ such that $g^i = g^j$. Then $g^i = g^ig^{j-i}$, which means $g^{j-i} = e$ by the cancellation law. Note that $1 \leq j - i < n$. Thus, since $g^{j-i} = e$, therefore $|g| = j - i < n$ which contradicts $|g| = n$. Hence, $g, g^2, \dots, g^n$ are all distinct. Therefore, $\langle g \rangle = \{g, g^2, \dots, g^n\}$ contain distinct elements of $G$. But there are only $n$ elements in $G$ and $\langle g \rangle$ contains $n$ distinct elements. Therefore, $G = \langle g \rangle$ which means that $G$ is cyclic with generator $g$.
 \end{proof}
-
-There are more interesting properties of cyclic groups, but we will get to them when we develop more tools to explain and prove these properties.
 
 \section{Dihedral Groups}
 We motivate the definition of the dihedral groups by discussing the symmetries of an equilateral triangle.
@@ -454,6 +446,8 @@ There's another relationship governing $r$ and $s$. Consider this: how do we obt
 for the case of an equilateral triangle.
 
 The group of symmetries of an equilateral triangle is called the \term{dihedral group of order 6} (or the \term{dihedral group of degree 3}) and is denoted by $D_3$. In general, the \term{dihedral group of degree $n$}\index{dihedral group!of degree $n$} (or the \term{dihedral group of order $2n$}\index{dihedral group!of order $2n$}) is denoted by $D_n$ and can be thought of as the symmetries of a regular polygon of $n$ sides (a regular $n$-gon).
+
+\newpage
 
 \begin{example}
     The symmetries of the square is given by the group $D_4$.
@@ -497,12 +491,12 @@ These relationships are succinctly given by the following \term{presentation}\in
         \begin{tabular}{|l|l|l|l|l|l|l|}
         \hline
         $\boldsymbol{\ast}$ & $\boldsymbol{e}$ & $\boldsymbol{r}$ & $\boldsymbol{r^2}$ & $\boldsymbol{s}$ & $\boldsymbol{rs}$ & $\boldsymbol{r^2s}$ \\ \hline
-        $\boldsymbol{e}$    & $e$    & $r$    & $r^2$  & $s$    & $rs$   & $r^2s$ \\ \hline
-        $\boldsymbol{r}$    & $r$    & $r^2$  & $e$    & $rs$   & $r^2s$ & $s$    \\ \hline
-        $\boldsymbol{r^2}$  & $r^2$  & $e$    & $r$    & $r^2s$ & $s$    & $rs$   \\ \hline
-        $\boldsymbol{s}$    & $s$    & $r^2s$ & $rs$   & $e$    & $r^2$  & $r$    \\ \hline
-        $\boldsymbol{rs}$   & $rs$   & $s$    & $r^2s$ & $r$    & $e$    & $r^2$  \\ \hline
-        $\boldsymbol{r^2s}$ & $r^2s$ & $rs$   & $s$    & $r^2$  & $r$    & $e$    \\ \hline
+        $\boldsymbol{e}$ & $e$ & $r$ & $r^2$ & $s$ & $rs$ & $r^2s$ \\ \hline
+        $\boldsymbol{r}$ & $r$ & $r^2$ & $e$ & $rs$ & $r^2s$ & $s$ \\ \hline
+        $\boldsymbol{r^2}$ & $r^2$ & $e$ & $r$ & $r^2s$ & $s$ & $rs$ \\ \hline
+        $\boldsymbol{s}$ & $s$ & $r^2s$ & $rs$ & $e$ & $r^2$ & $r$ \\ \hline
+        $\boldsymbol{rs}$ & $rs$ & $s$ & $r^2s$ & $r$ & $e$ & $r^2$ \\ \hline
+        $\boldsymbol{r^2s}$ & $r^2s$ & $rs$ & $s$ & $r^2$ & $r$ & $e$ \\ \hline
         \end{tabular}
     \end{table}
 
@@ -515,7 +509,17 @@ Such a definition for the dihedral groups removes the need to associate the grou
     \[
         D_1 = \langle r, s \vert r = s^2 = e, rs = s \rangle,
     \]
-    which quickly means that $D_1$ has only two elements, $e = r$ and $s$. Thus $D_1$ is, in fact, just the cyclic group of order 2.
+    which quickly means that $D_1$ has only two elements, $e$ (which is $r$) and $s$. Thus $D_1$ is, in fact, just the cyclic group of order 2. One can verify the fact by looking at the Cayley table of $D_1$.
+
+    \begin{table}[H]
+        \centering
+        \begin{tabular}{|l|l|l|}
+            \hline
+            $\boldsymbol{*}$ & $\boldsymbol{e}$ & $\boldsymbol{s}$ \\ \hline
+            $\boldsymbol{e}$ & $e$ & $s$ \\ \hline
+            $\boldsymbol{s}$ & $s$ & $e$ \\ \hline
+        \end{tabular}
+    \end{table}
 \end{example}
 
 \begin{example}
@@ -523,24 +527,24 @@ Such a definition for the dihedral groups removes the need to associate the grou
     \[
         D_2 = \langle r, s \vert r^2 = s^2 = e, rs = sr \rangle.
     \]
-    So we see that $D_2 = \{e, r, s, rs\}$.
+    So we see that $D_2 = \{e, r, s, rs\}$. Let us look at the Cayley table of $D_2$.
 
-    \begin{table}[h]
+    \begin{table}[H]
         \centering
         \begin{tabular}{|l|l|l|l|l|}
             \hline
             $\boldsymbol{\ast}$ & $\boldsymbol{e}$ & $\boldsymbol{r}$ & $\boldsymbol{s}$ & $\boldsymbol{rs}$ \\ \hline
-            $\boldsymbol{e}$    & $e$              & $r$              & $s$              & $rs$              \\ \hline
-            $\boldsymbol{r}$    & $r$              & $e$              & $rs$             & $s$               \\ \hline
-            $\boldsymbol{s}$    & $s$              & $rs$             & $e$              & $r$               \\ \hline
-            $\boldsymbol{rs}$   & $rs$             & $s$              & $r$              & $e$               \\ \hline
+            $\boldsymbol{e}$ & $e$ & $r$ & $s$ & $rs$ \\ \hline
+            $\boldsymbol{r}$ & $r$ & $e$ & $rs$ & $s$ \\ \hline
+            $\boldsymbol{s}$ & $s$ & $rs$ & $e$ & $r$ \\ \hline
+            $\boldsymbol{rs}$ & $rs$ & $s$ & $r$ & $e$ \\ \hline
         \end{tabular}
     \end{table}
 
-    In fact, we can see from the above Cayley table that $D_2$ is indeed abelian.
+    We can see from the above Cayley table that $D_2$ is actually abelian. This group has some interesting properties, which will be explored in a future chapter.
 \end{example}
 
-The \textit{canonical form}\index{dihedral group!canonical form} of an element in a dihedral group is $r^ms^n$, where $m$ and $n$ are non-negative integers. So how do we find the canonical form of elements like $sr$, $srs$, or $rsr^3$? We have this useful proposition to help.
+The \term{canonical form}\index{dihedral group!canonical form} of an element in a dihedral group is $r^ms^n$, where $m$ and $n$ are non-negative integers. So how do we find the canonical form of elements like $sr$, $srs$, or $rsr^3$? We have this useful proposition to help.
 \begin{proposition}\label{prop-Dn-cannonical-form}
     In the group $D_n$, we have $r^ms = sr^{n-m}$ for all integers $1 \leq m < n$.
 \end{proposition}
@@ -552,7 +556,7 @@ The \textit{canonical form}\index{dihedral group!canonical form} of an element i
         \begin{align*}
             r^{k+1}s &= r^k(rs)\\
             &= r^k(sr^{n-1}) & (\text{base case})\\
-            &= (r^ks)r^{n-1} & (\text{associativity})\\
+            &= (r^ks)r^{n-1} & (\textbf{Associativity})\\
             &= (sr^{n-k})r^{n-1} & (\text{by induction hypothesis})\\
             &= sr^{2n - k - 1}\\
             &= sr^nr^{n-k-1}\\
@@ -608,7 +612,7 @@ The \textit{canonical form}\index{dihedral group!canonical form} of an element i
 \end{problem}
 
 \begin{problem}
-    Let the transformation $T: \R^2 \to \R^2$ be defined by
+    Let the function $T: \R^2 \to \R^2$ be defined by
     \[
         T(x, y) = (-y, x+y).
     \]
