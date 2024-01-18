@@ -3,25 +3,23 @@ We introduced the simple properties of groups and simple examples of groups in t
 
 \section{What is a Subgroup?}
 \begin{definition}
-    Let $G$ be a group with operation $\ast$. Let $H$ be a subset of $G$. Then $H$ is said to be a \term{subgroup}\index{subgroup} of $G$ if it is also a group under the same operation $\ast$.
-
-    We write $H \leq G$ if $H$ is a subgroup of $G$.
+    Let $G$ be a group with operation $\ast$. Let $H$ be a subset of $G$. Then $H$ is said to be a \term{subgroup}\index{subgroup} of $G$, and we write $H \leq G$, if and only if it is also a group under the same operation $\ast$.
 \end{definition}
 \begin{remark}
-    Equivalently, $H \leq G$ if $H$ is a subset of $G$ and $H$ satisfies the following conditions.
+    Equivalently, $H \leq G$ if and only if $H$ is a subset of $G$ and $H$ satisfies the following conditions.
     \begin{itemize}
-        \item \textbf{Closure}: For all $x$ and $y$ in $H$, we have $x \ast y$ is also in $H$.
+        \item \textbf{Closure}: For all $x, y \in H$ we have $x \ast y \in H$.
         \item \textbf{Identity}: The identity of the group $G$ is in $H$.
-        \item \textbf{Inverse}: For all elements $x$ in $H$, there exists an element $x^{-1}$ in $H$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
+        \item \textbf{Inverse}: For all elements $x \in H$, there exists an element $x^{-1} \in H$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
     \end{itemize}
 \end{remark}
 
 \begin{example}\label{example-subgroups-of-Z}
-    Let's look at all possible subgroups of the group $(\Z, +)$. Suppose $H$ is a subgroup of $G$ with $H \neq \{0\}$.
+    Let's look at all possible subgroups of the group $(\Z, +)$. Suppose $H$ is a subgroup of $G$ where $H \neq \{0\}$.
 
-    Let $n$ be the smallest positive integer in $H$. Let $m$ be any other number in $H$. Then by Euclid's division lemma (\myref{lemma-euclid-division}), we may write $m = nq + r$ where $q$ and $r$ are integers such that $0 \leq r < n$. Hence,
+    Let $n$ be the smallest positive integer in $H$. Let $m$ be any other number in $H$. Then by Euclid's division lemma (\myref{lemma-euclid-division}), we may write $m = qn + r$ where $q, r \in \Z$ such that $0 \leq r < n$. Hence,
     \[
-        r = m + \underbrace{(-n) +(-n) +(-n) + \cdots + (-n)}_{q\text{ times}}.
+        r = m + \underbrace{(-n) +(-n) +(-n) + \cdots + (-n)}_{|q| \text{ times}}.
     \]
     Note that since both $m$ and $-n$ are in $H$, thus $r = m + (-n) + \cdots + (-n)$ is also in $H$, since $H$ is closed under addition. But $0 \leq r < n$ and $n$ is the \textit{smallest} positive integer in $H$. Thus, $r \not> 0$ which means $r = 0$. Therefore $m = nq$, i.e. every element in $H$ is a multiple of the smallest positive integer in $H$.
 
@@ -47,13 +45,13 @@ We introduced the simple properties of groups and simple examples of groups in t
 
 We end this section by defining the idea of a proper subgroup.
 \begin{definition}
-    A subgroup $H$ be of a group $G$ is a \term{proper subgroup}\index{subgroup!proper} if $H \neq G$, and we write $H < G$.
+    A subgroup $H$ of a group $G$ is a \term{proper subgroup}\index{subgroup!proper} if and only if $H \neq G$, and we write $H < G$.
 \end{definition}
 \begin{remark}
     Some authors (e.g. {\cite[p.~32]{hungerford_1980}}) require a proper subgroup to also be non-trivial. We do not adopt this definition here.
 \end{remark}
 \begin{remark}
-    Equivalently, a subgroup $H$ is a proper subgroup of $G$ if $H$ is a \textit{proper} subset of $G$ (i.e. $H \subset G$).
+    Equivalently, a subgroup $H$ is a proper subgroup of $G$ if $H$ is a proper subset of $G$ (i.e. $H \subset G$).
 \end{remark}
 
 \section{Subgroup Test}
@@ -62,15 +60,15 @@ To prove that a subset of a group is a subgroup using the axioms is too tedious.
     Let $G$ be a group with identity $e$, and let $H$ be a non-empty subset of $G$. Then $H \leq G$ if and only if $xy^{-1} \in H$ for all $x, y \in H$.
 \end{theorem}
 \begin{proof}
-    We prove the forward direction first. Suppose $H \leq G$, and let $x$ and $y$ be elements in $H$. Since $H$ is a subgroup of $G$, inverses exist. Thus $y^{-1}$ is in $H$. Also, since $H$ is a subgroup of $G$, thus $H$ is closed under the group operation. Hence, $xy^{-1}$ is in $H$. Therefore, if $H \leq G$ then $xy^{-1} \in H$ for all $x, y \in H$.
+    We prove the forward direction first. Suppose $H \leq G$, and let $x, y \in H$. Since $H$ is a subgroup of $G$, inverses exist, so $y^{-1} \in H$. Also, since $H$ is a subgroup of $G$, thus $H$ is closed under the group operation, which means $xy^{-1} \in H$. Therefore, if $H \leq G$ then $xy^{-1} \in H$ for all $x, y \in H$.
 
-    We now prove the reverse direction. Suppose $xy^{-1}\in H$ for all $x$ and $y$ in $H$.
+    We now prove the reverse direction. Suppose $xy^{-1} \in H$ for all $x, y \in H$.
     \begin{itemize}
-        \item Set $x = h$ and $y = h$. Then $xy^{-1} = hh^{-1} = e$ is in $H$. Thus the identity of $G$ is in $H$.
-        \item Set $x = e$ and let $y = h$. Then $xy^{-1} = eh^{-1} = h^{-1}$ is in $H$. Hence every element in $H$ has an inverse in $H$.
-        \item Let $a$ and $b$ be elements in $H$. Then by above point, $b^{-1}$ is in $H$. Set $x = a$ and $y = b^{-1}$. Then $xy^{-1} = a\left(b^{-1}\right)^{-1} = ab$ is in $H$. Hence $H$ is closed under the group operation.
+        \item Set $x = h$ and $y = h$. Then $xy^{-1} = hh^{-1} = e \in H$. Thus the identity of $G$ is in $H$.
+        \item Set $x = e$ and let $y = h$. Then $xy^{-1} = eh^{-1} = h^{-1} \in H$. Hence every element in $H$ has an inverse in $H$.
+        \item Let $a, b \in H$. Then $b^{-1} \in H$ by the above point. Set $x = a$ and $y = b^{-1}$. Then $xy^{-1} = a\left(b^{-1}\right)^{-1} = ab \in H$. Hence $H$ is closed under the group operation.
     \end{itemize}
-    Therefore if $xy^{-1}$ is in $H$ for all $x$ and $y$ in $H$, then $H \leq G$.
+    Therefore, if $xy^{-1} \in H$ for all $x, y \in H$ then $H \leq G$.
 \end{proof}
 \begin{remark}
     We usually check the `non-empty' requirement by checking if the identity of $G$ is in $H$.
@@ -78,46 +76,45 @@ To prove that a subset of a group is a subgroup using the axioms is too tedious.
 
 We look at some examples of the use of the subgroup test.
 \begin{example}\label{example-center-of-group}
-    Let $G$ be a group. The \term{center}\index{center} of a group $G$ is given by the set
+    Let $G$ be a group. The \term{center}\index{center} of a group $G$ is
     \[
         \CenterGrp{G} = \{z \in G \vert gz = zg \text{ for all } g \in G\}.
     \]
-    Clearly $\CenterGrp{G}$ is a subset of $G$. We claim that $\CenterGrp{G}$ is a subgroup of $G$.
+    Clearly $\CenterGrp{G}$ is a subset of $G$. We show that $\CenterGrp{G}$ is a subgroup of $G$.
 
-    \begin{proof}
-	    Note that $e \in \CenterGrp{G}$ since $ge = eg$ for all $g \in G$, so $\CenterGrp{G}$ is non-empty.
+    Note that $e \in \CenterGrp{G}$ since $ge = eg$ for all $g \in G$, so $\CenterGrp{G}$ is non-empty.
 
-	    Let $x$ and $y$ be in $\CenterGrp{G}$, meaning that $gx = xg$ and $gy = yg$ for all $g \in G$. Note that $gy = yg$ implies $y^{-1}g = gy^{-1}$, so $y^{-1} \in \CenterGrp{G}$. Now,
-	    \begin{align*}
-	        (xy^{-1})g &= x(y^{-1}g)\\
-	        &= x(gy^{-1}) & (\text{since } y^{-1} \in \CenterGrp{G})\\
-	        &= (xg)y^{-1} & (\text{associativity})\\
-	        &= (gx)y^{-1} & (\text{since } x \in \CenterGrp{G})\\
-	        &= g(xy^{-1}) & (\text{associativity})
-	    \end{align*}
-	    which means that $xy^{-1} \in \CenterGrp{G}$.
+    Let $x, y \in \CenterGrp{G}$, meaning that $gx = xg$ and $gy = yg$ for all $g \in G$. Note that $gy = yg$ implies $y^{-1}g = gy^{-1}$, so $y^{-1} \in \CenterGrp{G}$. Now,
+    \begin{align*}
+        (xy^{-1})g &= x(y^{-1}g)\\
+        &= x(gy^{-1}) & (\text{since } y^{-1} \in \CenterGrp{G})\\
+        &= (xg)y^{-1} & (\textbf{Associativity})\\
+        &= (gx)y^{-1} & (\text{since } x \in \CenterGrp{G})\\
+        &= g(xy^{-1}) & (\textbf{Associativity})
+    \end{align*}
+    which means that $xy^{-1} \in \CenterGrp{G}$.
 
-        Hence $\CenterGrp{G} \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
-    \end{proof}
+    Hence $\CenterGrp{G} \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
 \end{example}
 
 \begin{example}\label{example-centralizer-of-a-subset}
-    Let $G$ be a group and $S$ be a non-empty subset of $G$. The \term{centralizer}\index{centralizer} of $S$ in $G$ is the set
+    Let $G$ be a group and $S$ be a non-empty subset of $G$. The \term{centralizer}\index{centralizer} of $S$ in $G$ is
     \[
         \Centralizer{G}{S} = \left\{g \in G \vert gs = sg \text{ for all } s \in S\right\}.
     \]
-    Note $\Centralizer{G}{S}$ is a subset of $G$. We claim that $\Centralizer{G}{S}$ is a subgroup of $G$.
-    \begin{proof}
-        Clearly for all $s \in S$ we have $es = se$, so $e \in \Centralizer{G}{S}$. This means that $\Centralizer{G}{S}$ is non-empty. Now suppose $x$ and $y$ are in $\Centralizer{G}{S}$. Let $s$ be in $S$. Note that the condition $gs = sg$ is equivalent to the condition $sg^{-1} = g^{-1}s$. So
-        \begin{align*}
-            (xy^{-1})s &= x(y^{-1}s) & (\text{associativity})\\
-            &= x(sy^{-1}) & (\text{since } g^{-1}s = sg^{-1})\\
-            &= (xs)y^{-1} & (\text{associativity})\\
-            &= (sx)y^{-1} & (\text{since } gs = sg)\\
-            &= s(xy^{-1}) & (\text{associativity})
-        \end{align*}
-        which means $(xy^{-1})s = s(xy^{-1})$ for all $s$ in $S$. Thus, $xy^{-1}$ is in $\Centralizer{G}{S}$ for all $x$ and $y$ in $\Centralizer{G}{S}$, so $\Centralizer{G}{S} \leq G$ by subgroup test (\myref{thrm-subgroup-test}).
-    \end{proof}
+    Note $\Centralizer{G}{S}$ is a subset of $G$. We show that $\Centralizer{G}{S}$ is a subgroup of $G$.
+    
+    Clearly for all $s \in S$ we have $es = se$, so $e \in \Centralizer{G}{S}$. This means that $\Centralizer{G}{S}$ is non-empty.
+    
+    Now suppose $x$ and $y$ are in $\Centralizer{G}{S}$. Let $s \in S$. Note that the condition $gs = sg$ is equivalent to the condition $sg^{-1} = g^{-1}s$. So
+    \begin{align*}
+        (xy^{-1})s &= x(y^{-1}s) & (\textbf{Associativity})\\
+        &= x(sy^{-1}) & (\text{since } g^{-1}s = sg^{-1})\\
+        &= (xs)y^{-1} & (\textbf{Associativity})\\
+        &= (sx)y^{-1} & (\text{since } gs = sg)\\
+        &= s(xy^{-1}) & (\textbf{Associativity})
+    \end{align*}
+    which means $(xy^{-1})s = s(xy^{-1})$ for all $s \in S$. Thus $xy^{-1} \in \Centralizer{G}{S}$ for all $x, y \in \Centralizer{G}{S}$, so $\Centralizer{G}{S} \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
 \end{example}
 \begin{remark}
     If the set $S$ contains a single element, say $x$, we write $\Centralizer{G}{x}$.
@@ -133,7 +130,7 @@ We look at some examples of the use of the subgroup test.
 
 \section{Cosets}
 \begin{definition}
-    Let $G$ be a group, $H \leq G$, and $g$ be an element of $G$.
+    Let $g$ be an element of a group $G$ and let $H$ be a subgroup of $G$.
     \begin{itemize}
         \item The \term{left coset}\index{coset!left} of $H$ in $G$ is defined to be $gH = \{gh \vert h \in H\}$.
         \item The \term{right coset}\index{coset!right} of $H$ in $G$ is defined to be $Hg = \{hg \vert h \in H\}$.
@@ -174,7 +171,7 @@ We look at some examples of the use of the subgroup test.
 
 We now state and prove a result that relates the equality of cosets.
 \begin{lemma}[Coset Equality]\label{lemma-coset-equality}\index{Coset Equality Lemma}
-    Let $G$ be a group, $H \leq G$, and $g_1$ and $g_2$ be elements in $G$. Then the following statements are equivalent.
+    Let $g_1$ and $g_2$ be elements of a group $G$ and let $H$ be a subgroup of $G$. Then the following statements are equivalent.
     \begin{enumerate}
         \item $g_1H = g_2H$
         \item $Hg_1^{-1} = Hg_2^{-1}$
@@ -189,29 +186,29 @@ We now state and prove a result that relates the equality of cosets.
     \begin{itemize}
         \item $\boxed{(1) \implies (2)}$ Suppose $g_1H = g_2H$. We show $Hg_1^{-1} = Hg_2^{-1}$.
 
-        Let $x \in Hg_1^{-1}$. Then $x = hg_1^{-1}$ for some $h$ in $H$. Thus $x^{-1} = \left(hg_1^{-1}\right)^{-1} = g_1h^{-1}$ by Shoes and Socks. Since $h^{-1}$ is in $H$, thus $x^{-1} = g_1h^{-1}$ is in $g_1H$.
+        Let $x \in Hg_1^{-1}$. Then $x = hg_1^{-1}$ for some $h \in H$. Thus $x^{-1} = \left(hg_1^{-1}\right)^{-1} = g_1h^{-1}$ by Shoes and Socks. Since $h^{-1} \in H$, thus $x^{-1} = g_1h^{-1} \in g_1H$.
 
-        Since $g_1H = g_2H$, thus $x^{-1} \in g_2H$. Write $x^{-1} = g_2\hat{h}$ for some $\hat{h}$ in $H$. Thus $x = (g_2\hat{h})^{-1} = \hat{h}^{-1}g_2^{-1}$ by Shoes and Socks. Since $\hat{h}^{-1}$ is in $H$ thus $x = \hat{h}^{-1}g_2^{-1}$ is in $Hg_2^{-1}$.
+        Since $g_1H = g_2H$, thus $x^{-1} \in g_2H$. Write $x^{-1} = g_2\hat{h}$ for some $\hat{h} \in H$. Thus $x = (g_2\hat{h})^{-1} = \hat{h}^{-1}g_2^{-1}$ by Shoes and Socks. Since $\hat{h}^{-1} \in H$ thus $x = \hat{h}^{-1}g_2^{-1} \in Hg_2^{-1}$.
 
         Hence, any element $x \in Hg_1^{-1}$ is also in $Hg_2^{-1}$, i.e. $Hg_1^{-1} \subseteq Hg_2^{-1}$. A similar argument shows that $Hg_2^{-1} \subseteq Hg_1^{-1}$. Thus $Hg_1^{-1} = Hg_2^{-1}$ as required.
 
-        \item $\boxed{(2) \implies (3)}$ Suppose $Hg_1^{-1} = Hg_2^{-1}$ and take $x \in g_1H$. Thus $x = g_1h$ for some $h$ in $H$. Therefore $x^{-1} = (g_1h)^{-1} = h^{-1}g_1^{-1} \in Hg_1^{-1}$ since $h^{-1}$ is in $H$. By assumption $Hg_1^{-1} = Hg_2^{-1}$ so $x^{-1} \in Hg_2^{-1}$. Let $x^{-1} = \hat{h}g_2^{-1}$ for some $\hat{h}$ in $H$. Then $x = \left(\hat{h}g_2^{-1}\right)^{-1} = g_2\hat{h}^{-1} \in g_2H$ since $\hat{h}^{-1}$ is in $H$. Hence $x$ is in $g_2H$. Therefore, for any $x \in g_1H$, $x$ will also be in $g_2H$. Thus $g_1H \subseteq g_2H$.
+        \item $\boxed{(2) \implies (3)}$ Suppose $Hg_1^{-1} = Hg_2^{-1}$ and take $x \in g_1H$. Thus $x = g_1h$ for some $h$ in $H$. Therefore $x^{-1} = (g_1h)^{-1} = h^{-1}g_1^{-1} \in Hg_1^{-1}$ since $h^{-1}$ is in $H$. By assumption $Hg_1^{-1} = Hg_2^{-1}$ so $x^{-1} \in Hg_2^{-1}$. Let $x^{-1} = \hat{h}g_2^{-1}$ for some $\hat{h} \in H$. Then $x = \left(\hat{h}g_2^{-1}\right)^{-1} = g_2\hat{h}^{-1} \in g_2H$ since $\hat{h}^{-1} \in H$. Hence $x \in g_2H$. Therefore, for any $x \in g_1H$, $x$ will also be in $g_2H$. Thus $g_1H \subseteq g_2H$.
 
         \item $\boxed{(3) \implies (4)}$
-        Suppose $g_1H \subseteq g_2H$. Then for all $x$ in $g_1H$, $x$ is also in $g_2H$. Note that $g_1 = g_1e$. Since $e$ is in $H$ (as $H \leq G$) thus $g_1e \in g_1H \subseteq g_2H$ by assumption. Thus $g_1 \in g_2H$ as needed.
+        Suppose $g_1H \subseteq g_2H$. Then for all $x \in g_1H$, $x$ is also in $g_2H$. Note that $g_1 = g_1e$. Since $e \in H$ (as $H \leq G$) thus $g_1e \in g_1H \subseteq g_2H$ by assumption. Thus $g_1 \in g_2H$ as needed.
 
         \item $\boxed{(4) \implies (5)}$
-        Suppose $g_1 \in g_2H$. Then $g_1 = g_2h$ for some $h$ in $H$. Thus,
+        Suppose $g_1 \in g_2H$. Then $g_1 = g_2h$ for some $h \in H$. Thus,
         \begin{align*}
             &g_1^{-1}g_1 = g_1^{-1}g_2h & (\text{left multiply by } g_1^{-1})\\
-            &e = g_1^{-1}g_2h\\
-            &h^{-1} = g_1^{-1}g_2hh^{-1} & (\text{right multiply by } h^{-1})\\
-            &h^{-1} = g_1^{-1}g_2.
+            \iff&e = g_1^{-1}g_2h\\
+            \iff&h^{-1} = g_1^{-1}g_2hh^{-1} & (\text{right multiply by } h^{-1})\\
+            \iff&h^{-1} = g_1^{-1}g_2.
         \end{align*}
-        Since $h^{-1}$ is an element in $H$ thus $g_1^{-1}g_2 = h^{-1}$ is also in $H$, meaning $g_1^{-1}g_2 \in H$.
+        Since $h^{-1} \in H$ thus $g_1^{-1}g_2 = h^{-1} \in H$, meaning $g_1^{-1}g_2 \in H$.
 
         \item $\boxed{(5) \implies (1)}$
-        Suppose $g_1^{-1}g_2$ is an element of $H$. Thus, $g_1^{-1}g_2 = \hat{h}$ for some $\hat{h}$ in $H$. Let $x$ be an element from $g_1H$, so $x = g_1h$ for some $h$ in $H$. Then
+        Suppose $g_1^{-1}g_2$ is an element of $H$. Thus, $g_1^{-1}g_2 = \hat{h}$ for some $\hat{h} \in H$. Let $x$ be an element from $g_1H$, so $x = g_1h$ for some $h \in H$. Then
         \begin{align*}
             x^{-1} &= (g_1h)^{-1}\\
             &= h^{-1}g_1^{-1} & (\text{Shoes and Socks})\\
@@ -219,9 +216,9 @@ We now state and prove a result that relates the equality of cosets.
             &= h^{-1}(g_1^{-1}g_2)g_2^{-1}\\
             &= h^{-1}\hat{h}g_2^{-1}
         \end{align*}
-        which means $x = \left(h^{-1}\hat{h}g_2^{-1}\right)^{-1} = g_2\hat{h}^{-1}h$, which is an element of $g_2H$ since $\hat{h}^{-1}h$ is in $H$.
+        which means $x = \left(h^{-1}\hat{h}g_2^{-1}\right)^{-1} = g_2\hat{h}^{-1}h$, which is an element of $g_2H$ since $\hat{h}^{-1}h \in H$.
 
-        Thus, for all $x$ in $g_1H$, $x$ is also in $g_2H$ which means $g_1H \subseteq g_2H$. A similar argument can be used to show that $g_2H \subseteq g_1H$. Hence $g_1H = g_2H$.
+        Thus, for all $x \in g_1H$, one sees that $x \in g_2H$ which means $g_1H \subseteq g_2H$. A similar argument can be used to show that $g_2H \subseteq g_1H$. Hence $g_1H = g_2H$.
     \end{itemize}
 
     Thus, $(1) \implies (2) \implies (3) \implies (4) \implies (5) \implies (1)$, completing the proof.
@@ -231,7 +228,7 @@ We now state and prove a result that relates the equality of cosets.
     Let $G$ be a group, $H \leq G$, and $g_1, g_2 \in G$. Prove that if $g_1H \cap g_2H \neq \emptyset$ then $g_1H = g_2H$.
 \end{exercise}
 
-We note one very useful corollary of the Coset Equality lemma (\myref{lemma-coset-equality}).
+We note one very useful corollary of \myref{lemma-coset-equality}.
 
 \begin{corollary}[Element in Coset]\label{corollary-equivalence-of-element-in-coset}
     Let $G$ be a group, $H \leq G$, and $x \in G$. Then the following statements are equivalent.
@@ -250,7 +247,7 @@ We note one very useful corollary of the Coset Equality lemma (\myref{lemma-cose
     This completes the proof.
 \end{proof}
 \begin{remark}
-    This corollary is very useful, and arguably more useful than Coset Equality (\myref{lemma-coset-equality}), as we often consider cases where we see a coset equalling the subgroup itself.
+    This corollary is very useful as we often consider cases where we see a coset that equals the subgroup itself.
 \end{remark}
 
 \section{Lagrange's Theorem}
@@ -278,7 +275,7 @@ We require two lemmas to properly prove Lagrange's theorem.
     \end{itemize}
     The first bullet point is clear, since the identity $e$ is in every left coset. The second bullet point is proven by \myref{exercise-intersection-of-distinct-cosets-is-empty}. We only need to show the third bullet point to prove the lemma.
 
-    Suppose $g$ is in $G$. We will find a left coset that contains $g$. Clearly $g = ge$, and since $e$ is an element of $H$, thus $g = ge$ is an element of the left coset $gH$. So any element in $G$ belongs to a left coset of $H$ in $G$. Thus the union of all left cosets is the group.
+    Suppose $g \in G$. We will find a left coset that contains $g$. Clearly $g = ge$, and since $e$ is an element of $H$, thus $g = ge$ is an element of the left coset $gH$. So any element in $G$ belongs to a left coset of $H$ in $G$. Thus the union of all left cosets is the group.
 
     Hence, distinct left cosets of $H$ in $G$ partition $G$.
 \end{proof}
@@ -289,10 +286,10 @@ We require two lemmas to properly prove Lagrange's theorem.
 \begin{proof}
     Define the map $\phi: H \to gH$ such that $\phi(h) = gh$. To prove that $|H| = |gH|$, we need to show that $\phi$ is a bijection.
     \begin{itemize}
-        \item \textbf{Injective}: Let $h$ and $\hat{h}$ be elements in $H$ such that $\phi(h) = \phi(\hat{h})$. Then $gh = g\hat{h}$ by definition of $\phi$. By cancellation law, we have $h = \hat{h}$ which means $\phi$ is injective.
-        \item \textbf{Surjective}: Let $x$ be in $gH$. Thus $x = gh$ for some $h$ in $H$. Clearly $\phi(h) = gh = x$ so a pre-image of $x$ exists in $H$. Therefore $\phi$ is surjective.
+        \item \textbf{Injective}: Let $h, \hat{h} \in H$ such that $\phi(h) = \phi(\hat{h})$. Then $gh = g\hat{h}$ by definition of $\phi$. By cancellation law, we have $h = \hat{h}$ which means $\phi$ is injective.
+        \item \textbf{Surjective}: Let $x \in gH$. Thus $x = gh$ for some $h \in H$. Clearly $\phi(h) = gh = x$ so a pre-image of $x$ exists in $H$. Therefore $\phi$ is surjective.
     \end{itemize}
-    Therefore $\phi$ is a bijection, which means $|H| = |gH|$.
+    Therefore $\phi$ is a bijection, meaning $|H| = |gH|$.
 \end{proof}
 
 We are now ready to state and prove Lagrange's theorem.
@@ -300,13 +297,13 @@ We are now ready to state and prove Lagrange's theorem.
     Let $G$ be a group and $H \leq G$. Then $|G| = [G:H]|H|$.
 \end{theorem}
 \begin{proof}
-    Suppose $|G| = n$. Let $\mathcal{S} = \{g_1H, g_2H, g_3H, \dots, g_kH\}$ be the set containing all distinct left cosets of $H$ in $G$. Thus $k = [G: H]$.
+    Suppose $|G| = n$, and suppose $g_1H, g_2H, g_3H, \dots, g_kH$ are all the distinct left cosets of $H$ in $G$. Thus $k = [G: H]$.
 
-    Note that distinct left cosets partition $G$ (\myref{lemma-left-coset-partition}). Hence
+    Note that distinct left cosets partition $G$ (\myref{lemma-left-coset-partition}), so
     \[
         G = \bigcup_{i=1}^k g_iH = g_1H \cup g_2H \cup \cdots \cup g_kH
     \]
-    with $g_iH \cap g_jH = \emptyset$ if $i \neq j$. This means
+    where $g_iH \cap g_jH = \emptyset$ if $i \neq j$. This means that
     \begin{align*}
         |G| &= \sum_{i=1}^k|g_iH|\\
         &=\sum_{i=1}^k|H| & (\myref{lemma-order-of-coset})\\
@@ -327,7 +324,7 @@ Let's look at some corollaries of Lagrange's theorem.
     We are to show that $|G| = m|g|$ for some positive integer $m$.
     \begin{itemize}
         \item When $g = e$, we see $|e| = 1$ which means $|G| = |G| \times 1 = |G||e|$.
-        \item When $g \neq e$, set $|g| = n$. Consider the cyclic subgroup $\langle g \rangle = \{g, g^2, g^3, \dots, g^n\}$. Note that $|g| = |\mathcal{S}| = n$, so by Lagrange's theorem (\myref{thrm-lagrange}) we have $|G| = [G:\mathcal{S}]|\mathcal{S}| = [G:\mathcal{S}]|g|$. Hence, in this case, $m = [G:\mathcal{S}]$.
+        \item When $g \neq e$, set $|g| = n$. Consider the cyclic subgroup $\langle g \rangle = \{g, g^2, g^3, \dots, g^n\}$. Note that $|g| = |\langle g \rangle| = n$, so by Lagrange's theorem (\myref{thrm-lagrange}) we have $|G| = [G:\langle g \rangle]|\langle g \rangle| = [G:\langle g \rangle]|g|$. Hence, in this case, $m = [G:\langle g \rangle]$.
     \end{itemize}
     This proves the claim.
 \end{proof}
@@ -340,7 +337,7 @@ Let's look at some corollaries of Lagrange's theorem.
 \end{proof}
 
 \begin{corollary}\label{corollary-prime-order-element}
-    Let $G$ be a finite group with prime order $p$. Let $x$ be a non-identity element in $G$. Then $|x| = p$.
+    Let $G$ be a finite group with prime order $p$. Then any non-identity element in $G$ has order $p$.
 \end{corollary}
 \begin{proof}
     See \myref{exercise-prime-order-element} (later).
@@ -356,12 +353,12 @@ Let's look at some corollaries of Lagrange's theorem.
 \end{proof}
 
 \begin{exercise}\label{exercise-prime-order-element}
-    Let $G$ be a finite group with prime order $p$. Prove that any non-identity element in $G$ has order $p$.
+    Prove \myref{corollary-prime-order-element}.
 \end{exercise}
 
 \section{Normal Subgroups}
 \begin{definition}
-    Let $G$ be a group and $N \leq G$. We say that $N$ is a \term{normal subgroup}\index{subgroup!normal} of $G$ if $gN = Ng$ for all $g \in G$, and we write $N \unlhd G$.
+    Let $G$ be a group and $N \leq G$. We say that $N$ is a \term{normal subgroup}\index{subgroup!normal} of $G$ if and only if $gN = Ng$ for all $g \in G$, and we write $N \unlhd G$.
 \end{definition}
 
 Note that $gN = Ng$ is equivalent to the following two statements:
@@ -374,11 +371,11 @@ Note that $gN = Ng$ is equivalent to the following two statements:
     Any subgroup of an abelian group is normal.
 \end{proposition}
 \begin{proof}
-    Let $G$ be an abelian group and $H \leq G$. Let $g$ be in $G$ and $h$ be in $H$. Then
+    Let $G$ be an abelian group and $H \leq G$. Let $g \in G$ and $h \in H$. Then
     \begin{align*}
         ghg^{-1} &= g(hg^{-1})\\
         &= g(g^{-1}h) & (G \text{ is abelian})\\
-        &= (gg^{-1})h & (\text{associativity})\\
+        &= (gg^{-1})h & (\textbf{Associativity})\\
         &= eh\\
         &= h
     \end{align*}
@@ -392,7 +389,7 @@ Note that $gN = Ng$ is equivalent to the following two statements:
 \begin{example}\label{example-normal-subgroups-of-d3}
     Let's find the normal subgroups of the dihedral group of order 6, $D_3$.
 
-    Recall $D_3 = \{e, r, r^2, s, rs, r^2s\}$. Note that $|r| = 3$, $|s| = 2$, $\langle r \rangle = \{e, r, r^2\}$, and $\langle s \rangle = \{e, s\}$. We will show that $\langle r \rangle$ is a (proper) normal subgroup of $D_3$ but not $\langle s \rangle$. Note that since $r$ and $s$ are generators, we just need to check $s\langle r\rangle$, $\langle r\rangle s$, $r\langle s\rangle$, and $\langle s\rangle r$ to verify normality.
+    Recall $D_3 = \{e, r, r^2, s, rs, r^2s\}$. Note that $|r| = 3$, $|s| = 2$, $\langle r \rangle = \{e, r, r^2\}$, and $\langle s \rangle = \{e, s\}$. We will show that $\langle r \rangle$ is a (proper) normal subgroup of $D_3$ but not $\langle s \rangle$. Note that since $r$ and $s$ are `generators', we just need to check $s\langle r\rangle$, $\langle r\rangle s$, $r\langle s\rangle$, and $\langle s\rangle r$ to verify normality.
 
     For $\langle r \rangle$,
     \begin{itemize}
@@ -423,16 +420,21 @@ We end this chapter by looking at a special (and useful) type of group: the quot
     We may sometimes write $G/H$ using fractions (i.e. $\frac GH$) if it serves to improve readability.
 \end{remark}
 
-\begin{theorem}\label{thrm-quotient-group-requirement}
+The set of left cosets can become a special kind of group, called a quotient group, under a special operation.
+\begin{definition}\label{definition-quotient-group}
     Let $G$ be a group and $N \unlhd G$. Then $G / N$ forms a group called the \term{quotient group}\index{quotient group} with group operation $\star$ where
     \[
         (xN) \star (yN) = (xy)N.
     \]
     In this case, $G / N$ is read ``$G$ mod $N$'' instead of ``$G$ by $N$''.
-\end{theorem}
+\end{definition}
 \begin{remark}
     As per usual, we suppress the operation $\star$ and just write $(xN)(yN) = (xy)N$.
 \end{remark}
+
+\begin{theorem}\label{thrm-quotient-group-requirement}
+    The group $G/N$ defined in \myref{definition-quotient-group} is indeed a group.
+\end{theorem}
 \begin{proof}
     Before we can prove that it forms a group, we need to show that $\star$ is well defined. This is because we worry that if $x_1N = x_2N$ and $y_1N = y_2N$ there may be a situation that $(x_1y_1)N \neq (x_2y_2)N$ under this operation. Thus we need to check if it is well defined before we can proceed.
 
@@ -453,7 +455,7 @@ We end this chapter by looking at a special (and useful) type of group: the quot
 
     We can now show that $G/N$ under $\star$ satisfies the group axioms.
     \begin{itemize}
-        \item \textbf{Closure}: Assume $xN, yN \in G/N$. Then $(xN)(yN) = (xy)N$. Since $xy$ is in $G$ thus $(xy)N$ is in $G/N$, meaning that $G/N$ is closed under $\star$.
+        \item \textbf{Closure}: Assume $xN, yN \in G/N$. Then $(xN)(yN) = (xy)N$. Since $xy \in G$ thus $(xy)N \in G/N$, meaning that $G/N$ is closed under $\star$.
         \item \textbf{Associativity}: Take $xN, yN, zN \in G/N$. Then
         \begin{align*}
             (xN)\left((yN)(zN)\right) &= (xN)\left((yz)N\right)\\
@@ -463,18 +465,18 @@ We end this chapter by looking at a special (and useful) type of group: the quot
             &= \left((xN)(yN)\right)(zN)
         \end{align*}
         so $\star$ is associative.
-        \item \textbf{Identity}: Observe that $e$ is in $G$ so $eN = N$ is in $G / N$. Note that
+        \item \textbf{Identity}: Observe that $e \in G$ so $eN = N \in G / N$. Note that
         \[
         (eN)(xN) = (ex)N = xN \text{ and } (xN)(eN) = (xe)N = xN
         \]
-        for any $x$ in $G$, so $eN = N$ is the identity in $G/N$.
-        \item \textbf{Inverse}: Observe that for any $x$ in $G$, $x^{-1}$ is also in $G$, so
+        for any $x \in G$, so $eN = N$ is the identity in $G/N$.
+        \item \textbf{Inverse}: Note $x^{-1} \in G$ for any $x \in G$, so
         \[
-        (xN)(x^{-1}N) = (xx^{-1})N = eN = N
+            (xN)(x^{-1}N) = (xx^{-1})N = eN = N
         \]
         and
         \[
-        (x^{-1}N)(xN) = (x^{-1}x)N = eN = N,
+            (x^{-1}N)(xN) = (x^{-1}x)N = eN = N,
         \]
         which means any $xN \in G/N$ has an inverse.
     \end{itemize}
