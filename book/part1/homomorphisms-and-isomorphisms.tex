@@ -24,14 +24,14 @@ Now that we have introduced the idea of a group, one wonders about how elements 
 \end{example}
 
 \begin{example}
-    Let $G = \{r \in \R \vert r \neq 0\}$ and $H = (0, \infty)$ be groups under regular multiplication. Define $\phi: G \to H, x \mapsto |x|$ where $|x|$ represents the absolute value of $x$. Then $\phi$ is a homomorphism as
+    Let the groups $G = (\R \setminus \{0\}, \times)$ and $H = ((0,\infty),\times)$. Define the map $\phi: G \to H, x \mapsto |x|$ where $|x|$ represents the absolute value of $x$. Then $\phi$ is a homomorphism as
     \[
         \phi(xy) = |xy| = |x||y| = \phi(x)\phi(y).
     \]
 \end{example}
 
 \begin{exercise}
-    Let $G = (\mathbb{N}, +)$ and $H = (\mathbb{N}, \times)$. Let $\phi: G \to H$. Determine if the following maps are homomorphisms.
+    Let $G = (\mathbb{N}, +)$ and $H = (\mathbb{N}, \times)$. Let $\phi: G \to H$. Determine whether the following maps are homomorphisms.
     \begin{partquestions}{\alph*}
         \item $\phi(n) = n$
         \item $\phi(n) = 2^n$
@@ -54,11 +54,11 @@ Let us now look at some properties of homomorphisms. For the following propertie
     $\phi(e_1) = e_2$.
 \end{proposition}
 \begin{proof}
-    Let $x$ in $G_1$. Then $e_1x = x$. Thus $\phi(e_1x) = \phi(x)$ by applying $\phi$ on both sides. Hence $\phi(e_1)\phi(x) = \phi(x)$ by applying the definition of a homomorphism. Therefore, by cancellation law, $\phi(e_1) = e_2$.
+    Let $x \in G_1$. Then $e_1x = x$. Thus $\phi(e_1x) = \phi(x)$ by applying $\phi$ on both sides. Hence $\phi(e_1)\phi(x) = \phi(x)$ by applying the definition of a homomorphism. Therefore, by cancellation law, $\phi(e_1) = e_2$.
 \end{proof}
 
 \begin{proposition}\label{prop-homomorphism-maps-inverses}
-    For all $x \in G_1$, $\phi(x^{-1}) = \left(\phi(x)\right)^{-1}$.
+    $\phi(x^{-1}) = \left(\phi(x)\right)^{-1}$ for all $x \in G_1$.
 \end{proposition}
 \begin{proof}
     Note that $xx^{-1} = e_1$. Thus, $\phi(xx^{-1}) = \phi(e_1) = e_2$ by applying $\phi$ on both sides. Note also that $\phi(xx^{-1}) = \phi(x)\phi(x^{-1})$ by definition of homomorphism. Hence, $\phi(x)\phi(x^{-1}) = e_2$ which quickly implies $\phi(x^{-1}) = \left(\phi(x)\right)^{-1}$ after left-multiplying both sides by $\left(\phi(x)\right)^{-1}$.
@@ -159,10 +159,10 @@ For the next few properties, define
 We now look a special (and important) type of homomorphism: isomorphisms, which roughly translates as ``equal form'' from Ancient Greek.
 
 \begin{definition}
-    Let $(G, \ast)$ and $(H, \star)$ be groups. Let $\phi: G \to H$ be a homomorphism. Then $\phi$ is an \term{isomorphism}\index{isomorphism} if $\phi$ is a bijection.
+    Let $(G, \ast)$ and $(H, \star)$ be groups. Let $\phi: G \to H$ be a homomorphism. Then $\phi$ is an \term{isomorphism}\index{isomorphism} if and only if $\phi$ is a bijection.
 \end{definition}
 \begin{definition}
-    Let $G$ and $H$ be groups. We say that $G$ and $H$ are \term{isomorphic}\index{isomorphic} if there exists an isomorphism $\phi: G \to H$.
+    Let $G$ and $H$ be groups. We say that $G$ and $H$ are \term{isomorphic}\index{isomorphic} if and only if there exists an isomorphism $\phi: G \to H$.
 
     If two groups $G$ and $H$ are isomorphic, we write $G \cong H$.
 \end{definition}
@@ -210,7 +210,7 @@ We now look a special (and important) type of homomorphism: isomorphisms, which 
 \end{example}
 
 \begin{exercise}\label{exercise-identity-map-is-isomorphism}
-    The \term{identity function}\index{identity function} (or \term{identity map}\index{identity map}) $\id: S \to S$, where $S$ is a set, is the function such that $\id(x) = x$ for all $x$ in $S$.
+    The \term{identity function}\index{identity function} (or \term{identity map}\index{identity map}) $\id: S \to S$, where $S$ is a set, is the function such that $\id(x) = x$ for all $x \in S$.
     \begin{partquestions}{\roman*}
         \item Show that $\id$ is a bijection.
         \item If $S$ is a group, show that $\id$ is an isomorphism.
@@ -264,7 +264,7 @@ Isomorphisms between groups means that the two groups `share the same structure'
         \begin{align*}
             uv = &= \phi(x)\phi(y) \\
             &= \phi(xy)\\
-            &= \phi(yx) & (G \text{ is abelian})\\
+            &= \phi(yx) & (\text{since } G \text{ is abelian})\\
             &= \phi(y)\phi(x)\\
             &= vu
         \end{align*}
@@ -277,7 +277,7 @@ Isomorphisms between groups means that the two groups `share the same structure'
             &= \left(\phi(g)\right)^n\\
             &\in \left\langle \phi(g) \right\rangle.
         \end{align*}
-        Thus any element $u$ in $H$ is in $\left\langle \phi(g) \right\rangle$, meaning $H \subseteq \left\langle \phi(g) \right\rangle$.
+        Thus any element $u \in H$ is also in $\left\langle \phi(g) \right\rangle$, meaning $H \subseteq \left\langle \phi(g) \right\rangle$.
 
         However, as $\phi(g) \in H$, thus $\left\langle \phi(g) \right\rangle \leq H$ which means that $\left\langle \phi(g) \right\rangle \subseteq H$. Therefore, we have $H \subseteq \left\langle \phi(g) \right\rangle$ and $\left\langle \phi(g) \right\rangle \subseteq H$ simultaneously, meaning $H = \left\langle \phi(g) \right\rangle$, i.e. $H$ is a cyclic group.
 
@@ -318,7 +318,7 @@ For brevity, we also have notation regarding the integers under addition.
 \begin{theorem}
     If $G$ is an infinite cyclic group with generator $g$, then $G \cong \Z$.
 \end{theorem}
-\begin{proof}[Proof (see \cite{proofwiki_infinite-cyclic-group})]
+\begin{proof}
     Consider $\phi: \Z \to G$ where $\phi(n) = g^n$. We prove that $\phi$ is an isomorphism.
     \begin{itemize}
         \item \textbf{Homomorphism}: Let $m, n \in \Z$. Note
@@ -327,7 +327,7 @@ For brevity, we also have notation regarding the integers under addition.
         \]
         so $\phi$ is a homomorphism.
 
-        \item \textbf{Injective}: Let $m$ and $n$ be integers such that $\phi(m) = \phi(n)$. Without loss of generality, assume that $m \leq n$. Since $\phi(m) = \phi(n)$ we have $g^m = g^n = g^mg^{n-m}$ which implies that $g^{n-m} = e$ by cancellation law.
+        \item \textbf{Injective}: Let $m, n \in \Z$ such that $\phi(m) = \phi(n)$. Without loss of generality, assume that $m \leq n$. Since $\phi(m) = \phi(n)$ we have $g^m = g^n = g^mg^{n-m}$ which implies that $g^{n-m} = e$ by cancellation law.
 
         Seeking a contradiction, suppose $m < n$. Since $g^{n-m} = e$, so $|g|$ divides $n-m$ (\myref{lemma-order-of-an-element-that-is-equivalent-to-identity}). However, $g$ is a generator of $G$, which means that $|g| = |G| = \infty$ divides $n-m$, which is clearly absurd. Therefore, $m = n$, so $\phi$ is injective.
 
@@ -349,11 +349,11 @@ For brevity, we also have notation regarding the integers under addition.
         \]
         and so $\phi$ is a homomorphism.
 
-        \item \textbf{Injective}: Let $l$ and $m$ be integers such that $\phi(l) = \phi(m)$. Without loss of generality, assume that $l \leq m$. Since $\phi(l) = \phi(m)$ we have $g^l = g^m = g^lg^{m-l}$ which implies that $g^{m-l} = e$ by cancellation law. Therefore $|g|$ divides $m-l$ by \myref{lemma-order-of-an-element-that-is-equivalent-to-identity}.
+        \item \textbf{Injective}: Let $l, m \in \Z$ such that $\phi(l) = \phi(m)$. Without loss of generality, assume that $l \leq m$. Since $\phi(l) = \phi(m)$ we have $g^l = g^m = g^lg^{m-l}$ which implies that $g^{m-l} = e$ by cancellation law. Therefore $|g|$ divides $m-l$ by \myref{lemma-order-of-an-element-that-is-equivalent-to-identity}.
 
         By way of contradiction, assume $l < m$, which means $m - l \in \{1, 2,\dots, n-1\}$. Therefore $m-l \leq n - 1 < n$. But since $g$ is a generator of $G$, thus $|g| = |G| = n$. Therefore, we have $n$ dividing $m-l$, which is smaller than $n$, a contradiction. Thus $l = m$, meaning $\phi$ is injective.
 
-        \item \textbf{Surjective}: Suppose $x \in G = \langle g\rangle$, so $x = g^m$ for some integer $m$ in $\Z_n$. Then $\phi(m) = g^m = x$ which means that $x$ has a preimage of $m$. Hence $\phi$ is surjective.
+        \item \textbf{Surjective}: Suppose $x \in G = \langle g\rangle$, so $x = g^m$ for some integer $m \in \Z_n$. Then $\phi(m) = g^m = x$ which means that $x$ has a preimage of $m$. Hence $\phi$ is surjective.
     \end{itemize}
 
     Therefore, $\phi$ is an isomorphism which means $G \cong \Z_n$.

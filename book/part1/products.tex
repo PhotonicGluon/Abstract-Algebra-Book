@@ -8,14 +8,11 @@ The external direct product is one method of `combining' groups together.
 \end{definition}
 
 \begin{proposition}\label{prop-external-direct-product-is-group}
-    Let $G$ and $H$ be groups under the operations $\ast$ and $\star$ respectively. Then $G \times H$ is indeed a group.
+    Let $G$ and $H$ be groups under the operations $\ast$ and $\star$ respectively. Then $(G \times H, (\ast, \star))$ is indeed a group.
 \end{proposition}
 \begin{proof}
     See \myref{exercise-external-direct-product-is-group} (later).
 \end{proof}
-\begin{exercise}\label{exercise-external-direct-product-is-group}
-    Prove \myref{prop-external-direct-product-is-group}.
-\end{exercise}
 
 We note $|G \times H| = |G||H|$ by definition of the Cartesian product.
 
@@ -36,6 +33,10 @@ We note $|G \times H| = |G||H|$ by definition of the Cartesian product.
     \end{align*}
 \end{example}
 
+\begin{exercise}\label{exercise-external-direct-product-is-group}
+    Prove \myref{prop-external-direct-product-is-group}.
+\end{exercise}
+
 \begin{exercise}
     Simplify $(s, rs)(r^2s, r^3)$ in $D_3 \times D_4$.
 \end{exercise}
@@ -44,7 +45,7 @@ We prove some results relating the external direct product.
 \begin{proposition}\label{prop-order-of-element-in-external-direct-product}
     Let $G_1$ and $G_2$ be groups with identities $e_1$ and $e_2$ respectively. Let $(x, y) \in G_1 \times G_2$, $|x| = r$, and $|y| = s$. Then $|(x, y)| = \lcm(r, s)$.
 \end{proposition}
-\begin{proof}[Proof (see \cite{proofwiki_order-of-group-element-in-external-direct-product})]
+\begin{proof}
     For brevity let $l = \lcm(r, s)$, so $l = \alpha r = \beta s$ for some positive integers $\alpha$ and $\beta$. Let $n = |(x, y)|$.
 
     Note that
@@ -71,7 +72,7 @@ We prove some results relating the external direct product.
     Suppose on the contrary that $d > 1$. Take $(a, b) \in \Z_m \times \Z_n$. Note that $\frac{mn}{d} = \lcm(m,n)$ (\myref{prop-product-of-gcd-and-lcm}) which is a positive integer. Then
     \begin{align*}
         \underbrace{(a,b)(a,b)(a,b)\cdots(a,b)}_{\frac{mn}{d}\text{ times}} &= \left(\frac{mn}{d}a, \frac{mn}{d}b\right)\\
-        &= \left(m\frac{na}{d}, n\frac{mb}{d}\right) & (\text{as } d \vert m \text{ and } d \vert n)\\
+        &= \left(m\frac{na}{d}, n\frac{mb}{d}\right) & (\text{since } d \vert m \text{ and } d \vert n)\\
         &= (\underbrace{0}_{\text{In } \Z_m}, \underbrace{0}_{\text{In } \Z_n})
     \end{align*}
     which implies $|(a, b)| \leq \frac{mn}{d} < mn$ for all $(a, b) \in \Z_m \times \Z_n$. Hence, this means that $\Z_m \times \Z_n$ is \textit{not} cyclic, since $|\Z_m \times \Z_n| = mn$ and no element in $\Z_m \times \Z_n$ has order $mn$. However, $\Z_m \times \Z_n \cong \Z_{mn}$ is cyclic, a clear contradiction. Hence $d = 1$ and so $\gcd(m,n) = 1$.
@@ -80,7 +81,7 @@ We prove some results relating the external direct product.
     \begin{align*}
         |(1, 1)| &= \lcm(m, n) & (\myref{prop-order-of-element-in-external-direct-product})\\
         &= \frac{mn}{\gcd(m,n)}\\
-        &= mn & (\gcd(m,n) = 1).
+        &= mn & (\text{since} \gcd(m,n) = 1).
     \end{align*}
     Since $|\Z_m \times \Z_n| = mn$ and $|(1,1)| = mn$, thus $\Z_m \times \Z_n$ is cyclic with generator $(1,1)$. By \myref{thrm-finite-cyclic-group-isomorphic-to-Zn}, $\Z_m \times \Z_n \cong \Z_{mn}$.
 \end{proof}
@@ -145,7 +146,7 @@ We now look at the internal direct product, another way of `combining' groups.
         &= D_6\\
         &= G
     \end{align*}
-    so $G = HK$. Note also that $H \cap K = \{e\}$ and $hk = kh$ for all $h$ in $H$ and $k$ in $K$. Thus $G$ is the internal direct product of $H$ and $K$.
+    so $G = HK$. Note also that $H \cap K = \{e\}$ and $hk = kh$ for all $h \in H$ and $k \in K$. Thus $G$ is the internal direct product of $H$ and $K$.
 \end{example}
 
 \begin{exercise}
@@ -226,3 +227,6 @@ It is certainly tiring to remember that there is an \textit{external} direct pro
     \]
     Show that $\mathrm{V} \cong (\Z_2)^2$.
 \end{problem}
+\begin{remark}
+    This is the other name for the dihedral group of order 4, $D_2$.
+\end{remark}
