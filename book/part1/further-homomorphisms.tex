@@ -9,7 +9,7 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
     \]
 \end{definition}
 \begin{remark}
-    Some authors (e.g. {\cite[Definition 4.2.0]{libretexts_im-and-ker}}) will use $\phi(G)$ to denote the image of $\phi$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by {\cite[Definition I.2.2]{hungerford_1980}} and \cite[\S 66]{clark_1984}).
+    Some authors (e.g. \cite[p.~6]{judson_beezer_2022}) will use $\phi(G)$ to denote the image of $\phi$. The alternate notation $\mathrm{Im}\;\phi$ may also be used (e.g. by \cite[Definition I.2.2]{hungerford_1980} and \cite[\S 66]{clark_1984}).
 \end{remark}
 
 \begin{example}
@@ -46,7 +46,7 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
 \end{definition}
 
 \begin{remark}
-    Some authors (e.g. {\cite[Definition 4.2.0]{libretexts_im-and-ker}}) will use $\phi^{-1}(e_H)$ to denote the kernel of $\phi$. The alternate notation $\mathrm{Ker}\;\phi$ may also be used by some authors (e.g. by {\cite[Definition I.2.2]{hungerford_1980}} and \cite[\S 65]{clark_1984}).
+    Some authors will use $\mathrm{Ker}\;\phi$ to denote the kernel of $\phi$ (e.g. by \cite[Definition I.2.2]{hungerford_1980}, \cite[\S 65]{clark_1984}, and \cite[p.~194]{gallian_2016}).
 \end{remark}
 
 \begin{example}
@@ -85,21 +85,21 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
 
 \newpage
 
-\section{The Fundamental Homomorphism Theorem}
-We are now ready to tackle important theorems regarding homomorphisms. We first state the Fundamental Homomorphism Theorem, which is also sometimes called the First Isomorphism Theorem (e.g. in {\cite[p.~251, Theorem 3]{cohn_1982}}).
+\section{The First Isomorphism Theorem}
+We are now ready to tackle some important theorems regarding homomorphisms.
 
-\begin{theorem}[Fundamental Homomorphism Theorem]\label{thrm-isomorphism-1}\index{Fundamental Homomorphism Theorem}\index{isomorphism theorem!group!first}
+\begin{theorem}[Isomorphism I]\label{thrm-isomorphism-1}\index{First Isomorphism Theorem}\index{isomorphism theorem!group!first}
     Let $G$ and $H$ be groups. Let $\phi: G \to H$ be a homomorphism, and let $\pi: G \to G/\ker\phi$ where $g\mapsto g\ker\phi$ be the natural surjective homomorphism. Then there exists a unique isomorphism $\psi: G/\ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
 \end{theorem}
 \begin{remark}
-    Equivalently, the Fundamental Homomorphism Theorem states that
+    Equivalently, the First Isomorphism Theorem states that
     \[
         G/\ker\phi \cong \im\phi
     \]
     for any homomorphism $\phi: G \to H$. This means that the set of pre-images that have an image of $\phi(x)$ is $x\ker\phi$.
 \end{remark}
 
-We include the commutativity diagram of the homomorphisms stated to aid clarity:
+We include the commutativity diagram of the homomorphisms stated to aid clarity.
 
 \begin{figure}[h]
     \centering
@@ -109,7 +109,7 @@ We include the commutativity diagram of the homomorphisms stated to aid clarity:
 
 In the diagram, $\phi$ sends elements from $G$ to $\im\phi$ and $\pi$ sends elements from $G$ to $G/\ker\phi$. Then $\psi$ is a unique map that sends elements from $G/\ker\phi$ to the image of $\phi$.
 
-We now prove the Fundamental Homomorphism Theorem.
+We now prove the First Isomorphism Theorem.
 
 \begin{proof}
     We know by \myref{prop-image-is-subgroup-of-codomain} that $\im\phi \leq H$. Let $\psi: G/\ker\phi \to \im\phi$ such that $\psi(x\ker\phi) = \phi(x)$. We need to check that $\psi$ is a well-defined isomorphism.
@@ -181,7 +181,7 @@ We now prove the Fundamental Homomorphism Theorem.
             &= H
         \end{align*}
     \end{itemize}
-    Thus $G/H \cong R$ by the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}).
+    Thus $G/H \cong R$ by the First Isomorphism Theorem (\myref{thrm-isomorphism-1}).
 \end{example}
 
 \begin{exercise}
@@ -191,10 +191,10 @@ We now prove the Fundamental Homomorphism Theorem.
     \]
 \end{exercise}
 
-\section{The Diamond Isomorphism Theorem}
-We now look at the next theorem, called the Diamond Isomorphism Theorem (e.g. in {\cite[Theorem 3.18]{dummit_foote_2004}}) or the Second Isomorphism Theorem (e.g. in {\cite[\S 69]{clark_1984}}).
+\section{The Second Isomorphism Theorem}
+We now look at the next theorem, often called the Second Isomorphism Theorem (e.g. in {\cite[\S 69]{clark_1984}}).
 
-\begin{theorem}[Diamond Isomorphism Theorem]\label{thrm-isomorphism-2}\index{Diamond Isomorphism Theorem}\index{isomorphism theorem!group!second}
+\begin{theorem}[Isomorphism II]\label{thrm-isomorphism-2}\index{Second Isomorphism Theorem}\index{isomorphism theorem!group!second}
     Let $G$ be a group and let $H$ and $K$ be subgroups of $G$. Then
     \begin{enumerate}
         \item $H \cap K \leq H$; and
@@ -208,8 +208,6 @@ We now look at the next theorem, called the Diamond Isomorphism Theorem (e.g. in
         \item $H / (H\cap N) \cong HN / N$.
     \end{enumerate}
 \end{theorem}
-
-\newpage
 
 We can capture the overall relationships of the subgroups of $G$ using a \term{subgroup lattice}.
 
@@ -264,7 +262,7 @@ We only show subgroups that we care about in the figure above. The group $G$ has
             Since $\ker \phi \subseteq H \cap N$ and  $H \cap N \subseteq \ker\phi$ therefore $\ker\phi = H\cap N$.
         \end{itemize}
 
-        By the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}),
+        By the First Isomorphism Theorem (\myref{thrm-isomorphism-1}),
         \[
             H / \ker\phi \cong \im \phi,
         \]
@@ -280,7 +278,7 @@ We only show subgroups that we care about in the figure above. The group $G$ has
     Let $G$ be a group with proper subgroups $H$ and $K$. Then $HK \unlhd G$ if $H$ and $K$ are normal subgroups of $G$.
 \end{corollary}
 \begin{proof}
-    Assume that $H, K \lhd G$. By the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3, we know that $HK \leq G$ since $H \lhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
+    Assume that $H, K \lhd G$. By the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3, we know that $HK \leq G$ since $H \lhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
     \begin{align*}
         g(hk)g^{-1} &= (gh)(kg^{-1})\\
         &= (hg)(g^{-1}k) & (\text{as } H, K \lhd G)\\
@@ -293,7 +291,7 @@ We only show subgroups that we care about in the figure above. The group $G$ has
 \begin{example}
     We say a group $G$ is \term{metabelian}\index{metabelian} if and only if there exists $A \unlhd G$ such that $A$ and $G/A$ are both abelian. We prove that any subgroup of a metabelian group is also metabelian.
 
-    Let $H \leq G$. Then, by the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}), we know $H \cap A \unlhd H$ (statement 4) and $H/(H \cap A) \cong HA / A$ (statement 6). We just need to prove that both $H \cap A$ and $H/(H \cap A)$ are abelian.
+    Let $H \leq G$. Then, by the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), we know $H \cap A \unlhd H$ (statement 4) and $H/(H \cap A) \cong HA / A$ (statement 6). We just need to prove that both $H \cap A$ and $H/(H \cap A)$ are abelian.
     \begin{itemize}
         \item Consider any two elements from $H \cap A$, say $x$ and $y$. Then $x \in A$ and $y \in A$, so $xy = yx$ as $A$ is abelian. Hence, elements from $H \cap A$ commute, meaning that $H \cap A$ is abelian.
         \item Consider $H/(H\cap A) \cong HA / A$. Note that $HA \leq G$ since $H \leq G$ and $A \leq G$. Thus, $HA / A \leq G / A$. Note that $G/A$ is abelian by definition of metabelian group. Hence, $H/(H \cap A)$ is also abelian.
@@ -301,11 +299,11 @@ We only show subgroups that we care about in the figure above. The group $G$ has
     Therefore, we have found a subgroup of $H$ (in particular $H \cap A$) such that both $H \cap A$ and $H/(H\cap A)$ are both abelian. Hence, $H$ is metabelian.
 \end{example}
 
-We look at another application of the Diamond Isomorphism Theorem, which has use in Number Theory.
+We look at another application of the Second Isomorphism Theorem, which has use in Number Theory.
 \begin{example}
-    We will prove that $\lcm(m,n)\times\gcd(m,n) = mn$ (\myref{prop-product-of-gcd-and-lcm}) by considering the Diamond Isomorphism Theorem. For brevity, let $d = \gcd(m,n)$ and $l = \lcm(m,n)$.
+    We will prove that $\lcm(m,n)\times\gcd(m,n) = mn$ (\myref{prop-product-of-gcd-and-lcm}) by considering the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}). For brevity, let $d = \gcd(m,n)$ and $l = \lcm(m,n)$.
 
-    Consider the groups $G = \Z$, $H = m\Z$, and $N = n\Z$ under addition. By the Diamond Isomorphism Theorem (\myref{thrm-isomorphism-2}),
+    Consider the groups $G = \Z$, $H = m\Z$, and $N = n\Z$ under addition. By the Second Isomorphism Theorem,
     \[
         m\Z/(m\Z \cap n\Z) \cong (m\Z + n\Z)/(n\Z).
     \]
@@ -336,9 +334,7 @@ We look at another application of the Diamond Isomorphism Theorem, which has use
 \section{The Third Isomorphism Theorem}
 We look at the last important theorem regarding homomorphisms and isomorphisms. This is often called the Third Isomorphism Theorem (e.g. in {\cite[Corollary I.5.10]{hungerford_1980}} and {\cite[pp.~253--254, Theorem 5]{cohn_1982}}).
 
-It should be noted that there is no consistency with the numbering of these theorems in books (cf. {\cite[\S 68]{clark_1984}} as ``First Isomorphism Theorem'', {\cite[Theorem 8.16]{humphreys_1996}} as ``Second Isomorphism Theorem''), but the name ``Third Isomorphism Theorem'' is the easiest to research. Hence, we use that name here.
-
-\begin{theorem}[Third Isomorphism Theorem]\label{thrm-isomorphism-3}\index{isomorphism theorem!group!third}
+\begin{theorem}[Isomorphism III]\label{thrm-isomorphism-3}\index{Third Isomorphism Theorem}\index{isomorphism theorem!group!third}
     Let $G$ be a group. Let $H \unlhd G$ and $N \unlhd G$. Suppose $N \subseteq H$. Then
     \begin{enumerate}
         \item $N \unlhd H$;
@@ -398,7 +394,7 @@ It should be noted that there is no consistency with the numbering of these theo
             Since $\ker\phi \subseteq H/N$ and $H/N \subseteq \ker\phi$, we must have $\ker\phi = H/N$.
         \end{itemize}
 
-        By the Fundamental Homomorphism Theorem (\myref{thrm-isomorphism-1}), we have $\frac{G/N}{\ker\phi} \cong \im\phi$, which means
+        By the First Isomorphism Theorem (\myref{thrm-isomorphism-1}), we have $\frac{G/N}{\ker\phi} \cong \im\phi$, which means
         \[
             \frac{G/N}{H/N} \cong G/H,
         \]
@@ -418,8 +414,13 @@ It should be noted that there is no consistency with the numbering of these theo
     \]
     Hence we see that
     \[
-        \frac{\Z/(mn\Z)}{m\Z/(mn\Z)} \cong \Z/(m\Z) \cong \Z_m.
+        \frac{\Z/(mn\Z)}{m\Z/(mn\Z)} \cong \Z/(m\Z) \cong \Z_m,
     \]
+    that is,
+    \[
+        \Z_{mn}/\Z_n \cong \Z_m
+    \]
+    where the relation $m\Z/(mn\Z) \cong \Z_n$ is a special case of \myref{problem-mZ/nZ-isomorphic-to-Zn/m} (later).
 \end{example}
 
 \begin{exercise}
