@@ -5,7 +5,7 @@ We previously introduced some types of groups, like the cyclic groups, the dihed
 We previously covered several properties of cyclic groups.
 \begin{itemize}
     \item Every cyclic group is abelian. (\myref{prop-cyclic-group-is-abelian})
-    \item A finite group $G$ is cyclic if and only if there exists an element $g$ in the group $G$ with the same order as the group. (\myref{thrm-cyclic-group-has-element-with-same-order})
+    \item A finite group $G$ is cyclic if and only if there exists an element $g \in G$ with the same order as the group. (\myref{thrm-cyclic-group-has-element-with-same-order})
     \item If $G$ is cyclic and $H \leq G$ then $G/H$ is cyclic. (\myref{exercise-quotient-group-of-cyclic-group-is-cyclic})
     \item Any subgroup of a cyclic group is cyclic. (\myref{problem-subgroup-of-cyclic-group-is-cyclic})
     \item $\Z / (n\Z) \cong \Z_n$. (\myref{problem-Zn-isomorphic-to-Z-by-nZ})
@@ -57,7 +57,7 @@ Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead
     \end{partquestions}
 \end{exercise}
 
-\section{Quaternion Group}
+\section{The Quaternion Group}
 We look at an interesting group that has use in computer graphics: the quaternion group. We present one definition here.
 \begin{definition}\label{definition-quaternion-group}
     The \term{quaternion group}\index{quaternion group} is
@@ -106,7 +106,7 @@ One sees clearly that $\alpha = i$ and $\beta = j$ in this definition.
     (\textit{Hint: consider \myref{problem-subgroup-of-index-2}.})
 \end{exercise}
 
-\section{Alternating Group}
+\section{The Alternating Group}
 The alternating group is a very important group in the field of group theory. However, before we can properly define it, we need to introduce the idea of transpositions and the parity of permutations.
 
 \subsection{Transpositions}
@@ -306,7 +306,7 @@ We are now ready to look at the alternating group.
             &= \tau_1\tau_2\cdots\tau_{2k-1}\\
             &= \mu
         \end{align*}
-        and so any $\mu \in \mathrm{O}_n$ has a pre-image $\sigma$ in $\An{n}$.
+        and so any $\mu \in \mathrm{O}_n$ has a pre-image $\sigma \in \An{n}$.
     \end{itemize}
     This proves that $f$ is a bijection, meaning $|\An{n}| = |\mathrm{O}_n|$.
 
@@ -321,11 +321,11 @@ We are now ready to look at the alternating group.
 We look at a useful group in Number Theory: the group of units modulo $n$.
 
 \begin{definition}
-    For a positive integer $n \geq 2$, the group of units modulo $n$\index{group of units modulo $n$}, denoted by $\Un{n}$, is the set
+    For a positive integer $n \geq 2$, the group of units modulo $n$\index{group of units modulo $n$}, denoted $\Un{n}$, is the set
     \[
         \Un{n} = \{m \in \Z \vert 1 \leq m < n \text{ and } \gcd(m, n) = 1\}
     \]
-    together with the operation $\otimes_n$ (multiplication modulo $n$).
+    under the operation $\otimes_n$ (multiplication modulo $n$).
 \end{definition}
 
 \begin{proposition}
@@ -336,11 +336,11 @@ We look at a useful group in Number Theory: the group of units modulo $n$.
     \begin{itemize}
         \item \textbf{Closure}: Let $x, y \in \Un{n}$. Then $\gcd(x, n) = \gcd(y, n) = 1$. Hence $\gcd(xy, n) = 1$ which means that $\gcd(x\otimes_ny,n)=1$. Thus $x\otimes_ny \in \Un{n}$.
 
-        \item \textbf{Associativity}: Multiplication is associative (\myref{axiom-multiplication-is-associative}) and so $\otimes_n$ is associative.
+        \item \textbf{Associativity}: Multiplication is associative (\myref{axiom-multiplication-is-associative}), so $\otimes_n$ is associative.
 
         \item \textbf{Identity}: Note that 1 is the identity in $\Un{n}$ since $1 \otimes_n x = x$.
 
-        \item \textbf{Inverse}: Let $x$ be in $\Un{n}$, meaning $\gcd(x, n) = 1$. Then \myref{prop-multiplicative-inverse-exists-iff-coprime} tells us that there exists an $m$ such that $mx \equiv 1 \pmod n$. Therefore $m \otimes_n x = 1$, which means $m$ is the inverse of $x$.
+        \item \textbf{Inverse}: Let $x \in \Un{n}$, meaning $\gcd(x, n) = 1$. Then \myref{prop-multiplicative-inverse-exists-iff-coprime} tells us that there exists an $m$ such that $mx \equiv 1 \pmod n$. Therefore $m \otimes_n x = 1$, which means $m$ is the inverse of $x$.
     \end{itemize}
     Now multiplication is commutative (\myref{axiom-multiplication-is-commutative}), so multiplication modulo $n$ is also commutative. Thus $\Un{n}$ is an abelian group under $\otimes_n$.
 \end{proof}
@@ -378,7 +378,7 @@ We look at the specific case where an element of $\Un{n}$ has order $\totient(n)
 
 We note that we have a way to determine whether a primitive root modulo $n$ exists. However, the proof is way too complex to note down here, so we leave it as an axiom.
 \begin{axiom}\label{axiom-primitive-root-modulo-p}
-    There is a primitive root modulo $n$ if and only if $n$ is 1, 2, 4, $p^k$, or $2p^k$ where $p$ is an odd prime and $k$ is a positive integer.
+    There is a primitive root modulo $n$ if and only if $n$ is 1, 2, 4, $p^k$, or $2p^k$, where $p$ is an odd prime and $k$ is a positive integer.
 \end{axiom}
 
 \begin{proposition}\label{prop-Un-cyclic-only-if-exists-primitive-root}
@@ -450,7 +450,7 @@ For example,
     5 & 6
     \end{pmatrix}
 \]
-is a matrix. In this section, we consider only square matrices\index{matrix!square}, which have the same number of rows as columns. For example,
+is a matrix. In this book, we consider only square matrices\index{matrix!square}, which have the same number of rows as columns. For example,
 \[
     \textbf{A} = \begin{pmatrix}
     1 & 2 & 3\\
@@ -519,7 +519,7 @@ Note that
 \]
 so \textbf{B} is the inverse of \textbf{A} (and \textbf{A} is the inverse of \textbf{B}). We denote the inverse of a square matrix \textbf{M} by $\textbf{M}^{-1}$. We note that $\textbf{I}_n^{-1} = \textbf{I}_n$ since $\textbf{I}_n\textbf{I}_n = \textbf{I}_n$ by definition of the identity matrix.
 
-One last thing we introduce here is the idea of the \term{determinant}\index{matrix!determinant}. The determinant is only well defined for square matrices, and, for a square matrix $\textbf{A}$, is denoted by $\det(\textbf{A})$ or $\det \textbf{A}$. The rule for the determinant changes as we increase the number of rows and columns in the square matrix, so we only look at small cases.
+One last thing we introduce here is the \term{determinant}\index{matrix!determinant}. The determinant is only well defined for square matrices, and, for a square matrix $\textbf{A}$, is denoted by $\det(\textbf{A})$. The rule for the determinant changes as we increase the number of rows and columns in the square matrix, so we only look at small cases.
 \begin{itemize}
     \item If the square matrix only has one row, then its determinant is the only element in the matrix. Thus, if $\textbf{A} = (a_{1,1})$ then $\det \textbf{A} = a_{1,1}$.
     \item If the square matrix has two rows, such as the matrix $\begin{pmatrix}a & b\\c & d\end{pmatrix}$, then its determinant is $ad-bc$.
@@ -541,7 +541,7 @@ We conclude this subsection with a few properties of the determinant that we sta
     \item $\det(k\textbf{M}) = k^n \det\textbf{M}$ for a matrix \textbf{M} with $n$ rows and columns.
 \end{itemize}
 
-\subsection{General Linear Group Over the Real Numbers}\label{subsection-GLR-matrix-group}
+\subsection{The General Linear Group Over the Real Numbers}\label{subsection-GLR-matrix-group}
 With an introduction of matrices out of the way, we can introduce the first of two important matrix groups: the General Linear Group of degree $n$ over the real numbers.
 
 \begin{definition}
@@ -559,9 +559,9 @@ In other words, $\GL{n}{\R}$ is the group of real-valued matrices with $n$ rows 
 \begin{proof}
     We need to prove the four group axioms.
     \begin{itemize}
-        \item \textbf{Closure}: Consider two matrices \textbf{A} and \textbf{B} in $\GL{n}{\R}$. Then that means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Note also that $\textbf{AB}$ has $n$ rows and columns. Therefore $\textbf{AB}$ is also in $\GL{n}{\R}$, meaning that it is closed under matrix multiplication.
+        \item \textbf{Closure}: Consider two matrices $\textbf{A}, \textbf{B} \in \GL{n}{\R}$. Then that means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Note also that $\textbf{AB}$ has $n$ rows and columns. Therefore $\textbf{AB} \in \GL{n}{\R}$, meaning that it is closed under matrix multiplication.
 
-        \item \textbf{Associativity}: Consider three matrices \textbf{A}, \textbf{B}, and \textbf{C} in $\GL{n}{\R}$.
+        \item \textbf{Associativity}: Consider three matrices $\textbf{A}, \textbf{B}, \textbf{C} \in \GL{n}{\R}$.
         \begin{itemize}
             \item Consider $(\textbf{AB})\textbf{C}$. Let $\textbf{R} = \textbf{AB}$ and $\textbf{S} = (\textbf{AB})\textbf{C}$. Then
             \[
@@ -590,14 +590,14 @@ In other words, $\GL{n}{\R}$ is the group of real-valued matrices with $n$ rows 
         \]
         thereby proving that matrix multiplication is associative.
 
-        \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n$ is in $\GL{n}{\R}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M} \in \GL{n}{\R}$, thus $\textbf{I}_n$ is the identity of $\GL{n}{\R}$.
+        \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n \in \GL{n}{\R}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M} \in \GL{n}{\R}$, thus $\textbf{I}_n$ is the identity of $\GL{n}{\R}$.
 
-        \item \textbf{Inverse}: Let \textbf{M} be a matrix in $\GL{n}{\R}$. As $\det \textbf{M} \neq 0$, thus $\textbf{M}^{-1}$ exists. By properties of the determinant, we know that $\det \left(\textbf{M}^{-1}\right) = \left(\det \textbf{M}\right)^{-1}$, and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1} \in \GL{n}{\R}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\R}$.
+        \item \textbf{Inverse}: Let $\textbf{M} \in \GL{n}{\R}$. As $\det \textbf{M} \neq 0$, thus $\textbf{M}^{-1}$ exists. By properties of the determinant, we know that $\det \left(\textbf{M}^{-1}\right) = \left(\det \textbf{M}\right)^{-1}$, and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1} \in \GL{n}{\R}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\R}$.
     \end{itemize}
-    Thus $\GL{n}{\R}$ is a group.
+    Therefore $\GL{n}{\R}$ is a group.
 \end{proof}
 
-\subsection{Special Linear Group Over the Real Numbers}
+\subsection{The Special Linear Group Over the Real Numbers}
 We look at another group of matrices: the Special Linear Group of degree $n$ over the real numbers.
 
 \begin{definition}
@@ -614,15 +614,15 @@ One sees clearly that $\SL{n}{\R}$ is a sub\textit{set} of $\GL{n}{\R}$ -- the s
     $\SL{n}{\R} \lhd \GL{n}{\R}$.
 \end{proposition}
 \begin{proof}
-    We consider the subgroup test. Clearly $\textbf{I}_n$ is in $\SL{n}{\R}$ since its determinant is 1.
+    We consider the subgroup test. Clearly $\textbf{I}_n \in \SL{n}{\R}$ since its determinant is 1.
 
-    Let \textbf{A} and \textbf{B} be matrices in the set $\SL{n}{\R}$. This means that $\det \textbf{A} = 1$ and $\det \textbf{B} = 1$. Note that $\det(\textbf{B}^{-1}) = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det(\textbf{B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1}$ is also in $\SL{n}{\R}$. Hence by the subgroup test, $\SL{n}{\R} < \GL{n}{\R}$.
+    Let $\textbf{A}, \textbf{B} \in \SL{n}{\R}$. This means that $\det \textbf{A} = 1$ and $\det \textbf{B} = 1$. Note that $\det(\textbf{B}^{-1}) = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det(\textbf{B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1} \in \SL{n}{\R}$. Hence by the subgroup test, $\SL{n}{\R} < \GL{n}{\R}$.
 
-    Now let $\textbf{M}$ be a matrix in $\GL{n}{\R}$ and $\textbf{N}$ be a matrix in $\SL{n}{\R}$. We are to show that $\textbf{MNM}^{-1}$ is in $\SL{n}{\R}$. Since $\textbf{M} \in \GL{n}{\R}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\R}$ implies $\det \textbf{N} = 1$. Hence,
+    Now we prove normality of $\SL{n}{\R}$. Let $\textbf{M} \in \GL{n}{\R}$ and $\textbf{N} \in \SL{n}{\R}$. We are to show that $\textbf{MNM}^{-1} \in \SL{n}{\R}$. Since $\textbf{M} \in \GL{n}{\R}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\R}$ implies $\det \textbf{N} = 1$. Hence,
     \[
         \det\left(\textbf{MNM}^{-1}\right) = (\det \textbf{M})(\det \textbf{N})(\det \textbf{M})^{-1} = \det \textbf{N} = 1
     \]
-    which means that $\textbf{MNM}^{-1}$ is in $\SL{n}{\R}$.
+    which means that $\textbf{MNM}^{-1} \in \SL{n}{\R}$.
 
     Therefore $\SL{n}{\R} \lhd \GL{n}{\R}$.
 \end{proof}
@@ -659,7 +659,7 @@ We end this section with a consequence of the First Isomorphism Theorem (\myref{
 \end{proof}
 
 \section{Automorphism Groups}\label{section-automorphism-groups}
-\subsection{Group of Automorphisms}
+\subsection{The Group of Automorphisms}
 We look at automorphisms, an important type of map in abstract algebra.
 
 \begin{definition}
@@ -702,7 +702,7 @@ We look at automorphisms, an important type of map in abstract algebra.
     Since the four group axioms are satisfied, thus $\Aut{G}$ is a group under function composition.
 \end{proof}
 
-\subsection{Group of Inner Automorphisms}
+\subsection{The Group of Inner Automorphisms}
 \begin{definition}
     An \term{inner automorphism}\index{automorphism!inner} of a group $G$ is an automorphism $\iota: G \to G$ such that $\iota(x) = gxg^{-1}$ for some fixed $g \in G$.
 \end{definition}
@@ -759,7 +759,7 @@ Before we can state the consequence, we revisit the idea of the center of a grou
     For any group $G$, we have $G/\CenterGrp{G} \cong \Inn{G}$.
 \end{proposition}
 \begin{proof}
-    We define $\phi: G \to \Inn{G}, g \mapsto \iota_g$ where $\iota_g(x) = gxg^{-1}$.
+    We define the map $\phi: G \to \Inn{G}, g \mapsto \iota_g$ where $\iota_g(x) = gxg^{-1}$. We show that $\phi$ is a homomorphism, and then find its image and kernel.
     \begin{itemize}
         \item \textbf{Homomorphism}: Let $g, h \in G$. Then for any $x \in G$,
         \begin{align*}
@@ -773,7 +773,7 @@ Before we can state the consequence, we revisit the idea of the center of a grou
         \end{align*}
         which means that $\phi$ is a homomorphism.
 
-        \item \textbf{Image}: We show that $\phi$ is surjective to prove that $\im \phi = \CenterGrp{G}$. Suppose $\iota_g \in \Inn{G}$. Clearly $\phi(g) = \iota_g$ which means that $\phi$ is surjective. Hence $\im\phi = \CenterGrp{G}$.
+        \item \textbf{Image}: We show that $\phi$ is surjective to prove that $\im \phi = \Inn{G}$. Suppose $\iota_g \in \Inn{G}$. Clearly $\phi(g) = \iota_g$ which means that $\phi$ is surjective. Hence $\im\phi = \Inn{G}$.
 
         \item \textbf{Kernel}: Note that $\ker\phi = \{g \in G \vert \phi(g) = \id\}$. So, if $g \in \ker\phi$ then $(\phi(g))(x) = \iota_g(x) = \id(x) = x$ for all $x \in G$. This means that $gxg^{-1} = x$, meaning $gx = xg$ for all $x \in G$, so $g \in \CenterGrp{G}$. Hence $\ker\phi = \CenterGrp{G}$.
     \end{itemize}
@@ -807,7 +807,7 @@ Before we can state the consequence, we revisit the idea of the center of a grou
 \end{problem}
 
 \begin{problem}
-    Let $G = \Cn{n}$ with generator $g$.
+    Let $G$ be a cyclic group of order $n$ with generator $g$.
     \begin{partquestions}{\roman*}
         \item Suppose $f_1: G \to G$ and $f_2: G \to G$ are homomorphisms. Prove that $f_1 = f_2$ if and only if $f_1(g) = f_2(g)$.
 
