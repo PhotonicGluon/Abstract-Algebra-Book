@@ -6,7 +6,7 @@ Unlike groups, rings do not inherently have the `cancellation law' built in. Rin
     A \term{domain}\index{domain!ring} is a ring with identity without zero divisors.
 \end{definition}
 \begin{remark}
-    Recall that an element $a \neq 0$ is a zero divisor if there exists a non-zero $b$ in the ring such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the domain.
+    Recall that a non-zero element $a$ is a zero divisor if there exists a non-zero $b$ in the ring such that $ab = 0$. So, equivalently, if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$ for any $a$ and $b$ in the domain.
 \end{remark}
 \begin{remark}
     What this property grants us is a ``cancellation law'', similar to that for groups. We will prove this in \myref{prop-domain-cancellation-law}. However, there may not be inverses when performing multiplication.
@@ -64,7 +64,7 @@ Let's look at some non-examples of domains.
     The ring $2\Z$ is not a domain as it does not contain a multiplicative identity (namely, 1). Thus $2\Z$ is also not an integral domain.
 \end{example}
 \begin{example}
-    The ring $\Z \times \Z$ under pairwise addition and multiplication is not a domain as $(0,1) \neq (0, 0)$ and $(1, 0) \neq (0, 0)$ but $(0,1)(1,0) = (0, 0)$, meaning that $\Z \times \Z$ contains at least one zero divisor.
+    The ring $\Z \times \Z$ under pairwise addition and multiplication is not a domain as $(0,1) \neq (0, 0)$ and $(1, 0) \neq (0, 0)$ but $(0,1)(1,0) = (0, 0)$, meaning that $\Z \times \Z$ contains a zero divisor.
 \end{example}
 
 \begin{exercise}
@@ -116,7 +116,7 @@ With an introduction of domains and integral domains out of the way, we introduc
 \begin{proof}
     A finite integral domain is a commutative ring with identity; all that remains is to prove that every non-zero element has an inverse.
 
-    Suppose $D$ is a finite integral domain and take a non-zero element $r$ in $D$. Consider
+    Suppose $D$ is a finite integral domain and take a non-zero element $r \in D$. Consider
     \begin{align*}
         A &= \{r^k \vert k \in \Z,\;k\geq 0\}\\
         &= \{1, r, r^2, r^3, \dots\}\\
@@ -124,7 +124,7 @@ With an introduction of domains and integral domains out of the way, we introduc
     \end{align*}
     Note that since $D$ is finite, $A$ must be finite as well. Therefore there must exist positive integers $m$ and $n$ with $m > n$ such that $r^m = r^n$, meaning $r^m - r^n = 0$. As $m > n$, thus $r^n\left(r^{m-n}-1\right) = 0$. Hence, as there are no zero divisors in $R$, either $r^n = 0$ or $r^{m-n} - 1 = 0$.
 
-    Now if $r^n = 0$ then $n > 1$ (since $r^1 = r \neq 0$ by assumption). Note $r^n = rr^{n-1} = 0$, which hence means $r^{n-1} = 0$ as $r \neq 0$ and $D$ has no zero divisors. But we may repeat this argument on $n - 1$ to eventually terminate at $r = 0$, which is a contradiction. Hence we must conclude that $r^{m-n} - 1 = 0$. We may write $r^{m-n}-1 = 0$ as $rr^{m-n-1} = 1$ which means that $r$ is a unit (as $r^{m-n-1}$ is its inverse). Therefore every non-zero element has an inverse.
+    Now if $r^n = 0$ then $n > 1$ (since $r^1 = r \neq 0$ by assumption). Note $r^n = rr^{n-1} = 0$, which hence means $r^{n-1} = 0$ as $r \neq 0$ and $D$ has no zero divisors. But we may repeat this argument on $n - 1$ to eventually terminate at $r = 0$, which is a contradiction. Hence we must conclude that $r^{m-n} - 1 = 0$. We may write $r^{m-n}-1 = 0$ as $rr^{m-n-1} = 1$ which means that $r$ is a unit (with $r^{m-n-1}$ is its inverse). Therefore every non-zero element has an inverse.
 
     Hence $D$ is a field.
 \end{proof}
@@ -181,14 +181,17 @@ We end this section by defining factors of an element in an integral domain. The
 \end{example}
 
 \section{Characteristic of a Ring}
-Before we introduce the characteristic of a ring, we clarify the meaning of the order of an element in the ring.
+Before we introduce the characteristic of a ring, let us clarify the meaning of the order of an element in a ring.
+
 \begin{definition}
-    Let $R$ be a ring and $x$ an element of the ring $R$.
+    Let $R$ be a ring and $x \in R$.
     \begin{itemize}
         \item The \term{additive order}\index{order!additive} of $x$ is the order of $x$ in the group $(R, +)$ and is denoted $|x|_+$.
         \item If $R$ is a group with identity 1, the \term{multiplicative order}\index{order!multiplicative} of $x$ is the smallest positive integer $n$ such that $x^n = 1$ and is denoted $|x|_\times$, if it exists.
     \end{itemize}
 \end{definition}
+
+With an idea of the additive order and the multiplicative order of an element, we are ready to define the characteristic of a ring.
 
 \begin{definition}
     Let $R$ be a ring. We say that \term{characteristic}\index{characteristic} of $R$ is $n$ if $n$ is the smallest positive integer such that
@@ -232,11 +235,11 @@ We look at two properties about the characteristic.
     \[
         0 = \underbrace{1 + 1 + \cdots + 1}_{n \text{ times}} = (\underbrace{1+1+\cdots+1}_{a \text{ times}})(\underbrace{1+1+\cdots+1}_{b \text{ times}}).
     \]
-    As $R$ is an integral domain, this means that either
+    As $D$ is an integral domain, this means that either
     \[
         \underbrace{1+1+\cdots+1}_{a \text{ times}} = 0 \text{ or } \underbrace{1+1+\cdots+1}_{b \text{ times}} = 0.
     \]
-    Without loss of generality, assume that $\underbrace{1+1+\cdots+1}_{a \text{ times}} = 0$. By minimality of $\Char{R} = n$, this means that $a \geq n$. But we assumed that $a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$ which is exactly what we need to show that $n$ is a prime.
+    Without loss of generality, assume that $\underbrace{1+1+\cdots+1}_{a \text{ times}} = 0$. By minimality of $\Char{D} = n$, this means that $a \geq n$. But we assumed that $a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$ which is exactly what we need to show that $n$ is a prime.
 \end{proof}
 
 \begin{exercise}\label{exercise-trivial-ring-is-not-an-integral-domain}

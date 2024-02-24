@@ -133,7 +133,7 @@ We end this section by looking at the ring of complex numbers.
             \[
                 (a+bi) + (-a+(-b)i)= (a+(-a)) + (b+(-b))i = 0
             \]
-            and complex addition is commutative (to be proved later), so any $a+bi\in C$ has an additive inverse of $-a-bi \in \C$.
+            and complex addition is commutative (to be proved later), so any $a+bi \in \C$ has an additive inverse of $-a-bi \in \C$.
 
             \item \textbf{Commutative}: Let $a+bi, c+di \in \C$. Then
             \begin{align*}
@@ -182,7 +182,7 @@ We end this section by looking at the ring of complex numbers.
 
     \newpage
 
-    We now show that complex multiplication is commutative. Let $a+bi, c+di \in C$. Then we see
+    We now show that complex multiplication is commutative. Let $a+bi, c+di \in \C$. Then we see
     \begin{align*}
         (a+bi)(c+di) &= (ac-bd) + (ad+bc)i\\
         &= (ca-db) + (da+cb)i & (\times\text{ is commutative, } \myref{axiom-multiplication-is-commutative})\\
@@ -237,7 +237,7 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
         \item Note $(-a)b + ab = (-a + a)b = 0b = 0$ by \textbf{Distributive} axiom. Hence by subtracting $ab$ on both sides we see $(-a)b = -(ab)$.
         \item Note also $a(-b) + ab = a(-b + b) = a0 = 0$ by \textbf{Distributive} axiom. Hence by subtracting $ab$ on both sides we see $a(-b) = -(ab)$.
     \end{itemize}
-    Result follows.
+    So $(-a)b = a(-b) = -(ab)$ as required.
 \end{proof}
 
 \begin{proposition}\label{prop-product-of-additive-inverses}
@@ -251,7 +251,7 @@ We list some properties of rings here. For each of the propositions, assume $R$ 
     If $R$ has an identity, it is unique.
 \end{proposition}
 \begin{proof}
-    Suppose 1 and $1'$ are identities, and consider the sum $1 + 1'$. Then
+    Suppose 1 and $1'$ are identities. Consider the sum $1 + 1'$. Then
     \begin{align*}
         1 + 1' &= 1\times(1+1') & (\text{multiplying by identity }1)\\
         &= 1\times1 + 1\times1' & (\text{by \textbf{Distributive} axiom})\\
@@ -270,14 +270,14 @@ The rings that we explored in previous sections can be thought of as the `obviou
 We looked at matrices in the context of the General/Special Linear Group of matrices (\myref{section-groups-of-matrices}). Here we see that matrices in fact form rings, known as matrix rings. Before that though, we need to define the operations within that ring.
 
 \begin{definition}[Matrix Addition]\index{matrix addition}
-    For any two matrices $\textbf{A}$ and $\textbf{B}$ with $n$ rows and columns and entries in the ring $(R, \oplus, \otimes)$, their sum is the matrix $\textbf{C} = \textbf{A} + \textbf{B}$ with $n$ rows and columns such that
+    For any two matrices $\textbf{A}$ and $\textbf{B}$ with $n$ rows and columns and with entries in the ring $(R, \oplus, \otimes)$, their sum is the matrix $\textbf{C} = \textbf{A} + \textbf{B}$ with $n$ rows and columns such that
     \[
         c_{i,j} = a_{i,j} \oplus b_{i,j}
     \]
     for all $i,j \in \{1, 2, \dots, n\}$.
 \end{definition}
 \begin{definition}[Matrix Multiplication]\index{matrix multiplication}
-    For any two matrices $\textbf{A}$ and $\textbf{B}$ with $n$ rows and columns and entries in the ring $(R, \oplus, \otimes)$, their product is the matrix $\textbf{C} = \textbf{AB}$ with $n$ rows and columns such that, for all $i,j \in \{1, 2, \dots, n\}$, we have
+    For any two matrices $\textbf{A}$ and $\textbf{B}$ with $n$ rows and columns and with entries in the ring $(R, \oplus, \otimes)$, their product is the matrix $\textbf{C} = \textbf{AB}$ with $n$ rows and columns such that, for all $i,j \in \{1, 2, \dots, n\}$, we have
     \begin{align*}
         c_{i,j} &= (a_{i,1}\otimes b_{1,j}) \oplus (a_{i,2}\otimes b_{2,j}) \oplus \cdots \oplus (a_{i,n}\otimes b_{n,j})\\
         &= \bigoplus_{k=1}^n (a_{i,k}\otimes b_{k,j}).
@@ -336,9 +336,9 @@ We can now define what is a matrix ring.
 
             \item \textbf{Identity}: We show that $\ZeroM{n}$ is the additive identity in $\Mn{n}{R}$. Let $\textbf{M} \in \Mn{n}{R}$; let $\textbf{N} = \textbf{M} + \ZeroM{n}$. Note that $n_{i,j} = m_{i,j} \oplus 0 = m_{i,j}$ so $\textbf{M} + \ZeroM{n} = \textbf{M}$. Therefore $\textbf{M} + \ZeroM{n} = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
 
-            \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ such that $b_{i,j} = -a_{i,j}$. That is, $b_{i,j}$ contains the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \ZeroM{n}$. (We denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$).
+            \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ such that $b_{i,j} = -a_{i,j}$, i.e. $b_{i,j}$ is the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \ZeroM{n}$. (We denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$).
 
-            \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{C}$. Consider $c_{i,j} = a_{i,j} \oplus b_{i,j}$. Since $\oplus$ is commutative, thus $a_{i,j} \oplus b_{i,j} = b_{i,j} \oplus a_{i,j}$. But $d_{i,j} = b_{i,j} \oplus a_{i,j}$, so we have $c_{i,j} = d_{i,j}$. Therefore $\textbf{C} = \textbf{D}$.
+            \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{A}$. Consider $c_{i,j} = a_{i,j} \oplus b_{i,j}$. Since $\oplus$ is commutative, thus $a_{i,j} \oplus b_{i,j} = b_{i,j} \oplus a_{i,j}$. But $d_{i,j} = b_{i,j} \oplus a_{i,j}$, so we have $c_{i,j} = d_{i,j}$. Therefore $\textbf{C} = \textbf{D}$.
         \end{itemize}
 
         \item \textbf{Multiplication-Semigroup}: We show that $(\Mn{n}{R}, \cdot)$ is a semigroup.
@@ -351,7 +351,7 @@ We can now define what is a matrix ring.
         \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly. Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
         \begin{align*}
             r_{i,j} &= \bigoplus_{k=1}^n \left(a_{i,k} \otimes \left(b_{k,j} \oplus c_{k,j}\right)\right)\\
-            &= \bigoplus_{k=1}^n \left((a_{i,k} \otimes b_{k,j}) \oplus (a_{i,k} \otimes c_{k,j})\right)\\
+            &= \bigoplus_{k=1}^n \left((a_{i,k} \otimes b_{k,j}) \oplus (a_{i,k} \otimes c_{k,j})\right) & (\textbf{Distributive}\text{ axiom in }R)\\
             &= \left(\bigoplus_{k=1}^n (a_{i,k} \otimes b_{k,j})\right) \oplus \left(\bigoplus_{k=1}^n (a_{i,k} \otimes c_{k,j})\right)\\
             &= g_{i,j}\oplus h_{i,j}
         \end{align*}
@@ -363,11 +363,11 @@ We can now define what is a matrix ring.
     \begin{itemize}
         \item Let $\textbf{C} = \textbf{AB}$ and we see
         \begin{align*}
-            &c_{i,j}\\
-            &= \bigoplus_{k=1}^n(a_{i,k}\otimes b_{k,j})\\
+            c_{i,j} &= \bigoplus_{k=1}^n(a_{i,k}\otimes b_{k,j})\\
             &= (a_{i,1}\otimes b_{1,j}) \oplus \cdots \oplus (a_{i,j-1}\otimes b_{j-1,j}) \oplus (a_{i,j}\otimes b_{j,j})\\
             &\quad\quad\oplus (a_{i,{j+1}}\otimes b_{j+1,j}) \oplus \cdots \oplus (a_{i,n}\otimes b_{n,j})\\
-            &= (a_{i,1}\otimes 0) \oplus \cdots \oplus (a_{i,{j-1}}\otimes 0)\oplus (a_{i,j}\otimes 1) \oplus (a_{i,{j+1}}\otimes 0) \oplus \cdots \oplus (a_{i,n}\otimes 0)\\
+            &= (a_{i,1}\otimes 0) \oplus \cdots \oplus (a_{i,{j-1}}\otimes 0)\oplus (a_{i,j}\otimes 1)\\
+            &\quad\quad\oplus (a_{i,{j+1}}\otimes 0) \oplus \cdots \oplus (a_{i,n}\otimes 0)\\
             &= 0 \oplus \cdots \oplus 0 \oplus a_{i,j} \oplus 0 \oplus \cdots \oplus 0\\
             &= a_{i,j}
         \end{align*}
@@ -375,11 +375,11 @@ We can now define what is a matrix ring.
 
         \item Now let $\textbf{D} = \textbf{BA}$ and we also see
         \begin{align*}
-            &d_{i,j}\\
-            &= \bigoplus_{k=1}^n(b_{i,k}\otimes a_{k,j})\\
+            d_{i,j} &= \bigoplus_{k=1}^n(b_{i,k}\otimes a_{k,j})\\
             &= (b_{i,1}\otimes a_{1,j}) \oplus \cdots \oplus (b_{i,i-1}\otimes b_{i-1,j}) \oplus (b_{i,i}\otimes a_{i,j})\\
             &\quad\quad\oplus (b_{i,{i+1}}\otimes a_{i+1,j}) \oplus \cdots \oplus (b_{i,n}\otimes a_{n,j})\\
-            &= (0 \otimes a_{1,j}) \oplus \cdots \oplus (0\otimes a_{i-1,j})\oplus (1\otimes a_{i,j}) \oplus (0\otimes a_{i+1,j}) \oplus \cdots \oplus (0\otimes a_{n,j})\\
+            &= (0 \otimes a_{1,j}) \oplus \cdots \oplus (0\otimes a_{i-1,j})\oplus (1\otimes a_{i,j})\\
+            &\quad\quad\oplus (0\otimes a_{i+1,j}) \oplus \cdots \oplus (0\otimes a_{n,j})\\
             &= 0 \oplus \cdots \oplus 0 \oplus a_{i,j} \oplus 0 \oplus \cdots \oplus 0\\
             &= a_{i,j}
         \end{align*}
@@ -392,7 +392,7 @@ We can now define what is a matrix ring.
 
 \section{More Definitions}\label{section-rings-more-definitions}
 \begin{definition}
-    We say that $a \neq 0$ is a \term{zero divisor}\index{zero divisor} in a ring $R$ if there exists $b \neq 0$ such that $ab = 0$.
+    Let $R$ be a ring. We say that a non-zero element $a \in R$ is a \term{zero divisor}\index{zero divisor} if there exists a non-zero element $b \in R$ such that $ab = 0$.
 \end{definition}
 \begin{example}
     Consider the ring $\Z_{12}$. Clearly 4 and 6 are in $\Z_{12}$, and their product is $24 = 2 \times 12 = 0$ in $\Z_{12}$. Hence 4 and 6 are zero divisors in $\Z_{12}$.
@@ -411,7 +411,7 @@ We can now define what is a matrix ring.
         \item If $x \neq 0$, then $g(x) = 0$ which means $f(x)g(x) = 0$.
         \item If $x = 0$, then $f(x) = 0$ which means $f(x)g(x) = 0$.
     \end{itemize}
-    Hence their product is the zero function, meaning that $R$ has zero divisors $f$ and $g$.
+    Hence their product is the zero function, meaning that $R$ has zero divisors $f(x)$ and $g(x)$.
 \end{example}
 \begin{exercise}
     Does the ring $\Mn{2}{\mathbb{R}}$ have zero divisors?
@@ -431,7 +431,9 @@ We note one property about zero divisors, which will be used in future chapters.
 \end{proof}
 
 \begin{definition}
-    Suppose $R$ is a ring with identity such that $0 \neq 1$. An element $u \in R$ is called a \term{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$. Equivalently, $u$ is a unit if it has a multiplicative inverse.
+    Suppose $R$ is a ring with identity such that $0 \neq 1$. An element $u \in R$ is called a \term{unit}\index{unit} if there exists a $v \in R$ such that $uv=vu=1$.
+    
+    Equivalently, $u$ is a unit if it has a multiplicative inverse.
 \end{definition}
 \begin{example}
     Every non-zero element of $\Z_3$ is a unit since $1 \times 1 = 1$ and $2 \times 2 = 4 = 1$.
@@ -468,7 +470,7 @@ We note one property about zero divisors, which will be used in future chapters.
 \end{definition}
 
 \begin{example}
-    Earlier, we shown that $\R$ is a commutative ring. We now show that $\R$ is actually a field by noting that every non-zero $x \in \R$ has a reciprocal $\frac1x$ that is a real number (\myref{axiom-reciprocal}) such that $x\left(\frac1x\right) = \left(\frac1x\right)x = 1$. Thus every non-zero $x$ in $\R$ is a unit, meaning that $\R$ is a division ring. Coupled with the fact that $\R$ is a commutative ring means that $\R$ is a field.
+    Earlier, we shown that $\R$ is a commutative ring. We now show that $\R$ is actually a field by noting that every non-zero $x \in \R$ has a reciprocal $\frac1x$ that is a real number (\myref{axiom-reciprocal}) such that $x\left(\frac1x\right) = \left(\frac1x\right)x = 1$. Thus every non-zero $x \in \R$ is a unit, meaning that $\R$ is a division ring. Coupled with the fact that $\R$ is a commutative ring means that $\R$ is a field.
 \end{example}
 \begin{example}
     We also shown earlier that $\C$ is a commutative ring. We note that any non-zero complex number $z = a + bi$ has a multiplicative inverse given by
@@ -480,7 +482,7 @@ We note one property about zero divisors, which will be used in future chapters.
         zw &= (a+bi)\left(\frac{a}{a^2+b^2} - \frac{b}{a^2+b^2}i\right)\\
         &= \frac{(a+bi)(a-bi)}{a^2+b^2}\\
         &= \frac{a^2 - b^2i^2}{a^2+b^2}\\
-        &= \frac{a^2+b^2}{a^2+b^2} & (i^2 = -1)\\
+        &= \frac{a^2+b^2}{a^2+b^2} & (\text{since } i^2 = -1)\\
         &= 1.
     \end{align*}
     Thus any non-zero complex number is a unit, meaning that $\C$ is a division ring. As $\C$ is also a commutative ring, this means that $\C$ is a field.
@@ -567,7 +569,7 @@ We end this chapter off with an exploration about subrings.
 \end{problem}
 
 \begin{problem}
-    Let $R$ be a ring with identity 1, and let $x$ be an element from that ring.
+    Let $R$ be a ring with identity 1, and let $x \in R$.
     \begin{partquestions}{\roman*}
         \item Find four closed forms for the \term{geometric series}\index{geometric series}
         \[
@@ -612,7 +614,7 @@ We end this chapter off with an exploration about subrings.
 \end{problem}
 
 \begin{problem}
-    Let $R$ be a commutative ring with identity. We say that an element $x$ in $R$ is \term{nilpotent}\index{nilpotent} if there exists a positive integer $n$ such that $x^n = 0$.
+    Let $R$ be a commutative ring with identity. We say that an element $x \in R$ is \term{nilpotent}\index{nilpotent} if there exists a positive integer $n$ such that $x^n = 0$.
     \begin{partquestions}{\roman*}
         \item Let $u \in R$ be a unit and $x \in R$ be nilpotent. Show that $ux$ is nilpotent.
         \item Show that $u - x$ is a unit.

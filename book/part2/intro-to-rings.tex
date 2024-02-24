@@ -1,5 +1,5 @@
 \chapter{Introduction to Rings}
-In part I, we looked exclusively at groups and their operations. We discussed how groups are a generalisation of symmetry and looked at results related to groups. In this part, we look at rings.
+Groups are sets with a single operation defined on it. Rings, on the other hand, are more representative of the usual types of computations that we are familiar with. Rings are sets with two operations defined on it, and we motivate their definition in this chapter.
 
 \section{Extending Number Systems}
 The entire field of ring theory was kickstarted to generalize number systems.
@@ -19,36 +19,36 @@ In summary, we may call the set of positive integers, along with addition and mu
 \begin{definition}
     A set $S$ together with two operations $+$ and $\cdot$ is called a \term{semiring}\index{semiring} if it satisfies the following properties.
     \begin{itemize}
-        \item \textbf{Additive Closure}\index{axiom!semiring!additive closure}: For any two elements $a$ and $b$ in $S$, $a + b$ is also in $S$.
-        \item \textbf{Additive Associativity}\index{axiom!semiring!additive associativity}: For any three elements $a$, $b$, and $c$ in $S$, $a+(b+c) = (a+b)+c$.
-        \item \textbf{Additive Commutativity}\index{axiom!semiring!additive commutativity}: For any two elements $a$ and $b$ in $S$, $a + b = b + a$.
-        \item \textbf{Multiplicative Closure}\index{axiom!semiring!multiplicative closure}: For any two elements $a$ and $b$ in $S$, $a \cdot b$ is also in $S$.
-        \item \textbf{Multiplicative Associativity}\index{axiom!semiring!multiplicative associativity}: For any three elements $a$, $b$, and $c$ in $S$, $a\cdot(b\cdot c) = (a\cdot b)\cdot c$.
-        \item \textbf{Left and Right Distributivity}\index{axiom!semiring!distributivity}: For any three elements $a$, $b$, and $c$ in $S$, $a\cdot(b + c) = (a \cdot b) + (a \cdot c)$ and $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
+        \item \textbf{Additive Closure}\index{axiom!semiring!additive closure}: For any $a, b \in S$ we have $a + b \in S$.
+        \item \textbf{Additive Associativity}\index{axiom!semiring!additive associativity}: For any $a, b, c \in S$ we have $a+(b+c) = (a+b)+c$.
+        \item \textbf{Additive Commutativity}\index{axiom!semiring!additive commutativity}: For any $a, b \in S$ we have $a + b = b + a$.
+        \item \textbf{Multiplicative Closure}\index{axiom!semiring!multiplicative closure}: For any $a, b \in S$ we have $a \cdot b \in S$.
+        \item \textbf{Multiplicative Associativity}\index{axiom!semiring!multiplicative associativity}: For any $a, b, c \in S$ we have $a\cdot(b\cdot c) = (a\cdot b)\cdot c$.
+        \item \textbf{Left and Right Distributivity}\index{axiom!semiring!distributivity}: For any $a, b, c \in S$ we have $a\cdot(b + c) = (a \cdot b) + (a \cdot c)$ and $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
     \end{itemize}
 \end{definition}
 
 However, one may notice that $\mathbb{N}$ isn't particularly fun to work in. We only have these trivial properties to work with, and these do not give us enough to generate results about the positive integers. So ancient civilizations decided to include the notion of a ``additive identity'', which is called zero (0). Now, adding zero to any positive integer results in the positive integer itself.
 
-We also notice that \textit{multiplying} any number by 0 results in 0: this is obvious, especially when we work with integers. This set of non-negative integers (which, for brevity, we denote by $N$ in this chapter only) with addition and multiplication is called a rig (see \cite{proofwiki_rig-definition}).
+We also notice that \textit{multiplying} any number by 0 results in 0: this is obvious, especially when we work with integers. This set of non-negative integers (which, for brevity, we denote by $\mathfrak{N}$ in this chapter only) with addition and multiplication is called a rig.
 \begin{definition}
     A set $S$ together with two operations $+$ and $\cdot$ is called a \term{rig}\index{rig} if it is a semiring and satisfies these additional properties.
     \begin{itemize}
-        \item \textbf{Additive Identity}\index{axiom!rig!additive identity}: There is an element $0_S$ in $S$ such that for any $x$ in $S$ we have $0_S + x = x + 0_S = x$.
-        \item \textbf{Multiplication by Zero}\index{axiom!rig!multiplication by zero}: For any element $x$ in $S$ we have $0_S \cdot x = x \cdot 0_S = 0_S$.
+        \item \textbf{Additive Identity}\index{axiom!rig!additive identity}: There is an element $0_S \in S$ such that for any $x \in S$ we have $0_S + x = x + 0_S = x$.
+        \item \textbf{Multiplication by Zero}\index{axiom!rig!multiplication by zero}: For any element $x \in S$ we have $0_S \cdot x = x \cdot 0_S = 0_S$.
     \end{itemize}
 \end{definition}
 \begin{remark}
     A rig is a ri\underline{n}g without \underline{n}egative elements.
 \end{remark}
 
-Now, for any element $n$ in $N$, it would be nice to have a `corresponding' element in that sums to the additive identity 0. Clearly $N$ doesn't have such an element, but the integers ($\Z$) does. For example, the integer 3 has a `corresponding' element -3 that results in a sum of 0, i.e. $3 + (-3) = 0$. In general, for any integer $n$, summing $n$ with $-n$ results in 0. This `corresponding' element is called the additive inverse of $n$. With additive inverses, we finally have a construction for a ring.
+Now, for any element $n \in \mathfrak{N}$, it would be nice to have a `corresponding' element in that sums to the additive identity 0. Clearly $\mathfrak{N}$ doesn't have such an element, but the integers ($\Z$) does. For example, the integer 3 has a `corresponding' element -3 that results in a sum of 0, i.e. $3 + (-3) = 0$. In general, for any integer $n$, summing $n$ with $-n$ results in 0. This `corresponding' element is called the additive inverse of $n$. With additive inverses, we finally have a construction for a ring.
 
 \begin{definition}
-    A set $S$ together with two operations $+$ and $\cdot$ is called a \textbf{ring}\index{ring} if it is a rig and satisfies the \textbf{Additive Inverse} property, where for every element $x$ in $S$, there exists an element $-x$ in $S$ such that $x + (-x) = (-x) + x = 0_S$.
+    A set $S$ together with two operations $+$ and $\cdot$ is called a \textbf{ring}\index{ring} if it is a rig and satisfies the \textbf{Additive Inverse} axiom, where for every element $x \in S$, there exists an element $-x \in S$ such that $x + (-x) = (-x) + x = 0_S$.
 \end{definition}
 \begin{remark}
-    Note that we follow \cite[p.~223]{dummit_foote_2004}, \cite[p.~115, Definition 1.1]{hungerford_1980}, and \cite{proofwiki_ring-definition} for the definition of a ring.
+    Note that we follow \cite[p.~223]{dummit_foote_2004} and \cite[p.~115, Definition 1.1]{hungerford_1980} for the definition of a ring.
 \end{remark}
 
 \section{Rings as Algebraic Structures}
@@ -58,8 +58,8 @@ In the previous part, we explored the concept of groups. We weaken the condition
 \begin{definition}
     A \term{semigroup}\index{semigroup} is a set $S$ together with an operation $\ast$ satisfying the \term{semigroup axioms}\index{axiom!semigroup}.
     \begin{itemize}
-        \item \textbf{Closure}\index{axiom!semigroup!closure}: For any two elements $a$ and $b$ in $S$, the element $a\ast b$ is also in $S$.
-        \item \textbf{Associativity}\index{axiom!semigroup!associativity}: For any $a$, $b$, and $c$ in $S$, we have $a \ast (b \ast c) = (a \ast b) \ast c$.
+        \item \textbf{Closure}\index{axiom!semigroup!closure}: For any $a, b \in S$ we have $a\ast b \in S$.
+        \item \textbf{Associativity}\index{axiom!semigroup!associativity}: For any $a, b, c \in S$ we have $a \ast (b \ast c) = (a \ast b) \ast c$.
     \end{itemize}
 \end{definition}
 \begin{example}
@@ -79,14 +79,14 @@ In the previous part, we explored the concept of groups. We weaken the condition
     One sees that $(S, \ast)$ is closed under $\ast$. In addition, $\ast$ is associative. Hence $(S, \ast)$ is a semigroup.
 \end{example}
 
-With the notion of semigroups defined, we are ready to rigorously define what a ring is.
+With the notion of semigroups defined, we are ready to define rings.
 
 \begin{definition}
     A \term{ring}\index{ring} is a set $R$ with two binary operations $+$ and $\cdot$ satisfying the following axioms.
     \begin{itemize}
         \item \textbf{Addition-Abelian}\index{axiom!ring!addition-abelian}: $(R, +)$ is an abelian group.
         \item \textbf{Multiplication-Semigroup}\index{axiom!ring!multiplication-semigroup}: $(R, \cdot)$ is a semigroup.
-        \item \textbf{Distributive}\index{axiom!ring!distributive}: $\cdot$ distributes over $+$. That is,
+        \item \textbf{Distributive}\index{axiom!ring!distributive}: $\cdot$ distributes over $+$. That is, for any $a, b, c \in R$ we have
         \begin{itemize}
             \item $a \cdot (b + c) = (a \cdot b) + (b \cdot c)$; and
             \item $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
