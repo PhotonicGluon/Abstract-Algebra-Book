@@ -3,7 +3,7 @@ A group action is a representation of the elements of a group as symmetries of a
 
 \section{Definition and Examples}
 \begin{definition}\label{definition-group-action}
-    Let $G$ be a group, $e$ be the identity in $G$, and $X$ be a set. A \term{group action of $G$ on $X$}\index{group action} is a function $\alpha: G \times X \to X$ satisfying the following axioms.
+    Let $G$ be a group, $e$ be the identity in $G$, and $X$ be a non-empty set. A \term{group action of $G$ on $X$}\index{group action} is a function $\alpha: G \times X \to X$ satisfying the following axioms.
     \begin{itemize}
         \item \textbf{Identity}: $\alpha(e, x) = x$ for all $x \in X$.
         \item \textbf{Compatibility}: $\alpha(g, \alpha(h, x)) = \alpha(gh, x)$ for all $g, h \in G$ and $x \in X$.
@@ -60,7 +60,7 @@ This theorem is useful because it may sometimes be useful to use \myref{definiti
 \begin{proof}
     We first work forwards, assuming \myref{definition-group-action} is true and proving \myref{definition-group-action-alt} is true as well. Assume $\alpha: G \times X \to X$ is a group action. Define $\psi: G \to \Sym{X}$ by $g \mapsto f_g$ where the map $f_g: X \to X, x \mapsto \alpha(g, x)$. We show that $f_g$ is a bijection.
     \begin{itemize}
-        \item \textbf{Injective}: Suppose there exists $x, y \in X$ such that $f_g(x) = f_g(y)$. Then,
+        \item \textbf{Injective}: Let $x, y \in X$ be such that $f_g(x) = f_g(y)$. Then,
         \begin{align*}
             x &= \alpha(e, x)\\
             &= \alpha(g^{-1}g, x)\\
@@ -149,7 +149,7 @@ We can now look at the stabilizer of an element in $X$.
     Let $G$ be a group acting on a set $X$, and let $x \in X$. The \term{stabilizer of $x$ by $G$}\index{group action!stabilizer}, denoted $\Stab{G}{x}$, is the set of $g \in G$ such that $x$ is a fixed point of $g$.
 \end{definition}
 \begin{remark}
-    Some authors will denote the stabilizer of $x$ by $G$ by $G_x$ (e.g. {\cite[\S 54]{clark_1984}}, {\cite[Definition 10.8]{humphreys_1996}}, and \cite{brilliant_group-actions}).
+    Some authors will denote the stabilizer of $x$ by $G$ by $G_x$ (e.g. {\cite[\S 54]{clark_1984}} and {\cite[Definition 10.8]{humphreys_1996}}).
 \end{remark}
 
 \begin{example}
@@ -180,13 +180,13 @@ What you might notice from the above example and exercise is that the stabilizer
     Now consider $g, h \in \Stab{G}{x}$. This means that $g\cdot x = x$ and $h \cdot x = x$. We note that
     \begin{align*}
         h^{-1} \cdot x &= h^{-1} \cdot (h \cdot x) & (\text{as } h \in \Stab{G}{x}, \text{ so } h\cdot x = x)\\
-        &= (h^{-1}h) \cdot x & (\text{\textbf{Compatibility} Axiom})\\
+        &= (h^{-1}h) \cdot x & (\text{\textbf{Compatibility}})\\
         &= e \cdot x\\
         &= x
     \end{align*}
     so $h^{-1} \in \Stab{G}{x}$. Now consider $gh^{-1}$.
     \begin{align*}
-        (gh^{-1}) \cdot x &= g \cdot (h^{-1} \cdot x) & (\text{\textbf{Compatibility} Axiom})\\
+        (gh^{-1}) \cdot x &= g \cdot (h^{-1} \cdot x) & (\text{\textbf{Compatibility}})\\
         &= g \cdot x & (h^{-1} \in \Stab{G}{x})\\
         &= x & (g \in \Stab{G}{x})
     \end{align*}
@@ -270,7 +270,7 @@ Formally, this is captured in the Orbit-Stabilizer Theorem.
 \begin{proof}[Proof (see {\cite[Theorem 10.16]{humphreys_1996}})]
     We consider the map $f_x: G/\Stab{G}{x} \to \Orb{G}{x}$ given by $g\Stab{G}{x} \mapsto g \cdot x$ (note that $f_x$ is \textit{not} a homomorphism as $\Orb{G}{x}$ is not a group). We prove that $f_x$ is a well-defined bijection.
     \begin{itemize}
-        \item \textbf{Well-defined}: Let $g, h \in G$ such that $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality, statement 1 and 5, this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
+        \item \textbf{Well-defined}: Let $g, h \in G$ such that $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality, statements 1 and 5, this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
 
         \item \textbf{Injective}: Let $g, h \in G$ such that $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$, so $g^{-1}h \in \Stab{G}{x}$ by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality, statements 1 and 5, meaning $f_x$ is injective.
 
@@ -288,7 +288,7 @@ Formally, this is captured in the Orbit-Stabilizer Theorem.
 \end{exercise}
 
 \section{Burnside's Lemma}
-Burnside's lemma gives a way to count the number of orbits of a finite set acted on by a finite group. Before we get into it, we look at the set of orbits of $X$.
+Burnside's lemma gives a way to count the number of orbits of a finite set acted on by a finite group. Before we get to it, we look at the set of orbits of $X$.
 
 \begin{definition}
     The \term{set of orbits}\index{set!of orbits} acted upon by the group $G$ on a set $X$ is the set
@@ -303,7 +303,7 @@ Burnside's lemma gives a way to count the number of orbits of a finite set acted
 
 We are now ready to introduce Burnside's lemma.
 \begin{lemma}[Burnside]\label{lemma-burnside}\index{Burnside's Lemma}
-    Let $G$ be a finite group acting on a set $X$. Let $\Fix{X}{g}$ denote the set of all elements in $X$ which is fixed by $g$, that is,
+    Let $G$ be a finite group acting on a set $X$ and let $g \in G$. Let $\Fix{X}{g}$ denote the set of all elements in $X$ which is fixed by $g$, that is,
     \[
         \Fix{X}{g} = \{x \in X \vert g\cdot x = x\}.
     \]
@@ -313,7 +313,7 @@ We are now ready to introduce Burnside's lemma.
     \]
 \end{lemma}
 In other words, Burnside's lemma tells us that the number of orbits is the average number of fixed elements for each $g \in G$.
-\begin{proof}[Proof (see \cite{proofwiki_burnsides-lemma})]
+\begin{proof}
     We start by noting that
     \begin{align*}
         \sum_{g\in G} |\Fix{X}{g}| &= \sum_{g\in G} |\{x \in X \vertalt g\cdot x = x\}|\\
@@ -388,7 +388,7 @@ We can now look at conjugacy classes.
     That is, $\Cl{x}$ is a subset of $G$ where all elements in it are conjugates of each other.
 \end{definition}
 \begin{remark}
-    We omit having the subscript of $G$ for the conjugacy class since $x \in G$. Also, under the group action of conjugation, $\Orb{G}{x} = \Cl{x}$.
+    Under the group action of conjugation, $\Orb{G}{x} = \Cl{x}$.
 \end{remark}
 
 \begin{proposition}\label{prop-cardinality-of-conjugacy-class}
@@ -458,7 +458,7 @@ The example of the previous section illustrates that the sum of the sizes of the
     \[
         G = \bigcup_{i=1}^k \Orb{G}{\hat{g_i}} = \bigcup_{i=1}^k \Cl{\hat{g_i}}
     \]
-    where $\hat{g_i}$'s are representatives of the $k$ conjugacy classes (including those with only 1 element).
+    where each $\hat{g_i}$ is a representative of the $k$ conjugacy classes, including those with only 1 element.
 
     Recall from \myref{prop-element-with-singleton-conjugacy-class-in-center} that an element $x$ in a conjugacy class with one element is in the center of $G$. Therefore, one concludes that
     \[
@@ -476,7 +476,7 @@ The example of the previous section illustrates that the sum of the sizes of the
     proving the theorem.
 \end{proof}
 
-We look at one application of the class equation. Before that, we introduce $p$-groups.
+We look at one application of the class equation on a special type of finite groups called $p$-groups.
 
 \begin{definition}
     A \term{$p$-group}\index{$p$-group} $G$ is a finite group with order $p^n$ where $p$ is prime and $n$ is a non-negative integer.
@@ -587,7 +587,7 @@ To end this chapter, we prove Cauchy's Group Theorem.
 \end{problem}
 
 \begin{problem}
-    A group action is said to be \term{free}\index{group action!free} if $g\cdot x = x$ implies that $g$ is the identity (i.e., only the identity fixes any $x$).
+    A group action is said to be \term{free}\index{group action!free} if $g\cdot x = x$ means that $g$ is the identity (i.e., only the identity fixes any $x$).
 
     Let $G$ be a group and $S$ be a non-empty $G$-set. Suppose $G$ acts on $S$ freely and transitively. Prove that $G$ and $S$ have the same number of elements.
 \end{problem}
