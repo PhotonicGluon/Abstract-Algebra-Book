@@ -8,9 +8,9 @@ The first infinite family of simple groups we will look at is the family of Cycl
     $\Cn{n}$ is simple if and only if $n$ is prime.
 \end{lemma}
 \begin{proof}
-    We prove the forward direction. Suppose $\Cn{n}$ is simple with generator $g$. Then the only normal subgroups of $\Cn{n}$ are the trivial group and the group itself. Seeking a contradiction, assume $n$ is not prime; write $n = ab$ where $a$ and $b$ are positive integers that are both smaller than $n$. Then clearly $\langle g^a\rangle$ is a subgroup of $\Cn{n}$. Now $\Cn{n}$ is abelian (\myref{prop-cyclic-group-is-abelian}) which means all subgroups are normal (\myref{prop-subgroup-of-abelian-group-is-normal}). Hence we have found a non-trivial proper normal subgroup of $\Cn{n}$, namely $\langle g^a \rangle$, contradicting that $\Cn{n}$ has no non-trivial proper normal subgroups. Therefore $n$ is prime.
+    We prove the forward direction. Suppose $\Cn{n}$ is simple with generator $g$. Then the only normal subgroups of $\Cn{n}$ are the trivial group and the group itself. Seeking a contradiction, assume $n$ is not prime; write $n = ab$ where $a$ and $b$ are positive integers that are both smaller than $n$. Then clearly $\langle g^a\rangle$ is a proper subgroup of $\Cn{n}$. Now $\Cn{n}$ is abelian (\myref{prop-cyclic-group-is-abelian}) which means all subgroups are normal (\myref{prop-subgroup-of-abelian-group-is-normal}). Hence we have found a non-trivial proper normal subgroup of $\Cn{n}$, namely $\langle g^a \rangle$, contradicting that $\Cn{n}$ has no non-trivial proper normal subgroups. Therefore $n$ is prime.
 
-    We prove the reverse direction. Suppose $n$ is a prime. Then by a corollary of Lagrange's Theorem (\myref{corollary-group-with-prime-order-subgroups}), $\Cn{n}$ has no non-trivial proper subgroups. So, the only subgroup with order smaller than $n$ is the trivial group, $\{e\}$. Clearly $\Cn{n}$ is normal in itself, and the trivial group is always a normal subgroup. Hence, as the only normal subgroups of $\Cn{n}$ are the trivial group and itself, thus $\Cn{n}$ is simple. Therefore, if $n$ is prime then $\Cn{n}$ is simple.
+    We prove the reverse direction. Suppose $n$ is a prime. Then by a corollary of Lagrange's theorem (\myref{corollary-group-with-prime-order-subgroups}), $\Cn{n}$ has no non-trivial proper subgroups. So the only subgroup with order smaller than $n$ is the trivial group, $\{e\}$. Clearly $\Cn{n}$ is normal in itself, and the trivial group is always a normal subgroup. Hence, as the only normal subgroups of $\Cn{n}$ are the trivial group and itself, thus $\Cn{n}$ is simple. Therefore, if $n$ is prime then $\Cn{n}$ is simple.
 \end{proof}
 
 In fact, we have a much stronger result which we prove here.
@@ -24,7 +24,7 @@ Note that we do not assume that the abelian group is finite; we will show that t
     Suppose $G$ is a simple abelian group; we show that $G$ is finite. Let $g$ a non-identity element of $G$. Then $H = \langle g \rangle$ is a subgroup of $G$. In fact, since $G$ is abelian, $H \unlhd G$ (\myref{prop-subgroup-of-abelian-group-is-normal}). As $G$ is simple, therefore $H = G$, meaning that $g$ is a generator of $G$. Now if $G$ is an infinite group, then one also sees that $\langle g^2 \rangle < G$ which implies $\langle g^2 \rangle \lhd G$, contradicting the fact that $G$ is simple. Hence $G$ is a finite abelian group with generator $g$, meaning $G$ is cyclic. Result follows directly from \myref{lemma-cyclic-group-simple-iff-order-is-prime}.
 \end{proof}
 
-From this, we have found that the only family of simple abelian groups is the family of cyclic groups of prime order.
+From this, we conclude that the only family of simple abelian groups is the family of cyclic groups of prime order.
 
 \section{Alternating Group With Degree $>4$}
 The other family of simple groups that is relatively easy to find is the family of alternating groups with degree above 4\index{alternating group!of degree $>4$}. However, to prove this claim, we need several preliminary results.
@@ -33,16 +33,14 @@ The other family of simple groups that is relatively easy to find is the family 
     Let $G$ be a group of order 60. If $G$ has more than one Sylow 5-subgroup then $G$ is simple.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Proposition 4.21]{dummit_foote_2004}})]
-    We fill in most of the details of the proof here, although we leave some exercises for the reader.
-
-    By way of contradiction assume $G$ is a group of order 60 with more than one Sylow 5-subgroup, but has a non-trivial proper normal subgroup $H$. Note $60 = 5 \times 12$, so by the Third Sylow Theorem (\myref{thrm-sylow-3}):
+    By way of contradiction assume $G$ is a group of order 60 with more than one Sylow 5-subgroup, but has a non-trivial proper normal subgroup $H$. Note $60 = 5 \times 12$, so by the Third Sylow Theorem (\myref{thrm-sylow-3}),
     \begin{itemize}
         \item $12 \vert n_5$, so $n_5 \in \{1, 2, 3, 4, 6, 12\}$; and
         \item $n_5 \equiv 1 \pmod 5$, so $n_5 \in \{1, 6, 11, 16, \dots\}$.
     \end{itemize}
     Therefore $n_5 = 6$ as $n_5 > 1$ (given), i.e. there are 6 Sylow 5-subgroups.
 
-    We note by Lagrange's theorem (\myref{thrm-lagrange}) that the order of $H$ belongs in the set $\{1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60\}$, since the order of $G$ must be a multiple of the order of $H$. As $H$ is a non-trivial proper subgroup of $G$, thus $|H| \neq 1$ and $|H| \neq 60$. That leaves 4 cases which we will deal with separately.
+    We note by Lagrange's theorem (\myref{thrm-lagrange}) that the order of $H$ belongs in the set $\{1, 2, 3, 4, 5, 6, 10, 12, 15, 20, 30, 60\}$. As $H$ is a non-trivial proper subgroup of $G$, thus $|H| \neq 1$ and $|H| \neq 60$. That leaves 4 cases which we will deal with separately.
     \begin{enumerate}
         \item $|H| = 6$. Note $6 = 2 \times 3$, so \myref{problem-group-of-order-pq-has-normal-subgroup-of-order-q} tells us that there exists a $N \lhd H$ with $|N| = 3$. Note also $[G:H] = 10$ which is not a multiple of 3, so \myref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups} tells us that all Sylow 3-subgroups of $G$ are in $H$. But $N \lhd H$ means that $N$ is the unique Sylow 3-subgroup of $H$ and $G$ (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}), so $N \lhd G$ (by the same corollary). Proceed to case 3, using $N$ in place of $H$.
 
@@ -98,9 +96,8 @@ The other family of simple groups that is relatively easy to find is the family 
     \end{partquestions}
 \end{exercise}
 
-\newpage
-
 We also state and prove a fairly obvious proposition.
+
 \begin{proposition}\label{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}
     Let the integer $n \geq 3$. Let $\{1, 2, 3, \dots, n\}$ be denoted by $\mathcal{N}_n$. Suppose $\An{n}$ acts on $\mathcal{N}_n$ naturally. Then $\Stab{\An{n}}{r} \cong \An{n-1}$.
 \end{proposition}
@@ -108,39 +105,38 @@ We also state and prove a fairly obvious proposition.
     We note that elements of $\Stab{\An{n}}{r}$ are permutations that fix $r$, thereby permuting the $n - 1$ other elements. Therefore elements of $\Stab{\An{n}}{r}$ are even permutations on $n - 1$ elements, i.e. $\Stab{\An{n}}{r} \cong \An{n-1}$.
 \end{proof}
 
-With these results, we are ready to prove that an alternating group with a degree above 4 is simple.
+With these results, we are ready to prove the main result of this section.
+
 \begin{theorem}\label{thrm-An-is-simple-for-n>=5}
     The group $\An{n}$ is simple if $n \geq 5$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 4.24]{dummit_foote_2004}})]
     We induct on $n$. For brevity, let $\mathcal{N}_n = \{1, 2, 3, \dots, n\}$. The base case of $n = 5$ is covered by \myref{corollary-A5-is-simple}. Assume that $\An{k-1}$ is simple for some $k \geq 6$; we will prove that $\An{k}$ is also simple.
 
-    Let $G = \An{k}$, and, seeking a contradiction, assume that $G$ has a non-trivial proper normal subgroup $H$. Let $G$ act on $\mathcal{N}_{k}$ naturally; thus $\Stab{G}{i} \leq G$ with $\Stab{G}{i} \cong \An{k-1}$ (\myref{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}) for any $i \in \mathcal{N}_k$. Note $\An{k-1}$ is simple by Induction Hypothesis, so $\Stab{G}{i}$ is simple for each $i \in \mathcal{N}_{k}$.
+    Let $G = \An{k}$, and, seeking a contradiction, assume that $G$ has a non-trivial proper normal subgroup $H$. Let $G$ act on $\mathcal{N}_{k}$ naturally; thus $\Stab{G}{i} \leq G$ with $\Stab{G}{i} \cong \An{k-1}$ (\myref{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}) for any $i \in \mathcal{N}_k$. Note $\An{k-1}$ is simple by the induction hypothesis, so $\Stab{G}{i}$ is simple for each $i \in \mathcal{N}_{k}$.
 
-    Suppose first that there is some non-identity $\pi \in H$ such that $\pi(i) = i$ for some $i \in \mathcal{N}_{k}$. This means that $\pi$ fixes $i$; thus $\pi \in H \cap \Stab{G}{i}$. Note that since $H \lhd G$ and $\Stab{G}{i} \leq G$ thus $H \cap \Stab{G}{i} \lhd \Stab{G}{i}$ by the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 4. But as $\Stab{G}{i}$ is simple (and non-trivial) we must have $H \cap \Stab{G}{i} = \Stab{G}{i}$. Therefore $\Stab{G}{i} \subseteq H$ which means $\Stab{G}{i} \leq H$. Now by \myref{exercise-conjugate-of-stabilizer} (later), for any $\sigma \in G$, we know that $\sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{\sigma(i)}$. Therefore, by conjugating the above relation by $\sigma$, we see
+    Suppose first that there is some non-identity $\pi \in H$ such that $\pi(i) = i$ for some $i \in \mathcal{N}_{k}$. This means that $\pi$ fixes $i$; thus $\pi \in H \cap \Stab{G}{i}$. Note that since $H \lhd G$ and $\Stab{G}{i} \leq G$ thus $H \cap \Stab{G}{i} \lhd \Stab{G}{i}$ by the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 4. But as $\Stab{G}{i}$ is simple (and non-trivial) we must have $H \cap \Stab{G}{i} = \Stab{G}{i}$. Therefore $\Stab{G}{i} \subseteq H$ which means $\Stab{G}{i} \leq H$. Now by \myref{exercise-conjugate-of-stabilizer} (later), for any $\sigma \in G$, we know that $\sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{\sigma(i)}$. Therefore we see
     \[
         \sigma\Stab{G}{i}\sigma^{-1} \leq \sigma H\sigma^{-1} = H
     \]
-    since $H \lhd G$. Thus, there is a $\sigma \in G$ where $\sigma(i) = j$ for any $j \in \mathcal{N}_{k+1}$ required such that
+    since $H \lhd G$. Thus, for any $j \in \mathcal{N}_{k+1}$, there exists a $\sigma \in G$ where $\sigma(i) = j$ such that
     \[
         \sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{j} \leq H.
     \]
 
-    Note that any element in $G$ (say $\lambda$) may be written as a product of an even number of transpositions (\myref{thrm-parity-of-permutation}), say $2t$ transpositions. Thus, we may write
+    Note that any $\lambda \in G$ may be written as a product of an even number of transpositions (\myref{thrm-parity-of-permutation}), say $2t$ transpositions. Thus, we may write
     \[
         \lambda = \lambda_1\lambda_2\cdots\lambda_t
     \]
-    where each $\lambda_i$ is a product of two transpositions. Now as $k \geq 5$, each $\lambda_i$ (which could, at most, consist of two disjoint cycles of 4 elements) must fix at least one element in $\mathcal{N}_{k}$, say $j$. That is, $\lambda_i \in \Stab{G}{j}$ for some $j \in \mathcal{N}_{k}$.
+    where each $\lambda_i$ is a product of two transpositions. Now as $k \geq 5$, each $\lambda_i$ (which could at most consist of two disjoint cycles of 4 elements) must fix at least one element in $\mathcal{N}_{k}$, say $j$. That is, $\lambda_i \in \Stab{G}{j}$ for some $j \in \mathcal{N}_{k}$. Since $\lambda_i \in \Stab{G}{j} \leq H$ for some $j \in \mathcal{N}_{k}$, thus $\lambda_i \in H$. Hence $\lambda = \lambda_1\lambda_2\cdots\lambda_t \in H$. Therefore, any element in $G$ is also in $H$, meaning $G \subseteq H$, contradicting the fact that $H \lhd G$.
 
-    As noted above, every $\lambda \in G$ is generated by these $\lambda_i$'s, and since $\lambda_i \in \Stab{G}{j} \leq H$ for some $j \in \mathcal{N}_{k}$, thus $\lambda_i \in H$. Hence $\lambda = \lambda_1\lambda_2\cdots\lambda_t \in H$. Therefore, any element in $G$ is also in $H$, meaning $G \subseteq H$, contradicting the fact that $H \lhd G$ which means $H \subset G$.
-
-    We conclude that for any $\pi \in H$ and for all $i \in \mathcal{N}_k$, if $\pi \neq \id$ then $\pi(i) \neq i$. The contrapositive of this statement would be $\pi(i) = i$ for some $i \in \mathcal{N}_k$ means that $\pi = \id$. Now suppose $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$. Then $\pi_2^{-1}\pi_1(i) = i$, which implies $\pi_2^{-1}\pi_1 = \id$. Hence $\pi_1 = \pi_2$. Therefore, if $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$, then $\pi_1 = \pi_2$.
+    We conclude that for any $\pi \in H$ and for all $i \in \mathcal{N}_k$, if $\pi \neq \id$ then $\pi(i) \neq i$. The contrapositive of this statement is that if $\pi(i) = i$ for some $i \in \mathcal{N}_k$ then $\pi = \id$. Now suppose $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$. Then $\pi_2^{-1}\pi_1(i) = i$, which implies $\pi_2^{-1}\pi_1 = \id$. Hence $\pi_1 = \pi_2$. Therefore, if $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$, then $\pi_1 = \pi_2$.
 
     Now suppose a non-identity $\pi_1 \in H$ exists such that the cycle decomposition of $\pi_1$ contains a cycle of length of at least 3, say
     \[
         \pi_1 = \begin{pmatrix}a_1&a_2&a_3&\cdots\end{pmatrix} \begin{pmatrix}b_1&b_2&\cdots\end{pmatrix}\cdots
     \]
-    where $a_1$, $a_2$, $a_3$, $b_1$, $b_2$, etc. are distinct (which is possible since $k \geq 5$). We note an element $\sigma \in G$ exists such that $\sigma(a_1) = a_1$, $\sigma(a_2) = a_2$, but $\sigma(a_3) \neq a_3$, because $k \geq 4$ (for example, the permutation $\begin{pmatrix}a_3 & a_4\end{pmatrix}$). Then \myref{exercise-conjugation-of-permutation-by-another} (later) gives
+    where $a_1$, $a_2$, $a_3$, $b_1$, $b_2$, etc. are distinct (which is possible since $k \geq 5$). We note an element $\sigma \in G$ exists such that $\sigma(a_1) = a_1$, $\sigma(a_2) = a_2$, but $\sigma(a_3) \neq a_3$ because $k \geq 4$ (for example, the permutation $\begin{pmatrix}a_3 & a_4\end{pmatrix}$). Then \myref{exercise-conjugation-of-permutation-by-another} (later) tells us that
     \[
         \sigma\pi_1\sigma^{-1} = \begin{pmatrix}a_1&a_2&\sigma(a_3)&\cdots\end{pmatrix} \begin{pmatrix}\sigma(b_1)&\sigma(b_2)&\cdots\end{pmatrix}\cdots.
     \]
@@ -156,7 +152,7 @@ With these results, we are ready to prove that an alternating group with a degre
     \]
     Setting $\pi_2 = \sigma\pi_1\sigma^{-1}$ again gives two distinct permutations $\pi_1$ and $\pi_2$ where $\pi_1(a_1) = \pi_2(a_1) = a_2$, again contrary to the above observation.
 
-    We conclude that such a non-trivial proper normal subgroup $H$ cannot exist. Thus, $\An{k-1}$ being simple implies that $\An{k}$ is also simple.
+    We conclude that such a non-trivial proper normal subgroup $H$ of $\An{k}$ cannot exist. Thus, $\An{k-1}$ being simple implies that $\An{k}$ is also simple.
 
     By mathematical induction, $\An{n}$ is simple for all $n \geq 5$.
 \end{proof}
@@ -178,20 +174,20 @@ With these results, we are ready to prove that an alternating group with a degre
 \end{exercise}
 
 \begin{corollary}
-    The group $\An{n}$ is simple if $n \geq 3$ and $n \neq 4$.
+    The group $\An{n}$ is simple for $n \geq 3$ and $n \neq 4$.
 \end{corollary}
 \begin{proof}
     We note $\An3$ has order $\frac{3!}{2} = 3$ which is prime, so $\An3 \cong \Cn3$ which is simple. Also $\An{n}$ is simple for $n \geq 5$ by \myref{thrm-An-is-simple-for-n>=5}.
 \end{proof}
 
-We note that $\An4$ is non-simple by \myref{problem-S4-composition-series}'s solution that $\An4$ has a unique composition series of
+We note that $\An4$ is non-simple by the solution of \myref{problem-S4-composition-series}, in which we found that $\An4$ has a unique composition series of
 \[
     1 \lhd \Cn2 \lhd \mathrm{V} \lhd \An4
 \]
 up to isomorphism.
 
 \section{Groups of Lie Type}
-\textit{We briefly mention groups of Lie type; we will not prove any significant results here.}
+We briefly mention groups of Lie type; we will not prove any significant results here.
 
 Groups of Lie (pronounced ``lee'') type\index{groups of Lie type} usually refers to finite groups that are closely related to the group of rational points of a reductive linear algebraic group with values in a finite field. We will cover finite fields in part III. We briefly mention these groups here.
 
@@ -247,7 +243,7 @@ In what follows, taken from \cite{wikipedia_list-of-simple-groups}, $n$ is a pos
     \end{itemize}
 \end{itemize}
 
-There is also the \term{Tits group}\index{Tits group}, $^2F_4(2)'$. That group has an order of $17,971,200$.
+There is also the \term{Tits group}\index{Tits group}, $^2F_4(2)'$, with an order of $17,971,200$.
 
 \section{The Sporadic Groups}
 Along with the 18 infinite families of simple groups, there are also 26 sporadic simple groups\index{sporadic group} that do not fall within the families.
@@ -257,7 +253,7 @@ We first list four categories of sporadic groups.
     \centering
     \begin{tabular}{|l|l|l|}
         \hline
-        \textbf{Name} & \textbf{Group Symbol} & \textbf{Order} \\ \hline
+        \textbf{Name} & \textbf{Symbol} & \textbf{Order} \\ \hline
         \multirow{5}{*}{\term{Mathieu Groups}\index{Mathieu groups}} & $\mathrm{M}_{11}$ & 7,290 \\ \cline{2-3}
         & $\mathrm{M}_{12}$ & 95,040 \\ \cline{2-3}
         & $\mathrm{M}_{22}$ & 443,520 \\ \cline{2-3}
