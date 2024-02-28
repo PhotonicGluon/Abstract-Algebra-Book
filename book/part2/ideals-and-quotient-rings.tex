@@ -1,8 +1,8 @@
 \chapter{Ideals and Quotient Rings}
-Ideals are a special type of subring. They help us define the idea of quotient rings in ring theory, similar to how quotient ring are defined in group theory. Ideals form a fundamental part of ring theory, and we will see them appearing repeatedly in the following chapters.
+Ideals are a special type of subring. They help us define the idea of quotient rings, similar to how quotient groups are defined in group theory. Ideals form a fundamental part of ring theory, and we will see them appearing repeatedly in the following chapters.
 
 \section{History Behind Ideals}
-The term ``ideal'' originated from Ernst Kummer, who was looking to study the factorization of numbers. For instance, we may factor 45 in two different ways, $45 = 5 \times 9$ and $45 = 3 \times 15$. However, these numbers have not been `factored enough', as we can reduce the factorization down to the primes, $45 = 3^3 \times 5$. This is a unique factorization. However, over rings, such as in $\Z[\sqrt{-3}]$, this idea of unique factorization down to the irreducible factors fails, since
+The term ``ideal'' originated from Ernst Kummer, who was looking to study the factorization of numbers. For instance, we may factor 45 in two different ways, $45 = 5 \times 9$ and $45 = 3 \times 15$. However, these numbers have not been `factored enough', as we can reduce the factorization down to the primes, $45 = 3^2 \times 5$. This is a unique factorization. However, over rings, such as in $\Z[\sqrt{-3}]$, this idea of unique factorization down to the irreducible factors fails, since
 \[
     4 = 2 \times 2 = (1+\sqrt{-3})(1-\sqrt{-3})
 \]
@@ -28,13 +28,13 @@ Rings have two operations defined on them (addition and multiplication). Therefo
     As $(R,+)$ is an abelian group, thus, as groups, $(S,+)$ is a normal subgroup of $(R,+)$ and so $(R/S,+)$ is well-defined.
 \end{remark}
 
-At this point, we only know that $(R/S,+)$ is a subgroup of $(R,+)$. What conditions do we need on $S$ such that $R/S$ is a ring? Well, we need a ``well-defined'' multiplication operation on the cosets, specifically, for any two elements $a$ and $b$ in $R$, we want
+At this point, we only know that $(R/S,+)$ is a group. What conditions do we need on $S$ such that $R/S$ is a ring? Well, we need a ``well-defined'' multiplication operation on the cosets, specifically, for any two elements $a, b \in R$, we want
 \[
     (a+S)(b+S) = ab + S.
 \]
 We now try and find the condition(s) required for this operation to be well-defined.
 
-Suppose $a+S = c+S$ and $b+S = d+S$ for some other elements $c$ and $d$ in $R$; our goal is to show $ab+S = cd+S$. Now by Coset Equality, statements 1 and 5, we have $a-c \in S$ and $b-d \in S$. Set $a-c = s_1 \in S$ and $b-d = s_2 \in S$, so $a = c+s_1$ and $b = d+s_2$. Hence,
+Suppose $a+S = c+S$ and $b+S = d+S$ for some other elements $c, d \in R$; our goal is to show $ab+S = cd+S$. Now by Coset Equality, statements 1 and 5, we have $a-c \in S$ and $b-d \in S$. Set $a-c = s_1 \in S$ and $b-d = s_2 \in S$, so $a = c+s_1$ and $b = d+s_2$. Hence,
 \[
     ab = (c+s_1)(d+s_2) = cd + cs_2 + s_1d + s_1s_2.
 \]
@@ -42,7 +42,7 @@ Now for $ab + S = cd+S$ we need to have $ab-cd \in S$, again by Coset Equality s
 
 We are now ready to present the definition of an ideal.
 \begin{definition}
-    Let $R$ be a ring and a subset $I$ of $R$. Suppose $(I,+) \leq (R,+)$. Then $I$ is an \term{ideal}\index{ideal} if and only if both $ri$ and $ir$ are in $I$ for every $r \in R$ and $i \in I$.
+    Let $R$ be a ring and $I$ be a non-empty subset of $R$. Suppose $(I,+) \leq (R,+)$. Then $I$ is an \term{ideal}\index{ideal} if and only if for every $r \in R$ and $i \in I$, we have $ri, ir \in I$.
 \end{definition}
 \begin{exercise}\label{exercise-ideal-is-a-subring}
     Let $I$ be an ideal of a ring $R$. Show that $I$ is a subring of $R$.
@@ -230,75 +230,75 @@ We end this section by noting two results with regards to ideals.
 We first look at the sum of ideals.
 
 \begin{definition}\index{ideal!sum}
-    Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then the sum of the ideals $\ideal{a}$ and $\ideal{b}$ is
+    Let $R$ be a ring and let $I$ and $J$ be ideals of $R$. Then the sum of the ideals $I$ and $J$ is
     \[
-        \ideal{a} + \ideal{b} = \{a + b \vert a\in\ideal{a},\;b\in\ideal{b}\}.
+        I + J = \{i + j \vert i\in I,\;j\in J\}.
     \]
 \end{definition}
 
 \begin{example}
     Consider the ring $\Z$ and the ideals $I = \{2n \vert n \in \Z\}$ and $J = \{3n \vert n \in \Z\}$. Then their sum is
     \[
-        I + J = \{2a + 3b \vert a,b \in \Z\}.
+        I + J = \{2m + 3n \vert m,n \in \Z\}.
     \]
     which is just $\Z$ by B\'ezout's lemma (\myref{lemma-bezout}).
 \end{example}
 
 \begin{proposition}\label{prop-sum-of-ideals-is-ideal}
-    Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then $\ideal{a} + \ideal{b}$ is an ideal of $R$.
+    Let $R$ be a ring and let $I$ and $J$ be ideals of $R$. Then $I + J$ is an ideal of $R$.
 \end{proposition}
 \begin{proof}
-    We note that since $\ideal{a}$ and $\ideal{b}$ are ideals, they are thus non-empty and so $\ideal{a}+\ideal{b}$ is non-empty.
+    We note that since $I$ and $J$ are ideals, they are thus non-empty and so $I+J$ is non-empty.
 
-    Let $a_1, a_2 \in \ideal{a}$ and $b_1, b_2 \in \ideal{b}$. Then we know $a_1 - a_2 \in \ideal{a}$ and $b_1 - b_2 \in \ideal{b}$ by the test for ideal (\myref{thrm-test-for-ideal}). Therefore $(a_1 - a_2) + (b_1 - b_2) = (a_1 + b_1) - (a_2 + b_2) \in \ideal{a} + \ideal{b}$, satisfying the first requirement.
+    Let $i_1, i_2 \in I$ and $j_1, j_2 \in J$. Then we know $i_1 - i_2 \in I$ and $j_1 - j_2 \in J$ by the test for ideal (\myref{thrm-test-for-ideal}). Therefore $(i_1 - i_2) + (j_1 - j_2) = (i_1 + j_1) - (i_2 + j_2) \in I + J$, satisfying the first requirement.
 
-    Now take any $r \in R$ and $a+b \in \ideal{a}+\ideal{b}$.
+    Now take any $r \in R$ and $i+j \in I+J$.
     \begin{itemize}
-        \item $r(a+b) = ra + rb \in \ideal{a}+\ideal{b}$ since $ra \in \ideal{a}$ (because $\ideal{a}$ is an ideal) and $rb \in \ideal{b}$ (because $\ideal{b}$ is an ideal).
-        \item $(a+b)r = ar + br \in \ideal{a}+\ideal{b}$ since $ar \in \ideal{a}$ (because $\ideal{a}$ is an ideal) and $br \in \ideal{b}$ (because $\ideal{b}$ is an ideal).
+        \item $r(i+j) = ri + rj \in I+J$ since $ri \in I$ (because $I$ is an ideal) and $rj \in J$ (because $J$ is an ideal).
+        \item $(i+j)r = ir + jr \in I+J$ since $ir \in I$ (because $I$ is an ideal) and $jr \in J$ (because $J$ is an ideal).
     \end{itemize}
-    Therefore $\ideal{a} + \ideal{b}$ is an ideal by the test for ideal.
+    Therefore $I + J$ is an ideal by the test for ideal.
 \end{proof}
 
 \newpage
 
 We now look at the product of ideals.
 \begin{definition}\index{ideal!product}
-    Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then the product of the ideals $\ideal{a}$ and $\ideal{b}$ is
+    Let $R$ be a ring and let $I$ and $J$ be ideals of $R$. Then the product of the ideals $I$ and $J$ is
     \[
-        \ideal{ab} = \{a_1b_1 + a_2b_2 + \cdots + a_nb_n \vert a_i\in\ideal{a},\;b_i\in\ideal{b}\}.
+        IJ = \{i_1j_1 + i_2j_2 + \cdots + i_nj_n \vert i_k\in I,\;j_k\in J\}.
     \]
 \end{definition}
 
 \begin{example}
     Consider the ring $\Z$ and the ideals $I = \{2n \vert n \in \Z\}$ and $J = \{3n \vert n \in \Z\}$. Then their product is
     \begin{align*}
-        IJ &= \{(2a_1)(3b_1) + (2a_2)(3b_2) + \cdots + (2a_n)(3b_n) \vert a_i,b_i \in \Z\}\\
-        &= \{6(a_1b_1 + a_2b_2 + \cdots + a_nb_n) \vert a_i,b_i \in \Z\}\\
-        &= \{6k \vert k \in \Z\}.
+        IJ &= \{(2i_1)(3j_1) + (2i_2)(3j_2) + \cdots + (2i_n)(3j_n) \vert i_k,j_k \in \Z\}\\
+        &= \{6(i_1j_1 + i_2j_2 + \cdots + i_nj_n) \vert i_k,j_k \in \Z\}\\
+        &= \{6a \vert a \in \Z\}.
     \end{align*}
     which is $6\Z$.
 \end{example}
 
 \begin{proposition}\label{prop-product-of-ideals-is-ideal}
-    Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Then $\ideal{ab}$ is an ideal of $R$.
+    Let $R$ be a ring and let $I$ and $J$ be ideals of $R$. Then $IJ$ is an ideal of $R$.
 \end{proposition}
 \begin{proof}
-    Since $\ideal{a}$ and $\ideal{b}$ are non-empty as they are ideals, therefore $\ideal{ab}$ is non-empty.
+    Since $I$ and $J$ are non-empty as they are ideals, therefore $IJ$ is non-empty.
 
-    Let $a_1,a_2 \in \ideal{a}$ and $b_1,b_2 \in \ideal{b}$. Since $\ideal{a}$ is an ideal and is hence a subring, so $-a_2 \in \ideal{a}$. Thus $a_1b_1, (-a_2)(b_2) \in \ideal{ab}$. Clearly $a_1b_1 + (-a_2)(b_2) = a_1b_1 - a_2b_2 \in \ideal{ab}$ so this satisfies the first requirement in the test for ideal (\myref{thrm-test-for-ideal}).
+    Let $i_1,i_2 \in I$ and $j_1,j_2 \in J$. Since $I$ is an ideal and is hence a subring, so $-i_2 \in I$. Thus $i_1j_1, (-i_2)(j_2) \in IJ$. Clearly $i_1j_1 + (-i_2)(j_2) = i_1j_1 - i_2j_2 \in IJ$ so this satisfies the first requirement in the test for ideal (\myref{thrm-test-for-ideal}).
 
-    Now take any $r \in R$ and let $a_1b_1 + \cdots + a_nb_n \in \ideal{ab}$.
+    Now take any $r \in R$ and let $i_1j_1 + \cdots + i_nj_n \in IJ$.
     \begin{itemize}
-        \item $r(a_1b_1 + \cdots + a_nb_n) = (ra_1)b_1 + \cdots + (ra_n)b_n$. Note $ra_i \in \ideal{a}$ since $\ideal{a}$ is an ideal, and $b_i \in \ideal{b}$. Hence $(ra_1)b_1 + \cdots + (ra_n)b_n \in \ideal{ab}$.
-        \item $(a_1b_1 + \cdots + a_nb_n)r = a_1(b_1r) + \cdots + a_n(b_nr)$. Note $b_ir \in \ideal{b}$ since $\ideal{b}$ is an ideal, and $a_i \in \ideal{a}$. Hence $a_1(b_1r) + \cdots + a_n(b_nr) \in \ideal{ab}$.
+        \item $r(i_1j_1 + \cdots + i_nj_n) = (ri_1)j_1 + \cdots + (ri_n)j_n$. Note $ri_k \in I$ since $I$ is an ideal, and $j_k \in J$. Hence $(ri_1)j_1 + \cdots + (ri_n)j_n \in IJ$.
+        \item $(i_1j_1 + \cdots + i_nj_n)r = i_1(j_1r) + \cdots + i_n(j_nr)$. Note $j_kr \in J$ since $J$ is an ideal, and $i_k \in I$. Hence $i_1(j_1r) + \cdots + i_n(j_nr) \in IJ$.
     \end{itemize}
 
-    Therefore $\ideal{ab}$ is an ideal by the test for ideal.
+    Therefore $IJ$ is an ideal by the test for ideal.
 \end{proof}
 
 \begin{exercise}
-    Let $R$ be a ring and let $\ideal{a}$ and $\ideal{b}$ be ideals of $R$. Prove that $\ideal{a} \cap \ideal{b}$ is an ideal of $R$.
+    Let $R$ be a ring with ideals $I$ and $J$. Prove that $I \cap J$ is an ideal of $R$.
 \end{exercise}
 
 \section{Principal Ideals}
@@ -393,19 +393,19 @@ We look at one example of a PID.
 Let's first look at the definition of a prime ideal.
 
 \begin{definition}
-    Let $R$ be a commutative ring with identity. An proper ideal $P$ of $R$ is called a \term{prime ideal}\index{ideal!prime}\index{prime!ideal} if whenever $ab \in P$ we have $a \in P$ or $b \in P$.
+    Let $R$ be a commutative ring with identity. An proper ideal $P$ of $R$ is called a \term{prime ideal}\index{ideal!prime}\index{prime!ideal} if and only if whenever $ab \in P$ we have $a \in P$ or $b \in P$.
 \end{definition}
 
-This definition may seem weird, but is completely natural when we consider the properties of prime numbers. Recall that Euclid's lemma (\myref{corollary-euclid}) tells us that if a prime $p$ divides $ab$, then either $p$ divides $a$ or $p$ divides $b$. Similarly, if the product $ab$ belongs within the prime ideal $P$, then either $a$ belongs in $P$ or $b$ belongs in $P$. However, prime ideals does not necessarily imply unique `factorization' like what occurs in the integers via the Fundamental Theorem of Arithmetic (\myref{thrm-fundamental-theorem-of-arithmetic}); we will explore the uniqueness criteria in a later chapter.
+This definition may seem weird, but is more natural when we consider the properties of prime numbers. Recall that Euclid's lemma (\myref{corollary-euclid}) tells us that if a prime $p$ divides $ab$, then either $p$ divides $a$ or $p$ divides $b$. Similarly, if the product $ab$ belongs in the prime ideal $P$, then either $a$ belongs in $P$ or $b$ belongs in $P$. However, prime ideals does not necessarily imply unique `factorization' like what occurs in the integers via the Fundamental Theorem of Arithmetic (\myref{thrm-fundamental-theorem-of-arithmetic}); we will explore the uniqueness criteria in a later chapter.
 
 We look at the connection between this definition of a prime ideal and prime numbers in the integers.
 \begin{proposition}\label{prop-ideals-of-Z}
     The prime ideals of $\Z$ are the trivial ideal and $p\Z$, where $p$ is a prime number.
 \end{proposition}
 \begin{proof}
-    First let's assume the ideal in question is the trivial ideal. Suppose $ab \in \{0\}$, meaning $ab = 0$. As $\Z$ is an integral domain, this means either $a = 0$ or $b = 0$, which therefore means either $a \in \{0\}$ or $b \in \{0\}$. Hence the trivial ideal is a prime ideal in $\Z$.
+    First let us assume the ideal in question is the trivial ideal. Suppose $ab \in \{0\}$, meaning $ab = 0$. As $\Z$ is an integral domain, this means either $a = 0$ or $b = 0$, which therefore means either $a \in \{0\}$ or $b \in \{0\}$. Hence the trivial ideal is a prime ideal in $\Z$.
 
-    Now suppose we have a non-trivial prime ideal $P$ of $\Z$. As $\Z$ is a PID, we may write $P = n\Z$ where $n \geq 2$ (note that if $n = 1$ we will get $P = \Z$ which is not a proper ideal). Furthermore write $n = ab$ where $1 \leq a,b \leq n$. Since $ab = n \in P$, therefore $a \in P$ or $b \in P$. Without loss of generality assume $a \in P$. We note $P = n\Z = \{\dots, -2n, -n, 0, n, 2n, \dots\}$ and $1 \leq a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$, which shows that $n$ is prime. Hence, the prime ideal $P = n\Z$, where $n$ is prime.
+    Now suppose we have a non-trivial prime ideal $P$ of $\Z$. As $\Z$ is a PID, we may write $P = n\Z$ where $n \geq 2$ (note that if $n = 1$ we will get $P = \Z$ which is not a proper ideal). Furthermore write $n = ab$ where $1 \leq a,b \leq n$. Since $ab = n \in P$, therefore $a \in P$ or $b \in P$. Without loss of generality assume $a \in P$. We note $P = n\Z = \{\dots, -2n, -n, 0, n, 2n, \dots\}$ and $1 \leq a \leq n$, so we must have $a = n$. Therefore $a = n$ and $b = 1$, which shows that $n$ is prime. Hence, the prime ideal $P = n\Z$ where $n$ is prime.
 \end{proof}
 \begin{exercise}
     Is the principal ideal $\princ{2} = \{0, 2, 4, 6\}$ prime in $\Z_8$?
@@ -413,7 +413,7 @@ We look at the connection between this definition of a prime ideal and prime num
 
 We now look at the definition of a maximal ideal.
 \begin{definition}
-    Let $R$ be a commutative ring with identity. A proper ideal $M$ of $R$ is called a \term{maximal ideal}\index{ideal!maximal} if whenever an ideal $I$ is such that $M \subseteq I \subseteq R$ we have $I = M$ or $I = R$.
+    Let $R$ be a commutative ring with identity. A proper ideal $M$ of $R$ is called a \term{maximal ideal}\index{ideal!maximal} if and only if whenever an ideal $I$ is such that $M \subseteq I \subseteq R$ we have $I = M$ or $I = R$.
 \end{definition}
 \begin{remark}
     This means that the only ideal that contains a maximal ideal is the entire ring.
@@ -425,11 +425,7 @@ We now look at the definition of a maximal ideal.
 \begin{example}
     We show that $M = \princ{2} = \{0, 2, 4, \dots, 32, 34\}$ is a maximal ideal of $\Z_{36}$. Suppose we have an ideal $I$ of $\Z_{36}$ such that $M \subset I \subseteq \Z_{36}$. We show that $I = \Z_{36}$.
 
-    Take an $n \in I \setminus M$. Then Euclid's division lemma (\myref{lemma-euclid-division}) tells us that we may write
-    \[
-        n = 2q + r \text{ with } 0 \leq r < 2
-    \]
-    Now since $n \notin M$, therefore $n$ is not a multiple of 2. Thus there must be a remainder, i.e. $1 \leq r < 2$, meaning that $r = 1$. Furthermore, one sees that $r = 1 = n - 2q$, and because $n \in I$ and $2q \in I$ (since $2q \in M$ and $M \subset I$), therefore $1 \in I$. Hence, by \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring}, $I = \Z_{36}$, which means that $\princ{2}$ is a maximal ideal of $\Z_{36}$.
+    Take an $n \in I \setminus M$. Then Euclid's division lemma (\myref{lemma-euclid-division}) tells us that we may write $n = 2q + r$ with $0 \leq r < 2$. Now since $n \notin M$, therefore $n$ is not a multiple of 2. Thus there must be a remainder, i.e. $1 \leq r < 2$, meaning that $r = 1$. Furthermore, one sees that $r = 1 = n - 2q$, and because $n \in I$ and $2q \in I$ (since $2q \in M$ and $M \subset I$), therefore $1 \in I$. Hence, by \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring}, we see that $I = \Z_{36}$, which means that $\princ{2}$ is a maximal ideal of $\Z_{36}$.
 \end{example}
 \begin{exercise}
     What conditions must be placed on the positive integer $n$ so that $n\Z$ is a maximal ideal in $\Z$?
@@ -496,8 +492,13 @@ To end this chapter, we look at two special ideals of a ring.
         \Ann{R}{A} = \{r \in R \vert ra = 0 \text{ for all } a \in A\}.
     \]
 \end{definition}
+
 \begin{example}
     $\Ann{\Z}{\Z} = \{0\}$.
+\end{example}
+
+\begin{example}
+    $\Ann{\Z_6}{\{2\}} = \{r \in \Z_6 \vert 2r = 0\} = \{3\}$.
 \end{example}
 
 \begin{proposition}
@@ -537,8 +538,6 @@ To end this chapter, we look at two special ideals of a ring.
     Therefore $\sqrt{4\Z} = 2\Z$.
 \end{example}
 
-\newpage
-
 \begin{proposition}
     Let $R$ be a commutative ring and $I$ be an ideal of $R$. Then $\sqrt{I}$ is an ideal of $R$.
 \end{proposition}
@@ -549,7 +548,7 @@ To end this chapter, we look at two special ideals of a ring.
     \[
         (r-s)^{mn} = \sum_{k=0}^{mn}(-1)^k{mn \choose k}r^{mn-k}s^k.
     \]
-    Observe that at any point, either $mn - k \geq m$ or $k \geq m$, so at any point either $r^{mn-k} \in I$ or $s^k \in I$, meaning that $(-1)^k{mn \choose k}r^{mn-k} \in I$. Therefore, $(r-s)^{mn} \in I$, which in turn means $r-s \in \sqrt{I}$.
+    Observe that at any point, either $mn - k \geq m$ or $k \geq m$, so at any point either $r^{mn-k} \in I$ or $s^k \in I$, meaning that $(-1)^k{mn \choose k}r^{mn-k}s^k \in I$. Therefore, $(r-s)^{mn} \in I$, which in turn means $r-s \in \sqrt{I}$.
 
     Next suppose $x \in R$ and $r \in \sqrt{I}$, meaning $r^n \in I$ for some positive integer $n$. Note that $(rx)^n = (xr)^n = x^nr^n \in I$ since $R$ is commutative and $r^n \in I$. Therefore $rx, xr \in \sqrt{I}$.
 
