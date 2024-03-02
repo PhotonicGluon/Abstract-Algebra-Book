@@ -65,9 +65,9 @@ In summary, the rules for `polynomial addition' and `polynomial multiplication' 
     \item `Polynomial multiplication' is almost the same as regular polynomial multiplication, except that for each integer $m$ greater than $N - 1$, we replace $x^m$ with $x^{m \mod N}$.
 \end{itemize}
 
-For NTRU to work, the polynomials that we choose must have inverses. In particular, NTRU will involve reducing the \textit{coefficients} modulo certain integers. Suppose $p$ is a positive integer that we want to reduce the coefficients modulo of (note that $p$ may not be prime; this is just the notation used in \cite[\S~1.1]{hoffstein_pipher_silverman_1998}). Then an inverse of $f(x) \in R$ is an $F_p(x) \in R$ such that
+For NTRU to work, the polynomials that we choose must have inverses. In particular, NTRU will involve reducing the \textit{coefficients} modulo certain integers. Suppose $p$ is a positive integer that we want to reduce the coefficients modulo of (note that $p$ may not be prime; this is just the notation used in \cite[\S~1.1]{hoffstein_pipher_silverman_1998}). Then an inverse of $f(x) \in R$ is a polynomial $F_p(x) \in R$ such that
 \[
-    F_p(x)f(x) \equiv 1 \pmod p
+    F_p(x)f(x) \equiv 1. \pmod p
 \]
 Again, we follow the notation used in \cite{hoffstein_pipher_silverman_1998}. Note that $f(x)$ may not have an inverse; this problem is not significant when we are actually performing the encryption, since we may just choose another $f(x)$.
 
@@ -113,7 +113,7 @@ NTRU also uses 4 subsets of $R$.
 For ease of computation of multiplication of polynomials later, the coefficients of these polynomials would be small. We follow \cite[\S~2.2]{hoffstein_pipher_silverman_1998} on the description on the polynomials in the above sets.
 \begin{itemize}
     \item For $\mathcal{L}_m$, let the coefficients of the polynomials lie within the interval $\left[-\frac{p-1}2, \frac{p-1}2\right]$, assuming $p$ is odd.
-    \item For the rest, first define $\mathcal{L}(d_1, d_2)$ to be the set of polynomials in $R$ with $d_1$ coefficients equalling 1, $d_2$ coefficients equalling -1, and the rest equal to 0. Then, by choosing positive integers $d_f$, $d_g$, and $d_\phi$, set
+    \item For the rest, first define $\mathcal{L}(d_1, d_2)$ to be the set of polynomials in $R$ with $d_1$ coefficients equal to 1, $d_2$ coefficients equal to -1, and the rest equal to 0. Then, by choosing positive integers $d_f$, $d_g$, and $d_\phi$, set
     \begin{align*}
         \mathcal{L}_f &= \mathcal{L}(d_f, d_f-1),\\
         \mathcal{L}_g &= \mathcal{L}(d_g, d_g), \text{ and}\\
@@ -125,25 +125,25 @@ A notable property of polynomials in $\mathcal{L}_g$ and $\mathcal{L}_\phi$ is t
 \begin{exercise}
     Show that a polynomial in $\mathcal{L}(k,k)$, where $k$ is some positive integer smaller than $\frac N2$, does not have an inverse modulo $p$ for any $p$.
 \end{exercise}
-Thus, to ensure that $f(x)$ has a chance to be invertible, we choose $\mathcal{L}_f$ to use $ \mathcal{L}(d_f, d_f-1)$, so that it has one more coefficient of 1 than than it does for -1.
+Thus, to ensure that a polynomial in $\mathcal{L}_f$ has a chance to be invertible, we choose $\mathcal{L}_f$ to use $ \mathcal{L}(d_f, d_f-1)$, so that it has one more coefficient of 1 than than it does for -1.
 
 \subsection{Key Creation}
 Suppose Alice wants to send Bob a message. Before that, Bob needs to create his encryption and decryption key within the NTRU cryptosystem.
 
-Bob chooses two polynomials $f(x) \in \mathcal{L}_f$ and $g(x) \in \mathcal{L}_g$, which will have `small' coefficients (which, in this case, meaning that the coefficients are either 0 or $\pm1$). Now $g(x)$ can be anything, while $f(x)$ has to satisfy the additional requirement that it has inverses modulo $p$ and $q$. That is, there must exist polynomials $F_p(x), F_q(x) \in R$ such that
+Bob chooses two polynomials $f(x) \in \mathcal{L}_f$ and $g(x) \in \mathcal{L}_g$, which will have `small' coefficients (which, in this case, means that the coefficients are either 0 or $\pm1$). Now $g(x)$ can be anything, while $f(x)$ has to satisfy the additional requirement that it has inverses modulo $p$ and $q$. That is, there must exist polynomials $F_p(x), F_q(x) \in R$ such that
 \[
     F_p(x)f(x) \equiv 1 \pmod p \text{ and } F_q(x)f(x) \equiv 1 \pmod q.
 \]
 For most choices of $f(x)$ this will be true; if not, randomly pick another $f(x)$ from $\mathcal{L}_f$.
 \begin{remark}
-    Finding inverses of $f(x)$ modulo $p$ and $q$ is not a trivial task, but \cite{silverman_1999} describes a method for the fast computation of \textit{almost inverses} which are good enough for NTRU.
+    Finding inverses of $f(x)$ modulo $p$ and $q$ is not a trivial task, but \cite{silverman_1999} describes a method for the fast computation of `almost inverses' which are good enough for NTRU.
 \end{remark}
 
-Bob then computes the polynomial $h(x)$ given by
+Bob then computes the polynomial
 \[
     h(x) = F_q(x)g(x) \mod q,
 \]
-that is, $h(x)$ is $F_q(x)g(x)$ and then reducing the coefficients modulo $q$. Bob's public key is $h(x)$; his private key is $f(x)$, although in practice he will also store $F_p(x)$.
+that is, $h(x)$ is $F_q(x)g(x)$ and then reducing its coefficients modulo $q$. Bob's public key is $h(x)$; his private key is $f(x)$, although in practice he will also store $F_p(x)$.
 
 \begin{example}
     Suppose $N = 5$, $p = 3$, $q = 8$. Suppose Bob chooses $f(x) = x^4 + x^3 - x$ and $g(x) = x^3 - x^2 + x - 1$. We note that
@@ -404,7 +404,7 @@ It is again emphasised that $q$ needs to be significantly larger than $p$ in ord
 \newpage
 
 \section{Implementation}
-We have been working with toy examples to understand the basic process that \cite{hoffstein_pipher_silverman_1998} uses to encrypt and decrypt messages. In practice, the recommended parameters for NTRU as described in \cite{hoffstein_pipher_silverman_1998} for secure, post-quantum encryption are provided in \cite{ntru_2020} and is listed below.
+We have been working with toy examples to understand the basic process that \cite{hoffstein_pipher_silverman_1998} uses to encrypt and decrypt messages. In practice, the recommended parameters for NTRU as described in \cite{hoffstein_pipher_silverman_1998} for secure, post-quantum encryption are provided in \cite{ntru_2020} and are listed below.
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|l|l|}

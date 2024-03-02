@@ -71,7 +71,7 @@ The next test provides a partial converse to the above theorem for polynomials o
         &= (-b+b)q(\alpha)\\
         &= 0.
     \end{align*}
-    Since $\alpha \in F$ thus $\alpha$ is a zero of $f(x)$ in $F$.
+    Since $\alpha \in F$, thus $\alpha$ is a zero of $f(x)$ in $F$.
 \end{proof}
 
 \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes} is particularly useful for finite fields, since we just have to check all elements of the field for a zero.
@@ -95,7 +95,7 @@ The next test provides a partial converse to the above theorem for polynomials o
 \end{example}
 
 \begin{exercise}
-    Let the polynomial $f(x) = 2x^3 + 4x + 9$. For which field(s) listed below is $f(x)$ irreducible?
+    Consider the polynomial $f(x) = 2x^3 + 4x + 9$. For which field(s) listed below is $f(x)$ irreducible?
     \begin{multicols}{4}
         \begin{partquestions}{\alph*}
             \item $\Z_2$
@@ -114,7 +114,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
 \end{definition}
 
 \begin{definition}
-    Let $D$ be an integral domain. A \term{primitive polynomial}\index{polynomial!primitive} is a non-zero polynomial $f(x) \in D[x]$ with content 1.
+    Let $D$ be an integral domain. A \term{primitive polynomial}\index{polynomial!primitive} is a non-zero polynomial $f(x) \in D[x]$ with a content of 1.
 \end{definition}
 
 \begin{lemma}[Gauss]\label{lemma-gauss-for-integer-coefficients}\index{Gauss's Lemma!for integer coefficients}
@@ -123,7 +123,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
 \begin{proof}[Proof (see {\cite[p.~291]{gallian_2016}})]
     Seeking a contradiction, suppose $f(x)$ and $g(x)$ are primitive polynomials with a non-primitive product $h(x) = f(x)g(x)$. Therefore the content of $h(x)$ is not 1; in fact it is at least 2, meaning the content of $h(x)$ is either prime or composite.
 
-    Let $p$ be a prime divisor of the content of $h(x)$, and let $\bar{f}(x)$, $\bar{g}(x)$, and $\bar{h}(x)$ be polynomials obtained from $f(x)$, $g(x)$, and $h(x)$ by reducing their coefficients modulo $p$. Since the content of $h(x)$ is not 1, thus coefficients of $h(x)$ are multiples of $p$; accordingly when they are reduced modulo $p$, we see $\bar{h}(x) = 0$. Also, we may interpret $\bar{f}(x)$ and $\bar{g}(x)$ as polynomials belonging in $\Z_p[x]$ where $(\bar{f}(x))(\bar{g}(x)) = \bar{h}(x) = 0$. Since $\Z_p[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}), this means that $\bar{f}(x) = 0$ or $\bar{g}(x) = 0$. Without loss of generality assume $\bar{f}(x) = 0$. Therefore $p$ divides every coefficient of $f(x)$, meaning that the content of $f(x)$ is at least $p$, i.e. $f(x)$ is not primitive, a contradiction.
+    Suppose $p$ is a prime divisor of the content of $h(x)$. Let $\bar{f}(x)$, $\bar{g}(x)$, and $\bar{h}(x)$ be polynomials obtained from $f(x)$, $g(x)$, and $h(x)$ by reducing their coefficients modulo $p$. Since the content of $h(x)$ is not 1, thus coefficients of $h(x)$ are multiples of $p$; accordingly when they are reduced modulo $p$, we see $\bar{h}(x) = 0$. Also, we may interpret $\bar{f}(x)$ and $\bar{g}(x)$ as polynomials belonging in $\Z_p[x]$ where $\bar{f}(x)\bar{g}(x) = \bar{h}(x) = 0$. Since $\Z_p[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}), this means that $\bar{f}(x) = 0$ or $\bar{g}(x) = 0$. Without loss of generality we may assume $\bar{f}(x) = 0$. Therefore $p$ divides every coefficient of $f(x)$, meaning that the content of $f(x)$ is at least $p$, i.e. $f(x)$ is not primitive, a contradiction.
 
     The contradiction means a product of two primitive polynomials is primitive.
 \end{proof}
@@ -134,16 +134,16 @@ Before we introduce the next test, which involves polynomials with integer coeff
         \item If $f(x)$ is irreducible over $\Z$ then it is irreducible over $\Q$.
         \item If $f(x)$ is a primitive polynomial and is irreducible over $\Q$ then it is irreducible over $\Z$.
     \end{itemize}
-    Furthermore, if $f(x)$ is reducible over $\Z$ with $f(x) = p(x)q(x)$ for some non-unit polynomials $p(x)$ and $q(x)$ in $\Z[x]$, then neither $p(x)$ nor $q(x)$ are constant polynomials.
+    Furthermore, if $f(x)$ is reducible over $\Z$ with $f(x) = p(x)q(x)$ for some non-unit polynomials $p(x), q(x) \in \Z[x]$, then neither $p(x)$ nor $q(x)$ are constant polynomials.
 \end{theorem}
 \begin{proof}
     We prove the contrapositive of the first statement. Suppose $f(x) \in \Z[x]$ is reducible over $\Q$, meaning that $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Q[x]$ are non-constant polynomials. Without loss of generality, assume the content of $f(x)$ is 1, since otherwise we can just divide $p(x)$ and $q(x)$ by the content of $f(x)$ to obtain the same result. Thus $f(x)$ is primitive.
 
-    Suppose $a$ is the LCM of the denominators of the coefficients of $p(x)$, and likewise $b$ is the LCM of the denominators of the coefficients of $q(x)$. Then
+    Let $a$ be the LCM of the denominators of the coefficients of $p(x)$, and likewise let $b$ be the LCM of the denominators of the coefficients of $q(x)$. Then
     \[
         abf(x) = (ap(x))(bq(x)),
     \]
-    noting that $ap(x)$ and $bq(x)$ are now polynomials with integer coefficients. Let $C_p$ and $C_q$ denote the contents of $ap(x)$ and $bq(x)$ respectively; write $ap(x) = C_pP(x)$ and $bq(x) = C_qQ(x)$ where one sees clearly that $P(x)$ and $Q(x)$ are polynomials with content 1 (i.e., primitive polynomials). One also sees that
+    noting that $ap(x)$ and $bq(x)$ are now polynomials with integer coefficients. Let $C_p$ and $C_q$ denote the contents of $ap(x)$ and $bq(x)$ respectively; write $ap(x) = C_pP(x)$ and $bq(x) = C_qQ(x)$ where $P(x)$ and $Q(x)$ are primitive polynomials. One sees that
     \[
         ab \times f(x) = C_pC_q \times P(x)Q(x).
     \]
@@ -250,8 +250,7 @@ The Mod $p$ Irreducibility Test can also be used to check for irreducibility of 
     \end{enumerate}
     and clearly options 1, 2, and 3 are not possible factors of $\bar{F}(x)$ since they clearly have zeroes in $\Z_2$. That leaves $x^2 + x + 1$ being the only possible quadratic factor; since $p(x)$ and $q(x)$ are both quadratic this means $p(x) = q(x) = x^2 + x + 1$. But one sees that
     \begin{align*}
-        (x^2 + x + 1)^2 &= (x^4 + x^3 + x^2) + (x^3 + x^2 + x) + (x^2 + x + 1)\\
-        &= x^4 + 2x^3 + 3x^2 + 2x + 1\\
+        (x^2 + x + 1)^2 &= x^4 + 2x^3 + 3x^2 + 2x + 1\\
         &= x^4 + x^2 + 1
     \end{align*}
     which is not $\bar{F}(x)$, a contradiction. Thus $\bar{F}(x)$ is irreducible over $\Z_2$.
@@ -335,7 +334,7 @@ With this general result proven, we come up with a few rules for substitution.
     Let $D$ be an integral domain, $k \in D$, and let $f(x) \in D[x]$. Then $f(x)$ is irreducible if and only if $f(x + k)$ is irreducible.
 \end{corollary}
 \begin{proof}
-    We consider the map $\phi: D[x] \to D[x]$ where
+    Consider the map $\phi: D[x] \to D[x]$ defined by
     \[
         \sum_{i=0}^n a_ix^i \mapsto \sum_{i=0}^na_i(x+k)^i.
     \]
@@ -367,9 +366,9 @@ With this general result proven, we come up with a few rules for substitution.
         \[
             \sum_{i=0}^ma_i(x+k)^i = \sum_{i=0}^nb_i(x+k)^i
         \]
-        which, by comparing coefficients, we see $a_i = b_i$ for all $0 \leq i \leq m$. Therefore $f(x) = g(x)$ originally, meaning $\phi$ is injective.
+        which, by comparing coefficients, we see $a_i = b_i$ for all $0 \leq i \leq m$. Therefore $f(x) = g(x)$ which means $\phi$ is injective.
 
-        \item \textbf{Surjective}: Let $p(x) = c_0 + c_1x + \cdots + c_rx^r$ be a polynomial in $D[x]$. Note that $q(x) = c_0 + c_1(x-k) + \cdots + c_r(x-k)^r$ is also a polynomial in $D[x]$; observe
+        \item \textbf{Surjective}: Let $p(x) = c_0 + c_1x + \cdots + c_rx^r \in D[x]$. Note that $q(x) = c_0 + c_1(x-k) + \cdots + c_r(x-k)^r \in D[x]$ also; observe
         \begin{align*}
             \phi(q(x)) &= c_0 + c_1((x-k)+k) + \cdots + c_r((x-k)+k)^r\\
             &= c_0 + c_1x + \cdots + c_rx^r\\
@@ -416,7 +415,7 @@ With this general result proven, we come up with a few rules for substitution.
 \end{example}
 
 \begin{example}
-    We can show that $f(x) = x^2 + x + 2$ is irreducible over $\Q$. Since the coefficient of $x$, 1, is not divisible by any prime, we cannot directly apply Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}). However we may use the substitution $x + 3$ and see that $f(x+3) = (x+3)^2 + (x+3) + 2 = x^2 + 7x + 14$ which is irreducible by Eisenstein's Criterion using the prime 7. Therefore $f(x)$ is irreducible over $\Q$.
+    We can show that $f(x) = x^2 + x + 2$ is irreducible over $\Q$. Since the coefficient of $x$, which is 1, is not divisible by any prime, we cannot directly apply Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}). However we may use the substitution $x + 3$ and see that $f(x+3) = (x+3)^2 + (x+3) + 2 = x^2 + 7x + 14$ which is irreducible by Eisenstein's Criterion using the prime 7. Therefore $f(x)$ is irreducible over $\Q$.
 \end{example}
 
 \begin{exercise}
@@ -471,9 +470,9 @@ Knowing that $\princ{f(x)}$ is maximal gives us a way to create new fields.
     \begin{align*}
         &D[x]/\princ{f(x)} \text{ is a field}\\
         \iff&\princ{f(x)} \text{ is a maximal ideal} & (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field})\\
-        \iff&f(x) \text{ is irreducible,} & (\myref{thrm-irreducible-iff-principal-ideal-is-maximal})
+        \iff&f(x) \text{ is irreducible} & (\myref{thrm-irreducible-iff-principal-ideal-is-maximal})
     \end{align*}
-    proving this corollary.
+    which proves this corollary.
 \end{proof}
 
 We now look at a polynomial analog of Euclid's lemma (\myref{corollary-euclid}).
@@ -489,7 +488,7 @@ We now look at a polynomial analog of Euclid's lemma (\myref{corollary-euclid}).
     Prove \myref{corollary-irreducible-polynomial-division-rule}.
 \end{exercise}
 
-With these results, we are able to construct finite fields with prime-power number of elements. Suppose we desire a field with $p^k$ elements.
+With these results, we are able to construct finite fields with a prime-power number of elements. Suppose we desire a field with $p^k$ elements.
 \begin{itemize}
     \item If $k = 1$ then we know $\Z_p$ is a field of $p^k = p$ elements.
     \item Otherwise, by finding an irreducible polynomial of degree $k$ in $\Z_p[x]$, say $f(x)$, we can see that

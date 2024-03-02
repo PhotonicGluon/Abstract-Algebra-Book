@@ -49,7 +49,7 @@ We note that the definition of irreducibles is similar to that of irreducible po
     See \myref{problem-prime-element-iff-generates-prime-ideal} (later).
 \end{proof}
 
-The principal confusion one may have with the definition of a prime above is that, in the integers, we defined prime numbers to satisfy the definition of an irreducible (\myref{definition-prime-number}), and that primes also satisfy the primality definition above (\myref{corollary-euclid}). The reason for this confusion is that, over the integers, irreducibles are primes. However, in general, they are \textit{not} the same.
+The principal confusion one may have with the definition of a prime above is that, for the integers, we defined prime numbers to satisfy the definition of an irreducible (\myref{definition-prime-number}), and that primes also satisfy the primality definition above (\myref{corollary-euclid}). The reason for this confusion is that, over the integers, irreducibles are primes. However, in general, they are \textit{not} the same.
 
 To explore the differences between irreducibles and primes, we look at quadratic integers. Before that, we need some preliminary definitions and results.
 
@@ -140,7 +140,7 @@ We alluded to quadratic integers in the previous section; we make it formal what
     The quadratic field $\Q[\sqrt{d}]$, where $d$ is a square-free integer not equal to 1, is indeed a field.
 \end{proposition}
 \begin{proof}
-    We note that the arithmetic was not specified explicitly; this is because we are adapting the definitions of polynomial addition and multiplication to our current context. In particular,
+    We note that the arithmetic in the quadratic field was not specified explicitly; this is because we are adapting the definitions of polynomial addition and multiplication to our current context. In particular,
     \[
         (a+b\sqrt{d}) + (x + y\sqrt{d}) = (a+x) + (b+y)\sqrt{d}
     \]
@@ -171,13 +171,14 @@ We alluded to quadratic integers in the previous section; we make it formal what
 
 As discussed in the previous section, there is a function, called the norm, that is of interest.
 \begin{definition}
-    The \term{norm}\index{quadratic integer!norm} of an element $a+b\sqrt{d} \in \Z[\sqrt{d}]$, where $d$ is a square-free integer not equal to 1, is given by the map $N: \Z[\sqrt{d}] \to \Z$ where
+    The \term{norm}\index{quadratic integer!norm} is the map $N: \Z[\sqrt{d}] \to \Z$ where
     \[
-        N(a+b\sqrt{d}) = |a^2-db^2|.
+        N(a+b\sqrt{d}) = |a^2-db^2|
     \]
+    for all $a + b\sqrt{d} \in \Z[\sqrt d]$, where $d$ is a square-free integer.
 \end{definition}
 \begin{remark}
-    Most texts prefer to define the norm \textit{without} the absolute value. However, as we will see below, defining it with the absolute value makes some properties easier to reason.
+    Most texts prefer to define the norm without the absolute value. However, as we will see below, defining it with the absolute value makes some properties easier to reason.
 \end{remark}
 
 \begin{proposition}\label{prop-properties-of-quadratic-integer-norm}
@@ -209,7 +210,7 @@ As discussed in the previous section, there is a function, called the norm, that
             &= N(x)N(y).
         \end{align*}
 
-        \item For the forward direction, if $x$ is a unit then there exists a $x^{-1}$ such that $xx^{-1} = 1$. Note $N(xx^{-1}) = N(x)N(x^{-1}) = N(1) = 1$. Therefore, since we are working in the integers, we see $N(x)$ and $N(x^{-1})$ are both 1.
+        \item For the forward direction, if $x$ is a unit then there exists a $x^{-1} \in \Z[\sqrt d]$ such that $xx^{-1} = 1$. Note $N(xx^{-1}) = N(x)N(x^{-1}) = N(1) = 1$. Therefore, since we are working in the integers, we see $N(x)$ and $N(x^{-1})$ are both 1.
 
         For the reverse direction, consider $x = p+q\sqrt{d}$ and $\bar{x} = p-q\sqrt{d}$. Note $x\bar{x} = p^2-dq^2 = N(x)$. Therefore if $N(x) = 1$ we see $x\bar{x} = 1$, meaning that $x$ is a unit.
 
@@ -290,7 +291,7 @@ We are now ready to define the ring of quadratic integers.
     \end{partquestions}
 \end{exercise}
 
-\section{Field of Fractions}
+\section{The Field of Fractions}
 We have been avoiding a construct that would usually be introduced early on in an exploration of rings: the field of fractions of an integral domain. This is because they had no purpose being introduced that early; we do so now because their use would help in explaining of a property of a specific type of domains later.
 
 We know that every field is an integral domain (\myref{prop-field-is-integral-domain}), but not all integral domains are fields. The most familiar example would be the integers, which is an integral domain that is not a field. However, we may construct the rational numbers, which is a field, from the integers via fractions. We form an analogous process for constructing `fractions' based off an integral domain.
@@ -342,7 +343,11 @@ With the equivalence relation verified, we can now check that the operations def
     Addition and multiplication as defined in \myref{definition-field-of-fractions} are well-defined operations.
 \end{proposition}
 \begin{proof}
-    We first prove that addition is well-defined. Suppose $\frac{a_1}{b_1} = \frac{a_2}{b_2}$ and $\frac{c_1}{d_1} = \frac{c_2}{d_2}$. We show that $\frac{a_1}{b_1} + \frac{c_1}{d_1} = \frac{a_2}{b_2} + \frac{c_2}{d_2}$, i.e. $\frac{a_1d_1+b_1c_1}{b_1d_1} = \frac{a_2d_2 + b_2c_2}{b_2c_2}$, which is equivalent to showing that $(a_1d_1+b_1c_1, b_1d_1) \mathrel{\sim} (a_2d_2+b_2c_2, b_2d_2)$ by \myref{thrm-equivalence-class-equivalence}, i.e.
+    We first prove that addition is well-defined. Suppose $\frac{a_1}{b_1} = \frac{a_2}{b_2}$ and $\frac{c_1}{d_1} = \frac{c_2}{d_2}$. We show that $\frac{a_1}{b_1} + \frac{c_1}{d_1} = \frac{a_2}{b_2} + \frac{c_2}{d_2}$, i.e.
+    \[
+        \frac{a_1d_1+b_1c_1}{b_1d_1} = \frac{a_2d_2 + b_2c_2}{b_2c_2}.
+    \]
+    This is equivalent to showing that $(a_1d_1+b_1c_1, b_1d_1) \mathrel{\sim} (a_2d_2+b_2c_2, b_2d_2)$ by \myref{thrm-equivalence-class-equivalence}, i.e.
     \[
         (a_1d_1+b_1c_1)(b_2d_2) = (b_1d_1)(a_2d_2+b_2c_2).
     \]
@@ -352,7 +357,7 @@ With the equivalence relation verified, we can now check that the operations def
         &= a_1d_1b_2d_2 + b_1c_1b_2d_2\\
         &= a_1b_2d_1d_2 + b_1b_2c_1d_2\\
         &= (a_1b_2)d_1d_2 + b_1b_2(c_1d_2)\\
-        &= (b_1a_2)d_1d_2 + b_1b_2(d_1c_2) & (\text{ as } a_1b_2 = b_1a_2 \text{ and } c_1d_2 = d_1c_2)\\
+        &= (b_1a_2)d_1d_2 + b_1b_2(d_1c_2) & (\text{as } a_1b_2 = b_1a_2 \text{ and } c_1d_2 = d_1c_2)\\
         &= b_1d_1a_2d_2 + b_1d_1b_2c_2\\
         &= (b_1d_1)(a_2d_2 + b_2c_2)
     \end{align*}
@@ -426,7 +431,7 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
             so multiplication is associative in $\Frac{D}$.
         \end{itemize}
 
-        \item \textbf{Distributive}: Let $\frac ab, \frac cd, \frac ef \in \Frac{D}$. We prove only $\frac ab \times \left(\frac cd + \frac ef\right) = \frac ab \times \frac cd + \frac ab \times \frac ef$ since the other case is proven after we have shown that multiplication is commutative.
+        \item \textbf{Distributive}: Let $\frac ab, \frac cd, \frac ef \in \Frac{D}$. We prove only $\frac ab \times \left(\frac cd + \frac ef\right) = \frac ab \times \frac cd + \frac ab \times \frac ef$ since the other case would be proven after we have shown that multiplication is commutative.
 
         One sees that
         \begin{align*}
@@ -486,7 +491,7 @@ We note that the original integral domain is contained within the field of fract
         and
         \begin{align*}
             \phi(xy) &= \frac{xy}1\\
-            &= \frac{xy}{1 \times 1}\\
+            &= \frac{x\times y}{1 \times 1}\\
             &= \frac x1 \times \frac y1\\
             &= \phi(x)\phi(y)
         \end{align*}
@@ -497,7 +502,7 @@ We note that the original integral domain is contained within the field of fract
     We note that $\im \phi$ is a subring of $\Frac{D}$, so $\phi$ is a ring isomorphism from $D$ to $\im \phi$ which is a subring of $\Frac{D}$.
 \end{proof}
 
-To simplify the notation used when working with the field of fractions $\Frac{D}$ of an integral domain $D$, we will write $x$ in place of the equivalence class $\frac x1$ for any element $x \in D$.
+To simplify the notation used when working with the field of fractions, $\Frac{D}$, of an integral domain $D$, we will write $x$ in place of the equivalence class $\frac x1$ for any element $x \in D$.
 
 We now show that some familiar fields are, indeed, the field of fractions of some integral domains.
 
@@ -537,7 +542,7 @@ We now show that some familiar fields are, indeed, the field of fractions of som
     So $\phi$ is a well-defined isomorphism, meaning $\Frac{\Z} \cong \Q$.
 \end{example}
 \begin{remark}
-    When working with functions where the function domain being the field of fractions, one must take care to prove that the map is well-defined.
+    When working with functions where the function domain is the field of fractions, one must take care to prove that the map is well-defined.
 \end{remark}
 
 \begin{example}\label{example-field-of-fractions-of-gaussian-integers-isomorphic-to-quadratic-integers-of-i}
@@ -624,14 +629,14 @@ We are now ready to state an important theorem, with very useful corollaries.
     Every PID is a UFD.
 \end{theorem}
 \begin{proofsketch}
-    We need to show two parts. First is to show existence; the second uniqueness.
+    We need to show two parts. The first is to show existence; the second uniqueness.
 
     To show the existence, we first show that every non-zero non-unit element in a PID has at least one irreducible factor; thereafter, using repeated factorization, show that we can express each non-irreducible factor as a product of irreducible factors. This would be enough to show that any element has a factorization into irreducible factors.
 
     We then show uniqueness, which we will do via induction. We suppose that there are two factorizations of a non-zero non-unit element. The base case of a single irreducible factor is trivial. The induction step involves observing that a prime must divide an element in a product; doing so would allow us to conclude that at least one pair of irreducible factors that are associates with each other. This would be enough for us to `cancel out' that factor on both factorizations, and use the induction hypothesis to finish the proof.
 \end{proofsketch}
 \begin{proof}[Proof (see {\cite[Theorem 18.3]{gallian_2016}})]
-    Suppose $D$ is a PID and $a_0 \in D$ be a non-zero non-unit element. We first show that there exists a product of irreducibles (which may consist of only one factor) that results in $a_0$. We might as well assume $a_0$ is reducible, since if $a_0$ is irreducible we are done ($a_0$ is a product of irreducibles, which is itself). So let $a_0 = b_1a_1$ where neither $b_1$ nor $a_1$ are units and $a_1 \neq 0$. Again, if $a_1$ is irreducible we are done with this process (where $a_0 = b_0a_1$); otherwise write $a_1 = b_2a_2$ where neither $b_2$ nor $a_2$ are units and $a_2 \neq 0$. Continuing in this fashion, we get a sequence $b_1,b_2,\dots$ of non-unit elements in $D$ and a sequence $a_0,a_1,a_2,\dots$ of non-zero elements in $D$ where $a_n = b_{n+1}a_{n+1}$ for each $n$. Hence,
+    Suppose $D$ is a PID and let $a_0 \in D$ be a non-zero non-unit element. We first show that there exists a product of irreducibles (which may consist of only one factor) that results in $a_0$. We might as well assume $a_0$ is reducible, since if $a_0$ is irreducible we are done ($a_0$ is a product of irreducibles, which is itself). So let $a_0 = b_1a_1$ where neither $b_1$ nor $a_1$ are units and $a_1 \neq 0$. Again, if $a_1$ is irreducible we are done with this process (where $a_0 = b_0a_1$); otherwise write $a_1 = b_2a_2$ where neither $b_2$ nor $a_2$ are units and $a_2 \neq 0$. Continuing in this fashion, we get a sequence $b_1,b_2,\dots$ of non-unit elements in $D$ and a sequence $a_0,a_1,a_2,\dots$ of non-zero elements in $D$ where $a_n = b_{n+1}a_{n+1}$ for each $n$. Hence,
     \[
         \princ{a_0} \subset \princ{a_1} \subset \princ{a_2} \subset \cdots
     \]
@@ -741,7 +746,7 @@ We note one immediate consequence of Gauss's lemma.
 We note another lemma, this time relating an integral domain and its field of fractions.
 
 \begin{lemma}\label{lemma-reducible-in-field-of-fractions-means-reducible-in-UFD}
-    Let $D$ be a UFD and $\Frac{D}$ its field of fractions. Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Then there exist $P(x), Q(x) \in D[x]$ such that $f(x) = P(x)Q(x)$, $\deg P(x) = \deg p(x)$, and $\deg Q(x) = \deg g(x)$.
+    Let $D$ be a UFD and let $\Frac{D}$ be its field of fractions. Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Then there exist $P(x), Q(x) \in D[x]$ such that $f(x) = P(x)Q(x)$, $\deg P(x) = \deg p(x)$, and $\deg Q(x) = \deg g(x)$.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[Lemma 18.26]{judson_beezer_2022}})]
     Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Let $a, b\in D$ such that $ap(x), bq(x) \in D[x]$. So we can find $C_P, C_Q \in D$ such that $ap(x) = C_P P(x)$ and $bq(x) = C_Q Q(x)$ where $P(x)$ and $Q(x)$ are primitive polynomials in $D[x]$. Therefore
@@ -834,7 +839,7 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
 \begin{definition}
     An integral domain $D$ is called a \term{Euclidean domain}\index{Euclidean domain} if there is a function $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \term{norm}\index{Euclidean domain!norm} or \term{measure}\index{Euclidean domain!measure}, that satisfies the following properties.
     \begin{enumerate}[leftmargin=3em,label=\textbf{EF\arabic*}.]
-        \item For all non-zero $a$ and $b$ in $D$ we have $N(a) \leq N(ab)$; and
+        \item For all non-zero $a, b \in D$ we have $N(a) \leq N(ab)$; and
         \item If $n, d \in D$ and $d \neq 0$, then there exist elements $q$ and $r$ in $D$ such that $n = dq + r$, where $r = 0$ or $N(r) < N(d)$.
     \end{enumerate}
 \end{definition}
@@ -1028,11 +1033,11 @@ Explaining why the rest class inclusions are true are left for \myref{exercise-d
 \newpage
 
 \begin{problem}[Sicherman Dice]\index{Sicherman Dice}
-    Consider
+    Consider the polynomial
     \[
         P(x) = (x + x^2 + x^3 + x^4 + x^5 + x^6)^2
     \]
-    in the polynomial ring $\Z[x]$.
+    in the ring $\Z[x]$.
     \begin{partquestions}{\roman*}
         \item Explain why the coefficient of the term of degree $k$ (where $2 \leq k \leq 12$) gives exactly the number of ways that a pair of two dice could sum to $k$.
 
