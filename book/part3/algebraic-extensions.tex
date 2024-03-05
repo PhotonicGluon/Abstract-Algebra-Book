@@ -1,11 +1,11 @@
 \chapter{Algebraic Extensions}
-Elements in field extensions are one of two types. The first are elements that are a zero of a specific polynomial within the base field. The second are whatever is left. Elements that are a zero of a polynomial is of particular interest to us, and we will investigate the extensions that create all possible zeroes of polynomials.
+The are two types of elements in field extensions. Some elements are a zero of a specific polynomial within the base field. The other elements are not. Elements that are a zero of a polynomial is of particular interest to us, and we will investigate the extensions that create all possible zeroes of polynomials.
 
 \section{Algebraic Elements}
-We first formally define the name of elements that are a zero of a polynomial in the base field.
+We first give a name for elements that are a zero of a polynomial in the base field.
 
 \begin{definition}
-    Let $E/F$ be a field extension. Then $\alpha \in E$ is \term{algebraic}\index{algebraic}\index{algebraic!element} over $F$ if and only if there exists some non-constant polynomial $f(x) \in F[x]$ such that $\alpha$ is a zero of $f(x)$.
+    Let $F$ be a field and $E/F$ be a field extension. Then $\alpha \in E$ is \term{algebraic}\index{algebraic}\index{algebraic!element} over $F$ if and only if there exists some non-constant polynomial $f(x) \in F[x]$ such that $\alpha$ is a zero of $f(x)$.
 
     An element that is not algebraic over $F$ is called \term{transcendental}\index{transcendental} over $F$.
 \end{definition}
@@ -39,7 +39,7 @@ For the case when the field in question is $\Q$, we have a more commonplace defi
 \newpage
 
 \section{Characterising Extensions}
-With an understanding of what algebraic and transcendental elements are, we link these definitions back to the idea of field extensions.
+With an understanding of what algebraic and transcendental elements, we link these definitions back to the idea of field extensions.
 
 \begin{definition}
     Let $F$ be a field. A field extension $E/F$ is called an \term{algebraic extension}\index{extension!algebraic} if and only if every element of $E$ is algebraic over $F$. Otherwise $E$ is called a \term{transcendental extension}\index{extension!transcendental} of $F$.
@@ -93,7 +93,7 @@ We expand upon \myref{thrm-simple-extension-isomorphism} and provide a character
     Hence $\psi$ is a well-defined isomorphism, meaning $F(\alpha) \cong \Frac{F[x]}$.
 \end{proof}
 
-For an algebraic element $\alpha$, \myref{thrm-characterisation-of-extensions} gives us an irreducible polynomial $p(x)$ of minimum degree which has a zero of $\alpha$. If $p(x)$ is monic we have a special name for it.
+For an algebraic element $\alpha$, \myref{thrm-characterisation-of-extensions} gives us an irreducible polynomial $p(x)$ of minimum degree which has a zero of $\alpha$. We have a special name for $p(x)$ if it is monic.
 
 \begin{definition}
     Let $F$ be a field, $E/F$ be a field extension, and $\alpha \in E$ be algebraic over $F$. The monic polynomial $p(x) \in F[x]$ of minimal degree which $\alpha$ is a root of is called the \term{minimal polynomial for $\alpha$ over $F$}\index{extension!algebraic!minimal polynomial}.
@@ -110,7 +110,7 @@ For an algebraic element $\alpha$, \myref{thrm-characterisation-of-extensions} g
     Let $F$ be a field and $E/F$ be a field extension. If $\alpha \in E$ is algebraic over $F$, then the minimal polynomial of $\alpha$ is unique.
 \end{corollary}
 \begin{proof}
-    Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. From \myref{thrm-characterisation-of-extensions} we know that $\ker\phi \neq \emptyset$ since $\alpha$ is algebraic over $F$. For brevity, let $J_\alpha = \ker\phi$.
+    Consider the map $\phi: F[x] \to F(\alpha)$ where $f(x) \mapsto f(\alpha)$. From \myref{thrm-characterisation-of-extensions} we know that $\ker\phi$ is non-empty since $\alpha$ is algebraic over $F$. For brevity, let $J_\alpha = \ker\phi$.
 
     Now suppose $f(x), g(x) \in F[x]$ are both minimal polynomials of $\alpha$. Hence we see $f(x), g(x) \in J_\alpha$. Let $r(x) = f(x) - g(x)$; note $r(x) \in J_\alpha$.
 
@@ -123,7 +123,7 @@ For an algebraic element $\alpha$, \myref{thrm-characterisation-of-extensions} g
     Let $F$ be a field, $E/F$ be a field extension, $\alpha \in E$ be algebraic over $F$, and $p(x) \in F[x]$ be the minimal polynomial for $\alpha$ over $F$. If $f(x) \in F[x]$ has a zero of $\alpha$ then $p(x)$ divides $f(x)$.
 \end{corollary}
 \begin{proof}
-    Let $p(x), f(x) \in F[x]$ be as above. Using polynomial long division with divisor $p(x)$ we see
+    Let $p(x), f(x) \in F[x]$ be as above. Using polynomial long division (\myref{thrm-polynomial-long-division}) with divisor $p(x)$ we see
     \[
         f(x) = q(x)p(x) + r(x)
     \]
@@ -164,7 +164,7 @@ We can depict the degree of a field extension using a diagram.
         \pdfteximg{0.6\linewidth}{part3/images/algebraic-extensions/Q-sqrt2-and-Q.pdf_tex}
     \end{figure}
 }
-    Consider the simple extension $\Q(\sqrt2)$. Viewed as a vector space over $\Q$, we see that $\Q(\sqrt 2)$ has dimension 2, as a possible basis is $\{1, \sqrt2\}$. Hence, we write $[\Q(\sqrt2):\Q] = 2$ and produce the field extension diagram as shown on the right.
+    Consider the simple extension $\Q(\sqrt2)$. Viewed as a vector space over $\Q$, we see that $\Q(\sqrt 2)$ has dimension 2, with $\{1, \sqrt2\}$ as a possible basis. Hence, we write $[\Q(\sqrt2):\Q] = 2$ and produce the field extension diagram as shown on the right.
 
     We note that $\Q(\sqrt2)$ is a finite extension over $\Q$ since its degree is finite.
 \end{examplewithcutout}
@@ -285,7 +285,7 @@ The following examples show how this theorem is often utilized.
 }\label{example-Q-sqrt3-sqrt5}
     We see that $[\Q(\sqrt3, \sqrt5), \Q(\sqrt5)] = 2$ and $[\Q(\sqrt5):\Q] = 2$, so $[\Q(\sqrt3, \sqrt5):\Q] = 4$ by Tower Law (\myref{thrm-tower-law}). In particular, one sees that $\{1, \sqrt3\}$ is a basis for $\Q(\sqrt3,\sqrt5)$ over $\Q(\sqrt5)$ and $\{1, \sqrt5\}$ is a basis for $\Q(\sqrt5)$ over $\Q$, so $\{1, \sqrt3, \sqrt5, \sqrt3\times\sqrt5\} = \{1, \sqrt3, \sqrt5, \sqrt{15}\}$ is a basis for $\Q(\sqrt3, \sqrt5)$.
 
-    One also sees that $[\Q(\sqrt3, \sqrt5), \Q(\sqrt3)] = 2$ and $[\Q(\sqrt3):\Q] = 2$, so $[\Q(\sqrt3, \sqrt5):\Q] = 4$.
+    One also sees that $[\Q(\sqrt3, \sqrt5), \Q(\sqrt3)] = 2$ and $[\Q(\sqrt3):\Q] = 2$, so we see that $[\Q(\sqrt3, \sqrt5):\Q] = 4$.
 \end{examplewithcutout}
 
 \begin{examplewithcutout}{right}{0}{0.6\textwidth}{0pt}{8}{
@@ -380,7 +380,7 @@ We explore more properties of algebraic extensions.
     Let $E$ be an algebraic extension of a field $F$. If $E$ is an infinite extension, then there exist elements in $E$ whose degrees over $F$ are arbitrarily large.
 \end{corollary}
 \begin{proof}
-    From \myref{thrm-tower-law}, we are able to construct a `tower' of extension fields of arbitrarily large degree. In particular, the element $\alpha$ chosen in that theorem was arbitrary but algebraic, and we may find any irreducible degree $n$ polynomial that we so wish in order to create a degree $n$ element.
+    From \myref{thrm-tower-law}, we are able to construct a `tower' of extension fields of arbitrarily large degree. In particular, the element $\alpha$ chosen in that theorem was arbitrary but algebraic, and we may find any irreducible degree $n$ polynomial that we wish in order to create a degree $n$ element.
 \end{proof}
 
 \begin{corollary}\label{corollary-algebraic-closure-is-subfield}
@@ -429,7 +429,7 @@ We can now introduce a related concept -- algebraically closed fields.
 \begin{proof}
     For the forward direction, \myref{thrm-algebraically-closed-iff-polynomials-split-in-field} tells us that every polynomial splits in an algebraically closed field. So every polynomial of degree above 1 is reducible in an algebraically closed field; consequently only degree 1 polynomials are irreducible.
 
-    For the reverse direction, we show the contrapositive holds. Suppose $F$ is \textit{not} an algebraically closed field. Then there exists some non-constant $f(x) \in F[x]$ with no zeroes in $F$. Let $p(x)$ be an irreducible factor of $f(x)$. We see $p(x)$ also has no zeroes in $F$. Since every degree 1 polynomial has a zero in $F$, thus $\deg p(x) > 1$.
+    For the reverse direction, we show the contrapositive holds. Suppose $F$ is not an algebraically closed field. Then there exists some non-constant polynomial $f(x) \in F[x]$ with no zeroes in $F$. Let $p(x)$ be an irreducible factor of $f(x)$. We see $p(x)$ also has no zeroes in $F$. Since every degree 1 polynomial has a zero in $F$, thus $\deg p(x) > 1$.
 \end{proof}
 
 \begin{corollary}\label{corollary-field-is-algebraically-closed-iff-no-proper-algebraic-extension}
