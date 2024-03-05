@@ -304,11 +304,11 @@ A general form for simple extensions for specific types of primitive elements, s
 
         \item \textbf{Injective}: Since $\psi$ is non-trivial we know that $\psi$ is injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}.
 
-        \item \textbf{Surjective}: Suppose $f(\alpha) = a_0 + a_1\alpha + \cdots + a_k\alpha^k \in F[\alpha]$. Let $p(x) = b_0 + b_1x + \cdots + b_{n-1}x^{n-1}$. Then by polynomial long division we see
+        \item \textbf{Surjective}: Suppose $w = a_0 + a_1\alpha + \cdots + a_k\alpha^k \in F[\alpha]$. Let $f(x) = a_0 + a_1x + \cdots + a_kx^k \in F[x]$, so $w = f(\alpha)$. Write $p(x) = b_0 + b_1x + \cdots + b_{n-1}x^{n-1}$. Then by polynomial long division we can find $q(x), r(x) \in F[x]$ such that
         \[
-            f(\alpha) = q(\alpha)p(\alpha) + r(\alpha).
+            f(x) = q(x)p(x) + r(x)
         \]
-        Where $r(x) = 0$ or $\deg r(x) < \deg p(x) = n$. Since $\alpha$ is a zero of $p(\alpha)$ thus $f(\alpha) = r(\alpha)$. Therefore $\psi(r(x) + \princ{p(x)}) = r(\alpha) = f(\alpha)$, which shows that $\psi$ is surjective.
+        where $r(x) = 0$ or $\deg r(x) < \deg p(x) = n$. Since $\alpha$ is a zero of $p(\alpha)$ thus $f(\alpha) = r(\alpha)$. Therefore we see that $\psi(r(x) + \princ{p(x)}) = r(\alpha) = f(\alpha) = w$, which shows that $\psi$ is surjective.
     \end{itemize}
     Hence, $F[x]/\princ{p(x)} \cong F[\alpha]$, which proves that
     \[
@@ -396,24 +396,27 @@ We note that the splitting field for a polynomial not only depends on the polyno
 \begin{example}
     Consider the polynomial $x^2 + 1$. If we interpret $x^2 + 1$ being in $\R[x]$, then naturally the splitting field of $x^2 + 1$ is $\R(i, -i) = \C$, since $x^2 + 1 = (x-i)(x+i)$.
 
-    However, if we think of $x^2+1$ as being a polynomial in $\Q[x]$, then the splitting field is $\Q(i, -i)$. In fact, $\Q(i, -i) = \Q(i)$. One sees that $\Q(i) \neq \C$ since $\C$ contains irrational numbers (such as $\sqrt2$) while $\Q(i)$ must at least contain $\Q$ and so does not contain irrational numbers.
+    However, if we think of $x^2+1$ as being a polynomial in $\Q[x]$, then the splitting field is $\Q(i, -i)$. In fact, $\Q(i, -i) = \Q(i)$. One sees that $\Q(i) \neq \C$ since
+    \[
+        \C = \{a + bi \vert a,b \in \R\} \neq \{a + bi \vert a,b \in \Q\} = \Q(i).
+    \]
 \end{example}
 
 \begin{example}
     Consider the polynomial $x^2 - 2 \in \Q[x]$. Clearly $x^2 - 2$ splits in $\R$ since $x^2 - 2 = (x - \sqrt2)(x + \sqrt2)$, but the splitting field of $x^2 - 2 \in \Q[x]$ is $\Q(\sqrt2, -\sqrt2)$ which is $\Q(\sqrt 2)$.
 \end{example}
 
-Does a splitting field for a polynomial over a given field always exist? We answer in the affirmative by proving the following theorem.
+Does a splitting field for a polynomial over a given field always exist? We answer in the affirmative.
 
 \begin{theorem}
-    Let $F$ be a field and $f(x)$ be a non-constant polynomial in $F[x]$. Then there exists a splitting field $E$ for $f(x)$ over $F$.
+    Let $F$ be a field and $f(x) \in F[x]$ be a non-constant polynomial. Then there exists a splitting field $E$ for $f(x)$ over $F$.
 \end{theorem}
 \begin{proof}
-    Let $f(x)$ have degree $n$. We use strong induction on $n$.
+    Let $f(x)$ have degree $n$. Since $f(x)$ is non-constant thus $n \geq 1$. We use strong induction on $n$.
 
     When $n = 1$, we know $f(x)$ is of the form $ax + b$, and so we may write
     \[
-        f(x) = a\left(x - \left(\frac ba\right)\right),
+        f(x) = a\left(x - a^{-1}b\right),
     \]
     which means $f(x)$ splits over the original field $F$.
 
@@ -519,7 +522,7 @@ We can now prove the following theorem.
 
     Now assume that the result holds for all non-constant polynomials of degree of at most $k$. We show the result holds for a polynomial of degree $k + 1$.
 
-    Since $\deg f(x) = k+1$, we can find an irreducible factor $p(x) \in F[x]$ of $f(x)$. Let $\alpha$ be a zero of $p(x)$ in $E$ and let $\beta$ be a zero of $\phi(p(x))$ in $E'$. By \myref{lemma-isomorphism-extension} there exists an isomorphism $\psi: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
+    Let $f(x)$ be such a polynomial. Since $\deg f(x) = k+1$, we can find an irreducible factor $p(x) \in F[x]$ of $f(x)$. Let $\alpha$ be a zero of $p(x)$ in $E$ and let $\beta$ be a zero of $\phi(p(x))$ in $E'$. By \myref{lemma-isomorphism-extension} there exists an isomorphism $\psi: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
 
     Now since $\alpha$ is a zero of the irreducible factor $p(x)$ of $f(x)$, thus $\alpha$ is a zero of $f(x)$. We may hence write
     \[
@@ -537,14 +540,14 @@ The uniqueness of splitting fields for a given polynomial over a given field is 
     Suppose $E$ and $E'$ are splitting fields of $f(x)$ over $F$. Then the result follows immediately from \myref{thrm-isomorphism-extension} by letting $\phi = \id$, i.e. the identity endomorphism from $F$ to $F$.
 \end{proof}
 
-In light of \myref{corollary-splitting-field-unique-up-to-isomorphism}, we may refer to the splitting field of $f(x)$ over $F$ without any ambiguity.
+In light of \myref{corollary-splitting-field-unique-up-to-isomorphism}, we may refer to \textit{the} splitting field of $f(x)$ over $F$ without any ambiguity.
 
 \begin{example}
-    Both $\R(i)$ and $\R[x]/\princ{x^2+1}$ split $x^2+1$, but \myref{corollary-splitting-field-unique-up-to-isomorphism} tells us that $\R(i) \cong \R[x]/\princ{x^2+1}$. In fact, $R(i)$ is just the complex numbers $\C$, and we already proved that $\R[x]/\princ{x^2+1} \cong \C$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C}. So \textit{the} splitting field of $x^2+1$ over $\R$ is $\R(i)$.
+    Both $\R(i)$ and $\R[x]/\princ{x^2+1}$ split $x^2+1$, but \myref{corollary-splitting-field-unique-up-to-isomorphism} tells us that $\R(i) \cong \R[x]/\princ{x^2+1}$. In fact, $R(i)$ is just the complex numbers $\C$, and we already proved that $\R[x]/\princ{x^2+1} \cong \C$ in \myref{example-R[x]-mod-x^2+1-is-isomorphic-to-C}. So the splitting field of $x^2+1$ over $\R$ is $\R(i)$.
 \end{example}
 
 \section{The Formal Derivative}
-Before we tackle the zeroes of irreducible polynomials, we borrow a tool whose origins are from calculus.
+Before we tackle the zeroes of irreducible polynomials, we borrow a tool which originated from calculus.
 
 \begin{definition}
     Let $F$ be a field and $f(x) = a_0 + a_1x + a_2x^2 + a_3x^3 + \cdots + a_nx^n \in F[x]$. Then the \term{formal derivative}\index{formal derivative} (or just \term{derivative}\index{derivative}) of $f(x)$, denoted $f'(x)$, is
@@ -591,7 +594,7 @@ Those with a background in calculus would be familiar with the following propert
 \end{proof}
 
 \begin{remark}
-    In fact, what these first two properties show is that the derivative is a linear transformation from $F[x]$ to $F[x]$.
+    In fact, what these first two properties show is that the derivative is a linear transformation.
 \end{remark}
 
 \newpage
@@ -716,7 +719,7 @@ We note an analogue of B\'ezout's lemma (\myref{lemma-bezout}) for polynomial GC
         &= (\underbrace{1 - q(x)a(x)}_{u(x)})(f(x)) - (\underbrace{q(x)b(x)}_{v(x)})(g(x))\\
         &\in S
     \end{align*}
-    and therefore if $\deg r(x) < \deg d(x)$ this contradicts the minimality of $d(x)$. Therefore $r(x) = 0$ and hence $f(x) = q(x)d(x)$, meaning $d(x)$ divides $f(x)$. Similarly $d(x)$ divides $g(x)$. Hence $d(x)$ is a common divisor of $f(x)$ and $g(x)$.
+    and therefore if $\deg r(x) < \deg d(x)$ this contradicts the minimality of $d(x)$. So $r(x) = 0$ and hence $f(x) = q(x)d(x)$, meaning $d(x)$ divides $f(x)$. Similarly $d(x)$ divides $g(x)$. Hence $d(x)$ is a common divisor of $f(x)$ and $g(x)$.
 
     We now show that $d(x)$ is a GCD of $f(x)$ and $g(x)$. Suppose $c(x) \in F[x]$ divides both $f(x)$ and $g(x)$, i.e. $f(x) = p(x)c(x)$ and $g(x) = q(x)c(x)$ for some $p(x), q(x) \in F[x]$. We then see that
     \begin{align*}
@@ -779,9 +782,9 @@ With this result, we can find the zeroes of an irreducible polynomial.
 \begin{proof}
     If $f(x)$ has a multiple zero, then \myref{thrm-criterion-for-multiple-zeroes} tells us that $f(x)$ and $f'(x)$ has a common divisor of positive degree in $F[x]$. As $f(x)$ is irreducible over $F$, the only divisor of positive degree of $f(x)$ in $F[x]$ is $f(x)$ itself (up to associates), which means $f(x)$ divides $f'(x)$. But $f'(x)$ has smaller degree than $f(x)$, so $f'(x) = 0$. Writing $f(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$, since $f'(x) = 0$ we see $ra_r = 0$ for all $r \in \{1, 2, \dots, n\}$ by \myref{exercise-derivative-is-zero-implies-higher-terms-are-zero} (later).
 
-    Now if $\Char{F} = 0$, there does \textit{not} exist a positive integer $k$ such that $ka = 0$ for all $a \in F$. Thus, if $ra_r = 0$, we must have $a_r = 0$. Thus $f(x) = a_0$, a constant polynomial. But an irreducible polynomial has to be a non-constant polynomial by definition. This contradiction means that $f(x)$ has no multiple zeroes in $F$ if $\Char{F} = 0$.
+    Now if $\Char{F} = 0$, there does not exist a positive integer $k$ such that $ka = 0$ for all $a \in F$. Thus, if $ra_r = 0$, we must have $a_r = 0$. Thus $f(x) = a_0$, a constant polynomial. But an irreducible polynomial has to be a non-constant polynomial by definition. This contradiction means that $f(x)$ has no multiple zeroes in $F$ if $\Char{F} = 0$.
 
-    If $\Char{F} = p$ instead, $pa = 0$ for all $a \in F$. So if $p$ does not divide $r$, we require $a_r = 0$ in order for $ra_r = 0$. Otherwise, if $p$ divides $r$ (say, $r = pk$), note $(pk)a_{pk} = p(ka_{pk}) = 0$, so $a_{pk}$ is free. Thus the only powers of $p$ that appear in $f(x)$ are those of the form $x^{kp} = \left(x^p\right)^k$. It follows that $f(x) = g(x^p)$ for some $g(x) \in F[x]$.
+    If $\Char{F} = p$ instead, $pa = 0$ for all $a \in F$. So if $p$ does not divide $r$, we require $a_r = 0$ in order for $ra_r = 0$. Otherwise, if $p$ divides $r$ (say, $r = pk$), note $(pk)a_{pk} = p(ka_{pk}) = 0$, so $a_{pk}$ could be any element in $F$. Thus the only powers of $p$ that appear in $f(x)$ are those of the form $x^{kp} = \left(x^p\right)^k$. It follows that $f(x) = g(x^p)$ for some $g(x) \in F[x]$.
 \end{proof}
 
 \begin{exercise}\label{exercise-derivative-is-zero-implies-higher-terms-are-zero}
@@ -798,7 +801,11 @@ We found in \myref{thrm-zeroes-of-an-irreducible} that an irreducible polynomial
 \end{definition}
 
 \begin{definition}
-    A field $F$ is called \term{perfect}\index{field!perfect}\index{perfect field} if $F$ has characteristic 0 or if $F$ has prime characteristic $p$ and $F^p = F$.
+    A field $F$ is called \term{perfect}\index{field!perfect}\index{perfect field} if
+    \begin{itemize}
+        \item $F$ has characteristic 0; or
+        \item $F$ has prime characteristic $p$ and $F^p = F$.
+    \end{itemize}
 \end{definition}
 
 The most important family of perfect fields of prime characteristic are the finite fields.
@@ -830,10 +837,6 @@ The fact that the Frobenius endomorphism is an automorphism for finite fields le
 
     The induction step done in \myref{exercise-freshman-dream} (later) proves the rest of the proposition.
 \end{proof}
-
-\begin{exercise}\label{exercise-freshman-dream}
-    Let $F$ be a field of prime characteristic $p$. Prove that $(x + y)^{p^n} = x^{p^n} + y^{p^n}$ for all $x,y \in F$ and for all positive integers $n$.
-\end{exercise}
 
 With this definition of perfect fields, we return back to exploring the zeroes of irreducible polynomials.
 
@@ -874,6 +877,10 @@ What if the irreducible polynomial \textit{does} have multiple zeroes in a split
 \begin{proof}
     Follows from \myref{thrm-zeroes-of-irreducible-over-splitting-field-have-same-multiplicity} and the factorization of any polynomial in a splitting field.
 \end{proof}
+
+\begin{exercise}\label{exercise-freshman-dream}
+    Let $F$ be a field of prime characteristic $p$. Prove that $(x + y)^{p^n} = x^{p^n} + y^{p^n}$ for all $x,y \in F$ and for all positive integers $n$.
+\end{exercise}
 
 \newpage
 

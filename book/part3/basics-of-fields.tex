@@ -58,7 +58,13 @@ We look at the notion of the order of a field.
     Equivalently, the order of $F$ is the order of the additive group of $F$.
 \end{remark}
 
-Like with groups, if $|F| = n$ where $n$ is finite, then we say $F$ is a \term{finite field}\index{field!finite}\index{finite field}. On the other hand, if $|F| = \infty$, then we say that $F$ is an \term{infinite field}\index{field!infinite}.
+\begin{definition}
+    Let $F$ be a field.
+    \begin{itemize}
+        \item If $|F| = n$ where $n$ is finite, then $F$ is called a \term{finite field}\index{field!finite}\index{finite field}.
+        \item If $|F| = \infty$ then $F$ is called an \term{infinite field}\index{field!infinite}
+    \end{itemize}
+\end{definition}
 
 \begin{example}
     For the field $\Z_p$, we note $|\Z_p| = p$ since $\Z_p$ has $p$ elements, namely the integers 0 to $p - 1$.
@@ -151,7 +157,7 @@ For the following, assume $F$ is a field.
 \end{proof}
 
 \begin{exercise}\label{exercise-inverse-of-additive-and-multiplicative-identities-are-themselves}
-    Prove the following statements \textit{without} using any results from the previous chapters.
+    Prove the following statements without using any results from the previous chapters.
     \begin{partquestions}{\alph*}
         \item $-0 = 0$.
         \item $1^{-1} = 1$.
@@ -186,7 +192,7 @@ We note one very useful result when it comes to homomorphisms of fields.
 \section{Subfields}
 Just like how groups have the idea of subgroups and rings have the idea of subrings, fields have the idea of subfields.
 \begin{definition}
-    Let $K$ be a subset of a field $F$. Then $K$ is said to be a \term{subfield}\index{subfield} of $F$ if $K$ is also a field under the same operations as $F$.
+    Let $K$ be a subset of a field $F$. Then $K$ is said to be a \term{subfield}\index{subfield} of $F$ if and only if $K$ is also a field under the same operations as $F$.
 \end{definition}
 
 \begin{example}
@@ -222,7 +228,7 @@ Now, trying to prove all the field axioms again for a subfield is too tedious. I
         \item If $x = 0$ then $xy^{-1} = 0 \in K$ for all $y \in K^\ast$. Otherwise both $x, y \in K^\ast$. Thus $xy^{-1} \in K^\ast \subset K$ by the subgroup test on the multiplicative group.
     \end{itemize}
 
-    We now work in the reverse direction. Suppose the three conditions hold. As $K^\ast \neq \emptyset$ we must have $K \neq \emptyset$. Using this result and condition 2 we know $(K, +) \leq (F, +)$ by the subgroup test. Using condition 1 and 3 we also know that $(K^\ast, \times) \leq (F^\ast, \times)$, again by the subgroup test. Furthermore as addition and multiplication are commutative, therefore $(K, +)$ and $(K^\ast, \times)$ are abelian groups. Finally $\times$ distributes over $+$ by the \textbf{Distributive} axiom on the field $F$. Hence, $K$ is a field by the field axioms; as $K \subseteq F$ this means that $K$ is a subfield of $F$.
+    We now work in the reverse direction. Suppose the three conditions hold. As $K^\ast \neq \emptyset$ we must have $K \neq \emptyset$. Using this result and condition 2 we know $(K, +) \leq (F, +)$ by the subgroup test. Using condition 1 and 3 we also know that $(K^\ast, \times) \leq (F^\ast, \times)$, again by the subgroup test. Furthermore, as addition and multiplication are commutative, therefore $(K, +)$ and $(K^\ast, \times)$ are abelian groups. Finally $\times$ distributes over $+$ by the \textbf{Distributive} axiom on the field $F$. Hence, $K$ is a field by the field axioms; as $K \subseteq F$ this means that $K$ is a subfield of $F$.
 \end{proof}
 
 We use the subfield test in the proof of the following proposition.
@@ -272,7 +278,7 @@ We note that other authors (e.g. \cite[p.~511]{dummit_foote_2004}) define prime 
 \begin{proof}
     For clarity, let $K$ denote $\{n1 \vert n \in \Z\}$ and $L$ denote the intersection of all subfields of $F$. We are to show $K = L$.
 
-    Clearly $L \subseteq K$ since $K$ is a subfield of $F$, and is therefore contained in the intersection that resulted in $L$. Also, since $1 \in L$, and since $L$ is a subfield, thus it is closed under addition, meaning $n1 \in L$ for any $n \in \Z$. This means any element of $K$ is also in $L$, meaning $K \subseteq L$.
+    Clearly $L \subseteq K$ since $K$ is a subfield of $F$, and is therefore contained in the intersection that resulted in $L$. Also, since $1 \in L$, and since $L$ is a subfield of $F$, thus it is closed under addition, meaning $n1 \in L$ for any $n \in \Z$. This means any element of $K$ is also in $L$, meaning $K \subseteq L$.
 
     As $L \subseteq K$ and $K \subseteq L$, thus $K = L$, showing that \myref{definition-prime-subfield} and \myref{definition-prime-subfield-alt} are equivalent.
 \end{proof}
@@ -383,7 +389,7 @@ We note one non-obvious prime field, which was alluded to by \myref{thrm-prime-s
 \end{problem}
 
 \begin{problem}
-    Show that $\Z_3[x]/\princ{x^2+x+1}$ is \textit{not} a field.
+    Show that $\Z_3[x]/\princ{x^2+x+1}$ is not a field.
 \end{problem}
 
 \begin{problem}
