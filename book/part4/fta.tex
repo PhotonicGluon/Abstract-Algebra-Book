@@ -5,7 +5,7 @@ In this final chapter, it is fitting to prove the theorem that is intertwined wi
 We first introduce the idea of upper bounds and lower bounds.
 
 \begin{definition}
-    Let $A$ be a subset of $\R$.
+    Let $A$ be a non-empty subset of $\R$.
     \begin{itemize}
         \item A number $M$ is called a \term{upper bound}\index{upper bound} of $A$ if and only if $x \leq M$ for all $x \in A$. In this case, $A$ is said to be \term{bounded above}\index{bounded!above}.
         \item A number $L$ is called a \term{lower bound}\index{upper bound} of $A$ if and only if $x \geq L$ for all $x \in A$. In this case, $A$ is said to be \term{bounded below}\index{bounded!below}.
@@ -14,10 +14,10 @@ We first introduce the idea of upper bounds and lower bounds.
 \end{definition}
 
 \begin{proposition}
-    $A \subseteq \R$ is bounded if and only if there exists an $M \in \R$ such that $|x| \leq M$ for all $x \in A$.
+    A non-empty subset $A$ of $\R$ is bounded if and only if there exists an $M \in \R$ such that $|x| \leq M$ for all $x \in A$.
 \end{proposition}
 \begin{proof}
-    For the forward direction, if $A$ is bounded, then there exists $m, l \in \R$ such that $l \leq x \leq m$ for all $x \in \R$. Let $M$ be the larger of $|l|$ and $|m|$. Then we see $|x| \leq M$ as required.
+    For the forward direction, if $A$ is bounded, then there exists $m, l \in \R$ such that $l \leq x \leq m$ for all $x \in \R$. Let $M$ be the larger of $|l|$ and $|m|$. Then we see $|x| \leq M$.
 
     For the reverse direction, if there exists an $M \in \R$ such that $|x| \leq M$, this means that $M \geq 0$ and $-M \leq x \leq M$. Consequently $x \geq -M$ meaning that $A$ is bounded below and $x \leq M$ which means that $A$ is bounded above. Therefore $A$ is bounded.
 \end{proof}
@@ -26,10 +26,10 @@ We first introduce the idea of upper bounds and lower bounds.
     Consider the set $\{1, 2, 3\}$. It has upper bounds of 3, 4, 5, etc. It has lower bounds of 1, 0, -1, etc. Thus $\{1, 2, 3\}$ is bounded.
 \end{example}
 
-It would be nice to define the `tightest' interval that contains a subset. That motivates the definition of a least upper bound and a greatest lower bound.
+It would be nice to define the `tightest' interval that contains a non-empty subset. That motivates the definition of the least upper bound and the greatest lower bound of a non-empty subset.
 
 \begin{definition}
-    Let $A\subseteq \R$ be a non-empty set that is bounded above. Then $M$ is called the \term{supremum}\index{supremum} (or \term{least upper bound}\index{upper bound!least}) if and only if
+    Let $A$ be a non-empty subset of $\R$ that is bounded above. Then $M$ is called the \term{supremum}\index{supremum} (or \term{least upper bound}\index{upper bound!least}) if and only if
     \begin{itemize}
         \item $M$ is an upper bound of $A$; and
         \item for any upper bound $m$ of $A$ we have $M \leq m$.
@@ -38,7 +38,7 @@ It would be nice to define the `tightest' interval that contains a subset. That 
 \end{definition}
 
 \begin{definition}
-    Let $A\subseteq \R$ be a non-empty set that is bounded below. Then $L$ is called the \term{infimum}\index{infimum} (or \term{greatest lower bound}\index{lower bound!greatest}) if and only if
+    Let $A$ be a non-empty subset of $\R$ that is bounded below. Then $L$ is called the \term{infimum}\index{infimum} (or \term{greatest lower bound}\index{lower bound!greatest}) if and only if
     \begin{itemize}
         \item $L$ is a lower bound of $A$; and
         \item for any lower bound $l$ of $A$ we have $L \geq l$.
@@ -54,7 +54,7 @@ It would be nice to define the `tightest' interval that contains a subset. That 
     Non-trivially, we see that $\sup [0, 3) = 3$ and $\inf [0, 3) = 0$.
 \end{example}
 
-For these two examples we were able to find the supremum, and that it is a real number. Actually, in the definition of the supremum and infimum, we did not assume that they are actually real numbers. We correct for this oversight by stating the completeness axiom.
+For these two examples we were able to find the supremum, and that it is a real number. Actually, in the definition of the supremum and infimum, we did not assume that they are actually real numbers. The assumption that the supremum and infimum are real numbers is captured in the completeness axiom.
 
 \begin{axiom}[Completeness]\index{axiom!completeness}\label{axiom-completeness}
     Every non-empty subset of $\R$ that is bounded above has a supremum within the real numbers.
@@ -69,7 +69,7 @@ We end this section with a property of suprema.
 \begin{proof}
     For the forward direction, we first assume that $p = \sup A$. Then clearly $p$ is an upper bound of $A$ by definition of the supremum. Now let $\epsilon > 0$. By definition of the supremum, we know that $p - \epsilon$ is not an upper bound of $A$. In particular there must be an element greater than $p - \epsilon$ and we may choose that element to be $a_\epsilon$.
 
-    For the reverse direction we assume that the two conditions hold. Let $M$ be an upper bound of $A$ and, seeking a contradiction, suppose $M < p$. Set $\epsilon = p - M$. By the second condition there exists an $a_\epsilon \in A $ such that $a_\epsilon > p - \epsilon = p - (p - M) = M$, which clearly contradicts the fact that $M$ is an upper bound of $A$. Therefore $M \geq p$ which means that $\sup A = p$ as required.
+    For the reverse direction we assume that the two conditions hold. Let $M$ be an upper bound of $A$ and, seeking a contradiction, suppose $M < p$. Set $\epsilon = p - M$. By the second condition there exists an $a_\epsilon \in A $ such that $a_\epsilon > p - \epsilon = p - (p - M) = M$, which clearly contradicts the fact that $M$ is an upper bound of $A$. Therefore we see that $M \geq p$ which means $\sup A = p$ as required.
 \end{proof}
 
 \begin{exercise}
@@ -90,10 +90,10 @@ Next on our journey to prove the Fundamental Theorem of Algebra we need to prove
     Usually the domain $D$ is either $\R$ or an interval over $\R$.
 \end{remark}
 
-The calculus inclined would be able to see the parallel of this definition to that of using limits. However, we choose not to use the limit definition here to reduce clutter of notation.
+Readers versed in calculus would be able to see the parallel of this definition to that of using limits. However, we choose not to use the limit definition here to reduce the clutter of notation.
 
 \begin{example}\label{example-constant-function-is-continuous}
-    We show that $f: \R \to \R, x \mapsto k$ for some real number $k$ is continuous.
+    We show that $f: \R \to \R, x \mapsto k$ for some $k \in \R$ is continuous.
 
     Given $\epsilon > 0$, we take $\delta = 1$. Then if $|x - x_0| < \delta$ we see
     \begin{align*}
@@ -116,7 +116,7 @@ The calculus inclined would be able to see the parallel of this definition to th
     proving that $f$ is continuous.
 \end{example}
 
-In fact, polynomials are continuous. We will prove this fact in a few steps.
+In fact, all polynomials are continuous. We will prove this fact in a few steps.
 
 \begin{proposition}\label{prop-sum-of-continuous-functions-is-continuous}
     If $f: D \to \R$ and $g: D \to \R$ are both continuous, then $h: D \to \R$ where $h(x) = f(x) + g(x)$ is also continuous.
@@ -186,7 +186,7 @@ In fact, polynomials are continuous. We will prove this fact in a few steps.
 With the completeness of functions defined, we can now state and prove the Intermediate Value Theorem.
 
 \begin{theorem}[Intermediate Value Theorem]\index{Intermediate Value Theorem}\label{thrm-intermediate-value-theorem}
-    Let $I = [a, b]$ be an interval of real numbers and $f: I \to \R$ be a continuous function. Let $l = \min(f(a), f(b))$ and $u = \max(f(a), f(b))$. If $k \in \R$ is such that $l \leq k \leq u$ then there exists a $c \in I$ such that $f(c) = k$.
+    Let $I = [a, b]$ be an interval of real numbers and $f: I \to \R$ be a continuous function. Let $l = \min(f(a), f(b))$ and $u = \max(f(a), f(b))$. If $k \in \R$ is such that $l \leq k \leq u$ then there exists $c \in I$ such that $f(c) = k$.
 \end{theorem}
 \begin{proof}
     Without loss of generality assume that $f(a) < k < f(b)$ as the $f(a) > k > f(b)$ case is similar.
@@ -216,7 +216,7 @@ With the completeness of functions defined, we can now state and prove the Inter
 \end{proof}
 
 \section{The Fundamental Theorem of Algebra}
-With the Intermediate Value Theorem proven, we can prove two lemmas. These seem obvious, but we can now make them rigorous with the results that we have now.
+With the Intermediate Value Theorem proven, we can prove the following two lemmas. These seem obvious, but we can now make them rigorous with the results that we have now.
 
 \begin{lemma}\label{lemma-odd-degree-polynomial-has-real-zero}
     Every polynomial of odd degree has a real zero.
@@ -234,7 +234,7 @@ With the Intermediate Value Theorem proven, we can prove two lemmas. These seem 
 \end{proof}
 
 \begin{lemma}\label{lemma-non-negative-real-number-has-square-root}
-    $\sqrt x \in \R$ for any $x \geq 0$. That is, there exists a non-negative real number $y \in \R$ such that $y^2 = x$.
+    For any $x \geq 0$ we have $\sqrt{x} \in \R$. That is, there exists a non-negative real number $y \in \R$ such that $y^2 = x$.
 \end{lemma}
 \begin{proof}
     Clearly $\sqrt0=0$ since $0^2=0$, so assume $x > 0$. Consider the set

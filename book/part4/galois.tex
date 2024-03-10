@@ -1,5 +1,5 @@
 \chapter{Galois Theory}
-Classical algebra was largely dedicated to finding the solutions to polynomials. The quadratic formula solved any equation of degree 2; the cubic formula any equation of degree 3; the quartic formula any equation of degree 4. However, a quintic formula eluded mathematicians for countless years, until Galois finally proved that such a task was impossible. In this penultimate chapter, we prove the Fundamental Theorem of Galois Theory and establish the insolvability of the quintic.
+Classical algebra was largely dedicated to finding the solutions to polynomials. The quadratic formula solved any equation of degree 2; the cubic formula any equation of degree 3; the quartic formula any equation of degree 4. However, a quintic formula eluded mathematicians for countless years, until Galois finally proved that such a task was impossible. In this penultimate chapter, we prove the Fundamental Theorem of Galois Theory and prove the insolvability of the quintic.
 
 \section{Field Automorphisms}
 Recall from \myref{section-automorphism-groups} that the set of automorphisms of a group forms a group, called the group of automorphisms. We note a similar result for that of field automorphisms.
@@ -13,21 +13,21 @@ Recall from \myref{section-automorphism-groups} that the set of automorphisms of
 \begin{proof}
     We prove the four group axioms.
     \begin{itemize}
-        \item \textbf{Closure}: If $f, g \in \Aut{F}$, and $h = fg$, then $h: F \to F$ is a bijection. Furthermore $h$ is a homomorphism because for $x, y \in F$ we see
+        \item \textbf{Closure}: If $f, g \in \Aut{F}$, and $h = fg$, then $h: F \to F$ is a bijection. Furthermore $h$ is a homomorphism since for any $x, y \in F$ we see
         \begin{align*}
             h(x+y) &= f(g(x + y))\\
-            &= f(g(x) + g(y)) & (g \text{ is an isomorphism})\\
-            &= f(g(x)) + f(g(y)) & (f \text{ is an isomorphism})\\
+            &= f(g(x) + g(y)) & (g \text{ is an automorphism})\\
+            &= f(g(x)) + f(g(y)) & (f \text{ is an automorphism})\\
             &= h(x) + h(y)
         \end{align*}
         and
         \begin{align*}
             h(xy) &= f(g(xy))\\
-            &= f(g(x)g(y)) & (g \text{ is an isomorphism})\\
-            &= f(g(x))f(g(y)) & (f \text{ is an isomorphism})\\
+            &= f(g(x)g(y)) & (g \text{ is an automorphism})\\
+            &= f(g(x))f(g(y)) & (f \text{ is an automorphism})\\
             &= h(x)h(y).
         \end{align*}
-        Therefore $h$ is a bijective homomorphism, meaning $h$ is an isomorphism. Because the domain and codomain of $h$ are both $F$, thus $h$ is an automorphism, meaning $h = fg \in \Aut{F}$.
+        Therefore $h$ is a bijective homomorphism, meaning $h$ is an isomorphism. Since the domain and codomain of $h$ are both $F$, thus $h$ is an automorphism, meaning $h = fg \in \Aut{F}$.
 
         \item \textbf{Associativity}: Function composition is associative by \myref{axiom-function-composition-associative}.
 
@@ -47,12 +47,12 @@ We are particularly interested in automorphisms of an extension field that fixes
     Let $F$ be a field and $E/F$ a field extension. Then the set of all automorphisms of $E$ that fix $F$ elementwise is a group. In other words, the set of automorphisms $\phi: E \to E$ such that $\phi(a) = a$ for all $a \in F$ is a group.
 \end{proposition}
 \begin{proof}
-    We show that this set is a subgroup of $\Aut{E}$. Note that $\id$ is an element of this subgroup since $\id(a) = a$ for all $a \in E$, including $a \in F$.
+    We show that this set is a subgroup of $\Aut{E}$. Note that $\id$ is an element of this subgroup since $\id(a) = a$ for all $a \in E$, including any $a \in F$.
 
-    Now suppose $\phi$ and $\psi$ be two automorphisms of $E$ such that $\phi(a) = a$ and $\psi(a) = a$ for all $a \in F$. Then $\phi\psi^{-1}$ is an automorphism of $E$ where
+    Now suppose $\phi$ and $\psi$ be two automorphisms of $E$ such that $\phi(a) = a$ and $\psi(a) = a$ for all $a \in F$. Then $\phi\psi^{-1}$ is an automorphism of $E$ with the property that
     \begin{align*}
         \phi\psi^{-1}(a) &= \phi(\psi^{-1}(a))\\
-        &= \phi(a) & (\text{since }\psi(a) = a \text{ thus } a = \psi^{-1}(a))\\
+        &= \phi(a) & (\text{since }\psi(a) = a, \text{ thus } a = \psi^{-1}(a))\\
         &= a & (\text{since }\phi(a) = a)
     \end{align*}
     and so $\phi\psi^{-1}$ is an automorphism of $E$ that fixes $F$ elementwise.
@@ -94,32 +94,35 @@ We have a special name for this group.
     \]
     for any $a,b,c,d \in \Q$ is an automorphism that fixes $\Q(\sqrt3)$. The automorphism $\mu = \sigma\tau$ fixes $\Q(\sqrt{15})$. It will be clear soon that $S = \{\id, \sigma, \tau, \mu\}$ is $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
 
-    \begin{minipage}[c]{0.475\textwidth}
-        \begin{table}[H]
-            \centering
-            \begin{tabular}{|l|l|l|l|l|}
-                \hline
-                & $\boldsymbol{\id}$ & $\boldsymbol{\sigma}$ & $\boldsymbol{\tau}$ & $\boldsymbol{\mu}$ \\ \hline
-                $\boldsymbol{\id}$ & $\id$ & $\sigma$ & $\tau$ & $\mu$ \\ \hline
-                $\boldsymbol{\sigma}$ & $\sigma$ & $\id$ & $\mu$ & $\tau$ \\ \hline
-                $\boldsymbol{\tau}$ & $\tau$ & $\mu$ & $\id$ & $\sigma$ \\ \hline
-                $\boldsymbol{\mu}$ & $\mu$ & $\tau$ & $\sigma$ & $\id$ \\ \hline
-            \end{tabular}
-        \end{table}
-    \end{minipage}
-    \begin{minipage}[c]{0.475\textwidth}
-        \begin{table}[H]
-            \centering
-            \begin{tabular}{|l|l|l|l|l|}
-                \hline
-                & $\boldsymbol{(0, 0)}$ & $\boldsymbol{(0, 1)}$ & $\boldsymbol{(1, 0)}$ & $\boldsymbol{(1, 1)}$ \\ \hline
-                $\boldsymbol{(0, 0)}$ & $(0, 0)$ & $(0, 1)$ & $(1, 0)$ & $(1, 1)$ \\ \hline
-                $\boldsymbol{(0, 1)}$ & $(0, 1)$ & $(0, 0)$ & $(1, 1)$ & $(1, 0)$ \\ \hline
-                $\boldsymbol{(1, 0)}$ & $(1, 0)$ & $(1, 1)$ & $(0, 0)$ & $(0, 1)$ \\ \hline
-                $\boldsymbol{(1, 1)}$ & $(1, 1)$ & $(1, 0)$ & $(0, 1)$ & $(0, 0)$ \\ \hline
-            \end{tabular}
-        \end{table}
-    \end{minipage}
+    \begin{figure}[H]
+        \begin{minipage}[c]{0.475\textwidth}
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|l|l|}
+                    \hline
+                    & $\boldsymbol{\id}$ & $\boldsymbol{\sigma}$ & $\boldsymbol{\tau}$ & $\boldsymbol{\mu}$ \\ \hline
+                    $\boldsymbol{\id}$ & $\id$ & $\sigma$ & $\tau$ & $\mu$ \\ \hline
+                    $\boldsymbol{\sigma}$ & $\sigma$ & $\id$ & $\mu$ & $\tau$ \\ \hline
+                    $\boldsymbol{\tau}$ & $\tau$ & $\mu$ & $\id$ & $\sigma$ \\ \hline
+                    $\boldsymbol{\mu}$ & $\mu$ & $\tau$ & $\sigma$ & $\id$ \\ \hline
+                \end{tabular}
+            \end{table}
+        \end{minipage}
+        \begin{minipage}[c]{0.475\textwidth}
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|l|l|}
+                    \hline
+                    & $\boldsymbol{(0, 0)}$ & $\boldsymbol{(0, 1)}$ & $\boldsymbol{(1, 0)}$ & $\boldsymbol{(1, 1)}$ \\ \hline
+                    $\boldsymbol{(0, 0)}$ & $(0, 0)$ & $(0, 1)$ & $(1, 0)$ & $(1, 1)$ \\ \hline
+                    $\boldsymbol{(0, 1)}$ & $(0, 1)$ & $(0, 0)$ & $(1, 1)$ & $(1, 0)$ \\ \hline
+                    $\boldsymbol{(1, 0)}$ & $(1, 0)$ & $(1, 1)$ & $(0, 0)$ & $(0, 1)$ \\ \hline
+                    $\boldsymbol{(1, 1)}$ & $(1, 1)$ & $(1, 0)$ & $(0, 1)$ & $(0, 0)$ \\ \hline
+                \end{tabular}
+            \end{table}
+        \end{minipage}
+        \caption{Cayley Tables of $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$ and $\Z_2^2$}
+    \end{figure}
 
     From the above tables, we see that $\Gal{\Q(\sqrt3,\sqrt5)/\Q} \cong \Z_2^2$. We also note that $[\Q(\sqrt3,\sqrt5):\Q] = 4$ by \myref{example-Q-sqrt3-sqrt5}. It is no coincidence that
     \[
@@ -200,7 +203,7 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
 
     To prove that $\Gal{E/F}$ is cyclic we need to find a generator of $\Gal{E/F}$. In particular we need to find an isomorphism in $\Gal{E/F}$ of order $k$. Consider the map $\sigma: E \to E$ where $\phi(a) = a^{p^n}$ for any $a \in E$. We show that $\sigma \in \Aut{E}$.
     \begin{itemize}
-        \item \textbf{Homomorphism}: Note that if $a, b \in E$ then
+        \item \textbf{Homomorphism}: Note that for any $a, b \in E$ we have
         \begin{align*}
             \sigma(a+b) &= (a+b)^{p^n}\\
             &= a^{p^n} + b^{p^n} & (\myref{prop-freshman-dream})\\
@@ -210,9 +213,9 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
         \begin{align*}
             \sigma(ab) &= (ab)^{p^n}\\
             &= a^{p^n}b^{p^n}\\
-            &= \sigma(a)\sigma(b)
+            &= \sigma(a)\sigma(b),
         \end{align*}
-        which means that $\sigma$ is a homomorphism.
+        showing that $\sigma$ is a homomorphism.
 
         \item \textbf{Injective}: Since $\sigma$ is non-trivial it must be injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}.
 
@@ -351,7 +354,7 @@ The Galois group of a field extension $E/F$ is the set of automorphisms of $E$ t
 \end{proof}
 
 \begin{example}
-    Consider the field $\Q(\sqrt3,\sqrt5)$, and the automorphism $\sigma$ on that field such that $\sqrt3 \mapsto -\sqrt3$. Then the fixed field of $\langle\sigma\rangle$ is $\Q(\sqrt5)$, i.e. $\Fix{E}{\langle\sigma\rangle} = \Q(\sqrt5)$.
+    Consider the field $\Q(\sqrt3,\sqrt5)$, and the automorphism $\sigma$ on that field such that $\sqrt3 \mapsto -\sqrt3$. Then the fixed field of $\langle\sigma\rangle = \{\id, \sigma\}$ is $\Q(\sqrt5)$, i.e. $\Fix{E}{\langle\sigma\rangle} = \Q(\sqrt5)$.
 \end{example}
 
 \begin{exercise}\label{exercise-fixed-field-is-subfield}
@@ -377,7 +380,7 @@ The Galois group of a field extension $E/F$ is the set of automorphisms of $E$ t
     \[
         [E:F] = [E:\Fix{E}{G}][\Fix{E}{G}:F].
     \]
-    Therefore $[\Fix{E}{G}:F] = 1$ which yields $\Fix{E}{G} = F$ (\myref{prop-finite-extension-of-degree-1-means-extension-equals-base-field}), which is what was to be shown.
+    Therefore $[\Fix{E}{G}:F] = 1$ which yields $\Fix{E}{G} = F$ (\myref{prop-finite-extension-of-degree-1-means-extension-equals-base-field}).
 \end{proof}
 
 \begin{exercise}\label{exercise-subgroup-of-Aut-E-is-subgroup-of-galois-group-of-fixed-field}
@@ -401,7 +404,7 @@ The Galois group of a field extension $E/F$ is the set of automorphisms of $E$ t
     \]
     We note that $G$ permutes the zeroes of the polynomial $f(x)$, so the coefficients of $f(x)$ remain unchanged. So every coefficient of $f(x)$ must belong in $\Fix{G}{E} = F$, and so $f(x) \in F[x]$.
 
-    Now suppose $h(x) \in F[x]$ has a zero of $\alpha_1$. As $\Orb{G}{\alpha_1} = \{\alpha_1, \alpha_2, \dots, \alpha_r\}$, there exists a $\sigma \in G$ such that $\sigma(\alpha_1) = \alpha_i$ for some $i = 1, 2, \dots, r$. We note that $\alpha_i$ is a zero of $h(x)$ since, if we write $h(x) = a_0 + a_1x + \cdots + a_mx^m$, we see
+    Now suppose $h(x) \in F[x]$ has a zero of $\alpha_1$. As $\Orb{G}{\alpha_1} = \{\alpha_1, \alpha_2, \dots, \alpha_r\}$, there exists $\sigma \in G$ such that $\sigma(\alpha_1) = \alpha_i$ for some $i = 1, 2, \dots, r$. We note that $\alpha_i$ is a zero of $h(x)$ since, if we write $h(x) = a_0 + a_1x + \cdots + a_mx^m$, we see
     \begin{align*}
         0 &= \sigma(0)\\
         &= \sigma(f(\alpha_1))\\
@@ -428,7 +431,7 @@ We end this section with the Fixed Field Theorem.
     Let $F$ be a field and $E/F$ be a field extension such that $F = \Fix{E}{G}$ for some finite subgroup $G$ of $\Aut{E}$. Then $|G| = [E:F]$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 16.5.4]{artin_2011}})]
-    For brevity let $n = |G|$. By \myref{thrm-degree-of-element-under-fixed-field-action} we know that the extension $E/F$ is algebraic since any element in $E$ is a zero of a polynomial in $F[x]$. In particular, the degree of any element $\alpha \in E$ divides $n$, meaning that the degree of an element in $E$ is at most $n$. Therefore the contrapositive of \myref{corollary-infinite-algebraic-extension-has-elements-of-arbitrarily-large-degree} tells us that $[E:F]$ is finite. Also, any element within $E$ is a zero of a separable polynomial in $F[x]$ by \myref{thrm-degree-of-element-under-fixed-field-action}. By the Primitive Element theorem (\myref{thrm-primitive-element}) we therefore can find a primitive element (say $\gamma$) of $E$, i.e. $E = F(\gamma)$.
+    For brevity let $n = |G|$. By \myref{thrm-degree-of-element-under-fixed-field-action} we know that the extension $E/F$ is algebraic since any element in $E$ is a zero of a polynomial in $F[x]$. In particular, the degree of any element $\alpha \in E$ divides $n$, meaning that the degree of an element in $E$ is at most $n$. Therefore the contrapositive of \myref{corollary-infinite-algebraic-extension-has-elements-of-arbitrarily-large-degree} tells us that $[E:F]$ is finite. Also, any element within $E$ is a zero of a separable polynomial in $F[x]$ by \myref{thrm-degree-of-element-under-fixed-field-action}. By the Primitive Element Theorem (\myref{thrm-primitive-element}) we therefore can find a primitive element (say $\gamma$) of $E$, i.e. $E = F(\gamma)$.
 
     Now consider the group $G$ acting on $E$ by the group action $\sigma\cdot x = \sigma(x)$ for any $\sigma \in G$ and $x \in E$. We consider $\Stab{G}{\gamma}$. Note that because $\gamma \notin F = \Fix{E}{G}$, therefore the only element of $G$ that fixes $\gamma$ is $\id$, i.e. $\Stab{G}{\gamma} = \{\id\}$. By the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}),
     \[
@@ -441,7 +444,7 @@ We end this section with the Fixed Field Theorem.
 We first define normal extensions.
 
 \begin{definition}
-    Let $F$ be a field and $E$ an algebraic extension of $F$. Then $E$ is called a \term{normal extension}\index{extension!normal} of $F$ if and only if every irreducible polynomial in $F[x]$ with \textit{at least one} zero in $E$ has \textit{all} of its zeroes in $E$. In other words, every irreducible polynomial in $F[x]$ with a zero in $E$ splits in $E$.
+    Let $F$ be a field and $E$ an algebraic extension of $F$. Then $E$ is called a \term{normal extension}\index{extension!normal} of $F$ if and only if every irreducible polynomial in $F[x]$ with at least one zero in $E$ has all of its zeroes in $E$. In other words, every irreducible polynomial in $F[x]$ with a zero in $E$ splits in $E$.
 \end{definition}
 
 Later we will see that normal extensions are, in some way, related to normal subgroups.
@@ -500,7 +503,7 @@ Later we will see that normal extensions are, in some way, related to normal sub
 \begin{proof}
     For the forward direction, if $E/F$ is finite and Galois, then $E$ is the splitting field of some separable polynomial $f(x) \in F[x]$ over $F$ (\myref{thrm-equivalence-of-finite-galois-extension}). Certainly a separable polynomial only has simple zeroes, so by \myref{thrm-order-of-galois-group-is-degree-of-field-extension} we have $|\Gal{E/F}| = [E:F]$.
 
-    For the reverse direction we first assume $|\Gal{E/F}| = [E:F]$. We know that $\Gal{E/F} \leq \Aut{E}$ by \myref{prop-galois-group-is-group}. Also we know that $\Gal{E/F}$ is finite because $[E:F]$ is finite, and finally we know that $F = \Fix{E}{\Gal{E/F}}$. So by \myref{thrm-equivalence-of-finite-galois-extension} we have $E$ is a finite Galois extension of $F$.
+    For the reverse direction we first assume $|\Gal{E/F}| = [E:F]$. We know that $\Gal{E/F} \leq \Aut{E}$ by \myref{prop-galois-group-is-group}. Also we know that $\Gal{E/F}$ is finite because $[E:F]$ is finite, and finally we know that $F = \Fix{E}{\Gal{E/F}}$. So by \myref{thrm-equivalence-of-finite-galois-extension} we see that $E$ is a finite Galois extension of $F$.
 \end{proof}
 
 \begin{exercise}\label{exercise-intermediate-field-of-galois-extension-is-galois-extension}
@@ -511,7 +514,7 @@ Later we will see that normal extensions are, in some way, related to normal sub
 To motivate the Fundamental Theorem of Galois Theory, we return back to a familiar example.
 
 \begin{example}
-    In \myref{example-galois-group-of-Q-sqrt3-sqrt5-over-Q} we examined the automorphisms of $\Q(\sqrt3, \sqrt5)$ fixing $\Q$. Recall $\Gal{\Q(\sqrt3,\sqrt5)/\Q} = \{\id, \sigma, \tau, \mu\}$, where
+    In \myref{example-galois-group-of-Q-sqrt3-sqrt5-over-Q} we examined the automorphisms of $\Q(\sqrt3, \sqrt5)$ that fix $\Q$. Recall $\Gal{\Q(\sqrt3,\sqrt5)/\Q} = \{\id, \sigma, \tau, \mu\}$, where
     \begin{align*}
         \sigma(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) &= a - b\sqrt3 + c\sqrt5 - d\sqrt{15},\\
         \tau(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) &= a + b\sqrt3 - c\sqrt5 - d\sqrt{15}, \text{ and}\\
@@ -538,9 +541,9 @@ This example shows that, in certain cases, there is a connection between the lat
     give a well-defined bijective correspondence between $\mathcal{F}$ and $\mathcal{G}$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 16.7.1]{artin_2011}})]
-    We show that the composition of the two maps in either order is the identity, and the work would be done. In other words, we want to show that $\alpha\beta: \mathcal{G} \to \mathcal{G}$ results in $H \mapsto H$, and want to show that $\beta\alpha: \mathcal{F} \to \mathcal{F}$ results in $K \mapsto K$.
+    We show that the composition of the two maps in either order is the identity, and our work would be done. In other words, we want to show that $\alpha\beta: \mathcal{G} \to \mathcal{G}$ results in $H \mapsto H$, and want to show that $\beta\alpha: \mathcal{F} \to \mathcal{F}$ results in $K \mapsto K$.
 
-    For the composition $\alpha\beta$, let $H \in \mathcal{G}$. Then $\beta(H) = \Fix{E}{H}$. By \myref{thrm-equivalence-of-finite-galois-extension} we therefore see that $E$ is a finite Galois extension of $\beta(H)$. For brevity let $K = \beta(H)$, so we have that $E$ is a finite Galois extension of $K$. Now on one hand, by the Fixed Field theorem (\myref{thrm-fixed-field}) we know that $|H| = [E:K]$. On the other hand, by \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}, since $E/K$ is finite and Galois, thus $|\Gal{E/K}| = [E:K]$. Therefore $|H| = |\Gal{E/K}|$; because $H \leq \Gal{E/K}$ by \myref{exercise-subgroup-of-Aut-E-is-subgroup-of-galois-group-of-fixed-field}, so $H = \Gal{E/K}$. So one sees that $\alpha(\beta(H)) = \alpha(K) = \Gal{E/K} = H$, meaning that $\alpha\beta(H) = H$ for all $H \in \mathcal{G}$.
+    For the composition $\alpha\beta$, let $H \in \mathcal{G}$. Then $\beta(H) = \Fix{E}{H}$. By \myref{thrm-equivalence-of-finite-galois-extension} we therefore see that $E$ is a finite Galois extension of $\beta(H)$. For brevity let $K = \beta(H)$, so we have that $E$ is a finite Galois extension of $K$. Now on one hand, by the Fixed Field Theorem (\myref{thrm-fixed-field}) we know that $|H| = [E:K]$. On the other hand, by \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}, since $E/K$ is finite and Galois, thus $|\Gal{E/K}| = [E:K]$. Therefore $|H| = |\Gal{E/K}|$; because $H \leq \Gal{E/K}$ by \myref{exercise-subgroup-of-Aut-E-is-subgroup-of-galois-group-of-fixed-field}, so $H = \Gal{E/K}$. So one sees that $\alpha(\beta(H)) = \alpha(K) = \Gal{E/K} = H$, meaning that $\alpha\beta(H) = H$ for all $H \in \mathcal{G}$.
 
     For the composition $\beta\alpha$, let $K \in \mathcal{F}$. Then $\alpha(K) = \Gal{E/K}$; let $H = \Gal{E/K}$. Since $E/F$ is a finite Galois extension, thus $\Gal{E/F}$ is also finite (\myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}) and so $H$, being a subgroup of $\Gal{E/F}$, is also finite. Now let $K' = \beta(H) = \Fix{E}{H}$. Note that by \myref{prop-intermediate-field-of-galois-extension-is-galois-extension} we know that $E/K$ is a Galois extension. Therefore $E$ is a splitting field of some separable polynomial in $K[x]$ (\myref{thrm-equivalence-of-finite-galois-extension}), and hence $\Fix{E}{H} = \Fix{E}{\Gal{E/K}} = K$ by \myref{prop-fixed-field-of-Gal-E/F-is-F}. So we see $K' = \Fix{E}{H} = K$, whence one sees $\beta\alpha(K) = K$ for all $K \in \mathcal{F}$.
 \end{proof}
@@ -548,7 +551,7 @@ This example shows that, in certain cases, there is a connection between the lat
 The correspondence in the Fundamental Theorem of Galois Theory enjoys the following properties.
 
 \begin{corollary}\label{corollary-fundamental-theorem-of-galois-theory-is-inclusion-reversing}
-    The correspondence given by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}) reverses inclusions. That is, if $K, K' \in \mathcal{F}$ and $H, H' \in \mathcal{G}$ are the corresponding subgroups, then $K \subset K'$ if and only if $H > H'$.
+    The correspondence given by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}) reverses inclusions. That is, if $K, K' \in \mathcal{F}$ and fields and $H, H' \in \mathcal{G}$ are the corresponding subgroups, then $K \subset K'$ if and only if $H > H'$.
 \end{corollary}
 \begin{proof}
     For the forward direction, if $K \subset K'$, then by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}), the corresponding subgroups are $H = \Gal{E/K}$ and $H' = \Gal{E/K'}$. Now let $\sigma \in H'$. Then $\sigma(a) = a$ for all $a \in K'$. Since $K \subset K'$, we certainly must have $\sigma(a) = a$ for all $a \in K$, which shows that $\sigma \in H$. Therefore if $K \subset K'$ then $H > H'$.
@@ -571,7 +574,7 @@ The correspondence in the Fundamental Theorem of Galois Theory enjoys the follow
     \[
         |\Gal{E/F}| = [\Gal{E/F}:\Gal{E/K}]|\Gal{E/K}|
     \]
-    by Lagrange's Theorem (\myref{thrm-lagrange}). Hence
+    by Lagrange's theorem (\myref{thrm-lagrange}). Hence
     \[
         [E:F] = [\Gal{E/F}:\Gal{E/K}][E:K] = [E:K][K:F]
     \]
@@ -581,7 +584,7 @@ The correspondence in the Fundamental Theorem of Galois Theory enjoys the follow
 \begin{example}
     One sees that the splitting field of the polynomial $(x^2 - 3)(x^2 - 5)$ over $\Q$ is $\Q(\sqrt3,\sqrt5)$, which is an extension of $\Q$ of degree 4. One clearly sees that $\Q(\sqrt3,\sqrt5)$ is both separable and normal over $\Q$, and so $\Q(\sqrt3,\sqrt5)/\Q$ is a Galois extension of $\Q$. Consequently we know that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = 4$ by \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}. For brevity let $G = \Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
 
-    Since $G$ is of order 4, there are only two possibilities that $G$ could be -- either $G \cong \Cn{4}$ or $G \cong \mathrm{V}$, the Klein four-group (this was explored way back in \myref{problem-smallest-nonabelian-group}), which are both abelian. It is easy to find three intermediate fields of degree 2 over $\Q$, namely $\Q(\sqrt3)$, $\Q(\sqrt5)$, and $\Q(\sqrt{15})$, so $G \cong \mathrm{V}$, since $\Cn{4}$ has only one subgroup of order 4.
+    Since $G$ is of order 4, there are only two possibilities that $G$ could be -- either $G \cong \Cn{4}$ or $G \cong \mathrm{V}$, the Klein four-group (this was explored way back in \myref{problem-smallest-nonabelian-group}), which are both abelian. It is easy to find three intermediate fields of degree 2 over $\Q$, namely $\Q(\sqrt3)$, $\Q(\sqrt5)$, and $\Q(\sqrt{15})$, so $G \cong \mathrm{V}$, since $\Cn{4}$ has only one subgroup of order 2.
 
     The subgroups of order 2 are the only proper subgroups of $G$. Consequently one sees by \myref{corollary-intermediate-field-galois-field-order} that there are no more intermediate fields than the 3 that we have found.
 \end{example}
@@ -595,7 +598,7 @@ Now suppose that we are given a chain of fields $F \subset K \subset E$, and tha
     \]
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 23.23, Statment 4]{judson_beezer_2022}})]
-    For the forward direction, suppose $K/F$ is Galois. We are to show that if $\sigma \in G$ and $\tau \in H$ then $\sigma\tau\sigma^{-1} \in H$, i.e. $\sigma\tau\sigma^{-1}(a) = a$ for all $a \in K$. Suppose $f(x)$ is the minimal polynomial of $a$ over $F$. Then, since $K$ is a Galois (and hence normal) extension of $F$, we know $\sigma^{-1}(a)$ is also a zero of $f(x)$ lying in $K$. Hence $\tau\sigma^{-1}(a) = \sigma^{-1}(a)$ because $\sigma^{-1}(a) \in K = \Fix{E}{H}$, and so $\sigma\tau\sigma^{-1}(a) = \sigma\sigma^{-1}(a) = a \in K$. Therefore $\sigma\tau\sigma^{-1} \in H$ and so $H \unlhd G$.
+    For the forward direction, suppose $K/F$ is Galois. We are to show that if $\sigma \in G$ and $\tau \in H$ then $\sigma\tau\sigma^{-1} \in H$, i.e. $\sigma\tau\sigma^{-1}(a) = a$ for all $a \in K$. Suppose $f(x)$ is the minimal polynomial of $a$ over $F$. Then, since $K$ is a Galois (and hence a normal) extension of $F$, we know $\sigma^{-1}(a)$ is also a zero of $f(x)$ lying in $K$. Hence $\tau\sigma^{-1}(a) = \sigma^{-1}(a)$ because $\sigma^{-1}(a) \in K = \Fix{E}{H}$, and so $\sigma\tau\sigma^{-1}(a) = \sigma\sigma^{-1}(a) = a \in K$. Therefore $\sigma\tau\sigma^{-1} \in H$ and so $H \unlhd G$.
 
     For the reverse direction, suppose $H \unlhd G$. We show that $F = \Fix{K}{\Gal{K/F}}$. Let $\tau \in H$; note $H = \Gal{E/K}$ by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}). As $H \unlhd G$, for all $\sigma \in G$, there exists a $\tau' \in H$ such that $\tau\sigma = \sigma\tau'$. Thus for all $a \in K$ we have
     \[
@@ -647,7 +650,7 @@ Before we can answer that question, we need to build up some results regarding t
 In other words, a polynomial $f(x)$ is solvable by radicals over a field $F$ if we can obtain all its zeroes by adjoining $n$th roots (for various values of $n$) into some extension of $F$. In such cases, a zero of $f(x)$ would be written as a combination of addition, subtraction, multiplication, division, and taking $n$th roots.
 
 \begin{example}\label{example-depressed-cubic-formula}
-    The polynomial $x^3 + bx + c$ is solvable by radicals over $\R$ because its three zeroes
+    The polynomial $x^3 + bx + c$ is solvable by radicals over $\R$ because its three zeroes,
     \begin{gather*}
         A+B,\\
         -\frac{A+B}2 + \frac{(A-B)\sqrt{-3}}{2},\\
@@ -688,7 +691,7 @@ One of the easiest polynomials that can be solved by radicals are those of the f
 
 Thus, we have transformed the problem of determining whether a polynomial is solvable by radicals into a problem of determining a certain type of field extension. At the same time, the Fundamental Theorem of Galois Theory allows us to transform problems about field extensions into problems about groups.
 
-We now introduce a concept that appears to be disconnected with what we are interested in -- solvable groups.
+We now introduce a concept that at first glance appears to be disconnected with what we are interested in -- solvable groups.
 
 \begin{definition}
     We say that a group $G$ is \term{solvable}\index{solvable}\index{solvable!group}\index{group!solvable} if and only if it has a subnormal series
@@ -714,7 +717,7 @@ For finite groups, we have the following equivalent definition.
     \[
         1 = K_0 \lhd K_1 \lhd K_2 \lhd \cdots \lhd K_r = G
     \]
-    where each composition factor $K_{i+1}/K_i$ is abelian and simple. By \myref{thrm-abelian-group-simple-iff-cylic-group-of-prime-order} we know that this means that each composition factor must be a cyclic group of prime order.
+    where each composition factor $K_{i+1}/K_i$ is abelian and simple. By \myref{thrm-abelian-group-simple-iff-cylic-group-of-prime-order} this means that each composition factor must be a cyclic group of prime order.
 \end{proof}
 
 \begin{example}
@@ -761,7 +764,7 @@ Our goal is to connect the notion of solvability by radicals with solvable group
 \begin{proof}[Proof (see {\cite[Theorem 32.2]{gallian_2016}})]
     We first note that if $a = 0$ then the only zero of $x^n - a$ is 0 itself (with multiplicity $n$), and so the splitting field $E$ is $F$ itself and thus $\Gal{E/F}$ is the trivial group, which is solvable. Thus we assume $a \neq 0$. We split the proof into two cases.
 
-    The first case is when $F$ contains a primitive $n$th root of unity $\omega$. Let $b \in E$ be a zero of $x^n - a$. Then the zeroes of $x^n - a$ are $b, b\omega, b\omega^2, \dots, b\omega^{n-1}$ and therefore $E = F(b)$ (since $\omega \in F$ already). Now note that any automorphism of $\Gal{E/F}$ is completely determined by its effect on $b$. Since $b$ is a zero of $x^n - a$, we know that any element of $\Gal{E/F}$ takes $b$ to $b\omega^i$ for some $i \in \{0, 1, 2, \dots, n - 1\}$ (\myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}). Now let $\sigma, \mu \in \Gal{E/F}$. Since $\omega \in F$, both $\sigma$ and $\mu$ fix $\omega$; let $\sigma(b) = b\omega^j$ and $\mu(b) = b\omega^k$ for some $j, k \in \{0, 1, 2, \dots, n - 1\}$. Therefore one sees
+    The first case is when $F$ contains a primitive $n$th root of unity $\omega$. Let $b \in E$ be a zero of $x^n - a$. Then the zeroes of $x^n - a$ are $b, b\omega, b\omega^2, \dots, b\omega^{n-1}$ and therefore $E = F(b)$ (since we know $\omega \in F$ already). Now note that any automorphism of $\Gal{E/F}$ is completely determined by its effect on $b$. Since $b$ is a zero of $x^n - a$, we know that any element of $\Gal{E/F}$ takes $b$ to $b\omega^i$ for some $i \in \{0, 1, 2, \dots, n - 1\}$ (\myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}). Now let $\sigma, \mu \in \Gal{E/F}$. Since $\omega \in F$, both $\sigma$ and $\mu$ fix $\omega$; let $\sigma(b) = b\omega^j$ and $\mu(b) = b\omega^k$ for some $j, k \in \{0, 1, 2, \dots, n - 1\}$. Therefore one sees
     \[
         (\sigma\mu)(b) = \sigma(\mu(b)) = \sigma(b\omega^k) = \sigma(b)\sigma(\omega^k) = (b\omega^j)\omega^k = b\omega^{j+k}
     \]
@@ -781,7 +784,7 @@ Our goal is to connect the notion of solvability by radicals with solvable group
     \]
     which means that $\sigma\mu(\omega) = \mu\sigma(\omega)$, and both $\sigma\mu$ and $\mu\sigma$ fix $F$. Therefore $\sigma\mu = \mu\sigma$ and so $\Gal{F(\omega)/F}$ is abelian.
 
-    Now because $E$ is the splitting field of $x^n - a$ over $F$, we know $E$ must be the splitting field of $x^n - a$ over $F(\omega)$. In particular, $F(\omega)$ contains a primitive $n$th root of unity. Therefore by the first case we know that $\Gal{E/F(\omega)}$ is abelian. By \myref{prop-intermediate-field-of-galois-extension-is-galois-extension}, $E$ is a Galois extension of $F(\omega)$. Now we know that $F(\omega)$ is a Galois extension, which means
+    Now because $E$ is the splitting field of $x^n - a$ over $F$, we know $E$ must be the splitting field of $x^n - a$ over $F(\omega)$. In particular, $F(\omega)$ contains a primitive $n$th root of unity. Therefore by the first case we know that $\Gal{E/F(\omega)}$ is abelian. By \myref{prop-intermediate-field-of-galois-extension-is-galois-extension}, $E$ is a Galois extension of $F(\omega)$. Now recall that $F(\omega)$ is a Galois extension, which means
     \[
         \Gal{F(\omega)/F} \cong \Gal{E/F}/\Gal{E/F(\omega)}
     \]
@@ -853,9 +856,9 @@ We are now ready to establish the connection between solvable groups and polynom
     \[
         \Gal{E/F} \cong \Gal{L/F}/\Gal{L/E}.
     \]
-    It follows from \myref{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable} that $\Gal{L/F}$ is solvable, and therefore by \myref{thrm-quotient-group-of-solvable-group-is-solvable} we know that $\Gal{L/F}/\Gal{L/E}$ (and hence $\Gal{E/F}$) is solvable.
+    It follows from \myref{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable} that $\Gal{L/F}$ is solvable, and therefore by \myref{thrm-quotient-group-of-solvable-group-is-solvable} we know that $\Gal{L/F}/\Gal{L/E}$, and hence $\Gal{E/F}$, is solvable.
 
-    Now suppose that the theorem holds for a positive integer $t$; we show that the theorem holds for $t + 1$.
+    Now suppose that the theorem holds for a particular positive integer $t$; we show that the theorem holds for $t + 1$.
 
     Let $a = \alpha_1^{k_1}$, $L$ be the splitting field of $x^{k_1} - a$ over $E$, and $K \subseteq E$ be the splitting field of $x^{k_1} - a$ over $F$. Then $L$ is the splitting field of $(x^{k_1}-a)f(x)$ over $F$, and $L$ is the splitting field of $f(x)$ over $K$. Since $F(\alpha_1) \subseteq K$, thus $f(x)$ splits over $K(\alpha_2, \alpha_3, \dots, \alpha_t, \alpha_{t+1})$. Using the induction hypothesis implies that $\Gal{L/K}$ is solvable. Also \myref{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable} tells us that $\Gal{K/F}$ is solvable. Note that both $L/F$ and $L/K$ are Galois extensions (\myref{thrm-equivalence-of-finite-galois-extension}) and so
     \[
@@ -886,7 +889,7 @@ We are now in a position to dispatch a problem that has plagued mathematicians f
     \[
         \begin{pmatrix}2&i_3&i_4&\cdots&i_p\end{pmatrix}^k\begin{pmatrix}1&2\end{pmatrix}\begin{pmatrix}2&i_3&i_4&\cdots&i_p\end{pmatrix}^{-k} = \begin{pmatrix}1&i_k\end{pmatrix}
     \]
-    for any $1 \leq k < p$. Thus we see that every transposition of the form $\begin{pmatrix}1&n\end{pmatrix}$ is in $G$ for $1 \leq n < p$. But one sees that
+    for any $1 \leq k < p$. Thus we see that every transposition of the form $\begin{pmatrix}1&n\end{pmatrix} \in G$ for $1 \leq n < p$. But one sees that
     \[
         \begin{pmatrix}1&j\end{pmatrix}\begin{pmatrix}1&i\end{pmatrix}\begin{pmatrix}1&j\end{pmatrix} = \begin{pmatrix}i&j\end{pmatrix}
     \]
@@ -895,46 +898,48 @@ We are now in a position to dispatch a problem that has plagued mathematicians f
 
 Now we are going to do something unprecedented in this book -- we will use a result without proving it first. Have no fear though, this will be proven in the next (and final) chapter of the book.
 \begin{quote}
-    Let $f(x)$ be a polynomial with real coefficients. If $f(a) < 0$ and $f(b) > 0$, and $a < b$, then there exists a $c$ where $a < c < b$ such that $f(c) = 0$. If instead $a > b$, then there exists a $c$ where $b < c < a$ and $f(c) = 0$.
+    Let $f(x)$ be a polynomial with real coefficients and let $a, b \in \R$. If $f(a) < 0$ and $f(b) > 0$, and $a < b$, then there exists $c \in \R$ where $a < c < b$ such that $f(c) = 0$. If instead $a > b$, then there exists $c \in \R$ where $b < c < a$ and $f(c) = 0$.
 \end{quote}
 
-We are now ready to state an intermediary claim.
+We are now ready to state an intermediary claim regarding a particular quintic polynomial.
 
 \begin{proposition}
     Let $f(x) = x^5 - 4x - 2 \in \Q[x]$ and $F$ the splitting field of $f(x)$ over $\Q$. Then $\Gal{F/\Q} \cong \Sn{5}$.
 \end{proposition}
 
-\begin{figure}[H]
+\begin{figure}[H]\label{figure-graph-of-quintic}
     \centering
-    \begin{tikzpicture}[xscale=2, yscale=0.25, domain=-1.7:1.8, samples=200]
-        % Draw grid lines
-        \draw[very thin, color=gray] (-2,-12) grid [xstep=0.25, ystep=2] (2,12);
+    \resizebox{!}{6cm}{%
+        \begin{tikzpicture}[xscale=2, yscale=0.25, domain=-1.7:1.8, samples=200]
+            % Draw grid lines
+            \draw[very thin, color=gray] (-2,-12) grid [xstep=0.25, ystep=2] (2,12);
 
-        % Add axes
-        \draw[->] (-2,0) -- (2,0) node[right] {$x$};
-        \draw[->] (0,-12) -- (0,12) node[above] {$y$};
+            % Add axes
+            \draw[->] (-2,0) -- (2,0) node[right] {$x$};
+            \draw[->] (0,-12) -- (0,12) node[above] {$y$};
 
-        % Draw actual graph
-        \draw[very thick, smooth, variable=\x] plot ({\x}, {\x^5 - 4*\x - 2}) node[left] {$f(x) = x^5 - 4x - 2$};
+            % Draw actual graph
+            \draw[very thick, smooth, variable=\x] plot ({\x}, {\x^5 - 4*\x - 2}) node[left] {$f(x) = x^5 - 4x - 2$};
 
-        % Add x-axis labels
-        \node [below] at (-1.5,0) {-1.5};
-        \node [below] at (-1,0) {-1};
-        \node [below] at (-0.5,0) {-0.5};
-        \node [below] at (0.5,0) {0.5};
-        \node [below] at (1,0) {1};
-        \node [below] at (1.5,0) {1.5};
+            % Add x-axis labels
+            \node [below] at (-1.5,0) {-1.5};
+            \node [below] at (-1,0) {-1};
+            \node [below] at (-0.5,0) {-0.5};
+            \node [below] at (0.5,0) {0.5};
+            \node [below] at (1,0) {1};
+            \node [below] at (1.5,0) {1.5};
 
-        % Add y-axis labels
-        \node [left] at (0,-8) {-8};
-        \node [left] at (0,-4) {-4};
-        \node [left] at (0,4) {4};
-        \node [left] at (0,8) {8};
-    \end{tikzpicture}
+            % Add y-axis labels
+            \node [left] at (0,-8) {-8};
+            \node [left] at (0,-4) {-4};
+            \node [left] at (0,4) {4};
+            \node [left] at (0,8) {8};
+        \end{tikzpicture}
+    }
     \caption{Graph of $f(x) = x^5 - 4x - 2$}
 \end{figure}
 
-Do not be mislead by the graph of $f(x)$ -- one can easily verify that -1.25, 0.5, and 1.5 are \textit{not} zeroes of $f(x)$ in $\Q$.
+Do not be mislead by \myref{figure-graph-of-quintic} -- one can easily verify that -1.25, 0.5, and 1.5 are not zeroes of $f(x)$ in $\Q$.
 
 \begin{proof}
     One sees by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2 that $f(x)$ is irreducible over $\Q$; consequently this means that $f(x)$ is separable in $F$ (\myref{thrm-zeroes-of-an-irreducible}).
@@ -999,13 +1004,13 @@ Why is it important that the Galois group of that polynomial is $\Sn{5}$? It tur
     However, note that the composition factor $\An{5}/1 \cong \An{5}$ is not a cyclic group of prime order. Therefore, by \myref{prop-solvable-equivalence-for-finite-groups}, we see that $\Sn{5}$ is not solvable.
 \end{proof}
 
-Therefore we see the following fact.
+Therefore we obtain the following fact.
 
 \begin{proposition}
     $x^5 - 4x - 2$ is not solvable by radicals over $\Q$.
 \end{proposition}
 \begin{proof}
-    We know that the splitting field of $x^5 - 4x - 2$ over $\Q$, which we denote by $F$, has a Galois group isomorphic to $\Sn{5}$. But $\Sn{5}$ is not solvable. Hence, by the contrapositive of Galois' theorem (\myref{thrm-solvable-by-radicals-implies-solvable-group}), we see that the splitting field $F$ is not contained in a radical extension, which means that $f(x)$ is not solvable by radicals over $\Q$.
+    We know that the splitting field of $x^5 - 4x - 2$ over $\Q$, which we denote by $F$, has a Galois group isomorphic to $\Sn{5}$. But $\Sn{5}$ is not solvable. Hence, by the contrapositive of Galois' theorem (\myref{thrm-solvable-by-radicals-implies-solvable-group}), the splitting field $F$ is not contained in a radical extension, which means that $f(x)$ is not solvable by radicals over $\Q$.
 \end{proof}
 
 The obvious generalisation of the above fact is captured by the Abel-Ruffini theorem.
