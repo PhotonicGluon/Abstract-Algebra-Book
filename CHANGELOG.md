@@ -1,6 +1,191 @@
 # Abstract Algebra Book Changelog
 
 ---
+## [1st Edition, Build 33](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.32...v1-build.33)
+
+### General Content Changes
+- Fixed a minor error in the title of the book.
+- Changed page size to be roughly executive page size (7" x 10") with a 0.25" bleed margin.
+
+### Part 0 (Preliminaries) Changes
+- Fixed minor inconsistency in capitalisation in section 2.2.
+- Made a small change to the statement of exercise 2.5.
+- Fixed inconsistency in capitalisation of statement variables in definition 2.4.4 and definition 2.4.6.
+- Fixed typo in section 3.1.
+- Removed remark about the initialism "BWOC" in section 3.4.
+- Improved the proofs in example 3.4.3 and example 3.5.3.
+- Made the proof in example 3.5.4 clearer.
+- Fixed confusing remark after axiom 4.1.7.
+- Rewritten the examples in subsection 4.3.1.
+- Made definition 5.1.1 clearer.
+- Fixed examples in section 5.3 to correctly use the function definition.
+- Clarified definition 5.3.7 and definition 5.3.11.
+- Fixed incorrect definition of function composition in definition 5.5.1.
+- Made axiom 5.5.2 clearer.
+- Updated definition 5.6.1.
+- Fixed example 5.6.5.
+- Reordered the final part of section 5.6.
+- Made other minor changes to the text.
+
+### Part I (Groups) Changes
+- Made example 8.1.5 and example 8.1.7 more concise.
+- Edited propositions' statements and proofs in section 8.2.
+- Slightly edited example 8.3.3.
+- Edited the proof of proposition 8.4.4 and theorem 8.4.5.
+- Added labels to the vertices in figure 8.1.
+- Added more detail to example 8.5.4 and example 8.5.5.
+- Made the statement of problem 8.7 clearer.
+- Edited definition 9.1.1 and its remark to be nicer.
+- Fixed minor issues in example 9.1.2.
+- Fixed minor typo in definition 9.1.3.
+- Made the proof of theorem 9.2.1 (subgroup test) more concise.
+- Made example 9.2.2 clearer.
+- Made definition 9.3.1 clearer.
+- Updated the statement and proof of lemma 9.3.3 (coset equality).
+- Slightly changed the remark after corollary 9.3.4.
+- Made the proof of lemma 9.4.4 more succinct.
+- Rewritten the proof of theorem 9.3.5 (Lagrange).
+- Made the proof of corollary 9.4.6 less confusing.
+- Reworded the statement of corollary 9.4.8.
+- Reworded the statement of exercise 9.7.
+- Rewritten the starting part of section 9.6.
+- Edited the definition of the groups mentioned in example 10.1.3.
+- Made some minor edits to proposition 10.2.1 and proposition 10.2.2.
+- Clarified definition 10.3.1 and definition 10.3.2.
+- Edited the proof of theorem 10.5.2 and theorem 10.5.3.
+- Made example 11.1.1 clearer.
+- Rewritten the statement for exercise 11.2.
+- Edited the statement for corollary 11.2.6.
+- Edited the proof for theorem 11.3.1 (Cayley's theorem).
+- Clarified the statement of proposition 12.1.2.
+- Made some minor edits to the proof of theorem 12.1.6.
+- Added a new remark after problem 12.4.
+- Changed "Fundamental Homomorphism Theorem" to "First Isomorphism Theorem".
+- Changed "Diamond Isomorphism Theorem" to "Second Isomorphism Theorem".
+- Added more detail for example 13.5.2.
+- Fixed a weird space for the symbol of the General/Special linear group of real numbers.
+- Made minor changes to the names of section 14.2, section 14.3, subsection 14.5.2, subsection 14.5.3, subsection 14.6.1, and subsection 14.6.2.
+- Edited definition 14.4.1 slightly.
+- Made a minor edit to axiom 14.4.5.
+- Edited the proof of proposition 14.5.2 and proposition 14.5.4.
+- Rewritten the proof of proposition 14.6.7.
+- Edited part of the statement of problem 14.4.
+- Fixed a small issue with definition 15.1.1.
+- Clarified the symbol $g$ used in lemma 15.4.2 (Burnside).
+- Made the remark after definition 15.5.2 more succinct.
+- Cleaned up the proof of theorem 15.6.1 (Class Equation).
+- Made the statement of problem 15.3 clearer.
+- Edited the introduction to chapter 16 to flow better.
+- Moved exercise 16.1 to a more suitable location.
+- Made definition 16.3.1 more airtight.
+- Made the statement of exercise 16.5 clearer.
+- Changed the remark after proposition 16.3.3 to be clearer.
+- Updated the proof of proposition 16.3.4 to be clearer.
+- Removed remark after the proof of theorem 16.4.1 (Sylow II).
+- Fixed titling format for section 16.6.
+- Added more detail about the Third Sylow Theorem in section 16.5.
+- Made definition 16.6.1 clearer.
+- Added additional conditions in the statement of problem 16.5.
+- Fixed issues in the proofs of lemma 17.3.1, lemma 17.3.2, and lemma 17.3.4.
+- Fixed missing reference in the proof of lemma 17.3.2.
+- Fixed introduction to chapter 18.
+- Updated definition 18.1.1, definition 18.1.3, and definition 18.2.1 to be clearer.
+- Fixed a minor issue with the second remark after definition 18.3.1.
+- Added a new example in section 18.3 to explain why the group of integers has no composition series.
+- Edited example 18.5.2 to be clearer.
+- Added more detail in the proof of theorem 18.5.3 (Schreier Refinement Theorem).
+- Made the proof of theorem 19.2.1 more succinct.
+- Edited the proof of theorem 19.2.4 to be clearer.
+- Rewritten the statement of corollary 19.2.5.
+- Made other minor changes to the text.
+
+### Part II (Rings) Changes
+- Changed the preamble to chapter 20.
+- Rewritten definition 20.1.1, definition 20.1.2, definition 20.1.3, and definition 20.2.1 to be more concise.
+- Fixed a minor typo in the proof of proposition 21.1.10.
+- Made the proof of proposition 21.3.6 clearer.
+- Edited definition 21.4.1 to be clearer.
+- Rewritten the statements of problem 21.4 and problem 21.8 to be clearer.
+- Added text in between definition 22.3.1 and definition 22.3.2 to make it clear about the intentions of the definitions.
+- Fixed typos in the proof of proposition 22.3.4.
+- Fixed a small mistake in the introduction to chapter 23.
+- Fixed a critical error at the beginning of section 23.1.
+- Edited the explanation after the remark of definition 23.2.1.
+- Modified definition 23.2.2 to be clearer.
+- Changed the symbols used for ideals in section 23.3.
+- Updated the statement of exercise 23.4 to be more succinct.
+- Changed definition 23.5.1 and the description after definition 23.5.1 slightly.
+- Fixed a slight grammatical error in example 23.5.4.
+- Made exercise 23.10 more succinct.
+- Added a new example (example 23.6.3) about the annihilator.
+- Fixed error in the proof of proposition 23.6.8.
+- Made definition 24.1.1 more airtight.
+- Added more detail to the statement of exercise 24.1.
+- Rewritten text around definition 24.1.6.
+- Fixed grammar in definition 25.1.1.
+- Rewritten the proof of proposition 25.1.5 to be more succinct.
+- Fixed a minor typo in example 25.1.10.
+- Edited theorem 25.3.3 to be clearer.
+- Rewritten theorem 25.4.1 (polynomial long division), corollary 25.4.6 (remainder theorem), and corollary 25.4.7 (factor theorem) to be more succinct.
+- Made the statement of exercise 26.2 clearer.
+- Fixed slight awkwardness of text in definition 26.2.7.
+- Cleaned up the proof of lemma 26.2.8.
+- Slightly edited the statement and proof of theorem 26.2.9 to be more succinct.
+- Made the explanation offered in example 26.2.15 more concise.
+- Cleaned up the proof of corollary 26.3.2.
+- Fixed erroneous irreducible polynomial in example 26.3.6.
+- Fixed typos in example 26.4.4 and example 26.4.5.
+- Rewritten definition 27.2.3.
+- Edited the proof of proposition 27.2.4 to be clearer.
+- Fixed typo in the proof of proposition 27.2.6.
+- Made the proof of proposition 27.3.3 more spaced out and clearer.
+- Fixed slight awkwardness in the sketch of the proof of theorem 27.4.4.
+- Slightly edited the statement of problem 27.14.
+- Edited the description of NTRU parameters in subsection 28.3.1.
+- Made other minor changes to the text.
+
+### Part III (Fields) Changes
+- Moved terminology of (in)finite fields into a new definition.
+- Made definition 29.3.1 more airtight.
+- Fixed slight confusion within definition 30.3.1.
+- Edited part of the proof of theorem 31.2.6 (specifically the surjective proof of the second isomorphism) to be less confusing.
+- Made example 31.2.14 more concise.
+- Changed the statement of theorem 31.2.16 to be clearer.
+- Fixed slight error in the proof of theorem 31.2.16.
+- Amended part of the proof of theorem 31.2.21.
+- Added more explanation to the proof of theorem 31.5.3.
+- Edited definition 31.5.5 to make the definition of perfect fields clearer.
+- Moved exercise 31.9 to the end of section 31.5.
+- Edited the preamble to chapter 32 to be less awkward and more grammatically sound.
+- Modified text before definition 32.2.3 to be clearer.
+- Slightly edited example 32.3.3 to improve clarity.
+- Edited the proof of corollary 32.4.7 to be more concise.
+- Changed incorrect term used in the text before theorem 33.1.3.
+- Edited part of example 33.1.6 to have a more consistent style with the rest of the text.
+- Modified definition 34.1.6 to be less verbose.
+- Added emphasis for the terms "similar" and "congruent" found in definition 34.1.15 and definition 34.1.17.
+- Made other minor changes to the text.
+
+### Part IV (Galois) Changes
+- Updated the preamble to the part.
+- Edited the proofs of proposition 35.1.1 and proposition 35.1.2 to be clearer.
+- Added a caption to the tables in example 35.1.5.
+- Modified the proof of corollary 35.1.12.
+- Edited the statement of corollary 35.5.3 to be clearer.
+- Fixed minor errors in example 35.5.5.
+- Fixed the fact before proposition 35.7.2.
+- Added a label for the graph of the quintic in proposition 35.7.2.
+- Modified the statements of definition 36.1.1, proposition 36.1.2, definition 36.1.4, definition 36.1.5, and proposition 36.1.9 to be clearer and more precise.
+- Fixed the article used in the text before definition 36.1.4.
+- Edited awkward last sentence before axiom 36.1.8.
+- Removed awkward phrase "the calculus inclined" in the text before 36.2.2.
+- Slightly edited the statement of lemma 36.3.2.
+- Made other minor changes to the text.
+
+### Other Changes
+- Cleaned up the code for tables.
+
+---
 ## [1st Edition, Build 32](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.31...v1-build.32)
 
 ### General Content Changes
