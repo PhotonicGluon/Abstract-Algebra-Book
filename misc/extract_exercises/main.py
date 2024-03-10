@@ -1,4 +1,5 @@
 # IMPORTS
+import os
 import re
 from datetime import datetime
 
@@ -90,6 +91,10 @@ def generate_questions_and_solutions(book_path):
 
     return output
 
+
+# SETUP
+# Change current directory to the script directory
+os.chdir(os.path.split(os.path.realpath(__file__))[0])
 
 # MAIN CODE
 # Generate exercise and solutions code
