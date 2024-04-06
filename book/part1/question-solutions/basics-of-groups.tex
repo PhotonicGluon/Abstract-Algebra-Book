@@ -1,18 +1,18 @@
 \section{Basics of Groups}
 \subsection*{Exercises}
 \begin{questions}
-    \item The Cayley table of $(\Z_6, \otimes_6)$ is as follows:
+    \item The Cayley table of $(\Z_6, \otimes_6)$ is shown below.
     \begin{table}[H]
         \centering
         \begin{tabular}{|l|l|l|l|l|l|l|}
         \hline
         \textbf{$\otimes_n$} & \textbf{0} & \textbf{1} & \textbf{2} & \textbf{3} & \textbf{4} & \textbf{5} \\ \hline
-        \textbf{0}       & 0          & 0          & 0          & 0          & 0          & 0          \\ \hline
-        \textbf{1}       & 0          & 1          & 2          & 3          & 4          & 5          \\ \hline
-        \textbf{2}       & 0          & 2          & 4          & 0          & 2          & 4          \\ \hline
-        \textbf{3}       & 0          & 3          & 0          & 3          & 0          & 3          \\ \hline
-        \textbf{4}       & 0          & 4          & 2          & 0          & 4          & 2          \\ \hline
-        \textbf{5}       & 0          & 5          & 4          & 3          & 2          & 1          \\ \hline
+        \textbf{0} & 0 & 0 & 0 & 0 & 0 & 0 \\ \hline
+        \textbf{1} & 0 & 1 & 2 & 3 & 4 & 5 \\ \hline
+        \textbf{2} & 0 & 2 & 4 & 0 & 2 & 4 \\ \hline
+        \textbf{3} & 0 & 3 & 0 & 3 & 0 & 3 \\ \hline
+        \textbf{4} & 0 & 4 & 2 & 0 & 4 & 2 \\ \hline
+        \textbf{5} & 0 & 5 & 4 & 3 & 2 & 1 \\ \hline
         \end{tabular}
     \end{table}
 
@@ -29,18 +29,18 @@
         &= (x^0)^{-1}. & (\text{definition of }x^0)
     \end{align*}
 
-    Now assume that the statement holds for a non-negative integer $k$, i.e. $(x^{-1})^k = (x^k)^{-1}$. We are to show that the statement holds for $k+1$, i.e. $(x^{-1})^{k+1} = (x^{k+1})^{-1}$.
+    Now assume that the statement holds for some non-negative integer $k$, that is, $(x^{-1})^k = (x^k)^{-1}$. We show that the statement holds for $k + 1$, i.e. $(x^{-1})^{k+1} = (x^{k+1})^{-1}$.
 
     Observe that
     \begin{align*}
         (x^{-1})^{k+1} &= (x^{-1})^k \ast x^{-1} & (\text{by statement 1})\\
-        &= (x^k)^{-1} \ast x^{-1} & (\text{by hypothesis})\\
+        &= (x^k)^{-1} \ast x^{-1} & (\text{by induction hypothesis})\\
         &= (x\ast x^k)^{-1} & (\text{by Shoes and Socks})\\
         &= (x^{k+1})^{-1} & (\text{by statement 1})
     \end{align*}
     so the statement is true for $k+1$.
 
-    Thus, by induction, we have $(x^{-1})^n = (x^n)^{-1}$ for any non-negative integer $n$.
+    Thus we have $(x^{-1})^n = (x^n)^{-1}$ for any non-negative integer $n$.
 
     \item \begin{partquestions}{\roman*}
         \item The identity is $1$ since:
@@ -60,7 +60,7 @@
 
     \item $-i$ is the other generator since $(-i)^1 = -i$, $(-i)^2 = -1$, $(-i)^3 = i$, and $(-i)^4 = 1$.
 
-    \item We work slowly:
+    \item We see that
     \begin{align*}
         rsr^4sr^3 &= r(sr^4)(sr^3)\\
         &= r(r^2s)(r^3s)\\
@@ -68,31 +68,33 @@
         &= r^3(sr^3)s\\
         &= r^3(r^3s)s\\
         &= r^6s^2\\
-        &= e
+        &= e.
     \end{align*}
 \end{questions}
 
+\newpage  % There seems to be some slight misalignment in the solutions, so we need to place this newpage here
+
 \subsection*{Problems}
 \begin{questions}
-    \item The group table of $D_4$ is as follows.
+    \item The Cayley table of $D_4$ is as follows.
     \begin{table}[H]
         \centering
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|}
-        \hline
-        $\ast$ & $\boldsymbol{e}$    & $\boldsymbol{r}$    & $\boldsymbol{r^2}$  & $\boldsymbol{r^3}$  & $\boldsymbol{s}$    & $\boldsymbol{rs}$   & $\boldsymbol{r^2s}$ & $\boldsymbol{r^3s}$ \\ \hline
-        $\boldsymbol{e}$    & $e$    & $r$    & $r^2$  & $r^3$  & $s$    & $rs$   & $r^2s$ & $r^3s$ \\ \hline
-        $\boldsymbol{r}$    & $r$    & $r^2$  & $r^3$  & $e$    & $rs$   & $r^2s$ & $r^3s$ & $s$    \\ \hline
-        $\boldsymbol{r^2}$  & $r^2$  & $r^3$  & $e$    & $r$    & $r^2s$ & $r^3s$ & $s$    & $rs$   \\ \hline
-        $\boldsymbol{r^3}$  & $r^3$  & $e$    & $r$    & $r^2$  & $r^3s$ & $s$    & $rs$   & $r^2s$ \\ \hline
-        $\boldsymbol{s}$    & $s$    & $r^3s$ & $r^2s$ & $rs$   & $e$    & $r^3$  & $r^2$  & $r$    \\ \hline
-        $\boldsymbol{rs}$   & $rs$   & $s$    & $r^3s$ & $r^2s$ & $r$    & $e$    & $r^3$  & $r^2$  \\ \hline
-        $\boldsymbol{r^2s}$ & $r^2s$ & $rs$   & $s$    & $r^3s$ & $r^2$  & $r$    & $e$    & $r^3$  \\ \hline
-        $\boldsymbol{r^3s}$ & $r^3s$ & $r^2s$ & $rs$   & $s$    & $r^3$  & $r^2$  & $r$    & $e$    \\ \hline
+            \hline
+            $\ast$ & $\boldsymbol{e}$ & $\boldsymbol{r}$ & $\boldsymbol{r^2}$ & $\boldsymbol{r^3}$ & $\boldsymbol{s}$ & $\boldsymbol{rs}$ & $\boldsymbol{r^2s}$ & $\boldsymbol{r^3s}$ \\ \hline
+            $\boldsymbol{e}$ & $e$ & $r$ & $r^2$ & $r^3$ & $s$ & $rs$ & $r^2s$ & $r^3s$ \\ \hline
+            $\boldsymbol{r}$ & $r$ & $r^2$ & $r^3$ & $e$ & $rs$ & $r^2s$ & $r^3s$ & $s$ \\ \hline
+            $\boldsymbol{r^2}$ & $r^2$ & $r^3$ & $e$ & $r$ & $r^2s$ & $r^3s$ & $s$ & $rs$ \\ \hline
+            $\boldsymbol{r^3}$ & $r^3$ & $e$ & $r$ & $r^2$ & $r^3s$ & $s$ & $rs$ & $r^2s$ \\ \hline
+            $\boldsymbol{s}$ & $s$ & $r^3s$ & $r^2s$ & $rs$ & $e$ & $r^3$ & $r^2$ & $r$ \\ \hline
+            $\boldsymbol{rs}$ & $rs$ & $s$ & $r^3s$ & $r^2s$ & $r$ & $e$ & $r^3$ & $r^2$ \\ \hline
+            $\boldsymbol{r^2s}$ & $r^2s$ & $rs$ & $s$ & $r^3s$ & $r^2$ & $r$ & $e$ & $r^3$ \\ \hline
+            $\boldsymbol{r^3s}$ & $r^3s$ & $r^2s$ & $rs$ & $s$ & $r^3$ & $r^2$ & $r$ & $e$ \\ \hline
         \end{tabular}
     \end{table}
     \begin{partquestions}{\alph*}
         \item $D_4$ is not abelian because $rs \neq sr = r^3s$.
-        \item We simplify $r^3srsr^3sr^3sr^2$.
+        \item Note that
         \begin{align*}
             r^3 sr sr^3 sr^3 sr^2 &= r^3srs(r^3s)(r^3s)r^2\\
             &= r^3 srs(e)r^2\\
@@ -100,13 +102,13 @@
             &= r^2(rs rs)r^2\\
             &= r^2(e)r^2\\
             &= r^4\\
-            &= e
+            &= e.
         \end{align*}
     \end{partquestions}
 
     \item We need to prove each of the group axioms in order to prove that $(\Q, +)$ is indeed a group.
     \begin{itemize}
-        \item \textbf{Closure}: Let $\frac ab$ and $\frac cd$ be rational numbers where $b, d \neq 0$. Their sum is $\frac{ad+bc}{bd}$, which is also rational. Therefore $\Q$ is closed under addition.
+        \item \textbf{Closure}: Let $\frac ab, \frac cd \in \Q$. Note that $\frac{ad+bc}{bd} \in \Q$. Therefore $\Q$ is closed under addition.
 
         \item \textbf{Associativity}: Addition is associative by \myref{axiom-addition-is-associative}.
 
@@ -114,17 +116,16 @@
         \[
             0 + \frac ab = \frac ab + 0 = \frac ab
         \]
-        for any rational number $\frac ab$ (with $b \neq 0$).
+        for any $\frac ab \in \Q$.
 
-        \item \textbf{Inverse}: For any rational number $\frac ab$, its inverse is $-\frac ab$ since
+        \item \textbf{Inverse}: For any $\frac ab \in \Q$ its inverse is $-\frac ab$ because
         \[
-            \frac ab + \left(-\frac ab\right) = \left(-\frac ab\right) + \frac ab = 0
+            \frac ab + \left(-\frac ab\right) = \left(-\frac ab\right) + \frac ab = 0.
         \]
-        for any rational number $\frac ab$ (with $b \neq 0$).
     \end{itemize}
     Furthermore addition is assumed to be commutative by \myref{axiom-addition-is-commutative}. Therefore $(\Q, +)$ is an abelian group.
 
-    \item If every element in $G$ is its own inverse, then for every element $g$ in $G$, $g^{-1} = g$. Consider $(gh)^{-1}$ where $g$ and $h$ are elements in $g$. On one hand, by Shoes and Socks, $(gh)^{-1} = h^{-1}g^{-1} = hg$ since each element is its own inverse. On the other hand, since $gh$ is an element in $G$, thus $(gh)^{-1} = gh$. Thus $gh = hg$ which means $G$ is abelian.
+    \item If every element in $G$ is its own inverse, then for every element $g \in G$ we know $g^{-1} = g$. Consider $(gh)^{-1}$ where $g, h \in G$. On one hand, by Shoes and Socks, $(gh)^{-1} = h^{-1}g^{-1} = hg$ since each element is its own inverse. On the other hand, because $gh \in G$ thus $(gh)^{-1} = gh$. So $gh = hg$ which means $G$ is abelian.
 
     \item Recall that $n = |x|$ is the smallest positive integer that satisfies $x^n = e$.
 
@@ -146,7 +147,7 @@
         \item Suppose $G$ is abelian. Clearly $(gh)^1 = gh$. Suppose $(gh)^{k} = g^kh^k$ for some positive integer $k$. Then
         \begin{align*}
             (gh)^{k+1} &= (gh)(gh)^k\\
-            &= (gh)(g^kh^k) & (\text{by hypothesis})\\
+            &= (gh)(g^kh^k) & (\text{by induction hypothesis})\\
             &= ghg^kh^k\\
             &= g(hg^k)h^k\\
             &= g(g^kh)h^k & (\text{since } G \text{ is abelian})\\
