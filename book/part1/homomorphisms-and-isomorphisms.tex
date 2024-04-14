@@ -31,10 +31,10 @@ Now that we have introduced the idea of a group, one wonders about how elements 
 \end{example}
 
 \begin{exercise}
-    Let $G = (\mathbb{N}, +)$ and $H = (\mathbb{N}, \times)$. Let $\phi: G \to H$. Determine whether the following maps are homomorphisms.
+    Let $G = (\Z, +)$ and $H = (\Q \setminus \{0\}, \times)$. Let the map $\phi: G \to H$. Determine whether each of the following rules for $\phi$ makes $\phi$ a homomorphism.
     \begin{partquestions}{\alph*}
-        \item $\phi(n) = n$
-        \item $\phi(n) = 2^n$
+        \item $\phi(x) = x$ for all $x \in G$.
+        \item $\phi(x) = 2^x$ for all $x \in G$.
     \end{partquestions}
 \end{exercise}
 \begin{exercise}
@@ -104,7 +104,7 @@ For the next few properties, define
     \phi^{-1}(H_2) = \{g \in G_1 \vert \phi(g) \in H_2\}.
 \end{gather*}
 
-\begin{proposition}
+\begin{proposition}\label{prop-homomorphism-image-is-subgroup}
     $\phi(H_1) \leq G_2$.
 \end{proposition}
 \begin{proof}
@@ -146,10 +146,10 @@ For the next few properties, define
 \end{proof}
 
 \begin{exercise}\label{exercise-homomorphism-image-is-subgroup}
-    Prove that $\phi(H_1) \leq G_2$.
+    Prove \myref{prop-homomorphism-image-is-subgroup}.
 \end{exercise}
 \begin{exercise}
-    Prove or disprove: if $H_1 \unlhd G_1$, then $\phi(H_1) \unlhd G_2$.
+    Let $G_1$ and $G_2$ be groups, and let $\phi: G_1 \to G_2$ be a homomorphism. Suppose $H_1$ is a normal subgroup of $G_1$. Prove or disprove: $\phi(H_1) \unlhd G_2$.
 \end{exercise}
 \begin{exercise}\label{exercise-order-of-homomorphism-divides-order}
     Let $G$ and $H$ be groups, and let $\phi: G \to H$ be a homomorphism. Prove that $|\phi(a)|$ divides $|a|$ for any $a \in G$.
@@ -210,7 +210,7 @@ We now look a special (and important) type of homomorphism: isomorphisms, which 
 \end{example}
 
 \begin{exercise}\label{exercise-identity-map-is-isomorphism}
-    The \term{identity function}\index{identity function} (or \term{identity map}\index{identity map}) $\id: S \to S$, where $S$ is a set, is the function such that $\id(x) = x$ for all $x \in S$.
+    The \term{identity function}\index{identity function} (or \term{identity map}\index{identity map}) $\id: S \to S$, where $S$ is a non-empty set, is the function such that $\id(x) = x$ for all $x \in S$.
     \begin{partquestions}{\roman*}
         \item Show that $\id$ is a bijection.
         \item If $S$ is a group, show that $\id$ is an isomorphism.
@@ -220,11 +220,11 @@ We now look a special (and important) type of homomorphism: isomorphisms, which 
     Let the groups $G = (\{1, 2, 3, 4\}, \otimes_5)$ and $H = (\{1, 3, 7, 9\}, \otimes_{10})$.
     \begin{partquestions}{\roman*}
         \item Show that $G = \langle 3 \rangle$ and $H = \langle 7 \rangle$.
-        \item Prove that $G \cong H$ by considering $\phi: G \to H, 3^k \mapsto 7^k$.
+        \item Prove that $G \cong H$ by considering the map $\phi: G \to H, 3^k \mapsto 7^k$.
     \end{partquestions}
 \end{exercise}
 \begin{exercise}\label{exercise-composition-of-isomorphisms-is-isomorphisms}
-    Let $A$, $B$, and $C$ be sets. Let $f: A \to B$ and $g: B \to C$ be bijections. Let $h = g\circ f$, where $\circ$ represents function composition. That is, $h: A \to C, x \mapsto g(f(x))$.
+    Let $A$, $B$, and $C$ be non-empty sets. Let $f: A \to B$ and $g: B \to C$ be bijections. Let $h = g\circ f$, where $\circ$ represents function composition. That is, $h: A \to C, x \mapsto g(f(x))$.
     \begin{partquestions}{\roman*}
         \item Show that $h$ is a bijection.
         \item If $A$, $B$, and $C$ are groups, and $f$ and $g$ are isomorphisms, show that $h$ is an isomorphism.
@@ -288,7 +288,7 @@ Isomorphisms between groups means that the two groups `share the same structure'
 \end{proof}
 
 \begin{exercise}
-    Let $\phi: G \to H$ be an isomorphism between the groups $G$ and $H$. Show that if $G$ has a normal subgroup with order $k$, then $H$ also has a normal subgroup of order $k$.
+    Let $G$ and $H$ be groups and let $\phi: G \to H$ be an isomorphism. Show that if $G$ has a normal subgroup with order $k$, then $H$ also has a normal subgroup of order $k$.
 \end{exercise}
 
 \begin{exercise}
@@ -360,7 +360,7 @@ For brevity, we also have notation regarding the integers under addition.
 \end{proof}
 
 \begin{exercise}
-    Let $G = (\{1, 3, 7, 9\}, \otimes_{10})$ be a group. Find the positive integer $n$ such that $G \cong \Z_n$.
+    Let the group $G = (\{1, 3, 7, 9\}, \otimes_{10})$. Find the positive integer $n$ such that $G \cong \Z_n$.
 \end{exercise}
 
 \newpage
@@ -371,28 +371,28 @@ For brevity, we also have notation regarding the integers under addition.
 \end{problem}
 
 \begin{problem}
-    Let $\Q_{>0}$ denote the set of positive rational numbers. Let the groups $G = (\Q, +)$ and $H = (\Q_{>0}, \times)$. Prove that $G \not\cong H$.
-\end{problem}
-
-\begin{problem}
-    Define a map $\phi: \Z \to \Z$ such that $\phi(n) = 2n$.
+    Define the map $\phi: \Z \to \Z$ such that $\phi(n) = 2n$.
     \begin{partquestions}{\alph*}
         \item Prove that $\phi$ is a homomorphism.
         \item Prove that $\phi$ is injective.
-        \item Prove that there does \textit{not} exist a homomorphism $\psi: \Z \to \Z$ where $\psi(\phi(n)) = n$.
+        \item Prove that there does not exist a homomorphism $\psi: \Z \to \Z$ where $\psi(\phi(n)) = n$.
     \end{partquestions}
 \end{problem}
 
 \begin{problem}
-    Let $G$ be a group. Define a map $f: G \to G$ such that $f(g) = g^{-1}$ for all $g$ in $G$. Prove that $G$ is abelian if and only if $f$ is a homomorphism.
+    Let $\Q_{>0}$ denote the set of positive rational numbers. Let the groups $G = (\Q, +)$ and $H = (\Q_{>0}, \times)$. Prove that $G \not\cong H$.
 \end{problem}
 
 \begin{problem}
-    Let $G$ and $H$ be groups. Suppose that we have a surjective homomorphism $\phi: G \to H$. Prove that if $G$ is abelian, then so is $H$.
+    Let $G$ be a group. Define a map $f: G \to G$ such that $f(x) = x^{-1}$ for all $x \in G$. Prove that $G$ is abelian if and only if $f$ is a homomorphism.
 \end{problem}
 
 \begin{problem}
-    Let $G$ and $H$ be groups. Suppose that we have a surjective homomorphism $\phi: G \to H$. Let $N \unlhd G$. Show that $\phi(N) \unlhd H$. That is, show that the image of $N$ under $\phi$ is a normal subgroup of $H$.
+    Let $G$ and $H$ be groups. Suppose that $\phi: G \to H$ is a surjective homomorphism. Prove that if $G$ is abelian, then so is $H$.
+\end{problem}
+
+\begin{problem}
+    Let $G$ and $H$ be groups. Suppose that $\phi: G \to H$ is a surjective homomorphism. Let $N \unlhd G$. Show that $\phi(N) \unlhd H$. That is, show that the image of $N$ under $\phi$ is a normal subgroup of $H$.
 \end{problem}
 
 \begin{problem}\label{problem-Zn-isomorphic-to-Z-by-nZ}

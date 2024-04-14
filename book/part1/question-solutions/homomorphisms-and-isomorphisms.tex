@@ -2,8 +2,8 @@
 \subsection*{Exercises}
 \begin{questions}
     \item \begin{partquestions}{\alph*}
-        \item No, since $\phi(m+n) = m + n$ while $\phi(m)\phi(n) = mn \neq m+n$.
-        \item Yes, since $\phi(m+n) = 2^{m+n} = 2^m2^n = \phi(m)\phi(n)$.
+        \item No, since $\phi(x + y) = x + y$ while $\phi(x)\phi(y) = xy \neq x+y$ for $x, y \in G$.
+        \item Yes, since $\phi(x + y) = 2^{x + y} = 2^x2^y = \phi(x)\phi(y)$ for all $x, y \in G$.
     \end{partquestions}
 
     \item One sees that
@@ -12,15 +12,15 @@
     \]
     so $\phi$ is indeed a homomorphism.
 
-    \item The codomain of $\phi$ is $G_2$, so $\phi(H_1) \subseteq G_2$. Clearly $e_2 \in \phi(H_1)$ since $e_2 = \phi(e_1)$ and $e_1 \in H_1$. Now suppose $x$ and $y$ are in $\phi(H_1)$, meaning that $\phi(h_x) = x$ and $\phi(h_y) = y$ for some $h_x$ and $h_y$ in $H$. So $h_xh_y^{-1}$ is in $H$. Furthermore,
+    \item The codomain of $\phi$ is $G_2$, so $\phi(H_1) \subseteq G_2$. Clearly $e_2 \in \phi(H_1)$ since $e_2 = \phi(e_1)$ and $e_1 \in H_1$. Now suppose $x, y \in \phi(H_1)$, meaning that $\phi(h_x) = x$ and $\phi(h_y) = y$ for some $h_x, h_y \in H$. So $h_xh_y^{-1} \in H$. Furthermore,
     \begin{align*}
         \phi(h_xh_y^{-1}) &= \phi(h_x)\phi(h_y^{-1})\\
         &= \phi(h_x)\left(\phi(h_y)\right)^{-1}\\
         &= xy^{-1},
     \end{align*}
-    meaning that $xy^{-1}$ is in $\phi(H_1)$. Therefore $\phi(H_1) \leq G_2$ by subgroup test (\myref{thrm-subgroup-test}).
+    meaning that $xy^{-1} \in \phi(H_1)$. Therefore $\phi(H_1) \leq G_2$ by the subgroup test (\myref{thrm-subgroup-test}).
 
-    \item Disprove. Let $G_1 = H_1 = \Z$ be the additive group of integers and let $G_2 = H_2 = D_n$, the dihedral group of order $2n$. Consider the map $\phi: G_1 \to G_2$ where $\phi(m) = s^m$. Clearly, $H_1 \unlhd G_1$. Note that $\phi(H_1) = \{e, s\} = \langle s \rangle$. From \myref{example-normal-subgroups-of-d3}, we know that $\langle s \rangle$ is not a normal subgroup of $D_3 = G_2$, so $\phi(H_1)$ is not a normal subgroup of $G_2$.
+    \item Disprove. Let $G_1 = H_1 = \Z$ be the additive group of integers and let $G_2 = D_n$, the dihedral group of order $2n$. Consider the map $\phi: G_1 \to G_2$ where $\phi(m) = s^m$. Clearly, $H_1 \unlhd G_1$. Note that $\phi(H_1) = \{e, s\} = \langle s \rangle$. From \myref{example-normal-subgroups-of-d3}, we know that $\langle s \rangle$ is not a normal subgroup of $D_3 = G_2$, so $\phi(H_1)$ is not a normal subgroup of $G_2$.
 
     \item Suppose $|a| = n$. Note that
     \[
@@ -44,7 +44,7 @@
     \end{partquestions}
 
     \item \begin{partquestions}{\roman*}
-        \item Since $3^0 = 1$, $3^1 = 3$, $3^2 = 9 \equiv 4 \pmod{5}$, and $3^3 = 27 \equiv 2 \pmod{5}$, thus $G = \langle 3 \rangle$. Since $7^0 = 1$, $7^1 = 7$, $7^2 = 49 \equiv 9 \pmod{10}$, and $7^3 = 343 \equiv 3 \pmod{10}$, thus $H = \langle 7 \rangle$.
+        \item Since $3^0 = 1$, $3^1 = 3$, $3^2 = 9 \equiv 4 \pmod{5}$, and $3^3 = 27 \equiv 2 \pmod{5}$, thus $G = \langle 3 \rangle$. Also since $7^0 = 1$, $7^1 = 7$, $7^2 = 49 \equiv 9 \pmod{10}$, and $7^3 = 343 \equiv 3 \pmod{10}$, thus $H = \langle 7 \rangle$.
         \item We need to prove that it is a homomorphic bijection.
         \begin{itemize}
             \item \textbf{Homomorphism}:
@@ -67,15 +67,15 @@
             \begin{align*}
                 &h(x) = h(y)\\
                 \iff&g(f(x)) = g(f(y))\\
-                \iff&f(x) = f(y) & (g \text{ is bijective})\\
-                \iff&x = y & (f \text{ is injective})
+                \iff&f(x) = f(y) & (g \text{ is a bijection})\\
+                \iff&x = y & (f \text{ is a bijection})
             \end{align*}
             so $h$ is injective.
-            \item \textbf{Surjective}: Suppose $c \in C$. Note that $f^{-1}: B \to A$ and $g^{-1}: C \to B$ both exist since both $f$ and $g$ are injective. Let $a = f^{-1}(g^{-1}(c)) \in A$. Then note
+            \item \textbf{Surjective}: Suppose $c \in C$. Note that the functions $f^{-1}: B \to A$ and $g^{-1}: C \to B$ both exist since both the functions $f$ and $g$ are injective. Let $a = f^{-1}(g^{-1}(c)) \in A$. Then note
             \[
                 h(a) = g(f(f^{-1}(g^{-1}(c)))) = c
             \]
-            so $c$ has a pre-image of $a$, meaning $h$ is surjective.
+            so $c$ has a pre-image of $a \in A$, meaning $h$ is surjective.
         \end{itemize}
         Therefore $h$ is a bijection.
 
@@ -91,9 +91,9 @@
 
     \item Suppose $N \unlhd G$ such that $|N| = k$. Then $\phi(N)$ is a subgroup of $H$ with order $k$ by \myref{thrm-isomorphism-consequences}, statement 5. All that remains to prove is that $\phi(N)$ is normal.
 
-    Let $n \in N$ and $\hat{n} \in \phi(N)$ such that $\hat{n} = \phi(n)$. Let $h \in H$ be an arbitrary element. To prove that $h\hat{n}h^{-1}$ is in $\phi(N)$.
+    Let $n \in N$ and $\hat{n} \in \phi(N)$ such that $\hat{n} = \phi(n)$. Let $h \in H$ be an arbitrary element. We show that $h\hat{n}h^{-1}$ is in $\phi(N)$.
 
-    Let $g$ be in $G$ such that $\phi(g) = h$. Then
+    Let $g \in G$ such that $\phi(g) = h$. Then
     \begin{align*}
         h\hat{n}h^{-1} &= \phi(g)\phi(n)\phi(g^{-1})\\
         &= \phi(\underbrace{gng^{-1}}_{\text{In } N})\\
@@ -121,16 +121,12 @@
             &= f(x)f(y)
         \end{align*}
         which means that $f$ is a homomorphism.
-        \item \textbf{Injective}: Let $x, y \in G$ be such that $f(x) = f(y)$. Then $gxg^{-1} = gyg^{-1}$. By cancellation law, $x = y$.
-        \item \textbf{Surjective}: Suppose $y \in G$. Set $x = g^{-1}yg$. Since $G$ is closed, thus $x \in G$. Note $f(x) = g(g^{-1}yg)g^{-1} = y$. Hence $y$ has a pre-image of $x = g^{-1}yg$ in $G$.
+        
+        \item \textbf{Injective}: Let $x, y \in G$ be such that $f(x) = f(y)$. Then $gxg^{-1} = gyg^{-1}$. By cancellation law, we see $x = y$.
+        
+        \item \textbf{Surjective}: Suppose $y \in G$. Set $x = g^{-1}yg$. Since $G$ is closed, thus $x \in G$. Note $f(x) = g(g^{-1}yg)g^{-1} = y$, so $y$ has a pre-image of $x = g^{-1}yg \in G$.
     \end{itemize}
     Therefore $f$ is an isomorphism.
-
-    \item Suppose on the contrary there exists an isomorphism $\phi: G \to H$. Since $\phi$ is an isomorphism, it is surjective. Hence, there must exists a rational number $r \in G$ such that $\phi(r) = 2$. As $r$ is rational, so is $\frac r2$.
-
-    Now consider $\phi\left(\frac r2 + \frac r2\right)$. On one hand, $\phi\left(\frac r2 + \frac r2\right) = \phi(r) = 2$. On another hand, $\phi(\frac r2 + \frac r2) = \left(\phi\left(\frac r2\right)\right)^2$ as $\phi$ is a homomorphism. Therefore, $\left(\phi\left(\frac r2\right)\right)^2 = 2$ which quickly implies $\phi\left(\frac r2\right) = \sqrt 2$ since $\phi\left(\frac r2\right)$ must be positive. However, $\sqrt 2 \notin H$ while $\phi\left(\frac r2\right) \in H$, a contradiction.
-
-    Hence, $G \not\cong H$.
 
     \item \begin{partquestions}{\alph*}
         \item Let $m, n \in \Z$. Then
@@ -148,25 +144,32 @@
         since $\psi$ is a homomorphism. Hence $2\psi(n) = n$ which implies that $\psi(n) = \frac n2$. But for the case of $n = 1$, $\psi(1) = \frac 12 \notin \Z$. Hence $\psi$ does not exist.
     \end{partquestions}
 
+    \item Suppose on the contrary there exists an isomorphism $\phi: G \to H$. Since $\phi$ is an isomorphism, it is surjective. Hence, there must exists a rational number $r \in G$ such that $\phi(r) = 2$. As $r$ is rational, so is $\frac r2$.
+
+    Now consider $\phi\left(\frac r2 + \frac r2\right)$. On one hand, $\phi\left(\frac r2 + \frac r2\right) = \phi(r) = 2$. On another hand, $\phi(\frac r2 + \frac r2) = \left(\phi\left(\frac r2\right)\right)^2$ since $\phi$ is a homomorphism. Therefore, $\left(\phi\left(\frac r2\right)\right)^2 = 2$ which quickly implies $\phi\left(\frac r2\right) = \sqrt 2$ since $\phi\left(\frac r2\right)$ must be positive. However, $\sqrt 2 \notin H = \Q_{>0}$ while $\phi\left(\frac r2\right) \in H = \Q_{>0}$, a contradiction.
+
+    Hence, $G \not\cong H$.
+
     \item We prove the forward direction first: assume that $G$ is abelian. Then $f$ is a homomorphism since
     \[
-        f(gh) = (gh)^{-1} = h^{-1}g^{-1} = g^{-1}h^{-1} = f(g)h(g).
+        f(xy) = (xy)^{-1} = y^{-1}x^{-1} = x^{-1}y^{-1} = f(x)f(y)
     \]
+    for all $x, y \in G$.
 
-    We now prove the reverse direction: assume that $f$ is a homomorphism, meaning $f(gh) = f(g)f(h) = g^{-1}h^{-1}$. But $f(gh) = (gh)^{-1} = h^{-1}g^{-1}$. Therefore we have $g^{-1}h^{-1} = h^{-1}g^{-1}$ which clearly shows that the group is abelian.
+    We now prove the reverse direction: assume that $f$ is a homomorphism, meaning $f(xy) = f(x)f(y) = x^{-1}y^{-1}$. But $f(xy) = (xy)^{-1} = y^{-1}x^{-1}$. Therefore we have $x^{-1}y^{-1} = y^{-1}x^{-1}$ which clearly shows that the group is abelian.
 
-    \item Suppose $\phi: G \to H$ is a surjective homomorphism and $G$ is abelian. Since $\phi$ is surjective, thus $\im \phi = H$. Let $g_1, g_2 \in G$ and $h_1, h_2 \in H$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Consider $\phi(g_1g_2)$.
+    \item Since $\phi$ is surjective, thus $\im \phi = H$. Let $g_1, g_2 \in G$ and $h_1, h_2 \in H$ such that $\phi(g_1) = h_1$ and $\phi(g_2) = h_2$. Consider $\phi(g_1g_2)$.
     \begin{itemize}
-        \item On one hand, $\phi(g_1g_2) = \phi(g_1)\phi(g_2) = h_1h_2$.
-        \item On another hand, $\phi(g_1g_2) = \phi(g_2g_1) = \phi(g_2)\phi(g_1) = h_2h_1$.
+        \item On one hand we see $\phi(g_1g_2) = \phi(g_1)\phi(g_2) = h_1h_2$.
+        \item On another hand we see $\phi(g_1g_2) = \phi(g_2g_1) = \phi(g_2)\phi(g_1) = h_2h_1$.
     \end{itemize}
     Hence $h_1h_2 = h_2h_1$ which means that $H$ is abelian.
 
     \item We first prove $\phi(N)$ is a subgroup of $H$ before proving normality.
 
-    The codomain of $\phi$ is $H$, so $\phi(N) \subseteq H$. Note that $e_H \in \phi(N)$ since $e_G \in N$ and $\phi(e_G) = e_H$. Now let $x, y \in \phi(N)$. As $\phi$ is surjective, we know that there exists $n_x, n_y \in N$ where $\phi(n_x) = x$ and $\phi(n_y) = y$. Note that $\phi(n_y^{-1}) = y^{-1}$ and $n_xn_y^{-1} \in N$. Hence, $xy^{-1} = \phi(n_xn_y^{-1}) \in \phi(N)$. By subgroup test (\myref{thrm-subgroup-test}), $\phi(N) \leq H$.
+    The codomain of $\phi$ is $H$, so $\phi(N) \subseteq H$. Note that $e_H \in \phi(N)$ since $e_G \in N$ and $\phi(e_G) = e_H$. Now let $x, y \in \phi(N)$. As $\phi$ is surjective, we know that there exists $n_x, n_y \in N$ where $\phi(n_x) = x$ and $\phi(n_y) = y$. Note that $\phi(n_y^{-1}) = y^{-1}$ and $n_xn_y^{-1} \in N$. Hence, $xy^{-1} = \phi(n_xn_y^{-1}) \in \phi(N)$. By subgroup test (\myref{thrm-subgroup-test}) we see $\phi(N) \leq H$.
 
-    We now show that $\phi(N)$ is a normal subgroup of $H$. Take $g \in G$, $h \in H$, $n \in N$, and $x \in \phi(N)$, such that $\phi(g) = h$ and $\phi(n) = x$. Note that since $N \unlhd G$, thus $gng^{-1} \in N$. Therefore,
+    We now show that $\phi(N)$ is a normal subgroup of $H$. Take $g \in G$, $h \in H$, $n \in N$, and $x \in \phi(N)$, such that $\phi(g) = h$ and $\phi(n) = x$. Note that since $N \unlhd G$, thus $gng^{-1} \in N$. So we note
     \begin{align*}
         hxh^{-1} &= \phi(g)\phi(n)\phi(g^{-1})\\
         &= \phi(\underbrace{gng^{-1}}_{\text{In }N})\\
@@ -174,9 +177,9 @@
     \end{align*}
     which means that $\phi(N) \unlhd H$.
 
-    \item Consider the map $\phi: G \to H, a \mapsto a + n\Z$. We show that $\phi$ is an isomorphism:
+    \item Consider the map $\phi: G \to H, a \mapsto a + n\Z$. We show that $\phi$ is an isomorphism.
     \begin{itemize}
-        \item \textbf{Homomorphism}: Let $a$ and $b$ be in $G$. Then
+        \item \textbf{Homomorphism}: Let $a, b \in G$. Then
         \begin{align*}
             \phi(a\oplus_n b) &= (a\oplus_n b) + n\Z\\
             &= \{(a \oplus_n b) + pn \vert p \in \Z\}\\
@@ -186,29 +189,25 @@
             &= (a+n\Z) + (b + n\Z)\\
             &= \phi(a) + \phi(b).
         \end{align*}
-        \item \textbf{Injective}: Let $a$ and $b$ be in $G$ such that $\phi(a) = \phi(b)$. Thus
+        \item \textbf{Injective}: Let $a, b \in G$ such that $\phi(a) = \phi(b)$. Thus
         \[
             \{a + pn \vert p \in \Z \} = \ \{b + qn \vert q \in \Z \}
         \]
         by definition of $\phi$. Hence $a \equiv b \pmod n$. But since $0 \leq a, b < n$, we must have $a = b$.
-        \item \textbf{Surjective}: Let $x + n\Z \in H$. We use Euclid's division lemma (\myref{lemma-euclid-division}) on $x$ to yield
-        \[
-            x = qn + r, \text{ where } 0 \leq r < n.
-        \]
-        Note that
+        \item \textbf{Surjective}: Let $x + n\Z \in H$. We use Euclid's division lemma (\myref{lemma-euclid-division}) to write $x = qn + r$ where $0 \leq r < n$. Note that
         \begin{align*}
             x + n\Z &= \{x + kn \vert k \in \Z\}\\
             &= \{(qn + r) + kn \vert k \in \Z\}\\
             &= \{r + n(\underbrace{q + k}_{\text{In }\Z}) \vertalt k \in \Z \}\\
             &= r + n\Z
         \end{align*}
-        with $0 \leq r < n$, meaning $r \in G$. Now observe $\phi(r) = r+n\Z = x+n\Z$ which means that there is a pre-image for every element in $H$, hence proving that $\phi$ is surjective.
+        with $0 \leq r < n$, meaning $r \in G$. Now observe that $\phi(r) = r+n\Z = x+n\Z$ which means that there is a pre-image for every element in $H$, proving that $\phi$ is surjective.
     \end{itemize}
-    Therefore $\phi$ is an isomorphism, proving that $G \cong H$.
+    Therefore $\phi$ is an isomorphism, which thus implies that $G \cong H$.
 
-    \item Consider the map $\phi: G \to G/N$ such that $g \mapsto gN$. We note that $\phi$ is a homomorphism as
+    \item Consider the map $\phi: G \to G/N$ such that $g \mapsto gN$. We note that $\phi$ is a homomorphism because
     \[
-        \phi(gh) = (gh)N = (gN)(hN) = \phi(g)\phi(H).
+        \phi(gh) = (gh)N = (gN)(hN) = \phi(g)\phi(h).
     \]
     We note by \myref{prop-homomorphism-inverse-is-subgroup} that $A = \phi^{-1}(B) \leq G$. Thus
     \begin{align*}
