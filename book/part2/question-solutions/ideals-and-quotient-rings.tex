@@ -1,7 +1,7 @@
 \section{Ideals and Quotient Rings}
 \subsection*{Exercises}
 \begin{questions}
-    \item We are given that $(I, +) \leq (R,+)$, so all that remains to show is that $I$ is closed under multiplication. Take any two elements $x$ and $y$ in $I$. Since $I$ is an ideal, thus we have $ri \in I$ for any $r \in R$ and $i \in I$. Viewing $x$ as an element of $R$ and $y$ as an element of $I$, we see that $xy \in I$, meaning $I$ is closed under multiplication. Hence $I$ is a subring of $R$.
+    \item We are given that $(I, +) \leq (R,+)$, so all that remains to show is that $I$ is closed under multiplication. Take any two elements $x, y \in I$. Since $I$ is an ideal, thus we have $ri \in I$ for any $r \in R$ and $i \in I$. Viewing $x$ as an element of $R$ and $y$ as an element of $I$, we see that $xy \in I$, meaning $I$ is closed under multiplication. Hence $I$ is a subring of $R$.
 
     \item \begin{partquestions}{\roman*}
         \item Clearly the zero matrix, the additive identity of $R$, is inside $I$. Also,
@@ -26,20 +26,20 @@
     \item \begin{partquestions}{\roman*}
         \item If $1 \in I$, then for any element $r \in R$, we must have $r = 1r \in I$ since $I$ is an ideal of $R$. Therefore $R \subseteq I$. But by definition of an ideal, $I \subseteq R$. Therefore $I = R$.
 
-        \item For the forward direction, if $I$ contains a unit $u$, then there exists a $v \in R$ such that $uv = 1$. Note $uv \in I$ since $u \in I$ and $I$ is an ideal, so $1 \in I$. By \textbf{(i)} we have $I = R$.
+        \item For the forward direction, if $I$ contains a unit $u$, then there exists $v \in R$ such that $uv = 1$. Note $uv \in I$ since $u \in I$ and $I$ is an ideal, so $1 \in I$. By \textbf{(i)} we have $I = R$.
 
         For the reverse direction, note that $1 \in R$ and so $1 \in I$ since $I = R$. Clearly 1 is a unit since $1\times1 = 1$. Therefore $I$ contains a unit.
     \end{partquestions}
 
     \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $I\cap J$ is an ideal. We note that as $I$ and $J$ are ideals, they are therefore subrings of $R$. Thus, 0 is in both $I$ and $J$, meaning $0 \in I\cap J$. Hence $I\cap J$ is non-empty.
 
-    Suppose $i,j\in I\cap J$, so $i,j \in I$ and $i,j \in J$. Note $I$ and $J$ are ideals and so are subrings, which means that $i-j \in I$ and $i-j \in J$, which hence means $i-j \in I\cap J$, satisfying the first statement for the test for ideals.
+    Suppose $i,j\in I\cap J$, so $i,j \in I$ and $i,j \in J$. Note $I$ and $J$ are ideals and so they are subrings, which means that $i-j \in I$ and $i-j \in J$, which hence means $i-j \in I\cap J$, satisfying the first condition for the test for ideals.
 
     Now suppose $r \in R$ and $i \in I\cap J$. This means that $i \in I$ and $i \in J$. So we have $ri, ir \in I$ (since $I$ is an ideal) and $ri, ir \in J$ (since $J$ is an ideal). Therefore $ri,ir \in I\cap J$, so by the test for ideal we have $I\cap J$ is an ideal.
 
     \item Let $R$ be a commutative ring with identity and $\princ{a}$ be a principal ideal of $R$. We note any element in $\princ{a}$ takes the form $ar$ for some element $r \in R$. We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove this. Clearly $\princ{a}$ is non-empty as $0 = a0 \in \princ{a}$.
 
-    Let $ar_1, ar_2 \in \princ{a}$. Clearly $ar_1 - ar_2 = a(r_1-r_2) \in \princ{a}$, so the first condition for the test for ideal is satisfied. Now take any $r \in R$ and let $ax \in \princ{a}$. Then $r(ax) = (ax)r = a(xr) \in \princ{a}$ since $R$ is commutative. Therefore by the test for ideal we have $\princ{a}$ is an ideal of $R$.
+    Let $ar_1, ar_2 \in \princ{a}$. Clearly $ar_1 - ar_2 = a(r_1-r_2) \in \princ{a}$, so the first condition for the test for ideal is satisfied. Now take any $r \in R$ and let $ax \in \princ{a}$. Then $r(ax) = (ax)r = a(xr) \in \princ{a}$ since $R$ is commutative. Therefore, by the test for ideal, we see that $\princ{a}$ is an ideal of $R$.
 
     \item Let $R$ be a commutative ring with identity.
     \begin{partquestions}{\alph*}
@@ -47,7 +47,7 @@
         \item Let 1 be the identity of $R$. Then $R = \{r \vert r \in R\} = \{1r \vert r \in R\} = \princ{1}$.
     \end{partquestions}
 
-    \item We show that $\princ2$ is indeed a prime ideal of $\Z_8$. Without loss of generality, assume that $a \leq b$.
+    \item We show that $\princ2$ is indeed prime in $\Z_8$. Without loss of generality, assume that $a \leq b$.
     \begin{itemize}
         \item If $ab = 0 \in \princ{2}$, then clearly $a = b = 0$ which is in $\princ{2}$.
         \item If $ab = 2 \in \princ{2}$, then $a = 1$ and $b = 2$. Note $b = 2 \in \princ{2}$.
@@ -73,7 +73,7 @@
 
     \item If $P$ is a prime ideal of $R$, then $R/P$ is an integral domain by \myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}. Now $R$ is finite, meaning that $R/P$ is finite. Therefore, by \myref{thrm-finite-integral-domain-is-field}, $R/P$ is a field which therefore means that $P$ is maximal by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
 
-    \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\Ann{R}{A}$ is an ideal of $R$. We note that $\Ann{R}{A}$ is non-empty since 0 is in $\Ann{R}{A}$ (because $0a = 0$ for any $a \in A$).
+    \item We consider the test for ideal (\myref{thrm-test-for-ideal}) to prove that $\Ann{R}{A}$ is an ideal of $R$. We note that $\Ann{R}{A}$ is non-empty since $0 \in \Ann{R}{A}$ (because $0a = 0$ for any $a \in A$).
 
     Take any $r, s \in \Ann{R}{A}$ and $a \in A$. Then one sees clearly that $(r-s)a = rs - sa = 0 - 0 = 0$ so $r-s \in \Ann{R}{A}$.
 
@@ -135,7 +135,7 @@
     Therefore by the test for ideal we see that $I$ is an ideal of $\Mn{2}{\Z}$.
 
     \item \begin{partquestions}{\alph*}
-        \item Suppose $I$ is not the trivial ring; we want to show that $I = R$. Since $I$ is non-trivial there there exists a non-zero element $a$ in $I$. Note that $a^{-1}$ exists since $R$ is a field, so $a$ is a unit. By \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring} this means $I = R$. Note that $\{0\} = \princ{0}$ and $R = \princ{1}$ by \myref{exercise-trivial-ideal-and-whole-ring-are-principal-ideals}, so $R$ is indeed a PID.
+        \item Suppose $I$ is not the trivial ring; we want to show that $I = R$. Since $I$ is non-trivial there there exists a non-zero element $a \in I$. Note that $a^{-1}$ exists since $R$ is a field, so $a$ is a unit. By \myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring} this means $I = R$. Note that $\{0\} = \princ{0}$ and $R = \princ{1}$ by \myref{exercise-trivial-ideal-and-whole-ring-are-principal-ideals}, so $R$ is indeed a PID.
 
         \item Take a non-zero $x \in R$ and note that $\princ{x}$ is a non-trivial ideal. Since there are no proper ideals in $R$, thus $\princ{x} = R$. This means that $1 \in \princ{x}$ (since $\princ{x} = R$ is a ring with identity), meaning that there exists an element $r \in R$ such that $xr = 1$. Therefore $x$ is a unit.
 
@@ -182,7 +182,7 @@
         \end{align*}
         so $m\Z + n\Z \subseteq d\Z$.
 
-        On the other hand, suppose $a \in d\Z$, meaning $a = dt$ for some integer $t$. By B\'{e}zout's Lemma (\myref{lemma-bezout}), we may write $d = mx + ny$ for some integers $x$ and $y$. Hence
+        On the other hand, suppose $a \in d\Z$, meaning $a = dt$ for some integer $t$. By B\'{e}zout's lemma (\myref{lemma-bezout}), write $d = mx + ny$ for some integers $x$ and $y$. Hence
         \begin{align*}
             a &= (mx + ny)t\\
             &= m(xt) + n(yt)\\
@@ -199,7 +199,7 @@
     \]
     Coset Equality (\myref{lemma-coset-equality}) thus tells us that $r^n \in \Nilr{R}$. Note that $\Nilr{R}$ contains all the nilpotents of $R$. Thus $r^n$ is a nilpotent of $R$, i.e. there exists a positive integer $m$ such that $(r^n)^m = 0$. But clearly $(r^n)^m = r^{mn} = 0$, so $r$ is nilpotent, meaning $r \in \Nilr{R}$. Hence $x = r + \Nilr{R} = 0 + \Nilr{R}$, meaning that the only nilpotent of $R/\Nilr{R}$ is the zero element. Therefore $R/\Nilr{R}$ has no non-zero nilpotents.
 
-    \item Suppose $R$ is a PID and $I$ is a non-zero prime ideal. Let $J$ be an ideal such that $I \subseteq J \subseteq R$. Since $R$ is a PID, write $I = \princ{a}$ and $J = \princ{b}$ for some elements $a$ and $b$ in $R$. Note $a \in \princ{a} = I \subseteq J = \princ{b}$, so there exists an $r \in R$ such that $a = rb$. Now since $a = rb \in \princ{a} = I$ and $I$ is prime, therefore $r \in I$ or $b \in I$.
+    \item Suppose $R$ is a PID and $I$ is a non-zero prime ideal. Let $J$ be an ideal such that $I \subseteq J \subseteq R$. Since $R$ is a PID, write $I = \princ{a}$ and $J = \princ{b}$ for some $a, b \in R$. Note $a \in \princ{a} = I \subseteq J = \princ{b}$, so there exists an $r \in R$ such that $a = rb$. Now since $a = rb \in \princ{a} = I$ and $I$ is prime, therefore $r \in I$ or $b \in I$.
     \begin{itemize}
         \item If $r \in I$, write $r = sa$ for some $s \in R$. Then
         \[
@@ -216,7 +216,7 @@
     \]
     which means $xy = 1$. Thus $x$ and $y$ are units, meaning $a = bx$ with $x$ being a unit.
 
-    Now we work in the reverse direction; suppose $a = bu$ for some unit $u$ in $D$.
+    Now we work in the reverse direction; suppose $a = bu$ for some unit $u \in D$.
     \begin{itemize}
         \item Take $r \in \princ{a}$, so $r = ax$ for some $x$ in $D$. Thus $r = (bu)x = b(ux) \in \princ{b}$, so $\princ{a} \subseteq \princ{b}$.
         \item Note $b = au^{-1}$ since $u$ is a unit. Take $s \in \princ{b}$, so $s = by$ for some $y$ in $D$. But as $b = au^{-1}$, hence $s = (au^{-1})y = a(u^{-1}y) \in \princ{a}$, so $\princ{b} \subseteq \princ{a}$.
