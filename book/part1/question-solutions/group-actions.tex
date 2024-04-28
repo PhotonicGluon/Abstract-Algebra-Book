@@ -3,8 +3,8 @@
 \begin{questions}
     \item We prove the two group action axioms.
     \begin{itemize}
-        \item \textbf{Identity}: $\alpha(e, x) = exe^{-1} = x$.
-        \item \textbf{Compatibility}: Note
+        \item \textbf{Identity}: $\alpha(e, x) = exe^{-1} = x$ for any $x \in G$.
+        \item \textbf{Compatibility}: Note for any $g, h \in G$ we have
         \begin{align*}
             \alpha(g, \alpha(h, x)) &= \alpha(g, hxh^{-1})\\
             &= gh x h^{-1}g^{-1}\\
@@ -14,7 +14,7 @@
     \end{itemize}
     Therefore $\alpha$ is a group action of $G$ on $G$.
 
-    \item Recall there are 6 elements in $\Sn{3}$: $\id$, $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$, $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 3\end{pmatrix}$, and $\begin{pmatrix}2 & 3\end{pmatrix}$. Clearly the identity has all elements of $X$ as fixed points. It is also clear that $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$ have no fixed points since they permute all elements. For the rest, the fixed points are the missing element from the cycle notation, i.e. $\begin{pmatrix}1 & 2\end{pmatrix}$ has fixed point 3, $\begin{pmatrix}1 & 3\end{pmatrix}$ has fixed point 2, and $\begin{pmatrix}2 & 3\end{pmatrix}$ has fixed point 1.
+    \item Recall there are 6 permutations in $\Sn{3}$: $\id$, $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$, $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 3\end{pmatrix}$, and $\begin{pmatrix}2 & 3\end{pmatrix}$. Clearly the identity has all elements of $X$ as fixed points. It is also clear that $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$ have no fixed points since they permute all elements. For the rest, the fixed points are the missing element from the cycle notation, i.e. $\begin{pmatrix}1 & 2\end{pmatrix}$ has fixed point 3, $\begin{pmatrix}1 & 3\end{pmatrix}$ has fixed point 2, and $\begin{pmatrix}2 & 3\end{pmatrix}$ has fixed point 1.
 
     \item For 1, it is $\{\id, \begin{pmatrix}2 & 3\end{pmatrix}\}$. For 2, it is $\{\id, \begin{pmatrix}1 & 3\end{pmatrix}\}$. For 3, it is $\{\id, \begin{pmatrix}1 & 2\end{pmatrix}\}$.
 
@@ -29,9 +29,9 @@
     \end{align*}
 
     \item \begin{partquestions}{\alph*}
-        \item An orbit takes the form $\Orb{G}{x}$. Clearly $e \cdot x = x$ so $x \in \Orb{G}{x}$ and thus $\Orb{G}{x}$ is non-empty.
+        \item An orbit takes the form $\Orb{G}{x}$ where $x \in X$. Clearly $e \cdot x = x$ so $x \in \Orb{G}{x}$ and thus $\Orb{G}{x}$ is non-empty.
         \item Let $x \in X$. Since $e \cdot x = x$, so $x \in \Orb{G}{x}$.
-        \item Suppose $x \in \Orb{G}{x_1} \cap \Orb{G}{x_2}$ (as their intersection is non-empty). Then there exists $g_1, g_2 \in G$ such that $g_1\cdot x_1 = x = g_2\cdot x_2$. Thus,
+        \item Suppose $x \in \Orb{G}{x_1} \cap \Orb{G}{x_2}$. Then there exist $g_1, g_2 \in G$ such that $g_1\cdot x_1 = x = g_2\cdot x_2$. Thus,
         \begin{align*}
             x_1 &= e \cdot x_1\\
             &= (g_1^{-1}g_1)\cdot x_1\\
@@ -71,14 +71,14 @@
         \item The class equation is $6 = 1 + 2 + 3$.
     \end{partquestions}
 
-    \item By the first part of Cauchy's theorem (\myref{thrm-cauchy}) there exists an element (say $x$) with order $p$. Consider $H = \langle x \rangle$. Note that $|H| = p$ and $H \leq G$. Hence we found a subgroup of $G$ of order $p$.
+    \item By the first part of Cauchy's theorem (\myref{thrm-cauchy}) there exists an element (say $x$) with order $p$. Consider $H = \langle x \rangle$. Note that $|H| = p$ and $H \leq G$. Hence we found a subgroup of $G$ with order $p$.
 \end{questions}
 
 \subsection*{Problems}
 \begin{questions}
     \item \begin{partquestions}{\roman*}
         \item Since $G = D_5$ has order $10 = 2 \times 5$, by \myref{thrm-cauchy}, $G$ must have non-trivial proper subgroups of orders 2 and 5.
-        \item For the subgroup with order 2, $\{e, s\} \leq G$. For the subgroup with order 5, $\{e, r, r^2, r^3, r^4\} \leq G$.
+        \item $\{e, s\}$ is a subgroup of $G$ with order 2. $\{e, r, r^2, r^3, r^4\}$ is a subgroup of $G$ or order 5.
     \end{partquestions}
 
     \item Suppose on the contrary that $n = mp$ where $m$ is a positive integer and $p$ is an odd prime. Then there must exist an element $x \in G$ such that $x^p = e$ by Cauchy's theorem (\myref{thrm-cauchy}). But all elements in $G$ satisfy $x^2 = e$. Since $p$ is odd, thus $x^p \neq e$ which is a contradiction. Hence, $n$ cannot be a multiple of an odd prime, meaning that $n = 2^k$ where $k$ is a positive integer.
@@ -92,42 +92,42 @@
 
     \item Recall that $\Orb{G}{x} = \{y \in X \vert g\cdot x = y \text{ for some } g \in G\}$.
 
-    Let $x \in X$. Then by the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), $|\Orb{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$. Since $\Stab{G}{x} \leq G$ thus it has order of either 1, 5, or 25 by Lagrange's Theorem (\myref{thrm-lagrange}). Hence, the number of elements in $\Orb{G}{x}$ is either 1, 5, or 25.
+    Let $x \in X$. Then by the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), $|\Orb{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$. Since $\Stab{G}{x} \leq G$ thus it has order of either 1, 5, or 25 by Lagrange's theorem (\myref{thrm-lagrange}). Hence, the number of elements in $\Orb{G}{x}$ is either 1, 5, or 25.
 
     Now $X$ has 24 elements. Since $\Orb{G}{x}$ can, at most, be the entire set $X$ which has 24 elements, thus $|\Orb{G}{x}| \neq 25$. Hence $\Orb{G}{x}$ has either 1 or 5 elements. Now by \myref{exercise-distinct-orbits-partition-set}, distinct orbits must partition the set $X$. Let the number of orbits of size 1 be $a$ and the number of orbits of size 5 be $b$. Hence, $1a + 5b = 24$. Since $b$ is an integer, thus $5b$ must be a multiple of 5, which means that $a \geq 1$. Hence, there exists an orbit of size 1, which means that there is a $g \in G$ with a fixed point.
 
-    \item We note that the group in question that acts upon the bracelet is the group $D_3$. We consider Burnside's Lemma (\myref{lemma-burnside}) to answer this question. There are 6 actions to consider:
+    \item We note that the group in question that acts upon the bracelet is the group $D_3$. We consider Burnside's lemma (\myref{lemma-burnside}) to answer this question. There are 6 elements to consider.
     \begin{itemize}
         \item $\boxed{e}$: The number of fixed points is the total number of colourings, $n^3$.
         \item $\boxed{r}$: Rotating a bracelet $120^\circ$ results in all points affecting one another, so the only fixed points would be colourings of the same colour. There are $n$ such arrangements.
         \item $\boxed{r^2}$: Similar argument as $r$ yields $n$ arrangements.
-        \item $\boxed{s}$: This `fixes' one bead and flips the other two about a line. A fixed point thus requires the two beads that flipped about the line to be of the same colour, while the third bead is free. Hence, there are $n^2$ possible colourings.
+        \item $\boxed{s}$: This `fixes' one bead and flips the other two about a line. A fixed point thus requires the two beads that flipped about the line to be of the same colour, while the third bead is allowed to be any colour. Hence there are $n^2$ possible colourings.
         \item $\boxed{rs}$: We note that $rs$ is yet another reflection. Thus a similar argument as $s$ yields $n^2$ arrangements.
         \item $\boxed{r^2s}$: Similar argument as $s$ yields $n^2$ arrangements.
     \end{itemize}
-    Note that $|D_3| = 6$, so by Burnside's Lemma,
+    Note that $|D_3| = 6$, so by Burnside's lemma,
     \[
         |X/G| = \frac16\left(n^3 + n + n + n^2 + n^2 + n^2\right) = \frac16 n(n+1)(n+2)
     \]
-    meaning that the total number of distinct braces of 3 beads with $n$ colours is $\frac16 n(n+1)(n+2)$.
+    meaning that the total number of distinct bracelets of 3 beads with $n$ colours is $\frac16 n(n+1)(n+2)$.
 
-    \item Let $G$ be a group of order $p^2$. We note that $\CenterGrp{G} \leq G$, so by Lagrange's Theorem (\myref{thrm-lagrange}) the order of $\CenterGrp{G}$ must divide the order of $G$, meaning $|\CenterGrp{G}|$ divides $p^2$. Hence $|\CenterGrp{G}|$ is 1, $p$, or $p^2$.
+    \item Let $G$ be a group of order $p^2$. We note that $\CenterGrp{G} \leq G$, so by Lagrange's theorem (\myref{thrm-lagrange}) the order of $\CenterGrp{G}$ must divide the order of $G$, meaning $|\CenterGrp{G}|$ divides $p^2$. Hence $|\CenterGrp{G}|$ is 1, $p$, or $p^2$.
 
     We note that $|\CenterGrp{G}| \neq 1$ by \myref{example-group-with-prime-power-order-has-non-trivial-center}. If instead $|\CenterGrp{G}| = p$, note
     \[
         |G/\CenterGrp{G}| = \frac{|G|}{|\CenterGrp{G}|} = \frac{p^2}{p} = p
     \]
-    so $G/\CenterGrp{G}$ is a group of prime order. Hence by a corollary of Lagrange's Theorem (\myref{corollary-group-with-prime-order-is-cyclic}), $G/\CenterGrp{G}$ is cyclic. But by \myref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian}, $G = \CenterGrp{G}$, meaning $p^2 = |G| = |\CenterGrp{G}| = p$, a contradiction.
+    so $G/\CenterGrp{G}$ is a group of prime order. Hence by a corollary of Lagrange's theorem (\myref{corollary-group-with-prime-order-is-cyclic}) $G/\CenterGrp{G}$ is cyclic. But by \myref{problem-quotient-of-group-mod-center-is-cyclic-implies-abelian} this means $G = \CenterGrp{G}$, meaning $p^2 = |G| = |\CenterGrp{G}| = p$, a contradiction.
 
     Hence $|\CenterGrp{G}| = p^2$. Since $\CenterGrp{G} \leq G$ and $|G| = |\CenterGrp{G}| = p^2$, therefore $G = \CenterGrp{G}$, meaning $G$ is abelian by \myref{problem-center-of-G}.
 
     \item We first look at elements inside $\Omega$. Suppose $x \in \Omega$. Then $g \cdot x = x$ for any $g \in G$. Recall that $\Orb{G}{x} = \{y \in X \vert g \cdot x = y \text{ for some } x \in X\}$. Hence $x \in \Omega$ if and only if $\Orb{G}{x} = \{x\}$, which means $|\Orb{G}{x}| = 1$.
 
-    Now consider $x \notin \Omega$, meaning $|\Orb{G}{x}| \neq 1$. Recall $|G| = p^n$ for some $n \geq 1$ and prime $p$. By Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), one obtains
+    Now consider any $x \notin \Omega$, meaning $|\Orb{G}{x}| \neq 1$. Recall $|G| = p^n$ for some $n \geq 1$ and prime $p$. By Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), one sees that
     \[
         |\Stab{G}{x}| = \frac{|G|}{|\Orb{G}{x}|} = \frac{p^n}{|\Orb{G}{x}|}.
     \]
     Since $|\Stab{G}{x}|$ is an integer, thus $\frac{p^n}{|\Orb{G}{x}|}$ must be an integer, meaning $|\Orb{G}{x}|$ divides $p^n$. Therefore if $x \notin \Omega$ then $|\Orb{G}{x}| \equiv 0 \pmod p$.
 
-    Finally, recall that by \myref{exercise-distinct-orbits-partition-set} distinct orbits partition $X$. Hence the number of elements in $X$ is the sum of the number of elements in each of the distinct orbits of $X$. Now for each orbit $\Orb{G}{x}$ where $x \notin \Omega$, the number of elements in it is a multiple of $p$, while for $x \in \Omega$ there is only one element in its orbit. Hence, $|X| \equiv |\Omega| \pmod p$ since there are $|\Omega|$ orbits with only one element.
+    Finally, recall that distinct orbits partition $X$ (\myref{exercise-distinct-orbits-partition-set}). Hence the number of elements in $X$ is the sum of the number of elements in each of the distinct orbits of $X$. Now for each orbit $\Orb{G}{x}$ where $x \notin \Omega$, the number of elements in it is a multiple of $p$, while for $x \in \Omega$ there is only one element in its orbit. Hence, $|X| \equiv |\Omega| \pmod p$ since there are $|\Omega|$ orbits with only one element.
 \end{questions}
