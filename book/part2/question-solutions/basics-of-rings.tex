@@ -26,7 +26,7 @@
     \item The ring $\Mn{2}{\mathbb{R}}$ has zero divisors since $\begin{pmatrix}0&1\\0&0\end{pmatrix} \neq \begin{pmatrix}0&0\\0&0\end{pmatrix}$ but $\begin{pmatrix}0&1\\0&0\end{pmatrix}^2 = \begin{pmatrix}0&0\\0&0\end{pmatrix}$ which means that $\begin{pmatrix}0&1\\0&0\end{pmatrix}$ is a zero divisor.
 
     \item \begin{partquestions}{\alph*}
-        \item $\Z$ is not a field. Note that the multiplicative inverse of 2 is $\frac12$ which is not an integer. Hence not all non-zero elements in $\Z$ has a multiplicative inverse, meaning that not all non-zero elements are units.
+        \item $\Z$ is not a field. Note that the multiplicative inverse of 2 is $\frac12$ which is not an integer. Hence not all non-zero elements in $\Z$ has a multiplicative inverse, meaning that some non-zero elements are not units.
 
         \item $\Q$ is a field. Note for any rational number $\frac ab$ (where $b \neq 0$) it has an inverse of $\frac ba$. Thus any non-zero rational number is a unit, which means $\Q$ is a division ring. Since $\Q$ is also a commutative ring, therefore $\Q$ is a field.
     \end{partquestions}
@@ -63,7 +63,7 @@
     \end{align*}
     which means that $R$ only contains one element, namely the identity 0. Hence the trivial ring is the unique ring where 0 = 1.
 
-    \item Since $(R, \ast, \ast)$ is a ring, we know that $(R, \ast)$ is an abelian group and that $a \ast(b\ast c) = (a \ast b) \ast (a \ast c)$ for all $a, b, c \in R$ (left distribution). Consider an element $x \in R$. Thus we must have
+    \item Since $(R, \ast, \ast)$ is a ring, we know that $(R, \ast)$ is an abelian group and that $a \ast(b\ast c) = (a \ast b) \ast (a \ast c)$ for all $a, b, c \in R$ by left distribution. Consider an element $x \in R$. Thus we must have
     \[
         x \ast (x \ast x) = (x \ast x) \ast (x \ast x)
     \]
@@ -79,8 +79,11 @@
             (x-1)^{-1}(x^{n+1}-1) = (x^{n+1}-1)(x-1)^{-1} = y
         \]
         which are the four closed forms that we require.
+        
         \item The condition is that either $1-x$ is a unit or $x-1$ is a unit in $R$, i.e. $(1-x)^{-1}$ or $(x-1)^{-1}$ exists.
-        \item $112 = 1$ in $\Z_{37}$ since $112 = 37\times3 + 1$.
+        
+        \item Note $112 = 2^4 \times 7 = 1$ in $\Z_{37}$ since $112 = 37\times3 + 1$.
+        
         \item Let $x = 2^3 = 8$. Note $(x-1)^{-1} = (8-1)^{-1} = 7^{-1} = 16$ by \textbf{(iii)}. Thus
         \[
             1+2+\cdots+2^{72} = (8-1)^{-1}(8^{25}-1) = 16(8^{25}-1).
@@ -95,7 +98,7 @@
             &= 37\times173955 + 7\\
             &= 7
         \end{align*}
-        which means $1+2^3+\cdots+2^{72} = 16 \times 7 = 112 = 1$.
+        which means $1+2^3+\cdots+2^{72} = 16 \times 7 = 112 = 1$ in $\Z_{37}$.
     \end{partquestions}
 
     \item For brevity let $R = \Q[\sqrt2]$. We first show that $(R,+)$ is an abelian group.
@@ -105,10 +108,10 @@
             (a+b\sqrt2) + (c+d\sqrt2) = (a+c) + (b+d)\sqrt2 \in R
         \]
         which means that $R$ is closed under addition.
-        \item \textbf{Associativity}: + is associative.
+        \item \textbf{Associativity}: + is associative (\myref{axiom-addition-is-associative}).
         \item \textbf{Identity}: The identity is $0 = 0 + 0\sqrt2$.
         \item \textbf{Inverse}: The inverse of $a+b\sqrt2 \in R$ is $(-a) + (-b)\sqrt2$ which is in $R$.
-        \item \textbf{Commutative}: + is commutative.
+        \item \textbf{Commutative}: + is commutative (\myref{axiom-addition-is-commutative}).
     \end{itemize}
     Hence $(R, +)$ is an abelian group.
 
@@ -120,17 +123,17 @@
             &= (ac+2bd) + (ad+bc)\sqrt2\\
             &\in R.
         \end{align*}
-        \item \textbf{Associative}: $\cdot$ is associative.
+        \item \textbf{Associative}: $\cdot$ is associative (\myref{axiom-multiplication-is-associative}).
     \end{itemize}
     So $(R, \cdot)$ is an abelian group.
 
-    Clearly $+$ and $\cdot$ distribute, so we have shown that $R$ is in fact a ring.
-
+    We know that $+$ and $\cdot$ distribute (\myref{axiom-distributivity}), so we have shown that $R$ is in fact a ring.
+    
     Furthermore,
     \begin{itemize}
-        \item $\cdot$ is commutative, meaning that $R$ is a commutative ring;
+        \item $\cdot$ is commutative (\myref{axiom-multiplication-is-commutative}), meaning that $R$ is a commutative ring;
         \item $1 = 1 + 0\sqrt2 \in R$ is the multiplicative identity, so $R$ is a ring with identity; and
-        \item for any non-zero element $a+b\sqrt2$ we have its multiplicative inverse as
+        \item for any non-zero element $a+b\sqrt2 \in R$ its multiplicative inverse is
         \begin{align*}
             \frac{1}{a+b\sqrt2} &= \frac{a-b\sqrt2}{(a-b\sqrt2)(a+b\sqrt2)}\\
             &= \frac{a-b\sqrt2}{a^2-2b}\\
@@ -141,7 +144,7 @@
     Therefore $R$ is a field.
 
     \item \begin{partquestions}{\roman*}
-        \item Suppose $R$ has an identity $E = \begin{pmatrix}e_1&e_2\\0&0\end{pmatrix}$. Take any matrix $M = \begin{pmatrix}a&b\\0&0\end{pmatrix} \in R$, so we must have $ME = EM = M$.
+        \item Suppose $R$ has identity $E = \begin{pmatrix}e_1&e_2\\0&0\end{pmatrix}$. Take any matrix $M = \begin{pmatrix}a&b\\0&0\end{pmatrix} \in R$, so we must have $ME = EM = M$.
         \begin{itemize}
             \item Note $EM = \begin{pmatrix}e_1&e_2\\0&0\end{pmatrix}\begin{pmatrix}a&b\\0&0\end{pmatrix} = \begin{pmatrix}e_1a&e_1b\\0&0\end{pmatrix}$.
             \item Also, $ME = \begin{pmatrix}a&b\\0&0\end{pmatrix}\begin{pmatrix}e_1&e_2\\0&0\end{pmatrix} = \begin{pmatrix}ae_1&ae_2\\0&0\end{pmatrix}$.
@@ -150,7 +153,7 @@
         \[
             \begin{pmatrix}a&ae_2\\0&0\end{pmatrix} = \begin{pmatrix}a&b\\0&0\end{pmatrix}
         \]
-        which implies that $ae_2 = b$, hence meaning $e_2 = \frac{b}{a}$ which is not a constant. Hence there does not exist a fixed identity $E$ in $R$.
+        which implies that $ae_2 = b$, hence meaning $e_2 = \frac{b}{a}$ which is not a constant. Hence there does not exist an identity $E$ in $R$.
 
         \item Consider the subset
         \[
