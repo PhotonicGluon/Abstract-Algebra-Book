@@ -1,7 +1,7 @@
 \section{Sylow Theorems}
 \subsection*{Exercises}
 \begin{questions}
-    \item We note that $12 = 2^2 \times 3$. Thus a Sylow 2-subgroup must have order 4. Clearly $|3| = 4$ so $\langle 3 \rangle = \{0, 3, 6, 9\}$ is the Sylow 2-subgroup of $\Z_{12}$.
+    \item We note that $12 = 2^2 \times 3$. Thus a Sylow 2-subgroup must have order 4. Clearly $|3| = 4$ so $\langle 3 \rangle = \{0, 3, 6, 9\}$ is a Sylow 2-subgroup of $\Z_{12}$. (It is in fact the only one.)
 
     \item Recall that $|\Sn{5}| = 120 = 2^3 \times 3 \times 5$. By a corollary of the First Sylow Theorem (\myref{corollary-sylow-p-subgroup-exists}), $\Syl{p}{G} \neq \emptyset$ if $p$ is 2, 3, or 5.
 
@@ -19,7 +19,7 @@
     \end{itemize}
     Hence $H \cong gHg^{-1}$.
 
-    \item By \myref{prop-order-of-conjugate-element-equals-order-of-element} we know that $|xyx^{-1}| = |y|$ for all $x, y \in G$. Substituting $x = g$, and $y = hg$ yields
+    \item By \myref{prop-order-of-conjugate-element-equals-order-of-element} we know that $|xyx^{-1}| = |y|$ for all $x, y \in G$. Substituting $x = g$ and $y = hg$ yields
     \[
         |xyx^{-1}| = |g(hg)g^{-1}| = |gh| \text{ and } |y| = |hg|
     \]
@@ -41,7 +41,7 @@
     \end{align*}
     which means that $xy^{-1} \in \N{G}{S}$. Hence, by the subgroup test, we have $\N{G}{S} \leq G$.
 
-    \item By the Second Sylow Theorem (\myref{thrm-sylow-2}), we know that $gHg^{-1} = K$. Since $H \cong gHg^{-1}$ by \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup} thus $H \cong gHg^{-1} = K$ as required.
+    \item By the Second Sylow Theorem (\myref{thrm-sylow-2}) we know that $gHg^{-1} = K$. Since $H \cong gHg^{-1}$ by \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup}, thus $H \cong gHg^{-1} = K$ as required.
 
     \item We note $784 = 2^4 \times 7^2$, so $m = 16$, $p = 7$, and $k = 2$. By the Third Sylow Theorem (\myref{thrm-sylow-3}), we know that
     \begin{itemize}
@@ -78,7 +78,7 @@
     \[
         2^{p-1} + 1 < 2^{p-1} + 2^{p-1} = 2(2^{p-1}) = 2^p
     \]
-    which result immediately follows by subtracting 1 on both sides. Hence, the only possible value that satisfies both conditions is $n_q = 1$. By a corollary of the Second Sylow Theorem (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}) this means that the only Sylow $q$-subgroup is normal, hence showing that a group with an even perfect number order is non-simple.
+    which the result immediately follows by subtracting 1 on both sides. Hence, the only possible value that satisfies both conditions is $n_q = 1$. By a corollary of the Second Sylow Theorem (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}) this means that the only Sylow $q$-subgroup is normal, hence showing that a group with an even perfect number order is non-simple.
 
     \item \begin{partquestions}{\roman*}
         \item The divisors of $p$ are 1 and $p$ itself. By the Third Sylow Theorem (\myref{thrm-sylow-3}), $n_q$ divides $p$ and $n_q \equiv 1 \pmod q$. Since $p < q$ hence $p \not\equiv 1 \pmod q$ meaning that $n_q = 1$. By a corollary of the Second Sylow Theorem (\myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}) the only Sylow $q$-subgroup is normal.
@@ -91,28 +91,30 @@
             \item There are $p - 1$ elements of order $p$, all belonging in the single Sylow $p$-subgroup. Note that we subtract 1 because one element in the Sylow $p$-subgroup is the identity.
             \item There are $q - 1$ elements of order $q$, all in the single Sylow $q$-subgroup.
         \end{itemize}
-        Hence, since the total number of elements in a group of order $pq$ is $pq$, the number of elements of order $pq$ is
+        Hence, since the total number of elements is $pq$, the number of elements of order $pq$ is
         \begin{align*}
-            pq - \left((p-1)+(q-1)+1\right) &= pq - (p+q - 1)\\
+            &pq - \left((p-1)+(q-1)+1\right)\\
+            &= pq - (p+q - 1)\\
             &= pq - p - q + 1\\
-            &> 2q - 2 - q + 1\\
+            &> 2q - 2 - q + 1 & (\text{since } p \geq 2)\\
             &= 2q - q - 1\\
             &= q - 1\\
-            &> 0
+            &> 0 & (\text{since } q \geq 2)
         \end{align*}
         which means that there is at least one element of order $pq$. By \myref{thrm-cyclic-group-has-element-with-same-order} this means that such a group is cyclic.
     \end{partquestions}
 
     \item \begin{partquestions}{\roman*}
-        \item Let $P$ be a Sylow $p$-subgroup of $N$. Lagrange's Theorem (\myref{thrm-lagrange}) tells us that $|G| = [G:N]|N|$. Since $p$ does not divide $[G:N]$ we must have $|N| = p^ka$ where $a$ divides $m$. Hence $|P| = p^k$ as $P$ is a Sylow $p$-subgroup of $N$. Since $P$ has order $p^k$ and $P \leq N \leq G$, thus $P$ is also a Sylow $p$-subgroup of $G$.
-        \item Let $Q$ be a Sylow $p$-subgroup of $G$. The Second Sylow Theorem (\myref{thrm-sylow-2}) tells us there exist  a $g \in G$ such that $Q = gPg^{-1}$. Recall by definition of normality that $gNg^{-1} = N$ for any $g \in G$. Note also that $P \leq N$. Hence,
+        \item Let $P$ be a Sylow $p$-subgroup of $N$. Lagrange's theorem (\myref{thrm-lagrange}) tells us that $|G| = [G:N]|N|$. Since $p$ does not divide $[G:N]$ we must have $|N| = p^ka$ where $a$ divides $m$. Hence $|P| = p^k$ as $P$ is a Sylow $p$-subgroup of $N$. Since $P$ has order $p^k$ and $P \leq N \leq G$, thus $P$ is also a Sylow $p$-subgroup of $G$.
+        
+        \item Let $Q$ be a Sylow $p$-subgroup of $G$. The Second Sylow Theorem (\myref{thrm-sylow-2}) tells us there exists $g \in G$ such that $Q = gPg^{-1}$. Recall by definition of normality that $gNg^{-1} = N$ for any $g \in G$. Note also that $P \leq N$. Hence,
         \[
             Q = gPg^{-1} \leq gNg^{-1} = N
         \]
         which means that $Q$ is also a Sylow $p$-subgroup of $N$.
     \end{partquestions}
 
-    \item We note $3325 = 5^2 \times 7 \times 19$. Let the group of order 3325 be $G$. We know that
+    \item We note $3325 = 5^2 \times 7 \times 19$. Let a group of order 3325 be $G$. We know that
     \begin{itemize}
         \item for $p = 5$ we have $m = 7 \times 19 = 133$ and so the possible divisors of $m$ are $\{1, 7, 19, 133\}$;
         \item for $p = 7$ we have $m = 5^2 \times 19 = 475$ and so the possible divisors of $m$ are $\{1, 5, 19, 25, 95, 475\}$; and
@@ -122,7 +124,7 @@
 
     Denote the group $QR$ by $H$. Since $Q$ and $R$ are of prime order, their intersection is the identity (\myref{problem-intersection-of-coprime-subgroups}). Furthermore, as $Q$ and $R$ are normal subgroups of $G$, thus they commute by \myref{problem-intersection-of-coprime-subgroups}. Therefore $H$ is the internal direct product of $Q$ and $R$, meaning $H \cong Q \times R$ by \myref{thrm-direct-product-equivalence}. Hence $|H| = |Q||R| = 7 \times 19 = 133$. Now because as $Q$ and $R$ are of prime order, thus $Q$ and $R$ are abelian and so is $H$. Hence $H$ is an abelian group of order 133.
 
-    Now consider the group $PH$. Since 5 and 133 are coprime, thus $P \cap H = \{e\}$. In addition, since $P \lhd G$ thus $PH \leq G$ by Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3. Also,
+    Now consider the group $PH$. Since 5 and 133 are coprime, thus $P \cap H = \{e\}$. In addition, since $P \lhd G$, thus $PH \leq G$ by the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3. Also,
     \[
         |PH| = \frac{|P||H|}{|P \cap H|} = |P||H| = 5^2 \times 133 = 3325 = |G|
     \]
@@ -141,7 +143,7 @@
         \item $6 \vert n_5$, so $n_5 \in \{1, 2, 3, 6\}$; and
         \item $n_5 \equiv 1 \pmod 5$, so $n_5 \in \{1, 6, 11, 16, \dots\}$.
     \end{itemize}
-    Hence $n_5$ is 1 or 6. Seeking a contradiction, assume $n_5 = 6$, and let $P_5$ be a Sylow 5-subgroup.
+    Hence $n_5 = 1$ or $n_5 = 6$. Seeking a contradiction, assume $n_5 = 6$, and let $P_5$ be a Sylow 5-subgroup.
 
     Since $|P_5| = 5$, which is prime, each non-identity element of $P_5$ is a generator. Hence, no two Sylow 5-subgroups can share any non-identity elements (otherwise they will be the same group), thereby meaning any two Sylow 5-subgroups intersect in the identity only. Thus there exists $6(5-1) = 24$ elements of order 5, meaning there must be 6 elements of order not equal to 5.
 
@@ -150,7 +152,7 @@
         \item $10 \vert n_3$, so $n_3 \in \{1, 2, 5, 10\}$; and
         \item $n_3 \equiv 1 \pmod 3$, so $n_3 \in \{1, 4, 7, 10, 13, \dots\}$.
     \end{itemize}
-    Thus $n_3$ is 1 or 10. Now if $n_3 = 10$ then there must be $10(3-1) = 20$ elements of order 3, a contradiction to the fact there exists only 6 elements with order not 5. Hence $n_3 = 1$, meaning the only Sylow 3-subgroup (call it $P_3$) is normal in $G$.
+    Thus $n_3 = 1$ or $n_3 = 10$. Now if $n_3 = 10$ then there must be $10(3-1) = 20$ elements of order 3, a contradiction to the fact there exists only 6 elements with order not equal to 5. Hence $n_3 = 1$, meaning the only Sylow 3-subgroup (call it $P_3$) is normal in $G$.
 
     As $P_5 \leq G$ and $P_3 \lhd G$, by the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3, we have $P_5P_3 \leq G$. Note $P_5 \cap P_3 = \{e\}$ by \myref{problem-intersection-of-coprime-subgroups}. So \myref{exercise-order-of-subgroup-product} tells us
     \[
@@ -158,13 +160,13 @@
     \]
     One sees that $[G:P_5P_3] = \frac{30}{15} = 2$, so $P_5P_3 \lhd G$ by \myref{problem-subgroup-of-index-2}.
 
-    Now \myref{problem-group-of-order-pq-has-normal-subgroup-of-order-q} tells us there exists a unique $H \lhd P_5P_3$ with $|H| = 5$. But since $P_5P_3 \lhd G$, \myref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups} tells us that $P_5P_3$ contains all Sylow 5-subgroups of $G$, meaning $G$ has only 1 Sylow 5-subgroup, i.e. $n_5 = 1$, a contradiction to our assumption that $n_5 = 6$.
+    Now \myref{problem-group-of-order-pq-has-normal-subgroup-of-order-q} tells us there exists a unique normal subgroup of $P_5P_3$, say $H$, with $|H| = 5$. But since $P_5P_3 \lhd G$, \myref{problem-normal-subgroup-of-G-contains-all-sylow-p-subgroups} tells us that $P_5P_3$ contains all Sylow 5-subgroups of $G$, meaning $G$ has only 1 Sylow 5-subgroup, i.e. $n_5 = 1$, a contradiction to our assumption that $n_5 = 6$.
 
     Hence $n_5 = 1$. Therefore the unique Sylow 5-subgroup is a normal subgroup of $G$ by \myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}.
 
     \item We prove that $G$ has a normal subgroup of order $p$, $q$, or $r$. By \myref{corollary-sylow-subgroup-is-normal-if-it-is-unique}, subgroups of order $p$, $q$, or $r$ are normal if they are unique. By way of contradiction, assume that they are not unique, meaning $n_p, n_q, n_r > 1$.
 
-    By the Third Sylow Theorem (\myref{thrm-sylow-3}), $n_r \equiv 1 \pmod r$ and $n_r \mid pq$. The divisors of $pq$ are 1, $p$, $q$, and $pq$. We note that since both $p$ and $q$ are less than $r$, thus $p \not\equiv 1 \pmod r$ and $q \not\equiv 1 \pmod r$. The only possibility that is left is $n_r = pq$ as we assume $n_r \neq 1$. Similarly, $n_q \equiv 1 \pmod q$ and $n_q \mid pr$. The divisors of $pr$ are 1, $p$, $r$, and $pr$. Since $p < q$ thus $p \not\equiv 1 \pmod q$. Hence $n_q \geq r$ as we assume $n_q \neq 1$. Similarly, $n_p \geq q$.
+    By the Third Sylow Theorem (\myref{thrm-sylow-3}) we have $n_r \equiv 1 \pmod r$ and $n_r \mid pq$. The divisors of $pq$ are 1, $p$, $q$, and $pq$. We note that since both $p$ and $q$ are less than $r$, thus $p \not\equiv 1 \pmod r$ and $q \not\equiv 1 \pmod r$. The only possibility that is left is $n_r = pq$ as we assume $n_r \neq 1$. Similarly, $n_q \equiv 1 \pmod q$ and $n_q \mid pr$. The divisors of $pr$ are 1, $p$, $r$, and $pr$. Since $p < q$ thus $p \not\equiv 1 \pmod q$. Hence $n_q \geq r$ as we assume $n_q \neq 1$. Similarly, $n_p \geq q$.
 
     We now consider the number of elements with order $p$, $q$, and $r$.
     \begin{itemize}
