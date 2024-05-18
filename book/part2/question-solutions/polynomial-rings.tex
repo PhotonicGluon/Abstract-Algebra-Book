@@ -36,14 +36,13 @@
     \end{itemize}
     Therefore $u_k = v_k$ for all $k$, meaning that $f(x)(g(x)h(x)) = (f(x)g(x))h(x)$.
 
-    \item We note
+    \item One sees
     \begin{align*}
         \Q[\sqrt[3]{2}] &= \left\{a_0 + a_1\sqrt[3]{2} + a_2\left(\sqrt[3]{2}\right)^2 + a_3\left(\sqrt[3]{2}\right)^3 + \cdots + a_n\left(\sqrt[3]{2}\right)^n \vert a_i \in \Q\right\}\\
         &= \left\{a_0 + a_1\sqrt[3]{2} + a_2\sqrt[3]{4} + 2a_3 + \cdots + a_n\left(\sqrt[3]{2}\right)^n \vert a_i \in \Q\right\}\\
         &= \left\{(a_0 + 2a_3 + \cdots) + (a_1 + 2a_4 + \cdots)\sqrt[3]{2} + (a_2 + 2a_5 + \cdots)\sqrt[3]{4} \vert a_i \in \Q\right\}\\
-        &= \left\{a + b\sqrt[3]{2} + c\sqrt[3]{4} \vert a,b,c \in \Q\right\}
+        &= \left\{a + b\sqrt[3]{2} + c\sqrt[3]{4} \vert a,b,c \in \Q\right\}.
     \end{align*}
-    which establishes the required result.
 
     \item One example would be $x^5$. Essentially any polynomial where the highest term is $x^5$ would work.
 
@@ -63,7 +62,7 @@
     \end{partquestions}
 
     \item \begin{partquestions}{\alph*}
-        \item We first suppose $D$ is a ring with identity 1. We may see 1 as a degree 0 polynomial in $D[x]$. Now for any polynomial $f(x) = a_0+a_1x+a_2x^2+\cdots+a_nx^n \in D[x]$ we have
+        \item We first suppose $R$ is a ring with identity 1. We may see 1 as a degree 0 polynomial in $R[x]$. Now for any polynomial $f(x) = a_0+a_1x+a_2x^2+\cdots+a_nx^n \in R[x]$ we have
         \begin{align*}
             (1)(f(x)) &= (1)(a_0+a_1x+\cdots+a_nx^n)\\
             &= (1a_0)+(1a_1)x+\cdots+(1a_n)x^n\\
@@ -77,15 +76,11 @@
             &= a_0+a_1x+\cdots+a_nx^n\\
             &= f(x)
         \end{align*}
-        so 1 is the identity in $D[x]$.
+        so 1 is the identity in $R[x]$.
 
-        Now suppose $D[x]$ is a ring with identity $\iota(x)$. By definition of the identity of a ring we see that $\iota(x)f(x) = f(x)\iota(x) = f(x)$ for any $f(x) \in D[x]$, meaning $\deg(\iota(x)f(x)) = \deg(f(x))$. We note that $\deg(\iota(x)f(x)) = \deg(\iota(x)) + \deg(f(x))$, this means that $\iota$ has degree 0, meaning we may write $\iota(x) = e$ for some $e \in D$. Now if $f(x) = a$ for some $a \in D$, we must have $\iota(x)f(x) = ae = a$ and $f(x)\iota(x) = ea = a$, meaning that $e$ is the identity of $D$.
+        Now suppose $R[x]$ is a ring with identity $\iota(x)$. By definition of the identity we see that $\iota(x)f(x) = f(x)\iota(x) = f(x)$ for any $f(x) \in R[x]$, meaning $\deg(\iota(x)f(x)) = \deg(f(x))$. We note that $\deg(\iota(x)f(x)) = \deg(\iota(x)) + \deg(f(x))$, this means that $\iota$ has degree 0, meaning we may write $\iota(x) = e$ for some $e \in D$. Now if $f(x) = a$ for some $a \in D$, we must have $\iota(x)f(x) = ae = a$ and $f(x)\iota(x) = ea = a$, meaning that $e$ is the identity of $R$.
 
-        \item Suppose first that $D$ is a commutative ring. Let
-        \[
-            f(x) = \sum_{i=0}^ma_ix^i \text{ and } g(x) = \sum_{j=0}^nb_jx^j
-        \]
-        be polynomials in $D[x]$. Then
+        \item Suppose first that $R$ is a commutative ring. Let $f(x) = a_0 + a_1x + \cdots + a_mx^m$ and $g(x) = b_0 + b_1x + \cdots + b_nx^n$ be polynomials in $R[x]$. Then
         \begin{align*}
             f(x)g(x) &= \left(\sum_{i=0}^ma_ix^i\right)\left(\sum_{j=0}^nb_jx^j\right)\\
             &= \sum_{k=0}^{m+n}\left(\sum_{i=0}^k a_{i}b_{k-i}\right)x^k\\
@@ -94,17 +89,12 @@
             &= \left(\sum_{j=0}^nb_jx^j\right)\left(\sum_{i=0}^ma_ix^i\right)\\
             &= g(x)f(x)
         \end{align*}
-        which therefore means that $D[x]$ is commutative.
+        which therefore means that $R[x]$ is commutative.
 
-        Now suppose $D[x]$ is commutative. Consider the polynomials $f(x) = a$ and $g(x) = b$ where $a$ and $b$ are non-zero. We thus have $ab = f(x)g(x) = g(x)f(x) = ba$ for all $a,b \in D$ which means $D$ is commutative.
+        Now suppose $R[x]$ is commutative. Consider the polynomials $f(x) = a$ and $g(x) = b$ where $a$ and $b$ are non-zero. We thus have $ab = f(x)g(x) = g(x)f(x) = ba$ for all $a,b \in R$, which means $R$ is commutative.
     \end{partquestions}
 
-    \item For brevity, let
-    \begin{align*}
-        f(x) &= \sum_{i=0}^ma_ix^i,\\
-        g(x) &= \sum_{i=0}^nb_ix^i
-    \end{align*}
-    be polynomials in $R[x]$. Without loss of generality assume $m \geq n$, and define $b_i = 0$ for $i > n$. Then
+    \item For brevity, let $\displaystyle f(x) = \sum_{i=0}^ma_ix^i$ and $\displaystyle g(x) = \sum_{i=0}^nb_ix^i$ be polynomials in $R[x]$. Without loss of generality assume $m \geq n$, and define $b_i = 0$ for $i > n$. Then
     \begin{align*}
         \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m (a_i+b_i)x^i\right)\\
         &= \sum_{i=0}^m (a_i+b_i + I)x^i\\
@@ -136,8 +126,8 @@
 
     \item Note that
     \begin{align*}
-        3x^4 + 3x^3 + 4x^2 + 3x + 3 &= 3x^2(x^2+2x+3) - 3x(x^2+2x+3)\\
-        &\quad\quad+ 1(x^2+2x+3) + 10x\\
+        &3x^4 + 3x^3 + 4x^2 + 3x + 3\\
+        &= 3x^2(x^2+2x+3) - 3x(x^2+2x+3) + 1(x^2+2x+3) + 10x\\
         &= (3x^2-3x+1)(x^2+2x+3) + 10x\\
         &= (3x^2+2x+1)(x^2+2x+3) + 0x\\
         &= (3x^2+2x+1)(x^2+2x+3)
@@ -152,7 +142,7 @@
         1 - 2x + 3x^2 - 4x^3 + 5x^4 - 6x^5 &= 1 + x + 0x^2 + 2x^3 + 2x^4 + 0x^5\\
         &= 1 + x + 2x^3 + 2x^4
     \end{align*}
-    so a degree 4 polynomial that is equal to the given polynomial is $1 + x + 2x^3 + 2x^4$.
+    so one possible polynomial is $1 + x + 2x^3 + 2x^4$.
 
     \item We work step-by-step.
     \begin{align*}
@@ -179,11 +169,7 @@
         \item We note $\Z_7$ is a field (\myref{example-Zp-is-field}) and so $\Z_7$ is an integral domain. This means $\Z_7[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}). So a unit of $\Z_7[x]$ is a unit of $\Z_7$ (\myref{prop-unit-of-ring-iff-unit-of-polynomial-ring}), which means only constants can be units. Thus $x^2 + 2x + 1$ has no corresponding $f(x)$ such that $(x^2+2x+1)f(x) = 1$.
     \end{partquestions}
 
-    \item Using polynomial long division (\myref{thrm-polynomial-long-division}) we write
-    \[
-        f(x) = q(x)(x-a) + r(x) \text{ with } r(x) = 0 \text{ or } \deg r(x) < \deg(x-a) = 1.
-    \]
-    Thus $r(x) = b \in F$. Evaluating $f(x)$ at $a$ yields
+    \item Using polynomial long division (\myref{thrm-polynomial-long-division}) we write $f(x) = q(x)(x-a) + r(x)$ where $r(x) = 0$ or $ \deg r(x) < \deg(x-a) = 1$. Thus $r(x) = b \in F$. Evaluating $f(x)$ at $a$ yields
     \[
         f(a) = q(x)(a-a) + b = b
     \]
@@ -198,9 +184,9 @@
         \end{align*}
         \myref{prop-kernel-is-an-ideal} tells us that $\ker\phi$ is an ideal of $\Z[x]$, so $I$ is an ideal of $\Z[x]$.
 
-        \item We first show that $\phi$ is surjective. Let $n \in \Z$, note that $n$ is a degree zero polynomial, so $n \in \Z[x]$. Clearly $\phi(n) = n$ so $n$ is its own pre-image. Therefore $\im\phi = \Z$.
+        \item We first show that $\phi$ is surjective. Consider any $n \in \Z$. Note that $n$ is a degree zero polynomial, so $n \in \Z[x]$. Clearly $\phi(n) = n$ so $n$ is its own pre-image. Therefore $\im\phi = \Z$.
 
-        By FRIT (\myref{thrm-ring-isomorphism-1}),
+        By the FRIT (\myref{thrm-ring-isomorphism-1}),
         \[
             \Z[x]/I \cong \Z.
         \]
@@ -216,11 +202,11 @@
     \[
         f(x)g(x) = a_0b_0 + (a_1b_0+a_0b_1)x + \cdots.
     \]
-    Now if $f(x)g(x) \in I$, this means that $a_0b_0 = 0$. Hence either $a_0 = 0$ or $b_0 = 0$, meaning that either $f(x)$ has zero constant term (so $f(x) \in I$) or $g(x)$ has zero constant term (so $g(x) \in I$). Thus $I$ is prime.
+    Now if $f(x)g(x) \in I$, this means that $a_0b_0 = 0$. Hence either $a_0 = 0$ or $b_0 = 0$, meaning that either $f(x)$ has a constant term of zero (so $f(x) \in I$) or $g(x)$ has a constant term of zero (so $g(x) \in I$). Thus $I$ is prime.
 
-    \item We show that $\Z[x] / \princ{x} \cong \Z$ by using the FRIT.
+    \item We show that $\Z[x] / \princ{x} \cong \Z$ by using the FRIT (\myref{thrm-ring-isomorphism-1}).
 
-    Let $\phi: \Z[x] \to \Z$ be defined such that $p(x) \mapsto p(0)$. We explain why $\phi$ is a homomorphism, then find its image and kernel.
+    Let the map $\phi: \Z[x] \to \Z$ be defined such that $p(x) \mapsto p(0)$. We explain why $\phi$ is a homomorphism, then find its image and kernel.
     \begin{itemize}
         \item \textbf{Homomorphism}: $\phi$ is the evaluation homomorphism at 0.
         \item \textbf{Image}: Clearly $\phi$ is surjective since $\phi(n) = n$ for all $n \in \Z$, which means $\im\phi = \Z$.
@@ -236,7 +222,7 @@
         \]
     \end{itemize}
 
-    Thus, the FRIT (\myref{thrm-ring-isomorphism-1}) tells us that
+    Thus, the FRIT tells us that
     \[
         \Z[x] / \princ{x} \cong \Z.
     \]
@@ -368,11 +354,11 @@
             \]
             which therefore means $f(x) = g(x)$. So $\psi$ is an injective function.
 
-            \item \textbf{Surjective}: Suppose $F(x) = a_0 + a_1x + a_2x^2 + \cdots + a_mx^m \in S[x]$. Let $G(x) = \phi^{-1}(a_0) + \phi^{-1}(a_1)x + \cdots + \phi^{-1}(a_m)x^m \in R[x]$. Then note
+            \item \textbf{Surjective}: Suppose $h_S(x) = a_0 + a_1x + a_2x^2 + \cdots + a_mx^m \in S[x]$. Let $h_R(x) = \phi^{-1}(a_0) + \phi^{-1}(a_1)x + \cdots + \phi^{-1}(a_m)x^m \in R[x]$. Then note
             \[
-                \psi(G(x)) = \sum_{i=0}^m\phi(\phi^{-1}(a_i))x^i = \sum_{i=0}^ma_ix^i = F(x)
+                \psi(h_R(x)) = \sum_{i=0}^m\phi(\phi^{-1}(a_i))x^i = \sum_{i=0}^ma_ix^i = h_S(x)
             \]
-            so any $F(x) \in S[x]$ has a pre-image in $R[x]$. Therefore $\psi$ is a surjective function.
+            so any $h_S(x) \in S[x]$ has a pre-image in $R[x]$. Therefore $\psi$ is a surjective function.
         \end{itemize}
 
         So $\psi$ is a bijection. Furthermore by \textbf{(i)} we know that $\psi$ is a homomorphism. Therefore $\psi$ is a ring isomorphism, meaning $R[x] \cong S[x]$.
@@ -380,7 +366,7 @@
 
     \item Note that
     \[
-        I = \princ{2} + \princ{x} = \{2f(x) + xg(x) \vert f(x),g(x) \in \Z[x]\}
+        I = \{2f(x) + xg(x) \vert f(x),g(x) \in \Z[x]\} = \princ{2} + \princ{x}
     \]
     is a sum of ideals and thus is an ideal (\myref{prop-sum-of-ideals-is-ideal}). We show that $I$ is not a principal ideal.
 
