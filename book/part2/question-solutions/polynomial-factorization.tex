@@ -22,7 +22,7 @@
             \textbf{6} & 465 &  &  &  & 3 \\ \hline
         \end{tabular}
     \end{table}
-    We therefore see that $f(x)$ has zeroes in $\Z_3$ and $\Z_5$ and no zeroes in $\Z_2$ and $\Z_7$. Thus $f(x)$ is irreducible over $\Z_2$ and $\Z_7$ and reducible in $\Z_3$ and $\Z_5$.
+    We therefore see that $f(x)$ has zeroes in $\Z_3$ and $\Z_5$ and no zeroes in $\Z_2$ and $\Z_7$. Thus $f(x)$ is irreducible over $\Z_2$ and $\Z_7$ and reducible in $\Z_3$ and $\Z_5$ by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}.
 
     \item \begin{partquestions}{\alph*}
         \item Disprove. $2(x^2+1)$ is reducible in $\Z$. However $2(x^2+1)$ has no zeroes in $\Q$ and so is irreducible over $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}).
@@ -30,7 +30,7 @@
         \item Prove. Statement is the contrapositive of \myref{thrm-irreducible-over-Z-means-irreducible-over-Q}.
     \end{partquestions}
 
-    \item Clearly $1^2 + 2(1) + 1 = 4 \equiv 0 \pmod2$, so we consider $p > 3$. Consider the polynomial $f(x) = x^2 + 2x + 1$. Clearly $f(-1) = 0$ so $f(x)$ is reducible over $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). Thus the contrapositive of the Mod $p$ Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}) tells us that $f(x)$ is reducible in $\Z_p$ (since reducing the coefficients modulo $p$ yields the same polynomial). Therefore $f(x) \in \Z_p[x]$ must have a zero (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}), i.e. there is an integer $n \in \Z_p$ such that $f(n) = n^2 + 2n + 1 = 0$ when working modulo $p$. That same $n$ satisfies $n^2 + 2n + 1 \equiv 0 \pmod{p}$ as required.
+    \item Clearly $1^2 + 2(1) + 1 = 4 \equiv 0 \pmod2$, so we consider $p \geq 3$. Consider the polynomial $f(x) = x^2 + 2x + 1$. Clearly $f(-1) = 0$ so $f(x)$ is reducible over $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). So the contrapositive of the Mod $p$ Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}) tells us that $f(x)$ is reducible in $\Z_p$ (since reducing the coefficients modulo $p$ yields the same polynomial). Therefore $f(x) \in \Z_p[x]$ must have a zero (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}), i.e. there is an integer $n \in \Z_p$ such that $f(n) = n^2 + 2n + 1 = 0$ when working modulo $p$. That same $n$ satisfies $n^2 + 2n + 1 \equiv 0 \pmod{p}$ as required.
 
     \item We claim that $f(x) = x^n + 2$ is irreducible over $\Q$ for any $n \geq 1$. We note that 2 does not divide 1, 2 divides 2, and $2^2 = 4$ does not divide 2. Thus $f(x)$ is irreducible over $\Q$ by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2.
 
@@ -55,7 +55,7 @@
 
     \item We prove the three requirements for a ring isomorphism.
     \begin{itemize}
-        \item \textbf{Homomorphism}: One sees that
+        \item \textbf{Homomorphism}: One sees that for any $f(x), g(x) \in D[x]$ we have
         \begin{align*}
             \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
             &= \sum_{i=0}^m(a_i+b_i)(kx)^i\\
@@ -68,11 +68,11 @@
             \phi(f(x)g(x)) &= \phi\left(\sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)x^r\right)\\
             &= \sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)(kx)^r\\
             &= \left(\sum_{r=0}^ma_r(kx)^r\right)\left(\sum_{r=0}^nb_r(kx)^r\right)\\
-            &= \phi(f(x))\phi(g(x))
+            &= \phi(f(x))\phi(g(x)),
         \end{align*}
         so $\phi$ is a ring homomorphism.
 
-        \item \textbf{Injective}: Suppose $\phi(f(x)) = \phi(g(x))$. Then
+        \item \textbf{Injective}: Suppose we have $f(x), g(x) \in D[x]$ such that $\phi(f(x)) = \phi(g(x))$. Then
         \begin{align*}
             \sum_{i=0}^m(a_ik^i)x^i &= \sum_{i=0}^ma_i(kx)^i\\
             &= \sum_{i=0}^nb_i(kx)^i\\
@@ -80,7 +80,7 @@
         \end{align*}
         which, by comparing coefficients, we see $a_i = b_i$ for all $0 \leq i \leq m$. Therefore $f(x) = g(x)$, meaning $\phi$ is injective.
 
-        \item \textbf{Surjective}: Let $p(x) = c_0 + c_1x + \cdots + c_rx^r$ be a polynomial in $D[x]$. Since $k$ is a unit, therefore $k^{-1}$ exists. Note that $q(x) = c_0 + c_1(k^{-1}x) + \cdots + c_r(k^{-1}x)^r$ is also a polynomial in $D[x]$. Observe
+        \item \textbf{Surjective}: Let $p(x) = c_0 + c_1x + \cdots + c_rx^r \in D[x]$. Since $k$ is a unit, therefore $k^{-1}$ exists. Note that $q(x) = c_0 + c_1(k^{-1}x) + \cdots + c_r(k^{-1}x)^r \in D[x]$. Observe
         \begin{align*}
             \phi(q(x)) &= c_0 + c_1(k(k^{-1}x)) + \cdots + c_r(k(k^{-1}x))^r\\
             &= c_0 + c_1x + \cdots + c_rx^r\\
@@ -90,7 +90,7 @@
     \end{itemize}
     Therefore $\phi$ is an isomorphism.
 
-    \item Since $p(x)$ is irreducible we know $D[x]/\princ{p(x)}$ is a field (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}), which is a integral domain (\myref{prop-field-is-integral-domain}), and so $\princ{p(x)}$ is a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}). As $p(x) = a(x)b(x)$ therefore $a(x)b(x) \in \princ{p(x)}$. Hence $a(x) \in \princ{p(x)}$ or $b(x) \in \princ{p(x)}$ by definition of prime ideal. So $a(x) = k(x)p(x)$ or $b(x) = k(x)p(x)$ for some $k(x) \in D[x]$, meaning $p(x) \vert a(x)$ or $p(x) \vert b(x)$.
+    \item Since $p(x)$ is irreducible we know $D[x]/\princ{p(x)}$ is a field (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}), which is a integral domain (\myref{prop-field-is-integral-domain}), and so $\princ{p(x)}$ is a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}). As $p(x) \vert a(x)b(x)$ therefore $a(x)b(x) \in \princ{p(x)}$. Hence $a(x) \in \princ{p(x)}$ or $b(x) \in \princ{p(x)}$ by definition of a prime ideal. So $a(x) = k(x)p(x)$ or $b(x) = k(x)p(x)$ for some $k(x) \in D[x]$, meaning $p(x) \vert a(x)$ or $p(x) \vert b(x)$.
 
     \item \begin{partquestions}{\roman*}
         \item Let $p(x) = x^2 + 2 \in \Z_5[x]$. One sees that
@@ -142,7 +142,7 @@
         \item We see
         \begin{align*}
             (2x+2)(x+2) &= 2\left((x+1)(x+2)\right)\\
-            &= 2(1) & (\text{since } (x+1)(x+2) = 1 \text{ from table})\\
+            &= 2(1) & (\text{as } (x+1)(x+2) = 1 \text{ from the table})\\
             &= 2.
         \end{align*}
 
@@ -206,29 +206,29 @@
         \item $\bar{f}(1) = 1^2 + 1 = 2 \neq 0$; and
         \item $\bar{f}(2) = 2^2 + 1 = 5 = 2 \neq 0$.
     \end{itemize}
-    Therefore $\bar{f}(x)$ is irreducible over $\Z_3$ by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes} and thus $f(x)$ is irreducible over $\Q$ by Mod 3 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}), which means $f(x)$ has no zeroes in $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). But in $\R$ one sees that $f(x)$ has the zeroes $\pm\sqrt2$. Therefore $\sqrt2 \notin \Q$.
+    Therefore $\bar{f}(x)$ is irreducible over $\Z_3$ by \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes} and thus $f(x)$ is irreducible over $\Q$ by Mod 3 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}), which means $f(x)$ has no zeroes in $\Q$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). Therefore $\sqrt2 \notin \Q$.
 
     \item Suppose $f(x)$ is a primitive, degree 1 polynomial in $\Z[x]$. By way of contradiction, suppose $f(x)$ is reducible, meaning $f(x) = p(x)q(x)$ for some non-zero non-unit polynomials $p(x), q(x) \in \Z[x]$. Since $\Z[x]$ is an integral domain, we must have
     \[
         1 = \deg f(x) = \deg(p(x)q(x)) = \deg p(x) + \deg q(x)
     \]
-    by \myref{thrm-polynomial-degree-properties}. So exactly one of $p(x)$ or $q(x)$ is constant; without loss of generality assume $p(x)$ is the constant polynomial. Set $p(x) = k \in \Z$ and we see $f(x) = kq(x)$. But $f(x)$ is primitive, meaning that a factorization of $kq(x)$ is only possible if $k = \pm1$, which are both units, a contradiction. Therefore, $f(x)$ is irreducible.
+    by \myref{thrm-polynomial-degree-properties}. So exactly one of $p(x)$ or $q(x)$ is a constant; without loss of generality assume $p(x)$ is the constant polynomial. Set $p(x) = k \in \Z$ and we see $f(x) = kq(x)$. But $f(x)$ is primitive, meaning that a factorization of $kq(x)$ is only possible if $k = \pm1$, which are both units, a contradiction to the assumption that $p(x) = k$ is not a unit. Therefore, $f(x)$ is irreducible.
 
     \item \begin{partquestions}{\roman*}
         \item Note $f(1) = 1^3 + 6 = 7 = 0$ so $f(x)$ has a zero in $\Z_7$.
 
-        \item As 1 is a zero of $f(x)$, thus $x-1 = x+6$ is a factor of $f(x)$ by Factor Theorem (\myref{corollary-factor-theorem}). Performing long division on $x+6$ we see
+        \item As 1 is a zero of $f(x)$, thus $x-1 = x+6$ is a factor of $f(x)$ by the Factor Theorem (\myref{corollary-factor-theorem}). Performing long division on $x+6$ we see
         \begin{align*}
             x^3 + 6 &= x^2(x+6) - 6x(x+6) + 36(x+6) - 210\\
             &= (x^2-6x+36)(x+6) - 210\\
-            &= (x^2+x+1)(x+6) + 0 & (\text{Evaluating in }\Z_7)\\
+            &= (x^2+x+1)(x+6) + 0 & (\text{evaluating in }\Z_7)\\
             &= (x^2+x+1)(x+6).
         \end{align*}
         One can see that 2 is a zero of $x^2 + x + 1$ in $\Z_7$, so $x - 2 = x+5$ is a factor of $x^2 + x + 1$ by Factor Theorem again. Performing division on it yields
         \begin{align*}
             x^2 + x + 1 &= x(x+5) - 4(x+5) + 21\\
             &= (x-4)(x+5) + 21\\
-            &= (x+3)(x+5) + 0 & (\text{Evaluating in }\Z_7)\\
+            &= (x+3)(x+5) + 0 & (\text{evaluating in }\Z_7)\\
             &= (x+3)(x+5)
         \end{align*}
         which means that
@@ -250,14 +250,14 @@
 
         \item We do the same for degree 3 polynomials. We note that there are 8 such distinct polynomials.
         \begin{itemize}
-            \item $\boxed{x^3}$ Reducible since 0 is a zero.
-            \item $\boxed{x^3 + 1}$ Reducible since 1 is a zero.
-            \item $\boxed{x^3 + x}$ Reducible since 0 is a zero.
-            \item $\boxed{x^3 + x + 1}$ Irreducible since Irreducible since neither 0 nor 1 are zeroes of the polynomial.
-            \item $\boxed{x^3 + x^2}$ Reducible since 0 is a zero.
-            \item $\boxed{x^3 + x^2 + 1}$ Irreducible since neither 0 nor 1 are zeroes of the polynomial.
-            \item $\boxed{x^3 + x^2 + x}$ Reducible since 0 is a zero.
-            \item $\boxed{x^3 + x^2 + x + 1}$ Reducible since 1 is a zero.
+            \item $\boxed{x^3}$ Reducible since 0 is a zero of $x^3$.
+            \item $\boxed{x^3 + 1}$ Reducible since 1 is a zero of $x^3+1$.
+            \item $\boxed{x^3 + x}$ Reducible since 0 is a zero of $x^3+x$.
+            \item $\boxed{x^3 + x + 1}$ Irreducible since neither 0 nor 1 are zeroes of $x^3+x+1$.
+            \item $\boxed{x^3 + x^2}$ Reducible since 0 is a zero of $x^3+x^2$.
+            \item $\boxed{x^3 + x^2 + 1}$ Irreducible since neither 0 nor 1 are zeroes of $x^3+x^2+1$.
+            \item $\boxed{x^3 + x^2 + x}$ Reducible since 0 is a zero of $x^3 + x^2 + x$.
+            \item $\boxed{x^3 + x^2 + x + 1}$ Reducible since 1 is a zero of $x^3 + x^2 + x + 1$.
         \end{itemize}
         Therefore the only distinct irreducible degree 3 polynomials in $\Z_2[x]$ are $x^3+x+1$ and $x^3+x^2+1$.
     \end{partquestions}
@@ -265,7 +265,7 @@
     \item A reducible polynomial of the required form must have the factorization $(x+\alpha)(x+\beta)$. We split into two cases.
     \begin{itemize}
         \item If $\alpha \neq \beta$, then there are $p$ possibilities for $\alpha$ and $p - 1$ possibilities for $\beta$. However, we need to account for commutativity of the two factors, so we divide the total by 2. This leaves us with a total of $\frac{p(p-1)}{2}$ distinct polynomials for this case.
-        \item If instead $\alpha = \beta$, then there are just $p$ choices for $\alpha = \beta$.
+        \item If instead $\alpha = \beta$, then there are just $p$ choices for $\alpha$ and $\beta$.
     \end{itemize}
     All in all, there are $\frac{p(p-1)}{2} + p = \frac{p(p+1)}{2}$ distinct polynomials of the required form.
 
