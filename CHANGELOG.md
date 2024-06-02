@@ -1,6 +1,136 @@
 # Abstract Algebra Book Changelog
 
 ---
+## [1st Edition, Build 34](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.33...v1-build.34)
+
+### General Content Changes
+No general content changes.
+
+### Part 0 (Preliminaries) Changes
+- Fix incorrect capitalisation in part of the solution of problem 4.1.
+- Edit the statement of problem 4.4 to be more clear.
+- Edit the statement and solution of problem 4.7 to be more succinct.
+- Add more detail to the statement of exercise 5.1, exercise 5.5, and problem 5.2.
+- Reword the statement of problem 5.3.
+- Fix a slight issue with the statement of problem 5.6(ii).
+- Add more justification for the solution to problem 5.6.
+- Rewrite the statement of problem 5.7 to be more concise.
+- Edit solution to problem 5.8.
+- Make the statement of exercise 6.4 clearer.
+- Rewrite the statement of problem 6.2 to further guide the reader towards the intended approach.
+- Fix a typo in the solution to problem 6.3.
+- Add extra parentheses in the statement of problem 6.10(i).
+- Make other minor changes.
+
+### Part I (Groups) Changes
+- Add missing "structures" in the statement of problem 7.1.
+- Add more detail to the statement of exercise 8.2.
+- Clean up the solution to exercise 8.3.
+- Rewrite the solution to problem 8.2 to have more detail and to be clearer in the explanation.
+- Edit the statement of problem 8.3 to be clearer.
+- Make the solution to problem 8.3 more concise (and also fix some typos there).
+- Make the solution to exercise 9.7 more clear.
+- Fix the incorrect article "the" in the solution to exercise 9.8(ii) (it should have been "a").
+- Remove extra "or" in the statement of problem 9.1.
+- Add the missing "abelian" condition to problem 9.2.
+- Edit the solution to problem 9.3 to flow better.
+- Reword the statements of problem 9.8 and problem 9.9 to increase clarity.
+- Rewrote exercise 10.1 to fix the glaring issue that the two "groups" mentioned in the exercise are not groups.
+- Edit the statement and solution of exercise 10.3 to be more concise.
+- Add more constraints to exercise 10.4.
+- Add the "non-empty" constraint to appropriate sets in the statements of exercise 10.6 and exercise 10.8.
+- Swap problem 10.2 and problem 10.3.
+- Fix a slight typo in problem 10.4.
+- Edit the statements of problem 10.5 and problem 10.6.
+- Fix a typo in the solution of problem 10.8.
+- Add more detail to the solution of problem 11.1.
+- Rearranged part of the statement of problem 11.2 to be clearer.
+- Added missing $h$ in the solution of problem 12.3.
+- Add more detail to the statement of exercise 13.5.
+- Fix slight formatting error in the solution of exercise 13.5.
+- Make the statement of exercise 13.6 clearer.
+- Changed undefined $n$ to 10 in the solution to exercise 14.4(a).
+- Rewrite the solutions of problem 14.2 and problem 14.3 to be clearer.
+- Edit the statement of problem 14.4 to be more precise.
+- Edit the solutions of problem 14.4(v) and problem 14.4(vi) to be clearer.
+- Add more detail to the solution of exercise 15.1.
+- Use the term "permutations" instead of "actions" in exercise 15.2.
+- Add "non-empty" condition to the statement of exercise 15.4.
+- Make the solution of problem 15.1(ii) clearer.
+- Rewrite part of the statement of problem 15.5 to be more concise.
+- Change the incorrect article in exercise 16.1, from "the" to "a".
+- Reformat the solution of problem problem 16.4.
+- Add the detail that $p$ is prime to the statements of problem 16.5 and problem 16.7.
+- Rewrite the solution to problem 16.8 to be clearer.
+- Add the missing condition that $G$ is a finite abelian group of prime-power order to the solution of exercise 17.2.
+- Change "degree 2" to "order 4" in the solution of problem 17.2.
+- Rewrite the solution of exercise 18.3 to be clearer.
+- Add the missing condition that the composition series is "up to isomorphism" to the statement of exercise 18.4.
+- Correct the incorrect article "the" to "a" in the statement of problem 18.1.
+- Rewrite part of the solution of problem 18.2.
+- Make other minor changes.
+
+### Part II (Rings) Changes
+- Make the solution of exercise 21.4(a) clearer.
+- Rewrite the statement of problem 21.3 to be clearer.
+- Add the missing part of the solution to problem 21.4(iii). Specifically, add the missing solution for factoring 112 into primes.
+- Add missing citations for the solution of problem 21.5.
+- Edit the statement of exercise 24.5, fixing some grammatical errors.
+- Fix the incorrect symbol used for modular congruence in the solution of exercise 24.8.
+- Add citation for the map referenced in exercise 24.9.
+- Change the symbol used for the identity map in the solution of problem 24.1(i).
+- Rewrite the solution to problem 24.4.
+- Make minor edits to the statement of problem 24.5.
+- Rewrite the solution of problem 24.9(ii) to be clearer.
+- Edit problem 24.10 to be more concise.
+- Fix typoes made in the solution of problem 24.10(iii).
+- Edit the solution of problem 24.11 to be more concise.
+- Rephrase exercise 25.1 to be clearer.
+- Fix the incorrect symbol used for the ring in the solution to exercise 25.7.
+- Rewrite the solution to problem 25.6 to be clearer.
+- Rewrite the statement of problem 25.9 to be slightly clearer.
+- Fix some weird notation used in the surjective part of the solution to problem 25.11.
+- Add missing citation to the solution of exercise 26.2.
+- Fix incorrect " $>$ " used in the specification of the prime in the solution of exercise 26.4 (replaced with " $\geq$ ").
+- Make the solution of exercise 26.7 more rigorous.
+- Fix error that " $p(x) = a(x)b(x)$ " in the solution of exercise 26.8 (changed to " $p(x) \vert a(x)b(x)$ ").
+- Make the solution of problem 26.2 more concise.
+- Add slightly more detail to the solution of problem 26.3.
+- Rewrite the statement of problem 26.5 to be more concise.
+- Add more detail to the solution of problem 26.5.
+- Fix the incorrect modulo number in the statement of problem 26.7(b)(ii).
+- Fix a minor grammatical mistake in the solution of exercise 27.1.
+- Add more detail to the solution of exercise 27.2.
+- Add the missing constraint that $k$ must be non-zero in exercise 27.6.
+- Rewrite the statements of problem 27.2 and problem 27.11 to be clearer.
+- Make other minor changes.
+
+### Part III (Fields) Changes
+- Add more detail to the statement and solution of exercise 30.7.
+- Edit the solution to problem 30.5 to be more rigorous.
+- Fix typos in the statement and solution of problem 31.2.
+- Make the solution to problem 31.4 clearer at the outset by signposting that all three statements will be proved.
+- Improve formatting of the solution to problem 31.5.
+- Add condition for $n$ in the solution of problem 32.1.
+- Change confusing " $\leq n$ " to "At most $n$" in the solution of problem 32.7(i).
+- Fix the confusing solution to exercise 33.1.
+- Remove ambiguous "from above" to "from (i)" in the solution of problem 33.5(iii).
+- Add the missing field that $8x^3-6x-1$ "is irreducible" over in the solution of problem 34.3. 
+- Make other minor changes.
+
+### Part IV (Galois) Changes
+- Fix weird formatting of the solution of exercise 34.5.
+- Clarify confusing " $= r$ " in the solution of exercise 34.6.
+- Add a note about what the distinct divisors of $q^6$ are in the solution of problem 35.5.
+- Rewrite the statements of problem 35.10(i) and problem 35.10(vi) to increase clarity.
+- Add brackets for " $\log_2\epsilon$ " in the solution of exercise 36.1 to aid readability.
+- Make other minor changes.
+
+### Other Changes
+- Edit questions extraction program.
+- Edit the source code for tables to not use as much whitespace as they once did.
+
+---
 ## [1st Edition, Build 33](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.32...v1-build.33)
 
 ### General Content Changes
