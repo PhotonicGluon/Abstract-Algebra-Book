@@ -4,7 +4,7 @@
     \item \begin{partquestions}{\roman*}
         \item We note that $[\C:\R] = 2$ since $\C = \R(i)$ and $i$ is a zero of the irreducible polynomial $x^2 + 1$ over $\R$. Therefore, by \myref{thrm-order-of-galois-group-is-degree-of-field-extension}, we see $|\Gal{\C/\R}| = [\C:\R] = 2$.
 
-        \item Certainly $\id \in \Gal{\C/\R}$. We claim that the other element in $\Gal{\C/\R}$ is $\phi: \C \to \C$ where $\phi(a+bi) = a-bi$ for all $a+bi \in \C$. We first need to check that $\phi$ is an automorphism.
+        \item Certainly $\id \in \Gal{\C/\R}$. We claim that the other element in $\Gal{\C/\R}$ is the map $\phi: \C \to \C$ where $\phi(a+bi) = a-bi$ for all $a+bi \in \C$. We first need to check that $\phi$ is an automorphism.
         \begin{itemize}
             \item \textbf{Homomorphism}: One sees clearly for any $a+bi, c+di \in \C$ that
             \begin{align*}
@@ -52,11 +52,7 @@
 
     \item We need to prove the group action axioms.
     \begin{itemize}
-        \item \textbf{Identity}: One sees that for any $x \in E$ we have
-        \begin{align*}
-            \id\cdot x &= \id(x)\\
-            &= x.
-        \end{align*}
+        \item \textbf{Identity}: One sees that for any $x \in E$ we have $\id\cdot x = \id(x) = x$.
         \item \textbf{Compatibility}: Let $\sigma, \mu \in G$ and $x \in E$. Then
         \begin{align*}
             \sigma \cdot (\mu \cdot x) &= \sigma \cdot (\mu(x))\\
@@ -71,15 +67,15 @@
     \[
        |G| = |\Orb{G}{x}||\Stab{G}{x}|
     \]
-    for all $x \in E$. Since the degree of $\alpha_1$ over $F$ is $|\Orb{G}{\alpha_1}| = r$ by \myref{thrm-degree-of-element-under-fixed-field-action}, therefore one sees clearly that the degree of $\alpha_1$ divides the order of $G$.
+    for all $x \in E$. Since the degree of $\alpha_1$ over $F$ is $|\Orb{G}{\alpha_1}|$ (which is $r$) by \myref{thrm-degree-of-element-under-fixed-field-action}, therefore one sees clearly that the degree of $\alpha_1$ divides the order of $G$.
 
-    \item Clearly if every element of $E$ is a zero of a separable polynomial in $F[x]$, say $f(x)$, we may just view $f(x)$ as a polynomial in $K[x]$ and we would obtain the fact that every element of $E$ is a zero of a separable polynomial in $K[x]$. Therefore $E$ is a separable extension of $K$. Coupled with \myref{prop-intermediate-field-of-normal-extension-is-normal-extension} proves that $E/K$ is a Galois extension.
+    \item Clearly if every element of $E$ is a zero of a separable polynomial in $F[x]$, say $f(x)$, we may just view $f(x)$ as a polynomial in $K[x]$ and we would obtain the fact that every element of $E$ is a zero of a separable polynomial in $K[x]$. Therefore $E$ is a separable extension of $K$. Coupled with \myref{prop-intermediate-field-of-normal-extension-is-normal-extension}, this proves that $E/K$ is a Galois extension.
 
     \item For any abelian group $G$, it has a subnormal series
     \[
         1 \lhd G.
     \]
-    Clearly $G/1 \cong G$ is abelian, which means that all factor groups are abelian. Therefore, by definition of a solvable group, $G$ is solvable.
+    Clearly $G/1 \cong G$ is abelian, which means that all factor groups are abelian. Therefore, by definition of a solvable group, we see that $G$ is solvable.
 
     \item The degree 5 polynomial $f(x) = x^5 - 4x - 2$ is not solvable by radicals over $\Q$. For $n > 5$ the existence of a solution by radicals of the general polynomial of degree $n$ yields a solution by radicals of the equation $f(x)x^{n-5} = 0$, contradicting the above.
 \end{questions}
@@ -104,7 +100,7 @@
     \end{align*}
     which means that $\sigma(x) \geq 0$ for all $x > 0$. Now, seeking a contradiction, suppose $\sigma(a) = 0$ for some $a > 0$. But note that $\sigma(0) = 0$ by properties of homomorphism, which shows that $\sigma$ is not injective and hence not an automorphism, a contradiction. Therefore $\sigma(x) \neq 0$ for all $x > 0$, i.e. $\sigma(x) > 0$ for all $x > 0$.
 
-    \item Given that $|\Gal{E/\GF{p}}| = q^6$, this means that $[E:\GF{p}] = q^6$ (\myref{thrm-order-of-galois-group-is-degree-of-field-extension}). Therefore by \myref{thrm-subfields-of-finite-field} we see that $E = \GF{p^{q^6}}$. Note by the same theorem that the number of subfields of $E$ is the number of distinct divisors of $q^6$, which is 7 ($q^0 = 1$, $q$, $q^2$, $q^3$, $q^4$, $q^5$, and $q^6$). But what we want are subfields that are strictly between $\GF{p}$ and $E$. The case of $q^0 = 1$ just gives us $\GF{p}$ and the case of $q^6$ gives us $E$, so the number of subfields that are strictly between $\GF{p}$ and $E$ is $7 - 2 = 5$.
+    \item Given that $|\Gal{E/\GF{p}}| = q^6$, this means that $[E:\GF{p}] = q^6$ (\myref{thrm-order-of-galois-group-is-degree-of-field-extension}). Therefore by \myref{thrm-subfields-of-finite-field} we see that $E = \GF{p^{q^6}}$. Note by the same theorem that the number of subfields of $E$ is the number of distinct divisors of $q^6$, which is 7 (the divisors are $q^0 = 1$, $q$, $q^2$, $q^3$, $q^4$, $q^5$, and $q^6$). But what we want are subfields that are strictly between $\GF{p}$ and $E$. The case of $q^0 = 1$ just gives us $\GF{p}$ and the case of $q^6$ gives us $E$, so the number of subfields that are strictly between $\GF{p}$ and $E$ is $7 - 2 = 5$.
 
     \item \begin{partquestions}{\roman*}
         \item Note that $x^3 - 2 = (x-\sqrt[3]2)(x-\sqrt[3]2\omega)(x-\sqrt[3]2\omega^2)$ where $\omega$ is a primitive 3rd root of unity. So
@@ -114,10 +110,10 @@
         \end{align*}
         So the only possible field $F$ that fits the requirements is $F = \Q(\sqrt[3]2)$.
 
-        \item Suppose $\Q(\sqrt[3]2)$ is the splitting field of some polynomial $g(x) \in \Q[x]$, which means that $g(\sqrt[3]2) = 0$ for that polynomial. By \myref{corollary-minimal-polynomial-divides-polynomial-with-same-root} we know that the minimal polynomial of $\sqrt[3]2$ must divide $g(x)$. In fact note that the minimal polynomial of $\sqrt[3]2$ is exactly $f(x) = x^3 - 2$, which means that $\Q(\sqrt[3]2)$ has to have \textit{all} the zeroes of $f(x)$. However the zeroes of $f(x)$ are $\sqrt[3]2$, $\sqrt[3]2\omega$, and $\sqrt[3]2\omega^2$, of which the latter two are not in $\Q(\sqrt[3]2)$. Hence $\Q(\sqrt[3]2)$ cannot be the splitting field of any polynomial.
+        \item Suppose $\Q(\sqrt[3]2)$ is the splitting field of some polynomial $g(x) \in \Q[x]$, which means that $g(\sqrt[3]2) = 0$ for that polynomial. By \myref{corollary-minimal-polynomial-divides-polynomial-with-same-root} we know that the minimal polynomial of $\sqrt[3]2$ must divide $g(x)$. In fact note that the minimal polynomial of $\sqrt[3]2$ is exactly $f(x) = x^3 - 2$, which means that $\Q(\sqrt[3]2)$ has to have all the zeroes of $f(x)$. However the zeroes of $f(x)$ are $\sqrt[3]2$, $\sqrt[3]2\omega$, and $\sqrt[3]2\omega^2$, of which the latter two are not in $\Q(\sqrt[3]2)$. Hence $\Q(\sqrt[3]2)$ cannot be the splitting field of any polynomial.
     \end{partquestions}
 
-    \item If $n < 3$ we see that $D_n$ is abelian and hence solvable. So let's assume that $n \geq 3$. We find a subnormal series for $D_n$ and show that it fits the requirements for a solvable series.
+    \item If $n < 3$ we see that $D_n$ is abelian and hence solvable. So assume that $n \geq 3$. We find a subnormal series for $D_n$ and show that it fits the requirements for a solvable series.
 
     Note that $\langle r \rangle = \{e, r, r^2, \dots, r^{n-1}\}$ is a subgroup of $D_n$. In fact one sees clearly that $\langle r \rangle \cong \Cn{n}$. Thus by Lagrange's theorem (\myref{thrm-lagrange}) we see that $[D_n:\langle r \rangle] = \frac{2n}{n} = 2$. Therefore by \myref{problem-subgroup-of-index-2} we see that $\langle r \rangle \lhd D_n$. So a subnormal series of $D_n$ is
     \[
@@ -154,7 +150,7 @@
         \begin{align*}
             &(\cos\theta + i\sin\theta)^{k+1}\\
             &= (\cos\theta + i\sin\theta)^k(\cos\theta + i\sin\theta)\\
-            &= (\cos(k\theta) + i\sin(k\theta))(\cos\theta + i\sin\theta) & (\text{Induction Hypothesis})\\
+            &= (\cos(k\theta) + i\sin(k\theta))(\cos\theta + i\sin\theta) & (\text{by induction hypothesis})\\
             &= \cos(k\theta)\cos\theta + i\cos(k\theta)\sin\theta\\
             &\quad\quad+ i\cos\theta\sin(k\theta) + i^2\sin(k\theta)\sin\theta\\
             &= (\cos(k\theta)\cos\theta - \sin(k\theta)\sin\theta)\\
@@ -207,6 +203,6 @@
 
         For the reverse direction, suppose $D \in F$. Then $\sigma(D) = D$ for all $\sigma \in \Gal{E/F}$. By \textbf{(iv)} again this means that $\sigma$ is even for all $\sigma \in \Gal{E/F}$. This means that $\Gal{E/F}$ contains only even permutations, and so must be isomorphic to a subgroup of $\An{n}$.
 
-        \item One sees that $\Delta = -4(2)^3 - 27(-4)^2 = -464$. Clearly $D = \sqrt{\Delta} \notin \R$ and so $\Gal{E/F}$ is \textit{not} isomorphic to a subgroup of $\An{n}$ (in particular $\An{3}$) by \textbf{(v)}. However, we note $\Gal{E/F}$ is isomorphic to a subgroup of $\Sn{3}$ and that $\An{3}$ is the largest subgroup of $\Sn{3}$. Since $\Gal{E/F}$ is not a subgroup of $\An{3}$, this leaves the case where $\Gal{E/F} \cong \Sn{3}$ as the only possibility.
+        \item One sees that $\Delta = -4(2)^3 - 27(-4)^2 = -464$. Clearly $D = \sqrt{\Delta} \notin \R$ and so $\Gal{E/F}$ is not isomorphic to a subgroup of $\An{n}$ (in particular $\An{3}$) by \textbf{(v)}. However, we note $\Gal{E/F}$ is isomorphic to a subgroup of $\Sn{3}$ and that $\An{3}$ is the largest subgroup of $\Sn{3}$. Since $\Gal{E/F}$ is not a subgroup of $\An{3}$, this leaves the case where $\Gal{E/F} \cong \Sn{3}$ as the only possibility.
     \end{partquestions}
 \end{questions}
