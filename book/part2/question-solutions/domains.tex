@@ -5,11 +5,11 @@
     \[
         a = bv = (au)v = auv
     \]
-    which means $uv = 1$ by cancellation law (\myref{prop-domain-cancellation-law}). Thus $u$ (and also $v$) is a unit, which shows that $a$ and $b$ are associates.
+    which means $uv = 1$ by cancellation law (\myref{prop-domain-cancellation-law}). Thus $u$ (and also $v$) are units, which shows that $a$ and $b$ are associates.
 
     For the reverse direction, if $a$ and $b$ are associates, then there exists a unit $u \in D$ such that $a = bu$, which also means that $b = au^{-1}$. Therefore one clearly sees that $a \vert b$ and $b \vert a$.
 
-    \item Let $D$ be an integral domain. Suppose $r$ is an irreducible and $q$ an associate of $r$, meaning there exists a unit $u \in D$ such that $q = ru$. Suppose on the contrary that $q$ is reducible, meaning $q = ab$ where neither $a$ nor $b$ are units in $D$. Then $ru = ab$ which means $r = (u^{-1}a)b$. As $r$ is irreducible we know that either $b$ is a unit (contradicting the assumption) or $u^{-1}a$ is a unit. Since the product of units is a unit, thus $u(u^{-1}a) = a$ is a unit, contradicting the assumption. Therefore $q = ru$ is irreducible.
+    \item Let $D$ be an integral domain. Suppose $r$ is an irreducible and $q$ an associate of $r$, meaning there exists a unit $u \in D$ such that $q = ru$. Suppose on the contrary that $q$ is reducible, meaning $q = ab$ where neither $a$ nor $b$ are units in $D$. Then $ru = ab$ which means $r = (u^{-1}a)b$. As $r$ is irreducible we know that either $b$ is a unit (contradicting the assumption that $b$ is not a unit) or $u^{-1}a$ is a unit. Since the product of units is a unit, thus $u(u^{-1}a) = a$ is a unit, contradicting the assumption that $a$ is not a unit. Therefore $q = ru$ is irreducible.
 
     \item Suppose $N(x) = p$ where $p$ is a prime number, and $x = ab$ where $a,b \in \Z[\sqrt{d}]$. Taking norms yields $N(x) = N(ab) = N(a)N(b) = p$. But since $p$ is prime, one of $N(a)$ or $N(b)$ is 1, which by \myref{prop-properties-of-quadratic-integer-norm}, statement 3, we know that $a$ or $b$ is a unit. Therefore $x$ is irreducible.
 
@@ -165,7 +165,7 @@
 
     \item We induct on $n$. When $n = 2$, this reduces down to the definition of a prime element in an integral domain. Now suppose $p \vert a_1a_2\cdots a_k$ for some $k \geq 2$. We are to show that this works for $k + 1$.
 
-    Note $p \vert a_1a_2\cdots a_ka_{k+1}$ is the same as $p \vert (a_1a_2\cdots a_k)a_{k+1}$. By definition of a prime element we know that $p \vert a_1a_2\cdots a_k$ or $p \vert a_{k+1}$. Therefore, using induction hypothesis on the former, we see $p\vert a_1$, or $p\vert a_2$, or $p \vert a_3$, etc., or $p \vert a_k$, or $p \vert a_{k+1}$, which proves the statement for $k + 1$.
+    Note $p \vert a_1a_2\cdots a_ka_{k+1}$ is the same as $p \vert (a_1a_2\cdots a_k)a_{k+1}$. By definition of a prime element we know that $p \vert a_1a_2\cdots a_k$ or $p \vert a_{k+1}$. Therefore, using the induction hypothesis on the former, we see $p\vert a_1$, or $p\vert a_2$, or $p \vert a_3$, ..., or $p \vert a_k$, or $p \vert a_{k+1}$, which proves the statement for $k + 1$.
 
     Therefore by induction we establish the required result.
 
@@ -175,7 +175,7 @@
 
         \item We claim 7 is irreducible. Suppose $7 = wz$ for some $w,z \in \Z[i]$. Then $49 = N(wz) = N(w)N(z)$. Suppose neither $w$ nor $z$ are units, which means $N(w) = N(z) = 7$.
 
-        If $w = a+bi$ for some integers $a$ and $b$, then $N(w) = a^2+b^2 = 7$. This means $a^2 = 7 - b^2$. For a solution to exist the right hand side cannot be negative, so we note that $b$ can only be -2, -1, 0, 1, or 2. For each one of these possibilities we see that $7 - b^2$ is not a square, so there is no solution for $w$ (and likewise for $z$).
+        If $w = a+bi$ for some integers $a$ and $b$, then $N(w) = a^2+b^2 = 7$. This means $a^2 = 7 - b^2$. For a solution to exist, the right hand side cannot be negative, so we note that $b$ can only be -2, -1, 0, 1, or 2. For each one of these possibilities we see that $7 - b^2$ is not a square, so there is no solution for $w$ (and likewise for $z$).
 
         Hence one of $N(w)$ or $N(z)$ is 1, meaning that one of $w$ or $z$ is a unit. Hence 7 is irreducible and therefore prime.
 
@@ -307,7 +307,7 @@
     For the reverse direction, since UFDs are integral domains, therefore any prime is an irreducible (\myref{thrm-in-integral-domain-primes-are-irreducibles}).
 
     \item \begin{partquestions}{\alph*}
-        \item Suppose $a$ and $b$ are associates in $D$. So there is a unit $u \in D$ such that $a = ub$. Note
+        \item Suppose $a, b \in D$ are associates. So there is a unit $u \in D$ such that $a = ub$. Note
         \begin{align*}
             N(a) &= N(ub) \leq N(b) \text{ and}\\
             N(b) &= N(u^{-1}a) \leq N(a)
@@ -334,24 +334,24 @@
     \]
     but $\phi$ is non-constant, a contradiction. Hence $\phi(1) = 1$.
 
-    Now let $u$ be a unit in $D$, meaning that there exists a $v \in D$ such that $uv = 1$. So one sees
+    Now let $u \in D$ be a unit, meaning that there exists a $v \in D$ such that $uv = 1$. So one sees
     \[
         1 = \phi(1) = \phi(uv) = \phi(u)\phi(v).
     \]
-    As we working with the non-negative integers, the only way to a product to equal 1 we must have $\phi(u) = \phi(v) = 1$.
+    As we are working with the non-negative integers, the only way to a product to equal 1 we must have $\phi(u) = \phi(v) = 1$.
 
-    \item Suppose there are only finitely many irreducible polynomials within $F[x]$, and suppose that $p_1(x), p_2(x), \dots, p_n(x)$ are all the irreducible polynomials in $F[x]$. As $F[x]$ is a PID (\myref{thrm-polynomial-ring-over-field-is-a-PID}) it is thus a UFD (\myref{thrm-PID-is-UFD}). Now consider the polynomial
+    \item Suppose there are only finitely many irreducible polynomials within $F[x]$, and suppose that $p_1(x), p_2(x), \dots, p_n(x)$ is a list of all the irreducible polynomials in $F[x]$. As $F[x]$ is a PID (\myref{thrm-polynomial-ring-over-field-is-a-PID}) it is thus a UFD (\myref{thrm-PID-is-UFD}). Now consider the polynomial
     \[
         q(x) = p_1(x)p_2(x)\cdots p_n(x) + 1.
     \]
-    By construction we see that none of $p_1(x), p_2(x), \dots, p_n(x)$ divide $q(x)$. However as $F[x]$ is a UFD, a factorization of $q(x)$ into irreducibles in $F[x]$ is always possible. Therefore we have found an irreducible that is not $p_1(x), p_2(x), \dots, p_n(x)$, contradicting that we have a complete list of all irreducible polynomials in $F[x]$. Therefore there are infinitely many irreducible polynomials in $F[x]$.
+    By construction we see that none of $p_1(x), p_2(x), \dots, p_n(x)$ divide $q(x)$. However, as $F[x]$ is a UFD, a factorization of $q(x)$ into irreducibles in $F[x]$ is always possible. Therefore we have found an irreducible that is not $p_1(x), p_2(x), \dots, p_n(x)$, contradicting that we have a complete list of all irreducible polynomials in $F[x]$. Therefore there are infinitely many irreducible polynomials in $F[x]$.
 
     \item Let $I$ be a non-trivial ideal in $\Z[i]$. As $\Z[i]$ is a PID, suppose $I = \princ{a+bi}$ for some $a,b \in \Z$. Note that
     \[
         a^2 + b^2 = (a+bi)(a-bi) \in I.
     \]
 
-    Now let $x+yi \in \Z[i]$. Euclid's division lemma (\myref{lemma-euclid-division}) tells us that there exist $q_1, q_2, r_1, r_2 \in \Z$ such that
+    Now let $x+yi \in \Z[i]$. Euclid's division lemma (\myref{lemma-euclid-division}) tells us that there exists $q_1, q_2, r_1, r_2 \in \Z$ such that
     \begin{align*}
         x &= q_1(a^2+b^2) + r_1\\
         y &= q_2(a^2+b^2) + r_2
@@ -364,7 +364,7 @@
     \end{align*}
     Notice that $(x+yi)+I = (r_1+r_2i)+I$ is an element of $\Z[i]/I$ and that there are only finitely many integers within the interval $[0, a^2+b^2)$. Therefore $\Z[i]/I$ is finite, since $0 \leq r_1, r_2 < a^2+b^2$.
 
-    \item As $\Z[x]$ is a UFD (\myref{corollary-Z-is-UFD}) we note that the factorizations mentioned below are unique.
+    \item As $\Z[x]$ is a UFD (\myref{corollary-Z-is-UFD}) we note that the following factorizations are unique.
     \begin{partquestions}{\roman*}
         \item We note that if one die shows $n$, then the other die must have a value of $k - n$ in order for both dice's sum to be $k$. Similarly, in order to obtain a term with degree $k$, and if the first term to multiply is $x^n$, then the other has to be $x^{k-n}$ in order for their product to have degree $k$.
 
@@ -402,7 +402,7 @@
         \]
         so $0^q = 0$. As we defined $0^0 = 1$, we see $q \neq 0$.
 
-        \item So far we have $f(x) = x^q(x+1)(x^2+x+1)(x^2-x+1)^t$. If $q = 2$ then $f(x) = x^2(x+1)(x^2+x+1)(x^2-x+1)^t$. But since $P(x) = f(x)g(x)$ and the smallest sum of two dice is 2, that means one of the $b_i$ in $g(x)$ must be zero. But in \textbf{(iii)} we defined that every $b_i$ is a positive integer, a contradiction. Hence $q \neq 2$.
+        \item So far we have $f(x) = x^q(x+1)(x^2+x+1)(x^2-x+1)^t$. If $q = 2$ then $f(x) = x^2(x+1)(x^2+x+1)(x^2-x+1)^t$. But since $P(x) = f(x)g(x)$ and the smallest possible sum of two dice is 2, that means one of the $b_i$ in $g(x)$ must be zero. But in \textbf{(iii)} we defined that every $b_i$ is a positive integer, a contradiction. Hence $q \neq 2$.
 
         \item We deduce from \textbf{(iv)} and \textbf{(v)} that $q = 1$, meaning $f(x) = x(x+1)(x^2+x+1)(x^2-x+1)^t$. We now list all possibilities for $f(x)$.
         \begin{itemize}
