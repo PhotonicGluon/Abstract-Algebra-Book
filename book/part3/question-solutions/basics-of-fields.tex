@@ -2,8 +2,8 @@
 \subsection*{Exercises}
 \begin{questions}
     \item \begin{partquestions}{\alph*}
-        \item Clearly $0 = 0 - 0$ since $x - x = 0$ for all elements $x \in F$, including $x = 0$. But since 0 is the additive identity, this means $0 + x = x$ for all $x \in F$, including $x = -0$. Hence $0 = -0$.
-        \item Clearly $1 = 1\times 1^{-1}$ since $xx^{-1} = 1$ for all $x \in F^\ast$, including $x = 1$. But since 1 is the multiplicative identity, this means $1x = x$ for all $x \in F$, including $x = 1^{-1}$. So $1 = 1^{-1}$.
+        \item Clearly $0 = 0 - 0$ since $x - x = 0$ for all elements $x \in F$, including for $x = 0$. But since 0 is the additive identity, this means $0 + x = x$ for all $x \in F$, including $x = -0$. Hence $0 = -0$.
+        \item Clearly $1 = 1\times 1^{-1}$ since $xx^{-1} = 1$ for all $x \in F^\ast$, including for $x = 1$. But since 1 is the multiplicative identity, this means $1x = x$ for all $x \in F$, including $x = 1^{-1}$. So $1 = 1^{-1}$.
     \end{partquestions}
 
     \item We already proved that $\Q[\sqrt{d}]$ is a field (\myref{prop-quadratic-field-is-a-field}). Now if $d \geq 0$ then $\sqrt{d} \in \R$, meaning that $\Q[\sqrt{d}] \subset \R \subset \C$. If instead $d < 0$, we may write $d = -r$, so $\Q[\sqrt{d}] = \Q[\sqrt{-r}] = \Q[i\sqrt{r}] \subset \C$. Hence $\Q[\sqrt{d}]$ is a subfield of $\C$, by using the definition of a subfield.
@@ -13,7 +13,7 @@
 \begin{questions}
     \item Note $2\Z$ is a ring that is contained in the field $\Q$.
 
-    \item Disprove. Suppose $\phi: \C \to \R$ is an isomorphism. Then there must exist a $w \in \C$ such that $\phi(w) = -1$. Note that $\sqrt{w} \in \C$; let $z = \sqrt{w}$. Then
+    \item Disprove. Suppose $\phi: \C \to \R$ is an isomorphism. Then there must exist $w \in \C$ such that $\phi(w) = -1$. Note that $\sqrt{w} \in \C$; let $z = \sqrt{w}$. Then
     \[
         \left(\phi(z)\right)^2 = \phi\left(z^2\right) = \phi(w) = -1.
     \]
@@ -67,7 +67,7 @@
         \end{align*}
         Therefore any element of $\Z[i]/\princ{2-i}$ can be written as $r + \princ{2-i}$, where $r \in \Z_5$, as required.
 
-        \item Define $\phi: \Z_5 \to R$ where $r \mapsto r + \princ{2-i}$. We show that $\phi$ is an isomorphism.
+        \item Define the map $\phi: \Z_5 \to R$ where $r \mapsto r + \princ{2-i}$. We show that $\phi$ is an isomorphism.
         \begin{itemize}
             \item \textbf{Homomorphism}: We note that for $m,n \in \Z_5$ that
             \begin{align*}
@@ -111,7 +111,7 @@
     \item \begin{partquestions}{\roman*}
         \item Note that as a field is a ring with identity, we have $|1|_+ = p$ by \myref{prop-characteristic-of-ring-with-identity} and since $\Char{F} = p$. As the order of an element divides the order of the group (\myref{corollary-order-of-group-multiple-of-order-of-element}), therefore $p$ divides the order of the additive group of $F$. As the order of the additive group of $F$ is precisely the order of $F$, thus $p$ divides $|F|$.
 
-        \item Since $q$ is another prime dividing $|F|$, it is not $p$. Thus $p$ and $q$ are coprime, meaning that there are integers $\lambda$ and $\mu$ such that $\lambda p + \mu q = 1$ by B\'ezout's lemma (\myref{lemma-bezout}). Hence $(\lambda p + \mu q)x = x$ for any element $x \in F$.
+        \item Since $q$ is another prime dividing $|F|$, it is not $p$. Thus $p$ and $q$ are coprime, meaning that there exist integers $\lambda$ and $\mu$ such that $\lambda p + \mu q = 1$ by B\'ezout's lemma (\myref{lemma-bezout}). Hence $(\lambda p + \mu q)x = x$ for any element $x \in F$.
 
         \item Since $q$ divides $|F|$, then there is an element $x$ in the additive group of $F$ with order $q$ by Cauchy's theorem (\myref{thrm-cauchy}). This means $qx = 0$. But we also have $px = 0$ since $\Char{F} = p$. Thus,
         \begin{align*}
@@ -122,11 +122,11 @@
         \end{align*}
         which shows $x = 0$. Note $|0|_+ = 1$ since 0 is the identity in the additive group. But $x$ has order $q$, a prime number, so $q \geq 2$, i.e. $|0|_+ \geq 2$, a contradiction.
 
-        Therefore no other prime other than $p$ divides $|F|$, meaning that $|F| = p^n$ where $n$ is a \textit{non-negative} integer. But $n \neq 0$ since otherwise $F$ has order 1, which means that the multiplicative group has order 0, an impossibility. Thus $|F| = p^n$ where $n$ is a \textit{positive} integer.
+        Therefore no other prime other than $p$ divides $|F|$, meaning that $|F| = p^n$ where $n$ is a \textit{non-negative} integer. But $n \neq 0$ (since otherwise $F$ has order 1) which means that the multiplicative group has order 0, an impossibility. Thus $|F| = p^n$ where $n$ is a \textit{positive} integer.
     \end{partquestions}
 
     \item \begin{partquestions}{\alph*}
-        \item We will just show that there are infinitely many equivalence classes of the form $\frac{f(x)}1$.
+        \item We will show that there are infinitely many equivalence classes of the form $\frac{f(x)}1$.
 
         Suppose, on the contrary, that there are only finitely many equivalence classes of the form $\frac{f(x)}1$; in particular, they are $\frac{f_1(x)}1, \frac{f_2(x)}1, \dots, \frac{f_n(x)}1$.
 

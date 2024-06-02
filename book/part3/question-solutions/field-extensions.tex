@@ -23,7 +23,7 @@
         \begin{align*}
             &\phi\left(\left(ax + b + \princ{x^2+1}\right)\left(cx + d + \princ{x^2+1}\right)\right)\\
             &= \phi\left((acx^2 + (ad + bc)x + bd) + \princ{x^2+1}\right)\\
-            &= \phi\left(((ad + bc)x + (bd - ac)) + \princ{x^2+1}\right) & (\text{since } x^2 = -1 \text{ in } F)\\
+            &= \phi\left(((ad + bc)x + (bd - ac)) + \princ{x^2+1}\right) & (\text{since } x^2 = -1 \text{ within } F)\\
             &= (bd - ac) + (ad + bc)i\\
             &= (b + ai)(d + ci)\\
             &= \phi\left(ax + b + \princ{x^2+1}\right)\phi\left(cx + d + \princ{x^2+1}\right)
@@ -44,7 +44,7 @@
     \end{itemize}
     Therefore $\phi$ is a well-defined isomorphism, proving that $F \cong \C$.
 
-    \item By way of contradiction, suppose a ring $R$ has an subring that is isomorphic to $\Z_4$, and that $f(x)$ has a zero in such a ring. Let this zero be denoted $\alpha$, which means $2\alpha + 1 = 0$ in $R$. Note that this means
+    \item By way of contradiction, suppose a ring $R$ has an subring that is isomorphic to $\Z_4$, and that $f(x)$ has a zero in such a ring. Let this zero be denoted $\alpha$, which means $2\alpha + 1 = 0$ within $R$. Note that this means
     \begin{align*}
         0 &= 2\times0\\
         &= 2(2\alpha + 1)\\
@@ -119,7 +119,7 @@
     \begin{align*}
         ((f(x))^{k+1})' &= ((f(x))(f(x))^k)'\\
         &= f(x)((f(x))^k)' + f'(x)(f(x))^k\\
-        &= f(x)(k(f(x))^{k-1}f'(x)) + f'(x)(f(x))^k & (\text{Induction Hypothesis})\\
+        &= f(x)(k(f(x))^{k-1}f'(x)) + f'(x)(f(x))^k & (\text{by induction hypothesis})\\
         &= k(f(x))^kf'(x) + (f(x))^kf'(x)\\
         &= (k+1)(f(x))^kf'(x)
     \end{align*}
@@ -136,8 +136,8 @@
     \item We prove this by induction on $n$. The base case of $n = 1$ was already proven. Assume that the statement holds for some positive integer $k$, i.e. $(x+y)^{p^k} = x^{p^k} + y^{p^k}$. Note that
     \begin{align*}
         (x+y)^{p^{k+1}} &= \left((x+y)^{p^k}\right)^p\\
-        &= (x^{p^k}+y^{p^k})^p & (\text{By Induction Hypothesis})\\
-        &= \left(x^{p^k}\right)^p + \left(y^{p^k}\right)^p & (\text{By Freshman's Dream}, \myref{prop-freshman-dream})\\
+        &= (x^{p^k}+y^{p^k})^p & (\text{by induction hypothesis})\\
+        &= \left(x^{p^k}\right)^p + \left(y^{p^k}\right)^p & (\text{by Freshman's Dream}, \myref{prop-freshman-dream})\\
         &= x^{p^{k+1}} + y^{p^{k+1}}
     \end{align*}
     so the statement holds for $k + 1$. Thus by mathematical induction we have proven that $(x+y)^{p^n} = x^{p^n} + y^{p^n}$.
@@ -162,7 +162,7 @@
             &=\Q(\sqrt{-3}).
         \end{align*}
 
-        \item Given $x^4 + x^2 + 1 = (x^2 - x + 1)(x^2 + x + 1)$. The zeroes of $x^2 + x + 1$ are $\frac12 \pm \frac12\sqrt{-3}$; the zeroes of $x^2 - x + 1$ are $-\frac12 \pm \frac12\sqrt{-3}$. Therefore the splitting field of $x^4 + x^2 + 1$ over $\Q$ is
+        \item Given $x^4 + x^2 + 1 = (x^2 - x + 1)(x^2 + x + 1)$. The zeroes of $x^2 + x + 1$ are $\frac12 \pm \frac12\sqrt{-3}$, while the zeroes of $x^2 - x + 1$ are $-\frac12 \pm \frac12\sqrt{-3}$. Therefore the splitting field of $x^4 + x^2 + 1$ over $\Q$ is
         \begin{align*}
             &\Q\left(\frac12 + \frac12\sqrt{-3}, \frac12 - \frac12\sqrt{-3}, -\frac12 + \frac12\sqrt{-3}, -\frac12 - \frac12\sqrt{-3}\right)\\
             &=\Q\left(\frac12 + \frac12\sqrt{-3}\right)\left(\frac12 - \frac12\sqrt{-3}\right)\left(-\frac12 + \frac12\sqrt{-3}\right)\left(-\frac12 - \frac12\sqrt{-3}\right)\\
@@ -170,7 +170,7 @@
             &= \Q(\sqrt{-3}).
         \end{align*}
 
-        \item The zeroes of $x^2 + 2\sqrt2x + 3$ are $\sqrt2 \pm i$ by quadratic formula. Hence the splitting field of $x^2 + 2\sqrt2x + 3$ over $\Q(\sqrt2)$ is
+        \item The zeroes of $x^2 + 2\sqrt2x + 3$ are $\sqrt2 \pm i$ by the quadratic formula. Hence the splitting field of $x^2 + 2\sqrt2x + 3$ over $\Q(\sqrt2)$ is
         \begin{align*}
             \Q(\sqrt2)(\sqrt2+i, \sqrt2-i) &= \Q(\sqrt2)(\sqrt2 + i)(\sqrt2 - i)\\
             &= Q(\sqrt2, i).
@@ -187,18 +187,20 @@
         \item Let $f(x) = x^8 + 3x^5 + x^3 + 5$, so $f'(x) = 8x^7 + 15x^4 + 3x^2$. In $\Z_7[x]$, $f'(x) = x^7 + x^4 + 3x^2$. Note $f(4) = 68677 = 0$ and $f'(4) = 16688 = 0$, so $f(x)$ and $f'(x)$ share a common factor of positive degree of $x-4$ by Factor Theorem (\myref{corollary-factor-theorem}). Hence 4 is a multiple zero by \myref{thrm-criterion-for-multiple-zeroes}.
     \end{partquestions}
 
-    \item \begin{partquestions}{\roman*}
-        \item Prove. Since $p(x)$ is irreducible, thus $\princ{p(x)}$ is maximal (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}). Therefore $\Z_2[x]/\princ{p(x)}$ is a field by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
+    \item We prove all three statements.
+    \begin{partquestions}{\roman*}
+        \item Since $p(x)$ is irreducible, thus $\princ{p(x)}$ is a maximal ideal (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}). Therefore $\Z_2[x]/\princ{p(x)}$ is a field by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
 
-        \item Prove. Since $\Z_2[x]/\princ{p(x)}$ is a field, thus $\left(\Z_2[x]/\princ{p(x)}\right)^\ast$ is in fact the multiplicative group of the field.
+        \item Since $\Z_2[x]/\princ{p(x)}$ is a field, thus $\left(\Z_2[x]/\princ{p(x)}\right)^\ast$ is in fact the multiplicative group of the field.
 
-        \item Prove. Note that $\left|\Z_2[x]/\princ{p(x)}\right| = 2^7 = 128$, so $\left|\left(\Z_2[x]/\princ{p(x)}\right)^\ast\right| = 2^7 - 1 = 127$, since the multiplicative group omits the additive identity. One sees that 127 is prime. Hence every non-identity element of $\left(\Z_2[x]/\princ{p(x)}\right)^\ast$ is a generator (\myref{exercise-prime-order-element}).
+        \item Note that $\left|\Z_2[x]/\princ{p(x)}\right| = 2^7 = 128$, so $\left|\left(\Z_2[x]/\princ{p(x)}\right)^\ast\right| = 2^7 - 1 = 127$, since the multiplicative group omits the additive identity. One sees that 127 is prime. Hence every non-identity element of $\left(\Z_2[x]/\princ{p(x)}\right)^\ast$ is a generator (\myref{exercise-prime-order-element}).
     \end{partquestions}
 
     \item Suppose $\alpha_1, \alpha_2, \dots, \alpha_n$ are the zeroes of $f(x)$. Then $\alpha_1 - a, \alpha_2 - a, \dots, \alpha_n - a$ are the zeroes of $f(x+a)$. Thus the splitting field of $f(x+a)$ over $F$ is
     \begin{align*}
-        F(\alpha_1 - a, \alpha_2 - a, \dots, \alpha_n - a) &= F(\alpha_1 - a)(\alpha_2 - a)\dots(\alpha_n - a)\\
-        &= F(\alpha_1)(\alpha_2)\dots(\alpha_n) & (\myref{problem-simple-extension-absorbs-field-elements})\\
+        &F(\alpha_1 - a, \alpha_2 - a, \dots, \alpha_n - a)\\
+        &= F(\alpha_1 - a)(\alpha_2 - a)\dots(\alpha_n - a)\\
+        &= F(\alpha_1)(\alpha_2)\dots(\alpha_n) & (\text{by } \myref{problem-simple-extension-absorbs-field-elements})\\
         &= F(\alpha_1, \alpha_2, \dots, \alpha_n)
     \end{align*}
     which is the splitting field of $f(x)$ over $F$.
@@ -217,7 +219,7 @@
 
     Now suppose $f(x)$ has no zeroes in $F$. Let $E/F$ be the splitting field of $f(x)$, and suppose $\beta \in E$ is a zero of $f(x)$. Using the above working we know that $f(x) = (x-\beta)^p$.
 
-    Now, seeking a contradiction, suppose $f(x)$ is reducible over $F$, meaning that there exist non-constant polynomials $g(x), h(x) \in F[x]$ such that $f(x) = g(x)h(x)$. In particular, $g(x) = (x-\beta)^n$ for some positive integer $n$ where $1 \leq n \leq p$. Expanding $g(x)$ using the Binomial Theorem (\myref{thrm-binomial}) yields
+    Now, seeking a contradiction, suppose $f(x)$ is reducible over $F$, meaning that there exist non-constant polynomials $g(x), h(x) \in F[x]$ such that $f(x) = g(x)h(x)$. In particular, we see $g(x) = (x-\beta)^n$ for some positive integer $n$ where $1 \leq n \leq p$. Expanding $g(x)$ using the Binomial Theorem (\myref{thrm-binomial}) yields
     \[
         g(x) = x^n + n\beta x^{n-1} + {n\choose2}\beta^2x^{n-2} + \cdots + n\beta^{n-1}x + \beta^n \in F[x],
     \]

@@ -1,7 +1,7 @@
 \section{Finite Fields}
 \subsection*{Exercises}
 \begin{questions}
-    \item Note for any $\alpha \in S$, because $f(\alpha) = \alpha^{p^n} - \alpha = 0$, thus $\alpha^{p^n} = \alpha$. This fact will be useful later.
+    \item Note for any $\alpha \in S$ we have $\alpha^{p^n} = \alpha$, since $\alpha^{p^n} - \alpha = f(\alpha) = 0$. This fact will be useful later.
     \begin{itemize}
         \item Clearly $f(1) = 1^{p^n} - 1 = 0$ so $1 \in S^\ast$.
 
@@ -10,7 +10,7 @@
             f(\alpha - \beta) &= (\alpha-\beta)^{p^n} - (\alpha - \beta)\\
             &= \alpha^{p^n} + (-1)^{p^n}\beta^{p^n} - \alpha + \beta & (\myref{prop-freshman-dream})\\
             &= (\alpha^{p^n} - \alpha) + ((-1)^{p^n}\beta^{p^n} + \beta)\\
-            &= 0 + (-1)^{p^n}\beta^{p^n} + \beta & (\text{as } \alpha \in S)\\
+            &= 0 + (-1)^{p^n}\beta^{p^n} + \beta & (\text{since } \alpha \in S)\\
             &= (-1)^{p^n}\beta^{p^n} + \beta.
         \end{align*}
         We further split into two cases.
@@ -32,7 +32,7 @@
     \end{itemize}
     Therefore by the subfield test (\myref{thrm-subfield-test}) we see that $S$, the set of zeroes of $f(x)$ in $F$, is a subfield of $F$.
 
-    \item After some work, we notice that
+    \item Notice that
     \begin{align*}
         f(\alpha^2) &= (\alpha^2)^4 + (\alpha^2) + 1\\
         &= \alpha^8 + \alpha^2 + 1\\
@@ -97,7 +97,7 @@
         \end{align*}
     \end{partquestions}
 
-    \item In \myref{thrm-finite-field-is-perfect} we have shown that the Frobenius endomorphism $\phi: F \to F, x \mapsto x^p$ is actually an automorphism. The result yields immediately since an automorphism is an isomorphism, which means that every $a \in F$ has a unique $b \in F$ such that $a = b^p$.
+    \item In \myref{thrm-finite-field-is-perfect} we showed that the Frobenius endomorphism $\phi: F \to F, x \mapsto x^p$ is actually an automorphism. The result yields immediately since an automorphism is an isomorphism, which means that every $a \in F$ has a unique $b \in F$ such that $a = b^p$.
 
     \item Since $\deg f(x) = 2$ and $\alpha$ is given to be a zero of $f(x)$, there must only be one other zero in $\Z_3(\alpha)$. Note that $\Z_3(\alpha) \cong \Z_3[x]/\princ{f(x)}$ which is a finite field of $3^2 = 9$ elements (\myref{thrm-characterisation-of-extensions}).
 
@@ -154,7 +154,7 @@
         Clearly $2\alpha \neq 1$ and so $|2\alpha| \neq 1$. Also we clearly see $(2\alpha)^2 = 4\alpha^2 = \alpha^2 \neq 1$ so $|2\alpha| \neq 2$. Finally, we see
         \begin{align*}
             (2\alpha)^{13} &= 2^{13}\alpha^{13}\\
-            &= 2^{13} & (\text{since, from above, we know }\alpha^{13} = 1)\\
+            &= 2^{13} & (\text{since, from \textbf{(i)}, we know }\alpha^{13} = 1)\\
             &= 8192\\
             &= 2\\
             &\neq 1

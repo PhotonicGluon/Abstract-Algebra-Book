@@ -1,7 +1,7 @@
 \section{Algebraic Extensions}
 \subsection*{Exercises}
 \begin{questions}
-    \item It is not a transcendental number, i.e. it is an algebraic number. Let $\alpha = \sqrt{2-\sqrt{i}}$; one sees $\alpha^2 = 2 - \sqrt{i}$. Thus $\alpha^2 - 2 = -\sqrt{i}$ and so $(\alpha^2-2)^2 = i$. Note that $(\alpha^2 - 2)^2 = \alpha^4 - 4\alpha^2 + 4$ and so $\alpha^4 - 4\alpha^2 + 4 = i$. Squaring one more time we see
+    \item It is not a transcendental number, i.e. it is an algebraic number. Let $\alpha = \sqrt{2-\sqrt{i}}$; one sees $\alpha^2 = 2 - \sqrt{i}$. Thus $\alpha^2 - 2 = -\sqrt{i}$ and so $(\alpha^2-2)^2 = i$. Note that $(\alpha^2 - 2)^2 = \alpha^4 - 4\alpha^2 + 4$ and so $\alpha^4 - 4\alpha^2 + 4 = i$. Squaring once more we see
     \[
         x^8 - 8x^6 + 24x^4 - 32x^2 + 16 = i^2 = -1
     \]
@@ -23,7 +23,7 @@
     But $[\Q(\alpha): \Q] = 5$ (since $\alpha$ is a zero of the irreducible polynomial $p(x)$) and $[\Q(\sqrt2):\Q] = 2$, so we see that 2 divides 5, a contradiction. Therefore $\sqrt2 \notin \Q(\alpha)$.
 
     \item \begin{partquestions}{\roman*}
-        \item One clearly sees $\Q(\sqrt3 + \sqrt5) \subseteq \Q(\sqrt3, \sqrt5)$ as $\sqrt3 + \sqrt5 \in \Q(\sqrt3, \sqrt5)$. Now observe
+        \item One clearly sees $\Q(\sqrt3 + \sqrt5) \subseteq \Q(\sqrt3, \sqrt5)$ as $\sqrt3 + \sqrt5 \in \Q(\sqrt3, \sqrt5)$. Now observe that
         \begin{align*}
             \left(\sqrt3+\sqrt5\right)^{-1} &= \frac{\sqrt3-\sqrt5}{\left(\sqrt3+\sqrt5\right)\left(\sqrt3-\sqrt5\right)}\\
             &= -\frac12\left(\sqrt3-\sqrt5\right)\\
@@ -44,7 +44,7 @@
 
 \subsection*{Problems}
 \begin{questions}
-    \item Note that each of the $2^{\frac1n}$ is algebraic since they are a zero of the polynomial $x^n - 2$ over $\Q$. Therefore $E$ is an algebraic extension.
+    \item Note that every $2^{\frac1n}$ is algebraic for all integers $n \geq 2$ since each of them is a zero of the polynomial $x^n - 2$ over $\Q$. Therefore $E$ is an algebraic extension.
 
     However $E$ is not finite, since by Tower Law (\myref{thrm-tower-law}) we have
     \begin{align*}
@@ -98,7 +98,7 @@
     \item \begin{partquestions}{\roman*}
         \item Let $\alpha \in E$ be a zero of $f(x)$. We know that $F(a_0, a_1, \dots, a_n)$ is a finite extension over $F$. Furthermore we know that $\alpha$ is algebraic over $F(a_0, a_1, \dots, a_n)$ since $\alpha$ is a zero of $f(x) \in F(a_0, a_1, \dots, a_n)[x]$. Therefore we see
         \[
-            [F(a_0, \dots, a_n, \alpha):F] = \underbrace{[F(a_0, \dots, a_n, \alpha):F(a_0, \dots, a_n)]}_{\leq n}\underbrace{[F(a_0, \dots, a_n):F]}_{\text{Finite}}
+            [F(a_0, \dots, a_n, \alpha):F] = \underbrace{[F(a_0, \dots, a_n, \alpha):F(a_0, \dots, a_n)]}_{\text{At most } n}\underbrace{[F(a_0, \dots, a_n):F]}_{\text{Finite}}
         \]
         by Tower Law (\myref{thrm-tower-law}), and so $[F(a_0, a_1, \dots, a_n, \alpha):F]$ is an algebraic extension over $F$ (\myref{thrm-finite-extension-is-algebraic}). Hence $\alpha$ is algebraic over $F$.
 
@@ -152,9 +152,9 @@
 
         Let $f(x)$ be such a polynomial. We split into two cases.
         \begin{itemize}
-            \item The first case is if $f(x)$ is irreducible over $F$. Let $E$ be the splitting field of $f(x)$ over $F$. Let $\alpha \in E$ be a zero of $f(x)$. Then by Factor Theorem (\myref{corollary-factor-theorem}) we may write $f(x) = (x-\alpha)g(x)$ where $g(x) \in F(\alpha)[x]$ has degree $k$. Note $E$ is a splitting field of $g(x)$ over $F(\alpha)$, so by Induction Hypothesis we know that $[E:F(\alpha)]$ divides $k!$. As $[F(\alpha):F] = k+1$ (since $f(x)$ is an irreducible polynomial of degree $k+1$ with a zero of $\alpha$), it follows from Tower Law (\myref{thrm-tower-law}) that $[E:F]$ divides $(k+1)k! = (k+1)!$.
+            \item The first case is if $f(x)$ is irreducible over $F$. Let $E$ be the splitting field of $f(x)$ over $F$. Let $\alpha \in E$ be a zero of $f(x)$. Then by Factor Theorem (\myref{corollary-factor-theorem}) we may write $f(x) = (x-\alpha)g(x)$ where $g(x) \in F(\alpha)[x]$ has degree $k$. Note $E$ is a splitting field of $g(x)$ over $F(\alpha)$, so by induction hypothesis we know that $[E:F(\alpha)]$ divides $k!$. As $[F(\alpha):F] = k+1$ (since $f(x)$ is an irreducible polynomial of degree $k+1$ with a zero of $\alpha$), it follows from Tower Law (\myref{thrm-tower-law}) that $[E:F]$ divides $(k+1)k! = (k+1)!$.
 
-            \item The second case is if $f(x)$ is reducible over $F$. Write $f(x) = g(x)h(x)$ where $g(x), h(x) \in F[x]$. Let $a = \deg g(x)$ and $b = \deg h(x)$. Let $K \subseteq E$ be the splitting field of $g(x)$ over $F$. Then $[K:F]$ divides $a!$ by Induction Hypothesis. Also we must have $E$ being the splitting field of $h(x) \in K[x]$, meaning $[E:K]$ divides $b!$. By Tower Law we see that $[E:F] = [E:K][K:F] = a!b!$ which divides $(a+b)! = (k+1)!$.
+            \item The second case is if $f(x)$ is reducible over $F$. Write $f(x) = g(x)h(x)$ where $g(x), h(x) \in F[x]$. Let $a = \deg g(x)$ and $b = \deg h(x)$. Let $K \subseteq E$ be the splitting field of $g(x)$ over $F$. Then $[K:F]$ divides $a!$ by induction hypothesis. Also we must have $E$ being the splitting field of $h(x) \in K[x]$, meaning $[E:K]$ divides $b!$. By Tower Law we see that $[E:F] = [E:K][K:F] = a!b!$ which divides $(a+b)! = (k+1)!$.
         \end{itemize}
         Therefore the statement holds for any polynomial of degree $k+1$ over $F$, proving this claim by induction.
     \end{partquestions}
