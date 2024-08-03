@@ -5,9 +5,7 @@ The heart of mathematics is in its logical statements. These statements are used
 \begin{definition}
     A \term{statement}\index{statement} (or \term{proposition}\index{proposition}) is a sentence that is definitely true or definitely false, but not both.
 \end{definition}
-\begin{remark}
-    A statement can be written in English, or using mathematical notation.
-\end{remark}
+A statement can be written in English, or using mathematical notation.
 
 \begin{example}
     ``A square is a quadrilateral'' is a true statement.
@@ -27,7 +25,7 @@ The heart of mathematics is in its logical statements. These statements are used
 
 We may name statements using lowercase variables like $p$, $q$, $r$, etc.
 \begin{example}
-    If
+    If we define
     \begin{align*}
         p: &\ \text{Every odd number is one more than an even number}\\
         q: &\ \text{Every triangle has sides of equal length}\\
@@ -41,7 +39,7 @@ There are a few operations\index{logical operation} that may be carried out on s
     \item \term{Logical NOT}\index{logical operation!NOT}/\term{Negation}\index{logical operation!negation} ($\lnot$): The statement $\lnot p$ is read as ``not $p$''.
     \item \term{Logical AND}\index{logical operation!AND}/\term{Conjunction}\index{logical operation!conjunction} ($\land$): The statement $p\land q$ is read as ``$p$ and $q$''.
     \item \term{Logical OR}\index{logical operation!OR}/\term{Disjunction}\index{logical operation!disjunction} ($\lor$): The statement $p\lor q$ is read as ``$p$ or $q$''.
-    \item \term{Conditional}\index{logical operation!conditional}/\term{Implication}\index{logical operation!implication} ($\implies$): The statement $p \implies q$ can be read many different ways. We list a few:
+    \item \term{Conditional}\index{logical operation!conditional}/\term{Implication}\index{logical operation!implication} ($\implies$): The statement $p \implies q$ can be read many different ways. For example,
     \begin{itemize}
         \item $p$ implies $q$;
         \item if $p$ then $q$;
@@ -55,15 +53,15 @@ There are a few operations\index{logical operation} that may be carried out on s
 \begin{example}
     If $p$ is the statement ``3 is an odd number'' and $q$ is the statement ``4 is an odd number'', then
     \begin{itemize}
-        \item $p\land q$ is ``3 is an odd number \textit{and} 4 is an odd number'', which is false;
-        \item $p\lor q$ is ``3 is an odd number \textit{or} 4 is an odd number'', which is true; and
-        \item $\lnot q$ is ``4 is \textit{not} an odd number'', which is true.
+        \item $p\land q$ is ``3 is an odd number and 4 is an odd number'', which is false;
+        \item $p\lor q$ is ``3 is an odd number or 4 is an odd number'', which is true; and
+        \item $\lnot q$ is ``4 is not an odd number'', which is true.
     \end{itemize}
 \end{example}
 
 When statement variables are combined using the above operators, the resulting statement is said to be in statement form.
 \begin{definition}
-    A \term{statement form}\index{statement form} (or \term{propositional form}\index{propositional form}) is an expression made up of statement variables (e.g. $p$, $q$, $r$) and logical operators that becomes a statement when actual statements are substituted for the component statement variables.
+    A \term{statement form}\index{statement form} (or \term{propositional form}\index{propositional form}) is an expression made up of statement variables (for example, $p$, $q$, and $r$) and logical operators that becomes a statement when actual statements are substituted for the component statement variables.
 \end{definition}
 
 \begin{example}
@@ -73,14 +71,14 @@ When statement variables are combined using the above operators, the resulting s
 \begin{exercise}
     Let the statements
     \begin{align*}
-        p: &\ \text{1 is a positive number}\\
-        q: &\ -1 > 0\\
-        r: &\ \text{1 is an odd number}
+        p: &\ \text{1 is a positive number},\\
+        q: &\ -1 > 0, \text{ and}\\
+        r: &\ \text{1 is an odd number}.
     \end{align*}
     Is the statement ``$\lnot((p\lor q)\land r)$ is false'' true?
 \end{exercise}
 
-We end this section by exploring conjoined statements that are always true or false.
+We end this section by exploring statements that are always true or false.
 
 \begin{definition}
     A \term{tautology}\index{tautology} is a statement form that is always true, and we denote it by \textbf{true}.
@@ -99,55 +97,57 @@ We end this section by exploring conjoined statements that are always true or fa
 \end{example}
 
 \section{Truth Tables}
-We use \term{truth tables}\index{truth table} to explore the relationships between statements and operators. They list all possibilities of the truth or falsity of the statements $p$ and $q$, and then write the truth for each of the combinations with operations. In a truth table, we denote true statements by ``T'' and false statements by ``F''. For example, the truth table for the logical AND operator is:
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|l|l||l|}
-        \hline
-        $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \land q}$ \\ \hline
-        F   & F   & F          \\ \hline
-        F   & T   & F          \\ \hline
-        T   & F   & F          \\ \hline
-        T   & T   & T          \\ \hline
-    \end{tabular}
-\end{table}
+We use \term{truth tables}\index{truth table} to explore the relationships between statements and operators. They list all possibilities of the truth or falsity of the statements $p$ and $q$, and then write the truth for each of the combinations with operations. In a truth table, we denote true statements by ``T'' and false statements by ``F''. 
 
-The truth table for the logical OR operator is:
 \begin{table}[h]
     \centering
-    \begin{tabular}{|l|l||l|}
-        \hline
-        $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \lor q}$ \\ \hline
-        F   & F   & F         \\ \hline
-        F   & T   & T         \\ \hline
-        T   & F   & T         \\ \hline
-        T   & T   & T         \\ \hline
-    \end{tabular}
-\end{table}
-
-The truth table for the logical NOT operator is:
-\begin{table}[h]
-    \centering
-    \begin{tabular}{|l||l|}
-        \hline
-        $\boldsymbol{p}$ & $\boldsymbol{\lnot p}$ \\ \hline
-        F   & T         \\ \hline
-        T   & F         \\ \hline
-    \end{tabular}
+    \begin{minipage}{.3\linewidth}
+        \centering
+        \begin{tabular}{|l|l||l|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \land q}$ \\ \hline
+            F   & F   & F          \\ \hline
+            F   & T   & F          \\ \hline
+            T   & F   & F          \\ \hline
+            T   & T   & T          \\ \hline
+        \end{tabular}
+        \caption{Logical AND}
+    \end{minipage}
+    \begin{minipage}{.3\linewidth}
+        \centering
+        \begin{tabular}{|l|l||l|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \lor q}$ \\ \hline
+            F   & F   & F         \\ \hline
+            F   & T   & T         \\ \hline
+            T   & F   & T         \\ \hline
+            T   & T   & T         \\ \hline
+        \end{tabular}
+        \caption{Logical OR}
+    \end{minipage}
+    \begin{minipage}{.3\linewidth}
+        \centering
+        \begin{tabular}{|l||l|}
+            \hline
+            $\boldsymbol{p}$ & $\boldsymbol{\lnot p}$ \\ \hline
+            F   & T         \\ \hline
+            T   & F         \\ \hline
+        \end{tabular}
+        \caption{Logical NOT}
+    \end{minipage}
 \end{table}
 
 We motivate the truth table for the conditional by considering the statements ``you pass the exam'' and ``you pass the course'', which we will denote by $p$ and $q$ respectively. So $p \implies q$ would be ``if you pass the exam then you pass the course''.
 \begin{itemize}
-    \item If $p$ and $q$ are true, then that means that you passed the exam and passed the course. Hence, ``if you pass the exam then you pass the course'' is true, meaning $p \implies q$ is true.
+    \item If $p$ and $q$ are true, then that means that you passed the exam and passed the course. Hence, the statement that ``if you pass the exam then you pass the course'' is true, meaning $p \implies q$ is true.
     \item If $p$ is true and $q$ is false, then that means that you passed the exam but failed the course. Hence, the promise that ``if you pass the exam then you pass the course'' is broken, meaning $p \implies q$ is false.
     \item Now consider the third case when $p$ is false but $q$ is true. This means that you failed the exam but passed the course. This does not mean that the promise was broken; you could have passed the course through other means. The only promise was that if you pass the exam then you pass the course; the promise was not that passing the exam was the \textit{only} way of passing the course. Since the promise was not broken, thus the promise was kept, so $p \implies q$ is true.
     \item Finally we consider the case when $p$ and $q$ are both false: you failed the exam and failed the course. The promise certainly was not broken in this case, so $p \implies q$ is true.
 \end{itemize}
 \begin{remark}
-    A conditional statement that is true by the virtue of the fact that $p$ is false is called \term{vacuously true}\index{vacuously true}.
+    A conditional statement that is true because $p$ is false is called \term{vacuously true}\index{vacuously true}.
 \end{remark}
 
-In summary, the truth table for the conditional is:
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|l||l|}
@@ -158,6 +158,7 @@ In summary, the truth table for the conditional is:
         T   & F   & F             \\ \hline
         T   & T   & T             \\ \hline
     \end{tabular}
+    \caption{Conditional}
 \end{table}
 
 \begin{exercise}\label{exercise-negation-of-implication}
@@ -180,7 +181,6 @@ We now introduce the idea of the \term{biconditional}\index{logical operation!bi
     \end{itemize}
 \end{remark}
 
-The truth table for the biconditional is:
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|l||l|}
@@ -191,13 +191,14 @@ The truth table for the biconditional is:
         T   & F   & F         \\ \hline
         T   & T   & T         \\ \hline
     \end{tabular}
+    \caption{Biconditional}
 \end{table}
 
 \begin{exercise}
     Let $n$ be an integer. Let $p$ be the statement ``$n$ is a multiple of 5'' and $q$ be the statement ``the last digit of $n$ is 0 or 5''. Let the statement $r = (p \iff q)$.
     \begin{partquestions}{\roman*}
         \item Write the statement $r$ in English.
-        \item Is the statement $r$ true? Justify your answer.
+        \item Is the statement $r$ true?
     \end{partquestions}
 \end{exercise}
 
@@ -208,6 +209,8 @@ We end this section by noting the order of operations of the logical operators.
     \item $\implies$ and $\iff$ are performed last, and are coequal in their order of operation.
 \end{itemize}
 To disambiguate the order of operations, we use parentheses (i.e., brackets).
+
+\newpage
 
 \section{Logical Equivalence and Properties of Logical Operators}
 \begin{definition}
@@ -231,7 +234,7 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
     By inspection, we see that $\lnot p \lor q$ has the same truth table as $p \implies q$. Therefore we can conclude that $(p \implies q) \equiv \lnot p \lor q$.
 \end{example}
 \begin{remark}
-    We separate the intermediate value(s) (e.g. $\lnot p$ in the above example) from the rest by drawing a double line to the sides of the intermediate values.
+    We separate the intermediate value(s) from the rest by drawing a double line to the sides of the intermediate values.
 \end{remark}
 
 \begin{example}
@@ -253,8 +256,6 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
 \begin{exercise}
     Show that $(\lnot p \iff q) \equiv (p \implies \lnot q) \land (\lnot q \implies p)$ by drawing a truth table.
 \end{exercise}
-
-\newpage
 
 We note some important properties of logical operators.
 \begin{itemize}
@@ -294,7 +295,7 @@ We note some important properties of logical operators.
 \end{remark}
 
 \begin{example}
-    Let $P(n)$ be the predicate ``$n$ is a multiple of 3'', with the domain being the positive integers. Then $P(1)$ is a false statement, $P(2)$ is a false statement, $P(3)$ is a true statement, and so on.
+    Let $P(n)$ be the predicate ``$n$ is a multiple of 3'' with the domain being the positive integers. Then $P(1)$ is a false statement, $P(2)$ is a false statement, $P(3)$ is a true statement, and so on.
 \end{example}
 
 \begin{example}
@@ -305,15 +306,17 @@ We note some important properties of logical operators.
     \end{itemize}
 \end{example}
 
-There are other ways to convert predicates into statements. One way is to use quantifiers. Quantifiers are words that refer to quantities such as ``some'' or ``all'' to tell people for how many elements make a predicate true.
+There are other ways to convert predicates into statements. One way is to use quantifiers, which are words that refer to quantities such as ``some'' or ``all'' to tell people for how many elements make a predicate true.
+
+\newpage
 
 \begin{definition}
-    The \term{universal quantifier}\index{quantifier!universal} is $\forall$ and is read as ``for all''. A statement $q$ of the form $\forall x \in D, P(x)$, where $P(x)$ is the predicate and $D$ is the domain, is called a \term{universal statement}\index{statement!universal}.
+    The \term{universal quantifier}\index{quantifier!universal} is $\forall$ and is read as ``for all''. A statement $q$ of the form ``$\forall x \in D, P(x)$'', where $P(x)$ is the predicate and $D$ is the domain, is called a \term{universal statement}\index{statement!universal}.
     \begin{itemize}
-        \item $q$ is true if and only if $P(x)$ is true for every $x$ in $D$.
-        \item $q$ is false if and only if $P(x)$ is false for at least one $x$ in $D$.
+        \item $q$ is true if and only if $P(x)$ is true for every $x \in D$.
+        \item $q$ is false if and only if $P(x)$ is false for some $x \in D$.
     \end{itemize}
-    Values $x \in D$ for which $P(x)$ is false is called a \term{counterexample}\index{counterexample}.
+    Any $x \in D$ for which $P(x)$ is false is called a \term{counterexample}\index{counterexample}.
 \end{definition}
 
 \begin{example}
@@ -321,7 +324,7 @@ There are other ways to convert predicates into statements. One way is to use qu
 \end{example}
 
 \begin{definition}
-    The \term{existential quantifier}\index{quantifier!existential} is $\exists$ and is read as ``there exists''. A statement $q$ of the form $\exists x \in D \textrm{ such that } P(x)$, where $P(x)$ is the predicate and $D$ is the domain, is called a \term{existential statement}\index{statement!existential}.
+    The \term{existential quantifier}\index{quantifier!existential} is $\exists$ and is read as ``there exists''. A statement $q$ of the form ``$\exists x \in D \textrm{ such that } P(x)$'', where $P(x)$ is the predicate and $D$ is the domain, is called a \term{existential statement}\index{statement!existential}.
     \begin{itemize}
         \item $q$ is true if and only if $P(x)$ is true for at least one $x$ in $D$.
         \item $q$ is false if and only if $P(x)$ is false for all $x$ in $D$.
@@ -332,7 +335,7 @@ There are other ways to convert predicates into statements. One way is to use qu
     The statement ``there exists a subset of $\Z$ which has 10 elements'' is equivalent to ``$\exists S \subseteq \Z \text{ such that } |S| = 10$''.
 \end{example}
 \begin{remark}
-    We usually shorten the ``such that'' as ``s.t.'', so the above statement is written symbolically as ``$\exists S \subseteq \Z \text{ s.t. } |S| = 10$''.
+    We can shorten the ``such that'' as ``s.t.'', so the above statement is written symbolically as ``$\exists S \subseteq \Z \text{ s.t. } |S| = 10$''.
 \end{remark}
 
 We can also combine quantifiers and logical operators together.
@@ -372,7 +375,7 @@ We now look at negating quantifiers\index{quantifier!negation}. Note that
     i.e., ``there exists an integer $n$ such that $2n$ is odd''.
 \end{example}
 
-We also note for statements $p$ and $q$ that $\lnot(p \implies q) \equiv p \land \lnot q$ by \myref{exercise-negation-of-implication}. This result is useful when negating conditional statements within quantified statements.
+We also note that $\lnot(p \implies q) \equiv p \land \lnot q$ for all statements $p$ and $q$ by \myref{exercise-negation-of-implication}. This result is useful when negating conditional statements within quantified statements.
 
 \begin{example}
     Consider the statement ``$n^3$ is odd if $n$ is odd for all integers $n$''. We may write this as
@@ -383,7 +386,7 @@ We also note for statements $p$ and $q$ that $\lnot(p \implies q) \equiv p \land
     \[
         \exists n \in \Z \text{ s.t. }((n \text{ is odd}) \land \lnot(n^3 \text{ is odd})),
     \]
-    which in english would be ``there exists an integer $n$ such that $n$ is odd and $n^3$ is even''.
+    which in English would be ``there exists an integer $n$ such that $n$ is odd and $n^3$ is even''.
 \end{example}
 
 \begin{exercise}
@@ -445,5 +448,5 @@ Mathematical statements often have a certain `tier' attached to them. We look at
 \end{problem}
 
 \begin{problem}
-    Simplify $\lnot p \land (\lnot p \implies (p \land q))$.
+    Simplify the statement $\lnot p \land (\lnot p \implies (p \land q))$.
 \end{problem}
