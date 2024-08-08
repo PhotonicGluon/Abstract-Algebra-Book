@@ -1,8 +1,8 @@
 \chapter{Proof Writing}
-Proofs compel belief. Without proofs, statements are just meaningless words without justification. A series of logical steps must be provided in order to prove a claim. We explore the basics of proof writing here.
+Proofs compel belief. Without mathematical proofs, the statements we make are meaningless words without justification. To prove a claim, a series of logical steps must be provided. We explore the basics of writing proofs here.
 
 \section{Direct Proof}
-In essence, a direct proof\index{proof!direct} for the statement ``if $p$ then $q$'' would begin by assuming $p$ is true and showing that this forces $q$ to be true. We don't need to worry about the case of $p$ being false, since $p \implies q$ is vacuously true in the case when $p$ is false.
+In essence, a \term{direct proof}\index{proof!direct} for the statement ``if $p$ then $q$'' would begin by assuming $p$ is true and showing that this makes $q$ true. We don't need to worry about the case of $p$ being false, since $p \implies q$ is vacuously true in the case when $p$ is false.
 \begin{example}
     We prove that ``if $n$ is an odd integer then $n^2$ is odd'' using direct proof. We first write out the proof step-by-step.
     \begin{proof}
@@ -46,7 +46,7 @@ In essence, a direct proof\index{proof!direct} for the statement ``if $p$ then $
 \end{exercise}
 
 \section{Proof by Division Into Cases}
-Division into cases can be considered as a variant of direct proof. We split a difficult statement into different cases which are individually easier to prove, and then conjoin them together in order to prove the full statement.
+\term{Division into cases}\index{proof!division into cases} can be considered as a variant of direct proof. We split a difficult statement into different cases which are individually easier to prove, and then conjoin them together in order to prove the full statement.
 \begin{example}
     We look at a proof of the statement ``$1 + (-1)^n(2n-1)$ is a multiple of 4 if $n$ is an integer''.
     \begin{proof}
@@ -88,7 +88,7 @@ Division into cases can be considered as a variant of direct proof. We split a d
         Hence, in either case, $m + n$ is odd.
     \end{proof}
 
-    Now, the two cases in the above proof are almost the same, except for whether $m$ or $n$ is the even integer. It is more productive to just do one case and indicate that the other case is nearly (or exactly) identical to the current case. The phrase ``without loss of generality'' is a way to signpost to the reader that the proof is treating only one of several nearly identical cases. We produce a more succinct version of the proof above.
+    Now, the two cases in the above proof are almost the same, except for whether $m$ or $n$ is the even integer. It is more productive to just do one case and indicate that the other case is nearly (or exactly) identical to the current case. The phrase ``without loss of generality'' is a way to signpost to the reader that the proof is treating only one of several nearly identical cases. We produce a more succinct version of the above proof.
 
     \begin{proof}
         Suppose $m$ and $n$ are two integers with opposite parity. Without loss of generality, suppose $m$ is even and $n$ is odd. Therefore $m = 2a$ and $n = 2b + 1$ for some integers $a$ and $b$. Hence
@@ -253,7 +253,7 @@ These two steps establish that the predicate $P(n)$ holds for all positive integ
 
 The base case does not necessarily need to begin with $n = 1$. Sometimes we may begin with $n = 0$, and possibly with any fixed natural number $n = N$, establishing the truth of the statement for all natural numbers $n \geq N$.
 
-In summary, mathematical induction involves two steps:
+In summary, mathematical induction involves two steps.
 \begin{itemize}
     \item \textbf{Base Case}: Prove the statement for the initial value.
     \item \textbf{Induction Step}: Prove that for every $n$, if the statement holds for $n$, then it holds for $n + 1$.
@@ -264,9 +264,9 @@ In summary, mathematical induction involves two steps:
     \[
         1 + 2 + 3 + \cdots + n = \frac{n(n+1)}2
     \]
-    using mathematical induction.
+    for all positive integers $n$ using mathematical induction.
     \begin{proof}
-        When $n = 1$, the left hand side is 1; the right hand side is $\frac{1(1+1)}{2} = 1$. Thus the initial case is true.
+        When $n = 1$, the left hand side is 1 and the right hand side is also $\frac{1(1+1)}{2} = 1$. Thus the base case is true.
 
         Now assume that the statement holds for some positive integer $k$, meaning
         \[
@@ -278,8 +278,9 @@ In summary, mathematical induction involves two steps:
         \]
         We work slowly.
         \begin{align*}
-            1 + \cdots + k + (k+1) &= (1 + \cdots + k) + (k+1)\\
-            &= \frac{k(k+1)}{2} + (k+1) & (\text{by hypothesis})\\
+            &1 + \cdots + k + (k+1) \\
+            &= (1 + \cdots + k) + (k+1)\\
+            &= \frac{k(k+1)}{2} + (k+1) & (\text{by induction hypothesis})\\
             &= \frac{k(k+1)}2 + \frac{2(k+1)}{2}\\
             &= \frac{k(k+1) + 2(k+1)}2\\
             &= \frac{(k+1)(k+2)}2
@@ -315,7 +316,7 @@ In summary, mathematical induction involves two steps:
 
 We now look at another form of mathematical induction, called \term{strong induction}\index{proof!induction!strong}. Unlike regular induction, strong induction assumes that all preceding cases are true, and proves the truth of the next case.
 
-Strong mathematical induction involves two steps:
+Strong mathematical induction involves two steps.
 \begin{itemize}
     \item \textbf{Base Cases}: Prove the statement for the initial values.
     \item \textbf{Induction Step}: Prove that for every $n$, if the statement holds for all (positive) integers $m$ that are at most $n$, then it holds for $n + 1$.
@@ -326,7 +327,7 @@ Strong mathematical induction involves two steps:
     \begin{proof}
         We use strong induction on $n$.
 
-        We show the base cases of 8, 9, and 10 hold:
+        We show the base cases of 8, 9, and 10 hold.
         \begin{itemize}
             \item When $n = 8$, we have $8 = 3(1) + 5(0)$.
             \item When $n = 9$, we have $9 = 3(3) + 5(0)$.
@@ -362,7 +363,7 @@ Strong mathematical induction involves two steps:
 
 \section{Proving Non-Conditional Statements}
 \subsection{Biconditional Statements}\index{proof!biconditional}
-Recall that a biconditional statement is a statement like ``$P \iff Q$'', i.e., ``$P$ if and only if $Q$''. We prove such a statement by proving that $P \implies Q$ (which we call the `forward direction') and $Q \implies P$ (which we call the `reverse direction'). Each of these statements may be proved using any of the proof techniques that we covered.
+Recall that a biconditional statement is a statement like ``$P \iff Q$'', i.e., ``$P$ if and only if $Q$''. We prove such a statement by proving that $P \implies Q$ (which we call the \term{forward direction}\index{proof!biconditional!forward direction}) and $Q \implies P$ (which we call the \term{reverse direction}\index{proof!biconditional!reverse direction}). Each of these statements may be proved using any of the proof techniques that we covered.
 \begin{example}
     We will prove the biconditional statement ``the integer $n$ is even if and only if $n^2$ is even''.
     \begin{proof}
