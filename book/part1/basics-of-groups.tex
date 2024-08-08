@@ -4,10 +4,10 @@ With a basic intuition of the definition of groups, we look at the basic propert
 \section{Basic Examples of Groups}
 Recall that a group satisfies four axioms.
 \begin{itemize}
-    \item \textbf{Closure}: For all elements $a$ and $b$ in $G$, $a \ast b$ is also in $G$.
-    \item \textbf{Associativity}: For all elements $a, b$, and $c$ in $G$, we have $a \ast (b \ast c) = (a \ast b) \ast c$.
-    \item \textbf{Identity}: There exists an element $e$ in $G$, called the identity element\index{group!identity}, such that, for any element $x$ in $G$, we have $e \ast x = x \ast e = x$.
-    \item \textbf{Inverse}: For every element $x$ in $G$, there exists an element $x^{-1}$ in $G$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
+    \item \textbf{Closure}: For all $a, b \in G$ we have $a \ast b \in G$.
+    \item \textbf{Associativity}: For all $a, b, c \in G$ we have $a \ast (b \ast c) = (a \ast b) \ast c$.
+    \item \textbf{Identity}: There exists $e \in G$, called the identity element\index{group!identity}, such that for any $x \in G$ we have $e \ast x = x \ast e = x$.
+    \item \textbf{Inverse}: For every $x \in G$ there exists $x^{-1} \in G$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
 \end{itemize}
 
 Recall also we write $a \ast b$ as $ab$, and denote the group $(G, \ast)$ by $G$ only.
@@ -33,7 +33,7 @@ We now look at $\Z_n$, the set of integers modulo $n$.
     Define $\Z_n$ to be the set $\{0, 1, 2, \dots, n-1\}$ where $n$ is a non-negative integer.
 \end{definition}
 \begin{definition}
-    The operation $\oplus_n$ denotes addition modulo $n$. That is, $a \oplus_n b = (a + b) \mod{n}$ for any integers $a$ and $b$.
+    Define $\oplus_n$ to be addition modulo $n$. That is, $a \oplus_n b = (a + b) \mod{n}$ for any integers $a$ and $b$.
 \end{definition}
 \begin{proposition}\label{prop-Zn-is-abelian-group}
     The set $\Z_n$ with the operation $\oplus_n$ forms an abelian group.
@@ -41,13 +41,13 @@ We now look at $\Z_n$, the set of integers modulo $n$.
 \begin{proof}
     We prove this by first showing that the group axioms hold.
     \begin{itemize}
-        \item \textbf{Closure}: For $a$ and $b$ in $\Z_n$, $a \oplus_n b = (a + b) \mod{n}$ is a integer between 0 and $n - 1$. Thus $a \oplus b$ is inside $\Z_n$.
-        \item \textbf{Associativity}: For $a$, $b$, and $c$ in $\Z_n$, since addition is associative (\myref{axiom-addition-is-associative}), thus $a \oplus_n (b \oplus_n c) = (a + (b + c)) \mod{n} = ((a + b) + c) \mod{n} = (a \oplus_n b) \oplus_n c$.
-        \item \textbf{Identity}: The identity is $0$ since for every $x$ in $\Z_n$, $0 \oplus_n x = (0 + x) \mod{n} = (x + 0) \mod{n} = x \oplus_n 0 = x$.
+        \item \textbf{Closure}: For any $a, b \in \Z_n$ we know $a \oplus_n b = (a + b) \mod{n}$ is a integer between 0 and $n - 1$. Thus $a \oplus b \in Z_n$.
+        \item \textbf{Associativity}: For any $a, b, c \in \Z_n$, since addition is associative (\myref{axiom-addition-is-associative}), thus $a \oplus_n (b \oplus_n c) = (a + (b + c)) \mod{n} = ((a + b) + c) \mod{n} = (a \oplus_n b) \oplus_n c$.
+        \item \textbf{Identity}: The identity is $0$ since for every $x \in \Z_n$, $0 \oplus_n x = (0 + x) \mod{n} = (x + 0) \mod{n} = x \oplus_n 0 = x$.
         \item \textbf{Inverse}:
         \begin{itemize}
             \item $0$ is its own inverse since $0 \oplus_n 0 = 0$ which is the identity.
-            \item For any other integer $x$ in $\Z_n$, the inverse is $n - x$. Since $1 \leq x \leq n - 1$, thus $1 \leq n - x \leq n - 1$ so $n - x$ is indeed in $\Z_n$. Also, $x \oplus_n (n - x) = (x + (n - x)) \mod{n} = n \mod{n} = 0$ and $(n - x) \oplus_n x = ((n-x) + x)\mod{n} = n \mod{n} = 0$.
+            \item For any other integer $x \in \Z_n$, its inverse is $n - x$. Since $1 \leq x \leq n - 1$, thus $1 \leq n - x \leq n - 1$ so $n - x \in \Z_n$. Also, $x \oplus_n (n - x) = (x + (n - x)) \mod{n} = n \mod{n} = 0$ and $(n - x) \oplus_n x = ((n-x) + x)\mod{n} = n \mod{n} = 0$.
         \end{itemize}
     \end{itemize}
     Since the four group axioms are satisfied, this is a group. Furthermore, as addition is commutative (\myref{axiom-addition-is-commutative}), thus addition modulo $n$ is commutative. Therefore $(\Z_n, \oplus_n)$ is a commutative group.
@@ -75,18 +75,18 @@ One could use a \term{Cayley table}\index{cayley table} (or \term{group table}\i
 
     One observes from the Cayley table that
     \begin{itemize}
-        \item for all $x, y \in \Z_6$ we see $x \oplus_6 y \in \Z_6$;
-        \item for all $x, y, z \in \Z_6$ we see $x \oplus_6 (y \oplus_6 z) = (x \oplus_6 y) \oplus_6 z$;
-        \item 0 is the identity since adding anything to it returns the original number; and
+        \item for all $x, y \in \Z_6$ we have $x \oplus_6 y \in \Z_6$;
+        \item for all $x, y, z \in \Z_6$ we have $x \oplus_6 (y \oplus_6 z) = (x \oplus_6 y) \oplus_6 z$;
+        \item 0 is the identity since adding anything to it gives the original number; and
         \item every row has an integer that, when added, gives 0.
     \end{itemize}
     Thus $(\Z_6, \oplus_6)$ is a group.
 \end{example}
 
-It should be noted that, in this book, we use the convention of reading the \textit{row before the column} in a group table. However, since $(\Z_6, \oplus_6)$ is an abelian group, the order does not matter. We will look at Cayley tables of non-abelian groups later.
+It should be noted that, in this book, we use the convention of reading the row before the column in a group table. However, since $(\Z_6, \oplus_6)$ is an abelian group, the order does not matter. We will look at Cayley tables of non-abelian groups later.
 
 \begin{definition}
-    The operation $\otimes_n$ denotes multiplication modulo $n$. That is, $a \otimes_n b = (a \times b) \mod{n}$ for any integers $a$ and $b$.
+    Let $\otimes_n$ denote multiplication modulo $n$. That is, $a \otimes_n b = (a \times b) \mod{n}$ for any integers $a$ and $b$.
 \end{definition}
 \begin{example}
     Let the set $A = \{1, 2, 3, 4\}$. We draw the Cayley table of $(A, \otimes_5)$ to show that it is a group.
@@ -106,7 +106,7 @@ It should be noted that, in this book, we use the convention of reading the \tex
     \begin{itemize}
         \item for all $x, y \in A$ we see $x \otimes_5 y \in A$;
         \item for all $x, y, z \in A$ we see $x \otimes_5 (y \otimes_5 z) = (x \otimes_5 y) \otimes_5 z$;
-        \item 1 is the identity since multiplying anything to it returns the original number; and
+        \item 1 is the identity since multiplying anything to it gives the original number; and
         \item every row has an integer that, when multiplied, gives 1.
     \end{itemize}
     Thus $(A, \otimes_5)$ is a group.
@@ -125,12 +125,12 @@ It should be noted that, in this book, we use the convention of reading the \tex
     \[
         e_1x = xe_1 = x \text{ and } e_2x = xe_2 = x,
     \]
-    since they are identities. Thus,
+    since $e_1$ and $e_2$ are identities. Thus,
     \begin{align*}
         e_1 &= e_1e_2 & (e_2 \text{ is an identity, so } xe_2 = x)\\
         &= e_2 & (e_1 \text{ is an identity, so } xe_1 = x)
     \end{align*}
-    Hence $e_1 = e_2$, meaning that the identity of a group is unique.
+    which means $e_1 = e_2$. Hence the identity of a group is unique.
 \end{proof}
 
 \begin{proposition}
@@ -155,7 +155,7 @@ It should be noted that, in this book, we use the convention of reading the \tex
     Clearly $e = ee^{-1}$ since $xx^{-1} = e$ for all elements $x \in G$, including $x = e$. Thus, by left multiplying $e^{-1}$ on both sides, we see $e = e^{-1}$.
 \end{proof}
 
-\begin{proposition}
+\begin{proposition}\label{prop-inverse-of-inverse-is-element}
     Let $G$ be a group. Then $\left(x^{-1}\right)^{-1} = x$ for all $x \in G$.
 \end{proposition}
 \begin{proof}
@@ -181,7 +181,7 @@ It should be noted that, in this book, we use the convention of reading the \tex
 \end{proof}
 
 \begin{exercise}\label{exercise-inverse-of-inverse-is-element}
-    Let $G$ be a group. Prove that for all $x \in G$ we have $\left(x^{-1}\right)^{-1} = x$.
+    Prove \myref{prop-inverse-of-inverse-is-element}.
 \end{exercise}
 
 \newpage
@@ -274,7 +274,7 @@ Note that some laws of exponents apply to the above operation.
         We see that
         \begin{align*}
             \left(x^m\right)^{k+1} &= \left(x^m\right)^k\ast x^m & (\text{by statement 1})\\
-            &= x^{mk} \ast x^m & (\text{by hypothesis})\\
+            &= x^{mk} \ast x^m & (\text{by induction hypothesis})\\
             &= x^{mk+k} & (\text{by statement 1})\\
             &= x^{m(k+1)}
         \end{align*}
@@ -290,9 +290,7 @@ Note that some laws of exponents apply to the above operation.
     Prove that $(x^{-1})^n = (x^n)^{-1}$ for all non-negative integers $n$.
 \end{exercise}
 
-\section{Order of a Group and Order of an Element}
-We look at the notion of the order\index{order} of a group.
-
+\section{Orders}
 \begin{definition}
     Let $G$ be a group. The order of a group\index{order!group}, denoted by $|G|$, is the cardinality of the set $G$.
 \end{definition}
@@ -307,7 +305,6 @@ If $|G| = n$ where $n$ is finite, we say that $G$ is a \term{finite group}. On t
     The group $(\R, +)$ is an infinite group since $\R$ has an infinite number of elements.
 \end{example}
 
-Let's now look at the order of an element.
 \begin{definition}
     Let $g$ be an element of the group $G$. Then the order of $g$\index{order!element}, denoted by $|g|$, is the least positive integer $n$ such that $g^n = e$.
 \end{definition}
@@ -348,7 +345,7 @@ The last point is actually a consequence of Lagrange's theorem (\myref{thrm-lagr
 \end{proof}
 
 \begin{theorem}\label{thrm-order-of-power-of-element}
-    Let $G$ be a finite group and let $x \in G$ with order $n$. Then for any positive integer $k$ we have
+    Let $G$ be a finite group and let $x \in G$ have order $n$. Then for any positive integer $k$ we have
     \[
         \left|x^k\right| = \frac{n}{\gcd(n,k)}.
     \]
@@ -413,11 +410,11 @@ We now look at two results involving cyclic groups.
     A finite group $G$ is cyclic if and only if there exists an element $g \in G$ with the same order as the group.
 \end{theorem}
 \begin{proof}
-    We first prove the forward direction: suppose $G$ is cyclic and $|G| = n$. Then, by definition, there exists an element $g \in G$ such that
+    We first prove the forward direction. Suppose $G$ is cyclic and $|G| = n$. Then, by definition, there exists an element $g \in G$ such that
     \[
         G = \langle g \rangle = \{g^k \vert 1 \leq k \leq n, k \in \Z\},
     \]
-    i.e. $g$ is a generator of $G$. We just need to show $|g| = n$. Suppose on the contrary there exists an integer $1 \leq m < n$ where $g^m = e$. Then $\langle g \rangle = \{g, g^2, \dots, g^m\}$. Thus $|\langle g \rangle| = m < n = |G|$. But by the hypothesis of the forward direction, $G = \langle g \rangle$ so $n = |G| = |\langle g \rangle| = m$. This is a contradiction, i.e. there does \textit{not} exist an integer $1 \leq m < n$ where $g^m = e$. Therefore $g^n = e$, i.e. $|g| = n$.
+    i.e. $g$ is a generator of $G$. We just need to show $|g| = n$. Suppose on the contrary there exists an integer $1 \leq m < n$ where $g^m = e$. Then $\langle g \rangle = \{g, g^2, \dots, g^m\}$. Thus $|\langle g \rangle| = m < n = |G|$. But by the hypothesis of the forward direction, $G = \langle g \rangle$ so $n = |G| = |\langle g \rangle| = m$. This is a contradiction, i.e. there does \textbf{not} exist an integer $1 \leq m < n$ where $g^m = e$. Therefore $g^n = e$, i.e. $|g| = n$.
 
     We now prove the reverse direction: suppose there is an element $g \in G$ with order $n$. We claim that $g, g^2, \dots, g^n$ are all distinct. Suppose on the contrary that there exist integers $i$ and $j$ where $1 \leq i < j \leq n$ such that $g^i = g^j$. Then $g^i = g^ig^{j-i}$, which means $g^{j-i} = e$ by the cancellation law. Note that $1 \leq j - i < n$. Thus, since $g^{j-i} = e$, therefore $|g| = j - i < n$ which contradicts $|g| = n$. Hence, $g, g^2, \dots, g^n$ are all distinct. Therefore, $\langle g \rangle = \{g, g^2, \dots, g^n\}$ contain distinct elements of $G$. But there are only $n$ elements in $G$ and $\langle g \rangle$ contains $n$ distinct elements. Therefore, $G = \langle g \rangle$ which means that $G$ is cyclic with generator $g$.
 \end{proof}
@@ -445,7 +442,7 @@ There's another relationship governing $r$ and $s$. Consider this: how do we obt
 \]
 for the case of an equilateral triangle.
 
-The group of symmetries of an equilateral triangle is called the \term{dihedral group of order 6} (or the \term{dihedral group of degree 3}) and is denoted by $D_3$. In general, the \term{dihedral group of degree $n$}\index{dihedral group!of degree $n$} (or the \term{dihedral group of order $2n$}\index{dihedral group!of order $2n$}) is denoted by $D_n$ and can be thought of as the symmetries of a regular polygon of $n$ sides (a regular $n$-gon).
+The group of symmetries of an equilateral triangle is called the \term{dihedral group of order 6} (or the \term{dihedral group of degree 3}) and is denoted by $D_3$. In general, the \term{dihedral group of order $2n$}\index{dihedral group!of order $2n$} (or the \term{dihedral group of degree $n$}\index{dihedral group!of degree $n$}) is denoted by $D_n$ and can be thought of as the symmetries of a regular polygon of $n$ sides (a regular $n$-gon).
 
 \newpage
 
@@ -465,7 +462,7 @@ Thus, in general, the set $D_n$ consists of the following elements.
 with the relationship between $r$ and $s$ given by $r^n = s^2 = e$ and $rs = sr^{n-1}$.
 
 \begin{remark}
-    Some authors (e.g. {\cite[p.~25]{dummit_foote_2004}}) will write the reflections of $D_n$ with $s$ leading $r$, i.e. $s, sr, sr^2, sr^3, \dots, sr^{n-1}$. The underlying definition, however, remains the same in either case. This fact will become evident with the proof of \myref{prop-Dn-cannonical-form} (later).
+    Some authors (e.g. {\cite[p.~25]{dummit_foote_2004}}) write the reflections of $D_n$ with $s$ leading $r$, i.e. $s, sr, sr^2, sr^3, \dots, sr^{n-1}$. The underlying definition, however, remains the same in either case. This fact will become evident with the proof of \myref{prop-Dn-cannonical-form} (later).
 \end{remark}
 
 These relationships are succinctly given by the following \term{presentation}\index{presentation}, and is the actual definition of the dihedral group.
@@ -509,7 +506,7 @@ Such a definition for the dihedral groups removes the need to associate the grou
     \[
         D_1 = \langle r, s \vert r = s^2 = e, rs = s \rangle,
     \]
-    which quickly means that $D_1$ has only two elements, $e$ (which is $r$) and $s$. Thus $D_1$ is, in fact, just the cyclic group of order 2. One can verify the fact by looking at the Cayley table of $D_1$.
+    which quickly means that $D_1$ has only two elements, $e$ (which is $r$) and $s$. Thus $D_1$ is, in fact, just the cyclic group of order 2. One can verify the fact by drawing the Cayley table of $D_1$.
 
     \begin{table}[H]
         \centering

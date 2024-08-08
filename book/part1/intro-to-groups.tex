@@ -2,14 +2,14 @@
 In this chapter, we motivate the definition and use of groups in mathematics.
 
 \section{The Study of Symmetry}
-A group is a collection of symmetries of something. A symmetry is a map from something to itself that preserves structure. This is, of course, not the formal definition of a group, but it gives an intuition of \textit{why} mathematicians care about groups.
+A group is a collection of symmetries of something. A symmetry is a map from something to itself that preserves structure. This is, of course, not the formal definition of a group, but it gives an intuition of why mathematicians care about groups.
 
 \begin{wrapfigure}{r}{0.35\textwidth}
     \centering
     \pdfteximgframed{0.3\textwidth}{part1/images/intro-to-groups/triangle-reflections.pdf_tex}
 \end{wrapfigure}
 
-For example, one may consider the collection of symmetries of an equilateral triangle. What actions could one perform to make the triangle ``look the same'' as before applying the action? Well, we could do nothing. That action is called the identity action. We could also reflect the triangle about the line $S_0$ and observe that the triangle ``looks the same as before''. We may also reflect the triangle about the lines $S_1$ and $S_2$, and the triangle will still ``look the same as before''. One may also consider rotating the triangle $120^\circ$ or $240^\circ$ about the centre in a clockwise manner (note that rotating the triangle $360^\circ$ is the same as the identity action, so we do not count it here).
+For example, consider the collection of symmetries of an equilateral triangle. What actions could one perform to make the triangle ``look the same'' as before applying the action? Well, we could do nothing. That action is called the identity action. We could also reflect the triangle about the line $S_0$ and observe that the triangle ``looks the same as before''. We may also reflect the triangle about the lines $S_1$ and $S_2$, and the triangle will still ``look the same as before''. One may also consider rotating the triangle $120^\circ$ or $240^\circ$ about the centre in a clockwise manner (note that rotating the triangle $360^\circ$ is the same as the identity action, so we do not count it here).
 
 So we count 6 distinct actions in total: 1 identity action, 2 rotation actions, and 3 reflection actions. We can say that the group of symmetries of the equilateral triangle has 6 actions (or elements) in total.
 
@@ -58,7 +58,7 @@ Consider the group of symmetries of an equilateral triangle. One condition that 
 
 \newpage
 
-This property can be called the \term{axiom of closure} and can be written like this:
+This property can be called the \term{axiom of closure} and can be written as follows.
 \begin{quote}
     A group $(G, \ast)$ is a set $G$ together with a binary operation $\ast$ that ensures closure. That is, if $a$ and $b$ are in $G$, then $a \ast b$ is also in $G$.
 \end{quote}
@@ -70,9 +70,9 @@ The set $G$ in the previous example is the set of actions on the equilateral tri
 \end{quote}
 means
 \begin{quote}
-    rotate the triangle 120° clockwise, \textit{followed by} reflection about $S_0$
+    rotate the triangle 120° clockwise, \textbf{followed by} reflection about $S_0$
 \end{quote}
-in standard English. It should be noted that we read actions \textit{from right to left}, as seen in the example above. In the following chapters, such actions will be replaced with symbols.
+in standard English. It should be noted that we read actions from right to left, as seen in the example above. In the following chapters, such actions will be replaced with symbols.
 
 Another property that a group must have is that it must contain an \term{identity element}. We emphasised this property numerous times in the previous examples. This is called the \term{axiom of identity} and is phrased as follows.
 \begin{quote}
@@ -86,7 +86,7 @@ We would also like, for every action, to have an action that undoes the previous
     For every element $x$ in the group $(G, \ast)$, there exists an action in the group, called the inverse of $x$ and denoted by $x^{-1}$, such that $x \ast x^{-1} = x^{-1} \ast x = e$.
 \end{quote}
 
-The last axiom is hard to discover naturally and hard to motivate, but is absolutely necessary for groups. Let's say we want to perform 3 rotations (say, $r_1$, $r_2$ and $r_3$) in that sequence on a braided circle. We would not want to distinguish between performing ``$r_1$, then $r_2$ and $r_3$'' (i.e., $r_1 \ast (r_2 \ast r_3)$), and ``$r_1$ then $r_2$, then $r_3$'' (i.e. $(r_1 \ast r_2) \ast r_3$). We are only concerned about the \textit{sequence} of the rotations. This is called the \term{axiom of associativity}:
+The last axiom is hard to discover naturally and hard to motivate, but is absolutely necessary for groups. Say we want to perform 3 rotations (say, $r_1$, $r_2$ and $r_3$) in that sequence on a braided circle. We would not want to distinguish between performing ``$r_1$, then $r_2$ and $r_3$'' (i.e., $r_1 \ast (r_2 \ast r_3)$), and ``$r_1$ then $r_2$, then $r_3$'' (i.e. $(r_1 \ast r_2) \ast r_3$). We are only concerned about the sequence of the rotations. This is called the \term{axiom of associativity}.
 \begin{quote}
     Let $x, y$, and $z$ be elements in $(G, \ast)$. Then $(x \ast y) \ast z = x \ast (y \ast z)$.
 \end{quote}
@@ -95,12 +95,12 @@ The last axiom is hard to discover naturally and hard to motivate, but is absolu
 
 So what is a group?
 \begin{definition}
-    A \term{group}\index{group} is a set $G$ together with a operation on $G$, here denoted by $\ast$, satisfying the following axioms.
+    A \term{group}\index{group} is a set $G$ together with a operation $\ast$ on $G$ satisfying the following axioms.
     \begin{itemize}
-        \item \textbf{Closure}\index{axiom!group!closure}: For all elements $a$ and $b$ in $G$, $a \ast b$ is also in $G$.
-        \item \textbf{Associativity}\index{axiom!group!associativity}: For all elements $a, b$, and $c$ in $G$, we have $a \ast (b \ast c) = (a \ast b) \ast c$.
-        \item \textbf{Identity}\index{axiom!group!identity}: There exists an element $e$ in $G$ such that for any element $x$ in $G$ we have $e \ast x = x \ast e = x$.
-        \item \textbf{Inverse}\index{axiom!group!inverse}: For every element $x$ in $G$, there exists an element $x^{-1}$ in $G$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
+        \item \textbf{Closure}\index{axiom!group!closure}: For all $a, b \in G$ we have $a \ast b \in G$.
+        \item \textbf{Associativity}\index{axiom!group!associativity}: For all $a, b, c \in G$ we have $a \ast (b \ast c) = (a \ast b) \ast c$.
+        \item \textbf{Identity}\index{axiom!group!identity}: There exists $e \in G$ such that for any $x \in G$ we have $e \ast x = x \ast e = x$.
+        \item \textbf{Inverse}\index{axiom!group!inverse}: For every $x \in G$, there exists $x^{-1} \in G$ such that $x \ast x^{-1} = x^{-1} \ast x = e$.
     \end{itemize}
 \end{definition}
 
