@@ -1,5 +1,5 @@
 \chapter{Elementary Number Theory}
-Number theory is an important part of abstract algebra, as we will use some of its more famous results in proofs. In this chapter, we explore the essentials of number theory.
+Number theory is an integral part of abstract algebra, as we will use some of its more famous results in proofs. In this chapter, we explore the essentials of number theory, such as divisibility, primes, and modular arithmetic.
 
 \section{Divisibility}
 \begin{definition}
@@ -41,19 +41,19 @@ We list some basic facts about divisibility that are not difficult to prove.
 \section{Euclid's Division Lemma}
 \begin{lemma}[Euclid's Division Lemma]\label{lemma-euclid-division}\index{Euclid's Division Lemma}
     Given two integers $n$ and $d$, with $d \neq 0$ being the \term{divisor}\index{divisor}, there exist unique integers $q$ and $r$ such that $n = qd + r$ and $0 \leq r < |d|$, where $|d|$ denotes the absolute value of $d$.
-
-    Here, $n$ is called the \term{dividend}\index{dividend}, $q$ is called the \term{quotient}\index{quotient}, and $r$ is called the \term{remainder}\index{remainder}.
+    
+    In particular, $n$ is the \term{dividend}\index{dividend}, $q$ is the \term{quotient}\index{quotient}, and $r$ is the \term{remainder}\index{remainder}.
 \end{lemma}
 \begin{remark}
     This is also known as \term{the division algorithm}\index{division algorithm} (e.g. \cite[p.~4]{dummit_foote_2004}, \cite[p.~3]{gallian_2016}) or \term{the division theorem}\index{division theorem} (e.g. \cite[\S 21]{clark_1984}).
 \end{remark}
 
 \begin{example}
-    Using $n = 63$ and $d = 8$, we will have $63 = 7\times8 + 7$.
+    Using $n = 63$ and $d = 8$ we see $63 = 7\times8 + 7$.
 \end{example}
 
 \begin{example}
-    Using $n = 14$ and $d = -3$, we will have $13 = -5\times3 + 1$.
+    Using $n = 14$ and $d = -3$ we see $13 = -5\times3 + 1$.
 \end{example}
 
 \begin{exercise}
@@ -61,8 +61,6 @@ We list some basic facts about divisibility that are not difficult to prove.
 \end{exercise}
 
 \section{Greatest Common Divisor (GCD) and Lowest Common Multiple (LCM)}
-In number theory, the idea of a greatest common divisor and the least common multiple are omnipresent.
-
 \begin{definition}
     Let $m$ and $n$ be two non-zero integers. Then an integer $d$ is said to be the \term{greatest common divisor (GCD)}\index{greatest common divisor}\index{GCD} of $m$ and $n$ if $m = pd$ and $n = qd$ for some integers $p$ and $q$, and that $d$ is the largest possible integer that achieves this.
 
@@ -98,6 +96,9 @@ We note some properties of the GCD.
 \end{proof}
 
 We now look at the lowest common multiple of two integers.
+
+\newpage
+
 \begin{definition}
     Let $m$ and $n$ be two non-zero integers. Then an integer $l$ is said to be the \term{lowest common multiple (LCM)}\index{lowest common multiple}\index{LCM} of $m$ and $n$ if $l = pm = qn$ for some integers $p$ and $q$, and that $l$ is the smallest possible \textit{positive} integer that achieves this.
 
@@ -142,7 +143,7 @@ We note one property of the LCM.
     An integer $p > 1$ with no positive divisors other than 1 and itself is called \term{prime}\index{prime!number}. Every other number greater than 1 is called \term{composite}\index{composite number}.
 \end{definition}
 \begin{remark}
-    The number 1 is considered neither prime nor composite.
+    The number 1 is neither prime nor composite; it is called a \term{unit}\index{unit}.
 \end{remark}
 
 \begin{example}
@@ -224,7 +225,7 @@ We note two properties of coprime numbers.
     Therefore by induction the theorem is proven.
 \end{proof}
 
-We note one corollary of this theorem, which is often cited as Euclid's Lemma.
+We note one corollary of this theorem, which is often cited as Euclid's lemma.
 
 \begin{corollary}[Euclid's Lemma]\index{Euclid's Lemma}\label{corollary-euclid}
     Let $p$ be a prime, and let $a$ and $b$ be integers. If $p \vert ab$ then $p \vert a$ or $p \vert b$.
@@ -234,7 +235,7 @@ We note one corollary of this theorem, which is often cited as Euclid's Lemma.
 \end{proof}
 
 \section{Modulo and Modular Congruence}
-One may think of modular arithmetic as a number system where numbers \textit{wrap around} after reaching a certain value.
+One may think of modular arithmetic as a number system where numbers `wrap around' after reaching a certain value.
 
 \begin{definition}
     Given an integer $n>1$, called a \term{modulus}\index{modulus}, two integers $a$ and $b$ are said to be \term{congruent modulo $n$}\index{congruence} if $n$ is a divisor of $a - b$. It is denoted $a \equiv b \pmod{n}$.
@@ -243,7 +244,7 @@ One may think of modular arithmetic as a number system where numbers \textit{wra
     Equivalently, $a \equiv b \pmod n$ means that $a = kn + b$ for some integer $k$.
 \end{remark}
 \begin{remark}
-    The parentheses mean that ``$\mod{n}$'' applies to the entire equation, not just to the right-hand side (here, $b$). This notation is not to be confused with the notation ``$b \mod n$'' (without parentheses), which refers to the modulo operation that returns the remainder upon division by $n$.
+    The parentheses mean that ``mod $n$'' applies to the entire equation, not just to the right-hand side (here, $b$). This notation is not to be confused with the notation ``$b \mod n$'' (without parentheses), which refers to the modulo operation that returns the remainder upon division by $n$.
 \end{remark}
 
 \begin{example}
@@ -314,7 +315,7 @@ The operation of congruence modulo $n$ has a few properties\index{congruence!pro
 \begin{proof}
     We first work forwards and suppose $k$ is the multiplicative inverse of $a$ modulo $m$. Then $ka \equiv 1 \pmod m$. Hence $ka - 1 \equiv 0 \pmod m$, so $m$ divides $ka - 1$. This means that $ka - 1$ is a multiple of $m$, so $ka - 1 = pm$ for some integer $p$. Therefore $ka + pm = 1$ By B\'{e}zout's lemma (\myref{lemma-bezout}) this means that $\gcd(a, m) = 1$.
 
-    Now, working in the reverse direction, suppose $\gcd(a, m) = 1$. B\'{e}zout's Lemma tells us that integers $k$ and $p$ exist such that $ka + pm = 1$, meaning $ka - 1 = pm$. So $m$ divides $ka - 1$, meaning $ka - 1 \equiv 0 \pmod m$ which the result quickly yields.
+    Now, working in the reverse direction, suppose $\gcd(a, m) = 1$. B\'{e}zout's lemma tells us that integers $k$ and $p$ exist such that $ka + pm = 1$, meaning $ka - 1 = pm$. So $m$ divides $ka - 1$, meaning $ka - 1 \equiv 0 \pmod m$ which the result quickly yields.
 \end{proof}
 
 \begin{example}
