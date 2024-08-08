@@ -7,128 +7,128 @@
 No general content changes.
 
 ### Part 0 (Preliminaries) Changes
-- Fix incorrect capitalisation in part of the solution of problem 4.1.
-- Edit the statement of problem 4.4 to be more clear.
-- Edit the statement and solution of problem 4.7 to be more succinct.
-- Add more detail to the statement of exercise 5.1, exercise 5.5, and problem 5.2.
-- Reword the statement of problem 5.3.
-- Fix a slight issue with the statement of problem 5.6(ii).
-- Add more justification for the solution to problem 5.6.
-- Rewrite the statement of problem 5.7 to be more concise.
-- Edit solution to problem 5.8.
-- Make the statement of exercise 6.4 clearer.
-- Rewrite the statement of problem 6.2 to further guide the reader towards the intended approach.
-- Fix a typo in the solution to problem 6.3.
-- Add extra parentheses in the statement of problem 6.10(i).
-- Make other minor changes.
+- Fixed incorrect capitalisation in part of the solution of problem 4.1.
+- Edited the statement of problem 4.4 to be more clear.
+- Edited the statement and solution of problem 4.7 to be more succinct.
+- Added more detail to the statement of exercise 5.1, exercise 5.5, and problem 5.2.
+- Reworded the statement of problem 5.3.
+- Fixed a slight issue with the statement of problem 5.6(ii).
+- Added more justification for the solution to problem 5.6.
+- Rewritten the statement of problem 5.7 to be more concise.
+- Edited solution to problem 5.8.
+- Made the statement of exercise 6.4 clearer.
+- Rewritten the statement of problem 6.2 to further guide the reader towards the intended approach.
+- Fixed a typo in the solution to problem 6.3.
+- Added extra parentheses in the statement of problem 6.10(i).
+- Made other minor changes.
 
 ### Part I (Groups) Changes
-- Add missing "structures" in the statement of problem 7.1.
-- Add more detail to the statement of exercise 8.2.
-- Clean up the solution to exercise 8.3.
-- Rewrite the solution to problem 8.2 to have more detail and to be clearer in the explanation.
-- Edit the statement of problem 8.3 to be clearer.
-- Make the solution to problem 8.3 more concise (and also fix some typos there).
-- Make the solution to exercise 9.7 more clear.
-- Fix the incorrect article "the" in the solution to exercise 9.8(ii) (it should have been "a").
-- Remove extra "or" in the statement of problem 9.1.
-- Add the missing "abelian" condition to problem 9.2.
-- Edit the solution to problem 9.3 to flow better.
-- Reword the statements of problem 9.8 and problem 9.9 to increase clarity.
+- Added missing "structures" in the statement of problem 7.1.
+- Added more detail to the statement of exercise 8.2.
+- Cleaned up the solution to exercise 8.3.
+- Rewritten the solution to problem 8.2 to have more detail and to be clearer in the explanation.
+- Edited the statement of problem 8.3 to be clearer.
+- Made the solution to problem 8.3 more concise (and also fix some typos there).
+- Made the solution to exercise 9.7 more clear.
+- Fixed the incorrect article "the" in the solution to exercise 9.8(ii) (it should have been "a").
+- Removed extra "or" in the statement of problem 9.1.
+- Added the missing "abelian" condition to problem 9.2.
+- Edited the solution to problem 9.3 to flow better.
+- Reworded the statements of problem 9.8 and problem 9.9 to increase clarity.
 - Rewrote exercise 10.1 to fix the glaring issue that the two "groups" mentioned in the exercise are not groups.
-- Edit the statement and solution of exercise 10.3 to be more concise.
-- Add more constraints to exercise 10.4.
-- Add the "non-empty" constraint to appropriate sets in the statements of exercise 10.6 and exercise 10.8.
-- Swap problem 10.2 and problem 10.3.
-- Fix a slight typo in problem 10.4.
-- Edit the statements of problem 10.5 and problem 10.6.
-- Fix a typo in the solution of problem 10.8.
-- Add more detail to the solution of problem 11.1.
+- Edited the statement and solution of exercise 10.3 to be more concise.
+- Added more constraints to exercise 10.4.
+- Added the "non-empty" constraint to appropriate sets in the statements of exercise 10.6 and exercise 10.8.
+- Swapped problem 10.2 and problem 10.3.
+- Fixed a slight typo in problem 10.4.
+- Edited the statements of problem 10.5 and problem 10.6.
+- Fixed a typo in the solution of problem 10.8.
+- Added more detail to the solution of problem 11.1.
 - Rearranged part of the statement of problem 11.2 to be clearer.
 - Added missing $h$ in the solution of problem 12.3.
-- Add more detail to the statement of exercise 13.5.
-- Fix slight formatting error in the solution of exercise 13.5.
-- Make the statement of exercise 13.6 clearer.
+- Added more detail to the statement of exercise 13.5.
+- Fixed slight formatting error in the solution of exercise 13.5.
+- Made the statement of exercise 13.6 clearer.
 - Changed undefined $n$ to 10 in the solution to exercise 14.4(a).
-- Rewrite the solutions of problem 14.2 and problem 14.3 to be clearer.
-- Edit the statement of problem 14.4 to be more precise.
-- Edit the solutions of problem 14.4(v) and problem 14.4(vi) to be clearer.
-- Add more detail to the solution of exercise 15.1.
-- Use the term "permutations" instead of "actions" in exercise 15.2.
-- Add "non-empty" condition to the statement of exercise 15.4.
-- Make the solution of problem 15.1(ii) clearer.
-- Rewrite part of the statement of problem 15.5 to be more concise.
-- Change the incorrect article in exercise 16.1, from "the" to "a".
-- Reformat the solution of problem problem 16.4.
-- Add the detail that $p$ is prime to the statements of problem 16.5 and problem 16.7.
-- Rewrite the solution to problem 16.8 to be clearer.
-- Add the missing condition that $G$ is a finite abelian group of prime-power order to the solution of exercise 17.2.
-- Change "degree 2" to "order 4" in the solution of problem 17.2.
-- Rewrite the solution of exercise 18.3 to be clearer.
-- Add the missing condition that the composition series is "up to isomorphism" to the statement of exercise 18.4.
+- Rewritten the solutions of problem 14.2 and problem 14.3 to be clearer.
+- Edited the statement of problem 14.4 to be more precise.
+- Edited the solutions of problem 14.4(v) and problem 14.4(vi) to be clearer.
+- Added more detail to the solution of exercise 15.1.
+- Used the term "permutations" instead of "actions" in exercise 15.2.
+- Added "non-empty" condition to the statement of exercise 15.4.
+- Made the solution of problem 15.1(ii) clearer.
+- Rewritten part of the statement of problem 15.5 to be more concise.
+- Changed the incorrect article in exercise 16.1, from "the" to "a".
+- Reformatted the solution of problem problem 16.4.
+- Added the detail that $p$ is prime to the statements of problem 16.5 and problem 16.7.
+- Rewritten the solution to problem 16.8 to be clearer.
+- Added the missing condition that $G$ is a finite abelian group of prime-power order to the solution of exercise 17.2.
+- Changed "degree 2" to "order 4" in the solution of problem 17.2.
+- Rewritten the solution of exercise 18.3 to be clearer.
+- Added the missing condition that the composition series is "up to isomorphism" to the statement of exercise 18.4.
 - Correct the incorrect article "the" to "a" in the statement of problem 18.1.
-- Rewrite part of the solution of problem 18.2.
-- Make other minor changes.
+- Rewritten part of the solution of problem 18.2.
+- Made other minor changes.
 
 ### Part II (Rings) Changes
-- Make the solution of exercise 21.4(a) clearer.
-- Rewrite the statement of problem 21.3 to be clearer.
-- Add the missing part of the solution to problem 21.4(iii). Specifically, add the missing solution for factoring 112 into primes.
-- Add missing citations for the solution of problem 21.5.
-- Edit the statement of exercise 24.5, fixing some grammatical errors.
-- Fix the incorrect symbol used for modular congruence in the solution of exercise 24.8.
-- Add citation for the map referenced in exercise 24.9.
-- Change the symbol used for the identity map in the solution of problem 24.1(i).
-- Rewrite the solution to problem 24.4.
-- Make minor edits to the statement of problem 24.5.
-- Rewrite the solution of problem 24.9(ii) to be clearer.
-- Edit problem 24.10 to be more concise.
-- Fix typoes made in the solution of problem 24.10(iii).
-- Edit the solution of problem 24.11 to be more concise.
-- Rephrase exercise 25.1 to be clearer.
-- Fix the incorrect symbol used for the ring in the solution to exercise 25.7.
-- Rewrite the solution to problem 25.6 to be clearer.
-- Rewrite the statement of problem 25.9 to be slightly clearer.
-- Fix some weird notation used in the surjective part of the solution to problem 25.11.
-- Add missing citation to the solution of exercise 26.2.
-- Fix incorrect " $>$ " used in the specification of the prime in the solution of exercise 26.4 (replaced with " $\geq$ ").
-- Make the solution of exercise 26.7 more rigorous.
-- Fix error that " $p(x) = a(x)b(x)$ " in the solution of exercise 26.8 (changed to " $p(x) \vert a(x)b(x)$ ").
-- Make the solution of problem 26.2 more concise.
-- Add slightly more detail to the solution of problem 26.3.
-- Rewrite the statement of problem 26.5 to be more concise.
-- Add more detail to the solution of problem 26.5.
-- Fix the incorrect modulo number in the statement of problem 26.7(b)(ii).
-- Fix a minor grammatical mistake in the solution of exercise 27.1.
-- Add more detail to the solution of exercise 27.2.
-- Add the missing constraint that $k$ must be non-zero in exercise 27.6.
-- Rewrite the statements of problem 27.2 and problem 27.11 to be clearer.
-- Make other minor changes.
+- Made the solution of exercise 21.4(a) clearer.
+- Rewritten the statement of problem 21.3 to be clearer.
+- Added the missing part of the solution to problem 21.4(iii). Specifically, add the missing solution for factoring 112 into primes.
+- Added missing citations for the solution of problem 21.5.
+- Edited the statement of exercise 24.5, fixing some grammatical errors.
+- Fixed the incorrect symbol used for modular congruence in the solution of exercise 24.8.
+- Added citation for the map referenced in exercise 24.9.
+- Changed the symbol used for the identity map in the solution of problem 24.1(i).
+- Rewritten the solution to problem 24.4.
+- Made minor edits to the statement of problem 24.5.
+- Rewritten the solution of problem 24.9(ii) to be clearer.
+- Edited problem 24.10 to be more concise.
+- Fixed typos made in the solution of problem 24.10(iii).
+- Edited the solution of problem 24.11 to be more concise.
+- Rephrased exercise 25.1 to be clearer.
+- Fixed the incorrect symbol used for the ring in the solution to exercise 25.7.
+- Rewritten the solution to problem 25.6 to be clearer.
+- Rewritten the statement of problem 25.9 to be slightly clearer.
+- Fixed some weird notation used in the surjective part of the solution to problem 25.11.
+- Added missing citation to the solution of exercise 26.2.
+- Fixed incorrect " $>$ " used in the specification of the prime in the solution of exercise 26.4 (replaced with " $\geq$ ").
+- Made the solution of exercise 26.7 more rigorous.
+- Fixed error that " $p(x) = a(x)b(x)$ " in the solution of exercise 26.8 (changed to " $p(x) \vert a(x)b(x)$ ").
+- Made the solution of problem 26.2 more concise.
+- Added slightly more detail to the solution of problem 26.3.
+- Rewritten the statement of problem 26.5 to be more concise.
+- Added more detail to the solution of problem 26.5.
+- Fixed the incorrect modulo number in the statement of problem 26.7(b)(ii).
+- Fixed a minor grammatical mistake in the solution of exercise 27.1.
+- Added more detail to the solution of exercise 27.2.
+- Added the missing constraint that $k$ must be non-zero in exercise 27.6.
+- Rewritten the statements of problem 27.2 and problem 27.11 to be clearer.
+- Made other minor changes.
 
 ### Part III (Fields) Changes
-- Add more detail to the statement and solution of exercise 30.7.
-- Edit the solution to problem 30.5 to be more rigorous.
-- Fix typos in the statement and solution of problem 31.2.
-- Make the solution to problem 31.4 clearer at the outset by signposting that all three statements will be proved.
-- Improve formatting of the solution to problem 31.5.
-- Add condition for $n$ in the solution of problem 32.1.
-- Change confusing " $\leq n$ " to "At most $n$" in the solution of problem 32.7(i).
-- Fix the confusing solution to exercise 33.1.
-- Remove ambiguous "from above" to "from (i)" in the solution of problem 33.5(iii).
-- Add the missing field that $8x^3-6x-1$ "is irreducible" over in the solution of problem 34.3. 
-- Make other minor changes.
+- Added more detail to the statement and solution of exercise 30.7.
+- Edited the solution to problem 30.5 to be more rigorous.
+- Fixed typos in the statement and solution of problem 31.2.
+- Made the solution to problem 31.4 clearer at the outset by signposting that all three statements will be proved.
+- Improved formatting of the solution to problem 31.5.
+- Added condition for $n$ in the solution of problem 32.1.
+- Changed confusing " $\leq n$ " to "At most $n$" in the solution of problem 32.7(i).
+- Fixed the confusing solution to exercise 33.1.
+- Removed ambiguous "from above" to "from (i)" in the solution of problem 33.5(iii).
+- Added the missing field that $8x^3-6x-1$ "is irreducible" over in the solution of problem 34.3. 
+- Made other minor changes.
 
 ### Part IV (Galois) Changes
-- Fix weird formatting of the solution of exercise 34.5.
-- Clarify confusing " $= r$ " in the solution of exercise 34.6.
-- Add a note about what the distinct divisors of $q^6$ are in the solution of problem 35.5.
-- Rewrite the statements of problem 35.10(i) and problem 35.10(vi) to increase clarity.
-- Add brackets for " $\log_2\epsilon$ " in the solution of exercise 36.1 to aid readability.
-- Make other minor changes.
+- Fixed weird formatting of the solution of exercise 34.5.
+- Clarified confusing " $= r$ " in the solution of exercise 34.6.
+- Added a note about what the distinct divisors of $q^6$ are in the solution of problem 35.5.
+- Rewritten the statements of problem 35.10(i) and problem 35.10(vi) to increase clarity.
+- Added brackets for " $\log_2\epsilon$ " in the solution of exercise 36.1 to aid readability.
+- Made other minor changes.
 
 ### Other Changes
-- Edit questions extraction program.
-- Edit the source code for tables to not use as much whitespace as they once did.
+- Edited questions extraction program.
+- Edited the source code for tables to not use as much whitespace as they once did.
 
 ---
 ## [1st Edition, Build 33](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.32...v1-build.33)
@@ -332,7 +332,7 @@ No general content changes.
 - Fixed the incorrect solution to exercise 4.5.
 - Made the solution to problem 4.3 clearer.
 - Fixed incorrect induction step for the solution of problem 4.6.
-- Rewrite the statement for exercise 5.3 (iv).
+- Rewritten the statement for exercise 5.3 (iv).
 - Made the statement for problem 5.4 clearer.
 - Made other minor edits to the text.
 
@@ -489,7 +489,7 @@ No general content changes.
 - Removed a weird extra line in the proof of proposition 14.3.12.
 - Edited the proof of proposition 14.4.6.
 - Fixed the proof of proposition 14.6.3.
-- Rewrite problem 14.1.
+- Rewritten problem 14.1.
 - Removed caption from the figure of the square with labelled corners.
 - Made the preamble for section 15.6 more succinct.
 - Made exercise 16.4 more concise by using more mathematical notation.
@@ -521,7 +521,7 @@ No general content changes.
 - Fixed typo in definition 25.2.8.
 - Added a remark after definition 25.2.12 on where zeroes of a polynomial can come from.
 - Modified proof of theorem 25.3.1.
-- Fixed the proof of theroem 25.4.1 (polynomial long division).
+- Fixed the proof of theorem 25.4.1 (polynomial long division).
 - Slightly edited the statement of theorem 25.4.10.
 - Edited the statement of problem 25.2 to be clearer.
 - Removed problem 25.3.
@@ -551,7 +551,7 @@ No general content changes.
 - Fixed typo in example 29.1.6.
 - Changed numbering of statements in proposition 29.2.7 (cancellation law for fields).
 - Fixed typo in the proof of theorem 29.3.6 (subfield test).
-- Rewrite part of theorem 29.4.5's proof.
+- Rewritten part of theorem 29.4.5's proof.
 - Removed exercise 29.3 as it is quite meaningless.
 - Made the solution to problem 29.3 more succinct.
 - Combined definition 30.1.1 and definition 30.1.2 together.
@@ -667,7 +667,7 @@ No changes.
 - Modified the description of the subspace test in theorem 30.2.4.
 - Made some changes to the proof of the subspace test.
 - Slightly made definition 30.3.1 more airtight.
-- Rewrite example 30.5.4.
+- Rewritten example 30.5.4.
 - Fixed some typos in the proof of theorem 30.5.5.
 - Added more detail on how complex numbers were first defined to example 31.1.1.
 - Removed yet-to-be-introduced notation from example 31.1.4.
@@ -706,7 +706,7 @@ No changes.
 
 ### Part II (Rings) Changes
 - Fixed some details in example 20.5.3.
-- Remove problem 20.4 on proving that a zero divisor cannot be a unit (since proposition 20.4.4 already proved this).
+- Removed problem 20.4 on proving that a zero divisor cannot be a unit (since proposition 20.4.4 already proved this).
 - Rewritten problem 20.5(iii) to be clearer.
 - Rewritten statement of exercise 21.2.
 - Fixed typo in the solution of exercise 21.4.
@@ -718,7 +718,7 @@ No changes.
 - Slightly adjusted example 22.2.10.
 - Restate theorem 22.2.11 (test for ideal).
 - Added slightly more detail to example 22.3.2 and example 22.3.5.
-- Add additional citation for the notation of a principal ideal.
+- Added additional citation for the notation of a principal ideal.
 - Made definition 22.5.3 clearer.
 - Made remark before example 22.5.4 slightly more concise.
 - Fixed minor typos in example 23.1.7.
@@ -727,7 +727,7 @@ No changes.
 - Fixed an incorrect summation limit, and some other typos, in the proof of proposition 24.1.5.
 - Cleaned up slight ugliness in the proof of theorem 24.3.3.
 - Added clarification on what "it" is in the proof of proposition 24.3.7.
-- Remove redundant "the map" in the statement of exercise 24.8.
+- Removed redundant "the map" in the statement of exercise 24.8.
 - Fixed slight inaccuracy about prime ideals in example 24.3.9.
 - Edited the proof of theorem 24.4.10 to be clearer.
 - Added some clarification to the proof of theorem 25.2.1.
@@ -756,7 +756,7 @@ No changes.
 - Minor reformatting of chapters 23, 25, 26, and 27.
 
 ### Part III (Fields) Changes
-- Remove poor notation for the dimension of an infinite dimensional field from definition 29.5.6.
+- Removed poor notation for the dimension of an infinite dimensional field from definition 29.5.6.
 - Added a new theorem relating the dimension of a vector space to spanning sets and linear dependence.
 - Added a new chapter 31 on algebraic extensions.
 
@@ -805,7 +805,7 @@ No changes.
 - Modified the remark after proposition 12.2.2.
 - Amend the proof of the "well-definedness" of $\phi$ in the proof of theorem 12.3.1.
 - Fixed description of exercise 12.3.2.
-- Make "Klein four group" bolded in problem 12.4.
+- Made "Klein four group" bolded in problem 12.4.
 - Edited remark after definition 13.1.1 and definition 13.2.1 to increase clarity.
 - Edited proof of proposition 13.1.4 to be more concise.
 - Reworded example 13.2.2 to be clearer.
@@ -820,12 +820,12 @@ No changes.
 - Rewrote lemma 14.3.2, its proof, and its remark to be more concise and clearer.
 - Rewrote lemma 14.3.4 to be clearer.
 - Modify the definition of an inversion in definition 14.3.5.
-- Remove notation for inversion after definition 14.3.5.
+- Removed notation for inversion after definition 14.3.5.
 - Modify example 14.3.6 to accommodate the new changes.
-- Reword the motivation for theorem 14.3.8.
+- Reworded the motivation for theorem 14.3.8.
 - Made description after exercise 14.7 more concise.
 - Slightly modify the proof of proposition 14.3.12.
-- Rewrite proposition 14.3.13 and its proof to be clearer.
+- Rewritten proposition 14.3.13 and its proof to be clearer.
 - Move the expression of Euler's totient function into definition 14.4.3.
 - Added condition that $a < n$ into definition 14.4.4.
 - Modified the proof of proposition 14.4.8 to be more concise.
@@ -882,7 +882,7 @@ No changes.
 ### Other Changes
 - Removed unused `questions` in problem solutions for encryption.
 - Changed appendix page number format to prevent ugliness with the table of contents.
-- Add eBook option to compilation options.
+- Added eBook option to compilation options.
 
 ---
 ## [1st Edition, Build 25](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.24...v1-build.25)
@@ -1230,7 +1230,7 @@ No changes.
   - Renamed the folders for the images to match the names of the chapters.
   - Moved cover images out of the `cover` folders.
 - Changed book size and font size.
-- Add inner and outer margins for each page.
+- Added inner and outer margins for each page.
 
 ### Volume 0 Changes
 - Converted chapter 0.6 (on polynomial algebra) to one solely on algebra and moved it to chapter 0.1.
@@ -1245,10 +1245,10 @@ No changes.
 - Updated the statement for the cancellation law (proposition I.2.2.6).
 - Added a new proposition I.2.2.7 for the properties of $x^n$.
 - Fixed solution for problem I.2.3.
-- Fix incorrect statement for Lemma I.3.3.3 (Coset Equality).
+- Fixed incorrect statement for Lemma I.3.3.3 (Coset Equality).
 - Added new corollary I.3.3.4 (Element in Coset).
 - Added new definition I.3.5.3 for the definition of a proper normal subgroup.
-- Fix unclear wording in the solution for problem I.3.8 part (i).
+- Fixed unclear wording in the solution for problem I.3.8 part (i).
 - Added new propositions for some exercises in chapter I.4.
 - Added a new exercise I.4.10 for the reflexivity, symmetry, and transitivity of the isomorphism relation.
 - Fixed an error in proofs for theorems I.4.5.2 and I.4.5.3.
@@ -1295,7 +1295,7 @@ No changes.
 
 ### Other Changes
 - Fixed link to build 15 in the changelog.
-- Remove `\Zn` from the `Common Commands.tex` file.
+- Removed `\Zn` from the `Common Commands.tex` file.
 
 ---
 ## [Build 15](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-14...build-15)
@@ -1312,7 +1312,7 @@ No changes.
 
 ### Volume II Changes
 - Added a new problem to chapter II.2.
-- Change theorem II.4.4.7 and II.4.4.8 to corollaries.
+- Changed theorem II.4.4.7 and II.4.4.8 to corollaries.
 
 ### Other Changes
 - Updated the list of required packages.
@@ -1412,47 +1412,47 @@ No changes.
 
 ### General Content Changes
 - Rename "Interdependence of Chapters" to "Chapter Interdependence"
-- Fix weird "chapter" in appendix headers
+- Fixed weird "chapter" in appendix headers
 
 ### Volume 0 Changes
 - Update format for sections 0.3.2 and 0.3.3
 
 ### Volume I Changes
-- Edit a sentence in the preface to be clearer
-- Fix citation for theorem I.10.4.1
-- Change the wording of the first sentence of the proof for theorem I.10.4.1
+- Edited a sentence in the preface to be clearer
+- Fixed citation for theorem I.10.4.1
+- Changed the wording of the first sentence of the proof for theorem I.10.4.1
 
 ### Other Changes
-- Add a list of required latex packages
+- Added a list of required latex packages
 
 ---
 ## [Build 10](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-09...build-10)
 
 ### General Content Changes
-- Add a "suggestions" chapter to the front matter
+- Added a "suggestions" chapter to the front matter
 - Update chapter mark styling for front matter
 - Update preface for all volumes
-- Fix incorrect figure caption format
-- Fix citations
+- Fixed incorrect figure caption format
+- Fixed citations
 
 ### Volume 0 Changes
-- Add chapter interdependence diagram
-- Fix minor typo in section 0.3.4
+- Added chapter interdependence diagram
+- Fixed minor typo in section 0.3.4
 
 ### Volume I Changes
-- Add chapter interdependence diagram
+- Added chapter interdependence diagram
 - Increase image sizes in chapter I.1
-- Add new problem I.1.2 on the trivial group
-- Fix the incorrect solution for example I.3.6.3
-- Fix example I.7.5.2
-- Add minor note on lack of problems for chapter I.12
+- Added new problem I.1.2 on the trivial group
+- Fixed the incorrect solution for example I.3.6.3
+- Fixed example I.7.5.2
+- Added minor note on lack of problems for chapter I.12
 - General improvements to volume I
 
 ### Other Changes
 - Move commands in `SharedCommands.tex` to respective volumes
 - Include code-workspace file in the repository
-- Add some content to volume II
-- Change volume II cover image
+- Added some content to volume II
+- Changed volume II cover image
 - Update `README.md`
 - Reorganise repository
   - Renamed all directories to use Arabic numerals instead of roman numerals
@@ -1469,7 +1469,7 @@ No changes.
 - Update index format
 
 ### Volume 0 Changes
-- Fix some index entries in volume 0
+- Fixed some index entries in volume 0
 
 ### Volume I Changes
 - Increased font size from 10pt to 11pt
@@ -1481,7 +1481,7 @@ No changes.
 - Fixed exercises and problem solutions.
 
 ### Other Changes
-- Fix typos in `CHANGELOG.md`
+- Fixed typos in `CHANGELOG.md`
 - Replace old reference code with a new `\myref` command
 
 ---
@@ -1501,11 +1501,11 @@ Other Changes:
 ## [Build 7](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-06...build-07)
 
 **Important Changes**:
-- The books' licence has changed from the reative Commons Attribution-NonCommercial 4.0 International Licence (CC BY-NC 4.0) to the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Licence** (CC BY-NC-SA 4.0). This new licence requires you to "distribute your contributions under the same license as the original" if you "remix, transform, or build upon the material" (source: [here](https://creativecommons.org/licenses/by-nc-sa/4.0/#:~:text=If%20you%20remix%2C%20transform%2C%20or%20build%20upon%20the%20material%2C%20you%20must%20distribute%20your%20contributions%20under%20the%20same%20license%20as%20the%20original.)). The previous builds remain under their original licence.
+- The books' licence has changed from the Creative Commons Attribution-NonCommercial 4.0 International Licence (CC BY-NC 4.0) to the **Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International Licence** (CC BY-NC-SA 4.0). This new licence requires you to "distribute your contributions under the same license as the original" if you "remix, transform, or build upon the material" (source: [here](https://creativecommons.org/licenses/by-nc-sa/4.0/#:~:text=If%20you%20remix%2C%20transform%2C%20or%20build%20upon%20the%20material%2C%20you%20must%20distribute%20your%20contributions%20under%20the%20same%20license%20as%20the%20original.)). The previous builds remain under their original licence.
 - The title of the books have changed from "Abstract Algebra: A Gentle Introduction" to "Abstract Algebra: A *Simple* Introduction".
 
 Book Content Changes:
-- Fix overrun of text in one line of section I.12.4
+- Fixed overrun of text in one line of section I.12.4
 
 Other Changes:
 - Move all front matter content to `SharedCommands.tex`
@@ -1520,44 +1520,44 @@ Book Content Changes:
 - Updated formatting of volumes 0 and 1.
   - Fixed overfull `hbox`es
   - Fixed "token not allowed" errors
-- Fix grammar in image acknowledgements in volume 1
-- Fix the month format in the bibliography
-- Fix publisher for "Algebra" by Cohn
+- Fixed grammar in image acknowledgements in volume 1
+- Fixed the month format in the bibliography
+- Fixed publisher for "Algebra" by Cohn
 - Updated corollary I.7.4.2 to be an "if and only if" statement
 - Added new problem to chapter I.10
-- Fix problem I.3.7's solution
+- Fixed problem I.3.7's solution
 
 Other Changes:
 - Added a `CHANGELOG.md` document
 - Added a new `Images` folder in the repository
 - Changed the GitHub repository banner to black
 - Update format in `SharedCommands.tex`; fixed some iffy commands there too
-- Fix possible conflict of labels in volume 1
-- Remove weird newlines in the volume 1 source file
+- Fixed possible conflict of labels in volume 1
+- Removed weird newlines in the volume 1 source file
 - Renamed some labels things in the volume 1 source file
 
 ---
 ## [Build 5](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-04...build-05)
 
 Changelog:
-- Add new problem to chapter I.2
+- Added new problem to chapter I.2
 - Update citation format; make page numbers appear in the brackets
 - Move the table of contents before the preface
-- Add the `emptypage` package to remove headings from empty pages
-- Add custom chapter styling
+- Added the `emptypage` package to remove headings from empty pages
+- Added custom chapter styling
 - Customise the table of contents heading
-- Add strong induction to subsection 0.3.5.4
-- Fix several typos in volumes 0 and I
+- Added strong induction to subsection 0.3.5.4
+- Fixed several typos in volumes 0 and I
 
 ---
 ## [Build 4](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/build-03...build-04)
 
 Changelog:
-- Add edition notice to all volumes
+- Added edition notice to all volumes
 - Made front matter pages use lowercase roman numerals
 - Reformat headings for solutions
-  - Make the solutions' sections (as well as the image acknowledgement sections) be appendices
-- Fix critical error with a definition in section I.11.3
+  - Made the solutions' sections (as well as the image acknowledgement sections) be appendices
+- Fixed critical error with a definition in section I.11.3
 - Added more parts to a problem in chapter I.3
 - Added a new problem to chapter I.11
 
