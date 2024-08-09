@@ -21,7 +21,7 @@ We introduced the simple properties of groups and simple examples of groups in t
     \[
         r = m + \underbrace{(-n) +(-n) +(-n) + \cdots + (-n)}_{|q| \text{ times}}.
     \]
-    Note that since both $m$ and $-n$ are in $H$, thus $r = m + (-n) + \cdots + (-n)$ is also in $H$, since $H$ is closed under addition. But $0 \leq r < n$ and $n$ is the \textit{smallest} positive integer in $H$. Thus, $r \not> 0$ which means $r = 0$. Therefore $m = nq$, i.e. every element in $H$ is a multiple of the smallest positive integer in $H$.
+    Note that since both $m$ and $-n$ are in $H$, thus $r = m + (-n) + \cdots + (-n)$ is also in $H$, since $H$ is closed under addition. But $0 \leq r < n$ and $n$ is the smallest positive integer in $H$. Thus, $r \not> 0$ which means $r = 0$. Therefore $m = nq$, i.e. every element in $H$ is a multiple of the smallest positive integer in $H$.
 
     Hence,
     \[
@@ -36,11 +36,11 @@ We introduced the simple properties of groups and simple examples of groups in t
     Let $G$ be a group with identity $e$.
     \begin{partquestions}{\alph*}
         \item Prove that the \term{trivial subgroup}\index{subgroup!trivial}, $\{e\}$, is a subgroup of $G$.
-        \item Prove that $G \leq G$.
+        \item Prove that $G$ is a subgroup of itself.
     \end{partquestions}
 \end{exercise}
 \begin{remark}
-    A subgroup that is \textit{not} $\{e\}$ is called a \term{non-trivial subgroup}\index{subgroup!non-trivial}.
+    A subgroup that is not the trivial subgroup is called a \term{non-trivial subgroup}\index{subgroup!non-trivial}.
 \end{remark}
 
 We end this section by defining the idea of a proper subgroup.
@@ -48,10 +48,10 @@ We end this section by defining the idea of a proper subgroup.
     A subgroup $H$ of a group $G$ is a \term{proper subgroup}\index{subgroup!proper} if and only if $H \neq G$, and we write $H < G$.
 \end{definition}
 \begin{remark}
-    Some authors (e.g. {\cite[p.~32]{hungerford_1980}}) require a proper subgroup to also be non-trivial. We do not adopt this definition here.
+    Equivalently, a subgroup $H$ is a proper subgroup of $G$ if $H$ is a proper subset of $G$ (i.e. $H \subset G$).
 \end{remark}
 \begin{remark}
-    Equivalently, a subgroup $H$ is a proper subgroup of $G$ if $H$ is a proper subset of $G$ (i.e. $H \subset G$).
+    Some authors (e.g. {\cite[p.~32]{hungerford_1980}}) require a proper subgroup to also be non-trivial. We do not adopt this definition here.
 \end{remark}
 
 \section{Subgroup Test}
@@ -71,7 +71,7 @@ To prove that a subset of a group is a subgroup using the axioms is too tedious.
     Therefore, if $xy^{-1} \in H$ for all $x, y \in H$ then $H \leq G$.
 \end{proof}
 \begin{remark}
-    We usually check the `non-empty' requirement by checking if the identity of $G$ is in $H$.
+    We usually check that $H$ is non-empty by checking if the identity of $G$ is in $H$.
 \end{remark}
 
 We look at some examples of the use of the subgroup test.
@@ -117,7 +117,7 @@ We look at some examples of the use of the subgroup test.
     which means $(xy^{-1})s = s(xy^{-1})$ for all $s \in S$. Thus $xy^{-1} \in \Centralizer{G}{S}$ for all $x, y \in \Centralizer{G}{S}$, so $\Centralizer{G}{S} \leq G$ by the subgroup test (\myref{thrm-subgroup-test}).
 \end{example}
 \begin{remark}
-    If the set $S$ contains a single element, say $x$, we write $\Centralizer{G}{x}$.
+    If the set $S$ contains a single element, say $x$, we write $\Centralizer{G}{x}$ instead of $\Centralizer{G}{\{x\}}$.
 \end{remark}
 
 \begin{exercise}
@@ -130,7 +130,7 @@ We look at some examples of the use of the subgroup test.
 
 \section{Cosets}
 \begin{definition}
-    Let $g$ be an element of a group $G$ and let $H$ be a subgroup of $G$.
+    Let $G$ be a group, $g \in G$, and $H$ be a subgroup of $G$.
     \begin{itemize}
         \item The \term{left coset}\index{coset!left} of $H$ in $G$ is defined to be $gH = \{gh \vert h \in H\}$.
         \item The \term{right coset}\index{coset!right} of $H$ in $G$ is defined to be $Hg = \{hg \vert h \in H\}$.
@@ -138,7 +138,7 @@ We look at some examples of the use of the subgroup test.
     Any element in a coset is called a \term{representative}\index{coset!representative} of a coset.
 \end{definition}
 \begin{remark}
-    The subgroup $H$ is both a left and right coset of $H$ in $G$. This is because the element $g$ in question is $g = e$, so $gH = eH = H$ and $Hg = He = H$.
+    The subgroup $H$ is both a left and right coset of $H$ in $G$. This is because the element $g$ in question is $e$, so $gH = eH = H$ and $Hg = He = H$.
 \end{remark}
 
 \begin{example}
@@ -176,7 +176,7 @@ We now state and prove a result that relates the equality of cosets.
         \item $g_1H = g_2H$
         \item $Hg_1^{-1} = Hg_2^{-1}$
         \item $g_1H \subseteq g_2H$
-        \item $g_2 \in g_1H$
+        \item $g_1 \in g_2H$
         \item $g_1^{-1}g_2 \in H$
     \end{enumerate}
 \end{lemma}
@@ -239,7 +239,7 @@ We note one very useful corollary of \myref{lemma-coset-equality}.
     \end{enumerate}
 \end{corollary}
 \begin{proof}
-    We prove this corollary by showing $(1) \iff (2)$ and $(1) \iff (3)$, which will imply $(2) \iff (3)$.
+    We prove this corollary by showing $(1) \iff (2)$ and $(1) \iff (3)$, which implies $(2) \iff (3)$.
     \begin{itemize}
         \item $\boxed{(1) \iff (2)}$ Let $g_1 = e$ and $g_2 = x$. Result is clear from Coset Equality (\myref{lemma-coset-equality}), statements 1 and 5.
         \item $\boxed{(1) \iff (3)}$ We note $x \in H$ if and only if $x^{-1} \in H$ (since $H$ is a subgroup). Let $g_1 = x^{-1}$ and $g_2 = e$. Result follows from Coset Equality (\myref{lemma-coset-equality}), statements 2 and 5.
@@ -256,7 +256,10 @@ Lagrange's theorem is an important result relating the order of a subgroup and t
 \begin{definition}
     Let $G$ be a group and $H \leq G$. The \term{index}\index{index} of $H$ in $G$, denoted by $[G : H]$, is the number of left cosets of $H$ in $G$.
 \end{definition}
-Note that since the number of left cosets is the number of right cosets, $[G : H]$ can be defined as the number of cosets of $H$ in $G$.
+Note that the number of left cosets equals the number of right cosets, so
+\[
+    [G:H] = \text{Number of left cosets} = \text{Number of right cosets}
+\]
 
 \begin{example}
     If $G = D_3$ and $H = \{e, s\}$, then there are 3 distinct left cosets, namely $H$, $rH$, and $r^2H$. Thus, $[G:H] = 3$ in this case.
@@ -281,7 +284,7 @@ We require two lemmas to properly prove Lagrange's theorem.
 \end{proof}
 
 \begin{lemma}\label{lemma-order-of-coset}
-    Let $G$ be a group and $H \leq G$. Then $|H| = |gH|$ for all $g$ in $G$.
+    Let $G$ be a group and $H \leq G$. Then $|H| = |gH|$ for all $g \in G$.
 \end{lemma}
 \begin{proof}
     Define the map $\phi: H \to gH$ such that $\phi(h) = gh$. To prove that $|H| = |gH|$, we need to show that $\phi$ is a bijection.
@@ -316,9 +319,9 @@ We are now ready to state and prove Lagrange's theorem.
     Let $G$ be the group $(\Z_{99}, \oplus_{99})$. It is given that $H = \{0, 33, 66\}$ is a subgroup of $G$. What is the index of $H$ in $G$?
 \end{exercise}
 
-Let's look at some corollaries of Lagrange's theorem.
+Lagrange's theorem has several important corollaries.
 \begin{corollary}\label{corollary-order-of-group-multiple-of-order-of-element}
-    Let $G$ be a finite group and let $g$ be an element in $G$. Then $|G|$ is a multiple of $|g|$.
+    Let $G$ be a finite group and let $g \in G$. Then $|G|$ is a multiple of $|g|$.
 \end{corollary}
 \begin{proof}
     We are to show that $|G| = m|g|$ for some positive integer $m$.
@@ -361,7 +364,7 @@ Let's look at some corollaries of Lagrange's theorem.
     Let $G$ be a group and $N \leq G$. We say that $N$ is a \term{normal subgroup}\index{subgroup!normal} of $G$ if and only if $gN = Ng$ for all $g \in G$, and we write $N \unlhd G$.
 \end{definition}
 
-Note that $gN = Ng$ is equivalent to the following two statements:
+Note that $gN = Ng$ is equivalent to the following.
 \begin{itemize}
     \item $gNg^{-1} = N$ for all $g \in G$. (One may interpret $gNg^{-1}$ as either the left coset $g(Ng^{-1})$ or the right coset $(gN)g^{-1}$.)
     \item $gng^{-1} \in N$ for all $g \in G$ and $n \in N$.
@@ -379,7 +382,7 @@ Note that $gN = Ng$ is equivalent to the following two statements:
         &= eh\\
         &= h
     \end{align*}
-    which is an element of $H$. Thus $ghg^{-1}$ is an element of $H$ for all $g$ in $G$ and $h$ in $H$, meaning $H \unlhd G$.
+    which is an element of $H$. Thus $ghg^{-1} \in H$ for all $g \in G$ and $h \in H$, meaning $H \unlhd G$.
 \end{proof}
 
 \begin{definition}
@@ -387,7 +390,7 @@ Note that $gN = Ng$ is equivalent to the following two statements:
 \end{definition}
 
 \begin{example}\label{example-normal-subgroups-of-d3}
-    Let's find the normal subgroups of the dihedral group of order 6, $D_3$.
+    Let's find the normal subgroups of $D_3$, the dihedral group of order 6.
 
     Recall $D_3 = \{e, r, r^2, s, rs, r^2s\}$. Note that $|r| = 3$, $|s| = 2$, $\langle r \rangle = \{e, r, r^2\}$, and $\langle s \rangle = \{e, s\}$. We will show that $\langle r \rangle$ is a (proper) normal subgroup of $D_3$ but not $\langle s \rangle$. Note that since $r$ and $s$ are `generators', we just need to check $s\langle r\rangle$, $\langle r\rangle s$, $r\langle s\rangle$, and $\langle s\rangle r$ to verify normality.
 
@@ -398,7 +401,7 @@ Note that $gN = Ng$ is equivalent to the following two statements:
     \end{itemize}
     so $s\langle r\rangle = \langle r \rangle s$ which means $\langle r \rangle \lhd D_3$.
 
-    For $\langle s \rangle$,
+    However, for $\langle s \rangle$,
     \begin{itemize}
         \item $r\langle s\rangle = \{r, rs\}$; and
         \item $\langle s \rangle r = \{r, sr\} = \{r, r^2s\}$,
@@ -414,7 +417,7 @@ We end this chapter by looking at a special (and useful) type of group: the quot
     \[
         G/H = \{gH \vert g \in G \},
     \]
-    is read ``$G$ by $H$'', and has a cardinality of $[G:H] = \frac{|G|}{|H|}$ by Lagrange's Theorem (\myref{thrm-lagrange}).
+    is read ``$G$ by $H$'', and has a cardinality of $[G:H] = \frac{|G|}{|H|}$ by Lagrange's theorem (\myref{thrm-lagrange}).
 \end{definition}
 \begin{remark}
     We may sometimes write $G/H$ using fractions (i.e. $\frac GH$) if it serves to improve readability.

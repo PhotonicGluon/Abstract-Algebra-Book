@@ -1,5 +1,5 @@
 \chapter{Homomorphisms and Isomorphisms}
-Now that we have introduced the idea of a group, one wonders about how elements of one group can be mapped to elements of another group. Such a mapping can be defined between any two groups, but we look at a specific subset of such maps, called homomorphisms. We will also look at bijective homomorphisms, known as isomorphisms, and discover what they can tell us about the groups that they are mapping to and from.
+Now that we have introduced of groups, one wonders about how elements of one group can be mapped to elements of another group. Such a mapping can be defined between any two groups, but we look at a specific subset of such maps, called homomorphisms. We will also look at bijective homomorphisms, known as isomorphisms, and discover what they can tell us about the groups that they are mapping to and from.
 
 \section{Homomorphisms}
 \begin{definition}
@@ -47,14 +47,14 @@ Let us now look at some properties of homomorphisms. For the following propertie
     \item $G_1$ and $G_2$ be groups;
     \item $H_1 \leq G_1$ and $H_2 \leq G_2$;
     \item $e_1$ and $e_2$ be the identities of $G_1$ and $G_2$ respectively; and
-    \item $\phi: G_1 \to G_2$ be a homomorphism.
+    \item the map $\phi: G_1 \to G_2$ be a homomorphism.
 \end{itemize}
 
 \begin{proposition}\label{prop-homomorphism-maps-identities-to-each-other}
     $\phi(e_1) = e_2$.
 \end{proposition}
 \begin{proof}
-    Let $x \in G_1$. Then $e_1x = x$. Thus $\phi(e_1x) = \phi(x)$ by applying $\phi$ on both sides. Hence $\phi(e_1)\phi(x) = \phi(x)$ by applying the definition of a homomorphism. Therefore, by cancellation law, $\phi(e_1) = e_2$.
+    Let $x \in G_1$. Then $e_1x = x$. Thus $\phi(e_1x) = \phi(x)$ by applying $\phi$ on both sides. Hence $\phi(e_1)\phi(x) = \phi(x)$ by applying the definition of a homomorphism. Therefore, by cancellation law, we have $\phi(e_1) = e_2$.
 \end{proof}
 
 \begin{proposition}\label{prop-homomorphism-maps-inverses}
@@ -78,7 +78,7 @@ Let us now look at some properties of homomorphisms. For the following propertie
     \begin{align*}
         \phi(x^{k+1}) &= \phi(x^kx) \\
         &= \phi(x^k)\phi(x) & (\text{definition of homomorphism})\\
-        &= (\phi(x))^k\phi(x) & (\text{by hypothesis})\\
+        &= (\phi(x))^k\phi(x) & (\text{by induction hypothesis})\\
         &= (\phi(x))^{k+1}
     \end{align*}
     so the statement holds for $k+1$.
@@ -90,7 +90,7 @@ Let us now look at some properties of homomorphisms. For the following propertie
         \phi(x^n) &= \phi(x^{-m})\\
         &= \phi((x^m)^{-1})\\
         &= (\phi(x^m))^{-1} & (\myref{prop-homomorphism-maps-inverses})\\
-        &= ((\phi(x))^m)^{-1} & (\text{by the case for } m>0)\\
+        &= ((\phi(x))^m)^{-1} & (\text{suing the case for } m>0)\\
         &= (\phi(x))^{-m}\\
         &= (\phi(x))^n.
     \end{align*}
@@ -119,7 +119,7 @@ For the next few properties, define
     \[
         \phi(x)\left(\phi(y)\right)^{-1} \in H_2
     \]
-    as $H_2$ is closed. Note that $\left(\phi(y)\right)^{-1} = \phi(y^{-1})$, so
+    because $H_2$ is closed. Note that $\left(\phi(y)\right)^{-1} = \phi(y^{-1})$, so
     \[
         \phi(x)\phi(y^{-1}) = \phi(xy^{-1}) \in H_2
     \]
@@ -159,7 +159,7 @@ For the next few properties, define
 We now look a special (and important) type of homomorphism: isomorphisms, which roughly translates as ``equal form'' from Ancient Greek.
 
 \begin{definition}
-    Let $(G, \ast)$ and $(H, \star)$ be groups. Let $\phi: G \to H$ be a homomorphism. Then $\phi$ is an \term{isomorphism}\index{isomorphism} if and only if $\phi$ is a bijection.
+    Let $(G, \ast)$ and $(H, \star)$ be groups. Let the map $\phi: G \to H$ be a homomorphism. Then $\phi$ is an \term{isomorphism}\index{isomorphism} if and only if $\phi$ is a bijection.
 \end{definition}
 \begin{definition}
     Let $G$ and $H$ be groups. We say that $G$ and $H$ are \term{isomorphic}\index{isomorphic} if and only if there exists an isomorphism $\phi: G \to H$.
@@ -201,7 +201,7 @@ We now look a special (and important) type of homomorphism: isomorphisms, which 
         \]
         so $\phi$ is a homomorphism.
 
-        \item \textbf{Injective}: Suppose $x$ and $y$ are elements in $\R$ such that $\phi(x) = \phi(y)$, meaning $e^x = e^y$. Applying the natural logarithm ($\ln$) on both sides yields $x = y$.
+        \item \textbf{Injective}: Suppose $x, y \in \R$ such that $\phi(x) = \phi(y)$, meaning $e^x = e^y$. Applying the natural logarithm ($\ln$) on both sides yields $x = y$.
 
         \item \textbf{Surjective}: Suppose $y \in S$. Then $\ln y \in \R$, so $\phi(\ln y) = e^{\ln y} = y$, meaning every element in the codomain $S$ has a preimage.
     \end{itemize}
@@ -232,9 +232,9 @@ We now look a special (and important) type of homomorphism: isomorphisms, which 
 \end{exercise}
 
 \section{Consequences of Isomorphisms}
-Isomorphisms between groups means that the two groups `share the same structure', in a manner of speaking. We look at a theorem that showcases the sharing of some of these properties.
+Isomorphisms between groups means that the groups `share the same structure', in a manner of speaking. We look at a theorem that showcases the sharing of some of these properties.
 \begin{theorem}\label{thrm-isomorphism-consequences}
-    Let $\phi: G \to H$ be an isomorphism between the groups $G$ and $H$. Then the following statements are true.
+    Let the map $\phi: G \to H$ be an isomorphism between the groups $G$ and $H$. Then the following statements are true.
     \begin{enumerate}
         \item $|G| = |H|$.
         \item $\phi^{-1}: H \to G$ is an isomorphism.
@@ -281,18 +281,18 @@ Isomorphisms between groups means that the two groups `share the same structure'
 
         However, as $\phi(g) \in H$, thus $\left\langle \phi(g) \right\rangle \leq H$ which means that $\left\langle \phi(g) \right\rangle \subseteq H$. Therefore, we have $H \subseteq \left\langle \phi(g) \right\rangle$ and $\left\langle \phi(g) \right\rangle \subseteq H$ simultaneously, meaning $H = \left\langle \phi(g) \right\rangle$, i.e. $H$ is a cyclic group.
 
-        \item Suppose $K \leq G$ with $|K| = n$. Consider the subgroup $\phi(K)$. By properties of homomorphism, $\phi(K) \leq H = \phi(G)$. Now by statement 1, $|K| = |\phi(K)| = n$, meaning that there is a subgroup of $H$ with order $n$, namely the subgroup $\phi(K)$.
+        \item Suppose $K \leq G$ with $|K| = n$. Consider the subgroup $\phi(K)$. By properties of homomorphisms, $\phi(K) \leq H = \phi(G)$. Now by statement 1, $|K| = |\phi(K)| = n$, meaning that there is a subgroup of $H$ with order $n$, namely the subgroup $\phi(K)$.
     \end{enumerate}
 
     This proves the theorem.
 \end{proof}
 
 \begin{exercise}
-    Let $G$ and $H$ be groups and let $\phi: G \to H$ be an isomorphism. Show that if $G$ has a normal subgroup with order $k$, then $H$ also has a normal subgroup of order $k$.
+    Let $G$ and $H$ be groups and let the map $\phi: G \to H$ be an isomorphism. Show that if $G$ has a normal subgroup with order $k$, then $H$ also has a normal subgroup of order $k$.
 \end{exercise}
 
 \begin{exercise}
-    Prove that the ``is isomorphic to'' relation $\cong$ is an equivalence relation. In particular, for the groups $G$, $H$, and $K$, prove that
+    Prove that the ``is isomorphic to'' relation ($\cong$) is an equivalence relation. In particular, for the groups $G$, $H$, and $K$, prove that
     \begin{partquestions}{\alph*}
         \item $G \cong G$;
         \item if $G \cong H$ then $H \cong G$; and
@@ -303,7 +303,7 @@ Isomorphisms between groups means that the two groups `share the same structure'
 \section{Links to Cyclic Groups}
 With the tool of isomorphisms under our belt, we can prove two important results regarding cyclic groups. Before that, however, we formally introduce the idea of infinite cyclic groups.
 \begin{definition}
-    An infinite cyclic group\index{cyclic group!infinite} $G$ generated by $g$ is denoted by $\langle g \rangle$ and has order $|G| = \infty$. So
+    An infinite cyclic group\index{cyclic group!infinite} $G$ generated by $g \in G$ is denoted by $\langle g \rangle$ and has order $|G| = \infty$. So
     \[
         G = \{\dots, g^{-2}, g^{-1}, e, g, g^2, \dots\}.
     \]
@@ -319,7 +319,7 @@ For brevity, we also have notation regarding the integers under addition.
     If $G$ is an infinite cyclic group with generator $g$, then $G \cong \Z$.
 \end{theorem}
 \begin{proof}
-    Consider $\phi: \Z \to G$ where $\phi(n) = g^n$. We prove that $\phi$ is an isomorphism.
+    Consider $\phi: \Z \to G$ such that $\phi(n) = g^n$. We prove that $\phi$ is an isomorphism.
     \begin{itemize}
         \item \textbf{Homomorphism}: Let $m, n \in \Z$. Note
         \[
@@ -341,7 +341,7 @@ For brevity, we also have notation regarding the integers under addition.
     If $G$ is a finite cyclic group of order $n$ with generator $g$, then $G \cong \Z_n$.
 \end{theorem}
 \begin{proof}[Proof (cf. {\cite[\S 63]{clark_1984}})]
-    Consider $\phi: \Z_n \to G$ such that $\phi(m) = g^m$. We prove that $\phi$ is an isomorphism.
+    We prove that $\phi: \Z_n \to G$ where $\phi(m) = g^m$ is an isomorphism.
     \begin{itemize}
         \item \textbf{Homomorphism}: Let $l,m \in \Z$. We see that
         \[

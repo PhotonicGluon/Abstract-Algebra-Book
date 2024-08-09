@@ -15,7 +15,7 @@ For bijections between finite sets, each set has the same number of elements, so
 Such bijections between finite sets are called \term{permutations}\index{permutations}, since they simply permute the `index number' of the elements in the sets.
 
 \begin{example}
-    Consider the set $S = \{1, 2, 3, 4, 5, 6\}$. A bijection $f: S \to S$ could perform the following mapping:
+    Consider the set $S = \{1, 2, 3, 4, 5, 6\}$. A bijection $f: S \to S$ could perform the following mapping,
     \begin{multicols}{2}
         \begin{itemize}
             \item $1 \mapsto 2$;
@@ -33,7 +33,7 @@ Such bijections between finite sets are called \term{permutations}\index{permuta
     It is certainly confusing that the operation of rearranging the items is also called ``permuting'' the items in the set, and one such rearrangement is called a permutation. For groups, treat a ``permutation'' as a bijective function between finite groups.
 \end{remark}
 
-Permutations come in many different forms, but the core thing that they do is to rearrange items. From the above example, one could form a `cycle' of how each item is mapped to another:
+Permutations come in many different forms, but the core thing that they do is to rearrange items. From the above example, one could form a `cycle' of how each item is mapped to another, i.e.
 \begin{itemize}
     \item $1 \mapsto 2 \mapsto 4 \mapsto 5 \mapsto 1$; and
     \item $3 \mapsto 3$.
@@ -66,7 +66,7 @@ We formally describe what a cycle is.
     \end{multicols}
 \end{example}
 
-We can describe a permutation $\phi$ based on its cycles; such a description is the \term{cycle decomposition}\index{cycle!decomposition} (or \term{cycle notation}\index{cycle!notation}) of the permutation. For brevity let $S = \{1, 2, 3, \dots, n\}$.
+We can describe a permutation $\phi$ based on its cycles; such a description is the \term{cycle decomposition}\index{cycle!decomposition} (or \term{cycle notation}\index{cycle!notation}) of the permutation. For brevity let $S = \{1, 2, 3, \dots, n\}$. The algorithm that produce the cycle decomposition is as follows.
 \begin{enumerate}
     \item If all elements of $S$ are present in some cycle, go to step 8.
     \item Otherwise, pick the smallest element of $S$ that has not appeared in a previous cycle; call it $m$. Set $a = m$.
@@ -162,7 +162,7 @@ We can describe a permutation $\phi$ based on its cycles; such a description is 
 
 We now look at composing permutations\index{permutation!composing}.
 \begin{example}
-    Let $f$ be a permutation with cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$ and $g$ a permutation with cycle decomposition $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$. Then $h = fg$ is a permutation where
+    Let $f$ be a permutation with cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$ and let $g$ be a permutation with cycle decomposition $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$. Then $h = fg$ is a permutation where
     \begin{itemize}
         \item $h(1) = f(g(1)) = f(1) = 3$;
         \item $h(2) = f(g(2)) = f(4) = 4$;
@@ -181,7 +181,7 @@ We now look at composing permutations\index{permutation!composing}.
     We have $ \begin{pmatrix}2 & 9 & 7 & 4\end{pmatrix}\begin{pmatrix}1 & 6 & 4\end{pmatrix} = \begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}$.
 \end{example}
 
-We now describe how to find the inverse of a permutation\index{permutation!inverse}. Given a cycle decomposition for the permutation $f$, simply read the cycle notation backwards, ensuring that the smallest element remains at the front.
+We now describe how to find the inverse of a permutation\index{permutation!inverse}. Given a cycle decomposition for the permutation $f$, simply write the cycle notation backwards, ensuring that the smallest element remains at the front.
 
 \begin{example}
     The inverse of $\begin{pmatrix}1 & 8 & 4 & 2\end{pmatrix}$ is $\begin{pmatrix}2 & 4 & 8 & 1\end{pmatrix}$, which is $\begin{pmatrix}1 & 2 & 4 & 8\end{pmatrix}$.
@@ -203,7 +203,7 @@ We now describe how to find the inverse of a permutation\index{permutation!inver
 With the definition of permutations out of the way, we can finally introduce a very important type of group: the symmetric group of a set $X$.
 
 \begin{definition}
-    Let $X$ be a set. The \term{symmetric group of $X$}\index{symmetric group}\index{symmetric group!of a set $X$} is
+    Let $X$ be a non-empty set. The \term{symmetric group of $X$}\index{symmetric group}\index{symmetric group!of a set $X$} is
     \[
         \Sym{X} = \{f: X \to X \vert f \text{ is a bijection}\}.
     \]
@@ -217,12 +217,12 @@ With the definition of permutations out of the way, we can finally introduce a v
 \end{remark}
 
 \begin{proposition}
-    Let $X$ be a set. Then $\Sym{X}$ is indeed a group.
+    Let $X$ be a non-empty set. Then $\Sym{X}$ is indeed a group.
 \end{proposition}
 \begin{proof}
     We prove the 4 group axioms.
     \begin{itemize}
-        \item \textbf{Closure}: Let $f$ and $g$ be functions in $\Sym{X}$, so $f: X\to X$ and $g:X \to X$ are bijective functions. Define $h:X \to X$ where $h = f\circ g$. By \myref{exercise-composition-of-isomorphisms-is-isomorphisms} we know $h$ is bijective. Thus $\Sym{X}$ is closed under $\circ$.
+        \item \textbf{Closure}: Let $f, g \in \Sym{X}$, so $f: X\to X$ and $g:X \to X$ are bijective functions. Define $h:X \to X$ where $h = f\circ g$. By \myref{exercise-composition-of-isomorphisms-is-isomorphisms} we know $h$ is bijective. Thus $\Sym{X}$ is closed under $\circ$.
 
         \item \textbf{Associativity}: Function composition is associative by \myref{axiom-function-composition-associative}.
 
@@ -260,7 +260,7 @@ The most relevant type of symmetric group we encounter when working with finite 
         \caption{All Permutations of $\Sn{3}$}
     \end{figure}
 
-    Thus, $|\Sn{3}| = 6$.
+    Thus $|\Sn{3}| = 6$.
 \end{example}
 \begin{exercise}\label{exercise-order-of-Sn}
     Explain why $|\Sn{n}| = n!$.
@@ -270,12 +270,12 @@ It should also be noted that subgroups of $\Sym{X}$ are called \term{permutation
 
 To end this section, we prove an important result regarding symmetric groups of equal order.
 \begin{theorem}\label{thrm-symmetric-groups-of-same-order-are-isomorphic}
-    Let $X_1$ and $X_2$ be two finite sets with cardinality $n$. Then we have $\Sym{X_1} \cong \Sym{X_2}$.
+    Let $X_1$ and $X_2$ be two non-empty finite sets with cardinality $n$. Then we have $\Sym{X_1} \cong \Sym{X_2}$.
 \end{theorem}
 \begin{proof}
     Since the two sets $X_1$ and $X_2$ have the same cardinality, they have the same number of elements. Hence there exists a bijection $f: X_1 \to X_2$.
 
-    Let $\phi: \Sym{X_1} \to \Sym{X_2}$ where $\phi(\sigma) = f\sigma f^{-1}$ for all $\sigma \in \Sym{X_1}$. We show that $\phi$ is an isomorphism.
+    Let the map $\phi: \Sym{X_1} \to \Sym{X_2}$ where $\phi(\sigma) = f\sigma f^{-1}$ for all $\sigma \in \Sym{X_1}$. We show that $\phi$ is an isomorphism.
     \begin{itemize}
         \item \textbf{Homomorphism}: Let $\sigma, \pi \in \Sym{X_1}$. Then
         \begin{align*}
@@ -288,7 +288,7 @@ To end this section, we prove an important result regarding symmetric groups of 
 
         \item \textbf{Injective}: Let $\sigma, \pi \in \Sym{X_1}$ such that $\phi(\sigma) = \phi(\pi)$. Thus $f\sigma f^{-1} = f\pi f^{-1}$ which quickly implies $\sigma = \pi$ by cancellation law. Therefore $\phi$ is injective.
 
-        \item \textbf{Surjective}: Let $\pi \in \Sym{X_2}$. Let $\sigma = f^{-1}\pi f$. We note that $\sigma: X_1 \to X_1$ is a bijection, so $\sigma \in \Sym{X_1}$. Clearly
+        \item \textbf{Surjective}: Let $\pi \in \Sym{X_2}$. Let the map $\sigma = f^{-1}\pi f$. We note that $\sigma: X_1 \to X_1$ is a bijection, so $\sigma \in \Sym{X_1}$. Clearly
         \[
             \phi(\sigma) = \phi(f^{-1}\pi f) = f(f^{-1}\pi f)f^{-1} = \pi
         \]
@@ -298,7 +298,7 @@ To end this section, we prove an important result regarding symmetric groups of 
 \end{proof}
 
 \begin{corollary}\label{corollary-symmetric-group-of-finite-order}
-    Let $A$ be a finite set with cardinality $n$. Then $\Sym{A} \cong \Sn{n}$.
+    Let $A$ be a non-empty finite set with cardinality $n$. Then $\Sym{A} \cong \Sn{n}$.
 \end{corollary}
 \begin{proof}
     Let $X = \{1, 2, 3, \dots, n\}$. We note that $\Sn{n} = \Sym{X}$ by definition, and that $|X| = n$. We also note that $|A| = n$ so $A$ and $X$ are two finite sets with equal cardinality. Result follows from \myref{thrm-symmetric-groups-of-same-order-are-isomorphic}.
@@ -313,7 +313,7 @@ We now have sufficient background to state and prove Cayley's theorem.
 
 The statement of the theorem, although simple, is the reason why group theorists study group theory: to explore all the ways that a group can be symmetric.
 
-The proof of this theorem is involved and technical, but we'll try and simplify its proof as much as possible. We first introduce the outline of the proof, before beginning proper.
+The proof of this theorem is involved and technical, but we'll try and simplify its proof as much as possible. We first give an outline of the proof, before beginning proper.
 \begin{proofsketch}
     For any group $G$, define a bijection that involves a group element $g$. Create a new set $H$ consisting of these bijections, enumerating over all $g \in G$. Show that $H$ is actually a permutation group, i.e. a subgroup of $\Sym{G}$. Finally, show that $G$ is actually isomorphic to $H$, proving the theorem.
 \end{proofsketch}
@@ -328,7 +328,7 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
     \end{itemize}
     Since $\lambda_g$ is both injective and surjective it is thus bijective.
 
-    Now let $H = \{\lambda_g \vert g \in G\}$. Since $\lambda_g$ is a bijection from $G$ to $G$ for any $g \in G$, thus $H \subseteq \Sym{G}$. We show that $H \leq \Sym{G}$ via the subgroup test.
+    Now let $H = \{\lambda_g \vert g \in G\}$. Since $\lambda_g$ is a bijection from $G$ to $G$ for any $g \in G$, thus $H \subseteq \Sym{G}$. We show that $H \leq \Sym{G}$ via the subgroup test (\myref{thrm-subgroup-test}).
 
     We first note that $\lambda_e = \id$ since
     \[
@@ -348,7 +348,7 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
         &= g_1g_2^{-1}x\\
         &= \lambda_{g_1g_2^{-1}}(x).
     \end{align*}
-    Note $\lambda_{g_1g_2^{-1}}$ is clearly an element of $H$. Thus if $\lambda_{g_1}, \lambda_{g_2} \in H$, then $\left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right) \in H$. Therefore by the subgroup test (\myref{thrm-subgroup-test}) we have $H \leq \Sym{G}$.
+    Note $\lambda_{g_1g_2^{-1}}$ is clearly an element of $H$. Thus if $\lambda_{g_1}, \lambda_{g_2} \in H$, then $\left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right) \in H$. Therefore by the subgroup test we have $H \leq \Sym{G}$.
 
     We finally show that $G \cong H$ by considering the map $\phi: G\to H$ where $g \mapsto \lambda_g$. We need to show that $\phi$ is an isomorphism.
     \begin{itemize}
@@ -382,7 +382,7 @@ We note one corollary of this theorem.
     By Cayley's theorem (\myref{thrm-cayley}), there exists a group $H \leq \Sym{G}$ such that $G \cong H$. Now since $G$ is finite with order $n$, thus $\Sym{G} \cong \Sn{n}$ by \myref{corollary-symmetric-group-of-finite-order}. Hence $H \leq \Sn{n}$ and $G \cong H$.
 \end{proof}
 
-One might ask what the use of Cayley's Theorem is in group theory. To put it simply, it is a sanity check on the definition of a group. Before anyone had the idea of writing down the axioms for groups, people studied collections of bijections of sets closed under composition and inverses. Cayley's Theorem tells us that every abstract group is a type of the above collection, so the axioms of group theory capture the concrete phenomenon that groups were designed to capture.
+One might ask what the use of Cayley's theorem is in group theory. To put it simply, it is a sanity check on the definition of a group. Before anyone had the idea of writing down the axioms for groups, people studied collections of bijections of sets closed under composition and inverses. Cayley's theorem tells us that every abstract group is a type of the above collection, so the axioms of group theory capture the concrete phenomenon that groups were designed to capture.
 
 \newpage
 
