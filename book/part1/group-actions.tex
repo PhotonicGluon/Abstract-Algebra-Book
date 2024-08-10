@@ -14,7 +14,7 @@ A group action is a representation of the elements of a group as symmetries of a
     Some sources will use $f$ (e.g. \cite{brilliant_group-actions}) or $\phi$ (e.g. \cite{rowland_group-action}) as the group action.
 \end{remark}
 
-Often the function $\alpha(g, x)$ is often written as $g \cdot x$ instead. Note that, when mentioning the group action, we \textit{will} write the dot. With this notation, the axioms become:
+Often the function $\alpha(g, x)$ is often written as $g \cdot x$ instead. Note that, when mentioning the group action, we will write the dot. With this notation, the axioms become:
 \begin{itemize}
     \item $e \cdot x = x$ for all $x \in X$; and
     \item $g \cdot (h \cdot x) = (gh) \cdot x$ for all $g, h \in G$ and $x \in X$.
@@ -132,7 +132,7 @@ We first look at the definition of a fixed point in relation to group actions.
 \end{definition}
 
 \begin{example}
-    Consider the group $G = \{e, g\}$ (where $g^2 = e$) and the set $X = \Z$. Let $G$ act on $X$ by the formulae $e\cdot x = x$ and $g\cdot x = -x$. We find the fixed points of every element in $G$.
+    Consider the group $G = \{e, g\}$ (where $g^2 = e$) and the set $X = \Z$. Let $G$ act on $X$ by $e\cdot x = x$ and $g\cdot x = -x$. We find the fixed points of every element in $G$.
     \begin{itemize}
         \item For $e$, every element in $X$ is a fixed point of it.
         \item For any other element, 0 is the only fixed point since $g\cdot 0 = -0 = 0$ for any $g \neq e$.
@@ -192,7 +192,7 @@ What you might notice from the above example and exercise is that the stabilizer
     \end{align*}
     which means that $gh^{-1} \in \Stab{G}{x}$.
 
-    Thus, by subgroup test, $\Stab{G}{x} \leq G$ for any $x \in X$.
+    Thus, by subgroup test, we see $\Stab{G}{x} \leq G$ for any $x \in X$.
 \end{proof}
 
 \begin{exercise}\label{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}
@@ -276,7 +276,7 @@ Formally, this is captured in the Orbit-Stabilizer Theorem.
 
         \item \textbf{Surjective}: Suppose $y \in \Orb{G}{x}$. This means that there exists $g \in G$ such that $g\cdot x = y$. Note $f_x(g\Stab{G}{x}) = g\cdot x = y$ by definition of $f_x$. Hence, the pre-image of $y$ is $g\Stab{G}{x}$, meaning that $f_x$ is surjective.
     \end{itemize}
-    Hence $f_x$ is a bijection from $G/\Stab{G}{x}$ to $\Orb{G}{x}$. Thus we must have $|\Orb{G}{x}| = |G/\Stab{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$ by Lagrange's Theorem (\myref{thrm-lagrange}). This quickly implies $|G| = |\Stab{G}{x}|\times|\Orb{G}{x}|$.
+    Hence $f_x$ is a bijection from $G/\Stab{G}{x}$ to $\Orb{G}{x}$. Thus we must have $|\Orb{G}{x}| = |G/\Stab{G}{x}| = \frac{|G|}{|\Stab{G}{x}|}$ by Lagrange's theorem (\myref{thrm-lagrange}). This quickly implies $|G| = |\Stab{G}{x}|\times|\Orb{G}{x}|$.
 \end{proof}
 
 \begin{exercise}
@@ -336,7 +336,7 @@ In other words, Burnside's lemma tells us that the number of orbits is the avera
     \[
         \sum_{g\in G} |\Fix{X}{g}| = |G||X/G|
     \]
-    which the result follows immediately.
+    from which the result follows immediately.
 \end{proof}
 
 \begin{example}
@@ -423,7 +423,7 @@ We note an important fact about conjugacy classes with only one element.
     Let $G$ be a group and $x \in G$. Then $|\Cl{x}| = 1$ if and only if $x \in \CenterGrp{G}$.
 \end{proposition}
 \begin{remark}
-    Remember that $\Cl{x}$ is \textit{not} a group, so $|\Cl{x}|$ is just the cardinality of $\Cl{x}$.
+    Remember that $\Cl{x}$ is \textbf{not} a group, so $|\Cl{x}|$ is just the cardinality of $\Cl{x}$.
 \end{remark}
 \begin{proof}
     We first work in the forward direction. Let $x \in G$ be in a conjugacy class with one element. This means that $gxg^{-1} = x$ for all $g \in G$ by definition of the conjugacy class, so $x \in \CenterGrp{G}$.
@@ -527,7 +527,7 @@ To end this chapter, we prove Cauchy's Group Theorem.
     Let $G$ be a finite group such that $|G| = np$ where $p$ is a prime and $n$ is a positive integer. Then $G$ contains an element of order $p$ and a subgroup of order $p$.
 \end{theorem}
 \begin{proofsketch}
-    Assuming a constant prime $p$, consider strong induction on $n$. Base case is trivial. For the induction step, we need to consider two cases.
+    Assuming a constant prime $p$, consider strong induction on $n$. The base case is trivial. For the induction step, we need to consider two cases.
     \begin{itemize}
         \item When $G$ is abelian, consider the cyclic subgroup $H = \langle x \rangle$ of $G$, and find an element of order $p$ in each case.
         \item When $G$ is non-abelian, start by assuming the contrary that there is no element of order $p$. Then show that this implies $p$ does not divide $|H|$ for every proper subgroup $H$ by considering contrapositive of induction hypothesis. Thereafter use the class equation to show that $p$ divides $|\CenterGrp{G}|$, leading to a contradiction. Conclude that there is an element of order $p$.
@@ -544,7 +544,7 @@ To end this chapter, we prove Cauchy's Group Theorem.
     The first case is when $G$ is abelian. Take any $x \in G$ with $x \neq e$, and let $H = \langle x \rangle \leq G$.
     \begin{itemize}
         \item If $p$ divides $|H|$, say $|H| = mp$ where $m$ is a positive integer, then $x^m$ is an element of order $p$ (since $\left(x^m\right)^p = x^{|H|} = e$). Hence we find an element with order $p$.
-        \item If $p$ does not divide $|H|$, then $p$ must divide $[G:H] = |G/H| = \frac{|G|}{|H|}$ since $p$ divides $|G| = kp$. Note that $H \unlhd G$ since $G$ is abelian (\myref{prop-subgroup-of-abelian-group-is-normal}), so $G/H$ is a group. Letting $m = |x|$ we see
+        \item If $p$ does not divide $|H|$, then $p$ must divide $[G:H] = |G/H| = \frac{|G|}{|H|}$ since $p$ divides $|G| = kp$. Note that $H \unlhd G$ since $G$ is abelian (\myref{prop-subgroup-of-abelian-group-is-normal}), so $G/H$ is a group. Setting $m = |x|$ we see
         \[
             (xH)^m = (x^m)H = eH = H \in G/H.
         \]
@@ -552,9 +552,9 @@ To end this chapter, we prove Cauchy's Group Theorem.
     \end{itemize}
     Therefore, for the abelian case, there exists an element with order equal to $p$.
 
-    We now consider the case when $G$ is non-abelian. Seeking a contradiction, assume $G$ does not have an element of order $p$. Let $H < G$, so $H$ has no element with order $p$. Therefore the contrapositive of the induction hypothesis means that $|H|$ is not a multiple of $p$. Note that Lagrange's Theorem (\myref{thrm-lagrange}) further gives that $|G| = [G:H]|H|$. Since $|H|$ is not divisible by $p$ and $|G|$ is divisible by $p$, we conclude that $p$ divides $[G:H]$ for every proper subgroup $H$.
+    We now consider the case when $G$ is non-abelian. Seeking a contradiction, assume $G$ does not have an element of order $p$. Let $H < G$, so $H$ has no element with order $p$. Therefore the contrapositive of the induction hypothesis means that $|H|$ is not a multiple of $p$. Note that Lagrange's theorem (\myref{thrm-lagrange}) further gives that $|G| = [G:H]|H|$. Since $|H|$ is not divisible by $p$ and $|G|$ is divisible by $p$, we conclude that $p$ divides $[G:H]$ for every proper subgroup $H$.
 
-    Since $G$ is non-abelian, thus $G \neq \CenterGrp{G}$ meaning that there exists at least one conjugacy class with more than 1 element. Suppose there are $l$ such classes, and let them be represented by the elements $g_1, g_2, \dots, g_l$. By the class equation (\myref{thrm-class-equation}),
+    Since $G$ is non-abelian, thus $G \neq \CenterGrp{G}$, meaning that there exists at least one conjugacy class with more than 1 element. Suppose there are $l$ such classes, and let them be represented by the elements $g_1, g_2, \dots, g_l$. By the class equation (\myref{thrm-class-equation}) we have
     \[
         |G| = |\CenterGrp{G}| + \sum_{i=1}^l [G:\Centralizer{G}{g_i}].
     \]

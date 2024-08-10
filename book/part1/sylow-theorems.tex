@@ -22,7 +22,7 @@ The First Sylow Theorem is a follow-up to Cauchy's theorem.
 
     The first case is if $p$ does not divide $[G:\Centralizer{G}{g_i}]$ for some $i$. Since $|G| = [G:\Centralizer{G}{g_i}]|\Centralizer{G}{g_i}|$ by Lagrange's theorem (\myref{thrm-lagrange}) and $p$ divides $|G|$, thus it must be the case that $p$ divides $|\Centralizer{G}{g_i}|$. In fact since $p^r$ divides $|G|$ thus $p^r$ also divides $|\Centralizer{G}{g_i}|$. Using the induction hypothesis on $\Centralizer{G}{g_i}$ results in $\Centralizer{G}{g_i}$ having a subgroup of order $p^r$; as $\Centralizer{G}{g_i} \leq G$ thus $G$ itself has a subgroup of order $p^r$.
 
-    The second case is if $p$ divides every $[G:\Centralizer{G}{g_i}]$. Since $p$ divides $G$, the class equation tells us that $p$ must divide $|\CenterGrp{G}|$ too. By Cauchy's Theorem (\myref{thrm-cauchy}) we hence know that $\CenterGrp{G}$ has an element of order $p$, say $g$. Let $N = \langle g \rangle$. Clearly $N \lhd \CenterGrp{G}$ since $\CenterGrp{G}$ is abelian (\myref{prop-subgroup-of-abelian-group-is-normal}); therefore $N \lhd G$ since every element of $\CenterGrp{G}$ commutes with every element of $G$, resulting in $xN = Nx$ for all $x \in G$. Now consider $G/N$, which is a group since $N \lhd G$. Note $|G/N| = \frac{|G|}{|N|} = \frac{|G|}{p}$; since $p^r$ divides $|G|$ thus $p^{r-1}$ divides $\frac{|G|}{p} = |G/N|$. The induction hypothesis therefore gives us a subgroup $H/N$ of $G/N$ with order $p^{r-1}$ (note the form of a subgroup of $G/N$ is of the form $H/N$ as proven in \myref{problem-subgroup-of-quotient-group-is-quotient-group}). In particular one sees $|H/N| = \frac{|H|}{|N|} = \frac{|H|}{p} = p^{r-1}$, thereby meaning that $|H| = p^r$, showing that $G$ has a subgroup of order $p^r$.
+    The second case is if $p$ divides every $[G:\Centralizer{G}{g_i}]$. Since $p$ divides $G$, the class equation tells us that $p$ must divide $|\CenterGrp{G}|$ too. By Cauchy's theorem (\myref{thrm-cauchy}) we hence know that $\CenterGrp{G}$ has an element of order $p$, say $g$. Let $N = \langle g \rangle$. Clearly $N \lhd \CenterGrp{G}$ since $\CenterGrp{G}$ is abelian (\myref{prop-subgroup-of-abelian-group-is-normal}); therefore $N \lhd G$ since every element of $\CenterGrp{G}$ commutes with every element of $G$, resulting in $xN = Nx$ for all $x \in G$. Now consider $G/N$, which is a group since $N \lhd G$. Note $|G/N| = \frac{|G|}{|N|} = \frac{|G|}{p}$; since $p^r$ divides $|G|$ thus $p^{r-1}$ divides $\frac{|G|}{p} = |G/N|$. The induction hypothesis therefore gives us a subgroup $H/N$ of $G/N$ with order $p^{r-1}$ (note the form of a subgroup of $G/N$ is of the form $H/N$ as proven in \myref{problem-subgroup-of-quotient-group-is-quotient-group}). In particular one sees $|H/N| = \frac{|H|}{|N|} = \frac{|H|}{p} = p^{r-1}$, thereby meaning that $|H| = p^r$, showing that $G$ has a subgroup of order $p^r$.
 \end{proof}
 
 We note a special case of the First Sylow Theorem. Recall that a group with order $p^k$ for some $k \geq 0$ is called a $p$-group.
@@ -69,17 +69,17 @@ We proved that $gHg^{-1}$ is a subgroup of $G$ in \myref{exercise-conjugate-subg
 
 We prove some results regarding the conjugate subgroup here.
 \begin{proposition}\label{prop-power-of-conjugate-equals-conjugate-of-power}
-    Let $G$ be a group, and let $a$ and $x$ be elements in $G$. Then $(axa^{-1})^n = ax^na^{-1}$ for all integers $n$.
+    Let $G$ be a group, and let $a, x \in G$. Then $(axa^{-1})^n = ax^na^{-1}$ for all integers $n$.
 \end{proposition}
 \begin{proof}
-    Trivially, when $n = 0$, $(axa^{-1})^0 = e = x^0 = ax^0a^{-1}$.
+    Trivially, we have $\left(axa^{-1}\right)^0 = e = x^0 = ax^0a^{-1}$ for the case when $n = 0$.
 
     We consider a proof by induction for positive integers $n$ and then prove the case when $n$ is negative.
 
-    When $n = 1$, $(axa^{-1})^1 = axa^{-1}$ is given. Now assume $n = k$ holds true for some positive integer $k$, meaning that $(axa^{-1})^k = ax^ka^{-1}$. Then
+    When $n = 1$, $\left(axa^{-1}\right)^1 = axa^{-1}$ is given. Now assume $n = k$ holds true for some positive integer $k$, meaning that $\left(axa^{-1}\right)^k = ax^ka^{-1}$. Then
     \begin{align*}
-        (axa^{-1})^{k+1} &= (axa^{-1})(axa^{-1})^k\\
-        &= (axa^{-1})(ax^ka^{-1}) & (\text{by induction hypothesis})\\
+        \left(axa^{-1}\right)^{k+1} &= \left(axa^{-1}\right)\left(axa^{-1}\right)^k\\
+        &= \left(axa^{-1}\right)\left(ax^ka^{-1}\right) & (\text{by induction hypothesis})\\
         &= axa^{-1}ax^ka^{-1}\\
         &= axx^ka^{-1}\\
         &= ax^{k+1}a^{-1}
@@ -88,31 +88,31 @@ We prove some results regarding the conjugate subgroup here.
 
     Now suppose $n$ is a non-negative integer. Then
     \begin{align*}
-        (axa^{-1})^{-n} &= ((axa^{-1})^n)^{-1}\\
-        &= (ax^na^{-1})^{-1} & (\text{by above result})\\
-        &= a(x^n)^{-1}a^{-1}\\
+        \left(axa^{-1}\right)^{-n} &= \left(\left(axa^{-1}\right)^n\right)^{-1}\\
+        &= \left(ax^na^{-1}\right)^{-1} & (\text{by above result})\\
+        &= a\left(x^n\right)^{-1}a^{-1}\\
         &= ax^{-n}a^{-1}
     \end{align*}
     which completes the proof for all integers.
 \end{proof}
 
 \begin{proposition}\label{prop-order-of-conjugate-element-equals-order-of-element}
-    Let $G$ be a group. Then for all $g, x \in G$, we have $|gxg^{-1}| = |x|$.
+    Let $G$ be a group. Then for all $g, x \in G$ we have $|gxg^{-1}| = |x|$.
 \end{proposition}
 \begin{proof}
-    The proposition trivially holds true for $g = e$ so we assume $g \neq e$.
+    The proposition trivially holds true for $g = e$ so we can safely assume $g \neq e$.
 
     Suppose $|x| = n$, meaning $x^n = e$ and $x^k \neq e$ for all $1 \leq k < n$. Note we have
     \begin{align*}
-        (gxg^{-1})^n  &= gx^ng^{-1} & (\myref{prop-power-of-conjugate-equals-conjugate-of-power})\\
+        \left(gxg^{-1}\right)^n  &= gx^ng^{-1} & (\myref{prop-power-of-conjugate-equals-conjugate-of-power})\\
         &= geg^{-1} & (\text{since } |x| = n)\\
         &= e
     \end{align*}
     which means that $|gxg^{-1}| \leq n = |x|$.
 
-    Now let $k < n$. We show that if $x^k \neq e$ then $(gxg^{-1})^k \neq e$ using contrapositive proof. Suppose $(gxg^{-1})^k = e$. Thus $gx^kg^{-1} = e$ by \myref{prop-power-of-conjugate-equals-conjugate-of-power}. This implies that $gx^k = g$ which quickly means $x^k = e$. Therefore if $x^k \neq e$ then $(gxg^{-1})^k \neq e$, which shows that $|x| \leq |gxg^{-1}|$.
+    Now let $k < n$. We will show that if $x^k \neq e$ then $(gxg^{-1})^k \neq e$ using contrapositive proof. Suppose $(gxg^{-1})^k = e$. Thus $gx^kg^{-1} = e$ by \myref{prop-power-of-conjugate-equals-conjugate-of-power}. This implies that $gx^k = g$ which quickly means $x^k = e$. Therefore if $x^k \neq e$ then $(gxg^{-1})^k \neq e$, which shows that $|x| \leq |gxg^{-1}|$.
 
-    As $|gxg^{-1}| \leq |x|$ and $|x| \leq |gxg^{-1}|$, so $|gxg^{-1}| = |x|$.
+    As $|gxg^{-1}| \leq |x|$ and $|x| \leq |gxg^{-1}|$, thus $|gxg^{-1}| = |x|$.
 \end{proof}
 
 \begin{exercise}
@@ -133,7 +133,7 @@ We note an important result with regards to the conjugate subgroup.
 \section{The Normalizer}
 We now look at the definition of the normalizer.
 \begin{definition}
-    Let $G$ be a group and $S$ be a non-empty subset of $G$. The \term{normalizer of $S$ in $G$}\index{normalizer} is given by
+    Let $G$ be a group and $S$ be a non-empty subset of $G$. The \term{normalizer of $S$ in $G$}\index{normalizer} is
     \[
         \N{G}{S} = \{g \in G \vert gS = Sg \}.
     \]
@@ -168,10 +168,10 @@ We prove some properties of the normalizer here.
     Let $G$ be a group, and $H \leq G$. Then $\N{G}{H}$ is the largest subgroup of $G$ containing $H$ as a normal subgroup.
 \end{proposition}
 \begin{remark}
-    What we mean by ``largest'' here is that if there was another subgroup of $G$ (say $K$) such that $H \unlhd K$, then $K \subseteq \N{G}{H}$.
+    What we mean by ``largest'' here is that if there was another subgroup of $G$, say $K$, such that $H \unlhd K$, then $K \subseteq \N{G}{H}$.
 \end{remark}
 \begin{proof}
-    By \myref{prop-subgroup-is-a-normal-subgroup-of-normalizer} we know that $H \unlhd \N{G}{H}$. We just need to prove that any subgroup in which $H$ is normal inside it must be a subset of $\N{G}{H}$.
+    By \myref{prop-subgroup-is-a-normal-subgroup-of-normalizer} we know that $H \unlhd \N{G}{H}$. We just need to prove that any subgroup of $G$ in which $H$ is normal inside it must be a subset of $\N{G}{H}$.
 
     Consider any subgroup $N \leq G$ such that $H \unlhd N \leq G$. Then for any $n \in N$ we have $nHn^{-1} = H$ by definition of normality, which immediately means that $n \in \N{G}{H}$ by definition of the normalizer of $H$ in $G$. Hence any element in $N$ also belongs in $\N{G}{H}$, meaning $N \subseteq \N{G}{H}$.
 
@@ -194,7 +194,7 @@ We prove some properties of the normalizer here.
 
     As $m \leq s$ and $m \geq s$, thus $m = s$ which means $|P \cap Q| = |Q|$, i.e. $P \cap Q = Q$. Therefore $Q \subseteq P$ which proves the first part of the proposition.
 
-    Now suppose $Q$ is, in particular, a Sylow $p$-subgroup of $\N{G}{P}$. Since $\N{G}{P} \leq G$ by \myref{exercise-normalizer-is-subgroup-of-main-group}, one concludes that $|G| = y|\N{G}{P}|$ for some positive integer $y$ by Lagrange's Theorem. Hence $xp^n = y|\N{G}{P}|$ which implies $|\N{G}{P}| = \frac{x}{y} p^n$. Set $z = \frac xy$ and note that $p \nmid z$. Therefore, if $Q$ is a Sylow $p$-subgroup, then $|Q| = p^n$. But since $|P| = p^n$ and $Q \subseteq P$, thus $P = Q$, proving the second part of the proposition.
+    Now suppose $Q$ is, in particular, a Sylow $p$-subgroup of $\N{G}{P}$. Since $\N{G}{P} \leq G$ by \myref{exercise-normalizer-is-subgroup-of-main-group}, one concludes that $|G| = y|\N{G}{P}|$ for some positive integer $y$ by Lagrange's Theorem. Hence $xp^n = y|\N{G}{P}|$ which implies $|\N{G}{P}| = \frac{x}{y} p^n$. Set $z = \frac xy$ and note that $p \nmid z$. Therefore, if $Q$ is a Sylow $p$-subgroup, then $|Q| = p^n$. But since $|P| = p^n$ and $Q \subseteq P$, thus $P = Q$, which proves the second part of the proposition.
 \end{proof}
 
 \section{The Second Sylow Theorem}
@@ -206,7 +206,7 @@ We can now look at the Second Sylow Theorem.
 \begin{proofsketch}
     Consider the set of conjugates of $H$, i.e. $\mathcal{X} = \{gHg^{-1} \vert g \in G\}$, and let $H$ act on $\mathcal{X}$ by conjugation (which requires proving that this is, indeed, a group action). We then prove that $H$ is the only element of $\mathcal{X}$ with an orbit of 1. Furthermore, by using the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), show that any $g \notin H$ results in the orbit of $gHg^{-1}$ being a multiple of $p$. Conclude that the cardinality of $\mathcal{X}$ is 1 more than a multiple of $p$.
 
-    Let $K$ also act on $\mathcal{X}$ by conjugation, and the above conclusion means that there is at least one orbit of length 1. Thus there is a $g \in G$ such that $k(gHg^{-1})k^{-1} = gHg^{-1}$ for all $k \in K$. Deduce that $g^{-1}Kg \subseteq \N{G}{H}$. As $|g^{-1}Kg| = |K|$ which is a Sylow $p$-subgroup, so $g^{-1}Kg$ is a $p$-subgroup which means $g^{-1}Kg \subseteq H$ by \myref{prop-normalizer-of-sylow-p-subgroup}. Result follows from observing that $|H| = |K|$, meaning $g^{-1}Kg = H$, and trivial manipulation.
+    Let $K$ also act on $\mathcal{X}$ by conjugation, and the above conclusion means that there is at least one orbit of length 1. Thus there is a $g \in G$ such that $k(gHg^{-1})k^{-1} = gHg^{-1}$ for all $k \in K$. Deduce that $g^{-1}Kg \subseteq \N{G}{H}$. As $|g^{-1}Kg| = |K|$ which is a Sylow $p$-subgroup, so $g^{-1}Kg$ is a $p$-subgroup, which means $g^{-1}Kg \subseteq H$ by \myref{prop-normalizer-of-sylow-p-subgroup}. Result follows from observing that $|H| = |K|$, meaning $g^{-1}Kg = H$, and trivial manipulation.
 \end{proofsketch}
 \begin{proof}[Proof (see {\cite[Theorem 11.10]{humphreys_1996}})]
     Define the set
@@ -235,6 +235,7 @@ We can now look at the Second Sylow Theorem.
             &= (h_1h_2)X(h_1h_2)^{-1}\\
             &= (h_1h_2) \cdot X.
         \end{align*}
+        Thus this is indeed a group action.
     \end{itemize}
 
     We consider orbits of this group action. In particular, we find element(s) with orbit(s) of only one element. Suppose $X \in \mathcal{X}$ has one element in its orbit, so for all $h \in H$ we have
@@ -252,9 +253,9 @@ We can now look at the Second Sylow Theorem.
     \end{align*}
     Since $|g^{-1}hg| = |h|$ by \myref{prop-order-of-conjugate-element-equals-order-of-element}, and because $H$ is a $p$-subgroup, therefore $|g^{-1}hg| = p^r$ where $r$ is some positive integer. Note that $g^{-1}Hg$ is a (sub)group by \myref{exercise-conjugate-subgroup}. Therefore $g^{-1}Hg$ is a $p$-subgroup of $\N{G}{H}$.
 
-    Furthermore $g^{-1}Hg \cong H$ by \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup} so $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, by \myref{prop-normalizer-of-sylow-p-subgroup}, we see $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But $X = gHg^{-1}$, so $X = H$.
+    Furthermore, we know $g^{-1}Hg \cong H$ by \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup}, so $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, by \myref{prop-normalizer-of-sylow-p-subgroup}, we see $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But because $X = gHg^{-1}$, so $X = H$.
 
-    Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, by Orbit-Stabilizer Theorem (\myref{thrm-orbit-stabilizer}), one sees
+    Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, the Orbit-Stabilizer Theorem (\myref{thrm-orbit-stabilizer}) tells us that
     \[
         |\Stab{H}{gHg^{-1}}| = \frac{|H|}{|\Orb{H}{gHg^{-1}}|}
     \]
@@ -278,7 +279,7 @@ We note one important corollary of the Second Sylow Theorem.
 \end{exercise}
 
 \section{The Third Sylow Theorem}
-The Third Sylow Theorem gives us a way to determine how many Sylow $p$-subgroups of a certain order exist within a group. This theorem is very useful in determining the structure of finite groups, and can help us reason our way through the properties that a finite group of a fixed order must have.
+The Third Sylow Theorem gives us a way to determine how many Sylow $p$-subgroups exist within a group. This theorem is very useful in determining the structure of finite groups, and can help us reason our way through the properties that a finite group of a fixed order must have.
 
 \begin{theorem}[Sylow III]\label{thrm-sylow-3}\index{Sylow Theorem!Third}
     Let $G$ be a finite group with order $p^k m$ where $p$ is prime, $k \geq 1$, and $p \nmid m$. Let $n_p$ denote the number of Sylow $p$-subgroups in $G$, i.e. $n_p = |\Syl{p}{G}|$. Then,
@@ -355,7 +356,7 @@ We use part of the Third Sylow Theorem to create a test for non-simplicity.
     We first suppose $n = p^k$. Let $G$ be a group of order $n$. We consider two subcases.
     \begin{itemize}
         \item Suppose $G$ is abelian. By writing $p^k$ as $p \times p^{k-1}$, Cauchy's theorem (\myref{thrm-cauchy}) tells us that there exists a subgroup of order $p$. Since every subgroup of an abelian group is normal (\myref{prop-subgroup-of-abelian-group-is-normal}), thus there exists a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
-        \item Now suppose $G$ is non-abelian. By \myref{example-group-with-prime-power-order-has-non-trivial-center}, $G$ has a non-trivial center. Furthermore, $G \neq \CenterGrp{G}$ because $G$ is non-abelian (\myref{problem-center-of-G}). Since the center is a normal subgroup of $G$, it is thus a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
+        \item Now suppose $G$ is non-abelian. By \myref{example-group-with-prime-power-order-has-non-trivial-center}, we know $G$ has a non-trivial center. Furthermore, $G \neq \CenterGrp{G}$ because $G$ is non-abelian (\myref{problem-center-of-G}). Since the center is a normal subgroup of $G$, it is thus a non-trivial proper normal subgroup of $G$, meaning $G$ is non-simple.
     \end{itemize}
     Hence any group of order $p^k$ where $k > 1$ is non-simple.
 
@@ -365,7 +366,7 @@ We use part of the Third Sylow Theorem to create a test for non-simplicity.
     Consider a group with order 15. Note $15 = 3 \times 5$, and consider $p = 5$. The divisors of 15 are 1, 3, 5, and 15, and clearly only 1 is congruent to 1 modulo 5. Hence by Sylow's Test we know that a group of order 15 cannot be simple.
 \end{example}
 
-For some groups of orders that do not satisfy the condition in Sylow's Test, we can still can prove that they cannot be simple.
+For some groups of orders that do not satisfy the condition in Sylow's Test, we can still can prove that they are never simple.
 
 \begin{example}
     We will show that a group of order 2552 is non-simple.
@@ -423,7 +424,7 @@ For some groups of orders that do not satisfy the condition in Sylow's Test, we 
 \end{problem}
 
 \begin{problem}
-    A perfect number is a positive integer that is equal to the sum of its positive divisors, excluding the number itself. All even perfect numbers are of the form $2^{p-1}\left(2^p-1\right)$ where both $p$ and $2^p-1$ are primes. Prove that any group with an even perfect number order is not simple.
+    A \term{perfect number}\index{perfect number} is a positive integer that is equal to the sum of its positive divisors, excluding the number itself. All even perfect numbers are of the form $2^{p-1}\left(2^p-1\right)$ where both $p$ and $2^p-1$ are primes. Prove that any group with an even perfect number order is not simple.
 \end{problem}
 
 \begin{problem}\label{problem-group-of-order-pq-has-normal-subgroup-of-order-q}
