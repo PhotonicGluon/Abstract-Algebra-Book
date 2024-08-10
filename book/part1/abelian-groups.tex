@@ -12,15 +12,15 @@ We start off the chapter by introducing the theorem at the core of finite abelia
     where the $p_i$'s are \textit{not} necessarily distinct primes. Moreover, the isomorphism is unique up to the order of which the factors are written.
 \end{theorem}
 
-Obviously, this theorem is very technical. Essentially, what the theorem asserts is that any finite abelian group can be reduced to an (external) direct product of cyclic $p$-groups. We leave the proof of the theorem to the last section of this chapter.
+Clearly, this theorem is very technical. Essentially, what the theorem asserts is that any finite abelian group can be reduced to an (external) direct product of cyclic $p$-groups. We leave the proof of the theorem to the last section of this chapter.
 
 This is a very powerful theorem; questions about finite abelian groups have been reduced to questions regarding cyclic groups, which we have explored in depth in \myref{section-more-about-cyclic-groups}. Thus, the combination of \myref{thrm-fundamental-theorem-of-finite-abelian-groups} with results of cyclic groups usually answers any question about finite abelian groups.
 
 \section{Isomorphism Classes of Abelian Groups}
-The Fundamental Theorem of Finite Abelian Groups is very powerful. One application of it allows us to construct all abelian groups of any given order.
+The Fundamental Theorem of Finite Abelian Groups is very powerful. One of its applications allows us to construct all abelian groups of any given order.
 
 \begin{example}
-    Suppose we wish to classify all abelian groups of order $60 = 2^2 \times 3 \times 5$. Then the Fundamental Theorem of Finite Abelian Groups (\myref{thrm-fundamental-theorem-of-finite-abelian-groups}) tells us that there are only two possibilities,
+    Suppose we wish to classify all abelian groups of order $60 = 2^2 \times 3 \times 5$. Then the Fundamental Theorem of Finite Abelian Groups (\myref{thrm-fundamental-theorem-of-finite-abelian-groups}) tells us that there are only two possibilities, namely
     \begin{itemize}
         \item $\Cn{2} \times \Cn{2} \times \Cn{3} \times \Cn{5}$; and
         \item $\Cn{4} \times \Cn{3} \times \Cn{5}$.
@@ -57,7 +57,7 @@ We also note a much stronger converse to Lagrange's theorem (\myref{thrm-lagrang
 
     When $n = 1$, then clearly $m = 1$. The trivial subgroup is a subgroup of any group, and it has order 1. Thus the theorem holds for the case when $n = 1$.
 
-    Now assume that, for all abelian groups $G'$, that for any $m$ that divides the order of $G'$ there exists a subgroup of $G'$ of order $m$, for any $m \leq k$, for some positive integer $k$. We show that for an abelian group of order $k+1$ this statement holds as well.
+    Now assume that, for some positive integer $k$, any $m \leq k$ that divides the order of any abelian group $G'$ will have a subgroup of order $m$. We show that for an abelian group of order $k+1$ this statement holds as well.
 
     Let $G$ be an abelian group of order $k+1$, and let $p$ be a prime that divides $m$. Then from Cauchy's theorem (\myref{thrm-cauchy}) it follows that $G$ has a subgroup of order $p$, say $N$. As all subgroups of abelian groups are normal, thus $G/N$ is a quotient group. In fact, $G/N$ is an abelian group of order $\frac np$. Since $m$ divides $n$ thus $\frac mp$ divides $\frac np$. Therefore by the induction hypothesis we know that $G/N$ has a subgroup of the form $H/N$ where $H \leq G$ (see \myref{problem-subgroup-of-quotient-group-is-quotient-group}) with order $\frac mp$. Then one sees clearly that
     \begin{align*}
@@ -72,16 +72,17 @@ We also note a much stronger converse to Lagrange's theorem (\myref{thrm-lagrang
 \end{proof}
 
 \section{Proof of the Fundamental Theorem of Finite Abelian Groups}
-The proof of the Fundamental Theorem of Finite Abelian Groups is highly complex and technical. To ease the pain with the proof, we break the proof down into several lemmas.
+The proof of the Fundamental Theorem of Finite Abelian Groups is complex and technical. To ease the pain of the proof, we break it down into several lemmas.
 
 \begin{lemma}\label{lemma-fundamental-theorem-of-finite-abelian-groups-1}
     Let $G$ be a finite abelian group of order $n = {p_1}^{\alpha_1}{p_2}^{\alpha_2}\cdots{p_k}^{\alpha_k}$ where $p_1, p_2, \dots, p_k$ are \textit{distinct} primes and $\alpha_1, \alpha_2, \dots, \alpha_k$ are positive integers. Then $G$ is the internal direct product of subgroups $G_1, G_2, \dots, G_k$, where $G_i$ is the subgroup of all elements of order $p_i^r$ for some non-negative integer $r$.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[Lemma 13.8]{judson_beezer_2022}})]
-    A corollary of the First Sylow Theorem (\myref{corollary-sylow-p-subgroup-exists}) tells us that each $G_i$, which is a Sylow $p_i$-subgroup, exists within $G$. Note that if $g \in G_i$ is a non-identity element with order $p_i^r$ then $|g^{-1}|$ also has order $p_i^r$ by a property of $p$-groups. Observe also that if $h \in G_i$ has order $p_i^s$, then if $t$ is the larger of $r$ and $s$ we see
+    A corollary of the First Sylow Theorem (\myref{corollary-sylow-p-subgroup-exists}) tells us that each $G_i$, which is a Sylow $p_i$-subgroup, exists within $G$. Note that, by a property of $p$-groups, if $g \in G_i$ is a non-identity element with order $p_i^r$ then $|g^{-1}|$ also has order $p_i^r$. Observe also that if $h \in G_i$ has order $p_i^s$, then
     \[
         (gh)^{p_i^t} = g^{p_i^t}h^{p_i^t} = e.
     \]
+    where $t$ is the larger of $r$ and $s$.
 
     To complete the proof that $G$ is the internal direct product of $G_1, G_2, \dots, G_k$, we need to show that
     \begin{itemize}
@@ -90,7 +91,7 @@ The proof of the Fundamental Theorem of Finite Abelian Groups is highly complex 
     \end{itemize}
     We do not need to prove that the elements of $G_i$ and $G_j$ commute since $G$ is an abelian group, which means that this condition is already satisfied.
 
-    We first show that every $g \in G$ can be written as a product $g_1g_2\cdots g_k$ where $g_i \in G_i$. Since the order of an element divides the order of the group, we know that
+    We first show that every $g \in G$ can be written as a product $g_1g_2\cdots g_k$ where each $g_i \in G_i$. Since the order of an element divides the order of the group, we know that
     \[
         |g| = p_1^{\alpha_1}p_2^{\alpha_2}\cdots p_k^{\alpha_k}
     \]
@@ -104,7 +105,7 @@ The proof of the Fundamental Theorem of Finite Abelian Groups is highly complex 
     \]
     it follows that $g^{a_ib_i} \in G_i$. So letting $g_i = g^{a_ib_i}$ we see $g = g_1g_2\cdots g_k \in G_1G_2\cdots G_k$ as required.
 
-    We now show that $G_i \cap G_j = \{e\}$ for any $i \neq j$. We only show that the intersection of $G_1$ with $G_2, G_3, \dots, G_k$ is the identity, since the proof for the other subgroups is similar. Suppose $g_1 \in G_1$ is in $G_2G_3\dots G_k$, i.e. $g_1 = g_2g_3\cdots g_k$ for $g_i \in G_i$. Since $g_i$ has order $p_i^{\alpha_i}$ for some non-negative integer $\alpha_i$, thus $g_i^{p_i^{\alpha_i}} = e$ for $i = 2,3\dots,k$, and therefore
+    We now show that $G_i \cap G_j = \{e\}$ for any $i \neq j$. We only show that the intersection of $G_1$ with $G_2, G_3, \dots, G_k$ is the identity, since the proof for the other subgroups is similar. Suppose $g_1 \in G_1$ is also in $G_2G_3\dots G_k$, i.e. $g_1 = g_2g_3\cdots g_k$ for $g_i \in G_i$. Since $g_i$ has order $p_i^{\alpha_i}$ for some non-negative integer $\alpha_i$, thus $g_i^{p_i^{\alpha_i}} = e$ for $i = 2,3\dots,k$, and therefore
     \[
         g_1^{p_2^{\alpha_2}p_3^{\alpha_3}\cdots p_k^{\alpha_k}} = g_2^{p_2^{\alpha_2}}g_3^{p_3^{\alpha_3}}\cdots g_k^{p_k^{\alpha_k}} = e
     \]
@@ -114,10 +115,10 @@ The proof of the Fundamental Theorem of Finite Abelian Groups is highly complex 
 \end{proof}
 
 \begin{lemma}\label{lemma-fundamental-theorem-of-finite-abelian-groups-2}
-    Let $G$ be a finite abelian $p$-group and suppose $g \in G$ has maximal order in $G$. Then $G \cong \langle g \rangle \times H$ for some subgroup $H$ in $G$.
+    Let $G$ be a finite abelian $p$-group and suppose $g \in G$ has maximal order in $G$. Then $G \cong \langle g \rangle \times H$ for some subgroup $H$ of $G$.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[Lemma 13.9]{judson_beezer_2022}})]
-    Let $|G| = p^n$; we use the strong induction on $n$.
+    Let $|G| = p^n$; we use strong induction on $n$.
 
     When $n = 1$ then $|G| = p$, which means that $G$ is a cyclic group of prime order $p$ (\myref{corollary-group-with-prime-order-is-cyclic}) and must be generated by any non-identity element $g$. Hence $G \cong \langle g \rangle \times \{e\}$ where $e$ is the identity of $G$.
 
@@ -129,7 +130,7 @@ The proof of the Fundamental Theorem of Finite Abelian Groups is highly complex 
     \[
         \left(g^r\right)^{p^{m-1}} = \left(h^p\right)^{p^{m-1}} = h^{p^m} = e
     \]
-    since $p^m$ is the maximal order of all elements in $G$, and thus the order of $g^r$ must divide $p^{m-1}$ (\myref{lemma-order-of-an-element-that-is-equivalent-to-identity}); actually we only care that the order of $g^r$ is at most $p^{m-1}$ which is less than $p^m$. Thus $g^r$ cannot generate $\langle g \rangle$. Hence $\gcd(p^m, r) \neq 1$ by the contrapositive of \myref{corollary-element-in-cyclic-group-is-generator-iff-gcd-is-1}, which means that $r = ps$ for some positive integer $s$, which shows us that $h^p = g^{ps}$. Let $a = g^{-s}h$. Note that since $h = ag^{ps} \notin \langle g \rangle$, thus $a \notin \langle g \rangle$. Also,
+    since $p^m$ is the maximal order of all elements in $G$, and thus the order of $g^r$ must divide $p^{m-1}$ (\myref{lemma-order-of-an-element-that-is-equivalent-to-identity}). Actually we only care that the order of $g^r$ is at most $p^{m-1}$, which is less than $p^m$. Thus $g^r$ cannot generate $\langle g \rangle$. Hence $\gcd(p^m, r) \neq 1$ by the contrapositive of \myref{corollary-element-in-cyclic-group-is-generator-iff-gcd-is-1}, which means that $r = ps$ for some positive integer $s$, which shows us that $h^p = g^{ps}$. Let $a = g^{-s}h$. Note that since $h = ag^{s} \notin \langle g \rangle$, thus $a \notin \langle g \rangle$. Also,
     \begin{align*}
         a^p &= g^{-ps}h^p\\
         &= g^{-r}h^p\\
@@ -142,7 +143,7 @@ The proof of the Fundamental Theorem of Finite Abelian Groups is highly complex 
     \[
         H = (gH)^{p^{m-1}} = (g^{p^{m-1}})H
     \]
-    and so $g^{p^{m-1}} \in H$ by Element in Coset. Thus $g^{p^{m-1}} \in \langle g\rangle \cap H = \{e\}$ which means $g^{p^{m-1}} = e$, contradicting the fact that the order of $g$ is $p^m$. So $|gH| = p^m$, meaning $gH$ has maximal order in $G/H$. By the Induction Hypothesis we know that
+    and so $g^{p^{m-1}} \in H$ by Element in Coset. Thus $g^{p^{m-1}} \in \langle g\rangle \cap H = \{e\}$ which means $g^{p^{m-1}} = e$, contradicting the fact that the order of $g$ is $p^m$. So $|gH| = p^m$, meaning $gH$ has maximal order in $G/H$. By the induction hypothesis we know that
     \[
         G/H \cong \langle gH \rangle \times K/H
     \]
