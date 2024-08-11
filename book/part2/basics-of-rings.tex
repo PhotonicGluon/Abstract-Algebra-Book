@@ -2,13 +2,13 @@
 With an intuition and definition of rings out of the way, we are now ready to tackle the basics of rings in this chapter.
 
 \section{Obvious Rings}
-Before we introduce some examples of rings, we make some remarks for the notation that is used in Ring Theory.
+Before we introduce some examples of rings, we note the convention on notation used in Ring Theory.
 \begin{itemize}
     \item The multiplication symbol $\cdot$ is usually omitted, so $x \cdot y$ is written as $xy$.
     \item The additive identity of $R$ will always be denoted by 0 and the multiplicative identity of $R$ (if it exists) will always be denoted by 1.
-    \item The additive inverse of the element $x$ will be denoted by $-x$ and the multiplicative inverse of $x$ (if it exists) will be denoted by $x^{-1}$.
-    \item $n$ applications of $+$ on an element $x$ will be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$), while $n$ applications of $\cdot$ on an element $x$ will be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if $x^{-1}$ exists).
-    \item $a - b$ means $a + (-b)$ for any two elements $a$ and $b$ in $R$.
+    \item The additive inverse of the element $x$ will always be denoted by $-x$ and the multiplicative inverse of $x$ (if it exists) will always be denoted by $x^{-1}$.
+    \item $n$ applications of $+$ on an element $x$ will always be denoted $nx$ (and will be denoted $-nx$ if the element is $-x$), while $n$ applications of $\cdot$ on an element $x$ will always be denoted $x^n$ (and will be denoted $x^{-n}$ if the element is $x^{-1}$ and if $x^{-1}$ exists).
+    \item $a - b$ means $a + (-b)$ for any two elements $a, b \in R$.
 \end{itemize}
 
 Let's look at some examples of rings.
@@ -92,7 +92,7 @@ We end this section by looking at the ring of complex numbers.
     \[
         \C = \{a + bi \vert a, b \in \R\}
     \]
-    where $i = \sqrt{-1}$ is known as the \term{imaginary unit}\index{imaginary unit}, where $i^2 = -1$. Define complex addition and multiplication by
+    where $i$ is known as the \term{imaginary unit}\index{imaginary unit}, where $i^2 = -1$. Define complex addition and multiplication by
     \begin{align*}
         (a+bi) + (c+di) &= (a+c) + (b+d)i,\\
         (a+bi) \cdot (c+di) &= (ac-bd) + (ad+bc)i.
@@ -110,7 +110,7 @@ We end this section by looking at the ring of complex numbers.
     \begin{itemize}
         \item \textbf{Addition-Abelian}: We show that $(\C, +)$ satisfies the group axioms, and then show that $(\C, +)$ is commutative.
         \begin{itemize}
-            \item \textbf{Closure}: Clearly for all real numbers $a$, $b$, $c$, and $d$ we have $a + c \in \R$ and $b+d \in \R$. Thus $(a+bi) + (c+di) = (a+c) + (b+d)i \in \C$, meaning $\C$ is closed under complex addition.
+            \item \textbf{Closure}: Clearly for all real numbers $a, b, c, d \in \R$ we have $a + c \in \R$ and $b+d \in \R$. Thus $(a+bi) + (c+di) = (a+c) + (b+d)i \in \C$, meaning $\C$ is closed under complex addition.
 
             \item \textbf{Associativity}: Let $a+bi, c+di, e+fi \in \C$. Then note that
             \begin{align*}
@@ -146,7 +146,7 @@ We end this section by looking at the ring of complex numbers.
 
         \item \textbf{Multiplication-Semigroup}: We show that $(\C, \times)$ is a semigroup.
         \begin{itemize}
-            \item \textbf{Closure}: Clearly for all real numbers $a$, $b$, $c$, and $d$ we have $ac, bd, ad, bc \in \R$, so $ac - bd, ad + bc \in \R$. Therefore
+            \item \textbf{Closure}: Clearly for all real numbers $a, b, c, d \in \R$ we have $ac, bd, ad, bc \in \R$, so $ac - bd, ad + bc \in \R$. Therefore
             \[
                 (a+bi)(c+di) = (ac-bd) + (ad+bc)i \in \C
             \]
@@ -205,7 +205,7 @@ These are just some examples of rings; we explore more later in this chapter.
 \end{exercise}
 
 \section{General Properties of Rings}
-We list some properties of rings here. For each of the propositions, assume $R$ is a ring.
+We list some properties of rings here. For each of the propositions, let $R$ be a ring.
 
 \begin{proposition}[Multiplication by Zero]\label{prop-multiplying-by-zero-is-zero}
     $0x = x0 = 0$ for all $x \in R$.
@@ -284,7 +284,7 @@ We looked at matrices in the context of the General/Special Linear Group of matr
     \end{align*}
 \end{definition}
 
-We also define two matrices that will become useful when we work with matrix rings.
+We also define two matrices that are useful when we work with matrix rings.
 \begin{definition}
     The \term{zero matrix}\index{zero matrix} with $n$ rows and columns is
     \[
@@ -297,7 +297,7 @@ We also define two matrices that will become useful when we work with matrix rin
             0 & 0 & 0 & \cdots & 0 \\
         \end{pmatrix}
     \]
-    where 0 is the additive identity (i.e. zero) in the ring $(R, \oplus, \otimes)$.
+    where 0 is the additive identity (i.e. zero) of the ring $(R, \oplus, \otimes)$.
 \end{definition}
 \begin{definition}
     The \term{identity matrix}\index{identity matrix} with $n$ rows and columns is
@@ -311,7 +311,7 @@ We also define two matrices that will become useful when we work with matrix rin
             0 & 0 & 0 & \cdots & 1 \\
         \end{pmatrix}
     \]
-    where 0 and 1 are the additive and multiplicative identities (i.e. zero and one) in the ring $(R, \oplus, \otimes)$ respectively. That is, the identity matrix is the matrix with 1s in the leading diagonal.
+    where 0 and 1 are the additive and multiplicative identities (i.e. zero and one) of the ring $(R, \oplus, \otimes)$ respectively. That is, the identity matrix is the matrix with 1s in the leading diagonal.
 \end{definition}
 
 We can now define what is a matrix ring.
@@ -390,7 +390,7 @@ We can now define what is a matrix ring.
     Hence $\Mn{n}{R}$ is a ring with identity.
 \end{proof}
 
-\section{More Definitions}\label{section-rings-more-definitions}
+\section{Zero Divisors and Units}\label{section-rings-zero-divisors-and-units}
 \begin{definition}
     Let $R$ be a ring. We say that a non-zero element $a \in R$ is a \term{zero divisor}\index{zero divisor} if there exists a non-zero element $b \in R$ such that $ab = 0$.
 \end{definition}
@@ -423,7 +423,7 @@ We note one property about zero divisors, which will be used in future chapters.
     Zero divisors do not have inverses.
 \end{proposition}
 \begin{proof}
-    Assume $a \neq 0$ and $b \neq 0$ are zero divisors in the ring $R$, so $ab = 0$. Seeking a contradiction, assume $a$ has an inverse, so
+    Assume $a \neq 0$ and $b \neq 0$ are zero divisors in the ring $R$, so $ab = 0$. Seeking a contradiction, assume $a$ has an inverse. This means
     \[
         b = (a^{-1}a)b = a^{-1}(ab) = a^{-1}0 = 0
     \]
@@ -455,10 +455,10 @@ We note one property about zero divisors, which will be used in future chapters.
     See \myref{exercise-product-of-units-is-unit} (later).
 \end{proof}
 \begin{example}
-    Since 3 and 7 are units in $\Z_{10}$, their product, $3 \times 7 = 21 = 1$ is too.
+    2 and 3 are units in $\Z_{13}$ since $2 \times 7 = 14 = 1$ and $3 \times 9 = 27 = 1$ in $\Z_{13}$. Thus their product, $2 \times 3 = 6$, is a unit too. Indeed, one sees $6 \times 11 = 66 = 1$, so 6 is in fact a unit in $\Z_{13}$.
 \end{example}
 \begin{example}
-    2 and 3 are units in $\Z_{13}$ since $2 \times 7 = 14 = 1$ and $3 \times 9 = 27 = 1$ in $\Z_{13}$. Thus their product, $2 \times 3 = 6$, is a unit too. Indeed, one sees $6 \times 11 = 66 = 1$, so 6 is in fact a unit in $\Z_{13}$.
+    Since 3 and 7 are units in $\Z_{10}$, their product, $3 \times 7 = 21 = 1$ is too.
 \end{example}
 
 \begin{definition}
@@ -525,7 +525,7 @@ We end this chapter off with an exploration about subrings.
     \[
         \Z[i] = \{a + bi \vert a,b\in\mathbb{Z}\},
     \]
-    read as ``$\Z$ adjoin $i$''. We first show that $\Z[i]$ is a subring of $\C$.
+    which is read as ``$\Z$ adjoin $i$''. We first show that $\Z[i]$ is a subring of $\C$.
 
     Clearly $\Z[i] \subseteq \C$. We show that $(\Z[i], +) \leq (\C, +)$.
     \begin{itemize}
