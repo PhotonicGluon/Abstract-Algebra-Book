@@ -3,9 +3,9 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
 
 \section{Ring Homomorphisms and Isomorphisms}
 \begin{definition}
-    Let $(R_1, +, \cdot)$ and $(R_2, \oplus, \otimes)$ be rings. A function $\phi: R_1 \to R_2$ is a \term{ring homomorphism}\index{homomorphism!ring} if and only if for all $a, b \in R_1$,
+    Let $(R_1, +, \cdot)$ and $(R_2, \oplus, \otimes)$ be rings. A map $\phi: R_1 \to R_2$ is a \term{ring homomorphism}\index{homomorphism!ring} if and only if for all $a, b \in R_1$, we have
     \begin{align*}
-        \phi(a+b) &= \phi(a) \oplus \phi(b), \text{ and}\\
+        \phi(a+b) &= \phi(a) \oplus \phi(b) \text{ and}\\
         \phi(a\cdot b) &= \phi(a)\otimes\phi(b).
     \end{align*}
 \end{definition}
@@ -38,7 +38,7 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
     \[
         R = \left\{\begin{pmatrix}a&b\\0&c\end{pmatrix}\vert a,b,c\in\Z\right\}.
     \]
-    Let $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$. We show that $\phi$ is a ring homomorphism.
+    Let the map $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$. We show that $\phi$ is a ring homomorphism.
 
     We see that for any $\begin{pmatrix}a&b\\0&c\end{pmatrix}, \begin{pmatrix}x&y\\0&z\end{pmatrix} \in R$ that
     \begin{align*}
@@ -104,7 +104,7 @@ The definition of ring isomorphisms is analogous to that of group isomorphisms.
     A \term{ring isomorphism}\index{isomorphism!ring} is a bijective ring homomorphism.
 \end{definition}
 
-Similar to groups, we write $R_1 \cong R_2$ if and only if $R_1$ and $R_2$ are ring isomorphisms.
+Similar to groups, we write $R_1 \cong R_2$ if and only if $R_1$ and $R_2$ are (ring) isomorphic to each other.
 
 \begin{example}\label{example-Zn-ring-isomorphic-to-Z/nZ}
     We show that $\Z_n \cong \Z/n\Z$. Consider the map $\phi:\Z_n \to \Z/n\Z$ where $m \mapsto m + n\Z$. We show that $\phi$ is an isomorphism.
@@ -197,7 +197,7 @@ For the following, let $R_1$ and $R_2$ be rings with additive identities $0_1$ a
     is a subring of $R_2$.
 \end{proposition}
 \begin{proof}
-    Let $S$ be a subring of $R_1$. Take $a, b \in \phi(S)$, which means that there exist $s_a$ and $s_b$ such that $\phi(s_a) = a$ and $\phi(s_b) = b$.
+    Let $S$ be a subring of $R_1$. Take $a, b \in \phi(S)$, which means that there exist $s_a, s_b\in S$ such that $\phi(s_a) = a$ and $\phi(s_b) = b$.
     \begin{itemize}
         \item We show that $(\phi(S), +) \leq (R_2, +)$.
         \begin{itemize}
@@ -205,7 +205,7 @@ For the following, let $R_1$ and $R_2$ be rings with additive identities $0_1$ a
             \item $a - b = \phi(s_a) - \phi(s_b) = \phi(s_a-s_b) \in \phi(S)$.
         \end{itemize}
 
-        \item Now we show $ab \in \phi(S)$.
+        \item One also sees that
         \[
             ab = \phi(s_a)\phi(s_b) = \phi(s_as_b) \in \phi(S).
         \]
@@ -290,7 +290,7 @@ Similar to group homomorphisms, ring homomorphisms too have a image and kernel.
     \]
     and the homomorphism $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$.
 
-    We note that $\phi$ is surjective; for any $(x,y)\in\Z^2$, we note that $\phi\left(\begin{pmatrix}x&0\\0&y\end{pmatrix}\right) = (x,y)$ so $(x,y)$ has a pre-image in $R$. Therefore $\im \phi = \Z^2$.
+    We note that $\phi$ is surjective; for any $(x,y)\in\Z^2$, we see that $\phi\left(\begin{pmatrix}x&0\\0&y\end{pmatrix}\right) = (x,y)$ so $(x,y)$ has a pre-image in $R$. Therefore $\im \phi = \Z^2$.
 
     We now find the kernel of $\phi$.
     \begin{align*}
@@ -300,7 +300,7 @@ Similar to group homomorphisms, ring homomorphisms too have a image and kernel.
     \end{align*}
 \end{example}
 
-We look at some results regarding the image and kernel of a ring homomorphism. These results may look familiar to those who read part I.
+We look at some results regarding the image and kernel of a ring homomorphism. These results may look familiar to those in part I.
 \begin{proposition}\label{prop-image-is-a-subring}
     Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Then $\im\phi$ is a subring of $R_2$.
 \end{proposition}
@@ -334,7 +334,7 @@ Similar to group theory, there are three main ring isomorphism theorems. However
 \newpage
 
 \begin{theorem}[First Ring Isomorphism Theorem (FRIT)]\label{thrm-ring-isomorphism-1}\index{isomorphism theorem!ring!first}\index{FRIT}
-    Let $R$ and $R'$ be rings. Let $\phi: R \to R'$ be a ring homomorphism, and let $\pi: R \to R/\ker\phi$ where $r\mapsto r + \ker\phi$ be the natural surjective homomorphism. Then there exists a unique ring isomorphism $\psi: R / \ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
+    Let $R$ and $R'$ be rings. Let $\phi: R \to R'$ be a ring homomorphism, and let $\pi: R \to R/\ker\phi$, $r\mapsto r + \ker\phi$ be the natural surjective homomorphism. Then there exists a unique ring isomorphism $\psi: R / \ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
 \end{theorem}
 \begin{remark}
     Equivalently, the FRIT states that
@@ -344,7 +344,7 @@ Similar to group theory, there are three main ring isomorphism theorems. However
     for any ring homomorphism $\phi$. This means that the set of pre-images that have an image of $\phi(x)$ is $x\ker\phi$.
 \end{remark}
 
-We include the commutativity diagram of the maps stated to aid clarity:
+We include the commutativity diagram of the maps stated to aid clarity.
 \begin{figure}[h]
     \centering
     \pdfteximgframed[12pt]{0.25\textwidth}{part2/images/ring-homomorphisms/ring-iso-1-commutativity.pdf_tex}
@@ -511,18 +511,18 @@ In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents
 \begin{example}\label{example-homomorphisms-from-Z12-to-Z28}
     We find all ring homomorphisms $\phi: \Z_{12} \to \Z_{28}$. Note that $\Z_{12}$ is a ring with an identity of 1.
 
-    By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent}, $\phi(1)$ is an idempotent. However, we cannot just assume that 0 and 1 are the \textit{only} idempotents in $\Z_{28}$; we need to check for them exhaustively.
+    By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent}, $\phi(1)$ is an idempotent, so we need to find all idempotents of $\Z_{28}$. However, we cannot just assume that 0 and 1 are the \textit{only} idempotents in $\Z_{28}$; we need to check for them exhaustively.
 
     By exhaustion, we see that $0^2 = 0$, $1^2 = 1$, $8^2 = 64 = 2 \times 28 + 8 = 8$, $21^2 = 441 = 15 \times 28 + 21 = 21$. So the idempotents in $\Z_{28}$ are 0, 1, 8, and 21. This is not enough to narrow down the possible values of $\phi(1)$, so we need to use more facts.
 
     Recall from part I that $|\phi(1)|_+$ divides $|1|_+$ by \myref{exercise-order-of-homomorphism-divides-order}. Therefore $|\phi(1)|_+$ divides 12. Furthermore, \myref{thrm-order-of-element-in-cyclic-group} tells us that the additive order of an element $k$ in the group $(\Z_n, +)$ is $\frac{n}{\gcd(k,n)}$. So we must now exhaust all idempotents in $\Z_{28}$ to check whether it is a valid value of $\phi(1)$.
     \begin{itemize}
         \item $|0|_+ = 1$ which divides 12, so 0 is a valid value of $\phi(1)$.
-        \item $|1|_+ = 28$ which does not divide 12, so 1 is not a valid value of $\phi(1)$. This is one thing that differed from the previous example, where 1 was a possible value of $\phi(1)$.
+        \item $|1|_+ = 28$ which does not divide 12, so 1 is not a valid value of $\phi(1)$. Note that this is different from the previous example, where 1 was a possible value of $\phi(1)$.
         \item $|8|_+ = \frac{28}{\gcd(8,28)} = \frac{28}4 = 7$ which does not divide 12, so 8 is not a valid value of $\phi(1)$.
         \item $|21|_+ = \frac{28}{\gcd(21,28)} = \frac{28}7 = 4$ which divides 12, so 21 is a valid value of $\phi(1)$.
     \end{itemize}
-    Hence $a \in \{0, 21\}$, i.e. $\phi(1) = 0$ or $\phi(1) = 21$.
+    Hence $\phi(1) = 0$ or $\phi(1) = 21$.
 
     If $\phi(1) = 0$, then for any $n \in \Z_{12}$,
     \begin{align*}
