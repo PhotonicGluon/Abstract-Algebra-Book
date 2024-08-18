@@ -1,6 +1,6 @@
 # IMPORTS
 from sympy import Poly
-from ntru.polynomials import reduce_coeffs, reduce_powers_and_coeffs
+from polynomials import reduce_coeffs, reduce_powers_and_coeffs
 
 
 # FUNCTIONS

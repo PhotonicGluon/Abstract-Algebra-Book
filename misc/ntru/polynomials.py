@@ -36,7 +36,6 @@ def almost_inv_poly_for_prime(polynomial: Poly, n: int, p: int):
     f = polynomial
     g = Poly(x ** n - 1)
 
-    import time
     while True:
         if isinstance(f.degree(), NegativeInfinity):
             raise ValueError(f"Polynomial not invertible using polynomials of degree smaller than {n} and modulo {p}")

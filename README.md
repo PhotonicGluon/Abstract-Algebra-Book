@@ -24,3 +24,4 @@ The changelog of the book can be found [here](CHANGELOG.md).
 
 ## Licence
 This work is released under a Creative Commons [Attribution-ShareAlike 4.0 International Licence](LICENSE).
+- Do note that [the NTRU implementation](misc/ntru) is licensed under a separate licence.
