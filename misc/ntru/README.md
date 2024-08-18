@@ -35,5 +35,5 @@ python3 run_ntru.py
 
 ## Licence
 
-This NTRU implementation is licenced under [The Unlicense](misc/ntru/LICENSE).
+This NTRU implementation is licenced under [The Unlicense](LICENSE).
 - Do note that the source code of [the rest of the book](/) is covered by a different license.
