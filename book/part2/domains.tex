@@ -7,11 +7,11 @@ Earlier, we introduced domains, before focusing our attention mainly on integral
 \end{definition}
 
 \begin{example}
-    In $\Z$, 2 and -2 are associates since $-2 = (-1)(2)$ and -1 is a unit in $\Z$.
+    2 and -2 are associates in $\Z$ since $-2 = (-1)(2)$ and -1 is a unit in $\Z$.
 \end{example}
 
 \begin{example}
-    In $\Z_7$, 3 and 5 are associates since $5 = 12 = (4)(3)$. In fact, any two non-zero elements in $\Z_7$ are associates of each other, since every non-zero element of $\Z_7$ is a unit.
+    3 and 5 are associates in $\Z_7$ since $5 = 12 = (4)(3)$. In fact, any two non-zero elements in $\Z_7$ are associates of each other, since every non-zero element of $\Z_7$ is a unit.
 \end{example}
 
 \begin{example}
@@ -49,7 +49,7 @@ We note that the definition of irreducibles is similar to that of irreducible po
     See \myref{problem-prime-element-iff-generates-prime-ideal} (later).
 \end{proof}
 
-The principal confusion one may have with the definition of a prime above is that, for the integers, we defined prime numbers to satisfy the definition of an irreducible (\myref{definition-prime-number}), and that primes also satisfy the primality definition above (\myref{corollary-euclid}). The reason for this confusion is that, over the integers, irreducibles are primes. However, in general, they are \textit{not} the same.
+The primary confusion one may have with the definition of a prime is that, for the integers, we defined prime numbers to satisfy the definition of an irreducible (\myref{definition-prime-number}), and that primes also satisfy the primality definition above (\myref{corollary-euclid}). The reason for this confusion is that, over the integers, irreducibles are primes. However, in general, they are \textit{not} the same.
 
 To explore the differences between irreducibles and primes, we look at quadratic integers. Before that, we need some preliminary definitions and results.
 
@@ -63,7 +63,7 @@ Let $d$ be a square-free integer not equal to 1. We note that the set
 \]
 forms an integral domain. We will leave proving that this is indeed an integral domain to the next section. We also define the map $N: \Z[\sqrt{d}] \to \Z$ where
 \[
-    N(a+b\sqrt{d}) = |a^2 - db^2|,
+    N(a+b\sqrt{d}) = \left|a^2 - db^2\right|,
 \]
 called the norm. For now, we note that $N(xy) = N(x)N(y)$ for all $x, y \in \Z[\sqrt{d}]$. We will prove this and other properties of the norm later.
 
@@ -128,7 +128,7 @@ If we are working in a principal ideal domain then we have a stronger result.
 \end{exercise}
 
 \section{The Quadratic Field and The Quadratic Integers}
-We alluded to quadratic integers in the previous section; we make it formal what they are here.
+We alluded to quadratic integers in the previous section; we formally define what they are here.
 
 \begin{definition}
     Let $d$ be a square-free integer not equal to 1. The \term{quadratic field}\index{quadratic field} is
@@ -149,7 +149,7 @@ We alluded to quadratic integers in the previous section; we make it formal what
         (a+b\sqrt{d})(x+y\sqrt{d}) = (ax+(by)d) + (ay + bx)\sqrt{d}.
     \]
 
-    Note we do not need to prove that $(\Q[\sqrt{d}], +)$ is an abelian group as this is inherited from our adaptation of the polynomial ring $\Q[x]$, substituting $x$ with $\sqrt{d}$. We, however, need to prove that multiplication has identity and inverses, since the rest is also inherited from polynomial multiplication.
+    Note we do not need to prove that $(\Q[\sqrt{d}], +)$ is an abelian group as this is inherited from our adaptation of the polynomial ring $\Q[x]$, where we substitute $x$ with $\sqrt{d}$. We, however, need to prove that multiplication has identity and inverses, since the rest is also inherited from polynomial multiplication.
 
     \begin{itemize}
         \item \textbf{Identity}: The multiplicative identity is $1 = 1 + 0\sqrt{d}$, since one sees clearly that
@@ -171,21 +171,21 @@ We alluded to quadratic integers in the previous section; we make it formal what
 
 As discussed in the previous section, there is a function, called the norm, that is of interest.
 \begin{definition}
-    The \term{norm}\index{quadratic integer!norm} is the map $N: \Z[\sqrt{d}] \to \Z$ where
+    The \term{norm}\index{quadratic integer!norm} is the map $N: \Z[\sqrt{d}] \to \Z$ given by
     \[
-        N(a+b\sqrt{d}) = |a^2-db^2|
+        N(a+b\sqrt{d}) = \left|a^2-db^2\right|
     \]
-    for all $a + b\sqrt{d} \in \Z[\sqrt d]$, where $d$ is a square-free integer.
+    where $a + b\sqrt{d} \in \Z[\sqrt d]$ and $d$ is a square-free integer not equal to 1.
 \end{definition}
 \begin{remark}
-    Most texts prefer to define the norm without the absolute value. However, as we will see below, defining it with the absolute value makes some properties easier to reason.
+    Most texts prefer to define the norm without the absolute value. However, defining it with the absolute value makes some properties easier to explain and prove.
 \end{remark}
 
 \begin{proposition}\label{prop-properties-of-quadratic-integer-norm}
     Let $x,y \in \Z[\sqrt{d}]$, where $d$ is a square-free integer not equal to 1. Then
     \begin{enumerate}
         \item $x = 0$ if and only if $N(x) = 0$;
-        \item $N(xy) = N(x)N(y)$ for all $x$ and $y$;
+        \item $N(xy) = N(x)N(y)$;
         \item $x$ is a unit if and only if $N(x) = 1$; and
         \item if $N(x) = p$ where $p$ is a prime number, then $x$ is irreducible.
     \end{enumerate}
@@ -193,7 +193,7 @@ As discussed in the previous section, there is a function, called the norm, that
 \begin{proof}
     We prove the statements in order.
     \begin{enumerate}
-        \item For the forward direction, note that if $x = 0$ then clearly $N(0) = 0^2 - d(0)^2 = 0$. For the reverse direction suppose $N(x) = a^2 - db^2 = 0$ where $a,b \in \Z$. Then $a^2 = db^2$ which means $a = \pm\sqrt{d}b$. Now since $d$ is a square-free integer, therefore the only way for equality on both sides (with the left hand side being an integer and the right being a non-integer) is for $a = b = 0$. Therefore $x = 0$.
+        \item For the forward direction, note that if $x = 0$ then clearly $N(0) = 0^2 - d(0)^2 = 0$. For the reverse direction, suppose $N(x) = a^2 - db^2 = 0$ where $a,b \in \Z$. Then $a^2 = db^2$ which means $a = \pm\sqrt{d}b$. Now since $d$ is a square-free integer, therefore the only way for equality on both sides (with the left hand side being an integer and the right being a non-integer) is for $a = b = 0$. Therefore $x = 0$.
 
         \item Let $x = p + q\sqrt{d}$ and $y = r + s\sqrt{d}$ where $p,q,r,s \in \Z$. Then
         \begin{align*}
@@ -222,14 +222,14 @@ We are now ready to define the ring of quadratic integers.
 \begin{definition}
     Let $d$ be a square-free integer not equal to 1. The \term{ring of quadratic integers}\index{quadratic integer!ring} is the set
     \[
-        \Z[\sqrt{d}] = \{a + b\sqrt{d} \vert a,b\in\Z\}
+        \Z[\sqrt{d}] = \left\{a + b\sqrt{d} \vert a,b\in\Z\right\}
     \]
     under the same operations of addition and multiplication as $\Q[\sqrt{d}]$.
 
     An element in $\Z[\sqrt{d}]$ is called a \term{quadratic integer}\index{quadratic integer}.
 \end{definition}
 \begin{proposition}
-    For a square-free integer $d \neq 1$, $\Z[\sqrt{d}]$ is a subring of $\Q[\sqrt{d}]$. Furthermore $\Z[\sqrt{d}]$ is an integral domain.
+    Let $d$ be a square-free integer not equal to 1. Then $\Z[\sqrt{d}]$ is a subring of $\Q[\sqrt{d}]$. Furthermore $\Z[\sqrt{d}]$ is an integral domain.
 \end{proposition}
 \begin{proof}
     We first check that $(\Z[\sqrt{d}], +) \leq (\Q[\sqrt{d}], +)$.
@@ -299,14 +299,14 @@ We know that every field is an integral domain (\myref{prop-field-is-integral-do
 \begin{definition}\label{definition-field-of-fractions}
     Let $D$ be an integral domain, and let $D^\ast$ denote the set of non-zero elements of $D$. Define the equivalence relation $\sim$ on $D \times D^\ast$ by
     \[
-        (a,b) \mathrel{\sim} (c,d) \iff ad = bc.
+        (a,b) \mathrel{\sim} (c,d) \iff ad = bc
     \]
-    Denote the equivalence class $[(a, b)]$ by $\frac ab$. Let $\Frac{D}$ be the set of equivalence classes of $D \times D^\ast$ under $\sim$. Then $\Frac{D}$ is called the \term{field of fractions}\index{field of fractions} of $D$ under addition and multiplication given by
+    for all $(a,b),(c,d) \in D \times D^\ast$. Denote the equivalence class $[(a, b)]$ by $\frac ab$ for any $(a,b) \in D \times D^\ast$. Let $\Frac{D}$ be the set of equivalence classes of $D \times D^\ast$ under $\sim$. Then $\Frac{D}$ is called the \term{field of fractions}\index{field of fractions} of $D$ under addition and multiplication given by
     \begin{align*}
         \frac ab + \frac cd &= \frac{ad+bc}{bd} \text{ and}\\
         \frac ab \times \frac cd &= \frac{ac}{bd}
     \end{align*}
-    respectively.
+    respectively for all $(a,b),(c,d) \in D \times D^\ast$.
 \end{definition}
 \begin{remark}
     $\Frac{D}$ may also be called the field of quotients (e.g. \cite[p.~269]{gallian_2016}). The field of fractions may also be denoted by $F_D$ (e.g. \cite[p.~226]{judson_beezer_2022}).
@@ -322,9 +322,9 @@ Clearly, we have a few things to prove in the above definition of the field of f
     \begin{itemize}
         \item \textbf{Reflexive}: Since $D$ is commutative we know $ab = ba$ for all $(a,b) \in D \times D^\ast$. Therefore $(a, b) \mathrel{\sim} (a, b)$, meaning $\sim$ is reflexive.
 
-        \item \textbf{Symmetric}: Suppose now that $(a,b)\mathrel{\sim}(c,d)$. Then $ad = bc$. Again, since $D$ is commutative, we see $cb = da$. Hence, using the definition of $\sim$, we see $(c,d)\mathrel{\sim}(a,b)$, so $\sim$ is symmetric.
+        \item \textbf{Symmetric}: Suppose now that $(a,b)\mathrel{\sim}(c,d)$ for some $(a,b), (c,d) \in D \times D^\ast$. Then $ad = bc$. Again, since $D$ is commutative, we see $cb = da$. Hence, using the definition of $\sim$, we see $(c,d)\mathrel{\sim}(a,b)$, so $\sim$ is symmetric.
 
-        \item \textbf{Transitive}: Suppose $(a,b)\mathrel{\sim}(c,d)$ and $(c,d)\mathrel{\sim}(e,f)$. Thus $ad = bc$ and $cf = de$. Multiplying both sides of $ad = bc$ by $f$, one sees
+        \item \textbf{Transitive}: Suppose $(a,b)\mathrel{\sim}(c,d)$ and $(c,d)\mathrel{\sim}(e,f)$ for some $(a,b), (c,d), (e,f) \in D \times D^\ast$. Thus $ad = bc$ and $cf = de$. Multiplying both sides of $ad = bc$ by $f$, one sees
         \begin{align*}
             (af)d &= (ad)f\\
             &= (bc)f & (\text{since } ad = bc)\\
@@ -337,13 +337,13 @@ Clearly, we have a few things to prove in the above definition of the field of f
     Therefore $\sim$ is an equivalence relation.
 \end{proof}
 
-With the equivalence relation verified, we can now check that the operations defined in $\Frac{D}$ are, indeed, well-defined operations that we can perform. Remember that we define the equivalence class of $[(a, b)]$ as $\frac ab$.
+With the equivalence relation verified, we can now check that the operations defined in $\Frac{D}$ are, indeed, well-defined operations. Remember that we define the equivalence class of $[(a, b)]$ to be $\frac ab$.
 
 \begin{proposition}
     Addition and multiplication as defined in \myref{definition-field-of-fractions} are well-defined operations.
 \end{proposition}
 \begin{proof}
-    We first prove that addition is well-defined. Suppose $\frac{a_1}{b_1} = \frac{a_2}{b_2}$ and $\frac{c_1}{d_1} = \frac{c_2}{d_2}$. We show that $\frac{a_1}{b_1} + \frac{c_1}{d_1} = \frac{a_2}{b_2} + \frac{c_2}{d_2}$, i.e.
+    We first prove that addition is well-defined. Suppose $\frac{a_1}{b_1} = \frac{a_2}{b_2}$ and $\frac{c_1}{d_1} = \frac{c_2}{d_2}$ for some $(a_1,b_1), (a_2,b_2), (c_1,d_1), (c_2,d_2) \in D \times D^\ast$. We show that $\frac{a_1}{b_1} + \frac{c_1}{d_1} = \frac{a_2}{b_2} + \frac{c_2}{d_2}$, i.e.
     \[
         \frac{a_1d_1+b_1c_1}{b_1d_1} = \frac{a_2d_2 + b_2c_2}{b_2c_2}.
     \]
@@ -502,7 +502,7 @@ We note that the original integral domain is contained within the field of fract
     We note that $\im \phi$ is a subring of $\Frac{D}$, so $\phi$ is a ring isomorphism from $D$ to $\im \phi$ which is a subring of $\Frac{D}$.
 \end{proof}
 
-To simplify the notation used when working with the field of fractions, $\Frac{D}$, of an integral domain $D$, we will write $x$ in place of the equivalence class $\frac x1$ for any element $x \in D$.
+To simplify the notation used when working with the field of fractions, $\Frac{D}$, of an integral domain $D$, we write $x$ in place of the equivalence class $\frac x1$ for any element $x \in D$.
 
 We now show that some familiar fields are, indeed, the field of fractions of some integral domains.
 
@@ -548,7 +548,7 @@ We now show that some familiar fields are, indeed, the field of fractions of som
 \begin{example}\label{example-field-of-fractions-of-gaussian-integers-isomorphic-to-quadratic-integers-of-i}
     We prove the less obvious fact that $\Frac{\Z[i]} \cong \Q[i]$. Again, we denote the an equivalence class of $\Frac{\Z[i]}$ by $[(w, z)]$ to avoid confusion.
 
-    Define the map $\phi: \Frac{\Z[i]} \to \Q[i]$ where $\phi([(w, z)]) = \frac wz$. One can check that $\frac wz$ is indeed in $\Q[i]$, since if $w = a+bi\in\Z[i]$ and $z = c+di \in \Z[i]$ with $z \neq 0$ then
+    Define the map $\phi: \Frac{\Z[i]} \to \Q[i]$ where $\phi([(w, z)]) = \frac wz$. One can see that $\frac wz$ is indeed in $\Q[i]$, since if $w = a+bi\in\Z[i]$ and $z = c+di \in \Z[i]$ with $z \neq 0$ then
     \begin{align*}
         \frac{a+bi}{c+di} &= \frac{(a+bi)(c-di)}{c^2 - d^2i^2}\\
         &= \frac{ac-adi+bci-bdi^2}{c^2+d^2}\\
@@ -577,25 +577,25 @@ We now show that some familiar fields are, indeed, the field of fractions of som
 \end{exercise}
 
 \section{Unique Factorization Domains (UFDs)}
-We now have the necessary terminology to formalize the idea of a unique factorization domain. Concisely, in a unique factorization domain $D$, for every non-zero non-unit element $x \in D$,
-\begin{enumerate}
-    \item $x$ can be written as a product of irreducibles of $D$; and
-    \item the factorization into irreducibles is unique up to associates and the order in which the factors appear.
-\end{enumerate}
-
-We formalize these conditions in the definition of a unique factorization domain.
+We now have the necessary terminology to formalize the idea of a unique factorization domain.
 
 \begin{definition}
-    An integral domain $D$ is a \term{unique factorization domain (UFD)}\index{unique factorization domain}\index{UFD} if, for every non-zero non-unit $x \in D$, there exists (not necessarily unique) irreducible elements $p_1, p_2, \dots, p_n \in D$ such that
-    \[
-        x = p_1p_2p_3\cdots p_n
-    \]
-    where $n$ is a positive integer, and if we also have (not necessarily unique) irreducible elements $q_1, q_2, \dots, q_m \in D$ such that
-    \[
-        x = q_1q_2q_3\cdots q_m
-    \]
-    where $m$ is a positive integer, then $m = n$ and there exists a bijection $\sigma: \{1,2,\dots,n\} \to \{1,2,\dots,m\}$ such that $p_i$ and $q_{\sigma(i)}$ are associates for all $i \in \{1,2,\dots,n\}$.
+    An integral domain $D$ is a \term{unique factorization domain (UFD)}\index{unique factorization domain}\index{UFD} if and only if the following conditions are met.
+    \begin{enumerate}
+        \item For every non-zero non-unit $x \in D$, there exists (not necessarily unique) irreducible elements $p_1, p_2, \dots, p_n \in D$ such that $x = p_1p_2p_3\cdots p_n$ where $n$ is a positive integer.
+        \item If there exists (not necessarily unique) irreducible elements $q_1, q_2, \dots, q_m \in D$ such that $x = q_1q_2q_3\cdots q_m$ where $m$ is a positive integer, then
+        \begin{itemize}
+            \item $m=n$; and
+            \item there exists a bijection $\sigma: \{1,2,\dots,n\} \to \{1,2,\dots,m\}$ such that $p_i$ and $q_{\sigma(i)}$ are associates for all $i \in \{1,2,\dots,n\}$.
+        \end{itemize}
+    \end{enumerate}
 \end{definition}
+
+Loosely, in a unique factorization domain,
+\begin{enumerate}
+    \item every non-zero non-unit element can be written as a product of irreducibles; and
+    \item the factorization into irreducibles is unique up to associates and the order in which the factors appear.
+\end{enumerate}
 
 Of course, UFDs are very abstract in this sense. However, we shall soon see that most of the integral domains that we are familiar with are, in fact, UFDs.
 
@@ -611,7 +611,7 @@ Before we can explore the relation between UFDs and PIDs, we need to introduce t
 \end{definition}
 
 \begin{lemma}\label{lemma-pid-satisfies-accp}
-    Any PID satisfies the ACCP.
+    Every PID satisfies the ACCP.
 \end{lemma}
 \begin{proof}
     Let $I_1 \subset I_2 \subset \cdots$ be a chain of strictly increasing ideals in a PID $D$. Let
@@ -629,7 +629,7 @@ We are now ready to state an important theorem, with very useful corollaries.
     Every PID is a UFD.
 \end{theorem}
 \begin{proofsketch}
-    We need to show two parts. The first is to show existence; the second uniqueness.
+    We need to show two parts. The first is to show existence; the second is to show uniqueness.
 
     To show the existence, we first show that every non-zero non-unit element in a PID has at least one irreducible factor; thereafter, using repeated factorization, show that we can express each non-irreducible factor as a product of irreducible factors. This would be enough to show that any element has a factorization into irreducible factors.
 
@@ -656,7 +656,7 @@ We are now ready to state an important theorem, with very useful corollaries.
     \]
     where we note that each $p_i$ is also irreducible. Therefore every non-zero non-unit of a PID is a product of irreducibles.
 
-    We now show the uniqueness of such a factorization, up to associates and the reordering of terms. We first suppose that some non-zero non-unit element of $D$, say $a$, can be written
+    We now show the uniqueness of such a factorization, up to associates and the reordering of terms. We first suppose that some non-zero non-unit element of $D$, say $a$, can be written as
     \[
         a = p_1p_2p_3\cdots p_n = q_1q_2 \cdots q_m
     \]
@@ -708,7 +708,7 @@ We observe one immediate corollary, which is incredibly useful.
 \end{example}
 
 \subsection{UFDs and Their Polynomial Rings}
-The trouble comes with the ring of polynomials with integer coefficients, $\Z[x]$. We showed earlier that $\Z[x]$ is \textit{not} a PID (\myref{problem-Z[x]-is-not-a-PID}), so we cannot directly use \myref{thrm-PID-is-UFD} to conclude that $\Z[x]$ is a UFD. Does this mean that factorization over polynomials with integer coefficients is not unique? No! In fact, $\Z[x]$ is a counterexample for the converse of \myref{thrm-PID-is-UFD}, showing that a UFD need not be a PID.
+The trouble comes with the ring of polynomials with integer coefficients, $\Z[x]$. We showed earlier that $\Z[x]$ is \textbf{not} a PID (\myref{problem-Z[x]-is-not-a-PID}), so we cannot directly use \myref{thrm-PID-is-UFD} to conclude that $\Z[x]$ is a UFD. Does this mean that factorization over polynomials with integer coefficients is not unique? No! In fact, $\Z[x]$ is a counterexample for the converse of \myref{thrm-PID-is-UFD}, showing that a UFD need not be a PID.
 
 However, just proving that $\Z[x]$ is a UFD is too little for the amount of work that we are about to do. So let's try and prove a more general result. Before that though, we need to generalize Gauss's lemma (\myref{lemma-gauss-for-integer-coefficients}) for UFDs.
 
@@ -716,7 +716,7 @@ However, just proving that $\Z[x]$ is a UFD is too little for the amount of work
     Let $D$ be a UFD and $f(x), g(x) \in D[x]$ be primitive polynomials. Then $f(x)g(x)$ is primitive.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[Theorem 18.24]{judson_beezer_2022}})]
-    Let
+    Let $f(x), g(x) \in D[x]$, where
     \begin{align*}
         f(x) &= \sum_{i=0}^m a_ix^i \text{ and}\\
         g(x) &= \sum_{i=0}^n b_ix^i.
@@ -746,7 +746,7 @@ We note one immediate consequence of Gauss's lemma.
 We note another lemma, this time relating an integral domain and its field of fractions.
 
 \begin{lemma}\label{lemma-reducible-in-field-of-fractions-means-reducible-in-UFD}
-    Let $D$ be a UFD and let $\Frac{D}$ be its field of fractions. Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Then there exist $P(x), Q(x) \in D[x]$ such that $f(x) = P(x)Q(x)$, $\deg P(x) = \deg p(x)$, and $\deg Q(x) = \deg g(x)$.
+    Let $D$ be a UFD and let $\Frac{D}$ be its field of fractions. Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Then there exist $P(x), Q(x) \in D[x]$ such that $f(x) = P(x)Q(x)$, $\deg P(x) = \deg p(x)$, and $\deg Q(x) = \deg q(x)$.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[Lemma 18.26]{judson_beezer_2022}})]
     Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Let $a, b\in D$ such that $ap(x), bq(x) \in D[x]$. So we can find $C_P, C_Q \in D$ such that $ap(x) = C_P P(x)$ and $bq(x) = C_Q Q(x)$ where $P(x)$ and $Q(x)$ are primitive polynomials in $D[x]$. Therefore
@@ -784,11 +784,11 @@ We note another lemma, this time relating an integral domain and its field of fr
     \[
         f(x) = g_1(x)g_2(x)\cdots g_n(x)
     \]
-    where each $g_i(x) \in \Frac{D}[x]$ is irreducible. Now for each $g_i(x)$, choose an $p_i \in D$ such that $p_ig_i(x) \in D[x]$. Hence there is also a $k_i \in D$ such that $p_ig_i(x) = k_iG_i(x)$ where $G_i(x)$ is a primitive polynomial in $D[x]$. Since $g_i(x)$ is irreducible, we know the primitive polynomial $G_i(x) \in D[x]$ is irreducible (\myref{corollary-primitive-polynomial-irreducible-iff-polynomial-irreducible-in-field-of-fractions}). Consequently we can write
+    where each $g_i(x) \in \Frac{D}[x]$ is irreducible. Now for each $g_i(x)$, choose a $p_i \in D$ such that $p_ig_i(x) \in D[x]$. Hence there is also a $k_i \in D$ such that $p_ig_i(x) = k_iG_i(x)$ where $G_i(x)$ is a primitive polynomial in $D[x]$. Since $g_i(x)$ is irreducible, we know the primitive polynomial $G_i(x) \in D[x]$ is irreducible (\myref{corollary-primitive-polynomial-irreducible-iff-polynomial-irreducible-in-field-of-fractions}). Consequently we can write
     \[
         p_1p_2\cdots p_n f(x) = k_1k_2 \cdots k_n G_1(x)G_2(x) \cdots G_n(x).
     \]
-    Let $p = p_1p_2\cdots p_n$ and $k = k_1k_2\cdots k_n$. Note $G_1(x)G_2(x) \cdots G_n(x)$ is a product of primitive polynomials and so $G_1(x)G_2(x) \cdots G_n(x)$ is also primitive by Gauss's lemma (\myref{lemma-gauss}), which thus results in $p \vert k$, meaning that there exists a $q \in D$ such that $k = pq$. Thus $p f(x) = pq G_1(x)G_2(x) \cdots G_n(x)$ which therefore means
+    Let $p = p_1p_2\cdots p_n$ and $k = k_1k_2\cdots k_n$. Note $G_1(x)G_2(x) \cdots G_n(x)$ is a product of primitive polynomials and so $G_1(x)G_2(x) \cdots G_n(x)$ is also primitive by Gauss's lemma (\myref{lemma-gauss}), which thus results in $p \vert k$, meaning that there exists a $q \in D$ such that $k = pq$. Thus $p f(x) = pq G_1(x)G_2(x) \cdots G_n(x)$ which means
     \[
         f(x) = qG_1(x)G_2(x) \cdots G_n(x)
     \]
@@ -837,9 +837,9 @@ Clearly, proving that an integral domain is a UFD is a tedious ordeal. Hence, we
 We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) to achieve division with remainder. We also seen polynomial long division (\myref{thrm-polynomial-long-division}) which is also similar to the division lemma. We generalize these properties abstractly, into what is known as a Euclidean domain.
 
 \begin{definition}
-    An integral domain $D$ is called a \term{Euclidean domain}\index{Euclidean domain} if there is a function $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \term{norm}\index{Euclidean domain!norm} or \term{measure}\index{Euclidean domain!measure}, that satisfies the following properties.
+    An integral domain $D$ is called a \term{Euclidean domain}\index{Euclidean domain} if and only if there is a map $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \term{norm}\index{Euclidean domain!norm} or \term{measure}\index{Euclidean domain!measure}, that satisfies the following.
     \begin{enumerate}[leftmargin=3em,label=\textbf{EF\arabic*}.]
-        \item For all non-zero $a, b \in D$ we have $N(a) \leq N(ab)$; and
+        \item For all non-zero $a, b \in D$ we have $N(a) \leq N(ab)$.
         \item If $n, d \in D$ and $d \neq 0$, then there exist elements $q$ and $r$ in $D$ such that $n = dq + r$, where $r = 0$ or $N(r) < N(d)$.
     \end{enumerate}
 \end{definition}
@@ -851,7 +851,7 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
         \[
             |a| \leq |a||b| = |ab|
         \]
-        for all $a,b\in \Z$, so \textbf{EF1} is satisfied.
+        for all non-zero $a,b\in \Z$, so \textbf{EF1} is satisfied.
 
         \item \textbf{EF2} is satisfied due to Euclid's division lemma (\myref{lemma-euclid-division}).
     \end{itemize}
@@ -861,13 +861,13 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
 \begin{example}
     Suppose $F$ is a field. Then $F[x]$ is a Euclidean domain, since we could choose $N(f(x)) = \deg f(x)$.
     \begin{itemize}
-        \item One sees that
+        \item One sees that for all non-zero $f(x), g(x) \in F[x]$ we have
         \[
             \deg f(x) \leq \deg f(x) + \deg g(x) = \deg(f(x)g(x))
         \]
         by \myref{thrm-polynomial-degree-properties}, so \textbf{EF1} is satisfied.
 
-        \item \textbf{EF2} is satisfied by virtue of polynomial long division (\myref{thrm-polynomial-long-division}).
+        \item \textbf{EF2} is satisfied by polynomial long division (\myref{thrm-polynomial-long-division}).
     \end{itemize}
     Therefore $F[x]$ is indeed a Euclidean domain.
 \end{example}
@@ -879,7 +879,7 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
     \]
     We show that this norm satisfies the two properties required.
     \begin{itemize}
-        \item Since $N(xy) = N(x)N(y)$ for all $x,y \in \Z[i]$ (\myref{prop-properties-of-quadratic-integer-norm}), therefore $N(x) \leq N(x)N(y) = N(xy)$, satisfying \textbf{EF1}.
+        \item Since $N(xy) = N(x)N(y)$ for all $x, y \in \Z[i]$ (\myref{prop-properties-of-quadratic-integer-norm}), therefore $N(x) \leq N(x)N(y) = N(xy)$ for all non-zero $x, y \in \Z[i]$, satisfying \textbf{EF1}.
 
         \item For \textbf{EF2}, we note that for all $z, d \in \Z[i]$ with $d \neq 0$, we have $zd^{-1} \in \Q[i]$. So suppose $zd^{-1} = s + ti$ for some $s,t \in \Q$ and $t \neq 0$. Let $m$ be an integer closest to $s$ and $n$ an integer closest to $t$ (we note that these integers may not be unique, but we will see later that this does not matter). So
         \[

@@ -1,5 +1,5 @@
 \chapter{Rings and Encryption}
-Rings have practical use in the real world. Recently, with the threat of quantum computers breaking traditional encryption such as the Rivest-Shamir-Adleman (RSA) encryption scheme, post-quantum encryption schemes were developed. We look at the NTRU encryption scheme as described in \cite{hoffstein_pipher_silverman_1996}, a polynomial-based and allegedly post-quantum resistant encryption scheme.
+Recently, with the threat of quantum computers breaking traditional encryption such as the Rivest-Shamir-Adleman (RSA) encryption scheme, there was a desire to develop and implement post-quantum encryption. We look at the NTRU encryption scheme as described in \cite{hoffstein_pipher_silverman_1996}, a polynomial-based and allegedly post-quantum resistant encryption scheme based on rings.
 
 \section{Cryptosystems}\index{cryptosystem}
 The study and use of methods for secure information sharing when third parties are present is known as cryptography. Within cryptography, there are different cryptosystems, which are systems that has their own encryption, decryption, and key generation methods.
@@ -26,7 +26,7 @@ where $N$ is a positive integer. An element in $R$ takes the form
 \[
     \sum_{i=0}^{N-1}a_ix^i + \princ{x^N - 1} = a_0 + a_1x + a_2x^2 + \cdots + a_{N-1}x^{N-1} + \princ{x^N - 1}.
 \]
-However, since all polynomials will have the trailing $\princ{x^N - 1}$ at the end, we instead call an element in $R$ a `polynomial' (although it is not strictly a polynomial) and write an element $f(x) \in R$ by
+However, since all polynomials will have the trailing $\princ{x^N - 1}$ at the end, we instead call an element in $R$ a `polynomial' (although it is not strictly a polynomial) and write an element $f(x) \in R$ as
 \[
     f(x) = \sum_{i=0}^{N-1}f_ix^i.
 \]
@@ -65,7 +65,7 @@ In summary, the rules for `polynomial addition' and `polynomial multiplication' 
     \item `Polynomial multiplication' is almost the same as regular polynomial multiplication, except that for each integer $m$ greater than $N - 1$, we replace $x^m$ with $x^{m \mod N}$.
 \end{itemize}
 
-For NTRU to work, the polynomials that we choose must have inverses. In particular, NTRU will involve reducing the \textit{coefficients} modulo certain integers. Suppose $p$ is a positive integer that we want to reduce the coefficients modulo of (note that $p$ may not be prime; this is just the notation used in \cite[\S~1.1]{hoffstein_pipher_silverman_1998}). Then an inverse of $f(x) \in R$ is a polynomial $F_p(x) \in R$ such that
+For NTRU to work, the polynomials that we choose must have inverses. In particular, NTRU will involve reducing the coefficients modulo certain integers. Suppose $p$ is a positive integer that we want to reduce the coefficients modulo of (note that $p$ may not be prime; this is just the notation used in \cite[\S~1.1]{hoffstein_pipher_silverman_1998}). Then an inverse of $f(x) \in R$ is a polynomial $F_p(x) \in R$ such that
 \[
     F_p(x)f(x) \equiv 1. \pmod p
 \]
@@ -93,7 +93,7 @@ NTRU fits in the general framework of probabilistic cryptosystems, meaning that 
 \subsection{Parameters}
 An NTRU cryptosystem uses 3 integer parameters.
 \begin{itemize}
-    \item $N$, the number of terms present in a `polynomial' in the ring $R$ defined above. Again, we remark that the maximum degree that a `polynomial' in $R$ is $N - 1$.
+    \item $N$, the number of terms present in a `polynomial' in the ring $R$ defined above. Again, we note that the maximum degree that a `polynomial' in $R$ is $N - 1$.
     \item $p$, a so-called small modulus, which is usually an odd prime.
     \item $q$, a so-called large modulus. This is a power of a prime, usually 2, but has to be considerably larger than and coprime to $p$.
 \end{itemize}
@@ -113,7 +113,7 @@ NTRU also uses 4 subsets of $R$.
 For ease of computation of multiplication of polynomials later, the coefficients of these polynomials would be small. We follow \cite[\S~2.2]{hoffstein_pipher_silverman_1998} on the description on the polynomials in the above sets.
 \begin{itemize}
     \item For $\mathcal{L}_m$, let the coefficients of the polynomials lie within the interval $\left[-\frac{p-1}2, \frac{p-1}2\right]$, assuming $p$ is odd.
-    \item For the rest, first define $\mathcal{L}(d_1, d_2)$ to be the set of polynomials in $R$ with $d_1$ coefficients equal to 1, $d_2$ coefficients equal to -1, and the rest equal to 0. Then, by choosing positive integers $d_f$, $d_g$, and $d_\phi$, set
+    \item For the rest, first define $\mathcal{L}(d_1, d_2)$ to be the set of polynomials in $R$ with $d_1$ coefficients equal to 1, $d_2$ coefficients equal to -1, and the rest equal to 0. Then, by choosing positive integers $d_f$, $d_g$, and $d_\phi$, let
     \begin{align*}
         \mathcal{L}_f &= \mathcal{L}(d_f, d_f-1),\\
         \mathcal{L}_g &= \mathcal{L}(d_g, d_g), \text{ and}\\
@@ -128,13 +128,13 @@ A notable property of polynomials in $\mathcal{L}_g$ and $\mathcal{L}_\phi$ is t
 Thus, to ensure that a polynomial in $\mathcal{L}_f$ has a chance to be invertible, we choose $\mathcal{L}_f$ to use $ \mathcal{L}(d_f, d_f-1)$, so that it has one more coefficient of 1 than than it does for -1.
 
 \subsection{Key Creation}
-Suppose Alice wants to send Bob a message. Before that, Bob needs to create his encryption and decryption key within the NTRU cryptosystem.
+Suppose Alice wants to send Bob a message. Before that, Bob needs to create his encryption and decryption key using the NTRU cryptosystem.
 
 Bob chooses two polynomials $f(x) \in \mathcal{L}_f$ and $g(x) \in \mathcal{L}_g$, which will have `small' coefficients (which, in this case, means that the coefficients are either 0 or $\pm1$). Now $g(x)$ can be anything, while $f(x)$ has to satisfy the additional requirement that it has inverses modulo $p$ and $q$. That is, there must exist polynomials $F_p(x), F_q(x) \in R$ such that
 \[
     F_p(x)f(x) \equiv 1 \pmod p \text{ and } F_q(x)f(x) \equiv 1 \pmod q.
 \]
-For most choices of $f(x)$ this will be true; if not, randomly pick another $f(x)$ from $\mathcal{L}_f$.
+For most choices of $f(x)$ this will be true; if not, just pick another $f(x)$ from $\mathcal{L}_f$.
 \begin{remark}
     Finding inverses of $f(x)$ modulo $p$ and $q$ is not a trivial task, but \cite{silverman_1999} describes a method for the fast computation of `almost inverses' which are good enough for NTRU.
 \end{remark}
@@ -143,16 +143,16 @@ Bob then computes the polynomial
 \[
     h(x) = F_q(x)g(x) \mod q,
 \]
-that is, $h(x)$ is $F_q(x)g(x)$ and then reducing its coefficients modulo $q$. Bob's public key is $h(x)$; his private key is $f(x)$, although in practice he will also store $F_p(x)$.
+that is, $h(x)$ is $F_q(x)g(x)$ and then reducing its coefficients modulo $q$. Bob's public key is $h(x)$ and his private key is $f(x)$, although in practice he will also store $F_p(x)$.
 
 \begin{example}
-    Suppose $N = 5$, $p = 3$, $q = 8$. Suppose Bob chooses $f(x) = x^4 + x^3 - x$ and $g(x) = x^3 - x^2 + x - 1$. We note that
+    Suppose $N = 5$, $p = 3$, and $q = 8$. Suppose Bob chooses $f(x) = x^4 + x^3 - x$ and $g(x) = x^3 - x^2 + x - 1$. We note that
     \[
         F_3(x) = 2x^4 + x^3 + 1
     \]
     and
     \[
-        F_8(x) = 7x^4 + x^3 + 1
+        F_8(x) = 7x^4 + x^3 + 1.
     \]
     So we see that $h(x)$ is
     \begin{align*}
@@ -166,7 +166,7 @@ that is, $h(x)$ is $F_q(x)g(x)$ and then reducing its coefficients modulo $q$. B
     which is Bob's public key. Bob would then keep $f(x) = x^4 + x^3 - x$ and $F_3(x) = 2x^4 + x^3 + 1$ secret as his private keys.
 \end{example}
 \begin{example}
-    Suppose $N = 7$, $p = 3$, $q = 32$. Suppose Bob chooses $f(x) = x^6 - x^3 + 1$ and $g(x) = x^5 + x^4 - x^2 - 1$, and note
+    Suppose $N = 7$, $p = 3$, and $q = 32$. Suppose Bob chooses $f(x) = x^6 - x^3 + 1$ and $g(x) = x^5 + x^4 - x^2 - 1$, and note
     \begin{align*}
         F_3(x) &= 2x^6 + x^4 + 2x^2 + x + 1, \text{ and}\\
         F_{32}(x) &= 31x^6 + x^4 + 31x^2 + x + 1.
@@ -178,7 +178,7 @@ that is, $h(x)$ is $F_q(x)g(x)$ and then reducing its coefficients modulo $q$. B
         &= 31x^{11} + 31x^{10} + x^9 - 30x^8 + 31x^7 + 2x^5 - 31x^4 - x^3 - 32x^2 - x - 1\\
         &= 31x^4 + 31x^3 + x^2 - 30x + 31 + 2x^4 - 31x^4 - x^3 - 32x^2 - x - 1\\
         &= 2x^4 + 30x^3 - 31x^2 - 31x + 30\\
-        &\equiv 2x^4 + 30x^3 + x^2 + x + 30 \pmod{32}.
+        &\equiv 2x^4 + 30x^3 + x^2 + x + 30. \pmod{32}
     \end{align*}
     Bob would then keep $f(x) = x^6 - x^3 + 1$ and $F_3(x) = 2x^6 + x^4 + 2x^2 + x + 1$ secret as his private keys.
 \end{example}
@@ -213,7 +213,7 @@ Before we can perform encryption, we need to encode our message. For simplicity,
         \textbf{L} & \code{0100 1100} & \textbf{Y} & \code{0101 1001} & \textbf{l} & \code{0110 1100} & \textbf{y} & \code{0111 1001} \\ \hline
         \textbf{M} & \code{0100 1101} & \textbf{Z} & \code{0101 1010} & \textbf{m} & \code{0110 1101} & \textbf{z} & \code{0111 1010} \\ \hline
     \end{tabular}
-    \caption{ASCII Character to Binary Conversion Table}\label{table-ASCII-conversion-table}
+    \caption{Truncated ASCII Character to Binary Conversion Table}\label{table-ASCII-conversion-table}
 \end{table}
 
 \begin{example}
@@ -223,7 +223,7 @@ Before we can perform encryption, we need to encode our message. For simplicity,
 With such a conversion scheme, we are able to convert characters into polynomials that are compatible with NTRU.
 
 \begin{example}
-    Since `H' has a binary code of \code{0100 1000}, we may convert it into a polynomial with 8 terms (possibly with coefficients of zero):
+    Since `H' has a binary code of \code{0100 1000}, we may convert it into a polynomial with 8 (possibly zero) terms, i.e.
     \[
         0x^7 + 1x^6 + 0x^5 + 0x^4 + 1x^3 + 0x^2 + 0x + 0 = x^6 + x^3.
     \]
@@ -243,7 +243,7 @@ Now suppose Alice wants to send a message to Bob. She first converts her message
 that is, $e_i(x)$ is $p\phi(x)h(x) + m_i(x)$ but with all resulting coefficients reduced modulo $q$.
 
 \begin{example}\label{example-ntru-case-1}
-    Suppose $N = 9$, $p = 3$, $q = 64$. Bob performs key generation using $f(x) = x^3 - x^2 + 1$ and $g(x) = x^3 - 1$, resulting in
+    Suppose $N = 9$, $p = 3$, and $q = 64$. Bob performs key generation using $f(x) = x^3 - x^2 + 1$ and $g(x) = x^3 - 1$, resulting in
     \begin{align*}
         F_3(x) &= x^7 + 2x^6 + 2x^5 +x^4 + 2x^3 + 2x,\\
         F_{64}(x) &= 37x^8 + 18x^7 + 9x^6 + 36x^5 + 18x^4 + 9x^3 + 37x^2 + 19x + 10, \text{ and}\\
@@ -275,7 +275,7 @@ that is, $e_i(x)$ is $p\phi(x)h(x) + m_i(x)$ but with all resulting coefficients
 \end{example}
 
 \begin{exercise}
-    Let $N = 8$, $p = 3$, $q = 64$. Let Bob's public key be
+    Let $N = 8$, $p = 3$, and $q = 64$. Let Bob's public key be
     \[
         h(x) = 24x^7 + 15x^6 + 50x^5 + 48x^4 + 40x^3 + 46x^2 + 14x + 19.
     \]
@@ -285,8 +285,8 @@ that is, $e_i(x)$ is $p\phi(x)h(x) + m_i(x)$ but with all resulting coefficients
 \subsection{Decryption}
 Suppose that Bob has received an encrypted message $e(x)$ and wants to decrypt it using his private key $f(x)$. To do this, he requires the precomputed polynomial $F_p(x)$. He then performs the following steps.
 \begin{enumerate}
-    \item Compute the polynomial $a(x) = f(x)e(x) \mod q$. Choose coefficients of $a(x)$ to be in the interval $\left[-\frac q2, \frac q2\right]$.
-    \item Set $b(x) = a(x) \mod p$, i.e. $b(x)$ is $a(x)$ with the coefficients reduced modulo $p$. Choose the coefficients of $b(x)$ to be in the interval $\left[-\frac p2, \frac p2\right]$.
+    \item Compute the polynomial $a(x) = f(x)e(x) \mod q$. Choose coefficients of $a(x)$ to be integers in the interval $\left[-\frac q2, \frac q2\right]$.
+    \item Set $b(x) = a(x) \mod p$, i.e. $b(x)$ is $a(x)$ with the coefficients reduced modulo $p$. Choose the coefficients of $b(x)$ to be integers in the interval $\left[-\frac p2, \frac p2\right]$.
     \item Retrieve the original message by computing $F_p(x)b(x) \mod p$.
 \end{enumerate}
 
@@ -308,7 +308,7 @@ and since the coefficients of $m(x)$ are restrained to $\left[-\frac{p-1}2, \fra
 It is again emphasised that $q$ needs to be significantly larger than $p$ in order for this to work.
 
 \begin{example}
-    Suppose $N = 9$, $p = 3$, $q = 64$. Suppose Bob receives the encrypted message
+    Suppose $N = 9$, $p = 3$, and $q = 64$. Suppose Bob receives the encrypted message
     \[
         e(x) = 18x^8 + 10x^6 + 55x^5 + 55x^4 + 56x^3 + 55x^2 + 9x,
     \]
@@ -397,14 +397,14 @@ It is again emphasised that $q$ needs to be significantly larger than $p$ in ord
     \[
         F_3(x) = 2x^6 +x^5 +x^4 + 2x^2 + 2x + 2.
     \]
-    What was the \textit{character} that Alice sent to him?\newline
+    What was the \textbf{character} that Alice sent to him?\newline
     (\textit{Note: although the private key and its inverse look familiar, we used a different $g(x)$ and $\phi(x)$ from the previous exercises to encrypt the message.})
 \end{exercise}
 
 \newpage
 
-\section{Implementation}
-We have been working with toy examples to understand the basic process that \cite{hoffstein_pipher_silverman_1998} uses to encrypt and decrypt messages. In practice, the recommended parameters for NTRU as described in \cite{hoffstein_pipher_silverman_1998} for secure, post-quantum encryption are provided in \cite{ntru_2020} and are listed below.
+\section{Practical Considerations}
+We have been working with toy examples to understand the basic process that \cite{hoffstein_pipher_silverman_1998} uses to encrypt and decrypt messages. In practice, the recommended parameters for the variant of NTRU in \cite{hoffstein_pipher_silverman_1998} for secure, post-quantum encryption are provided by \cite{ntru_2020} and are listed below.
 \begin{table}[H]
     \centering
     \begin{tabular}{|l|l|l|l|}
@@ -424,9 +424,9 @@ There have been many attacks proposed against NTRU (both the implementation in \
 \begin{itemize}
     \item \textbf{brute-force attacks}: attempting to directly compute the private key $f(x)$;
     \item \textbf{meet-in-the-middle attacks}: attempting to directly compute the private key $f(x)$ by splitting the task into finding two polynomials $f_1(x)$ and $f_2(x)$ such that $f(x) = f_1(x) + f_2(x)$;
-    \item \textbf{lattice reduction attacks}: use the Lenstra-Lenstra-Lov\'asz algorithm to obtain \textit{both} $f(x)$ and $g(x)$ from the public key $h(x)$; and
+    \item \textbf{lattice reduction attacks}: use the Lenstra-Lenstra-Lov\'asz algorithm to obtain both $f(x)$ and $g(x)$ from the public key $h(x)$; and
     \item \textbf{chosen ciphertext attacks}: attempting to create a new message from the ciphertext and then tries to obtain the secret key from that.
 \end{itemize}
 The details of these attacks are, unfortunately, out of the scope of this book. Interested readers are encouraged to read up on these attacks and attempt to break the public keys generated in the examples of this chapter.
 
-An implementation of NTRU, as described in this chapter, is available on GitHub at \url{https://github.com/PhotonicGluon/Abstract-Algebra-Book} under the \code{misc} directory.
+An implementation of NTRU, as described in this chapter, is available on GitHub at \url{https://github.com/PhotonicGluon/Abstract-Algebra-Book} under the \code{misc} folder.

@@ -4,7 +4,7 @@ One of the underappreciated facts about working with polynomials with real coeff
 \section{Irreducible Polynomials}
 We formally define what irreducible polynomials are in a polynomial ring that is an integral domain.
 \begin{definition}
-    Let $D$ be an integral domain and $f(x) \in D[x]$ be a non-zero, non-unit polynomial. Then $f(x)$ is \term{irreducible over $D$}\index{polynomial!irreducible}\index{irreducible!polynomial} if, whenever we write $f(x) = p(x)q(x)$ for some polynomials $p(x)$ and $q(x)$ in $D[x]$, then either $p(x)$ is a unit or $q(x)$ is a unit in $D[x]$.
+    Let $D$ be an integral domain and $f(x) \in D[x]$ be a non-zero, non-unit polynomial. Then $f(x)$ is \term{irreducible over $D$}\index{polynomial!irreducible}\index{irreducible!polynomial} if and only if, whenever we write $f(x) = p(x)q(x)$ for some polynomials $p(x)$ and $q(x)$ in $D[x]$, then either $p(x)$ is a unit or $q(x)$ is a unit in $D[x]$.
 
     A non-zero, non-unit polynomial that is not irreducible over $D$ is said to be \term{reducible over $D$}\index{polynomial!reducible}.
 \end{definition}
@@ -121,9 +121,9 @@ Before we introduce the next test, which involves polynomials with integer coeff
     The product of two primitive polynomials in $\Z[x]$ is primitive.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[p.~291]{gallian_2016}})]
-    Seeking a contradiction, suppose $f(x)$ and $g(x)$ are primitive polynomials with a non-primitive product $h(x) = f(x)g(x)$. Therefore the content of $h(x)$ is not 1; in fact it is at least 2, meaning the content of $h(x)$ is either prime or composite.
+    Seeking a contradiction, suppose $f(x)$ and $g(x)$ are primitive polynomials with a non-primitive product $h(x) = f(x)g(x)$. Therefore the content of $h(x)$ is not 1; in fact it is at least 2, meaning the content of $h(x)$ is either prime or composite. Thus the content of $h(x)$ has a prime divisor, say $p$.
 
-    Suppose $p$ is a prime divisor of the content of $h(x)$. Let $\bar{f}(x)$, $\bar{g}(x)$, and $\bar{h}(x)$ be polynomials obtained from $f(x)$, $g(x)$, and $h(x)$ by reducing their coefficients modulo $p$. Since the content of $h(x)$ is not 1, thus coefficients of $h(x)$ are multiples of $p$; accordingly when they are reduced modulo $p$, we see $\bar{h}(x) = 0$. Also, we may interpret $\bar{f}(x)$ and $\bar{g}(x)$ as polynomials belonging in $\Z_p[x]$ where $\bar{f}(x)\bar{g}(x) = \bar{h}(x) = 0$. Since $\Z_p[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}), this means that $\bar{f}(x) = 0$ or $\bar{g}(x) = 0$. Without loss of generality we may assume $\bar{f}(x) = 0$. Therefore $p$ divides every coefficient of $f(x)$, meaning that the content of $f(x)$ is at least $p$, i.e. $f(x)$ is not primitive, a contradiction.
+    Let $\bar{f}(x)$, $\bar{g}(x)$, and $\bar{h}(x)$ be polynomials obtained from $f(x)$, $g(x)$, and $h(x)$ by reducing their coefficients modulo $p$. Since the content of $h(x)$ is not 1, thus coefficients of $h(x)$ are multiples of $p$; accordingly when they are reduced modulo $p$, we see $\bar{h}(x) = 0$. Also, we may interpret $\bar{f}(x)$ and $\bar{g}(x)$ as polynomials belonging in $\Z_p[x]$ where $\bar{f}(x)\bar{g}(x) = \bar{h}(x) = 0$. Since $\Z_p[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}), this means that $\bar{f}(x) = 0$ or $\bar{g}(x) = 0$. Without loss of generality we may assume $\bar{f}(x) = 0$. Therefore $p$ divides every coefficient of $f(x)$, meaning that the content of $f(x)$ is at least $p$, i.e. $f(x)$ is not primitive, a contradiction.
 
     The contradiction means a product of two primitive polynomials is primitive.
 \end{proof}
@@ -147,7 +147,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
     \[
         ab \times f(x) = C_pC_q \times P(x)Q(x).
     \]
-    As $f(x)$ is primitive, thus the content of $ab \times f(x)$ is $ab$. The product of primitive polynomials is primitive (\myref{lemma-gauss-for-integer-coefficients}), so $P(x)Q(x)$ is also primitive; the content of $C_pC_q \times P(x)Q(x)$ is therefore $C_pC_q$. So $ab = C_pC_q$.
+    As $f(x)$ is primitive, thus the content of $ab \times f(x)$ is $ab$. As the product of primitive polynomials is primitive (\myref{lemma-gauss-for-integer-coefficients}), so $P(x)Q(x)$ is also primitive; the content of $C_pC_q \times P(x)Q(x)$ is therefore $C_pC_q$. So $ab = C_pC_q$.
 
     Dividing both sides by $ab = C_pC_q$ leaves $f(x) = P(x)Q(x)$, where both $P(x)$ and $Q(x)$ are polynomials with integer coefficients. Note that
     \begin{align*}
@@ -275,7 +275,7 @@ We now look at another irreducibility test, given by Gotthold Eisenstein in 1850
     then $f(x)$ is irreducible over $\Q$.
 \end{theorem}
 \begin{proof}
-    Seeking a contradiction, suppose that $f(x)$ is reducible over $\Q$. Thus $f(x)$ is also reducible over $\Z$, and in fact, there exist non-constant polynomials $g(x),h(x) \in \Z[x]$ with degree smaller than that of $f(x)$ such that $f(x) = g(x)h(x)$ (\myref{thrm-irreducible-over-Z-means-irreducible-over-Q}).
+    Seeking a contradiction, suppose that $f(x)$ is reducible over $\Q$. Thus $f(x)$ is also reducible over $\Z$, and, in fact, there exist non-constant polynomials $g(x),h(x) \in \Z[x]$ with degree smaller than that of $f(x)$ such that $f(x) = g(x)h(x)$ (\myref{thrm-irreducible-over-Z-means-irreducible-over-Q}).
 
     Write
     \begin{align*}
@@ -306,13 +306,13 @@ We now look at another irreducibility test, given by Gotthold Eisenstein in 1850
 \end{exercise}
 
 \section{Irreducibility via Transformation}
-Sometimes, the tests may not be applied directly. In these cases, appropriate substitutions or transformations are needed to convert polynomials into a form that is suitable for testing its irreducibility.
+Sometimes the tests may not be applied directly. In these cases, appropriate substitutions or transformations are needed to convert polynomials into a form that is suitable for testing its irreducibility.
 
 \begin{theorem}[Transformation Rule]\label{thrm-transformation-rule-for-irreducibility}
     Let $D[x]$ be an integral domain and $f(x) \in D[x]$ be a non-zero, non-unit polynomial. Suppose $\phi$ is an automorphism of $D[x]$. Then $f(x)$ is irreducible if and only if $\phi(f(x))$ is irreducible.
 \end{theorem}
 \begin{proof}
-    We prove the reverse direction first, i.e. we are proving that if $\phi(f(x))$ is irreducible then $f(x)$ is irreducible, via contrapositive. Let $f(x) \in D[x]$ be reducible, meaning there exist non-unit $p(x), q(x) \in D[x]$ such that $f(x) = p(x)q(x)$. Then
+    We prove the reverse direction first, i.e. we will prove that if $\phi(f(x))$ is irreducible then $f(x)$ is irreducible, via contrapositive. Let $f(x) \in D[x]$ be reducible, meaning there exist non-unit $p(x), q(x) \in D[x]$ such that $f(x) = p(x)q(x)$. Then
     \[
         \phi(f(x)) = \phi(p(x)q(x)) = \phi(p(x))\phi(q(x)).
     \]
@@ -331,7 +331,7 @@ Sometimes, the tests may not be applied directly. In these cases, appropriate su
 With this general result proven, we come up with a few rules for substitution.
 
 \begin{corollary}\label{corollary-irreducible-iff-translation-is-irreducible}
-    Let $D$ be an integral domain, $k \in D$, and let $f(x) \in D[x]$. Then $f(x)$ is irreducible if and only if $f(x + k)$ is irreducible.
+    Let $D$ be an integral domain, $k \in D$, and $f(x) \in D[x]$. Then $f(x)$ is irreducible if and only if $f(x + k)$ is irreducible.
 \end{corollary}
 \begin{proof}
     Consider the map $\phi: D[x] \to D[x]$ defined by
