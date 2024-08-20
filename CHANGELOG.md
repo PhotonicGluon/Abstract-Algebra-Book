@@ -97,6 +97,9 @@
 - Made the statements of proposition 29.2.3, proposition 29.2.4, proposition 29.2.6, and proposition 29.2.8 more concise.
 - Slightly rephrased the statement of exercise 29.2.
 - Slightly edited the statement of theorem 29.4.5.
+- Fixed spurious space in the proof of proposition 30.1.6.
+- Added more detail about the coefficients in the proof of proposition 30.3.3.
+- Fixed typo in example 30.3.6.
 - Made other minor changes to the text.
 
 ### Part IV (Galois) Changes
