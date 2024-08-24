@@ -50,7 +50,7 @@ We expand upon \myref{thrm-simple-extension-isomorphism} and provide a character
 \begin{theorem}\label{thrm-characterisation-of-extensions}
     Let $F$ be a field, $E/F$ a field extension, and $\alpha \in E$.
     \begin{itemize}
-        \item If $\alpha$ is algebraic then $F(\alpha) \cong F[x]/\princ{p(x)}$, where $p(x) \in F[x]$ is a polynomial in $F[x]$ of minimum degree such that $\alpha$ is a zero. Furthermore $p(x)$ is irreducible over $F$.
+        \item If $\alpha$ is algebraic then $F(\alpha) \cong F[x]/\princ{p(x)}$, where $p(x) \in F[x]$ is a polynomial in $F[x]$ of minimum degree such that $\alpha$ is a zero. Furthermore, the polynomial $p(x)$ is irreducible over $F$.
         \item If $\alpha$ is transcendental over $F$ then $F(\alpha) \cong \Frac{F[x]}$.
     \end{itemize}
 \end{theorem}
@@ -61,7 +61,11 @@ We expand upon \myref{thrm-simple-extension-isomorphism} and provide a character
 
     We now show that $p(x)$ is irreducible. Suppose not, that $p(x) = f(x)g(x)$ where $f(x), g(x) \in F[x]$ are non-constant polynomials. Hence $f(x)$ and $g(x)$ are polynomials of degree smaller than $p(x)$. However, since $\alpha$ is a zero of $p(x)$, this means that $f(\alpha) = 0$ or $g(\alpha) = 0$. But this contradicts the minimality of the degree of $p(x)$; therefore $p(x)$ is irreducible.
 
-    On the other hand, if $\alpha$ is transcendental, then there does not exist a polynomial in $F[x]$ such that $\alpha$ is a zero of. Therefore $\ker\phi$ is trivial. We extend $\phi$ to become the map $\psi: \Frac{F[x]} \to F(\alpha)$ where $\psi\left(\frac{f(x)}{g(x)}\right) = f(\alpha)(g(\alpha))^{-1}$. We prove that $\psi$ is a well-defined isomorphism.
+    On the other hand, if $\alpha$ is transcendental, then there does not exist a polynomial in $F[x]$ such that $\alpha$ is a zero of. Therefore $\ker\phi$ is trivial. We extend $\phi$ to become the map $\psi: \Frac{F[x]} \to F(\alpha)$ where
+    \[
+        \psi\left(\frac{f(x)}{g(x)}\right) = f(\alpha)(g(\alpha))^{-1}
+    \]
+    We prove that $\psi$ is a well-defined isomorphism.
     \begin{itemize}
         \item \textbf{Well-Defined}: Suppose $\frac{f(x)}{g(x)} = \frac{p(x)}{q(x)}$ for polynomials $f(x), g(x), p(x), q(x) \in F[x]$. Thus $f(x)q(x) = p(x)g(x)$ by definition of equality of equivalence classes in the field of fractions of $F[x]$. So we see $f(\alpha)q(\alpha) = p(\alpha)g(\alpha)$ which quickly means $f(\alpha)(g(\alpha))^{-1} = p(\alpha)(q(\alpha))^{-1}$. Therefore
         \[
@@ -363,7 +367,7 @@ We explore more properties of algebraic extensions.
         \vdots\\
         F_n &= F_{n-1}(a_n) = F(a_0, a_1, \dots, a_n).
     \end{align*}
-    In particular we see $p(x) \in F_n[x]$. Therefore $[F_n(\alpha): F_n] = n$, which is finite. Also, since each $a_i$ is algebraic over $F$, thus each $[F_{i+1}:F_i] = [F_i(a_{i+1}):F_i]$ is finite. Therefore, by Tower Law (\myref{thrm-tower-law}),
+    In particular we see $p(x) \in F_n[x]$. Therefore $[F_n(\alpha): F_n] = n$, which is finite. Also, since each $a_i$ is algebraic over $F$, thus each $[F_{i+1}:F_i] = [F_i(a_{i+1}):F_i]$ is finite. Therefore, by Tower Law (\myref{thrm-tower-law}), we see that
     \[
         [F_n(\alpha):F] = [F_n(\alpha):F_n][F_n:F_{n-1}][F_{n-1}:F_{n-2}]\cdots[F_1:F_0][F_0:F]
     \]
@@ -407,7 +411,7 @@ The subfield identified in \myref{corollary-algebraic-closure-is-subfield} has a
 We can now introduce a related concept -- algebraically closed fields.
 
 \begin{definition}
-    A field $F$ is \term{algebraically closed}\index{algebraically closed} if every non-constant polynomial $F[x]$ has a zero in $F$.
+    A field $F$ is \term{algebraically closed}\index{algebraically closed} if every non-constant polynomial in $F[x]$ has a zero in $F$.
 \end{definition}
 
 \begin{theorem}\label{thrm-algebraically-closed-iff-polynomials-split-in-field}

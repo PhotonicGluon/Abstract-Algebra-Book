@@ -43,7 +43,7 @@ Since there is only one finite field of a given order (up to isomorphism), it is
     \]
     when viewed as a group under addition.
 
-    Now note that by the Fundamental Theorem of Finite Abelian Groups again we see that the multiplicative group of $\GF{p^n}$, i.e. $\GF{p^n}^\ast$, is isomorphic to $\Cn{n_1}\times\Cn{n_2}\cdots\times\Cn{n_m}$ where $n_1, n_2, \dots, n_m$ are positive integers with a product of $p^n - 1$. We show that these integers are pairwise coprime via contradiction; suppose for some $n_i$ and $n_j$ in that list that there is a $d > 1$ that divides both. In particular, a prime $q$ must divide both $n_i$ and $n_j$. By Cauchy's Theorem (\myref{thrm-cauchy}) there must be a subgroup of order $q$ in both $\Cn{n_i}$ and $\Cn{n_j}$, which means that $\GF{p^n}^\ast$ has two distinct subgroups of order $q$. Call these subgroups $H$ and $K$. Let us focus on $H$ for now. Since $H$ has order $q$, we must have $x^q = 1$ for all $x \in H$, meaning that $x^q - 1 = 0$ for all $x \in H$. We also see that $x^q - 1 = 0$ for all $x \in K$. Since both $H$ and $K$ are of fields of order $q$, thus $x^q - 1$ has more than $q$ zeroes in $\GF{p^n}$, contradicting the fact that a polynomial of degree $q$ has at most $q$ zeroes over a field (\myref{thrm-polynomial-of-degree-n-has-at-most-n-zeroes}). Therefore each of the positive integers $n_1, n_2, \dots, n_m$ are pairwise coprime. By \myref{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition} we therefore see that
+    Now note that by the Fundamental Theorem of Finite Abelian Groups again we see that the multiplicative group of $\GF{p^n}$, i.e. $\GF{p^n}^\ast$, is isomorphic to $\Cn{n_1}\times\Cn{n_2}\cdots\times\Cn{n_m}$ where $n_1, n_2, \dots, n_m$ are positive integers with a product of $p^n - 1$. We show that these integers are pairwise coprime via contradiction; suppose for some $n_i$ and $n_j$ in that list that there is a $d > 1$ that divides both. In particular, a prime $q$ must divide both $n_i$ and $n_j$. By Cauchy's theorem (\myref{thrm-cauchy}) there must be a subgroup of order $q$ in both $\Cn{n_i}$ and $\Cn{n_j}$, which means that $\GF{p^n}^\ast$ has two distinct subgroups of order $q$. Call these subgroups $H$ and $K$. Let us focus on $H$ for now. Since $H$ has order $q$, we must have $x^q = 1$ for all $x \in H$, meaning that $x^q - 1 = 0$ for all $x \in H$. We also see that $x^q - 1 = 0$ for all $x \in K$. Since both $H$ and $K$ are of fields of order $q$, thus $x^q - 1$ has more than $q$ zeroes in $\GF{p^n}$, contradicting the fact that a polynomial of degree $q$ has at most $q$ zeroes over a field (\myref{thrm-polynomial-of-degree-n-has-at-most-n-zeroes}). Therefore each of the positive integers $n_1, n_2, \dots, n_m$ are pairwise coprime. By \myref{thrm-Zm-cross-Zn-isomorphic-to-Zmn-condition} we therefore see that
     \[
         \Cn{n_1}\times\Cn{n_2}\cdots\times\Cn{n_m} \cong \Cn{n_1n_2\cdots n_m} = \Cn{p^n-1}
     \]
@@ -102,7 +102,7 @@ Let us examine some finite fields in detail.
             \item $\alpha^{15} = 1$
         \end{itemize}
     \end{multicols}
-    From this, we infer that $\alpha$ is actually a generator of $F^\ast$, since $|F^\ast| = 15 = |\alpha|$. In fact, $\alpha$ is a zero of the polynomial $x^4 + x + 1$. However, do not be fooled into thinking that a zero of \textit{any} irreducible polynomial is a generator of the multiplicative group of $\GF{p^n}$ in general. We will examine this more closely in \myref{problem-zero-of-irreducible-in-finite-field-is-not-generator} (later).
+    From this, we infer that $\alpha$ is actually a generator of $F^\ast$, since $|F^\ast| = 15 = |\alpha|$. In fact, $\alpha$ is a zero of the polynomial $x^4 + x + 1$. However, do not be fooled into thinking that a zero of any irreducible polynomial is a generator of the multiplicative group of $\GF{p^n}$ in general. We will examine this more closely in \myref{problem-zero-of-irreducible-in-finite-field-is-not-generator} (later).
 
     Let us try our hand at doing some calculations in $\GF{16}$. For example, we see that
     \begin{align*}
@@ -169,7 +169,7 @@ Let us examine some finite fields in detail.
     \end{align*}
     so $\alpha^4$ is another zero of $f(x)$ in $F$. Since $f(x)$ has degree 3, this means that $f(x)$ has at most 3 zeroes over $F$. Thus we have found all zeroes of $f(x)$.
 
-    Therefore
+    Therefore we may write
     \[
         f(x) = (x - \alpha)(x - \alpha^2)(x - \alpha^4) = (x + \alpha)(x + \alpha^2)(x + \alpha^4).
     \]
@@ -190,7 +190,7 @@ Let us examine some finite fields in detail.
     \[
         p^n - 1 = (p^m-1)(p^{n-m} + p^{n-2m} + \cdots + p^m + 1)
     \]
-    thus $p^m - 1$ divides $p^n - 1$, say $p^n - 1 = t(p^m - 1)$ for some positive integer $t$. Let $K = \{x \in \GF{p^n} \vert x^{p^m} = x\}$. Then \myref{exercise-prime-power-elements-idempotent-is-subfield} (later) shows that $K$ is a subfield of $\GF{p^n}$. Since $x^{p^m} - x$ has at most $p^m$ zeroes in $\GF{p^n}$ we must have $|K| \leq p^m$. Also, earlier in \myref{thrm-structure-of-finite-field}, we have shown that $\GF{p^n}^\ast$ is a cyclic group. So let $a \in \GF{p^n}^\ast$ be such that $\princ{a} = \GF{p^n}^\ast$. Then, in $\GF{p^n}^\ast$,
+    thus $p^m - 1$ divides $p^n - 1$, say $p^n - 1 = t(p^m - 1)$ for some positive integer $t$. Let $K = \{x \in \GF{p^n} \vert x^{p^m} = x\}$. Then \myref{exercise-prime-power-elements-idempotent-is-subfield} (later) shows that $K$ is a subfield of $\GF{p^n}$. Since $x^{p^m} - x$ has at most $p^m$ zeroes in $\GF{p^n}$ we must have $|K| \leq p^m$. Also, earlier in \myref{thrm-structure-of-finite-field}, we have shown that $\GF{p^n}^\ast$ is a cyclic group. So let $a \in \GF{p^n}^\ast$ be such that $\princ{a} = \GF{p^n}^\ast$. Then, in $\GF{p^n}^\ast$, we see
     \begin{align*}
         |a^t| &= \frac{|a|}{\gcd(|a|, t)} & (\myref{thrm-order-of-power-of-element})\\
         &= \frac{p^n - 1}{t}\\

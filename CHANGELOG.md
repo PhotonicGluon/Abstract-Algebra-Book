@@ -7,6 +7,7 @@
 - Updated cipher.
 - Updated preamble.
 - Performed a grammar pass on the front matter.
+- Added more terms to the index.
 
 ### Part 0 (Preliminaries) Changes
 - Updated preamble.
@@ -100,6 +101,12 @@
 - Fixed spurious space in the proof of proposition 30.1.6.
 - Added more detail about the coefficients in the proof of proposition 30.3.3.
 - Fixed typo in example 30.3.6.
+- Rewrite part of the text after example 31.1.4 to make it read nicer.
+- Added some clarification to the proof of corollary 31.2.7.
+- Fixed typo in the proof of theorem 31.2.16.
+- Expanded upon the remark after proposition 31.5.7 (Freshman's Dream).
+- Addressed weird spacing in the proof of theorem 32.2.2.
+- Added missing "in" back into definition 32.4.5.
 - Made other minor changes to the text.
 
 ### Part IV (Galois) Changes

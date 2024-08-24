@@ -61,7 +61,7 @@ Before we answer why we use a different definition, we look at the following pro
     We claim that $\Q[\sqrt{2}]$ is an extension field of $\Q$. One sees clearly that any $q \in \Q$ is expressible as $q + 0\sqrt{2}$, and so $q \in \Q[\sqrt2]$. Therefore $\Q \subseteq \Q[\sqrt2]$. As $\Q$ is a field, therefore $\Q$ is a subfield of $\Q[\sqrt2]$, which in turn means $\Q[\sqrt2]$ is an extension field of $\Q$.
 \end{example}
 
-We return to why we defined field extensions in the way that we do. The reason why is because, most of the time, the extension field that we use does \textit{not} contain the base field as a subset. Rather, the extension field contains a subfield that is \textit{isomorphic} to the base field. In fact, most authors actually use our definition of extension fields -- they find a subfield of the extension field that is isomorphic to the base field (see \cite[Theorem 13.1.3]{dummit_foote_2004}, \cite[p.~339, Proof]{gallian_2016}, \cite[Example 21.2]{judson_beezer_2022}).
+So why do we define field extensions like we do above? The reason why is because, most of the time, the extension field that we use does \textit{not} contain the base field as a subset. Rather, the extension field contains a subfield that is \textit{isomorphic} to the base field. In fact, most authors actually use our definition of extension fields -- they find a subfield of the extension field that is isomorphic to the base field (see \cite[Theorem 13.1.3]{dummit_foote_2004}, \cite[p.~339, Proof]{gallian_2016}, \cite[Example 21.2]{judson_beezer_2022}).
 
 We have this useful proposition to help us determine whether a field is an extension field of another field.
 
@@ -209,7 +209,7 @@ Before we can define what a splitting field is, we need to look at a special kin
 \begin{definition}
     Let $F$ be a field and $E/F$ be a field extension. Let $S$ be a subset of $E$. Then $F(S)$, read as ``$F$ adjoin $S$'', is the smallest subfield of $E$ that contains $F$ and the set $S$.
 
-    If $S$ is a finite set, say $S = \{a_1, a_2, \dots, a_n\}$, then we write $F(a_1, a_2, \dots, a_n)$, and say that $F(S)$ is finitely generated over $F$.
+    If $S$ is a finite set, say $S = \{a_1, a_2, \dots, a_n\}$, then we write $F(a_1, a_2, \dots, a_n)$, and say that \term{$F(S)$ is finitely generated over $F$}\index{finitely generated}.
 \end{definition}
 
 \begin{proposition}
@@ -271,9 +271,9 @@ A general form for simple extensions for specific types of primitive elements, s
         F[x]/\princ{p(x)} \cong F(\alpha).
     \]
 
-    Now, if $f(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$ then we may use polynomial long division (\myref{thrm-polynomial-long-division}) to write $f(x) = q(x)p(x) + r(x)$ where $r(x)$ is a \textit{unique} polynomial where $r(x) = 0$ or $\deg r(x) < \deg p(x) = n$. Hence if $r(x) = a_0 + a_1x + \cdots + a_{n-1}x^{n-1}$ we see
+    Now, if $f(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$ then we may use polynomial long division (\myref{thrm-polynomial-long-division}) to write $f(x) = q(x)p(x) + r(x)$ where $r(x)$ is a \textbf{unique} polynomial where $r(x) = 0$ or $\deg r(x) < \deg p(x) = n$. Hence if $r(x) = a_0 + a_1x + \cdots + a_{n-1}x^{n-1}$ we see
     \[
-        f(x) + \princ{p(x)} = (a_0 + a_1x + \cdots + a_{n-1}x^{n-1}) + \princ{p(x)}
+        f(x) + \princ{p(x)} = \left(a_0 + a_1x + \cdots + a_{n-1}x^{n-1}\right) + \princ{p(x)}
     \]
     where $r(x)$ is unique. Now we show that the map $\psi: F[x]/\princ{p(x)} \to F[\alpha]$ given by $\psi(f(x) + \princ{p(x)}) = f(\alpha)$ is a well-defined isomorphism.
     \begin{itemize}
@@ -320,7 +320,7 @@ A general form for simple extensions for specific types of primitive elements, s
     Let $F$ be a field and let $p(x) \in F[x]$ be irreducible over $F$. If $\alpha \in E$ is a zero of $p(x)$ in some field extension $E/F$, then $F(\alpha) = F[\alpha]$.
 \end{corollary}
 \begin{proof}
-    Note that $F[\alpha] \subseteq E$ contains both $F$ and $\alpha$. Since $F(\alpha)$ is the intersection of subfields that contains both $F$ and $\alpha$, thus $F(\alpha) \subseteq F[\alpha]$. But \myref{thrm-simple-extension-isomorphism} proves that $F(\alpha) \cong F[\alpha]$. Thus $F(\alpha) = F[\alpha]$.
+    Note that $F[\alpha] \subseteq E$ contains both the entire ground field $F$ and the element $\alpha$. Since $F(\alpha)$ is the intersection of subfields that contains both $F$ and $\alpha$, thus $F(\alpha) \subseteq F[\alpha]$. But \myref{thrm-simple-extension-isomorphism} proves that $F(\alpha) \cong F[\alpha]$. Thus $F(\alpha) = F[\alpha]$.
 \end{proof}
 
 \begin{example}
@@ -382,7 +382,7 @@ With all these results, we can finally define splitting fields.
     \[
         f(x) = a(x-a_1)(x-a_2)\cdots(x-a_n).
     \]
-    We call $E$ a \term{splitting field for $f(x)$ over $F$}\index{splitting field}\index{field!splitting} if
+    We call $E$ a \term{splitting field for $f(x)$ over $F$}\index{splitting field}\index{field!splitting} if and only if
     \[
         E = F(a_1, a_2, \dots, a_n).
     \]
@@ -416,7 +416,7 @@ Does a splitting field for a polynomial over a given field always exist? We answ
 
     When $n = 1$, we know $f(x)$ is of the form $ax + b$, and so we may write
     \[
-        f(x) = a\left(x - a^{-1}b\right),
+        f(x) = a\left(x - \left(-a^{-1}b\right)\right),
     \]
     which means $f(x)$ splits over the original field $F$.
 
@@ -510,7 +510,7 @@ Before we can prove this, we introduce some terminology and notation, and a prel
     Finally, notice for any $r \in F$ that $\overline{\phi}(r) = \phi(r)$, so $\overline{\phi}$ agrees with $\phi$ on $F$. Also, clearly, $\overline{\phi}(\alpha) = \beta$. Therefore this isomorphism satisfies the required properties.
 \end{proof}
 
-We can now prove the following theorem.
+With \myref{lemma-isomorphism-extension}, we can prove the following theorem.
 
 \begin{theorem}\label{thrm-isomorphism-extension}
     Let $F$ and $F'$ be fields, $\phi: F \to F'$ be an isomorphism, and $f(x) \in F[x]$. If $E$ is a splitting field of $f(x)$ over $F$ and $E'$ is a splitting field of $\phi(f(x))$ over $F'$, then there exists an isomorphism from $E$ to $E'$ that agrees with $\phi$ on $F$.
@@ -784,7 +784,7 @@ With this result, we can find the zeroes of an irreducible polynomial.
 
     Now if $\Char{F} = 0$, there does not exist a positive integer $k$ such that $ka = 0$ for all $a \in F$. Thus, if $ra_r = 0$, we must have $a_r = 0$. Thus $f(x) = a_0$, a constant polynomial. But an irreducible polynomial has to be a non-constant polynomial by definition. This contradiction means that $f(x)$ has no multiple zeroes in $F$ if $\Char{F} = 0$.
 
-    If $\Char{F} = p$ instead, $pa = 0$ for all $a \in F$. So if $p$ does not divide $r$, we require $a_r = 0$ in order for $ra_r = 0$. Otherwise, if $p$ divides $r$ (say, $r = pk$), note $(pk)a_{pk} = p(ka_{pk}) = 0$, so $a_{pk}$ could be any element in $F$. Thus the only powers of $p$ that appear in $f(x)$ are those of the form $x^{kp} = \left(x^p\right)^k$. It follows that $f(x) = g(x^p)$ for some $g(x) \in F[x]$.
+    If $\Char{F} = p$ instead, we see that $pa = 0$ for all $a \in F$. So if $p$ does not divide $r$, we require $a_r = 0$ in order for $ra_r = 0$. Otherwise, if $p$ divides $r$ (say, $r = pk$), note $(pk)a_{pk} = p(ka_{pk}) = 0$, so $a_{pk}$ could be any element in $F$. Thus the only powers of $p$ that appear in $f(x)$ are those of the form $x^{kp} = \left(x^p\right)^k$. It follows that $f(x) = g(x^p)$ for some $g(x) \in F[x]$.
 \end{proof}
 
 \begin{exercise}\label{exercise-derivative-is-zero-implies-higher-terms-are-zero}
@@ -828,7 +828,7 @@ The fact that the Frobenius endomorphism is an automorphism for finite fields le
     Let $F$ be a field of prime characteristic $p$. Then $(x + y)^{p^n} = x^{p^n} + y^{p^n}$ for all $x,y \in F$ and positive integers $n$.
 \end{proposition}
 \begin{remark}
-    The name ``Freshman's Dream'' refers to the \textit{incorrect} expansion of $(x+y)^n$ as $x^n + y^n$ over $\R$. However, over finite fields, this incorrect expansion becomes correct.
+    The name ``Freshman's Dream'' refers to the \textbf{incorrect} expansion of $(x+y)^n$ as $x^n + y^n$ over infinite fields (in particular, the field of real numbers). However, over finite fields, this incorrect expansion becomes correct.
 \end{remark}
 \begin{proof}
     We induct on $n$.
@@ -854,7 +854,7 @@ With this definition of perfect fields, we return back to exploring the zeroes o
     where $h(x) = b_0 + b_1x + b_2x^2 + \cdots + b_nx^n \in F[x]$. But this clearly means $f(x)$ is not irreducible. Hence $f(x)$ does not have multiple zeroes.
 \end{proof}
 
-What if the irreducible polynomial \textit{does} have multiple zeroes in a splitting field? In this case, there is something remarkable about the multiplicities of the zeroes.
+What if the irreducible polynomial has multiple zeroes in a splitting field? In this case, there is something remarkable about the multiplicities of the zeroes.
 
 \begin{theorem}\label{thrm-zeroes-of-irreducible-over-splitting-field-have-same-multiplicity}
     Let $f(x)$ be an irreducible polynomial over a field $F$, and let $E$ be a splitting field of $f(x)$ over $F$. Then the zeroes of $f(x)$ in $E$ all have the same multiplicity.
