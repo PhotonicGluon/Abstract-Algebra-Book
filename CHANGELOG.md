@@ -1,6 +1,24 @@
 # Abstract Algebra Book Changelog
 
 ---
+## [1st Edition](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1)
+
+### General Content Changes
+
+### Part 0 (Preliminaries) Changes
+
+### Part I (Groups) Changes
+
+### Part II (Rings) Changes
+
+### Part III (Fields) Changes
+
+### Part IV (Galois) Changes
+
+### Other Changes
+
+
+---
 ## [1st Edition, Build 35](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.34...v1-build.35)
 
 ### General Content Changes
