@@ -107,6 +107,7 @@
 - Expanded upon the remark after proposition 31.5.7 (Freshman's Dream).
 - Addressed weird spacing in the proof of theorem 32.2.2.
 - Added missing "in" back into definition 32.4.5.
+- Enlarged figure 33.1.
 - Made other minor changes to the text.
 
 ### Part IV (Galois) Changes
