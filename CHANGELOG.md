@@ -116,6 +116,7 @@
 - Removed redundant `Required Packages.txt`.
 - Cleaned up `symbols.tex`.
 - Refactored `ntru` subproject.
+- Added back missing PDF files for the images of the book.
 
 ---
 ## [1st Edition, Build 34](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.33...v1-build.34)
