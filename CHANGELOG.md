@@ -5,6 +5,7 @@
 
 ### General Content Changes
 - Updated cipher.
+- Added a page that links to any errata in the print version of the book.
 - Updated preamble.
 - Performed a grammar pass on the front matter.
 - Added more terms to the index.
