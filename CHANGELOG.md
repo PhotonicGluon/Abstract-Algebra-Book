@@ -4,6 +4,8 @@
 ## [1st Edition](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1)
 
 ### General Content Changes
+- Changed book margins for printing.
+- Increased stroke width of lines in interdependence diagram.
 
 ### Part 0 (Preliminaries) Changes
 
@@ -16,7 +18,7 @@
 ### Part IV (Galois) Changes
 
 ### Other Changes
-
+- Fixed `\draftstartmark` to not show build number if no build number is provided.
 
 ---
 ## [1st Edition, Build 35](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.34...v1-build.35)
