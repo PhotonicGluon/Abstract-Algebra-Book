@@ -10,6 +10,7 @@
 ### Part 0 (Preliminaries) Changes
 
 ### Part I (Groups) Changes
+- Added missing "group" in the third option in the statement of theorem 19.5.1 (C
 
 ### Part II (Rings) Changes
 
