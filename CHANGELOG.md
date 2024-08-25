@@ -112,6 +112,7 @@
 - Made other minor changes to the text.
 
 ### Part IV (Galois) Changes
+- Updated preamble.
 
 ### Other Changes
 - Removed redundant `Required Packages.txt`.
