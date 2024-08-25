@@ -6,6 +6,7 @@
 ### General Content Changes
 - Changed book margins for printing.
 - Increased stroke width of lines in interdependence diagram.
+- Adjusted stroke width of border around results and exercises.
 
 ### Part 0 (Preliminaries) Changes
 
