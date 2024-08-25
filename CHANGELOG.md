@@ -113,6 +113,14 @@
 
 ### Part IV (Galois) Changes
 - Updated preamble.
+- Made small edits to the statement of theorem 35.1.11.
+- Made the statement of lemma 35.2.4 less confusing.
+- Made part of the proof of theorem 35.4.5 less confusing.
+- Edited the proof of theorem 35.6.12 to be clearer.
+- Edited the statement and proof of theorem 35.6.14 to be clearer.
+- Made the proof of theorem 35.6.15 (Galois) clearer.
+- Fixed incorrect reference to Figure 35.3.
+- Made other minor changes to the text.
 
 ### Other Changes
 - Removed redundant `Required Packages.txt`.

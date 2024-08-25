@@ -54,7 +54,7 @@ It would be nice to define the `tightest' interval that contains a non-empty sub
     Non-trivially, we see that $\sup [0, 3) = 3$ and $\inf [0, 3) = 0$.
 \end{example}
 
-For these two examples we were able to find the supremum, and that it is a real number. Actually, in the definition of the supremum and infimum, we did not assume that they are actually real numbers. The assumption that the supremum and infimum are real numbers is captured in the completeness axiom.
+For these two examples we were able to find the supremum, and that it is a real number. Actually, in the definition of the supremum and infimum, we did not assume that they are actually real numbers. The assumption that the supremum and infimum are real numbers is captured in the \term{completeness axiom}.
 
 \begin{axiom}[Completeness]\index{axiom!completeness}\label{axiom-completeness}
     Every non-empty subset of $\R$ that is bounded above has a supremum within the real numbers.
@@ -90,7 +90,7 @@ Next on our journey to prove the Fundamental Theorem of Algebra we need to prove
     Usually the domain $D$ is either $\R$ or an interval over $\R$.
 \end{remark}
 
-Readers versed in calculus would be able to see the parallel of this definition to that of using limits. However, we choose not to use the limit definition here to reduce the clutter of notation.
+Readers versed in calculus would see the parallel of this definition to that of using limits. However, we choose not to use the limit definition here to reduce the clutter of notation.
 
 \begin{example}\label{example-constant-function-is-continuous}
     We show that $f: \R \to \R, x \mapsto k$ for some $k \in \R$ is continuous.
@@ -124,12 +124,12 @@ In fact, all polynomials are continuous. We will prove this fact in a few steps.
 \begin{proof}
     Since $f$ and $g$ are continuous, for all $\epsilon_1 > 0$ and $\epsilon_2 > 0$ there exists $\delta_1 > 0$ and $\delta_2 > 0$ such that
     \begin{gather*}
-        \text{ if } |x - x_0| < \delta_1 \text{ then } |f(x) - f(x_0)| < \epsilon_1,\\
+        \text{ if } |x - x_0| < \delta_1 \text{ then } |f(x) - f(x_0)| < \epsilon_1, \text{and}\\
         \text{ if } |x - x_0| < \delta_2 \text{ then } |g(x) - g(x_0)| < \epsilon_2.
     \end{gather*}
     Now suppose we have an $\epsilon > 0$. In particular for $\epsilon_1 = \epsilon_2 = \frac\epsilon2$ we can find $\delta_1 > 0$ and $\delta_2 > 0$ such that
     \begin{gather*}
-        \text{ if } |x - x_0| < \delta_1 \text{ then } |f(x) - f(x_0)| < \frac\epsilon2,\\
+        \text{ if } |x - x_0| < \delta_1 \text{ then } |f(x) - f(x_0)| < \frac\epsilon2, \text{and}\\
         \text{ if } |x - x_0| < \delta_2 \text{ then } |g(x) - g(x_0)| < \frac\epsilon2.
     \end{gather*}
     Choose $\delta = \min(\delta_1, \delta_2)$ which is positive. Then note that if $|x - x_0| < \delta$ we have
@@ -155,7 +155,7 @@ In fact, all polynomials are continuous. We will prove this fact in a few steps.
     Now suppose we have an $\epsilon > 0$. Then there exists $\delta_1 > 0$, $\delta_2 > 0$, and $\delta_3 > 0$ such that
     \begin{gather*}
         \text{ if } |x - x_0| < \delta_1 \text{ then } |f(x) - f(x_0)| < \frac{\epsilon}{2(1+|g(x_0)|)},\\
-        \text{ if } |x - x_0| < \delta_2 \text{ then } |g(x) - g(x_0)| < \frac{\epsilon}{2(1+|f(x_0)|)}\\
+        \text{ if } |x - x_0| < \delta_2 \text{ then } |g(x) - g(x_0)| < \frac{\epsilon}{2(1+|f(x_0)|)}, \text{ and}\\
         \text{ if } |x - x_0| < \delta_3 \text{ then } |g(x) - g(x_0)| < 1.
     \end{gather*}
     In particular the last condition tells us $|g(x)| < 1 + |g(x_0)|$ if $|x - x_0| < \delta_3$. We leave the proof of this for \myref{exercise-product-of-continuous-functions-is-continuous-exercise} (later). Let $\delta = \min(\delta_1, \delta_2, \delta_3)$. Thus we see that if $|x - x_0| < \delta$ then
