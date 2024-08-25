@@ -108,6 +108,7 @@
 - Addressed weird spacing in the proof of theorem 32.2.2.
 - Added missing "in" back into definition 32.4.5.
 - Enlarged figure 33.1.
+- Enlarged figures in chapter 34.
 - Made other minor changes to the text.
 
 ### Part IV (Galois) Changes
