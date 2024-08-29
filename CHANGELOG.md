@@ -7,6 +7,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 
 ### General Content Changes
 - Changed book margins for printing.
+- Increased head rule and line width.
 - Increased stroke width of lines in interdependence diagram.
 - Adjusted stroke width of border around results and exercises.
 - Changed formatting of the pages of the book.
