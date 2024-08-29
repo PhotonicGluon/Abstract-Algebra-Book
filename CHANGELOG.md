@@ -12,6 +12,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Changed formatting of the pages of the book.
 - Added missing full stops to some of the statements and sentences.
 - Added more terms to the index.
+- Amended the list of notation.
 
 ### Part 0 (Preliminaries) Changes
 - Edited example 5.1.5 to not use ideas of divisibility (since that would be introduced in chapter 6).
