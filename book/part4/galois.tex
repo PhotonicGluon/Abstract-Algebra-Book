@@ -359,6 +359,8 @@ The Galois group of a field extension $E/F$ is the set of automorphisms of $E$ t
     Prove \myref{prop-fixed-field-is-subfield}.
 \end{exercise}
 
+\pagebreak
+
 \begin{proposition}\label{prop-fixed-field-of-Gal-E/F-is-F}
     Let $F$ be a field. Let $E$ be the splitting field of a separable polynomial $f(x) \in F[x]$ over $F$. Then
     \[
@@ -584,10 +586,10 @@ The correspondence in the Fundamental Theorem of Galois Theory enjoys the follow
 
     Since $G$ is of order 4, there are only two possibilities of what $G$ is -- either $G \cong \Cn{4}$ or $G \cong \mathrm{V}$, the Klein four-group (this was explored way back in \myref{problem-smallest-nonabelian-group}), which are both abelian. It is easy to find three intermediate fields of degree 2 over $\Q$, namely $\Q(\sqrt3)$, $\Q(\sqrt5)$, and $\Q(\sqrt{15})$, so $G \cong \mathrm{V}$, since $\Cn{4}$ has only one subgroup of order 2.
 
-    The subgroups of order 2 are the only proper subgroups of $G$. Consequently one sees by \myref{corollary-intermediate-field-galois-field-order} that there are no more intermediate fields than the 3 that we have found.
+    The subgroups of order 2 are the only proper subgroups of $G$. Consequently one sees by \myref{corollary-intermediate-field-galois-field-order} that there are no more intermediate fields than the three we found.
 \end{example}
 
-Now suppose that we are given a chain of fields $F \subset K \subset E$, and that $E/F$ is a Galois extension. Then by \myref{prop-intermediate-field-of-galois-extension-is-galois-extension} we know that $E/K$ is a Galois extension. However, it is not guaranteed that $K/F$ is a Galois extension. So when is $K/F$ a Galois extension?
+Now suppose that we are given a chain of fields $F \subset K \subset E$, and that $E/F$ is a Galois extension. Then by \myref{prop-intermediate-field-of-galois-extension-is-galois-extension} we know that $E/K$ is a Galois extension, but $K/F$ may not be. So when is $K/F$ a Galois extension?
 
 \begin{theorem}\label{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}
     Let $E/F$ be a finite Galois extension with Galois group $G$, and let $K = \Fix{E}{H}$ for some subgroup $H$ of $G$. Then the extension $K/F$ is Galois if and only if $H \unlhd G$. In this case we will have
@@ -860,9 +862,7 @@ We are now ready to establish the connection between solvable groups and polynom
     \]
     It follows from \myref{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable} that $\Gal{L/F}$ is solvable, and therefore by \myref{thrm-quotient-group-of-solvable-group-is-solvable} we know that $\Gal{L/F}/\Gal{L/E}$, and hence $\Gal{E/F}$, is solvable.
 
-    Now suppose that the theorem holds for a particular positive integer $t$; we show that the theorem holds for $t + 1$.
-
-    For brevity, let $a = \alpha_1^{k_1}$. Let $L$ be the splitting field of $x^{k_1} - a$ over $E$ and let $K \subseteq E$ be the splitting field of $x^{k_1} - a$ over $F$. Then $L$ is the splitting field of $(x^{k_1}-a)f(x)$ over $F$, and $L$ is the splitting field of $f(x)$ over $K$. Since $F(\alpha_1) \subseteq K$, thus $f(x)$ splits over $K(\alpha_2, \alpha_3, \dots, \alpha_t, \alpha_{t+1})$. Using the induction hypothesis implies that $\Gal{L/K}$ is solvable. Also \myref{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable} tells us that $\Gal{K/F}$ is solvable. Note that both $L/F$ and $L/K$ are Galois extensions (\myref{thrm-equivalence-of-finite-galois-extension}) and so
+    Now suppose that the theorem holds for a particular positive integer $t$; we show that the theorem holds for $t + 1$. For brevity, let $a = \alpha_1^{k_1}$. Let $L$ be the splitting field of $x^{k_1} - a$ over $E$ and let $K \subseteq E$ be the splitting field of $x^{k_1} - a$ over $F$. Then $L$ is the splitting field of $(x^{k_1}-a)f(x)$ over $F$, and $L$ is the splitting field of $f(x)$ over $K$. Since $F(\alpha_1) \subseteq K$, thus $f(x)$ splits over $K(\alpha_2, \alpha_3, \dots, \alpha_t, \alpha_{t+1})$. Using the induction hypothesis implies that $\Gal{L/K}$ is solvable. Also \myref{thrm-galois-group-of-polynomial-of-nth-root-of-a-is-solvable} tells us that $\Gal{K/F}$ is solvable. Note that both $L/F$ and $L/K$ are Galois extensions (\myref{thrm-equivalence-of-finite-galois-extension}) and so
     \[
         \Gal{L/F}/\Gal{L/K} \cong \Gal{K/F}
     \]

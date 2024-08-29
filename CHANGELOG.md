@@ -33,8 +33,11 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Made other minor changes to the text.
 
 ### Part III (Fields) Changes
+- Made minor changes to the text.
 
 ### Part IV (Galois) Changes
+- Slightly reformatted the proof of theorem 35.6.15.
+- Made minor changes to the text.
 
 ### Other Changes
 - Fixed `\draftstartmark` to not show build number if no build number is provided.
