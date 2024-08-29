@@ -29,6 +29,8 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Made other minor changes to the text.
 
 ### Part II (Rings) Changes
+- Removed underbraces in the proof of theorem 24.2.6.
+- Made other minor changes to the text.
 
 ### Part III (Fields) Changes
 
