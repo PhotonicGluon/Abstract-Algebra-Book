@@ -1,5 +1,7 @@
 # Abstract Algebra Book Changelog
 
+All notable changes to *A Complete Introduction to Abstract Algebra* will be documented here.
+
 ---
 ## [1st Edition](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1) (IN PROGRESS)
 
