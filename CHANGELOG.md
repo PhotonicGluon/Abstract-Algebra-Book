@@ -16,6 +16,7 @@
 - Reformatted exercise 5.1.
 
 ### Part I (Groups) Changes
+- Recreated diagrams in chapter 7.
 - Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
 
 ### Part II (Rings) Changes
