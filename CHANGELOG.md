@@ -1,17 +1,22 @@
 # Abstract Algebra Book Changelog
 
 ---
-## [1st Edition](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1)
+## [1st Edition](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1) (IN PROGRESS)
 
 ### General Content Changes
 - Changed book margins for printing.
 - Increased stroke width of lines in interdependence diagram.
 - Adjusted stroke width of border around results and exercises.
+- Changed formatting of the pages of the book.
+- Added missing full stops to some of the statements and sentences.
 
 ### Part 0 (Preliminaries) Changes
+- Edited example 5.1.5 to not use ideas of divisibility (since that would be introduced in chapter 6).
+- Rephrased example 5.2.2 slightly.
+- Reformatted exercise 5.1.
 
 ### Part I (Groups) Changes
-- Added missing "group" in the third option in the statement of theorem 19.5.1 (C
+- Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
 
 ### Part II (Rings) Changes
 
