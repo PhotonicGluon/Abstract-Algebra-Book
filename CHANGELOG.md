@@ -9,15 +9,22 @@
 - Adjusted stroke width of border around results and exercises.
 - Changed formatting of the pages of the book.
 - Added missing full stops to some of the statements and sentences.
+- Added more terms to the index.
 
 ### Part 0 (Preliminaries) Changes
 - Edited example 5.1.5 to not use ideas of divisibility (since that would be introduced in chapter 6).
 - Rephrased example 5.2.2 slightly.
 - Reformatted exercise 5.1.
+- Made other minor changes to the text.
 
 ### Part I (Groups) Changes
-- Recreated diagrams in chapter 7.
+- Recreated diagrams in chapter 7 and chapter 8.
 - Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
+- Made corollary 13.4.2 more verbose.
+- Edited exercise 14.6 to be more concise.
+- Rewritten the proof of lemma 14.3.4 to be slightly more concise.
+- Edited definition 14.3.7, splitting the parity definition away from the evenness and oddness definition.
+- Made other minor changes to the text.
 
 ### Part II (Rings) Changes
 
