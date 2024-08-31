@@ -12,13 +12,15 @@ COVER_PAGE_FILE_NAME = "cover-page-background.svg"
 COVER_FULL_FILE_NAME = "cover-full-background.svg"
 
 SCALE_FACTOR = 10
-NUM_PAGES = 700  # Todo: check and update
+NUM_PAGES = 644
 
-COVER_WIDTH = 174.62 * SCALE_FACTOR  # In mm
-COVER_HEIGHT = 247.65 * SCALE_FACTOR
+COVER_WIDTH = 180.97 * SCALE_FACTOR  # In mm
+COVER_HEIGHT = 260.35 * SCALE_FACTOR
 COVER_ASPECT_RATIO = COVER_HEIGHT / COVER_WIDTH
-OUTER_MARGIN_AND_BLEED = (3.17 + 3.17) * SCALE_FACTOR
-SPINE_WIDTH = 0.0572 * NUM_PAGES * SCALE_FACTOR
+# OUTER_MARGIN_AND_BLEED = (3.17 + 3.17) * SCALE_FACTOR
+OUTER_MARGIN_AND_BLEED = 19.05 * SCALE_FACTOR  # 19.05mm = Wrap area
+# SPINE_WIDTH = 0.0572 * NUM_PAGES * SCALE_FACTOR
+SPINE_WIDTH = 44.45 * SCALE_FACTOR
 FULL_WIDTH = OUTER_MARGIN_AND_BLEED + COVER_WIDTH + SPINE_WIDTH + COVER_WIDTH + OUTER_MARGIN_AND_BLEED
 FULL_HEIGHT = OUTER_MARGIN_AND_BLEED + COVER_HEIGHT + OUTER_MARGIN_AND_BLEED
 DPI = 100
@@ -134,8 +136,21 @@ def plot_figure(width, height, filename, x_range, y_range):
 
 
 # MAIN CODE
-print("Creating cover page only")
+print("Entered dimensions are:")
+print(f"- Trim width:  {COVER_WIDTH/SCALE_FACTOR:.2f}mm")
+print(f"- Trim height: {COVER_HEIGHT/SCALE_FACTOR:.2f}mm")
+print(f"- Full width:  {FULL_WIDTH/SCALE_FACTOR:.2f}mm",)
+print(f"- Full height: {FULL_HEIGHT/SCALE_FACTOR:.2f}mm")
+
+input("Press RETURN to continue.")
+print()
+
+print("Creating eBook cover page...")
 plot_figure(COVER_WIDTH, COVER_HEIGHT, COVER_PAGE_FILE_NAME, (COVER_MIN_X, COVER_MAX_X), (COVER_MIN_Y, COVER_MAX_Y))
-print("Creating full cover")
+print()
+
+print("Creating full cover...")
 plot_figure(FULL_WIDTH, FULL_HEIGHT, COVER_FULL_FILE_NAME, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
-print("Done")
+print()
+
+print("Done!")
