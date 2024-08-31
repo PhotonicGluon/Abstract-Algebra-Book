@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # CONSTANTS
-COVER_DIR = Path("../../images/cover")
+COVER_DIR = Path("../../book/images/cover")
 COVER_PAGE_FILE_NAME = "cover-page-background.svg"
 COVER_FULL_FILE_NAME = "cover-full-background.svg"
 
