@@ -26,11 +26,12 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 
 ### Part I (Groups) Changes
 - Recreated diagrams in chapter 7 and chapter 8.
-- Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
+- Fixed typo in the proof of theorem 10.2.3.
 - Made corollary 13.4.2 more verbose.
 - Edited exercise 14.6 to be more concise.
 - Rewritten the proof of lemma 14.3.4 to be slightly more concise.
 - Edited definition 14.3.7, splitting the parity definition away from the evenness and oddness definition.
+- Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
 - Made other minor changes to the text.
 
 ### Part II (Rings) Changes
