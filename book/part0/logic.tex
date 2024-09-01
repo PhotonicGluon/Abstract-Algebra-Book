@@ -69,23 +69,17 @@ When statement variables are combined using the above operators, the resulting s
 \end{example}
 
 \begin{exercise}
-    Let the statements
-    \begin{align*}
-        p: &\ \text{1 is a positive number},\\
-        q: &\ -1 > 0, \text{ and}\\
-        r: &\ \text{1 is an odd number}.
-    \end{align*}
-    Is the statement ``$\lnot((p\lor q)\land r)$ is false'' true?
+    Let the statement $p$ be ``1 is a positive number'', the statement $q$ be ``$-1 > 0$'', and the statement $r$ be ``1 is an odd number''. Is the statement ``$\lnot((p\lor q)\land r)$ is false'' true?
 \end{exercise}
 
 We end this section by exploring statements that are always true or false.
 
 \begin{definition}
-    A \term{tautology}\index{tautology} is a statement form that is always true, and we denote it by \textbf{true}.
+    A statement form that is always true is called a \term{tautology}\index{tautology}, and we denote it by \textbf{true}.
 \end{definition}
 
 \begin{definition}
-    A \term{contradiction}\index{contradiction} is a statement form that is always false, and we denote it by \textbf{false}.
+    A statement form that is always false is called a \term{contradiction}\index{contradiction}, and we denote it by \textbf{false}.
 \end{definition}
 
 \begin{example}
@@ -111,7 +105,7 @@ We use \term{truth tables}\index{truth table} to explore the relationships betwe
             T   & F   & F          \\ \hline
             T   & T   & T          \\ \hline
         \end{tabular}
-        \caption{Logical AND}
+        \caption{AND}
     \end{minipage}
     \begin{minipage}{.3\linewidth}
         \centering
@@ -123,7 +117,7 @@ We use \term{truth tables}\index{truth table} to explore the relationships betwe
             T   & F   & T         \\ \hline
             T   & T   & T         \\ \hline
         \end{tabular}
-        \caption{Logical OR}
+        \caption{OR}
     \end{minipage}
     \begin{minipage}{.3\linewidth}
         \centering
@@ -133,7 +127,7 @@ We use \term{truth tables}\index{truth table} to explore the relationships betwe
             F   & T         \\ \hline
             T   & F         \\ \hline
         \end{tabular}
-        \caption{Logical NOT}
+        \caption{NOT}
     \end{minipage}
 \end{table}
 
@@ -206,8 +200,6 @@ We end this section by noting the order of operations of the logical operators.
     \item $\implies$ and $\iff$ are performed last, and are coequal in their order of operation.
 \end{itemize}
 To disambiguate the order of operations, we use parentheses (i.e., brackets).
-
-
 
 \section{Logical Equivalence and Properties of Logical Operators}
 \begin{definition}
@@ -303,9 +295,7 @@ We note some important properties of logical operators.
     \end{itemize}
 \end{example}
 
-There are other ways to convert predicates into statements. One way is to use quantifiers, which are words that refer to quantities such as ``some'' or ``all'' to tell people for how many elements make a predicate true.
-
-
+There are other ways to convert predicates into statements. One way is to use quantifiers, which are words that refer to quantities such as ``some'' or ``all''.
 
 \begin{definition}
     The \term{universal quantifier}\index{quantifier!universal} is $\forall$ and is read as ``for all''. A statement $q$ of the form ``$\forall x \in D, P(x)$'', where $P(x)$ is the predicate and $D$ is the domain, is called a \term{universal statement}\index{statement!universal}.
@@ -313,8 +303,11 @@ There are other ways to convert predicates into statements. One way is to use qu
         \item $q$ is true if and only if $P(x)$ is true for every $x \in D$.
         \item $q$ is false if and only if $P(x)$ is false for some $x \in D$.
     \end{itemize}
-    Any $x \in D$ for which $P(x)$ is false is called a \term{counterexample}\index{counterexample}.
 \end{definition}
+
+\begin{remark}
+    Any $x \in D$ for which the predicate $P(x)$ is false is called a \term{counterexample}\index{counterexample}.
+\end{remark}
 
 \begin{example}
     The true statement ``for every integer $n$, the integer $2n$ is an even number'' can be written as ``$\forall n \in \Z, 2n$ is even''.
@@ -323,8 +316,8 @@ There are other ways to convert predicates into statements. One way is to use qu
 \begin{definition}
     The \term{existential quantifier}\index{quantifier!existential} is $\exists$ and is read as ``there exists''. A statement $q$ of the form ``$\exists x \in D \textrm{ such that } P(x)$'', where $P(x)$ is the predicate and $D$ is the domain, is called a \term{existential statement}\index{statement!existential}.
     \begin{itemize}
-        \item $q$ is true if and only if $P(x)$ is true for at least one $x$ in $D$.
-        \item $q$ is false if and only if $P(x)$ is false for all $x$ in $D$.
+        \item $q$ is true if and only if $P(x)$ is true for at least one $x \in D$.
+        \item $q$ is false if and only if $P(x)$ is false for all $x \in D$.
     \end{itemize}
 \end{definition}
 
@@ -351,8 +344,6 @@ We can also combine quantifiers and logical operators together.
 \begin{exercise}
     Convert the statement ``for all positive integers $n > 2$ there exist integers $a$ and $b$ such that $a^3 + b^4 = n^5$'' into symbolic notation using quantifiers and logical operators.
 \end{exercise}
-
-
 
 We now look at negating quantifiers\index{quantifier!negation}. Note that
 \begin{itemize}
@@ -398,13 +389,13 @@ We also note that $\lnot(p \implies q) \equiv p \land \lnot q$ for all statement
 Mathematical statements often have a certain `tier' attached to them. We look at the hierarchy of some of these `tiers'.
 \begin{itemize}
     \item \textbf{Axiom}\index{axiom}: A statement that is assumed to be true to act as a starting point for further reasoning.
-    \item \textbf{Proposition}\index{proposition}: A proposition can be thought of as a general proven result. Equivalent names for a proposition are ``\textbf{Claim}'' or ``\textbf{Observation}''.
+    \item \textbf{Proposition}\index{proposition}: A proposition can be thought of as a general proven result. ``\textbf{Claims}'' and ``\textbf{Observations}'' are equivalent to propositions.
     \item \textbf{Lemma}\index{lemma}: A lemma can be thought of as a `small' proven result that can help build other mathematical results. For example, Euclid's lemma that ``if a prime $p$ divides the product $ab$ of two integers $a$ and $b$, then $p$ must divide at least one of those integers $a$ or $b$'' is used in the proof of the Fundamental Theorem of Arithmetic.
     \item \textbf{Theorem}\index{theorem}: A theorem can be thought of as a `big' proven result. For example, the Fundamental Theorem of Arithmetic is core to arithmetic as it describes how integers can be uniquely decomposed into its prime factors.
     \item \textbf{Corollary}\index{corollary}: A corollary is said to be a `follow-up result' from a theorem. These results usually follow `very quickly' from a theorem or a proposition. For example, the AM-GM inequality is a corollary of the Pythagorean theorem.
 \end{itemize}
 
-
+\newpage
 
 \section{Problems}
 \begin{problem}
