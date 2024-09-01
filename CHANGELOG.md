@@ -3,7 +3,7 @@
 All notable changes to *A Complete Introduction to Abstract Algebra* will be documented here.
 
 ---
-## [1st Edition](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1) (IN PROGRESS)
+## [1st Edition, Build 36](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1-build.36) (IN PROGRESS)
 
 ### General Content Changes
 - Changed book margins for printing.
