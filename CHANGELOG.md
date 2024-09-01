@@ -16,6 +16,9 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Amended the list of notation.
 
 ### Part 0 (Preliminaries) Changes
+- Made definition 1.2.7 and definition 1.3.2 more concise.
+- Made example 2.1.6 clearer.
+- Removed logical equivalence of the biconditional introduced in definition 2.2.1 as logical equivalence was not yet introduced.
 - Edited example 5.1.5 to not use ideas of divisibility (since that would be introduced in chapter 6).
 - Rephrased example 5.2.2 slightly.
 - Reformatted exercise 5.1.
@@ -23,11 +26,12 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 
 ### Part I (Groups) Changes
 - Recreated diagrams in chapter 7 and chapter 8.
-- Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
+- Fixed typo in the proof of theorem 10.2.3.
 - Made corollary 13.4.2 more verbose.
 - Edited exercise 14.6 to be more concise.
 - Rewritten the proof of lemma 14.3.4 to be slightly more concise.
 - Edited definition 14.3.7, splitting the parity definition away from the evenness and oddness definition.
+- Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
 - Made other minor changes to the text.
 
 ### Part II (Rings) Changes
