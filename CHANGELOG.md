@@ -38,6 +38,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Recreated diagrams in chapter 7 and chapter 8.
 - Fixed typo in the proof of theorem 10.2.3.
 - Slightly enlarged figure 11.1.
+- Made exercise 13.4 more compact.
 - Made corollary 13.4.2 more verbose.
 - Edited exercise 14.6 to be more concise.
 - Rewritten the proof of lemma 14.3.4 to be slightly more concise.
