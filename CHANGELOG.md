@@ -47,6 +47,8 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Shortened the preamble.
 - Made the proof of proposition 22.3.3 more compact.
 - Shortened the statement of exercise 22.5.
+- Rephrased the remark after definition 24.1.1.
+- Shortened example 24.1.3 slightly.
 - Removed underbraces in the proof of theorem 24.2.6.
 - Made other minor changes to the text.
 
