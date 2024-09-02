@@ -14,8 +14,6 @@ Richard Dedekind came up with an alternate definition for ``ideals'', defining n
 
 The modern formulation of ideals is much weaker than the original ideals proposed by Dedekind; their motivation in modern times stems from the desire to create ``quotient rings'', similar to that of ``quotient groups'' in group theory. Ideals are the ``normal subgroups'' of ring theory. In the coming sections, we look at ideals, before working our way back to Dedekind's original principal ideal definition.
 
-
-
 \section{What is an Ideal?}
 Rings have two operations defined on them (addition and multiplication). Therefore, we need to define which operation for which a coset will apply to.
 \begin{definition}
@@ -96,6 +94,9 @@ With ideals defined, we can now also define what a quotient ring is.
 \begin{proposition}
     If $R$ is a ring with an ideal $I$, then $R/I$ is indeed a ring under coset addition and multiplication.
 \end{proposition}
+
+\newpage
+
 \begin{proof}
     We prove this using the ring axioms.
     \begin{itemize}
@@ -104,8 +105,9 @@ With ideals defined, we can now also define what a quotient ring is.
             \item \textbf{Group}: As $(R,+)$ is an abelian group and $(I,+)$ is a normal subgroup of $(R,+)$, therefore $(R/I,+)$ is a well-defined quotient group.
             \item \textbf{Commutative}: All that remains is to show that coset addition is commutative. Let $r+I, s+I \in R/I$. Then
             \begin{align*}
-                (r+I) + (s+I) &= (r+s)+I\\
-                &= (s+r) + I & (\text{since } + \text{ is commutative})\\
+                &(r+I) + (s+I)\\
+                &= (r+s)+I\\
+                &= (s+r) + I & (+ \text{ is commutative})\\
                 &= (s+I) + (r+I)
             \end{align*}
             so coset addition is commutative.
@@ -120,9 +122,10 @@ With ideals defined, we can now also define what a quotient ring is.
 
             \item \textbf{Associativity}: Let $r+I, s+I, t+I \in R/I$. Then
             \begin{align*}
-                (r+I)((s+I)(t+I)) &= (r+I)(st+I)\\
+                &(r+I)((s+I)(t+I))\\
+                &= (r+I)(st+I)\\
                 &= (r(st))+I\\
-                &= ((rs)t) + I & (\text{since } \times \text{ is associative})\\
+                &= ((rs)t) + I & (\times \text{ is associative})\\
                 &= ((rs)+I)(t+I)\\
                 &= ((r+I)(s+I))(t+I)
             \end{align*}
@@ -133,7 +136,8 @@ With ideals defined, we can now also define what a quotient ring is.
         \begin{itemize}
             \item We first show left distribution.
             \begin{align*}
-                (r+I)((s+I)+(t+I)) &= (r+I)((s+t)+I)\\
+                &(r+I)((s+I)+(t+I))\\
+                &= (r+I)((s+t)+I)\\
                 &= (r(s+t))+I\\
                 &= (rs+rt)+I\\
                 &= (rs+I) + (rt+I)\\
@@ -143,7 +147,8 @@ With ideals defined, we can now also define what a quotient ring is.
 
             \item We now show right distribution.
             \begin{align*}
-                ((r+I)+(s+I))(t+I) &= ((r+s)+I)(t+I)\\
+                &((r+I)+(s+I))(t+I)\\
+                &= ((r+s)+I)(t+I)\\
                 &= ((r+s)t)+I\\
                 &= (rt+st)+I\\
                 &= (rt+I) + (st+I)\\
@@ -163,8 +168,17 @@ With ideals defined, we can now also define what a quotient ring is.
 
     We explore two possible products in this quotient ring.
     \begin{itemize}
-        \item $(3+6\Z)(4+6\Z) = 12+6\Z = 2\times 6 + 6\Z = 0 + 6\Z$. Thus we have found a pair of zero divisors in $\Z/6\Z$, namely $3+6\Z$ and $4+6\Z$.
-        \item $(5+6\Z)^2 = 25+6\Z = (1 + 6\times4) + 6\Z = 1 + 6\Z$. Thus $5+6\Z$ is its own inverse in the quotient ring $\Z/6\Z$.
+        \item One sees that
+        \[
+            (3+6\Z)(4+6\Z) = 12+6\Z = 2\times 6 + 6\Z = 0 + 6\Z.
+        \]
+        Thus we have found a pair of zero divisors in $\Z/6\Z$, namely $3+6\Z$ and $4+6\Z$.
+        
+        \item One also sees that
+        \[
+            (5+6\Z)^2 = 25+6\Z = (1 + 6\times4) + 6\Z = 1 + 6\Z.
+        \] 
+        Thus $5+6\Z$ is its own inverse in the quotient ring $\Z/6\Z$.
     \end{itemize}
 \end{example}
 
@@ -200,10 +214,11 @@ To save us the hassle of testing whether a subset of a ring is an ideal, we intr
     We now work in the reverse direction by assuming the two statements hold. First we know that $(I,+) \leq (R,+)$ by virtue of statement 1 and by applying the subgroup test (\myref{thrm-subgroup-test}). Now statement 2 tells us that $ri \in I$ for any $r \in R$, in particular we may choose an $r \in I$ so that $ri \in I$. Therefore $I$ is closed under multiplication, and so $I$ is a subring of $R$. Finally, statement 2 is exactly the condition for $I$ to be an ideal.
 \end{proof}
 \begin{remark}
-    Like with the subgroup test (\myref{thrm-subgroup-test}), we can check whether $I$ is non-empty by seeing if the additive identity 0 is in $I$.
+    Like with the subgroup test (\myref{thrm-subgroup-test}), we can determine whether $I$ is non-empty by seeing if the additive identity 0 is in $I$.
 \end{remark}
 
 We end this section by noting two results with regards to ideals.
+
 \begin{proposition}\label{prop-ideal-contains-unit-iff-ideal-is-whole-ring}
     Let $R$ be a ring with identity and $I$ an ideal of $R$. Then $I$ contains a unit if and only if $I = R$.
 \end{proposition}
@@ -259,8 +274,6 @@ We first look at the sum of ideals.
     \end{itemize}
     Therefore $I + J$ is an ideal by the test for ideal.
 \end{proof}
-
-
 
 We now look at the product of ideals.
 \begin{definition}\index{ideal!product}
@@ -392,7 +405,7 @@ Let's first look at the definition of a prime ideal.
     Let $R$ be a commutative ring with identity. An proper ideal $P$ of $R$ is called a \term{prime ideal}\index{ideal!prime}\index{prime!ideal} if and only if whenever $ab \in P$ we have $a \in P$ or $b \in P$.
 \end{definition}
 
-This definition may seem weird, but is more natural when we consider the properties of prime numbers. Recall that Euclid's lemma (\myref{corollary-euclid}) tells us that if a prime $p$ divides $ab$, then either $p$ divides $a$ or $p$ divides $b$. Similarly, if the product $ab$ belongs in the prime ideal $P$, then either $a$ belongs in $P$ or $b$ belongs in $P$. However, prime ideals does not necessarily imply unique `factorization' like what occurs in the integers via the Fundamental Theorem of Arithmetic (\myref{thrm-fundamental-theorem-of-arithmetic}); we will explore the uniqueness criteria in a later chapter.
+This definition may seem weird, but is more natural when we consider one of the properties of prime numbers. Recall that Euclid's lemma (\myref{corollary-euclid}) tells us that if a prime $p$ divides $ab$, then either $p$ divides $a$ or $p$ divides $b$. Similarly, if the product $ab$ belongs in the prime ideal $P$, then either $a$ belongs in $P$ or $b$ belongs in $P$. However, prime ideals does not necessarily imply unique `factorization' like what occurs in the integers via the Fundamental Theorem of Arithmetic (\myref{thrm-fundamental-theorem-of-arithmetic}); we will explore the uniqueness criteria in a later chapter.
 
 We look at the connection between this definition of a prime ideal and prime numbers in the integers.
 \begin{proposition}\label{prop-ideals-of-Z}
@@ -555,7 +568,7 @@ To end this chapter, we look at two special ideals of a ring.
     Let $R$ be a commutative ring and let $A$ be a non-empty subset of $R$. Show that $\Ann{R}{A}$ is an ideal of $R$.
 \end{exercise}
 
-
+\newpage
 
 \section{Problems}
 \begin{problem}
