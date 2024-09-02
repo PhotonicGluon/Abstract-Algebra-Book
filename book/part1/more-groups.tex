@@ -445,7 +445,7 @@ A matrix\index{matrix} is a rectangular array of numbers, symbols, or expression
 
 For example,
 \[
-    \textbf{M} = \begin{pmatrix}
+    \mathbf{M} = \begin{pmatrix}
     1 & 2\\
     3 & 4\\
     5 & 6
@@ -453,27 +453,27 @@ For example,
 \]
 is a matrix. In this book, we consider only square matrices\index{matrix!square}, which have the same number of rows as columns. For example,
 \[
-    \textbf{A} = \begin{pmatrix}
+    \mathbf{A} = \begin{pmatrix}
     1 & 2 & 3\\
     4 & 5 & 6\\
     7 & 8 & 9
-    \end{pmatrix}, \textbf{B} = \begin{pmatrix}
+    \end{pmatrix}, \mathbf{B} = \begin{pmatrix}
     -1 & 0 & 1 & 1\\
     1 & 0 & -1 & 1\\
     1 & 1 & 1 & 1\\
     2 & 3 & 3 & 3
-    \end{pmatrix}, \textrm{ and } \textbf{C} = \begin{pmatrix}
+    \end{pmatrix}, \textrm{ and } \mathbf{C} = \begin{pmatrix}
     x & x^2\\
     x^3 & x^4\\
     \end{pmatrix}
 \]
-are square matrices. For brevity, for a matrix \textbf{M}, we denote the element in the $i$th row and the $j$th column by $m_{i,j}$ (where $1 \leq i, j \leq n$ with $n$ being the number of rows and columns in \textbf{M}). For example, using the above matrices, $a_{2,3} = 6$, $b_{2,4}=1$, and $c_{1,2} = x^2$.
+are square matrices. For brevity, for a matrix $\mathbf{M}$, we denote the element in the $i$th row and the $j$th column by $m_{i,j}$ (where $1 \leq i, j \leq n$ with $n$ being the number of rows and columns in $\mathbf{M}$). For example, using the above matrices, $a_{2,3} = 6$, $b_{2,4}=1$, and $c_{1,2} = x^2$.
 
-We now introduce the idea of \term{matrix multiplication}\index{matrix!multiplication}. Consider two square matrices \textbf{A} and \textbf{B} with the same number of rows and columns (say, $n$ rows and columns). Let their product, denoted \textbf{AB}, be the matrix \textbf{C}. Then
+We now introduce the idea of \term{matrix multiplication}\index{matrix!multiplication}. Consider two square matrices $\mathbf{A}$ and $\mathbf{B}$ with the same number of rows and columns (say, $n$ rows and columns). Let their product, denoted $\mathbf{AB}$, be the matrix $\mathbf{C}$. Then
 \[
     c_{i,j} = \sum_{k=1}^n a_{i,k}b_{k,j}
 \]
-for any $1 \leq i, j \leq n$. For example, if $\textbf{A} = \begin{pmatrix}1 & 2\\3 & 4\end{pmatrix}$ and $\textbf{B} = \begin{pmatrix}5 & 6\\7 & 8\end{pmatrix}$ then
+for any $1 \leq i, j \leq n$. For example, if $\mathbf{A} = \begin{pmatrix}1 & 2\\3 & 4\end{pmatrix}$ and $\mathbf{B} = \begin{pmatrix}5 & 6\\7 & 8\end{pmatrix}$ then
 \[
     \textbf{AB} = \begin{pmatrix}1\times5+2\times7 & 1\times6+2\times8\\3\times5+4\times7 & 3\times6+4\times8\end{pmatrix}
     = \begin{pmatrix}19 & 22\\43 & 50\end{pmatrix}.
@@ -495,51 +495,51 @@ Matrices can also be `multiplied' by real numbers (known as \term{scalar multipl
     1.23\begin{pmatrix}1 & 2\\3 & 4\end{pmatrix} = \begin{pmatrix}1.23 & 2.46\\3.69 & 4.92\end{pmatrix}.
 \]
 
-We now look at a special kind of square matrix: the \term{identity matrix of order $n$}\index{matrix!identity}. It is denoted $\textbf{I}_n$ and it is a matrix with $n$ rows and columns with 1s on the main diagonal and 0s everywhere else. For example, we have
+We now look at a special kind of square matrix: the \term{identity matrix of order $n$}\index{matrix!identity}. It is denoted $\IdentityM{n}$ and it is a matrix with $n$ rows and columns with 1s on the main diagonal and 0s everywhere else. For example, we have
 \[
-    \textbf{I}_2 = \begin{pmatrix}1 & 0\\0 & 1\end{pmatrix},
-    \textbf{I}_3 = \begin{pmatrix}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\end{pmatrix}, \text{ and }
-    \textbf{I}_4 = \begin{pmatrix}1 & 0 & 0 & 0\\0 & 1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{pmatrix}.
+    \IdentityM{2} = \begin{pmatrix}1 & 0\\0 & 1\end{pmatrix},
+    \IdentityM{3} = \begin{pmatrix}1 & 0 & 0\\0 & 1 & 0\\0 & 0 & 1\end{pmatrix}, \text{ and }
+    \IdentityM{4} = \begin{pmatrix}1 & 0 & 0 & 0\\0 & 1 & 0 & 0\\0 & 0 & 1 & 0\\0 & 0 & 0 & 1\end{pmatrix}.
 \]
-We note that for any matrix \textbf{M} with $n$ rows and columns,
+We note that for any matrix $\mathbf{M}$ with $n$ rows and columns,
 \[
-    \textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}.
+    \mathbf{M}\IdentityM{n} = \IdentityM{n}\mathbf{M} = \mathbf{M}.
 \]
 
-A square matrix may have an \term{inverse}\index{matrix!inverse}. Consider a square matrix \textbf{A} with $n$ rows and columns. Then \textbf{B} is an inverse of \textbf{A} if
+A square matrix may have an \term{inverse}\index{matrix!inverse}. Consider a square matrix $\mathbf{A}$ with $n$ rows and columns. Then $\mathbf{B}$ is an inverse of $\mathbf{A}$ if
 \[
-    \textbf{AB} = \textbf{BA} = \textbf{I}_n.
+    \mathbf{AB} = \mathbf{BA} = \IdentityM{n}.
 \]
 For example, consider the matrices
 \[
-    \textbf{A} = \begin{pmatrix}1&1&0\\ 0&1&0\\ 0&1&1\end{pmatrix} \text{ and } \textbf{B} = \begin{pmatrix}1&-1&0\\0&1&0\\0&-1&1\end{pmatrix}.
+    \mathbf{A} = \begin{pmatrix}1&1&0\\ 0&1&0\\ 0&1&1\end{pmatrix} \text{ and } \mathbf{B} = \begin{pmatrix}1&-1&0\\0&1&0\\0&-1&1\end{pmatrix}.
 \]
 Note that
 \[
-    \textbf{AB} = \textbf{BA} = \textbf{I}_3
+    \textbf{AB} = \textbf{BA} = \IdentityM{3}
 \]
-so \textbf{B} is the inverse of \textbf{A} (and \textbf{A} is the inverse of \textbf{B}). We denote the inverse of a square matrix \textbf{M} by $\textbf{M}^{-1}$. We note that $\textbf{I}_n^{-1} = \textbf{I}_n$ since $\textbf{I}_n\textbf{I}_n = \textbf{I}_n$ by definition of the identity matrix.
+so $\mathbf{B}$ is the inverse of $\mathbf{A}$ (and $\mathbf{A}$ is the inverse of $\mathbf{B}$). We denote the inverse of a square matrix $\mathbf{M}$ by $\mathbf{M}^{-1}$. We note that $\IdentityM{n}^{-1} = \IdentityM{n}$ since $\IdentityM{n}\IdentityM{n} = \IdentityM{n}$ by definition of the identity matrix.
 
-One last thing we introduce here is the \term{determinant}\index{matrix!determinant}. The determinant is only well defined for square matrices, and, for a square matrix $\textbf{A}$, is denoted by $\det(\textbf{A})$ (or $\det \textbf{A}$). The rule for the determinant changes as we increase the number of rows and columns in the square matrix, so we only look at small cases.
+One last thing we introduce here is the \term{determinant}\index{matrix!determinant}. The determinant is only well defined for square matrices, and, for a square matrix $\mathbf{A}$, is denoted by $\det(\mathbf{A})$ (or $\det \mathbf{A}$). The rule for the determinant changes as we increase the number of rows and columns in the square matrix, so we only look at small cases.
 \begin{itemize}
-    \item If the square matrix only has one row, then its determinant is the only element in the matrix. Thus, if $\textbf{A} = (a_{1,1})$ then $\det \textbf{A} = a_{1,1}$.
+    \item If the square matrix only has one row, then its determinant is the only element in the matrix. Thus, if $\mathbf{A} = (a_{1,1})$ then $\det \mathbf{A} = a_{1,1}$.
     \item If the square matrix has two rows, such as the matrix $\begin{pmatrix}a & b\\c & d\end{pmatrix}$, then its determinant is $ad-bc$.
     \item If the square matrix has three rows, like $\begin{pmatrix}a & b & c \\ d & e & f \\ g & h & i\end{pmatrix}$, then its determinant is $aei+bfg+cdh-ceg-bdi-afh$.
 \end{itemize}
-An important property of the determinant is that it is a multiplicative map --- for two square matrices \textbf{A} and \textbf{B},
+An important property of the determinant is that it is a multiplicative map --- for two square matrices $\mathbf{A}$ and $\mathbf{B}$,
 \[
-    \det (\textbf{AB}) = \det(\textbf{A}) \times \det(\textbf{B}).
+    \det (\mathbf{AB}) = \det(\mathbf{A}) \times \det(\mathbf{B}).
 \]
-Finally, not all square matrices has an inverse. The necessary and sufficient condition that determines whether a square matrix \textbf{M} has an inverse is whether $\det \textbf{M} \neq 0$. That is,
+Finally, not all square matrices has an inverse. The necessary and sufficient condition that determines whether a square matrix $\mathbf{M}$ has an inverse is whether $\det \mathbf{M} \neq 0$. That is,
 \[
-    \textbf{M}^{-1} \text{ exists if and only if } \det \textbf{M} \neq 0.
+    \mathbf{M}^{-1} \text{ exists if and only if } \det \mathbf{M} \neq 0.
 \]
 
 We conclude this subsection with a few properties of the determinant that we state but not prove.
 \begin{itemize}
-    \item $\det(\textbf{I}_n) = 1$.
-    \item $\det(\textbf{M}^{-1}) = \left(\det \textbf{M}\right)^{-1}$.
-    \item $\det(k\textbf{M}) = k^n \det\textbf{M}$ for a matrix \textbf{M} with $n$ rows and columns.
+    \item $\det(\IdentityM{n}) = 1$.
+    \item $\det(\mathbf{M}^{-1}) = \left(\det \mathbf{M}\right)^{-1}$.
+    \item $\det(k\mathbf{M}) = k^n \det\mathbf{M}$ for a matrix $\mathbf{M}$ with $n$ rows and columns.
 \end{itemize}
 
 \subsection{The General Linear Group Over the Real Numbers}\label{subsection-GLR-matrix-group}
@@ -548,7 +548,7 @@ With an introduction of matrices out of the way, we can introduce the first of t
 \begin{definition}
     The \term{General Linear Group of degree $n$}\index{general linear group} over the real numbers is denoted by $\GL{n}{\R}$ and is the group with set
     \[
-        \left\{\textbf{M} \vert \text{\textbf{M} is a matrix with } n \text{ rows and columns, and } \det \textbf{M} \neq 0\right\}
+        \left\{\mathbf{M} \vert \mathbf{M} \text{ is a matrix with } n \text{ rows and columns, and } \det \mathbf{M} \neq 0\right\}
     \]
     under the operation of matrix multiplication.
 \end{definition}
@@ -560,11 +560,11 @@ In other words, $\GL{n}{\R}$ is the group of real-valued matrices with $n$ rows 
 \begin{proof}
     We need to prove the four group axioms.
     \begin{itemize}
-        \item \textbf{Closure}: Consider two matrices $\textbf{A}, \textbf{B} \in \GL{n}{\R}$. Then that means that $\det \textbf{A} \neq 0$ and $\det \textbf{B} \neq 0$. Since $\det(\textbf{AB}) = (\det \textbf{A})(\det \textbf{B})$, thus $\det(\textbf{AB}) \neq 0$. Note also that $\textbf{AB}$ has $n$ rows and columns. Therefore $\textbf{AB} \in \GL{n}{\R}$, meaning that it is closed under matrix multiplication.
+        \item \textbf{Closure}: Consider two matrices $\mathbf{A}, \mathbf{B} \in \GL{n}{\R}$. Then that means that $\det \mathbf{A} \neq 0$ and $\det \mathbf{B} \neq 0$. Since $\det(\mathbf{AB}) = (\det \mathbf{A})(\det \mathbf{B})$, thus $\det(\mathbf{AB}) \neq 0$. Note also that $\textbf{AB}$ has $n$ rows and columns. Therefore $\textbf{AB} \in \GL{n}{\R}$, meaning that it is closed under matrix multiplication.
 
-        \item \textbf{Associativity}: Consider three matrices $\textbf{A}, \textbf{B}, \textbf{C} \in \GL{n}{\R}$.
+        \item \textbf{Associativity}: Consider three matrices $\mathbf{A}, \mathbf{B}, \mathbf{C} \in \GL{n}{\R}$.
         \begin{itemize}
-            \item Consider $(\textbf{AB})\textbf{C}$. Let $\textbf{R} = \textbf{AB}$ and $\textbf{S} = (\textbf{AB})\textbf{C}$. Then
+            \item Consider $(\mathbf{AB})\mathbf{C}$. Let $\mathbf{R} = \mathbf{AB}$ and $\mathbf{S} = (\mathbf{AB})\mathbf{C}$. Then
             \[
                 r_{i,k} = \sum_{l=1}^n a_{i,l}b_{l,k} \text{ and } s_{i,j} = \sum_{k=1}^n r_{i,k}c_{k,j}
             \]
@@ -572,7 +572,7 @@ In other words, $\GL{n}{\R}$ is the group of real-valued matrices with $n$ rows 
             \[
                 s_{i,j} = \sum_{k=1}^n \left(\sum_{l=1}^n a_{i,l}b_{l,k}\right)c_{k,j} = \sum_{k=1}^n \sum_{l=1}^n (a_{i,l}b_{l,k})c_{k,j}.
             \]
-            \item Now consider $\textbf{A}(\textbf{BC})$. Let $\textbf{R} = \textbf{BC}$ and $\textbf{S} = \textbf{A}(\textbf{BC})$. Then
+            \item Now consider $\mathbf{A}(\mathbf{BC})$. Let $\mathbf{R} = \mathbf{BC}$ and $\mathbf{S} = \mathbf{A}(\mathbf{BC})$. Then
             \[
                 r_{l,j} = \sum_{k=1}^nb_{l,k}c_{k,j} \text{ and } s_{i,j} = \sum_{l=1}^n a_{i,l}r_{l,j}
             \]
@@ -591,9 +591,9 @@ In other words, $\GL{n}{\R}$ is the group of real-valued matrices with $n$ rows 
         \]
         thereby proving that matrix multiplication is associative.
 
-        \item \textbf{Identity}: We note that $\det \textbf{I}_n = 1 \neq 0$, so $\textbf{I}_n \in \GL{n}{\R}$. Since $\textbf{MI}_n = \textbf{I}_n\textbf{M} = \textbf{M}$ for any matrix $\textbf{M} \in \GL{n}{\R}$, thus $\textbf{I}_n$ is the identity of $\GL{n}{\R}$.
+        \item \textbf{Identity}: We note that $\det \IdentityM{n} = 1 \neq 0$, so $\IdentityM{n} \in \GL{n}{\R}$. Since $\textbf{MI}_n = \IdentityM{n}\mathbf{M} = \mathbf{M}$ for any matrix $\mathbf{M} \in \GL{n}{\R}$, thus $\IdentityM{n}$ is the identity of $\GL{n}{\R}$.
 
-        \item \textbf{Inverse}: Let $\textbf{M} \in \GL{n}{\R}$. As $\det \textbf{M} \neq 0$, thus $\textbf{M}^{-1}$ exists. By properties of the determinant, we know that $\det \left(\textbf{M}^{-1}\right) = \left(\det \textbf{M}\right)^{-1}$, and since $\det \textbf{M} \neq 0$ thus $\det \textbf{M}^{-1} \neq 0$. Hence $\textbf{M}^{-1} \in \GL{n}{\R}$. Now because $\textbf{MM}^{-1} = \textbf{M}^{-1}\textbf{M} = \textbf{I}_n$, thus $\textbf{M}^{-1}$ is the inverse of \textbf{M} in $\GL{n}{\R}$.
+        \item \textbf{Inverse}: Let $\mathbf{M} \in \GL{n}{\R}$. As $\det \mathbf{M} \neq 0$, thus $\mathbf{M}^{-1}$ exists. By properties of the determinant, we know that $\det \left(\mathbf{M}^{-1}\right) = \left(\det \mathbf{M}\right)^{-1}$, and since $\det \mathbf{M} \neq 0$ thus $\det \mathbf{M}^{-1} \neq 0$. Hence $\mathbf{M}^{-1} \in \GL{n}{\R}$. Now because $\textbf{MM}^{-1} = \mathbf{M}^{-1}\mathbf{M} = \IdentityM{n}$, thus $\mathbf{M}^{-1}$ is the inverse of $\mathbf{M}$ in $\GL{n}{\R}$.
     \end{itemize}
     Therefore $\GL{n}{\R}$ is a group.
 \end{proof}
@@ -604,7 +604,7 @@ We look at another group of matrices: the Special Linear Group of degree $n$ ove
 \begin{definition}
     The \term{Special Linear Group of degree $n$}\index{special linear group} over the real numbers is denoted by $\SL{n}{\R}$ and is the group with set
     \[
-        \left\{\textbf{M} \vert \text{\textbf{M} is a matrix with } n \text{ rows and columns, and } \det \textbf{M} = 1\right\}
+        \left\{\mathbf{M} \vert \mathbf{M}\text{ is a matrix with } n \text{ rows and columns, and } \det \mathbf{M} = 1\right\}
     \]
     under matrix multiplication.
 \end{definition}
@@ -615,13 +615,13 @@ One sees clearly that $\SL{n}{\R}$ is a sub\textit{set} of $\GL{n}{\R}$ --- the 
     $\SL{n}{\R} \lhd \GL{n}{\R}$.
 \end{proposition}
 \begin{proof}
-    We consider the subgroup test. Clearly $\textbf{I}_n \in \SL{n}{\R}$ since its determinant is 1.
+    We consider the subgroup test. Clearly $\IdentityM{n} \in \SL{n}{\R}$ since its determinant is 1.
 
-    Let $\textbf{A}, \textbf{B} \in \SL{n}{\R}$. This means that $\det \textbf{A} = 1$ and $\det \textbf{B} = 1$. Note that $\det(\textbf{B}^{-1}) = (\det \textbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \textbf{A})(\det(\textbf{B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1} \in \SL{n}{\R}$. Hence by the subgroup test, $\SL{n}{\R} < \GL{n}{\R}$.
+    Let $\mathbf{A}, \mathbf{B} \in \SL{n}{\R}$. This means that $\det \mathbf{A} = 1$ and $\det \mathbf{B} = 1$. Note that $\det(\mathbf{B}^{-1}) = (\det \mathbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \mathbf{A})(\det(\mathbf{B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1} \in \SL{n}{\R}$. Hence by the subgroup test, $\SL{n}{\R} < \GL{n}{\R}$.
 
-    Now we prove normality of $\SL{n}{\R}$. Let $\textbf{M} \in \GL{n}{\R}$ and $\textbf{N} \in \SL{n}{\R}$. We are to show that $\textbf{MNM}^{-1} \in \SL{n}{\R}$. Since $\textbf{M} \in \GL{n}{\R}$ thus $\det \textbf{M} \neq 0$, meaning $\det \textbf{M}^{-1} = (\det \textbf{M})^{-1} \neq 0$. Also, $\textbf{N} \in \SL{n}{\R}$ implies $\det \textbf{N} = 1$. Hence,
+    Now we prove normality of $\SL{n}{\R}$. Let $\mathbf{M} \in \GL{n}{\R}$ and $\mathbf{N} \in \SL{n}{\R}$. We are to show that $\textbf{MNM}^{-1} \in \SL{n}{\R}$. Since $\mathbf{M} \in \GL{n}{\R}$ thus $\det \mathbf{M} \neq 0$, meaning $\det \mathbf{M}^{-1} = (\det \mathbf{M})^{-1} \neq 0$. Also, $\mathbf{N} \in \SL{n}{\R}$ implies $\det \mathbf{N} = 1$. Hence,
     \[
-        \det\left(\textbf{MNM}^{-1}\right) = (\det \textbf{M})(\det \textbf{N})(\det \textbf{M})^{-1} = \det \textbf{N} = 1
+        \det\left(\textbf{MNM}^{-1}\right) = (\det \mathbf{M})(\det \mathbf{N})(\det \mathbf{M})^{-1} = \det \mathbf{N} = 1
     \]
     which means that $\textbf{MNM}^{-1} \in \SL{n}{\R}$.
 
@@ -635,20 +635,20 @@ We end this section with a consequence of the First Isomorphism Theorem (\myref{
     $\GL{n}{\R} / \SL{n}{\R} \cong \R^\ast$.
 \end{proposition}
 \begin{proof}
-    Define the map $\phi: \GL{n}{\R} \to \R^\ast$ where $\textbf{M} \mapsto \det\textbf{M}$.
+    Define the map $\phi: \GL{n}{\R} \to \R^\ast$ where $\mathbf{M} \mapsto \det\mathbf{M}$.
 	\begin{itemize}
-	    \item \textbf{Homomorphism}: Take $\textbf{M}, \textbf{N} \in \GL{n}{\R}$. Then
+	    \item \textbf{Homomorphism}: Take $\mathbf{M}, \mathbf{N} \in \GL{n}{\R}$. Then
 	    \[
-	        \phi(\textbf{MN}) = \det(\textbf{MN}) = \det(\textbf{M})\det(\textbf{N}) = \phi(\textbf{M})\phi(\textbf{N})
+	        \phi(\textbf{MN}) = \det(\textbf{MN}) = \det(\mathbf{M})\det(\mathbf{N}) = \phi(\mathbf{M})\phi(\mathbf{N})
 	    \]
 	    which means that $\phi$ is a homomorphism.
 
-	    \item \textbf{Image}: We prove that $\phi$ is surjective to show that $\im \phi = \R^\ast$. Suppose $r \in \R^\ast$. Then $r^{\frac1n} \in \R^\ast$, and a matrix with $r^{\frac1n}$ on its main diagonal (written as $r^{\frac1n}\textbf{I}_n$ where $\textbf{I}_n$ is the identity matrix with $n$ rows and columns) is in $\GL{n}{\R}$. Note that $\det\left(r^{\frac1n}\textbf{I}_n\right) = \left(r^{\frac1n}\right)^n\det(\textbf{I}_n) = r$. Thus there is a pre-image of $r$ inside the codomain $\R^\ast$, meaning that $\phi$ is surjective. Hence, $\im \phi = \R^\ast$.
+	    \item \textbf{Image}: We prove that $\phi$ is surjective to show that $\im \phi = \R^\ast$. Suppose $r \in \R^\ast$. Then $r^{\frac1n} \in \R^\ast$, and a matrix with $r^{\frac1n}$ on its main diagonal (written as $r^{\frac1n}\IdentityM{n}$ where $\IdentityM{n}$ is the identity matrix with $n$ rows and columns) is in $\GL{n}{\R}$. Note that $\det\left(r^{\frac1n}\IdentityM{n}\right) = \left(r^{\frac1n}\right)^n\det(\IdentityM{n}) = r$. Thus there is a pre-image of $r$ inside the codomain $\R^\ast$, meaning that $\phi$ is surjective. Hence, $\im \phi = \R^\ast$.
 
 	    \item \textbf{Kernel}: Note that 1 is the identity in $\R^\ast$. Thus
 	    \begin{align*}
-	        \ker\phi &= \{\textbf{M} \in \GL{n}{\R} \vert \phi(\textbf{M}) = 1\} \\
-	        &= \{\textbf{M} \in \GL{n}{\R} \vert \det(\textbf{M}) = 1\}\\
+	        \ker\phi &= \{\mathbf{M} \in \GL{n}{\R} \vert \phi(\mathbf{M}) = 1\} \\
+	        &= \{\mathbf{M} \in \GL{n}{\R} \vert \det(\mathbf{M}) = 1\}\\
 	        &= \SL{n}{\R}.
 	    \end{align*}
 	\end{itemize}

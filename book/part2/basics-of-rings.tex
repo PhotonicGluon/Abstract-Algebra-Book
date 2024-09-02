@@ -270,14 +270,14 @@ The rings that we explored in previous sections can be thought of as the `obviou
 We looked at matrices in the context of the General/Special Linear Group of matrices (\myref{section-groups-of-matrices}). Here we see that matrices in fact form rings, known as matrix rings. Before that though, we need to define the operations within that ring.
 
 \begin{definition}[Matrix Addition]\index{matrix addition}
-    For any two matrices $\textbf{A}$ and $\textbf{B}$ with $n$ rows and columns and with entries in the ring $(R, \oplus, \otimes)$, their sum is the matrix $\textbf{C} = \textbf{A} + \textbf{B}$ with $n$ rows and columns such that
+    For any two matrices $\mathbf{A}$ and $\mathbf{B}$ with $n$ rows and columns and with entries in the ring $(R, \oplus, \otimes)$, their sum is the matrix $\mathbf{C} = \mathbf{A} + \mathbf{B}$ with $n$ rows and columns such that
     \[
         c_{i,j} = a_{i,j} \oplus b_{i,j}
     \]
     for all $i,j \in \{1, 2, \dots, n\}$.
 \end{definition}
 \begin{definition}[Matrix Multiplication]\index{matrix multiplication}
-    For any two matrices $\textbf{A}$ and $\textbf{B}$ with $n$ rows and columns and with entries in the ring $(R, \oplus, \otimes)$, their product is the matrix $\textbf{C} = \textbf{AB}$ with $n$ rows and columns such that, for all $i,j \in \{1, 2, \dots, n\}$, we have
+    For any two matrices $\mathbf{A}$ and $\mathbf{B}$ with $n$ rows and columns and with entries in the ring $(R, \oplus, \otimes)$, their product is the matrix $\mathbf{C} = \textbf{AB}$ with $n$ rows and columns such that, for all $i,j \in \{1, 2, \dots, n\}$, we have
     \begin{align*}
         c_{i,j} &= (a_{i,1}\otimes b_{1,j}) \oplus (a_{i,2}\otimes b_{2,j}) \oplus \cdots \oplus (a_{i,n}\otimes b_{n,j})\\
         &= \bigoplus_{k=1}^n (a_{i,k}\otimes b_{k,j}).
@@ -328,17 +328,17 @@ We can now define what is a matrix ring.
         \begin{itemize}
             \item \textbf{Closure}: Clearly the sum of any two matrices in $\Mn{n}{R}$ is also a square matrix with $n$ rows with elements inside $R$, meaning that $\Mn{n}{R}$ is closed under matrix addition.
 
-            \item \textbf{Associativity}: Let the matrices $\textbf{A}$, $\textbf{B}$, and $\textbf{C}$ belong inside $\Mn{n}{R}$. Let $\textbf{P} = \textbf{A} + (\textbf{B} + \textbf{C})$ and $\textbf{Q} = (\textbf{A} + \textbf{B}) + \textbf{C}$. We note that $\textbf{P} = \textbf{Q}$ as
+            \item \textbf{Associativity}: Let $\mathbf{A}, \mathbf{B}, \mathbf{C} \in \Mn{n}{R}$. Let $\mathbf{P} = \mathbf{A} + (\mathbf{B} + \mathbf{C})$ and $\mathbf{Q} = (\mathbf{A} + \mathbf{B}) + \mathbf{C}$. We note that $\mathbf{P} = \mathbf{Q}$ as
             \[
                 p_{i,j} = a_{i,j} \oplus (b_{i,j} \oplus c_{i,j}) = (a_{i,j} \oplus b_{i,j}) \oplus c_{i,j} = q_{i,j}
             \]
             by associativity of $\oplus$, which proves that matrix addition is associative.
 
-            \item \textbf{Identity}: We show that $\ZeroM{n}$ is the additive identity in $\Mn{n}{R}$. Let $\textbf{M} \in \Mn{n}{R}$; let $\textbf{N} = \textbf{M} + \ZeroM{n}$. Note that $n_{i,j} = m_{i,j} \oplus 0 = m_{i,j}$ so $\textbf{M} + \ZeroM{n} = \textbf{M}$. Therefore $\textbf{M} + \ZeroM{n} = \textbf{M}$ for any matrix in $\Mn{n}{R}$.
+            \item \textbf{Identity}: We show that $\ZeroM{n}$ is the additive identity in $\Mn{n}{R}$. Let $\mathbf{M} \in \Mn{n}{R}$; let $\mathbf{N} = \mathbf{M} + \ZeroM{n}$. Note that $n_{i,j} = m_{i,j} \oplus 0 = m_{i,j}$ so $\mathbf{M} + \ZeroM{n} = \mathbf{M}$. Therefore $\mathbf{M} + \ZeroM{n} = \mathbf{M}$ for any matrix in $\Mn{n}{R}$.
 
-            \item \textbf{Inverse}: Let $\textbf{A} \in \Mn{n}{R}$. Define the matrix $\textbf{B} = -\textbf{A}$ such that $b_{i,j} = -a_{i,j}$, i.e. $b_{i,j}$ is the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\textbf{A} + \textbf{B} = \ZeroM{n}$. (We denote the additive inverse of a matrix $\textbf{M}$ by $-\textbf{M}$).
+            \item \textbf{Inverse}: Let $\mathbf{A} \in \Mn{n}{R}$. Define the matrix $\mathbf{B} = -\mathbf{A}$ such that $b_{i,j} = -a_{i,j}$, i.e. $b_{i,j}$ is the additive inverse of $a_{i,j}$ in the ring $R$. Then one sees that $\mathbf{A} + \mathbf{B} = \ZeroM{n}$. (We denote the additive inverse of a matrix $\mathbf{M}$ by $-\mathbf{M}$).
 
-            \item \textbf{Commutative}: Let $\textbf{A}, \textbf{B} \in \Mn{n}{R}$. Set $\textbf{C} = \textbf{A} + \textbf{B}$ and $\textbf{D} = \textbf{B} + \textbf{A}$. Consider $c_{i,j} = a_{i,j} \oplus b_{i,j}$. Since $\oplus$ is commutative, thus $a_{i,j} \oplus b_{i,j} = b_{i,j} \oplus a_{i,j}$. But $d_{i,j} = b_{i,j} \oplus a_{i,j}$, so we have $c_{i,j} = d_{i,j}$. Therefore $\textbf{C} = \textbf{D}$.
+            \item \textbf{Commutative}: Let $\mathbf{A}, \mathbf{B} \in \Mn{n}{R}$. Set $\mathbf{C} = \mathbf{A} + \mathbf{B}$ and $\mathbf{D} = \mathbf{B} + \mathbf{A}$. Consider $c_{i,j} = a_{i,j} \oplus b_{i,j}$. Since $\oplus$ is commutative, thus $a_{i,j} \oplus b_{i,j} = b_{i,j} \oplus a_{i,j}$. But $d_{i,j} = b_{i,j} \oplus a_{i,j}$, so we have $c_{i,j} = d_{i,j}$. Therefore $\mathbf{C} = \mathbf{D}$.
         \end{itemize}
 
         \item \textbf{Multiplication-Semigroup}: We show that $(\Mn{n}{R}, \cdot)$ is a semigroup.
@@ -348,20 +348,20 @@ We can now define what is a matrix ring.
             \item \textbf{Associativity}: We proved that matrix multiplication is associative in \myref{subsection-GLR-matrix-group}.
         \end{itemize}
 
-        \item \textbf{Distributive}: We prove only $\textbf{A}(\textbf{B} + \textbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly. Let $\textbf{R} = \textbf{A}(\textbf{B} + \textbf{C})$, $\textbf{G} = \textbf{AB}$, and $\textbf{H} = \textbf{AC}$. We note
+        \item \textbf{Distributive}: We prove only $\mathbf{A}(\mathbf{B} + \mathbf{C}) = (\textbf{AB}) + (\textbf{AC})$ as the other case is proven similarly. Let $\mathbf{R} = \mathbf{A}(\mathbf{B} + \mathbf{C})$, $\mathbf{G} = \textbf{AB}$, and $\mathbf{H} = \textbf{AC}$. We note
         \begin{align*}
             r_{i,j} &= \bigoplus_{k=1}^n \left(a_{i,k} \otimes \left(b_{k,j} \oplus c_{k,j}\right)\right)\\
             &= \bigoplus_{k=1}^n \left((a_{i,k} \otimes b_{k,j}) \oplus (a_{i,k} \otimes c_{k,j})\right) & (\textbf{Distributive}\text{ axiom in }R)\\
             &= \left(\bigoplus_{k=1}^n (a_{i,k} \otimes b_{k,j})\right) \oplus \left(\bigoplus_{k=1}^n (a_{i,k} \otimes c_{k,j})\right)\\
             &= g_{i,j}\oplus h_{i,j}
         \end{align*}
-        which means $\textbf{R} = \textbf{G} + \textbf{H}$.
+        which means $\mathbf{R} = \mathbf{G} + \mathbf{H}$.
     \end{itemize}
     As all the ring axioms are satisfied, thus $\Mn{n}{R}$ is a ring.
 
-    We now show that $\Mn{n}{R}$ has a multiplicative identity, namely the identity matrix $\IdentityM{n}$. Let $\textbf{A} \in \Mn{n}{R}$ and let $\textbf{B} = \IdentityM{n}$. Note that $b_{i,j} = 1$ if and only if $i = j$.
+    We now show that $\Mn{n}{R}$ has a multiplicative identity, namely the identity matrix $\IdentityM{n}$. Let $\mathbf{A} \in \Mn{n}{R}$ and let $\mathbf{B} = \IdentityM{n}$. Note that $b_{i,j} = 1$ if and only if $i = j$.
     \begin{itemize}
-        \item Let $\textbf{C} = \textbf{AB}$ and we see
+        \item Let $\mathbf{C} = \textbf{AB}$ and we see
         \begin{align*}
             c_{i,j} &= \bigoplus_{k=1}^n(a_{i,k}\otimes b_{k,j})\\
             &= (a_{i,1}\otimes b_{1,j}) \oplus \cdots \oplus (a_{i,j-1}\otimes b_{j-1,j}) \oplus (a_{i,j}\otimes b_{j,j})\\
@@ -371,9 +371,9 @@ We can now define what is a matrix ring.
             &= 0 \oplus \cdots \oplus 0 \oplus a_{i,j} \oplus 0 \oplus \cdots \oplus 0\\
             &= a_{i,j}
         \end{align*}
-        so $\textbf{A}\IdentityM{n} = \textbf{A}$.
+        so $\mathbf{A}\IdentityM{n} = \mathbf{A}$.
 
-        \item Now let $\textbf{D} = \textbf{BA}$ and we also see
+        \item Now let $\mathbf{D} = \textbf{BA}$ and we also see
         \begin{align*}
             d_{i,j} &= \bigoplus_{k=1}^n(b_{i,k}\otimes a_{k,j})\\
             &= (b_{i,1}\otimes a_{1,j}) \oplus \cdots \oplus (b_{i,i-1}\otimes b_{i-1,j}) \oplus (b_{i,i}\otimes a_{i,j})\\
@@ -383,7 +383,7 @@ We can now define what is a matrix ring.
             &= 0 \oplus \cdots \oplus 0 \oplus a_{i,j} \oplus 0 \oplus \cdots \oplus 0\\
             &= a_{i,j}
         \end{align*}
-        so $\IdentityM{n}\textbf{A} = \textbf{A}$.
+        so $\IdentityM{n}\mathbf{A} = \mathbf{A}$.
     \end{itemize}
     Therefore the identity matrix $\IdentityM{n}$ is the multiplicative identity.
 
