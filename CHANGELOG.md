@@ -34,6 +34,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Made other minor changes to the text.
 
 ### Part I (Groups) Changes
+- Compacted the text in chapter 7.
 - Recreated diagrams in chapter 7 and chapter 8.
 - Fixed typo in the proof of theorem 10.2.3.
 - Made corollary 13.4.2 more verbose.
