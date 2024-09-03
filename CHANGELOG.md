@@ -54,7 +54,8 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Shortened example 24.1.3 slightly.
 - Removed underbraces in the proof of theorem 24.2.6.
 - Split definition 25.1.4 into two different definitions.
-- Cleaned up the proof of proposition 25.1.6.
+- Cleaned up the proof of proposition 25.1.5 and proposition 25.1.6.
+- Made the statement of exercise 25.4 more concise.
 - Made other minor changes to the text.
 
 ### Part III (Fields) Changes
