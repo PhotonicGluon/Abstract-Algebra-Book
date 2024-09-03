@@ -64,6 +64,12 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Split definition 25.1.4 into two different definitions.
 - Cleaned up the proof of proposition 25.1.5 and proposition 25.1.6.
 - Made the statement of exercise 25.4 more concise.
+- Rewritten the proof of theorem 26.3.1 (Transformation Rule).
+- Reordered the statements in proposition 27.2.4.
+- Shortened section 27.3.
+- Rewritten definition 27.4.2.
+- Edited the preamble to chapter 28.
+- Edited the content of section 28.4.
 - Made other minor changes to the text.
 
 ### Part III (Fields) Changes
