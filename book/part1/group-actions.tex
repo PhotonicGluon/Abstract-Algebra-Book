@@ -21,7 +21,7 @@ Often the function $\alpha(g, x)$ is often written as $g \cdot x$ instead. Note 
 \end{itemize}
 
 \begin{example}
-    Consider the group $G = \Sn{n}$ and the set $X = \{1, 2, 3, \dots, n\}$. Then $G$ acts naturally on $X$ by the function $\alpha$, where $\alpha(g, x) = g(x)$. That is, $g \cdot x = g(x)$ in this case. We note that the axioms are satisfied.
+    Consider $G = \Sn{n}$ and $X = \{1, 2, 3, \dots, n\}$. Then $G$ acts naturally on $X$ by the function $\alpha$, where $\alpha(g, x) = g(x)$. That is, $g \cdot x = g(x)$ in this case. We note that the axioms are satisfied.
     \begin{itemize}
         \item \textbf{Identity}: $\id \cdot x = \id(x) = x$.
         \item \textbf{Compatibility}: $g \cdot (h \cdot x) = g(h(x)) = (g \circ h)(x) = (gh) \cdot x$.
@@ -124,6 +124,8 @@ This theorem is useful because it may sometimes be useful to use \myref{definiti
     Therefore, this shows that the maps $\alpha \mapsto \phi$ and $\phi \mapsto \alpha$ are inverses of each other, meaning \myref{definition-group-action} and \myref{definition-group-action-alt} are equivalent.
 \end{proof}
 
+\newpage
+
 \section{Fixed Points, Stabilizers, and Orbits}
 We first look at the definition of a fixed point in relation to group actions.
 
@@ -160,8 +162,6 @@ We can now look at the stabilizer of an element in $X$.
     \end{itemize}
     To summarise, $\Stab{G}{0} = G$ and $\Stab{G}{x} = \{e\}$ if $x \neq 0$.
 \end{example}
-
-
 
 \begin{exercise}
     Let $X = \{1, 2, 3\}$, and let $\Sn{3}$ act on $X$. What are the stabilizers of each of the 3 elements in $X$?
@@ -256,8 +256,6 @@ Let's think about the symmetric group of a cube (call it $G$) and suppose $G$ ac
 \end{enumerate}
 Thus, the total number of elements in the symmetric group of a cube is 24, i.e. $|G| = 24$. Generally, the number of elements of a transformation group $G$ is the product of the order of the stabilizer and the cardinality of the orbit of an element $x$ in the $G$-set.
 
-
-
 Formally, this is captured in the Orbit-Stabilizer Theorem.
 \begin{theorem}[Orbit-Stabilizer]\label{thrm-orbit-stabilizer}\index{Orbit-Stabilizer Theorem}
     Let $G$ be a group that acts on a finite set $X$. Let $x \in X$. Then
@@ -268,11 +266,11 @@ Formally, this is captured in the Orbit-Stabilizer Theorem.
 \end{theorem}
 
 \begin{proof}[Proof (see {\cite[Theorem 10.16]{humphreys_1996}})]
-    We consider the map $f_x: G/\Stab{G}{x} \to \Orb{G}{x}$ given by $g\Stab{G}{x} \mapsto g \cdot x$ (note that $f_x$ is \textit{not} a homomorphism as $\Orb{G}{x}$ is not a group). We prove that $f_x$ is a well-defined bijection.
+    Consider the map $f_x: G/\Stab{G}{x} \to \Orb{G}{x}$ given by $g\Stab{G}{x} \mapsto g \cdot x$ (note that $f_x$ is \textbf{not} a homomorphism as $\Orb{G}{x}$ is not a group). We prove that $f_x$ is a well-defined bijection.
     \begin{itemize}
-        \item \textbf{Well-defined}: Let $g, h \in G$ such that $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality, statements 1 and 5, this means that $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
+        \item \textbf{Well-defined}: Let $g, h \in G$ such that $g\Stab{G}{x} = h\Stab{G}{x}$. By Coset Equality, statements 1 and 5, this means $g^{-1}h \in \Stab{G}{x}$. Furthermore, by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}, this means that $g\cdot x = h\cdot x$. Hence, $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning that $f_x$ is well-defined.
 
-        \item \textbf{Injective}: Let $g, h \in G$ such that $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$, so $g^{-1}h \in \Stab{G}{x}$ by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality, statements 1 and 5, meaning $f_x$ is injective.
+        \item \textbf{Injective}: Let $g, h \in G$ such that $f_x(g\Stab{G}{x}) = f_x(h\Stab{G}{x})$, meaning $g\cdot x = h\cdot x$, so $g^{-1}h \in \Stab{G}{x}$ by \myref{exercise-group-action-outputs-equal-iff-gh^-1-in-stabilizer}. Hence $g\Stab{G}{x} = h\Stab{G}{x}$ by Coset Equality, statements 1 and 5, thus showing that $f_x$ is injective.
 
         \item \textbf{Surjective}: Suppose $y \in \Orb{G}{x}$. This means that there exists $g \in G$ such that $g\cdot x = y$. Note $f_x(g\Stab{G}{x}) = g\cdot x = y$ by definition of $f_x$. Hence, the pre-image of $y$ is $g\Stab{G}{x}$, meaning that $f_x$ is surjective.
     \end{itemize}
@@ -280,7 +278,7 @@ Formally, this is captured in the Orbit-Stabilizer Theorem.
 \end{proof}
 
 \begin{exercise}
-    Let $G = \Sn{n}$ be a transformation group and $X = \{1, 2, 3, \dots, n\}$ be a $G$-set.
+    Let $G = \Sn{n}$ be a transformation group and consider the $G$-set $X = \{1, 2, 3, \dots, n\}$.
     \begin{partquestions}{\roman*}
         \item Show that the group action is transitive.
         \item Find the order of the stabilizer of $x \in X$ by $G$.
@@ -300,6 +298,13 @@ Burnside's lemma gives a way to count the number of orbits of a finite set acted
 \begin{remark}
     The number of distinct orbits is given by the number of elements of the set $X/G$, i.e. $|X/G|$.
 \end{remark}
+
+\begin{example}
+    Consider again the group $G = \{e, g\}$ with $g^2 = e$ and let $G$ act on the set $X = \Z$ such that $e \cdot x = x$ and $g \cdot x = -x$. Then one sees that
+    \[
+        X/G = \left\{\{0\}, \{1, -1\}, \{2, -2\}, \dots\right\}.
+    \]
+\end{example}
 
 We are now ready to introduce Burnside's lemma.
 \begin{lemma}[Burnside]\label{lemma-burnside}\index{Burnside's Lemma}
@@ -321,12 +326,12 @@ In other words, Burnside's lemma tells us that the number of orbits is the avera
         &= \sum_{x\in X} |\{g \in G \vertalt g\cdot x = x\}|\\
         &= \sum_{x\in X} |\Stab{G}{x}|.
     \end{align*}
-    One sees that $|\Stab{G}{x}| = \frac{|G|}{|\Orb{G}{x}|}$ by the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}). Thus,
+    the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}) tells us that $|\Stab{G}{x}| = \frac{|G|}{|\Orb{G}{x}|}$. Thus,
     \begin{align*}
         \sum_{x\in X} |\Stab{G}{x}| &= \sum_{x\in X} \frac{|G|}{|\Orb{G}{x}|}\\
         &= |G|\sum_{x\in X} \frac{1}{|\Orb{G}{x}|}.
     \end{align*}
-    Notice that $X$ is the disjoint union of all orbits in $X/G$ (\myref{prop-distinct-orbits-partition-set}), which means the sum over $X$ may be broken up into separate sums over each individual orbit. Thus,
+    Note that $X$ is the disjoint union of all orbits in $X/G$ (\myref{prop-distinct-orbits-partition-set}), which means the sum over $X$ may be broken up into separate sums over each individual orbit. Thus,
     \begin{align*}
         \sum_{x\in X} \frac{1}{|\Orb{G}{x}|} &= \sum_{\Orb{G}{x} \in X/G}\left(\sum_{x \in \Orb{G}{x}} \frac{1}{|\Orb{G}{x}|}\right)\\
         &= \sum_{\Orb{G}{x} \in X/G} 1\\
@@ -511,6 +516,8 @@ An immediate consequence of this is that every element must have an order that i
     where $|\CenterGrp{\Sn{3}}| = |\{e\}| = 1$.
 \end{example}
 
+\newpage
+
 \begin{exercise}
     The Cayley table of $D_3$ is in \myref{example-presentation-of-D3}.
     \begin{partquestions}{\alph*}
@@ -571,7 +578,7 @@ To end this chapter, we prove Cauchy's Group Theorem.
     For a finite group $G$ with order $np$ where $p$ is prime and $n$ is a positive integer, show that $G$ has a subgroup of order $p$.
 \end{exercise}
 
-
+\newpage
 
 \section{Problems}
 \begin{problem}

@@ -43,6 +43,11 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Edited exercise 14.6 to be more concise.
 - Rewritten the proof of lemma 14.3.4 to be slightly more concise.
 - Edited definition 14.3.7, splitting the parity definition away from the evenness and oddness definition.
+- Slightly rephrased exercise 15.7.
+- Added new example (example 15.4.2) before Burnside's lemma.
+- Edited the proof of (the former) lemma 15.4.2 (Burnside).
+- Added a small remark after the proof of corollary 16.1.3 on the usefulness of the First Sylow Theorem.
+- Edited the proof of theorem 16.4.1 (Sylow II) to be clearer.
 - Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
 - Made other minor changes to the text.
 

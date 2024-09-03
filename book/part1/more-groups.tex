@@ -23,6 +23,8 @@ We previously covered several properties of cyclic groups.
 
 Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead of $\Z_n$. This may be sometimes used to distinguish (finite) cyclic subgroups of a group from the integers modulo $n$.
 
+\newpage
+
 \begin{theorem}\label{thrm-order-of-element-in-cyclic-group}
     Let $\Cn{n}$ have generator $g$. Let $x = g^k$ for some integer $k$. Then
     \[
@@ -59,6 +61,9 @@ Note that we may denote the finite cyclic group of order $n$ by $\Cn{n}$ instead
 
 \section{The Quaternion Group}
 We look at an interesting group that has use in computer graphics: the quaternion group. We present one definition here.
+
+\newpage
+
 \begin{definition}\label{definition-quaternion-group}
     The \term{quaternion group}\index{quaternion group} is
     \[
@@ -120,10 +125,11 @@ We call transpositions which has cycle decomposition $\begin{pmatrix}i&i+1\end{p
 We look at one lemma which can help `break up' transpositions into a composition of adjacent transpositions.
 
 \begin{lemma}\label{lemma-decompose-transposition}
-    For brevity, let $\tau_{a,b} = (a\quad b)$. Let $i$ and $d$ be positive integers. Then
-    \[
-        \tau_{i,i+d} = \tau_{i,i+1}\tau_{i+1,i+2}\cdots\tau_{i+d-2,i+d-1}\tau_{i+d-1,i+d}\tau_{i+d-2,i+d-1}\cdots\tau_{i+1,i+2}\tau_{i,i+1}.
-    \]
+    For brevity, let $\tau_{a,b} = (a\quad b)$ for any positive integers $a$ and $b$. Let $i$ and $d$ be positive integers. Then
+    \begin{align*}
+        &\tau_{i,i+d}\\
+        &=\tau_{i,i+1}\tau_{i+1,i+2}\cdots\tau_{i+d-2,i+d-1}\tau_{i+d-1,i+d}\tau_{i+d-2,i+d-1}\cdots\tau_{i+1,i+2}\tau_{i,i+1}.
+    \end{align*}
 \end{lemma}
 
 \begin{proof}
@@ -136,10 +142,10 @@ We look at one lemma which can help `break up' transpositions into a composition
         &\tau_{i, i+(d+1)}\\
         &= \tau_{i,i+1}\tau_{i+1,i+(d+1)}\tau_{i,i+1}\\
         &= \tau_{i,i+1}\tau_{(i+1),(i+1)+d}\tau_{i,i+1}\\
-        &= \tau_{i,i+1}(\tau_{(i+1),(i+1)+1}\cdots\tau_{(i+1)+d-2,(i+1)+d-1}\tau_{(i+1)+d-1,(i+1)+d}\tau_{(i+1)+d-2,(i+1)+d-1}\\
-        &\quad\quad\cdots\tau_{(i+1),(i+1)+1})\tau_{i,i+1}\\
-        &= \tau_{i,i+1}\tau_{i+1,i+2}\cdots\tau_{i+(d+1)-2,i+(d+1)-1}\tau_{i+(d+1)-1,i+(d+1)}\tau_{i+(d+1)-2,i+(d+1)-1}\\
-        &\quad\quad\cdots\tau_{i+1,i+2}\tau_{i,i+1}
+        &= \tau_{i,i+1}(\tau_{(i+1),(i+1)+1}\cdots\tau_{(i+1)+d-2,(i+1)+d-1}\tau_{(i+1)+d-1,(i+1)+d}\\
+        &\quad\quad\tau_{(i+1)+d-2,(i+1)+d-1}\cdots\tau_{(i+1),(i+1)+1})\tau_{i,i+1}\\
+        &= \tau_{i,i+1}\tau_{i+1,i+2}\cdots\tau_{i+(d+1)-2,i+(d+1)-1}\tau_{i+(d+1)-1,i+(d+1)}\\
+        &\quad\quad\tau_{i+(d+1)-2,i+(d+1)-1}\cdots\tau_{i+1,i+2}\tau_{i,i+1}
     \end{align*}
     which shows that $d+1$ works as well.
 \end{proof}
@@ -153,7 +159,7 @@ We look at one lemma which can help `break up' transpositions into a composition
     \]
 \end{example}
 \begin{exercise}
-    Write $\begin{pmatrix}2&6\end{pmatrix}$ into a composition of adjacent transpositions.
+    Write the transposition $\begin{pmatrix}2&6\end{pmatrix}$ into a composition of adjacent transpositions.
 \end{exercise}
 
 \subsection{Links with Permutations}
@@ -161,7 +167,7 @@ We look at one lemma which can help `break up' transpositions into a composition
     Let $\sigma$ be a permutation in $\Sn{n}$. Then $\sigma$ can be expressed as a product of transpositions.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[\S 80 Corollary]{clark_1984}})]
-    For the identity $\id$ it can be expressed as $(a\quad b)(a \quad b)$. Otherwise, for any permutation $\sigma = \begin{pmatrix}a_1 & a_2 & a_3 & \cdots & a_k\end{pmatrix}$ where $k \geq 2$, we can write
+    For the identity $\id$ it can be expressed as $(a\quad b)(a \quad b)$. Otherwise, for any $k \geq 2$, we see that any permutation $\sigma = \begin{pmatrix}a_1 & a_2 & a_3 & \cdots & a_k\end{pmatrix}$ can be written as
     \[
         \sigma = \begin{pmatrix}a_1 & a_k\end{pmatrix}\begin{pmatrix}a_1 & a_{k-1}\end{pmatrix}\begin{pmatrix}a_1 & a_{k-2}\end{pmatrix}\cdots\begin{pmatrix}a_1 & a_3\end{pmatrix}\begin{pmatrix}a_1 & a_2\end{pmatrix}
     \]
@@ -217,6 +223,7 @@ Counting the number of inversions in a permutation may be hard to do, so we have
 \end{proof}
 
 We look at one final useful construct: the sign of a permutation.
+
 \begin{definition}
     The \term{sign of a permutation}\index{permutation!sign} is $+1$ if the permutation is even and $-1$ if the permutation is odd.
 \end{definition}
@@ -343,7 +350,7 @@ We look at a useful group in Number Theory: the group of units modulo $n$.
 
         \item \textbf{Inverse}: Let $x \in \Un{n}$, meaning $\gcd(x, n) = 1$. Then \myref{prop-multiplicative-inverse-exists-iff-coprime} tells us that there exists an $m$ such that $mx \equiv 1 \pmod n$. Therefore $m \otimes_n x = 1$, which means $m$ is the inverse of $x$.
     \end{itemize}
-    Now multiplication is commutative (\myref{axiom-multiplication-is-commutative}), so multiplication modulo $n$ is also commutative. Thus $\Un{n}$ is an abelian group under $\otimes_n$.
+    Now since multiplication is commutative (\myref{axiom-multiplication-is-commutative}), so multiplication modulo $n$ is also commutative. Thus $\Un{n}$ is an abelian group under $\otimes_n$.
 \end{proof}
 
 \begin{exercise}
@@ -359,7 +366,7 @@ A useful Number Theory function that will occur frequently in this section is Eu
     \[
         \totient(x) = \left|\{n \in \Z \vert 1 \leq n < x \text{ and } \gcd(n, x) = 1\}\right|.
     \]
-    In particular, if the positive integer $x = p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$, where $p_1, p_2, \dots, p_k$ are \textit{distinct} primes and $n_1,n_2,\dots,n_k$ are positive integers, then
+    In particular, if $x = p_1^{n_1}p_2^{n_2}\cdots p_k^{n_k}$ where $p_1, p_2, \dots, p_k$ are \textbf{distinct} primes and $n_1,n_2,\dots,n_k$ are positive integers, then
     \[
         \totient(x) = x \left(1 - \frac1{p_1}\right)\left(1 - \frac1{p_2}\right)\cdots\left(1 - \frac1{p_k}\right).
     \]
@@ -373,6 +380,7 @@ A useful Number Theory function that will occur frequently in this section is Eu
 \end{exercise}
 
 We look at the specific case where an element of $\Un{n}$ has order $\totient(n)$.
+
 \begin{definition}
     Let $a$ and $n$ be positive integers such that $a < n$. Suppose $\gcd(a, n) = 1$. Then $a$ is a \term{primitive root modulo $n$}\index{primitive root} if $|a| = \totient(n)$ in $\Un{n}$.
 \end{definition}
@@ -395,6 +403,7 @@ We note that we have a way to determine whether a primitive root modulo $n$ exis
 \end{remark}
 
 We end this section by looking at an alternate representation of $\Un{n}$.
+
 \begin{definition}
     Define the group
     \[
@@ -593,7 +602,7 @@ In other words, $\GL{n}{\R}$ is the group of real-valued matrices with $n$ rows 
 
         \item \textbf{Identity}: We note that $\det \IdentityM{n} = 1 \neq 0$, so $\IdentityM{n} \in \GL{n}{\R}$. Since $\textbf{MI}_n = \IdentityM{n}\mathbf{M} = \mathbf{M}$ for any matrix $\mathbf{M} \in \GL{n}{\R}$, thus $\IdentityM{n}$ is the identity of $\GL{n}{\R}$.
 
-        \item \textbf{Inverse}: Let $\mathbf{M} \in \GL{n}{\R}$. As $\det \mathbf{M} \neq 0$, thus $\mathbf{M}^{-1}$ exists. By properties of the determinant, we know that $\det \left(\mathbf{M}^{-1}\right) = \left(\det \mathbf{M}\right)^{-1}$, and since $\det \mathbf{M} \neq 0$ thus $\det \mathbf{M}^{-1} \neq 0$. Hence $\mathbf{M}^{-1} \in \GL{n}{\R}$. Now because $\textbf{MM}^{-1} = \mathbf{M}^{-1}\mathbf{M} = \IdentityM{n}$, thus $\mathbf{M}^{-1}$ is the inverse of $\mathbf{M}$ in $\GL{n}{\R}$.
+        \item \textbf{Inverse}: Let $\mathbf{M} \in \GL{n}{\R}$. As $\det \mathbf{M} \neq 0$, thus $\mathbf{M}^{-1}$ exists. By the properties of the determinant, we see that $\det \left(\mathbf{M}^{-1}\right) = \left(\det \mathbf{M}\right)^{-1}$, and since $\det \mathbf{M} \neq 0$ thus $\det \mathbf{M}^{-1} \neq 0$. Hence $\mathbf{M}^{-1} \in \GL{n}{\R}$. Now because $\textbf{MM}^{-1} = \mathbf{M}^{-1}\mathbf{M} = \IdentityM{n}$, thus $\mathbf{M}^{-1}$ is the inverse of $\mathbf{M}$ in $\GL{n}{\R}$.
     \end{itemize}
     Therefore $\GL{n}{\R}$ is a group.
 \end{proof}
@@ -609,7 +618,7 @@ We look at another group of matrices: the Special Linear Group of degree $n$ ove
     under matrix multiplication.
 \end{definition}
 
-One sees clearly that $\SL{n}{\R}$ is a sub\textit{set} of $\GL{n}{\R}$ --- the set of $\GL{n}{\R}$ requires non-zero determinant while the set of $\SL{n}{\R}$ requires the determinant to be 1, which satisfies the non-zero determinant requirement. What we want to prove here is that $\SL{n}{\R}$ is a sub\textit{group} of $\GL{n}{\R}$. In fact, it is a normal subgroup of $\GL{n}{\R}$.
+One sees clearly that $\SL{n}{\R}$ is a sub\textbf{set} of $\GL{n}{\R}$, where $\GL{n}{\R}$ requires non-zero determinant while the set of $\SL{n}{\R}$ requires the determinant to be 1, which satisfies the non-zero determinant requirement. What we want to prove here is that $\SL{n}{\R}$ is a sub\textbf{group} of $\GL{n}{\R}$. In fact, it is a normal subgroup of $\GL{n}{\R}$.
 
 \begin{proposition}
     $\SL{n}{\R} \lhd \GL{n}{\R}$.
@@ -617,7 +626,7 @@ One sees clearly that $\SL{n}{\R}$ is a sub\textit{set} of $\GL{n}{\R}$ --- the 
 \begin{proof}
     We consider the subgroup test. Clearly $\IdentityM{n} \in \SL{n}{\R}$ since its determinant is 1.
 
-    Let $\mathbf{A}, \mathbf{B} \in \SL{n}{\R}$. This means that $\det \mathbf{A} = 1$ and $\det \mathbf{B} = 1$. Note that $\det(\mathbf{B}^{-1}) = (\det \mathbf{B})^{-1} = 1^{-1} = 1$. Thus, $\det \textbf{AB}^{-1} = (\det \mathbf{A})(\det(\mathbf{B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1} \in \SL{n}{\R}$. Hence by the subgroup test, $\SL{n}{\R} < \GL{n}{\R}$.
+    Let $\mathbf{A}, \mathbf{B} \in \SL{n}{\R}$. This means that $\det \mathbf{A} = 1$ and $\det \mathbf{B} = 1$. Note that $\det(\mathbf{B}^{-1}) = (\det \mathbf{B})^{-1} = 1^{-1} = 1$. Thus we see that $\det \textbf{AB}^{-1} = (\det \mathbf{A})(\det(\mathbf{B}^{-1})) = 1 \times 1  = 1$ which means that $\textbf{AB}^{-1} \in \SL{n}{\R}$. Hence by the subgroup test, $\SL{n}{\R} < \GL{n}{\R}$.
 
     Now we prove normality of $\SL{n}{\R}$. Let $\mathbf{M} \in \GL{n}{\R}$ and $\mathbf{N} \in \SL{n}{\R}$. We are to show that $\textbf{MNM}^{-1} \in \SL{n}{\R}$. Since $\mathbf{M} \in \GL{n}{\R}$ thus $\det \mathbf{M} \neq 0$, meaning $\det \mathbf{M}^{-1} = (\det \mathbf{M})^{-1} \neq 0$. Also, $\mathbf{N} \in \SL{n}{\R}$ implies $\det \mathbf{N} = 1$. Hence,
     \[
@@ -788,7 +797,7 @@ Before we can state the consequence, we revisit the idea of the center of a grou
     \]
 \end{proof}
 
-
+\newpage
 
 \section{Problems}
 \begin{problem}
