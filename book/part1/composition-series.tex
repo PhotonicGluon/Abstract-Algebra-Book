@@ -95,6 +95,8 @@ There is an important consequence that we examine here.
 \section{Composition Series}
 We can now look at a more interesting type of subnormal series: composition series.
 
+\newpage
+
 \begin{definition}
     Let $G$ be a group. A \term{composition series}\index{composition series} of $G$ is a subnormal series of finite length
     \[
@@ -145,10 +147,10 @@ For composition series, we often write a group that is isomorphic to the subgrou
     All composition series' lengths are all 3.
 \end{example}
 
-\textbf{Important note}: It is crucial to remember that all of the groups written in the composition series (except for the trivial group and the group itself) represent \textit{subgroups} of the group itself (up to isomorphism), not the actual groups themselves.
+\textbf{Important note}: It is crucial to remember that all of the groups written in the composition series (except for the trivial group and the group itself) represent \textbf{subgroups} of the group itself (up to isomorphism), not the actual groups themselves.
 
 \begin{exercise}
-    Find the two composition series for $\Cn{6}$ (up to isomorphism), their composition lengths, and their composition factors (up to isomorphism).
+    Find the two unique composition series for $\Cn{6}$ (up to isomorphism), their composition lengths, and their composition factors (up to isomorphism).
 \end{exercise}
 
 One might wonder which groups have a composition series. As mentioned, not all groups have a composition series.
@@ -193,7 +195,7 @@ However, finite groups will definitely have a composition series.
 \end{proof}
 
 \section{Zassenhaus' Lemma}
-Before we continue with the core result of this chapter, we look at Zassenhaus' lemma, which is sometimes called the Fourth Isomorphism Theorem\index{isomorphism theorem!group!fourth}. The proof of this lemma is fairly technical, but we try to include as much detail as necessary to clarify difficult parts of the proof.
+Before we continue with the core result of this chapter, we look at Zassenhaus' lemma, which may be called the Fourth Isomorphism Theorem\index{isomorphism theorem!group!fourth}.
 
 \begin{lemma}[Zassenhaus]\label{lemma-zassenhaus}\index{Zassenhaus' Lemma}
     Let $G$ be a group. Let $H$, $H'$, $K$, and $K'$ be subgroups of $G$ such that $H' \unlhd H$ and $K' \unlhd K$. Then
@@ -204,8 +206,11 @@ Before we continue with the core result of this chapter, we look at Zassenhaus' 
     \end{enumerate}
     where an expression like $H'(H \cap K')$ denotes the subset product of $H'$ and $H \cap K'$.
 \end{lemma}
+
+The proof of this lemma is fairly technical, but we try to include as much detail as necessary to clarify difficult parts of the proof.
+
 \begin{proofsketch}
-    First show that $\mathcal{A} = (H' \cap K)(H \cap K')$ is a normal subgroup of $H \cap K$. Then construct the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$, $hc \mapsto h\mathcal{A}$ where $h \in H'$ and $c \in H \cap K$, verifying that it is a well-defined homomorphism. Showing that the kernel of this homomorphism is $H'(H \cap K')$ and knowing that the kernel is a normal subgroup of $H'(H\cap K)$ is sufficient to prove statement 1 of the lemma. Constructing a similar well-defined homomorphism $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, and finding its kernel proves statement 2. Finally, using the First Isomorphism Theorem (\myref{thrm-isomorphism-1}) on both homomorphisms proves statement 3.
+    First show that $\mathcal{A} = (H' \cap K)(H \cap K')$ is a normal subgroup of $H \cap K$. Then construct the map $\phi: H'(H\cap K) \to (H\cap K)/\mathcal{A}$, $hc \mapsto h\mathcal{A}$ where $h \in H'$ and $c \in H \cap K$, verifying that it is a well-defined homomorphism. Showing that the kernel of this homomorphism is $H'(H \cap K')$ and knowing that it is a normal subgroup of $H'(H\cap K)$ is sufficient to prove statement 1 of the lemma. Constructing a similar well-defined homomorphism $\psi: K'(H\cap K) \to (H\cap K)/\mathcal{A}$, and finding its kernel proves statement 2. Finally, using the First Isomorphism Theorem (\myref{thrm-isomorphism-1}) on both homomorphisms proves statement 3.
 \end{proofsketch}
 \begin{proof}[Proof (see {\cite[Lemma I.8.9]{hungerford_1980}})]
     We first note that $H \cap K$ is a non-empty subset of $H$ since $e \in H \cap K$. As $H'$ is a normal subgroup of any non-empty subset of $H$, including $H \cap K$, thus $H' \unlhd H \cap K$. So $H' \cap (H \cap K) \unlhd H \cap K$ by the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 4. Since $H'\unlhd H$ we know $H' \subseteq H$, and thus $H' \cap (H \cap K) = H' \cap K$, meaning $H' \cap K \unlhd H \cap K$. Similarly, $H \cap K' \unlhd H \cap K$ by interchanging $H'$ with $K'$. By a corollary of the Second Isomorphism Theorem (\myref{corollary-subgroup-product-is-normal-subgroup-if-subgroups-are-normal}), we know that $(H' \cap K)(H \cap K') \unlhd H \cap K$. For brevity, let $\mathcal{A} = (H' \cap K)(H \cap K')$.
@@ -266,7 +271,7 @@ Before we look at them, we introduce refinements.
     If every $H_i$ appears in $\mathcal{K}$ (i.e., $\mathcal{H}$ is a subsequence of $\mathcal{K}$), then $\mathcal{K}$ is a \term{refinement}\index{refinement} of $\mathcal{H}$. Furthermore, $\mathcal{K}$ is a \term{proper refinement}\index{refinement!proper} of $\mathcal{H}$ if at least one $K_j$ is not in $\mathcal{H}$.
 \end{definition}
 \begin{example}
-    We previously found two subnormal series of $D_4$, namely
+    Earlier, we found two subnormal series of $D_4$, namely
     \[
         1 \lhd \{e, r^2\} \lhd D_4
     \]
@@ -280,7 +285,7 @@ Before we look at them, we introduce refinements.
 We can now introduce the Schreier Refinement Theorem.
 
 \begin{theorem}[Schreier Refinement Theorem]\label{thrm-schreier}\index{Schreier Refinement Theorem}
-    Two (sub)normal series for any finite group have refinements of equal length whose factor groups are isomorphic.
+    Two normal (or subnormal) series for any finite group have refinements of equal length whose factor groups are isomorphic.
 \end{theorem}
 \begin{remark}
     This theorem is also called the \term{Schreier-Zassenhaus Theorem} (e.g. in {\cite[\S 72]{clark_1984}}) due to the use of Zassenhaus' lemma in the proof.
@@ -344,7 +349,7 @@ We can now introduce the Schreier Refinement Theorem.
         &\cong \frac{K_v(K_{v+1}\cap H_{u+1})}{K_v(K_{v+1}\cap H_u)}\\
         &= \hat{K}_{l+1}/\hat{K}_l
     \end{align*}
-    with the isomorphism achieved by Zassenhaus' lemma, statement 3. Thus \myref{eqn:thrm-schreier-eqn-a-prime} and \myref{eqn:thrm-schreier-eqn-b-prime} have isomorphic factors.
+    with the isomorphism achieved by Zassenhaus' lemma, statement 3. So \myref{eqn:thrm-schreier-eqn-a-prime} and \myref{eqn:thrm-schreier-eqn-b-prime} have isomorphic factors.
 
     We return to the concern about the possibility that $\hat{H}_k = \hat{H}_{k+1}$ (or $\hat{K}_l = \hat{K}_{l+1}$) for some $k$ (or $l$). Eliminating redundancies in both \myref{eqn:thrm-schreier-eqn-a-prime} and \myref{eqn:thrm-schreier-eqn-b-prime} would yield two refinements of equal length, whose factor groups are isomorphic.
 
@@ -354,12 +359,12 @@ We can now introduce the Schreier Refinement Theorem.
 We can now introduce and prove the Jordan-H\"older theorem.
 
 \begin{theorem}[Jordan-H\"older]\label{thrm-jordan-holder}\index{Jordan-H\"older Theorem}
-    Two composition series for a finite group have the same length and composition factors, up to isomorphism and permutation.
+    Two composition series for any finite group have the same length and composition factors, up to isomorphism and permutation.
 \end{theorem}
 \begin{proof}
     The Schreier Refinement Theorem (\myref{thrm-schreier}) tells us that two subnormal series have refinements of equal length whose factors are isomorphic.
 
-    Now a composition series has no proper refinements since all subgroups inside a composition series are maximal normal subgroups. Hence any refinements must be identical to the composition series themselves.
+    Now a composition series has no proper refinements since all subgroups inside a composition series are maximal normal subgroups. So any refinements must be identical to the composition series themselves.
 
     Thus any two composition series (which are their own refinements) for a finite group have the same length and composition factors, up to isomorphism and permutation.
 \end{proof}
@@ -371,6 +376,9 @@ We can now introduce and prove the Jordan-H\"older theorem.
         &1 \lhd \Cn{3} \lhd \Cn{6} \lhd D_6; \text{ and}\\
         &1 \lhd \Cn{3} \lhd D_3 \lhd D_6.
     \end{align*}
+
+    \newpage
+    
     The composition factors in each case (in order) are
     \begin{itemize}
         \item $\Cn{2}/1 \cong \Cn{2}$, $\Cn{6}/\Cn{2} \cong \Cn{3}$ (\myref{exercise-Zmn-mod-Zn-cong-Zn}), and $D_6 / \Cn{6}$;
@@ -391,7 +399,7 @@ We can now introduce and prove the Jordan-H\"older theorem.
 
 The Jordan-H\"older theorem may seem unhelpful, but it can be viewed as the group theory version of the Fundamental Theorem of Arithmetic, where groups have a unique `factorization'. We will explore more of the analogous `prime numbers' in group theory -- simple groups -- in the next chapter.
 
-
+\newpage
 
 \section{Problems}
 \begin{problem}
