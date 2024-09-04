@@ -75,6 +75,9 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 ### Part III (Fields) Changes
 - Edited the preamble.
 - Rewritten the proof of proposition 29.4.2.
+- Rephrased definition 30.5.6.
+- Edited definition 31.5.1.
+- Edited the statement of problem 31.3.
 - Made minor changes to the text.
 
 ### Part IV (Galois) Changes
