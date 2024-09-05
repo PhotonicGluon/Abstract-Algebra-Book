@@ -93,7 +93,7 @@
     \end{align*}
     so we have shown that $\frac{a_1}{b_1} \times \frac{c_1}{d_1} = \frac{a_2}{b_2} \times \frac{c_2}{d_2}$, meaning multiplication is well-defined.
 
-    We now show that multiplication is commutative. Let $\frac ab, \frac cd \in \Frac{D}$. Then
+    We now show that multiplication is commutative. Suppose $\frac ab, \frac cd \in \Frac{D}$. Then
     \begin{align*}
         \frac ab \times \frac cd &= \frac{ac}{bd}\\
         &= \frac{ca}{db} & (\text{since } D \text{ is commutative})\\
@@ -106,13 +106,13 @@
 
         \item Prove. Define the map $\phi: \Frac{k\Z} \to \Q$ by $\phi([(ka, kb)]) = \frac ab$. We show that this is a well-defined isomorphism.
         \begin{itemize}
-            \item \textbf{Well-defined}: Suppose $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$ where $[(ka,kb)]=[(kc,kd)]$. Then $(ka, kb) \mathrel{\sim} (kc, kd)$ by \myref{thrm-equivalence-class-equivalence}, i.e. $k^2ad = k^2bc$. Hence one sees clearly that $\frac ab = \frac cd$. Therefore,
+            \item \textbf{Well-defined}: Let $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$ where $[(ka,kb)]=[(kc,kd)]$. Then $(ka, kb) \mathrel{\sim} (kc, kd)$ by \myref{thrm-equivalence-class-equivalence}, i.e. $k^2ad = k^2bc$. Hence one sees clearly that $\frac ab = \frac cd$. Therefore,
             \[
                 \phi([(ka,kb)]) = \frac ab = \frac cd = \phi([(kc, kd)])
             \]
             and so $\phi$ is well-defined.
 
-            \item \textbf{Homomorphism}: Let $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$. Note
+            \item \textbf{Homomorphism}: For any $[(ka, kb)], [(kc, kd)] \in \Frac{k\Z}$ we see
             \begin{align*}
                 \phi([(ka,kb)] + [(kc,kd)]) &= \phi([(k^2(ad+bc), k^2bd)])\\
                 &= \frac{k(ad+bc)}{kbd}\\
@@ -138,14 +138,14 @@
             \]
             which proves that $\phi$ is surjective.
         \end{itemize}
-        Therefore $\phi$ is a well-defined ring isomorphism, meaning $\Frac{k\Z} \cong \Q$.
+        Therefore $\phi$ is a well-defined ring isomorphism, which means that $\Frac{k\Z} \cong \Q$.
     \end{partquestions}
 
     \item For the forward direction, we prove by contrapositive. If $a$ is a unit then $\princ{b} = \princ{ab}$ by \myref{prop-principal-ideals-equal-iff-associates}, so $\princ{ab} \not\subset \princ{b}$.
 
     For the reverse direction, we again consider contrapositive. Assume $\princ{ab}$ is not a proper subset of $\princ{b}$, meaning $\princ{b} \subseteq \princ{ab}$. But one clearly sees that $\princ{ab} \subseteq \princ{b}$. Thus $\princ{b} = \princ{ab}$ which means $a$ is a unit, again by \myref{prop-principal-ideals-equal-iff-associates}.
 
-    \item We prove the contrapositive of the forward direction. Suppose $f(x)$ is reducible in $D[x]$. Then, since $f(x)$ is primitive, $f(x) = p(x)q(x)$ for some non-unit polynomials $p(x), q(x) \in D[x]$. Therefore $p(x), q(x) \in \Frac{D}$, which are non-units in $\Frac{D}$. Thus $f(x) = p(x)q(x)$ for some non-unit polynomials in $p(x), q(x) \in \Frac{D}$, so $f(x)$ is reducible in $\Frac{D}$.
+    \item We prove the contrapositive of the forward direction. Suppose $f(x)$ is reducible in $D[x]$. Then, since $f(x)$ is primitive, $f(x) = p(x)q(x)$ for some non-unit polynomials $p(x), q(x) \in D[x]$. So $p(x), q(x) \in \Frac{D}$, which are non-units in $\Frac{D}$. Thus $f(x) = p(x)q(x)$ for some non-unit polynomials in $p(x), q(x) \in \Frac{D}$, so $f(x)$ is reducible in $\Frac{D}$.
 
     We now prove the contrapositive of the reverse direction. Suppose $f(x)$ is reducible in $\Frac{D}$, so there exists non-constant polynomials $p(x), q(x) \in \Frac{D}$ such that $f(x) = p(x)q(x)$. Then there exists polynomials $P(x), Q(x) \in D[x]$ such that $f(x) = P(x)Q(x)$ and $\deg P(x) = \deg p(x)$ and $\deg Q(x) = \deg q(x)$ by \myref{lemma-reducible-in-field-of-fractions-means-reducible-in-UFD}. Hence $f(x)$ is reducible in $D[x]$.
 
@@ -161,7 +161,7 @@
 
 \subsection*{Problems}
 \begin{questions}
-    \item Given that we have integers $a$ and $b$ such that $a^2 + b^2$ is a prime, therefore $N(a+bi) = a^2+b^2$ is prime. Therefore $a+bi$ is irreducible (\myref{prop-properties-of-quadratic-integer-norm}). Since $\Z[i]$ is a Euclidean domain (\myref{example-gaussian-integers-is-euclidean-domain}) it is thus a PID (\myref{thrm-euclidean-domain-is-PID}) and so any irreducible in $\Z[i]$ is prime (\myref{thrm-in-PID-prime-iff-irreducible}).
+    \item Given that we have integers $a$ and $b$ such that $a^2 + b^2$ is a prime, therefore $N(a+bi) = a^2+b^2$ is prime. Therefore $a+bi$ is irreducible (\myref{prop-properties-of-quadratic-integer-norm}). As $\Z[i]$ is a Euclidean domain by \myref{example-gaussian-integers-is-euclidean-domain}, it is thus a PID (\myref{thrm-euclidean-domain-is-PID}) and so any irreducible in $\Z[i]$ is prime (\myref{thrm-in-PID-prime-iff-irreducible}).
 
     \item We induct on $n$. When $n = 2$, this reduces down to the definition of a prime element in an integral domain. Now suppose $p \vert a_1a_2\cdots a_k$ for some $k \geq 2$. We are to show that this works for $k + 1$.
 
@@ -225,7 +225,7 @@
 
     \item Define $\phi: \Frac{F} \to F$ such that $[(a,b)]\mapsto ab^{-1}$. We show that $\phi$ is a well-defined ring isomorphism.
     \begin{itemize}
-        \item \textbf{Well-defined}: Let $[(a,b)], [(c,d)] \in \Frac{F}$ and suppose $[(a,b)] = [(c,d)]$. Then $(a,b) \mathrel{\sim} (c,d)$ by \myref{thrm-equivalence-class-equivalence}, which means $ad = bc$ by definition of the equivalence relation on the field of fractions. Hence $ab^{-1} = cd^{-1}$ (remembering that the operation is commutative in a field), so
+        \item \textbf{Well-defined}: Let $[(a,b)], [(c,d)] \in \Frac{F}$ where $[(a,b)] = [(c,d)]$. Then $(a,b) \mathrel{\sim} (c,d)$ by \myref{thrm-equivalence-class-equivalence}, which means $ad = bc$ by definition of the equivalence relation on the field of fractions. Hence $ab^{-1} = cd^{-1}$ (remembering that the operation is commutative in a field), so
         \[
             \phi([(a,b)]) = ab^{-1} = cd^{-1} = \phi([(c,d)]),
         \]
@@ -251,9 +251,9 @@
 
         \item \textbf{Injective}: Let $[(a,b)], [(c,d)] \in \Frac{F}$ such that $\phi([(a,b)]) = \phi([(c,d)])$. Then $ab^{-1} = cd^{-1}$, so $ad = bc$. Hence $(a,b) \mathrel{\sim} (c,d)$ by definition of the equivalence relation on the field of fractions, so $[(a,b)] = [(c,d)]$ by \myref{thrm-equivalence-class-equivalence}.
 
-        \item \textbf{Surjective}: Suppose $r \in F$. Note $r1^{-1} = r$. Therefore $\phi([(r, 1)]) = r1^{-1} = r$, meaning that every $r \in F$ has a pre-image under $\phi$.
+        \item \textbf{Surjective}: Suppose $r \in F$. Note $r1^{-1} = r$. Therefore we see $\phi([(r, 1)]) = r1^{-1} = r$, meaning that every $r \in F$ has a pre-image under $\phi$.
     \end{itemize}
-    Therefore $\phi$ is a well-defined ring isomorphism, meaning that $\Frac{F} \cong F$.
+    Therefore $\phi$ is a well-defined ring isomorphism, which means that $\Frac{F} \cong F$.
 
     \item We note that the only units of $\Z[\sqrt{-6}]$ are $\pm1$. We claim that 2, 3, and $\sqrt{-6}$ are all irreducible in $\sqrt{-6}$.
 
@@ -282,9 +282,11 @@
     Therefore 3 is an irreducible.
 
     We finally show that $\sqrt{-6}$ is an irreducible in $\Z[\sqrt{-6}]$. Suppose $\sqrt{-6} = (a+b\sqrt{-6})(c+d\sqrt{-6})$ for some integers $a,b,c,d\in \Z$. So
-    \[
-        6 = N(\sqrt{-6}) = N\left((a+b\sqrt{-6})(c+d\sqrt{-6})\right) = (a^2+6b^2)(c+6d^2)
-    \]
+    \begin{align*}
+        6 &= N(\sqrt{-6})\\
+        &= N\left((a+b\sqrt{-6})(c+d\sqrt{-6})\right)\\
+        &= (a^2+6b^2)(c+6d^2)
+    \end{align*}
     which means that $a^2+6b^2$ must be 1, 2, 3, or 6.
     \begin{itemize}
         \item If $a^2+6b^2 = 1$, then $a+b\sqrt{-6} = \pm1$ is a unit.
@@ -340,7 +342,7 @@
     \]
     As we are working with the non-negative integers, the only way to a product to equal 1 we must have $\phi(u) = \phi(v) = 1$.
 
-    \item Suppose there are only finitely many irreducible polynomials within $F[x]$, and suppose that $p_1(x), p_2(x), \dots, p_n(x)$ is a list of all the irreducible polynomials in $F[x]$. As $F[x]$ is a PID (\myref{thrm-polynomial-ring-over-field-is-a-PID}) it is thus a UFD (\myref{thrm-PID-is-UFD}). Now consider the polynomial
+    \item Suppose there are only finitely many irreducible polynomials in $F[x]$, and suppose that $p_1(x), p_2(x), \dots, p_n(x)$ is a list of all the irreducible polynomials in $F[x]$. As $F[x]$ is a PID (\myref{thrm-polynomial-ring-over-field-is-a-PID}) it is thus a UFD (\myref{thrm-PID-is-UFD}). Now consider the polynomial
     \[
         q(x) = p_1(x)p_2(x)\cdots p_n(x) + 1.
     \]
@@ -356,11 +358,12 @@
         x &= q_1(a^2+b^2) + r_1\\
         y &= q_2(a^2+b^2) + r_2
     \end{align*}
-    where $0 \leq r_1, r_2 < a^2+b^2$. So
+    where $0 \leq r_1, r_2 < a^2+b^2$. Note $a^2+b^2 \in I$. So
     \begin{align*}
-        (x+yi)+I &= \left(\left(q_1(a^2+b^2) + r_1\right) + \left(q_2(a^2+b^2) + r_2\right)i\right) + I\\
+        &(x+yi)+I\\
+        &= \left(\left(q_1(a^2+b^2) + r_1\right) + \left(q_2(a^2+b^2) + r_2\right)i\right) + I\\
         &= \left((a^2+b^2)(q_1+q_2i) + r_1 + r_2i\right) + I\\
-        &= (r_1 + r_2i) + I & (\text{as } a^2+b^2 \in I)
+        &= (r_1 + r_2i) + I
     \end{align*}
     Notice that $(x+yi)+I = (r_1+r_2i)+I$ is an element of $\Z[i]/I$ and that there are only finitely many integers within the interval $[0, a^2+b^2)$. Therefore $\Z[i]/I$ is finite, since $0 \leq r_1, r_2 < a^2+b^2$.
 
