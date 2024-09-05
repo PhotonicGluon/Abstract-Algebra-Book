@@ -24,7 +24,9 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Rephrased definition 2.1.10 and definition 2.1.11.
 - Removed logical equivalence of the biconditional introduced in definition 2.2.1 as logical equivalence was not yet introduced.
 - Rephrased definition 2.4.4.
+- Made the solution to exercise 4.1(i) clearer.
 - Reduced the size of example 4.2.7.
+- Cleaned up the solution to problem 4.7(ii).
 - Edited example 5.1.5 to not use ideas of divisibility (since that would be introduced in chapter 6).
 - Rephrased example 5.2.2 slightly.
 - Split definition 5.3.7 into two definitions.

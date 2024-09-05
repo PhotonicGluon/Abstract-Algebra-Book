@@ -45,17 +45,20 @@
     From inspection, the truth tables of $\lnot p \iff q$ and $r \land s$ are the same, proving our required result.
 
     \item We work slowly.
-    \begin{align*}
-        &((p \lor \lnot q) \land \lnot r) \lor ((p \lor \lnot q) \land (p \lor r) \land (p \lor \lnot r))\\
-        &\equiv ((p \lor \lnot q) \land \lnot r) \lor ((p \lor \lnot q) \land ((p \lor r) \land (p \lor \lnot r))) & (\text{Associativity})\\
-        &\equiv (p \lor \lnot q) \land (\lnot r \lor ((p \lor r) \land (p \lor \lnot r))) & (\text{Distributivity})\\
-        &\equiv (p \lor \lnot q) \land (\lnot r \lor (p \lor (r \land \lnot r))) & (\text{Distributivity})\\
-        &\equiv (p \lor \lnot q) \land (\lnot r \lor (p \lor \textbf{false}))\\
-        &\equiv (p \lor \lnot q) \land (\lnot r \lor p)\\
-        &\equiv (p \lor \lnot q) \land (p \lor \lnot r) & (\text{Commutativity})\\
-        &\equiv p \lor (\lnot q \land \lnot r) & (\text{Distributivity})\\
-        &\equiv p \lor \lnot(q \lor r) & (\text{De Morgan's Law})
-    \end{align*}
+    {
+        \fontsize{8.5pt}{11pt}\selectfont
+        \begin{align*}
+            &((p \lor \lnot q) \land \lnot r) \lor ((p \lor \lnot q) \land (p \lor r) \land (p \lor \lnot r))\\
+            &\equiv ((p \lor \lnot q) \land \lnot r) \lor ((p \lor \lnot q) \land ((p \lor r) \land (p \lor \lnot r))) & (\text{Associativity})\\
+            &\equiv (p \lor \lnot q) \land (\lnot r \lor ((p \lor r) \land (p \lor \lnot r))) & (\text{Distributivity})\\
+            &\equiv (p \lor \lnot q) \land (\lnot r \lor (p \lor (r \land \lnot r))) & (\text{Distributivity})\\
+            &\equiv (p \lor \lnot q) \land (\lnot r \lor (p \lor \textbf{false}))\\
+            &\equiv (p \lor \lnot q) \land (\lnot r \lor p)\\
+            &\equiv (p \lor \lnot q) \land (p \lor \lnot r) & (\text{Commutativity})\\
+            &\equiv p \lor (\lnot q \land \lnot r) & (\text{Distributivity})\\
+            &\equiv p \lor \lnot(q \lor r) & (\text{De Morgan's Law})
+        \end{align*}
+    }
 
     \item $\left((n \in \mathbb{Z}) \land (n > 2)\right) \implies \left(\exists a, b \in \mathbb{Z} \text{ s.t. } a^3 + b^4 = n^5\right)$
 
@@ -87,6 +90,7 @@
         \item We claim that they are not equivalent.
         \begin{table}[h]
             \centering
+            \fontsize{8pt}{11pt}\selectfont
             \begin{tabular}{|l|l|l||l|l||l|l|}
                 \hline
                 $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{r}$ & $\boldsymbol{p \implies q}$ & $\boldsymbol{q \implies r}$ & $\boldsymbol{p \implies (q \implies r)}$ & $\boldsymbol{(p \implies q) \implies r}$ \\ \hline
@@ -106,6 +110,7 @@
         \item We claim that they are equivalent.
         \begin{table}[H]
             \centering
+            \fontsize{7.5pt}{11pt}\selectfont
             \begin{tabular}{|l|l|l||l|l||l|l|}
                 \hline
                 $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{r}$ & $\boldsymbol{p \iff q}$ & $\boldsymbol{q \iff r}$ & $\boldsymbol{p \iff (q \iff r)}$ & $\boldsymbol{(p \iff q) \iff r}$ \\ \hline
@@ -136,7 +141,8 @@
 
     \item Recall from \myref{example-implication-law} that $(x \implies y) \equiv \lnot x \lor y$.
     \begin{align*}
-        \lnot p \land (\lnot p \implies (p \land q)) &\equiv \lnot p \land (\lnot(\lnot p) \lor (p \land q)) & (\text{by } \myref{example-implication-law})\\
+        &\lnot p \land (\lnot p \implies (p \land q))\\
+        &\equiv \lnot p \land (\lnot(\lnot p) \lor (p \land q)) & (\text{by } \myref{example-implication-law})\\
         &\equiv \lnot p \land (p \lor (p \land q))\\
         &\equiv \lnot p \land ((p \lor p) \land (p \lor q)) & (\text{Distributivity})\\
         &\equiv \lnot p \land (p \land (p \lor q))\\

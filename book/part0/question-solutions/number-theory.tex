@@ -25,7 +25,7 @@
 
     \item $-n = (-1) \times 2n + n$, which means that $-n \equiv n \pmod{2n}$.
 
-    \item Finding the last two digits of a number is the same as finding the remainder of that number when divided by 100. We note $778899 \equiv 99 \pmod{100}$, so $778899^{112233} \equiv 99^{112233} \pmod{100}$. Furthermore, $99 \equiv -1 \pmod{100}$, so $99^{112233}\equiv (-1)^{112233} \equiv -1 \equiv 99 \pmod{100}$. Hence the last two digits of $778899^{112233}$ are both 9.
+    \item Finding the last two digits of a number is the same as finding the remainder of that number when divided by 100. We note $778899 \equiv 99 \pmod{100}$, so $778899^{112233} \equiv 99^{112233} \pmod{100}$. Furthermore, $99 \equiv -1 \pmod{100}$, so we see that $99^{112233}\equiv (-1)^{112233} \equiv -1 \equiv 99 \pmod{100}$. Hence the last two digits of $778899^{112233}$ are both 9.
 
     \item Note $123 \equiv 3 \pmod 5$. One can easily find by trial and error that 2 is the multiplicative inverse of 3, since $3 \times 2 = 6 \equiv 1 \pmod 5$. Hence the multiplicative inverse of 123 is 2 modulo 5.
 \end{questions}
@@ -38,13 +38,13 @@
     \[
         ab = \gcd(a,b)\lcm(a,b) = \gcd(a,b)a^2.
     \]
-    Let $d = \gcd(a,b)$, so $ab = da^2$ which means $b = da$. Note $\lcm(a,b) = \lcm(a, da) = da$, so $a^2 = da$ which means $d = a$. Therefore $b = a^2$.
+    Let $d = \gcd(a,b)$, so $ab = da^2$ which means $b = da$. Note that $\lcm(a,b) = \lcm(a, da) = da$, so $a^2 = da$ which means $d = a$. Therefore $b = a^2$.
 
     \item Note
     \begin{align*}
         5^{2n+3} &= 5^3 \times 5^{2n}\\
         &= 125 \times 25^n \\
-        &\equiv (5) \times (1)^n & (\text{since } 25 \equiv 1 \pmod8 \text{ and } 125 \equiv 5 \pmod8)\\
+        &\equiv (5) \times (1)^n & (\text{since } 25 \equiv 1 \text{ and } 125 \equiv 5)\\
         &= 5 \pmod8
     \end{align*}
     so $5^{2n+3} \equiv 5 \pmod8$ for all positive integers $n$.
@@ -122,10 +122,11 @@
         Note
         \begin{align*}
             &(k+1)^4 - (k+1)^2\\
-            &= (k^4 + 4k^3 + 6k^2 + 4k + 1) - (k^2 + 2k + 1)\\
+            &= (k^4 + 4k^3 + 6k^2 + 4k + 1)\\
+            &\quad\quad- (k^2 + 2k + 1)\\
             &= k^4 + 4k^3 + 5k^2 + 2k\\
             &= (k^4 - k^2) + (4k^3 + 6k^2 + 2k)\\
-            &= 12a + 2(2k^3 + 3k^2 + 1k) & (\text{by induction hypothesis})\\
+            &= 12a + 2(2k^3 + 3k^2 + 1k) & (\text{induction hypothesis})\\
             &= 12a + 2(6m) & (\text{by \textbf{(i)}})\\
             &= 12a + 12m\\
             &= 12(a+m)
