@@ -2,12 +2,10 @@
 The are two types of elements in field extensions. Some elements are a zero of a specific polynomial within the base field. The other elements are not. Elements that are a zero of a polynomial is of particular interest to us, and we will investigate the extensions that create all possible zeroes of polynomials.
 
 \section{Algebraic Elements}
-We first give a name for elements that are a zero of a polynomial in the base field.
-
 \begin{definition}
     Let $F$ be a field and $E/F$ be a field extension. Then $\alpha \in E$ is \term{algebraic}\index{algebraic}\index{algebraic!element} over $F$ if and only if there exists some non-constant polynomial $f(x) \in F[x]$ such that $\alpha$ is a zero of $f(x)$.
 
-    An element that is not algebraic over $F$ is called \term{transcendental}\index{transcendental} over $F$.
+    A non-algebraic element over $F$ is called \term{transcendental}\index{transcendental} over $F$.
 \end{definition}
 
 \begin{example}
@@ -35,8 +33,6 @@ For the case when the field in question is $\Q$, we have a more commonplace defi
 \begin{exercise}
     Is $\sqrt{2 - \sqrt{i}}$ a transcendental number?
 \end{exercise}
-
-
 
 \section{Characterising Extensions}
 With an understanding of what algebraic and transcendental elements, we link these definitions back to the idea of field extensions.
@@ -67,7 +63,7 @@ We expand upon \myref{thrm-simple-extension-isomorphism} and provide a character
     \]
     We prove that $\psi$ is a well-defined isomorphism.
     \begin{itemize}
-        \item \textbf{Well-Defined}: Suppose $\frac{f(x)}{g(x)} = \frac{p(x)}{q(x)}$ for polynomials $f(x), g(x), p(x), q(x) \in F[x]$. Thus $f(x)q(x) = p(x)g(x)$ by definition of equality of equivalence classes in the field of fractions of $F[x]$. So we see $f(\alpha)q(\alpha) = p(\alpha)g(\alpha)$ which quickly means $f(\alpha)(g(\alpha))^{-1} = p(\alpha)(q(\alpha))^{-1}$. Therefore
+        \item \textbf{Well-Defined}: Suppose $\frac{f(x)}{g(x)}, \frac{p(x)}{q(x)} \in \Frac{F[x]}$ such that $\frac{f(x)}{g(x)} = \frac{p(x)}{q(x)}$. Thus $f(x)q(x) = p(x)g(x)$ by definition of equality of equivalence classes in the field of fractions of $F[x]$. Thus we see $f(\alpha)q(\alpha) = p(\alpha)g(\alpha)$ which quickly means $f(\alpha)(g(\alpha))^{-1} = p(\alpha)(q(\alpha))^{-1}$. So
         \[
             \psi\left(\frac{f(x)}{g(x)}\right) = f(\alpha)(g(\alpha))^{-1} = p(\alpha)(q(\alpha))^{-1} = \psi\left(\frac{p(x)}{q(x)}\right)
         \]
@@ -75,7 +71,8 @@ We expand upon \myref{thrm-simple-extension-isomorphism} and provide a character
 
         \item \textbf{Homomorphism}: Let $\frac{f(x)}{g(x)}, \frac{p(x)}{q(x)} \in \Frac{F[x]}$. Then we see
         \begin{align*}
-            \psi\left(\frac{f(x)}{g(x)} + \frac{p(x)}{q(x)}\right) &= \psi\left(\frac{f(x)q(x) + g(x)p(x)}{g(x)q(x)}\right)\\
+            &\psi\left(\frac{f(x)}{g(x)} + \frac{p(x)}{q(x)}\right)\\
+            &= \psi\left(\frac{f(x)q(x) + g(x)p(x)}{g(x)q(x)}\right)\\
             &= \left(f(\alpha)q(\alpha) + g(\alpha)p(\alpha)\right)\left(g(\alpha)q(\alpha)\right)^{-1}\\
             &= f(\alpha)q(\alpha)\left(g(\alpha)q(\alpha)\right)^{-1} + g(\alpha)p(\alpha)\left(g(\alpha)q(\alpha)\right)^{-1}\\
             &= f(\alpha)(g(\alpha))^{-1} + p(\alpha)(q(\alpha))^{-1}\\
@@ -102,6 +99,8 @@ For an algebraic element $\alpha$, \myref{thrm-characterisation-of-extensions} g
 \begin{definition}
     Let $F$ be a field, $E/F$ be a field extension, and $\alpha \in E$ be algebraic over $F$. The monic polynomial $p(x) \in F[x]$ of minimal degree which $\alpha$ is a root of is called the \term{minimal polynomial for $\alpha$ over $F$}\index{extension!algebraic!minimal polynomial}.
 \end{definition}
+
+There are a few special properties of the minimal polynomial that we will introduce here.
 
 \begin{corollary}\label{corollary-minimal-polynomial-is-irreducible}
     Let $F$ be a field and $E/F$ be a field extension. If $\alpha \in E$ is algebraic over $F$, then the minimal polynomial of $\alpha$ is irreducible.
@@ -234,7 +233,7 @@ The next result can be thought of the field theory counterpart to Lagrange's the
     \]
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 21.5]{gallian_2016}})]
-    Let $[K:E] = m$ and $[E:F] = n$. In addition let $X = \{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_m\}$ be a basis for $K$ over $E$, and $Y = \{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_n\}$ be a basis for $E$ over $F$. It suffices to prove that
+    Let $[K:E] = m$ and $[E:F] = n$. Also let $X = \{\mathbf{x}_1, \mathbf{x}_2, \dots, \mathbf{x}_m\}$ be a basis for $K$ over $E$ and $Y = \{\mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_n\}$ be a basis for $E$ over $F$. It suffices to prove that
     \[
         YX = \{\mathbf{y}_j\mathbf{x}_i \vert 1 \leq i \leq m \text{ and } 1 \leq j \leq n\}
     \]
@@ -320,7 +319,7 @@ The theorem can sometimes be used to show that a field does not contain a partic
 \end{exercise}
 
 \begin{example}
-    Recall from \myref{exercise-splitting-field-sqrt2-sqrt3} that we have shown $\Q(\sqrt2, \sqrt3) = \Q(\sqrt2 + \sqrt3)$. We present another method for proving this fact.
+    Recall from \myref{exercise-splitting-field-sqrt2-sqrt3} that $\Q(\sqrt2, \sqrt3) = \Q(\sqrt2 + \sqrt3)$. We present another method for proving this fact.
 
     The inclusion $\Q(\sqrt2 + \sqrt3) \subseteq \Q(\sqrt2, \sqrt3)$ is quite clear as $\sqrt2 + \sqrt3 \in \Q(\sqrt2, \sqrt3)$.
 
@@ -332,7 +331,11 @@ The theorem can sometimes be used to show that a field does not contain a partic
     \end{align*}
     so $\sqrt2 - \sqrt3 \in \Q(\sqrt2 + \sqrt3)$. It follows that
     \[
-        \frac12\left(\sqrt2 + \sqrt3\right) + \frac12\left(\sqrt2 - \sqrt3\right) = \sqrt2 \quad\text{and}\quad \frac12\left(\sqrt2 + \sqrt3\right) - \frac12\left(\sqrt2 - \sqrt3\right) = \sqrt3
+        \frac12\left(\sqrt2 + \sqrt3\right) + \frac12\left(\sqrt2 - \sqrt3\right) = \sqrt2
+    \]
+    and
+    \[
+        \frac12\left(\sqrt2 + \sqrt3\right) - \frac12\left(\sqrt2 - \sqrt3\right) = \sqrt3
     \]
     which thus means that both $\sqrt2, \sqrt3 \in \Q(\sqrt2+\sqrt3)$. Hence $\Q(\sqrt2, \sqrt3) \subseteq \Q(\sqrt2 + \sqrt3)$. We therefore obtain $\Q(\sqrt2, \sqrt3) = \Q(\sqrt2+\sqrt3)$.
 
@@ -418,7 +421,7 @@ We can now introduce a related concept -- algebraically closed fields.
     A field $F$ is algebraically closed if and only if every non-constant polynomial in $F[x]$ splits in $F$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 21.25]{judson_beezer_2022}})]
-    Let $F$ be an algebraically closed field. For the forward direction, if $f(x) \in F[x]$ is non-constant, then $f(x)$ must have a zero in $F$, say $\alpha_1$. So $x-\alpha_1$ is a factor of $f(x)$ by Factor Theorem (\myref{corollary-factor-theorem}); write $f(x) = (x-\alpha_1)q_1(x)$ where $\deg q_1(x) = \deg p(x) - 1$. Since $q_1(x) \in F[x]$, there must be a $\alpha_2\in F$ that is a zero of $q_1(x)$. Thus $x-\alpha_2$ is a factor of $q_1(x)$ and so $f(x) = (x-\alpha_1)(x-\alpha_2)q_2(x)$, where $\deg q_2(x) = \deg p(x) - 2$. Since $\deg p(x)$ is finite, so repeating this process we obtain a factorization
+    Let $F$ be an algebraically closed field. We work on the forward direction first. If $f(x) \in F[x]$ is non-constant, then $f(x)$ must have a zero in $F$, say $\alpha_1$. So $x-\alpha_1$ is a factor of $f(x)$ by Factor Theorem (\myref{corollary-factor-theorem}); write $f(x) = (x-\alpha_1)q_1(x)$ where $\deg q_1(x) = \deg p(x) - 1$. Since $q_1(x) \in F[x]$, there must be a $\alpha_2\in F$ that is a zero of $q_1(x)$. Thus $x-\alpha_2$ is a factor of $q_1(x)$ and so $f(x) = (x-\alpha_1)(x-\alpha_2)q_2(x)$, where $\deg q_2(x) = \deg p(x) - 2$. Since $\deg p(x)$ is finite, so repeating this process we obtain a factorization
     \[
         f(x) = (x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n),
     \]
@@ -456,7 +459,7 @@ We can now introduce a related concept -- algebraically closed fields.
     Prove \myref{corollary-field-is-algebraically-closed-iff-no-proper-algebraic-extension}.
 \end{exercise}
 
-
+\newpage
 
 \section{Problems}
 \begin{problem}
@@ -509,6 +512,8 @@ We can now introduce a related concept -- algebraically closed fields.
     Prove that $\sqrt2 \notin \Q(\pi)$. You may assume that $\pi$ is a transcendental number and that $\sqrt2$ is irrational.\newline
     (\textit{Hint: refer to the proof of \myref{thrm-characterisation-of-extensions} on the form of an element in $\Q(\pi)$.})
 \end{problem}
+
+\newpage
 
 \begin{problem}
     Let $F$ be a field and $f(x)$ is a non-constant polynomial in $F[x]$ with degree $n$. Let $E$ be the splitting field of $f(x)$ over $F$.

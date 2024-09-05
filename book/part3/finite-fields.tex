@@ -10,7 +10,7 @@ The most surprising and important result regarding finite fields is that there i
     For each prime $p$ and every positive integer $n$, there exists a finite field of order $p^n$. Furthermore any field of order $p^n$ is isomorphic to the splitting field of $x^{p^n} - x$ over $\Z_p$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 22.1]{gallian_2016}} and {\cite[Theorem 22.6]{judson_beezer_2022}})]
-    Let $f(x) = x^{p^n} - x$ and let $F$ be the splitting field of $f(x)$ over $\Z_p$. We show that $|F| = p^n$. Since $f(x)$ has degree $p^n$ and splits over $F$, thus there must be $p^n$ zeroes of $f(x)$ in $F$. Also we know that each of these $p^n$ zeroes are simple (\myref{problem-(x^p^n-x)-only-has-simple-zeroes}), meaning that $f(x)$ has $p^n$ distinct zeroes in $F$. We note that \myref{exercise-zeroes-of-polynomial-form-subfield} (later) shows that the set of zeroes of $f(x)$ in $F$, which we will denote by $S$, forms a subfield of $F$. Note $|S| = p^n$. But as $S$ contains all zeroes of $f(x)$ in $F$, we know that $f(x)$ splits over $S$. As $S \subseteq F$, thus $S = F$, meaning $|F| = p^n$.
+    Let the polynomial $f(x) = x^{p^n} - x$ and let $F$ be the splitting field of $f(x)$ over $\Z_p$. We show that $|F| = p^n$. Since $f(x)$ has degree $p^n$ and splits over $F$, thus there must be $p^n$ zeroes of $f(x)$ in $F$. Also we know that each of these $p^n$ zeroes are simple (\myref{problem-(x^p^n-x)-only-has-simple-zeroes}), meaning that $f(x)$ has $p^n$ distinct zeroes in $F$. We note that \myref{exercise-zeroes-of-polynomial-form-subfield} (later) shows that the set of zeroes of $f(x)$ in $F$, which we will denote by $S$, forms a subfield of $F$. Note $|S| = p^n$. But as $S$ contains all zeroes of $f(x)$ in $F$, we know that $f(x)$ splits over $S$. As $S \subseteq F$, thus $S = F$, meaning $|F| = p^n$.
 
     We now show uniqueness. Suppose $K$ is another field of order $p^n$. To show that $K \cong F$, we need to show that every element of $K$ is a zero of $f(x)$. Certainly $0 \in K$ is a zero of $f(x)$. Let $\alpha \in K$ be a non-zero element. Since the multiplicative group of $K$ has order $p^n - 1$, thus we must have $\alpha^{p^n-1} = 1$, which means $\alpha^{p^n} = \alpha$ and so $\alpha^{p^n}-\alpha = 0$. Thus any non-zero $\alpha \in K$ is a zero of $f(x)$. Since $|K| = p^n$, thus $K$ must be a splitting field of $f(x)$ over $\Z_p$. But by \myref{corollary-splitting-field-unique-up-to-isomorphism}, splitting fields are unique up to isomorphism, which shows that $K \cong F$.
 \end{proof}
@@ -83,7 +83,7 @@ Let us examine some finite fields in detail.
         F = \{a_0 + a_1\alpha + a_2\alpha^2 + a_3\alpha^3 \vert a_i \in \Z_2 \text{ and } \alpha^4 + \alpha + 1 = 0\},
     \]
     remembering that $\alpha^4 + \alpha + 1 = 0$. We add and multiply elements of $\GF{16}$ exactly as we add and multiply polynomials. We note the following conversions from the `multiplicative' form to the `additive form'.
-    \begin{multicols}{3}
+    \begin{multicols}{2}
         \begin{itemize}
             \item $\alpha^1 = \alpha$
             \item $\alpha^2 = \alpha^2$
@@ -180,7 +180,7 @@ Let us examine some finite fields in detail.
 \end{exercise}
 
 \section{Subfields of Finite Fields}
-\myref{thrm-finite-field-is-unique} gives us a complete description of all finite fields of prime-power order. What about the subfields of a finite field? The following theorem describes the subfields of a given finite field.
+\myref{thrm-finite-field-is-unique} completely describes of all finite fields of prime-power order. What about the subfields of a finite field? The following theorem describes the subfields of a given finite field.
 
 \begin{theorem}\label{thrm-subfields-of-finite-field}
     For each divisor $m$ of $n$, the finite field $\GF{p^n}$ has a unique subfield of order $p^m$. Furthermore these are the only subfields of $\GF{p^n}$.
@@ -217,7 +217,11 @@ Let us examine some finite fields in detail.
 \end{proof}
 
 \begin{exercise}\label{exercise-prime-power-elements-idempotent-is-subfield}
-    Let $m$ be a positive integer. Prove that $K = \{x \in \GF{p^n} \vert x^{p^m} = x\}$ is a subfield of $\GF{p^n}$.
+    Let $m$ be a positive integer. Prove that
+    \[
+        K = \{x \in \GF{p^n} \vert x^{p^m} = x\}
+    \]
+    is a subfield of $\GF{p^n}$.
 \end{exercise}
 
 \begin{exercise}\label{exercise-divisibility-of-finite-field-degree}
@@ -259,11 +263,15 @@ With \myref{thrm-subfields-of-finite-field} finding all the subfields of a given
     Consider the finite field $F$ in \myref{example-GF8-analysis}. What are its subfields?
 \end{exercise}
 
-
+\newpage
 
 \section{Problems}
 \begin{problem}
-    Is $\Z_2[x]/\princ{x^3+x+1} \cong \Z_2[x]/\princ{x^3+x^2+1}$? Justify your answer using a concise argument.
+    Is
+    \[
+        \Z_2[x]/\princ{x^3+x+1} \cong \Z_2[x]/\princ{x^3+x^2+1}?
+    \]
+    Justify your answer using a concise argument.
 \end{problem}
 
 \begin{problem}
