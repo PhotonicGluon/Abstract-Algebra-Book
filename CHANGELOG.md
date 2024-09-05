@@ -86,7 +86,9 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Made minor changes to the text.
 
 ### Part IV (Galois) Changes
+- Rephrased the statement of theorem 35.6.15.
 - Slightly reformatted the proof of theorem 35.6.15.
+- Made axiom 36.1.8 clearer.
 - Made minor changes to the text.
 
 ### Other Changes
