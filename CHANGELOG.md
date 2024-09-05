@@ -97,6 +97,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Fixed `\draftstartmark` to not show build number if no build number is provided.
 - Removed the need for a `.code-workspace` file.
 - Edited the `\quoteattr` command.
+- Removed redundant `problem-solutions.tex` in `part1`.
 
 ---
 ## [1st Edition, Build 35](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.34...v1-build.35)
