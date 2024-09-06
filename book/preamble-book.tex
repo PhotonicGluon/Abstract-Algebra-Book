@@ -10,13 +10,9 @@
 }
 
 %=============== Geometry ================
-% Notes on lengths and sizes used here:
-% - 17.6cm x 25cm is B5 paper size.
-% - 7" x 10" is executive paper size. We add a bleed margin of 0.25" for both height and width, so the final paper size for the normal geometry is 7.25" x 10.25".
-
 \makeatletter
 \geometry{
-    layoutsize={17.6cm, 25cm},  % B5 paper size
+    papersize={6in, 9in},  % US Trade paper size
     top=2.5cm,
     bottom=2cm
 }
@@ -24,16 +20,14 @@
 \Ifstr{\isebook}{true}{
     % eBook geometry
     \geometry{
-        papersize={17.6cm, 25cm},
         inner=20mm,
         outer=20mm
     }
 }{
     % Normal paper geometry
     \geometry{
-        papersize={7in, 10in},
-        inner=18mm,
-        outer=22mm
+        inner=25mm,
+        outer=15mm
     }
 }
 
@@ -118,10 +112,11 @@
 \renewcommand{\qedsymbol}{\qedproof}  % Actually changes the QED symbol
 
 % Quote definitions
-\newcommand{\quoteattr}[4][0.5cm]{
+\newcommand{\quoteattr}[4][0.15cm]{
+    \vspace{-0.35cm}
     \vspace{#1}
     \begin{center}
-        \parbox{8cm}{
+        \parbox{9cm}{
             {\itshape#2}\\
             \null\hfill--- #3\\
             \vspace{-0.1cm}

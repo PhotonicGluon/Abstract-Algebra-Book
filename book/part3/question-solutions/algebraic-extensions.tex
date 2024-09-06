@@ -14,7 +14,10 @@
     \end{align*}
     Since $[\Q(\sqrt2):\Q] = 2$ and $[\Q(\sqrt[3]3):\Q] = 3$, thus $[\Q(\sqrt2, \sqrt[3]3): \Q]$ is a multiple of $\lcm(2, 3) = 6$. On the other hand, note that $x^3 - 3 \in \Q(\sqrt2)[x]$ has a zero of $\sqrt[3]3$, so $[\Q(\sqrt2, \sqrt[3]3): \Q(\sqrt2)]$ is at most 3. Hence $[\Q(\sqrt2, \sqrt[3]3): \Q] = [\Q(\sqrt2, \sqrt[3]3): \Q(\sqrt2)][\Q(\sqrt2):\Q] \leq 3 \times 2 = 6$. Hence $[\Q(\sqrt2, \sqrt[3]3): \Q] = 6$.
 
-    Now, note that $\sqrt[6]{72} = \sqrt2 \times \sqrt[3]3$, so $\sqrt[6]{72} \in \Q(\sqrt2, \sqrt[3]3)$. Consequently, we see that $\Q(\sqrt2, \sqrt[3]3, \sqrt[6]{72}) = \Q(\sqrt2, \sqrt[3]3)$ and so $[\Q(\sqrt2, \sqrt[3]3, \sqrt[6]{72}):\Q] = [\Q(\sqrt2, \sqrt[3]3): \Q] = 6$.
+    Now, note that $\sqrt[6]{72} = \sqrt2 \times \sqrt[3]3$, so $\sqrt[6]{72} \in \Q(\sqrt2, \sqrt[3]3)$. Consequently, we see that $\Q(\sqrt2, \sqrt[3]3, \sqrt[6]{72}) = \Q(\sqrt2, \sqrt[3]3)$ and so
+    \[
+        [\Q(\sqrt2, \sqrt[3]3, \sqrt[6]{72}):\Q] = [\Q(\sqrt2, \sqrt[3]3): \Q] = 6.
+    \]
 
     \item Suppose otherwise, that $\sqrt2 \in \Q(\alpha)$. So $\Q \subset \Q(\sqrt2) \subseteq \Q(\alpha)$. Thus we see
     \[
@@ -48,7 +51,8 @@
 
     However $E$ is not finite, since by Tower Law (\myref{thrm-tower-law}) we have
     \begin{align*}
-        [E: F] &= \cdots[\Q(2^{\frac12},2^{\frac13},2^{\frac14}):\Q(2^{\frac12},2^{\frac13})]
+        &[E: F]\\
+        &= \cdots[\Q(2^{\frac12},2^{\frac13},2^{\frac14}):\Q(2^{\frac12},2^{\frac13})]
         [\Q(2^{\frac12},2^{\frac13}):\Q(2^{\frac12})][\Q(2^{\frac12}):\Q]\\
         &= \cdots \times 4 \times 3 \times 2
     \end{align*}
@@ -72,7 +76,7 @@
 
     \item We see $\sqrt[6]2 = (\sqrt2)(\sqrt[3]2)^{-1} \in \Q(\sqrt2, \sqrt[3]2)$ so $\Q(\sqrt[6]2) \subseteq \Q(\sqrt2,\sqrt[3]2)$. But also $\sqrt[3]2 = \left(\sqrt[6]2\right)^2$ and $\sqrt2 = \left(\sqrt[6]2\right)^3$, so $\sqrt2,\sqrt[3]2 \in \Q(\sqrt[6]2)$ and thus $\Q(\sqrt2,\sqrt[3]2) \subseteq \Q(\sqrt[6]2)$. Therefore $\Q(\sqrt2,\sqrt[3]2) = \Q(\sqrt[6]2)$.
 
-    \item Note clearly $\Q(\sqrt a + \sqrt b) \subseteq \Q(\sqrt a, \sqrt b)$ since $\sqrt a + \sqrt b \in \Q(\sqrt a, \sqrt b)$.
+    \item Note $\Q(\sqrt a + \sqrt b) \subseteq \Q(\sqrt a, \sqrt b)$ since $\sqrt a + \sqrt b \in \Q(\sqrt a, \sqrt b)$.
 
     Note also
     \[
@@ -85,7 +89,7 @@
     \end{align*}
     and therefore $\Q(\sqrt a, \sqrt b) \subseteq \Q(\sqrt a + \sqrt b)$.
 
-    Hence because $\Q(\sqrt a + \sqrt b) \subseteq \Q(\sqrt a, \sqrt b)$ and $\Q(\sqrt a, \sqrt b) \subseteq \Q(\sqrt a + \sqrt b)$ we have $\Q(\sqrt a, \sqrt b) = \Q(\sqrt a + \sqrt b)$ as required.
+    So since $\Q(\sqrt a + \sqrt b) \subseteq \Q(\sqrt a, \sqrt b)$ and $\Q(\sqrt a, \sqrt b) \subseteq \Q(\sqrt a + \sqrt b)$ we have $\Q(\sqrt a, \sqrt b) = \Q(\sqrt a + \sqrt b)$ as required.
 
     \item Note that $F \subseteq F(\alpha) \subseteq E$, so by Tower Law (\myref{thrm-tower-law}) we have
     \[
@@ -96,10 +100,11 @@
     \item Seeking a contradiction, suppose $\alpha^n$ is algebraic. Thus $\alpha^n$ is a zero of some polynomial $f(x) \in F[x]$, i.e. $f(\alpha^n) = 0$. Consequently $\alpha$ is a zero of the polynomial $g(x) \in F[x]$ where $g(x) = f(x^n)$, which implies that $\alpha$ is algebraic over $F$, a contradiction. Therefore $\alpha^n$ is transcendental for all positive integers $n$.
 
     \item \begin{partquestions}{\roman*}
-        \item Let $\alpha \in E$ be a zero of $f(x)$. We know that $F(a_0, a_1, \dots, a_n)$ is a finite extension over $F$. Furthermore we know that $\alpha$ is algebraic over $F(a_0, a_1, \dots, a_n)$ since $\alpha$ is a zero of $f(x) \in F(a_0, a_1, \dots, a_n)[x]$. Therefore we see
-        \[
-            [F(a_0, \dots, a_n, \alpha):F] = \underbrace{[F(a_0, \dots, a_n, \alpha):F(a_0, \dots, a_n)]}_{\text{At most } n}\underbrace{[F(a_0, \dots, a_n):F]}_{\text{Finite}}
-        \]
+        \item Let $\alpha \in E$ be a zero of $f(x)$. We know that $F(a_0, a_1, \dots, a_n)$ is a finite extension over $F$. Also we know that $\alpha$ is algebraic over $F(a_0, a_1, \dots, a_n)$ since $\alpha$ is a zero of $f(x) \in F(a_0, a_1, \dots, a_n)[x]$. Therefore we see
+        \begin{align*}
+            &[F(a_0, \dots, a_n, \alpha):F]\\
+            &= \underbrace{[F(a_0, \dots, a_n, \alpha):F(a_0, \dots, a_n)]}_{\text{At most } n}\underbrace{[F(a_0, \dots, a_n):F]}_{\text{Finite}}
+        \end{align*}
         by Tower Law (\myref{thrm-tower-law}), and so $[F(a_0, a_1, \dots, a_n, \alpha):F]$ is an algebraic extension over $F$ (\myref{thrm-finite-extension-is-algebraic}). Hence $\alpha$ is algebraic over $F$.
 
         \item Suppose not, that both $\alpha + \beta$ and $\alpha\beta$ are algebraic. Then note that
@@ -136,9 +141,12 @@
         \sqrt2 = \frac{a_0 + a_1\pi + a_2\pi^2 + \cdots + a_m\pi^m}{b_0 + b_1\pi + b_2\pi^2 + \cdots + b_n\pi^n}
     \]
     for some $a_i, b_j \in \Q$. Rearranging we see
-    \[
-        \left(a_0 + a_1\pi + a_2\pi^2 + \cdots + a_m\pi^m\right)^2 = 2\left(b_0 + b_1\pi + b_2\pi^2 + \cdots + b_n\pi^n\right)^2.
-    \]
+    {
+        \fontsize{9pt}{11pt}
+        \[
+            \left(a_0 + a_1\pi + a_2\pi^2 + \cdots + a_m\pi^m\right)^2 = 2\left(b_0 + b_1\pi + b_2\pi^2 + \cdots + b_n\pi^n\right)^2.
+        \]
+    }
     Equating the leading term on both sides we see $a_m^2\pi^{2m} = 2b_n^2\pi^{2n}$. Thus $m = n$ and $a_m^2 = 2b_n^2$ which means $\sqrt2 = \frac{a_m}{b_n}$, a rational number, a contradiction. Therefore $\sqrt2 \notin \Q(\pi)$.
 
     \item \begin{partquestions}{\roman*}

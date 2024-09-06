@@ -3,7 +3,7 @@
 All notable changes to *A Complete Introduction to Abstract Algebra* will be documented here.
 
 ---
-## [1st Edition](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1) (IN PROGRESS)
+## [1st Edition, Build 36](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1-build.36) (IN PROGRESS)
 
 ### General Content Changes
 - Changed book margins for printing.
@@ -16,34 +16,89 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Amended the list of notation.
 
 ### Part 0 (Preliminaries) Changes
+- Made definition 1.2.7 and definition 1.3.2 more concise.
+- Cleaned up definition 1.4.1.
+- Edited problem 1.4 to be larger.
+- Made example 2.1.6 clearer.
+- Made exercise 2.1 more compact.
+- Rephrased definition 2.1.10 and definition 2.1.11.
+- Removed logical equivalence of the biconditional introduced in definition 2.2.1 as logical equivalence was not yet introduced.
+- Rephrased definition 2.4.4.
+- Made the solution to exercise 4.1(i) clearer.
+- Reduced the size of example 4.2.7.
+- Cleaned up the solution to problem 4.7(ii).
 - Edited example 5.1.5 to not use ideas of divisibility (since that would be introduced in chapter 6).
 - Rephrased example 5.2.2 slightly.
+- Split definition 5.3.7 into two definitions.
+- Slightly edited lemma 6.3.5 (Bézout).
+- Edited the statement of exercise 6.4(i).
 - Reformatted exercise 5.1.
 - Made other minor changes to the text.
 
 ### Part I (Groups) Changes
+- Compacted the text in chapter 7.
 - Recreated diagrams in chapter 7 and chapter 8.
-- Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
+- Fixed typo in the proof of theorem 10.2.3.
+- Slightly enlarged figure 11.1.
+- Made exercise 13.4 more compact.
 - Made corollary 13.4.2 more verbose.
 - Edited exercise 14.6 to be more concise.
 - Rewritten the proof of lemma 14.3.4 to be slightly more concise.
 - Edited definition 14.3.7, splitting the parity definition away from the evenness and oddness definition.
+- Slightly rephrased exercise 15.7.
+- Added new example (example 15.4.2) before Burnside's lemma.
+- Edited the proof of (the former) lemma 15.4.2 (Burnside).
+- Added a small remark after the proof of corollary 16.1.3 on the usefulness of the First Sylow Theorem.
+- Edited the proof of theorem 16.4.1 (Sylow II) to be clearer.
+- Edited the statement of theorem 17.2.3 and lemma 17.3.1.
+- Modified the statement of exercise 18.3.
+- Clarified the statement theorem 18.5.3 (Schreier Refinement Theorem).
+- Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
 - Made other minor changes to the text.
 
 ### Part II (Rings) Changes
+- Shortened the preamble.
+- Made the proof of proposition 22.3.3 more compact.
+- Shortened the statement of exercise 22.5.
+- Rephrased the remark after definition 24.1.1.
+- Shortened example 24.1.3 slightly.
 - Removed underbraces in the proof of theorem 24.2.6.
+- Split definition 25.1.4 into two different definitions.
+- Cleaned up the proof of proposition 25.1.5 and proposition 25.1.6.
+- Made the statement of exercise 25.4 more concise.
+- Rewritten the proof of theorem 26.3.1 (Transformation Rule).
+- Reordered the statements in proposition 27.2.4.
+- Shortened section 27.3.
+- Rewritten definition 27.4.2.
+- Edited the preamble to chapter 28.
+- Edited the content of section 28.4.
 - Made other minor changes to the text.
 
 ### Part III (Fields) Changes
+- Edited the preamble.
+- Rewritten the proof of proposition 29.4.2.
+- Rephrased definition 30.5.6.
+- Edited definition 31.5.1.
+- Edited the statement of problem 31.3.
+- Made definition 32.1.1 more concise.
+- Edited the proof of theorem 32.2.2.
+- Add small remark after definition 32.2.3.
+- Made the statement of exercise 33.3 and problem 33.1 larger.
+- Reordered the subsections in section 34.5.
 - Made minor changes to the text.
 
 ### Part IV (Galois) Changes
+- Rephrased the statement of theorem 35.6.15.
 - Slightly reformatted the proof of theorem 35.6.15.
+- Cleaned up the solution to problem 35.9(i).
+- Made axiom 36.1.8 clearer.
 - Made minor changes to the text.
 
 ### Other Changes
 - Fixed `\draftstartmark` to not show build number if no build number is provided.
 - Removed the need for a `.code-workspace` file.
+- Edited the `\quoteattr` command.
+- Removed redundant `problem-solutions.tex` in `part1`.
 
 ---
 ## [1st Edition, Build 35](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.34...v1-build.35)

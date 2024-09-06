@@ -18,8 +18,6 @@ Earlier, we introduced domains, before focusing our attention mainly on integral
     In $\Q$, any two non-zero elements are associates of each other, since every non-zero element in $\Q$ is a unit. As an example, $\frac{12}{35}$ and $\frac{71}{25}$ are associates since $\frac{71}{25} = \left(\frac{35}{12} \times \frac{71}{25}\right)\left(\frac{12}{35}\right)$.
 \end{example}
 
-From the previous two examples, we come up with the following observation.
-
 \begin{proposition}
     Any two non-zero elements in a field $F$ are associates.
 \end{proposition}
@@ -27,7 +25,7 @@ From the previous two examples, we come up with the following observation.
     Let $a, b \in F$ be non-zero elements. Note $a^{-1}$ exists since $F$ is a field, and $a^{-1}b$ is an element of the field by closure. Since a field is a division ring (by definition), $a^{-1}b$ has an inverse, so it is a unit. Therefore one sees $b = (a^{-1}b)a$ which means $a$ and $b$ are associates.
 \end{proof}
 
-Thus, in a sense, it is only meaningful to talk about associates when we restrict our view to that of integral domains that are \textit{not} fields.
+Thus, in a sense, it is only meaningful to talk about associates when we restrict our view to that of integral domains that are \textbf{not} fields.
 
 \begin{exercise}
     Let $D$ be an integral domain and $a,b \in D$. Prove that $a \vert b$ and $b \vert a$ if and only if $a$ and $b$ are associates.
@@ -49,7 +47,7 @@ We note that the definition of irreducibles is similar to that of irreducible po
     See \myref{problem-prime-element-iff-generates-prime-ideal} (later).
 \end{proof}
 
-The primary confusion one may have with the definition of a prime is that, for the integers, we defined prime numbers to satisfy the definition of an irreducible (\myref{definition-prime-number}), and that primes also satisfy the primality definition above (\myref{corollary-euclid}). The reason for this confusion is that, over the integers, irreducibles are primes. However, in general, they are \textit{not} the same.
+The primary confusion one may have with the definition of a prime is that, for the integers, we defined prime numbers to satisfy the definition of an irreducible (\myref{definition-prime-number}), and that primes also satisfy the primality definition above (\myref{corollary-euclid}). The reason for this confusion is that, over the integers, irreducibles are primes. However, in general, they are \textbf{not} the same.
 
 To explore the differences between irreducibles and primes, we look at quadratic integers. Before that, we need some preliminary definitions and results.
 
@@ -131,7 +129,7 @@ If we are working in a principal ideal domain then we have a stronger result.
 We alluded to quadratic integers in the previous section; we formally define what they are here.
 
 \begin{definition}
-    Let $d$ be a square-free integer not equal to 1. The \term{quadratic field}\index{quadratic field} is
+    Let $d$ be a square-free integer not equal to 1. Then the \term{quadratic field}\index{quadratic field} is
     \[
         \Q[\sqrt{d}] = \{a + b\sqrt{d} \vert a,b\in\Q\}.
     \]
@@ -153,14 +151,17 @@ We alluded to quadratic integers in the previous section; we formally define wha
 
     \begin{itemize}
         \item \textbf{Identity}: The multiplicative identity is $1 = 1 + 0\sqrt{d}$, since one sees clearly that
-        \[
-            (a+b\sqrt{d})(1+0\sqrt{d}) = ((a\times1) + (b\times0)d) + ((a\times0) + (b \times 1))\sqrt{d} = a + b\sqrt{d}
-        \]
+        \begin{align*}
+            &(a+b\sqrt{d})(1+0\sqrt{d})\\
+            &= ((a\times1) + (b\times0)d) + ((a\times0) + (b \times 1))\sqrt{d}\\
+            &= a + b\sqrt{d}
+        \end{align*}
 
         \item \textbf{Inverses}: We first note that since $d$ is square-free, therefore $\sqrt{d}$ is not an integer. Thus $a^2 - db^2$ is non-zero. We note that for any element $a+b\sqrt{d} \in \Q[\sqrt{d}]$, its inverse is $\frac{a}{a^2-db^2} - \frac{b}{a^2-db^2}\sqrt{d}$ since
         \begin{align*}
             &(a+b\sqrt{d})\left(\frac{a}{a^2-db^2} - \frac{b}{a^2-db^2}\sqrt{d}\right)\\
-            &= \left(a\left(\frac{a}{a^2-db^2}\right) + b\left(-\frac{b}{a^2-db^2}\right)d\right) + \left(a\left(-\frac{b}{a^2-db^2}\right) + b\left(\frac{a}{a^2-db^2}\right)\right)\sqrt{d}\\
+            &= \left(a\left(\frac{a}{a^2-db^2}\right) + b\left(-\frac{b}{a^2-db^2}\right)d\right)\\
+            &\quad\quad+ \left(a\left(-\frac{b}{a^2-db^2}\right) + b\left(\frac{a}{a^2-db^2}\right)\right)\sqrt{d}\\
             &=\left(\frac{a^2}{a^2-db^2} -\frac{b^2d}{a^2-db^2}\right) + \left(-\frac{ab}{a^2-db^2} + \frac{ab}{a^2-db^2}\right)\sqrt{d}\\
             &=1.
         \end{align*}
@@ -177,15 +178,12 @@ As discussed in the previous section, there is a function, called the norm, that
     \]
     where $a + b\sqrt{d} \in \Z[\sqrt d]$ and $d$ is a square-free integer not equal to 1.
 \end{definition}
-\begin{remark}
-    Most texts prefer to define the norm without the absolute value. However, defining it with the absolute value makes some properties easier to explain and prove.
-\end{remark}
 
 \begin{proposition}\label{prop-properties-of-quadratic-integer-norm}
     Let $x,y \in \Z[\sqrt{d}]$, where $d$ is a square-free integer not equal to 1. Then
     \begin{enumerate}
-        \item $x = 0$ if and only if $N(x) = 0$;
         \item $N(xy) = N(x)N(y)$;
+        \item $x = 0$ if and only if $N(x) = 0$;
         \item $x$ is a unit if and only if $N(x) = 1$; and
         \item if $N(x) = p$ where $p$ is a prime number, then $x$ is irreducible.
     \end{enumerate}
@@ -193,11 +191,10 @@ As discussed in the previous section, there is a function, called the norm, that
 \begin{proof}
     We prove the statements in order.
     \begin{enumerate}
-        \item For the forward direction, note that if $x = 0$ then clearly $N(0) = 0^2 - d(0)^2 = 0$. For the reverse direction, suppose $N(x) = a^2 - db^2 = 0$ where $a,b \in \Z$. Then $a^2 = db^2$ which means $a = \pm\sqrt{d}b$. Now since $d$ is a square-free integer, therefore the only way for equality on both sides (with the left hand side being an integer and the right being a non-integer) is for $a = b = 0$. Therefore $x = 0$.
-
         \item Let $x = p + q\sqrt{d}$ and $y = r + s\sqrt{d}$ where $p,q,r,s \in \Z$. Then
         \begin{align*}
-            N(xy) &= N\left((p+q\sqrt{d})(r+s\sqrt{d})\right)\\
+            &N(xy)\\
+            &= N\left((p+q\sqrt{d})(r+s\sqrt{d})\right)\\
             &= N\left((pr + qsd) + (ps + qr)\sqrt{d}\right)\\
             &= \left|(pr+qsd)^2 - d(ps+qr)^2\right|\\
             &= \left|\left((pr)^2 + 2(pqrsd) + (qsd)^2\right) - d\left((ps)^2 + 2(pqrs) + (qr)^2\right)\right|\\
@@ -209,6 +206,8 @@ As discussed in the previous section, there is a function, called the norm, that
             &= N(p+q\sqrt{d})N(r+s\sqrt{d})\\
             &= N(x)N(y).
         \end{align*}
+
+        \item For the forward direction, note that if $x = 0$ then clearly $N(0) = 0^2 - d(0)^2 = 0$. For the reverse direction, suppose $N(x) = a^2 - db^2 = 0$ where $a,b \in \Z$. Then $a^2 = db^2$ which means $a = \pm\sqrt{d}b$. Now since $d$ is a square-free integer, therefore the only way for equality on both sides (with the left hand side being an integer and the right being a non-integer) is for $a = b = 0$. Therefore $x = 0$.
 
         \item For the forward direction, if $x$ is a unit then there exists a $x^{-1} \in \Z[\sqrt d]$ such that $xx^{-1} = 1$. Note $N(xx^{-1}) = N(x)N(x^{-1}) = N(1) = 1$. Therefore, since we are working in the integers, we see $N(x)$ and $N(x^{-1})$ are both 1.
 
@@ -246,7 +245,7 @@ We are now ready to define the ring of quadratic integers.
     \[
         (a+b\sqrt{d})(x+y\sqrt{d}) = (ax+(by)d) + (ay+bx)\sqrt{d}
     \]
-    which is also in $\Z[\sqrt{d}]$. Thus $\Z[\sqrt{d}]$ is closed under multiplication. Hence $\Z[\sqrt{d}]$ is a subring of $\Q[\sqrt{d}]$. Furthermore, since $\Q[\sqrt{d}]$ is a field, thus the multiplication is commutative, which means $\Z[\sqrt{d}]$ is a commutative subring.
+    which is also in $\Z[\sqrt{d}]$. Thus $\Z[\sqrt{d}]$ is closed under multiplication. So $\Z[\sqrt{d}]$ is a subring of $\Q[\sqrt{d}]$. Furthermore, since $\Q[\sqrt{d}]$ is a field, thus the multiplication is commutative, which means $\Z[\sqrt{d}]$ is a commutative subring.
 
     Now we show that $\Z[\sqrt{d}]$ is an integral domain. Suppose $uv = 0$ in $\Z[\sqrt{d}]$. Then
     \[
@@ -277,6 +276,8 @@ We are now ready to define the ring of quadratic integers.
     Therefore it is impossible to find a value for $a$ to achieve $a^2 - 5b^2 = \pm7$. Hence 7 is irreducible.
 \end{example}
 
+\newpage
+
 \begin{exercise}
     Recall that the Gaussian integers is the set $\Z[i] = \Z[\sqrt{-1}]$.
     \begin{partquestions}{\alph*}
@@ -286,14 +287,15 @@ We are now ready to define the ring of quadratic integers.
             \item Prove that 3 is irreducible in the Gaussian integers.
             \item Let $x \in \Z[i]$. Show that if $9 \vert N(x)$ then $3 \vert x$.\newline
             (\textit{Hint: consider all possibilities of squares modulo 9.})
-            \item Prove that 3 is a prime in the Gaussian integers, which is called a \term{Gaussian prime}\index{Gaussian prime}.
+            \item Prove that 3 is a prime in the Gaussian integers.
         \end{partquestions}
     \end{partquestions}
 \end{exercise}
+\begin{remark}
+    A prime in the Gaussian integers is known as a \term{Gaussian prime}\index{Gaussian prime}.
+\end{remark}
 
 \section{The Field of Fractions}
-We have been avoiding a construct that would usually be introduced early on in an exploration of rings: the field of fractions of an integral domain. This is because they had no purpose being introduced that early; we do so now because their use would help in explaining of a property of a specific type of domains later.
-
 We know that every field is an integral domain (\myref{prop-field-is-integral-domain}), but not all integral domains are fields. The most familiar example would be the integers, which is an integral domain that is not a field. However, we may construct the rational numbers, which is a field, from the integers via fractions. We form an analogous process for constructing `fractions' based off an integral domain.
 
 \begin{definition}\label{definition-field-of-fractions}
@@ -315,7 +317,7 @@ We know that every field is an integral domain (\myref{prop-field-is-integral-do
 Clearly, we have a few things to prove in the above definition of the field of fractions.
 
 \begin{proposition}
-    The relation $\sim$ in \myref{definition-field-of-fractions} is indeed an equivalence relation.
+    The relation $\sim$ defined in in \myref{definition-field-of-fractions} is indeed an equivalence relation.
 \end{proposition}
 \begin{proof}
     We need to prove that $\sim$ is reflexive, symmetric, and transitive.
@@ -347,11 +349,11 @@ With the equivalence relation verified, we can now check that the operations def
     \[
         \frac{a_1d_1+b_1c_1}{b_1d_1} = \frac{a_2d_2 + b_2c_2}{b_2c_2}.
     \]
-    This is equivalent to showing that $(a_1d_1+b_1c_1, b_1d_1) \mathrel{\sim} (a_2d_2+b_2c_2, b_2d_2)$ by \myref{thrm-equivalence-class-equivalence}, i.e.
+    This is equivalent to showing $(a_1d_1+b_1c_1, b_1d_1) \mathrel{\sim} (a_2d_2+b_2c_2, b_2d_2)$ by \myref{thrm-equivalence-class-equivalence}, i.e.
     \[
         (a_1d_1+b_1c_1)(b_2d_2) = (b_1d_1)(a_2d_2+b_2c_2).
     \]
-    As $\frac{a_1}{b_1} = \frac{a_2}{b_2}$, we know that $(a_1, b_1) \mathrel{\sim} (a_2, b_2)$ (\myref{thrm-equivalence-class-equivalence}) which means $a_1b_2 = b_1a_2$. Similarly, because $\frac{c_1}{d_1} = \frac{c_2}{d_2}$ thus $c_1d_2 = d_1c_2$. Hence we see
+    As $\frac{a_1}{b_1} = \frac{a_2}{b_2}$, we know that $(a_1, b_1) \mathrel{\sim} (a_2, b_2)$ (\myref{thrm-equivalence-class-equivalence}) which means $a_1b_2 = b_1a_2$. Similarly, as $\frac{c_1}{d_1} = \frac{c_2}{d_2}$ thus $c_1d_2 = d_1c_2$. Hence we see
     \begin{align*}
         &(a_1d_1+b_1c_1)(b_2d_2)\\
         &= a_1d_1b_2d_2 + b_1c_1b_2d_2\\
@@ -380,7 +382,8 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
 
             \item \textbf{Associativity}: Let $\frac ab, \frac cd, \frac ef \in \Frac{D}$. Then
             \begin{align*}
-                \frac ab + \left(\frac cd + \frac ef\right) &= \frac ab + \frac {cf + de}{df}\\
+                &\frac ab + \left(\frac cd + \frac ef\right)\\
+                &= \frac ab + \frac {cf + de}{df}\\
                 &= \frac{a(df) + b(cf + de)}{b(df)}\\
                 &= \frac{adf + bcf + bde}{bdf}\\
                 &= \frac{(ad + bc)f + (bd)e}{(bd)f}\\
@@ -391,7 +394,8 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
 
             \item \textbf{Identity}: Define $0 = \frac 01$. Then for any $\frac ab \in \Frac{D}$, we see
             \begin{align*}
-                0 + \frac ab &= \frac 01 + \frac ab\\
+                &0 + \frac ab\\
+                &= \frac 01 + \frac ab\\
                 &= \frac{0b + 1a}{1b}\\
                 &= \frac ab
             \end{align*}
@@ -399,7 +403,8 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
 
             \item \textbf{Inverse}: For any $\frac ab \in \Frac{D}$, define $-\frac ab = \frac{-a}b$. Then we see
             \begin{align*}
-                \frac ab + \left(-\frac ab\right) &= \frac ab + \frac{-a}b\\
+                &\frac ab + \left(-\frac ab\right)\\
+                &= \frac ab + \frac{-a}b\\
                 &= \frac{ab + b(-a)}{b^2}\\
                 &= \frac 0{b^2}\\
                 &= \frac 01\\
@@ -409,7 +414,8 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
 
             \item \textbf{Commutativity}: Suppose $\frac ab, \frac cd \in \Frac{D}$. Then
             \begin{align*}
-                \frac ab + \frac cd &= \frac{ad + bc}{bd}\\
+                &\frac ab + \frac cd\\
+                &= \frac{ad + bc}{bd}\\
                 &= \frac{cb + da}{db}\\
                 &= \frac cd + \frac ab
             \end{align*}
@@ -422,7 +428,8 @@ With the operations verified to be valid, we can now finally check that $\Frac{D
 
             \item \textbf{Associativity}: Let $\frac ab, \frac cd, \frac ef \in \Frac{D}$. Then
             \begin{align*}
-                \frac ab \times \left(\frac cd \times \frac ef\right) &= \frac ab \times \frac {ce}{df}\\
+                &\frac ab \times \left(\frac cd \times \frac ef\right)\\
+                &= \frac ab \times \frac {ce}{df}\\
                 &= \frac {a(ce)}{b(df)}\\
                 &= \frac {(ac)e}{(bd)f}\\
                 &= \frac {ac}{bd} \times \frac ef\\
@@ -509,7 +516,7 @@ We now show that some familiar fields are, indeed, the field of fractions of som
 \begin{example}
     We show that $\Frac{\Z}$ is isomorphic to $\Q$, which should be an obvious statement. To avoid confusion, we denote the equivalence class of $\Frac{\Z}$ by $[(a,b)]$; define the map $\phi: \Frac{\Z} \to \Q$ by $\phi([(a, b)]) = \frac ab$. We show that this is a well-defined isomorphism.
     \begin{itemize}
-        \item \textbf{Well-defined}: Suppose $[(a, b)], [(c, d)] \in \Frac{\Z}$ such that $[(a,b)]=[(c,d)]$. Then $(a, b) \mathrel{\sim} (c, d)$ by \myref{thrm-equivalence-class-equivalence}, i.e. $ad = bc$. Hence one sees clearly that $\frac ab = \frac cd$. Therefore,
+        \item \textbf{Well-defined}: Suppose $[(a, b)], [(c, d)] \in \Frac{\Z}$ where $[(a,b)]=[(c,d)]$. Then $(a, b) \mathrel{\sim} (c, d)$ by \myref{thrm-equivalence-class-equivalence}, i.e. $ad = bc$. Hence one sees clearly that $\frac ab = \frac cd$. Therefore,
         \[
             \phi([(a,b)]) = \frac ab = \frac cd = \phi([(c, d)])
         \]
@@ -583,7 +590,7 @@ We now have the necessary terminology to formalize the idea of a unique factoriz
     An integral domain $D$ is a \term{unique factorization domain (UFD)}\index{unique factorization domain}\index{UFD} if and only if the following conditions are met.
     \begin{enumerate}
         \item For every non-zero non-unit $x \in D$, there exists (not necessarily unique) irreducible elements $p_1, p_2, \dots, p_n \in D$ such that $x = p_1p_2p_3\cdots p_n$ where $n$ is a positive integer.
-        \item If there exists (not necessarily unique) irreducible elements $q_1, q_2, \dots, q_m \in D$ such that $x = q_1q_2q_3\cdots q_m$ where $m$ is a positive integer, then
+        \item If there are (not necessarily unique) irreducible $q_1, q_2, \dots, q_m \in D$ such that $x = q_1q_2q_3\cdots q_m$ where $m$ is a positive integer, then
         \begin{itemize}
             \item $m=n$; and
             \item there exists a bijection $\sigma: \{1,2,\dots,n\} \to \{1,2,\dots,m\}$ such that $p_i$ and $q_{\sigma(i)}$ are associates for all $i \in \{1,2,\dots,n\}$.
@@ -603,11 +610,11 @@ Of course, UFDs are very abstract in this sense. However, we shall soon see that
 Before we can explore the relation between UFDs and PIDs, we need to introduce the ascending chain condition.
 
 \begin{definition}
-    The \term{ascending chain condition on principal ideals (ACCP)} of a ring $R$\index{ascending chain condition on principal ideals of a ring}\index{ACCP} is satisfied if every strictly increasing sequence of principal ideals
+    If every strictly increasing sequence of principal ideals
     \[
         I_1 \subset I_2 \subset I_3 \subset \cdots
     \]
-    is finite in length.
+    is finite in length, then the \term{ascending chain condition on principal ideals (ACCP)} of a ring $R$\index{ascending chain condition on principal ideals of a ring}\index{ACCP} is satisfied.
 \end{definition}
 
 \begin{lemma}\label{lemma-pid-satisfies-accp}
@@ -666,7 +673,7 @@ We are now ready to state an important theorem, with very useful corollaries.
 
     Assume that we obtain uniqueness (up to associates and reordering) for any $k$ irreducible factors in the expression involving $p_1, p_2, \dots, p_k$, where $k$ is a positive integer. That is, if $a = q_1q_2 \cdots q_m$ then $m = k$ and $p_1p_2\cdots p_k = q_1q_2 \cdots q_m$. We show that uniqueness is also attained for $k + 1$ irreducible factors, i.e. if $a = p_1p_2\cdots p_kp_{k+1}$ and $a = q_1q_2 \cdots q_m$, then $m = k+1$ and $p_1p_2\cdots p_kp_{k+1} = q_1q_2 \cdots q_m$.
 
-    Since $D$ is a PID, every irreducible in $D$ is prime (\myref{thrm-in-PID-prime-iff-irreducible}). In particular, every $p_i$ in the product $p_1p_2\cdots p_kp_{k+1}$ is prime. Since $p_1p_2\cdots p_kp_{k+1} = q_1\cdots q_m$, therefore $p_1$ divides $q_1\cdots q_m$, which therefore means that $p_1$ divides some $q_j$ in the product (see \myref{problem-prime-element-divides-some-element-in-product} later). Say $p_1 \vert q_1$ (which is permitted since $D$ is commutative). Then since $q_1$ is irreducible, we must have $q_1 = up_1$ where $u$ is some unit of $D$. Now since
+    Since $D$ is a PID, every irreducible in $D$ is prime (\myref{thrm-in-PID-prime-iff-irreducible}). In particular, every $p_i$ in the product $p_1p_2\cdots p_kp_{k+1}$ is prime. Since $p_1p_2\cdots p_kp_{k+1} = q_1\cdots q_m$, therefore $p_1$ divides $q_1\cdots q_m$, which therefore means that $p_1$ divides some $q_j$ in the product (see \myref{problem-prime-element-divides-some-element-in-product} later). Say $p_1 \vert q_1$ (which is permitted since $D$ is commutative). Then since $q_1$ is irreducible, we must have $q_1 = up_1$ where $u$ is some unit of $D$. Since
     \begin{align*}
         (up_1)p_2p_3\cdots p_kp_{k+1} &= u\left(p_1p_2p_3\cdots p_kp_{k+1}\right)\\
         &= u\left(q_1q_2q_3\cdots q_m\right)\\
@@ -676,13 +683,13 @@ We are now ready to state an important theorem, with very useful corollaries.
     \[
         p_2p_3\cdots p_kp_{k+1} = (uq_2)q_3\cdots q_m
     \]
-    by cancellation law (\myref{prop-domain-cancellation-law}). Since associates of an irreducible are irreducible (\myref{prop-associates-of-irreducible-is-irreducible}), we might as well write $uq_2$ as $Q$, which is an irreducible, meaning
+    by cancellation law (\myref{prop-domain-cancellation-law}). Since any associate of an irreducible is also irreducible (\myref{prop-associates-of-irreducible-is-irreducible}), we might as well write $uq_2$ as $Q$, which is an irreducible, meaning
     \[
         p_2p_3\cdots p_kp_{k+1} = Qq_3\cdots q_m.
     \]
     By the induction hypothesis we know that these two factorizations are unique up to associates and rearrangements. Therefore, the same is true for that of $a = p_1p_2\cdots p_kp_{k+1}$.
 
-    Hence, by induction, the factorization is unique, completing the proof.
+    Hence the factorization is unique by induction.
 \end{proof}
 
 \begin{exercise}\label{exercise-princ-ab-subset-of-b-iff-a-not-unit}
@@ -725,9 +732,9 @@ However, just proving that $\Z[x]$ is a UFD is too little for the amount of work
     \[
         c_{r+s} = a_0b_{r+s} + a_1b_{r+s-1} + \cdots + a_{r+s-1}b_1 + a_{r+s}b_0.
     \]
-    Since $p$ divides all of $a_1, a_2, \dots, a_{r-1}$ and $p$ also divides all of $b_1, b_2, \dots, b_{s-1}$, we see that $p$ divides every term except for $a_rb_s$. However, since $p$ divides all coefficients of $f(x)g(x)$, we know $p$ divides $c_{r+s}$, which means that either $p \vert a_r$ or $p \vert b_s$, a contradiction.
+    Since $p$ divides all of $a_1, a_2, \dots, a_{r-1}$ and $p$ divides all of $b_1, b_2, \dots, b_{s-1}$, we see that $p$ divides every term except for $a_rb_s$. However, since $p$ divides all coefficients of $f(x)g(x)$, we know $p$ divides $c_{r+s}$, which means that either $p \vert a_r$ or $p \vert b_s$, a contradiction.
 
-    Therefore, no prime $p$ divides the coefficients of $f(x)g(x)$, which means the GCD of $f(x)g(x)$ is 1. Hence $f(x)g(x)$ is primitive.
+    Therefore no prime $p$ divides the coefficients of $f(x)g(x)$, meaning  the GCD of $f(x)g(x)$ is 1. Hence $f(x)g(x)$ is primitive.
 \end{proof}
 
 We note one immediate consequence of Gauss's lemma.
@@ -746,10 +753,10 @@ We note one immediate consequence of Gauss's lemma.
 We note another lemma, this time relating an integral domain and its field of fractions.
 
 \begin{lemma}\label{lemma-reducible-in-field-of-fractions-means-reducible-in-UFD}
-    Let $D$ be a UFD and let $\Frac{D}$ be its field of fractions. Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Then there exist $P(x), Q(x) \in D[x]$ such that $f(x) = P(x)Q(x)$, $\deg P(x) = \deg p(x)$, and $\deg Q(x) = \deg q(x)$.
+    Let $D$ be a UFD and let $\Frac{D}$ be its field of fractions. Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Then there exist polynomials $P(x), Q(x) \in D[x]$ such that $f(x) = P(x)Q(x)$, $\deg P(x) = \deg p(x)$, and $\deg Q(x) = \deg q(x)$.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[Lemma 18.26]{judson_beezer_2022}})]
-    Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Let $a, b\in D$ such that $ap(x), bq(x) \in D[x]$. So we can find $C_P, C_Q \in D$ such that $ap(x) = C_P P(x)$ and $bq(x) = C_Q Q(x)$ where $P(x)$ and $Q(x)$ are primitive polynomials in $D[x]$. Therefore
+    Let $f(x) \in D[x]$, and suppose $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Frac{D}[x]$. Choose $a, b\in D$ such that $ap(x), bq(x) \in D[x]$. So we can find $C_P, C_Q \in D$ such that $ap(x) = C_P P(x)$ and $bq(x) = C_Q Q(x)$ where $P(x)$ and $Q(x)$ are primitive polynomials in $D[x]$. Therefore
     \[
         ab\times f(x) = C_P C_Q \times P(x)Q(x).
     \]
@@ -778,7 +785,7 @@ We note another lemma, this time relating an integral domain and its field of fr
     For uniqueness, set two possible factorizations equal to each other and view them in the field of fractions. The polynomial terms must have the same length since the field of fractions is a UFD, and, furthermore, after rearrangement, the polynomial terms must be associates of each other. The unit that makes the terms associates is an element of $\Frac{D}$, so we again could `clear denominators' and return back to $D$. As the polynomials are associates, we can cancel them on both sides and leave only constant terms to worry about, which are, up to reordering and associates, equal to each other since $D$ is a UFD.
 \end{proofsketch}
 \begin{proof}[Proof (cf. {\cite[Theorem 18.29]{judson_beezer_2022}})]
-    The reverse direction is easy to show. Suppose $D[x]$ is a UFD. For any $r \in D$, we may interpret it as an element in $D[x]$. So $r$ can be uniquely factored into irreducibles in $D[x]$. But each irreducible that $r$ is factored into must be a constant polynomial, since otherwise $r$ would be a polynomial (and not an element of $D$). Therefore $r$ is uniquely factored into irreducibles of $D$, showing that $D$ is a UFD.
+    The reverse direction is relatively easy to show. Suppose $D[x]$ is a UFD. For any $r \in D$, we may interpret it as an element in $D[x]$. So $r$ can be uniquely factored into irreducibles in $D[x]$. But each irreducible that $r$ is factored into must be a constant polynomial, since otherwise $r$ would be a polynomial (and not an element of $D$). Therefore $r$ is uniquely factored into irreducibles of $D$, showing that $D$ is a UFD.
 
     We now show the forward direction. We first prove the existence of a unique factorization. Suppose $f(x)$ is a non-zero polynomial in $D[x]$. If $f(x)$ is a constant polynomial then it has a unique factorization since $D$ is a UFD. So assume $f(x)$ is a non-constant polynomial. View $f(x)$ as a polynomial in $\Frac{D}$. Since $\Frac{D}$ is a field, thus $\Frac{D}[x]$ is a UFD (\myref{corollary-polynomial-ring-over-field-is-UFD}). Thus we may write
     \[
@@ -818,13 +825,13 @@ We note another lemma, this time relating an integral domain and its field of fr
     But both sides of this equation are elements of $D$, which is a UFD. So $s = t$ and, after reordering, each $p_i$ and $q_i$ are associates. This completes the uniqueness part of the proof.
 \end{proof}
 
-We can finally prove the result that we have been alluding to since the start of this subsection.
+We can finally prove the result that we have been alluding to.
 
 \begin{corollary}\label{corollary-Z-is-UFD}
     $\Z[x]$ is a UFD.
 \end{corollary}
 \begin{proof}
-    Since $\Z$ is a PID (\myref{prop-Z-is-PID}), therefore $\Z$ is a UFD (\myref{thrm-PID-is-UFD}) which means that $\Z[x]$ is a UFD (\myref{thrm-UFD-iff-polynomial-ring-is-UFD}).
+    Since $\Z$ is a PID (\myref{prop-Z-is-PID}), therefore $\Z$ is a UFD by \myref{thrm-PID-is-UFD} which means that $\Z[x]$ is a UFD (\myref{thrm-UFD-iff-polynomial-ring-is-UFD}).
 \end{proof}
 
 \begin{exercise}\label{exercise-primitive-polynomial-irreducible-iff-polynomial-irreducible-in-field-of-fractions}
@@ -834,7 +841,7 @@ We can finally prove the result that we have been alluding to since the start of
 Clearly, proving that an integral domain is a UFD is a tedious ordeal. Hence, we would usually show that an integral domain is a `simpler' type of domain, such as a PID, to indirectly show that it is a UFD.
 
 \section{Euclidean Domains}
-We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) to achieve division with remainder. We also seen polynomial long division (\myref{thrm-polynomial-long-division}) which is also similar to the division lemma. We generalize these properties abstractly, into what is known as a Euclidean domain.
+We repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) to achieve division with remainder. We also seen polynomial long division (\myref{thrm-polynomial-long-division}) which is also similar to the division lemma. We generalize these properties abstractly, into what is known as a Euclidean domain.
 
 \begin{definition}
     An integral domain $D$ is called a \term{Euclidean domain}\index{Euclidean domain} if and only if there is a map $N: D \setminus \{0\} \to \mathbb{N} \cup \{0\}$, called the \term{norm}\index{Euclidean domain!norm} or \term{measure}\index{Euclidean domain!measure}, that satisfies the following.
@@ -845,7 +852,7 @@ We have repeatedly used Euclid's division lemma (\myref{lemma-euclid-division}) 
 \end{definition}
 
 \begin{example}
-    The ring of integers, $\Z$, is a Euclidean domain with $N(a) = |a|$, the absolute value of $a$.
+    The ring of integers, $\Z$, is a Euclidean domain with the norm $N(a) = |a|$, the absolute value of $a$.
     \begin{itemize}
         \item One sees that
         \[
@@ -1030,8 +1037,6 @@ Explaining why the rest class inclusions are true are left for \myref{exercise-d
     Prove that for every non-trivial ideal $I$ of the Gaussian integers, the quotient ring $\Z[i]/I$ is finite.
 \end{problem}
 
-\newpage
-
 \begin{problem}[Sicherman Dice]\index{Sicherman Dice}
     Consider the polynomial
     \[
@@ -1048,7 +1053,7 @@ Explaining why the rest class inclusions are true are left for \myref{exercise-d
             f(x) &= x^{a_1} + x^{a_2} + x^{a_3} + x^{a_4} + x^{a_5} + x^{a_6} \text{ and}\\
             g(x) &= x^{b_1} + x^{b_2} + x^{b_3} + x^{b_4} + x^{b_5} + x^{b_6},
         \end{align*}
-        where each $a_i$ and $b_i$ are positive integers. Suppose $P(x) = f(x)g(x)$. Based on \textbf{(ii)}, explain why
+        where each $a_i$ and $b_i$ are positive integers. Suppose we have $P(x) = f(x)g(x)$. Based on \textbf{(ii)}, explain why
         \[
             f(x) = x^q(x+1)^r(x^2+x+1)^s(x^2-x+1)^t
         \]

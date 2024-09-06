@@ -50,11 +50,24 @@ Note that, in general, the expression $f(a)$ for an $a \in R$ means to substitut
 
 To make $R[x]$ into a ring, we need to define polynomial addition and polynomial multiplication.
 \begin{definition}
-    Let $R$ be a commutative ring. Let $f(x) = a_0 + \cdots + a_mx^m$ and $g(x) = b_0 + \cdots + b_nx^n$ be polynomials in $R[x]$. Let $s$ be the maximum of $m$ and $n$, and define $a_i = 0$ for $i > m$ and $b_i = 0$ for $i > n$. Then \term{polynomial addition}\index{polynomial!addition} is defined to be
+    Let $R$ be a commutative ring, and let
+    \begin{align*}
+        f(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_mx^m \text{ and}\\
+        g(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_nx^n
+    \end{align*}
+    be polynomials in $R[x]$. Let $s$ be the maximum of $m$ and $n$, and define $a_i = 0$ for $i > m$ and $b_i = 0$ for $i > n$. Then \term{polynomial addition}\index{polynomial!addition} is defined to be
     \[
-        f(x)+g(x) = \sum_{i=0}^s\left((a_i+b_i)x^i\right)
+        f(x)+g(x) = \sum_{i=0}^s\left((a_i+b_i)x^i\right).
     \]
-    and \term{polynomial multiplication}\index{polynomial!multiplication} is defined to be
+\end{definition}
+
+\begin{definition}
+    Let $R$ be a commutative ring, and let
+    \begin{align*}
+        f(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_mx^m \text{ and}\\
+        g(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_nx^n
+    \end{align*}
+    be polynomials in $R[x]$. Define $a_i = 0$ for $i > m$ and $b_i = 0$ for $i > n$. Then \term{polynomial multiplication}\index{polynomial!multiplication} is defined to be
     \[
         f(x)g(x) = \sum_{i=0}^{m+n}c_ix^i
     \]
@@ -80,7 +93,7 @@ Although this definition of multiplication of polynomials may seem complicated, 
     \begin{itemize}
         \item \textbf{Addition-Abelian}: We show that $(R[x], +)$ is an abelian group.
         \begin{itemize}
-            \item \textbf{Closure}: We see
+            \item \textbf{Closure}: We see that
             \[
                 f(x) + g(x) = \sum_{i=0}^m\left((a_i+b_i)x^i\right)
             \]
@@ -88,7 +101,8 @@ Although this definition of multiplication of polynomials may seem complicated, 
 
             \item \textbf{Associativity}: Note
             \begin{align*}
-                f(x) + (g(x) + h(x)) &= f(x) + \sum_{i=0}^m\left((b_i+c_i)x^i\right)\\
+                &f(x) + (g(x) + h(x))\\
+                &= f(x) + \sum_{i=0}^m\left((b_i+c_i)x^i\right)\\
                 &= \sum_{i=0}^m\left((a_i + (b_i + c_i))x^i\right)\\
                 &= \sum_{i=0}^m\left(((a_i + b_i) + c_i)x^i\right) & (+ \text{ is associative in }R)\\
                 &= \sum_{i=0}^m\left((a_i+b_i)x^i\right) + h(x)\\
@@ -112,10 +126,13 @@ Although this definition of multiplication of polynomials may seem complicated, 
            so $-f(x)$ is indeed the additive inverse of $f(x)$.
 
             \item \textbf{Commutativity}: One sees clearly that
-            \[
-                f(x) + g(x) = \sum_{i=0}^m\left((a_i+b_i)x^i\right) = \sum_{i=0}^m\left((b_i + a_i)x^i\right) = g(x) + f(x)
-            \]
-            since addition in $R$ is commutative. Therefore addition in $R[x]$ is also commutative.
+            \begin{align*}
+                &f(x) + g(x)\\
+                &= \sum_{i=0}^m\left((a_i + b_i)x^i\right)\\
+                &= \sum_{i=0}^m\left((b_i + a_i)x^i\right) & (+ \text{ is commutative in } R)\\
+                &= g(x) + f(x).
+            \end{align*}
+            Therefore addition in $R[x]$ is also commutative.
         \end{itemize}
 
         \item \textbf{Multiplication-Subgroup}: We show that $(R[x], \times)$ is a subgroup.
@@ -124,18 +141,15 @@ Although this definition of multiplication of polynomials may seem complicated, 
             \[
                 c_k = \sum_{i=0}^k a_ib_{k-i}
             \]
-            is an element of $R$, so
-            \[
-                f(x)g(x) = \sum_{k=0}^{m+n}c_kx^k
-            \]
-            is another polynomial in $R[x]$.
+            is an element of $R$ for all $k \in \{0, 1, \dots, m+n\}$, so $f(x)g(x) = c_0 + c_1x + c_2x^2 + c_3x^3 + \cdots + c_{m+n}x^{m+n}$ is another polynomial in $R[x]$.
 
-            \item \textbf{Associativity}: \myref{exercise-polynomial-multiplication-is-associative} (later) proves that polynomial multiplication is associative.
+            \item \textbf{Associativity}: Polynomial multiplication is associative by \myref{exercise-polynomial-multiplication-is-associative} (later).
         \end{itemize}
 
         \item \textbf{Distributive}: We finally show that $\times$ distributes over $+$. We only show that $f(x)(g(x) + h(x)) = f(x)g(x) + f(x)h(x)$ as we will later prove that $R[x]$ is commutative. Note
         \begin{align*}
-            f(x)(g(x) + h(x)) &= \sum_{i=0}^m\left(\left(\sum_{j=0}^ia_j(b_{i-j}+c_{i-j})\right)x^i\right)\\
+            &f(x)(g(x) + h(x))\\
+            &= \sum_{i=0}^m\left(\left(\sum_{j=0}^ia_j(b_{i-j}+c_{i-j})\right)x^i\right)\\
             &= \sum_{i=0}^m\left(\left(\sum_{j=0}^i(a_jb_{i-j}+a_jc_{i-j})\right)x^i\right) & (\text{Distribute in }R)\\
             &= \sum_{i=0}^m\left(\sum_{j=0}^i(a_jb_{i-j}x^i+a_jc_{i-j}x^i)\right)\\
             &= \sum_{i=0}^m\left(\sum_{j=0}^ia_jb_{i-j}x^i + \sum_{j=0}^ia_jc_{i-j}x^i\right)\\
@@ -146,7 +160,12 @@ Although this definition of multiplication of polynomials may seem complicated, 
     \end{itemize}
     Therefore $R[x]$ is a ring.
 
-    Now we prove commutativity of multiplication. Let $f(x) = a_0 + \cdots + a_mx^m, g(x) = b_0 + \cdots + b_nx^n \in R[x]$, and $m \leq n$. Then
+    Now we prove commutativity of multiplication. Let
+    \begin{align*}
+        f(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_mx^m \text{ and}\\
+        g(x) &= b_0 + b_1x + b_2x^2 + \cdots + b_nx^n
+    \end{align*}
+    where $m \leq n$. Then
     \begin{align*}
         f(x)g(x) &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k a_ib_{k-i}\right)x^k\right)\\
         &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k b_{k-i}a_i\right)x^k\right) & (R\text{ is commutative})\\
@@ -171,14 +190,16 @@ We now look at an example of polynomial addition and multiplication.
 \begin{example}
     Consider the polynomial ring $\Z_3[x]$, and the polynomials $f(x) = x^2 + 2x + 2$ and $g(x) = 2x^2 + 2x + 1$. Then
     \begin{align*}
-        f(x) + g(x) &= (1+2)x^2 + (2+2)x + (2+1)\\
+        &f(x) + g(x)\\
+        &= (1+2)x^2 + (2+2)x + (2+1)\\
         &= 3x^2 + 4x + 3\\
         &= 0x^2 + x + 0 & (\text{Coefficients are written in }\Z_3)\\
         &= x
     \end{align*}
     and
     \begin{align*}
-        f(x)g(x) &= (x^2+2x+2)(2x^2+2x+1)\\
+        &f(x)g(x)\\
+        &= (x^2+2x+2)(2x^2+2x+1)\\
         &= 2x^4 + 6x^3 + 9x^2 + 6x + 2\\
         &= 2x^4 + 0x^3 + 0x^2 + 0x + 2 & (\text{Coefficients are written in }\Z_3)\\
         &= 2x^4 + 2.
@@ -204,6 +225,8 @@ We now look at an example of polynomial addition and multiplication.
     Prove that polynomial multiplication is associative.\newline
     (\textit{Hint: $\displaystyle c_k = \sum_{i+j=k} a_ib_j$, which is the sum over all non-negative integers $i$ and $j$ with the property that $i+j=k$.})
 \end{exercise}
+
+\newpage
 
 We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a variable.
 \begin{example}
@@ -250,7 +273,7 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
 \end{example}
 
 \begin{exercise}
-    Give an example of a degree 5 polynomial in the ring $\Z_2[x]$.
+    Find a degree 5 polynomial in the ring $\Z_2[x]$.
 \end{exercise}
 
 \begin{definition}
@@ -265,7 +288,7 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     For the zero polynomial, the constant term is 0, the leading term is undefined, and the leading coefficient is undefined.
 \end{remark}
 \begin{example}
-    Consider the polynomial $5x^4 + 4x^3 + 3x^2 + 2x + 1$ in $\Z[x]$. Then
+    Consider $5x^4 + 4x^3 + 3x^2 + 2x + 1$ in $\Z[x]$. Then
     \begin{itemize}
         \item the constant term is 1;
         \item the leading term is $5x^4$; and
@@ -273,7 +296,7 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     \end{itemize}
 \end{example}
 \begin{example}
-    Consider the polynomial $\frac54x^3$ in $\Q[x]$. Then
+    Consider $\frac54x^3$ in $\Q[x]$. Then
     \begin{itemize}
         \item the constant term is 0;
         \item the leading term is $\frac54x^3$; and
@@ -346,7 +369,7 @@ With an introduction of polynomials and polynomial rings out of the way, we can 
 
     For the forward direction, take non-zero $a, b \in D$ such that $ab = 0$. We may view both $a$ and $b$ as degree 0 polynomials in $D[x]$. Clearly these two multiply together to form the zero polynomial in $D[x]$, meaning that they are zero divisors in $D[x]$.
 
-    For the reverse direction, take non-zero polynomials $f(x), g(x) \in D[x]$ such that $f(x)g(x) = 0$. Write
+    For the reverse direction, take non-zero $f(x), g(x) \in D[x]$ such that $f(x)g(x) = 0$. Write
     \begin{align*}
         f(x) = a_0+a_1x+a_2x^2+\cdots+a_mx^m \text{ with } a_m \neq 0\\
         g(x) = b_0+b_1x+b_2x^2+\cdots+b_nx^n \text{ with } b_n \neq 0
@@ -355,7 +378,7 @@ With an introduction of polynomials and polynomial rings out of the way, we can 
     \[
         a_mb_nx^{m+n} + (\text{A polynomial with degree less than }m+n) = 0
     \]
-    which hence means that all coefficients must be zero. In particular $a_mb_n = 0$. This means that we have found non-zero elements $a_m, b_n \in D$ such that their product is zero, meaning that they are zero divisors.
+    which hence means that all coefficients must be zero. In particular, this means that $a_mb_n = 0$. This means that we have found non-zero elements $a_m, b_n \in D$ such that their product is zero, meaning that they are zero divisors.
 \end{proof}
 
 \begin{example}
@@ -373,8 +396,6 @@ With an introduction of polynomials and polynomial rings out of the way, we can 
 \end{exercise}
 
 We now look at a theorem that tells us the degree of a sum or product of polynomials within a polynomial ring.
-
-\newpage
 
 \begin{theorem}\label{thrm-polynomial-degree-properties}
     Let $D$ be an integral domain, and let $f(x)$ and $g(x)$ be polynomials in $D[x]$ with degrees of $m$ and $n$ respectively. Let $s$ be the larger of $m$ and $n$. Then
@@ -416,7 +437,8 @@ We now look at a theorem that tells us the degree of a sum or product of polynom
 
     We now show the reverse direction; assume $u$ is a unit of $D[x]$. In fact $u$ is actually a polynomial, say $f(x) \in D[x]$. Then there exists $g(x) \in D[x]$ such that $f(x)g(x) = 1$. Now suppose $\deg f(x) = m$ and $\deg g(x) = n$. As $D$ is an integral domain so is $D[x]$ (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}), which means
     \begin{align*}
-        \deg(f(x)g(x)) &= \deg(f(x)) + \deg(g(x)) & (\myref{thrm-polynomial-degree-properties})\\
+        &\deg(f(x)g(x))\\
+        &= \deg(f(x)) + \deg(g(x)) & (\myref{thrm-polynomial-degree-properties})\\
         &= m + n\\
         &= \deg(1) & (\text{since }f(x)g(x) = 1)\\
         &= 0 & (\text{degree of constant polynomial is 0})
@@ -453,7 +475,7 @@ We now look at a theorem that tells us the degree of a sum or product of polynom
 \end{proof}
 
 \begin{exercise}\label{exercise-polynomial-ring-maps-to-quotient-polynomial-ring-is-homomorphism}
-    Show that $\phi$ in \myref{prop-polynomial-ring-quotient-ideal-polynomial-ring-cong-quotient-polynomial-ring} is a ring homomorphism.
+    Show that the map $\phi$ in \myref{prop-polynomial-ring-quotient-ideal-polynomial-ring-cong-quotient-polynomial-ring} is a ring homomorphism.
 \end{exercise}
 
 \begin{theorem}\label{thrm-prime-ideal-iff-prime-ideal-in-polynomial-ring}
@@ -493,7 +515,7 @@ In previous chapters, we have repeatedly used Euclid's division lemma (\myref{le
         \item If $f(x) \neq 0$ and $\deg d(x) > \deg f(x)$, we note $f(x) = 0d(x) + f(x)$. Thus $q(x) = 0$ and $r(x) = f(x)$ since $\deg f(x) < \deg d(x)$.
     \end{itemize}
 
-    Thus, we assume that $\deg f(x) \geq \deg d(x)$ and $f(x) \neq 0$. Let $\deg f(x) = n$. We induct on $n$ to show the existence of both $q(x)$ and $r(x)$.
+    Thus, we may assume that $\deg f(x) \geq \deg d(x)$ and $f(x) \neq 0$. Let $\deg f(x) = n$. We induct on $n$ to show the existence of both $q(x)$ and $r(x)$.
 
     When $n = 0$, we note $\deg f(x) = \deg d(x) = 0$. Thus $f(x) = a \in F$ and $d(x) = b \in F$ for some elements $a, b \in F$ where $b \neq 0$. We note $b^{-1}$ exists since $F$ is a field. Thus we may write $f(x) = a = b(b^{-1}a) + 0$, so $q(x) = b^{-1}a$ and $r(x) = 0$.
 
@@ -570,6 +592,7 @@ In previous chapters, we have repeatedly used Euclid's division lemma (\myref{le
 \end{example}
 
 We define a few more terms relating to division of polynomials.
+
 \begin{definition}
     Let $f(x)$ and $g(x)$ be polynomials in an integral domain $D[x]$. We say that $g(x)$ \term{divides}\index{divides!for polynomials} $f(x)$ (or that $g(x)$ is a \term{factor}\index{polynomial!factor} of $f(x)$) if there is a polynomial $h(x) \in D[x]$ such that $f(x) = g(x)h(x)$.
 
@@ -619,7 +642,8 @@ With these definitions, we can now state some corollaries.
     \end{align*}
     so 1 is a zero of multiplicity 2. It can't be a zero of multiplicity 3 since $(x-1)^3 = x^3 - 3x^2 + 3x - 1$ and
     \begin{align*}
-        x^4 - 2x^3 + 2x^2 - 2x + 1 &= x(x^3 - 3x^2 + 3x - 1) + 1(x^3 - 3x^2 + 3x - 1) + 2x^2 - 4x + 2\\
+        &x^4 - 2x^3 + 2x^2 - 2x + 1\\
+        &= x(x^3 - 3x^2 + 3x - 1) + 1(x^3 - 3x^2 + 3x - 1) + 2x^2 - 4x + 2\\
         &= (x-1)^3(x+1) + 2x^2 - 4x + 2
     \end{align*}
     which means $(x-1)^3$ is not a factor of $f(x)$. Thus 1 is a zero of multiplicity 2.
@@ -692,7 +716,11 @@ We end this section by noting two theorems.
 \end{problem}
 
 \begin{problem}
-    Let $I = \princ{x^2 + 3x - 1}$. Simplify $\left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)$ in the quotient ring $\Z[x]/I$.
+    Let $I = \princ{x^2 + 3x - 1}$. Simplify
+    \[
+        \left((x + 3) + I\right)\left((2x^2 + 3x - 1) + I\right)
+    \]
+    in the quotient ring $\Z[x]/I$.
 \end{problem}
 
 \begin{problem}

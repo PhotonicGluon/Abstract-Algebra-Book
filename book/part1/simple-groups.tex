@@ -14,12 +14,13 @@ The first infinite family of simple groups we will look at is the family of Cycl
 \end{proof}
 
 In fact, we have a much stronger result which we prove here.
+
 \begin{theorem}\label{thrm-abelian-group-simple-iff-cylic-group-of-prime-order}
     An abelian group is simple if and only if it has prime order.
 \end{theorem}
 Note that we do not assume that the abelian group is finite; we will show that the group is finite in the proof below.
 \begin{proof}
-    The reverse direction of the claim follows immediately from \myref{lemma-cyclic-group-simple-iff-order-is-prime}, so we prove the forward direction only.
+    The reverse direction follows immediately from \myref{lemma-cyclic-group-simple-iff-order-is-prime}, so we prove the forward direction only.
 
     Suppose $G$ is a simple abelian group; we show that $G$ is finite. Let $g$ a non-identity element of $G$. Then $H = \langle g \rangle$ is a subgroup of $G$. In fact, since $G$ is abelian, $H \unlhd G$ (\myref{prop-subgroup-of-abelian-group-is-normal}). As $G$ is simple, therefore $H = G$, meaning that $g$ is a generator of $G$. Now if $G$ is an infinite group, then one also sees that $\langle g^2 \rangle < G$ which implies $\langle g^2 \rangle \lhd G$, contradicting the fact that $G$ is simple. Hence $G$ is a finite abelian group with generator $g$, meaning $G$ is cyclic. Result follows directly from \myref{lemma-cyclic-group-simple-iff-order-is-prime}.
 \end{proof}
@@ -60,7 +61,7 @@ The other family of simple groups that is relatively easy to find (and define) i
         \]
         meaning $K$ is a normal subgroup of $G$ with an order that is a multiple of 5. Proceed to case 4, using $K$ in place of $H$.
 
-        \item $|H|$ is a multiple of 5, meaning $H$ has a Sylow 5-subgroup. Note there are $5-1=4$ non-identity elements in each Sylow 5-subgroup; therefore
+        \item $|H|$ is a multiple of 5, meaning $H$ has a Sylow 5-subgroup. Note that there are $5-1=4$ non-identity elements in each Sylow 5-subgroup; therefore
         \[
             |H| \geq n_5(5-1) = 24
         \]
@@ -102,7 +103,7 @@ We also state and prove a fairly obvious proposition.
     Let the integer $n \geq 3$. Let the set $\{1, 2, 3, \dots, n\}$ be denoted by $\mathcal{N}_n$. Suppose $\An{n}$ acts on $\mathcal{N}_n$ naturally. Then $\Stab{\An{n}}{r} \cong \An{n-1}$.
 \end{proposition}
 \begin{proof}
-    We note that elements of $\Stab{\An{n}}{r}$ are permutations that fix $r$, thereby permuting the $n - 1$ other elements. Therefore elements of $\Stab{\An{n}}{r}$ are even permutations on $n - 1$ elements, i.e. $\Stab{\An{n}}{r} \cong \An{n-1}$.
+    We note that elements of $\Stab{\An{n}}{r}$ are permutations that fix $r$, thereby permuting the $n - 1$ other elements. Therefore the elements of $\Stab{\An{n}}{r}$ are even permutations on $n - 1$ elements, i.e. $\Stab{\An{n}}{r} \cong \An{n-1}$.
 \end{proof}
 
 With these results, we are ready to prove the main result of this section.
@@ -113,7 +114,7 @@ With these results, we are ready to prove the main result of this section.
 \begin{proof}[Proof (see {\cite[Theorem 4.24]{dummit_foote_2004}})]
     We induct on $n$. For brevity, let $\mathcal{N}_n = \{1, 2, 3, \dots, n\}$. The base case of $n = 5$ is covered by \myref{corollary-A5-is-simple}. Assume that $\An{k-1}$ is simple for some $k \geq 6$; we will prove that $\An{k}$ is also simple.
 
-    Let $G = \An{k}$ and, seeking a contradiction, assume that $G$ has a non-trivial proper normal subgroup $H$. Let $G$ act on $\mathcal{N}_{k}$ naturally; thus $\Stab{G}{i} \leq G$ with $\Stab{G}{i} \cong \An{k-1}$ (\myref{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}) for any $i \in \mathcal{N}_k$. Note $\An{k-1}$ is simple by the induction hypothesis, so $\Stab{G}{i}$ is simple for each $i \in \mathcal{N}_{k}$.
+    Let $G = \An{k}$ and, seeking a contradiction, assume that $G$ has a non-trivial proper normal subgroup $H$. Let $G$ act on $\mathcal{N}_{k}$ naturally; thus we see that $\Stab{G}{i} \leq G$ with $\Stab{G}{i} \cong \An{k-1}$ (\myref{prop-An-stabilizer-of-i-is-isomorphic-to-A(n-1)}) for any $i \in \mathcal{N}_k$. Note $\An{k-1}$ is simple by the induction hypothesis, so $\Stab{G}{i}$ is simple for each $i \in \mathcal{N}_{k}$.
 
     Suppose first that there is some non-identity $\pi \in H$ such that $\pi(i) = i$ for some $i \in \mathcal{N}_{k}$. This means that $\pi$ fixes $i$; thus $\pi \in H \cap \Stab{G}{i}$. Note that since $H \lhd G$ and $\Stab{G}{i} \leq G$ thus $H \cap \Stab{G}{i} \lhd \Stab{G}{i}$ by the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 4. But as $\Stab{G}{i}$ is simple (and non-trivial) we must have $H \cap \Stab{G}{i} = \Stab{G}{i}$. Therefore $\Stab{G}{i} \subseteq H$ which means $\Stab{G}{i} \leq H$. Now by \myref{exercise-conjugate-of-stabilizer} (later), for any $\sigma \in G$, we know that $\sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{\sigma(i)}$. Therefore we see
     \[
@@ -124,11 +125,7 @@ With these results, we are ready to prove the main result of this section.
         \sigma\Stab{G}{i}\sigma^{-1} = \Stab{G}{j} \leq H.
     \]
 
-    Note that any $\lambda \in G$ may be written as a product of an even number of transpositions (\myref{thrm-parity-of-permutation}), say $2t$ transpositions. Thus, we may write
-    \[
-        \lambda = \lambda_1\lambda_2\cdots\lambda_t
-    \]
-    where each $\lambda_i$ is a product of two transpositions. Now as $k \geq 5$, each $\lambda_i$ (which could at most consist of two disjoint cycles of 4 elements) must fix at least one element in $\mathcal{N}_{k}$, say $j$. That is, $\lambda_i \in \Stab{G}{j}$ for some $j \in \mathcal{N}_{k}$. Since $\lambda_i \in \Stab{G}{j} \leq H$ for some $j \in \mathcal{N}_{k}$, thus $\lambda_i \in H$. Hence $\lambda = \lambda_1\lambda_2\cdots\lambda_t \in H$. Therefore, any element in $G$ is also in $H$, meaning $G \subseteq H$, contradicting the fact that $H \lhd G$.
+    Note that any $\lambda \in G$ may be written as a product of an even number of transpositions (\myref{thrm-parity-of-permutation}), say $2t$ transpositions. Thus, we may write $\lambda = \lambda_1\lambda_2\cdots\lambda_t$ where each $\lambda_i$ is a product of two transpositions. Now as $k \geq 5$, each $\lambda_i$ (which could at most consist of two disjoint cycles of 4 elements) must fix at least one element in $\mathcal{N}_{k}$, say $j$. That is, $\lambda_i \in \Stab{G}{j}$ for some $j \in \mathcal{N}_{k}$. Since $\lambda_i \in \Stab{G}{j} \leq H$ for some $j \in \mathcal{N}_{k}$, thus $\lambda_i \in H$. Hence $\lambda = \lambda_1\lambda_2\cdots\lambda_t \in H$. Therefore, any element in $G$ is also in $H$, meaning $G \subseteq H$, contradicting the fact that $H \lhd G$.
 
     We conclude that for any $\pi \in H$, if $\pi \neq \id$ then $\pi(i) \neq i$ for all $i \in \mathcal{N}_k$. The contrapositive of this statement is that if $\pi(i) = i$ for some $i \in \mathcal{N}_k$ then $\pi = \id$. Now suppose $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$. Then $\pi_2^{-1}\pi_1(i) = i$, which implies $\pi_2^{-1}\pi_1 = \id$. Hence $\pi_1 = \pi_2$. Therefore, if $\pi_1, \pi_2 \in H$ and $\pi_1(i) = \pi_2(i)$ for some $i \in \mathcal{N}_{k}$, then $\pi_1 = \pi_2$.
 
@@ -213,7 +210,7 @@ The list below, taken from \cite{wikipedia_list-of-simple-groups}, is a list of 
         \item $D_n(q)$ for $n > 3$.
     \end{itemize}
 
-    \item \term{Exceptional Chevalley groups}\index{Chevalley groups!exceptional}: there are 5 families of simple groups.
+    \item \term{Exceptional Chevalley groups}\index{Chevalley groups!exceptional}: there are 5 families of such groups.
     \begin{itemize}
         \item $E_6(q)$;
         \item $E_7(q)$;
@@ -272,7 +269,7 @@ We first list four categories of sporadic groups.
     \end{tabular}
 \end{table}
 
-\newpage
+
 
 More sporadic groups are listed below.
 \begin{table}[h]
@@ -299,12 +296,7 @@ The remaining 2 sporadic groups are special in that they have extremely large or
         &2^{41} \times 3^{13} \times 5^6 \times 7^2 \times 11 \times 13 \times 17 \times 19 \times 23 \times 31 \times 47\\
         &= 4,154,781,481,226,426,191,177,580,544,000,000.
     \end{align*}
-    \item The \term{Monster group}\index{Monster group}, usually denoted $\mathrm{M}$, has order
-    \begin{align*}
-        &2^{46} \times 3^{20} \times 5^9 \times 7^6 \times 11^{2} \times 13^3 \times 17 \times 19 \times 23 \times 29 \times 31 \times 41 \times 47 \times 59 \times 71\\
-        &= 808,017,424,794,512,875,886,459,904,961,710,757,005,754,368,000,000,000.
-    \end{align*}
-    It is the largest sporadic group.
+    \item The \term{Monster group}\index{Monster group}, usually denoted $\mathrm{M}$, has order $2^{46} \times 3^{20} \times 5^9 \times 7^6 \times 11^{2} \times 13^3 \times 17 \times 19 \times 23 \times 29 \times 31 \times 41 \times 47 \times 59 \times 71$ which equals 808,017,424,794,512,875,886,459,904,961,710,757,005,754,368,\linebreak000,000,000. It is the largest sporadic group.
 \end{itemize}
 
 \section{The Classification Theorem of Finite Simple Groups}

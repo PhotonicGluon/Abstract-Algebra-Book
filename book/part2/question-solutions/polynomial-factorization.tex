@@ -10,6 +10,7 @@
     \item For brevity we compute all possible values of $f(x)$ for $x \in \Z_7$ and then check for zeroes.
     \begin{table}[H]
         \centering
+        \fontsize{9pt}{10pt}\selectfont
         \begin{tabular}{|l|l|l|l|l|l|}
             \hline
             $\boldsymbol{x}$ & $\boldsymbol{f(x)}$ & $\boldsymbol{f(x) \mod2}$ & $\boldsymbol{f(x) \mod3}$ & $\boldsymbol{f(x) \mod5}$ & $\boldsymbol{f(x) \mod7}$ \\ \hline
@@ -47,7 +48,8 @@
 
         One may see that, after some trial and error, that
         \begin{align*}
-            x^4 - 8x^3 + 24x^2 - 32x + 19 &= (x^4 - 8x^3 + 24x^2 - 32x + 16) + 3\\
+            &x^4 - 8x^3 + 24x^2 - 32x + 19\\
+            &= (x^4 - 8x^3 + 24x^2 - 32x + 16) + 3\\
             &= (x - 2)^4 + 3
         \end{align*}
         and since $x^4 + 3$ is irreducible by \textbf{(i)}, thus $x^4 - 8x^3 + 24x^2 - 32x + 19$ is irreducible by transformation.
@@ -57,7 +59,8 @@
     \begin{itemize}
         \item \textbf{Homomorphism}: One sees that for any $f(x), g(x) \in D[x]$ we have
         \begin{align*}
-            \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
+            &\phi(f(x) + g(x))\\
+            &= \phi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
             &= \sum_{i=0}^m(a_i+b_i)(kx)^i\\
             &= \left(\sum_{i=0}^ma_i(kx)^i\right) + \left(\sum_{i=0}^mb_i(kx)^i\right)\\
             &= \left(\sum_{i=0}^ma_i(kx)^i\right) + \left(\sum_{i=0}^nb_i(kx)^i\right) & (\text{as } b_i = 0 \text{ for } i > n)\\
@@ -72,7 +75,7 @@
         \end{align*}
         so $\phi$ is a ring homomorphism.
 
-        \item \textbf{Injective}: Suppose we have $f(x), g(x) \in D[x]$ such that $\phi(f(x)) = \phi(g(x))$. Then
+        \item \textbf{Injective}: Suppose $f(x), g(x) \in D[x]$ such that $\phi(f(x)) = \phi(g(x))$. Then
         \begin{align*}
             \sum_{i=0}^m(a_ik^i)x^i &= \sum_{i=0}^ma_i(kx)^i\\
             &= \sum_{i=0}^nb_i(kx)^i\\
@@ -90,7 +93,7 @@
     \end{itemize}
     Therefore $\phi$ is an isomorphism.
 
-    \item Since $p(x)$ is irreducible we know $D[x]/\princ{p(x)}$ is a field (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}), which is a integral domain (\myref{prop-field-is-integral-domain}), and so $\princ{p(x)}$ is a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}). As $p(x) \vert a(x)b(x)$ therefore $a(x)b(x) \in \princ{p(x)}$. Hence $a(x) \in \princ{p(x)}$ or $b(x) \in \princ{p(x)}$ by definition of a prime ideal. So $a(x) = k(x)p(x)$ or $b(x) = k(x)p(x)$ for some $k(x) \in D[x]$, meaning $p(x) \vert a(x)$ or $p(x) \vert b(x)$.
+    \item Since $p(x)$ is irreducible we know $D[x]/\princ{p(x)}$ is a field (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}), which is a integral domain (\myref{prop-field-is-integral-domain}). Thus we see that $\princ{p(x)}$ is a prime ideal (\myref{thrm-prime-ideal-iff-quotient-ring-is-integral-domain}). As $p(x) \vert a(x)b(x)$ therefore $a(x)b(x) \in \princ{p(x)}$. Hence $a(x) \in \princ{p(x)}$ or $b(x) \in \princ{p(x)}$ by definition of a prime ideal. So $a(x) = k(x)p(x)$ or $b(x) = k(x)p(x)$ for some $k(x) \in D[x]$, meaning $p(x) \vert a(x)$ or $p(x) \vert b(x)$.
 
     \item \begin{partquestions}{\roman*}
         \item Let $p(x) = x^2 + 2 \in \Z_5[x]$. One sees that
@@ -108,7 +111,8 @@
         \item \begin{partquestions}{\alph*}
             \item We see
             \begin{align*}
-                \left((2x+3) + I\right) + \left((4x^2+3x+2) + I\right) &= (4x^2+5x+5) + I\\
+                &\left((2x+3) + I\right) + \left((4x^2+3x+2) + I\right)\\
+                &= (4x^2+5x+5) + I\\
                 &= 4(x^2+2) + 5x - 3 + I\\
                 &= 5x - 3 + I\\
                 &= 2 + I
@@ -117,7 +121,8 @@
 
             \item We note
             \begin{align*}
-                ((2x+3) + I)((4x^2+3x+2) + I) &= (8 x^3 + 18 x^2 + 13 x + 6) + I\\
+                &((2x+3) + I)((4x^2+3x+2) + I)\\
+                &= (8 x^3 + 18 x^2 + 13 x + 6) + I\\
                 &= \left((8x + 18)(x^2+2) - 3x - 30\right) + I\\
                 &= -3x - 30 + I\\
                 &= 2x + I
@@ -141,7 +146,8 @@
 
         \item We see
         \begin{align*}
-            (2x+2)(x+2) &= 2\left((x+1)(x+2)\right)\\
+            &(2x+2)(x+2)\\
+            &= 2\left((x+1)(x+2)\right)\\
             &= 2(1) & (\text{as } (x+1)(x+2) = 1 \text{ from the table})\\
             &= 2.
         \end{align*}
@@ -219,16 +225,17 @@
 
         \item As 1 is a zero of $f(x)$, thus $x-1 = x+6$ is a factor of $f(x)$ by the Factor Theorem (\myref{corollary-factor-theorem}). Performing long division on $x+6$ we see
         \begin{align*}
-            x^3 + 6 &= x^2(x+6) - 6x(x+6) + 36(x+6) - 210\\
+            &x^3 + 6\\
+            &= x^2(x+6) - 6x(x+6) + 36(x+6) - 210\\
             &= (x^2-6x+36)(x+6) - 210\\
-            &= (x^2+x+1)(x+6) + 0 & (\text{evaluating in }\Z_7)\\
+            &= (x^2+x+1)(x+6) + 0 & (\text{evaluate in }\Z_7)\\
             &= (x^2+x+1)(x+6).
         \end{align*}
         One can see that 2 is a zero of $x^2 + x + 1$ in $\Z_7$, so $x - 2 = x+5$ is a factor of $x^2 + x + 1$ by Factor Theorem again. Performing division on it yields
         \begin{align*}
             x^2 + x + 1 &= x(x+5) - 4(x+5) + 21\\
             &= (x-4)(x+5) + 21\\
-            &= (x+3)(x+5) + 0 & (\text{evaluating in }\Z_7)\\
+            &= (x+3)(x+5) + 0 & (\text{evaluate in }\Z_7)\\
             &= (x+3)(x+5)
         \end{align*}
         which means that
@@ -324,7 +331,7 @@
 
             \item There are $p - 1$ numbers from 1 to $p - 1$ inclusive. As $p > 2$, thus $p$ is odd and therefore $p - 1$ is even, meaning $\Un{p}$ is a group with even order.
 
-            Also, as $p$ is an odd integer, there exists a primitive root modulo $p$ (\myref{axiom-primitive-root-modulo-p}). Therefore $\Un{p}$ is cyclic (\myref{prop-Un-cyclic-only-if-exists-primitive-root}), which therefore means that $\Un{p}$ is a cyclic group with even order.
+            Also, as $p$ is an odd integer, there exists a primitive root modulo $p$ (\myref{axiom-primitive-root-modulo-p}). Therefore we see that $\Un{p}$ is cyclic (\myref{prop-Un-cyclic-only-if-exists-primitive-root}), which therefore means that $\Un{p}$ is a cyclic group with even order.
 
             \item Let $g$ be the generator of $\Un{p}$. We consider again the three cases.
             \begin{itemize}

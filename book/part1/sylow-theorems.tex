@@ -43,6 +43,8 @@ We note a special case of the First Sylow Theorem. Recall that a group with orde
     By \myref{thrm-sylow-1} any group of order $p^km$ has a subgroup of $p^k$. This subgroup is exactly a Sylow $p$-subgroup of $G$ by definition.
 \end{proof}
 
+What \myref{thrm-sylow-1} and \myref{corollary-sylow-p-subgroup-exists} gives us is a partial converse to Lagrange's theorem. Where Lagrange tells us the possible orders of subgroups of a finite group, there is no guarantee that such a subgroup of that order exists. The First Sylow Theorem guarantees that there are subgroups of certain orders for a finite group.
+
 \begin{exercise}
     Find a Sylow 2-subgroup of $\Z_{12}$.
 \end{exercise}
@@ -68,6 +70,7 @@ We proved that $gHg^{-1}$ is a subgroup of $G$ in \myref{exercise-conjugate-subg
 \end{exercise}
 
 We prove some results regarding the conjugate subgroup here.
+
 \begin{proposition}\label{prop-power-of-conjugate-equals-conjugate-of-power}
     Let $G$ be a group, and let $a, x \in G$. Then $(axa^{-1})^n = ax^na^{-1}$ for all integers $n$.
 \end{proposition}
@@ -118,8 +121,6 @@ We prove some results regarding the conjugate subgroup here.
 \begin{exercise}
     Let $G$ be a group and $g, h \in G$. Prove that $|gh| = |hg|$.
 \end{exercise}
-
-\newpage
 
 We note an important result with regards to the conjugate subgroup.
 
@@ -204,7 +205,7 @@ We can now look at the Second Sylow Theorem.
     Let $G$ be a finite group and $p$ be a prime number. Suppose $H$ and $K$ are both Sylow $p$-subgroups of $G$. Then there exists an element $g \in G$ such that $gHg^{-1} = K$.
 \end{theorem}
 \begin{proofsketch}
-    Consider the set of conjugates of $H$, i.e. $\mathcal{X} = \{gHg^{-1} \vert g \in G\}$, and let $H$ act on $\mathcal{X}$ by conjugation (which requires proving that this is, indeed, a group action). We then prove that $H$ is the only element of $\mathcal{X}$ with an orbit of 1. Furthermore, by using the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), show that any $g \notin H$ results in the orbit of $gHg^{-1}$ being a multiple of $p$. Conclude that the cardinality of $\mathcal{X}$ is 1 more than a multiple of $p$.
+    Consider $\mathcal{X} = \{gHg^{-1} \vert g \in G\}$, i.e. the set of conjugates of $H$, and let $H$ act on $\mathcal{X}$ by conjugation (which requires proving that this is, indeed, a group action). We then prove that $H$ is the only element of $\mathcal{X}$ with an orbit of 1. Furthermore, by using the Orbit-Stabilizer theorem (\myref{thrm-orbit-stabilizer}), show that any $g \notin H$ results in the orbit of $gHg^{-1}$ being a multiple of $p$. Conclude that the cardinality of $\mathcal{X}$ is 1 more than a multiple of $p$.
 
     Let $K$ also act on $\mathcal{X}$ by conjugation, and the above conclusion means that there is at least one orbit of length 1. Thus there is a $g \in G$ such that $k(gHg^{-1})k^{-1} = gHg^{-1}$ for all $k \in K$. Deduce that $g^{-1}Kg \subseteq \N{G}{H}$. As $|g^{-1}Kg| = |K|$ which is a Sylow $p$-subgroup, so $g^{-1}Kg$ is a $p$-subgroup, which means $g^{-1}Kg \subseteq H$ by \myref{prop-normalizer-of-sylow-p-subgroup}. Result follows from observing that $|H| = |K|$, meaning $g^{-1}Kg = H$, and trivial manipulation.
 \end{proofsketch}
@@ -253,7 +254,7 @@ We can now look at the Second Sylow Theorem.
     \end{align*}
     Since $|g^{-1}hg| = |h|$ by \myref{prop-order-of-conjugate-element-equals-order-of-element}, and because $H$ is a $p$-subgroup, therefore $|g^{-1}hg| = p^r$ where $r$ is some positive integer. Note that $g^{-1}Hg$ is a (sub)group by \myref{exercise-conjugate-subgroup}. Therefore $g^{-1}Hg$ is a $p$-subgroup of $\N{G}{H}$.
 
-    Furthermore, we know $g^{-1}Hg \cong H$ by \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup}, so $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, by \myref{prop-normalizer-of-sylow-p-subgroup}, we see $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But because $X = gHg^{-1}$, so $X = H$.
+    Furthermore, we know that $g^{-1}Hg \cong H$ by \myref{exercise-conjugate-subgroup-isomorphic-to-subgroup}, which means that $|H| = |g^{-1}Hg|$. Therefore $g^{-1}Hg$ is a Sylow $p$-subgroup of $\N{G}{H}$. Hence, by \myref{prop-normalizer-of-sylow-p-subgroup}, we see $H = g^{-1}Hg$, implying $gHg^{-1} = H$. But because $X = gHg^{-1}$, so $X = H$.
 
     Hence $H$ is the only element of $\mathcal{X}$ with $|\Orb{H}{X}| = 1$. Therefore for any $g \notin H$, $|\Orb{H}{gHg^{-1}}| > 1$. In fact, the Orbit-Stabilizer Theorem (\myref{thrm-orbit-stabilizer}) tells us that
     \[
@@ -265,6 +266,7 @@ We can now look at the Second Sylow Theorem.
 \end{proof}
 
 We note one important corollary of the Second Sylow Theorem.
+
 \begin{corollary}\label{corollary-sylow-subgroup-is-normal-if-it-is-unique}
     Let $G$ be a finite group and $P$ be a Sylow $p$-subgroup for some prime $p$. Then $P$ is a normal subgroup of $G$ if and only if $P$ is the only Sylow $p$-subgroup of $G$.
 \end{corollary}
@@ -401,7 +403,7 @@ For some groups of orders that do not satisfy the condition in Sylow's Test, we 
         &= \{g \in G \vert g \in xPx^{-1} \text{ for all } x \in G\}\\
         &= \bigcap_{x \in G} xPx^{-1}.
     \end{align*}
-    We note that $\ker\phi \neq \{e\}$ since that would imply that $\phi$ is injective (\myref{exercise-trivial-kernel-means-injective}), which would then mean $36 = |G| \leq |\Sn{4}| = 4! = 24$, a contradiction. We also note $\ker\phi \neq G$, otherwise
+    We note that $\ker\phi \neq \{e\}$. This is because that would imply that $\phi$ is injective (\myref{exercise-trivial-kernel-means-injective}), which would then mean $36 = |G| \leq |\Sn{4}| = 4! = 24$, a contradiction. We also note $\ker\phi \neq G$, otherwise
     \[
         36 = |G| = |\ker\phi| = \left|\bigcap_{x \in G} xPx^{-1}\right| \leq |xPx^{-1}| = |P| = 9,
     \]

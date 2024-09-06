@@ -9,37 +9,21 @@ A group is a collection of symmetries of something. A symmetry is a map from som
     \pdfteximgframed{0.3\textwidth}{part1/images/intro-to-groups/triangle-reflections.pdf_tex}
 \end{wrapfigure}
 
-For example, consider the collection of symmetries of an equilateral triangle. What actions could one perform to make the triangle ``look the same'' as before applying the action? Well, we could do nothing. That action is called the identity action. We could also reflect the triangle about the line $S_0$ and observe that the triangle ``looks the same as before''. We may also reflect the triangle about the lines $S_1$ and $S_2$, and the triangle will still ``look the same as before''. One may also consider rotating the triangle $120^\circ$ or $240^\circ$ about the centre in a clockwise manner (note that rotating the triangle $360^\circ$ is the same as the identity action, so we do not count it here).
-
-So we count 6 distinct actions in total: 1 identity action, 2 rotation actions, and 3 reflection actions. We can say that the group of symmetries of the equilateral triangle has 6 actions (or elements) in total.
+For example, consider the collection of symmetries of an equilateral triangle. What actions could one perform to make the triangle ``look the same'' as before applying the action? Well, we could do nothing. That action is called the identity action. We could also reflect the triangle about the line $S_0$ and observe that the triangle ``looks the same as before''. We may also reflect the triangle about the lines $S_1$ and $S_2$, and the triangle will still ``look the same as before''. One may also consider rotating the triangle $120^\circ$ or $240^\circ$ about the centre in a clockwise manner (note that rotating the triangle $360^\circ$ is the same as the identity action, so we do not count it here). So we count 6 distinct actions in total: 1 identity action, 2 rotation actions, and 3 reflection actions. We can say that the group of symmetries of the equilateral triangle has 6 actions (or elements) in total.
 
 \begin{wrapfigure}{r}{0.35\textwidth}
     \centering
     \pdfteximgframed{0.3\textwidth}{part1/images/intro-to-groups/circular-crossings.pdf_tex}
 \end{wrapfigure}
 
-Another category of groups that we can consider are groups of rotation. For example, consider the image on the right. There are 4 actions that we can do to this image that makes it ``look the same as before''.
-\begin{itemize}
-    \item Do nothing (the identity action).
-    \item Rotate the circle $90^\circ$ clockwise.
-    \item Rotate the circle $180^\circ$ clockwise.
-    \item Rotate the circle $270^\circ$ clockwise.
-\end{itemize}
-Note that the image has no lines of symmetry; due to the unique braiding on the knots, this image only has rotational symmetry and no mirror (or reflective) symmetry. Thus, this group has only 4 actions, all of which are rotations. One could say that this group is a cyclic group and that it has order 4. We'll formally define what these terms mean in later chapters.
+Another category of groups that we can consider are groups of rotation. For example, consider the image on the right. There are 4 actions that we can do to this image that makes it ``look the same as before'' -- do nothing (the identity action); rotate the circle $90^\circ$ clockwise; rotate the circle $180^\circ$ clockwise; and rotate the circle $270^\circ$ clockwise. Note that the image has no lines of symmetry; due to the unique braiding on the knots, this image only has rotational symmetry and no mirror (or reflective) symmetry. Thus, this group has only 4 actions, all of which are rotations. One could say that this group is a cyclic group and that it has order 4. We'll formally define what these terms mean in later chapters.
 
 \begin{wrapfigure}{r}{0.35\textwidth}
     \centering
     \pdfteximgframed{0.3\textwidth}{part1/images/intro-to-groups/permutations.pdf_tex}
 \end{wrapfigure}
 
-Let's look at a more technical example. Consider a set of points in a pane. We can consider the group of symmetries of a finite collection of points. What are the symmetries of the points? Well, in this case, a symmetry is a way to move one of these points to another point while making it ``look the same as before''.
-
-\begin{itemize}
-    \item One possible symmetry is given by the solid arrows. In such a symmetry, we have a a point (1) mapping to itself, a cycle of 2 points (5 and 6) on the left, and a cycle of 3 points (2, 3, and 4) on the right. Since the points ``look the same as before'', this is a valid symmetry.
-    \item Another possible symmetry is given by the dotted arrows. In this case, all the points are shifted clockwise in a circle. Since the points ``look the same as before'', this is valid.
-\end{itemize}
-
-One may notice that what each of the symmetries is doing is permuting the points around. In this case, this is exactly what each of the symmetries is doing: generating a possible permutation of points and ensuring that their locations stay the same. The collection of symmetries is thus called the symmetric group of degree 6, and its group actions compose of bijections from the set to itself.
+Let's look at a more technical example. Consider a set of points in a pane. We can consider the group of symmetries of a finite collection of points. What are the symmetries of the points? Well, in this case, a symmetry is a way to move one of these points to another point while making it ``look the same as before''. One possible symmetry is given by the solid arrows. In such a symmetry, we have a a point (1) mapping to itself, a cycle of 2 points (5 and 6) on the left, and a cycle of 3 points (2, 3, and 4) on the right. Since the points ``look the same as before'', this is a valid symmetry. Another possible symmetry is given by the dotted arrows. In this case, all the points are shifted clockwise in a circle. Since the points ``look the same as before'', this is valid. One may notice that what each of the symmetries is doing is permuting the points around. In this case, this is exactly what each of the symmetries is doing: generating a possible permutation of points and ensuring that their locations stay the same. The collection of symmetries is thus called the symmetric group of degree 6, and its group actions compose of bijections from the set to itself.
 
 \begin{exercise}
     How many symmetries are there in the symmetric group of degree 6? In other words, what is the order of the symmetric group of degree 6?\newline
@@ -49,14 +33,14 @@ One may notice that what each of the symmetries is doing is permuting the points
 \section{What Constitutes a Group?}
 Now that we have taken a look at some examples of groups, we ask: what properties do all groups satisfy? These properties are called the \term{group axioms}. We motivate the definition of each axiom with examples.
 
+Consider the group of symmetries of an equilateral triangle. One condition that that group must satisfy is that performing group actions one after another should not make the underlying object ``non-symmetric''. We should not be able to form a group action that results in the triangle being ``non-symmetric''.
+
 \begin{wrapfigure}{r}{0.325\textwidth}
     \centering
     \pdfteximgframed{0.275\textwidth}{part1/images/intro-to-groups/triangle-reflections.pdf_tex}
 \end{wrapfigure}
 
-Consider the group of symmetries of an equilateral triangle. One condition that that group must satisfy is that performing group actions one after another should not make the underlying object ``non-symmetric''. We should not be able to form a group action that results in the triangle being ``non-symmetric''. For example, we do not include rotating the triangle $90^\circ$ clockwise about $S_0$ (into 3D space) as this immediately makes the triangle ``different to how it began''.
-
-\newpage
+For example, we do not include rotating the triangle $90^\circ$ clockwise about $S_0$ (into 3D space) as this immediately makes the triangle ``different to how it began''.
 
 This property can be called the \term{axiom of closure} and can be written as follows.
 \begin{quote}
@@ -64,13 +48,13 @@ This property can be called the \term{axiom of closure} and can be written as fo
 \end{quote}
 Of course, this is not the actual statement of the axiom of closure, but we'll get into it later.
 
-The set $G$ in the previous example is the set of actions on the equilateral triangle that preserves symmetry. The binary operation $\ast$ can be informally called the ``followed by'' operator. Thus
+The set $G$ in the previous example is the set of actions on the equilateral triangle that preserves symmetry. The binary operation $\ast$ can be informally called the ``followed by'' or the ``then'' operator. Thus
 \begin{quote}
     (reflect about $S_0$) $\ast$ (rotate the triangle 120° clockwise)
 \end{quote}
 means
 \begin{quote}
-    rotate the triangle 120° clockwise, \textbf{followed by} reflection about $S_0$
+    rotate the triangle 120° clockwise, \textbf{then} reflect about $S_0$
 \end{quote}
 in standard English. It should be noted that we read actions from right to left, as seen in the example above. In the following chapters, such actions will be replaced with symbols.
 
@@ -90,8 +74,6 @@ The last axiom is hard to discover naturally and hard to motivate, but is absolu
 \begin{quote}
     Let $x, y$, and $z$ be elements in $(G, \ast)$. Then $(x \ast y) \ast z = x \ast (y \ast z)$.
 \end{quote}
-
-\newpage
 
 So what is a group?
 \begin{definition}

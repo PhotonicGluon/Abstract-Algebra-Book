@@ -14,6 +14,8 @@ For bijections between finite sets, each set has the same number of elements, so
 
 Such bijections between finite sets are called \term{permutations}\index{permutations}, since they simply permute the `index number' of the elements in the sets.
 
+\newpage
+
 \begin{example}
     Consider the set $S = \{1, 2, 3, 4, 5, 6\}$. A bijection $f: S \to S$ could perform the following mapping,
     \begin{multicols}{2}
@@ -79,8 +81,6 @@ We can describe a permutation $\phi$ based on its cycles; such a description is 
     \item If there are no cycles left, denote the permutation by $\id$.
 \end{enumerate}
 
-\newpage
-
 \begin{example}
     Let $S = \{1,2,3,4,5\}$. Consider the map $f: S \to S$, where
     \begin{itemize}
@@ -117,24 +117,22 @@ We can describe a permutation $\phi$ based on its cycles; such a description is 
     Therefore the cycle decomposition of $f$ is $\begin{pmatrix}1&2&4\end{pmatrix}\begin{pmatrix}3&5\end{pmatrix}$.
 \end{example}
 
-\newpage
-
 \begin{example}
-    Let the permutation $\alpha$ have cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$. Then
+    Let $\alpha$ have cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$. Then
     \begin{multicols}{3}
         \begin{itemize}
             \item $\alpha(1) = 3$;
             \item $\alpha(2) = 1$;
             \item $\alpha(3) = 5$;
             \item $\alpha(4) = 4$;
-            \item $\alpha(5) = 2$; and
-            \item $\alpha(n) = n$ for $n \geq 6$.
+            \item $\alpha(5) = 2$,
         \end{itemize}
     \end{multicols}
+    and $\alpha(n) = n$ for $n \geq 6$.
 \end{example}
 
 \begin{example}
-    Let the permutation $\beta$ have cycle decomposition $\begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}$. Then
+    Let $\beta$ have cycle decomposition $\begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}$. So
     \begin{multicols}{3}
         \begin{itemize}
             \item $\beta(1) = 6$;
@@ -145,10 +143,10 @@ We can describe a permutation $\phi$ based on its cycles; such a description is 
             \item $\beta(6) = 2$;
             \item $\beta(7) = 4$;
             \item $\beta(8) = 8$;
-            \item $\beta(9) = 7$; and
-            \item $\beta(n) = n$ for $n \geq 10$.
+            \item $\beta(9) = 7$,
         \end{itemize}
     \end{multicols}
+    and $\beta(n) = n$ for $n \geq 10$.
 \end{example}
 
 \begin{exercise}
@@ -162,7 +160,7 @@ We can describe a permutation $\phi$ based on its cycles; such a description is 
 
 We now look at composing permutations\index{permutation!composing}.
 \begin{example}
-    Let $f$ be a permutation with cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$ and let $g$ be a permutation with cycle decomposition $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$. Then $h = fg$ is a permutation where
+    Let $f$ have cycle decomposition $\begin{pmatrix}1 & 3 & 5 & 2\end{pmatrix}$ and let $g$ have cycle decomposition $\begin{pmatrix}2 & 4 & 3\end{pmatrix}$. Then $h = fg$ is a permutation where
     \begin{itemize}
         \item $h(1) = f(g(1)) = f(1) = 3$;
         \item $h(2) = f(g(2)) = f(4) = 4$;
@@ -178,7 +176,7 @@ We now look at composing permutations\index{permutation!composing}.
 \end{example}
 
 \begin{example}
-    We have $ \begin{pmatrix}2 & 9 & 7 & 4\end{pmatrix}\begin{pmatrix}1 & 6 & 4\end{pmatrix} = \begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}$.
+    We see $ \begin{pmatrix}2 & 9 & 7 & 4\end{pmatrix}\begin{pmatrix}1 & 6 & 4\end{pmatrix} = \begin{pmatrix}1 & 6 & 2 & 9 & 7 & 4\end{pmatrix}$.
 \end{example}
 
 We now describe how to find the inverse of a permutation\index{permutation!inverse}. Given a cycle decomposition for the permutation $f$, simply write the cycle notation backwards, ensuring that the smallest element remains at the front.
@@ -205,7 +203,7 @@ With the definition of permutations out of the way, we can finally introduce a v
 \begin{definition}
     Let $X$ be a non-empty set. The \term{symmetric group of $X$}\index{symmetric group}\index{symmetric group!of a set $X$} is
     \[
-        \Sym{X} = \{f: X \to X \vert f \text{ is a bijection}\}.
+        \Sym{X} = \{f: X \to X \vert f \text{ is a bijection}\}
     \]
     under function composition (which is denoted by $\circ$).
 \end{definition}
@@ -256,8 +254,8 @@ The most relevant type of symmetric group we encounter when working with finite 
 
     \begin{figure}[h]
         \centering
-        \pdfteximgframed{0.35\textwidth}{part1/images/symmetry-groups/maps-of-s3.pdf_tex}
-        \caption{All Permutations of $\Sn{3}$}
+        \pdfteximgframed{0.375\textwidth}{part1/images/symmetry-groups/maps-of-s3.pdf_tex}
+        \caption{Permutations of $\Sn{3}$}
     \end{figure}
 
     Thus $|\Sn{3}| = 6$.
@@ -286,7 +284,7 @@ To end this section, we prove an important result regarding symmetric groups of 
         \end{align*}
         which shows that $\phi$ is a homomorphism.
 
-        \item \textbf{Injective}: Let $\sigma, \pi \in \Sym{X_1}$ such that $\phi(\sigma) = \phi(\pi)$. Thus $f\sigma f^{-1} = f\pi f^{-1}$ which quickly implies $\sigma = \pi$ by cancellation law. Therefore $\phi$ is injective.
+        \item \textbf{Injective}: Let $\sigma, \pi \in \Sym{X_1}$ such that $\phi(\sigma) = \phi(\pi)$. Thus we have $f\sigma f^{-1} = f\pi f^{-1}$ which quickly implies $\sigma = \pi$ by cancellation law. Therefore $\phi$ is injective.
 
         \item \textbf{Surjective}: Let $\pi \in \Sym{X_2}$. Let the map $\sigma = f^{-1}\pi f$. We note that $\sigma: X_1 \to X_1$ is a bijection, so $\sigma \in \Sym{X_1}$. Clearly
         \[
@@ -348,7 +346,7 @@ The proof of this theorem is involved and technical, but we'll try and simplify 
         &= g_1g_2^{-1}x\\
         &= \lambda_{g_1g_2^{-1}}(x).
     \end{align*}
-    Note $\lambda_{g_1g_2^{-1}}$ is clearly an element of $H$. Thus if $\lambda_{g_1}, \lambda_{g_2} \in H$, then $\left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right) \in H$. Therefore by the subgroup test we have $H \leq \Sym{G}$.
+    Note $\lambda_{g_1g_2^{-1}}$ is clearly an element of $H$. Thus if $\lambda_{g_1}, \lambda_{g_2} \in H$, then we have $\left(\lambda_{g_1} \circ \left(\lambda_{g_2}\right)^{-1}\right) \in H$. Therefore by the subgroup test we have $H \leq \Sym{G}$.
 
     We finally show that $G \cong H$ by considering the map $\phi: G\to H$ where $g \mapsto \lambda_g$. We need to show that $\phi$ is an isomorphism.
     \begin{itemize}

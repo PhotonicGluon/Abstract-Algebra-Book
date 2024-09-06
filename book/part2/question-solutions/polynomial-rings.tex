@@ -20,29 +20,33 @@
     \begin{itemize}
         \item On one hand,
         \begin{align*}
-            u_k &= \sum_{r+s=k}\left(a_r\left(\sum_{p+q=s}b_pc_q\right)\right) & (\text{Definition of polynomial multiplication})\\
+            u_k &= \sum_{r+s=k}\left(a_r\left(\sum_{p+q=s}b_pc_q\right)\right) & (\text{Polynomial multiplication})\\
             &= \sum_{r+s=k}\left(\sum_{p+q=s}a_rb_pc_q\right)\\
             &= \sum_{p+q+r=k}a_rb_pc_q\\
-            &= \sum_{p+q+r=k}a_pb_qc_r & (\text{Order of }p,\;q,\;r \text{ is arbitrary})
+            &= \sum_{p+q+r=k}a_pb_qc_r & (p,\;q,\;r \text{ are arbitrary})
         \end{align*}
 
         \item On another hand,
         \begin{align*}
-            v_k &= \sum_{r+s=k}\left(\left(\sum_{p+q=r}a_pb_q\right)c_s\right) & (\text{Definition of polynomial multiplication})\\
+            v_k &= \sum_{r+s=k}\left(\left(\sum_{p+q=r}a_pb_q\right)c_s\right) & (\text{Polynomial multiplication})\\
             &= \sum_{r+s=k}\left(\sum_{p+q=r}a_pb_qc_s\right)\\
             &= \sum_{p+q+s=k}a_pb_qc_s\\
             &= \sum_{p+q+r=k}a_pb_qc_r & (s\text{ is a dummy variable})
         \end{align*}
     \end{itemize}
-    Therefore $u_k = v_k$ for all $k$, meaning that $f(x)(g(x)h(x)) = (f(x)g(x))h(x)$.
+    Therefore $f(x)(g(x)h(x)) = (f(x)g(x))h(x)$ since $u_k = v_k$ for all $k$.
 
     \item One sees
-    \begin{align*}
-        \Q[\sqrt[3]{2}] &= \left\{a_0 + a_1\sqrt[3]{2} + a_2\left(\sqrt[3]{2}\right)^2 + a_3\left(\sqrt[3]{2}\right)^3 + \cdots + a_n\left(\sqrt[3]{2}\right)^n \vert a_i \in \Q\right\}\\
-        &= \left\{a_0 + a_1\sqrt[3]{2} + a_2\sqrt[3]{4} + 2a_3 + \cdots + a_n\left(\sqrt[3]{2}\right)^n \vert a_i \in \Q\right\}\\
-        &= \left\{(a_0 + 2a_3 + \cdots) + (a_1 + 2a_4 + \cdots)\sqrt[3]{2} + (a_2 + 2a_5 + \cdots)\sqrt[3]{4} \vert a_i \in \Q\right\}\\
-        &= \left\{a + b\sqrt[3]{2} + c\sqrt[3]{4} \vert a,b,c \in \Q\right\}.
-    \end{align*}
+    {
+        \fontsize{8.5pt}{10pt}\selectfont
+        \begin{align*}
+            &\Q[\sqrt[3]{2}]\\
+            &= \left\{a_0 + a_1\sqrt[3]{2} + a_2\left(\sqrt[3]{2}\right)^2 + a_3\left(\sqrt[3]{2}\right)^3 + \cdots + a_n\left(\sqrt[3]{2}\right)^n \vert a_i \in \Q\right\}\\
+            &= \left\{a_0 + a_1\sqrt[3]{2} + a_2\sqrt[3]{4} + 2a_3 + \cdots + a_n\left(\sqrt[3]{2}\right)^n \vert a_i \in \Q\right\}\\
+            &= \left\{(a_0 + 2a_3 + \cdots) + (a_1 + 2a_4 + \cdots)\sqrt[3]{2} + (a_2 + 2a_5 + \cdots)\sqrt[3]{4} \vert a_i \in \Q\right\}\\
+            &= \left\{a + b\sqrt[3]{2} + c\sqrt[3]{4} \vert a,b,c \in \Q\right\}.
+        \end{align*}
+    }
 
     \item One example would be $x^5$. Essentially any polynomial where the highest term is $x^5$ would work.
 
@@ -96,7 +100,8 @@
 
     \item For brevity, let $\displaystyle f(x) = \sum_{i=0}^ma_ix^i$ and $\displaystyle g(x) = \sum_{i=0}^nb_ix^i$ be polynomials in $R[x]$. Without loss of generality assume $m \geq n$, and define $b_i = 0$ for $i > n$. Then
     \begin{align*}
-        \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m (a_i+b_i)x^i\right)\\
+        &\phi(f(x) + g(x))\\
+        &= \phi\left(\sum_{i=0}^m (a_i+b_i)x^i\right)\\
         &= \sum_{i=0}^m (a_i+b_i + I)x^i\\
         &= \sum_{i=0}^m ((a_i + I) + (b_i + I))x^i\\
         &= \sum_{i=0}^m (a_i + I)x^i + \sum_{i=0}^m (b_i + I)x^i\\
@@ -253,7 +258,7 @@
         \item Suppose $g(x) \in I$ is a non-zero polynomial of minimum degree.
         \begin{itemize}
             \item Since $g(x) \in I$ thus $\princ{g(x)} \subseteq I$.
-            \item Now suppose $f(x) \in I$. By polynomial long division (\myref{thrm-polynomial-long-division}) write $f(x) = q(x)g(x) + r(x)$ where $r(x) = 0$ or $\deg r(x) < \deg g(x)$. Note $r(x) = f(x) - \underbrace{g(x)q(x)}_{\text{In }I} \in I$, so the minimality of $\deg g(x)$ means that $\deg r(x) \not< \deg g(x)$, i.e. $r(x) = 0$. Thus $f(x) = q(x)g(x) \in \princ{g(x)}$, meaning $I \subseteq \princ{g(x)}$.
+            \item Now suppose $f(x) \in I$. By polynomial long division (\myref{thrm-polynomial-long-division}) we can write $f(x) = q(x)g(x) + r(x)$ where $r(x) = 0$ or $\deg r(x) < \deg g(x)$. Note $r(x) = f(x) - g(x)q(x) \in I$, so the minimality of $\deg g(x)$ means that $\deg r(x) \not< \deg g(x)$, i.e. $r(x) = 0$. Thus $f(x) = q(x)g(x) \in \princ{g(x)}$, meaning $I \subseteq \princ{g(x)}$.
         \end{itemize}
         This shows that $I = \princ{g(x)}$.
 
@@ -324,7 +329,8 @@
         \end{align*}
         and set $b_i = 0$ for any $i > n$. Note that
         \begin{align*}
-            \psi(f(x) + g(x)) &= \psi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
+            &\psi(f(x) + g(x))\\
+            &= \psi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
             &= \sum_{i=0}^m\phi(a_i + b_i)x^i\\
             &= \sum_{i=0}^m\left(\phi(a_i) + \phi(b_i)\right)x^i\\
             &= \sum_{i=0}^m\phi(a_i)x^i + \sum_{i=0}^m\phi(b_i)x^i\\
@@ -333,7 +339,8 @@
         \end{align*}
         and
         \begin{align*}
-            \psi(f(x)g(x)) &= \psi\left(\sum_{k=0}^{m+n}\left(\sum_{i=0}^ka_ib_{k-i}\right)x^k\right)\\
+            &\psi(f(x)g(x))\\
+            &= \psi\left(\sum_{k=0}^{m+n}\left(\sum_{i=0}^ka_ib_{k-i}\right)x^k\right)\\
             &= \sum_{k=0}^{m+n}\left(\phi\left(\sum_{i=0}^ka_ib_{k-i}\right)x^k\right)\\
             &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k\phi(a_ib_{k-i})\right)x^k\right)\\
             &= \sum_{k=0}^{m+n}\left(\left(\sum_{i=0}^k\phi(a_i)\phi(b_{k-i})\right)x^k\right)\\
@@ -354,7 +361,11 @@
             \]
             which therefore means $f(x) = g(x)$. So $\psi$ is an injective function.
 
-            \item \textbf{Surjective}: Suppose $h_S(x) = a_0 + a_1x + a_2x^2 + \cdots + a_mx^m \in S[x]$. Let $h_R(x) = \phi^{-1}(a_0) + \phi^{-1}(a_1)x + \cdots + \phi^{-1}(a_m)x^m \in R[x]$. Then note
+            \item \textbf{Surjective}: Let $h_S(x) = a_0 + a_1x + a_2x^2 + \cdots + a_mx^m \in S[x]$. Choose the polynomial
+            \[
+                h_R(x) = \phi^{-1}(a_0) + \phi^{-1}(a_1)x + \cdots + \phi^{-1}(a_m)x^m \in R[x].
+            \]
+            Then note
             \[
                 \psi(h_R(x)) = \sum_{i=0}^m\phi(\phi^{-1}(a_i))x^i = \sum_{i=0}^ma_ix^i = h_S(x)
             \]

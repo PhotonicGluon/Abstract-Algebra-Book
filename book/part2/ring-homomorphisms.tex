@@ -1,5 +1,5 @@
 \chapter{Ring Homomorphisms and Isomorphisms}
-Just like with groups, rings too have homomorphisms and isomorphisms, although they are defined slightly differently than in groups. Like how group homomorphisms preserve some structure between the two groups, ring homomorphisms and isomorphisms also preserve structure between rings.
+Like with groups, rings too have homomorphisms and isomorphisms, although they are defined slightly differently than in groups. Similar to how group homomorphisms preserve some structure between the two groups, ring homomorphisms and isomorphisms also preserve structure between rings.
 
 \section{Ring Homomorphisms and Isomorphisms}
 \begin{definition}
@@ -10,7 +10,7 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
     \end{align*}
 \end{definition}
 \begin{remark}
-    Like with group homomorphisms, we usually suppress the multiplication operation and use ``$+$'' for both addition operations. That is, the ring homomorphism conditions become
+    Like with group homomorphisms, we usually use ``$+$'' for both addition operations and suppress the multiplication operation. That is, the ring homomorphism conditions become
     \begin{align*}
         \phi(a+b) &= \phi(a) + \phi(b) \text{ and}\\
         \phi(ab) &= \phi(a)\phi(b).
@@ -38,23 +38,20 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
     \[
         R = \left\{\begin{pmatrix}a&b\\0&c\end{pmatrix}\vert a,b,c\in\Z\right\}.
     \]
-    Let the map $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$. We show that $\phi$ is a ring homomorphism.
-
-    We see that for any $\begin{pmatrix}a&b\\0&c\end{pmatrix}, \begin{pmatrix}x&y\\0&z\end{pmatrix} \in R$ that
+    The map $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$ is a ring homomorphism since, for any $\begin{pmatrix}a&b\\0&c\end{pmatrix}, \begin{pmatrix}x&y\\0&z\end{pmatrix} \in R$, we have
     \begin{align*}
         \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix} + \begin{pmatrix}x&y\\0&z\end{pmatrix}\right) &= \phi\left(\begin{pmatrix}a+x&b+y\\0&c+z\end{pmatrix}\right)\\
         &= (a+x,c+z)\\
         &= (a,c) + (x,z)\\
         &= \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\right) + \phi\left(\begin{pmatrix}x&y\\0&z\end{pmatrix}\right)
     \end{align*}
-    and also
+    and
     \begin{align*}
         \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\begin{pmatrix}x&y\\0&z\end{pmatrix}\right) &= \phi\left(\begin{pmatrix}ax&ay+bz\\0&cz\end{pmatrix}\right)\\
         &= (ax, cz)\\
         &= (a,c)(x,z)\\
-        &= \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\right)\phi\left(\begin{pmatrix}x&y\\0&z\end{pmatrix}\right)
+        &= \phi\left(\begin{pmatrix}a&b\\0&c\end{pmatrix}\right)\phi\left(\begin{pmatrix}x&y\\0&z\end{pmatrix}\right).
     \end{align*}
-    so $\phi$ is a homomorphism.
 \end{example}
 \begin{exercise}
     Let the function $\phi: \Mn{2}{\Z} \to \Z$ be defined such that
@@ -66,6 +63,8 @@ Just like with groups, rings too have homomorphisms and isomorphisms, although t
 \begin{exercise}
     Let $R$ and $S$ be rings with additive identities $0_R$ and $0_S$ respectively. Show that the \term{trivial homomorphism}\index{homomorphism!trivial} $\phi: R \to S, r \mapsto 0_S$ is, indeed, a ring homomorphism.
 \end{exercise}
+
+\pagebreak
 
 An endomorphism is a specific type of homomorphism.
 \begin{definition}
@@ -153,7 +152,7 @@ Similar to groups, we write $R_1 \cong R_2$ if and only if $R_1$ and $R_2$ are (
 \end{definition}
 
 \begin{exercise}\label{exercise-identity-homomorphism-is-an-isomorphism}
-    Show that the identity homomorphism is an automorphism.
+    Show that the identity homomorphism is actually an automorphism.
 \end{exercise}
 
 \section{Properties of Ring Homomorphisms}
@@ -181,13 +180,11 @@ For the following, let $R_1$ and $R_2$ be rings with additive identities $0_1$ a
 \end{proof}
 
 \begin{proposition}\label{prop-inverse-under-ring-homomorphism}
-    If $R_1$ and $R_2$ are division rings, then $\phi(x^{-1}) = (\phi(x))^{-1}$ for all $x \in R_1$.
+    If $R_1$ and $R_2$ are both division rings, then $\phi(x^{-1}) = (\phi(x))^{-1}$ for all $x \in R_1$.
 \end{proposition}
 \begin{proof}
     See \myref{exercise-ring-image-of-inverse-is-inverse} (later).
 \end{proof}
-
-\newpage
 
 \begin{proposition}\label{prop-homomorphism-on-subring-is-subring}
     If $S$ is a subring of $R_1$, then
@@ -290,7 +287,11 @@ Similar to group homomorphisms, ring homomorphisms too have a image and kernel.
     \]
     and the homomorphism $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$.
 
-    We note that $\phi$ is surjective; for any $(x,y)\in\Z^2$, we see that $\phi\left(\begin{pmatrix}x&0\\0&y\end{pmatrix}\right) = (x,y)$ so $(x,y)$ has a pre-image in $R$. Therefore $\im \phi = \Z^2$.
+    We note that $\phi$ is surjective; for any $(x,y)\in\Z^2$, we see that 
+    \[
+        \phi\left(\begin{pmatrix}x&0\\0&y\end{pmatrix}\right) = (x,y)
+    \]
+    so any $(x,y)$ has a pre-image in $R$. Therefore $\im \phi = \Z^2$.
 
     We now find the kernel of $\phi$.
     \begin{align*}
@@ -331,8 +332,6 @@ We look at some results regarding the image and kernel of a ring homomorphism. T
 \section{The Ring Isomorphism Theorems}
 Similar to group theory, there are three main ring isomorphism theorems. However, we will only explicitly prove the first ring isomorphism theorem; the other two will be left as problems.
 
-\newpage
-
 \begin{theorem}[First Ring Isomorphism Theorem (FRIT)]\label{thrm-ring-isomorphism-1}\index{isomorphism theorem!ring!first}\index{FRIT}
     Let $R$ and $R'$ be rings. Let $\phi: R \to R'$ be a ring homomorphism, and let $\pi: R \to R/\ker\phi$, $r\mapsto r + \ker\phi$ be the natural surjective homomorphism. Then there exists a unique ring isomorphism $\psi: R / \ker\phi \to \im\phi$ such that $\psi\pi = \phi$.
 \end{theorem}
@@ -344,7 +343,7 @@ Similar to group theory, there are three main ring isomorphism theorems. However
     for any ring homomorphism $\phi$. This means that the set of pre-images that have an image of $\phi(x)$ is $x\ker\phi$.
 \end{remark}
 
-We include the commutativity diagram of the maps stated to aid clarity.
+We include the commutativity diagram of the stated maps for clarity.
 \begin{figure}[h]
     \centering
     \pdfteximgframed[12pt]{0.25\textwidth}{part2/images/ring-homomorphisms/ring-iso-1-commutativity.pdf_tex}
@@ -436,6 +435,9 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
 \end{exercise}
 
 We briefly mention the other two main ring isomorphism theorems, although the proof of them will be left as problems. They are much less used than the FRIT, so we make only a passing mention of them.
+
+\newpage
+
 \begin{theorem}[Second Ring Isomorphism Theorem]\label{thrm-ring-isomorphism-2}\index{isomorphism theorem!ring!second}
     Let $R$ be a ring with subring $S$ and ideal $I$. Then
     \begin{enumerate}
@@ -605,6 +607,8 @@ In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents
     \end{partquestions}
 \end{problem}
 
+\pagebreak
+
 \begin{problem}\label{problem-ring-isomorphism-2}
     Let $R$ be a ring with a subring $S$ and ideal $I$. Prove that
     \begin{partquestions}{\roman*}
@@ -613,8 +617,6 @@ In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents
         \item $S/(S\cap I)\cong (S+I)/I$.
     \end{partquestions}
 \end{problem}
-
-\newpage
 
 \begin{problem}\label{problem-ring-isomorphism-3}
     Let $R$ be a ring with ideals $I$ and $J$ such that $I$ is a subset of $J$.

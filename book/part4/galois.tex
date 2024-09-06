@@ -95,9 +95,10 @@ We have a special name for this group.
     for any $a,b,c,d \in \Q$ is an automorphism that fixes $\Q(\sqrt3)$. The automorphism $\mu = \sigma\tau$ fixes $\Q(\sqrt{15})$. It will be clear soon that $S = \{\id, \sigma, \tau, \mu\}$ is $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
 
     \begin{figure}[H]
-        \begin{minipage}[c]{0.475\textwidth}
+        \begin{minipage}[c]{0.4\textwidth}
             \begin{table}[H]
                 \centering
+                \fontsize{9pt}{11pt}\selectfont
                 \begin{tabular}{|l|l|l|l|l|}
                     \hline
                     & $\boldsymbol{\id}$ & $\boldsymbol{\sigma}$ & $\boldsymbol{\tau}$ & $\boldsymbol{\mu}$ \\ \hline
@@ -108,9 +109,10 @@ We have a special name for this group.
                 \end{tabular}
             \end{table}
         \end{minipage}
-        \begin{minipage}[c]{0.475\textwidth}
+        \begin{minipage}[c]{0.55\textwidth}
             \begin{table}[H]
                 \centering
+                \fontsize{9pt}{11pt}\selectfont
                 \begin{tabular}{|l|l|l|l|l|}
                     \hline
                     & $\boldsymbol{(0, 0)}$ & $\boldsymbol{(0, 1)}$ & $\boldsymbol{(1, 0)}$ & $\boldsymbol{(1, 1)}$ \\ \hline
@@ -180,7 +182,7 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
 \begin{proof}[Proof (cf. {\cite[Theorem 23.7]{judson_beezer_2022}})]
     We use strong induction on $[E:F]$.
 
-    When $[E:F] = 1$, we have $E = F$ (\myref{prop-finite-extension-of-degree-1-means-extension-equals-base-field}). Therefore $\Gal{E/F}$ consists of only the identity automorphism and so $|\Gal{E/F}| = 1 = [E:F]$.
+    When $[E:F] = 1$, we have $E = F$ (\myref{prop-finite-extension-of-degree-1-means-extension-equals-base-field}). Therefore $\Gal{E/F}$ contains only the identity automorphism and so $|\Gal{E/F}| = 1 = [E:F]$.
 
     Now assume that $|\Gal{E'/F'}| = [E':F']$ for any field $F'$, any $\mathfrak{f}(x) \in F'[x]$, and splitting field $E'$ of $\mathfrak{f}(x)$ over $F'$ such that $[E':F'] \leq k$ for some positive integer $k$. We show that the theorem holds for a field $F$, a polynomial $f(x) \in F[x]$, and the splitting field $E$ of $f(x)$ over $F$ such that $[E:F] = k+1$, i.e. we are to show $|\Gal{E/F}| = k + 1$.
 
@@ -201,7 +203,7 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
 \begin{proof}
     Let $p$ be the characteristic of $E$ and $F$, and assume that the orders of $E$ and $F$ are $p^m$ and $p^n$ respectively. Then by \myref{thrm-subfields-of-finite-field} we know that $m = nk$. Also by \myref{thrm-finite-field-is-unique} we may assume that $E$ is the splitting field of $x^{p^m} - x$ over a subfield of $E$ of order $p$. In particular this means that $E$ must be the splitting field of $x^{p^m} - x$ over $F$. Since $[E:F] = k$ thus $|\Gal{E/F}| = k$ by \myref{thrm-order-of-galois-group-is-degree-of-field-extension}.
 
-    To prove that $\Gal{E/F}$ is cyclic we need to find a generator of $\Gal{E/F}$. In particular we need to find an isomorphism in $\Gal{E/F}$ of order $k$. Consider the map $\sigma: E \to E$ where $\phi(a) = a^{p^n}$ for any $a \in E$. We show that $\sigma \in \Aut{E}$.
+    To prove that $\Gal{E/F}$ is cyclic we need to find a generator. In particular we need to find an isomorphism in $\Gal{E/F}$ of order $k$. Consider the map $\sigma: E \to E$ where $\phi(a) = a^{p^n}$ for any $a \in E$. We show that $\sigma \in \Aut{E}$.
     \begin{itemize}
         \item \textbf{Homomorphism}: Note that for any $a, b \in E$ we have
         \begin{align*}
@@ -235,7 +237,7 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
 \end{proof}
 
 \begin{example}
-    Remember when we claimed that $\Gal{\Q(\sqrt3,\sqrt5)/\Q} \cong \Z_2^2$ in \myref{example-galois-group-of-Q-sqrt3-sqrt5-over-Q}? Certainly $H = \{\id, \sigma, \tau, \mu\}$ is a subgroup of $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$. However one sees that $|H| = 4$ and
+    Remember when we claimed $\Gal{\Q(\sqrt3,\sqrt5)/\Q} \cong \Z_2^2$ in \myref{example-galois-group-of-Q-sqrt3-sqrt5-over-Q}? Certainly one sees that $H = \{\id, \sigma, \tau, \mu\}$ is a subgroup of $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$. However one also sees $|H| = 4$ and
     \[
         |\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
     \]
@@ -276,8 +278,6 @@ Recall also from \myref{thrm-zeroes-of-an-irreducible} that an irreducible polyn
     See \myref{exercise-algebraic-extension-of-field-of-characteristic-0-is-separable} (later).
 \end{proof}
 
-\pagebreak
-
 Separable extensions are nice because they can be determined solely by one primitive element. Before we can prove this fact, we note one lemma.
 
 \begin{lemma}\label{lemma-primitive-element}
@@ -300,7 +300,7 @@ Separable extensions are nice because they can be determined solely by one primi
     \end{align*}
     and $a_i \neq a+d(b-b_j)$ for all $i \in \{1, 2, 3, \dots, m\}$ and $j \in \{2, 3, \dots, n\}$. Therefore the only possible zero of $s(x)$ in $K$ is $b_1 = b$; consequently $s(x) = (x-b)^u$ for some positive integer $u$. However $s(x)$ is irreducible (by definition of a minimal polynomial), and because $F$ has characteristic 0, therefore $s(x)$ has no multiple zeroes (\myref{thrm-zeroes-of-an-irreducible}), meaning $u = 1$ and therefore $s(x) = x-b$. The only zero of $s(x)$ is clearly $b$, and by definition of a minimal polynomial, we must have $b \in F(c)$, proving $F(a, b) \subseteq F(c)$.
 
-    So we have $F(c) \subseteq F(a, b)$ and $F(a, b) \subseteq F(c)$, proving that $F(a, b) = F(c)$.
+    So $F(c) \subseteq F(a, b)$ and $F(a, b) \subseteq F(c)$, implying $F(a, b) = F(c)$.
 \end{proof}
 
 \begin{theorem}[Primitive Element Theorem]\index{Primitive Element Theorem}\label{thrm-primitive-element}
@@ -319,7 +319,8 @@ Separable extensions are nice because they can be determined solely by one primi
 
     If $[E:F] = k + 1$ this means that $E = F(a_1, a_2, \dots, a_k, a_{k+1})$. Thus
     \begin{align*}
-        F(a_1, a_2, \dots, a_k, a_{k+1}) &= F(a_1, a_2, \dots, a_k)(a_{k+1}) & (\myref{prop-field-generated-by-S-inductive-definition})\\
+        &F(a_1, a_2, \dots, a_k, a_{k+1})\\
+        &= F(a_1, a_2, \dots, a_k)(a_{k+1}) & (\myref{prop-field-generated-by-S-inductive-definition})\\
         &= F(\alpha_1)(a_{k+1}) \text{ for some } \alpha_1 \in E & (\text{induction hypothesis})\\
         &= F(\alpha_1, a_{k+1}) & (\myref{prop-field-generated-by-S-inductive-definition})\\
         &= F(\alpha) \text{ for some } \alpha \in E & (\myref{lemma-primitive-element})
@@ -358,8 +359,6 @@ The Galois group of a field extension $E/F$ is the set of automorphisms of $E$ t
 \begin{exercise}\label{exercise-fixed-field-is-subfield}
     Prove \myref{prop-fixed-field-is-subfield}.
 \end{exercise}
-
-\pagebreak
 
 \begin{proposition}\label{prop-fixed-field-of-Gal-E/F-is-F}
     Let $F$ be a field. Let $E$ be the splitting field of a separable polynomial $f(x) \in F[x]$ over $F$. Then
@@ -404,7 +403,7 @@ The Galois group of a field extension $E/F$ is the set of automorphisms of $E$ t
     \]
     We note that $G$ permutes the zeroes of the polynomial $f(x)$, so the coefficients of $f(x)$ remain unchanged. So every coefficient of $f(x)$ must belong in $\Fix{G}{E} = F$, and so $f(x) \in F[x]$.
 
-    Now suppose $h(x) \in F[x]$ has a zero of $\alpha_1$. As $\Orb{G}{\alpha_1} = \{\alpha_1, \alpha_2, \dots, \alpha_r\}$, there exists $\sigma \in G$ such that $\sigma(\alpha_1) = \alpha_i$ for some $i = 1, 2, \dots, r$. We note that $\alpha_i$ is a zero of $h(x)$ since, if we write $h(x) = a_0 + a_1x + \cdots + a_mx^m$, we see
+    Now suppose $h(x) \in F[x]$ has a zero of $\alpha_1$. Because $\Orb{G}{\alpha_1} = \{\alpha_1, \alpha_2, \dots, \alpha_r\}$, there exists $\sigma \in G$ such that $\sigma(\alpha_1) = \alpha_i$ for some $i = 1, 2, \dots, r$. We note that $\alpha_i$ is a zero of $h(x)$ since, if we write $h(x) = a_0 + a_1x + \cdots + a_mx^m$, we see
     \begin{align*}
         0 &= \sigma(0)\\
         &= \sigma(f(\alpha_1))\\
@@ -412,7 +411,7 @@ The Galois group of a field extension $E/F$ is the set of automorphisms of $E$ t
         &= a_0 + a_1\sigma(\alpha_1) + \cdots + a_m\sigma(\alpha_1)^m\\
         &= a_0 + a_1\alpha_i + \cdots + a_m\alpha_i^m.
     \end{align*}
-    Therefore $x - \alpha_i$ is a factor of $h(x)$ by Factor Theorem (\myref{corollary-factor-theorem}). Since this is true for every $i = 1, 2, \dots, r$, therefore $(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_r) = f(x)$ is a factor of $h(x)$. So $f(x)$ divides every polynomial with a zero of $\alpha_1$, including the minimal polynomial of $\alpha_1$. But the minimal polynomial of $\alpha_1$ divides every polynomial with a zero of $\alpha_1$ (\myref{corollary-minimal-polynomial-divides-polynomial-with-same-root}), which means that $f(x)$ is the minimal polynomial of $\alpha_1$.
+    Therefore $x - \alpha_i$ is a factor of $h(x)$ by Factor Theorem (\myref{corollary-factor-theorem}). Since this is true for every $i = 1, 2, \dots, r$, thus $(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_r) = f(x)$ is a factor of $h(x)$. So $f(x)$ divides every polynomial with a zero of $\alpha_1$, including the minimal polynomial of $\alpha_1$. But the minimal polynomial of $\alpha_1$ divides every polynomial with a zero of $\alpha_1$ (\myref{corollary-minimal-polynomial-divides-polynomial-with-same-root}), which means that $f(x)$ is the minimal polynomial of $\alpha_1$.
 
     Now clearly since $\alpha_1$ has a minimal polynomial of $f(x) \in F[x]$, it is thus algebraic. Furthermore the extension $F(\alpha)$ has degree $r$. Therefore $\alpha$ has degree $r$.
 \end{proof}
@@ -480,9 +479,9 @@ Later we will see that normal extensions are, in some way, related to normal sub
     \begin{itemize}
         \item $\boxed{(1) \implies (2)}$ Suppose $E$ is a finite Galois extension of $F$, i.e. $E$ is a finite, normal, and separable extension of $F$. By the Primitive Element Theorem (\myref{thrm-primitive-element}) we can find an $\alpha \in E$ such that $E = F(\alpha)$. Let $f(x)$ be the minimal polynomial of $\alpha$ over $F$. Then since $\alpha$ is a zero of $f(x)$, thus $E$ must contain all zeroes of $f(x)$ because $E$ is a normal extension of $F$. Therefore $E$ is the splitting field of $f(x)$ over $F$. Now because $E$ is a separable extension, therefore $f(x)$ is separable over $F$. Therefore $E$ is a splitting field of the separable polynomial $f(x) \in F[x]$ over $F$.
 
-        \item $\boxed{(2) \implies (3)}$ Let $E$ be the splitting field of some separable polynomial $f(x) \in F[x]$ over $F$. Then by \myref{prop-fixed-field-of-Gal-E/F-is-F} we see $F = \Fix{E}{\Gal{E/F}}$. Note that $\Gal{E/F} \leq \Aut{E}$ by \myref{prop-galois-group-is-group}, and because $|\Gal{E/F}| = [E:F]$ (\myref{thrm-order-of-galois-group-is-degree-of-field-extension}) which is finite, therefore $\Gal{E/F}$ is a finite group. Therefore $F = \Fix{E}{G}$ where $G = \Gal{E/F}$, which is a finite subgroup of $\Aut{E}$.
+        \item $\boxed{(2) \implies (3)}$ Let $E$ be the splitting field of some separable polynomial $f(x) \in F[x]$ over $F$. Then by \myref{prop-fixed-field-of-Gal-E/F-is-F} we see $F = \Fix{E}{\Gal{E/F}}$. Note that $\Gal{E/F} \leq \Aut{E}$ by \myref{prop-galois-group-is-group}, and because $|\Gal{E/F}| = [E:F]$ (\myref{thrm-order-of-galois-group-is-degree-of-field-extension}) which is finite, therefore $\Gal{E/F}$ is a finite group. Therefore $F = \Fix{E}{G}$ where $G = \Gal{E/F}$, which one sees is a finite subgroup of $\Aut{E}$.
 
-        \item $\boxed{(3) \implies (1)}$ Let $F = \Fix{E}{G}$ for some finite subgroup $G$ of $\Aut{E}$. By \myref{thrm-fixed-field} we see $[E:F] = |G|$, which means that $E$ is a finite extension of $F$.
+        \item $\boxed{(3) \implies (1)}$ Suppose $F = \Fix{E}{G}$ for some finite subgroup $G$ of $\Aut{E}$. By \myref{thrm-fixed-field} we see $[E:F] = |G|$, which means that $E$ is a finite extension of $F$.
 
         To prove that the extension is Galois, let $f(x) \in F[x]$ be irreducible. We might as well assume $f(x)$ is monic since otherwise we may just divide all coefficients by the leading coefficient. Let $\alpha \in E$ be a zero of $f(x)$; we see that $f(x)$ is the minimal polynomial of $\alpha$. We show that $f(x)$ is the product of distinct linear factors in $E[x]$.
 
@@ -501,7 +500,7 @@ Later we will see that normal extensions are, in some way, related to normal sub
     Let $F$ be a field and $E/F$ be a finite extension. Then $E/F$ is Galois if and only if $|\Gal{E/F}| = [E:F]$.
 \end{corollary}
 \begin{proof}
-    For the forward direction, if $E/F$ is finite and Galois, then $E$ is the splitting field of some separable polynomial $f(x) \in F[x]$ over $F$ (\myref{thrm-equivalence-of-finite-galois-extension}). Certainly a separable polynomial only has simple zeroes, so by \myref{thrm-order-of-galois-group-is-degree-of-field-extension} we have $|\Gal{E/F}| = [E:F]$.
+    For the forward direction, if the extension $E/F$ is finite and Galois, then $E$ is the splitting field of some separable polynomial $f(x) \in F[x]$ over $F$ (\myref{thrm-equivalence-of-finite-galois-extension}). Certainly a separable polynomial only has simple zeroes, so by \myref{thrm-order-of-galois-group-is-degree-of-field-extension} we have $|\Gal{E/F}| = [E:F]$.
 
     For the reverse direction we first assume $|\Gal{E/F}| = [E:F]$. We know that $\Gal{E/F} \leq \Aut{E}$ by \myref{prop-galois-group-is-group}. Also we know that $\Gal{E/F}$ is finite because $[E:F]$ is finite, and finally we know that $F = \Fix{E}{\Gal{E/F}}$. So by \myref{thrm-equivalence-of-finite-galois-extension} we see that $E$ is a finite Galois extension of $F$.
 \end{proof}
@@ -526,7 +525,7 @@ To motivate the Fundamental Theorem of Galois Theory, we return back to a famili
         \centering
         \pdfteximg{0.475\textwidth}{part4/images/galois/Qsqrt3-Qsqrt5-Qsqrt15.pdf_tex}
         \pdfteximg{0.475\textwidth}{part4/images/galois/Gal-Qsqrt3-Qsqrt5.pdf_tex}
-        \caption{Subfields of $\Q(\sqrt3,\sqrt5)$ and Subgroups of $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$}
+        \caption{Lattices of $\Q(\sqrt3,\sqrt5)$ and $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$}
     \end{figure}
 \end{example}
 
@@ -598,9 +597,9 @@ Now suppose that we are given a chain of fields $F \subset K \subset E$, and tha
     \]
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 23.23, Statment 4]{judson_beezer_2022}})]
-    For the forward direction, suppose $K/F$ is Galois. We are to show that if $\sigma \in G$ and $\tau \in H$ then $\sigma\tau\sigma^{-1} \in H$, i.e. $\sigma\tau\sigma^{-1}(a) = a$ for all $a \in K$. Suppose $f(x)$ is the minimal polynomial of $a$ over $F$. Then, since $K$ is a Galois (and hence a normal) extension of $F$, we know $\sigma^{-1}(a)$ is also a zero of $f(x)$ lying in $K$. Hence $\tau\sigma^{-1}(a) = \sigma^{-1}(a)$ because $\sigma^{-1}(a) \in K = \Fix{E}{H}$, and so $\sigma\tau\sigma^{-1}(a) = \sigma\sigma^{-1}(a) = a \in K$. Therefore $\sigma\tau\sigma^{-1} \in H$ and so $H \unlhd G$.
+    We first suppose $K/F$ is Galois for the forward direction. We are to show that if $\sigma \in G$ and $\tau \in H$ then $\sigma\tau\sigma^{-1} \in H$, i.e. $\sigma\tau\sigma^{-1}(a) = a$ for all $a \in K$. Suppose $f(x)$ is the minimal polynomial of $a$ over $F$. Then, since $K$ is a Galois (and hence a normal) extension of $F$, we know $\sigma^{-1}(a)$ is also a zero of $f(x)$ lying in $K$. Hence $\tau\sigma^{-1}(a) = \sigma^{-1}(a)$ because $\sigma^{-1}(a) \in K = \Fix{E}{H}$, and so $\sigma\tau\sigma^{-1}(a) = \sigma\sigma^{-1}(a) = a \in K$. Therefore $\sigma\tau\sigma^{-1} \in H$ and so $H \unlhd G$.
 
-    For the reverse direction, suppose $H \unlhd G$. We show that $F = \Fix{K}{\Gal{K/F}}$. Let $\tau \in H$; note $H = \Gal{E/K}$ by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}). As $H \unlhd G$, for all $\sigma \in G$, there exists a $\tau' \in H$ such that $\tau\sigma = \sigma\tau'$. Thus for all $a \in K$ we have
+    For the reverse direction, we suppose $H \unlhd G$. We show that $F = \Fix{K}{\Gal{K/F}}$. Let $\tau \in H$; note $H = \Gal{E/K}$ by the Fundamental Theorem of Galois Theory (\myref{thrm-fundamental-theorem-of-galois-theory}). As $H \unlhd G$, for all $\sigma \in G$, there exists a $\tau' \in H$ such that $\tau\sigma = \sigma\tau'$. Thus for all $a \in K$ we have
     \[
         \tau\sigma(a) = \sigma\tau'(a) = \sigma(a)
     \]
@@ -618,7 +617,8 @@ Now suppose that we are given a chain of fields $F \subset K \subset E$, and tha
 
         \item \textbf{Image}: The First Isomorphism Theorem (\myref{thrm-isomorphism-1}) tells us that $G/H \cong \im\phi$, which means $|\im\phi| = |G/H|$. We note that $\im\phi \leq \Gal{K/F}$. However one also sees that
         \begin{align*}
-            |\Gal{K/F}| &= [K:F] & (K/F \text{ is Galois; } \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension})\\
+            &|\Gal{K/F}|\\
+            &= [K:F] & (K/F \text{ is Galois; } \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension})\\
             &= [\Gal{E/F}:\Gal{E/K}] & (\myref{corollary-intermediate-field-galois-field-order})\\
             &= |\Gal{E/F}/\Gal{E/K}|\\
             &= |G/H|
@@ -752,8 +752,6 @@ For finite groups, we have the following equivalent definition.
     only has abelian factor groups, proving that $\Sn{2}$ is solvable. The argument for $\Sn{1}$ goes similarly.
 \end{example}
 
-\pagebreak
-
 In fact, abelian groups are always solvable.
 
 \begin{exercise}\label{exercise-abelian-groups-are-solvable}
@@ -768,7 +766,7 @@ Our goal is to connect the notion of solvability by radicals with solvable group
 \begin{proof}[Proof (see {\cite[Theorem 32.2]{gallian_2016}})]
     We first note that if $a = 0$, then the only zero of the polynomial $x^n - a$ is 0 itself (with multiplicity $n$), and so the splitting field $E$ is $F$ itself and thus $\Gal{E/F}$ is the trivial group, which is solvable. Thus we assume $a \neq 0$. We split the proof into two cases.
 
-    The first case is when $F$ contains a primitive $n$th root of unity $\omega$. Let $b \in E$ be a zero of $x^n - a$. Then the zeroes of $x^n - a$ are $b, b\omega, b\omega^2, \dots, b\omega^{n-1}$ and therefore $E = F(b)$ (since we know $\omega \in F$ already). Now note that any automorphism of $\Gal{E/F}$ is completely determined by its effect on $b$. Since $b$ is a zero of $x^n - a$, we know that any element of $\Gal{E/F}$ takes $b$ to $b\omega^i$ for some $i \in \{0, 1, 2, \dots, n - 1\}$ (\myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}). Now let $\sigma, \mu \in \Gal{E/F}$. Since $\omega \in F$, both $\sigma$ and $\mu$ fix $\omega$; let $\sigma(b) = b\omega^j$ and $\mu(b) = b\omega^k$ for some $j, k \in \{0, 1, 2, \dots, n - 1\}$. Therefore one sees
+    The first case is when $F$ contains a primitive $n$th root of unity $\omega$. Let $b \in E$ be a zero of $x^n - a$. Then the rest of the zeroes of $x^n - a$ are $b\omega, b\omega^2, \dots, b\omega^{n-1}$ and therefore $E = F(b)$ (since we know $\omega \in F$ already). Now note that any automorphism of $\Gal{E/F}$ is completely determined by its effect on $b$. Since $b$ is a zero of $x^n - a$, we know that any element of $\Gal{E/F}$ takes $b$ to $b\omega^i$ for some $i \in \{0, 1, 2, \dots, n - 1\}$ (\myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}). Now let $\sigma, \mu \in \Gal{E/F}$. Since $\omega \in F$, both $\sigma$ and $\mu$ fix $\omega$; let $\sigma(b) = b\omega^j$ and $\mu(b) = b\omega^k$ for some $j, k \in \{0, 1, 2, \dots, n - 1\}$. Therefore one sees
     \[
         (\sigma\mu)(b) = \sigma(\mu(b)) = \sigma(b\omega^k) = \sigma(b)\sigma(\omega^k) = (b\omega^j)\omega^k = b\omega^{j+k}
     \]
@@ -792,7 +790,7 @@ Our goal is to connect the notion of solvability by radicals with solvable group
     \[
         \Gal{F(\omega)/F} \cong \Gal{E/F}/\Gal{E/F(\omega)}
     \]
-    by \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}. In particular that theorem also says that $\Gal{E/F(\omega)} \lhd \Gal{E/F}$, which means that
+    by \myref{thrm-intermediate-field-that-is-galois-extension-of-base-field-iff-subgroup-is-normal}. That theorem also says $\Gal{E/F(\omega)} \lhd \Gal{E/F}$, which thus means that
     \[
         1 \lhd \Gal{E/F(\omega)} \lhd \Gal{E/F}
     \]
@@ -844,14 +842,10 @@ To reach our main result about the connection between polynomials that are solva
     where each factor group is abelian. Therefore $G$ is solvable.
 \end{proof}
 
-We are now ready to establish the connection between solvable groups and polynomials that are solvable by radicals over a field.
+We are now ready to establish the connection between polynomials that are solvable by radicals over a field and solvable groups.
 
 \begin{theorem}[Galois]\label{thrm-solvable-by-radicals-implies-solvable-group}
-    Let $F$ be a field of characteristic 0 and $f(x) \in F[x]$. Suppose the splitting field of $f(x)$ over $F$ is $E$, and that $E$ is contained in a radical extension
-    \[
-        F = F_0 \subset F_1 \subset F_2 \subset \cdots \subset F_n.
-    \]
-    Then $\Gal{E/F}$ is solvable.
+    Let $F$ be a field of characteristic 0 and $f(x) \in F[x]$. Suppose the splitting field of $f(x)$ over $F$ is $E$, and that $E$ is contained in a radical extension. Then $\Gal{E/F}$ is solvable.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 32.5]{gallian_2016}})]
     We induct on $n$.
@@ -874,7 +868,6 @@ We are now ready to establish the connection between solvable groups and polynom
     \]
     This proves that $\Gal{E/F}$ is solvable.
 \end{proof}
-
 
 \section{The Insolvability of the Quintic}
 We are now ready to resolve a problem that has plagued mathematicians for a long time -- whether a general solution for a quintic equation exists. Before that, we need the following lemma.
@@ -944,7 +937,7 @@ We are now ready to state an intermediary claim regarding a particular quintic p
 Do not be mislead by the graph -- one can easily verify that -1.25, 0.5, and 1.5 are not zeroes of $f(x)$ in $\Q$.
 
 \begin{proof}
-    One sees by Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2 that $f(x)$ is irreducible over $\Q$; consequently this means that $f(x)$ is separable in $F$ (\myref{thrm-zeroes-of-an-irreducible}).
+    Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$; consequently this means that $f(x)$ is separable in $F$ (\myref{thrm-zeroes-of-an-irreducible}).
 
     We first argue that there are only 3 real zeroes for $f(x)$. We first produce a table of values of $f(x)$.
     \begin{table}[H]
@@ -1079,6 +1072,8 @@ The obvious generalisation of the above fact is captured by the Abel-Ruffini the
         \item Deduce a primitive $n$th root of unity in $\C$, proving your answer.
     \end{partquestions}
 \end{problem}
+
+\newpage
 
 \begin{problem}
     Let $F$ be a field and $f(x) \in F[x]$ be a separable polynomial of degree $n$. Suppose $E$ is the splitting field of $f(x)$ over $F$. Let $\alpha_1, \alpha_2, \dots, \alpha_n$ be the zeroes of $f(x)$ in $E$. Define

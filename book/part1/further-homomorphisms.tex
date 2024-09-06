@@ -35,8 +35,6 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
     Consider the map $\phi: \Z_3 \to \Z_6, n \mapsto 2n$. Determine whether $\phi$ is a homomorphism and, if so, find its image.
 \end{exercise}
 
-\newpage
-
 \section{Kernel of a Homomorphism}
 \begin{definition}
     Let $G$ and $H$ be groups. The \term{kernel}\index{homomorphism!kernel} of a homomorphism $\phi: G \to H$ is the set of elements in $G$ which map to the identity of $H$. That is, if the identity of $H$ is $e_H$, then the kernel of $\phi$ is the set
@@ -82,8 +80,6 @@ Earlier in this book, we introduced homomorphisms and isomorphisms, special type
 \begin{exercise}\label{exercise-trivial-kernel-means-injective}
     Let $G$ and $H$ be groups. Prove that a homomorphism $\phi: G \to H$ is injective if and only if $\ker \phi$ is trivial, i.e. $\ker \phi = \{e_G\}$.
 \end{exercise}
-
-\newpage
 
 \section{The First Isomorphism Theorem}
 We are now ready to tackle some important theorems regarding homomorphisms.
@@ -169,9 +165,8 @@ We now prove the First Isomorphism Theorem.
             \im\phi &= \{\phi(x) \vert x \in G\}\\
             &= \{|x| \vert x \neq 0\}\\
             &= \{x \in \R \vert x > 0\} & (\text{by definition of } |x|)\\
-            &= R
+            &= R.
         \end{align*}
-        which actually means that $\phi$ is surjective.
 
         \item \textbf{Kernel}: We find the kernel of $\phi$.
         \begin{align*}
@@ -185,10 +180,7 @@ We now prove the First Isomorphism Theorem.
 \end{example}
 
 \begin{exercise}
-    Let $\phi: G \to H$ be a homomorphism between finite groups $G$ and $H$. Prove that
-    \[
-        |G| = |\im \phi|\times|\ker \phi|.
-    \]
+    Let $\phi: G \to H$ be a homomorphism between finite groups $G$ and $H$. Prove that $|G| = |\im \phi|\times|\ker \phi|$.
 \end{exercise}
 
 \section{The Second Isomorphism Theorem}
@@ -210,8 +202,6 @@ We now look at the next theorem, often called the Second Isomorphism Theorem (e.
 \end{theorem}
 
 We can capture the overall relationships of the subgroups of $G$ using a \term{subgroup lattice}.
-
-\newpage
 
 \begin{figure}[H]
     \centering
@@ -280,7 +270,7 @@ We only show subgroups that we care about in the figure above. The group $G$ has
     Let $G$ be a group with proper subgroups $H$ and $K$. Then $HK$ is a normal subgroup of $G$ if $H$ and $K$ are normal subgroups of $G$.
 \end{corollary}
 \begin{proof}
-    Assume that $H, K \lhd G$. By the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3, we know that $HK \leq G$ since $H \lhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
+    Assume that $H$ and $K$ are proper normal subgroups of $G$. By the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}), statement 3, we know that $HK \leq G$ since $H \lhd G$. We just need to prove normality. Suppose $hk \in HK$ and take $g \in G$. Then
     \begin{align*}
         g(hk)g^{-1} &= (gh)(kg^{-1})\\
         &= (hg)(g^{-1}k) & (\text{as } H, K \lhd G)\\
@@ -303,7 +293,7 @@ We only show subgroups that we care about in the figure above. The group $G$ has
 
 We look at another application of the Second Isomorphism Theorem, which has use in Number Theory.
 \begin{example}
-    We will prove that $\lcm(m,n)\times\gcd(m,n) = mn$ (\myref{prop-product-of-gcd-and-lcm}) by considering the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}). For brevity, let $d = \gcd(m,n)$ and $l = \lcm(m,n)$.
+    We will prove $\lcm(m,n)\times\gcd(m,n) = mn$ (\myref{prop-product-of-gcd-and-lcm}) by using the Second Isomorphism Theorem (\myref{thrm-isomorphism-2}). For brevity, let $d = \gcd(m,n)$ and $l = \lcm(m,n)$.
 
     Consider the groups $G = \Z$, $H = m\Z$, and $N = n\Z$ under addition. By the Second Isomorphism Theorem,
     \[
@@ -356,7 +346,7 @@ We look at the last important theorem regarding homomorphisms and isomorphisms. 
 
         \item We first prove that $H/N$ is a subgroup before proving normality.
 
-        Clearly $N = eN \in H/N$. Let $h_1N, h_2N \in H/N$. Note that $(h_2N)^{-1} = \left(h_2^{-1}\right)N$ by the group operation of cosets. Hence
+        Clearly $N = eN \in H/N$. Let $h_1N, h_2N \in H/N$. Observe that $(h_2N)^{-1} = \left(h_2^{-1}\right)N$ by the group operation of cosets. Hence
         \[
             (h_1N)(h_2N)^{-1} = (h_1h_2^{-1})N \in H/N.
         \]
@@ -394,7 +384,7 @@ We look at the last important theorem regarding homomorphisms and isomorphisms. 
             Since $\ker\phi \subseteq H/N$ and $H/N \subseteq \ker\phi$, we must have $\ker\phi = H/N$.
         \end{itemize}
 
-        By the First Isomorphism Theorem (\myref{thrm-isomorphism-1}), we have $\frac{G/N}{\ker\phi} \cong \im\phi$, which means
+        By the First Isomorphism Theorem (\myref{thrm-isomorphism-1}), we know that $\frac{G/N}{\ker\phi} \cong \im\phi$, which means
         \[
             \frac{G/N}{H/N} \cong G/H,
         \]
@@ -440,7 +430,7 @@ We look at the last important theorem regarding homomorphisms and isomorphisms. 
 \end{problem}
 
 \begin{problem}
-    Let $R = (\R, +)$. Also let $G = R^2$ and $H = \left\{(r\times\sqrt2, r\times\sqrt3) \vert r\in R\right\}$ be groups under component-wise addition. Prove that $G/H \cong R$.
+    Let the group $R = (\R, +)$. Also let the groups $G = R^2$ and $H = \left\{(r\times\sqrt2, r\times\sqrt3) \vert r\in R\right\}$ be under component-wise addition. Prove that $G/H \cong R$.
 \end{problem}
 
 \begin{problem}\label{problem-subgroup-product-equal-to-subgroup-if-one-is-subgroup-of-another}

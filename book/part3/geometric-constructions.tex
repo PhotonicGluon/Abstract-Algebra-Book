@@ -67,7 +67,7 @@ In this chapter, we elect to use radians instead of degrees to measure angles.
 
 \subsection{Polygons}
 \begin{definition}
-    A \term{polygon}\index{polygon} is a plane figure made up of \term{sides}\index{polygon!side} connected to form a closed figure. An $n$-sided polygon (where $n \geq 3$) is called a \term{$n$-gon}\index{$n$-gon}.
+    A \term{polygon}\index{polygon} is a plane figure made up of \term{sides}\index{polygon!side} connected to form a closed figure. An $n$-sided polygon (where $n \geq 3$) is an \term{$n$-gon}\index{$n$-gon}.
 \end{definition}
 
 \begin{proposition}
@@ -106,8 +106,6 @@ Of special interest to us are similar and congruent triangles.
         \item $\angle BCA = \angle B'C'A'$.
     \end{itemize}
 \end{definition}
-
-\newpage
 
 \begin{proposition}
     If $\triangle ABC$ and $\triangle PQR$ are similar, then the ratio of the corresponding sides of the two triangles are equal. That is,
@@ -259,7 +257,7 @@ Let us look at some examples of construction with these rules.
 
     Observe that $\triangle CAB$ and $\triangle DAB$ are congruent because $AC = AD$, $BC = BD$, and the side $AB$ is shared by both triangles. One also sees that $\triangle CAD$ and $\triangle CBD$ are congruent since $AC = BC$, $AD = BD$, and $CD$ is a common side shared by both triangles.
 
-    Thus we see $\triangle APC$, $\triangle BPC$, $\triangle APD$, and $\triangle BPD$ are all congruent since $AC = BC = AD = BD$ and the included angles are of the same measure. Therefore the angles $\angle CPA$, $\angle CPB$, $\angle DPA$, and $\angle DPB$ are equal. Since the total sum of angles about a point is $2\pi$, therefore $\angle CPA = \frac\pi2$, meaning $CD$ is perpendicular to $AB$. Also $AP = PB$ since $\triangle APC$ and $\triangle BPC$ are congruent, meaning that $CD$ bisects $AB$.
+    Thus we see that $\triangle APC$, $\triangle BPC$, $\triangle APD$, and $\triangle BPD$ are all congruent since $AC = BC = AD = BD$ and the included angles are of the same measure. Therefore the angles $\angle CPA$, $\angle CPB$, $\angle DPA$, and $\angle DPB$ are equal. Since the total sum of angles about a point is $2\pi$, therefore $\angle CPA = \frac\pi2$, meaning $CD$ is perpendicular to $AB$. Also $AP = PB$ since $\triangle APC$ and $\triangle BPC$ are congruent, meaning that $CD$ bisects $AB$.
 
     Hence $CD$ is a perpendicular bisector of $AB$.
 }
@@ -279,6 +277,8 @@ Let us look at some examples of construction with these rules.
 }{
     The sum of the interior angles is exactly that of two right angles. Therefore $A'B'$ is parallel to $AB$.
 }
+
+\newpage
 
 \begin{proposition}[Angle in Semicircle]\label{prop-angle-in-semicircle}
     Suppose a triangle is inscribed within a circle where one of its sides is the diameter. Then the triangle is a right-angled triangle.
@@ -315,7 +315,7 @@ For brevity we denote the set of all constructible numbers by $\Con$.
     The set of all constructible numbers, $\Con$, is a subfield of the real numbers.
 \end{theorem}
 \begin{proof}
-    By definition we know that $\Con^\ast$ is non-empty since 1 is a constructible number.
+    We know that $\Con^\ast$ is non-empty since 1 is a constructible number by definition.
 
     Now let $\alpha, \beta \in \Con$. Without loss of generality we may assume $\alpha > \beta$, since we just need to construct $|\alpha - \beta|$.
     \begin{figure}[H]
@@ -409,7 +409,7 @@ From \myref{thrm-constructible-numbers-is-subfield-of-real-numbers} we know that
         \]
         Note that we already know that $-\frac{B}{2A}$ and $\frac{1}{2A}$ are in $\con$; the only uncertain part is $\sqrt{B^2-4AC}$. Since the line and circle do intersect, we know that $B^2-4AC \geq 0$; letting $\alpha = B^2 - 4AC$ we therefore see that $x \in \con(\sqrt\alpha)$. Note if $\alpha = 0$ then $\con(\sqrt\alpha) = \con$; otherwise $\con(\sqrt\alpha)$ is an extension field of $\con$.
     \end{enumerate}
-    Therefore the points of intersections of lines and circles within $\con$ lie within the field $\con(\sqrt\alpha)$ where $\alpha \in \con$ and $\alpha > 0$ as desired.
+    Therefore the points of intersection of lines and circles within $\con$ lie within the field $\con(\sqrt\alpha)$ where $\alpha \in \con$ and $\alpha > 0$ as desired.
 \end{proof}
 
 \begin{theorem}\label{thrm-condition-for-constructability}
@@ -447,18 +447,8 @@ One sees that $\Con$ is not a finite extension, but is algebraic. This is yet an
 \section{Impossibility of Constructions}
 We are now ready to investigate the classical problems that have plagued the Greeks.
 
-\subsection{Doubling the Cube}
-The Greeks wondered whether, given any cube, another cube of twice the volume could be constructed just by using a straightedge and compass. Using the tools that we have built, we can safely conclude that this task is impossible for any general cube.
-
-Consider a cube of side length 1. We are to create a cube of volume 2, meaning that each side of the cube needs to have a side length of $\sqrt[3]2$. However, $\sqrt[3]2$ is a zero of the irreducible polynomial $x^3 - 2$ over $\Q$ (one can check that $x^3-2$ is indeed irreducible over $\Q$ by using Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2), which means that $[\Q(\sqrt[3]2):\Q] = 3$. But any constructible number has to create a finite extension with degree that is a power of 2. As 3 is not a power of 2, therefore $\sqrt[3]2$ is not constructible (\myref{thrm-condition-for-constructability}); a cube of side length $\sqrt[3]2$ cannot be constructed and, therefore, the general problem of doubling the cube is impossible.
-
-\subsection{Squaring the Circle}
-Another problem the Greeks pondered was whether a square with the same area of a given circle can be constructed. Well, consider a circle with radius 1, meaning that the circle has area $\pi$. So we need to construct a square with area $\pi$, meaning that it has side length $\sqrt\pi$.
-
-However, $\pi$ is a transcendental number, and therefore $\sqrt\pi$ is also transcendental. This means that $\sqrt\pi$ is not only not algebraic, it is also not constructible; therefore squaring a circle is impossible.
-
 \subsection{Trisecting an Angle}
-The bisection of any given angle is easy for the Greeks; trisection was hard. In fact, this is yet another one of the impossible constructions that plagued the Greeks.
+The bisection of any given angle is easy for the Greeks; trisection was hard. In fact, this is one of the impossible constructions that plagued the Greeks.
 
 First we derive the triple-angle formula for cosine. For any $\theta \in \R$ we see
 \begin{align*}
@@ -479,6 +469,16 @@ Now consider $\theta = \frac{\pi}{9} = 20^\circ$. Using the formula above we see
 which means that $\cos\frac\pi9$ is a zero of the polynomial $8x^3 - 6x - 1$ over $\Q$. However, we note that $8x^3 - 6x - 1$ is irreducible over $\Q$ by \myref{exercise-triple-angle-cosine-polynomial-is-irreducible} (later), so $[\Q(\cos\frac\pi9): \Q] = 3$, which means $\cos\frac\pi9$ is not constructible by \myref{thrm-condition-for-constructability}.
 
 Now why does this mean that an angle of $\frac\pi3$ cannot be trisected? Well, if we were to trisect the angle, that would create a right-angled triangle of sides $\sin\frac\pi9$ and $\cos\frac\pi9$ with hypotenuse 1, which we have shown is not constructible. Therefore an angle of $\frac\pi3$ cannot be trisected, proving the impossibility of trisecting a general angle.
+
+\subsection{Doubling the Cube}
+The Greeks also wondered whether, given any cube, another cube of twice the volume could be constructed just by using a straightedge and compass. Using the tools that we have built, we can safely conclude that this task is impossible for any general cube.
+
+Consider a cube of side length 1. We are to create a cube of volume 2, meaning that each side of the cube needs to have a side length of $\sqrt[3]2$. However, $\sqrt[3]2$ is a zero of the irreducible polynomial $x^3 - 2$ over $\Q$ (one can check that $x^3-2$ is indeed irreducible over $\Q$ by using Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2), which means that $[\Q(\sqrt[3]2):\Q] = 3$. But any constructible number has to create a finite extension with degree that is a power of 2. As 3 is not a power of 2, therefore $\sqrt[3]2$ is not constructible (\myref{thrm-condition-for-constructability}); a cube of side length $\sqrt[3]2$ cannot be constructed and, therefore, the general problem of doubling the cube is impossible.
+
+\subsection{Squaring the Circle}
+Another problem the Greeks pondered was whether a square with the same area of a given circle can be constructed. Well, consider a circle with radius 1, meaning that the circle has area $\pi$. So we need to construct a square with area $\pi$, meaning that it has side length $\sqrt\pi$.
+
+However, $\pi$ is a transcendental number, and therefore $\sqrt\pi$ is also transcendental. This means that $\sqrt\pi$ is not only not algebraic, it is also not constructible; therefore squaring a circle is impossible.
 
 \begin{exercise}\label{exercise-triple-angle-cosine-polynomial-is-irreducible}
     Prove that $8x^3 - 6x - 1$ is irreducible over $\Q$.\newline

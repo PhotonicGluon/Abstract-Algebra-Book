@@ -61,7 +61,7 @@ Before we answer why we use a different definition, we look at the following pro
     We claim that $\Q[\sqrt{2}]$ is an extension field of $\Q$. One sees clearly that any $q \in \Q$ is expressible as $q + 0\sqrt{2}$, and so $q \in \Q[\sqrt2]$. Therefore $\Q \subseteq \Q[\sqrt2]$. As $\Q$ is a field, therefore $\Q$ is a subfield of $\Q[\sqrt2]$, which in turn means $\Q[\sqrt2]$ is an extension field of $\Q$.
 \end{example}
 
-So why do we define field extensions like we do above? The reason why is because, most of the time, the extension field that we use does \textit{not} contain the base field as a subset. Rather, the extension field contains a subfield that is \textit{isomorphic} to the base field. In fact, most authors actually use our definition of extension fields -- they find a subfield of the extension field that is isomorphic to the base field (see \cite[Theorem 13.1.3]{dummit_foote_2004}, \cite[p.~339, Proof]{gallian_2016}, \cite[Example 21.2]{judson_beezer_2022}).
+So why do we define field extensions like we do above? The reason why is because, most of the time, the extension field that we use does \textbf{not} contain the base field as a subset. Rather, the extension field contains a subfield that is \textbf{isomorphic} to the base field. In fact, most authors actually use our definition of extension fields -- they find a subfield of the extension field that is isomorphic to the base field (see \cite[Theorem 13.1.3]{dummit_foote_2004}, \cite[p.~339, Proof]{gallian_2016}, \cite[Example 21.2]{judson_beezer_2022}).
 
 We have this useful proposition to help us determine whether a field is an extension field of another field.
 
@@ -69,7 +69,7 @@ We have this useful proposition to help us determine whether a field is an exten
     Let $E$ and $F$ be fields. Then $E$ is an extension field of $F$ if there is a non-trivial homomorphism $\phi: F \to E$.
 \end{proposition}
 \begin{proof}
-    Any homomorphism from a field is either trivial or injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}). Since $\phi$ is non-trivial, therefore $\phi$ is injective. Thus we see $F \cong \im\phi$. As $\im\phi$ is a subfield of $E$, therefore $E$ contains a subfield isomorphic to $F$.
+    We know that a field homomorphism is trivial or injective by \myref{thrm-homomorphism-from-field-is-injective-or-trivial}. Since $\phi$ is non-trivial, therefore $\phi$ is injective. Thus we see $F \cong \im\phi$. As $\im\phi$ is a subfield of $E$, therefore $E$ contains a subfield isomorphic to $F$.
 \end{proof}
 
 \begin{example}
@@ -126,15 +126,19 @@ Returning back to our exploration of extension fields, the critical observation 
         p(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n
     \]
     where $a_0, a_1, \dots, a_n \in F$. In $E$, the polynomial becomes
-    \[
-        \overline{p}(x) = (a_0 + \princ{p(x)}) + (a_1 + \princ{p(x)})x + (a_2 + \princ{p(x)})x^2 + \cdots + (a_n + \princ{p(x)})x^n
-    \]
+    \begin{align*}
+        &\overline{p}(x)\\
+        &= (a_0 + \princ{p(x)}) + (a_1 + \princ{p(x)})x + (a_2 + \princ{p(x)})x^2 + \cdots\\
+        &\quad\quad+ (a_n + \princ{p(x)})x^n
+    \end{align*}
     For brevity let $\overline{a_i} = a_i + \princ{p(x)}$. Let $\alpha = x + \princ{p(x)} \in E$. Note
     \begin{align*}
-        \overline{p}(\alpha) &= \overline{a_0} + \overline{a_1}\alpha + \overline{a_2}\alpha^2 + \cdots + \overline{a_n}\alpha^n\\
-        &= (a_0 + \princ{p(x)}) + (a_1 + \princ{p(x)})(x + \princ{p(x)}) + (a_2 + \princ{p(x)})(x + \princ{p(x)})^2\\
-        &\quad\quad+ \cdots + (a_n + \princ{p(x)})(x + \princ{p(x)})^n\\
-        &= (a_0 + \princ{p(x)}) + (a_1x + \princ{p(x)}) + (a_2x^2 + \princ{p(x)}) + \cdots + (a_nx^n + \princ{p(x)})\\
+        &\overline{p}(\alpha)\\
+        &= \overline{a_0} + \overline{a_1}\alpha + \overline{a_2}\alpha^2 + \cdots + \overline{a_n}\alpha^n\\
+        &= (a_0 + \princ{p(x)}) + (a_1 + \princ{p(x)})(x + \princ{p(x)}) \\
+        &\quad\quad+ (a_2 + \princ{p(x)})(x + \princ{p(x)})^2 + \cdots + (a_n + \princ{p(x)})(x + \princ{p(x)})^n\\
+        &= (a_0 + \princ{p(x)}) + (a_1x + \princ{p(x)}) + (a_2x^2 + \princ{p(x)}) + \cdots\\
+        &\quad\quad+ (a_nx^n + \princ{p(x)})\\
         &= (a_0 + a_1x + a_2x^2 + \cdots + a_nx^n) + \princ{p(x)}\\
         &= p(x) + \princ{p(x)}\\
         &= 0 + \princ{p(x)}.
@@ -193,7 +197,8 @@ To motivate our next definition, we return back to the extension field $E = \R[x
     \end{align*}
     By the Factor Theorem (\myref{corollary-factor-theorem}), it should follow that both $x - \alpha$ and $x + \alpha$ are factors of $x^2 + 1$ in $E$. Let's try and verify this. One sees
     \begin{align*}
-        (x-\alpha)(x+\alpha) &= x^2 - \alpha^2\\
+        &(x-\alpha)(x+\alpha)\\
+        &= x^2 - \alpha^2\\
         &= x^2 - (x^2 + \princ{x^2+1})\\
         &= x^2 - (-1 + \princ{x^2+1}) & (\text{since } x^2 + \princ{x^2+1} = -1 + \princ{x^2+1})\\
         &= x^2 + 1 + \princ{x^2+1}\\
@@ -209,7 +214,11 @@ Before we can define what a splitting field is, we need to look at a special kin
 \begin{definition}
     Let $F$ be a field and $E/F$ be a field extension. Let $S$ be a subset of $E$. Then $F(S)$, read as ``$F$ adjoin $S$'', is the smallest subfield of $E$ that contains $F$ and the set $S$.
 
-    If $S$ is a finite set, say $S = \{a_1, a_2, \dots, a_n\}$, then we write $F(a_1, a_2, \dots, a_n)$, and say that \term{$F(S)$ is finitely generated over $F$}\index{finitely generated}.
+    If $S$ is a finite set, say $S = \{a_1, a_2, \dots, a_n\}$, then we write
+    \[
+        F(a_1, a_2, \dots, a_n)
+    \]
+    and say that \term{$F(S)$ is finitely generated over $F$}\index{finitely generated}.
 \end{definition}
 
 \begin{proposition}
@@ -277,7 +286,7 @@ A general form for simple extensions for specific types of primitive elements, s
     \]
     where $r(x)$ is unique. Now we show that the map $\psi: F[x]/\princ{p(x)} \to F[\alpha]$ given by $\psi(f(x) + \princ{p(x)}) = f(\alpha)$ is a well-defined isomorphism.
     \begin{itemize}
-        \item \textbf{Well-Defined}: First, by using the above observation, for any $f(x) + \princ{p(x)}, g(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$, find $r_f(x), r_g(x) \in F[x]$ where
+        \item \textbf{Well-Defined}: First, by using the above observation, for any $f(x) + \princ{p(x)}, g(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$, find $r_f(x), r_g(x) \in F[x]$ such that
         \begin{align*}
             f(x) + \princ{p(x)} &= r_f(x) + \princ{p(x)}\\
             g(x) + \princ{p(x)} &= r_g(x) + \princ{p(x)}
@@ -288,15 +297,17 @@ A general form for simple extensions for specific types of primitive elements, s
         \]
         showing that $\psi$ is well-defined.
 
-        \item \textbf{Homomorphism}: For any $f(x) + \princ{p(x)}, g(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$ we see that
+        \item \textbf{Homomorphism}: Let $f(x) + \princ{p(x)}, g(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$. We see that
         \begin{align*}
-            \psi((f(x) + \princ{p(x)}) + (g(x) + \princ{p(x)})) &= \psi((f(x) + g(x)) + \princ{p(x)})\\
+            &\psi((f(x) + \princ{p(x)}) + (g(x) + \princ{p(x)}))\\
+            &= \psi((f(x) + g(x)) + \princ{p(x)})\\
             &= f(\alpha) + g(\alpha)\\
             &= \psi(f(x) + \princ{p(x)}) + \phi(g(x) + \princ{p(x)})
         \end{align*}
         and
         \begin{align*}
-            \psi((f(x) + \princ{p(x)})(g(x) + \princ{p(x)})) &= \psi((f(x)g(x)) + \princ{p(x)})\\
+            &\psi((f(x) + \princ{p(x)})(g(x) + \princ{p(x)}))\\
+            &= \psi((f(x)g(x)) + \princ{p(x)})\\
             &= f(\alpha)g(\alpha)\\
             &= \psi(f(x) + \princ{p(x)})\phi(g(x) + \princ{p(x)})
         \end{align*}
@@ -339,7 +350,7 @@ We note \myref{thrm-simple-extension-isomorphism} shows that an element of $F(\a
 forms a basis for $F(\alpha)$, and thus $F(\alpha)$ has dimension $n$.
 
 \begin{example}
-    Let $f(x) = x^6 - 2 \in \Q[x]$. Eisenstein's criterion (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$. Since $\sqrt[6]2 \in \R$ is a zero of $f(x)$, we know that $\Q(\sqrt[6]2)$ has 6 basis vectors, so it has the underlying set
+    Let $f(x) = x^6 - 2 \in \Q[x]$. Using Eisenstein's criterion (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$. Since $\sqrt[6]2 \in \R$ is a zero of $f(x)$, we know that $\Q(\sqrt[6]2)$ has 6 basis vectors, so it has the underlying set
     \[
         \left\{a_0 + a_12^{\frac16} + a_22^{\frac26} + a_32^{\frac36} + a_42^{\frac46} + a_52^{\frac56} \vert a_i \in \Q\right\}.
     \]
@@ -347,7 +358,7 @@ forms a basis for $F(\alpha)$, and thus $F(\alpha)$ has dimension $n$.
 
 What about extensions of the form $F(a_1, a_2, \dots, a_n)$? We also have this useful result that simplifies calculation.
 \begin{proposition}\label{prop-field-generated-by-S-inductive-definition}
-    Let $F$ be a field, $E/F$ be a field extension, and $a_1, a_2, \dots, a_n \in E$ where $n \geq 2$. Then
+    Let $F$ be a field, let $E/F$ be a field extension, and let $a_1, a_2, \dots, a_n \in E$ where $n \geq 2$. Then
     \[
         F(a_1, a_2, \dots, a_n) = F(a_1, a_2, \dots, a_{n-1})(a_n).
     \]
@@ -372,8 +383,6 @@ What about extensions of the form $F(a_1, a_2, \dots, a_n)$? We also have this u
 \begin{exercise}\label{exercise-field-generated-by-S-inductive-definition}
     Prove \myref{prop-field-generated-by-S-inductive-definition}.
 \end{exercise}
-
-\newpage
 
 With all these results, we can finally define splitting fields.
 
@@ -464,8 +473,6 @@ Before we can prove this, we introduce some terminology and notation, and a prel
     which is a polynomial in $F'[x]$.
 \end{definition}
 
-\newpage
-
 \begin{lemma}\label{lemma-isomorphism-extension}
     Let $F$ and $F'$ be fields, $p(x) \in F[x]$ be irreducible over $F$, and let $\alpha$ be a zero of $p(x)$ in some field extension $E/F$. If $\phi: F \to F'$ is an isomorphism and $\beta$ is a zero of $p(x)$ in some field extension $E'/F'$, then there exists an isomorphism $\overline{\phi}: F(\alpha) \to F'(\beta)$ that agrees with $\phi$ on $F$ and maps $\alpha$ to $\beta$.
 \end{lemma}
@@ -497,7 +504,7 @@ Before we can prove this, we introduce some terminology and notation, and a prel
         \end{align*}
         so $\overline{\phi}$ is a homomorphism.
 
-        \item \textbf{Injective}: Since $\overline{\phi}$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}).
+        \item \textbf{Injective}: As $\overline{\phi}$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}).
 
         \item \textbf{Surjective}: Suppose $b_0 + b_1\beta + \cdots + b_{n-1}\beta^{n-1} \in F'(\beta)$. Since $\phi$ is an isomorphism, for any $b_i \in F'$, there is a pre-image $a_i \in F$ such that $\phi(a_i) = b_i$. Consequently
         \[
@@ -563,7 +570,12 @@ Notice that in our definition we did not use the notion of a limit, unlike in a 
 \end{example}
 
 \begin{example}
-    $\left((x-1)(x+2)(x-3)(x+4)\right)' = (x^4 + 2x^3 - 13x^2 - 14x + 24)' = 4x^3 + 6x^2 - 26x - 14$.
+    We see
+    \begin{align*}
+        \left((x-1)(x+2)(x-3)(x+4)\right)'
+        &= (x^4 + 2x^3 - 13x^2 - 14x + 24)'\\
+        &= 4x^3 + 6x^2 - 26x - 14.
+    \end{align*}
 \end{example}
 
 \begin{example}
@@ -597,8 +609,6 @@ Those with a background in calculus would be familiar with the following propert
     In fact, what these first two properties show is that the derivative is a linear transformation.
 \end{remark}
 
-\newpage
-
 We now note an important property of the derivative that we will use later.
 
 \begin{proposition}[Product Rule]
@@ -617,7 +627,8 @@ We now note an important property of the derivative that we will use later.
     \]
     that
     \begin{align*}
-        (xf(x))' &= \left(a_0x + a_1x^2 + a_2x^3 + \cdots + a_mx^{m+1}\right)'\\
+        &(xf(x))'\\
+        &= \left(a_0x + a_1x^2 + a_2x^3 + \cdots + a_mx^{m+1}\right)'\\
         &= a_0 + 2a_1x + 3a_2x^2 + \cdots + (m+1)a_mx^m\\
         &= \left(a_0 + a_1x + a_2x^2 + \cdots + a_mx^m\right) + \left(a_1x + 2a_2x^2 + \cdots + ma_mx^m\right)\\
         &= \left(a_0 + a_1x + a_2x^2 + \cdots + a_mx^m\right) + x\left(a_1 + 2a_2x + \cdots + ma_mx^{m-1}\right)\\
@@ -627,7 +638,8 @@ We now note an important property of the derivative that we will use later.
 
     Now assume that $(x^rf(x))' = rx^{r-1}f(x) + x^rf'(x)$ for all polynomials $f(x) \in F[x]$ and for all $r \leq k$ for some positive integer $k$. We note that
     \begin{align*}
-        (x^{k+1}f(x))' &= \left(x\left(x^kf(x)\right)\right)'\\
+        &(x^{k+1}f(x))'\\
+        &= \left(x\left(x^kf(x)\right)\right)'\\
         &= \left(x^kf(x)\right) + x\left(x^kf(x)\right)' & (\text{Case where }r=1)\\
         &= x^kf(x) + x\left(kx^{k-1}f(x) + x^kf'(x)\right) & (\text{Case where }r=k)\\
         &= x^kf(x) + kx^kf(x) + x^{k+1}f'(x)\\
@@ -650,18 +662,19 @@ We now note an important property of the derivative that we will use later.
         &= \left(a_0g(x) + a_1xg(x) + a_2x^2g(x) + \cdots + a_mx^mg(x)\right)'\\
         &= (a_0g(x))' + (a_1xg(x))' + (a_2x^2g(x))' + \cdots + (a_mx^mg(x))'\\
         &= a_0(g(x))' + a_1(xg(x))' + a_2(x^2g(x))' + \cdots + a_m(x^mg(x))'\\
-        &= a_0g'(x) + a_1(g(x) + xg'(x)) + a_2(2xg(x) + x^2g'(x)) + \cdots + a_m(mx^{m-1}g(x)\\
-        &\quad\quad+ x^mg'(x))\\
-        &= (a_0g'(x) + a_1xg'(x) + a_2x^2g'(x) + \cdots + a_mx^mg'(x)) + (a_1g(x) + 2a_2xg(x) + \cdots\\
-        &\quad\quad+ ma_mx^{m-1}g(x))\\
-        &= (a_0 + a_1x + a_2x^2 + \cdots + a_mx^m)g'(x) + (a_1 + 2a_2x + \cdots + ma_mx^{m-1})g(x)\\
+        &= a_0g'(x) + a_1(g(x) + xg'(x)) + a_2(2xg(x) + x^2g'(x)) + \cdots\\
+        &\quad\quad+ a_m(mx^{m-1}g(x) + x^mg'(x))\\
+        &= (a_0g'(x) + a_1xg'(x) + a_2x^2g'(x) + \cdots + a_mx^mg'(x))\\
+        &\quad\quad+ (a_1g(x) + 2a_2xg(x) + \cdots + ma_mx^{m-1}g(x))\\
+        &= (a_0 + a_1x + a_2x^2 + \cdots + a_mx^m)g'(x) + (a_1 + 2a_2x + \cdots\\
+        &\quad\quad+ ma_mx^{m-1})g(x)\\
         &= f(x)g'(x) + f'(x)g(x)
     \end{align*}
     which proves the proposition.
 \end{proof}
 
 \begin{exercise}\label{exercise-derivative-sum-rule}
-    Prove for any field $F$ and any two polynomials $f(x), g(x) \in F[x]$ that $(f(x)+g(x))' = f'(x) + g'(x)$.
+    Prove for any field $F$ and any $f(x), g(x) \in F[x]$ that $(f(x)+g(x))' = f'(x) + g'(x)$.
 \end{exercise}
 
 \begin{exercise}
@@ -682,8 +695,6 @@ The investigation into the zeroes of irreducible polynomials also requires the g
     \]
     where $n \geq 0$.
 \end{definition}
-
-\newpage
 
 \begin{definition}
     Let $F$ be a field. Given $f(x), g(x) \in F[x]$, a monic polynomial $d(x) \in F[x]$ is said to be a \term{greatest common divisor (GCD)}\index{greatest common divisor!polynomial}\index{GCD!polynomial} of $f(x)$ and $g(x)$ if and only if $d(x)$ divides both $f(x)$ and $g(x)$ and if another polynomial $c(x) \in F[x]$ divides both $f(x)$ and $g(x)$ then $c(x)$ divides $d(x)$.
@@ -721,7 +732,7 @@ We note an analogue of B\'ezout's lemma (\myref{lemma-bezout}) for polynomial GC
     \end{align*}
     and therefore if $\deg r(x) < \deg d(x)$ this contradicts the minimality of $d(x)$. So $r(x) = 0$ and hence $f(x) = q(x)d(x)$, meaning $d(x)$ divides $f(x)$. Similarly $d(x)$ divides $g(x)$. Hence $d(x)$ is a common divisor of $f(x)$ and $g(x)$.
 
-    We now show that $d(x)$ is a GCD of $f(x)$ and $g(x)$. Suppose $c(x) \in F[x]$ divides both $f(x)$ and $g(x)$, i.e. $f(x) = p(x)c(x)$ and $g(x) = q(x)c(x)$ for some $p(x), q(x) \in F[x]$. We then see that
+    We now show that $d(x)$ is a GCD of $f(x)$ and $g(x)$. Suppose that $c(x) \in F[x]$ divides both $f(x)$ and $g(x)$, i.e. $f(x) = p(x)c(x)$ and $g(x) = q(x)c(x)$ for some $p(x), q(x) \in F[x]$. We then see that
     \begin{align*}
         d(x) &= a(x)f(x) + b(x)g(x)\\
         &= a(x)(p(x)c(x)) + b(x)(q(x)c(x))\\
@@ -735,7 +746,11 @@ We note an analogue of B\'ezout's lemma (\myref{lemma-bezout}) for polynomial GC
         &= a(x)(p(x)d_0(x)) + b(x)(q(x)d_0(x))\\
         &= d_0(x)(a(x)p(x) + b(x)q(x))
     \end{align*}
-    and so we conclude $\deg d(x) = \deg d_0(x) + \deg\left(a(x)p(x) + b(x)q(x)\right)$ by properties of the degree. Since $d(x)$ is of minimal degree, thus we must have $\deg d(x) = \deg d_0(x)$ which means $\deg\left(a(x)p(x) + b(x)q(x)\right) = 0$. Hence $a(x)p(x) + b(x)q(x) = \alpha \in F$ where $\alpha \neq 0$, meaning $d(x) = \alpha d_0(x)$. But both $d(x)$ and $d_0(x)$ are monic polynomials, so the coefficients of the largest terms of both $d(x)$ and $d_0(x)$ are both 1. Therefore $\alpha = 1$, meaning $d(x) = d_0(x)$. This proves the uniqueness of the GCD.
+    and so we conclude $\deg d(x) = \deg d_0(x) + \deg\left(a(x)p(x) + b(x)q(x)\right)$ by properties of the degree. Since $d(x)$ is of minimal degree, thus we must have $\deg d(x) = \deg d_0(x)$ which means
+    \[
+        \deg\left(a(x)p(x) + b(x)q(x)\right) = 0.
+    \]
+    Hence $a(x)p(x) + b(x)q(x) = \alpha \in F$ where $\alpha \neq 0$, meaning $d(x) = \alpha d_0(x)$. But both $d(x)$ and $d_0(x)$ are monic polynomials, so the coefficients of the largest terms of both $d(x)$ and $d_0(x)$ are both 1. Therefore $\alpha = 1$, meaning $d(x) = d_0(x)$. This proves the uniqueness of the GCD.
 \end{proof}
 
 To end this section, we look at the analogue of coprime numbers in terms of polynomials.
@@ -748,10 +763,10 @@ To end this section, we look at the analogue of coprime numbers in terms of poly
 Recall that polynomial $f(x)$ has a zero $\alpha$ if and only if $x-\alpha$ is a factor of $f(x)$, by the Factor Theorem (\myref{corollary-factor-theorem}). Then $\alpha$ is a zero of multiplicity $n$ if $(x-\alpha)^n$ is a factor of $f(x)$ but $(x-\alpha)^{n+1}$ is not.
 
 \begin{definition}
-    Let $\alpha$ be a zero of multiplicity $n$ of a polynomial $f(x)$. If $n = 1$ then $\alpha$ is called a \term{simple zero}\index{polynomial!zeroes!simple}. If $n \geq 2$ then $\alpha$ is called a \term{multiple zero}\index{polynomial!zeroes!multiple}.
+    Let $\alpha$ be a zero of multiplicity $n$ of a polynomial $f(x)$. If $n = 1$ then $\alpha$ is a \term{simple zero}\index{polynomial!zeroes!simple}; otherwise $\alpha$ is a \term{multiple zero}\index{polynomial!zeroes!multiple}.
 \end{definition}
 
-With the derivative, we can derive a test for multiple zeroes of a polynomial.
+% With the derivative, we can derive a test for multiple zeroes.
 
 \begin{theorem}\label{thrm-criterion-for-multiple-zeroes}
     Let $F$ be a field and $f(x) \in F[x]$. Then $f(x)$ has a multiple zero in some field extension $E/F$ if and only if $f(x)$ and $f'(x)$ have a common factor of positive degree in $F[x]$.
@@ -772,6 +787,7 @@ With the derivative, we can derive a test for multiple zeroes of a polynomial.
 \end{proof}
 
 With this result, we can find the zeroes of an irreducible polynomial.
+
 \begin{theorem}\label{thrm-zeroes-of-an-irreducible}
     Let $F$ be a field and $f(x) \in F[x]$ be irreducible over $F$.
     \begin{itemize}
@@ -816,7 +832,7 @@ The most important family of perfect fields of prime characteristic are the fini
 \begin{proof}
     Let $F$ be a finite field of prime characteristic $p$. Recall the Frobenius endomorphism $\phi: F \to F$ where $\phi(x) = x^p$ for all $x \in F$. We prove that the Frobenius endomorphism is an automorphism within finite fields.
     \begin{itemize}
-        \item \textbf{Injective}: Since $\phi$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}).
+        \item \textbf{Injective}: As $\phi$ is non-trivial it is thus injective (\myref{thrm-homomorphism-from-field-is-injective-or-trivial}).
         \item \textbf{Surjective}: Since $\phi$ is an injective function from $F$ to itself, it must be surjective by \myref{problem-injection-from-finite-set-to-itself-is-bijection}.
     \end{itemize}
     Hence $\phi$ is a bijection. Coupled with the fact that $\phi$ is an endomorphism means that $\phi$ is an automorphism. But clearly the image of $\phi$ is $F^p$, so $F = F^p$.
@@ -901,7 +917,7 @@ What if the irreducible polynomial has multiple zeroes in a splitting field? In 
 \end{problem}
 
 \begin{problem}
-    Determine which of the following polynomials, if any, have multiple zeroes over the field $F$ specified. If the polynomial has a multiple zero, state its value.
+    Determine which of the following polynomials have multiple zeroes over the field $F$ specified. If the polynomial has a multiple zero, state its value.
     \begin{partquestions}{\alph*}
         \item $x^4 + 2x + 7$ over $F = \Z_2$.
         \item $x^{19} + x^8 + 1$ over $F = \Z_3$.

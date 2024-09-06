@@ -29,7 +29,7 @@ Number theory is an integral part of abstract algebra, as we will use some of it
     63 is not a multiple of 8 since 8 does not divide 63.
 \end{example}
 
-We list some basic facts about divisibility that are not difficult to prove.
+We list some facts about divisibility that are not difficult to prove.
 \begin{itemize}
     \item If $a\vert b$ then $a\vert bc$ for all integers $c$.
     \item If $a\vert b$ and $b\vert c$ then $a\vert c$.
@@ -85,7 +85,7 @@ We list some basic facts about divisibility that are not difficult to prove.
 
 We note some properties of the GCD.
 \begin{lemma}[B\'{e}zout]\label{lemma-bezout}\index{B\'{e}zout's Lemma}
-    Let $m$ and $n$ be non-zero integers such that $\gcd(m, n) = d$. Then there exist integers $\lambda$ and $\mu$ such that $\lambda m + \mu n = d$. Moreover, the integers of the form $am + bn$ (where $a$ and $b$ are integers) are multiples of $d$.
+    Let $m$ and $n$ be non-zero integers. Let $\gcd(m, n) = d$. Then there exist integers $\lambda$ and $\mu$ such that $\lambda m + \mu n = d$. Moreover, the integers of the form $am + bn$ (where $a, b \in \Z$) are multiples of $d$.
 \end{lemma}
 
 \begin{proposition}\label{prop-gcd-divides-common-divisor}
@@ -97,10 +97,8 @@ We note some properties of the GCD.
 
 We now look at the lowest common multiple of two integers.
 
-\newpage
-
 \begin{definition}
-    Let $m$ and $n$ be two non-zero integers. Then an integer $l$ is said to be the \term{lowest common multiple (LCM)}\index{lowest common multiple}\index{LCM} of $m$ and $n$ if $l = pm = qn$ for some integers $p$ and $q$, and that $l$ is the smallest possible \textit{positive} integer that achieves this.
+    Let $m$ and $n$ be two non-zero integers. Then an integer $l$ is said to be the \term{lowest common multiple (LCM)}\index{lowest common multiple}\index{LCM} of $m$ and $n$ if $l = pm = qn$ for some integers $p$ and $q$, and that $l$ is the smallest possible \textbf{positive} integer that achieves this.
 
     The LCM of $m$ and $n$ is denoted by $\lcm(m,n)$.
 \end{definition}
@@ -121,7 +119,6 @@ We now look at the lowest common multiple of two integers.
     Find $\lcm(-112, -35)$.
 \end{exercise}
 
-We note one property of the LCM.
 \begin{proposition}\label{prop-product-of-gcd-and-lcm}
     Let $m$ and $n$ be non-zero integers. Then
     \[
@@ -130,9 +127,9 @@ We note one property of the LCM.
 \end{proposition}
 
 \begin{exercise}
-    Suppose $m = 42$ and $n = 70$.
+    Suppose $m = 42$ and $n = 70$. Let $d = \gcd(m,n)$.
     \begin{partquestions}{\roman*}
-        \item Let $d = \gcd(m,n)$. Find $d$.
+        \item Find $d$.
         \item Hence find $\lcm(m,n)$.
         \item Find two integers $x$ and $y$ such that $mx + ny = d$.
     \end{partquestions}
@@ -182,7 +179,7 @@ We now look at coprime integers.
 
 We note two properties of coprime numbers.
 \begin{proposition}\label{prop-prime-is-coprime-or-divisor}
-    A positive integer $n > 1$ is prime if and only if $\gcd(a,n) = 1$ or $n \vert a$ for all integers $a$.
+    A positive integer $n > 1$ is a prime number if and only if $\gcd(a,n) = 1$ or $n \vert a$ for all integers $a$.
 \end{proposition}
 \begin{proof}
     For the forward direction, assume $n$ is prime. Then for any integer $a$ we must have $\gcd(a, n) = 1$ or $\gcd(a, n) = n$. If $\gcd(a,n) = n$ this means that $n \vert a$ (since the GCD of $a$ and $n$ must divide $a$); otherwise we obtain $\gcd(a,n) = 1$ as required.
@@ -294,8 +291,6 @@ The operation of congruence modulo $n$ has a few properties\index{congruence!pro
     Find the last two digits of $778899^{112233}$.
 \end{exercise}
 
-\newpage
-
 \section{Modular Multiplicative Inverse}
 \begin{definition}
     Let $m$ be a positive integer, and let $a$ be an integer. An integer $x$ such that $ax \equiv 1 \pmod m$ is said to be the \term{multiplicative inverse of $a$ modulo $m$}\index{multiplicative inverse modulo $n$}.
@@ -319,7 +314,7 @@ The operation of congruence modulo $n$ has a few properties\index{congruence!pro
 \end{proof}
 
 \begin{example}
-    20 has a multiplicative inverse modulo 31 since $\gcd(20, 31) = 1$. One can verify that 14 is the multiplicative inverse of 20 modulo 31.
+    Since $\gcd(20, 31) = 1$, thus 20 has a multiplicative inverse modulo 31. One can verify that 14 is the multiplicative inverse of 20 modulo 31.
 \end{example}
 
 \newpage
@@ -362,7 +357,7 @@ The operation of congruence modulo $n$ has a few properties\index{congruence!pro
 \end{problem}
 
 \begin{problem}\label{problem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b}
-    Prove \myref{theorem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b} by considering B\'ezout's lemma (\myref{lemma-bezout}).
+    Prove \myref{theorem-n-divides-ab-and-n-coprime-with-a-implies-n-divides-b} by using B\'ezout's lemma (\myref{lemma-bezout}).
 \end{problem}
 
 \begin{problem}

@@ -121,7 +121,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
     The product of two primitive polynomials in $\Z[x]$ is primitive.
 \end{lemma}
 \begin{proof}[Proof (see {\cite[p.~291]{gallian_2016}})]
-    Seeking a contradiction, suppose $f(x)$ and $g(x)$ are primitive polynomials with a non-primitive product $h(x) = f(x)g(x)$. Therefore the content of $h(x)$ is not 1; in fact it is at least 2, meaning the content of $h(x)$ is either prime or composite. Thus the content of $h(x)$ has a prime divisor, say $p$.
+    Seeking a contradiction, suppose that $f(x)$ and $g(x)$ are primitive polynomials with a non-primitive product $h(x) = f(x)g(x)$. Therefore the content of $h(x)$ is not 1; in fact it is at least 2, meaning the content of $h(x)$ is either prime or composite. Thus the content of $h(x)$ has a prime divisor, say $p$.
 
     Let $\bar{f}(x)$, $\bar{g}(x)$, and $\bar{h}(x)$ be polynomials obtained from $f(x)$, $g(x)$, and $h(x)$ by reducing their coefficients modulo $p$. Since the content of $h(x)$ is not 1, thus coefficients of $h(x)$ are multiples of $p$; accordingly when they are reduced modulo $p$, we see $\bar{h}(x) = 0$. Also, we may interpret $\bar{f}(x)$ and $\bar{g}(x)$ as polynomials belonging in $\Z_p[x]$ where $\bar{f}(x)\bar{g}(x) = \bar{h}(x) = 0$. Since $\Z_p[x]$ is an integral domain (\myref{thrm-integral-domain-iff-polynomial-ring-is-integral-domain}), this means that $\bar{f}(x) = 0$ or $\bar{g}(x) = 0$. Without loss of generality we may assume $\bar{f}(x) = 0$. Therefore $p$ divides every coefficient of $f(x)$, meaning that the content of $f(x)$ is at least $p$, i.e. $f(x)$ is not primitive, a contradiction.
 
@@ -137,7 +137,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
     Furthermore, if $f(x)$ is reducible over $\Z$ with $f(x) = p(x)q(x)$ for some non-unit polynomials $p(x), q(x) \in \Z[x]$, then neither $p(x)$ nor $q(x)$ are constant polynomials.
 \end{theorem}
 \begin{proof}
-    We prove the contrapositive of the first statement. Suppose $f(x) \in \Z[x]$ is reducible over $\Q$, meaning that $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Q[x]$ are non-constant polynomials. Without loss of generality, assume the content of $f(x)$ is 1, since otherwise we can just divide $p(x)$ and $q(x)$ by the content of $f(x)$ to obtain the same result. Thus $f(x)$ is primitive.
+    We prove the contrapositive of the first statement. Suppose that $f(x) \in \Z[x]$ is reducible over $\Q$, meaning that $f(x) = p(x)q(x)$ where $p(x), q(x) \in \Q[x]$ are non-constant polynomials. Without loss of generality, assume the content of $f(x)$ is 1, since otherwise we can just divide $p(x)$ and $q(x)$ by the content of $f(x)$ to obtain the same result. Thus $f(x)$ is primitive.
 
     Let $a$ be the LCM of the denominators of the coefficients of $p(x)$, and likewise let $b$ be the LCM of the denominators of the coefficients of $q(x)$. Then
     \[
@@ -151,7 +151,8 @@ Before we introduce the next test, which involves polynomials with integer coeff
 
     Dividing both sides by $ab = C_pC_q$ leaves $f(x) = P(x)Q(x)$, where both $P(x)$ and $Q(x)$ are polynomials with integer coefficients. Note that
     \begin{align*}
-        \deg p(x) &= \deg (ap(x)) & (\text{multiplying by constant does not change degree})\\
+        &\deg p(x)\\
+        &= \deg (ap(x)) & (\text{multiplying by constant does not change degree})\\
         &= \deg(C_pP(x)) & (\text{since } ap(x) = C_pP(x))\\
         &= \deg P(x)
     \end{align*}
@@ -171,10 +172,11 @@ Before we introduce the next test, which involves polynomials with integer coeff
 \end{example}
 
 \begin{example}
-    Consider the polynomial $f(x) = 144x^4 + 168x^3 + 73x^2 + 14x + 1$ and note $f(x) = \left(16x^2 + \frac{32}3x + \frac{16}9\right)\left(9x^2 + \frac92x + \frac9{16}\right)$. Set $p(x) = 16x^2 + \frac{32}3x + \frac{16}9$ and $q(x) = 9x^2 + \frac92x + \frac9{16}$ and using the notation in \myref{thrm-irreducible-over-Z-means-irreducible-over-Q} we see $a = 9$, $b = 16$, $C_p = 16$, and $C_q = 9$. So $P(x) = 9x^2+6x+1$ and $Q(x) = 16x^2 + 8x + 9$, which means
-    \[
-        (9 \times 16)\left(144x^4 + 168x^3 + 73x^2 + 14x + 1\right) = (16 \times 9)(9x^2+6x+1)(16x^2 + 8x + 9)
-    \]
+    Consider $f(x) = 144x^4 + 168x^3 + 73x^2 + 14x + 1$. Note that $f(x) = \left(16x^2 + \frac{32}3x + \frac{16}9\right)\left(9x^2 + \frac92x + \frac9{16}\right)$. Set $p(x) = 16x^2 + \frac{32}3x + \frac{16}9$ and $q(x) = 9x^2 + \frac92x + \frac9{16}$ and using the notation in \myref{thrm-irreducible-over-Z-means-irreducible-over-Q} we see $a = 9$, $b = 16$, $C_p = 16$, and $C_q = 9$. So $P(x) = 9x^2+6x+1$ and $Q(x) = 16x^2 + 8x + 9$, which means
+    \begin{align*}
+        &(9 \times 16)\left(144x^4 + 168x^3 + 73x^2 + 14x + 1\right)\\
+        &= (16 \times 9)(9x^2+6x+1)(16x^2 + 8x + 9)
+    \end{align*}
     so $144x^4 + 168x^3 + 73x^2 + 14x + 1 = (9x^2+6x+1)(16x^2 + 8x + 9)$, i.e. $f(x)$ is reducible over $\Z$.
 \end{example}
 
@@ -191,7 +193,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
     Let $p$ be a prime and suppose $f(x) \in \Z[x]$ is a non-constant polynomial. Let $\bar{f}(x) \in \Z_p[x]$ be the polynomial obtained after reducing all coefficients of $f(x)$ modulo $p$. If $\bar{f}(x)$ is irreducible over $\Z_p$ and $\deg \bar{f}(x) = \deg f(x)$ then $f(x)$ is irreducible over $\Q$.
 \end{theorem}
 \begin{proof}
-    Seeking a contrapositive proof, suppose $f(x)$ is reducible over $\Q$. Then by \myref{thrm-irreducible-over-Z-means-irreducible-over-Q} there exist non-constant polynomials $p(x), q(x) \in \Z[x]$, both with degree smaller than that of $f(x)$, such that $f(x) = p(x)q(x)$. Let $\bar{f}(x), \bar{p}(x), \bar{q}(x) \in \Z_p[x]$ be the polynomials after reducing the coefficients of $f(x)$, $p(x)$, and $q(x)$ modulo $p$ respectively. Since $\deg \bar{f}(x) = \deg f(x)$ by assumption, we have
+    Seeking a contrapositive proof, suppose $f(x)$ is reducible over $\Q$. Then \myref{thrm-irreducible-over-Z-means-irreducible-over-Q} tells us that there exists non-constant polynomials $p(x), q(x) \in \Z[x]$, both with degree smaller than that of $f(x)$, such that $f(x) = p(x)q(x)$. Let $\bar{f}(x), \bar{p}(x), \bar{q}(x) \in \Z_p[x]$ be the polynomials after reducing the coefficients of $f(x)$, $p(x)$, and $q(x)$ modulo $p$ respectively. Since $\deg \bar{f}(x) = \deg f(x)$ by assumption, we have
     \begin{align*}
         \deg \bar{p}(x) &\leq \deg p(x) < \deg f(x),\\
         \deg \bar{q}(x) &\leq \deg q(x) < \deg f(x),
@@ -205,7 +207,7 @@ Before we introduce the next test, which involves polynomials with integer coeff
         \item $\bar{f}(0) = 0^3 + 0^2 + 1 = 1 \neq 0$; and
         \item $\bar{f}(1) = 1^3 + 1^2 + 1 = 3 = 1 \neq 0$,
     \end{itemize}
-    so $\bar{f}(x)$ has no zeroes in $\Z_2$. Thus $\bar{f}(x)$ is irreducible over $\Z_2$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}) and so it is irreducible over $\Q$ by Mod 2 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}).
+    so $\bar{f}(x)$ has no zeroes in $\Z_2$. Thus $\bar{f}(x)$ is irreducible over $\Z_2$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}) and so $f(x)$ is irreducible over $\Q$ by Mod 2 Irreducibility Test (\myref{thrm-mod-p-irreducibility-test}).
 \end{example}
 \begin{example}
     Consider the polynomial $f(x) = 2x^2 + 3x + 4$.
@@ -241,7 +243,7 @@ The Mod $p$ Irreducibility Test can also be used to check for irreducibility of 
     \end{itemize}
     so $\bar{F}(x)$ has no zeroes in $\Z_2$. Now we \textit{cannot} conclude that $F(x)$ is irreducible at this juncture as $\bar{F}(x)$ is a degree 4 polynomial, and \myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes} only applies to degree 2 and degree 3 polynomials. We need to do more work to conclude that $F(x)$ is irreducible.
 
-    Seeking a contradiction, suppose that $\bar{F}(x) = p(x)q(x)$ where $p(x), q(x) \in \Z_2[x]$ are polynomials with lower degree than $\bar{F}(x)$. Note neither $p(x)$ nor $q(x)$ can be linear, as this would imply that $\bar{F}(x)$ has a zero in $\Z_2$ (which it does not). So both $p(x)$ and $q(x)$ are quadratic factors. There are 4 distinct quadratic polynomials in $\Z_2[x]$, namely
+    Seeking a contradiction, suppose that $\bar{F}(x) = p(x)q(x)$ where both $p(x), q(x) \in \Z_2[x]$ are polynomials with lower degree than $\bar{F}(x)$. Note neither $p(x)$ nor $q(x)$ can be linear, as this would imply that $\bar{F}(x)$ has a zero in $\Z_2$ (which it does not). So both $p(x)$ and $q(x)$ are quadratic factors. There are 4 distinct quadratic polynomials in $\Z_2[x]$, namely
     \begin{enumerate}
         \item $x^2$;
         \item $x^2 + 1$;
@@ -260,6 +262,8 @@ The Mod $p$ Irreducibility Test can also be used to check for irreducibility of 
 
 \subsection{Eisenstein's Criterion}
 We now look at another irreducibility test, given by Gotthold Eisenstein in 1850.
+
+\newpage
 
 \begin{theorem}[Eisenstein's Criterion]\label{thrm-eisenstein-criterion}\index{Eisenstein's Criterion}
     For the polynomial
@@ -312,18 +316,11 @@ Sometimes the tests may not be applied directly. In these cases, appropriate sub
     Let $D[x]$ be an integral domain and $f(x) \in D[x]$ be a non-zero, non-unit polynomial. Suppose $\phi$ is an automorphism of $D[x]$. Then $f(x)$ is irreducible if and only if $\phi(f(x))$ is irreducible.
 \end{theorem}
 \begin{proof}
-    We prove the reverse direction first, i.e. we will prove that if $\phi(f(x))$ is irreducible then $f(x)$ is irreducible, via contrapositive. Let $f(x) \in D[x]$ be reducible, meaning there exist non-unit $p(x), q(x) \in D[x]$ such that $f(x) = p(x)q(x)$. Then
+    We prove the reverse direction first, that is, we will prove that if $\phi(f(x))$ is irreducible then $f(x)$ is irreducible, via contrapositive. Let $f(x) \in D[x]$ be reducible, meaning there exist non-unit $p(x), q(x) \in D[x]$ such that $f(x) = p(x)q(x)$. Then
     \[
         \phi(f(x)) = \phi(p(x)q(x)) = \phi(p(x))\phi(q(x)).
     \]
-    Note that, for a polynomial $u(x) \in D[x]$,
-    \begin{align*}
-        &u(x) \text{ is a unit}\\
-        \iff&u(x)v(x) = 1 \text{ for some }v(x) \in D[x] & (\text{Definition of unit})\\
-        \iff&\phi(u(x))\phi(v(x))  = \phi(u(x)v(x)) = \phi(1) = 1 & (\text{Ring homomorphism properties})\\
-        \iff&\phi(u(x)) \text{ is a unit.} & (\text{Definition of unit})
-    \end{align*}
-    Note that the second if and only if statement holds because $\phi$ is an automorphism (which is an isomorphism). So we know that neither $\phi(p(x))$ nor $\phi(q(x))$ are units. Therefore $\phi(f(x))$ is also reducible.
+    Note that, for a polynomial $u(x) \in D[x]$, it is a unit if and only if there exists $v(x) \in D[x]$ such that $u(x)v(x) = 1$. This is true if and only if $\phi(u(x))\phi(v(x))  = \phi(u(x)v(x)) = \phi(1) = 1$ because $\phi$ is an automorphism (which is an isomorphism), which means that $\phi(u(x))$ is a unit. To summarise we know $u(x)$ is a unit if and only if $\phi(u(x))$ is a unit. So we know that neither $\phi(p(x))$ nor $\phi(q(x))$ are units. Therefore $\phi(f(x))$ is also reducible.
 
     We now show the forward direction, again via contrapositive. Suppose $\phi(f(x))$ is reducible. Note $\phi^{-1}$ is also a ring isomorphism (\myref{problem-properties-of-ring-isomorphism}) so it is also a ring automorphism, so use the reverse direction's result to conclude that $f(x)$ is also reducible.
 \end{proof}
@@ -347,7 +344,8 @@ With this general result proven, we come up with a few rules for substitution.
     \begin{itemize}
         \item \textbf{Homomorphism}: One sees that
         \begin{align*}
-            \phi(f(x) + g(x)) &= \phi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
+            &\phi(f(x) + g(x))\\
+            &= \phi\left(\sum_{i=0}^m(a_i+b_i)x^i\right)\\
             &= \sum_{i=0}^m(a_i+b_i)(x+k)^i\\
             &= \left(\sum_{i=0}^ma_i(x+k)^i\right) + \left(\sum_{i=0}^mb_i(x+k)^i\right)\\
             &= \left(\sum_{i=0}^ma_i(x+k)^i\right) + \left(\sum_{i=0}^nb_i(x+k)^i\right) & (\text{as } b_i = 0 \text{ for } i > n)\\
@@ -355,7 +353,8 @@ With this general result proven, we come up with a few rules for substitution.
         \end{align*}
         and
         \begin{align*}
-            \phi(f(x)g(x)) &= \phi\left(\sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)x^r\right)\\
+            &\phi(f(x)g(x))\\
+            &= \phi\left(\sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)x^r\right)\\
             &= \sum_{r=0}^{m+n}\left(\sum_{i=0}^ra_ib_{r-i}\right)(x+k)^r\\
             &= \left(\sum_{r=0}^ma_r(x+k)^r\right)\left(\sum_{r=0}^nb_r(x+k)^r\right)\\
             &= \phi(f(x))\phi(g(x))
@@ -458,8 +457,6 @@ We reveal the first connection in the following theorem.
     As $M = \princ{f(x)}$ is maximal, and since $M \subset \princ{p(x)} \subseteq D[x]$, thus $\princ{p(x)} = D[x]$. But $p(x)$ is not a unit, so there is not a $k(x) \in \princ{p(x)}$ such that $p(x)k(x) = 1$. In particular, this means no element of $\princ{p(x)}$ are units, and so $\princ{p(x)} \neq D[x]$ (\myref{prop-ideal-contains-unit-iff-ideal-is-whole-ring}), the contradiction we wish to achieve. Therefore, at least one of $p(x)$ or $q(x)$ is a unit, meaning that $f(x)$ is irreducible.
 \end{proof}
 
-\newpage
-
 Knowing that $\princ{f(x)}$ is maximal gives us a way to create new fields.
 
 \begin{corollary}\label{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}
@@ -488,15 +485,11 @@ We now look at a polynomial analog of Euclid's lemma (\myref{corollary-euclid}).
     Prove \myref{corollary-irreducible-polynomial-division-rule}.
 \end{exercise}
 
-With these results, we are able to construct finite fields with a prime-power number of elements. Suppose we desire a field with $p^k$ elements.
-\begin{itemize}
-    \item If $k = 1$ then we know $\Z_p$ is a field of $p^k = p$ elements.
-    \item Otherwise, by finding an irreducible polynomial of degree $k$ in $\Z_p[x]$, say $f(x)$, we can see that
-    \[
-        \Z_p[x]/\princ{f(x)} = \left\{a_0 + a_1x + a_2x^2 + \cdots + a_{k-1}x^{k-1} + \princ{f(x)} \vert a_i \in \Z_p\right\}
-    \]
-    is a field of degree $p^k$ (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}).
-\end{itemize}
+With these results, we are able to construct finite fields with a prime-power number of elements. Suppose we desire a field with $p^k$ elements. If $k = 1$ then we know $\Z_p$ is a field of $p^k = p$ elements. Otherwise, by finding an irreducible polynomial of degree $k$ in $\Z_p[x]$, say $f(x)$, we can see that
+\[
+    \Z_p[x]/\princ{f(x)} = \left\{a_0 + a_1x + a_2x^2 + \cdots + a_{k-1}x^{k-1} + \princ{f(x)} \vert a_i \in \Z_p\right\}
+\]
+is a field of degree $p^k$ (\myref{corollary-polynomial-quotient-by-principal-ideal-is-field-iff-polynomial-irreducible}).
 
 \begin{example}
     We construct a field with 8 elements. Writing $8 = 2^3$, we just need to find an irreducible degree 3 polynomial in $\Z_2$. One sees that $x^3 + x + 1$ is irreducible over $\Z_2$ since $x^3 + x + 1$ has no zeroes in $\Z_2$ (\myref{thrm-degree-2-or-3-irreducible-iff-has-no-zeroes}). Thus
@@ -507,21 +500,23 @@ With these results, we are able to construct finite fields with a prime-power nu
 
     Let's do some calculations in $\Z_2[x]/\princ{x^3+x+1}$. Addition is easy since the sum of two polynomials is just the maximum of the degree of the two polynomials. For example,
     \begin{align*}
-        \left(x^2 + x + 1 + \princ{x^3 + x + 1}\right) + \left(x^2 + 1 + \princ{x^3 + x + 1}\right) &= 2x^2 + x + 2 + \princ{x^3 + x + 1}\\
+        &\left(x^2 + x + 1 + \princ{x^3 + x + 1}\right) + \left(x^2 + 1 + \princ{x^3 + x + 1}\right)\\
+        &= 2x^2 + x + 2 + \princ{x^3 + x + 1}\\
         &= 0x^2 + x + 0 + \princ{x^3 + x + 1}\\
         &= x + \princ{x^3 + x + 1}
     \end{align*}
     and
     \begin{align*}
-        \left(x^2 + 1 + \princ{x^3 + x + 1}\right) + \left(x + 1 + \princ{x^3 + x + 1}\right) &= x^2 + x + 2 + \princ{x^3 + x + 1}\\
+        &\left(x^2 + 1 + \princ{x^3 + x + 1}\right) + \left(x + 1 + \princ{x^3 + x + 1}\right)\\
+        &= x^2 + x + 2 + \princ{x^3 + x + 1}\\
         &= x^2 + x + \princ{x^3 + x + 1}.
     \end{align*}
 
     Multiplication is harder since the resultant coset may no longer fit the form of $a_0 + a_1x + a_2x^2 + \princ{x^3+x+1}$. For example,
     \begin{align*}
         &\left(x^2 + x + 1 + \princ{x^3 + x + 1}\right)\left(x^2 + 1 + \princ{x^3 + x + 1}\right)\\
-        &\quad\quad= x^4+x^3+x+1 + \princ{x^3 + x + 1}\\
-        &\quad\quad= x^4 + \princ{x^3 + x + 1}
+        &= x^4+x^3+x+1 + \princ{x^3 + x + 1}\\
+        &= x^4 + \princ{x^3 + x + 1}
     \end{align*}
     so we need to do some work to convert $x^4$ into a form to make it `compatible' with $\princ{x^3 + x + 1}$. We note that, by polynomial long division (\myref{thrm-polynomial-long-division}), we have
     \begin{align*}
@@ -530,12 +525,14 @@ With these results, we are able to construct finite fields with a prime-power nu
     \end{align*}
     so we see that
     \begin{align*}
-        x^4 + \princ{x^3 + x + 1} &= (x(x^3+x+1) + x^2 + x) + \princ{x^3 + x + 1}\\
+        &x^4 + \princ{x^3 + x + 1}\\
+        &= (x(x^3+x+1) + x^2 + x) + \princ{x^3 + x + 1}\\
         &= x^2 + x + \princ{x^3 + x + 1}.
     \end{align*}
     Similarly, one sees
     \begin{align*}
-        \left(x^2 + \princ{x^3 + x + 1}\right)\left(x + \princ{x^3 + x + 1}\right) &= x^3 + \princ{x^3 + x + 1}\\
+        &\left(x^2 + \princ{x^3 + x + 1}\right)\left(x + \princ{x^3 + x + 1}\right)\\
+        &= x^3 + \princ{x^3 + x + 1}\\
         &= 1(x^3+x+1) - x - 1 + \princ{x^3 + x + 1}\\
         &= -x - 1 + \princ{x^3 + x + 1}\\
         &= x + 1 + \princ{x^3 + x + 1}.
@@ -549,12 +546,10 @@ With these results, we are able to construct finite fields with a prime-power nu
     \]
     is a field with 9 elements.
 
-    \newpage
-
     Let $F = \Z_3[x]/\princ{x^2+1}$. We produce the Cayley table for $(F, +)$ below.
     \begin{table}[H]
         \centering
-        \fontsize{9pt}{12pt}\selectfont
+        \fontsize{7pt}{10pt}\selectfont
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
             \hline
             \textbf{+} & $\boldsymbol{0}$ & $\boldsymbol{1}$ & $\boldsymbol{2}$ & $\boldsymbol{x}$ & $\boldsymbol{x+1}$ & $\boldsymbol{x+2}$ & $\boldsymbol{2x}$ & $\boldsymbol{2x+1}$ & $\boldsymbol{2x+2}$ \\ \hline
@@ -574,6 +569,7 @@ With these results, we are able to construct finite fields with a prime-power nu
 
     \begin{table}[H]
         \centering
+        \fontsize{8pt}{11pt}\selectfont
         \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
             \hline
             $\boldsymbol{\times}$ & $\boldsymbol{1}$ & $\boldsymbol{2}$ & $\boldsymbol{x}$ & $\boldsymbol{x+1}$ & $\boldsymbol{x+2}$ & $\boldsymbol{2x}$ & $\boldsymbol{2x+1}$ & $\boldsymbol{2x+2}$ \\ \hline
@@ -587,7 +583,6 @@ With these results, we are able to construct finite fields with a prime-power nu
             $\boldsymbol{2x+2}$ & $2x+2$ & $x+1$ & $2x+1$ & $x$ & \textbf{(c)} & $2x$ & \textbf{(d)} & $2x$ \\ \hline
         \end{tabular}
     \end{table}
-
 \end{example}
 
 \begin{exercise}
@@ -604,14 +599,14 @@ With these results, we are able to construct finite fields with a prime-power nu
 \end{exercise}
 
 \begin{exercise}\label{exercise-fill-in-missing-elements-in-table-of-Z3/<x^2+1>}
-    Fill in the rest of the multiplication table in \myref{example-Z3/<x^2+1>}.
+    Fill in the remaining of the multiplication table in \myref{example-Z3/<x^2+1>}.
 \end{exercise}
 
 \newpage
 
 \section{Problems}
 \begin{problem}
-    Determine which of the following polynomials, if any, is/are irreducible over $\Q$.
+    Determine which of the following polynomials, if any, are irreducible over $\Q$.
     \begin{multicols}{2}
         \begin{partquestions}{\alph*}
             \item $f_1(x) = x^3 + x^2 + x + 1$
@@ -660,7 +655,7 @@ With these results, we are able to construct finite fields with a prime-power nu
         \item Show that $f(x)$ is reducible over $\Z_2$ via factorization.\newline
         For the rest of this part, assume $p > 2$.
         \begin{partquestions}{\roman*}
-            \item Suppose there is an $r \in \Z_p$ satisfying $r^2 = k$ for some $k$ to be specified below. Deduce a factorization of $f(x)$ in the following cases.
+            \item Suppose there is an $r \in \Z_p$ satisfying $r^2 = k$ for some $k$ (to be specified). Deduce a factorization of $f(x)$ in the following cases.
             \begin{partquestions}{\alph*}
                 \item $k = 2$
                 \item $k = -1$

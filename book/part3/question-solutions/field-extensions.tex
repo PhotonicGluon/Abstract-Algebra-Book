@@ -23,7 +23,7 @@
         \begin{align*}
             &\phi\left(\left(ax + b + \princ{x^2+1}\right)\left(cx + d + \princ{x^2+1}\right)\right)\\
             &= \phi\left((acx^2 + (ad + bc)x + bd) + \princ{x^2+1}\right)\\
-            &= \phi\left(((ad + bc)x + (bd - ac)) + \princ{x^2+1}\right) & (\text{since } x^2 = -1 \text{ within } F)\\
+            &= \phi\left(((ad + bc)x + (bd - ac)) + \princ{x^2+1}\right) & (x^2 = -1)\\
             &= (bd - ac) + (ad + bc)i\\
             &= (b + ai)(d + ci)\\
             &= \phi\left(ax + b + \princ{x^2+1}\right)\phi\left(cx + d + \princ{x^2+1}\right)
@@ -61,7 +61,7 @@
     \]
     as the possible extension fields.
 
-    \item For brevity let $K = F(a_1, a_2, \dots, a_{n-1})(a_n)$. Note $K$ contains $F(a_1, a_2, \dots, a_{n-1})$ and the element $a_n$, and that $F(a_1, a_2, \dots, a_{n-1})$ contains the field $F$ and the elements $a_1, a_2, \dots, a_{n-1}$. Thus $K$ contains $F$ and the elements $a_1, a_2, \dots, a_{n-1}, a_n$, which means that $K$ is included in the intersection that generates $F(a_1, a_2, \dots, a_n)$, so $K \subseteq F(a_1, a_2, \dots, a_n)$. But $F(a_1, a_2, \dots, a_n)$ is the smallest subfield of $E$ that contains $F$ and the elements $a_1, a_2, \dots, a_n$. Therefore $K = F(a_1, a_2, \dots, a_n)$ as required.
+    \item For brevity let $K = F(a_1, a_2, \dots, a_{n-1})(a_n)$. Note that $K$ contains the extension $F(a_1, a_2, \dots, a_{n-1})$ and the element $a_n$, and that the extension $F(a_1, a_2, \dots, a_{n-1})$ contains the field $F$ and the elements $a_1, a_2, \dots, a_{n-1}$. Thus $K$ contains $F$ as well as $a_1, a_2, \dots, a_{n-1}$, and $a_n$, which means that $K$ is included in the intersection that generates $F(a_1, a_2, \dots, a_n)$, so $K \subseteq F(a_1, a_2, \dots, a_n)$. But $F(a_1, a_2, \dots, a_n)$ is the smallest subfield of $E$ that contains $F$ and the elements $a_1, a_2, \dots, a_n$. Therefore $K = F(a_1, a_2, \dots, a_n)$ as required.
 
     \item \begin{partquestions}{\roman*}
         \item One sees that
@@ -76,26 +76,32 @@
         \end{align*}
 
         \item One sees that
-        \begin{align*}
-            &p(\sqrt2 + \sqrt3)\\
-            &= (\sqrt2 + \sqrt3)^4 - 10(\sqrt2 + \sqrt3)^2 + 1\\
-            &= \left((\sqrt2)^4 + 4(\sqrt2)^3(\sqrt3) + 6(\sqrt2)^2(\sqrt3)^2 + 4(\sqrt2)(\sqrt3)^3 + (\sqrt3)^4\right)\\
-            &\quad\quad- 10\left((\sqrt2)^2 + 2\sqrt2\sqrt3 + (\sqrt3)^2\right) + 1\\
-            &=\left(49 + 20\sqrt6\right) - 10\left(5 + 2\sqrt6\right) + 1\\
-            &= 0
-        \end{align*}
+        {
+            \fontsize{9pt}{11pt}\selectfont
+            \begin{align*}
+                &p(\sqrt2 + \sqrt3)\\
+                &= (\sqrt2 + \sqrt3)^4 - 10(\sqrt2 + \sqrt3)^2 + 1\\
+                &= \left((\sqrt2)^4 + 4(\sqrt2)^3(\sqrt3) + 6(\sqrt2)^2(\sqrt3)^2 + 4(\sqrt2)(\sqrt3)^3 + (\sqrt3)^4\right)\\
+                &\quad\quad- 10\left((\sqrt2)^2 + 2\sqrt2\sqrt3 + (\sqrt3)^2\right) + 1\\
+                &=\left(49 + 20\sqrt6\right) - 10\left(5 + 2\sqrt6\right) + 1\\
+                &= 0
+            \end{align*}
+        }
         so $\sqrt2 + \sqrt3$ is indeed a zero of $p(x)$.
 
         \item We work backwards. Since $p(x) = x^4 - 10x + 1$ is an irreducible polynomial of degree 4, therefore $\Q(\sqrt2 + \sqrt3)$ has 4 basis vectors. Therefore
-        \begin{align*}
-            &\Q(\sqrt2 + \sqrt3)\\
-            &= \{s + t(\sqrt2 + \sqrt3) + u(\sqrt2 + \sqrt3)^2 + v(\sqrt2 + \sqrt3)^3 \vert s,t,u,v \in \Q\}\\
-            &= \{(s + 5u) + (t + 11v)\sqrt2 + (t + 9v)\sqrt3 + 2u\sqrt6 \vert s, t, u, v \in \Q\}\\
-            &= \{a + b\sqrt2 + c\sqrt3 + d\sqrt6 \vert a, b, c, d \in \Q\}\\
-            &=\{(a+b\sqrt2) + (c+d\sqrt2)\sqrt3 \vert a, b, c, d \in \Q\}\\
-            &=\{u + v\sqrt3 \vert u, v \in \Q(\sqrt2)\}\\
-            &= \Q(\sqrt2)(\sqrt3)
-        \end{align*}
+        {
+            \fontsize{9pt}{11pt}\selectfont
+            \begin{align*}
+                &\Q(\sqrt2 + \sqrt3)\\
+                &= \{s + t(\sqrt2 + \sqrt3) + u(\sqrt2 + \sqrt3)^2 + v(\sqrt2 + \sqrt3)^3 \vert s,t,u,v \in \Q\}\\
+                &= \{(s + 5u) + (t + 11v)\sqrt2 + (t + 9v)\sqrt3 + 2u\sqrt6 \vert s, t, u, v \in \Q\}\\
+                &= \{a + b\sqrt2 + c\sqrt3 + d\sqrt6 \vert a, b, c, d \in \Q\}\\
+                &=\{(a+b\sqrt2) + (c+d\sqrt2)\sqrt3 \vert a, b, c, d \in \Q\}\\
+                &=\{u + v\sqrt3 \vert u, v \in \Q(\sqrt2)\}\\
+                &= \Q(\sqrt2)(\sqrt3)
+            \end{align*}
+        }
         and so $\Q(\sqrt2 + \sqrt3)$ is a splitting field of $f(x)$ over $\Q$.
     \end{partquestions}
 
@@ -111,21 +117,22 @@
 
     \item We induct on $n$.
 
-    When $n = 1$ clearly $((f(x))^1)' = (f(x))' = f'(x) = 1(f(x))^{1-1}f'(x)$.
+    When $n = 1$, one clearly sees that $((f(x))^1)' = (f(x))' = f'(x) = 1(f(x))^{1-1}f'(x)$.
 
     Assume $((f(x))^k)' = k(f(x))^{k-1}f'(x)$ for some positive integer $k$. We show that the $k+1$ case also works.
 
     Note
     \begin{align*}
-        ((f(x))^{k+1})' &= ((f(x))(f(x))^k)'\\
+        &((f(x))^{k+1})'\\
+        &= ((f(x))(f(x))^k)'\\
         &= f(x)((f(x))^k)' + f'(x)(f(x))^k\\
-        &= f(x)(k(f(x))^{k-1}f'(x)) + f'(x)(f(x))^k & (\text{by induction hypothesis})\\
+        &= f(x)(k(f(x))^{k-1}f'(x)) + f'(x)(f(x))^k & (\text{induction hypothesis})\\
         &= k(f(x))^kf'(x) + (f(x))^kf'(x)\\
         &= (k+1)(f(x))^kf'(x)
     \end{align*}
     so the $k+1$ case also holds.
 
-    Therefore by mathematical induction we have $((f(x))^n)' = n(f(x))^{n-1}f'(x)$ for all positive integers $n$.
+    Therefore we have $((f(x))^n)' = n(f(x))^{n-1}f'(x)$ for all positive integers $n$ by mathematical induction.
 
     \item If $f'(x) = 0$, we see
     \[
@@ -136,8 +143,8 @@
     \item We prove this by induction on $n$. The base case of $n = 1$ was already proven. Assume that the statement holds for some positive integer $k$, i.e. $(x+y)^{p^k} = x^{p^k} + y^{p^k}$. Note that
     \begin{align*}
         (x+y)^{p^{k+1}} &= \left((x+y)^{p^k}\right)^p\\
-        &= (x^{p^k}+y^{p^k})^p & (\text{by induction hypothesis})\\
-        &= \left(x^{p^k}\right)^p + \left(y^{p^k}\right)^p & (\text{by Freshman's Dream}, \myref{prop-freshman-dream})\\
+        &= (x^{p^k}+y^{p^k})^p & (\text{induction hypothesis})\\
+        &= \left(x^{p^k}\right)^p + \left(y^{p^k}\right)^p & (\myref{prop-freshman-dream})\\
         &= x^{p^{k+1}} + y^{p^{k+1}}
     \end{align*}
     so the statement holds for $k + 1$. Thus by mathematical induction we have proven that $(x+y)^{p^n} = x^{p^n} + y^{p^n}$.
@@ -163,12 +170,15 @@
         \end{align*}
 
         \item Given $x^4 + x^2 + 1 = (x^2 - x + 1)(x^2 + x + 1)$. The zeroes of $x^2 + x + 1$ are $\frac12 \pm \frac12\sqrt{-3}$, while the zeroes of $x^2 - x + 1$ are $-\frac12 \pm \frac12\sqrt{-3}$. Therefore the splitting field of $x^4 + x^2 + 1$ over $\Q$ is
-        \begin{align*}
-            &\Q\left(\frac12 + \frac12\sqrt{-3}, \frac12 - \frac12\sqrt{-3}, -\frac12 + \frac12\sqrt{-3}, -\frac12 - \frac12\sqrt{-3}\right)\\
-            &=\Q\left(\frac12 + \frac12\sqrt{-3}\right)\left(\frac12 - \frac12\sqrt{-3}\right)\left(-\frac12 + \frac12\sqrt{-3}\right)\left(-\frac12 - \frac12\sqrt{-3}\right)\\
-            &=\Q(\sqrt{-3})(\sqrt{-3})(\sqrt{-3})(\sqrt{-3})\\
-            &= \Q(\sqrt{-3}).
-        \end{align*}
+        {
+            \fontsize{8.75pt}{11pt}\selectfont
+            \begin{align*}
+                &\Q\left(\frac12 + \frac12\sqrt{-3}, \frac12 - \frac12\sqrt{-3}, -\frac12 + \frac12\sqrt{-3}, -\frac12 - \frac12\sqrt{-3}\right)\\
+                &=\Q\left(\frac12 + \frac12\sqrt{-3}\right)\left(\frac12 - \frac12\sqrt{-3}\right)\left(-\frac12 + \frac12\sqrt{-3}\right)\left(-\frac12 - \frac12\sqrt{-3}\right)\\
+                &=\Q(\sqrt{-3})(\sqrt{-3})(\sqrt{-3})(\sqrt{-3})\\
+                &= \Q(\sqrt{-3}).
+            \end{align*}
+        }
 
         \item The zeroes of $x^2 + 2\sqrt2x + 3$ are $\sqrt2 \pm i$ by the quadratic formula. Hence the splitting field of $x^2 + 2\sqrt2x + 3$ over $\Q(\sqrt2)$ is
         \begin{align*}
@@ -189,7 +199,7 @@
 
     \item We prove all three statements.
     \begin{partquestions}{\roman*}
-        \item Since $p(x)$ is irreducible, thus $\princ{p(x)}$ is a maximal ideal (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}). Therefore $\Z_2[x]/\princ{p(x)}$ is a field by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
+        \item Since $p(x)$ is irreducible, thus we see that $\princ{p(x)}$ is a maximal ideal (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}). Therefore $\Z_2[x]/\princ{p(x)}$ is a field by \myref{thrm-maximal-ideal-iff-quotient-ring-is-field}.
 
         \item Since $\Z_2[x]/\princ{p(x)}$ is a field, thus $\left(\Z_2[x]/\princ{p(x)}\right)^\ast$ is in fact the multiplicative group of the field.
 
@@ -219,7 +229,7 @@
 
     Now suppose $f(x)$ has no zeroes in $F$. Let $E/F$ be the splitting field of $f(x)$, and suppose $\beta \in E$ is a zero of $f(x)$. Using the above working we know that $f(x) = (x-\beta)^p$.
 
-    Now, seeking a contradiction, suppose $f(x)$ is reducible over $F$, meaning that there exist non-constant polynomials $g(x), h(x) \in F[x]$ such that $f(x) = g(x)h(x)$. In particular, we see $g(x) = (x-\beta)^n$ for some positive integer $n$ where $1 \leq n \leq p$. Expanding $g(x)$ using the Binomial Theorem (\myref{thrm-binomial}) yields
+    Now, seeking a contradiction, suppose $f(x)$ is reducible over $F$, which means that there exist non-constant $g(x), h(x) \in F[x]$ such that $f(x) = g(x)h(x)$. In particular, we see $g(x) = (x-\beta)^n$ for some positive integer $n$ where $1 \leq n \leq p$. Expanding $g(x)$ using the Binomial Theorem (\myref{thrm-binomial}) yields
     \[
         g(x) = x^n + n\beta x^{n-1} + {n\choose2}\beta^2x^{n-2} + \cdots + n\beta^{n-1}x + \beta^n \in F[x],
     \]
