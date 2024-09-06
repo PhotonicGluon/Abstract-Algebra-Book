@@ -55,7 +55,8 @@
         \item \textbf{Identity}: One sees that for any $x \in E$ we have $\id\cdot x = \id(x) = x$.
         \item \textbf{Compatibility}: Let $\sigma, \mu \in G$ and $x \in E$. Then
         \begin{align*}
-            \sigma \cdot (\mu \cdot x) &= \sigma \cdot (\mu(x))\\
+            &\sigma \cdot (\mu \cdot x)\\
+            &= \sigma \cdot (\mu(x))\\
             &= \sigma(\mu(x))\\
             &= (\sigma\circ \mu)(x) & (\text{where } \circ \text{ denotes function composition})\\
             &= (\sigma\mu) \cdot x.
@@ -82,7 +83,7 @@
 
 \subsection*{Problems}
 \begin{questions}
-    \item Recall that $\Gal{E/F}$ permutes the $n$ zeroes of the polynomial (\myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}). Thus Cayley's theorem (\myref{thrm-cayley}) tells us that $\Gal{E/F}$ is isomorphic to a permutation group; in fact it is isomorphic to a subgroup of $\Sn{n}$. Since the order of a subgroup must divide the order of the group by Lagrange's theorem (\myref{thrm-lagrange}), thus $|\Gal{E/F}|$ must divide the order of $\Sn{n}$, which is $n!$.
+    \item Recall that $\Gal{E/F}$ permutes the $n$ zeroes of the polynomial by \myref{prop-galois-field-automorphism-permutes-zeroes-of-polynomial}. Thus Cayley's theorem (\myref{thrm-cayley}) tells us that $\Gal{E/F}$ is isomorphic to a permutation group; in fact it is isomorphic to a subgroup of $\Sn{n}$. Since the order of a subgroup must divide the order of the group by Lagrange's theorem (\myref{thrm-lagrange}), thus $|\Gal{E/F}|$ must divide the order of $\Sn{n}$, which is $n!$.
 
     \item Clearly the zeroes of $x^2 + 3$ over $\R$ are $\pm\sqrt{-3} = \pm\sqrt3i$. Therefore
     \[
@@ -110,7 +111,7 @@
         \end{align*}
         So the only possible field $F$ that fits the requirements is $F = \Q(\sqrt[3]2)$.
 
-        \item Suppose $\Q(\sqrt[3]2)$ is the splitting field of some polynomial $g(x) \in \Q[x]$, which means that $g(\sqrt[3]2) = 0$ for that polynomial. By \myref{corollary-minimal-polynomial-divides-polynomial-with-same-root} we know that the minimal polynomial of $\sqrt[3]2$ must divide $g(x)$. In fact note that the minimal polynomial of $\sqrt[3]2$ is exactly $f(x) = x^3 - 2$, which means that $\Q(\sqrt[3]2)$ has to have all the zeroes of $f(x)$. However the zeroes of $f(x)$ are $\sqrt[3]2$, $\sqrt[3]2\omega$, and $\sqrt[3]2\omega^2$, of which the latter two are not in $\Q(\sqrt[3]2)$. Hence $\Q(\sqrt[3]2)$ cannot be the splitting field of any polynomial.
+        \item Suppose $\Q(\sqrt[3]2)$ is the splitting field of some $g(x) \in \Q[x]$, which means that $g(\sqrt[3]2) = 0$ for that polynomial. By \myref{corollary-minimal-polynomial-divides-polynomial-with-same-root} we know that the minimal polynomial of $\sqrt[3]2$ must divide $g(x)$. In fact note that the minimal polynomial of $\sqrt[3]2$ is exactly $f(x) = x^3 - 2$, which means that $\Q(\sqrt[3]2)$ has to have all the zeroes of $f(x)$. However the zeroes of $f(x)$ are $\sqrt[3]2$, $\sqrt[3]2\omega$, and $\sqrt[3]2\omega^2$, of which the latter two are not in $\Q(\sqrt[3]2)$. Hence $\Q(\sqrt[3]2)$ cannot be the splitting field of any polynomial.
     \end{partquestions}
 
     \item If $n < 3$ we see that $D_n$ is abelian and hence solvable. So assume that $n \geq 3$. We find a subnormal series for $D_n$ and show that it fits the requirements for a solvable series.
@@ -147,18 +148,21 @@
         Assume that the statement holds for some non-negative integer $k$, i.e. $(\cos\theta + i\sin\theta)^k = \cos(k\theta) + i\sin(k\theta)$. We show that the statement holds for $k+1$ too.
 
         Note that
-        \begin{align*}
-            &(\cos\theta + i\sin\theta)^{k+1}\\
-            &= (\cos\theta + i\sin\theta)^k(\cos\theta + i\sin\theta)\\
-            &= (\cos(k\theta) + i\sin(k\theta))(\cos\theta + i\sin\theta) & (\text{by induction hypothesis})\\
-            &= \cos(k\theta)\cos\theta + i\cos(k\theta)\sin\theta\\
-            &\quad\quad+ i\cos\theta\sin(k\theta) + i^2\sin(k\theta)\sin\theta\\
-            &= (\cos(k\theta)\cos\theta - \sin(k\theta)\sin\theta)\\
-            &\quad\quad+ i(\cos(k\theta)\sin\theta + \cos\theta\sin(k\theta))\\
-            &= \cos(k\theta+\theta) + i\sin(k\theta+\theta) & (\myref{thrm-sine-sum-rule}, \myref{thrm-cosine-sum-rule})\\
-            &= \cos((k+1)\theta) + i\sin((k+1)\theta)
-        \end{align*}
-        which proves the statement for the $k + 1$ case.
+        {
+            \fontsize{9.5pt}{11pt}\selectfont
+            \begin{align*}
+                &(\cos\theta + i\sin\theta)^{k+1}\\
+                &= (\cos\theta + i\sin\theta)^k(\cos\theta + i\sin\theta)\\
+                &= (\cos(k\theta) + i\sin(k\theta))(\cos\theta + i\sin\theta) & (\text{induction hypothesis})\\
+                &= \cos(k\theta)\cos\theta + i\cos(k\theta)\sin\theta\\
+                &\quad\quad+ i\cos\theta\sin(k\theta) + i^2\sin(k\theta)\sin\theta\\
+                &= (\cos(k\theta)\cos\theta - \sin(k\theta)\sin\theta)\\
+                &\quad\quad+ i(\cos(k\theta)\sin\theta + \cos\theta\sin(k\theta))\\
+                &= \cos(k\theta+\theta) + i\sin(k\theta+\theta)\\
+                &= \cos((k+1)\theta) + i\sin((k+1)\theta)
+            \end{align*}
+        }
+        where the penultimate equality is achieved by \myref{thrm-sine-sum-rule} and \myref{thrm-cosine-sum-rule}. This proves the statement for the $k + 1$ case.
 
         \item We show that $\omega = \cos\left(\frac{2\pi}n\right) + i\sin\left(\frac{2\pi}n\right)$ is a primitive $n$th root of unity.
 
