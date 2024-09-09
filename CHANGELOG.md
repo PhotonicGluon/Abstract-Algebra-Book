@@ -12,6 +12,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Adjusted stroke width of border around results and exercises.
 - Changed formatting of the pages of the book.
 - Added missing full stops to some of the statements and sentences.
+- Edited the front matter.
 - Added more terms to the index.
 - Amended the list of notation.
 
