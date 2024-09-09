@@ -46,6 +46,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Slightly enlarged figure 11.1.
 - Made exercise 13.4 more compact.
 - Made corollary 13.4.2 more verbose.
+- Edited the proof of lemma 14.3.2 to be slightly larger.
 - Edited exercise 14.6 to be more concise.
 - Rewritten the proof of lemma 14.3.4 to be slightly more concise.
 - Edited definition 14.3.7, splitting the parity definition away from the evenness and oddness definition.
