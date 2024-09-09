@@ -21,7 +21,10 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Cleaned up definition 1.4.1.
 - Edited problem 1.4 to be larger.
 - Made example 2.1.6 clearer.
+- Made the explanation about logical operators more concise.
 - Made exercise 2.1 more compact.
+- Expanded upon example 2.1.12 and example 2.1.13 on tautologies and contradictions.
+- Edited the statement of exercise 2.2 to be clearer.
 - Rephrased definition 2.1.10 and definition 2.1.11.
 - Removed logical equivalence of the biconditional introduced in definition 2.2.1 as logical equivalence was not yet introduced.
 - Rephrased definition 2.4.4.
