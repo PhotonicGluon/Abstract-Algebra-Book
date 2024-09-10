@@ -93,6 +93,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Rephrased definition 30.5.6.
 - Edited definition 31.5.1.
 - Edited the statement of problem 31.3.
+- Moved exercise 31.9 to before theorem 31.5.8.
 - Made definition 32.1.1 more concise.
 - Edited the proof of theorem 32.2.2.
 - Add small remark after definition 32.2.3.
