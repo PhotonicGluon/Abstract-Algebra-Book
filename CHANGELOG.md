@@ -63,6 +63,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 
 ### Part II (Rings) Changes
 - Shortened the preamble.
+- Combined example 20.2.5 and example 20.2.5 into one example.
 - Made the proof of proposition 22.3.3 more compact.
 - Shortened the statement of exercise 22.5.
 - Rephrased the remark after definition 24.1.1.
