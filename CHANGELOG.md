@@ -37,6 +37,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Slightly edited lemma 6.3.5 (Bézout).
 - Edited the statement of exercise 6.4(i).
 - Reformatted exercise 5.1.
+- Added important note on how to compute the GCD if one of the arguments is zero.
 - Made other minor changes to the text.
 
 ### Part I (Groups) Changes
