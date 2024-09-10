@@ -204,7 +204,7 @@ We now look at an example of polynomial addition and multiplication.
         &= 2x^4 + 0x^3 + 0x^2 + 0x + 2 & (\text{Coefficients are written in }\Z_3)\\
         &= 2x^4 + 2.
     \end{align*}
-    Note that there are equivalent functions to $f(x)+g(x)$ and $f(x)g(x)$. Let $A(x) = x^3$ and $B(x) = 2-x^2$. When iterating through all values in $\Z_3$, we generate the following table.
+    Note that there are equivalent functions to $f(x)+g(x)$ and $f(x)g(x)$. Let the functions $A: \Z_3 \to \Z_3$ and $B: \Z_3 \to \Z_3$ be such that $A(x) = x^3$ and $B(x) = 2-x^2$. When iterating through all values in $\Z_3$, we generate the following table.
     \begin{table}[H]
         \centering
         \begin{tabular}{|l|l|l|l|l|}
@@ -218,17 +218,8 @@ We now look at an example of polynomial addition and multiplication.
     Thus, we see that $f(x)+g(x) = A(x)$ and $f(x)g(x) = B(x)$ as functions, even though they are distinct as polynomials.
 \end{example}
 
-\begin{exercise}\label{exercise-polynomial-evaluation-is-ring-homomorphism}
-    Let $R$ be a commutative ring containing an element $a$. Let $p(x) \in R[x]$. The \term{evaluation homomorphism}\index{evaluation homomorphism} is the map $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$. Prove that $\phi_a$ is indeed a ring homomorphism.
-\end{exercise}
-\begin{exercise}\label{exercise-polynomial-multiplication-is-associative}
-    Prove that polynomial multiplication is associative.\newline
-    (\textit{Hint: $\displaystyle c_k = \sum_{i+j=k} a_ib_j$, which is the sum over all non-negative integers $i$ and $j$ with the property that $i+j=k$.})
-\end{exercise}
+We end this section by noting what form $R[x]$ takes when $x$ is not a variable.
 
-\newpage
-
-We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a variable.
 \begin{example}
     Recall that $\Q[\sqrt2] = \{a + b\sqrt2 \vert a,b \in \Q\}$. If we use the definition of $\Q[x]$, and `substitute' $x$ with $\sqrt2$, we see that
     \begin{align*}
@@ -240,6 +231,7 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     \end{align*}
     which agrees with the previous definition of $\Q[\sqrt2]$.
 \end{example}
+
 \begin{example}
     Recall that $\Z[i]$, the Gaussian integers, is the set $\{a+bi \vert a,b \in \Z\}$. If we use the definition of $\Z[x]$ and `substitute' $x$ with $i$ we see that
     \begin{align*}
@@ -250,6 +242,15 @@ We end this section by noting what form $R[x]$ takes when $x$ is \textit{not} a 
     \end{align*}
     which agrees with the previous definition of $\Z[i]$.
 \end{example}
+
+\begin{exercise}\label{exercise-polynomial-evaluation-is-ring-homomorphism}
+    Let $R$ be a commutative ring containing an element $a$. Let $p(x) \in R[x]$. The \term{evaluation homomorphism}\index{evaluation homomorphism} is the map $\phi_a: R[x] \to R$ where $\phi_a(p(x)) = p(a)$. Prove that $\phi_a$ is indeed a ring homomorphism.
+\end{exercise}
+
+\begin{exercise}\label{exercise-polynomial-multiplication-is-associative}
+    Prove that polynomial multiplication is associative.\newline
+    (\textit{Hint: $\displaystyle c_k = \sum_{i+j=k} a_ib_j$, which is the sum over all non-negative integers $i$ and $j$ with the property that $i+j=k$.})
+\end{exercise}
 
 \begin{exercise}
     Show that $\Q[\sqrt[3]{2}] = \left\{a + b\sqrt[3]{2} + c\sqrt[3]4 \vert a,b,c \in \Q\right\}$.

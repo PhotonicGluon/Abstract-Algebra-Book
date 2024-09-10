@@ -67,11 +67,17 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Combined example 20.2.5 and example 20.2.5 into one example.
 - Made the proof of proposition 22.3.3 more compact.
 - Shortened the statement of exercise 22.5.
+- Moved exercise 23.11 to before definition 23.6.5.
+- Edited definition 23.6.6 to be more precise.
 - Rephrased the remark after definition 24.1.1.
 - Shortened example 24.1.3 slightly.
 - Removed underbraces in the proof of theorem 24.2.6.
+- Renamed section 24.5.
+- Rewritten example 24.5.4 to be clearer and more concise.
 - Split definition 25.1.4 into two different definitions.
 - Cleaned up the proof of proposition 25.1.5 and proposition 25.1.6.
+- Added more detail to example 25.1.10.
+- Moved exercise 25.1 and exercise 25.2 to be after example 25.1.12.
 - Made the statement of exercise 25.4 more concise.
 - Rewritten the proof of theorem 26.3.1 (Transformation Rule).
 - Reordered the statements in proposition 27.2.4.
