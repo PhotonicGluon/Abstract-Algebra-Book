@@ -70,6 +70,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Shortened the statement of exercise 22.5.
 - Moved exercise 23.11 to before definition 23.6.5.
 - Edited definition 23.6.6 to be more precise.
+- Modified the solution of problem 23.5(a) to be more clearer.
 - Rephrased the remark after definition 24.1.1.
 - Shortened example 24.1.3 slightly.
 - Removed underbraces in the proof of theorem 24.2.6.
