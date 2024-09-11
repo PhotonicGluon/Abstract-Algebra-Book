@@ -57,6 +57,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Added a small remark after the proof of corollary 16.1.3 on the usefulness of the First Sylow Theorem.
 - Edited the proof of theorem 16.4.1 (Sylow II) to be clearer.
 - Edited the statement of theorem 17.2.3 and lemma 17.3.1.
+- Modified the solution of problem 17.1 to be slightly shorter.
 - Modified the statement of exercise 18.3.
 - Clarified the statement theorem 18.5.3 (Schreier Refinement Theorem).
 - Added missing "group" in the third option in the statement of theorem 19.5.1 (Classification Theorem)
