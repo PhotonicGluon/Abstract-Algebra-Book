@@ -12,7 +12,7 @@ COVER_PAGE_FILES = ["cover-page-background.svg", "cover-page-background.jpg"]
 COVER_FULL_FILES = ["cover-full-background.svg", "cover-full-background.png", "cover-full-background.jpg"]
 
 SCALE_FACTOR = 10
-NUM_PAGES = 775
+NUM_PAGES = 764
 
 COVER_WIDTH = 155.57 * SCALE_FACTOR  # In mm
 COVER_HEIGHT = 234.95 * SCALE_FACTOR
