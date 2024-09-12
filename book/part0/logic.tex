@@ -36,10 +36,10 @@ We may name statements using lowercase variables like $p$, $q$, $r$, etc.
 
 There are a few operations\index{logical operation} that may be carried out on statements. For the following, assume $p$ and $q$ are statements.
 \begin{itemize}
-    \item \term{Logical NOT}\index{logical operation!NOT}/\term{Negation}\index{logical operation!negation} ($\lnot$): The statement $\lnot p$ is read as ``not $p$''.
-    \item \term{Logical AND}\index{logical operation!AND}/\term{Conjunction}\index{logical operation!conjunction} ($\land$): The statement $p\land q$ is read as ``$p$ and $q$''.
-    \item \term{Logical OR}\index{logical operation!OR}/\term{Disjunction}\index{logical operation!disjunction} ($\lor$): The statement $p\lor q$ is read as ``$p$ or $q$''.
-    \item \term{Conditional}\index{logical operation!conditional}/\term{Implication}\index{logical operation!implication} ($\implies$): The statement $p \implies q$ can be read many different ways. For example,
+    \item \term{Logical NOT}\index{logical operation!NOT}/\term{Negation}\index{logical operation!negation} ($\lnot$): ``$\lnot p$'' is read as ``not $p$''.
+    \item \term{Logical AND}\index{logical operation!AND}/\term{Conjunction}\index{logical operation!conjunction} ($\land$): ``$p\land q$'' is read as ``$p$ and $q$''.
+    \item \term{Logical OR}\index{logical operation!OR}/\term{Disjunction}\index{logical operation!disjunction} ($\lor$): ``$p\lor q$'' is read as ``$p$ or $q$''.
+    \item \term{Conditional}\index{logical operation!conditional}/\term{Implication}\index{logical operation!implication} ($\implies$): ``$p \implies q$'' can be read many different ways. For example,
     \begin{itemize}
         \item $p$ implies $q$;
         \item if $p$ then $q$;
@@ -53,9 +53,9 @@ There are a few operations\index{logical operation} that may be carried out on s
 \begin{example}
     If $p$ is the statement ``3 is an odd number'' and $q$ is the statement ``4 is an odd number'', then
     \begin{itemize}
-        \item $p\land q$ is ``3 is an odd number and 4 is an odd number'', which is false;
-        \item $p\lor q$ is ``3 is an odd number or 4 is an odd number'', which is true; and
-        \item $\lnot q$ is ``4 is not an odd number'', which is true.
+        \item ``$p\land q$'' is ``3 is an odd number and 4 is an odd number'', which is false;
+        \item ``$p\lor q$'' is ``3 is an odd number or 4 is an odd number'', which is true; and
+        \item ``$\lnot q$'' is ``4 is not an odd number'', which is true.
     \end{itemize}
 \end{example}
 
@@ -65,7 +65,7 @@ When statement variables are combined using the above operators, the resulting s
 \end{definition}
 
 \begin{example}
-    The expressions $\lnot p$, $p \land q$, and $\lnot(p \land q) \lor r$ are all in statement form.
+    ``$\lnot p$'', ``$p \land q$'', and ``$\lnot(p \land q) \lor r$'' are all in statement form.
 \end{example}
 
 \begin{exercise}
@@ -83,11 +83,11 @@ We end this section by exploring statements that are always true or false.
 \end{definition}
 
 \begin{example}
-    The statement form $p \lor \lnot p$ is always true regardless of whatever statements are substituted for $p$. Thus $p \lor \lnot p$ is a tautology.
+    The statement form ``$p \lor \lnot p$'' is always true regardless of whatever statements are substituted for $p$. Thus ``$p \lor \lnot p$'' is a tautology, and we may denote it by \textbf{true}.
 \end{example}
 
 \begin{example}
-    The statement form $p \land \lnot p$ is always false regardless of whatever statements are substituted for $p$. Thus $p \land \lnot p$ is a contradiction.
+    The statement form $p \land \lnot p$ is always false regardless of whatever statements are substituted for $p$. Thus $p \land \lnot p$ is a contradiction, and we may denote it by \textbf{false}.
 \end{example}
 
 \section{Truth Tables}
@@ -100,10 +100,10 @@ We use \term{truth tables}\index{truth table} to explore the relationships betwe
         \begin{tabular}{|l|l||l|}
             \hline
             $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \land q}$ \\ \hline
-            F   & F   & F          \\ \hline
-            F   & T   & F          \\ \hline
-            T   & F   & F          \\ \hline
-            T   & T   & T          \\ \hline
+            F & F & F \\ \hline
+            F & T & F \\ \hline
+            T & F & F \\ \hline
+            T & T & T \\ \hline
         \end{tabular}
         \caption{AND}
     \end{minipage}
@@ -147,24 +147,25 @@ We motivate the truth table for the conditional by considering the statements ``
     \begin{tabular}{|l|l||l|}
         \hline
         $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p\implies q}$ \\ \hline
-        F   & F   & T             \\ \hline
-        F   & T   & T             \\ \hline
-        T   & F   & F             \\ \hline
-        T   & T   & T             \\ \hline
+        F & F & T \\ \hline
+        F & T & T \\ \hline
+        T & F & F \\ \hline
+        T & T & T \\ \hline
     \end{tabular}
     \caption{Conditional}
 \end{table}
 
 \begin{exercise}\label{exercise-negation-of-implication}
-    Let $p$ and $q$ be statements. Draw the truth table for $p \land (\lnot q)$.
+    Draw the truth table for $p \land (\lnot q)$ where $p$ and $q$ are statements.
 \end{exercise}
 
-We now introduce the idea of the \term{biconditional}\index{logical operation!biconditional}.
+We now introduce the \term{biconditional}\index{logical operation!biconditional}.
 \begin{definition}
     Let $p$ and $q$ be mathematical statements. If both $p \implies q$ and $q \implies p$ are true, then we write $p \iff q$.
 \end{definition}
+
 \begin{remark}
-    The statement $p \iff q$ can be written in several ways in English:
+    The statement $p \iff q$ can be written in several ways in English. For example,
     \begin{itemize}
         \item $p$ if and only if (iff) $q$;
         \item $p$ is a necessary and sufficient condition for $q$; or
@@ -172,15 +173,17 @@ We now introduce the idea of the \term{biconditional}\index{logical operation!bi
     \end{itemize}
 \end{remark}
 
+\newpage
+
 \begin{table}[h]
     \centering
     \begin{tabular}{|l|l||l|}
         \hline
         $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{p \iff q}$ \\ \hline
-        F   & F   & T         \\ \hline
-        F   & T   & F         \\ \hline
-        T   & F   & F         \\ \hline
-        T   & T   & T         \\ \hline
+        F & F & T \\ \hline
+        F & T & F \\ \hline
+        T & F & F \\ \hline
+        T & T & T \\ \hline
     \end{tabular}
     \caption{Biconditional}
 \end{table}
@@ -203,7 +206,9 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
 
 \section{Logical Equivalence and Properties of Logical Operators}
 \begin{definition}
-    Two statements $p$ and $q$ are \term{logically equivalent}\index{logically equivalent} if and only if they have identical truth values for each possible statement that $p$ and $q$ may take. If $p$ and $q$ are logically equivalent, we write $p \equiv q$.
+    Two statements $p$ and $q$ are \term{logically equivalent}\index{logically equivalent} if and only if they have identical truth values for each possible statement that $p$ and $q$ may take.
+
+    If $p$ and $q$ are logically equivalent, we write $p \equiv q$.
 \end{definition}
 
 \begin{example}\label{example-implication-law}
@@ -213,10 +218,10 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
         \begin{tabular}{|l|l||l||l|}
             \hline
             $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot p \lor q}$ \\ \hline
-            F   & F   & T         & T                  \\ \hline
-            F   & T   & T         & T                  \\ \hline
-            T   & F   & F         & F                  \\ \hline
-            T   & T   & F         & T                  \\ \hline
+            F & F & T & T \\ \hline
+            F & T & T & T \\ \hline
+            T & F & F & F \\ \hline
+            T & T & F & T \\ \hline
         \end{tabular}
     \end{table}
 
@@ -233,10 +238,10 @@ To disambiguate the order of operations, we use parentheses (i.e., brackets).
         \begin{tabular}{|l|l||l|l|l|l||l|}
             \hline
             $\boldsymbol{p}$ & $\boldsymbol{q}$ & $\boldsymbol{\lnot p}$ & $\boldsymbol{\lnot q}$ & $\boldsymbol{p \land q}$ & $\boldsymbol{\lnot p \land \lnot q}$ & $\boldsymbol{(p \land q) \lor (\lnot p \land \lnot q)}$ \\ \hline
-            F   & F   & T         & T         & F           & T   & T                    \\ \hline
-            F   & T   & T         & F         & F           & F   & F                    \\ \hline
-            T   & F   & F         & T         & F           & F   & F                    \\ \hline
-            T   & T   & F         & F         & T           & F   & T                    \\ \hline
+            F & F & T & T & F & T & T \\ \hline
+            F & T & T & F & F & F & F \\ \hline
+            T & F & F & T & F & F & F \\ \hline
+            T & T & F & F & T & F & T \\ \hline
         \end{tabular}
     \end{table}
     By inspection of the truth table we establish the required result.

@@ -198,8 +198,8 @@ For the following, let $R_1$ and $R_2$ be rings with additive identities $0_1$ a
     \begin{itemize}
         \item We show that $(\phi(S), +) \leq (R_2, +)$.
         \begin{itemize}
-            \item $\phi(S) \neq \emptyset$ since $\phi(0_1) = 0_2 \in \phi(S)$.
-            \item $a - b = \phi(s_a) - \phi(s_b) = \phi(s_a-s_b) \in \phi(S)$.
+            \item Note that $\phi(S) \neq \emptyset$ since $\phi(0_1) = 0_2 \in \phi(S)$.
+            \item Also note that $a - b = \phi(s_a) - \phi(s_b) = \phi(s_a-s_b) \in \phi(S)$.
         \end{itemize}
 
         \item One also sees that
@@ -287,7 +287,7 @@ Similar to group homomorphisms, ring homomorphisms too have a image and kernel.
     \]
     and the homomorphism $\phi: R \to \Z^2, \begin{pmatrix}a&b\\0&c\end{pmatrix} \mapsto (a,c)$.
 
-    We note that $\phi$ is surjective; for any $(x,y)\in\Z^2$, we see that 
+    We note that $\phi$ is surjective; for any $(x,y)\in\Z^2$, we see that
     \[
         \phi\left(\begin{pmatrix}x&0\\0&y\end{pmatrix}\right) = (x,y)
     \]
@@ -306,7 +306,7 @@ We look at some results regarding the image and kernel of a ring homomorphism. T
     Let $R_1$ and $R_2$ be rings, and let $\phi: R_1 \to R_2$ be a ring homomorphism. Then $\im\phi$ is a subring of $R_2$.
 \end{proposition}
 \begin{proof}
-    Note that $\im\phi = \phi(R_1)$ is a subring of $R_2$ by \myref{prop-homomorphism-on-subring-is-subring}.
+    \myref{prop-homomorphism-on-subring-is-subring} tells us $\im\phi = \phi(R_1)$ is a subring of $R_2$.
 \end{proof}
 
 \begin{proposition}\label{prop-kernel-is-an-ideal}
@@ -346,7 +346,7 @@ Similar to group theory, there are three main ring isomorphism theorems. However
 We include the commutativity diagram of the stated maps for clarity.
 \begin{figure}[h]
     \centering
-    \pdfteximgframed[12pt]{0.25\textwidth}{part2/images/ring-homomorphisms/ring-iso-1-commutativity.pdf_tex}
+    \pdfteximgframed[12pt]{0.3\textwidth}{part2/images/ring-homomorphisms/ring-iso-1-commutativity.pdf_tex}
     \caption{Commutativity Diagram for \myreffigures{thrm-ring-isomorphism-1}}
 \end{figure}
 
@@ -427,11 +427,7 @@ In the diagram, $\phi$ sends elements from $R$ to $\im\phi$ and $\pi$ sends elem
     \]
 \end{example}
 \begin{exercise}
-    Show that $\Z_n \cong \Z/n\Z$ by considering the ring homomorphism
-    \[
-        \phi: \Z \to \Z_n, m \mapsto m \mod n
-    \]
-    and by using the FRIT (\myref{thrm-ring-isomorphism-1}).
+    Show that $\Z_n \cong \Z/n\Z$ by considering the ring homomorphism $\phi: \Z \to \Z_n$ where $m \mapsto m \mod n$ and by using the FRIT (\myref{thrm-ring-isomorphism-1}).
 \end{exercise}
 
 We briefly mention the other two main ring isomorphism theorems, although the proof of them will be left as problems. They are much less used than the FRIT, so we make only a passing mention of them.
@@ -461,7 +457,7 @@ We briefly mention the other two main ring isomorphism theorems, although the pr
     See \myref{problem-ring-isomorphism-3} (later).
 \end{proof}
 
-\section{How Restrictive are Ring Homomorphisms?}
+\section{Restrictiveness of Ring Homomorphisms}
 Although ring homomorphisms appear to be quite general, we explore how restricted they really are when dealing with certain rings.
 
 \begin{example}\label{example-endomorphisms-of-Z}
@@ -513,18 +509,30 @@ In \myref{example-endomorphisms-of-Z} we used the fact that the only idempotents
 \begin{example}\label{example-homomorphisms-from-Z12-to-Z28}
     We find all ring homomorphisms $\phi: \Z_{12} \to \Z_{28}$. Note that $\Z_{12}$ is a ring with an identity of 1.
 
-    By \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent}, $\phi(1)$ is an idempotent, so we need to find all idempotents of $\Z_{28}$. However, we cannot just assume that 0 and 1 are the \textit{only} idempotents in $\Z_{28}$; we need to check for them exhaustively.
+    \myref{prop-homomorphism-on-multiplicative-identity-is-idempotent} tells us that $\phi(1)$ is an idempotent, so we need to find all idempotents of $\Z_{28}$. However, we cannot just assume that 0 and 1 are the \textbf{only} idempotents in $\Z_{28}$; we need to check for them exhaustively.
 
     By exhaustion, we see that $0^2 = 0$, $1^2 = 1$, $8^2 = 64 = 2 \times 28 + 8 = 8$, $21^2 = 441 = 15 \times 28 + 21 = 21$. So the idempotents in $\Z_{28}$ are 0, 1, 8, and 21. This is not enough to narrow down the possible values of $\phi(1)$, so we need to use more facts.
 
-    Recall from part I that $|\phi(1)|_+$ divides $|1|_+$ by \myref{exercise-order-of-homomorphism-divides-order}. Therefore $|\phi(1)|_+$ divides 12. Furthermore, \myref{thrm-order-of-element-in-cyclic-group} tells us that the additive order of an element $k$ in the group $(\Z_n, +)$ is $\frac{n}{\gcd(k,n)}$. So we must now exhaust all idempotents in $\Z_{28}$ to check whether it is a valid value of $\phi(1)$.
-    \begin{itemize}
-        \item $|0|_+ = 1$ which divides 12, so 0 is a valid value of $\phi(1)$.
-        \item $|1|_+ = 28$ which does not divide 12, so 1 is not a valid value of $\phi(1)$. Note that this is different from the previous example, where 1 was a possible value of $\phi(1)$.
-        \item $|8|_+ = \frac{28}{\gcd(8,28)} = \frac{28}4 = 7$ which does not divide 12, so 8 is not a valid value of $\phi(1)$.
-        \item $|21|_+ = \frac{28}{\gcd(21,28)} = \frac{28}7 = 4$ which divides 12, so 21 is a valid value of $\phi(1)$.
-    \end{itemize}
-    Hence $\phi(1) = 0$ or $\phi(1) = 21$.
+    Recall from part I that $|\phi(1)|_+$ divides $|1|_+$ by \myref{exercise-order-of-homomorphism-divides-order}. Therefore $|\phi(1)|_+$ divides 12. Furthermore, \myref{thrm-order-of-element-in-cyclic-group} tells us that the additive order of an element $k$ in the group $(\Z_n, +)$ is $\frac{n}{\gcd(k,n)}$. So we must exhaust all idempotents in $\Z_{28}$ to check whether they are valid values for $\phi(1)$.
+
+    % \begin{itemize}
+    %     \item $|0|_+ = 1$ which divides 12, so 0 is a valid value of $\phi(1)$.
+    %     \item $|1|_+ = 28$ which does not divide 12, so 1 is not a valid value of $\phi(1)$. Note that this is different from the previous example, where 1 was a possible value of $\phi(1)$.
+    %     \item $|8|_+ = \frac{28}{\gcd(8,28)} = \frac{28}4 = 7$ which does not divide 12, so 8 is not a valid value of $\phi(1)$.
+    %     \item $|21|_+ = \frac{28}{\gcd(21,28)} = \frac{28}7 = 4$ which divides 12, so 21 is a valid value of $\phi(1)$.
+    % \end{itemize}
+    % Hence $\phi(1) = 0$ or $\phi(1) = 21$.
+
+    \begin{multicols}{2}
+        \begin{itemize}
+            \item $|0|_+ = \frac{28}{\gcd(0,28)} = \frac{28}{28} = 1$
+            \item $|1|_+ = \frac{28}{\gcd(1,28)} = \frac{28}{1} = 28$
+            \item $|8|_+ = \frac{28}{\gcd(8,28)} = \frac{28}{4} = 7$
+            \item $|21|_+ = \frac{28}{\gcd(21,28)} = \frac{28}{7}= 4$
+        \end{itemize}
+    \end{multicols}
+
+    Of the four idempotents, only $|0|_+ = 1$ and $|21|_+ = 4$ divides 12, which means $\phi(1) = 0$ or $\phi(1) = 21$.
 
     If $\phi(1) = 0$, then for any $n \in \Z_{12}$,
     \begin{align*}

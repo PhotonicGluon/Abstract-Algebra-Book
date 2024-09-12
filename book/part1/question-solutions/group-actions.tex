@@ -14,18 +14,19 @@
     \end{itemize}
     Therefore $\alpha$ is a group action of $G$ on $G$.
 
-    \item Recall there are 6 permutations in $\Sn{3}$: $\id$, $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$, $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 3\end{pmatrix}$, and $\begin{pmatrix}2 & 3\end{pmatrix}$. Clearly the identity has all elements of $X$ as fixed points. It is also clear that $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$ have no fixed points since they permute all elements. For the rest, the fixed points are the missing element from the cycle notation, i.e. $\begin{pmatrix}1 & 2\end{pmatrix}$ has fixed point 3, $\begin{pmatrix}1 & 3\end{pmatrix}$ has fixed point 2, and $\begin{pmatrix}2 & 3\end{pmatrix}$ has fixed point 1.
+    \item Recall that there are 6 permutations in $\Sn{3}$, namely $\id$, $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$, $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 2\end{pmatrix}$, $\begin{pmatrix}1 & 3\end{pmatrix}$, and $\begin{pmatrix}2 & 3\end{pmatrix}$. Clearly the identity has all elements of $X$ as fixed points. It is also clear that $\begin{pmatrix}1 & 2 & 3\end{pmatrix}$ and $\begin{pmatrix}1 & 3 & 2\end{pmatrix}$ have no fixed points since they permute all elements. For the rest, the fixed points are the missing element from the cycle notation, i.e. $\begin{pmatrix}1 & 2\end{pmatrix}$ has fixed point 3, $\begin{pmatrix}1 & 3\end{pmatrix}$ has fixed point 2, and $\begin{pmatrix}2 & 3\end{pmatrix}$ has fixed point 1.
 
     \item For 1, it is $\{\id, \begin{pmatrix}2 & 3\end{pmatrix}\}$; for 2, it is $\{\id, \begin{pmatrix}1 & 3\end{pmatrix}\}$; and for 3, it is $\{\id, \begin{pmatrix}1 & 2\end{pmatrix}\}$.
 
     \item We work from the statement forwards. Note that each of these statements are ``if and only if'' statements.
     \begin{align*}
-        g \cdot x = h \cdot x &\iff g^{-1} \cdot (g \cdot x) = g^{-1} \cdot (h \cdot x)\\
-        &\iff (g^{-1}g) \cdot x = (g^{-1}h) \cdot x\\
-        &\iff e \cdot x = (g^{-1}h) \cdot x\\
-        &\iff x = (g^{-1}h) \cdot x\\
-        &\iff (g^{-1}h) \cdot x = x\\
-        &\iff g^{-1}h \in \Stab{G}{x}
+        &g \cdot x = h \cdot x\\
+        \iff& g^{-1} \cdot (g \cdot x) = g^{-1} \cdot (h \cdot x)\\
+        \iff& (g^{-1}g) \cdot x = (g^{-1}h) \cdot x\\
+        \iff& e \cdot x = (g^{-1}h) \cdot x\\
+        \iff& x = (g^{-1}h) \cdot x\\
+        \iff& (g^{-1}h) \cdot x = x\\
+        \iff& g^{-1}h \in \Stab{G}{x}
     \end{align*}
 
     \item \begin{partquestions}{\alph*}
@@ -98,12 +99,12 @@
 
     \item We note that the group in question that acts upon the bracelet is the group $D_3$. We consider Burnside's lemma (\myref{lemma-burnside}) to answer this question. There are 6 elements to consider.
     \begin{itemize}
-        \item $\boxed{e}$: The number of fixed points is the total number of colourings, $n^3$.
-        \item $\boxed{r}$: Rotating a bracelet $120^\circ$ results in all points affecting one another, so the only fixed points would be colourings of the same colour. There are $n$ such arrangements.
-        \item $\boxed{r^2}$: Similar argument as $r$ yields $n$ arrangements.
-        \item $\boxed{s}$: This `fixes' one bead and flips the other two about a line. A fixed point thus requires the two beads that flipped about the line to be of the same colour, while the third bead is allowed to be any colour. Hence there are $n^2$ possible colourings.
-        \item $\boxed{rs}$: We note that $rs$ is yet another reflection. Thus a similar argument as $s$ yields $n^2$ arrangements.
-        \item $\boxed{r^2s}$: Similar argument as $s$ yields $n^2$ arrangements.
+        \item $\boxed{e}$ The number of fixed points is the total number of colourings, $n^3$.
+        \item $\boxed{r}$ Rotating a bracelet $120^\circ$ results in all points affecting one another, so the only fixed points would be colourings of the same colour. There are $n$ such arrangements.
+        \item $\boxed{r^2}$ Similar argument as $r$ yields $n$ arrangements.
+        \item $\boxed{s}$ This `fixes' one bead and flips the other two about a line. A fixed point thus requires the two beads that flipped about the line to be of the same colour, while the third bead is allowed to be any colour. Hence there are $n^2$ possible colourings.
+        \item $\boxed{rs}$ We note that $rs$ is yet another reflection. Thus a similar argument as $s$ yields $n^2$ arrangements.
+        \item $\boxed{r^2s}$ Similar argument as $s$ yields $n^2$ arrangements.
     \end{itemize}
     Note that $|D_3| = 6$, so by Burnside's lemma,
     \[
@@ -111,7 +112,7 @@
     \]
     meaning that the total number of distinct bracelets of 3 beads with $n$ colours is $\frac16 n(n+1)(n+2)$.
 
-    \item Let $G$ be a group of order $p^2$. We note that $\CenterGrp{G} \leq G$, so by Lagrange's theorem (\myref{thrm-lagrange}) the order of $\CenterGrp{G}$ must divide the order of $G$, meaning $|\CenterGrp{G}|$ divides $p^2$. Hence $|\CenterGrp{G}|$ is 1, $p$, or $p^2$.
+    \item Let $G$ be a group of order $p^2$. We note that $\CenterGrp{G} \leq G$, so by Lagrange's theorem (\myref{thrm-lagrange}) the order of $\CenterGrp{G}$ must divide the order of $G$, meaning $|\CenterGrp{G}|$ divides $p^2$. This means that $|\CenterGrp{G}|$ is either 1, $p$, or $p^2$.
 
     We note that $|\CenterGrp{G}| \neq 1$ by \myref{example-group-with-prime-power-order-has-non-trivial-center}. If instead $|\CenterGrp{G}| = p$, note
     \[

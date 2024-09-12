@@ -101,7 +101,7 @@ We have this useful proposition to help us determine whether a field is an exten
 \end{remark}
 
 Returning back to our exploration of extension fields, the critical observation that $\R[x]/\princ{x^2+1}$ contains a `zero' of $x^2+1$ lead Leopold Kronecker to come up with a generalization of this fact in 1887. This result is often called the Fundamental Theorem of Field Theory (e.g. \cite[Theorem 20.1]{gallian_2016}, \cite[Theorem 21.5]{judson_beezer_2022}).
-\begin{theorem}[Fundamental Theorem of Field Theory]\label{thrm-fundamental-theorem-of-field-theory}\index{Fundamental Theorem of Field Theory}
+\begin{theorem}[Fundamental Theorem of Field Theory]\label{thrm-fundamental-theorem-of-field-theory}\index{Fundamental Theorem!of Field Theory}
     Let $F$ be a field and $f(x)$ be a non-constant polynomial in $F[x]$. Then there exists a field extension $E/F$ that has a zero of $f(x)$.
 \end{theorem}
 \begin{proof}
@@ -187,7 +187,7 @@ Henceforth, to simplify the notation used for elements of the extension field, w
 \end{example}
 
 \section{Splitting Fields}
-To motivate our next definition, we return back to the extension field $E = \R[x]/\princ{x^2+1}$ of $\R$.
+To motivate our next definition, we return back to the extension field $E = \R[x]/\princ{x^2+1}$ over $\R$.
 \begin{example}
     We note by the Fundamental Theorem of Field Theory (\myref{thrm-fundamental-theorem-of-field-theory}) that $\alpha = x + \princ{x^2+1}$ is a zero of the polynomial $x^2+1$ in $E$. One also sees that $-\alpha$ is also a zero of $x^2+1$, since
     \begin{align*}
@@ -582,7 +582,7 @@ Notice that in our definition we did not use the notion of a limit, unlike in a 
     One sees that $(x^3 + 2x^2 + 3x + 4)' = 3x^2 + 4x + 3$. But we also have $(x^3 + 2x^2 + 3x + 12345)' = 3x^2 + 4x + 3$. So multiple polynomials can have the same derivative.
 \end{example}
 
-Those with a background in calculus would be familiar with the following properties of the derivative. In the following, let $F$ be a field, $f(x), g(x) \in F[x]$, and $k \in F$.
+Those with a background in calculus would be familiar with the following properties of the derivative. For the following propositions, let $F$ be a field, $f(x), g(x) \in F[x]$, and $k \in F$.
 
 \begin{proposition}
     $(kf(x))' = kf'(x)$.
@@ -854,6 +854,10 @@ The fact that the Frobenius endomorphism is an automorphism for finite fields le
     The induction step done in \myref{exercise-freshman-dream} (later) proves the rest of the proposition.
 \end{proof}
 
+\begin{exercise}\label{exercise-freshman-dream}
+    Let $F$ be a field of prime characteristic $p$. Prove that $(x + y)^{p^n} = x^{p^n} + y^{p^n}$ for all $x,y \in F$ and for all positive integers $n$.
+\end{exercise}
+
 With this definition of perfect fields, we return back to exploring the zeroes of irreducible polynomials.
 
 \begin{theorem}\label{thrm-irreducible-polynomial-over-perfect-field-has-no-multiple-zeroes}
@@ -880,7 +884,7 @@ What if the irreducible polynomial has multiple zeroes in a splitting field? In 
     \[
         f(x) = \psi(f(x)) = (x-\beta)^m\psi(g(x))
     \]
-    and so the multiplicity of $\beta$ is greater than or equal to the multiplicity of $\alpha$. Interchanging $\alpha$ and $\beta$ means that the multiplicity of $\alpha$ is greater than or equal to the multiplicity of $\beta$. Hence $\alpha$ and $\beta$ have the same multiplicity.
+    and so the multiplicity of $\beta$ is greater than or equal to the multiplicity of $\alpha$. Interchanging $\alpha$ and $\beta$ means that the multiplicity of $\alpha$ is greater than or equal to the multiplicity of $\beta$. So $\alpha$ and $\beta$ have the same multiplicity.
 \end{proof}
 
 \begin{corollary}\label{corollary-factorization-of-irreducible-polynomial-over-splitting-field}
@@ -893,10 +897,6 @@ What if the irreducible polynomial has multiple zeroes in a splitting field? In 
 \begin{proof}
     Follows from \myref{thrm-zeroes-of-irreducible-over-splitting-field-have-same-multiplicity} and the factorization of any polynomial in a splitting field.
 \end{proof}
-
-\begin{exercise}\label{exercise-freshman-dream}
-    Let $F$ be a field of prime characteristic $p$. Prove that $(x + y)^{p^n} = x^{p^n} + y^{p^n}$ for all $x,y \in F$ and for all positive integers $n$.
-\end{exercise}
 
 \newpage
 
