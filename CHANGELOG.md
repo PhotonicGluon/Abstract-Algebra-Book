@@ -14,6 +14,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Added missing full stops to some of the statements and sentences.
 - Edited the front matter.
 - Added more terms to the index.
+- Updated the list of references.
 - Amended the list of notation.
 
 ### Part 0 (Preliminaries) Changes
