@@ -3,19 +3,19 @@
 All notable changes to *A Complete Introduction to Abstract Algebra* will be documented here.
 
 ---
-## [1st Edition, Build 36](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1-build.36) (IN PROGRESS)
+## [1st Edition, Build 36](https://github.com/PhotonicGluon/Abstract-Algebra-Book/compare/v1-build.35...v1-build.36)
 
 ### General Content Changes
 - Changed book margins for printing.
 - Increased head rule and line width.
 - Increased stroke width of lines in interdependence diagram.
-- Adjusted stroke width of border around results and exercises.
-- Changed formatting of the pages of the book.
+- Adjusted stroke width of the border around results and exercises.
+- Changed formatting of the book pages.
 - Added missing full stops to some of the statements and sentences.
 - Edited the front matter.
 - Added more terms to the index.
 - Updated the list of references.
-- Amended the list of notation.
+- Amended the list of notations.
 
 ### Part 0 (Preliminaries) Changes
 - Made definition 1.2.7 and definition 1.3.2 more concise.
@@ -25,14 +25,14 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Made the explanation about logical operators more concise.
 - Made exercise 2.1 more compact.
 - Expanded upon example 2.1.12 and example 2.1.13 on tautologies and contradictions.
-- Edited the statement of exercise 2.2 to be clearer.
+- Edited the statement of exercise 2.2 to be more apparent.
 - Rephrased definition 2.1.10 and definition 2.1.11.
 - Removed logical equivalence of the biconditional introduced in definition 2.2.1 as logical equivalence was not yet introduced.
 - Rephrased definition 2.4.4.
 - Made the solution to exercise 4.1(i) clearer.
 - Reduced the size of example 4.2.7.
 - Cleaned up the solution to problem 4.7(ii).
-- Edited example 5.1.5 to not use ideas of divisibility (since that would be introduced in chapter 6).
+- Edited example 5.1.5 to refrain from using ideas of divisibility (since that would be introduced in chapter 6).
 - Rephrased example 5.2.2 slightly.
 - Split definition 5.3.7 into two definitions.
 - Slightly edited lemma 6.3.5 (Bézout).
@@ -53,7 +53,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Rewritten the proof of lemma 14.3.4 to be slightly more concise.
 - Edited definition 14.3.7, splitting the parity definition away from the evenness and oddness definition.
 - Slightly rephrased exercise 15.7.
-- Added new example (example 15.4.2) before Burnside's lemma.
+- Added a new example (example 15.4.2) before Burnside's lemma.
 - Edited the proof of (the former) lemma 15.4.2 (Burnside).
 - Added a small remark after the proof of corollary 16.1.3 on the usefulness of the First Sylow Theorem.
 - Edited the proof of theorem 16.4.1 (Sylow II) to be clearer.
@@ -99,7 +99,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Moved exercise 31.9 to before theorem 31.5.8.
 - Made definition 32.1.1 more concise.
 - Edited the proof of theorem 32.2.2.
-- Add small remark after definition 32.2.3.
+- Add a small remark after definition 32.2.3.
 - Made the statement of exercise 33.3 and problem 33.1 larger.
 - Reordered the subsections in section 34.5.
 - Made minor changes to the text.
@@ -108,7 +108,7 @@ All notable changes to *A Complete Introduction to Abstract Algebra* will be doc
 - Rephrased the statement of theorem 35.6.15.
 - Slightly reformatted the proof of theorem 35.6.15.
 - Cleaned up the solution to problem 35.9(i).
-- Made axiom 36.1.8 clearer.
+- Made axiom 36.1.8 more explicit.
 - Made minor changes to the text.
 
 ### Other Changes
