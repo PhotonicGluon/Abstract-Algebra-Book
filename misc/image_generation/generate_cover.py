@@ -10,21 +10,24 @@ from tqdm import tqdm
 COVER_DIR = Path("../../book/images/cover")
 COVER_PAGE_FILES = ["cover-page-background.svg", "cover-page-background.jpg"]
 # COVER_FULL_FILES = ["cover-full-background.svg", "cover-full-background.png", "cover-full-background.jpg"]
-COVER_FULL_FILES = [ "cover-full-background.jpg"]
+COVER_FULL_FILES = ["cover-full-background.jpg"]
 
-SCALE_FACTOR = 10
 NUM_PAGES = 764
 
-COVER_WIDTH = 155.57 * SCALE_FACTOR  # In mm
-COVER_HEIGHT = 234.95 * SCALE_FACTOR
+COVER_WIDTH = 155.57  # In mm
+COVER_HEIGHT = 234.95  # In mm
 COVER_ASPECT_RATIO = COVER_HEIGHT / COVER_WIDTH
-# OUTER_MARGIN_AND_BLEED = (3.17 + 3.17) * SCALE_FACTOR
-OUTER_MARGIN_AND_BLEED = 19.05 * SCALE_FACTOR  # 19.05mm = Wrap area
-# SPINE_WIDTH = 0.0572 * NUM_PAGES * SCALE_FACTOR
-SPINE_WIDTH = 50.8 * SCALE_FACTOR
+
+OUTER_MARGIN_AND_BLEED = 19.05  # 19.05mm = Wrap area
+SPINE_WIDTH = 50.8  # In mm
+
 FULL_WIDTH = OUTER_MARGIN_AND_BLEED + COVER_WIDTH + SPINE_WIDTH + COVER_WIDTH + OUTER_MARGIN_AND_BLEED
 FULL_HEIGHT = OUTER_MARGIN_AND_BLEED + COVER_HEIGHT + OUTER_MARGIN_AND_BLEED
+
 DPI = 100
+SCALE_PX_TO_MM = 10  # Num pixels representing 1 mm
+FULL_SCALED_WIDTH = FULL_WIDTH * SCALE_PX_TO_MM
+FULL_SCALED_HEIGHT = FULL_HEIGHT * SCALE_PX_TO_MM
 
 COVER_MIN_X = -1.15
 COVER_MAX_X = 1.15
@@ -151,10 +154,10 @@ def plot_figure(width, height, filenames, x_range, y_range):
 
 # MAIN CODE
 print("Entered dimensions are:")
-print(f"- Trim width:  {COVER_WIDTH/SCALE_FACTOR:.2f}mm")
-print(f"- Trim height: {COVER_HEIGHT/SCALE_FACTOR:.2f}mm")
-print(f"- Full width:  {FULL_WIDTH/SCALE_FACTOR:.2f}mm")
-print(f"- Full height: {FULL_HEIGHT/SCALE_FACTOR:.2f}mm")
+print(f"- Trim width:  {COVER_WIDTH:.2f}mm")
+print(f"- Trim height: {COVER_HEIGHT:.2f}mm")
+print(f"- Full width:  {FULL_WIDTH:.2f}mm")
+print(f"- Full height: {FULL_HEIGHT:.2f}mm")
 
 input("Press RETURN to continue.")
 print()
@@ -164,7 +167,7 @@ print()
 # print()
 
 print("Creating full cover...")
-plot_figure(FULL_WIDTH, FULL_HEIGHT, COVER_FULL_FILES, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
+plot_figure(FULL_SCALED_WIDTH, FULL_SCALED_HEIGHT, COVER_FULL_FILES, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
 print()
 
 print("Done!")
