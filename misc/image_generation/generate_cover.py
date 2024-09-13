@@ -9,7 +9,8 @@ from tqdm import tqdm
 # CONSTANTS
 COVER_DIR = Path("../../book/images/cover")
 COVER_PAGE_FILES = ["cover-page-background.svg", "cover-page-background.jpg"]
-COVER_FULL_FILES = ["cover-full-background.svg", "cover-full-background.png", "cover-full-background.jpg"]
+# COVER_FULL_FILES = ["cover-full-background.svg", "cover-full-background.png", "cover-full-background.jpg"]
+COVER_FULL_FILES = [ "cover-full-background.jpg"]
 
 SCALE_FACTOR = 10
 NUM_PAGES = 764
@@ -39,8 +40,10 @@ PIXEL_PER_Y = COVER_RANGE_Y / COVER_HEIGHT
 MIN_Y = COVER_MIN_Y - OUTER_MARGIN_AND_BLEED * PIXEL_PER_Y
 MAX_Y = COVER_MAX_Y + OUTER_MARGIN_AND_BLEED * PIXEL_PER_Y
 
-NUM_LINES = 2500
-LINES_ALPHA = 0.125
+# NUM_LINES = 2500
+# LINES_ALPHA = 0.125
+NUM_LINES = 250
+LINES_ALPHA = 0.25
 NUM_CUSPS = 7  # Number of cusps to draw for the epicycloid
 OFFSET = 1.5 * pi / NUM_CUSPS  # Offset for the first plotted point
 # OFFSET = pi / NUM_CUSPS  # Offset for the first plotted point
