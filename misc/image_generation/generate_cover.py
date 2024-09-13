@@ -8,50 +8,59 @@ from tqdm import tqdm
 
 # CONSTANTS
 COVER_DIR = Path("../../book/images/cover")
-COVER_PAGE_FILES = ["cover-page-background.svg", "cover-page-background.jpg"]
-# COVER_PAGE_FILES = ["cover-page-background.jpg"]
+# COVER_PAGE_FILES = ["cover-page-background.svg", "cover-page-background.jpg"]
+COVER_PAGE_FILES = ["cover-page-background.jpg"]
 # COVER_FULL_FILES = ["cover-full-background.svg", "cover-full-background.png", "cover-full-background.jpg"]
 COVER_FULL_FILES = ["cover-full-background.jpg"]
 
 NUM_PAGES = 764
 
-COVER_WIDTH = 155.575  # In mm
-COVER_HEIGHT = 234.95  # In mm
-COVER_ASPECT_RATIO = COVER_HEIGHT / COVER_WIDTH
+BODY_WIDTH = 123.825  # In mm, 123.825 mm = 4.875"
+BODY_HEIGHT = 203.20  # In mm, 203.20 mm = 8"
+ASPECT_RATIO = BODY_HEIGHT / BODY_WIDTH
 
-SAFETY_MARGIN = 15.875  # In mm
-BLEED_AREA = 3.175  # In mm
-SAFETY_MARGIN_AND_BLEED = 19.05  # 19.05mm = Wrap area (from wrap edge)
-SPINE_WIDTH = 50.80  # In mm, includes the inner margin???
+SAFETY_MARGIN_BASE = 12.70  # In mm, 12.70 mm = 0.5"
+SAFETY_MARGIN_BLEED = 3.175  # In mm, 3.175 mm = 0.125"
+SAFETY_MARGIN = SAFETY_MARGIN_BASE + SAFETY_MARGIN_BLEED
 
-FULL_WIDTH = SAFETY_MARGIN_AND_BLEED + COVER_WIDTH + SPINE_WIDTH + COVER_WIDTH + SAFETY_MARGIN_AND_BLEED
-FULL_HEIGHT = SAFETY_MARGIN_AND_BLEED + COVER_HEIGHT + SAFETY_MARGIN_AND_BLEED
+TRIM_WIDTH = SAFETY_MARGIN + BODY_WIDTH + SAFETY_MARGIN  # In mm
+TRIM_HEIGHT = SAFETY_MARGIN + BODY_HEIGHT + SAFETY_MARGIN  # In mm
+
+WRAP_AREA = 19.05  # In mm, 19.05 mm = 0.75"
+SPINE_WIDTH = 50.80  # In mm, 50.80 mm = 2"
+
+FULL_WIDTH = WRAP_AREA + TRIM_WIDTH + SPINE_WIDTH + TRIM_WIDTH + WRAP_AREA
+FULL_HEIGHT = WRAP_AREA + TRIM_HEIGHT + WRAP_AREA
 
 DPI = 100
 SCALE_PX_TO_MM = 10  # Num pixels representing 1 mm
-COVER_SCALED_WIDTH = COVER_WIDTH * SCALE_PX_TO_MM
-COVER_SCALED_HEIGHT = COVER_HEIGHT * SCALE_PX_TO_MM
-FULL_SCALED_WIDTH = FULL_WIDTH * SCALE_PX_TO_MM
-FULL_SCALED_HEIGHT = FULL_HEIGHT * SCALE_PX_TO_MM
+TRIM_WIDTH_SCALED = TRIM_WIDTH * SCALE_PX_TO_MM  # In px
+TRIM_HEIGHT_SCALED = TRIM_HEIGHT * SCALE_PX_TO_MM  # In px
+FULL_WIDTH_SCALED = FULL_WIDTH * SCALE_PX_TO_MM  # In px
+FULL_HEIGHT_SCALED = FULL_HEIGHT * SCALE_PX_TO_MM  # In px
 
-COVER_MIN_X = -1.15
-COVER_MAX_X = 1.15
-COVER_RANGE_X = COVER_MAX_X - COVER_MIN_X
-PIXEL_PER_X = COVER_RANGE_X / COVER_WIDTH
-MIN_X = COVER_MIN_X - (SPINE_WIDTH + COVER_WIDTH + SAFETY_MARGIN_AND_BLEED) * PIXEL_PER_X
-MAX_X = COVER_MAX_X + SAFETY_MARGIN_AND_BLEED * PIXEL_PER_X
+BODY_MIN_X = -1
+BODY_MAX_X = 1
+BODY_RANGE_X = BODY_MAX_X - BODY_MIN_X
+PIXEL_PER_X = BODY_RANGE_X / BODY_WIDTH
+TRIM_MIN_X = BODY_MIN_X - SAFETY_MARGIN * PIXEL_PER_X
+TRIM_MAX_X = BODY_MAX_X + SAFETY_MARGIN * PIXEL_PER_X
+FULL_MIN_X = TRIM_MIN_X - (SPINE_WIDTH + TRIM_WIDTH + WRAP_AREA) * PIXEL_PER_X
+FULL_MAX_X = TRIM_MAX_X + WRAP_AREA * PIXEL_PER_X
 
-COVER_MIN_Y = COVER_MIN_X * COVER_ASPECT_RATIO
-COVER_MAX_Y = COVER_MAX_X * COVER_ASPECT_RATIO
-COVER_RANGE_Y = COVER_MAX_Y - COVER_MIN_Y
-PIXEL_PER_Y = COVER_RANGE_Y / COVER_HEIGHT
-MIN_Y = COVER_MIN_Y - SAFETY_MARGIN_AND_BLEED * PIXEL_PER_Y
-MAX_Y = COVER_MAX_Y + SAFETY_MARGIN_AND_BLEED * PIXEL_PER_Y
+BODY_MIN_Y = BODY_MIN_X * ASPECT_RATIO
+BODY_MAX_Y = BODY_MAX_X * ASPECT_RATIO
+BODY_RANGE_Y = BODY_MAX_Y - BODY_MIN_Y
+PIXEL_PER_Y = BODY_RANGE_Y / BODY_HEIGHT
+TRIM_MIN_Y = BODY_MIN_Y - SAFETY_MARGIN * PIXEL_PER_Y
+TRIM_MAX_Y = BODY_MAX_Y + SAFETY_MARGIN * PIXEL_PER_Y
+FULL_MIN_Y = TRIM_MIN_Y - WRAP_AREA * PIXEL_PER_Y
+FULL_MAX_Y = TRIM_MAX_Y + WRAP_AREA * PIXEL_PER_Y
 
-NUM_LINES = 2500
-LINES_ALPHA = 0.125
-# NUM_LINES = 250
-# LINES_ALPHA = 0.25
+# NUM_LINES = 2500
+# LINES_ALPHA = 0.125
+NUM_LINES = 250
+LINES_ALPHA = 0.25
 NUM_CUSPS = 7  # Number of cusps to draw for the epicycloid
 OFFSET = 1.5 * pi / NUM_CUSPS  # Offset for the first plotted point
 # OFFSET = pi / NUM_CUSPS  # Offset for the first plotted point
@@ -59,8 +68,8 @@ OFFSET = 1.5 * pi / NUM_CUSPS  # Offset for the first plotted point
 POLYGON_LINE_COLOUR = "white"
 POLYGON_LINE_ALPHA = 0
 POLYGON_LINE_THICKNESS = 5
-POLYGON_FILL_COLOUR = "black"
-# POLYGON_FILL_COLOUR = "white"
+# POLYGON_FILL_COLOUR = "black"
+POLYGON_FILL_COLOUR = "white"
 POLYGON_FILL_ALPHA = 0.35
 
 COLOURS = ["lightcoral", "peachpuff", "palegreen", "green", "lightblue", "blue", "orchid", "lightpink"]
@@ -137,16 +146,25 @@ def plot_figure(width, height, filenames, x_range, y_range):
     plt.axis("off")
 
     # Draw things
-    draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
-    draw_inscribed_polygon(
-        NUM_CUSPS,
-        offset=OFFSET,
-        line_colour=POLYGON_LINE_COLOUR,
-        line_alpha=POLYGON_LINE_ALPHA,
-        line_thickness=POLYGON_LINE_THICKNESS,
-        fill_colour=POLYGON_FILL_COLOUR,
-        fill_alpha=POLYGON_FILL_ALPHA,
-    )
+    # draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
+    # draw_inscribed_polygon(
+    #     NUM_CUSPS,
+    #     offset=OFFSET,
+    #     line_colour=POLYGON_LINE_COLOUR,
+    #     line_alpha=POLYGON_LINE_ALPHA,
+    #     line_thickness=POLYGON_LINE_THICKNESS,
+    #     fill_colour=POLYGON_FILL_COLOUR,
+    #     fill_alpha=POLYGON_FILL_ALPHA,
+    # )
+
+    plt.axvline(color="white")
+    plt.axhline(color="white")
+
+    plt.axvline(x=BODY_MIN_X, color="blue")
+    plt.axvline(x=BODY_MAX_X, color="blue")
+
+    plt.axhline(y=BODY_MIN_Y, color="red")
+    plt.axhline(y=BODY_MAX_Y, color="red")
 
     # Save result
     if isinstance(filenames, str):
@@ -160,20 +178,22 @@ def plot_figure(width, height, filenames, x_range, y_range):
 
 # MAIN CODE
 print("Entered dimensions are:")
-print(f"- Trim width:  {COVER_WIDTH:.2f}mm")
-print(f"- Trim height: {COVER_HEIGHT:.2f}mm")
-print(f"- Full width:  {FULL_WIDTH:.2f}mm")
-print(f"- Full height: {FULL_HEIGHT:.2f}mm")
+print(f"- Body width:  {BODY_WIDTH:.2f} mm = {BODY_WIDTH / 25.4:.2f} in")
+print(f"- Body height: {BODY_HEIGHT:.2f} mm = {BODY_HEIGHT / 25.4:.2f} in")
+print(f"- Trim width:  {TRIM_WIDTH:.2f} mm = {TRIM_WIDTH / 25.4:.2f} in")
+print(f"- Trim height: {TRIM_HEIGHT:.2f} mm = {TRIM_HEIGHT / 25.4:.2f} in")
+print(f"- Full width:  {FULL_WIDTH:.2f} mm = {FULL_WIDTH / 25.4:.2f} in")
+print(f"- Full height: {FULL_HEIGHT:.2f} mm = {FULL_HEIGHT / 25.4:.2f} in")
 
 input("Press RETURN to continue.")
 print()
 
 print("Creating eBook cover page...")
-plot_figure(COVER_SCALED_WIDTH, COVER_SCALED_HEIGHT, COVER_PAGE_FILES, (COVER_MIN_X, COVER_MAX_X), (COVER_MIN_Y, COVER_MAX_Y))
+plot_figure(TRIM_WIDTH_SCALED, TRIM_HEIGHT_SCALED, COVER_PAGE_FILES, (TRIM_MIN_X, TRIM_MAX_X), (TRIM_MIN_Y, TRIM_MAX_Y))
 print()
 
-# print("Creating full cover...")
-# plot_figure(FULL_SCALED_WIDTH, FULL_SCALED_HEIGHT, COVER_FULL_FILES, (MIN_X, MAX_X), (MIN_Y, MAX_Y))
-# print()
+print("Creating full cover...")
+plot_figure(FULL_WIDTH_SCALED, FULL_HEIGHT_SCALED, COVER_FULL_FILES, (FULL_MIN_X, FULL_MAX_X), (FULL_MIN_Y, FULL_MAX_Y))
+print()
 
 print("Done!")
