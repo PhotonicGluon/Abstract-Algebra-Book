@@ -8,10 +8,8 @@ from tqdm import tqdm
 
 # CONSTANTS
 COVER_DIR = Path("../../book/images/cover")
-# COVER_PAGE_FILES = ["cover-page-background.svg", "cover-page-background.jpg"]
-COVER_PAGE_FILES = ["cover-page-background.jpg"]
-# COVER_FULL_FILES = ["cover-full-background.svg", "cover-full-background.png", "cover-full-background.jpg"]
-COVER_FULL_FILES = ["cover-full-background.jpg"]
+COVER_PAGE_FILES = ["cover-page-background.svg", "cover-page-background.jpg"]
+COVER_FULL_FILES = ["cover-full-background.svg", "cover-full-background.png", "cover-full-background.jpg"]
 
 NUM_PAGES = 764
 
@@ -57,10 +55,8 @@ TRIM_MAX_Y = BODY_MAX_Y + SAFETY_MARGIN * PIXEL_PER_Y
 FULL_MIN_Y = TRIM_MIN_Y - WRAP_AREA * PIXEL_PER_Y
 FULL_MAX_Y = TRIM_MAX_Y + WRAP_AREA * PIXEL_PER_Y
 
-# NUM_LINES = 2500
-# LINES_ALPHA = 0.125
-NUM_LINES = 250
-LINES_ALPHA = 0.25
+NUM_LINES = 2500
+LINES_ALPHA = 0.125
 NUM_CUSPS = 7  # Number of cusps to draw for the epicycloid
 OFFSET = 1.5 * pi / NUM_CUSPS  # Offset for the first plotted point
 # OFFSET = pi / NUM_CUSPS  # Offset for the first plotted point
@@ -68,8 +64,7 @@ OFFSET = 1.5 * pi / NUM_CUSPS  # Offset for the first plotted point
 POLYGON_LINE_COLOUR = "white"
 POLYGON_LINE_ALPHA = 0
 POLYGON_LINE_THICKNESS = 5
-# POLYGON_FILL_COLOUR = "black"
-POLYGON_FILL_COLOUR = "white"
+POLYGON_FILL_COLOUR = "black"
 POLYGON_FILL_ALPHA = 0.35
 
 COLOURS = ["lightcoral", "peachpuff", "palegreen", "green", "lightblue", "blue", "orchid", "lightpink"]
@@ -146,25 +141,16 @@ def plot_figure(width, height, filenames, x_range, y_range):
     plt.axis("off")
 
     # Draw things
-    # draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
-    # draw_inscribed_polygon(
-    #     NUM_CUSPS,
-    #     offset=OFFSET,
-    #     line_colour=POLYGON_LINE_COLOUR,
-    #     line_alpha=POLYGON_LINE_ALPHA,
-    #     line_thickness=POLYGON_LINE_THICKNESS,
-    #     fill_colour=POLYGON_FILL_COLOUR,
-    #     fill_alpha=POLYGON_FILL_ALPHA,
-    # )
-
-    plt.axvline(color="white")
-    plt.axhline(color="white")
-
-    plt.axvline(x=BODY_MIN_X, color="blue")
-    plt.axvline(x=BODY_MAX_X, color="blue")
-
-    plt.axhline(y=BODY_MIN_Y, color="red")
-    plt.axhline(y=BODY_MAX_Y, color="red")
+    draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
+    draw_inscribed_polygon(
+        NUM_CUSPS,
+        offset=OFFSET,
+        line_colour=POLYGON_LINE_COLOUR,
+        line_alpha=POLYGON_LINE_ALPHA,
+        line_thickness=POLYGON_LINE_THICKNESS,
+        fill_colour=POLYGON_FILL_COLOUR,
+        fill_alpha=POLYGON_FILL_ALPHA,
+    )
 
     # Save result
     if isinstance(filenames, str):
