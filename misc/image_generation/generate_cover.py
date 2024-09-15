@@ -8,8 +8,12 @@ from tqdm import tqdm
 
 # CONSTANTS
 COVER_DIR = Path("../../book/images/cover")
-COVER_PAGE_FILES = ["cover-page-background.svg", "cover-page-background.jpg"]
-COVER_FULL_FILES = ["cover-full-background.svg", "cover-full-background.png", "cover-full-background.jpg"]
+COVER_PAGE_FILES = ["front-only/cover-page-background.svg", "front-only/cover-page-background.jpg"]
+COVER_FULL_FILES = [
+    "full/cover-full-background.svg",
+    "full/cover-full-background.png",
+    "full/cover-full-background.jpg",
+]
 
 NUM_PAGES = 764
 
