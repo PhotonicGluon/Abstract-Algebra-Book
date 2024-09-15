@@ -194,8 +194,8 @@
     prefoothook={\vspace{5pt}},
     mdframed={
         linewidth=0.75pt,
-        skipabove=2.8pt,  % Space between top of block and beginning of frame
-        skipbelow=2.8pt,  % Space between bottom of block and beginning of frame
+        skipabove=2.8pt,   % Space between top of block and beginning of frame
+        skipbelow=2.8pt,   % Space between bottom of block and beginning of frame
         usetwoside=false,  % Needed for `leftmargin` and `rightmargin` to work
         leftmargin=-5pt,
         rightmargin=-5pt,
@@ -325,9 +325,15 @@
     pdfborder={0 0 0}
 }
 
-\hyperrefcolour{link}{0077b3}
-\hyperrefcolour{cite}{37992e}
-\hyperrefcolour{url}{990099}
+\Ifstr{\isebook}{true}{
+    \hyperrefcolour{link}{0077b3}
+    \hyperrefcolour{cite}{37992e}
+    \hyperrefcolour{url}{990099}
+}{
+    \hyperrefcolour{link}{000000}
+    \hyperrefcolour{cite}{000000}
+    \hyperrefcolour{url}{000000}
+}
 
 \makeatother
 
