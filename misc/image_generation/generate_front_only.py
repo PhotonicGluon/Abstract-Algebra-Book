@@ -7,57 +7,29 @@ import matplotlib.pyplot as plt
 from tqdm import tqdm
 
 # CONSTANTS
-COVER_DIR = Path("../../book/images/cover")
-COVER_PAGE_FILES = ["front-only/cover-page-background.svg", "front-only/cover-page-background.jpg"]
-COVER_FULL_FILES = [
-    "full/cover-full-background.svg",
-    "full/cover-full-background.png",
-    "full/cover-full-background.jpg",
-]
+COVER_DIR = Path("../../book/images/cover/front-only")
+COVER_FILES = ["cover-page-background.svg", "cover-page-background.jpg"]
 
-NUM_PAGES = 764
+NUM_PAGES = 763
 
-BODY_WIDTH = 123.825  # In mm, 123.825 mm = 4.875"
-BODY_HEIGHT = 203.20  # In mm, 203.20 mm = 8"
-ASPECT_RATIO = BODY_HEIGHT / BODY_WIDTH
-
-SAFETY_MARGIN_BASE = 12.70  # In mm, 12.70 mm = 0.5"
-SAFETY_MARGIN_BLEED = 3.175  # In mm, 3.175 mm = 0.125"
-SAFETY_MARGIN = SAFETY_MARGIN_BASE + SAFETY_MARGIN_BLEED
-
-TRIM_WIDTH = SAFETY_MARGIN + BODY_WIDTH + SAFETY_MARGIN  # In mm
-TRIM_HEIGHT = SAFETY_MARGIN + BODY_HEIGHT + SAFETY_MARGIN  # In mm
-
-WRAP_AREA = 19.05  # In mm, 19.05 mm = 0.75"
-SPINE_WIDTH = 50.80  # In mm, 50.80 mm = 2"
-
-FULL_WIDTH = WRAP_AREA + TRIM_WIDTH + SPINE_WIDTH + TRIM_WIDTH + WRAP_AREA
-FULL_HEIGHT = WRAP_AREA + TRIM_HEIGHT + WRAP_AREA
+TRIM_WIDTH = 152.40  # In mm, 152.40 mm = 6"
+TRIM_HEIGHT = 228.60  # In mm, 228.60 mm = 9"
+ASPECT_RATIO = TRIM_HEIGHT / TRIM_WIDTH
 
 DPI = 100
 SCALE_PX_TO_MM = 10  # Num pixels representing 1 mm
 TRIM_WIDTH_SCALED = TRIM_WIDTH * SCALE_PX_TO_MM  # In px
 TRIM_HEIGHT_SCALED = TRIM_HEIGHT * SCALE_PX_TO_MM  # In px
-FULL_WIDTH_SCALED = FULL_WIDTH * SCALE_PX_TO_MM  # In px
-FULL_HEIGHT_SCALED = FULL_HEIGHT * SCALE_PX_TO_MM  # In px
 
-BODY_MIN_X = -1
-BODY_MAX_X = 1
-BODY_RANGE_X = BODY_MAX_X - BODY_MIN_X
-PIXEL_PER_X = BODY_RANGE_X / BODY_WIDTH
-TRIM_MIN_X = BODY_MIN_X - SAFETY_MARGIN * PIXEL_PER_X
-TRIM_MAX_X = BODY_MAX_X + SAFETY_MARGIN * PIXEL_PER_X
-FULL_MIN_X = TRIM_MIN_X - (SPINE_WIDTH + TRIM_WIDTH + WRAP_AREA) * PIXEL_PER_X
-FULL_MAX_X = TRIM_MAX_X + WRAP_AREA * PIXEL_PER_X
+TRIM_MIN_X = -1.25
+TRIM_MAX_X = 1.25
+TRIM_RANGE_X = TRIM_MAX_X - TRIM_MIN_X
+PIXEL_PER_X = TRIM_RANGE_X / TRIM_WIDTH
 
-BODY_MIN_Y = BODY_MIN_X * ASPECT_RATIO
-BODY_MAX_Y = BODY_MAX_X * ASPECT_RATIO
-BODY_RANGE_Y = BODY_MAX_Y - BODY_MIN_Y
-PIXEL_PER_Y = BODY_RANGE_Y / BODY_HEIGHT
-TRIM_MIN_Y = BODY_MIN_Y - SAFETY_MARGIN * PIXEL_PER_Y
-TRIM_MAX_Y = BODY_MAX_Y + SAFETY_MARGIN * PIXEL_PER_Y
-FULL_MIN_Y = TRIM_MIN_Y - WRAP_AREA * PIXEL_PER_Y
-FULL_MAX_Y = TRIM_MAX_Y + WRAP_AREA * PIXEL_PER_Y
+TRIM_MIN_Y = TRIM_MIN_X * ASPECT_RATIO
+TRIM_MAX_Y = TRIM_MAX_X * ASPECT_RATIO
+TRIM_RANGE_Y = TRIM_MAX_Y - TRIM_MIN_Y
+PIXEL_PER_Y = TRIM_RANGE_Y / TRIM_HEIGHT
 
 NUM_LINES = 2500
 LINES_ALPHA = 0.125
@@ -167,23 +139,8 @@ def plot_figure(width, height, filenames, x_range, y_range):
 
 
 # MAIN CODE
-print("Entered dimensions are:")
-print(f"- Body width:  {BODY_WIDTH:.2f} mm = {BODY_WIDTH / 25.4:.2f} in")
-print(f"- Body height: {BODY_HEIGHT:.2f} mm = {BODY_HEIGHT / 25.4:.2f} in")
-print(f"- Trim width:  {TRIM_WIDTH:.2f} mm = {TRIM_WIDTH / 25.4:.2f} in")
-print(f"- Trim height: {TRIM_HEIGHT:.2f} mm = {TRIM_HEIGHT / 25.4:.2f} in")
-print(f"- Full width:  {FULL_WIDTH:.2f} mm = {FULL_WIDTH / 25.4:.2f} in")
-print(f"- Full height: {FULL_HEIGHT:.2f} mm = {FULL_HEIGHT / 25.4:.2f} in")
-
-input("Press RETURN to continue.")
-print()
-
-print("Creating eBook cover page...")
-plot_figure(TRIM_WIDTH_SCALED, TRIM_HEIGHT_SCALED, COVER_PAGE_FILES, (TRIM_MIN_X, TRIM_MAX_X), (TRIM_MIN_Y, TRIM_MAX_Y))
-print()
-
-print("Creating full cover...")
-plot_figure(FULL_WIDTH_SCALED, FULL_HEIGHT_SCALED, COVER_FULL_FILES, (FULL_MIN_X, FULL_MAX_X), (FULL_MIN_Y, FULL_MAX_Y))
+print("Creating front-only page...")
+plot_figure(TRIM_WIDTH_SCALED, TRIM_HEIGHT_SCALED, COVER_FILES, (TRIM_MIN_X, TRIM_MAX_X), (TRIM_MIN_Y, TRIM_MAX_Y))
 print()
 
 print("Done!")
