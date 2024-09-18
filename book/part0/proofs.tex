@@ -160,13 +160,13 @@ Usually, when writing a proof by contradiction, we would like to inform the read
 \begin{example}\label{example-sqrt2-is-irrational}
     We present the classic proof by contradiction for the statement ``$\sqrt 2$ is irrational''.
     \begin{proof}
-        By way of contradiction, assume that $\sqrt2 = \frac ab$ for some integers $a$ and $b$. Furthermore let this fraction be fully reduced; in particular, this means that $a$ and $b$ are not both even. Squaring both sides yields $2 = \frac{a^2}{b^2}$, meaning  $a^2 = 2b^2$. Hence $a^2$ is even, so write $a = 2c$ where $c$ is an integer. This leads to $2b^2 = (2c)^2 = 4c^2$ which implies $b^2 = 2c^2$. Hence $b$ is even, which contradicts the fact that $a$ and $b$ are not both even.
+        By way of contradiction, assume that $\sqrt2 = \frac ab$ for some integers $a$ and $b \neq 0$. Furthermore let this fraction be fully reduced; in particular, this means that $a$ and $b$ are not both even. Squaring both sides yields $2 = \frac{a^2}{b^2}$, meaning  $a^2 = 2b^2$. Hence $a^2$ is even, so write $a = 2c$ where $c$ is an integer. This leads to $2b^2 = (2c)^2 = 4c^2$ which implies $b^2 = 2c^2$. Hence $b$ is even, which contradicts the fact that $a$ and $b$ are not both even.
 
         Hence, $\sqrt 2$ is irrational.
     \end{proof}
 \end{example}
 \begin{remark}
-    It is not necessary to have the final statement that ``$\sqrt 2$ is irrational'' (or, more generally, ``$P$ is true'') as it is implied from the proof by contradiction.
+    It is not necessary to have the final statement that ``$\sqrt 2$ is irrational'' (or, more generally, ``$p$ is true'') as it is implied from the proof by contradiction.
 \end{remark}
 
 \begin{example}
@@ -182,7 +182,7 @@ Usually, when writing a proof by contradiction, we would like to inform the read
     \end{proof}
 \end{example}
 \begin{remark}
-    A direct proof would be easier. We provide a direct proof of it below.
+    A direct proof would be easier. We provide a direct proof of the claim below.
     \begin{proof}
         Since $x$ is a positive rational number write $x = \frac pq$ where $p$ and $q$ are positive integers. Then set $y = \frac{p}{q+1}$. Clearly $\frac{p}{q+1} < \frac{p}{q} = x$ and $\frac{p}{q+1}$ is positive, hence we have found a $y$ such that $y < x$.
     \end{proof}
@@ -197,16 +197,16 @@ We now look at a proof by contradiction for conditional statements. Recall that 
 \begin{example}
     Suppose $a$ and $b$ are real numbers. We prove the statement ``if $a$ is rational and $ab$ is irrational then $b$ is irrational'' using a proof by contradiction.
 
-    We note that the statement we want to contradict is ``$a$ is rational and $ab$ is irrational \textbf{and} $b$ is \textbf{not} irrational'', i.e. ``$a$ is rational and $b$ is rational and $ab$ is irrational''.
+    We note that the statement we want to contradict is ``($a$ is rational and $ab$ is irrational) \textbf{and} ($b$ is \textbf{not} irrational)'', i.e. ``$a$ is rational and $b$ is rational and $ab$ is irrational''.
     \begin{proof}
-        By way of contradiction assume $a$ is rational, $b$ is rational, and $ab$ is irrational. We may then write $a = \frac mn$ and $b = \frac pq$ where $m, n, p, q \in \Z$ where $n, q \neq 0$. Hence $ab = \left(\frac mn\right)\left(\frac pq\right) = \frac{mp}{nq}$ which is clearly rational. Therefore we have that $ab$ is irrational (by assumption) and $ab$ is rational, a contradiction.
+        By way of contradiction assume $a$ is rational, $b$ is rational, and $ab$ is irrational. We may then write $a = \frac mn$ and $b = \frac pq$ where $m, n, p, q \in \Z$ where $n, q \neq 0$. Hence $ab = \left(\frac mn\right)\left(\frac pq\right) = \frac{mp}{nq}$ which is clearly rational. Therefore we have that $ab$ is irrational (by assumption) and $ab$ is rational (by above working), a contradiction.
     \end{proof}
 \end{example}
 
 \begin{example}
     Suppose $a$, $b$, and $c$ are integers. We prove the statement that ``if $a^2 + b^2 = c^2$ then at least one of $a$ or $b$ is even'' using a proof by contradiction.
 
-    We note that the statement we want to contradict is ``$a^2 + b^2 = c^2$ \textbf{and not} (at least one of $a$ or $b$ is even)'', i.e. ``$a^2 + b^2 = c^2$ \textbf{and} both $a$ and $b$ are odd''.
+    We note that the statement we want to contradict is ``($a^2 + b^2 = c^2$) \textbf{and not} (at least one of $a$ or $b$ is even)'', i.e. ``$a^2 + b^2 = c^2$ \textbf{and} both $a$ and $b$ are odd''.
     \begin{proof}
         Seeking a contradiction, assume that $a^2 + b^2 = c^2$ and both $a$ and $b$ are odd. Thus we may write $a = 2m + 1$ and $b = 2n + 1$ where $m$ and $n$ are integers. Hence
         \begin{align*}
@@ -256,7 +256,7 @@ The base case does not necessarily need to begin with $n = 1$. Sometimes we may 
 In summary, mathematical induction involves two steps.
 \begin{itemize}
     \item \textbf{Base Case}: Prove the statement for the initial value.
-    \item \textbf{Induction Step}: Prove that for every $n$, if the statement holds for $n$, then it holds for $n + 1$.
+    \item \textbf{Induction Step}: Prove that for every $n$ that is at least the initial value, if the statement holds for $n$, then it holds for $n + 1$.
 \end{itemize}
 
 \begin{example}
@@ -302,7 +302,7 @@ In summary, mathematical induction involves two steps.
             (1+x)^k(1+x) &\geq (1+kx)(1+x) & (\text{since }1+x > 0)\\
             (1+x)^{k+1} &\geq 1 + x + kx + kx^2\\
             &= 1+(k+1)x + kx^2\\
-            &> 1+(k+1)x
+            &> 1+(k+1)x. & (\text{since } kx^2 > 0)
         \end{align*}
         Hence we see $(1+x)^{k+1} \geq 1+(k+1)x$, meaning that the statement is true for $k+1$.
 
@@ -318,8 +318,8 @@ We now look at another form of mathematical induction, called \term{strong induc
 
 Strong mathematical induction involves two steps.
 \begin{itemize}
-    \item \textbf{Base Cases}: Prove the statement for the initial values.
-    \item \textbf{Induction Step}: Prove that for every $n$, if the statement holds for all (positive) integers $m$ that are at most $n$, then it holds for $n + 1$.
+    \item \textbf{Base Cases}: Prove the statement for the initial values, say the integers $N_1, N_2, \dots, N_k$, where $N_1 < N_2 < \cdots < N_k$.
+    \item \textbf{Induction Step}: Prove that for every $n \geq N_k$, if the statement holds for all (positive) integers $m$ that are at most $n$, then it holds for $n + 1$.
 \end{itemize}
 
 \begin{example}
@@ -369,7 +369,7 @@ Recall that a biconditional statement is a statement like ``$P \iff Q$'', i.e., 
     \begin{proof}
         We prove the forward direction ($n$ is even implies $n^2$ is even) first by using direct proof. Assume that $n$ is even. Then we may write $n = 2k$ where $k$ is an integer. Hence $n^2 = (2k)^2 = 4k^2 = 2(2k^2)$ which is even.
 
-        We now prove the reverse direction ($n^2$ is even implies $n$ is even) via a proof by contrapositive. Suppose $n$ is \textbf{not} even, meaning $n$ is odd. Hence $n = 2k + 1$ where $k$ is an integer. Observe $n^2 = (2k+1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$ which is odd.
+        We now prove the reverse direction ($n^2$ is even implies $n$ is even) via a contrapositive proof. Suppose $n$ is not even, meaning $n$ is odd. Hence $n = 2k + 1$ where $k$ is an integer. Observe $n^2 = (2k+1)^2 = 4k^2 + 4k + 1 = 2(2k^2 + 2k) + 1$ which is odd.
     \end{proof}
 \end{example}
 
