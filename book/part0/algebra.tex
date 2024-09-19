@@ -5,16 +5,16 @@ Competent algebraic manipulation in the real numbers is assumed. We collect a fe
 Operations in the real numbers are essential when we want to perform algebraic manipulations. We formally state some of their properties here. We note that these properties are really hard to prove directly since they are so ingrained in calculation; although a proof exists, it is too hard to reproduce them here. Thus we leave these properties as axioms: statements that are assumed to be true.
 
 We first look at two important properties of addition over the real numbers.
-\begin{axiom}\label{axiom-addition-is-commutative}\index{axiom!arithmetic!commutative addition}
-    Addition is commutative. That is, for any $x, y \in \R$ we have $x + y = y + x$.
+\begin{axiom}[Commutativity of Addition]\label{axiom-addition-is-commutative}\index{axiom!arithmetic!commutative addition}
+    For any $x, y \in \R$ we have $x + y = y + x$.
 \end{axiom}
 
 \begin{example}
     Clearly adding 3 to 4 (i.e., $3 + 4$) is the same as adding 4 to 3 (i.e., $4 + 3$) through our everyday intuition of adding numbers together.
 \end{example}
 
-\begin{axiom}\label{axiom-addition-is-associative}\index{axiom!arithmetic!associative addition}
-    Addition is associative. That is, for any $x, y, z \in \R$ we have $x+(y+z) = (x+y)+z$.
+\begin{axiom}[Associativity of Addition]\label{axiom-addition-is-associative}\index{axiom!arithmetic!associative addition}
+    For any $x, y, z \in \R$ we have $x+(y+z) = (x+y)+z$.
 \end{axiom}
 
 \begin{example}
@@ -40,8 +40,8 @@ Combining the two axioms for addition gives us multiple ways to evaluate express
 
 Let's look at two properties of multiplication over the real numbers.
 
-\begin{axiom}\label{axiom-multiplication-is-commutative}\index{axiom!arithmetic!commutative multiplication}
-    Multiplication is commutative. That is, for any $x, y \in \R$ we have $x \times y = y \times x$.
+\begin{axiom}[Commutativity of Multiplication]\label{axiom-multiplication-is-commutative}\index{axiom!arithmetic!commutative multiplication}
+    For any $x, y \in \R$ we have $x \times y = y \times x$.
 \end{axiom}
 \begin{remark}
     We may also denote multiplication using the centred dot ($\cdot$), or suppress the operator. That is, $x\times y = x\cdot y = xy$.
@@ -51,8 +51,8 @@ Let's look at two properties of multiplication over the real numbers.
     Clearly multiplying 3 by 4 (i.e., $3 \times 4$) is the same as multiplying 4 by 3 (i.e., $4 \times 3$) through our everyday intuition of adding numbers together.
 \end{example}
 
-\begin{axiom}\label{axiom-multiplication-is-associative}\index{axiom!arithmetic!associative multiplication}
-    Multiplication is associative. That is, for any $x, y, z \in \R$ we have $x\times(y\times z) = (x\times y)\times z$.
+\begin{axiom}[Associativity of Multiplication]\label{axiom-multiplication-is-associative}\index{axiom!arithmetic!associative multiplication}
+    For any $x, y, z \in \R$ we have $x\times(y\times z) = (x\times y)\times z$.
 \end{axiom}
 
 \begin{example}
@@ -78,8 +78,8 @@ Again, using the two axioms for multiplication gives us several ways to evaluate
 
 We also note one property of combining addition and multiplication together.
 
-\begin{axiom}\label{axiom-distributivity}\index{axiom!arithmetic!distributivity}
-    Multiplication distributes over addition. That is, for any $x, y, z \in \R$, we have
+\begin{axiom}[Distributivity of Multiplication Over Addition]\label{axiom-distributivity}\index{axiom!arithmetic!distributivity}
+    For any $x, y, z \in \R$, we have
     \begin{itemize}
         \item $x\times(y+z) = (x\times y) + (x\times z)$; and
         \item $(x+y)\times z = (x\times z) + (y\times z)$.
@@ -109,7 +109,7 @@ We also note one property of combining addition and multiplication together.
 \end{example}
 
 We end this section by noting an axiom regarding the multiplicative inverse of a non-zero real number.
-\begin{axiom}\label{axiom-reciprocal}\index{axiom!arithmetic!reciprocal}
+\begin{axiom}[Multiplicative Inverse]\label{axiom-reciprocal}\index{axiom!arithmetic!reciprocal}
     Every non-zero real number $x$ has a multiplicative inverse, called the \term{reciprocal}\index{reciprocal} of $x$ and denoted $\frac1x$, in the real numbers such that $x\left(\frac1x\right) = \left(\frac1x\right)x = 1$.
 \end{axiom}
 
@@ -373,11 +373,10 @@ Sometimes we are forced to expand expressions such as $(x-1)^5$, $(3x^2 + 5)^4$,
     \]
     where
     \[
-        {n \choose k} = \frac{n!}{k!(n-k)!}.
+        {n \choose k} = \frac{n!}{k!(n-k)!}
     \]
+    is read as ``$n$ choose $k$'' and is known as the \term{binomial coefficient}\index{binomial coefficient}.
 \end{theorem}
-
-We note that ${n \choose k}$ is read as ``$n$ choose $k$'' and is known as the \term{binomial coefficient}\index{binomial coefficient}.
 
 \begin{example}
     $(x+1)^4 = x^4 + 4x^3 + 6x^2 + 4x + 1$.
@@ -395,9 +394,11 @@ We note that ${n \choose k}$ is read as ``$n$ choose $k$'' and is known as the \
     Find the coefficient of $x^7$ in $(7x-3)^9$.
 \end{exercise}
 
+\pagebreak
+
 We note two facts about the binomial coefficient here.
 \begin{proposition}
-    ${n\choose k} = {n\choose {k-n}}$ for all integers $0 \leq k \leq n$.
+    ${n\choose k} = {n\choose {n-k}}$ for all integers $0 \leq k \leq n$.
 \end{proposition}
 \begin{proof}
     One sees clearly that
@@ -405,7 +406,7 @@ We note two facts about the binomial coefficient here.
         {n\choose k} &= \frac{n!}{k!(n-k)!}\\
         &= \frac{n!}{(n-k)!k!}\\
         &= \frac{n!}{(n-k)!(n-(n-k))!}\\
-        &= {n\choose {k-n}}
+        &= {n\choose {n-k}}
     \end{align*}
     which proves this proposition.
 \end{proof}
