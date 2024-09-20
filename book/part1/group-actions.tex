@@ -1,5 +1,5 @@
 \chapter{Group Actions}
-A group action is a representation of the elements of a group as symmetries of a set. Many groups have a `natural' group action coming from their construction. For example, the dihedral group of order 6, $D_3$, acts on the vertices of an equilateral triangle naturally because the group is, by definition, given as a set of symmetries of the equilateral triangle. A group action of a group on a set is a generalization of this idea, which can be used to derive useful facts about the group and the set it acts on.
+A group defines how each element of the group acts on the elements of the set such that the structure of the set is preserved. Many groups have a `natural' group action coming from their construction. For example, the dihedral group $D_3$ acts on the vertices of an equilateral triangle naturally because the group is, by definition, given as a set of symmetries of the equilateral triangle. Group actions generalize this idea, which can be used to derive useful facts about the group and the set it acts on.
 
 \section{Definition and Examples}
 \begin{definition}\label{definition-group-action}
@@ -29,15 +29,15 @@ Often the function $\alpha(g, x)$ is often written as $g \cdot x$ instead. Note 
 \end{example}
 
 \begin{example}
-    Let $G$ be any group and the function $\alpha: G\times G \to G$ be defined such that $\alpha(g, x) = gx$. We show that $\alpha$ is a group action of $G$ on $G$.
+    Let $G$ be a group and the function $\alpha: G\times G \to G$ be such that $\alpha(g, x) = gx$. We show that $\alpha$ is a group action of $G$ on $G$.
     \begin{itemize}
-        \item \textbf{Identity}: $e\cdot x = ex = x$.
-        \item \textbf{Compatibility}: $g \cdot (h\cdot x) = g \cdot (hx) = ghx = (gh)x = (gh) \cdot x$.
+        \item \textbf{Identity}: $e\cdot x = ex = x$ for any $x \in G$.
+        \item \textbf{Compatibility}: $g \cdot (h\cdot x) = g \cdot (hx) = ghx = (gh)x = (gh) \cdot x$ for any $g, h, x \in G$.
     \end{itemize}
 \end{example}
 
 \begin{exercise}\label{exercise-conjugacy-is-group-action}
-    Let $G$ be a group. Let the function $\alpha: G\times G \to G$ be defined such that $\alpha(g, x) = gxg^{-1}$. Show that $\alpha$ is a group action of $G$ on $G$.
+    Let $G$ be a group. Let the function $\alpha: G\times G \to G$ be such that $\alpha(g, x) = gxg^{-1}$. Show that $\alpha$ is a group action of $G$ on $G$.
 \end{exercise}
 
 We note that there is an equivalent definition of a group action of $G$ on $X$.
@@ -51,7 +51,7 @@ We note that there is an equivalent definition of a group action of $G$ on $X$.
     What this theorem also shows is that a group action $\alpha$ induces a group homomorphism $\phi: G \to \Sym{X}$. In addition, if $X$ is finite with $n$ elements, a homomorphism $\phi: G \to \Sn{n}$ exists (since $\Sym{X} \cong \Sn{n}$ by \myref{corollary-symmetric-group-of-finite-order}).
 \end{remark}
 
-This theorem is useful because it may sometimes be useful to use \myref{definition-group-action-alt} in place of \myref{definition-group-action}, especially when we are working with permutations and bijections. However, \myref{definition-group-action} is the standard definition that we will use most of the time.
+This theorem is useful because it may sometimes be more appropriate to use \myref{definition-group-action-alt} in place of \myref{definition-group-action}, especially when we are working with permutations and bijections. However, \myref{definition-group-action} is the standard definition that we will use most of the time as this definition concisely captures the idea that elements in the transformation group act on the set.
 
 \begin{proofsketch}
     First assume \myref{definition-group-action} is true and prove \myref{definition-group-action-alt} is true as well. Then assume \myref{definition-group-action-alt} is true and show that \myref{definition-group-action} holds as well. Finally, show that the processes that converts between definitions is reversible, which thus means that the definitions are equivalent.
@@ -137,7 +137,7 @@ We first look at the definition of a fixed point in relation to group actions.
     Consider the group $G = \{e, g\}$ (where $g^2 = e$) and the set $X = \Z$. Let $G$ act on $X$ by $e\cdot x = x$ and $g\cdot x = -x$. We find the fixed points of every element in $G$.
     \begin{itemize}
         \item For $e$, every element in $X$ is a fixed point of it.
-        \item For any other element, 0 is the only fixed point since $g\cdot 0 = -0 = 0$ for any $g \neq e$.
+        \item For any other element $g \in G$, 0 is the only fixed point since $g\cdot 0 = -0 = 0$ for any $g \neq e$.
     \end{itemize}
 \end{example}
 
@@ -585,7 +585,7 @@ To end this chapter, we prove Cauchy's Group Theorem.
 \begin{problem}
     Let $G = D_5$, the dihedral group of order 10.
     \begin{partquestions}{\roman*}
-        \item What are the possible orders of a non-trivial proper subgroup of $G$?
+        \item What is/are the possible order(s) of a non-trivial proper subgroup of $G$?
         \item For each of the possible order(s) identified in \textbf{(i)}, find such a subgroup.
     \end{partquestions}
 \end{problem}
