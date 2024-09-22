@@ -7,7 +7,7 @@ Finite fields appear in many applications of algebra (like in the NTRU cryptosys
 The most surprising and important result regarding finite fields is that there is a unique finite field (up to isomorphism) of order $p^n$ where $p$ is a prime. The existence of such a field was given by Galois and Gauss in the early 19th century, but it took until Dedekind in 1857 and Jordan in 1870 to produce a rigorous proof of the existence of such fields. The uniqueness of such a field was proved by Eliakim Hastings Moore in 1893. We state his theorem below.
 
 \begin{theorem}\label{thrm-finite-field-is-unique}
-    For each prime $p$ and every positive integer $n$, there exists a finite field of order $p^n$. Furthermore any field of order $p^n$ is isomorphic to the splitting field of $x^{p^n} - x$ over $\Z_p$.
+    For every prime $p$ and every positive integer $n$, there exists a finite field of order $p^n$. Furthermore any field of order $p^n$ is isomorphic to the splitting field of $x^{p^n} - x$ over $\Z_p$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 22.1]{gallian_2016}} and {\cite[Theorem 22.6]{judson_beezer_2022}})]
     Let the polynomial $f(x) = x^{p^n} - x$ and let $F$ be the splitting field of $f(x)$ over $\Z_p$. We show that $|F| = p^n$. Since $f(x)$ has degree $p^n$ and splits over $F$, thus there must be $p^n$ zeroes of $f(x)$ in $F$. Also we know that each of these $p^n$ zeroes are simple (\myref{problem-(x^p^n-x)-only-has-simple-zeroes}), meaning that $f(x)$ has $p^n$ distinct zeroes in $F$. We note that \myref{exercise-zeroes-of-polynomial-form-subfield} (later) shows that the set of zeroes of $f(x)$ in $F$, which we will denote by $S$, forms a subfield of $F$. Note $|S| = p^n$. But as $S$ contains all zeroes of $f(x)$ in $F$, we know that $f(x)$ splits over $S$. As $S \subseteq F$, thus $S = F$, meaning $|F| = p^n$.
@@ -19,7 +19,7 @@ The most surprising and important result regarding finite fields is that there i
     In \myref{thrm-finite-field-is-unique}, prove that $S$, the set of zeroes of $f(x)$ in $F$, is a subfield of $F$.
 \end{exercise}
 
-As there is only one field (up to isomorphism) that is of order $p^n$, we may unambiguously call such a field \textit{the} field of order $p^n$.
+As there is only one field (up to isomorphism) that is of order $p^n$, we may unambiguously call such a field \textbf{the} field of order $p^n$.
 
 \begin{definition}
     Let $p$ be a prime number and $n$ be a positive integer. The field of order $p^n$ is called the \term{Galois field of order $p^n$}\index{Galois field} and is denoted by $\GF{p^n}$.
@@ -74,7 +74,7 @@ Since there is only one finite field of a given order (up to isomorphism), it is
 
 Let us examine some finite fields in detail.
 \begin{example}\label{example-GF16-analysis}
-    Let us examine $\GF{16}$ in detail. In part of \myref{example-x^4+x+1-is-irreducible-over-Z2} we have shown that $x^4 + x + 1$ is irreducible over $\Z_2$. Therefore we know that $\princ{x^4 + x + 1}$ is a maximal ideal in $\Z_2[x]$ (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}) and therefore $\Z_2/\princ{x^4+x+1}$ is a field (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field}). In fact this is a field of order 16, which means that
+    Let us examine $\GF{16}$ in detail. In part of \myref{example-x^4+x+1-is-irreducible-over-Z2} we showed that $x^4 + x + 1$ is irreducible over $\Z_2$. Therefore we know that $\princ{x^4 + x + 1}$ is a maximal ideal in $\Z_2[x]$ (\myref{thrm-irreducible-iff-principal-ideal-is-maximal}) and therefore $\Z_2/\princ{x^4+x+1}$ is a field (\myref{thrm-maximal-ideal-iff-quotient-ring-is-field}). In fact this is a field of order 16, which means that
     \[
         \GF{16} \cong \Z_2/\princ{x^4+x+1}.
     \]
@@ -129,17 +129,15 @@ Let us examine some finite fields in detail.
         &= \{0, 1, \alpha, \alpha + 1, \alpha^2, \alpha^2 + 1, \alpha^2 + \alpha, \alpha^2 + \alpha + 1\}
     \end{align*}
     where
-    \begin{multicols}{2}
-        \begin{itemize}
-            \item $\alpha^1 = \alpha$;
-            \item $\alpha^2 = \alpha^2$;
-            \item $\alpha^3 = \alpha^2 + 1$;
-            \item $\alpha^4 = \alpha^2 + \alpha + 1$;
-            \item $\alpha^5 = \alpha + 1$;
-            \item $\alpha^6 = \alpha^2 + \alpha$; and
-            \item $\alpha^7 = 1$.
-        \end{itemize}
-    \end{multicols}
+    \begin{itemize}
+        \item $\alpha^1 = \alpha$;
+        \item $\alpha^2 = \alpha^2$;
+        \item $\alpha^3 = \alpha^2 + 1$;
+        \item $\alpha^4 = \alpha^2 + \alpha + 1$;
+        \item $\alpha^5 = \alpha + 1$;
+        \item $\alpha^6 = \alpha^2 + \alpha$; and
+        \item $\alpha^7 = 1$.
+    \end{itemize}
 
     Let us find the other zeroes of $f(x)$ in $F$. We see that
     \begin{align*}
