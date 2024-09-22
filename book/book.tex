@@ -14,6 +14,7 @@
 \newcommand{\buildnumber}{}
 \newcommand{\postnumber}{}
 
+\newcommand{\isdraft}{true}
 \newcommand{\isebook}{true}
 
 %=============== Preamble ================
@@ -98,7 +99,7 @@
 \setcounter{part}{-1}  % So that the first part starts with 0
 \mainmatter  % Now use arabic numerals for page numbers
 
-\draftstartmark  % TODO: Remove once no longer in draft
+\Ifstr{\isdraft}{true}{\draftstartmark}{}
 
 %=========================================
 \include{part0/preamble}
@@ -160,6 +161,6 @@
 \include{appendices/notation}
 \include{appendices/index}
 
-\draftendmark  % TODO: Remove once no longer in draft
+\Ifstr{\isdraft}{true}{\draftendmark}{}
 
 \end{document}
