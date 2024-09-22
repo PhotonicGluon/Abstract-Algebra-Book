@@ -1,9 +1,9 @@
 \chapter{Domains and Factorization}
-Earlier, we introduced domains, before focusing our attention mainly on integral domains. We then explored concepts of factorization, but restricted the discussion to polynomial rings. We explore more types of domains here, and explore the factorization available in such domains.
+In an earlier chapter, we introduced domains before focusing mainly on integral domains. We then explored concepts of factorization but restricted the discussion to polynomial rings. We explore more types of domains here and the factorization available in such domains.
 
 \section{Associates, Irreducibles, and Primes}
 \begin{definition}
-    Let $D$ be an integral domain, and $a,b \in D$. Then $a$ and $b$ are said to be \term{associates}\index{associates} if and only if there exists a unit $u \in D$ such that $a = ub$.
+    Let $D$ be an integral domain and $a,b \in D$. Then $a$ and $b$ are said to be \term{associates}\index{associates} if and only if there exists a unit $u \in D$ such that $a = ub$.
 \end{definition}
 
 \begin{example}
@@ -39,7 +39,8 @@ We now look at irreducibles and primes.
     Let $D$ be an integral domain and $p \in D$. Then $p$ is a \term{prime}\index{prime} if $p$ is not a unit and, for all $a, b \in D$, we have $p \vert ab$ implies $p \vert a$ or $p \vert b$.
 \end{definition}
 
-We note that the definition of irreducibles is similar to that of irreducible polynomials, and the definition of primes is similarly defined to that of prime ideals. In fact, we have the following theorem linking prime \textit{elements} to prime \textit{ideals}.
+We note that the definition of irreducibles is similar to that of irreducible polynomials, and the definition of primes is similarly defined to that of prime ideals. In fact, we have the following theorem linking prime elements to prime ideals.
+
 \begin{theorem}\label{thrm-prime-element-iff-generates-prime-ideal}
     Let $D$ be an integral domain and $p \in D$. Then $p$ is prime if and only if $\princ{p}$ is prime.
 \end{theorem}
@@ -55,26 +56,26 @@ To explore the differences between irreducibles and primes, we look at quadratic
     A \term{square-free integer}\index{square-free integer} is an integer that is not divisible by any square number other than 1.
 \end{definition}
 
-Let $d$ be a square-free integer not equal to 1. We note that the set
+Let $d$ be a square-free integer not equal to 1. We note that
 \[
     \Z[\sqrt{d}] = \left\{a + b\sqrt{d} \vert a,b \in \Z\right\}
 \]
-forms an integral domain. We will leave proving that this is indeed an integral domain to the next section. We also define the map $N: \Z[\sqrt{d}] \to \Z$ where
+forms an integral domain. We will leave proving that this is indeed an integral domain to the next section. We also define the norm, which is the map $N: \Z[\sqrt{d}] \to \Z$ where
 \[
     N(a+b\sqrt{d}) = \left|a^2 - db^2\right|,
 \]
-called the norm. For now, we note that $N(xy) = N(x)N(y)$ for all $x, y \in \Z[\sqrt{d}]$. We will prove this and other properties of the norm later.
+For now, we note that $N(xy) = N(x)N(y)$ for all $x, y \in \Z[\sqrt{d}]$. We will prove this and other properties of the norm later.
 
 \begin{example}
     We show that it is possible for an irreducible in $\Z[\sqrt{-3}]$ to not be prime. Note that $N(a+b\sqrt{-3}) = a^2 + 3b^2$. Let $r = 1 + \sqrt{-3}$.
     \begin{itemize}
         \item We claim that $r$ is irreducible. Seeking a contradiction, suppose $r = xy$ where neither $x$ nor $y$ is a unit. Then $N(r) = N(x)N(y) = N(1+\sqrt{-3}) = 4$. It follows that, since $x$ and $y$ are not units, that $N(x) = N(y) = 2$. But, there are no integers $a$ and $b$ such that $a^2 + 3b^2 = 2$ required for $x$ (and $y$), a contradiction. Therefore $x$ or $y$ is a unit, meaning that $r$ is irreducible.
 
-        \item We claim that $r$ is \textit{not} a prime. Observe that
+        \item We claim that $r$ is not a prime. Observe that
         \[
-            (1+\sqrt{-3})(1-\sqrt{-3}) = 1-(-3) = 4 = 2 \times 2
+            (1+\sqrt{-3})(1-\sqrt{-3}) = 1-(-3) = 4
         \]
-        so $1 + \sqrt{-3}$ divides $2 \times 2$. However, for integers $a$ and $b$ to exist so that $2 = (1+\sqrt{-3})(a+b\sqrt{-3}) = (a-3b) + (a+b)\sqrt{-3}$, we must have $a - 3b = 2$ and $a + b = 0$, which has a solution $a = \frac12$ and $b = -\frac12$ which are not integers. Therefore $r$ is not prime.
+        so $1 + \sqrt{-3}$ divides $4 = 2 \times 2$. However, for integers $a$ and $b$ to exist such that $2 = (1+\sqrt{-3})(a+b\sqrt{-3}) = (a-3b) + (a+b)\sqrt{-3}$, we must have $a - 3b = 2$ and $a + b = 0$, which has a solution $a = \frac12$ and $b = -\frac12$ which are not integers. Therefore $r$ is not prime.
     \end{itemize}
     Hence it is possible for an irreducible to not be a prime.
 \end{example}
@@ -964,7 +965,7 @@ What \myref{figure-domain-class-inclusion} shows is how certain categories of do
 Explaining why the rest class inclusions are true are left for \myref{exercise-domain-class-inclusion} (later).
 
 \begin{exercise}\label{exercise-domain-class-inclusion}
-    Explain the rest of the class inclusions in \myref{figure-domain-class-inclusion} by citing the appropriate theorems.
+    Cite the appropriate theorems to explain the rest of the class inclusions in \myref{figure-domain-class-inclusion}.
 \end{exercise}
 
 \newpage
