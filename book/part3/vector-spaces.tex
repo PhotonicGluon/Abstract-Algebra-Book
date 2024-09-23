@@ -184,7 +184,7 @@ We note some elementary properties of vectors in vector spaces.
     \[
         0\mathbf{u} = (0 + 0)\mathbf{u} = 0\mathbf{u} + 0\mathbf{u}
     \]
-    by \textbf{Distributivity-Scalar}. Then, by adding $-(0\mathbf{u})$ on both sides we see
+    by \textbf{Distributivity-Scalar}. Then by adding $-(0\mathbf{u})$ on both sides we see
     \begin{align*}
         &0\mathbf{u} + (-(0\mathbf{u}))\\
         &= (0\mathbf{u} + 0\mathbf{u}) + (-(0\mathbf{u}))\\
@@ -288,7 +288,7 @@ Admittedly, the previous example is quite boring. Let's look at a more interesti
     We show that $V$ is a subspace of $\R^4$ over $\R$.
     \begin{itemize}
         \item Note that the zero vector of $\R^4$, $(0,0,0,0)$, is in $V$ by choosing $a = b = 0$. Therefore $V$ is non-empty.
-        \item For any two vectors $\mathbf{u} = (a, b, a-b, a+b)$ and $\mathbf{v} = (c, d, c-d, c+d)$ in $V$, we see
+        \item Suppose $\mathbf{u}, \mathbf{v} \in V$; in particular let $\mathbf{u} = (a, b, a-b, a+b)$ and $\mathbf{v} = (c, d, c-d, c+d)$ where $a,b,c,d \in \R$. We see
         \begin{align*}
             \mathbf{u} + \mathbf{v} &= (a, b, a-b, a+b) + (c, d, c-d, c+d)\\
             &= (a + c, b + d, a - b + c - d, a + b + c + d)\\
@@ -315,11 +315,11 @@ Admittedly, the previous example is quite boring. Let's look at a more interesti
     (\textit{Warning: be careful with the zero polynomial!})
 \end{exercise}
 
-\section{Linear Combinations and Span}
+\section{Linear Combination and Span}
 Vector spaces have many elements. Using the vector space axioms, we may express these elements in terms of other elements from the vector space. One may wonder if there is a set of elements that `generates' the full vector space. This motivates the definition for spanning sets.
 
 \begin{definition}
-    Let $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n$ be vectors in to a vector space $V$ over a field $F$. A vector $\mathbf{u} \in V$ is said to be a \textbf{linear combination}\index{linear combination} of the vectors $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n$ if and only if
+    Let $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n$ be vectors in to a vector space $V$ over a field $F$. A vector $\mathbf{u} \in V$ is said to be a \term{linear combination}\index{linear combination} of the vectors $\mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n$ if and only if
     \[
         \mathbf{u} = \alpha_1\mathbf{v}_1 + \alpha_2\mathbf{v}_2 + \cdots + \alpha_n \mathbf{v}_n
     \]
@@ -364,7 +364,7 @@ Vector spaces have many elements. Using the vector space axioms, we may express 
 \end{proof}
 
 \begin{definition}
-    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then $S$ is called a \term{spanning set}\index{spanning set} of $V$ if and only if $\Span{S} = V$, and we say that $S$ \term{spans} $V$.
+    Let $V$ be a vector space over a field $F$ and let $S$ be a non-empty subset of $V$. Then $S$ is called a \term{spanning set}\index{spanning set} of $V$ if and only if $\Span{S} = V$, and we say that \term{$S$ spans $V$}.
 \end{definition}
 
 \begin{example}
@@ -374,7 +374,7 @@ Vector spaces have many elements. Using the vector space axioms, we may express 
 \begin{example}
     Consider the set $S = \{(1, 2, 1), (1, 0, 2), (1, 1, 0)\} \subset \R^3$. We show that $S$ spans $V$.
 
-    Let $(a, b, c) \in \R^3$. Consider $\alpha_1(1, 2, 1) + \alpha_2(1, 0, 2) + \alpha_3(1, 1, 0) = (a, b, c)$. Thus we see
+    Let $(a, b, c) \in \R^3$. Suppose $\alpha_1, \alpha_2, \alpha_3 \in \R$ are such that $\alpha_1(1, 2, 1) + \alpha_2(1, 0, 2) + \alpha_3(1, 1, 0) = (a, b, c)$. Thus we see
     \begin{align*}
         \alpha_1 + \alpha_2 + \alpha_3 &= a\\
         2\alpha_1 + \alpha_3 &= b\\
@@ -386,7 +386,7 @@ Vector spaces have many elements. Using the vector space axioms, we may express 
         \alpha_2 &= \frac13(a - b + c)\\
         \alpha_3 &= \frac13(4a - b - 2c)
     \end{align*}
-    which means that each element in $\R^3$ has a unique set of $\alpha_1, \alpha_2, \alpha_3 \in \R$ that produces it. Therefore $\Span{S} = \R^3$.
+    which means that each element in $\R^3$ has a unique set of $\alpha_1$, $\alpha_2$, and $\alpha_3$ that produces it. Therefore $\Span{S} = \R^3$.
 \end{example}
 
 \begin{example}
@@ -480,7 +480,7 @@ The next definition is crucial in vector space theory.
     \]
     be a vector space over $\R$. We note that the `vectors' (in fact, polynomials) in the set $S = \{2, 3x, 5x^2, 7x^3\}$ are linearly independent as the equation
     \[
-        \alpha\times2 + \beta(3x) + \gamma(5x^2) + \delta(7x^3) = 0
+        2\alpha + 3\beta x + 5\gamma x^2 + 7\delta x^3 = 0
     \]
     clearly only has the solution $\alpha = \beta = \gamma = \delta = 0$.
 \end{example}
@@ -501,7 +501,7 @@ The next definition is crucial in vector space theory.
 \section{Basis}
 Earlier, we looked at spanning sets, which are sets of vectors that produce all vectors of a vector space $V$ (over a field $F$). One might rightly ask whether there is a `smallest' spanning set, that is, a spanning set with the smallest number of vectors possible but still able to span $V$. This question leads to the definition of a basis.
 \begin{definition}
-    Let $V$ be a vector space over a field $F$, and let $B$ be a non-empty set of vectors from $V$. Then $B$ is called a \term{basis}\index{basis} of $V$ if and only if the vectors in $B$ are linearly independent and $\Span{B} = V$.
+    Let $V$ be a vector space over a field $F$ and let $B$ be a non-empty set of vectors from $V$. Then $B$ is called a \term{basis}\index{basis} of $V$ if and only if the vectors in $B$ are linearly independent and $\Span{B} = V$.
 \end{definition}
 
 The usefulness of a basis is given by the following theorem.
@@ -585,7 +585,7 @@ One may wonder if a vector space could have bases of different sizes. The answer
     \]
     This time write $\mathbf{v}_2$ as a linear combination of the vectors in $B_\mathbf{u}$, say $\mathbf{v}_2 = \beta_1\mathbf{v}_1 + \beta_2\mathbf{u}_2 + \cdots + \beta_m\mathbf{u}_m$ where $\beta_1, \beta_2, \dots, \beta_m \in F$. We note that one of $\beta_2, \beta_3, \dots, \beta_m$ has to be non-zero, as otherwise we would have $\mathbf{v}_2 = \beta_1\mathbf{v}_1$, meaning that the vectors in $B_\mathbf{v}$ are linearly dependent (a contradiction). For convenience choose $\beta_2 \neq 0$. Using the same argument as before we know $\Span{B_2} = \Span{B_\mathbf{u}} = V$.
 
-    Continuing in this fashion we see
+    Continuing in this fashion we see that the set
     \[
         B_m = \{\mathbf{v}_1, \mathbf{v}_2, \mathbf{v}_3, \dots, \mathbf{v}_m\}
     \]

@@ -15,8 +15,8 @@ HEIGHT = 900
 ASPECT_RATIO = HEIGHT / WIDTH
 DPI = 100
 
-MIN_X = -2.
-MAX_X = 2.
+MIN_X = -2.0
+MAX_X = 2.0
 MIN_Y = MIN_X * ASPECT_RATIO
 MAX_Y = MAX_X * ASPECT_RATIO
 
@@ -32,16 +32,7 @@ POLYGON_LINE_THICKNESS = 5
 POLYGON_FILL_COLOUR = "black"
 POLYGON_FILL_ALPHA = 0.35
 
-COLOURS = [
-    "lightcoral",
-    "peachpuff",
-    "palegreen",
-    "green",
-    "lightblue",
-    "blue",
-    "orchid",
-    "lightpink"
-]
+COLOURS = ["lightcoral", "peachpuff", "palegreen", "green", "lightblue", "blue", "orchid", "lightpink"]
 
 
 # FUNCTIONS
@@ -51,9 +42,11 @@ def get_colour(i):
 
 def epicycloid_point(num_cusps, theta, offset=pi / 7):
     x = (num_cusps + 1) / (num_cusps + 2) * cos(theta + offset) + 1 / (num_cusps + 2) * cos(
-        (num_cusps + 1) * theta + offset)
+        (num_cusps + 1) * theta + offset
+    )
     y = (num_cusps + 1) / (num_cusps + 2) * sin(theta + offset) + 1 / (num_cusps + 2) * sin(
-        (num_cusps + 1) * theta + offset)
+        (num_cusps + 1) * theta + offset
+    )
 
     return x, y
 
@@ -75,16 +68,18 @@ def draw_epicycloid(num_cusps, offset=pi / 7, alpha=0.1, n=200, tolerance=1e-8):
             continue
 
         # Draw a line connecting the two points
-        plt.axline(
-            (x1, y1), (x2, y2),
-            color=get_colour(i),
-            linestyle="-",
-            alpha=alpha
-        )
+        plt.axline((x1, y1), (x2, y2), color=get_colour(i), linestyle="-", alpha=alpha)
 
 
-def draw_inscribed_polygon(num_cusps, offset=pi / 7, line_colour="#ffffff", line_alpha=0.5, line_thickness=3,
-                           fill_colour="#ffffff", fill_alpha=0.3):
+def draw_inscribed_polygon(
+    num_cusps,
+    offset=pi / 7,
+    line_colour="#ffffff",
+    line_alpha=0.5,
+    line_thickness=3,
+    fill_colour="#ffffff",
+    fill_alpha=0.3,
+):
     # Get the points on the heptagon
     thetas = arange(pi / num_cusps, 2 * pi, 2 * pi / num_cusps)
     points = [epicycloid_point(num_cusps, theta, offset) for theta in thetas]
@@ -92,9 +87,14 @@ def draw_inscribed_polygon(num_cusps, offset=pi / 7, line_colour="#ffffff", line
     points_x = [pt[0] for pt in points]
     points_y = [pt[1] for pt in points]
 
-    plt.fill(points_x, points_y, edgecolor=mcolors.to_rgba(line_colour, line_alpha),
-             facecolor=mcolors.to_rgba(fill_colour, fill_alpha), linewidth=line_thickness,
-             zorder=1e6)  # High z-order to make polygon be on top
+    plt.fill(
+        points_x,
+        points_y,
+        edgecolor=mcolors.to_rgba(line_colour, line_alpha),
+        facecolor=mcolors.to_rgba(fill_colour, fill_alpha),
+        linewidth=line_thickness,
+        zorder=1e6,
+    )  # High z-order to make polygon be on top
 
 
 # MAIN CODE
@@ -107,9 +107,15 @@ plt.axis("off")
 
 # Draw things
 draw_epicycloid(NUM_CUSPS, offset=OFFSET, alpha=LINES_ALPHA, n=NUM_LINES)
-draw_inscribed_polygon(NUM_CUSPS, offset=OFFSET, line_colour=POLYGON_LINE_COLOUR, line_alpha=POLYGON_LINE_ALPHA,
-                       line_thickness=POLYGON_LINE_THICKNESS, fill_colour=POLYGON_FILL_COLOUR,
-                       fill_alpha=POLYGON_FILL_ALPHA)
+draw_inscribed_polygon(
+    NUM_CUSPS,
+    offset=OFFSET,
+    line_colour=POLYGON_LINE_COLOUR,
+    line_alpha=POLYGON_LINE_ALPHA,
+    line_thickness=POLYGON_LINE_THICKNESS,
+    fill_colour=POLYGON_FILL_COLOUR,
+    fill_alpha=POLYGON_FILL_ALPHA,
+)
 
 # Show result
 plt.savefig(BANNER_DIR / IMAGE_FILE_NAME)

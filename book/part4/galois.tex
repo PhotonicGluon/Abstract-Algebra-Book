@@ -60,7 +60,10 @@ We are particularly interested in automorphisms of an extension field that fixes
     The result follows by the subgroup test.
 \end{proof}
 
+\pagebreak
+
 We have a special name for this group.
+
 \begin{definition}
     Let $F$ be a field and $E/F$ a field extension. The group of all automorphisms of $E$ that fix $F$ elementwise is called the \term{Galois group of $E/F$}\index{Galois group} and is denoted $\Gal{E/F}$. That is,
     \[
@@ -88,13 +91,14 @@ We have a special name for this group.
     \[
         \sigma(a + b\sqrt{5}) = a+b\sqrt5
     \]
-    so $\sigma$ fixes $\Q(\sqrt5)$. Similarly the map $\tau: \Q(\sqrt3,\sqrt5)\to\Q(\sqrt3,\sqrt5)$ given by
+    so $\sigma$ fixes $\Q(\sqrt5)$. Similarly the map $\tau: \Q(\sqrt3,\sqrt5)\to\Q(\sqrt3,\sqrt5)$ where
     \[
         \tau(a + b\sqrt3 + c\sqrt5 + d\sqrt{15}) = a + b\sqrt3 - c\sqrt5 - d\sqrt{15}
     \]
     for any $a,b,c,d \in \Q$ is an automorphism that fixes $\Q(\sqrt3)$. The automorphism $\mu = \sigma\tau$ fixes $\Q(\sqrt{15})$. It will be clear soon that $S = \{\id, \sigma, \tau, \mu\}$ is $\Gal{\Q(\sqrt3,\sqrt5)/\Q}$.
 
     \begin{figure}[H]
+        \vspace{-0.5cm}
         \begin{minipage}[c]{0.4\textwidth}
             \begin{table}[H]
                 \centering
@@ -256,7 +260,7 @@ We earlier found that $|\Gal{\Q(\sqrt3,\sqrt5)/\Q}| = [\Q(\sqrt3,\sqrt5):\Q] = 4
 For many results, we are interested in polynomials with only simple zeroes within its splitting field over the base field. These polynomials are called separable polynomials.
 
 \begin{definition}
-    Let $F$ be a field and $f(x) \in F[x]$. Let $E$ be the splitting field of $f(x)$ over $F$. Then $f(x)$ is called \term{separable}\index{polynomial!separable} if and only if it has only simple zeroes in $E$. In other words, we have
+    Let $F$ be a field and $f(x) \in F[x]$. Let $E$ be the splitting field of $f(x)$ over $F$. Then $f(x)$ is \term{separable}\index{polynomial!separable} if and only if it only has simple zeroes in $E$. In other words, we have
     \[
         f(x) = a(x-\alpha_1)(x-\alpha_2)\cdots(x-\alpha_n)
     \]
@@ -540,7 +544,7 @@ This example shows that, in certain cases, there is a connection between the lat
     give a well-defined bijective correspondence between $\mathcal{F}$ and $\mathcal{G}$.
 \end{theorem}
 \begin{proof}[Proof (see {\cite[Theorem 16.7.1]{artin_2011}})]
-    We show that the composition of the two maps in either order is the identity, and our work would be done. In other words, we want to show that $\alpha\beta: \mathcal{G} \to \mathcal{G}$ results in $H \mapsto H$, and want to show that $\beta\alpha: \mathcal{F} \to \mathcal{F}$ results in $K \mapsto K$.
+    We show that the composition of the two maps in either order is the identity, and our work would be done. In other words, we want to show that $\alpha\beta: \mathcal{G} \to \mathcal{G}$ is $H \mapsto H$, and want to show that $\beta\alpha: \mathcal{F} \to \mathcal{F}$ is $K \mapsto K$.
 
     For the composition $\alpha\beta$, let $H \in \mathcal{G}$. Then $\beta(H) = \Fix{E}{H}$. By \myref{thrm-equivalence-of-finite-galois-extension} we therefore see that $E$ is a finite Galois extension of $\beta(H)$. For brevity let $K = \beta(H)$, so we have that $E$ is a finite Galois extension of $K$. Now on one hand, by the Fixed Field Theorem (\myref{thrm-fixed-field}) we know that $|H| = [E:K]$. On the other hand, by \myref{corollary-galois-iff-galois-field-has-order-of-degree-of-field-extension}, since $E/K$ is finite and Galois, thus $|\Gal{E/K}| = [E:K]$. Therefore $|H| = |\Gal{E/K}|$; because $H \leq \Gal{E/K}$ by \myref{exercise-subgroup-of-Aut-E-is-subgroup-of-galois-group-of-fixed-field}, so $H = \Gal{E/K}$. So one sees that $\alpha(\beta(H)) = \alpha(K) = \Gal{E/K} = H$, meaning that $\alpha\beta(H) = H$ for all $H \in \mathcal{G}$.
 
@@ -904,7 +908,7 @@ We are now ready to state an intermediary claim regarding a particular quintic p
 
 \begin{figure}[H]
     \centering
-    \resizebox{!}{6cm}{%
+    \resizebox{!}{5.5cm}{%
         \begin{tikzpicture}[xscale=2, yscale=0.25, domain=-1.7:1.8, samples=200]
             % Draw grid lines
             \draw[very thin, color=gray] (-2,-12) grid [xstep=0.25, ystep=2] (2,12);
@@ -917,24 +921,24 @@ We are now ready to state an intermediary claim regarding a particular quintic p
             \draw[very thick, smooth, variable=\x] plot ({\x}, {\x^5 - 4*\x - 2}) node[left] {$f(x) = x^5 - 4x - 2$};
 
             % Add x-axis labels
-            \node [below] at (-1.5,0) {-1.5};
-            \node [below] at (-1,0) {-1};
-            \node [below] at (-0.5,0) {-0.5};
-            \node [below] at (0.5,0) {0.5};
-            \node [below] at (1,0) {1};
-            \node [below] at (1.5,0) {1.5};
+            \node [below] at (-1.5,0) {$-1.5$};
+            \node [below] at (-1,0) {$-1$};
+            \node [below] at (-0.5,0) {$-0.5$};
+            \node [below] at (0.5,0) {$0.5$};
+            \node [below] at (1,0) {$1$};
+            \node [below] at (1.5,0) {$1.5$};
 
             % Add y-axis labels
-            \node [left] at (0,-8) {-8};
-            \node [left] at (0,-4) {-4};
-            \node [left] at (0,4) {4};
-            \node [left] at (0,8) {8};
+            \node [left] at (0,-8) {$-8$};
+            \node [left] at (0,-4) {$-4$};
+            \node [left] at (0,4) {$4$};
+            \node [left] at (0,8) {$8$};
         \end{tikzpicture}
     }
     \caption{Graph of $f(x) = x^5 - 4x - 2$}
 \end{figure}
 
-Do not be mislead by the graph -- one can easily verify that -1.25, 0.5, and 1.5 are not zeroes of $f(x)$ in $\Q$.
+Do not be mislead by the graph -- one can easily verify that $-1.25$, $0.5$, and $1.5$ are not zeroes of $f(x)$ in $\Q$.
 
 \begin{proof}
     Eisenstein's Criterion (\myref{thrm-eisenstein-criterion}) with the prime 2 tells us that $f(x)$ is irreducible over $\Q$; consequently this means that $f(x)$ is separable in $F$ (\myref{thrm-zeroes-of-an-irreducible}).
@@ -942,19 +946,20 @@ Do not be mislead by the graph -- one can easily verify that -1.25, 0.5, and 1.5
     We first argue that there are only 3 real zeroes for $f(x)$. We first produce a table of values of $f(x)$.
     \begin{table}[H]
         \centering
+        \fontsize{9pt}{13pt}\selectfont
         \begin{tabular}{|l|l|}
             \hline
             $\boldsymbol{x}$ & $\boldsymbol{f(x)}$ \\ \hline
-            -1.25 & $-\frac{53}{1024}$ \\ \hline
-            -1 & 1 \\ \hline
-            -0.75 & $\frac{781}{1024}$ \\ \hline
-            -0.5 & $-\frac1{32}$ \\ \hline
+            $-1.25$ & $-\frac{53}{1024}$ \\ \hline
+            $-1$ & $1$ \\ \hline
+            $-0.75$ & $\frac{781}{1024}$ \\ \hline
+            $-0.5$ & $-\frac1{32}$ \\ \hline
             $\vdots$ & $\vdots$ \\ \hline
-            1.5 & $-\frac{13}{32}$ \\ \hline
-            1.75 & $\frac{7591}{1024}$ \\ \hline
+            $1.5$ & $-\frac{13}{32}$ \\ \hline
+            $1.75$ & $\frac{7591}{1024}$ \\ \hline
         \end{tabular}
     \end{table}
-    From this table, one sees that $f(x)$ changes sign from -1.25 to -1, from -0.75 to -0.5, and from 1.5 to 1.75. By the stated fact, this means that there are 3 distinct real zeroes in the interval of -1.25 to 1.75. Let these zeroes by denoted by $\alpha_1$, $\alpha_2$, and $\alpha_3$ respectively. Now, one sees for any $x < -1.25$ that
+    From this table, one sees that $f(x)$ changes sign from $-1.25$ to $-1$, from $-0.75$ to $-0.5$, and from $1.5$ to $1.75$. By the stated fact, this means that there are 3 distinct real zeroes in the interval of $-1.25$ to $1.75$. Let these zeroes by denoted by $\alpha_1$, $\alpha_2$, and $\alpha_3$ respectively. Now, one sees for any $x < -1.25$ that
     \[
         4x + 2 > 4(-1.25) + 2 = -3 > (-1.25)^5 = -\frac{3125}{1024} > x^5
     \]

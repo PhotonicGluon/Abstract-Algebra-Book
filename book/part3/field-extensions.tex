@@ -127,8 +127,7 @@ Returning back to our exploration of extension fields, the critical observation 
     \]
     where $a_0, a_1, \dots, a_n \in F$. In $E$, the polynomial becomes
     \begin{align*}
-        &\overline{p}(x)\\
-        &= (a_0 + \princ{p(x)}) + (a_1 + \princ{p(x)})x + (a_2 + \princ{p(x)})x^2 + \cdots\\
+        \overline{p}(x) &= (a_0 + \princ{p(x)}) + (a_1 + \princ{p(x)})x + (a_2 + \princ{p(x)})x^2 + \cdots\\
         &\quad\quad+ (a_n + \princ{p(x)})x^n
     \end{align*}
     For brevity let $\overline{a_i} = a_i + \princ{p(x)}$. Let $\alpha = x + \princ{p(x)} \in E$. Note
@@ -280,7 +279,7 @@ A general form for simple extensions for specific types of primitive elements, s
         F[x]/\princ{p(x)} \cong F(\alpha).
     \]
 
-    Now, if $f(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$ then we may use polynomial long division (\myref{thrm-polynomial-long-division}) to write $f(x) = q(x)p(x) + r(x)$ where $r(x)$ is a \textbf{unique} polynomial where $r(x) = 0$ or $\deg r(x) < \deg p(x) = n$. Hence if $r(x) = a_0 + a_1x + \cdots + a_{n-1}x^{n-1}$ we see
+    Now, if $f(x) + \princ{p(x)} \in F[x]/\princ{p(x)}$ then we may use polynomial long division (\myref{thrm-polynomial-long-division}) to write $f(x) = q(x)p(x) + r(x)$ where $r(x)$ is a unique polynomial where $r(x) = 0$ or $\deg r(x) < \deg p(x) = n$. Hence if $r(x) = a_0 + a_1x + \cdots + a_{n-1}x^{n-1}$ we see
     \[
         f(x) + \princ{p(x)} = \left(a_0 + a_1x + \cdots + a_{n-1}x^{n-1}\right) + \princ{p(x)}
     \]
@@ -387,7 +386,7 @@ What about extensions of the form $F(a_1, a_2, \dots, a_n)$? We also have this u
 With all these results, we can finally define splitting fields.
 
 \begin{definition}
-    Let $F$ be a field, $E/F$ be a field extension, and $f(x) \in F[x]$ be a non-constant polynomial. We say that $f(x)$ \term{splits}\index{polynomial!splits} in $E$ if and only if there exist an element $a \in F$ and elements $a_1, a_2, \dots, a_n \in E$ such that
+    Let $F$ be a field, $E/F$ be a field extension, and $f(x) \in F[x]$ be a non-constant polynomial. We say that \term{$f(x)$ splits in $E$}\index{polynomial!splits} if and only if there exist an element $a \in F$ and elements $a_1, a_2, \dots, a_n \in E$ such that
     \[
         f(x) = a(x-a_1)(x-a_2)\cdots(x-a_n).
     \]
@@ -563,7 +562,7 @@ Before we tackle the zeroes of irreducible polynomials, we borrow a tool which o
     \]
 \end{definition}
 
-Notice that in our definition we did not use the notion of a limit, unlike in a standard calculus course.
+Notice that in our definition, we did not use the notion of a limit, unlike in a standard calculus course.
 
 \begin{example}
     Let $f(x) = x^2 + 2x + 3 \in \Q[x]$. Then $f'(x) = 2x + 2$.
@@ -702,7 +701,7 @@ The investigation into the zeroes of irreducible polynomials also requires the g
     We denote a GCD of $f(x)$ and $g(x)$ by $\gcd(f(x), g(x))$.
 \end{definition}
 
-We note an analogue of B\'ezout's lemma (\myref{lemma-bezout}) for polynomial GCDs.
+We note an analogue of B\'ezout's lemma (\myref{lemma-bezout}) for polynomials.
 
 \begin{theorem}\label{thrm-bezout-lemma-for-polynomials}
     Let $F$ be a polynomial. Let $f(x), g(x) \in F[x]$, and let $d(x)$ be a GCD of $f(x)$ and $g(x)$. Then there are polynomials $a(x), b(x) \in F[x]$ such that
@@ -841,13 +840,13 @@ The most important family of perfect fields of prime characteristic are the fini
 The fact that the Frobenius endomorphism is an automorphism for finite fields leads to an interesting result.
 
 \begin{proposition}[Freshman's Dream]\label{prop-freshman-dream}\index{Freshman's Dream}
-    Let $F$ be a field of prime characteristic $p$. Then $(x + y)^{p^n} = x^{p^n} + y^{p^n}$ for all $x,y \in F$ and positive integers $n$.
+    Let $F$ be a field of prime characteristic $p$. Then $(x + y)^{p^n} = x^{p^n} + y^{p^n}$ for all $x,y \in F$ and non-negative integers $n$.
 \end{proposition}
 \begin{remark}
     The name ``Freshman's Dream'' refers to the \textbf{incorrect} expansion of $(x+y)^n$ as $x^n + y^n$ over infinite fields (in particular, the field of real numbers). However, over finite fields, this incorrect expansion becomes correct.
 \end{remark}
 \begin{proof}
-    We induct on $n$.
+    The case when $n = 0$ is obvious, so we induct only for $n > 0$.
 
     For the base case of $n = 1$, since the Frobenius endomorphism is an automorphism, we see that $\phi(x+y) = \phi(x) + \phi(y)$ and so $(x+y)^p = x^p + y^p$ by definition of $\phi$.
 
