@@ -7,6 +7,7 @@
 ### Part 0 (Preliminaries) Changes
 
 ### Part I (Groups) Changes
+- Fixed small typo in the solution of exercise 1.1(f).
 
 ### Part II (Rings) Changes
 
@@ -15,3 +16,4 @@
 ### Part IV (Galois) Changes
 
 ### Other Changes
+- Updated `Dockerfile` to be more cache efficient.
