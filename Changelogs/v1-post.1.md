@@ -5,6 +5,7 @@
 ### General Content Changes
 
 ### Part 0 (Preliminaries) Changes
+- Fixed error of what the relation $R$ is in example 5.1.5.
 
 ### Part I (Groups) Changes
 - Fixed small typo in the solution of exercise 1.1(f).
