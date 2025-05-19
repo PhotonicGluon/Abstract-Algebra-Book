@@ -17,7 +17,7 @@ This book serves to achieve several goals.
 I hope that this book can accomplish these goals and let readers enjoy the wonders of abstract algebra.
 
 ## Latest Release
-You can find the latest release [on Overwrite](https://overwrite.site/projects/abstract-algebra), or on [GitHub](https://github.com/PhotonicGluon/Abstract-Algebra-Book/releases/latest).
+You can find the latest release [on Photonic](https://photonic.dev/projects/abstract-algebra), or on [GitHub](https://github.com/PhotonicGluon/Abstract-Algebra-Book/releases/latest).
 
 ## Changelog
 The changelog of the book can be found [here](CHANGELOG.md).

@@ -22,3 +22,4 @@
 
 ### Other Changes
 - Removed deprecated `exercise-solutions.tex` from `book/part1` folder.
+- Updated `README.md` to use the new Photonic site.
