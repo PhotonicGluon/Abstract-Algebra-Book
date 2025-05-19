@@ -20,3 +20,4 @@
 ### Part IV (Galois) Changes
 
 ### Other Changes
+- Removed deprecated `exercise-solutions.tex` from `book/part1` folder.
