@@ -9,6 +9,8 @@
 
 ### Part I (Groups) Changes
 - Fixed a small typo in the proof of lemma 9.4.3.
+- Clarified the intent of exercise 14.1.
+- Moved formula for Euler's totient function in definition 14.4.3 to after that definition.
 
 ### Part II (Rings) Changes
 
