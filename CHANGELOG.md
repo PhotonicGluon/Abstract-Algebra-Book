@@ -2,6 +2,7 @@
 
 All notable changes to *A Complete Introduction to Abstract Algebra* will be documented in the [`Changelogs`](Changelogs) folder.
 
+- [1st Edition, Post 3](Changelogs/v1-post.3.md) (WIP)
 - [1st Edition, Post 2](Changelogs/v1-post.2.md) (May 19, 2025)
 - [1st Edition, Post 1](Changelogs/v1-post.1.md) (Dec 23, 2024)
 - [1st Edition](Changelogs/v1.md) (Oct 4, 2024)
