@@ -12,6 +12,7 @@
 - Fixed minor grammar error in the paragraph right after figure 13.2 ("$H$ and $K$ *has* a common subgroup" to "$H$ and $K$ *have* a common subgroup")
 - Clarified the intent of exercise 14.1.
 - Moved formula for Euler's totient function in definition 14.4.3 to after that definition.
+- Edited exercise 14.8 to also ask the reader to find the elements of $\mathrm{A}_4$.
 
 ### Part II (Rings) Changes
 
