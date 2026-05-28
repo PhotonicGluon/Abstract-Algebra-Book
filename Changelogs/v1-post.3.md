@@ -7,6 +7,7 @@
 ### Part 0 (Preliminaries) Changes
 
 ### Part I (Groups) Changes
+- Fixed a minor error in the section after Figure 13.2's caption.
 
 ### Part II (Rings) Changes
 
