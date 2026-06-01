@@ -8,6 +8,7 @@
 
 ### Part I (Groups) Changes
 - Fixed a minor error in the section after Figure 13.2's caption.
+- Fixed errors in Example 18.3.3.
 
 ### Part II (Rings) Changes
 
